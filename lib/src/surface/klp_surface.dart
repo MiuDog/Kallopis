@@ -1,6 +1,5 @@
 import 'package:flutter/widgets.dart';
 
-import '../foundation/klp_metrics.dart';
 import '../theme/klp_theme.dart';
 import '../foundation/klp_palette.dart';
 
@@ -10,8 +9,7 @@ enum KlpSurfaceTone {
   muted,
   component,
   overlay,
-  settingsNavigation,
-  settingsContent,
+  raised,
   transparent,
 }
 
@@ -20,34 +18,33 @@ class KlpSurface extends StatelessWidget {
     super.key,
     required this.child,
     this.tone = KlpSurfaceTone.base,
-    @Deprecated('Structure surfaces never draw strokes. Use KlpStrokeFrame.')
-    this.border = false,
-    this.radius = KlpRadius.card,
+    this.radius,
     this.padding,
   });
 
   final Widget child;
   final KlpSurfaceTone tone;
-  final bool border;
-  final double radius;
+  /// `null` 表示沿用 theme 的卡片圓角。指定值只用於刻意偏離的場合。
+  final double? radius;
   final EdgeInsetsGeometry? padding;
 
   @override
   Widget build(BuildContext context) {
-    final tokens = context.klpColors;
+    final klp = context.klp;
+    final tokens = klp.color;
+    final effectiveRadius = radius ?? klp.cardRadius;
     final background = switch (tone) {
       KlpSurfaceTone.base => tokens.surface,
       KlpSurfaceTone.inset => tokens.surfaceInset,
       KlpSurfaceTone.muted => tokens.surfaceMuted,
       KlpSurfaceTone.component => tokens.component,
       KlpSurfaceTone.overlay => tokens.overlay,
-      KlpSurfaceTone.settingsNavigation => tokens.settingsNavigation,
-      KlpSurfaceTone.settingsContent => tokens.settingsContent,
+      KlpSurfaceTone.raised => tokens.surfaceRaised,
       KlpSurfaceTone.transparent => KlpPalette.transparent,
     };
     final resolvedRadius = tone == KlpSurfaceTone.transparent
-        ? radius
-        : radius.clamp(KlpRadius.sm, double.infinity).toDouble();
+        ? effectiveRadius
+        : effectiveRadius.clamp(klp.shape.control, double.infinity).toDouble();
 
     return DecoratedBox(
       decoration: BoxDecoration(

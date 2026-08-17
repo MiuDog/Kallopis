@@ -55,8 +55,6 @@ abstract final class KlpSize {
   static const double controlSmall = 26;
   static const double control = 32;
   static const double controlLarge = 40;
-  static const double projectBanner = 52;
-  static const double projectAvatar = 28;
   static const double segmentedDense = 30;
   static const double segmentedDenseItem = 24;
   static const double iconButton = 30;
@@ -78,13 +76,6 @@ abstract final class KlpSize {
   static const double menu = 200;
   static const double menuHeader = 28;
   static const double menuItem = 28;
-  static const double productPopupWidth = 1400;
-  static const double productPopupHeight = 900;
-  static const double productPopupTwoColumnMinimumWidth = 640;
-  static const double productPopupWindowCenterOffsetY = -windowToolbar / 2;
-
-  static bool canFloatProductPopup(double width, double height) =>
-      width >= productPopupWidth && height >= productPopupHeight;
 }
 
 abstract final class KlpFormMetrics {

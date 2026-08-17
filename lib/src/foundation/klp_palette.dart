@@ -13,8 +13,6 @@ abstract final class KlpPalette {
   static const Color stage = Color(0xFFFFFEFC);
   static const Color guide = Color(0xFF8C8477);
   static const Color divider = Color(0xFFD6D0C6);
-  static const Color diffAdd = Color(0xFFC8EBD6);
-  static const Color diffRemove = Color(0xFFF2C8C4);
   static const Color ink = Color(0xFF1D1D1D);
   static const Color inkMuted = Color(0xFF5B554C);
   static const Color inkFaint = Color(0xFFB5AEA0);
@@ -41,8 +39,6 @@ abstract final class KlpPalette {
   static const Color nightStage = Color(0xFF0A0A09);
   static const Color nightGuide = Color(0xFF7A7566);
   static const Color nightDivider = Color(0xFF45413A);
-  static const Color nightDiffAdd = Color(0xFF214D35);
-  static const Color nightDiffRemove = Color(0xFF552B28);
   static const Color chalk = Color(0xFFF5F2EC);
   static const Color chalkMuted = Color(0xFFC8C2B6);
   static const Color chalkFaint = Color(0xFF7A7566);

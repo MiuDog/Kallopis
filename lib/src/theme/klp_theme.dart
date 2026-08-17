@@ -44,13 +44,10 @@ class KlpThemeData extends ThemeExtension<KlpThemeData> {
     required this.component,
     required this.stageSurface,
     required this.overlay,
-    required this.settingsNavigation,
-    required this.settingsContent,
+    required this.surfaceRaised,
     required this.modalScrim,
     required this.guide,
     required this.divider,
-    required this.diffAdd,
-    required this.diffRemove,
     required this.text,
     required this.textMuted,
     required this.textFaint,
@@ -73,13 +70,10 @@ class KlpThemeData extends ThemeExtension<KlpThemeData> {
   final Color component;
   final Color stageSurface;
   final Color overlay;
-  final Color settingsNavigation;
-  final Color settingsContent;
+  final Color surfaceRaised;
   final Color modalScrim;
   final Color guide;
   final Color divider;
-  final Color diffAdd;
-  final Color diffRemove;
   final Color text;
   final Color textMuted;
   final Color textFaint;
@@ -129,13 +123,10 @@ class KlpThemeData extends ThemeExtension<KlpThemeData> {
     component: KlpPalette.component,
     stageSurface: KlpPalette.stage,
     overlay: KlpPalette.component,
-    settingsNavigation: KlpPalette.paper,
-    settingsContent: KlpPalette.component,
+    surfaceRaised: KlpPalette.component,
     modalScrim: KlpPalette.modalScrim,
     guide: KlpPalette.guide,
     divider: KlpPalette.divider,
-    diffAdd: KlpPalette.diffAdd,
-    diffRemove: KlpPalette.diffRemove,
     text: KlpPalette.ink,
     textMuted: KlpPalette.inkMuted,
     textFaint: KlpPalette.inkFaint,
@@ -159,13 +150,10 @@ class KlpThemeData extends ThemeExtension<KlpThemeData> {
     component: KlpPalette.duskInset,
     stageSurface: KlpPalette.duskStage,
     overlay: KlpPalette.duskLifted,
-    settingsNavigation: KlpPalette.duskMuted,
-    settingsContent: KlpPalette.duskLifted,
+    surfaceRaised: KlpPalette.duskLifted,
     modalScrim: KlpPalette.modalScrim,
     guide: KlpPalette.duskGuide,
     divider: KlpPalette.duskDivider,
-    diffAdd: KlpPalette.nightDiffAdd,
-    diffRemove: KlpPalette.nightDiffRemove,
     text: KlpPalette.chalk,
     textMuted: KlpPalette.chalkMuted,
     textFaint: KlpPalette.chalkFaint,
@@ -189,13 +177,10 @@ class KlpThemeData extends ThemeExtension<KlpThemeData> {
     component: KlpPalette.nightComponent,
     stageSurface: KlpPalette.nightStage,
     overlay: KlpPalette.nightMuted,
-    settingsNavigation: KlpPalette.nightInset,
-    settingsContent: KlpPalette.nightMuted,
+    surfaceRaised: KlpPalette.nightMuted,
     modalScrim: KlpPalette.modalScrim,
     guide: KlpPalette.nightGuide,
     divider: KlpPalette.nightDivider,
-    diffAdd: KlpPalette.nightDiffAdd,
-    diffRemove: KlpPalette.nightDiffRemove,
     text: KlpPalette.chalk,
     textMuted: KlpPalette.chalkMuted,
     textFaint: KlpPalette.chalkFaint,
@@ -224,13 +209,10 @@ class KlpThemeData extends ThemeExtension<KlpThemeData> {
     Color? component,
     Color? stageSurface,
     Color? overlay,
-    Color? settingsNavigation,
-    Color? settingsContent,
+    Color? surfaceRaised,
     Color? modalScrim,
     Color? guide,
     Color? divider,
-    Color? diffAdd,
-    Color? diffRemove,
     Color? text,
     Color? textMuted,
     Color? textFaint,
@@ -253,13 +235,10 @@ class KlpThemeData extends ThemeExtension<KlpThemeData> {
       component: component ?? this.component,
       stageSurface: stageSurface ?? this.stageSurface,
       overlay: overlay ?? this.overlay,
-      settingsNavigation: settingsNavigation ?? this.settingsNavigation,
-      settingsContent: settingsContent ?? this.settingsContent,
+      surfaceRaised: surfaceRaised ?? this.surfaceRaised,
       modalScrim: modalScrim ?? this.modalScrim,
       guide: guide ?? this.guide,
       divider: divider ?? this.divider,
-      diffAdd: diffAdd ?? this.diffAdd,
-      diffRemove: diffRemove ?? this.diffRemove,
       text: text ?? this.text,
       textMuted: textMuted ?? this.textMuted,
       textFaint: textFaint ?? this.textFaint,
@@ -288,17 +267,10 @@ class KlpThemeData extends ThemeExtension<KlpThemeData> {
       component: Color.lerp(component, other.component, t)!,
       stageSurface: Color.lerp(stageSurface, other.stageSurface, t)!,
       overlay: Color.lerp(overlay, other.overlay, t)!,
-      settingsNavigation: Color.lerp(
-        settingsNavigation,
-        other.settingsNavigation,
-        t,
-      )!,
-      settingsContent: Color.lerp(settingsContent, other.settingsContent, t)!,
+      surfaceRaised: Color.lerp(surfaceRaised, other.surfaceRaised, t)!,
       modalScrim: Color.lerp(modalScrim, other.modalScrim, t)!,
       guide: Color.lerp(guide, other.guide, t)!,
       divider: Color.lerp(divider, other.divider, t)!,
-      diffAdd: Color.lerp(diffAdd, other.diffAdd, t)!,
-      diffRemove: Color.lerp(diffRemove, other.diffRemove, t)!,
       text: Color.lerp(text, other.text, t)!,
       textMuted: Color.lerp(textMuted, other.textMuted, t)!,
       textFaint: Color.lerp(textFaint, other.textFaint, t)!,
@@ -334,7 +306,12 @@ abstract final class KlpFieldStyle {
       KlpFieldFillState.focused ||
       KlpFieldFillState.selected => tokens.hoverSurface,
       KlpFieldFillState.disabled => tokens.surfaceMuted,
-      KlpFieldFillState.error => tokens.diffRemove,
+      // 錯誤底色由 danger 推導，而不是借用其他角色的顏色：借用會在調整 danger 時
+      // 靜默失去同步。
+      KlpFieldFillState.error => Color.alphaBlend(
+        tokens.danger.withValues(alpha: 0.16),
+        tokens.surfaceInset,
+      ),
     };
   }
 
