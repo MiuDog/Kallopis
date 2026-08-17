@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
-import '../foundation/pln_metrics.dart';
-import '../theme/pln_theme.dart';
-import '../typography/pln_text.dart';
+import '../foundation/klp_metrics.dart';
+import '../theme/klp_theme.dart';
+import '../typography/klp_text.dart';
 import 'dash_kpi.dart';
-import '../theme/pln_data_visualization_theme.dart';
+import '../theme/klp_data_visualization_theme.dart';
 
 class DashChartFrame extends StatelessWidget {
   const DashChartFrame({
@@ -39,10 +39,10 @@ class DashChartFrame extends StatelessWidget {
     final tokens = context.plnTheme;
     final body = Container(
       height: height,
-      padding: const EdgeInsets.all(PlnSpace.md),
+      padding: const EdgeInsets.all(KlpSpace.md),
       decoration: BoxDecoration(
         color: selected ? tokens.selectionBackground : tokens.component,
-        borderRadius: BorderRadius.circular(PlnRadius.card),
+        borderRadius: BorderRadius.circular(KlpRadius.card),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -57,12 +57,12 @@ class DashChartFrame extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         if (title != null)
-                          PlnText(title!, role: PlnTextRole.bodyStrong),
+                          KlpText(title!, role: KlpTextRole.bodyStrong),
                         if (subtitle != null)
-                          PlnText(
+                          KlpText(
                             subtitle!,
-                            role: PlnTextRole.caption,
-                            tone: PlnTextTone.muted,
+                            role: KlpTextRole.caption,
+                            tone: KlpTextTone.muted,
                           ),
                       ],
                     ),
@@ -70,7 +70,7 @@ class DashChartFrame extends StatelessWidget {
                 ?legend,
               ],
             ),
-            const SizedBox(height: PlnSpace.md),
+            const SizedBox(height: KlpSpace.md),
           ],
           Expanded(
             child: Row(
@@ -80,14 +80,14 @@ class DashChartFrame extends StatelessWidget {
                   RotatedBox(
                     quarterTurns: 3,
                     child: Center(
-                      child: PlnText(
+                      child: KlpText(
                         yAxisLabel!,
-                        role: PlnTextRole.caption,
-                        tone: PlnTextTone.faint,
+                        role: KlpTextRole.caption,
+                        tone: KlpTextTone.faint,
                       ),
                     ),
                   ),
-                  const SizedBox(width: PlnSpace.xs),
+                  const SizedBox(width: KlpSpace.xs),
                 ],
                 Expanded(
                   child: Stack(
@@ -100,16 +100,16 @@ class DashChartFrame extends StatelessWidget {
             ),
           ),
           if (xAxisLabel != null) ...[
-            const SizedBox(height: PlnSpace.xs),
+            const SizedBox(height: KlpSpace.xs),
             Center(
-              child: PlnText(
+              child: KlpText(
                 xAxisLabel!,
-                role: PlnTextRole.caption,
-                tone: PlnTextTone.faint,
+                role: KlpTextRole.caption,
+                tone: KlpTextTone.faint,
               ),
             ),
           ],
-          if (footer != null) ...[const SizedBox(height: PlnSpace.sm), footer!],
+          if (footer != null) ...[const SizedBox(height: KlpSpace.sm), footer!],
         ],
       ),
     );
@@ -193,12 +193,12 @@ class DashRangeBrush extends StatelessWidget {
                   children: [
                     Padding(
                       padding: const EdgeInsets.symmetric(
-                        vertical: PlnSpace.sm,
+                        vertical: KlpSpace.sm,
                       ),
                       child: DashSparkline(
                         values: values,
                         width: width,
-                        height: height - PlnSpace.lg,
+                        height: height - KlpSpace.lg,
                       ),
                     ),
                     Positioned.fill(
@@ -249,8 +249,8 @@ class _DashBrushHandle extends StatelessWidget {
         height: 28,
         decoration: BoxDecoration(
           color: context.plnTheme.component,
-          border: Border.all(color: color, width: PlnLine.hairline),
-          borderRadius: BorderRadius.circular(PlnRadius.sm),
+          border: Border.all(color: color, width: KlpLine.hairline),
+          borderRadius: BorderRadius.circular(KlpRadius.sm),
         ),
       ),
     );
@@ -287,7 +287,7 @@ class _DashRangePainter extends CustomPainter {
       Paint()
         ..color = selectionColor
         ..style = PaintingStyle.stroke
-        ..strokeWidth = PlnLine.hairline,
+        ..strokeWidth = KlpLine.hairline,
     );
   }
 

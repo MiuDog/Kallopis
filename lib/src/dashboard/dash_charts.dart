@@ -2,8 +2,8 @@ import 'dart:math' as math;
 
 import 'package:flutter/material.dart';
 
-import '../theme/pln_theme.dart';
-import '../theme/pln_data_visualization_theme.dart';
+import '../theme/klp_theme.dart';
+import '../theme/klp_data_visualization_theme.dart';
 
 @immutable
 class DashChartSeries {
@@ -910,7 +910,7 @@ class _DashChartPainter extends CustomPainter {
   final int columns;
   final int splitIndex;
   final String? centerLabel;
-  final PlnDataVisualizationTheme tokens;
+  final KlpDataVisualizationTheme tokens;
   final Color background;
   final TextStyle labelStyle;
 

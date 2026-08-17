@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 
-import '../controls/pln_button.dart';
-import '../controls/pln_icon_button.dart';
-import '../controls/pln_segmented_control.dart';
-import '../controls/pln_toggle.dart';
-import '../foundation/pln_icon.dart';
-import '../foundation/pln_icons.dart';
-import '../foundation/pln_metrics.dart';
-import '../interaction/pln_pressable.dart';
-import '../theme/pln_theme.dart';
-import '../typography/pln_text.dart';
+import '../controls/klp_button.dart';
+import '../controls/klp_icon_button.dart';
+import '../controls/klp_segmented_control.dart';
+import '../controls/klp_toggle.dart';
+import '../foundation/klp_icon.dart';
+import '../foundation/klp_icons.dart';
+import '../foundation/klp_metrics.dart';
+import '../interaction/klp_pressable.dart';
+import '../theme/klp_theme.dart';
+import '../typography/klp_text.dart';
 
 class DashFilterChip {
   const DashFilterChip({
@@ -77,24 +77,24 @@ class DashFilterBar extends StatelessWidget {
     );
 
     return Wrap(
-      spacing: PlnSpace.sm,
-      runSpacing: PlnSpace.sm,
+      spacing: KlpSpace.sm,
+      runSpacing: KlpSpace.sm,
       crossAxisAlignment: WrapCrossAlignment.center,
       children: [
         if (rangePresets.isNotEmpty)
-          PlnSegmentedControl(
+          KlpSegmentedControl(
             items: [for (final preset in rangePresets) preset.label],
             selected: activeIndex < 0 ? 0 : activeIndex,
             onSelected: (index) => onSelectRange?.call(rangePresets[index].id),
           ),
         if (rangeSummary != null)
-          PlnText(
+          KlpText(
             rangeSummary!,
-            role: PlnTextRole.code,
-            tone: PlnTextTone.muted,
+            role: KlpTextRole.code,
+            tone: KlpTextTone.muted,
           ),
         if (comparisonLabel != null)
-          PlnToggle(
+          KlpToggle(
             value: comparisonOn,
             label: comparisonLabel!,
             onChanged: onToggleComparison,
@@ -107,40 +107,40 @@ class DashFilterBar extends StatelessWidget {
                 : () => onRemoveFilter!(filter.id),
           ),
         if (onAddFilter != null)
-          PlnButton(
+          KlpButton(
             label: 'Add filter',
-            tone: PlnButtonTone.ghost,
+            tone: KlpButtonTone.ghost,
             compact: true,
             onPressed: onAddFilter,
           ),
         if (onClearAll != null && filters.any((filter) => !filter.locked))
-          PlnButton(
+          KlpButton(
             label: 'Clear all',
-            tone: PlnButtonTone.ghost,
+            tone: KlpButtonTone.ghost,
             compact: true,
             onPressed: onClearAll,
           ),
         if (breakdownLabel != null)
-          PlnText(
+          KlpText(
             breakdownLabel!,
-            role: PlnTextRole.caption,
-            tone: PlnTextTone.muted,
+            role: KlpTextRole.caption,
+            tone: KlpTextTone.muted,
           ),
         if (updatedLabel != null)
-          PlnText(
+          KlpText(
             updatedLabel!,
-            role: PlnTextRole.caption,
-            tone: PlnTextTone.faint,
+            role: KlpTextRole.caption,
+            tone: KlpTextTone.faint,
           ),
         if (onRefresh != null)
-          PlnIconButton(
-            icon: PlnIcons.switchVertical,
+          KlpIconButton(
+            icon: KlpIcons.switchVertical,
             label: refreshing ? 'Refreshing' : 'Refresh',
             onPressed: refreshing ? null : onRefresh,
           ),
         if (onExport != null)
-          PlnIconButton(
-            icon: PlnIcons.archive,
+          KlpIconButton(
+            icon: KlpIcons.archive,
             label: 'Export',
             onPressed: onExport,
           ),
@@ -161,28 +161,28 @@ class _DashFilterChipView extends StatelessWidget {
 
     return Container(
       padding: const EdgeInsets.only(
-        left: PlnSpace.sm,
-        top: PlnSpace.xs,
-        bottom: PlnSpace.xs,
-        right: PlnSpace.xs,
+        left: KlpSpace.sm,
+        top: KlpSpace.xs,
+        bottom: KlpSpace.xs,
+        right: KlpSpace.xs,
       ),
       decoration: BoxDecoration(
         color: tokens.surfaceInset,
-        borderRadius: BorderRadius.circular(PlnRadius.control),
+        borderRadius: BorderRadius.circular(KlpRadius.control),
       ),
       child: Row(
         mainAxisSize: MainAxisSize.min,
         children: [
-          PlnText(
+          KlpText(
             '${filter.label} ${filter.valueLabel}',
-            role: PlnTextRole.caption,
+            role: KlpTextRole.caption,
           ),
-          const SizedBox(width: PlnSpace.xs),
+          const SizedBox(width: KlpSpace.xs),
           if (onRemove == null)
-            PlnText(
+            KlpText(
               filter.locked ? 'LOCKED' : '',
-              role: PlnTextRole.label,
-              tone: PlnTextTone.faint,
+              role: KlpTextRole.label,
+              tone: KlpTextTone.faint,
             )
           else
             Semantics(
@@ -191,10 +191,10 @@ class _DashFilterChipView extends StatelessWidget {
               child: InkWell(
                 key: ValueKey('dashboard-filter-remove-${filter.id}'),
                 onTap: onRemove,
-                borderRadius: BorderRadius.circular(PlnRadius.full),
+                borderRadius: BorderRadius.circular(KlpRadius.full),
                 child: const Padding(
-                  padding: EdgeInsets.symmetric(horizontal: PlnSpace.xs),
-                  child: PlnText('×', role: PlnTextRole.bodyStrong),
+                  padding: EdgeInsets.symmetric(horizontal: KlpSpace.xs),
+                  child: KlpText('×', role: KlpTextRole.bodyStrong),
                 ),
               ),
             ),
@@ -259,8 +259,8 @@ class DashViewSwitcher extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Wrap(
-      spacing: PlnSpace.xs,
-      runSpacing: PlnSpace.xs,
+      spacing: KlpSpace.xs,
+      runSpacing: KlpSpace.xs,
       crossAxisAlignment: WrapCrossAlignment.center,
       children: [
         for (final view in views)
@@ -271,23 +271,23 @@ class DashViewSwitcher extends StatelessWidget {
             onPressed: () => onSelect(view.id),
           ),
         if (onAddView != null)
-          PlnButton(
+          KlpButton(
             label: 'Add view',
-            tone: PlnButtonTone.ghost,
+            tone: KlpButtonTone.ghost,
             compact: true,
             onPressed: onAddView,
           ),
         if (filterSummary != null)
-          PlnButton(
+          KlpButton(
             label: filterSummary!,
-            tone: PlnButtonTone.ghost,
+            tone: KlpButtonTone.ghost,
             compact: true,
             onPressed: onOpenFilters,
           ),
         if (sortSummary != null)
-          PlnButton(
+          KlpButton(
             label: sortSummary!,
-            tone: PlnButtonTone.ghost,
+            tone: KlpButtonTone.ghost,
             compact: true,
             onPressed: onOpenSort,
           ),
@@ -315,33 +315,33 @@ class _DashViewButton extends StatelessWidget {
     final body = Container(
       constraints: BoxConstraints(minWidth: grid ? 92 : 0),
       padding: const EdgeInsets.symmetric(
-        horizontal: PlnSpace.sm,
-        vertical: PlnSpace.sm,
+        horizontal: KlpSpace.sm,
+        vertical: KlpSpace.sm,
       ),
       decoration: BoxDecoration(
         color: selected ? tokens.selectionBackground : const Color(0x00000000),
-        borderRadius: BorderRadius.circular(PlnRadius.control),
+        borderRadius: BorderRadius.circular(KlpRadius.control),
       ),
       child: grid
           ? Column(
               mainAxisSize: MainAxisSize.min,
               children: [
-                PlnIcon(_iconFor(view.kind), color: tokens.text),
-                const SizedBox(height: PlnSpace.xs),
+                KlpIcon(_iconFor(view.kind), color: tokens.text),
+                const SizedBox(height: KlpSpace.xs),
                 _label(),
               ],
             )
           : Row(
               mainAxisSize: MainAxisSize.min,
               children: [
-                PlnIcon(
+                KlpIcon(
                   _iconFor(view.kind),
-                  size: PlnSize.iconSmall,
+                  size: KlpSize.iconSmall,
                   color: selected
                       ? tokens.selectionForeground
                       : tokens.textMuted,
                 ),
-                const SizedBox(width: PlnSpace.xs),
+                const SizedBox(width: KlpSpace.xs),
                 _label(),
               ],
             ),
@@ -350,9 +350,9 @@ class _DashViewButton extends StatelessWidget {
       button: true,
       selected: selected,
       label: view.locked ? '${view.label}, locked' : view.label,
-      child: PlnPressable(
+      child: KlpPressable(
         onPressed: onPressed,
-        borderRadius: BorderRadius.circular(PlnRadius.control),
+        borderRadius: BorderRadius.circular(KlpRadius.control),
         child: body,
       ),
     );
@@ -362,14 +362,14 @@ class _DashViewButton extends StatelessWidget {
     return Row(
       mainAxisSize: MainAxisSize.min,
       children: [
-        PlnText(view.label, role: PlnTextRole.body),
+        KlpText(view.label, role: KlpTextRole.body),
         if (view.count != null) ...[
-          const SizedBox(width: PlnSpace.xs),
-          PlnText('${view.count}', role: PlnTextRole.code),
+          const SizedBox(width: KlpSpace.xs),
+          KlpText('${view.count}', role: KlpTextRole.code),
         ],
         if (view.locked) ...[
-          const SizedBox(width: PlnSpace.xs),
-          const PlnText('LOCKED', role: PlnTextRole.label),
+          const SizedBox(width: KlpSpace.xs),
+          const KlpText('LOCKED', role: KlpTextRole.label),
         ],
       ],
     );
@@ -377,15 +377,15 @@ class _DashViewButton extends StatelessWidget {
 
   String _iconFor(DashViewKind kind) {
     return switch (kind) {
-      DashViewKind.table => PlnIcons.container,
-      DashViewKind.board => PlnIcons.grid,
-      DashViewKind.timeline => PlnIcons.switchVertical,
-      DashViewKind.calendar => PlnIcons.calendar,
-      DashViewKind.list => PlnIcons.clipboard,
-      DashViewKind.gallery => PlnIcons.box,
-      DashViewKind.chart => PlnIcons.telescope,
-      DashViewKind.feed => PlnIcons.inbox,
-      DashViewKind.map => PlnIcons.grid,
+      DashViewKind.table => KlpIcons.container,
+      DashViewKind.board => KlpIcons.grid,
+      DashViewKind.timeline => KlpIcons.switchVertical,
+      DashViewKind.calendar => KlpIcons.calendar,
+      DashViewKind.list => KlpIcons.clipboard,
+      DashViewKind.gallery => KlpIcons.box,
+      DashViewKind.chart => KlpIcons.telescope,
+      DashViewKind.feed => KlpIcons.inbox,
+      DashViewKind.map => KlpIcons.grid,
     };
   }
 }

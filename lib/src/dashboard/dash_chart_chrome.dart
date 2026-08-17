@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
-import '../foundation/pln_metrics.dart';
-import '../interaction/pln_pressable.dart';
-import '../theme/pln_theme.dart';
-import '../typography/pln_text.dart';
-import '../theme/pln_data_visualization_theme.dart';
+import '../foundation/klp_metrics.dart';
+import '../interaction/klp_pressable.dart';
+import '../theme/klp_theme.dart';
+import '../typography/klp_text.dart';
+import '../theme/klp_data_visualization_theme.dart';
 
 enum DashFillTreatment { solid, hatch, dot, outline }
 
@@ -63,8 +63,8 @@ class DashChartLegend extends StatelessWidget {
     }
 
     return Wrap(
-      spacing: PlnSpace.md,
-      runSpacing: PlnSpace.xs,
+      spacing: KlpSpace.md,
+      runSpacing: KlpSpace.xs,
       children: children,
     );
   }
@@ -87,7 +87,7 @@ class _DashLegendEntry extends StatelessWidget {
     final color = (item.color ?? dataTokens.seriesColor(item.colorIndex))
         .withValues(alpha: item.hidden ? 0.24 : item.opacity.clamp(0, 1));
     final entry = Padding(
-      padding: const EdgeInsets.symmetric(vertical: PlnSpace.xs),
+      padding: const EdgeInsets.symmetric(vertical: KlpSpace.xs),
       child: Row(
         mainAxisSize: MainAxisSize.min,
         children: [
@@ -98,21 +98,21 @@ class _DashLegendEntry extends StatelessWidget {
               color: item.treatment == DashFillTreatment.outline
                   ? const Color(0x00000000)
                   : color,
-              border: Border.all(color: color, width: PlnLine.hairline),
-              borderRadius: BorderRadius.circular(PlnRadius.sm),
+              border: Border.all(color: color, width: KlpLine.hairline),
+              borderRadius: BorderRadius.circular(KlpRadius.sm),
             ),
           ),
-          const SizedBox(width: PlnSpace.xs),
-          PlnText(
+          const SizedBox(width: KlpSpace.xs),
+          KlpText(
             item.label,
-            role: compact ? PlnTextRole.label : PlnTextRole.caption,
+            role: compact ? KlpTextRole.label : KlpTextRole.caption,
             color: item.hidden ? dataTokens.label.withValues(alpha: 0.5) : null,
           ),
           if (item.valueLabel != null) ...[
-            const SizedBox(width: PlnSpace.xs),
-            PlnText(
+            const SizedBox(width: KlpSpace.xs),
+            KlpText(
               item.valueLabel!,
-              role: PlnTextRole.code,
+              role: KlpTextRole.code,
               color: dataTokens.label,
             ),
           ],
@@ -125,9 +125,9 @@ class _DashLegendEntry extends StatelessWidget {
       toggled: !item.hidden,
       child: onPressed == null
           ? entry
-          : PlnPressable(
+          : KlpPressable(
               onPressed: onPressed,
-              borderRadius: BorderRadius.circular(PlnRadius.control),
+              borderRadius: BorderRadius.circular(KlpRadius.control),
               child: entry,
             ),
     );
@@ -174,22 +174,22 @@ class DashChartTooltip extends StatelessWidget {
       label: title,
       child: Container(
         constraints: const BoxConstraints(maxWidth: 260),
-        padding: const EdgeInsets.all(PlnSpace.sm),
+        padding: const EdgeInsets.all(KlpSpace.sm),
         decoration: BoxDecoration(
           color: tokens.overlay,
-          borderRadius: BorderRadius.circular(PlnRadius.md),
+          borderRadius: BorderRadius.circular(KlpRadius.md),
         ),
         child: Column(
           mainAxisSize: MainAxisSize.min,
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             if (title != null) ...[
-              PlnText(title!, role: PlnTextRole.bodyStrong),
-              const SizedBox(height: PlnSpace.xs),
+              KlpText(title!, role: KlpTextRole.bodyStrong),
+              const SizedBox(height: KlpSpace.xs),
             ],
             for (final row in rows)
               Padding(
-                padding: const EdgeInsets.symmetric(vertical: PlnSpace.xxs),
+                padding: const EdgeInsets.symmetric(vertical: KlpSpace.xxs),
                 child: Row(
                   children: [
                     Container(
@@ -198,31 +198,31 @@ class DashChartTooltip extends StatelessWidget {
                       decoration: BoxDecoration(
                         color:
                             row.color ?? dataTokens.seriesColor(row.colorIndex),
-                        borderRadius: BorderRadius.circular(PlnRadius.full),
+                        borderRadius: BorderRadius.circular(KlpRadius.full),
                       ),
                     ),
-                    const SizedBox(width: PlnSpace.xs),
+                    const SizedBox(width: KlpSpace.xs),
                     Expanded(
-                      child: PlnText(
+                      child: KlpText(
                         row.label,
-                        role: PlnTextRole.caption,
-                        tone: row.muted ? PlnTextTone.faint : PlnTextTone.muted,
+                        role: KlpTextRole.caption,
+                        tone: row.muted ? KlpTextTone.faint : KlpTextTone.muted,
                       ),
                     ),
-                    PlnText(
+                    KlpText(
                       row.valueLabel,
-                      role: PlnTextRole.code,
+                      role: KlpTextRole.code,
                       color: row.muted ? dataTokens.label : dataTokens.value,
                     ),
                   ],
                 ),
               ),
             if (footnote != null) ...[
-              const SizedBox(height: PlnSpace.xs),
-              PlnText(
+              const SizedBox(height: KlpSpace.xs),
+              KlpText(
                 footnote!,
-                role: PlnTextRole.caption,
-                tone: PlnTextTone.faint,
+                role: KlpTextRole.caption,
+                tone: KlpTextTone.faint,
               ),
             ],
           ],

@@ -2,11 +2,11 @@ import 'dart:math' as math;
 
 import 'package:flutter/material.dart';
 
-import '../foundation/pln_metrics.dart';
-import '../interaction/pln_pressable.dart';
-import '../theme/pln_theme.dart';
-import '../typography/pln_text.dart';
-import '../theme/pln_data_visualization_theme.dart';
+import '../foundation/klp_metrics.dart';
+import '../interaction/klp_pressable.dart';
+import '../theme/klp_theme.dart';
+import '../typography/klp_text.dart';
+import '../theme/klp_data_visualization_theme.dart';
 
 enum DashDeltaFormat { percent, absolute, compact }
 
@@ -63,25 +63,25 @@ class DashDeltaBadge extends StatelessWidget {
       child: ExcludeSemantics(
         child: Container(
           padding: EdgeInsets.symmetric(
-            horizontal: compact ? PlnSpace.xs : PlnSpace.sm,
-            vertical: PlnSpace.xxs,
+            horizontal: compact ? KlpSpace.xs : KlpSpace.sm,
+            vertical: KlpSpace.xxs,
           ),
           decoration: BoxDecoration(
             color: background,
-            borderRadius: BorderRadius.circular(PlnRadius.sm),
+            borderRadius: BorderRadius.circular(KlpRadius.sm),
           ),
           child: Row(
             mainAxisSize: MainAxisSize.min,
             children: [
-              PlnText(_formattedValue(), role: PlnTextRole.code, color: color),
+              KlpText(_formattedValue(), role: KlpTextRole.code, color: color),
               if (!compact && contextLabel != null) ...[
-                const SizedBox(width: PlnSpace.xs),
+                const SizedBox(width: KlpSpace.xs),
                 // 數值一定要完整；擠不下時截斷的是脈絡文字。
                 // 兩個都不可壓縮時，窄欄位裡的 badge 會直接溢出（2026-08-11）。
                 Flexible(
-                  child: PlnText(
+                  child: KlpText(
                     contextLabel!,
-                    role: PlnTextRole.caption,
+                    role: KlpTextRole.caption,
                     color: color,
                     maxLines: 1,
                     overflow: TextOverflow.ellipsis,
@@ -166,8 +166,8 @@ class DashSparkline extends StatelessWidget {
           children: [
             chart,
             if (showLast && valueLabel != null) ...[
-              const SizedBox(width: PlnSpace.xs),
-              PlnText(valueLabel!, role: PlnTextRole.code),
+              const SizedBox(width: KlpSpace.xs),
+              KlpText(valueLabel!, role: KlpTextRole.code),
             ],
           ],
         ),
@@ -221,42 +221,42 @@ class DashKpiTile extends StatelessWidget {
       duration: Duration.zero,
       opacity: loading ? 0.46 : 1,
       child: Container(
-        padding: const EdgeInsets.all(PlnSpace.md),
+        padding: const EdgeInsets.all(KlpSpace.md),
         decoration: BoxDecoration(
           color: selected ? tokens.selectionBackground : tokens.component,
-          borderRadius: BorderRadius.circular(PlnRadius.card),
+          borderRadius: BorderRadius.circular(KlpRadius.card),
         ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            PlnText(label, role: PlnTextRole.label, tone: PlnTextTone.muted),
-            const SizedBox(height: PlnSpace.xs),
+            KlpText(label, role: KlpTextRole.label, tone: KlpTextTone.muted),
+            const SizedBox(height: KlpSpace.xs),
             Row(
               crossAxisAlignment: CrossAxisAlignment.end,
               children: [
                 Flexible(
-                  child: PlnText(
+                  child: KlpText(
                     loading ? '—' : valueLabel,
-                    role: PlnTextRole.title,
+                    role: KlpTextRole.title,
                     maxLines: 1,
                     overflow: TextOverflow.ellipsis,
                   ),
                 ),
                 if (unitLabel != null) ...[
-                  const SizedBox(width: PlnSpace.xs),
+                  const SizedBox(width: KlpSpace.xs),
                   Padding(
-                    padding: const EdgeInsets.only(bottom: PlnSpace.xxs),
-                    child: PlnText(
+                    padding: const EdgeInsets.only(bottom: KlpSpace.xxs),
+                    child: KlpText(
                       unitLabel!,
-                      role: PlnTextRole.caption,
-                      tone: PlnTextTone.muted,
+                      role: KlpTextRole.caption,
+                      tone: KlpTextTone.muted,
                     ),
                   ),
                 ],
               ],
             ),
             if (!loading && deltaValue != null) ...[
-              const SizedBox(height: PlnSpace.sm),
+              const SizedBox(height: KlpSpace.sm),
               DashDeltaBadge(
                 value: deltaValue!,
                 format: deltaFormat,
@@ -265,7 +265,7 @@ class DashKpiTile extends StatelessWidget {
               ),
             ],
             if (trendValues.isNotEmpty) ...[
-              const SizedBox(height: PlnSpace.sm),
+              const SizedBox(height: KlpSpace.sm),
               LayoutBuilder(
                 builder: (context, constraints) => DashSparkline(
                   values: trendValues,
@@ -277,12 +277,12 @@ class DashKpiTile extends StatelessWidget {
               ),
             ],
             if (targetProgress != null) ...[
-              const SizedBox(height: PlnSpace.sm),
+              const SizedBox(height: KlpSpace.sm),
               ClipRRect(
-                borderRadius: BorderRadius.circular(PlnRadius.sm),
+                borderRadius: BorderRadius.circular(KlpRadius.sm),
                 child: LinearProgressIndicator(
                   value: targetProgress!.clamp(0, 1),
-                  minHeight: PlnSpace.xs,
+                  minHeight: KlpSpace.xs,
                   backgroundColor: tokens.surfaceInset,
                   color: context.plnDataVisualizationTheme.seriesColor(
                     colorIndex,
@@ -290,20 +290,20 @@ class DashKpiTile extends StatelessWidget {
                 ),
               ),
               if (targetLabel != null) ...[
-                const SizedBox(height: PlnSpace.xs),
-                PlnText(
+                const SizedBox(height: KlpSpace.xs),
+                KlpText(
                   targetLabel!,
-                  role: PlnTextRole.caption,
-                  tone: PlnTextTone.muted,
+                  role: KlpTextRole.caption,
+                  tone: KlpTextTone.muted,
                 ),
               ],
             ],
             if (footnote != null) ...[
-              const SizedBox(height: PlnSpace.sm),
-              PlnText(
+              const SizedBox(height: KlpSpace.sm),
+              KlpText(
                 footnote!,
-                role: PlnTextRole.caption,
-                tone: PlnTextTone.faint,
+                role: KlpTextRole.caption,
+                tone: KlpTextTone.faint,
               ),
             ],
           ],
@@ -316,9 +316,9 @@ class DashKpiTile extends StatelessWidget {
       label: '$label, ${loading ? 'loading' : valueLabel}',
       child: onSelect == null
           ? content
-          : PlnPressable(
+          : KlpPressable(
               onPressed: loading ? null : onSelect,
-              borderRadius: BorderRadius.circular(PlnRadius.card),
+              borderRadius: BorderRadius.circular(KlpRadius.card),
               child: content,
             ),
     );

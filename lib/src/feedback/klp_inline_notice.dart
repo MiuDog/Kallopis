@@ -1,0 +1,106 @@
+import 'package:flutter/widgets.dart';
+
+import '../foundation/klp_icon.dart';
+import '../foundation/klp_metrics.dart';
+import '../surface/klp_surface.dart';
+import '../theme/klp_theme.dart';
+import '../typography/klp_text.dart';
+import 'klp_feedback_tone.dart';
+
+class KlpInlineNotice extends StatelessWidget {
+  const KlpInlineNotice({
+    super.key,
+    required this.title,
+    this.message,
+    this.tone = KlpFeedbackTone.info,
+    this.action,
+  });
+
+  final String title;
+  final String? message;
+  final KlpFeedbackTone tone;
+  final Widget? action;
+
+  @override
+  Widget build(BuildContext context) {
+    final tokens = context.plnTheme;
+    final toneColor = tone.color(tokens);
+
+    return LayoutBuilder(
+      builder: (context, constraints) {
+        final isCompact = constraints.maxWidth < 480;
+        final content = Row(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            SizedBox(
+              width: 28,
+              height: 28,
+              child: Center(
+                child: KlpIcon(
+                  tone.icon,
+                  size: KlpSize.iconLarge,
+                  color: toneColor,
+                ),
+              ),
+            ),
+            const SizedBox(width: KlpSpace.md),
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Row(
+                    key: const ValueKey('pln-inline-notice-header'),
+                    crossAxisAlignment: CrossAxisAlignment.baseline,
+                    textBaseline: TextBaseline.alphabetic,
+                    children: [
+                      KlpText(
+                        tone.label,
+                        role: KlpTextRole.label,
+                        color: toneColor,
+                      ),
+                      const SizedBox(width: KlpSpace.sm),
+                      Flexible(child: KlpText(title, role: KlpTextRole.body)),
+                    ],
+                  ),
+                  if (message != null) ...[
+                    const SizedBox(height: KlpSpace.xs),
+                    KlpText(
+                      message!,
+                      role: KlpTextRole.body,
+                      tone: KlpTextTone.muted,
+                    ),
+                  ],
+                ],
+              ),
+            ),
+          ],
+        );
+
+        return KlpSurface(
+          tone: KlpSurfaceTone.component,
+          radius: KlpRadius.control,
+          padding: const EdgeInsets.all(KlpSpace.md),
+          child: isCompact && action != null
+              ? Column(
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  children: [
+                    content,
+                    const SizedBox(height: KlpSpace.md),
+                    Align(alignment: Alignment.centerRight, child: action),
+                  ],
+                )
+              : Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Expanded(child: content),
+                    if (action != null) ...[
+                      const SizedBox(width: KlpSpace.md),
+                      action!,
+                    ],
+                  ],
+                ),
+        );
+      },
+    );
+  }
+}

@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
-import '../foundation/pln_metrics.dart';
-import '../interaction/pln_pressable.dart';
-import '../theme/pln_theme.dart';
-import '../typography/pln_text.dart';
+import '../foundation/klp_metrics.dart';
+import '../interaction/klp_pressable.dart';
+import '../theme/klp_theme.dart';
+import '../typography/klp_text.dart';
 
 enum DashGridGap { tight, standard, loose }
 
@@ -26,9 +26,9 @@ class DashDashboardGrid extends StatelessWidget {
     return LayoutBuilder(
       builder: (context, constraints) {
         final spacing = switch (gap) {
-          DashGridGap.tight => PlnSpace.xs,
-          DashGridGap.standard => PlnLayoutGap.lg,
-          DashGridGap.loose => PlnSpace.lg,
+          DashGridGap.tight => KlpSpace.xs,
+          DashGridGap.standard => KlpLayoutGap.lg,
+          DashGridGap.loose => KlpSpace.lg,
         };
         final requestedColumns = columns.clamp(1, 24);
         final availableColumns = constraints.maxWidth.isFinite
@@ -116,7 +116,7 @@ class DashPanel extends StatelessWidget {
     this.footer,
     this.selected = false,
     this.onPressed,
-    this.padding = const EdgeInsets.all(PlnSpace.md),
+    this.padding = const EdgeInsets.all(KlpSpace.md),
     this.semanticsLabel,
   });
 
@@ -137,7 +137,7 @@ class DashPanel extends StatelessWidget {
       padding: padding,
       decoration: BoxDecoration(
         color: selected ? tokens.selectionBackground : tokens.surface,
-        borderRadius: BorderRadius.circular(PlnRadius.card),
+        borderRadius: BorderRadius.circular(KlpRadius.card),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -151,12 +151,12 @@ class DashPanel extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       if (title != null)
-                        PlnText(title!, role: PlnTextRole.bodyStrong),
+                        KlpText(title!, role: KlpTextRole.bodyStrong),
                       if (subtitle != null)
-                        PlnText(
+                        KlpText(
                           subtitle!,
-                          role: PlnTextRole.caption,
-                          tone: PlnTextTone.muted,
+                          role: KlpTextRole.caption,
+                          tone: KlpTextTone.muted,
                         ),
                     ],
                   ),
@@ -164,10 +164,10 @@ class DashPanel extends StatelessWidget {
                 ?trailing,
               ],
             ),
-            const SizedBox(height: PlnSpace.md),
+            const SizedBox(height: KlpSpace.md),
           ],
           child,
-          if (footer != null) const SizedBox(height: PlnSpace.md),
+          if (footer != null) const SizedBox(height: KlpSpace.md),
           ?footer,
         ],
       ),
@@ -178,9 +178,9 @@ class DashPanel extends StatelessWidget {
       selected: selected,
       child: onPressed == null
           ? body
-          : PlnPressable(
+          : KlpPressable(
               onPressed: onPressed,
-              borderRadius: BorderRadius.circular(PlnRadius.card),
+              borderRadius: BorderRadius.circular(KlpRadius.card),
               child: body,
             ),
     );
