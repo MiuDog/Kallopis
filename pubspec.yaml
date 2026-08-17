@@ -1,0 +1,44 @@
+name: kallopis
+description: "Kallopis — the shared Flutter visual layer for the -ist product family."
+version: 0.1.0
+publish_to: 'none'
+
+environment:
+  sdk: ^3.12.2
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  flutter_svg: ^2.2.1
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+  flutter_lints: ^6.0.0
+
+flutter:
+  uses-material-design: false
+
+  assets:
+    - assets/icons/ui_oval/
+    - assets/fonts/OFL-IBM-Plex.txt
+
+  fonts:
+    - family: IBM Plex Mono
+      fonts:
+        - asset: assets/fonts/IBMPlexMono-Regular.ttf
+          weight: 400
+        - asset: assets/fonts/IBMPlexMono-SemiBold.ttf
+          weight: 600
+        - asset: assets/fonts/IBMPlexMono-Bold.ttf
+          weight: 700
+    - family: IBM Plex Sans TC
+      fonts:
+        - asset: assets/fonts/IBMPlexSansTC-Regular.ttf
+          weight: 400
+        - asset: assets/fonts/IBMPlexSansTC-SemiBold.ttf
+          weight: 600
+        - asset: assets/fonts/IBMPlexSansTC-Bold.ttf
+          weight: 700

@@ -1,0 +1,11 @@
+# 統一以 LF 存入版控，避免 Windows 上每次 commit 產生大量 CRLF 警告
+* text=auto eol=lf
+
+# 二進位資產不做行尾轉換
+*.png binary
+*.jpg binary
+*.ico binary
+*.ttf binary
+*.otf binary
+*.svg text eol=lf
+*.zip binary
