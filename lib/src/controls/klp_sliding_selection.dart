@@ -31,7 +31,7 @@ class KlpSlidingSelection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final tokens = context.plnTheme;
+    final tokens = context.klpColors;
     final totalWidth = KlpFormMetrics.selectionControl * options.length;
 
     return Semantics(

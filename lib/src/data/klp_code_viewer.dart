@@ -179,7 +179,7 @@ class _KlpCodeViewerState extends State<KlpCodeViewer> {
 
   Widget _buildHeader() {
     return ColoredBox(
-      color: context.plnTheme.surfaceMuted,
+      color: context.klpColors.surfaceMuted,
       child: SizedBox(
         height: KlpCodeMetrics.headerHeight,
         child: Padding(
@@ -376,7 +376,7 @@ class _KlpTerminalMark extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final color = context.plnTheme.textFaint;
+    final color = context.klpColors.textFaint;
     return Row(
       mainAxisSize: MainAxisSize.min,
       children: [
@@ -416,7 +416,7 @@ class _KlpCodeActionButtonState extends State<_KlpCodeActionButton> {
 
   @override
   Widget build(BuildContext context) {
-    final tokens = context.plnTheme;
+    final tokens = context.klpColors;
     final active = widget.onPressed != null && (_hovered || _focused);
     final foreground = widget.onPressed == null
         ? tokens.textFaint
@@ -483,7 +483,7 @@ class _KlpCodeLanguageButtonState extends State<_KlpCodeLanguageButton> {
 
   @override
   Widget build(BuildContext context) {
-    final tokens = context.plnTheme;
+    final tokens = context.klpColors;
     final active = widget.enabled && (_hovered || _focused);
     final color = widget.enabled ? tokens.textMuted : tokens.textFaint;
 

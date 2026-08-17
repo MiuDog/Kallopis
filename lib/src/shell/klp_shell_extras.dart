@@ -14,7 +14,7 @@ class KlpAppScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ColoredBox(
-      color: context.plnTheme.app,
+      color: context.klpColors.app,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
@@ -100,7 +100,7 @@ class KlpPaneCollapseControl extends StatelessWidget {
             child: KlpIcon(
               icon,
               size: KlpSize.iconSmall,
-              color: context.plnTheme.textMuted,
+              color: context.klpColors.textMuted,
             ),
           ),
         ),

@@ -31,7 +31,7 @@ class _KlpIconButtonState extends State<KlpIconButton> {
 
   @override
   Widget build(BuildContext context) {
-    final tokens = context.plnTheme;
+    final tokens = context.klpColors;
     final active = (_hovered || _focused) && widget.onPressed != null;
     final button = Material(
       color: widget.selected

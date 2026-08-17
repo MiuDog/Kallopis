@@ -36,7 +36,7 @@ class KlpAvatar extends StatelessWidget {
         height: size,
         alignment: Alignment.center,
         decoration: BoxDecoration(
-          color: context.plnTheme.surfaceMuted,
+          color: context.klpColors.surfaceMuted,
           image: image == null
               ? null
               : DecorationImage(image: image!, fit: BoxFit.cover),
@@ -103,7 +103,7 @@ class KlpStatusIndicator extends StatelessWidget {
   Widget build(BuildContext context) {
     final effectiveColor =
         color ??
-        (active ? context.plnTheme.success : context.plnTheme.textFaint);
+        (active ? context.klpColors.success : context.klpColors.textFaint);
 
     return Row(
       mainAxisSize: MainAxisSize.min,
@@ -182,7 +182,7 @@ class KlpRichText extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final tokens = context.plnTheme;
+    final tokens = context.klpColors;
 
     final content = TextSpan(
       children: nodes.isEmpty
@@ -219,7 +219,7 @@ class KlpRichText extends StatelessWidget {
   }
 
   InlineSpan _spanFor(BuildContext context, KlpRichTextNode node) {
-    final tokens = context.plnTheme;
+    final tokens = context.klpColors;
     final children = node.children.isEmpty
         ? null
         : [for (final child in node.children) _spanFor(context, child)];
@@ -314,8 +314,8 @@ class KlpSegmentedProgress extends StatelessWidget {
               height: KlpSpace.sm,
               decoration: BoxDecoration(
                 color: index < completed
-                    ? context.plnTheme.info
-                    : context.plnTheme.surfaceMuted,
+                    ? context.klpColors.info
+                    : context.klpColors.surfaceMuted,
                 borderRadius: BorderRadius.circular(KlpRadius.control),
               ),
             ),
@@ -437,7 +437,7 @@ class KlpDropIndicator extends StatelessWidget {
       width: vertical ? KlpLine.width : double.infinity,
       height: vertical ? double.infinity : KlpLine.width,
       decoration: BoxDecoration(
-        color: context.plnTheme.interaction,
+        color: context.klpColors.interaction,
         borderRadius: BorderRadius.circular(KlpRadius.full),
       ),
     );

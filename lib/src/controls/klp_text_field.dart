@@ -40,7 +40,7 @@ class KlpTextField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final tokens = context.plnTheme;
+    final tokens = context.klpColors;
     final hasError = error != null;
 
     return Column(

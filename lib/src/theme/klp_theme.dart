@@ -5,6 +5,10 @@ import '../foundation/klp_accent.dart';
 import '../foundation/klp_metrics.dart';
 import '../foundation/klp_palette.dart';
 
+// 元件 import 色彩層時一併取得 token 存取面（`context.klp` 與 `context.klpColors`），
+// 否則每個元件都要 import 兩個 theme 檔才拿得到值——那種摩擦會讓人選擇寫死。
+export 'klp_theme_scope.dart';
+
 abstract final class KlpThemeContrast {
   static Color foregroundFor(Color background) {
     final backgroundLuminance = background.computeLuminance();
@@ -313,10 +317,6 @@ class KlpThemeData extends ThemeExtension<KlpThemeData> {
 
 enum KlpThemeVariant { light, dark, ultraDark, transparent }
 
-extension KlpThemeContext on BuildContext {
-  KlpThemeData get plnTheme =>
-      Theme.of(this).extension<KlpThemeData>() ?? KlpThemeData.light;
-}
 
 enum KlpFieldFillState { rest, hovered, focused, selected, disabled, error }
 

@@ -38,7 +38,7 @@ class KlpRegionPlaceholder extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final tokens = context.plnTheme;
+    final tokens = context.klpColors;
     final darkMode = Theme.of(context).brightness == Brightness.dark;
     final hatchColor = darkMode
         ? Color.lerp(
@@ -158,7 +158,7 @@ class _PlaceholderActionState extends State<_PlaceholderAction> {
 
   @override
   Widget build(BuildContext context) {
-    final tokens = context.plnTheme;
+    final tokens = context.klpColors;
     return Semantics(
       button: true,
       label: widget.label,
@@ -202,7 +202,7 @@ class _PlaceholderMarker extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final tokens = context.plnTheme;
+    final tokens = context.klpColors;
     return Transform.rotate(
       angle: math.pi / 4,
       child: Container(

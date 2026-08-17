@@ -148,7 +148,7 @@ class _KlpViewChoice extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final tokens = context.plnTheme;
+    final tokens = context.klpColors;
 
     return GestureDetector(
       behavior: HitTestBehavior.opaque,

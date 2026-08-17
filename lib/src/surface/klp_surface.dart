@@ -33,7 +33,7 @@ class KlpSurface extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final tokens = context.plnTheme;
+    final tokens = context.klpColors;
     final background = switch (tone) {
       KlpSurfaceTone.base => tokens.surface,
       KlpSurfaceTone.inset => tokens.surfaceInset,

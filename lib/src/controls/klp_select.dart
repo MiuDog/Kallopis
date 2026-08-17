@@ -31,7 +31,7 @@ class _KlpSelectState extends State<KlpSelect> {
 
   @override
   Widget build(BuildContext context) {
-    final tokens = context.plnTheme;
+    final tokens = context.klpColors;
     final strokeState = !widget.enabled
         ? KlpStrokeState.disabled
         : _focused

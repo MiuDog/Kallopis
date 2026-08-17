@@ -50,7 +50,7 @@ class _KlpRailItemState extends State<KlpRailItem> {
 
   @override
   Widget build(BuildContext context) {
-    final tokens = context.plnTheme;
+    final tokens = context.klpColors;
     final item = Material(
       color: widget.selected
           ? tokens.selectionBackground

@@ -28,7 +28,7 @@ class KlpSegmentedControl extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final tokens = context.plnTheme;
+    final tokens = context.klpColors;
 
     return Container(
       height: dense ? KlpSize.segmentedDense : null,
@@ -87,7 +87,7 @@ class _KlpSegment extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final tokens = context.plnTheme;
+    final tokens = context.klpColors;
 
     return Semantics(
       button: true,

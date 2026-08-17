@@ -97,7 +97,7 @@ class KlpPasswordField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final tokens = context.plnTheme;
+    final tokens = context.klpColors;
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -231,7 +231,7 @@ class _KlpSelectFieldState extends State<KlpSelectField> {
           Container(
             padding: const EdgeInsets.all(KlpSpace.xs),
             decoration: BoxDecoration(
-              color: context.plnTheme.component,
+              color: context.klpColors.component,
               borderRadius: BorderRadius.circular(KlpRadius.card),
             ),
             child: Column(
@@ -313,16 +313,16 @@ class KlpMultiSelectField extends StatelessWidget {
                   ),
                   decoration: BoxDecoration(
                     color: selectedIds.contains(option.id)
-                        ? context.plnTheme.selection
-                        : context.plnTheme.surfaceInset,
+                        ? context.klpColors.selection
+                        : context.klpColors.surfaceInset,
                     borderRadius: BorderRadius.circular(KlpRadius.control),
                   ),
                   child: KlpText(
                     option.label,
                     role: KlpTextRole.caption,
                     color: selectedIds.contains(option.id)
-                        ? context.plnTheme.onSelection
-                        : context.plnTheme.text,
+                        ? context.klpColors.onSelection
+                        : context.klpColors.text,
                   ),
                 ),
               ),

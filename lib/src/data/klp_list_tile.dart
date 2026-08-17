@@ -39,7 +39,7 @@ class _KlpListTileState extends State<KlpListTile> {
 
   @override
   Widget build(BuildContext context) {
-    final tokens = context.plnTheme;
+    final tokens = context.klpColors;
     final tile = Material(
       color: widget.selected
           ? tokens.selectionBackground

@@ -28,7 +28,7 @@ class KlpProgress extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final tokens = context.plnTheme;
+    final tokens = context.klpColors;
     final safeValue = value?.clamp(0.0, 1.0).toDouble();
     final fillColor = switch (state) {
       KlpProgressState.active => tokens.info,

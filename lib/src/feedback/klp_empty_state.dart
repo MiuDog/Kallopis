@@ -21,7 +21,7 @@ class KlpEmptyState extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final tokens = context.plnTheme;
+    final tokens = context.klpColors;
 
     return Padding(
       padding: const EdgeInsets.all(KlpSpace.xxl),
@@ -74,7 +74,7 @@ class KlpSkeletonLine extends StatelessWidget {
         width: width,
         height: 10,
         decoration: BoxDecoration(
-          color: context.plnTheme.surfaceMuted,
+          color: context.klpColors.surfaceMuted,
           borderRadius: BorderRadius.circular(KlpRadius.control),
         ),
       ),

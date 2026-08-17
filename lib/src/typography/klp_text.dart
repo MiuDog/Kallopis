@@ -209,7 +209,7 @@ class KlpText extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final tokens = context.plnTheme;
+    final tokens = context.klpColors;
     final roleStyle = KlpTextStyles.definitionOf(role).toTextStyle();
     final style = roleStyle.copyWith(
       color: KlpTextStyles.colorFor(

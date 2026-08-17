@@ -79,7 +79,7 @@ class _WindowControlButtonState extends State<_WindowControlButton> {
 
   @override
   Widget build(BuildContext context) {
-    final tokens = context.plnTheme;
+    final tokens = context.klpColors;
     final enabled = widget.onPressed != null;
     final active = enabled && (_hovered || _focused);
     final color = !enabled

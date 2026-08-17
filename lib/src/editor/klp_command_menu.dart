@@ -45,7 +45,7 @@ class KlpCommandMenu extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final tokens = context.plnTheme;
+    final tokens = context.klpColors;
 
     final content = Padding(
       padding: const EdgeInsets.all(KlpSpace.xs),
@@ -93,7 +93,7 @@ class _CommandItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final tokens = context.plnTheme;
+    final tokens = context.klpColors;
     final enabled = data.onPressed != null;
     final foreground = data.danger
         ? tokens.danger

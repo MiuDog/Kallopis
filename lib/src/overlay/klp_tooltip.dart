@@ -24,7 +24,7 @@ class KlpTooltipSurface extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context).tooltipTheme;
-    final tokens = context.plnTheme;
+    final tokens = context.klpColors;
     final decoration =
         theme.decoration ??
         BoxDecoration(

@@ -18,7 +18,7 @@ class KlpSlider extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final tokens = context.plnTheme;
+    final tokens = context.klpColors;
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,

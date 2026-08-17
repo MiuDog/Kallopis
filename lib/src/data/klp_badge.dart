@@ -19,7 +19,7 @@ class KlpBadge extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final tokens = context.plnTheme;
+    final tokens = context.klpColors;
     final toneColor = tone.color(tokens);
 
     return Container(
@@ -67,7 +67,7 @@ class KlpTag extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final tokens = context.plnTheme;
+    final tokens = context.klpColors;
 
     return Container(
       padding: const EdgeInsets.symmetric(

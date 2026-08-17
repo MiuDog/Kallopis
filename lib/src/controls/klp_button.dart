@@ -41,7 +41,7 @@ class _KlpButtonState extends State<KlpButton> {
 
   @override
   Widget build(BuildContext context) {
-    final tokens = context.plnTheme;
+    final tokens = context.klpColors;
     final disabled = widget.onPressed == null;
     final active = (_hovered || _focused) && !disabled;
     final background = disabled

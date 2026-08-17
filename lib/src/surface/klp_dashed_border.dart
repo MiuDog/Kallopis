@@ -57,7 +57,7 @@ class KlpDashedDivider extends StatelessWidget {
       width: double.infinity,
       child: CustomPaint(
         painter: _KlpDashedDividerPainter(
-          color: context.plnTheme.guide.withValues(alpha: opacity),
+          color: context.klpColors.guide.withValues(alpha: opacity),
           width: width,
           dashLength: dashLength,
           gapLength: gapLength,

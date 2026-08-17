@@ -19,7 +19,7 @@ class KlpStageFrame extends StatelessWidget {
   Widget build(BuildContext context) {
     return DecoratedBox(
       decoration: BoxDecoration(
-        color: context.plnTheme.stageSurface,
+        color: context.klpColors.stageSurface,
         borderRadius: BorderRadius.circular(KlpRadius.panel),
       ),
       child: ClipRRect(

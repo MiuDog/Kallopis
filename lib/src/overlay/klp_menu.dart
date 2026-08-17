@@ -126,7 +126,7 @@ class KlpMenu extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final tokens = context.plnTheme;
+    final tokens = context.klpColors;
 
     return DecoratedBox(
       key: const ValueKey('pln-menu-elevation'),
@@ -201,7 +201,7 @@ class _KlpMenuItemState extends State<KlpMenuItem> {
 
   @override
   Widget build(BuildContext context) {
-    final tokens = context.plnTheme;
+    final tokens = context.klpColors;
     final data = widget.data;
     final active = data.selected || _hovered || _focused;
     final foreground = !data.enabled

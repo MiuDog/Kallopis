@@ -23,7 +23,7 @@ class KlpSidebarFrame extends StatelessWidget {
     return KlpPanelFrame(
       header: header,
       footer: footer,
-      background: context.plnTheme.surface,
+      background: context.klpColors.surface,
       content: Row(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [

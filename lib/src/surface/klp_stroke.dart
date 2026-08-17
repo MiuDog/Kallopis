@@ -38,7 +38,7 @@ class KlpStrokeFrame extends StatelessWidget {
       KlpStrokeRole.structure => child,
       KlpStrokeRole.latent => CustomPaint(
         foregroundPainter: _KlpLatentStrokePainter(
-          color: context.plnTheme.guide.withValues(alpha: opacity),
+          color: context.klpColors.guide.withValues(alpha: opacity),
           radius: radius,
           width: width,
           dashLength: dashLength,
@@ -48,7 +48,7 @@ class KlpStrokeFrame extends StatelessWidget {
       ),
       KlpStrokeRole.field => DecoratedBox(
         decoration: BoxDecoration(
-          color: KlpFieldStyle.colorFor(context.plnTheme, _fieldFillState()),
+          color: KlpFieldStyle.colorFor(context.klpColors, _fieldFillState()),
           borderRadius: BorderRadius.circular(radius),
         ),
         child: child,

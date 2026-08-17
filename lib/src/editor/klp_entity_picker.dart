@@ -44,7 +44,7 @@ class KlpEntityPicker extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final tokens = context.plnTheme;
+    final tokens = context.klpColors;
 
     return DecoratedBox(
       decoration: BoxDecoration(
@@ -101,7 +101,7 @@ class _EntityResult extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final tokens = context.plnTheme;
+    final tokens = context.klpColors;
 
     return Material(
       color: data.selected ? tokens.surfaceMuted : const Color(0x00000000),

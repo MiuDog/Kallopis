@@ -30,7 +30,7 @@ class KlpThemePreviewTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final tokens = context.plnTheme;
+    final tokens = context.klpColors;
     final radius = BorderRadius.circular(KlpRadius.lg);
     final foreground = enabled ? tokens.text : tokens.textFaint;
 

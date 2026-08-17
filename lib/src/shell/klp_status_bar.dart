@@ -18,7 +18,7 @@ class KlpStatusBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final tokens = context.plnTheme;
+    final tokens = context.klpColors;
 
     return LayoutBuilder(
       builder: (context, constraints) {

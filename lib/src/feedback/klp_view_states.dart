@@ -26,7 +26,7 @@ class KlpLoadingState extends StatelessWidget {
               dimension: KlpSize.iconLarge,
               child: CircularProgressIndicator(
                 strokeWidth: KlpLine.width,
-                color: context.plnTheme.info,
+                color: context.klpColors.info,
               ),
             ),
             const SizedBox(height: KlpSpace.md),
@@ -58,7 +58,7 @@ class KlpErrorState extends StatelessWidget {
   Widget build(BuildContext context) {
     return _KlpViewState(
       icon: icon,
-      iconColor: context.plnTheme.danger,
+      iconColor: context.klpColors.danger,
       title: title,
       message: message,
       action: retryLabel == null
@@ -90,7 +90,7 @@ class KlpPermissionState extends StatelessWidget {
   Widget build(BuildContext context) {
     return _KlpViewState(
       icon: icon,
-      iconColor: context.plnTheme.warning,
+      iconColor: context.klpColors.warning,
       title: title,
       message: message,
       action: action,
@@ -118,7 +118,7 @@ class KlpProgressOverlay extends StatelessWidget {
         if (visible)
           Positioned.fill(
             child: ColoredBox(
-              color: context.plnTheme.app.withValues(alpha: 0.72),
+              color: context.klpColors.app.withValues(alpha: 0.72),
               child: Center(child: KlpLoadingState(label: label)),
             ),
           ),

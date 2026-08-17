@@ -130,7 +130,7 @@ class _ActionSurface extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final tokens = context.plnTheme;
+    final tokens = context.klpColors;
 
     return DecoratedBox(
       decoration: BoxDecoration(
@@ -149,7 +149,7 @@ class _EditorAction extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final tokens = context.plnTheme;
+    final tokens = context.klpColors;
     final foreground = data.danger
         ? tokens.danger
         : data.onPressed == null

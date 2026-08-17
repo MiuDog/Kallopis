@@ -28,7 +28,7 @@ class KlpKeyValueTable extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final tokens = context.plnTheme;
+    final tokens = context.klpColors;
 
     return ClipRRect(
       borderRadius: BorderRadius.circular(KlpRadius.card),
@@ -135,7 +135,7 @@ class KlpKeyValueList extends StatelessWidget {
                       fontFamily: row.verbatim
                           ? KlpTypography.monoFamily
                           : null,
-                      color: context.plnTheme.text,
+                      color: context.klpColors.text,
                       fontSize: KlpTypography.small,
                     ),
                     child: row.value,
@@ -151,7 +151,7 @@ class KlpKeyValueList extends StatelessWidget {
                       child: KlpIcon(
                         KlpIcons.clipboard,
                         size: KlpSize.iconSmall,
-                        color: context.plnTheme.textFaint,
+                        color: context.klpColors.textFaint,
                       ),
                     ),
                   ),

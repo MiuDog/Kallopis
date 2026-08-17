@@ -22,7 +22,7 @@ class KlpTriStateToggle extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final tokens = context.plnTheme;
+    final tokens = context.klpColors;
 
     return Row(
       mainAxisSize: MainAxisSize.min,

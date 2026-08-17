@@ -20,7 +20,7 @@ class KlpCompactSwitch extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final tokens = context.plnTheme;
+    final tokens = context.klpColors;
     final enabled = onChanged != null;
 
     return Semantics(

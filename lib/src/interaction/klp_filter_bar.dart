@@ -63,7 +63,7 @@ class _KlpFilterChip extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final tokens = context.plnTheme;
+    final tokens = context.klpColors;
 
     return GestureDetector(
       behavior: HitTestBehavior.opaque,
@@ -183,8 +183,8 @@ class KlpPresenceIndicator extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final color = active
-        ? context.plnTheme.success
-        : context.plnTheme.textFaint;
+        ? context.klpColors.success
+        : context.klpColors.textFaint;
 
     return Row(
       mainAxisSize: MainAxisSize.min,

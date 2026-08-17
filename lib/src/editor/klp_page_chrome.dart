@@ -23,7 +23,7 @@ class KlpPageChrome extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final tokens = context.plnTheme;
+    final tokens = context.klpColors;
 
     return KlpSurface(
       tone: KlpSurfaceTone.component,
@@ -83,7 +83,7 @@ class KlpSaveStatusCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final tokens = context.plnTheme;
+    final tokens = context.klpColors;
 
     return DecoratedBox(
       decoration: BoxDecoration(

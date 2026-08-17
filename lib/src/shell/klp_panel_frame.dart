@@ -23,7 +23,7 @@ class KlpPanelFrame extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final tokens = context.plnTheme;
+    final tokens = context.klpColors;
 
     return DecoratedBox(
       decoration: BoxDecoration(

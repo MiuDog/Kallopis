@@ -158,7 +158,7 @@ class _KlpTableLine extends StatelessWidget {
       child: Container(
         constraints: const BoxConstraints(minHeight: KlpSize.controlLarge),
         decoration: BoxDecoration(
-          color: header || selected ? context.plnTheme.surfaceMuted : null,
+          color: header || selected ? context.klpColors.surfaceMuted : null,
         ),
         child: Row(
           children: [
@@ -223,8 +223,8 @@ class _KlpTableLine extends StatelessWidget {
                               KlpIcons.chevronDown,
                               size: KlpSize.iconSmall,
                               color: sort?.columnId == column.id
-                                  ? context.plnTheme.text
-                                  : context.plnTheme.textFaint,
+                                  ? context.klpColors.text
+                                  : context.klpColors.textFaint,
                             ),
                           ),
                         ],
@@ -334,7 +334,7 @@ class _KlpTreeNodeView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final tokens = context.plnTheme;
+    final tokens = context.klpColors;
     final selected = selectedId == null ? node.selected : selectedId == node.id;
     final expanded = expandedIds == null
         ? node.expanded
@@ -547,7 +547,7 @@ class _KlpJsonNodeState extends State<_KlpJsonNode> {
                   child: KlpIcon(
                     KlpIcons.chevronDown,
                     size: KlpSize.iconSmall,
-                    color: context.plnTheme.textMuted,
+                    color: context.klpColors.textMuted,
                   ),
                 ),
                 const SizedBox(width: KlpSpace.xs),
@@ -640,7 +640,7 @@ class KlpFilePreview extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final tokens = context.plnTheme;
+    final tokens = context.klpColors;
     final extension = name.contains('.')
         ? name.split('.').last.toUpperCase()
         : 'FILE';

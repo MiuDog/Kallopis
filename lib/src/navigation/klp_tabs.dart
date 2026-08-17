@@ -52,7 +52,7 @@ class _KlpTab extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final tokens = context.plnTheme;
+    final tokens = context.klpColors;
 
     return Material(
       color: selected ? tokens.surfaceMuted : tokens.surfaceInset,

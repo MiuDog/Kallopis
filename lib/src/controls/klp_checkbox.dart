@@ -22,7 +22,7 @@ class KlpCheckbox extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final tokens = context.plnTheme;
+    final tokens = context.klpColors;
     final enabled = onChanged != null;
     final borderColor = enabled ? tokens.textMuted : tokens.textFaint;
 

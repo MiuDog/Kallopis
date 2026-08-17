@@ -13,7 +13,7 @@ class KlpDivider extends StatelessWidget {
     return SizedBox(
       width: vertical ? KlpLine.width : double.infinity,
       height: vertical ? double.infinity : KlpLine.width,
-      child: ColoredBox(color: context.plnTheme.divider),
+      child: ColoredBox(color: context.klpColors.divider),
     );
   }
 }
