@@ -24,25 +24,9 @@ void main() {
       'lib/src/foundation/klp_accent.dart',
     };
 
-    // 抽取自 Planist 時就存在的欠債。**只能變短，不能變長。**
-    // 修掉一個就從這裡刪一行——刪光之前，這份清單就是待辦事項。
-    const knownOffenders = {
-      'lib/src/controls/klp_button.dart',
-      'lib/src/controls/klp_checkbox.dart',
-      'lib/src/controls/klp_radio_group.dart',
-      'lib/src/controls/klp_segmented_control.dart',
-      'lib/src/controls/klp_slider.dart',
-      'lib/src/controls/klp_sliding_selection.dart',
-      'lib/src/data/klp_list_tile.dart',
-      'lib/src/editor/klp_command_menu.dart',
-      'lib/src/editor/klp_entity_picker.dart',
-      'lib/src/interaction/klp_pressable.dart',
-      'lib/src/navigation/klp_rail_item.dart',
-      'lib/src/shell/klp_theme_preview_tile.dart',
-      'lib/src/shell/klp_window_controls.dart',
-      'lib/src/surface/klp_surface.dart',
-      'lib/src/theme/klp_theme.dart',
-    };
+    // 抽取自 Planist 時的欠債已全數清空。**這個集合只能維持為空。**
+    // 若不得不再加入項目，必須在同一次提交寫明何時移除。
+    const knownOffenders = <String>{};
 
     test('沒有新的元件直接寫 Color(0x…)', () {
       final violations = <String>[];
@@ -90,13 +74,7 @@ void main() {
       'lib/src/theme/klp_motion_theme.dart',
     };
 
-    const knownOffenders = {
-      'lib/src/controls/klp_sliding_selection.dart',
-      'lib/src/controls/klp_switch.dart',
-      'lib/src/form/klp_form.dart',
-      'lib/src/interaction/klp_interaction_settings.dart',
-      'lib/src/theme/klp_theme.dart',
-    };
+    const knownOffenders = <String>{};
 
     test('沒有新的元件直接寫 Duration(milliseconds:…)', () {
       final violations = <String>[];

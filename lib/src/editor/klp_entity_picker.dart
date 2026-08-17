@@ -6,6 +6,7 @@ import '../data/klp_badge.dart';
 import '../foundation/klp_metrics.dart';
 import '../theme/klp_theme.dart';
 import '../typography/klp_text.dart';
+import '../foundation/klp_palette.dart';
 
 @immutable
 class KlpEntityResultData {
@@ -104,7 +105,7 @@ class _EntityResult extends StatelessWidget {
     final tokens = context.klpColors;
 
     return Material(
-      color: data.selected ? tokens.surfaceMuted : const Color(0x00000000),
+      color: data.selected ? tokens.surfaceMuted : KlpPalette.transparent,
       borderRadius: BorderRadius.circular(KlpRadius.control),
       child: InkWell(
         onTap: onPressed,

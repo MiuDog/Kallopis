@@ -4,6 +4,7 @@ import '../foundation/klp_icon.dart';
 import '../foundation/klp_metrics.dart';
 import '../overlay/klp_tooltip.dart';
 import '../theme/klp_theme.dart';
+import '../foundation/klp_palette.dart';
 
 class KlpRailItem extends StatefulWidget {
   const KlpRailItem({
@@ -56,7 +57,7 @@ class _KlpRailItemState extends State<KlpRailItem> {
           ? tokens.selectionBackground
           : _hovered || _focused
           ? tokens.hoverSurface
-          : const Color(0x00000000),
+          : KlpPalette.transparent,
       borderRadius: BorderRadius.circular(KlpRadius.card),
       child: InkWell(
         onTap: widget.onPressed,

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
 import 'klp_interaction_settings.dart';
+import '../foundation/klp_palette.dart';
+import '../theme/klp_motion_theme.dart';
 
 class KlpPressable extends StatefulWidget {
   const KlpPressable({
@@ -8,7 +10,7 @@ class KlpPressable extends StatefulWidget {
     required this.child,
     required this.onPressed,
     this.onLongPress,
-    this.longPressProgressColor = const Color(0x00000000),
+    this.longPressProgressColor = KlpPalette.transparent,
     this.borderRadius,
     this.onHover,
     this.onFocusChange,
@@ -38,14 +40,14 @@ class _KlpPressableState extends State<KlpPressable>
     super.initState();
     _longPressController = AnimationController(
       vsync: this,
-      duration: KlpInteractionSettings.defaultThreshold,
+      duration: KlpMotionTheme.standardMotion.longPressThreshold,
     )..addStatusListener(_handleAnimationStatus);
   }
 
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
-    _longPressController.duration = context.plnLongPressThreshold;
+    _longPressController.duration = context.klpLongPressThreshold;
   }
 
   @override
@@ -102,9 +104,9 @@ class _KlpPressableState extends State<KlpPressable>
         onHover: widget.onHover,
         onFocusChange: widget.onFocusChange,
         splashFactory: NoSplash.splashFactory,
-        splashColor: const Color(0x00000000),
-        highlightColor: const Color(0x00000000),
-        overlayColor: const WidgetStatePropertyAll(Color(0x00000000)),
+        splashColor: KlpPalette.transparent,
+        highlightColor: KlpPalette.transparent,
+        overlayColor: const WidgetStatePropertyAll(KlpPalette.transparent),
         borderRadius: widget.borderRadius,
         child: Stack(
           fit: StackFit.passthrough,

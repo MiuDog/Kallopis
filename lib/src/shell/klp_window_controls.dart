@@ -5,6 +5,7 @@ import '../foundation/klp_icons.dart';
 import '../foundation/klp_metrics.dart';
 import '../overlay/klp_tooltip.dart';
 import '../theme/klp_theme.dart';
+import '../foundation/klp_palette.dart';
 
 class KlpWindowControls extends StatelessWidget {
   const KlpWindowControls({
@@ -101,7 +102,7 @@ class _WindowControlButtonState extends State<_WindowControlButton> {
               ? widget.destructive
                     ? tokens.danger.withValues(alpha: 0.16)
                     : tokens.hoverSurface
-              : const Color(0x00000000),
+              : KlpPalette.transparent,
           borderRadius: BorderRadius.circular(KlpRadius.control),
           child: InkWell(
             onTap: widget.onPressed,

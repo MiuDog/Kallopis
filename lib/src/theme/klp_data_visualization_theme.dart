@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../foundation/klp_palette.dart';
 
 @immutable
 class KlpDataVisualizationTheme
@@ -67,7 +68,7 @@ class KlpDataVisualizationTheme
     gridStrong: Color(0xFFC8C0B4),
     label: Color(0xFF6B6459),
     value: Color(0xFF1D1D1D),
-    plotBackground: Color(0x00000000),
+    plotBackground: KlpPalette.transparent,
     crosshair: Color(0xFF8C8477),
     marketUp: Color(0xFF2D8057),
     marketUpWash: Color(0xFFDFF0E5),
@@ -98,7 +99,7 @@ class KlpDataVisualizationTheme
     gridStrong: Color(0xFF6A6256),
     label: Color(0xFFB8B2A4),
     value: Color(0xFFF5F2EC),
-    plotBackground: Color(0x00000000),
+    plotBackground: KlpPalette.transparent,
     crosshair: Color(0xFF918A7B),
     marketUp: Color(0xFF67AE86),
     marketUpWash: Color(0xFF243B2D),
@@ -129,7 +130,7 @@ class KlpDataVisualizationTheme
     gridStrong: Color(0xFF585249),
     label: Color(0xFFB8B2A4),
     value: Color(0xFFF5F2EC),
-    plotBackground: Color(0x00000000),
+    plotBackground: KlpPalette.transparent,
     crosshair: Color(0xFF7A7566),
     marketUp: Color(0xFF67AE86),
     marketUpWash: Color(0xFF1D3025),

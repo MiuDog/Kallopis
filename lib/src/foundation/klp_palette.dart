@@ -1,6 +1,10 @@
 import 'package:flutter/widgets.dart';
 
 abstract final class KlpPalette {
+  /// 「沒有顏色」。這不是風格決定，但仍然需要一個名字——散落各處的
+  /// `Color(0x00000000)` 無法與真正寫死的顏色區分，會讓紀律檢查失去意義。
+  static const Color transparent = Color(0x00000000);
+
   static const Color paper = Color(0xFFF2F0EB);
   static const Color canvas = Color(0xFFE4E0D8);
   static const Color paperInset = Color(0xFFE6E3DC);
@@ -61,4 +65,28 @@ abstract final class KlpPalette {
 
   static const Color transparentSurface = Color(0x94292622);
   static const Color transparentSurfaceInset = Color(0xA834302C);
+}
+
+/// 裝飾用顏色：**不屬於設計語言**，因此不會隨主題改變。
+///
+/// 這些顏色出現在「畫一張示意圖」的場合——主題預覽磚要模擬桌布與視窗紅綠燈，那是插圖，
+/// 不是介面。它們刻意與 [KlpPalette] 分開：混在一起會讓人誤以為可以拿來上色元件，
+/// 而元件用了它們就會在換主題時原地不動。
+abstract final class KlpDecorativePalette {
+  /// 主題預覽磚模擬的桌布漸層。
+  static const List<Color> previewWallpaper = [
+    Color(0xFF2B3A67),
+    Color(0xFF6E4E7E),
+    Color(0xFFC0693F),
+    Color(0xFFE0A24A),
+  ];
+
+  static const List<double> previewWallpaperStops = [0, 0.42, 0.78, 1];
+
+  /// 視窗控制鈕的紅、黃、綠。這是對桌面平台既有慣例的複述，不是本設計系統的色彩選擇。
+  static const List<Color> windowTrafficLights = [
+    Color(0xFFF2655B),
+    Color(0xFFF5BE4F),
+    Color(0xFF63C654),
+  ];
 }

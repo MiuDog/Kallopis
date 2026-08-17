@@ -4,6 +4,7 @@ import '../foundation/klp_icon.dart';
 import '../foundation/klp_metrics.dart';
 import '../theme/klp_theme.dart';
 import '../typography/klp_text.dart';
+import '../foundation/klp_palette.dart';
 
 class KlpListTile extends StatefulWidget {
   const KlpListTile({
@@ -51,7 +52,7 @@ class _KlpListTileState extends State<KlpListTile> {
         onTap: widget.onPressed,
         onHover: (value) => setState(() => _hovered = value),
         onFocusChange: (value) => setState(() => _focused = value),
-        overlayColor: const WidgetStatePropertyAll(Color(0x00000000)),
+        overlayColor: const WidgetStatePropertyAll(KlpPalette.transparent),
         borderRadius: BorderRadius.circular(KlpRadius.control),
         child: SizedBox(
           height: widget.compact ? KlpSize.controlSmall : null,

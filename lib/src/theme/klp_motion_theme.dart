@@ -16,6 +16,8 @@ class KlpMotionTheme extends ThemeExtension<KlpMotionTheme> {
     required this.overlayEnter,
     required this.overlayExit,
     required this.toastDwell,
+    required this.tooltipDelay,
+    required this.longPressThreshold,
     required this.standard,
     required this.emphasized,
   });
@@ -38,6 +40,13 @@ class KlpMotionTheme extends ThemeExtension<KlpMotionTheme> {
   /// Toast 停留時間。
   final Duration toastDwell;
 
+  /// 游標停留多久才顯示 tooltip。
+  final Duration tooltipDelay;
+
+  /// 長按判定門檻。這不是動畫，但同屬「時間」這個維度，而且**是無障礙參數**——
+  /// 行動不便的使用者需要更長的門檻。放進 theme 才能整體調整。
+  final Duration longPressThreshold;
+
   final Curve standard;
   final Curve emphasized;
 
@@ -48,6 +57,8 @@ class KlpMotionTheme extends ThemeExtension<KlpMotionTheme> {
     overlayEnter: KlpScale.duration150,
     overlayExit: KlpScale.duration100,
     toastDwell: KlpScale.duration500,
+    tooltipDelay: KlpScale.duration400,
+    longPressThreshold: KlpScale.duration500,
     standard: KlpScale.easeStandard,
     emphasized: KlpScale.easeEmphasized,
   );
@@ -61,6 +72,8 @@ class KlpMotionTheme extends ThemeExtension<KlpMotionTheme> {
     overlayEnter: KlpScale.duration0,
     overlayExit: KlpScale.duration0,
     toastDwell: KlpScale.duration500,
+    tooltipDelay: KlpScale.duration400,
+    longPressThreshold: KlpScale.duration500,
     standard: Curves.linear,
     emphasized: Curves.linear,
   );
@@ -81,6 +94,8 @@ class KlpMotionTheme extends ThemeExtension<KlpMotionTheme> {
     Duration? overlayEnter,
     Duration? overlayExit,
     Duration? toastDwell,
+    Duration? tooltipDelay,
+    Duration? longPressThreshold,
     Curve? standard,
     Curve? emphasized,
   }) {
@@ -91,6 +106,8 @@ class KlpMotionTheme extends ThemeExtension<KlpMotionTheme> {
       overlayEnter: overlayEnter ?? this.overlayEnter,
       overlayExit: overlayExit ?? this.overlayExit,
       toastDwell: toastDwell ?? this.toastDwell,
+      tooltipDelay: tooltipDelay ?? this.tooltipDelay,
+      longPressThreshold: longPressThreshold ?? this.longPressThreshold,
       standard: standard ?? this.standard,
       emphasized: emphasized ?? this.emphasized,
     );
@@ -114,18 +131,22 @@ class KlpMotionTheme extends ThemeExtension<KlpMotionTheme> {
           overlayEnter == other.overlayEnter &&
           overlayExit == other.overlayExit &&
           toastDwell == other.toastDwell &&
+          tooltipDelay == other.tooltipDelay &&
+          longPressThreshold == other.longPressThreshold &&
           standard == other.standard &&
           emphasized == other.emphasized;
 
   @override
-  int get hashCode => Object.hash(
+  int get hashCode => Object.hashAll([
     themeTransition,
     styleTransition,
     stateTransition,
     overlayEnter,
     overlayExit,
     toastDwell,
+    tooltipDelay,
+    longPressThreshold,
     standard,
     emphasized,
-  );
+  ]);
 }

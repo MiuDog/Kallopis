@@ -5,6 +5,7 @@ import 'klp_toggle.dart';
 import '../foundation/klp_metrics.dart';
 import '../interaction/klp_pressable.dart';
 import '../theme/klp_theme.dart';
+import '../theme/klp_theme_scope.dart';
 
 class KlpCompactSwitch extends StatelessWidget {
   const KlpCompactSwitch({
@@ -40,7 +41,7 @@ class KlpCompactSwitch extends StatelessWidget {
               borderRadius: BorderRadius.circular(KlpRadius.full),
             ),
             child: AnimatedAlign(
-              duration: const Duration(milliseconds: 120),
+              duration: context.klp.motion.stateTransition,
               curve: Curves.easeOut,
               alignment: value ? Alignment.centerRight : Alignment.centerLeft,
               child: Padding(

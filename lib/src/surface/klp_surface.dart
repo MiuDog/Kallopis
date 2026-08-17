@@ -2,6 +2,7 @@ import 'package:flutter/widgets.dart';
 
 import '../foundation/klp_metrics.dart';
 import '../theme/klp_theme.dart';
+import '../foundation/klp_palette.dart';
 
 enum KlpSurfaceTone {
   base,
@@ -42,7 +43,7 @@ class KlpSurface extends StatelessWidget {
       KlpSurfaceTone.overlay => tokens.overlay,
       KlpSurfaceTone.settingsNavigation => tokens.settingsNavigation,
       KlpSurfaceTone.settingsContent => tokens.settingsContent,
-      KlpSurfaceTone.transparent => const Color(0x00000000),
+      KlpSurfaceTone.transparent => KlpPalette.transparent,
     };
     final resolvedRadius = tone == KlpSurfaceTone.transparent
         ? radius

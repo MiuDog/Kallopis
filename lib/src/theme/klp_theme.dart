@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'klp_data_visualization_theme.dart';
+import 'klp_visual_style.dart';
 import '../foundation/klp_accent.dart';
 import '../foundation/klp_metrics.dart';
 import '../foundation/klp_palette.dart';
@@ -366,17 +367,19 @@ abstract final class KlpFieldStyle {
 ThemeData buildKlpTheme(
   Brightness brightness, {
   KlpAccent accent = KlpAccent.ink,
+  KlpVisualStyle style = KlpVisualStyle.modern,
 }) {
   final baseTokens = brightness == Brightness.dark
       ? KlpThemeData.dark
       : KlpThemeData.light;
-  return _buildKlpThemeData(baseTokens, accent: accent);
+  return _buildKlpThemeData(baseTokens, accent: accent, style: style);
 }
 
 ThemeData buildKlpThemeVariant(
   KlpThemeVariant variant, {
   KlpAccent accent = KlpAccent.ink,
   bool transparencyEnabled = false,
+  KlpVisualStyle style = KlpVisualStyle.modern,
 }) {
   final tokens = switch (variant) {
     KlpThemeVariant.light => KlpThemeData.light,
@@ -388,6 +391,7 @@ ThemeData buildKlpThemeVariant(
   return _buildKlpThemeData(
     tokens,
     accent: accent,
+    style: style,
     transparencyEnabled:
         transparencyEnabled || variant == KlpThemeVariant.transparent,
   );
@@ -397,6 +401,7 @@ ThemeData _buildKlpThemeData(
   KlpThemeData baseTokens, {
   KlpAccent accent = KlpAccent.ink,
   bool transparencyEnabled = false,
+  KlpVisualStyle style = KlpVisualStyle.modern,
 }) {
   final brightness = identical(baseTokens, KlpThemeData.light)
       ? Brightness.light
@@ -466,8 +471,8 @@ ThemeData _buildKlpThemeData(
     brightness: brightness,
     useMaterial3: false,
     splashFactory: NoSplash.splashFactory,
-    splashColor: const Color(0x00000000),
-    highlightColor: const Color(0x00000000),
+    splashColor: KlpPalette.transparent,
+    highlightColor: KlpPalette.transparent,
     scaffoldBackgroundColor: tokens.app,
     fontFamily: KlpTypography.uiFamily,
     fontFamilyFallback: KlpTypography.uiFallback,
@@ -488,8 +493,8 @@ ThemeData _buildKlpThemeData(
     ),
     scrollbarTheme: ScrollbarThemeData(
       thumbColor: WidgetStatePropertyAll(tokens.textFaint),
-      trackColor: const WidgetStatePropertyAll(Color(0x00000000)),
-      trackBorderColor: const WidgetStatePropertyAll(Color(0x00000000)),
+      trackColor: const WidgetStatePropertyAll(KlpPalette.transparent),
+      trackBorderColor: const WidgetStatePropertyAll(KlpPalette.transparent),
       thickness: const WidgetStatePropertyAll(
         KlpControlMetrics.scrollbarThickness,
       ),
@@ -511,10 +516,15 @@ ThemeData _buildKlpThemeData(
         horizontal: KlpSpace.sm,
         vertical: KlpSpace.xs,
       ),
-      waitDuration: const Duration(milliseconds: 450),
-      showDuration: const Duration(seconds: 4),
+      waitDuration: style.motion.tooltipDelay,
+      showDuration: style.motion.toastDwell * 8,
       preferBelow: false,
     ),
-    extensions: [tokens, dataVisualizationTokens],
+    // 註冊完整的 token 疊層。少放任何一層，該層會回退預設而不會報錯——
+    // 因此這裡以 KlpVisualStyle 為單一來源，避免逐項列舉時漏掉。
+    extensions: [
+      ...style.copyWith(colors: tokens).extensions,
+      dataVisualizationTokens,
+    ],
   );
 }

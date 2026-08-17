@@ -148,13 +148,8 @@ class _ThemePreviewPainter extends CustomPainter {
           ..shader = const LinearGradient(
             begin: Alignment.topLeft,
             end: Alignment.bottomRight,
-            colors: [
-              Color(0xFF2B3A67),
-              Color(0xFF6E4E7E),
-              Color(0xFFC0693F),
-              Color(0xFFE0A24A),
-            ],
-            stops: [0, 0.42, 0.78, 1],
+            colors: KlpDecorativePalette.previewWallpaper,
+            stops: KlpDecorativePalette.previewWallpaperStops,
           ).createShader(rect),
       );
       return;
@@ -230,7 +225,7 @@ class _ThemePreviewPainter extends CustomPainter {
     _ThemePreviewSkin skin,
     bool dim,
   ) {
-    const colors = [Color(0xFFF2655B), Color(0xFFF5BE4F), Color(0xFF63C654)];
+    const colors = KlpDecorativePalette.windowTrafficLights;
     for (var index = 0; index < colors.length; index++) {
       canvas.drawCircle(
         Offset(titleBar.left + 7 + index * 7, titleBar.center.dy),
@@ -321,7 +316,7 @@ class _ThemePreviewSkin {
     faint: KlpPalette.chalkFaint,
   );
   static const transparent = _ThemePreviewSkin(
-    app: Color(0x00000000),
+    app: KlpPalette.transparent,
     surface: KlpPalette.transparentSurface,
     well: KlpPalette.transparentSurfaceInset,
     outline: KlpPalette.duskDivider,

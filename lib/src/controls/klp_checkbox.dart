@@ -5,6 +5,7 @@ import '../foundation/klp_icons.dart';
 import '../foundation/klp_metrics.dart';
 import '../theme/klp_theme.dart';
 import '../typography/klp_text.dart';
+import '../foundation/klp_palette.dart';
 
 class KlpCheckbox extends StatelessWidget {
   const KlpCheckbox({
@@ -36,7 +37,7 @@ class KlpCheckbox extends StatelessWidget {
             enabled: enabled,
             label: label,
             child: Material(
-              color: const Color(0x00000000),
+              color: KlpPalette.transparent,
               borderRadius: BorderRadius.circular(KlpRadius.control),
               child: InkWell(
                 onTap: enabled ? () => onChanged!(!value) : null,

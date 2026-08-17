@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import '../foundation/klp_metrics.dart';
 import '../theme/klp_theme.dart';
 import '../typography/klp_text.dart';
+import '../foundation/klp_palette.dart';
 
 class KlpRadioGroup<T> extends StatelessWidget {
   const KlpRadioGroup({
@@ -58,7 +59,7 @@ class _KlpRadioItem extends StatelessWidget {
             inMutuallyExclusiveGroup: true,
             label: label,
             child: Material(
-              color: const Color(0x00000000),
+              color: KlpPalette.transparent,
               borderRadius: BorderRadius.circular(KlpRadius.control),
               child: InkWell(
                 onTap: onPressed,

@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import '../foundation/klp_metrics.dart';
 import '../theme/klp_theme.dart';
 import '../typography/klp_text.dart';
+import '../foundation/klp_palette.dart';
 
 class KlpSlider extends StatelessWidget {
   const KlpSlider({
@@ -38,7 +39,7 @@ class KlpSlider extends StatelessWidget {
             activeTrackColor: tokens.text,
             inactiveTrackColor: tokens.surfaceMuted,
             thumbColor: tokens.surfaceInset,
-            overlayColor: const Color(0x00000000),
+            overlayColor: KlpPalette.transparent,
             trackHeight: KlpLine.width,
             thumbShape: _KlpSliderThumb(tokens.borderStrong),
           ),

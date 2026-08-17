@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import '../foundation/klp_icon.dart';
 import '../foundation/klp_metrics.dart';
 import '../theme/klp_theme.dart';
+import '../foundation/klp_palette.dart';
 
 @immutable
 class KlpSelectionOption {
@@ -21,8 +22,6 @@ class KlpSlidingSelection extends StatelessWidget {
     required this.onSelected,
   }) : assert(options.length > 1),
        assert(selectedIndex >= 0 && selectedIndex < options.length);
-
-  static const Duration animationDuration = Duration(milliseconds: 140);
 
   final String label;
   final int selectedIndex;
@@ -44,7 +43,7 @@ class KlpSlidingSelection extends StatelessWidget {
           children: [
             AnimatedPositioned(
               key: ValueKey('pln-selection-indicator-$label'),
-              duration: animationDuration,
+              duration: context.klp.motion.stateTransition,
               curve: Curves.easeOutCubic,
               left:
                   selectedIndex * KlpFormMetrics.selectionControl +
@@ -83,7 +82,7 @@ class KlpSlidingSelection extends StatelessWidget {
               children: [
                 for (var index = 0; index < options.length; index++)
                   Material(
-                    color: const Color(0x00000000),
+                    color: KlpPalette.transparent,
                     borderRadius: BorderRadius.circular(KlpRadius.control),
                     child: InkWell(
                       key: ValueKey('pln-selection-hit-$label-$index'),

@@ -4,6 +4,7 @@ import '../foundation/klp_icon.dart';
 import '../foundation/klp_metrics.dart';
 import '../theme/klp_theme.dart';
 import '../typography/klp_text.dart';
+import '../foundation/klp_palette.dart';
 
 class KlpSegmentedControl extends StatelessWidget {
   const KlpSegmentedControl({
@@ -93,7 +94,7 @@ class _KlpSegment extends StatelessWidget {
       button: true,
       selected: selected,
       child: Material(
-        color: selected ? tokens.component : const Color(0x00000000),
+        color: selected ? tokens.component : KlpPalette.transparent,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(KlpRadius.control),
         ),

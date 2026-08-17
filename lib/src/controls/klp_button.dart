@@ -4,6 +4,7 @@ import '../foundation/klp_metrics.dart';
 import '../interaction/klp_pressable.dart';
 import '../theme/klp_theme.dart';
 import '../typography/klp_text.dart';
+import '../foundation/klp_palette.dart';
 
 enum KlpButtonTone { primary, secondary, ghost, danger }
 
@@ -54,7 +55,7 @@ class _KlpButtonState extends State<KlpButton> {
             KlpButtonTone.secondary =>
               active ? tokens.hoverSurface : tokens.component,
             KlpButtonTone.ghost =>
-              active ? tokens.hoverSurface : const Color(0x00000000),
+              active ? tokens.hoverSurface : KlpPalette.transparent,
             KlpButtonTone.danger => tokens.danger.withValues(
               alpha: active ? 0.24 : 0.16,
             ),
@@ -101,7 +102,7 @@ class _KlpButtonState extends State<KlpButton> {
     );
 
     return Material(
-      color: const Color(0x00000000),
+      color: KlpPalette.transparent,
       child: KlpPressable(
         onPressed: widget.onPressed,
         onLongPress: widget.onLongPress,

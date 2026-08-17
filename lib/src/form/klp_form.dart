@@ -4,6 +4,7 @@ import '../controls/klp_button.dart';
 import '../foundation/klp_metrics.dart';
 import '../surface/klp_surface.dart';
 import '../typography/klp_text.dart';
+import '../theme/klp_theme_scope.dart';
 
 enum KlpFieldVisualState {
   pristine,
@@ -319,7 +320,7 @@ class KlpConditionalFieldRegion extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AnimatedSize(
-      duration: const Duration(milliseconds: 140),
+      duration: context.klp.motion.stateTransition,
       child: visible ? child : const SizedBox.shrink(),
     );
   }
