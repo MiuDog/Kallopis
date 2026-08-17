@@ -404,8 +404,8 @@ ThemeData _buildKlpThemeData(
   final baseTextTheme = ThemeData(
     brightness: brightness,
     useMaterial3: false,
-    fontFamily: KlpTypography.uiFamily,
-    fontFamilyFallback: KlpTypography.uiFallback,
+    fontFamily: style.typography.uiFamily,
+    fontFamilyFallback: style.typography.fallbackFor(style.typography.uiFamily),
   ).textTheme;
   final textTheme = baseTextTheme.copyWith(
     displayLarge: baseTextTheme.displayLarge?.copyWith(color: tokens.text),
@@ -451,7 +451,7 @@ ThemeData _buildKlpThemeData(
     splashColor: KlpPalette.transparent,
     highlightColor: KlpPalette.transparent,
     scaffoldBackgroundColor: tokens.app,
-    fontFamily: KlpTypography.uiFamily,
+    fontFamily: style.typography.uiFamily,
     fontFamilyFallback: KlpTypography.uiFallback,
     textTheme: textTheme,
     colorScheme: ColorScheme.fromSeed(
@@ -486,8 +486,10 @@ ThemeData _buildKlpThemeData(
       textStyle: TextStyle(
         color: tokens.textMuted,
         fontSize: KlpTypography.small,
-        fontFamily: KlpTypography.uiFamily,
-        fontFamilyFallback: KlpTypography.uiFallback,
+        fontFamily: style.typography.uiFamily,
+        fontFamilyFallback: style.typography.fallbackFor(
+          style.typography.uiFamily,
+        ),
       ),
       padding: const EdgeInsets.symmetric(
         horizontal: KlpSpace.sm,

@@ -126,4 +126,39 @@ void main() {
           '${violations.join('\n')}',
     );
   });
+
+  test('舊 static token 的引用數只能下降', () {
+    // 抽取自 Planist 的元件仍大量使用 KlpSpace／KlpRadius 這類編譯期常數。它們的值
+    // 正確，但**不會隨 theme 改變**——這正是 terminal 風格下 toggle 仍是膠囊形的原因。
+    //
+    // 一次改完 515 處風險過高，因此改用棘輪：數字只能往下。每次遷移一批元件就把
+    // baseline 調低；調不下去代表有人又加了新的靜態引用。
+    const baseline = 515;
+
+    final pattern = RegExp(
+      r'\b(KlpRadius|KlpSpace|KlpSize|KlpTypography|KlpInsets|KlpMotion|'
+      r'KlpLayoutGap|KlpLine|KlpElevation|KlpInteraction|KlpTransparency)\.',
+    );
+
+    var count = 0;
+    for (final file in sourceFiles) {
+      count += pattern.allMatches(file.readAsStringSync()).length;
+    }
+
+    expect(
+      count,
+      lessThanOrEqualTo(baseline),
+      reason:
+          '舊 static token 的引用數從 $baseline 增加到 $count。'
+          '新程式碼請改讀 context.klp——static const 不會隨 theme 改變，'
+          '而且不會有任何錯誤訊息告訴你它沒變。',
+    );
+
+    // 遷移完成後忘記調低 baseline，棘輪會停在舊刻度上，之後的回退就不會被擋下。
+    expect(
+      count,
+      greaterThanOrEqualTo(baseline - 20),
+      reason: '引用數已降到 $count，請把 baseline 一併調低到這個數字。',
+    );
+  });
 }

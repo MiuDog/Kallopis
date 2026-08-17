@@ -91,7 +91,7 @@ class KlpRegionPlaceholder extends StatelessWidget {
                                 style:
                                     KlpTextStyles.definitionOf(
                                       KlpTextRole.code,
-                                    ).toTextStyle().copyWith(
+                                    ).toTextStyle(context.klp.type).copyWith(
                                       color: tokens.textFaint,
                                       letterSpacing: KlpPlaceholderMetrics
                                           .labelLetterSpacing,
@@ -181,7 +181,7 @@ class _PlaceholderActionState extends State<_PlaceholderAction> {
               child: Text(
                 widget.label.toUpperCase(),
                 style: KlpTextStyles.definitionOf(KlpTextRole.code)
-                    .toTextStyle()
+                    .toTextStyle(context.klp.type)
                     .copyWith(
                       color: tokens.text,
                       letterSpacing: KlpPlaceholderMetrics.labelLetterSpacing,

@@ -2,6 +2,7 @@ import 'package:flutter/widgets.dart';
 
 import '../foundation/klp_metrics.dart';
 import '../theme/klp_theme.dart';
+import '../theme/klp_typography_theme.dart';
 
 enum KlpTextRole {
   display,
@@ -42,22 +43,22 @@ class KlpTextStyleDefinition {
   final double? letterSpacing;
   final KlpFontRole family;
 
-  TextStyle toTextStyle() {
+  /// 字體家族由 theme 決定，不是編譯期常數——終端機風要求全域等寬，那是換 theme
+  /// 就該達成的事。呼叫端必須提供 [type]，因此忘記傳會是編譯錯誤而不是靜默用錯字體。
+  TextStyle toTextStyle(KlpTypographyTheme type) {
+    final resolvedFamily = switch (family) {
+      KlpFontRole.mono => type.codeFamily,
+      KlpFontRole.body => type.bodyFamily,
+      KlpFontRole.ui => type.uiFamily,
+    };
+
     return TextStyle(
       fontSize: fontSize,
       height: lineHeight,
       fontWeight: fontWeight,
       letterSpacing: letterSpacing,
-      fontFamily: switch (family) {
-        KlpFontRole.mono => KlpTypography.monoFamily,
-        KlpFontRole.body => KlpTypography.bodyFamily,
-        KlpFontRole.ui => KlpTypography.uiFamily,
-      },
-      fontFamilyFallback: switch (family) {
-        KlpFontRole.mono => KlpTypography.monoFallback,
-        KlpFontRole.body => KlpTypography.bodyFallback,
-        KlpFontRole.ui => KlpTypography.uiFallback,
-      },
+      fontFamily: resolvedFamily,
+      fontFamilyFallback: type.fallbackFor(resolvedFamily),
     );
   }
 }
@@ -210,7 +211,7 @@ class KlpText extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final tokens = context.klpColors;
-    final roleStyle = KlpTextStyles.definitionOf(role).toTextStyle();
+    final roleStyle = KlpTextStyles.definitionOf(role).toTextStyle(context.klp.type);
     final style = roleStyle.copyWith(
       color: KlpTextStyles.colorFor(
         tokens,
