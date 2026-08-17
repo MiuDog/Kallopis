@@ -3,7 +3,7 @@ import 'dart:math' as math;
 import 'package:flutter/material.dart';
 
 import '../theme/pln_theme.dart';
-import 'dash_theme.dart';
+import '../theme/pln_data_visualization_theme.dart';
 
 @immutable
 class DashChartSeries {

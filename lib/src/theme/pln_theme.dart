@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../dashboard/dash_theme.dart';
+import 'pln_data_visualization_theme.dart';
 import '../foundation/pln_accent.dart';
 import '../foundation/pln_metrics.dart';
 import '../foundation/pln_palette.dart';

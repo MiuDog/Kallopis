@@ -4,7 +4,7 @@ import '../foundation/pln_metrics.dart';
 import '../interaction/pln_pressable.dart';
 import '../theme/pln_theme.dart';
 import '../typography/pln_text.dart';
-import 'dash_theme.dart';
+import '../theme/pln_data_visualization_theme.dart';
 
 enum DashFillTreatment { solid, hatch, dot, outline }
 
