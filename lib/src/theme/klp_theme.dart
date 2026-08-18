@@ -152,7 +152,7 @@ class KlpThemeData extends ThemeExtension<KlpThemeData> {
     surfaceRaised: KlpPalette.ink50,
     modalScrim: KlpPalette.scrim,
     guide: KlpPalette.ink400,
-    divider: KlpPalette.ink300,
+    divider: KlpPalette.ink200,
     text: KlpPalette.ink900,
     textMuted: KlpPalette.ink600,
     textFaint: KlpPalette.ink500,
@@ -366,22 +366,22 @@ abstract final class KlpFieldStyle {
         borderSide: BorderSide.none,
       );
 
-  static Color colorFor(
-    KlpThemeData tokens,
-    KlpFieldFillState state, {
-    double hoverContrastMix = 0.08,
-  }) {
-    final hover = tokens.hoverSurfaceWith(hoverContrastMix);
+  /// 欄位底色。
+  ///
+  /// **hover 不改變底色**——本產品的 hover 一律只以低對比虛線細框表達，見
+  /// [KlpTheme.hoverBorder]。因此 rest 與 hovered 刻意回傳同一個值；把它們寫成
+  /// 同一個 case 會讓「hover 沒有底色變化」這件事在未來被當成漏寫而補回去。
+  static Color colorFor(KlpThemeData tokens, KlpFieldFillState state) {
     return switch (state) {
       KlpFieldFillState.rest => tokens.surfaceInset,
-      KlpFieldFillState.hovered => hover,
-      KlpFieldFillState.focused || KlpFieldFillState.selected => hover,
+      KlpFieldFillState.hovered => tokens.surfaceInset,
+      KlpFieldFillState.focused ||
+      KlpFieldFillState.selected => tokens.surfaceInset,
       KlpFieldFillState.disabled => tokens.surfaceMuted,
-      // 錯誤底色由 danger 推導，而不是借用其他角色的顏色：借用會在調整 danger 時
-      // 靜默失去同步。
-      KlpFieldFillState.error => Color.alphaBlend(
-        tokens.danger.withValues(alpha: 0.16),
-        tokens.surfaceInset,
+      // 不合法輸入用半透明紅**疊在**欄位上，而不是先跟 surfaceInset 混成不透明色。
+      // 疊層才會跟著底下實際的表面走；預混會在欄位被放到別的表面上時顏色對不上。
+      KlpFieldFillState.error => tokens.danger.withValues(
+        alpha: KlpScale.opacity180,
       ),
     };
   }
@@ -558,7 +558,7 @@ ThemeData _buildKlpThemeData(
       disabledBorder: KlpFieldStyle.borderFor(style.shape),
       errorBorder: KlpFieldStyle.borderFor(style.shape),
       focusedErrorBorder: KlpFieldStyle.borderFor(style.shape),
-      hoverColor: KlpFieldStyle.colorFor(tokens, KlpFieldFillState.hovered),
+      hoverColor: KlpPalette.transparent,
     ),
     scrollbarTheme: ScrollbarThemeData(
       thumbColor: WidgetStatePropertyAll(tokens.textFaint),

@@ -1,9 +1,11 @@
 import 'package:flutter/widgets.dart';
 
 import '../foundation/klp_metrics.dart';
+import '../surface/klp_dashed_border.dart';
 import '../surface/klp_surface.dart';
 import '../theme/klp_theme.dart';
 
+/// 區域容器。包裝標題、主要內容與頁尾。
 class KlpRegion extends StatelessWidget {
   const KlpRegion({
     super.key,
@@ -18,14 +20,19 @@ class KlpRegion extends StatelessWidget {
   final Widget content;
   final Widget? footer;
   final KlpSurfaceTone tone;
+
+  /// `null` 表示沿用 theme 的面板內距。內容不應該貼著面板邊緣——
+  /// 傳 [EdgeInsets.zero] 才是刻意讓內容自己貼邊（例如內部自帶捲動區）。
   final EdgeInsetsGeometry? padding;
 
   @override
   Widget build(BuildContext context) {
+    final klp = context.klp;
+
     return KlpSurface(
       tone: tone,
-      radius: context.klp.shape.panel,
-      padding: padding,
+      radius: klp.shape.panel,
+      padding: padding ?? EdgeInsets.all(klp.space.base),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
@@ -40,33 +47,64 @@ class KlpRegion extends StatelessWidget {
 
 typedef KlpPanel = KlpRegion;
 
+/// 分割版面原語。支援左/中/右或左右分割，以及虛線分隔線。
 class KlpSplitLayout extends StatelessWidget {
   const KlpSplitLayout({
     super.key,
     required this.leading,
     required this.trailing,
+    this.center,
     this.leadingWidth = KlpSize.sidebar,
+    this.trailingWidth,
     this.gap,
+    this.showDashedDivider = false,
   });
 
   final Widget leading;
   final Widget trailing;
+  final Widget? center;
   final double leadingWidth;
+  final double? trailingWidth;
   final double? gap;
+  final bool showDashedDivider;
 
   @override
   Widget build(BuildContext context) {
+    final klp = context.klp;
+    final effectiveGap = gap ?? klp.space.base;
+
+    Widget divider() => showDashedDivider
+        ? Padding(
+            padding: EdgeInsets.symmetric(horizontal: effectiveGap / 2),
+            child: const KlpDashedDivider(vertical: true),
+          )
+        : SizedBox(width: effectiveGap);
+
+    if (center != null) {
+      return Row(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          SizedBox(width: leadingWidth, child: leading),
+          divider(),
+          Expanded(child: center!),
+          divider(),
+          SizedBox(width: trailingWidth ?? leadingWidth, child: trailing),
+        ],
+      );
+    }
+
     return Row(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
         SizedBox(width: leadingWidth, child: leading),
-        SizedBox(width: gap ?? context.klp.space.base),
+        divider(),
         Expanded(child: trailing),
       ],
     );
   }
 }
 
+/// 寬度可調節面板容器。
 class KlpResizablePane extends StatelessWidget {
   const KlpResizablePane({super.key, required this.width, required this.child});
 
@@ -79,6 +117,7 @@ class KlpResizablePane extends StatelessWidget {
   }
 }
 
+/// 拖曳調整寬度把手。
 class KlpResizeHandle extends StatelessWidget {
   const KlpResizeHandle({super.key, required this.onDelta, this.semanticLabel});
 
@@ -101,6 +140,7 @@ class KlpResizeHandle extends StatelessWidget {
   }
 }
 
+/// 具備主題捲軸樣式的單向捲動容器。
 class KlpScrollViewport extends StatelessWidget {
   const KlpScrollViewport({
     super.key,
@@ -123,6 +163,7 @@ class KlpScrollViewport extends StatelessWidget {
   }
 }
 
+/// 長清單虛擬化捲動檢視。
 class KlpVirtualList extends StatelessWidget {
   const KlpVirtualList({
     super.key,
@@ -148,28 +189,35 @@ class KlpVirtualList extends StatelessWidget {
   }
 }
 
+/// 格狀虛擬化捲動檢視。
 class KlpVirtualGrid extends StatelessWidget {
   const KlpVirtualGrid({
     super.key,
     required this.itemCount,
     required this.itemBuilder,
     this.minimumItemWidth = 240,
+    this.crossAxisCount,
     this.spacing,
+    this.childAspectRatio = 1.0,
   });
 
   final int itemCount;
   final IndexedWidgetBuilder itemBuilder;
   final double minimumItemWidth;
+  final int? crossAxisCount;
   final double? spacing;
+  final double childAspectRatio;
 
   @override
   Widget build(BuildContext context) {
     return LayoutBuilder(
       builder: (context, constraints) {
-        final count = (constraints.maxWidth / minimumItemWidth).floor().clamp(
-          1,
-          itemCount == 0 ? 1 : itemCount,
-        );
+        final count =
+            crossAxisCount ??
+            (constraints.maxWidth / minimumItemWidth).floor().clamp(
+              1,
+              itemCount == 0 ? 1 : itemCount,
+            );
 
         return GridView.builder(
           itemCount: itemCount,
@@ -177,6 +225,7 @@ class KlpVirtualGrid extends StatelessWidget {
             crossAxisCount: count,
             mainAxisSpacing: spacing ?? context.klp.space.base,
             crossAxisSpacing: spacing ?? context.klp.space.base,
+            childAspectRatio: childAspectRatio,
           ),
           itemBuilder: itemBuilder,
         );
@@ -185,6 +234,7 @@ class KlpVirtualGrid extends StatelessWidget {
   }
 }
 
+/// 浮層容器掛載點。
 class KlpOverlayHost extends StatelessWidget {
   const KlpOverlayHost({super.key, required this.child, this.overlay});
 

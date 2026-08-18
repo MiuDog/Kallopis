@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 
 import '../foundation/klp_metrics.dart';
 import '../interaction/klp_pressable.dart';
+import '../surface/klp_dashed_border.dart';
 import '../surface/klp_stroke.dart';
 import '../theme/klp_theme.dart';
 import '../typography/klp_text.dart';
@@ -39,14 +40,7 @@ class KlpRegionPlaceholder extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final tokens = context.klpColors;
-    final darkMode = Theme.of(context).brightness == Brightness.dark;
-    final hatchColor = darkMode
-        ? Color.lerp(
-            tokens.app,
-            tokens.surfaceInset,
-            KlpPlaceholderMetrics.darkHatchColorMix,
-          )!
-        : tokens.surfaceInset;
+    final hatchColor = tokens.surfaceInset;
     final semanticLabel = [label, kindLabel, ?detail].join('. ');
 
     return Semantics(
@@ -61,9 +55,7 @@ class KlpRegionPlaceholder extends StatelessWidget {
           borderRadius: BorderRadius.circular(context.klp.shape.card),
           child: CustomPaint(
             painter: _KlpPlaceholderFillPainter(
-              fillColor: hatched
-                  ? tokens.app.withValues(alpha: 0)
-                  : tokens.surfaceInset,
+              fillColor: hatched ? tokens.component : tokens.surfaceInset,
               hatchColor: hatchColor,
               hatched: hatched,
             ),
@@ -90,7 +82,7 @@ class KlpRegionPlaceholder extends StatelessWidget {
                                 textAlign: TextAlign.center,
                                 style:
                                     KlpTextStyles.definitionOf(
-                                          KlpTextRole.code,
+                                          KlpTextRole.label,
                                           context.klp.type,
                                         )
                                         .toTextStyle(context.klp.type)
@@ -162,6 +154,36 @@ class _PlaceholderActionState extends State<_PlaceholderAction> {
   @override
   Widget build(BuildContext context) {
     final tokens = context.klpColors;
+    Widget action = Container(
+      padding: const EdgeInsets.symmetric(
+        horizontal: KlpPlaceholderMetrics.actionPaddingHorizontal,
+        vertical: KlpPlaceholderMetrics.actionPaddingVertical,
+      ),
+      decoration: BoxDecoration(
+        color: tokens.surface,
+        borderRadius: BorderRadius.circular(context.klp.shape.control),
+      ),
+      child: ExcludeSemantics(
+        child: Text(
+          widget.label.toUpperCase(),
+          style: KlpTextStyles.definitionOf(KlpTextRole.code, context.klp.type)
+              .toTextStyle(context.klp.type)
+              .copyWith(
+                color: tokens.text,
+                letterSpacing: KlpPlaceholderMetrics.labelLetterSpacing,
+              ),
+        ),
+      ),
+    );
+
+    if (_hovered) {
+      action = KlpDashedBorder(
+        color: context.klp.hoverBorder,
+        radius: context.klp.shape.control,
+        child: action,
+      );
+    }
+
     return Semantics(
       button: true,
       label: widget.label,
@@ -171,32 +193,7 @@ class _PlaceholderActionState extends State<_PlaceholderAction> {
           onPressed: widget.onPressed,
           onHover: (hovered) => setState(() => _hovered = hovered),
           borderRadius: BorderRadius.circular(context.klp.shape.control),
-          child: Container(
-            padding: const EdgeInsets.symmetric(
-              horizontal: KlpPlaceholderMetrics.actionPaddingHorizontal,
-              vertical: KlpPlaceholderMetrics.actionPaddingVertical,
-            ),
-            decoration: BoxDecoration(
-              color: _hovered ? context.klp.hoverSurface : tokens.surface,
-              borderRadius: BorderRadius.circular(context.klp.shape.control),
-            ),
-            child: ExcludeSemantics(
-              child: Text(
-                widget.label.toUpperCase(),
-                style:
-                    KlpTextStyles.definitionOf(
-                          KlpTextRole.code,
-                          context.klp.type,
-                        )
-                        .toTextStyle(context.klp.type)
-                        .copyWith(
-                          color: tokens.text,
-                          letterSpacing:
-                              KlpPlaceholderMetrics.labelLetterSpacing,
-                        ),
-              ),
-            ),
-          ),
+          child: action,
         ),
       ),
     );
@@ -251,12 +248,18 @@ class _KlpPlaceholderFillPainter extends CustomPainter {
     canvas.drawRect(Offset.zero & size, Paint()..color = fillColor);
     if (!hatched) return;
 
+    final strokeWidth = KlpPlaceholderMetrics.hatchStrokeWidth;
     final step =
-        KlpPlaceholderMetrics.hatchBand + KlpPlaceholderMetrics.hatchGap;
+        (KlpPlaceholderMetrics.hatchBand + KlpPlaceholderMetrics.hatchGap) *
+        math.sqrt2;
     final paint = Paint()
       ..color = hatchColor
-      ..strokeWidth = KlpPlaceholderMetrics.hatchStrokeWidth;
-    for (var offset = -size.height; offset < size.width; offset += step) {
+      ..strokeWidth = strokeWidth;
+    for (
+      var offset = -size.height - strokeWidth * 2;
+      offset < size.width + strokeWidth * 2;
+      offset += step
+    ) {
       canvas.drawLine(
         Offset(offset, 0),
         Offset(offset + size.height, size.height),

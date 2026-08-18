@@ -104,6 +104,12 @@ class KlpTheme {
   /// 選取狀態的壓深層。與 [hoverSurface] 是兩種不同強度的狀態表達。
   Color get selectionWash =>
       color.selectionWashWith(surface.selectionWashOpacity);
+
+  /// hover 的邊框色。
+  ///
+  /// 本產品的 hover **一律只有低對比虛線細框**：不改底色、不改文字色、不改圖示色。
+  /// 全部 hover 都從這裡取色，才不會出現十幾個元件各自調一個「差不多的灰」。
+  Color get hoverBorder => color.guide.withValues(alpha: shape.dashedOpacity);
 }
 
 /// 讓元件寫 `context.klp.space.base`。

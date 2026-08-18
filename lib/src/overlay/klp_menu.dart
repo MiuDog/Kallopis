@@ -6,6 +6,7 @@ import '../controls/klp_toggle.dart';
 import '../foundation/klp_icon.dart';
 import '../foundation/klp_icons.dart';
 import '../foundation/klp_metrics.dart';
+import '../surface/klp_dashed_border.dart';
 import '../surface/klp_divider.dart';
 import '../surface/klp_surface.dart';
 import '../theme/klp_theme.dart';
@@ -224,20 +225,19 @@ class _KlpMenuItemState extends State<KlpMenuItem> {
     final tokens = context.klpColors;
     final data = widget.data;
     final active = data.selected || _hovered || _focused;
+    // hover 不改前景色——選取才提亮，hover 只加外框。
     final foreground = !data.enabled
         ? tokens.textFaint
         : data.danger
         ? tokens.danger
-        : active
+        : data.selected
         ? tokens.text
         : tokens.textMuted;
 
-    return Semantics(
-      button: true,
-      enabled: data.enabled,
-      toggled: data.toggleValue,
+    Widget item = SizedBox(
+      height: _KlpMenuMetrics.itemHeight,
       child: Material(
-        color: active ? context.klp.hoverSurface : Colors.transparent,
+        color: data.selected ? tokens.selectionBackground : Colors.transparent,
         borderRadius: BorderRadius.circular(context.klp.shape.control),
         child: InkWell(
           onTap: data.enabled ? data.onPressed : null,
@@ -247,64 +247,73 @@ class _KlpMenuItemState extends State<KlpMenuItem> {
           onFocusChange: (value) => setState(() => _focused = value),
           overlayColor: const WidgetStatePropertyAll(Colors.transparent),
           borderRadius: BorderRadius.circular(context.klp.shape.control),
-          child: SizedBox(
-            height: _KlpMenuMetrics.itemHeight,
-            child: Padding(
-              padding: EdgeInsets.symmetric(
-                horizontal: _KlpMenuMetrics.horizontalPadding(context),
-              ),
-              child: Row(
-                children: [
-                  if (data.icon != null) ...[
-                    Transform.translate(
-                      offset: const Offset(
-                        0,
-                        _KlpMenuMetrics.iconOpticalOffsetY,
-                      ),
-                      child: KlpIcon(
-                        data.icon!,
-                        size: _KlpMenuMetrics.iconSize(context),
-                        color: foreground,
-                      ),
-                    ),
-                    SizedBox(width: _KlpMenuMetrics.iconGap(context)),
-                  ],
-                  Expanded(
-                    child: KlpText(
-                      data.label,
-                      role: KlpMenuStyle.textRole,
+          child: Padding(
+            padding: EdgeInsets.symmetric(
+              horizontal: _KlpMenuMetrics.horizontalPadding(context),
+            ),
+            child: Row(
+              children: [
+                if (data.icon != null) ...[
+                  Transform.translate(
+                    offset: const Offset(0, _KlpMenuMetrics.iconOpticalOffsetY),
+                    child: KlpIcon(
+                      data.icon!,
+                      size: _KlpMenuMetrics.iconSize(context),
                       color: foreground,
-                      maxLines: 1,
-                      overflow: TextOverflow.ellipsis,
                     ),
                   ),
-                  if (data.shortcut != null)
-                    KlpText(
-                      data.shortcut!,
-                      role: KlpTextRole.caption,
-                      tone: KlpTextTone.faint,
-                    ),
-                  if (data.toggleValue != null)
-                    KlpToggleIndicator(
-                      value: data.toggleValue!,
-                      enabled: data.enabled,
-                    ),
-                  if (data.hasSubmenu)
-                    Transform.rotate(
-                      key: const ValueKey('pln-menu-submenu-indicator'),
-                      angle: -math.pi / 2,
-                      child: KlpIcon(
-                        KlpIcons.chevronDown,
-                        size: _KlpMenuMetrics.iconSize(context),
-                        color: foreground,
-                      ),
-                    ),
+                  SizedBox(width: _KlpMenuMetrics.iconGap(context)),
                 ],
-              ),
+                Expanded(
+                  child: KlpText(
+                    data.label,
+                    role: KlpMenuStyle.textRole,
+                    color: foreground,
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
+                  ),
+                ),
+                if (data.shortcut != null)
+                  KlpText(
+                    data.shortcut!,
+                    role: KlpTextRole.caption,
+                    tone: KlpTextTone.faint,
+                  ),
+                if (data.toggleValue != null)
+                  KlpToggleIndicator(
+                    value: data.toggleValue!,
+                    enabled: data.enabled,
+                  ),
+                if (data.hasSubmenu)
+                  Transform.rotate(
+                    key: const ValueKey('pln-menu-submenu-indicator'),
+                    angle: -math.pi / 2,
+                    child: KlpIcon(
+                      KlpIcons.chevronDown,
+                      size: _KlpMenuMetrics.iconSize(context),
+                      color: foreground,
+                    ),
+                  ),
+              ],
             ),
           ),
         ),
       ),
+    );
+
+    if (active) {
+      item = KlpDashedBorder(
+        color: data.selected ? tokens.textMuted : context.klp.hoverBorder,
+        radius: context.klp.shape.control,
+        child: item,
+      );
+    }
+
+    return Semantics(
+      button: true,
+      enabled: data.enabled,
+      toggled: data.toggleValue,
+      child: item,
     );
   }
 }
