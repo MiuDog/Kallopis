@@ -78,7 +78,7 @@ class _CatalogNavigation extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           SizedBox(
-            height: klp.space.chromeHeader,
+            height: 72,
             child: Padding(
               padding: EdgeInsets.symmetric(horizontal: klp.space.base),
               child: const Column(
@@ -88,14 +88,13 @@ class _CatalogNavigation extends StatelessWidget {
                   KlpText('Kallopis', role: KlpTextRole.bodyStrong),
                   KlpText(
                     'COMPONENT CATALOG',
-                    role: KlpTextRole.label,
-                    tone: KlpTextTone.faint,
+                    role: KlpTextRole.sub,
+                    tone: KlpTextTone.muted,
                   ),
                 ],
               ),
             ),
           ),
-          const KlpDivider(),
           Expanded(
             child: KlpScrollViewport(
               child: Padding(
@@ -115,7 +114,6 @@ class _CatalogNavigation extends StatelessWidget {
               ),
             ),
           ),
-          const KlpDivider(),
           Padding(
             padding: EdgeInsets.all(klp.space.compact),
             child: KlpRailItem(
@@ -203,7 +201,7 @@ class _NavGroupState extends State<_NavGroup> {
   }
 }
 
-class _NavItem extends StatelessWidget {
+class _NavItem extends StatefulWidget {
   const _NavItem({
     required this.page,
     required this.index,
@@ -217,35 +215,68 @@ class _NavItem extends StatelessWidget {
   final ValueChanged<int> onSelected;
 
   @override
+  State<_NavItem> createState() => _NavItemState();
+}
+
+class _NavItemState extends State<_NavItem> {
+  bool _hovered = false;
+
+  @override
   Widget build(BuildContext context) {
     final klp = context.klp;
+    final isHighlighted = widget.selected || _hovered;
 
-    return KlpPressable(
-      onPressed: () => onSelected(index),
-      child: Container(
-        color: selected ? klp.color.surfaceMuted : null,
-        padding: EdgeInsets.only(
-          left: klp.space.section,
-          right: klp.space.base,
-          top: klp.space.tight,
-          bottom: klp.space.tight,
-        ),
-        child: Row(
-          children: [
-            Expanded(
-              child: KlpText(
-                page.label,
-                role: KlpTextRole.body,
-                tone: selected ? KlpTextTone.primary : KlpTextTone.muted,
-              ),
+    // 狀態只由邊框表達，底色一律透明。
+    //
+    // 原本是「填色＋虛線框」兩套訊號同時表達同一件事。填色來自 hoverSurface，
+    // 而那是把 surfaceInset 往 text 混出來的**計算值**——色梯亮端暖、暗端冷之後，
+    // 跨梯混色必然落到梯外的色相（實測 hover 是 H 94°、選取是 H 81°，差 13°，
+    // 看起來就是兩種不同的顏色）。移掉填色，狀態就只剩一個來源。
+    Widget itemContent = Container(
+      padding: EdgeInsets.symmetric(
+        horizontal: klp.space.base,
+        vertical: klp.space.tight,
+      ),
+      child: Row(
+        children: [
+          Expanded(
+            child: KlpText(
+              widget.page.label,
+              role: KlpTextRole.body,
+              tone: widget.selected
+                  ? KlpTextTone.primary
+                  : (_hovered ? KlpTextTone.primary : KlpTextTone.muted),
             ),
-            if (page.specimens.isNotEmpty)
-              KlpText(
-                '${page.specimens.length}',
-                role: KlpTextRole.code,
-                tone: KlpTextTone.faint,
-              ),
-          ],
+          ),
+          if (widget.page.specimens.isNotEmpty)
+            KlpText(
+              '${widget.page.specimens.length}',
+              role: KlpTextRole.code,
+              tone: KlpTextTone.faint,
+            ),
+        ],
+      ),
+    );
+
+    if (isHighlighted) {
+      itemContent = KlpDashedBorder(
+        color: widget.selected ? klp.color.textMuted : klp.color.guide,
+        radius: klp.shape.control,
+        child: itemContent,
+      );
+    }
+
+    return Padding(
+      padding: EdgeInsets.symmetric(
+        horizontal: klp.space.compact,
+        vertical: klp.space.hairline,
+      ),
+      child: MouseRegion(
+        onEnter: (_) => setState(() => _hovered = true),
+        onExit: (_) => setState(() => _hovered = false),
+        child: KlpPressable(
+          onPressed: () => widget.onSelected(widget.index),
+          child: itemContent,
         ),
       ),
     );
@@ -262,38 +293,42 @@ class _CatalogStage extends StatelessWidget {
     final klp = context.klp;
 
     return KlpSurface(
+      tone: KlpSurfaceTone.stage,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-          Padding(
-            padding: EdgeInsets.all(klp.space.base),
-            child: Row(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Expanded(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      KlpText(page.title, role: KlpTextRole.section),
-                      KlpText(
-                        page.description,
-                        role: KlpTextRole.caption,
-                        tone: KlpTextTone.muted,
-                      ),
-                    ],
+          SizedBox(
+            height: 72,
+            child: Padding(
+              padding: EdgeInsets.symmetric(horizontal: klp.space.base),
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Expanded(
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        KlpText(page.title, role: KlpTextRole.section),
+                        KlpText(
+                          page.description,
+                          role: KlpTextRole.sub,
+                          tone: KlpTextTone.muted,
+                        ),
+                      ],
+                    ),
                   ),
-                ),
-                if (page.specimens.isNotEmpty)
-                  KlpBadge(
-                    label: '${page.demoCount}/${page.specimens.length}',
-                    tone: page.demoCount == page.specimens.length
-                        ? KlpFeedbackTone.success
-                        : KlpFeedbackTone.warning,
-                  ),
-              ],
+                  if (page.specimens.isNotEmpty)
+                    KlpBadge(
+                      label: '${page.demoCount}/${page.specimens.length}',
+                      tone: page.demoCount == page.specimens.length
+                          ? KlpFeedbackTone.success
+                          : KlpFeedbackTone.warning,
+                    ),
+                ],
+              ),
             ),
           ),
-          const KlpDivider(),
           Expanded(
             child: KlpScrollViewport(
               child: Padding(
@@ -333,7 +368,7 @@ class _SpecimenBlock extends StatelessWidget {
         children: [
           Row(
             children: [
-              KlpText(specimen.name, role: KlpTextRole.code),
+              KlpText(specimen.name, role: KlpTextRole.body),
               if (!specimen.hasDemo) ...[
                 SizedBox(width: klp.space.compact),
                 const KlpBadge(label: '尚未展示', tone: KlpFeedbackTone.warning),
@@ -344,15 +379,15 @@ class _SpecimenBlock extends StatelessWidget {
             SizedBox(height: klp.space.tight),
             KlpText(
               specimen.note!,
-              role: KlpTextRole.caption,
+              role: KlpTextRole.sub,
               tone: KlpTextTone.muted,
             ),
           ],
           SizedBox(height: klp.space.base),
           if (specimen.hasDemo)
             KlpSurface(
-              tone: KlpSurfaceTone.inset,
-              padding: EdgeInsets.all(klp.space.comfortable),
+              tone: KlpSurfaceTone.transparent,
+              padding: EdgeInsets.symmetric(vertical: klp.space.compact),
               child: specimen.build!(context),
             )
           else
