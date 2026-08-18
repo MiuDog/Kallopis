@@ -226,13 +226,19 @@ class _NavItemState extends State<_NavItem> {
     final klp = context.klp;
     final isHighlighted = widget.selected || _hovered;
 
-    // 狀態只由邊框表達，底色一律透明。
+    // hover 與選取是兩種強度，不是同一種：
+    //   hover  → 低對比邊框，底色透明（只表示「可點」）
+    //   選取   → 高對比邊框 ＋ 半透明壓深底（表示「你在這裡」）
     //
-    // 原本是「填色＋虛線框」兩套訊號同時表達同一件事。填色來自 hoverSurface，
-    // 而那是把 surfaceInset 往 text 混出來的**計算值**——色梯亮端暖、暗端冷之後，
-    // 跨梯混色必然落到梯外的色相（實測 hover 是 H 94°、選取是 H 81°，差 13°，
-    // 看起來就是兩種不同的顏色）。移掉填色，狀態就只剩一個來源。
+    // 壓深底用 selectionWash——前景色的低 alpha 疊層，亮態壓暗、暗態壓亮，
+    // 底下表面原本的階層差不會被蓋掉。先前用的 hoverSurface 是把 surfaceInset
+    // 往 text 混出來的不透明計算值，色梯亮端暖、暗端冷之後跨梯混色會落到梯外色相
+    // （hover H 94°、選取 H 81°），看起來像兩種語意色。
     Widget itemContent = Container(
+      decoration: BoxDecoration(
+        color: widget.selected ? klp.selectionWash : null,
+        borderRadius: BorderRadius.circular(klp.shape.control),
+      ),
       padding: EdgeInsets.symmetric(
         horizontal: klp.space.base,
         vertical: klp.space.tight,

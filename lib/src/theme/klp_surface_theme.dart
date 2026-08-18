@@ -34,6 +34,7 @@ class KlpSurfaceTheme extends ThemeExtension<KlpSurfaceTheme> {
     required this.overlayShadowOpacity,
     required this.hoverContrastMix,
     required this.scrimOpacity,
+    required this.selectionWashOpacity,
   });
 
   final KlpSurfaceSeparation separation;
@@ -47,6 +48,13 @@ class KlpSurfaceTheme extends ThemeExtension<KlpSurfaceTheme> {
   final double hoverContrastMix;
 
   final double scrimOpacity;
+
+  /// 選取狀態的壓深層強度。用前景色以低 alpha 疊上，因此亮態壓暗、暗態壓亮，
+  /// 且底下表面原本的階層差不會被蓋掉。
+  ///
+  /// 與 [hoverContrastMix] 是兩種強度而非同一種：hover 只用低對比邊框表示可點，
+  /// 選取才加上這層壓深。兩者若共用一個值，兩態在畫面上就分不出來。
+  final double selectionWashOpacity;
 
   bool get usesShadow => separation == KlpSurfaceSeparation.shadow;
 
@@ -71,6 +79,7 @@ class KlpSurfaceTheme extends ThemeExtension<KlpSurfaceTheme> {
     overlayShadowOpacity: KlpScale.opacity220,
     hoverContrastMix: 0.08,
     scrimOpacity: 0.6,
+    selectionWashOpacity: KlpScale.opacity100,
   );
 
   @override
@@ -82,6 +91,7 @@ class KlpSurfaceTheme extends ThemeExtension<KlpSurfaceTheme> {
     double? overlayShadowOpacity,
     double? hoverContrastMix,
     double? scrimOpacity,
+    double? selectionWashOpacity,
   }) {
     return KlpSurfaceTheme(
       separation: separation ?? this.separation,
@@ -91,6 +101,7 @@ class KlpSurfaceTheme extends ThemeExtension<KlpSurfaceTheme> {
       overlayShadowOpacity: overlayShadowOpacity ?? this.overlayShadowOpacity,
       hoverContrastMix: hoverContrastMix ?? this.hoverContrastMix,
       scrimOpacity: scrimOpacity ?? this.scrimOpacity,
+      selectionWashOpacity: selectionWashOpacity ?? this.selectionWashOpacity,
     );
   }
 
@@ -117,7 +128,8 @@ class KlpSurfaceTheme extends ThemeExtension<KlpSurfaceTheme> {
           overlayOffsetY == other.overlayOffsetY &&
           overlayShadowOpacity == other.overlayShadowOpacity &&
           hoverContrastMix == other.hoverContrastMix &&
-          scrimOpacity == other.scrimOpacity;
+          scrimOpacity == other.scrimOpacity &&
+          selectionWashOpacity == other.selectionWashOpacity;
 
   @override
   int get hashCode => Object.hash(
@@ -128,5 +140,6 @@ class KlpSurfaceTheme extends ThemeExtension<KlpSurfaceTheme> {
     overlayShadowOpacity,
     hoverContrastMix,
     scrimOpacity,
+    selectionWashOpacity,
   );
 }

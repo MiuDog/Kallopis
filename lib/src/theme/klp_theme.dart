@@ -6,6 +6,7 @@ import 'klp_visual_style.dart';
 import '../foundation/klp_accent.dart';
 import '../foundation/klp_metrics.dart';
 import '../foundation/klp_palette.dart';
+import '../tokens/klp_scale.dart';
 
 // 元件 import 色彩層時一併取得 token 存取面（`context.klp` 與 `context.klpColors`），
 // 否則每個元件都要 import 兩個 theme 檔才拿得到值——那種摩擦會讓人選擇寫死。
@@ -26,9 +27,7 @@ abstract final class KlpThemeContrast {
 
   /// 依據背景顏色階梯（500 以下為深色 ink900，600 以上為淺色 ink50）決定前景文字色。
   static Color foregroundFor(Color background) {
-    return isDarkBackground(background)
-        ? KlpPalette.ink50
-        : KlpPalette.ink900;
+    return isDarkBackground(background) ? KlpPalette.ink50 : KlpPalette.ink900;
   }
 }
 
@@ -107,6 +106,13 @@ class KlpThemeData extends ThemeExtension<KlpThemeData> {
 
   Color get hoverSurface => hoverSurfaceWith(0.08);
 
+  /// 選取狀態的半透明壓深層。強度來自 [KlpSurfaceTheme.selectionWashOpacity]；
+  /// 此處的預設值只在沒有 theme 可讀時使用。
+  /// **不要在這裡另訂一份強度**——同一條規則兩份實作必然靜默分岔。
+  Color selectionWashWith(double opacity) => text.withValues(alpha: opacity);
+
+  Color get selectionWash => selectionWashWith(KlpScale.opacity100);
+
   /// 依據背景顏色階梯（500 以下為深色文字，600 以上為淺色文字）產生適用於該背景的文字色彩 token。
   /// 若背景為透明，則延續當前（上層）的文字與階層設定。
   KlpThemeData onBackground(Color background) {
@@ -138,8 +144,8 @@ class KlpThemeData extends ThemeExtension<KlpThemeData> {
   static const KlpThemeData light = KlpThemeData(
     app: KlpPalette.ink200,
     surface: KlpPalette.ink100,
-    surfaceInset: KlpPalette.ink200,
-    surfaceMuted: KlpPalette.ink300,
+    surfaceInset: KlpPalette.ink100,
+    surfaceMuted: KlpPalette.ink100,
     component: KlpPalette.ink50,
     stageSurface: KlpPalette.ink50,
     overlay: KlpPalette.ink50,
@@ -153,9 +159,9 @@ class KlpThemeData extends ThemeExtension<KlpThemeData> {
     border: KlpPalette.line,
     borderStrong: KlpPalette.line,
     accent: KlpPalette.ink900,
-    accentSoft: KlpPalette.ink200,
+    accentSoft: KlpPalette.ink100,
     interaction: KlpPalette.ink900,
-    interactionSoft: KlpPalette.ink200,
+    interactionSoft: KlpPalette.ink100,
     success: KlpPalette.lightSuccess,
     warning: KlpPalette.lightWarning,
     danger: KlpPalette.lightDanger,
@@ -165,11 +171,11 @@ class KlpThemeData extends ThemeExtension<KlpThemeData> {
   /// 暗態：整條梯翻轉。文字三階與亮態對稱（50／300／500 對 900／600／500）。
   static const KlpThemeData dark = KlpThemeData(
     app: KlpPalette.ink900,
-    surface: KlpPalette.ink800,
+    surface: KlpPalette.ink700,
     surfaceInset: KlpPalette.ink700,
     surfaceMuted: KlpPalette.ink700,
     component: KlpPalette.ink800,
-    stageSurface: KlpPalette.ink900,
+    stageSurface: KlpPalette.ink800,
     overlay: KlpPalette.ink700,
     surfaceRaised: KlpPalette.ink700,
     modalScrim: KlpPalette.scrim,
@@ -193,11 +199,11 @@ class KlpThemeData extends ThemeExtension<KlpThemeData> {
   /// 全暗態：比 dark 再往下一階，給 OLED 與長時間閱讀用。
   static const KlpThemeData ultraDark = KlpThemeData(
     app: KlpPalette.ink950,
-    surface: KlpPalette.ink900,
+    surface: KlpPalette.ink800,
     surfaceInset: KlpPalette.ink800,
     surfaceMuted: KlpPalette.ink800,
     component: KlpPalette.ink900,
-    stageSurface: KlpPalette.ink950,
+    stageSurface: KlpPalette.ink900,
     overlay: KlpPalette.ink800,
     surfaceRaised: KlpPalette.ink800,
     modalScrim: KlpPalette.scrim,
