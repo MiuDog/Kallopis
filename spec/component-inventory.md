@@ -148,7 +148,7 @@ graph LR
 
 | 型別 | 行數 | 組成 |
 |---|---|---|
-| `KlpAccent` | 25 | （葉節點） |
+| `KlpAccent` | 26 | （葉節點） |
 | `KlpAvatar` | 41 | `KlpText` |
 | `KlpAvatarData` | 8 | （葉節點） |
 | `KlpAvatarGroup` | 28 | `KlpAvatar` |
@@ -251,11 +251,11 @@ graph LR
 
 | 型別 | 行數 | 組成 |
 |---|---|---|
-| `KlpDashedBorder` | 32 | `KlpStrokeFrame` |
-| `KlpDashedDivider` | 75 | （葉節點） |
+| `KlpDashedBorder` | 51 | `KlpStrokeFrame` |
+| `KlpDashedDivider` | 111 | （葉節點） |
 | `KlpDivider` | 14 | （葉節點） |
 | `KlpSection` | 46 | `KlpText` |
-| `KlpStrokeFrame` | 128 | （葉節點） |
+| `KlpStrokeFrame` | 135 | （葉節點） |
 | `KlpStrokeRole` | 2 | （葉節點） |
 | `KlpStrokeState` | 2 | （葉節點） |
 | `KlpSurface` | 119 | （葉節點） |
