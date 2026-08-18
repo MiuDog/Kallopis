@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import '../theme/klp_theme.dart';
 import '../typography/klp_text.dart';
 
+/// 分頁列。`selected` 是索引，`tabs` 是顯示文字；本元件不持有狀態。
 class KlpTabs extends StatelessWidget {
   const KlpTabs({
     super.key,

@@ -1,3 +1,4 @@
+import 'dart:convert';
 import 'dart:io';
 
 import 'package:flutter_test/flutter_test.dart';
@@ -84,9 +85,9 @@ void main() {
         if (motionLayer.contains(path) || knownOffenders.contains(path)) {
           continue;
         }
-        if (RegExp(r'Duration\(milliseconds:').hasMatch(
-          file.readAsStringSync(),
-        )) {
+        if (RegExp(
+          r'Duration\(milliseconds:',
+        ).hasMatch(file.readAsStringSync())) {
           violations.add(path);
         }
       }
@@ -164,6 +165,43 @@ void main() {
       count,
       greaterThanOrEqualTo(baseline - 4),
       reason: '引用數已降到 $count，請把 baseline 一併調低到這個數字。',
+    );
+  });
+
+  test('公開型別的 dartdoc 覆蓋率只能上升', () {
+    // 抽取自 Planist 時 186 個公開型別只有 3 個有 dartdoc。寫消費者探針時第一次就猜錯
+    // 四個建構子簽名——API 只能靠讀原始碼發現，就等於沒有 API。
+    //
+    // 一次補完不成比例，因此用棘輪：未文件化的數量只能下降。消費者最先碰到的
+    // 17 個入口型別已補齊。
+    const baseline = 188;
+
+    final declaration = RegExp(
+      r'^(?:abstract final class|final class|class|enum) (Klp[A-Za-z]+)',
+    );
+
+    var undocumented = 0;
+    for (final file in sourceFiles) {
+      final lines = const LineSplitter().convert(file.readAsStringSync());
+      for (var i = 0; i < lines.length; i++) {
+        if (!declaration.hasMatch(lines[i])) continue;
+        final previous = i == 0 ? '' : lines[i - 1].trim();
+        if (!previous.startsWith('///')) undocumented++;
+      }
+    }
+
+    expect(
+      undocumented,
+      lessThanOrEqualTo(baseline),
+      reason:
+          '未文件化的公開型別從 $baseline 增加到 $undocumented。'
+          '新增公開型別請一併寫 dartdoc——說明它是什麼、以及哪些決定不歸它管。',
+    );
+
+    expect(
+      undocumented,
+      greaterThanOrEqualTo(baseline - 15),
+      reason: '已降到 $undocumented，請把 baseline 一併調低到這個數字。',
     );
   });
 }

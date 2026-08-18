@@ -30,5 +30,9 @@ migrate_working_dir/
 /coverage/
 devtools_options.yaml
 
-# Golden 測試失敗產物（僅供本機比對，不入版控）
-test/failures/
+# Golden 測試失敗產物（僅供本機比對，不入版控）。
+# 不帶前綴的 `test/failures/` 只錨定在 repo 根目錄，抓不到 example/ 底下的同名目錄。
+**/test/failures/
+
+# 執行截圖等本機產物
+example/build/

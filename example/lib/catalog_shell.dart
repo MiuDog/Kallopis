@@ -96,7 +96,7 @@ class _CatalogNavigation extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.center,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        KlpText('Planist UI', role: KlpTextRole.bodyStrong),
+                        KlpText('Kallopis', role: KlpTextRole.bodyStrong),
                         KlpText(
                           'COMPONENT CATALOG / 01',
                           role: KlpTextRole.label,

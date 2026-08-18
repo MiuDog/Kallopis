@@ -2,6 +2,7 @@ import 'package:flutter/widgets.dart';
 
 import '../theme/klp_theme.dart';
 
+/// 通用面板：header 與 content，選用 footer。高度預設沿用 theme 的外殼密度。
 class KlpPanelFrame extends StatelessWidget {
   const KlpPanelFrame({
     super.key,

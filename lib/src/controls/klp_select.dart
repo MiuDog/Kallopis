@@ -7,6 +7,8 @@ import '../surface/klp_stroke.dart';
 import '../theme/klp_theme.dart';
 import '../typography/klp_text.dart';
 
+/// 下拉選擇的觸發器。**它只負責顯示目前的值與觸發 `onPressed`**，選單本身由呼叫端
+/// 以 `KlpMenu` 開啟——選項來源是產品資料，不屬於視覺層。
 class KlpSelect extends StatefulWidget {
   const KlpSelect({
     super.key,

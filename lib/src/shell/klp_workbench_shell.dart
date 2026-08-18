@@ -3,6 +3,8 @@ import 'package:flutter/widgets.dart';
 import '../foundation/klp_metrics.dart';
 import '../theme/klp_theme.dart';
 
+/// 三欄工作區外殼：主要面板、舞台、次要面板，兩側可拖曳調寬並依斷點自動收合。
+/// 這是桌面型應用最外層的版面骨架。
 class KlpWorkbenchShell extends StatelessWidget {
   const KlpWorkbenchShell({
     super.key,

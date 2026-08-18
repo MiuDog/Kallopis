@@ -86,6 +86,8 @@ MaterialApp(
 | `test/visual_style_test.dart` | 兩套風格在字體／形狀／密度／動態／分層手法上必須全部不同 |
 | `example/test/style_switch_golden_test.dart` | 兩套風格算出的圖必須不同——證明 token 真的抵達畫面，而不只是值不同 |
 | `test/klp_region_placeholder_golden_test.dart` 等 | 渲染輸出與抽取來源逐像素相同 |
+| `test/consumer_contract_test.dart` | 從**消費者的位置**驗證：只 import 公開 barrel、不自備任何鷹架，元件要能渲染、客製面要真的生效、barrel 不得漏匯出 |
+| 同上（棘輪） | 未文件化的公開型別數量只能下降 |
 
 ## 建置與測試
 
@@ -97,12 +99,18 @@ flutter test
 cd example && flutter test
 ```
 
+元件目錄可實際執行（Windows）。用 `--dart-define` 直接以指定風格啟動，不必手動切換：
+
+```
+cd example && flutter run -d windows --dart-define=klp.style=terminal
+```
+
 ## 已知欠債
 
 - 舊 static token 的引用已從 515 降到 16，剩餘的全部是刻意保留：面板寬度與 responsive
   斷點（版面預設值，可由 widget 參數覆寫）、選單幾何（要在 build 前算彈出位置，取不到
   context）、視窗透明度、dense 變體的固定高度。棘輪測試維持列管，新增靜態引用視為回退。
-- 6 個檔案內嵌寫死的中文文案，應收斂為必填 label 參數或 `Klp*Labels` 物件
-  （`KlpCodeViewerLabels` 已是這個形狀，可作為樣板）。
+- 無障礙 `Semantics` 覆蓋 76 個檔案中的 22 個。
+- 186 個公開型別中，消費者最先碰到的 17 個已有 dartdoc，其餘以棘輪列管。
 - `klp_advanced_data`（20 個布林參數）、`klp_foundation_extras`（11 個，且是 17 個類別的雜物袋）
   未通過抽層規則 4，需重構而非移除。

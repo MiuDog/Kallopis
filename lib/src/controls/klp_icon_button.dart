@@ -4,6 +4,8 @@ import '../foundation/klp_icon.dart';
 import '../overlay/klp_tooltip.dart';
 import '../theme/klp_theme.dart';
 
+/// 只有圖示的按鈕。`label` 為必填且用於無障礙標註——圖示本身沒有可讀文字，
+/// 沒有 label 的圖示按鈕對螢幕閱讀器等於不存在。
 class KlpIconButton extends StatefulWidget {
   const KlpIconButton({
     super.key,

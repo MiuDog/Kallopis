@@ -4,6 +4,7 @@ import '../foundation/klp_icon.dart';
 import '../theme/klp_theme.dart';
 import 'klp_panel_header.dart';
 
+/// 應用程式最外層：鋪滿 app 底色，並在頂端保留自訂視窗標題列的位置。
 class KlpAppScreen extends StatelessWidget {
   const KlpAppScreen({super.key, required this.child, this.windowHeader});
 
@@ -48,6 +49,7 @@ class KlpAppWindowHeader extends StatelessWidget {
 
 enum KlpContentState { loading, ready, empty, error, permission }
 
+/// 依可用寬度決定面板顯示與否的協調器。斷點來自版面常數，不隨風格改變。
 class KlpResponsivePaneCoordinator extends StatelessWidget {
   const KlpResponsivePaneCoordinator({
     super.key,

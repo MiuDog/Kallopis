@@ -202,6 +202,8 @@ abstract final class KlpTextStyles {
   }
 }
 
+/// 文字。以**角色**指定樣式（`role`），不指定字級與字體——實際的字級、行高與
+/// 家族由 theme 的 typography 層決定，因此換風格時整體會一起變。
 class KlpText extends StatelessWidget {
   const KlpText(
     this.data, {

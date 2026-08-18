@@ -22,8 +22,19 @@ class KallopisCatalogApp extends StatefulWidget {
 }
 
 class _KallopisCatalogAppState extends State<KallopisCatalogApp> {
-  KlpVisualStyle _style = KlpVisualStyle.modern;
-  Brightness _brightness = Brightness.light;
+  /// 初始風格可由啟動參數指定：`flutter run --dart-define=klp.style=terminal`。
+  /// 這讓「某個風格在真實視窗下長什麼樣」可以被直接啟動驗證，不必靠點擊。
+  static const _initialStyle = String.fromEnvironment(
+    'klp.style',
+    defaultValue: 'modern',
+  );
+
+  late KlpVisualStyle _style = _initialStyle == 'terminal'
+      ? KlpVisualStyle.terminal
+      : KlpVisualStyle.modern;
+  late Brightness _brightness = _initialStyle == 'terminal'
+      ? Brightness.dark
+      : Brightness.light;
   int _selected = 0;
 
   bool get _isTerminal => _style.name == KlpVisualStyle.terminal.name;

@@ -1,6 +1,44 @@
-/// Kallopis — the shared Flutter visual layer for the -ist product family.
+/// Kallopis — `-ist` 產品家族共用的 Flutter 視覺層。
 ///
-/// 這個 barrel 是 Kallopis 唯一的公開入口。
+/// 這個 barrel 是唯一的公開入口；`lib/src/` 不對外。
+///
+/// ## 最短用法
+///
+/// ```dart
+/// MaterialApp(
+///   theme: buildKlpTheme(Brightness.light),
+///   home: const KlpAppScreen(child: MyScreen()),
+/// )
+/// ```
+///
+/// ## 換一套視覺風格
+///
+/// 風格是一個必須整組給定的物件，因此不會出現「只換了一半」的狀態：
+///
+/// ```dart
+/// theme: buildKlpTheme(Brightness.dark, style: KlpVisualStyle.terminal)
+/// ```
+///
+/// ## 套用品牌色
+///
+/// 取一套現成風格，只覆寫需要的那一層。**傳入 `style` 時 `style.colors` 就是色彩的
+/// 唯一來源**，`brightness` 不再干涉：
+///
+/// ```dart
+/// final brand = KlpVisualStyle.modern.copyWith(
+///   colors: KlpThemeData.light.copyWith(accent: myBrandColor),
+/// );
+/// theme: buildKlpTheme(Brightness.light, style: brand)
+/// ```
+///
+/// ## 元件取值
+///
+/// 元件一律透過 `context.klp` 取已解析的 token，不使用編譯期常數——後者換 theme 時
+/// 不會跟著變，而且不會有任何錯誤訊息告訴你它沒變：
+///
+/// ```dart
+/// Padding(padding: EdgeInsets.all(context.klp.space.base), child: ...)
+/// ```
 library;
 
 export 'src/controls/klp_button.dart';
@@ -39,6 +77,7 @@ export 'src/form/klp_reference_picker.dart';
 export 'src/form/klp_structured_fields.dart';
 export 'src/foundation/klp_icon.dart';
 export 'src/foundation/klp_icons.dart';
+export 'src/foundation/klp_palette.dart';
 export 'src/foundation/klp_accent.dart';
 export 'src/foundation/klp_metrics.dart';
 export 'src/foundation/klp_foundation_extras.dart';

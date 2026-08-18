@@ -3,6 +3,7 @@ import 'package:flutter/widgets.dart';
 import '../theme/klp_theme.dart';
 import 'klp_panel_frame.dart';
 
+/// 側邊欄：header、rail（圖示軌）、content 與選用的 footer。
 class KlpSidebarFrame extends StatelessWidget {
   const KlpSidebarFrame({
     super.key,

@@ -33,19 +33,23 @@ class KlpSlider extends StatelessWidget {
             ),
           ],
         ),
-        SliderTheme(
-          data: SliderThemeData(
-            activeTrackColor: tokens.text,
-            inactiveTrackColor: tokens.surfaceMuted,
-            thumbColor: tokens.surfaceInset,
-            overlayColor: KlpPalette.transparent,
-            trackHeight: context.klp.shape.stroke,
-            thumbShape: _KlpSliderThumb(
-              tokens.borderStrong,
-              context.klp.shape.stroke,
+        // Slider 同樣需要 Material 祖先，理由見 KlpTextField。
+        Material(
+          type: MaterialType.transparency,
+          child: SliderTheme(
+            data: SliderThemeData(
+              activeTrackColor: tokens.text,
+              inactiveTrackColor: tokens.surfaceMuted,
+              thumbColor: tokens.surfaceInset,
+              overlayColor: KlpPalette.transparent,
+              trackHeight: context.klp.shape.stroke,
+              thumbShape: _KlpSliderThumb(
+                tokens.borderStrong,
+                context.klp.shape.stroke,
+              ),
             ),
+            child: Slider(value: value, onChanged: onChanged),
           ),
-          child: Slider(value: value, onChanged: onChanged),
         ),
       ],
     );

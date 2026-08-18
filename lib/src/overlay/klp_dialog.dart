@@ -5,6 +5,8 @@ import '../surface/klp_surface.dart';
 import '../typography/klp_text.dart';
 import '../theme/klp_theme.dart';
 
+/// 對話框內容。**不負責彈出**——呼叫端自行決定用 `showDialog` 或其他方式呈現。
+/// `secondaryLabel` 為必填：庫不替產品決定用什麼語言說「取消」。
 class KlpDialog extends StatelessWidget {
   const KlpDialog({
     super.key,
@@ -13,7 +15,7 @@ class KlpDialog extends StatelessWidget {
     required this.child,
     required this.primaryLabel,
     required this.onPrimary,
-    this.secondaryLabel = '取消',
+    required this.secondaryLabel,
     this.onSecondary,
   });
 
@@ -22,6 +24,8 @@ class KlpDialog extends StatelessWidget {
   final Widget child;
   final String primaryLabel;
   final VoidCallback onPrimary;
+
+  /// 次要動作的文字。**沒有預設值是刻意的**——庫不替產品決定用什麼語言說「取消」。
   final String secondaryLabel;
   final VoidCallback? onSecondary;
 

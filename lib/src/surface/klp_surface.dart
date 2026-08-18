@@ -3,6 +3,8 @@ import 'package:flutter/widgets.dart';
 import '../theme/klp_theme.dart';
 import '../foundation/klp_palette.dart';
 
+/// 表面在階層中的位置。由淺到深：`base` → `inset` → `muted`，另有 `component`
+/// （控制項底色）、`overlay`（浮層）、`raised`（次級內容區）與 `transparent`。
 enum KlpSurfaceTone {
   base,
   inset,
@@ -13,6 +15,8 @@ enum KlpSurfaceTone {
   transparent,
 }
 
+/// 有底色的容器，是所有區塊的基底。`tone` 指定它在表面階層中的位置，
+/// 實際色值與圓角由 theme 決定。
 class KlpSurface extends StatelessWidget {
   const KlpSurface({
     super.key,

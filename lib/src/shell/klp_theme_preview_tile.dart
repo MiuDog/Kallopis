@@ -37,7 +37,7 @@ class KlpThemePreviewTile extends StatelessWidget {
       button: onSelected != null,
       enabled: enabled,
       selected: selected,
-      label: '$label，$description',
+      label: '$label · $description',
       child: SizedBox(
         key: ValueKey('theme-preview-${mode.name}'),
         width: width,

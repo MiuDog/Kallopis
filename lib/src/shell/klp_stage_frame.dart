@@ -2,6 +2,7 @@ import 'package:flutter/widgets.dart';
 
 import '../theme/klp_theme.dart';
 
+/// 舞台區：頂部 header、中央 content、底部選用的 status 列。
 class KlpStageFrame extends StatelessWidget {
   const KlpStageFrame({
     super.key,

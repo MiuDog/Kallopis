@@ -7,6 +7,8 @@ import '../foundation/klp_palette.dart';
 
 enum KlpButtonTone { primary, secondary, ghost, danger }
 
+/// 主要動作按鈕。`tone` 決定語意強度（primary／secondary／ghost／danger），
+/// 圓角、內距、高度與邊框皆取自 theme。
 class KlpButton extends StatefulWidget {
   const KlpButton({
     super.key,

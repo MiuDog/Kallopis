@@ -296,15 +296,15 @@ class KlpThemeData extends ThemeExtension<KlpThemeData> {
 
 enum KlpThemeVariant { light, dark, ultraDark, transparent }
 
-
 enum KlpFieldFillState { rest, hovered, focused, selected, disabled, error }
 
 abstract final class KlpFieldStyle {
   /// 需要 shape token，因此不能是無參數的 getter——欄位圓角屬於風格。
-  static OutlineInputBorder borderFor(KlpShapeTheme shape) => OutlineInputBorder(
-    borderRadius: BorderRadius.circular(shape.control),
-    borderSide: BorderSide.none,
-  );
+  static OutlineInputBorder borderFor(KlpShapeTheme shape) =>
+      OutlineInputBorder(
+        borderRadius: BorderRadius.circular(shape.control),
+        borderSide: BorderSide.none,
+      );
 
   static Color colorFor(
     KlpThemeData tokens,
@@ -352,20 +352,35 @@ abstract final class KlpFieldStyle {
   }
 }
 
+/// 由一套視覺風格建出 `ThemeData`。
+///
+/// 色彩的來源規則刻意是**明確的，不做推測**：
+///
+/// - 不給 [style]：依 [brightness] 取內建 preset，套用 modern 風格。
+/// - 給了 [style]：**`style.colors` 就是色彩，[brightness] 不再干涉。**
+///
+/// 曾經試過「偵測消費者有沒有動過色彩，沒動過才依 brightness 挑」，那是行不通的：
+/// Dart 會把欄位值相同的 `const` 實例正規化成同一個物件，因此一組剛好等於內建
+/// preset 的自訂色盤會被誤判為未修改，然後被靜默換掉。**能被靜默搞錯的推測就不要做。**
+///
+/// [accent] 為 `null` 時保留色彩層原本的 interaction 色；給定值才覆寫它。
 ThemeData buildKlpTheme(
   Brightness brightness, {
-  KlpAccent accent = KlpAccent.ink,
-  KlpVisualStyle style = KlpVisualStyle.modern,
+  KlpAccent? accent,
+  KlpVisualStyle? style,
 }) {
-  final baseTokens = brightness == Brightness.dark
-      ? KlpThemeData.dark
-      : KlpThemeData.light;
-  return _buildKlpThemeData(baseTokens, accent: accent, style: style);
+  final effectiveStyle = style ?? KlpVisualStyle.modern;
+  final baseTokens = style != null
+      ? style.colors
+      : (brightness == Brightness.dark
+            ? KlpThemeData.dark
+            : KlpThemeData.light);
+  return _buildKlpThemeData(baseTokens, accent: accent, style: effectiveStyle);
 }
 
 ThemeData buildKlpThemeVariant(
   KlpThemeVariant variant, {
-  KlpAccent accent = KlpAccent.ink,
+  KlpAccent? accent,
   bool transparencyEnabled = false,
   KlpVisualStyle style = KlpVisualStyle.modern,
 }) {
@@ -387,31 +402,37 @@ ThemeData buildKlpThemeVariant(
 
 ThemeData _buildKlpThemeData(
   KlpThemeData baseTokens, {
-  KlpAccent accent = KlpAccent.ink,
+  KlpAccent? accent,
   bool transparencyEnabled = false,
   KlpVisualStyle style = KlpVisualStyle.modern,
 }) {
-  final brightness = identical(baseTokens, KlpThemeData.light)
+  // 由實際的表面色推導明暗，而不是比對是否為某個 preset 實例——自訂色盤永遠不會
+  // `identical` 於 preset，用 identical 判斷會讓所有自訂主題都被當成暗色。
+  final brightness = baseTokens.app.computeLuminance() > 0.5
       ? Brightness.light
       : Brightness.dark;
-  final interactionColor = accent.resolve(brightness);
-  final themedTokens = baseTokens.copyWith(
-    interaction: interactionColor,
-    interactionSoft: Color.alphaBlend(
-      interactionColor.withValues(
-        alpha: brightness == Brightness.dark ? 0.22 : 0.16,
-      ),
-      baseTokens.surfaceInset,
-    ),
-  );
+  final interactionColor = accent?.resolve(brightness);
+  final themedTokens = interactionColor == null
+      ? baseTokens
+      : baseTokens.copyWith(
+          interaction: interactionColor,
+          interactionSoft: Color.alphaBlend(
+            interactionColor.withValues(
+              alpha: brightness == Brightness.dark ? 0.22 : 0.16,
+            ),
+            baseTokens.surfaceInset,
+          ),
+        );
   final tokens = transparencyEnabled
       ? themedTokens.withWindowTransparency(brightness)
       : themedTokens;
-  final dataVisualizationTokens = identical(baseTokens, KlpThemeData.light)
-      ? KlpDataVisualizationTheme.light
-      : identical(baseTokens, KlpThemeData.dark)
-      ? KlpDataVisualizationTheme.dark
-      : KlpDataVisualizationTheme.ultraDark;
+  final dataVisualizationTokens = switch (brightness) {
+    Brightness.light => KlpDataVisualizationTheme.light,
+    Brightness.dark =>
+      identical(baseTokens, KlpThemeData.ultraDark)
+          ? KlpDataVisualizationTheme.ultraDark
+          : KlpDataVisualizationTheme.dark,
+  };
   final baseTextTheme = ThemeData(
     brightness: brightness,
     useMaterial3: false,

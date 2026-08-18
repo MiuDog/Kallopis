@@ -124,12 +124,18 @@ token 正是密度**。spacing 留在編譯期就等於該維度永遠換不掉�
 - `test/visual_style_test.dart`：兩套風格在每個維度上必須不同。
 - `example/test/style_switch_golden_test.dart`：兩套風格算出的圖必須不同
   ——證明 token 真的抵達畫面，而不只是值不同。
+- `test/consumer_contract_test.dart`：從**庫外**驗證。其餘測試都看得到 `lib/src/`，
+  因此驗證不了「一個只 import 公開 barrel 的 app 能不能用」。這道缺口是實測出來的
+  ——庫內測試全綠的狀態下，第一個真實消費者一放上 `KlpTextField` 就拋
+  `No Material widget found`，而 `buildKlpTheme` 會靜默丟棄傳入的品牌色。
+  **編譯過不等於畫得出來，庫內全綠不等於庫外能用。**
 
 ## 已知欠債（接受本決策時仍存在）
 
 - 舊 static token 的引用已從 515 降到 16。剩餘者為版面預設值、選單幾何、視窗透明度與
   dense 變體高度——皆非風格，刻意保留。計數棘輪持續列管。
-- 6 個檔案內嵌寫死的中文文案。
+- 無障礙 `Semantics` 覆蓋 76 個檔案中的 22 個。
+- 186 個公開型別中僅 17 個有 dartdoc，以棘輪列管。
 - `klp_advanced_data`（20 個布林參數）與 `klp_foundation_extras`（11 個，且是 17 個類別的
   雜物袋）未通過規則 4，需重構而非移除。
 
