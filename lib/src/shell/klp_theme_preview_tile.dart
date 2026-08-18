@@ -56,12 +56,17 @@ class KlpThemePreviewTile extends StatelessWidget {
                     borderRadius: radius,
                   ),
                   child: Padding(
-                    padding: EdgeInsets.all(selected ? context.klp.space.tight : 0),
+                    padding: EdgeInsets.all(
+                      selected ? context.klp.space.tight : 0,
+                    ),
                     child: ClipRRect(
                       borderRadius: radius,
                       child: CustomPaint(
                         size: Size(width, width * 0.66),
-                        painter: _ThemePreviewPainter(mode, context.klp.shape.panel),
+                        painter: _ThemePreviewPainter(
+                          mode,
+                          context.klp.shape.panel,
+                        ),
                       ),
                     ),
                   ),

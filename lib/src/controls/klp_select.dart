@@ -64,7 +64,9 @@ class _KlpSelectState extends State<KlpSelect> {
               child: SizedBox(
                 height: KlpFormMetrics.fieldHeight,
                 child: Padding(
-                  padding: EdgeInsets.symmetric(horizontal: context.klp.space.base),
+                  padding: EdgeInsets.symmetric(
+                    horizontal: context.klp.space.base,
+                  ),
                   child: Row(
                     children: [
                       Expanded(

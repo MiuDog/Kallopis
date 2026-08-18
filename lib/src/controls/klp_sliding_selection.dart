@@ -55,7 +55,9 @@ class KlpSlidingSelection extends StatelessWidget {
                 duration: context.klp.motion.styleTransition,
                 decoration: BoxDecoration(
                   color: options[selectedIndex].color,
-                  borderRadius: BorderRadius.circular(context.klp.shape.control - 1),
+                  borderRadius: BorderRadius.circular(
+                    context.klp.shape.control - 1,
+                  ),
                 ),
               ),
             ),
@@ -83,13 +85,17 @@ class KlpSlidingSelection extends StatelessWidget {
                 for (var index = 0; index < options.length; index++)
                   Material(
                     color: KlpPalette.transparent,
-                    borderRadius: BorderRadius.circular(context.klp.shape.control),
+                    borderRadius: BorderRadius.circular(
+                      context.klp.shape.control,
+                    ),
                     child: InkWell(
                       key: ValueKey('pln-selection-hit-$label-$index'),
                       onTap: onSelected == null
                           ? null
                           : () => onSelected!(index),
-                      borderRadius: BorderRadius.circular(context.klp.shape.control),
+                      borderRadius: BorderRadius.circular(
+                        context.klp.shape.control,
+                      ),
                       child: const SizedBox.square(
                         dimension: KlpFormMetrics.selectionControl,
                       ),

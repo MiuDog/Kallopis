@@ -4,9 +4,9 @@ import '../tokens/klp_scale.dart';
 
 /// Layer 2：間距與密度的 semantic token。
 ///
-/// 這是「終端機風 vs 現代風」差異最大的一組 token——終端機風緊湊、現代風寬鬆，而兩者
-/// 用的是同一批元件。因此 padding **必須**由 theme 提供；元件內寫死 `EdgeInsets.all(12)`
-/// 會讓該元件在換風格時原地不動，是最典型的風格不對齊。
+/// 這是換風格時差異最大的一組 token——高密度與寬鬆兩種取向用的是同一批元件。
+/// 因此 padding **必須**由 theme 提供；元件內寫死 `EdgeInsets.all(12)` 會讓該元件在
+/// 換風格時原地不動，是最典型的風格不對齊。
 @immutable
 class KlpSpacingTheme extends ThemeExtension<KlpSpacingTheme> {
   const KlpSpacingTheme({
@@ -58,20 +58,22 @@ class KlpSpacingTheme extends ThemeExtension<KlpSpacingTheme> {
   final double controlHeightSmall;
   final double controlHeightLarge;
 
-  /// 圖示尺寸屬於密度：終端機風的圖示要能與等寬字的行高對齊。
+  /// 圖示尺寸屬於密度：高密度風格的圖示要能與收緊後的行高對齊。
   final double iconSmall;
   final double icon;
   final double iconLarge;
 
-  /// App 外殼的高度。終端機風的標題列與狀態列比現代風矮一截——這是密度，不是版面常數。
+  /// App 外殼的高度。高密度風格的標題列與狀態列會矮一截——這是密度，不是版面常數。
   final double chromeHeader;
   final double chromeStatusBar;
   final double chromeRail;
   final double chromeTab;
   final double iconButton;
 
-  EdgeInsets get controlInsets =>
-      EdgeInsets.symmetric(horizontal: controlPaddingX, vertical: controlPaddingY);
+  EdgeInsets get controlInsets => EdgeInsets.symmetric(
+    horizontal: controlPaddingX,
+    vertical: controlPaddingY,
+  );
 
   EdgeInsets get containerInsets => EdgeInsets.all(containerPadding);
 
@@ -101,34 +103,6 @@ class KlpSpacingTheme extends ThemeExtension<KlpSpacingTheme> {
     chromeRail: 56,
     chromeTab: 32,
     iconButton: 30,
-  );
-
-  /// 終端機風：資訊密度優先，貼齊字元格，控制項 24pt。
-  static const KlpSpacingTheme denseDensity = KlpSpacingTheme(
-    hairline: KlpScale.space0,
-    tight: KlpScale.space50,
-    compact: KlpScale.space100,
-    base: KlpScale.space200,
-    comfortable: KlpScale.space200,
-    loose: KlpScale.space300,
-    section: KlpScale.space400,
-    page: KlpScale.space400,
-    controlPaddingX: KlpScale.space200,
-    controlPaddingY: KlpScale.space50,
-    containerPadding: KlpScale.space200,
-    itemGap: KlpScale.space100,
-    groupGap: KlpScale.space200,
-    controlHeight: 24,
-    controlHeightSmall: 20,
-    controlHeightLarge: 30,
-    iconSmall: 12,
-    icon: 14,
-    iconLarge: 18,
-    chromeHeader: 36,
-    chromeStatusBar: 22,
-    chromeRail: 40,
-    chromeTab: 24,
-    iconButton: 22,
   );
 
   @override

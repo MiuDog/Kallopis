@@ -136,7 +136,10 @@ class _ActionSurface extends StatelessWidget {
         color: tokens.component,
         borderRadius: BorderRadius.circular(context.klp.shape.card),
       ),
-      child: Padding(padding: EdgeInsets.all(context.klp.space.compact), child: child),
+      child: Padding(
+        padding: EdgeInsets.all(context.klp.space.compact),
+        child: child,
+      ),
     );
   }
 }

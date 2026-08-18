@@ -139,7 +139,8 @@ class KlpKeyValueEditor extends StatelessWidget {
               ),
             ],
           ),
-          if (index < entries.length - 1) SizedBox(height: context.klp.space.tight),
+          if (index < entries.length - 1)
+            SizedBox(height: context.klp.space.tight),
         ],
       ],
     );

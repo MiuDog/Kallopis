@@ -30,7 +30,8 @@ class KlpTabs extends StatelessWidget {
                 selected: selected == index,
                 onPressed: () => onSelected(index),
               ),
-              if (index < tabs.length - 1) SizedBox(width: context.klp.space.tight),
+              if (index < tabs.length - 1)
+                SizedBox(width: context.klp.space.tight),
             ],
           ],
         ),

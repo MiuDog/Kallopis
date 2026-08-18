@@ -60,20 +60,26 @@ feature package**，而不是塞進視覺元件庫。
 
 ### 換一套視覺風格
 
-`KlpVisualStyle` 把七層綁成必須整組給定的物件，因此「只換其中三層」這種半套狀態無法表達。
+**庫只出貨 `modern` 一套，各層也只有一個 preset。** 要別的外觀是取它再逐層 `copyWith`：
 
 ```dart
+final squared = KlpVisualStyle.modern.copyWith(
+  name: 'squared',
+  shape: KlpShapeTheme.standardShape.copyWith(control: 0, card: 0, panel: 0),
+);
+
 MaterialApp(
-  theme: buildKlpTheme(Brightness.dark, style: KlpVisualStyle.terminal),
+  theme: buildKlpTheme(Brightness.dark, style: squared),
   home: const MyApp(),
 )
 ```
 
-內建 `modern`（比例字體／圓角／陰影分層／寬鬆密度／有過場）與 `terminal`（全域等寬／直角／
-實線框分層／高密度／無過場）。消費者微調時取一個現成風格再 `copyWith` 單一層。
+`KlpVisualStyle` 把七層綁成必須整組給定的物件，因此「只換其中三層」這種半套狀態無法表達。
+庫**不預先替任何產品組好第二套外觀**——那會變成在替產品做風格決定。
 
-**`terminal` 同時是架構的驗收條件**：切換到它若需要改動任何元件程式碼，就代表該元件
-還在硬編碼風格。
+只有一套 preset 的代價是沒有現成的對照組可以驗證「token 真的抵達畫面」。
+因此 [`test/style_fixture.dart`](test/style_fixture.dart) 用各層的建構子就地組出一套極端值
+作為**架構的驗收條件**：切換到它若需要改動任何元件程式碼，就代表該元件還在硬編碼風格。
 
 ## 分發（router）
 
@@ -108,7 +114,7 @@ KlpRouterScope(router: router, child: const KlpRouterOutlet())
 |---|---|
 | `test/token_discipline_test.dart` | 元件出現 `Color(0x…)`、`Duration(milliseconds:…)`、或直接參照 primitive 層 |
 | 同上（棘輪） | 舊 static token 的引用數只能下降（目前 16），且降下去後忘記調低 baseline 也會失敗 |
-| `test/visual_style_test.dart` | 兩套風格在字體／形狀／密度／動態／分層手法上必須全部不同 |
+| `test/visual_style_test.dart` | 出貨風格與測試用的對照風格，在字體／形狀／密度／動態／分層手法上必須全部不同 |
 | `example/test/style_switch_golden_test.dart` | 兩套風格算出的圖必須不同——證明 token 真的抵達畫面，而不只是值不同 |
 | `test/klp_region_placeholder_golden_test.dart` 等 | 渲染輸出與抽取來源逐像素相同 |
 | `test/consumer_contract_test.dart` | 從**消費者的位置**驗證：只 import 公開 barrel、不自備任何鷹架，元件要能渲染、客製面要真的生效、barrel 不得漏匯出 |
@@ -126,10 +132,10 @@ flutter test
 cd example && flutter test
 ```
 
-元件目錄可實際執行（Windows）。用 `--dart-define` 直接以指定風格啟動，不必手動切換：
+元件目錄可實際執行（Windows）：
 
 ```
-cd example && flutter run -d windows --dart-define=klp.style=terminal
+cd example && flutter run -d windows
 ```
 
 ## 已知欠債

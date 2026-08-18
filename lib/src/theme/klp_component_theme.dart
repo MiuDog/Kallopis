@@ -58,37 +58,38 @@ class KlpComponentTheme extends ThemeExtension<KlpComponentTheme> {
   /// component token 大量出現代表 semantic 層沒設計好。
   static const KlpComponentTheme inherited = KlpComponentTheme();
 
-  /// 終端機風：所有圓角歸零，控制項一律帶實線框。
-  static const KlpComponentTheme squared = KlpComponentTheme(
-    buttonRadius: 0,
-    buttonBorderWidth: 1,
-    fieldRadius: 0,
-    fieldBorderWidth: 1,
-    menuRadius: 0,
-    cardRadius: 0,
-    badgeRadius: 0,
-  );
-
   // ── 解析：component → semantic ────────────────────────────────────────────
 
-  double resolveButtonRadius(KlpShapeTheme shape) => buttonRadius ?? shape.control;
-  double resolveButtonPaddingX(KlpSpacingTheme s) => buttonPaddingX ?? s.controlPaddingX;
-  double resolveButtonPaddingY(KlpSpacingTheme s) => buttonPaddingY ?? s.controlPaddingY;
-  double resolveButtonHeight(KlpSpacingTheme s) => buttonHeight ?? s.controlHeight;
-  double resolveButtonBorderWidth(KlpShapeTheme shape, KlpSurfaceTheme surface) =>
-      buttonBorderWidth ?? (surface.usesShadow ? 0 : shape.hairline);
+  double resolveButtonRadius(KlpShapeTheme shape) =>
+      buttonRadius ?? shape.control;
+  double resolveButtonPaddingX(KlpSpacingTheme s) =>
+      buttonPaddingX ?? s.controlPaddingX;
+  double resolveButtonPaddingY(KlpSpacingTheme s) =>
+      buttonPaddingY ?? s.controlPaddingY;
+  double resolveButtonHeight(KlpSpacingTheme s) =>
+      buttonHeight ?? s.controlHeight;
+  double resolveButtonBorderWidth(
+    KlpShapeTheme shape,
+    KlpSurfaceTheme surface,
+  ) => buttonBorderWidth ?? (surface.usesShadow ? 0 : shape.hairline);
 
-  double resolveFieldRadius(KlpShapeTheme shape) => fieldRadius ?? shape.control;
-  double resolveFieldPaddingX(KlpSpacingTheme s) => fieldPaddingX ?? s.controlPaddingX;
-  double resolveFieldHeight(KlpSpacingTheme s) => fieldHeight ?? s.controlHeight;
-  double resolveFieldBorderWidth(KlpShapeTheme shape) => fieldBorderWidth ?? shape.hairline;
+  double resolveFieldRadius(KlpShapeTheme shape) =>
+      fieldRadius ?? shape.control;
+  double resolveFieldPaddingX(KlpSpacingTheme s) =>
+      fieldPaddingX ?? s.controlPaddingX;
+  double resolveFieldHeight(KlpSpacingTheme s) =>
+      fieldHeight ?? s.controlHeight;
+  double resolveFieldBorderWidth(KlpShapeTheme shape) =>
+      fieldBorderWidth ?? shape.hairline;
 
   double resolveMenuRadius(KlpShapeTheme shape) => menuRadius ?? shape.card;
   double resolveMenuPadding(KlpSpacingTheme s) => menuPadding ?? s.compact;
-  double resolveMenuItemHeight(KlpSpacingTheme s) => menuItemHeight ?? s.controlHeightSmall;
+  double resolveMenuItemHeight(KlpSpacingTheme s) =>
+      menuItemHeight ?? s.controlHeightSmall;
 
   double resolveCardRadius(KlpShapeTheme shape) => cardRadius ?? shape.card;
-  double resolveCardPadding(KlpSpacingTheme s) => cardPadding ?? s.containerPadding;
+  double resolveCardPadding(KlpSpacingTheme s) =>
+      cardPadding ?? s.containerPadding;
 
   double resolveBadgeRadius(KlpShapeTheme shape) => badgeRadius ?? shape.pill;
   double resolveBadgePaddingX(KlpSpacingTheme s) => badgePaddingX ?? s.compact;

@@ -41,9 +41,13 @@ class KlpForm extends StatelessWidget {
         ],
         for (var index = 0; index < sections.length; index++) ...[
           sections[index],
-          if (index < sections.length - 1) SizedBox(height: context.klp.space.comfortable),
+          if (index < sections.length - 1)
+            SizedBox(height: context.klp.space.comfortable),
         ],
-        if (actions != null) ...[SizedBox(height: context.klp.space.comfortable), actions!],
+        if (actions != null) ...[
+          SizedBox(height: context.klp.space.comfortable),
+          actions!,
+        ],
       ],
     );
   }
@@ -219,7 +223,9 @@ class KlpFormErrorSummary extends StatelessWidget {
               behavior: HitTestBehavior.opaque,
               onTap: onSelected == null ? null : () => onSelected!(error.key),
               child: Padding(
-                padding: EdgeInsets.symmetric(vertical: context.klp.space.tight),
+                padding: EdgeInsets.symmetric(
+                  vertical: context.klp.space.tight,
+                ),
                 child: KlpText(
                   error.value,
                   role: KlpTextRole.caption,

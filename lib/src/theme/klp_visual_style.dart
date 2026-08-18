@@ -49,20 +49,22 @@ class KlpVisualStyle {
     components: KlpComponentTheme.inherited,
   );
 
-  /// 終端機風：全域等寬、直角、實線框分層、高密度、無過場動畫。
-  ///
-  /// 這套風格的用途不只是提供一個選項，更是**架構的驗收條件**：如果切換到它需要改動
-  /// 任何元件的程式碼，就代表該元件還在硬編碼風格。
-  static const KlpVisualStyle terminal = KlpVisualStyle(
-    name: 'terminal',
-    colors: KlpThemeData.ultraDark,
-    typography: KlpTypographyTheme.monospaced,
-    spacing: KlpSpacingTheme.denseDensity,
-    shape: KlpShapeTheme.squaredShape,
-    motion: KlpMotionTheme.instantMotion,
-    surface: KlpSurfaceTheme.outlined,
-    components: KlpComponentTheme.squared,
-  );
+  // Kallopis 只出貨 `modern` 這一套，各層也只有一個 preset。
+  //
+  // 消費者要別的外觀，是用 [copyWith] 換掉某一層，並自己以該層的建構子給值：
+  //
+  // ```dart
+  // KlpVisualStyle.modern.copyWith(
+  //   name: 'dense',
+  //   shape: KlpShapeTheme.standardShape.copyWith(control: 0, card: 0, panel: 0),
+  // )
+  // ```
+  //
+  // **庫不預先替任何產品組好第二套外觀**——那會變成在替產品做風格決定。
+  //
+  // 只有一套 preset 的代價是：沒有現成的對照組可以驗證「token 真的抵達畫面」。
+  // 因此 `test/style_fixture.dart` 用各層的建構子就地組出一套極端值作為
+  // **架構的驗收條件**——切換到它若需要改動任何元件程式碼，就代表該元件還在硬編碼。
 
   /// 交給 `ThemeData.extensions` 的完整清單。少放任何一項，該層就會退回預設值而不會
   /// 報錯——因此這裡刻意不提供「部分產生」的版本。

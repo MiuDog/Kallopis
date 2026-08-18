@@ -47,7 +47,8 @@ class KlpTheme {
           theme.extension<KlpSpacingTheme>() ??
           KlpSpacingTheme.comfortableDensity,
       shape: theme.extension<KlpShapeTheme>() ?? KlpShapeTheme.standardShape,
-      motion: theme.extension<KlpMotionTheme>() ?? KlpMotionTheme.standardMotion,
+      motion:
+          theme.extension<KlpMotionTheme>() ?? KlpMotionTheme.standardMotion,
       surface: theme.extension<KlpSurfaceTheme>() ?? KlpSurfaceTheme.elevated,
       component:
           theme.extension<KlpComponentTheme>() ?? KlpComponentTheme.inherited,
@@ -97,7 +98,7 @@ class KlpTheme {
 
   List<BoxShadow> get overlayShadow => surface.overlayShadow(color.text);
 
-  /// hover 底色。混合比例來自 surface 層——終端機風的 hover 對比明顯更強。
+  /// hover 底色。混合比例來自 surface 層，因此不同風格的 hover 對比可以不同。
   Color get hoverSurface => color.hoverSurfaceWith(surface.hoverContrastMix);
 }
 

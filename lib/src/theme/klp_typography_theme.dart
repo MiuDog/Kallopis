@@ -4,7 +4,7 @@ import '../tokens/klp_scale.dart';
 
 /// Layer 2：字體的 semantic token。
 ///
-/// 字體家族本身是 theme 的一部分——終端機風全域使用等寬字，現代風只在程式碼與路徑使用。
+/// 字體家族本身是 theme 的一部分——有些風格全域使用等寬字，有些只在程式碼與路徑使用。
 /// 元件讀 `body`／`label`／`code` 這些**角色**，不指定家族，因此換 theme 時字體會整體
 /// 跟著換，不會只換一半。
 @immutable
@@ -111,37 +111,6 @@ class KlpTypographyTheme extends ThemeExtension<KlpTypographyTheme> {
     labelLeading: KlpScale.leading150,
     labelTracking: KlpScale.trackingWide,
     displayTracking: KlpScale.trackingTight,
-    regular: KlpScale.weight400,
-    medium: KlpScale.weight600,
-    strong: KlpScale.weight700,
-  );
-
-  /// 終端機風：全域等寬，行高收緊，標題不放大字距。
-  static const KlpTypographyTheme monospaced = KlpTypographyTheme(
-    sansFamily: _sans,
-    sansFallback: ['Noto Sans TC'],
-    monoFamily: _mono,
-    monoFallback: ['Noto Sans TC', _sans],
-    uiFamily: _mono,
-    bodyFamily: _mono,
-    codeFamily: _mono,
-    caption: KlpScale.font200,
-    body: KlpScale.font300,
-    label: KlpScale.font200,
-    section: KlpScale.font300,
-    headingSmall: KlpScale.font400,
-    heading: KlpScale.font500,
-    title: KlpScale.font700,
-    display: KlpScale.font900,
-    bodyLeading: KlpScale.leading400,
-    headingLeading: KlpScale.leading300,
-    displayLeading: KlpScale.leading150,
-    codeLeading: KlpScale.leading400,
-    readingLeading: KlpScale.leading450,
-    captionLeading: KlpScale.leading300,
-    labelLeading: KlpScale.leading150,
-    labelTracking: KlpScale.tracking0,
-    displayTracking: KlpScale.tracking0,
     regular: KlpScale.weight400,
     medium: KlpScale.weight600,
     strong: KlpScale.weight700,

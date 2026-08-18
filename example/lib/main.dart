@@ -9,11 +9,11 @@ import 'pages/status_visual_iteration_catalog.dart';
 
 void main() => runApp(const KallopisCatalogApp());
 
-/// Kallopis 的元件目錄，同時是 token 架構的**眼見為憑**。
+/// Kallopis 的元件目錄。
 ///
-/// 右上角的風格切換不是 demo 功能：切換時**沒有任何元件程式碼被執行到不同分支**，
-/// 只有 `ThemeData.extensions` 換了一組值。若某個元件在切換後外觀沒變，那就是它還在
-/// 硬編碼風格——這個畫面是唯一能一眼看出這件事的地方。
+/// 只使用出貨的 `modern` 風格；明暗切換在左下角。
+/// 「換整套風格」的驗收由 `test/style_switch_golden_test.dart` 以離屏算圖負責，
+/// 不佔用目錄的畫面。
 class KallopisCatalogApp extends StatefulWidget {
   const KallopisCatalogApp({super.key});
 
@@ -22,34 +22,9 @@ class KallopisCatalogApp extends StatefulWidget {
 }
 
 class _KallopisCatalogAppState extends State<KallopisCatalogApp> {
-  /// 初始風格可由啟動參數指定：`flutter run --dart-define=klp.style=terminal`。
-  /// 這讓「某個風格在真實視窗下長什麼樣」可以被直接啟動驗證，不必靠點擊。
-  static const _initialStyle = String.fromEnvironment(
-    'klp.style',
-    defaultValue: 'modern',
-  );
-
-  late KlpVisualStyle _style = _initialStyle == 'terminal'
-      ? KlpVisualStyle.terminal
-      : KlpVisualStyle.modern;
-  late Brightness _brightness = _initialStyle == 'terminal'
-      ? Brightness.dark
-      : Brightness.light;
+  KlpVisualStyle _style = KlpVisualStyle.modern;
+  Brightness _brightness = Brightness.light;
   int _selected = 0;
-
-  bool get _isTerminal => _style.name == KlpVisualStyle.terminal.name;
-
-  void _toggleStyle() {
-    setState(() {
-      if (_isTerminal) {
-        _style = KlpVisualStyle.modern;
-        _brightness = Brightness.light;
-      } else {
-        _style = KlpVisualStyle.terminal;
-        _brightness = Brightness.dark;
-      }
-    });
-  }
 
   void _toggleBrightness() {
     setState(() {
@@ -58,7 +33,7 @@ class _KallopisCatalogAppState extends State<KallopisCatalogApp> {
           : Brightness.light;
       _style = _style.copyWith(
         colors: _brightness == Brightness.dark
-            ? (_isTerminal ? KlpThemeData.ultraDark : KlpThemeData.dark)
+            ? KlpThemeData.dark
             : KlpThemeData.light,
       );
     });
@@ -94,52 +69,11 @@ class _KallopisCatalogAppState extends State<KallopisCatalogApp> {
       debugShowCheckedModeBanner: false,
       title: 'Kallopis Catalog',
       theme: buildKlpTheme(_brightness, style: _style),
-      home: Stack(
-        children: [
-          CatalogShell(
-            pages: pages,
-            selected: _selected.clamp(0, pages.length - 1),
-            onSelected: (index) => setState(() => _selected = index),
-            onToggleTheme: _toggleBrightness,
-          ),
-          Positioned(
-            top: 16,
-            right: 16,
-            child: _StyleSwitcher(
-              styleName: _style.name,
-              onToggle: _toggleStyle,
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-}
-
-class _StyleSwitcher extends StatelessWidget {
-  const _StyleSwitcher({required this.styleName, required this.onToggle});
-
-  final String styleName;
-  final VoidCallback onToggle;
-
-  @override
-  Widget build(BuildContext context) {
-    // 這個元件本身也遵守紀律：所有數值來自 token，沒有一個字面值。
-    final klp = context.klp;
-
-    return KlpSurface(
-      tone: KlpSurfaceTone.overlay,
-      padding: EdgeInsets.symmetric(
-        horizontal: klp.space.base,
-        vertical: klp.space.compact,
-      ),
-      child: Row(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          KlpText('style', role: KlpTextRole.label),
-          SizedBox(width: klp.space.compact),
-          KlpButton(label: styleName, onPressed: onToggle),
-        ],
+      home: CatalogShell(
+        pages: pages,
+        selected: _selected.clamp(0, pages.length - 1),
+        onSelected: (index) => setState(() => _selected = index),
+        onToggleTheme: _toggleBrightness,
       ),
     );
   }

@@ -69,9 +69,13 @@ class _KlpButtonState extends State<KlpButton> {
             KlpButtonTone.secondary || KlpButtonTone.ghost => tokens.text,
           };
     final content = Container(
-      height: widget.compact ? context.klp.space.controlHeightSmall : context.klp.space.controlHeight,
+      height: widget.compact
+          ? context.klp.space.controlHeightSmall
+          : context.klp.space.controlHeight,
       padding: EdgeInsets.symmetric(
-        horizontal: widget.compact ? context.klp.space.compact : context.klp.space.base,
+        horizontal: widget.compact
+            ? context.klp.space.compact
+            : context.klp.space.base,
       ),
       decoration: BoxDecoration(
         color: background,

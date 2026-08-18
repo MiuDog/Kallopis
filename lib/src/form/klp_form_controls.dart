@@ -315,7 +315,9 @@ class KlpMultiSelectField extends StatelessWidget {
                     color: selectedIds.contains(option.id)
                         ? context.klpColors.selection
                         : context.klpColors.surfaceInset,
-                    borderRadius: BorderRadius.circular(context.klp.shape.control),
+                    borderRadius: BorderRadius.circular(
+                      context.klp.shape.control,
+                    ),
                   ),
                   child: KlpText(
                     option.label,

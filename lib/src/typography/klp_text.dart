@@ -21,7 +21,7 @@ enum KlpTextTone { automatic, primary, muted, faint, accent, danger, success }
 
 enum KlpTextColorTier { prominent, standard, subdued }
 
-/// 字族角色。UI chrome 走等寬保住終端機識別度；編輯器內容走比例字體以利長文
+/// 字族角色。實際家族由 theme 的 typography 層決定，這裡只表達「這段文字扮演什麼角色」
 /// 閱讀；程式碼固定等寬。三者互斥，故以 enum 表達而非多個 bool。
 enum KlpFontRole { ui, body, mono }
 
@@ -43,8 +43,8 @@ class KlpTextStyleDefinition {
   final double? letterSpacing;
   final KlpFontRole family;
 
-  /// 字體家族由 theme 決定，不是編譯期常數——終端機風要求全域等寬，那是換 theme
-  /// 就該達成的事。呼叫端必須提供 [type]，因此忘記傳會是編譯錯誤而不是靜默用錯字體。
+  /// 字體家族由 theme 決定，不是編譯期常數——「全域等寬」這種要求應該換 theme 就能
+  /// 達成。呼叫端必須提供 [type]，因此忘記傳會是編譯錯誤而不是靜默用錯字體。
   TextStyle toTextStyle(KlpTypographyTheme type) {
     final resolvedFamily = switch (family) {
       KlpFontRole.mono => type.codeFamily,
@@ -235,10 +235,7 @@ class KlpText extends StatelessWidget {
   Widget build(BuildContext context) {
     final tokens = context.klpColors;
     final type = context.klp.type;
-    final roleStyle = KlpTextStyles.definitionOf(
-      role,
-      type,
-    ).toTextStyle(type);
+    final roleStyle = KlpTextStyles.definitionOf(role, type).toTextStyle(type);
     final style = roleStyle.copyWith(
       color: KlpTextStyles.colorFor(
         tokens,

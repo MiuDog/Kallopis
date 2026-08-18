@@ -126,7 +126,8 @@ class KlpViewSwitcher extends StatelessWidget {
                   ? null
                   : () => onSelected!(options[index].id),
             ),
-            if (index < options.length - 1) SizedBox(width: context.klp.space.hairline),
+            if (index < options.length - 1)
+              SizedBox(width: context.klp.space.hairline),
           ],
         ],
       ),
@@ -153,7 +154,9 @@ class _KlpViewChoice extends StatelessWidget {
       behavior: HitTestBehavior.opaque,
       onTap: onPressed,
       child: Container(
-        constraints: BoxConstraints(minHeight: context.klp.space.controlHeightSmall),
+        constraints: BoxConstraints(
+          minHeight: context.klp.space.controlHeightSmall,
+        ),
         padding: EdgeInsets.symmetric(horizontal: context.klp.space.compact),
         decoration: BoxDecoration(
           color: selected ? tokens.selection : null,

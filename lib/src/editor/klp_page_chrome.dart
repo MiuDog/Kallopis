@@ -98,7 +98,9 @@ class KlpSaveStatusCard extends StatelessWidget {
             SizedBox(height: context.klp.space.compact),
             for (final message in messages)
               Padding(
-                padding: EdgeInsets.symmetric(vertical: context.klp.space.tight),
+                padding: EdgeInsets.symmetric(
+                  vertical: context.klp.space.tight,
+                ),
                 child: KlpText(
                   message.label,
                   role: KlpTextRole.code,

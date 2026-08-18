@@ -165,7 +165,10 @@ class _KlpViewState extends StatelessWidget {
             tone: KlpTextTone.muted,
             textAlign: TextAlign.center,
           ),
-          if (action != null) ...[SizedBox(height: context.klp.space.comfortable), action!],
+          if (action != null) ...[
+            SizedBox(height: context.klp.space.comfortable),
+            action!,
+          ],
         ],
       ),
     );

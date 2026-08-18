@@ -36,7 +36,9 @@ class KlpTooltipSurface extends StatelessWidget {
           color: tokens.textMuted,
           fontSize: context.klp.type.caption,
           fontFamily: context.klp.type.uiFamily,
-          fontFamilyFallback: context.klp.type.fallbackFor(context.klp.type.uiFamily),
+          fontFamilyFallback: context.klp.type.fallbackFor(
+            context.klp.type.uiFamily,
+          ),
         );
 
     return DecoratedBox(

@@ -63,21 +63,6 @@ class KlpMotionTheme extends ThemeExtension<KlpMotionTheme> {
     emphasized: KlpScale.easeEmphasized,
   );
 
-  /// 終端機風：完全沒有過場。終端機的即時感來自「狀態變化沒有中間態」，
-  /// 任何漸變都會破壞那個質感。
-  static const KlpMotionTheme instantMotion = KlpMotionTheme(
-    themeTransition: KlpScale.duration0,
-    styleTransition: KlpScale.duration0,
-    stateTransition: KlpScale.duration0,
-    overlayEnter: KlpScale.duration0,
-    overlayExit: KlpScale.duration0,
-    toastDwell: KlpScale.duration500,
-    tooltipDelay: KlpScale.duration400,
-    longPressThreshold: KlpScale.duration500,
-    standard: Curves.linear,
-    emphasized: Curves.linear,
-  );
-
   /// 尊重系統的「減少動態效果」設定。無障礙規則屬於庫的責任，不該由每個消費者各自實作
   /// ——那必然會有人漏掉。
   KlpMotionTheme reduced() => copyWith(

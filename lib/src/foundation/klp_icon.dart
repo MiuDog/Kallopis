@@ -13,6 +13,7 @@ class KlpIcon extends StatelessWidget {
   });
 
   final String asset;
+
   /// `null` 表示沿用 theme 的圖示尺寸。
   final double? size;
   final Color? color;

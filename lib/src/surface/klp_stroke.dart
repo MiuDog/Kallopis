@@ -25,6 +25,7 @@ class KlpStrokeFrame extends StatelessWidget {
   final KlpStrokeRole role;
   final Widget child;
   final KlpStrokeState state;
+
   /// 以下皆為 `null` 表示沿用 theme。指定值只用於刻意偏離的場合——
   /// 建構子預設值是編譯期常數，讀不到 theme。
   final double? radius;

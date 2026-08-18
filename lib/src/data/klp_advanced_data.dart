@@ -155,7 +155,9 @@ class _KlpTableLine extends StatelessWidget {
       behavior: HitTestBehavior.opaque,
       onTap: onPressed,
       child: Container(
-        constraints: BoxConstraints(minHeight: context.klp.space.controlHeightLarge),
+        constraints: BoxConstraints(
+          minHeight: context.klp.space.controlHeightLarge,
+        ),
         decoration: BoxDecoration(
           color: header || selected ? context.klpColors.surfaceMuted : null,
         ),
@@ -538,7 +540,9 @@ class _KlpJsonNodeState extends State<_KlpJsonNode> {
           behavior: HitTestBehavior.opaque,
           onTap: _toggle,
           child: Padding(
-            padding: EdgeInsets.only(left: widget.depth * context.klp.space.base),
+            padding: EdgeInsets.only(
+              left: widget.depth * context.klp.space.base,
+            ),
             child: Row(
               children: [
                 RotatedBox(
@@ -552,7 +556,8 @@ class _KlpJsonNodeState extends State<_KlpJsonNode> {
                 SizedBox(width: context.klp.space.tight),
                 if (widget.name != null)
                   KlpText('${widget.name}:', role: KlpTextRole.code),
-                if (widget.name != null) SizedBox(width: context.klp.space.tight),
+                if (widget.name != null)
+                  SizedBox(width: context.klp.space.tight),
                 KlpText(
                   widget.value is Map
                       ? '{${entries.length}}'

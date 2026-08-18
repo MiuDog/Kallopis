@@ -57,7 +57,9 @@ class _KlpListTileState extends State<KlpListTile> {
           height: widget.compact ? context.klp.space.controlHeightSmall : null,
           child: Padding(
             padding: EdgeInsets.symmetric(
-              horizontal: widget.compact ? context.klp.space.tight : context.klp.space.compact,
+              horizontal: widget.compact
+                  ? context.klp.space.tight
+                  : context.klp.space.compact,
               vertical: widget.compact ? 0 : context.klp.space.compact,
             ),
             child: Row(
@@ -72,7 +74,11 @@ class _KlpListTileState extends State<KlpListTile> {
                         ? tokens.text
                         : tokens.textMuted,
                   ),
-                  SizedBox(width: widget.compact ? context.klp.space.tight : context.klp.space.compact),
+                  SizedBox(
+                    width: widget.compact
+                        ? context.klp.space.tight
+                        : context.klp.space.compact,
+                  ),
                 ],
                 Expanded(
                   child: Column(

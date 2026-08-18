@@ -1,10 +1,14 @@
-import 'package:flutter/widgets.dart';
+import 'package:flutter/material.dart';
 
 import '../foundation/klp_icon.dart';
 import '../theme/klp_theme.dart';
 import 'klp_panel_header.dart';
 
 /// 應用程式最外層：鋪滿 app 底色，並在頂端保留自訂視窗標題列的位置。
+///
+/// 它同時提供整個子樹所需的 `Material` 祖先。少了它，`MaterialApp` 會在每一段文字下方
+/// 畫黃色雙底線——那是 Flutter 對「文字沒有 Material 祖先」的除錯提示。**由庫負責提供，
+/// 因為消費者沒有理由知道 Kallopis 的哪些元件需要它。**
 class KlpAppScreen extends StatelessWidget {
   const KlpAppScreen({super.key, required this.child, this.windowHeader});
 
@@ -13,14 +17,19 @@ class KlpAppScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ColoredBox(
-      color: context.klpColors.app,
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: [
-          ?windowHeader,
-          Expanded(child: child),
-        ],
+    return Material(
+      // transparency 只提供 Material 的能力，不畫底色也不加陰影——底色由下方的
+      // ColoredBox 依 token 決定。
+      type: MaterialType.transparency,
+      child: ColoredBox(
+        color: context.klpColors.app,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            ?windowHeader,
+            Expanded(child: child),
+          ],
+        ),
       ),
     );
   }
@@ -109,4 +118,3 @@ class KlpPaneCollapseControl extends StatelessWidget {
     );
   }
 }
-

@@ -69,7 +69,9 @@ class _KlpFilterChip extends StatelessWidget {
       onTap: onPressed,
       child: AnimatedContainer(
         duration: context.klp.motion.styleTransition,
-        constraints: BoxConstraints(minHeight: context.klp.space.controlHeightSmall),
+        constraints: BoxConstraints(
+          minHeight: context.klp.space.controlHeightSmall,
+        ),
         padding: EdgeInsets.symmetric(horizontal: context.klp.space.compact),
         decoration: BoxDecoration(
           color: selected ? tokens.selection : tokens.surfaceInset,

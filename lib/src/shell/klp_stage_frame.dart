@@ -30,7 +30,10 @@ class KlpStageFrame extends StatelessWidget {
             SizedBox(height: context.klp.space.chromeHeader, child: header),
             Expanded(child: content),
             if (status != null)
-              SizedBox(height: context.klp.space.chromeStatusBar, child: status!),
+              SizedBox(
+                height: context.klp.space.chromeStatusBar,
+                child: status!,
+              ),
           ],
         ),
       ),

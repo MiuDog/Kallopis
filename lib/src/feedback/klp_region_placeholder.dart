@@ -90,13 +90,15 @@ class KlpRegionPlaceholder extends StatelessWidget {
                                 textAlign: TextAlign.center,
                                 style:
                                     KlpTextStyles.definitionOf(
-                                      KlpTextRole.code,
-                                      context.klp.type,
-                                    ).toTextStyle(context.klp.type).copyWith(
-                                      color: tokens.textFaint,
-                                      letterSpacing: KlpPlaceholderMetrics
-                                          .labelLetterSpacing,
-                                    ),
+                                          KlpTextRole.code,
+                                          context.klp.type,
+                                        )
+                                        .toTextStyle(context.klp.type)
+                                        .copyWith(
+                                          color: tokens.textFaint,
+                                          letterSpacing: KlpPlaceholderMetrics
+                                              .labelLetterSpacing,
+                                        ),
                               ),
                             ),
                           ],
@@ -181,15 +183,17 @@ class _PlaceholderActionState extends State<_PlaceholderAction> {
             child: ExcludeSemantics(
               child: Text(
                 widget.label.toUpperCase(),
-                style: KlpTextStyles.definitionOf(
-                      KlpTextRole.code,
-                      context.klp.type,
-                    )
-                    .toTextStyle(context.klp.type)
-                    .copyWith(
-                      color: tokens.text,
-                      letterSpacing: KlpPlaceholderMetrics.labelLetterSpacing,
-                    ),
+                style:
+                    KlpTextStyles.definitionOf(
+                          KlpTextRole.code,
+                          context.klp.type,
+                        )
+                        .toTextStyle(context.klp.type)
+                        .copyWith(
+                          color: tokens.text,
+                          letterSpacing:
+                              KlpPlaceholderMetrics.labelLetterSpacing,
+                        ),
               ),
             ),
           ),
@@ -220,7 +224,10 @@ class _PlaceholderMarker extends StatelessWidget {
           border: tone == KlpRegionPlaceholderTone.pending
               ? null
               : Border.fromBorderSide(
-                  BorderSide(color: tokens.textFaint, width: context.klp.shape.hairline),
+                  BorderSide(
+                    color: tokens.textFaint,
+                    width: context.klp.shape.hairline,
+                  ),
                 ),
         ),
       ),

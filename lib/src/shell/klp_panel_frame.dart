@@ -17,6 +17,7 @@ class KlpPanelFrame extends StatelessWidget {
   final Widget header;
   final Widget content;
   final Widget? footer;
+
   /// `null` 表示沿用 theme 的外殼高度。
   final double? headerHeight;
   final double? footerHeight;
@@ -32,7 +33,9 @@ class KlpPanelFrame extends StatelessWidget {
         borderRadius: BorderRadius.circular(context.klp.shape.panel),
       ),
       child: ClipRRect(
-        borderRadius: BorderRadius.circular(context.klp.shape.panel - context.klp.shape.stroke),
+        borderRadius: BorderRadius.circular(
+          context.klp.shape.panel - context.klp.shape.stroke,
+        ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
@@ -41,7 +44,8 @@ class KlpPanelFrame extends StatelessWidget {
               child: header,
             ),
             Expanded(child: content),
-            if (footer != null) SizedBox(
+            if (footer != null)
+              SizedBox(
                 height: footerHeight ?? context.klp.space.chromeStatusBar,
                 child: footer!,
               ),

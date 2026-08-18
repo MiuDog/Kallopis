@@ -44,7 +44,9 @@ class KlpKeyValueTable extends StatelessWidget {
               ],
               for (var index = 0; index < rows.length; index++) ...[
                 Padding(
-                  padding: EdgeInsets.symmetric(vertical: context.klp.space.tight),
+                  padding: EdgeInsets.symmetric(
+                    vertical: context.klp.space.tight,
+                  ),
                   child: Row(
                     children: [
                       SizedBox(

@@ -134,7 +134,8 @@ class KlpToastStack extends StatelessWidget {
       children: [
         for (var index = 0; index < children.length; index++) ...[
           children[index],
-          if (index < children.length - 1) SizedBox(height: context.klp.space.compact),
+          if (index < children.length - 1)
+            SizedBox(height: context.klp.space.compact),
         ],
       ],
     );

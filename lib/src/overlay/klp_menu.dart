@@ -94,7 +94,10 @@ abstract final class KlpMenuLayout {
         )
         .toDouble();
     final top = anchor.dy
-        .clamp(context.klp.space.compact, viewport.height - height - context.klp.space.compact)
+        .clamp(
+          context.klp.space.compact,
+          viewport.height - height - context.klp.space.compact,
+        )
         .toDouble();
 
     return Offset(left, top);
@@ -113,11 +116,15 @@ abstract final class KlpMenuLayout {
       separatorCount: separatorCount,
     );
     final preferredLeft = parentPosition.dx + width + context.klp.space.tight;
-    final left = preferredLeft + width + context.klp.space.compact <= viewport.width
+    final left =
+        preferredLeft + width + context.klp.space.compact <= viewport.width
         ? preferredLeft
         : parentPosition.dx - width - context.klp.space.tight;
     final top = parentPosition.dy
-        .clamp(context.klp.space.compact, viewport.height - height - context.klp.space.compact)
+        .clamp(
+          context.klp.space.compact,
+          viewport.height - height - context.klp.space.compact,
+        )
         .toDouble();
 
     return Offset(
@@ -140,7 +147,9 @@ class KlpMenu extends StatelessWidget {
     return DecoratedBox(
       key: const ValueKey('pln-menu-elevation'),
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(_KlpMenuMetrics.panelRadius(context)),
+        borderRadius: BorderRadius.circular(
+          _KlpMenuMetrics.panelRadius(context),
+        ),
         boxShadow: [
           BoxShadow(
             color: tokens.modalScrim.withValues(
@@ -182,7 +191,9 @@ class KlpMenu extends StatelessWidget {
               for (final item in items) ...[
                 if (item.separatedBefore)
                   Padding(
-                    padding: EdgeInsets.symmetric(vertical: context.klp.space.tight),
+                    padding: EdgeInsets.symmetric(
+                      vertical: context.klp.space.tight,
+                    ),
                     child: KlpDivider(),
                   ),
                 KlpMenuItem(key: item.key, data: item),

@@ -51,8 +51,13 @@ class KlpCheckbox extends StatelessWidget {
                     color: value ? tokens.selection : null,
                     border: value
                         ? null
-                        : Border.all(color: borderColor, width: context.klp.shape.stroke),
-                    borderRadius: BorderRadius.circular(context.klp.shape.control),
+                        : Border.all(
+                            color: borderColor,
+                            width: context.klp.shape.stroke,
+                          ),
+                    borderRadius: BorderRadius.circular(
+                      context.klp.shape.control,
+                    ),
                   ),
                   child: value
                       ? KlpIcon(

@@ -41,7 +41,7 @@ class KlpShapeTheme extends ThemeExtension<KlpShapeTheme> {
   /// 需要強調的邊框（focus ring、選取框）。
   final double stroke;
 
-  /// 虛線描邊的節奏。終端機風的虛線通常更長更疏，因此屬於風格而非常數。
+  /// 虛線描邊的節奏。不同風格的虛線疏密不同，因此屬於風格而非常數。
   final double dashedLength;
   final double dashedGap;
   final double dashedOpacity;
@@ -57,20 +57,6 @@ class KlpShapeTheme extends ThemeExtension<KlpShapeTheme> {
     dashedLength: 3,
     dashedGap: 2,
     dashedOpacity: KlpScale.opacity780,
-  );
-
-  /// 終端機風：全部直角，邊框改為主要的分層手段因此加粗一階。
-  static const KlpShapeTheme squaredShape = KlpShapeTheme(
-    none: KlpScale.radius0,
-    control: KlpScale.radius0,
-    card: KlpScale.radius0,
-    panel: KlpScale.radius0,
-    pill: KlpScale.radius0,
-    hairline: KlpScale.stroke100,
-    stroke: KlpScale.stroke200,
-    dashedLength: 6,
-    dashedGap: 4,
-    dashedOpacity: 1,
   );
 
   BorderRadius get controlRadius => BorderRadius.circular(control);

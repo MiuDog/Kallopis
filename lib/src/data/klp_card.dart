@@ -57,9 +57,15 @@ class KlpCard extends StatelessWidget {
               ],
             ),
           ),
-          Padding(padding: EdgeInsets.all(context.klp.space.base), child: child),
+          Padding(
+            padding: EdgeInsets.all(context.klp.space.base),
+            child: child,
+          ),
           if (footer != null)
-            Padding(padding: EdgeInsets.all(context.klp.space.compact), child: footer!),
+            Padding(
+              padding: EdgeInsets.all(context.klp.space.compact),
+              child: footer!,
+            ),
         ],
       ),
     );

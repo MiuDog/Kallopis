@@ -13,10 +13,19 @@
 ///
 /// ## 換一套視覺風格
 ///
-/// 風格是一個必須整組給定的物件，因此不會出現「只換了一半」的狀態：
+/// 庫只出貨 `modern` 一套。要換風格是取它再逐層 `copyWith`——風格是一個必須整組給定
+/// 的物件，因此不會出現「只換了一半」的狀態：
 ///
 /// ```dart
-/// theme: buildKlpTheme(Brightness.dark, style: KlpVisualStyle.terminal)
+/// final squared = KlpVisualStyle.modern.copyWith(
+///   name: 'squared',
+///   shape: KlpShapeTheme.standardShape.copyWith(
+///     control: 0,
+///     card: 0,
+///     panel: 0,
+///   ),
+/// );
+/// theme: buildKlpTheme(Brightness.dark, style: squared)
 /// ```
 ///
 /// ## 套用品牌色

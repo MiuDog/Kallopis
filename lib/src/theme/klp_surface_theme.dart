@@ -4,10 +4,9 @@ import '../tokens/klp_scale.dart';
 
 /// 表面的分層手法：用陰影，還是用邊框。
 ///
-/// 這是終端機風與現代風最根本的分歧，而且兩者互斥——終端機用實線框界定區塊、完全沒有
-/// 陰影；現代風用柔和陰影浮起、邊框極淡或省略。把它做成 enum 而不是兩組獨立的
-/// shadow／border 參數，是為了讓「陰影開著又畫滿實線框」這種不會出錯但一定醜的組合
-/// 從型別上就不可能出現。
+/// 這兩種手法互斥：一種用實線框界定區塊、完全沒有陰影；另一種用柔和陰影浮起、
+/// 邊框極淡或省略。把它做成 enum 而不是兩組獨立的 shadow／border 參數，是為了讓
+/// 「陰影開著又畫滿實線框」這種不會出錯但一定醜的組合從型別上就不可能出現。
 enum KlpSurfaceSeparation {
   /// 用陰影分層，邊框僅作輔助。
   shadow,
@@ -36,7 +35,7 @@ class KlpSurfaceTheme extends ThemeExtension<KlpSurfaceTheme> {
   final double overlayOffsetY;
   final double overlayShadowOpacity;
 
-  /// hover 時前景色混入表面的比例。終端機風通常用反白而非微亮，比例會高很多。
+  /// hover 時前景色混入表面的比例。走反白而非微亮的風格，這個比例會高很多。
   final double hoverContrastMix;
 
   final double scrimOpacity;
@@ -64,16 +63,6 @@ class KlpSurfaceTheme extends ThemeExtension<KlpSurfaceTheme> {
     overlayShadowOpacity: KlpScale.opacity220,
     hoverContrastMix: 0.08,
     scrimOpacity: 0.6,
-  );
-
-  static const KlpSurfaceTheme outlined = KlpSurfaceTheme(
-    separation: KlpSurfaceSeparation.outline,
-    overlayBlur: 0,
-    overlaySpread: 0,
-    overlayOffsetY: 0,
-    overlayShadowOpacity: 0,
-    hoverContrastMix: 0.16,
-    scrimOpacity: 0.8,
   );
 
   @override

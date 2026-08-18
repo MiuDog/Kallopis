@@ -51,7 +51,10 @@ class KlpDialog extends StatelessWidget {
                 ],
               ),
             ),
-            Padding(padding: EdgeInsets.all(context.klp.space.comfortable), child: child),
+            Padding(
+              padding: EdgeInsets.all(context.klp.space.comfortable),
+              child: child,
+            ),
             Padding(
               padding: EdgeInsets.all(context.klp.space.base),
               child: Wrap(

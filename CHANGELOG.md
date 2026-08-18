@@ -9,12 +9,16 @@ Kallopis 的第一個可用版本，由 Planist `lib/design_system/` 抽取而�
 - **三層 design token**：primitive（`KlpScale`／`KlpPalette`，不可覆寫）→ semantic
   （色彩／字體／間距／形狀／動態／表面，皆為 `ThemeExtension`）→ component
   （`KlpComponentTheme`，欄位全 nullable）。
-- **`KlpVisualStyle`**：把七層綁成必須整組給定的物件，換風格是單一動作。內建
-  `modern` 與 `terminal` 兩套。
+- **`KlpVisualStyle`**：把七層綁成必須整組給定的物件，換風格是單一動作。
+  **庫只出貨 `modern` 一套，各層也只有一個 preset**——要別的外觀是逐層 `copyWith`，
+  庫不預先替任何產品組好第二套。
 - **`KlpTheme.of(context)` / `context.klp`**：元件取值的唯一入口，回傳已沿繼承樹解析
   的結果。任一層缺席時回退預設而非拋錯。
 - 68 個通過五條抽層規則的元件。
-- `example/`：元件目錄，可用 `--dart-define=klp.style=terminal` 直接以指定風格啟動。
+- `example/`：可實際執行的元件目錄（Windows）。
+- **`KlpRouter`**：只負責分發的目的地登記簿。庫不知道有哪些頁、不預設入口、
+  不決定階層、不做轉場、不解析網址。
+- `tool/inventory.dart`：由實際程式碼產生元件清單與 mermaid 元件樹，並檢查分層方向。
 
 ### 移除（相對於 Planist 的 design_system）
 
@@ -33,6 +37,8 @@ AI 對話 UI、diff 檢視。逐項理由見 `spec/component-classification.md`�
 - `hoverContrastMix` 在 `KlpInteraction` 與 `KlpSurfaceTheme` 各有一份實作。
 - `KlpDialog.secondaryLabel` 與 `KlpToast.closeLabel` 原本寫死中文，現為必填。
 - `KlpPalette` 未從 barrel 匯出，消費者拿不到 primitive 層。
+- `KlpAppScreen` 未提供 `Material` 祖先，導致其下的每一段文字都被 Flutter 畫上黃色
+  雙底線的除錯提示。它不拋錯、不被 analyze 抓到，只出現在畫面上。
 
 ### 已知限制
 

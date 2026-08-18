@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:kallopis/kallopis.dart';
 
+import 'style_fixture.dart';
+
 /// 從**消費者的位置**驗證這個庫。
 ///
 /// 其餘測試都在庫內部，看得到 `lib/src/`，因此驗證不了「一個只 import
@@ -82,6 +84,43 @@ void main() {
     });
   });
 
+  group('KlpAppScreen 提供 Material 祖先', () {
+    // 少了 Material 祖先，MaterialApp 會在每一段文字下方畫黃色雙底線——那是 Flutter
+    // 的除錯提示，不是設計。它不會拋錯、不會被 analyze 抓到，只會出現在畫面上。
+    testWidgets('底下的文字不帶除錯用的底線裝飾', (tester) async {
+      await tester.pumpWidget(
+        MaterialApp(
+          theme: buildKlpTheme(Brightness.light),
+          home: const KlpAppScreen(child: KlpText('x')),
+        ),
+      );
+      await tester.pumpAndSettle();
+
+      final style = DefaultTextStyle.of(
+        tester.element(find.byType(KlpText)),
+      ).style;
+
+      expect(
+        style.decoration,
+        anyOf(isNull, TextDecoration.none),
+        reason:
+            'KlpAppScreen 之下的文字帶有 ${style.decoration} 裝飾，'
+            '通常代表缺少 Material 祖先。',
+      );
+    });
+
+    testWidgets('KlpAppScreen 之下可直接放需要 Material 的元件', (tester) async {
+      await tester.pumpWidget(
+        MaterialApp(
+          theme: buildKlpTheme(Brightness.light),
+          home: const KlpAppScreen(child: KlpTextField(label: 'x')),
+        ),
+      );
+      await tester.pumpAndSettle();
+      expect(tester.takeException(), isNull);
+    });
+  });
+
   group('消費者能組出一個完整畫面', () {
     Widget workbench() => KlpAppScreen(
       child: KlpWorkbenchShell(
@@ -104,7 +143,7 @@ void main() {
       ),
     );
 
-    for (final style in [KlpVisualStyle.modern, KlpVisualStyle.terminal]) {
+    for (final style in [KlpVisualStyle.modern, contrastingStyle]) {
       testWidgets('${style.name} 風格下不丟例外', (tester) async {
         await pump(tester, workbench(), style: style);
         await tester.pumpAndSettle();

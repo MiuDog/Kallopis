@@ -70,7 +70,9 @@ class _KlpRadioItem extends StatelessWidget {
                       color: tokens.textMuted,
                       width: context.klp.shape.stroke,
                     ),
-                    borderRadius: BorderRadius.circular(context.klp.shape.control),
+                    borderRadius: BorderRadius.circular(
+                      context.klp.shape.control,
+                    ),
                   ),
                   child: SizedBox.square(
                     dimension: KlpFormMetrics.selectionControl,
@@ -82,7 +84,9 @@ class _KlpRadioItem extends StatelessWidget {
                         duration: context.klp.motion.styleTransition,
                         decoration: BoxDecoration(
                           color: selected ? tokens.selection : null,
-                          borderRadius: BorderRadius.circular(context.klp.shape.control - 1),
+                          borderRadius: BorderRadius.circular(
+                            context.klp.shape.control - 1,
+                          ),
                         ),
                       ),
                     ),

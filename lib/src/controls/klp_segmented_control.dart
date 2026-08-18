@@ -124,7 +124,9 @@ class _KlpSegment extends StatelessWidget {
                   if (icon != null) ...[
                     KlpIcon(
                       icon!,
-                      size: dense ? context.klp.space.iconSmall : context.klp.space.icon,
+                      size: dense
+                          ? context.klp.space.iconSmall
+                          : context.klp.space.icon,
                       color: selected ? tokens.text : tokens.textMuted,
                     ),
                     SizedBox(width: context.klp.space.compact),

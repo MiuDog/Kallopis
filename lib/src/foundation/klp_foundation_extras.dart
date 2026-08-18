@@ -22,6 +22,7 @@ class KlpAvatar extends StatelessWidget {
 
   final String label;
   final ImageProvider? image;
+
   /// `null` 表示沿用 theme 的大型控制項高度。
   final double? size;
   final String? semanticLabel;
@@ -210,7 +211,9 @@ class KlpRichText extends StatelessWidget {
       fontSize: context.klp.type.body,
       height: context.klp.type.bodyLeading,
       fontFamily: context.klp.type.uiFamily,
-      fontFamilyFallback: context.klp.type.fallbackFor(context.klp.type.uiFamily),
+      fontFamilyFallback: context.klp.type.fallbackFor(
+        context.klp.type.uiFamily,
+      ),
     );
 
     if (selectable) return SelectableText.rich(content, style: style);

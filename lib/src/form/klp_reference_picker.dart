@@ -69,8 +69,12 @@ class KlpReferencePicker extends StatelessWidget {
                     ? null
                     : () => onSelected!(result.id),
                 child: Container(
-                  constraints: BoxConstraints(minHeight: context.klp.space.controlHeight),
-                  padding: EdgeInsets.symmetric(horizontal: context.klp.space.tight),
+                  constraints: BoxConstraints(
+                    minHeight: context.klp.space.controlHeight,
+                  ),
+                  padding: EdgeInsets.symmetric(
+                    horizontal: context.klp.space.tight,
+                  ),
                   child: Row(
                     children: [
                       if (result.kind != null) ...[
