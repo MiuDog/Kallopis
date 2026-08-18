@@ -24,10 +24,11 @@ void main() {
     );
     final names = <String>{};
 
-    for (final file in Directory('../lib/src')
-        .listSync(recursive: true)
-        .whereType<File>()
-        .where((f) => f.path.endsWith('.dart'))) {
+    for (final file
+        in Directory('../lib/src')
+            .listSync(recursive: true)
+            .whereType<File>()
+            .where((f) => f.path.endsWith('.dart'))) {
       for (final line in const LineSplitter().convert(
         file.readAsStringSync(),
       )) {
@@ -86,6 +87,29 @@ void main() {
     );
   });
 
+  test('目錄不得印出色碼', () {
+    // 目錄一旦顯示 hex，就等於邀請人把那串數字複製到自己的程式碼裡——那正是整個
+    // token 架構要防的事。色票顯示的是它落在色梯的哪一階，不是色值。
+    final hexOutput = RegExp(r'toRadixString\(16\)');
+
+    final violations = <String>[];
+    for (final file
+        in Directory('lib')
+            .listSync(recursive: true)
+            .whereType<File>()
+            .where((f) => f.path.endsWith('.dart'))) {
+      if (hexOutput.hasMatch(file.readAsStringSync())) {
+        violations.add(file.path.replaceAll(r'\', '/'));
+      }
+    }
+
+    expect(
+      violations,
+      isEmpty,
+      reason: '這些檔案把色值轉成 hex 顯示：\n${violations.join('\n')}',
+    );
+  });
+
   test('每一頁都有內容', () {
     final empty = catalogPages
         .where((p) => p.specimens.isEmpty && p.tokenView == null)
@@ -109,7 +133,8 @@ void main() {
     expect(
       undemoed.length,
       lessThanOrEqualTo(baselineUndemoed),
-      reason: '未展示的元件從 $baselineUndemoed 增加到 ${undemoed.length}：\n'
+      reason:
+          '未展示的元件從 $baselineUndemoed 增加到 ${undemoed.length}：\n'
           '${undemoed.join('\n')}',
     );
   });
@@ -140,8 +165,7 @@ void main() {
         expect(
           tester.takeException(),
           isNull,
-          reason:
-              '${catalogPages[index].label} 在 ${brightness.name} 下渲染時丟出例外',
+          reason: '${catalogPages[index].label} 在 ${brightness.name} 下渲染時丟出例外',
         );
       }
     }

@@ -14,23 +14,8 @@ import 'package:kallopis/kallopis.dart';
 final KlpVisualStyle contrastingStyle = KlpVisualStyle.modern.copyWith(
   name: 'contrasting',
 
-  colors: KlpThemeData.light.copyWith(
-    app: const Color(0xFF000000),
-    surface: const Color(0xFF121110),
-    surfaceInset: const Color(0xFF1A1917),
-    surfaceMuted: const Color(0xFF1A1917),
-    surfaceRaised: const Color(0xFF1A1917),
-    component: const Color(0xFF0A0A09),
-    stageSurface: const Color(0xFF0A0A09),
-    overlay: const Color(0xFF1A1917),
-    text: const Color(0xFFF5F2EC),
-    textMuted: const Color(0xFFC8C2B6),
-    textFaint: const Color(0xFF7A7566),
-    divider: const Color(0xFF45413A),
-    guide: const Color(0xFF7A7566),
-    accent: const Color(0xFFF5F2EC),
-    interaction: const Color(0xFFF5F2EC),
-  ),
+  // 顏色一樣取自色梯——連測試都不寫死色碼，否則色梯調整時這裡會悄悄變成孤兒。
+  colors: KlpThemeData.ultraDark,
 
   // 全域等寬、行高收緊。
   typography: KlpTypographyTheme.proportional.copyWith(

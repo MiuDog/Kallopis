@@ -185,26 +185,26 @@ void main() {
     testWidgets('primitive 層對消費者可見，足以從零寫一套色盤', (tester) async {
       // KlpPalette 曾經沒有從 barrel 匯出，消費者拿不到 primitive 層。
       const custom = KlpThemeData(
-        app: KlpPalette.night,
-        surface: KlpPalette.nightInset,
-        surfaceInset: KlpPalette.nightMuted,
-        surfaceMuted: KlpPalette.nightMuted,
-        component: KlpPalette.nightComponent,
-        stageSurface: KlpPalette.nightStage,
-        overlay: KlpPalette.nightMuted,
-        surfaceRaised: KlpPalette.nightMuted,
-        modalScrim: KlpPalette.modalScrim,
-        guide: KlpPalette.nightGuide,
-        divider: KlpPalette.nightDivider,
-        text: KlpPalette.chalk,
-        textMuted: KlpPalette.chalkMuted,
-        textFaint: KlpPalette.chalkFaint,
-        border: KlpPalette.nightLine,
-        borderStrong: KlpPalette.nightLineStrong,
-        accent: KlpPalette.chalk,
-        accentSoft: KlpPalette.nightInset,
-        interaction: KlpPalette.chalk,
-        interactionSoft: KlpPalette.nightInteractionSoft,
+        app: KlpPalette.ink950,
+        surface: KlpPalette.ink900,
+        surfaceInset: KlpPalette.ink800,
+        surfaceMuted: KlpPalette.ink800,
+        component: KlpPalette.ink950,
+        stageSurface: KlpPalette.ink950,
+        overlay: KlpPalette.ink800,
+        surfaceRaised: KlpPalette.ink800,
+        modalScrim: KlpPalette.scrim,
+        guide: KlpPalette.ink500,
+        divider: KlpPalette.ink700,
+        text: KlpPalette.ink50,
+        textMuted: KlpPalette.ink200,
+        textFaint: KlpPalette.ink500,
+        border: KlpPalette.line,
+        borderStrong: KlpPalette.line,
+        accent: KlpPalette.ink50,
+        accentSoft: KlpPalette.ink900,
+        interaction: KlpPalette.ink50,
+        interactionSoft: KlpPalette.ink800,
         success: KlpPalette.darkSuccess,
         warning: KlpPalette.darkWarning,
         danger: KlpPalette.darkDanger,
@@ -223,7 +223,7 @@ void main() {
         style: KlpVisualStyle.modern.copyWith(colors: custom),
       );
 
-      expect(tokens.color.app, KlpPalette.night);
+      expect(tokens.color.app, KlpPalette.ink950);
     });
   });
 

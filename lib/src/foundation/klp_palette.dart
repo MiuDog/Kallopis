@@ -5,23 +5,55 @@ abstract final class KlpPalette {
   /// `Color(0x00000000)` 無法與真正寫死的顏色區分，會讓紀律檢查失去意義。
   static const Color transparent = Color(0x00000000);
 
-  static const Color paper = Color(0xFFF2F0EB);
-  static const Color canvas = Color(0xFFE4E0D8);
-  static const Color paperInset = Color(0xFFE6E3DC);
-  static const Color canvasMuted = Color(0xFFDAD4CA);
-  static const Color component = Color(0xFFF7F5F0);
-  static const Color stage = Color(0xFFFFFEFC);
-  static const Color guide = Color(0xFF8C8477);
-  static const Color divider = Color(0xFFD6D0C6);
-  static const Color ink = Color(0xFF1D1D1D);
-  static const Color inkMuted = Color(0xFF5B554C);
-  static const Color inkFaint = Color(0xFFB5AEA0);
-  static const Color line = Color(0x00000000);
-  static const Color lineStrong = Color(0x00000000);
-  static const Color accent = Color(0xFF1D1D1D);
-  static const Color accentSoft = Color(0xFFE6E3DC);
-  static const Color interaction = Color(0xFF1D1D1D);
-  static const Color interactionSoft = Color(0xFFE6E3DC);
+  // ── ink：中性色梯 ────────────────────────────────────────────────────────
+  //
+  // 整套設計語言的骨架。所有表面、文字與線條都由這 11 階推導，**不再有各自命名的
+  // 中性色**——`paper`／`chalk`／`dusk` 那種名字看不出彼此的明度關係，於是每次要
+  // 新增一階都得重新猜。
+  //
+  // 權威定義是 oklch（等亮度感知，調整時可預測）；hex 是 sRGB 的實作值。
+  // Flutter 的 `Color` 只認 sRGB，因此 oklch 記在註解裡——**改值時改的是 oklch，
+  // hex 是換算結果**，反過來做會讓明度階梯逐漸走樣。
+  //
+  // 色度刻意極低（0.002–0.010）且色相隨明度緩慢位移（232°→292°）：亮階偏冷、
+  // 暗階更冷，這讓中性色在明暗兩態下都不會顯得死板，同時不會與語意色搶注意力。
+
+  /// oklch(0.970 0.002 232.0)
+  static const Color ink50 = Color(0xFFF4F5F6);
+
+  /// oklch(0.930 0.005 238.0)
+  static const Color ink100 = Color(0xFFE5E8EA);
+
+  /// oklch(0.860 0.007 244.0)
+  static const Color ink200 = Color(0xFFCDD2D5);
+
+  /// oklch(0.770 0.009 250.0)
+  static const Color ink300 = Color(0xFFB0B5BA);
+
+  /// oklch(0.680 0.010 256.0)
+  static const Color ink400 = Color(0xFF94999E);
+
+  /// oklch(0.580 0.010 262.0)
+  static const Color ink500 = Color(0xFF777A80);
+
+  /// oklch(0.480 0.010 268.0)
+  static const Color ink600 = Color(0xFF5B5D63);
+
+  /// oklch(0.380 0.009 274.0)
+  static const Color ink700 = Color(0xFF414247);
+
+  /// oklch(0.280 0.008 280.0)
+  static const Color ink800 = Color(0xFF28282D);
+
+  /// oklch(0.180 0.006 286.0)
+  static const Color ink900 = Color(0xFF111114);
+
+  /// oklch(0.120 0.003 292.0)
+  static const Color ink950 = Color(0xFF060607);
+
+  // ── 語意色 ──────────────────────────────────────────────────────────────
+  // 只用於狀態，不參與視覺層級——層級全部由上面的中性色梯負責。
+
   static const Color lightSuccess = Color(0xFF3B7240);
   static const Color lightWarning = Color(0xFF7E6525);
   static const Color lightDanger = Color(0xFFA14736);
@@ -31,36 +63,25 @@ abstract final class KlpPalette {
   static const Color darkDanger = Color(0xFFD28D7F);
   static const Color darkInfo = Color(0xFF81A8BB);
 
-  static const Color night = Color(0xFF000000);
-  static const Color nightRaised = Color(0xFF0A0A09);
-  static const Color nightInset = Color(0xFF121110);
-  static const Color nightMuted = Color(0xFF1A1917);
-  static const Color nightComponent = Color(0xFF0A0A09);
-  static const Color nightStage = Color(0xFF0A0A09);
-  static const Color nightGuide = Color(0xFF7A7566);
-  static const Color nightDivider = Color(0xFF45413A);
-  static const Color chalk = Color(0xFFF5F2EC);
-  static const Color chalkMuted = Color(0xFFC8C2B6);
-  static const Color chalkFaint = Color(0xFF7A7566);
-  static const Color nightLine = Color(0x00000000);
-  static const Color nightLineStrong = Color(0x00000000);
-  static const Color nightInteractionSoft = Color(0xFF213A32);
-  static const Color pureBlack = Color(0xFF000000);
+  // ── 極值與特例 ──────────────────────────────────────────────────────────
+
+  // ── 由色梯推導的特例 ────────────────────────────────────────────────────
+  // **這裡不得出現梯以外的色相。** 每一個值都是某一階加上 alpha，或是純粹的「無色」。
+
+  /// 遮罩。ink950 @ 60%。
+  static const Color scrim = Color(0x99060607);
+
+  /// 邊框預設透明：結構表面靠 tone 分層，不靠描邊。
+  static const Color line = Color(0x00000000);
+
+  /// 半透明視窗的表面。ink800／ink700 加上視窗透明度。
+  static const Color transparentSurface = Color(0x9428282D);
+  static const Color transparentSurfaceInset = Color(0xA8414247);
+
+  /// 對比前景的兩個極值。`KlpThemeContrast` 用它們挑「在這個底色上該用黑字還白字」，
+  /// **不作為表面或文字的 token**——表面與文字一律取梯上的階。
   static const Color pureWhite = Color(0xFFFFFFFF);
-  static const Color modalScrim = Color(0x99000000);
-
-  static const Color dusk = Color(0xFF171513);
-  static const Color duskRaised = Color(0xFF171513);
-  static const Color duskInset = Color(0xFF211F1C);
-  static const Color duskMuted = Color(0xFF292622);
-  static const Color duskLifted = Color(0xFF34302C);
-  static const Color duskComponent = Color(0xFF211F1C);
-  static const Color duskStage = Color(0xFF211F1C);
-  static const Color duskGuide = Color(0xFF918A7B);
-  static const Color duskDivider = Color(0xFF585249);
-
-  static const Color transparentSurface = Color(0x94292622);
-  static const Color transparentSurfaceInset = Color(0xA834302C);
+  static const Color pureBlack = Color(0xFF000000);
 }
 
 /// 裝飾用顏色：**不屬於設計語言**，因此不會隨主題改變。

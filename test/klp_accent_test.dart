@@ -2,47 +2,39 @@ import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:kallopis/kallopis.dart';
 
+/// 強調色的**行為**，不是它的色值。
+///
+/// 這個檔案刻意不再斷言具體色碼。原本的版本把六組共十二個 hex 寫死在測試裡，於是
+/// 每次調色都要跟著改測試——那不是驗證，只是追認現況。真正要守住的是「解析得出來」
+/// 與「對比夠」，而對比由 `color_discipline_test.dart` 統一把關（門檻 4.6，留有餘裕）。
 void main() {
-  test('curated accents resolve the accepted light and dark colors', () {
-    expect(KlpAccent.ink.resolve(Brightness.light), const Color(0xFF1C1C1C));
-    expect(KlpAccent.ink.resolve(Brightness.dark), const Color(0xFFF5F2EC));
-    expect(
-      KlpAccent.terracotta.resolve(Brightness.light),
-      const Color(0xFF9E5D41),
-    );
-    expect(
-      KlpAccent.terracotta.resolve(Brightness.dark),
-      const Color(0xFFBE7D60),
-    );
-    expect(KlpAccent.ochre.resolve(Brightness.light), const Color(0xFF876833));
-    expect(KlpAccent.ochre.resolve(Brightness.dark), const Color(0xFFA98850));
-    expect(KlpAccent.olive.resolve(Brightness.light), const Color(0xFF66733E));
-    expect(KlpAccent.olive.resolve(Brightness.dark), const Color(0xFF859359));
-    expect(KlpAccent.slate.resolve(Brightness.light), const Color(0xFF546F95));
-    expect(KlpAccent.slate.resolve(Brightness.dark), const Color(0xFF778FB0));
-    expect(
-      KlpAccent.crimson.resolve(Brightness.light),
-      const Color(0xFFAB5160),
-    );
-    expect(KlpAccent.crimson.resolve(Brightness.dark), const Color(0xFFC07984));
+  test('ink 強調色取自色梯的兩端', () {
+    // ink 是預設強調色，必須是純中性的——它一旦偏色，所有沒指定強調色的產品都會
+    // 跟著帶上那個偏色。
+    expect(KlpAccent.ink.resolve(Brightness.light), KlpPalette.ink900);
+    expect(KlpAccent.ink.resolve(Brightness.dark), KlpPalette.ink50);
   });
 
-  test('every curated accent preserves AA contrast in each brightness', () {
-    final lightBackground = KlpThemeData.light.surface;
-    final darkBackground = KlpThemeData.dark.surface;
-
+  test('每個強調色在明暗兩態下都是不同的值', () {
     for (final accent in KlpAccent.values) {
       expect(
-        _contrastRatio(accent.resolve(Brightness.light), lightBackground),
-        greaterThanOrEqualTo(4.5),
-        reason: '${accent.name} light contrast',
-      );
-      expect(
-        _contrastRatio(accent.resolve(Brightness.dark), darkBackground),
-        greaterThanOrEqualTo(4.5),
-        reason: '${accent.name} dark contrast',
+        accent.resolve(Brightness.light),
+        isNot(accent.resolve(Brightness.dark)),
+        reason: '${accent.name} 在兩態下用同一個值，其中一態必然對比不足',
       );
     }
+  });
+
+  test('parse 只接受既有的強調色名', () {
+    expect(KlpAccent.parse('terracotta'), KlpAccent.terracotta);
+    expect(
+      KlpAccent.parse('not-an-accent'),
+      KlpAccent.ink,
+      reason:
+          '未知名稱回退到中性的 ink 而不是拋錯——它來自設定檔，'
+          '使用者打錯字不該讓 app 起不來。',
+    );
+    expect(KlpAccent.parse(null), KlpAccent.ink);
   });
 
   test('theme builders only accept a curated accent', () {
@@ -55,8 +47,8 @@ void main() {
       accent: KlpAccent.terracotta,
     ).extension<KlpThemeData>()!;
 
-    expect(light.interaction, const Color(0xFF9E5D41));
-    expect(dark.interaction, const Color(0xFFBE7D60));
+    expect(light.interaction, KlpAccent.terracotta.light);
+    expect(dark.interaction, KlpAccent.terracotta.dark);
     expect(light.selection, KlpThemeData.light.selection);
     expect(dark.selection, KlpThemeData.dark.selection);
   });
@@ -87,17 +79,4 @@ void main() {
       }
     }
   });
-}
-
-double _contrastRatio(Color first, Color second) {
-  final firstLuminance = first.computeLuminance();
-  final secondLuminance = second.computeLuminance();
-  final lighter = firstLuminance > secondLuminance
-      ? firstLuminance
-      : secondLuminance;
-  final darker = firstLuminance > secondLuminance
-      ? secondLuminance
-      : firstLuminance;
-
-  return (lighter + 0.05) / (darker + 0.05);
 }

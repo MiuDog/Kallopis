@@ -51,7 +51,7 @@ feature package**，而不是塞進視覺元件庫。
 
 | 層 | 內容 | 可否覆寫 |
 |---|---|---|
-| 1 primitive | `KlpScale`、`KlpPalette`——只有數值，沒有語意 | **否**。它是設計語言的字彙表，不是設定項 |
+| 1 primitive | `KlpScale`（數值階梯）、`KlpPalette`（**ink 11 階中性色梯**＋語意色） | **否**。它是設計語言的字彙表，不是設定項 |
 | 2 semantic | `KlpThemeData`（色彩）、`KlpTypographyTheme`、`KlpSpacingTheme`、`KlpShapeTheme`、`KlpMotionTheme`、`KlpSurfaceTheme` | 是，皆為 `ThemeExtension` |
 | 3 component | `KlpComponentTheme`，欄位全為 nullable，`null` 表示沿用 semantic | 是 |
 
@@ -115,6 +115,22 @@ inventory 過期會失敗，registry 漏掉任何一個匯出的 widget 也會�
 元件目錄分為 6 組 19 頁：Colors、Type、Spacing、Guidelines、Foundation、Form。
 124 個 widget 全部歸類完畢。
 
+## 色彩：ink 色梯
+
+所有表面、文字與線條都由 `ink50`–`ink950` 這 11 階推導，**沒有各自命名的中性色**
+——`paper`／`chalk`／`dusk` 那種名字看不出彼此的明度關係，於是每次要新增一階都得重新猜。
+
+權威格式是 **oklch**（等亮度感知，調整時可預測），hex 是 sRGB 的實作值。
+**改值時改的是 oklch，hex 是換算結果**——反過來做會讓明度階梯逐漸走樣。
+
+三條機械規則：
+
+- 每個中性欄位都必須落在梯上。梯外的欄位在調整色梯時不會跟著變。
+- **元件不得直接取用具體顏色**，一律經 `context.klp`。唯一的例外是
+  `KlpPalette.transparent`（「沒有顏色」不是顏色）。
+- **目錄不得印出色碼。** 色票顯示的是它落在梯上的哪一階，並且是**反查**出來的
+  ——不在梯上的欄位會直接顯示「梯外」。
+
 ## 閘門
 
 「不要硬編碼風格」寫在文件裡只是承諾，承諾不會擋下任何一次提交。以下是機械判準：
@@ -130,6 +146,7 @@ inventory 過期會失敗，registry 漏掉任何一個匯出的 widget 也會�
 | 同上（棘輪） | 未文件化的公開型別數量只能下降 |
 | `test/router_test.dart` | 庫內不得出現具名路由；切到未註冊的目的地必須拋錯 |
 | `test/inventory_test.dart` | 元件清單不得過期；分層違規數只能下降 |
+| `test/color_discipline_test.dart` | 中性欄位必須在 ink 梯上；元件不得取用具體顏色；色梯明度嚴格遞減；文字三階與強調色的對比門檻 |
 | `example/test/catalog_coverage_test.dart` | 每個匯出的 widget 都要被歸類、不得重複、不得殘留已刪除的名字；每一頁在明暗兩態下都要能渲染 |
 
 ## 建置與測試

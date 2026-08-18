@@ -16,7 +16,7 @@ abstract final class KlpThemeContrast {
     final backgroundLuminance = background.computeLuminance();
     final darkContrast = _contrastRatio(
       backgroundLuminance,
-      KlpPalette.ink.computeLuminance(),
+      KlpPalette.ink900.computeLuminance(),
     );
     final lightContrast = _contrastRatio(
       backgroundLuminance,
@@ -24,7 +24,7 @@ abstract final class KlpThemeContrast {
     );
 
     return darkContrast >= lightContrast
-        ? KlpPalette.ink
+        ? KlpPalette.ink900
         : KlpPalette.pureWhite;
   }
 
@@ -91,6 +91,7 @@ class KlpThemeData extends ThemeExtension<KlpThemeData> {
 
   Color get onInteraction => KlpThemeContrast.foregroundFor(interaction);
 
+  /// 語意色塊上的前景。語意色的明度都在中段，白字是兩態下都成立的選擇。
   Color get onStatus => KlpPalette.pureWhite;
 
   Color get selection => text;
@@ -121,81 +122,85 @@ class KlpThemeData extends ThemeExtension<KlpThemeData> {
     );
   }
 
+  /// 亮態。**每個角色都落在 ink 色梯上**，沒有例外——一旦有欄位用梯外的顏色，
+  /// 調整色梯時它就會原地不動，而畫面上只會顯示為「某一塊怪怪的」。
   static const KlpThemeData light = KlpThemeData(
-    app: KlpPalette.canvas,
-    surface: KlpPalette.paper,
-    surfaceInset: KlpPalette.paperInset,
-    surfaceMuted: KlpPalette.canvasMuted,
-    component: KlpPalette.component,
-    stageSurface: KlpPalette.stage,
-    overlay: KlpPalette.component,
-    surfaceRaised: KlpPalette.component,
-    modalScrim: KlpPalette.modalScrim,
-    guide: KlpPalette.guide,
-    divider: KlpPalette.divider,
-    text: KlpPalette.ink,
-    textMuted: KlpPalette.inkMuted,
-    textFaint: KlpPalette.inkFaint,
+    app: KlpPalette.ink200,
+    surface: KlpPalette.ink100,
+    surfaceInset: KlpPalette.ink200,
+    surfaceMuted: KlpPalette.ink300,
+    component: KlpPalette.ink50,
+    stageSurface: KlpPalette.ink50,
+    overlay: KlpPalette.ink50,
+    surfaceRaised: KlpPalette.ink50,
+    modalScrim: KlpPalette.scrim,
+    guide: KlpPalette.ink400,
+    divider: KlpPalette.ink300,
+    text: KlpPalette.ink900,
+    textMuted: KlpPalette.ink600,
+    textFaint: KlpPalette.ink500,
     border: KlpPalette.line,
-    borderStrong: KlpPalette.lineStrong,
-    accent: KlpPalette.accent,
-    accentSoft: KlpPalette.accentSoft,
-    interaction: KlpPalette.interaction,
-    interactionSoft: KlpPalette.interactionSoft,
+    borderStrong: KlpPalette.line,
+    accent: KlpPalette.ink900,
+    accentSoft: KlpPalette.ink200,
+    interaction: KlpPalette.ink900,
+    interactionSoft: KlpPalette.ink200,
     success: KlpPalette.lightSuccess,
     warning: KlpPalette.lightWarning,
     danger: KlpPalette.lightDanger,
     info: KlpPalette.lightInfo,
   );
 
+  /// 暗態：整條梯翻轉。文字三階與亮態對稱（50／300／500 對 900／600／500）。
   static const KlpThemeData dark = KlpThemeData(
-    app: KlpPalette.duskRaised,
-    surface: KlpPalette.duskMuted,
-    surfaceInset: KlpPalette.duskLifted,
-    surfaceMuted: KlpPalette.duskLifted,
-    component: KlpPalette.duskInset,
-    stageSurface: KlpPalette.duskStage,
-    overlay: KlpPalette.duskLifted,
-    surfaceRaised: KlpPalette.duskLifted,
-    modalScrim: KlpPalette.modalScrim,
-    guide: KlpPalette.duskGuide,
-    divider: KlpPalette.duskDivider,
-    text: KlpPalette.chalk,
-    textMuted: KlpPalette.chalkMuted,
-    textFaint: KlpPalette.chalkFaint,
-    border: KlpPalette.nightLine,
-    borderStrong: KlpPalette.nightLineStrong,
-    accent: KlpPalette.chalk,
-    accentSoft: KlpPalette.duskMuted,
-    interaction: KlpPalette.chalk,
-    interactionSoft: KlpPalette.duskMuted,
+    app: KlpPalette.ink900,
+    surface: KlpPalette.ink800,
+    surfaceInset: KlpPalette.ink700,
+    surfaceMuted: KlpPalette.ink700,
+    component: KlpPalette.ink800,
+    stageSurface: KlpPalette.ink900,
+    overlay: KlpPalette.ink700,
+    surfaceRaised: KlpPalette.ink700,
+    modalScrim: KlpPalette.scrim,
+    guide: KlpPalette.ink500,
+    divider: KlpPalette.ink700,
+    text: KlpPalette.ink50,
+    textMuted: KlpPalette.ink300,
+    textFaint: KlpPalette.ink500,
+    border: KlpPalette.line,
+    borderStrong: KlpPalette.line,
+    accent: KlpPalette.ink50,
+    accentSoft: KlpPalette.ink700,
+    interaction: KlpPalette.ink50,
+    interactionSoft: KlpPalette.ink700,
     success: KlpPalette.darkSuccess,
     warning: KlpPalette.darkWarning,
     danger: KlpPalette.darkDanger,
     info: KlpPalette.darkInfo,
   );
 
+  /// 全暗態：比 dark 再往下一階，給 OLED 與長時間閱讀用。
   static const KlpThemeData ultraDark = KlpThemeData(
-    app: KlpPalette.night,
-    surface: KlpPalette.nightInset,
-    surfaceInset: KlpPalette.nightMuted,
-    surfaceMuted: KlpPalette.nightMuted,
-    component: KlpPalette.nightComponent,
-    stageSurface: KlpPalette.nightStage,
-    overlay: KlpPalette.nightMuted,
-    surfaceRaised: KlpPalette.nightMuted,
-    modalScrim: KlpPalette.modalScrim,
-    guide: KlpPalette.nightGuide,
-    divider: KlpPalette.nightDivider,
-    text: KlpPalette.chalk,
-    textMuted: KlpPalette.chalkMuted,
-    textFaint: KlpPalette.chalkFaint,
-    border: KlpPalette.nightLine,
-    borderStrong: KlpPalette.nightLineStrong,
-    accent: KlpPalette.chalk,
-    accentSoft: KlpPalette.nightInset,
-    interaction: KlpPalette.chalk,
-    interactionSoft: KlpPalette.nightInteractionSoft,
+    app: KlpPalette.ink950,
+    surface: KlpPalette.ink900,
+    surfaceInset: KlpPalette.ink800,
+    surfaceMuted: KlpPalette.ink800,
+    component: KlpPalette.ink900,
+    stageSurface: KlpPalette.ink950,
+    overlay: KlpPalette.ink800,
+    surfaceRaised: KlpPalette.ink800,
+    modalScrim: KlpPalette.scrim,
+    guide: KlpPalette.ink500,
+    divider: KlpPalette.ink700,
+    text: KlpPalette.ink50,
+    textMuted: KlpPalette.ink300,
+    textFaint: KlpPalette.ink500,
+    border: KlpPalette.line,
+    borderStrong: KlpPalette.line,
+    accent: KlpPalette.ink50,
+    accentSoft: KlpPalette.ink800,
+    interaction: KlpPalette.ink50,
+    interactionSoft: KlpPalette.ink800,
     success: KlpPalette.darkSuccess,
     warning: KlpPalette.darkWarning,
     danger: KlpPalette.darkDanger,

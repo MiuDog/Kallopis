@@ -127,7 +127,7 @@ graph TD
 | `KlpSurfaceTheme` | 107 | （葉節點） |
 | `KlpTheme` | 95 | `KlpVisualStyle` |
 | `KlpThemeContrast` | 25 | （葉節點） |
-| `KlpThemeData` | 258 | （葉節點） |
+| `KlpThemeData` | 263 | （葉節點） |
 | `KlpThemeVariant` | 2 | （葉節點） |
 | `KlpTypographyTheme` | 224 | （葉節點） |
 | `KlpVisualStyle` | 88 | （葉節點） |
@@ -168,7 +168,7 @@ graph LR
 | `KlpLayoutGap` | 4 | （葉節點） |
 | `KlpLine` | 8 | （葉節點） |
 | `KlpMotion` | 5 | （葉節點） |
-| `KlpPalette` | 68 | （葉節點） |
+| `KlpPalette` | 89 | （葉節點） |
 | `KlpPlaceholderMetrics` | 18 | （葉節點） |
 | `KlpPopover` | 16 | `KlpSurface` |
 | `KlpRadius` | 12 | （葉節點） |
@@ -843,7 +843,7 @@ graph LR
 | `KlpStageFrame` | 37 | （葉節點） |
 | `KlpStatusBar` | 55 | `KlpText` |
 | `KlpThemePreviewMode` | 2 | （葉節點） |
-| `KlpThemePreviewTile` | 322 | `KlpPressable`、`KlpText` |
+| `KlpThemePreviewTile` | 309 | `KlpPressable`、`KlpText` |
 | `KlpWindowControls` | 118 | `KlpIcon`、`KlpTooltip` |
 | `KlpWorkbenchShell` | 135 | （葉節點） |
 

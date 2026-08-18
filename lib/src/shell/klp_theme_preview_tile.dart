@@ -279,6 +279,11 @@ class _ThemePreviewPainter extends CustomPainter {
   }
 }
 
+/// 預覽磚裡那扇模擬視窗用的顏色。
+///
+/// **直接由 [KlpThemeData] 的 preset 推導，不另外抄一份。** 原本這裡有四組手寫的色值，
+/// 與 preset 是同一組規則的兩份實作——改了 preset 而忘記改這裡，預覽會顯示一個
+/// 已經不存在的主題，而且不會有任何徵兆。
 class _ThemePreviewSkin {
   const _ThemePreviewSkin({
     required this.app,
@@ -289,6 +294,15 @@ class _ThemePreviewSkin {
     required this.faint,
   });
 
+  factory _ThemePreviewSkin.from(KlpThemeData tokens) => _ThemePreviewSkin(
+    app: tokens.app,
+    surface: tokens.surface,
+    well: tokens.surfaceInset,
+    outline: tokens.divider,
+    ink: tokens.text,
+    faint: tokens.textFaint,
+  );
+
   final Color app;
   final Color surface;
   final Color well;
@@ -296,36 +310,9 @@ class _ThemePreviewSkin {
   final Color ink;
   final Color faint;
 
-  static const light = _ThemePreviewSkin(
-    app: KlpPalette.canvas,
-    surface: KlpPalette.paper,
-    well: KlpPalette.paperInset,
-    outline: KlpPalette.divider,
-    ink: KlpPalette.ink,
-    faint: KlpPalette.inkFaint,
-  );
-  static const dark = _ThemePreviewSkin(
-    app: KlpPalette.duskRaised,
-    surface: KlpPalette.duskMuted,
-    well: KlpPalette.duskLifted,
-    outline: KlpPalette.duskDivider,
-    ink: KlpPalette.chalk,
-    faint: KlpPalette.chalkFaint,
-  );
-  static const ultraDark = _ThemePreviewSkin(
-    app: KlpPalette.night,
-    surface: KlpPalette.nightInset,
-    well: KlpPalette.nightMuted,
-    outline: KlpPalette.nightDivider,
-    ink: KlpPalette.chalk,
-    faint: KlpPalette.chalkFaint,
-  );
-  static const transparent = _ThemePreviewSkin(
-    app: KlpPalette.transparent,
-    surface: KlpPalette.transparentSurface,
-    well: KlpPalette.transparentSurfaceInset,
-    outline: KlpPalette.duskDivider,
-    ink: KlpPalette.chalk,
-    faint: KlpPalette.chalkFaint,
-  );
+  static final light = _ThemePreviewSkin.from(KlpThemeData.light);
+  static final dark = _ThemePreviewSkin.from(KlpThemeData.dark);
+  static final ultraDark = _ThemePreviewSkin.from(KlpThemeData.ultraDark);
+
+  static final transparent = _ThemePreviewSkin.from(KlpThemeData.transparent);
 }

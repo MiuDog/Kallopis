@@ -1,7 +1,40 @@
 import 'package:flutter/widgets.dart';
 import 'package:kallopis/kallopis.dart';
 
-/// 一格色票。顯示角色名、實際色值，以及在該底色上的前景對比。
+/// ink 色梯，由階名對應到色值。
+///
+/// 用來**反查**某個語意角色落在梯上的哪一階。反查而不是手寫標籤：手寫的標籤會與
+/// 實際映射分岔，而分岔時畫面看起來完全正常。
+const Map<String, Color> inkRamp = {
+  'ink50': KlpPalette.ink50,
+  'ink100': KlpPalette.ink100,
+  'ink200': KlpPalette.ink200,
+  'ink300': KlpPalette.ink300,
+  'ink400': KlpPalette.ink400,
+  'ink500': KlpPalette.ink500,
+  'ink600': KlpPalette.ink600,
+  'ink700': KlpPalette.ink700,
+  'ink800': KlpPalette.ink800,
+  'ink900': KlpPalette.ink900,
+  'ink950': KlpPalette.ink950,
+};
+
+/// 這個顏色落在色梯的哪一階；不在梯上時回傳 `null`。
+String? inkStepOf(Color color) {
+  for (final entry in inkRamp.entries) {
+    if (entry.value.toARGB32() == color.toARGB32()) return entry.key;
+  }
+  return null;
+}
+
+/// 一格色票。
+///
+/// **只顯示語意角色與它落在色梯的哪一階，不顯示色碼。** 目錄一旦印出 hex，就等於在
+/// 邀請人把那串數字複製到自己的程式碼裡——那正是整個 token 架構要防的事。
+/// 要知道實際色值，看 `KlpPalette` 的定義，那裡的權威格式是 oklch。
+///
+/// 階名是**反查**出來的，因此不在梯上的欄位會直接顯示為「梯外」——
+/// 這讓「所有欄位都必須上梯」在畫面上就看得出來，不必等測試。
 class Swatch extends StatelessWidget {
   const Swatch({
     super.key,
@@ -11,13 +44,12 @@ class Swatch extends StatelessWidget {
     this.onColor,
   });
 
+  /// 語意角色，例如 `surface`。
   final String role;
+
   final Color color;
   final String? note;
   final Color? onColor;
-
-  String get _hex =>
-      '#${(color.toARGB32() & 0xFFFFFF).toRadixString(16).padLeft(6, '0').toUpperCase()}';
 
   @override
   Widget build(BuildContext context) {
@@ -40,7 +72,11 @@ class Swatch extends StatelessWidget {
               width: klp.shape.hairline,
             ),
           ),
-          child: KlpText(_hex, role: KlpTextRole.code, color: foreground),
+          child: KlpText(
+            inkStepOf(color) ?? '梯外',
+            role: KlpTextRole.code,
+            color: foreground,
+          ),
         ),
         SizedBox(height: klp.space.tight),
         KlpText(role, role: KlpTextRole.caption),
