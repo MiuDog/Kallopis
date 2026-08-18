@@ -54,14 +54,34 @@ abstract final class KlpPalette {
   // ── 語意色 ──────────────────────────────────────────────────────────────
   // 只用於狀態，不參與視覺層級——層級全部由上面的中性色梯負責。
 
-  static const Color lightSuccess = Color(0xFF3B7240);
-  static const Color lightWarning = Color(0xFF7E6525);
-  static const Color lightDanger = Color(0xFFA14736);
-  static const Color lightInfo = Color(0xFF466A7C);
-  static const Color darkSuccess = Color(0xFF6BB371);
-  static const Color darkWarning = Color(0xFFCCAF66);
-  static const Color darkDanger = Color(0xFFD28D7F);
-  static const Color darkInfo = Color(0xFF81A8BB);
+  // 暗態這四個是設計來源：對來源色的 oklch 亮度 +0.05。
+  //
+  /// oklch(0.703 0.131 155.1)
+  static const Color darkSuccess = Color(0xFF51B77B);
+
+  /// oklch(0.707 0.174 19.7)
+  static const Color darkDanger = Color(0xFFFA6C73);
+
+  /// oklch(0.813 0.156 80.2)
+  static const Color darkWarning = Color(0xFFF6B52E);
+
+  /// oklch(0.668 0.126 250.5)
+  static const Color darkInfo = Color(0xFF5499DF);
+
+  // 亮態沿用同一組色相與彩度，只把亮度降到對 ink100 通過 AA（≥ 4.6）為止。
+  // **不是另外挑一組顏色**——同色相才會讓兩態下的「成功」看起來是同一個成功。
+  //
+  /// oklch(0.499 0.127 153.6)
+  static const Color lightSuccess = Color(0xFF00773F);
+
+  /// oklch(0.535 0.174 20.0)
+  static const Color lightDanger = Color(0xFFBD3341);
+
+  /// oklch(0.520 0.116 66.1)
+  static const Color lightWarning = Color(0xFF955900);
+
+  /// oklch(0.512 0.127 250.9)
+  static const Color lightInfo = Color(0xFF2269AC);
 
   // ── 極值與特例 ──────────────────────────────────────────────────────────
 

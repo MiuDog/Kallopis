@@ -168,7 +168,7 @@ graph LR
 | `KlpLayoutGap` | 4 | （葉節點） |
 | `KlpLine` | 8 | （葉節點） |
 | `KlpMotion` | 5 | （葉節點） |
-| `KlpPalette` | 89 | （葉節點） |
+| `KlpPalette` | 109 | （葉節點） |
 | `KlpPlaceholderMetrics` | 18 | （葉節點） |
 | `KlpPopover` | 16 | `KlpSurface` |
 | `KlpRadius` | 12 | （葉節點） |
