@@ -12,26 +12,23 @@ import '../foundation/klp_palette.dart';
 export 'klp_theme_scope.dart';
 
 abstract final class KlpThemeContrast {
-  static Color foregroundFor(Color background) {
-    final backgroundLuminance = background.computeLuminance();
-    final darkContrast = _contrastRatio(
-      backgroundLuminance,
-      KlpPalette.ink900.computeLuminance(),
-    );
-    final lightContrast = _contrastRatio(
-      backgroundLuminance,
-      KlpPalette.pureWhite.computeLuminance(),
-    );
-
-    return darkContrast >= lightContrast
-        ? KlpPalette.ink900
-        : KlpPalette.pureWhite;
+  /// 判斷背景屬於哪一階梯：
+  /// - 500 以下（含 500，如 ink50 ~ ink500）：深色文字
+  /// - 600 以上（含 600，如 ink600 ~ ink950）：淺色文字
+  /// - 透明背景不構成獨立深色階層，回傳 false
+  static bool isDarkBackground(Color background) {
+    if (background == KlpPalette.transparent || background.a == 0) {
+      return false;
+    }
+    // ink500 luminance 約 0.197 (oklch 0.58)，ink600 luminance 約 0.111 (oklch 0.48)
+    return background.computeLuminance() < 0.15;
   }
 
-  static double _contrastRatio(double first, double second) {
-    final lighter = first > second ? first : second;
-    final darker = first > second ? second : first;
-    return (lighter + 0.05) / (darker + 0.05);
+  /// 依據背景顏色階梯（500 以下為深色 ink900，600 以上為淺色 ink50）決定前景文字色。
+  static Color foregroundFor(Color background) {
+    return isDarkBackground(background)
+        ? KlpPalette.ink50
+        : KlpPalette.ink900;
   }
 }
 
@@ -109,6 +106,20 @@ class KlpThemeData extends ThemeExtension<KlpThemeData> {
       Color.lerp(surfaceInset, text, contrastMix)!;
 
   Color get hoverSurface => hoverSurfaceWith(0.08);
+
+  /// 依據背景顏色階梯（500 以下為深色文字，600 以上為淺色文字）產生適用於該背景的文字色彩 token。
+  /// 若背景為透明，則延續當前（上層）的文字與階層設定。
+  KlpThemeData onBackground(Color background) {
+    if (background == KlpPalette.transparent || background.a == 0) {
+      return this;
+    }
+    final isDark = KlpThemeContrast.isDarkBackground(background);
+    return copyWith(
+      text: isDark ? KlpPalette.ink50 : KlpPalette.ink900,
+      textMuted: isDark ? KlpPalette.ink300 : KlpPalette.ink600,
+      textFaint: KlpPalette.ink500,
+    );
+  }
 
   KlpThemeData withWindowTransparency(Brightness brightness) {
     final paneOpacity = brightness == Brightness.light
@@ -278,6 +289,63 @@ class KlpThemeData extends ThemeExtension<KlpThemeData> {
     if (other == null) return this;
     return t < 0.5 ? this : other;
   }
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is KlpThemeData &&
+          app == other.app &&
+          surface == other.surface &&
+          surfaceInset == other.surfaceInset &&
+          surfaceMuted == other.surfaceMuted &&
+          component == other.component &&
+          stageSurface == other.stageSurface &&
+          overlay == other.overlay &&
+          surfaceRaised == other.surfaceRaised &&
+          modalScrim == other.modalScrim &&
+          guide == other.guide &&
+          divider == other.divider &&
+          text == other.text &&
+          textMuted == other.textMuted &&
+          textFaint == other.textFaint &&
+          border == other.border &&
+          borderStrong == other.borderStrong &&
+          accent == other.accent &&
+          accentSoft == other.accentSoft &&
+          interaction == other.interaction &&
+          interactionSoft == other.interactionSoft &&
+          success == other.success &&
+          warning == other.warning &&
+          danger == other.danger &&
+          info == other.info;
+
+  @override
+  int get hashCode => Object.hashAll([
+    app,
+    surface,
+    surfaceInset,
+    surfaceMuted,
+    component,
+    stageSurface,
+    overlay,
+    surfaceRaised,
+    modalScrim,
+    guide,
+    divider,
+    text,
+    textMuted,
+    textFaint,
+    border,
+    borderStrong,
+    accent,
+    accentSoft,
+    interaction,
+    interactionSoft,
+    success,
+    warning,
+    danger,
+    info,
+  ]);
 }
 
 enum KlpThemeVariant { light, dark, ultraDark, transparent }

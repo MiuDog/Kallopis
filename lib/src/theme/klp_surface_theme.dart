@@ -2,17 +2,25 @@ import 'package:flutter/material.dart';
 
 import '../tokens/klp_scale.dart';
 
-/// 表面的分層手法：用陰影，還是用邊框。
+/// 表面的分層手法：純色階層 (tone)、實線邊框 (outline)、霧化透明 (frosted)、原生 Box 漸層 (gradient) 或傳統陰影 (shadow)。
 ///
-/// 這兩種手法互斥：一種用實線框界定區塊、完全沒有陰影；另一種用柔和陰影浮起、
-/// 邊框極淡或省略。把它做成 enum 而不是兩組獨立的 shadow／border 參數，是為了讓
-/// 「陰影開著又畫滿實線框」這種不會出錯但一定醜的組合從型別上就不可能出現。
+/// 多種手法各有適用場景。不推薦單純依賴陰影；現代介面更推崇純色階明度差、
+/// 清晰邊框、壓克力霧化或微漸層光澤。
 enum KlpSurfaceSeparation {
-  /// 用陰影分層，邊框僅作輔助。
-  shadow,
+  /// 單調特殊顏色 / 表面色階分層（純色明度階梯，無邊框無陰影）。
+  tone,
 
-  /// 用實線邊框分層，不使用陰影。
+  /// 用實線邊框分層，不使用陰影（推薦之清晰結構手法）。
   outline,
+
+  /// 霧化透明 / 毛玻璃分層（BackdropFilter 搭配半透明表面）。
+  frosted,
+
+  /// 原生 Box 漸層與微光分層。
+  gradient,
+
+  /// 用陰影分層（不推薦之傳統做法，僅為相容性保留）。
+  shadow,
 }
 
 /// Layer 2：表面分層與陰影的 semantic token。

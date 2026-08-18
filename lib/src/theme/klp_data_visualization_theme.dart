@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import '../foundation/klp_palette.dart';
 
@@ -189,10 +190,47 @@ class KlpDataVisualizationTheme
     if (other == null) return this;
     return t < 0.5 ? this : other;
   }
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is KlpDataVisualizationTheme &&
+          listEquals(series, other.series) &&
+          listEquals(seriesWash, other.seriesWash) &&
+          axis == other.axis &&
+          grid == other.grid &&
+          gridStrong == other.gridStrong &&
+          label == other.label &&
+          value == other.value &&
+          plotBackground == other.plotBackground &&
+          crosshair == other.crosshair &&
+          marketUp == other.marketUp &&
+          marketUpWash == other.marketUpWash &&
+          marketDown == other.marketDown &&
+          marketDownWash == other.marketDownWash &&
+          marketFlat == other.marketFlat;
+
+  @override
+  int get hashCode => Object.hashAll([
+    Object.hashAll(series),
+    Object.hashAll(seriesWash),
+    axis,
+    grid,
+    gridStrong,
+    label,
+    value,
+    plotBackground,
+    crosshair,
+    marketUp,
+    marketUpWash,
+    marketDown,
+    marketDownWash,
+    marketFlat,
+  ]);
 }
 
 extension KlpDataVisualizationThemeContext on BuildContext {
-  KlpDataVisualizationTheme get plnDataVisualizationTheme {
+  KlpDataVisualizationTheme get klpDataVisualization {
     return Theme.of(this).extension<KlpDataVisualizationTheme>() ??
         KlpDataVisualizationTheme.light;
   }

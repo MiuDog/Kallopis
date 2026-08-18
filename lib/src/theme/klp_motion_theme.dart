@@ -122,7 +122,7 @@ class KlpMotionTheme extends ThemeExtension<KlpMotionTheme> {
           emphasized == other.emphasized;
 
   @override
-  int get hashCode => Object.hashAll([
+  int get hashCode => Object.hash(
     themeTransition,
     styleTransition,
     stateTransition,
@@ -133,5 +133,5 @@ class KlpMotionTheme extends ThemeExtension<KlpMotionTheme> {
     longPressThreshold,
     standard,
     emphasized,
-  ]);
+  );
 }

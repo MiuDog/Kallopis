@@ -151,19 +151,39 @@ class KlpComponentTheme extends ThemeExtension<KlpComponentTheme> {
       identical(this, other) ||
       other is KlpComponentTheme &&
           buttonRadius == other.buttonRadius &&
+          buttonPaddingX == other.buttonPaddingX &&
+          buttonPaddingY == other.buttonPaddingY &&
+          buttonHeight == other.buttonHeight &&
           buttonBorderWidth == other.buttonBorderWidth &&
           fieldRadius == other.fieldRadius &&
+          fieldPaddingX == other.fieldPaddingX &&
+          fieldHeight == other.fieldHeight &&
+          fieldBorderWidth == other.fieldBorderWidth &&
           menuRadius == other.menuRadius &&
+          menuPadding == other.menuPadding &&
+          menuItemHeight == other.menuItemHeight &&
           cardRadius == other.cardRadius &&
-          badgeRadius == other.badgeRadius;
+          cardPadding == other.cardPadding &&
+          badgeRadius == other.badgeRadius &&
+          badgePaddingX == other.badgePaddingX;
 
   @override
   int get hashCode => Object.hash(
     buttonRadius,
+    buttonPaddingX,
+    buttonPaddingY,
+    buttonHeight,
     buttonBorderWidth,
     fieldRadius,
+    fieldPaddingX,
+    fieldHeight,
+    fieldBorderWidth,
     menuRadius,
+    menuPadding,
+    menuItemHeight,
     cardRadius,
+    cardPadding,
     badgeRadius,
+    badgePaddingX,
   );
 }

@@ -10,6 +10,16 @@ import '../tokens/klp_scale.dart';
 @immutable
 class KlpSpacingTheme extends ThemeExtension<KlpSpacingTheme> {
   const KlpSpacingTheme({
+    this.space0_5 = KlpScale.space50,
+    this.space1 = KlpScale.space100,
+    this.space2 = KlpScale.space200,
+    this.space3 = KlpScale.space300,
+    this.space4 = KlpScale.space400,
+    this.space6 = KlpScale.space600,
+    this.space8 = KlpScale.space800,
+    this.space12 = KlpScale.space1200,
+    this.space16 = KlpScale.space1600,
+    this.space24 = KlpScale.space2400,
     required this.hairline,
     required this.tight,
     required this.compact,
@@ -17,8 +27,13 @@ class KlpSpacingTheme extends ThemeExtension<KlpSpacingTheme> {
     required this.comfortable,
     required this.loose,
     required this.section,
+    this.sectionLarge = KlpScale.space1200,
     required this.page,
+    this.pageLarge = KlpScale.space2400,
+    this.controlPaddingXSmall = KlpScale.space300,
     required this.controlPaddingX,
+    this.controlPaddingXLarge = KlpScale.space600,
+    this.controlPaddingXXLarge = KlpScale.space800,
     required this.controlPaddingY,
     required this.containerPadding,
     required this.itemGap,
@@ -26,8 +41,11 @@ class KlpSpacingTheme extends ThemeExtension<KlpSpacingTheme> {
     required this.controlHeight,
     required this.controlHeightSmall,
     required this.controlHeightLarge,
+    this.controlHeightXLarge = 56,
     required this.iconSmall,
+    this.iconBase = 16,
     required this.icon,
+    this.iconMedium = 24,
     required this.iconLarge,
     required this.chromeHeader,
     required this.chromeStatusBar,
@@ -36,7 +54,19 @@ class KlpSpacingTheme extends ThemeExtension<KlpSpacingTheme> {
     required this.iconButton,
   });
 
-  // 通用階梯（角色化，不是尺寸化）
+  // 10 段精確間距階梯 (px)
+  final double space0_5; // 2px (0.125rem)
+  final double space1; // 4px (0.25rem)
+  final double space2; // 8px (0.5rem)
+  final double space3; // 12px (0.75rem)
+  final double space4; // 16px (1.0rem)
+  final double space6; // 24px (1.5rem)
+  final double space8; // 32px (2.0rem)
+  final double space12; // 48px (3.0rem)
+  final double space16; // 64px (4.0rem)
+  final double space24; // 96px (6.0rem)
+
+  // 通用角色階梯
   final double hairline;
   final double tight;
   final double compact;
@@ -44,26 +74,34 @@ class KlpSpacingTheme extends ThemeExtension<KlpSpacingTheme> {
   final double comfortable;
   final double loose;
   final double section;
+  final double sectionLarge;
   final double page;
+  final double pageLarge;
 
-  // 直接可用的組合值——元件讀這些，不自己算
-  final double controlPaddingX;
+  // 直接可用的組合值與內距
+  final double controlPaddingXSmall; // 12px (SM)
+  final double controlPaddingX; // 16px (MD)
+  final double controlPaddingXLarge; // 24px (LG)
+  final double controlPaddingXXLarge; // 32px (XL)
   final double controlPaddingY;
   final double containerPadding;
   final double itemGap;
   final double groupGap;
 
-  // 密度：控制項高度是「緊湊 vs 寬鬆」最直接的體現
-  final double controlHeight;
-  final double controlHeightSmall;
-  final double controlHeightLarge;
+  // 四段控制項高度（SM: 32, MD: 40, LG: 48, XL: 56）
+  final double controlHeightSmall; // 32px (SM)
+  final double controlHeight; // 40px (MD 預設)
+  final double controlHeightLarge; // 48px (LG)
+  final double controlHeightXLarge; // 56px (XL)
 
-  /// 圖示尺寸屬於密度：高密度風格的圖示要能與收緊後的行高對齊。
-  final double iconSmall;
-  final double icon;
-  final double iconLarge;
+  // 四段圖示尺寸 (14, 16, 20/24, 32)
+  final double iconSmall; // 14px (icon-sm)
+  final double iconBase; // 16px (icon-base)
+  final double icon; // 20px (icon-md 標準)
+  final double iconMedium; // 24px (icon-md 導覽)
+  final double iconLarge; // 32px (icon-lg 特色卡)
 
-  /// App 外殼的高度。高密度風格的標題列與狀態列會矮一截——這是密度，不是版面常數。
+  // 外殼高度
   final double chromeHeader;
   final double chromeStatusBar;
   final double chromeRail;
@@ -77,36 +115,64 @@ class KlpSpacingTheme extends ThemeExtension<KlpSpacingTheme> {
 
   EdgeInsets get containerInsets => EdgeInsets.all(containerPadding);
 
-  /// 現代風：呼吸感優先，控制項 32pt。
+  /// 現代風：呼吸感優先，控制項預設 40px。
   static const KlpSpacingTheme comfortableDensity = KlpSpacingTheme(
-    hairline: KlpScale.space50,
-    tight: KlpScale.space100,
-    compact: KlpScale.space200,
-    base: KlpScale.space300,
-    comfortable: KlpScale.space400,
-    loose: KlpScale.space600,
-    section: KlpScale.space800,
-    page: KlpScale.space1000,
-    controlPaddingX: KlpScale.space300,
-    controlPaddingY: KlpScale.space200,
-    containerPadding: KlpScale.space400,
-    itemGap: KlpScale.space200,
-    groupGap: KlpScale.space400,
-    controlHeight: 32,
-    controlHeightSmall: 26,
-    controlHeightLarge: 40,
-    iconSmall: 14,
-    icon: 18,
-    iconLarge: 22,
+    space0_5: KlpScale.space50, // 2px
+    space1: KlpScale.space100, // 4px
+    space2: KlpScale.space200, // 8px
+    space3: KlpScale.space300, // 12px
+    space4: KlpScale.space400, // 16px
+    space6: KlpScale.space600, // 24px
+    space8: KlpScale.space800, // 32px
+    space12: KlpScale.space1200, // 48px
+    space16: KlpScale.space1600, // 64px
+    space24: KlpScale.space2400, // 96px
+    hairline: KlpScale.space50, // 2px
+    tight: KlpScale.space100, // 4px
+    compact: KlpScale.space200, // 8px
+    base: KlpScale.space400, // 16px (基準)
+    comfortable: KlpScale.space600, // 24px
+    loose: KlpScale.space800, // 32px
+    section: KlpScale.space800, // 32px
+    sectionLarge: KlpScale.space1200, // 48px
+    page: KlpScale.space1600, // 64px
+    pageLarge: KlpScale.space2400, // 96px
+    controlPaddingXSmall: KlpScale.space300, // 12px (SM)
+    controlPaddingX: KlpScale.space400, // 16px (MD)
+    controlPaddingXLarge: KlpScale.space600, // 24px (LG)
+    controlPaddingXXLarge: KlpScale.space800, // 32px (XL)
+    controlPaddingY: KlpScale.space200, // 8px
+    containerPadding: KlpScale.space400, // 16px
+    itemGap: KlpScale.space300, // 12px
+    groupGap: KlpScale.space400, // 16px
+    controlHeightSmall: 32, // 32px (SM)
+    controlHeight: 40, // 40px (MD 預設)
+    controlHeightLarge: 48, // 48px (LG)
+    controlHeightXLarge: 56, // 56px (XL)
+    iconSmall: 14, // 14px (icon-sm)
+    iconBase: 16, // 16px (icon-base)
+    icon: 20, // 20px (icon-md)
+    iconMedium: 24, // 24px (icon-md)
+    iconLarge: 32, // 32px (icon-lg)
     chromeHeader: 60,
     chromeStatusBar: 30,
     chromeRail: 56,
     chromeTab: 32,
-    iconButton: 30,
+    iconButton: 32,
   );
 
   @override
   KlpSpacingTheme copyWith({
+    double? space0_5,
+    double? space1,
+    double? space2,
+    double? space3,
+    double? space4,
+    double? space6,
+    double? space8,
+    double? space12,
+    double? space16,
+    double? space24,
     double? hairline,
     double? tight,
     double? compact,
@@ -114,8 +180,13 @@ class KlpSpacingTheme extends ThemeExtension<KlpSpacingTheme> {
     double? comfortable,
     double? loose,
     double? section,
+    double? sectionLarge,
     double? page,
+    double? pageLarge,
+    double? controlPaddingXSmall,
     double? controlPaddingX,
+    double? controlPaddingXLarge,
+    double? controlPaddingXXLarge,
     double? controlPaddingY,
     double? containerPadding,
     double? itemGap,
@@ -123,8 +194,11 @@ class KlpSpacingTheme extends ThemeExtension<KlpSpacingTheme> {
     double? controlHeight,
     double? controlHeightSmall,
     double? controlHeightLarge,
+    double? controlHeightXLarge,
     double? iconSmall,
+    double? iconBase,
     double? icon,
+    double? iconMedium,
     double? iconLarge,
     double? chromeHeader,
     double? chromeStatusBar,
@@ -133,6 +207,16 @@ class KlpSpacingTheme extends ThemeExtension<KlpSpacingTheme> {
     double? iconButton,
   }) {
     return KlpSpacingTheme(
+      space0_5: space0_5 ?? this.space0_5,
+      space1: space1 ?? this.space1,
+      space2: space2 ?? this.space2,
+      space3: space3 ?? this.space3,
+      space4: space4 ?? this.space4,
+      space6: space6 ?? this.space6,
+      space8: space8 ?? this.space8,
+      space12: space12 ?? this.space12,
+      space16: space16 ?? this.space16,
+      space24: space24 ?? this.space24,
       hairline: hairline ?? this.hairline,
       tight: tight ?? this.tight,
       compact: compact ?? this.compact,
@@ -140,8 +224,14 @@ class KlpSpacingTheme extends ThemeExtension<KlpSpacingTheme> {
       comfortable: comfortable ?? this.comfortable,
       loose: loose ?? this.loose,
       section: section ?? this.section,
+      sectionLarge: sectionLarge ?? this.sectionLarge,
       page: page ?? this.page,
+      pageLarge: pageLarge ?? this.pageLarge,
+      controlPaddingXSmall: controlPaddingXSmall ?? this.controlPaddingXSmall,
       controlPaddingX: controlPaddingX ?? this.controlPaddingX,
+      controlPaddingXLarge: controlPaddingXLarge ?? this.controlPaddingXLarge,
+      controlPaddingXXLarge:
+          controlPaddingXXLarge ?? this.controlPaddingXXLarge,
       controlPaddingY: controlPaddingY ?? this.controlPaddingY,
       containerPadding: containerPadding ?? this.containerPadding,
       itemGap: itemGap ?? this.itemGap,
@@ -149,8 +239,11 @@ class KlpSpacingTheme extends ThemeExtension<KlpSpacingTheme> {
       controlHeight: controlHeight ?? this.controlHeight,
       controlHeightSmall: controlHeightSmall ?? this.controlHeightSmall,
       controlHeightLarge: controlHeightLarge ?? this.controlHeightLarge,
+      controlHeightXLarge: controlHeightXLarge ?? this.controlHeightXLarge,
       iconSmall: iconSmall ?? this.iconSmall,
+      iconBase: iconBase ?? this.iconBase,
       icon: icon ?? this.icon,
+      iconMedium: iconMedium ?? this.iconMedium,
       iconLarge: iconLarge ?? this.iconLarge,
       chromeHeader: chromeHeader ?? this.chromeHeader,
       chromeStatusBar: chromeStatusBar ?? this.chromeStatusBar,
@@ -160,13 +253,6 @@ class KlpSpacingTheme extends ThemeExtension<KlpSpacingTheme> {
     );
   }
 
-  /// **不做內插。**
-  ///
-  /// `MaterialApp` 在 theme 變更時會跑一段過場並沿路呼叫 `lerp`。各層若各自內插，
-  /// 中途會出現「某幾層已經換了、某幾層還沒」的混合狀態——那正是切換深淺色時看起來
-  /// 「有些元件沒有跟著變」的原因：它們不是沒變，是停在中間值上。
-  ///
-  /// 因此整個 token 疊層一律在中點原子性地翻轉，任何時刻都只會是完整的其中一套。
   @override
   KlpSpacingTheme lerp(covariant KlpSpacingTheme? other, double t) {
     if (other == null) return this;
@@ -177,6 +263,16 @@ class KlpSpacingTheme extends ThemeExtension<KlpSpacingTheme> {
   bool operator ==(Object other) =>
       identical(this, other) ||
       other is KlpSpacingTheme &&
+          space0_5 == other.space0_5 &&
+          space1 == other.space1 &&
+          space2 == other.space2 &&
+          space3 == other.space3 &&
+          space4 == other.space4 &&
+          space6 == other.space6 &&
+          space8 == other.space8 &&
+          space12 == other.space12 &&
+          space16 == other.space16 &&
+          space24 == other.space24 &&
           hairline == other.hairline &&
           tight == other.tight &&
           compact == other.compact &&
@@ -184,17 +280,25 @@ class KlpSpacingTheme extends ThemeExtension<KlpSpacingTheme> {
           comfortable == other.comfortable &&
           loose == other.loose &&
           section == other.section &&
+          sectionLarge == other.sectionLarge &&
           page == other.page &&
+          pageLarge == other.pageLarge &&
+          controlPaddingXSmall == other.controlPaddingXSmall &&
           controlPaddingX == other.controlPaddingX &&
+          controlPaddingXLarge == other.controlPaddingXLarge &&
+          controlPaddingXXLarge == other.controlPaddingXXLarge &&
           controlPaddingY == other.controlPaddingY &&
           containerPadding == other.containerPadding &&
           itemGap == other.itemGap &&
           groupGap == other.groupGap &&
-          controlHeight == other.controlHeight &&
           controlHeightSmall == other.controlHeightSmall &&
+          controlHeight == other.controlHeight &&
           controlHeightLarge == other.controlHeightLarge &&
+          controlHeightXLarge == other.controlHeightXLarge &&
           iconSmall == other.iconSmall &&
+          iconBase == other.iconBase &&
           icon == other.icon &&
+          iconMedium == other.iconMedium &&
           iconLarge == other.iconLarge &&
           chromeHeader == other.chromeHeader &&
           chromeStatusBar == other.chromeStatusBar &&
@@ -204,6 +308,16 @@ class KlpSpacingTheme extends ThemeExtension<KlpSpacingTheme> {
 
   @override
   int get hashCode => Object.hashAll([
+    space0_5,
+    space1,
+    space2,
+    space3,
+    space4,
+    space6,
+    space8,
+    space12,
+    space16,
+    space24,
     hairline,
     tight,
     compact,
@@ -211,17 +325,25 @@ class KlpSpacingTheme extends ThemeExtension<KlpSpacingTheme> {
     comfortable,
     loose,
     section,
+    sectionLarge,
     page,
+    pageLarge,
+    controlPaddingXSmall,
     controlPaddingX,
+    controlPaddingXLarge,
+    controlPaddingXXLarge,
     controlPaddingY,
     containerPadding,
     itemGap,
     groupGap,
-    controlHeight,
     controlHeightSmall,
+    controlHeight,
     controlHeightLarge,
+    controlHeightXLarge,
     iconSmall,
+    iconBase,
     icon,
+    iconMedium,
     iconLarge,
     chromeHeader,
     chromeStatusBar,

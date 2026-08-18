@@ -10,6 +10,7 @@ import '../tokens/klp_scale.dart';
 class KlpShapeTheme extends ThemeExtension<KlpShapeTheme> {
   const KlpShapeTheme({
     required this.none,
+    this.sm = KlpScale.radius50,
     required this.control,
     required this.card,
     required this.panel,
@@ -23,16 +24,19 @@ class KlpShapeTheme extends ThemeExtension<KlpShapeTheme> {
 
   final double none;
 
-  /// 按鈕、輸入框、切換器等可操作元件。
+  /// Checkbox、極小標籤 (radius-sm: 2px)。
+  final double sm;
+
+  /// 按鈕、輸入框等標準操作元件 (radius-md: 6px~8px)。
   final double control;
 
-  /// 卡片、清單項目等內容容器。
+  /// 卡片、清單項目等內容容器 (radius-md: 6px~8px)。
   final double card;
 
-  /// 面板、對話框等大面積容器。
+  /// 面板、對話框等大面積容器 (radius-lg: 12px~16px)。
   final double panel;
 
-  /// 膠囊形（標籤、徽章）。
+  /// 膠囊形、頭像、圓形標籤 (radius-full: 9999px)。
   final double pill;
 
   /// 分隔線與邊框的細線寬度。
@@ -41,17 +45,18 @@ class KlpShapeTheme extends ThemeExtension<KlpShapeTheme> {
   /// 需要強調的邊框（focus ring、選取框）。
   final double stroke;
 
-  /// 虛線描邊的節奏。不同風格的虛線疏密不同，因此屬於風格而非常數。
+  /// 虛線描邊的節奏。
   final double dashedLength;
   final double dashedGap;
   final double dashedOpacity;
 
   static const KlpShapeTheme standardShape = KlpShapeTheme(
     none: KlpScale.radius0,
-    control: KlpScale.radius100,
-    card: KlpScale.radius150,
-    panel: KlpScale.radius250,
-    pill: KlpScale.radiusFull,
+    sm: KlpScale.radius50, // 2px
+    control: KlpScale.radius200, // 8px
+    card: KlpScale.radius200, // 8px
+    panel: KlpScale.radius400, // 16px
+    pill: KlpScale.radiusFull, // 9999px
     hairline: KlpScale.stroke100,
     stroke: KlpScale.stroke200,
     dashedLength: 3,
@@ -59,6 +64,7 @@ class KlpShapeTheme extends ThemeExtension<KlpShapeTheme> {
     dashedOpacity: KlpScale.opacity780,
   );
 
+  BorderRadius get smRadius => BorderRadius.circular(sm);
   BorderRadius get controlRadius => BorderRadius.circular(control);
   BorderRadius get cardRadius => BorderRadius.circular(card);
   BorderRadius get panelRadius => BorderRadius.circular(panel);
@@ -67,6 +73,7 @@ class KlpShapeTheme extends ThemeExtension<KlpShapeTheme> {
   @override
   KlpShapeTheme copyWith({
     double? none,
+    double? sm,
     double? control,
     double? card,
     double? panel,
@@ -79,6 +86,7 @@ class KlpShapeTheme extends ThemeExtension<KlpShapeTheme> {
   }) {
     return KlpShapeTheme(
       none: none ?? this.none,
+      sm: sm ?? this.sm,
       control: control ?? this.control,
       card: card ?? this.card,
       panel: panel ?? this.panel,
@@ -111,6 +119,7 @@ class KlpShapeTheme extends ThemeExtension<KlpShapeTheme> {
       identical(this, other) ||
       other is KlpShapeTheme &&
           none == other.none &&
+          sm == other.sm &&
           control == other.control &&
           card == other.card &&
           panel == other.panel &&
@@ -124,6 +133,7 @@ class KlpShapeTheme extends ThemeExtension<KlpShapeTheme> {
   @override
   int get hashCode => Object.hash(
     none,
+    sm,
     control,
     card,
     panel,
