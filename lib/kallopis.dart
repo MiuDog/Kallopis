@@ -117,3 +117,4 @@ export 'src/theme/klp_surface_theme.dart';
 export 'src/theme/klp_theme_scope.dart';
 export 'src/theme/klp_typography_theme.dart';
 export 'src/theme/klp_visual_style.dart';
+export 'src/routing/klp_router.dart';

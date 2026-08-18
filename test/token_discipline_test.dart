@@ -169,12 +169,12 @@ void main() {
   });
 
   test('公開型別的 dartdoc 覆蓋率只能上升', () {
-    // 抽取自 Planist 時 186 個公開型別只有 3 個有 dartdoc。寫消費者探針時第一次就猜錯
+    // 抽取自 Planist 時 215 個公開型別只有 3 個有 dartdoc。寫消費者探針時第一次就猜錯
     // 四個建構子簽名——API 只能靠讀原始碼發現，就等於沒有 API。
     //
     // 一次補完不成比例，因此用棘輪：未文件化的數量只能下降。消費者最先碰到的
     // 17 個入口型別已補齊。
-    const baseline = 188;
+    const baseline = 180;
 
     final declaration = RegExp(
       r'^(?:abstract final class|final class|class|enum) (Klp[A-Za-z]+)',
@@ -185,7 +185,13 @@ void main() {
       final lines = const LineSplitter().convert(file.readAsStringSync());
       for (var i = 0; i < lines.length; i++) {
         if (!declaration.hasMatch(lines[i])) continue;
-        final previous = i == 0 ? '' : lines[i - 1].trim();
+        // 往回跳過標註（`@immutable` 等）——它們夾在 dartdoc 與宣告之間，
+        // 只看前一行會把有文件的型別誤判為沒有。
+        var j = i - 1;
+        while (j >= 0 && lines[j].trimLeft().startsWith('@')) {
+          j--;
+        }
+        final previous = j < 0 ? '' : lines[j].trim();
         if (!previous.startsWith('///')) undocumented++;
       }
     }

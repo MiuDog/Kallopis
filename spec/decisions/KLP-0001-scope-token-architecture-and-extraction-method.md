@@ -49,6 +49,23 @@ Kallopis 不依賴 Krepis，也不依賴 Stoicheis。三者平行。
 
 逐一元件的判定與行數見 [`../component-classification.md`](../component-classification.md)。
 
+#### 拒絕清單裡的「導覽」指的是決策，不是機制
+
+`KlpRouter` 看起來像是踩到「導覽與入口決策」這條拒絕線，其實沒有。分界是：
+
+| 屬於產品（拒絕） | 屬於庫（接受） |
+|---|---|
+| 有哪些頁、頁的階層、入口是哪一頁 | 「切換目前顯示哪一個」這個動作 |
+| 路由 id 的命名與語意 | 登記簿的資料結構與查找 |
+| 轉場動畫該怎麼演 | —— |
+| 網址格式、深層連結 | —— |
+
+庫不預設任何路由、不定義 `KlpRoute.data` 的結構、不做轉場、切到未註冊的 id 時
+**拋錯而不是回退到某個預設頁**。`test/router_test.dart` 有一項機械檢查：庫內程式碼
+不得出現 `home`／`settings`／`index` 這類具名路由字串。
+
+一旦庫內出現「預設首頁」，它就開始替所有產品決定入口——那才是拒絕清單擋的東西。
+
 ### 4. Token 架構：三層繼承樹
 
 | 層 | 內容 | 可否覆寫 | 理由 |
@@ -135,6 +152,9 @@ token 正是密度**。spacing 留在編譯期就等於該維度永遠換不掉�
 - 舊 static token 的引用已從 515 降到 16。剩餘者為版面預設值、選單幾何、視窗透明度與
   dense 變體高度——皆非風格，刻意保留。計數棘輪持續列管。
 - 無障礙 `Semantics` 覆蓋 76 個檔案中的 22 個。
+- 15 條分層違規，其中 12 條來自 `klp_foundation_extras.dart`——它被歸在 `foundation`
+  卻依賴 `surface` 與 `typography`。這與「布林參數過多」得到的是同一個結論，
+  但是從組合關係獨立推導出來的。見 `spec/component-inventory.md`。
 - 186 個公開型別中僅 17 個有 dartdoc，以棘輪列管。
 - `klp_advanced_data`（20 個布林參數）與 `klp_foundation_extras`（11 個，且是 17 個類別的
   雜物袋）未通過規則 4，需重構而非移除。

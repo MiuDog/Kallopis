@@ -75,6 +75,31 @@ MaterialApp(
 **`terminal` 同時是架構的驗收條件**：切換到它若需要改動任何元件程式碼，就代表該元件
 還在硬編碼風格。
 
+## 分發（router）
+
+`KlpRouter` 只負責分發：產品註冊自己的目的地，然後要求切換。**庫不知道有哪些頁、
+不預設入口、不決定階層、不做轉場、不解析網址**——那些是產品外殼的決定。
+
+```dart
+final router = KlpRouter(
+  routes: [
+    KlpRoute(id: 'notes', builder: (_) => const NotesPage()),
+    KlpRoute(id: 'search', builder: (_) => const SearchPage()),
+  ],
+  initialId: 'notes',
+);
+
+KlpRouterScope(router: router, child: const KlpRouterOutlet())
+```
+
+切換用 `context.klpRouter.go('search')`。**切到未註冊的 id 會拋錯，不會靜默停在原地。**
+
+## 元件清單
+
+[`spec/component-inventory.md`](spec/component-inventory.md) 列出全部 215 個公開型別、
+各領域的 mermaid 元件樹，以及分層違規。**由 `dart run tool/inventory.dart` 從程式碼產生**
+——手寫的架構圖會與程式碼分岔，而且分岔時沒有任何徵兆。
+
 ## 閘門
 
 「不要硬編碼風格」寫在文件裡只是承諾，承諾不會擋下任何一次提交。以下是機械判準：
@@ -88,6 +113,8 @@ MaterialApp(
 | `test/klp_region_placeholder_golden_test.dart` 等 | 渲染輸出與抽取來源逐像素相同 |
 | `test/consumer_contract_test.dart` | 從**消費者的位置**驗證：只 import 公開 barrel、不自備任何鷹架，元件要能渲染、客製面要真的生效、barrel 不得漏匯出 |
 | 同上（棘輪） | 未文件化的公開型別數量只能下降 |
+| `test/router_test.dart` | 庫內不得出現具名路由；切到未註冊的目的地必須拋錯 |
+| `test/inventory_test.dart` | 元件清單不得過期；分層違規數只能下降 |
 
 ## 建置與測試
 
