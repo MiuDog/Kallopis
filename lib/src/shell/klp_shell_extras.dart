@@ -1,7 +1,6 @@
 import 'package:flutter/widgets.dart';
 
 import '../foundation/klp_icon.dart';
-import '../foundation/klp_metrics.dart';
 import '../theme/klp_theme.dart';
 import 'klp_panel_header.dart';
 
@@ -41,7 +40,7 @@ class KlpAppWindowHeader extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: KlpSize.header,
+      height: context.klp.space.chromeHeader,
       child: KlpPanelHeader(title: title, leading: leading, actions: actions),
     );
   }
@@ -95,11 +94,11 @@ class KlpPaneCollapseControl extends StatelessWidget {
         label: label,
         expanded: !collapsed,
         child: SizedBox.square(
-          dimension: KlpSize.controlSmall,
+          dimension: context.klp.space.controlHeightSmall,
           child: Center(
             child: KlpIcon(
               icon,
-              size: KlpSize.iconSmall,
+              size: context.klp.space.iconSmall,
               color: context.klpColors.textMuted,
             ),
           ),

@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 
 import '../foundation/klp_icon.dart';
 import '../foundation/klp_icons.dart';
-import '../foundation/klp_metrics.dart';
 import '../overlay/klp_tooltip.dart';
 import '../theme/klp_theme.dart';
 import '../foundation/klp_palette.dart';
@@ -101,20 +100,20 @@ class _WindowControlButtonState extends State<_WindowControlButton> {
           color: active
               ? widget.destructive
                     ? tokens.danger.withValues(alpha: 0.16)
-                    : tokens.hoverSurface
+                    : context.klp.hoverSurface
               : KlpPalette.transparent,
-          borderRadius: BorderRadius.circular(KlpRadius.control),
+          borderRadius: BorderRadius.circular(context.klp.shape.control),
           child: InkWell(
             onTap: widget.onPressed,
             onHover: (value) => setState(() => _hovered = value),
             onFocusChange: (value) => setState(() => _focused = value),
-            borderRadius: BorderRadius.circular(KlpRadius.control),
+            borderRadius: BorderRadius.circular(context.klp.shape.control),
             child: SizedBox.square(
-              dimension: KlpSize.controlSmall,
+              dimension: context.klp.space.controlHeightSmall,
               child: Center(
                 child: KlpIcon(
                   widget.icon,
-                  size: KlpSize.iconSmall,
+                  size: context.klp.space.iconSmall,
                   color: color,
                 ),
               ),

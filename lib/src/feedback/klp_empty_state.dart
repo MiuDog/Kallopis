@@ -1,7 +1,6 @@
 import 'package:flutter/widgets.dart';
 
 import '../foundation/klp_icon.dart';
-import '../foundation/klp_metrics.dart';
 import '../theme/klp_theme.dart';
 import '../typography/klp_text.dart';
 
@@ -24,7 +23,7 @@ class KlpEmptyState extends StatelessWidget {
     final tokens = context.klpColors;
 
     return Padding(
-      padding: const EdgeInsets.all(KlpSpace.xxl),
+      padding: EdgeInsets.all(context.klp.space.section),
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
@@ -34,28 +33,28 @@ class KlpEmptyState extends StatelessWidget {
             alignment: Alignment.center,
             decoration: BoxDecoration(
               color: tokens.surfaceInset,
-              borderRadius: BorderRadius.circular(KlpRadius.card),
+              borderRadius: BorderRadius.circular(context.klp.shape.card),
             ),
             child: KlpIcon(
               icon,
-              size: KlpSize.iconLarge,
+              size: context.klp.space.iconLarge,
               color: tokens.textMuted,
             ),
           ),
-          const SizedBox(height: KlpSpace.lg),
+          SizedBox(height: context.klp.space.comfortable),
           KlpText(
             title,
             role: KlpTextRole.section,
             textAlign: TextAlign.center,
           ),
-          const SizedBox(height: KlpSpace.xs),
+          SizedBox(height: context.klp.space.tight),
           KlpText(
             message,
             role: KlpTextRole.caption,
             tone: KlpTextTone.muted,
             textAlign: TextAlign.center,
           ),
-          if (action != null) ...[const SizedBox(height: KlpSpace.lg), action!],
+          if (action != null) ...[SizedBox(height: context.klp.space.comfortable), action!],
         ],
       ),
     );
@@ -75,7 +74,7 @@ class KlpSkeletonLine extends StatelessWidget {
         height: 10,
         decoration: BoxDecoration(
           color: context.klpColors.surfaceMuted,
-          borderRadius: BorderRadius.circular(KlpRadius.control),
+          borderRadius: BorderRadius.circular(context.klp.shape.control),
         ),
       ),
     );

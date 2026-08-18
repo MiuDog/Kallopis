@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import '../controls/klp_icon_button.dart';
 import '../controls/klp_text_field.dart';
 import '../foundation/klp_icons.dart';
-import '../foundation/klp_metrics.dart';
 import '../theme/klp_theme.dart';
 import '../typography/klp_text.dart';
 
@@ -31,8 +30,8 @@ class KlpEditorToolbar extends StatelessWidget {
   Widget build(BuildContext context) {
     return _ActionSurface(
       child: Wrap(
-        spacing: KlpSpace.xs,
-        runSpacing: KlpSpace.xs,
+        spacing: context.klp.space.tight,
+        runSpacing: context.klp.space.tight,
         children: [for (final action in actions) _EditorAction(data: action)],
       ),
     );
@@ -54,8 +53,8 @@ class KlpBulkActionBar extends StatelessWidget {
     return _ActionSurface(
       child: Wrap(
         crossAxisAlignment: WrapCrossAlignment.center,
-        spacing: KlpSpace.sm,
-        runSpacing: KlpSpace.xs,
+        spacing: context.klp.space.compact,
+        runSpacing: context.klp.space.tight,
         children: [
           KlpText(label, role: KlpTextRole.code),
           for (final action in actions) _EditorAction(data: action),
@@ -96,9 +95,9 @@ class KlpSearchNavigator extends StatelessWidget {
               onChanged: onQueryChanged,
             ),
           ),
-          const SizedBox(width: KlpSpace.sm),
+          SizedBox(width: context.klp.space.compact),
           KlpText('$current/$total', role: KlpTextRole.code),
-          const SizedBox(width: KlpSpace.xs),
+          SizedBox(width: context.klp.space.tight),
           Transform.rotate(
             angle: 3.141592653589793,
             child: KlpIconButton(
@@ -135,9 +134,9 @@ class _ActionSurface extends StatelessWidget {
     return DecoratedBox(
       decoration: BoxDecoration(
         color: tokens.component,
-        borderRadius: BorderRadius.circular(KlpRadius.card),
+        borderRadius: BorderRadius.circular(context.klp.shape.card),
       ),
-      child: Padding(padding: const EdgeInsets.all(KlpSpace.sm), child: child),
+      child: Padding(padding: EdgeInsets.all(context.klp.space.compact), child: child),
     );
   }
 }
@@ -158,14 +157,14 @@ class _EditorAction extends StatelessWidget {
 
     return Material(
       color: data.selected ? tokens.surfaceMuted : tokens.surfaceInset,
-      borderRadius: BorderRadius.circular(KlpRadius.control),
+      borderRadius: BorderRadius.circular(context.klp.shape.control),
       child: InkWell(
         onTap: data.onPressed,
-        borderRadius: BorderRadius.circular(KlpRadius.control),
+        borderRadius: BorderRadius.circular(context.klp.shape.control),
         child: Padding(
-          padding: const EdgeInsets.symmetric(
-            horizontal: KlpSpace.sm,
-            vertical: KlpSpace.xs,
+          padding: EdgeInsets.symmetric(
+            horizontal: context.klp.space.compact,
+            vertical: context.klp.space.tight,
           ),
           child: KlpText(data.label, role: KlpTextRole.code, color: foreground),
         ),

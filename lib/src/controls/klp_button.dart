@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-import '../foundation/klp_metrics.dart';
 import '../interaction/klp_pressable.dart';
 import '../theme/klp_theme.dart';
 import '../typography/klp_text.dart';
@@ -53,9 +52,9 @@ class _KlpButtonState extends State<KlpButton> {
                   ? Color.lerp(tokens.interaction, tokens.text, 0.12)!
                   : tokens.interaction,
             KlpButtonTone.secondary =>
-              active ? tokens.hoverSurface : tokens.component,
+              active ? context.klp.hoverSurface : tokens.component,
             KlpButtonTone.ghost =>
-              active ? tokens.hoverSurface : KlpPalette.transparent,
+              active ? context.klp.hoverSurface : KlpPalette.transparent,
             KlpButtonTone.danger => tokens.danger.withValues(
               alpha: active ? 0.24 : 0.16,
             ),
@@ -68,13 +67,13 @@ class _KlpButtonState extends State<KlpButton> {
             KlpButtonTone.secondary || KlpButtonTone.ghost => tokens.text,
           };
     final content = Container(
-      height: widget.compact ? KlpSize.controlSmall : KlpSize.control,
+      height: widget.compact ? context.klp.space.controlHeightSmall : context.klp.space.controlHeight,
       padding: EdgeInsets.symmetric(
-        horizontal: widget.compact ? KlpSpace.sm : KlpSpace.md,
+        horizontal: widget.compact ? context.klp.space.compact : context.klp.space.base,
       ),
       decoration: BoxDecoration(
         color: background,
-        borderRadius: BorderRadius.circular(KlpRadius.control),
+        borderRadius: BorderRadius.circular(context.klp.shape.control),
       ),
       child: Row(
         mainAxisSize: MainAxisSize.min,
@@ -82,7 +81,7 @@ class _KlpButtonState extends State<KlpButton> {
         children: [
           if (widget.leading != null) ...[
             widget.leading!,
-            const SizedBox(width: KlpSpace.sm),
+            SizedBox(width: context.klp.space.compact),
           ],
           Flexible(
             child: KlpText(
@@ -94,7 +93,7 @@ class _KlpButtonState extends State<KlpButton> {
             ),
           ),
           if (widget.trailing != null) ...[
-            const SizedBox(width: KlpSpace.sm),
+            SizedBox(width: context.klp.space.compact),
             widget.trailing!,
           ],
         ],
@@ -109,7 +108,7 @@ class _KlpButtonState extends State<KlpButton> {
         longPressProgressColor: tokens.interactionSoft.withValues(alpha: 0.55),
         onHover: _setHovered,
         onFocusChange: _setFocused,
-        borderRadius: BorderRadius.circular(KlpRadius.control),
+        borderRadius: BorderRadius.circular(context.klp.shape.control),
         child: content,
       ),
     );

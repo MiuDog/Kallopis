@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-import '../foundation/klp_metrics.dart';
 import '../theme/klp_theme.dart';
 
 class KlpTooltip extends StatelessWidget {
@@ -29,15 +28,15 @@ class KlpTooltipSurface extends StatelessWidget {
         theme.decoration ??
         BoxDecoration(
           color: tokens.overlay,
-          borderRadius: BorderRadius.circular(KlpRadius.control),
+          borderRadius: BorderRadius.circular(context.klp.shape.control),
         );
     final textStyle =
         theme.textStyle ??
         TextStyle(
           color: tokens.textMuted,
-          fontSize: KlpTypography.small,
-          fontFamily: KlpTypography.uiFamily,
-          fontFamilyFallback: KlpTypography.uiFallback,
+          fontSize: context.klp.type.caption,
+          fontFamily: context.klp.type.uiFamily,
+          fontFamilyFallback: context.klp.type.fallbackFor(context.klp.type.uiFamily),
         );
 
     return DecoratedBox(
@@ -46,9 +45,9 @@ class KlpTooltipSurface extends StatelessWidget {
         key: contentKey,
         padding:
             theme.padding ??
-            const EdgeInsets.symmetric(
-              horizontal: KlpSpace.sm,
-              vertical: KlpSpace.xs,
+            EdgeInsets.symmetric(
+              horizontal: context.klp.space.compact,
+              vertical: context.klp.space.tight,
             ),
         child: Text(message, style: textStyle),
       ),

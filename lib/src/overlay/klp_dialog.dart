@@ -1,9 +1,9 @@
 import 'package:flutter/widgets.dart';
 
 import '../controls/klp_button.dart';
-import '../foundation/klp_metrics.dart';
 import '../surface/klp_surface.dart';
 import '../typography/klp_text.dart';
+import '../theme/klp_theme.dart';
 
 class KlpDialog extends StatelessWidget {
   const KlpDialog({
@@ -31,29 +31,29 @@ class KlpDialog extends StatelessWidget {
       constraints: const BoxConstraints(maxWidth: 520),
       child: KlpSurface(
         tone: KlpSurfaceTone.base,
-        radius: KlpRadius.panel,
+        radius: context.klp.shape.panel,
         child: Column(
           mainAxisSize: MainAxisSize.min,
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             Padding(
-              padding: const EdgeInsets.all(KlpSpace.lg),
+              padding: EdgeInsets.all(context.klp.space.comfortable),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   KlpText(label.toUpperCase(), role: KlpTextRole.label),
-                  const SizedBox(height: KlpSpace.sm),
+                  SizedBox(height: context.klp.space.compact),
                   KlpText(title, role: KlpTextRole.title),
                 ],
               ),
             ),
-            Padding(padding: const EdgeInsets.all(KlpSpace.lg), child: child),
+            Padding(padding: EdgeInsets.all(context.klp.space.comfortable), child: child),
             Padding(
-              padding: const EdgeInsets.all(KlpSpace.md),
+              padding: EdgeInsets.all(context.klp.space.base),
               child: Wrap(
                 alignment: WrapAlignment.end,
-                spacing: KlpSpace.sm,
-                runSpacing: KlpSpace.sm,
+                spacing: context.klp.space.compact,
+                runSpacing: context.klp.space.compact,
                 children: [
                   KlpButton(
                     label: secondaryLabel,

@@ -48,7 +48,7 @@ class KlpTextField extends StatelessWidget {
       children: [
         if (label != null) ...[
           KlpText(label!, role: KlpTextRole.caption),
-          const SizedBox(height: KlpSpace.xs),
+          SizedBox(height: context.klp.space.tight),
         ],
         TextFormField(
           initialValue: initialValue,
@@ -64,8 +64,8 @@ class KlpTextField extends StatelessWidget {
           maxLines: multiline ? 8 : 1,
           style: TextStyle(
             color: tokens.text,
-            fontSize: KlpTypography.body,
-            height: KlpTypography.compactLineHeight,
+            fontSize: context.klp.type.body,
+            height: context.klp.type.captionLeading,
           ),
           cursorColor: tokens.interaction,
           decoration: InputDecoration(
@@ -75,7 +75,7 @@ class KlpTextField extends StatelessWidget {
             prefixIcon: leadingIcon == null
                 ? null
                 : Padding(
-                    padding: const EdgeInsets.all(KlpSpace.sm),
+                    padding: EdgeInsets.all(context.klp.space.compact),
                     child: KlpIcon(leadingIcon!, color: tokens.textMuted),
                   ),
             prefixIconConstraints: const BoxConstraints(
@@ -89,11 +89,11 @@ class KlpTextField extends StatelessWidget {
                   ),
             filled: true,
             fillColor: KlpFieldStyle.inputFill(tokens, error: hasError),
-            contentPadding: KlpInsets.control,
+            contentPadding: context.klp.space.controlInsets,
           ),
         ),
         if (hasError || helper != null) ...[
-          const SizedBox(height: KlpSpace.xs),
+          SizedBox(height: context.klp.space.tight),
           KlpText(
             error ?? helper!,
             role: KlpTextRole.caption,

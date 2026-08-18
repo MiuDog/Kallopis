@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
 import '../foundation/klp_icon.dart';
-import '../foundation/klp_metrics.dart';
 import '../overlay/klp_tooltip.dart';
 import '../theme/klp_theme.dart';
 import '../foundation/klp_palette.dart';
@@ -56,14 +55,14 @@ class _KlpRailItemState extends State<KlpRailItem> {
       color: widget.selected
           ? tokens.selectionBackground
           : _hovered || _focused
-          ? tokens.hoverSurface
+          ? context.klp.hoverSurface
           : KlpPalette.transparent,
-      borderRadius: BorderRadius.circular(KlpRadius.card),
+      borderRadius: BorderRadius.circular(context.klp.shape.card),
       child: InkWell(
         onTap: widget.onPressed,
         onHover: _setHovered,
         onFocusChange: _setFocused,
-        borderRadius: BorderRadius.circular(KlpRadius.card),
+        borderRadius: BorderRadius.circular(context.klp.shape.card),
         child: SizedBox.square(
           dimension: 42,
           child: Stack(
@@ -105,7 +104,7 @@ class _KlpRailItemState extends State<KlpRailItem> {
           link: _tooltipLink,
           targetAnchor: Alignment.centerRight,
           followerAnchor: Alignment.centerLeft,
-          offset: const Offset(KlpSpace.sm, 0),
+          offset: Offset(context.klp.space.compact, 0),
           showWhenUnlinked: false,
           child: IgnorePointer(
             child: ExcludeSemantics(

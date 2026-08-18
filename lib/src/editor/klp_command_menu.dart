@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-import '../foundation/klp_metrics.dart';
 import '../theme/klp_theme.dart';
 import '../typography/klp_text.dart';
 import '../foundation/klp_palette.dart';
@@ -49,18 +48,18 @@ class KlpCommandMenu extends StatelessWidget {
     final tokens = context.klpColors;
 
     final content = Padding(
-      padding: const EdgeInsets.all(KlpSpace.xs),
+      padding: EdgeInsets.all(context.klp.space.tight),
       child: Column(
         mainAxisSize: MainAxisSize.min,
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           for (final section in sections) ...[
             Padding(
-              padding: const EdgeInsets.fromLTRB(
-                KlpSpace.sm,
-                KlpSpace.sm,
-                KlpSpace.sm,
-                KlpSpace.xs,
+              padding: EdgeInsets.fromLTRB(
+                context.klp.space.compact,
+                context.klp.space.compact,
+                context.klp.space.compact,
+                context.klp.space.tight,
               ),
               child: KlpText(
                 section.label.toUpperCase(),
@@ -77,7 +76,7 @@ class KlpCommandMenu extends StatelessWidget {
         ? DecoratedBox(
             decoration: BoxDecoration(
               color: tokens.component,
-              borderRadius: BorderRadius.circular(KlpRadius.card),
+              borderRadius: BorderRadius.circular(context.klp.shape.card),
             ),
             child: content,
           )
@@ -104,14 +103,14 @@ class _CommandItem extends StatelessWidget {
 
     return Material(
       color: data.selected ? tokens.surfaceMuted : KlpPalette.transparent,
-      borderRadius: BorderRadius.circular(KlpRadius.control),
+      borderRadius: BorderRadius.circular(context.klp.shape.control),
       child: InkWell(
         onTap: data.onPressed,
-        borderRadius: BorderRadius.circular(KlpRadius.control),
+        borderRadius: BorderRadius.circular(context.klp.shape.control),
         child: Padding(
-          padding: const EdgeInsets.symmetric(
-            horizontal: KlpSpace.sm,
-            vertical: KlpSpace.sm,
+          padding: EdgeInsets.symmetric(
+            horizontal: context.klp.space.compact,
+            vertical: context.klp.space.compact,
           ),
           child: Row(
             crossAxisAlignment: CrossAxisAlignment.start,

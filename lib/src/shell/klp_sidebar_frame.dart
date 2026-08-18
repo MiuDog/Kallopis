@@ -1,6 +1,5 @@
 import 'package:flutter/widgets.dart';
 
-import '../foundation/klp_metrics.dart';
 import '../theme/klp_theme.dart';
 import 'klp_panel_frame.dart';
 
@@ -27,8 +26,8 @@ class KlpSidebarFrame extends StatelessWidget {
       content: Row(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-          SizedBox(width: KlpSize.rail, child: rail),
-          const SizedBox(width: KlpSpace.xs),
+          SizedBox(width: context.klp.space.chromeRail, child: rail),
+          SizedBox(width: context.klp.space.tight),
           Expanded(child: content),
         ],
       ),

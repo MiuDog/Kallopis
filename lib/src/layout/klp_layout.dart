@@ -2,6 +2,7 @@ import 'package:flutter/widgets.dart';
 
 import '../foundation/klp_metrics.dart';
 import '../surface/klp_surface.dart';
+import '../theme/klp_theme.dart';
 
 class KlpRegion extends StatelessWidget {
   const KlpRegion({
@@ -23,7 +24,7 @@ class KlpRegion extends StatelessWidget {
   Widget build(BuildContext context) {
     return KlpSurface(
       tone: tone,
-      radius: KlpRadius.panel,
+      radius: context.klp.shape.panel,
       padding: padding,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -45,13 +46,13 @@ class KlpSplitLayout extends StatelessWidget {
     required this.leading,
     required this.trailing,
     this.leadingWidth = KlpSize.sidebar,
-    this.gap = KlpLayoutGap.lg,
+    this.gap,
   });
 
   final Widget leading;
   final Widget trailing;
   final double leadingWidth;
-  final double gap;
+  final double? gap;
 
   @override
   Widget build(BuildContext context) {
@@ -59,7 +60,7 @@ class KlpSplitLayout extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
         SizedBox(width: leadingWidth, child: leading),
-        SizedBox(width: gap),
+        SizedBox(width: gap ?? context.klp.space.base),
         Expanded(child: trailing),
       ],
     );
@@ -93,7 +94,7 @@ class KlpResizeHandle extends StatelessWidget {
         child: GestureDetector(
           behavior: HitTestBehavior.translucent,
           onHorizontalDragUpdate: (details) => onDelta(details.delta.dx),
-          child: const SizedBox(width: KlpLayoutGap.lg),
+          child: SizedBox(width: context.klp.space.base),
         ),
       ),
     );
@@ -153,13 +154,13 @@ class KlpVirtualGrid extends StatelessWidget {
     required this.itemCount,
     required this.itemBuilder,
     this.minimumItemWidth = 240,
-    this.spacing = KlpLayoutGap.lg,
+    this.spacing,
   });
 
   final int itemCount;
   final IndexedWidgetBuilder itemBuilder;
   final double minimumItemWidth;
-  final double spacing;
+  final double? spacing;
 
   @override
   Widget build(BuildContext context) {
@@ -174,8 +175,8 @@ class KlpVirtualGrid extends StatelessWidget {
           itemCount: itemCount,
           gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
             crossAxisCount: count,
-            mainAxisSpacing: spacing,
-            crossAxisSpacing: spacing,
+            mainAxisSpacing: spacing ?? context.klp.space.base,
+            crossAxisSpacing: spacing ?? context.klp.space.base,
           ),
           itemBuilder: itemBuilder,
         );

@@ -1,6 +1,5 @@
 import 'package:flutter/widgets.dart';
 
-import '../foundation/klp_metrics.dart';
 import '../theme/klp_theme.dart';
 import '../typography/klp_text.dart';
 
@@ -53,7 +52,7 @@ class KlpProgress extends StatelessWidget {
                 tone: KlpTextTone.muted,
               ),
             if (onCancel != null && state == KlpProgressState.active) ...[
-              const SizedBox(width: KlpSpace.sm),
+              SizedBox(width: context.klp.space.compact),
               GestureDetector(
                 behavior: HitTestBehavior.opaque,
                 onTap: onCancel,
@@ -66,13 +65,13 @@ class KlpProgress extends StatelessWidget {
             ],
           ],
         ),
-        const SizedBox(height: KlpSpace.sm),
+        SizedBox(height: context.klp.space.compact),
         Container(
-          height: KlpSpace.xs,
+          height: context.klp.space.tight,
           clipBehavior: Clip.antiAlias,
           decoration: BoxDecoration(
             color: tokens.surfaceMuted,
-            borderRadius: BorderRadius.circular(KlpRadius.full),
+            borderRadius: BorderRadius.circular(context.klp.shape.pill),
           ),
           alignment: Alignment.centerLeft,
           child: FractionallySizedBox(
@@ -81,7 +80,7 @@ class KlpProgress extends StatelessWidget {
           ),
         ),
         if (detail != null) ...[
-          const SizedBox(height: KlpSpace.sm),
+          SizedBox(height: context.klp.space.compact),
           KlpText(detail!, role: KlpTextRole.caption, tone: KlpTextTone.muted),
         ],
       ],

@@ -44,16 +44,16 @@ class KlpWorkbenchShell extends StatelessWidget {
             constraints.maxWidth >= KlpSize.secondaryPaneBreakpoint;
         final resolvedPrimaryWidth = showPrimaryContent
             ? primaryWidth
-            : KlpSize.rail + KlpLayoutGap.lg;
+            : context.klp.space.chromeRail + context.klp.space.base;
 
         return ColoredBox(
           color: tokens.app,
           child: Padding(
-            padding: const EdgeInsets.fromLTRB(
-              KlpLayoutGap.lg,
+            padding: EdgeInsets.fromLTRB(
+              context.klp.space.base,
               0,
-              KlpLayoutGap.lg,
-              KlpLayoutGap.lg,
+              context.klp.space.base,
+              context.klp.space.base,
             ),
             child: Row(
               crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -133,7 +133,7 @@ class _KlpPaneResizeHandleState extends State<_KlpPaneResizeHandle> {
                 );
               }
             : null,
-        child: const SizedBox(width: KlpLayoutGap.lg),
+        child: SizedBox(width: context.klp.space.base),
       ),
     );
   }

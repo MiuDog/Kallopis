@@ -188,19 +188,3 @@ abstract final class KlpTransparency {
   static const double lightPaneOpacity = 0.88;
   static const double darkPaneOpacity = 0.72;
 }
-
-abstract final class KlpInsets {
-  static const EdgeInsets control = EdgeInsets.symmetric(
-    horizontal: KlpSpace.md,
-    vertical: KlpSpace.sm,
-  );
-
-  static const EdgeInsets section = EdgeInsets.all(KlpSpace.lg);
-
-  static const EdgeInsets scrollableNavigation = EdgeInsets.fromLTRB(
-    KlpSpace.sm,
-    KlpSpace.sm,
-    KlpSpace.lg,
-    KlpSpace.sm,
-  );
-}

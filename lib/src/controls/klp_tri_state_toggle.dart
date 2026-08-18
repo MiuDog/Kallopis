@@ -1,7 +1,6 @@
 import 'package:flutter/widgets.dart';
 
 import '../foundation/klp_icons.dart';
-import '../foundation/klp_metrics.dart';
 import '../theme/klp_theme.dart';
 import '../typography/klp_text.dart';
 import 'klp_sliding_selection.dart';
@@ -39,7 +38,7 @@ class KlpTriStateToggle extends StatelessWidget {
               ? null
               : (index) => onChanged!(KlpTriState.values[index]),
         ),
-        const SizedBox(width: KlpSpace.sm),
+        SizedBox(width: context.klp.space.compact),
         KlpText(
           label,
           tone: onChanged == null ? KlpTextTone.faint : KlpTextTone.primary,

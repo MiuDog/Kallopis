@@ -1,7 +1,6 @@
 import 'package:flutter/widgets.dart';
 
 import '../feedback/klp_feedback_tone.dart';
-import '../foundation/klp_metrics.dart';
 import '../theme/klp_theme.dart';
 import '../typography/klp_text.dart';
 
@@ -23,13 +22,13 @@ class KlpBadge extends StatelessWidget {
     final toneColor = tone.color(tokens);
 
     return Container(
-      padding: const EdgeInsets.symmetric(
-        horizontal: KlpSpace.sm,
-        vertical: KlpSpace.xs,
+      padding: EdgeInsets.symmetric(
+        horizontal: context.klp.space.compact,
+        vertical: context.klp.space.tight,
       ),
       decoration: BoxDecoration(
         color: tokens.component,
-        borderRadius: BorderRadius.circular(KlpRadius.control),
+        borderRadius: BorderRadius.circular(context.klp.shape.control),
       ),
       child: Row(
         mainAxisSize: MainAxisSize.min,
@@ -43,7 +42,7 @@ class KlpBadge extends StatelessWidget {
                 shape: BoxShape.circle,
               ),
             ),
-            const SizedBox(width: KlpSpace.xs),
+            SizedBox(width: context.klp.space.tight),
           ],
           Flexible(
             child: KlpText(
@@ -70,13 +69,13 @@ class KlpTag extends StatelessWidget {
     final tokens = context.klpColors;
 
     return Container(
-      padding: const EdgeInsets.symmetric(
-        horizontal: KlpSpace.sm,
-        vertical: KlpSpace.xs,
+      padding: EdgeInsets.symmetric(
+        horizontal: context.klp.space.compact,
+        vertical: context.klp.space.tight,
       ),
       decoration: BoxDecoration(
         color: tokens.surfaceMuted,
-        borderRadius: BorderRadius.circular(KlpRadius.control),
+        borderRadius: BorderRadius.circular(context.klp.shape.control),
       ),
       child: Row(
         mainAxisSize: MainAxisSize.min,
@@ -90,7 +89,7 @@ class KlpTag extends StatelessWidget {
             ),
           ),
           if (onRemove != null) ...[
-            const SizedBox(width: KlpSpace.xs),
+            SizedBox(width: context.klp.space.tight),
             GestureDetector(
               onTap: onRemove,
               child: const KlpText('×', role: KlpTextRole.bodyStrong),

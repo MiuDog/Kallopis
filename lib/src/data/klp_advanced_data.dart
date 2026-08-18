@@ -3,7 +3,6 @@ import 'package:flutter/widgets.dart';
 import '../controls/klp_checkbox.dart';
 import '../foundation/klp_icon.dart';
 import '../foundation/klp_icons.dart';
-import '../foundation/klp_metrics.dart';
 import '../surface/klp_dashed_border.dart';
 import '../surface/klp_surface.dart';
 import '../theme/klp_theme.dart';
@@ -73,7 +72,7 @@ class KlpDataTable extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ClipRRect(
-      borderRadius: BorderRadius.circular(KlpRadius.card),
+      borderRadius: BorderRadius.circular(context.klp.shape.card),
       child: KlpSurface(
         tone: KlpSurfaceTone.component,
         child: Column(
@@ -156,7 +155,7 @@ class _KlpTableLine extends StatelessWidget {
       behavior: HitTestBehavior.opaque,
       onTap: onPressed,
       child: Container(
-        constraints: const BoxConstraints(minHeight: KlpSize.controlLarge),
+        constraints: BoxConstraints(minHeight: context.klp.space.controlHeightLarge),
         decoration: BoxDecoration(
           color: header || selected ? context.klpColors.surfaceMuted : null,
         ),
@@ -164,7 +163,7 @@ class _KlpTableLine extends StatelessWidget {
           children: [
             if (selectable)
               SizedBox(
-                width: KlpSize.controlLarge,
+                width: context.klp.space.controlHeightLarge,
                 child: Center(
                   child: KeyedSubtree(
                     key: rowId == null
@@ -188,9 +187,9 @@ class _KlpTableLine extends StatelessWidget {
                       ? () => onSort!(column.id)
                       : null,
                   child: Padding(
-                    padding: const EdgeInsets.symmetric(
-                      horizontal: KlpSpace.md,
-                      vertical: KlpSpace.sm,
+                    padding: EdgeInsets.symmetric(
+                      horizontal: context.klp.space.base,
+                      vertical: context.klp.space.compact,
                     ),
                     child: Row(
                       mainAxisAlignment:
@@ -211,7 +210,7 @@ class _KlpTableLine extends StatelessWidget {
                                 ),
                         ),
                         if (header && column.sortable) ...[
-                          const SizedBox(width: KlpSpace.xs),
+                          SizedBox(width: context.klp.space.tight),
                           RotatedBox(
                             quarterTurns:
                                 sort?.columnId == column.id &&
@@ -221,7 +220,7 @@ class _KlpTableLine extends StatelessWidget {
                                 : 0,
                             child: KlpIcon(
                               KlpIcons.chevronDown,
-                              size: KlpSize.iconSmall,
+                              size: context.klp.space.iconSmall,
                               color: sort?.columnId == column.id
                                   ? context.klpColors.text
                                   : context.klpColors.textFaint,
@@ -344,11 +343,11 @@ class _KlpTreeNodeView extends StatelessWidget {
       behavior: HitTestBehavior.opaque,
       onTap: onSelected == null ? null : () => onSelected!(node.id),
       child: Container(
-        constraints: const BoxConstraints(minHeight: KlpSize.control),
-        padding: const EdgeInsets.symmetric(horizontal: KlpSpace.sm),
+        constraints: BoxConstraints(minHeight: context.klp.space.controlHeight),
+        padding: EdgeInsets.symmetric(horizontal: context.klp.space.compact),
         decoration: BoxDecoration(
           color: selected ? tokens.surfaceMuted : null,
-          borderRadius: BorderRadius.circular(KlpRadius.control),
+          borderRadius: BorderRadius.circular(context.klp.shape.control),
         ),
         child: Row(
           children: [
@@ -358,29 +357,29 @@ class _KlpTreeNodeView extends StatelessWidget {
                 behavior: HitTestBehavior.opaque,
                 onTap: onExpanded == null ? null : () => onExpanded!(node.id),
                 child: SizedBox.square(
-                  dimension: KlpSize.icon,
+                  dimension: context.klp.space.icon,
                   child: Center(
                     child: RotatedBox(
                       quarterTurns: expanded ? 0 : 3,
                       child: KlpIcon(
                         KlpIcons.chevronDown,
-                        size: KlpSize.iconSmall,
+                        size: context.klp.space.iconSmall,
                         color: tokens.textMuted,
                       ),
                     ),
                   ),
                 ),
               ),
-              const SizedBox(width: KlpSpace.xs),
+              SizedBox(width: context.klp.space.tight),
             ] else
-              const SizedBox(width: KlpSize.icon + KlpSpace.xs),
+              SizedBox(width: context.klp.space.icon + context.klp.space.tight),
             if (node.icon != null) ...[
               KlpIcon(
                 node.icon!,
-                size: KlpSize.iconSmall,
+                size: context.klp.space.iconSmall,
                 color: selected ? tokens.selectionForeground : tokens.textMuted,
               ),
-              const SizedBox(width: KlpSpace.sm),
+              SizedBox(width: context.klp.space.compact),
             ],
             Expanded(
               child: KlpText(
@@ -397,7 +396,7 @@ class _KlpTreeNodeView extends StatelessWidget {
               ),
             ),
             if (node.badge != null) ...[
-              const SizedBox(width: KlpSpace.sm),
+              SizedBox(width: context.klp.space.compact),
               KlpText(
                 node.badge!,
                 role: KlpTextRole.code,
@@ -410,7 +409,7 @@ class _KlpTreeNodeView extends StatelessWidget {
     );
 
     return Padding(
-      padding: const EdgeInsets.only(left: KlpSpace.sm),
+      padding: EdgeInsets.only(left: context.klp.space.compact),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
@@ -453,7 +452,7 @@ class KlpJsonTree extends StatelessWidget {
   Widget build(BuildContext context) {
     return KlpSurface(
       tone: KlpSurfaceTone.component,
-      padding: const EdgeInsets.all(KlpSpace.md),
+      padding: EdgeInsets.all(context.klp.space.base),
       child: loading
           ? const KlpText(
               'Loading...',
@@ -539,21 +538,21 @@ class _KlpJsonNodeState extends State<_KlpJsonNode> {
           behavior: HitTestBehavior.opaque,
           onTap: _toggle,
           child: Padding(
-            padding: EdgeInsets.only(left: widget.depth * KlpSpace.md),
+            padding: EdgeInsets.only(left: widget.depth * context.klp.space.base),
             child: Row(
               children: [
                 RotatedBox(
                   quarterTurns: _expanded ? 0 : 3,
                   child: KlpIcon(
                     KlpIcons.chevronDown,
-                    size: KlpSize.iconSmall,
+                    size: context.klp.space.iconSmall,
                     color: context.klpColors.textMuted,
                   ),
                 ),
-                const SizedBox(width: KlpSpace.xs),
+                SizedBox(width: context.klp.space.tight),
                 if (widget.name != null)
                   KlpText('${widget.name}:', role: KlpTextRole.code),
-                if (widget.name != null) const SizedBox(width: KlpSpace.xs),
+                if (widget.name != null) SizedBox(width: context.klp.space.tight),
                 KlpText(
                   widget.value is Map
                       ? '{${entries.length}}'
@@ -593,14 +592,14 @@ class _KlpJsonNodeState extends State<_KlpJsonNode> {
           ? null
           : () => widget.onCopyPath!(widget.path),
       child: Padding(
-        padding: EdgeInsets.only(left: widget.depth * KlpSpace.md),
+        padding: EdgeInsets.only(left: widget.depth * context.klp.space.base),
         child: Row(
           children: [
-            const SizedBox(width: KlpSize.icon + KlpSpace.xs),
+            SizedBox(width: context.klp.space.icon + context.klp.space.tight),
             if (widget.name != null) ...[
               KlpText(widget.name!, role: KlpTextRole.code),
               const KlpText(':', role: KlpTextRole.code),
-              const SizedBox(width: KlpSpace.xs),
+              SizedBox(width: context.klp.space.tight),
             ],
             KlpText(value, role: KlpTextRole.code, tone: KlpTextTone.muted),
           ],
@@ -652,15 +651,15 @@ class KlpFilePreview extends StatelessWidget {
         clipBehavior: Clip.antiAlias,
         decoration: BoxDecoration(
           color: tokens.component,
-          borderRadius: BorderRadius.circular(KlpRadius.card),
+          borderRadius: BorderRadius.circular(context.klp.shape.card),
         ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             Padding(
-              padding: const EdgeInsets.symmetric(
-                horizontal: KlpSpace.md,
-                vertical: KlpSpace.sm,
+              padding: EdgeInsets.symmetric(
+                horizontal: context.klp.space.base,
+                vertical: context.klp.space.compact,
               ),
               child: Row(
                 children: [
@@ -691,9 +690,9 @@ class KlpFilePreview extends StatelessWidget {
             if (onOpenExternal != null || onDownload != null) ...[
               const KlpDashedDivider(),
               Padding(
-                padding: const EdgeInsets.symmetric(
-                  horizontal: KlpSpace.md,
-                  vertical: KlpSpace.xs,
+                padding: EdgeInsets.symmetric(
+                  horizontal: context.klp.space.base,
+                  vertical: context.klp.space.tight,
                 ),
                 child: Row(
                   children: [
@@ -708,7 +707,7 @@ class KlpFilePreview extends StatelessWidget {
                         ),
                       ),
                     if (onOpenExternal != null && onDownload != null)
-                      const SizedBox(width: KlpSpace.lg),
+                      SizedBox(width: context.klp.space.comfortable),
                     if (onDownload != null)
                       GestureDetector(
                         behavior: HitTestBehavior.opaque,
@@ -745,7 +744,7 @@ class KlpFilePreview extends StatelessWidget {
         mainAxisSize: MainAxisSize.min,
         children: [
           KlpText(extension, role: KlpTextRole.title),
-          const SizedBox(height: KlpSpace.xs),
+          SizedBox(height: context.klp.space.tight),
           const KlpText(
             'No preview available for this type',
             role: KlpTextRole.caption,
@@ -762,7 +761,7 @@ class KlpFilePreview extends StatelessWidget {
                     tone: KlpTextTone.muted,
                   )
                 : Padding(
-                    padding: const EdgeInsets.all(KlpSpace.md),
+                    padding: EdgeInsets.all(context.klp.space.base),
                     child: Align(
                       alignment: Alignment.topLeft,
                       child: KlpText(textContent!, role: KlpTextRole.code),

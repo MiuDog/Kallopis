@@ -28,7 +28,7 @@ class KlpCheckbox extends StatelessWidget {
     final borderColor = enabled ? tokens.textMuted : tokens.textFaint;
 
     return Padding(
-      padding: const EdgeInsets.symmetric(vertical: KlpSpace.xs),
+      padding: EdgeInsets.symmetric(vertical: context.klp.space.tight),
       child: Row(
         mainAxisSize: showLabel ? MainAxisSize.max : MainAxisSize.min,
         children: [
@@ -38,12 +38,12 @@ class KlpCheckbox extends StatelessWidget {
             label: label,
             child: Material(
               color: KlpPalette.transparent,
-              borderRadius: BorderRadius.circular(KlpRadius.control),
+              borderRadius: BorderRadius.circular(context.klp.shape.control),
               child: InkWell(
                 onTap: enabled ? () => onChanged!(!value) : null,
-                borderRadius: BorderRadius.circular(KlpRadius.control),
+                borderRadius: BorderRadius.circular(context.klp.shape.control),
                 child: AnimatedContainer(
-                  duration: KlpMotion.styleTransition,
+                  duration: context.klp.motion.styleTransition,
                   width: KlpFormMetrics.selectionControl,
                   height: KlpFormMetrics.selectionControl,
                   alignment: Alignment.center,
@@ -51,8 +51,8 @@ class KlpCheckbox extends StatelessWidget {
                     color: value ? tokens.selection : null,
                     border: value
                         ? null
-                        : Border.all(color: borderColor, width: KlpLine.width),
-                    borderRadius: BorderRadius.circular(KlpRadius.control),
+                        : Border.all(color: borderColor, width: context.klp.shape.stroke),
+                    borderRadius: BorderRadius.circular(context.klp.shape.control),
                   ),
                   child: value
                       ? KlpIcon(
@@ -66,7 +66,7 @@ class KlpCheckbox extends StatelessWidget {
             ),
           ),
           if (showLabel) ...[
-            const SizedBox(width: KlpSpace.sm),
+            SizedBox(width: context.klp.space.compact),
             Expanded(
               child: KlpText(
                 label,

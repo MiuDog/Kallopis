@@ -2,7 +2,6 @@ import 'package:flutter/widgets.dart';
 
 import '../foundation/klp_icon.dart';
 import '../foundation/klp_icons.dart';
-import '../foundation/klp_metrics.dart';
 import '../theme/klp_theme.dart';
 import '../typography/klp_text.dart';
 
@@ -31,21 +30,21 @@ class KlpKeyValueTable extends StatelessWidget {
     final tokens = context.klpColors;
 
     return ClipRRect(
-      borderRadius: BorderRadius.circular(KlpRadius.card),
+      borderRadius: BorderRadius.circular(context.klp.shape.card),
       child: ColoredBox(
         color: tokens.component,
         child: Padding(
-          padding: const EdgeInsets.all(KlpSpace.lg),
+          padding: EdgeInsets.all(context.klp.space.comfortable),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
               if (title != null) ...[
                 KlpText(title!, role: KlpTextRole.label),
-                const SizedBox(height: KlpSpace.md),
+                SizedBox(height: context.klp.space.base),
               ],
               for (var index = 0; index < rows.length; index++) ...[
                 Padding(
-                  padding: const EdgeInsets.symmetric(vertical: KlpSpace.xs),
+                  padding: EdgeInsets.symmetric(vertical: context.klp.space.tight),
                   child: Row(
                     children: [
                       SizedBox(
@@ -114,7 +113,7 @@ class KlpKeyValueList extends StatelessWidget {
       children: [
         for (final row in rows)
           Padding(
-            padding: const EdgeInsets.symmetric(vertical: KlpSpace.xs),
+            padding: EdgeInsets.symmetric(vertical: context.klp.space.tight),
             child: Row(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
@@ -128,15 +127,15 @@ class KlpKeyValueList extends StatelessWidget {
                     overflow: TextOverflow.ellipsis,
                   ),
                 ),
-                const SizedBox(width: KlpSpace.md),
+                SizedBox(width: context.klp.space.base),
                 Expanded(
                   child: DefaultTextStyle.merge(
                     style: TextStyle(
                       fontFamily: row.verbatim
-                          ? KlpTypography.monoFamily
+                          ? context.klp.type.monoFamily
                           : null,
                       color: context.klpColors.text,
-                      fontSize: KlpTypography.small,
+                      fontSize: context.klp.type.caption,
                     ),
                     child: row.value,
                   ),
@@ -147,10 +146,10 @@ class KlpKeyValueList extends StatelessWidget {
                     behavior: HitTestBehavior.opaque,
                     onTap: () => onCopy!(row.id),
                     child: Padding(
-                      padding: const EdgeInsets.all(KlpSpace.xs),
+                      padding: EdgeInsets.all(context.klp.space.tight),
                       child: KlpIcon(
                         KlpIcons.clipboard,
-                        size: KlpSize.iconSmall,
+                        size: context.klp.space.iconSmall,
                         color: context.klpColors.textFaint,
                       ),
                     ),

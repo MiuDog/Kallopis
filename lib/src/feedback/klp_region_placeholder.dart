@@ -55,10 +55,10 @@ class KlpRegionPlaceholder extends StatelessWidget {
       label: semanticLabel,
       child: KlpStrokeFrame(
         role: KlpStrokeRole.latent,
-        radius: KlpRadius.card,
+        radius: context.klp.shape.card,
         opacity: KlpPlaceholderMetrics.latentStrokeOpacity,
         child: ClipRRect(
-          borderRadius: BorderRadius.circular(KlpRadius.card),
+          borderRadius: BorderRadius.circular(context.klp.shape.card),
           child: CustomPaint(
             painter: _KlpPlaceholderFillPainter(
               fillColor: hatched
@@ -83,7 +83,7 @@ class KlpRegionPlaceholder extends StatelessWidget {
                           mainAxisSize: MainAxisSize.min,
                           children: [
                             _PlaceholderMarker(tone: tone),
-                            const SizedBox(width: KlpSpace.sm),
+                            SizedBox(width: context.klp.space.compact),
                             Flexible(
                               child: Text(
                                 '${label.toUpperCase()} · ${kindLabel.toUpperCase()}',
@@ -91,6 +91,7 @@ class KlpRegionPlaceholder extends StatelessWidget {
                                 style:
                                     KlpTextStyles.definitionOf(
                                       KlpTextRole.code,
+                                      context.klp.type,
                                     ).toTextStyle(context.klp.type).copyWith(
                                       color: tokens.textFaint,
                                       letterSpacing: KlpPlaceholderMetrics
@@ -167,20 +168,23 @@ class _PlaceholderActionState extends State<_PlaceholderAction> {
         child: KlpPressable(
           onPressed: widget.onPressed,
           onHover: (hovered) => setState(() => _hovered = hovered),
-          borderRadius: BorderRadius.circular(KlpRadius.control),
+          borderRadius: BorderRadius.circular(context.klp.shape.control),
           child: Container(
             padding: const EdgeInsets.symmetric(
               horizontal: KlpPlaceholderMetrics.actionPaddingHorizontal,
               vertical: KlpPlaceholderMetrics.actionPaddingVertical,
             ),
             decoration: BoxDecoration(
-              color: _hovered ? tokens.hoverSurface : tokens.surface,
-              borderRadius: BorderRadius.circular(KlpRadius.control),
+              color: _hovered ? context.klp.hoverSurface : tokens.surface,
+              borderRadius: BorderRadius.circular(context.klp.shape.control),
             ),
             child: ExcludeSemantics(
               child: Text(
                 widget.label.toUpperCase(),
-                style: KlpTextStyles.definitionOf(KlpTextRole.code)
+                style: KlpTextStyles.definitionOf(
+                      KlpTextRole.code,
+                      context.klp.type,
+                    )
                     .toTextStyle(context.klp.type)
                     .copyWith(
                       color: tokens.text,
@@ -216,7 +220,7 @@ class _PlaceholderMarker extends StatelessWidget {
           border: tone == KlpRegionPlaceholderTone.pending
               ? null
               : Border.fromBorderSide(
-                  BorderSide(color: tokens.textFaint, width: KlpLine.hairline),
+                  BorderSide(color: tokens.textFaint, width: context.klp.shape.hairline),
                 ),
         ),
       ),

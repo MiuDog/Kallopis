@@ -52,10 +52,10 @@ class KlpSlidingSelection extends StatelessWidget {
               width: KlpFormMetrics.selectionIndicator,
               height: KlpFormMetrics.selectionIndicator,
               child: AnimatedContainer(
-                duration: KlpMotion.styleTransition,
+                duration: context.klp.motion.styleTransition,
                 decoration: BoxDecoration(
                   color: options[selectedIndex].color,
-                  borderRadius: BorderRadius.circular(KlpRadius.sm - 1),
+                  borderRadius: BorderRadius.circular(context.klp.shape.control - 1),
                 ),
               ),
             ),
@@ -67,7 +67,7 @@ class KlpSlidingSelection extends StatelessWidget {
                     child: Center(
                       child: KlpIcon(
                         options[index].icon,
-                        size: KlpSize.iconSmall,
+                        size: context.klp.space.iconSmall,
                         color: index == selectedIndex
                             ? KlpThemeContrast.foregroundFor(
                                 options[selectedIndex].color,
@@ -83,13 +83,13 @@ class KlpSlidingSelection extends StatelessWidget {
                 for (var index = 0; index < options.length; index++)
                   Material(
                     color: KlpPalette.transparent,
-                    borderRadius: BorderRadius.circular(KlpRadius.control),
+                    borderRadius: BorderRadius.circular(context.klp.shape.control),
                     child: InkWell(
                       key: ValueKey('pln-selection-hit-$label-$index'),
                       onTap: onSelected == null
                           ? null
                           : () => onSelected!(index),
-                      borderRadius: BorderRadius.circular(KlpRadius.control),
+                      borderRadius: BorderRadius.circular(context.klp.shape.control),
                       child: const SizedBox.square(
                         dimension: KlpFormMetrics.selectionControl,
                       ),

@@ -19,13 +19,17 @@ abstract final class _KlpMenuMetrics {
   static const double width = KlpSize.menu;
   static const double headerHeight = KlpSize.menuHeader;
   static const double itemHeight = KlpSize.menuItem;
-  static const double horizontalPadding = KlpSpace.sm;
-  static const double iconSize = KlpSize.iconSmall;
-  static const double iconGap = KlpSpace.sm;
+  static double horizontalPadding(BuildContext context) =>
+      context.klp.space.compact;
+  static double iconSize(BuildContext context) => context.klp.space.iconSmall;
+  static double iconGap(BuildContext context) => context.klp.space.compact;
   static const double iconOpticalOffsetY = 1;
-  static const double panelRadius = KlpRadius.card;
-  static const double menuBlurRadius = KlpElevation.menuBlurRadius;
-  static const double menuOffsetY = KlpElevation.menuOffsetY;
+  // 這三項來自 theme，因此不能是編譯期常數。
+  static double panelRadius(BuildContext context) => context.klp.shape.card;
+  static double menuBlurRadius(BuildContext context) =>
+      context.klp.surface.overlayBlur;
+  static double menuOffsetY(BuildContext context) =>
+      context.klp.surface.overlayOffsetY;
 }
 
 class KlpMenuItemData {
@@ -60,34 +64,37 @@ abstract final class KlpMenuLayout {
   static double get width => _KlpMenuMetrics.width;
 
   static double estimatedHeight({
+    required BuildContext context,
     required int itemCount,
     int separatorCount = 0,
   }) {
-    return KlpSpace.xs * 2 +
+    return context.klp.space.tight * 2 +
         _KlpMenuMetrics.headerHeight +
-        KlpSpace.xs +
+        context.klp.space.tight +
         itemCount * _KlpMenuMetrics.itemHeight +
-        separatorCount * (KlpLine.width + KlpSpace.sm);
+        separatorCount * (context.klp.shape.stroke + context.klp.space.compact);
   }
 
   static Offset resolvePosition({
     required Offset anchor,
     required Size viewport,
+    required BuildContext context,
     required int itemCount,
     int separatorCount = 0,
   }) {
     final height = estimatedHeight(
+      context: context,
       itemCount: itemCount,
       separatorCount: separatorCount,
     );
     final left = anchor.dx
         .clamp(
-          KlpSpace.sm,
-          viewport.width - _KlpMenuMetrics.width - KlpSpace.sm,
+          context.klp.space.compact,
+          viewport.width - _KlpMenuMetrics.width - context.klp.space.compact,
         )
         .toDouble();
     final top = anchor.dy
-        .clamp(KlpSpace.sm, viewport.height - height - KlpSpace.sm)
+        .clamp(context.klp.space.compact, viewport.height - height - context.klp.space.compact)
         .toDouble();
 
     return Offset(left, top);
@@ -96,23 +103,25 @@ abstract final class KlpMenuLayout {
   static Offset resolveSubmenuPosition({
     required Offset parentPosition,
     required Size viewport,
+    required BuildContext context,
     required int itemCount,
     int separatorCount = 0,
   }) {
     final height = estimatedHeight(
+      context: context,
       itemCount: itemCount,
       separatorCount: separatorCount,
     );
-    final preferredLeft = parentPosition.dx + width + KlpSpace.xs;
-    final left = preferredLeft + width + KlpSpace.sm <= viewport.width
+    final preferredLeft = parentPosition.dx + width + context.klp.space.tight;
+    final left = preferredLeft + width + context.klp.space.compact <= viewport.width
         ? preferredLeft
-        : parentPosition.dx - width - KlpSpace.xs;
+        : parentPosition.dx - width - context.klp.space.tight;
     final top = parentPosition.dy
-        .clamp(KlpSpace.sm, viewport.height - height - KlpSpace.sm)
+        .clamp(context.klp.space.compact, viewport.height - height - context.klp.space.compact)
         .toDouble();
 
     return Offset(
-      left.clamp(KlpSpace.sm, viewport.width - width).toDouble(),
+      left.clamp(context.klp.space.compact, viewport.width - width).toDouble(),
       top,
     );
   }
@@ -131,15 +140,15 @@ class KlpMenu extends StatelessWidget {
     return DecoratedBox(
       key: const ValueKey('pln-menu-elevation'),
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(_KlpMenuMetrics.panelRadius),
+        borderRadius: BorderRadius.circular(_KlpMenuMetrics.panelRadius(context)),
         boxShadow: [
           BoxShadow(
             color: tokens.modalScrim.withValues(
-              alpha: KlpElevation.menuShadowOpacity,
+              alpha: context.klp.surface.overlayShadowOpacity,
             ),
-            blurRadius: _KlpMenuMetrics.menuBlurRadius,
-            spreadRadius: KlpElevation.menuSpreadRadius,
-            offset: Offset(0, _KlpMenuMetrics.menuOffsetY),
+            blurRadius: _KlpMenuMetrics.menuBlurRadius(context),
+            spreadRadius: context.klp.surface.overlaySpread,
+            offset: Offset(0, _KlpMenuMetrics.menuOffsetY(context)),
           ),
         ],
       ),
@@ -147,8 +156,8 @@ class KlpMenu extends StatelessWidget {
         width: _KlpMenuMetrics.width,
         child: KlpSurface(
           tone: KlpSurfaceTone.overlay,
-          radius: _KlpMenuMetrics.panelRadius,
-          padding: const EdgeInsets.all(KlpSpace.xs),
+          radius: _KlpMenuMetrics.panelRadius(context),
+          padding: EdgeInsets.all(context.klp.space.tight),
           child: Column(
             mainAxisSize: MainAxisSize.min,
             crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -157,7 +166,7 @@ class KlpMenu extends StatelessWidget {
                 height: _KlpMenuMetrics.headerHeight,
                 child: Padding(
                   padding: EdgeInsets.symmetric(
-                    horizontal: _KlpMenuMetrics.horizontalPadding,
+                    horizontal: _KlpMenuMetrics.horizontalPadding(context),
                   ),
                   child: Align(
                     alignment: Alignment.centerLeft,
@@ -169,11 +178,11 @@ class KlpMenu extends StatelessWidget {
                   ),
                 ),
               ),
-              const SizedBox(height: KlpSpace.xs),
+              SizedBox(height: context.klp.space.tight),
               for (final item in items) ...[
                 if (item.separatedBefore)
-                  const Padding(
-                    padding: EdgeInsets.symmetric(vertical: KlpSpace.xs),
+                  Padding(
+                    padding: EdgeInsets.symmetric(vertical: context.klp.space.tight),
                     child: KlpDivider(),
                   ),
                 KlpMenuItem(key: item.key, data: item),
@@ -217,8 +226,8 @@ class _KlpMenuItemState extends State<KlpMenuItem> {
       enabled: data.enabled,
       toggled: data.toggleValue,
       child: Material(
-        color: active ? tokens.hoverSurface : Colors.transparent,
-        borderRadius: BorderRadius.circular(KlpRadius.control),
+        color: active ? context.klp.hoverSurface : Colors.transparent,
+        borderRadius: BorderRadius.circular(context.klp.shape.control),
         child: InkWell(
           onTap: data.enabled ? data.onPressed : null,
           onHover: data.enabled
@@ -226,12 +235,12 @@ class _KlpMenuItemState extends State<KlpMenuItem> {
               : null,
           onFocusChange: (value) => setState(() => _focused = value),
           overlayColor: const WidgetStatePropertyAll(Colors.transparent),
-          borderRadius: BorderRadius.circular(KlpRadius.control),
+          borderRadius: BorderRadius.circular(context.klp.shape.control),
           child: SizedBox(
             height: _KlpMenuMetrics.itemHeight,
             child: Padding(
               padding: EdgeInsets.symmetric(
-                horizontal: _KlpMenuMetrics.horizontalPadding,
+                horizontal: _KlpMenuMetrics.horizontalPadding(context),
               ),
               child: Row(
                 children: [
@@ -243,11 +252,11 @@ class _KlpMenuItemState extends State<KlpMenuItem> {
                       ),
                       child: KlpIcon(
                         data.icon!,
-                        size: _KlpMenuMetrics.iconSize,
+                        size: _KlpMenuMetrics.iconSize(context),
                         color: foreground,
                       ),
                     ),
-                    SizedBox(width: _KlpMenuMetrics.iconGap),
+                    SizedBox(width: _KlpMenuMetrics.iconGap(context)),
                   ],
                   Expanded(
                     child: KlpText(
@@ -275,7 +284,7 @@ class _KlpMenuItemState extends State<KlpMenuItem> {
                       angle: -math.pi / 2,
                       child: KlpIcon(
                         KlpIcons.chevronDown,
-                        size: _KlpMenuMetrics.iconSize,
+                        size: _KlpMenuMetrics.iconSize(context),
                         color: foreground,
                       ),
                     ),

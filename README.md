@@ -82,7 +82,7 @@ MaterialApp(
 | 測試 | 擋什麼 |
 |---|---|
 | `test/token_discipline_test.dart` | 元件出現 `Color(0x…)`、`Duration(milliseconds:…)`、或直接參照 primitive 層 |
-| 同上（棘輪） | 舊 static token 的引用數只能下降，且降下去後忘記調低 baseline 也會失敗 |
+| 同上（棘輪） | 舊 static token 的引用數只能下降（目前 16），且降下去後忘記調低 baseline 也會失敗 |
 | `test/visual_style_test.dart` | 兩套風格在字體／形狀／密度／動態／分層手法上必須全部不同 |
 | `example/test/style_switch_golden_test.dart` | 兩套風格算出的圖必須不同——證明 token 真的抵達畫面，而不只是值不同 |
 | `test/klp_region_placeholder_golden_test.dart` 等 | 渲染輸出與抽取來源逐像素相同 |
@@ -99,8 +99,9 @@ cd example && flutter test
 
 ## 已知欠債
 
-- 元件層仍有 515 處引用 `KlpSpace`／`KlpRadius` 這類編譯期常數，值正確但**不隨 theme 改變**
-  ——這是 terminal 風格下 toggle 仍是膠囊形的原因。以棘輪測試列管。
+- 舊 static token 的引用已從 515 降到 16，剩餘的全部是刻意保留：面板寬度與 responsive
+  斷點（版面預設值，可由 widget 參數覆寫）、選單幾何（要在 build 前算彈出位置，取不到
+  context）、視窗透明度、dense 變體的固定高度。棘輪測試維持列管，新增靜態引用視為回退。
 - 6 個檔案內嵌寫死的中文文案，應收斂為必填 label 參數或 `Klp*Labels` 物件
   （`KlpCodeViewerLabels` 已是這個形狀，可作為樣板）。
 - `klp_advanced_data`（20 個布林參數）、`klp_foundation_extras`（11 個，且是 17 個類別的雜物袋）

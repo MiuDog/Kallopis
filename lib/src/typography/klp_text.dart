@@ -64,77 +64,98 @@ class KlpTextStyleDefinition {
 }
 
 abstract final class KlpTextStyles {
-  static const Map<KlpTextRole, KlpTextStyleDefinition> definitions = {
+  /// 字級與行高由 theme 決定，因此不能是編譯期常數的 map。
+  static Map<KlpTextRole, KlpTextStyleDefinition> definitionsFor(
+    KlpTypographyTheme type,
+  ) => {
     KlpTextRole.display: KlpTextStyleDefinition(
-      fontSize: KlpTypography.display,
-      lineHeight: KlpTypography.displayLineHeight,
-      fontWeight: KlpTypography.bold,
-      letterSpacing: KlpTypography.displayLetterSpacing,
+      fontSize: type.display,
+      lineHeight: type.displayLeading,
+      fontWeight: type.strong,
+      letterSpacing: type.displayTracking,
       tier: KlpTextColorTier.prominent,
     ),
     KlpTextRole.title: KlpTextStyleDefinition(
-      fontSize: KlpTypography.title,
-      lineHeight: KlpTypography.headingLineHeight,
-      fontWeight: KlpTypography.bold,
+      fontSize: type.title,
+      lineHeight: type.headingLeading,
+      fontWeight: type.strong,
       tier: KlpTextColorTier.prominent,
     ),
     KlpTextRole.section: KlpTextStyleDefinition(
-      fontSize: KlpTypography.section,
-      lineHeight: KlpTypography.headingLineHeight,
-      fontWeight: KlpTypography.bold,
+      fontSize: type.section,
+      lineHeight: type.headingLeading,
+      fontWeight: type.strong,
       tier: KlpTextColorTier.prominent,
     ),
     KlpTextRole.editor: KlpTextStyleDefinition(
-      fontSize: KlpTypography.body,
-      lineHeight: KlpTypography.bodyLineHeight,
-      fontWeight: KlpTypography.regular,
+      fontSize: type.body,
+      lineHeight: type.bodyLeading,
+      fontWeight: type.regular,
       tier: KlpTextColorTier.prominent,
       family: KlpFontRole.body,
     ),
     KlpTextRole.body: KlpTextStyleDefinition(
-      fontSize: KlpTypography.body,
-      lineHeight: KlpTypography.bodyLineHeight,
-      fontWeight: KlpTypography.regular,
+      fontSize: type.body,
+      lineHeight: type.bodyLeading,
+      fontWeight: type.regular,
       tier: KlpTextColorTier.standard,
     ),
     KlpTextRole.terminal: KlpTextStyleDefinition(
-      fontSize: KlpTypography.body,
-      lineHeight: KlpTypography.bodyLineHeight,
-      fontWeight: KlpTypography.regular,
+      fontSize: type.body,
+      lineHeight: type.bodyLeading,
+      fontWeight: type.regular,
       tier: KlpTextColorTier.standard,
       family: KlpFontRole.mono,
     ),
     KlpTextRole.bodyStrong: KlpTextStyleDefinition(
-      fontSize: KlpTypography.body,
-      lineHeight: KlpTypography.bodyLineHeight,
-      fontWeight: KlpTypography.semibold,
+      fontSize: type.body,
+      lineHeight: type.bodyLeading,
+      fontWeight: type.medium,
       tier: KlpTextColorTier.standard,
     ),
     KlpTextRole.caption: KlpTextStyleDefinition(
-      fontSize: KlpTypography.small,
-      lineHeight: KlpTypography.compactLineHeight,
-      fontWeight: KlpTypography.regular,
+      fontSize: type.caption,
+      lineHeight: type.captionLeading,
+      fontWeight: type.regular,
       tier: KlpTextColorTier.standard,
     ),
     KlpTextRole.label: KlpTextStyleDefinition(
-      fontSize: KlpTypography.small,
-      lineHeight: KlpTypography.labelLineHeight,
-      fontWeight: KlpTypography.regular,
-      letterSpacing: KlpTypography.labelLetterSpacing,
+      fontSize: type.caption,
+      lineHeight: type.labelLeading,
+      fontWeight: type.regular,
+      letterSpacing: type.labelTracking,
       tier: KlpTextColorTier.standard,
     ),
     KlpTextRole.code: KlpTextStyleDefinition(
-      fontSize: KlpTypography.small,
-      lineHeight: KlpTypography.bodyLineHeight,
-      fontWeight: KlpTypography.regular,
+      fontSize: type.caption,
+      lineHeight: type.bodyLeading,
+      fontWeight: type.regular,
       tier: KlpTextColorTier.standard,
       family: KlpFontRole.mono,
     ),
   };
 
-  static KlpTextStyleDefinition definitionOf(KlpTextRole role) {
-    return definitions[role]!;
+  static KlpTextStyleDefinition definitionOf(
+    KlpTextRole role,
+    KlpTypographyTheme type,
+  ) {
+    return definitionsFor(type)[role]!;
   }
+
+  /// 角色對應的色階與字級無關，不隨 theme 改變，因此獨立於 [definitionsFor]。
+  /// 把它併回 definitions 會逼得只想知道色階的呼叫端也要先取得 typography theme。
+  static const Map<KlpTextRole, KlpTextColorTier> tiers = {
+    KlpTextRole.display: KlpTextColorTier.prominent,
+    KlpTextRole.title: KlpTextColorTier.prominent,
+    KlpTextRole.section: KlpTextColorTier.prominent,
+    KlpTextRole.editor: KlpTextColorTier.prominent,
+    KlpTextRole.body: KlpTextColorTier.standard,
+    KlpTextRole.terminal: KlpTextColorTier.standard,
+    KlpTextRole.bodyStrong: KlpTextColorTier.standard,
+    KlpTextRole.caption: KlpTextColorTier.standard,
+    KlpTextRole.label: KlpTextColorTier.standard,
+    KlpTextRole.code: KlpTextColorTier.standard,
+  };
 
   static Color colorFor(
     KlpThemeData tokens, {
@@ -155,7 +176,7 @@ abstract final class KlpTextStyles {
 
   static KlpTextColorTier _tierForTone(KlpTextRole role, KlpTextTone tone) {
     return switch (tone) {
-      KlpTextTone.automatic => definitionOf(role).tier,
+      KlpTextTone.automatic => tiers[role]!,
       KlpTextTone.primary || KlpTextTone.accent => KlpTextColorTier.prominent,
       KlpTextTone.faint => KlpTextColorTier.subdued,
       KlpTextTone.muted ||
@@ -211,7 +232,11 @@ class KlpText extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final tokens = context.klpColors;
-    final roleStyle = KlpTextStyles.definitionOf(role).toTextStyle(context.klp.type);
+    final type = context.klp.type;
+    final roleStyle = KlpTextStyles.definitionOf(
+      role,
+      type,
+    ).toTextStyle(type);
     final style = roleStyle.copyWith(
       color: KlpTextStyles.colorFor(
         tokens,

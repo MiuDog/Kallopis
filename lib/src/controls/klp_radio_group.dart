@@ -20,8 +20,8 @@ class KlpRadioGroup<T> extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Wrap(
-      spacing: KlpSpace.lg,
-      runSpacing: KlpSpace.sm,
+      spacing: context.klp.space.comfortable,
+      runSpacing: context.klp.space.compact,
       children: [
         for (final entry in items.entries)
           _KlpRadioItem(
@@ -50,7 +50,7 @@ class _KlpRadioItem extends StatelessWidget {
     final tokens = context.klpColors;
 
     return Padding(
-      padding: const EdgeInsets.symmetric(vertical: KlpSpace.xs),
+      padding: EdgeInsets.symmetric(vertical: context.klp.space.tight),
       child: Row(
         mainAxisSize: MainAxisSize.min,
         children: [
@@ -60,17 +60,17 @@ class _KlpRadioItem extends StatelessWidget {
             label: label,
             child: Material(
               color: KlpPalette.transparent,
-              borderRadius: BorderRadius.circular(KlpRadius.control),
+              borderRadius: BorderRadius.circular(context.klp.shape.control),
               child: InkWell(
                 onTap: onPressed,
-                borderRadius: BorderRadius.circular(KlpRadius.control),
+                borderRadius: BorderRadius.circular(context.klp.shape.control),
                 child: DecoratedBox(
                   decoration: BoxDecoration(
                     border: Border.all(
                       color: tokens.textMuted,
-                      width: KlpLine.width,
+                      width: context.klp.shape.stroke,
                     ),
-                    borderRadius: BorderRadius.circular(KlpRadius.control),
+                    borderRadius: BorderRadius.circular(context.klp.shape.control),
                   ),
                   child: SizedBox.square(
                     dimension: KlpFormMetrics.selectionControl,
@@ -79,10 +79,10 @@ class _KlpRadioItem extends StatelessWidget {
                         KlpFormMetrics.selectionIndicatorInset,
                       ),
                       child: AnimatedContainer(
-                        duration: KlpMotion.styleTransition,
+                        duration: context.klp.motion.styleTransition,
                         decoration: BoxDecoration(
                           color: selected ? tokens.selection : null,
-                          borderRadius: BorderRadius.circular(KlpRadius.sm - 1),
+                          borderRadius: BorderRadius.circular(context.klp.shape.control - 1),
                         ),
                       ),
                     ),
@@ -91,7 +91,7 @@ class _KlpRadioItem extends StatelessWidget {
               ),
             ),
           ),
-          const SizedBox(width: KlpSpace.sm),
+          SizedBox(width: context.klp.space.compact),
           KlpText(label),
         ],
       ),

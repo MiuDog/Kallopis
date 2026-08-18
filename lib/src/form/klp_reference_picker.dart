@@ -2,9 +2,9 @@ import 'package:flutter/widgets.dart';
 
 import '../controls/klp_text_field.dart';
 import '../data/klp_badge.dart';
-import '../foundation/klp_metrics.dart';
 import '../surface/klp_surface.dart';
 import '../typography/klp_text.dart';
+import '../theme/klp_theme.dart';
 
 @immutable
 class KlpReferenceOption {
@@ -47,18 +47,18 @@ class KlpReferencePicker extends StatelessWidget {
   Widget build(BuildContext context) {
     return KlpSurface(
       tone: KlpSurfaceTone.component,
-      padding: const EdgeInsets.all(KlpSpace.md),
+      padding: EdgeInsets.all(context.klp.space.base),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           KlpText(title.toUpperCase(), role: KlpTextRole.label),
-          const SizedBox(height: KlpSpace.sm),
+          SizedBox(height: context.klp.space.compact),
           KlpTextField(
             initialValue: query,
             placeholder: queryPlaceholder,
             onChanged: onQueryChanged,
           ),
-          const SizedBox(height: KlpSpace.sm),
+          SizedBox(height: context.klp.space.compact),
           if (loading)
             const Center(child: KlpText('...'))
           else
@@ -69,13 +69,13 @@ class KlpReferencePicker extends StatelessWidget {
                     ? null
                     : () => onSelected!(result.id),
                 child: Container(
-                  constraints: const BoxConstraints(minHeight: KlpSize.control),
-                  padding: const EdgeInsets.symmetric(horizontal: KlpSpace.xs),
+                  constraints: BoxConstraints(minHeight: context.klp.space.controlHeight),
+                  padding: EdgeInsets.symmetric(horizontal: context.klp.space.tight),
                   child: Row(
                     children: [
                       if (result.kind != null) ...[
                         KlpBadge(label: result.kind!),
-                        const SizedBox(width: KlpSpace.xs),
+                        SizedBox(width: context.klp.space.tight),
                       ],
                       Expanded(
                         child: KlpText(

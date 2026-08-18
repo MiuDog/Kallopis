@@ -11,8 +11,8 @@ import 'klp_visual_style.dart';
 
 /// 元件取得所有 token 的唯一入口。
 ///
-/// 元件寫 `KlpTheme.of(context).space.base`，不寫 `KlpSpace.md`——後者是編譯期常數，
-/// 換 theme 時不會跟著變，而且不會有任何錯誤訊息告訴你它沒變。
+/// 元件寫 `context.klp.space.base`，不寫 `KlpSpace.md` 之類的編譯期常數——後者換 theme
+/// 時不會跟著變，而且不會有任何錯誤訊息告訴你它沒變。
 ///
 /// 每個 getter 在對應的 `ThemeExtension` 缺席時回退到預設值而非拋錯：庫被放進一個沒有
 /// 設定 Kallopis theme 的 app 時應該仍能渲染，只是長成預設風格。
@@ -96,6 +96,9 @@ class KlpTheme {
   double get badgePaddingX => component.resolveBadgePaddingX(space);
 
   List<BoxShadow> get overlayShadow => surface.overlayShadow(color.text);
+
+  /// hover 底色。混合比例來自 surface 層——終端機風的 hover 對比明顯更強。
+  Color get hoverSurface => color.hoverSurfaceWith(surface.hoverContrastMix);
 }
 
 /// 讓元件寫 `context.klp.space.base`。

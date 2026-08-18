@@ -163,9 +163,9 @@ class _KlpCodeViewerState extends State<KlpCodeViewer> {
   @override
   Widget build(BuildContext context) {
     return KlpDashedBorder(
-      radius: KlpRadius.card,
+      radius: context.klp.shape.card,
       child: ClipRRect(
-        borderRadius: BorderRadius.circular(KlpRadius.card),
+        borderRadius: BorderRadius.circular(context.klp.shape.card),
         child: KlpSurface(
           tone: KlpSurfaceTone.inset,
           child: Column(
@@ -331,6 +331,7 @@ class _KlpCodeViewerState extends State<KlpCodeViewer> {
     final position = KlpMenuLayout.resolvePosition(
       anchor: anchor,
       viewport: MediaQuery.sizeOf(context),
+      context: context,
       itemCount: items.length,
     );
     return showGeneralDialog<int>(
@@ -436,14 +437,14 @@ class _KlpCodeActionButtonState extends State<_KlpCodeActionButton> {
           color: widget.selected
               ? tokens.selectionBackground
               : active
-              ? tokens.hoverSurface
+              ? context.klp.hoverSurface
               : Colors.transparent,
-          borderRadius: BorderRadius.circular(KlpRadius.control),
+          borderRadius: BorderRadius.circular(context.klp.shape.control),
           child: KlpPressable(
             onPressed: widget.onPressed,
             onHover: (value) => setState(() => _hovered = value),
             onFocusChange: (value) => setState(() => _focused = value),
-            borderRadius: BorderRadius.circular(KlpRadius.control),
+            borderRadius: BorderRadius.circular(context.klp.shape.control),
             child: SizedBox.square(
               dimension: KlpCodeMetrics.actionButtonSize,
               child: Center(
@@ -491,15 +492,15 @@ class _KlpCodeLanguageButtonState extends State<_KlpCodeLanguageButton> {
       widthFactor: 1,
       alignment: Alignment.centerLeft,
       child: Material(
-        color: active ? tokens.hoverSurface : Colors.transparent,
-        borderRadius: BorderRadius.circular(KlpRadius.control),
+        color: active ? context.klp.hoverSurface : Colors.transparent,
+        borderRadius: BorderRadius.circular(context.klp.shape.control),
         child: KlpPressable(
           onPressed: widget.enabled ? widget.onPressed : null,
           onHover: (value) => setState(() => _hovered = value),
           onFocusChange: (value) => setState(() => _focused = value),
-          borderRadius: BorderRadius.circular(KlpRadius.control),
+          borderRadius: BorderRadius.circular(context.klp.shape.control),
           child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: KlpSpace.xs),
+            padding: EdgeInsets.symmetric(horizontal: context.klp.space.tight),
             child: Row(
               mainAxisSize: MainAxisSize.min,
               children: [
@@ -509,7 +510,7 @@ class _KlpCodeLanguageButtonState extends State<_KlpCodeLanguageButton> {
                   color: active ? tokens.text : color,
                 ),
                 if (widget.enabled) ...[
-                  const SizedBox(width: KlpSpace.xs),
+                  SizedBox(width: context.klp.space.tight),
                   KlpIcon(
                     KlpIcons.chevronDown,
                     size: KlpSize.disclosure,
@@ -558,7 +559,7 @@ class _KlpCodeLines extends StatelessWidget {
                     textAlign: TextAlign.end,
                   ),
                 ),
-                const SizedBox(width: KlpSpace.sm),
+                SizedBox(width: context.klp.space.compact),
               ],
               if (wrapped)
                 SizedBox(

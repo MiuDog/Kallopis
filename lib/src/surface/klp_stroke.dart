@@ -1,6 +1,5 @@
 import 'package:flutter/widgets.dart';
 
-import '../foundation/klp_metrics.dart';
 import '../theme/klp_theme.dart';
 
 enum KlpStrokeRole { structure, latent, field }
@@ -13,11 +12,11 @@ class KlpStrokeFrame extends StatelessWidget {
     required this.role,
     required this.child,
     this.state = KlpStrokeState.rest,
-    this.radius = KlpRadius.control,
-    this.width = KlpLine.hairline,
-    this.dashLength = KlpLine.dashedLength,
-    this.gapLength = KlpLine.dashedGap,
-    this.opacity = KlpLine.dashedOpacity,
+    this.radius,
+    this.width,
+    this.dashLength,
+    this.gapLength,
+    this.opacity,
   }) : assert(
          role == KlpStrokeRole.field || state == KlpStrokeState.rest,
          'Only field strokes accept an interaction state.',
@@ -26,30 +25,39 @@ class KlpStrokeFrame extends StatelessWidget {
   final KlpStrokeRole role;
   final Widget child;
   final KlpStrokeState state;
-  final double radius;
-  final double width;
-  final double dashLength;
-  final double gapLength;
-  final double opacity;
+  /// 以下皆為 `null` 表示沿用 theme。指定值只用於刻意偏離的場合——
+  /// 建構子預設值是編譯期常數，讀不到 theme。
+  final double? radius;
+  final double? width;
+  final double? dashLength;
+  final double? gapLength;
+  final double? opacity;
 
   @override
   Widget build(BuildContext context) {
+    final shape = context.klp.shape;
+    final effectiveRadius = radius ?? shape.control;
+    final effectiveWidth = width ?? shape.hairline;
+    final effectiveDashLength = dashLength ?? shape.dashedLength;
+    final effectiveGapLength = gapLength ?? shape.dashedGap;
+    final effectiveOpacity = opacity ?? shape.dashedOpacity;
+
     return switch (role) {
       KlpStrokeRole.structure => child,
       KlpStrokeRole.latent => CustomPaint(
         foregroundPainter: _KlpLatentStrokePainter(
-          color: context.klpColors.guide.withValues(alpha: opacity),
-          radius: radius,
-          width: width,
-          dashLength: dashLength,
-          gapLength: gapLength,
+          color: context.klpColors.guide.withValues(alpha: effectiveOpacity),
+          radius: effectiveRadius,
+          width: effectiveWidth,
+          dashLength: effectiveDashLength,
+          gapLength: effectiveGapLength,
         ),
         child: child,
       ),
       KlpStrokeRole.field => DecoratedBox(
         decoration: BoxDecoration(
           color: KlpFieldStyle.colorFor(context.klpColors, _fieldFillState()),
-          borderRadius: BorderRadius.circular(radius),
+          borderRadius: BorderRadius.circular(effectiveRadius),
         ),
         child: child,
       ),

@@ -103,7 +103,7 @@ class KlpPasswordField extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
         KlpText(label, role: KlpTextRole.caption),
-        const SizedBox(height: KlpSpace.xs),
+        SizedBox(height: context.klp.space.tight),
         TextFormField(
           initialValue: value,
           obscureText: true,
@@ -120,11 +120,11 @@ class KlpPasswordField extends StatelessWidget {
             constraints: const BoxConstraints.tightFor(
               height: KlpFormMetrics.fieldHeight,
             ),
-            contentPadding: KlpInsets.control,
+            contentPadding: context.klp.space.controlInsets,
           ),
         ),
         if (error != null) ...[
-          const SizedBox(height: KlpSpace.xs),
+          SizedBox(height: context.klp.space.tight),
           KlpText(error!, role: KlpTextRole.caption, tone: KlpTextTone.danger),
         ],
       ],
@@ -201,7 +201,7 @@ class _KlpSelectFieldState extends State<KlpSelectField> {
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
         KlpText(widget.label, role: KlpTextRole.caption),
-        const SizedBox(height: KlpSpace.xs),
+        SizedBox(height: context.klp.space.tight),
         GestureDetector(
           behavior: HitTestBehavior.opaque,
           onTap: widget.onSelected == null
@@ -217,22 +217,22 @@ class _KlpSelectFieldState extends State<KlpSelectField> {
             child: Container(
               height: KlpFormMetrics.fieldHeight,
               alignment: Alignment.centerLeft,
-              padding: const EdgeInsets.symmetric(horizontal: KlpSpace.md),
+              padding: EdgeInsets.symmetric(horizontal: context.klp.space.base),
               decoration: BoxDecoration(
                 color: Colors.transparent,
-                borderRadius: BorderRadius.circular(KlpRadius.control),
+                borderRadius: BorderRadius.circular(context.klp.shape.control),
               ),
               child: KlpText(widget.valueLabel),
             ),
           ),
         ),
         if (_expanded) ...[
-          const SizedBox(height: KlpSpace.xs),
+          SizedBox(height: context.klp.space.tight),
           Container(
-            padding: const EdgeInsets.all(KlpSpace.xs),
+            padding: EdgeInsets.all(context.klp.space.tight),
             decoration: BoxDecoration(
               color: context.klpColors.component,
-              borderRadius: BorderRadius.circular(KlpRadius.card),
+              borderRadius: BorderRadius.circular(context.klp.shape.card),
             ),
             child: Column(
               children: [
@@ -250,8 +250,8 @@ class _KlpSelectFieldState extends State<KlpSelectField> {
                         minHeight: KlpFormMetrics.fieldHeight,
                       ),
                       alignment: Alignment.centerLeft,
-                      padding: const EdgeInsets.symmetric(
-                        horizontal: KlpSpace.sm,
+                      padding: EdgeInsets.symmetric(
+                        horizontal: context.klp.space.compact,
                       ),
                       child: KlpText(
                         option.label,
@@ -290,10 +290,10 @@ class KlpMultiSelectField extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
         KlpText(label, role: KlpTextRole.caption),
-        const SizedBox(height: KlpSpace.xs),
+        SizedBox(height: context.klp.space.tight),
         Wrap(
-          spacing: KlpSpace.xs,
-          runSpacing: KlpSpace.xs,
+          spacing: context.klp.space.tight,
+          runSpacing: context.klp.space.tight,
           children: [
             for (final option in options)
               GestureDetector(
@@ -307,15 +307,15 @@ class KlpMultiSelectField extends StatelessWidget {
                         onChanged!(next);
                       },
                 child: Container(
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: KlpSpace.sm,
-                    vertical: KlpSpace.xs,
+                  padding: EdgeInsets.symmetric(
+                    horizontal: context.klp.space.compact,
+                    vertical: context.klp.space.tight,
                   ),
                   decoration: BoxDecoration(
                     color: selectedIds.contains(option.id)
                         ? context.klpColors.selection
                         : context.klpColors.surfaceInset,
-                    borderRadius: BorderRadius.circular(KlpRadius.control),
+                    borderRadius: BorderRadius.circular(context.klp.shape.control),
                   ),
                   child: KlpText(
                     option.label,

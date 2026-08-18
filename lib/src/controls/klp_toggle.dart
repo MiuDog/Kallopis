@@ -32,17 +32,17 @@ class KlpToggle extends StatelessWidget {
           toggled: value,
           child: Material(
             color: Colors.transparent,
-            borderRadius: BorderRadius.circular(KlpRadius.full),
+            borderRadius: BorderRadius.circular(context.klp.shape.pill),
             child: InkWell(
               onTap: enabled ? () => onChanged!(!value) : null,
-              borderRadius: BorderRadius.circular(KlpRadius.full),
+              borderRadius: BorderRadius.circular(context.klp.shape.pill),
               overlayColor: const WidgetStatePropertyAll(Colors.transparent),
               child: KlpToggleIndicator(value: value, enabled: enabled),
             ),
           ),
         ),
         if (showLabel) ...[
-          const SizedBox(width: KlpSpace.sm),
+          SizedBox(width: context.klp.space.compact),
           KlpText(
             label,
             tone: enabled ? KlpTextTone.primary : KlpTextTone.faint,
@@ -84,7 +84,7 @@ class KlpToggleIndicator extends StatelessWidget {
         child: DecoratedBox(
           decoration: BoxDecoration(
             color: trackColor,
-            borderRadius: BorderRadius.circular(KlpRadius.full),
+            borderRadius: BorderRadius.circular(context.klp.shape.pill),
           ),
           child: Padding(
             padding: const EdgeInsets.all(KlpFormMetrics.toggleInset),

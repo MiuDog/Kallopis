@@ -1,6 +1,5 @@
 import 'package:flutter/widgets.dart';
 
-import '../foundation/klp_metrics.dart';
 import '../theme/klp_theme.dart';
 import '../typography/klp_text.dart';
 
@@ -25,7 +24,7 @@ class KlpStatusBar extends StatelessWidget {
         final compact = constraints.maxWidth < 400;
 
         return Padding(
-          padding: const EdgeInsets.symmetric(horizontal: KlpSpace.sm),
+          padding: EdgeInsets.symmetric(horizontal: context.klp.space.compact),
           child: Row(
             children: [
               Container(
@@ -36,7 +35,7 @@ class KlpStatusBar extends StatelessWidget {
                   shape: BoxShape.circle,
                 ),
               ),
-              const SizedBox(width: KlpSpace.sm),
+              SizedBox(width: context.klp.space.compact),
               Expanded(
                 child: KlpText(
                   leading,

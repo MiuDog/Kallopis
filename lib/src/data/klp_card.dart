@@ -1,6 +1,5 @@
 import 'package:flutter/widgets.dart';
 
-import '../foundation/klp_metrics.dart';
 import '../theme/klp_theme.dart';
 import '../typography/klp_text.dart';
 
@@ -31,18 +30,18 @@ class KlpCard extends StatelessWidget {
     return DecoratedBox(
       decoration: BoxDecoration(
         color: selected ? tokens.selectionBackground : tokens.component,
-        borderRadius: BorderRadius.circular(KlpRadius.card),
+        borderRadius: BorderRadius.circular(context.klp.shape.card),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           Padding(
-            padding: const EdgeInsets.all(KlpSpace.md),
+            padding: EdgeInsets.all(context.klp.space.base),
             child: Row(
               children: [
                 if (leading != null) ...[
                   leading!,
-                  const SizedBox(width: KlpSpace.sm),
+                  SizedBox(width: context.klp.space.compact),
                 ],
                 Expanded(
                   child: Column(
@@ -58,9 +57,9 @@ class KlpCard extends StatelessWidget {
               ],
             ),
           ),
-          Padding(padding: const EdgeInsets.all(KlpSpace.md), child: child),
+          Padding(padding: EdgeInsets.all(context.klp.space.base), child: child),
           if (footer != null)
-            Padding(padding: const EdgeInsets.all(KlpSpace.sm), child: footer!),
+            Padding(padding: EdgeInsets.all(context.klp.space.compact), child: footer!),
         ],
       ),
     );

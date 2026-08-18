@@ -30,6 +30,8 @@ class KlpTypographyTheme extends ThemeExtension<KlpTypographyTheme> {
     required this.displayLeading,
     required this.codeLeading,
     required this.readingLeading,
+    required this.captionLeading,
+    required this.labelLeading,
     required this.labelTracking,
     required this.displayTracking,
     required this.regular,
@@ -66,6 +68,11 @@ class KlpTypographyTheme extends ThemeExtension<KlpTypographyTheme> {
   final double codeLeading;
   final double readingLeading;
 
+  /// caption 與 label 的行高刻意與內文不同：小字需要更緊的行距才不會顯得鬆散，
+  /// 而 label 通常單行，行高只影響垂直置中。
+  final double captionLeading;
+  final double labelLeading;
+
   // 字距
   final double labelTracking;
   final double displayTracking;
@@ -100,6 +107,8 @@ class KlpTypographyTheme extends ThemeExtension<KlpTypographyTheme> {
     displayLeading: KlpScale.leading100,
     codeLeading: KlpScale.leading550,
     readingLeading: KlpScale.leading650,
+    captionLeading: KlpScale.leading400,
+    labelLeading: KlpScale.leading150,
     labelTracking: KlpScale.trackingWide,
     displayTracking: KlpScale.trackingTight,
     regular: KlpScale.weight400,
@@ -129,6 +138,8 @@ class KlpTypographyTheme extends ThemeExtension<KlpTypographyTheme> {
     displayLeading: KlpScale.leading150,
     codeLeading: KlpScale.leading400,
     readingLeading: KlpScale.leading450,
+    captionLeading: KlpScale.leading300,
+    labelLeading: KlpScale.leading150,
     labelTracking: KlpScale.tracking0,
     displayTracking: KlpScale.tracking0,
     regular: KlpScale.weight400,
@@ -161,6 +172,8 @@ class KlpTypographyTheme extends ThemeExtension<KlpTypographyTheme> {
     double? displayLeading,
     double? codeLeading,
     double? readingLeading,
+    double? captionLeading,
+    double? labelLeading,
     double? labelTracking,
     double? displayTracking,
     FontWeight? regular,
@@ -188,6 +201,8 @@ class KlpTypographyTheme extends ThemeExtension<KlpTypographyTheme> {
       displayLeading: displayLeading ?? this.displayLeading,
       codeLeading: codeLeading ?? this.codeLeading,
       readingLeading: readingLeading ?? this.readingLeading,
+      captionLeading: captionLeading ?? this.captionLeading,
+      labelLeading: labelLeading ?? this.labelLeading,
       labelTracking: labelTracking ?? this.labelTracking,
       displayTracking: displayTracking ?? this.displayTracking,
       regular: regular ?? this.regular,
@@ -216,6 +231,8 @@ class KlpTypographyTheme extends ThemeExtension<KlpTypographyTheme> {
       displayLeading: l(displayLeading, other.displayLeading),
       codeLeading: l(codeLeading, other.codeLeading),
       readingLeading: l(readingLeading, other.readingLeading),
+      captionLeading: l(captionLeading, other.captionLeading),
+      labelLeading: l(labelLeading, other.labelLeading),
       labelTracking: l(labelTracking, other.labelTracking),
       displayTracking: l(displayTracking, other.displayTracking),
     );

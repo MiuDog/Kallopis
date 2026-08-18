@@ -26,6 +26,14 @@ class KlpSpacingTheme extends ThemeExtension<KlpSpacingTheme> {
     required this.controlHeight,
     required this.controlHeightSmall,
     required this.controlHeightLarge,
+    required this.iconSmall,
+    required this.icon,
+    required this.iconLarge,
+    required this.chromeHeader,
+    required this.chromeStatusBar,
+    required this.chromeRail,
+    required this.chromeTab,
+    required this.iconButton,
   });
 
   // 通用階梯（角色化，不是尺寸化）
@@ -50,6 +58,18 @@ class KlpSpacingTheme extends ThemeExtension<KlpSpacingTheme> {
   final double controlHeightSmall;
   final double controlHeightLarge;
 
+  /// 圖示尺寸屬於密度：終端機風的圖示要能與等寬字的行高對齊。
+  final double iconSmall;
+  final double icon;
+  final double iconLarge;
+
+  /// App 外殼的高度。終端機風的標題列與狀態列比現代風矮一截——這是密度，不是版面常數。
+  final double chromeHeader;
+  final double chromeStatusBar;
+  final double chromeRail;
+  final double chromeTab;
+  final double iconButton;
+
   EdgeInsets get controlInsets =>
       EdgeInsets.symmetric(horizontal: controlPaddingX, vertical: controlPaddingY);
 
@@ -73,6 +93,14 @@ class KlpSpacingTheme extends ThemeExtension<KlpSpacingTheme> {
     controlHeight: 32,
     controlHeightSmall: 26,
     controlHeightLarge: 40,
+    iconSmall: 14,
+    icon: 18,
+    iconLarge: 22,
+    chromeHeader: 60,
+    chromeStatusBar: 30,
+    chromeRail: 56,
+    chromeTab: 32,
+    iconButton: 30,
   );
 
   /// 終端機風：資訊密度優先，貼齊字元格，控制項 24pt。
@@ -93,6 +121,14 @@ class KlpSpacingTheme extends ThemeExtension<KlpSpacingTheme> {
     controlHeight: 24,
     controlHeightSmall: 20,
     controlHeightLarge: 30,
+    iconSmall: 12,
+    icon: 14,
+    iconLarge: 18,
+    chromeHeader: 36,
+    chromeStatusBar: 22,
+    chromeRail: 40,
+    chromeTab: 24,
+    iconButton: 22,
   );
 
   @override
@@ -113,6 +149,14 @@ class KlpSpacingTheme extends ThemeExtension<KlpSpacingTheme> {
     double? controlHeight,
     double? controlHeightSmall,
     double? controlHeightLarge,
+    double? iconSmall,
+    double? icon,
+    double? iconLarge,
+    double? chromeHeader,
+    double? chromeStatusBar,
+    double? chromeRail,
+    double? chromeTab,
+    double? iconButton,
   }) {
     return KlpSpacingTheme(
       hairline: hairline ?? this.hairline,
@@ -131,6 +175,14 @@ class KlpSpacingTheme extends ThemeExtension<KlpSpacingTheme> {
       controlHeight: controlHeight ?? this.controlHeight,
       controlHeightSmall: controlHeightSmall ?? this.controlHeightSmall,
       controlHeightLarge: controlHeightLarge ?? this.controlHeightLarge,
+      iconSmall: iconSmall ?? this.iconSmall,
+      icon: icon ?? this.icon,
+      iconLarge: iconLarge ?? this.iconLarge,
+      chromeHeader: chromeHeader ?? this.chromeHeader,
+      chromeStatusBar: chromeStatusBar ?? this.chromeStatusBar,
+      chromeRail: chromeRail ?? this.chromeRail,
+      chromeTab: chromeTab ?? this.chromeTab,
+      iconButton: iconButton ?? this.iconButton,
     );
   }
 
@@ -155,6 +207,14 @@ class KlpSpacingTheme extends ThemeExtension<KlpSpacingTheme> {
       controlHeight: l(controlHeight, other.controlHeight),
       controlHeightSmall: l(controlHeightSmall, other.controlHeightSmall),
       controlHeightLarge: l(controlHeightLarge, other.controlHeightLarge),
+      iconSmall: l(iconSmall, other.iconSmall),
+      icon: l(icon, other.icon),
+      iconLarge: l(iconLarge, other.iconLarge),
+      chromeHeader: l(chromeHeader, other.chromeHeader),
+      chromeStatusBar: l(chromeStatusBar, other.chromeStatusBar),
+      chromeRail: l(chromeRail, other.chromeRail),
+      chromeTab: l(chromeTab, other.chromeTab),
+      iconButton: l(iconButton, other.iconButton),
     );
   }
 
@@ -177,7 +237,15 @@ class KlpSpacingTheme extends ThemeExtension<KlpSpacingTheme> {
           groupGap == other.groupGap &&
           controlHeight == other.controlHeight &&
           controlHeightSmall == other.controlHeightSmall &&
-          controlHeightLarge == other.controlHeightLarge;
+          controlHeightLarge == other.controlHeightLarge &&
+          iconSmall == other.iconSmall &&
+          icon == other.icon &&
+          iconLarge == other.iconLarge &&
+          chromeHeader == other.chromeHeader &&
+          chromeStatusBar == other.chromeStatusBar &&
+          chromeRail == other.chromeRail &&
+          chromeTab == other.chromeTab &&
+          iconButton == other.iconButton;
 
   @override
   int get hashCode => Object.hashAll([
@@ -197,5 +265,13 @@ class KlpSpacingTheme extends ThemeExtension<KlpSpacingTheme> {
     controlHeight,
     controlHeightSmall,
     controlHeightLarge,
+    iconSmall,
+    icon,
+    iconLarge,
+    chromeHeader,
+    chromeStatusBar,
+    chromeRail,
+    chromeTab,
+    iconButton,
   ]);
 }

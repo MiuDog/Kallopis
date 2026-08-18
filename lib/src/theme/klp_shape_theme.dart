@@ -16,6 +16,9 @@ class KlpShapeTheme extends ThemeExtension<KlpShapeTheme> {
     required this.pill,
     required this.hairline,
     required this.stroke,
+    required this.dashedLength,
+    required this.dashedGap,
+    required this.dashedOpacity,
   });
 
   final double none;
@@ -38,6 +41,11 @@ class KlpShapeTheme extends ThemeExtension<KlpShapeTheme> {
   /// 需要強調的邊框（focus ring、選取框）。
   final double stroke;
 
+  /// 虛線描邊的節奏。終端機風的虛線通常更長更疏，因此屬於風格而非常數。
+  final double dashedLength;
+  final double dashedGap;
+  final double dashedOpacity;
+
   static const KlpShapeTheme standardShape = KlpShapeTheme(
     none: KlpScale.radius0,
     control: KlpScale.radius100,
@@ -46,6 +54,9 @@ class KlpShapeTheme extends ThemeExtension<KlpShapeTheme> {
     pill: KlpScale.radiusFull,
     hairline: KlpScale.stroke100,
     stroke: KlpScale.stroke200,
+    dashedLength: 3,
+    dashedGap: 2,
+    dashedOpacity: KlpScale.opacity780,
   );
 
   /// 終端機風：全部直角，邊框改為主要的分層手段因此加粗一階。
@@ -57,6 +68,9 @@ class KlpShapeTheme extends ThemeExtension<KlpShapeTheme> {
     pill: KlpScale.radius0,
     hairline: KlpScale.stroke100,
     stroke: KlpScale.stroke200,
+    dashedLength: 6,
+    dashedGap: 4,
+    dashedOpacity: 1,
   );
 
   BorderRadius get controlRadius => BorderRadius.circular(control);
@@ -73,6 +87,9 @@ class KlpShapeTheme extends ThemeExtension<KlpShapeTheme> {
     double? pill,
     double? hairline,
     double? stroke,
+    double? dashedLength,
+    double? dashedGap,
+    double? dashedOpacity,
   }) {
     return KlpShapeTheme(
       none: none ?? this.none,
@@ -82,6 +99,9 @@ class KlpShapeTheme extends ThemeExtension<KlpShapeTheme> {
       pill: pill ?? this.pill,
       hairline: hairline ?? this.hairline,
       stroke: stroke ?? this.stroke,
+      dashedLength: dashedLength ?? this.dashedLength,
+      dashedGap: dashedGap ?? this.dashedGap,
+      dashedOpacity: dashedOpacity ?? this.dashedOpacity,
     );
   }
 
@@ -96,6 +116,9 @@ class KlpShapeTheme extends ThemeExtension<KlpShapeTheme> {
       pill: lerpDouble(pill, other.pill, t),
       hairline: lerpDouble(hairline, other.hairline, t),
       stroke: lerpDouble(stroke, other.stroke, t),
+      dashedLength: lerpDouble(dashedLength, other.dashedLength, t),
+      dashedGap: lerpDouble(dashedGap, other.dashedGap, t),
+      dashedOpacity: lerpDouble(dashedOpacity, other.dashedOpacity, t),
     );
   }
 
@@ -111,9 +134,22 @@ class KlpShapeTheme extends ThemeExtension<KlpShapeTheme> {
           panel == other.panel &&
           pill == other.pill &&
           hairline == other.hairline &&
-          stroke == other.stroke;
+          stroke == other.stroke &&
+          dashedLength == other.dashedLength &&
+          dashedGap == other.dashedGap &&
+          dashedOpacity == other.dashedOpacity;
 
   @override
-  int get hashCode =>
-      Object.hash(none, control, card, panel, pill, hairline, stroke);
+  int get hashCode => Object.hash(
+    none,
+    control,
+    card,
+    panel,
+    pill,
+    hairline,
+    stroke,
+    dashedLength,
+    dashedGap,
+    dashedOpacity,
+  );
 }

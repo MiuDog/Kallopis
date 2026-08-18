@@ -4,10 +4,10 @@ import '../controls/klp_button.dart';
 import '../controls/klp_text_field.dart';
 import '../data/klp_advanced_data.dart';
 import '../data/klp_code_viewer.dart';
-import '../foundation/klp_metrics.dart';
 import '../surface/klp_surface.dart';
 import '../typography/klp_text.dart';
 import 'klp_form_controls.dart';
+import '../theme/klp_theme.dart';
 
 @immutable
 class KlpRepeaterItem {
@@ -41,16 +41,16 @@ class KlpRepeaterField extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
         KlpText(label, role: KlpTextRole.caption),
-        const SizedBox(height: KlpSpace.xs),
+        SizedBox(height: context.klp.space.tight),
         for (final item in items) ...[
           KlpSurface(
             tone: KlpSurfaceTone.component,
-            padding: const EdgeInsets.all(KlpSpace.sm),
+            padding: EdgeInsets.all(context.klp.space.compact),
             child: Row(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Expanded(child: item.child),
-                const SizedBox(width: KlpSpace.sm),
+                SizedBox(width: context.klp.space.compact),
                 KlpButton(
                   label: removeLabel,
                   compact: true,
@@ -60,7 +60,7 @@ class KlpRepeaterField extends StatelessWidget {
               ],
             ),
           ),
-          const SizedBox(height: KlpSpace.xs),
+          SizedBox(height: context.klp.space.tight),
         ],
         Align(
           alignment: Alignment.centerLeft,
@@ -110,7 +110,7 @@ class KlpKeyValueEditor extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
         KlpText(label, role: KlpTextRole.caption),
-        const SizedBox(height: KlpSpace.xs),
+        SizedBox(height: context.klp.space.tight),
         for (var index = 0; index < entries.length; index++) ...[
           Row(
             children: [
@@ -125,7 +125,7 @@ class KlpKeyValueEditor extends StatelessWidget {
                         ),
                 ),
               ),
-              const SizedBox(width: KlpSpace.xs),
+              SizedBox(width: context.klp.space.tight),
               Expanded(
                 child: KlpTextField(
                   initialValue: entries[index].value,
@@ -139,7 +139,7 @@ class KlpKeyValueEditor extends StatelessWidget {
               ),
             ],
           ),
-          if (index < entries.length - 1) const SizedBox(height: KlpSpace.xs),
+          if (index < entries.length - 1) SizedBox(height: context.klp.space.tight),
         ],
       ],
     );
@@ -176,7 +176,7 @@ class KlpCodeField extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
               KlpText(label, role: KlpTextRole.caption),
-              const SizedBox(height: KlpSpace.xs),
+              SizedBox(height: context.klp.space.tight),
               KlpCodeViewer(code: value, language: language),
             ],
           )
@@ -223,10 +223,10 @@ class KlpFileField extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
         KlpText(label, role: KlpTextRole.caption),
-        const SizedBox(height: KlpSpace.xs),
+        SizedBox(height: context.klp.space.tight),
         Wrap(
-          spacing: KlpSpace.xs,
-          runSpacing: KlpSpace.xs,
+          spacing: context.klp.space.tight,
+          runSpacing: context.klp.space.tight,
           children: [
             for (final file in files)
               KlpFilePreview(

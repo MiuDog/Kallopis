@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
 import '../foundation/klp_icon.dart';
-import '../foundation/klp_metrics.dart';
 import '../overlay/klp_tooltip.dart';
 import '../theme/klp_theme.dart';
 
@@ -37,18 +36,18 @@ class _KlpIconButtonState extends State<KlpIconButton> {
       color: widget.selected
           ? tokens.selectionBackground
           : active
-          ? tokens.hoverSurface
+          ? context.klp.hoverSurface
           : tokens.component,
       shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(KlpRadius.control),
+        borderRadius: BorderRadius.circular(context.klp.shape.control),
       ),
       child: InkWell(
         onTap: widget.onPressed,
         onHover: (value) => setState(() => _hovered = value),
         onFocusChange: (value) => setState(() => _focused = value),
-        borderRadius: BorderRadius.circular(KlpRadius.control),
+        borderRadius: BorderRadius.circular(context.klp.shape.control),
         child: SizedBox.square(
-          dimension: KlpSize.iconButton,
+          dimension: context.klp.space.iconButton,
           child: Center(
             child: RotatedBox(
               quarterTurns: widget.quarterTurns,

@@ -1,6 +1,5 @@
 import 'package:flutter/widgets.dart';
 
-import '../foundation/klp_metrics.dart';
 import '../theme/klp_theme.dart';
 import 'klp_stroke.dart';
 
@@ -8,19 +7,19 @@ class KlpDashedBorder extends StatelessWidget {
   const KlpDashedBorder({
     super.key,
     required this.child,
-    this.radius = KlpRadius.control,
-    this.width = KlpLine.hairline,
-    this.dashLength = KlpLine.dashedLength,
-    this.gapLength = KlpLine.dashedGap,
-    this.opacity = KlpLine.dashedOpacity,
+    this.radius,
+    this.width,
+    this.dashLength,
+    this.gapLength,
+    this.opacity,
   });
 
   final Widget child;
-  final double radius;
-  final double width;
-  final double dashLength;
-  final double gapLength;
-  final double opacity;
+  final double? radius;
+  final double? width;
+  final double? dashLength;
+  final double? gapLength;
+  final double? opacity;
 
   @override
   Widget build(BuildContext context) {
@@ -39,28 +38,33 @@ class KlpDashedBorder extends StatelessWidget {
 class KlpDashedDivider extends StatelessWidget {
   const KlpDashedDivider({
     super.key,
-    this.width = KlpLine.hairline,
-    this.dashLength = KlpLine.dashedLength,
-    this.gapLength = KlpLine.dashedGap,
-    this.opacity = KlpLine.dashedOpacity,
+    this.width,
+    this.dashLength,
+    this.gapLength,
+    this.opacity,
   });
 
-  final double width;
-  final double dashLength;
-  final double gapLength;
-  final double opacity;
+  final double? width;
+  final double? dashLength;
+  final double? gapLength;
+  final double? opacity;
 
   @override
   Widget build(BuildContext context) {
+    final shape = context.klp.shape;
+    final effectiveWidth = width ?? shape.hairline;
+
     return SizedBox(
-      height: width,
+      height: effectiveWidth,
       width: double.infinity,
       child: CustomPaint(
         painter: _KlpDashedDividerPainter(
-          color: context.klpColors.guide.withValues(alpha: opacity),
-          width: width,
-          dashLength: dashLength,
-          gapLength: gapLength,
+          color: context.klpColors.guide.withValues(
+            alpha: opacity ?? shape.dashedOpacity,
+          ),
+          width: effectiveWidth,
+          dashLength: dashLength ?? shape.dashedLength,
+          gapLength: gapLength ?? shape.dashedGap,
         ),
       ),
     );

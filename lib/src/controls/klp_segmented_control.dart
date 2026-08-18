@@ -34,11 +34,11 @@ class KlpSegmentedControl extends StatelessWidget {
     return Container(
       height: dense ? KlpSize.segmentedDense : null,
       padding: EdgeInsets.all(
-        dense ? KlpControlMetrics.segmentedDenseInset : KlpSpace.xs,
+        dense ? KlpControlMetrics.segmentedDenseInset : context.klp.space.tight,
       ),
       decoration: BoxDecoration(
         color: tokens.surfaceInset,
-        borderRadius: BorderRadius.circular(KlpRadius.card),
+        borderRadius: BorderRadius.circular(context.klp.shape.card),
       ),
       child: Row(
         mainAxisSize: MainAxisSize.min,
@@ -96,7 +96,7 @@ class _KlpSegment extends StatelessWidget {
       child: Material(
         color: selected ? tokens.component : KlpPalette.transparent,
         shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(KlpRadius.control),
+          borderRadius: BorderRadius.circular(context.klp.shape.control),
         ),
         child: InkWell(
           onTap: onPressed,
@@ -106,15 +106,15 @@ class _KlpSegment extends StatelessWidget {
               return tokens.surfaceMuted.withValues(alpha: 0);
             }
 
-            return tokens.hoverSurface;
+            return context.klp.hoverSurface;
           }),
-          borderRadius: BorderRadius.circular(KlpRadius.control),
+          borderRadius: BorderRadius.circular(context.klp.shape.control),
           child: SizedBox(
             height: dense ? KlpSize.segmentedDenseItem : null,
             child: Padding(
               padding: EdgeInsets.symmetric(
-                horizontal: KlpSpace.md,
-                vertical: dense ? 0 : KlpSpace.sm,
+                horizontal: context.klp.space.base,
+                vertical: dense ? 0 : context.klp.space.compact,
               ),
               child: Row(
                 mainAxisSize: MainAxisSize.min,
@@ -124,10 +124,10 @@ class _KlpSegment extends StatelessWidget {
                   if (icon != null) ...[
                     KlpIcon(
                       icon!,
-                      size: dense ? KlpSize.iconSmall : KlpSize.icon,
+                      size: dense ? context.klp.space.iconSmall : context.klp.space.icon,
                       color: selected ? tokens.text : tokens.textMuted,
                     ),
-                    const SizedBox(width: KlpSpace.sm),
+                    SizedBox(width: context.klp.space.compact),
                   ],
                   Flexible(
                     child: KlpText(

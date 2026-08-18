@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 
 import '../controls/klp_button.dart';
 import '../foundation/klp_icon.dart';
-import '../foundation/klp_metrics.dart';
 import '../theme/klp_theme.dart';
 import '../typography/klp_text.dart';
 import 'klp_feedback_tone.dart';
@@ -35,10 +34,10 @@ class KlpToast extends StatelessWidget {
       child: ConstrainedBox(
         constraints: const BoxConstraints(maxWidth: 360),
         child: Container(
-          padding: const EdgeInsets.all(KlpSpace.md),
+          padding: EdgeInsets.all(context.klp.space.base),
           decoration: BoxDecoration(
             color: tokens.surfaceInset,
-            borderRadius: BorderRadius.circular(KlpRadius.card),
+            borderRadius: BorderRadius.circular(context.klp.shape.card),
           ),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -51,12 +50,12 @@ class KlpToast extends StatelessWidget {
                     child: Center(
                       child: KlpIcon(
                         tone.icon,
-                        size: KlpSize.icon,
+                        size: context.klp.space.icon,
                         color: toneColor,
                       ),
                     ),
                   ),
-                  const SizedBox(width: KlpSpace.sm),
+                  SizedBox(width: context.klp.space.compact),
                   Expanded(
                     child: KlpText(
                       tone.label,
@@ -71,10 +70,10 @@ class KlpToast extends StatelessWidget {
                   ),
                 ],
               ),
-              const SizedBox(height: KlpSpace.md),
+              SizedBox(height: context.klp.space.base),
               KlpText(title, role: KlpTextRole.bodyStrong),
               if (message != null) ...[
-                const SizedBox(height: KlpSpace.xs),
+                SizedBox(height: context.klp.space.tight),
                 KlpText(
                   message!,
                   role: KlpTextRole.caption,
@@ -82,11 +81,11 @@ class KlpToast extends StatelessWidget {
                 ),
               ],
               if (actionLabel != null || onClose != null) ...[
-                const SizedBox(height: KlpSpace.md),
+                SizedBox(height: context.klp.space.base),
                 Wrap(
                   alignment: WrapAlignment.end,
-                  spacing: KlpSpace.xs,
-                  runSpacing: KlpSpace.xs,
+                  spacing: context.klp.space.tight,
+                  runSpacing: context.klp.space.tight,
                   children: [
                     if (onClose != null)
                       KlpButton(
@@ -126,7 +125,7 @@ class KlpToastStack extends StatelessWidget {
       children: [
         for (var index = 0; index < children.length; index++) ...[
           children[index],
-          if (index < children.length - 1) const SizedBox(height: KlpSpace.sm),
+          if (index < children.length - 1) SizedBox(height: context.klp.space.compact),
         ],
       ],
     );

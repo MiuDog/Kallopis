@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-import '../foundation/klp_metrics.dart';
 import '../theme/klp_theme.dart';
 import '../typography/klp_text.dart';
 
@@ -19,7 +18,7 @@ class KlpTabs extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: KlpSize.tab,
+      height: context.klp.space.chromeTab,
       child: SingleChildScrollView(
         scrollDirection: Axis.horizontal,
         child: Row(
@@ -30,7 +29,7 @@ class KlpTabs extends StatelessWidget {
                 selected: selected == index,
                 onPressed: () => onSelected(index),
               ),
-              if (index < tabs.length - 1) const SizedBox(width: KlpSpace.xs),
+              if (index < tabs.length - 1) SizedBox(width: context.klp.space.tight),
             ],
           ],
         ),
@@ -56,14 +55,14 @@ class _KlpTab extends StatelessWidget {
 
     return Material(
       color: selected ? tokens.surfaceMuted : tokens.surfaceInset,
-      borderRadius: BorderRadius.circular(KlpRadius.control),
+      borderRadius: BorderRadius.circular(context.klp.shape.control),
       child: InkWell(
         onTap: onPressed,
-        borderRadius: BorderRadius.circular(KlpRadius.control),
+        borderRadius: BorderRadius.circular(context.klp.shape.control),
         child: Container(
-          height: KlpSize.tab,
+          height: context.klp.space.chromeTab,
           alignment: Alignment.center,
-          padding: const EdgeInsets.symmetric(horizontal: KlpSpace.md),
+          padding: EdgeInsets.symmetric(horizontal: context.klp.space.base),
           child: KlpText(
             label,
             role: KlpTextRole.body,

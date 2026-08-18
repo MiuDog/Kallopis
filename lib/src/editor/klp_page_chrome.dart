@@ -2,7 +2,6 @@ import 'package:flutter/widgets.dart';
 
 import '../data/klp_badge.dart';
 import '../feedback/klp_feedback_tone.dart';
-import '../foundation/klp_metrics.dart';
 import '../surface/klp_surface.dart';
 import '../theme/klp_theme.dart';
 import '../typography/klp_text.dart';
@@ -27,13 +26,13 @@ class KlpPageChrome extends StatelessWidget {
 
     return KlpSurface(
       tone: KlpSurfaceTone.component,
-      padding: const EdgeInsets.all(KlpSpace.lg),
+      padding: EdgeInsets.all(context.klp.space.comfortable),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           Wrap(
-            spacing: KlpSpace.xs,
-            runSpacing: KlpSpace.xs,
+            spacing: context.klp.space.tight,
+            runSpacing: context.klp.space.tight,
             crossAxisAlignment: WrapCrossAlignment.center,
             children: [
               KlpText(
@@ -52,7 +51,7 @@ class KlpPageChrome extends StatelessWidget {
               if (collaborator != null) KlpBadge(label: collaborator!),
             ],
           ),
-          const SizedBox(height: KlpSpace.md),
+          SizedBox(height: context.klp.space.base),
           KlpText(title, role: KlpTextRole.display),
         ],
       ),
@@ -88,18 +87,18 @@ class KlpSaveStatusCard extends StatelessWidget {
     return DecoratedBox(
       decoration: BoxDecoration(
         color: tokens.component,
-        borderRadius: BorderRadius.circular(KlpRadius.card),
+        borderRadius: BorderRadius.circular(context.klp.shape.card),
       ),
       child: Padding(
-        padding: const EdgeInsets.all(KlpSpace.md),
+        padding: EdgeInsets.all(context.klp.space.base),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             KlpText('Saved $savedAt', role: KlpTextRole.code),
-            const SizedBox(height: KlpSpace.sm),
+            SizedBox(height: context.klp.space.compact),
             for (final message in messages)
               Padding(
-                padding: const EdgeInsets.symmetric(vertical: KlpSpace.xs),
+                padding: EdgeInsets.symmetric(vertical: context.klp.space.tight),
                 child: KlpText(
                   message.label,
                   role: KlpTextRole.code,
@@ -131,25 +130,25 @@ class KlpPropertySummary extends StatelessWidget {
   Widget build(BuildContext context) {
     return KlpSurface(
       tone: KlpSurfaceTone.component,
-      padding: const EdgeInsets.all(KlpSpace.md),
+      padding: EdgeInsets.all(context.klp.space.base),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Wrap(
-            spacing: KlpSpace.xs,
-            runSpacing: KlpSpace.xs,
+            spacing: context.klp.space.tight,
+            runSpacing: context.klp.space.tight,
             children: [
               for (final badge in badges)
                 KlpBadge(label: badge.label, tone: badge.tone, dot: badge.dot),
             ],
           ),
-          const SizedBox(height: KlpSpace.sm),
+          SizedBox(height: context.klp.space.compact),
           Wrap(
-            spacing: KlpSpace.xs,
-            runSpacing: KlpSpace.xs,
+            spacing: context.klp.space.tight,
+            runSpacing: context.klp.space.tight,
             children: [for (final tag in tags) KlpTag(label: tag)],
           ),
-          const SizedBox(height: KlpSpace.sm),
+          SizedBox(height: context.klp.space.compact),
           KlpText(metadata, role: KlpTextRole.caption, tone: KlpTextTone.muted),
         ],
       ),

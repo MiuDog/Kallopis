@@ -10,20 +10,20 @@ import '../surface/klp_surface.dart';
 import '../theme/klp_theme.dart';
 import '../typography/klp_text.dart';
 import 'klp_icon.dart';
-import 'klp_metrics.dart';
 
 class KlpAvatar extends StatelessWidget {
   const KlpAvatar({
     super.key,
     required this.label,
     this.image,
-    this.size = KlpSize.controlLarge,
+    this.size,
     this.semanticLabel,
   });
 
   final String label;
   final ImageProvider? image;
-  final double size;
+  /// `null` 表示沿用 theme 的大型控制項高度。
+  final double? size;
   final String? semanticLabel;
 
   @override
@@ -32,15 +32,15 @@ class KlpAvatar extends StatelessWidget {
       label: semanticLabel ?? label,
       image: image != null,
       child: Container(
-        width: size,
-        height: size,
+        width: size ?? context.klp.space.controlHeightLarge,
+        height: size ?? context.klp.space.controlHeightLarge,
         alignment: Alignment.center,
         decoration: BoxDecoration(
           color: context.klpColors.surfaceMuted,
           image: image == null
               ? null
               : DecorationImage(image: image!, fit: BoxFit.cover),
-          borderRadius: BorderRadius.circular(KlpRadius.card),
+          borderRadius: BorderRadius.circular(context.klp.shape.card),
         ),
         child: image == null
             ? KlpText(label, role: KlpTextRole.label)
@@ -79,7 +79,7 @@ class KlpAvatarGroup extends StatelessWidget {
       children: [
         for (final avatar in visible) ...[
           KlpAvatar(label: avatar.label, image: avatar.image, size: 28),
-          const SizedBox(width: KlpSpace.xs),
+          SizedBox(width: context.klp.space.tight),
         ],
         if (hiddenCount > 0) KlpAvatar(label: '+$hiddenCount', size: 28),
       ],
@@ -113,10 +113,10 @@ class KlpStatusIndicator extends StatelessWidget {
           height: 6,
           decoration: BoxDecoration(
             color: effectiveColor,
-            borderRadius: BorderRadius.circular(KlpRadius.full),
+            borderRadius: BorderRadius.circular(context.klp.shape.pill),
           ),
         ),
-        const SizedBox(width: KlpSpace.xs),
+        SizedBox(width: context.klp.space.tight),
         KlpText(label, role: KlpTextRole.label, color: effectiveColor),
       ],
     );
@@ -197,8 +197,8 @@ class KlpRichText extends StatelessWidget {
                       requestedColor: span.color,
                     ),
                     fontWeight: span.strong
-                        ? KlpTypography.semibold
-                        : KlpTypography.regular,
+                        ? context.klp.type.medium
+                        : context.klp.type.regular,
                   ),
                 ),
             ]
@@ -207,10 +207,10 @@ class KlpRichText extends StatelessWidget {
 
     final style = TextStyle(
       color: KlpTextStyles.colorFor(tokens, role: KlpTextRole.body),
-      fontSize: KlpTypography.body,
-      height: KlpTypography.bodyLineHeight,
-      fontFamily: KlpTypography.uiFamily,
-      fontFamilyFallback: KlpTypography.uiFallback,
+      fontSize: context.klp.type.body,
+      height: context.klp.type.bodyLeading,
+      fontFamily: context.klp.type.uiFamily,
+      fontFamilyFallback: context.klp.type.fallbackFor(context.klp.type.uiFamily),
     );
 
     if (selectable) return SelectableText.rich(content, style: style);
@@ -237,12 +237,12 @@ class KlpRichText extends StatelessWidget {
           behavior: HitTestBehavior.opaque,
           onTap: onOpenMention == null ? null : () => onOpenMention!(label),
           child: Container(
-            padding: const EdgeInsets.symmetric(horizontal: KlpSpace.xs),
+            padding: EdgeInsets.symmetric(horizontal: context.klp.space.tight),
             decoration: BoxDecoration(
               color: node.missing
                   ? tokens.danger.withValues(alpha: 0.16)
                   : tokens.surfaceMuted,
-              borderRadius: BorderRadius.circular(KlpRadius.sm),
+              borderRadius: BorderRadius.circular(context.klp.shape.control),
             ),
             child: KlpText(
               '@$label${node.missing ? ' (missing)' : ''}',
@@ -270,13 +270,13 @@ class KlpRichText extends StatelessWidget {
           requestedColor: node.unsafe ? tokens.danger : null,
         ),
         fontWeight: node.kind == KlpRichTextKind.strong
-            ? KlpTypography.semibold
-            : KlpTypography.regular,
+            ? context.klp.type.medium
+            : context.klp.type.regular,
         fontStyle: node.kind == KlpRichTextKind.emphasis
             ? FontStyle.italic
             : FontStyle.normal,
         fontFamily: node.kind == KlpRichTextKind.code
-            ? KlpTypography.monoFamily
+            ? context.klp.type.monoFamily
             : null,
         backgroundColor: node.kind == KlpRichTextKind.code
             ? tokens.surfaceMuted
@@ -311,16 +311,16 @@ class KlpSegmentedProgress extends StatelessWidget {
         for (var index = 0; index < segments; index++) ...[
           Expanded(
             child: Container(
-              height: KlpSpace.sm,
+              height: context.klp.space.compact,
               decoration: BoxDecoration(
                 color: index < completed
                     ? context.klpColors.info
                     : context.klpColors.surfaceMuted,
-                borderRadius: BorderRadius.circular(KlpRadius.control),
+                borderRadius: BorderRadius.circular(context.klp.shape.control),
               ),
             ),
           ),
-          if (index < segments - 1) const SizedBox(width: KlpSpace.xs),
+          if (index < segments - 1) SizedBox(width: context.klp.space.tight),
         ],
       ],
     );
@@ -332,19 +332,19 @@ class KlpBlock extends StatelessWidget {
     super.key,
     required this.child,
     this.selected = false,
-    this.padding = const EdgeInsets.all(KlpSpace.md),
+    this.padding,
   });
 
   final Widget child;
   final bool selected;
-  final EdgeInsetsGeometry padding;
+  final EdgeInsetsGeometry? padding;
 
   @override
   Widget build(BuildContext context) {
     final content = KlpSurface(
       tone: selected ? KlpSurfaceTone.muted : KlpSurfaceTone.component,
-      radius: KlpRadius.sm,
-      padding: padding,
+      radius: context.klp.shape.control,
+      padding: padding ?? EdgeInsets.all(context.klp.space.base),
       child: child,
     );
 
@@ -383,7 +383,7 @@ class KlpPopover extends StatelessWidget {
   Widget build(BuildContext context) {
     return KlpSurface(
       tone: KlpSurfaceTone.component,
-      padding: padding ?? const EdgeInsets.all(KlpSpace.sm),
+      padding: padding ?? EdgeInsets.all(context.klp.space.compact),
       child: child,
     );
   }
@@ -419,7 +419,7 @@ class KlpDragPreview extends StatelessWidget {
       opacity: 0.82,
       child: KlpSurface(
         tone: KlpSurfaceTone.component,
-        padding: const EdgeInsets.all(KlpSpace.sm),
+        padding: EdgeInsets.all(context.klp.space.compact),
         child: child,
       ),
     );
@@ -434,11 +434,11 @@ class KlpDropIndicator extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: vertical ? KlpLine.width : double.infinity,
-      height: vertical ? double.infinity : KlpLine.width,
+      width: vertical ? context.klp.shape.stroke : double.infinity,
+      height: vertical ? double.infinity : context.klp.shape.stroke,
       decoration: BoxDecoration(
         color: context.klpColors.interaction,
-        borderRadius: BorderRadius.circular(KlpRadius.full),
+        borderRadius: BorderRadius.circular(context.klp.shape.pill),
       ),
     );
   }
@@ -468,8 +468,8 @@ class KlpSortControl extends StatelessWidget {
         children: [
           KlpText(label, role: KlpTextRole.caption),
           if (icon != null) ...[
-            const SizedBox(width: KlpSpace.xs),
-            KlpIcon(icon!, size: KlpSize.iconSmall),
+            SizedBox(width: context.klp.space.tight),
+            KlpIcon(icon!, size: context.klp.space.iconSmall),
           ],
         ],
       ),
@@ -496,7 +496,7 @@ class KlpThemeToggle extends StatelessWidget {
       onTap: onChanged == null ? null : () => onChanged!(!dark),
       child: KlpSurface(
         tone: dark ? KlpSurfaceTone.muted : KlpSurfaceTone.inset,
-        padding: const EdgeInsets.all(KlpSpace.sm),
+        padding: EdgeInsets.all(context.klp.space.compact),
         child: KlpText(label, role: KlpTextRole.caption),
       ),
     );

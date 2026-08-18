@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-import '../foundation/klp_metrics.dart';
 import '../foundation/klp_palette.dart';
 import '../interaction/klp_pressable.dart';
 import '../theme/klp_theme.dart';
@@ -31,7 +30,7 @@ class KlpThemePreviewTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final tokens = context.klpColors;
-    final radius = BorderRadius.circular(KlpRadius.lg);
+    final radius = BorderRadius.circular(context.klp.shape.panel);
     final foreground = enabled ? tokens.text : tokens.textFaint;
 
     return Semantics(
@@ -57,17 +56,17 @@ class KlpThemePreviewTile extends StatelessWidget {
                     borderRadius: radius,
                   ),
                   child: Padding(
-                    padding: EdgeInsets.all(selected ? KlpSpace.xs : 0),
+                    padding: EdgeInsets.all(selected ? context.klp.space.tight : 0),
                     child: ClipRRect(
                       borderRadius: radius,
                       child: CustomPaint(
                         size: Size(width, width * 0.66),
-                        painter: _ThemePreviewPainter(mode),
+                        painter: _ThemePreviewPainter(mode, context.klp.shape.panel),
                       ),
                     ),
                   ),
                 ),
-                const SizedBox(height: KlpSpace.xs),
+                SizedBox(height: context.klp.space.tight),
                 KlpText(label, role: KlpTextRole.caption, color: foreground),
                 const SizedBox(height: 1),
                 KlpText(
@@ -85,9 +84,10 @@ class KlpThemePreviewTile extends StatelessWidget {
 }
 
 class _ThemePreviewPainter extends CustomPainter {
-  const _ThemePreviewPainter(this.mode);
+  const _ThemePreviewPainter(this.mode, this.cornerRadius);
 
   final KlpThemePreviewMode mode;
+  final double cornerRadius;
 
   @override
   void paint(Canvas canvas, Size size) {
@@ -95,7 +95,7 @@ class _ThemePreviewPainter extends CustomPainter {
     final previewRect = Offset.zero & size;
     final clip = RRect.fromRectAndRadius(
       previewRect,
-      Radius.circular(KlpRadius.lg * scale),
+      Radius.circular(cornerRadius * scale),
     );
     canvas.save();
     canvas.clipRRect(clip);

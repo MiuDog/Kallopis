@@ -2,7 +2,6 @@ import 'package:flutter/widgets.dart';
 
 import 'klp_toggle.dart';
 
-import '../foundation/klp_metrics.dart';
 import '../interaction/klp_pressable.dart';
 import '../theme/klp_theme.dart';
 import '../theme/klp_theme_scope.dart';
@@ -31,14 +30,14 @@ class KlpCompactSwitch extends StatelessWidget {
       label: label,
       child: KlpPressable(
         onPressed: enabled ? () => onChanged!(!value) : null,
-        borderRadius: BorderRadius.circular(KlpRadius.full),
+        borderRadius: BorderRadius.circular(context.klp.shape.pill),
         child: SizedBox(
           width: 36,
           height: 20,
           child: DecoratedBox(
             decoration: BoxDecoration(
               color: value ? tokens.selectionBackground : tokens.surfaceMuted,
-              borderRadius: BorderRadius.circular(KlpRadius.full),
+              borderRadius: BorderRadius.circular(context.klp.shape.pill),
             ),
             child: AnimatedAlign(
               duration: context.klp.motion.stateTransition,

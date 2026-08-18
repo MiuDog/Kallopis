@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 
 import '../controls/klp_button.dart';
 import '../foundation/klp_icon.dart';
-import '../foundation/klp_metrics.dart';
 import '../surface/klp_surface.dart';
 import '../theme/klp_theme.dart';
 import '../typography/klp_text.dart';
@@ -18,18 +17,18 @@ class KlpLoadingState extends StatelessWidget {
       liveRegion: true,
       label: label,
       child: Padding(
-        padding: const EdgeInsets.all(KlpSpace.xl),
+        padding: EdgeInsets.all(context.klp.space.loose),
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
             SizedBox.square(
-              dimension: KlpSize.iconLarge,
+              dimension: context.klp.space.iconLarge,
               child: CircularProgressIndicator(
-                strokeWidth: KlpLine.width,
+                strokeWidth: context.klp.shape.stroke,
                 color: context.klpColors.info,
               ),
             ),
-            const SizedBox(height: KlpSpace.md),
+            SizedBox(height: context.klp.space.base),
             KlpText(label, role: KlpTextRole.caption),
           ],
         ),
@@ -146,27 +145,27 @@ class _KlpViewState extends StatelessWidget {
   Widget build(BuildContext context) {
     return KlpSurface(
       tone: KlpSurfaceTone.component,
-      padding: const EdgeInsets.all(KlpSpace.xl),
+      padding: EdgeInsets.all(context.klp.space.loose),
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
           if (icon != null) ...[
-            KlpIcon(icon!, size: KlpSize.iconLarge, color: iconColor),
-            const SizedBox(height: KlpSpace.md),
+            KlpIcon(icon!, size: context.klp.space.iconLarge, color: iconColor),
+            SizedBox(height: context.klp.space.base),
           ],
           KlpText(
             title,
             role: KlpTextRole.section,
             textAlign: TextAlign.center,
           ),
-          const SizedBox(height: KlpSpace.xs),
+          SizedBox(height: context.klp.space.tight),
           KlpText(
             message,
             role: KlpTextRole.caption,
             tone: KlpTextTone.muted,
             textAlign: TextAlign.center,
           ),
-          if (action != null) ...[const SizedBox(height: KlpSpace.lg), action!],
+          if (action != null) ...[SizedBox(height: context.klp.space.comfortable), action!],
         ],
       ),
     );

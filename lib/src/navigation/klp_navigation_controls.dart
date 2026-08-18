@@ -1,7 +1,6 @@
 import 'package:flutter/widgets.dart';
 
 import '../controls/klp_button.dart';
-import '../foundation/klp_metrics.dart';
 import '../surface/klp_surface.dart';
 import '../theme/klp_theme.dart';
 import '../typography/klp_text.dart';
@@ -14,11 +13,11 @@ class KlpSidebarSectionLabel extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: KlpSpace.xl,
+      height: context.klp.space.loose,
       child: Align(
         alignment: Alignment.centerLeft,
         child: Padding(
-          padding: const EdgeInsets.only(left: KlpSpace.xs),
+          padding: EdgeInsets.only(left: context.klp.space.tight),
           child: KlpText(
             label,
             role: KlpTextRole.label,
@@ -38,8 +37,8 @@ class KlpActionGroup extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Wrap(
-      spacing: KlpSpace.xs,
-      runSpacing: KlpSpace.xs,
+      spacing: context.klp.space.tight,
+      runSpacing: context.klp.space.tight,
       children: children,
     );
   }
@@ -74,7 +73,7 @@ class KlpPagination extends StatelessWidget {
               : () => onPageChanged!(page - 1),
         ),
         Padding(
-          padding: const EdgeInsets.symmetric(horizontal: KlpSpace.sm),
+          padding: EdgeInsets.symmetric(horizontal: context.klp.space.compact),
           child: KlpText('$page / $pageCount', role: KlpTextRole.code),
         ),
         KlpButton(
@@ -114,8 +113,8 @@ class KlpViewSwitcher extends StatelessWidget {
   Widget build(BuildContext context) {
     return KlpSurface(
       tone: KlpSurfaceTone.inset,
-      radius: KlpRadius.control,
-      padding: const EdgeInsets.all(KlpSpace.xxs),
+      radius: context.klp.shape.control,
+      padding: EdgeInsets.all(context.klp.space.hairline),
       child: Row(
         mainAxisSize: MainAxisSize.min,
         children: [
@@ -127,7 +126,7 @@ class KlpViewSwitcher extends StatelessWidget {
                   ? null
                   : () => onSelected!(options[index].id),
             ),
-            if (index < options.length - 1) const SizedBox(width: KlpSpace.xxs),
+            if (index < options.length - 1) SizedBox(width: context.klp.space.hairline),
           ],
         ],
       ),
@@ -154,18 +153,18 @@ class _KlpViewChoice extends StatelessWidget {
       behavior: HitTestBehavior.opaque,
       onTap: onPressed,
       child: Container(
-        constraints: const BoxConstraints(minHeight: KlpSize.controlSmall),
-        padding: const EdgeInsets.symmetric(horizontal: KlpSpace.sm),
+        constraints: BoxConstraints(minHeight: context.klp.space.controlHeightSmall),
+        padding: EdgeInsets.symmetric(horizontal: context.klp.space.compact),
         decoration: BoxDecoration(
           color: selected ? tokens.selection : null,
-          borderRadius: BorderRadius.circular(KlpRadius.control),
+          borderRadius: BorderRadius.circular(context.klp.shape.control),
         ),
         child: Row(
           mainAxisSize: MainAxisSize.min,
           children: [
             if (option.icon != null) ...[
               option.icon!,
-              const SizedBox(width: KlpSpace.xs),
+              SizedBox(width: context.klp.space.tight),
             ],
             KlpText(
               option.label,

@@ -128,15 +128,20 @@ void main() {
   });
 
   test('舊 static token 的引用數只能下降', () {
-    // 抽取自 Planist 的元件仍大量使用 KlpSpace／KlpRadius 這類編譯期常數。它們的值
-    // 正確，但**不會隨 theme 改變**——這正是 terminal 風格下 toggle 仍是膠囊形的原因。
+    // 抽取自 Planist 時元件層有 515 處引用 KlpSpace／KlpRadius 這類編譯期常數。值正確，
+    // 但**不會隨 theme 改變**——當時 terminal 風格下 toggle 仍是膠囊形就是這個原因。
     //
-    // 一次改完 515 處風險過高，因此改用棘輪：數字只能往下。每次遷移一批元件就把
-    // baseline 調低；調不下去代表有人又加了新的靜態引用。
-    const baseline = 515;
+    // 目前剩 16 處，全部是刻意保留的：
+    //   - 面板寬度與 responsive 斷點（版面預設值，消費者以 widget 參數覆寫，不是風格）
+    //   - 選單幾何（要在 build 之前算彈出位置，取不到 context）
+    //   - 視窗透明度（屬於色彩層自身）
+    //   - dense 變體的固定高度與單一 glyph 尺寸
+    //
+    // 新增靜態引用一律視為回退。真要加，必須在同一次提交寫明它為什麼不是風格。
+    const baseline = 16;
 
     final pattern = RegExp(
-      r'\b(KlpRadius|KlpSpace|KlpSize|KlpTypography|KlpInsets|KlpMotion|'
+      r'(KlpRadius|KlpSpace|KlpSize|KlpTypography|KlpInsets|KlpMotion|'
       r'KlpLayoutGap|KlpLine|KlpElevation|KlpInteraction|KlpTransparency)\.',
     );
 
@@ -154,10 +159,10 @@ void main() {
           '而且不會有任何錯誤訊息告訴你它沒變。',
     );
 
-    // 遷移完成後忘記調低 baseline，棘輪會停在舊刻度上，之後的回退就不會被擋下。
+    // 降下去後忘記調低 baseline，棘輪會停在舊刻度上，之後的回退就不會被擋下。
     expect(
       count,
-      greaterThanOrEqualTo(baseline - 20),
+      greaterThanOrEqualTo(baseline - 4),
       reason: '引用數已降到 $count，請把 baseline 一併調低到這個數字。',
     );
   });

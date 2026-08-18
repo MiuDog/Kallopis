@@ -1,7 +1,6 @@
 import 'package:flutter/widgets.dart';
 
 import '../controls/klp_button.dart';
-import '../foundation/klp_metrics.dart';
 import '../surface/klp_surface.dart';
 import '../theme/klp_theme.dart';
 import '../typography/klp_text.dart';
@@ -33,8 +32,8 @@ class KlpFilterBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Wrap(
-      spacing: KlpSpace.xs,
-      runSpacing: KlpSpace.xs,
+      spacing: context.klp.space.tight,
+      runSpacing: context.klp.space.tight,
       crossAxisAlignment: WrapCrossAlignment.center,
       children: [
         ?leading,
@@ -69,12 +68,12 @@ class _KlpFilterChip extends StatelessWidget {
       behavior: HitTestBehavior.opaque,
       onTap: onPressed,
       child: AnimatedContainer(
-        duration: KlpMotion.styleTransition,
-        constraints: const BoxConstraints(minHeight: KlpSize.controlSmall),
-        padding: const EdgeInsets.symmetric(horizontal: KlpSpace.sm),
+        duration: context.klp.motion.styleTransition,
+        constraints: BoxConstraints(minHeight: context.klp.space.controlHeightSmall),
+        padding: EdgeInsets.symmetric(horizontal: context.klp.space.compact),
         decoration: BoxDecoration(
           color: selected ? tokens.selection : tokens.surfaceInset,
-          borderRadius: BorderRadius.circular(KlpRadius.control),
+          borderRadius: BorderRadius.circular(context.klp.shape.control),
         ),
         alignment: Alignment.center,
         child: KlpText(
@@ -122,10 +121,10 @@ class KlpSelectionToolbar extends StatelessWidget {
   Widget build(BuildContext context) {
     return KlpSurface(
       tone: KlpSurfaceTone.component,
-      padding: const EdgeInsets.all(KlpSpace.sm),
+      padding: EdgeInsets.all(context.klp.space.compact),
       child: Wrap(
-        spacing: KlpSpace.xs,
-        runSpacing: KlpSpace.xs,
+        spacing: context.klp.space.tight,
+        runSpacing: context.klp.space.tight,
         crossAxisAlignment: WrapCrossAlignment.center,
         children: [
           KlpText(countLabel, role: KlpTextRole.bodyStrong),
@@ -160,10 +159,10 @@ class KlpShortcutHint extends StatelessWidget {
   Widget build(BuildContext context) {
     return KlpSurface(
       tone: KlpSurfaceTone.muted,
-      radius: KlpRadius.control,
-      padding: const EdgeInsets.symmetric(
-        horizontal: KlpSpace.xs,
-        vertical: KlpSpace.xxs,
+      radius: context.klp.shape.control,
+      padding: EdgeInsets.symmetric(
+        horizontal: context.klp.space.tight,
+        vertical: context.klp.space.hairline,
       ),
       child: KlpText(label, role: KlpTextRole.code, tone: KlpTextTone.muted),
     );
@@ -190,14 +189,14 @@ class KlpPresenceIndicator extends StatelessWidget {
       mainAxisSize: MainAxisSize.min,
       children: [
         Container(
-          width: KlpSpace.sm,
-          height: KlpSpace.sm,
+          width: context.klp.space.compact,
+          height: context.klp.space.compact,
           decoration: BoxDecoration(
             color: color,
-            borderRadius: BorderRadius.circular(KlpRadius.full),
+            borderRadius: BorderRadius.circular(context.klp.shape.pill),
           ),
         ),
-        const SizedBox(width: KlpSpace.xs),
+        SizedBox(width: context.klp.space.tight),
         KlpText(label, role: KlpTextRole.caption, color: color),
       ],
     );

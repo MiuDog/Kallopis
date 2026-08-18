@@ -1,6 +1,5 @@
 import 'package:flutter/widgets.dart';
 
-import '../foundation/klp_metrics.dart';
 import '../theme/klp_theme.dart';
 
 class KlpStageFrame extends StatelessWidget {
@@ -20,17 +19,17 @@ class KlpStageFrame extends StatelessWidget {
     return DecoratedBox(
       decoration: BoxDecoration(
         color: context.klpColors.stageSurface,
-        borderRadius: BorderRadius.circular(KlpRadius.panel),
+        borderRadius: BorderRadius.circular(context.klp.shape.panel),
       ),
       child: ClipRRect(
-        borderRadius: BorderRadius.circular(KlpRadius.panel),
+        borderRadius: BorderRadius.circular(context.klp.shape.panel),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            SizedBox(height: KlpSize.header, child: header),
+            SizedBox(height: context.klp.space.chromeHeader, child: header),
             Expanded(child: content),
             if (status != null)
-              SizedBox(height: KlpSize.statusBar, child: status!),
+              SizedBox(height: context.klp.space.chromeStatusBar, child: status!),
           ],
         ),
       ),

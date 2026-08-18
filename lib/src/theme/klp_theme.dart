@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'klp_data_visualization_theme.dart';
+import 'klp_shape_theme.dart';
 import 'klp_visual_style.dart';
 import '../foundation/klp_accent.dart';
 import '../foundation/klp_metrics.dart';
@@ -100,8 +101,13 @@ class KlpThemeData extends ThemeExtension<KlpThemeData> {
 
   Color get selectionForeground => text;
 
-  Color get hoverSurface =>
-      Color.lerp(surfaceInset, text, KlpInteraction.hoverContrastMix)!;
+  /// hover 底色。混合比例來自 [KlpSurfaceTheme.hoverContrastMix]；此處的預設值只在
+  /// 沒有 theme 可讀時使用（例如純色彩層的單元測試）。
+  /// **不要在這裡另訂一份比例**——同一條規則兩份實作必然靜默分岔。
+  Color hoverSurfaceWith(double contrastMix) =>
+      Color.lerp(surfaceInset, text, contrastMix)!;
+
+  Color get hoverSurface => hoverSurfaceWith(0.08);
 
   KlpThemeData withWindowTransparency(Brightness brightness) {
     final paneOpacity = brightness == Brightness.light
@@ -294,17 +300,22 @@ enum KlpThemeVariant { light, dark, ultraDark, transparent }
 enum KlpFieldFillState { rest, hovered, focused, selected, disabled, error }
 
 abstract final class KlpFieldStyle {
-  static OutlineInputBorder get border => OutlineInputBorder(
-    borderRadius: BorderRadius.circular(KlpRadius.control),
+  /// 需要 shape token，因此不能是無參數的 getter——欄位圓角屬於風格。
+  static OutlineInputBorder borderFor(KlpShapeTheme shape) => OutlineInputBorder(
+    borderRadius: BorderRadius.circular(shape.control),
     borderSide: BorderSide.none,
   );
 
-  static Color colorFor(KlpThemeData tokens, KlpFieldFillState state) {
+  static Color colorFor(
+    KlpThemeData tokens,
+    KlpFieldFillState state, {
+    double hoverContrastMix = 0.08,
+  }) {
+    final hover = tokens.hoverSurfaceWith(hoverContrastMix);
     return switch (state) {
       KlpFieldFillState.rest => tokens.surfaceInset,
-      KlpFieldFillState.hovered => tokens.hoverSurface,
-      KlpFieldFillState.focused ||
-      KlpFieldFillState.selected => tokens.hoverSurface,
+      KlpFieldFillState.hovered => hover,
+      KlpFieldFillState.focused || KlpFieldFillState.selected => hover,
       KlpFieldFillState.disabled => tokens.surfaceMuted,
       // 錯誤底色由 danger 推導，而不是借用其他角色的顏色：借用會在調整 danger 時
       // 靜默失去同步。
@@ -419,28 +430,28 @@ ThemeData _buildKlpThemeData(
     titleSmall: baseTextTheme.titleSmall?.copyWith(color: tokens.text),
     bodyLarge: baseTextTheme.bodyLarge?.copyWith(
       color: tokens.textMuted,
-      fontSize: KlpTypography.body,
+      fontSize: style.typography.body,
     ),
     bodyMedium: baseTextTheme.bodyMedium?.copyWith(
       color: tokens.textMuted,
-      fontSize: KlpTypography.body,
+      fontSize: style.typography.body,
     ),
     bodySmall: baseTextTheme.bodySmall?.copyWith(
       color: tokens.textMuted,
-      fontSize: KlpTypography.small,
+      fontSize: style.typography.caption,
     ),
     labelLarge: baseTextTheme.labelLarge?.copyWith(
       color: tokens.textMuted,
-      fontSize: KlpTypography.body,
+      fontSize: style.typography.body,
     ),
     labelMedium: baseTextTheme.labelMedium?.copyWith(
       color: tokens.textMuted,
-      fontSize: KlpTypography.small,
+      fontSize: style.typography.caption,
     ),
     labelSmall: baseTextTheme.labelSmall?.copyWith(
       color: tokens.textMuted,
-      fontSize: KlpTypography.small,
-      fontWeight: KlpTypography.regular,
+      fontSize: style.typography.caption,
+      fontWeight: style.typography.regular,
     ),
   );
 
@@ -452,7 +463,7 @@ ThemeData _buildKlpThemeData(
     highlightColor: KlpPalette.transparent,
     scaffoldBackgroundColor: tokens.app,
     fontFamily: style.typography.uiFamily,
-    fontFamilyFallback: KlpTypography.uiFallback,
+    fontFamilyFallback: style.typography.fallbackFor(style.typography.uiFamily),
     textTheme: textTheme,
     colorScheme: ColorScheme.fromSeed(
       seedColor: tokens.interaction,
@@ -460,12 +471,12 @@ ThemeData _buildKlpThemeData(
       surface: tokens.surface,
     ),
     inputDecorationTheme: InputDecorationTheme(
-      border: KlpFieldStyle.border,
-      enabledBorder: KlpFieldStyle.border,
-      focusedBorder: KlpFieldStyle.border,
-      disabledBorder: KlpFieldStyle.border,
-      errorBorder: KlpFieldStyle.border,
-      focusedErrorBorder: KlpFieldStyle.border,
+      border: KlpFieldStyle.borderFor(style.shape),
+      enabledBorder: KlpFieldStyle.borderFor(style.shape),
+      focusedBorder: KlpFieldStyle.borderFor(style.shape),
+      disabledBorder: KlpFieldStyle.borderFor(style.shape),
+      errorBorder: KlpFieldStyle.borderFor(style.shape),
+      focusedErrorBorder: KlpFieldStyle.borderFor(style.shape),
       hoverColor: KlpFieldStyle.colorFor(tokens, KlpFieldFillState.hovered),
     ),
     scrollbarTheme: ScrollbarThemeData(
@@ -475,25 +486,25 @@ ThemeData _buildKlpThemeData(
       thickness: const WidgetStatePropertyAll(
         KlpControlMetrics.scrollbarThickness,
       ),
-      radius: const Radius.circular(KlpRadius.full),
+      radius: Radius.circular(style.shape.pill),
       trackVisibility: const WidgetStatePropertyAll(false),
     ),
     tooltipTheme: TooltipThemeData(
       decoration: BoxDecoration(
         color: tokens.overlay,
-        borderRadius: BorderRadius.circular(KlpRadius.control),
+        borderRadius: BorderRadius.circular(style.shape.control),
       ),
       textStyle: TextStyle(
         color: tokens.textMuted,
-        fontSize: KlpTypography.small,
+        fontSize: style.typography.caption,
         fontFamily: style.typography.uiFamily,
         fontFamilyFallback: style.typography.fallbackFor(
           style.typography.uiFamily,
         ),
       ),
-      padding: const EdgeInsets.symmetric(
-        horizontal: KlpSpace.sm,
-        vertical: KlpSpace.xs,
+      padding: EdgeInsets.symmetric(
+        horizontal: style.spacing.compact,
+        vertical: style.spacing.tight,
       ),
       waitDuration: style.motion.tooltipDelay,
       showDuration: style.motion.toastDwell * 8,

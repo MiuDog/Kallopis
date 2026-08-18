@@ -1,6 +1,5 @@
 import 'package:flutter/widgets.dart';
 
-import '../foundation/klp_metrics.dart';
 import '../theme/klp_theme.dart';
 
 class KlpPanelFrame extends StatelessWidget {
@@ -9,16 +8,17 @@ class KlpPanelFrame extends StatelessWidget {
     required this.header,
     required this.content,
     this.footer,
-    this.headerHeight = KlpSize.header,
-    this.footerHeight = KlpSize.statusBar,
+    this.headerHeight,
+    this.footerHeight,
     this.background,
   });
 
   final Widget header;
   final Widget content;
   final Widget? footer;
-  final double headerHeight;
-  final double footerHeight;
+  /// `null` 表示沿用 theme 的外殼高度。
+  final double? headerHeight;
+  final double? footerHeight;
   final Color? background;
 
   @override
@@ -28,16 +28,22 @@ class KlpPanelFrame extends StatelessWidget {
     return DecoratedBox(
       decoration: BoxDecoration(
         color: background ?? tokens.surface,
-        borderRadius: BorderRadius.circular(KlpRadius.panel),
+        borderRadius: BorderRadius.circular(context.klp.shape.panel),
       ),
       child: ClipRRect(
-        borderRadius: BorderRadius.circular(KlpRadius.panel - KlpLine.width),
+        borderRadius: BorderRadius.circular(context.klp.shape.panel - context.klp.shape.stroke),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            SizedBox(height: headerHeight, child: header),
+            SizedBox(
+              height: headerHeight ?? context.klp.space.chromeHeader,
+              child: header,
+            ),
             Expanded(child: content),
-            if (footer != null) SizedBox(height: footerHeight, child: footer!),
+            if (footer != null) SizedBox(
+                height: footerHeight ?? context.klp.space.chromeStatusBar,
+                child: footer!,
+              ),
           ],
         ),
       ),

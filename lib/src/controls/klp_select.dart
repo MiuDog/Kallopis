@@ -44,25 +44,25 @@ class _KlpSelectState extends State<KlpSelect> {
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
         KlpText(widget.label, role: KlpTextRole.caption),
-        const SizedBox(height: KlpSpace.xs),
+        SizedBox(height: context.klp.space.tight),
         KlpStrokeFrame(
           role: KlpStrokeRole.field,
           state: strokeState,
-          radius: KlpRadius.control,
+          radius: context.klp.shape.control,
           child: Material(
             color: Colors.transparent,
             shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(KlpRadius.control),
+              borderRadius: BorderRadius.circular(context.klp.shape.control),
             ),
             child: InkWell(
               onTap: widget.enabled ? widget.onPressed : null,
               onHover: (value) => setState(() => _hovered = value),
               onFocusChange: (value) => setState(() => _focused = value),
-              borderRadius: BorderRadius.circular(KlpRadius.control),
+              borderRadius: BorderRadius.circular(context.klp.shape.control),
               child: SizedBox(
                 height: KlpFormMetrics.fieldHeight,
                 child: Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: KlpSpace.md),
+                  padding: EdgeInsets.symmetric(horizontal: context.klp.space.base),
                   child: Row(
                     children: [
                       Expanded(
@@ -75,7 +75,7 @@ class _KlpSelectState extends State<KlpSelect> {
                       ),
                       KlpIcon(
                         KlpIcons.chevronDown,
-                        size: KlpSize.iconSmall,
+                        size: context.klp.space.iconSmall,
                         color: widget.enabled
                             ? tokens.textMuted
                             : tokens.textFaint,

@@ -1,7 +1,7 @@
 import 'package:flutter/widgets.dart';
 
-import '../foundation/klp_metrics.dart';
 import '../typography/klp_text.dart';
+import '../theme/klp_theme.dart';
 
 class KlpSection extends StatelessWidget {
   const KlpSection({
@@ -21,8 +21,8 @@ class KlpSection extends StatelessWidget {
   Widget build(BuildContext context) {
     final heading = Wrap(
       crossAxisAlignment: WrapCrossAlignment.center,
-      spacing: KlpSpace.md,
-      runSpacing: KlpSpace.xs,
+      spacing: context.klp.space.base,
+      runSpacing: context.klp.space.tight,
       children: [
         KlpText(title, role: KlpTextRole.section),
         if (label != null)
@@ -38,12 +38,12 @@ class KlpSection extends StatelessWidget {
           children: [
             Expanded(child: heading),
             if (trailing != null) ...[
-              const SizedBox(width: KlpSpace.md),
+              SizedBox(width: context.klp.space.base),
               trailing!,
             ],
           ],
         ),
-        const SizedBox(height: KlpSpace.lg),
+        SizedBox(height: context.klp.space.comfortable),
         child,
       ],
     );

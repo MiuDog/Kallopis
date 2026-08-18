@@ -1,7 +1,7 @@
 import 'package:flutter/widgets.dart';
 
-import '../foundation/klp_metrics.dart';
 import '../typography/klp_text.dart';
+import '../theme/klp_theme.dart';
 
 class KlpPanelHeader extends StatelessWidget {
   const KlpPanelHeader({
@@ -20,12 +20,12 @@ class KlpPanelHeader extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: KlpSpace.md),
+      padding: EdgeInsets.symmetric(horizontal: context.klp.space.base),
       child: Row(
         children: [
           if (leading != null) ...[
             leading!,
-            const SizedBox(width: KlpSpace.sm),
+            SizedBox(width: context.klp.space.compact),
           ],
           Expanded(
             child: Column(
@@ -50,7 +50,7 @@ class KlpPanelHeader extends StatelessWidget {
             ),
           ),
           for (final action in actions) ...[
-            const SizedBox(width: KlpSpace.xs),
+            SizedBox(width: context.klp.space.tight),
             action,
           ],
         ],

@@ -1,7 +1,7 @@
 import 'package:flutter/widgets.dart';
 
-import '../foundation/klp_metrics.dart';
 import '../typography/klp_text.dart';
+import '../theme/klp_theme.dart';
 
 class KlpBreadcrumb extends StatelessWidget {
   const KlpBreadcrumb({
@@ -16,7 +16,7 @@ class KlpBreadcrumb extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Wrap(
-      spacing: KlpSpace.sm,
+      spacing: context.klp.space.compact,
       crossAxisAlignment: WrapCrossAlignment.center,
       children: [
         for (var index = 0; index < segments.length; index++) ...[

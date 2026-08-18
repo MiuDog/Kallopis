@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-import '../foundation/klp_metrics.dart';
 import '../theme/klp_theme.dart';
 import '../typography/klp_text.dart';
 import '../foundation/klp_palette.dart';
@@ -40,8 +39,11 @@ class KlpSlider extends StatelessWidget {
             inactiveTrackColor: tokens.surfaceMuted,
             thumbColor: tokens.surfaceInset,
             overlayColor: KlpPalette.transparent,
-            trackHeight: KlpLine.width,
-            thumbShape: _KlpSliderThumb(tokens.borderStrong),
+            trackHeight: context.klp.shape.stroke,
+            thumbShape: _KlpSliderThumb(
+              tokens.borderStrong,
+              context.klp.shape.stroke,
+            ),
           ),
           child: Slider(value: value, onChanged: onChanged),
         ),
@@ -51,9 +53,10 @@ class KlpSlider extends StatelessWidget {
 }
 
 class _KlpSliderThumb extends SliderComponentShape {
-  const _KlpSliderThumb(this.color);
+  const _KlpSliderThumb(this.color, this.strokeWidth);
 
   final Color color;
+  final double strokeWidth;
 
   @override
   Size getPreferredSize(bool isEnabled, bool isDiscrete) {
@@ -79,7 +82,7 @@ class _KlpSliderThumb extends SliderComponentShape {
     final outline = Paint()
       ..color = color
       ..style = PaintingStyle.stroke
-      ..strokeWidth = KlpLine.width;
+      ..strokeWidth = strokeWidth;
 
     context.canvas.drawCircle(center, 7, fill);
     context.canvas.drawCircle(center, 7, outline);

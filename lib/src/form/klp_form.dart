@@ -1,7 +1,6 @@
 import 'package:flutter/widgets.dart';
 
 import '../controls/klp_button.dart';
-import '../foundation/klp_metrics.dart';
 import '../surface/klp_surface.dart';
 import '../typography/klp_text.dart';
 import '../theme/klp_theme_scope.dart';
@@ -38,13 +37,13 @@ class KlpForm extends StatelessWidget {
       children: [
         if (errorSummary != null) ...[
           errorSummary!,
-          const SizedBox(height: KlpSpace.md),
+          SizedBox(height: context.klp.space.base),
         ],
         for (var index = 0; index < sections.length; index++) ...[
           sections[index],
-          if (index < sections.length - 1) const SizedBox(height: KlpSpace.lg),
+          if (index < sections.length - 1) SizedBox(height: context.klp.space.comfortable),
         ],
-        if (actions != null) ...[const SizedBox(height: KlpSpace.lg), actions!],
+        if (actions != null) ...[SizedBox(height: context.klp.space.comfortable), actions!],
       ],
     );
   }
@@ -70,7 +69,7 @@ class KlpFormSection extends StatelessWidget {
   Widget build(BuildContext context) {
     return KlpSurface(
       tone: KlpSurfaceTone.component,
-      padding: const EdgeInsets.all(KlpSpace.lg),
+      padding: EdgeInsets.all(context.klp.space.comfortable),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
@@ -80,7 +79,7 @@ class KlpFormSection extends StatelessWidget {
             child: KlpText(title, role: KlpTextRole.section),
           ),
           if (description != null) ...[
-            const SizedBox(height: KlpSpace.xs),
+            SizedBox(height: context.klp.space.tight),
             KlpText(
               description!,
               role: KlpTextRole.caption,
@@ -89,7 +88,7 @@ class KlpFormSection extends StatelessWidget {
           ],
           if (!collapsed)
             for (final child in children) ...[
-              const SizedBox(height: KlpSpace.md),
+              SizedBox(height: context.klp.space.base),
               child,
             ],
         ],
@@ -131,13 +130,13 @@ class KlpField extends StatelessWidget {
           ],
         ),
         if (description != null) ...[
-          const SizedBox(height: KlpSpace.xs),
+          SizedBox(height: context.klp.space.tight),
           KlpFieldDescription(description: description!),
         ],
-        const SizedBox(height: KlpSpace.xs),
+        SizedBox(height: context.klp.space.tight),
         child,
         if (error != null) ...[
-          const SizedBox(height: KlpSpace.xs),
+          SizedBox(height: context.klp.space.tight),
           KlpFieldError(error: error!),
         ],
       ],
@@ -205,7 +204,7 @@ class KlpFormErrorSummary extends StatelessWidget {
   Widget build(BuildContext context) {
     return KlpSurface(
       tone: KlpSurfaceTone.component,
-      padding: const EdgeInsets.all(KlpSpace.md),
+      padding: EdgeInsets.all(context.klp.space.base),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
@@ -214,13 +213,13 @@ class KlpFormErrorSummary extends StatelessWidget {
             role: KlpTextRole.bodyStrong,
             tone: KlpTextTone.danger,
           ),
-          const SizedBox(height: KlpSpace.xs),
+          SizedBox(height: context.klp.space.tight),
           for (final error in errors.entries)
             GestureDetector(
               behavior: HitTestBehavior.opaque,
               onTap: onSelected == null ? null : () => onSelected!(error.key),
               child: Padding(
-                padding: const EdgeInsets.symmetric(vertical: KlpSpace.xs),
+                padding: EdgeInsets.symmetric(vertical: context.klp.space.tight),
                 child: KlpText(
                   error.value,
                   role: KlpTextRole.caption,
@@ -258,8 +257,8 @@ class KlpFormActions extends StatelessWidget {
   Widget build(BuildContext context) {
     return Wrap(
       alignment: WrapAlignment.end,
-      spacing: KlpSpace.sm,
-      runSpacing: KlpSpace.sm,
+      spacing: context.klp.space.compact,
+      runSpacing: context.klp.space.compact,
       children: [
         if (resetLabel != null)
           KlpButton(
