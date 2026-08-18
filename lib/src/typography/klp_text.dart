@@ -119,12 +119,15 @@ abstract final class KlpTextStyles {
       fontWeight: type.regular,
       tier: KlpTextColorTier.standard,
     ),
+    // label 走等寬：徽章（SUCCESS／DANGER）與小標題（TEXT-SAFE STATUS）都是這個角色，
+    // 它們是**標記**不是句子——等寬讓字寬一致，一整排徽章的視覺節奏才會齊。
     KlpTextRole.label: KlpTextStyleDefinition(
       fontSize: type.caption,
       lineHeight: type.labelLeading,
       fontWeight: type.regular,
       letterSpacing: type.labelTracking,
       tier: KlpTextColorTier.standard,
+      family: KlpFontRole.mono,
     ),
     KlpTextRole.code: KlpTextStyleDefinition(
       fontSize: type.caption,

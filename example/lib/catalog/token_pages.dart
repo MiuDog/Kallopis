@@ -30,7 +30,8 @@ final brandPage = CatalogPageData(
               Swatch(
                 role: 'onInteraction',
                 color: klp.color.onInteraction,
-                note: '自動取對比較高的前景',
+                offRamp: '對比前景',
+                note: '在 interaction 色上自動取對比較高的一端',
               ),
             ],
           ),
@@ -44,6 +45,7 @@ final brandPage = CatalogPageData(
               for (final accent in KlpAccent.values)
                 Swatch(
                   role: accent.name,
+                  offRamp: '彩色',
                   color: accent.resolve(
                     klp.color.app.computeLuminance() > 0.5
                         ? Brightness.light
@@ -125,9 +127,22 @@ final neutralsPage = CatalogPageData(
             children: [
               Swatch(role: 'divider', color: klp.color.divider),
               Swatch(role: 'guide', color: klp.color.guide, note: '虛線／佔位'),
-              Swatch(role: 'border', color: klp.color.border, note: '預設透明'),
-              Swatch(role: 'borderStrong', color: klp.color.borderStrong),
-              Swatch(role: 'modalScrim', color: klp.color.modalScrim),
+              Swatch(
+                role: 'border',
+                offRamp: '透明',
+                color: klp.color.border,
+                note: '結構表面靠 tone 分層，不靠描邊',
+              ),
+              Swatch(
+                role: 'borderStrong',
+                offRamp: '透明',
+                color: klp.color.borderStrong,
+              ),
+              Swatch(
+                role: 'modalScrim',
+                offRamp: 'ink950 @ 60%',
+                color: klp.color.modalScrim,
+              ),
             ],
           ),
         ),
@@ -152,11 +167,15 @@ final semanticStatusPage = CatalogPageData(
           child: CatalogGrid(
             minItemWidth: 160,
             children: [
-              Swatch(role: 'success', color: klp.color.success),
-              Swatch(role: 'warning', color: klp.color.warning),
-              Swatch(role: 'danger', color: klp.color.danger),
-              Swatch(role: 'info', color: klp.color.info),
-              Swatch(role: 'onStatus', color: klp.color.onStatus),
+              Swatch(role: 'success', offRamp: '語意', color: klp.color.success),
+              Swatch(role: 'warning', offRamp: '語意', color: klp.color.warning),
+              Swatch(role: 'danger', offRamp: '語意', color: klp.color.danger),
+              Swatch(role: 'info', offRamp: '語意', color: klp.color.info),
+              Swatch(
+                role: 'onStatus',
+                offRamp: '對比前景',
+                color: klp.color.onStatus,
+              ),
             ],
           ),
         ),

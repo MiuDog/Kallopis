@@ -128,8 +128,40 @@ inventory 過期會失敗，registry 漏掉任何一個匯出的 widget 也會�
 - 每個中性欄位都必須落在梯上。梯外的欄位在調整色梯時不會跟著變。
 - **元件不得直接取用具體顏色**，一律經 `context.klp`。唯一的例外是
   `KlpPalette.transparent`（「沒有顏色」不是顏色）。
-- **目錄不得印出色碼。** 色票顯示的是它落在梯上的哪一階，並且是**反查**出來的
-  ——不在梯上的欄位會直接顯示「梯外」。
+- **目錄不得印出色碼。** 色票顯示的是它落在梯上的哪一階，並且是**反查**出來的。
+  本來就不該在梯上的角色（彩色強調色、語意色、對比前景）各自標明是什麼；
+  只有**應該在梯上卻不在**的欄位才顯示「梯外」。
+
+## 字體
+
+| 角色 | 家族 | 用途 |
+|---|---|---|
+| `label`、`code`、`terminal` | IBM Plex Mono | 徽章、小標題、識別碼、路徑、log |
+| 其餘 | IBM Plex Sans TC | 一般 UI 文字與長文 |
+
+`label` 走等寬是刻意的：徽章與小標題是**標記**不是句子，等寬讓字寬一致，
+一整排徽章的視覺節奏才會齊。
+
+兩者的 fallback 鏈相同，依序是 `Inter` → `PingFang TC`（macOS／iOS）→
+`Microsoft JhengHei`（Windows）→ `Noto Sans CJK TC`（Android）→ `Noto Sans TC`。
+清單同時涵蓋三個平台——Flutter 會依序找第一個有該字符的字體，因此不需要在程式裡
+分支判斷作業系統。
+
+隨套件打包的 IBM Plex 排在最前面，因為它保證每台機器都渲染成同一個樣子。
+
+## 深淺切換不做過場
+
+Kallopis 的每一層 token 在主題變更時都**原子性翻轉**，不內插——各層若各自內插，
+過場中途會出現「某幾層換了、某幾層還沒」的混合狀態，看起來就像某些元件沒有跟著變。
+
+消費者還需要關掉 `MaterialApp` 的過場，否則動畫期間仍有半數幀停在舊值上：
+
+```dart
+MaterialApp(
+  theme: buildKlpTheme(brightness),
+  themeAnimationDuration: Duration.zero,
+)
+```
 
 ## 閘門
 

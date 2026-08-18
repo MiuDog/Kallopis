@@ -133,33 +133,17 @@ class KlpComponentTheme extends ThemeExtension<KlpComponentTheme> {
     );
   }
 
+  /// **不做內插。**
+  ///
+  /// `MaterialApp` 在 theme 變更時會跑一段過場並沿路呼叫 `lerp`。各層若各自內插，
+  /// 中途會出現「某幾層已經換了、某幾層還沒」的混合狀態——那正是切換深淺色時看起來
+  /// 「有些元件沒有跟著變」的原因：它們不是沒變，是停在中間值上。
+  ///
+  /// 因此整個 token 疊層一律在中點原子性地翻轉，任何時刻都只會是完整的其中一套。
   @override
   KlpComponentTheme lerp(covariant KlpComponentTheme? other, double t) {
     if (other == null) return this;
-    double? l(double? a, double? b) {
-      if (a == null && b == null) return null;
-      if (a == null || b == null) return t < 0.5 ? a : b;
-      return a + (b - a) * t;
-    }
-
-    return KlpComponentTheme(
-      buttonRadius: l(buttonRadius, other.buttonRadius),
-      buttonPaddingX: l(buttonPaddingX, other.buttonPaddingX),
-      buttonPaddingY: l(buttonPaddingY, other.buttonPaddingY),
-      buttonHeight: l(buttonHeight, other.buttonHeight),
-      buttonBorderWidth: l(buttonBorderWidth, other.buttonBorderWidth),
-      fieldRadius: l(fieldRadius, other.fieldRadius),
-      fieldPaddingX: l(fieldPaddingX, other.fieldPaddingX),
-      fieldHeight: l(fieldHeight, other.fieldHeight),
-      fieldBorderWidth: l(fieldBorderWidth, other.fieldBorderWidth),
-      menuRadius: l(menuRadius, other.menuRadius),
-      menuPadding: l(menuPadding, other.menuPadding),
-      menuItemHeight: l(menuItemHeight, other.menuItemHeight),
-      cardRadius: l(cardRadius, other.cardRadius),
-      cardPadding: l(cardPadding, other.cardPadding),
-      badgeRadius: l(badgeRadius, other.badgeRadius),
-      badgePaddingX: l(badgePaddingX, other.badgePaddingX),
-    );
+    return t < 0.5 ? this : other;
   }
 
   @override

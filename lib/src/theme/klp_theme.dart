@@ -266,36 +266,17 @@ class KlpThemeData extends ThemeExtension<KlpThemeData> {
     );
   }
 
+  /// **不做內插。**
+  ///
+  /// `MaterialApp` 在 theme 變更時會跑一段過場並沿路呼叫 `lerp`。各層若各自內插，
+  /// 中途會出現「某幾層已經換了、某幾層還沒」的混合狀態——那正是切換深淺色時看起來
+  /// 「有些元件沒有跟著變」的原因：它們不是沒變，是停在中間值上。
+  ///
+  /// 因此整個 token 疊層一律在中點原子性地翻轉，任何時刻都只會是完整的其中一套。
   @override
   KlpThemeData lerp(covariant KlpThemeData? other, double t) {
     if (other == null) return this;
-
-    return KlpThemeData(
-      app: Color.lerp(app, other.app, t)!,
-      surface: Color.lerp(surface, other.surface, t)!,
-      surfaceInset: Color.lerp(surfaceInset, other.surfaceInset, t)!,
-      surfaceMuted: Color.lerp(surfaceMuted, other.surfaceMuted, t)!,
-      component: Color.lerp(component, other.component, t)!,
-      stageSurface: Color.lerp(stageSurface, other.stageSurface, t)!,
-      overlay: Color.lerp(overlay, other.overlay, t)!,
-      surfaceRaised: Color.lerp(surfaceRaised, other.surfaceRaised, t)!,
-      modalScrim: Color.lerp(modalScrim, other.modalScrim, t)!,
-      guide: Color.lerp(guide, other.guide, t)!,
-      divider: Color.lerp(divider, other.divider, t)!,
-      text: Color.lerp(text, other.text, t)!,
-      textMuted: Color.lerp(textMuted, other.textMuted, t)!,
-      textFaint: Color.lerp(textFaint, other.textFaint, t)!,
-      border: Color.lerp(border, other.border, t)!,
-      borderStrong: Color.lerp(borderStrong, other.borderStrong, t)!,
-      accent: Color.lerp(accent, other.accent, t)!,
-      accentSoft: Color.lerp(accentSoft, other.accentSoft, t)!,
-      interaction: Color.lerp(interaction, other.interaction, t)!,
-      interactionSoft: Color.lerp(interactionSoft, other.interactionSoft, t)!,
-      success: Color.lerp(success, other.success, t)!,
-      warning: Color.lerp(warning, other.warning, t)!,
-      danger: Color.lerp(danger, other.danger, t)!,
-      info: Color.lerp(info, other.info, t)!,
-    );
+    return t < 0.5 ? this : other;
   }
 }
 

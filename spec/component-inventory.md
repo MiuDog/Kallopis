@@ -116,20 +116,20 @@ graph TD
 
 | 型別 | 行數 | 組成 |
 |---|---|---|
-| `KlpComponentTheme` | 170 | （葉節點） |
-| `KlpDataVisualizationTheme` | 216 | （葉節點） |
+| `KlpComponentTheme` | 154 | （葉節點） |
+| `KlpDataVisualizationTheme` | 195 | （葉節點） |
 | `KlpFieldFillState` | 2 | （葉節點） |
 | `KlpFieldStyle` | 241 | （葉節點） |
 | `KlpMotionTheme` | 127 | （葉節點） |
-| `KlpShapeTheme` | 132 | （葉節點） |
-| `KlpSpacingTheme` | 241 | （葉節點） |
+| `KlpShapeTheme` | 128 | （葉節點） |
+| `KlpSpacingTheme` | 222 | （葉節點） |
 | `KlpSurfaceSeparation` | 10 | （葉節點） |
-| `KlpSurfaceTheme` | 107 | （葉節點） |
+| `KlpSurfaceTheme` | 105 | （葉節點） |
 | `KlpTheme` | 95 | `KlpVisualStyle` |
 | `KlpThemeContrast` | 25 | （葉節點） |
-| `KlpThemeData` | 263 | （葉節點） |
+| `KlpThemeData` | 244 | （葉節點） |
 | `KlpThemeVariant` | 2 | （葉節點） |
-| `KlpTypographyTheme` | 224 | （葉節點） |
+| `KlpTypographyTheme` | 229 | （葉節點） |
 | `KlpVisualStyle` | 88 | （葉節點） |
 
 ```mermaid
@@ -232,7 +232,7 @@ graph LR
 | `KlpTextColorTier` | 4 | （葉節點） |
 | `KlpTextRole` | 13 | （葉節點） |
 | `KlpTextStyleDefinition` | 37 | （葉節點） |
-| `KlpTextStyles` | 141 | `KlpTextStyleDefinition` |
+| `KlpTextStyles` | 144 | `KlpTextStyleDefinition` |
 | `KlpTextTone` | 2 | （葉節點） |
 
 ```mermaid

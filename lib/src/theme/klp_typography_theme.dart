@@ -85,12 +85,31 @@ class KlpTypographyTheme extends ThemeExtension<KlpTypographyTheme> {
   static const String _sans = 'packages/kallopis/IBM Plex Sans TC';
   static const String _mono = 'packages/kallopis/IBM Plex Mono';
 
+  /// 中文與缺字的接手順序。
+  ///
+  /// 隨套件打包的 IBM Plex 排在最前面，因為它保證每台機器都渲染成同一個樣子；
+  /// 之後才輪到系統字體。清單同時涵蓋三個平台——Flutter 會依序找第一個有該字符的
+  /// 字體，找不到的平台會直接跳過，因此不需要在程式裡分支判斷作業系統。
+  ///
+  /// Inter 排在中文字體之前：它只有拉丁字符，接不到的中文會繼續往下找。
+  static const List<String> _fallback = [
+    'Inter',
+    // macOS / iOS
+    'PingFang TC',
+    // Windows
+    'Microsoft JhengHei',
+    // Android
+    'Noto Sans CJK TC',
+    'Noto Sans TC',
+  ];
+
   /// 現代風：比例字體為主，等寬只用於程式碼與路徑。
   static const KlpTypographyTheme proportional = KlpTypographyTheme(
     sansFamily: _sans,
-    sansFallback: ['Noto Sans TC'],
+    sansFallback: _fallback,
     monoFamily: _mono,
-    monoFallback: ['Noto Sans TC', _sans],
+    // 等寬沒有打包中文字重，中文字符一律交給系統的黑體接手。
+    monoFallback: _fallback,
     uiFamily: _sans,
     bodyFamily: _sans,
     codeFamily: _mono,
@@ -180,31 +199,17 @@ class KlpTypographyTheme extends ThemeExtension<KlpTypographyTheme> {
     );
   }
 
+  /// **不做內插。**
+  ///
+  /// `MaterialApp` 在 theme 變更時會跑一段過場並沿路呼叫 `lerp`。各層若各自內插，
+  /// 中途會出現「某幾層已經換了、某幾層還沒」的混合狀態——那正是切換深淺色時看起來
+  /// 「有些元件沒有跟著變」的原因：它們不是沒變，是停在中間值上。
+  ///
+  /// 因此整個 token 疊層一律在中點原子性地翻轉，任何時刻都只會是完整的其中一套。
   @override
   KlpTypographyTheme lerp(covariant KlpTypographyTheme? other, double t) {
     if (other == null) return this;
-    // 字體家族沒有中間值，在中點切換；字級可以內插，讓密度切換是連續的。
-    final families = t < 0.5 ? this : other;
-    double l(double a, double b) => a + (b - a) * t;
-    return families.copyWith(
-      caption: l(caption, other.caption),
-      body: l(body, other.body),
-      label: l(label, other.label),
-      section: l(section, other.section),
-      headingSmall: l(headingSmall, other.headingSmall),
-      heading: l(heading, other.heading),
-      title: l(title, other.title),
-      display: l(display, other.display),
-      bodyLeading: l(bodyLeading, other.bodyLeading),
-      headingLeading: l(headingLeading, other.headingLeading),
-      displayLeading: l(displayLeading, other.displayLeading),
-      codeLeading: l(codeLeading, other.codeLeading),
-      readingLeading: l(readingLeading, other.readingLeading),
-      captionLeading: l(captionLeading, other.captionLeading),
-      labelLeading: l(labelLeading, other.labelLeading),
-      labelTracking: l(labelTracking, other.labelTracking),
-      displayTracking: l(displayTracking, other.displayTracking),
-    );
+    return t < 0.5 ? this : other;
   }
 
   @override

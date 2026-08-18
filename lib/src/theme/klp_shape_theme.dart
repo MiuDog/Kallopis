@@ -91,21 +91,17 @@ class KlpShapeTheme extends ThemeExtension<KlpShapeTheme> {
     );
   }
 
+  /// **不做內插。**
+  ///
+  /// `MaterialApp` 在 theme 變更時會跑一段過場並沿路呼叫 `lerp`。各層若各自內插，
+  /// 中途會出現「某幾層已經換了、某幾層還沒」的混合狀態——那正是切換深淺色時看起來
+  /// 「有些元件沒有跟著變」的原因：它們不是沒變，是停在中間值上。
+  ///
+  /// 因此整個 token 疊層一律在中點原子性地翻轉，任何時刻都只會是完整的其中一套。
   @override
   KlpShapeTheme lerp(covariant KlpShapeTheme? other, double t) {
     if (other == null) return this;
-    return KlpShapeTheme(
-      none: lerpDouble(none, other.none, t),
-      control: lerpDouble(control, other.control, t),
-      card: lerpDouble(card, other.card, t),
-      panel: lerpDouble(panel, other.panel, t),
-      pill: lerpDouble(pill, other.pill, t),
-      hairline: lerpDouble(hairline, other.hairline, t),
-      stroke: lerpDouble(stroke, other.stroke, t),
-      dashedLength: lerpDouble(dashedLength, other.dashedLength, t),
-      dashedGap: lerpDouble(dashedGap, other.dashedGap, t),
-      dashedOpacity: lerpDouble(dashedOpacity, other.dashedOpacity, t),
-    );
+    return t < 0.5 ? this : other;
   }
 
   static double lerpDouble(double a, double b, double t) => a + (b - a) * t;

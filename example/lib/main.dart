@@ -42,6 +42,10 @@ class _KallopisCatalogAppState extends State<KallopisCatalogApp> {
       debugShowCheckedModeBanner: false,
       title: 'Kallopis Catalog',
       theme: buildKlpTheme(_brightness, style: _style),
+      // 深淺切換不做過場。MaterialApp 預設會跑 200ms 的 theme 動畫並沿路呼叫各層的
+      // lerp——即使每一層都在中點原子性翻轉，動畫期間仍有半數幀停在舊值上，看起來
+      // 就像「某些元件沒有跟著變」。切換主題是狀態改變，不是動作。
+      themeAnimationDuration: Duration.zero,
       home: CatalogShell(
         groups: catalogGroups,
         pages: catalogPages,

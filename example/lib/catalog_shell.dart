@@ -171,7 +171,9 @@ class _NavGroupState extends State<_NavGroup> {
             child: Row(
               children: [
                 KlpIcon(
-                  _expanded ? KlpIcons.chevronDown : KlpIcons.disclosureTriangle,
+                  _expanded
+                      ? KlpIcons.chevronDown
+                      : KlpIcons.disclosureTriangle,
                   size: klp.space.iconSmall,
                   color: klp.color.textFaint,
                 ),

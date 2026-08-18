@@ -40,6 +40,20 @@
 /// theme: buildKlpTheme(Brightness.light, style: brand)
 /// ```
 ///
+/// ## 深淺切換不要有過場
+///
+/// `MaterialApp` 預設會跑 200ms 的 theme 動畫。Kallopis 的每一層 token 都在中點
+/// 原子性翻轉（不內插），但動畫期間仍有半數幀停在舊值上——看起來會像「某些元件沒有
+/// 跟著變」。**切換主題是狀態改變，不是動作**：
+///
+/// ```dart
+/// MaterialApp(
+///   theme: buildKlpTheme(brightness),
+///   themeAnimationDuration: Duration.zero,
+///   home: const MyApp(),
+/// )
+/// ```
+///
 /// ## 元件取值
 ///
 /// 元件一律透過 `context.klp` 取已解析的 token，不使用編譯期常數——後者換 theme 時

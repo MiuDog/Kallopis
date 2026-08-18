@@ -15,41 +15,41 @@ abstract final class KlpPalette {
   // Flutter 的 `Color` 只認 sRGB，因此 oklch 記在註解裡——**改值時改的是 oklch，
   // hex 是換算結果**，反過來做會讓明度階梯逐漸走樣。
   //
-  // 色度刻意極低（0.002–0.010）且色相隨明度緩慢位移（232°→292°）：亮階偏冷、
-  // 暗階更冷，這讓中性色在明暗兩態下都不會顯得死板，同時不會與語意色搶注意力。
+  // 色度刻意極低（0.001–0.010）且色相固定於 262.0°，這讓中性色在明暗兩態下都不會顯得死板，
+  // 同時不會與語意色搶注意力。
 
-  /// oklch(0.970 0.002 232.0)
-  static const Color ink50 = Color(0xFFF4F5F6);
+  /// oklch(0.970 0.001 262.0)
+  static const Color ink50 = Color(0xFFF5F5F6);
 
-  /// oklch(0.930 0.005 238.0)
-  static const Color ink100 = Color(0xFFE5E8EA);
+  /// oklch(0.930 0.002 262.0)
+  static const Color ink100 = Color(0xFFE7E8E9);
 
-  /// oklch(0.860 0.007 244.0)
-  static const Color ink200 = Color(0xFFCDD2D5);
+  /// oklch(0.860 0.003 262.0)
+  static const Color ink200 = Color(0xFFD0D1D3);
 
-  /// oklch(0.770 0.009 250.0)
-  static const Color ink300 = Color(0xFFB0B5BA);
+  /// oklch(0.770 0.004 262.0)
+  static const Color ink300 = Color(0xFFB3B4B7);
 
-  /// oklch(0.680 0.010 256.0)
-  static const Color ink400 = Color(0xFF94999E);
+  /// oklch(0.680 0.005 262.0)
+  static const Color ink400 = Color(0xFF97989B);
 
   /// oklch(0.580 0.010 262.0)
   static const Color ink500 = Color(0xFF777A80);
 
-  /// oklch(0.480 0.010 268.0)
-  static const Color ink600 = Color(0xFF5B5D63);
+  /// oklch(0.480 0.005 262.0)
+  static const Color ink600 = Color(0xFF5C5E60);
 
-  /// oklch(0.380 0.009 274.0)
-  static const Color ink700 = Color(0xFF414247);
+  /// oklch(0.380 0.005 262.0)
+  static const Color ink700 = Color(0xFF414245);
 
-  /// oklch(0.280 0.008 280.0)
-  static const Color ink800 = Color(0xFF28282D);
+  /// oklch(0.280 0.004 262.0)
+  static const Color ink800 = Color(0xFF28292B);
 
-  /// oklch(0.180 0.006 286.0)
-  static const Color ink900 = Color(0xFF111114);
+  /// oklch(0.180 0.003 262.0)
+  static const Color ink900 = Color(0xFF111213);
 
-  /// oklch(0.120 0.003 292.0)
-  static const Color ink950 = Color(0xFF060607);
+  /// oklch(0.120 0.002 262.0)
+  static const Color ink950 = Color(0xFF050606);
 
   // ── 語意色 ──────────────────────────────────────────────────────────────
   // 只用於狀態，不參與視覺層級——層級全部由上面的中性色梯負責。
@@ -69,14 +69,14 @@ abstract final class KlpPalette {
   // **這裡不得出現梯以外的色相。** 每一個值都是某一階加上 alpha，或是純粹的「無色」。
 
   /// 遮罩。ink950 @ 60%。
-  static const Color scrim = Color(0x99060607);
+  static const Color scrim = Color(0x99050606);
 
   /// 邊框預設透明：結構表面靠 tone 分層，不靠描邊。
   static const Color line = Color(0x00000000);
 
   /// 半透明視窗的表面。ink800／ink700 加上視窗透明度。
-  static const Color transparentSurface = Color(0x9428282D);
-  static const Color transparentSurfaceInset = Color(0xA8414247);
+  static const Color transparentSurface = Color(0x9428292B);
+  static const Color transparentSurfaceInset = Color(0xA8414245);
 
   /// 對比前景的兩個極值。`KlpThemeContrast` 用它們挑「在這個底色上該用黑字還白字」，
   /// **不作為表面或文字的 token**——表面與文字一律取梯上的階。

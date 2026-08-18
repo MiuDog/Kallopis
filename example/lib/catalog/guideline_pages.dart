@@ -42,7 +42,8 @@ final blockLayoutPage = CatalogPageData(
     ),
     Specimen(
       name: 'KlpRegion',
-      note: '面板內的一塊區域，自帶 tone 與內距。**它會撐滿可用高度**，'
+      note:
+          '面板內的一塊區域，自帶 tone 與內距。**它會撐滿可用高度**，'
           '因此必須放在有界高度的容器裡。',
       build: (context) => const SizedBox(
         height: 120,

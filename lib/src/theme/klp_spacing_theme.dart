@@ -160,36 +160,17 @@ class KlpSpacingTheme extends ThemeExtension<KlpSpacingTheme> {
     );
   }
 
+  /// **不做內插。**
+  ///
+  /// `MaterialApp` 在 theme 變更時會跑一段過場並沿路呼叫 `lerp`。各層若各自內插，
+  /// 中途會出現「某幾層已經換了、某幾層還沒」的混合狀態——那正是切換深淺色時看起來
+  /// 「有些元件沒有跟著變」的原因：它們不是沒變，是停在中間值上。
+  ///
+  /// 因此整個 token 疊層一律在中點原子性地翻轉，任何時刻都只會是完整的其中一套。
   @override
   KlpSpacingTheme lerp(covariant KlpSpacingTheme? other, double t) {
     if (other == null) return this;
-    double l(double a, double b) => a + (b - a) * t;
-    return KlpSpacingTheme(
-      hairline: l(hairline, other.hairline),
-      tight: l(tight, other.tight),
-      compact: l(compact, other.compact),
-      base: l(base, other.base),
-      comfortable: l(comfortable, other.comfortable),
-      loose: l(loose, other.loose),
-      section: l(section, other.section),
-      page: l(page, other.page),
-      controlPaddingX: l(controlPaddingX, other.controlPaddingX),
-      controlPaddingY: l(controlPaddingY, other.controlPaddingY),
-      containerPadding: l(containerPadding, other.containerPadding),
-      itemGap: l(itemGap, other.itemGap),
-      groupGap: l(groupGap, other.groupGap),
-      controlHeight: l(controlHeight, other.controlHeight),
-      controlHeightSmall: l(controlHeightSmall, other.controlHeightSmall),
-      controlHeightLarge: l(controlHeightLarge, other.controlHeightLarge),
-      iconSmall: l(iconSmall, other.iconSmall),
-      icon: l(icon, other.icon),
-      iconLarge: l(iconLarge, other.iconLarge),
-      chromeHeader: l(chromeHeader, other.chromeHeader),
-      chromeStatusBar: l(chromeStatusBar, other.chromeStatusBar),
-      chromeRail: l(chromeRail, other.chromeRail),
-      chromeTab: l(chromeTab, other.chromeTab),
-      iconButton: l(iconButton, other.iconButton),
-    );
+    return t < 0.5 ? this : other;
   }
 
   @override

@@ -42,6 +42,7 @@ class Swatch extends StatelessWidget {
     required this.color,
     this.note,
     this.onColor,
+    this.offRamp,
   });
 
   /// 語意角色，例如 `surface`。
@@ -50,6 +51,12 @@ class Swatch extends StatelessWidget {
   final Color color;
   final String? note;
   final Color? onColor;
+
+  /// 這個角色**本來就不在中性色梯上**時，說明它是什麼。
+  ///
+  /// 彩色強調色與對比前景都不該在梯上，每格都標「梯外」只是雜訊。
+  /// 留空表示它應該在梯上——那時顯示「梯外」才是有意義的警告。
+  final String? offRamp;
 
   @override
   Widget build(BuildContext context) {
@@ -73,7 +80,7 @@ class Swatch extends StatelessWidget {
             ),
           ),
           child: KlpText(
-            inkStepOf(color) ?? '梯外',
+            inkStepOf(color) ?? offRamp ?? '梯外',
             role: KlpTextRole.code,
             color: foreground,
           ),

@@ -86,19 +86,17 @@ class KlpSurfaceTheme extends ThemeExtension<KlpSurfaceTheme> {
     );
   }
 
+  /// **不做內插。**
+  ///
+  /// `MaterialApp` 在 theme 變更時會跑一段過場並沿路呼叫 `lerp`。各層若各自內插，
+  /// 中途會出現「某幾層已經換了、某幾層還沒」的混合狀態——那正是切換深淺色時看起來
+  /// 「有些元件沒有跟著變」的原因：它們不是沒變，是停在中間值上。
+  ///
+  /// 因此整個 token 疊層一律在中點原子性地翻轉，任何時刻都只會是完整的其中一套。
   @override
   KlpSurfaceTheme lerp(covariant KlpSurfaceTheme? other, double t) {
     if (other == null) return this;
-    double l(double a, double b) => a + (b - a) * t;
-    return KlpSurfaceTheme(
-      separation: t < 0.5 ? separation : other.separation,
-      overlayBlur: l(overlayBlur, other.overlayBlur),
-      overlaySpread: l(overlaySpread, other.overlaySpread),
-      overlayOffsetY: l(overlayOffsetY, other.overlayOffsetY),
-      overlayShadowOpacity: l(overlayShadowOpacity, other.overlayShadowOpacity),
-      hoverContrastMix: l(hoverContrastMix, other.hoverContrastMix),
-      scrimOpacity: l(scrimOpacity, other.scrimOpacity),
-    );
+    return t < 0.5 ? this : other;
   }
 
   @override

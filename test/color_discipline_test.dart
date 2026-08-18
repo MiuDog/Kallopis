@@ -236,4 +236,36 @@ void main() {
       );
     }
   });
+
+  test('token 疊層在主題切換時原子性翻轉，不出現混合狀態', () {
+    // 各層若各自內插，過場中途會有「某幾層換了、某幾層還沒」的狀態——那正是切換
+    // 深淺色時看起來「有些元件沒跟著變」的原因：它們不是沒變，是停在中間值上。
+    const a = KlpThemeData.light;
+    const b = KlpThemeData.dark;
+
+    for (final t in [0.0, 0.25, 0.49]) {
+      expect(a.lerp(b, t), a, reason: 't=$t 應該仍是完整的起始主題');
+    }
+    for (final t in [0.5, 0.75, 1.0]) {
+      expect(a.lerp(b, t), b, reason: 't=$t 應該已是完整的目標主題');
+    }
+
+    // 其餘各層同樣不得內插——只要有一層內插，混合狀態就會回來。
+    final layers = <String, ThemeExtension<dynamic>>{
+      'spacing': KlpSpacingTheme.comfortableDensity,
+      'shape': KlpShapeTheme.standardShape,
+      'surface': KlpSurfaceTheme.elevated,
+      'component': KlpComponentTheme.inherited,
+      'motion': KlpMotionTheme.standardMotion,
+      'typography': KlpTypographyTheme.proportional,
+    };
+
+    layers.forEach((name, layer) {
+      expect(
+        identical(layer.lerp(layer, 0.3), layer),
+        isTrue,
+        reason: '$name 層在過場中途產生了新的實例，代表它在內插',
+      );
+    });
+  });
 }

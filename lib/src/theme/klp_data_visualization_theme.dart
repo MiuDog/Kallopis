@@ -174,41 +174,20 @@ class KlpDataVisualizationTheme
     );
   }
 
+  /// **不做內插。**
+  ///
+  /// `MaterialApp` 在 theme 變更時會跑一段過場並沿路呼叫 `lerp`。各層若各自內插，
+  /// 中途會出現「某幾層已經換了、某幾層還沒」的混合狀態——那正是切換深淺色時看起來
+  /// 「有些元件沒有跟著變」的原因：它們不是沒變，是停在中間值上。
+  ///
+  /// 因此整個 token 疊層一律在中點原子性地翻轉，任何時刻都只會是完整的其中一套。
   @override
   KlpDataVisualizationTheme lerp(
     covariant KlpDataVisualizationTheme? other,
     double t,
   ) {
     if (other == null) return this;
-
-    return KlpDataVisualizationTheme(
-      series: _lerpColors(series, other.series, t),
-      seriesWash: _lerpColors(seriesWash, other.seriesWash, t),
-      axis: Color.lerp(axis, other.axis, t)!,
-      grid: Color.lerp(grid, other.grid, t)!,
-      gridStrong: Color.lerp(gridStrong, other.gridStrong, t)!,
-      label: Color.lerp(label, other.label, t)!,
-      value: Color.lerp(value, other.value, t)!,
-      plotBackground: Color.lerp(plotBackground, other.plotBackground, t)!,
-      crosshair: Color.lerp(crosshair, other.crosshair, t)!,
-      marketUp: Color.lerp(marketUp, other.marketUp, t)!,
-      marketUpWash: Color.lerp(marketUpWash, other.marketUpWash, t)!,
-      marketDown: Color.lerp(marketDown, other.marketDown, t)!,
-      marketDownWash: Color.lerp(marketDownWash, other.marketDownWash, t)!,
-      marketFlat: Color.lerp(marketFlat, other.marketFlat, t)!,
-    );
-  }
-
-  static List<Color> _lerpColors(
-    List<Color> first,
-    List<Color> second,
-    double t,
-  ) {
-    final count = first.length < second.length ? first.length : second.length;
-    return [
-      for (var index = 0; index < count; index++)
-        Color.lerp(first[index], second[index], t)!,
-    ];
+    return t < 0.5 ? this : other;
   }
 }
 

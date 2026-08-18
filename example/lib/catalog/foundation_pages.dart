@@ -288,7 +288,11 @@ final dataDisplayPage = CatalogPageData(
       note: '鍵值清單。',
       build: (context) => const KlpKeyValueList(
         rows: [
-          KlpKeyValueItem(id: 'created', label: '建立於', value: KlpText('2026-08-18')),
+          KlpKeyValueItem(
+            id: 'created',
+            label: '建立於',
+            value: KlpText('2026-08-18'),
+          ),
           KlpKeyValueItem(id: 'state', label: '狀態', value: KlpText('accepted')),
         ],
       ),
@@ -628,10 +632,8 @@ final layoutInteractionPage = CatalogPageData(
     Specimen(
       name: 'KlpStatusBar',
       note: '底部狀態列。',
-      build: (context) => const KlpStatusBar(
-        leading: 'ready',
-        trailing: 'UTF-8',
-      ),
+      build: (context) =>
+          const KlpStatusBar(leading: 'ready', trailing: 'UTF-8'),
     ),
     Specimen(
       name: 'KlpWorkbenchShell',
