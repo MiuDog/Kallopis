@@ -15,7 +15,7 @@ Kallopis 的第一個可用版本，由 Planist `lib/design_system/` 抽取而�
 - **`KlpTheme.of(context)` / `context.klp`**：元件取值的唯一入口，回傳已沿繼承樹解析
   的結果。任一層缺席時回退預設而非拋錯。
 - 68 個通過五條抽層規則的元件。
-- `example/`：可實際執行的元件目錄（Windows）。
+- `example/`：可實際執行的元件目錄（Windows），分為 6 組 19 頁，124 個 widget 全數歸類。
 - **`KlpRouter`**：只負責分發的目的地登記簿。庫不知道有哪些頁、不預設入口、
   不決定階層、不做轉場、不解析網址。
 - `tool/inventory.dart`：由實際程式碼產生元件清單與 mermaid 元件樹，並檢查分層方向。

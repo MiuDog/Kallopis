@@ -1,11 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:kallopis/kallopis.dart';
 
-import 'catalog_page.dart';
+import 'catalog/registry.dart';
 import 'catalog_shell.dart';
-import 'pages/controls_catalog.dart';
-import 'pages/foundations_catalog.dart';
-import 'pages/status_visual_iteration_catalog.dart';
 
 void main() => runApp(const KallopisCatalogApp());
 
@@ -41,37 +38,14 @@ class _KallopisCatalogAppState extends State<KallopisCatalogApp> {
 
   @override
   Widget build(BuildContext context) {
-    const pages = <CatalogPageData>[
-      CatalogPageData(
-        label: 'Foundations',
-        title: '基礎視覺語言',
-        description: '字體、背景、基底區塊與 SVG 圖示',
-        icon: KlpIcons.container,
-        child: FoundationsCatalog(),
-      ),
-      CatalogPageData(
-        label: 'Controls',
-        title: '控制項與表單',
-        description: '動作、輸入、選擇與完整驗證狀態',
-        icon: KlpIcons.settings,
-        child: ControlsCatalog(),
-      ),
-      CatalogPageData(
-        label: 'Appearance',
-        title: '外觀比較',
-        description: '同一組元件在不同主題與風格下的並排對照',
-        icon: KlpIcons.eye,
-        child: StatusVisualIterationCatalog(),
-      ),
-    ];
-
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Kallopis Catalog',
       theme: buildKlpTheme(_brightness, style: _style),
       home: CatalogShell(
-        pages: pages,
-        selected: _selected.clamp(0, pages.length - 1),
+        groups: catalogGroups,
+        pages: catalogPages,
+        selected: _selected.clamp(0, catalogPages.length - 1),
         onSelected: (index) => setState(() => _selected = index),
         onToggleTheme: _toggleBrightness,
       ),

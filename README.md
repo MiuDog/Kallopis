@@ -102,9 +102,18 @@ KlpRouterScope(router: router, child: const KlpRouterOutlet())
 
 ## 元件清單
 
-[`spec/component-inventory.md`](spec/component-inventory.md) 列出全部 215 個公開型別、
-各領域的 mermaid 元件樹，以及分層違規。**由 `dart run tool/inventory.dart` 從程式碼產生**
-——手寫的架構圖會與程式碼分岔，而且分岔時沒有任何徵兆。
+有兩份，用途不同：
+
+| 文件 | 由誰維護 | 回答什麼 |
+|---|---|---|
+| [`spec/component-inventory.md`](spec/component-inventory.md) | `dart run tool/inventory.dart` 從程式碼產生 | 有哪些型別、彼此怎麼組合、分層有沒有破 |
+| [`example/lib/catalog/registry.dart`](example/lib/catalog/registry.dart) | 人工維護 | 每個元件屬於哪一類、長什麼樣 |
+
+前者是**事實**（程式碼怎麼寫的），後者是**分類**（我們認為它屬於哪裡）。兩者都有閘門：
+inventory 過期會失敗，registry 漏掉任何一個匯出的 widget 也會失敗。
+
+元件目錄分為 6 組 19 頁：Colors、Type、Spacing、Guidelines、Foundation、Form。
+124 個 widget 全部歸類完畢。
 
 ## 閘門
 
@@ -121,6 +130,7 @@ KlpRouterScope(router: router, child: const KlpRouterOutlet())
 | 同上（棘輪） | 未文件化的公開型別數量只能下降 |
 | `test/router_test.dart` | 庫內不得出現具名路由；切到未註冊的目的地必須拋錯 |
 | `test/inventory_test.dart` | 元件清單不得過期；分層違規數只能下降 |
+| `example/test/catalog_coverage_test.dart` | 每個匯出的 widget 都要被歸類、不得重複、不得殘留已刪除的名字；每一頁在明暗兩態下都要能渲染 |
 
 ## 建置與測試
 
