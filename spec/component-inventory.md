@@ -387,7 +387,7 @@ graph LR
 | `KlpControlSize` | 1 | （葉節點） |
 | `KlpIconButton` | 77 | `KlpDashedBorder`、`KlpIcon`、`KlpTooltip` |
 | `KlpPhaseOption` | 19 | （葉節點） |
-| `KlpPhaseToggle` | 171 | `KlpIcon`、`KlpText` |
+| `KlpPhaseToggle` | 161 | `KlpIcon`、`KlpText` |
 | `KlpRadioGroup` | 133 | `KlpText` |
 | `KlpSegmentedControl` | 152 | `KlpDashedBorder`、`KlpIcon`、`KlpText` |
 | `KlpSelect` | 92 | `KlpDashedBorder`、`KlpIcon`、`KlpStrokeFrame`、`KlpText` |
@@ -504,10 +504,10 @@ graph LR
 | `KlpSortDirection` | 3 | （葉節點） |
 | `KlpStepData` | 11 | （葉節點） |
 | `KlpStepStatus` | 4 | （葉節點） |
-| `KlpStepper` | 229 | `KlpIcon`、`KlpText` |
+| `KlpStepper` | 225 | `KlpIcon`、`KlpText` |
 | `KlpTag` | 61 | `KlpText` |
 | `KlpTerminal` | 119 | `KlpPressable`、`KlpText` |
-| `KlpTimeline` | 94 | `KlpText` |
+| `KlpTimeline` | 99 | `KlpText` |
 | `KlpTimelineItemData` | 20 | （葉節點） |
 | `KlpTree` | 40 | （葉節點） |
 | `KlpTreeItem` | 175 | `KlpDashedBorder`、`KlpIcon`、`KlpText` |
@@ -611,7 +611,7 @@ graph LR
 |---|---|---|
 | `KlpApprovalStepData` | 8 | （葉節點） |
 | `KlpApprovalStepsField` | 153 | `KlpText` |
-| `KlpCalendar` | 245 | `KlpDashedBorder`、`KlpIconButton`、`KlpText` |
+| `KlpCalendar` | 247 | `KlpDashedBorder`、`KlpIconButton`、`KlpText` |
 | `KlpCalendarRange` | 28 | （葉節點） |
 | `KlpCalendarSelectionMode` | 7 | （葉節點） |
 | `KlpChoiceOption` | 12 | （葉節點） |
