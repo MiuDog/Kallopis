@@ -37,9 +37,7 @@ void main() {
     );
   }
 
-  testWidgets('typing calls onQueryChanged with the new text', (
-    tester,
-  ) async {
+  testWidgets('typing calls onQueryChanged with the new text', (tester) async {
     String? latestQuery;
 
     await pumpCombobox(

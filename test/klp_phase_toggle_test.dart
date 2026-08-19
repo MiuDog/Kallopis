@@ -62,4 +62,3 @@ void main() {
     expect(icon.color, KlpPalette.ink50);
   });
 }
-
