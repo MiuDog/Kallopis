@@ -81,6 +81,29 @@ MaterialApp(
 因此 [`test/style_fixture.dart`](test/style_fixture.dart) 用各層的建構子就地組出一套極端值
 作為**架構的驗收條件**：切換到它若需要改動任何元件程式碼，就代表該元件還在硬編碼風格。
 
+## 接入（`KlpApp`）
+
+`buildKlpTheme` 只回傳 `ThemeData`——套用亮／暗兩份 theme、把 `themeAnimationDuration`
+歸零、決定明暗狀態放哪裡、要用 [router](#分發router) 還得自己架 `KlpRouterScope`，
+這些樣板每個消費者都得自己組一次。`KlpApp` 收掉它們：
+
+```dart
+KlpApp(
+  home: const MyHomePage(),
+)
+```
+
+明暗切換：
+
+```dart
+KlpApp.of(context).toggleBrightness();
+```
+
+`KlpApp.style` 決定除色彩以外的每一層；色彩固定由 `KlpApp` 依明暗在內建的
+`KlpThemeData.light` 與 `.dark` 之間切換。要自訂色彩（品牌色），繞過 `KlpApp`、
+直接用 `buildKlpTheme` 自己組 `MaterialApp`（見 `lib/kallopis.dart` barrel dartdoc
+的〈套用品牌色〉一節）。
+
 ## 分發（router）
 
 `KlpRouter` 只負責分發：產品註冊自己的目的地，然後要求切換。**庫不知道有哪些頁、

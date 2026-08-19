@@ -64,6 +64,7 @@
 /// ```
 library;
 
+export 'src/app/klp_app.dart';
 export 'src/controls/klp_button.dart';
 export 'src/controls/klp_control_size.dart';
 export 'src/controls/klp_checkbox.dart';

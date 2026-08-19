@@ -6,8 +6,8 @@
 
 ## 總覽
 
-- 公開型別 **235** 個，其中 widget **138** 個
-- 分為 **16** 個領域
+- 公開型別 **236** 個，其中 widget **139** 個
+- 分為 **17** 個領域
 
 ### 領域之間的依賴方向
 
@@ -33,6 +33,7 @@ graph TD
   editor["editor — 編輯器周邊"]
   routing["routing — 分發"]
   shell["shell — 應用外殼"]
+  app["app — 接入層"]
   form -->|20| typography
   data -->|15| typography
   controls -->|10| typography
@@ -60,6 +61,7 @@ graph TD
   overlay -->|3| typography
   shell -->|3| surface
   shell -->|3| typography
+  app -->|2| routing
   controls -->|2| interaction
   editor -->|2| surface
   feedback -->|2| controls
@@ -410,7 +412,7 @@ graph LR
 | `KlpControlSize` | 1 | （葉節點） |
 | `KlpIconButton` | 77 | `KlpDashedBorder`、`KlpIcon`、`KlpTooltip` |
 | `KlpPhaseOption` | 19 | （葉節點） |
-| `KlpPhaseToggle` | 171 | `KlpIcon`、`KlpText` |
+| `KlpPhaseToggle` | 169 | `KlpIcon`、`KlpText` |
 | `KlpRadioGroup` | 133 | `KlpText` |
 | `KlpSegmentedControl` | 152 | `KlpDashedBorder`、`KlpIcon`、`KlpText` |
 | `KlpSelect` | 92 | `KlpDashedBorder`、`KlpIcon`、`KlpStrokeFrame`、`KlpText` |
@@ -954,6 +956,26 @@ graph LR
   KlpWindowControls --> KlpDashedBorder
   KlpWindowControls --> KlpIcon
   KlpWindowControls --> KlpTooltip
+  classDef external stroke-dasharray: 4 3;
+```
+
+虛線框是其他領域的型別。
+
+### app — 接入層
+
+型別 1 個，widget 1 個。
+
+| 型別 | 行數 | 組成 |
+|---|---|---|
+| `KlpApp` | 137 | `KlpRouterOutlet`、`KlpRouterScope` |
+
+```mermaid
+graph LR
+  KlpApp["KlpApp"]
+  KlpRouterOutlet["KlpRouterOutlet"]:::external
+  KlpRouterScope["KlpRouterScope"]:::external
+  KlpApp --> KlpRouterOutlet
+  KlpApp --> KlpRouterScope
   classDef external stroke-dasharray: 4 3;
 ```
 
