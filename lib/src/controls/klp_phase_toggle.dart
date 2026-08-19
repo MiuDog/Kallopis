@@ -51,8 +51,6 @@ class KlpPhaseToggle<T> extends StatelessWidget {
     final totalHeight = size + padding * 2 + border;
     final selectedIndex = options.indexWhere((o) => o.value == selected);
 
-    final isDark = Theme.of(context).brightness == Brightness.dark;
-
     Color activeBg;
     if (!enabled) {
       activeBg = tokens.text.withValues(alpha: klp.surface.statusFillOpacity);
@@ -168,22 +166,14 @@ class _KlpPhaseSegment<T> extends StatelessWidget {
               : (option.activeTone == KlpFeedbackTone.danger
                     ? tokens.danger
                     : (option.activeTone == KlpFeedbackTone.success
-                        ? tokens.success
-                        : tokens.textMuted)));
+                          ? tokens.success
+                          : tokens.textMuted)));
 
     Widget content;
     if (option.icon != null) {
-      content = KlpIcon(
-        option.icon!,
-        size: klp.space.iconSmall,
-        color: fg,
-      );
+      content = KlpIcon(option.icon!, size: klp.space.iconSmall, color: fg);
     } else {
-      content = KlpText(
-        option.label ?? '',
-        role: KlpTextRole.code,
-        color: fg,
-      );
+      content = KlpText(option.label ?? '', role: KlpTextRole.code, color: fg);
     }
 
     return GestureDetector(

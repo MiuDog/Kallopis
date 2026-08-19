@@ -73,7 +73,9 @@ class _KlpTimelineRow extends StatelessWidget {
                     DecoratedBox(
                       decoration: BoxDecoration(
                         shape: BoxShape.circle,
-                        color: item.highlighted ? tokens.text : tokens.textFaint,
+                        color: item.highlighted
+                            ? tokens.text
+                            : tokens.textFaint,
                       ),
                     ),
               ),
@@ -98,7 +100,10 @@ class _KlpTimelineRow extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Expanded(
-                        child: KlpText(item.title, role: KlpTextRole.bodyStrong),
+                        child: KlpText(
+                          item.title,
+                          role: KlpTextRole.bodyStrong,
+                        ),
                       ),
                       if (item.time != null) ...[
                         SizedBox(width: klp.space.compact),

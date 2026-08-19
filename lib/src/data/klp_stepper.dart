@@ -67,11 +67,7 @@ class KlpStepper extends StatelessWidget {
           Column(
             mainAxisSize: MainAxisSize.min,
             children: [
-              _KlpStepMarker(
-                status: _statusOf(i),
-                index: i,
-                size: markerSize,
-              ),
+              _KlpStepMarker(status: _statusOf(i), index: i, size: markerSize),
               SizedBox(height: klp.space.tight),
               SizedBox(
                 width: markerSize * 2,
@@ -187,12 +183,12 @@ class _KlpStepMarker extends StatelessWidget {
         border: Border.all(color: borderColor, width: borderWidth),
       ),
       child: status == KlpStepStatus.completed
-          ? KlpIcon(KlpIcons.check, size: klp.space.iconSmall, color: foreground)
-          : KlpText(
-              '${index + 1}',
-              role: KlpTextRole.label,
+          ? KlpIcon(
+              KlpIcons.check,
+              size: klp.space.iconSmall,
               color: foreground,
-            ),
+            )
+          : KlpText('${index + 1}', role: KlpTextRole.label, color: foreground),
     );
   }
 }

@@ -59,10 +59,7 @@ class KlpCalendar extends StatelessWidget {
     this.onPreviousMonth,
     this.onNextMonth,
     this.firstWeekday = DateTime.monday,
-  }) : assert(
-         weekdayLabels.length == 7,
-         'weekdayLabels 必須剛好 7 個，對應一週七天。',
-       );
+  }) : assert(weekdayLabels.length == 7, 'weekdayLabels 必須剛好 7 個，對應一週七天。');
 
   /// 目前顯示的月份；只有年與月有意義，日的部分會被忽略。
   final DateTime month;
@@ -164,7 +161,12 @@ class KlpCalendar extends StatelessWidget {
             children: [
               for (var col = 0; col < 7; col++)
                 Expanded(
-                  child: _buildCell(context, row * 7 + col, leading, daysInMonth),
+                  child: _buildCell(
+                    context,
+                    row * 7 + col,
+                    leading,
+                    daysInMonth,
+                  ),
                 ),
             ],
           ),
