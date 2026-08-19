@@ -4,8 +4,9 @@
 # 在此之前這些閘門只在本機跑，多個 agent 併發編輯時漏跑會直接漏進 main
 # ——這個 workflow 的作用就是讓漏跑不再可能。
 #
-# golden 測試對字型渲染敏感（見 AGENTS.md「已知陷阱」），因此固定在 ubuntu-latest
-# 上執行，避免不同作業系統的字型渲染差異造成假失敗。
+# golden 測試對字型渲染敏感：同一份 .png 在不同作業系統上會因字型光柵化差異而
+# 假失敗。repo 裡的 golden 全部產生於 Windows，因此**跑測試的 job 必須是 windows**。
+# 格式、分析與清單新鮮度不碰渲染，放在較快的 ubuntu 上。
 name: CI
 
 on:
@@ -50,11 +51,39 @@ jobs:
       - name: 靜態分析（flutter analyze）
         run: flutter analyze --fatal-infos
 
-      - name: 執行測試（flutter test，含 golden）
-        run: flutter test
-
       - name: 元件清單新鮮度（inventory --check）
         run: dart run tool/inventory.dart --check
+
+  test:
+    name: tests (golden 基準平台)
+    # 不能改成 ubuntu：golden 產生於 Windows，換平台會整批假失敗。
+    # 真要移到 ubuntu，必須在同一次提交裡於 Linux 重新產生全部 golden。
+    runs-on: windows-latest
+    steps:
+      - name: 取出程式碼
+        uses: actions/checkout@v4
+
+      - name: 安裝 Flutter（含 pub cache）
+        uses: subosito/flutter-action@v2
+        with:
+          channel: ${{ env.FLUTTER_CHANNEL }}
+          flutter-version: ${{ env.FLUTTER_VERSION }}
+          cache: true
+          pub-cache: true
+
+      - name: 取得相依套件（root）
+        run: flutter pub get
+
+      - name: 執行測試（root，含 golden）
+        run: flutter test
+
+      - name: 取得相依套件（example）
+        working-directory: example
+        run: flutter pub get
+
+      - name: 執行測試（example，含 style_switch_golden_test）
+        working-directory: example
+        run: flutter test
 
   example:
     name: example package
@@ -82,6 +111,3 @@ jobs:
 
       - name: 靜態分析（flutter analyze）
         run: flutter analyze --fatal-infos
-
-      - name: 執行測試（flutter test，含 style_switch_golden_test 等）
-        run: flutter test
