@@ -120,7 +120,7 @@ class KlpProgressOverlay extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final tokens = context.klpColors;
-    final isDark = tokens.surface.computeLuminance() < 0.5;
+    final isDark = context.klp.isDark;
     final veil = context.klp.surface.veilOpacity;
     final effectiveOverlayColor =
         backgroundColor ??

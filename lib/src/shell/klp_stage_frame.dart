@@ -32,15 +32,8 @@ class KlpStageFrame extends StatelessWidget {
       ),
       child: ClipRRect(
         borderRadius: BorderRadius.circular(context.klp.shape.panel),
-        child: Theme(
-          data: Theme.of(context).copyWith(
-            extensions: [
-              ...Theme.of(
-                context,
-              ).extensions.values.where((ext) => ext is! KlpThemeData),
-              surfaceTokens,
-            ],
-          ),
+        child: KlpTokenOverride(
+          colors: surfaceTokens,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [

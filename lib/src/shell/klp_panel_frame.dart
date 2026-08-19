@@ -43,15 +43,8 @@ class KlpPanelFrame extends StatelessWidget {
         borderRadius: BorderRadius.circular(
           context.klp.shape.panel - context.klp.shape.stroke,
         ),
-        child: Theme(
-          data: Theme.of(context).copyWith(
-            extensions: [
-              ...Theme.of(
-                context,
-              ).extensions.values.where((ext) => ext is! KlpThemeData),
-              surfaceTokens,
-            ],
-          ),
+        child: KlpTokenOverride(
+          colors: surfaceTokens,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [

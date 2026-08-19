@@ -30,15 +30,8 @@ class KlpAppScreen extends StatelessWidget {
       type: MaterialType.transparency,
       child: ColoredBox(
         color: background,
-        child: Theme(
-          data: Theme.of(context).copyWith(
-            extensions: [
-              ...Theme.of(
-                context,
-              ).extensions.values.where((ext) => ext is! KlpThemeData),
-              surfaceTokens,
-            ],
-          ),
+        child: KlpTokenOverride(
+          colors: surfaceTokens,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [

@@ -363,7 +363,7 @@ class _KlpTreeNodeView extends StatelessWidget {
       };
     }
 
-    final isDark = tokens.surface.computeLuminance() < 0.5;
+    final isDark = context.klp.isDark;
     final surfaceTokens = context.klp.surface;
 
     final backgroundColor = statusColor != null

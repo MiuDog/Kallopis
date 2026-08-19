@@ -84,17 +84,7 @@ class KlpSurface extends StatelessWidget {
 
     if (background != KlpPalette.transparent && background.a > 0) {
       final surfaceTokens = tokens.onBackground(background);
-      result = Theme(
-        data: Theme.of(context).copyWith(
-          extensions: [
-            ...Theme.of(
-              context,
-            ).extensions.values.where((ext) => ext is! KlpThemeData),
-            surfaceTokens,
-          ],
-        ),
-        child: result,
-      );
+      result = KlpTokenOverride(colors: surfaceTokens, child: result);
     }
 
     final effectiveBg = frosted

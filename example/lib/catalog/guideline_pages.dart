@@ -91,6 +91,33 @@ final blockLayoutPage = CatalogPageData(
       },
     ),
     Specimen(
+      name: 'KlpTokenOverride',
+      note:
+          '用一組覆寫過的色彩 token 包住子樹。KlpSurface 與各種 frame 都靠它讓內容'
+          '自動取得適合該表面的文字色；消費者自訂表面時也用它。',
+      build: (context) {
+        final klp = context.klp;
+        return Row(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            KlpSurface(
+              tone: KlpSurfaceTone.accent,
+              padding: EdgeInsets.all(klp.space.base),
+              child: const KlpText('表面上的文字自動反白'),
+            ),
+            SizedBox(width: klp.space.base),
+            KlpTokenOverride(
+              colors: klp.color.onBackground(klp.color.accent),
+              child: Padding(
+                padding: EdgeInsets.all(klp.space.base),
+                child: const KlpText('同一組 token，未上底色'),
+              ),
+            ),
+          ],
+        );
+      },
+    ),
+    Specimen(
       name: 'KlpThemeToggle',
       note: '明暗切換。',
       build: (context) =>

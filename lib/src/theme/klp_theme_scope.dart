@@ -108,6 +108,54 @@ class KlpTheme {
   /// 本產品的 hover **一律只有低對比虛線細框**：不改底色、不改文字色、不改圖示色。
   /// 全部 hover 都從這裡取色，才不會出現十幾個元件各自調一個「差不多的灰」。
   Color get hoverBorder => color.guide.withValues(alpha: shape.dashedOpacity);
+
+  /// 目前是不是暗色主題。
+  ///
+  /// 由主表面的相對亮度推導，而不是讀 `Theme.of(context).brightness`：後者是
+  /// Material 自己的狀態，與這個庫的色彩層各自獨立——消費者只覆寫 [KlpThemeData]
+  /// 而沒同步 Material 的 brightness 時，兩者就會給出相反的答案。
+  ///
+  /// **元件不得自己寫 `computeLuminance() < 0.5`**：那會讓「什麼算暗色」這條規則
+  /// 散成好幾份，各自的門檻還可能不同。
+  bool get isDark => color.surface.computeLuminance() < 0.5;
+
+  /// 依目前明暗挑一個值。兩個分支都必須是 token，不是字面值。
+  T byBrightness<T>({required T light, required T dark}) =>
+      isDark ? dark : light;
+}
+
+/// 用一組覆寫過的色彩 token 包住子樹。
+///
+/// 「把 [KlpThemeData] 換掉、其餘 extension 原封不動」這件事原本在 `KlpSurface`、
+/// `KlpPanelFrame`、`KlpStageFrame`、`KlpAppScreen` 各寫了一份完全相同的
+/// `Theme.of(context).copyWith(extensions: ...)`。四份實作只要有一份漏掉
+/// `where((ext) => ext is! KlpThemeData)`，該子樹就會拿到兩個色彩層，而且不會報錯。
+class KlpTokenOverride extends StatelessWidget {
+  const KlpTokenOverride({
+    super.key,
+    required this.colors,
+    required this.child,
+  });
+
+  /// 要套用到子樹的色彩層。
+  final KlpThemeData colors;
+
+  final Widget child;
+
+  @override
+  Widget build(BuildContext context) {
+    final inherited = Theme.of(context);
+
+    return Theme(
+      data: inherited.copyWith(
+        extensions: [
+          ...inherited.extensions.values.where((ext) => ext is! KlpThemeData),
+          colors,
+        ],
+      ),
+      child: child,
+    );
+  }
 }
 
 /// 讓元件寫 `context.klp.space.base`。
@@ -117,6 +165,9 @@ extension KlpThemeContext on BuildContext {
 
   /// 只取色彩層的捷徑。色彩是最常單獨使用的一層，因此保留這個縮寫，
   /// 但它不是取得其他 token 的途徑——間距、圓角、動畫都必須經由 [klp]。
-  KlpThemeData get klpColors =>
-      Theme.of(this).extension<KlpThemeData>() ?? KlpThemeData.light;
+  ///
+  /// **它委派給 [klp]，不自己解析。** 先前這裡有一份獨立的
+  /// `extension<KlpThemeData>() ?? KlpThemeData.light`，與 [KlpTheme.of] 裡的那份
+  /// 是同一條規則的兩份實作——改了其中一份的回退行為，另一份不會報錯，只是不一致。
+  KlpThemeData get klpColors => klp.color;
 }
