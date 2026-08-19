@@ -92,7 +92,7 @@ void main() {
   testWidgets('KlpCalendarRange.contains treats reversed endpoints as a valid span', (
     tester,
   ) async {
-    const range = KlpCalendarRange(
+    final range = KlpCalendarRange(
       start: DateTime(2026, 8, 20),
       end: DateTime(2026, 8, 10),
     );
