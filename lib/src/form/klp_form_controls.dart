@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../foundation/klp_palette.dart';
 import '../controls/klp_text_field.dart';
 import '../foundation/klp_metrics.dart';
 import '../surface/klp_stroke.dart';
@@ -77,7 +78,17 @@ class KlpNumberField extends StatelessWidget {
   }
 }
 
-class KlpPasswordField extends StatelessWidget {
+/// 密碼規則要求項。包含檢核描述與是否滿足之狀態。
+@immutable
+class KlpPasswordRequirement {
+  const KlpPasswordRequirement({required this.label, required this.satisfied});
+
+  final String label;
+  final bool satisfied;
+}
+
+/// 密碼輸入控制項。支援顯示／隱藏密碼切換與密碼強度／規則檢核清單。
+class KlpPasswordField extends StatefulWidget {
   const KlpPasswordField({
     super.key,
     required this.label,
@@ -86,6 +97,8 @@ class KlpPasswordField extends StatelessWidget {
     this.error,
     this.onChanged,
     this.enabled = true,
+    this.required = false,
+    this.requirements,
   });
 
   final String label;
@@ -94,39 +107,332 @@ class KlpPasswordField extends StatelessWidget {
   final String? error;
   final ValueChanged<String>? onChanged;
   final bool enabled;
+  final bool required;
+  final List<KlpPasswordRequirement>? requirements;
+
+  @override
+  State<KlpPasswordField> createState() => _KlpPasswordFieldState();
+}
+
+class _KlpPasswordFieldState extends State<KlpPasswordField> {
+  bool _obscured = true;
 
   @override
   Widget build(BuildContext context) {
     final tokens = context.klpColors;
+    final klp = context.klp;
+
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      children: [
+        Row(
+          children: [
+            KlpText(widget.label, role: KlpTextRole.caption),
+            if (widget.required) ...[
+              SizedBox(width: klp.space.tight),
+              const KlpText(
+                '*',
+                role: KlpTextRole.caption,
+                tone: KlpTextTone.danger,
+              ),
+            ],
+          ],
+        ),
+        SizedBox(height: klp.space.tight),
+        Material(
+          type: MaterialType.transparency,
+          child: TextFormField(
+            initialValue: widget.value,
+            obscureText: _obscured,
+            enabled: widget.enabled,
+            onChanged: widget.onChanged,
+            style: TextStyle(
+              color: tokens.text,
+              fontSize: klp.type.body,
+              fontFamily: klp.type.uiFamily,
+              fontFamilyFallback: klp.type.fallbackFor(klp.type.uiFamily),
+            ),
+            cursorColor: tokens.interaction,
+            decoration: InputDecoration(
+              isDense: true,
+              hintText: widget.placeholder,
+              hintStyle: TextStyle(color: tokens.textFaint),
+              filled: true,
+              fillColor: KlpFieldStyle.inputFill(
+                tokens,
+                error: widget.error != null,
+              ),
+              border: KlpFieldStyle.borderFor(klp.shape),
+              enabledBorder: KlpFieldStyle.borderFor(klp.shape),
+              focusedBorder: KlpFieldStyle.borderFor(klp.shape),
+              errorBorder: KlpFieldStyle.borderFor(klp.shape),
+              focusedErrorBorder: KlpFieldStyle.borderFor(klp.shape),
+              disabledBorder: KlpFieldStyle.borderFor(klp.shape),
+              constraints: BoxConstraints.tightFor(
+                height: klp.space.controlHeight,
+              ),
+              suffixIcon: GestureDetector(
+                behavior: HitTestBehavior.opaque,
+                onTap: () => setState(() => _obscured = !_obscured),
+                child: Padding(
+                  padding: EdgeInsets.symmetric(horizontal: klp.space.compact),
+                  child: Center(
+                    widthFactor: 1,
+                    child: KlpText(
+                      _obscured ? 'Show' : 'Hide',
+                      role: KlpTextRole.caption,
+                      tone: KlpTextTone.muted,
+                    ),
+                  ),
+                ),
+              ),
+              contentPadding: EdgeInsets.symmetric(
+                horizontal: klp.space.controlPaddingX,
+                vertical: klp.space.controlPaddingY,
+              ),
+            ),
+          ),
+        ),
+        if (widget.requirements != null && widget.requirements!.isNotEmpty) ...[
+          SizedBox(height: klp.space.tight),
+          Wrap(
+            spacing: klp.space.base,
+            runSpacing: klp.space.tight,
+            children: [
+              for (final req in widget.requirements!)
+                Row(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    KlpText(
+                      req.satisfied ? '✓ ' : '○ ',
+                      role: KlpTextRole.caption,
+                      tone: req.satisfied
+                          ? KlpTextTone.success
+                          : KlpTextTone.muted,
+                    ),
+                    KlpText(
+                      req.label,
+                      role: KlpTextRole.caption,
+                      tone: req.satisfied
+                          ? KlpTextTone.success
+                          : KlpTextTone.muted,
+                    ),
+                  ],
+                ),
+            ],
+          ),
+        ],
+        if (widget.error != null) ...[
+          SizedBox(height: klp.space.tight),
+          KlpText(
+            widget.error!,
+            role: KlpTextRole.caption,
+            tone: KlpTextTone.danger,
+          ),
+        ],
+      ],
+    );
+  }
+}
+
+/// 標籤膠囊元件。呈現單一標籤並支援移除操作。
+class KlpTagChip extends StatelessWidget {
+  const KlpTagChip({super.key, required this.label, this.onRemove});
+
+  final String label;
+  final VoidCallback? onRemove;
+
+  @override
+  Widget build(BuildContext context) {
+    final tokens = context.klpColors;
+    final klp = context.klp;
+
+    return Container(
+      padding: EdgeInsets.symmetric(
+        horizontal: klp.space.compact,
+        vertical: klp.space.tight,
+      ),
+      decoration: BoxDecoration(
+        color: tokens.surfaceInset,
+        borderRadius: BorderRadius.circular(klp.shape.control),
+        border: Border.all(color: tokens.border, width: klp.shape.hairline),
+      ),
+      child: Row(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          KlpText(label, role: KlpTextRole.code),
+          if (onRemove != null) ...[
+            SizedBox(width: klp.space.tight),
+            GestureDetector(
+              behavior: HitTestBehavior.opaque,
+              onTap: onRemove,
+              child: const KlpText(
+                '×',
+                role: KlpTextRole.caption,
+                tone: KlpTextTone.muted,
+              ),
+            ),
+          ],
+        ],
+      ),
+    );
+  }
+}
+
+/// 標籤輸入與群組欄位。支援新增、移除個別標籤與清空所有標籤。
+class KlpTagInputField extends StatelessWidget {
+  const KlpTagInputField({
+    super.key,
+    required this.label,
+    required this.tags,
+    this.onAdd,
+    this.onRemove,
+    this.onClearAll,
+    this.maxCount,
+  });
+
+  final String label;
+  final List<String> tags;
+  final VoidCallback? onAdd;
+  final ValueChanged<String>? onRemove;
+  final VoidCallback? onClearAll;
+  final int? maxCount;
+
+  @override
+  Widget build(BuildContext context) {
+    final klp = context.klp;
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
         KlpText(label, role: KlpTextRole.caption),
-        SizedBox(height: context.klp.space.tight),
-        TextFormField(
-          initialValue: value,
-          obscureText: true,
-          enabled: enabled,
-          onChanged: onChanged,
-          style: TextStyle(color: tokens.text),
-          cursorColor: tokens.interaction,
-          decoration: InputDecoration(
-            isDense: true,
-            hintText: placeholder,
-            hintStyle: TextStyle(color: tokens.textFaint),
-            filled: true,
-            fillColor: KlpFieldStyle.inputFill(tokens, error: error != null),
-            constraints: const BoxConstraints.tightFor(
-              height: KlpFormMetrics.fieldHeight,
-            ),
-            contentPadding: context.klp.space.controlInsets,
-          ),
+        SizedBox(height: klp.space.tight),
+        Wrap(
+          spacing: klp.space.tight,
+          runSpacing: klp.space.tight,
+          crossAxisAlignment: WrapCrossAlignment.center,
+          children: [
+            for (final tag in tags)
+              KlpTagChip(
+                label: tag,
+                onRemove: onRemove == null ? null : () => onRemove!(tag),
+              ),
+            if (onAdd != null)
+              GestureDetector(
+                behavior: HitTestBehavior.opaque,
+                onTap: onAdd,
+                child: Container(
+                  padding: EdgeInsets.symmetric(
+                    horizontal: klp.space.compact,
+                    vertical: klp.space.tight,
+                  ),
+                  decoration: BoxDecoration(
+                    color: context.klpColors.surfaceInset,
+                    borderRadius: BorderRadius.circular(klp.shape.control),
+                    border: Border.all(
+                      color: context.klpColors.border,
+                      width: klp.shape.hairline,
+                    ),
+                  ),
+                  child: const KlpText('+ Add', role: KlpTextRole.caption),
+                ),
+              ),
+            if (maxCount != null || onClearAll != null) ...[
+              SizedBox(width: klp.space.tight),
+              if (maxCount != null)
+                KlpText(
+                  '${tags.length}/$maxCount',
+                  role: KlpTextRole.caption,
+                  tone: KlpTextTone.faint,
+                ),
+              if (onClearAll != null)
+                GestureDetector(
+                  behavior: HitTestBehavior.opaque,
+                  onTap: onClearAll,
+                  child: const KlpText(
+                    ' Clear all',
+                    role: KlpTextRole.caption,
+                    tone: KlpTextTone.muted,
+                  ),
+                ),
+            ],
+          ],
         ),
-        if (error != null) ...[
-          SizedBox(height: context.klp.space.tight),
-          KlpText(error!, role: KlpTextRole.caption, tone: KlpTextTone.danger),
+      ],
+    );
+  }
+}
+
+/// 狀態色彩角色色票組（Roles only）。只提供語意角色選擇，不提供直接色碼選擇。
+class KlpStatusRoleSwatches extends StatelessWidget {
+  const KlpStatusRoleSwatches({
+    super.key,
+    required this.label,
+    this.helper,
+    this.selectedRole,
+    this.onSelectRole,
+  });
+
+  final String label;
+  final String? helper;
+  final String? selectedRole;
+  final ValueChanged<String>? onSelectRole;
+
+  @override
+  Widget build(BuildContext context) {
+    final tokens = context.klpColors;
+    final klp = context.klp;
+
+    final roles = [
+      ('success', tokens.success),
+      ('danger', tokens.danger),
+      ('warning', tokens.warning),
+      ('info', tokens.info),
+    ];
+
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      children: [
+        KlpText(label, role: KlpTextRole.caption),
+        if (helper != null) ...[
+          SizedBox(height: klp.space.tight),
+          KlpText(helper!, role: KlpTextRole.caption, tone: KlpTextTone.muted),
         ],
+        SizedBox(height: klp.space.tight),
+        Wrap(
+          spacing: klp.space.base,
+          runSpacing: klp.space.compact,
+          children: [
+            for (final (name, color) in roles)
+              GestureDetector(
+                behavior: HitTestBehavior.opaque,
+                onTap: onSelectRole == null ? null : () => onSelectRole!(name),
+                child: Row(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Container(
+                      width: klp.space.compact,
+                      height: klp.space.compact,
+                      decoration: BoxDecoration(
+                        color: color,
+                        borderRadius: BorderRadius.circular(
+                          klp.shape.control / 2,
+                        ),
+                      ),
+                    ),
+                    SizedBox(width: klp.space.tight),
+                    KlpText(
+                      name,
+                      role: KlpTextRole.code,
+                      tone: selectedRole == name
+                          ? KlpTextTone.primary
+                          : KlpTextTone.muted,
+                    ),
+                  ],
+                ),
+              ),
+          ],
+        ),
       ],
     );
   }
@@ -219,7 +525,7 @@ class _KlpSelectFieldState extends State<KlpSelectField> {
               alignment: Alignment.centerLeft,
               padding: EdgeInsets.symmetric(horizontal: context.klp.space.base),
               decoration: BoxDecoration(
-                color: Colors.transparent,
+                color: KlpPalette.transparent,
                 borderRadius: BorderRadius.circular(context.klp.shape.control),
               ),
               child: KlpText(widget.valueLabel),

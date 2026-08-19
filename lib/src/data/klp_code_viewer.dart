@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../foundation/klp_palette.dart';
 import '../foundation/klp_icon.dart';
 import '../foundation/klp_icons.dart';
 import '../foundation/klp_metrics.dart';
@@ -375,7 +376,7 @@ class _KlpCodeViewerState extends State<KlpCodeViewer> {
       context: context,
       barrierDismissible: true,
       barrierLabel: widget.labels.menu,
-      barrierColor: Colors.transparent,
+      barrierColor: KlpPalette.transparent,
       transitionDuration: Duration.zero,
       pageBuilder: (dialogContext, animation, secondaryAnimation) {
         return Stack(
@@ -474,7 +475,7 @@ class _KlpCodeActionButtonState extends State<_KlpCodeActionButton> {
             Widget button = Material(
               color: widget.selected
                   ? tokens.selectionBackground
-                  : Colors.transparent,
+                  : KlpPalette.transparent,
               borderRadius: BorderRadius.circular(context.klp.shape.control),
               child: KlpPressable(
                 onPressed: widget.onPressed,
@@ -539,7 +540,7 @@ class _KlpCodeLanguageButtonState extends State<_KlpCodeLanguageButton> {
     final color = widget.enabled ? tokens.textMuted : tokens.textFaint;
 
     Widget button = Material(
-      color: Colors.transparent,
+      color: KlpPalette.transparent,
       borderRadius: BorderRadius.circular(context.klp.shape.control),
       child: KlpPressable(
         onPressed: widget.enabled ? widget.onPressed : null,
@@ -797,12 +798,12 @@ class _KlpDiffLineRow extends StatelessWidget {
 
     final (bgColor, prefix, prefixColor) = switch (line.type) {
       KlpDiffLineType.added => (
-        tokens.success.withValues(alpha: 0.12),
+        tokens.success.withValues(alpha: klp.surface.diffFillOpacity),
         '+',
         tokens.success,
       ),
       KlpDiffLineType.deleted => (
-        tokens.danger.withValues(alpha: 0.12),
+        tokens.danger.withValues(alpha: klp.surface.diffFillOpacity),
         '-',
         tokens.danger,
       ),
@@ -818,7 +819,7 @@ class _KlpDiffLineRow extends StatelessWidget {
       child: Row(
         children: [
           SizedBox(
-            width: 24,
+            width: klp.space.gutterNumber,
             child: KlpText(
               line.oldNumber?.toString() ?? '',
               role: KlpTextRole.code,
@@ -828,7 +829,7 @@ class _KlpDiffLineRow extends StatelessWidget {
           ),
           SizedBox(width: klp.space.tight),
           SizedBox(
-            width: 24,
+            width: klp.space.gutterNumber,
             child: KlpText(
               line.newNumber?.toString() ?? '',
               role: KlpTextRole.code,
@@ -838,7 +839,7 @@ class _KlpDiffLineRow extends StatelessWidget {
           ),
           SizedBox(width: klp.space.compact),
           SizedBox(
-            width: 14,
+            width: klp.space.gutterMarker,
             child: KlpText(prefix, role: KlpTextRole.code, color: prefixColor),
           ),
           Expanded(child: KlpText(line.content, role: KlpTextRole.code)),

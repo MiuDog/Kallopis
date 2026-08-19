@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../foundation/klp_palette.dart';
 import '../foundation/klp_icon.dart';
 import '../foundation/klp_icons.dart';
 import '../foundation/klp_metrics.dart';
@@ -48,7 +49,7 @@ class _KlpSelectState extends State<KlpSelect> {
       state: strokeState,
       radius: context.klp.shape.control,
       child: Material(
-        color: Colors.transparent,
+        color: KlpPalette.transparent,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(context.klp.shape.control),
         ),

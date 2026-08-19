@@ -98,14 +98,6 @@ class KlpThemeData extends ThemeExtension<KlpThemeData> {
 
   Color get selectionForeground => text;
 
-  /// hover 底色。混合比例來自 [KlpSurfaceTheme.hoverContrastMix]；此處的預設值只在
-  /// 沒有 theme 可讀時使用（例如純色彩層的單元測試）。
-  /// **不要在這裡另訂一份比例**——同一條規則兩份實作必然靜默分岔。
-  Color hoverSurfaceWith(double contrastMix) =>
-      Color.lerp(surfaceInset, text, contrastMix)!;
-
-  Color get hoverSurface => hoverSurfaceWith(0.08);
-
   /// 選取狀態的半透明壓深層。強度來自 [KlpSurfaceTheme.selectionWashOpacity]；
   /// 此處的預設值只在沒有 theme 可讀時使用。
   /// **不要在這裡另訂一份強度**——同一條規則兩份實作必然靜默分岔。
@@ -133,7 +125,7 @@ class KlpThemeData extends ThemeExtension<KlpThemeData> {
         : KlpTransparency.darkPaneOpacity;
 
     return copyWith(
-      app: Colors.transparent,
+      app: KlpPalette.transparent,
       surface: surface.withValues(alpha: paneOpacity),
       stageSurface: stageSurface.withValues(alpha: paneOpacity),
     );
@@ -152,7 +144,7 @@ class KlpThemeData extends ThemeExtension<KlpThemeData> {
     surfaceRaised: KlpPalette.ink50,
     modalScrim: KlpPalette.scrim,
     guide: KlpPalette.ink400,
-    divider: KlpPalette.ink200,
+    divider: KlpPalette.ink100,
     text: KlpPalette.ink900,
     textMuted: KlpPalette.ink600,
     textFaint: KlpPalette.ink500,
@@ -179,7 +171,7 @@ class KlpThemeData extends ThemeExtension<KlpThemeData> {
     overlay: KlpPalette.ink700,
     surfaceRaised: KlpPalette.ink700,
     modalScrim: KlpPalette.scrim,
-    guide: KlpPalette.ink500,
+    guide: KlpPalette.ink400,
     divider: KlpPalette.ink700,
     text: KlpPalette.ink50,
     textMuted: KlpPalette.ink300,
@@ -207,7 +199,7 @@ class KlpThemeData extends ThemeExtension<KlpThemeData> {
     overlay: KlpPalette.ink800,
     surfaceRaised: KlpPalette.ink800,
     modalScrim: KlpPalette.scrim,
-    guide: KlpPalette.ink500,
+    guide: KlpPalette.ink400,
     divider: KlpPalette.ink700,
     text: KlpPalette.ink50,
     textMuted: KlpPalette.ink300,

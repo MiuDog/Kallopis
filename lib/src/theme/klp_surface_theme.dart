@@ -32,9 +32,19 @@ class KlpSurfaceTheme extends ThemeExtension<KlpSurfaceTheme> {
     required this.overlaySpread,
     required this.overlayOffsetY,
     required this.overlayShadowOpacity,
-    required this.hoverContrastMix,
     required this.scrimOpacity,
     required this.selectionWashOpacity,
+    required this.statusFillOpacity,
+    required this.pressProgressOpacity,
+    required this.diffFillOpacity,
+    required this.gridLineOpacity,
+    required this.veilOpacity,
+    required this.statusRowOpacity,
+    required this.statusRowSelectedOpacity,
+    required this.statusRowOpacityDark,
+    required this.statusRowSelectedOpacityDark,
+    required this.frostedOpacity,
+    required this.frostedVeilOpacity,
   });
 
   final KlpSurfaceSeparation separation;
@@ -44,17 +54,48 @@ class KlpSurfaceTheme extends ThemeExtension<KlpSurfaceTheme> {
   final double overlayOffsetY;
   final double overlayShadowOpacity;
 
-  /// hover 時前景色混入表面的比例。走反白而非微亮的風格，這個比例會高很多。
-  final double hoverContrastMix;
-
   final double scrimOpacity;
 
   /// 選取狀態的壓深層強度。用前景色以低 alpha 疊上，因此亮態壓暗、暗態壓亮，
   /// 且底下表面原本的階層差不會被蓋掉。
   ///
-  /// 與 [hoverContrastMix] 是兩種強度而非同一種：hover 只用低對比邊框表示可點，
-  /// 選取才加上這層壓深。兩者若共用一個值，兩態在畫面上就分不出來。
+  /// hover 只用低對比虛線細框表示可點，選取才加上這層壓深。若兩態共用一種表達，
+  /// 畫面上就分不出來。
   final double selectionWashOpacity;
+
+  /// 語意色當底時的疊層強度（danger 按鈕、狀態晶片）。
+  final double statusFillOpacity;
+
+  /// 長按進度條的疊層強度。
+  final double pressProgressOpacity;
+
+  /// 差異檢視中整行增刪底色的強度。
+  final double diffFillOpacity;
+
+  /// 資料格線由前景色推導時的強度。
+  final double gridLineOpacity;
+
+  /// 載入／禁用時蓋在內容上的遮罩強度。
+  final double veilOpacity;
+
+  /// 資料列以語意色染底時的強度。亮暗兩態分開，因為同一個 alpha 疊在深底與淺底上
+  /// 讀起來的強度差很多。
+  final double statusRowOpacity;
+
+  /// 同上，選取中的資料列。
+  final double statusRowSelectedOpacity;
+
+  /// 同 [statusRowOpacity]，暗態。
+  final double statusRowOpacityDark;
+
+  /// 同 [statusRowSelectedOpacity]，暗態。
+  final double statusRowSelectedOpacityDark;
+
+  /// 霧化表面本身的透明度。
+  final double frostedOpacity;
+
+  /// 霧化套在透明表面上時借用的底色強度。
+  final double frostedVeilOpacity;
 
   bool get usesShadow => separation == KlpSurfaceSeparation.shadow;
 
@@ -77,9 +118,19 @@ class KlpSurfaceTheme extends ThemeExtension<KlpSurfaceTheme> {
     overlaySpread: 1,
     overlayOffsetY: 8,
     overlayShadowOpacity: KlpScale.opacity220,
-    hoverContrastMix: 0.08,
     scrimOpacity: 0.6,
     selectionWashOpacity: KlpScale.opacity100,
+    statusFillOpacity: KlpScale.opacity160,
+    pressProgressOpacity: KlpScale.opacity550,
+    diffFillOpacity: KlpScale.opacity120,
+    gridLineOpacity: KlpScale.opacity180,
+    veilOpacity: KlpScale.opacity820,
+    statusRowOpacity: KlpScale.opacity140,
+    statusRowSelectedOpacity: KlpScale.opacity320,
+    statusRowOpacityDark: KlpScale.opacity280,
+    statusRowSelectedOpacityDark: KlpScale.opacity480,
+    frostedOpacity: KlpScale.opacity140,
+    frostedVeilOpacity: KlpScale.opacity120,
   );
 
   @override
@@ -89,9 +140,19 @@ class KlpSurfaceTheme extends ThemeExtension<KlpSurfaceTheme> {
     double? overlaySpread,
     double? overlayOffsetY,
     double? overlayShadowOpacity,
-    double? hoverContrastMix,
     double? scrimOpacity,
     double? selectionWashOpacity,
+    double? statusFillOpacity,
+    double? pressProgressOpacity,
+    double? diffFillOpacity,
+    double? gridLineOpacity,
+    double? veilOpacity,
+    double? statusRowOpacity,
+    double? statusRowSelectedOpacity,
+    double? statusRowOpacityDark,
+    double? statusRowSelectedOpacityDark,
+    double? frostedOpacity,
+    double? frostedVeilOpacity,
   }) {
     return KlpSurfaceTheme(
       separation: separation ?? this.separation,
@@ -99,9 +160,21 @@ class KlpSurfaceTheme extends ThemeExtension<KlpSurfaceTheme> {
       overlaySpread: overlaySpread ?? this.overlaySpread,
       overlayOffsetY: overlayOffsetY ?? this.overlayOffsetY,
       overlayShadowOpacity: overlayShadowOpacity ?? this.overlayShadowOpacity,
-      hoverContrastMix: hoverContrastMix ?? this.hoverContrastMix,
       scrimOpacity: scrimOpacity ?? this.scrimOpacity,
       selectionWashOpacity: selectionWashOpacity ?? this.selectionWashOpacity,
+      statusFillOpacity: statusFillOpacity ?? this.statusFillOpacity,
+      pressProgressOpacity: pressProgressOpacity ?? this.pressProgressOpacity,
+      diffFillOpacity: diffFillOpacity ?? this.diffFillOpacity,
+      gridLineOpacity: gridLineOpacity ?? this.gridLineOpacity,
+      veilOpacity: veilOpacity ?? this.veilOpacity,
+      statusRowOpacity: statusRowOpacity ?? this.statusRowOpacity,
+      statusRowSelectedOpacity:
+          statusRowSelectedOpacity ?? this.statusRowSelectedOpacity,
+      statusRowOpacityDark: statusRowOpacityDark ?? this.statusRowOpacityDark,
+      statusRowSelectedOpacityDark:
+          statusRowSelectedOpacityDark ?? this.statusRowSelectedOpacityDark,
+      frostedOpacity: frostedOpacity ?? this.frostedOpacity,
+      frostedVeilOpacity: frostedVeilOpacity ?? this.frostedVeilOpacity,
     );
   }
 
@@ -127,9 +200,19 @@ class KlpSurfaceTheme extends ThemeExtension<KlpSurfaceTheme> {
           overlaySpread == other.overlaySpread &&
           overlayOffsetY == other.overlayOffsetY &&
           overlayShadowOpacity == other.overlayShadowOpacity &&
-          hoverContrastMix == other.hoverContrastMix &&
           scrimOpacity == other.scrimOpacity &&
-          selectionWashOpacity == other.selectionWashOpacity;
+          selectionWashOpacity == other.selectionWashOpacity &&
+          statusFillOpacity == other.statusFillOpacity &&
+          pressProgressOpacity == other.pressProgressOpacity &&
+          diffFillOpacity == other.diffFillOpacity &&
+          gridLineOpacity == other.gridLineOpacity &&
+          veilOpacity == other.veilOpacity &&
+          statusRowOpacity == other.statusRowOpacity &&
+          statusRowSelectedOpacity == other.statusRowSelectedOpacity &&
+          statusRowOpacityDark == other.statusRowOpacityDark &&
+          statusRowSelectedOpacityDark == other.statusRowSelectedOpacityDark &&
+          frostedOpacity == other.frostedOpacity &&
+          frostedVeilOpacity == other.frostedVeilOpacity;
 
   @override
   int get hashCode => Object.hash(
@@ -138,8 +221,18 @@ class KlpSurfaceTheme extends ThemeExtension<KlpSurfaceTheme> {
     overlaySpread,
     overlayOffsetY,
     overlayShadowOpacity,
-    hoverContrastMix,
     scrimOpacity,
     selectionWashOpacity,
+    statusFillOpacity,
+    pressProgressOpacity,
+    diffFillOpacity,
+    gridLineOpacity,
+    veilOpacity,
+    statusRowOpacity,
+    statusRowSelectedOpacity,
+    statusRowOpacityDark,
+    statusRowSelectedOpacityDark,
+    frostedOpacity,
+    frostedVeilOpacity,
   );
 }

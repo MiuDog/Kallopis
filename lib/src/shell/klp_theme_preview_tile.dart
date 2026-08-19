@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../foundation/klp_palette.dart';
 import '../interaction/klp_pressable.dart';
+import '../surface/klp_dashed_border.dart';
 import '../theme/klp_theme.dart';
 import '../typography/klp_text.dart';
 
@@ -33,6 +34,22 @@ class KlpThemePreviewTile extends StatelessWidget {
     final radius = BorderRadius.circular(context.klp.shape.panel);
     final foreground = enabled ? tokens.text : tokens.textFaint;
 
+    Widget previewBox = ClipRRect(
+      borderRadius: radius,
+      child: CustomPaint(
+        size: Size(width, width * 0.66),
+        painter: _ThemePreviewPainter(mode, context.klp.shape.panel),
+      ),
+    );
+
+    if (selected) {
+      previewBox = KlpDashedBorder(
+        color: tokens.textMuted,
+        radius: context.klp.shape.panel,
+        child: previewBox,
+      );
+    }
+
     return Semantics(
       button: onSelected != null,
       enabled: enabled,
@@ -50,30 +67,10 @@ class KlpThemePreviewTile extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.stretch,
               mainAxisSize: MainAxisSize.min,
               children: [
-                DecoratedBox(
-                  decoration: BoxDecoration(
-                    color: selected ? tokens.selectionBackground : null,
-                    borderRadius: radius,
-                  ),
-                  child: Padding(
-                    padding: EdgeInsets.all(
-                      selected ? context.klp.space.tight : 0,
-                    ),
-                    child: ClipRRect(
-                      borderRadius: radius,
-                      child: CustomPaint(
-                        size: Size(width, width * 0.66),
-                        painter: _ThemePreviewPainter(
-                          mode,
-                          context.klp.shape.panel,
-                        ),
-                      ),
-                    ),
-                  ),
-                ),
+                previewBox,
                 SizedBox(height: context.klp.space.tight),
                 KlpText(label, role: KlpTextRole.caption, color: foreground),
-                const SizedBox(height: 1),
+                SizedBox(height: context.klp.space.micro),
                 KlpText(
                   description,
                   role: KlpTextRole.caption,

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../foundation/klp_palette.dart';
 import '../foundation/klp_metrics.dart';
 import '../theme/klp_theme.dart';
 import '../typography/klp_text.dart';
@@ -31,12 +32,14 @@ class KlpToggle extends StatelessWidget {
           label: label,
           toggled: value,
           child: Material(
-            color: Colors.transparent,
+            color: KlpPalette.transparent,
             borderRadius: BorderRadius.circular(context.klp.shape.pill),
             child: InkWell(
               onTap: enabled ? () => onChanged!(!value) : null,
               borderRadius: BorderRadius.circular(context.klp.shape.pill),
-              overlayColor: const WidgetStatePropertyAll(Colors.transparent),
+              overlayColor: const WidgetStatePropertyAll(
+                KlpPalette.transparent,
+              ),
               child: KlpToggleIndicator(value: value, enabled: enabled),
             ),
           ),

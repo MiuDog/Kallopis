@@ -103,8 +103,18 @@ abstract final class KlpScale {
 
   // 不透明度
   static const double opacity100 = 0.10;
+  static const double opacity120 = 0.12;
+  static const double opacity140 = 0.14;
+  static const double opacity160 = 0.16;
   static const double opacity180 = 0.18;
   static const double opacity220 = 0.22;
+  static const double opacity280 = 0.28;
   static const double opacity320 = 0.32;
+  static const double opacity440 = 0.44;
+  static const double opacity480 = 0.48;
+  static const double opacity550 = 0.55;
+  static const double opacity620 = 0.62;
+  static const double opacity720 = 0.72;
   static const double opacity780 = 0.78;
+  static const double opacity820 = 0.82;
 }

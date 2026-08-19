@@ -58,7 +58,9 @@ class _KlpButtonState extends State<KlpButton> {
             KlpButtonTone.primary => tokens.interaction,
             KlpButtonTone.secondary => tokens.component,
             KlpButtonTone.ghost => KlpPalette.transparent,
-            KlpButtonTone.danger => tokens.danger.withValues(alpha: 0.16),
+            KlpButtonTone.danger => tokens.danger.withValues(
+              alpha: klp.surface.statusFillOpacity,
+            ),
           };
     final foreground = disabled
         ? tokens.textFaint
@@ -139,7 +141,9 @@ class _KlpButtonState extends State<KlpButton> {
       child: KlpPressable(
         onPressed: widget.onPressed,
         onLongPress: widget.onLongPress,
-        longPressProgressColor: tokens.interactionSoft.withValues(alpha: 0.55),
+        longPressProgressColor: tokens.interactionSoft.withValues(
+          alpha: klp.surface.pressProgressOpacity,
+        ),
         onHover: _setHovered,
         onFocusChange: _setFocused,
         borderRadius: BorderRadius.circular(klp.shape.control),

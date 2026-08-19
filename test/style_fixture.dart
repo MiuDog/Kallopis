@@ -83,7 +83,6 @@ final KlpVisualStyle contrastingStyle = KlpVisualStyle.modern.copyWith(
     overlaySpread: 0,
     overlayOffsetY: 0,
     overlayShadowOpacity: 0,
-    hoverContrastMix: 0.16,
     scrimOpacity: 0.8,
   ),
 

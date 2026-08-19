@@ -30,7 +30,7 @@ class KlpProgress extends StatelessWidget {
     final tokens = context.klpColors;
     final safeValue = value?.clamp(0.0, 1.0).toDouble();
     final fillColor = switch (state) {
-      KlpProgressState.active => tokens.info,
+      KlpProgressState.active => tokens.text,
       KlpProgressState.paused => tokens.warning,
       KlpProgressState.success => tokens.success,
       KlpProgressState.failure => tokens.danger,
@@ -67,7 +67,7 @@ class KlpProgress extends StatelessWidget {
         ),
         SizedBox(height: context.klp.space.compact),
         Container(
-          height: context.klp.space.tight,
+          height: context.klp.space.progressTrack,
           clipBehavior: Clip.antiAlias,
           decoration: BoxDecoration(
             color: tokens.surfaceMuted,

@@ -54,8 +54,8 @@ class KlpToast extends StatelessWidget {
               Row(
                 children: [
                   SizedBox(
-                    width: 22,
-                    height: 22,
+                    width: context.klp.space.toastIconSlot,
+                    height: context.klp.space.toastIconSlot,
                     child: Center(
                       child: KlpIcon(
                         tone.icon,

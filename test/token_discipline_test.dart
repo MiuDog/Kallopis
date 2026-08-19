@@ -168,13 +168,53 @@ void main() {
     );
   });
 
+  test('元件裡的尺寸與透明度字面值只能減少', () {
+    // 寫死一個 `height: 10` 或 `alpha: 0.16` 不會出錯、不會被 analyze 抓到、換主題時
+    // 也不會拋例外——它只是不跟著變。這正是最難發現的一類風格漂移。
+    //
+    // 目前剩 3 處，全部在 KlpThemePreviewTile：那個元件畫的是一張「視窗的圖」，
+    // 這些透明度是插圖的繪製參數（等同 SVG 裡的座標），不是產品表面的風格。
+    // 把它們搬進 theme 反而會宣稱它們可被覆寫，而覆寫它們只會讓那張圖畫錯。
+    const baseline = 3;
+
+    final pattern = RegExp(
+      r'(?:width|height|dimension|size|alpha)\s*:\s*(?:const\s+)?'
+      r'\d+(?:\.\d+)?\s*[,)]',
+    );
+
+    final offenders = <String>[];
+    for (final file in sourceFiles) {
+      final lines = file.readAsStringSync().split('\n');
+      for (var i = 0; i < lines.length; i++) {
+        if (pattern.hasMatch(lines[i])) {
+          offenders.add('${relative(file)}:${i + 1}  ${lines[i].trim()}');
+        }
+      }
+    }
+
+    expect(
+      offenders.length,
+      lessThanOrEqualTo(baseline),
+      reason:
+          '元件裡的尺寸／透明度字面值從 $baseline 增加到 ${offenders.length}：\n'
+          '${offenders.join('\n')}\n'
+          '請改成 context.klp.space 或 context.klp.surface 上的 token。',
+    );
+
+    expect(
+      offenders.length,
+      greaterThanOrEqualTo(baseline - 1),
+      reason: '已降到 ${offenders.length}，請把 baseline 一併調低到這個數字。',
+    );
+  });
+
   test('公開型別的 dartdoc 覆蓋率只能上升', () {
     // 抽取自 Planist 時 215 個公開型別只有 3 個有 dartdoc。寫消費者探針時第一次就猜錯
     // 四個建構子簽名——API 只能靠讀原始碼發現，就等於沒有 API。
     //
     // 一次補完不成比例，因此用棘輪：未文件化的數量只能下降。消費者最先碰到的
-    // 17 個入口型別已補齊。
-    const baseline = 180;
+    // 舊型別補上 dartdoc 時只准調低，不准調高。
+    const baseline = 162;
 
     final declaration = RegExp(
       r'^(?:abstract final class|final class|class|enum) (Klp[A-Za-z]+)',

@@ -10,6 +10,8 @@ import '../surface/klp_surface.dart';
 import '../theme/klp_theme.dart';
 import '../typography/klp_text.dart';
 import 'klp_icon.dart';
+import 'klp_icons.dart';
+import 'klp_inline_code.dart';
 
 class KlpAvatar extends StatelessWidget {
   const KlpAvatar({
@@ -79,46 +81,126 @@ class KlpAvatarGroup extends StatelessWidget {
       mainAxisSize: MainAxisSize.min,
       children: [
         for (final avatar in visible) ...[
-          KlpAvatar(label: avatar.label, image: avatar.image, size: 28),
+          KlpAvatar(
+            label: avatar.label,
+            image: avatar.image,
+            size: context.klp.space.avatarSmall,
+          ),
           SizedBox(width: context.klp.space.tight),
         ],
-        if (hiddenCount > 0) KlpAvatar(label: '+$hiddenCount', size: 28),
+        if (hiddenCount > 0)
+          KlpAvatar(
+            label: '+$hiddenCount',
+            size: context.klp.space.avatarSmall,
+          ),
       ],
     );
   }
 }
 
+/// 狀態指示樣式：圓點 (dot)、雙色分割圓點 (splitDot)、核取勾 (check)、叉號 (cross)、等待重試 (waiting)、空心圓 (circle)。
+enum KlpStatusKind {
+  /// 實心圓點。
+  dot,
+
+  /// 雙色分割圓點（如藍/青色運行中）。
+  splitDot,
+
+  /// 核取勾標記 (✓)。
+  check,
+
+  /// 叉號標記 (✕)。
+  cross,
+
+  /// 等待／旋轉標記 (↻)。
+  waiting,
+
+  /// 空心圓標記 (○)。
+  circle,
+}
+
+/// 狀態指示標記與文字。
 class KlpStatusIndicator extends StatelessWidget {
   const KlpStatusIndicator({
     super.key,
     required this.label,
-    required this.active,
+    this.active = true,
+    this.kind = KlpStatusKind.dot,
     this.color,
   });
 
+  /// 狀態標籤文字。
   final String label;
+
+  /// 是否處於啟用或活動狀態。
   final bool active;
+
+  /// 指示圖示種類。
+  final KlpStatusKind kind;
+
+  /// 自訂覆蓋顏色。
   final Color? color;
 
   @override
   Widget build(BuildContext context) {
-    final effectiveColor =
-        color ??
-        (active ? context.klpColors.success : context.klpColors.textFaint);
+    final tokens = context.klpColors;
+    final defaultColor = switch (kind) {
+      KlpStatusKind.splitDot => tokens.info,
+      KlpStatusKind.check => tokens.success,
+      KlpStatusKind.cross => tokens.danger,
+      KlpStatusKind.waiting => tokens.warning,
+      KlpStatusKind.circle => tokens.textMuted,
+      KlpStatusKind.dot => active ? tokens.success : tokens.textFaint,
+    };
+    final effectiveColor = color ?? defaultColor;
+
+    final Widget iconWidget = switch (kind) {
+      KlpStatusKind.splitDot => KlpIcon(
+        KlpIcons.splitCircle,
+        size: context.klp.space.iconTiny,
+        color: effectiveColor,
+      ),
+      KlpStatusKind.check => KlpIcon(
+        KlpIcons.check,
+        size: context.klp.space.iconMicro,
+        color: effectiveColor,
+      ),
+      KlpStatusKind.cross => KlpIcon(
+        KlpIcons.x,
+        size: context.klp.space.iconMicro,
+        color: effectiveColor,
+      ),
+      KlpStatusKind.waiting => KlpIcon(
+        KlpIcons.refresh,
+        size: context.klp.space.iconMicro,
+        color: effectiveColor,
+      ),
+      KlpStatusKind.circle => KlpIcon(
+        KlpIcons.circle,
+        size: context.klp.space.iconTiny,
+        color: effectiveColor,
+      ),
+      KlpStatusKind.dot => Container(
+        width: context.klp.space.indicatorDot,
+        height: context.klp.space.indicatorDot,
+        decoration: BoxDecoration(
+          color: effectiveColor,
+          borderRadius: BorderRadius.circular(context.klp.shape.pill),
+        ),
+      ),
+    };
 
     return Row(
       mainAxisSize: MainAxisSize.min,
+      crossAxisAlignment: CrossAxisAlignment.center,
       children: [
-        Container(
-          width: 6,
-          height: 6,
-          decoration: BoxDecoration(
-            color: effectiveColor,
-            borderRadius: BorderRadius.circular(context.klp.shape.pill),
-          ),
-        ),
+        Transform.translate(offset: const Offset(0, 1), child: iconWidget),
         SizedBox(width: context.klp.space.tight),
-        KlpText(label, role: KlpTextRole.label, color: effectiveColor),
+        KlpText(
+          label.toUpperCase(),
+          role: KlpTextRole.label,
+          color: effectiveColor,
+        ),
       ],
     );
   }
@@ -231,6 +313,16 @@ class KlpRichText extends StatelessWidget {
       return const TextSpan(text: '\n');
     }
 
+    if (node.kind == KlpRichTextKind.code) {
+      return WidgetSpan(
+        alignment: PlaceholderAlignment.middle,
+        child: KlpInlineCode(
+          node.text ?? '',
+          color: node.unsafe ? tokens.danger : null,
+        ),
+      );
+    }
+
     if (node.kind == KlpRichTextKind.mention) {
       final label = node.label ?? node.text ?? '';
 
@@ -243,8 +335,10 @@ class KlpRichText extends StatelessWidget {
             padding: EdgeInsets.symmetric(horizontal: context.klp.space.tight),
             decoration: BoxDecoration(
               color: node.missing
-                  ? tokens.danger.withValues(alpha: 0.16)
-                  : tokens.surfaceMuted,
+                  ? tokens.danger.withValues(
+                      alpha: context.klp.surface.statusFillOpacity,
+                    )
+                  : tokens.surfaceInset,
               borderRadius: BorderRadius.circular(context.klp.shape.control),
             ),
             child: KlpText(
@@ -278,12 +372,6 @@ class KlpRichText extends StatelessWidget {
         fontStyle: node.kind == KlpRichTextKind.emphasis
             ? FontStyle.italic
             : FontStyle.normal,
-        fontFamily: node.kind == KlpRichTextKind.code
-            ? context.klp.type.monoFamily
-            : null,
-        backgroundColor: node.kind == KlpRichTextKind.code
-            ? tokens.surfaceMuted
-            : null,
         decoration: node.kind == KlpRichTextKind.strike
             ? TextDecoration.lineThrough
             : isLink
@@ -318,7 +406,7 @@ class KlpSegmentedProgress extends StatelessWidget {
               decoration: BoxDecoration(
                 color: index < completed
                     ? context.klpColors.info
-                    : context.klpColors.surfaceMuted,
+                    : context.klpColors.surfaceInset,
                 borderRadius: BorderRadius.circular(context.klp.shape.control),
               ),
             ),
@@ -344,14 +432,13 @@ class KlpBlock extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final content = KlpSurface(
-      tone: selected ? KlpSurfaceTone.muted : KlpSurfaceTone.component,
+    return KlpSurface(
+      tone: KlpSurfaceTone.component,
+      border: selected ? Border.all(color: context.klpColors.textMuted) : null,
       radius: context.klp.shape.control,
       padding: padding ?? EdgeInsets.all(context.klp.space.base),
       child: child,
     );
-
-    return content;
   }
 }
 

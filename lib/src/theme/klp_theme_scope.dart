@@ -99,9 +99,7 @@ class KlpTheme {
   List<BoxShadow> get overlayShadow => surface.overlayShadow(color.text);
 
   /// hover 底色。混合比例來自 surface 層，因此不同風格的 hover 對比可以不同。
-  Color get hoverSurface => color.hoverSurfaceWith(surface.hoverContrastMix);
-
-  /// 選取狀態的壓深層。與 [hoverSurface] 是兩種不同強度的狀態表達。
+  /// 選取狀態的壓深層。hover 只有邊框、不壓深，兩者是不同強度的狀態表達。
   Color get selectionWash =>
       color.selectionWashWith(surface.selectionWashOpacity);
 

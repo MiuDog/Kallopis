@@ -64,7 +64,7 @@ class _KlpRailItemState extends State<KlpRailItem> {
         onFocusChange: _setFocused,
         borderRadius: BorderRadius.circular(context.klp.shape.card),
         child: SizedBox.square(
-          dimension: 42,
+          dimension: context.klp.space.railItem,
           child: Stack(
             clipBehavior: Clip.none,
             children: [
@@ -82,8 +82,8 @@ class _KlpRailItemState extends State<KlpRailItem> {
                   top: 2,
                   right: 2,
                   child: Container(
-                    width: 8,
-                    height: 8,
+                    width: context.klp.space.indicatorDotLarge,
+                    height: context.klp.space.indicatorDotLarge,
                     decoration: BoxDecoration(
                       color: tokens.info,
                       shape: BoxShape.circle,

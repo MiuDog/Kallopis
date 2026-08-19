@@ -2,6 +2,7 @@ import 'dart:math' as math;
 
 import 'package:flutter/material.dart';
 
+import '../foundation/klp_palette.dart';
 import '../controls/klp_toggle.dart';
 import '../foundation/klp_icon.dart';
 import '../foundation/klp_icons.dart';
@@ -237,7 +238,9 @@ class _KlpMenuItemState extends State<KlpMenuItem> {
     Widget item = SizedBox(
       height: _KlpMenuMetrics.itemHeight,
       child: Material(
-        color: data.selected ? tokens.selectionBackground : Colors.transparent,
+        color: data.selected
+            ? tokens.selectionBackground
+            : KlpPalette.transparent,
         borderRadius: BorderRadius.circular(context.klp.shape.control),
         child: InkWell(
           onTap: data.enabled ? data.onPressed : null,
@@ -245,7 +248,7 @@ class _KlpMenuItemState extends State<KlpMenuItem> {
               ? (value) => setState(() => _hovered = value)
               : null,
           onFocusChange: (value) => setState(() => _focused = value),
-          overlayColor: const WidgetStatePropertyAll(Colors.transparent),
+          overlayColor: const WidgetStatePropertyAll(KlpPalette.transparent),
           borderRadius: BorderRadius.circular(context.klp.shape.control),
           child: Padding(
             padding: EdgeInsets.symmetric(

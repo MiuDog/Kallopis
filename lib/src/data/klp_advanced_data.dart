@@ -1,6 +1,8 @@
 import 'package:flutter/widgets.dart';
 
 import '../controls/klp_checkbox.dart';
+import '../feedback/klp_feedback_tone.dart';
+import '../foundation/klp_geometric_spinner.dart';
 import '../foundation/klp_icon.dart';
 import '../foundation/klp_icons.dart';
 import '../surface/klp_dashed_border.dart';
@@ -75,6 +77,10 @@ class KlpDataTable extends StatelessWidget {
       borderRadius: BorderRadius.circular(context.klp.shape.card),
       child: KlpSurface(
         tone: KlpSurfaceTone.component,
+        border: Border.all(
+          color: context.klpColors.divider,
+          width: context.klp.shape.hairline,
+        ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
@@ -159,7 +165,9 @@ class _KlpTableLine extends StatelessWidget {
           minHeight: context.klp.space.controlHeightLarge,
         ),
         decoration: BoxDecoration(
-          color: header || selected ? context.klpColors.surfaceMuted : null,
+          color: header
+              ? context.klpColors.surfaceInset
+              : (selected ? context.klpColors.surfaceMuted : null),
         ),
         child: Row(
           children: [
@@ -253,6 +261,7 @@ class KlpTreeNode {
     this.hasChildren = false,
     this.deleted = false,
     this.badge,
+    this.tone,
   });
 
   final String id;
@@ -264,6 +273,7 @@ class KlpTreeNode {
   final bool hasChildren;
   final bool deleted;
   final String? badge;
+  final KlpFeedbackTone? tone;
 }
 
 class KlpTree extends StatelessWidget {
@@ -341,73 +351,122 @@ class _KlpTreeNodeView extends StatelessWidget {
         ? node.expanded
         : expandedIds!.contains(node.id);
     final expandable = node.hasChildren || node.children.isNotEmpty;
-    final row = GestureDetector(
-      behavior: HitTestBehavior.opaque,
-      onTap: onSelected == null ? null : () => onSelected!(node.id),
-      child: Container(
-        constraints: BoxConstraints(minHeight: context.klp.space.controlHeight),
-        padding: EdgeInsets.symmetric(horizontal: context.klp.space.compact),
-        decoration: BoxDecoration(
-          color: selected ? tokens.surfaceMuted : null,
-          borderRadius: BorderRadius.circular(context.klp.shape.control),
-        ),
-        child: Row(
-          children: [
-            if (expandable) ...[
-              GestureDetector(
-                key: ValueKey('pln-tree-expand-${node.id}'),
-                behavior: HitTestBehavior.opaque,
-                onTap: onExpanded == null ? null : () => onExpanded!(node.id),
-                child: SizedBox.square(
-                  dimension: context.klp.space.icon,
-                  child: Center(
-                    child: RotatedBox(
-                      quarterTurns: expanded ? 0 : 3,
-                      child: KlpIcon(
-                        KlpIcons.chevronDown,
-                        size: context.klp.space.iconSmall,
-                        color: tokens.textMuted,
-                      ),
+
+    Color? statusColor;
+    if (node.tone != null && node.tone != KlpFeedbackTone.neutral) {
+      statusColor = switch (node.tone!) {
+        KlpFeedbackTone.warning => tokens.warning,
+        KlpFeedbackTone.info => tokens.info,
+        KlpFeedbackTone.success => tokens.success,
+        KlpFeedbackTone.danger => tokens.danger,
+        KlpFeedbackTone.neutral => null,
+      };
+    }
+
+    final isDark = tokens.surface.computeLuminance() < 0.5;
+    final surfaceTokens = context.klp.surface;
+
+    final backgroundColor = statusColor != null
+        ? statusColor.withValues(
+            alpha: isDark
+                ? (selected
+                      ? surfaceTokens.statusRowSelectedOpacityDark
+                      : surfaceTokens.statusRowOpacityDark)
+                : (selected
+                      ? surfaceTokens.statusRowSelectedOpacity
+                      : surfaceTokens.statusRowOpacity),
+          )
+        : (selected
+              ? (isDark
+                    ? tokens.text.withValues(
+                        alpha: surfaceTokens.gridLineOpacity,
+                      )
+                    : tokens.surfaceMuted)
+              : null);
+
+    Widget rowContent = Container(
+      constraints: BoxConstraints(minHeight: context.klp.space.controlHeight),
+      padding: EdgeInsets.symmetric(horizontal: context.klp.space.compact),
+      decoration: BoxDecoration(
+        color: backgroundColor,
+        borderRadius: BorderRadius.circular(context.klp.shape.control),
+      ),
+      child: Row(
+        children: [
+          if (expandable) ...[
+            GestureDetector(
+              key: ValueKey('pln-tree-expand-${node.id}'),
+              behavior: HitTestBehavior.opaque,
+              onTap: onExpanded == null ? null : () => onExpanded!(node.id),
+              child: SizedBox.square(
+                dimension: context.klp.space.icon,
+                child: Center(
+                  child: RotatedBox(
+                    quarterTurns: expanded ? 0 : 3,
+                    child: KlpIcon(
+                      KlpIcons.chevronDown,
+                      size: context.klp.space.iconSmall,
+                      color: tokens.textMuted,
                     ),
                   ),
                 ),
               ),
-              SizedBox(width: context.klp.space.tight),
-            ] else
-              SizedBox(width: context.klp.space.icon + context.klp.space.tight),
-            if (node.icon != null) ...[
-              KlpIcon(
-                node.icon!,
-                size: context.klp.space.iconSmall,
-                color: selected ? tokens.selectionForeground : tokens.textMuted,
-              ),
-              SizedBox(width: context.klp.space.compact),
-            ],
-            Expanded(
-              child: KlpText(
-                node.label,
-                color: node.deleted
-                    ? tokens.textFaint
-                    : selected
-                    ? tokens.selectionForeground
-                    : tokens.textMuted,
-                decoration: node.deleted ? TextDecoration.lineThrough : null,
-                maxLines: 1,
-                overflow: TextOverflow.ellipsis,
-                ellipsisText: '...',
-              ),
             ),
-            if (node.badge != null) ...[
-              SizedBox(width: context.klp.space.compact),
-              KlpText(
-                node.badge!,
-                role: KlpTextRole.code,
-                tone: KlpTextTone.faint,
-              ),
-            ],
+            SizedBox(width: context.klp.space.tight),
+          ] else
+            SizedBox(width: context.klp.space.icon + context.klp.space.tight),
+          if (node.icon != null) ...[
+            KlpIcon(
+              node.icon!,
+              size: context.klp.space.iconSmall,
+              color:
+                  statusColor ??
+                  (selected ? tokens.selectionForeground : tokens.textMuted),
+            ),
+            SizedBox(width: context.klp.space.compact),
           ],
-        ),
+          Expanded(
+            child: KlpText(
+              node.label,
+              color: node.deleted
+                  ? tokens.textFaint
+                  : (statusColor != null
+                        ? tokens.text
+                        : (selected
+                              ? tokens.selectionForeground
+                              : tokens.textMuted)),
+              decoration: node.deleted ? TextDecoration.lineThrough : null,
+              maxLines: 1,
+              overflow: TextOverflow.ellipsis,
+              ellipsisText: '...',
+            ),
+          ),
+          if (node.badge != null) ...[
+            SizedBox(width: context.klp.space.compact),
+            KlpText(
+              node.badge!,
+              role: KlpTextRole.label,
+              color:
+                  statusColor ??
+                  (selected ? tokens.selectionForeground : tokens.textMuted),
+            ),
+          ],
+        ],
       ),
+    );
+
+    if (selected && statusColor == null) {
+      rowContent = KlpDashedBorder(
+        radius: context.klp.shape.control,
+        color: tokens.guide,
+        child: rowContent,
+      );
+    }
+
+    final row = GestureDetector(
+      behavior: HitTestBehavior.opaque,
+      onTap: onSelected == null ? null : () => onSelected!(node.id),
+      child: rowContent,
     );
 
     return Padding(
@@ -657,73 +716,83 @@ class KlpFilePreview extends StatelessWidget {
         decoration: BoxDecoration(
           color: tokens.component,
           borderRadius: BorderRadius.circular(context.klp.shape.card),
+          border: Border.all(
+            color: tokens.divider,
+            width: context.klp.shape.hairline,
+          ),
         ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            Padding(
-              padding: EdgeInsets.symmetric(
-                horizontal: context.klp.space.base,
-                vertical: context.klp.space.compact,
-              ),
-              child: Row(
-                children: [
-                  Expanded(
-                    child: KlpText(
-                      name,
-                      role: KlpTextRole.code,
-                      maxLines: 1,
-                      overflow: TextOverflow.ellipsis,
+            ColoredBox(
+              color: tokens.surfaceInset,
+              child: Padding(
+                padding: EdgeInsets.symmetric(
+                  horizontal: context.klp.space.base,
+                  vertical: context.klp.space.compact,
+                ),
+                child: Row(
+                  children: [
+                    Expanded(
+                      child: KlpText(
+                        name,
+                        role: KlpTextRole.code,
+                        maxLines: 1,
+                        overflow: TextOverflow.ellipsis,
+                      ),
                     ),
-                  ),
-                  KlpText(
-                    metadata,
-                    role: KlpTextRole.caption,
-                    tone: KlpTextTone.muted,
-                  ),
-                ],
+                    KlpText(
+                      metadata,
+                      role: KlpTextRole.caption,
+                      tone: KlpTextTone.muted,
+                    ),
+                  ],
+                ),
               ),
             ),
             const KlpDashedDivider(),
             SizedBox(
               height: height,
               child: ColoredBox(
-                color: tokens.surfaceMuted,
+                color: tokens.component,
                 child: Center(child: _previewBody(context, extension)),
               ),
             ),
             if (onOpenExternal != null || onDownload != null) ...[
               const KlpDashedDivider(),
-              Padding(
-                padding: EdgeInsets.symmetric(
-                  horizontal: context.klp.space.base,
-                  vertical: context.klp.space.tight,
-                ),
-                child: Row(
-                  children: [
-                    if (onOpenExternal != null)
-                      GestureDetector(
-                        behavior: HitTestBehavior.opaque,
-                        onTap: onOpenExternal,
-                        child: const KlpText(
-                          'Open externally',
-                          role: KlpTextRole.caption,
-                          tone: KlpTextTone.muted,
+              ColoredBox(
+                color: tokens.surfaceInset,
+                child: Padding(
+                  padding: EdgeInsets.symmetric(
+                    horizontal: context.klp.space.base,
+                    vertical: context.klp.space.tight,
+                  ),
+                  child: Row(
+                    children: [
+                      if (onOpenExternal != null)
+                        GestureDetector(
+                          behavior: HitTestBehavior.opaque,
+                          onTap: onOpenExternal,
+                          child: const KlpText(
+                            'Open externally',
+                            role: KlpTextRole.caption,
+                            tone: KlpTextTone.muted,
+                          ),
                         ),
-                      ),
-                    if (onOpenExternal != null && onDownload != null)
-                      SizedBox(width: context.klp.space.comfortable),
-                    if (onDownload != null)
-                      GestureDetector(
-                        behavior: HitTestBehavior.opaque,
-                        onTap: onDownload,
-                        child: const KlpText(
-                          'Download',
-                          role: KlpTextRole.caption,
-                          tone: KlpTextTone.muted,
+                      if (onOpenExternal != null && onDownload != null)
+                        SizedBox(width: context.klp.space.comfortable),
+                      if (onDownload != null)
+                        GestureDetector(
+                          behavior: HitTestBehavior.opaque,
+                          onTap: onDownload,
+                          child: const KlpText(
+                            'Download',
+                            role: KlpTextRole.caption,
+                            tone: KlpTextTone.muted,
+                          ),
                         ),
-                      ),
-                  ],
+                    ],
+                  ),
                 ),
               ),
             ],
@@ -735,10 +804,17 @@ class KlpFilePreview extends StatelessWidget {
 
   Widget _previewBody(BuildContext context, String extension) {
     return switch (state) {
-      KlpFilePreviewState.loading => const KlpText(
-        'Loading preview...',
-        role: KlpTextRole.caption,
-        tone: KlpTextTone.muted,
+      KlpFilePreviewState.loading => Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          const KlpGeometricSpinner(),
+          SizedBox(height: context.klp.space.base),
+          const KlpText(
+            'Loading preview...',
+            role: KlpTextRole.caption,
+            tone: KlpTextTone.muted,
+          ),
+        ],
       ),
       KlpFilePreviewState.error => const KlpText(
         'Preview failed to load',

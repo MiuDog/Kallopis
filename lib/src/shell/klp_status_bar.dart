@@ -28,8 +28,8 @@ class KlpStatusBar extends StatelessWidget {
           child: Row(
             children: [
               Container(
-                width: 6,
-                height: 6,
+                width: context.klp.space.indicatorDot,
+                height: context.klp.space.indicatorDot,
                 decoration: BoxDecoration(
                   color: active ? tokens.success : tokens.textFaint,
                   shape: BoxShape.circle,
