@@ -6,7 +6,7 @@
 
 ## 總覽
 
-- 公開型別 **236** 個，其中 widget **139** 個
+- 公開型別 **243** 個，其中 widget **142** 個
 - 分為 **17** 個領域
 
 ### 領域之間的依賴方向
@@ -35,12 +35,12 @@ graph TD
   shell["shell — 應用外殼"]
   app["app — 接入層"]
   form -->|20| typography
-  data -->|15| typography
+  data -->|18| typography
   controls -->|10| typography
-  data -->|9| surface
+  data -->|10| surface
+  data -->|9| foundation
   form -->|8| controls
   controls -->|7| foundation
-  data -->|7| foundation
   editor -->|7| typography
   foundation -->|7| surface
   controls -->|6| surface
@@ -484,10 +484,12 @@ graph LR
 
 ### data — 資料呈現
 
-型別 32 個，widget 16 個。
+型別 39 個，widget 19 個。
 
 | 型別 | 行數 | 組成 |
 |---|---|---|
+| `KlpAccordion` | 171 | `KlpDashedBorder`、`KlpIcon`、`KlpText` |
+| `KlpAccordionItemData` | 20 | （葉節點） |
 | `KlpBadge` | 76 | `KlpText` |
 | `KlpBadgeVariant` | 12 | （葉節點） |
 | `KlpCard` | 86 | `KlpDashedBorder`、`KlpText` |
@@ -515,14 +517,20 @@ graph LR
 | `KlpProgress` | 82 | `KlpText` |
 | `KlpProgressState` | 2 | （葉節點） |
 | `KlpSortDirection` | 3 | （葉節點） |
+| `KlpStepData` | 11 | （葉節點） |
+| `KlpStepStatus` | 4 | （葉節點） |
+| `KlpStepper` | 229 | `KlpIcon`、`KlpText` |
 | `KlpTag` | 61 | `KlpText` |
 | `KlpTerminal` | 119 | `KlpPressable`、`KlpText` |
+| `KlpTimeline` | 94 | `KlpText` |
+| `KlpTimelineItemData` | 20 | （葉節點） |
 | `KlpTree` | 40 | （葉節點） |
 | `KlpTreeItem` | 175 | `KlpDashedBorder`、`KlpIcon`、`KlpText` |
 | `KlpTreeNode` | 26 | （葉節點） |
 
 ```mermaid
 graph LR
+  KlpAccordion["KlpAccordion"]
   KlpBadge["KlpBadge"]
   KlpCard["KlpCard"]
   KlpCheckbox["KlpCheckbox"]:::external
@@ -545,12 +553,17 @@ graph LR
   KlpMetricCard["KlpMetricCard"]
   KlpPressable["KlpPressable"]:::external
   KlpProgress["KlpProgress"]
+  KlpStepper["KlpStepper"]
   KlpSurface["KlpSurface"]:::external
   KlpTag["KlpTag"]
   KlpTerminal["KlpTerminal"]
   KlpText["KlpText"]:::external
+  KlpTimeline["KlpTimeline"]
   KlpTooltip["KlpTooltip"]:::external
   KlpTreeItem["KlpTreeItem"]
+  KlpAccordion --> KlpDashedBorder
+  KlpAccordion --> KlpIcon
+  KlpAccordion --> KlpText
   KlpBadge --> KlpText
   KlpCard --> KlpDashedBorder
   KlpCard --> KlpText
@@ -584,9 +597,12 @@ graph LR
   KlpListTile --> KlpText
   KlpMetricCard --> KlpText
   KlpProgress --> KlpText
+  KlpStepper --> KlpIcon
+  KlpStepper --> KlpText
   KlpTag --> KlpText
   KlpTerminal --> KlpPressable
   KlpTerminal --> KlpText
+  KlpTimeline --> KlpText
   KlpTreeItem --> KlpDashedBorder
   KlpTreeItem --> KlpIcon
   KlpTreeItem --> KlpText
@@ -994,10 +1010,10 @@ graph LR
 
 | 型別 | 被幾個型別使用 |
 |---|---|
-| `KlpText` | 79 |
-| `KlpIcon` | 24 |
+| `KlpText` | 82 |
+| `KlpIcon` | 26 |
 | `KlpSurface` | 22 |
-| `KlpDashedBorder` | 20 |
+| `KlpDashedBorder` | 21 |
 | `KlpButton` | 9 |
 | `KlpPressable` | 9 |
 | `KlpTextField` | 7 |

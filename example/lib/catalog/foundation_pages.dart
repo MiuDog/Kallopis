@@ -538,6 +538,52 @@ final dataDisplayPage = CatalogPageData(
         );
       },
     ),
+    Specimen(
+      name: 'KlpAccordion',
+      note: '可摺疊的內容區。預設單開；multiple 時各項互不影響。',
+      build: (context) => KlpAccordion(
+        items: [
+          KlpAccordionItemData(
+            id: 'scope',
+            title: '範圍',
+            subtitle: '這一版涵蓋什麼',
+            child: const KlpText('三個資料呈現元件：accordion、stepper、timeline。'),
+          ),
+          KlpAccordionItemData(
+            id: 'rules',
+            title: '規則',
+            child: const KlpText('顏色、間距、圓角一律取自 context.klp。'),
+          ),
+        ],
+      ),
+    ),
+    Specimen(
+      name: 'KlpStepper',
+      note: '步驟流程指示。已完成／進行中／未開始三態由 currentIndex 推導。',
+      build: (context) => const KlpStepper(
+        steps: [
+          KlpStepData(label: '建立'),
+          KlpStepData(label: '審核', description: '待負責人確認'),
+          KlpStepData(label: '完成'),
+        ],
+        currentIndex: 1,
+      ),
+    ),
+    Specimen(
+      name: 'KlpTimeline',
+      note: '事件依序排列，每項有標記、標題、時間、可選內容。',
+      build: (context) => const KlpTimeline(
+        items: [
+          KlpTimelineItemData(title: '建立草稿', time: '09:00'),
+          KlpTimelineItemData(title: '送出審核', time: '10:30'),
+          KlpTimelineItemData(
+            title: '核准',
+            time: '14:00',
+            highlighted: true,
+          ),
+        ],
+      ),
+    ),
   ],
 );
 
