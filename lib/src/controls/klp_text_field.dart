@@ -19,6 +19,7 @@ class KlpTextField extends StatefulWidget {
     this.error,
     this.leadingIcon,
     this.initialValue,
+    this.controller,
     this.maxLength,
     this.size = KlpControlSize.md,
     this.onChanged,
@@ -35,7 +36,11 @@ class KlpTextField extends StatefulWidget {
     this.onClear,
     this.onStepUp,
     this.onStepDown,
-  }) : assert(maxLength == null || maxLength > 0);
+  }) : assert(maxLength == null || maxLength > 0),
+       assert(
+         controller == null || initialValue == null,
+         'controller 與 initialValue 互斥——給了 controller 就由它掌控文字內容。',
+       );
 
   final String? label;
   final String? placeholder;
@@ -43,6 +48,12 @@ class KlpTextField extends StatefulWidget {
   final String? error;
   final String? leadingIcon;
   final String? initialValue;
+
+  /// 外部持有的文字控制器。多數呼叫端不需要——沒有給時本元件用 `initialValue`
+  /// 自行管理，這是既有行為。給了 [controller] 就由呼叫端全權掌控文字內容
+  /// （例如 `KlpCombobox` 需要在使用者選定選項後改寫欄位文字），
+  /// 兩者互斥，與 `TextFormField` 的限制一致。
+  final TextEditingController? controller;
   final int? maxLength;
   final KlpControlSize size;
   final ValueChanged<String>? onChanged;
@@ -172,7 +183,8 @@ class _KlpTextFieldState extends State<KlpTextField> {
       child: Focus(
         onFocusChange: (focused) => setState(() => _focused = focused),
         child: TextFormField(
-          initialValue: widget.initialValue,
+          controller: widget.controller,
+          initialValue: widget.controller == null ? widget.initialValue : null,
           focusNode: widget.focusNode,
           autofocus: widget.autofocus,
           enabled: widget.enabled,

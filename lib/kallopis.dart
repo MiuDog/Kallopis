@@ -66,6 +66,7 @@ library;
 
 export 'src/controls/klp_button.dart';
 export 'src/controls/klp_checkbox.dart';
+export 'src/controls/klp_combobox.dart';
 export 'src/controls/klp_icon_button.dart';
 export 'src/controls/klp_radio_group.dart';
 export 'src/controls/klp_segmented_control.dart';
@@ -94,6 +95,7 @@ export 'src/feedback/klp_inline_notice.dart';
 export 'src/feedback/klp_region_placeholder.dart';
 export 'src/feedback/klp_toast.dart';
 export 'src/feedback/klp_view_states.dart';
+export 'src/form/klp_calendar.dart';
 export 'src/form/klp_form.dart';
 export 'src/form/klp_form_controls.dart';
 export 'src/form/klp_reference_picker.dart';

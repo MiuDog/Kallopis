@@ -50,9 +50,55 @@ final formControlsPage = CatalogPageData(
     ),
     Specimen(
       name: 'KlpDateField',
-      note: '日期輸入。',
-      build: (context) =>
-          KlpDateField(label: '截止日', value: '2026-08-18', onChanged: (_) {}),
+      note: '日期輸入。提供 calendar 設定時會接上 KlpCalendar 挑選面板；不提供時退化為純文字輸入。',
+      build: (context) => KlpDateField(
+        label: '截止日',
+        value: '2026-08-18',
+        onChanged: (_) {},
+        calendar: KlpDateFieldCalendar(
+          month: DateTime(2026, 8),
+          monthLabel: '2026 年 8 月',
+          weekdayLabels: const ['一', '二', '三', '四', '五', '六', '日'],
+          previousMonthLabel: '上個月',
+          nextMonthLabel: '下個月',
+          selectedDate: DateTime(2026, 8, 18),
+          onDateSelected: (_) {},
+        ),
+      ),
+    ),
+    Specimen(
+      name: 'KlpCalendar',
+      note: '月曆面板：月份切換、日期格、今天標記、選取狀態、可停用特定日期。不內建語言字串。',
+      build: (context) => KlpCalendar(
+        month: DateTime(2026, 8),
+        monthLabel: '2026 年 8 月',
+        weekdayLabels: const ['一', '二', '三', '四', '五', '六', '日'],
+        previousMonthLabel: '上個月',
+        nextMonthLabel: '下個月',
+        today: DateTime(2026, 8, 19),
+        selectedDate: DateTime(2026, 8, 5),
+        isDateDisabled: (date) => date.day == 25,
+        onDateSelected: (_) {},
+        onPreviousMonth: () {},
+        onNextMonth: () {},
+      ),
+    ),
+    Specimen(
+      name: 'KlpCombobox',
+      note: '可輸入的下拉選單。輸入框重用 KlpTextField，下拉面板重用 KlpMenu；'
+          '↓／↑ 導覽、Enter 選定。',
+      build: (context) => KlpCombobox(
+        label: '負責人',
+        query: '',
+        menuLabel: '成員',
+        options: const [
+          KlpComboboxOption(id: 'a', label: 'Chiayu'),
+          KlpComboboxOption(id: 'b', label: 'Dog'),
+          KlpComboboxOption(id: 'c', label: 'Miu'),
+        ],
+        onQueryChanged: (_) {},
+        onSelected: (_) {},
+      ),
     ),
     Specimen(
       name: 'KlpCheckbox',
