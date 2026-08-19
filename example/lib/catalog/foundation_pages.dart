@@ -434,6 +434,44 @@ final layoutInteractionPage = CatalogPageData(
       ),
     ),
     Specimen(
+      name: 'KlpDrawer',
+      note:
+          '從邊緣滑入的面板；bottom 方向即一般所稱的 sheet。不負責彈出——呼叫端持有 '
+          'open 狀態並決定用什麼容器承載，本元件只負責滑入動畫、遮罩與點遮罩關閉。',
+      build: (context) => _boxed(
+        context,
+        160,
+        ClipRect(
+          child: KlpDrawer(
+            open: true,
+            edge: KlpDrawerEdge.right,
+            size: 200,
+            onScrimTap: () {},
+            child: Padding(
+              padding: EdgeInsets.all(context.klp.space.compact),
+              child: const KlpText('面板內容'),
+            ),
+          ),
+        ),
+      ),
+    ),
+    Specimen(
+      name: 'KlpContextMenu',
+      note: '右鍵選單。掛在任意子樹上，右鍵或觸控長按於指標位置彈出。選單本體重用 KlpMenu。',
+      build: (context) => KlpContextMenu(
+        label: '動作',
+        items: [
+          KlpMenuItemData(label: '重新命名', onPressed: () {}),
+          KlpMenuItemData(label: '刪除', onPressed: () {}),
+        ],
+        child: KlpSurface(
+          tone: KlpSurfaceTone.component,
+          padding: EdgeInsets.all(context.klp.space.base),
+          child: const KlpText('右鍵點擊我'),
+        ),
+      ),
+    ),
+    Specimen(
       name: 'KlpSplitLayout',
       note: '左右分割。',
       build: (context) => _boxed(

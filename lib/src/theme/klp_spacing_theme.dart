@@ -68,6 +68,8 @@ class KlpSpacingTheme extends ThemeExtension<KlpSpacingTheme> {
     required this.progressTrack,
     required this.skeletonLine,
     required this.railItem,
+    required this.drawerWidth,
+    required this.drawerHeight,
   });
 
   // 10 段精確間距階梯 (px)
@@ -174,6 +176,12 @@ class KlpSpacingTheme extends ThemeExtension<KlpSpacingTheme> {
   /// 42px。導覽軌上的可點區塊
   final double railItem;
 
+  /// 320px。`KlpDrawer` 在 `left`／`right` 方向的預設寬度。
+  final double drawerWidth;
+
+  /// 320px。`KlpDrawer` 在 `top`／`bottom` 方向的預設高度。
+  final double drawerHeight;
+
   double get xxs => space0_5;
 
   EdgeInsets get controlInsets => EdgeInsets.symmetric(
@@ -243,6 +251,8 @@ class KlpSpacingTheme extends ThemeExtension<KlpSpacingTheme> {
     progressTrack: 3,
     skeletonLine: 10,
     railItem: 42,
+    drawerWidth: 320,
+    drawerHeight: 320,
   );
 
   @override
@@ -263,6 +273,8 @@ class KlpSpacingTheme extends ThemeExtension<KlpSpacingTheme> {
     double? progressTrack,
     double? skeletonLine,
     double? railItem,
+    double? drawerWidth,
+    double? drawerHeight,
     double? space0_5,
     double? space1,
     double? space2,
@@ -366,6 +378,8 @@ class KlpSpacingTheme extends ThemeExtension<KlpSpacingTheme> {
       progressTrack: progressTrack ?? this.progressTrack,
       skeletonLine: skeletonLine ?? this.skeletonLine,
       railItem: railItem ?? this.railItem,
+      drawerWidth: drawerWidth ?? this.drawerWidth,
+      drawerHeight: drawerHeight ?? this.drawerHeight,
     );
   }
 
@@ -436,7 +450,9 @@ class KlpSpacingTheme extends ThemeExtension<KlpSpacingTheme> {
           avatarSmall == other.avatarSmall &&
           progressTrack == other.progressTrack &&
           skeletonLine == other.skeletonLine &&
-          railItem == other.railItem;
+          railItem == other.railItem &&
+          drawerWidth == other.drawerWidth &&
+          drawerHeight == other.drawerHeight;
 
   @override
   int get hashCode => Object.hashAll([
@@ -498,5 +514,7 @@ class KlpSpacingTheme extends ThemeExtension<KlpSpacingTheme> {
     progressTrack,
     skeletonLine,
     railItem,
+    drawerWidth,
+    drawerHeight,
   ]);
 }
