@@ -6,7 +6,7 @@
 
 ## 總覽
 
-- 公開型別 **246** 個，其中 widget **144** 個
+- 公開型別 **252** 個，其中 widget **146** 個
 - 分為 **17** 個領域
 
 ### 領域之間的依賴方向
@@ -34,20 +34,20 @@ graph TD
   routing["routing — 分發"]
   shell["shell — 應用外殼"]
   app["app — 接入層"]
-  form -->|20| typography
+  form -->|21| typography
   data -->|18| typography
   controls -->|10| typography
   data -->|10| surface
   data -->|9| foundation
-  form -->|8| controls
+  form -->|9| controls
   controls -->|7| foundation
   editor -->|7| typography
   foundation -->|7| surface
   controls -->|6| surface
   feedback -->|6| typography
+  form -->|6| surface
   feedback -->|5| foundation
   feedback -->|5| surface
-  form -->|5| surface
   foundation -->|5| typography
   interaction -->|5| surface
   navigation -->|5| typography
@@ -55,6 +55,7 @@ graph TD
   editor -->|4| controls
   editor -->|4| data
   interaction -->|4| typography
+  controls -->|3| overlay
   data -->|3| interaction
   data -->|3| overlay
   form -->|3| data
@@ -69,7 +70,6 @@ graph TD
   navigation -->|2| surface
   overlay -->|2| controls
   shell -->|2| foundation
-  controls -->|1| overlay
   data -->|1| controls
   feedback -->|1| interaction
   interaction -->|1| controls
@@ -410,13 +410,15 @@ graph LR
 
 ### controls — 控制項
 
-型別 19 個，widget 14 個。
+型別 21 個，widget 15 個。
 
 | 型別 | 行數 | 組成 |
 |---|---|---|
 | `KlpButton` | 141 | `KlpDashedBorder`、`KlpPressable`、`KlpText` |
 | `KlpButtonTone` | 5 | （葉節點） |
 | `KlpCheckbox` | 74 | `KlpIcon`、`KlpText` |
+| `KlpCombobox` | 197 | `KlpMenu`、`KlpMenuItemData`、`KlpTextField` |
+| `KlpComboboxOption` | 23 | （葉節點） |
 | `KlpCompactSwitch` | 60 | `KlpPressable` |
 | `KlpControlSize` | 1 | （葉節點） |
 | `KlpIconButton` | 77 | `KlpDashedBorder`、`KlpIcon`、`KlpTooltip` |
@@ -428,7 +430,7 @@ graph LR
 | `KlpSelectionOption` | 7 | （葉節點） |
 | `KlpSlider` | 78 | `KlpText` |
 | `KlpSlidingSelection` | 111 | `KlpIcon` |
-| `KlpTextField` | 260 | `KlpDashedBorder`、`KlpIcon`、`KlpText` |
+| `KlpTextField` | 274 | `KlpDashedBorder`、`KlpIcon`、`KlpText` |
 | `KlpToggle` | 51 | `KlpText`、`KlpToggleIndicator` |
 | `KlpToggleIndicator` | 53 | （葉節點） |
 | `KlpTriState` | 2 | （葉節點） |
@@ -438,10 +440,13 @@ graph LR
 graph LR
   KlpButton["KlpButton"]
   KlpCheckbox["KlpCheckbox"]
+  KlpCombobox["KlpCombobox"]
   KlpCompactSwitch["KlpCompactSwitch"]
   KlpDashedBorder["KlpDashedBorder"]:::external
   KlpIcon["KlpIcon"]:::external
   KlpIconButton["KlpIconButton"]
+  KlpMenu["KlpMenu"]:::external
+  KlpMenuItemData["KlpMenuItemData"]:::external
   KlpPhaseToggle["KlpPhaseToggle"]
   KlpPressable["KlpPressable"]:::external
   KlpRadioGroup["KlpRadioGroup"]
@@ -462,6 +467,9 @@ graph LR
   KlpButton --> KlpText
   KlpCheckbox --> KlpIcon
   KlpCheckbox --> KlpText
+  KlpCombobox --> KlpMenu
+  KlpCombobox --> KlpMenuItemData
+  KlpCombobox --> KlpTextField
   KlpCompactSwitch --> KlpPressable
   KlpIconButton --> KlpDashedBorder
   KlpIconButton --> KlpIcon
@@ -622,18 +630,22 @@ graph LR
 
 ### form — 表單
 
-型別 37 個，widget 28 個。
+型別 41 個，widget 29 個。
 
 | 型別 | 行數 | 組成 |
 |---|---|---|
 | `KlpApprovalStepData` | 8 | （葉節點） |
 | `KlpApprovalStepsField` | 153 | `KlpText` |
+| `KlpCalendar` | 245 | `KlpDashedBorder`、`KlpIconButton`、`KlpText` |
+| `KlpCalendarRange` | 28 | （葉節點） |
+| `KlpCalendarSelectionMode` | 7 | （葉節點） |
 | `KlpChoiceOption` | 12 | （葉節點） |
 | `KlpCodeEditorField` | 107 | `KlpText` |
 | `KlpCodeField` | 42 | `KlpCodeViewer`、`KlpText`、`KlpTextArea` |
 | `KlpColorRoleField` | 29 | `KlpSelectField` |
 | `KlpConditionalFieldRegion` | 18 | （葉節點） |
-| `KlpDateField` | 30 | `KlpTextField` |
+| `KlpDateField` | 85 | `KlpCalendar`、`KlpTextField` |
+| `KlpDateFieldCalendar` | 33 | （葉節點） |
 | `KlpField` | 119 | `KlpFieldDescription`、`KlpFieldLabel`、`KlpText` |
 | `KlpFieldDescription` | 15 | `KlpText` |
 | `KlpFieldError` | 18 | `KlpText` |
@@ -659,7 +671,7 @@ graph LR
 | `KlpRepeaterField` | 55 | `KlpButton`、`KlpSurface`、`KlpText` |
 | `KlpRepeaterItem` | 7 | （葉節點） |
 | `KlpSelectField` | 96 | `KlpStrokeFrame`、`KlpText` |
-| `KlpStatusRoleSwatches` | 74 | `KlpText` |
+| `KlpStatusRoleSwatches` | 80 | `KlpText` |
 | `KlpTagChip` | 44 | `KlpText` |
 | `KlpTagInputField` | 84 | `KlpTagChip`、`KlpText` |
 | `KlpTextArea` | 32 | `KlpTextField` |
@@ -669,10 +681,12 @@ graph LR
   KlpApprovalStepsField["KlpApprovalStepsField"]
   KlpBadge["KlpBadge"]:::external
   KlpButton["KlpButton"]:::external
+  KlpCalendar["KlpCalendar"]
   KlpCodeEditorField["KlpCodeEditorField"]
   KlpCodeField["KlpCodeField"]
   KlpCodeViewer["KlpCodeViewer"]:::external
   KlpColorRoleField["KlpColorRoleField"]
+  KlpDashedBorder["KlpDashedBorder"]:::external
   KlpDateField["KlpDateField"]
   KlpField["KlpField"]
   KlpFieldDescription["KlpFieldDescription"]
@@ -685,6 +699,7 @@ graph LR
   KlpFormActions["KlpFormActions"]
   KlpFormErrorSummary["KlpFormErrorSummary"]
   KlpFormSection["KlpFormSection"]
+  KlpIconButton["KlpIconButton"]:::external
   KlpKeyValueEditor["KlpKeyValueEditor"]
   KlpMultiSelectField["KlpMultiSelectField"]
   KlpNumberField["KlpNumberField"]
@@ -701,11 +716,15 @@ graph LR
   KlpTextArea["KlpTextArea"]
   KlpTextField["KlpTextField"]:::external
   KlpApprovalStepsField --> KlpText
+  KlpCalendar --> KlpDashedBorder
+  KlpCalendar --> KlpIconButton
+  KlpCalendar --> KlpText
   KlpCodeEditorField --> KlpText
   KlpCodeField --> KlpCodeViewer
   KlpCodeField --> KlpText
   KlpCodeField --> KlpTextArea
   KlpColorRoleField --> KlpSelectField
+  KlpDateField --> KlpCalendar
   KlpDateField --> KlpTextField
   KlpFieldDescription --> KlpText
   KlpFieldError --> KlpText
@@ -1019,19 +1038,19 @@ graph LR
 
 | 型別 | 被幾個型別使用 |
 |---|---|
-| `KlpText` | 82 |
+| `KlpText` | 83 |
 | `KlpIcon` | 26 |
 | `KlpSurface` | 23 |
-| `KlpDashedBorder` | 21 |
+| `KlpDashedBorder` | 22 |
 | `KlpButton` | 9 |
 | `KlpPressable` | 9 |
-| `KlpTextField` | 7 |
+| `KlpTextField` | 8 |
 | `KlpStrokeFrame` | 5 |
 | `KlpBadge` | 4 |
 | `KlpDashedDivider` | 3 |
+| `KlpMenu` | 3 |
+| `KlpMenuItemData` | 3 |
 | `KlpTooltip` | 3 |
 | `KlpGeometricSpinner` | 2 |
-| `KlpMenu` | 2 |
-| `KlpMenuItemData` | 2 |
-| `KlpToggleIndicator` | 2 |
+| `KlpIconButton` | 2 |
 
