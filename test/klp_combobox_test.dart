@@ -50,6 +50,7 @@ void main() {
     );
 
     await tester.tap(find.byType(TextFormField));
+    await tester.pump();
     await tester.enterText(find.byType(TextFormField), 'ga');
     await tester.pump();
 
