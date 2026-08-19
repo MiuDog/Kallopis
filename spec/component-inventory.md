@@ -187,7 +187,7 @@ graph LR
 | `KlpSpace` | 13 | （葉節點） |
 | `KlpStatusIndicator` | 87 | `KlpIcon`、`KlpText` |
 | `KlpStatusKind` | 21 | （葉節點） |
-| `KlpThemeToggle` | 29 | `KlpSurface`、`KlpText` |
+| `KlpThemeToggle` | 25 | `KlpSurface`、`KlpText` |
 | `KlpTransparency` | 4 | （葉節點） |
 | `KlpTypography` | 66 | （葉節點） |
 
@@ -335,7 +335,7 @@ graph LR
 | 型別 | 行數 | 組成 |
 |---|---|---|
 | `KlpOverlayHost` | 16 | （葉節點） |
-| `KlpRegion` | 42 | `KlpSurface` |
+| `KlpRegion` | 40 | `KlpSurface` |
 | `KlpResizablePane` | 13 | （葉節點） |
 | `KlpResizeHandle` | 23 | （葉節點） |
 | `KlpScrollViewport` | 23 | （葉節點） |
@@ -419,11 +419,11 @@ graph LR
 | `KlpCheckbox` | 74 | `KlpIcon`、`KlpText` |
 | `KlpCombobox` | 197 | `KlpMenu`、`KlpMenuItemData`、`KlpTextField` |
 | `KlpComboboxOption` | 23 | （葉節點） |
-| `KlpCompactSwitch` | 60 | `KlpPressable` |
+| `KlpCompactSwitch` | 58 | `KlpPressable` |
 | `KlpControlSize` | 1 | （葉節點） |
 | `KlpIconButton` | 77 | `KlpDashedBorder`、`KlpIcon`、`KlpTooltip` |
 | `KlpPhaseOption` | 19 | （葉節點） |
-| `KlpPhaseToggle` | 169 | `KlpIcon`、`KlpText` |
+| `KlpPhaseToggle` | 161 | `KlpIcon`、`KlpText` |
 | `KlpRadioGroup` | 133 | `KlpText` |
 | `KlpSegmentedControl` | 152 | `KlpDashedBorder`、`KlpIcon`、`KlpText` |
 | `KlpSelect` | 92 | `KlpDashedBorder`、`KlpIcon`、`KlpStrokeFrame`、`KlpText` |
@@ -536,10 +536,10 @@ graph LR
 | `KlpSortDirection` | 3 | （葉節點） |
 | `KlpStepData` | 11 | （葉節點） |
 | `KlpStepStatus` | 4 | （葉節點） |
-| `KlpStepper` | 229 | `KlpIcon`、`KlpText` |
+| `KlpStepper` | 225 | `KlpIcon`、`KlpText` |
 | `KlpTag` | 61 | `KlpText` |
 | `KlpTerminal` | 119 | `KlpPressable`、`KlpText` |
-| `KlpTimeline` | 94 | `KlpText` |
+| `KlpTimeline` | 99 | `KlpText` |
 | `KlpTimelineItemData` | 20 | （葉節點） |
 | `KlpTree` | 40 | （葉節點） |
 | `KlpTreeItem` | 175 | `KlpDashedBorder`、`KlpIcon`、`KlpText` |
@@ -636,15 +636,15 @@ graph LR
 |---|---|---|
 | `KlpApprovalStepData` | 8 | （葉節點） |
 | `KlpApprovalStepsField` | 153 | `KlpText` |
-| `KlpCalendar` | 245 | `KlpDashedBorder`、`KlpIconButton`、`KlpText` |
+| `KlpCalendar` | 247 | `KlpDashedBorder`、`KlpIconButton`、`KlpText` |
 | `KlpCalendarRange` | 28 | （葉節點） |
 | `KlpCalendarSelectionMode` | 7 | （葉節點） |
 | `KlpChoiceOption` | 12 | （葉節點） |
 | `KlpCodeEditorField` | 107 | `KlpText` |
-| `KlpCodeField` | 42 | `KlpCodeViewer`、`KlpText`、`KlpTextArea` |
+| `KlpCodeField` | 39 | `KlpCodeViewer`、`KlpText`、`KlpTextArea` |
 | `KlpColorRoleField` | 29 | `KlpSelectField` |
 | `KlpConditionalFieldRegion` | 18 | （葉節點） |
-| `KlpDateField` | 85 | `KlpCalendar`、`KlpTextField` |
+| `KlpDateField` | 81 | `KlpCalendar`、`KlpTextField` |
 | `KlpDateFieldCalendar` | 33 | （葉節點） |
 | `KlpField` | 119 | `KlpFieldDescription`、`KlpFieldLabel`、`KlpText` |
 | `KlpFieldDescription` | 15 | `KlpText` |
@@ -662,12 +662,12 @@ graph LR
 | `KlpFormSection` | 48 | `KlpSurface`、`KlpText` |
 | `KlpKeyValueEditor` | 60 | `KlpText`、`KlpTextField` |
 | `KlpKeyValueEntry` | 20 | （葉節點） |
-| `KlpMultiSelectField` | 69 | `KlpText` |
+| `KlpMultiSelectField` | 64 | `KlpText` |
 | `KlpNumberField` | 41 | `KlpTextField` |
 | `KlpPasswordField` | 148 | `KlpText` |
 | `KlpPasswordRequirement` | 8 | （葉節點） |
 | `KlpReferenceOption` | 16 | （葉節點） |
-| `KlpReferencePicker` | 94 | `KlpBadge`、`KlpSurface`、`KlpText`、`KlpTextField` |
+| `KlpReferencePicker` | 81 | `KlpBadge`、`KlpSurface`、`KlpText`、`KlpTextField` |
 | `KlpRepeaterField` | 55 | `KlpButton`、`KlpSurface`、`KlpText` |
 | `KlpRepeaterItem` | 7 | （葉節點） |
 | `KlpSelectField` | 96 | `KlpStrokeFrame`、`KlpText` |

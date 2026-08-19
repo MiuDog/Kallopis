@@ -1,9 +1,6 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
-import '../controls/klp_text_field.dart';
-import '../editor/klp_command_menu.dart';
-import '../feedback/klp_toast.dart';
 import '../surface/klp_stroke.dart';
 import '../surface/klp_surface.dart';
 import '../theme/klp_theme.dart';
@@ -591,7 +588,3 @@ class KlpThemeToggle extends StatelessWidget {
     );
   }
 }
-
-typedef KlpSearchField = KlpTextField;
-typedef KlpToastRegion = KlpToastStack;
-typedef KlpCommandPalette = KlpCommandMenu;

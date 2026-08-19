@@ -1,6 +1,5 @@
 import 'package:flutter/widgets.dart';
 
-import 'klp_toggle.dart';
 
 import '../interaction/klp_pressable.dart';
 import '../theme/klp_theme.dart';
@@ -64,5 +63,3 @@ class KlpCompactSwitch extends StatelessWidget {
     );
   }
 }
-
-typedef KlpSwitch = KlpToggle;

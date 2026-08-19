@@ -576,11 +576,7 @@ final dataDisplayPage = CatalogPageData(
         items: [
           KlpTimelineItemData(title: '建立草稿', time: '09:00'),
           KlpTimelineItemData(title: '送出審核', time: '10:30'),
-          KlpTimelineItemData(
-            title: '核准',
-            time: '14:00',
-            highlighted: true,
-          ),
+          KlpTimelineItemData(title: '核准', time: '14:00', highlighted: true),
         ],
       ),
     ),
@@ -1007,6 +1003,19 @@ final layoutInteractionPage = CatalogPageData(
       name: 'KlpOverlayHost',
       note: '浮層頂層掛載宿主。',
       build: (context) => const SizedBox.shrink(),
+    ),
+    Specimen(
+      name: 'KlpApp',
+      note:
+          '消費者的接入點：包住 MaterialApp，套好亮暗兩套 theme 與 router，'
+          '並把主題過場關成 Duration.zero。這裡巢狀示範一個最小的 KlpApp。',
+      build: (context) => _boxed(
+        context,
+        120,
+        const KlpApp(
+          home: KlpAppScreen(child: Center(child: KlpText('KlpApp'))),
+        ),
+      ),
     ),
     Specimen(
       name: 'KlpAppScreen',

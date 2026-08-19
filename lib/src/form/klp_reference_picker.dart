@@ -104,16 +104,3 @@ class KlpReferencePicker extends StatelessWidget {
     );
   }
 }
-
-typedef KlpPagePicker = KlpReferencePicker;
-typedef KlpAssetPicker = KlpReferencePicker;
-typedef KlpMemberPicker = KlpReferencePicker;
-typedef KlpAgentPicker = KlpReferencePicker;
-typedef KlpModelPicker = KlpReferencePicker;
-typedef KlpToolPicker = KlpReferencePicker;
-typedef KlpMcpPicker = KlpReferencePicker;
-typedef KlpWorkflowPicker = KlpReferencePicker;
-typedef KlpResultPicker = KlpReferencePicker;
-typedef KlpPermissionPicker = KlpReferencePicker;
-typedef KlpCredentialReferenceField = KlpReferencePicker;
-typedef KlpResourcePicker = KlpReferencePicker;

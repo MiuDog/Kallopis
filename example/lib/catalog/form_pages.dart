@@ -387,51 +387,6 @@ final formControlsPage = CatalogPageData(
       },
     ),
     Specimen(
-      name: 'KlpDateField',
-      note: '日期與時間選擇輸入。',
-      build: (context) {
-        final klp = context.klp;
-        return KlpField(
-          label: 'Scheduled start',
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Row(
-                children: [
-                  const SizedBox(
-                    width: 140,
-                    child: KlpTextField(initialValue: '2026/08/14'),
-                  ),
-                  SizedBox(width: klp.space.compact),
-                  KlpIcon(
-                    KlpIcons.calendar,
-                    color: context.klpColors.textMuted,
-                  ),
-                  SizedBox(width: klp.space.base),
-                  KlpIcon(
-                    KlpIcons.telescope,
-                    color: context.klpColors.textMuted,
-                  ),
-                  SizedBox(width: klp.space.tight),
-                  const KlpText(
-                    'Asia/Taipei',
-                    role: KlpTextRole.caption,
-                    tone: KlpTextTone.muted,
-                  ),
-                ],
-              ),
-              SizedBox(height: klp.space.tight),
-              const KlpText(
-                'Clear',
-                role: KlpTextRole.caption,
-                tone: KlpTextTone.muted,
-              ),
-            ],
-          ),
-        );
-      },
-    ),
-    Specimen(
       name: 'KlpToggle',
       note: '開關群組（Notifications）。',
       build: (context) {

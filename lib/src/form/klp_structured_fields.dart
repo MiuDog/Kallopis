@@ -190,9 +190,6 @@ class KlpCodeField extends StatelessWidget {
   }
 }
 
-typedef KlpJsonEditorField = KlpCodeField;
-typedef KlpExpressionField = KlpCodeField;
-
 @immutable
 class KlpFileValue {
   const KlpFileValue({required this.id, required this.name, this.metadata});

@@ -45,8 +45,6 @@ class KlpRegion extends StatelessWidget {
   }
 }
 
-typedef KlpPanel = KlpRegion;
-
 /// 分割版面原語。支援左/中/右或左右分割，以及虛線分隔線。
 class KlpSplitLayout extends StatelessWidget {
   const KlpSplitLayout({

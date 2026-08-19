@@ -559,10 +559,6 @@ class _KlpDateFieldState extends State<KlpDateField> {
   }
 }
 
-typedef KlpTimeField = KlpDateField;
-typedef KlpDateTimeField = KlpDateField;
-typedef KlpDurationField = KlpNumberField;
-
 @immutable
 class KlpChoiceOption {
   const KlpChoiceOption({
@@ -736,8 +732,3 @@ class KlpMultiSelectField extends StatelessWidget {
     );
   }
 }
-
-typedef KlpComboBox = KlpSelectField;
-typedef KlpTagField = KlpMultiSelectField;
-typedef KlpSegmentedChoice = KlpSelectField;
-typedef KlpTreeSelectField = KlpMultiSelectField;
