@@ -6,7 +6,7 @@
 
 ## 總覽
 
-- 公開型別 **243** 個，其中 widget **142** 個
+- 公開型別 **246** 個，其中 widget **144** 個
 - 分為 **17** 個領域
 
 ### 領域之間的依賴方向
@@ -51,10 +51,10 @@ graph TD
   foundation -->|5| typography
   interaction -->|5| surface
   navigation -->|5| typography
+  overlay -->|5| surface
   editor -->|4| controls
   editor -->|4| data
   interaction -->|4| typography
-  overlay -->|4| surface
   data -->|3| interaction
   data -->|3| overlay
   form -->|3| data
@@ -126,7 +126,7 @@ graph TD
 | `KlpFieldStyle` | 241 | （葉節點） |
 | `KlpMotionTheme` | 127 | （葉節點） |
 | `KlpShapeTheme` | 138 | （葉節點） |
-| `KlpSpacingTheme` | 492 | （葉節點） |
+| `KlpSpacingTheme` | 510 | （葉節點） |
 | `KlpSurfaceSeparation` | 19 | （葉節點） |
 | `KlpSurfaceTheme` | 211 | （葉節點） |
 | `KlpTheme` | 103 | `KlpVisualStyle` |
@@ -187,7 +187,7 @@ graph LR
 | `KlpSpace` | 13 | （葉節點） |
 | `KlpStatusIndicator` | 87 | `KlpIcon`、`KlpText` |
 | `KlpStatusKind` | 21 | （葉節點） |
-| `KlpThemeToggle` | 30 | `KlpSurface`、`KlpText` |
+| `KlpThemeToggle` | 29 | `KlpSurface`、`KlpText` |
 | `KlpTransparency` | 4 | （葉節點） |
 | `KlpTypography` | 66 | （葉節點） |
 
@@ -358,11 +358,14 @@ graph LR
 
 ### overlay — 浮層
 
-型別 8 個，widget 5 個。
+型別 11 個，widget 7 個。
 
 | 型別 | 行數 | 組成 |
 |---|---|---|
+| `KlpContextMenu` | 114 | `KlpMenu`、`KlpMenuItemData` |
 | `KlpDialog` | 74 | `KlpButton`、`KlpSurface`、`KlpText` |
+| `KlpDrawer` | 94 | `KlpSurface` |
+| `KlpDrawerEdge` | 9 | （葉節點） |
 | `KlpMenu` | 72 | `KlpDivider`、`KlpMenuItem`、`KlpSurface`、`KlpText` |
 | `KlpMenuItem` | 112 | `KlpDashedBorder`、`KlpIcon`、`KlpText`、`KlpToggleIndicator` |
 | `KlpMenuItemData` | 28 | （葉節點） |
@@ -374,18 +377,24 @@ graph LR
 ```mermaid
 graph LR
   KlpButton["KlpButton"]:::external
+  KlpContextMenu["KlpContextMenu"]
   KlpDashedBorder["KlpDashedBorder"]:::external
   KlpDialog["KlpDialog"]
   KlpDivider["KlpDivider"]:::external
+  KlpDrawer["KlpDrawer"]
   KlpIcon["KlpIcon"]:::external
   KlpMenu["KlpMenu"]
   KlpMenuItem["KlpMenuItem"]
+  KlpMenuItemData["KlpMenuItemData"]
   KlpSurface["KlpSurface"]:::external
   KlpText["KlpText"]:::external
   KlpToggleIndicator["KlpToggleIndicator"]:::external
+  KlpContextMenu --> KlpMenu
+  KlpContextMenu --> KlpMenuItemData
   KlpDialog --> KlpButton
   KlpDialog --> KlpSurface
   KlpDialog --> KlpText
+  KlpDrawer --> KlpSurface
   KlpMenuItem --> KlpDashedBorder
   KlpMenuItem --> KlpIcon
   KlpMenuItem --> KlpText
@@ -1012,7 +1021,7 @@ graph LR
 |---|---|
 | `KlpText` | 82 |
 | `KlpIcon` | 26 |
-| `KlpSurface` | 22 |
+| `KlpSurface` | 23 |
 | `KlpDashedBorder` | 21 |
 | `KlpButton` | 9 |
 | `KlpPressable` | 9 |
@@ -1022,7 +1031,7 @@ graph LR
 | `KlpDashedDivider` | 3 |
 | `KlpTooltip` | 3 |
 | `KlpGeometricSpinner` | 2 |
+| `KlpMenu` | 2 |
+| `KlpMenuItemData` | 2 |
 | `KlpToggleIndicator` | 2 |
-| `KlpAvatar` | 1 |
-| `KlpCheckbox` | 1 |
 
