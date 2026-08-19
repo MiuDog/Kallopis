@@ -423,7 +423,7 @@ graph LR
 | `KlpControlSize` | 1 | （葉節點） |
 | `KlpIconButton` | 77 | `KlpDashedBorder`、`KlpIcon`、`KlpTooltip` |
 | `KlpPhaseOption` | 19 | （葉節點） |
-| `KlpPhaseToggle` | 169 | `KlpIcon`、`KlpText` |
+| `KlpPhaseToggle` | 171 | `KlpIcon`、`KlpText` |
 | `KlpRadioGroup` | 133 | `KlpText` |
 | `KlpSegmentedControl` | 152 | `KlpDashedBorder`、`KlpIcon`、`KlpText` |
 | `KlpSelect` | 92 | `KlpDashedBorder`、`KlpIcon`、`KlpStrokeFrame`、`KlpText` |

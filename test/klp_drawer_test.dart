@@ -23,8 +23,14 @@ void main() {
 
     expect(find.text('面板內容'), findsOneWidget);
 
+    // `find.byType(IgnorePointer).first` 抓到的是框架（MaterialApp／Focus
+    // 系統）自己插入的 IgnorePointer，不是 KlpDrawer 內部那個——必須限定在
+    // KlpDrawer 子樹底下才抓得到正確的實例。
     final ignorePointer = tester.widget<IgnorePointer>(
-      find.byType(IgnorePointer).first,
+      find.descendant(
+        of: find.byType(KlpDrawer),
+        matching: find.byType(IgnorePointer),
+      ),
     );
     expect(ignorePointer.ignoring, isTrue);
 
@@ -52,7 +58,10 @@ void main() {
     await tester.pump();
 
     final ignorePointer = tester.widget<IgnorePointer>(
-      find.byType(IgnorePointer).first,
+      find.descendant(
+        of: find.byType(KlpDrawer),
+        matching: find.byType(IgnorePointer),
+      ),
     );
     expect(ignorePointer.ignoring, isFalse);
 
