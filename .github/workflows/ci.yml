@@ -1,0 +1,87 @@
+# Kallopis CI
+#
+# 對每一次 push 到 main 與每一個 pull request 強制執行機械閘門（見 README.md「## 閘門」）。
+# 在此之前這些閘門只在本機跑，多個 agent 併發編輯時漏跑會直接漏進 main
+# ——這個 workflow 的作用就是讓漏跑不再可能。
+#
+# golden 測試對字型渲染敏感（見 AGENTS.md「已知陷阱」），因此固定在 ubuntu-latest
+# 上執行，避免不同作業系統的字型渲染差異造成假失敗。
+name: CI
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+
+# 同一分支的新 push 取消還在跑的舊 run，省 runner 時間。
+concurrency:
+  group: ci-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  # 與 AGENTS.md「環境事實」一致：Flutter 3.44.4 stable、Dart 3.12.2。
+  # 明確釘死版本，不用會浮動的 stable "latest"，避免上游版本更新在無預警下打壞 CI。
+  FLUTTER_VERSION: '3.44.4'
+  FLUTTER_CHANNEL: 'stable'
+
+jobs:
+  root:
+    name: root package
+    runs-on: ubuntu-latest
+    steps:
+      - name: 取出程式碼
+        uses: actions/checkout@v4
+
+      - name: 安裝 Flutter（含 pub cache）
+        uses: subosito/flutter-action@v2
+        with:
+          channel: ${{ env.FLUTTER_CHANNEL }}
+          flutter-version: ${{ env.FLUTTER_VERSION }}
+          cache: true
+          pub-cache: true
+
+      - name: 取得相依套件
+        run: flutter pub get
+
+      - name: 格式檢查（dart format）
+        run: dart format --output=none --set-exit-if-changed .
+
+      - name: 靜態分析（flutter analyze）
+        run: flutter analyze --fatal-infos
+
+      - name: 執行測試（flutter test，含 golden）
+        run: flutter test
+
+      - name: 元件清單新鮮度（inventory --check）
+        run: dart run tool/inventory.dart --check
+
+  example:
+    name: example package
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: example
+    steps:
+      - name: 取出程式碼
+        uses: actions/checkout@v4
+
+      - name: 安裝 Flutter（含 pub cache）
+        uses: subosito/flutter-action@v2
+        with:
+          channel: ${{ env.FLUTTER_CHANNEL }}
+          flutter-version: ${{ env.FLUTTER_VERSION }}
+          cache: true
+          pub-cache: true
+
+      - name: 取得相依套件
+        run: flutter pub get
+
+      - name: 格式檢查（dart format）
+        run: dart format --output=none --set-exit-if-changed .
+
+      - name: 靜態分析（flutter analyze）
+        run: flutter analyze --fatal-infos
+
+      - name: 執行測試（flutter test，含 style_switch_golden_test 等）
+        run: flutter test

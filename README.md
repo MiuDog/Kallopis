@@ -181,6 +181,12 @@ MaterialApp(
 | `test/color_discipline_test.dart` | 中性欄位必須在 ink 梯上；元件不得取用具體顏色；色梯明度嚴格遞減；文字三階與強調色的對比門檻 |
 | `example/test/catalog_coverage_test.dart` | 每個匯出的 widget 都要被歸類、不得重複、不得殘留已刪除的名字；每一頁在明暗兩態下都要能渲染 |
 
+以上閘門現由 `.github/workflows/ci.yml` 在每次 push 到 `main` 與每個 pull request 上機械執行，
+root 與 `example/` 兩個 package 各自跑 `dart format`、`flutter analyze --fatal-infos`、
+`flutter test`；`dart run tool/inventory.dart --check`（元件清單新鮮度）只在 root 跑。
+golden 測試對字型渲染敏感，CI 固定在 `ubuntu-latest` 上執行以維持結果一致。本機沒跑到
+的閘門，現在對每一次提交都會跑到。
+
 ## 建置與測試
 
 Flutter 3.44.4 / Dart 3.12.2，於 `C:\development\flutter\bin`（**不在 PATH 上**）。
