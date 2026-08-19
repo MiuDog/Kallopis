@@ -30,6 +30,7 @@ const categoryOrder = <String>[
   'editor',
   'routing',
   'shell',
+  'app',
 ];
 
 const categoryLabel = <String, String>{
@@ -49,6 +50,7 @@ const categoryLabel = <String, String>{
   'editor': 'editor — 編輯器周邊',
   'shell': 'shell — 應用外殼',
   'routing': 'routing — 分發',
+  'app': 'app — 接入層',
 };
 
 final _declaration = RegExp(

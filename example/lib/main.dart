@@ -11,6 +11,8 @@ void main() => runApp(const KallopisCatalogApp());
 /// 只使用出貨的 `modern` 風格；明暗切換在左下角。
 /// 「換整套風格」的驗收由 `test/style_switch_golden_test.dart` 以離屏算圖負責，
 /// 不佔用目錄的畫面。
+///
+/// 接入方式本身就是 [KlpApp] 的自我驗證：目錄用起來不順，消費者也不會順。
 class KallopisCatalogApp extends StatefulWidget {
   const KallopisCatalogApp({super.key});
 
@@ -19,39 +21,21 @@ class KallopisCatalogApp extends StatefulWidget {
 }
 
 class _KallopisCatalogAppState extends State<KallopisCatalogApp> {
-  KlpVisualStyle _style = KlpVisualStyle.modern;
-  Brightness _brightness = Brightness.light;
   int _selected = 0;
-
-  void _toggleBrightness() {
-    setState(() {
-      _brightness = _brightness == Brightness.light
-          ? Brightness.dark
-          : Brightness.light;
-      _style = _style.copyWith(
-        colors: _brightness == Brightness.dark
-            ? KlpThemeData.dark
-            : KlpThemeData.light,
-      );
-    });
-  }
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return KlpApp(
       debugShowCheckedModeBanner: false,
       title: 'Kallopis Catalog',
-      theme: buildKlpTheme(_brightness, style: _style),
-      // 深淺切換不做過場。MaterialApp 預設會跑 200ms 的 theme 動畫並沿路呼叫各層的
-      // lerp——即使每一層都在中點原子性翻轉，動畫期間仍有半數幀停在舊值上，看起來
-      // 就像「某些元件沒有跟著變」。切換主題是狀態改變，不是動作。
-      themeAnimationDuration: Duration.zero,
-      home: CatalogShell(
-        groups: catalogGroups,
-        pages: catalogPages,
-        selected: _selected.clamp(0, catalogPages.length - 1),
-        onSelected: (index) => setState(() => _selected = index),
-        onToggleTheme: _toggleBrightness,
+      home: Builder(
+        builder: (context) => CatalogShell(
+          groups: catalogGroups,
+          pages: catalogPages,
+          selected: _selected.clamp(0, catalogPages.length - 1),
+          onSelected: (index) => setState(() => _selected = index),
+          onToggleTheme: () => KlpApp.of(context).toggleBrightness(),
+        ),
       ),
     );
   }
