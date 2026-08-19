@@ -11,14 +11,35 @@ class KlpRadioGroup<T> extends StatelessWidget {
     required this.items,
     required this.value,
     required this.onChanged,
+    this.descriptions,
+    this.vertical = false,
   });
 
   final Map<T, String> items;
   final T value;
   final ValueChanged<T> onChanged;
+  final Map<T, String>? descriptions;
+  final bool vertical;
 
   @override
   Widget build(BuildContext context) {
+    if (vertical) {
+      return Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          for (final entry in items.entries) ...[
+            _KlpRadioItem(
+              label: entry.value,
+              description: descriptions?[entry.key],
+              selected: entry.key == value,
+              onPressed: () => onChanged(entry.key),
+            ),
+            SizedBox(height: context.klp.space.tight),
+          ],
+        ],
+      );
+    }
+
     return Wrap(
       spacing: context.klp.space.comfortable,
       runSpacing: context.klp.space.compact,
@@ -26,6 +47,7 @@ class KlpRadioGroup<T> extends StatelessWidget {
         for (final entry in items.entries)
           _KlpRadioItem(
             label: entry.value,
+            description: descriptions?[entry.key],
             selected: entry.key == value,
             onPressed: () => onChanged(entry.key),
           ),
@@ -37,11 +59,13 @@ class KlpRadioGroup<T> extends StatelessWidget {
 class _KlpRadioItem extends StatelessWidget {
   const _KlpRadioItem({
     required this.label,
+    this.description,
     required this.selected,
     required this.onPressed,
   });
 
   final String label;
+  final String? description;
   final bool selected;
   final VoidCallback onPressed;
 
@@ -60,18 +84,16 @@ class _KlpRadioItem extends StatelessWidget {
             label: label,
             child: Material(
               color: KlpPalette.transparent,
-              borderRadius: BorderRadius.circular(context.klp.shape.control),
+              shape: const CircleBorder(),
               child: InkWell(
                 onTap: onPressed,
-                borderRadius: BorderRadius.circular(context.klp.shape.control),
+                customBorder: const CircleBorder(),
                 child: DecoratedBox(
                   decoration: BoxDecoration(
+                    shape: BoxShape.circle,
                     border: Border.all(
-                      color: tokens.textMuted,
+                      color: selected ? tokens.text : tokens.textMuted,
                       width: context.klp.shape.stroke,
-                    ),
-                    borderRadius: BorderRadius.circular(
-                      context.klp.shape.control,
                     ),
                   ),
                   child: SizedBox.square(
@@ -83,10 +105,8 @@ class _KlpRadioItem extends StatelessWidget {
                       child: AnimatedContainer(
                         duration: context.klp.motion.styleTransition,
                         decoration: BoxDecoration(
-                          color: selected ? tokens.selection : null,
-                          borderRadius: BorderRadius.circular(
-                            context.klp.shape.control - 1,
-                          ),
+                          shape: BoxShape.circle,
+                          color: selected ? tokens.text : null,
                         ),
                       ),
                     ),
@@ -96,7 +116,23 @@ class _KlpRadioItem extends StatelessWidget {
             ),
           ),
           SizedBox(width: context.klp.space.compact),
-          KlpText(label),
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                KlpText(label, role: KlpTextRole.bodyStrong),
+                if (description != null) ...[
+                  SizedBox(height: context.klp.space.tight),
+                  KlpText(
+                    description!,
+                    role: KlpTextRole.caption,
+                    tone: KlpTextTone.muted,
+                  ),
+                ],
+              ],
+            ),
+          ),
         ],
       ),
     );

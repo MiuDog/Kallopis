@@ -236,7 +236,6 @@ class _NavItemState extends State<_NavItem> {
     // （hover H 94°、選取 H 81°），看起來像兩種語意色。
     Widget itemContent = Container(
       decoration: BoxDecoration(
-        color: widget.selected ? klp.selectionWash : null,
         borderRadius: BorderRadius.circular(klp.shape.control),
       ),
       padding: EdgeInsets.symmetric(

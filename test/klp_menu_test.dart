@@ -121,6 +121,6 @@ void main() {
     final tokens = KlpThemeContext(
       tester.element(find.text('Heading 2')),
     ).klpColors;
-    expect(itemMaterial.color, tokens.hoverSurface);
+    expect(itemMaterial.color, tokens.selectionBackground);
   });
 }

@@ -77,22 +77,22 @@ class _KlpTextFieldState extends State<KlpTextField> {
       KlpControlSize.sm => (
         klp.space.controlHeightSmall,
         klp.type.sub,
-        klp.space.controlPaddingXSmall,
+        klp.space.tight,
       ),
       KlpControlSize.md => (
         klp.space.controlHeight,
         klp.type.body,
-        klp.space.controlPaddingX,
+        klp.space.compact,
       ),
       KlpControlSize.lg => (
         klp.space.controlHeightLarge,
         klp.type.lead,
-        klp.space.controlPaddingXLarge,
+        klp.space.base,
       ),
       KlpControlSize.xl => (
         klp.space.controlHeightXLarge,
         klp.type.lead,
-        klp.space.controlPaddingXXLarge,
+        klp.space.comfortable,
       ),
     };
 
@@ -157,79 +157,81 @@ class _KlpTextFieldState extends State<KlpTextField> {
       );
     }
 
-    final effectiveBorder = widget.conflict
-        ? OutlineInputBorder(
-            borderRadius: BorderRadius.circular(klp.shape.control),
-            borderSide: BorderSide(
-              color: tokens.danger,
-              width: klp.shape.stroke,
-            ),
-          )
-        : KlpFieldStyle.borderFor(klp.shape);
+    final isInvalid = hasError || widget.conflict;
+    final fillColor = KlpFieldStyle.inputFill(tokens, error: isInvalid);
 
-    Widget fieldWidget = Material(
-      type: MaterialType.transparency,
-      child: Focus(
-        onFocusChange: (focused) => setState(() => _focused = focused),
-        child: TextFormField(
-          initialValue: widget.initialValue,
-          focusNode: widget.focusNode,
-          autofocus: widget.autofocus,
-          enabled: widget.enabled,
-          readOnly: widget.readOnly,
-          inputFormatters: widget.maxLength == null
-              ? null
-              : [LengthLimitingTextInputFormatter(widget.maxLength)],
-          onChanged: widget.onChanged,
-          onFieldSubmitted: widget.onSubmitted,
-          minLines: widget.multiline ? 4 : 1,
-          maxLines: widget.multiline ? 8 : 1,
-          style: TextStyle(
-            color: !widget.enabled ? tokens.textFaint : tokens.text,
-            fontSize: fontSize,
-            height: klp.type.captionLeading,
-            fontFamily: klp.type.uiFamily,
-            fontFamilyFallback: klp.type.fallbackFor(klp.type.uiFamily),
-          ),
-          cursorColor: tokens.interaction,
-          decoration: InputDecoration(
-            isDense: true,
-            hintText: widget.placeholder,
-            hintStyle: TextStyle(
-              color: tokens.textFaint,
+    Widget fieldWidget = Container(
+      height: widget.multiline ? null : fieldHeight,
+      decoration: BoxDecoration(
+        color: fillColor,
+        borderRadius: BorderRadius.circular(klp.shape.control),
+      ),
+      alignment: widget.multiline ? Alignment.topLeft : Alignment.centerLeft,
+      child: Material(
+        type: MaterialType.transparency,
+        child: Focus(
+          onFocusChange: (focused) => setState(() => _focused = focused),
+          child: TextFormField(
+            initialValue: widget.initialValue,
+            focusNode: widget.focusNode,
+            autofocus: widget.autofocus,
+            enabled: widget.enabled,
+            readOnly: widget.readOnly,
+            textAlignVertical: widget.multiline
+                ? TextAlignVertical.top
+                : TextAlignVertical.center,
+            inputFormatters: widget.maxLength == null
+                ? null
+                : [LengthLimitingTextInputFormatter(widget.maxLength)],
+            onChanged: widget.onChanged,
+            onFieldSubmitted: widget.onSubmitted,
+            minLines: widget.multiline ? 4 : 1,
+            maxLines: widget.multiline ? 8 : 1,
+            style: TextStyle(
+              color: !widget.enabled ? tokens.textFaint : tokens.text,
               fontSize: fontSize,
+              height: klp.type.captionLeading,
               fontFamily: klp.type.uiFamily,
               fontFamilyFallback: klp.type.fallbackFor(klp.type.uiFamily),
             ),
-            prefixIcon: widget.leadingIcon == null
-                ? null
-                : Padding(
-                    padding: EdgeInsets.all(klp.space.compact),
-                    child: KlpIcon(
-                      widget.leadingIcon!,
-                      color: tokens.textMuted,
+            cursorColor: tokens.interaction,
+            decoration: InputDecoration(
+              isDense: true,
+              hintText: widget.placeholder,
+              hintStyle: TextStyle(
+                color: tokens.textFaint,
+                fontSize: fontSize,
+                fontFamily: klp.type.uiFamily,
+                fontFamilyFallback: klp.type.fallbackFor(klp.type.uiFamily),
+              ),
+              prefixIcon: widget.leadingIcon == null
+                  ? null
+                  : Padding(
+                      padding: EdgeInsets.all(klp.space.compact),
+                      child: KlpIcon(
+                        widget.leadingIcon!,
+                        color: tokens.textMuted,
+                      ),
                     ),
-                  ),
-            prefixIconConstraints: BoxConstraints(
-              minWidth: fieldHeight,
-              minHeight: fieldHeight,
-            ),
-            suffixIcon: suffixWidget,
-            suffixIconConstraints: BoxConstraints(minHeight: fieldHeight),
-            constraints: widget.multiline
-                ? null
-                : BoxConstraints.tightFor(height: fieldHeight),
-            filled: true,
-            fillColor: KlpFieldStyle.inputFill(tokens, error: hasError),
-            border: effectiveBorder,
-            enabledBorder: effectiveBorder,
-            focusedBorder: effectiveBorder,
-            errorBorder: effectiveBorder,
-            focusedErrorBorder: effectiveBorder,
-            disabledBorder: effectiveBorder,
-            contentPadding: EdgeInsets.symmetric(
-              horizontal: paddingX,
-              vertical: klp.space.controlPaddingY,
+              prefixIconConstraints: BoxConstraints(
+                minWidth: fieldHeight,
+                minHeight: fieldHeight,
+              ),
+              suffixIcon: suffixWidget,
+              suffixIconConstraints: BoxConstraints(minHeight: fieldHeight),
+              filled: false,
+              border: InputBorder.none,
+              enabledBorder: InputBorder.none,
+              focusedBorder: InputBorder.none,
+              errorBorder: InputBorder.none,
+              focusedErrorBorder: InputBorder.none,
+              disabledBorder: InputBorder.none,
+              contentPadding: EdgeInsets.symmetric(
+                horizontal: paddingX,
+                vertical: widget.multiline
+                    ? klp.space.controlPaddingY
+                    : (fieldHeight - fontSize * 1.3) / 2,
+              ),
             ),
           ),
         ),
@@ -238,7 +240,7 @@ class _KlpTextFieldState extends State<KlpTextField> {
 
     if ((_hovered || _focused) && widget.enabled) {
       fieldWidget = KlpDashedBorder(
-        color: widget.conflict ? tokens.danger : klp.hoverBorder,
+        color: klp.hoverBorder,
         radius: klp.shape.control,
         child: fieldWidget,
       );

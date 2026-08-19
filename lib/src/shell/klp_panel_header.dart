@@ -10,12 +10,14 @@ class KlpPanelHeader extends StatelessWidget {
     this.label,
     this.leading,
     this.actions = const [],
+    this.titleRole = KlpTextRole.bodyStrong,
   });
 
   final String title;
   final String? label;
   final Widget? leading;
   final List<Widget> actions;
+  final KlpTextRole titleRole;
 
   @override
   Widget build(BuildContext context) {
@@ -34,7 +36,7 @@ class KlpPanelHeader extends StatelessWidget {
               children: [
                 KlpText(
                   title,
-                  role: KlpTextRole.bodyStrong,
+                  role: titleRole,
                   maxLines: 1,
                   overflow: TextOverflow.ellipsis,
                 ),

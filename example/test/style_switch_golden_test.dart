@@ -56,19 +56,24 @@ final _contrasting = KlpVisualStyle.modern.copyWith(
 
 void main() {
   setUpAll(() async {
-    final sans = FontLoader(KlpTypographyTheme.proportional.sansFamily)
-      ..addFont(
-        rootBundle.load(
-          'packages/kallopis/assets/fonts/IBMPlexSansTC-Regular.ttf',
-        ),
-      );
-    final mono = FontLoader(KlpTypographyTheme.proportional.monoFamily)
-      ..addFont(
-        rootBundle.load(
-          'packages/kallopis/assets/fonts/IBMPlexMono-Regular.ttf',
-        ),
-      );
-    await Future.wait([sans.load(), mono.load()]);
+    if (KlpTypographyTheme.proportional.sansFamily.isNotEmpty) {
+      final sans = FontLoader(KlpTypographyTheme.proportional.sansFamily)
+        ..addFont(
+          rootBundle.load(
+            'packages/kallopis/assets/fonts/IBMPlexSansTC-Regular.ttf',
+          ),
+        );
+      await sans.load();
+    }
+    if (KlpTypographyTheme.proportional.monoFamily.isNotEmpty) {
+      final mono = FontLoader(KlpTypographyTheme.proportional.monoFamily)
+        ..addFont(
+          rootBundle.load(
+            'packages/kallopis/assets/fonts/IBMPlexMono-Regular.ttf',
+          ),
+        );
+      await mono.load();
+    }
   });
 
   Future<void> pumpSpecimen(

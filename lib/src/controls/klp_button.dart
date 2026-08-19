@@ -146,6 +146,7 @@ class _KlpButtonState extends State<KlpButton> {
         ),
         onHover: _setHovered,
         onFocusChange: _setFocused,
+        showHoverBorder: false,
         borderRadius: BorderRadius.circular(klp.shape.control),
         child: content,
       ),

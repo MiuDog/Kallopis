@@ -33,10 +33,10 @@ class KlpToggle extends StatelessWidget {
           toggled: value,
           child: Material(
             color: KlpPalette.transparent,
-            borderRadius: BorderRadius.circular(context.klp.shape.pill),
+            borderRadius: BorderRadius.circular(context.klp.shape.sm * 2),
             child: InkWell(
               onTap: enabled ? () => onChanged!(!value) : null,
-              borderRadius: BorderRadius.circular(context.klp.shape.pill),
+              borderRadius: BorderRadius.circular(context.klp.shape.sm * 2),
               overlayColor: const WidgetStatePropertyAll(
                 KlpPalette.transparent,
               ),
@@ -87,7 +87,7 @@ class KlpToggleIndicator extends StatelessWidget {
         child: DecoratedBox(
           decoration: BoxDecoration(
             color: trackColor,
-            borderRadius: BorderRadius.circular(context.klp.shape.pill),
+            borderRadius: BorderRadius.circular(context.klp.shape.sm * 2),
           ),
           child: Padding(
             padding: const EdgeInsets.all(KlpFormMetrics.toggleInset),
@@ -96,7 +96,7 @@ class KlpToggleIndicator extends StatelessWidget {
               child: DecoratedBox(
                 decoration: BoxDecoration(
                   color: thumbColor,
-                  shape: BoxShape.circle,
+                  borderRadius: BorderRadius.circular(context.klp.shape.sm),
                 ),
                 child: const SizedBox.square(
                   dimension: KlpFormMetrics.toggleThumb,

@@ -65,8 +65,10 @@
 library;
 
 export 'src/controls/klp_button.dart';
+export 'src/controls/klp_control_size.dart';
 export 'src/controls/klp_checkbox.dart';
 export 'src/controls/klp_icon_button.dart';
+export 'src/controls/klp_phase_toggle.dart';
 export 'src/controls/klp_radio_group.dart';
 export 'src/controls/klp_segmented_control.dart';
 export 'src/controls/klp_select.dart';
@@ -104,6 +106,8 @@ export 'src/foundation/klp_palette.dart';
 export 'src/foundation/klp_accent.dart';
 export 'src/foundation/klp_metrics.dart';
 export 'src/foundation/klp_foundation_extras.dart';
+export 'src/foundation/klp_geometric_spinner.dart';
+export 'src/foundation/klp_inline_code.dart';
 export 'src/navigation/klp_breadcrumb.dart';
 export 'src/navigation/klp_rail_item.dart';
 export 'src/navigation/klp_tabs.dart';

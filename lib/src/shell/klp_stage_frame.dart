@@ -1,4 +1,4 @@
-import 'package:flutter/widgets.dart';
+import 'package:flutter/material.dart';
 
 import '../theme/klp_theme.dart';
 
@@ -9,32 +9,55 @@ class KlpStageFrame extends StatelessWidget {
     required this.header,
     required this.content,
     this.status,
+    this.padding,
   });
 
   final Widget header;
   final Widget content;
   final Widget? status;
 
+  /// 內容與舞台區之間的內距。預設為 `context.klp.space.base`。
+  final EdgeInsetsGeometry? padding;
+
   @override
   Widget build(BuildContext context) {
+    final tokens = context.klpColors;
+    final background = tokens.stageSurface;
+    final surfaceTokens = tokens.onBackground(background);
+
     return DecoratedBox(
       decoration: BoxDecoration(
-        color: context.klpColors.stageSurface,
+        color: background,
         borderRadius: BorderRadius.circular(context.klp.shape.panel),
       ),
       child: ClipRRect(
         borderRadius: BorderRadius.circular(context.klp.shape.panel),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: [
-            SizedBox(height: context.klp.space.chromeHeader, child: header),
-            Expanded(child: content),
-            if (status != null)
-              SizedBox(
-                height: context.klp.space.chromeStatusBar,
-                child: status!,
+        child: Theme(
+          data: Theme.of(context).copyWith(
+            extensions: [
+              ...Theme.of(
+                context,
+              ).extensions.values.where((ext) => ext is! KlpThemeData),
+              surfaceTokens,
+            ],
+          ),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              SizedBox(height: context.klp.space.chromeHeader, child: header),
+              Expanded(
+                child: Padding(
+                  padding: padding ?? EdgeInsets.all(context.klp.space.base),
+                  child: content,
+                ),
               ),
-          ],
+              if (status != null)
+                SizedBox(
+                  height: context.klp.space.chromeStatusBar,
+                  child: status!,
+                ),
+            ],
+          ),
         ),
       ),
     );

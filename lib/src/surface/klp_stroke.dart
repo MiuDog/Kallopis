@@ -12,6 +12,7 @@ class KlpStrokeFrame extends StatelessWidget {
     required this.role,
     required this.child,
     this.state = KlpStrokeState.rest,
+    this.color,
     this.radius,
     this.width,
     this.dashLength,
@@ -25,6 +26,7 @@ class KlpStrokeFrame extends StatelessWidget {
   final KlpStrokeRole role;
   final Widget child;
   final KlpStrokeState state;
+  final Color? color;
 
   /// 以下皆為 `null` 表示沿用 theme。指定值只用於刻意偏離的場合——
   /// 建構子預設值是編譯期常數，讀不到 theme。
@@ -41,13 +43,18 @@ class KlpStrokeFrame extends StatelessWidget {
     final effectiveWidth = width ?? shape.hairline;
     final effectiveDashLength = dashLength ?? shape.dashedLength;
     final effectiveGapLength = gapLength ?? shape.dashedGap;
-    final effectiveOpacity = opacity ?? shape.dashedOpacity;
+    final baseColor = color ?? context.klpColors.guide;
+    final effectiveColor = opacity != null
+        ? baseColor.withValues(alpha: opacity!)
+        : (color != null
+              ? baseColor
+              : baseColor.withValues(alpha: shape.dashedOpacity));
 
     return switch (role) {
       KlpStrokeRole.structure => child,
       KlpStrokeRole.latent => CustomPaint(
         foregroundPainter: _KlpLatentStrokePainter(
-          color: context.klpColors.guide.withValues(alpha: effectiveOpacity),
+          color: effectiveColor,
           radius: effectiveRadius,
           width: effectiveWidth,
           dashLength: effectiveDashLength,

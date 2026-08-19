@@ -384,10 +384,10 @@ class KlpStatusRoleSwatches extends StatelessWidget {
     final klp = context.klp;
 
     final roles = [
-      ('success', tokens.success),
-      ('danger', tokens.danger),
-      ('warning', tokens.warning),
-      ('info', tokens.info),
+      ('SUCCESS', tokens.success),
+      ('DANGER', tokens.danger),
+      ('WARNING', tokens.warning),
+      ('INFO', tokens.info),
     ];
 
     return Column(

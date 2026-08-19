@@ -25,7 +25,8 @@ class KlpCheckbox extends StatelessWidget {
   Widget build(BuildContext context) {
     final tokens = context.klpColors;
     final enabled = onChanged != null;
-    final borderColor = enabled ? tokens.textMuted : tokens.textFaint;
+    final activeColor = enabled ? tokens.text : tokens.textMuted;
+    final inactiveBorderColor = enabled ? tokens.textMuted : tokens.textFaint;
 
     return Padding(
       padding: EdgeInsets.symmetric(vertical: context.klp.space.tight),
@@ -48,22 +49,18 @@ class KlpCheckbox extends StatelessWidget {
                   height: KlpFormMetrics.selectionControl,
                   alignment: Alignment.center,
                   decoration: BoxDecoration(
-                    color: value ? tokens.selection : null,
-                    border: value
-                        ? null
-                        : Border.all(
-                            color: borderColor,
-                            width: context.klp.shape.stroke,
-                          ),
-                    borderRadius: BorderRadius.circular(
-                      context.klp.shape.control,
+                    color: value ? activeColor : null,
+                    border: Border.all(
+                      color: value ? activeColor : inactiveBorderColor,
+                      width: context.klp.shape.stroke,
                     ),
+                    borderRadius: BorderRadius.circular(context.klp.shape.sm),
                   ),
                   child: value
                       ? KlpIcon(
                           KlpIcons.check,
                           size: KlpFormMetrics.selectionIcon,
-                          color: tokens.onSelection,
+                          color: tokens.stageSurface,
                         )
                       : null,
                 ),

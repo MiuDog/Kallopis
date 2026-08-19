@@ -97,7 +97,7 @@ void main() {
     expect(content.bottom, lessThan(region.bottom));
   });
 
-  test('亮態的分隔線用 ink200', () {
-    expect(KlpThemeData.light.divider.toARGB32(), KlpPalette.ink200.toARGB32());
+  test('亮態的分隔線用 ink100', () {
+    expect(KlpThemeData.light.divider.toARGB32(), KlpPalette.ink100.toARGB32());
   });
 }

@@ -5,9 +5,11 @@ import 'package:kallopis/kallopis.dart';
 
 void main() {
   setUpAll(() async {
-    final mono = FontLoader(KlpTypography.monoFamily)
-      ..addFont(rootBundle.load('assets/fonts/IBMPlexMono-Regular.ttf'));
-    await mono.load();
+    if (KlpTypography.monoFamily.isNotEmpty) {
+      final mono = FontLoader(KlpTypography.monoFamily)
+        ..addFont(rootBundle.load('assets/fonts/IBMPlexMono-Regular.ttf'));
+      await mono.load();
+    }
   });
 
   testWidgets('Code viewer exposes language, copy, menu, and view intents', (
@@ -81,7 +83,7 @@ void main() {
   testWidgets('Code viewer matches the compact terminal specimen', (
     tester,
   ) async {
-    tester.view.physicalSize = const Size(580, 150);
+    tester.view.physicalSize = const Size(580, 170);
     tester.view.devicePixelRatio = 1;
     addTearDown(tester.view.resetPhysicalSize);
     addTearDown(tester.view.resetDevicePixelRatio);

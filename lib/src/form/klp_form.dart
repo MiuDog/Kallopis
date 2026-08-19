@@ -108,23 +108,47 @@ class KlpField extends StatelessWidget {
     required this.child,
     this.description,
     this.error,
+    this.errorCode,
     this.requirement,
+    this.required = false,
+    this.status,
+    this.counter,
   });
 
   final String label;
   final String? description;
   final String? error;
+  final String? errorCode;
   final String? requirement;
+  final bool required;
+  final String? status;
+  final String? counter;
   final Widget child;
 
   @override
   Widget build(BuildContext context) {
+    final klp = context.klp;
+
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
         Row(
           children: [
-            Expanded(child: KlpFieldLabel(label: label)),
+            Expanded(
+              child: Row(
+                children: [
+                  KlpFieldLabel(label: label),
+                  if (required) ...[
+                    SizedBox(width: klp.space.tight),
+                    const KlpText(
+                      '*',
+                      role: KlpTextRole.caption,
+                      tone: KlpTextTone.danger,
+                    ),
+                  ],
+                ],
+              ),
+            ),
             if (requirement != null)
               KlpText(
                 requirement!,
@@ -134,14 +158,62 @@ class KlpField extends StatelessWidget {
           ],
         ),
         if (description != null) ...[
-          SizedBox(height: context.klp.space.tight),
+          SizedBox(height: klp.space.tight),
           KlpFieldDescription(description: description!),
         ],
-        SizedBox(height: context.klp.space.tight),
+        SizedBox(height: klp.space.tight),
         child,
-        if (error != null) ...[
-          SizedBox(height: context.klp.space.tight),
-          KlpFieldError(error: error!),
+        if (error != null || status != null || counter != null) ...[
+          SizedBox(height: klp.space.tight),
+          Row(
+            children: [
+              if (error != null)
+                Expanded(
+                  child: Row(
+                    children: [
+                      const KlpText(
+                        '× ',
+                        role: KlpTextRole.caption,
+                        tone: KlpTextTone.danger,
+                      ),
+                      Expanded(
+                        child: KlpText(
+                          error!,
+                          role: KlpTextRole.caption,
+                          tone: KlpTextTone.danger,
+                        ),
+                      ),
+                    ],
+                  ),
+                )
+              else if (status != null)
+                Expanded(
+                  child: KlpText(
+                    status!,
+                    role: KlpTextRole.caption,
+                    tone: KlpTextTone.muted,
+                  ),
+                )
+              else
+                const Spacer(),
+              if (errorCode != null) ...[
+                SizedBox(width: klp.space.compact),
+                KlpText(
+                  errorCode!,
+                  role: KlpTextRole.code,
+                  tone: KlpTextTone.danger,
+                ),
+              ],
+              if (counter != null) ...[
+                SizedBox(width: klp.space.compact),
+                KlpText(
+                  counter!,
+                  role: KlpTextRole.code,
+                  tone: KlpTextTone.faint,
+                ),
+              ],
+            ],
+          ),
         ],
       ],
     );

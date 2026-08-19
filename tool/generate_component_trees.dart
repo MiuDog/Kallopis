@@ -58,13 +58,14 @@ class WidgetDoc {
 }
 
 void main() {
-  final files = Directory('lib/src')
-      .listSync(recursive: true)
-      .whereType<File>()
-      .where((f) => f.path.endsWith('.dart'))
-      .map((f) => f.path.replaceAll(r'\', '/'))
-      .toList()
-    ..sort();
+  final files =
+      Directory('lib/src')
+          .listSync(recursive: true)
+          .whereType<File>()
+          .where((f) => f.path.endsWith('.dart'))
+          .map((f) => f.path.replaceAll(r'\', '/'))
+          .toList()
+        ..sort();
 
   final widgetDeclRegex = RegExp(
     r'^(?:abstract\s+)?class\s+(Klp[A-Za-z0-9]+)\s+extends\s+(StatelessWidget|StatefulWidget|InheritedNotifier|InheritedWidget|CustomPainter)',
@@ -92,7 +93,10 @@ void main() {
         final docLines = <String>[];
         var d = i - 1;
         while (d >= 0 && lines[d].trim().startsWith('///')) {
-          docLines.insert(0, lines[d].trim().replaceFirst(RegExp(r'^\/\/\/\s?'), ''));
+          docLines.insert(
+            0,
+            lines[d].trim().replaceFirst(RegExp(r'^\/\/\/\s?'), ''),
+          );
           d--;
         }
         final doc = docLines.join(' ').trim();
@@ -101,16 +105,18 @@ void main() {
         final fileBase = _toSnakeCase(name);
         widgetFileNameMap[name] = fileBase;
 
-        widgets.add(WidgetDoc(
-          name: name,
-          category: category,
-          filePath: path,
-          startLine: i + 1,
-          endLine: lines.length,
-          description: doc.isNotEmpty ? doc : 'Kallopis $name 元件',
-          isStateful: isStateful,
-          fullFileContent: fullText,
-        ));
+        widgets.add(
+          WidgetDoc(
+            name: name,
+            category: category,
+            filePath: path,
+            startLine: i + 1,
+            endLine: lines.length,
+            description: doc.isNotEmpty ? doc : 'Kallopis $name 元件',
+            isStateful: isStateful,
+            fullFileContent: fullText,
+          ),
+        );
       }
     }
   }
@@ -143,7 +149,10 @@ void main() {
 
 String _toSnakeCase(String str) {
   return str
-      .replaceAllMapped(RegExp(r'([A-Z])'), (m) => '_${m.group(1)!.toLowerCase()}')
+      .replaceAllMapped(
+        RegExp(r'([A-Z])'),
+        (m) => '_${m.group(1)!.toLowerCase()}',
+      )
       .replaceFirst(RegExp(r'^_'), '');
 }
 
@@ -153,10 +162,15 @@ void _generateWidgetDoc(
   Map<String, String> widgetFileNameMap,
 ) {
   final widgetSource = _extractCompleteWidgetAndState(w);
-  final parsedTree = _analyzeWidgetTree(w.name, widgetSource, widgetCategoryMap);
+  final parsedTree = _analyzeWidgetTree(
+    w.name,
+    widgetSource,
+    widgetCategoryMap,
+  );
 
   final targetFileName = '${widgetFileNameMap[w.name]!}.md';
-  final targetPath = 'docs/architecture/components/${w.category}/$targetFileName';
+  final targetPath =
+      'docs/architecture/components/${w.category}/$targetFileName';
 
   final buffer = StringBuffer();
   buffer.writeln('# ${w.name}：元件樹架構');
@@ -185,9 +199,13 @@ void _generateWidgetDoc(
       final isPure = pureContainers.contains(ref);
       if (refCat != null) {
         final refFileName = widgetFileNameMap[ref]!;
-        final relPath = refCat == w.category ? './$refFileName.md' : '../$refCat/$refFileName.md';
+        final relPath = refCat == w.category
+            ? './$refFileName.md'
+            : '../$refCat/$refFileName.md';
         final containerNote = isPure ? ' *(純容器，已繼續向下展開)*' : '';
-        buffer.writeln('- [`$ref`]($relPath) — `${categoryLabel[refCat] ?? refCat}`$containerNote');
+        buffer.writeln(
+          '- [`$ref`]($relPath) — `${categoryLabel[refCat] ?? refCat}`$containerNote',
+        );
       } else {
         buffer.writeln('- `$ref`');
       }
@@ -196,8 +214,12 @@ void _generateWidgetDoc(
   buffer.writeln();
   buffer.writeln('## 程式碼證據');
   buffer.writeln();
-  buffer.writeln('- 檔案路徑：[`${w.filePath}`](../../../../${w.filePath}#L${w.startLine})');
-  buffer.writeln('- 宣告型態：`${w.isStateful ? 'StatefulWidget' : 'StatelessWidget'}`');
+  buffer.writeln(
+    '- 檔案路徑：[`${w.filePath}`](../../../../${w.filePath}#L${w.startLine})',
+  );
+  buffer.writeln(
+    '- 宣告型態：`${w.isStateful ? 'StatefulWidget' : 'StatelessWidget'}`',
+  );
   buffer.writeln();
   buffer.writeln('## 閱讀說明');
   buffer.writeln();
@@ -261,13 +283,16 @@ ParsedTreeResult _analyzeWidgetTree(
   Map<String, String> widgetCategoryMap,
 ) {
   final externalRefs = <String>{};
-  
+
   // 尋找本元件調用的所有 Klp*
   final klpConstructRegex = RegExp(r'\b(Klp[A-Za-z0-9]+)\s*(?:<[^>]+>)?\s*\(');
   for (final m in klpConstructRegex.allMatches(source)) {
     final name = m.group(1)!;
-    if (name != widgetName && !name.startsWith('KlpScale') && !_isNonWidgetHelper(name)) {
-      if (widgetCategoryMap.containsKey(name) || pureContainers.contains(name)) {
+    if (name != widgetName &&
+        !name.startsWith('KlpScale') &&
+        !_isNonWidgetHelper(name)) {
+      if (widgetCategoryMap.containsKey(name) ||
+          pureContainers.contains(name)) {
         externalRefs.add(name);
       }
     }
@@ -275,17 +300,35 @@ ParsedTreeResult _analyzeWidgetTree(
 
   final b = StringBuffer();
   b.writeln('flowchart TD');
-  b.writeln('  classDef default fill:#1E222B,stroke:#4C566A,stroke-width:1px,color:#ECEFF4;');
-  b.writeln('  classDef root fill:#2E3440,stroke:#88C0D0,stroke-width:2px,color:#ECEFF4,font-weight:bold;');
-  b.writeln('  classDef reference fill:#3B4252,stroke:#EBCB8B,stroke-width:1.5px,stroke-dasharray: 4 3,color:#EBCB8B;');
-  b.writeln('  classDef container fill:#2E3440,stroke:#A3BE8C,stroke-width:1.5px,color:#A3BE8C;');
-  b.writeln('  classDef slot fill:#2E3440,stroke:#D08770,stroke-width:1px,stroke-dasharray: 2 2,color:#D08770;');
+  b.writeln(
+    '  classDef default fill:#1E222B,stroke:#4C566A,stroke-width:1px,color:#ECEFF4;',
+  );
+  b.writeln(
+    '  classDef root fill:#2E3440,stroke:#88C0D0,stroke-width:2px,color:#ECEFF4,font-weight:bold;',
+  );
+  b.writeln(
+    '  classDef reference fill:#3B4252,stroke:#EBCB8B,stroke-width:1.5px,stroke-dasharray: 4 3,color:#EBCB8B;',
+  );
+  b.writeln(
+    '  classDef container fill:#2E3440,stroke:#A3BE8C,stroke-width:1.5px,color:#A3BE8C;',
+  );
+  b.writeln(
+    '  classDef slot fill:#2E3440,stroke:#D08770,stroke-width:1px,stroke-dasharray: 2 2,color:#D08770;',
+  );
   b.writeln();
 
-  final treeNodes = _buildDetailedMermaidTree(widgetName, source, externalRefs, widgetCategoryMap);
+  final treeNodes = _buildDetailedMermaidTree(
+    widgetName,
+    source,
+    externalRefs,
+    widgetCategoryMap,
+  );
   b.write(treeNodes);
 
-  return ParsedTreeResult(b.toString().trimRight(), externalRefs.toList()..sort());
+  return ParsedTreeResult(
+    b.toString().trimRight(),
+    externalRefs.toList()..sort(),
+  );
 }
 
 String _buildDetailedMermaidTree(
@@ -297,7 +340,11 @@ String _buildDetailedMermaidTree(
   final b = StringBuffer();
   b.writeln('  root["$rootName"]:::root');
 
-  final callMatches = _extractBuildTreeHierarchy(source, rootName, widgetCategoryMap);
+  final callMatches = _extractBuildTreeHierarchy(
+    source,
+    rootName,
+    widgetCategoryMap,
+  );
 
   if (callMatches.isEmpty) {
     b.writeln('  root --> leaf["Widget (原生客製佈局)"]');
@@ -338,7 +385,13 @@ String _buildDetailedMermaidTree(
 }
 
 class CallItem {
-  CallItem(this.label, {this.isReference = false, this.isPureContainer = false, this.isSlot = false, this.hasChild = false});
+  CallItem(
+    this.label, {
+    this.isReference = false,
+    this.isPureContainer = false,
+    this.isSlot = false,
+    this.hasChild = false,
+  });
   final String label;
   final bool isReference;
   final bool isPureContainer;
@@ -356,7 +409,9 @@ List<CallItem> _extractBuildTreeHierarchy(
 
   // 抓取所有 build 或 _build* 方法主體
   final buildMethodBodies = _extractAllMethodBodies(source);
-  final combinedBody = buildMethodBodies.isNotEmpty ? buildMethodBodies.join('\n') : source;
+  final combinedBody = buildMethodBodies.isNotEmpty
+      ? buildMethodBodies.join('\n')
+      : source;
 
   final callRegex = RegExp(r'\b([A-Z][A-Za-z0-9]+)\s*(?:<[^>]+>)?\s*\(');
   for (final m in callRegex.allMatches(combinedBody)) {
@@ -371,7 +426,9 @@ List<CallItem> _extractBuildTreeHierarchy(
 
     if (pureContainers.contains(name)) {
       list.add(CallItem(name, isPureContainer: true, hasChild: true));
-    } else if (name.startsWith('Klp') && (widgetCategoryMap.containsKey(name) || externalWidgetNames.contains(name))) {
+    } else if (name.startsWith('Klp') &&
+        (widgetCategoryMap.containsKey(name) ||
+            externalWidgetNames.contains(name))) {
       list.add(CallItem(name, isReference: true, hasChild: false));
     } else if (_isFlutterWidget(name)) {
       final hasChild = _canHaveChildren(name);
@@ -385,7 +442,10 @@ List<CallItem> _extractBuildTreeHierarchy(
   if (combinedBody.contains('trailing') && !seen.contains('trailing')) {
     list.add(CallItem('trailing (slot)', isSlot: true));
   }
-  if ((combinedBody.contains('child:') || combinedBody.contains('builder:') || combinedBody.contains('itemBuilder:')) && !seen.contains('child_slot')) {
+  if ((combinedBody.contains('child:') ||
+          combinedBody.contains('builder:') ||
+          combinedBody.contains('itemBuilder:')) &&
+      !seen.contains('child_slot')) {
     list.add(CallItem('child / slot', isSlot: true));
   }
 
@@ -394,7 +454,9 @@ List<CallItem> _extractBuildTreeHierarchy(
 
 List<String> _extractAllMethodBodies(String source) {
   final bodies = <String>[];
-  final methodPattern = RegExp(r'Widget\s+(?:build|_[A-Za-z0-9]+)\s*\([^)]*\)\s*\{');
+  final methodPattern = RegExp(
+    r'Widget\s+(?:build|_[A-Za-z0-9]+)\s*\([^)]*\)\s*\{',
+  );
   for (final match in methodPattern.allMatches(source)) {
     final startPos = match.end - 1;
     final body = _extractBalancedBlock(source, startPos);
@@ -420,32 +482,123 @@ String _extractBalancedBlock(String text, int openBracePos) {
 }
 
 const externalWidgetNames = {
-  'KlpButton', 'KlpIconButton', 'KlpCheckbox', 'KlpTextField', 'KlpSelect',
-  'KlpSlider', 'KlpSwitch', 'KlpToggle', 'KlpToggleIndicator', 'KlpSegmentedControl',
-  'KlpSlidingSelection', 'KlpTriStateToggle', 'KlpRadioGroup', 'KlpCompactSwitch',
-  'KlpBadge', 'KlpCard', 'KlpTag', 'KlpProgress', 'KlpListTile', 'KlpKeyValueTable',
-  'KlpKeyValueList', 'KlpDataTable', 'KlpTree', 'KlpTreeItem', 'KlpJsonTree',
-  'KlpCodeViewer', 'KlpFilePreview', 'KlpEmptyState', 'KlpLoadingState', 'KlpErrorState',
-  'KlpPermissionState', 'KlpInlineNotice', 'KlpProgressOverlay', 'KlpRegionPlaceholder',
-  'KlpSkeletonLine', 'KlpToast', 'KlpToastStack', 'KlpPressable', 'KlpFilterBar',
-  'KlpPresenceIndicator', 'KlpSelectionToolbar', 'KlpShortcutHint', 'KlpBreadcrumb',
-  'KlpPagination', 'KlpTabs', 'KlpRailItem', 'KlpSidebarSectionLabel', 'KlpViewSwitcher',
-  'KlpDialog', 'KlpMenu', 'KlpMenuItem', 'KlpTooltip', 'KlpTooltipSurface',
-  'KlpText', 'KlpRichText', 'KlpIcon', 'KlpAvatar', 'KlpAvatarGroup', 'KlpBlock',
-  'KlpBlockCanvas', 'KlpDragPreview', 'KlpDropTarget', 'KlpDropIndicator', 'KlpPopover',
-  'KlpSortControl', 'KlpStatusIndicator', 'KlpThemeToggle', 'KlpSection', 'KlpDivider',
-  'KlpDashedDivider', 'KlpDashedBorder', 'KlpAppScreen', 'KlpAppWindowHeader',
-  'KlpPaneCollapseControl', 'KlpPanelHeader', 'KlpResponsivePaneCoordinator',
-  'KlpStatusBar', 'KlpThemePreviewTile', 'KlpWindowControls', 'KlpCommandMenu',
-  'KlpEditorToolbar', 'KlpBulkActionBar', 'KlpEntityPicker', 'KlpPageChrome',
-  'KlpPropertySummary', 'KlpSaveStatusCard', 'KlpSearchNavigator', 'KlpForm',
-  'KlpFormSection', 'KlpFormActions', 'KlpFormErrorSummary', 'KlpField',
-  'KlpFieldGroup', 'KlpFieldLabel', 'KlpFieldDescription', 'KlpFieldError',
-  'KlpSelectField', 'KlpDateField', 'KlpNumberField', 'KlpPasswordField',
-  'KlpTextArea', 'KlpCodeField', 'KlpFileField', 'KlpColorRoleField',
-  'KlpRepeaterField', 'KlpKeyValueEditor', 'KlpMultiSelectField', 'KlpReferencePicker',
-  'KlpConditionalFieldRegion', 'KlpRouter', 'KlpRouteNotFound', 'KlpRouterScope',
-  'KlpRouterOutlet', 'KlpResizablePane', 'KlpResizeHandle', 'KlpVirtualList', 'KlpVirtualGrid',
+  'KlpButton',
+  'KlpIconButton',
+  'KlpCheckbox',
+  'KlpTextField',
+  'KlpSelect',
+  'KlpSlider',
+  'KlpSwitch',
+  'KlpToggle',
+  'KlpToggleIndicator',
+  'KlpSegmentedControl',
+  'KlpSlidingSelection',
+  'KlpTriStateToggle',
+  'KlpRadioGroup',
+  'KlpCompactSwitch',
+  'KlpBadge',
+  'KlpCard',
+  'KlpTag',
+  'KlpProgress',
+  'KlpListTile',
+  'KlpKeyValueTable',
+  'KlpKeyValueList',
+  'KlpDataTable',
+  'KlpTree',
+  'KlpTreeItem',
+  'KlpJsonTree',
+  'KlpCodeViewer',
+  'KlpFilePreview',
+  'KlpEmptyState',
+  'KlpLoadingState',
+  'KlpErrorState',
+  'KlpPermissionState',
+  'KlpInlineNotice',
+  'KlpProgressOverlay',
+  'KlpRegionPlaceholder',
+  'KlpSkeletonLine',
+  'KlpToast',
+  'KlpToastStack',
+  'KlpPressable',
+  'KlpFilterBar',
+  'KlpPresenceIndicator',
+  'KlpSelectionToolbar',
+  'KlpShortcutHint',
+  'KlpBreadcrumb',
+  'KlpPagination',
+  'KlpTabs',
+  'KlpRailItem',
+  'KlpSidebarSectionLabel',
+  'KlpViewSwitcher',
+  'KlpDialog',
+  'KlpMenu',
+  'KlpMenuItem',
+  'KlpTooltip',
+  'KlpTooltipSurface',
+  'KlpText',
+  'KlpRichText',
+  'KlpIcon',
+  'KlpAvatar',
+  'KlpAvatarGroup',
+  'KlpBlock',
+  'KlpBlockCanvas',
+  'KlpDragPreview',
+  'KlpDropTarget',
+  'KlpDropIndicator',
+  'KlpPopover',
+  'KlpSortControl',
+  'KlpStatusIndicator',
+  'KlpThemeToggle',
+  'KlpSection',
+  'KlpDivider',
+  'KlpDashedDivider',
+  'KlpDashedBorder',
+  'KlpAppScreen',
+  'KlpAppWindowHeader',
+  'KlpPaneCollapseControl',
+  'KlpPanelHeader',
+  'KlpResponsivePaneCoordinator',
+  'KlpStatusBar',
+  'KlpThemePreviewTile',
+  'KlpWindowControls',
+  'KlpCommandMenu',
+  'KlpEditorToolbar',
+  'KlpBulkActionBar',
+  'KlpEntityPicker',
+  'KlpPageChrome',
+  'KlpPropertySummary',
+  'KlpSaveStatusCard',
+  'KlpSearchNavigator',
+  'KlpForm',
+  'KlpFormSection',
+  'KlpFormActions',
+  'KlpFormErrorSummary',
+  'KlpField',
+  'KlpFieldGroup',
+  'KlpFieldLabel',
+  'KlpFieldDescription',
+  'KlpFieldError',
+  'KlpSelectField',
+  'KlpDateField',
+  'KlpNumberField',
+  'KlpPasswordField',
+  'KlpTextArea',
+  'KlpCodeField',
+  'KlpFileField',
+  'KlpColorRoleField',
+  'KlpRepeaterField',
+  'KlpKeyValueEditor',
+  'KlpMultiSelectField',
+  'KlpReferencePicker',
+  'KlpConditionalFieldRegion',
+  'KlpRouter',
+  'KlpRouteNotFound',
+  'KlpRouterScope',
+  'KlpRouterOutlet',
+  'KlpResizablePane',
+  'KlpResizeHandle',
+  'KlpVirtualList',
+  'KlpVirtualGrid',
 };
 
 bool _isNonWidgetHelper(String name) {
@@ -475,28 +628,100 @@ bool _isNonWidgetHelper(String name) {
 
 bool _isFlutterWidget(String name) {
   const common = {
-    'Container', 'Padding', 'Row', 'Column', 'Stack', 'Positioned', 'Expanded',
-    'Flexible', 'GestureDetector', 'MouseRegion', 'Focus', 'AnimatedContainer',
-    'AnimatedOpacity', 'DecoratedBox', 'CustomPaint', 'ClipRRect', 'SingleChildScrollView',
-    'ListView', 'Align', 'Center', 'Opacity', 'ColoredBox', 'Transform', 'Semantics',
-    'ConstrainedBox', 'FittedBox', 'SizedBox', 'Text', 'RichText', 'DefaultTextStyle',
-    'Icon', 'Image', 'SvgPicture', 'Offstage', 'RepaintBoundary', 'KeyedSubtree',
-    'Builder', 'StatefulBuilder', 'LayoutBuilder', 'AnimatedBuilder', 'Listener',
-    'AbsorbPointer', 'IgnorePointer', 'Wrap', 'Spacer', 'IntrinsicWidth', 'IntrinsicHeight',
-    'Overlay', 'Portal', 'Table', 'TableRow', 'TableCell', 'FractionallySizedBox',
-    'Material', 'InkWell', 'InkResponse', 'Card', 'PhysicalModel', 'BackdropFilter',
-    'ValueListenableBuilder', 'Scrollbar', 'NotificationListener',
+    'Container',
+    'Padding',
+    'Row',
+    'Column',
+    'Stack',
+    'Positioned',
+    'Expanded',
+    'Flexible',
+    'GestureDetector',
+    'MouseRegion',
+    'Focus',
+    'AnimatedContainer',
+    'AnimatedOpacity',
+    'DecoratedBox',
+    'CustomPaint',
+    'ClipRRect',
+    'SingleChildScrollView',
+    'ListView',
+    'Align',
+    'Center',
+    'Opacity',
+    'ColoredBox',
+    'Transform',
+    'Semantics',
+    'ConstrainedBox',
+    'FittedBox',
+    'SizedBox',
+    'Text',
+    'RichText',
+    'DefaultTextStyle',
+    'Icon',
+    'Image',
+    'SvgPicture',
+    'Offstage',
+    'RepaintBoundary',
+    'KeyedSubtree',
+    'Builder',
+    'StatefulBuilder',
+    'LayoutBuilder',
+    'AnimatedBuilder',
+    'Listener',
+    'AbsorbPointer',
+    'IgnorePointer',
+    'Wrap',
+    'Spacer',
+    'IntrinsicWidth',
+    'IntrinsicHeight',
+    'Overlay',
+    'Portal',
+    'Table',
+    'TableRow',
+    'TableCell',
+    'FractionallySizedBox',
+    'Material',
+    'InkWell',
+    'InkResponse',
+    'Card',
+    'PhysicalModel',
+    'BackdropFilter',
+    'ValueListenableBuilder',
+    'Scrollbar',
+    'NotificationListener',
   };
   return common.contains(name);
 }
 
 bool _canHaveChildren(String name) {
   const containers = {
-    'Container', 'Padding', 'Row', 'Column', 'Stack', 'GestureDetector',
-    'MouseRegion', 'AnimatedContainer', 'DecoratedBox', 'Center', 'Align',
-    'SizedBox', 'SingleChildScrollView', 'Focus', 'Semantics', 'Expanded',
-    'Flexible', 'Material', 'ClipRRect', 'Card', 'Transform', 'ColoredBox',
-    'ConstrainedBox', 'FittedBox', 'IntrinsicWidth', 'IntrinsicHeight',
+    'Container',
+    'Padding',
+    'Row',
+    'Column',
+    'Stack',
+    'GestureDetector',
+    'MouseRegion',
+    'AnimatedContainer',
+    'DecoratedBox',
+    'Center',
+    'Align',
+    'SizedBox',
+    'SingleChildScrollView',
+    'Focus',
+    'Semantics',
+    'Expanded',
+    'Flexible',
+    'Material',
+    'ClipRRect',
+    'Card',
+    'Transform',
+    'ColoredBox',
+    'ConstrainedBox',
+    'FittedBox',
+    'IntrinsicWidth',
+    'IntrinsicHeight',
   };
   return containers.contains(name);
 }
@@ -509,14 +734,22 @@ void _generateIndexDoc(
   final b = StringBuffer();
   b.writeln('# Kallopis 元件樹架構全覽');
   b.writeln();
-  b.writeln('> 本目錄遵循 `/focused-architecture-diagram` 規範，繪製 Kallopis 所有元件之內部 Widget Tree 架構。');
+  b.writeln(
+    '> 本目錄遵循 `/focused-architecture-diagram` 規範，繪製 Kallopis 所有元件之內部 Widget Tree 架構。',
+  );
   b.writeln();
   b.writeln('## 分類與規範原則');
   b.writeln();
   b.writeln('1. **同構分類**：嚴格依照 `lib/src/` 領域目錄進行分類。');
-  b.writeln('2. **原生展開**：Flutter 原生元件（如 `Container`, `Row`, `Column`, `Padding`, `Material` 等）持續向下繪製到底。');
-  b.writeln('3. **純容器中繼**：`KlpSurface`、`KlpStrokeFrame` 等純容器元件不中斷，持續展開其內部 child。');
-  b.writeln('4. **引用停步**：遇到本專案之其他非純容器元件（如 `KlpButton`, `KlpTextField`, `KlpIcon` 等）即刻停下，並提供文件超連結引用。');
+  b.writeln(
+    '2. **原生展開**：Flutter 原生元件（如 `Container`, `Row`, `Column`, `Padding`, `Material` 等）持續向下繪製到底。',
+  );
+  b.writeln(
+    '3. **純容器中繼**：`KlpSurface`、`KlpStrokeFrame` 等純容器元件不中斷，持續展開其內部 child。',
+  );
+  b.writeln(
+    '4. **引用停步**：遇到本專案之其他非純容器元件（如 `KlpButton`, `KlpTextField`, `KlpIcon` 等）即刻停下，並提供文件超連結引用。',
+  );
   b.writeln();
   b.writeln('## 領域分類索引');
   b.writeln();
@@ -526,7 +759,9 @@ void _generateIndexDoc(
       ..sort((a, b) => a.name.compareTo(b.name));
     if (catWidgets.isEmpty) continue;
 
-    b.writeln('- [${categoryLabel[cat]} (${catWidgets.length})](#${catWidgets.first.category})');
+    b.writeln(
+      '- [${categoryLabel[cat]} (${catWidgets.length})](#${catWidgets.first.category})',
+    );
   }
   b.writeln();
 
@@ -549,5 +784,7 @@ void _generateIndexDoc(
     b.writeln();
   }
 
-  File('docs/architecture/components/README.md').writeAsStringSync(b.toString());
+  File(
+    'docs/architecture/components/README.md',
+  ).writeAsStringSync(b.toString());
 }

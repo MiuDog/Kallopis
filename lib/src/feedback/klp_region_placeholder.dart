@@ -214,9 +214,7 @@ class _PlaceholderMarker extends StatelessWidget {
         width: KlpPlaceholderMetrics.markerSize,
         height: KlpPlaceholderMetrics.markerSize,
         decoration: BoxDecoration(
-          color: tone == KlpRegionPlaceholderTone.pending
-              ? tokens.info
-              : tokens.app.withValues(alpha: 0),
+          color: tone == KlpRegionPlaceholderTone.pending ? tokens.info : null,
           // 這是狀態字形，不是元件或 Surface 的可見框線。
           border: tone == KlpRegionPlaceholderTone.pending
               ? null
@@ -245,8 +243,13 @@ class _KlpPlaceholderFillPainter extends CustomPainter {
 
   @override
   void paint(Canvas canvas, Size size) {
+    canvas.save();
+    canvas.clipRect(Offset.zero & size);
     canvas.drawRect(Offset.zero & size, Paint()..color = fillColor);
-    if (!hatched) return;
+    if (!hatched) {
+      canvas.restore();
+      return;
+    }
 
     final strokeWidth = KlpPlaceholderMetrics.hatchStrokeWidth;
     final step =
@@ -254,18 +257,21 @@ class _KlpPlaceholderFillPainter extends CustomPainter {
         math.sqrt2;
     final paint = Paint()
       ..color = hatchColor
-      ..strokeWidth = strokeWidth;
-    for (
-      var offset = -size.height - strokeWidth * 2;
-      offset < size.width + strokeWidth * 2;
-      offset += step
-    ) {
+      ..strokeWidth = strokeWidth
+      ..style = PaintingStyle.stroke;
+
+    final extra = size.height + strokeWidth * 4;
+    final startOffset = -size.height - strokeWidth * 4;
+    final endOffset = size.width + size.height + strokeWidth * 4;
+
+    for (var offset = startOffset; offset < endOffset; offset += step) {
       canvas.drawLine(
-        Offset(offset, 0),
-        Offset(offset + size.height, size.height),
+        Offset(offset - extra, -extra),
+        Offset(offset + size.height + extra, size.height + extra),
         paint,
       );
     }
+    canvas.restore();
   }
 
   @override

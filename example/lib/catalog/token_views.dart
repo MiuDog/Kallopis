@@ -61,7 +61,11 @@ class Swatch extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final klp = context.klp;
-    final foreground = onColor ?? KlpThemeContrast.foregroundFor(color);
+    final foreground =
+        onColor ??
+        (color == KlpPalette.transparent || color.a == 0
+            ? klp.color.text
+            : KlpThemeContrast.foregroundFor(color));
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -81,14 +85,14 @@ class Swatch extends StatelessWidget {
           ),
           child: KlpText(
             inkStepOf(color) ?? offRamp ?? '梯外',
-            role: KlpTextRole.code,
+            role: KlpTextRole.body,
             color: foreground,
           ),
         ),
         SizedBox(height: klp.space.tight),
-        KlpText(role, role: KlpTextRole.caption),
+        KlpText(role, role: KlpTextRole.body),
         if (note != null)
-          KlpText(note!, role: KlpTextRole.caption, tone: KlpTextTone.faint),
+          KlpText(note!, role: KlpTextRole.sub, tone: KlpTextTone.muted),
       ],
     );
   }
@@ -116,12 +120,12 @@ class ScaleRow extends StatelessWidget {
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          SizedBox(width: 180, child: KlpText(name, role: KlpTextRole.code)),
+          SizedBox(width: 180, child: KlpText(name, role: KlpTextRole.body)),
           SizedBox(
             width: 56,
             child: KlpText(
               value.toStringAsFixed(value % 1 == 0 ? 0 : 2),
-              role: KlpTextRole.code,
+              role: KlpTextRole.body,
               tone: KlpTextTone.muted,
             ),
           ),
@@ -138,8 +142,8 @@ class ScaleRow extends StatelessWidget {
             Expanded(
               child: KlpText(
                 note!,
-                role: KlpTextRole.caption,
-                tone: KlpTextTone.faint,
+                role: KlpTextRole.sub,
+                tone: KlpTextTone.muted,
               ),
             ),
           ],
@@ -176,11 +180,11 @@ class RadiusSample extends StatelessWidget {
           ),
         ),
         SizedBox(height: klp.space.tight),
-        KlpText(name, role: KlpTextRole.caption),
+        KlpText(name, role: KlpTextRole.body),
         KlpText(
           value.toStringAsFixed(0),
-          role: KlpTextRole.code,
-          tone: KlpTextTone.faint,
+          role: KlpTextRole.sub,
+          tone: KlpTextTone.muted,
         ),
       ],
     );
@@ -212,14 +216,14 @@ class TypeSample extends StatelessWidget {
         children: [
           Row(
             children: [
-              KlpText(role.name, role: KlpTextRole.label),
+              KlpText(role.name, role: KlpTextRole.body),
               SizedBox(width: klp.space.compact),
               KlpText(
                 '${definition.fontSize.toStringAsFixed(0)}pt · '
                 'leading ${definition.lineHeight.toStringAsFixed(2)} · '
                 'w${definition.fontWeight.value}',
-                role: KlpTextRole.code,
-                tone: KlpTextTone.faint,
+                role: KlpTextRole.sub,
+                tone: KlpTextTone.muted,
               ),
             ],
           ),
@@ -227,7 +231,63 @@ class TypeSample extends StatelessWidget {
           KlpText(sample, role: role),
           if (note != null) ...[
             SizedBox(height: klp.space.tight),
-            KlpText(note!, role: KlpTextRole.caption, tone: KlpTextTone.muted),
+            KlpText(note!, role: KlpTextRole.sub, tone: KlpTextTone.muted),
+          ],
+        ],
+      ),
+    );
+  }
+}
+
+/// 一格時長 token。
+class DurationRow extends StatelessWidget {
+  const DurationRow({
+    super.key,
+    required this.name,
+    required this.duration,
+    this.note,
+  });
+
+  final String name;
+  final Duration duration;
+  final String? note;
+
+  @override
+  Widget build(BuildContext context) {
+    final klp = context.klp;
+    final ms = duration.inMilliseconds.toDouble();
+
+    return Padding(
+      padding: EdgeInsets.symmetric(vertical: klp.space.tight),
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          SizedBox(width: 180, child: KlpText(name, role: KlpTextRole.body)),
+          SizedBox(
+            width: 72,
+            child: KlpText(
+              '${duration.inMilliseconds}ms',
+              role: KlpTextRole.body,
+              tone: KlpTextTone.muted,
+            ),
+          ),
+          Container(
+            height: 10,
+            width: (ms / 2).clamp(1, 320),
+            decoration: BoxDecoration(
+              color: klp.color.accent,
+              borderRadius: BorderRadius.circular(klp.shape.control),
+            ),
+          ),
+          if (note != null) ...[
+            SizedBox(width: klp.space.base),
+            Expanded(
+              child: KlpText(
+                note!,
+                role: KlpTextRole.sub,
+                tone: KlpTextTone.muted,
+              ),
+            ),
           ],
         ],
       ),

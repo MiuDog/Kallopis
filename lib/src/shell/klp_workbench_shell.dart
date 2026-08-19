@@ -51,12 +51,7 @@ class KlpWorkbenchShell extends StatelessWidget {
         return ColoredBox(
           color: tokens.app,
           child: Padding(
-            padding: EdgeInsets.fromLTRB(
-              context.klp.space.base,
-              0,
-              context.klp.space.base,
-              context.klp.space.base,
-            ),
+            padding: EdgeInsets.all(context.klp.space.base),
             child: Row(
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [

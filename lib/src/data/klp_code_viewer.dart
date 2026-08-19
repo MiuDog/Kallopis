@@ -537,7 +537,7 @@ class _KlpCodeLanguageButtonState extends State<_KlpCodeLanguageButton> {
   Widget build(BuildContext context) {
     final tokens = context.klpColors;
     final active = widget.enabled && (_hovered || _focused);
-    final color = widget.enabled ? tokens.textMuted : tokens.textFaint;
+    final color = tokens.textMuted;
 
     Widget button = Material(
       color: KlpPalette.transparent,

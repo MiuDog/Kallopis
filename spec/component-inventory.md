@@ -38,26 +38,27 @@ graph TD
   controls -->|10| typography
   data -->|9| surface
   form -->|8| controls
+  controls -->|7| foundation
   data -->|7| foundation
   editor -->|7| typography
   foundation -->|7| surface
-  controls -->|6| foundation
   controls -->|6| surface
   feedback -->|6| typography
   feedback -->|5| foundation
   feedback -->|5| surface
   form -->|5| surface
   foundation -->|5| typography
+  interaction -->|5| surface
   navigation -->|5| typography
   editor -->|4| controls
   editor -->|4| data
-  interaction -->|4| surface
   interaction -->|4| typography
   overlay -->|4| surface
   data -->|3| interaction
   data -->|3| overlay
   form -->|3| data
   overlay -->|3| typography
+  shell -->|3| surface
   shell -->|3| typography
   controls -->|2| interaction
   editor -->|2| surface
@@ -66,7 +67,6 @@ graph TD
   navigation -->|2| surface
   overlay -->|2| controls
   shell -->|2| foundation
-  shell -->|2| surface
   controls -->|1| overlay
   data -->|1| controls
   feedback -->|1| interaction
@@ -166,7 +166,7 @@ graph LR
 | `KlpFormMetrics` | 13 | （葉節點） |
 | `KlpGeometricSpinner` | 152 | （葉節點） |
 | `KlpIcon` | 34 | （葉節點） |
-| `KlpIcons` | 68 | （葉節點） |
+| `KlpIcons` | 78 | （葉節點） |
 | `KlpInlineCode` | 54 | （葉節點） |
 | `KlpLayoutGap` | 4 | （葉節點） |
 | `KlpLine` | 8 | （葉節點） |
@@ -235,7 +235,7 @@ graph LR
 | 型別 | 行數 | 組成 |
 |---|---|---|
 | `KlpFontRole` | 3 | （葉節點） |
-| `KlpText` | 123 | （葉節點） |
+| `KlpText` | 127 | （葉節點） |
 | `KlpTextColorTier` | 4 | （葉節點） |
 | `KlpTextRole` | 20 | （葉節點） |
 | `KlpTextStyleDefinition` | 38 | （葉節點） |
@@ -291,7 +291,7 @@ graph LR
 | `KlpFilterOption` | 15 | （葉節點） |
 | `KlpInteractionSettings` | 27 | （葉節點） |
 | `KlpPresenceIndicator` | 33 | `KlpText` |
-| `KlpPressable` | 136 | （葉節點） |
+| `KlpPressable` | 169 | `KlpDashedBorder` |
 | `KlpSelectionAction` | 15 | （葉節點） |
 | `KlpSelectionToolbar` | 75 | `KlpButton`、`KlpDashedBorder`、`KlpPressable`、`KlpSurface`、`KlpText` |
 | `KlpShortcutHint` | 20 | `KlpSurface`、`KlpText` |
@@ -313,6 +313,7 @@ graph LR
   KlpFilterBar --> KlpPressable
   KlpFilterBar --> KlpText
   KlpPresenceIndicator --> KlpText
+  KlpPressable --> KlpDashedBorder
   KlpSelectionToolbar --> KlpButton
   KlpSelectionToolbar --> KlpDashedBorder
   KlpSelectionToolbar --> KlpPressable
@@ -402,25 +403,25 @@ graph LR
 
 | 型別 | 行數 | 組成 |
 |---|---|---|
-| `KlpButton` | 140 | `KlpDashedBorder`、`KlpPressable`、`KlpText` |
+| `KlpButton` | 141 | `KlpDashedBorder`、`KlpPressable`、`KlpText` |
 | `KlpButtonTone` | 5 | （葉節點） |
-| `KlpCheckbox` | 75 | `KlpIcon`、`KlpText` |
+| `KlpCheckbox` | 74 | `KlpIcon`、`KlpText` |
 | `KlpCompactSwitch` | 60 | `KlpPressable` |
 | `KlpControlSize` | 1 | （葉節點） |
 | `KlpIconButton` | 77 | `KlpDashedBorder`、`KlpIcon`、`KlpTooltip` |
-| `KlpPhaseOption` | 17 | （葉節點） |
-| `KlpPhaseToggle` | 108 | `KlpText` |
-| `KlpRadioGroup` | 137 | `KlpText` |
+| `KlpPhaseOption` | 19 | （葉節點） |
+| `KlpPhaseToggle` | 171 | `KlpIcon`、`KlpText` |
+| `KlpRadioGroup` | 133 | `KlpText` |
 | `KlpSegmentedControl` | 152 | `KlpDashedBorder`、`KlpIcon`、`KlpText` |
 | `KlpSelect` | 92 | `KlpDashedBorder`、`KlpIcon`、`KlpStrokeFrame`、`KlpText` |
 | `KlpSelectionOption` | 7 | （葉節點） |
-| `KlpSlider` | 102 | `KlpText` |
-| `KlpSlidingSelection` | 96 | `KlpIcon` |
+| `KlpSlider` | 78 | `KlpText` |
+| `KlpSlidingSelection` | 111 | `KlpIcon` |
 | `KlpTextField` | 260 | `KlpDashedBorder`、`KlpIcon`、`KlpText` |
 | `KlpToggle` | 51 | `KlpText`、`KlpToggleIndicator` |
 | `KlpToggleIndicator` | 53 | （葉節點） |
 | `KlpTriState` | 2 | （葉節點） |
-| `KlpTriStateToggle` | 40 | `KlpSelectionOption`、`KlpSlidingSelection`、`KlpText` |
+| `KlpTriStateToggle` | 41 | `KlpSelectionOption`、`KlpSlidingSelection`、`KlpText` |
 
 ```mermaid
 graph LR
@@ -454,6 +455,7 @@ graph LR
   KlpIconButton --> KlpDashedBorder
   KlpIconButton --> KlpIcon
   KlpIconButton --> KlpTooltip
+  KlpPhaseToggle --> KlpIcon
   KlpPhaseToggle --> KlpText
   KlpRadioGroup --> KlpText
   KlpSegmentedControl --> KlpDashedBorder
@@ -913,7 +915,7 @@ graph LR
 | `KlpAppScreen` | 40 | （葉節點） |
 | `KlpAppWindowHeader` | 26 | `KlpPanelHeader` |
 | `KlpContentState` | 3 | （葉節點） |
-| `KlpPaneCollapseControl` | 37 | `KlpIcon` |
+| `KlpPaneCollapseControl` | 58 | `KlpDashedBorder`、`KlpIcon` |
 | `KlpPanelFrame` | 73 | （葉節點） |
 | `KlpPanelHeader` | 57 | `KlpText` |
 | `KlpResponsivePaneCoordinator` | 22 | （葉節點） |
@@ -923,7 +925,7 @@ graph LR
 | `KlpThemePreviewMode` | 2 | （葉節點） |
 | `KlpThemePreviewTile` | 305 | `KlpDashedBorder`、`KlpPressable`、`KlpText` |
 | `KlpWindowControls` | 124 | `KlpDashedBorder`、`KlpIcon`、`KlpTooltip` |
-| `KlpWorkbenchShell` | 135 | （葉節點） |
+| `KlpWorkbenchShell` | 130 | （葉節點） |
 
 ```mermaid
 graph LR
@@ -941,6 +943,7 @@ graph LR
   KlpTooltip["KlpTooltip"]:::external
   KlpWindowControls["KlpWindowControls"]
   KlpAppWindowHeader --> KlpPanelHeader
+  KlpPaneCollapseControl --> KlpDashedBorder
   KlpPaneCollapseControl --> KlpIcon
   KlpPanelHeader --> KlpText
   KlpSidebarFrame --> KlpPanelFrame
@@ -961,7 +964,7 @@ graph LR
 不組合任何其他 Kallopis 型別的 widget。它們是這套視覺語言的**詞根**——
 每一個都直接對應一個不可再分的視覺概念。
 
-`KlpActionGroup`、`KlpAppScreen`、`KlpConditionalFieldRegion`、`KlpDashedDivider`、`KlpDivider`、`KlpDropIndicator`、`KlpEditorToolbar`、`KlpForm`、`KlpGeometricSpinner`、`KlpIcon`、`KlpInlineCode`、`KlpOverlayHost`、`KlpPanelFrame`、`KlpPermissionState`、`KlpPressable`、`KlpResizablePane`、`KlpResizeHandle`、`KlpResponsivePaneCoordinator`、`KlpRouterOutlet`、`KlpRouterScope`、`KlpScrollViewport`、`KlpSegmentedProgress`、`KlpSkeletonLine`、`KlpStageFrame`、`KlpStrokeFrame`、`KlpSurface`、`KlpText`、`KlpToastStack`、`KlpToggleIndicator`、`KlpTooltip`、`KlpTooltipSurface`、`KlpTree`、`KlpVirtualGrid`、`KlpVirtualList`、`KlpWorkbenchShell`
+`KlpActionGroup`、`KlpAppScreen`、`KlpConditionalFieldRegion`、`KlpDashedDivider`、`KlpDivider`、`KlpDropIndicator`、`KlpEditorToolbar`、`KlpForm`、`KlpGeometricSpinner`、`KlpIcon`、`KlpInlineCode`、`KlpOverlayHost`、`KlpPanelFrame`、`KlpPermissionState`、`KlpResizablePane`、`KlpResizeHandle`、`KlpResponsivePaneCoordinator`、`KlpRouterOutlet`、`KlpRouterScope`、`KlpScrollViewport`、`KlpSegmentedProgress`、`KlpSkeletonLine`、`KlpStageFrame`、`KlpStrokeFrame`、`KlpSurface`、`KlpText`、`KlpToastStack`、`KlpToggleIndicator`、`KlpTooltip`、`KlpTooltipSurface`、`KlpTree`、`KlpVirtualGrid`、`KlpVirtualList`、`KlpWorkbenchShell`
 
 ## 被最多型別使用的
 
@@ -970,9 +973,9 @@ graph LR
 | 型別 | 被幾個型別使用 |
 |---|---|
 | `KlpText` | 79 |
-| `KlpIcon` | 23 |
+| `KlpIcon` | 24 |
 | `KlpSurface` | 22 |
-| `KlpDashedBorder` | 18 |
+| `KlpDashedBorder` | 20 |
 | `KlpButton` | 9 |
 | `KlpPressable` | 9 |
 | `KlpTextField` | 7 |

@@ -1,8 +1,9 @@
-import 'package:flutter/widgets.dart';
+import 'package:flutter/material.dart';
 
 import '../theme/klp_theme.dart';
 
 /// 通用面板：header 與 content，選用 footer。高度預設沿用 theme 的外殼密度。
+/// 文字顏色依據背景顏色階梯（500 以下為深色文字，600 以上為淺色文字）渲染。
 class KlpPanelFrame extends StatelessWidget {
   const KlpPanelFrame({
     super.key,
@@ -12,6 +13,7 @@ class KlpPanelFrame extends StatelessWidget {
     this.headerHeight,
     this.footerHeight,
     this.background,
+    this.padding,
   });
 
   final Widget header;
@@ -23,33 +25,53 @@ class KlpPanelFrame extends StatelessWidget {
   final double? footerHeight;
   final Color? background;
 
+  /// 內容與面板之間的內距。預設為 `context.klp.space.base`。
+  final EdgeInsetsGeometry? padding;
+
   @override
   Widget build(BuildContext context) {
     final tokens = context.klpColors;
+    final effectiveBackground = background ?? tokens.surface;
+    final surfaceTokens = tokens.onBackground(effectiveBackground);
 
     return DecoratedBox(
       decoration: BoxDecoration(
-        color: background ?? tokens.surface,
+        color: effectiveBackground,
         borderRadius: BorderRadius.circular(context.klp.shape.panel),
       ),
       child: ClipRRect(
         borderRadius: BorderRadius.circular(
           context.klp.shape.panel - context.klp.shape.stroke,
         ),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: [
-            SizedBox(
-              height: headerHeight ?? context.klp.space.chromeHeader,
-              child: header,
-            ),
-            Expanded(child: content),
-            if (footer != null)
+        child: Theme(
+          data: Theme.of(context).copyWith(
+            extensions: [
+              ...Theme.of(
+                context,
+              ).extensions.values.where((ext) => ext is! KlpThemeData),
+              surfaceTokens,
+            ],
+          ),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
               SizedBox(
-                height: footerHeight ?? context.klp.space.chromeStatusBar,
-                child: footer!,
+                height: headerHeight ?? context.klp.space.chromeHeader,
+                child: header,
               ),
-          ],
+              Expanded(
+                child: Padding(
+                  padding: padding ?? EdgeInsets.all(context.klp.space.base),
+                  child: content,
+                ),
+              ),
+              if (footer != null)
+                SizedBox(
+                  height: footerHeight ?? context.klp.space.chromeStatusBar,
+                  child: footer!,
+                ),
+            ],
+          ),
         ),
       ),
     );

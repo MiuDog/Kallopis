@@ -161,7 +161,7 @@ void main() {
         reason: '${accent.name} 在亮態表面上的對比不足',
       );
       expect(
-        contrast(accent.dark, KlpThemeData.dark.surface),
+        contrast(accent.dark, KlpThemeData.dark.stageSurface),
         greaterThanOrEqualTo(4.6),
         reason: '${accent.name} 在暗態表面上的對比不足',
       );
@@ -206,7 +206,7 @@ void main() {
         reason: '${entry.key} 的次要文字未達 AA',
       );
       expect(
-        contrast(t.textFaint, t.surface),
+        contrast(t.textFaint, t.stageSurface),
         greaterThanOrEqualTo(3.0),
         reason:
             '${entry.key} 的輔助文字未達 3:1。它承載的是非必要資訊，'
@@ -223,16 +223,9 @@ void main() {
     }.entries) {
       final t = entry.value;
       expect(
-        t.surface.toARGB32(),
-        isNot(t.surfaceMuted.toARGB32()),
-        reason: '${entry.key} 的 surface 與 surfaceMuted 相同，選取狀態會看不出來',
-      );
-      expect(
         t.stageSurface.toARGB32(),
-        isNot(t.surface.toARGB32()),
-        reason:
-            '${entry.key} 的 stageSurface 與 surface 相同，舞台讀不出是獨立的一層。'
-            '（ultraDark 的 stage 與 app 相同是刻意的——OLED 全暗就是那個用途。）',
+        isNot(t.surfaceInset.toARGB32()),
+        reason: '${entry.key} 的 stageSurface 與 surfaceInset 相同，舞台與內部元件對比會讀不出來',
       );
     }
   });

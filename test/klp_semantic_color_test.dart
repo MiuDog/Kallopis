@@ -3,26 +3,21 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:kallopis/kallopis.dart';
 
 void main() {
-  test('語意四色依明暗外觀解析為低彩度策展色', () {
-    expect(KlpThemeData.light.success, KlpPalette.lightSuccess);
-    expect(KlpThemeData.light.warning, KlpPalette.lightWarning);
-    expect(KlpThemeData.light.danger, KlpPalette.lightDanger);
-    expect(KlpThemeData.light.info, KlpPalette.lightInfo);
-
-    for (final tokens in [KlpThemeData.dark, KlpThemeData.ultraDark]) {
-      expect(tokens.success, KlpPalette.darkSuccess);
-      expect(tokens.warning, KlpPalette.darkWarning);
-      expect(tokens.danger, KlpPalette.darkDanger);
-      expect(tokens.info, KlpPalette.darkInfo);
-    }
-  });
-
-  test('非文字語意指示在所有正式外觀表面維持至少 3 比 1 對比', () {
+  test('語意四色一律使用高明度策展色（不隨明暗外觀切換）', () {
     for (final tokens in [
       KlpThemeData.light,
       KlpThemeData.dark,
       KlpThemeData.ultraDark,
     ]) {
+      expect(tokens.success, KlpPalette.success);
+      expect(tokens.warning, KlpPalette.warning);
+      expect(tokens.danger, KlpPalette.danger);
+      expect(tokens.info, KlpPalette.info);
+    }
+  });
+
+  test('非文字語意指示在深色外觀表面維持至少 3 比 1 對比', () {
+    for (final tokens in [KlpThemeData.dark, KlpThemeData.ultraDark]) {
       final statusColors = [
         tokens.success,
         tokens.warning,
@@ -77,6 +72,8 @@ void main() {
   test('兩側 Pane 與中央 Stage 只用 surface 明度建立層級', () {
     expect(KlpThemeData.light.app, KlpPalette.ink200);
     expect(KlpThemeData.light.surface, KlpPalette.ink100);
+    expect(KlpThemeData.light.surfaceInset, KlpPalette.ink100);
+    expect(KlpThemeData.light.surfaceMuted, KlpPalette.ink100);
     expect(KlpThemeData.light.stageSurface, KlpPalette.ink50);
     expect(
       KlpThemeData.light.stageSurface.computeLuminance(),
@@ -84,23 +81,17 @@ void main() {
     );
 
     expect(KlpThemeData.dark.app, KlpPalette.ink900);
-    expect(KlpThemeData.dark.surface, KlpPalette.ink800);
-    expect(KlpThemeData.dark.stageSurface, KlpPalette.ink900);
+    expect(KlpThemeData.dark.surface, KlpPalette.ink700);
+    expect(KlpThemeData.dark.stageSurface, KlpPalette.ink800);
     expect(KlpThemeData.dark.surfaceInset, KlpPalette.ink700);
     expect(KlpThemeData.dark.surfaceMuted, KlpPalette.ink700);
     expect(KlpThemeData.dark.component, KlpPalette.ink800);
-    expect(
-      KlpThemeData.dark.surface.computeLuminance(),
-      greaterThan(KlpThemeData.dark.stageSurface.computeLuminance()),
-    );
 
     expect(KlpThemeData.ultraDark.app, KlpPalette.ink950);
-    expect(KlpThemeData.ultraDark.surface, KlpPalette.ink900);
-    expect(KlpThemeData.ultraDark.stageSurface, KlpPalette.ink950);
-    expect(
-      KlpThemeData.ultraDark.surface.computeLuminance(),
-      greaterThan(KlpThemeData.ultraDark.stageSurface.computeLuminance()),
-    );
+    expect(KlpThemeData.ultraDark.surface, KlpPalette.ink800);
+    expect(KlpThemeData.ultraDark.stageSurface, KlpPalette.ink900);
+    expect(KlpThemeData.ultraDark.surfaceInset, KlpPalette.ink800);
+    expect(KlpThemeData.ultraDark.surfaceMuted, KlpPalette.ink800);
 
     // 只要求「ultraDark 確實更暗」。原本這裡要求絕對亮度差 ≥ 0.005，那個門檻是對著
     // 舊色盤湊出來的：相對亮度在近黑端壓縮得極厲害（ink900 與 ink950 的感知差有一階，
@@ -151,6 +142,74 @@ void main() {
     expect(label.style?.color, KlpThemeData.dark.textMuted);
     expect(label.style?.color, isNot(KlpThemeData.dark.success));
     expect(find.byType(KlpIcon), findsOneWidget);
+  });
+
+  test('文字顏色渲染規則：背景 500 以下為深色文字，600 以上為淺色文字', () {
+    // 500 以下（ink50 ~ ink500）：深色文字 (ink900)
+    expect(KlpThemeContrast.foregroundFor(KlpPalette.ink50), KlpPalette.ink900);
+    expect(
+      KlpThemeContrast.foregroundFor(KlpPalette.ink100),
+      KlpPalette.ink900,
+    );
+    expect(
+      KlpThemeContrast.foregroundFor(KlpPalette.ink200),
+      KlpPalette.ink900,
+    );
+    expect(
+      KlpThemeContrast.foregroundFor(KlpPalette.ink300),
+      KlpPalette.ink900,
+    );
+    expect(
+      KlpThemeContrast.foregroundFor(KlpPalette.ink400),
+      KlpPalette.ink900,
+    );
+    expect(
+      KlpThemeContrast.foregroundFor(KlpPalette.ink500),
+      KlpPalette.ink900,
+    );
+
+    // 600 以上（ink600 ~ ink950）：淺色文字 (ink50)
+    expect(KlpThemeContrast.foregroundFor(KlpPalette.ink600), KlpPalette.ink50);
+    expect(KlpThemeContrast.foregroundFor(KlpPalette.ink700), KlpPalette.ink50);
+    expect(KlpThemeContrast.foregroundFor(KlpPalette.ink800), KlpPalette.ink50);
+    expect(KlpThemeContrast.foregroundFor(KlpPalette.ink900), KlpPalette.ink50);
+    expect(KlpThemeContrast.foregroundFor(KlpPalette.ink950), KlpPalette.ink50);
+  });
+
+  test('段落文字預設在淺色模式為最黑 (ink900)，深色模式為最白 (ink50)', () {
+    for (final role in KlpTextRole.values) {
+      expect(
+        KlpTextStyles.colorFor(KlpThemeData.light, role: role),
+        KlpPalette.ink900,
+        reason: 'Light mode default text for $role must be ink900',
+      );
+      expect(
+        KlpTextStyles.colorFor(KlpThemeData.dark, role: role),
+        KlpPalette.ink50,
+        reason: 'Dark mode default text for $role must be ink50',
+      );
+    }
+  });
+
+  test('透明背景時延續上層模式設定，文字色不翻轉為深色模式', () {
+    expect(KlpThemeContrast.isDarkBackground(KlpPalette.transparent), isFalse);
+    expect(KlpThemeContrast.isDarkBackground(KlpPalette.line), isFalse);
+    expect(
+      KlpThemeContrast.foregroundFor(KlpPalette.transparent),
+      KlpPalette.ink900,
+    );
+    expect(
+      KlpThemeData.light.onBackground(KlpPalette.transparent).text,
+      KlpThemeData.light.text,
+    );
+    expect(
+      KlpThemeData.light.onBackground(KlpPalette.line).text,
+      KlpThemeData.light.text,
+    );
+    expect(
+      KlpThemeData.dark.onBackground(KlpPalette.transparent).text,
+      KlpThemeData.dark.text,
+    );
   });
 }
 

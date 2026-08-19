@@ -6,13 +6,20 @@ import '../theme/klp_typography_theme.dart';
 
 enum KlpTextRole {
   display,
+  h1,
+  h2,
+  h3,
+  h4,
+  lead,
+  body,
+  sub,
+  caption,
+  micro,
   title,
   section,
   editor,
-  body,
   terminal,
   bodyStrong,
-  caption,
   label,
   code,
 }
@@ -51,14 +58,15 @@ class KlpTextStyleDefinition {
       KlpFontRole.body => type.bodyFamily,
       KlpFontRole.ui => type.uiFamily,
     };
+    final fallbacks = type.fallbackFor(resolvedFamily);
 
     return TextStyle(
       fontSize: fontSize,
       height: lineHeight,
       fontWeight: fontWeight,
       letterSpacing: letterSpacing,
-      fontFamily: resolvedFamily,
-      fontFamilyFallback: type.fallbackFor(resolvedFamily),
+      fontFamily: resolvedFamily.isEmpty ? null : resolvedFamily,
+      fontFamilyFallback: fallbacks.isEmpty ? null : fallbacks,
     );
   }
 }
@@ -71,20 +79,74 @@ abstract final class KlpTextStyles {
     KlpTextRole.display: KlpTextStyleDefinition(
       fontSize: type.display,
       lineHeight: type.displayLeading,
-      fontWeight: type.strong,
+      fontWeight: type.bold,
       letterSpacing: type.displayTracking,
+      tier: KlpTextColorTier.prominent,
+    ),
+    KlpTextRole.h1: KlpTextStyleDefinition(
+      fontSize: type.h1,
+      lineHeight: type.h1Leading,
+      fontWeight: type.bold,
+      tier: KlpTextColorTier.prominent,
+    ),
+    KlpTextRole.h2: KlpTextStyleDefinition(
+      fontSize: type.h2,
+      lineHeight: type.h2Leading,
+      fontWeight: type.semiBold,
+      tier: KlpTextColorTier.prominent,
+    ),
+    KlpTextRole.h3: KlpTextStyleDefinition(
+      fontSize: type.h3,
+      lineHeight: type.h3Leading,
+      fontWeight: type.semiBold,
+      tier: KlpTextColorTier.prominent,
+    ),
+    KlpTextRole.h4: KlpTextStyleDefinition(
+      fontSize: type.h4,
+      lineHeight: type.h4Leading,
+      fontWeight: type.semiBold,
+      tier: KlpTextColorTier.prominent,
+    ),
+    KlpTextRole.lead: KlpTextStyleDefinition(
+      fontSize: type.lead,
+      lineHeight: type.leadLeading,
+      fontWeight: type.semiBold,
+      tier: KlpTextColorTier.prominent,
+    ),
+    KlpTextRole.body: KlpTextStyleDefinition(
+      fontSize: type.body,
+      lineHeight: type.bodyLeading,
+      fontWeight: type.regular,
+      tier: KlpTextColorTier.prominent,
+    ),
+    KlpTextRole.sub: KlpTextStyleDefinition(
+      fontSize: type.sub,
+      lineHeight: type.subLeading,
+      fontWeight: type.regular,
+      tier: KlpTextColorTier.prominent,
+    ),
+    KlpTextRole.caption: KlpTextStyleDefinition(
+      fontSize: type.caption,
+      lineHeight: type.captionLeading,
+      fontWeight: type.regular,
+      tier: KlpTextColorTier.prominent,
+    ),
+    KlpTextRole.micro: KlpTextStyleDefinition(
+      fontSize: type.micro,
+      lineHeight: type.microLeading,
+      fontWeight: type.semiBold,
       tier: KlpTextColorTier.prominent,
     ),
     KlpTextRole.title: KlpTextStyleDefinition(
       fontSize: type.title,
-      lineHeight: type.headingLeading,
-      fontWeight: type.strong,
+      lineHeight: type.h1Leading,
+      fontWeight: type.bold,
       tier: KlpTextColorTier.prominent,
     ),
     KlpTextRole.section: KlpTextStyleDefinition(
       fontSize: type.section,
-      lineHeight: type.headingLeading,
-      fontWeight: type.strong,
+      lineHeight: type.h3Leading,
+      fontWeight: type.semiBold,
       tier: KlpTextColorTier.prominent,
     ),
     KlpTextRole.editor: KlpTextStyleDefinition(
@@ -94,46 +156,32 @@ abstract final class KlpTextStyles {
       tier: KlpTextColorTier.prominent,
       family: KlpFontRole.body,
     ),
-    KlpTextRole.body: KlpTextStyleDefinition(
-      fontSize: type.body,
-      lineHeight: type.bodyLeading,
-      fontWeight: type.regular,
-      tier: KlpTextColorTier.standard,
-    ),
     KlpTextRole.terminal: KlpTextStyleDefinition(
       fontSize: type.body,
       lineHeight: type.bodyLeading,
       fontWeight: type.regular,
-      tier: KlpTextColorTier.standard,
+      tier: KlpTextColorTier.prominent,
       family: KlpFontRole.mono,
     ),
     KlpTextRole.bodyStrong: KlpTextStyleDefinition(
       fontSize: type.body,
       lineHeight: type.bodyLeading,
-      fontWeight: type.medium,
-      tier: KlpTextColorTier.standard,
+      fontWeight: type.semiBold,
+      tier: KlpTextColorTier.prominent,
     ),
-    KlpTextRole.caption: KlpTextStyleDefinition(
-      fontSize: type.caption,
-      lineHeight: type.captionLeading,
-      fontWeight: type.regular,
-      tier: KlpTextColorTier.standard,
-    ),
-    // label 走等寬：徽章（SUCCESS／DANGER）與小標題（TEXT-SAFE STATUS）都是這個角色，
-    // 它們是**標記**不是句子——等寬讓字寬一致，一整排徽章的視覺節奏才會齊。
     KlpTextRole.label: KlpTextStyleDefinition(
-      fontSize: type.caption,
+      fontSize: type.sub,
       lineHeight: type.labelLeading,
-      fontWeight: type.regular,
+      fontWeight: type.semiBold,
       letterSpacing: type.labelTracking,
-      tier: KlpTextColorTier.standard,
+      tier: KlpTextColorTier.prominent,
       family: KlpFontRole.mono,
     ),
     KlpTextRole.code: KlpTextStyleDefinition(
-      fontSize: type.caption,
-      lineHeight: type.bodyLeading,
+      fontSize: type.sub,
+      lineHeight: type.codeLeading,
       fontWeight: type.regular,
-      tier: KlpTextColorTier.standard,
+      tier: KlpTextColorTier.prominent,
       family: KlpFontRole.mono,
     ),
   };
@@ -145,19 +193,26 @@ abstract final class KlpTextStyles {
     return definitionsFor(type)[role]!;
   }
 
-  /// 角色對應的色階與字級無關，不隨 theme 改變，因此獨立於 [definitionsFor]。
-  /// 把它併回 definitions 會逼得只想知道色階的呼叫端也要先取得 typography theme。
+  /// 角色對應的色階預設皆為 prominent（淺色最黑 ink900，深色最白 ink50）。
+  /// 只有註解與說明 explicitly 傳入 tone 時才套用 muted / faint。
   static const Map<KlpTextRole, KlpTextColorTier> tiers = {
     KlpTextRole.display: KlpTextColorTier.prominent,
+    KlpTextRole.h1: KlpTextColorTier.prominent,
+    KlpTextRole.h2: KlpTextColorTier.prominent,
+    KlpTextRole.h3: KlpTextColorTier.prominent,
+    KlpTextRole.h4: KlpTextColorTier.prominent,
+    KlpTextRole.lead: KlpTextColorTier.prominent,
+    KlpTextRole.body: KlpTextColorTier.prominent,
+    KlpTextRole.sub: KlpTextColorTier.prominent,
+    KlpTextRole.caption: KlpTextColorTier.prominent,
+    KlpTextRole.micro: KlpTextColorTier.prominent,
     KlpTextRole.title: KlpTextColorTier.prominent,
     KlpTextRole.section: KlpTextColorTier.prominent,
     KlpTextRole.editor: KlpTextColorTier.prominent,
-    KlpTextRole.body: KlpTextColorTier.standard,
-    KlpTextRole.terminal: KlpTextColorTier.standard,
-    KlpTextRole.bodyStrong: KlpTextColorTier.standard,
-    KlpTextRole.caption: KlpTextColorTier.standard,
-    KlpTextRole.label: KlpTextColorTier.standard,
-    KlpTextRole.code: KlpTextColorTier.standard,
+    KlpTextRole.terminal: KlpTextColorTier.prominent,
+    KlpTextRole.bodyStrong: KlpTextColorTier.prominent,
+    KlpTextRole.label: KlpTextColorTier.prominent,
+    KlpTextRole.code: KlpTextColorTier.prominent,
   };
 
   static Color colorFor(
@@ -166,9 +221,10 @@ abstract final class KlpTextStyles {
     KlpTextTone tone = KlpTextTone.automatic,
     Color? requestedColor,
   }) {
-    final tier = requestedColor == null
-        ? _tierForTone(role, tone)
-        : _tierForRequestedColor(tokens, requestedColor);
+    if (requestedColor != null) {
+      return requestedColor;
+    }
+    final tier = _tierForTone(role, tone);
 
     return switch (tier) {
       KlpTextColorTier.prominent => tokens.text,
@@ -179,29 +235,12 @@ abstract final class KlpTextStyles {
 
   static KlpTextColorTier _tierForTone(KlpTextRole role, KlpTextTone tone) {
     return switch (tone) {
-      KlpTextTone.automatic => tiers[role]!,
+      KlpTextTone.automatic => tiers[role] ?? KlpTextColorTier.prominent,
       KlpTextTone.primary || KlpTextTone.accent => KlpTextColorTier.prominent,
       KlpTextTone.faint => KlpTextColorTier.subdued,
-      KlpTextTone.muted ||
-      KlpTextTone.danger ||
-      KlpTextTone.success => KlpTextColorTier.standard,
+      KlpTextTone.muted => KlpTextColorTier.standard,
+      KlpTextTone.danger || KlpTextTone.success => KlpTextColorTier.prominent,
     };
-  }
-
-  static KlpTextColorTier _tierForRequestedColor(
-    KlpThemeData tokens,
-    Color color,
-  ) {
-    if (color == tokens.text ||
-        color == tokens.onSelection ||
-        color == tokens.selectionForeground) {
-      return KlpTextColorTier.prominent;
-    }
-    if (color == tokens.textFaint || color.a < 1) {
-      return KlpTextColorTier.subdued;
-    }
-
-    return KlpTextColorTier.standard;
   }
 }
 
@@ -238,7 +277,8 @@ class KlpText extends StatelessWidget {
   Widget build(BuildContext context) {
     final tokens = context.klpColors;
     final type = context.klp.type;
-    final roleStyle = KlpTextStyles.definitionOf(role, type).toTextStyle(type);
+    final roleDef = KlpTextStyles.definitionOf(role, type);
+    final roleStyle = roleDef.toTextStyle(type);
     final style = roleStyle.copyWith(
       color: KlpTextStyles.colorFor(
         tokens,
@@ -278,10 +318,13 @@ class KlpText extends StatelessWidget {
             },
           );
 
-    return Transform.translate(
-      offset: const Offset(0, KlpTypography.uiBaselineOffset),
-      child: text,
-    );
+    // 等寬字型（如 JetBrains Mono / Consolas）相較 UI 字型與圖示視覺重心偏下，
+    // 在此統一進行 -1.0px 的光學基線偏移補償，使其與 icon、色票圓點保持精確垂直對齊。
+    final double yOffset =
+        (roleDef.family == KlpFontRole.mono ? -1.0 : 0.0) +
+        KlpTypography.uiBaselineOffset;
+
+    return Transform.translate(offset: Offset(0, yOffset), child: text);
   }
 
   String _resolveVisibleData(

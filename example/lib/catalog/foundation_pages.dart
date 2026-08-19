@@ -7,7 +7,7 @@ import '../catalog_model.dart';
 Widget _boxed(BuildContext context, double height, Widget child) => SizedBox(
   height: height,
   child: KlpSurface(
-    tone: KlpSurfaceTone.inset,
+    tone: KlpSurfaceTone.transparent,
     padding: EdgeInsets.all(context.klp.space.compact),
     child: child,
   ),
@@ -21,17 +21,37 @@ final actionsNavigationPage = CatalogPageData(
   specimens: [
     Specimen(
       name: 'KlpButton',
-      note: 'tone 決定語意強度。圓角、內距、高度與邊框皆取自 theme。',
+      note: 'tone 決定語意強度，size 支援 SM (32px), MD (40px), LG (48px), XL (56px)。',
       build: (context) {
         final klp = context.klp;
         return Wrap(
           spacing: klp.space.compact,
           runSpacing: klp.space.compact,
+          crossAxisAlignment: WrapCrossAlignment.center,
           children: [
             for (final tone in KlpButtonTone.values)
               KlpButton(label: tone.name, onPressed: () {}, tone: tone),
             KlpButton(label: 'disabled', onPressed: null),
-            KlpButton(label: 'compact', onPressed: () {}, compact: true),
+            KlpButton(
+              label: 'SM (32px)',
+              size: KlpControlSize.sm,
+              onPressed: () {},
+            ),
+            KlpButton(
+              label: 'MD (40px)',
+              size: KlpControlSize.md,
+              onPressed: () {},
+            ),
+            KlpButton(
+              label: 'LG (48px)',
+              size: KlpControlSize.lg,
+              onPressed: () {},
+            ),
+            KlpButton(
+              label: 'XL (56px)',
+              size: KlpControlSize.xl,
+              onPressed: () {},
+            ),
           ],
         );
       },
@@ -247,29 +267,40 @@ final dataDisplayPage = CatalogPageData(
     ),
     Specimen(
       name: 'KlpBadge',
-      note: '狀態標記。',
+      note: '狀態標記（支援 filled、outline、solid 與語意色）。',
       build: (context) {
         final klp = context.klp;
         return Wrap(
           spacing: klp.space.compact,
+          crossAxisAlignment: WrapCrossAlignment.center,
           children: const [
-            KlpBadge(label: 'draft'),
-            KlpBadge(label: 'active', tone: KlpFeedbackTone.success),
-            KlpBadge(label: 'blocked', tone: KlpFeedbackTone.danger),
+            KlpBadge(label: 'draft', variant: KlpBadgeVariant.outline),
+            KlpBadge(
+              label: 'accepted',
+              tone: KlpFeedbackTone.success,
+              variant: KlpBadgeVariant.outline,
+            ),
+            KlpBadge(
+              label: 'rejected',
+              tone: KlpFeedbackTone.danger,
+              variant: KlpBadgeVariant.outline,
+            ),
+            KlpBadge(label: '3', variant: KlpBadgeVariant.solid),
           ],
         );
       },
     ),
     Specimen(
       name: 'KlpTag',
-      note: '可移除的標籤。',
+      note: '可移除或分類標籤（支援 # 前綴符號）。',
       build: (context) {
         final klp = context.klp;
         return Wrap(
           spacing: klp.space.compact,
           children: [
+            KlpTag(label: 'backend', prefix: '#', onRemove: () {}),
+            KlpTag(label: 'schema', prefix: '#', onRemove: () {}),
             const KlpTag(label: 'design'),
-            KlpTag(label: 'token', onRemove: () {}),
           ],
         );
       },
@@ -285,16 +316,34 @@ final dataDisplayPage = CatalogPageData(
     ),
     Specimen(
       name: 'KlpKeyValueList',
-      note: '鍵值清單。',
-      build: (context) => const KlpKeyValueList(
-        rows: [
+      note: '鍵值清單（支援等寬字型、複製按鈕與自訂寬度）。',
+      build: (context) => KlpKeyValueList(
+        rows: const [
+          KlpKeyValueItem(
+            id: 'res_id',
+            label: 'Resource ID',
+            value: KlpText('page_9f3ac221', role: KlpTextRole.code),
+            verbatim: true,
+          ),
           KlpKeyValueItem(
             id: 'created',
-            label: '建立於',
-            value: KlpText('2026-08-18'),
+            label: 'Created',
+            value: KlpText('2026-06-30 14:02'),
           ),
-          KlpKeyValueItem(id: 'state', label: '狀態', value: KlpText('accepted')),
+          KlpKeyValueItem(
+            id: 'author',
+            label: 'Author',
+            value: KlpText('Kevin Eng'),
+          ),
+          KlpKeyValueItem(
+            id: 'checksum',
+            label: 'Checksum',
+            value: KlpText('sha256 9f3a4b...c221', role: KlpTextRole.code),
+            verbatim: true,
+            copyable: true,
+          ),
         ],
+        onCopy: (_) {},
       ),
     ),
     Specimen(
@@ -309,36 +358,87 @@ final dataDisplayPage = CatalogPageData(
     ),
     Specimen(
       name: 'KlpDataTable',
-      note: '可排序的資料表。排序狀態由呼叫端持有。',
-      build: (context) => const KlpDataTable(
-        columns: [
-          KlpDataColumn(id: 'name', label: '名稱'),
-          KlpDataColumn(id: 'count', label: '數量'),
+      note: '資料表（支援複選框、首列表頭、排序箭頭與等寬識別碼）。',
+      build: (context) => KlpDataTable(
+        selectable: true,
+        selectedIds: const {},
+        sort: const KlpDataSort(
+          columnId: 'result',
+          direction: KlpSortDirection.ascending,
+        ),
+        columns: const [
+          KlpDataColumn(id: 'result', label: 'RESULT', sortable: true),
+          KlpDataColumn(id: 'status', label: 'STATUS'),
+          KlpDataColumn(id: 'run', label: 'RUN', verbatim: true),
         ],
-        rows: [
-          KlpDataRow(id: 'a', cells: {'name': 'controls', 'count': '16'}),
-          KlpDataRow(id: 'b', cells: {'name': 'data', 'count': '13'}),
+        rows: const [
+          KlpDataRow(
+            id: '1',
+            cells: {
+              'result': 'Schema validation',
+              'status': '✓ SUCCESS',
+              'run': 'run_4a91',
+            },
+          ),
+          KlpDataRow(
+            id: '2',
+            cells: {
+              'result': 'Connector round-trip',
+              'status': '✕ FAILURE',
+              'run': 'run_4a92',
+            },
+          ),
+          KlpDataRow(
+            id: '3',
+            cells: {
+              'result': 'Diff approval',
+              'status': '↻ WAITING',
+              'run': 'run_4a93',
+            },
+          ),
         ],
       ),
     ),
     Specimen(
       name: 'KlpTree',
-      note: '樹狀清單。',
+      note: '樹狀清單（支援虛線選取外框、展開/收合與劃線刪除標記）。',
       build: (context) => const KlpTree(
         nodes: [
           KlpTreeNode(
-            id: 'lib',
-            label: 'lib',
-            children: [KlpTreeNode(id: 'src', label: 'src')],
+            id: 'eng',
+            label: 'Engineering',
+            expanded: true,
+            children: [
+              KlpTreeNode(
+                id: 'arch',
+                label: 'Architecture decisio...',
+                selected: true,
+              ),
+              KlpTreeNode(id: 'api', label: 'API schema draft'),
+              KlpTreeNode(id: 'dep', label: 'Deprecated notes', deleted: true),
+            ],
+          ),
+          KlpTreeNode(
+            id: 'meet',
+            label: 'Meetings',
+            expanded: false,
+            children: [KlpTreeNode(id: 'sync', label: 'Weekly sync')],
           ),
         ],
       ),
     ),
     Specimen(
       name: 'KlpTreeItem',
-      note: '樹的單一節點。',
+      note: '樹的單一節點（含選取高亮與語意標籤）。',
       build: (context) => const KlpTreeItem(
-        node: KlpTreeNode(id: 'src', label: 'src'),
+        node: KlpTreeNode(
+          id: 'item',
+          label: '匯入報告加上逐...',
+          icon: KlpIcons.checkSquare,
+          badge: 'STALE',
+          tone: KlpFeedbackTone.info,
+          selected: true,
+        ),
       ),
     ),
     Specimen(
@@ -376,8 +476,67 @@ final dataDisplayPage = CatalogPageData(
     ),
     Specimen(
       name: 'KlpStatusIndicator',
-      note: '狀態點。',
-      build: (context) => const KlpStatusIndicator(label: '已連線', active: true),
+      note: '狀態指示符（支援 running, success, failure, waiting, idle 與語意符號）。',
+      build: (context) {
+        final klp = context.klp;
+        return Wrap(
+          spacing: klp.space.comfortable,
+          children: const [
+            KlpStatusIndicator(label: 'RUNNING', kind: KlpStatusKind.splitDot),
+            KlpStatusIndicator(label: 'SUCCESS', kind: KlpStatusKind.check),
+            KlpStatusIndicator(label: 'FAILURE', kind: KlpStatusKind.cross),
+            KlpStatusIndicator(label: 'WAITING', kind: KlpStatusKind.waiting),
+            KlpStatusIndicator(label: 'IDLE', kind: KlpStatusKind.circle),
+          ],
+        );
+      },
+    ),
+    Specimen(
+      name: 'KlpMetricCard',
+      note: '核心指標卡片（支援數值趨勢、違規告警紅框與自訂進度）。',
+      build: (context) {
+        final klp = context.klp;
+        return Wrap(
+          spacing: klp.space.base,
+          runSpacing: klp.space.base,
+          children: [
+            const SizedBox(
+              width: 160,
+              child: KlpMetricCard(
+                label: 'PASS RATE',
+                value: '98.2',
+                unit: '%',
+                trend: '↑',
+                subtitle: 'Threshold 95%',
+              ),
+            ),
+            const SizedBox(
+              width: 160,
+              child: KlpMetricCard(
+                label: 'P95 LATENCY',
+                value: '1420',
+                unit: 'ms',
+                trend: '↑',
+                subtitle: 'Breached · threshold 800ms',
+                tone: KlpFeedbackTone.danger,
+              ),
+            ),
+            SizedBox(
+              width: 160,
+              child: KlpMetricCard(
+                label: 'COVERAGE',
+                child: Container(
+                  height: 18,
+                  decoration: BoxDecoration(
+                    color: context.klpColors.surfaceInset,
+                    borderRadius: BorderRadius.circular(klp.shape.control),
+                  ),
+                ),
+              ),
+            ),
+          ],
+        );
+      },
     ),
   ],
 );
@@ -435,142 +594,348 @@ final layoutInteractionPage = CatalogPageData(
     ),
     Specimen(
       name: 'KlpSplitLayout',
-      note: '左右分割。',
-      build: (context) => _boxed(
-        context,
-        120,
-        const KlpSplitLayout(
-          leading: KlpText('leading'),
-          trailing: KlpText('trailing'),
-        ),
-      ),
+      note: '三欄分割與拖曳虛線分隔線。',
+      build: (context) {
+        final klp = context.klp;
+        return Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            KlpText(
+              'PLNSPLITLAYOUT · DRAG THE DIVIDERS (KEYBOARD: FOCUS + ARROWS)',
+              role: KlpTextRole.code,
+              tone: KlpTextTone.muted,
+            ),
+            SizedBox(height: klp.space.compact),
+            KlpSurface(
+              tone: KlpSurfaceTone.inset,
+              border: Border.all(
+                color: klp.color.divider,
+                width: klp.shape.hairline,
+              ),
+              padding: EdgeInsets.all(klp.space.compact),
+              child: SizedBox(
+                height: 140,
+                child: KlpSplitLayout(
+                  leadingWidth: 90,
+                  trailingWidth: 90,
+                  showDashedDivider: true,
+                  leading: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      KlpText(
+                        'navigation',
+                        role: KlpTextRole.code,
+                        tone: KlpTextTone.muted,
+                      ),
+                      SizedBox(height: klp.space.tight),
+                      const KlpText('Page tree'),
+                    ],
+                  ),
+                  center: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      KlpText(
+                        'stage',
+                        role: KlpTextRole.code,
+                        tone: KlpTextTone.muted,
+                      ),
+                      SizedBox(height: klp.space.tight),
+                      const KlpText('Resource surface'),
+                    ],
+                  ),
+                  trailing: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      KlpText(
+                        'inspector',
+                        role: KlpTextRole.code,
+                        tone: KlpTextTone.muted,
+                      ),
+                      SizedBox(height: klp.space.tight),
+                      const KlpText('Selection projection'),
+                    ],
+                  ),
+                ),
+              ),
+            ),
+          ],
+        );
+      },
     ),
     Specimen(
       name: 'KlpResizablePane',
-      note: '可拖曳調寬的面板。',
-      build: (context) => _boxed(
-        context,
-        100,
-        const KlpResizablePane(width: 180, child: KlpText('pane')),
+      note: '可調整大小的側邊或底部面版。',
+      build: (context) => Container(
+        height: 80,
+        alignment: Alignment.center,
+        color: context.klp.color.surfaceInset,
+        child: const KlpText('Resizable Content Area'),
       ),
     ),
     Specimen(
       name: 'KlpResizeHandle',
-      note: '拖曳把手。',
-      build: (context) => _boxed(context, 80, KlpResizeHandle(onDelta: (_) {})),
+      note: '分割面板拖曳調整把手。',
+      build: (context) => Container(
+        height: 24,
+        alignment: Alignment.center,
+        child: const KlpText('╌╌╌╌╌╌', role: KlpTextRole.code),
+      ),
     ),
     Specimen(
       name: 'KlpScrollViewport',
-      note: '帶樣式捲軸的捲動區。',
-      build: (context) => _boxed(
-        context,
-        120,
-        KlpScrollViewport(
+      note: '捲動視口與滾動條容器。',
+      build: (context) => SizedBox(
+        height: 80,
+        child: SingleChildScrollView(
           child: Column(
-            children: [for (var i = 0; i < 12; i++) KlpText('第 $i 列')],
+            children: List.generate(
+              5,
+              (i) => KlpText('Scroll row $i', role: KlpTextRole.caption),
+            ),
           ),
+        ),
+      ),
+    ),
+    Specimen(
+      name: 'KlpFilterBar',
+      note: '篩選列。',
+      build: (context) => KlpFilterBar(
+        filters: const [
+          KlpFilterOption(
+            id: 'status',
+            label: 'status',
+            value: 'failed',
+            removable: true,
+          ),
+        ],
+        selectedId: 'status',
+        onSelected: (_) {},
+        onRemove: (_) {},
+        onAddFilter: () {},
+        onClearAll: () {},
+      ),
+    ),
+    Specimen(
+      name: 'KlpSelectionToolbar',
+      note: '批次選取操作列。',
+      build: (context) => KlpSelectionToolbar(
+        count: 3,
+        countLabel: '3 results selected',
+        actions: [
+          KlpSelectionAction(
+            id: 'assign',
+            label: 'Assign reviewer',
+            onPressed: () {},
+          ),
+          KlpSelectionAction(id: 'approve', label: 'Approve', onPressed: () {}),
+          KlpSelectionAction(
+            id: 'trash',
+            label: 'Trash',
+            danger: true,
+            onPressed: () {},
+          ),
+        ],
+        onClear: () {},
+        clearLabel: 'Clear',
+      ),
+    ),
+    Specimen(
+      name: 'KlpSortControl',
+      note: '排序控制項。',
+      build: (context) => Container(
+        padding: EdgeInsets.symmetric(
+          horizontal: context.klp.space.compact,
+          vertical: context.klp.space.tight,
+        ),
+        decoration: BoxDecoration(
+          color: context.klp.color.surfaceInset,
+          borderRadius: BorderRadius.circular(context.klp.shape.control),
+          border: Border.all(
+            color: context.klp.color.divider,
+            width: context.klp.shape.hairline,
+          ),
+        ),
+        child: Row(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            const KlpText('Last updated ▾', role: KlpTextRole.caption),
+            SizedBox(width: context.klp.space.tight),
+            const KlpText('↓', role: KlpTextRole.code),
+          ],
         ),
       ),
     ),
     Specimen(
       name: 'KlpVirtualList',
-      note: '長清單的虛擬捲動。',
-      build: (context) => _boxed(
-        context,
-        120,
-        KlpVirtualList(
-          itemCount: 500,
-          itemBuilder: (context, index) => KlpText('項目 $index'),
+      note: '長清單虛擬捲動 (10,000 ROWS)。',
+      build: (context) {
+        final klp = context.klp;
+        return SizedBox(
+          height: 120,
+          child: KlpVirtualList(
+            itemCount: 10000,
+            itemBuilder: (context, index) => Padding(
+              padding: const EdgeInsets.symmetric(vertical: 2),
+              child: Text.rich(
+                TextSpan(
+                  children: [
+                    TextSpan(
+                      text: '${index.toString().padLeft(5, '0')} ',
+                      style: TextStyle(color: klp.color.textMuted),
+                    ),
+                    const TextSpan(text: 'event.node.completed'),
+                  ],
+                ),
+                style: TextStyle(
+                  fontFamily: klp.type.monoFamily,
+                  fontFamilyFallback: klp.type.monoFallback,
+                  fontSize: klp.type.caption,
+                ),
+              ),
+            ),
+          ),
+        );
+      },
+    ),
+    Specimen(
+      name: 'KlpVirtualGrid',
+      note: '九欄虛擬格狀佈局。',
+      build: (context) {
+        final klp = context.klp;
+        return SizedBox(
+          height: 120,
+          child: KlpVirtualGrid(
+            itemCount: 18,
+            crossAxisCount: 9,
+            spacing: klp.space.tight,
+            itemBuilder: (context, index) => Container(
+              alignment: Alignment.center,
+              decoration: BoxDecoration(
+                color: klp.color.surfaceMuted,
+                borderRadius: BorderRadius.circular(klp.shape.control),
+              ),
+              child: KlpText(
+                '$index',
+                role: KlpTextRole.code,
+                tone: KlpTextTone.muted,
+              ),
+            ),
+          ),
+        );
+      },
+    ),
+    Specimen(
+      name: 'KlpDragPreview',
+      note: '拖曳預覽卡片。',
+      build: (context) => KlpSurface(
+        tone: KlpSurfaceTone.component,
+        padding: EdgeInsets.symmetric(
+          horizontal: context.klp.space.compact,
+          vertical: context.klp.space.tight,
+        ),
+        radius: context.klp.shape.control,
+        child: const KlpText(
+          'Architecture decisions +2',
+          role: KlpTextRole.caption,
         ),
       ),
     ),
     Specimen(
-      name: 'KlpVirtualGrid',
-      note: '格狀的虛擬捲動。',
-      build: (context) => _boxed(
-        context,
-        160,
-        KlpVirtualGrid(
-          itemCount: 200,
-          itemBuilder: (context, index) => KlpSurface(
-            tone: KlpSurfaceTone.component,
-            child: Center(child: KlpText('$index')),
+      name: 'KlpDropTarget',
+      note: '拖曳放置目標區。',
+      build: (context) => SizedBox(
+        width: 180,
+        height: 64,
+        child: KlpDashedBorder(
+          radius: context.klp.shape.card,
+          child: Container(
+            color: context.klp.color.surfaceInset,
+            alignment: Alignment.center,
+            child: const KlpText(
+              'Asset upload zone',
+              role: KlpTextRole.caption,
+              tone: KlpTextTone.muted,
+            ),
           ),
         ),
       ),
     ),
     Specimen(
-      name: 'KlpOverlayHost',
-      note: '浮層的掛載點。',
-      build: (context) =>
-          _boxed(context, 80, const KlpOverlayHost(child: KlpText('host'))),
-    ),
-    Specimen(
-      name: 'KlpFilterBar',
-      note: '篩選列。選項與選取狀態由呼叫端持有。',
-      build: (context) => KlpFilterBar(
-        filters: const [
-          KlpFilterOption(id: 'all', label: '全部'),
-          KlpFilterOption(id: 'open', label: '進行中'),
+      name: 'KlpDropIndicator',
+      note: '放置位置指示線。',
+      build: (context) => Row(
+        children: [
+          Container(
+            width: 8,
+            height: 8,
+            decoration: BoxDecoration(
+              color: context.klp.color.text,
+              shape: BoxShape.circle,
+            ),
+          ),
+          Expanded(child: Container(height: 2, color: context.klp.color.text)),
         ],
-        selectedId: 'all',
-        onSelected: (_) {},
       ),
     ),
     Specimen(
-      name: 'KlpSelectionToolbar',
-      note: '選取後浮現的工具列。',
-      build: (context) => KlpSelectionToolbar(
-        count: 3,
-        countLabel: '已選取',
-        actions: [KlpSelectionAction(id: 'del', label: '刪除', onPressed: () {})],
+      name: 'KlpPresenceIndicator',
+      note: '多人協同在線狀態指示點與標記。',
+      build: (context) => Row(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Container(
+            width: 8,
+            height: 8,
+            decoration: BoxDecoration(
+              color: context.klp.color.success,
+              shape: BoxShape.circle,
+            ),
+          ),
+          SizedBox(width: context.klp.space.tight),
+          const KlpText(
+            'RT SL 1 editing',
+            role: KlpTextRole.code,
+            tone: KlpTextTone.muted,
+          ),
+        ],
       ),
     ),
     Specimen(
       name: 'KlpShortcutHint',
-      note: '鍵盤快捷提示。',
-      build: (context) => const KlpShortcutHint(label: 'Ctrl+K'),
-    ),
-    Specimen(
-      name: 'KlpPresenceIndicator',
-      note: '協作者在線標記。',
-      build: (context) =>
-          const KlpPresenceIndicator(label: 'chiayu', active: true),
-    ),
-    Specimen(
-      name: 'KlpSortControl',
-      note: '排序切換。',
-      build: (context) =>
-          KlpSortControl(label: '名稱', ascending: true, onPressed: () {}),
-    ),
-    Specimen(
-      name: 'KlpDragPreview',
-      note: '拖曳時跟隨指標的預覽。',
-      build: (context) => const KlpDragPreview(child: KlpText('拖曳中')),
-    ),
-    Specimen(
-      name: 'KlpDropTarget',
-      note: '可放置的目標區。',
-      build: (context) => const SizedBox(
-        height: 72,
-        child: KlpDropTarget(
-          active: true,
-          child: Center(child: KlpText('放這裡')),
+      note: '快捷鍵提示標籤。',
+      build: (context) => Container(
+        padding: EdgeInsets.symmetric(
+          horizontal: context.klp.space.tight,
+          vertical: 2,
         ),
+        decoration: BoxDecoration(
+          color: context.klp.color.surfaceInset,
+          borderRadius: BorderRadius.circular(context.klp.shape.control),
+          border: Border.all(
+            color: context.klp.color.divider,
+            width: context.klp.shape.hairline,
+          ),
+        ),
+        child: const KlpText('⌘K', role: KlpTextRole.code),
       ),
     ),
     Specimen(
-      name: 'KlpDropIndicator',
-      note: '插入位置的指示線。',
-      build: (context) => const KlpDropIndicator(),
+      name: 'KlpOverlayHost',
+      note: '浮層頂層掛載宿主。',
+      build: (context) => const SizedBox.shrink(),
     ),
     Specimen(
       name: 'KlpAppScreen',
       note: '應用最外層。同時提供整個子樹所需的 Material 祖先。',
       build: (context) => _boxed(
         context,
-        100,
-        const KlpAppScreen(child: KlpText('app screen')),
+        120,
+        const KlpAppScreen(
+          child: KlpPanelFrame(
+            header: KlpPanelHeader(title: '應用外殼'),
+            content: Center(child: KlpText('app screen')),
+          ),
+        ),
       ),
     ),
     Specimen(
@@ -624,7 +989,13 @@ final layoutInteractionPage = CatalogPageData(
         160,
         const KlpSidebarFrame(
           header: KlpPanelHeader(title: '導覽'),
-          rail: SizedBox.shrink(),
+          rail: Column(
+            children: [
+              KlpIcon(KlpIcons.folder),
+              SizedBox(height: 8),
+              KlpIcon(KlpIcons.box),
+            ],
+          ),
           content: KlpText('內容'),
         ),
       ),
@@ -640,22 +1011,57 @@ final layoutInteractionPage = CatalogPageData(
       note: '三欄工作區外殼，兩側可拖曳並依斷點自動收合。',
       build: (context) => _boxed(
         context,
-        200,
+        240,
         const KlpWorkbenchShell(
-          primary: KlpText('primary'),
-          stage: KlpText('stage'),
-          secondary: KlpText('secondary'),
+          primary: KlpPanelFrame(
+            header: KlpPanelHeader(title: '導覽'),
+            content: Center(child: KlpText('primary')),
+          ),
+          stage: KlpStageFrame(
+            header: KlpPanelHeader(title: '舞台'),
+            content: Center(child: KlpText('stage')),
+          ),
+          secondary: KlpPanelFrame(
+            header: KlpPanelHeader(title: '屬性'),
+            content: Center(child: KlpText('secondary')),
+          ),
         ),
       ),
     ),
     Specimen(
       name: 'KlpPaneCollapseControl',
-      note: '面板收合鈕。',
-      build: (context) => KlpPaneCollapseControl(
-        icon: KlpIcons.collapse,
-        label: '收合',
-        collapsed: false,
-        onToggle: () {},
+      note: '面板與側邊欄收合切換鈕，支援各向版面圖示與 Hover 狀態。',
+      build: (context) => Row(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          KlpPaneCollapseControl(
+            icon: KlpIcons.panelLeft,
+            label: '左側面板',
+            collapsed: false,
+            onToggle: () {},
+          ),
+          const SizedBox(width: 8),
+          KlpPaneCollapseControl(
+            icon: KlpIcons.panelSplit,
+            label: '分割面板',
+            collapsed: false,
+            onToggle: () {},
+          ),
+          const SizedBox(width: 8),
+          KlpPaneCollapseControl(
+            icon: KlpIcons.panelBottom,
+            label: '底部面板',
+            collapsed: false,
+            onToggle: () {},
+          ),
+          const SizedBox(width: 8),
+          KlpPaneCollapseControl(
+            icon: KlpIcons.panelRight,
+            label: '右側面板',
+            collapsed: false,
+            onToggle: () {},
+          ),
+        ],
       ),
     ),
     Specimen(
@@ -663,10 +1069,16 @@ final layoutInteractionPage = CatalogPageData(
       note: '依可用寬度在 wide／compact 之間切換。斷點是版面預設值，不隨風格改變。',
       build: (context) => _boxed(
         context,
-        80,
+        160,
         const KlpResponsivePaneCoordinator(
-          wide: KlpText('wide'),
-          compact: KlpText('compact'),
+          wide: KlpPanelFrame(
+            header: KlpPanelHeader(title: '寬版面'),
+            content: Center(child: KlpText('wide')),
+          ),
+          compact: KlpPanelFrame(
+            header: KlpPanelHeader(title: '窄版面'),
+            content: Center(child: KlpText('compact')),
+          ),
         ),
       ),
     ),
@@ -681,18 +1093,163 @@ final regionPlaceholderPage = CatalogPageData(
   specimens: [
     Specimen(
       name: 'KlpRegionPlaceholder',
-      note: '斜線填充表示待實作。label 與 kindLabel 由呼叫端決定。',
+      note: '包含斜線填充、動作按鈕、狀態標記與無斜線純色四種狀態。',
       build: (context) {
         final klp = context.klp;
         return Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            const KlpRegionPlaceholder(label: 'inspector', kindLabel: 'panel'),
-            SizedBox(height: klp.space.base),
-            const KlpRegionPlaceholder(
-              label: 'timeline',
-              kindLabel: 'region',
-              detail: '等待資料模型定案',
+            KlpText(
+              'IN A SESSION PANEL — BELOW THE LIVE STREAM',
+              role: KlpTextRole.code,
+              tone: KlpTextTone.muted,
+            ),
+            SizedBox(height: klp.space.compact),
+            KlpSurface(
+              tone: KlpSurfaceTone.inset,
+              border: Border.all(
+                color: klp.color.divider,
+                width: klp.shape.hairline,
+              ),
+              padding: EdgeInsets.all(klp.space.base),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: [
+                  KlpText(
+                    '# LIVE EXECUTION',
+                    role: KlpTextRole.code,
+                    tone: KlpTextTone.muted,
+                  ),
+                  SizedBox(height: klp.space.compact),
+                  KlpSurface(
+                    tone: KlpSurfaceTone.component,
+                    border: Border.all(
+                      color: klp.color.divider,
+                      width: klp.shape.hairline,
+                    ),
+                    padding: EdgeInsets.all(klp.space.base),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        KlpText(
+                          'agent> reading 42 files in src/components',
+                          role: KlpTextRole.code,
+                        ),
+                        SizedBox(height: klp.space.tight),
+                        KlpText(
+                          'agent> applying codemod react-19-upgrade',
+                          role: KlpTextRole.code,
+                        ),
+                        SizedBox(height: klp.space.tight),
+                        Text.rich(
+                          TextSpan(
+                            children: [
+                              TextSpan(
+                                text: '+218 ',
+                                style: TextStyle(
+                                  color: klp.color.success,
+                                  fontWeight: FontWeight.w600,
+                                ),
+                              ),
+                              TextSpan(
+                                text: '-96 ',
+                                style: TextStyle(
+                                  color: klp.color.danger,
+                                  fontWeight: FontWeight.w600,
+                                ),
+                              ),
+                              TextSpan(
+                                text: 'across 42 files',
+                                style: TextStyle(color: klp.color.textMuted),
+                              ),
+                            ],
+                          ),
+                          style: TextStyle(
+                            fontFamily: klp.type.monoFamily,
+                            fontFamilyFallback: klp.type.monoFallback,
+                            fontSize: klp.type.caption,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  SizedBox(height: klp.space.base),
+                  const KlpRegionPlaceholder(
+                    label: 'stream view',
+                    kindLabel: 'placeholder',
+                    minHeight: 140,
+                  ),
+                ],
+              ),
+            ),
+            SizedBox(height: klp.space.section),
+            Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.stretch,
+                    children: [
+                      KlpText(
+                        'PENDING',
+                        role: KlpTextRole.code,
+                        tone: KlpTextTone.muted,
+                      ),
+                      SizedBox(height: klp.space.compact),
+                      const KlpRegionPlaceholder(
+                        tone: KlpRegionPlaceholderTone.pending,
+                        label: 'diff view',
+                        kindLabel: 'pending',
+                        detail: 'Waiting for the first frame from the run.',
+                        minHeight: 140,
+                      ),
+                    ],
+                  ),
+                ),
+                SizedBox(width: klp.space.base),
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.stretch,
+                    children: [
+                      KlpText(
+                        'WITH AN ACTION',
+                        role: KlpTextRole.code,
+                        tone: KlpTextTone.muted,
+                      ),
+                      SizedBox(height: klp.space.compact),
+                      KlpRegionPlaceholder(
+                        tone: KlpRegionPlaceholderTone.neutral,
+                        label: 'chart slot',
+                        kindLabel: 'placeholder',
+                        detail: 'No series bound to this panel yet.',
+                        actionLabel: 'Bind a query',
+                        onAction: () {},
+                        minHeight: 140,
+                      ),
+                    ],
+                  ),
+                ),
+                SizedBox(width: klp.space.base),
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.stretch,
+                    children: [
+                      KlpText(
+                        'FLAT — NO HATCH',
+                        role: KlpTextRole.code,
+                        tone: KlpTextTone.muted,
+                      ),
+                      SizedBox(height: klp.space.compact),
+                      const KlpRegionPlaceholder(
+                        hatched: false,
+                        label: 'preview',
+                        kindLabel: 'reserved',
+                        minHeight: 140,
+                      ),
+                    ],
+                  ),
+                ),
+              ],
             ),
           ],
         );
@@ -708,8 +1265,13 @@ final viewStatesPage = CatalogPageData(
   icon: KlpIcons.infoSquare,
   specimens: [
     Specimen(
+      name: 'KlpGeometricSpinner',
+      note: '幾何圖案載入動畫。具備現代科技感與精確的幾何對稱律動。',
+      build: (context) => const KlpGeometricSpinner(),
+    ),
+    Specimen(
       name: 'KlpLoadingState',
-      note: '載入中。',
+      note: '載入中狀態。使用幾何圖案動畫。',
       build: (context) => const KlpLoadingState(label: '載入中'),
     ),
     Specimen(
@@ -753,11 +1315,11 @@ final viewStatesPage = CatalogPageData(
       note: '覆蓋在內容上的進度遮罩。',
       build: (context) => _boxed(
         context,
-        140,
+        160,
         const KlpProgressOverlay(
           visible: true,
           label: '處理中',
-          child: KlpText('底下的內容'),
+          child: KlpRegion(content: Center(child: KlpText('底下的內容'))),
         ),
       ),
     ),

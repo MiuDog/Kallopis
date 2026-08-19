@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 
 import '../foundation/klp_icon.dart';
+import '../foundation/klp_icons.dart';
+import '../surface/klp_dashed_border.dart';
 import '../theme/klp_theme.dart';
+import '../typography/klp_text.dart';
 import 'klp_panel_header.dart';
 
 /// 應用程式最外層：鋪滿 app 底色，並在頂端保留自訂視窗標題列的位置。
@@ -17,18 +20,32 @@ class KlpAppScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final tokens = context.klpColors;
+    final background = tokens.app;
+    final surfaceTokens = tokens.onBackground(background);
+
     return Material(
       // transparency 只提供 Material 的能力，不畫底色也不加陰影——底色由下方的
       // ColoredBox 依 token 決定。
       type: MaterialType.transparency,
       child: ColoredBox(
-        color: context.klpColors.app,
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: [
-            ?windowHeader,
-            Expanded(child: child),
-          ],
+        color: background,
+        child: Theme(
+          data: Theme.of(context).copyWith(
+            extensions: [
+              ...Theme.of(
+                context,
+              ).extensions.values.where((ext) => ext is! KlpThemeData),
+              surfaceTokens,
+            ],
+          ),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              ?windowHeader,
+              Expanded(child: child),
+            ],
+          ),
         ),
       ),
     );
@@ -51,7 +68,12 @@ class KlpAppWindowHeader extends StatelessWidget {
   Widget build(BuildContext context) {
     return SizedBox(
       height: context.klp.space.chromeHeader,
-      child: KlpPanelHeader(title: title, leading: leading, actions: actions),
+      child: KlpPanelHeader(
+        title: title,
+        titleRole: KlpTextRole.code,
+        leading: leading,
+        actions: actions,
+      ),
     );
   }
 }
@@ -81,38 +103,59 @@ class KlpResponsivePaneCoordinator extends StatelessWidget {
   }
 }
 
-class KlpPaneCollapseControl extends StatelessWidget {
+class KlpPaneCollapseControl extends StatefulWidget {
   const KlpPaneCollapseControl({
     super.key,
-    required this.icon,
-    required this.label,
+    this.icon,
+    this.label = '切換面板',
     required this.collapsed,
     required this.onToggle,
   });
 
-  final String icon;
+  final String? icon;
   final String label;
   final bool collapsed;
   final VoidCallback? onToggle;
 
   @override
+  State<KlpPaneCollapseControl> createState() => _KlpPaneCollapseControlState();
+}
+
+class _KlpPaneCollapseControlState extends State<KlpPaneCollapseControl> {
+  bool _hovered = false;
+
+  @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      behavior: HitTestBehavior.opaque,
-      onTap: onToggle,
-      child: Semantics(
-        button: true,
-        label: label,
-        expanded: !collapsed,
-        child: SizedBox.square(
-          dimension: context.klp.space.controlHeightSmall,
-          child: Center(
-            child: KlpIcon(
-              icon,
-              size: context.klp.space.iconSmall,
-              color: context.klpColors.textMuted,
-            ),
-          ),
+    final klp = context.klp;
+    final tokens = context.klpColors;
+    final effectiveIcon = widget.icon ?? KlpIcons.panelLeft;
+
+    Widget button = SizedBox.square(
+      dimension: klp.space.controlHeightSmall,
+      child: Center(
+        child: KlpIcon(
+          effectiveIcon,
+          size: klp.space.iconSmall,
+          color: widget.collapsed ? tokens.textFaint : tokens.textMuted,
+        ),
+      ),
+    );
+
+    if (_hovered) {
+      button = KlpDashedBorder(radius: klp.shape.control, child: button);
+    }
+
+    return MouseRegion(
+      onEnter: (_) => setState(() => _hovered = true),
+      onExit: (_) => setState(() => _hovered = false),
+      child: GestureDetector(
+        behavior: HitTestBehavior.opaque,
+        onTap: widget.onToggle,
+        child: Semantics(
+          button: true,
+          label: widget.label,
+          expanded: !widget.collapsed,
+          child: button,
         ),
       ),
     );

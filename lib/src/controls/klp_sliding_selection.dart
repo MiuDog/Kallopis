@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../foundation/klp_icon.dart';
-import '../foundation/klp_metrics.dart';
 import '../theme/klp_theme.dart';
-import '../foundation/klp_palette.dart';
 
 @immutable
 class KlpSelectionOption {
@@ -30,50 +28,65 @@ class KlpSlidingSelection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final klp = context.klp;
     final tokens = context.klpColors;
-    final totalWidth = KlpFormMetrics.selectionControl * options.length;
+    final controlHeight = klp.space.controlHeightSmall;
+    final segmentWidth = controlHeight * 1.15;
+    final padding = klp.space.hairline * 2;
+    final borderWidth = klp.shape.hairline;
+    final totalWidth =
+        segmentWidth * options.length + padding * 2 + borderWidth * 2;
+    final indicatorHeight = controlHeight - padding * 2 - borderWidth * 2;
 
     return Semantics(
       label: label,
       enabled: onSelected != null,
-      child: SizedBox(
+      child: Container(
         width: totalWidth,
-        height: KlpFormMetrics.selectionControl,
+        height: controlHeight,
+        padding: EdgeInsets.all(padding),
+        decoration: BoxDecoration(
+          color: tokens.surfaceInset,
+          borderRadius: BorderRadius.circular(klp.shape.control),
+          border: Border.all(color: tokens.divider, width: klp.shape.hairline),
+        ),
         child: Stack(
           children: [
             AnimatedPositioned(
               key: ValueKey('pln-selection-indicator-$label'),
-              duration: context.klp.motion.stateTransition,
+              duration: klp.motion.stateTransition,
               curve: Curves.easeOutCubic,
-              left:
-                  selectedIndex * KlpFormMetrics.selectionControl +
-                  KlpFormMetrics.selectionIndicatorInset,
-              top: KlpFormMetrics.selectionIndicatorInset,
-              width: KlpFormMetrics.selectionIndicator,
-              height: KlpFormMetrics.selectionIndicator,
+              left: selectedIndex * segmentWidth,
+              top: 0,
+              width: segmentWidth,
+              height: indicatorHeight,
               child: AnimatedContainer(
-                duration: context.klp.motion.styleTransition,
+                duration: klp.motion.styleTransition,
                 decoration: BoxDecoration(
-                  color: options[selectedIndex].color,
-                  borderRadius: BorderRadius.circular(
-                    context.klp.shape.control - 1,
+                  color: options[selectedIndex].color.withValues(
+                    alpha: klp.surface.statusFillOpacity,
+                  ),
+                  borderRadius: BorderRadius.circular(klp.shape.control - 1),
+                  border: Border.all(
+                    color: options[selectedIndex].color,
+                    width: klp.shape.hairline,
                   ),
                 ),
               ),
             ),
             Row(
+              mainAxisSize: MainAxisSize.min,
               children: [
                 for (var index = 0; index < options.length; index++)
-                  SizedBox.square(
-                    dimension: KlpFormMetrics.selectionControl,
+                  SizedBox(
+                    width: segmentWidth,
+                    height: indicatorHeight,
                     child: Center(
                       child: KlpIcon(
                         options[index].icon,
-                        size: context.klp.space.iconSmall,
+                        size: klp.space.iconSmall,
                         color: index == selectedIndex
-                            ? KlpThemeContrast.foregroundFor(
-                                options[selectedIndex].color,
-                              )
+                            ? options[index].color
                             : tokens.textMuted,
                       ),
                     ),
@@ -81,23 +94,23 @@ class KlpSlidingSelection extends StatelessWidget {
               ],
             ),
             Row(
+              mainAxisSize: MainAxisSize.min,
               children: [
                 for (var index = 0; index < options.length; index++)
                   Material(
-                    color: KlpPalette.transparent,
-                    borderRadius: BorderRadius.circular(
-                      context.klp.shape.control,
-                    ),
+                    color: Colors.transparent,
+                    borderRadius: BorderRadius.circular(klp.shape.control - 1),
                     child: InkWell(
                       key: ValueKey('pln-selection-hit-$label-$index'),
                       onTap: onSelected == null
                           ? null
                           : () => onSelected!(index),
                       borderRadius: BorderRadius.circular(
-                        context.klp.shape.control,
+                        klp.shape.control - 1,
                       ),
-                      child: const SizedBox.square(
-                        dimension: KlpFormMetrics.selectionControl,
+                      child: SizedBox(
+                        width: segmentWidth,
+                        height: indicatorHeight,
                       ),
                     ),
                   ),

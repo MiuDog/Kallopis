@@ -153,7 +153,7 @@ class KlpTypographyTheme extends ThemeExtension<KlpTypographyTheme> {
     h2: KlpScale.font800, // 36px
     h1: KlpScale.font900, // 48px
     display: KlpScale.font1000, // 64px
-    label: KlpScale.font200,
+    label: KlpScale.font300, // 14px
     section: KlpScale.font700,
     headingSmall: KlpScale.font600,
     heading: KlpScale.font800,

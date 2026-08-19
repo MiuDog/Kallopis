@@ -3,6 +3,8 @@ import 'dart:io';
 
 import 'package:flutter_test/flutter_test.dart';
 
+import '../tool/inventory.dart';
+
 /// `spec/component-inventory.md` 的閘門。
 ///
 /// 一份會過期的架構文件比沒有文件更糟——它看起來仍然權威，但描述的是三個月前的
@@ -17,18 +19,13 @@ void main() {
       reason: '請跑 `dart run tool/inventory.dart`。',
     );
 
-    final result = Process.runSync('dart', [
-      'run',
-      'tool/inventory.dart',
-      '--check',
-    ], runInShell: true);
+    final expected = generateInventory();
+    final actual = inventory.readAsStringSync().replaceAll('\r\n', '\n');
 
     expect(
-      result.exitCode,
-      0,
-      reason:
-          '元件清單與程式碼不同步。請跑 `dart run tool/inventory.dart`。\n'
-          '${result.stdout}${result.stderr}',
+      actual,
+      expected.replaceAll('\r\n', '\n'),
+      reason: '元件清單與程式碼不同步。請跑 `dart run tool/inventory.dart`。',
     );
   });
 

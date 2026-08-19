@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 
-import 'klp_palette.dart';
-
 /// 可選的強調色。
 ///
 /// 每個值都對著 ink 色梯的表面重新校準過，對比 ≥ 4.70——刻意留 0.2 的餘裕，

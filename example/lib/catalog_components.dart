@@ -9,7 +9,7 @@ class CatalogCanvas extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
+    return Padding(
       padding: const EdgeInsets.all(KlpSpace.xl),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -75,14 +75,10 @@ class CatalogSample extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
-        KlpText(label.toUpperCase(), role: KlpTextRole.label),
+        KlpText(label.toUpperCase(), role: KlpTextRole.bodyStrong),
         if (description != null) ...[
           const SizedBox(height: KlpSpace.xs),
-          KlpText(
-            description!,
-            role: KlpTextRole.caption,
-            tone: KlpTextTone.muted,
-          ),
+          KlpText(description!, role: KlpTextRole.sub, tone: KlpTextTone.muted),
         ],
         const SizedBox(height: KlpSpace.lg),
         child,
