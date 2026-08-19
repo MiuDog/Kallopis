@@ -302,7 +302,8 @@ final formControlsPage = CatalogPageData(
     ),
     Specimen(
       name: 'KlpCombobox',
-      note: '可輸入的下拉選單。輸入框重用 KlpTextField，下拉面板重用 KlpMenu；'
+      note:
+          '可輸入的下拉選單。輸入框重用 KlpTextField，下拉面板重用 KlpMenu；'
           '↓／↑ 導覽、Enter 選定。',
       build: (context) => KlpCombobox(
         label: '負責人',

@@ -1,10 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:kallopis/src/data/klp_timeline.dart';
-import 'package:kallopis/src/theme/klp_theme.dart';
-import 'package:kallopis/src/typography/klp_text.dart';
-
-// 繞過 barrel 直接 import 原始檔，理由見 klp_accordion_test.dart 開頭的說明。
+import 'package:kallopis/kallopis.dart';
 
 void main() {
   Future<void> pump(WidgetTester tester, Widget child) {
@@ -37,12 +33,7 @@ void main() {
     await pump(
       tester,
       const KlpTimeline(
-        items: [
-          KlpTimelineItemData(
-            title: '核准',
-            content: KlpText('備註：無異議'),
-          ),
-        ],
+        items: [KlpTimelineItemData(title: '核准', content: KlpText('備註：無異議'))],
       ),
     );
 

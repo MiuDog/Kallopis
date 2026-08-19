@@ -89,22 +89,22 @@ void main() {
     expect(nextCount, 1);
   });
 
-  testWidgets('KlpCalendarRange.contains treats reversed endpoints as a valid span', (
-    tester,
-  ) async {
-    const range = KlpCalendarRange(
-      start: DateTime(2026, 8, 20),
-      end: DateTime(2026, 8, 10),
-    );
+  // DateTime 的建構子不是 const，因此這個測試不是 widget test，也不能用 const。
+  test(
+    'KlpCalendarRange.contains treats reversed endpoints as a valid span',
+    () {
+      final range = KlpCalendarRange(
+        start: DateTime(2026, 8, 20),
+        end: DateTime(2026, 8, 10),
+      );
 
-    expect(range.contains(DateTime(2026, 8, 15)), isTrue);
-    expect(range.contains(DateTime(2026, 8, 9)), isFalse);
-    expect(range.contains(DateTime(2026, 8, 21)), isFalse);
-  });
+      expect(range.contains(DateTime(2026, 8, 15)), isTrue);
+      expect(range.contains(DateTime(2026, 8, 9)), isFalse);
+      expect(range.contains(DateTime(2026, 8, 21)), isFalse);
+    },
+  );
 
-  testWidgets('renders without throwing in both brightnesses', (
-    tester,
-  ) async {
+  testWidgets('renders without throwing in both brightnesses', (tester) async {
     for (final brightness in Brightness.values) {
       await tester.pumpWidget(
         MaterialApp(

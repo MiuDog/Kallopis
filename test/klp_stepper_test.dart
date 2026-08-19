@@ -1,10 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:kallopis/src/data/klp_stepper.dart';
-import 'package:kallopis/src/foundation/klp_icon.dart';
-import 'package:kallopis/src/theme/klp_theme.dart';
-
-// 繞過 barrel 直接 import 原始檔，理由見 klp_accordion_test.dart 開頭的說明。
+import 'package:kallopis/kallopis.dart';
 
 void main() {
   const steps = [
@@ -31,11 +27,7 @@ void main() {
   testWidgets('垂直排列一樣渲染全部步驟', (tester) async {
     await pump(
       tester,
-      const KlpStepper(
-        steps: steps,
-        currentIndex: 0,
-        direction: Axis.vertical,
-      ),
+      const KlpStepper(steps: steps, currentIndex: 0, direction: Axis.vertical),
     );
 
     expect(find.text('建立'), findsOneWidget);
