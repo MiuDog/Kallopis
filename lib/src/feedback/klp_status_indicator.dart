@@ -1,0 +1,114 @@
+import 'package:flutter/material.dart';
+
+import '../foundation/klp_icon.dart';
+import '../foundation/klp_icons.dart';
+import '../theme/klp_theme.dart';
+import '../typography/klp_text.dart';
+
+/// 狀態指示樣式：圓點 (dot)、雙色分割圓點 (splitDot)、核取勾 (check)、叉號 (cross)、等待重試 (waiting)、空心圓 (circle)。
+enum KlpStatusKind {
+  /// 實心圓點。
+  dot,
+
+  /// 雙色分割圓點（如藍/青色運行中）。
+  splitDot,
+
+  /// 核取勾標記 (✓)。
+  check,
+
+  /// 叉號標記 (✕)。
+  cross,
+
+  /// 等待／旋轉標記 (↻)。
+  waiting,
+
+  /// 空心圓標記 (○)。
+  circle,
+}
+
+/// 狀態指示標記與文字。
+class KlpStatusIndicator extends StatelessWidget {
+  const KlpStatusIndicator({
+    super.key,
+    required this.label,
+    this.active = true,
+    this.kind = KlpStatusKind.dot,
+    this.color,
+  });
+
+  /// 狀態標籤文字。
+  final String label;
+
+  /// 是否處於啟用或活動狀態。
+  final bool active;
+
+  /// 指示圖示種類。
+  final KlpStatusKind kind;
+
+  /// 自訂覆蓋顏色。
+  final Color? color;
+
+  @override
+  Widget build(BuildContext context) {
+    final tokens = context.klpColors;
+    final defaultColor = switch (kind) {
+      KlpStatusKind.splitDot => tokens.info,
+      KlpStatusKind.check => tokens.success,
+      KlpStatusKind.cross => tokens.danger,
+      KlpStatusKind.waiting => tokens.warning,
+      KlpStatusKind.circle => tokens.textMuted,
+      KlpStatusKind.dot => active ? tokens.success : tokens.textFaint,
+    };
+    final effectiveColor = color ?? defaultColor;
+
+    final Widget iconWidget = switch (kind) {
+      KlpStatusKind.splitDot => KlpIcon(
+        KlpIcons.splitCircle,
+        size: context.klp.space.iconTiny,
+        color: effectiveColor,
+      ),
+      KlpStatusKind.check => KlpIcon(
+        KlpIcons.check,
+        size: context.klp.space.iconMicro,
+        color: effectiveColor,
+      ),
+      KlpStatusKind.cross => KlpIcon(
+        KlpIcons.x,
+        size: context.klp.space.iconMicro,
+        color: effectiveColor,
+      ),
+      KlpStatusKind.waiting => KlpIcon(
+        KlpIcons.refresh,
+        size: context.klp.space.iconMicro,
+        color: effectiveColor,
+      ),
+      KlpStatusKind.circle => KlpIcon(
+        KlpIcons.circle,
+        size: context.klp.space.iconTiny,
+        color: effectiveColor,
+      ),
+      KlpStatusKind.dot => Container(
+        width: context.klp.space.indicatorDot,
+        height: context.klp.space.indicatorDot,
+        decoration: BoxDecoration(
+          color: effectiveColor,
+          borderRadius: BorderRadius.circular(context.klp.shape.pill),
+        ),
+      ),
+    };
+
+    return Row(
+      mainAxisSize: MainAxisSize.min,
+      crossAxisAlignment: CrossAxisAlignment.center,
+      children: [
+        Transform.translate(offset: const Offset(0, 1), child: iconWidget),
+        SizedBox(width: context.klp.space.tight),
+        KlpText(
+          label.toUpperCase(),
+          role: KlpTextRole.label,
+          color: effectiveColor,
+        ),
+      ],
+    );
+  }
+}
