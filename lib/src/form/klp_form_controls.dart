@@ -9,6 +9,8 @@ import '../theme/klp_theme.dart';
 import '../typography/klp_text.dart';
 import 'klp_calendar.dart';
 
+/// 多行文字輸入欄位，是 [KlpTextField] 的薄封裝——固定 `multiline: true`，
+/// 其餘外觀與行為完全繼承自 [KlpTextField]。
 class KlpTextArea extends StatelessWidget {
   const KlpTextArea({
     super.key,
@@ -41,6 +43,12 @@ class KlpTextArea extends StatelessWidget {
   }
 }
 
+/// 數值輸入欄位，底層仍是文字輸入框（[KlpTextField]），但只在能解析成
+/// [double] 且落在 [minimum]／[maximum] 範圍內時才呼叫 [onChanged]。
+///
+/// 超出範圍或無法解析的輸入會被直接忽略——欄位仍顯示使用者打的字，但
+/// [onChanged] 不會觸發，因此外部的 `value` 不會更新。需要即時錯誤提示時
+/// 請自行比較顯示字串與 [value] 是否一致，而不是依賴 [onChanged] 的呼叫時機。
 class KlpNumberField extends StatelessWidget {
   const KlpNumberField({
     super.key,
@@ -559,6 +567,8 @@ class _KlpDateFieldState extends State<KlpDateField> {
   }
 }
 
+/// [KlpSelectField]、[KlpMultiSelectField] 與 [KlpColorRoleField] 共用的
+/// 選項資料：識別碼、顯示文字，以及是否停用。
 @immutable
 class KlpChoiceOption {
   const KlpChoiceOption({
@@ -572,6 +582,12 @@ class KlpChoiceOption {
   final bool disabled;
 }
 
+/// 單選下拉欄位：目前值顯示為一列文字，點擊展開選項清單並就地插入版面
+/// （不是彈出層），選中後自動收合。
+///
+/// [valueLabel] 是呼叫端算好的顯示文字，不會反查 [options] 對應哪一項——
+/// 這個元件不知道「目前選的是哪個 id」，只負責畫出清單與回報點擊。
+/// 需要彈出式選單而非就地展開時請改用 [KlpMenu]。
 class KlpSelectField extends StatefulWidget {
   const KlpSelectField({
     super.key,
@@ -668,6 +684,11 @@ class _KlpSelectFieldState extends State<KlpSelectField> {
   }
 }
 
+/// 多選欄位：所有選項以可切換的標籤（chip）形式平鋪展示，不像
+/// [KlpSelectField] 需要展開／收合。
+///
+/// [selectedIds] 由呼叫端持有——這個元件本身無狀態，點擊某個選項只會透過
+/// [onChanged] 回報「切換後應該是這個集合」，不會自己更新畫面。
 class KlpMultiSelectField extends StatelessWidget {
   const KlpMultiSelectField({
     super.key,

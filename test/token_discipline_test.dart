@@ -214,7 +214,7 @@ void main() {
     //
     // 一次補完不成比例，因此用棘輪：未文件化的數量只能下降。消費者最先碰到的
     // 舊型別補上 dartdoc 時只准調低，不准調高。
-    const baseline = 162;
+    const baseline = 78;
 
     final declaration = RegExp(
       r'^(?:abstract final class|final class|class|enum) (Klp[A-Za-z]+)',

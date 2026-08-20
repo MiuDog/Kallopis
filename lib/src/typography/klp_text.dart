@@ -4,6 +4,12 @@ import '../foundation/klp_metrics.dart';
 import '../theme/klp_theme.dart';
 import '../theme/klp_typography_theme.dart';
 
+/// 文字扮演的角色，決定 [KlpText] 要套用哪一組字級／行高／字重／字族。
+///
+/// 這是語意分類而非樣式選擇——例如 [terminal] 與 [editor] 字級相同，差別只在
+/// 字族（等寬 vs 比例）。挑角色時想「這段文字在頁面上是什麼」，而不是
+/// 「我想要多大的字」；真的找不到合適角色時才用 [KlpText.color] 之類的
+/// 覆寫參數，不要為了單一畫面新增角色。
 enum KlpTextRole {
   display,
   h1,
@@ -24,14 +30,31 @@ enum KlpTextRole {
   code,
 }
 
+/// [KlpText] 的顯示色調。[automatic]（預設）依 [KlpTextRole] 查
+/// [KlpTextStyles.tiers] 決定色階；其餘值明確覆寫成對應的語意色，
+/// 用於強調（[danger]／[success]）或降低視覺權重（[muted]／[faint]）等
+/// 角色本身無法表達的場合。
 enum KlpTextTone { automatic, primary, muted, faint, accent, danger, success }
 
+/// 文字色彩的視覺權重階層：[prominent] 最清楚、[subdued] 最不顯眼。
+///
+/// 這一層把「角色該多顯眼」與「實際顏色數值」分開——[KlpTextStyles.colorFor]
+/// 用 tier 去查目前 theme 的 `tokens.text`／`textMuted`／`textFaint`，
+/// 因此換 theme 時同一個 tier 會自動對到新的顏色。
 enum KlpTextColorTier { prominent, standard, subdued }
 
 /// 字族角色。實際家族由 theme 的 typography 層決定，這裡只表達「這段文字扮演什麼角色」
 /// 閱讀；程式碼固定等寬。三者互斥，故以 enum 表達而非多個 bool。
 enum KlpFontRole { ui, body, mono }
 
+/// 單一 [KlpTextRole] 解析後的完整樣式參數，由 [KlpTextStyles.definitionsFor]
+/// 依目前 theme 現算產生。
+///
+/// 不是編譯期常數——字級、行高等數值都取自 [KlpTypographyTheme]，因此同一個
+/// role 在不同 theme 下會得到不同的 [KlpTextStyleDefinition]。一般消費者不需
+/// 要直接建構它，改讀 [KlpTextRole] 搭配 [KlpText] 即可；只有要自行接手渲染
+/// （例如 `TextSpan` 混排）時才需要透過 [toTextStyle] 轉成 Flutter 的
+/// [TextStyle]。
 @immutable
 class KlpTextStyleDefinition {
   const KlpTextStyleDefinition({
@@ -71,6 +94,9 @@ class KlpTextStyleDefinition {
   }
 }
 
+/// 把 [KlpTextRole] 解析成具體樣式與顏色的靜態工具集合。[KlpText] 內部就是
+/// 透過這個類別取得樣式，只有要繞過 [KlpText]（例如自訂 `RichText`）時才需要
+/// 直接呼叫 [definitionOf] 或 [colorFor]。
 abstract final class KlpTextStyles {
   /// 字級與行高由 theme 決定，因此不能是編譯期常數的 map。
   static Map<KlpTextRole, KlpTextStyleDefinition> definitionsFor(
