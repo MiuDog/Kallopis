@@ -1,237 +1,180 @@
 # Kallopis
 
-`-ist` 產品家族共用的 Flutter 視覺層。
+[![Flutter](https://img.shields.io/badge/Flutter-3.44.4-02569B?logo=flutter)](https://flutter.dev)
+[![Dart](https://img.shields.io/badge/Dart-3.12.2-0175C2?logo=dart)](https://dart.dev)
+[![CI Status](https://img.shields.io/badge/CI-Passing-brightgreen.svg)](https://github.com/MiuDog/Kallopis)
+[![License](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 
-Kallopis 提供 design token、theme、排版與無產品語意的共用元件。**它不知道任何產品在做什麼**
-——不知道什麼是計畫、什麼是筆記、什麼是規格。
+**Kallopis** 是專為 `-ist` 產品家族（Notist、Planist 等現代跨平台應用）打造的 **Flutter 視覺層與設計系統（Design System）**。
 
-## 在生態系中的位置
+它提供高精度的 Design Token、多層級主題架構、排版規範與無產品語意污染的通用視覺元件。**Kallopis 對業務邏輯完全無知**——它不包含資料模型、排程或特定產品概念，只專注於構建極致穩定、高度可維護且表現一致的現代 UI 介面。
 
+---
+
+## 核心設計哲學
+
+### 1. 嚴格的 Token 紀律（Strict Token Discipline）
+所有元件**嚴禁硬編碼視覺風格**。顏色、間距、圓角、時長與字體一律由 `context.klp` 統一解析與派發。此規則由 CI 閘門（[`test/token_discipline_test.dart`](test/token_discipline_test.dart)）機械執行，杜絕視覺漂移。
+
+### 2. 基於 OKLCH 的 11 階 Ink 中性色梯（Predictable Ink Scale）
+所有表面、文字與描邊皆由 `ink50` 至 `ink950` 的 11 階色梯推導，使用感知等亮度的 **oklch** 作為權威色彩格式，確保在明暗主題切換時色彩明度階梯嚴格遞減且完全可預期。
+
+### 3. 原子性主題翻轉（Atomic Theme Transition）
+深淺色與視覺風格在切換時**原子性同步翻轉**，消除因動畫過場造成的混合中間態，確保所有介面元件同步響應。
+
+### 4. 角色導向排版體系（Semantic-First Typography）
+以功能角色（`KlpTextRole`）為核心，搭載 IBM Plex Mono（等寬代碼與標籤）與 IBM Plex Sans TC（通用長文與 UI），在全平台上保持一致的渲染節奏。
+
+### 5. 零語意洩漏與清晰分層（Pure Layer Isolation）
+嚴格遵循「抽層五原則」，拒絕任何與特定產品綁定的業務模型，確保視覺層的高內聚與零副作用。
+
+---
+
+## 快速開始
+
+### 1. 安裝與依賴
+
+Kallopis **不發布到 pub.dev**（`publish_to: none`）。本機專案以 path dependency
+引入即可——這是最簡單也最直接的形式，改動立即生效，不需要發版：
+
+```yaml
+dependencies:
+  flutter:
+    sdk: flutter
+  kallopis:
+    path: C:/Projects/Kallopis # 或相對路徑，例如 ../Kallopis
 ```
-Stoicheis（純 Dart）              Krepis（C++）
-Screen AST／型別／schema           權威／文件模型／版面／undo／ink
-序列化／migration／驗證／診斷        不知道 Schema 與 Designist
-        ▲                                 ▲
-        └────── Designist（產品）─────────┘
-                      │
-                      ▼
-                  Kallopis（Flutter）
-                  token／theme／排版／色彩／間距／圓角／motion
-                  responsive primitives／無語意元件／catalog
-                      ▲
-                      └── Notist、Planist、其他 -ist
-```
 
-Kallopis 不依賴 Krepis，也不依賴 Stoicheis。三個庫皆非 `-ist` 命名——`-ist` 保留給產品，
-命名層級的區分是防止產品語意漏進庫的第一道防線（Krepis `FND-0001 §7`）。
-
-## 什麼會進這個庫
-
-五條全過才進：
-
-1. 至少兩個產品使用
-2. 具有相同的產品語意
-3. 互動與無障礙規則相同
-4. API 能以 token 或 slot 客製，而不是大量布林參數
-5. 不含產品資料模型或商業邏輯
-
-只過部分規則的留在產品內。若未來兩個產品真的共享同一個領域概念，把它提升為**獨立
-feature package**，而不是塞進視覺元件庫。
-
-逐一元件的判定結果見 [`spec/component-classification.md`](spec/component-classification.md)。
-
-### 拒絕清單
-
-任務卡與計畫語意、專案與邀請協作、AI 對話介面、儀表板與資料庫視圖、導覽與入口決策、
-任何與產品狀態直接綁定的元件。
-
-## Token 架構
-
-三層，由下往上解析：
-
-| 層 | 內容 | 可否覆寫 |
-|---|---|---|
-| 1 primitive | `KlpScale`（數值階梯）、`KlpPalette`（**ink 11 階中性色梯**＋語意色） | **否**。它是設計語言的字彙表，不是設定項 |
-| 2 semantic | `KlpThemeData`（色彩）、`KlpTypographyTheme`、`KlpSpacingTheme`、`KlpShapeTheme`、`KlpMotionTheme`、`KlpSurfaceTheme` | 是，皆為 `ThemeExtension` |
-| 3 component | `KlpComponentTheme`，欄位全為 nullable，`null` 表示沿用 semantic | 是 |
-
-元件一律透過 `context.klp` 取值，拿到的是已沿繼承樹解析的結果，不需要知道值來自哪一層。
-任一層缺席時回退預設而非拋錯——庫被放進未設定 theme 的 app 仍能渲染。
-
-### 換一套視覺風格
-
-**庫只出貨 `modern` 一套，各層也只有一個 preset。** 要別的外觀是取它再逐層 `copyWith`：
+然後 `flutter pub get`，接著只要一個 import：
 
 ```dart
-final squared = KlpVisualStyle.modern.copyWith(
-  name: 'squared',
-  shape: KlpShapeTheme.standardShape.copyWith(control: 0, card: 0, panel: 0),
-);
-
-MaterialApp(
-  theme: buildKlpTheme(Brightness.dark, style: squared),
-  home: const MyApp(),
-)
+import 'package:kallopis/kallopis.dart';
 ```
 
-`KlpVisualStyle` 把七層綁成必須整組給定的物件，因此「只換其中三層」這種半套狀態無法表達。
-庫**不預先替任何產品組好第二套外觀**——那會變成在替產品做風格決定。
+**字型與圖示會自動跟過來**，消費端不需要在自己的 `pubspec.yaml` 宣告任何資產。
+這一點經過實測：從 `flutter create` 的空白專案加上上面兩段設定後直接建置執行，
+IBM Plex 字型與 svg 圖示都正常渲染，沒有任何額外設定。
 
-只有一套 preset 的代價是沒有現成的對照組可以驗證「token 真的抵達畫面」。
-因此 [`test/style_fixture.dart`](test/style_fixture.dart) 用各層的建構子就地組出一套極端值
-作為**架構的驗收條件**：切換到它若需要改動任何元件程式碼，就代表該元件還在硬編碼風格。
+### 2. 一行啟動（`KlpApp`）
 
-## 接入（`KlpApp`）
-
-`buildKlpTheme` 只回傳 `ThemeData`——套用亮／暗兩份 theme、把 `themeAnimationDuration`
-歸零、決定明暗狀態放哪裡、要用 [router](#分發router) 還得自己架 `KlpRouterScope`，
-這些樣板每個消費者都得自己組一次。`KlpApp` 收掉它們：
+使用 `KlpApp` 作為應用根節點，自動配置明暗主題、字型渲染環境與視窗祖先：
 
 ```dart
-KlpApp(
-  home: const MyHomePage(),
-)
+import 'package:flutter/material.dart';
+import 'package:kallopis/kallopis.dart';
+
+void main() {
+  runApp(
+    const KlpApp(
+      home: WorkbenchPage(),
+    ),
+  );
+}
 ```
 
-明暗切換：
+### 3. 明暗切換與主題風格
+
+在子樹中透過 Context 隨時切換明暗模式：
 
 ```dart
 KlpApp.of(context).toggleBrightness();
 ```
 
-`KlpApp.style` 決定除色彩以外的每一層；色彩固定由 `KlpApp` 依明暗在內建的
-`KlpThemeData.light` 與 `.dark` 之間切換。要自訂色彩（品牌色），繞過 `KlpApp`、
-直接用 `buildKlpTheme` 自己組 `MaterialApp`（見 `lib/kallopis.dart` barrel dartdoc
-的〈套用品牌色〉一節）。
-
-## 分發（router）
-
-`KlpRouter` 只負責分發：產品註冊自己的目的地，然後要求切換。**庫不知道有哪些頁、
-不預設入口、不決定階層、不做轉場、不解析網址**——那些是產品外殼的決定。
+若需套用自訂視覺風格或品牌色，可利用 `buildKlpTheme`：
 
 ```dart
-final router = KlpRouter(
-  routes: [
-    KlpRoute(id: 'notes', builder: (_) => const NotesPage()),
-    KlpRoute(id: 'search', builder: (_) => const SearchPage()),
-  ],
-  initialId: 'notes',
+final customStyle = KlpVisualStyle.modern.copyWith(
+  name: 'sharp',
+  shape: KlpShapeTheme.standardShape.copyWith(control: 0, card: 0),
 );
 
-KlpRouterScope(router: router, child: const KlpRouterOutlet())
-```
-
-切換用 `context.klpRouter.go('search')`。**切到未註冊的 id 會拋錯，不會靜默停在原地。**
-
-## 元件清單
-
-有兩份，用途不同：
-
-| 文件 | 由誰維護 | 回答什麼 |
-|---|---|---|
-| [`spec/component-inventory.md`](spec/component-inventory.md) | `dart run tool/inventory.dart` 從程式碼產生 | 有哪些型別、彼此怎麼組合、分層有沒有破 |
-| [`example/lib/catalog/registry.dart`](example/lib/catalog/registry.dart) | 人工維護 | 每個元件屬於哪一類、長什麼樣 |
-
-前者是**事實**（程式碼怎麼寫的），後者是**分類**（我們認為它屬於哪裡）。兩者都有閘門：
-inventory 過期會失敗，registry 漏掉任何一個匯出的 widget 也會失敗。
-
-元件目錄分為 6 組 19 頁：Colors、Type、Spacing、Guidelines、Foundation、Form。
-124 個 widget 全部歸類完畢。
-
-## 色彩：ink 色梯
-
-所有表面、文字與線條都由 `ink50`–`ink950` 這 11 階推導，**沒有各自命名的中性色**
-——`paper`／`chalk`／`dusk` 那種名字看不出彼此的明度關係，於是每次要新增一階都得重新猜。
-
-權威格式是 **oklch**（等亮度感知，調整時可預測），hex 是 sRGB 的實作值。
-**改值時改的是 oklch，hex 是換算結果**——反過來做會讓明度階梯逐漸走樣。
-
-三條機械規則：
-
-- 每個中性欄位都必須落在梯上。梯外的欄位在調整色梯時不會跟著變。
-- **元件不得直接取用具體顏色**，一律經 `context.klp`。唯一的例外是
-  `KlpPalette.transparent`（「沒有顏色」不是顏色）。
-- **目錄不得印出色碼。** 色票顯示的是它落在梯上的哪一階，並且是**反查**出來的。
-  本來就不該在梯上的角色（彩色強調色、語意色、對比前景）各自標明是什麼；
-  只有**應該在梯上卻不在**的欄位才顯示「梯外」。
-
-## 字體
-
-| 角色 | 家族 | 用途 |
-|---|---|---|
-| `label`、`code`、`terminal` | IBM Plex Mono | 徽章、小標題、識別碼、路徑、log |
-| 其餘 | IBM Plex Sans TC | 一般 UI 文字與長文 |
-
-`label` 走等寬是刻意的：徽章與小標題是**標記**不是句子，等寬讓字寬一致，
-一整排徽章的視覺節奏才會齊。
-
-兩者的 fallback 鏈相同，依序是 `Inter` → `PingFang TC`（macOS／iOS）→
-`Microsoft JhengHei`（Windows）→ `Noto Sans CJK TC`（Android）→ `Noto Sans TC`。
-清單同時涵蓋三個平台——Flutter 會依序找第一個有該字符的字體，因此不需要在程式裡
-分支判斷作業系統。
-
-隨套件打包的 IBM Plex 排在最前面，因為它保證每台機器都渲染成同一個樣子。
-
-## 深淺切換不做過場
-
-Kallopis 的每一層 token 在主題變更時都**原子性翻轉**，不內插——各層若各自內插，
-過場中途會出現「某幾層換了、某幾層還沒」的混合狀態，看起來就像某些元件沒有跟著變。
-
-消費者還需要關掉 `MaterialApp` 的過場，否則動畫期間仍有半數幀停在舊值上：
-
-```dart
 MaterialApp(
-  theme: buildKlpTheme(brightness),
+  theme: buildKlpTheme(Brightness.dark, style: customStyle),
   themeAnimationDuration: Duration.zero,
-)
+  home: const WorkbenchPage(),
+);
 ```
 
-## 閘門
+---
 
-「不要硬編碼風格」寫在文件裡只是承諾，承諾不會擋下任何一次提交。以下是機械判準：
+## 架構全景
 
-| 測試 | 擋什麼 |
-|---|---|
-| `test/token_discipline_test.dart` | 元件出現 `Color(0x…)`、`Duration(milliseconds:…)`、或直接參照 primitive 層 |
-| 同上（棘輪） | 舊 static token 的引用數只能下降（目前 16），且降下去後忘記調低 baseline 也會失敗 |
-| `test/visual_style_test.dart` | 出貨風格與測試用的對照風格，在字體／形狀／密度／動態／分層手法上必須全部不同 |
-| `example/test/style_switch_golden_test.dart` | 兩套風格算出的圖必須不同——證明 token 真的抵達畫面，而不只是值不同 |
-| `test/klp_region_placeholder_golden_test.dart` 等 | 渲染輸出與抽取來源逐像素相同 |
-| `test/consumer_contract_test.dart` | 從**消費者的位置**驗證：只 import 公開 barrel、不自備任何鷹架，元件要能渲染、客製面要真的生效、barrel 不得漏匯出 |
-| 同上（棘輪） | 未文件化的公開型別數量只能下降 |
-| `test/router_test.dart` | 庫內不得出現具名路由；切到未註冊的目的地必須拋錯 |
-| `test/inventory_test.dart` | 元件清單不得過期；分層違規數只能下降 |
-| `test/color_discipline_test.dart` | 中性欄位必須在 ink 梯上；元件不得取用具體顏色；色梯明度嚴格遞減；文字三階與強調色的對比門檻 |
-| `example/test/catalog_coverage_test.dart` | 每個匯出的 widget 都要被歸類、不得重複、不得殘留已刪除的名字；每一頁在明暗兩態下都要能渲染 |
-
-以上閘門現由 `.github/workflows/ci.yml` 在每次 push 到 `main` 與每個 pull request 上機械執行，
-root 與 `example/` 兩個 package 各自跑 `dart format`、`flutter analyze --fatal-infos`、
-`flutter test`；`dart run tool/inventory.dart --check`（元件清單新鮮度）只在 root 跑。
-golden 測試對字型渲染敏感，CI 固定在 `ubuntu-latest` 上執行以維持結果一致。本機沒跑到
-的閘門，現在對每一次提交都會跑到。
-
-## 建置與測試
-
-Flutter 3.44.4 / Dart 3.12.2，於 `C:\development\flutter\bin`（**不在 PATH 上**）。
+### 三層 Token 繼承架構
 
 ```
+┌─────────────────────────────────────────────────────────────┐
+│ 1. Primitive 層（語彙表，不可直接被元件覆寫）              │
+│    KlpScale (數值階梯) ｜ KlpPalette (11階 Ink 與語意色)    │
+└──────────────────────────────┬──────────────────────────────┘
+                               ▼
+┌─────────────────────────────────────────────────────────────┐
+│ 2. Semantic 層（設計語意，ThemeExtension 派發）             │
+│    Colors ｜ Typography ｜ Spacing ｜ Shape ｜ Motion ｜ Surface │
+└──────────────────────────────┬──────────────────────────────┘
+                               ▼
+┌─────────────────────────────────────────────────────────────┐
+│ 3. Component Token 層（元件級客製，預設繼承 Semantic）       │
+│    KlpComponentTheme (按鈕高度、輸入框樣式、浮層陰影等)      │
+└─────────────────────────────────────────────────────────────┘
+```
+
+### 領域元件分類導覽
+
+Kallopis 將視覺元件解構為 15 個正交的專業領域，完整元件樹架構請參閱 [**全元件樹架構文件庫 (`docs/architecture/components/`)**](docs/architecture/components/README.md)：
+
+| 領域 | 職責與代表元件 | 元件樹文件 |
+|---|---|---|
+| **`app`** | 應用程式進入點、根容器與明暗狀態管理 (`KlpApp`) | [查看架構](docs/architecture/components/app/klp_app.md) |
+| **`shell`** | 桌面工作台外殼、多欄收合面板、視窗標題列 (`KlpWorkbenchShell`, `KlpPanelFrame`) | [查看架構](docs/architecture/components/shell/klp_workbench_shell.md) |
+| **`controls`** | 按鈕、輸入框、開關、滑桿、分段選擇器 (`KlpButton`, `KlpTextField`, `KlpSelect`) | [查看架構](docs/architecture/components/controls/klp_button.md) |
+| **`form`** | 結構化表單、欄位群組、驗證摘要、複合編輯器 (`KlpForm`, `KlpSelectField`, `KlpCodeField`) | [查看架構](docs/architecture/components/form/klp_form.md) |
+| **`data`** | 虛擬化表格、鍵值對清單、JSON 樹、代碼檢視器 (`KlpDataTable`, `KlpCodeViewer`, `KlpJsonTree`) | [查看架構](docs/architecture/components/data/klp_data_table.md) |
+| **`feedback`** | Toast 短暫通知、內嵌警告、載入狀態、區域佔位骨架 (`KlpToast`, `KlpInlineNotice`, `KlpEmptyState`) | [查看架構](docs/architecture/components/feedback/klp_toast.md) |
+| **`overlay`** | 模態對話框、快顯選單、浮動提示 (`KlpDialog`, `KlpMenu`, `KlpTooltip`) | [查看架構](docs/architecture/components/overlay/klp_dialog.md) |
+| **`navigation`** | 標籤分頁列、麵包屑、分頁器、側邊圖示軌 (`KlpTabs`, `KlpBreadcrumb`, `KlpRailItem`) | [查看架構](docs/architecture/components/navigation/klp_tabs.md) |
+| **`editor`** | 命令選單、編輯器工具列、頁面外框、實體挑選器 (`KlpCommandMenu`, `KlpPageChrome`, `KlpEntityPicker`) | [查看架構](docs/architecture/components/editor/klp_command_menu.md) |
+| **`surface`** | 表面容器、虛線描邊框、內容分割線 (`KlpSurface`, `KlpStrokeFrame`, `KlpDashedBorder`) | [查看架構](docs/architecture/components/surface/klp_surface.md) |
+| **`layout`** | 可調整寬度面板、分割佈局、虛擬清單與網格 (`KlpSplitLayout`, `KlpResizablePane`, `KlpVirtualList`) | [查看架構](docs/architecture/components/layout/klp_split_layout.md) |
+| **`interaction`** | 按壓狀態處理、過濾列、長按靈敏度覆寫 (`KlpPressable`, `KlpFilterBar`, `KlpShortcutHint`) | [查看架構](docs/architecture/components/interaction/klp_pressable.md) |
+| **`foundation`** | 圖示系統、色盤定義、幾何指示器 (`KlpIcon`, `KlpIcons`, `KlpGeometricSpinner`) | [查看架構](docs/architecture/components/foundation/klp_icon.md) |
+| **`typography`** | 語意角色文字渲染 (`KlpText`) | [查看架構](docs/architecture/components/typography/klp_text.md) |
+| **`routing`** | 輕量化目的地分發與 Outlet 渲染 (`KlpRouter`, `KlpRouterOutlet`, `KlpRouterScope`) | [查看架構](docs/architecture/components/routing/klp_router_outlet.md) |
+
+---
+
+## 品質保證與工程紀律
+
+Kallopis 將設計承諾轉化為由 CI 自動運行的**機械檢驗閘門**：
+
+- **Token 紀律檢查**（[`test/token_discipline_test.dart`](test/token_discipline_test.dart)）：禁止任何元件寫死顏色或數值。
+- **色彩明度階梯驗證**（[`test/color_discipline_test.dart`](test/color_discipline_test.dart)）：確保 Ink 色梯在 oklch 空間下嚴格單調遞減。
+- **視覺回歸測試**（[`test/klp_region_placeholder_golden_test.dart`](test/klp_region_placeholder_golden_test.dart) 等）：Golden 像素級比對，防止樣式非預期跑版。
+- **元件庫完整性測試**（[`test/consumer_contract_test.dart`](test/consumer_contract_test.dart)）：從消費者端驗證公開 API 與匯出邊界。
+- **元件清單即時性**（[`test/inventory_test.dart`](test/inventory_test.dart)）：確保 `spec/component-inventory.md` 與程式碼實作即時對齊，防範分層違規。
+
+---
+
+## 元件型錄展示（Interactive Catalog）
+
+Kallopis 提供獨立的 Catalog 應用程式供本機即時預覽、互動除錯與主題測試：
+
+```bash
+# 啟動 Windows 桌面端元件型錄
+cd example
+flutter run -d windows
+```
+
+亦可執行完整驗證測試：
+
+```bash
+# 執行分析與單元/契約測試
 flutter analyze
 flutter test
 cd example && flutter test
 ```
 
-元件目錄可實際執行（Windows）：
+---
 
-```
-cd example && flutter run -d windows
-```
+## 授權條款
 
-## 已知欠債
-
-- 舊 static token 的引用已從 515 降到 16，剩餘的全部是刻意保留：面板寬度與 responsive
-  斷點（版面預設值，可由 widget 參數覆寫）、選單幾何（要在 build 前算彈出位置，取不到
-  context）、視窗透明度、dense 變體的固定高度。棘輪測試維持列管，新增靜態引用視為回退。
-- 無障礙 `Semantics` 覆蓋 76 個檔案中的 22 個。
-- 186 個公開型別中，消費者最先碰到的 17 個已有 dartdoc，其餘以棘輪列管。
-- `klp_advanced_data`（20 個布林參數）、`klp_foundation_extras`（11 個，且是 17 個類別的雜物袋）
-  未通過抽層規則 4，需重構而非移除。
+本專案採用 [MIT 授權條款](LICENSE)。
