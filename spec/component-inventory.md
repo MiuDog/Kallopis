@@ -474,7 +474,7 @@ graph LR
 | `KlpAvatar` | 41 | `KlpText` |
 | `KlpAvatarData` | 8 | （葉節點） |
 | `KlpAvatarGroup` | 35 | `KlpAvatar` |
-| `KlpBadge` | 76 | `KlpText` |
+| `KlpBadge` | 91 | `KlpText` |
 | `KlpBadgeVariant` | 12 | （葉節點） |
 | `KlpCard` | 86 | `KlpDashedBorder`、`KlpText` |
 | `KlpCodeLanguageOption` | 12 | （葉節點） |

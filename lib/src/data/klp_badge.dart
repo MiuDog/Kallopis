@@ -45,10 +45,25 @@ class KlpBadge extends StatelessWidget {
         ? tokens.textMuted
         : tone.color(tokens);
 
+    // filled 的語意色是**疊層**而非實色：語意色的明度都在中段，直接當底色會讓
+    // 文字在亮態下掉出 AA。低 alpha 疊在表面上則兩者兼得——色相看得出來，
+    // 文字仍是站在近乎白底上。
+    //
+    // neutral 沒有語意色可疊，維持既有的 component 底 ＋ divider 框。
+    final isNeutral = tone == KlpFeedbackTone.neutral;
     final (bgColor, borderColor, textColor) = switch (variant) {
       KlpBadgeVariant.outline => (null, toneColor, toneColor),
       KlpBadgeVariant.solid => (tokens.text, null, tokens.stageSurface),
-      KlpBadgeVariant.filled => (tokens.component, tokens.divider, tokens.text),
+      KlpBadgeVariant.filled when isNeutral => (
+        tokens.component,
+        tokens.divider,
+        tokens.text,
+      ),
+      KlpBadgeVariant.filled => (
+        toneColor.withValues(alpha: context.klp.surface.statusFillOpacity),
+        toneColor,
+        tokens.text,
+      ),
     };
 
     return Container(
