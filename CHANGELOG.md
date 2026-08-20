@@ -1,5 +1,58 @@
 # Changelog
 
+## 0.2.0 — 2026-08-20
+
+第一個可以被其他本機專案直接使用的版本。發布形式是 path dependency，
+刻意不上 pub.dev（見 README「安裝與依賴」）。
+
+**刻意不是 1.0.0。** 1.0.0 是 API 穩定的承諾，而語意色在亮態表面上的對比尚未
+定案、公開型別仍有 78 個沒有 dartdoc。等那兩件事收斂再談。
+
+### 加入
+
+- **`KlpApp`** — 包住 `MaterialApp` 的接入層。套好亮暗兩套 theme、把主題過場歸零、
+  可選地架好 `KlpRouterScope`。消費者不必再自己組一次樣板。
+- **七個元件**：`KlpAccordion`、`KlpStepper`、`KlpTimeline`、`KlpDrawer`、
+  `KlpContextMenu`、`KlpCalendar`、`KlpCombobox`。`KlpDateField` 已接上 `KlpCalendar`。
+- **CI**（`.github/workflows/ci.yml`）：格式、`analyze --fatal-infos`、測試、
+  元件清單新鮮度。測試跑在 windows runner 上——golden 產生於 Windows，換平台會整批假失敗。
+- **40 張逐頁 golden**：20 個目錄頁 × 明暗兩態。驗證過三件事：連跑兩次一致、
+  改一個間距 token 會 40 張全紅、總計 4.85 MB。
+- 新閘門：互動狀態紀律、圖示網格與線寬、元件內字面值棘輪、dartdoc 交叉引用。
+
+### 修正
+
+- **`KlpBadge` 的預設變體丟棄 `tone`。** `KlpBadge(label: 'X', tone: success)`
+  這個最自然的寫法什麼都不做，且無任何錯誤訊息——連目錄自己頁首的完成度徽章都踩到。
+  語意色改為疊層而非實色（實色會讓標籤在亮態下掉出 AA）。
+- **hover 統一為只有低對比虛線細框**，不再改變任何顏色。先前十幾個元件各自實作。
+- **不合法輸入改為半透明紅底**，不再預混成不透明色——預混會在欄位換到別的表面時對不上。
+- 亮態 divider 改用 `ink200`；`KlpRegion` 補上預設面板內距。
+
+### 架構
+
+- **收斂三處「一條規則兩份實作」**：`context.klpColors` 改為委派、
+  新增 `KlpTheme.isDark`、抽出 `KlpTokenOverride`。
+- **分層違規 15 → 3**。`klp_foundation_extras.dart`（17 個類別的雜物袋）已拆解刪除，
+  12 個歸錯領域的元件搬到 `data/`、`surface/`、`interaction/`、`overlay/`、
+  `typography/`、`feedback/`、`shell/`。
+- **刪除 26 個零引用的 typedef 別名**，其中 12 個帶 Planist 產品語意
+  （`KlpAgentPicker`、`KlpMcpPicker` 等），違反抽層規則 5。
+  同時解除 `KlpComboBox` 與 `KlpCombobox` 只差大小寫的命名危險。
+- 元件內的尺寸與透明度字面值 13 → 3，其餘搬進 token 層（數值照抄，畫面未變）。
+- 未文件化的公開型別 156 → 78。
+
+### 已知欠債
+
+- 語意色在亮態表面上的對比為 1.48–2.45，低於 AA 4.5。`KlpInlineNotice` 把它當
+  圖示前景時在亮態下近乎不可見。需要決定：回到明暗分離值，或限定只作填色並用
+  `onStatus` 當前景。
+- golden 截的是 1400×900 視窗，內容比視窗高的頁面捲動線以下不在基準內。
+- 無障礙 `Semantics` 與鍵盤導覽的覆蓋仍低；`KlpMenu`、`KlpCommandMenu`、`KlpTabs`
+  等尚無方向鍵操作。
+- 庫內仍有硬編碼字串，尚無 l10n delegate。`KlpToast` 的做法（強制呼叫端提供標籤）
+  是正確範例，但未貫徹。
+
 ## 0.1.0 — 2026-08-18
 
 Kallopis 的第一個可用版本，由 Planist `lib/design_system/` 抽取而來。
