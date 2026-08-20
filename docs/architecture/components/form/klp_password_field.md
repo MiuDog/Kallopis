@@ -4,7 +4,7 @@
 
 - **核心元件**：`KlpPasswordField`
 - **所屬領域**：`form — 表單`
-- **核心職責**：Kallopis KlpPasswordField 元件
+- **核心職責**：密碼輸入控制項。支援顯示／隱藏密碼切換與密碼強度／規則檢核清單。
 - **包含範圍**：`build()` 內部建構的完整 Widget 樹（展開 Flutter 原生元件與純容器）
 - **外部引用**：本專案其他非純容器元件（遇引用即停下並鏈結）
 
@@ -21,10 +21,24 @@ flowchart TD
   root["KlpPasswordField"]:::root
   n1["Column"]
   root --> n1
-  n2["KlpText"]:::reference
+  n2["Row"]
   n1 --> n2
-  n3["SizedBox"]
-  n1 --> n3
+  n3["KlpText"]:::reference
+  n2 --> n3
+  n4["SizedBox"]
+  n2 --> n4
+  n5["Material"]
+  n4 --> n5
+  n6["GestureDetector"]
+  n5 --> n6
+  n7["Padding"]
+  n6 --> n7
+  n8["Center"]
+  n7 --> n8
+  n9["Wrap"]
+  n8 --> n9
+  n10["child / slot"]:::slot
+  n8 --> n10
 ```
 
 ## 外部元件引用
@@ -33,8 +47,8 @@ flowchart TD
 
 ## 程式碼證據
 
-- 檔案路徑：[`lib/src/form/klp_form_controls.dart`](../../../../lib/src/form/klp_form_controls.dart#L80)
-- 宣告型態：`StatelessWidget`
+- 檔案路徑：[`lib/src/form/klp_form_controls.dart`](../../../../lib/src/form/klp_form_controls.dart#L101)
+- 宣告型態：`StatefulWidget`
 
 ## 閱讀說明
 

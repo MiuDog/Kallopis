@@ -35,7 +35,7 @@ flowchart TD
 
 ## 程式碼證據
 
-- 檔案路徑：[`lib/src/controls/klp_segmented_control.dart`](../../../../lib/src/controls/klp_segmented_control.dart#L9)
+- 檔案路徑：[`lib/src/controls/klp_segmented_control.dart`](../../../../lib/src/controls/klp_segmented_control.dart#L10)
 - 宣告型態：`StatelessWidget`
 
 ## 閱讀說明

@@ -4,7 +4,7 @@
 
 - **核心元件**：`KlpSidebarSectionLabel`
 - **所屬領域**：`navigation — 導覽元件`
-- **核心職責**：Kallopis KlpSidebarSectionLabel 元件
+- **核心職責**：側邊欄分組標題，固定高度且左對齊、使用低對比的 [KlpTextRole.label] 樣式。  固定高度是為了讓不同分組標題之間的垂直節奏一致，即使某個標題很短也不會 讓上下間距看起來不一樣。
 - **包含範圍**：`build()` 內部建構的完整 Widget 樹（展開 Flutter 原生元件與純容器）
 - **外部引用**：本專案其他非純容器元件（遇引用即停下並鏈結）
 
@@ -37,7 +37,7 @@ flowchart TD
 
 ## 程式碼證據
 
-- 檔案路徑：[`lib/src/navigation/klp_navigation_controls.dart`](../../../../lib/src/navigation/klp_navigation_controls.dart#L8)
+- 檔案路徑：[`lib/src/navigation/klp_navigation_controls.dart`](../../../../lib/src/navigation/klp_navigation_controls.dart#L13)
 - 宣告型態：`StatelessWidget`
 
 ## 閱讀說明

@@ -4,7 +4,7 @@
 
 - **核心元件**：`KlpTextArea`
 - **所屬領域**：`form — 表單`
-- **核心職責**：Kallopis KlpTextArea 元件
+- **核心職責**：多行文字輸入欄位，是 [KlpTextField] 的薄封裝——固定 `multiline: true`， 其餘外觀與行為完全繼承自 [KlpTextField]。
 - **包含範圍**：`build()` 內部建構的完整 Widget 樹（展開 Flutter 原生元件與純容器）
 - **外部引用**：本專案其他非純容器元件（遇引用即停下並鏈結）
 
@@ -29,7 +29,7 @@ flowchart TD
 
 ## 程式碼證據
 
-- 檔案路徑：[`lib/src/form/klp_form_controls.dart`](../../../../lib/src/form/klp_form_controls.dart#L9)
+- 檔案路徑：[`lib/src/form/klp_form_controls.dart`](../../../../lib/src/form/klp_form_controls.dart#L14)
 - 宣告型態：`StatelessWidget`
 
 ## 閱讀說明

@@ -4,7 +4,7 @@
 
 - **核心元件**：`KlpColorRoleField`
 - **所屬領域**：`form — 表單`
-- **核心職責**：Kallopis KlpColorRoleField 元件
+- **核心職責**：從一組色彩角色（例如 semantic token 名稱）中選擇一個的下拉欄位。  是 [KlpSelectField] 針對「選項本身就是色彩角色」這個情境的薄封裝—— [roles] 直接複用 [KlpChoiceOption]，實際渲染完全委派給 [KlpSelectField]。 找不到 [selectedId] 對應的角色時會退回顯示 [roles] 的第一項。
 - **包含範圍**：`build()` 內部建構的完整 Widget 樹（展開 Flutter 原生元件與純容器）
 - **外部引用**：本專案其他非純容器元件（遇引用即停下並鏈結）
 
@@ -29,7 +29,7 @@ flowchart TD
 
 ## 程式碼證據
 
-- 檔案路徑：[`lib/src/form/klp_structured_fields.dart`](../../../../lib/src/form/klp_structured_fields.dart#L246)
+- 檔案路徑：[`lib/src/form/klp_structured_fields.dart`](../../../../lib/src/form/klp_structured_fields.dart#L708)
 - 宣告型態：`StatelessWidget`
 
 ## 閱讀說明

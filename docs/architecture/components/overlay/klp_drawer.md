@@ -1,10 +1,10 @@
-# KlpDragPreview：元件樹架構
+# KlpDrawer：元件樹架構
 
 ## 範圍
 
-- **核心元件**：`KlpDragPreview`
-- **所屬領域**：`foundation — 圖示、色盤、度量`
-- **核心職責**：Kallopis KlpDragPreview 元件
+- **核心元件**：`KlpDrawer`
+- **所屬領域**：`overlay — 浮層`
+- **核心職責**：從邊緣滑入的面板：側邊欄、篩選面板，或（[KlpDrawerEdge.bottom] 方向）行動裝置 常見的 sheet。  **不負責彈出**——呼叫端決定用什麼容器承載這個 widget（例如 `KlpOverlayHost`、`Stack` 或 `Overlay`），並透過 [open] 驅動顯示與否； 本元件只負責滑入滑出的動畫、遮罩與「點遮罩關閉」這個互動。呼叫端持有 [open] 的狀態，本元件本身不追蹤開關。
 - **包含範圍**：`build()` 內部建構的完整 Widget 樹（展開 Flutter 原生元件與純容器）
 - **外部引用**：本專案其他非純容器元件（遇引用即停下並鏈結）
 
@@ -18,13 +18,25 @@ flowchart TD
   classDef container fill:#2E3440,stroke:#A3BE8C,stroke-width:1.5px,color:#A3BE8C;
   classDef slot fill:#2E3440,stroke:#D08770,stroke-width:1px,stroke-dasharray: 2 2,color:#D08770;
 
-  root["KlpDragPreview"]:::root
-  n1["Opacity"]
+  root["KlpDrawer"]:::root
+  n1["IgnorePointer"]
   root --> n1
-  n2["KlpSurface"]:::container
+  n2["Stack"]
   root --> n2
-  n3["child / slot"]:::slot
+  n3["AnimatedOpacity"]
   n2 --> n3
+  n4["GestureDetector"]
+  n2 --> n4
+  n5["ColoredBox"]
+  n4 --> n5
+  n6["Align"]
+  n5 --> n6
+  n7["SizedBox"]
+  n6 --> n7
+  n8["KlpSurface"]:::container
+  n7 --> n8
+  n9["child / slot"]:::slot
+  n8 --> n9
 ```
 
 ## 外部元件引用
@@ -33,7 +45,7 @@ flowchart TD
 
 ## 程式碼證據
 
-- 檔案路徑：[`lib/src/foundation/klp_foundation_extras.dart`](../../../../lib/src/foundation/klp_foundation_extras.dart#L414)
+- 檔案路徑：[`lib/src/overlay/klp_drawer.dart`](../../../../lib/src/overlay/klp_drawer.dart#L16)
 - 宣告型態：`StatelessWidget`
 
 ## 閱讀說明

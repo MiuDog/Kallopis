@@ -19,7 +19,7 @@ flowchart TD
   classDef slot fill:#2E3440,stroke:#D08770,stroke-width:1px,stroke-dasharray: 2 2,color:#D08770;
 
   root["KlpInteractionSettings"]:::root
-  root --> leaf["Widget (原生客製佈局)"]
+  root --> leaf["Widget (自訂/原生佈局)"]
 ```
 
 ## 外部元件引用

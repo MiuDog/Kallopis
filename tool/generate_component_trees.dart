@@ -19,6 +19,7 @@ const categoryLabel = <String, String>{
   'editor': 'editor — 編輯器周邊',
   'shell': 'shell — 應用外殼',
   'routing': 'routing — 分發',
+  'app': 'app — 應用程式進入點與根容器',
 };
 
 /// 純容器型別：這些元件即使是本專案元件，也視為結構容器，不中斷展開
@@ -229,6 +230,10 @@ void _generateWidgetDoc(
   buffer.writeln('- **插槽節點（橘框/:::slot）**：外部傳入之 `child`、`builder` 或內容參數。');
   buffer.writeln();
 
+  final targetDir = Directory('docs/architecture/components/${w.category}');
+  if (!targetDir.existsSync()) {
+    targetDir.createSync(recursive: true);
+  }
   File(targetPath).writeAsStringSync(buffer.toString());
 }
 
@@ -236,13 +241,11 @@ String _extractCompleteWidgetAndState(WidgetDoc w) {
   final text = w.fullFileContent;
   final b = StringBuffer();
 
-  // 擷取 class KlpX
   final classPos = text.indexOf(RegExp('class\\s+${w.name}\\b'));
   if (classPos != -1) {
     b.writeln(_extractClassBody(text, classPos));
   }
 
-  // 擷取 class _KlpXState
   final statePos = text.indexOf(RegExp('class\\s+_${w.name}State\\b'));
   if (statePos != -1) {
     b.writeln(_extractClassBody(text, statePos));
@@ -284,7 +287,6 @@ ParsedTreeResult _analyzeWidgetTree(
 ) {
   final externalRefs = <String>{};
 
-  // 尋找本元件調用的所有 Klp*
   final klpConstructRegex = RegExp(r'\b(Klp[A-Za-z0-9]+)\s*(?:<[^>]+>)?\s*\(');
   for (final m in klpConstructRegex.allMatches(source)) {
     final name = m.group(1)!;
@@ -340,25 +342,21 @@ String _buildDetailedMermaidTree(
   final b = StringBuffer();
   b.writeln('  root["$rootName"]:::root');
 
-  final callMatches = _extractBuildTreeHierarchy(
-    source,
-    rootName,
-    widgetCategoryMap,
-  );
+  final items = _extractBuildTreeHierarchy(source, rootName, widgetCategoryMap);
 
-  if (callMatches.isEmpty) {
-    b.writeln('  root --> leaf["Widget (原生客製佈局)"]');
+  if (items.isEmpty) {
+    b.writeln('  root --> leaf["Widget (自訂/原生佈局)"]');
     return b.toString();
   }
 
   var nodeIndex = 1;
-  final parentStack = <String>['root'];
+  final containersStack = <String>['root'];
 
-  for (final item in callMatches) {
+  for (final item in items) {
     final nodeId = 'n$nodeIndex';
     nodeIndex++;
 
-    final parent = parentStack.isNotEmpty ? parentStack.last : 'root';
+    final parent = containersStack.isNotEmpty ? containersStack.last : 'root';
 
     if (item.isReference) {
       b.writeln('  $nodeId["${item.label}"]:::reference');
@@ -367,7 +365,7 @@ String _buildDetailedMermaidTree(
       b.writeln('  $nodeId["${item.label}"]:::container');
       b.writeln('  $parent --> $nodeId');
       if (item.hasChild) {
-        parentStack.add(nodeId);
+        containersStack.add(nodeId);
       }
     } else if (item.isSlot) {
       b.writeln('  $nodeId["${item.label}"]:::slot');
@@ -376,7 +374,7 @@ String _buildDetailedMermaidTree(
       b.writeln('  $nodeId["${item.label}"]');
       b.writeln('  $parent --> $nodeId');
       if (item.hasChild) {
-        parentStack.add(nodeId);
+        containersStack.add(nodeId);
       }
     }
   }
@@ -407,7 +405,6 @@ List<CallItem> _extractBuildTreeHierarchy(
   final list = <CallItem>[];
   final seen = <String>{};
 
-  // 抓取所有 build 或 _build* 方法主體
   final buildMethodBodies = _extractAllMethodBodies(source);
   final combinedBody = buildMethodBodies.isNotEmpty
       ? buildMethodBodies.join('\n')
@@ -735,20 +732,20 @@ void _generateIndexDoc(
   b.writeln('# Kallopis 元件樹架構全覽');
   b.writeln();
   b.writeln(
-    '> 本目錄遵循 `/focused-architecture-diagram` 規範，繪製 Kallopis 所有元件之內部 Widget Tree 架構。',
+    '> 本目錄遵循 `/focused-architecture-diagram` 規範，精確繪製 Kallopis 全部 ${widgets.length} 個 Widget 元件之內部組成架構。',
   );
   b.writeln();
-  b.writeln('## 分類與規範原則');
+  b.writeln('## 架構分層與展開規範');
   b.writeln();
-  b.writeln('1. **同構分類**：嚴格依照 `lib/src/` 領域目錄進行分類。');
+  b.writeln('1. **同構分類**：嚴格對齊 `lib/src/` 的領域目錄分層。');
   b.writeln(
-    '2. **原生展開**：Flutter 原生元件（如 `Container`, `Row`, `Column`, `Padding`, `Material` 等）持續向下繪製到底。',
+    '2. **原生原語展開**：Flutter 原生元件（如 `Container`, `Row`, `Column`, `Padding`, `Material` 等）持續向下繪製到底。',
   );
   b.writeln(
-    '3. **純容器中繼**：`KlpSurface`、`KlpStrokeFrame` 等純容器元件不中斷，持續展開其內部 child。',
+    '3. **純容器中繼**：`KlpSurface`、`KlpStrokeFrame`、`KlpRegion` 等純容器型別不中斷，持續展開其內部 child。',
   );
   b.writeln(
-    '4. **引用停步**：遇到本專案之其他非純容器元件（如 `KlpButton`, `KlpTextField`, `KlpIcon` 等）即刻停下，並提供文件超連結引用。',
+    '4. **跨元件引用邊界**：遇到本專案之其他功能性元件（如 `KlpButton`, `KlpTextField`, `KlpIcon`, `KlpText` 等）即刻停步，標記為 `:::reference` 節點並提供超連結引用。',
   );
   b.writeln();
   b.writeln('## 領域分類索引');
@@ -759,9 +756,7 @@ void _generateIndexDoc(
       ..sort((a, b) => a.name.compareTo(b.name));
     if (catWidgets.isEmpty) continue;
 
-    b.writeln(
-      '- [${categoryLabel[cat]} (${catWidgets.length})](#${catWidgets.first.category})',
-    );
+    b.writeln('- [${categoryLabel[cat]} (${catWidgets.length})](#$cat)');
   }
   b.writeln();
 

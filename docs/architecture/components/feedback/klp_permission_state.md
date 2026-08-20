@@ -19,7 +19,7 @@ flowchart TD
   classDef slot fill:#2E3440,stroke:#D08770,stroke-width:1px,stroke-dasharray: 2 2,color:#D08770;
 
   root["KlpPermissionState"]:::root
-  root --> leaf["Widget (原生客製佈局)"]
+  root --> leaf["Widget (自訂/原生佈局)"]
 ```
 
 ## 外部元件引用
@@ -28,7 +28,7 @@ flowchart TD
 
 ## 程式碼證據
 
-- 檔案路徑：[`lib/src/feedback/klp_view_states.dart`](../../../../lib/src/feedback/klp_view_states.dart#L74)
+- 檔案路徑：[`lib/src/feedback/klp_view_states.dart`](../../../../lib/src/feedback/klp_view_states.dart#L80)
 - 宣告型態：`StatelessWidget`
 
 ## 閱讀說明

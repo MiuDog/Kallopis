@@ -4,7 +4,7 @@
 
 - **核心元件**：`KlpPagination`
 - **所屬領域**：`navigation — 導覽元件`
-- **核心職責**：Kallopis KlpPagination 元件
+- **核心職責**：上一頁／頁碼／下一頁的簡易分頁控制項。  頁碼從 1 開始（不是從 0）；在第一頁或最後一頁時對應按鈕會自動停用， 呼叫端不需要自己判斷邊界。不提供跳頁輸入框或頁碼清單，適合頁數不多、 只需要前後翻頁的場合。
 - **包含範圍**：`build()` 內部建構的完整 Widget 樹（展開 Flutter 原生元件與純容器）
 - **外部引用**：本專案其他非純容器元件（遇引用即停下並鏈結）
 
@@ -38,7 +38,7 @@ flowchart TD
 
 ## 程式碼證據
 
-- 檔案路徑：[`lib/src/navigation/klp_navigation_controls.dart`](../../../../lib/src/navigation/klp_navigation_controls.dart#L47)
+- 檔案路徑：[`lib/src/navigation/klp_navigation_controls.dart`](../../../../lib/src/navigation/klp_navigation_controls.dart#L60)
 - 宣告型態：`StatelessWidget`
 
 ## 閱讀說明

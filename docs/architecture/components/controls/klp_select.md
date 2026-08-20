@@ -19,28 +19,28 @@ flowchart TD
   classDef slot fill:#2E3440,stroke:#D08770,stroke-width:1px,stroke-dasharray: 2 2,color:#D08770;
 
   root["KlpSelect"]:::root
-  n1["Column"]
+  n1["KlpStrokeFrame"]:::container
   root --> n1
-  n2["KlpText"]:::reference
+  n2["Material"]
   n1 --> n2
-  n3["SizedBox"]
-  n1 --> n3
-  n4["KlpStrokeFrame"]:::container
-  n3 --> n4
-  n5["Material"]
+  n3["InkWell"]
+  n2 --> n3
+  n4["SizedBox"]
+  n2 --> n4
+  n5["Padding"]
   n4 --> n5
-  n6["InkWell"]
+  n6["Row"]
   n5 --> n6
-  n7["Padding"]
-  n5 --> n7
-  n8["Row"]
+  n7["Expanded"]
+  n6 --> n7
+  n8["KlpText"]:::reference
   n7 --> n8
-  n9["Expanded"]
-  n8 --> n9
-  n10["KlpIcon"]:::reference
-  n9 --> n10
+  n9["KlpIcon"]:::reference
+  n7 --> n9
+  n10["Column"]
+  n7 --> n10
   n11["child / slot"]:::slot
-  n9 --> n11
+  n10 --> n11
 ```
 
 ## 外部元件引用
@@ -51,7 +51,7 @@ flowchart TD
 
 ## 程式碼證據
 
-- 檔案路徑：[`lib/src/controls/klp_select.dart`](../../../../lib/src/controls/klp_select.dart#L12)
+- 檔案路徑：[`lib/src/controls/klp_select.dart`](../../../../lib/src/controls/klp_select.dart#L14)
 - 宣告型態：`StatefulWidget`
 
 ## 閱讀說明

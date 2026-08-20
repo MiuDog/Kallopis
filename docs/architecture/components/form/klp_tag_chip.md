@@ -1,10 +1,10 @@
-# KlpThemeToggle：元件樹架構
+# KlpTagChip：元件樹架構
 
 ## 範圍
 
-- **核心元件**：`KlpThemeToggle`
-- **所屬領域**：`foundation — 圖示、色盤、度量`
-- **核心職責**：Kallopis KlpThemeToggle 元件
+- **核心元件**：`KlpTagChip`
+- **所屬領域**：`form — 表單`
+- **核心職責**：標籤膠囊元件。呈現單一標籤並支援移除操作。
 - **包含範圍**：`build()` 內部建構的完整 Widget 樹（展開 Flutter 原生元件與純容器）
 - **外部引用**：本專案其他非純容器元件（遇引用即停下並鏈結）
 
@@ -18,25 +18,28 @@ flowchart TD
   classDef container fill:#2E3440,stroke:#A3BE8C,stroke-width:1.5px,color:#A3BE8C;
   classDef slot fill:#2E3440,stroke:#D08770,stroke-width:1px,stroke-dasharray: 2 2,color:#D08770;
 
-  root["KlpThemeToggle"]:::root
-  n1["GestureDetector"]
+  root["KlpTagChip"]:::root
+  n1["Container"]
   root --> n1
-  n2["KlpSurface"]:::container
+  n2["Row"]
   n1 --> n2
   n3["KlpText"]:::reference
   n2 --> n3
-  n4["child / slot"]:::slot
+  n4["SizedBox"]
   n2 --> n4
+  n5["GestureDetector"]
+  n4 --> n5
+  n6["child / slot"]:::slot
+  n5 --> n6
 ```
 
 ## 外部元件引用
 
-- [`KlpSurface`](../surface/klp_surface.md) — `surface — 表面與描邊` *(純容器，已繼續向下展開)*
 - [`KlpText`](../typography/klp_text.md) — `typography — 文字`
 
 ## 程式碼證據
 
-- 檔案路徑：[`lib/src/foundation/klp_foundation_extras.dart`](../../../../lib/src/foundation/klp_foundation_extras.dart#L483)
+- 檔案路徑：[`lib/src/form/klp_form_controls.dart`](../../../../lib/src/form/klp_form_controls.dart#L249)
 - 宣告型態：`StatelessWidget`
 
 ## 閱讀說明

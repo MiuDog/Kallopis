@@ -21,16 +21,16 @@ flowchart TD
   root["KlpKeyValueTable"]:::root
   n1["ClipRRect"]
   root --> n1
-  n2["ColoredBox"]
+  n2["KlpSurface"]:::container
   n1 --> n2
-  n3["Padding"]
+  n3["Column"]
   n2 --> n3
-  n4["Column"]
+  n4["KlpText"]:::reference
   n3 --> n4
-  n5["KlpText"]:::reference
-  n4 --> n5
-  n6["SizedBox"]
-  n4 --> n6
+  n5["SizedBox"]
+  n3 --> n5
+  n6["Padding"]
+  n5 --> n6
   n7["Row"]
   n6 --> n7
   n8["Expanded"]
@@ -41,11 +41,12 @@ flowchart TD
 
 ## 外部元件引用
 
+- [`KlpSurface`](../surface/klp_surface.md) — `surface — 表面與描邊` *(純容器，已繼續向下展開)*
 - [`KlpText`](../typography/klp_text.md) — `typography — 文字`
 
 ## 程式碼證據
 
-- 檔案路徑：[`lib/src/data/klp_key_value_table.dart`](../../../../lib/src/data/klp_key_value_table.dart#L16)
+- 檔案路徑：[`lib/src/data/klp_key_value_table.dart`](../../../../lib/src/data/klp_key_value_table.dart#L17)
 - 宣告型態：`StatelessWidget`
 
 ## 閱讀說明

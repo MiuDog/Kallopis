@@ -37,7 +37,7 @@ flowchart TD
 
 ## 程式碼證據
 
-- 檔案路徑：[`lib/src/foundation/klp_foundation_extras.dart`](../../../../lib/src/foundation/klp_foundation_extras.dart#L298)
+- 檔案路徑：[`lib/src/foundation/klp_segmented_progress.dart`](../../../../lib/src/foundation/klp_segmented_progress.dart#L5)
 - 宣告型態：`StatelessWidget`
 
 ## 閱讀說明

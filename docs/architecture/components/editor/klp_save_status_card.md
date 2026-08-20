@@ -4,7 +4,7 @@
 
 - **核心元件**：`KlpSaveStatusCard`
 - **所屬領域**：`editor — 編輯器周邊`
-- **核心職責**：Kallopis KlpSaveStatusCard 元件
+- **核心職責**：顯示最後儲存時間與一組相關狀態訊息的卡片，用於編輯器頁面告知使用者 目前的儲存／同步狀況。  [savedAt] 是已經格式化好的顯示文字（例如「2 分鐘前」），這個元件不處理 時間格式化或相對時間更新。
 - **包含範圍**：`build()` 內部建構的完整 Widget 樹（展開 Flutter 原生元件與純容器）
 - **外部引用**：本專案其他非純容器元件（遇引用即停下並鏈結）
 
@@ -39,7 +39,7 @@ flowchart TD
 
 ## 程式碼證據
 
-- 檔案路徑：[`lib/src/editor/klp_page_chrome.dart`](../../../../lib/src/editor/klp_page_chrome.dart#L73)
+- 檔案路徑：[`lib/src/editor/klp_page_chrome.dart`](../../../../lib/src/editor/klp_page_chrome.dart#L87)
 - 宣告型態：`StatelessWidget`
 
 ## 閱讀說明

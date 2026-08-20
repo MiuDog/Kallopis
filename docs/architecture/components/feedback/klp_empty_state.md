@@ -19,20 +19,18 @@ flowchart TD
   classDef slot fill:#2E3440,stroke:#D08770,stroke-width:1px,stroke-dasharray: 2 2,color:#D08770;
 
   root["KlpEmptyState"]:::root
-  n1["Padding"]
+  n1["Container"]
   root --> n1
   n2["Column"]
   n1 --> n2
-  n3["Container"]
+  n3["KlpIcon"]:::reference
   n2 --> n3
-  n4["KlpIcon"]:::reference
-  n3 --> n4
-  n5["SizedBox"]
-  n3 --> n5
-  n6["KlpText"]:::reference
-  n5 --> n6
-  n7["child / slot"]:::slot
-  n5 --> n7
+  n4["SizedBox"]
+  n2 --> n4
+  n5["KlpText"]:::reference
+  n4 --> n5
+  n6["child / slot"]:::slot
+  n4 --> n6
 ```
 
 ## 外部元件引用
@@ -42,7 +40,7 @@ flowchart TD
 
 ## 程式碼證據
 
-- 檔案路徑：[`lib/src/feedback/klp_empty_state.dart`](../../../../lib/src/feedback/klp_empty_state.dart#L7)
+- 檔案路徑：[`lib/src/feedback/klp_empty_state.dart`](../../../../lib/src/feedback/klp_empty_state.dart#L8)
 - 宣告型態：`StatelessWidget`
 
 ## 閱讀說明

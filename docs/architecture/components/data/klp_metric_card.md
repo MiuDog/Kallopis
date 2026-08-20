@@ -1,10 +1,10 @@
-# KlpBlockCanvas：元件樹架構
+# KlpMetricCard：元件樹架構
 
 ## 範圍
 
-- **核心元件**：`KlpBlockCanvas`
-- **所屬領域**：`foundation — 圖示、色盤、度量`
-- **核心職責**：Kallopis KlpBlockCanvas 元件
+- **核心元件**：`KlpMetricCard`
+- **所屬領域**：`data — 資料呈現`
+- **核心職責**：指標呈現卡片 (Metric Card)。  呈現標籤、核心數值、單位、趨勢箭頭、狀態說明或迷你進度長條。 支援正常（neutral/success）與違規告警（danger 具備紅色外框與文字）。
 - **包含範圍**：`build()` 內部建構的完整 Widget 樹（展開 Flutter 原生元件與純容器）
 - **外部引用**：本專案其他非純容器元件（遇引用即停下並鏈結）
 
@@ -18,22 +18,32 @@ flowchart TD
   classDef container fill:#2E3440,stroke:#A3BE8C,stroke-width:1.5px,color:#A3BE8C;
   classDef slot fill:#2E3440,stroke:#D08770,stroke-width:1px,stroke-dasharray: 2 2,color:#D08770;
 
-  root["KlpBlockCanvas"]:::root
-  n1["KlpSurface"]:::container
+  root["KlpMetricCard"]:::root
+  n1["ClipRRect"]
   root --> n1
-  n2["Stack"]
+  n2["Container"]
   n1 --> n2
-  n3["child / slot"]:::slot
+  n3["Column"]
   n2 --> n3
+  n4["KlpText"]:::reference
+  n3 --> n4
+  n5["SizedBox"]
+  n3 --> n5
+  n6["FittedBox"]
+  n5 --> n6
+  n7["Row"]
+  n6 --> n7
+  n8["child / slot"]:::slot
+  n7 --> n8
 ```
 
 ## 外部元件引用
 
-- [`KlpSurface`](../surface/klp_surface.md) — `surface — 表面與描邊` *(純容器，已繼續向下展開)*
+- [`KlpText`](../typography/klp_text.md) — `typography — 文字`
 
 ## 程式碼證據
 
-- 檔案路徑：[`lib/src/foundation/klp_foundation_extras.dart`](../../../../lib/src/foundation/klp_foundation_extras.dart#L358)
+- 檔案路徑：[`lib/src/data/klp_card.dart`](../../../../lib/src/data/klp_card.dart#L95)
 - 宣告型態：`StatelessWidget`
 
 ## 閱讀說明

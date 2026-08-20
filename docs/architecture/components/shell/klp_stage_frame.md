@@ -23,19 +23,23 @@ flowchart TD
   root --> n1
   n2["ClipRRect"]
   n1 --> n2
-  n3["Column"]
+  n3["KlpTokenOverride"]:::reference
   n2 --> n3
-  n4["SizedBox"]
-  n3 --> n4
-  n5["Expanded"]
+  n4["Column"]
+  n2 --> n4
+  n5["SizedBox"]
   n4 --> n5
-  n6["child / slot"]:::slot
+  n6["Expanded"]
   n5 --> n6
+  n7["Padding"]
+  n6 --> n7
+  n8["child / slot"]:::slot
+  n7 --> n8
 ```
 
 ## 外部元件引用
 
-- （無外部元件引用，皆由 Flutter 原生原語或純容器構成）
+- [`KlpTokenOverride`](../theme/klp_token_override.md) — `theme — semantic 與 component token`
 
 ## 程式碼證據
 

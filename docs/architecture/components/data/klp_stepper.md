@@ -1,10 +1,10 @@
-# KlpPopover：元件樹架構
+# KlpStepper：元件樹架構
 
 ## 範圍
 
-- **核心元件**：`KlpPopover`
-- **所屬領域**：`foundation — 圖示、色盤、度量`
-- **核心職責**：Kallopis KlpPopover 元件
+- **核心元件**：`KlpStepper`
+- **所屬領域**：`data — 資料呈現`
+- **核心職責**：步驟流程指示。依 [currentIndex] 把 [steps] 分成已完成／進行中／未開始三態。  純顯示元件——不持有互動狀態，也不處理點擊；切換到下一步是呼叫端更新 [currentIndex] 後重建的結果。[direction] 決定排列方向。
 - **包含範圍**：`build()` 內部建構的完整 Widget 樹（展開 Flutter 原生元件與純容器）
 - **外部引用**：本專案其他非純容器元件（遇引用即停下並鏈結）
 
@@ -18,20 +18,32 @@ flowchart TD
   classDef container fill:#2E3440,stroke:#A3BE8C,stroke-width:1.5px,color:#A3BE8C;
   classDef slot fill:#2E3440,stroke:#D08770,stroke-width:1px,stroke-dasharray: 2 2,color:#D08770;
 
-  root["KlpPopover"]:::root
-  n1["KlpSurface"]:::container
+  root["KlpStepper"]:::root
+  n1["Row"]
   root --> n1
-  n2["child / slot"]:::slot
+  n2["Column"]
   n1 --> n2
+  n3["SizedBox"]
+  n2 --> n3
+  n4["Expanded"]
+  n3 --> n4
+  n5["Center"]
+  n4 --> n5
+  n6["IntrinsicHeight"]
+  n5 --> n6
+  n7["Padding"]
+  n6 --> n7
+  n8["child / slot"]:::slot
+  n7 --> n8
 ```
 
 ## 外部元件引用
 
-- [`KlpSurface`](../surface/klp_surface.md) — `surface — 表面與描邊` *(純容器，已繼續向下展開)*
+- （無外部元件引用，皆由 Flutter 原生原語或純容器構成）
 
 ## 程式碼證據
 
-- 檔案路徑：[`lib/src/foundation/klp_foundation_extras.dart`](../../../../lib/src/foundation/klp_foundation_extras.dart#L379)
+- 檔案路徑：[`lib/src/data/klp_stepper.dart`](../../../../lib/src/data/klp_stepper.dart#L28)
 - 宣告型態：`StatelessWidget`
 
 ## 閱讀說明

@@ -25,21 +25,24 @@ flowchart TD
   n1 --> n2
   n3["Column"]
   n2 --> n3
-  n4["SizedBox"]
+  n4["KlpGeometricSpinner"]:::reference
   n3 --> n4
-  n5["KlpText"]:::reference
-  n4 --> n5
-  n6["child / slot"]:::slot
-  n4 --> n6
+  n5["SizedBox"]
+  n3 --> n5
+  n6["KlpText"]:::reference
+  n5 --> n6
+  n7["child / slot"]:::slot
+  n5 --> n7
 ```
 
 ## 外部元件引用
 
+- [`KlpGeometricSpinner`](../foundation/klp_geometric_spinner.md) — `foundation — 圖示、色盤、度量`
 - [`KlpText`](../typography/klp_text.md) — `typography — 文字`
 
 ## 程式碼證據
 
-- 檔案路徑：[`lib/src/feedback/klp_view_states.dart`](../../../../lib/src/feedback/klp_view_states.dart#L9)
+- 檔案路徑：[`lib/src/feedback/klp_view_states.dart`](../../../../lib/src/feedback/klp_view_states.dart#L11)
 - 宣告型態：`StatelessWidget`
 
 ## 閱讀說明

@@ -4,7 +4,7 @@
 
 - **核心元件**：`KlpSurface`
 - **所屬領域**：`surface — 表面與描邊`
-- **核心職責**：有底色的容器，是所有區塊的基底。`tone` 指定它在表面階層中的位置， 實際色值與圓角由 theme 決定。
+- **核心職責**：有底色的容器，是所有區塊的基底。`tone` 指定它在表面階層中的位置， 支援邊框、微漸層、外發光與霧化透明（毛玻璃）等多種原生 Box 視覺效果。 文字顏色依據背景顏色階梯（500 以下為深色文字，600 以上為淺色文字）自適應渲染。
 - **包含範圍**：`build()` 內部建構的完整 Widget 樹（展開 Flutter 原生元件與純容器）
 - **外部引用**：本專案其他非純容器元件（遇引用即停下並鏈結）
 
@@ -19,21 +19,27 @@ flowchart TD
   classDef slot fill:#2E3440,stroke:#D08770,stroke-width:1px,stroke-dasharray: 2 2,color:#D08770;
 
   root["KlpSurface"]:::root
-  n1["DecoratedBox"]
+  n1["Padding"]
   root --> n1
-  n2["Padding"]
+  n2["KlpTokenOverride"]:::reference
   n1 --> n2
-  n3["child / slot"]:::slot
-  n2 --> n3
+  n3["DecoratedBox"]
+  n1 --> n3
+  n4["ClipRRect"]
+  n3 --> n4
+  n5["BackdropFilter"]
+  n4 --> n5
+  n6["child / slot"]:::slot
+  n4 --> n6
 ```
 
 ## 外部元件引用
 
-- （無外部元件引用，皆由 Flutter 原生原語或純容器構成）
+- [`KlpTokenOverride`](../theme/klp_token_override.md) — `theme — semantic 與 component token`
 
 ## 程式碼證據
 
-- 檔案路徑：[`lib/src/surface/klp_surface.dart`](../../../../lib/src/surface/klp_surface.dart#L20)
+- 檔案路徑：[`lib/src/surface/klp_surface.dart`](../../../../lib/src/surface/klp_surface.dart#L26)
 - 宣告型態：`StatelessWidget`
 
 ## 閱讀說明

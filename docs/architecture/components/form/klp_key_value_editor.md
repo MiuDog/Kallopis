@@ -4,7 +4,7 @@
 
 - **核心元件**：`KlpKeyValueEditor`
 - **所屬領域**：`form — 表單`
-- **核心職責**：Kallopis KlpKeyValueEditor 元件
+- **核心職責**：任意鍵值對清單的編輯器（例如 HTTP header、環境變數），每列一個 key 輸入 框與一個 value 輸入框。  不提供新增／刪除列的按鈕——這個元件只負責編輯既有 [entries] 的內容， 增減列數請自行在 [entries] 外包一層（可參考 [KlpRepeaterField] 的模式）。
 - **包含範圍**：`build()` 內部建構的完整 Widget 樹（展開 Flutter 原生元件與純容器）
 - **外部引用**：本專案其他非純容器元件（遇引用即停下並鏈結）
 
@@ -42,7 +42,7 @@ flowchart TD
 
 ## 程式碼證據
 
-- 檔案路徑：[`lib/src/form/klp_structured_fields.dart`](../../../../lib/src/form/klp_structured_fields.dart#L95)
+- 檔案路徑：[`lib/src/form/klp_structured_fields.dart`](../../../../lib/src/form/klp_structured_fields.dart#L111)
 - 宣告型態：`StatelessWidget`
 
 ## 閱讀說明

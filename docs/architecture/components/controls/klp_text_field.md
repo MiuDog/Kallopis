@@ -19,22 +19,32 @@ flowchart TD
   classDef slot fill:#2E3440,stroke:#D08770,stroke-width:1px,stroke-dasharray: 2 2,color:#D08770;
 
   root["KlpTextField"]:::root
-  n1["Column"]
+  n1["GestureDetector"]
   root --> n1
-  n2["KlpText"]:::reference
+  n2["Padding"]
   n1 --> n2
-  n3["SizedBox"]
-  n1 --> n3
-  n4["Material"]
-  n3 --> n4
-  n5["Padding"]
+  n3["KlpIcon"]:::reference
+  n2 --> n3
+  n4["Row"]
+  n2 --> n4
+  n5["KlpText"]:::reference
   n4 --> n5
-  n6["KlpIcon"]:::reference
-  n5 --> n6
-  n7["leading (slot)"]:::slot
-  n5 --> n7
-  n8["child / slot"]:::slot
-  n5 --> n8
+  n6["SizedBox"]
+  n4 --> n6
+  n7["Column"]
+  n6 --> n7
+  n8["Container"]
+  n7 --> n8
+  n9["Material"]
+  n8 --> n9
+  n10["Focus"]
+  n9 --> n10
+  n11["MouseRegion"]
+  n10 --> n11
+  n12["leading (slot)"]:::slot
+  n11 --> n12
+  n13["child / slot"]:::slot
+  n11 --> n13
 ```
 
 ## 外部元件引用
@@ -44,8 +54,8 @@ flowchart TD
 
 ## 程式碼證據
 
-- 檔案路徑：[`lib/src/controls/klp_text_field.dart`](../../../../lib/src/controls/klp_text_field.dart#L11)
-- 宣告型態：`StatelessWidget`
+- 檔案路徑：[`lib/src/controls/klp_text_field.dart`](../../../../lib/src/controls/klp_text_field.dart#L13)
+- 宣告型態：`StatefulWidget`
 
 ## 閱讀說明
 

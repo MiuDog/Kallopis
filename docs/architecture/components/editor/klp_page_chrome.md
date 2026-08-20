@@ -4,7 +4,7 @@
 
 - **核心元件**：`KlpPageChrome`
 - **所屬領域**：`editor — 編輯器周邊`
-- **核心職責**：Kallopis KlpPageChrome 元件
+- **核心職責**：頁面頂部的識別區塊：麵包屑導覽、選填的狀態文字與協作者標記，以及頁面 大標題。  [breadcrumb] 以 `/` 串接顯示，不提供逐段可點擊的導覽——需要可點擊麵包屑 請改用 [KlpBreadcrumb]。[status] 與 [collaborator] 都是單一文字，若要顯示 多位協作者或多筆狀態，需自行組合字串或改用其他元件。
 - **包含範圍**：`build()` 內部建構的完整 Widget 樹（展開 Flutter 原生元件與純容器）
 - **外部引用**：本專案其他非純容器元件（遇引用即停下並鏈結）
 
@@ -43,7 +43,7 @@ flowchart TD
 
 ## 程式碼證據
 
-- 檔案路徑：[`lib/src/editor/klp_page_chrome.dart`](../../../../lib/src/editor/klp_page_chrome.dart#L9)
+- 檔案路徑：[`lib/src/editor/klp_page_chrome.dart`](../../../../lib/src/editor/klp_page_chrome.dart#L15)
 - 宣告型態：`StatelessWidget`
 
 ## 閱讀說明

@@ -19,28 +19,24 @@ flowchart TD
   classDef slot fill:#2E3440,stroke:#D08770,stroke-width:1px,stroke-dasharray: 2 2,color:#D08770;
 
   root["KlpThemePreviewTile"]:::root
-  n1["Semantics"]
+  n1["ClipRRect"]
   root --> n1
-  n2["SizedBox"]
+  n2["CustomPaint"]
   n1 --> n2
-  n3["KlpPressable"]:::reference
-  n2 --> n3
-  n4["Opacity"]
-  n2 --> n4
-  n5["Column"]
-  n2 --> n5
-  n6["DecoratedBox"]
-  n5 --> n6
-  n7["Padding"]
-  n6 --> n7
-  n8["ClipRRect"]
+  n3["Semantics"]
+  n1 --> n3
+  n4["SizedBox"]
+  n3 --> n4
+  n5["KlpPressable"]:::reference
+  n4 --> n5
+  n6["Opacity"]
+  n4 --> n6
+  n7["Column"]
+  n4 --> n7
+  n8["KlpText"]:::reference
   n7 --> n8
-  n9["CustomPaint"]
-  n8 --> n9
-  n10["KlpText"]:::reference
-  n8 --> n10
-  n11["child / slot"]:::slot
-  n8 --> n11
+  n9["child / slot"]:::slot
+  n7 --> n9
 ```
 
 ## 外部元件引用
@@ -50,7 +46,7 @@ flowchart TD
 
 ## 程式碼證據
 
-- 檔案路徑：[`lib/src/shell/klp_theme_preview_tile.dart`](../../../../lib/src/shell/klp_theme_preview_tile.dart#L10)
+- 檔案路徑：[`lib/src/shell/klp_theme_preview_tile.dart`](../../../../lib/src/shell/klp_theme_preview_tile.dart#L11)
 - 宣告型態：`StatelessWidget`
 
 ## 閱讀說明

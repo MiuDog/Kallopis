@@ -4,7 +4,7 @@
 
 - **核心元件**：`KlpSelectionToolbar`
 - **所屬領域**：`interaction — 互動`
-- **核心職責**：Kallopis KlpSelectionToolbar 元件
+- **核心職責**：批次選取浮動/固定操作列。
 - **包含範圍**：`build()` 內部建構的完整 Widget 樹（展開 Flutter 原生元件與純容器）
 - **外部引用**：本專案其他非純容器元件（遇引用即停下並鏈結）
 
@@ -21,25 +21,34 @@ flowchart TD
   root["KlpSelectionToolbar"]:::root
   n1["KlpSurface"]:::container
   root --> n1
-  n2["Wrap"]
+  n2["Row"]
   n1 --> n2
   n3["KlpText"]:::reference
-  n1 --> n3
-  n4["KlpButton"]:::reference
-  n1 --> n4
-  n5["child / slot"]:::slot
-  n1 --> n5
+  n2 --> n3
+  n4["SizedBox"]
+  n2 --> n4
+  n5["KlpButton"]:::reference
+  n4 --> n5
+  n6["Spacer"]
+  n4 --> n6
+  n7["KlpPressable"]:::reference
+  n4 --> n7
+  n8["Padding"]
+  n4 --> n8
+  n9["child / slot"]:::slot
+  n8 --> n9
 ```
 
 ## 外部元件引用
 
 - [`KlpButton`](../controls/klp_button.md) — `controls — 控制項`
+- [`KlpPressable`](./klp_pressable.md) — `interaction — 互動`
 - [`KlpSurface`](../surface/klp_surface.md) — `surface — 表面與描邊` *(純容器，已繼續向下展開)*
 - [`KlpText`](../typography/klp_text.md) — `typography — 文字`
 
 ## 程式碼證據
 
-- 檔案路徑：[`lib/src/interaction/klp_filter_bar.dart`](../../../../lib/src/interaction/klp_filter_bar.dart#L106)
+- 檔案路徑：[`lib/src/interaction/klp_filter_bar.dart`](../../../../lib/src/interaction/klp_filter_bar.dart#L213)
 - 宣告型態：`StatelessWidget`
 
 ## 閱讀說明
