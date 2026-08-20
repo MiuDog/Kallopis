@@ -10,6 +10,12 @@ import '../surface/klp_surface.dart';
 import '../theme/klp_theme.dart';
 import '../typography/klp_text.dart';
 
+/// [KlpDataTable] 的欄位定義：id、標頭文字、可選寬度與排序行為。
+///
+/// [id] 用來對應 [KlpDataRow.cells] 的 key 與 [KlpDataSort.columnId]，不是顯示
+/// 文字——顯示文字是 [label]。[width] 是 flex 權重（會被四捨五入），不是像素值，
+/// 因此欄寬只在同一張表內的欄位之間有相對意義。[verbatim] 讓非標頭列也用等寬字
+/// 顯示，適合放路徑、ID 這類需要逐字對齊的內容。
 @immutable
 class KlpDataColumn {
   const KlpDataColumn({
@@ -29,10 +35,18 @@ class KlpDataColumn {
   final bool verbatim;
 }
 
+/// [KlpDataColumn] 內容的水平對齊：靠頭或靠尾。刻意不提供置中——表格欄位
+/// 只用來分辨「文字」與「數值／狀態」兩種閱讀方向。
 enum KlpDataAlignment { start, end }
 
+/// [KlpDataSort] 的排序方向。
 enum KlpSortDirection { ascending, descending }
 
+/// [KlpDataTable] 目前的排序狀態：哪一欄、哪個方向。
+///
+/// 表格本身不維護排序狀態——[KlpDataTable] 是無狀態元件，實際排序資料的動作
+/// 由呼叫端透過 [KlpDataTable.onSort] 接手，再把結果連同新的 [KlpDataSort]
+/// 一併傳回來。
 @immutable
 class KlpDataSort {
   const KlpDataSort({required this.columnId, required this.direction});
@@ -41,6 +55,10 @@ class KlpDataSort {
   final KlpSortDirection direction;
 }
 
+/// [KlpDataTable] 的一列資料。
+///
+/// [cells] 的 key 對應 [KlpDataColumn.id]；value 可以是 [Widget]（自訂渲染）或
+/// 任何其他物件（會用 `toString()` 顯示為文字）。
 @immutable
 class KlpDataRow {
   const KlpDataRow({required this.id, required this.cells});
@@ -49,6 +67,11 @@ class KlpDataRow {
   final Map<String, Object> cells;
 }
 
+/// 結構化資料表格：固定欄位、可選排序與多選。
+///
+/// 不做分頁或虛擬捲動——列數多時請自行分頁後再傳入 [rows]。選取狀態
+/// （[selectedIds]）與排序狀態（[sort]）都由呼叫端持有，這個元件本身無狀態，
+/// 只在使用者互動時透過 [onSelected]／[onSort] 回報意圖。
 class KlpDataTable extends StatelessWidget {
   const KlpDataTable({
     super.key,
@@ -249,6 +272,14 @@ class _KlpTableLine extends StatelessWidget {
   }
 }
 
+/// [KlpTree]／[KlpTreeItem] 的一個節點。
+///
+/// [hasChildren] 與 [children] 是分開的兩個訊號：[hasChildren] 讓呼叫端在還沒
+/// 載入子節點（例如遠端延遲載入）時就先畫出展開箭頭，[children] 才是實際已知
+/// 的子節點資料。[expanded] 是這個節點的預設展開狀態，只有在
+/// [KlpTree.expandedIds] 為 null 時才生效——傳了 `expandedIds` 之後展開狀態
+/// 改由呼叫端控管，這個欄位就不再讀取。[tone] 為節點加上狀態色（例如標示
+/// 錯誤或警告的檔案）。
 @immutable
 class KlpTreeNode {
   const KlpTreeNode({
@@ -276,6 +307,11 @@ class KlpTreeNode {
   final KlpFeedbackTone? tone;
 }
 
+/// 樹狀節點清單，用於檔案總管、大綱這類階層式導覽。
+///
+/// 展開／選取狀態預設由每個 [KlpTreeNode] 自帶（[KlpTreeNode.expanded]／
+/// [KlpTreeNode.selected]），適合靜態或一次性渲染；若要由呼叫端集中控管，
+/// 傳入 [expandedIds]／[selectedId] 即可覆蓋節點自帶的狀態。
 class KlpTree extends StatelessWidget {
   const KlpTree({
     super.key,
@@ -316,6 +352,11 @@ class KlpTree extends StatelessWidget {
   }
 }
 
+/// 單一樹狀節點（含其子節點）的獨立渲染入口。
+///
+/// 用於只需畫出一棵子樹、不需要 [KlpTree] 的清單容器與 `Semantics` 分組時。
+/// 展開／選取狀態一律讀取節點自帶的 [KlpTreeNode.expanded]／
+/// [KlpTreeNode.selected]，沒有 [KlpTree] 那種由呼叫端集中控管的選項。
 class KlpTreeItem extends StatelessWidget {
   const KlpTreeItem({super.key, required this.node, this.onSelected});
 
@@ -490,6 +531,13 @@ class _KlpTreeNodeView extends StatelessWidget {
   }
 }
 
+/// 任意 JSON 相容值（`Map`／`Iterable`／純量／null）的可展開檢視器。
+///
+/// 直接吃解碼後的 [value]，不吃 JSON 字串——呼叫端自行 decode 並用 [invalid]
+/// 標示解析失敗的狀態。[defaultDepth] 控制初始展開到第幾層，超過的節點預設
+/// 收合；[expandedPaths] 可強制展開特定路徑（路徑格式為 `$.key.0` 這種
+/// JSONPath 風格），常用於還原使用者上次的展開狀態。點擊純量節點會透過
+/// [onCopyPath] 回報該節點的路徑，方便呼叫端做「複製路徑」之類的動作。
 @immutable
 class KlpJsonTree extends StatelessWidget {
   const KlpJsonTree({
@@ -673,8 +721,18 @@ class _KlpJsonNodeState extends State<_KlpJsonNode> {
   }
 }
 
+/// [KlpFilePreview] 主體區塊要呈現的狀態。
+///
+/// 這個狀態只決定預覽主體畫什麼，不影響外層卡片的 header／footer——載入中
+/// 或發生錯誤時，檔名與操作按鈕仍照常顯示。
 enum KlpFilePreviewState { ready, loading, error, unsupported }
 
+/// 檔案預覽卡片：header 顯示檔名與中繼資料，中段畫預覽內容，footer 放外部
+/// 操作。
+///
+/// [preview] 優先於 [textContent]——兩者都給時只會用 [preview]；都不給且
+/// [state] 為 [KlpFilePreviewState.ready] 時顯示「無可用預覽」。[state] 由
+/// 呼叫端管理，這個元件不會自己判斷載入或解析是否失敗。
 class KlpFilePreview extends StatelessWidget {
   const KlpFilePreview({
     super.key,

@@ -6,6 +6,12 @@ import '../surface/klp_surface.dart';
 import '../theme/klp_theme.dart';
 import '../typography/klp_text.dart';
 
+/// 頁面頂部的識別區塊：麵包屑導覽、選填的狀態文字與協作者標記，以及頁面
+/// 大標題。
+///
+/// [breadcrumb] 以 `/` 串接顯示，不提供逐段可點擊的導覽——需要可點擊麵包屑
+/// 請改用 [KlpBreadcrumb]。[status] 與 [collaborator] 都是單一文字，若要顯示
+/// 多位協作者或多筆狀態，需自行組合字串或改用其他元件。
 class KlpPageChrome extends StatelessWidget {
   const KlpPageChrome({
     super.key,
@@ -59,6 +65,9 @@ class KlpPageChrome extends StatelessWidget {
   }
 }
 
+/// [KlpSaveStatusCard] 裡的一則狀態訊息，例如「已同步」「有欄位驗證失敗」。
+/// [tone] 為 [KlpFeedbackTone.neutral] 時走低對比的靜音文字色，其餘 tone 才
+/// 使用對應的狀態色。
 @immutable
 class KlpStatusMessageData {
   const KlpStatusMessageData({
@@ -70,6 +79,11 @@ class KlpStatusMessageData {
   final KlpFeedbackTone tone;
 }
 
+/// 顯示最後儲存時間與一組相關狀態訊息的卡片，用於編輯器頁面告知使用者
+/// 目前的儲存／同步狀況。
+///
+/// [savedAt] 是已經格式化好的顯示文字（例如「2 分鐘前」），這個元件不處理
+/// 時間格式化或相對時間更新。
 class KlpSaveStatusCard extends StatelessWidget {
   const KlpSaveStatusCard({
     super.key,
@@ -116,6 +130,12 @@ class KlpSaveStatusCard extends StatelessWidget {
   }
 }
 
+/// 實體的屬性摘要卡片：一排狀態徽章、一排標籤，再加一行中繼資料文字，
+/// 依序垂直排列。
+///
+/// 三段固定按這個順序（badges → tags → metadata）呈現，不是各自獨立可
+/// 重排的插槽；若版面需要不同順序或省略某一段，請直接組合
+/// [KlpBadge]／[KlpTag]／[KlpText] 而不是硬塞空清單進來。
 class KlpPropertySummary extends StatelessWidget {
   const KlpPropertySummary({
     super.key,
@@ -158,6 +178,8 @@ class KlpPropertySummary extends StatelessWidget {
   }
 }
 
+/// [KlpPropertySummary.badges] 的一筆徽章資料，直接對應 [KlpBadge] 的
+/// `label`／`tone`／`dot` 參數。
 @immutable
 class KlpPropertyBadgeData {
   const KlpPropertyBadgeData({

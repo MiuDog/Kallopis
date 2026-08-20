@@ -9,6 +9,10 @@ import '../typography/klp_text.dart';
 import 'klp_form_controls.dart';
 import '../theme/klp_theme.dart';
 
+/// [KlpRepeaterField] 裡的一個項目：識別碼加上該項目自己的輸入內容。
+///
+/// [child] 是整個項目的內容 widget（例如一組欄位），[id] 只用來在
+/// [KlpRepeaterField.onRemove] 回報要刪除哪一項，與顯示內容無關。
 @immutable
 class KlpRepeaterItem {
   const KlpRepeaterItem({required this.id, required this.child});
@@ -17,6 +21,11 @@ class KlpRepeaterItem {
   final Widget child;
 }
 
+/// 可新增／刪除項目的重複欄位群組（例如「新增一組聯絡方式」）。
+///
+/// 不維護項目清單的狀態——[items] 由呼叫端持有，新增／刪除都只是透過
+/// [onAdd]／[onRemove] 回報意圖，實際要不要新增一項、刪哪一項由呼叫端決定
+/// 並重新傳入新的 [items]。
 class KlpRepeaterField extends StatelessWidget {
   const KlpRepeaterField({
     super.key,
@@ -71,6 +80,8 @@ class KlpRepeaterField extends StatelessWidget {
   }
 }
 
+/// [KlpKeyValueEditor] 裡的一組鍵值對，[id] 用來在清單改動時識別是哪一列
+/// （純文字的 key 可能重複或暫時是空字串，不適合當識別碼）。
 @immutable
 class KlpKeyValueEntry {
   const KlpKeyValueEntry({
@@ -92,6 +103,11 @@ class KlpKeyValueEntry {
   }
 }
 
+/// 任意鍵值對清單的編輯器（例如 HTTP header、環境變數），每列一個 key 輸入
+/// 框與一個 value 輸入框。
+///
+/// 不提供新增／刪除列的按鈕——這個元件只負責編輯既有 [entries] 的內容，
+/// 增減列數請自行在 [entries] 外包一層（可參考 [KlpRepeaterField] 的模式）。
 class KlpKeyValueEditor extends StatelessWidget {
   const KlpKeyValueEditor({
     super.key,
@@ -152,6 +168,12 @@ class KlpKeyValueEditor extends StatelessWidget {
   }
 }
 
+/// 程式碼欄位：唯讀時走語法高亮的 [KlpCodeViewer]，可編輯時走純文字的
+/// [KlpTextArea]。
+///
+/// [readOnly] 切換的是整套渲染方式而非同一個 widget 加鎖——唯讀模式沒有
+/// [onChanged] 也沒有 [error] 提示，這兩者只在可編輯（[readOnly] 為 false）
+/// 時才有意義。[language] 只影響唯讀模式下的語法高亮，可編輯模式不使用。
 class KlpCodeField extends StatelessWidget {
   const KlpCodeField({
     super.key,
@@ -190,6 +212,8 @@ class KlpCodeField extends StatelessWidget {
   }
 }
 
+/// [KlpFileField] 顯示的一個已選檔案：識別碼、檔名，與選填的中繼資料文字
+/// （例如檔案大小或上傳時間，顯示格式由呼叫端自行組字串）。
 @immutable
 class KlpFileValue {
   const KlpFileValue({required this.id, required this.name, this.metadata});
@@ -199,6 +223,11 @@ class KlpFileValue {
   final String? metadata;
 }
 
+/// 簡易的檔案選擇欄位：一排已選檔案的預覽卡片，加一顆選擇檔案按鈕。
+///
+/// 不處理實際的檔案選取或上傳邏輯——[onChoose] 只是回報「使用者按了選擇」，
+/// 開檔案對話框、讀取內容、上傳進度都由呼叫端接手；需要顯示上傳進度時請改用
+/// [KlpFileDropzoneField]。
 class KlpFileField extends StatelessWidget {
   const KlpFileField({
     super.key,
@@ -671,6 +700,11 @@ class KlpCodeEditorField extends StatelessWidget {
   }
 }
 
+/// 從一組色彩角色（例如 semantic token 名稱）中選擇一個的下拉欄位。
+///
+/// 是 [KlpSelectField] 針對「選項本身就是色彩角色」這個情境的薄封裝——
+/// [roles] 直接複用 [KlpChoiceOption]，實際渲染完全委派給 [KlpSelectField]。
+/// 找不到 [selectedId] 對應的角色時會退回顯示 [roles] 的第一項。
 class KlpColorRoleField extends StatelessWidget {
   const KlpColorRoleField({
     super.key,

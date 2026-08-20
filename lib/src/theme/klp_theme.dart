@@ -12,6 +12,11 @@ import '../tokens/klp_scale.dart';
 // 否則每個元件都要 import 兩個 theme 檔才拿得到值——那種摩擦會讓人選擇寫死。
 export 'klp_theme_scope.dart';
 
+/// 依任意背景色算出可讀的前景色，用於背景色由使用者資料決定（而非固定
+/// theme token）的場合，例如彩色標籤或頭像底色。
+///
+/// 不要拿它取代 semantic token——theme 內部的文字／背景配對已經照顏色系統
+/// 設計好對比，這個類別只服務「背景色本身就是可變資料」這種例外情境。
 abstract final class KlpThemeContrast {
   /// 判斷背景屬於哪一階梯：
   /// - 500 以下（含 500，如 ink50 ~ ink500）：深色文字
@@ -31,6 +36,12 @@ abstract final class KlpThemeContrast {
   }
 }
 
+/// Layer 2：semantic 色彩 token（`ThemeExtension`）。
+///
+/// 這是消費者實際覆寫外觀時要動的層——每個欄位是一個色彩的**用途**
+/// （`surface`、`text`、`accent`……），不是某個固定的十六進位值，因此同一份
+/// 元件程式碼換一套 [KlpThemeData] 就能整體變色。透過 `context.klpColors`
+/// 取用，不要在元件裡直接建構或持有它的實例。
 @immutable
 class KlpThemeData extends ThemeExtension<KlpThemeData> {
   const KlpThemeData({
@@ -346,10 +357,20 @@ class KlpThemeData extends ThemeExtension<KlpThemeData> {
   ]);
 }
 
+/// 內建的 [KlpThemeData] 預設變體。[transparent] 目前解析為 [KlpThemeData.dark]
+/// 的色彩再疊加透明度，不是一份獨立的色票——它描述的是「視窗背景可透」這個
+/// 額外能力，而不是第四種配色。
 enum KlpThemeVariant { light, dark, ultraDark, transparent }
 
+/// 輸入欄位底色要跟隨的互動狀態。
+///
+/// 刻意把 [rest] 與 [hovered] 分開列舉，即使兩者目前解析成同一個顏色
+/// （見 [KlpFieldStyle.colorFor]）——這是為了讓「hover 不改底色」這件事有
+/// 名字可以在程式碼裡明確表達，而不是省略 hovered 這個 case 導致日後被誤判
+/// 為漏寫。
 enum KlpFieldFillState { rest, hovered, focused, selected, disabled, error }
 
+/// 輸入欄位的邊框與底色查表工具。
 abstract final class KlpFieldStyle {
   /// 需要 shape token，因此不能是無參數的 getter——欄位圓角屬於風格。
   static OutlineInputBorder borderFor(KlpShapeTheme shape) =>

@@ -5,6 +5,11 @@ import '../surface/klp_surface.dart';
 import '../theme/klp_theme.dart';
 import '../typography/klp_text.dart';
 
+/// 側邊欄分組標題，固定高度且左對齊、使用低對比的
+/// [KlpTextRole.label] 樣式。
+///
+/// 固定高度是為了讓不同分組標題之間的垂直節奏一致，即使某個標題很短也不會
+/// 讓上下間距看起來不一樣。
 class KlpSidebarSectionLabel extends StatelessWidget {
   const KlpSidebarSectionLabel({super.key, required this.label});
 
@@ -29,6 +34,9 @@ class KlpSidebarSectionLabel extends StatelessWidget {
   }
 }
 
+/// 一組動作按鈕的容器，寬度不足時自動換行，換行時保留與同一行相同的間距。
+///
+/// 只負責排版間距——按鈕本身的樣式、順序、是否停用都由 [children] 自行決定。
 class KlpActionGroup extends StatelessWidget {
   const KlpActionGroup({super.key, required this.children});
 
@@ -44,6 +52,11 @@ class KlpActionGroup extends StatelessWidget {
   }
 }
 
+/// 上一頁／頁碼／下一頁的簡易分頁控制項。
+///
+/// 頁碼從 1 開始（不是從 0）；在第一頁或最後一頁時對應按鈕會自動停用，
+/// 呼叫端不需要自己判斷邊界。不提供跳頁輸入框或頁碼清單，適合頁數不多、
+/// 只需要前後翻頁的場合。
 class KlpPagination extends StatelessWidget {
   const KlpPagination({
     super.key,
@@ -88,6 +101,7 @@ class KlpPagination extends StatelessWidget {
   }
 }
 
+/// [KlpViewSwitcher] 裡的一個檢視選項：識別碼、顯示文字，以及選填的圖示。
 @immutable
 class KlpViewOption {
   const KlpViewOption({required this.id, required this.label, this.icon});
@@ -97,6 +111,12 @@ class KlpViewOption {
   final Widget? icon;
 }
 
+/// 同層級檢視切換器（例如「清單／看板」），以緊貼的膠囊按鈕組呈現，
+/// 選中項會有底色標示。
+///
+/// 與 [KlpSegmentedControl] 的差異在於視覺重量更輕——[KlpViewSwitcher] 用
+/// inset 表面搭配 hairline 間距，適合放在工具列這類次要控制的位置；需要更
+/// 強調的主要切換時請用 [KlpSegmentedControl]。
 class KlpViewSwitcher extends StatelessWidget {
   const KlpViewSwitcher({
     super.key,
