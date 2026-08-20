@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../controls/klp_button.dart';
 import '../foundation/klp_icon.dart';
+import '../l10n/klp_localizations.dart';
 import '../theme/klp_theme.dart';
 import '../typography/klp_text.dart';
 import 'klp_feedback_tone.dart';
@@ -72,8 +73,8 @@ class KlpToast extends StatelessWidget {
                       color: toneColor,
                     ),
                   ),
-                  const KlpText(
-                    'NOW',
+                  KlpText(
+                    KlpLocalizations.of(context).toastNowLabel,
                     role: KlpTextRole.label,
                     tone: KlpTextTone.faint,
                   ),

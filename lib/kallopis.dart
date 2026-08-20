@@ -124,6 +124,7 @@ export 'src/interaction/klp_drag_drop.dart';
 export 'src/interaction/klp_filter_bar.dart';
 export 'src/interaction/klp_interaction_settings.dart';
 export 'src/interaction/klp_pressable.dart';
+export 'src/l10n/klp_localizations.dart';
 export 'src/layout/klp_layout.dart';
 export 'src/navigation/klp_navigation_controls.dart';
 export 'src/overlay/klp_context_menu.dart';

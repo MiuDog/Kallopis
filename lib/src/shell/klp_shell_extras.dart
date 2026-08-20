@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../foundation/klp_icon.dart';
 import '../foundation/klp_icons.dart';
+import '../l10n/klp_localizations.dart';
 import '../surface/klp_dashed_border.dart';
 import '../theme/klp_theme.dart';
 import '../typography/klp_text.dart';
@@ -100,13 +101,16 @@ class KlpPaneCollapseControl extends StatefulWidget {
   const KlpPaneCollapseControl({
     super.key,
     this.icon,
-    this.label = '切換面板',
+    this.label,
     required this.collapsed,
     required this.onToggle,
   });
 
   final String? icon;
-  final String label;
+
+  /// 無障礙標籤。`null` 時回退到 [KlpLocalizations.panelToggleLabel]——
+  /// 預設值不能寫在建構子裡，因為它得等 [BuildContext] 到位才能解析。
+  final String? label;
   final bool collapsed;
   final VoidCallback? onToggle;
 
@@ -122,6 +126,8 @@ class _KlpPaneCollapseControlState extends State<KlpPaneCollapseControl> {
     final klp = context.klp;
     final tokens = context.klpColors;
     final effectiveIcon = widget.icon ?? KlpIcons.panelLeft;
+    final effectiveLabel =
+        widget.label ?? KlpLocalizations.of(context).panelToggleLabel;
 
     Widget button = SizedBox.square(
       dimension: klp.space.controlHeightSmall,
@@ -146,7 +152,7 @@ class _KlpPaneCollapseControlState extends State<KlpPaneCollapseControl> {
         onTap: widget.onToggle,
         child: Semantics(
           button: true,
-          label: widget.label,
+          label: effectiveLabel,
           expanded: !widget.collapsed,
           child: button,
         ),

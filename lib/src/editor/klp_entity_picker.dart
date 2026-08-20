@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import '../controls/klp_button.dart';
 import '../controls/klp_text_field.dart';
 import '../data/klp_badge.dart';
+import '../l10n/klp_localizations.dart';
 import '../theme/klp_theme.dart';
 import '../typography/klp_text.dart';
 import '../foundation/klp_palette.dart';
@@ -45,6 +46,7 @@ class KlpEntityPicker extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final tokens = context.klpColors;
+    final l10n = KlpLocalizations.of(context);
 
     return DecoratedBox(
       decoration: BoxDecoration(
@@ -72,14 +74,14 @@ class KlpEntityPicker extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
                 KlpButton(
-                  label: 'Remove',
+                  label: l10n.entityPickerRemoveLabel,
                   onPressed: onClear,
                   tone: KlpButtonTone.ghost,
                   compact: true,
                 ),
                 SizedBox(width: context.klp.space.compact),
                 KlpButton(
-                  label: 'Apply',
+                  label: l10n.entityPickerApplyLabel,
                   onPressed: onApply,
                   tone: KlpButtonTone.primary,
                   compact: true,

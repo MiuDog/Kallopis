@@ -2,6 +2,7 @@ import 'package:flutter/widgets.dart';
 
 import '../data/klp_badge.dart';
 import '../feedback/klp_feedback_tone.dart';
+import '../l10n/klp_localizations.dart';
 import '../surface/klp_surface.dart';
 import '../theme/klp_theme.dart';
 import '../typography/klp_text.dart';
@@ -108,7 +109,10 @@ class KlpSaveStatusCard extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            KlpText('Saved $savedAt', role: KlpTextRole.code),
+            KlpText(
+              KlpLocalizations.of(context).savedLabel(savedAt),
+              role: KlpTextRole.code,
+            ),
             SizedBox(height: context.klp.space.compact),
             for (final message in messages)
               Padding(

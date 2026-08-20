@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../foundation/klp_icon.dart';
 import '../foundation/klp_icons.dart';
+import '../l10n/klp_localizations.dart';
 import '../overlay/klp_tooltip.dart';
 import '../surface/klp_dashed_border.dart';
 import '../theme/klp_theme.dart';
@@ -29,25 +30,28 @@ class KlpWindowControls extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = KlpLocalizations.of(context);
     return Row(
       mainAxisSize: MainAxisSize.min,
       children: [
         _WindowControlButton(
           key: minimizeKey,
           icon: KlpIcons.minus,
-          label: 'Minimize window',
+          label: l10n.windowMinimizeLabel,
           onPressed: onMinimize,
         ),
         _WindowControlButton(
           key: maximizeKey,
           icon: KlpIcons.maximize,
-          label: isMaximized ? 'Restore window' : 'Maximize window',
+          label: isMaximized
+              ? l10n.windowRestoreLabel
+              : l10n.windowMaximizeLabel,
           onPressed: onToggleMaximize,
         ),
         _WindowControlButton(
           key: closeKey,
           icon: KlpIcons.x,
-          label: 'Close window',
+          label: l10n.windowCloseLabel,
           onPressed: onClose,
           destructive: true,
         ),

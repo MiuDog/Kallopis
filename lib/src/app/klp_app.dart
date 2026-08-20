@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../l10n/klp_localizations.dart';
 import '../routing/klp_router.dart';
 import '../theme/klp_theme.dart';
 import '../theme/klp_visual_style.dart';
@@ -99,6 +100,12 @@ class KlpApp extends StatefulWidget {
 
   final String title;
   final Locale? locale;
+
+  /// 額外的 localization delegate。[KlpApp] 一律自動掛上內建預設值的
+  /// [KlpLocalizationsDelegate]（見類別 dartdoc「換字串」）並排在這裡給的值之前，
+  /// 因此消費者可以在這裡放自己的 [KlpLocalizationsDelegate] 覆寫預設字串，
+  /// 也可以放 `GlobalMaterialLocalizations.delegates` 之類其他 delegate——
+  /// 兩者都會與內建那份合併，不會互相覆蓋。
   final Iterable<LocalizationsDelegate<dynamic>>? localizationsDelegates;
   final Iterable<Locale> supportedLocales;
   final TransitionBuilder? builder;
@@ -177,7 +184,13 @@ class _KlpAppState extends State<KlpApp> implements KlpAppController {
         // `lib/kallopis.dart` barrel dartdoc 的說明。
         themeAnimationDuration: Duration.zero,
         locale: widget.locale,
-        localizationsDelegates: widget.localizationsDelegates,
+        // 內建的 KlpLocalizations 預設值放最前面：Localizations 依序載入 delegates，
+        // 同一個型別後面的會覆蓋前面的，因此消費者自己在 widget.localizationsDelegates
+        // 裡放一份 KlpLocalizationsDelegate 覆寫時，蓋掉的會是這裡的預設值而不是反過來。
+        localizationsDelegates: [
+          const KlpLocalizationsDelegate(),
+          ...?widget.localizationsDelegates,
+        ],
         supportedLocales: widget.supportedLocales,
         builder: widget.builder,
         home: content,

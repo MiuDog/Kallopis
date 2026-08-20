@@ -6,7 +6,7 @@
 
 ## 總覽
 
-- 公開型別 **253** 個，其中 widget **147** 個
+- 公開型別 **255** 個，其中 widget **147** 個
 - 分為 **17** 個領域
 
 ### 領域之間的依賴方向
@@ -69,6 +69,7 @@ graph TD
   navigation -->|2| surface
   overlay -->|2| controls
   shell -->|2| foundation
+  app -->|1| l10n
   data -->|1| controls
   feedback -->|1| interaction
   interaction -->|1| controls
@@ -479,7 +480,7 @@ graph LR
 | `KlpCard` | 86 | `KlpDashedBorder`、`KlpText` |
 | `KlpCodeLanguageOption` | 12 | （葉節點） |
 | `KlpCodeLanguages` | 31 | `KlpCodeLanguageOption` |
-| `KlpCodeViewer` | 561 | `KlpDashedBorder`、`KlpIcon`、`KlpMenu`、`KlpMenuItemData`、`KlpPressable`、`KlpText`、`KlpTooltip` |
+| `KlpCodeViewer` | 563 | `KlpDashedBorder`、`KlpIcon`、`KlpMenu`、`KlpMenuItemData`、`KlpPressable`、`KlpText`、`KlpTooltip` |
 | `KlpCodeViewerLabels` | 27 | （葉節點） |
 | `KlpDataAlignment` | 3 | （葉節點） |
 | `KlpDataColumn` | 20 | （葉節點） |
@@ -863,13 +864,13 @@ graph LR
 | `KlpCommandSectionData` | 7 | （葉節點） |
 | `KlpEditorActionData` | 14 | （葉節點） |
 | `KlpEditorToolbar` | 17 | （葉節點） |
-| `KlpEntityPicker` | 110 | `KlpBadge`、`KlpButton`、`KlpText`、`KlpTextField` |
+| `KlpEntityPicker` | 111 | `KlpBadge`、`KlpButton`、`KlpText`、`KlpTextField` |
 | `KlpEntityResultData` | 14 | （葉節點） |
 | `KlpPageChrome` | 57 | `KlpBadge`、`KlpSurface`、`KlpText` |
 | `KlpPropertyBadgeData` | 11 | （葉節點） |
 | `KlpPropertySummary` | 45 | `KlpBadge`、`KlpSurface`、`KlpTag`、`KlpText` |
-| `KlpSaveStatusCard` | 52 | `KlpText` |
-| `KlpSearchNavigator` | 111 | `KlpIconButton`、`KlpText`、`KlpTextField` |
+| `KlpSaveStatusCard` | 55 | `KlpText` |
+| `KlpSearchNavigator` | 112 | `KlpIconButton`、`KlpText`、`KlpTextField` |
 | `KlpStatusMessageData` | 15 | （葉節點） |
 
 ```mermaid
@@ -941,7 +942,7 @@ graph LR
 | `KlpAppScreen` | 33 | `KlpTokenOverride` |
 | `KlpAppWindowHeader` | 26 | `KlpPanelHeader` |
 | `KlpContentState` | 3 | （葉節點） |
-| `KlpPaneCollapseControl` | 58 | `KlpDashedBorder`、`KlpIcon` |
+| `KlpPaneCollapseControl` | 63 | `KlpDashedBorder`、`KlpIcon` |
 | `KlpPanelFrame` | 66 | `KlpTokenOverride` |
 | `KlpPanelHeader` | 57 | `KlpText` |
 | `KlpResponsivePaneCoordinator` | 22 | （葉節點） |
@@ -951,7 +952,7 @@ graph LR
 | `KlpThemePreviewMode` | 2 | （葉節點） |
 | `KlpThemePreviewTile` | 305 | `KlpDashedBorder`、`KlpPressable`、`KlpText` |
 | `KlpThemeToggle` | 25 | `KlpSurface`、`KlpText` |
-| `KlpWindowControls` | 124 | `KlpDashedBorder`、`KlpIcon`、`KlpTooltip` |
+| `KlpWindowControls` | 127 | `KlpDashedBorder`、`KlpIcon`、`KlpTooltip` |
 | `KlpWorkbenchShell` | 130 | （葉節點） |
 
 ```mermaid
@@ -1002,13 +1003,15 @@ graph LR
 
 | 型別 | 行數 | 組成 |
 |---|---|---|
-| `KlpApp` | 137 | `KlpRouterOutlet`、`KlpRouterScope` |
+| `KlpApp` | 149 | `KlpLocalizationsDelegate`、`KlpRouterOutlet`、`KlpRouterScope` |
 
 ```mermaid
 graph LR
   KlpApp["KlpApp"]
+  KlpLocalizationsDelegate["KlpLocalizationsDelegate"]:::external
   KlpRouterOutlet["KlpRouterOutlet"]:::external
   KlpRouterScope["KlpRouterScope"]:::external
+  KlpApp --> KlpLocalizationsDelegate
   KlpApp --> KlpRouterOutlet
   KlpApp --> KlpRouterScope
   classDef external stroke-dasharray: 4 3;

@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import '../controls/klp_icon_button.dart';
 import '../controls/klp_text_field.dart';
 import '../foundation/klp_icons.dart';
+import '../l10n/klp_localizations.dart';
 import '../theme/klp_theme.dart';
 import '../typography/klp_text.dart';
 
@@ -86,6 +87,7 @@ class KlpSearchNavigator extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = KlpLocalizations.of(context);
     return _ActionSurface(
       child: Row(
         children: [
@@ -102,18 +104,18 @@ class KlpSearchNavigator extends StatelessWidget {
             angle: 3.141592653589793,
             child: KlpIconButton(
               icon: KlpIcons.chevronDown,
-              label: 'Previous result',
+              label: l10n.searchPreviousResultLabel,
               onPressed: onPrevious,
             ),
           ),
           KlpIconButton(
             icon: KlpIcons.chevronDown,
-            label: 'Next result',
+            label: l10n.searchNextResultLabel,
             onPressed: onNext,
           ),
           KlpIconButton(
             icon: KlpIcons.x,
-            label: 'Close search',
+            label: l10n.searchCloseLabel,
             onPressed: onClose,
           ),
         ],

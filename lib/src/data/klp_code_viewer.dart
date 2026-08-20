@@ -5,6 +5,7 @@ import '../foundation/klp_icon.dart';
 import '../foundation/klp_icons.dart';
 import '../foundation/klp_metrics.dart';
 import '../interaction/klp_pressable.dart';
+import '../l10n/klp_localizations.dart';
 import '../overlay/klp_menu.dart';
 import '../overlay/klp_tooltip.dart';
 import '../surface/klp_dashed_border.dart';
@@ -230,7 +231,9 @@ class _KlpCodeViewerState extends State<KlpCodeViewer> {
                 _KlpCodeActionButton(
                   key: const ValueKey('pln-code-expand-toggle'),
                   icon: _expanded ? KlpIcons.collapse : KlpIcons.maximize,
-                  label: _expanded ? '收合' : '展開',
+                  label: _expanded
+                      ? KlpLocalizations.of(context).codeViewerCollapseLabel
+                      : KlpLocalizations.of(context).codeViewerExpandLabel,
                   selected: _expanded,
                   onPressed: () {
                     setState(() => _expanded = !_expanded);
