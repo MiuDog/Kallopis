@@ -1027,7 +1027,7 @@ graph LR
 | `KlpWindowControls` | 135 | `KlpIcon`、`KlpTooltip` |
 | `KlpWindowControlsStyle` | 11 | （葉節點） |
 | `KlpWindowHeader` | 231 | `KlpText`、`KlpWindowControls` |
-| `KlpWorkbenchShell` | 139 | （葉節點） |
+| `KlpWorkbenchShell` | 148 | （葉節點） |
 
 ```mermaid
 graph LR
