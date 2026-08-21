@@ -32,7 +32,9 @@ class KlpDialog extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ConstrainedBox(
-      constraints: const BoxConstraints(maxWidth: 520),
+      constraints: BoxConstraints(
+        maxWidth: context.klp.geometry.layout.dialogMaximumWidth,
+      ),
       child: KlpSurface(
         tone: KlpSurfaceTone.base,
         radius: context.klp.shape.panel,

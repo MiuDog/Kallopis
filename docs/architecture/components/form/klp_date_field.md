@@ -4,7 +4,7 @@
 
 - **核心元件**：`KlpDateField`
 - **所屬領域**：`form — 表單`
-- **核心職責**：Kallopis KlpDateField 元件
+- **核心職責**：日期輸入欄位。文字輸入永遠可用；提供 [calendar] 時額外接上 [KlpCalendar] 作為挑選面板，兩套輸入路徑共用同一個文字結果，不是各自獨立的兩個元件。
 - **包含範圍**：`build()` 內部建構的完整 Widget 樹（展開 Flutter 原生元件與純容器）
 - **外部引用**：本專案其他非純容器元件（遇引用即停下並鏈結）
 
@@ -21,16 +21,35 @@ flowchart TD
   root["KlpDateField"]:::root
   n1["KlpTextField"]:::reference
   root --> n1
+  n2["Column"]
+  root --> n2
+  n3["Row"]
+  n2 --> n3
+  n4["Expanded"]
+  n3 --> n4
+  n5["GestureDetector"]
+  n4 --> n5
+  n6["AbsorbPointer"]
+  n5 --> n6
+  n7["SizedBox"]
+  n5 --> n7
+  n8["KlpCalendar"]:::reference
+  n7 --> n8
+  n9["leading (slot)"]:::slot
+  n7 --> n9
+  n10["child / slot"]:::slot
+  n7 --> n10
 ```
 
 ## 外部元件引用
 
+- [`KlpCalendar`](./klp_calendar.md) — `form — 表單`
 - [`KlpTextField`](../controls/klp_text_field.md) — `controls — 控制項`
 
 ## 程式碼證據
 
-- 檔案路徑：[`lib/src/form/klp_form_controls.dart`](../../../../lib/src/form/klp_form_controls.dart#L135)
-- 宣告型態：`StatelessWidget`
+- 檔案路徑：[`lib/src/form/klp_form_controls.dart`](../../../../lib/src/form/klp_form_controls.dart#L490)
+- 宣告型態：`StatefulWidget`
 
 ## 閱讀說明
 

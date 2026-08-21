@@ -2,6 +2,7 @@ import 'package:flutter/widgets.dart';
 
 import '../foundation/klp_icon.dart';
 import '../foundation/klp_icons.dart';
+import '../surface/klp_surface.dart';
 import '../theme/klp_theme.dart';
 import '../typography/klp_text.dart';
 
@@ -31,44 +32,43 @@ class KlpKeyValueTable extends StatelessWidget {
 
     return ClipRRect(
       borderRadius: BorderRadius.circular(context.klp.shape.card),
-      child: ColoredBox(
-        color: tokens.component,
-        child: Padding(
-          padding: EdgeInsets.all(context.klp.space.comfortable),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: [
-              if (title != null) ...[
-                KlpText(title!, role: KlpTextRole.label),
-                SizedBox(height: context.klp.space.base),
-              ],
-              for (var index = 0; index < rows.length; index++) ...[
-                Padding(
-                  padding: EdgeInsets.symmetric(
-                    vertical: context.klp.space.tight,
-                  ),
-                  child: Row(
-                    children: [
-                      SizedBox(
-                        width: labelWidth,
-                        child: KlpText(
-                          rows[index].label,
-                          role: KlpTextRole.body,
-                          tone: KlpTextTone.muted,
-                        ),
-                      ),
-                      Expanded(
-                        child: KlpText(
-                          rows[index].value,
-                          role: KlpTextRole.body,
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ],
+      child: KlpSurface(
+        tone: KlpSurfaceTone.component,
+        border: Border.all(
+          color: tokens.divider,
+          width: context.klp.shape.hairline,
+        ),
+        padding: EdgeInsets.all(context.klp.space.comfortable),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            if (title != null) ...[
+              KlpText(title!, role: KlpTextRole.label),
+              SizedBox(height: context.klp.space.base),
             ],
-          ),
+            for (var index = 0; index < rows.length; index++) ...[
+              Padding(
+                padding: EdgeInsets.symmetric(
+                  vertical: context.klp.space.tight,
+                ),
+                child: Row(
+                  children: [
+                    SizedBox(
+                      width: labelWidth,
+                      child: KlpText(
+                        rows[index].label,
+                        role: KlpTextRole.body,
+                        tone: KlpTextTone.muted,
+                      ),
+                    ),
+                    Expanded(
+                      child: KlpText(rows[index].value, role: KlpTextRole.body),
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          ],
         ),
       ),
     );
@@ -135,6 +135,9 @@ class KlpKeyValueList extends StatelessWidget {
                     style: TextStyle(
                       fontFamily: row.verbatim
                           ? context.klp.type.monoFamily
+                          : null,
+                      fontFamilyFallback: row.verbatim
+                          ? context.klp.type.monoFallback
                           : null,
                       color: context.klpColors.text,
                       fontSize: context.klp.type.caption,

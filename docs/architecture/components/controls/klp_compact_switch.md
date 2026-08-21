@@ -39,7 +39,7 @@ flowchart TD
 
 ## 程式碼證據
 
-- 檔案路徑：[`lib/src/controls/klp_switch.dart`](../../../../lib/src/controls/klp_switch.dart#L9)
+- 檔案路徑：[`lib/src/controls/klp_switch.dart`](../../../../lib/src/controls/klp_switch.dart#L7)
 - 宣告型態：`StatelessWidget`
 
 ## 閱讀說明

@@ -30,6 +30,7 @@ const categoryOrder = <String>[
   'editor',
   'routing',
   'shell',
+  'app',
 ];
 
 const categoryLabel = <String, String>{
@@ -49,13 +50,14 @@ const categoryLabel = <String, String>{
   'editor': 'editor — 編輯器周邊',
   'shell': 'shell — 應用外殼',
   'routing': 'routing — 分發',
+  'app': 'app — 接入層',
 };
 
 final _declaration = RegExp(
   r'^(?:abstract final class|final class|class|enum)\s+(Klp[A-Za-z0-9]+)',
 );
 final _widget = RegExp(
-  r'^class\s+Klp[A-Za-z0-9]+\s+extends\s+'
+  r'^class\s+Klp[A-Za-z0-9]+(?:<[^>]+>)?\s+extends\s+'
   r'(?:StatelessWidget|StatefulWidget|InheritedNotifier|CustomPainter)',
 );
 final _construction = RegExp(r'\b(Klp[A-Za-z0-9]+)\s*\(');
@@ -70,7 +72,7 @@ class Component {
   final List<String> composes;
 }
 
-void main(List<String> args) {
+String generateInventory() {
   final files =
       Directory('lib/src')
           .listSync(recursive: true)
@@ -121,7 +123,11 @@ void main(List<String> args) {
     c.composes.removeWhere((u) => !known.contains(u));
   }
 
-  final rendered = _render(components, categoryOf);
+  return _render(components, categoryOf);
+}
+
+void main(List<String> args) {
+  final rendered = generateInventory();
   final target = File('spec/component-inventory.md');
 
   if (args.contains('--check')) {
@@ -137,10 +143,7 @@ void main(List<String> args) {
   }
 
   target.writeAsStringSync(rendered);
-  final widgets = components.where((c) => c.isWidget).length;
-  stdout.writeln(
-    '已寫入 ${target.path}：${components.length} 個型別，其中 $widgets 個 widget。',
-  );
+  stdout.writeln('已寫入 ${target.path}。');
 }
 
 String _render(List<Component> components, Map<String, String> categoryOf) {

@@ -146,6 +146,17 @@ bool Win32Window::Create(const std::wstring& title,
 
   UpdateTheme(window);
 
+  LONG_PTR style = GetWindowLongPtr(window, GWL_STYLE);
+  style &= ~WS_CAPTION;
+  style |= WS_THICKFRAME;
+  SetWindowLongPtr(window, GWL_STYLE, style);
+
+  MARGINS margins = {0, 0, 1, 0};
+  DwmExtendFrameIntoClientArea(window, &margins);
+
+  SetWindowPos(window, nullptr, 0, 0, 0, 0,
+               SWP_NOMOVE | SWP_NOSIZE | SWP_NOZORDER | SWP_FRAMECHANGED);
+
   return OnCreate();
 }
 
@@ -158,6 +169,18 @@ LRESULT CALLBACK Win32Window::WndProc(HWND const window,
                                       UINT const message,
                                       WPARAM const wparam,
                                       LPARAM const lparam) noexcept {
+  if (message == WM_NCCALCSIZE && wparam == TRUE) {
+    if (IsZoomed(window)) {
+      auto* params = reinterpret_cast<NCCALCSIZE_PARAMS*>(lparam);
+      HMONITOR monitor = MonitorFromWindow(window, MONITOR_DEFAULTTONEAREST);
+      MONITORINFO monitor_info = {sizeof(MONITORINFO)};
+      if (GetMonitorInfo(monitor, &monitor_info)) {
+        params->rgrc[0] = monitor_info.rcWork;
+      }
+    }
+    return 0;
+  }
+
   if (message == WM_NCCREATE) {
     auto window_struct = reinterpret_cast<CREATESTRUCT*>(lparam);
     SetWindowLongPtr(window, GWLP_USERDATA,
@@ -213,12 +236,65 @@ Win32Window::MessageHandler(HWND hwnd,
       }
       return 0;
 
+    case WM_NCCALCSIZE: {
+      if (wparam == TRUE) {
+        return 0;
+      }
+      break;
+    }
+
+    case WM_GETMINMAXINFO: {
+      auto* min_max_info = reinterpret_cast<MINMAXINFO*>(lparam);
+      HMONITOR monitor = MonitorFromWindow(hwnd, MONITOR_DEFAULTTONEAREST);
+      UINT dpi = FlutterDesktopGetDpiForMonitor(monitor);
+      double scale_factor = dpi / 96.0;
+      if (min_width_ > 0) {
+        min_max_info->ptMinTrackSize.x = static_cast<LONG>(min_width_ * scale_factor);
+      }
+      if (min_height_ > 0) {
+        min_max_info->ptMinTrackSize.y = static_cast<LONG>(min_height_ * scale_factor);
+      }
+      return 0;
+    }
+
+    case WM_NCHITTEST: {
+      if (IsZoomed(hwnd)) {
+        return HTCLIENT;
+      }
+      POINT pt = {static_cast<SHORT>(LOWORD(lparam)),
+                  static_cast<SHORT>(HIWORD(lparam))};
+      RECT rect;
+      GetWindowRect(hwnd, &rect);
+      const int border = 8;
+
+      bool left = pt.x >= rect.left && pt.x < rect.left + border;
+      bool right = pt.x < rect.right && pt.x >= rect.right - border;
+      bool top = pt.y >= rect.top && pt.y < rect.top + border;
+      bool bottom = pt.y < rect.bottom && pt.y >= rect.bottom - border;
+
+      if (top && left) return HTTOPLEFT;
+      if (top && right) return HTTOPRIGHT;
+      if (bottom && left) return HTBOTTOMLEFT;
+      if (bottom && right) return HTBOTTOMRIGHT;
+      if (left) return HTLEFT;
+      if (right) return HTRIGHT;
+      if (top) return HTTOP;
+      if (bottom) return HTBOTTOM;
+
+      return HTCLIENT;
+    }
+
     case WM_DWMCOLORIZATIONCOLORCHANGED:
       UpdateTheme(hwnd);
       return 0;
   }
 
   return DefWindowProc(window_handle_, message, wparam, lparam);
+}
+
+void Win32Window::SetMinSize(int min_width, int min_height) {
+  min_width_ = min_width;
+  min_height_ = min_height;
 }
 
 void Win32Window::Destroy() {

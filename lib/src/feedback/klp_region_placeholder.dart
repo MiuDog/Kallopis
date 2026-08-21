@@ -2,9 +2,8 @@ import 'dart:math' as math;
 
 import 'package:flutter/material.dart';
 
-import '../foundation/klp_metrics.dart';
 import '../interaction/klp_pressable.dart';
-import '../surface/klp_stroke.dart';
+import '../surface/klp_dashed_border.dart';
 import '../theme/klp_theme.dart';
 import '../typography/klp_text.dart';
 
@@ -17,11 +16,11 @@ class KlpRegionPlaceholder extends StatelessWidget {
     required this.kindLabel,
     this.detail,
     this.hatched = true,
-    this.minHeight = KlpPlaceholderMetrics.minimumHeight,
+    this.minHeight,
     this.tone = KlpRegionPlaceholderTone.neutral,
     this.actionLabel,
     this.onAction,
-  }) : assert(minHeight >= 0),
+  }) : assert(minHeight == null || minHeight >= 0),
        assert(
          actionLabel == null || onAction != null,
          'A visible Placeholder action must be invokable.',
@@ -31,7 +30,7 @@ class KlpRegionPlaceholder extends StatelessWidget {
   final String kindLabel;
   final String? detail;
   final bool hatched;
-  final double minHeight;
+  final double? minHeight;
   final KlpRegionPlaceholderTone tone;
   final String? actionLabel;
   final VoidCallback? onAction;
@@ -39,40 +38,42 @@ class KlpRegionPlaceholder extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final tokens = context.klpColors;
-    final darkMode = Theme.of(context).brightness == Brightness.dark;
-    final hatchColor = darkMode
-        ? Color.lerp(
-            tokens.app,
-            tokens.surfaceInset,
-            KlpPlaceholderMetrics.darkHatchColorMix,
-          )!
-        : tokens.surfaceInset;
+    final hatchColor = tokens.surfaceInset;
     final semanticLabel = [label, kindLabel, ?detail].join('. ');
 
     return Semantics(
       container: true,
       explicitChildNodes: true,
       label: semanticLabel,
-      child: KlpStrokeFrame(
-        role: KlpStrokeRole.latent,
-        radius: context.klp.shape.card,
-        opacity: KlpPlaceholderMetrics.latentStrokeOpacity,
+      child: DecoratedBox(
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(context.klp.shape.card),
+          border: Border.all(
+            color: tokens.border,
+            width: context.klp.shape.hairline,
+          ),
+        ),
         child: ClipRRect(
           borderRadius: BorderRadius.circular(context.klp.shape.card),
           child: CustomPaint(
             painter: _KlpPlaceholderFillPainter(
-              fillColor: hatched
-                  ? tokens.app.withValues(alpha: 0)
-                  : tokens.surfaceInset,
+              fillColor: hatched ? tokens.component : tokens.surfaceInset,
               hatchColor: hatchColor,
               hatched: hatched,
+              hatchBand: context.klp.geometry.data.placeholderHatchBand,
+              hatchGap: context.klp.geometry.data.placeholderHatchGap,
             ),
             child: ConstrainedBox(
-              constraints: BoxConstraints(minHeight: minHeight),
+              constraints: BoxConstraints(
+                minHeight:
+                    minHeight ??
+                    context.klp.geometry.data.placeholderMinimumHeight,
+              ),
               child: Padding(
-                padding: const EdgeInsets.symmetric(
-                  horizontal: KlpPlaceholderMetrics.contentPaddingHorizontal,
-                  vertical: KlpPlaceholderMetrics.contentPaddingVertical,
+                padding: EdgeInsets.symmetric(
+                  horizontal: context.klp.space.containerPadding,
+                  vertical:
+                      context.klp.geometry.data.placeholderContentPaddingY,
                 ),
                 child: Center(
                   child: Column(
@@ -90,14 +91,17 @@ class KlpRegionPlaceholder extends StatelessWidget {
                                 textAlign: TextAlign.center,
                                 style:
                                     KlpTextStyles.definitionOf(
-                                          KlpTextRole.code,
+                                          KlpTextRole.label,
                                           context.klp.type,
                                         )
                                         .toTextStyle(context.klp.type)
                                         .copyWith(
                                           color: tokens.textFaint,
-                                          letterSpacing: KlpPlaceholderMetrics
-                                              .labelLetterSpacing,
+                                          letterSpacing: context
+                                              .klp
+                                              .geometry
+                                              .data
+                                              .placeholderLabelTracking,
                                         ),
                               ),
                             ),
@@ -105,14 +109,15 @@ class KlpRegionPlaceholder extends StatelessWidget {
                         ),
                       ),
                       if (detail != null) ...[
-                        const SizedBox(
-                          height: KlpPlaceholderMetrics.contentGap,
-                        ),
+                        SizedBox(height: context.klp.space.tight),
                         ExcludeSemantics(
                           child: ConstrainedBox(
-                            constraints: const BoxConstraints(
-                              maxWidth:
-                                  KlpPlaceholderMetrics.detailMaximumWidth,
+                            constraints: BoxConstraints(
+                              maxWidth: context
+                                  .klp
+                                  .geometry
+                                  .data
+                                  .placeholderDetailMaximumWidth,
                             ),
                             child: KlpText(
                               detail!,
@@ -124,11 +129,7 @@ class KlpRegionPlaceholder extends StatelessWidget {
                         ),
                       ],
                       if (actionLabel != null) ...[
-                        const SizedBox(
-                          height:
-                              KlpPlaceholderMetrics.contentGap +
-                              KlpPlaceholderMetrics.actionLeadingGap,
-                        ),
+                        SizedBox(height: context.klp.space.tight * 2),
                         _PlaceholderAction(
                           label: actionLabel!,
                           onPressed: onAction,
@@ -162,6 +163,37 @@ class _PlaceholderActionState extends State<_PlaceholderAction> {
   @override
   Widget build(BuildContext context) {
     final tokens = context.klpColors;
+    Widget action = Container(
+      padding: EdgeInsets.symmetric(
+        horizontal: context.klp.space.controlPaddingXSmall,
+        vertical: context.klp.geometry.data.placeholderActionPaddingY,
+      ),
+      decoration: BoxDecoration(
+        color: tokens.surface,
+        borderRadius: BorderRadius.circular(context.klp.shape.control),
+      ),
+      child: ExcludeSemantics(
+        child: Text(
+          widget.label.toUpperCase(),
+          style: KlpTextStyles.definitionOf(KlpTextRole.code, context.klp.type)
+              .toTextStyle(context.klp.type)
+              .copyWith(
+                color: tokens.text,
+                letterSpacing:
+                    context.klp.geometry.data.placeholderLabelTracking,
+              ),
+        ),
+      ),
+    );
+
+    if (_hovered) {
+      action = KlpDashedBorder(
+        color: context.klp.hoverBorder,
+        radius: context.klp.shape.control,
+        child: action,
+      );
+    }
+
     return Semantics(
       button: true,
       label: widget.label,
@@ -171,32 +203,7 @@ class _PlaceholderActionState extends State<_PlaceholderAction> {
           onPressed: widget.onPressed,
           onHover: (hovered) => setState(() => _hovered = hovered),
           borderRadius: BorderRadius.circular(context.klp.shape.control),
-          child: Container(
-            padding: const EdgeInsets.symmetric(
-              horizontal: KlpPlaceholderMetrics.actionPaddingHorizontal,
-              vertical: KlpPlaceholderMetrics.actionPaddingVertical,
-            ),
-            decoration: BoxDecoration(
-              color: _hovered ? context.klp.hoverSurface : tokens.surface,
-              borderRadius: BorderRadius.circular(context.klp.shape.control),
-            ),
-            child: ExcludeSemantics(
-              child: Text(
-                widget.label.toUpperCase(),
-                style:
-                    KlpTextStyles.definitionOf(
-                          KlpTextRole.code,
-                          context.klp.type,
-                        )
-                        .toTextStyle(context.klp.type)
-                        .copyWith(
-                          color: tokens.text,
-                          letterSpacing:
-                              KlpPlaceholderMetrics.labelLetterSpacing,
-                        ),
-              ),
-            ),
-          ),
+          child: action,
         ),
       ),
     );
@@ -214,12 +221,10 @@ class _PlaceholderMarker extends StatelessWidget {
     return Transform.rotate(
       angle: math.pi / 4,
       child: Container(
-        width: KlpPlaceholderMetrics.markerSize,
-        height: KlpPlaceholderMetrics.markerSize,
+        width: context.klp.space.indicatorDot,
+        height: context.klp.space.indicatorDot,
         decoration: BoxDecoration(
-          color: tone == KlpRegionPlaceholderTone.pending
-              ? tokens.info
-              : tokens.app.withValues(alpha: 0),
+          color: tone == KlpRegionPlaceholderTone.pending ? tokens.info : null,
           // 這是狀態字形，不是元件或 Surface 的可見框線。
           border: tone == KlpRegionPlaceholderTone.pending
               ? null
@@ -240,35 +245,53 @@ class _KlpPlaceholderFillPainter extends CustomPainter {
     required this.fillColor,
     required this.hatchColor,
     required this.hatched,
+    required this.hatchBand,
+    required this.hatchGap,
   });
 
   final Color fillColor;
   final Color hatchColor;
   final bool hatched;
+  final double hatchBand;
+  final double hatchGap;
 
   @override
   void paint(Canvas canvas, Size size) {
+    canvas.save();
+    canvas.clipRect(Offset.zero & size);
     canvas.drawRect(Offset.zero & size, Paint()..color = fillColor);
-    if (!hatched) return;
+    if (!hatched) {
+      canvas.restore();
+      return;
+    }
 
-    final step =
-        KlpPlaceholderMetrics.hatchBand + KlpPlaceholderMetrics.hatchGap;
+    final strokeWidth = hatchBand;
+    final step = (hatchBand + hatchGap) * math.sqrt2;
     final paint = Paint()
       ..color = hatchColor
-      ..strokeWidth = KlpPlaceholderMetrics.hatchStrokeWidth;
-    for (var offset = -size.height; offset < size.width; offset += step) {
+      ..strokeWidth = strokeWidth
+      ..style = PaintingStyle.stroke;
+
+    final extra = size.height + strokeWidth * 4;
+    final startOffset = -size.height - strokeWidth * 4;
+    final endOffset = size.width + size.height + strokeWidth * 4;
+
+    for (var offset = startOffset; offset < endOffset; offset += step) {
       canvas.drawLine(
-        Offset(offset, 0),
-        Offset(offset + size.height, size.height),
+        Offset(offset - extra, -extra),
+        Offset(offset + size.height + extra, size.height + extra),
         paint,
       );
     }
+    canvas.restore();
   }
 
   @override
   bool shouldRepaint(covariant _KlpPlaceholderFillPainter oldDelegate) {
     return fillColor != oldDelegate.fillColor ||
         hatchColor != oldDelegate.hatchColor ||
-        hatched != oldDelegate.hatched;
+        hatched != oldDelegate.hatched ||
+        hatchBand != oldDelegate.hatchBand ||
+        hatchGap != oldDelegate.hatchGap;
   }
 }

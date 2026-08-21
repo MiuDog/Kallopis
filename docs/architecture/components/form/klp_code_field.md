@@ -4,7 +4,7 @@
 
 - **核心元件**：`KlpCodeField`
 - **所屬領域**：`form — 表單`
-- **核心職責**：Kallopis KlpCodeField 元件
+- **核心職責**：程式碼欄位：唯讀時走語法高亮的 [KlpCodeViewer]，可編輯時走純文字的 [KlpTextArea]。  [readOnly] 切換的是整套渲染方式而非同一個 widget 加鎖——唯讀模式沒有 [onChanged] 也沒有 [error] 提示，這兩者只在可編輯（[readOnly] 為 false） 時才有意義。[language] 只影響唯讀模式下的語法高亮，可編輯模式不使用。
 - **包含範圍**：`build()` 內部建構的完整 Widget 樹（展開 Flutter 原生元件與純容器）
 - **外部引用**：本專案其他非純容器元件（遇引用即停下並鏈結）
 
@@ -39,7 +39,7 @@ flowchart TD
 
 ## 程式碼證據
 
-- 檔案路徑：[`lib/src/form/klp_structured_fields.dart`](../../../../lib/src/form/klp_structured_fields.dart#L155)
+- 檔案路徑：[`lib/src/form/klp_structured_fields.dart`](../../../../lib/src/form/klp_structured_fields.dart#L177)
 - 宣告型態：`StatelessWidget`
 
 ## 閱讀說明

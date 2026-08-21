@@ -21,7 +21,7 @@ flowchart TD
   root["KlpSlidingSelection"]:::root
   n1["Semantics"]
   root --> n1
-  n2["SizedBox"]
+  n2["Container"]
   n1 --> n2
   n3["Stack"]
   n2 --> n3
@@ -29,16 +29,18 @@ flowchart TD
   n3 --> n4
   n5["Row"]
   n4 --> n5
-  n6["Center"]
+  n6["SizedBox"]
   n5 --> n6
-  n7["KlpIcon"]:::reference
+  n7["Center"]
   n6 --> n7
-  n8["Material"]
-  n6 --> n8
-  n9["InkWell"]
-  n8 --> n9
-  n10["child / slot"]:::slot
-  n8 --> n10
+  n8["KlpIcon"]:::reference
+  n7 --> n8
+  n9["Material"]
+  n7 --> n9
+  n10["InkWell"]
+  n9 --> n10
+  n11["child / slot"]:::slot
+  n9 --> n11
 ```
 
 ## 外部元件引用
@@ -47,7 +49,7 @@ flowchart TD
 
 ## 程式碼證據
 
-- 檔案路徑：[`lib/src/controls/klp_sliding_selection.dart`](../../../../lib/src/controls/klp_sliding_selection.dart#L16)
+- 檔案路徑：[`lib/src/controls/klp_sliding_selection.dart`](../../../../lib/src/controls/klp_sliding_selection.dart#L14)
 - 宣告型態：`StatelessWidget`
 
 ## 閱讀說明

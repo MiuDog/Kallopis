@@ -4,7 +4,7 @@
 
 - **核心元件**：`KlpSplitLayout`
 - **所屬領域**：`layout — 版面原語`
-- **核心職責**：Kallopis KlpSplitLayout 元件
+- **核心職責**：分割版面原語。支援左/中/右或左右分割，以及虛線分隔線。
 - **包含範圍**：`build()` 內部建構的完整 Widget 樹（展開 Flutter 原生元件與純容器）
 - **外部引用**：本專案其他非純容器元件（遇引用即停下並鏈結）
 
@@ -19,27 +19,31 @@ flowchart TD
   classDef slot fill:#2E3440,stroke:#D08770,stroke-width:1px,stroke-dasharray: 2 2,color:#D08770;
 
   root["KlpSplitLayout"]:::root
-  n1["Row"]
+  n1["Padding"]
   root --> n1
-  n2["SizedBox"]
+  n2["KlpDashedDivider"]:::reference
   n1 --> n2
-  n3["Expanded"]
-  n2 --> n3
-  n4["leading (slot)"]:::slot
+  n3["SizedBox"]
+  n1 --> n3
+  n4["Row"]
   n3 --> n4
-  n5["trailing (slot)"]:::slot
-  n3 --> n5
-  n6["child / slot"]:::slot
-  n3 --> n6
+  n5["Expanded"]
+  n4 --> n5
+  n6["leading (slot)"]:::slot
+  n5 --> n6
+  n7["trailing (slot)"]:::slot
+  n5 --> n7
+  n8["child / slot"]:::slot
+  n5 --> n8
 ```
 
 ## 外部元件引用
 
-- （無外部元件引用，皆由 Flutter 原生原語或純容器構成）
+- [`KlpDashedDivider`](../surface/klp_dashed_divider.md) — `surface — 表面與描邊`
 
 ## 程式碼證據
 
-- 檔案路徑：[`lib/src/layout/klp_layout.dart`](../../../../lib/src/layout/klp_layout.dart#L43)
+- 檔案路徑：[`lib/src/layout/klp_layout.dart`](../../../../lib/src/layout/klp_layout.dart#L49)
 - 宣告型態：`StatelessWidget`
 
 ## 閱讀說明

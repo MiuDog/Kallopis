@@ -4,7 +4,7 @@
 
 - **核心元件**：`KlpFileField`
 - **所屬領域**：`form — 表單`
-- **核心職責**：Kallopis KlpFileField 元件
+- **核心職責**：簡易的檔案選擇欄位：一排已選檔案的預覽卡片，加一顆選擇檔案按鈕。  不處理實際的檔案選取或上傳邏輯——[onChoose] 只是回報「使用者按了選擇」， 開檔案對話框、讀取內容、上傳進度都由呼叫端接手；需要顯示上傳進度時請改用 [KlpFileDropzoneField]。
 - **包含範圍**：`build()` 內部建構的完整 Widget 樹（展開 Flutter 原生元件與純容器）
 - **外部引用**：本專案其他非純容器元件（遇引用即停下並鏈結）
 
@@ -41,7 +41,7 @@ flowchart TD
 
 ## 程式碼證據
 
-- 檔案路徑：[`lib/src/form/klp_structured_fields.dart`](../../../../lib/src/form/klp_structured_fields.dart#L205)
+- 檔案路徑：[`lib/src/form/klp_structured_fields.dart`](../../../../lib/src/form/klp_structured_fields.dart#L231)
 - 宣告型態：`StatelessWidget`
 
 ## 閱讀說明

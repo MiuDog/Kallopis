@@ -21,41 +21,38 @@ flowchart TD
   root["KlpCodeViewer"]:::root
   n1["ClipRRect"]
   root --> n1
-  n2["KlpSurface"]:::container
+  n2["Container"]
   n1 --> n2
   n3["Column"]
   n2 --> n3
-  n4["ColoredBox"]
+  n4["SizedBox"]
   n3 --> n4
-  n5["SizedBox"]
+  n5["Padding"]
   n4 --> n5
-  n6["Padding"]
+  n6["Row"]
   n5 --> n6
-  n7["Row"]
+  n7["Builder"]
   n6 --> n7
-  n8["Builder"]
-  n7 --> n8
-  n9["Spacer"]
-  n7 --> n9
-  n10["KlpText"]:::reference
-  n7 --> n10
-  n11["ConstrainedBox"]
-  n7 --> n11
-  n12["SingleChildScrollView"]
+  n8["Spacer"]
+  n6 --> n8
+  n9["KlpText"]:::reference
+  n6 --> n9
+  n10["ConstrainedBox"]
+  n6 --> n10
+  n11["SingleChildScrollView"]
+  n10 --> n11
+  n12["child / slot"]:::slot
   n11 --> n12
-  n13["child / slot"]:::slot
-  n12 --> n13
 ```
 
 ## 外部元件引用
 
 - [`KlpMenu`](../overlay/klp_menu.md) — `overlay — 浮層`
-- [`KlpSurface`](../surface/klp_surface.md) — `surface — 表面與描邊` *(純容器，已繼續向下展開)*
 - [`KlpText`](../typography/klp_text.md) — `typography — 文字`
 
 ## 程式碼證據
 
-- 檔案路徑：[`lib/src/data/klp_code_viewer.dart`](../../../../lib/src/data/klp_code_viewer.dart#L84)
+- 檔案路徑：[`lib/src/data/klp_code_viewer.dart`](../../../../lib/src/data/klp_code_viewer.dart#L85)
 - 宣告型態：`StatefulWidget`
 
 ## 閱讀說明

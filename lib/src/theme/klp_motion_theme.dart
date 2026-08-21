@@ -17,6 +17,8 @@ class KlpMotionTheme extends ThemeExtension<KlpMotionTheme> {
     required this.overlayExit,
     required this.toastDwell,
     required this.tooltipDelay,
+    this.tooltipDwell = const Duration(milliseconds: 4000),
+    this.spinnerCycle = const Duration(milliseconds: 1000),
     required this.longPressThreshold,
     required this.standard,
     required this.emphasized,
@@ -42,6 +44,8 @@ class KlpMotionTheme extends ThemeExtension<KlpMotionTheme> {
 
   /// 游標停留多久才顯示 tooltip。
   final Duration tooltipDelay;
+  final Duration tooltipDwell;
+  final Duration spinnerCycle;
 
   /// 長按判定門檻。這不是動畫，但同屬「時間」這個維度，而且**是無障礙參數**——
   /// 行動不便的使用者需要更長的門檻。放進 theme 才能整體調整。
@@ -80,6 +84,8 @@ class KlpMotionTheme extends ThemeExtension<KlpMotionTheme> {
     Duration? overlayExit,
     Duration? toastDwell,
     Duration? tooltipDelay,
+    Duration? tooltipDwell,
+    Duration? spinnerCycle,
     Duration? longPressThreshold,
     Curve? standard,
     Curve? emphasized,
@@ -92,6 +98,8 @@ class KlpMotionTheme extends ThemeExtension<KlpMotionTheme> {
       overlayExit: overlayExit ?? this.overlayExit,
       toastDwell: toastDwell ?? this.toastDwell,
       tooltipDelay: tooltipDelay ?? this.tooltipDelay,
+      tooltipDwell: tooltipDwell ?? this.tooltipDwell,
+      spinnerCycle: spinnerCycle ?? this.spinnerCycle,
       longPressThreshold: longPressThreshold ?? this.longPressThreshold,
       standard: standard ?? this.standard,
       emphasized: emphasized ?? this.emphasized,
@@ -117,6 +125,8 @@ class KlpMotionTheme extends ThemeExtension<KlpMotionTheme> {
           overlayExit == other.overlayExit &&
           toastDwell == other.toastDwell &&
           tooltipDelay == other.tooltipDelay &&
+          tooltipDwell == other.tooltipDwell &&
+          spinnerCycle == other.spinnerCycle &&
           longPressThreshold == other.longPressThreshold &&
           standard == other.standard &&
           emphasized == other.emphasized;
@@ -130,6 +140,8 @@ class KlpMotionTheme extends ThemeExtension<KlpMotionTheme> {
     overlayExit,
     toastDwell,
     tooltipDelay,
+    tooltipDwell,
+    spinnerCycle,
     longPressThreshold,
     standard,
     emphasized,

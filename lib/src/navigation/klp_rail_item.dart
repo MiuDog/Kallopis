@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 
 import '../foundation/klp_icon.dart';
 import '../overlay/klp_tooltip.dart';
+import '../surface/klp_dashed_border.dart';
 import '../theme/klp_theme.dart';
-import '../foundation/klp_palette.dart';
 
 class KlpRailItem extends StatefulWidget {
   const KlpRailItem({
@@ -51,12 +51,9 @@ class _KlpRailItemState extends State<KlpRailItem> {
   @override
   Widget build(BuildContext context) {
     final tokens = context.klpColors;
-    final item = Material(
-      color: widget.selected
-          ? tokens.selectionBackground
-          : _hovered || _focused
-          ? context.klp.hoverSurface
-          : KlpPalette.transparent,
+    final isHighlighted = _hovered || _focused || widget.selected;
+    Widget item = Material(
+      color: widget.selected ? tokens.selectionBackground : tokens.clear,
       borderRadius: BorderRadius.circular(context.klp.shape.card),
       child: InkWell(
         onTap: widget.onPressed,
@@ -64,27 +61,26 @@ class _KlpRailItemState extends State<KlpRailItem> {
         onFocusChange: _setFocused,
         borderRadius: BorderRadius.circular(context.klp.shape.card),
         child: SizedBox.square(
-          dimension: 42,
+          dimension: context.klp.space.railItem,
           child: Stack(
             clipBehavior: Clip.none,
             children: [
               Center(
                 child: KlpIcon(
                   widget.icon,
+                  // hover 不改圖示色。
                   color: widget.selected
                       ? tokens.selectionForeground
-                      : _hovered || _focused
-                      ? tokens.text
                       : tokens.textMuted,
                 ),
               ),
               if (widget.badge != null)
                 Positioned(
-                  top: 2,
-                  right: 2,
+                  top: context.klp.geometry.optical.railBadgeInset,
+                  right: context.klp.geometry.optical.railBadgeInset,
                   child: Container(
-                    width: 8,
-                    height: 8,
+                    width: context.klp.space.indicatorDotLarge,
+                    height: context.klp.space.indicatorDotLarge,
                     decoration: BoxDecoration(
                       color: tokens.info,
                       shape: BoxShape.circle,
@@ -96,6 +92,14 @@ class _KlpRailItemState extends State<KlpRailItem> {
         ),
       ),
     );
+
+    if (isHighlighted) {
+      item = KlpDashedBorder(
+        color: widget.selected ? tokens.textMuted : context.klp.hoverBorder,
+        radius: context.klp.shape.card,
+        child: item,
+      );
+    }
 
     return OverlayPortal(
       controller: _tooltipController,

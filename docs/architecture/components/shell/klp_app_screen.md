@@ -23,21 +23,23 @@ flowchart TD
   root --> n1
   n2["ColoredBox"]
   n1 --> n2
-  n3["Column"]
+  n3["KlpTokenOverride"]:::reference
   n2 --> n3
-  n4["Expanded"]
-  n3 --> n4
-  n5["child / slot"]:::slot
+  n4["Column"]
+  n2 --> n4
+  n5["Expanded"]
   n4 --> n5
+  n6["child / slot"]:::slot
+  n5 --> n6
 ```
 
 ## 外部元件引用
 
-- （無外部元件引用，皆由 Flutter 原生原語或純容器構成）
+- [`KlpTokenOverride`](../theme/klp_token_override.md) — `theme — semantic 與 component token`
 
 ## 程式碼證據
 
-- 檔案路徑：[`lib/src/shell/klp_shell_extras.dart`](../../../../lib/src/shell/klp_shell_extras.dart#L12)
+- 檔案路徑：[`lib/src/shell/klp_shell_extras.dart`](../../../../lib/src/shell/klp_shell_extras.dart#L16)
 - 宣告型態：`StatelessWidget`
 
 ## 閱讀說明

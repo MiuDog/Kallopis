@@ -73,7 +73,9 @@ void main() {
           tokens.selection,
           variant == KlpThemeVariant.light
               ? KlpThemeData.light.selection
-              : KlpThemeData.dark.selection,
+              : (variant == KlpThemeVariant.ultraDark
+                    ? KlpThemeData.ultraDark.selection
+                    : KlpThemeData.dark.selection),
           reason: '${accent.name} ${variant.name} selection',
         );
       }

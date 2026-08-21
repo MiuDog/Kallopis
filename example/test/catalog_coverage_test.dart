@@ -19,7 +19,7 @@ void main() {
   /// 就發現漏歸類，不必等到有人去用它。
   Set<String> exportedWidgets() {
     final declaration = RegExp(
-      r'^class\s+(Klp[A-Za-z0-9]+)\s+extends\s+'
+      r'^class\s+(Klp[A-Za-z0-9]+)(?:<[^>]+>)?\s+extends\s+'
       r'(?:StatelessWidget|StatefulWidget)',
     );
     final names = <String>{};
@@ -156,7 +156,6 @@ void main() {
               pages: catalogPages,
               selected: index,
               onSelected: (_) {},
-              onToggleTheme: () {},
             ),
           ),
         );

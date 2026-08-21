@@ -21,7 +21,7 @@ flowchart TD
   root["KlpRegionPlaceholder"]:::root
   n1["Semantics"]
   root --> n1
-  n2["KlpStrokeFrame"]:::container
+  n2["DecoratedBox"]
   n1 --> n2
   n3["ClipRRect"]
   n2 --> n3
@@ -51,7 +51,6 @@ flowchart TD
 
 ## 外部元件引用
 
-- [`KlpStrokeFrame`](../surface/klp_stroke_frame.md) — `surface — 表面與描邊` *(純容器，已繼續向下展開)*
 - [`KlpText`](../typography/klp_text.md) — `typography — 文字`
 
 ## 程式碼證據

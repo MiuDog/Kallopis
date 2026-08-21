@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-import '../foundation/klp_metrics.dart';
 import '../theme/klp_theme.dart';
 import '../typography/klp_text.dart';
 
@@ -31,12 +30,14 @@ class KlpToggle extends StatelessWidget {
           label: label,
           toggled: value,
           child: Material(
-            color: Colors.transparent,
-            borderRadius: BorderRadius.circular(context.klp.shape.pill),
+            color: context.klpColors.clear,
+            borderRadius: BorderRadius.circular(context.klp.shape.toggleTrack),
             child: InkWell(
               onTap: enabled ? () => onChanged!(!value) : null,
-              borderRadius: BorderRadius.circular(context.klp.shape.pill),
-              overlayColor: const WidgetStatePropertyAll(Colors.transparent),
+              borderRadius: BorderRadius.circular(
+                context.klp.shape.toggleTrack,
+              ),
+              overlayColor: WidgetStatePropertyAll(context.klpColors.clear),
               child: KlpToggleIndicator(value: value, enabled: enabled),
             ),
           ),
@@ -79,24 +80,24 @@ class KlpToggleIndicator extends StatelessWidget {
 
     return ExcludeSemantics(
       child: SizedBox(
-        width: KlpFormMetrics.toggleWidth,
-        height: KlpFormMetrics.toggleHeight,
+        width: context.klp.geometry.control.toggleWidth,
+        height: context.klp.geometry.control.toggleHeight,
         child: DecoratedBox(
           decoration: BoxDecoration(
             color: trackColor,
-            borderRadius: BorderRadius.circular(context.klp.shape.pill),
+            borderRadius: BorderRadius.circular(context.klp.shape.toggleTrack),
           ),
           child: Padding(
-            padding: const EdgeInsets.all(KlpFormMetrics.toggleInset),
+            padding: EdgeInsets.all(context.klp.geometry.control.toggleInset),
             child: Align(
               alignment: value ? Alignment.centerRight : Alignment.centerLeft,
               child: DecoratedBox(
                 decoration: BoxDecoration(
                   color: thumbColor,
-                  shape: BoxShape.circle,
+                  borderRadius: BorderRadius.circular(context.klp.shape.sm),
                 ),
-                child: const SizedBox.square(
-                  dimension: KlpFormMetrics.toggleThumb,
+                child: SizedBox.square(
+                  dimension: context.klp.geometry.control.toggleThumb,
                 ),
               ),
             ),

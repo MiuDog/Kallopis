@@ -4,7 +4,7 @@
 
 - **核心元件**：`KlpFormActions`
 - **所屬領域**：`form — 表單`
-- **核心職責**：Kallopis KlpFormActions 元件
+- **核心職責**：表單底部的動作列：送出／取消／重設按鈕，靠右對齊並在寬度不足時自動換行。  [cancelLabel]／[resetLabel] 為 null 時對應按鈕不會出現，[submitLabel] 與 [onSubmit] 恆為必填——表單至少要能送出。[submitting] 為 true 時三個按鈕 一併停用，避免送出過程中使用者重複觸發或誤按取消／重設。
 - **包含範圍**：`build()` 內部建構的完整 Widget 樹（展開 Flutter 原生元件與純容器）
 - **外部引用**：本專案其他非純容器元件（遇引用即停下並鏈結）
 
@@ -31,7 +31,7 @@ flowchart TD
 
 ## 程式碼證據
 
-- 檔案路徑：[`lib/src/form/klp_form.dart`](../../../../lib/src/form/klp_form.dart#L242)
+- 檔案路徑：[`lib/src/form/klp_form.dart`](../../../../lib/src/form/klp_form.dart#L363)
 - 宣告型態：`StatelessWidget`
 
 ## 閱讀說明

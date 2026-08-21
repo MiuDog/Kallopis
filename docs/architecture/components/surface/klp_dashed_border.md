@@ -4,7 +4,7 @@
 
 - **核心元件**：`KlpDashedBorder`
 - **所屬領域**：`surface — 表面與描邊`
-- **核心職責**：Kallopis KlpDashedBorder 元件
+- **核心職責**：虛線邊框容器。為子元件提供自訂粗細、圓角、顏色與虛線間距的虛線外框。  預設使用 theme 的 [KlpShapeTheme.dashedOpacity] 輔助線顏色與 [KlpShapeTheme.control] 圓角。
 - **包含範圍**：`build()` 內部建構的完整 Widget 樹（展開 Flutter 原生元件與純容器）
 - **外部引用**：本專案其他非純容器元件（遇引用即停下並鏈結）
 
@@ -31,7 +31,7 @@ flowchart TD
 
 ## 程式碼證據
 
-- 檔案路徑：[`lib/src/surface/klp_dashed_border.dart`](../../../../lib/src/surface/klp_dashed_border.dart#L6)
+- 檔案路徑：[`lib/src/surface/klp_dashed_border.dart`](../../../../lib/src/surface/klp_dashed_border.dart#L9)
 - 宣告型態：`StatelessWidget`
 
 ## 閱讀說明

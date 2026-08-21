@@ -45,7 +45,7 @@ flowchart TD
 
 ## 程式碼證據
 
-- 檔案路徑：[`lib/src/interaction/klp_pressable.dart`](../../../../lib/src/interaction/klp_pressable.dart#L7)
+- 檔案路徑：[`lib/src/interaction/klp_pressable.dart`](../../../../lib/src/interaction/klp_pressable.dart#L9)
 - 宣告型態：`StatefulWidget`
 
 ## 閱讀說明

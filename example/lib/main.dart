@@ -8,9 +8,11 @@ void main() => runApp(const KallopisCatalogApp());
 
 /// Kallopis 的元件目錄。
 ///
-/// 只使用出貨的 `modern` 風格；明暗切換在左下角。
+/// 只使用出貨的 `defaultStyle` 風格；明暗與超深色切換在左下角。
 /// 「換整套風格」的驗收由 `test/style_switch_golden_test.dart` 以離屏算圖負責，
 /// 不佔用目錄的畫面。
+///
+/// 接入方式本身就是 [KlpApp] 的自我驗證：目錄用起來不順，消費者也不會順。
 class KallopisCatalogApp extends StatefulWidget {
   const KallopisCatalogApp({super.key});
 
@@ -18,40 +20,130 @@ class KallopisCatalogApp extends StatefulWidget {
   State<KallopisCatalogApp> createState() => _KallopisCatalogAppState();
 }
 
-class _KallopisCatalogAppState extends State<KallopisCatalogApp> {
-  KlpVisualStyle _style = KlpVisualStyle.modern;
-  Brightness _brightness = Brightness.light;
+class _KallopisCatalogAppState extends State<KallopisCatalogApp>
+    with WidgetsBindingObserver {
   int _selected = 0;
+  KlpThemeVariant _variant = KlpThemeVariant.light;
+  bool _isMaximized = false;
 
-  void _toggleBrightness() {
+  @override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance.addObserver(this);
+    KlpWindowAction.setMinSize(minWidth: 800, minHeight: 500);
+    _queryMaximized();
+  }
+
+  @override
+  void dispose() {
+    WidgetsBinding.instance.removeObserver(this);
+    super.dispose();
+  }
+
+  @override
+  void didChangeMetrics() {
+    _queryMaximized();
+  }
+
+  Future<void> _queryMaximized() async {
+    final isMax = await KlpWindowAction.checkIsMaximized();
+    if (mounted && isMax != _isMaximized) {
+      setState(() => _isMaximized = isMax);
+    }
+  }
+
+  void _cycleTheme() {
     setState(() {
-      _brightness = _brightness == Brightness.light
-          ? Brightness.dark
-          : Brightness.light;
-      _style = _style.copyWith(
-        colors: _brightness == Brightness.dark
-            ? KlpThemeData.dark
-            : KlpThemeData.light,
-      );
+      _variant = switch (_variant) {
+        KlpThemeVariant.light => KlpThemeVariant.dark,
+        KlpThemeVariant.dark => KlpThemeVariant.ultraDark,
+        KlpThemeVariant.ultraDark => KlpThemeVariant.light,
+        KlpThemeVariant.transparent => KlpThemeVariant.light,
+      };
     });
   }
 
   @override
   Widget build(BuildContext context) {
+    final themeData = buildKlpThemeVariant(_variant);
+
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Kallopis Catalog',
-      theme: buildKlpTheme(_brightness, style: _style),
-      // 深淺切換不做過場。MaterialApp 預設會跑 200ms 的 theme 動畫並沿路呼叫各層的
-      // lerp——即使每一層都在中點原子性翻轉，動畫期間仍有半數幀停在舊值上，看起來
-      // 就像「某些元件沒有跟著變」。切換主題是狀態改變，不是動作。
+      theme: themeData,
       themeAnimationDuration: Duration.zero,
-      home: CatalogShell(
-        groups: catalogGroups,
-        pages: catalogPages,
-        selected: _selected.clamp(0, catalogPages.length - 1),
-        onSelected: (index) => setState(() => _selected = index),
-        onToggleTheme: _toggleBrightness,
+      home: Builder(
+        builder: (context) {
+          final klp = context.klp;
+          return Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              KlpWindowHeader(
+                titleText: 'Kallopis',
+                appIcon: const FlutterLogo(size: 14.0),
+                isMaximized: _isMaximized,
+                actions: [
+                  Center(
+                    child: KlpTooltip(
+                      message:
+                          '切換主題（目前：${switch (_variant) {
+                            KlpThemeVariant.light => '淺色',
+                            KlpThemeVariant.dark => '深色',
+                            KlpThemeVariant.ultraDark => '超深色',
+                            KlpThemeVariant.transparent => '透明',
+                          }}）',
+                      child: GestureDetector(
+                        onTap: _cycleTheme,
+                        child: Container(
+                          height: 22.0,
+                          padding: EdgeInsets.symmetric(
+                            horizontal: klp.space.compact,
+                          ),
+                          decoration: BoxDecoration(
+                            color: klp.color.component,
+                            borderRadius: BorderRadius.circular(
+                              klp.shape.control,
+                            ),
+                          ),
+                          child: Row(
+                            mainAxisSize: MainAxisSize.min,
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              KlpIcon(
+                                KlpIcons.sparkles,
+                                size: 12.0,
+                                color: klp.color.textMuted,
+                              ),
+                              SizedBox(width: klp.space.tight),
+                              KlpText(
+                                switch (_variant) {
+                                  KlpThemeVariant.light => 'Light',
+                                  KlpThemeVariant.dark => 'Dark',
+                                  KlpThemeVariant.ultraDark => 'Ultra Dark',
+                                  KlpThemeVariant.transparent => 'Acrylic',
+                                },
+                                role: KlpTextRole.micro,
+                                tone: KlpTextTone.muted,
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+              Expanded(
+                child: CatalogShell(
+                  groups: catalogGroups,
+                  pages: catalogPages,
+                  selected: _selected.clamp(0, catalogPages.length - 1),
+                  onSelected: (index) => setState(() => _selected = index),
+                ),
+              ),
+            ],
+          );
+        },
       ),
     );
   }

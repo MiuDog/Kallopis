@@ -52,6 +52,24 @@ class KlpSpacingTheme extends ThemeExtension<KlpSpacingTheme> {
     required this.chromeRail,
     required this.chromeTab,
     required this.iconButton,
+    required this.iconTiny,
+    required this.indicatorDot,
+    required this.indicatorDotLarge,
+    required this.switchTrackWidth,
+    required this.switchTrackHeight,
+    required this.switchThumb,
+    required this.noticeIconSlot,
+    required this.toastIconSlot,
+    required this.gutterNumber,
+    required this.gutterMarker,
+    required this.micro,
+    required this.iconMicro,
+    required this.avatarSmall,
+    required this.progressTrack,
+    required this.skeletonLine,
+    required this.railItem,
+    required this.drawerWidth,
+    required this.drawerHeight,
   });
 
   // 10 段精確間距階梯 (px)
@@ -108,6 +126,64 @@ class KlpSpacingTheme extends ThemeExtension<KlpSpacingTheme> {
   final double chromeTab;
   final double iconButton;
 
+  // 元件尺寸。這些值原本散在元件裡，數值本身就是風格宣稱——留在元件裡等於
+  // 換風格時換不掉。
+  /// 10px。狀態圓點形式的圖示
+  final double iconTiny;
+
+  /// 6px。狀態圓點（badge、狀態列）
+  final double indicatorDot;
+
+  /// 8px。導覽軌上的未讀圓點
+  final double indicatorDotLarge;
+
+  /// 36px。開關軌道寬
+  final double switchTrackWidth;
+
+  /// 20px。開關軌道高
+  final double switchTrackHeight;
+
+  /// 16px。開關滑塊
+  final double switchThumb;
+
+  /// 28px。行內提示的圖示格
+  final double noticeIconSlot;
+
+  /// 22px。浮動提示的圖示格
+  final double toastIconSlot;
+
+  /// 24px。程式碼行號欄寬
+  final double gutterNumber;
+
+  /// 14px。差異標記欄寬
+  final double gutterMarker;
+
+  /// 1px。視覺上僅作分隔用的最小間隙
+  final double micro;
+
+  /// 11px。狀態字形用的最小圖示
+  final double iconMicro;
+
+  /// 28px。頭像堆疊中的小頭像
+  final double avatarSmall;
+
+  /// 3px。進度條軌道厚度
+  final double progressTrack;
+
+  /// 10px。骨架屏的單行高
+  final double skeletonLine;
+
+  /// 42px。導覽軌上的可點區塊
+  final double railItem;
+
+  /// 320px。`KlpDrawer` 在 `left`／`right` 方向的預設寬度。
+  final double drawerWidth;
+
+  /// 320px。`KlpDrawer` 在 `top`／`bottom` 方向的預設高度。
+  final double drawerHeight;
+
+  double get xxs => space0_5;
+
   EdgeInsets get controlInsets => EdgeInsets.symmetric(
     horizontal: controlPaddingX,
     vertical: controlPaddingY,
@@ -159,10 +235,46 @@ class KlpSpacingTheme extends ThemeExtension<KlpSpacingTheme> {
     chromeRail: 56,
     chromeTab: 32,
     iconButton: 32,
+    iconTiny: 10,
+    indicatorDot: 6,
+    indicatorDotLarge: 8,
+    switchTrackWidth: 36,
+    switchTrackHeight: 20,
+    switchThumb: 16,
+    noticeIconSlot: 28,
+    toastIconSlot: 22,
+    gutterNumber: 24,
+    gutterMarker: 14,
+    micro: 1,
+    iconMicro: 11,
+    avatarSmall: 28,
+    progressTrack: 3,
+    skeletonLine: 10,
+    railItem: 42,
+    drawerWidth: 320,
+    drawerHeight: 320,
   );
 
   @override
   KlpSpacingTheme copyWith({
+    double? iconTiny,
+    double? indicatorDot,
+    double? indicatorDotLarge,
+    double? switchTrackWidth,
+    double? switchTrackHeight,
+    double? switchThumb,
+    double? noticeIconSlot,
+    double? toastIconSlot,
+    double? gutterNumber,
+    double? gutterMarker,
+    double? micro,
+    double? iconMicro,
+    double? avatarSmall,
+    double? progressTrack,
+    double? skeletonLine,
+    double? railItem,
+    double? drawerWidth,
+    double? drawerHeight,
     double? space0_5,
     double? space1,
     double? space2,
@@ -250,6 +362,24 @@ class KlpSpacingTheme extends ThemeExtension<KlpSpacingTheme> {
       chromeRail: chromeRail ?? this.chromeRail,
       chromeTab: chromeTab ?? this.chromeTab,
       iconButton: iconButton ?? this.iconButton,
+      iconTiny: iconTiny ?? this.iconTiny,
+      indicatorDot: indicatorDot ?? this.indicatorDot,
+      indicatorDotLarge: indicatorDotLarge ?? this.indicatorDotLarge,
+      switchTrackWidth: switchTrackWidth ?? this.switchTrackWidth,
+      switchTrackHeight: switchTrackHeight ?? this.switchTrackHeight,
+      switchThumb: switchThumb ?? this.switchThumb,
+      noticeIconSlot: noticeIconSlot ?? this.noticeIconSlot,
+      toastIconSlot: toastIconSlot ?? this.toastIconSlot,
+      gutterNumber: gutterNumber ?? this.gutterNumber,
+      gutterMarker: gutterMarker ?? this.gutterMarker,
+      micro: micro ?? this.micro,
+      iconMicro: iconMicro ?? this.iconMicro,
+      avatarSmall: avatarSmall ?? this.avatarSmall,
+      progressTrack: progressTrack ?? this.progressTrack,
+      skeletonLine: skeletonLine ?? this.skeletonLine,
+      railItem: railItem ?? this.railItem,
+      drawerWidth: drawerWidth ?? this.drawerWidth,
+      drawerHeight: drawerHeight ?? this.drawerHeight,
     );
   }
 
@@ -304,7 +434,25 @@ class KlpSpacingTheme extends ThemeExtension<KlpSpacingTheme> {
           chromeStatusBar == other.chromeStatusBar &&
           chromeRail == other.chromeRail &&
           chromeTab == other.chromeTab &&
-          iconButton == other.iconButton;
+          iconButton == other.iconButton &&
+          iconTiny == other.iconTiny &&
+          indicatorDot == other.indicatorDot &&
+          indicatorDotLarge == other.indicatorDotLarge &&
+          switchTrackWidth == other.switchTrackWidth &&
+          switchTrackHeight == other.switchTrackHeight &&
+          switchThumb == other.switchThumb &&
+          noticeIconSlot == other.noticeIconSlot &&
+          toastIconSlot == other.toastIconSlot &&
+          gutterNumber == other.gutterNumber &&
+          gutterMarker == other.gutterMarker &&
+          micro == other.micro &&
+          iconMicro == other.iconMicro &&
+          avatarSmall == other.avatarSmall &&
+          progressTrack == other.progressTrack &&
+          skeletonLine == other.skeletonLine &&
+          railItem == other.railItem &&
+          drawerWidth == other.drawerWidth &&
+          drawerHeight == other.drawerHeight;
 
   @override
   int get hashCode => Object.hashAll([
@@ -350,5 +498,23 @@ class KlpSpacingTheme extends ThemeExtension<KlpSpacingTheme> {
     chromeRail,
     chromeTab,
     iconButton,
+    iconTiny,
+    indicatorDot,
+    indicatorDotLarge,
+    switchTrackWidth,
+    switchTrackHeight,
+    switchThumb,
+    noticeIconSlot,
+    toastIconSlot,
+    gutterNumber,
+    gutterMarker,
+    micro,
+    iconMicro,
+    avatarSmall,
+    progressTrack,
+    skeletonLine,
+    railItem,
+    drawerWidth,
+    drawerHeight,
   ]);
 }

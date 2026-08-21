@@ -4,7 +4,7 @@
 
 - **核心元件**：`KlpSelectField`
 - **所屬領域**：`form — 表單`
-- **核心職責**：Kallopis KlpSelectField 元件
+- **核心職責**：單選下拉欄位：目前值顯示為一列文字，點擊展開選項清單並就地插入版面 （不是彈出層），選中後自動收合。  [valueLabel] 是呼叫端算好的顯示文字，不會反查 [options] 對應哪一項—— 這個元件不知道「目前選的是哪個 id」，只負責畫出清單與回報點擊。 需要彈出式選單而非就地展開時請改用 [KlpMenu]。
 - **包含範圍**：`build()` 內部建構的完整 Widget 樹（展開 Flutter 原生元件與純容器）
 - **外部引用**：本專案其他非純容器元件（遇引用即停下並鏈結）
 
@@ -42,7 +42,7 @@ flowchart TD
 
 ## 程式碼證據
 
-- 檔案路徑：[`lib/src/form/klp_form_controls.dart`](../../../../lib/src/form/klp_form_controls.dart#L177)
+- 檔案路徑：[`lib/src/form/klp_form_controls.dart`](../../../../lib/src/form/klp_form_controls.dart#L591)
 - 宣告型態：`StatefulWidget`
 
 ## 閱讀說明

@@ -35,7 +35,7 @@ flowchart TD
 
 ## 程式碼證據
 
-- 檔案路徑：[`lib/src/typography/klp_text.dart`](../../../../lib/src/typography/klp_text.dart#L207)
+- 檔案路徑：[`lib/src/typography/klp_text.dart`](../../../../lib/src/typography/klp_text.dart#L275)
 - 宣告型態：`StatelessWidget`
 
 ## 閱讀說明

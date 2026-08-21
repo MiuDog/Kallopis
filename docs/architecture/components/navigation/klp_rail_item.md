@@ -50,7 +50,7 @@ flowchart TD
 
 ## 程式碼證據
 
-- 檔案路徑：[`lib/src/navigation/klp_rail_item.dart`](../../../../lib/src/navigation/klp_rail_item.dart#L8)
+- 檔案路徑：[`lib/src/navigation/klp_rail_item.dart`](../../../../lib/src/navigation/klp_rail_item.dart#L9)
 - 宣告型態：`StatefulWidget`
 
 ## 閱讀說明

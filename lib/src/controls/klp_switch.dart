@@ -1,7 +1,5 @@
 import 'package:flutter/widgets.dart';
 
-import 'klp_toggle.dart';
-
 import '../interaction/klp_pressable.dart';
 import '../theme/klp_theme.dart';
 import '../theme/klp_theme_scope.dart';
@@ -32,8 +30,8 @@ class KlpCompactSwitch extends StatelessWidget {
         onPressed: enabled ? () => onChanged!(!value) : null,
         borderRadius: BorderRadius.circular(context.klp.shape.pill),
         child: SizedBox(
-          width: 36,
-          height: 20,
+          width: context.klp.space.switchTrackWidth,
+          height: context.klp.space.switchTrackHeight,
           child: DecoratedBox(
             decoration: BoxDecoration(
               color: value ? tokens.selectionBackground : tokens.surfaceMuted,
@@ -44,7 +42,7 @@ class KlpCompactSwitch extends StatelessWidget {
               curve: Curves.easeOut,
               alignment: value ? Alignment.centerRight : Alignment.centerLeft,
               child: Padding(
-                padding: const EdgeInsets.all(2),
+                padding: EdgeInsets.all(context.klp.space.space0_5),
                 child: DecoratedBox(
                   decoration: BoxDecoration(
                     color: value
@@ -52,7 +50,9 @@ class KlpCompactSwitch extends StatelessWidget {
                         : tokens.textFaint,
                     shape: BoxShape.circle,
                   ),
-                  child: const SizedBox.square(dimension: 16),
+                  child: SizedBox.square(
+                    dimension: context.klp.space.switchThumb,
+                  ),
                 ),
               ),
             ),
@@ -62,5 +62,3 @@ class KlpCompactSwitch extends StatelessWidget {
     );
   }
 }
-
-typedef KlpSwitch = KlpToggle;

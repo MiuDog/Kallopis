@@ -4,7 +4,7 @@
 
 - **核心元件**：`KlpFieldError`
 - **所屬領域**：`form — 表單`
-- **核心職責**：Kallopis KlpFieldError 元件
+- **核心職責**：單獨呈現的欄位錯誤文字，包了 `Semantics(liveRegion: true)`，讓螢幕 報讀器在錯誤出現時主動唸出來，不需要使用者手動聚焦。  [KlpField] 的內建錯誤列沒有這層 live region 包裝；需要非同步驗證結果 出現時立即被報讀器感知，才需要在 [KlpField] 之外單獨用它。
 - **包含範圍**：`build()` 內部建構的完整 Widget 樹（展開 Flutter 原生元件與純容器）
 - **外部引用**：本專案其他非純容器元件（遇引用即停下並鏈結）
 
@@ -33,7 +33,7 @@ flowchart TD
 
 ## 程式碼證據
 
-- 檔案路徑：[`lib/src/form/klp_form.dart`](../../../../lib/src/form/klp_form.dart#L177)
+- 檔案路徑：[`lib/src/form/klp_form.dart`](../../../../lib/src/form/klp_form.dart#L287)
 - 宣告型態：`StatelessWidget`
 
 ## 閱讀說明

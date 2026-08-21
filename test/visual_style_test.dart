@@ -10,7 +10,7 @@ import 'style_fixture.dart';
 void main() {
   group('KlpVisualStyle', () {
     test('對照風格與 modern 在每一個維度上都不同', () {
-      const modern = KlpVisualStyle.modern;
+      const modern = KlpVisualStyle.defaultStyle;
       final contrasting = contrastingStyle;
 
       // 字體：對照風格全域等寬
@@ -51,7 +51,7 @@ void main() {
     });
 
     test('每套風格都提供完整的 extension 清單', () {
-      for (final style in [KlpVisualStyle.modern, contrastingStyle]) {
+      for (final style in [KlpVisualStyle.defaultStyle, contrastingStyle]) {
         final types = style.extensions.map((e) => e.type).toSet();
         expect(
           types.length,
@@ -69,12 +69,12 @@ void main() {
     });
 
     test('withReducedMotion 關掉互動過場但保留 toast 停留時間', () {
-      final reduced = KlpVisualStyle.modern.withReducedMotion(true);
+      final reduced = KlpVisualStyle.defaultStyle.withReducedMotion(true);
       expect(reduced.motion.stateTransition, Duration.zero);
       expect(reduced.motion.overlayEnter, Duration.zero);
       expect(
         reduced.motion.toastDwell,
-        KlpVisualStyle.modern.motion.toastDwell,
+        KlpVisualStyle.defaultStyle.motion.toastDwell,
         reason: 'toast 停留時間是可讀性需求，不是動態效果',
       );
     });
@@ -120,7 +120,7 @@ void main() {
     testWidgets('component token 缺席時沿用 semantic', (tester) async {
       final tokens = await resolve(
         tester,
-        ThemeData(extensions: KlpVisualStyle.modern.extensions),
+        ThemeData(extensions: KlpVisualStyle.defaultStyle.extensions),
       );
 
       expect(

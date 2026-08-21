@@ -4,7 +4,7 @@
 
 - **核心元件**：`KlpDataTable`
 - **所屬領域**：`data — 資料呈現`
-- **核心職責**：Kallopis KlpDataTable 元件
+- **核心職責**：結構化資料表格：固定欄位、可選排序與多選。  不做分頁或虛擬捲動——列數多時請自行分頁後再傳入 [rows]。選取狀態 （[selectedIds]）與排序狀態（[sort]）都由呼叫端持有，這個元件本身無狀態， 只在使用者互動時透過 [onSelected]／[onSort] 回報意圖。
 - **包含範圍**：`build()` 內部建構的完整 Widget 樹（展開 Flutter 原生元件與純容器）
 - **外部引用**：本專案其他非純容器元件（遇引用即停下並鏈結）
 
@@ -38,7 +38,7 @@ flowchart TD
 
 ## 程式碼證據
 
-- 檔案路徑：[`lib/src/data/klp_advanced_data.dart`](../../../../lib/src/data/klp_advanced_data.dart#L50)
+- 檔案路徑：[`lib/src/data/klp_advanced_data.dart`](../../../../lib/src/data/klp_advanced_data.dart#L75)
 - 宣告型態：`StatelessWidget`
 
 ## 閱讀說明

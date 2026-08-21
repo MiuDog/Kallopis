@@ -8,13 +8,13 @@ class KlpSidebarFrame extends StatelessWidget {
   const KlpSidebarFrame({
     super.key,
     required this.header,
-    required this.rail,
+    this.rail,
     required this.content,
     this.footer,
   });
 
   final Widget header;
-  final Widget rail;
+  final Widget? rail;
   final Widget content;
   final Widget? footer;
 
@@ -27,8 +27,10 @@ class KlpSidebarFrame extends StatelessWidget {
       content: Row(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-          SizedBox(width: context.klp.space.chromeRail, child: rail),
-          SizedBox(width: context.klp.space.tight),
+          if (rail != null) ...[
+            SizedBox(width: context.klp.space.chromeRail, child: rail!),
+            SizedBox(width: context.klp.space.tight),
+          ],
           Expanded(child: content),
         ],
       ),

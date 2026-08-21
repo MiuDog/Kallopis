@@ -31,7 +31,7 @@ flowchart TD
 
 ## 程式碼證據
 
-- 檔案路徑：[`lib/src/feedback/klp_empty_state.dart`](../../../../lib/src/feedback/klp_empty_state.dart#L67)
+- 檔案路徑：[`lib/src/feedback/klp_empty_state.dart`](../../../../lib/src/feedback/klp_empty_state.dart#L60)
 - 宣告型態：`StatelessWidget`
 
 ## 閱讀說明

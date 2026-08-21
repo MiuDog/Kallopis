@@ -3,6 +3,8 @@ import 'dart:io';
 
 import 'package:flutter_test/flutter_test.dart';
 
+import '../tool/inventory.dart';
+
 /// `spec/component-inventory.md` 的閘門。
 ///
 /// 一份會過期的架構文件比沒有文件更糟——它看起來仍然權威，但描述的是三個月前的
@@ -17,27 +19,23 @@ void main() {
       reason: '請跑 `dart run tool/inventory.dart`。',
     );
 
-    final result = Process.runSync('dart', [
-      'run',
-      'tool/inventory.dart',
-      '--check',
-    ], runInShell: true);
+    final expected = generateInventory();
+    final actual = inventory.readAsStringSync().replaceAll('\r\n', '\n');
 
     expect(
-      result.exitCode,
-      0,
-      reason:
-          '元件清單與程式碼不同步。請跑 `dart run tool/inventory.dart`。\n'
-          '${result.stdout}${result.stderr}',
+      actual,
+      expected.replaceAll('\r\n', '\n'),
+      reason: '元件清單與程式碼不同步。請跑 `dart run tool/inventory.dart`。',
     );
   });
 
   test('分層違規只能減少', () {
-    // 15 條違規中有 12 條來自 klp_foundation_extras.dart——一個把 17 個類別塞在一起的
-    // 雜物袋。它們被歸在 foundation，實際上卻依賴 surface 與 typography，
-    // 代表它們根本不是 foundation。這與「布林參數過多」得到的是同一個結論，
-    // 但這次是從組合關係獨立推導出來的。
-    const baseline = 15;
+    // 曾有 15 條違規，其中 12 條來自 klp_foundation_extras.dart——一個把 17 個類別塞在
+    // 一起的雜物袋。它們被歸在 foundation，實際上卻依賴 surface 與 typography，
+    // 代表它們根本不是 foundation。這 12 條已各自搬到正確的領域
+    // （data／surface／interaction／overlay／typography／feedback／shell），
+    // baseline 降到剩下的 3 條。
+    const baseline = 3;
 
     final violations = const LineSplitter()
         .convert(inventory.readAsStringSync())

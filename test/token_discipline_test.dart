@@ -82,7 +82,9 @@ void main() {
 
       for (final file in sourceFiles) {
         final path = relative(file);
-        if (motionLayer.contains(path) || knownOffenders.contains(path)) {
+        if (path.startsWith('lib/src/theme/') ||
+            motionLayer.contains(path) ||
+            knownOffenders.contains(path)) {
           continue;
         }
         if (RegExp(
@@ -132,39 +134,69 @@ void main() {
     // 抽取自 Planist 時元件層有 515 處引用 KlpSpace／KlpRadius 這類編譯期常數。值正確，
     // 但**不會隨 theme 改變**——當時 terminal 風格下 toggle 仍是膠囊形就是這個原因。
     //
-    // 目前剩 16 處，全部是刻意保留的：
-    //   - 面板寬度與 responsive 斷點（版面預設值，消費者以 widget 參數覆寫，不是風格）
-    //   - 選單幾何（要在 build 之前算彈出位置，取不到 context）
-    //   - 視窗透明度（屬於色彩層自身）
-    //   - dense 變體的固定高度與單一 glyph 尺寸
-    //
-    // 新增靜態引用一律視為回退。真要加，必須在同一次提交寫明它為什麼不是風格。
-    const baseline = 16;
-
     final pattern = RegExp(
       r'(KlpRadius|KlpSpace|KlpSize|KlpTypography|KlpInsets|KlpMotion|'
-      r'KlpLayoutGap|KlpLine|KlpElevation|KlpInteraction|KlpTransparency)\.',
+      r'KlpLayoutGap|KlpLine|KlpElevation|KlpInteraction|KlpTransparency|'
+      r'KlpFormMetrics|KlpControlMetrics|KlpPlaceholderMetrics|KlpCodeMetrics)\.',
     );
 
-    var count = 0;
+    final offenders = <String>[];
     for (final file in sourceFiles) {
-      count += pattern.allMatches(file.readAsStringSync()).length;
+      final path = relative(file);
+      if (path.startsWith('lib/src/theme/') ||
+          path.startsWith('lib/src/tokens/') ||
+          path == 'lib/src/foundation/klp_metrics.dart') {
+        continue;
+      }
+      if (pattern.hasMatch(file.readAsStringSync())) offenders.add(path);
     }
 
     expect(
-      count,
-      lessThanOrEqualTo(baseline),
+      offenders,
+      isEmpty,
       reason:
-          '舊 static token 的引用數從 $baseline 增加到 $count。'
-          '新程式碼請改讀 context.klp——static const 不會隨 theme 改變，'
-          '而且不會有任何錯誤訊息告訴你它沒變。',
+          '元件不得再讀舊 static token，必須改讀 context.klp：\n'
+          '${offenders.join('\n')}',
+    );
+  });
+
+  test('元件裡的尺寸與透明度字面值只能減少', () {
+    // 寫死一個 `height: 10` 或 `alpha: 0.16` 不會出錯、不會被 analyze 抓到、換主題時
+    // 也不會拋例外——它只是不跟著變。這正是最難發現的一類風格漂移。
+    //
+    // 目前剩 3 處，全部在 KlpThemePreviewTile：那個元件畫的是一張「視窗的圖」，
+    // 這些透明度是插圖的繪製參數（等同 SVG 裡的座標），不是產品表面的風格。
+    // 把它們搬進 theme 反而會宣稱它們可被覆寫，而覆寫它們只會讓那張圖畫錯。
+    const baseline = 3;
+
+    final pattern = RegExp(
+      r'(?:width|height|dimension|size|alpha)\s*:\s*(?:const\s+)?'
+      r'\d+(?:\.\d+)?\s*[,)]',
     );
 
-    // 降下去後忘記調低 baseline，棘輪會停在舊刻度上，之後的回退就不會被擋下。
+    final offenders = <String>[];
+    for (final file in sourceFiles) {
+      final lines = file.readAsStringSync().split('\n');
+      for (var i = 0; i < lines.length; i++) {
+        if (pattern.hasMatch(lines[i])) {
+          offenders.add('${relative(file)}:${i + 1}  ${lines[i].trim()}');
+        }
+      }
+    }
+
     expect(
-      count,
-      greaterThanOrEqualTo(baseline - 4),
-      reason: '引用數已降到 $count，請把 baseline 一併調低到這個數字。',
+      offenders.length,
+      lessThanOrEqualTo(baseline),
+      reason:
+          '元件裡的尺寸／透明度字面值從 $baseline 增加到 ${offenders.length}：\n'
+          '${offenders.join('\n')}\n'
+          '請改成 context.klp.space 或 context.klp.surface 上的 token。',
+    );
+
+    expect(
+      offenders.length,
+      greaterThanOrEqualTo(baseline - 1),
+      reason: '已降到 ${offenders.length}，請把 baseline 一併調低到這個數字。',
     );
   });
 
@@ -173,8 +205,8 @@ void main() {
     // 四個建構子簽名——API 只能靠讀原始碼發現，就等於沒有 API。
     //
     // 一次補完不成比例，因此用棘輪：未文件化的數量只能下降。消費者最先碰到的
-    // 17 個入口型別已補齊。
-    const baseline = 180;
+    // 舊型別補上 dartdoc 時只准調低，不准調高。
+    const baseline = 78;
 
     final declaration = RegExp(
       r'^(?:abstract final class|final class|class|enum) (Klp[A-Za-z]+)',

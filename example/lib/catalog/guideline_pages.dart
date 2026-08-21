@@ -91,6 +91,33 @@ final blockLayoutPage = CatalogPageData(
       },
     ),
     Specimen(
+      name: 'KlpTokenOverride',
+      note:
+          '用一組覆寫過的色彩 token 包住子樹。KlpSurface 與各種 frame 都靠它讓內容'
+          '自動取得適合該表面的文字色；消費者自訂表面時也用它。',
+      build: (context) {
+        final klp = context.klp;
+        return Row(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            KlpSurface(
+              tone: KlpSurfaceTone.accent,
+              padding: EdgeInsets.all(klp.space.base),
+              child: const KlpText('表面上的文字自動反白'),
+            ),
+            SizedBox(width: klp.space.base),
+            KlpTokenOverride(
+              colors: klp.color.onBackground(klp.color.accent),
+              child: Padding(
+                padding: EdgeInsets.all(klp.space.base),
+                child: const KlpText('同一組 token，未上底色'),
+              ),
+            ),
+          ],
+        );
+      },
+    ),
+    Specimen(
       name: 'KlpThemeToggle',
       note: '明暗切換。',
       build: (context) =>
@@ -135,6 +162,18 @@ final prosePage = CatalogPageData(
         ],
       ),
     ),
+    Specimen(
+      name: 'KlpInlineCode',
+      note: '行內程式碼片段。帶有圓角背景與等寬字體。',
+      build: (context) => const Wrap(
+        spacing: 8,
+        children: [
+          KlpInlineCode('flutter test'),
+          KlpInlineCode('git commit -m "feat: inline code"'),
+          KlpInlineCode('context.klp.color.text'),
+        ],
+      ),
+    ),
   ],
 );
 
@@ -170,18 +209,67 @@ final strokeLanguagePage = CatalogPageData(
     ),
     Specimen(
       name: 'KlpDashedBorder',
-      note: '待填區域。虛線的疏密由 theme 的 shape 層決定。',
-      build: (context) => const SizedBox(
-        height: 72,
-        child: KlpDashedBorder(
-          child: Center(child: KlpText('Drop a block here')),
-        ),
-      ),
+      note: '待填區域與外框。支援自訂粗細、圓角、顏色與虛線疏密。',
+      build: (context) {
+        final klp = context.klp;
+        return Column(
+          children: [
+            const SizedBox(
+              height: 56,
+              child: KlpDashedBorder(child: Center(child: KlpText('預設輔助線外框'))),
+            ),
+            SizedBox(height: klp.space.base),
+            SizedBox(
+              height: 56,
+              child: KlpDashedBorder(
+                width: klp.shape.stroke,
+                color: klp.color.accent,
+                radius: klp.shape.card,
+                dashLength: 8,
+                gapLength: 4,
+                child: const Center(child: KlpText('強調色粗虛線外框')),
+              ),
+            ),
+          ],
+        );
+      },
     ),
     Specimen(
       name: 'KlpDashedDivider',
-      note: '虛線分隔。',
-      build: (context) => const KlpDashedDivider(),
+      note: '虛線分隔。支援水平與垂直方向，以及自訂粗細與顏色。',
+      build: (context) {
+        final klp = context.klp;
+        return Column(
+          children: [
+            const KlpDashedDivider(),
+            SizedBox(height: klp.space.base),
+            KlpDashedDivider(
+              width: klp.shape.stroke,
+              color: klp.color.accent,
+              dashLength: 8,
+              gapLength: 4,
+            ),
+            SizedBox(height: klp.space.base),
+            SizedBox(
+              height: 48,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  const KlpText('區塊 A'),
+                  const KlpDashedDivider(vertical: true),
+                  const KlpText('區塊 B'),
+                  KlpDashedDivider(
+                    vertical: true,
+                    width: klp.shape.stroke,
+                    color: klp.color.accent,
+                  ),
+                  const KlpText('區塊 C'),
+                ],
+              ),
+            ),
+          ],
+        );
+      },
     ),
     Specimen(
       name: 'KlpDivider',

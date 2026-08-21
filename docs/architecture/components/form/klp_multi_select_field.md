@@ -4,7 +4,7 @@
 
 - **核心元件**：`KlpMultiSelectField`
 - **所屬領域**：`form — 表單`
-- **核心職責**：Kallopis KlpMultiSelectField 元件
+- **核心職責**：多選欄位：所有選項以可切換的標籤（chip）形式平鋪展示，不像 [KlpSelectField] 需要展開／收合。  [selectedIds] 由呼叫端持有——這個元件本身無狀態，點擊某個選項只會透過 [onChanged] 回報「切換後應該是這個集合」，不會自己更新畫面。
 - **包含範圍**：`build()` 內部建構的完整 Widget 樹（展開 Flutter 原生元件與純容器）
 - **外部引用**：本專案其他非純容器元件（遇引用即停下並鏈結）
 
@@ -41,7 +41,7 @@ flowchart TD
 
 ## 程式碼證據
 
-- 檔案路徑：[`lib/src/form/klp_form_controls.dart`](../../../../lib/src/form/klp_form_controls.dart#L273)
+- 檔案路徑：[`lib/src/form/klp_form_controls.dart`](../../../../lib/src/form/klp_form_controls.dart#L692)
 - 宣告型態：`StatelessWidget`
 
 ## 閱讀說明

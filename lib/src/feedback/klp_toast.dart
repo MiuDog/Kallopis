@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../controls/klp_button.dart';
 import '../foundation/klp_icon.dart';
+import '../l10n/klp_localizations.dart';
 import '../theme/klp_theme.dart';
 import '../typography/klp_text.dart';
 import 'klp_feedback_tone.dart';
@@ -41,7 +42,9 @@ class KlpToast extends StatelessWidget {
     return Semantics(
       liveRegion: true,
       child: ConstrainedBox(
-        constraints: const BoxConstraints(maxWidth: 360),
+        constraints: BoxConstraints(
+          maxWidth: context.klp.geometry.layout.toastMaximumWidth,
+        ),
         child: Container(
           padding: EdgeInsets.all(context.klp.space.base),
           decoration: BoxDecoration(
@@ -54,8 +57,8 @@ class KlpToast extends StatelessWidget {
               Row(
                 children: [
                   SizedBox(
-                    width: 22,
-                    height: 22,
+                    width: context.klp.space.toastIconSlot,
+                    height: context.klp.space.toastIconSlot,
                     child: Center(
                       child: KlpIcon(
                         tone.icon,
@@ -72,8 +75,8 @@ class KlpToast extends StatelessWidget {
                       color: toneColor,
                     ),
                   ),
-                  const KlpText(
-                    'NOW',
+                  KlpText(
+                    KlpLocalizations.of(context).toastNowLabel,
                     role: KlpTextRole.label,
                     tone: KlpTextTone.faint,
                   ),

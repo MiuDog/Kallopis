@@ -4,7 +4,7 @@
 
 - **核心元件**：`KlpMenu`
 - **所屬領域**：`overlay — 浮層`
-- **核心職責**：Kallopis KlpMenu 元件
+- **核心職責**：彈出式選單面板：標題列加上一組 [KlpMenuItemData]。  只畫面板本身（含陰影與圓角），不處理定位或觸發——插入 overlay 的位置請用 [KlpMenuLayout] 先算好，選單的顯示／關閉時機也由呼叫端（通常是 `showMenu` 或自訂 overlay）控制。
 - **包含範圍**：`build()` 內部建構的完整 Widget 樹（展開 Flutter 原生元件與純容器）
 - **外部引用**：本專案其他非純容器元件（遇引用即停下並鏈結）
 
@@ -50,7 +50,7 @@ flowchart TD
 
 ## 程式碼證據
 
-- 檔案路徑：[`lib/src/overlay/klp_menu.dart`](../../../../lib/src/overlay/klp_menu.dart#L137)
+- 檔案路徑：[`lib/src/overlay/klp_menu.dart`](../../../../lib/src/overlay/klp_menu.dart#L161)
 - 宣告型態：`StatelessWidget`
 
 ## 閱讀說明

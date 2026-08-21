@@ -4,7 +4,7 @@
 
 - **核心元件**：`KlpMenuItem`
 - **所屬領域**：`overlay — 浮層`
-- **核心職責**：Kallopis KlpMenuItem 元件
+- **核心職責**：[KlpMenu] 裡單一項目的渲染，自行追蹤 hover／focus 以決定外框與前景色。  選取狀態（[KlpMenuItemData.selected]）與 hover／focus 共用同一套「active」 視覺，但前景色只有選取或停用時才會變——hover 不改文字色，只加外框， 與本產品其他控制項的 hover 表達語言一致。一般透過 [KlpMenu] 間接使用， 只有要在選單容器之外單獨畫一個選單項目時才需要直接用它。
 - **包含範圍**：`build()` 內部建構的完整 Widget 樹（展開 Flutter 原生元件與純容器）
 - **外部引用**：本專案其他非純容器元件（遇引用即停下並鏈結）
 
@@ -19,28 +19,28 @@ flowchart TD
   classDef slot fill:#2E3440,stroke:#D08770,stroke-width:1px,stroke-dasharray: 2 2,color:#D08770;
 
   root["KlpMenuItem"]:::root
-  n1["Semantics"]
+  n1["SizedBox"]
   root --> n1
   n2["Material"]
   n1 --> n2
   n3["InkWell"]
   n2 --> n3
-  n4["SizedBox"]
+  n4["Padding"]
   n2 --> n4
-  n5["Padding"]
+  n5["Row"]
   n4 --> n5
-  n6["Row"]
+  n6["KlpIcon"]:::reference
   n5 --> n6
-  n7["KlpIcon"]:::reference
-  n6 --> n7
-  n8["Expanded"]
-  n6 --> n8
-  n9["KlpText"]:::reference
-  n8 --> n9
-  n10["KlpToggleIndicator"]:::reference
-  n8 --> n10
+  n7["Expanded"]
+  n5 --> n7
+  n8["KlpText"]:::reference
+  n7 --> n8
+  n9["KlpToggleIndicator"]:::reference
+  n7 --> n9
+  n10["Semantics"]
+  n7 --> n10
   n11["child / slot"]:::slot
-  n8 --> n11
+  n10 --> n11
 ```
 
 ## 外部元件引用
@@ -51,7 +51,7 @@ flowchart TD
 
 ## 程式碼證據
 
-- 檔案路徑：[`lib/src/overlay/klp_menu.dart`](../../../../lib/src/overlay/klp_menu.dart#L209)
+- 檔案路徑：[`lib/src/overlay/klp_menu.dart`](../../../../lib/src/overlay/klp_menu.dart#L239)
 - 宣告型態：`StatefulWidget`
 
 ## 閱讀說明

@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 
+import '../feedback/klp_feedback_tone.dart';
 import '../foundation/klp_icon.dart';
+import '../surface/klp_dashed_border.dart';
 import '../theme/klp_theme.dart';
 import '../typography/klp_text.dart';
-import '../foundation/klp_palette.dart';
 
 class KlpListTile extends StatefulWidget {
   const KlpListTile({
@@ -12,22 +13,26 @@ class KlpListTile extends StatefulWidget {
     this.subtitle,
     this.icon,
     this.trailing,
+    this.badge,
     this.selected = false,
     this.onPressed,
     this.titleColor,
     this.subtitleColor,
     this.compact = false,
+    this.tone,
   });
 
   final String title;
   final String? subtitle;
   final String? icon;
   final Widget? trailing;
+  final String? badge;
   final bool selected;
   final VoidCallback? onPressed;
   final Color? titleColor;
   final Color? subtitleColor;
   final bool compact;
+  final KlpFeedbackTone? tone;
 
   @override
   State<KlpListTile> createState() => _KlpListTileState();
@@ -40,18 +45,35 @@ class _KlpListTileState extends State<KlpListTile> {
   @override
   Widget build(BuildContext context) {
     final tokens = context.klpColors;
-    final tile = Material(
-      color: widget.selected
-          ? tokens.selectionBackground
-          : _hovered || _focused
-          ? context.klp.hoverSurface
-          : context.klp.hoverSurface.withValues(alpha: 0),
+
+    Color? statusColor;
+    if (widget.tone != null && widget.tone != KlpFeedbackTone.neutral) {
+      statusColor = switch (widget.tone!) {
+        KlpFeedbackTone.warning => tokens.warning,
+        KlpFeedbackTone.info => tokens.info,
+        KlpFeedbackTone.success => tokens.success,
+        KlpFeedbackTone.danger => tokens.danger,
+        KlpFeedbackTone.neutral => null,
+      };
+    }
+
+    final isHighlighted = _hovered || _focused || widget.selected;
+    final tileColor = statusColor != null
+        ? statusColor.withValues(
+            alpha: widget.selected
+                ? context.klp.surface.listStatusSelectedOpacity
+                : context.klp.surface.listStatusOpacity,
+          )
+        : (widget.selected ? tokens.selectionBackground : tokens.clear);
+
+    Widget tile = Material(
+      color: tileColor,
       borderRadius: BorderRadius.circular(context.klp.shape.control),
       child: InkWell(
         onTap: widget.onPressed,
         onHover: (value) => setState(() => _hovered = value),
         onFocusChange: (value) => setState(() => _focused = value),
-        overlayColor: const WidgetStatePropertyAll(KlpPalette.transparent),
+        overlayColor: WidgetStatePropertyAll(tokens.clear),
         borderRadius: BorderRadius.circular(context.klp.shape.control),
         child: SizedBox(
           height: widget.compact ? context.klp.space.controlHeightSmall : null,
@@ -68,10 +90,9 @@ class _KlpListTileState extends State<KlpListTile> {
                   KlpIcon(
                     widget.icon!,
                     size: context.klp.space.iconSmall,
+                    // hover 不改圖示色。
                     color: widget.selected
                         ? tokens.selectionForeground
-                        : _hovered
-                        ? tokens.text
                         : tokens.textMuted,
                   ),
                   SizedBox(
@@ -86,36 +107,41 @@ class _KlpListTileState extends State<KlpListTile> {
                     children: [
                       KlpText(
                         widget.title,
-                        role: KlpTextRole.body,
-                        color: widget.selected
-                            ? tokens.selectionForeground
-                            : _hovered || _focused
-                            ? tokens.text
-                            : widget.titleColor ?? tokens.textMuted,
-                        maxLines: 1,
-                        overflow: TextOverflow.ellipsis,
+                        role: widget.compact
+                            ? KlpTextRole.sub
+                            : KlpTextRole.body,
+                        tone: widget.selected
+                            ? KlpTextTone.primary
+                            : KlpTextTone.muted,
                       ),
-                      if (widget.subtitle != null && !widget.compact)
+                      if (widget.subtitle != null) ...[
+                        SizedBox(height: context.klp.space.tight),
                         KlpText(
                           widget.subtitle!,
                           role: KlpTextRole.caption,
-                          tone: KlpTextTone.faint,
-                          color: widget.selected
-                              ? tokens.selectionForeground
-                              : widget.subtitleColor,
-                          maxLines: 1,
-                          overflow: TextOverflow.ellipsis,
+                          tone: widget.selected
+                              ? KlpTextTone.muted
+                              : KlpTextTone.faint,
                         ),
+                      ],
                     ],
                   ),
                 ),
-                widget.trailing ?? const SizedBox.shrink(),
+                if (widget.trailing != null) widget.trailing!,
               ],
             ),
           ),
         ),
       ),
     );
+
+    if (isHighlighted) {
+      tile = KlpDashedBorder(
+        color: widget.selected ? tokens.textMuted : context.klp.color.guide,
+        radius: context.klp.shape.control,
+        child: tile,
+      );
+    }
 
     return tile;
   }

@@ -4,7 +4,7 @@
 
 - **核心元件**：`KlpFieldLabel`
 - **所屬領域**：`form — 表單`
-- **核心職責**：Kallopis KlpFieldLabel 元件
+- **核心職責**：欄位標籤文字，統一使用 [KlpTextRole.caption] 樣式。  [KlpField] 內部就是用它畫標籤——需要在 [KlpField] 版面之外單獨放一個 樣式一致的欄位標籤時（例如自訂版面）才需要直接用它。
 - **包含範圍**：`build()` 內部建構的完整 Widget 樹（展開 Flutter 原生元件與純容器）
 - **外部引用**：本專案其他非純容器元件（遇引用即停下並鏈結）
 
@@ -29,7 +29,7 @@ flowchart TD
 
 ## 程式碼證據
 
-- 檔案路徑：[`lib/src/form/klp_form.dart`](../../../../lib/src/form/klp_form.dart#L151)
+- 檔案路徑：[`lib/src/form/klp_form.dart`](../../../../lib/src/form/klp_form.dart#L251)
 - 宣告型態：`StatelessWidget`
 
 ## 閱讀說明

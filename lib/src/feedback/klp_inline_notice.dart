@@ -27,13 +27,15 @@ class KlpInlineNotice extends StatelessWidget {
 
     return LayoutBuilder(
       builder: (context, constraints) {
-        final isCompact = constraints.maxWidth < 480;
+        final isCompact =
+            constraints.maxWidth <
+            context.klp.geometry.layout.inlineNoticeBreakpoint;
         final content = Row(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             SizedBox(
-              width: 28,
-              height: 28,
+              width: context.klp.space.noticeIconSlot,
+              height: context.klp.space.noticeIconSlot,
               child: Center(
                 child: KlpIcon(
                   tone.icon,
@@ -55,7 +57,7 @@ class KlpInlineNotice extends StatelessWidget {
                       KlpText(
                         tone.label,
                         role: KlpTextRole.label,
-                        color: toneColor,
+                        tone: KlpTextTone.muted,
                       ),
                       SizedBox(width: context.klp.space.compact),
                       Flexible(child: KlpText(title, role: KlpTextRole.body)),

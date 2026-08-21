@@ -19,16 +19,18 @@ flowchart TD
   classDef slot fill:#2E3440,stroke:#D08770,stroke-width:1px,stroke-dasharray: 2 2,color:#D08770;
 
   root["KlpPaneCollapseControl"]:::root
-  n1["GestureDetector"]
+  n1["Center"]
   root --> n1
-  n2["Semantics"]
+  n2["KlpIcon"]:::reference
   n1 --> n2
-  n3["Center"]
-  n2 --> n3
-  n4["KlpIcon"]:::reference
+  n3["MouseRegion"]
+  n1 --> n3
+  n4["GestureDetector"]
   n3 --> n4
-  n5["child / slot"]:::slot
-  n3 --> n5
+  n5["Semantics"]
+  n4 --> n5
+  n6["child / slot"]:::slot
+  n5 --> n6
 ```
 
 ## 外部元件引用
@@ -37,8 +39,8 @@ flowchart TD
 
 ## 程式碼證據
 
-- 檔案路徑：[`lib/src/shell/klp_shell_extras.dart`](../../../../lib/src/shell/klp_shell_extras.dart#L84)
-- 宣告型態：`StatelessWidget`
+- 檔案路徑：[`lib/src/shell/klp_shell_extras.dart`](../../../../lib/src/shell/klp_shell_extras.dart#L100)
+- 宣告型態：`StatefulWidget`
 
 ## 閱讀說明
 

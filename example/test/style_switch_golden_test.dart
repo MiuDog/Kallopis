@@ -8,9 +8,9 @@ import 'package:kallopis/kallopis.dart';
 /// 這是整個 token 架構唯一的**視覺**驗收：`visual_style_test` 只能證明 token 的值不同，
 /// 證明不了那些值真的抵達了畫面。這裡的兩張圖若看起來一樣，代表元件根本沒讀 token。
 ///
-/// Kallopis 只出貨 `modern` 一套風格，因此對照組由這裡就地組出——出貨的 preset 少一套
+/// Kallopis 只出貨 `defaultStyle` 一套風格，因此對照組由這裡就地組出——出貨的 preset 少一套
 /// 不代表這道驗收可以省略，省略了就沒有任何東西會發現元件退回硬編碼。
-final _contrasting = KlpVisualStyle.modern.copyWith(
+final _contrasting = KlpVisualStyle.defaultStyle.copyWith(
   name: 'contrasting',
   colors: KlpThemeData.ultraDark,
   typography: KlpTypographyTheme.proportional.copyWith(
@@ -56,19 +56,24 @@ final _contrasting = KlpVisualStyle.modern.copyWith(
 
 void main() {
   setUpAll(() async {
-    final sans = FontLoader(KlpTypographyTheme.proportional.sansFamily)
-      ..addFont(
-        rootBundle.load(
-          'packages/kallopis/assets/fonts/IBMPlexSansTC-Regular.ttf',
-        ),
-      );
-    final mono = FontLoader(KlpTypographyTheme.proportional.monoFamily)
-      ..addFont(
-        rootBundle.load(
-          'packages/kallopis/assets/fonts/IBMPlexMono-Regular.ttf',
-        ),
-      );
-    await Future.wait([sans.load(), mono.load()]);
+    if (KlpTypographyTheme.proportional.sansFamily.isNotEmpty) {
+      final sans = FontLoader(KlpTypographyTheme.proportional.sansFamily)
+        ..addFont(
+          rootBundle.load(
+            'packages/kallopis/assets/fonts/IBMPlexSansTC-Regular.ttf',
+          ),
+        );
+      await sans.load();
+    }
+    if (KlpTypographyTheme.proportional.monoFamily.isNotEmpty) {
+      final mono = FontLoader(KlpTypographyTheme.proportional.monoFamily)
+        ..addFont(
+          rootBundle.load(
+            'packages/kallopis/assets/fonts/IBMPlexMono-Regular.ttf',
+          ),
+        );
+      await mono.load();
+    }
   });
 
   Future<void> pumpSpecimen(
@@ -91,8 +96,8 @@ void main() {
     await tester.pumpAndSettle();
   }
 
-  testWidgets('modern', (tester) async {
-    await pumpSpecimen(tester, KlpVisualStyle.modern, Brightness.light);
+  testWidgets('defaultStyle', (tester) async {
+    await pumpSpecimen(tester, KlpVisualStyle.defaultStyle, Brightness.light);
     await expectLater(
       find.byType(_Specimen),
       matchesGoldenFile('goldens/style_modern.png'),

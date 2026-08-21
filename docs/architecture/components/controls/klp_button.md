@@ -4,7 +4,7 @@
 
 - **核心元件**：`KlpButton`
 - **所屬領域**：`controls — 控制項`
-- **核心職責**：主要動作按鈕。`tone` 決定語意強度（primary／secondary／ghost／danger）， 圓角、內距、高度與邊框皆取自 theme。
+- **核心職責**：主要動作按鈕。`tone` 決定語意強度（primary／secondary／ghost／danger）， `size` 支援四段標準尺寸階級（sm: 32px, md: 40px, lg: 48px, xl: 56px）， 圓角、內距、高度與邊框皆取自 theme。
 - **包含範圍**：`build()` 內部建構的完整 Widget 樹（展開 Flutter 原生元件與純容器）
 - **外部引用**：本專案其他非純容器元件（遇引用即停下並鏈結）
 
@@ -48,7 +48,7 @@ flowchart TD
 
 ## 程式碼證據
 
-- 檔案路徑：[`lib/src/controls/klp_button.dart`](../../../../lib/src/controls/klp_button.dart#L12)
+- 檔案路徑：[`lib/src/controls/klp_button.dart`](../../../../lib/src/controls/klp_button.dart#L15)
 - 宣告型態：`StatefulWidget`
 
 ## 閱讀說明

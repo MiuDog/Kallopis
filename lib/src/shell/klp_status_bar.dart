@@ -21,15 +21,17 @@ class KlpStatusBar extends StatelessWidget {
 
     return LayoutBuilder(
       builder: (context, constraints) {
-        final compact = constraints.maxWidth < 400;
+        final compact =
+            constraints.maxWidth <
+            context.klp.geometry.layout.statusBarBreakpoint;
 
         return Padding(
           padding: EdgeInsets.symmetric(horizontal: context.klp.space.compact),
           child: Row(
             children: [
               Container(
-                width: 6,
-                height: 6,
+                width: context.klp.space.indicatorDot,
+                height: context.klp.space.indicatorDot,
                 decoration: BoxDecoration(
                   color: active ? tokens.success : tokens.textFaint,
                   shape: BoxShape.circle,

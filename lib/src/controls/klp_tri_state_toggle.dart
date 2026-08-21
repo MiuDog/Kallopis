@@ -25,13 +25,14 @@ class KlpTriStateToggle extends StatelessWidget {
 
     return Row(
       mainAxisSize: MainAxisSize.min,
+      crossAxisAlignment: CrossAxisAlignment.center,
       children: [
         KlpSlidingSelection(
           label: label,
           selectedIndex: value.index,
           options: [
             KlpSelectionOption(icon: KlpIcons.x, color: tokens.danger),
-            KlpSelectionOption(icon: KlpIcons.minus, color: tokens.textMuted),
+            KlpSelectionOption(icon: KlpIcons.minus, color: tokens.warning),
             KlpSelectionOption(icon: KlpIcons.check, color: tokens.success),
           ],
           onSelected: onChanged == null

@@ -117,7 +117,7 @@ class KlpTypographyTheme extends ThemeExtension<KlpTypographyTheme> {
   final FontWeight strong; // 預設強調字重
 
   static const String _sans = 'sans-serif';
-  static const String _mono = 'monospace';
+  static const String _mono = 'packages/kallopis/IBM Plex Mono';
 
   /// 系統預設字體與接手順序。
   static const List<String> _fallback = [
@@ -129,6 +129,7 @@ class KlpTypographyTheme extends ThemeExtension<KlpTypographyTheme> {
   ];
 
   static const List<String> _monoFallback = [
+    'IBM Plex Mono',
     'Consolas',
     'Courier New',
     'monospace',
@@ -153,7 +154,7 @@ class KlpTypographyTheme extends ThemeExtension<KlpTypographyTheme> {
     h2: KlpScale.font800, // 36px
     h1: KlpScale.font900, // 48px
     display: KlpScale.font1000, // 64px
-    label: KlpScale.font200,
+    label: KlpScale.font300, // 14px
     section: KlpScale.font700,
     headingSmall: KlpScale.font600,
     heading: KlpScale.font800,
@@ -172,7 +173,7 @@ class KlpTypographyTheme extends ThemeExtension<KlpTypographyTheme> {
     codeLeading: KlpScale.leading142,
     readingLeading: KlpScale.leading155,
     labelLeading: KlpScale.leading133,
-    labelTracking: KlpScale.trackingWide,
+    labelTracking: KlpScale.tracking0,
     displayTracking: KlpScale.trackingTight,
     regular: KlpScale.weight400,
     medium: KlpScale.weight400,

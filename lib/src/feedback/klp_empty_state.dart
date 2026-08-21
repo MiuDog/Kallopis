@@ -1,6 +1,7 @@
 import 'package:flutter/widgets.dart';
 
 import '../foundation/klp_icon.dart';
+import '../surface/klp_dashed_border.dart';
 import '../theme/klp_theme.dart';
 import '../typography/klp_text.dart';
 
@@ -21,44 +22,36 @@ class KlpEmptyState extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final tokens = context.klpColors;
+    final klp = context.klp;
 
-    return Padding(
-      padding: EdgeInsets.all(context.klp.space.section),
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          Container(
-            width: 56,
-            height: 56,
-            alignment: Alignment.center,
-            decoration: BoxDecoration(
-              color: tokens.surfaceInset,
-              borderRadius: BorderRadius.circular(context.klp.shape.card),
+    return KlpDashedBorder(
+      radius: klp.shape.card,
+      child: Container(
+        width: double.infinity,
+        padding: EdgeInsets.all(klp.space.section),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            KlpIcon(icon, size: klp.space.iconLarge, color: tokens.textMuted),
+            SizedBox(height: klp.space.comfortable),
+            KlpText(
+              title,
+              role: KlpTextRole.section,
+              textAlign: TextAlign.center,
             ),
-            child: KlpIcon(
-              icon,
-              size: context.klp.space.iconLarge,
-              color: tokens.textMuted,
+            SizedBox(height: klp.space.tight),
+            KlpText(
+              message,
+              role: KlpTextRole.caption,
+              tone: KlpTextTone.muted,
+              textAlign: TextAlign.center,
             ),
-          ),
-          SizedBox(height: context.klp.space.comfortable),
-          KlpText(
-            title,
-            role: KlpTextRole.section,
-            textAlign: TextAlign.center,
-          ),
-          SizedBox(height: context.klp.space.tight),
-          KlpText(
-            message,
-            role: KlpTextRole.caption,
-            tone: KlpTextTone.muted,
-            textAlign: TextAlign.center,
-          ),
-          if (action != null) ...[
-            SizedBox(height: context.klp.space.comfortable),
-            action!,
+            if (action != null) ...[
+              SizedBox(height: klp.space.comfortable),
+              action!,
+            ],
           ],
-        ],
+        ),
       ),
     );
   }
@@ -74,9 +67,9 @@ class KlpSkeletonLine extends StatelessWidget {
     return ExcludeSemantics(
       child: Container(
         width: width,
-        height: 10,
+        height: context.klp.space.skeletonLine,
         decoration: BoxDecoration(
-          color: context.klpColors.surfaceMuted,
+          color: context.klpColors.surfaceInset,
           borderRadius: BorderRadius.circular(context.klp.shape.control),
         ),
       ),

@@ -5,11 +5,16 @@ import 'package:kallopis/kallopis.dart';
 
 void main() {
   setUpAll(() async {
-    final sans = FontLoader(KlpTypography.sansFamily)
-      ..addFont(rootBundle.load('assets/fonts/IBMPlexSansTC-Regular.ttf'));
-    final mono = FontLoader(KlpTypography.monoFamily)
-      ..addFont(rootBundle.load('assets/fonts/IBMPlexMono-Regular.ttf'));
-    await Future.wait([sans.load(), mono.load()]);
+    if (KlpTypography.sansFamily.isNotEmpty) {
+      final sans = FontLoader(KlpTypography.sansFamily)
+        ..addFont(rootBundle.load('assets/fonts/IBMPlexSansTC-Regular.ttf'));
+      await sans.load();
+    }
+    if (KlpTypography.monoFamily.isNotEmpty) {
+      final mono = FontLoader(KlpTypography.monoFamily)
+        ..addFont(rootBundle.load('assets/fonts/IBMPlexMono-Regular.ttf'));
+      await mono.load();
+    }
   });
 
   testWidgets('Region Placeholder 固定呈現 hatch、pending、action 與 flat', (

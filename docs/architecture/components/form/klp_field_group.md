@@ -4,7 +4,7 @@
 
 - **核心元件**：`KlpFieldGroup`
 - **所屬領域**：`form — 表單`
-- **核心職責**：Kallopis KlpFieldGroup 元件
+- **核心職責**：把多個相關輸入（例如一組 checkbox）當成單一 [KlpField] 呈現，用 [legend] 取代單一欄位的 `label`。  內部直接委派給 [KlpField]，因此標籤／錯誤的排版與單一欄位完全一致； 差別只在 `child` 換成 [children] 這組垂直排列的子項目。
 - **包含範圍**：`build()` 內部建構的完整 Widget 樹（展開 Flutter 原生元件與純容器）
 - **外部引用**：本專案其他非純容器元件（遇引用即停下並鏈結）
 
@@ -33,7 +33,7 @@ flowchart TD
 
 ## 程式碼證據
 
-- 檔案路徑：[`lib/src/form/klp_form.dart`](../../../../lib/src/form/klp_form.dart#L290)
+- 檔案路徑：[`lib/src/form/klp_form.dart`](../../../../lib/src/form/klp_form.dart#L416)
 - 宣告型態：`StatelessWidget`
 
 ## 閱讀說明

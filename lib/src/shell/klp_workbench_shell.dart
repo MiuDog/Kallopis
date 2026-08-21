@@ -1,6 +1,5 @@
 import 'package:flutter/widgets.dart';
 
-import '../foundation/klp_metrics.dart';
 import '../theme/klp_theme.dart';
 
 /// 三欄工作區外殼：主要面板、舞台、次要面板，兩側可拖曳調寬並依斷點自動收合。
@@ -13,8 +12,8 @@ class KlpWorkbenchShell extends StatelessWidget {
     required this.secondary,
     this.primaryVisible = true,
     this.secondaryVisible = true,
-    this.primaryWidth = KlpSize.sidebar,
-    this.secondaryWidth = KlpSize.inspector,
+    this.primaryWidth,
+    this.secondaryWidth,
     this.onPrimaryWidthChanged,
     this.onSecondaryWidthChanged,
   });
@@ -24,39 +23,38 @@ class KlpWorkbenchShell extends StatelessWidget {
   final Widget secondary;
   final bool primaryVisible;
   final bool secondaryVisible;
-  final double primaryWidth;
-  final double secondaryWidth;
+  final double? primaryWidth;
+  final double? secondaryWidth;
   final ValueChanged<double>? onPrimaryWidthChanged;
   final ValueChanged<double>? onSecondaryWidthChanged;
 
   @override
   Widget build(BuildContext context) {
     final tokens = context.klpColors;
+    final geometry = context.klp.geometry.layout;
+    final effectivePrimaryWidth = primaryWidth ?? geometry.primaryPaneWidth;
+    final effectiveSecondaryWidth =
+        secondaryWidth ?? geometry.secondaryPaneWidth;
 
     return LayoutBuilder(
       builder: (context, constraints) {
         final showPrimaryContent =
             primaryVisible &&
-            constraints.maxWidth >= KlpSize.primaryPaneContentBreakpoint;
+            constraints.maxWidth >= geometry.primaryPaneContentBreakpoint;
         final showPrimary =
             primaryVisible &&
-            constraints.maxWidth >= KlpSize.primaryPaneBreakpoint;
+            constraints.maxWidth >= geometry.primaryPaneBreakpoint;
         final showSecondary =
             secondaryVisible &&
-            constraints.maxWidth >= KlpSize.secondaryPaneBreakpoint;
+            constraints.maxWidth >= geometry.secondaryPaneBreakpoint;
         final resolvedPrimaryWidth = showPrimaryContent
-            ? primaryWidth
+            ? effectivePrimaryWidth
             : context.klp.space.chromeRail + context.klp.space.base;
 
         return ColoredBox(
           color: tokens.app,
           child: Padding(
-            padding: EdgeInsets.fromLTRB(
-              context.klp.space.base,
-              0,
-              context.klp.space.base,
-              context.klp.space.base,
-            ),
+            padding: EdgeInsets.all(context.klp.space.base),
             child: Row(
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
@@ -66,7 +64,7 @@ class KlpWorkbenchShell extends StatelessWidget {
                     key: const ValueKey('primary-pane-resize-handle'),
                     enabled:
                         showPrimaryContent && onPrimaryWidthChanged != null,
-                    value: primaryWidth,
+                    value: effectivePrimaryWidth,
                     onChanged: onPrimaryWidthChanged,
                   ),
                 ],
@@ -75,11 +73,11 @@ class KlpWorkbenchShell extends StatelessWidget {
                   _KlpPaneResizeHandle(
                     key: const ValueKey('secondary-pane-resize-handle'),
                     enabled: onSecondaryWidthChanged != null,
-                    value: secondaryWidth,
+                    value: effectiveSecondaryWidth,
                     reverse: true,
                     onChanged: onSecondaryWidthChanged,
                   ),
-                  SizedBox(width: secondaryWidth, child: secondary),
+                  SizedBox(width: effectiveSecondaryWidth, child: secondary),
                 ],
               ],
             ),

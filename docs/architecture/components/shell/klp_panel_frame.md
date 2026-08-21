@@ -4,7 +4,7 @@
 
 - **核心元件**：`KlpPanelFrame`
 - **所屬領域**：`shell — 應用外殼`
-- **核心職責**：通用面板：header 與 content，選用 footer。高度預設沿用 theme 的外殼密度。
+- **核心職責**：通用面板：header 與 content，選用 footer。高度預設沿用 theme 的外殼密度。 文字顏色依據背景顏色階梯（500 以下為深色文字，600 以上為淺色文字）渲染。
 - **包含範圍**：`build()` 內部建構的完整 Widget 樹（展開 Flutter 原生元件與純容器）
 - **外部引用**：本專案其他非純容器元件（遇引用即停下並鏈結）
 
@@ -23,23 +23,27 @@ flowchart TD
   root --> n1
   n2["ClipRRect"]
   n1 --> n2
-  n3["Column"]
+  n3["KlpTokenOverride"]:::reference
   n2 --> n3
-  n4["SizedBox"]
-  n3 --> n4
-  n5["Expanded"]
+  n4["Column"]
+  n2 --> n4
+  n5["SizedBox"]
   n4 --> n5
-  n6["child / slot"]:::slot
+  n6["Expanded"]
   n5 --> n6
+  n7["Padding"]
+  n6 --> n7
+  n8["child / slot"]:::slot
+  n7 --> n8
 ```
 
 ## 外部元件引用
 
-- （無外部元件引用，皆由 Flutter 原生原語或純容器構成）
+- [`KlpTokenOverride`](../theme/klp_token_override.md) — `theme — semantic 與 component token`
 
 ## 程式碼證據
 
-- 檔案路徑：[`lib/src/shell/klp_panel_frame.dart`](../../../../lib/src/shell/klp_panel_frame.dart#L6)
+- 檔案路徑：[`lib/src/shell/klp_panel_frame.dart`](../../../../lib/src/shell/klp_panel_frame.dart#L7)
 - 宣告型態：`StatelessWidget`
 
 ## 閱讀說明
