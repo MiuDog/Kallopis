@@ -17,7 +17,8 @@ class KlpWorkbenchShell extends StatelessWidget {
     this.onPrimaryWidthChanged,
     this.onSecondaryWidthChanged,
     this.padding,
-  });
+    this.paneGap,
+  }) : assert(paneGap == null || (paneGap >= 0 && paneGap != double.infinity));
 
   final Widget primary;
   final Widget stage;
@@ -32,6 +33,9 @@ class KlpWorkbenchShell extends StatelessWidget {
   /// 外殼與三欄內容之間的留白；`null` 時四邊沿用基礎間距。
   final EdgeInsetsGeometry? padding;
 
+  /// 相鄰欄位之間的留白與拖曳命中寬度；`null` 時沿用基礎間距。
+  final double? paneGap;
+
   @override
   Widget build(BuildContext context) {
     final tokens = context.klpColors;
@@ -40,6 +44,7 @@ class KlpWorkbenchShell extends StatelessWidget {
     final effectiveSecondaryWidth =
         secondaryWidth ?? geometry.secondaryPaneWidth;
     final effectivePadding = padding ?? EdgeInsets.all(context.klp.space.base);
+    final effectivePaneGap = paneGap ?? context.klp.space.base;
 
     return LayoutBuilder(
       builder: (context, constraints) {
@@ -71,6 +76,7 @@ class KlpWorkbenchShell extends StatelessWidget {
                         showPrimaryContent && onPrimaryWidthChanged != null,
                     value: effectivePrimaryWidth,
                     onChanged: onPrimaryWidthChanged,
+                    width: effectivePaneGap,
                   ),
                 ],
                 Expanded(child: stage),
@@ -81,6 +87,7 @@ class KlpWorkbenchShell extends StatelessWidget {
                     value: effectiveSecondaryWidth,
                     reverse: true,
                     onChanged: onSecondaryWidthChanged,
+                    width: effectivePaneGap,
                   ),
                   SizedBox(width: effectiveSecondaryWidth, child: secondary),
                 ],
@@ -99,12 +106,14 @@ class _KlpPaneResizeHandle extends StatefulWidget {
     required this.enabled,
     required this.value,
     required this.onChanged,
+    required this.width,
     this.reverse = false,
   });
 
   final bool enabled;
   final double value;
   final ValueChanged<double>? onChanged;
+  final double width;
   final bool reverse;
 
   @override
@@ -138,7 +147,7 @@ class _KlpPaneResizeHandleState extends State<_KlpPaneResizeHandle> {
                 );
               }
             : null,
-        child: SizedBox(width: context.klp.space.base),
+        child: SizedBox(width: widget.width),
       ),
     );
   }

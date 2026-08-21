@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.4.1 — 2026-08-21
+
+### 修正
+
+- `KlpWorkbenchShell` 新增可選的 `paneGap`，讓消費端以 theme token 同時控制欄間距與
+  resize handle 命中寬度；未指定時仍沿用 `space.base`，既有視覺不變。
+- Notist 可將外框與欄間距一併設為 `space.tight`，避免 4px 外框中混入 16px 欄間距。
+
 ## 0.4.0 — 2026-08-21
 
 這個 minor 版本加入可由產品資料驅動的筆記頁背景與編輯能力，並完成 Windows 自訂
