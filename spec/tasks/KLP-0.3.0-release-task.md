@@ -2,10 +2,11 @@
 
 ## 任務資訊
 
-- 狀態：待執行
-- 工作分支：`codex/release-json-theme`
-- 預定版本：`0.3.0`
-- 預定 tag：`v0.3.0`
+- 狀態：已完成，最終驗收 `ACCEPT`
+- 工作分支：`codex/release-json-theme`、`codex/release-0.3.1`
+- 原預定版本：`0.3.0`
+- 正式修正版：`0.3.1`
+- 正式 tag：`v0.3.1`
 - GitHub：`https://github.com/MiuDog/Kallopis`
 - 第一消費者：`C:\Projects\Notist`
 - 最終驗收人：`/root`（只做獨立驗收，不再代做實作修正）
@@ -171,19 +172,39 @@ pwsh -NoProfile -ExecutionPolicy Bypass -File .\tool\verify.ps1
 
 最終驗收人依序核對：
 
-- [ ] 所有 JSON 可序列化 token 可無損 round-trip。
-- [ ] 局部 JSON overlay 只改指定欄位，未知欄位與錯誤型別會含 path 拒絕。
-- [ ] 非整毫秒 Duration 不會被靜默截斷，`FontWeight(450)` 可 round-trip。
-- [ ] JSON 非 `Cubic` curve 會明確拒絕，不進行近似。
-- [ ] token/color/l10n/consumer contract 關卡全數通過。
-- [ ] 完整 Verify 六步驟全數 exit 0。
-- [ ] PNG 基準仍為 45 tracked + 2 untracked，沒有收尾期間新增視覺差異。
-- [ ] Notist 以 `../Kallopis` 解析 `0.3.0` 且專案驗證通過。
-- [ ] branch、main、tag CI 都成功。
-- [ ] `v0.3.0` 指向正確 release commit，GitHub Release 已建立。
-- [ ] 無認證、secret、不相關檔案或未說明的 allowlist/baseline 混入。
+- [x] 所有 JSON 可序列化 token 可無損 round-trip。
+- [x] 局部 JSON overlay 只改指定欄位，未知欄位與錯誤型別會含 path 拒絕。
+- [x] 非整毫秒 Duration 不會被靜默截斷，`FontWeight(450)` 可 round-trip。
+- [x] JSON 非 `Cubic` curve 會明確拒絕，不進行近似。
+- [x] token/color/l10n/consumer contract 關卡全數通過。
+- [x] 完整 Verify 六步驟全數 exit 0。
+- [x] 候選版的 45 個修改與 2 個新增 PNG 已依原樣提交，收尾修正未再改動 PNG。
+- [x] Notist 以 `../Kallopis` 解析 `0.3.1` 且專案驗證通過。
+- [x] branch、main、tag CI 都成功。
+- [x] `v0.3.1` 指向正式合併 commit，GitHub Release 已建立。
+- [x] 無認證、secret、不相關檔案或未說明的 allowlist/baseline 混入。
 
 全部打勾後才可回報 `ACCEPT`；否則回報 `REJECT` 並列出可重現證據。
+
+## 最終執行紀錄
+
+- 驗收結果：`ACCEPT`。
+- 正式版本：`0.3.1`；`v0.3.1` 指向
+  `2f418c4e5c065b89b662c02ab7c6100c6c6d5752`。
+- 本機 Verify：format 172 個檔案無變更；root 與 example analyze 均為
+  `No issues found!`；root 測試 `+195 All tests passed!`；example 測試
+  `+51 All tests passed!`；inventory 為 current。
+- Notist：path dependency `../Kallopis` 解析為 `0.3.1`；analyze 為
+  `No issues found!`；測試 `+4 All tests passed!`。
+- 修正分支 CI：<https://github.com/MiuDog/Kallopis/actions/runs/32466827338>。
+- 修正 PR：<https://github.com/MiuDog/Kallopis/pull/2>。
+- 版本 PR：<https://github.com/MiuDog/Kallopis/pull/3>。
+- main CI：<https://github.com/MiuDog/Kallopis/actions/runs/32468134619>。
+- tag CI/CD：<https://github.com/MiuDog/Kallopis/actions/runs/32468432445>。
+- GitHub Release：<https://github.com/MiuDog/Kallopis/releases/tag/v0.3.1>。
+- `v0.3.0` 已先行發布，因此依不可變 tag 規則保留；所有獨立審查修正均收錄於
+  `v0.3.1`，不移動舊 tag。
+- CI 只有 `actions/checkout@v4` 的 Node.js 20 淘汰提示，沒有失敗或 Required finding。
 
 ## 回退策略
 
