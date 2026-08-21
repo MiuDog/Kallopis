@@ -33,7 +33,7 @@ abstract final class KlpVisualStyleJson {
   };
 
   /// 輸出完整且順序穩定的 JSON object。
-  static KlpJsonMap encode(KlpVisualStyle style) => <String, Object?>{
+  static Map<String, Object?> encode(KlpVisualStyle style) => <String, Object?>{
     'schemaVersion': schemaVersion,
     'name': style.name,
     'colors': encodeColors(style.colors),

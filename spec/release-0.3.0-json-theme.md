@@ -31,6 +31,10 @@
 - 元件的版面與 golden 不可因 JSON 編解碼功能變更。
 - 工作開始前已存在的未提交修改只做發布稽核；不得為了縮小 diff 而回退。
 
+工作開始時的候選版已包含 45 個 tracked golden 修改與 2 個 untracked golden 新檔，
+以及 file explorer、window header 與 Windows runner 整合。這些是本次正式套件候選版的
+既有內容，不是 JSON theme 收尾期間新增的視覺差異；收尾後數量與檔名必須維持不變。
+
 ## 方案
 
 ```mermaid

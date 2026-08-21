@@ -76,6 +76,85 @@ abstract final class KlpPalette {
   /// oklch(0.080 0.005 264.5)
   static const Color ink950 = Color(0xFF010202);
 
+  // ── 資料視覺化 primitive ──
+
+  static const List<Color> chartSeriesLight = [
+    Color(0xFFE0BE73),
+    Color(0xFFD3A152),
+    Color(0xFFC6823D),
+    Color(0xFFA96836),
+    Color(0xFF895137),
+    Color(0xFF683E33),
+  ];
+  static const List<Color> chartSeriesDark = [
+    Color(0xFFF0D79A),
+    Color(0xFFE8BD70),
+    Color(0xFFDFA04E),
+    Color(0xFFC88745),
+    Color(0xFFA86D43),
+    Color(0xFF89573E),
+  ];
+  static const List<Color> chartSeriesWashLight = [
+    Color(0xFFF8F1E2),
+    Color(0xFFF6EBD7),
+    Color(0xFFF3E4CF),
+    Color(0xFFEEDDD0),
+    Color(0xFFE9D8D1),
+    Color(0xFFE4D5D1),
+  ];
+  static const List<Color> chartSeriesWashDark = [
+    Color(0xFF453D2B),
+    Color(0xFF443725),
+    Color(0xFF413222),
+    Color(0xFF3D2D22),
+    Color(0xFF382A23),
+    Color(0xFF332724),
+  ];
+  static const List<Color> chartSeriesWashUltraDark = [
+    Color(0xFF302B20),
+    Color(0xFF30271B),
+    Color(0xFF2E241A),
+    Color(0xFF2C211B),
+    Color(0xFF291F1C),
+    Color(0xFF261D1C),
+  ];
+
+  static const Color chartAxisLight = Color(0xFFD6D0C6);
+  static const Color chartGridLight = Color(0xFFE4E1DA);
+  static const Color chartGridStrongLight = Color(0xFFC8C0B4);
+  static const Color chartLabelLight = Color(0xFF6B6459);
+  static const Color chartValueLight = Color(0xFF1D1D1D);
+  static const Color chartCrosshairLight = Color(0xFF8C8477);
+  static const Color chartMarketUpLight = Color(0xFF2D8057);
+  static const Color chartMarketUpWashLight = Color(0xFFDFF0E5);
+  static const Color chartMarketDownLight = Color(0xFFA7443F);
+  static const Color chartMarketDownWashLight = Color(0xFFFAE3E2);
+  static const Color chartMarketFlatLight = Color(0xFF8C8477);
+
+  static const Color chartAxisDark = Color(0xFF585249);
+  static const Color chartGridDark = Color(0xFF433F3A);
+  static const Color chartGridStrongDark = Color(0xFF6A6256);
+  static const Color chartLabelDark = Color(0xFFB8B2A4);
+  static const Color chartValueDark = Color(0xFFF5F2EC);
+  static const Color chartCrosshairDark = Color(0xFF918A7B);
+  static const Color chartMarketUpDark = Color(0xFF67AE86);
+  static const Color chartMarketUpWashDark = Color(0xFF243B2D);
+  static const Color chartMarketDownDark = Color(0xFFD27B74);
+  static const Color chartMarketDownWashDark = Color(0xFF472925);
+  static const Color chartMarketFlatDark = Color(0xFF918A7B);
+
+  static const Color chartAxisUltraDark = Color(0xFF45413A);
+  static const Color chartGridUltraDark = Color(0xFF34302B);
+  static const Color chartGridStrongUltraDark = Color(0xFF585249);
+  static const Color chartLabelUltraDark = Color(0xFFB8B2A4);
+  static const Color chartValueUltraDark = Color(0xFFF5F2EC);
+  static const Color chartCrosshairUltraDark = Color(0xFF7A7566);
+  static const Color chartMarketUpUltraDark = Color(0xFF67AE86);
+  static const Color chartMarketUpWashUltraDark = Color(0xFF1D3025);
+  static const Color chartMarketDownUltraDark = Color(0xFFD27B74);
+  static const Color chartMarketDownWashUltraDark = Color(0xFF3B2320);
+  static const Color chartMarketFlatUltraDark = Color(0xFF7A7566);
+
   // ── 語意色 ──────────────────────────────────────────────────────────────
   // 只用於狀態，不參與視覺層級。
   // 一律使用高明度策展色，不因淺色模式另外調整為暗色。

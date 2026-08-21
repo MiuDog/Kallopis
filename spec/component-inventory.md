@@ -114,7 +114,7 @@ graph TD
 | `KlpComponentTheme` | 174 | （葉節點） |
 | `KlpControlGeometry` | 88 | （葉節點） |
 | `KlpDataGeometry` | 99 | （葉節點） |
-| `KlpDataVisualizationTheme` | 232 | （葉節點） |
+| `KlpDataVisualizationTheme` | 190 | （葉節點） |
 | `KlpFieldFillState` | 3 | （葉節點） |
 | `KlpFieldStyle` | 260 | （葉節點） |
 | `KlpGeometryTheme` | 111 | `KlpControlGeometry`、`KlpDataGeometry`、`KlpLayoutGeometry`、`KlpOpticalGeometry` |
@@ -174,7 +174,7 @@ graph LR
 | `KlpLayoutGap` | 8 | （葉節點） |
 | `KlpLine` | 13 | （葉節點） |
 | `KlpMotion` | 9 | （葉節點） |
-| `KlpPalette` | 126 | （葉節點） |
+| `KlpPalette` | 205 | （葉節點） |
 | `KlpPlaceholderMetrics` | 23 | （葉節點） |
 | `KlpRadius` | 18 | （葉節點） |
 | `KlpSegmentedProgress` | 34 | （葉節點） |

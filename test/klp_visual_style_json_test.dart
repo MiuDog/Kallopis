@@ -229,6 +229,31 @@ void main() {
         }),
         throwsA(_formatExceptionContaining('motion.standard[0]')),
       );
+      expect(
+        () => KlpVisualStyleJson.decode(<String, Object?>{
+          'typography': <String, Object?>{'body': -1},
+        }),
+        throwsA(_formatExceptionContaining('typography.body')),
+      );
+      expect(
+        () => KlpVisualStyleJson.decode(<String, Object?>{
+          'typography': <String, Object?>{'bodyLeading': 0},
+        }),
+        throwsA(_formatExceptionContaining('typography.bodyLeading')),
+      );
+      expect(
+        () => KlpVisualStyleJson.decode(<String, Object?>{
+          'geometry': <String, Object?>{
+            'control': <String, Object?>{
+              'textFieldMinLines': 9,
+              'textFieldMaxLines': 4,
+            },
+          },
+        }),
+        throwsA(
+          _formatExceptionContaining('geometry.control.textFieldMaxLines'),
+        ),
+      );
     });
 
     test('encode 拒絕非整數毫秒與非 cubic curve 並包含 path', () {

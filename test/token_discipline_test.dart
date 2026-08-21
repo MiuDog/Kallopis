@@ -21,7 +21,6 @@ void main() {
     // 唯一允許出現 Color(0x…) 的地方。
     const primitiveLayer = {
       'lib/src/foundation/klp_palette.dart',
-      'lib/src/theme/klp_data_visualization_theme.dart',
       'lib/src/foundation/klp_accent.dart',
     };
 
