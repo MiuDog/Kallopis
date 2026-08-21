@@ -73,6 +73,7 @@ void main() {
           'surfaceRaised': tokens.surfaceRaised,
           'guide': tokens.guide,
           'divider': tokens.divider,
+          'pagePattern': tokens.pagePattern,
           'text': tokens.text,
           'textMuted': tokens.textMuted,
           'textFaint': tokens.textFaint,

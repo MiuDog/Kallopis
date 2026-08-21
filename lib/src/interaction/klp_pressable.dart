@@ -5,6 +5,9 @@ import '../surface/klp_dashed_border.dart';
 import '../theme/klp_motion_theme.dart';
 import '../theme/klp_theme.dart';
 
+/// 可按壓表面的 hover／focus 視覺。
+enum KlpPressableHoverEffect { highlight, dashed }
+
 class KlpPressable extends StatefulWidget {
   const KlpPressable({
     super.key,
@@ -15,6 +18,10 @@ class KlpPressable extends StatefulWidget {
     this.borderRadius,
     this.onHover,
     this.onFocusChange,
+    this.hoverEffect = KlpPressableHoverEffect.highlight,
+    @Deprecated(
+      'Use hoverEffect. false still disables the built-in hover effect.',
+    )
     this.showHoverBorder = true,
     this.hoverBorderColor,
   });
@@ -26,7 +33,14 @@ class KlpPressable extends StatefulWidget {
   final BorderRadius? borderRadius;
   final ValueChanged<bool>? onHover;
   final ValueChanged<bool>? onFocusChange;
+  final KlpPressableHoverEffect hoverEffect;
+
+  @Deprecated(
+    'Use hoverEffect. false still disables the built-in hover effect.',
+  )
   final bool showHoverBorder;
+
+  /// 只在 [hoverEffect] 為 [KlpPressableHoverEffect.dashed] 時生效。
   final Color? hoverBorderColor;
 
   @override
@@ -120,11 +134,29 @@ class _KlpPressableState extends State<KlpPressable>
 
     Widget content = widget.child;
     if (active) {
-      content = KlpDashedBorder(
-        color: widget.hoverBorderColor ?? klp.hoverBorder,
-        radius: widget.borderRadius?.topLeft.x ?? klp.shape.control,
-        child: content,
-      );
+      content = switch (widget.hoverEffect) {
+        KlpPressableHoverEffect.highlight => Stack(
+          fit: StackFit.passthrough,
+          children: [
+            content,
+            Positioned.fill(
+              child: IgnorePointer(
+                child: DecoratedBox(
+                  decoration: BoxDecoration(
+                    color: klp.selectionWash,
+                    borderRadius: widget.borderRadius,
+                  ),
+                ),
+              ),
+            ),
+          ],
+        ),
+        KlpPressableHoverEffect.dashed => KlpDashedBorder(
+          color: widget.hoverBorderColor ?? klp.hoverBorder,
+          radius: widget.borderRadius?.topLeft.x ?? klp.shape.control,
+          child: content,
+        ),
+      };
     }
 
     return Listener(

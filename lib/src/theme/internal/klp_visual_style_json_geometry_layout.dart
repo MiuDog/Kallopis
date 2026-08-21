@@ -16,6 +16,12 @@ const _layoutKeys = {
   'toastMaximumWidth',
   'inlineNoticeBreakpoint',
   'statusBarBreakpoint',
+  'windowToolbarHeight',
+  'windowControlButtonSize',
+  'windowToolbarPaddingStart',
+  'windowToolbarPaddingEnd',
+  'windowAppIconSize',
+  'windowIdentityGap',
 };
 const _opticalKeys = {
   'menuIconOffsetY',
@@ -58,6 +64,21 @@ KlpLayoutGeometry decodeLayoutGeometry(
       base.inlineNoticeBreakpoint,
     ),
     statusBarBreakpoint: read('statusBarBreakpoint', base.statusBarBreakpoint),
+    windowToolbarHeight: read('windowToolbarHeight', base.windowToolbarHeight),
+    windowControlButtonSize: read(
+      'windowControlButtonSize',
+      base.windowControlButtonSize,
+    ),
+    windowToolbarPaddingStart: read(
+      'windowToolbarPaddingStart',
+      base.windowToolbarPaddingStart,
+    ),
+    windowToolbarPaddingEnd: read(
+      'windowToolbarPaddingEnd',
+      base.windowToolbarPaddingEnd,
+    ),
+    windowAppIconSize: read('windowAppIconSize', base.windowAppIconSize),
+    windowIdentityGap: read('windowIdentityGap', base.windowIdentityGap),
   );
 }
 

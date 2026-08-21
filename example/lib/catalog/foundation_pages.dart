@@ -1013,6 +1013,8 @@ final layoutInteractionPage = CatalogPageData(
         context,
         120,
         const KlpApp(
+          title: 'Kallopis',
+          appIcon: FlutterLogo(),
           home: KlpAppScreen(child: Center(child: KlpText('KlpApp'))),
         ),
       ),
@@ -1074,7 +1076,6 @@ final layoutInteractionPage = CatalogPageData(
             KlpWindowHeader(
               titleText: 'Planist (Windows)',
               platform: TargetPlatform.windows,
-              appIcon: const FlutterLogo(size: 14.0),
               onMinimize: () {},
               onToggleMaximize: () {},
               onClose: () {},
@@ -1083,7 +1084,6 @@ final layoutInteractionPage = CatalogPageData(
             KlpWindowHeader(
               titleText: 'Planist (macOS)',
               platform: TargetPlatform.macOS,
-              appIcon: const FlutterLogo(size: 14.0),
               onMinimize: () {},
               onToggleMaximize: () {},
               onClose: () {},

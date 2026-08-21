@@ -1,5 +1,30 @@
 # Changelog
 
+## 0.4.0 — 2026-08-21
+
+這個 minor 版本加入可由產品資料驅動的筆記頁背景與編輯能力，並完成 Windows 自訂
+視窗框架及互動狀態語言。所有視覺值仍由 theme／geometry token 解析，不新增元件內
+寫死的顏色、圓角或間距。
+
+### 加入
+
+- 頁面背景 recipe、viewport、固定／縮放筆畫模式，以及受控的點線背景編輯器。
+- Windows runner 工作區最大化契約、視窗最小尺寸傳遞與完整的標題列 geometry token。
+- 統一的 hover／focus／selected 互動狀態驗證與對應元件測試。
+
+### 變更
+
+- `KlpApp` 依 theme geometry 約束 app icon、標題列高度與最小視窗尺寸；非正的
+  `minWidth`／`minHeight` 會在建構時拒絕。
+- 視窗控制鈕、file explorer 與工作台配置改由 semantic token 驅動；正常寬度維持
+  既有排列，極窄啟動寬度優先保留視窗控制鈕。
+
+### 修正
+
+- 修正 Windows header 在 148px 內容寬度、同時含標題、圖示與 action 時的水平
+  RenderFlex overflow；次要內容只在空間不足時依方向裁切。
+- 最大化視窗仍可把拖曳手勢交給原生 runner，並由 runner 決定還原／移動行為。
+
 ## 0.3.1 — 2026-08-21
 
 這個 patch 版本關閉 `0.3.0` 發布審查發現的 JSON theme 邊界問題，不改變任何

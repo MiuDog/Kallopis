@@ -271,7 +271,7 @@ class _KlpTextFieldState extends State<KlpTextField> {
 
     if ((_hovered || _focused) && widget.enabled) {
       fieldWidget = KlpDashedBorder(
-        color: klp.hoverBorder,
+        color: _focused ? tokens.textMuted : klp.hoverBorder,
         radius: klp.fieldRadius,
         child: fieldWidget,
       );

@@ -117,30 +117,7 @@ FlutterWindow::MessageHandler(HWND hwnd, UINT const message,
                               WPARAM const wparam,
                               LPARAM const lparam) noexcept {
   if (message == WM_NCHITTEST) {
-    if (IsZoomed(hwnd)) {
-      // When maximized, force HTCLIENT so the invisible WS_THICKFRAME border
-      // does not swallow clicks intended for the Flutter toolbar area.
-      return HTCLIENT;
-    }
-    POINT pt = {static_cast<SHORT>(LOWORD(lparam)),
-                static_cast<SHORT>(HIWORD(lparam))};
-    RECT rect;
-    GetWindowRect(hwnd, &rect);
-    const int border = 8;
-
-    bool left = pt.x >= rect.left && pt.x < rect.left + border;
-    bool right = pt.x < rect.right && pt.x >= rect.right - border;
-    bool top = pt.y >= rect.top && pt.y < rect.top + border;
-    bool bottom = pt.y < rect.bottom && pt.y >= rect.bottom - border;
-
-    if (top && left) return HTTOPLEFT;
-    if (top && right) return HTTOPRIGHT;
-    if (bottom && left) return HTBOTTOMLEFT;
-    if (bottom && right) return HTBOTTOMRIGHT;
-    if (left) return HTLEFT;
-    if (right) return HTRIGHT;
-    if (top) return HTTOP;
-    if (bottom) return HTBOTTOM;
+    return Win32Window::MessageHandler(hwnd, message, wparam, lparam);
   }
 
   // Give Flutter, including plugins, an opportunity to handle window messages.

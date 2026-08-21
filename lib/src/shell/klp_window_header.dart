@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
+import '../theme/klp_geometry_theme.dart';
 import '../theme/klp_theme.dart';
 import '../typography/klp_text.dart';
+import 'internal/klp_window_header_extras.dart';
 import 'klp_window_controls.dart';
 
 /// 桌面平台視窗控制操作（最小化、最大化／還原、關閉、拖曳、限制尺寸）。
@@ -105,7 +107,7 @@ class KlpWindowHeader extends StatelessWidget implements PreferredSizeWidget {
   /// 手動指定平台外觀風格（預設依系統環境判定）。
   final TargetPlatform? platform;
 
-  /// 標題列高度（預設為緊湊的 32.0）。
+  /// 標題列高度；未指定時使用 shell geometry token。
   final double? height;
 
   /// 標題列背景色（預設為視窗底色 `tokens.app`）。
@@ -127,13 +129,16 @@ class KlpWindowHeader extends StatelessWidget implements PreferredSizeWidget {
   final bool showWindowControls;
 
   @override
-  Size get preferredSize => Size.fromHeight(height ?? 40.0);
+  Size get preferredSize => Size.fromHeight(
+    height ?? KlpGeometryTheme.standard.layout.windowToolbarHeight,
+  );
 
   @override
   Widget build(BuildContext context) {
     final tokens = context.klpColors;
     final klp = context.klp;
-    final effectiveHeight = height ?? 40.0;
+    final layout = klp.geometry.layout;
+    final effectiveHeight = height ?? layout.windowToolbarHeight;
     final effectivePlatform = platform ?? Theme.of(context).platform;
     final isMac = effectivePlatform == TargetPlatform.macOS;
 
@@ -143,16 +148,18 @@ class KlpWindowHeader extends StatelessWidget implements PreferredSizeWidget {
             ? KlpText(titleText!, role: titleRole, tone: KlpTextTone.primary)
             : const SizedBox.shrink());
 
-    final Widget identityWidget = Row(
-      mainAxisSize: MainAxisSize.min,
-      crossAxisAlignment: CrossAxisAlignment.center,
-      children: [
-        if (appIcon != null) ...[
-          Center(child: appIcon!),
-          SizedBox(width: klp.space.compact),
+    final Widget identityWidget = SizedBox(
+      height: layout.windowControlButtonSize,
+      child: buildKlpWindowHeaderRegion(
+        alignment: AlignmentDirectional.centerStart,
+        children: [
+          if (appIcon != null) ...[
+            Center(child: appIcon!),
+            SizedBox(width: layout.windowIdentityGap),
+          ],
+          Center(child: titleWidget),
         ],
-        Center(child: titleWidget),
-      ],
+      ),
     );
 
     final Widget windowControlsWidget = showWindowControls
@@ -172,7 +179,12 @@ class KlpWindowHeader extends StatelessWidget implements PreferredSizeWidget {
       child: SizedBox(
         height: effectiveHeight,
         child: Padding(
-          padding: EdgeInsets.symmetric(horizontal: klp.space.base),
+          padding: EdgeInsetsDirectional.fromSTEB(
+            layout.windowToolbarPaddingStart,
+            layout.windowToolbarPaddingStart,
+            layout.windowToolbarPaddingEnd,
+            layout.windowToolbarPaddingStart,
+          ),
           child: isMac
               ? _buildMacLayout(
                   context,
@@ -195,37 +207,41 @@ class KlpWindowHeader extends StatelessWidget implements PreferredSizeWidget {
     required Widget controls,
   }) {
     final klp = context.klp;
+    final extras = actions == null && trailing == null
+        ? null
+        : buildKlpWindowHeaderRegion(
+            alignment: AlignmentDirectional.centerEnd,
+            children: [
+              if (actions != null) ...[
+                ...actions!,
+                SizedBox(width: klp.space.compact),
+              ],
+              if (trailing != null) ...[
+                trailing!,
+                SizedBox(width: klp.space.compact),
+              ],
+            ],
+          );
+
     return Row(
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
         if (leading != null) ...[leading!, SizedBox(width: klp.space.compact)],
-        GestureDetector(
-          behavior: HitTestBehavior.translucent,
-          onPanStart: isMaximized ? null : (_) => KlpWindowAction.drag(),
-          onDoubleTap: () =>
-              (onToggleMaximize ?? KlpWindowAction.toggleMaximize)(),
-          child: SizedBox(
-            height: double.infinity,
-            child: Align(alignment: Alignment.centerLeft, child: identity),
-          ),
-        ),
         Expanded(
-          child: GestureDetector(
-            behavior: HitTestBehavior.translucent,
-            onPanStart: isMaximized ? null : (_) => KlpWindowAction.drag(),
-            onDoubleTap: () =>
-                (onToggleMaximize ?? KlpWindowAction.toggleMaximize)(),
-            child: const SizedBox(height: double.infinity),
+          child: buildKlpWindowHeaderContent(
+            identity: GestureDetector(
+              behavior: HitTestBehavior.translucent,
+              onPanStart: (_) => KlpWindowAction.drag(),
+              onDoubleTap: () =>
+                  (onToggleMaximize ?? KlpWindowAction.toggleMaximize)(),
+              child: SizedBox(
+                height: double.infinity,
+                child: Align(alignment: Alignment.centerLeft, child: identity),
+              ),
+            ),
+            extras: extras,
           ),
         ),
-        if (actions != null) ...[
-          ...actions!,
-          SizedBox(width: klp.space.compact),
-        ],
-        if (trailing != null) ...[
-          trailing!,
-          SizedBox(width: klp.space.compact),
-        ],
         controls,
       ],
     );

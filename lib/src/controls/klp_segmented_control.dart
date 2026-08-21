@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
 import '../foundation/klp_icon.dart';
-import '../surface/klp_dashed_border.dart';
 import '../theme/klp_theme.dart';
 import '../typography/klp_text.dart';
 
@@ -98,10 +97,14 @@ class _KlpSegmentState extends State<_KlpSegment> {
   Widget build(BuildContext context) {
     final tokens = context.klpColors;
     final klp = context.klp;
-    final isHighlighted = widget.selected || _hovered;
+    final background = widget.selected
+        ? tokens.selectionBackground
+        : _hovered
+        ? klp.selectionWash
+        : klp.color.clear;
 
-    Widget segment = Material(
-      color: klp.color.clear,
+    final segment = Material(
+      color: background,
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(klp.shape.control),
       ),
@@ -149,14 +152,6 @@ class _KlpSegmentState extends State<_KlpSegment> {
         ),
       ),
     );
-
-    if (isHighlighted) {
-      segment = KlpDashedBorder(
-        color: widget.selected ? tokens.textMuted : klp.hoverBorder,
-        radius: klp.shape.control,
-        child: segment,
-      );
-    }
 
     return Semantics(button: true, selected: widget.selected, child: segment);
   }

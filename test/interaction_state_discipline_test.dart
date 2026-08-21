@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:kallopis/kallopis.dart';
 
 /// 互動狀態的紀律閘門。
 ///
-/// 「hover 只有低對比虛線細框」這條規則散在十幾個元件裡，靠人看是守不住的：
-/// 補一個 hover 變色回去不會出錯、不會被 analyze 抓到，只是規則從此有兩套。
+/// 一般元件使用背景高亮；Explorer 與表單保留低／高對比虛線。這條分界若只靠人看，
+/// 新增元件時很容易讓兩套語言再次混用。
 void main() {
   const presets = <String, KlpThemeData>{
     'light': KlpThemeData.light,
@@ -66,6 +67,76 @@ void main() {
       klp.hoverBorder.toARGB32(),
       klp.color.guide.withValues(alpha: klp.shape.dashedOpacity).toARGB32(),
     );
+  });
+
+  testWidgets('一般 icon button hover 使用背景高亮而不是虛線框', (tester) async {
+    await tester.pumpWidget(
+      MaterialApp(
+        theme: buildKlpTheme(Brightness.light),
+        home: Scaffold(
+          body: KlpIconButton(
+            icon: KlpIcons.folderPlus,
+            label: '新增',
+            onPressed: () {},
+          ),
+        ),
+      ),
+    );
+
+    final button = find.byType(KlpIconButton);
+    final mouse = await tester.createGesture(kind: PointerDeviceKind.mouse);
+    addTearDown(mouse.removePointer);
+    await mouse.addPointer();
+    await mouse.moveTo(tester.getCenter(button));
+    await tester.pump();
+
+    final material = find.descendant(
+      of: button,
+      matching: find.byType(Material),
+    );
+    final context = tester.element(button);
+
+    expect(material, findsOneWidget);
+    expect(
+      tester.widget<Material>(material).color,
+      Color.alphaBlend(context.klp.selectionWash, context.klp.color.component),
+    );
+    expect(
+      find.descendant(of: button, matching: find.byType(KlpDashedBorder)),
+      findsNothing,
+    );
+  });
+
+  testWidgets('表單 hover 與 focus 分別使用低對比與高對比虛線框', (tester) async {
+    final focusNode = FocusNode();
+    addTearDown(focusNode.dispose);
+
+    await tester.pumpWidget(
+      MaterialApp(
+        theme: buildKlpTheme(Brightness.light),
+        home: Scaffold(body: KlpTextField(focusNode: focusNode)),
+      ),
+    );
+
+    final field = find.byType(KlpTextField);
+    final mouse = await tester.createGesture(kind: PointerDeviceKind.mouse);
+    addTearDown(mouse.removePointer);
+    await mouse.addPointer();
+    await mouse.moveTo(tester.getCenter(field));
+    await tester.pump();
+
+    var border = tester.widget<KlpDashedBorder>(
+      find.descendant(of: field, matching: find.byType(KlpDashedBorder)),
+    );
+    expect(border.color, tester.element(field).klp.hoverBorder);
+
+    await tester.tap(find.byType(TextFormField));
+    await tester.pump();
+
+    border = tester.widget<KlpDashedBorder>(
+      find.descendant(of: field, matching: find.byType(KlpDashedBorder)),
+    );
+    expect(border.color, tester.element(field).klp.color.textMuted);
   });
 
   testWidgets('KlpRegion 的內容不貼著面板邊緣', (tester) async {

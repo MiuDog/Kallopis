@@ -56,6 +56,7 @@ class KlpThemeData extends ThemeExtension<KlpThemeData> {
     required this.modalScrim,
     required this.guide,
     required this.divider,
+    Color? pagePattern,
     required this.text,
     required this.textMuted,
     required this.textFaint,
@@ -76,7 +77,7 @@ class KlpThemeData extends ThemeExtension<KlpThemeData> {
     this.mutedOnLightBackground = KlpPalette.ink600,
     this.mutedOnDarkBackground = KlpPalette.ink300,
     this.faintOnBackground = KlpPalette.ink500,
-  });
+  }) : pagePattern = pagePattern ?? guide;
 
   final Color app;
   final Color surface;
@@ -89,6 +90,7 @@ class KlpThemeData extends ThemeExtension<KlpThemeData> {
   final Color modalScrim;
   final Color guide;
   final Color divider;
+  final Color pagePattern;
   final Color text;
   final Color textMuted;
   final Color textFaint;
@@ -174,6 +176,7 @@ class KlpThemeData extends ThemeExtension<KlpThemeData> {
     modalScrim: KlpPalette.scrim,
     guide: KlpPalette.ink400,
     divider: KlpPalette.ink100,
+    pagePattern: KlpPalette.ink200,
     text: KlpPalette.ink900,
     textMuted: KlpPalette.ink600,
     textFaint: KlpPalette.ink500,
@@ -203,6 +206,7 @@ class KlpThemeData extends ThemeExtension<KlpThemeData> {
     modalScrim: KlpPalette.scrim,
     guide: KlpPalette.ink400,
     divider: KlpPalette.ink750,
+    pagePattern: KlpPalette.ink600,
     text: KlpPalette.ink50,
     textMuted: KlpPalette.ink300,
     textFaint: KlpPalette.ink500,
@@ -232,6 +236,7 @@ class KlpThemeData extends ThemeExtension<KlpThemeData> {
     modalScrim: KlpPalette.scrim,
     guide: KlpPalette.ink450,
     divider: KlpPalette.ink800,
+    pagePattern: KlpPalette.ink650,
     text: KlpPalette.ink100,
     textMuted: KlpPalette.ink350,
     textFaint: KlpPalette.ink550,
@@ -265,6 +270,7 @@ class KlpThemeData extends ThemeExtension<KlpThemeData> {
     Color? modalScrim,
     Color? guide,
     Color? divider,
+    Color? pagePattern,
     Color? text,
     Color? textMuted,
     Color? textFaint,
@@ -298,6 +304,7 @@ class KlpThemeData extends ThemeExtension<KlpThemeData> {
       modalScrim: modalScrim ?? this.modalScrim,
       guide: guide ?? this.guide,
       divider: divider ?? this.divider,
+      pagePattern: pagePattern ?? this.pagePattern,
       text: text ?? this.text,
       textMuted: textMuted ?? this.textMuted,
       textFaint: textFaint ?? this.textFaint,
@@ -351,6 +358,7 @@ class KlpThemeData extends ThemeExtension<KlpThemeData> {
           modalScrim == other.modalScrim &&
           guide == other.guide &&
           divider == other.divider &&
+          pagePattern == other.pagePattern &&
           text == other.text &&
           textMuted == other.textMuted &&
           textFaint == other.textFaint &&
@@ -385,6 +393,7 @@ class KlpThemeData extends ThemeExtension<KlpThemeData> {
     modalScrim,
     guide,
     divider,
+    pagePattern,
     text,
     textMuted,
     textFaint,
@@ -432,7 +441,7 @@ abstract final class KlpFieldStyle {
 
   /// 欄位底色。
   ///
-  /// **hover 不改變底色**——本產品的 hover 一律只以低對比虛線細框表達，見
+  /// **hover 不改變底色**——表單欄位以低對比虛線細框表達 hover，見
   /// [KlpTheme.hoverBorder]。因此 rest 與 hovered 刻意回傳同一個值；把它們寫成
   /// 同一個 case 會讓「hover 沒有底色變化」這件事在未來被當成漏寫而補回去。
   static Color colorFor(

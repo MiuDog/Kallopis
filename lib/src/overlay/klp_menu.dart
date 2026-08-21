@@ -5,7 +5,6 @@ import 'package:flutter/material.dart';
 import '../controls/klp_toggle.dart';
 import '../foundation/klp_icon.dart';
 import '../foundation/klp_icons.dart';
-import '../surface/klp_dashed_border.dart';
 import '../surface/klp_divider.dart';
 import '../surface/klp_surface.dart';
 import '../theme/klp_geometry_theme.dart';
@@ -237,11 +236,11 @@ class KlpMenu extends StatelessWidget {
   }
 }
 
-/// [KlpMenu] 裡單一項目的渲染，自行追蹤 hover／focus 以決定外框與前景色。
+/// [KlpMenu] 裡單一項目的渲染，自行追蹤 hover／focus 以決定背景與前景色。
 ///
 /// 選取狀態（[KlpMenuItemData.selected]）與 hover／focus 共用同一套「active」
-/// 視覺，但前景色只有選取或停用時才會變——hover 不改文字色，只加外框，
-/// 與本產品其他控制項的 hover 表達語言一致。一般透過 [KlpMenu] 間接使用，
+/// 視覺，但前景色只有選取或停用時才會變——hover 只加背景高亮，
+/// 與一般控制項的互動語言一致。一般透過 [KlpMenu] 間接使用，
 /// 只有要在選單容器之外單獨畫一個選單項目時才需要直接用它。
 class KlpMenuItem extends StatefulWidget {
   const KlpMenuItem({super.key, required this.data});
@@ -261,7 +260,11 @@ class _KlpMenuItemState extends State<KlpMenuItem> {
     final tokens = context.klpColors;
     final data = widget.data;
     final active = data.selected || _hovered || _focused;
-    // hover 不改前景色——選取才提亮，hover 只加外框。
+    final background = data.selected
+        ? tokens.selectionBackground
+        : active
+        ? context.klp.selectionWash
+        : tokens.clear;
     final foreground = !data.enabled
         ? tokens.textFaint
         : data.danger
@@ -270,10 +273,10 @@ class _KlpMenuItemState extends State<KlpMenuItem> {
         ? tokens.text
         : tokens.textMuted;
 
-    Widget item = SizedBox(
+    final item = SizedBox(
       height: _KlpMenuMetrics.itemHeight(context),
       child: Material(
-        color: data.selected ? tokens.selectionBackground : tokens.clear,
+        color: background,
         borderRadius: BorderRadius.circular(context.klp.shape.control),
         child: InkWell(
           onTap: data.enabled ? data.onPressed : null,
@@ -339,14 +342,6 @@ class _KlpMenuItemState extends State<KlpMenuItem> {
         ),
       ),
     );
-
-    if (active) {
-      item = KlpDashedBorder(
-        color: data.selected ? tokens.textMuted : context.klp.hoverBorder,
-        radius: context.klp.shape.control,
-        child: item,
-      );
-    }
 
     return Semantics(
       button: true,

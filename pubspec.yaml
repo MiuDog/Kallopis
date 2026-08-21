@@ -1,6 +1,6 @@
 name: kallopis
 description: "Kallopis — the shared Flutter visual layer for the -ist product family."
-version: 0.3.1
+version: 0.4.0
 
 # 刻意不發布到 pub.dev。消費者是同一台機器上的 -ist 產品，以 path dependency
 # 引入即可（見 README「安裝與依賴」）；發版只會在改動與生效之間多插一道手續。

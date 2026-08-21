@@ -6,7 +6,6 @@ import '../interaction/klp_pressable.dart';
 import '../l10n/klp_localizations.dart';
 import '../overlay/klp_menu.dart';
 import '../overlay/klp_tooltip.dart';
-import '../surface/klp_dashed_border.dart';
 import '../theme/klp_theme.dart';
 import '../typography/klp_text.dart';
 
@@ -476,15 +475,18 @@ class _KlpCodeActionButtonState extends State<_KlpCodeActionButton> {
         label: widget.label,
         child: Builder(
           builder: (context) {
-            Widget button = Material(
+            final button = Material(
               color: widget.selected
                   ? tokens.selectionBackground
+                  : active
+                  ? context.klp.selectionWash
                   : tokens.clear,
               borderRadius: BorderRadius.circular(context.klp.shape.control),
               child: KlpPressable(
                 onPressed: widget.onPressed,
                 onHover: (value) => setState(() => _hovered = value),
                 onFocusChange: (value) => setState(() => _focused = value),
+                showHoverBorder: false,
                 borderRadius: BorderRadius.circular(context.klp.shape.control),
                 child: SizedBox.square(
                   dimension: context.klp.geometry.data.codeActionButtonSize,
@@ -498,16 +500,6 @@ class _KlpCodeActionButtonState extends State<_KlpCodeActionButton> {
                 ),
               ),
             );
-
-            if (active) {
-              button = KlpDashedBorder(
-                color: widget.selected
-                    ? tokens.textMuted
-                    : context.klp.hoverBorder,
-                radius: context.klp.shape.control,
-                child: button,
-              );
-            }
 
             return button;
           },
@@ -543,13 +535,14 @@ class _KlpCodeLanguageButtonState extends State<_KlpCodeLanguageButton> {
     final active = widget.enabled && (_hovered || _focused);
     final color = tokens.textMuted;
 
-    Widget button = Material(
-      color: tokens.clear,
+    final button = Material(
+      color: active ? context.klp.selectionWash : tokens.clear,
       borderRadius: BorderRadius.circular(context.klp.shape.control),
       child: KlpPressable(
         onPressed: widget.enabled ? widget.onPressed : null,
         onHover: (value) => setState(() => _hovered = value),
         onFocusChange: (value) => setState(() => _focused = value),
+        showHoverBorder: false,
         borderRadius: BorderRadius.circular(context.klp.shape.control),
         child: Padding(
           padding: EdgeInsets.symmetric(horizontal: context.klp.space.tight),
@@ -570,14 +563,6 @@ class _KlpCodeLanguageButtonState extends State<_KlpCodeLanguageButton> {
         ),
       ),
     );
-
-    if (active) {
-      button = KlpDashedBorder(
-        color: context.klp.hoverBorder,
-        radius: context.klp.shape.control,
-        child: button,
-      );
-    }
 
     return Align(
       widthFactor: 1,

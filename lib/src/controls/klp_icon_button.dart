@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 
 import '../foundation/klp_icon.dart';
 import '../overlay/klp_tooltip.dart';
-import '../surface/klp_dashed_border.dart';
 import '../theme/klp_theme.dart';
 
 /// 只有圖示的按鈕。`label` 為必填且用於無障礙標註——圖示本身沒有可讀文字，
@@ -36,9 +35,13 @@ class _KlpIconButtonState extends State<KlpIconButton> {
     final tokens = context.klpColors;
     final klp = context.klp;
     final active = (_hovered || _focused) && widget.onPressed != null;
-    final isHighlighted = active || widget.selected;
-    Widget button = Material(
-      color: tokens.component,
+    final background = widget.selected
+        ? tokens.selectionBackground
+        : active
+        ? Color.alphaBlend(klp.selectionWash, tokens.component)
+        : tokens.component;
+    final button = Material(
+      color: background,
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(klp.shape.control),
       ),
@@ -54,7 +57,6 @@ class _KlpIconButtonState extends State<KlpIconButton> {
               quarterTurns: widget.quarterTurns,
               child: KlpIcon(
                 widget.icon,
-                // hover 不改圖示色——狀態只由外框表達。
                 color: widget.onPressed == null
                     ? tokens.textFaint
                     : tokens.text,
@@ -64,14 +66,6 @@ class _KlpIconButtonState extends State<KlpIconButton> {
         ),
       ),
     );
-
-    if (isHighlighted) {
-      button = KlpDashedBorder(
-        color: widget.selected ? tokens.textMuted : klp.hoverBorder,
-        radius: klp.shape.control,
-        child: button,
-      );
-    }
 
     return KlpTooltip(
       message: widget.label,

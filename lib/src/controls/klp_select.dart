@@ -85,7 +85,7 @@ class _KlpSelectState extends State<KlpSelect> {
 
     if ((_hovered || _focused) && widget.enabled) {
       field = KlpDashedBorder(
-        color: context.klp.hoverBorder,
+        color: _focused ? tokens.textMuted : context.klp.hoverBorder,
         radius: context.klp.shape.control,
         child: field,
       );

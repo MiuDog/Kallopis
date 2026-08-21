@@ -3,7 +3,6 @@ import 'dart:math' as math;
 import 'package:flutter/material.dart';
 
 import '../interaction/klp_pressable.dart';
-import '../surface/klp_dashed_border.dart';
 import '../theme/klp_theme.dart';
 import '../typography/klp_text.dart';
 
@@ -158,12 +157,10 @@ class _PlaceholderAction extends StatefulWidget {
 }
 
 class _PlaceholderActionState extends State<_PlaceholderAction> {
-  bool _hovered = false;
-
   @override
   Widget build(BuildContext context) {
     final tokens = context.klpColors;
-    Widget action = Container(
+    final action = Container(
       padding: EdgeInsets.symmetric(
         horizontal: context.klp.space.controlPaddingXSmall,
         vertical: context.klp.geometry.data.placeholderActionPaddingY,
@@ -186,14 +183,6 @@ class _PlaceholderActionState extends State<_PlaceholderAction> {
       ),
     );
 
-    if (_hovered) {
-      action = KlpDashedBorder(
-        color: context.klp.hoverBorder,
-        radius: context.klp.shape.control,
-        child: action,
-      );
-    }
-
     return Semantics(
       button: true,
       label: widget.label,
@@ -201,7 +190,6 @@ class _PlaceholderActionState extends State<_PlaceholderAction> {
         type: MaterialType.transparency,
         child: KlpPressable(
           onPressed: widget.onPressed,
-          onHover: (hovered) => setState(() => _hovered = hovered),
           borderRadius: BorderRadius.circular(context.klp.shape.control),
           child: action,
         ),
