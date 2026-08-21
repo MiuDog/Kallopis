@@ -1,5 +1,19 @@
 # Changelog
 
+## 0.3.1 — 2026-08-21
+
+這個 patch 版本關閉 `0.3.0` 發布審查發現的 JSON theme 邊界問題，不改變任何
+既有顏色或元件視覺。
+
+### 修正
+
+- typography 尺寸與 leading 必須大於 0，text field 的 min/max lines 關係在
+  JSON decode 邊界以完整 path 驗證。
+- data-visualization 的 raw colors 回到 `KlpPalette` primitive 層，semantic theme 不再
+  需要 token discipline 例外。
+- `KlpVisualStyleJson.encode` 的公開簽名直接回傳 `Map<String, Object?>`，不洩漏
+  internal typedef。
+
 ## 0.3.0 — 2026-08-21
 
 Kallopis 現在可以把 JSON 設定檔解碼成完整的 `KlpVisualStyle`，並以同一個 theme
