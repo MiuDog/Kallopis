@@ -31,6 +31,24 @@ KlpControlGeometry decodeControlGeometry(
   rejectUnknown(json, _keys, path);
   double read(String key, double fallback) =>
       readNonNegativeDouble(json, key, path, fallback);
+  final textFieldMinLines = readPositiveInt(
+    json,
+    'textFieldMinLines',
+    path,
+    base.textFieldMinLines,
+  );
+  final textFieldMaxLines = readPositiveInt(
+    json,
+    'textFieldMaxLines',
+    path,
+    base.textFieldMaxLines,
+  );
+  if (textFieldMinLines > textFieldMaxLines) {
+    jsonError(
+      '$path.textFieldMaxLines',
+      'must be greater than or equal to $path.textFieldMinLines',
+    );
+  }
   return KlpControlGeometry(
     fieldHeight: read('fieldHeight', base.fieldHeight),
     selectionControl: read('selectionControl', base.selectionControl),
@@ -62,18 +80,8 @@ KlpControlGeometry decodeControlGeometry(
       'textFieldLineHeightFactor',
       base.textFieldLineHeightFactor,
     ),
-    textFieldMinLines: readPositiveInt(
-      json,
-      'textFieldMinLines',
-      path,
-      base.textFieldMinLines,
-    ),
-    textFieldMaxLines: readPositiveInt(
-      json,
-      'textFieldMaxLines',
-      path,
-      base.textFieldMaxLines,
-    ),
+    textFieldMinLines: textFieldMinLines,
+    textFieldMaxLines: textFieldMaxLines,
     fileExplorerRowHeightAdjustment: read(
       'fileExplorerRowHeightAdjustment',
       base.fileExplorerRowHeightAdjustment,
