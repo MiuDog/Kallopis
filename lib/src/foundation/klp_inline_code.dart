@@ -22,7 +22,7 @@ class KlpInlineCode extends StatelessWidget {
   /// 背景填色。預設為 `context.klp.color.surfaceInset`。
   final Color? backgroundColor;
 
-  /// 字體大小。預設為 `context.klp.type.body` (16px)。
+  /// 字體大小。預設為 `context.klp.type.sub` (14px)。
   final double? fontSize;
 
   /// 圓角半徑。預設為 `context.klp.shape.control`。
@@ -32,7 +32,7 @@ class KlpInlineCode extends StatelessWidget {
   Widget build(BuildContext context) {
     final klp = context.klp;
     final effectiveRadius = radius ?? klp.shape.control;
-    final effectiveFontSize = fontSize ?? klp.type.body;
+    final effectiveFontSize = fontSize ?? klp.type.sub;
 
     return Container(
       padding: EdgeInsets.symmetric(

@@ -19,38 +19,62 @@ abstract final class KlpPalette {
   // 中間層 (400-600): 平滑過渡區間
   // 深色端 (700-950): 完全收斂回冷藍灰 (H: 238°~249°, C: 0.003~0.009)
 
-  /// oklch(0.970 0.006 87.9)
-  static const Color ink50 = Color(0xFFF7F5F1);
+  /// oklch(0.985 0.004 88.0)
+  static const Color ink50 = Color(0xFFFBFAF7);
 
-  /// oklch(0.930 0.009 87.8)
-  static const Color ink100 = Color(0xFFEAE8E1);
+  /// oklch(0.935 0.006 86.9)
+  static const Color ink100 = Color(0xFFEBE9E5);
 
-  /// oklch(0.860 0.015 80.7)
-  static const Color ink200 = Color(0xFFD6D0C6);
+  /// oklch(0.884 0.008 85.8)
+  static const Color ink150 = Color(0xFFDBD9D3);
 
-  /// oklch(0.770 0.018 84.1)
-  static const Color ink300 = Color(0xFFBAB4A8);
+  /// oklch(0.834 0.011 84.7)
+  static const Color ink200 = Color(0xFFCCC8C1);
 
-  /// oklch(0.680 0.014 82.0)
-  static const Color ink400 = Color(0xFF9D988F);
+  /// oklch(0.784 0.013 83.6)
+  static const Color ink250 = Color(0xFFBCB8B0);
 
-  /// oklch(0.580 0.008 78.6)
-  static const Color ink500 = Color(0xFF7D7A75);
+  /// oklch(0.734 0.015 82.4)
+  static const Color ink300 = Color(0xFFADA89E);
 
-  /// oklch(0.480 0.002 70.2)
-  static const Color ink600 = Color(0xFF5E5D5C);
+  /// oklch(0.683 0.015 80.9)
+  static const Color ink350 = Color(0xFF9E998F);
 
-  /// oklch(0.380 0.002 267.3)
-  static const Color ink700 = Color(0xFF424244);
+  /// oklch(0.633 0.012 79.0)
+  static const Color ink400 = Color(0xFF8E8982);
 
-  /// oklch(0.280 0.004 264.5)
-  static const Color ink800 = Color(0xFF28292B);
+  /// oklch(0.583 0.010 77.2)
+  static const Color ink450 = Color(0xFF7F7A75);
 
-  /// oklch(0.180 0.004 264.5)
-  static const Color ink900 = Color(0xFF111213);
+  /// oklch(0.532 0.008 75.3)
+  static const Color ink500 = Color(0xFF6F6C67);
 
-  /// oklch(0.120 0.004 264.5)
-  static const Color ink950 = Color(0xFF050607);
+  /// oklch(0.482 0.006 73.5)
+  static const Color ink550 = Color(0xFF605E5B);
+
+  /// oklch(0.432 0.003 221.2)
+  static const Color ink600 = Color(0xFF4F5151);
+
+  /// oklch(0.382 0.003 227.4)
+  static const Color ink650 = Color(0xFF414344);
+
+  /// oklch(0.331 0.004 233.6)
+  static const Color ink700 = Color(0xFF343637);
+
+  /// oklch(0.281 0.004 239.8)
+  static const Color ink750 = Color(0xFF27292B);
+
+  /// oklch(0.231 0.004 246.0)
+  static const Color ink800 = Color(0xFF1C1D1F);
+
+  /// oklch(0.181 0.004 252.1)
+  static const Color ink850 = Color(0xFF101214);
+
+  /// oklch(0.130 0.005 258.3)
+  static const Color ink900 = Color(0xFF060709);
+
+  /// oklch(0.080 0.005 264.5)
+  static const Color ink950 = Color(0xFF010202);
 
   // ── 語意色 ──────────────────────────────────────────────────────────────
   // 只用於狀態，不參與視覺層級。
@@ -82,7 +106,7 @@ abstract final class KlpPalette {
   // **這裡不得出現梯以外的色相。** 每一個值都是某一階加上 alpha，或是純粹的「無色」。
 
   /// 遮罩。ink950 @ 60%。
-  static const Color scrim = Color(0x99050607);
+  static const Color scrim = Color(0x99010202);
 
   /// 邊框預設透明：結構表面靠 tone 分層，不靠描邊。
   static const Color line = Color(0x00000000);

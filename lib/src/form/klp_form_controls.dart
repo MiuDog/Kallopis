@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 
-import '../foundation/klp_palette.dart';
 import '../controls/klp_text_field.dart';
 import '../foundation/klp_icons.dart';
-import '../foundation/klp_metrics.dart';
 import '../surface/klp_stroke.dart';
 import '../theme/klp_theme.dart';
 import '../typography/klp_text.dart';
@@ -171,6 +169,7 @@ class _KlpPasswordFieldState extends State<KlpPasswordField> {
               fillColor: KlpFieldStyle.inputFill(
                 tokens,
                 error: widget.error != null,
+                surface: klp.surface,
               ),
               border: KlpFieldStyle.borderFor(klp.shape),
               enabledBorder: KlpFieldStyle.borderFor(klp.shape),
@@ -629,11 +628,11 @@ class _KlpSelectFieldState extends State<KlpSelectField> {
                 ? KlpStrokeState.selected
                 : KlpStrokeState.rest,
             child: Container(
-              height: KlpFormMetrics.fieldHeight,
+              height: context.klp.geometry.control.fieldHeight,
               alignment: Alignment.centerLeft,
               padding: EdgeInsets.symmetric(horizontal: context.klp.space.base),
               decoration: BoxDecoration(
-                color: KlpPalette.transparent,
+                color: context.klpColors.clear,
                 borderRadius: BorderRadius.circular(context.klp.shape.control),
               ),
               child: KlpText(widget.valueLabel),
@@ -660,8 +659,8 @@ class _KlpSelectFieldState extends State<KlpSelectField> {
                             setState(() => _expanded = false);
                           },
                     child: Container(
-                      constraints: const BoxConstraints(
-                        minHeight: KlpFormMetrics.fieldHeight,
+                      constraints: BoxConstraints(
+                        minHeight: context.klp.geometry.control.fieldHeight,
                       ),
                       alignment: Alignment.centerLeft,
                       padding: EdgeInsets.symmetric(

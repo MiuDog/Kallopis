@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../l10n/klp_localizations.dart';
 import '../routing/klp_router.dart';
+import '../shell/klp_window_header.dart';
 import '../theme/klp_theme.dart';
 import '../theme/klp_visual_style.dart';
 
@@ -74,11 +75,22 @@ abstract class KlpAppController {
 class KlpApp extends StatefulWidget {
   const KlpApp({
     super.key,
-    this.style = KlpVisualStyle.modern,
+    this.style = KlpVisualStyle.defaultStyle,
     this.initialThemeMode = ThemeMode.light,
     this.router,
     this.home,
     this.title = '',
+    this.appIcon,
+    this.showWindowHeader = true,
+    this.headerActions,
+    this.windowHeader,
+    this.onMinimize,
+    this.onToggleMaximize,
+    this.onClose,
+    this.isMaximized = false,
+    this.showWindowControls = true,
+    this.minWidth,
+    this.minHeight,
     this.locale,
     this.localizationsDelegates,
     this.supportedLocales = const <Locale>[Locale('en', 'US')],
@@ -86,7 +98,7 @@ class KlpApp extends StatefulWidget {
     this.debugShowCheckedModeBanner = true,
   });
 
-  /// 除色彩外的每一層視覺風格。預設值是庫出貨的唯一一套 [KlpVisualStyle.modern]。
+  /// 除色彩外的每一層視覺風格。預設值是庫出貨的唯一一套 [KlpVisualStyle.defaultStyle]。
   final KlpVisualStyle style;
 
   /// 啟動時的明暗狀態。
@@ -99,6 +111,40 @@ class KlpApp extends StatefulWidget {
   final Widget? home;
 
   final String title;
+
+  /// 應用程式圖示（展示在視窗標題列）。
+  final Widget? appIcon;
+
+  /// 是否顯示自帶的頂部視窗標題列（預設為 true）。
+  final bool showWindowHeader;
+
+  /// 標題列頂部自訂快捷按鈕。
+  final List<Widget>? headerActions;
+
+  /// 完全自訂的視窗標題列 Widget（提供時覆蓋預設產生的 [KlpWindowHeader]）。
+  final Widget? windowHeader;
+
+  /// 視窗最小化回呼。
+  final VoidCallback? onMinimize;
+
+  /// 視窗最大化／還原回呼。
+  final VoidCallback? onToggleMaximize;
+
+  /// 視窗關閉回呼。
+  final VoidCallback? onClose;
+
+  /// 視窗是否處於最大化狀態。
+  final bool isMaximized;
+
+  /// 是否在標題列展示視窗管理控制鈕。
+  final bool showWindowControls;
+
+  /// 視窗最小允許寬度（邏輯像素）。
+  final double? minWidth;
+
+  /// 視窗最小允許高度（邏輯像素）。
+  final double? minHeight;
+
   final Locale? locale;
 
   /// 額外的 localization delegate。[KlpApp] 一律自動掛上內建預設值的
@@ -129,6 +175,29 @@ class KlpApp extends StatefulWidget {
 
 class _KlpAppState extends State<KlpApp> implements KlpAppController {
   late ThemeMode _themeMode = widget.initialThemeMode;
+
+  @override
+  void initState() {
+    super.initState();
+    if (widget.minWidth != null || widget.minHeight != null) {
+      KlpWindowAction.setMinSize(
+        minWidth: widget.minWidth,
+        minHeight: widget.minHeight,
+      );
+    }
+  }
+
+  @override
+  void didUpdateWidget(covariant KlpApp oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    if (widget.minWidth != oldWidget.minWidth ||
+        widget.minHeight != oldWidget.minHeight) {
+      KlpWindowAction.setMinSize(
+        minWidth: widget.minWidth,
+        minHeight: widget.minHeight,
+      );
+    }
+  }
 
   @override
   ThemeMode get themeMode => _themeMode;
@@ -169,6 +238,28 @@ class _KlpAppState extends State<KlpApp> implements KlpAppController {
       content = KlpRouterScope(
         router: router,
         child: content ?? const KlpRouterOutlet(),
+      );
+    }
+
+    if (widget.showWindowHeader && content != null) {
+      final header =
+          widget.windowHeader ??
+          KlpWindowHeader(
+            appIcon: widget.appIcon,
+            titleText: widget.title.isNotEmpty ? widget.title : null,
+            actions: widget.headerActions,
+            onMinimize: widget.onMinimize,
+            onToggleMaximize: widget.onToggleMaximize,
+            onClose: widget.onClose,
+            isMaximized: widget.isMaximized,
+            showWindowControls: widget.showWindowControls,
+          );
+      content = Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          header,
+          Expanded(child: content),
+        ],
       );
     }
 

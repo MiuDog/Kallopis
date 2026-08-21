@@ -2,14 +2,13 @@ import 'dart:math' as math;
 
 import 'package:flutter/material.dart';
 
-import '../foundation/klp_palette.dart';
 import '../controls/klp_toggle.dart';
 import '../foundation/klp_icon.dart';
 import '../foundation/klp_icons.dart';
-import '../foundation/klp_metrics.dart';
 import '../surface/klp_dashed_border.dart';
 import '../surface/klp_divider.dart';
 import '../surface/klp_surface.dart';
+import '../theme/klp_geometry_theme.dart';
 import '../theme/klp_theme.dart';
 import '../typography/klp_text.dart';
 
@@ -20,16 +19,19 @@ abstract final class KlpMenuStyle {
 }
 
 abstract final class _KlpMenuMetrics {
-  static const double width = KlpSize.menu;
-  static const double headerHeight = KlpSize.menuHeader;
-  static const double itemHeight = KlpSize.menuItem;
+  static double width(BuildContext context) =>
+      context.klp.geometry.layout.menuWidth;
+  static double headerHeight(BuildContext context) =>
+      context.klp.geometry.layout.menuHeaderHeight;
   static double horizontalPadding(BuildContext context) =>
-      context.klp.space.compact;
+      context.klp.menuPadding;
+  static double itemHeight(BuildContext context) => context.klp.menuItemHeight;
   static double iconSize(BuildContext context) => context.klp.space.iconSmall;
   static double iconGap(BuildContext context) => context.klp.space.compact;
-  static const double iconOpticalOffsetY = 1;
+  static double iconOpticalOffsetY(BuildContext context) =>
+      context.klp.geometry.optical.menuIconOffsetY;
   // 這三項來自 theme，因此不能是編譯期常數。
-  static double panelRadius(BuildContext context) => context.klp.shape.card;
+  static double panelRadius(BuildContext context) => context.klp.menuRadius;
   static double menuBlurRadius(BuildContext context) =>
       context.klp.surface.overlayBlur;
   static double menuOffsetY(BuildContext context) =>
@@ -80,7 +82,10 @@ class KlpMenuItemData {
 /// [resolvePosition]／[resolveSubmenuPosition] 都會把結果夾在 viewport 內，
 /// 避免選單超出螢幕邊界。
 abstract final class KlpMenuLayout {
-  static double get width => _KlpMenuMetrics.width;
+  @Deprecated('Use widthOf(context) so JSON geometry is applied.')
+  static double get width => KlpGeometryTheme.standard.layout.menuWidth;
+
+  static double widthOf(BuildContext context) => _KlpMenuMetrics.width(context);
 
   static double estimatedHeight({
     required BuildContext context,
@@ -88,9 +93,9 @@ abstract final class KlpMenuLayout {
     int separatorCount = 0,
   }) {
     return context.klp.space.tight * 2 +
-        _KlpMenuMetrics.headerHeight +
+        _KlpMenuMetrics.headerHeight(context) +
         context.klp.space.tight +
-        itemCount * _KlpMenuMetrics.itemHeight +
+        itemCount * _KlpMenuMetrics.itemHeight(context) +
         separatorCount * (context.klp.shape.stroke + context.klp.space.compact);
   }
 
@@ -109,7 +114,9 @@ abstract final class KlpMenuLayout {
     final left = anchor.dx
         .clamp(
           context.klp.space.compact,
-          viewport.width - _KlpMenuMetrics.width - context.klp.space.compact,
+          viewport.width -
+              _KlpMenuMetrics.width(context) -
+              context.klp.space.compact,
         )
         .toDouble();
     final top = anchor.dy
@@ -186,7 +193,7 @@ class KlpMenu extends StatelessWidget {
         ],
       ),
       child: SizedBox(
-        width: _KlpMenuMetrics.width,
+        width: _KlpMenuMetrics.width(context),
         child: KlpSurface(
           tone: KlpSurfaceTone.overlay,
           radius: _KlpMenuMetrics.panelRadius(context),
@@ -196,7 +203,7 @@ class KlpMenu extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
               SizedBox(
-                height: _KlpMenuMetrics.headerHeight,
+                height: _KlpMenuMetrics.headerHeight(context),
                 child: Padding(
                   padding: EdgeInsets.symmetric(
                     horizontal: _KlpMenuMetrics.horizontalPadding(context),
@@ -264,11 +271,9 @@ class _KlpMenuItemState extends State<KlpMenuItem> {
         : tokens.textMuted;
 
     Widget item = SizedBox(
-      height: _KlpMenuMetrics.itemHeight,
+      height: _KlpMenuMetrics.itemHeight(context),
       child: Material(
-        color: data.selected
-            ? tokens.selectionBackground
-            : KlpPalette.transparent,
+        color: data.selected ? tokens.selectionBackground : tokens.clear,
         borderRadius: BorderRadius.circular(context.klp.shape.control),
         child: InkWell(
           onTap: data.enabled ? data.onPressed : null,
@@ -276,7 +281,7 @@ class _KlpMenuItemState extends State<KlpMenuItem> {
               ? (value) => setState(() => _hovered = value)
               : null,
           onFocusChange: (value) => setState(() => _focused = value),
-          overlayColor: const WidgetStatePropertyAll(KlpPalette.transparent),
+          overlayColor: WidgetStatePropertyAll(tokens.clear),
           borderRadius: BorderRadius.circular(context.klp.shape.control),
           child: Padding(
             padding: EdgeInsets.symmetric(
@@ -286,7 +291,10 @@ class _KlpMenuItemState extends State<KlpMenuItem> {
               children: [
                 if (data.icon != null) ...[
                   Transform.translate(
-                    offset: const Offset(0, _KlpMenuMetrics.iconOpticalOffsetY),
+                    offset: Offset(
+                      0,
+                      _KlpMenuMetrics.iconOpticalOffsetY(context),
+                    ),
                     child: KlpIcon(
                       data.icon!,
                       size: _KlpMenuMetrics.iconSize(context),

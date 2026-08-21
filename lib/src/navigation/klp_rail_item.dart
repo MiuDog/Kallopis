@@ -4,7 +4,6 @@ import '../foundation/klp_icon.dart';
 import '../overlay/klp_tooltip.dart';
 import '../surface/klp_dashed_border.dart';
 import '../theme/klp_theme.dart';
-import '../foundation/klp_palette.dart';
 
 class KlpRailItem extends StatefulWidget {
   const KlpRailItem({
@@ -54,9 +53,7 @@ class _KlpRailItemState extends State<KlpRailItem> {
     final tokens = context.klpColors;
     final isHighlighted = _hovered || _focused || widget.selected;
     Widget item = Material(
-      color: widget.selected
-          ? tokens.selectionBackground
-          : KlpPalette.transparent,
+      color: widget.selected ? tokens.selectionBackground : tokens.clear,
       borderRadius: BorderRadius.circular(context.klp.shape.card),
       child: InkWell(
         onTap: widget.onPressed,
@@ -79,8 +76,8 @@ class _KlpRailItemState extends State<KlpRailItem> {
               ),
               if (widget.badge != null)
                 Positioned(
-                  top: 2,
-                  right: 2,
+                  top: context.klp.geometry.optical.railBadgeInset,
+                  right: context.klp.geometry.optical.railBadgeInset,
                   child: Container(
                     width: context.klp.space.indicatorDotLarge,
                     height: context.klp.space.indicatorDotLarge,

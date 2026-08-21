@@ -30,7 +30,7 @@ void main() {
         debugShowCheckedModeBanner: false,
         theme: buildKlpTheme(
           Brightness.light,
-          style: style ?? KlpVisualStyle.modern,
+          style: style ?? KlpVisualStyle.defaultStyle,
         ),
         home: Center(child: child),
       ),
@@ -143,7 +143,7 @@ void main() {
       ),
     );
 
-    for (final style in [KlpVisualStyle.modern, contrastingStyle]) {
+    for (final style in [KlpVisualStyle.defaultStyle, contrastingStyle]) {
       testWidgets('${style.name} 風格下不丟例外', (tester) async {
         await pump(tester, workbench(), style: style);
         await tester.pumpAndSettle();
@@ -155,7 +155,7 @@ void main() {
   group('客製面對消費者可用', () {
     testWidgets('只覆寫色彩層，其餘沿用現成風格', (tester) async {
       const brandAccent = Color(0xFF3355FF);
-      final brand = KlpVisualStyle.modern.copyWith(
+      final brand = KlpVisualStyle.defaultStyle.copyWith(
         colors: KlpThemeData.light.copyWith(
           accent: brandAccent,
           interaction: brandAccent,
@@ -220,14 +220,14 @@ void main() {
             return const KlpText('x');
           },
         ),
-        style: KlpVisualStyle.modern.copyWith(colors: custom),
+        style: KlpVisualStyle.defaultStyle.copyWith(colors: custom),
       );
 
       expect(tokens.color.app, KlpPalette.ink950);
     });
   });
 
-  test('公開 barrel 匯出 lib/src 下的每一個檔案', () {
+  test('公開 barrel 匯出 lib/src 下的每一個公開檔案', () {
     // 少匯出一個檔案不會有任何錯誤訊息，只會讓消費者拿不到某個型別。
     final barrel = File('lib/kallopis.dart').readAsStringSync();
     final missing = Directory('lib/src')
@@ -235,6 +235,7 @@ void main() {
         .whereType<File>()
         .map((f) => f.path.replaceAll(r'\', '/'))
         .where((p) => p.endsWith('.dart'))
+        .where((p) => !p.contains('/internal/'))
         .map((p) => p.replaceFirst('lib/', ''))
         .where((p) => !barrel.contains("export '$p';"))
         .toList();

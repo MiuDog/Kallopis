@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 
-import '../foundation/klp_palette.dart';
-import '../foundation/klp_metrics.dart';
 import '../theme/klp_theme.dart';
 import '../typography/klp_text.dart';
 
@@ -32,14 +30,14 @@ class KlpToggle extends StatelessWidget {
           label: label,
           toggled: value,
           child: Material(
-            color: KlpPalette.transparent,
-            borderRadius: BorderRadius.circular(context.klp.shape.sm * 2),
+            color: context.klpColors.clear,
+            borderRadius: BorderRadius.circular(context.klp.shape.toggleTrack),
             child: InkWell(
               onTap: enabled ? () => onChanged!(!value) : null,
-              borderRadius: BorderRadius.circular(context.klp.shape.sm * 2),
-              overlayColor: const WidgetStatePropertyAll(
-                KlpPalette.transparent,
+              borderRadius: BorderRadius.circular(
+                context.klp.shape.toggleTrack,
               ),
+              overlayColor: WidgetStatePropertyAll(context.klpColors.clear),
               child: KlpToggleIndicator(value: value, enabled: enabled),
             ),
           ),
@@ -82,15 +80,15 @@ class KlpToggleIndicator extends StatelessWidget {
 
     return ExcludeSemantics(
       child: SizedBox(
-        width: KlpFormMetrics.toggleWidth,
-        height: KlpFormMetrics.toggleHeight,
+        width: context.klp.geometry.control.toggleWidth,
+        height: context.klp.geometry.control.toggleHeight,
         child: DecoratedBox(
           decoration: BoxDecoration(
             color: trackColor,
-            borderRadius: BorderRadius.circular(context.klp.shape.sm * 2),
+            borderRadius: BorderRadius.circular(context.klp.shape.toggleTrack),
           ),
           child: Padding(
-            padding: const EdgeInsets.all(KlpFormMetrics.toggleInset),
+            padding: EdgeInsets.all(context.klp.geometry.control.toggleInset),
             child: Align(
               alignment: value ? Alignment.centerRight : Alignment.centerLeft,
               child: DecoratedBox(
@@ -98,8 +96,8 @@ class KlpToggleIndicator extends StatelessWidget {
                   color: thumbColor,
                   borderRadius: BorderRadius.circular(context.klp.shape.sm),
                 ),
-                child: const SizedBox.square(
-                  dimension: KlpFormMetrics.toggleThumb,
+                child: SizedBox.square(
+                  dimension: context.klp.geometry.control.toggleThumb,
                 ),
               ),
             ),

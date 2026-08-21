@@ -41,6 +41,7 @@ class KlpBadge extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final tokens = context.klpColors;
+    final klp = context.klp;
     final toneColor = tone == KlpFeedbackTone.neutral
         ? tokens.textMuted
         : tone.color(tokens);
@@ -68,14 +69,14 @@ class KlpBadge extends StatelessWidget {
 
     return Container(
       padding: EdgeInsets.symmetric(
-        horizontal: context.klp.space.compact,
-        vertical: context.klp.space.tight,
+        horizontal: klp.badgePaddingX,
+        vertical: klp.space.tight,
       ),
       decoration: BoxDecoration(
         color: bgColor,
-        borderRadius: BorderRadius.circular(context.klp.shape.control),
+        borderRadius: BorderRadius.circular(klp.badgeRadius),
         border: borderColor != null
-            ? Border.all(color: borderColor, width: context.klp.shape.hairline)
+            ? Border.all(color: borderColor, width: klp.shape.hairline)
             : null,
       ),
       child: Row(
@@ -83,14 +84,14 @@ class KlpBadge extends StatelessWidget {
         children: [
           if (dot) ...[
             Container(
-              width: context.klp.space.indicatorDot,
-              height: context.klp.space.indicatorDot,
+              width: klp.space.indicatorDot,
+              height: klp.space.indicatorDot,
               decoration: BoxDecoration(
                 color: toneColor,
                 shape: BoxShape.circle,
               ),
             ),
-            SizedBox(width: context.klp.space.tight),
+            SizedBox(width: klp.space.tight),
           ],
           Flexible(
             child: KlpText(

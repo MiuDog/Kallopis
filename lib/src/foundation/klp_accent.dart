@@ -7,7 +7,7 @@ import 'package:flutter/material.dart';
 /// 掉出 AA，而那不會有任何徵兆：顏色看起來還是好的，只是讀不清楚。
 enum KlpAccent {
   // 直接引用色梯，不寫死值——寫死的值會在色梯調整時靜默落後，而畫面看起來仍然正常。
-  ink(light: Color(0xFF111213), dark: Color(0xFFF7F5F1)),
+  ink(light: Color(0xFF060709), dark: Color(0xFFFBFAF7)),
   terracotta(light: Color(0xFF92563C), dark: Color(0xFFC18468)),
   ochre(light: Color(0xFF7D612F), dark: Color(0xFFAE8D55)),
   olive(light: Color(0xFF5E6A39), dark: Color(0xFF8A995C)),

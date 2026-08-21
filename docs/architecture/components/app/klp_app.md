@@ -23,18 +23,25 @@ flowchart TD
   root --> n1
   n2["KlpRouterOutlet"]:::reference
   root --> n2
-  n3["child / slot"]:::slot
+  n3["KlpWindowHeader"]:::reference
   root --> n3
+  n4["Column"]
+  root --> n4
+  n5["Expanded"]
+  n4 --> n5
+  n6["child / slot"]:::slot
+  n5 --> n6
 ```
 
 ## 外部元件引用
 
 - [`KlpRouterOutlet`](../routing/klp_router_outlet.md) — `routing — 分發`
 - [`KlpRouterScope`](../routing/klp_router_scope.md) — `routing — 分發`
+- [`KlpWindowHeader`](../shell/klp_window_header.md) — `shell — 應用外殼`
 
 ## 程式碼證據
 
-- 檔案路徑：[`lib/src/app/klp_app.dart`](../../../../lib/src/app/klp_app.dart#L73)
+- 檔案路徑：[`lib/src/app/klp_app.dart`](../../../../lib/src/app/klp_app.dart#L75)
 - 宣告型態：`StatefulWidget`
 
 ## 閱讀說明

@@ -482,7 +482,7 @@ final dataDisplayPage = CatalogPageData(
         return Wrap(
           spacing: klp.space.comfortable,
           children: const [
-            KlpStatusIndicator(label: 'RUNNING', kind: KlpStatusKind.splitDot),
+            KlpStatusIndicator(label: 'RUNNING', kind: KlpStatusKind.running),
             KlpStatusIndicator(label: 'SUCCESS', kind: KlpStatusKind.check),
             KlpStatusIndicator(label: 'FAILURE', kind: KlpStatusKind.cross),
             KlpStatusIndicator(label: 'WAITING', kind: KlpStatusKind.waiting),
@@ -1038,12 +1038,59 @@ final layoutInteractionPage = CatalogPageData(
     ),
     Specimen(
       name: 'KlpWindowControls',
-      note: '最小化／最大化／關閉。',
-      build: (context) => KlpWindowControls(
-        onMinimize: () {},
-        onToggleMaximize: () {},
-        onClose: () {},
-      ),
+      note: '最小化／最大化／視窗化（向下還原）／關閉。支援 isMaximized 切換還原與最大化圖示。',
+      build: (context) {
+        var isMaximized = false;
+        return StatefulBuilder(
+          builder: (context, setState) => Row(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              KlpWindowControls(
+                isMaximized: isMaximized,
+                onMinimize: () {},
+                onToggleMaximize: () =>
+                    setState(() => isMaximized = !isMaximized),
+                onClose: () {},
+              ),
+              const SizedBox(width: 32),
+              KlpWindowControls(
+                isMaximized: true,
+                onMinimize: () {},
+                onToggleMaximize: () {},
+                onClose: () {},
+              ),
+            ],
+          ),
+        );
+      },
+    ),
+    Specimen(
+      name: 'KlpWindowHeader',
+      note: '自帶視窗標題列（支援 Windows 左側圖示/標題與 macOS 置中標題/左側控制鈕）。',
+      build: (context) {
+        final klp = context.klp;
+        return Column(
+          children: [
+            KlpWindowHeader(
+              titleText: 'Planist (Windows)',
+              platform: TargetPlatform.windows,
+              appIcon: const FlutterLogo(size: 14.0),
+              onMinimize: () {},
+              onToggleMaximize: () {},
+              onClose: () {},
+            ),
+            SizedBox(height: klp.space.compact),
+            KlpWindowHeader(
+              titleText: 'Planist (macOS)',
+              platform: TargetPlatform.macOS,
+              appIcon: const FlutterLogo(size: 14.0),
+              onMinimize: () {},
+              onToggleMaximize: () {},
+              onClose: () {},
+            ),
+          ],
+        );
+      },
     ),
     Specimen(
       name: 'KlpPanelHeader',
@@ -1451,6 +1498,189 @@ final viewStatesPage = CatalogPageData(
           KlpToast(title: '第一則'),
           KlpToast(title: '第二則', tone: KlpFeedbackTone.warning),
         ],
+      ),
+    ),
+  ],
+);
+
+final fileExplorerPage = CatalogPageData(
+  label: 'File Explorer',
+  title: '檔案總管',
+  description: '樹狀檔案導航結構，支援分類折疊、資料夾樹狀層級與檔案選取。',
+  icon: KlpIcons.folder,
+  specimens: [
+    Specimen(
+      name: 'KlpFileExplorer',
+      note: '檔案總管／筆記導航元件（含分類折疊、資料夾樹狀展開與檔案選取）。',
+      build: (context) {
+        var selectedId = 'adr-0001';
+        return StatefulBuilder(
+          builder: (context, setState) => SizedBox(
+            width: 280,
+            child: KlpFileExplorer(
+              selectedId: selectedId,
+              onItemSelected: (id) => setState(() => selectedId = id),
+              sections: const [
+                KlpFileExplorerSection(
+                  id: 'pinned',
+                  title: '釘選',
+                  items: [
+                    KlpFileExplorerItem(
+                      id: 'pin-0001',
+                      label: 'ADR-0001 : Page-first 的 P...',
+                    ),
+                    KlpFileExplorerItem(
+                      id: 'pin-0002',
+                      label: 'ADR-0002 : 保留 Project As...',
+                    ),
+                  ],
+                ),
+                KlpFileExplorerSection(
+                  id: 'notes',
+                  title: '筆記',
+                  items: [
+                    KlpFileExplorerItem(
+                      id: 'spec-folder',
+                      label: '規格文件 (Spec)',
+                      children: [
+                        KlpFileExplorerItem(
+                          id: 'adr-0001',
+                          label: 'ADR-0001 : Page-first 的 P...',
+                        ),
+                        KlpFileExplorerItem(
+                          id: 'adr-0002',
+                          label: 'ADR-0002 : 保留 Project As...',
+                        ),
+                        KlpFileExplorerItem(
+                          id: 'adr-0003',
+                          label: 'ADR-0003 : 團隊導向 Project...',
+                        ),
+                      ],
+                    ),
+                    KlpFileExplorerItem(
+                      id: 'adr-0004',
+                      label: 'ADR-0004 : Live Page 定義...',
+                    ),
+                    KlpFileExplorerItem(
+                      id: 'adr-0005',
+                      label: 'ADR-0005 : 背景與無邊界區塊...',
+                    ),
+                    KlpFileExplorerItem(
+                      id: 'adr-0006',
+                      label: 'ADR-0006 : 分層色塊與終端機...',
+                    ),
+                    KlpFileExplorerItem(
+                      id: 'adr-0007',
+                      label: 'ADR-0007 : 產品入口與本機狀...',
+                    ),
+                    KlpFileExplorerItem(
+                      id: 'adr-0008',
+                      label: 'ADR-0008 : 以分流守則治理 AI...',
+                    ),
+                    KlpFileExplorerItem(
+                      id: 'adr-0009',
+                      label: 'ADR-0009 : Plan Document ...',
+                    ),
+                    KlpFileExplorerItem(
+                      id: 'adr-0010',
+                      label: 'ADR-0010 : Plan Document ...',
+                    ),
+                    KlpFileExplorerItem(
+                      id: 'adr-0011',
+                      label: 'ADR-0011 : Plan Composabl...',
+                    ),
+                    KlpFileExplorerItem(
+                      id: 'adr-0012',
+                      label: 'ADR-0012 : Plan Page Meta...',
+                    ),
+                    KlpFileExplorerItem(
+                      id: 'adr-0013',
+                      label: 'ADR-0013 : Primary Sideba...',
+                    ),
+                    KlpFileExplorerItem(
+                      id: 'adr-0014',
+                      label: 'ADR-0014 : 選取色與自訂主題...',
+                    ),
+                    KlpFileExplorerItem(
+                      id: 'adr-0015',
+                      label: 'ADR-0015 : 中央專案面板與跨...',
+                    ),
+                    KlpFileExplorerItem(
+                      id: 'adr-0016',
+                      label: 'ADR-0016 : Plan Markdown ...',
+                    ),
+                    KlpFileExplorerItem(
+                      id: 'adr-0017',
+                      label: 'ADR-0017 : Plan Markdown ...',
+                    ),
+                    KlpFileExplorerItem(
+                      id: 'adr-0018',
+                      label: 'ADR-0018 : 專案資源統一由側...',
+                    ),
+                  ],
+                ),
+              ],
+            ),
+          ),
+        );
+      },
+    ),
+    Specimen(
+      name: 'KlpFileExplorerSectionView',
+      note: '檔案瀏覽器分類分組視圖。',
+      build: (context) => SizedBox(
+        width: 280,
+        child: KlpFileExplorerSectionView(
+          section: const KlpFileExplorerSection(
+            id: 'sample',
+            title: '分類',
+            items: [KlpFileExplorerItem(id: '1', label: 'README.md')],
+          ),
+          isExpanded: true,
+          expandedItemIds: const {},
+          selectedId: '1',
+          onToggle: () {},
+          onItemToggle: (_) {},
+          onItemSelected: (_) {},
+          indent: 16.0,
+        ),
+      ),
+    ),
+    Specimen(
+      name: 'KlpFileExplorerFolderView',
+      note: '檔案瀏覽器可折疊資料夾節點視圖。',
+      build: (context) => SizedBox(
+        width: 280,
+        child: KlpFileExplorerFolderView(
+          item: const KlpFileExplorerItem(
+            id: 'docs',
+            label: '文件目錄',
+            children: [KlpFileExplorerItem(id: 'doc-1', label: '指南.md')],
+          ),
+          level: 0,
+          isExpanded: true,
+          isSelected: false,
+          onToggle: () {},
+          onTap: () {},
+          indent: 16.0,
+        ),
+      ),
+    ),
+    Specimen(
+      name: 'KlpFileExplorerItemView',
+      note: '檔案瀏覽器一般檔案項目視圖。',
+      build: (context) => SizedBox(
+        width: 280,
+        child: KlpFileExplorerItemView(
+          item: const KlpFileExplorerItem(
+            id: 'file-1',
+            label: 'ADR-0001 : Page-first 的 P...',
+          ),
+          level: 0,
+          isSelected: true,
+          onTap: () {},
+          indent: 16.0,
+        ),
       ),
     ),
   ],

@@ -168,7 +168,7 @@ class _KlpFilterChip extends StatelessWidget {
                 style: TextStyle(
                   fontFamily: klp.type.codeFamily,
                   fontFamilyFallback: klp.type.fallbackFor(klp.type.codeFamily),
-                  fontWeight: FontWeight.w700,
+                  fontWeight: context.klp.type.bold,
                   fontSize: klp.type.caption,
                   color: selected ? tokens.onSelection : tokens.text,
                 ),

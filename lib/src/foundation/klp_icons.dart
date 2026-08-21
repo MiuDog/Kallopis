@@ -36,6 +36,7 @@ abstract final class KlpIcons {
   static const String minus = 'assets/icons/ui_oval/minus-svgrepo-com.svg';
   static const String maximize =
       'assets/icons/ui_oval/maximize-02-svgrepo-com.svg';
+  static const String restore = 'assets/icons/ui_oval/restore-svgrepo-com.svg';
   static const String keyboard =
       'assets/icons/ui_oval/keyboard-svgrepo-com.svg';
   static const String menu =
@@ -59,6 +60,9 @@ abstract final class KlpIcons {
   static const String circle = 'assets/icons/ui_oval/circle-svgrepo-com.svg';
   static const String refresh =
       'assets/icons/ui_oval/refresh-cw-01-svgrepo-com.svg';
+  static const String loader = 'assets/icons/ui_oval/loader-01-svgrepo-com.svg';
+  static const String timer = 'assets/icons/ui_oval/timer-svgrepo-com.svg';
+  static const String clock = 'assets/icons/ui_oval/clock-svgrepo-com.svg';
   static const String splitCircle =
       'assets/icons/ui_oval/split-circle-svgrepo-com.svg';
   static const String panelLeft =

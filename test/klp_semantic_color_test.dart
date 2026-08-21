@@ -70,7 +70,7 @@ void main() {
   });
 
   test('兩側 Pane 與中央 Stage 只用 surface 明度建立層級', () {
-    expect(KlpThemeData.light.app, KlpPalette.ink200);
+    expect(KlpThemeData.light.app, KlpPalette.ink150);
     expect(KlpThemeData.light.surface, KlpPalette.ink100);
     expect(KlpThemeData.light.surfaceInset, KlpPalette.ink100);
     expect(KlpThemeData.light.surfaceMuted, KlpPalette.ink100);
@@ -80,18 +80,18 @@ void main() {
       greaterThan(KlpThemeData.light.surface.computeLuminance()),
     );
 
-    expect(KlpThemeData.dark.app, KlpPalette.ink900);
-    expect(KlpThemeData.dark.surface, KlpPalette.ink700);
+    expect(KlpThemeData.dark.app, KlpPalette.ink850);
+    expect(KlpThemeData.dark.surface, KlpPalette.ink750);
     expect(KlpThemeData.dark.stageSurface, KlpPalette.ink800);
-    expect(KlpThemeData.dark.surfaceInset, KlpPalette.ink700);
-    expect(KlpThemeData.dark.surfaceMuted, KlpPalette.ink700);
+    expect(KlpThemeData.dark.surfaceInset, KlpPalette.ink750);
+    expect(KlpThemeData.dark.surfaceMuted, KlpPalette.ink750);
     expect(KlpThemeData.dark.component, KlpPalette.ink800);
 
     expect(KlpThemeData.ultraDark.app, KlpPalette.ink950);
-    expect(KlpThemeData.ultraDark.surface, KlpPalette.ink800);
+    expect(KlpThemeData.ultraDark.surface, KlpPalette.ink850);
     expect(KlpThemeData.ultraDark.stageSurface, KlpPalette.ink900);
-    expect(KlpThemeData.ultraDark.surfaceInset, KlpPalette.ink800);
-    expect(KlpThemeData.ultraDark.surfaceMuted, KlpPalette.ink800);
+    expect(KlpThemeData.ultraDark.surfaceInset, KlpPalette.ink850);
+    expect(KlpThemeData.ultraDark.surfaceMuted, KlpPalette.ink850);
 
     // 只要求「ultraDark 確實更暗」。原本這裡要求絕對亮度差 ≥ 0.005，那個門檻是對著
     // 舊色盤湊出來的：相對亮度在近黑端壓縮得極厲害（ink900 與 ink950 的感知差有一階，

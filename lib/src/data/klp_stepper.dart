@@ -2,7 +2,6 @@ import 'package:flutter/widgets.dart';
 
 import '../foundation/klp_icon.dart';
 import '../foundation/klp_icons.dart';
-import '../foundation/klp_palette.dart';
 import '../theme/klp_theme.dart';
 import '../typography/klp_text.dart';
 
@@ -70,8 +69,12 @@ class KlpStepper extends StatelessWidget {
               _KlpStepMarker(status: _statusOf(i), index: i, size: markerSize),
               SizedBox(height: klp.space.tight),
               SizedBox(
-                width: markerSize * 2,
-                child: _KlpStepLabel(step: steps[i], status: _statusOf(i)),
+                width: markerSize * 2.5,
+                child: _KlpStepLabel(
+                  step: steps[i],
+                  status: _statusOf(i),
+                  align: TextAlign.center,
+                ),
               ),
             ],
           ),
@@ -95,6 +98,15 @@ class KlpStepper extends StatelessWidget {
   Widget _buildVertical(BuildContext context) {
     final klp = context.klp;
     final markerSize = klp.space.avatarSmall;
+    final textDef = KlpTextStyles.definitionOf(
+      KlpTextRole.bodyStrong,
+      klp.type,
+    );
+    final firstLineHeight = textDef.fontSize * textDef.lineHeight;
+    final labelTopOffset = ((markerSize - firstLineHeight) / 2).clamp(
+      0.0,
+      double.infinity,
+    );
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -123,7 +135,10 @@ class KlpStepper extends StatelessWidget {
                 SizedBox(width: klp.space.compact),
                 Expanded(
                   child: Padding(
-                    padding: EdgeInsets.only(bottom: klp.space.comfortable),
+                    padding: EdgeInsets.only(
+                      top: labelTopOffset,
+                      bottom: klp.space.comfortable,
+                    ),
                     child: _KlpStepLabel(step: steps[i], status: _statusOf(i)),
                   ),
                 ),
@@ -162,12 +177,12 @@ class _KlpStepMarker extends StatelessWidget {
         borderColor = tokens.text;
         borderWidth = klp.shape.stroke;
       case KlpStepStatus.current:
-        background = KlpPalette.transparent;
+        background = tokens.clear;
         foreground = tokens.text;
         borderColor = tokens.text;
         borderWidth = klp.shape.stroke;
       case KlpStepStatus.upcoming:
-        background = KlpPalette.transparent;
+        background = tokens.clear;
         foreground = tokens.textFaint;
         borderColor = tokens.guide;
         borderWidth = klp.shape.hairline;
@@ -220,23 +235,32 @@ class _KlpStepConnector extends StatelessWidget {
 }
 
 class _KlpStepLabel extends StatelessWidget {
-  const _KlpStepLabel({required this.step, required this.status});
+  const _KlpStepLabel({
+    required this.step,
+    required this.status,
+    this.align = TextAlign.start,
+  });
 
   final KlpStepData step;
   final KlpStepStatus status;
+  final TextAlign align;
 
   @override
   Widget build(BuildContext context) {
     final emphasized = status != KlpStepStatus.upcoming;
+    final crossAlign = align == TextAlign.center
+        ? CrossAxisAlignment.center
+        : CrossAxisAlignment.start;
 
     return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
+      crossAxisAlignment: crossAlign,
       mainAxisSize: MainAxisSize.min,
       children: [
         KlpText(
           step.label,
           role: KlpTextRole.bodyStrong,
           tone: emphasized ? KlpTextTone.primary : KlpTextTone.faint,
+          textAlign: align,
         ),
         if (step.description != null) ...[
           SizedBox(height: context.klp.space.tight),
@@ -244,6 +268,7 @@ class _KlpStepLabel extends StatelessWidget {
             step.description!,
             role: KlpTextRole.caption,
             tone: KlpTextTone.muted,
+            textAlign: align,
           ),
         ],
       ],

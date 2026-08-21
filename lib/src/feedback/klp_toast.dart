@@ -42,7 +42,9 @@ class KlpToast extends StatelessWidget {
     return Semantics(
       liveRegion: true,
       child: ConstrainedBox(
-        constraints: const BoxConstraints(maxWidth: 360),
+        constraints: BoxConstraints(
+          maxWidth: context.klp.geometry.layout.toastMaximumWidth,
+        ),
         child: Container(
           padding: EdgeInsets.all(context.klp.space.base),
           decoration: BoxDecoration(

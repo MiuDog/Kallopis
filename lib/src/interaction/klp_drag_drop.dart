@@ -31,7 +31,7 @@ class KlpDragPreview extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Opacity(
-      opacity: 0.82,
+      opacity: context.klp.surface.dragOpacity,
       child: KlpSurface(
         tone: KlpSurfaceTone.component,
         padding: EdgeInsets.all(context.klp.space.compact),

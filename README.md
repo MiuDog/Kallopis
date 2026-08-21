@@ -34,15 +34,26 @@
 
 ### 1. 安裝與依賴
 
-Kallopis **不發布到 pub.dev**（`publish_to: none`）。本機專案以 path dependency
-引入即可——這是最簡單也最直接的形式，改動立即生效，不需要發版：
+Kallopis **不發布到 pub.dev**（`publish_to: none`）。Notist 與同一台機器上的專案
+以 path dependency 引入；改動會立即生效，是本機開發的主要方式：
 
 ```yaml
 dependencies:
   flutter:
     sdk: flutter
   kallopis:
-    path: C:/Projects/Kallopis # 或相對路徑，例如 ../Kallopis
+    path: ../Kallopis
+```
+
+需要在其他機器重現某個正式版本時，改用固定 Git tag，不要依賴會移動的
+`main`：
+
+```yaml
+dependencies:
+  kallopis:
+    git:
+      url: https://github.com/MiuDog/Kallopis.git
+      ref: v0.3.0
 ```
 
 然後 `flutter pub get`，接著只要一個 import：
@@ -83,7 +94,7 @@ KlpApp.of(context).toggleBrightness();
 若需套用自訂視覺風格或品牌色，可利用 `buildKlpTheme`：
 
 ```dart
-final customStyle = KlpVisualStyle.modern.copyWith(
+final customStyle = KlpVisualStyle.defaultStyle.copyWith(
   name: 'sharp',
   shape: KlpShapeTheme.standardShape.copyWith(control: 0, card: 0),
 );
@@ -94,6 +105,30 @@ MaterialApp(
   home: const WorkbenchPage(),
 );
 ```
+
+外部設定檔統一通過 `KlpVisualStyleJson` 進入 theme。解碼後的元件仍只從
+`context.klp` 讀取已解析的視覺值：
+
+```dart
+final style = KlpVisualStyleJson.decode(
+  jsonTheme,
+  base: KlpVisualStyle.forBrightness(Brightness.dark),
+);
+
+MaterialApp(
+  theme: buildKlpTheme(Brightness.dark, style: style),
+  home: const WorkbenchPage(),
+);
+```
+
+JSON 可完整描述顏色、字體、間距、邊界、圓角、動態、表面效果與稀疏的
+component token。局部 JSON 會沿用指定 base style 的其餘值；型別、範圍或欄位名稱
+不合法時，`FormatException` 會指出完整 JSON 路徑。`encode` 固定輸出
+`schemaVersion: 1`；局部設定可省略版本，明示不支援的版本則會被拒絕。
+Flutter 公開 API 仍接受任意 `Curve`；JSON 只接受可無損表示的 `Cubic`，其他 curve
+在 encode 時會明確失敗，不會被近似或靜默替換。
+公開 theme model 可使用任意 Flutter `Curve`；JSON 為了可攜與無損只支援四點
+cubic，encode 遇到其他 curve 會以完整欄位路徑拒絕。
 
 ---
 
@@ -110,11 +145,12 @@ MaterialApp(
 ┌─────────────────────────────────────────────────────────────┐
 │ 2. Semantic 層（設計語意，ThemeExtension 派發）             │
 │    Colors ｜ Typography ｜ Spacing ｜ Shape ｜ Motion ｜ Surface │
+│    Geometry ｜ Data visualization                             │
 └──────────────────────────────┬──────────────────────────────┘
                                ▼
 ┌─────────────────────────────────────────────────────────────┐
 │ 3. Component Token 層（元件級客製，預設繼承 Semantic）       │
-│    KlpComponentTheme (按鈕高度、輸入框樣式、浮層陰影等)      │
+│    KlpComponentTheme (按鈕、欄位、選單、卡片、徽章的稀疏覆寫) │
 └─────────────────────────────────────────────────────────────┘
 ```
 

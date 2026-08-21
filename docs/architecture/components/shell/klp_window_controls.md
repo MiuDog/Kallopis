@@ -29,7 +29,7 @@ flowchart TD
 
 ## 程式碼證據
 
-- 檔案路徑：[`lib/src/shell/klp_window_controls.dart`](../../../../lib/src/shell/klp_window_controls.dart#L10)
+- 檔案路徑：[`lib/src/shell/klp_window_controls.dart`](../../../../lib/src/shell/klp_window_controls.dart#L23)
 - 宣告型態：`StatelessWidget`
 
 ## 閱讀說明

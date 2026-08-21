@@ -49,8 +49,8 @@ class KlpSlider extends StatelessWidget {
             data: SliderThemeData(
               activeTrackColor: tokens.interaction,
               inactiveTrackColor: tokens.surfaceInset,
-              overlayColor: Colors.transparent,
-              trackHeight: klp.shape.stroke * 2,
+              overlayColor: tokens.clear,
+              trackHeight: klp.geometry.control.sliderTrackHeight,
               thumbShape: SliderComponentShape.noThumb,
               overlayShape: SliderComponentShape.noOverlay,
               trackShape: const RectangularSliderTrackShape(),

@@ -64,7 +64,11 @@ class KlpStrokeFrame extends StatelessWidget {
       ),
       KlpStrokeRole.field => DecoratedBox(
         decoration: BoxDecoration(
-          color: KlpFieldStyle.colorFor(context.klpColors, _fieldFillState()),
+          color: KlpFieldStyle.colorFor(
+            context.klpColors,
+            _fieldFillState(),
+            surface: context.klp.surface,
+          ),
           borderRadius: BorderRadius.circular(effectiveRadius),
         ),
         child: child,

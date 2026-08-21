@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 
 import 'klp_data_visualization_theme.dart';
 import 'klp_shape_theme.dart';
+import 'klp_surface_theme.dart';
 import 'klp_visual_style.dart';
 import '../foundation/klp_accent.dart';
-import '../foundation/klp_metrics.dart';
 import '../foundation/klp_palette.dart';
 import '../tokens/klp_scale.dart';
 
@@ -23,7 +23,7 @@ abstract final class KlpThemeContrast {
   /// - 600 以上（含 600，如 ink600 ~ ink950）：淺色文字
   /// - 透明背景不構成獨立深色階層，回傳 false
   static bool isDarkBackground(Color background) {
-    if (background == KlpPalette.transparent || background.a == 0) {
+    if (background.a == 0) {
       return false;
     }
     // ink500 luminance 約 0.197 (oklch 0.58)，ink600 luminance 約 0.111 (oklch 0.48)
@@ -69,6 +69,13 @@ class KlpThemeData extends ThemeExtension<KlpThemeData> {
     required this.warning,
     required this.danger,
     required this.info,
+    this.clear = KlpPalette.transparent,
+    this.onStatus = KlpPalette.pureWhite,
+    this.onLightBackground = KlpPalette.ink900,
+    this.onDarkBackground = KlpPalette.ink50,
+    this.mutedOnLightBackground = KlpPalette.ink600,
+    this.mutedOnDarkBackground = KlpPalette.ink300,
+    this.faintOnBackground = KlpPalette.ink500,
   });
 
   final Color app;
@@ -96,10 +103,18 @@ class KlpThemeData extends ThemeExtension<KlpThemeData> {
   final Color danger;
   final Color info;
 
-  Color get onInteraction => KlpThemeContrast.foregroundFor(interaction);
+  /// 完全透明色。名稱避開既有的 static [transparent] 視窗 preset。
+  final Color clear;
+  final Color onStatus;
+  final Color onLightBackground;
+  final Color onDarkBackground;
+  final Color mutedOnLightBackground;
+  final Color mutedOnDarkBackground;
+  final Color faintOnBackground;
 
-  /// 語意色塊上的前景。語意色的明度都在中段，白字是兩態下都成立的選擇。
-  Color get onStatus => KlpPalette.pureWhite;
+  Color get onInteraction => KlpThemeContrast.isDarkBackground(interaction)
+      ? onDarkBackground
+      : onLightBackground;
 
   Color get selection => text;
 
@@ -119,24 +134,27 @@ class KlpThemeData extends ThemeExtension<KlpThemeData> {
   /// 依據背景顏色階梯（500 以下為深色文字，600 以上為淺色文字）產生適用於該背景的文字色彩 token。
   /// 若背景為透明，則延續當前（上層）的文字與階層設定。
   KlpThemeData onBackground(Color background) {
-    if (background == KlpPalette.transparent || background.a == 0) {
+    if (background.a == 0) {
       return this;
     }
     final isDark = KlpThemeContrast.isDarkBackground(background);
     return copyWith(
-      text: isDark ? KlpPalette.ink50 : KlpPalette.ink900,
-      textMuted: isDark ? KlpPalette.ink300 : KlpPalette.ink600,
-      textFaint: KlpPalette.ink500,
+      text: isDark ? onDarkBackground : onLightBackground,
+      textMuted: isDark ? mutedOnDarkBackground : mutedOnLightBackground,
+      textFaint: faintOnBackground,
     );
   }
 
-  KlpThemeData withWindowTransparency(Brightness brightness) {
+  KlpThemeData withWindowTransparency(
+    Brightness brightness, {
+    KlpSurfaceTheme surfaceTheme = KlpSurfaceTheme.elevated,
+  }) {
     final paneOpacity = brightness == Brightness.light
-        ? KlpTransparency.lightPaneOpacity
-        : KlpTransparency.darkPaneOpacity;
+        ? surfaceTheme.windowPaneOpacityLight
+        : surfaceTheme.windowPaneOpacityDark;
 
     return copyWith(
-      app: KlpPalette.transparent,
+      app: clear,
       surface: surface.withValues(alpha: paneOpacity),
       stageSurface: stageSurface.withValues(alpha: paneOpacity),
     );
@@ -145,7 +163,7 @@ class KlpThemeData extends ThemeExtension<KlpThemeData> {
   /// 亮態。**每個角色都落在 ink 色梯上**，沒有例外——一旦有欄位用梯外的顏色，
   /// 調整色梯時它就會原地不動，而畫面上只會顯示為「某一塊怪怪的」。
   static const KlpThemeData light = KlpThemeData(
-    app: KlpPalette.ink200,
+    app: KlpPalette.ink150,
     surface: KlpPalette.ink100,
     surfaceInset: KlpPalette.ink100,
     surfaceMuted: KlpPalette.ink100,
@@ -169,62 +187,65 @@ class KlpThemeData extends ThemeExtension<KlpThemeData> {
     warning: KlpPalette.lightWarning,
     danger: KlpPalette.lightDanger,
     info: KlpPalette.lightInfo,
+    clear: KlpPalette.transparent,
   );
 
   /// 暗態：整條梯翻轉。文字三階與亮態對稱（50／300／500 對 900／600／500）。
   static const KlpThemeData dark = KlpThemeData(
-    app: KlpPalette.ink900,
-    surface: KlpPalette.ink700,
-    surfaceInset: KlpPalette.ink700,
-    surfaceMuted: KlpPalette.ink700,
+    app: KlpPalette.ink850,
+    surface: KlpPalette.ink750,
+    surfaceInset: KlpPalette.ink750,
+    surfaceMuted: KlpPalette.ink750,
     component: KlpPalette.ink800,
     stageSurface: KlpPalette.ink800,
-    overlay: KlpPalette.ink700,
-    surfaceRaised: KlpPalette.ink700,
+    overlay: KlpPalette.ink750,
+    surfaceRaised: KlpPalette.ink750,
     modalScrim: KlpPalette.scrim,
     guide: KlpPalette.ink400,
-    divider: KlpPalette.ink700,
+    divider: KlpPalette.ink750,
     text: KlpPalette.ink50,
     textMuted: KlpPalette.ink300,
     textFaint: KlpPalette.ink500,
     border: KlpPalette.line,
     borderStrong: KlpPalette.line,
     accent: KlpPalette.ink50,
-    accentSoft: KlpPalette.ink700,
+    accentSoft: KlpPalette.ink750,
     interaction: KlpPalette.ink50,
-    interactionSoft: KlpPalette.ink700,
+    interactionSoft: KlpPalette.ink750,
     success: KlpPalette.darkSuccess,
     warning: KlpPalette.darkWarning,
     danger: KlpPalette.darkDanger,
     info: KlpPalette.darkInfo,
+    clear: KlpPalette.transparent,
   );
 
   /// 全暗態：比 dark 再往下一階，給 OLED 與長時間閱讀用。
   static const KlpThemeData ultraDark = KlpThemeData(
     app: KlpPalette.ink950,
-    surface: KlpPalette.ink800,
-    surfaceInset: KlpPalette.ink800,
-    surfaceMuted: KlpPalette.ink800,
+    surface: KlpPalette.ink850,
+    surfaceInset: KlpPalette.ink850,
+    surfaceMuted: KlpPalette.ink850,
     component: KlpPalette.ink900,
     stageSurface: KlpPalette.ink900,
-    overlay: KlpPalette.ink800,
-    surfaceRaised: KlpPalette.ink800,
+    overlay: KlpPalette.ink850,
+    surfaceRaised: KlpPalette.ink850,
     modalScrim: KlpPalette.scrim,
-    guide: KlpPalette.ink400,
-    divider: KlpPalette.ink700,
-    text: KlpPalette.ink50,
-    textMuted: KlpPalette.ink300,
-    textFaint: KlpPalette.ink500,
+    guide: KlpPalette.ink450,
+    divider: KlpPalette.ink800,
+    text: KlpPalette.ink100,
+    textMuted: KlpPalette.ink350,
+    textFaint: KlpPalette.ink550,
     border: KlpPalette.line,
     borderStrong: KlpPalette.line,
-    accent: KlpPalette.ink50,
-    accentSoft: KlpPalette.ink800,
-    interaction: KlpPalette.ink50,
-    interactionSoft: KlpPalette.ink800,
+    accent: KlpPalette.ink100,
+    accentSoft: KlpPalette.ink850,
+    interaction: KlpPalette.ink100,
+    interactionSoft: KlpPalette.ink850,
     success: KlpPalette.darkSuccess,
     warning: KlpPalette.darkWarning,
     danger: KlpPalette.darkDanger,
     info: KlpPalette.darkInfo,
+    clear: KlpPalette.transparent,
   );
 
   static final KlpThemeData transparent = dark.withWindowTransparency(
@@ -257,6 +278,13 @@ class KlpThemeData extends ThemeExtension<KlpThemeData> {
     Color? warning,
     Color? danger,
     Color? info,
+    Color? clear,
+    Color? onStatus,
+    Color? onLightBackground,
+    Color? onDarkBackground,
+    Color? mutedOnLightBackground,
+    Color? mutedOnDarkBackground,
+    Color? faintOnBackground,
   }) {
     return KlpThemeData(
       app: app ?? this.app,
@@ -283,6 +311,15 @@ class KlpThemeData extends ThemeExtension<KlpThemeData> {
       warning: warning ?? this.warning,
       danger: danger ?? this.danger,
       info: info ?? this.info,
+      clear: clear ?? this.clear,
+      onStatus: onStatus ?? this.onStatus,
+      onLightBackground: onLightBackground ?? this.onLightBackground,
+      onDarkBackground: onDarkBackground ?? this.onDarkBackground,
+      mutedOnLightBackground:
+          mutedOnLightBackground ?? this.mutedOnLightBackground,
+      mutedOnDarkBackground:
+          mutedOnDarkBackground ?? this.mutedOnDarkBackground,
+      faintOnBackground: faintOnBackground ?? this.faintOnBackground,
     );
   }
 
@@ -326,7 +363,14 @@ class KlpThemeData extends ThemeExtension<KlpThemeData> {
           success == other.success &&
           warning == other.warning &&
           danger == other.danger &&
-          info == other.info;
+          info == other.info &&
+          clear == other.clear &&
+          onStatus == other.onStatus &&
+          onLightBackground == other.onLightBackground &&
+          onDarkBackground == other.onDarkBackground &&
+          mutedOnLightBackground == other.mutedOnLightBackground &&
+          mutedOnDarkBackground == other.mutedOnDarkBackground &&
+          faintOnBackground == other.faintOnBackground;
 
   @override
   int get hashCode => Object.hashAll([
@@ -354,6 +398,13 @@ class KlpThemeData extends ThemeExtension<KlpThemeData> {
     warning,
     danger,
     info,
+    clear,
+    onStatus,
+    onLightBackground,
+    onDarkBackground,
+    mutedOnLightBackground,
+    mutedOnDarkBackground,
+    faintOnBackground,
   ]);
 }
 
@@ -384,7 +435,11 @@ abstract final class KlpFieldStyle {
   /// **hover 不改變底色**——本產品的 hover 一律只以低對比虛線細框表達，見
   /// [KlpTheme.hoverBorder]。因此 rest 與 hovered 刻意回傳同一個值；把它們寫成
   /// 同一個 case 會讓「hover 沒有底色變化」這件事在未來被當成漏寫而補回去。
-  static Color colorFor(KlpThemeData tokens, KlpFieldFillState state) {
+  static Color colorFor(
+    KlpThemeData tokens,
+    KlpFieldFillState state, {
+    KlpSurfaceTheme surface = KlpSurfaceTheme.elevated,
+  }) {
     return switch (state) {
       KlpFieldFillState.rest => tokens.surfaceInset,
       KlpFieldFillState.hovered => tokens.surfaceInset,
@@ -394,33 +449,41 @@ abstract final class KlpFieldStyle {
       // 不合法輸入用半透明紅**疊在**欄位上，而不是先跟 surfaceInset 混成不透明色。
       // 疊層才會跟著底下實際的表面走；預混會在欄位被放到別的表面上時顏色對不上。
       KlpFieldFillState.error => tokens.danger.withValues(
-        alpha: KlpScale.opacity180,
+        alpha: surface.invalidFillOpacity,
       ),
     };
   }
 
-  static Color resolveInputColor(KlpThemeData tokens, Set<WidgetState> states) {
+  static Color resolveInputColor(
+    KlpThemeData tokens,
+    Set<WidgetState> states, {
+    KlpSurfaceTheme surface = KlpSurfaceTheme.elevated,
+  }) {
     if (states.contains(WidgetState.disabled)) {
-      return colorFor(tokens, KlpFieldFillState.disabled);
+      return colorFor(tokens, KlpFieldFillState.disabled, surface: surface);
     }
     if (states.contains(WidgetState.error)) {
-      return colorFor(tokens, KlpFieldFillState.error);
+      return colorFor(tokens, KlpFieldFillState.error, surface: surface);
     }
     if (states.contains(WidgetState.focused)) {
-      return colorFor(tokens, KlpFieldFillState.focused);
+      return colorFor(tokens, KlpFieldFillState.focused, surface: surface);
     }
     if (states.contains(WidgetState.hovered)) {
-      return colorFor(tokens, KlpFieldFillState.hovered);
+      return colorFor(tokens, KlpFieldFillState.hovered, surface: surface);
     }
 
-    return colorFor(tokens, KlpFieldFillState.rest);
+    return colorFor(tokens, KlpFieldFillState.rest, surface: surface);
   }
 
-  static WidgetStateColor inputFill(KlpThemeData tokens, {bool error = false}) {
+  static WidgetStateColor inputFill(
+    KlpThemeData tokens, {
+    bool error = false,
+    KlpSurfaceTheme surface = KlpSurfaceTheme.elevated,
+  }) {
     return WidgetStateColor.resolveWith(
       (states) => error
-          ? colorFor(tokens, KlpFieldFillState.error)
-          : resolveInputColor(tokens, states),
+          ? colorFor(tokens, KlpFieldFillState.error, surface: surface)
+          : resolveInputColor(tokens, states, surface: surface),
     );
   }
 }
@@ -429,7 +492,7 @@ abstract final class KlpFieldStyle {
 ///
 /// 色彩的來源規則刻意是**明確的，不做推測**：
 ///
-/// - 不給 [style]：依 [brightness] 取內建 preset，套用 modern 風格。
+/// - 不給 [style]：依 [brightness] 取內建 preset，套用 defaultStyle 風格。
 /// - 給了 [style]：**`style.colors` 就是色彩，[brightness] 不再干涉。**
 ///
 /// 曾經試過「偵測消費者有沒有動過色彩，沒動過才依 brightness 挑」，那是行不通的：
@@ -442,12 +505,12 @@ ThemeData buildKlpTheme(
   KlpAccent? accent,
   KlpVisualStyle? style,
 }) {
-  final effectiveStyle = style ?? KlpVisualStyle.modern;
   final baseTokens = style != null
       ? style.colors
       : (brightness == Brightness.dark
             ? KlpThemeData.dark
             : KlpThemeData.light);
+  final effectiveStyle = style ?? KlpVisualStyle.forBrightness(brightness);
   return _buildKlpThemeData(baseTokens, accent: accent, style: effectiveStyle);
 }
 
@@ -455,7 +518,7 @@ ThemeData buildKlpThemeVariant(
   KlpThemeVariant variant, {
   KlpAccent? accent,
   bool transparencyEnabled = false,
-  KlpVisualStyle style = KlpVisualStyle.modern,
+  KlpVisualStyle? style,
 }) {
   final tokens = switch (variant) {
     KlpThemeVariant.light => KlpThemeData.light,
@@ -464,10 +527,22 @@ ThemeData buildKlpThemeVariant(
     KlpThemeVariant.transparent => KlpThemeData.dark,
   };
 
+  final effectiveStyle =
+      style ??
+      KlpVisualStyle.defaultStyle.copyWith(
+        colors: tokens,
+        dataVisualization: switch (variant) {
+          KlpThemeVariant.light => KlpDataVisualizationTheme.light,
+          KlpThemeVariant.dark => KlpDataVisualizationTheme.dark,
+          KlpThemeVariant.ultraDark => KlpDataVisualizationTheme.ultraDark,
+          KlpThemeVariant.transparent => KlpDataVisualizationTheme.dark,
+        },
+      );
+
   return _buildKlpThemeData(
     tokens,
     accent: accent,
-    style: style,
+    style: effectiveStyle,
     transparencyEnabled:
         transparencyEnabled || variant == KlpThemeVariant.transparent,
   );
@@ -477,7 +552,7 @@ ThemeData _buildKlpThemeData(
   KlpThemeData baseTokens, {
   KlpAccent? accent,
   bool transparencyEnabled = false,
-  KlpVisualStyle style = KlpVisualStyle.modern,
+  KlpVisualStyle style = KlpVisualStyle.defaultStyle,
 }) {
   // 由實際的表面色推導明暗，而不是比對是否為某個 preset 實例——自訂色盤永遠不會
   // `identical` 於 preset，用 identical 判斷會讓所有自訂主題都被當成暗色。
@@ -491,21 +566,19 @@ ThemeData _buildKlpThemeData(
           interaction: interactionColor,
           interactionSoft: Color.alphaBlend(
             interactionColor.withValues(
-              alpha: brightness == Brightness.dark ? 0.22 : 0.16,
+              alpha: brightness == Brightness.dark
+                  ? style.surface.accentSoftOpacityDark
+                  : style.surface.accentSoftOpacityLight,
             ),
             baseTokens.surfaceInset,
           ),
         );
   final tokens = transparencyEnabled
-      ? themedTokens.withWindowTransparency(brightness)
+      ? themedTokens.withWindowTransparency(
+          brightness,
+          surfaceTheme: style.surface,
+        )
       : themedTokens;
-  final dataVisualizationTokens = switch (brightness) {
-    Brightness.light => KlpDataVisualizationTheme.light,
-    Brightness.dark =>
-      identical(baseTokens, KlpThemeData.ultraDark)
-          ? KlpDataVisualizationTheme.ultraDark
-          : KlpDataVisualizationTheme.dark,
-  };
   final baseTextTheme = ThemeData(
     brightness: brightness,
     useMaterial3: false,
@@ -553,8 +626,8 @@ ThemeData _buildKlpThemeData(
     brightness: brightness,
     useMaterial3: false,
     splashFactory: NoSplash.splashFactory,
-    splashColor: KlpPalette.transparent,
-    highlightColor: KlpPalette.transparent,
+    splashColor: tokens.clear,
+    highlightColor: tokens.clear,
     scaffoldBackgroundColor: tokens.app,
     fontFamily: style.typography.uiFamily,
     fontFamilyFallback: style.typography.fallbackFor(style.typography.uiFamily),
@@ -571,14 +644,14 @@ ThemeData _buildKlpThemeData(
       disabledBorder: KlpFieldStyle.borderFor(style.shape),
       errorBorder: KlpFieldStyle.borderFor(style.shape),
       focusedErrorBorder: KlpFieldStyle.borderFor(style.shape),
-      hoverColor: KlpPalette.transparent,
+      hoverColor: tokens.clear,
     ),
     scrollbarTheme: ScrollbarThemeData(
       thumbColor: WidgetStatePropertyAll(tokens.textFaint),
-      trackColor: const WidgetStatePropertyAll(KlpPalette.transparent),
-      trackBorderColor: const WidgetStatePropertyAll(KlpPalette.transparent),
-      thickness: const WidgetStatePropertyAll(
-        KlpControlMetrics.scrollbarThickness,
+      trackColor: WidgetStatePropertyAll(tokens.clear),
+      trackBorderColor: WidgetStatePropertyAll(tokens.clear),
+      thickness: WidgetStatePropertyAll(
+        style.geometry.control.scrollbarThickness,
       ),
       radius: Radius.circular(style.shape.pill),
       trackVisibility: const WidgetStatePropertyAll(false),
@@ -601,14 +674,11 @@ ThemeData _buildKlpThemeData(
         vertical: style.spacing.tight,
       ),
       waitDuration: style.motion.tooltipDelay,
-      showDuration: style.motion.toastDwell * 8,
+      showDuration: style.motion.tooltipDwell,
       preferBelow: false,
     ),
     // 註冊完整的 token 疊層。少放任何一層，該層會回退預設而不會報錯——
     // 因此這裡以 KlpVisualStyle 為單一來源，避免逐項列舉時漏掉。
-    extensions: [
-      ...style.copyWith(colors: tokens).extensions,
-      dataVisualizationTokens,
-    ],
+    extensions: [...style.copyWith(colors: tokens).extensions],
   );
 }

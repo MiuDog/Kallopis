@@ -50,7 +50,7 @@ flowchart TD
 
 ## 程式碼證據
 
-- 檔案路徑：[`lib/src/data/klp_code_viewer.dart`](../../../../lib/src/data/klp_code_viewer.dart#L690)
+- 檔案路徑：[`lib/src/data/klp_code_viewer.dart`](../../../../lib/src/data/klp_code_viewer.dart#L693)
 - 宣告型態：`StatelessWidget`
 
 ## 閱讀說明

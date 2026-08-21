@@ -5,6 +5,7 @@
 | 編號 | 題目 | 狀態 |
 |---|---|---|
 | [KLP-0001](KLP-0001-scope-token-architecture-and-extraction-method.md) | 範圍、token 架構，與「複製搬移」這個例外 | Accepted |
+| [KLP-0002](KLP-0002-json-theme-and-geometry-tokens.md) | JSON theme 與 geometry semantic token | Accepted |
 
 ## 每份決策的必要內容
 

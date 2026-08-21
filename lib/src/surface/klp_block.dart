@@ -19,7 +19,12 @@ class KlpBlock extends StatelessWidget {
   Widget build(BuildContext context) {
     return KlpSurface(
       tone: KlpSurfaceTone.component,
-      border: selected ? Border.all(color: context.klpColors.textMuted) : null,
+      border: selected
+          ? Border.all(
+              color: context.klpColors.textMuted,
+              width: context.klp.shape.hairline,
+            )
+          : null,
       radius: context.klp.shape.control,
       padding: padding ?? EdgeInsets.all(context.klp.space.base),
       child: child,

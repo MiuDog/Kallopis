@@ -13,11 +13,11 @@
 ///
 /// ## 換一套視覺風格
 ///
-/// 庫只出貨 `modern` 一套。要換風格是取它再逐層 `copyWith`——風格是一個必須整組給定
+/// 庫只出貨 `default` 一套。要換風格是取它再逐層 `copyWith`——風格是一個必須整組給定
 /// 的物件，因此不會出現「只換了一半」的狀態：
 ///
 /// ```dart
-/// final squared = KlpVisualStyle.modern.copyWith(
+/// final squared = KlpVisualStyle.defaultStyle.copyWith(
 ///   name: 'squared',
 ///   shape: KlpShapeTheme.standardShape.copyWith(
 ///     control: 0,
@@ -34,7 +34,7 @@
 /// 唯一來源**，`brightness` 不再干涉：
 ///
 /// ```dart
-/// final brand = KlpVisualStyle.modern.copyWith(
+/// final brand = KlpVisualStyle.defaultStyle.copyWith(
 ///   colors: KlpThemeData.light.copyWith(accent: myBrandColor),
 /// );
 /// theme: buildKlpTheme(Brightness.light, style: brand)
@@ -81,6 +81,11 @@ export 'src/controls/klp_toggle.dart';
 export 'src/controls/klp_tri_state_toggle.dart';
 export 'src/controls/klp_text_field.dart';
 export 'src/theme/klp_data_visualization_theme.dart';
+export 'src/theme/klp_control_geometry.dart';
+export 'src/theme/klp_data_geometry.dart';
+export 'src/theme/klp_geometry_theme.dart';
+export 'src/theme/klp_layout_geometry.dart';
+export 'src/theme/klp_optical_geometry.dart';
 export 'src/data/klp_accordion.dart';
 export 'src/data/klp_avatar.dart';
 export 'src/data/klp_badge.dart';
@@ -118,6 +123,7 @@ export 'src/foundation/klp_segmented_progress.dart';
 export 'src/foundation/klp_geometric_spinner.dart';
 export 'src/foundation/klp_inline_code.dart';
 export 'src/navigation/klp_breadcrumb.dart';
+export 'src/navigation/klp_file_explorer.dart';
 export 'src/navigation/klp_rail_item.dart';
 export 'src/navigation/klp_tabs.dart';
 export 'src/interaction/klp_drag_drop.dart';
@@ -140,9 +146,10 @@ export 'src/shell/klp_stage_frame.dart';
 export 'src/shell/klp_status_bar.dart';
 export 'src/shell/klp_theme_preview_tile.dart';
 export 'src/shell/klp_theme_toggle.dart';
+export 'src/shell/klp_window_controls.dart';
+export 'src/shell/klp_window_header.dart';
 export 'src/shell/klp_workbench_shell.dart';
 export 'src/shell/klp_shell_extras.dart';
-export 'src/shell/klp_window_controls.dart';
 export 'src/surface/klp_block.dart';
 export 'src/surface/klp_divider.dart';
 export 'src/surface/klp_dashed_border.dart';
@@ -161,4 +168,5 @@ export 'src/theme/klp_surface_theme.dart';
 export 'src/theme/klp_theme_scope.dart';
 export 'src/theme/klp_typography_theme.dart';
 export 'src/theme/klp_visual_style.dart';
+export 'src/theme/klp_visual_style_json.dart';
 export 'src/routing/klp_router.dart';

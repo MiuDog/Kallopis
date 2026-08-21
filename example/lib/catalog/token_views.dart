@@ -8,13 +8,21 @@ import 'package:kallopis/kallopis.dart';
 const Map<String, Color> inkRamp = {
   'ink50': KlpPalette.ink50,
   'ink100': KlpPalette.ink100,
+  'ink150': KlpPalette.ink150,
   'ink200': KlpPalette.ink200,
+  'ink250': KlpPalette.ink250,
   'ink300': KlpPalette.ink300,
+  'ink350': KlpPalette.ink350,
   'ink400': KlpPalette.ink400,
+  'ink450': KlpPalette.ink450,
   'ink500': KlpPalette.ink500,
+  'ink550': KlpPalette.ink550,
   'ink600': KlpPalette.ink600,
+  'ink650': KlpPalette.ink650,
   'ink700': KlpPalette.ink700,
+  'ink750': KlpPalette.ink750,
   'ink800': KlpPalette.ink800,
+  'ink850': KlpPalette.ink850,
   'ink900': KlpPalette.ink900,
   'ink950': KlpPalette.ink950,
 };
@@ -73,8 +81,8 @@ class Swatch extends StatelessWidget {
       children: [
         Container(
           height: 56,
-          alignment: Alignment.bottomLeft,
-          padding: EdgeInsets.all(klp.space.compact),
+          alignment: Alignment.center,
+          padding: EdgeInsets.symmetric(horizontal: klp.space.compact),
           decoration: BoxDecoration(
             color: color,
             borderRadius: BorderRadius.circular(klp.shape.card),

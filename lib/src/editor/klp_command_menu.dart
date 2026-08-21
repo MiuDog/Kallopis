@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 
 import '../theme/klp_theme.dart';
 import '../typography/klp_text.dart';
-import '../foundation/klp_palette.dart';
 
 @immutable
 class KlpCommandItemData {
@@ -102,7 +101,7 @@ class _CommandItem extends StatelessWidget {
         : tokens.textFaint;
 
     return Material(
-      color: data.selected ? tokens.surfaceMuted : KlpPalette.transparent,
+      color: data.selected ? tokens.surfaceMuted : tokens.clear,
       borderRadius: BorderRadius.circular(context.klp.shape.control),
       child: InkWell(
         onTap: data.onPressed,

@@ -5,7 +5,6 @@ import '../interaction/klp_pressable.dart';
 import '../surface/klp_dashed_border.dart';
 import '../theme/klp_theme.dart';
 import '../typography/klp_text.dart';
-import '../foundation/klp_palette.dart';
 
 enum KlpButtonTone { primary, secondary, ghost, danger }
 
@@ -52,12 +51,13 @@ class _KlpButtonState extends State<KlpButton> {
     final klp = context.klp;
     final disabled = widget.onPressed == null;
     final active = (_hovered || _focused) && !disabled;
+    final radius = klp.buttonRadius;
     final background = disabled
         ? tokens.surfaceInset
         : switch (widget.tone) {
             KlpButtonTone.primary => tokens.interaction,
             KlpButtonTone.secondary => tokens.component,
-            KlpButtonTone.ghost => KlpPalette.transparent,
+            KlpButtonTone.ghost => tokens.clear,
             KlpButtonTone.danger => tokens.danger.withValues(
               alpha: klp.surface.statusFillOpacity,
             ),
@@ -71,35 +71,38 @@ class _KlpButtonState extends State<KlpButton> {
           };
     final resolvedSize =
         widget.size ?? (widget.compact ? KlpControlSize.sm : KlpControlSize.md);
-    final (height, paddingX, textRole) = switch (resolvedSize) {
+    final (height, insets, textRole) = switch (resolvedSize) {
       KlpControlSize.sm => (
         klp.space.controlHeightSmall,
-        klp.space.controlPaddingXSmall,
+        EdgeInsets.symmetric(horizontal: klp.space.controlPaddingXSmall),
         KlpTextRole.sub,
       ),
       KlpControlSize.md => (
-        klp.space.controlHeight,
-        klp.space.controlPaddingX,
+        klp.buttonHeight,
+        EdgeInsets.symmetric(horizontal: klp.buttonInsets.left),
         KlpTextRole.body,
       ),
       KlpControlSize.lg => (
         klp.space.controlHeightLarge,
-        klp.space.controlPaddingXLarge,
+        EdgeInsets.symmetric(horizontal: klp.space.controlPaddingXLarge),
         KlpTextRole.lead,
       ),
       KlpControlSize.xl => (
         klp.space.controlHeightXLarge,
-        klp.space.controlPaddingXXLarge,
+        EdgeInsets.symmetric(horizontal: klp.space.controlPaddingXXLarge),
         KlpTextRole.lead,
       ),
     };
 
     Widget content = Container(
       height: height,
-      padding: EdgeInsets.symmetric(horizontal: paddingX),
+      padding: insets,
       decoration: BoxDecoration(
         color: background,
-        borderRadius: BorderRadius.circular(klp.shape.control),
+        borderRadius: BorderRadius.circular(radius),
+        border: klp.buttonBorderWidth == klp.shape.none
+            ? null
+            : Border.all(color: tokens.border, width: klp.buttonBorderWidth),
       ),
       child: Row(
         mainAxisSize: MainAxisSize.min,
@@ -131,13 +134,13 @@ class _KlpButtonState extends State<KlpButton> {
         color: widget.tone == KlpButtonTone.danger
             ? tokens.danger
             : klp.hoverBorder,
-        radius: klp.shape.control,
+        radius: radius,
         child: content,
       );
     }
 
     return Material(
-      color: KlpPalette.transparent,
+      color: tokens.clear,
       child: KlpPressable(
         onPressed: widget.onPressed,
         onLongPress: widget.onLongPress,
@@ -147,7 +150,7 @@ class _KlpButtonState extends State<KlpButton> {
         onHover: _setHovered,
         onFocusChange: _setFocused,
         showHoverBorder: false,
-        borderRadius: BorderRadius.circular(klp.shape.control),
+        borderRadius: BorderRadius.circular(radius),
         child: content,
       ),
     );

@@ -24,7 +24,7 @@ void main() {
           builder: (context) {
             controller = KlpApp.of(context);
             colors = context.klp.color;
-            return const SizedBox.shrink();
+            return const SizedBox.shrink(key: ValueKey('test_target'));
           },
         ),
       ),
@@ -49,7 +49,7 @@ void main() {
 
     expect(controller.brightness, Brightness.dark);
 
-    final context = tester.element(find.byType(SizedBox));
+    final context = tester.element(find.byKey(const ValueKey('test_target')));
     expect(
       context.klp.color.surface.toARGB32(),
       KlpThemeData.dark.surface.toARGB32(),

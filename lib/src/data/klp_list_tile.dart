@@ -5,7 +5,6 @@ import '../foundation/klp_icon.dart';
 import '../surface/klp_dashed_border.dart';
 import '../theme/klp_theme.dart';
 import '../typography/klp_text.dart';
-import '../foundation/klp_palette.dart';
 
 class KlpListTile extends StatefulWidget {
   const KlpListTile({
@@ -60,10 +59,12 @@ class _KlpListTileState extends State<KlpListTile> {
 
     final isHighlighted = _hovered || _focused || widget.selected;
     final tileColor = statusColor != null
-        ? statusColor.withValues(alpha: widget.selected ? 0.32 : 0.14)
-        : (widget.selected
-              ? tokens.selectionBackground
-              : KlpPalette.transparent);
+        ? statusColor.withValues(
+            alpha: widget.selected
+                ? context.klp.surface.listStatusSelectedOpacity
+                : context.klp.surface.listStatusOpacity,
+          )
+        : (widget.selected ? tokens.selectionBackground : tokens.clear);
 
     Widget tile = Material(
       color: tileColor,
@@ -72,7 +73,7 @@ class _KlpListTileState extends State<KlpListTile> {
         onTap: widget.onPressed,
         onHover: (value) => setState(() => _hovered = value),
         onFocusChange: (value) => setState(() => _focused = value),
-        overlayColor: const WidgetStatePropertyAll(KlpPalette.transparent),
+        overlayColor: WidgetStatePropertyAll(tokens.clear),
         borderRadius: BorderRadius.circular(context.klp.shape.control),
         child: SizedBox(
           height: widget.compact ? context.klp.space.controlHeightSmall : null,

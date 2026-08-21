@@ -801,7 +801,7 @@ class KlpFilePreview extends StatelessWidget {
                     ),
                     KlpText(
                       metadata,
-                      role: KlpTextRole.caption,
+                      role: KlpTextRole.code,
                       tone: KlpTextTone.muted,
                     ),
                   ],
@@ -833,7 +833,7 @@ class KlpFilePreview extends StatelessWidget {
                           onTap: onOpenExternal,
                           child: const KlpText(
                             'Open externally',
-                            role: KlpTextRole.caption,
+                            role: KlpTextRole.code,
                             tone: KlpTextTone.muted,
                           ),
                         ),
@@ -845,7 +845,7 @@ class KlpFilePreview extends StatelessWidget {
                           onTap: onDownload,
                           child: const KlpText(
                             'Download',
-                            role: KlpTextRole.caption,
+                            role: KlpTextRole.code,
                             tone: KlpTextTone.muted,
                           ),
                         ),

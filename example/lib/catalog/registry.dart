@@ -26,6 +26,7 @@ final List<CatalogGroup> catalogGroups = [
     label: 'Foundation',
     pages: [
       actionsNavigationPage,
+      fileExplorerPage,
       dataDisplayPage,
       layoutInteractionPage,
       regionPlaceholderPage,

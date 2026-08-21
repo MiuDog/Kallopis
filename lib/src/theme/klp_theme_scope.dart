@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
 import 'klp_component_theme.dart';
+import 'klp_data_visualization_theme.dart';
+import 'klp_geometry_theme.dart';
 import 'klp_motion_theme.dart';
 import 'klp_shape_theme.dart';
 import 'klp_spacing_theme.dart';
@@ -26,6 +28,8 @@ class KlpTheme {
     required this.motion,
     required this.surface,
     required this.component,
+    this.dataVisualization = KlpDataVisualizationTheme.light,
+    this.geometry = KlpGeometryTheme.standard,
   });
 
   final KlpThemeData color;
@@ -35,6 +39,8 @@ class KlpTheme {
   final KlpMotionTheme motion;
   final KlpSurfaceTheme surface;
   final KlpComponentTheme component;
+  final KlpDataVisualizationTheme dataVisualization;
+  final KlpGeometryTheme geometry;
 
   static KlpTheme of(BuildContext context) {
     final theme = Theme.of(context);
@@ -52,6 +58,13 @@ class KlpTheme {
       surface: theme.extension<KlpSurfaceTheme>() ?? KlpSurfaceTheme.elevated,
       component:
           theme.extension<KlpComponentTheme>() ?? KlpComponentTheme.inherited,
+      dataVisualization:
+          theme.extension<KlpDataVisualizationTheme>() ??
+          (theme.brightness == Brightness.dark
+              ? KlpDataVisualizationTheme.dark
+              : KlpDataVisualizationTheme.light),
+      geometry:
+          theme.extension<KlpGeometryTheme>() ?? KlpGeometryTheme.standard,
     );
   }
 
@@ -66,6 +79,8 @@ class KlpTheme {
       motion: tokens.motion,
       surface: tokens.surface,
       components: tokens.component,
+      dataVisualization: tokens.dataVisualization,
+      geometry: tokens.geometry,
     );
   }
 
@@ -88,7 +103,8 @@ class KlpTheme {
 
   double get menuRadius => component.resolveMenuRadius(shape);
   double get menuPadding => component.resolveMenuPadding(space);
-  double get menuItemHeight => component.resolveMenuItemHeight(space);
+  double get menuItemHeight =>
+      component.resolveMenuItemHeightWithGeometry(geometry);
 
   double get cardRadius => component.resolveCardRadius(shape);
   double get cardPadding => component.resolveCardPadding(space);

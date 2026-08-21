@@ -1,7 +1,6 @@
 import 'dart:ui' show ImageFilter;
 import 'package:flutter/material.dart';
 
-import '../foundation/klp_palette.dart';
 import '../theme/klp_theme.dart';
 
 /// 表面在階層中的位置。由淺到深：`base` → `inset` → `muted`，另有 `component`
@@ -74,7 +73,7 @@ class KlpSurface extends StatelessWidget {
       KlpSurfaceTone.stage => tokens.stageSurface,
       KlpSurfaceTone.accent => tokens.accent,
       KlpSurfaceTone.accentSoft => tokens.accentSoft,
-      KlpSurfaceTone.transparent => KlpPalette.transparent,
+      KlpSurfaceTone.transparent => tokens.clear,
     };
     final resolvedRadius = tone == KlpSurfaceTone.transparent
         ? effectiveRadius
@@ -82,14 +81,14 @@ class KlpSurface extends StatelessWidget {
 
     Widget result = Padding(padding: padding ?? EdgeInsets.zero, child: child);
 
-    if (background != KlpPalette.transparent && background.a > 0) {
+    if (background != tokens.clear && background.a > 0) {
       final surfaceTokens = tokens.onBackground(background);
       result = KlpTokenOverride(colors: surfaceTokens, child: result);
     }
 
     final effectiveBg = frosted
-        ? (background == KlpPalette.transparent
-              ? KlpPalette.transparent
+        ? (background == tokens.clear
+              ? tokens.clear
               : background.withValues(alpha: klp.surface.frostedOpacity))
         : background;
 
@@ -108,8 +107,8 @@ class KlpSurface extends StatelessWidget {
         borderRadius: BorderRadius.circular(resolvedRadius),
         child: BackdropFilter(
           filter: ImageFilter.blur(
-            sigmaX: blurSigma ?? 12.0,
-            sigmaY: blurSigma ?? 12.0,
+            sigmaX: blurSigma ?? klp.surface.backdropBlurSigma,
+            sigmaY: blurSigma ?? klp.surface.backdropBlurSigma,
           ),
           child: surfaceBox,
         ),

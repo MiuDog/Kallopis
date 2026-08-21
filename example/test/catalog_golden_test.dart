@@ -15,12 +15,41 @@ import 'package:kallopis_catalog/catalog_shell.dart';
 /// 這個庫的核心承諾是「只修改 theme 就能換一套視覺風格」。那個承諾能不能被驗證，
 /// 完全取決於有沒有東西會在畫面變了的時候紅起來。
 ///
-/// **這些圖證明什麼、不證明什麼**：截的是 [CatalogShell] 在 1400×900 視窗下的完整
-/// 畫面，也就是使用者實際看到的東西（導覽 ＋ 內容區）。內容比視窗高的頁面，捲動線
-/// 以下的部分不在基準內——所以它抓得到 token 層級的整體改變，抓不到只發生在長頁面
-/// 下半部的局部改變。要補那一塊得改成逐 specimen 截圖，那是另一個量級的工程。
+/// **這些圖證明什麼**：截的是 [CatalogShell] 的完整畫面（導覽 ＋ 內容區），
+/// 而且**視窗高度由每一頁自己的內容決定**——先用一個高視窗量出該頁需要多高，
+/// 再用那個高度截圖。因此不存在「捲動線以下沒被涵蓋」的死角，圖檔也不會為了
+/// 遷就最長的那一頁而全部變大。
+///
+/// 先前用固定的 1400×900，實測有十頁的內容落在捲動線以下，最長的一頁有 4793px
+/// 沒被涵蓋——那等於那些元件根本沒有像素級把關。
 ///
 /// 更新基準前先確認畫面**應該**要變。golden 紅了預設是回歸，不是基準過期。
+/// 基準視窗寬度。導覽 260 ＋ 內容區，接近實際使用的桌面寬度。
+const double _width = 1400;
+
+/// 基準視窗高度。內容比這個矮的頁面就用這個高度，避免圖檔底部一片空白。
+const double _baseHeight = 900;
+
+/// 基準高度上限。`Layout & Interaction` 有一個巢狀的虛擬清單，
+/// 它回報的可捲動長度是十六萬 px——那是虛擬化的假象，不是真的要畫那麼長。
+const double _maxHeight = 6000;
+
+/// 內容區還差多少高度才裝得下。
+///
+/// 取所有可捲動區域中最大的 `maxScrollExtent`。側欄本身也是可捲動的，因此短頁面
+/// 量到的其實是側欄——這正是我們要的：基準必須連側欄也完整涵蓋。
+double _stageOverflow(WidgetTester tester) {
+  var overflow = 0.0;
+  final scrollables = find.byType(Scrollable);
+  for (var i = 0; i < scrollables.evaluate().length; i++) {
+    final position = tester.state<ScrollableState>(scrollables.at(i)).position;
+    if (position.hasContentDimensions && position.maxScrollExtent > overflow) {
+      overflow = position.maxScrollExtent;
+    }
+  }
+  return overflow;
+}
+
 void main() {
   setUpAll(() async {
     // 不載入字型的話文字會渲染成方塊，基準就失去意義。
@@ -56,28 +85,50 @@ void main() {
 
     for (final brightness in Brightness.values) {
       testWidgets('${page.label} · ${brightness.name}', (tester) async {
-        tester.view.physicalSize = const Size(1400, 900);
         tester.view.devicePixelRatio = 1;
         addTearDown(tester.view.resetPhysicalSize);
         addTearDown(tester.view.resetDevicePixelRatio);
 
-        await tester.pumpWidget(
-          MaterialApp(
-            debugShowCheckedModeBanner: false,
-            theme: buildKlpTheme(brightness),
-            home: CatalogShell(
-              groups: catalogGroups,
-              pages: catalogPages,
-              selected: index,
-              onSelected: (_) {},
-              onToggleTheme: () {},
+        Future<void> pumpAt(double height) async {
+          tester.view.physicalSize = Size(_width, height);
+          await tester.pumpWidget(
+            MaterialApp(
+              debugShowCheckedModeBanner: false,
+              theme: buildKlpTheme(brightness),
+              home: CatalogShell(
+                groups: catalogGroups,
+                pages: catalogPages,
+                selected: index,
+                onSelected: (_) {},
+              ),
             ),
-          ),
-        );
+          );
+          // 不用 pumpAndSettle：目錄裡有不會結束的動畫（spinner、不定量進度）。
+          // 測試綁定用的是假時鐘，固定推進同樣的時間就會停在同一幀，仍是決定性的。
+          await tester.pump(const Duration(milliseconds: 200));
+        }
 
-        // 不用 pumpAndSettle：目錄裡有不會結束的動畫（spinner、不定量進度）。
-        // 測試綁定用的是假時鐘，固定推進同樣的時間就會停在同一幀，因此仍是決定性的。
-        await tester.pump(const Duration(milliseconds: 200));
+        // 第一趟只為量高度。**必須在基準高度下量**——溢出是相對於視窗的，
+        // 在一個一定裝得下的高視窗裡量，答案永遠是 0。
+        await pumpAt(_baseHeight);
+        final overflow = _stageOverflow(tester);
+
+        // 第二趟才是基準。夾在上下限之間：太矮會漏內容，太高會讓圖檔為了
+        // 一頁病態的巢狀虛擬清單而爆掉。
+        final height = (_baseHeight + overflow).clamp(_baseHeight, _maxHeight);
+        await pumpAt(height.toDouble());
+
+        // 截圖前先確認這一頁真的整個裝進來了。少了這道斷言，「基準涵蓋整頁」
+        // 就只是一個推論——高度算錯時圖仍然會產生，只是底部悄悄少一截。
+        if (height < _maxHeight) {
+          expect(
+            _stageOverflow(tester),
+            0,
+            reason:
+                '${page.label} 在 ${height}px 高的視窗下仍有內容在捲動線以下，'
+                '基準不完整。',
+          );
+        }
 
         await expectLater(
           find.byType(CatalogShell),

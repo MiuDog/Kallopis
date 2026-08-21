@@ -27,7 +27,9 @@ class KlpInlineNotice extends StatelessWidget {
 
     return LayoutBuilder(
       builder: (context, constraints) {
-        final isCompact = constraints.maxWidth < 480;
+        final isCompact =
+            constraints.maxWidth <
+            context.klp.geometry.layout.inlineNoticeBreakpoint;
         final content = Row(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [

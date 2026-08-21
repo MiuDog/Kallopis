@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../tokens/klp_scale.dart';
+import '../foundation/klp_metrics.dart';
 
 /// 表面的分層手法：純色階層 (tone)、實線邊框 (outline)、霧化透明 (frosted)、原生 Box 漸層 (gradient) 或傳統陰影 (shadow)。
 ///
@@ -45,6 +46,15 @@ class KlpSurfaceTheme extends ThemeExtension<KlpSurfaceTheme> {
     required this.statusRowSelectedOpacityDark,
     required this.frostedOpacity,
     required this.frostedVeilOpacity,
+    this.backdropBlurSigma = 12,
+    this.dragOpacity = KlpScale.opacity820,
+    this.listStatusOpacity = KlpScale.opacity140,
+    this.listStatusSelectedOpacity = KlpScale.opacity320,
+    this.accentSoftOpacityLight = KlpScale.opacity160,
+    this.accentSoftOpacityDark = KlpScale.opacity220,
+    this.windowPaneOpacityLight = KlpTransparency.lightPaneOpacity,
+    this.windowPaneOpacityDark = KlpTransparency.darkPaneOpacity,
+    this.invalidFillOpacity = KlpScale.opacity180,
   });
 
   final KlpSurfaceSeparation separation;
@@ -96,6 +106,15 @@ class KlpSurfaceTheme extends ThemeExtension<KlpSurfaceTheme> {
 
   /// 霧化套在透明表面上時借用的底色強度。
   final double frostedVeilOpacity;
+  final double backdropBlurSigma;
+  final double dragOpacity;
+  final double listStatusOpacity;
+  final double listStatusSelectedOpacity;
+  final double accentSoftOpacityLight;
+  final double accentSoftOpacityDark;
+  final double windowPaneOpacityLight;
+  final double windowPaneOpacityDark;
+  final double invalidFillOpacity;
 
   bool get usesShadow => separation == KlpSurfaceSeparation.shadow;
 
@@ -153,6 +172,15 @@ class KlpSurfaceTheme extends ThemeExtension<KlpSurfaceTheme> {
     double? statusRowSelectedOpacityDark,
     double? frostedOpacity,
     double? frostedVeilOpacity,
+    double? backdropBlurSigma,
+    double? dragOpacity,
+    double? listStatusOpacity,
+    double? listStatusSelectedOpacity,
+    double? accentSoftOpacityLight,
+    double? accentSoftOpacityDark,
+    double? windowPaneOpacityLight,
+    double? windowPaneOpacityDark,
+    double? invalidFillOpacity,
   }) {
     return KlpSurfaceTheme(
       separation: separation ?? this.separation,
@@ -175,6 +203,20 @@ class KlpSurfaceTheme extends ThemeExtension<KlpSurfaceTheme> {
           statusRowSelectedOpacityDark ?? this.statusRowSelectedOpacityDark,
       frostedOpacity: frostedOpacity ?? this.frostedOpacity,
       frostedVeilOpacity: frostedVeilOpacity ?? this.frostedVeilOpacity,
+      backdropBlurSigma: backdropBlurSigma ?? this.backdropBlurSigma,
+      dragOpacity: dragOpacity ?? this.dragOpacity,
+      listStatusOpacity: listStatusOpacity ?? this.listStatusOpacity,
+      listStatusSelectedOpacity:
+          listStatusSelectedOpacity ?? this.listStatusSelectedOpacity,
+      accentSoftOpacityLight:
+          accentSoftOpacityLight ?? this.accentSoftOpacityLight,
+      accentSoftOpacityDark:
+          accentSoftOpacityDark ?? this.accentSoftOpacityDark,
+      windowPaneOpacityLight:
+          windowPaneOpacityLight ?? this.windowPaneOpacityLight,
+      windowPaneOpacityDark:
+          windowPaneOpacityDark ?? this.windowPaneOpacityDark,
+      invalidFillOpacity: invalidFillOpacity ?? this.invalidFillOpacity,
     );
   }
 
@@ -212,10 +254,19 @@ class KlpSurfaceTheme extends ThemeExtension<KlpSurfaceTheme> {
           statusRowOpacityDark == other.statusRowOpacityDark &&
           statusRowSelectedOpacityDark == other.statusRowSelectedOpacityDark &&
           frostedOpacity == other.frostedOpacity &&
-          frostedVeilOpacity == other.frostedVeilOpacity;
+          frostedVeilOpacity == other.frostedVeilOpacity &&
+          backdropBlurSigma == other.backdropBlurSigma &&
+          dragOpacity == other.dragOpacity &&
+          listStatusOpacity == other.listStatusOpacity &&
+          listStatusSelectedOpacity == other.listStatusSelectedOpacity &&
+          accentSoftOpacityLight == other.accentSoftOpacityLight &&
+          accentSoftOpacityDark == other.accentSoftOpacityDark &&
+          windowPaneOpacityLight == other.windowPaneOpacityLight &&
+          windowPaneOpacityDark == other.windowPaneOpacityDark &&
+          invalidFillOpacity == other.invalidFillOpacity;
 
   @override
-  int get hashCode => Object.hash(
+  int get hashCode => Object.hashAll(<Object>[
     separation,
     overlayBlur,
     overlaySpread,
@@ -234,5 +285,14 @@ class KlpSurfaceTheme extends ThemeExtension<KlpSurfaceTheme> {
     statusRowSelectedOpacityDark,
     frostedOpacity,
     frostedVeilOpacity,
-  );
+    backdropBlurSigma,
+    dragOpacity,
+    listStatusOpacity,
+    listStatusSelectedOpacity,
+    accentSoftOpacityLight,
+    accentSoftOpacityDark,
+    windowPaneOpacityLight,
+    windowPaneOpacityDark,
+    invalidFillOpacity,
+  ]);
 }

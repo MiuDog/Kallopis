@@ -5,10 +5,13 @@ import '../foundation/klp_icons.dart';
 import '../theme/klp_theme.dart';
 import '../typography/klp_text.dart';
 
-/// 狀態指示樣式：圓點 (dot)、雙色分割圓點 (splitDot)、核取勾 (check)、叉號 (cross)、等待重試 (waiting)、空心圓 (circle)。
+/// 狀態指示樣式：圓點 (dot)、運行中 (running)、雙色分割圓點 (splitDot)、核取勾 (check)、叉號 (cross)、等待計時 (waiting)、空心圓 (circle)。
 enum KlpStatusKind {
   /// 實心圓點。
   dot,
+
+  /// 運行中指示（Loader 弧線）。
+  running,
 
   /// 雙色分割圓點（如藍/青色運行中）。
   splitDot,
@@ -19,7 +22,7 @@ enum KlpStatusKind {
   /// 叉號標記 (✕)。
   cross,
 
-  /// 等待／旋轉標記 (↻)。
+  /// 等待／計時器標記 (⏱)。
   waiting,
 
   /// 空心圓標記 (○)。
@@ -52,7 +55,7 @@ class KlpStatusIndicator extends StatelessWidget {
   Widget build(BuildContext context) {
     final tokens = context.klpColors;
     final defaultColor = switch (kind) {
-      KlpStatusKind.splitDot => tokens.info,
+      KlpStatusKind.running || KlpStatusKind.splitDot => tokens.info,
       KlpStatusKind.check => tokens.success,
       KlpStatusKind.cross => tokens.danger,
       KlpStatusKind.waiting => tokens.warning,
@@ -62,9 +65,14 @@ class KlpStatusIndicator extends StatelessWidget {
     final effectiveColor = color ?? defaultColor;
 
     final Widget iconWidget = switch (kind) {
+      KlpStatusKind.running => KlpIcon(
+        KlpIcons.loader,
+        size: context.klp.space.iconMicro,
+        color: effectiveColor,
+      ),
       KlpStatusKind.splitDot => KlpIcon(
-        KlpIcons.splitCircle,
-        size: context.klp.space.iconTiny,
+        KlpIcons.loader,
+        size: context.klp.space.iconMicro,
         color: effectiveColor,
       ),
       KlpStatusKind.check => KlpIcon(
@@ -78,7 +86,7 @@ class KlpStatusIndicator extends StatelessWidget {
         color: effectiveColor,
       ),
       KlpStatusKind.waiting => KlpIcon(
-        KlpIcons.refresh,
+        KlpIcons.timer,
         size: context.klp.space.iconMicro,
         color: effectiveColor,
       ),
@@ -101,7 +109,10 @@ class KlpStatusIndicator extends StatelessWidget {
       mainAxisSize: MainAxisSize.min,
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
-        Transform.translate(offset: const Offset(0, 1), child: iconWidget),
+        Transform.translate(
+          offset: Offset(0, context.klp.geometry.optical.statusIconOffsetY),
+          child: iconWidget,
+        ),
         SizedBox(width: context.klp.space.tight),
         KlpText(
           label.toUpperCase(),

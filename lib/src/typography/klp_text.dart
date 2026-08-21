@@ -1,6 +1,5 @@
 import 'package:flutter/widgets.dart';
 
-import '../foundation/klp_metrics.dart';
 import '../theme/klp_theme.dart';
 import '../theme/klp_typography_theme.dart';
 
@@ -186,6 +185,7 @@ abstract final class KlpTextStyles {
       fontSize: type.body,
       lineHeight: type.bodyLeading,
       fontWeight: type.regular,
+      letterSpacing: type.labelTracking,
       tier: KlpTextColorTier.prominent,
       family: KlpFontRole.mono,
     ),
@@ -198,7 +198,7 @@ abstract final class KlpTextStyles {
     KlpTextRole.label: KlpTextStyleDefinition(
       fontSize: type.sub,
       lineHeight: type.labelLeading,
-      fontWeight: type.semiBold,
+      fontWeight: type.regular,
       letterSpacing: type.labelTracking,
       tier: KlpTextColorTier.prominent,
       family: KlpFontRole.mono,
@@ -207,6 +207,7 @@ abstract final class KlpTextStyles {
       fontSize: type.sub,
       lineHeight: type.codeLeading,
       fontWeight: type.regular,
+      letterSpacing: type.labelTracking,
       tier: KlpTextColorTier.prominent,
       family: KlpFontRole.mono,
     ),
@@ -346,9 +347,10 @@ class KlpText extends StatelessWidget {
 
     // 等寬字型（如 JetBrains Mono / Consolas）相較 UI 字型與圖示視覺重心偏下，
     // 在此統一進行 -1.0px 的光學基線偏移補償，使其與 icon、色票圓點保持精確垂直對齊。
-    final double yOffset =
-        (roleDef.family == KlpFontRole.mono ? -1.0 : 0.0) +
-        KlpTypography.uiBaselineOffset;
+    final optical = context.klp.geometry.optical;
+    final yOffset = roleDef.family == KlpFontRole.mono
+        ? optical.monoBaselineOffsetY
+        : optical.uiBaselineOffsetY;
 
     return Transform.translate(offset: Offset(0, yOffset), child: text);
   }

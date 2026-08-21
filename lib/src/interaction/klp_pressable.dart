@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
 import 'klp_interaction_settings.dart';
-import '../foundation/klp_palette.dart';
 import '../surface/klp_dashed_border.dart';
 import '../theme/klp_motion_theme.dart';
 import '../theme/klp_theme.dart';
@@ -12,7 +11,7 @@ class KlpPressable extends StatefulWidget {
     required this.child,
     required this.onPressed,
     this.onLongPress,
-    this.longPressProgressColor = KlpPalette.transparent,
+    this.longPressProgressColor,
     this.borderRadius,
     this.onHover,
     this.onFocusChange,
@@ -23,7 +22,7 @@ class KlpPressable extends StatefulWidget {
   final Widget child;
   final VoidCallback? onPressed;
   final VoidCallback? onLongPress;
-  final Color longPressProgressColor;
+  final Color? longPressProgressColor;
   final BorderRadius? borderRadius;
   final ValueChanged<bool>? onHover;
   final ValueChanged<bool>? onFocusChange;
@@ -139,9 +138,9 @@ class _KlpPressableState extends State<KlpPressable>
         onHover: _handleHover,
         onFocusChange: _handleFocusChange,
         splashFactory: NoSplash.splashFactory,
-        splashColor: KlpPalette.transparent,
-        highlightColor: KlpPalette.transparent,
-        overlayColor: const WidgetStatePropertyAll(KlpPalette.transparent),
+        splashColor: klp.color.clear,
+        highlightColor: klp.color.clear,
+        overlayColor: WidgetStatePropertyAll(klp.color.clear),
         borderRadius: widget.borderRadius,
         child: Stack(
           fit: StackFit.passthrough,
@@ -163,7 +162,7 @@ class _KlpPressableState extends State<KlpPressable>
                       },
                       child: ColoredBox(
                         key: const ValueKey('pln-long-press-progress'),
-                        color: widget.longPressProgressColor,
+                        color: widget.longPressProgressColor ?? klp.color.clear,
                       ),
                     ),
                   ),

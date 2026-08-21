@@ -46,7 +46,7 @@ flowchart TD
 
 ## 程式碼證據
 
-- 檔案路徑：[`lib/src/editor/klp_page_chrome.dart`](../../../../lib/src/editor/klp_page_chrome.dart#L139)
+- 檔案路徑：[`lib/src/editor/klp_page_chrome.dart`](../../../../lib/src/editor/klp_page_chrome.dart#L143)
 - 宣告型態：`StatelessWidget`
 
 ## 閱讀說明

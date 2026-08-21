@@ -1,6 +1,6 @@
 # Kallopis 元件樹架構全覽
 
-> 本目錄遵循 `/focused-architecture-diagram` 規範，精確繪製 Kallopis 全部 146 個 Widget 元件之內部組成架構。
+> 本目錄遵循 `/focused-architecture-diagram` 規範，精確繪製 Kallopis 全部 151 個 Widget 元件之內部組成架構。
 
 ## 架構分層與展開規範
 
@@ -22,9 +22,9 @@
 - [data — 資料呈現 (22)](#data)
 - [feedback — 狀態與回饋 (11)](#feedback)
 - [overlay — 浮層 (8)](#overlay)
-- [navigation — 導覽元件 (7)](#navigation)
+- [navigation — 導覽元件 (11)](#navigation)
 - [editor — 編輯器周邊 (8)](#editor)
-- [shell — 應用外殼 (13)](#shell)
+- [shell — 應用外殼 (14)](#shell)
 - [routing — 分發 (2)](#routing)
 - [app — 應用程式進入點與根容器 (1)](#app)
 
@@ -210,12 +210,16 @@
 | `KlpTooltipSurface` | `Stateless` | Kallopis KlpTooltipSurface 元件 | [klp_tooltip_surface.md](./overlay/klp_tooltip_surface.md) |
 
 <a id="navigation"></a>
-### navigation — 導覽元件 (7)
+### navigation — 導覽元件 (11)
 
 | 元件名稱 | 類型 | 說明 | 架構文件 |
 |---|---|---|---|
 | `KlpActionGroup` | `Stateless` | 一組動作按鈕的容器，寬度不足時自動換行，換行時保留與同一行相同的間距。  只負責排版間距——按鈕本身的樣式、順序、是否停用都由 [children] 自行決定。 | [klp_action_group.md](./navigation/klp_action_group.md) |
 | `KlpBreadcrumb` | `Stateless` | Kallopis KlpBreadcrumb 元件 | [klp_breadcrumb.md](./navigation/klp_breadcrumb.md) |
+| `KlpFileExplorer` | `Stateful` | 檔案瀏覽器（File Explorer）。  支援分類分組（可折疊）、資料夾樹狀結構（可展開）與一般檔案節點選取。 支援受控（傳入 `expandedSectionIds` / `expandedItemIds` / `selectedId`） 與非受控（讀取各 Section 與 Item 的 `expanded` / `selected` 屬性）兩種模式。 | [klp_file_explorer.md](./navigation/klp_file_explorer.md) |
+| `KlpFileExplorerFolderView` | `Stateful` | 折疊資料夾視圖（帶展開箭頭、資料夾圖示與縮排）。 | [klp_file_explorer_folder_view.md](./navigation/klp_file_explorer_folder_view.md) |
+| `KlpFileExplorerItemView` | `Stateful` | 一般檔案項目視圖（含檔案圖示、文字標題、選取高亮與 Hover 回饋）。 | [klp_file_explorer_item_view.md](./navigation/klp_file_explorer_item_view.md) |
+| `KlpFileExplorerSectionView` | `Stateless` | 分類區塊視圖（含分類標題、折疊動畫與項目清單）。 | [klp_file_explorer_section_view.md](./navigation/klp_file_explorer_section_view.md) |
 | `KlpPagination` | `Stateless` | 上一頁／頁碼／下一頁的簡易分頁控制項。  頁碼從 1 開始（不是從 0）；在第一頁或最後一頁時對應按鈕會自動停用， 呼叫端不需要自己判斷邊界。不提供跳頁輸入框或頁碼清單，適合頁數不多、 只需要前後翻頁的場合。 | [klp_pagination.md](./navigation/klp_pagination.md) |
 | `KlpRailItem` | `Stateful` | Kallopis KlpRailItem 元件 | [klp_rail_item.md](./navigation/klp_rail_item.md) |
 | `KlpSidebarSectionLabel` | `Stateless` | 側邊欄分組標題，固定高度且左對齊、使用低對比的 [KlpTextRole.label] 樣式。  固定高度是為了讓不同分組標題之間的垂直節奏一致，即使某個標題很短也不會 讓上下間距看起來不一樣。 | [klp_sidebar_section_label.md](./navigation/klp_sidebar_section_label.md) |
@@ -237,7 +241,7 @@
 | `KlpSearchNavigator` | `Stateless` | Kallopis KlpSearchNavigator 元件 | [klp_search_navigator.md](./editor/klp_search_navigator.md) |
 
 <a id="shell"></a>
-### shell — 應用外殼 (13)
+### shell — 應用外殼 (14)
 
 | 元件名稱 | 類型 | 說明 | 架構文件 |
 |---|---|---|---|
@@ -253,6 +257,7 @@
 | `KlpThemePreviewTile` | `Stateless` | Kallopis KlpThemePreviewTile 元件 | [klp_theme_preview_tile.md](./shell/klp_theme_preview_tile.md) |
 | `KlpThemeToggle` | `Stateless` | Kallopis KlpThemeToggle 元件 | [klp_theme_toggle.md](./shell/klp_theme_toggle.md) |
 | `KlpWindowControls` | `Stateless` | Kallopis KlpWindowControls 元件 | [klp_window_controls.md](./shell/klp_window_controls.md) |
+| `KlpWindowHeader` | `Stateless` | 桌面應用程式自帶視窗標題列（Chrome Header）。  - **Windows / Linux 模式**：左側展示 App Icon 與標題，右側展示自訂動作與視窗控制項。 - **macOS 模式**：左側展示視窗控制項（交通燈），中間展示 App Icon 與標題，右側展示自訂動作。 | [klp_window_header.md](./shell/klp_window_header.md) |
 | `KlpWorkbenchShell` | `Stateless` | 三欄工作區外殼：主要面板、舞台、次要面板，兩側可拖曳調寬並依斷點自動收合。 這是桌面型應用最外層的版面骨架。 | [klp_workbench_shell.md](./shell/klp_workbench_shell.md) |
 
 <a id="routing"></a>

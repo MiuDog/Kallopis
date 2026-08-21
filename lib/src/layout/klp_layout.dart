@@ -1,6 +1,5 @@
 import 'package:flutter/widgets.dart';
 
-import '../foundation/klp_metrics.dart';
 import '../surface/klp_dashed_border.dart';
 import '../surface/klp_surface.dart';
 import '../theme/klp_theme.dart';
@@ -52,7 +51,7 @@ class KlpSplitLayout extends StatelessWidget {
     required this.leading,
     required this.trailing,
     this.center,
-    this.leadingWidth = KlpSize.sidebar,
+    this.leadingWidth,
     this.trailingWidth,
     this.gap,
     this.showDashedDivider = false,
@@ -61,7 +60,7 @@ class KlpSplitLayout extends StatelessWidget {
   final Widget leading;
   final Widget trailing;
   final Widget? center;
-  final double leadingWidth;
+  final double? leadingWidth;
   final double? trailingWidth;
   final double? gap;
   final bool showDashedDivider;
@@ -70,6 +69,8 @@ class KlpSplitLayout extends StatelessWidget {
   Widget build(BuildContext context) {
     final klp = context.klp;
     final effectiveGap = gap ?? klp.space.base;
+    final effectiveLeadingWidth =
+        leadingWidth ?? klp.geometry.layout.primaryPaneWidth;
 
     Widget divider() => showDashedDivider
         ? Padding(
@@ -82,11 +83,14 @@ class KlpSplitLayout extends StatelessWidget {
       return Row(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-          SizedBox(width: leadingWidth, child: leading),
+          SizedBox(width: effectiveLeadingWidth, child: leading),
           divider(),
           Expanded(child: center!),
           divider(),
-          SizedBox(width: trailingWidth ?? leadingWidth, child: trailing),
+          SizedBox(
+            width: trailingWidth ?? effectiveLeadingWidth,
+            child: trailing,
+          ),
         ],
       );
     }
@@ -94,7 +98,7 @@ class KlpSplitLayout extends StatelessWidget {
     return Row(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
-        SizedBox(width: leadingWidth, child: leading),
+        SizedBox(width: effectiveLeadingWidth, child: leading),
         divider(),
         Expanded(child: trailing),
       ],

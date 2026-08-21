@@ -134,7 +134,7 @@ class _KlpPaneCollapseControlState extends State<KlpPaneCollapseControl> {
       child: Center(
         child: KlpIcon(
           effectiveIcon,
-          size: klp.space.iconSmall,
+          size: klp.space.iconBase,
           color: widget.collapsed ? tokens.textFaint : tokens.textMuted,
         ),
       ),

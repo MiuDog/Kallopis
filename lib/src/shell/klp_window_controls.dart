@@ -6,7 +6,18 @@ import '../l10n/klp_localizations.dart';
 import '../overlay/klp_tooltip.dart';
 import '../surface/klp_dashed_border.dart';
 import '../theme/klp_theme.dart';
-import '../foundation/klp_palette.dart';
+
+/// 視窗控制按鈕樣式。
+enum KlpWindowControlsStyle {
+  /// 自動依據執行平台判斷。
+  adaptive,
+
+  /// Windows / Linux 風格（最小化、最大化、關閉）。
+  windows,
+
+  /// macOS 風格（關閉、最小化、最大化）。
+  macOS,
+}
 
 class KlpWindowControls extends StatelessWidget {
   const KlpWindowControls({
@@ -15,6 +26,7 @@ class KlpWindowControls extends StatelessWidget {
     required this.onToggleMaximize,
     required this.onClose,
     this.isMaximized = false,
+    this.style = KlpWindowControlsStyle.adaptive,
     this.minimizeKey,
     this.maximizeKey,
     this.closeKey,
@@ -24,6 +36,7 @@ class KlpWindowControls extends StatelessWidget {
   final VoidCallback? onToggleMaximize;
   final VoidCallback? onClose;
   final bool isMaximized;
+  final KlpWindowControlsStyle style;
   final Key? minimizeKey;
   final Key? maximizeKey;
   final Key? closeKey;
@@ -31,31 +44,38 @@ class KlpWindowControls extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final l10n = KlpLocalizations.of(context);
+    final isMac =
+        style == KlpWindowControlsStyle.macOS ||
+        (style == KlpWindowControlsStyle.adaptive &&
+            Theme.of(context).platform == TargetPlatform.macOS);
+
+    final minimizeBtn = _WindowControlButton(
+      key: minimizeKey,
+      icon: KlpIcons.minus,
+      label: l10n.windowMinimizeLabel,
+      onPressed: onMinimize,
+    );
+
+    final maximizeBtn = _WindowControlButton(
+      key: maximizeKey,
+      icon: isMaximized ? KlpIcons.restore : KlpIcons.maximize,
+      label: isMaximized ? l10n.windowRestoreLabel : l10n.windowMaximizeLabel,
+      onPressed: onToggleMaximize,
+    );
+
+    final closeBtn = _WindowControlButton(
+      key: closeKey,
+      icon: KlpIcons.x,
+      label: l10n.windowCloseLabel,
+      onPressed: onClose,
+      destructive: true,
+    );
+
     return Row(
       mainAxisSize: MainAxisSize.min,
-      children: [
-        _WindowControlButton(
-          key: minimizeKey,
-          icon: KlpIcons.minus,
-          label: l10n.windowMinimizeLabel,
-          onPressed: onMinimize,
-        ),
-        _WindowControlButton(
-          key: maximizeKey,
-          icon: KlpIcons.maximize,
-          label: isMaximized
-              ? l10n.windowRestoreLabel
-              : l10n.windowMaximizeLabel,
-          onPressed: onToggleMaximize,
-        ),
-        _WindowControlButton(
-          key: closeKey,
-          icon: KlpIcons.x,
-          label: l10n.windowCloseLabel,
-          onPressed: onClose,
-          destructive: true,
-        ),
-      ],
+      children: isMac
+          ? [closeBtn, minimizeBtn, maximizeBtn]
+          : [minimizeBtn, maximizeBtn, closeBtn],
     );
   }
 }
@@ -96,7 +116,7 @@ class _WindowControlButtonState extends State<_WindowControlButton> {
         : tokens.textMuted;
 
     Widget button = Material(
-      color: KlpPalette.transparent,
+      color: tokens.clear,
       borderRadius: BorderRadius.circular(context.klp.shape.control),
       child: InkWell(
         onTap: widget.onPressed,

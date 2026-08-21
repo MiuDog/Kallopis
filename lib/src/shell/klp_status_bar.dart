@@ -21,7 +21,9 @@ class KlpStatusBar extends StatelessWidget {
 
     return LayoutBuilder(
       builder: (context, constraints) {
-        final compact = constraints.maxWidth < 400;
+        final compact =
+            constraints.maxWidth <
+            context.klp.geometry.layout.statusBarBreakpoint;
 
         return Padding(
           padding: EdgeInsets.symmetric(horizontal: context.klp.space.compact),

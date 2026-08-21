@@ -1,5 +1,30 @@
 # Changelog
 
+## 0.3.0 — 2026-08-21
+
+Kallopis 現在可以把 JSON 設定檔解碼成完整的 `KlpVisualStyle`，並以同一個 theme
+入口控制顏色、字體、間距、邊界、圓角、動態、表面效果與 component token。
+這個版本保留原有視覺結果，並讓本機與遠端消費者都能選擇可重現的來源。
+
+### 加入
+
+- **JSON theme 邊界**：`KlpVisualStyleJson` 可完整編碼 style，也可以指定 base style
+  解碼局部 JSON；未提供的欄位沿用 base，不再由元件自行藏預設風格。
+- **明確的錯誤邊界**：不合法型別、範圍或未知欄位會立即失敗，並在
+  `FormatException` 中提供完整 JSON 路徑，避免設定錯字靜默失效。
+- **Geometry semantic token**：控制項、資料元件、overlay、responsive layout 與光學校正
+  的既有數值移入 theme；元件不再直接讀取 `Klp*Metrics` 或 primitive 色彩。
+- **可重現發布**：Notist 繼續使用本機 path dependency；其他消費者可固定
+  Git tag。`v*` tag 通過全部 CI 後會自動建立 GitHub Release。
+
+### 變更
+
+- 版本號、CHANGELOG 與 Git tag 由 release job 機械比對，不一致時不會建立
+  GitHub Release。
+- 新 token 均有 constructor 預設值，既有 Dart 呼叫維持相容；非整數毫秒 duration 與
+  無法無損序列化的 curve 會在 JSON encode 邊界明確拒絕。
+- 依賴發布政策維持 `publish_to: none`；Kallopis 不發布到 pub.dev。
+
 ## 0.2.0 — 2026-08-20
 
 第一個可以被其他本機專案直接使用的版本。發布形式是 path dependency，

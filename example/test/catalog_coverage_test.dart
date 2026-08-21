@@ -156,7 +156,6 @@ void main() {
               pages: catalogPages,
               selected: index,
               onSelected: (_) {},
-              onToggleTheme: () {},
             ),
           ),
         );

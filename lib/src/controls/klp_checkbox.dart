@@ -2,10 +2,8 @@ import 'package:flutter/material.dart';
 
 import '../foundation/klp_icon.dart';
 import '../foundation/klp_icons.dart';
-import '../foundation/klp_metrics.dart';
 import '../theme/klp_theme.dart';
 import '../typography/klp_text.dart';
-import '../foundation/klp_palette.dart';
 
 class KlpCheckbox extends StatelessWidget {
   const KlpCheckbox({
@@ -38,15 +36,15 @@ class KlpCheckbox extends StatelessWidget {
             enabled: enabled,
             label: label,
             child: Material(
-              color: KlpPalette.transparent,
+              color: tokens.clear,
               borderRadius: BorderRadius.circular(context.klp.shape.control),
               child: InkWell(
                 onTap: enabled ? () => onChanged!(!value) : null,
                 borderRadius: BorderRadius.circular(context.klp.shape.control),
                 child: AnimatedContainer(
                   duration: context.klp.motion.styleTransition,
-                  width: KlpFormMetrics.selectionControl,
-                  height: KlpFormMetrics.selectionControl,
+                  width: context.klp.geometry.control.selectionControl,
+                  height: context.klp.geometry.control.selectionControl,
                   alignment: Alignment.center,
                   decoration: BoxDecoration(
                     color: value ? activeColor : null,
@@ -59,7 +57,7 @@ class KlpCheckbox extends StatelessWidget {
                   child: value
                       ? KlpIcon(
                           KlpIcons.check,
-                          size: KlpFormMetrics.selectionIcon,
+                          size: context.klp.geometry.control.selectionIcon,
                           color: tokens.stageSurface,
                         )
                       : null,

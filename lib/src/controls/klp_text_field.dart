@@ -90,11 +90,7 @@ class _KlpTextFieldState extends State<KlpTextField> {
         klp.type.sub,
         klp.space.tight,
       ),
-      KlpControlSize.md => (
-        klp.space.controlHeight,
-        klp.type.body,
-        klp.space.compact,
-      ),
+      KlpControlSize.md => (klp.fieldHeight, klp.type.body, klp.fieldPaddingX),
       KlpControlSize.lg => (
         klp.space.controlHeightLarge,
         klp.type.lead,
@@ -141,7 +137,9 @@ class _KlpTextFieldState extends State<KlpTextField> {
                   behavior: HitTestBehavior.opaque,
                   onTap: widget.onStepUp,
                   child: SizedBox(
-                    height: fieldHeight * 0.4,
+                    height:
+                        fieldHeight *
+                        klp.geometry.control.textFieldIndicatorHeightFactor,
                     child: const KlpText(
                       '⌃',
                       role: KlpTextRole.caption,
@@ -153,7 +151,9 @@ class _KlpTextFieldState extends State<KlpTextField> {
                   behavior: HitTestBehavior.opaque,
                   onTap: widget.onStepDown,
                   child: SizedBox(
-                    height: fieldHeight * 0.4,
+                    height:
+                        fieldHeight *
+                        klp.geometry.control.textFieldIndicatorHeightFactor,
                     child: const KlpText(
                       '⌄',
                       role: KlpTextRole.caption,
@@ -169,13 +169,20 @@ class _KlpTextFieldState extends State<KlpTextField> {
     }
 
     final isInvalid = hasError || widget.conflict;
-    final fillColor = KlpFieldStyle.inputFill(tokens, error: isInvalid);
+    final fillColor = KlpFieldStyle.inputFill(
+      tokens,
+      error: isInvalid,
+      surface: klp.surface,
+    );
 
     Widget fieldWidget = Container(
       height: widget.multiline ? null : fieldHeight,
       decoration: BoxDecoration(
         color: fillColor,
-        borderRadius: BorderRadius.circular(klp.shape.control),
+        borderRadius: BorderRadius.circular(klp.fieldRadius),
+        border: klp.fieldBorderWidth == klp.shape.none
+            ? null
+            : Border.all(color: tokens.border, width: klp.fieldBorderWidth),
       ),
       alignment: widget.multiline ? Alignment.topLeft : Alignment.centerLeft,
       child: Material(
@@ -199,8 +206,12 @@ class _KlpTextFieldState extends State<KlpTextField> {
                 : [LengthLimitingTextInputFormatter(widget.maxLength)],
             onChanged: widget.onChanged,
             onFieldSubmitted: widget.onSubmitted,
-            minLines: widget.multiline ? 4 : 1,
-            maxLines: widget.multiline ? 8 : 1,
+            minLines: widget.multiline
+                ? klp.geometry.control.textFieldMinLines
+                : 1,
+            maxLines: widget.multiline
+                ? klp.geometry.control.textFieldMaxLines
+                : 1,
             style: TextStyle(
               color: !widget.enabled ? tokens.textFaint : tokens.text,
               fontSize: fontSize,
@@ -244,7 +255,13 @@ class _KlpTextFieldState extends State<KlpTextField> {
                 horizontal: paddingX,
                 vertical: widget.multiline
                     ? klp.space.controlPaddingY
-                    : (fieldHeight - fontSize * 1.3) / 2,
+                    : (fieldHeight -
+                              fontSize *
+                                  klp
+                                      .geometry
+                                      .control
+                                      .textFieldLineHeightFactor) /
+                          2,
               ),
             ),
           ),
@@ -255,7 +272,7 @@ class _KlpTextFieldState extends State<KlpTextField> {
     if ((_hovered || _focused) && widget.enabled) {
       fieldWidget = KlpDashedBorder(
         color: klp.hoverBorder,
-        radius: klp.shape.control,
+        radius: klp.fieldRadius,
         child: fieldWidget,
       );
     }

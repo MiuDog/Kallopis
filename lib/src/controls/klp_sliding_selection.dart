@@ -66,7 +66,7 @@ class KlpSlidingSelection extends StatelessWidget {
                   color: options[selectedIndex].color.withValues(
                     alpha: klp.surface.statusFillOpacity,
                   ),
-                  borderRadius: BorderRadius.circular(klp.shape.control - 1),
+                  borderRadius: BorderRadius.circular(klp.shape.controlInner),
                   border: Border.all(
                     color: options[selectedIndex].color,
                     width: klp.shape.hairline,
@@ -98,15 +98,15 @@ class KlpSlidingSelection extends StatelessWidget {
               children: [
                 for (var index = 0; index < options.length; index++)
                   Material(
-                    color: Colors.transparent,
-                    borderRadius: BorderRadius.circular(klp.shape.control - 1),
+                    color: tokens.clear,
+                    borderRadius: BorderRadius.circular(klp.shape.controlInner),
                     child: InkWell(
                       key: ValueKey('pln-selection-hit-$label-$index'),
                       onTap: onSelected == null
                           ? null
                           : () => onSelected!(index),
                       borderRadius: BorderRadius.circular(
-                        klp.shape.control - 1,
+                        klp.shape.controlInner,
                       ),
                       child: SizedBox(
                         width: segmentWidth,

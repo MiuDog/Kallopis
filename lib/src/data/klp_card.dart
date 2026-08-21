@@ -30,24 +30,25 @@ class KlpCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final klp = context.klp;
     final tokens = context.klpColors;
     final effectiveBackground = backgroundColor ?? tokens.component;
 
     Widget card = DecoratedBox(
       decoration: BoxDecoration(
         color: effectiveBackground,
-        borderRadius: BorderRadius.circular(context.klp.shape.card),
+        borderRadius: BorderRadius.circular(klp.cardRadius),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           Padding(
-            padding: EdgeInsets.all(context.klp.space.base),
+            padding: EdgeInsets.all(klp.cardPadding),
             child: Row(
               children: [
                 if (leading != null) ...[
                   leading!,
-                  SizedBox(width: context.klp.space.compact),
+                  SizedBox(width: klp.space.compact),
                 ],
                 Expanded(
                   child: Column(
@@ -63,15 +64,9 @@ class KlpCard extends StatelessWidget {
               ],
             ),
           ),
-          Padding(
-            padding: EdgeInsets.all(context.klp.space.base),
-            child: child,
-          ),
+          Padding(padding: EdgeInsets.all(klp.cardPadding), child: child),
           if (footer != null)
-            Padding(
-              padding: EdgeInsets.all(context.klp.space.compact),
-              child: footer!,
-            ),
+            Padding(padding: EdgeInsets.all(klp.space.compact), child: footer!),
         ],
       ),
     );
@@ -79,7 +74,7 @@ class KlpCard extends StatelessWidget {
     if (selected) {
       card = KlpDashedBorder(
         color: tokens.textMuted,
-        radius: context.klp.shape.card,
+        radius: klp.cardRadius,
         child: card,
       );
     }

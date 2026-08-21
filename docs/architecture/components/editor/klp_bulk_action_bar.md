@@ -33,7 +33,7 @@ flowchart TD
 
 ## 程式碼證據
 
-- 檔案路徑：[`lib/src/editor/klp_editor_action_bars.dart`](../../../../lib/src/editor/klp_editor_action_bars.dart#L41)
+- 檔案路徑：[`lib/src/editor/klp_editor_action_bars.dart`](../../../../lib/src/editor/klp_editor_action_bars.dart#L42)
 - 宣告型態：`StatelessWidget`
 
 ## 閱讀說明

@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 
-import '../foundation/klp_palette.dart';
 import '../foundation/klp_icon.dart';
 import '../foundation/klp_icons.dart';
-import '../foundation/klp_metrics.dart';
 import '../surface/klp_dashed_border.dart';
 import '../surface/klp_stroke.dart';
 import '../theme/klp_theme.dart';
@@ -49,7 +47,7 @@ class _KlpSelectState extends State<KlpSelect> {
       state: strokeState,
       radius: context.klp.shape.control,
       child: Material(
-        color: KlpPalette.transparent,
+        color: tokens.clear,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(context.klp.shape.control),
         ),
@@ -59,7 +57,7 @@ class _KlpSelectState extends State<KlpSelect> {
           onFocusChange: (value) => setState(() => _focused = value),
           borderRadius: BorderRadius.circular(context.klp.shape.control),
           child: SizedBox(
-            height: KlpFormMetrics.fieldHeight,
+            height: context.klp.geometry.control.fieldHeight,
             child: Padding(
               padding: EdgeInsets.symmetric(horizontal: context.klp.space.base),
               child: Row(

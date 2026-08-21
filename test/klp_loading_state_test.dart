@@ -24,7 +24,7 @@ void main() {
   });
 
   testWidgets('KlpGeometricSpinner respects reduced motion', (tester) async {
-    final style = KlpVisualStyle.modern.withReducedMotion(true);
+    final style = KlpVisualStyle.defaultStyle.withReducedMotion(true);
     await tester.pumpWidget(
       MaterialApp(
         theme: buildKlpTheme(Brightness.light, style: style),

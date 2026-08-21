@@ -96,7 +96,7 @@ class KlpPhaseToggle<T> extends StatelessWidget {
                 duration: klp.motion.styleTransition,
                 decoration: BoxDecoration(
                   color: activeBg,
-                  borderRadius: BorderRadius.circular(klp.shape.control - 1),
+                  borderRadius: BorderRadius.circular(klp.shape.controlInner),
                 ),
               ),
             ),

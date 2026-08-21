@@ -10,32 +10,35 @@ import 'token_views.dart';
 final brandPage = CatalogPageData(
   label: 'Brand',
   title: '品牌色',
-  description: '強調色與互動色。這是每個產品最先覆寫的一層。',
+  description: '強調色與互動色。包含淺色 (Light)、深色 (Dark) 與超深色 (Ultra Dark) 對照。',
   icon: KlpIcons.sparkles,
   specimens: const [],
   tokenView: (context) {
-    final klp = context.klp;
+    Widget sampleFor(String modeLabel, KlpThemeData tokens) => CatalogSample(
+      label: 'accent / interaction ($modeLabel)',
+      description: '產品覆寫品牌色時只需要改這兩個角色；其餘的色階由它們推導。',
+      child: CatalogGrid(
+        minItemWidth: 160,
+        children: [
+          Swatch(role: 'accent', color: tokens.accent),
+          Swatch(role: 'accentSoft', color: tokens.accentSoft),
+          Swatch(role: 'interaction', color: tokens.interaction),
+          Swatch(role: 'interactionSoft', color: tokens.interactionSoft),
+          Swatch(
+            role: 'onInteraction',
+            color: tokens.onInteraction,
+            offRamp: '對比前景',
+            note: '在 interaction 色上自動取對比較高的一端',
+          ),
+        ],
+      ),
+    );
+
     return CatalogCanvas(
       children: [
-        CatalogSample(
-          label: 'accent / interaction',
-          description: '產品覆寫品牌色時只需要改這兩個角色；其餘的色階由它們推導。',
-          child: CatalogGrid(
-            minItemWidth: 160,
-            children: [
-              Swatch(role: 'accent', color: klp.color.accent),
-              Swatch(role: 'accentSoft', color: klp.color.accentSoft),
-              Swatch(role: 'interaction', color: klp.color.interaction),
-              Swatch(role: 'interactionSoft', color: klp.color.interactionSoft),
-              Swatch(
-                role: 'onInteraction',
-                color: klp.color.onInteraction,
-                offRamp: '對比前景',
-                note: '在 interaction 色上自動取對比較高的一端',
-              ),
-            ],
-          ),
-        ),
+        sampleFor('Light', KlpThemeData.light),
+        sampleFor('Dark', KlpThemeData.dark),
+        sampleFor('Ultra Dark', KlpThemeData.ultraDark),
       ],
     );
   },
@@ -44,7 +47,7 @@ final brandPage = CatalogPageData(
 final surfacesPage = CatalogPageData(
   label: 'Light vs Dark surfaces',
   title: '表面階層',
-  description: '同一組角色在明暗兩態下的落點。階層順序在兩態下必須一致。',
+  description: '同一組角色在淺色、深色與超深色模式下的落點。階層順序在三態下必須一致。',
   icon: KlpIcons.container,
   specimens: const [],
   tokenView: (context) {
@@ -71,9 +74,9 @@ final surfacesPage = CatalogPageData(
 
     return CatalogCanvas(
       children: [
-        column('light', KlpThemeData.light),
-        column('dark', KlpThemeData.dark),
-        column('ultraDark', KlpThemeData.ultraDark),
+        column('Light (淺色)', KlpThemeData.light),
+        column('Dark (深色)', KlpThemeData.dark),
+        column('Ultra Dark (超深色)', KlpThemeData.ultraDark),
       ],
     );
   },
@@ -82,51 +85,46 @@ final surfacesPage = CatalogPageData(
 final neutralsPage = CatalogPageData(
   label: 'Neutrals (Ink/Stone)',
   title: '中性色',
-  description: '文字三階與線條。三階文字承擔了絕大部分的視覺層級，語意色不參與。',
+  description: '文字三階與線條在淺色、深色與超深色模式下的對比落點。',
   icon: KlpIcons.pencil,
   specimens: const [],
   tokenView: (context) {
-    final klp = context.klp;
+    Widget neutralsFor(String modeLabel, KlpThemeData tokens) => CatalogSample(
+      label: '中性色與文字三階 ($modeLabel)',
+      description: '層級由對比度表達，不由顏色表達——這是深淺三態都成立的唯一做法。',
+      child: CatalogGrid(
+        minItemWidth: 160,
+        children: [
+          Swatch(role: 'text', color: tokens.text, note: '主要文字'),
+          Swatch(role: 'textMuted', color: tokens.textMuted, note: '次要文字'),
+          Swatch(role: 'textFaint', color: tokens.textFaint, note: '輔助文字'),
+          Swatch(role: 'divider', color: tokens.divider, note: '分割線'),
+          Swatch(role: 'guide', color: tokens.guide, note: '虛線／佔位'),
+          Swatch(
+            role: 'border',
+            offRamp: '透明',
+            color: tokens.border,
+            note: '結構表面靠 tone 分層，不靠描邊',
+          ),
+          Swatch(
+            role: 'borderStrong',
+            offRamp: '透明',
+            color: tokens.borderStrong,
+          ),
+          Swatch(
+            role: 'modalScrim',
+            offRamp: 'ink950 @ 60%',
+            color: tokens.modalScrim,
+          ),
+        ],
+      ),
+    );
+
     return CatalogCanvas(
       children: [
-        CatalogSample(
-          label: '文字三階',
-          description: '層級由對比度表達，不由顏色表達——這是深淺兩態都成立的唯一做法。',
-          child: CatalogGrid(
-            minItemWidth: 160,
-            children: [
-              Swatch(role: 'text', color: klp.color.text, note: '主要'),
-              Swatch(role: 'textMuted', color: klp.color.textMuted, note: '次要'),
-              Swatch(role: 'textFaint', color: klp.color.textFaint, note: '輔助'),
-            ],
-          ),
-        ),
-        CatalogSample(
-          label: '線條與參考線',
-          child: CatalogGrid(
-            minItemWidth: 160,
-            children: [
-              Swatch(role: 'divider', color: klp.color.divider),
-              Swatch(role: 'guide', color: klp.color.guide, note: '虛線／佔位'),
-              Swatch(
-                role: 'border',
-                offRamp: '透明',
-                color: klp.color.border,
-                note: '結構表面靠 tone 分層，不靠描邊',
-              ),
-              Swatch(
-                role: 'borderStrong',
-                offRamp: '透明',
-                color: klp.color.borderStrong,
-              ),
-              Swatch(
-                role: 'modalScrim',
-                offRamp: 'ink950 @ 60%',
-                color: klp.color.modalScrim,
-              ),
-            ],
-          ),
-        ),
+        neutralsFor('Light', KlpThemeData.light),
+        neutralsFor('Dark', KlpThemeData.dark),
+        neutralsFor('Ultra Dark', KlpThemeData.ultraDark),
       ],
     );
   },
@@ -139,29 +137,28 @@ final semanticStatusPage = CatalogPageData(
   icon: KlpIcons.infoSquare,
   specimens: const [],
   tokenView: (context) {
-    final klp = context.klp;
+    Widget sampleFor(String modeLabel, KlpThemeData tokens) => CatalogSample(
+      label: '四個語意角色 ($modeLabel)',
+      description: '狀態色不參與視覺層級——層級由中性色的三階負責。',
+      child: CatalogGrid(
+        minItemWidth: 160,
+        children: [
+          Swatch(role: 'success', offRamp: '語意', color: tokens.success),
+          Swatch(role: 'warning', offRamp: '語意', color: tokens.warning),
+          Swatch(role: 'danger', offRamp: '語意', color: tokens.danger),
+          Swatch(role: 'info', offRamp: '語意', color: tokens.info),
+          Swatch(role: 'onStatus', offRamp: '對比前景', color: tokens.onStatus),
+        ],
+      ),
+    );
+
     return CatalogCanvas(
       children: [
+        sampleFor('Light', KlpThemeData.light),
+        sampleFor('Dark', KlpThemeData.dark),
+        sampleFor('Ultra Dark', KlpThemeData.ultraDark),
         CatalogSample(
-          label: '四個語意角色',
-          description: '狀態色不參與視覺層級——層級由中性色的三階負責。',
-          child: CatalogGrid(
-            minItemWidth: 160,
-            children: [
-              Swatch(role: 'success', offRamp: '語意', color: klp.color.success),
-              Swatch(role: 'warning', offRamp: '語意', color: klp.color.warning),
-              Swatch(role: 'danger', offRamp: '語意', color: klp.color.danger),
-              Swatch(role: 'info', offRamp: '語意', color: klp.color.info),
-              Swatch(
-                role: 'onStatus',
-                offRamp: '對比前景',
-                color: klp.color.onStatus,
-              ),
-            ],
-          ),
-        ),
-        CatalogSample(
-          label: 'KlpFeedbackTone',
+          label: 'KlpFeedbackTone 範例',
           description: '回饋元件用 tone 而不是直接指定顏色。',
           child: CatalogGrid(
             minItemWidth: 220,
@@ -1168,13 +1165,18 @@ final elevationPage = CatalogPageData(
                 child: SizedBox(
                   height: 72,
                   child: Row(
+                    crossAxisAlignment: CrossAxisAlignment.stretch,
                     children: [
-                      Container(
-                        width: 3,
-                        height: 24,
-                        decoration: BoxDecoration(
-                          color: klp.color.interaction,
-                          borderRadius: BorderRadius.circular(klp.shape.pill),
+                      Padding(
+                        padding: EdgeInsets.symmetric(
+                          vertical: klp.space.compact,
+                        ),
+                        child: Container(
+                          width: 3,
+                          decoration: BoxDecoration(
+                            color: klp.color.interaction,
+                            borderRadius: BorderRadius.circular(klp.shape.pill),
+                          ),
                         ),
                       ),
                       SizedBox(width: klp.space.compact),

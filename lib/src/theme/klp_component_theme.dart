@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'klp_shape_theme.dart';
 import 'klp_spacing_theme.dart';
 import 'klp_surface_theme.dart';
+import 'klp_geometry_theme.dart';
 
 /// Layer 3：component token。
 ///
@@ -68,30 +69,30 @@ class KlpComponentTheme extends ThemeExtension<KlpComponentTheme> {
       buttonPaddingY ?? s.controlPaddingY;
   double resolveButtonHeight(KlpSpacingTheme s) =>
       buttonHeight ?? s.controlHeight;
-  double resolveButtonBorderWidth(
-    KlpShapeTheme shape,
-    KlpSurfaceTheme surface,
-  ) => buttonBorderWidth ?? (surface.usesShadow ? 0 : shape.hairline);
+  double resolveButtonBorderWidth(KlpShapeTheme shape, KlpSurfaceTheme _) =>
+      buttonBorderWidth ?? shape.none;
 
   double resolveFieldRadius(KlpShapeTheme shape) =>
       fieldRadius ?? shape.control;
-  double resolveFieldPaddingX(KlpSpacingTheme s) =>
-      fieldPaddingX ?? s.controlPaddingX;
+  double resolveFieldPaddingX(KlpSpacingTheme s) => fieldPaddingX ?? s.compact;
   double resolveFieldHeight(KlpSpacingTheme s) =>
       fieldHeight ?? s.controlHeight;
   double resolveFieldBorderWidth(KlpShapeTheme shape) =>
-      fieldBorderWidth ?? shape.hairline;
+      fieldBorderWidth ?? shape.none;
 
   double resolveMenuRadius(KlpShapeTheme shape) => menuRadius ?? shape.card;
   double resolveMenuPadding(KlpSpacingTheme s) => menuPadding ?? s.compact;
   double resolveMenuItemHeight(KlpSpacingTheme s) =>
       menuItemHeight ?? s.controlHeightSmall;
+  double resolveMenuItemHeightWithGeometry(KlpGeometryTheme geometry) =>
+      menuItemHeight ?? geometry.layout.menuItemHeight;
 
   double resolveCardRadius(KlpShapeTheme shape) => cardRadius ?? shape.card;
   double resolveCardPadding(KlpSpacingTheme s) =>
       cardPadding ?? s.containerPadding;
 
-  double resolveBadgeRadius(KlpShapeTheme shape) => badgeRadius ?? shape.pill;
+  double resolveBadgeRadius(KlpShapeTheme shape) =>
+      badgeRadius ?? shape.control;
   double resolveBadgePaddingX(KlpSpacingTheme s) => badgePaddingX ?? s.compact;
 
   @override

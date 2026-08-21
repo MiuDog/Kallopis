@@ -41,16 +41,25 @@ class KlpTimeline extends StatelessWidget {
       mainAxisSize: MainAxisSize.min,
       children: [
         for (var i = 0; i < items.length; i++)
-          _KlpTimelineRow(item: items[i], isLast: i == items.length - 1),
+          _KlpTimelineRow(
+            item: items[i],
+            isFirst: i == 0,
+            isLast: i == items.length - 1,
+          ),
       ],
     );
   }
 }
 
 class _KlpTimelineRow extends StatelessWidget {
-  const _KlpTimelineRow({required this.item, required this.isLast});
+  const _KlpTimelineRow({
+    required this.item,
+    required this.isFirst,
+    required this.isLast,
+  });
 
   final KlpTimelineItemData item;
+  final bool isFirst;
   final bool isLast;
 
   @override
@@ -58,6 +67,15 @@ class _KlpTimelineRow extends StatelessWidget {
     final klp = context.klp;
     final tokens = context.klpColors;
     final markerSize = klp.space.indicatorDotLarge;
+    final textDef = KlpTextStyles.definitionOf(
+      KlpTextRole.bodyStrong,
+      klp.type,
+    );
+    final firstLineHeight = textDef.fontSize * textDef.lineHeight;
+    final topOffset = ((firstLineHeight - markerSize) / 2).clamp(
+      0.0,
+      double.infinity,
+    );
 
     return IntrinsicHeight(
       child: Row(
@@ -65,6 +83,12 @@ class _KlpTimelineRow extends StatelessWidget {
         children: [
           Column(
             children: [
+              if (topOffset > 0)
+                SizedBox(
+                  height: topOffset,
+                  width: klp.shape.hairline,
+                  child: !isFirst ? ColoredBox(color: tokens.divider) : null,
+                ),
               SizedBox(
                 width: markerSize,
                 height: markerSize,

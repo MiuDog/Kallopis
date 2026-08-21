@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:kallopis/kallopis.dart';
 
-/// 一套與 `KlpVisualStyle.modern` **每個維度都不同**的風格，只存在於測試裡。
+/// 一套與 `KlpVisualStyle.defaultStyle` **每個維度都不同**的風格，只存在於測試裡。
 ///
-/// Kallopis 只出貨 `modern` 一套，各層也只有一個 preset——庫不替任何產品預先組好第二套
+/// Kallopis 只出貨 `default` 一套，各層也只有一個 preset——庫不替任何產品預先組好第二套
 /// 外觀。但只有一套時，沒有任何東西能發現元件退回硬編碼：值是對的、畫面是對的，
 /// 只是換 theme 時它不會跟著變，而且沒有徵兆。
 ///
@@ -11,7 +11,7 @@ import 'package:kallopis/kallopis.dart';
 /// 它同時示範了消費者要換外觀時該怎麼做。
 ///
 /// **切換到它若需要改動任何元件的程式碼，就代表該元件還在硬編碼風格。**
-final KlpVisualStyle contrastingStyle = KlpVisualStyle.modern.copyWith(
+final KlpVisualStyle contrastingStyle = KlpVisualStyle.defaultStyle.copyWith(
   name: 'contrasting',
 
   // 顏色一樣取自色梯——連測試都不寫死色碼，否則色梯調整時這裡會悄悄變成孤兒。

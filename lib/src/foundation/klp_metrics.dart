@@ -204,8 +204,9 @@ abstract final class KlpTypography {
     'Noto Sans TC',
     'sans-serif',
   ];
-  static const String monoFamily = 'monospace';
+  static const String monoFamily = 'packages/kallopis/IBM Plex Mono';
   static const List<String> monoFallback = [
+    'IBM Plex Mono',
     'Consolas',
     'Courier New',
     'monospace',

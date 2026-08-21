@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 
 import '../foundation/klp_icon.dart';
 import '../foundation/klp_icons.dart';
-import '../foundation/klp_palette.dart';
 import '../surface/klp_dashed_border.dart';
 import '../theme/klp_theme.dart';
 import '../typography/klp_text.dart';
@@ -121,13 +120,13 @@ class _KlpAccordionPanelState extends State<_KlpAccordionPanel> {
     final isHighlighted = _hovered || _focused;
 
     Widget header = Material(
-      color: KlpPalette.transparent,
+      color: klp.color.clear,
       borderRadius: BorderRadius.circular(klp.shape.control),
       child: InkWell(
         onTap: widget.onToggle,
         onHover: (value) => setState(() => _hovered = value),
         onFocusChange: (value) => setState(() => _focused = value),
-        overlayColor: const WidgetStatePropertyAll(KlpPalette.transparent),
+        overlayColor: WidgetStatePropertyAll(klp.color.clear),
         borderRadius: BorderRadius.circular(klp.shape.control),
         child: Semantics(
           button: true,

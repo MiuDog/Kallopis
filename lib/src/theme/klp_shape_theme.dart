@@ -12,6 +12,8 @@ class KlpShapeTheme extends ThemeExtension<KlpShapeTheme> {
     required this.none,
     this.sm = KlpScale.radius50,
     required this.control,
+    this.controlInner = 7,
+    this.toggleTrack = 4,
     required this.card,
     required this.panel,
     required this.pill,
@@ -29,6 +31,8 @@ class KlpShapeTheme extends ThemeExtension<KlpShapeTheme> {
 
   /// 按鈕、輸入框等標準操作元件 (radius-md: 6px~8px)。
   final double control;
+  final double controlInner;
+  final double toggleTrack;
 
   /// 卡片、清單項目等內容容器 (radius-md: 6px~8px)。
   final double card;
@@ -75,6 +79,8 @@ class KlpShapeTheme extends ThemeExtension<KlpShapeTheme> {
     double? none,
     double? sm,
     double? control,
+    double? controlInner,
+    double? toggleTrack,
     double? card,
     double? panel,
     double? pill,
@@ -88,6 +94,8 @@ class KlpShapeTheme extends ThemeExtension<KlpShapeTheme> {
       none: none ?? this.none,
       sm: sm ?? this.sm,
       control: control ?? this.control,
+      controlInner: controlInner ?? this.controlInner,
+      toggleTrack: toggleTrack ?? this.toggleTrack,
       card: card ?? this.card,
       panel: panel ?? this.panel,
       pill: pill ?? this.pill,
@@ -121,6 +129,8 @@ class KlpShapeTheme extends ThemeExtension<KlpShapeTheme> {
           none == other.none &&
           sm == other.sm &&
           control == other.control &&
+          controlInner == other.controlInner &&
+          toggleTrack == other.toggleTrack &&
           card == other.card &&
           panel == other.panel &&
           pill == other.pill &&
@@ -135,6 +145,8 @@ class KlpShapeTheme extends ThemeExtension<KlpShapeTheme> {
     none,
     sm,
     control,
+    controlInner,
+    toggleTrack,
     card,
     panel,
     pill,

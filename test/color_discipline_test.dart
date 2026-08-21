@@ -13,13 +13,21 @@ void main() {
   const ramp = <String, Color>{
     'ink50': KlpPalette.ink50,
     'ink100': KlpPalette.ink100,
+    'ink150': KlpPalette.ink150,
     'ink200': KlpPalette.ink200,
+    'ink250': KlpPalette.ink250,
     'ink300': KlpPalette.ink300,
+    'ink350': KlpPalette.ink350,
     'ink400': KlpPalette.ink400,
+    'ink450': KlpPalette.ink450,
     'ink500': KlpPalette.ink500,
+    'ink550': KlpPalette.ink550,
     'ink600': KlpPalette.ink600,
+    'ink650': KlpPalette.ink650,
     'ink700': KlpPalette.ink700,
+    'ink750': KlpPalette.ink750,
     'ink800': KlpPalette.ink800,
+    'ink850': KlpPalette.ink850,
     'ink900': KlpPalette.ink900,
     'ink950': KlpPalette.ink950,
   };
@@ -100,9 +108,8 @@ void main() {
   });
 
   test('元件不得直接取用具體顏色', () {
-    // 元件只能透過 context.klp 取色。KlpPalette.transparent 是例外——
-    // 「沒有顏色」不是顏色，而且它沒有可以走樣的值。
-    const allowedMembers = {'transparent'};
+    // 元件只能透過 context.klp 取色，不保留任何 palette 例外。
+    const allowedMembers = <String>{};
     const decorativeOnly = {'lib/src/shell/klp_theme_preview_tile.dart'};
 
     final reference = RegExp(r'KlpPalette\.([a-zA-Z0-9]+)');

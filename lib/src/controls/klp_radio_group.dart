@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 
-import '../foundation/klp_metrics.dart';
 import '../theme/klp_theme.dart';
 import '../typography/klp_text.dart';
-import '../foundation/klp_palette.dart';
 
 class KlpRadioGroup<T> extends StatelessWidget {
   const KlpRadioGroup({
@@ -83,7 +81,7 @@ class _KlpRadioItem extends StatelessWidget {
             inMutuallyExclusiveGroup: true,
             label: label,
             child: Material(
-              color: KlpPalette.transparent,
+              color: tokens.clear,
               shape: const CircleBorder(),
               child: InkWell(
                 onTap: onPressed,
@@ -97,10 +95,10 @@ class _KlpRadioItem extends StatelessWidget {
                     ),
                   ),
                   child: SizedBox.square(
-                    dimension: KlpFormMetrics.selectionControl,
+                    dimension: context.klp.geometry.control.selectionControl,
                     child: Padding(
-                      padding: const EdgeInsets.all(
-                        KlpFormMetrics.selectionIndicatorInset,
+                      padding: EdgeInsets.all(
+                        context.klp.geometry.control.selectionIndicatorInset,
                       ),
                       child: AnimatedContainer(
                         duration: context.klp.motion.styleTransition,

@@ -6,7 +6,7 @@
 
 ## 總覽
 
-- 公開型別 **255** 個，其中 widget **147** 個
+- 公開型別 **270** 個，其中 widget **152** 個
 - 分為 **17** 個領域
 
 ### 領域之間的依賴方向
@@ -41,6 +41,7 @@ graph TD
   data -->|10| surface
   form -->|9| controls
   interaction -->|8| surface
+  navigation -->|8| typography
   controls -->|7| foundation
   editor -->|7| typography
   feedback -->|7| typography
@@ -48,13 +49,13 @@ graph TD
   feedback -->|6| foundation
   form -->|6| surface
   overlay -->|6| surface
-  feedback -->|5| surface
-  navigation -->|5| typography
+  shell -->|5| typography
   editor -->|4| controls
   editor -->|4| data
+  feedback -->|4| surface
   interaction -->|4| typography
+  navigation -->|4| foundation
   shell -->|4| surface
-  shell -->|4| typography
   controls -->|3| overlay
   data -->|3| interaction
   data -->|3| overlay
@@ -70,12 +71,12 @@ graph TD
   overlay -->|2| controls
   shell -->|2| foundation
   app -->|1| l10n
+  app -->|1| shell
   data -->|1| controls
   feedback -->|1| interaction
   interaction -->|1| controls
   interaction -->|1| foundation
   navigation -->|1| controls
-  navigation -->|1| foundation
   navigation -->|1| overlay
   overlay -->|1| foundation
   shell -->|1| interaction
@@ -106,32 +107,49 @@ graph TD
 
 ### theme — semantic 與 component token
 
-型別 16 個，widget 1 個。
+型別 22 個，widget 1 個。
 
 | 型別 | 行數 | 組成 |
 |---|---|---|
 | `KlpComponentTheme` | 174 | （葉節點） |
+| `KlpControlGeometry` | 88 | （葉節點） |
+| `KlpDataGeometry` | 99 | （葉節點） |
 | `KlpDataVisualizationTheme` | 232 | （葉節點） |
 | `KlpFieldFillState` | 3 | （葉節點） |
-| `KlpFieldStyle` | 241 | （葉節點） |
-| `KlpMotionTheme` | 127 | （葉節點） |
-| `KlpShapeTheme` | 138 | （葉節點） |
+| `KlpFieldStyle` | 260 | （葉節點） |
+| `KlpGeometryTheme` | 111 | `KlpControlGeometry`、`KlpDataGeometry`、`KlpLayoutGeometry`、`KlpOpticalGeometry` |
+| `KlpLayoutGeometry` | 62 | （葉節點） |
+| `KlpMotionTheme` | 139 | （葉節點） |
+| `KlpOpticalGeometry` | 34 | （葉節點） |
+| `KlpShapeTheme` | 150 | （葉節點） |
 | `KlpSpacingTheme` | 510 | （葉節點） |
 | `KlpSurfaceSeparation` | 19 | （葉節點） |
-| `KlpSurfaceTheme` | 211 | （葉節點） |
-| `KlpTheme` | 113 | `KlpVisualStyle` |
+| `KlpSurfaceTheme` | 270 | （葉節點） |
+| `KlpTheme` | 127 | `KlpVisualStyle` |
 | `KlpThemeContrast` | 26 | （葉節點） |
-| `KlpThemeData` | 317 | （葉節點） |
+| `KlpThemeData` | 368 | （葉節點） |
 | `KlpThemeVariant` | 8 | （葉節點） |
 | `KlpTokenOverride` | 41 | （葉節點） |
-| `KlpTypographyTheme` | 377 | （葉節點） |
-| `KlpVisualStyle` | 88 | （葉節點） |
+| `KlpTypographyTheme` | 378 | （葉節點） |
+| `KlpVisualStyle` | 118 | （葉節點） |
+| `KlpVisualStyleJson` | 84 | `KlpVisualStyle` |
 
 ```mermaid
 graph LR
+  KlpControlGeometry["KlpControlGeometry"]
+  KlpDataGeometry["KlpDataGeometry"]
+  KlpGeometryTheme["KlpGeometryTheme"]
+  KlpLayoutGeometry["KlpLayoutGeometry"]
+  KlpOpticalGeometry["KlpOpticalGeometry"]
   KlpTheme["KlpTheme"]
   KlpVisualStyle["KlpVisualStyle"]
+  KlpVisualStyleJson["KlpVisualStyleJson"]
+  KlpGeometryTheme --> KlpControlGeometry
+  KlpGeometryTheme --> KlpDataGeometry
+  KlpGeometryTheme --> KlpLayoutGeometry
+  KlpGeometryTheme --> KlpOpticalGeometry
   KlpTheme --> KlpVisualStyle
+  KlpVisualStyleJson --> KlpVisualStyle
   classDef external stroke-dasharray: 4 3;
 ```
 
@@ -149,21 +167,21 @@ graph LR
 | `KlpDecorativePalette` | 18 | （葉節點） |
 | `KlpElevation` | 14 | （葉節點） |
 | `KlpFormMetrics` | 18 | （葉節點） |
-| `KlpGeometricSpinner` | 152 | （葉節點） |
+| `KlpGeometricSpinner` | 164 | （葉節點） |
 | `KlpIcon` | 34 | （葉節點） |
-| `KlpIcons` | 78 | （葉節點） |
+| `KlpIcons` | 82 | （葉節點） |
 | `KlpInlineCode` | 54 | （葉節點） |
 | `KlpLayoutGap` | 8 | （葉節點） |
 | `KlpLine` | 13 | （葉節點） |
 | `KlpMotion` | 9 | （葉節點） |
-| `KlpPalette` | 102 | （葉節點） |
+| `KlpPalette` | 126 | （葉節點） |
 | `KlpPlaceholderMetrics` | 23 | （葉節點） |
 | `KlpRadius` | 18 | （葉節點） |
 | `KlpSegmentedProgress` | 34 | （葉節點） |
 | `KlpSize` | 35 | （葉節點） |
 | `KlpSpace` | 16 | （葉節點） |
 | `KlpTransparency` | 4 | （葉節點） |
-| `KlpTypography` | 70 | （葉節點） |
+| `KlpTypography` | 71 | （葉節點） |
 
 ### typography — 文字
 
@@ -176,11 +194,11 @@ graph LR
 | `KlpRichTextKind` | 19 | （葉節點） |
 | `KlpRichTextNode` | 26 | （葉節點） |
 | `KlpRichTextSpan` | 10 | （葉節點） |
-| `KlpText` | 127 | （葉節點） |
+| `KlpText` | 128 | （葉節點） |
 | `KlpTextColorTier` | 4 | （葉節點） |
 | `KlpTextRole` | 24 | （葉節點） |
 | `KlpTextStyleDefinition` | 41 | （葉節點） |
-| `KlpTextStyles` | 175 | `KlpTextStyleDefinition` |
+| `KlpTextStyles` | 177 | `KlpTextStyleDefinition` |
 | `KlpTextTone` | 7 | （葉節點） |
 
 ```mermaid
@@ -204,13 +222,13 @@ graph LR
 
 | 型別 | 行數 | 組成 |
 |---|---|---|
-| `KlpBlock` | 24 | `KlpSurface` |
+| `KlpBlock` | 29 | `KlpSurface` |
 | `KlpBlockCanvas` | 20 | `KlpSurface` |
 | `KlpDashedBorder` | 51 | `KlpStrokeFrame` |
 | `KlpDashedDivider` | 111 | （葉節點） |
 | `KlpDivider` | 14 | （葉節點） |
 | `KlpSection` | 46 | `KlpText` |
-| `KlpStrokeFrame` | 135 | （葉節點） |
+| `KlpStrokeFrame` | 139 | （葉節點） |
 | `KlpStrokeRole` | 2 | （葉節點） |
 | `KlpStrokeState` | 2 | （葉節點） |
 | `KlpSurface` | 106 | `KlpTokenOverride` |
@@ -301,7 +319,7 @@ graph LR
 | `KlpResizablePane` | 13 | （葉節點） |
 | `KlpResizeHandle` | 23 | （葉節點） |
 | `KlpScrollViewport` | 23 | （葉節點） |
-| `KlpSplitLayout` | 57 | `KlpDashedDivider` |
+| `KlpSplitLayout` | 62 | `KlpDashedDivider` |
 | `KlpVirtualGrid` | 45 | （葉節點） |
 | `KlpVirtualList` | 26 | （葉節點） |
 
@@ -325,14 +343,14 @@ graph LR
 | 型別 | 行數 | 組成 |
 |---|---|---|
 | `KlpContextMenu` | 114 | `KlpMenu`、`KlpMenuItemData` |
-| `KlpDialog` | 74 | `KlpButton`、`KlpSurface`、`KlpText` |
+| `KlpDialog` | 76 | `KlpButton`、`KlpSurface`、`KlpText` |
 | `KlpDrawer` | 94 | `KlpSurface` |
 | `KlpDrawerEdge` | 9 | （葉節點） |
 | `KlpMenu` | 78 | `KlpDivider`、`KlpMenuItem`、`KlpSurface`、`KlpText` |
-| `KlpMenuItem` | 112 | `KlpDashedBorder`、`KlpIcon`、`KlpText`、`KlpToggleIndicator` |
+| `KlpMenuItem` | 113 | `KlpDashedBorder`、`KlpIcon`、`KlpText`、`KlpToggleIndicator` |
 | `KlpMenuItemData` | 36 | （葉節點） |
-| `KlpMenuLayout` | 79 | （葉節點） |
-| `KlpMenuStyle` | 28 | （葉節點） |
+| `KlpMenuLayout` | 84 | （葉節點） |
+| `KlpMenuStyle` | 31 | （葉節點） |
 | `KlpPopover` | 15 | `KlpSurface` |
 | `KlpTooltip` | 12 | （葉節點） |
 | `KlpTooltipSurface` | 42 | （葉節點） |
@@ -379,7 +397,7 @@ graph LR
 
 | 型別 | 行數 | 組成 |
 |---|---|---|
-| `KlpButton` | 141 | `KlpDashedBorder`、`KlpPressable`、`KlpText` |
+| `KlpButton` | 145 | `KlpDashedBorder`、`KlpPressable`、`KlpText` |
 | `KlpButtonTone` | 5 | （葉節點） |
 | `KlpCheckbox` | 74 | `KlpIcon`、`KlpText` |
 | `KlpCombobox` | 197 | `KlpMenu`、`KlpMenuItemData`、`KlpTextField` |
@@ -390,12 +408,12 @@ graph LR
 | `KlpPhaseOption` | 19 | （葉節點） |
 | `KlpPhaseToggle` | 161 | `KlpIcon`、`KlpText` |
 | `KlpRadioGroup` | 133 | `KlpText` |
-| `KlpSegmentedControl` | 152 | `KlpDashedBorder`、`KlpIcon`、`KlpText` |
+| `KlpSegmentedControl` | 156 | `KlpDashedBorder`、`KlpIcon`、`KlpText` |
 | `KlpSelect` | 92 | `KlpDashedBorder`、`KlpIcon`、`KlpStrokeFrame`、`KlpText` |
 | `KlpSelectionOption` | 7 | （葉節點） |
 | `KlpSlider` | 78 | `KlpText` |
 | `KlpSlidingSelection` | 111 | `KlpIcon` |
-| `KlpTextField` | 274 | `KlpDashedBorder`、`KlpIcon`、`KlpText` |
+| `KlpTextField` | 291 | `KlpDashedBorder`、`KlpIcon`、`KlpText` |
 | `KlpToggle` | 51 | `KlpText`、`KlpToggleIndicator` |
 | `KlpToggleIndicator` | 53 | （葉節點） |
 | `KlpTriState` | 2 | （葉節點） |
@@ -475,12 +493,12 @@ graph LR
 | `KlpAvatar` | 41 | `KlpText` |
 | `KlpAvatarData` | 8 | （葉節點） |
 | `KlpAvatarGroup` | 35 | `KlpAvatar` |
-| `KlpBadge` | 91 | `KlpText` |
+| `KlpBadge` | 92 | `KlpText` |
 | `KlpBadgeVariant` | 12 | （葉節點） |
-| `KlpCard` | 86 | `KlpDashedBorder`、`KlpText` |
+| `KlpCard` | 81 | `KlpDashedBorder`、`KlpText` |
 | `KlpCodeLanguageOption` | 12 | （葉節點） |
 | `KlpCodeLanguages` | 31 | `KlpCodeLanguageOption` |
-| `KlpCodeViewer` | 563 | `KlpDashedBorder`、`KlpIcon`、`KlpMenu`、`KlpMenuItemData`、`KlpPressable`、`KlpText`、`KlpTooltip` |
+| `KlpCodeViewer` | 566 | `KlpDashedBorder`、`KlpIcon`、`KlpMenu`、`KlpMenuItemData`、`KlpPressable`、`KlpText`、`KlpTooltip` |
 | `KlpCodeViewerLabels` | 27 | （葉節點） |
 | `KlpDataAlignment` | 3 | （葉節點） |
 | `KlpDataColumn` | 20 | （葉節點） |
@@ -489,7 +507,7 @@ graph LR
 | `KlpDataTable` | 209 | `KlpCheckbox`、`KlpDashedDivider`、`KlpIcon`、`KlpSurface`、`KlpText` |
 | `KlpDiffLine` | 32 | （葉節點） |
 | `KlpDiffLineType` | 13 | （葉節點） |
-| `KlpDiffViewer` | 191 | `KlpPressable`、`KlpText` |
+| `KlpDiffViewer` | 210 | `KlpPressable`、`KlpText` |
 | `KlpFilePreview` | 176 | `KlpDashedDivider`、`KlpGeometricSpinner`、`KlpText` |
 | `KlpFilePreviewState` | 8 | （葉節點） |
 | `KlpJsonTree` | 186 | `KlpIcon`、`KlpSurface`、`KlpText` |
@@ -497,7 +515,7 @@ graph LR
 | `KlpKeyValueList` | 74 | `KlpIcon`、`KlpText` |
 | `KlpKeyValueRowData` | 7 | （葉節點） |
 | `KlpKeyValueTable` | 62 | `KlpSurface`、`KlpText` |
-| `KlpListTile` | 138 | `KlpDashedBorder`、`KlpIcon`、`KlpText` |
+| `KlpListTile` | 140 | `KlpDashedBorder`、`KlpIcon`、`KlpText` |
 | `KlpMetricCard` | 102 | `KlpText` |
 | `KlpProgress` | 82 | `KlpText` |
 | `KlpProgressState` | 2 | （葉節點） |
@@ -505,10 +523,10 @@ graph LR
 | `KlpSortDirection` | 8 | （葉節點） |
 | `KlpStepData` | 11 | （葉節點） |
 | `KlpStepStatus` | 4 | （葉節點） |
-| `KlpStepper` | 225 | `KlpIcon`、`KlpText` |
+| `KlpStepper` | 251 | `KlpIcon`、`KlpText` |
 | `KlpTag` | 61 | `KlpText` |
 | `KlpTerminal` | 119 | `KlpPressable`、`KlpText` |
-| `KlpTimeline` | 99 | `KlpText` |
+| `KlpTimeline` | 123 | `KlpText` |
 | `KlpTimelineItemData` | 20 | （葉節點） |
 | `KlpTree` | 45 | （葉節點） |
 | `KlpTreeItem` | 182 | `KlpDashedBorder`、`KlpIcon`、`KlpText` |
@@ -640,7 +658,7 @@ graph LR
 | `KlpKeyValueEntry` | 25 | （葉節點） |
 | `KlpMultiSelectField` | 64 | `KlpText` |
 | `KlpNumberField` | 41 | `KlpTextField` |
-| `KlpPasswordField` | 148 | `KlpText` |
+| `KlpPasswordField` | 149 | `KlpText` |
 | `KlpPasswordRequirement` | 8 | （葉節點） |
 | `KlpReferenceOption` | 16 | （葉節點） |
 | `KlpReferencePicker` | 81 | `KlpBadge`、`KlpSurface`、`KlpText`、`KlpTextField` |
@@ -751,16 +769,16 @@ graph LR
 | `KlpEmptyState` | 52 | `KlpDashedBorder`、`KlpIcon`、`KlpText` |
 | `KlpErrorState` | 34 | `KlpButton` |
 | `KlpFeedbackTone` | 29 | （葉節點） |
-| `KlpInlineNotice` | 97 | `KlpIcon`、`KlpSurface`、`KlpText` |
+| `KlpInlineNotice` | 99 | `KlpIcon`、`KlpSurface`、`KlpText` |
 | `KlpLoadingState` | 35 | `KlpGeometricSpinner`、`KlpText` |
 | `KlpPermissionState` | 26 | （葉節點） |
 | `KlpProgressOverlay` | 95 | `KlpDashedBorder`、`KlpIcon`、`KlpLoadingState`、`KlpText` |
-| `KlpRegionPlaceholder` | 270 | `KlpDashedBorder`、`KlpPressable`、`KlpStrokeFrame`、`KlpText` |
+| `KlpRegionPlaceholder` | 286 | `KlpDashedBorder`、`KlpPressable`、`KlpText` |
 | `KlpRegionPlaceholderTone` | 2 | （葉節點） |
 | `KlpSkeletonLine` | 19 | （葉節點） |
-| `KlpStatusIndicator` | 85 | `KlpIcon`、`KlpText` |
-| `KlpStatusKind` | 21 | （葉節點） |
-| `KlpToast` | 113 | `KlpButton`、`KlpIcon`、`KlpText` |
+| `KlpStatusIndicator` | 93 | `KlpIcon`、`KlpText` |
+| `KlpStatusKind` | 24 | （葉節點） |
+| `KlpToast` | 115 | `KlpButton`、`KlpIcon`、`KlpText` |
 | `KlpToastStack` | 20 | （葉節點） |
 
 ```mermaid
@@ -777,7 +795,6 @@ graph LR
   KlpProgressOverlay["KlpProgressOverlay"]
   KlpRegionPlaceholder["KlpRegionPlaceholder"]
   KlpStatusIndicator["KlpStatusIndicator"]
-  KlpStrokeFrame["KlpStrokeFrame"]:::external
   KlpSurface["KlpSurface"]:::external
   KlpText["KlpText"]:::external
   KlpToast["KlpToast"]
@@ -796,7 +813,6 @@ graph LR
   KlpProgressOverlay --> KlpText
   KlpRegionPlaceholder --> KlpDashedBorder
   KlpRegionPlaceholder --> KlpPressable
-  KlpRegionPlaceholder --> KlpStrokeFrame
   KlpRegionPlaceholder --> KlpText
   KlpStatusIndicator --> KlpIcon
   KlpStatusIndicator --> KlpText
@@ -810,14 +826,20 @@ graph LR
 
 ### navigation — 導覽元件
 
-型別 8 個，widget 7 個。
+型別 14 個，widget 11 個。
 
 | 型別 | 行數 | 組成 |
 |---|---|---|
 | `KlpActionGroup` | 20 | （葉節點） |
 | `KlpBreadcrumb` | 34 | `KlpText` |
+| `KlpFileExplorer` | 132 | `KlpFileExplorerSectionView` |
+| `KlpFileExplorerFolderView` | 104 | `KlpIcon`、`KlpText` |
+| `KlpFileExplorerItem` | 33 | （葉節點） |
+| `KlpFileExplorerItemView` | 101 | `KlpIcon`、`KlpText` |
+| `KlpFileExplorerSection` | 20 | （葉節點） |
+| `KlpFileExplorerSectionView` | 150 | `KlpFileExplorerFolderView`、`KlpFileExplorerItemView`、`KlpIcon`、`KlpText` |
 | `KlpPagination` | 46 | `KlpButton`、`KlpText` |
-| `KlpRailItem` | 132 | `KlpDashedBorder`、`KlpIcon`、`KlpTooltipSurface` |
+| `KlpRailItem` | 130 | `KlpDashedBorder`、`KlpIcon`、`KlpTooltipSurface` |
 | `KlpSidebarSectionLabel` | 27 | `KlpText` |
 | `KlpTabs` | 71 | `KlpText` |
 | `KlpViewOption` | 14 | （葉節點） |
@@ -828,6 +850,10 @@ graph LR
   KlpBreadcrumb["KlpBreadcrumb"]
   KlpButton["KlpButton"]:::external
   KlpDashedBorder["KlpDashedBorder"]:::external
+  KlpFileExplorer["KlpFileExplorer"]
+  KlpFileExplorerFolderView["KlpFileExplorerFolderView"]
+  KlpFileExplorerItemView["KlpFileExplorerItemView"]
+  KlpFileExplorerSectionView["KlpFileExplorerSectionView"]
   KlpIcon["KlpIcon"]:::external
   KlpPagination["KlpPagination"]
   KlpRailItem["KlpRailItem"]
@@ -838,6 +864,15 @@ graph LR
   KlpTooltipSurface["KlpTooltipSurface"]:::external
   KlpViewSwitcher["KlpViewSwitcher"]
   KlpBreadcrumb --> KlpText
+  KlpFileExplorerFolderView --> KlpIcon
+  KlpFileExplorerFolderView --> KlpText
+  KlpFileExplorerItemView --> KlpIcon
+  KlpFileExplorerItemView --> KlpText
+  KlpFileExplorerSectionView --> KlpFileExplorerFolderView
+  KlpFileExplorerSectionView --> KlpFileExplorerItemView
+  KlpFileExplorerSectionView --> KlpIcon
+  KlpFileExplorerSectionView --> KlpText
+  KlpFileExplorer --> KlpFileExplorerSectionView
   KlpPagination --> KlpButton
   KlpPagination --> KlpText
   KlpRailItem --> KlpDashedBorder
@@ -935,7 +970,7 @@ graph LR
 
 ### shell — 應用外殼
 
-型別 15 個，widget 13 個。
+型別 18 個，widget 14 個。
 
 | 型別 | 行數 | 組成 |
 |---|---|---|
@@ -948,12 +983,15 @@ graph LR
 | `KlpResponsivePaneCoordinator` | 22 | （葉節點） |
 | `KlpSidebarFrame` | 33 | `KlpPanelFrame` |
 | `KlpStageFrame` | 53 | `KlpTokenOverride` |
-| `KlpStatusBar` | 55 | `KlpText` |
+| `KlpStatusBar` | 57 | `KlpText` |
 | `KlpThemePreviewMode` | 2 | （葉節點） |
 | `KlpThemePreviewTile` | 305 | `KlpDashedBorder`、`KlpPressable`、`KlpText` |
 | `KlpThemeToggle` | 25 | `KlpSurface`、`KlpText` |
-| `KlpWindowControls` | 127 | `KlpDashedBorder`、`KlpIcon`、`KlpTooltip` |
-| `KlpWorkbenchShell` | 130 | （葉節點） |
+| `KlpWindowAction` | 55 | （葉節點） |
+| `KlpWindowControls` | 136 | `KlpDashedBorder`、`KlpIcon`、`KlpTooltip` |
+| `KlpWindowControlsStyle` | 11 | （葉節點） |
+| `KlpWindowHeader` | 217 | `KlpText`、`KlpWindowControls` |
+| `KlpWorkbenchShell` | 134 | （葉節點） |
 
 ```mermaid
 graph LR
@@ -975,6 +1013,7 @@ graph LR
   KlpTokenOverride["KlpTokenOverride"]:::external
   KlpTooltip["KlpTooltip"]:::external
   KlpWindowControls["KlpWindowControls"]
+  KlpWindowHeader["KlpWindowHeader"]
   KlpAppScreen --> KlpTokenOverride
   KlpAppWindowHeader --> KlpPanelHeader
   KlpPaneCollapseControl --> KlpDashedBorder
@@ -992,6 +1031,8 @@ graph LR
   KlpWindowControls --> KlpDashedBorder
   KlpWindowControls --> KlpIcon
   KlpWindowControls --> KlpTooltip
+  KlpWindowHeader --> KlpText
+  KlpWindowHeader --> KlpWindowControls
   classDef external stroke-dasharray: 4 3;
 ```
 
@@ -1003,7 +1044,7 @@ graph LR
 
 | 型別 | 行數 | 組成 |
 |---|---|---|
-| `KlpApp` | 149 | `KlpLocalizationsDelegate`、`KlpRouterOutlet`、`KlpRouterScope` |
+| `KlpApp` | 239 | `KlpLocalizationsDelegate`、`KlpRouterOutlet`、`KlpRouterScope`、`KlpWindowHeader` |
 
 ```mermaid
 graph LR
@@ -1011,9 +1052,11 @@ graph LR
   KlpLocalizationsDelegate["KlpLocalizationsDelegate"]:::external
   KlpRouterOutlet["KlpRouterOutlet"]:::external
   KlpRouterScope["KlpRouterScope"]:::external
+  KlpWindowHeader["KlpWindowHeader"]:::external
   KlpApp --> KlpLocalizationsDelegate
   KlpApp --> KlpRouterOutlet
   KlpApp --> KlpRouterScope
+  KlpApp --> KlpWindowHeader
   classDef external stroke-dasharray: 4 3;
 ```
 
@@ -1032,15 +1075,15 @@ graph LR
 
 | 型別 | 被幾個型別使用 |
 |---|---|
-| `KlpText` | 83 |
-| `KlpIcon` | 26 |
+| `KlpText` | 87 |
+| `KlpIcon` | 29 |
 | `KlpSurface` | 23 |
 | `KlpDashedBorder` | 22 |
 | `KlpButton` | 9 |
 | `KlpPressable` | 9 |
 | `KlpTextField` | 8 |
-| `KlpStrokeFrame` | 5 |
 | `KlpBadge` | 4 |
+| `KlpStrokeFrame` | 4 |
 | `KlpTokenOverride` | 4 |
 | `KlpDashedDivider` | 3 |
 | `KlpMenu` | 3 |

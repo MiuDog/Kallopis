@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 
-import '../foundation/klp_palette.dart';
 import '../foundation/klp_icon.dart';
 import '../foundation/klp_icons.dart';
-import '../foundation/klp_metrics.dart';
 import '../interaction/klp_pressable.dart';
 import '../l10n/klp_localizations.dart';
 import '../overlay/klp_menu.dart';
@@ -95,7 +93,7 @@ class KlpCodeViewer extends StatefulWidget {
     this.loading = false,
     this.expandable = false,
     this.expanded = false,
-    this.maxHeight = KlpCodeMetrics.defaultMaximumHeight,
+    this.maxHeight,
     this.content,
     this.viewSelected = false,
     this.onLanguageChanged,
@@ -116,7 +114,7 @@ class KlpCodeViewer extends StatefulWidget {
   final bool loading;
   final bool expandable;
   final bool expanded;
-  final double maxHeight;
+  final double? maxHeight;
   final Widget? content;
   final bool viewSelected;
   final ValueChanged<String>? onLanguageChanged;
@@ -205,15 +203,15 @@ class _KlpCodeViewerState extends State<KlpCodeViewer> {
         ),
       ),
       child: SizedBox(
-        height: KlpCodeMetrics.headerHeight,
+        height: context.klp.geometry.data.codeHeaderHeight,
         child: Padding(
-          padding: const EdgeInsets.only(
-            left: KlpCodeMetrics.headerPaddingHorizontal,
+          padding: EdgeInsets.only(
+            left: context.klp.geometry.data.codeHeaderPaddingX,
           ),
           child: Row(
             children: [
               const _KlpTerminalMark(),
-              const SizedBox(width: KlpCodeMetrics.terminalGroupGap),
+              SizedBox(width: context.klp.space.compact),
               Builder(
                 builder: (buttonContext) {
                   return _KlpCodeLanguageButton(
@@ -287,15 +285,15 @@ class _KlpCodeViewerState extends State<KlpCodeViewer> {
               );
 
     final effectiveMaxHeight = widget.expandable && !_expanded
-        ? 120.0
-        : widget.maxHeight;
+        ? context.klp.geometry.data.codeCollapsedHeight
+        : widget.maxHeight ?? context.klp.geometry.data.codeMaximumHeight;
 
     return ConstrainedBox(
       constraints: BoxConstraints(maxHeight: effectiveMaxHeight),
       child: SingleChildScrollView(
-        padding: const EdgeInsets.symmetric(
-          horizontal: KlpCodeMetrics.bodyPaddingHorizontal,
-          vertical: KlpCodeMetrics.bodyPaddingVertical,
+        padding: EdgeInsets.symmetric(
+          horizontal: context.klp.geometry.data.codeBodyPaddingX,
+          vertical: context.klp.space.compact,
         ),
         child: content,
       ),
@@ -379,7 +377,7 @@ class _KlpCodeViewerState extends State<KlpCodeViewer> {
       context: context,
       barrierDismissible: true,
       barrierLabel: widget.labels.menu,
-      barrierColor: KlpPalette.transparent,
+      barrierColor: context.klpColors.clear,
       transitionDuration: Duration.zero,
       pageBuilder: (dialogContext, animation, secondaryAnimation) {
         return Stack(
@@ -425,9 +423,12 @@ class _KlpTerminalMark extends StatelessWidget {
         for (var index = 0; index < 3; index++) ...[
           DecoratedBox(
             decoration: BoxDecoration(color: color, shape: BoxShape.circle),
-            child: const SizedBox.square(dimension: KlpCodeMetrics.terminalDot),
+            child: SizedBox.square(
+              dimension: context.klp.geometry.data.codeTerminalDot,
+            ),
           ),
-          if (index < 2) const SizedBox(width: KlpCodeMetrics.terminalDotGap),
+          if (index < 2)
+            SizedBox(width: context.klp.geometry.data.codeTerminalDotGap),
         ],
       ],
     );
@@ -478,7 +479,7 @@ class _KlpCodeActionButtonState extends State<_KlpCodeActionButton> {
             Widget button = Material(
               color: widget.selected
                   ? tokens.selectionBackground
-                  : KlpPalette.transparent,
+                  : tokens.clear,
               borderRadius: BorderRadius.circular(context.klp.shape.control),
               child: KlpPressable(
                 onPressed: widget.onPressed,
@@ -486,11 +487,11 @@ class _KlpCodeActionButtonState extends State<_KlpCodeActionButton> {
                 onFocusChange: (value) => setState(() => _focused = value),
                 borderRadius: BorderRadius.circular(context.klp.shape.control),
                 child: SizedBox.square(
-                  dimension: KlpCodeMetrics.actionButtonSize,
+                  dimension: context.klp.geometry.data.codeActionButtonSize,
                   child: Center(
                     child: KlpIcon(
                       widget.icon,
-                      size: KlpCodeMetrics.actionIconSize,
+                      size: context.klp.space.iconSmall,
                       color: foreground,
                     ),
                   ),
@@ -543,7 +544,7 @@ class _KlpCodeLanguageButtonState extends State<_KlpCodeLanguageButton> {
     final color = tokens.textMuted;
 
     Widget button = Material(
-      color: KlpPalette.transparent,
+      color: tokens.clear,
       borderRadius: BorderRadius.circular(context.klp.shape.control),
       child: KlpPressable(
         onPressed: widget.enabled ? widget.onPressed : null,
@@ -560,7 +561,7 @@ class _KlpCodeLanguageButtonState extends State<_KlpCodeLanguageButton> {
                 SizedBox(width: context.klp.space.tight),
                 KlpIcon(
                   KlpIcons.chevronDown,
-                  size: KlpSize.disclosure,
+                  size: context.klp.geometry.data.codeDisclosureSize,
                   color: color,
                 ),
               ],
@@ -611,7 +612,7 @@ class _KlpCodeLines extends StatelessWidget {
             children: [
               if (showLineNumbers) ...[
                 SizedBox(
-                  width: KlpCodeMetrics.lineNumberWidth,
+                  width: context.klp.geometry.data.codeLineNumberWidth,
                   child: KlpText(
                     '${startLine + index}',
                     role: KlpTextRole.code,
@@ -623,7 +624,7 @@ class _KlpCodeLines extends StatelessWidget {
               ],
               if (wrapped)
                 SizedBox(
-                  width: KlpCodeMetrics.wrappedLineWidth,
+                  width: context.klp.geometry.data.codeWrappedLineWidth,
                   child: KlpText(
                     lines[index].isEmpty ? ' ' : lines[index],
                     role: KlpTextRole.code,
@@ -728,9 +729,9 @@ class KlpDiffViewer extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             Container(
-              height: KlpCodeMetrics.headerHeight,
-              padding: const EdgeInsets.symmetric(
-                horizontal: KlpCodeMetrics.headerPaddingHorizontal,
+              height: context.klp.geometry.data.codeHeaderHeight,
+              padding: EdgeInsets.symmetric(
+                horizontal: context.klp.geometry.data.codeHeaderPaddingX,
               ),
               decoration: BoxDecoration(
                 color: tokens.surfaceInset,
@@ -758,7 +759,7 @@ class KlpDiffViewer extends StatelessWidget {
                         ),
                         child: const KlpText(
                           'Copy',
-                          role: KlpTextRole.caption,
+                          role: KlpTextRole.code,
                           tone: KlpTextTone.muted,
                         ),
                       ),
@@ -771,8 +772,8 @@ class KlpDiffViewer extends StatelessWidget {
                 maxHeight: maxHeight ?? double.infinity,
               ),
               child: SingleChildScrollView(
-                padding: const EdgeInsets.symmetric(
-                  vertical: KlpCodeMetrics.bodyPaddingVertical,
+                padding: EdgeInsets.symmetric(
+                  vertical: context.klp.space.compact,
                 ),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -815,8 +816,8 @@ class _KlpDiffLineRow extends StatelessWidget {
 
     return Container(
       color: bgColor,
-      padding: const EdgeInsets.symmetric(
-        horizontal: KlpCodeMetrics.bodyPaddingHorizontal,
+      padding: EdgeInsets.symmetric(
+        horizontal: context.klp.geometry.data.codeBodyPaddingX,
         vertical: 2,
       ),
       child: Row(
@@ -847,27 +848,46 @@ class _KlpDiffLineRow extends StatelessWidget {
           ),
           Expanded(child: KlpText(line.content, role: KlpTextRole.code)),
           if (line.onApprove != null || line.onReject != null) ...[
+            SizedBox(width: klp.space.compact),
             if (line.onApprove != null)
               KlpPressable(
                 onPressed: line.onApprove,
-                child: Padding(
-                  padding: EdgeInsets.symmetric(horizontal: klp.space.xxs),
-                  child: KlpText(
-                    '✓',
-                    role: KlpTextRole.code,
+                borderRadius: BorderRadius.circular(klp.shape.control),
+                child: Container(
+                  padding: EdgeInsets.symmetric(
+                    horizontal: klp.space.compact,
+                    vertical: 2,
+                  ),
+                  decoration: BoxDecoration(
                     color: tokens.success,
+                    borderRadius: BorderRadius.circular(klp.shape.control),
+                  ),
+                  child: KlpText(
+                    '同意',
+                    role: KlpTextRole.code,
+                    color: tokens.onStatus,
                   ),
                 ),
               ),
+            if (line.onApprove != null && line.onReject != null)
+              SizedBox(width: klp.space.tight),
             if (line.onReject != null)
               KlpPressable(
                 onPressed: line.onReject,
-                child: Padding(
-                  padding: EdgeInsets.symmetric(horizontal: klp.space.xxs),
-                  child: KlpText(
-                    '✕',
-                    role: KlpTextRole.code,
+                borderRadius: BorderRadius.circular(klp.shape.control),
+                child: Container(
+                  padding: EdgeInsets.symmetric(
+                    horizontal: klp.space.compact,
+                    vertical: 2,
+                  ),
+                  decoration: BoxDecoration(
                     color: tokens.danger,
+                    borderRadius: BorderRadius.circular(klp.shape.control),
+                  ),
+                  child: KlpText(
+                    '拒絕',
+                    role: KlpTextRole.code,
+                    color: tokens.onStatus,
                   ),
                 ),
               ),
@@ -923,9 +943,9 @@ class KlpTerminal extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             Container(
-              height: KlpCodeMetrics.headerHeight,
-              padding: const EdgeInsets.symmetric(
-                horizontal: KlpCodeMetrics.headerPaddingHorizontal,
+              height: context.klp.geometry.data.codeHeaderHeight,
+              padding: EdgeInsets.symmetric(
+                horizontal: context.klp.geometry.data.codeHeaderPaddingX,
               ),
               decoration: BoxDecoration(
                 color: tokens.surfaceInset,
@@ -939,7 +959,7 @@ class KlpTerminal extends StatelessWidget {
               child: Row(
                 children: [
                   const _KlpTerminalMark(),
-                  const SizedBox(width: KlpCodeMetrics.terminalGroupGap),
+                  SizedBox(width: context.klp.space.compact),
                   KlpText(
                     title,
                     role: KlpTextRole.code,
@@ -955,7 +975,7 @@ class KlpTerminal extends StatelessWidget {
                         ),
                         child: const KlpText(
                           'Clear',
-                          role: KlpTextRole.caption,
+                          role: KlpTextRole.code,
                           tone: KlpTextTone.muted,
                         ),
                       ),
@@ -969,7 +989,7 @@ class KlpTerminal extends StatelessWidget {
                         ),
                         child: const KlpText(
                           'Copy',
-                          role: KlpTextRole.caption,
+                          role: KlpTextRole.code,
                           tone: KlpTextTone.muted,
                         ),
                       ),
@@ -982,8 +1002,8 @@ class KlpTerminal extends StatelessWidget {
                 maxHeight: maxHeight ?? double.infinity,
               ),
               child: SingleChildScrollView(
-                padding: const EdgeInsets.all(
-                  KlpCodeMetrics.bodyPaddingHorizontal,
+                padding: EdgeInsets.all(
+                  context.klp.geometry.data.codeBodyPaddingX,
                 ),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.stretch,

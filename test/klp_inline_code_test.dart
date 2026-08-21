@@ -15,8 +15,8 @@ void main() {
 
     expect(find.text('hello_world()'), findsOneWidget);
     final textWidget = tester.widget<Text>(find.text('hello_world()'));
-    expect(textWidget.style?.fontFamily, 'monospace');
-    expect(textWidget.style?.fontSize, 16.0);
+    expect(textWidget.style?.fontFamily, 'packages/kallopis/IBM Plex Mono');
+    expect(textWidget.style?.fontSize, 14.0);
 
     final container = tester.widget<Container>(
       find.ancestor(

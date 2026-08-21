@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
 
 import '../foundation/klp_icon.dart';
-import '../foundation/klp_metrics.dart';
 import '../surface/klp_dashed_border.dart';
 import '../theme/klp_theme.dart';
 import '../typography/klp_text.dart';
-import '../foundation/klp_palette.dart';
 
 class KlpSegmentedControl extends StatelessWidget {
   const KlpSegmentedControl({
@@ -33,9 +31,11 @@ class KlpSegmentedControl extends StatelessWidget {
     final tokens = context.klpColors;
 
     return Container(
-      height: dense ? KlpSize.segmentedDense : null,
+      height: dense ? context.klp.geometry.control.segmentedDenseHeight : null,
       padding: EdgeInsets.all(
-        dense ? KlpControlMetrics.segmentedDenseInset : context.klp.space.tight,
+        dense
+            ? context.klp.geometry.control.segmentedDenseInset
+            : context.klp.space.tight,
       ),
       decoration: BoxDecoration(
         color: tokens.surfaceInset,
@@ -101,17 +101,19 @@ class _KlpSegmentState extends State<_KlpSegment> {
     final isHighlighted = widget.selected || _hovered;
 
     Widget segment = Material(
-      color: KlpPalette.transparent,
+      color: klp.color.clear,
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(klp.shape.control),
       ),
       child: InkWell(
         onTap: widget.onPressed,
         onHover: (value) => setState(() => _hovered = value),
-        overlayColor: const WidgetStatePropertyAll(KlpPalette.transparent),
+        overlayColor: WidgetStatePropertyAll(klp.color.clear),
         borderRadius: BorderRadius.circular(klp.shape.control),
         child: SizedBox(
-          height: widget.dense ? KlpSize.segmentedDenseItem : null,
+          height: widget.dense
+              ? klp.geometry.control.segmentedDenseItemHeight
+              : null,
           child: Padding(
             padding: EdgeInsets.symmetric(
               horizontal: klp.space.base,
