@@ -66,11 +66,10 @@ class KlpSurfaceTheme extends ThemeExtension<KlpSurfaceTheme> {
 
   final double scrimOpacity;
 
-  /// 選取狀態的壓深層強度。用前景色以低 alpha 疊上，因此亮態壓暗、暗態壓亮，
+  /// 一般互動狀態的背景高亮強度。用前景色以低 alpha 疊上，因此亮態壓暗、暗態壓亮，
   /// 且底下表面原本的階層差不會被蓋掉。
   ///
-  /// hover 只用低對比虛線細框表示可點，選取才加上這層壓深。若兩態共用一種表達，
-  /// 畫面上就分不出來。
+  /// Explorer 與表單不使用這層，改以低／高對比虛線區分 hover 與選取。
   final double selectionWashOpacity;
 
   /// 語意色當底時的疊層強度（danger 按鈕、狀態晶片）。

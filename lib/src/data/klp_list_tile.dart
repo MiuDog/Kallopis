@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 
 import '../feedback/klp_feedback_tone.dart';
 import '../foundation/klp_icon.dart';
-import '../surface/klp_dashed_border.dart';
 import '../theme/klp_theme.dart';
 import '../typography/klp_text.dart';
 
@@ -57,16 +56,18 @@ class _KlpListTileState extends State<KlpListTile> {
       };
     }
 
-    final isHighlighted = _hovered || _focused || widget.selected;
-    final tileColor = statusColor != null
+    final baseTileColor = statusColor != null
         ? statusColor.withValues(
             alpha: widget.selected
                 ? context.klp.surface.listStatusSelectedOpacity
                 : context.klp.surface.listStatusOpacity,
           )
         : (widget.selected ? tokens.selectionBackground : tokens.clear);
+    final tileColor = _hovered || _focused
+        ? Color.alphaBlend(context.klp.selectionWash, baseTileColor)
+        : baseTileColor;
 
-    Widget tile = Material(
+    final tile = Material(
       color: tileColor,
       borderRadius: BorderRadius.circular(context.klp.shape.control),
       child: InkWell(
@@ -90,7 +91,6 @@ class _KlpListTileState extends State<KlpListTile> {
                   KlpIcon(
                     widget.icon!,
                     size: context.klp.space.iconSmall,
-                    // hover 不改圖示色。
                     color: widget.selected
                         ? tokens.selectionForeground
                         : tokens.textMuted,
@@ -134,14 +134,6 @@ class _KlpListTileState extends State<KlpListTile> {
         ),
       ),
     );
-
-    if (isHighlighted) {
-      tile = KlpDashedBorder(
-        color: widget.selected ? tokens.textMuted : context.klp.color.guide,
-        radius: context.klp.shape.control,
-        child: tile,
-      );
-    }
 
     return tile;
   }

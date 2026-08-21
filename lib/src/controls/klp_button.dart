@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 
 import 'klp_control_size.dart';
 import '../interaction/klp_pressable.dart';
-import '../surface/klp_dashed_border.dart';
 import '../theme/klp_theme.dart';
 import '../typography/klp_text.dart';
 
@@ -62,6 +61,9 @@ class _KlpButtonState extends State<KlpButton> {
               alpha: klp.surface.statusFillOpacity,
             ),
           };
+    final effectiveBackground = active
+        ? Color.alphaBlend(klp.selectionWash, background)
+        : background;
     final foreground = disabled
         ? tokens.textFaint
         : switch (widget.tone) {
@@ -98,7 +100,7 @@ class _KlpButtonState extends State<KlpButton> {
       height: height,
       padding: insets,
       decoration: BoxDecoration(
-        color: background,
+        color: effectiveBackground,
         borderRadius: BorderRadius.circular(radius),
         border: klp.buttonBorderWidth == klp.shape.none
             ? null
@@ -128,16 +130,6 @@ class _KlpButtonState extends State<KlpButton> {
         ],
       ),
     );
-
-    if (active && widget.tone != KlpButtonTone.primary) {
-      content = KlpDashedBorder(
-        color: widget.tone == KlpButtonTone.danger
-            ? tokens.danger
-            : klp.hoverBorder,
-        radius: radius,
-        child: content,
-      );
-    }
 
     return Material(
       color: tokens.clear,

@@ -51,7 +51,7 @@ void main() {
         'dataVisualization',
         'geometry',
       });
-      expect((encoded['colors'] as Map).length, 31);
+      expect((encoded['colors'] as Map).length, 32);
       expect((encoded['typography'] as Map).length, 44);
       expect((encoded['spacing'] as Map).length, 60);
       expect((encoded['shape'] as Map).length, 13);
@@ -63,7 +63,7 @@ void main() {
       expect(geometry.keys, <String>{'control', 'data', 'layout', 'optical'});
       expect((geometry['control'] as Map).length, 18);
       expect((geometry['data'] as Map).length, 21);
-      expect((geometry['layout'] as Map).length, 12);
+      expect((geometry['layout'] as Map).length, 18);
       expect((geometry['optical'] as Map).length, 5);
     });
 
@@ -90,6 +90,14 @@ void main() {
 
       expect(colors['accent'], '#FF123456');
       expect(colors['accentSoft'], '#80123456');
+    });
+
+    test('頁面圖樣色可由 JSON 改寫', () {
+      final style = KlpVisualStyleJson.decode(<String, Object?>{
+        'colors': <String, Object?>{'pagePattern': '#123456'},
+      });
+
+      expect(style.colors.pagePattern, const Color(0xFF123456));
     });
 
     test('前景 semantic colors 可由 JSON 改寫', () {

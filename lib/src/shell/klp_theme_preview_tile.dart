@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 
 import '../foundation/klp_palette.dart';
 import '../interaction/klp_pressable.dart';
-import '../surface/klp_dashed_border.dart';
 import '../theme/klp_theme.dart';
 import '../typography/klp_text.dart';
 
@@ -34,21 +33,23 @@ class KlpThemePreviewTile extends StatelessWidget {
     final radius = BorderRadius.circular(context.klp.shape.panel);
     final foreground = enabled ? tokens.text : tokens.textFaint;
 
-    Widget previewBox = ClipRRect(
+    final previewBox = ClipRRect(
       borderRadius: radius,
-      child: CustomPaint(
-        size: Size(width, width * 0.66),
-        painter: _ThemePreviewPainter(mode, context.klp.shape.panel),
+      child: Stack(
+        children: [
+          CustomPaint(
+            size: Size(width, width * 0.66),
+            painter: _ThemePreviewPainter(mode, context.klp.shape.panel),
+          ),
+          if (selected)
+            Positioned.fill(
+              child: IgnorePointer(
+                child: ColoredBox(color: context.klp.selectionWash),
+              ),
+            ),
+        ],
       ),
     );
-
-    if (selected) {
-      previewBox = KlpDashedBorder(
-        color: tokens.textMuted,
-        radius: context.klp.shape.panel,
-        child: previewBox,
-      );
-    }
 
     return Semantics(
       button: onSelected != null,

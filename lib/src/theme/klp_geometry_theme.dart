@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../foundation/klp_metrics.dart';
+import '../tokens/klp_scale.dart';
 import 'klp_control_geometry.dart';
 import 'klp_data_geometry.dart';
 import 'klp_layout_geometry.dart';
@@ -78,6 +79,11 @@ class KlpGeometryTheme extends ThemeExtension<KlpGeometryTheme> {
       toastMaximumWidth: 360,
       inlineNoticeBreakpoint: 480,
       statusBarBreakpoint: 400,
+      windowToolbarHeight: KlpSize.windowToolbar,
+      windowToolbarPaddingStart: KlpScale.space100,
+      windowToolbarPaddingEnd: KlpScale.space100,
+      windowAppIconSize: 18,
+      windowIdentityGap: KlpScale.space200,
     ),
     optical: KlpOpticalGeometry(
       menuIconOffsetY: 1,

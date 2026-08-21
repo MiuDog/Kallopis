@@ -407,23 +407,15 @@ class _KlpTreeNodeView extends StatelessWidget {
     final isDark = context.klp.isDark;
     final surfaceTokens = context.klp.surface;
 
-    final backgroundColor = statusColor != null
-        ? statusColor.withValues(
-            alpha: isDark
-                ? (selected
-                      ? surfaceTokens.statusRowSelectedOpacityDark
-                      : surfaceTokens.statusRowOpacityDark)
-                : (selected
-                      ? surfaceTokens.statusRowSelectedOpacity
-                      : surfaceTokens.statusRowOpacity),
-          )
-        : (selected
-              ? (isDark
-                    ? tokens.text.withValues(
-                        alpha: surfaceTokens.gridLineOpacity,
-                      )
-                    : tokens.surfaceMuted)
-              : null);
+    final backgroundColor = statusColor?.withValues(
+      alpha: isDark
+          ? (selected
+                ? surfaceTokens.statusRowSelectedOpacityDark
+                : surfaceTokens.statusRowOpacityDark)
+          : (selected
+                ? surfaceTokens.statusRowSelectedOpacity
+                : surfaceTokens.statusRowOpacity),
+    );
 
     Widget rowContent = Container(
       constraints: BoxConstraints(minHeight: context.klp.space.controlHeight),

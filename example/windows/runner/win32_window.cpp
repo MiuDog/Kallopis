@@ -17,6 +17,7 @@ namespace {
 #endif
 
 constexpr const wchar_t kWindowClassName[] = L"FLUTTER_RUNNER_WIN32_WINDOW";
+constexpr int kResizeBorderLogicalPixels = 8;
 
 /// Registry key for app theme preference.
 ///
@@ -246,6 +247,18 @@ Win32Window::MessageHandler(HWND hwnd,
     case WM_GETMINMAXINFO: {
       auto* min_max_info = reinterpret_cast<MINMAXINFO*>(lparam);
       HMONITOR monitor = MonitorFromWindow(hwnd, MONITOR_DEFAULTTONEAREST);
+      MONITORINFO monitor_info = {sizeof(MONITORINFO)};
+
+      // 將頂層視窗限制在工作區，避免透明外框攔截 Windows 工作列事件。
+      if (GetMonitorInfo(monitor, &monitor_info)) {
+        const RECT& monitor_rect = monitor_info.rcMonitor;
+        const RECT& work_rect = monitor_info.rcWork;
+        min_max_info->ptMaxPosition.x = work_rect.left - monitor_rect.left;
+        min_max_info->ptMaxPosition.y = work_rect.top - monitor_rect.top;
+        min_max_info->ptMaxSize.x = work_rect.right - work_rect.left;
+        min_max_info->ptMaxSize.y = work_rect.bottom - work_rect.top;
+      }
+
       UINT dpi = FlutterDesktopGetDpiForMonitor(monitor);
       double scale_factor = dpi / 96.0;
       if (min_width_ > 0) {
@@ -265,7 +278,9 @@ Win32Window::MessageHandler(HWND hwnd,
                   static_cast<SHORT>(HIWORD(lparam))};
       RECT rect;
       GetWindowRect(hwnd, &rect);
-      const int border = 8;
+      HMONITOR monitor = MonitorFromWindow(hwnd, MONITOR_DEFAULTTONEAREST);
+      UINT dpi = FlutterDesktopGetDpiForMonitor(monitor);
+      const int border = Scale(kResizeBorderLogicalPixels, dpi / 96.0);
 
       bool left = pt.x >= rect.left && pt.x < rect.left + border;
       bool right = pt.x < rect.right && pt.x >= rect.right - border;

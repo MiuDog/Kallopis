@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:kallopis/kallopis.dart';
 
@@ -63,6 +64,27 @@ void main() {
     await tester.pumpAndSettle();
 
     expect(selectedId, 'file-2');
+    final selectedBorder = tester.widget<KlpDashedBorder>(
+      find.byType(KlpDashedBorder),
+    );
+    expect(
+      selectedBorder.color,
+      tester.element(find.byType(KlpFileExplorer)).klp.color.textMuted,
+    );
+
+    final mouse = await tester.createGesture(kind: PointerDeviceKind.mouse);
+    addTearDown(mouse.removePointer);
+    await mouse.addPointer();
+    await mouse.moveTo(tester.getCenter(find.text('ADR-0003 : 團隊導向')));
+    await tester.pump();
+
+    final borderColors = tester
+        .widgetList<KlpDashedBorder>(find.byType(KlpDashedBorder))
+        .map((border) => border.color);
+    expect(
+      borderColors,
+      contains(tester.element(find.byType(KlpFileExplorer)).klp.hoverBorder),
+    );
 
     // 點擊分類「筆記」進行收合
     await tester.tap(find.text('筆記'));

@@ -244,11 +244,7 @@ class _KlpCalendarDayCellState extends State<_KlpCalendarDayCell> {
     final tokens = context.klpColors;
     final interactive = !widget.disabled && widget.onTap != null;
 
-    final background = widget.selected
-        ? tokens.selectionBackground
-        : widget.inRange
-        ? klp.selectionWash
-        : null;
+    final background = widget.inRange ? klp.selectionWash : null;
 
     Widget cell = Container(
       height: klp.space.controlHeightSmall,
@@ -264,13 +260,16 @@ class _KlpCalendarDayCellState extends State<_KlpCalendarDayCell> {
         widget.label,
         role: KlpTextRole.caption,
         tone: widget.disabled ? KlpTextTone.faint : KlpTextTone.automatic,
-        color: widget.selected ? tokens.onSelection : null,
+        color: widget.selected ? tokens.text : null,
       ),
     );
 
-    if (_hovered && interactive) {
-      // 不傳 color——預設就是 guide 疊 dashedOpacity，與 hoverBorder 的算法相同。
-      cell = KlpDashedBorder(radius: klp.shape.control, child: cell);
+    if ((_hovered && interactive) || widget.selected) {
+      cell = KlpDashedBorder(
+        color: widget.selected ? tokens.textMuted : klp.hoverBorder,
+        radius: klp.shape.control,
+        child: cell,
+      );
     }
 
     return MouseRegion(

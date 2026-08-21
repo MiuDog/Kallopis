@@ -59,6 +59,12 @@ KlpJsonMap encodeGeometry(KlpGeometryTheme v) => <String, Object?>{
     'toastMaximumWidth': v.layout.toastMaximumWidth,
     'inlineNoticeBreakpoint': v.layout.inlineNoticeBreakpoint,
     'statusBarBreakpoint': v.layout.statusBarBreakpoint,
+    'windowToolbarHeight': v.layout.windowToolbarHeight,
+    'windowControlButtonSize': v.layout.windowControlButtonSize,
+    'windowToolbarPaddingStart': v.layout.windowToolbarPaddingStart,
+    'windowToolbarPaddingEnd': v.layout.windowToolbarPaddingEnd,
+    'windowAppIconSize': v.layout.windowAppIconSize,
+    'windowIdentityGap': v.layout.windowIdentityGap,
   },
   'optical': <String, Object?>{
     'menuIconOffsetY': v.optical.menuIconOffsetY,

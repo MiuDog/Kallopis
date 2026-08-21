@@ -4,7 +4,6 @@ import '../foundation/klp_icon.dart';
 import '../foundation/klp_icons.dart';
 import '../l10n/klp_localizations.dart';
 import '../overlay/klp_tooltip.dart';
-import '../surface/klp_dashed_border.dart';
 import '../theme/klp_theme.dart';
 
 /// 視窗控制按鈕樣式。
@@ -107,16 +106,23 @@ class _WindowControlButtonState extends State<_WindowControlButton> {
     final tokens = context.klpColors;
     final enabled = widget.onPressed != null;
     final active = enabled && (_hovered || _focused);
-    // hover 不改底色也不改圖示色。destructive 的紅是這顆鈕本身的語意，
-    // 不是 hover 造成的變化，因此與 active 無關。
+
+    // 破壞性操作在啟用狀態使用完整語意底色，並切換成對比前景。
     final color = !enabled
         ? tokens.textFaint
+        : widget.destructive && active
+        ? tokens.onStatus
         : widget.destructive
         ? tokens.danger
         : tokens.textMuted;
+    final backgroundColor = active
+        ? widget.destructive
+              ? tokens.danger
+              : context.klp.selectionWash
+        : tokens.clear;
 
-    Widget button = Material(
-      color: tokens.clear,
+    final button = Material(
+      color: backgroundColor,
       borderRadius: BorderRadius.circular(context.klp.shape.control),
       child: InkWell(
         onTap: widget.onPressed,
@@ -124,7 +130,7 @@ class _WindowControlButtonState extends State<_WindowControlButton> {
         onFocusChange: (value) => setState(() => _focused = value),
         borderRadius: BorderRadius.circular(context.klp.shape.control),
         child: SizedBox.square(
-          dimension: context.klp.space.controlHeightSmall,
+          dimension: context.klp.geometry.layout.windowControlButtonSize,
           child: Center(
             child: KlpIcon(
               widget.icon,
@@ -135,14 +141,6 @@ class _WindowControlButtonState extends State<_WindowControlButton> {
         ),
       ),
     );
-
-    if (active) {
-      button = KlpDashedBorder(
-        color: widget.destructive ? tokens.danger : context.klp.hoverBorder,
-        radius: context.klp.shape.control,
-        child: button,
-      );
-    }
 
     return KlpTooltip(
       message: widget.label,

@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/gestures.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:kallopis/kallopis.dart';
 
 void main() {
+  const windowChannel = MethodChannel('kallopis/window');
+
   Widget testBed({required Widget child}) {
     return MaterialApp(
       theme: buildKlpTheme(Brightness.light),
@@ -37,6 +41,40 @@ void main() {
       (w) => w is KlpTooltip && w.message == 'Minimize window',
     );
     expect(minimizeFinder, findsOneWidget);
+    expect(
+      tester.getSize(minimizeFinder),
+      Size.square(
+        tester
+            .element(minimizeFinder)
+            .klp
+            .geometry
+            .layout
+            .windowControlButtonSize,
+      ),
+    );
+
+    final mouse = await tester.createGesture(kind: PointerDeviceKind.mouse);
+    addTearDown(mouse.removePointer);
+    await mouse.addPointer();
+    await mouse.moveTo(tester.getCenter(minimizeFinder));
+    await tester.pump();
+
+    final minimizeMaterial = find.descendant(
+      of: minimizeFinder,
+      matching: find.byType(Material),
+    );
+    expect(minimizeMaterial, findsOneWidget);
+    expect(
+      tester.widget<Material>(minimizeMaterial).color,
+      tester.element(minimizeFinder).klp.selectionWash,
+    );
+    expect(
+      find.descendant(
+        of: minimizeFinder,
+        matching: find.byType(KlpDashedBorder),
+      ),
+      findsNothing,
+    );
     await tester.tap(minimizeFinder);
     expect(minimized, isTrue);
 
@@ -51,8 +89,98 @@ void main() {
       (w) => w is KlpTooltip && w.message == 'Close window',
     );
     expect(closeFinder, findsOneWidget);
+
+    await mouse.moveTo(tester.getCenter(closeFinder));
+    await tester.pump();
+
+    final closeMaterial = find.descendant(
+      of: closeFinder,
+      matching: find.byType(Material),
+    );
+    final closeIcon = find.descendant(
+      of: closeFinder,
+      matching: find.byType(KlpIcon),
+    );
+    final closeTokens = tester.element(closeFinder).klpColors;
+    expect(tester.widget<Material>(closeMaterial).color, closeTokens.danger);
+    expect(tester.widget<KlpIcon>(closeIcon).color, closeTokens.onStatus);
+
+    final layout = tester.element(closeFinder).klp.geometry.layout;
+    expect(layout.windowToolbarPaddingStart, layout.windowToolbarPaddingEnd);
+    expect(
+      layout.windowToolbarPaddingStart,
+      (layout.windowToolbarHeight - layout.windowControlButtonSize) / 2,
+    );
+    expect(
+      tester.getRect(closeFinder).right,
+      tester.getRect(find.byType(KlpWindowHeader)).right -
+          layout.windowToolbarPaddingEnd,
+    );
     await tester.tap(closeFinder);
     expect(closed, isTrue);
+  });
+
+  testWidgets('Windows 模式在極窄寬度下保留控制鈕且不溢出', (tester) async {
+    bool closed = false;
+
+    await tester.pumpWidget(
+      testBed(
+        child: Align(
+          alignment: Alignment.topLeft,
+          child: SizedBox(
+            width: 156.0,
+            child: KlpWindowHeader(
+              titleText: 'A deliberately long application title',
+              platform: TargetPlatform.windows,
+              appIcon: const Icon(Icons.circle),
+              onClose: () => closed = true,
+            ),
+          ),
+        ),
+      ),
+    );
+
+    expect(tester.takeException(), isNull);
+
+    final closeFinder = find.byWidgetPredicate(
+      (widget) => widget is KlpTooltip && widget.message == 'Close window',
+    );
+    expect(closeFinder, findsOneWidget);
+    final layout = tester.element(closeFinder).klp.geometry.layout;
+    expect(
+      tester.getRect(closeFinder).right,
+      tester.getRect(find.byType(KlpWindowHeader)).right -
+          layout.windowToolbarPaddingEnd,
+    );
+
+    await tester.tap(closeFinder);
+    expect(closed, isTrue);
+  });
+
+  testWidgets('Windows 最大化時仍由原生標題列接手拖曳', (tester) async {
+    final calls = <MethodCall>[];
+    final messenger =
+        TestDefaultBinaryMessengerBinding.instance.defaultBinaryMessenger;
+    messenger.setMockMethodCallHandler(windowChannel, (call) async {
+      calls.add(call);
+      return null;
+    });
+    addTearDown(() => messenger.setMockMethodCallHandler(windowChannel, null));
+
+    await tester.pumpWidget(
+      testBed(
+        child: const KlpWindowHeader(
+          titleText: 'Kallopis',
+          platform: TargetPlatform.windows,
+          isMaximized: true,
+        ),
+      ),
+    );
+
+    await tester.drag(find.byType(KlpWindowHeader), const Offset(20.0, 0.0));
+    await tester.pump(kDoubleTapTimeout);
+
+    expect(calls.map((call) => call.method), contains('drag'));
   });
 
   testWidgets('macOS 模式下，標題置中且控制鈕在左側', (tester) async {

@@ -30,7 +30,6 @@ class _KallopisCatalogAppState extends State<KallopisCatalogApp>
   void initState() {
     super.initState();
     WidgetsBinding.instance.addObserver(this);
-    KlpWindowAction.setMinSize(minWidth: 800, minHeight: 500);
     _queryMaximized();
   }
 
@@ -67,83 +66,80 @@ class _KallopisCatalogAppState extends State<KallopisCatalogApp>
   Widget build(BuildContext context) {
     final themeData = buildKlpThemeVariant(_variant);
 
-    return MaterialApp(
+    return KlpApp(
       debugShowCheckedModeBanner: false,
-      title: 'Kallopis Catalog',
-      theme: themeData,
-      themeAnimationDuration: Duration.zero,
-      home: Builder(
-        builder: (context) {
-          final klp = context.klp;
-          return Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: [
-              KlpWindowHeader(
-                titleText: 'Kallopis',
-                appIcon: const FlutterLogo(size: 14.0),
-                isMaximized: _isMaximized,
-                actions: [
-                  Center(
-                    child: KlpTooltip(
-                      message:
-                          '切換主題（目前：${switch (_variant) {
-                            KlpThemeVariant.light => '淺色',
-                            KlpThemeVariant.dark => '深色',
-                            KlpThemeVariant.ultraDark => '超深色',
-                            KlpThemeVariant.transparent => '透明',
-                          }}）',
-                      child: GestureDetector(
-                        onTap: _cycleTheme,
-                        child: Container(
-                          height: 22.0,
-                          padding: EdgeInsets.symmetric(
-                            horizontal: klp.space.compact,
-                          ),
-                          decoration: BoxDecoration(
-                            color: klp.color.component,
-                            borderRadius: BorderRadius.circular(
-                              klp.shape.control,
-                            ),
-                          ),
-                          child: Row(
-                            mainAxisSize: MainAxisSize.min,
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            children: [
-                              KlpIcon(
-                                KlpIcons.sparkles,
-                                size: 12.0,
-                                color: klp.color.textMuted,
-                              ),
-                              SizedBox(width: klp.space.tight),
-                              KlpText(
-                                switch (_variant) {
-                                  KlpThemeVariant.light => 'Light',
-                                  KlpThemeVariant.dark => 'Dark',
-                                  KlpThemeVariant.ultraDark => 'Ultra Dark',
-                                  KlpThemeVariant.transparent => 'Acrylic',
-                                },
-                                role: KlpTextRole.micro,
-                                tone: KlpTextTone.muted,
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-              Expanded(
-                child: CatalogShell(
-                  groups: catalogGroups,
-                  pages: catalogPages,
-                  selected: _selected.clamp(0, catalogPages.length - 1),
-                  onSelected: (index) => setState(() => _selected = index),
+      title: 'Kallopis',
+      appIcon: const FlutterLogo(),
+      minWidth: 800,
+      minHeight: 500,
+      isMaximized: _isMaximized,
+      headerActions: [
+        _CatalogThemeButton(variant: _variant, onPressed: _cycleTheme),
+      ],
+      builder: (context, child) =>
+          Theme(data: themeData, child: child ?? const SizedBox.shrink()),
+      home: CatalogShell(
+        groups: catalogGroups,
+        pages: catalogPages,
+        selected: _selected.clamp(0, catalogPages.length - 1),
+        onSelected: (index) => setState(() => _selected = index),
+      ),
+    );
+  }
+}
+
+class _CatalogThemeButton extends StatelessWidget {
+  const _CatalogThemeButton({required this.variant, required this.onPressed});
+
+  final KlpThemeVariant variant;
+  final VoidCallback onPressed;
+
+  @override
+  Widget build(BuildContext context) {
+    final klp = context.klp;
+
+    return Center(
+      child: KlpTooltip(
+        message:
+            '切換主題（目前：${switch (variant) {
+              KlpThemeVariant.light => '淺色',
+              KlpThemeVariant.dark => '深色',
+              KlpThemeVariant.ultraDark => '超深色',
+              KlpThemeVariant.transparent => '透明',
+            }}）',
+        child: GestureDetector(
+          onTap: onPressed,
+          child: Container(
+            height: 22.0,
+            padding: EdgeInsets.symmetric(horizontal: klp.space.compact),
+            decoration: BoxDecoration(
+              color: klp.color.component,
+              borderRadius: BorderRadius.circular(klp.shape.control),
+            ),
+            child: Row(
+              mainAxisSize: MainAxisSize.min,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                KlpIcon(
+                  KlpIcons.sparkles,
+                  size: 12.0,
+                  color: klp.color.textMuted,
                 ),
-              ),
-            ],
-          );
-        },
+                SizedBox(width: klp.space.tight),
+                KlpText(
+                  switch (variant) {
+                    KlpThemeVariant.light => 'Light',
+                    KlpThemeVariant.dark => 'Dark',
+                    KlpThemeVariant.ultraDark => 'Ultra Dark',
+                    KlpThemeVariant.transparent => 'Acrylic',
+                  },
+                  role: KlpTextRole.micro,
+                  tone: KlpTextTone.muted,
+                ),
+              ],
+            ),
+          ),
+        ),
       ),
     );
   }

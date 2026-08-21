@@ -3,7 +3,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:kallopis/kallopis.dart';
 
 void main() {
-  testWidgets('側邊欄樹狀物件支援 PENDING、STALE、APPROVED、REJECTED 狀態與選取半透明高亮', (
+  testWidgets('側邊欄樹狀物件支援 PENDING、STALE、APPROVED、REJECTED 狀態與高對比選取框', (
     tester,
   ) async {
     for (final brightness in [Brightness.light, Brightness.dark]) {

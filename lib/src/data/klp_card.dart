@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
 import '../feedback/klp_feedback_tone.dart';
-import '../surface/klp_dashed_border.dart';
 import '../theme/klp_theme.dart';
 import '../typography/klp_text.dart';
 
@@ -34,9 +33,11 @@ class KlpCard extends StatelessWidget {
     final tokens = context.klpColors;
     final effectiveBackground = backgroundColor ?? tokens.component;
 
-    Widget card = DecoratedBox(
+    final card = DecoratedBox(
       decoration: BoxDecoration(
-        color: effectiveBackground,
+        color: selected
+            ? Color.alphaBlend(klp.selectionWash, effectiveBackground)
+            : effectiveBackground,
         borderRadius: BorderRadius.circular(klp.cardRadius),
       ),
       child: Column(
@@ -70,14 +71,6 @@ class KlpCard extends StatelessWidget {
         ],
       ),
     );
-
-    if (selected) {
-      card = KlpDashedBorder(
-        color: tokens.textMuted,
-        radius: klp.cardRadius,
-        child: card,
-      );
-    }
 
     return card;
   }

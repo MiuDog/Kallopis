@@ -16,6 +16,12 @@ class KlpLayoutGeometry {
     required this.toastMaximumWidth,
     required this.inlineNoticeBreakpoint,
     required this.statusBarBreakpoint,
+    required this.windowToolbarHeight,
+    this.windowControlButtonSize = 30,
+    required this.windowToolbarPaddingStart,
+    required this.windowToolbarPaddingEnd,
+    required this.windowAppIconSize,
+    required this.windowIdentityGap,
   });
 
   final double primaryPaneWidth;
@@ -30,6 +36,14 @@ class KlpLayoutGeometry {
   final double toastMaximumWidth;
   final double inlineNoticeBreakpoint;
   final double statusBarBreakpoint;
+  final double windowToolbarHeight;
+
+  /// 視窗最小化、最大化與關閉按鈕的外部方形尺寸，不影響內部 icon 尺寸。
+  final double windowControlButtonSize;
+  final double windowToolbarPaddingStart;
+  final double windowToolbarPaddingEnd;
+  final double windowAppIconSize;
+  final double windowIdentityGap;
 
   @override
   bool operator ==(Object other) =>
@@ -46,7 +60,13 @@ class KlpLayoutGeometry {
           dialogMaximumWidth == other.dialogMaximumWidth &&
           toastMaximumWidth == other.toastMaximumWidth &&
           inlineNoticeBreakpoint == other.inlineNoticeBreakpoint &&
-          statusBarBreakpoint == other.statusBarBreakpoint;
+          statusBarBreakpoint == other.statusBarBreakpoint &&
+          windowToolbarHeight == other.windowToolbarHeight &&
+          windowControlButtonSize == other.windowControlButtonSize &&
+          windowToolbarPaddingStart == other.windowToolbarPaddingStart &&
+          windowToolbarPaddingEnd == other.windowToolbarPaddingEnd &&
+          windowAppIconSize == other.windowAppIconSize &&
+          windowIdentityGap == other.windowIdentityGap;
 
   @override
   int get hashCode => Object.hash(
@@ -62,5 +82,11 @@ class KlpLayoutGeometry {
     toastMaximumWidth,
     inlineNoticeBreakpoint,
     statusBarBreakpoint,
+    windowToolbarHeight,
+    windowControlButtonSize,
+    windowToolbarPaddingStart,
+    windowToolbarPaddingEnd,
+    windowAppIconSize,
+    windowIdentityGap,
   );
 }

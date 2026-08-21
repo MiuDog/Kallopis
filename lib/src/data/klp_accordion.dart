@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 
 import '../foundation/klp_icon.dart';
 import '../foundation/klp_icons.dart';
-import '../surface/klp_dashed_border.dart';
 import '../theme/klp_theme.dart';
 import '../typography/klp_text.dart';
 
@@ -119,8 +118,8 @@ class _KlpAccordionPanelState extends State<_KlpAccordionPanel> {
     final klp = context.klp;
     final isHighlighted = _hovered || _focused;
 
-    Widget header = Material(
-      color: klp.color.clear,
+    final header = Material(
+      color: isHighlighted ? klp.selectionWash : klp.color.clear,
       borderRadius: BorderRadius.circular(klp.shape.control),
       child: InkWell(
         onTap: widget.onToggle,
@@ -172,12 +171,6 @@ class _KlpAccordionPanelState extends State<_KlpAccordionPanel> {
         ),
       ),
     );
-
-    if (isHighlighted) {
-      // KlpDashedBorder 目前固定用 guide 色（無法自訂 color），與其餘元件的
-      // hover 虛線框色一致；一旦它加回可自訂顏色的參數，這裡應改用 klp.hoverBorder。
-      header = KlpDashedBorder(radius: klp.shape.control, child: header);
-    }
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,

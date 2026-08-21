@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import '../foundation/klp_icon.dart';
 import '../foundation/klp_icons.dart';
 import '../l10n/klp_localizations.dart';
-import '../surface/klp_dashed_border.dart';
 import '../theme/klp_theme.dart';
 import '../typography/klp_text.dart';
 import 'klp_panel_header.dart';
@@ -129,20 +128,22 @@ class _KlpPaneCollapseControlState extends State<KlpPaneCollapseControl> {
     final effectiveLabel =
         widget.label ?? KlpLocalizations.of(context).panelToggleLabel;
 
-    Widget button = SizedBox.square(
-      dimension: klp.space.controlHeightSmall,
-      child: Center(
-        child: KlpIcon(
-          effectiveIcon,
-          size: klp.space.iconBase,
-          color: widget.collapsed ? tokens.textFaint : tokens.textMuted,
+    final button = DecoratedBox(
+      decoration: BoxDecoration(
+        color: _hovered ? klp.selectionWash : tokens.clear,
+        borderRadius: BorderRadius.circular(klp.shape.control),
+      ),
+      child: SizedBox.square(
+        dimension: klp.space.controlHeightSmall,
+        child: Center(
+          child: KlpIcon(
+            effectiveIcon,
+            size: klp.space.iconBase,
+            color: widget.collapsed ? tokens.textFaint : tokens.textMuted,
+          ),
         ),
       ),
     );
-
-    if (_hovered) {
-      button = KlpDashedBorder(radius: klp.shape.control, child: button);
-    }
 
     return MouseRegion(
       onEnter: (_) => setState(() => _hovered = true),

@@ -16,6 +16,7 @@ class KlpWorkbenchShell extends StatelessWidget {
     this.secondaryWidth,
     this.onPrimaryWidthChanged,
     this.onSecondaryWidthChanged,
+    this.padding,
   });
 
   final Widget primary;
@@ -28,6 +29,9 @@ class KlpWorkbenchShell extends StatelessWidget {
   final ValueChanged<double>? onPrimaryWidthChanged;
   final ValueChanged<double>? onSecondaryWidthChanged;
 
+  /// 外殼與三欄內容之間的留白；`null` 時四邊沿用基礎間距。
+  final EdgeInsetsGeometry? padding;
+
   @override
   Widget build(BuildContext context) {
     final tokens = context.klpColors;
@@ -35,6 +39,7 @@ class KlpWorkbenchShell extends StatelessWidget {
     final effectivePrimaryWidth = primaryWidth ?? geometry.primaryPaneWidth;
     final effectiveSecondaryWidth =
         secondaryWidth ?? geometry.secondaryPaneWidth;
+    final effectivePadding = padding ?? EdgeInsets.all(context.klp.space.base);
 
     return LayoutBuilder(
       builder: (context, constraints) {
@@ -54,7 +59,7 @@ class KlpWorkbenchShell extends StatelessWidget {
         return ColoredBox(
           color: tokens.app,
           child: Padding(
-            padding: EdgeInsets.all(context.klp.space.base),
+            padding: effectivePadding,
             child: Row(
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [

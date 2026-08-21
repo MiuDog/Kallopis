@@ -96,7 +96,8 @@ class KlpApp extends StatefulWidget {
     this.supportedLocales = const <Locale>[Locale('en', 'US')],
     this.builder,
     this.debugShowCheckedModeBanner = true,
-  });
+  }) : assert(minWidth == null || minWidth > 0),
+       assert(minHeight == null || minHeight > 0);
 
   /// 除色彩外的每一層視覺風格。預設值是庫出貨的唯一一套 [KlpVisualStyle.defaultStyle]。
   final KlpVisualStyle style;
@@ -112,7 +113,7 @@ class KlpApp extends StatefulWidget {
 
   final String title;
 
-  /// 應用程式圖示（展示在視窗標題列）。
+  /// 應用程式圖示內容；標題列尺寸由目前 [style] 的 shell geometry 決定。
   final Widget? appIcon;
 
   /// 是否顯示自帶的頂部視窗標題列（預設為 true）。
@@ -245,8 +246,14 @@ class _KlpAppState extends State<KlpApp> implements KlpAppController {
       final header =
           widget.windowHeader ??
           KlpWindowHeader(
-            appIcon: widget.appIcon,
+            appIcon: widget.appIcon == null
+                ? null
+                : _KlpAppIcon(
+                    size: effectiveStyle.geometry.layout.windowAppIconSize,
+                    child: widget.appIcon!,
+                  ),
             titleText: widget.title.isNotEmpty ? widget.title : null,
+            height: effectiveStyle.geometry.layout.windowToolbarHeight,
             actions: widget.headerActions,
             onMinimize: widget.onMinimize,
             onToggleMaximize: widget.onToggleMaximize,
@@ -285,6 +292,25 @@ class _KlpAppState extends State<KlpApp> implements KlpAppController {
         supportedLocales: widget.supportedLocales,
         builder: widget.builder,
         home: content,
+      ),
+    );
+  }
+}
+
+/// 將消費端提供的圖示收斂到 Kallopis 的標題列尺寸。
+class _KlpAppIcon extends StatelessWidget {
+  const _KlpAppIcon({required this.size, required this.child});
+
+  final double size;
+  final Widget child;
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox.square(
+      dimension: size,
+      child: IconTheme.merge(
+        data: IconThemeData(size: size),
+        child: FittedBox(fit: BoxFit.contain, child: child),
       ),
     );
   }

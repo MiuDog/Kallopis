@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 
 import '../foundation/klp_icon.dart';
 import '../overlay/klp_tooltip.dart';
-import '../surface/klp_dashed_border.dart';
 import '../theme/klp_theme.dart';
 
 class KlpRailItem extends StatefulWidget {
@@ -51,9 +50,13 @@ class _KlpRailItemState extends State<KlpRailItem> {
   @override
   Widget build(BuildContext context) {
     final tokens = context.klpColors;
-    final isHighlighted = _hovered || _focused || widget.selected;
-    Widget item = Material(
-      color: widget.selected ? tokens.selectionBackground : tokens.clear,
+    final background = widget.selected
+        ? tokens.selectionBackground
+        : _hovered || _focused
+        ? context.klp.selectionWash
+        : tokens.clear;
+    final item = Material(
+      color: background,
       borderRadius: BorderRadius.circular(context.klp.shape.card),
       child: InkWell(
         onTap: widget.onPressed,
@@ -68,7 +71,6 @@ class _KlpRailItemState extends State<KlpRailItem> {
               Center(
                 child: KlpIcon(
                   widget.icon,
-                  // hover 不改圖示色。
                   color: widget.selected
                       ? tokens.selectionForeground
                       : tokens.textMuted,
@@ -92,14 +94,6 @@ class _KlpRailItemState extends State<KlpRailItem> {
         ),
       ),
     );
-
-    if (isHighlighted) {
-      item = KlpDashedBorder(
-        color: widget.selected ? tokens.textMuted : context.klp.hoverBorder,
-        radius: context.klp.shape.card,
-        child: item,
-      );
-    }
 
     return OverlayPortal(
       controller: _tooltipController,
