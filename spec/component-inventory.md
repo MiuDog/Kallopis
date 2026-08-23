@@ -6,7 +6,7 @@
 
 ## 總覽
 
-- 公開型別 **270** 個，其中 widget **150** 個
+- 公開型別 **271** 個，其中 widget **151** 個
 - 分為 **17** 個領域
 
 ### 領域之間的依賴方向
@@ -39,20 +39,20 @@ graph TD
   controls -->|10| typography
   data -->|10| foundation
   form -->|9| controls
+  navigation -->|9| typography
   interaction -->|8| surface
-  navigation -->|8| typography
   controls -->|7| foundation
   editor -->|7| typography
   feedback -->|7| typography
   data -->|6| surface
   feedback -->|6| foundation
   form -->|6| surface
+  navigation -->|5| foundation
   overlay -->|5| surface
   shell -->|5| typography
   editor -->|4| controls
   editor -->|4| data
   interaction -->|4| typography
-  navigation -->|4| foundation
   controls -->|3| overlay
   controls -->|3| surface
   data -->|3| interaction
@@ -76,6 +76,7 @@ graph TD
   interaction -->|1| controls
   interaction -->|1| foundation
   navigation -->|1| controls
+  navigation -->|1| interaction
   navigation -->|1| overlay
   overlay -->|1| foundation
   shell -->|1| interaction
@@ -812,7 +813,7 @@ graph LR
 
 ### navigation — 導覽元件
 
-型別 14 個，widget 11 個。
+型別 15 個，widget 12 個。
 
 | 型別 | 行數 | 組成 |
 |---|---|---|
@@ -826,6 +827,7 @@ graph LR
 | `KlpFileExplorerSectionView` | 150 | `KlpFileExplorerFolderView`、`KlpFileExplorerItemView`、`KlpIcon`、`KlpText` |
 | `KlpPagination` | 46 | `KlpButton`、`KlpText` |
 | `KlpRailItem` | 125 | `KlpIcon`、`KlpTooltipSurface` |
+| `KlpSidebarNavigationButton` | 84 | `KlpIcon`、`KlpPressable`、`KlpText` |
 | `KlpSidebarSectionLabel` | 27 | `KlpText` |
 | `KlpTabs` | 71 | `KlpText` |
 | `KlpViewOption` | 14 | （葉節點） |
@@ -842,7 +844,9 @@ graph LR
   KlpFileExplorerSectionView["KlpFileExplorerSectionView"]
   KlpIcon["KlpIcon"]:::external
   KlpPagination["KlpPagination"]
+  KlpPressable["KlpPressable"]:::external
   KlpRailItem["KlpRailItem"]
+  KlpSidebarNavigationButton["KlpSidebarNavigationButton"]
   KlpSidebarSectionLabel["KlpSidebarSectionLabel"]
   KlpSurface["KlpSurface"]:::external
   KlpTabs["KlpTabs"]
@@ -865,6 +869,9 @@ graph LR
   KlpPagination --> KlpText
   KlpRailItem --> KlpIcon
   KlpRailItem --> KlpTooltipSurface
+  KlpSidebarNavigationButton --> KlpIcon
+  KlpSidebarNavigationButton --> KlpPressable
+  KlpSidebarNavigationButton --> KlpText
   KlpSidebarSectionLabel --> KlpText
   KlpTabs --> KlpText
   KlpViewSwitcher --> KlpSurface
@@ -1058,12 +1065,12 @@ graph LR
 
 | 型別 | 被幾個型別使用 |
 |---|---|
-| `KlpText` | 87 |
-| `KlpIcon` | 29 |
+| `KlpText` | 88 |
+| `KlpIcon` | 30 |
 | `KlpSurface` | 21 |
 | `KlpDashedBorder` | 11 |
+| `KlpPressable` | 10 |
 | `KlpButton` | 9 |
-| `KlpPressable` | 9 |
 | `KlpTextField` | 8 |
 | `KlpBadge` | 4 |
 | `KlpStrokeFrame` | 4 |

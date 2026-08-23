@@ -1,9 +1,94 @@
 import 'package:flutter/widgets.dart';
 
 import '../controls/klp_button.dart';
+import '../foundation/klp_icon.dart';
+import '../interaction/klp_pressable.dart';
 import '../surface/klp_surface.dart';
 import '../theme/klp_theme.dart';
 import '../typography/klp_text.dart';
+
+/// Primary Sidebar 內的全寬導覽按鈕。
+///
+/// 消費者只提供圖示、標籤、選取狀態與事件；高度、內距、圓角、圖示尺寸、
+/// hover 與選取色全部由 Kallopis theme 決定。
+class KlpSidebarNavigationButton extends StatefulWidget {
+  const KlpSidebarNavigationButton({
+    super.key,
+    required this.icon,
+    required this.label,
+    required this.onPressed,
+    this.selected = false,
+  });
+
+  final String icon;
+  final String label;
+  final VoidCallback? onPressed;
+  final bool selected;
+
+  @override
+  State<KlpSidebarNavigationButton> createState() =>
+      _KlpSidebarNavigationButtonState();
+}
+
+class _KlpSidebarNavigationButtonState
+    extends State<KlpSidebarNavigationButton> {
+  bool _hovered = false;
+  bool _focused = false;
+
+  @override
+  Widget build(BuildContext context) {
+    final klp = context.klp;
+    final tokens = context.klpColors;
+    final disabled = widget.onPressed == null;
+    final active = !disabled && (_hovered || _focused);
+    final background = widget.selected
+        ? tokens.selectionBackground
+        : active
+        ? klp.selectionWash
+        : tokens.clear;
+    final foreground = disabled
+        ? tokens.textFaint
+        : widget.selected
+        ? tokens.selectionForeground
+        : tokens.textMuted;
+    final radius = BorderRadius.circular(klp.shape.control);
+
+    return Semantics(
+      button: true,
+      selected: widget.selected,
+      enabled: !disabled,
+      label: widget.label,
+      excludeSemantics: true,
+      child: KlpPressable(
+        onPressed: widget.onPressed,
+        onHover: (value) => setState(() => _hovered = value),
+        onFocusChange: (value) => setState(() => _focused = value),
+        showHoverBorder: false,
+        borderRadius: radius,
+        child: Container(
+          height: klp.space.controlHeightSmall,
+          padding: EdgeInsets.symmetric(horizontal: klp.space.compact),
+          decoration: BoxDecoration(color: background, borderRadius: radius),
+          child: Row(
+            children: [
+              KlpIcon(widget.icon, color: foreground),
+              SizedBox(width: klp.space.compact),
+              Expanded(
+                child: KlpText(
+                  widget.label,
+                  role: KlpTextRole.body,
+                  color: foreground,
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
 
 /// 側邊欄分組標題，固定高度且左對齊、使用低對比的
 /// [KlpTextRole.label] 樣式。

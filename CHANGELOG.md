@@ -1,5 +1,18 @@
 # Changelog
 
+## 0.5.1 — 2026-08-23
+
+### 加入
+
+- 新增 `KlpSidebarNavigationButton`，由 Kallopis 統一 Primary Sidebar 導覽項的高度、
+  內距、圓角、icon 尺寸、hover、選取與停用風格；消費端只傳入 icon、標籤、狀態與事件。
+
+### 變更
+
+- Catalog 的 Actions & Navigation 頁加入一般、選取與停用三態示範。
+- Notist 的 Primary Sidebar 上半部改為直接採用 Kallopis 預設導覽風格，不再自行組合
+  `Material`／`InkWell` 或指定視覺 token。
+
 ## 0.5.0 — 2026-08-23
 
 這個 minor 版本把 Kallopis 的視窗與工作台風格收斂為消費端可直接採用的預設，並依
