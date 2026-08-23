@@ -441,9 +441,12 @@ abstract final class KlpFieldStyle {
 
   /// 欄位底色。
   ///
-  /// **hover 不改變底色**——表單欄位以低對比虛線細框表達 hover，見
-  /// [KlpTheme.hoverBorder]。因此 rest 與 hovered 刻意回傳同一個值；把它們寫成
-  /// 同一個 case 會讓「hover 沒有底色變化」這件事在未來被當成漏寫而補回去。
+  /// **hover 以高亮底色表達，不畫邊框。** 欄位本來就有自己的底色，狀態直接反映在
+  /// 那個底色上，不必在外面再包一層框——包框會讓欄位在 hover 時尺寸感改變，
+  /// 也讓同一個狀態在欄位與其他元件長得不一樣。
+  ///
+  /// 高亮是把前景色以低 alpha 疊上去，因此亮態壓暗、暗態提亮，且不必知道底下
+  /// 實際是哪個表面。
   static Color colorFor(
     KlpThemeData tokens,
     KlpFieldFillState state, {
@@ -451,9 +454,15 @@ abstract final class KlpFieldStyle {
   }) {
     return switch (state) {
       KlpFieldFillState.rest => tokens.surfaceInset,
-      KlpFieldFillState.hovered => tokens.surfaceInset,
+      KlpFieldFillState.hovered => Color.alphaBlend(
+        tokens.selectionWashWith(surface.selectionWashOpacity),
+        tokens.surfaceInset,
+      ),
       KlpFieldFillState.focused ||
-      KlpFieldFillState.selected => tokens.surfaceInset,
+      KlpFieldFillState.selected => Color.alphaBlend(
+        tokens.interaction.withValues(alpha: surface.focusWashOpacity),
+        tokens.surfaceInset,
+      ),
       KlpFieldFillState.disabled => tokens.surfaceMuted,
       // 不合法輸入用半透明紅**疊在**欄位上，而不是先跟 surfaceInset 混成不透明色。
       // 疊層才會跟著底下實際的表面走；預混會在欄位被放到別的表面上時顏色對不上。

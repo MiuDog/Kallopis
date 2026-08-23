@@ -486,7 +486,7 @@ class _KlpCodeActionButtonState extends State<_KlpCodeActionButton> {
                 onPressed: widget.onPressed,
                 onHover: (value) => setState(() => _hovered = value),
                 onFocusChange: (value) => setState(() => _focused = value),
-                showHoverBorder: false,
+                hoverHighlight: false,
                 borderRadius: BorderRadius.circular(context.klp.shape.control),
                 child: SizedBox.square(
                   dimension: context.klp.geometry.data.codeActionButtonSize,
@@ -542,7 +542,7 @@ class _KlpCodeLanguageButtonState extends State<_KlpCodeLanguageButton> {
         onPressed: widget.enabled ? widget.onPressed : null,
         onHover: (value) => setState(() => _hovered = value),
         onFocusChange: (value) => setState(() => _focused = value),
-        showHoverBorder: false,
+        hoverHighlight: false,
         borderRadius: BorderRadius.circular(context.klp.shape.control),
         child: Padding(
           padding: EdgeInsets.symmetric(horizontal: context.klp.space.tight),

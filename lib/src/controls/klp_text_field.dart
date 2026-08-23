@@ -3,7 +3,6 @@ import 'package:flutter/services.dart';
 
 import '../foundation/klp_icon.dart';
 import '../foundation/klp_icons.dart';
-import '../surface/klp_dashed_border.dart';
 import '../theme/klp_theme.dart';
 import '../typography/klp_text.dart';
 import 'klp_control_size.dart';
@@ -76,9 +75,6 @@ class KlpTextField extends StatefulWidget {
 }
 
 class _KlpTextFieldState extends State<KlpTextField> {
-  bool _hovered = false;
-  bool _focused = false;
-
   @override
   Widget build(BuildContext context) {
     final tokens = context.klpColors;
@@ -188,7 +184,6 @@ class _KlpTextFieldState extends State<KlpTextField> {
       child: Material(
         type: MaterialType.transparency,
         child: Focus(
-          onFocusChange: (focused) => setState(() => _focused = focused),
           child: TextFormField(
             controller: widget.controller,
             initialValue: widget.controller == null
@@ -269,35 +264,25 @@ class _KlpTextFieldState extends State<KlpTextField> {
       ),
     );
 
-    if ((_hovered || _focused) && widget.enabled) {
-      fieldWidget = KlpDashedBorder(
-        color: _focused ? tokens.textMuted : klp.hoverBorder,
-        radius: klp.fieldRadius,
-        child: fieldWidget,
-      );
-    }
-
-    return MouseRegion(
-      onEnter: (_) => setState(() => _hovered = true),
-      onExit: (_) => setState(() => _hovered = false),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: [
-          if (widget.label != null) ...[
-            KlpText(widget.label!, role: KlpTextRole.caption),
-            SizedBox(height: klp.space.tight),
-          ],
-          fieldWidget,
-          if (hasError || widget.helper != null) ...[
-            SizedBox(height: klp.space.tight),
-            KlpText(
-              widget.error ?? widget.helper!,
-              role: KlpTextRole.caption,
-              tone: hasError ? KlpTextTone.danger : KlpTextTone.muted,
-            ),
-          ],
+    // hover／focus 的底色由 InputDecoration 的 WidgetState 解析，
+    // 因此這裡不再自己追蹤指標與焦點——同一件事追兩份必然分岔。
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      children: [
+        if (widget.label != null) ...[
+          KlpText(widget.label!, role: KlpTextRole.caption),
+          SizedBox(height: klp.space.tight),
         ],
-      ),
+        fieldWidget,
+        if (hasError || widget.helper != null) ...[
+          SizedBox(height: klp.space.tight),
+          KlpText(
+            widget.error ?? widget.helper!,
+            role: KlpTextRole.caption,
+            tone: hasError ? KlpTextTone.danger : KlpTextTone.muted,
+          ),
+        ],
+      ],
     );
   }
 }

@@ -1,8 +1,8 @@
 import 'package:flutter/widgets.dart';
 
+import '../interaction/klp_state_highlight.dart';
 import '../controls/klp_icon_button.dart';
 import '../foundation/klp_icons.dart';
-import '../surface/klp_dashed_border.dart';
 import '../theme/klp_theme.dart';
 import '../typography/klp_text.dart';
 
@@ -264,13 +264,15 @@ class _KlpCalendarDayCellState extends State<_KlpCalendarDayCell> {
       ),
     );
 
-    if ((_hovered && interactive) || widget.selected) {
-      cell = KlpDashedBorder(
-        color: widget.selected ? tokens.textMuted : klp.hoverBorder,
-        radius: klp.shape.control,
-        child: cell,
-      );
-    }
+    cell = KlpStateHighlight(
+      state: widget.selected
+          ? KlpHighlightState.selected
+          : (_hovered && interactive
+                ? KlpHighlightState.hover
+                : KlpHighlightState.none),
+      borderRadius: BorderRadius.circular(klp.shape.control),
+      child: cell,
+    );
 
     return MouseRegion(
       onEnter: interactive ? (_) => setState(() => _hovered = true) : null,

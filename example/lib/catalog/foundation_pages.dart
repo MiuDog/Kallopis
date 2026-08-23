@@ -619,6 +619,31 @@ final layoutInteractionPage = CatalogPageData(
   icon: KlpIcons.collapse,
   specimens: [
     Specimen(
+      name: 'KlpStateHighlight',
+      note:
+          'hover 與 selected 的唯一表達方式。全庫不再用邊框表示 hover——'
+          '同一個狀態兩種畫法，消費者無從預期。',
+      build: (context) {
+        final klp = context.klp;
+        return Row(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            for (final state in KlpHighlightState.values) ...[
+              KlpStateHighlight(
+                state: state,
+                child: KlpSurface(
+                  tone: KlpSurfaceTone.component,
+                  padding: EdgeInsets.all(klp.space.base),
+                  child: KlpText(state.name, role: KlpTextRole.code),
+                ),
+              ),
+              SizedBox(width: klp.space.compact),
+            ],
+          ],
+        );
+      },
+    ),
+    Specimen(
       name: 'KlpPressable',
       note: '所有可點擊元件的互動基底。hover 與 pressed 的色彩混合比例來自 theme。',
       build: (context) => KlpPressable(

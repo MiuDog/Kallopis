@@ -54,10 +54,7 @@ void main() {
         // 用正則而非字面比對：格式化器會把長的類別宣告折行，把 extends 推到
         // 下一行，這時用帶尾空白的字面字串是抓不到的。
         final start = RegExp(
-          'class'
-                  r'\s+' +
-              className +
-              r'\b',
+          'class[ ]+$className(?![A-Za-z0-9_])',
         ).firstMatch(source)?.start;
         if (start == null) continue;
         final body = _classBody(source, start);

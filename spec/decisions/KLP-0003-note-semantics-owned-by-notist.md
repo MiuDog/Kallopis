@@ -10,6 +10,11 @@ Kallopis 不再提供文件區塊、筆記頁面背景、背景編輯器與試�
 移至 Notist，以 `Nts` 前綴提供。Kallopis 僅保留它們依賴的通用 token 與機制，包括
 `KlpContextMenu`、`KlpResizeHandle`、`KlpAccordion`、`KlpDataTable` 及圖樣色彩 token。
 
+Notist 不自行定義這些元件的顏色、透明度或互動狀態外觀。通用可按壓表面的 rest、hover、
+focus 與 selected 視覺由 Kallopis 提供；Notist 只組裝「內容編輯」與「操作鈕選取」等產品
+語意。rest 必須透明，hover／focus 使用半透明中性高亮，selected 使用半透明選取色，且
+selected 優先於 hover／focus。
+
 ## 推導依據
 
 上述元件目前只有 Notist 具有相同產品語意，未通過 KLP-0001 的「至少兩個產品使用」規則。
@@ -29,6 +34,7 @@ Kallopis 不再提供文件區塊、筆記頁面背景、背景編輯器與試�
 
 Kallopis Catalog registry 不得出現 `Notes` 分組，公開入口不得匯出 `KlpBlock`、
 `KlpPageBackground` 或 `KlpSheetGrid`。元件清單與 Catalog 覆蓋測試會機械驗證目前匯出面。
+Notist 的筆記元件不得自行計算狀態色或 alpha，必須組合 Kallopis 的通用互動元件。
 
 ## 已知欠債
 

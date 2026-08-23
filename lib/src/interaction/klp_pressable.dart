@@ -1,13 +1,10 @@
 import 'package:flutter/material.dart';
 
 import 'klp_interaction_settings.dart';
-import '../surface/klp_dashed_border.dart';
 import '../theme/klp_motion_theme.dart';
 import '../theme/klp_theme.dart';
 
 /// 可按壓表面的 hover／focus 視覺。
-enum KlpPressableHoverEffect { highlight, dashed }
-
 class KlpPressable extends StatefulWidget {
   const KlpPressable({
     super.key,
@@ -18,12 +15,8 @@ class KlpPressable extends StatefulWidget {
     this.borderRadius,
     this.onHover,
     this.onFocusChange,
-    this.hoverEffect = KlpPressableHoverEffect.highlight,
-    @Deprecated(
-      'Use hoverEffect. false still disables the built-in hover effect.',
-    )
-    this.showHoverBorder = true,
-    this.hoverBorderColor,
+    this.selected = false,
+    this.hoverHighlight = true,
   });
 
   final Widget child;
@@ -33,15 +26,15 @@ class KlpPressable extends StatefulWidget {
   final BorderRadius? borderRadius;
   final ValueChanged<bool>? onHover;
   final ValueChanged<bool>? onFocusChange;
-  final KlpPressableHoverEffect hoverEffect;
 
-  @Deprecated(
-    'Use hoverEffect. false still disables the built-in hover effect.',
-  )
-  final bool showHoverBorder;
+  /// 受控選取狀態；視覺完全由目前的 Kallopis theme 決定。
+  final bool selected;
 
-  /// 只在 [hoverEffect] 為 [KlpPressableHoverEffect.dashed] 時生效。
-  final Color? hoverBorderColor;
+  /// 是否由 [KlpPressable] 自己畫 hover／focus 的高亮。
+  ///
+  /// 設為 `false` 的場合是「外層已經畫了狀態」——例如 [KlpButton] 本身就有底色，
+  /// 再疊一層高亮只會讓它看起來髒掉。這不是關掉狀態表達，是把它交給外層。
+  final bool hoverHighlight;
 
   @override
   State<KlpPressable> createState() => _KlpPressableState();
@@ -130,33 +123,30 @@ class _KlpPressableState extends State<KlpPressable>
   Widget build(BuildContext context) {
     final klp = context.klp;
     final active =
-        _enabled && (_isHovered || _isFocused) && widget.showHoverBorder;
+        _enabled && (_isHovered || _isFocused) && widget.hoverHighlight;
 
     Widget content = widget.child;
-    if (active) {
-      content = switch (widget.hoverEffect) {
-        KlpPressableHoverEffect.highlight => Stack(
-          fit: StackFit.passthrough,
-          children: [
-            content,
-            Positioned.fill(
-              child: IgnorePointer(
-                child: DecoratedBox(
-                  decoration: BoxDecoration(
-                    color: klp.selectionWash,
-                    borderRadius: widget.borderRadius,
-                  ),
+    // hover／focus 一律以高亮色表達，不畫邊框。先前這裡還有一條虛線框分支，
+    // 但沒有任何呼叫端選用它——兩套語彙並存只會讓同一個狀態在不同元件長得不一樣。
+    final showHighlight = widget.selected || active;
+    if (showHighlight) {
+      content = Stack(
+        fit: StackFit.passthrough,
+        children: [
+          content,
+          Positioned.fill(
+            child: IgnorePointer(
+              child: DecoratedBox(
+                key: const ValueKey('klp-pressable-state-highlight'),
+                decoration: BoxDecoration(
+                  color: widget.selected ? klp.selectedWash : klp.selectionWash,
+                  borderRadius: widget.borderRadius,
                 ),
               ),
             ),
-          ],
-        ),
-        KlpPressableHoverEffect.dashed => KlpDashedBorder(
-          color: widget.hoverBorderColor ?? klp.hoverBorder,
-          radius: widget.borderRadius?.topLeft.x ?? klp.shape.control,
-          child: content,
-        ),
-      };
+          ),
+        ],
+      );
     }
 
     return Listener(

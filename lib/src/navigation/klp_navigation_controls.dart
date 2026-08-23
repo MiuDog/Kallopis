@@ -63,7 +63,7 @@ class _KlpSidebarNavigationButtonState
         onPressed: widget.onPressed,
         onHover: (value) => setState(() => _hovered = value),
         onFocusChange: (value) => setState(() => _focused = value),
-        showHoverBorder: false,
+        hoverHighlight: false,
         borderRadius: radius,
         child: Container(
           height: klp.space.controlHeightSmall,

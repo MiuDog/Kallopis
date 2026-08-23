@@ -81,8 +81,10 @@ final brandPage = CatalogPageData(
           Swatch(
             role: 'onInteraction',
             color: tokens.onInteraction,
+            previewBackground: tokens.interaction,
+            onColor: tokens.onInteraction,
             offRamp: '對比前景',
-            note: '在 interaction 色上自動取對比較高的一端',
+            note: '文字是 onInteraction；底色是 interaction',
           ),
         ],
       ),

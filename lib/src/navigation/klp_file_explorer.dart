@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
+import '../interaction/klp_state_highlight.dart';
 import '../feedback/klp_feedback_tone.dart';
 import '../foundation/klp_icon.dart';
 import '../foundation/klp_icons.dart';
-import '../surface/klp_dashed_border.dart';
 import '../theme/klp_theme.dart';
 import '../typography/klp_text.dart';
 
@@ -425,13 +425,13 @@ class _KlpFileExplorerFolderViewState extends State<KlpFileExplorerFolderView> {
       ),
     );
 
-    if (widget.isSelected || _isHovered) {
-      row = KlpDashedBorder(
-        color: widget.isSelected ? tokens.textMuted : klp.hoverBorder,
-        radius: klp.shape.control,
-        child: row,
-      );
-    }
+    row = KlpStateHighlight(
+      state: widget.isSelected
+          ? KlpHighlightState.selected
+          : (_isHovered ? KlpHighlightState.hover : KlpHighlightState.none),
+      borderRadius: BorderRadius.circular(klp.shape.control),
+      child: row,
+    );
 
     return MouseRegion(
       onEnter: (_) => setState(() => _isHovered = true),
@@ -532,13 +532,13 @@ class _KlpFileExplorerItemViewState extends State<KlpFileExplorerItemView> {
       ),
     );
 
-    if (widget.isSelected || _isHovered) {
-      row = KlpDashedBorder(
-        color: widget.isSelected ? tokens.textMuted : klp.hoverBorder,
-        radius: klp.shape.control,
-        child: row,
-      );
-    }
+    row = KlpStateHighlight(
+      state: widget.isSelected
+          ? KlpHighlightState.selected
+          : (_isHovered ? KlpHighlightState.hover : KlpHighlightState.none),
+      borderRadius: BorderRadius.circular(klp.shape.control),
+      child: row,
+    );
 
     return MouseRegion(
       onEnter: (_) => setState(() => _isHovered = true),

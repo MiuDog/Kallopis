@@ -36,6 +36,7 @@ void main() {
       overlayShadowOpacity: 0.22,
       scrimOpacity: 0.6,
       selectionWashOpacity: 0.1,
+      focusWashOpacity: 0.18,
       statusFillOpacity: 0.16,
       pressProgressOpacity: 0.55,
       diffFillOpacity: 0.12,

@@ -45,7 +45,7 @@ abstract final class KlpRadius {
 /// 舊版的 static const 線條幾何：粗細與虛線的長度／間隙／透明度。
 ///
 /// 與 [KlpSpace] 同屬待清除的欠債層，不隨 theme 變化——hover 虛線實際取用的是
-/// `context.klp` 上對應的 semantic token（例如 [KlpTheme.hoverBorder]），
+/// `context.klp` 上對應的 semantic token（例如 [KlpTheme.selectionWash]），
 /// 這個類別僅保留給尚未遷移的舊呼叫端。
 abstract final class KlpLine {
   static const double hairline = 1;
