@@ -1,5 +1,12 @@
 # Changelog
 
+## Unreleased
+
+### 修正
+
+- `KlpWorkbenchShell` 預設不再於全寬 window header 下方重複加入頂部 gutter；
+  panel 現在與 Catalog 一樣緊接 header，左右與底部仍保留 `space.compact`。
+
 ## 0.6.0 — 2026-08-23
 
 這個 minor 版本新增由 token 驅動的 Settings 呈現層與 Color Modes Catalog，並納入先前

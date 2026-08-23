@@ -3,8 +3,8 @@
 ## Outcome
 
 `KlpWorkbenchShell` 與 shell panel 不需消費端指定 spacing，即可呈現一致的 Kallopis
-工作台版面：window header 維持全寬，header 下方的工作台四周與相鄰 panel 之間使用相同留白，
-panel 內容則自帶一致內距。
+工作台版面：window header 維持全寬，panel 頂部緊接 header，左右、底部與
+相鄰 panel 之間使用相同留白，panel 內容則自帶一致內距。
 
 ## In scope / out of scope
 
@@ -14,7 +14,8 @@ panel 內容則自帶一致內距。
 
 ## Visual contract
 
-1. workbench 四周與相鄰 panel 之間都解析為 `context.klp.space.compact`。
+1. workbench 左右、底部與相鄰 panel 之間都解析為
+   `context.klp.space.compact`；頂部為 0，避免與全寬 header 重複留白。
 2. panel 內容四周預設解析為 `context.klp.space.base`。
 3. window header 不包進 workbench padding，外框仍與視窗左右邊界對齊。
 4. 消費端明確提供 `padding`、`paneGap` 或 panel `padding` 時，仍以消費端值為準。
@@ -27,8 +28,8 @@ panel 內容則自帶一致內距。
 
 ## Acceptance criteria
 
-1. 未傳入 spacing 的 `KlpWorkbenchShell`，四周與 primary／stage／secondary 欄距皆等於
-   `space.compact`。
+1. 未傳入 spacing 的 `KlpWorkbenchShell`，頂部 gutter 為 0；左右、底部與
+   primary／stage／secondary 欄距皆等於 `space.compact`。
 2. 同一畫面中的 `KlpWindowHeader` bounds 維持全寬，只有 workbench panel 被內縮。
 3. 未傳入 panel padding 時，sidebar 與 stage 的內容四周皆等於 `space.base`。
 4. Notist 的 `KlpWorkbenchShell`、`KlpPanelFrame` 與 `KlpStageFrame` 不再傳入同義 spacing。

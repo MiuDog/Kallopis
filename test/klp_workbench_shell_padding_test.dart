@@ -59,7 +59,7 @@ void main() {
   });
 
   testWidgets(
-    'default workbench keeps uniform compact gutters below full-width header',
+    'default workbench starts panels directly below full-width header',
     (tester) async {
       tester.view.physicalSize = const Size(1280, 720);
       tester.view.devicePixelRatio = 1;
@@ -97,7 +97,7 @@ void main() {
       expect(headerRect.right, shellRect.right);
       expect(appIconRect.left, primaryRect.left);
       expect(primaryRect.left - shellRect.left, compact);
-      expect(primaryRect.top - shellRect.top, compact);
+      expect(primaryRect.top, shellRect.top);
       expect(shellRect.bottom - primaryRect.bottom, compact);
       expect(stageRect.left - primaryRect.right, compact);
       expect(secondaryRect.left - stageRect.right, compact);
