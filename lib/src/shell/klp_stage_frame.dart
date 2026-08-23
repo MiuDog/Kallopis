@@ -37,7 +37,12 @@ class KlpStageFrame extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-              SizedBox(height: context.klp.space.chromeHeader, child: header),
+              ConstrainedBox(
+                constraints: BoxConstraints(
+                  minHeight: context.klp.space.chromeHeader,
+                ),
+                child: header,
+              ),
               Expanded(
                 child: Padding(
                   padding: padding ?? EdgeInsets.all(context.klp.space.base),
