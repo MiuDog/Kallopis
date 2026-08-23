@@ -142,6 +142,35 @@ final actionsNavigationPage = CatalogPageData(
       build: (context) => const KlpSidebarSectionLabel(label: 'PINNED'),
     ),
     Specimen(
+      name: 'KlpSidebarNavigationButton',
+      note: 'Primary Sidebar 的全寬導覽項；消費者只傳內容、狀態與事件。',
+      build: (context) => SizedBox(
+        width: 240,
+        child: Column(
+          children: [
+            KlpSidebarNavigationButton(
+              icon: KlpIcons.folder,
+              label: '專案',
+              onPressed: () {},
+            ),
+            SizedBox(height: context.klp.space.tight),
+            KlpSidebarNavigationButton(
+              icon: KlpIcons.sparkles,
+              label: 'Notist Agent',
+              selected: true,
+              onPressed: () {},
+            ),
+            SizedBox(height: context.klp.space.tight),
+            KlpSidebarNavigationButton(
+              icon: KlpIcons.circle,
+              label: '不可用功能',
+              onPressed: null,
+            ),
+          ],
+        ),
+      ),
+    ),
+    Specimen(
       name: 'KlpMenu',
       note: '選單面板。彈出時機由呼叫端決定。',
       build: (context) => SizedBox(

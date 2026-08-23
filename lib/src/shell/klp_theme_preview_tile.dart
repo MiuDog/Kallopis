@@ -13,7 +13,7 @@ class KlpThemePreviewTile extends StatelessWidget {
     required this.mode,
     required this.label,
     required this.description,
-    this.width = 168,
+    this.width,
     this.selected = false,
     this.enabled = true,
     this.onSelected,
@@ -22,7 +22,9 @@ class KlpThemePreviewTile extends StatelessWidget {
   final KlpThemePreviewMode mode;
   final String label;
   final String description;
-  final double width;
+
+  /// `null` 時使用 theme 的預覽磚寬度；消費者通常不需要指定。
+  final double? width;
   final bool selected;
   final bool enabled;
   final VoidCallback? onSelected;
@@ -30,6 +32,8 @@ class KlpThemePreviewTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final tokens = context.klpColors;
+    final effectiveWidth =
+        width ?? context.klp.geometry.layout.themePreviewTileWidth;
     final radius = BorderRadius.circular(context.klp.shape.panel);
     final foreground = enabled ? tokens.text : tokens.textFaint;
 
@@ -38,7 +42,7 @@ class KlpThemePreviewTile extends StatelessWidget {
       child: Stack(
         children: [
           CustomPaint(
-            size: Size(width, width * 0.66),
+            size: Size(effectiveWidth, effectiveWidth * 0.66),
             painter: _ThemePreviewPainter(mode, context.klp.shape.panel),
           ),
           if (selected)
@@ -58,7 +62,7 @@ class KlpThemePreviewTile extends StatelessWidget {
       label: '$label · $description',
       child: SizedBox(
         key: ValueKey('theme-preview-${mode.name}'),
-        width: width,
+        width: effectiveWidth,
         child: KlpPressable(
           onPressed: enabled ? onSelected : null,
           borderRadius: radius,

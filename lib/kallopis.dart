@@ -169,3 +169,7 @@ export 'src/theme/klp_typography_theme.dart';
 export 'src/theme/klp_visual_style.dart';
 export 'src/theme/klp_visual_style_json.dart';
 export 'src/routing/klp_router.dart';
+export 'src/settings/klp_settings_content.dart';
+export 'src/settings/klp_settings_layout.dart';
+export 'src/settings/klp_settings_navigation.dart';
+export 'src/settings/klp_theme_mode_picker.dart';

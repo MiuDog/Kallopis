@@ -2,6 +2,7 @@ import '../catalog_model.dart';
 import 'form_pages.dart';
 import 'foundation_pages.dart';
 import 'guideline_pages.dart';
+import 'settings_pages.dart';
 import 'token_pages.dart';
 
 /// 目錄的完整結構。
@@ -11,7 +12,13 @@ import 'token_pages.dart';
 final List<CatalogGroup> catalogGroups = [
   CatalogGroup(
     label: 'Colors',
-    pages: [brandPage, surfacesPage, neutralsPage, semanticStatusPage],
+    pages: [
+      brandPage,
+      colorModesPage,
+      surfacesPage,
+      neutralsPage,
+      semanticStatusPage,
+    ],
   ),
   CatalogGroup(
     label: 'Type',
@@ -34,6 +41,7 @@ final List<CatalogGroup> catalogGroups = [
     ],
   ),
   CatalogGroup(label: 'Form', pages: [formControlsPage, formAssemblyPage]),
+  CatalogGroup(label: 'Settings', pages: [settingsPage]),
 ];
 
 /// 攤平後的頁面清單，順序與導覽一致。
