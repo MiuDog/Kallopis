@@ -1,10 +1,12 @@
 import 'dart:math' as math;
 
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 import '../controls/klp_toggle.dart';
 import '../foundation/klp_icon.dart';
 import '../foundation/klp_icons.dart';
+import '../interaction/klp_roving_index.dart';
 import '../surface/klp_divider.dart';
 import '../surface/klp_surface.dart';
 import '../theme/klp_geometry_theme.dart';
@@ -164,71 +166,178 @@ abstract final class KlpMenuLayout {
 /// 只畫面板本身（含陰影與圓角），不處理定位或觸發——插入 overlay 的位置請用
 /// [KlpMenuLayout] 先算好，選單的顯示／關閉時機也由呼叫端（通常是
 /// `showMenu` 或自訂 overlay）控制。
-class KlpMenu extends StatelessWidget {
-  const KlpMenu({super.key, required this.label, required this.items});
+///
+/// **鍵盤**：`↓`／`↑` 在項目間移動高亮（跳過 [KlpMenuItemData.enabled] 為
+/// `false` 的項目，並在頭尾之間循環），`Home`／`End` 跳到首／尾一個可用項目，
+/// `Enter`／`Space` 觸發目前高亮的項目，`Escape` 呼叫 [onEscape]（通常用來關閉
+/// 選單，由呼叫端決定要不要提供）。索引移動的規則沿用 [KlpRovingIndex]，與
+/// [KlpCombobox] 共用同一套實作，不是第二份重寫。
+///
+/// 高亮的視覺沿用既有的 hover／focus 語言（[KlpMenuItem] 的 `active` 底色），
+/// 不是新增的第三種視覺；只有 [KlpMenuItemData.selected]（真正的選取狀態）才會
+/// 用高對比的選取底色。
+///
+/// 選單預設會在第一次 build 時自動取得鍵盤焦點（[autofocus]），因為選單通常是
+/// 剛彈出的 overlay，此時畫面上不會有其他東西持有焦點；若呼叫端要自行控制焦點
+/// 時機（例如選單嵌在一般版面裡而非彈出層），可以把 [autofocus] 設為 `false`。
+class KlpMenu extends StatefulWidget {
+  const KlpMenu({
+    super.key,
+    required this.label,
+    required this.items,
+    this.autofocus = true,
+    this.onEscape,
+  });
 
   final String label;
   final List<KlpMenuItemData> items;
 
+  /// 是否在選單出現時自動取得鍵盤焦點，才能立刻用方向鍵操作。預設 `true`。
+  final bool autofocus;
+
+  /// 按下 `Escape` 時呼叫。庫不擅自決定「按 Escape 要做什麼」——通常是呼叫端
+  /// 用來關閉選單，未提供時 `Escape` 不會有任何效果。
+  final VoidCallback? onEscape;
+
+  @override
+  State<KlpMenu> createState() => _KlpMenuState();
+}
+
+class _KlpMenuState extends State<KlpMenu> {
+  int _highlightedIndex = -1;
+
+  bool _isEnabled(int index) => widget.items[index].enabled;
+
+  KeyEventResult _handleKey(FocusNode node, KeyEvent event) {
+    if (event is! KeyDownEvent) return KeyEventResult.ignored;
+    final count = widget.items.length;
+    if (count == 0) return KeyEventResult.ignored;
+
+    if (event.logicalKey == LogicalKeyboardKey.arrowDown) {
+      setState(
+        () => _highlightedIndex = KlpRovingIndex.move(
+          current: _highlightedIndex,
+          count: count,
+          forward: true,
+          isEnabled: _isEnabled,
+        ),
+      );
+      return KeyEventResult.handled;
+    }
+    if (event.logicalKey == LogicalKeyboardKey.arrowUp) {
+      setState(
+        () => _highlightedIndex = KlpRovingIndex.move(
+          current: _highlightedIndex,
+          count: count,
+          forward: false,
+          isEnabled: _isEnabled,
+        ),
+      );
+      return KeyEventResult.handled;
+    }
+    if (event.logicalKey == LogicalKeyboardKey.home) {
+      setState(
+        () => _highlightedIndex = KlpRovingIndex.first(
+          count: count,
+          isEnabled: _isEnabled,
+        ),
+      );
+      return KeyEventResult.handled;
+    }
+    if (event.logicalKey == LogicalKeyboardKey.end) {
+      setState(
+        () => _highlightedIndex = KlpRovingIndex.last(
+          count: count,
+          isEnabled: _isEnabled,
+        ),
+      );
+      return KeyEventResult.handled;
+    }
+    if (event.logicalKey == LogicalKeyboardKey.enter ||
+        event.logicalKey == LogicalKeyboardKey.numpadEnter ||
+        event.logicalKey == LogicalKeyboardKey.space) {
+      if (_highlightedIndex >= 0 && _highlightedIndex < count) {
+        final item = widget.items[_highlightedIndex];
+        if (item.enabled) item.onPressed();
+      }
+      return KeyEventResult.handled;
+    }
+    if (event.logicalKey == LogicalKeyboardKey.escape) {
+      widget.onEscape?.call();
+      return KeyEventResult.handled;
+    }
+
+    return KeyEventResult.ignored;
+  }
+
   @override
   Widget build(BuildContext context) {
     final tokens = context.klpColors;
+    final items = widget.items;
 
-    return DecoratedBox(
-      key: const ValueKey('pln-menu-elevation'),
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(
-          _KlpMenuMetrics.panelRadius(context),
-        ),
-        boxShadow: [
-          BoxShadow(
-            color: tokens.modalScrim.withValues(
-              alpha: context.klp.surface.overlayShadowOpacity,
-            ),
-            blurRadius: _KlpMenuMetrics.menuBlurRadius(context),
-            spreadRadius: context.klp.surface.overlaySpread,
-            offset: Offset(0, _KlpMenuMetrics.menuOffsetY(context)),
+    return Focus(
+      autofocus: widget.autofocus,
+      onKeyEvent: _handleKey,
+      child: DecoratedBox(
+        key: const ValueKey('pln-menu-elevation'),
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(
+            _KlpMenuMetrics.panelRadius(context),
           ),
-        ],
-      ),
-      child: SizedBox(
-        width: _KlpMenuMetrics.width(context),
-        child: KlpSurface(
-          tone: KlpSurfaceTone.overlay,
-          radius: _KlpMenuMetrics.panelRadius(context),
-          padding: EdgeInsets.all(context.klp.space.tight),
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: [
-              SizedBox(
-                height: _KlpMenuMetrics.headerHeight(context),
-                child: Padding(
-                  padding: EdgeInsets.symmetric(
-                    horizontal: _KlpMenuMetrics.horizontalPadding(context),
-                  ),
-                  child: Align(
-                    alignment: Alignment.centerLeft,
-                    child: KlpText(
-                      label,
-                      role: KlpMenuStyle.textRole,
-                      tone: KlpTextTone.muted,
+          boxShadow: [
+            BoxShadow(
+              color: tokens.modalScrim.withValues(
+                alpha: context.klp.surface.overlayShadowOpacity,
+              ),
+              blurRadius: _KlpMenuMetrics.menuBlurRadius(context),
+              spreadRadius: context.klp.surface.overlaySpread,
+              offset: Offset(0, _KlpMenuMetrics.menuOffsetY(context)),
+            ),
+          ],
+        ),
+        child: SizedBox(
+          width: _KlpMenuMetrics.width(context),
+          child: KlpSurface(
+            tone: KlpSurfaceTone.overlay,
+            radius: _KlpMenuMetrics.panelRadius(context),
+            padding: EdgeInsets.all(context.klp.space.tight),
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [
+                SizedBox(
+                  height: _KlpMenuMetrics.headerHeight(context),
+                  child: Padding(
+                    padding: EdgeInsets.symmetric(
+                      horizontal: _KlpMenuMetrics.horizontalPadding(context),
+                    ),
+                    child: Align(
+                      alignment: Alignment.centerLeft,
+                      child: KlpText(
+                        widget.label,
+                        role: KlpMenuStyle.textRole,
+                        tone: KlpTextTone.muted,
+                      ),
                     ),
                   ),
                 ),
-              ),
-              SizedBox(height: context.klp.space.tight),
-              for (final item in items) ...[
-                if (item.separatedBefore)
-                  Padding(
-                    padding: EdgeInsets.symmetric(
-                      vertical: context.klp.space.tight,
+                SizedBox(height: context.klp.space.tight),
+                for (var index = 0; index < items.length; index++) ...[
+                  if (items[index].separatedBefore)
+                    Padding(
+                      padding: EdgeInsets.symmetric(
+                        vertical: context.klp.space.tight,
+                      ),
+                      child: KlpDivider(),
                     ),
-                    child: KlpDivider(),
+                  KlpMenuItem(
+                    key: items[index].key,
+                    data: items[index],
+                    keyboardHighlighted: index == _highlightedIndex,
                   ),
-                KlpMenuItem(key: item.key, data: item),
+                ],
               ],
-            ],
+            ),
           ),
         ),
       ),
@@ -243,9 +352,18 @@ class KlpMenu extends StatelessWidget {
 /// 與一般控制項的互動語言一致。一般透過 [KlpMenu] 間接使用，
 /// 只有要在選單容器之外單獨畫一個選單項目時才需要直接用它。
 class KlpMenuItem extends StatefulWidget {
-  const KlpMenuItem({super.key, required this.data});
+  const KlpMenuItem({
+    super.key,
+    required this.data,
+    this.keyboardHighlighted = false,
+  });
 
   final KlpMenuItemData data;
+
+  /// 由容器（例如 [KlpMenu]）以鍵盤方向鍵移動出的高亮狀態。視覺上等同
+  /// hover／focus，不影響前景色——與 [KlpMenuItemData.selected] 是兩件事：
+  /// 後者是「真的被選取」，會提亮前景色與底色。
+  final bool keyboardHighlighted;
 
   @override
   State<KlpMenuItem> createState() => _KlpMenuItemState();
@@ -259,7 +377,8 @@ class _KlpMenuItemState extends State<KlpMenuItem> {
   Widget build(BuildContext context) {
     final tokens = context.klpColors;
     final data = widget.data;
-    final active = data.selected || _hovered || _focused;
+    final active =
+        data.selected || _hovered || _focused || widget.keyboardHighlighted;
     final background = data.selected
         ? tokens.selectionBackground
         : active
@@ -346,6 +465,7 @@ class _KlpMenuItemState extends State<KlpMenuItem> {
     return Semantics(
       button: true,
       enabled: data.enabled,
+      selected: data.selected,
       toggled: data.toggleValue,
       child: item,
     );

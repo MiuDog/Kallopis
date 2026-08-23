@@ -1,9 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
+import '../interaction/klp_roving_index.dart';
 import '../theme/klp_theme.dart';
 import '../typography/klp_text.dart';
 
 /// 分頁列。`selected` 是索引，`tabs` 是顯示文字；本元件不持有狀態。
+///
+/// **鍵盤**：任一分頁取得焦點後，`←`／`→` 會在分頁之間移動並直接切換選取
+/// （在頭尾之間循環），沿用 [KlpRovingIndex]，與 [KlpMenu]、[KlpCombobox] 共用
+/// 同一套索引移動規則。
 class KlpTabs extends StatelessWidget {
   const KlpTabs({
     super.key,
@@ -16,24 +22,55 @@ class KlpTabs extends StatelessWidget {
   final int selected;
   final ValueChanged<int> onSelected;
 
+  KeyEventResult _handleKey(FocusNode node, KeyEvent event) {
+    if (event is! KeyDownEvent) return KeyEventResult.ignored;
+    if (tabs.isEmpty) return KeyEventResult.ignored;
+
+    if (event.logicalKey == LogicalKeyboardKey.arrowRight) {
+      onSelected(
+        KlpRovingIndex.move(
+          current: selected,
+          count: tabs.length,
+          forward: true,
+        ),
+      );
+      return KeyEventResult.handled;
+    }
+    if (event.logicalKey == LogicalKeyboardKey.arrowLeft) {
+      onSelected(
+        KlpRovingIndex.move(
+          current: selected,
+          count: tabs.length,
+          forward: false,
+        ),
+      );
+      return KeyEventResult.handled;
+    }
+
+    return KeyEventResult.ignored;
+  }
+
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      height: context.klp.space.chromeTab,
-      child: SingleChildScrollView(
-        scrollDirection: Axis.horizontal,
-        child: Row(
-          children: [
-            for (var index = 0; index < tabs.length; index++) ...[
-              _KlpTab(
-                label: tabs[index],
-                selected: selected == index,
-                onPressed: () => onSelected(index),
-              ),
-              if (index < tabs.length - 1)
-                SizedBox(width: context.klp.space.tight),
+    return Focus(
+      onKeyEvent: _handleKey,
+      child: SizedBox(
+        height: context.klp.space.chromeTab,
+        child: SingleChildScrollView(
+          scrollDirection: Axis.horizontal,
+          child: Row(
+            children: [
+              for (var index = 0; index < tabs.length; index++) ...[
+                _KlpTab(
+                  label: tabs[index],
+                  selected: selected == index,
+                  onPressed: () => onSelected(index),
+                ),
+                if (index < tabs.length - 1)
+                  SizedBox(width: context.klp.space.tight),
+              ],
             ],
-          ],
+          ),
         ),
       ),
     );
@@ -55,20 +92,24 @@ class _KlpTab extends StatelessWidget {
   Widget build(BuildContext context) {
     final tokens = context.klpColors;
 
-    return Material(
-      color: selected ? tokens.surfaceMuted : tokens.surfaceInset,
-      borderRadius: BorderRadius.circular(context.klp.shape.control),
-      child: InkWell(
-        onTap: onPressed,
+    return Semantics(
+      button: true,
+      selected: selected,
+      child: Material(
+        color: selected ? tokens.surfaceMuted : tokens.surfaceInset,
         borderRadius: BorderRadius.circular(context.klp.shape.control),
-        child: Container(
-          height: context.klp.space.chromeTab,
-          alignment: Alignment.center,
-          padding: EdgeInsets.symmetric(horizontal: context.klp.space.base),
-          child: KlpText(
-            label,
-            role: KlpTextRole.body,
-            tone: selected ? KlpTextTone.primary : KlpTextTone.muted,
+        child: InkWell(
+          onTap: onPressed,
+          borderRadius: BorderRadius.circular(context.klp.shape.control),
+          child: Container(
+            height: context.klp.space.chromeTab,
+            alignment: Alignment.center,
+            padding: EdgeInsets.symmetric(horizontal: context.klp.space.base),
+            child: KlpText(
+              label,
+              role: KlpTextRole.body,
+              tone: selected ? KlpTextTone.primary : KlpTextTone.muted,
+            ),
           ),
         ),
       ),

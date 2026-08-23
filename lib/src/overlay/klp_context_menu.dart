@@ -97,7 +97,11 @@ class _KlpContextMenuState extends State<KlpContextMenu> {
             Positioned(
               left: position.dx,
               top: position.dy,
-              child: KlpMenu(label: widget.label, items: _dismissingItems()),
+              child: KlpMenu(
+                label: widget.label,
+                items: _dismissingItems(),
+                onEscape: _close,
+              ),
             ),
           ],
         );
