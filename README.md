@@ -53,7 +53,7 @@ dependencies:
   kallopis:
     git:
       url: https://github.com/MiuDog/Kallopis.git
-      ref: v0.5.1
+      ref: v0.6.0
 ```
 
 然後 `flutter pub get`，接著只要一個 import：
@@ -156,7 +156,7 @@ cubic，encode 遇到其他 curve 會以完整欄位路徑拒絕。
 
 ### 領域元件分類導覽
 
-Kallopis 將視覺元件解構為 15 個正交的專業領域，完整元件樹架構請參閱 [**全元件樹架構文件庫 (`docs/architecture/components/`)**](docs/architecture/components/README.md)：
+Kallopis 將視覺元件解構為 16 個正交的專業領域，完整元件樹架構請參閱 [**全元件樹架構文件庫 (`docs/architecture/components/`)**](docs/architecture/components/README.md)：
 
 | 領域 | 職責與代表元件 | 元件樹文件 |
 |---|---|---|
@@ -164,6 +164,7 @@ Kallopis 將視覺元件解構為 15 個正交的專業領域，完整元件樹�
 | **`shell`** | 桌面工作台外殼、多欄收合面板、視窗標題列 (`KlpWorkbenchShell`, `KlpPanelFrame`) | [查看架構](docs/architecture/components/shell/klp_workbench_shell.md) |
 | **`controls`** | 按鈕、輸入框、開關、滑桿、分段選擇器 (`KlpButton`, `KlpTextField`, `KlpSelect`) | [查看架構](docs/architecture/components/controls/klp_button.md) |
 | **`form`** | 結構化表單、欄位群組、驗證摘要、複合編輯器 (`KlpForm`, `KlpSelectField`, `KlpCodeField`) | [查看架構](docs/architecture/components/form/klp_form.md) |
+| **`settings`** | 自適應設定頁、設定導覽、欄位與顏色模式選擇器 (`KlpSettingsPage`, `KlpThemeModePicker`) | [查看契約](spec/settings-presentation.md) |
 | **`data`** | 虛擬化表格、鍵值對清單、JSON 樹、代碼檢視器 (`KlpDataTable`, `KlpCodeViewer`, `KlpJsonTree`) | [查看架構](docs/architecture/components/data/klp_data_table.md) |
 | **`feedback`** | Toast 短暫通知、內嵌警告、載入狀態、區域佔位骨架 (`KlpToast`, `KlpInlineNotice`, `KlpEmptyState`) | [查看架構](docs/architecture/components/feedback/klp_toast.md) |
 | **`overlay`** | 模態對話框、快顯選單、浮動提示 (`KlpDialog`, `KlpMenu`, `KlpTooltip`) | [查看架構](docs/architecture/components/overlay/klp_dialog.md) |

@@ -5,6 +5,60 @@ import '../catalog_components.dart';
 import '../catalog_model.dart';
 import 'token_views.dart';
 
+final colorModesPage = CatalogPageData(
+  label: 'Color Modes',
+  title: '顏色模式',
+  description: '內建模式皆由 Kallopis semantic token 建立。',
+  icon: KlpIcons.grid,
+  specimens: const [],
+  tokenView: (context) {
+    final modes = <(String, String, KlpThemeData)>[
+      ('LIGHT', '固定淺色', KlpThemeData.light),
+      ('DARK', '暖調深色', KlpThemeData.dark),
+      ('ULTRA DARK', '真黑表面', KlpThemeData.ultraDark),
+      ('TRANSPARENT', '深色 token 加上視窗材質', KlpThemeData.transparent),
+      ('SYSTEM', '由平台解析為 Light 或 Dark', context.klp.color),
+    ];
+
+    return CatalogCanvas(
+      children: [
+        CatalogGrid(
+          children: [
+            for (final mode in modes)
+              CatalogSample(
+                label: mode.$1,
+                description: mode.$2,
+                child: KlpTokenOverride(
+                  colors: mode.$3,
+                  child: KlpSurface(
+                    tone: KlpSurfaceTone.base,
+                    padding: EdgeInsets.all(context.klp.space.base),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.stretch,
+                      children: [
+                        const KlpSurface(
+                          tone: KlpSurfaceTone.stage,
+                          padding: EdgeInsets.all(KlpSpace.md),
+                          child: KlpText('stage'),
+                        ),
+                        SizedBox(height: context.klp.space.compact),
+                        const KlpSurface(
+                          tone: KlpSurfaceTone.component,
+                          padding: EdgeInsets.all(KlpSpace.md),
+                          child: KlpText('component'),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+          ],
+        ),
+      ],
+    );
+  },
+);
+
 // ── Colors ────────────────────────────────────────────────────────────────
 
 final brandPage = CatalogPageData(

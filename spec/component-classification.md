@@ -80,6 +80,18 @@ feature package**，而不是塞進視覺元件庫。
 `form/klp_structured_fields`（Repeater／KeyValue／Code／File／ColorRole 欄位）初步被列為產品
 語意，實際檢視為通用表單控制項，五條全過，保留。
 
+### 2026-08-23 Settings 呈現抽取
+
+依使用者明確指示，從 Planist Settings 抽取不含產品語意的呈現方法：自適應雙欄版面、
+navigation pane、不可收縮分類、選取後展開的 field deep links、content pane、欄位定位表面、
+固定 action bar 與受控 theme mode picker。公開契約只接收 widget slot、文案、選取狀態與事件；
+Project／App scope、descriptor、搜尋、權限、dirty guard、保存狀態機、透明視窗 adapter 與偏好
+migration 全部留在產品層。完整邊界見 [`settings-presentation.md`](settings-presentation.md)。
+
+Settings 的表面使用 Kallopis 既有 semantic color token，不搬移 Planist 的
+`settingsNavigation`／`settingsContent` 色值，也不建立產品專用 palette。Theme preview 直接讀取
+Kallopis 的 Light、Dark、Ultra Dark 與 Transparent token preset；System 仍由消費者解析平台狀態。
+
 ## 尚未處理（下一步）
 
 ### 規則 4 未過但暫時保留
@@ -108,7 +120,5 @@ Popover／DragDrop／SortControl／ThemeToggle 共 17 個類別擠在一檔）�
 
 - `editor/klp_page_chrome`（`KlpSaveStatusCard`／`KlpPropertySummary`）：與產品儲存狀態綁定，
   傾向移出，但 `KlpPageChrome` 本身是通用的頁面外框。與 `klp_shell_extras` 同屬「必須拆」的檔案。
-- `shell/klp_theme_preview_tile`（331 行）：主題預覽磚。它服務的是設計系統自己的展示，
-  不是產品——可能屬於 catalog 而非庫。
 - `form/klp_reference_picker` 與 `editor/klp_entity_picker` 做同一件事（挑選並引用另一個實體），
   應合併為單一元件。

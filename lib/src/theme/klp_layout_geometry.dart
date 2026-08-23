@@ -18,6 +18,8 @@ class KlpLayoutGeometry {
     required this.toastMaximumWidth,
     required this.inlineNoticeBreakpoint,
     required this.statusBarBreakpoint,
+    required this.settingsContentMaximumWidth,
+    required this.themePreviewTileWidth,
     required this.windowToolbarHeight,
     this.windowControlButtonSize = 30,
     required this.windowToolbarPaddingStart,
@@ -39,6 +41,13 @@ class KlpLayoutGeometry {
   final double toastMaximumWidth;
   final double inlineNoticeBreakpoint;
   final double statusBarBreakpoint;
+
+  /// Settings 內容欄的閱讀寬度上限。
+  final double settingsContentMaximumWidth;
+
+  /// 顏色模式預覽磚的預設寬度。
+  final double themePreviewTileWidth;
+
   final double windowToolbarHeight;
 
   /// 視窗最小化、最大化與關閉按鈕的外部方形尺寸，不影響內部 icon 尺寸。
@@ -67,6 +76,8 @@ class KlpLayoutGeometry {
           toastMaximumWidth == other.toastMaximumWidth &&
           inlineNoticeBreakpoint == other.inlineNoticeBreakpoint &&
           statusBarBreakpoint == other.statusBarBreakpoint &&
+          settingsContentMaximumWidth == other.settingsContentMaximumWidth &&
+          themePreviewTileWidth == other.themePreviewTileWidth &&
           windowToolbarHeight == other.windowToolbarHeight &&
           windowControlButtonSize == other.windowControlButtonSize &&
           windowToolbarPaddingStart == other.windowToolbarPaddingStart &&
@@ -76,7 +87,7 @@ class KlpLayoutGeometry {
           windowIdentityGap == other.windowIdentityGap;
 
   @override
-  int get hashCode => Object.hash(
+  int get hashCode => Object.hashAll([
     primaryPaneWidth,
     secondaryPaneWidth,
     primaryPaneBreakpoint,
@@ -89,6 +100,8 @@ class KlpLayoutGeometry {
     toastMaximumWidth,
     inlineNoticeBreakpoint,
     statusBarBreakpoint,
+    settingsContentMaximumWidth,
+    themePreviewTileWidth,
     windowToolbarHeight,
     windowControlButtonSize,
     windowToolbarPaddingStart,
@@ -96,5 +109,5 @@ class KlpLayoutGeometry {
     windowToolbarPaddingVertical,
     windowAppIconSize,
     windowIdentityGap,
-  );
+  ]);
 }

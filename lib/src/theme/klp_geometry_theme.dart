@@ -79,6 +79,8 @@ class KlpGeometryTheme extends ThemeExtension<KlpGeometryTheme> {
       toastMaximumWidth: 360,
       inlineNoticeBreakpoint: 480,
       statusBarBreakpoint: 400,
+      settingsContentMaximumWidth: 820,
+      themePreviewTileWidth: 168,
       windowToolbarHeight: KlpSize.windowToolbar,
       windowToolbarPaddingStart: KlpScale.space200,
       windowToolbarPaddingEnd: KlpScale.space200,

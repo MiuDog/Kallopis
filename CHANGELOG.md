@@ -1,14 +1,25 @@
 # Changelog
 
-## 0.5.1 — 2026-08-23
+## 0.6.0 — 2026-08-23
+
+這個 minor 版本新增由 token 驅動的 Settings 呈現層與 Color Modes Catalog，並納入先前
+尚未正式發布的 Primary Sidebar 導覽預設。直接建構 `KlpLayoutGeometry` 的消費端需補上
+兩個新增欄位；讀取 `KlpThemePreviewTile.width` 的程式需接受 nullable 值。
 
 ### 加入
 
+- 從 Planist Settings 抽取 token 驅動的設定頁呈現層：`KlpSettingsPage`、導覽與內容 pane、
+  navigation group／item、設定欄位、固定 action bar 與 `KlpThemeModePicker`。
+- Catalog 新增 Color Modes 與 Settings 分組，展示 Light、Dark、Ultra Dark、System、
+  Transparent，以及完整設定頁與個別元件。
 - 新增 `KlpSidebarNavigationButton`，由 Kallopis 統一 Primary Sidebar 導覽項的高度、
   內距、圓角、icon 尺寸、hover、選取與停用風格；消費端只傳入 icon、標籤、狀態與事件。
 
 ### 變更
 
+- `KlpThemePreviewTile` 的預設寬度改由 theme geometry 決定；消費者不指定時不再使用元件內
+  寫死尺寸。
+- theme JSON geometry 新增 `settingsContentMaximumWidth` 與 `themePreviewTileWidth`。
 - Catalog 的 Actions & Navigation 頁加入一般、選取與停用三態示範。
 - Notist 的 Primary Sidebar 上半部改為直接採用 Kallopis 預設導覽風格，不再自行組合
   `Material`／`InkWell` 或指定視覺 token。
