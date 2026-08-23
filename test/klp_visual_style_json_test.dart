@@ -63,7 +63,7 @@ void main() {
       expect(geometry.keys, <String>{'control', 'data', 'layout', 'optical'});
       expect((geometry['control'] as Map).length, 18);
       expect((geometry['data'] as Map).length, 21);
-      expect((geometry['layout'] as Map).length, 18);
+      expect((geometry['layout'] as Map).length, 19);
       expect((geometry['optical'] as Map).length, 5);
     });
 

@@ -89,6 +89,7 @@ class KlpApp extends StatefulWidget {
     this.onClose,
     this.isMaximized = false,
     this.showWindowControls = true,
+    this.startMaximized = true,
     this.minWidth,
     this.minHeight,
     this.locale,
@@ -140,6 +141,9 @@ class KlpApp extends StatefulWidget {
   /// 是否在標題列展示視窗管理控制鈕。
   final bool showWindowControls;
 
+  /// 是否在首次建立時確保原生視窗最大化；已最大化時不會切換回視窗化。
+  final bool startMaximized;
+
   /// 視窗最小允許寬度（邏輯像素）。
   final double? minWidth;
 
@@ -180,6 +184,8 @@ class _KlpAppState extends State<KlpApp> implements KlpAppController {
   @override
   void initState() {
     super.initState();
+    if (widget.startMaximized) KlpWindowAction.maximize();
+
     if (widget.minWidth != null || widget.minHeight != null) {
       KlpWindowAction.setMinSize(
         minWidth: widget.minWidth,
@@ -261,12 +267,10 @@ class _KlpAppState extends State<KlpApp> implements KlpAppController {
             isMaximized: widget.isMaximized,
             showWindowControls: widget.showWindowControls,
           );
-      content = Column(
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: [
-          header,
-          Expanded(child: content),
-        ],
+      content = _KlpAppFrame(
+        header: header,
+        body: content,
+        toolbarHeight: effectiveStyle.geometry.layout.windowToolbarHeight,
       );
     }
 
@@ -293,6 +297,41 @@ class _KlpAppState extends State<KlpApp> implements KlpAppController {
         builder: widget.builder,
         home: content,
       ),
+    );
+  }
+}
+
+/// 在視窗轉場的暫時高度內，讓 Header 遵守父層約束而非撐破根版面。
+class _KlpAppFrame extends StatelessWidget {
+  const _KlpAppFrame({
+    required this.header,
+    required this.body,
+    required this.toolbarHeight,
+  });
+
+  final Widget header;
+  final Widget body;
+  final double toolbarHeight;
+
+  @override
+  Widget build(BuildContext context) {
+    return LayoutBuilder(
+      builder: (context, constraints) {
+        final effectiveHeaderHeight = constraints.hasBoundedHeight
+            ? constraints.maxHeight.clamp(0.0, toolbarHeight).toDouble()
+            : toolbarHeight;
+
+        return Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            SizedBox(
+              height: effectiveHeaderHeight,
+              child: ClipRect(child: header),
+            ),
+            if (constraints.hasBoundedHeight) Expanded(child: body) else body,
+          ],
+        );
+      },
     );
   }
 }

@@ -20,6 +20,7 @@ const _layoutKeys = {
   'windowControlButtonSize',
   'windowToolbarPaddingStart',
   'windowToolbarPaddingEnd',
+  'windowToolbarPaddingVertical',
   'windowAppIconSize',
   'windowIdentityGap',
 };
@@ -76,6 +77,10 @@ KlpLayoutGeometry decodeLayoutGeometry(
     windowToolbarPaddingEnd: read(
       'windowToolbarPaddingEnd',
       base.windowToolbarPaddingEnd,
+    ),
+    windowToolbarPaddingVertical: read(
+      'windowToolbarPaddingVertical',
+      base.windowToolbarPaddingVertical,
     ),
     windowAppIconSize: read('windowAppIconSize', base.windowAppIconSize),
     windowIdentityGap: read('windowIdentityGap', base.windowIdentityGap),

@@ -138,6 +138,7 @@ class _CatalogNavigation extends StatelessWidget {
           ),
           Expanded(
             child: KlpScrollViewport(
+              key: const ValueKey('catalog-navigation-scroll'),
               child: Padding(
                 padding: EdgeInsets.symmetric(vertical: klp.space.tight),
                 child: KlpFileExplorer(
@@ -207,6 +208,7 @@ class _CatalogStage extends StatelessWidget {
           ),
           Expanded(
             child: KlpScrollViewport(
+              key: const ValueKey('catalog-stage-scroll'),
               child: Padding(
                 padding: EdgeInsets.all(klp.space.comfortable),
                 child: Column(

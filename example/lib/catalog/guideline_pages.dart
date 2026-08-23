@@ -56,21 +56,6 @@ final blockLayoutPage = CatalogPageData(
       build: (context) => const KlpCard(title: '卡片標題', child: KlpText('卡片內容')),
     ),
     Specimen(
-      name: 'KlpBlock',
-      note: '可選取的內容塊，編輯器的基本單位。',
-      build: (context) => const KlpBlock(child: KlpText('block')),
-    ),
-    Specimen(
-      name: 'KlpBlockCanvas',
-      note: '一疊 block 的容器。',
-      build: (context) => const KlpBlockCanvas(
-        children: [
-          KlpBlock(child: KlpText('第一塊')),
-          KlpBlock(selected: true, child: KlpText('選取中')),
-        ],
-      ),
-    ),
-    Specimen(
       name: 'KlpThemePreviewTile',
       note: '主題預覽磚。用插圖模擬視窗，不是真的渲染一個 app。',
       build: (context) {

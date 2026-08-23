@@ -49,6 +49,7 @@ class KlpLocalizations {
     this.searchCloseLabel = 'Close search',
     this.entityPickerRemoveLabel = 'Remove',
     this.entityPickerApplyLabel = 'Apply',
+    this.sheetLabel = 'Sheet',
   });
 
   /// [KlpToast] 時間戳徽章上的文字。
@@ -95,6 +96,9 @@ class KlpLocalizations {
   /// [KlpEntityPicker] 套用按鈕的文字。
   final String entityPickerApplyLabel;
 
+  /// [KlpSheetGrid] 的無障礙標籤。
+  final String sheetLabel;
+
   /// 取得目前子樹適用的字串集合。
   ///
   /// 沒有註冊 [KlpLocalizationsDelegate] 時回退到內建預設值而非拋錯——這與
@@ -122,7 +126,8 @@ class KlpLocalizations {
           searchNextResultLabel == other.searchNextResultLabel &&
           searchCloseLabel == other.searchCloseLabel &&
           entityPickerRemoveLabel == other.entityPickerRemoveLabel &&
-          entityPickerApplyLabel == other.entityPickerApplyLabel;
+          entityPickerApplyLabel == other.entityPickerApplyLabel &&
+          sheetLabel == other.sheetLabel;
 
   @override
   int get hashCode => Object.hashAll([
@@ -140,6 +145,7 @@ class KlpLocalizations {
     searchCloseLabel,
     entityPickerRemoveLabel,
     entityPickerApplyLabel,
+    sheetLabel,
   ]);
 }
 

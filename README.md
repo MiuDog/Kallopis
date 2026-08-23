@@ -53,7 +53,7 @@ dependencies:
   kallopis:
     git:
       url: https://github.com/MiuDog/Kallopis.git
-      ref: v0.4.1
+      ref: v0.5.0
 ```
 
 然後 `flutter pub get`，接著只要一個 import：

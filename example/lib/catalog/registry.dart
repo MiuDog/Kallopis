@@ -35,7 +35,10 @@ final List<CatalogGroup> catalogGroups = [
     ],
   ),
   CatalogGroup(label: 'Form', pages: [formControlsPage, formAssemblyPage]),
-  CatalogGroup(label: 'Notes', pages: [noteBackgroundsPage]),
+  CatalogGroup(
+    label: 'Notes',
+    pages: [noteDocsPage, noteCanvaPage, noteSheetPage, noteBackgroundsPage],
+  ),
 ];
 
 /// 攤平後的頁面清單，順序與導覽一致。

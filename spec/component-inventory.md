@@ -6,7 +6,7 @@
 
 ## 總覽
 
-- 公開型別 **289** 個，其中 widget **155** 個
+- 公開型別 **292** 個，其中 widget **156** 個
 - 分為 **17** 個領域
 
 ### 領域之間的依賴方向
@@ -118,7 +118,7 @@ graph TD
 | `KlpFieldFillState` | 3 | （葉節點） |
 | `KlpFieldStyle` | 260 | （葉節點） |
 | `KlpGeometryTheme` | 116 | `KlpControlGeometry`、`KlpDataGeometry`、`KlpLayoutGeometry`、`KlpOpticalGeometry` |
-| `KlpLayoutGeometry` | 88 | （葉節點） |
+| `KlpLayoutGeometry` | 94 | （葉節點） |
 | `KlpMotionTheme` | 139 | （葉節點） |
 | `KlpOpticalGeometry` | 34 | （葉節點） |
 | `KlpShapeTheme` | 150 | （葉節點） |
@@ -222,7 +222,7 @@ graph LR
 
 | 型別 | 行數 | 組成 |
 |---|---|---|
-| `KlpBlock` | 29 | `KlpSurface` |
+| `KlpBlock` | 131 | `KlpSurface` |
 | `KlpBlockCanvas` | 20 | `KlpSurface` |
 | `KlpDashedBorder` | 51 | `KlpStrokeFrame` |
 | `KlpDashedDivider` | 111 | （葉節點） |
@@ -339,11 +339,12 @@ graph LR
 
 ### overlay — 浮層
 
-型別 12 個，widget 8 個。
+型別 13 個，widget 8 個。
 
 | 型別 | 行數 | 組成 |
 |---|---|---|
-| `KlpContextMenu` | 114 | `KlpMenu`、`KlpMenuItemData` |
+| `KlpContextMenu` | 141 | `KlpMenu`、`KlpMenuItemData` |
+| `KlpContextMenuController` | 31 | （葉節點） |
 | `KlpDialog` | 76 | `KlpButton`、`KlpSurface`、`KlpText` |
 | `KlpDrawer` | 94 | `KlpSurface` |
 | `KlpDrawerEdge` | 9 | （葉節點） |
@@ -480,7 +481,7 @@ graph LR
 
 ### data — 資料呈現
 
-型別 43 個，widget 22 個。
+型別 45 個，widget 23 個。
 
 | 型別 | 行數 | 組成 |
 |---|---|---|
@@ -515,6 +516,8 @@ graph LR
 | `KlpMetricCard` | 102 | `KlpText` |
 | `KlpProgress` | 82 | `KlpText` |
 | `KlpProgressState` | 2 | （葉節點） |
+| `KlpSheetGrid` | 235 | `KlpSheetGridGeometry` |
+| `KlpSheetGridGeometry` | 48 | （葉節點） |
 | `KlpSortControl` | 32 | `KlpIcon`、`KlpText` |
 | `KlpSortDirection` | 8 | （葉節點） |
 | `KlpStepData` | 11 | （葉節點） |
@@ -555,6 +558,8 @@ graph LR
   KlpMetricCard["KlpMetricCard"]
   KlpPressable["KlpPressable"]:::external
   KlpProgress["KlpProgress"]
+  KlpSheetGrid["KlpSheetGrid"]
+  KlpSheetGridGeometry["KlpSheetGridGeometry"]
   KlpSortControl["KlpSortControl"]
   KlpStepper["KlpStepper"]
   KlpSurface["KlpSurface"]:::external
@@ -598,6 +603,7 @@ graph LR
   KlpListTile --> KlpText
   KlpMetricCard --> KlpText
   KlpProgress --> KlpText
+  KlpSheetGrid --> KlpSheetGridGeometry
   KlpSortControl --> KlpIcon
   KlpSortControl --> KlpText
   KlpStepper --> KlpIcon
@@ -1023,11 +1029,11 @@ graph LR
 | `KlpThemePreviewMode` | 2 | （葉節點） |
 | `KlpThemePreviewTile` | 307 | `KlpPressable`、`KlpText` |
 | `KlpThemeToggle` | 25 | `KlpSurface`、`KlpText` |
-| `KlpWindowAction` | 55 | （葉節點） |
+| `KlpWindowAction` | 64 | （葉節點） |
 | `KlpWindowControls` | 135 | `KlpIcon`、`KlpTooltip` |
 | `KlpWindowControlsStyle` | 11 | （葉節點） |
 | `KlpWindowHeader` | 231 | `KlpText`、`KlpWindowControls` |
-| `KlpWorkbenchShell` | 148 | （葉節點） |
+| `KlpWorkbenchShell` | 149 | （葉節點） |
 
 ```mermaid
 graph LR
@@ -1076,7 +1082,7 @@ graph LR
 
 | 型別 | 行數 | 組成 |
 |---|---|---|
-| `KlpApp` | 265 | `KlpLocalizationsDelegate`、`KlpRouterOutlet`、`KlpRouterScope`、`KlpWindowHeader` |
+| `KlpApp` | 304 | `KlpLocalizationsDelegate`、`KlpRouterOutlet`、`KlpRouterScope`、`KlpWindowHeader` |
 
 ```mermaid
 graph LR

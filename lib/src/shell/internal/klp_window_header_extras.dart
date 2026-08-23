@@ -8,9 +8,7 @@ Widget buildKlpWindowHeaderRegion({
   required AlignmentGeometry alignment,
 }) {
   return ClipRect(
-    child: Align(
-      alignment: alignment,
-      widthFactor: 1,
+    child: IntrinsicWidth(
       child: OverflowBox(
         alignment: alignment,
         maxWidth: double.infinity,

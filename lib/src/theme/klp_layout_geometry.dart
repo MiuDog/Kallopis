@@ -1,5 +1,7 @@
 import 'package:flutter/foundation.dart';
 
+import '../tokens/klp_scale.dart';
+
 /// Shell、overlay 與 responsive layout 的精確幾何。
 @immutable
 class KlpLayoutGeometry {
@@ -20,6 +22,7 @@ class KlpLayoutGeometry {
     this.windowControlButtonSize = 30,
     required this.windowToolbarPaddingStart,
     required this.windowToolbarPaddingEnd,
+    this.windowToolbarPaddingVertical = KlpScale.space100,
     required this.windowAppIconSize,
     required this.windowIdentityGap,
   });
@@ -42,6 +45,9 @@ class KlpLayoutGeometry {
   final double windowControlButtonSize;
   final double windowToolbarPaddingStart;
   final double windowToolbarPaddingEnd;
+
+  /// Header 上下內距；與水平 gutter 分離，避免調整 panel 對齊時壓縮控制鈕。
+  final double windowToolbarPaddingVertical;
   final double windowAppIconSize;
   final double windowIdentityGap;
 
@@ -65,6 +71,7 @@ class KlpLayoutGeometry {
           windowControlButtonSize == other.windowControlButtonSize &&
           windowToolbarPaddingStart == other.windowToolbarPaddingStart &&
           windowToolbarPaddingEnd == other.windowToolbarPaddingEnd &&
+          windowToolbarPaddingVertical == other.windowToolbarPaddingVertical &&
           windowAppIconSize == other.windowAppIconSize &&
           windowIdentityGap == other.windowIdentityGap;
 
@@ -86,6 +93,7 @@ class KlpLayoutGeometry {
     windowControlButtonSize,
     windowToolbarPaddingStart,
     windowToolbarPaddingEnd,
+    windowToolbarPaddingVertical,
     windowAppIconSize,
     windowIdentityGap,
   );

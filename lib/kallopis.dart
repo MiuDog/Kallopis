@@ -96,6 +96,7 @@ export 'src/data/klp_progress.dart';
 export 'src/data/klp_advanced_data.dart';
 export 'src/data/klp_code_viewer.dart';
 export 'src/data/klp_sort_control.dart';
+export 'src/data/klp_sheet_grid.dart';
 export 'src/data/klp_stepper.dart';
 export 'src/data/klp_timeline.dart';
 export 'src/editor/klp_command_menu.dart';

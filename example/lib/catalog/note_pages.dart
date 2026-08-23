@@ -4,6 +4,55 @@ import 'package:kallopis/kallopis.dart';
 import '../catalog_components.dart';
 import '../catalog_model.dart';
 import 'note_background_editor.dart';
+import 'note_docs_demo.dart';
+import 'note_editor_demos.dart';
+
+final noteDocsPage = CatalogPageData(
+  label: 'Docs',
+  title: 'Docs 區塊筆記',
+  description: '以可選取的內容區塊組成線性文件；資料、排序與編輯流程由產品端保存。',
+  icon: KlpIcons.edit,
+  specimens: [
+    Specimen(
+      name: 'KlpBlock',
+      note: '所有區塊共用 hover、clicked 與六點操作鈕；Catalog 只讀，不啟用區塊拖曳。',
+      build: (_) => const NoteDocsDemo(),
+    ),
+    Specimen(
+      name: 'KlpBlockCanvas',
+      note: '自由定位的區塊容器；內容位置仍由消費端資料模型決定。',
+      build: (_) => const NoteBlockCanvasDemo(),
+    ),
+  ],
+);
+
+final noteCanvaPage = CatalogPageData(
+  label: 'Canva',
+  title: 'Canva 互動筆記',
+  description: '在無邊界畫布上建立、連接、選取與刪除節點，並支援座標吸附。',
+  icon: KlpIcons.container,
+  specimens: [
+    Specimen(
+      name: 'KlpPageBackgroundEditor',
+      note: '點擊建立節點並連線；按住 Shift 可暫停吸附，工具可切換選取與刪除。',
+      build: (_) => const NoteBackgroundCustomEditor(),
+    ),
+  ],
+);
+
+final noteSheetPage = CatalogPageData(
+  label: 'Sheet',
+  title: 'Sheet 無限表格',
+  description: '以受控 cell 資料呈現表格；抵達右側或下方時繼續延伸虛擬軌道。',
+  icon: KlpIcons.grid,
+  specimens: [
+    Specimen(
+      name: 'KlpSheetGrid',
+      note: '點擊選取、方向鍵移動，雙擊或 Enter 編輯；資料由消費端持有。',
+      build: (_) => const NoteSheetDemo(),
+    ),
+  ],
+);
 
 final noteBackgroundsPage = CatalogPageData(
   label: 'Backgrounds',
@@ -22,11 +71,6 @@ final noteBackgroundsPage = CatalogPageData(
           const NoteBackgroundRuntimeEditor(),
         ],
       ),
-    ),
-    Specimen(
-      name: 'KlpPageBackgroundEditor',
-      note: '座標式 point／line 背景；點連預設吸附格線，按住 Shift 可暫停吸附。',
-      build: (_) => const NoteBackgroundCustomEditor(),
     ),
   ],
 );

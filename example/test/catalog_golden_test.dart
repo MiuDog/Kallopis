@@ -39,15 +39,19 @@ const double _maxHeight = 6000;
 /// 取所有可捲動區域中最大的 `maxScrollExtent`。側欄本身也是可捲動的，因此短頁面
 /// 量到的其實是側欄——這正是我們要的：基準必須連側欄也完整涵蓋。
 double _stageOverflow(WidgetTester tester) {
-  var overflow = 0.0;
-  final scrollables = find.byType(Scrollable);
-  for (var i = 0; i < scrollables.evaluate().length; i++) {
-    final position = tester.state<ScrollableState>(scrollables.at(i)).position;
-    if (position.hasContentDimensions && position.maxScrollExtent > overflow) {
-      overflow = position.maxScrollExtent;
-    }
+  double overflowFor(Key key) {
+    final scrollable = find.descendant(
+      of: find.byKey(key),
+      matching: find.byType(Scrollable),
+    );
+    final position = tester.state<ScrollableState>(scrollable.first).position;
+    return position.hasContentDimensions ? position.maxScrollExtent : 0;
   }
-  return overflow;
+
+  return [
+    overflowFor(const ValueKey('catalog-navigation-scroll')),
+    overflowFor(const ValueKey('catalog-stage-scroll')),
+  ].reduce((largest, value) => value > largest ? value : largest);
 }
 
 void main() {

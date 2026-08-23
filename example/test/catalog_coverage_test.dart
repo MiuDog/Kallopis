@@ -119,6 +119,15 @@ void main() {
     expect(empty, isEmpty, reason: '這些頁面既沒有元件也沒有 token 視圖：$empty');
   });
 
+  test('Notes 依序提供 Docs、Canva、Sheet 與 Backgrounds', () {
+    final notes = catalogGroups.singleWhere((group) => group.label == 'Notes');
+
+    expect(
+      notes.pages.map((page) => page.label),
+      orderedEquals(['Docs', 'Canva', 'Sheet', 'Backgrounds']),
+    );
+  });
+
   test('示範覆蓋率只能上升', () {
     // 有歸類但還沒寫示範的元件。目錄仍會列出它們並標記為未展示——藏起來只會讓缺口
     // 消失在視線外。
