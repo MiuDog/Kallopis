@@ -6,6 +6,7 @@
 |---|---|---|
 | [KLP-0001](KLP-0001-scope-token-architecture-and-extraction-method.md) | 範圍、token 架構，與「複製搬移」這個例外 | Accepted |
 | [KLP-0002](KLP-0002-json-theme-and-geometry-tokens.md) | JSON theme 與 geometry semantic token | Accepted |
+| [KLP-0003](KLP-0003-note-semantics-owned-by-notist.md) | 筆記語意元件由 Notist 擁有 | Accepted |
 
 ## 每份決策的必要內容
 

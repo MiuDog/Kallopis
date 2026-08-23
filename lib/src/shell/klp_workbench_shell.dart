@@ -30,10 +30,10 @@ class KlpWorkbenchShell extends StatelessWidget {
   final ValueChanged<double>? onPrimaryWidthChanged;
   final ValueChanged<double>? onSecondaryWidthChanged;
 
-  /// 外殼與三欄內容之間的留白；`null` 時四邊沿用基礎間距。
+  /// 外殼與三欄內容之間的留白；`null` 時四邊沿用緊湊間距。
   final EdgeInsetsGeometry? padding;
 
-  /// 相鄰欄位之間的留白與拖曳命中寬度；`null` 時沿用基礎間距。
+  /// 相鄰欄位之間的留白與拖曳命中寬度；`null` 時沿用緊湊間距。
   final double? paneGap;
 
   @override
@@ -43,8 +43,9 @@ class KlpWorkbenchShell extends StatelessWidget {
     final effectivePrimaryWidth = primaryWidth ?? geometry.primaryPaneWidth;
     final effectiveSecondaryWidth =
         secondaryWidth ?? geometry.secondaryPaneWidth;
-    final effectivePadding = padding ?? EdgeInsets.all(context.klp.space.base);
-    final effectivePaneGap = paneGap ?? context.klp.space.base;
+    final effectivePadding =
+        padding ?? EdgeInsets.all(context.klp.space.compact);
+    final effectivePaneGap = paneGap ?? context.klp.space.compact;
 
     return LayoutBuilder(
       builder: (context, constraints) {

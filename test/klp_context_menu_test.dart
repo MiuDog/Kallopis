@@ -4,6 +4,35 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:kallopis/kallopis.dart';
 
 void main() {
+  testWidgets('controller 可由六點操作鈕在指定位置開啟選單', (tester) async {
+    final controller = KlpContextMenuController();
+
+    await tester.pumpWidget(
+      MaterialApp(
+        theme: buildKlpTheme(Brightness.dark),
+        home: Scaffold(
+          body: KlpContextMenu(
+            controller: controller,
+            label: 'Block actions',
+            items: [KlpMenuItemData(label: 'Duplicate', onPressed: () {})],
+            child: GestureDetector(
+              key: const ValueKey('menu-trigger'),
+              behavior: HitTestBehavior.opaque,
+              onTapDown: (details) => controller.openAt(details.globalPosition),
+              child: const SizedBox(width: 40, height: 40),
+            ),
+          ),
+        ),
+      ),
+    );
+
+    await tester.tap(find.byKey(const ValueKey('menu-trigger')));
+    await tester.pump();
+
+    expect(find.byType(KlpMenu), findsOneWidget);
+    expect(find.text('Duplicate'), findsOneWidget);
+  });
+
   testWidgets('右鍵點擊子樹會彈出重用 KlpMenu 的選單', (tester) async {
     await tester.pumpWidget(
       MaterialApp(

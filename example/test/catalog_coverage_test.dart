@@ -119,6 +119,10 @@ void main() {
     expect(empty, isEmpty, reason: '這些頁面既沒有元件也沒有 token 視圖：$empty');
   });
 
+  test('Catalog 不保留產品語意分組', () {
+    expect(catalogGroups.map((group) => group.label), isNot(contains('Notes')));
+  });
+
   test('示範覆蓋率只能上升', () {
     // 有歸類但還沒寫示範的元件。目錄仍會列出它們並標記為未展示——藏起來只會讓缺口
     // 消失在視線外。

@@ -63,6 +63,7 @@ KlpJsonMap encodeGeometry(KlpGeometryTheme v) => <String, Object?>{
     'windowControlButtonSize': v.layout.windowControlButtonSize,
     'windowToolbarPaddingStart': v.layout.windowToolbarPaddingStart,
     'windowToolbarPaddingEnd': v.layout.windowToolbarPaddingEnd,
+    'windowToolbarPaddingVertical': v.layout.windowToolbarPaddingVertical,
     'windowAppIconSize': v.layout.windowAppIconSize,
     'windowIdentityGap': v.layout.windowIdentityGap,
   },

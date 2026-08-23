@@ -25,6 +25,15 @@ abstract final class KlpWindowAction {
     } catch (_) {}
   }
 
+  /// 確保目前視窗最大化；已最大化時不切換回視窗化。
+  static Future<void> maximize() async {
+    if (await checkIsMaximized()) return;
+
+    try {
+      await _channel.invokeMethod('maximize');
+    } catch (_) {}
+  }
+
   /// 關閉目前視窗。
   static Future<void> close() async {
     try {
@@ -181,9 +190,9 @@ class KlpWindowHeader extends StatelessWidget implements PreferredSizeWidget {
         child: Padding(
           padding: EdgeInsetsDirectional.fromSTEB(
             layout.windowToolbarPaddingStart,
-            layout.windowToolbarPaddingStart,
+            layout.windowToolbarPaddingVertical,
             layout.windowToolbarPaddingEnd,
-            layout.windowToolbarPaddingStart,
+            layout.windowToolbarPaddingVertical,
           ),
           child: isMac
               ? _buildMacLayout(

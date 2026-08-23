@@ -537,8 +537,6 @@ const externalWidgetNames = {
   'KlpIcon',
   'KlpAvatar',
   'KlpAvatarGroup',
-  'KlpBlock',
-  'KlpBlockCanvas',
   'KlpDragPreview',
   'KlpDropTarget',
   'KlpDropIndicator',

@@ -4,6 +4,34 @@ import 'package:flutter/widgets.dart';
 import '../theme/klp_theme.dart';
 import 'klp_menu.dart';
 
+/// 讓子元件以既有 [KlpContextMenu] 的定位與外觀主動開啟選單。
+///
+/// controller 尚未掛載時呼叫不會產生作用；同一時間只應掛載到一個 context menu。
+class KlpContextMenuController {
+  void Function(Offset)? _open;
+  VoidCallback? _close;
+
+  bool get isAttached => _open != null;
+
+  void openAt(Offset globalPosition) => _open?.call(globalPosition);
+
+  void close() => _close?.call();
+
+  void _attach({
+    required void Function(Offset) open,
+    required VoidCallback close,
+  }) {
+    assert(_open == null, 'A KlpContextMenuController can only have one host.');
+    _open = open;
+    _close = close;
+  }
+
+  void _detach() {
+    _open = null;
+    _close = null;
+  }
+}
+
 /// 右鍵選單：掛在任意子樹上，滑鼠右鍵或觸控長按於指標位置彈出。
 ///
 /// 選單本體重用既有的 [KlpMenu] 與 [KlpMenuItemData]——本元件只負責觸發時機、
@@ -16,6 +44,7 @@ class KlpContextMenu extends StatefulWidget {
     required this.child,
     required this.label,
     required this.items,
+    this.controller,
   });
 
   /// 掛載右鍵選單行為的子樹。
@@ -26,6 +55,7 @@ class KlpContextMenu extends StatefulWidget {
 
   /// 選單項目，重用 [KlpMenu] 既有的資料模型。
   final List<KlpMenuItemData> items;
+  final KlpContextMenuController? controller;
 
   @override
   State<KlpContextMenu> createState() => _KlpContextMenuState();
@@ -34,6 +64,31 @@ class KlpContextMenu extends StatefulWidget {
 class _KlpContextMenuState extends State<KlpContextMenu> {
   final OverlayPortalController _controller = OverlayPortalController();
   Offset _anchor = Offset.zero;
+
+  @override
+  void initState() {
+    super.initState();
+    _attachController();
+  }
+
+  @override
+  void didUpdateWidget(KlpContextMenu oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    if (oldWidget.controller == widget.controller) return;
+
+    oldWidget.controller?._detach();
+    _attachController();
+  }
+
+  @override
+  void dispose() {
+    widget.controller?._detach();
+    super.dispose();
+  }
+
+  void _attachController() {
+    widget.controller?._attach(open: _openAt, close: _close);
+  }
 
   void _openAt(Offset globalPosition) {
     setState(() => _anchor = globalPosition);

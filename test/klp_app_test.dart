@@ -129,6 +129,19 @@ void main() {
     expect(titleRect.left - iconRect.right, layout.windowIdentityGap);
   });
 
+  testWidgets('視窗轉場暫時低於 header 高度時不產生垂直溢出', (tester) async {
+    tester.view.devicePixelRatio = 1.0;
+    tester.view.physicalSize = const Size(800.0, 19.0);
+    addTearDown(tester.view.resetDevicePixelRatio);
+    addTearDown(tester.view.resetPhysicalSize);
+
+    await tester.pumpWidget(
+      const KlpApp(title: 'Notist', home: SizedBox.expand()),
+    );
+
+    expect(tester.takeException(), isNull);
+  });
+
   testWidgets('最小視窗尺寸於建立與更新時傳給 Windows runner', (tester) async {
     final calls = <MethodCall>[];
     final messenger =
@@ -171,6 +184,67 @@ void main() {
       'width': 720.0,
       'height': 540.0,
     });
+  });
+
+  testWidgets('KlpApp 預設只在首次建立時確保視窗最大化', (tester) async {
+    final calls = <MethodCall>[];
+    final messenger =
+        TestDefaultBinaryMessengerBinding.instance.defaultBinaryMessenger;
+    messenger.setMockMethodCallHandler(windowChannel, (call) async {
+      calls.add(call);
+      if (call.method == 'isMaximized') return false;
+      return null;
+    });
+    addTearDown(() => messenger.setMockMethodCallHandler(windowChannel, null));
+
+    await tester.pumpWidget(
+      const KlpApp(key: ValueKey('app'), home: SizedBox.shrink()),
+    );
+    await tester.pump();
+    await tester.pumpWidget(
+      const KlpApp(key: ValueKey('app'), home: SizedBox.shrink()),
+    );
+    await tester.pump();
+
+    expect(
+      calls.map((call) => call.method),
+      orderedEquals(['isMaximized', 'maximize']),
+    );
+  });
+
+  testWidgets('原生視窗已最大化時不切換回視窗化', (tester) async {
+    final calls = <MethodCall>[];
+    final messenger =
+        TestDefaultBinaryMessengerBinding.instance.defaultBinaryMessenger;
+    messenger.setMockMethodCallHandler(windowChannel, (call) async {
+      calls.add(call);
+      if (call.method == 'isMaximized') return true;
+      return null;
+    });
+    addTearDown(() => messenger.setMockMethodCallHandler(windowChannel, null));
+
+    await tester.pumpWidget(const KlpApp(home: SizedBox.shrink()));
+    await tester.pump();
+
+    expect(calls.map((call) => call.method), orderedEquals(['isMaximized']));
+  });
+
+  testWidgets('消費端可停用啟動最大化', (tester) async {
+    final calls = <MethodCall>[];
+    final messenger =
+        TestDefaultBinaryMessengerBinding.instance.defaultBinaryMessenger;
+    messenger.setMockMethodCallHandler(windowChannel, (call) async {
+      calls.add(call);
+      return null;
+    });
+    addTearDown(() => messenger.setMockMethodCallHandler(windowChannel, null));
+
+    await tester.pumpWidget(
+      const KlpApp(startMaximized: false, home: SizedBox.shrink()),
+    );
+    await tester.pump();
+
+    expect(calls, isEmpty);
   });
 
   test('最小視窗尺寸必須是正的邏輯像素', () {

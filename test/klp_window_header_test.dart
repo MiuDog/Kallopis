@@ -109,6 +109,10 @@ void main() {
     expect(layout.windowToolbarPaddingStart, layout.windowToolbarPaddingEnd);
     expect(
       layout.windowToolbarPaddingStart,
+      tester.element(closeFinder).klp.space.compact,
+    );
+    expect(
+      layout.windowToolbarPaddingVertical,
       (layout.windowToolbarHeight - layout.windowControlButtonSize) / 2,
     );
     expect(

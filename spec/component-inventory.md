@@ -6,7 +6,7 @@
 
 ## 總覽
 
-- 公開型別 **289** 個，其中 widget **155** 個
+- 公開型別 **270** 個，其中 widget **150** 個
 - 分為 **17** 個領域
 
 ### 領域之間的依賴方向
@@ -118,7 +118,7 @@ graph TD
 | `KlpFieldFillState` | 3 | （葉節點） |
 | `KlpFieldStyle` | 260 | （葉節點） |
 | `KlpGeometryTheme` | 116 | `KlpControlGeometry`、`KlpDataGeometry`、`KlpLayoutGeometry`、`KlpOpticalGeometry` |
-| `KlpLayoutGeometry` | 88 | （葉節點） |
+| `KlpLayoutGeometry` | 94 | （葉節點） |
 | `KlpMotionTheme` | 139 | （葉節點） |
 | `KlpOpticalGeometry` | 34 | （葉節點） |
 | `KlpShapeTheme` | 150 | （葉節點） |
@@ -218,12 +218,10 @@ graph LR
 
 ### surface — 表面與描邊
 
-型別 11 個，widget 8 個。
+型別 9 個，widget 6 個。
 
 | 型別 | 行數 | 組成 |
 |---|---|---|
-| `KlpBlock` | 29 | `KlpSurface` |
-| `KlpBlockCanvas` | 20 | `KlpSurface` |
 | `KlpDashedBorder` | 51 | `KlpStrokeFrame` |
 | `KlpDashedDivider` | 111 | （葉節點） |
 | `KlpDivider` | 14 | （葉節點） |
@@ -236,16 +234,12 @@ graph LR
 
 ```mermaid
 graph LR
-  KlpBlock["KlpBlock"]
-  KlpBlockCanvas["KlpBlockCanvas"]
   KlpDashedBorder["KlpDashedBorder"]
   KlpSection["KlpSection"]
   KlpStrokeFrame["KlpStrokeFrame"]
   KlpSurface["KlpSurface"]
   KlpText["KlpText"]:::external
   KlpTokenOverride["KlpTokenOverride"]:::external
-  KlpBlockCanvas --> KlpSurface
-  KlpBlock --> KlpSurface
   KlpDashedBorder --> KlpStrokeFrame
   KlpSection --> KlpText
   KlpSurface --> KlpTokenOverride
@@ -339,11 +333,12 @@ graph LR
 
 ### overlay — 浮層
 
-型別 12 個，widget 8 個。
+型別 13 個，widget 8 個。
 
 | 型別 | 行數 | 組成 |
 |---|---|---|
-| `KlpContextMenu` | 114 | `KlpMenu`、`KlpMenuItemData` |
+| `KlpContextMenu` | 141 | `KlpMenu`、`KlpMenuItemData` |
+| `KlpContextMenuController` | 31 | （葉節點） |
 | `KlpDialog` | 76 | `KlpButton`、`KlpSurface`、`KlpText` |
 | `KlpDrawer` | 94 | `KlpSurface` |
 | `KlpDrawerEdge` | 9 | （葉節點） |
@@ -881,7 +876,7 @@ graph LR
 
 ### editor — 編輯器周邊
 
-型別 32 個，widget 11 個。
+型別 14 個，widget 8 個。
 
 | 型別 | 行數 | 組成 |
 |---|---|---|
@@ -889,31 +884,13 @@ graph LR
 | `KlpCommandItemData` | 19 | （葉節點） |
 | `KlpCommandMenu` | 111 | `KlpText` |
 | `KlpCommandSectionData` | 7 | （葉節點） |
-| `KlpCustomPageBackgroundRecipe` | 147 | `KlpPageBackgroundAxisStyle` |
-| `KlpDotsPageBackgroundRecipe` | 36 | （葉節點） |
 | `KlpEditorActionData` | 14 | （葉節點） |
 | `KlpEditorToolbar` | 17 | （葉節點） |
 | `KlpEntityPicker` | 111 | `KlpBadge`、`KlpButton`、`KlpText`、`KlpTextField` |
 | `KlpEntityResultData` | 14 | （葉節點） |
-| `KlpGridPageBackgroundRecipe` | 37 | （葉節點） |
-| `KlpPageBackground` | 57 | `KlpDotsPageBackgroundRecipe`、`KlpGridPageBackgroundRecipe`、`KlpPageBackgroundPainter`、`KlpPageBackgroundViewport`、`KlpPageBackgroundVisuals`、`KlpPlainPageBackgroundRecipe`、`KlpRuledPageBackgroundRecipe` |
-| `KlpPageBackgroundAxisStyle` | 36 | （葉節點） |
-| `KlpPageBackgroundEditor` | 310 | `KlpPageBackgroundLine`、`KlpPageBackgroundPoint`、`KlpPageBackgroundViewport` |
-| `KlpPageBackgroundEditorTool` | 3 | （葉節點） |
-| `KlpPageBackgroundElementKind` | 4 | （葉節點） |
-| `KlpPageBackgroundLine` | 26 | （葉節點） |
-| `KlpPageBackgroundPainter` | 208 | `KlpPlainPageBackgroundRecipe` |
-| `KlpPageBackgroundPoint` | 19 | （葉節點） |
-| `KlpPageBackgroundSelection` | 23 | （葉節點） |
-| `KlpPageBackgroundStrokeBehavior` | 3 | （葉節點） |
-| `KlpPageBackgroundStyle` | 3 | （葉節點） |
-| `KlpPageBackgroundViewport` | 30 | （葉節點） |
-| `KlpPageBackgroundVisuals` | 33 | （葉節點） |
 | `KlpPageChrome` | 57 | `KlpBadge`、`KlpSurface`、`KlpText` |
-| `KlpPlainPageBackgroundRecipe` | 11 | （葉節點） |
 | `KlpPropertyBadgeData` | 11 | （葉節點） |
 | `KlpPropertySummary` | 45 | `KlpBadge`、`KlpSurface`、`KlpTag`、`KlpText` |
-| `KlpRuledPageBackgroundRecipe` | 94 | `KlpPageBackgroundAxisStyle` |
 | `KlpSaveStatusCard` | 55 | `KlpText` |
 | `KlpSearchNavigator` | 112 | `KlpIconButton`、`KlpText`、`KlpTextField` |
 | `KlpStatusMessageData` | 15 | （葉節點） |
@@ -924,23 +901,10 @@ graph LR
   KlpBulkActionBar["KlpBulkActionBar"]
   KlpButton["KlpButton"]:::external
   KlpCommandMenu["KlpCommandMenu"]
-  KlpCustomPageBackgroundRecipe["KlpCustomPageBackgroundRecipe"]
-  KlpDotsPageBackgroundRecipe["KlpDotsPageBackgroundRecipe"]
   KlpEntityPicker["KlpEntityPicker"]
-  KlpGridPageBackgroundRecipe["KlpGridPageBackgroundRecipe"]
   KlpIconButton["KlpIconButton"]:::external
-  KlpPageBackground["KlpPageBackground"]
-  KlpPageBackgroundAxisStyle["KlpPageBackgroundAxisStyle"]
-  KlpPageBackgroundEditor["KlpPageBackgroundEditor"]
-  KlpPageBackgroundLine["KlpPageBackgroundLine"]
-  KlpPageBackgroundPainter["KlpPageBackgroundPainter"]
-  KlpPageBackgroundPoint["KlpPageBackgroundPoint"]
-  KlpPageBackgroundViewport["KlpPageBackgroundViewport"]
-  KlpPageBackgroundVisuals["KlpPageBackgroundVisuals"]
   KlpPageChrome["KlpPageChrome"]
-  KlpPlainPageBackgroundRecipe["KlpPlainPageBackgroundRecipe"]
   KlpPropertySummary["KlpPropertySummary"]
-  KlpRuledPageBackgroundRecipe["KlpRuledPageBackgroundRecipe"]
   KlpSaveStatusCard["KlpSaveStatusCard"]
   KlpSearchNavigator["KlpSearchNavigator"]
   KlpSurface["KlpSurface"]:::external
@@ -949,22 +913,10 @@ graph LR
   KlpTextField["KlpTextField"]:::external
   KlpBulkActionBar --> KlpText
   KlpCommandMenu --> KlpText
-  KlpCustomPageBackgroundRecipe --> KlpPageBackgroundAxisStyle
   KlpEntityPicker --> KlpBadge
   KlpEntityPicker --> KlpButton
   KlpEntityPicker --> KlpText
   KlpEntityPicker --> KlpTextField
-  KlpPageBackgroundEditor --> KlpPageBackgroundLine
-  KlpPageBackgroundEditor --> KlpPageBackgroundPoint
-  KlpPageBackgroundEditor --> KlpPageBackgroundViewport
-  KlpPageBackgroundPainter --> KlpPlainPageBackgroundRecipe
-  KlpPageBackground --> KlpDotsPageBackgroundRecipe
-  KlpPageBackground --> KlpGridPageBackgroundRecipe
-  KlpPageBackground --> KlpPageBackgroundPainter
-  KlpPageBackground --> KlpPageBackgroundViewport
-  KlpPageBackground --> KlpPageBackgroundVisuals
-  KlpPageBackground --> KlpPlainPageBackgroundRecipe
-  KlpPageBackground --> KlpRuledPageBackgroundRecipe
   KlpPageChrome --> KlpBadge
   KlpPageChrome --> KlpSurface
   KlpPageChrome --> KlpText
@@ -972,7 +924,6 @@ graph LR
   KlpPropertySummary --> KlpSurface
   KlpPropertySummary --> KlpTag
   KlpPropertySummary --> KlpText
-  KlpRuledPageBackgroundRecipe --> KlpPageBackgroundAxisStyle
   KlpSaveStatusCard --> KlpText
   KlpSearchNavigator --> KlpIconButton
   KlpSearchNavigator --> KlpText
@@ -1023,11 +974,11 @@ graph LR
 | `KlpThemePreviewMode` | 2 | （葉節點） |
 | `KlpThemePreviewTile` | 307 | `KlpPressable`、`KlpText` |
 | `KlpThemeToggle` | 25 | `KlpSurface`、`KlpText` |
-| `KlpWindowAction` | 55 | （葉節點） |
+| `KlpWindowAction` | 64 | （葉節點） |
 | `KlpWindowControls` | 135 | `KlpIcon`、`KlpTooltip` |
 | `KlpWindowControlsStyle` | 11 | （葉節點） |
 | `KlpWindowHeader` | 231 | `KlpText`、`KlpWindowControls` |
-| `KlpWorkbenchShell` | 148 | （葉節點） |
+| `KlpWorkbenchShell` | 149 | （葉節點） |
 
 ```mermaid
 graph LR
@@ -1076,7 +1027,7 @@ graph LR
 
 | 型別 | 行數 | 組成 |
 |---|---|---|
-| `KlpApp` | 265 | `KlpLocalizationsDelegate`、`KlpRouterOutlet`、`KlpRouterScope`、`KlpWindowHeader` |
+| `KlpApp` | 304 | `KlpLocalizationsDelegate`、`KlpRouterOutlet`、`KlpRouterScope`、`KlpWindowHeader` |
 
 ```mermaid
 graph LR
@@ -1109,7 +1060,7 @@ graph LR
 |---|---|
 | `KlpText` | 87 |
 | `KlpIcon` | 29 |
-| `KlpSurface` | 23 |
+| `KlpSurface` | 21 |
 | `KlpDashedBorder` | 11 |
 | `KlpButton` | 9 |
 | `KlpPressable` | 9 |
