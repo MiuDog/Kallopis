@@ -1,5 +1,6 @@
 import 'package:flutter/widgets.dart';
 
+import '../layout/klp_layout.dart';
 import '../theme/klp_theme.dart';
 
 /// 三欄工作區外殼：主要面板、舞台、次要面板，兩側可拖曳調寬並依斷點自動收合。
@@ -73,24 +74,25 @@ class KlpWorkbenchShell extends StatelessWidget {
               children: [
                 if (showPrimary) ...[
                   SizedBox(width: resolvedPrimaryWidth, child: primary),
-                  _KlpPaneResizeHandle(
+                  KlpResizeHandle(
                     key: const ValueKey('primary-pane-resize-handle'),
                     enabled:
                         showPrimaryContent && onPrimaryWidthChanged != null,
-                    value: effectivePrimaryWidth,
-                    onChanged: onPrimaryWidthChanged,
                     width: effectivePaneGap,
+                    onDelta: (delta) => onPrimaryWidthChanged?.call(
+                      effectivePrimaryWidth + delta,
+                    ),
                   ),
                 ],
                 Expanded(child: stage),
                 if (showSecondary) ...[
-                  _KlpPaneResizeHandle(
+                  KlpResizeHandle(
                     key: const ValueKey('secondary-pane-resize-handle'),
                     enabled: onSecondaryWidthChanged != null,
-                    value: effectiveSecondaryWidth,
-                    reverse: true,
-                    onChanged: onSecondaryWidthChanged,
                     width: effectivePaneGap,
+                    onDelta: (delta) => onSecondaryWidthChanged?.call(
+                      effectiveSecondaryWidth - delta,
+                    ),
                   ),
                   SizedBox(width: effectiveSecondaryWidth, child: secondary),
                 ],
@@ -99,59 +101,6 @@ class KlpWorkbenchShell extends StatelessWidget {
           ),
         );
       },
-    );
-  }
-}
-
-class _KlpPaneResizeHandle extends StatefulWidget {
-  const _KlpPaneResizeHandle({
-    super.key,
-    required this.enabled,
-    required this.value,
-    required this.onChanged,
-    required this.width,
-    this.reverse = false,
-  });
-
-  final bool enabled;
-  final double value;
-  final ValueChanged<double>? onChanged;
-  final double width;
-  final bool reverse;
-
-  @override
-  State<_KlpPaneResizeHandle> createState() => _KlpPaneResizeHandleState();
-}
-
-class _KlpPaneResizeHandleState extends State<_KlpPaneResizeHandle> {
-  double _dragStartValue = 0;
-  double _accumulatedDelta = 0;
-
-  @override
-  Widget build(BuildContext context) {
-    return MouseRegion(
-      cursor: widget.enabled
-          ? SystemMouseCursors.resizeColumn
-          : SystemMouseCursors.basic,
-      child: GestureDetector(
-        behavior: HitTestBehavior.opaque,
-        onHorizontalDragStart: widget.enabled
-            ? (_) {
-                _dragStartValue = widget.value;
-                _accumulatedDelta = 0;
-              }
-            : null,
-        onHorizontalDragUpdate: widget.enabled
-            ? (details) {
-                _accumulatedDelta += details.primaryDelta ?? 0;
-                final direction = widget.reverse ? -1 : 1;
-                widget.onChanged?.call(
-                  _dragStartValue + _accumulatedDelta * direction,
-                );
-              }
-            : null,
-        child: SizedBox(width: widget.width),
-      ),
     );
   }
 }

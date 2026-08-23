@@ -13,9 +13,10 @@ void main() {
           body: StatefulBuilder(
             builder: (context, setState) => KlpPhaseToggle<String>(
               options: const [
-                KlpPhaseOption(value: 'x', icon: KlpIcons.x),
+                KlpPhaseOption(value: 'x', label: '取消', icon: KlpIcons.x),
                 KlpPhaseOption(
                   value: 'check',
+                  label: '確認',
                   icon: KlpIcons.check,
                   activeTone: KlpFeedbackTone.success,
                 ),
@@ -29,6 +30,8 @@ void main() {
     );
 
     expect(find.byType(KlpIcon), findsNWidgets(2));
+    expect(find.bySemanticsLabel('取消'), findsOneWidget);
+    expect(find.bySemanticsLabel('確認'), findsOneWidget);
     expect(current, 'check');
 
     // 點擊第一個選項 'x'

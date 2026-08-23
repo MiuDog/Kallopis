@@ -10,6 +10,7 @@ class KlpAvatar extends StatelessWidget {
     this.image,
     this.size,
     this.semanticLabel,
+    this.emphasized = false,
   });
 
   final String label;
@@ -19,8 +20,13 @@ class KlpAvatar extends StatelessWidget {
   final double? size;
   final String? semanticLabel;
 
+  /// 強調型使用 accent 底色、對比前景與 pill 圓角。
+  final bool emphasized;
+
   @override
   Widget build(BuildContext context) {
+    final colors = context.klpColors;
+
     return Semantics(
       label: semanticLabel ?? label,
       image: image != null,
@@ -29,14 +35,20 @@ class KlpAvatar extends StatelessWidget {
         height: size ?? context.klp.space.controlHeightLarge,
         alignment: Alignment.center,
         decoration: BoxDecoration(
-          color: context.klpColors.surfaceMuted,
+          color: emphasized ? colors.accent : colors.surfaceMuted,
           image: image == null
               ? null
               : DecorationImage(image: image!, fit: BoxFit.cover),
-          borderRadius: BorderRadius.circular(context.klp.shape.card),
+          borderRadius: BorderRadius.circular(
+            emphasized ? context.klp.shape.pill : context.klp.shape.card,
+          ),
         ),
         child: image == null
-            ? KlpText(label, role: KlpTextRole.label)
+            ? KlpText(
+                label,
+                role: KlpTextRole.label,
+                color: emphasized ? colors.onStatus : null,
+              )
             : const SizedBox.shrink(),
       ),
     );

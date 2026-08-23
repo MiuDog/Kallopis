@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../interaction/klp_state_highlight.dart';
+import '../interaction/klp_pressable.dart';
 import '../feedback/klp_feedback_tone.dart';
 import '../foundation/klp_icon.dart';
 import '../foundation/klp_icons.dart';
@@ -9,15 +10,28 @@ import '../typography/klp_text.dart';
 
 /// 檔案瀏覽器中的分類資料模型（例如「釘選」、「筆記」）。
 @immutable
-class KlpFileExplorerSection {
+class KlpFileExplorerSection extends StatelessWidget {
   const KlpFileExplorerSection({
+    super.key,
     required this.id,
     required this.title,
     this.items = const [],
     this.expanded = true,
     this.collapsible = true,
     this.trailing,
-  });
+  }) : _renderedChild = null;
+
+  KlpFileExplorerSection._render({
+    required KlpFileExplorerSection section,
+    required Widget child,
+  }) : id = section.id,
+       title = section.title,
+       items = section.items,
+       expanded = section.expanded,
+       collapsible = section.collapsible,
+       trailing = section.trailing,
+       _renderedChild = child,
+       super(key: ValueKey(section.id));
 
   final String id;
   final String title;
@@ -25,6 +39,12 @@ class KlpFileExplorerSection {
   final bool expanded;
   final bool collapsible;
   final Widget? trailing;
+  final Widget? _renderedChild;
+
+  @override
+  Widget build(BuildContext context) {
+    return _renderedChild ?? const SizedBox.shrink();
+  }
 }
 
 /// 檔案瀏覽器中的節點資料模型（可為折疊資料夾或一般檔案項目）。
@@ -73,6 +93,7 @@ class KlpFileExplorer extends StatefulWidget {
     this.onItemToggle,
     this.onItemSelected,
     this.indent,
+    this.emptyStateSections = const [],
   });
 
   final List<KlpFileExplorerSection> sections;
@@ -83,6 +104,11 @@ class KlpFileExplorer extends StatefulWidget {
   final ValueChanged<String>? onItemToggle;
   final ValueChanged<String>? onItemSelected;
   final double? indent;
+
+  /// [sections] 沒有資料時仍需保留的視覺分區。
+  ///
+  /// 這只描述 Explorer 結構，不會把 placeholder section 寫回資料模型。
+  final List<KlpFileExplorerSection> emptyStateSections;
 
   @override
   State<KlpFileExplorer> createState() => _KlpFileExplorerState();
@@ -96,12 +122,15 @@ class _KlpFileExplorerState extends State<KlpFileExplorer> {
   @override
   void initState() {
     super.initState();
+    final effectiveSections = widget.sections.isEmpty
+        ? widget.emptyStateSections
+        : widget.sections;
     _internalExpandedSections = {
-      for (final s in widget.sections)
+      for (final s in effectiveSections)
         if (s.expanded) s.id,
     };
     _internalExpandedItems = {};
-    _collectExpandedItems(widget.sections, _internalExpandedItems);
+    _collectExpandedItems(effectiveSections, _internalExpandedItems);
     _internalSelectedId = widget.selectedId;
   }
 
@@ -171,22 +200,28 @@ class _KlpFileExplorerState extends State<KlpFileExplorer> {
         widget.expandedItemIds ?? _internalExpandedItems;
     final effectiveSelectedId = widget.selectedId ?? _internalSelectedId;
     final effectiveIndent = widget.indent ?? context.klp.space.base;
+    final effectiveSections = widget.sections.isEmpty
+        ? widget.emptyStateSections
+        : widget.sections;
 
     return ListView(
       shrinkWrap: true,
       physics: const ClampingScrollPhysics(),
       padding: EdgeInsets.zero,
       children: [
-        for (final section in widget.sections)
-          KlpFileExplorerSectionView(
+        for (final section in effectiveSections)
+          KlpFileExplorerSection._render(
             section: section,
-            isExpanded: effectiveExpandedSections.contains(section.id),
-            expandedItemIds: effectiveExpandedItems,
-            selectedId: effectiveSelectedId,
-            onToggle: () => _toggleSection(section.id),
-            onItemToggle: _toggleItem,
-            onItemSelected: _selectItem,
-            indent: effectiveIndent,
+            child: KlpFileExplorerSectionView(
+              section: section,
+              isExpanded: effectiveExpandedSections.contains(section.id),
+              expandedItemIds: effectiveExpandedItems,
+              selectedId: effectiveSelectedId,
+              onToggle: () => _toggleSection(section.id),
+              onItemToggle: _toggleItem,
+              onItemSelected: _selectItem,
+              indent: effectiveIndent,
+            ),
           ),
       ],
     );
@@ -225,38 +260,38 @@ class KlpFileExplorerSectionView extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.stretch,
       mainAxisSize: MainAxisSize.min,
       children: [
-        GestureDetector(
-          behavior: HitTestBehavior.opaque,
-          onTap: section.collapsible ? onToggle : null,
-          child: Container(
-            padding: EdgeInsets.symmetric(
-              horizontal: klp.space.compact,
-              vertical: klp.space.tight,
-            ),
-            child: Row(
-              children: [
-                if (section.collapsible) ...[
-                  AnimatedRotation(
-                    turns: isExpanded ? 0 : -0.25,
-                    duration: klp.motion.stateTransition,
-                    curve: Curves.easeOutCubic,
-                    child: KlpIcon(
-                      KlpIcons.chevronDown,
-                      size: klp.space.iconSmall,
-                      color: tokens.textMuted,
+        Padding(
+          padding: EdgeInsets.symmetric(horizontal: klp.space.itemGap),
+          child: KlpPressable(
+            onPressed: section.collapsible ? onToggle : null,
+            hoverHighlight: false,
+            child: SizedBox(
+              height: klp.space.icon,
+              child: Row(
+                children: [
+                  if (section.collapsible) ...[
+                    AnimatedRotation(
+                      turns: isExpanded ? 0 : -0.25,
+                      duration: klp.motion.stateTransition,
+                      curve: Curves.easeOutCubic,
+                      child: KlpIcon(
+                        KlpIcons.chevronDown,
+                        size: klp.space.compact,
+                        color: tokens.textMuted,
+                      ),
+                    ),
+                    SizedBox(width: klp.space.tight + klp.space.hairline),
+                  ],
+                  Expanded(
+                    child: KlpText(
+                      section.title,
+                      role: KlpTextRole.code,
+                      tone: KlpTextTone.muted,
                     ),
                   ),
-                  SizedBox(width: klp.space.compact),
+                  if (section.trailing != null) section.trailing!,
                 ],
-                Expanded(
-                  child: KlpText(
-                    section.title,
-                    role: KlpTextRole.code,
-                    tone: KlpTextTone.muted,
-                  ),
-                ),
-                if (section.trailing != null) section.trailing!,
-              ],
+              ),
             ),
           ),
         ),
@@ -271,7 +306,7 @@ class KlpFileExplorerSectionView extends StatelessWidget {
               onItemSelected: onItemSelected,
               indent: indent,
             ),
-        SizedBox(height: klp.space.tight),
+        SizedBox(height: klp.space.compact - klp.space.hairline),
       ],
     );
   }

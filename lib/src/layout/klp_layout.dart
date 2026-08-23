@@ -121,21 +121,49 @@ class KlpResizablePane extends StatelessWidget {
 
 /// 拖曳調整寬度把手。
 class KlpResizeHandle extends StatelessWidget {
-  const KlpResizeHandle({super.key, required this.onDelta, this.semanticLabel});
+  const KlpResizeHandle({
+    super.key,
+    required this.onDelta,
+    this.semanticLabel,
+    this.width,
+    this.enabled = true,
+  });
 
   final ValueChanged<double> onDelta;
   final String? semanticLabel;
+  final double? width;
+  final bool enabled;
 
   @override
   Widget build(BuildContext context) {
+    final klp = context.klp;
+
     return Semantics(
       label: semanticLabel,
       child: MouseRegion(
-        cursor: SystemMouseCursors.resizeColumn,
+        cursor: enabled
+            ? SystemMouseCursors.resizeColumn
+            : SystemMouseCursors.basic,
         child: GestureDetector(
-          behavior: HitTestBehavior.translucent,
-          onHorizontalDragUpdate: (details) => onDelta(details.delta.dx),
-          child: SizedBox(width: context.klp.space.base),
+          behavior: HitTestBehavior.opaque,
+          onHorizontalDragUpdate: enabled
+              ? (details) => onDelta(details.delta.dx)
+              : null,
+          child: SizedBox(
+            width: width ?? klp.space.compact,
+            child: Center(
+              child: DecoratedBox(
+                decoration: BoxDecoration(
+                  color: context.klpColors.border,
+                  borderRadius: BorderRadius.circular(klp.shape.stroke),
+                ),
+                child: SizedBox(
+                  width: klp.space.hairline,
+                  height: klp.space.loose - klp.space.tight,
+                ),
+              ),
+            ),
+          ),
         ),
       ),
     );

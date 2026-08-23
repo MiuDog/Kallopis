@@ -37,7 +37,7 @@ class KlpSegmentedControl extends StatelessWidget {
             : context.klp.space.tight,
       ),
       decoration: BoxDecoration(
-        color: tokens.surfaceInset,
+        color: tokens.interactionSoft,
         borderRadius: BorderRadius.circular(context.klp.shape.card),
       ),
       child: Row(
@@ -98,7 +98,7 @@ class _KlpSegmentState extends State<_KlpSegment> {
     final tokens = context.klpColors;
     final klp = context.klp;
     final background = widget.selected
-        ? tokens.selectionBackground
+        ? tokens.component
         : _hovered
         ? klp.selectionWash
         : klp.color.clear;

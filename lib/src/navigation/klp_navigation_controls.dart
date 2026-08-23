@@ -72,7 +72,7 @@ class _KlpSidebarNavigationButtonState
           child: Row(
             children: [
               KlpIcon(widget.icon, color: foreground),
-              SizedBox(width: klp.space.compact),
+              SizedBox(width: klp.space.itemGap),
               Expanded(
                 child: KlpText(
                   widget.label,
@@ -86,6 +86,30 @@ class _KlpSidebarNavigationButtonState
           ),
         ),
       ),
+    );
+  }
+}
+
+/// Primary Sidebar 的全寬導覽列群組。
+///
+/// 呼叫端只決定項目順序；Kallopis 統一管理相鄰列的垂直節奏。
+class KlpSidebarNavigationGroup extends StatelessWidget {
+  const KlpSidebarNavigationGroup({super.key, required this.children});
+
+  final List<Widget> children;
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        for (var index = 0; index < children.length; index++) ...[
+          children[index],
+          if (index < children.length - 1)
+            SizedBox(height: context.klp.space.hairline),
+        ],
+      ],
     );
   }
 }

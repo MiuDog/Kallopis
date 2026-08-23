@@ -107,7 +107,7 @@ class KlpSpacingTheme extends ThemeExtension<KlpSpacingTheme> {
   final double groupGap;
 
   // 四段控制項高度（SM: 32, MD: 40, LG: 48, XL: 56）
-  final double controlHeightSmall; // 32px (SM)
+  final double controlHeightSmall; // 36px (SM)
   final double controlHeight; // 40px (MD 預設)
   final double controlHeightLarge; // 48px (LG)
   final double controlHeightXLarge; // 56px (XL)
@@ -205,7 +205,7 @@ class KlpSpacingTheme extends ThemeExtension<KlpSpacingTheme> {
     space24: KlpScale.space2400, // 96px
     hairline: KlpScale.space50, // 2px
     tight: KlpScale.space100, // 4px
-    compact: KlpScale.space200, // 8px
+    compact: KlpScale.space250, // 10px
     base: KlpScale.space400, // 16px (基準)
     comfortable: KlpScale.space600, // 24px
     loose: KlpScale.space800, // 32px
@@ -221,7 +221,7 @@ class KlpSpacingTheme extends ThemeExtension<KlpSpacingTheme> {
     containerPadding: KlpScale.space400, // 16px
     itemGap: KlpScale.space300, // 12px
     groupGap: KlpScale.space400, // 16px
-    controlHeightSmall: 32, // 32px (SM)
+    controlHeightSmall: 36, // 36px (SM)
     controlHeight: 40, // 40px (MD 預設)
     controlHeightLarge: 48, // 48px (LG)
     controlHeightXLarge: 56, // 56px (XL)
@@ -247,7 +247,7 @@ class KlpSpacingTheme extends ThemeExtension<KlpSpacingTheme> {
     gutterMarker: 14,
     micro: 1,
     iconMicro: 11,
-    avatarSmall: 28,
+    avatarSmall: 24,
     progressTrack: 3,
     skeletonLine: 10,
     railItem: 42,

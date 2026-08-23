@@ -1147,9 +1147,31 @@ final layoutInteractionPage = CatalogPageData(
       },
     ),
     Specimen(
+      name: 'KlpWorkbenchWindowHeader',
+      note: '單一工作台視窗列，依 Primary Sidebar 寬度定位收合控制。',
+      build: (context) => KlpWorkbenchWindowHeader(
+        titleText: 'Notist',
+        primaryPaneWidth: 268,
+        primaryVisible: true,
+        onTogglePrimary: () {},
+        collapseLabel: '收合側邊面板',
+        expandLabel: '展開側邊面板',
+        showWindowControls: false,
+      ),
+    ),
+    Specimen(
       name: 'KlpPanelHeader',
       note: '面板標題列。',
       build: (context) => const KlpPanelHeader(title: '面板'),
+    ),
+    Specimen(
+      name: 'KlpSidebarIdentityHeader',
+      note: 'Primary Sidebar 的 workspace identity。',
+      build: (context) => const KlpSidebarIdentityHeader(
+        icon: KlpIcons.folder,
+        title: 'Flows',
+        trailing: KlpAvatar(label: 'C', semanticLabel: '使用者'),
+      ),
     ),
     Specimen(
       name: 'KlpPanelFrame',
@@ -1173,6 +1195,16 @@ final layoutInteractionPage = CatalogPageData(
           header: KlpPanelHeader(title: '舞台'),
           content: KlpText('內容'),
         ),
+      ),
+    ),
+    Specimen(
+      name: 'KlpStageHeader',
+      note: 'Stage 的專案、區域、項目與類型識別。',
+      build: (context) => const KlpStageHeader(
+        projectName: 'Flows',
+        sectionLabel: 'Flow',
+        title: '範例筆記',
+        typeLabel: 'FLOW',
       ),
     ),
     Specimen(

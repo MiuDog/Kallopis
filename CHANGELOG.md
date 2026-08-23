@@ -1,11 +1,27 @@
 # Changelog
 
-## Unreleased
+## 0.7.0 — 2026-08-24
+
+### 加入
+
+- 新增工作區通用呈現元件：日期概覽、待辦與排程清單、訊息串與輸入器、瀑布流、
+  資產預覽卡、Primary Sidebar frame、導覽群組與可拖曳 pane 把手。
+- Catalog 新增 Workspace 分組，展示 Shell、Agenda、Conversation 與 Assets 在明暗模式下的
+  預設組合；所有文案與資料仍由消費端提供。
+
+### 變更
+
+- 工作台預設幾何對齊版面真相：window header 44px、shell panel 間距 10px、sidebar identity
+  與導覽列高 36px、導覽列間距 2px；sidebar explorer 分區標題改由共用元件提供結構。
+- Light 色梯改為參考稿的暖石色階：app `#EAE7E1`、panel `#F2F0EB`、stage `#FFFFFF`、
+  soft interaction `#E6E3DC`、主要文字 `#1D1D1D`、次要文字 `#6B6459`；sidebar identity
+  與 segmented control 直接採用這組 semantic token。
 
 ### 修正
 
 - `KlpWorkbenchShell` 預設不再於全寬 window header 下方重複加入頂部 gutter；
   panel 現在與 Catalog 一樣緊接 header，左右與底部仍保留 `space.compact`。
+- Primary Sidebar 現在會呈現 token 驅動的寬度拖曳把手，並保留 2px × 28px 的可見 grip。
 
 ## 0.6.0 — 2026-08-23
 

@@ -176,13 +176,19 @@ class _KlpPhaseSegment<T> extends StatelessWidget {
       content = KlpText(option.label ?? '', role: KlpTextRole.code, color: fg);
     }
 
-    return GestureDetector(
-      behavior: HitTestBehavior.opaque,
-      onTap: onTap,
-      child: SizedBox(
-        width: size,
-        height: size,
-        child: Center(child: content),
+    return Semantics(
+      button: true,
+      selected: selected,
+      enabled: enabled,
+      label: option.label,
+      child: GestureDetector(
+        behavior: HitTestBehavior.opaque,
+        onTap: onTap,
+        child: SizedBox(
+          width: size,
+          height: size,
+          child: Center(child: content),
+        ),
       ),
     );
   }
