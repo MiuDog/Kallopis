@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter_test/flutter_test.dart';
@@ -5,8 +7,9 @@ import 'package:kallopis/kallopis.dart';
 
 /// 互動狀態的紀律閘門。
 ///
-/// 一般元件使用背景高亮；Explorer 與表單保留低／高對比虛線。這條分界若只靠人看，
-/// 新增元件時很容易讓兩套語言再次混用。
+/// **hover 與 selected 一律以高亮色表達，全庫不得用邊框表示 hover。** 先前
+/// 一般元件走背景高亮、Explorer 與表單走虛線框，同一個狀態兩種畫法，消費者
+/// 無從預期。這條規則若只靠人看，新增元件時必然再次分岔。
 void main() {
   const presets = <String, KlpThemeData>{
     'light': KlpThemeData.light,
@@ -14,13 +17,30 @@ void main() {
     'ultraDark': KlpThemeData.ultraDark,
   };
 
-  group('hover 不改變欄位底色', () {
+  group('hover 以底色表達，不是靠外框', () {
     presets.forEach((name, tokens) {
       test(name, () {
+        final rest = KlpFieldStyle.colorFor(tokens, KlpFieldFillState.rest);
+        final hovered = KlpFieldStyle.colorFor(
+          tokens,
+          KlpFieldFillState.hovered,
+        );
+        final focused = KlpFieldStyle.colorFor(
+          tokens,
+          KlpFieldFillState.focused,
+        );
+
         expect(
-          KlpFieldStyle.colorFor(tokens, KlpFieldFillState.hovered).toARGB32(),
-          KlpFieldStyle.colorFor(tokens, KlpFieldFillState.rest).toARGB32(),
-          reason: '$name 的欄位在 hover 時換了底色——hover 只能是外框',
+          hovered.toARGB32(),
+          isNot(rest.toARGB32()),
+          reason:
+              '$name 的欄位 hover 時底色沒變。hover 現在只能靠底色表達，'
+              '底色不變就等於沒有 hover 回饋。',
+        );
+        expect(
+          focused.toARGB32(),
+          isNot(hovered.toARGB32()),
+          reason: '$name 的 focus 與 hover 底色相同，鍵盤使用者分不出焦點在哪',
         );
       });
     });
@@ -45,28 +65,6 @@ void main() {
         );
       });
     });
-  });
-
-  testWidgets('hover 邊框是 guide 的低對比版本，且只有一個來源', (tester) async {
-    late KlpTheme klp;
-    await tester.pumpWidget(
-      MaterialApp(
-        theme: buildKlpTheme(Brightness.light),
-        home: Builder(
-          builder: (context) {
-            klp = context.klp;
-            return const SizedBox.shrink();
-          },
-        ),
-      ),
-    );
-
-    expect(klp.hoverBorder.a, klp.shape.dashedOpacity);
-    expect(klp.hoverBorder.toARGB32(), isNot(klp.color.guide.toARGB32()));
-    expect(
-      klp.hoverBorder.toARGB32(),
-      klp.color.guide.withValues(alpha: klp.shape.dashedOpacity).toARGB32(),
-    );
   });
 
   testWidgets('一般 icon button hover 使用背景高亮而不是虛線框', (tester) async {
@@ -107,7 +105,7 @@ void main() {
     );
   });
 
-  testWidgets('表單 hover 與 focus 分別使用低對比與高對比虛線框', (tester) async {
+  testWidgets('表單 hover 與 focus 用不同強度的底色，且完全不畫外框', (tester) async {
     final focusNode = FocusNode();
     addTearDown(focusNode.dispose);
 
@@ -119,24 +117,27 @@ void main() {
     );
 
     final field = find.byType(KlpTextField);
+
     final mouse = await tester.createGesture(kind: PointerDeviceKind.mouse);
     addTearDown(mouse.removePointer);
     await mouse.addPointer();
     await mouse.moveTo(tester.getCenter(field));
     await tester.pump();
 
-    var border = tester.widget<KlpDashedBorder>(
+    expect(
       find.descendant(of: field, matching: find.byType(KlpDashedBorder)),
+      findsNothing,
+      reason: '表單 hover 不得再畫虛線框',
     );
-    expect(border.color, tester.element(field).klp.hoverBorder);
 
     await tester.tap(find.byType(TextFormField));
     await tester.pump();
 
-    border = tester.widget<KlpDashedBorder>(
+    expect(
       find.descendant(of: field, matching: find.byType(KlpDashedBorder)),
+      findsNothing,
+      reason: '表單 focus 也不得畫虛線框',
     );
-    expect(border.color, tester.element(field).klp.color.textMuted);
   });
 
   testWidgets('KlpRegion 的內容不貼著面板邊緣', (tester) async {
@@ -170,5 +171,51 @@ void main() {
 
   test('亮態的分隔線用 ink100', () {
     expect(KlpThemeData.light.divider.toARGB32(), KlpPalette.ink100.toARGB32());
+  });
+
+  test('沒有任何元件用邊框表達 hover', () {
+    // 這是原始碼掃描，不是行為測試：行為測試只能覆蓋被寫進測試的那幾個元件，
+    // 而這條規則要管的是**還沒被寫出來**的元件。
+    //
+    // 判準：同一段程式碼裡同時出現 hover 狀態與 KlpDashedBorder。
+    final offenders = <String>[];
+    final sources = Directory('../lib/src').existsSync()
+        ? Directory('../lib/src')
+        : Directory('lib/src');
+
+    for (final file
+        in sources
+            .listSync(recursive: true)
+            .whereType<File>()
+            .where((file) => file.path.endsWith('.dart'))) {
+      final path = file.path.replaceAll(r'', '/');
+      // 虛線框元件自己、以及「待填區域」的用途不在此限。
+      if (path.endsWith('klp_dashed_border.dart') ||
+          path.endsWith('klp_region_placeholder.dart') ||
+          path.endsWith('klp_empty_state.dart') ||
+          path.endsWith('klp_view_states.dart')) {
+        continue;
+      }
+
+      final lines = file.readAsStringSync().split('\n');
+      for (var i = 0; i < lines.length; i++) {
+        if (!lines[i].contains('KlpDashedBorder(')) continue;
+        // 往上看幾行，找是不是由 hover 狀態驅動。
+        final from = i - 6 < 0 ? 0 : i - 6;
+        final window = lines.sublist(from, i + 1).join('\n');
+        if (RegExp(r'_?[hH]overed|isHovered').hasMatch(window)) {
+          offenders.add('$path:${i + 1}  ${lines[i].trim()}');
+        }
+      }
+    }
+
+    expect(
+      offenders,
+      isEmpty,
+      reason:
+          '這些地方用虛線框表達 hover：\n${offenders.join('\n')}\n'
+          'hover 一律用 KlpStateHighlight 的高亮色。同一個狀態兩種畫法，'
+          '消費者無從預期。',
+    );
   });
 }

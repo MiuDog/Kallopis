@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+part of '../klp_palette.dart';
 
 /// 可選的強調色。
 ///
@@ -6,13 +6,13 @@ import 'package:flutter/material.dart';
 /// **調整色梯時不會立刻踩線**。原本的值全部卡在 4.5 邊緣，色梯換掉後五個彩色全數
 /// 掉出 AA，而那不會有任何徵兆：顏色看起來還是好的，只是讀不清楚。
 enum KlpAccent {
-  // 直接引用色梯，不寫死值——寫死的值會在色梯調整時靜默落後，而畫面看起來仍然正常。
-  ink(light: Color(0xFF060709), dark: Color(0xFFFBFAF7)),
-  terracotta(light: Color(0xFF92563C), dark: Color(0xFFC18468)),
-  ochre(light: Color(0xFF7D612F), dark: Color(0xFFAE8D55)),
-  olive(light: Color(0xFF5E6A39), dark: Color(0xFF8A995C)),
-  slate(light: Color(0xFF4E678A), dark: Color(0xFF7D94B3)),
-  crimson(light: Color(0xFF9F4B59), dark: Color(0xFFC37F8A));
+  // 所有具體色值都由 palette library 定義，強調色只負責組成明暗配對。
+  ink(light: _inkAccentLight, dark: _inkAccentDark),
+  terracotta(light: _terracottaAccentLight, dark: _terracottaAccentDark),
+  ochre(light: _ochreAccentLight, dark: _ochreAccentDark),
+  olive(light: _oliveAccentLight, dark: _oliveAccentDark),
+  slate(light: _slateAccentLight, dark: _slateAccentDark),
+  crimson(light: _crimsonAccentLight, dark: _crimsonAccentDark);
 
   const KlpAccent({required this.light, required this.dark});
 

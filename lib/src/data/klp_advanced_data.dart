@@ -1,5 +1,6 @@
 import 'package:flutter/widgets.dart';
 
+import '../interaction/klp_state_highlight.dart';
 import '../controls/klp_checkbox.dart';
 import '../feedback/klp_feedback_tone.dart';
 import '../foundation/klp_geometric_spinner.dart';
@@ -489,9 +490,9 @@ class _KlpTreeNodeView extends StatelessWidget {
     );
 
     if (selected && statusColor == null) {
-      rowContent = KlpDashedBorder(
-        radius: context.klp.shape.control,
-        color: tokens.guide,
+      rowContent = KlpStateHighlight(
+        state: KlpHighlightState.selected,
+        borderRadius: BorderRadius.circular(context.klp.shape.control),
         child: rowContent,
       );
     }

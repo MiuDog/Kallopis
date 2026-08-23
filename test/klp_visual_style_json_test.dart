@@ -56,7 +56,7 @@ void main() {
       expect((encoded['spacing'] as Map).length, 60);
       expect((encoded['shape'] as Map).length, 13);
       expect((encoded['motion'] as Map).length, 12);
-      expect((encoded['surface'] as Map).length, 27);
+      expect((encoded['surface'] as Map).length, 28);
       expect((encoded['components'] as Map).length, 16);
       expect((encoded['dataVisualization'] as Map).length, 14);
       final geometry = encoded['geometry'] as Map;

@@ -14,6 +14,7 @@ class KlpPanelFrame extends StatelessWidget {
     this.footerHeight,
     this.background,
     this.padding,
+    this.flushContent = false,
   });
 
   final Widget header;
@@ -27,6 +28,9 @@ class KlpPanelFrame extends StatelessWidget {
 
   /// 內容與面板之間的內距。預設為 `context.klp.space.base`。
   final EdgeInsetsGeometry? padding;
+
+  /// 讓內容自行管理內距；用於 explorer 這類每列已具備水平節奏的面板。
+  final bool flushContent;
 
   @override
   Widget build(BuildContext context) {
@@ -54,7 +58,11 @@ class KlpPanelFrame extends StatelessWidget {
               ),
               Expanded(
                 child: Padding(
-                  padding: padding ?? EdgeInsets.all(context.klp.space.base),
+                  padding:
+                      padding ??
+                      (flushContent
+                          ? EdgeInsets.zero
+                          : EdgeInsets.all(context.klp.space.base)),
                   child: content,
                 ),
               ),

@@ -1,5 +1,20 @@
 import 'package:flutter/widgets.dart';
 
+part 'internal/klp_accent.dart';
+
+const Color _inkAccentLight = KlpPalette.ink900;
+const Color _inkAccentDark = KlpPalette.ink50;
+const Color _terracottaAccentLight = Color(0xFF92563C);
+const Color _terracottaAccentDark = Color(0xFFC18468);
+const Color _ochreAccentLight = Color(0xFF7D612F);
+const Color _ochreAccentDark = Color(0xFFAE8D55);
+const Color _oliveAccentLight = Color(0xFF5E6A39);
+const Color _oliveAccentDark = Color(0xFF8A995C);
+const Color _slateAccentLight = Color(0xFF4E678A);
+const Color _slateAccentDark = Color(0xFF7D94B3);
+const Color _crimsonAccentLight = Color(0xFF9F4B59);
+const Color _crimsonAccentDark = Color(0xFFC37F8A);
+
 abstract final class KlpPalette {
   /// 「沒有顏色」。這不是風格決定，但仍然需要一個名字——散落各處的
   /// `Color(0x00000000)` 無法與真正寫死的顏色區分，會讓紀律檢查失去意義。
@@ -15,21 +30,21 @@ abstract final class KlpPalette {
   // Flutter 的 `Color` 只認 sRGB，因此 oklch 記在註解裡——**改值時改的是 oklch，
   // hex 是換算結果**，反過來做會讓明度階梯逐漸走樣。
   //
-  // 淺色端 (50-300): 偏向溫暖石色 (H: 75°~88°, C: 0.015~0.018)
+  // 淺色端 (50-300): 偏向溫暖石色 (H: 79°~89°, C: 0.000~0.019)
   // 中間層 (400-600): 平滑過渡區間
-  // 深色端 (700-950): 完全收斂回冷藍灰 (H: 238°~249°, C: 0.003~0.009)
+  // 深色端 (700-950): 收斂為中性石墨色，避免與暖色表面產生色偏競爭。
 
-  /// oklch(0.985 0.004 88.0)
-  static const Color ink50 = Color(0xFFFBFAF7);
+  /// oklch(1.000 0.000 89.9)
+  static const Color ink50 = Color(0xFFFFFFFF);
 
-  /// oklch(0.935 0.006 86.9)
-  static const Color ink100 = Color(0xFFEBE9E5);
+  /// oklch(0.955 0.007 88.6)
+  static const Color ink100 = Color(0xFFF2F0EB);
 
-  /// oklch(0.884 0.008 85.8)
-  static const Color ink150 = Color(0xFFDBD9D3);
+  /// oklch(0.929 0.009 84.6)
+  static const Color ink150 = Color(0xFFEAE7E1);
 
-  /// oklch(0.834 0.011 84.7)
-  static const Color ink200 = Color(0xFFCCC8C1);
+  /// oklch(0.916 0.010 87.5)
+  static const Color ink200 = Color(0xFFE6E3DC);
 
   /// oklch(0.784 0.013 83.6)
   static const Color ink250 = Color(0xFFBCB8B0);
@@ -49,8 +64,8 @@ abstract final class KlpPalette {
   /// oklch(0.532 0.008 75.3)
   static const Color ink500 = Color(0xFF6F6C67);
 
-  /// oklch(0.482 0.006 73.5)
-  static const Color ink550 = Color(0xFF605E5B);
+  /// oklch(0.506 0.019 79.3)
+  static const Color ink550 = Color(0xFF6B6459);
 
   /// oklch(0.432 0.003 221.2)
   static const Color ink600 = Color(0xFF4F5151);
@@ -61,20 +76,20 @@ abstract final class KlpPalette {
   /// oklch(0.331 0.004 233.6)
   static const Color ink700 = Color(0xFF343637);
 
-  /// oklch(0.281 0.004 239.8)
-  static const Color ink750 = Color(0xFF27292B);
+  /// oklch(0.309 0.000 89.9)
+  static const Color ink750 = Color(0xFF303030);
 
-  /// oklch(0.231 0.004 246.0)
-  static const Color ink800 = Color(0xFF1C1D1F);
+  /// oklch(0.281 0.000 89.9)
+  static const Color ink800 = Color(0xFF292929);
 
-  /// oklch(0.181 0.004 252.1)
-  static const Color ink850 = Color(0xFF101214);
+  /// oklch(0.256 0.000 89.9)
+  static const Color ink850 = Color(0xFF232323);
 
-  /// oklch(0.130 0.005 258.3)
-  static const Color ink900 = Color(0xFF060709);
+  /// oklch(0.231 0.000 89.9)
+  static const Color ink900 = Color(0xFF1D1D1D);
 
-  /// oklch(0.080 0.005 264.5)
-  static const Color ink950 = Color(0xFF010202);
+  /// oklch(0.173 0.000 89.9)
+  static const Color ink950 = Color(0xFF101010);
 
   // ── 資料視覺化 primitive ──
 

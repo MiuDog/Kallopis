@@ -35,6 +35,7 @@ class KlpSurfaceTheme extends ThemeExtension<KlpSurfaceTheme> {
     required this.overlayShadowOpacity,
     required this.scrimOpacity,
     required this.selectionWashOpacity,
+    required this.focusWashOpacity,
     required this.statusFillOpacity,
     required this.pressProgressOpacity,
     required this.diffFillOpacity,
@@ -71,6 +72,13 @@ class KlpSurfaceTheme extends ThemeExtension<KlpSurfaceTheme> {
   ///
   /// Explorer 與表單不使用這層，改以低／高對比虛線區分 hover 與選取。
   final double selectionWashOpacity;
+
+  /// 鍵盤聚焦時的高亮強度。
+  ///
+  /// 必須比 [selectionWashOpacity] 強：hover 與 focus 若同強度，鍵盤使用者在
+  /// 滑鼠同時停在別處時就分不出焦點在哪。也不能借用其他角色的透明度——借用會在
+  /// 調整那個角色時靜默失去同步。
+  final double focusWashOpacity;
 
   /// 語意色當底時的疊層強度（danger 按鈕、狀態晶片）。
   final double statusFillOpacity;
@@ -138,6 +146,7 @@ class KlpSurfaceTheme extends ThemeExtension<KlpSurfaceTheme> {
     overlayShadowOpacity: KlpScale.opacity220,
     scrimOpacity: 0.6,
     selectionWashOpacity: KlpScale.opacity100,
+    focusWashOpacity: KlpScale.opacity180,
     statusFillOpacity: KlpScale.opacity160,
     pressProgressOpacity: KlpScale.opacity550,
     diffFillOpacity: KlpScale.opacity120,
@@ -160,6 +169,7 @@ class KlpSurfaceTheme extends ThemeExtension<KlpSurfaceTheme> {
     double? overlayShadowOpacity,
     double? scrimOpacity,
     double? selectionWashOpacity,
+    double? focusWashOpacity,
     double? statusFillOpacity,
     double? pressProgressOpacity,
     double? diffFillOpacity,
@@ -189,6 +199,7 @@ class KlpSurfaceTheme extends ThemeExtension<KlpSurfaceTheme> {
       overlayShadowOpacity: overlayShadowOpacity ?? this.overlayShadowOpacity,
       scrimOpacity: scrimOpacity ?? this.scrimOpacity,
       selectionWashOpacity: selectionWashOpacity ?? this.selectionWashOpacity,
+      focusWashOpacity: focusWashOpacity ?? this.focusWashOpacity,
       statusFillOpacity: statusFillOpacity ?? this.statusFillOpacity,
       pressProgressOpacity: pressProgressOpacity ?? this.pressProgressOpacity,
       diffFillOpacity: diffFillOpacity ?? this.diffFillOpacity,
@@ -243,6 +254,7 @@ class KlpSurfaceTheme extends ThemeExtension<KlpSurfaceTheme> {
           overlayShadowOpacity == other.overlayShadowOpacity &&
           scrimOpacity == other.scrimOpacity &&
           selectionWashOpacity == other.selectionWashOpacity &&
+          focusWashOpacity == other.focusWashOpacity &&
           statusFillOpacity == other.statusFillOpacity &&
           pressProgressOpacity == other.pressProgressOpacity &&
           diffFillOpacity == other.diffFillOpacity &&
@@ -273,6 +285,7 @@ class KlpSurfaceTheme extends ThemeExtension<KlpSurfaceTheme> {
     overlayShadowOpacity,
     scrimOpacity,
     selectionWashOpacity,
+    focusWashOpacity,
     statusFillOpacity,
     pressProgressOpacity,
     diffFillOpacity,

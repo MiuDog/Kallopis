@@ -10,6 +10,7 @@ const _keys = {
   'overlayShadowOpacity',
   'scrimOpacity',
   'selectionWashOpacity',
+  'focusWashOpacity',
   'statusFillOpacity',
   'pressProgressOpacity',
   'diffFillOpacity',
@@ -64,6 +65,7 @@ KlpSurfaceTheme decodeSurface(KlpJsonMap json, KlpSurfaceTheme base) {
       'selectionWashOpacity',
       base.selectionWashOpacity,
     ),
+    focusWashOpacity: alpha('focusWashOpacity', base.focusWashOpacity),
     statusFillOpacity: alpha('statusFillOpacity', base.statusFillOpacity),
     pressProgressOpacity: alpha(
       'pressProgressOpacity',
@@ -122,6 +124,7 @@ KlpJsonMap encodeSurface(KlpSurfaceTheme v) => <String, Object?>{
   'overlayShadowOpacity': v.overlayShadowOpacity,
   'scrimOpacity': v.scrimOpacity,
   'selectionWashOpacity': v.selectionWashOpacity,
+  'focusWashOpacity': v.focusWashOpacity,
   'statusFillOpacity': v.statusFillOpacity,
   'pressProgressOpacity': v.pressProgressOpacity,
   'diffFillOpacity': v.diffFillOpacity,

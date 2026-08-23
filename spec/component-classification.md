@@ -44,11 +44,13 @@ feature package**，而不是塞進視覺元件庫。
 | `dashboard/dash_record_views` | 927 | 1, 5 | `DashRecord`／`BoardColumn`／`TableView`／`BoardView` 是資料庫視圖語意 |
 | `dashboard/dash_time_views` | 1,192 | 1, 5 | 時間軸與日曆視圖是排程語意 |
 | `data/klp_diff_view` | 377 | 1 | diff 檢視服務 repo binding，只有 Planist 需要 |
-| `data/klp_chat_bubble` | 55 | 1 | AI 對話 UI，筆記 app 不需要 |
-| `editor/klp_message_composer` | 153 | 1, 5 | 同上，且內嵌產品文案 |
 | `feedback/klp_status_states` | 167 | 5 | 9 處寫死文案（「目前離線」「CONNECTION / 04」），與產品連線狀態直接綁定 |
 | `data/klp_task_card` | ~100 | 5 | 任務語意 |
 | `shell/klp_project_banner` | ~100 | 5 | 專案語意 |
+
+> 2026-08-24：使用者要求工作區新版頁面由 Kallopis 提供預設呈現。訊息與輸入元件因此以
+> 無角色、無 AI session、無內嵌產品文案的 `KlpMessageBubble`／`KlpMessageThread`／
+> `KlpMessageComposer` 重新納入；原先被拒絕的產品綁定版本仍不恢復。
 
 ### 部分移出（檔案必須拆，不能整檔留或整檔砍）
 

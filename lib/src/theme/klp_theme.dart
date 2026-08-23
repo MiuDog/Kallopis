@@ -4,7 +4,6 @@ import 'klp_data_visualization_theme.dart';
 import 'klp_shape_theme.dart';
 import 'klp_surface_theme.dart';
 import 'klp_visual_style.dart';
-import '../foundation/klp_accent.dart';
 import '../foundation/klp_palette.dart';
 import '../tokens/klp_scale.dart';
 
@@ -74,9 +73,9 @@ class KlpThemeData extends ThemeExtension<KlpThemeData> {
     this.onStatus = KlpPalette.pureWhite,
     this.onLightBackground = KlpPalette.ink900,
     this.onDarkBackground = KlpPalette.ink50,
-    this.mutedOnLightBackground = KlpPalette.ink600,
+    this.mutedOnLightBackground = KlpPalette.ink550,
     this.mutedOnDarkBackground = KlpPalette.ink300,
-    this.faintOnBackground = KlpPalette.ink500,
+    this.faintOnBackground = KlpPalette.ink400,
   }) : pagePattern = pagePattern ?? guide;
 
   final Color app;
@@ -122,7 +121,7 @@ class KlpThemeData extends ThemeExtension<KlpThemeData> {
 
   Color get onSelection => app;
 
-  Color get selectionBackground => surfaceMuted;
+  Color get selectionBackground => interactionSoft;
 
   Color get selectionForeground => text;
 
@@ -178,14 +177,14 @@ class KlpThemeData extends ThemeExtension<KlpThemeData> {
     divider: KlpPalette.ink100,
     pagePattern: KlpPalette.ink200,
     text: KlpPalette.ink900,
-    textMuted: KlpPalette.ink600,
-    textFaint: KlpPalette.ink500,
+    textMuted: KlpPalette.ink550,
+    textFaint: KlpPalette.ink400,
     border: KlpPalette.line,
     borderStrong: KlpPalette.line,
     accent: KlpPalette.ink900,
-    accentSoft: KlpPalette.ink100,
+    accentSoft: KlpPalette.ink200,
     interaction: KlpPalette.ink900,
-    interactionSoft: KlpPalette.ink100,
+    interactionSoft: KlpPalette.ink200,
     success: KlpPalette.lightSuccess,
     warning: KlpPalette.lightWarning,
     danger: KlpPalette.lightDanger,
@@ -193,7 +192,7 @@ class KlpThemeData extends ThemeExtension<KlpThemeData> {
     clear: KlpPalette.transparent,
   );
 
-  /// 暗態：整條梯翻轉。文字三階與亮態對稱（50／300／500 對 900／600／500）。
+  /// 暗態：整條梯翻轉；輔助文字使用 ink400，確保石墨表面仍達 3:1。
   static const KlpThemeData dark = KlpThemeData(
     app: KlpPalette.ink850,
     surface: KlpPalette.ink750,
@@ -209,7 +208,7 @@ class KlpThemeData extends ThemeExtension<KlpThemeData> {
     pagePattern: KlpPalette.ink600,
     text: KlpPalette.ink50,
     textMuted: KlpPalette.ink300,
-    textFaint: KlpPalette.ink500,
+    textFaint: KlpPalette.ink400,
     border: KlpPalette.line,
     borderStrong: KlpPalette.line,
     accent: KlpPalette.ink50,
@@ -239,7 +238,7 @@ class KlpThemeData extends ThemeExtension<KlpThemeData> {
     pagePattern: KlpPalette.ink650,
     text: KlpPalette.ink100,
     textMuted: KlpPalette.ink350,
-    textFaint: KlpPalette.ink550,
+    textFaint: KlpPalette.ink400,
     border: KlpPalette.line,
     borderStrong: KlpPalette.line,
     accent: KlpPalette.ink100,
@@ -441,9 +440,12 @@ abstract final class KlpFieldStyle {
 
   /// 欄位底色。
   ///
-  /// **hover 不改變底色**——表單欄位以低對比虛線細框表達 hover，見
-  /// [KlpTheme.hoverBorder]。因此 rest 與 hovered 刻意回傳同一個值；把它們寫成
-  /// 同一個 case 會讓「hover 沒有底色變化」這件事在未來被當成漏寫而補回去。
+  /// **hover 以高亮底色表達，不畫邊框。** 欄位本來就有自己的底色，狀態直接反映在
+  /// 那個底色上，不必在外面再包一層框——包框會讓欄位在 hover 時尺寸感改變，
+  /// 也讓同一個狀態在欄位與其他元件長得不一樣。
+  ///
+  /// 高亮是把前景色以低 alpha 疊上去，因此亮態壓暗、暗態提亮，且不必知道底下
+  /// 實際是哪個表面。
   static Color colorFor(
     KlpThemeData tokens,
     KlpFieldFillState state, {
@@ -451,9 +453,15 @@ abstract final class KlpFieldStyle {
   }) {
     return switch (state) {
       KlpFieldFillState.rest => tokens.surfaceInset,
-      KlpFieldFillState.hovered => tokens.surfaceInset,
+      KlpFieldFillState.hovered => Color.alphaBlend(
+        tokens.selectionWashWith(surface.selectionWashOpacity),
+        tokens.surfaceInset,
+      ),
       KlpFieldFillState.focused ||
-      KlpFieldFillState.selected => tokens.surfaceInset,
+      KlpFieldFillState.selected => Color.alphaBlend(
+        tokens.interaction.withValues(alpha: surface.focusWashOpacity),
+        tokens.surfaceInset,
+      ),
       KlpFieldFillState.disabled => tokens.surfaceMuted,
       // 不合法輸入用半透明紅**疊在**欄位上，而不是先跟 surfaceInset 混成不透明色。
       // 疊層才會跟著底下實際的表面走；預混會在欄位被放到別的表面上時顏色對不上。

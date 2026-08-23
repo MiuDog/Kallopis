@@ -4,6 +4,10 @@ import 'foundation_pages.dart';
 import 'guideline_pages.dart';
 import 'settings_pages.dart';
 import 'token_pages.dart';
+import 'workspace_agenda_page.dart';
+import 'workspace_assets_page.dart';
+import 'workspace_conversation_page.dart';
+import 'workspace_shell_page.dart';
 
 /// 目錄的完整結構。
 ///
@@ -42,6 +46,15 @@ final List<CatalogGroup> catalogGroups = [
   ),
   CatalogGroup(label: 'Form', pages: [formControlsPage, formAssemblyPage]),
   CatalogGroup(label: 'Settings', pages: [settingsPage]),
+  CatalogGroup(
+    label: 'Workspace',
+    pages: [
+      workspaceShellPage,
+      workspaceAgendaPage,
+      workspaceConversationPage,
+      workspaceAssetsPage,
+    ],
+  ),
 ];
 
 /// 攤平後的頁面清單，順序與導覽一致。

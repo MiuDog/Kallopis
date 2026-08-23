@@ -50,6 +50,7 @@ class Swatch extends StatelessWidget {
     required this.color,
     this.note,
     this.onColor,
+    this.previewBackground,
     this.offRamp,
   });
 
@@ -60,6 +61,12 @@ class Swatch extends StatelessWidget {
   final String? note;
   final Color? onColor;
 
+  /// 只改變預覽底色；色階標籤仍描述 [color] 本身。
+  ///
+  /// 用於 `on*` 對比前景，讓 Catalog 在它實際搭配的來源背景上呈現，而不是把前景色
+  /// 誤畫成整張色票的底色。
+  final Color? previewBackground;
+
   /// 這個角色**本來就不在中性色梯上**時，說明它是什麼。
   ///
   /// 彩色強調色與對比前景都不該在梯上，每格都標「梯外」只是雜訊。
@@ -69,11 +76,12 @@ class Swatch extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final klp = context.klp;
+    final background = previewBackground ?? color;
     final foreground =
         onColor ??
-        (color == KlpPalette.transparent || color.a == 0
+        (background == KlpPalette.transparent || background.a == 0
             ? klp.color.text
-            : KlpThemeContrast.foregroundFor(color));
+            : KlpThemeContrast.foregroundFor(background));
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -84,7 +92,7 @@ class Swatch extends StatelessWidget {
           alignment: Alignment.center,
           padding: EdgeInsets.symmetric(horizontal: klp.space.compact),
           decoration: BoxDecoration(
-            color: color,
+            color: background,
             borderRadius: BorderRadius.circular(klp.shape.card),
             border: Border.all(
               color: klp.color.divider,

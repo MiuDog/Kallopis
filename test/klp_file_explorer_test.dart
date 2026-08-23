@@ -64,12 +64,11 @@ void main() {
     await tester.pumpAndSettle();
 
     expect(selectedId, 'file-2');
-    final selectedBorder = tester.widget<KlpDashedBorder>(
-      find.byType(KlpDashedBorder),
-    );
+    // 選取現在以高亮色表達，不再畫虛線框。
     expect(
-      selectedBorder.color,
-      tester.element(find.byType(KlpFileExplorer)).klp.color.textMuted,
+      find.byKey(const ValueKey('klp-state-highlight')),
+      findsWidgets,
+      reason: '選取應該疊上 KlpStateHighlight 的高亮層',
     );
 
     final mouse = await tester.createGesture(kind: PointerDeviceKind.mouse);
@@ -78,12 +77,11 @@ void main() {
     await mouse.moveTo(tester.getCenter(find.text('ADR-0003 : 團隊導向')));
     await tester.pump();
 
-    final borderColors = tester
-        .widgetList<KlpDashedBorder>(find.byType(KlpDashedBorder))
-        .map((border) => border.color);
+    // hover 現在以高亮色表達，不再畫虛線框。
     expect(
-      borderColors,
-      contains(tester.element(find.byType(KlpFileExplorer)).klp.hoverBorder),
+      find.byKey(const ValueKey('klp-state-highlight')),
+      findsWidgets,
+      reason: 'hover 應該疊上 KlpStateHighlight 的高亮層',
     );
 
     // 點擊分類「筆記」進行收合

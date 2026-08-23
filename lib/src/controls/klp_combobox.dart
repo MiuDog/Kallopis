@@ -1,6 +1,7 @@
 import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
 
+import '../interaction/klp_roving_index.dart';
 import '../overlay/klp_menu.dart';
 import '../theme/klp_theme.dart';
 import 'klp_text_field.dart';
@@ -160,15 +161,22 @@ class _KlpComboboxState extends State<KlpCombobox> {
     if (event.logicalKey == LogicalKeyboardKey.arrowDown) {
       if (options.isEmpty) return KeyEventResult.ignored;
       setState(
-        () => _highlightedIndex = (_highlightedIndex + 1) % options.length,
+        () => _highlightedIndex = KlpRovingIndex.move(
+          current: _highlightedIndex,
+          count: options.length,
+          forward: true,
+        ),
       );
       return KeyEventResult.handled;
     }
     if (event.logicalKey == LogicalKeyboardKey.arrowUp) {
       if (options.isEmpty) return KeyEventResult.ignored;
       setState(
-        () => _highlightedIndex =
-            (_highlightedIndex - 1 + options.length) % options.length,
+        () => _highlightedIndex = KlpRovingIndex.move(
+          current: _highlightedIndex,
+          count: options.length,
+          forward: false,
+        ),
       );
       return KeyEventResult.handled;
     }
@@ -211,6 +219,10 @@ class _KlpComboboxState extends State<KlpCombobox> {
             SizedBox(height: context.klp.space.tight),
             KlpMenu(
               label: widget.menuLabel,
+              // combobox 自己已經在管方向鍵與焦點（見上方 [Focus]／[_handleKey]），
+              // 選單這裡不能再搶自動焦點，否則會把焦點從輸入框搬走，使用者打字
+              // 打到一半就被踢出輸入框。
+              autofocus: false,
               items: [
                 for (var index = 0; index < options.length; index++)
                   KlpMenuItemData(

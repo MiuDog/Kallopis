@@ -114,17 +114,20 @@ class KlpTheme {
 
   List<BoxShadow> get overlayShadow => surface.overlayShadow(color.text);
 
-  /// 一般互動元件的 hover／focus／selected 背景高亮。
+  /// hover／focus 的半透明中性高亮。
   ///
-  /// 混合比例來自 surface 層，因此不同風格的互動對比可以不同。Explorer 與表單
-  /// 不使用這層，改由 [hoverBorder] 與高對比語意色表達狀態。
+  /// **全庫唯一的 hover 表達方式。** 混合比例來自 surface 層，因此不同風格的
+  /// 互動對比可以不同。先前 explorer 與表單走另一套虛線框，同一個狀態兩種畫法，
+  /// 消費者無從預期——那條路徑已經移除。
   Color get selectionWash =>
       color.selectionWashWith(surface.selectionWashOpacity);
 
-  /// Explorer 與表單 hover 的低對比虛線邊框色。
+  /// 一般互動元件的 selected 半透明選取色。
   ///
-  /// 這兩類元件統一從此處取色，避免各自調出不同的低對比灰。
-  Color get hoverBorder => color.guide.withValues(alpha: shape.dashedOpacity);
+  /// 色相跟隨 interaction semantic token，透明度則沿用 surface 層的 wash 強度，
+  /// 讓不同 preset 能完整決定狀態視覺，消費端不必自行混色。
+  Color get selectedWash =>
+      color.interaction.withValues(alpha: surface.selectionWashOpacity);
 
   /// 目前是不是暗色主題。
   ///

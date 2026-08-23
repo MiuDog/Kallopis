@@ -135,6 +135,14 @@ class _KlpListTileState extends State<KlpListTile> {
       ),
     );
 
-    return tile;
+    return Semantics(
+      button: widget.onPressed != null,
+      // 沒有 onPressed 時本來就不是「可互動但目前停用」，而是壓根不回應互動，
+      // 依 Semantics.enabled 的說明這種情況不該回報 enabled 狀態，所以給 null
+      // 而不是 false。
+      enabled: widget.onPressed != null ? true : null,
+      selected: widget.selected,
+      child: tile,
+    );
   }
 }

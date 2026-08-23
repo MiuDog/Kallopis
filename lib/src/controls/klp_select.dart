@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 
 import '../foundation/klp_icon.dart';
 import '../foundation/klp_icons.dart';
-import '../surface/klp_dashed_border.dart';
 import '../surface/klp_stroke.dart';
 import '../theme/klp_theme.dart';
 import '../typography/klp_text.dart';
@@ -82,14 +81,6 @@ class _KlpSelectState extends State<KlpSelect> {
         ),
       ),
     );
-
-    if ((_hovered || _focused) && widget.enabled) {
-      field = KlpDashedBorder(
-        color: _focused ? tokens.textMuted : context.klp.hoverBorder,
-        radius: context.klp.shape.control,
-        child: field,
-      );
-    }
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
