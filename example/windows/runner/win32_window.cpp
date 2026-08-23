@@ -162,7 +162,10 @@ bool Win32Window::Create(const std::wstring& title,
 }
 
 bool Win32Window::Show() {
-  return ShowWindow(window_handle_, SW_SHOWNORMAL);
+  // 保留 KlpApp 在首幀前要求的最大化狀態，讓 Windows 依目前螢幕與 DPI 顯示。
+  const int show_command =
+      IsZoomed(window_handle_) ? SW_SHOWMAXIMIZED : SW_SHOWNORMAL;
+  return ShowWindow(window_handle_, show_command);
 }
 
 // static

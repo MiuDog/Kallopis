@@ -30,3 +30,6 @@ KlpApp 預設以最大化狀態啟動；Windows runner 最大化後，頂層視�
 9. `KlpApp.startMaximized` 預設為 `true`；首次建立時先查詢原生視窗狀態，未最大化才送出
    `maximize`，已最大化時不得切換回視窗化，後續 rebuild 也不得重複執行。
 10. 消費端可用 `startMaximized: false` 保留原生 runner 決定的啟動尺寸。
+11. `KlpApp` 在首幀前要求最大化時，runner 的首幀顯示不得再用 `SW_SHOWNORMAL` 還原；
+    必須保留 `IsZoomed` 狀態，並由 Windows 依目前 monitor、Per-Monitor V2 DPI 與 `rcWork`
+    決定最大化尺寸。

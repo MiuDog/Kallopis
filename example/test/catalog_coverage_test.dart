@@ -119,13 +119,8 @@ void main() {
     expect(empty, isEmpty, reason: '這些頁面既沒有元件也沒有 token 視圖：$empty');
   });
 
-  test('Notes 依序提供 Docs、Canva、Sheet 與 Backgrounds', () {
-    final notes = catalogGroups.singleWhere((group) => group.label == 'Notes');
-
-    expect(
-      notes.pages.map((page) => page.label),
-      orderedEquals(['Docs', 'Canva', 'Sheet', 'Backgrounds']),
-    );
+  test('Catalog 不保留產品語意分組', () {
+    expect(catalogGroups.map((group) => group.label), isNot(contains('Notes')));
   });
 
   test('示範覆蓋率只能上升', () {

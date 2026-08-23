@@ -2,34 +2,37 @@
 
 ## 0.5.0 — 2026-08-23
 
-這個 minor 版本把 Kallopis 的視窗、工作台與區塊式筆記風格收斂為消費端可直接採用的
-預設，並加入 Docs、Canva 與 Sheet 的元件目錄示範。消費端不必再重複指定 header 尺寸、
-panel 間距或 Sheet 捲動與選取演算法。
+這個 minor 版本把 Kallopis 的視窗與工作台風格收斂為消費端可直接採用的預設，並依
+KLP-0003 把只有 Notist 使用的筆記語意元件移回產品層。這是破壞性 API 調整；升級前請先
+完成下方遷移。
 
 ### 加入
 
-- `KlpSheetGrid` 提供可向右、向下延伸的表格、受控儲存格資料、選取、鍵盤移動、編輯提交
-  與雙軸捲動。
-- `KlpBlock` 提供區塊選取、hover／focus 高亮、六點操作把手、選單錨點與可選拖曳回呼，
-  作為 Docs 類區塊筆記的共通互動基底。
-- Notes 元件目錄新增 Docs、Canva 與 Sheet 頁面，涵蓋多欄文件、結構化區塊、自由畫布互動
-  與無限延伸表格。
 - `KlpApp.startMaximized` 預設在首次建立時確保原生視窗最大化；消費端可明確停用。
+- `KlpContextMenuController` 可由任意操作鈕以全域座標開啟選單，讓產品層組合區塊操作介面。
 
 ### 變更
 
 - `KlpWorkbenchShell` 預設為 shell 與 sidebar／stage panel 套用均勻的 theme 間距；header
   維持全寬，內容起點與下方 panel 對齊。
-- `KlpBlock` 建構介面新增必要的 `handleLabel`、`onHandlePressed` 與 `onPressed`；既有消費端
-  升級時需提供區塊操作語意與受控選取行為。
 - 視窗 header 的 app icon 尺寸、控制鈕尺寸、內距與 action 配置統一由 Kallopis geometry
   token 決定，消費端只需傳入 icon。
 - 一般按鈕 hover／選取使用表面高亮；explorer 與表單維持低／高對比虛線邊框語言。
+- Catalog 不再包含 Notes 分組，只展示至少兩個產品共用的視覺元件。
+
+### 移除
+
+- 移除 `KlpBlock`／`KlpBlockCanvas`；Notist 改用 `NtsBlock`／`NtsBlockCanvas`。
+- 移除 `KlpSheetGrid`；Notist 改用 `NtsSheetGrid`。
+- 移除 `KlpPageBackground*` recipe、viewport、painter 與 editor API；Notist 改用對應的
+  `NtsPageBackground*` 型別。Kallopis 仍保留通用的 `pagePattern` 色彩 token。
 
 ### 修正
 
 - 修正 Windows 最大化工作區、工作列命中、header 拖曳還原、視窗邊緣 resize 與最小尺寸
   契約，並避免極窄或短暫低高度視窗產生 RenderFlex overflow。
+- 修正首幀顯示以 `SW_SHOWNORMAL` 覆蓋 `KlpApp` 啟動最大化的問題；視窗現在會依目前螢幕
+  的工作區與 DPI 縮放比例最大化。
 - 修正 header 水平與垂直內距不一致、控制鈕貼邊，以及關閉按鈕缺少語意紅色背景。
 - 修正 shell、sidebar 與 stage 之間不均勻的大量留白。
 

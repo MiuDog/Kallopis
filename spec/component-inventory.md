@@ -6,7 +6,7 @@
 
 ## 總覽
 
-- 公開型別 **292** 個，其中 widget **156** 個
+- 公開型別 **270** 個，其中 widget **150** 個
 - 分為 **17** 個領域
 
 ### 領域之間的依賴方向
@@ -218,12 +218,10 @@ graph LR
 
 ### surface — 表面與描邊
 
-型別 11 個，widget 8 個。
+型別 9 個，widget 6 個。
 
 | 型別 | 行數 | 組成 |
 |---|---|---|
-| `KlpBlock` | 131 | `KlpSurface` |
-| `KlpBlockCanvas` | 20 | `KlpSurface` |
 | `KlpDashedBorder` | 51 | `KlpStrokeFrame` |
 | `KlpDashedDivider` | 111 | （葉節點） |
 | `KlpDivider` | 14 | （葉節點） |
@@ -236,16 +234,12 @@ graph LR
 
 ```mermaid
 graph LR
-  KlpBlock["KlpBlock"]
-  KlpBlockCanvas["KlpBlockCanvas"]
   KlpDashedBorder["KlpDashedBorder"]
   KlpSection["KlpSection"]
   KlpStrokeFrame["KlpStrokeFrame"]
   KlpSurface["KlpSurface"]
   KlpText["KlpText"]:::external
   KlpTokenOverride["KlpTokenOverride"]:::external
-  KlpBlockCanvas --> KlpSurface
-  KlpBlock --> KlpSurface
   KlpDashedBorder --> KlpStrokeFrame
   KlpSection --> KlpText
   KlpSurface --> KlpTokenOverride
@@ -481,7 +475,7 @@ graph LR
 
 ### data — 資料呈現
 
-型別 45 個，widget 23 個。
+型別 43 個，widget 22 個。
 
 | 型別 | 行數 | 組成 |
 |---|---|---|
@@ -516,8 +510,6 @@ graph LR
 | `KlpMetricCard` | 102 | `KlpText` |
 | `KlpProgress` | 82 | `KlpText` |
 | `KlpProgressState` | 2 | （葉節點） |
-| `KlpSheetGrid` | 235 | `KlpSheetGridGeometry` |
-| `KlpSheetGridGeometry` | 48 | （葉節點） |
 | `KlpSortControl` | 32 | `KlpIcon`、`KlpText` |
 | `KlpSortDirection` | 8 | （葉節點） |
 | `KlpStepData` | 11 | （葉節點） |
@@ -558,8 +550,6 @@ graph LR
   KlpMetricCard["KlpMetricCard"]
   KlpPressable["KlpPressable"]:::external
   KlpProgress["KlpProgress"]
-  KlpSheetGrid["KlpSheetGrid"]
-  KlpSheetGridGeometry["KlpSheetGridGeometry"]
   KlpSortControl["KlpSortControl"]
   KlpStepper["KlpStepper"]
   KlpSurface["KlpSurface"]:::external
@@ -603,7 +593,6 @@ graph LR
   KlpListTile --> KlpText
   KlpMetricCard --> KlpText
   KlpProgress --> KlpText
-  KlpSheetGrid --> KlpSheetGridGeometry
   KlpSortControl --> KlpIcon
   KlpSortControl --> KlpText
   KlpStepper --> KlpIcon
@@ -887,7 +876,7 @@ graph LR
 
 ### editor — 編輯器周邊
 
-型別 32 個，widget 11 個。
+型別 14 個，widget 8 個。
 
 | 型別 | 行數 | 組成 |
 |---|---|---|
@@ -895,31 +884,13 @@ graph LR
 | `KlpCommandItemData` | 19 | （葉節點） |
 | `KlpCommandMenu` | 111 | `KlpText` |
 | `KlpCommandSectionData` | 7 | （葉節點） |
-| `KlpCustomPageBackgroundRecipe` | 147 | `KlpPageBackgroundAxisStyle` |
-| `KlpDotsPageBackgroundRecipe` | 36 | （葉節點） |
 | `KlpEditorActionData` | 14 | （葉節點） |
 | `KlpEditorToolbar` | 17 | （葉節點） |
 | `KlpEntityPicker` | 111 | `KlpBadge`、`KlpButton`、`KlpText`、`KlpTextField` |
 | `KlpEntityResultData` | 14 | （葉節點） |
-| `KlpGridPageBackgroundRecipe` | 37 | （葉節點） |
-| `KlpPageBackground` | 57 | `KlpDotsPageBackgroundRecipe`、`KlpGridPageBackgroundRecipe`、`KlpPageBackgroundPainter`、`KlpPageBackgroundViewport`、`KlpPageBackgroundVisuals`、`KlpPlainPageBackgroundRecipe`、`KlpRuledPageBackgroundRecipe` |
-| `KlpPageBackgroundAxisStyle` | 36 | （葉節點） |
-| `KlpPageBackgroundEditor` | 310 | `KlpPageBackgroundLine`、`KlpPageBackgroundPoint`、`KlpPageBackgroundViewport` |
-| `KlpPageBackgroundEditorTool` | 3 | （葉節點） |
-| `KlpPageBackgroundElementKind` | 4 | （葉節點） |
-| `KlpPageBackgroundLine` | 26 | （葉節點） |
-| `KlpPageBackgroundPainter` | 208 | `KlpPlainPageBackgroundRecipe` |
-| `KlpPageBackgroundPoint` | 19 | （葉節點） |
-| `KlpPageBackgroundSelection` | 23 | （葉節點） |
-| `KlpPageBackgroundStrokeBehavior` | 3 | （葉節點） |
-| `KlpPageBackgroundStyle` | 3 | （葉節點） |
-| `KlpPageBackgroundViewport` | 30 | （葉節點） |
-| `KlpPageBackgroundVisuals` | 33 | （葉節點） |
 | `KlpPageChrome` | 57 | `KlpBadge`、`KlpSurface`、`KlpText` |
-| `KlpPlainPageBackgroundRecipe` | 11 | （葉節點） |
 | `KlpPropertyBadgeData` | 11 | （葉節點） |
 | `KlpPropertySummary` | 45 | `KlpBadge`、`KlpSurface`、`KlpTag`、`KlpText` |
-| `KlpRuledPageBackgroundRecipe` | 94 | `KlpPageBackgroundAxisStyle` |
 | `KlpSaveStatusCard` | 55 | `KlpText` |
 | `KlpSearchNavigator` | 112 | `KlpIconButton`、`KlpText`、`KlpTextField` |
 | `KlpStatusMessageData` | 15 | （葉節點） |
@@ -930,23 +901,10 @@ graph LR
   KlpBulkActionBar["KlpBulkActionBar"]
   KlpButton["KlpButton"]:::external
   KlpCommandMenu["KlpCommandMenu"]
-  KlpCustomPageBackgroundRecipe["KlpCustomPageBackgroundRecipe"]
-  KlpDotsPageBackgroundRecipe["KlpDotsPageBackgroundRecipe"]
   KlpEntityPicker["KlpEntityPicker"]
-  KlpGridPageBackgroundRecipe["KlpGridPageBackgroundRecipe"]
   KlpIconButton["KlpIconButton"]:::external
-  KlpPageBackground["KlpPageBackground"]
-  KlpPageBackgroundAxisStyle["KlpPageBackgroundAxisStyle"]
-  KlpPageBackgroundEditor["KlpPageBackgroundEditor"]
-  KlpPageBackgroundLine["KlpPageBackgroundLine"]
-  KlpPageBackgroundPainter["KlpPageBackgroundPainter"]
-  KlpPageBackgroundPoint["KlpPageBackgroundPoint"]
-  KlpPageBackgroundViewport["KlpPageBackgroundViewport"]
-  KlpPageBackgroundVisuals["KlpPageBackgroundVisuals"]
   KlpPageChrome["KlpPageChrome"]
-  KlpPlainPageBackgroundRecipe["KlpPlainPageBackgroundRecipe"]
   KlpPropertySummary["KlpPropertySummary"]
-  KlpRuledPageBackgroundRecipe["KlpRuledPageBackgroundRecipe"]
   KlpSaveStatusCard["KlpSaveStatusCard"]
   KlpSearchNavigator["KlpSearchNavigator"]
   KlpSurface["KlpSurface"]:::external
@@ -955,22 +913,10 @@ graph LR
   KlpTextField["KlpTextField"]:::external
   KlpBulkActionBar --> KlpText
   KlpCommandMenu --> KlpText
-  KlpCustomPageBackgroundRecipe --> KlpPageBackgroundAxisStyle
   KlpEntityPicker --> KlpBadge
   KlpEntityPicker --> KlpButton
   KlpEntityPicker --> KlpText
   KlpEntityPicker --> KlpTextField
-  KlpPageBackgroundEditor --> KlpPageBackgroundLine
-  KlpPageBackgroundEditor --> KlpPageBackgroundPoint
-  KlpPageBackgroundEditor --> KlpPageBackgroundViewport
-  KlpPageBackgroundPainter --> KlpPlainPageBackgroundRecipe
-  KlpPageBackground --> KlpDotsPageBackgroundRecipe
-  KlpPageBackground --> KlpGridPageBackgroundRecipe
-  KlpPageBackground --> KlpPageBackgroundPainter
-  KlpPageBackground --> KlpPageBackgroundViewport
-  KlpPageBackground --> KlpPageBackgroundVisuals
-  KlpPageBackground --> KlpPlainPageBackgroundRecipe
-  KlpPageBackground --> KlpRuledPageBackgroundRecipe
   KlpPageChrome --> KlpBadge
   KlpPageChrome --> KlpSurface
   KlpPageChrome --> KlpText
@@ -978,7 +924,6 @@ graph LR
   KlpPropertySummary --> KlpSurface
   KlpPropertySummary --> KlpTag
   KlpPropertySummary --> KlpText
-  KlpRuledPageBackgroundRecipe --> KlpPageBackgroundAxisStyle
   KlpSaveStatusCard --> KlpText
   KlpSearchNavigator --> KlpIconButton
   KlpSearchNavigator --> KlpText
@@ -1115,7 +1060,7 @@ graph LR
 |---|---|
 | `KlpText` | 87 |
 | `KlpIcon` | 29 |
-| `KlpSurface` | 23 |
+| `KlpSurface` | 21 |
 | `KlpDashedBorder` | 11 |
 | `KlpButton` | 9 |
 | `KlpPressable` | 9 |

@@ -16,6 +16,15 @@ void main() {
     expect(source, contains('monitor_info.rcMonitor'));
   });
 
+  test('example Windows runner 首幀顯示不覆蓋 KlpApp 啟動最大化', () {
+    final source = File(
+      'example/windows/runner/win32_window.cpp',
+    ).readAsStringSync();
+
+    expect(source, contains('IsZoomed(window_handle_)'));
+    expect(source, contains('SW_SHOWMAXIMIZED'));
+  });
+
   test('example Windows runner 提供四邊四角 resize 與最小尺寸', () {
     final windowSource = File(
       'example/windows/runner/win32_window.cpp',
