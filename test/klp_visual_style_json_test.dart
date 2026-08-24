@@ -53,7 +53,7 @@ void main() {
       });
       expect((encoded['colors'] as Map).length, 32);
       expect((encoded['typography'] as Map).length, 44);
-      expect((encoded['spacing'] as Map).length, 60);
+      expect((encoded['spacing'] as Map).length, 61);
       expect((encoded['shape'] as Map).length, 13);
       expect((encoded['motion'] as Map).length, 12);
       expect((encoded['surface'] as Map).length, 28);
