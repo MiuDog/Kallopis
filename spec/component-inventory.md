@@ -133,7 +133,7 @@ graph TD
 | `KlpMotionTheme` | 139 | （葉節點） |
 | `KlpOpticalGeometry` | 34 | （葉節點） |
 | `KlpShapeTheme` | 150 | （葉節點） |
-| `KlpSpacingTheme` | 510 | （葉節點） |
+| `KlpSpacingTheme` | 522 | （葉節點） |
 | `KlpSurfaceSeparation` | 19 | （葉節點） |
 | `KlpSurfaceTheme` | 282 | （葉節點） |
 | `KlpTheme` | 131 | `KlpVisualStyle` |
@@ -655,7 +655,7 @@ graph LR
 |---|---|---|
 | `KlpApprovalStepData` | 8 | （葉節點） |
 | `KlpApprovalStepsField` | 153 | `KlpText` |
-| `KlpCalendar` | 248 | `KlpIconButton`、`KlpStateHighlight`、`KlpText` |
+| `KlpCalendar` | 286 | `KlpIconButton`、`KlpStateHighlight`、`KlpText` |
 | `KlpCalendarRange` | 28 | （葉節點） |
 | `KlpCalendarSelectionMode` | 7 | （葉節點） |
 | `KlpChoiceOption` | 18 | （葉節點） |

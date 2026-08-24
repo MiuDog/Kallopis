@@ -59,7 +59,18 @@ class KlpCalendar extends StatelessWidget {
     this.onPreviousMonth,
     this.onNextMonth,
     this.firstWeekday = DateTime.monday,
+    this.dayContentBuilder,
   }) : assert(weekdayLabels.length == 7, 'weekdayLabels 必須剛好 7 個，對應一週七天。');
+
+  /// 每一格日期底下要放什麼。
+  ///
+  /// `null` 表示只顯示日期數字，格高用 [KlpSpacingTheme.controlHeightSmall]；
+  /// 給了 builder 就切換成內容格，格高改用
+  /// [KlpSpacingTheme.calendarContentCell]——日期數字加內容擠在選擇器的格高裡會糊成一團。
+  ///
+  /// **這是 slot 而不是布林參數**：月曆不需要知道格子裡放的是待辦、排程還是別的東西，
+  /// 那屬於呼叫端的語意。回傳 `null` 代表這一格沒有內容。
+  final Widget? Function(DateTime date)? dayContentBuilder;
 
   /// 目前顯示的月份；只有年與月有意義，日的部分會被忽略。
   final DateTime month;
@@ -182,8 +193,13 @@ class KlpCalendar extends StatelessWidget {
     int daysInMonth,
   ) {
     final dayNumber = index - leading + 1;
+    final hasContent = dayContentBuilder != null;
     if (dayNumber < 1 || dayNumber > daysInMonth) {
-      return SizedBox(height: context.klp.space.controlHeightSmall);
+      return SizedBox(
+        height: hasContent
+            ? context.klp.space.calendarContentCell
+            : context.klp.space.controlHeightSmall,
+      );
     }
 
     final date = DateTime(month.year, month.month, dayNumber);
@@ -197,6 +213,7 @@ class KlpCalendar extends StatelessWidget {
       isToday: today != null && _isSameDay(date, today!),
       disabled: isDateDisabled?.call(date) ?? false,
       onTap: onDateSelected == null ? null : () => onDateSelected!(date),
+      content: dayContentBuilder?.call(date),
     );
   }
 
@@ -222,7 +239,11 @@ class _KlpCalendarDayCell extends StatefulWidget {
     required this.isToday,
     required this.disabled,
     required this.onTap,
+    required this.content,
   });
+
+  /// 日期數字底下的內容。`null` 表示這一格只有數字。
+  final Widget? content;
 
   final String label;
   final bool selected;
@@ -246,9 +267,21 @@ class _KlpCalendarDayCellState extends State<_KlpCalendarDayCell> {
 
     final background = widget.inRange ? klp.selectionWash : null;
 
+    final label = KlpText(
+      widget.label,
+      role: KlpTextRole.caption,
+      tone: widget.disabled ? KlpTextTone.faint : KlpTextTone.automatic,
+      color: widget.selected ? tokens.text : null,
+    );
+
+    final hasContent = widget.content != null;
+
     Widget cell = Container(
-      height: klp.space.controlHeightSmall,
-      alignment: Alignment.center,
+      height: hasContent
+          ? klp.space.calendarContentCell
+          : klp.space.controlHeightSmall,
+      alignment: hasContent ? Alignment.topLeft : Alignment.center,
+      padding: hasContent ? EdgeInsets.all(klp.space.tight) : null,
       decoration: BoxDecoration(
         color: background,
         borderRadius: BorderRadius.circular(klp.shape.control),
@@ -256,12 +289,17 @@ class _KlpCalendarDayCellState extends State<_KlpCalendarDayCell> {
             ? Border.all(color: tokens.accent, width: klp.shape.hairline)
             : null,
       ),
-      child: KlpText(
-        widget.label,
-        role: KlpTextRole.caption,
-        tone: widget.disabled ? KlpTextTone.faint : KlpTextTone.automatic,
-        color: widget.selected ? tokens.text : null,
-      ),
+      child: hasContent
+          ? Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                label,
+                SizedBox(height: klp.space.hairline),
+                Expanded(child: widget.content!),
+              ],
+            )
+          : label,
     );
 
     cell = KlpStateHighlight(

@@ -63,6 +63,7 @@ class KlpSpacingTheme extends ThemeExtension<KlpSpacingTheme> {
     required this.gutterNumber,
     required this.gutterMarker,
     required this.micro,
+    required this.calendarContentCell,
     required this.iconMicro,
     required this.avatarSmall,
     required this.progressTrack,
@@ -161,6 +162,12 @@ class KlpSpacingTheme extends ThemeExtension<KlpSpacingTheme> {
   /// 1px。視覺上僅作分隔用的最小間隙
   final double micro;
 
+  /// 帶內容的月曆日期格最小高度。
+  ///
+  /// 只在 [KlpCalendar] 給了 `dayContentBuilder` 時生效——純日期選擇的格子用
+  /// [controlHeightSmall]，塞進內容後那個高度會擠成一團。
+  final double calendarContentCell;
+
   /// 11px。狀態字形用的最小圖示
   final double iconMicro;
 
@@ -246,6 +253,7 @@ class KlpSpacingTheme extends ThemeExtension<KlpSpacingTheme> {
     gutterNumber: 24,
     gutterMarker: 14,
     micro: 1,
+    calendarContentCell: 74,
     iconMicro: 11,
     avatarSmall: 24,
     progressTrack: 3,
@@ -268,6 +276,7 @@ class KlpSpacingTheme extends ThemeExtension<KlpSpacingTheme> {
     double? gutterNumber,
     double? gutterMarker,
     double? micro,
+    double? calendarContentCell,
     double? iconMicro,
     double? avatarSmall,
     double? progressTrack,
@@ -373,6 +382,7 @@ class KlpSpacingTheme extends ThemeExtension<KlpSpacingTheme> {
       gutterNumber: gutterNumber ?? this.gutterNumber,
       gutterMarker: gutterMarker ?? this.gutterMarker,
       micro: micro ?? this.micro,
+      calendarContentCell: calendarContentCell ?? this.calendarContentCell,
       iconMicro: iconMicro ?? this.iconMicro,
       avatarSmall: avatarSmall ?? this.avatarSmall,
       progressTrack: progressTrack ?? this.progressTrack,
@@ -446,6 +456,7 @@ class KlpSpacingTheme extends ThemeExtension<KlpSpacingTheme> {
           gutterNumber == other.gutterNumber &&
           gutterMarker == other.gutterMarker &&
           micro == other.micro &&
+          calendarContentCell == other.calendarContentCell &&
           iconMicro == other.iconMicro &&
           avatarSmall == other.avatarSmall &&
           progressTrack == other.progressTrack &&
@@ -509,6 +520,7 @@ class KlpSpacingTheme extends ThemeExtension<KlpSpacingTheme> {
     gutterNumber,
     gutterMarker,
     micro,
+    calendarContentCell,
     iconMicro,
     avatarSmall,
     progressTrack,

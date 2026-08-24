@@ -128,4 +128,73 @@ void main() {
       expect(tester.takeException(), isNull);
     }
   });
+  _dayContentSlotTests();
+}
+
+/// `dayContentBuilder` 是後加的 slot。它的重點不是「能放東西」，而是**放了東西之後
+/// 格高會換一套 token**——沒有這個切換，日期數字加內容會擠在選擇器的格高裡糊成一團。
+void _dayContentSlotTests() {
+  testWidgets('沒有 dayContentBuilder 時用選擇器格高', (tester) async {
+    late KlpTheme klp;
+    await tester.pumpWidget(
+      MaterialApp(
+        theme: buildKlpTheme(Brightness.light),
+        home: Builder(
+          builder: (context) {
+            klp = context.klp;
+            return Scaffold(
+              body: KlpCalendar(
+                month: DateTime(2026, 8),
+                monthLabel: '2026 年 8 月',
+                weekdayLabels: const ['一', '二', '三', '四', '五', '六', '日'],
+                previousMonthLabel: '上個月',
+                nextMonthLabel: '下個月',
+              ),
+            );
+          },
+        ),
+      ),
+    );
+
+    final cell = tester.getSize(find.text('15'));
+    expect(cell.height, lessThanOrEqualTo(klp.space.controlHeightSmall));
+  });
+
+  testWidgets('給了 dayContentBuilder 就換成內容格高', (tester) async {
+    late KlpTheme klp;
+    await tester.pumpWidget(
+      MaterialApp(
+        theme: buildKlpTheme(Brightness.light),
+        home: Builder(
+          builder: (context) {
+            klp = context.klp;
+            return Scaffold(
+              body: KlpCalendar(
+                month: DateTime(2026, 8),
+                monthLabel: '2026 年 8 月',
+                weekdayLabels: const ['一', '二', '三', '四', '五', '六', '日'],
+                previousMonthLabel: '上個月',
+                nextMonthLabel: '下個月',
+                dayContentBuilder: (date) =>
+                    date.day == 18 ? const KlpText('每日回顧') : null,
+              ),
+            );
+          },
+        ),
+      ),
+    );
+
+    expect(find.text('每日回顧'), findsOneWidget, reason: 'slot 的內容要真的被渲染');
+
+    final row = tester.getSize(
+      find
+          .ancestor(of: find.text('18'), matching: find.byType(Container))
+          .first,
+    );
+    expect(
+      row.height,
+      klp.space.calendarContentCell,
+      reason: '有內容時格高必須換成 calendarContentCell，否則內容會被擠爆',
+    );
+  });
 }
