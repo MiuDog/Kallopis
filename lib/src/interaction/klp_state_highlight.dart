@@ -37,8 +37,9 @@ enum KlpHighlightState {
 /// 選取的第二個訊號由呼叫端提供：文字由 secondary 升到 primary（準則第 4 條要求
 /// 每個狀態都要有非顏色的訊號）。本元件只負責底色與邊框。
 ///
-/// 填色以 [Stack] 疊在內容之上而不是換掉內容的底色：後者會逼每個元件自己知道
-/// 「我原本的底色是什麼、混上去之後該是什麼」，而那正是元件不該知道的事。
+/// 填色畫在內容底下（[DecoratedBox] 的 child），而不是疊在上面——不透明的色層
+/// 疊在內容之上會蓋掉文字。也不改動內容自己的底色：那會逼每個元件知道「我原本的
+/// 底色是什麼、混上去之後該是什麼」，而那正是元件不該知道的事。
 class KlpStateHighlight extends StatelessWidget {
   const KlpStateHighlight({
     super.key,
@@ -93,22 +94,18 @@ class KlpStateHighlight extends StatelessWidget {
       );
     }
 
-    return Stack(
-      fit: StackFit.passthrough,
-      children: [
-        child,
-        Positioned.fill(
-          child: IgnorePointer(
-            child: DecoratedBox(
-              key: const ValueKey('klp-state-highlight'),
-              decoration: BoxDecoration(
-                color: klp.selectedSurface,
-                borderRadius: radius,
-              ),
-            ),
-          ),
-        ),
-      ],
+    // 填色畫在內容**底下**，不是疊在上面。
+    //
+    // 先前用 Stack 把它疊在內容之上，因為那時的選取色是半透明的、文字透得出來。
+    // 改成不透明的表面色之後，同一段程式碼會整片蓋掉文字——選取的項目變成一塊
+    // 空白的色塊。半透明能容忍的錯誤，不透明會直接暴露。
+    return DecoratedBox(
+      key: const ValueKey('klp-state-highlight'),
+      decoration: BoxDecoration(
+        color: klp.selectedSurface,
+        borderRadius: radius,
+      ),
+      child: child,
     );
   }
 }

@@ -270,7 +270,7 @@ graph LR
 | `KlpDropTarget` | 19 | `KlpStrokeFrame`、`KlpSurface` |
 | `KlpFilterBar` | 170 | `KlpDashedBorder`、`KlpIcon`、`KlpPressable`、`KlpText` |
 | `KlpFilterOption` | 15 | （葉節點） |
-| `KlpHighlightState` | 32 | （葉節點） |
+| `KlpHighlightState` | 33 | （葉節點） |
 | `KlpInteractionSettings` | 27 | （葉節點） |
 | `KlpPresenceIndicator` | 33 | `KlpText` |
 | `KlpPressable` | 179 | `KlpStateHighlight` |
@@ -278,7 +278,7 @@ graph LR
 | `KlpSelectionAction` | 15 | （葉節點） |
 | `KlpSelectionToolbar` | 78 | `KlpButton`、`KlpDashedBorder`、`KlpPressable`、`KlpSurface`、`KlpText` |
 | `KlpShortcutHint` | 20 | `KlpSurface`、`KlpText` |
-| `KlpStateHighlight` | 73 | `KlpDashedBorder` |
+| `KlpStateHighlight` | 69 | `KlpDashedBorder` |
 
 ```mermaid
 graph LR

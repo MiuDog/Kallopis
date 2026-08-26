@@ -248,4 +248,34 @@ void main() {
     expect(find.byKey(const ValueKey('klp-state-highlight')), findsNothing);
     expect(find.byKey(const ValueKey('klp-state-focus-ring')), findsNothing);
   });
+
+  testWidgets('選取的填色不得蓋掉內容', (tester) async {
+    // 這個 bug 真的發生過：填色原本用 Stack 疊在內容**之上**。半透明時文字透得
+    // 出來所以沒人發現；改成不透明的表面色之後，選取的項目變成一塊空白色塊。
+    //
+    // 半透明能容忍的錯誤，不透明會直接暴露——所以這裡驗證的是繪製順序，
+    // 不是顏色。
+    await tester.pumpWidget(
+      MaterialApp(
+        theme: buildKlpTheme(Brightness.light),
+        home: const Scaffold(
+          body: KlpStateHighlight(
+            state: KlpHighlightState.selected,
+            child: Text('選取中的內容'),
+          ),
+        ),
+      ),
+    );
+
+    final fill = find.byKey(const ValueKey('klp-state-highlight'));
+    expect(fill, findsOneWidget);
+
+    expect(
+      find.descendant(of: fill, matching: find.text('選取中的內容')),
+      findsOneWidget,
+      reason:
+          '內容必須是填色層的子節點，也就是畫在填色**之上**。'
+          '若內容與填色是兄弟節點且填色在後，不透明的填色會整片蓋住它。',
+    );
+  });
 }
