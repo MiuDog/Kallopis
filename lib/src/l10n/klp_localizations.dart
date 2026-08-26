@@ -1,44 +1,50 @@
-import 'package:flutter/foundation.dart';
+import 'package:flutter/foundation.dart' show SynchronousFuture;
 import 'package:flutter/widgets.dart';
 
-/// [KlpLocalizations.savedLabel] 的預設實作。
-///
-/// 頂層函式而非閉包，這樣才能當成 `const` 建構子的預設值——閉包在 `const`
-/// 語境下不合法。
+import 'internal/klp_language_catalog.dart';
+
 String _defaultSavedLabel(String savedAt) => 'Saved $savedAt';
 
-/// Kallopis 元件用到的所有使用者可見字串，供呼叫端覆寫。
+/// Kallopis 內建語言資源的位置與支援語系。
+abstract final class _KlpLanguageFiles {
+  static const Locale english = Locale('en', 'US');
+  static const Locale traditionalChinese = Locale('zh', 'TW');
+
+  static const supportedLocales = <Locale>[english, traditionalChinese];
+
+  static Map<String, Object?> resolve(Locale locale) {
+    return switch (locale.languageCode) {
+      'zh' => klpTraditionalChineseLanguage,
+      _ => klpEnglishLanguage,
+    };
+  }
+}
+
+/// Kallopis 固定元件使用的語意文字集合。
 ///
-/// **這個庫不替產品決定用什麼語言。** 見 [KlpToast.closeLabel] 與 [KlpCalendar]
-/// 的既有慣例——本類別把同一條規則套用到庫裡其餘散落的寫死字串上，統一成一個
-/// 入口而不是每個元件各自加一組建構子參數。
-///
-/// 每個欄位的預設值刻意等於**目前實際顯示的文字**（中文、英文混雜）——這是抽取自
-/// Planist 時就已經寫死的內容，換成別的預設會讓沒有註冊 delegate 的消費者畫面
-/// 跟著變。要修正預設文案本身，是產品決策，不是 l10n 機制該做的事。
-///
-/// ## 用法
-///
-/// ```dart
-/// MaterialApp(
-///   localizationsDelegates: [
-///     const KlpLocalizationsDelegate(
-///       KlpLocalizations(toastNowLabel: 'NOW'),
-///     ),
-///     ...GlobalMaterialLocalizations.delegates,
-///   ],
-/// )
-/// ```
-///
-/// 走 [KlpApp] 的消費者不需要手動註冊——[KlpApp] 已經自動掛上內建預設值，
-/// 傳入的 [KlpApp.localizationsDelegates] 會與它合併而不是覆蓋。
+/// [KlpApp] 會依目前 [Locale] 解析由 `assets/l10n` 編譯的完整語言資源。元件只
+/// 讀取這個類別的欄位，不在 widget 內放預設文案。建構子仍保留，供消費者用自訂
+/// delegate 整組覆寫；產品資料、標題與內容文字不屬於這裡。
 @immutable
 class KlpLocalizations {
+  static const Locale englishLocale = _KlpLanguageFiles.english;
+  static const Locale traditionalChineseLocale =
+      _KlpLanguageFiles.traditionalChinese;
+  static const supportedLocales = _KlpLanguageFiles.supportedLocales;
+
   const KlpLocalizations({
     this.toastNowLabel = 'NOW',
-    this.codeViewerCollapseLabel = '收合',
-    this.codeViewerExpandLabel = '展開',
-    this.panelToggleLabel = '切換面板',
+    this.codeViewerCollapseLabel = 'Collapse',
+    this.codeViewerExpandLabel = 'Expand',
+    this.codeViewerLoadingLabel = 'Loading...',
+    this.codeViewerCopyLabel = 'Copy',
+    this.codeViewerMenuLabel = 'Code menu',
+    this.codeViewerToggleViewLabel = 'Switch view',
+    this.codeViewerLanguageMenuLabel = 'Code language',
+    this.codeViewerWrapLabel = 'Wrap lines',
+    this.codeViewerLineNumbersLabel = 'Line numbers',
+    this.codeViewerPlainTextLabel = 'Plain text',
+    this.panelToggleLabel = 'Toggle panel',
     this.savedLabel = _defaultSavedLabel,
     this.windowMinimizeLabel = 'Minimize window',
     this.windowMaximizeLabel = 'Maximize window',
@@ -49,119 +55,159 @@ class KlpLocalizations {
     this.searchCloseLabel = 'Close search',
     this.entityPickerRemoveLabel = 'Remove',
     this.entityPickerApplyLabel = 'Apply',
+    this.formAddLabel = '+ Add',
+    this.formClearAllLabel = 'Clear all',
+    this.formAddStepLabel = '+ Add step',
+    this.formChooseFilesLabel = 'Choose files',
+    this.dataLoadingLabel = 'Loading...',
+    this.dataInvalidStructuredLabel = 'Invalid structured data',
+    this.fileOpenExternalLabel = 'Open externally',
+    this.fileDownloadLabel = 'Download',
+    this.filePreviewLoadingLabel = 'Loading preview...',
+    this.filePreviewErrorLabel = 'Preview failed to load',
+    this.filePreviewUnsupportedLabel = 'No preview available for this type',
+    this.filePreviewEmptyLabel = 'No preview content',
+    this.diffApproveLabel = 'Approve',
+    this.diffRejectLabel = 'Reject',
+    this.terminalTitle = 'terminal',
+    this.terminalClearLabel = 'Clear',
+    this.progressCancelLabel = 'Cancel',
+    this.filterAddLabel = '+ Filter',
+    this.filterClearAllLabel = 'Clear all',
+    this.selectionClearLabel = 'Clear',
   });
 
-  /// [KlpToast] 時間戳徽章上的文字。
+  factory KlpLocalizations.fromJson(Map<String, Object?> json) {
+    String text(String key) {
+      final value = json[key];
+      if (value is! String || value.isEmpty) {
+        throw FormatException('語言檔欄位「$key」必須是非空字串。');
+      }
+      return value;
+    }
+
+    final savedTemplate = text('savedLabel');
+    if (!savedTemplate.contains('{savedAt}')) {
+      throw const FormatException('語言檔欄位「savedLabel」必須包含 {savedAt}。');
+    }
+
+    return KlpLocalizations(
+      toastNowLabel: text('toastNowLabel'),
+      codeViewerCollapseLabel: text('codeViewerCollapseLabel'),
+      codeViewerExpandLabel: text('codeViewerExpandLabel'),
+      codeViewerLoadingLabel: text('codeViewerLoadingLabel'),
+      codeViewerCopyLabel: text('codeViewerCopyLabel'),
+      codeViewerMenuLabel: text('codeViewerMenuLabel'),
+      codeViewerToggleViewLabel: text('codeViewerToggleViewLabel'),
+      codeViewerLanguageMenuLabel: text('codeViewerLanguageMenuLabel'),
+      codeViewerWrapLabel: text('codeViewerWrapLabel'),
+      codeViewerLineNumbersLabel: text('codeViewerLineNumbersLabel'),
+      codeViewerPlainTextLabel: text('codeViewerPlainTextLabel'),
+      panelToggleLabel: text('panelToggleLabel'),
+      savedLabel: (savedAt) => savedTemplate.replaceAll('{savedAt}', savedAt),
+      windowMinimizeLabel: text('windowMinimizeLabel'),
+      windowMaximizeLabel: text('windowMaximizeLabel'),
+      windowRestoreLabel: text('windowRestoreLabel'),
+      windowCloseLabel: text('windowCloseLabel'),
+      searchPreviousResultLabel: text('searchPreviousResultLabel'),
+      searchNextResultLabel: text('searchNextResultLabel'),
+      searchCloseLabel: text('searchCloseLabel'),
+      entityPickerRemoveLabel: text('entityPickerRemoveLabel'),
+      entityPickerApplyLabel: text('entityPickerApplyLabel'),
+      formAddLabel: text('formAddLabel'),
+      formClearAllLabel: text('formClearAllLabel'),
+      formAddStepLabel: text('formAddStepLabel'),
+      formChooseFilesLabel: text('formChooseFilesLabel'),
+      dataLoadingLabel: text('dataLoadingLabel'),
+      dataInvalidStructuredLabel: text('dataInvalidStructuredLabel'),
+      fileOpenExternalLabel: text('fileOpenExternalLabel'),
+      fileDownloadLabel: text('fileDownloadLabel'),
+      filePreviewLoadingLabel: text('filePreviewLoadingLabel'),
+      filePreviewErrorLabel: text('filePreviewErrorLabel'),
+      filePreviewUnsupportedLabel: text('filePreviewUnsupportedLabel'),
+      filePreviewEmptyLabel: text('filePreviewEmptyLabel'),
+      diffApproveLabel: text('diffApproveLabel'),
+      diffRejectLabel: text('diffRejectLabel'),
+      terminalTitle: text('terminalTitle'),
+      terminalClearLabel: text('terminalClearLabel'),
+      progressCancelLabel: text('progressCancelLabel'),
+      filterAddLabel: text('filterAddLabel'),
+      filterClearAllLabel: text('filterClearAllLabel'),
+      selectionClearLabel: text('selectionClearLabel'),
+    );
+  }
+
   final String toastNowLabel;
-
-  /// [KlpCodeViewer] 展開／收合鈕在「已展開」狀態下顯示的文字。
   final String codeViewerCollapseLabel;
-
-  /// [KlpCodeViewer] 展開／收合鈕在「未展開」狀態下顯示的文字。
   final String codeViewerExpandLabel;
-
-  /// [KlpPaneCollapseControl] 的無障礙標籤預設值。
+  final String codeViewerLoadingLabel;
+  final String codeViewerCopyLabel;
+  final String codeViewerMenuLabel;
+  final String codeViewerToggleViewLabel;
+  final String codeViewerLanguageMenuLabel;
+  final String codeViewerWrapLabel;
+  final String codeViewerLineNumbersLabel;
+  final String codeViewerPlainTextLabel;
   final String panelToggleLabel;
-
-  /// [KlpSaveStatusCard] 顯示最後儲存時間的文字，[savedAt] 是呼叫端已格式化好的
-  /// 時間字串（例如「2 分鐘前」）。
   final String Function(String savedAt) savedLabel;
-
-  /// [KlpWindowControls] 最小化鈕的無障礙標籤。
   final String windowMinimizeLabel;
-
-  /// [KlpWindowControls] 最大化鈕的無障礙標籤。
   final String windowMaximizeLabel;
-
-  /// [KlpWindowControls] 還原視窗鈕的無障礙標籤（視窗已最大化時取代
-  /// [windowMaximizeLabel]）。
   final String windowRestoreLabel;
-
-  /// [KlpWindowControls] 關閉鈕的無障礙標籤。
   final String windowCloseLabel;
-
-  /// 搜尋列上一筆結果按鈕的無障礙標籤。
   final String searchPreviousResultLabel;
-
-  /// 搜尋列下一筆結果按鈕的無障礙標籤。
   final String searchNextResultLabel;
-
-  /// 搜尋列關閉按鈕的無障礙標籤。
   final String searchCloseLabel;
-
-  /// [KlpEntityPicker] 清除按鈕的文字。
   final String entityPickerRemoveLabel;
-
-  /// [KlpEntityPicker] 套用按鈕的文字。
   final String entityPickerApplyLabel;
+  final String formAddLabel;
+  final String formClearAllLabel;
+  final String formAddStepLabel;
+  final String formChooseFilesLabel;
+  final String dataLoadingLabel;
+  final String dataInvalidStructuredLabel;
+  final String fileOpenExternalLabel;
+  final String fileDownloadLabel;
+  final String filePreviewLoadingLabel;
+  final String filePreviewErrorLabel;
+  final String filePreviewUnsupportedLabel;
+  final String filePreviewEmptyLabel;
+  final String diffApproveLabel;
+  final String diffRejectLabel;
+  final String terminalTitle;
+  final String terminalClearLabel;
+  final String progressCancelLabel;
+  final String filterAddLabel;
+  final String filterClearAllLabel;
+  final String selectionClearLabel;
 
-  /// 取得目前子樹適用的字串集合。
-  ///
-  /// 沒有註冊 [KlpLocalizationsDelegate] 時回退到內建預設值而非拋錯——這與
-  /// `KlpTheme.of` 對缺席 `ThemeExtension` 的處理方式一致：庫被放進一個沒有
-  /// 設定 Kallopis l10n 的 app 時應該仍能渲染，只是文字长成預設值。
   static KlpLocalizations of(BuildContext context) {
     return Localizations.of<KlpLocalizations>(context, KlpLocalizations) ??
         const KlpLocalizations();
   }
-
-  @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is KlpLocalizations &&
-          toastNowLabel == other.toastNowLabel &&
-          codeViewerCollapseLabel == other.codeViewerCollapseLabel &&
-          codeViewerExpandLabel == other.codeViewerExpandLabel &&
-          panelToggleLabel == other.panelToggleLabel &&
-          savedLabel == other.savedLabel &&
-          windowMinimizeLabel == other.windowMinimizeLabel &&
-          windowMaximizeLabel == other.windowMaximizeLabel &&
-          windowRestoreLabel == other.windowRestoreLabel &&
-          windowCloseLabel == other.windowCloseLabel &&
-          searchPreviousResultLabel == other.searchPreviousResultLabel &&
-          searchNextResultLabel == other.searchNextResultLabel &&
-          searchCloseLabel == other.searchCloseLabel &&
-          entityPickerRemoveLabel == other.entityPickerRemoveLabel &&
-          entityPickerApplyLabel == other.entityPickerApplyLabel;
-
-  @override
-  int get hashCode => Object.hashAll([
-    toastNowLabel,
-    codeViewerCollapseLabel,
-    codeViewerExpandLabel,
-    panelToggleLabel,
-    savedLabel,
-    windowMinimizeLabel,
-    windowMaximizeLabel,
-    windowRestoreLabel,
-    windowCloseLabel,
-    searchPreviousResultLabel,
-    searchNextResultLabel,
-    searchCloseLabel,
-    entityPickerRemoveLabel,
-    entityPickerApplyLabel,
-  ]);
 }
 
-/// [KlpLocalizations] 的註冊入口。
+/// [KlpLocalizations] 的語言檔 delegate。
 ///
-/// 不做任何依 [Locale] 切換字串的機制——庫本身不內建多語系翻譯，只提供「換一組
-/// 字串」的鉤子，實際的多語系邏輯（例如依 [Locale] 選字串）由消費者在建構
-/// [overrides] 之前自己決定。[isSupported] 固定回傳 `true`：接不接受某個
-/// locale 是 `MaterialApp`／消費者自己 `supportedLocales` 的責任，不歸這個
-/// delegate 管。
+/// 未傳 [overrides] 時依 [Locale] 解析套件 JSON 的同步編譯資源；傳入時保留既有的
+/// 整組覆寫能力，適合消費者自有語系或測試。同步資源避免語言載入延後應用首幀，
+/// 且有測試保證它與原始 JSON 完全相同。
 class KlpLocalizationsDelegate extends LocalizationsDelegate<KlpLocalizations> {
-  const KlpLocalizationsDelegate([this.overrides = const KlpLocalizations()]);
+  const KlpLocalizationsDelegate([this.overrides]);
 
-  /// 要套用的字串集合。預設為 [KlpLocalizations] 的內建預設值——顯式註冊這個
-  /// delegate 但不覆寫任何欄位，效果等同完全不註冊。
-  final KlpLocalizations overrides;
+  final KlpLocalizations? overrides;
 
   @override
-  bool isSupported(Locale locale) => true;
+  bool isSupported(Locale locale) => KlpLocalizations.supportedLocales.any(
+    (supported) => supported.languageCode == locale.languageCode,
+  );
 
   @override
-  Future<KlpLocalizations> load(Locale locale) => SynchronousFuture(overrides);
+  Future<KlpLocalizations> load(Locale locale) {
+    final provided = overrides;
+    return SynchronousFuture(
+      provided ?? KlpLocalizations.fromJson(_KlpLanguageFiles.resolve(locale)),
+    );
+  }
 
   @override
   bool shouldReload(KlpLocalizationsDelegate old) => overrides != old.overrides;

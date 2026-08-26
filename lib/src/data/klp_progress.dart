@@ -1,5 +1,6 @@
 import 'package:flutter/widgets.dart';
 
+import '../l10n/klp_localizations.dart';
 import '../theme/klp_theme.dart';
 import '../typography/klp_text.dart';
 
@@ -56,8 +57,8 @@ class KlpProgress extends StatelessWidget {
               GestureDetector(
                 behavior: HitTestBehavior.opaque,
                 onTap: onCancel,
-                child: const KlpText(
-                  'Cancel',
+                child: KlpText(
+                  KlpLocalizations.of(context).progressCancelLabel,
                   role: KlpTextRole.label,
                   tone: KlpTextTone.muted,
                 ),

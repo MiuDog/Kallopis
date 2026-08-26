@@ -44,6 +44,7 @@ class KlpSpacingTheme extends ThemeExtension<KlpSpacingTheme> {
     this.controlHeightXLarge = 56,
     required this.iconSmall,
     this.iconBase = 16,
+    this.iconGlyph = 18,
     required this.icon,
     this.iconMedium = 24,
     required this.iconLarge,
@@ -64,6 +65,9 @@ class KlpSpacingTheme extends ThemeExtension<KlpSpacingTheme> {
     required this.gutterMarker,
     required this.micro,
     required this.calendarContentCell,
+    required this.gridTileWidth,
+    required this.documentHandleGutter,
+    required this.documentTrailingSpace,
     required this.iconMicro,
     required this.avatarSmall,
     required this.progressTrack,
@@ -116,6 +120,13 @@ class KlpSpacingTheme extends ThemeExtension<KlpSpacingTheme> {
   // 四段圖示尺寸 (14, 16, 20/24, 32)
   final double iconSmall; // 14px (icon-sm)
   final double iconBase; // 16px (icon-base)
+
+  // 畫在 [icon] 尺寸格子裡的字形大小（18px 字形／20px 格）。
+  //
+  // 導覽列與工具列的圖示佔一個 [icon] 見方的格子，但**字形本身略小**，
+  // 讓圖示在格線中留呼吸空間。字形與格子同大時，圖示會頂滿格線、
+  // 在一排文字旁顯得過重。
+  final double iconGlyph;
   final double icon; // 20px (icon-md 標準)
   final double iconMedium; // 24px (icon-md 導覽)
   final double iconLarge; // 32px (icon-lg 特色卡)
@@ -167,6 +178,23 @@ class KlpSpacingTheme extends ThemeExtension<KlpSpacingTheme> {
   /// 只在 [KlpCalendar] 給了 `dayContentBuilder` 時生效——純日期選擇的格子用
   /// [controlHeightSmall]，塞進內容後那個高度會擠成一團。
   final double calendarContentCell;
+
+  /// 卡片式網格的單欄寬度。
+  ///
+  /// 給瀑布流或磚牆排版用：由單欄寬度決定節奏，而不是每個項目各給一個尺寸——
+  /// 後者會讓版面失去規律，也讓尺寸變成散在資料裡的風格值。
+  final double gridTileWidth;
+
+  /// 區塊編輯器在正文左側預留給拖曳握把的寬度。
+  ///
+  /// 呈現層需要知道這個值才能把正文的左邊界拉回與標題對齊——否則正文會比標題
+  /// 縮進一整個握把的寬度。
+  final double documentHandleGutter;
+
+  /// 正文結尾之後保留的捲動空間。
+  ///
+  /// 讓最後一段不會緊貼視窗底緣。
+  final double documentTrailingSpace;
 
   /// 11px。狀態字形用的最小圖示
   final double iconMicro;
@@ -234,6 +262,7 @@ class KlpSpacingTheme extends ThemeExtension<KlpSpacingTheme> {
     controlHeightXLarge: 56, // 56px (XL)
     iconSmall: 14, // 14px (icon-sm)
     iconBase: 16, // 16px (icon-base)
+    iconGlyph: 18, // 18px 字形，配 20px 格
     icon: 20, // 20px (icon-md)
     iconMedium: 24, // 24px (icon-md)
     iconLarge: 32, // 32px (icon-lg)
@@ -254,6 +283,9 @@ class KlpSpacingTheme extends ThemeExtension<KlpSpacingTheme> {
     gutterMarker: 14,
     micro: 1,
     calendarContentCell: 74,
+    gridTileWidth: 170,
+    documentHandleGutter: 60,
+    documentTrailingSpace: 40,
     iconMicro: 11,
     avatarSmall: 24,
     progressTrack: 3,
@@ -277,6 +309,9 @@ class KlpSpacingTheme extends ThemeExtension<KlpSpacingTheme> {
     double? gutterMarker,
     double? micro,
     double? calendarContentCell,
+    double? gridTileWidth,
+    double? documentHandleGutter,
+    double? documentTrailingSpace,
     double? iconMicro,
     double? avatarSmall,
     double? progressTrack,
@@ -318,6 +353,7 @@ class KlpSpacingTheme extends ThemeExtension<KlpSpacingTheme> {
     double? controlHeightXLarge,
     double? iconSmall,
     double? iconBase,
+    double? iconGlyph,
     double? icon,
     double? iconMedium,
     double? iconLarge,
@@ -363,6 +399,7 @@ class KlpSpacingTheme extends ThemeExtension<KlpSpacingTheme> {
       controlHeightXLarge: controlHeightXLarge ?? this.controlHeightXLarge,
       iconSmall: iconSmall ?? this.iconSmall,
       iconBase: iconBase ?? this.iconBase,
+      iconGlyph: iconGlyph ?? this.iconGlyph,
       icon: icon ?? this.icon,
       iconMedium: iconMedium ?? this.iconMedium,
       iconLarge: iconLarge ?? this.iconLarge,
@@ -383,6 +420,10 @@ class KlpSpacingTheme extends ThemeExtension<KlpSpacingTheme> {
       gutterMarker: gutterMarker ?? this.gutterMarker,
       micro: micro ?? this.micro,
       calendarContentCell: calendarContentCell ?? this.calendarContentCell,
+      gridTileWidth: gridTileWidth ?? this.gridTileWidth,
+      documentHandleGutter: documentHandleGutter ?? this.documentHandleGutter,
+      documentTrailingSpace:
+          documentTrailingSpace ?? this.documentTrailingSpace,
       iconMicro: iconMicro ?? this.iconMicro,
       avatarSmall: avatarSmall ?? this.avatarSmall,
       progressTrack: progressTrack ?? this.progressTrack,
@@ -437,6 +478,7 @@ class KlpSpacingTheme extends ThemeExtension<KlpSpacingTheme> {
           controlHeightXLarge == other.controlHeightXLarge &&
           iconSmall == other.iconSmall &&
           iconBase == other.iconBase &&
+          iconGlyph == other.iconGlyph &&
           icon == other.icon &&
           iconMedium == other.iconMedium &&
           iconLarge == other.iconLarge &&
@@ -457,6 +499,9 @@ class KlpSpacingTheme extends ThemeExtension<KlpSpacingTheme> {
           gutterMarker == other.gutterMarker &&
           micro == other.micro &&
           calendarContentCell == other.calendarContentCell &&
+          gridTileWidth == other.gridTileWidth &&
+          documentHandleGutter == other.documentHandleGutter &&
+          documentTrailingSpace == other.documentTrailingSpace &&
           iconMicro == other.iconMicro &&
           avatarSmall == other.avatarSmall &&
           progressTrack == other.progressTrack &&
@@ -501,6 +546,7 @@ class KlpSpacingTheme extends ThemeExtension<KlpSpacingTheme> {
     controlHeightXLarge,
     iconSmall,
     iconBase,
+    iconGlyph,
     icon,
     iconMedium,
     iconLarge,
@@ -521,6 +567,9 @@ class KlpSpacingTheme extends ThemeExtension<KlpSpacingTheme> {
     gutterMarker,
     micro,
     calendarContentCell,
+    gridTileWidth,
+    documentHandleGutter,
+    documentTrailingSpace,
     iconMicro,
     avatarSmall,
     progressTrack,

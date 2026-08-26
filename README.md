@@ -91,6 +91,24 @@ void main() {
 KlpApp.of(context).toggleBrightness();
 ```
 
+### 4. 語言檔
+
+`assets/l10n/*.json` 是 Kallopis 的權威語言檔；`KlpApp` 會依目前 `Locale`
+同步解析其編譯資源，避免語言載入延後首幀。測試會阻止 JSON 與編譯資源分岔。
+固定共用元件只引用 `KlpLocalizations` 的語意文字鍵；產品標題、資料與內容文字仍由
+消費者提供，不會被設計系統接管。內建語系為英文（美國）與繁體中文（台灣）：
+
+```dart
+const KlpApp(
+  locale: Locale('zh', 'TW'),
+  home: WorkbenchPage(),
+)
+```
+
+消費者不需要重新宣告 Kallopis 的語言資產。若產品另有語系，可在
+`localizationsDelegates` 傳入自己的 `KlpLocalizationsDelegate` 整組覆寫；不要在
+元件呼叫處逐一寫死文案。
+
 若需套用自訂視覺風格或品牌色，可利用 `buildKlpTheme`：
 
 ```dart

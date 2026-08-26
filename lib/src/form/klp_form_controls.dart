@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../controls/klp_text_field.dart';
 import '../foundation/klp_icons.dart';
+import '../l10n/klp_localizations.dart';
 import '../surface/klp_stroke.dart';
 import '../theme/klp_theme.dart';
 import '../typography/klp_text.dart';
@@ -343,7 +344,10 @@ class KlpTagInputField extends StatelessWidget {
                       width: klp.shape.hairline,
                     ),
                   ),
-                  child: const KlpText('+ Add', role: KlpTextRole.caption),
+                  child: KlpText(
+                    KlpLocalizations.of(context).formAddLabel,
+                    role: KlpTextRole.caption,
+                  ),
                 ),
               ),
             if (maxCount != null || onClearAll != null) ...[
@@ -358,8 +362,8 @@ class KlpTagInputField extends StatelessWidget {
                 GestureDetector(
                   behavior: HitTestBehavior.opaque,
                   onTap: onClearAll,
-                  child: const KlpText(
-                    ' Clear all',
+                  child: KlpText(
+                    KlpLocalizations.of(context).formClearAllLabel,
                     role: KlpTextRole.caption,
                     tone: KlpTextTone.muted,
                   ),

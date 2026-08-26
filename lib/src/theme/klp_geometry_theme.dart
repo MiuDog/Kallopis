@@ -80,6 +80,7 @@ class KlpGeometryTheme extends ThemeExtension<KlpGeometryTheme> {
       inlineNoticeBreakpoint: 480,
       statusBarBreakpoint: 400,
       settingsContentMaximumWidth: 820,
+      documentContentMaximumWidth: 780,
       themePreviewTileWidth: 168,
       windowToolbarHeight: KlpSize.windowToolbar,
       windowControlButtonSize: KlpSize.windowControlButton,

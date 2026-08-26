@@ -62,15 +62,6 @@ class KlpCodeViewerLabels {
     required this.lineNumbers,
   });
 
-  static const english = KlpCodeViewerLabels(
-    copy: 'Copy',
-    menu: 'Code menu',
-    toggleView: 'Switch view',
-    languageMenu: 'Code language',
-    wrap: 'Wrap lines',
-    lineNumbers: 'Line numbers',
-  );
-
   final String copy;
   final String menu;
   final String toggleView;
@@ -85,7 +76,7 @@ class KlpCodeViewer extends StatefulWidget {
     required this.code,
     this.language,
     this.languageOptions = KlpCodeLanguages.options,
-    this.labels = KlpCodeViewerLabels.english,
+    this.labels,
     this.showLineNumbers = false,
     this.startLine = 1,
     this.wrapped = false,
@@ -106,7 +97,9 @@ class KlpCodeViewer extends StatefulWidget {
   final String code;
   final String? language;
   final List<KlpCodeLanguageOption> languageOptions;
-  final KlpCodeViewerLabels labels;
+
+  /// 自訂文字；未提供時從目前 [KlpLocalizations] 語言檔解析。
+  final KlpCodeViewerLabels? labels;
   final bool showLineNumbers;
   final int startLine;
   final bool wrapped;
@@ -143,11 +136,27 @@ class _KlpCodeViewerState extends State<KlpCodeViewer> {
   String get _languageLabel {
     final language = widget.language?.trim();
     if (language != null && language.isNotEmpty) return language;
-    return _currentLanguage?.id ?? 'text';
+    if (_currentLanguage?.id == 'text') {
+      return KlpLocalizations.of(context).codeViewerPlainTextLabel;
+    }
+    return _currentLanguage?.label ?? 'text';
   }
 
   bool get _supportsView =>
       _currentLanguage?.supportsView == true && widget.onToggleView != null;
+
+  KlpCodeViewerLabels get _labels {
+    final localized = KlpLocalizations.of(context);
+    return widget.labels ??
+        KlpCodeViewerLabels(
+          copy: localized.codeViewerCopyLabel,
+          menu: localized.codeViewerMenuLabel,
+          toggleView: localized.codeViewerToggleViewLabel,
+          languageMenu: localized.codeViewerLanguageMenuLabel,
+          wrap: localized.codeViewerWrapLabel,
+          lineNumbers: localized.codeViewerLineNumbersLabel,
+        );
+  }
 
   @override
   void initState() {
@@ -241,14 +250,14 @@ class _KlpCodeViewerState extends State<KlpCodeViewer> {
                 _KlpCodeActionButton(
                   key: const ValueKey('pln-code-view-toggle'),
                   icon: KlpIcons.eye,
-                  label: widget.labels.toggleView,
+                  label: _labels.toggleView,
                   selected: widget.viewSelected,
                   onPressed: widget.onToggleView,
                 ),
               _KlpCodeActionButton(
                 key: const ValueKey('pln-code-copy'),
                 icon: KlpIcons.clipboard,
-                label: widget.labels.copy,
+                label: _labels.copy,
                 onPressed: widget.onCopy,
               ),
               Builder(
@@ -256,7 +265,7 @@ class _KlpCodeViewerState extends State<KlpCodeViewer> {
                   return _KlpCodeActionButton(
                     key: const ValueKey('pln-code-menu'),
                     icon: KlpIcons.menu,
-                    label: widget.labels.menu,
+                    label: _labels.menu,
                     onPressed: () => _openOptionsMenu(buttonContext),
                   );
                 },
@@ -270,8 +279,8 @@ class _KlpCodeViewerState extends State<KlpCodeViewer> {
 
   Widget _buildBody() {
     final content = widget.loading
-        ? const KlpText(
-            'Loading...',
+        ? KlpText(
+            KlpLocalizations.of(context).codeViewerLoadingLabel,
             role: KlpTextRole.code,
             tone: KlpTextTone.muted,
           )
@@ -306,14 +315,16 @@ class _KlpCodeViewerState extends State<KlpCodeViewer> {
 
     final selectedIndex = await _openMenu(
       context,
-      label: widget.labels.languageMenu,
+      label: _labels.languageMenu,
       items: [
         for (var index = 0; index < widget.languageOptions.length; index++)
           KlpMenuItemData(
             key: ValueKey(
               'pln-code-language-${widget.languageOptions[index].id}',
             ),
-            label: widget.languageOptions[index].label,
+            label: widget.languageOptions[index].id == 'text'
+                ? KlpLocalizations.of(context).codeViewerPlainTextLabel
+                : widget.languageOptions[index].label,
             selected:
                 widget.languageOptions[index].id ==
                 (_currentLanguage?.id ?? widget.language),
@@ -329,17 +340,17 @@ class _KlpCodeViewerState extends State<KlpCodeViewer> {
   Future<void> _openOptionsMenu(BuildContext context) async {
     final selectedIndex = await _openMenu(
       context,
-      label: widget.labels.menu,
+      label: _labels.menu,
       items: [
         KlpMenuItemData(
           key: const ValueKey('pln-code-menu-wrap'),
-          label: widget.labels.wrap,
+          label: _labels.wrap,
           toggleValue: _wrapped,
           onPressed: () {},
         ),
         KlpMenuItemData(
           key: const ValueKey('pln-code-menu-line-numbers'),
-          label: widget.labels.lineNumbers,
+          label: _labels.lineNumbers,
           toggleValue: _showLineNumbers,
           onPressed: () {},
         ),
@@ -375,7 +386,7 @@ class _KlpCodeViewerState extends State<KlpCodeViewer> {
     return showGeneralDialog<int>(
       context: context,
       barrierDismissible: true,
-      barrierLabel: widget.labels.menu,
+      barrierLabel: _labels.menu,
       barrierColor: context.klpColors.clear,
       transitionDuration: Duration.zero,
       pageBuilder: (dialogContext, animation, secondaryAnimation) {
@@ -742,8 +753,8 @@ class KlpDiffViewer extends StatelessWidget {
                         padding: EdgeInsets.symmetric(
                           horizontal: klp.space.tight,
                         ),
-                        child: const KlpText(
-                          'Copy',
+                        child: KlpText(
+                          KlpLocalizations.of(context).codeViewerCopyLabel,
                           role: KlpTextRole.code,
                           tone: KlpTextTone.muted,
                         ),
@@ -848,7 +859,7 @@ class _KlpDiffLineRow extends StatelessWidget {
                     borderRadius: BorderRadius.circular(klp.shape.control),
                   ),
                   child: KlpText(
-                    '同意',
+                    KlpLocalizations.of(context).diffApproveLabel,
                     role: KlpTextRole.code,
                     color: tokens.onStatus,
                   ),
@@ -870,7 +881,7 @@ class _KlpDiffLineRow extends StatelessWidget {
                     borderRadius: BorderRadius.circular(klp.shape.control),
                   ),
                   child: KlpText(
-                    '拒絕',
+                    KlpLocalizations.of(context).diffRejectLabel,
                     role: KlpTextRole.code,
                     color: tokens.onStatus,
                   ),
@@ -889,7 +900,7 @@ class _KlpDiffLineRow extends StatelessWidget {
 class KlpTerminal extends StatelessWidget {
   const KlpTerminal({
     super.key,
-    this.title = 'terminal',
+    this.title,
     required this.lines,
     this.maxHeight,
     this.onCopy,
@@ -897,7 +908,8 @@ class KlpTerminal extends StatelessWidget {
   });
 
   /// 終端機視窗標題。
-  final String title;
+  /// 終端機標題；未提供時從目前語言檔解析。
+  final String? title;
 
   /// 輸出字串行清單。
   final List<String> lines;
@@ -946,7 +958,7 @@ class KlpTerminal extends StatelessWidget {
                   const _KlpTerminalMark(),
                   SizedBox(width: context.klp.space.compact),
                   KlpText(
-                    title,
+                    title ?? KlpLocalizations.of(context).terminalTitle,
                     role: KlpTextRole.code,
                     tone: KlpTextTone.muted,
                   ),
@@ -958,8 +970,8 @@ class KlpTerminal extends StatelessWidget {
                         padding: EdgeInsets.symmetric(
                           horizontal: klp.space.tight,
                         ),
-                        child: const KlpText(
-                          'Clear',
+                        child: KlpText(
+                          KlpLocalizations.of(context).terminalClearLabel,
                           role: KlpTextRole.code,
                           tone: KlpTextTone.muted,
                         ),
@@ -972,8 +984,8 @@ class KlpTerminal extends StatelessWidget {
                         padding: EdgeInsets.symmetric(
                           horizontal: klp.space.tight,
                         ),
-                        child: const KlpText(
-                          'Copy',
+                        child: KlpText(
+                          KlpLocalizations.of(context).codeViewerCopyLabel,
                           role: KlpTextRole.code,
                           tone: KlpTextTone.muted,
                         ),

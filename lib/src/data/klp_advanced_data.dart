@@ -1,6 +1,7 @@
 import 'package:flutter/widgets.dart';
 
 import '../interaction/klp_state_highlight.dart';
+import '../l10n/klp_localizations.dart';
 import '../controls/klp_checkbox.dart';
 import '../feedback/klp_feedback_tone.dart';
 import '../foundation/klp_geometric_spinner.dart';
@@ -556,14 +557,14 @@ class KlpJsonTree extends StatelessWidget {
       tone: KlpSurfaceTone.component,
       padding: EdgeInsets.all(context.klp.space.base),
       child: loading
-          ? const KlpText(
-              'Loading...',
+          ? KlpText(
+              KlpLocalizations.of(context).dataLoadingLabel,
               role: KlpTextRole.code,
               tone: KlpTextTone.muted,
             )
           : invalid
-          ? const KlpText(
-              'Invalid structured data',
+          ? KlpText(
+              KlpLocalizations.of(context).dataInvalidStructuredLabel,
               role: KlpTextRole.code,
               tone: KlpTextTone.danger,
             )
@@ -824,8 +825,8 @@ class KlpFilePreview extends StatelessWidget {
                         GestureDetector(
                           behavior: HitTestBehavior.opaque,
                           onTap: onOpenExternal,
-                          child: const KlpText(
-                            'Open externally',
+                          child: KlpText(
+                            KlpLocalizations.of(context).fileOpenExternalLabel,
                             role: KlpTextRole.code,
                             tone: KlpTextTone.muted,
                           ),
@@ -836,8 +837,8 @@ class KlpFilePreview extends StatelessWidget {
                         GestureDetector(
                           behavior: HitTestBehavior.opaque,
                           onTap: onDownload,
-                          child: const KlpText(
-                            'Download',
+                          child: KlpText(
+                            KlpLocalizations.of(context).fileDownloadLabel,
                             role: KlpTextRole.code,
                             tone: KlpTextTone.muted,
                           ),
@@ -860,15 +861,15 @@ class KlpFilePreview extends StatelessWidget {
         children: [
           const KlpGeometricSpinner(),
           SizedBox(height: context.klp.space.base),
-          const KlpText(
-            'Loading preview...',
+          KlpText(
+            KlpLocalizations.of(context).filePreviewLoadingLabel,
             role: KlpTextRole.caption,
             tone: KlpTextTone.muted,
           ),
         ],
       ),
-      KlpFilePreviewState.error => const KlpText(
-        'Preview failed to load',
+      KlpFilePreviewState.error => KlpText(
+        KlpLocalizations.of(context).filePreviewErrorLabel,
         role: KlpTextRole.caption,
         tone: KlpTextTone.danger,
       ),
@@ -877,8 +878,8 @@ class KlpFilePreview extends StatelessWidget {
         children: [
           KlpText(extension, role: KlpTextRole.title),
           SizedBox(height: context.klp.space.tight),
-          const KlpText(
-            'No preview available for this type',
+          KlpText(
+            KlpLocalizations.of(context).filePreviewUnsupportedLabel,
             role: KlpTextRole.caption,
             tone: KlpTextTone.muted,
           ),
@@ -887,8 +888,8 @@ class KlpFilePreview extends StatelessWidget {
       KlpFilePreviewState.ready =>
         preview ??
             (textContent == null
-                ? const KlpText(
-                    'No preview content',
+                ? KlpText(
+                    KlpLocalizations.of(context).filePreviewEmptyLabel,
                     role: KlpTextRole.caption,
                     tone: KlpTextTone.muted,
                   )

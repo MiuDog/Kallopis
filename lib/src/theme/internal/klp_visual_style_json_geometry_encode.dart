@@ -60,6 +60,7 @@ KlpJsonMap encodeGeometry(KlpGeometryTheme v) => <String, Object?>{
     'inlineNoticeBreakpoint': v.layout.inlineNoticeBreakpoint,
     'statusBarBreakpoint': v.layout.statusBarBreakpoint,
     'settingsContentMaximumWidth': v.layout.settingsContentMaximumWidth,
+    'documentContentMaximumWidth': v.layout.documentContentMaximumWidth,
     'themePreviewTileWidth': v.layout.themePreviewTileWidth,
     'windowToolbarHeight': v.layout.windowToolbarHeight,
     'windowControlButtonSize': v.layout.windowControlButtonSize,

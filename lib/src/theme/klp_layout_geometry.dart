@@ -19,6 +19,7 @@ class KlpLayoutGeometry {
     required this.inlineNoticeBreakpoint,
     required this.statusBarBreakpoint,
     required this.settingsContentMaximumWidth,
+    required this.documentContentMaximumWidth,
     required this.themePreviewTileWidth,
     required this.windowToolbarHeight,
     this.windowControlButtonSize = 30,
@@ -44,6 +45,12 @@ class KlpLayoutGeometry {
 
   /// Settings 內容欄的閱讀寬度上限。
   final double settingsContentMaximumWidth;
+
+  /// 長篇文件內容的最大寬度。
+  ///
+  /// 文字欄過寬會讓眼睛在換行時找不到下一行的開頭。這個值限制的是**內容欄**，
+  /// 不是整個 stage——stage 仍然撐滿，只有文字被收在可讀的寬度內。
+  final double documentContentMaximumWidth;
 
   /// 顏色模式預覽磚的預設寬度。
   final double themePreviewTileWidth;
@@ -77,6 +84,7 @@ class KlpLayoutGeometry {
           inlineNoticeBreakpoint == other.inlineNoticeBreakpoint &&
           statusBarBreakpoint == other.statusBarBreakpoint &&
           settingsContentMaximumWidth == other.settingsContentMaximumWidth &&
+          documentContentMaximumWidth == other.documentContentMaximumWidth &&
           themePreviewTileWidth == other.themePreviewTileWidth &&
           windowToolbarHeight == other.windowToolbarHeight &&
           windowControlButtonSize == other.windowControlButtonSize &&
@@ -101,6 +109,7 @@ class KlpLayoutGeometry {
     inlineNoticeBreakpoint,
     statusBarBreakpoint,
     settingsContentMaximumWidth,
+    documentContentMaximumWidth,
     themePreviewTileWidth,
     windowToolbarHeight,
     windowControlButtonSize,

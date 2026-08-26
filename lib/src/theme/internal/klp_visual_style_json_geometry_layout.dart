@@ -17,6 +17,7 @@ const _layoutKeys = {
   'inlineNoticeBreakpoint',
   'statusBarBreakpoint',
   'settingsContentMaximumWidth',
+  'documentContentMaximumWidth',
   'themePreviewTileWidth',
   'windowToolbarHeight',
   'windowControlButtonSize',
@@ -67,6 +68,10 @@ KlpLayoutGeometry decodeLayoutGeometry(
       base.inlineNoticeBreakpoint,
     ),
     statusBarBreakpoint: read('statusBarBreakpoint', base.statusBarBreakpoint),
+    documentContentMaximumWidth: read(
+      'documentContentMaximumWidth',
+      base.documentContentMaximumWidth,
+    ),
     settingsContentMaximumWidth: read(
       'settingsContentMaximumWidth',
       base.settingsContentMaximumWidth,

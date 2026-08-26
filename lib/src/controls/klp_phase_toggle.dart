@@ -171,7 +171,9 @@ class _KlpPhaseSegment<T> extends StatelessWidget {
 
     Widget content;
     if (option.icon != null) {
-      content = KlpIcon(option.icon!, size: klp.space.iconSmall, color: fg);
+      // 依 Notist 設計稿為 16px。用 iconSmall（14px）會讓模式切換的圖示
+      // 明顯小於相鄰的工具列按鈕，兩者並排時看起來像不同層級的控制項。
+      content = KlpIcon(option.icon!, size: klp.space.iconBase, color: fg);
     } else {
       content = KlpText(option.label ?? '', role: KlpTextRole.code, color: fg);
     }

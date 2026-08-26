@@ -4,6 +4,7 @@ import '../controls/klp_button.dart';
 import '../foundation/klp_icon.dart';
 import '../foundation/klp_icons.dart';
 import '../interaction/klp_pressable.dart';
+import '../l10n/klp_localizations.dart';
 import '../surface/klp_dashed_border.dart';
 import '../surface/klp_surface.dart';
 import '../theme/klp_theme.dart';
@@ -35,8 +36,8 @@ class KlpFilterBar extends StatelessWidget {
     this.onRemove,
     this.onAddFilter,
     this.onClearAll,
-    this.addLabel = '+ Filter',
-    this.clearAllLabel = 'Clear all',
+    this.addLabel,
+    this.clearAllLabel,
     this.leading,
     this.trailing,
   });
@@ -47,8 +48,8 @@ class KlpFilterBar extends StatelessWidget {
   final ValueChanged<String>? onRemove;
   final VoidCallback? onAddFilter;
   final VoidCallback? onClearAll;
-  final String addLabel;
-  final String clearAllLabel;
+  final String? addLabel;
+  final String? clearAllLabel;
   final Widget? leading;
   final Widget? trailing;
 
@@ -88,7 +89,7 @@ class KlpFilterBar extends StatelessWidget {
                 ),
                 alignment: Alignment.center,
                 child: KlpText(
-                  addLabel,
+                  addLabel ?? KlpLocalizations.of(context).filterAddLabel,
                   role: KlpTextRole.caption,
                   tone: KlpTextTone.muted,
                 ),
@@ -105,7 +106,8 @@ class KlpFilterBar extends StatelessWidget {
                 vertical: klp.space.hairline,
               ),
               child: KlpText(
-                clearAllLabel,
+                clearAllLabel ??
+                    KlpLocalizations.of(context).filterClearAllLabel,
                 role: KlpTextRole.caption,
                 tone: KlpTextTone.muted,
               ),
@@ -217,7 +219,7 @@ class KlpSelectionToolbar extends StatelessWidget {
     required this.countLabel,
     required this.actions,
     this.onClear,
-    this.clearLabel = 'Clear',
+    this.clearLabel,
     this.dashed = true,
   });
 
@@ -225,6 +227,8 @@ class KlpSelectionToolbar extends StatelessWidget {
   final String countLabel;
   final List<KlpSelectionAction> actions;
   final VoidCallback? onClear;
+
+  /// 自訂清除文字；未提供時從目前語言檔解析。
   final String? clearLabel;
   final bool dashed;
 
@@ -256,7 +260,7 @@ class KlpSelectionToolbar extends StatelessWidget {
             SizedBox(width: klp.space.compact),
           ],
           const Spacer(),
-          if (onClear != null && clearLabel != null)
+          if (onClear != null)
             KlpPressable(
               onPressed: onClear,
               borderRadius: BorderRadius.circular(klp.shape.control),
@@ -266,7 +270,8 @@ class KlpSelectionToolbar extends StatelessWidget {
                   vertical: klp.space.hairline,
                 ),
                 child: KlpText(
-                  clearLabel!,
+                  clearLabel ??
+                      KlpLocalizations.of(context).selectionClearLabel,
                   role: KlpTextRole.caption,
                   tone: KlpTextTone.muted,
                 ),

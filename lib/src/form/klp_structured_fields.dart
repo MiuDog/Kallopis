@@ -4,6 +4,7 @@ import '../controls/klp_button.dart';
 import '../controls/klp_text_field.dart';
 import '../data/klp_advanced_data.dart';
 import '../data/klp_code_viewer.dart';
+import '../l10n/klp_localizations.dart';
 import '../surface/klp_surface.dart';
 import '../typography/klp_text.dart';
 import 'klp_form_controls.dart';
@@ -413,7 +414,10 @@ class KlpApprovalStepsField extends StatelessWidget {
               GestureDetector(
                 behavior: HitTestBehavior.opaque,
                 onTap: onAddStep,
-                child: const KlpText('+ Add step', role: KlpTextRole.caption),
+                child: KlpText(
+                  KlpLocalizations.of(context).formAddStepLabel,
+                  role: KlpTextRole.caption,
+                ),
               ),
             if (maxSteps != null) ...[
               SizedBox(width: klp.space.compact),
@@ -450,7 +454,7 @@ class KlpFileDropzoneField extends StatelessWidget {
     super.key,
     required this.label,
     this.hint,
-    this.chooseButtonLabel = 'Choose files',
+    this.chooseButtonLabel,
     required this.files,
     this.onChoose,
     this.onRemove,
@@ -458,7 +462,7 @@ class KlpFileDropzoneField extends StatelessWidget {
 
   final String label;
   final String? hint;
-  final String chooseButtonLabel;
+  final String? chooseButtonLabel;
   final List<KlpFileAttachment> files;
   final VoidCallback? onChoose;
   final ValueChanged<int>? onRemove;
@@ -498,7 +502,11 @@ class KlpFileDropzoneField extends StatelessWidget {
                       width: klp.shape.hairline,
                     ),
                   ),
-                  child: KlpText(chooseButtonLabel, role: KlpTextRole.caption),
+                  child: KlpText(
+                    chooseButtonLabel ??
+                        KlpLocalizations.of(context).formChooseFilesLabel,
+                    role: KlpTextRole.caption,
+                  ),
                 ),
               ),
               if (hint != null) ...[

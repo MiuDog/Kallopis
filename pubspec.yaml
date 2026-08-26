@@ -14,6 +14,8 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  flutter_localizations:
+    sdk: flutter
 
   flutter_svg: ^2.2.1
 
@@ -28,6 +30,7 @@ flutter:
 
   assets:
     - assets/icons/ui_oval/
+    - assets/l10n/
     - assets/fonts/OFL-IBM-Plex.txt
 
   fonts:
