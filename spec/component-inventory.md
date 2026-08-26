@@ -1027,7 +1027,7 @@ graph LR
 | `KlpSidebarFrame` | 33 | `KlpPanelFrame` |
 | `KlpSidebarIdentityHeader` | 63 | `KlpAvatar`、`KlpIcon`、`KlpSurface`、`KlpText` |
 | `KlpStageFrame` | 58 | `KlpTokenOverride` |
-| `KlpStageHeader` | 91 | `KlpText` |
+| `KlpStageHeader` | 96 | `KlpText` |
 | `KlpStatusBar` | 57 | `KlpText` |
 | `KlpThemePreviewMode` | 2 | （葉節點） |
 | `KlpThemePreviewTile` | 311 | `KlpPressable`、`KlpText` |
