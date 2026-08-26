@@ -99,4 +99,22 @@ void main() {
       );
     });
   }
+
+  test('gridTileWidth 只由 constructor 提供預設值', () {
+    // 直接檢查 comfortableDensity 區段，避免相同預設值在兩處靜默分岔。
+    final source = File(
+      'lib/src/theme/klp_spacing_theme.dart',
+    ).readAsStringSync();
+    final densityStart = source.indexOf(
+      'static const KlpSpacingTheme comfortableDensity',
+    );
+    final copyWithStart = source.indexOf(
+      '\n  @override\n  KlpSpacingTheme copyWith',
+      densityStart,
+    );
+    final densitySource = source.substring(densityStart, copyWithStart);
+
+    expect(densitySource, isNot(contains('gridTileWidth:')));
+    expect(source, contains('this.gridTileWidth = 170,'));
+  });
 }

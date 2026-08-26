@@ -261,7 +261,6 @@ class KlpSpacingTheme extends ThemeExtension<KlpSpacingTheme> {
     gutterMarker: 14,
     micro: 1,
     calendarContentCell: 74,
-    gridTileWidth: 170,
     iconMicro: 11,
     avatarSmall: 24,
     progressTrack: 3,
