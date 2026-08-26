@@ -29,6 +29,10 @@ void main() {
 
     expect(find.byType(KlpWindowHeader), findsOneWidget);
     expect(find.bySemanticsLabel('收合側邊面板'), findsOneWidget);
+    expect(
+      tester.widget<KlpIconButton>(find.byType(KlpIconButton)).tone,
+      KlpIconButtonTone.inline,
+    );
 
     await tester.tap(find.bySemanticsLabel('收合側邊面板'));
     expect(toggles, 1);

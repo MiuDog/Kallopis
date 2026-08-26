@@ -78,15 +78,21 @@ class KlpStageHeader extends StatelessWidget {
                       tone: KlpTextTone.faint,
                       maxLines: 1,
                     ),
+                    // Actions 屬於**標題列**，不是整個 header。
+                    //
+                    // 放在外層 Row 時，它們會對齊「路徑列＋標題列」的整體中線，
+                    // 因而佔用上方路徑列的空間，且標題換行時會跟著往下飄
+                    // ——按鈕位置變成取決於標題有多長。
+                    const Spacer(),
+                    for (final action in actions) ...[
+                      SizedBox(width: space.tight),
+                      action,
+                    ],
                   ],
                 ),
               ],
             ),
           ),
-          for (final action in actions) ...[
-            SizedBox(width: space.tight),
-            action,
-          ],
         ],
       ),
     );

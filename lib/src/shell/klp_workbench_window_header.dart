@@ -89,6 +89,9 @@ class KlpWorkbenchWindowHeader extends StatelessWidget
                 icon: primaryVisible ? KlpIcons.panelLeft : KlpIcons.panelRight,
                 label: primaryVisible ? collapseLabel : expandLabel,
                 onPressed: onTogglePrimary,
+                // 標題列本身已有背景；再給按鈕畫一塊底色，會讓它看起來像
+                // 貼在標題列上的色塊，而不是標題列的一部分。
+                tone: KlpIconButtonTone.inline,
               ),
             ),
           ),
