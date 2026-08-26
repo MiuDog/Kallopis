@@ -72,8 +72,15 @@ void main() {
   test('兩側 Pane 與中央 Stage 只用 surface 明度建立層級', () {
     expect(KlpThemeData.light.app, KlpPalette.ink150);
     expect(KlpThemeData.light.surface, KlpPalette.ink100);
-    expect(KlpThemeData.light.surfaceInset, KlpPalette.ink100);
-    expect(KlpThemeData.light.surfaceMuted, KlpPalette.ink100);
+    // 實作準則 §1.2 把 bgSurface 與 bgSurface2 定為兩個不同的階。
+    // 先前兩者同值，導致「填 bgSurface2」在畫面上等於沒填——選取狀態看不見。
+    expect(KlpThemeData.light.surfaceInset, KlpPalette.ink200);
+    expect(KlpThemeData.light.surfaceMuted, KlpPalette.ink200);
+    expect(
+      KlpThemeData.light.surfaceMuted.toARGB32(),
+      isNot(KlpThemeData.light.surface.toARGB32()),
+      reason: '兩階同值時，任何以 surfaceMuted 表達的狀態都會消失',
+    );
     expect(KlpThemeData.light.stageSurface, KlpPalette.ink50);
     expect(
       KlpThemeData.light.stageSurface.computeLuminance(),
@@ -83,15 +90,19 @@ void main() {
     expect(KlpThemeData.dark.app, KlpPalette.ink850);
     expect(KlpThemeData.dark.surface, KlpPalette.ink750);
     expect(KlpThemeData.dark.stageSurface, KlpPalette.ink800);
-    expect(KlpThemeData.dark.surfaceInset, KlpPalette.ink750);
-    expect(KlpThemeData.dark.surfaceMuted, KlpPalette.ink750);
+    expect(KlpThemeData.dark.surfaceInset, KlpPalette.ink700);
+    expect(KlpThemeData.dark.surfaceMuted, KlpPalette.ink700);
+    expect(
+      KlpThemeData.dark.surfaceMuted.toARGB32(),
+      isNot(KlpThemeData.dark.surface.toARGB32()),
+    );
     expect(KlpThemeData.dark.component, KlpPalette.ink800);
 
     expect(KlpThemeData.ultraDark.app, KlpPalette.ink950);
     expect(KlpThemeData.ultraDark.surface, KlpPalette.ink850);
     expect(KlpThemeData.ultraDark.stageSurface, KlpPalette.ink900);
-    expect(KlpThemeData.ultraDark.surfaceInset, KlpPalette.ink850);
-    expect(KlpThemeData.ultraDark.surfaceMuted, KlpPalette.ink850);
+    expect(KlpThemeData.ultraDark.surfaceInset, KlpPalette.ink800);
+    expect(KlpThemeData.ultraDark.surfaceMuted, KlpPalette.ink800);
 
     // 只要求「ultraDark 確實更暗」。原本這裡要求絕對亮度差 ≥ 0.005，那個門檻是對著
     // 舊色盤湊出來的：相對亮度在近黑端壓縮得極厲害（ink900 與 ink950 的感知差有一階，

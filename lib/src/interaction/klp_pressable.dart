@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'klp_interaction_settings.dart';
+import 'klp_state_highlight.dart';
 import '../theme/klp_motion_theme.dart';
 import '../theme/klp_theme.dart';
 
@@ -126,28 +127,16 @@ class _KlpPressableState extends State<KlpPressable>
         _enabled && (_isHovered || _isFocused) && widget.hoverHighlight;
 
     Widget content = widget.child;
-    // hover／focus 一律以高亮色表達，不畫邊框。先前這裡還有一條虛線框分支，
-    // 但沒有任何呼叫端選用它——兩套語彙並存只會讓同一個狀態在不同元件長得不一樣。
-    final showHighlight = widget.selected || active;
-    if (showHighlight) {
-      content = Stack(
-        fit: StackFit.passthrough,
-        children: [
-          content,
-          Positioned.fill(
-            child: IgnorePointer(
-              child: DecoratedBox(
-                key: const ValueKey('klp-pressable-state-highlight'),
-                decoration: BoxDecoration(
-                  color: widget.selected ? klp.selectedWash : klp.selectionWash,
-                  borderRadius: widget.borderRadius,
-                ),
-              ),
-            ),
-          ),
-        ],
-      );
-    }
+    // 狀態呈現全部走 KlpStateHighlight，這裡不自己畫。先前這段自行組出高亮，
+    // 結果 hover 與 selected 的手法在庫裡有兩份實作——改了其中一份，另一份不會
+    // 報錯，只是不一致。
+    content = KlpStateHighlight(
+      state: widget.selected
+          ? KlpHighlightState.selected
+          : (active ? KlpHighlightState.hover : KlpHighlightState.none),
+      borderRadius: widget.borderRadius,
+      child: content,
+    );
 
     return Listener(
       onPointerDown: widget.onLongPress == null ? null : _handlePointerDown,

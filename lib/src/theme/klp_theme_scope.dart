@@ -114,20 +114,31 @@ class KlpTheme {
 
   List<BoxShadow> get overlayShadow => surface.overlayShadow(color.text);
 
-  /// hover／focus 的半透明中性高亮。
+  /// 半透明的中性壓深層。
   ///
-  /// **全庫唯一的 hover 表達方式。** 混合比例來自 surface 層，因此不同風格的
-  /// 互動對比可以不同。先前 explorer 與表單走另一套虛線框，同一個狀態兩種畫法，
-  /// 消費者無從預期——那條路徑已經移除。
+  /// 用於需要「壓一層」而非「換一個表面」的場合（例如疊在語意色塊上）。
+  /// **hover 不用這個**——見 [hoverBorder]。
   Color get selectionWash =>
       color.selectionWashWith(surface.selectionWashOpacity);
 
-  /// 一般互動元件的 selected 半透明選取色。
+  /// hover 的虛線邊框色。
   ///
-  /// 色相跟隨 interaction semantic token，透明度則沿用 surface 層的 wash 強度，
-  /// 讓不同 preset 能完整決定狀態視覺，消費端不必自行混色。
-  Color get selectedWash =>
-      color.interaction.withValues(alpha: surface.selectionWashOpacity);
+  /// 實作準則 §2.1：hover 是**暫時的**，不是狀態，因此用虛線而非填色。填色留給
+  /// selected——那是會停留的狀態。兩者若都用填色，使用者分不出「指標剛好在這裡」
+  /// 和「我選了這個」。
+  ///
+  /// 全部 hover 都從這裡取色，才不會出現十幾個元件各自調一個「差不多的灰」。
+  Color get hoverBorder => color.guide.withValues(alpha: shape.dashedOpacity);
+
+  /// selected 的填色。
+  ///
+  /// **刻意不是 accent。** 實作準則第 5 條：accent 只用於主要 CTA、文字連結、
+  /// 鍵盤焦點與明確可執行的操作，不得用於 selected、checked、目前導覽項目——
+  /// 那會讓「可以按下去做某件事」與「你現在在這裡」用同一個顏色說話。
+  ///
+  /// 選取的第二個訊號是文字由 secondary 升到 primary（見準則 §2.1），
+  /// 因此不需要靠顏色強度來表達，中性表面就夠。
+  Color get selectedSurface => color.surfaceMuted;
 
   /// 目前是不是暗色主題。
   ///

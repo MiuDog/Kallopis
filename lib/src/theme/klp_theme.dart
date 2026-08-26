@@ -166,8 +166,8 @@ class KlpThemeData extends ThemeExtension<KlpThemeData> {
   static const KlpThemeData light = KlpThemeData(
     app: KlpPalette.ink150,
     surface: KlpPalette.ink100,
-    surfaceInset: KlpPalette.ink100,
-    surfaceMuted: KlpPalette.ink100,
+    surfaceInset: KlpPalette.ink200,
+    surfaceMuted: KlpPalette.ink200,
     component: KlpPalette.ink50,
     stageSurface: KlpPalette.ink50,
     overlay: KlpPalette.ink50,
@@ -196,8 +196,8 @@ class KlpThemeData extends ThemeExtension<KlpThemeData> {
   static const KlpThemeData dark = KlpThemeData(
     app: KlpPalette.ink850,
     surface: KlpPalette.ink750,
-    surfaceInset: KlpPalette.ink750,
-    surfaceMuted: KlpPalette.ink750,
+    surfaceInset: KlpPalette.ink700,
+    surfaceMuted: KlpPalette.ink700,
     component: KlpPalette.ink800,
     stageSurface: KlpPalette.ink800,
     overlay: KlpPalette.ink750,
@@ -226,8 +226,8 @@ class KlpThemeData extends ThemeExtension<KlpThemeData> {
   static const KlpThemeData ultraDark = KlpThemeData(
     app: KlpPalette.ink950,
     surface: KlpPalette.ink850,
-    surfaceInset: KlpPalette.ink850,
-    surfaceMuted: KlpPalette.ink850,
+    surfaceInset: KlpPalette.ink800,
+    surfaceMuted: KlpPalette.ink800,
     component: KlpPalette.ink900,
     stageSurface: KlpPalette.ink900,
     overlay: KlpPalette.ink850,
@@ -440,12 +440,11 @@ abstract final class KlpFieldStyle {
 
   /// 欄位底色。
   ///
-  /// **hover 以高亮底色表達，不畫邊框。** 欄位本來就有自己的底色，狀態直接反映在
-  /// 那個底色上，不必在外面再包一層框——包框會讓欄位在 hover 時尺寸感改變，
-  /// 也讓同一個狀態在欄位與其他元件長得不一樣。
+  /// **hover 不改變底色。** 實作準則 §2.1：hover 是暫時的，用 `1px dashed` 表達；
+  /// 填色留給 selected 那種會停留的狀態。因此 rest 與 hovered 刻意回傳同一個值——
+  /// 把它們寫成同一個 case 會讓「hover 沒有底色變化」在未來被當成漏寫而補回去。
   ///
-  /// 高亮是把前景色以低 alpha 疊上去，因此亮態壓暗、暗態提亮，且不必知道底下
-  /// 實際是哪個表面。
+  /// focus 同樣不靠底色，走準則 §7 的焦點環。
   static Color colorFor(
     KlpThemeData tokens,
     KlpFieldFillState state, {
@@ -453,15 +452,9 @@ abstract final class KlpFieldStyle {
   }) {
     return switch (state) {
       KlpFieldFillState.rest => tokens.surfaceInset,
-      KlpFieldFillState.hovered => Color.alphaBlend(
-        tokens.selectionWashWith(surface.selectionWashOpacity),
-        tokens.surfaceInset,
-      ),
+      KlpFieldFillState.hovered => tokens.surfaceInset,
       KlpFieldFillState.focused ||
-      KlpFieldFillState.selected => Color.alphaBlend(
-        tokens.interaction.withValues(alpha: surface.focusWashOpacity),
-        tokens.surfaceInset,
-      ),
+      KlpFieldFillState.selected => tokens.surfaceInset,
       KlpFieldFillState.disabled => tokens.surfaceMuted,
       // 不合法輸入用半透明紅**疊在**欄位上，而不是先跟 surfaceInset 混成不透明色。
       // 疊層才會跟著底下實際的表面走；預混會在欄位被放到別的表面上時顏色對不上。

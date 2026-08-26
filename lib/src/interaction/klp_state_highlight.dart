@@ -1,5 +1,6 @@
 import 'package:flutter/widgets.dart';
 
+import '../surface/klp_dashed_border.dart';
 import '../theme/klp_theme.dart';
 
 /// 元件的狀態強度。
@@ -10,20 +11,33 @@ enum KlpHighlightState {
   /// 沒有狀態，不畫任何東西。
   none,
 
-  /// 指標懸停或鍵盤聚焦。中性的低強度高亮。
+  /// 指標懸停。暫時的，用虛線表達。
   hover,
+
+  /// 鍵盤聚焦。實線焦點環——準則 §7 要求它必須存在且不得移除，
+  /// 因為鍵盤使用者沒有別的方式知道自己在哪。
+  ///
+  /// 這是準則第 5 條允許 accent 出現的少數場合之一。
+  focus,
 
   /// 受控的選取狀態。跟隨 interaction 色，強度較高。
   selected,
 }
 
-/// 疊在內容上的狀態高亮。
+/// 元件的狀態呈現。**兩種狀態、兩種手法，刻意不同。**
 ///
-/// **hover 與 selected 一律以高亮色表達，不畫邊框。** 先前這兩個狀態在庫裡有兩套
-/// 語彙——`KlpPressable` 用高亮、表單與 explorer 用虛線框——同一件事兩種畫法，
-/// 消費者無從預期。
+/// 實作準則 §2.1：
 ///
-/// 高亮以 [Stack] 疊在內容之上而不是換掉內容的底色：後者會逼每個元件自己知道
+/// - **hover → `1px dashed`**。hover 是**暫時的**，指標移開就沒了，它不是狀態。
+/// - **selected → 填色**（[KlpTheme.selectedSurface]）。那是會停留的狀態。
+///
+/// 兩者若都用填色，使用者分不出「指標剛好經過」與「我選了這個」；若都用虛線，
+/// 選取框又會和 placeholder、拖放目標、停用態的既有讀法撞在一起。
+///
+/// 選取的第二個訊號由呼叫端提供：文字由 secondary 升到 primary（準則第 4 條要求
+/// 每個狀態都要有非顏色的訊號）。本元件只負責底色與邊框。
+///
+/// 填色以 [Stack] 疊在內容之上而不是換掉內容的底色：後者會逼每個元件自己知道
 /// 「我原本的底色是什麼、混上去之後該是什麼」，而那正是元件不該知道的事。
 class KlpStateHighlight extends StatelessWidget {
   const KlpStateHighlight({
@@ -47,6 +61,38 @@ class KlpStateHighlight extends StatelessWidget {
     final klp = context.klp;
     final radius = borderRadius ?? BorderRadius.circular(klp.shape.control);
 
+    if (state == KlpHighlightState.focus) {
+      return Stack(
+        fit: StackFit.passthrough,
+        children: [
+          child,
+          Positioned.fill(
+            child: IgnorePointer(
+              child: DecoratedBox(
+                key: const ValueKey('klp-state-focus-ring'),
+                decoration: BoxDecoration(
+                  border: Border.all(
+                    color: klp.color.interaction,
+                    width: klp.shape.stroke,
+                  ),
+                  borderRadius: radius,
+                ),
+              ),
+            ),
+          ),
+        ],
+      );
+    }
+
+    if (state == KlpHighlightState.hover) {
+      return KlpDashedBorder(
+        key: const ValueKey('klp-state-hover-border'),
+        color: klp.hoverBorder,
+        radius: radius.topLeft.x,
+        child: child,
+      );
+    }
+
     return Stack(
       fit: StackFit.passthrough,
       children: [
@@ -56,9 +102,7 @@ class KlpStateHighlight extends StatelessWidget {
             child: DecoratedBox(
               key: const ValueKey('klp-state-highlight'),
               decoration: BoxDecoration(
-                color: state == KlpHighlightState.selected
-                    ? klp.selectedWash
-                    : klp.selectionWash,
+                color: klp.selectedSurface,
                 borderRadius: radius,
               ),
             ),

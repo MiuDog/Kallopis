@@ -1,5 +1,3 @@
-import 'dart:io';
-
 import 'package:flutter/material.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter_test/flutter_test.dart';
@@ -7,9 +5,14 @@ import 'package:kallopis/kallopis.dart';
 
 /// 互動狀態的紀律閘門。
 ///
-/// **hover 與 selected 一律以高亮色表達，全庫不得用邊框表示 hover。** 先前
-/// 一般元件走背景高亮、Explorer 與表單走虛線框，同一個狀態兩種畫法，消費者
-/// 無從預期。這條規則若只靠人看，新增元件時必然再次分岔。
+/// 實作準則 §2.1 定了三種狀態、三種手法，刻意互不相同：
+///
+/// - **hover → `1px dashed`**。暫時的，指標移開就沒了。
+/// - **selected → 填色**，且**不得是 accent**（準則第 5 條）。
+/// - **focus → `2px solid` 焦點環**（準則 §7，不得移除）。
+///
+/// 三者若混用，使用者分不出「指標剛好經過」「我選了這個」「鍵盤焦點在這」。
+/// 這條規則若只靠人看，新增元件時必然分岔。
 void main() {
   const presets = <String, KlpThemeData>{
     'light': KlpThemeData.light,
@@ -17,32 +20,53 @@ void main() {
     'ultraDark': KlpThemeData.ultraDark,
   };
 
-  group('hover 以底色表達，不是靠外框', () {
+  group('hover 與 focus 都不改變欄位底色', () {
     presets.forEach((name, tokens) {
       test(name, () {
         final rest = KlpFieldStyle.colorFor(tokens, KlpFieldFillState.rest);
-        final hovered = KlpFieldStyle.colorFor(
-          tokens,
-          KlpFieldFillState.hovered,
-        );
-        final focused = KlpFieldStyle.colorFor(
-          tokens,
-          KlpFieldFillState.focused,
-        );
 
         expect(
-          hovered.toARGB32(),
-          isNot(rest.toARGB32()),
+          KlpFieldStyle.colorFor(tokens, KlpFieldFillState.hovered).toARGB32(),
+          rest.toARGB32(),
           reason:
-              '$name 的欄位 hover 時底色沒變。hover 現在只能靠底色表達，'
-              '底色不變就等於沒有 hover 回饋。',
+              '$name 的欄位在 hover 時換了底色。準則 §2.1：hover 是暫時的，'
+              '用 1px dashed 表達；填色留給 selected 那種會停留的狀態。',
         );
         expect(
-          focused.toARGB32(),
-          isNot(hovered.toARGB32()),
-          reason: '$name 的 focus 與 hover 底色相同，鍵盤使用者分不出焦點在哪',
+          KlpFieldStyle.colorFor(tokens, KlpFieldFillState.focused).toARGB32(),
+          rest.toARGB32(),
+          reason: '$name 的欄位在 focus 時換了底色。focus 走 §7 的實線焦點環。',
         );
       });
+    });
+  });
+
+  group('selected 不得使用 accent', () {
+    // 準則第 5 條：accent 只用於主要 CTA、文字連結、鍵盤焦點與明確可執行的操作。
+    // 用在 selected 上，會讓「可以按下去做某件事」與「你現在在這裡」用同一個
+    // 顏色說話。
+    testWidgets('選取色與 accent 不同', (tester) async {
+      late KlpTheme klp;
+      await tester.pumpWidget(
+        MaterialApp(
+          theme: buildKlpTheme(Brightness.light),
+          home: Builder(
+            builder: (context) {
+              klp = context.klp;
+              return const SizedBox.shrink();
+            },
+          ),
+        ),
+      );
+
+      expect(
+        klp.selectedSurface.toARGB32(),
+        isNot(klp.color.accent.toARGB32()),
+      );
+      expect(
+        klp.selectedSurface.toARGB32(),
+        isNot(klp.color.interaction.toARGB32()),
+      );
     });
   });
 
@@ -105,7 +129,7 @@ void main() {
     );
   });
 
-  testWidgets('表單 hover 與 focus 用不同強度的底色，且完全不畫外框', (tester) async {
+  testWidgets('表單 hover 是虛線、focus 是實線焦點環', (tester) async {
     final focusNode = FocusNode();
     addTearDown(focusNode.dispose);
 
@@ -125,18 +149,24 @@ void main() {
     await tester.pump();
 
     expect(
-      find.descendant(of: field, matching: find.byType(KlpDashedBorder)),
-      findsNothing,
-      reason: '表單 hover 不得再畫虛線框',
+      find.descendant(
+        of: field,
+        matching: find.byKey(const ValueKey('klp-state-hover-border')),
+      ),
+      findsOneWidget,
+      reason: '準則 §2.1：欄位 hover 用 1px dashed',
     );
 
     await tester.tap(find.byType(TextFormField));
     await tester.pump();
 
     expect(
-      find.descendant(of: field, matching: find.byType(KlpDashedBorder)),
-      findsNothing,
-      reason: '表單 focus 也不得畫虛線框',
+      find.descendant(
+        of: field,
+        matching: find.byKey(const ValueKey('klp-state-focus-ring')),
+      ),
+      findsOneWidget,
+      reason: '準則 §7：焦點環不得移除，鍵盤使用者沒有別的方式知道自己在哪',
     );
   });
 
@@ -173,49 +203,49 @@ void main() {
     expect(KlpThemeData.light.divider.toARGB32(), KlpPalette.ink100.toARGB32());
   });
 
-  test('沒有任何元件用邊框表達 hover', () {
-    // 這是原始碼掃描，不是行為測試：行為測試只能覆蓋被寫進測試的那幾個元件，
-    // 而這條規則要管的是**還沒被寫出來**的元件。
-    //
-    // 判準：同一段程式碼裡同時出現 hover 狀態與 KlpDashedBorder。
-    final offenders = <String>[];
-    final sources = Directory('../lib/src').existsSync()
-        ? Directory('../lib/src')
-        : Directory('lib/src');
-
-    for (final file
-        in sources
-            .listSync(recursive: true)
-            .whereType<File>()
-            .where((file) => file.path.endsWith('.dart'))) {
-      final path = file.path.replaceAll(r'', '/');
-      // 虛線框元件自己、以及「待填區域」的用途不在此限。
-      if (path.endsWith('klp_dashed_border.dart') ||
-          path.endsWith('klp_region_placeholder.dart') ||
-          path.endsWith('klp_empty_state.dart') ||
-          path.endsWith('klp_view_states.dart')) {
-        continue;
-      }
-
-      final lines = file.readAsStringSync().split('\n');
-      for (var i = 0; i < lines.length; i++) {
-        if (!lines[i].contains('KlpDashedBorder(')) continue;
-        // 往上看幾行，找是不是由 hover 狀態驅動。
-        final from = i - 6 < 0 ? 0 : i - 6;
-        final window = lines.sublist(from, i + 1).join('\n');
-        if (RegExp(r'_?[hH]overed|isHovered').hasMatch(window)) {
-          offenders.add('$path:${i + 1}  ${lines[i].trim()}');
-        }
-      }
+  testWidgets('三種狀態用三種手法，互不混用', (tester) async {
+    // 這是對 KlpStateHighlight 的行為驗證。全庫的狀態呈現都必須經由它——
+    // 元件自己畫，就會出現「改了一份、另一份沒改」而且不會報錯。
+    Future<void> pump(KlpHighlightState state) async {
+      await tester.pumpWidget(
+        MaterialApp(
+          theme: buildKlpTheme(Brightness.light),
+          home: Scaffold(
+            body: KlpStateHighlight(
+              state: state,
+              child: const SizedBox(width: 100, height: 40),
+            ),
+          ),
+        ),
+      );
     }
 
+    await pump(KlpHighlightState.hover);
     expect(
-      offenders,
-      isEmpty,
-      reason:
-          '這些地方用虛線框表達 hover：\n${offenders.join('\n')}\n'
-          'hover 一律用 KlpStateHighlight 的高亮色。同一個狀態兩種畫法，'
-          '消費者無從預期。',
+      find.byKey(const ValueKey('klp-state-hover-border')),
+      findsOneWidget,
+      reason: '準則 §2.1：hover 是 1px dashed',
     );
+    expect(find.byKey(const ValueKey('klp-state-highlight')), findsNothing);
+
+    await pump(KlpHighlightState.selected);
+    expect(
+      find.byKey(const ValueKey('klp-state-highlight')),
+      findsOneWidget,
+      reason: '準則 §2.1：selected 是填色，不是虛線',
+    );
+    expect(find.byKey(const ValueKey('klp-state-hover-border')), findsNothing);
+
+    await pump(KlpHighlightState.focus);
+    expect(
+      find.byKey(const ValueKey('klp-state-focus-ring')),
+      findsOneWidget,
+      reason: '準則 §7：焦點環不得移除',
+    );
+
+    await pump(KlpHighlightState.none);
+    expect(find.byKey(const ValueKey('klp-state-hover-border')), findsNothing);
+    expect(find.byKey(const ValueKey('klp-state-highlight')), findsNothing);
+    expect(find.byKey(const ValueKey('klp-state-focus-ring')), findsNothing);
   });
 }
