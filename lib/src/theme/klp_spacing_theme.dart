@@ -64,6 +64,7 @@ class KlpSpacingTheme extends ThemeExtension<KlpSpacingTheme> {
     required this.gutterMarker,
     required this.micro,
     required this.calendarContentCell,
+    this.gridTileWidth = 170,
     required this.iconMicro,
     required this.avatarSmall,
     required this.progressTrack,
@@ -168,6 +169,12 @@ class KlpSpacingTheme extends ThemeExtension<KlpSpacingTheme> {
   /// [controlHeightSmall]，塞進內容後那個高度會擠成一團。
   final double calendarContentCell;
 
+  /// 卡片式網格的單欄寬度。
+  ///
+  /// 瀑布流與磚牆排版以單欄寬度維持規律節奏；元件只能讀此語意 token，
+  /// 不得把欄寬分散成各自的風格常數。
+  final double gridTileWidth;
+
   /// 11px。狀態字形用的最小圖示
   final double iconMicro;
 
@@ -254,6 +261,7 @@ class KlpSpacingTheme extends ThemeExtension<KlpSpacingTheme> {
     gutterMarker: 14,
     micro: 1,
     calendarContentCell: 74,
+    gridTileWidth: 170,
     iconMicro: 11,
     avatarSmall: 24,
     progressTrack: 3,
@@ -277,6 +285,7 @@ class KlpSpacingTheme extends ThemeExtension<KlpSpacingTheme> {
     double? gutterMarker,
     double? micro,
     double? calendarContentCell,
+    double? gridTileWidth,
     double? iconMicro,
     double? avatarSmall,
     double? progressTrack,
@@ -383,6 +392,7 @@ class KlpSpacingTheme extends ThemeExtension<KlpSpacingTheme> {
       gutterMarker: gutterMarker ?? this.gutterMarker,
       micro: micro ?? this.micro,
       calendarContentCell: calendarContentCell ?? this.calendarContentCell,
+      gridTileWidth: gridTileWidth ?? this.gridTileWidth,
       iconMicro: iconMicro ?? this.iconMicro,
       avatarSmall: avatarSmall ?? this.avatarSmall,
       progressTrack: progressTrack ?? this.progressTrack,
@@ -457,6 +467,7 @@ class KlpSpacingTheme extends ThemeExtension<KlpSpacingTheme> {
           gutterMarker == other.gutterMarker &&
           micro == other.micro &&
           calendarContentCell == other.calendarContentCell &&
+          gridTileWidth == other.gridTileWidth &&
           iconMicro == other.iconMicro &&
           avatarSmall == other.avatarSmall &&
           progressTrack == other.progressTrack &&
@@ -521,6 +532,7 @@ class KlpSpacingTheme extends ThemeExtension<KlpSpacingTheme> {
     gutterMarker,
     micro,
     calendarContentCell,
+    gridTileWidth,
     iconMicro,
     avatarSmall,
     progressTrack,

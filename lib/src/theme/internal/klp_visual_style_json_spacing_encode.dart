@@ -56,6 +56,7 @@ KlpJsonMap encodeSpacing(KlpSpacingTheme v) => <String, Object?>{
   'gutterMarker': v.gutterMarker,
   'micro': v.micro,
   'calendarContentCell': v.calendarContentCell,
+  'gridTileWidth': v.gridTileWidth,
   'iconMicro': v.iconMicro,
   'avatarSmall': v.avatarSmall,
   'progressTrack': v.progressTrack,
