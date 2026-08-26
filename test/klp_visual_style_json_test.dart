@@ -53,7 +53,8 @@ void main() {
       });
       expect((encoded['colors'] as Map).length, 32);
       expect((encoded['typography'] as Map).length, 44);
-      expect((encoded['spacing'] as Map).length, 62);
+      expect((encoded['spacing'] as Map).length, 63);
+      expect((encoded['spacing'] as Map)['iconGlyph'], 18);
       expect((encoded['spacing'] as Map)['gridTileWidth'], 170);
       expect((encoded['shape'] as Map).length, 13);
       expect((encoded['motion'] as Map).length, 12);
@@ -87,6 +88,15 @@ void main() {
 
       expect(result.spacing.gridTileWidth, 196);
       expect(result.spacing.copyWith().gridTileWidth, 196);
+    });
+
+    test('圖示字形可由 JSON 覆寫並保留在 copyWith', () {
+      final result = KlpVisualStyleJson.decode(<String, Object?>{
+        'spacing': <String, Object?>{'iconGlyph': 17},
+      });
+
+      expect(result.spacing.iconGlyph, 17);
+      expect(result.spacing.copyWith().iconGlyph, 17);
     });
 
     test('顏色接受 RGB 與 ARGB 並固定輸出 ARGB', () {

@@ -36,6 +36,7 @@ KlpJsonMap encodeSpacing(KlpSpacingTheme v) => <String, Object?>{
   'controlHeightXLarge': v.controlHeightXLarge,
   'iconSmall': v.iconSmall,
   'iconBase': v.iconBase,
+  'iconGlyph': v.iconGlyph,
   'icon': v.icon,
   'iconMedium': v.iconMedium,
   'iconLarge': v.iconLarge,

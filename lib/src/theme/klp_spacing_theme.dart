@@ -44,6 +44,7 @@ class KlpSpacingTheme extends ThemeExtension<KlpSpacingTheme> {
     this.controlHeightXLarge = 56,
     required this.iconSmall,
     this.iconBase = 16,
+    this.iconGlyph = 18,
     required this.icon,
     this.iconMedium = 24,
     required this.iconLarge,
@@ -117,6 +118,11 @@ class KlpSpacingTheme extends ThemeExtension<KlpSpacingTheme> {
   // 四段圖示尺寸 (14, 16, 20/24, 32)
   final double iconSmall; // 14px (icon-sm)
   final double iconBase; // 16px (icon-base)
+
+  /// 畫在 [icon] 尺寸格子裡的字形大小。
+  ///
+  /// 導覽列等圖示保留固定格線，但字形略小，避免字形頂滿格線而顯得過重。
+  final double iconGlyph;
   final double icon; // 20px (icon-md 標準)
   final double iconMedium; // 24px (icon-md 導覽)
   final double iconLarge; // 32px (icon-lg 特色卡)
@@ -326,6 +332,7 @@ class KlpSpacingTheme extends ThemeExtension<KlpSpacingTheme> {
     double? controlHeightXLarge,
     double? iconSmall,
     double? iconBase,
+    double? iconGlyph,
     double? icon,
     double? iconMedium,
     double? iconLarge,
@@ -371,6 +378,7 @@ class KlpSpacingTheme extends ThemeExtension<KlpSpacingTheme> {
       controlHeightXLarge: controlHeightXLarge ?? this.controlHeightXLarge,
       iconSmall: iconSmall ?? this.iconSmall,
       iconBase: iconBase ?? this.iconBase,
+      iconGlyph: iconGlyph ?? this.iconGlyph,
       icon: icon ?? this.icon,
       iconMedium: iconMedium ?? this.iconMedium,
       iconLarge: iconLarge ?? this.iconLarge,
@@ -446,6 +454,7 @@ class KlpSpacingTheme extends ThemeExtension<KlpSpacingTheme> {
           controlHeightXLarge == other.controlHeightXLarge &&
           iconSmall == other.iconSmall &&
           iconBase == other.iconBase &&
+          iconGlyph == other.iconGlyph &&
           icon == other.icon &&
           iconMedium == other.iconMedium &&
           iconLarge == other.iconLarge &&
@@ -511,6 +520,7 @@ class KlpSpacingTheme extends ThemeExtension<KlpSpacingTheme> {
     controlHeightXLarge,
     iconSmall,
     iconBase,
+    iconGlyph,
     icon,
     iconMedium,
     iconLarge,

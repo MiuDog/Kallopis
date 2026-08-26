@@ -117,4 +117,21 @@ void main() {
     expect(densitySource, isNot(contains('gridTileWidth:')));
     expect(source, contains('this.gridTileWidth = 170,'));
   });
+
+  test('iconGlyph 只由 constructor 提供預設值', () {
+    final source = File(
+      'lib/src/theme/klp_spacing_theme.dart',
+    ).readAsStringSync();
+    final densityStart = source.indexOf(
+      'static const KlpSpacingTheme comfortableDensity',
+    );
+    final copyWithStart = source.indexOf(
+      '\n  @override\n  KlpSpacingTheme copyWith',
+      densityStart,
+    );
+    final densitySource = source.substring(densityStart, copyWithStart);
+
+    expect(densitySource, isNot(contains('iconGlyph:')));
+    expect(source, contains('this.iconGlyph = 18,'));
+  });
 }

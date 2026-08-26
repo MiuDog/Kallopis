@@ -7,6 +7,11 @@ import '../surface/klp_surface.dart';
 import '../theme/klp_theme.dart';
 import '../typography/klp_text.dart';
 
+/// 導覽項目圖示格的識別鍵。
+///
+/// 圖示格與字形各有自己的 semantic token；版面測試可用此鍵分別量測兩者。
+const String klpNavigationIconBoxKey = 'klp-navigation-icon-box';
+
 /// Primary Sidebar 內的全寬導覽按鈕。
 ///
 /// 消費者只提供圖示、標籤、選取狀態與事件；高度、內距、圓角、圖示尺寸、
@@ -71,7 +76,17 @@ class _KlpSidebarNavigationButtonState
           decoration: BoxDecoration(color: background, borderRadius: radius),
           child: Row(
             children: [
-              KlpIcon(widget.icon, color: foreground),
+              SizedBox.square(
+                key: const ValueKey(klpNavigationIconBoxKey),
+                dimension: klp.space.icon,
+                child: Center(
+                  child: KlpIcon(
+                    widget.icon,
+                    size: klp.space.iconGlyph,
+                    color: foreground,
+                  ),
+                ),
+              ),
               SizedBox(width: klp.space.itemGap),
               Expanded(
                 child: KlpText(

@@ -133,7 +133,7 @@ graph TD
 | `KlpMotionTheme` | 139 | （葉節點） |
 | `KlpOpticalGeometry` | 34 | （葉節點） |
 | `KlpShapeTheme` | 150 | （葉節點） |
-| `KlpSpacingTheme` | 533 | （葉節點） |
+| `KlpSpacingTheme` | 543 | （葉節點） |
 | `KlpSurfaceSeparation` | 19 | （葉節點） |
 | `KlpSurfaceTheme` | 282 | （葉節點） |
 | `KlpTheme` | 131 | `KlpVisualStyle` |
@@ -864,7 +864,7 @@ graph LR
 | `KlpFileExplorerSectionView` | 150 | `KlpFileExplorerFolderView`、`KlpFileExplorerItemView`、`KlpIcon`、`KlpPressable`、`KlpText` |
 | `KlpPagination` | 46 | `KlpButton`、`KlpText` |
 | `KlpRailItem` | 125 | `KlpIcon`、`KlpTooltipSurface` |
-| `KlpSidebarNavigationButton` | 82 | `KlpIcon`、`KlpPressable`、`KlpText` |
+| `KlpSidebarNavigationButton` | 92 | `KlpIcon`、`KlpPressable`、`KlpText` |
 | `KlpSidebarNavigationGroup` | 26 | （葉節點） |
 | `KlpSidebarSectionLabel` | 27 | `KlpText` |
 | `KlpTabs` | 106 | `KlpText` |
