@@ -187,8 +187,12 @@ class KlpSpacingTheme extends ThemeExtension<KlpSpacingTheme> {
 
   /// 區塊編輯器在正文左側預留給拖曳握把的寬度。
   ///
-  /// 呈現層需要知道這個值才能把正文的左邊界拉回與標題對齊——否則正文會比標題
-  /// 縮進一整個握把的寬度。
+  /// 呈現層把正文往左位移**正好這個值**，正文左緣就落回容器左緣，也就是與
+  /// Stage 標題同一條線上——兩者共用 `space.base` 的內距。
+  ///
+  /// **這個值必須等於編輯器實際的內容左偏移。** 它由原生佈局決定，Dart 端讀不到，
+  /// 只能實測：量標題與正文的左緣差反推。對不上時正文會相對標題偏移，
+  /// 而且不會有任何錯誤訊息。
   final double documentHandleGutter;
 
   /// 正文結尾之後保留的捲動空間。
@@ -284,7 +288,7 @@ class KlpSpacingTheme extends ThemeExtension<KlpSpacingTheme> {
     micro: 1,
     calendarContentCell: 74,
     gridTileWidth: 170,
-    documentHandleGutter: 60,
+    documentHandleGutter: 31,
     documentTrailingSpace: 40,
     iconMicro: 11,
     avatarSmall: 24,

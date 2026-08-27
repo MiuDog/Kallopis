@@ -51,6 +51,14 @@ class KlpPhaseToggle<T> extends StatelessWidget {
     final totalHeight = size + padding * 2 + border;
     final selectedIndex = options.indexWhere((o) => o.value == selected);
 
+    // 未指定語意色時，選取態用中性表面而不是前景色。
+    //
+    // 準則第 5 條：accent 只用於主要 CTA、文字連結、鍵盤焦點與明確可執行的操作，
+    // **不得用於 selected**。先前這裡預設 `tokens.text`（亮態近黑），讓模式切換的
+    // 選取格變成一塊高對比黑，和「這是主要動作」用同一個視覺語言說話。
+    //
+    // 帶語意色的選項（成功／警告／危險／資訊）是另一回事：那是在陳述狀態，
+    // 不是在標示選取，因此保留。
     Color activeBg;
     if (!enabled) {
       activeBg = tokens.text.withValues(alpha: klp.surface.statusFillOpacity);
@@ -64,13 +72,13 @@ class KlpPhaseToggle<T> extends StatelessWidget {
           KlpFeedbackTone.warning => tokens.warning,
           KlpFeedbackTone.danger => tokens.danger,
           KlpFeedbackTone.info => tokens.info,
-          KlpFeedbackTone.neutral => tokens.text,
+          KlpFeedbackTone.neutral => klp.selectedSurface,
         };
       } else {
-        activeBg = tokens.text;
+        activeBg = klp.selectedSurface;
       }
     } else {
-      activeBg = tokens.text;
+      activeBg = klp.selectedSurface;
     }
 
     return Container(
@@ -153,10 +161,12 @@ class _KlpPhaseSegment<T> extends StatelessWidget {
         KlpFeedbackTone.danger => isDark ? tokens.text : tokens.surface,
         KlpFeedbackTone.info => isDark ? tokens.text : tokens.surface,
         KlpFeedbackTone.warning => isDark ? tokens.surface : tokens.text,
-        KlpFeedbackTone.neutral => tokens.onBackground(tokens.text).text,
+        // 中性選取的底色是中性表面，前景就維持一般文字色並升到 primary——
+        // 那是準則 §2.1 要求的第二個訊號（選取不能只靠顏色）。
+        KlpFeedbackTone.neutral => tokens.text,
       };
     } else {
-      activeFg = tokens.onBackground(tokens.text).text;
+      activeFg = tokens.text;
     }
 
     final fg = !enabled

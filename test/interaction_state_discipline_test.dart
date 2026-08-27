@@ -278,4 +278,49 @@ void main() {
           '若內容與填色是兄弟節點且填色在後，不透明的填色會整片蓋住它。',
     );
   });
+
+  testWidgets('模式切換的選取態不得使用 accent', (tester) async {
+    // 準則第 5 條 ＋ §4.1：模式切換的選取態同樣不得用 accent，要用填色 ＋ 圖示升階。
+    // 先前 KlpPhaseToggle 預設拿 tokens.text（亮態近黑）當選取底色，讓它和
+    // 「這是主要動作」用同一個視覺語言說話。
+    late KlpTheme klp;
+    await tester.pumpWidget(
+      MaterialApp(
+        theme: buildKlpTheme(Brightness.light),
+        home: Builder(
+          builder: (context) {
+            klp = context.klp;
+            return Scaffold(
+              body: KlpPhaseToggle<int>(
+                options: const [
+                  KlpPhaseOption(value: 0, label: 'A'),
+                  KlpPhaseOption(value: 1, label: 'B'),
+                ],
+                selected: 0,
+                onSelected: (_) {},
+              ),
+            );
+          },
+        ),
+      ),
+    );
+
+    final fills = tester
+        .widgetList<DecoratedBox>(find.byType(DecoratedBox))
+        .map((box) => (box.decoration as BoxDecoration).color)
+        .whereType<Color>()
+        .map((color) => color.toARGB32())
+        .toSet();
+
+    expect(
+      fills,
+      isNot(contains(klp.color.accent.toARGB32())),
+      reason: '選取格用了 accent',
+    );
+    expect(
+      fills,
+      isNot(contains(klp.color.text.toARGB32())),
+      reason: '選取格用了前景色當底，效果與 accent 相同——亮態下就是一塊高對比黑',
+    );
+  });
 }

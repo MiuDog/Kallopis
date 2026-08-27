@@ -133,7 +133,7 @@ graph TD
 | `KlpMotionTheme` | 139 | （葉節點） |
 | `KlpOpticalGeometry` | 34 | （葉節點） |
 | `KlpShapeTheme` | 150 | （葉節點） |
-| `KlpSpacingTheme` | 571 | （葉節點） |
+| `KlpSpacingTheme` | 575 | （葉節點） |
 | `KlpSurfaceSeparation` | 19 | （葉節點） |
 | `KlpSurfaceTheme` | 282 | （葉節點） |
 | `KlpTheme` | 142 | `KlpVisualStyle` |
@@ -417,7 +417,7 @@ graph LR
 | `KlpIconButton` | 84 | `KlpIcon`、`KlpTooltip` |
 | `KlpIconButtonTone` | 13 | （葉節點） |
 | `KlpPhaseOption` | 19 | （葉節點） |
-| `KlpPhaseToggle` | 169 | `KlpIcon`、`KlpText` |
+| `KlpPhaseToggle` | 179 | `KlpIcon`、`KlpText` |
 | `KlpRadioGroup` | 133 | `KlpText` |
 | `KlpSegmentedControl` | 152 | `KlpIcon`、`KlpText` |
 | `KlpSelect` | 84 | `KlpIcon`、`KlpStrokeFrame`、`KlpText` |
