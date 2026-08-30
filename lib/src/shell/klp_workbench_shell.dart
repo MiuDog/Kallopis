@@ -41,14 +41,14 @@ class KlpWorkbenchShell extends StatelessWidget {
   /// 相鄰欄位之間的單一留白與拖曳命中寬度。
   ///
   /// 這是舊版的 shared-gap 模式；只有明確指定時才啟用。`null` 時每個 pane
-  /// 預設各自擁有四周緊湊留白。
+  /// 預設各自擁有四周半個緊湊留白。
   final double? paneGap;
 
   /// 各欄位各自擁有的四周留白。
   ///
   /// 指定後，Primary、Stage、Secondary 會分別在自己的版面範圍內套用此留白；
   /// resize handle 疊在兩側欄位的留白區，不再額外佔用欄間寬度。
-  /// `null` 且未指定 [paneGap] 時使用完整的語意緊湊間距。
+  /// `null` 且未指定 [paneGap] 時使用半個語意緊湊間距。
   final EdgeInsetsGeometry? panePadding;
 
   @override
@@ -59,7 +59,7 @@ class KlpWorkbenchShell extends StatelessWidget {
     final effectiveSecondaryWidth =
         secondaryWidth ?? geometry.secondaryPaneWidth;
     final compact = context.klp.space.compact;
-    final paneInset = compact;
+    final paneInset = compact / 2;
     final usesIndividualPanePadding = panePadding != null || paneGap == null;
     final effectivePadding =
         padding ??

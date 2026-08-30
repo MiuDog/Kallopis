@@ -153,12 +153,12 @@ void main() {
 
       expect(headerRect.left, shellRect.left);
       expect(headerRect.right, shellRect.right);
-      expect(primaryRect.left - shellRect.left, compact);
-      expect(primaryRect.top - shellRect.top, compact);
-      expect(shellRect.bottom - primaryRect.bottom, compact);
-      expect(stageRect.left - primaryRect.right, compact * 2);
-      expect(secondaryRect.left - stageRect.right, compact * 2);
-      expect(shellRect.right - secondaryRect.right, compact);
+      expect(primaryRect.left - shellRect.left, compact / 2);
+      expect(primaryRect.top - shellRect.top, compact / 2);
+      expect(shellRect.bottom - primaryRect.bottom, compact / 2);
+      expect(stageRect.left - primaryRect.right, compact);
+      expect(secondaryRect.left - stageRect.right, compact);
+      expect(shellRect.right - secondaryRect.right, compact / 2);
 
       final primaryHandleRect = tester.getRect(
         find.byKey(const ValueKey('primary-pane-resize-handle')),
@@ -232,5 +232,82 @@ void main() {
     expect(stageBox.right - stageContent.right, compact);
     expect(stageContent.top - stageBox.top, headerHeight + compact);
     expect(stageBox.bottom - stageContent.bottom, compact);
+  });
+
+  testWidgets('panel and stage inset header, content, and footer on all sides', (
+    tester,
+  ) async {
+    await tester.pumpWidget(
+      const KlpApp(
+        showWindowHeader: false,
+        home: KlpAppScreen(
+          child: Row(
+            children: [
+              SizedBox(
+                key: ValueKey('panel-box'),
+                width: 300,
+                height: 320,
+                child: KlpPanelFrame(
+                  header: SizedBox(key: ValueKey('panel-header')),
+                  content: SizedBox(key: ValueKey('panel-content')),
+                  footer: SizedBox(key: ValueKey('panel-footer')),
+                ),
+              ),
+              SizedBox(
+                key: ValueKey('stage-frame-box'),
+                width: 300,
+                height: 320,
+                child: KlpStageFrame(
+                  header: SizedBox(key: ValueKey('stage-header')),
+                  content: SizedBox(key: ValueKey('stage-body')),
+                  status: SizedBox(key: ValueKey('stage-status')),
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+
+    final compact = tester
+        .element(find.byKey(const ValueKey('panel-box')))
+        .klp
+        .space
+        .compact;
+    for (final pair in const [
+      ('panel-box', 'panel-header'),
+      ('panel-box', 'panel-content'),
+      ('panel-box', 'panel-footer'),
+      ('stage-frame-box', 'stage-header'),
+      ('stage-frame-box', 'stage-body'),
+      ('stage-frame-box', 'stage-status'),
+    ]) {
+      final frame = tester.getRect(find.byKey(ValueKey(pair.$1)));
+      final region = tester.getRect(find.byKey(ValueKey(pair.$2)));
+      expect(region.left - frame.left, compact, reason: pair.$2);
+      expect(frame.right - region.right, compact, reason: pair.$2);
+    }
+
+    final panel = tester.getRect(find.byKey(const ValueKey('panel-box')));
+    final panelHeader = tester.getRect(
+      find.byKey(const ValueKey('panel-header')),
+    );
+    final panelFooter = tester.getRect(
+      find.byKey(const ValueKey('panel-footer')),
+    );
+    expect(panelHeader.top - panel.top, compact);
+    expect(panel.bottom - panelFooter.bottom, compact);
+
+    final stage = tester.getRect(
+      find.byKey(const ValueKey('stage-frame-box')),
+    );
+    final stageHeader = tester.getRect(
+      find.byKey(const ValueKey('stage-header')),
+    );
+    final stageStatus = tester.getRect(
+      find.byKey(const ValueKey('stage-status')),
+    );
+    expect(stageHeader.top - stage.top, compact);
+    expect(stage.bottom - stageStatus.bottom, compact);
   });
 }

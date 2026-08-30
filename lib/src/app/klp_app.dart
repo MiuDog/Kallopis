@@ -249,7 +249,7 @@ class _KlpAppState extends State<KlpApp> implements KlpAppController {
     }
 
     if (widget.showWindowHeader && content != null) {
-      final toolbarHeight = klpWindowHeaderHeight(effectiveStyle.spacing);
+      final toolbarHeight = klpWindowHeaderHeight(effectiveStyle.geometry);
       final header =
           widget.windowHeader ??
           KlpWindowHeader(

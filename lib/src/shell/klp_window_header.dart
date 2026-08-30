@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 import '../theme/klp_theme.dart';
-import '../theme/klp_spacing_theme.dart';
+import '../theme/klp_geometry_theme.dart';
 import '../typography/klp_text.dart';
 import 'internal/klp_window_header_extras.dart';
 import 'klp_window_controls.dart';
@@ -10,9 +10,9 @@ import 'klp_window_controls.dart';
 /// 視窗標題列的 App icon 固定槽位識別鍵。
 const String klpWindowAppIconSlotKey = 'klp-window-app-icon-slot';
 
-/// Header 總高度：上下各半個 compact inset 加上正方形 icon button。
-double klpWindowHeaderHeight(KlpSpacingTheme spacing) =>
-    spacing.compact + spacing.iconButton;
+/// Header 總高度與 App icon 的語意正方形尺寸一致。
+double klpWindowHeaderHeight(KlpGeometryTheme geometry) =>
+    geometry.layout.windowAppIconSize;
 
 /// 桌面平台視窗控制操作（最小化、最大化／還原、關閉、拖曳、限制尺寸）。
 abstract final class KlpWindowAction {
@@ -105,7 +105,7 @@ class KlpWindowHeader extends StatelessWidget implements PreferredSizeWidget {
   /// 標題純文字。
   final String? titleText;
 
-  /// 產品標題字體角色（預設為全寬細等寬字體角色 [KlpTextRole.label]）。
+  /// 產品標題字體角色（預設為細等寬字體角色 [KlpTextRole.label]）。
   final KlpTextRole titleRole;
 
   /// 應用程式圖示。
@@ -146,7 +146,7 @@ class KlpWindowHeader extends StatelessWidget implements PreferredSizeWidget {
 
   @override
   Size get preferredSize => Size.fromHeight(
-    height ?? klpWindowHeaderHeight(KlpSpacingTheme.comfortableDensity),
+    height ?? klpWindowHeaderHeight(KlpGeometryTheme.standard),
   );
 
   @override
@@ -154,7 +154,7 @@ class KlpWindowHeader extends StatelessWidget implements PreferredSizeWidget {
     final tokens = context.klpColors;
     final klp = context.klp;
     final layout = klp.geometry.layout;
-    final effectiveHeight = height ?? klpWindowHeaderHeight(klp.space);
+    final effectiveHeight = height ?? klpWindowHeaderHeight(klp.geometry);
     final effectivePlatform = platform ?? Theme.of(context).platform;
     final isMac = effectivePlatform == TargetPlatform.macOS;
 
@@ -165,7 +165,7 @@ class KlpWindowHeader extends StatelessWidget implements PreferredSizeWidget {
             : const SizedBox.shrink());
 
     final Widget identityWidget = SizedBox(
-      height: klp.space.iconButton,
+      height: layout.windowAppIconSize,
       child: buildKlpWindowHeaderRegion(
         alignment: AlignmentDirectional.centerStart,
         children: [
@@ -197,7 +197,7 @@ class KlpWindowHeader extends StatelessWidget implements PreferredSizeWidget {
       child: SizedBox(
         height: effectiveHeight,
         child: Padding(
-          padding: EdgeInsets.all(klp.space.compact / 2),
+          padding: EdgeInsets.symmetric(horizontal: klp.space.compact / 2),
           child: isMac
               ? _buildMacLayout(
                   context,

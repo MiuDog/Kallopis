@@ -285,7 +285,7 @@ class KlpFileExplorerSectionView extends StatelessWidget {
                   Expanded(
                     child: KlpText(
                       section.title,
-                      role: KlpTextRole.code,
+                      role: KlpTextRole.sub,
                       tone: KlpTextTone.muted,
                     ),
                   ),

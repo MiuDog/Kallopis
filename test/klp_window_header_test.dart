@@ -43,7 +43,9 @@ void main() {
     expect(minimizeFinder, findsOneWidget);
     expect(
       tester.getSize(minimizeFinder),
-      Size.square(tester.element(minimizeFinder).klp.space.iconButton),
+      Size.square(
+        tester.element(minimizeFinder).klp.geometry.layout.windowAppIconSize,
+      ),
     );
 
     final mouse = await tester.createGesture(kind: PointerDeviceKind.mouse);
@@ -100,12 +102,13 @@ void main() {
 
     final space = tester.element(closeFinder).klp.space;
     final inset = space.compact / 2;
+    final geometry = tester.element(closeFinder).klp.geometry;
     final headerRect = tester.getRect(find.byType(KlpWindowHeader));
     final closeRect = tester.getRect(closeFinder);
-    expect(headerRect.height, klpWindowHeaderHeight(space));
-    expect(closeRect.top, headerRect.top + inset);
+    expect(headerRect.height, klpWindowHeaderHeight(geometry));
+    expect(closeRect.top, headerRect.top);
     expect(closeRect.right, headerRect.right - inset);
-    expect(closeRect.bottom, headerRect.bottom - inset);
+    expect(closeRect.bottom, headerRect.bottom);
     await tester.tap(closeFinder);
     expect(closed, isTrue);
   });

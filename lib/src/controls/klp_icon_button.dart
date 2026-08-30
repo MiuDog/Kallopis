@@ -19,6 +19,15 @@ enum KlpIconButtonTone {
   inline,
 }
 
+/// 圖示按鈕的語意尺寸。
+enum KlpIconButtonSize {
+  /// 一般控制項尺寸。
+  standard,
+
+  /// 視窗標題列尺寸，與 App icon 的正方形槽位一致。
+  window,
+}
+
 /// 只有圖示的按鈕。`label` 為必填且用於無障礙標註——圖示本身沒有可讀文字，
 /// 沒有 label 的圖示按鈕對螢幕閱讀器等於不存在。
 class KlpIconButton extends StatefulWidget {
@@ -30,6 +39,7 @@ class KlpIconButton extends StatefulWidget {
     this.selected = false,
     this.quarterTurns = 0,
     this.tone = KlpIconButtonTone.standalone,
+    this.size = KlpIconButtonSize.standard,
   });
 
   final String icon;
@@ -37,6 +47,7 @@ class KlpIconButton extends StatefulWidget {
   final VoidCallback? onPressed;
   final bool selected;
   final int quarterTurns;
+  final KlpIconButtonSize size;
 
   /// 見 [KlpIconButtonTone]。預設為 [KlpIconButtonTone.standalone]，
   /// 維持既有呼叫端的外觀不變。
@@ -54,6 +65,10 @@ class _KlpIconButtonState extends State<KlpIconButton> {
   Widget build(BuildContext context) {
     final tokens = context.klpColors;
     final klp = context.klp;
+    final dimension = switch (widget.size) {
+      KlpIconButtonSize.standard => klp.space.iconButton,
+      KlpIconButtonSize.window => klp.geometry.layout.windowAppIconSize,
+    };
     final active = (_hovered || _focused) && widget.onPressed != null;
 
     // 靜置狀態由 tone 決定；hover／focus／selected 兩種 tone 一致，
@@ -78,12 +93,15 @@ class _KlpIconButtonState extends State<KlpIconButton> {
         onFocusChange: (value) => setState(() => _focused = value),
         borderRadius: BorderRadius.circular(klp.shape.control),
         child: SizedBox.square(
-          dimension: klp.space.iconButton,
+          dimension: dimension,
           child: Center(
             child: RotatedBox(
               quarterTurns: widget.quarterTurns,
               child: KlpIcon(
                 widget.icon,
+                size: widget.size == KlpIconButtonSize.window
+                    ? klp.space.iconSmall
+                    : null,
                 color: widget.onPressed == null
                     ? tokens.textFaint
                     : tokens.text,

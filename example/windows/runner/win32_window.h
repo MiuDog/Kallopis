@@ -87,6 +87,18 @@ class Win32Window {
                                   WPARAM const wparam,
                                   LPARAM const lparam) noexcept;
 
+  // 讓鋪滿 client area 的 Flutter 子視窗把外圈命中交還頂層視窗。
+  static LRESULT CALLBACK ChildWindowSubclassProc(
+      HWND const window,
+      UINT const message,
+      WPARAM const wparam,
+      LPARAM const lparam,
+      UINT_PTR const subclass_id,
+      DWORD_PTR const reference_data) noexcept;
+
+  // 解析螢幕座標是否落在頂層視窗的原生縮放邊界。
+  LRESULT HitTestResizeBorder(LPARAM const lparam) const noexcept;
+
   // Retrieves a class instance pointer for |window|
   static Win32Window* GetThisFromHandle(HWND const window) noexcept;
 

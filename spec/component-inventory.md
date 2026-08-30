@@ -6,7 +6,7 @@
 
 ## 總覽
 
-- 公開型別 **299** 個，其中 widget **174** 個
+- 公開型別 **300** 個，其中 widget **174** 個
 - 分為 **18** 個領域
 
 ### 領域之間的依賴方向
@@ -401,7 +401,7 @@ graph LR
 
 ### controls — 控制項
 
-型別 22 個，widget 15 個。
+型別 23 個，widget 15 個。
 
 | 型別 | 行數 | 組成 |
 |---|---|---|
@@ -412,8 +412,9 @@ graph LR
 | `KlpComboboxOption` | 23 | （葉節點） |
 | `KlpCompactSwitch` | 58 | `KlpPressable` |
 | `KlpControlSize` | 1 | （葉節點） |
-| `KlpIconButton` | 84 | `KlpIcon`、`KlpTooltip` |
-| `KlpIconButtonTone` | 13 | （葉節點） |
+| `KlpIconButton` | 93 | `KlpIcon`、`KlpTooltip` |
+| `KlpIconButtonSize` | 10 | （葉節點） |
+| `KlpIconButtonTone` | 12 | （葉節點） |
 | `KlpPhaseOption` | 19 | （葉節點） |
 | `KlpPhaseToggle` | 167 | `KlpIcon`、`KlpText` |
 | `KlpRadioGroup` | 133 | `KlpText` |
@@ -1021,13 +1022,13 @@ graph LR
 | `KlpAppWindowHeader` | 26 | `KlpPanelHeader` |
 | `KlpContentState` | 3 | （葉節點） |
 | `KlpPaneCollapseControl` | 65 | `KlpIcon` |
-| `KlpPanelFrame` | 74 | `KlpTokenOverride` |
+| `KlpPanelFrame` | 71 | `KlpTokenOverride` |
 | `KlpPanelHeader` | 57 | `KlpText` |
-| `KlpPrimarySidebarFrame` | 46 | `KlpPanelFrame` |
+| `KlpPrimarySidebarFrame` | 33 | `KlpPanelFrame` |
 | `KlpResponsivePaneCoordinator` | 22 | （葉節點） |
 | `KlpSidebarFrame` | 33 | `KlpPanelFrame` |
 | `KlpSidebarIdentityHeader` | 63 | `KlpAvatar`、`KlpIcon`、`KlpSurface`、`KlpText` |
-| `KlpStageFrame` | 58 | `KlpTokenOverride` |
+| `KlpStageFrame` | 57 | `KlpTokenOverride` |
 | `KlpStageHeader` | 97 | `KlpText` |
 | `KlpStatusBar` | 44 | `KlpStatusIndicator`、`KlpText` |
 | `KlpThemePreviewMode` | 2 | （葉節點） |
@@ -1038,7 +1039,7 @@ graph LR
 | `KlpWindowControlsStyle` | 11 | （葉節點） |
 | `KlpWindowHeader` | 228 | `KlpText`、`KlpWindowControls` |
 | `KlpWorkbenchShell` | 250 | `KlpResizeHandle` |
-| `KlpWorkbenchWindowHeader` | 92 | `KlpIconButton`、`KlpWindowHeader` |
+| `KlpWorkbenchWindowHeader` | 93 | `KlpIconButton`、`KlpWindowHeader` |
 
 ```mermaid
 graph LR

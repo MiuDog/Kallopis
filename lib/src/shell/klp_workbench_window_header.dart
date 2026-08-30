@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../controls/klp_icon_button.dart';
 import '../foundation/klp_icons.dart';
-import '../theme/klp_spacing_theme.dart';
+import '../theme/klp_geometry_theme.dart';
 import '../theme/klp_theme.dart';
 import 'klp_window_header.dart';
 
@@ -45,18 +45,18 @@ class KlpWorkbenchWindowHeader extends StatelessWidget
 
   @override
   Size get preferredSize => Size.fromHeight(
-    klpWindowHeaderHeight(KlpSpacingTheme.comfortableDensity),
+    klpWindowHeaderHeight(KlpGeometryTheme.standard),
   );
 
   @override
   Widget build(BuildContext context) {
     final klp = context.klp;
     final layout = klp.geometry.layout;
-    final headerHeight = klpWindowHeaderHeight(klp.space);
+    final headerHeight = klpWindowHeaderHeight(klp.geometry);
     final toggleStart = primaryVisible
         ? klp.space.compact +
               primaryPaneWidth -
-              klp.space.iconButton -
+              layout.windowAppIconSize -
               klp.space.tight
         : klp.space.compact;
 
@@ -91,6 +91,7 @@ class KlpWorkbenchWindowHeader extends StatelessWidget
                 icon: primaryVisible ? KlpIcons.panelLeft : KlpIcons.panelRight,
                 label: primaryVisible ? collapseLabel : expandLabel,
                 onPressed: onTogglePrimary,
+                size: KlpIconButtonSize.window,
                 // 標題列本身已有背景；再給按鈕畫一塊底色，會讓它看起來像
                 // 貼在標題列上的色塊，而不是標題列的一部分。
                 tone: KlpIconButtonTone.inline,

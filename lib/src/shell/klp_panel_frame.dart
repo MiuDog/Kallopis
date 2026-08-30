@@ -26,10 +26,13 @@ class KlpPanelFrame extends StatelessWidget {
   final double? footerHeight;
   final Color? background;
 
-  /// 內容與面板之間的內距。預設使用 Workbench 的語意緊湊間距。
+  /// 面板可視邊界與其完整內容（header、content、footer）之間的內距。
+  /// 預設使用語意緊湊間距。
   final EdgeInsetsGeometry? padding;
 
-  /// 讓內容自行管理內距；用於 explorer 這類每列已具備水平節奏的面板。
+  /// 舊版只控制 content 內距的相容參數。面板現在固定由 [padding] 管理完整
+  /// 可視區域，因此此值不再移除面板四周內距。
+  @Deprecated('Use padding to configure the complete panel inset.')
   final bool flushContent;
 
   @override
@@ -49,29 +52,23 @@ class KlpPanelFrame extends StatelessWidget {
         ),
         child: KlpTokenOverride(
           colors: surfaceTokens,
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: [
-              SizedBox(
-                height: headerHeight ?? context.klp.space.chromeHeader,
-                child: header,
-              ),
-              Expanded(
-                child: Padding(
-                  padding:
-                      padding ??
-                      (flushContent
-                          ? EdgeInsets.zero
-                          : EdgeInsets.all(context.klp.space.compact)),
-                  child: content,
-                ),
-              ),
-              if (footer != null)
+          child: Padding(
+            padding: padding ?? EdgeInsets.all(context.klp.space.compact),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [
                 SizedBox(
-                  height: footerHeight ?? context.klp.space.chromeStatusBar,
-                  child: footer!,
+                  height: headerHeight ?? context.klp.space.chromeHeader,
+                  child: header,
                 ),
-            ],
+                Expanded(child: content),
+                if (footer != null)
+                  SizedBox(
+                    height: footerHeight ?? context.klp.space.chromeStatusBar,
+                    child: footer!,
+                  ),
+              ],
+            ),
           ),
         ),
       ),

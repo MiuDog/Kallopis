@@ -16,7 +16,8 @@ class KlpStageFrame extends StatelessWidget {
   final Widget content;
   final Widget? status;
 
-  /// 內容與舞台區之間的內距。預設使用 Workbench 的語意緊湊間距。
+  /// 舞台可視邊界與其完整內容（header、content、status）之間的內距。
+  /// 預設使用語意緊湊間距。
   final EdgeInsetsGeometry? padding;
 
   @override
@@ -34,27 +35,25 @@ class KlpStageFrame extends StatelessWidget {
         borderRadius: BorderRadius.circular(context.klp.shape.panel),
         child: KlpTokenOverride(
           colors: surfaceTokens,
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: [
-              ConstrainedBox(
-                constraints: BoxConstraints(
-                  minHeight: context.klp.space.chromeHeader,
+          child: Padding(
+            padding: padding ?? EdgeInsets.all(context.klp.space.compact),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [
+                ConstrainedBox(
+                  constraints: BoxConstraints(
+                    minHeight: context.klp.space.chromeHeader,
+                  ),
+                  child: header,
                 ),
-                child: header,
-              ),
-              Expanded(
-                child: Padding(
-                  padding: padding ?? EdgeInsets.all(context.klp.space.compact),
-                  child: content,
-                ),
-              ),
-              if (status != null)
-                SizedBox(
-                  height: context.klp.space.chromeStatusBar,
-                  child: status!,
-                ),
-            ],
+                Expanded(child: content),
+                if (status != null)
+                  SizedBox(
+                    height: context.klp.space.chromeStatusBar,
+                    child: status!,
+                  ),
+              ],
+            ),
           ),
         ),
       ),

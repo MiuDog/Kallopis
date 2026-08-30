@@ -46,6 +46,16 @@ void main() {
 
     // 初始狀態：包含分類「筆記」、資料夾「規格文件」、檔案「ADR-0003」
     expect(find.text('筆記'), findsOneWidget);
+    final sectionText = tester.widget<KlpText>(
+      find.widgetWithText(KlpText, '筆記'),
+    );
+    expect(sectionText.role, KlpTextRole.sub);
+    final sectionDefinition = KlpTextStyles.definitionOf(
+      sectionText.role,
+      tester.element(find.text('筆記')).klp.type,
+    );
+    expect(sectionDefinition.fontSize, 14);
+    expect(sectionDefinition.family, KlpFontRole.ui);
     expect(find.text('規格文件'), findsOneWidget);
     expect(find.text('ADR-0003 : 團隊導向'), findsOneWidget);
     // 子檔案尚未展開
