@@ -128,7 +128,7 @@ void main() {
       await tester.pumpWidget(
         KlpApp(
           title: 'Kallopis',
-          appIcon: const Icon(Icons.edit, key: ValueKey('app-icon')),
+          appIcon: const KlpIcon(KlpIcons.edit, key: ValueKey('app-icon')),
           home: KlpAppScreen(
             child: KlpWorkbenchShell(
               onPrimaryWidthChanged: (_) {},
@@ -298,9 +298,7 @@ void main() {
     expect(panelHeader.top - panel.top, compact);
     expect(panel.bottom - panelFooter.bottom, compact);
 
-    final stage = tester.getRect(
-      find.byKey(const ValueKey('stage-frame-box')),
-    );
+    final stage = tester.getRect(find.byKey(const ValueKey('stage-frame-box')));
     final stageHeader = tester.getRect(
       find.byKey(const ValueKey('stage-header')),
     );

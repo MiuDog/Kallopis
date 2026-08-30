@@ -1,6 +1,7 @@
 import 'package:flutter/widgets.dart';
 
 import '../data/klp_list_tile.dart';
+import '../foundation/klp_icon.dart';
 import '../surface/klp_surface.dart';
 import '../theme/klp_theme.dart';
 import '../typography/klp_text.dart';
@@ -55,7 +56,7 @@ class KlpSettingsNavigationItem extends StatelessWidget {
   });
 
   final String title;
-  final String? icon;
+  final KlpIconData? icon;
   final Widget? trailing;
   final bool selected;
   final VoidCallback? onPressed;

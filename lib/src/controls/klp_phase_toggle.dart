@@ -18,7 +18,7 @@ class KlpPhaseOption<T> {
 
   final T value;
   final String? label;
-  final String? icon;
+  final KlpIconData? icon;
   final KlpFeedbackTone? activeTone;
   final Color? activeColor;
 }

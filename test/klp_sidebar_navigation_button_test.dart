@@ -4,7 +4,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:kallopis/kallopis.dart';
 
+import 'test_fonts.dart';
+
 void main() {
+  setUpAll(loadKlpIconFont);
+
   Widget buildSubject({
     required VoidCallback? onPressed,
     bool selected = false,

@@ -1068,7 +1068,7 @@ final layoutInteractionPage = CatalogPageData(
         120,
         const KlpApp(
           title: 'Kallopis',
-          appIcon: FlutterLogo(),
+          appIcon: KlpIcon(KlpIcons.sparkles),
           home: KlpAppScreen(child: Center(child: KlpText('KlpApp'))),
         ),
       ),

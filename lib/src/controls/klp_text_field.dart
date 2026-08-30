@@ -45,7 +45,7 @@ class KlpTextField extends StatefulWidget {
   final String? placeholder;
   final String? helper;
   final String? error;
-  final String? leadingIcon;
+  final KlpIconData? leadingIcon;
   final String? initialValue;
 
   /// 外部持有的文字控制器。多數呼叫端不需要——沒有給時本元件用 `initialValue`

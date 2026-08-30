@@ -24,7 +24,7 @@ void main() {
         child: KlpWindowHeader(
           titleText: 'Planist',
           platform: TargetPlatform.windows,
-          appIcon: const Icon(Icons.circle, key: ValueKey('app-icon')),
+          appIcon: KlpIcon(KlpIcons.circle, key: ValueKey('app-icon')),
           onMinimize: () => minimized = true,
           onToggleMaximize: () => maximized = true,
           onClose: () => closed = true,
@@ -170,7 +170,7 @@ void main() {
             child: KlpWindowHeader(
               titleText: 'A deliberately long application title',
               platform: TargetPlatform.windows,
-              appIcon: const Icon(Icons.circle),
+              appIcon: const KlpIcon(KlpIcons.circle),
               onClose: () => closed = true,
             ),
           ),
@@ -237,7 +237,7 @@ void main() {
         child: const KlpWindowHeader(
           titleText: 'Planist Mac',
           platform: TargetPlatform.macOS,
-          appIcon: Icon(Icons.circle, key: ValueKey('mac-app-icon')),
+          appIcon: KlpIcon(KlpIcons.circle, key: ValueKey('mac-app-icon')),
         ),
       ),
     );

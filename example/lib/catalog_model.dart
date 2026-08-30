@@ -1,4 +1,5 @@
 import 'package:flutter/widgets.dart';
+import 'package:kallopis/kallopis.dart';
 
 /// 一個元件的展示。
 ///
@@ -36,7 +37,7 @@ class CatalogPageData {
   final String label;
   final String title;
   final String description;
-  final String icon;
+  final KlpIconData icon;
 
   /// 這一頁負責展示的元件。
   final List<Specimen> specimens;

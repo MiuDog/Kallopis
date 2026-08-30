@@ -1,5 +1,6 @@
 import 'package:flutter/widgets.dart';
 
+import '../foundation/klp_icon.dart';
 import '../foundation/klp_icons.dart';
 import '../theme/klp_theme.dart';
 
@@ -16,7 +17,7 @@ extension KlpFeedbackToneStyle on KlpFeedbackTone {
     };
   }
 
-  String get icon => switch (this) {
+  KlpIconData get icon => switch (this) {
     KlpFeedbackTone.info => KlpIcons.infoSquare,
     KlpFeedbackTone.success => KlpIcons.checkSquare,
     KlpFeedbackTone.warning => KlpIcons.alertSquare,

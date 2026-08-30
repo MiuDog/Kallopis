@@ -15,8 +15,6 @@ dependencies:
   flutter:
     sdk: flutter
 
-  flutter_svg: ^2.2.1
-
 dev_dependencies:
   crypto: ^3.0.7
 
@@ -29,8 +27,8 @@ flutter:
   uses-material-design: false
 
   assets:
-    - assets/icons/ui_oval/
     - assets/fonts/OFL-IBM-Plex.txt
+    - assets/fonts/LICENSE-FLATICON-UICONS.txt
 
   fonts:
     - family: IBM Plex Mono
@@ -49,3 +47,7 @@ flutter:
           weight: 600
         - asset: assets/fonts/IBMPlexSansTC-Bold.ttf
           weight: 700
+    - family: Flaticon UIcons Regular Rounded
+      fonts:
+        - asset: assets/fonts/FlaticonUIcons-RegularRounded.ttf
+          weight: 400

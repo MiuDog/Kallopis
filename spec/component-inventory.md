@@ -6,7 +6,7 @@
 
 ## 總覽
 
-- 公開型別 **300** 個，其中 widget **174** 個
+- 公開型別 **301** 個，其中 widget **174** 個
 - 分為 **18** 個領域
 
 ### 領域之間的依賴方向
@@ -169,7 +169,7 @@ graph LR
 
 ### foundation — 圖示、色盤、度量
 
-型別 21 個，widget 4 個。
+型別 22 個，widget 4 個。
 
 | 型別 | 行數 | 組成 |
 |---|---|---|
@@ -180,8 +180,9 @@ graph LR
 | `KlpElevation` | 14 | （葉節點） |
 | `KlpFormMetrics` | 18 | （葉節點） |
 | `KlpGeometricSpinner` | 164 | （葉節點） |
-| `KlpIcon` | 34 | （葉節點） |
-| `KlpIcons` | 82 | （葉節點） |
+| `KlpIcon` | 38 | （葉節點） |
+| `KlpIconData` | 6 | （葉節點） |
+| `KlpIcons` | 56 | `KlpIconData` |
 | `KlpInlineCode` | 54 | （葉節點） |
 | `KlpLayoutGap` | 8 | （葉節點） |
 | `KlpLine` | 13 | （葉節點） |
@@ -194,6 +195,16 @@ graph LR
 | `KlpSpace` | 16 | （葉節點） |
 | `KlpTransparency` | 4 | （葉節點） |
 | `KlpTypography` | 71 | （葉節點） |
+
+```mermaid
+graph LR
+  KlpIconData["KlpIconData"]
+  KlpIcons["KlpIcons"]
+  KlpIcons --> KlpIconData
+  classDef external stroke-dasharray: 4 3;
+```
+
+虛線框是其他領域的型別。
 
 ### typography — 文字
 

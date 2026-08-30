@@ -2,7 +2,11 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:kallopis/kallopis.dart';
 
+import 'test_fonts.dart';
+
 void main() {
+  setUpAll(loadKlpIconFont);
+
   testWidgets('renders the shared two-line stage identity', (tester) async {
     await tester.pumpWidget(
       const KlpApp(

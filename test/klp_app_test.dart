@@ -103,7 +103,7 @@ void main() {
     await tester.pumpWidget(
       const KlpApp(
         title: 'Notist',
-        appIcon: Icon(Icons.edit, key: ValueKey('app_icon')),
+        appIcon: KlpIcon(KlpIcons.edit, key: ValueKey('app_icon')),
         home: SizedBox.shrink(),
       ),
     );

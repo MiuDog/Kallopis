@@ -65,7 +65,7 @@ class KlpFileExplorerItem {
 
   final String id;
   final String label;
-  final String? icon;
+  final KlpIconData? icon;
   final List<KlpFileExplorerItem> children;
   final bool expanded;
   final bool selected;

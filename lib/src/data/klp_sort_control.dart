@@ -16,7 +16,7 @@ class KlpSortControl extends StatelessWidget {
   final String label;
   final bool ascending;
   final VoidCallback? onPressed;
-  final String? icon;
+  final KlpIconData? icon;
 
   @override
   Widget build(BuildContext context) {

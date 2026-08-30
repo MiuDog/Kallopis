@@ -7,7 +7,7 @@ import '../theme/klp_theme.dart';
 class KlpSelectionOption {
   const KlpSelectionOption({required this.icon, required this.color});
 
-  final String icon;
+  final KlpIconData icon;
   final Color color;
 }
 

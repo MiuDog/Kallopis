@@ -64,7 +64,7 @@ class KlpMenuItemData {
   final String label;
   final VoidCallback onPressed;
   final Key? key;
-  final String? icon;
+  final KlpIconData? icon;
   final String? shortcut;
   final bool? toggleValue;
   final bool hasSubmenu;

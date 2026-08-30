@@ -14,7 +14,7 @@ class KlpEmptyState extends StatelessWidget {
     this.action,
   });
 
-  final String icon;
+  final KlpIconData icon;
   final String title;
   final String message;
   final Widget? action;

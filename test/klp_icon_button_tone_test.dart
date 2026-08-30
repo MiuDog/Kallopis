@@ -5,7 +5,11 @@ import 'package:flutter/services.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:kallopis/kallopis.dart';
 
+import 'test_fonts.dart';
+
 void main() {
+  setUpAll(loadKlpIconFont);
+
   const buttonKey = ValueKey('icon-button');
 
   Widget buildSubject({KlpIconButtonTone? tone, bool selected = false}) {

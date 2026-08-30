@@ -298,7 +298,7 @@ class KlpTreeNode {
 
   final String id;
   final String label;
-  final String? icon;
+  final KlpIconData? icon;
   final List<KlpTreeNode> children;
   final bool expanded;
   final bool selected;
@@ -743,7 +743,7 @@ class KlpFilePreview extends StatelessWidget {
 
   final String name;
   final String metadata;
-  final String icon;
+  final KlpIconData icon;
   final Widget? preview;
   final VoidCallback? onPressed;
   final KlpFilePreviewState state;

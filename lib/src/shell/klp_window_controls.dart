@@ -88,7 +88,7 @@ class _WindowControlButton extends StatefulWidget {
     this.destructive = false,
   });
 
-  final String icon;
+  final KlpIconData icon;
   final String label;
   final VoidCallback? onPressed;
   final bool destructive;

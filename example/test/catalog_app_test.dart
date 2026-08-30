@@ -7,7 +7,7 @@ void main() {
     final source = File('lib/main.dart').readAsStringSync();
 
     expect(source, contains('return KlpApp('));
-    expect(source, contains('appIcon: const FlutterLogo(),'));
-    expect(source, isNot(contains('FlutterLogo(size:')));
+    expect(source, contains('appIcon: const KlpIcon(KlpIcons.sparkles),'));
+    expect(source, isNot(contains('FlutterLogo')));
   });
 }

@@ -443,7 +443,7 @@ class _KlpCodeActionButton extends StatefulWidget {
     this.selected = false,
   });
 
-  final String icon;
+  final KlpIconData icon;
   final String label;
   final VoidCallback? onPressed;
   final bool selected;

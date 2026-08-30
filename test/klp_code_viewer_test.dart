@@ -3,8 +3,11 @@ import 'package:flutter/services.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:kallopis/kallopis.dart';
 
+import 'test_fonts.dart';
+
 void main() {
   setUpAll(() async {
+    await loadKlpIconFont();
     if (KlpTypography.monoFamily.isNotEmpty) {
       final mono = FontLoader(KlpTypography.monoFamily)
         ..addFont(rootBundle.load('assets/fonts/IBMPlexMono-Regular.ttf'));
