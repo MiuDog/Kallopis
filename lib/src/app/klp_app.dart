@@ -315,18 +315,24 @@ class _KlpAppFrame extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final headerInset = context.klp.space.compact / 2;
+    final headerRegionHeight = toolbarHeight + headerInset * 2;
+
     return LayoutBuilder(
       builder: (context, constraints) {
         final effectiveHeaderHeight = constraints.hasBoundedHeight
-            ? constraints.maxHeight.clamp(0.0, toolbarHeight).toDouble()
-            : toolbarHeight;
+            ? constraints.maxHeight.clamp(0.0, headerRegionHeight).toDouble()
+            : headerRegionHeight;
 
         return Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             SizedBox(
               height: effectiveHeaderHeight,
-              child: ClipRect(child: header),
+              child: Padding(
+                padding: EdgeInsets.all(headerInset),
+                child: ClipRect(child: header),
+              ),
             ),
             if (constraints.hasBoundedHeight) Expanded(child: body) else body,
           ],

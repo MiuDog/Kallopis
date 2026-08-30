@@ -110,6 +110,7 @@ void main() {
 
     final iconFinder = find.byKey(const ValueKey('app_icon'));
     final iconContext = tester.element(iconFinder);
+    final headerInset = iconContext.klp.space.compact / 2;
     final layout = iconContext.klp.geometry.layout;
     final headerRect = tester.getRect(find.byType(KlpWindowHeader));
     final fittedBoxFinder = find.ancestor(
@@ -120,6 +121,8 @@ void main() {
     final titleRect = tester.getRect(find.text('Notist'));
 
     expect(fittedBoxFinder, findsOneWidget);
+    expect(headerRect.left, headerInset);
+    expect(headerRect.top, headerInset);
     expect(headerRect.height, layout.windowToolbarHeight);
     expect(
       tester.getSize(fittedBoxFinder),
