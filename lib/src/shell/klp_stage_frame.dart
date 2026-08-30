@@ -45,11 +45,7 @@ class KlpStageFrame extends StatelessWidget {
               ),
               Expanded(
                 child: Padding(
-                  padding:
-                      padding ??
-                      EdgeInsets.all(
-                        context.klp.geometry.layout.workbenchCompactSpacing,
-                      ),
+                  padding: padding ?? EdgeInsets.all(context.klp.space.compact),
                   child: content,
                 ),
               ),

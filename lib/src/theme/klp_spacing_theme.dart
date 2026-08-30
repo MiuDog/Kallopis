@@ -225,7 +225,7 @@ class KlpSpacingTheme extends ThemeExtension<KlpSpacingTheme> {
     space24: KlpScale.space2400, // 96px
     hairline: KlpScale.space50, // 2px
     tight: KlpScale.space100, // 4px
-    compact: KlpScale.space250, // 10px
+    compact: KlpScale.space200, // 8px
     base: KlpScale.space400, // 16px (基準)
     comfortable: KlpScale.space600, // 24px
     loose: KlpScale.space800, // 32px

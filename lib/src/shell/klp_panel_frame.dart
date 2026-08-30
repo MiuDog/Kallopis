@@ -62,13 +62,7 @@ class KlpPanelFrame extends StatelessWidget {
                       padding ??
                       (flushContent
                           ? EdgeInsets.zero
-                          : EdgeInsets.all(
-                              context
-                                  .klp
-                                  .geometry
-                                  .layout
-                                  .workbenchCompactSpacing,
-                            )),
+                          : EdgeInsets.all(context.klp.space.compact)),
                   child: content,
                 ),
               ),

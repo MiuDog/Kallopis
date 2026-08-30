@@ -24,7 +24,7 @@ class KlpPrimarySidebarFrame extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final space = context.klp.space;
-    final compact = context.klp.geometry.layout.workbenchCompactSpacing;
+    final compact = space.compact;
 
     return KlpPanelFrame(
       headerHeight: space.controlHeightSmall,

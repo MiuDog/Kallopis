@@ -56,7 +56,7 @@ class KlpWorkbenchShell extends StatelessWidget {
     final effectivePrimaryWidth = primaryWidth ?? geometry.primaryPaneWidth;
     final effectiveSecondaryWidth =
         secondaryWidth ?? geometry.secondaryPaneWidth;
-    final compact = geometry.workbenchCompactSpacing;
+    final compact = context.klp.space.compact;
     final usesIndividualPanePadding = panePadding != null || paneGap == null;
     final effectivePadding =
         padding ??

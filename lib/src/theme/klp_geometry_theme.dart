@@ -72,7 +72,6 @@ class KlpGeometryTheme extends ThemeExtension<KlpGeometryTheme> {
       primaryPaneBreakpoint: KlpSize.primaryPaneBreakpoint,
       primaryPaneContentBreakpoint: KlpSize.primaryPaneContentBreakpoint,
       secondaryPaneBreakpoint: KlpSize.secondaryPaneBreakpoint,
-      workbenchCompactSpacing: KlpScale.space200,
       menuWidth: KlpSize.menu,
       menuHeaderHeight: KlpSize.menuHeader,
       menuItemHeight: KlpSize.menuItem,
@@ -84,8 +83,8 @@ class KlpGeometryTheme extends ThemeExtension<KlpGeometryTheme> {
       themePreviewTileWidth: 168,
       windowToolbarHeight: KlpSize.windowToolbar,
       windowControlButtonSize: KlpSize.windowControlButton,
-      windowToolbarPaddingStart: KlpScale.space250,
-      windowToolbarPaddingEnd: KlpScale.space250,
+      windowToolbarPaddingStart: KlpScale.space200,
+      windowToolbarPaddingEnd: KlpScale.space200,
       windowToolbarPaddingVertical:
           (KlpSize.windowToolbar - KlpSize.windowControlButton) / 2,
       windowAppIconSize: 18,

@@ -106,23 +106,13 @@ void main() {
       tester
           .getSize(find.byKey(const ValueKey('primary-pane-resize-handle')))
           .width,
-      tester
-          .element(find.byType(KlpWorkbenchShell))
-          .klp
-          .geometry
-          .layout
-          .workbenchCompactSpacing,
+      tester.element(find.byType(KlpWorkbenchShell)).klp.space.compact,
     );
     expect(
       tester
           .getSize(find.byKey(const ValueKey('secondary-pane-resize-handle')))
           .width,
-      tester
-          .element(find.byType(KlpWorkbenchShell))
-          .klp
-          .geometry
-          .layout
-          .workbenchCompactSpacing,
+      tester.element(find.byType(KlpWorkbenchShell)).klp.space.compact,
     );
     expect(tester.takeException(), isNull);
   });
@@ -152,12 +142,7 @@ void main() {
       );
 
       final shellFinder = find.byType(KlpWorkbenchShell);
-      final compact = tester
-          .element(shellFinder)
-          .klp
-          .geometry
-          .layout
-          .workbenchCompactSpacing;
+      final compact = tester.element(shellFinder).klp.space.compact;
       final headerRect = tester.getRect(find.byType(KlpWindowHeader));
       final shellRect = tester.getRect(shellFinder);
       final primaryRect = tester.getRect(find.byKey(const ValueKey('primary')));
@@ -236,7 +221,7 @@ void main() {
       find.byKey(const ValueKey('stage-content')),
     );
     final context = tester.element(find.byKey(const ValueKey('stage-content')));
-    final compact = context.klp.geometry.layout.workbenchCompactSpacing;
+    final compact = context.klp.space.compact;
     final headerHeight = context.klp.space.chromeHeader;
 
     expect(sidebarContent.left - sidebarBox.left, compact);
