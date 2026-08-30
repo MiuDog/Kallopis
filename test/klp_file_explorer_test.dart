@@ -4,6 +4,34 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:kallopis/kallopis.dart';
 
 void main() {
+  testWidgets('KlpFileExplorer 可將沒有子項目的節點明確呈現為資料夾', (tester) async {
+    await tester.pumpWidget(
+      MaterialApp(
+        theme: buildKlpTheme(Brightness.light),
+        home: const Scaffold(
+          body: KlpFileExplorer(
+            sections: [
+              KlpFileExplorerSection(
+                id: 'pages',
+                title: '頁面',
+                items: [
+                  KlpFileExplorerItem(
+                    id: 'empty-folder',
+                    label: '空資料夾',
+                    folder: true,
+                  ),
+                ],
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+
+    expect(find.byType(KlpFileExplorerFolderView), findsOneWidget);
+    expect(find.byType(KlpFileExplorerItemView), findsNothing);
+  });
+
   testWidgets('KlpFileExplorer 支援分類折疊、資料夾樹狀展開與檔案項目選取', (tester) async {
     String? selectedId = 'file-1';
 

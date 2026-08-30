@@ -55,6 +55,7 @@ class KlpFileExplorerItem {
     required this.label,
     this.icon,
     this.children = const [],
+    this.folder = false,
     this.expanded = false,
     this.selected = false,
     this.badge,
@@ -67,6 +68,7 @@ class KlpFileExplorerItem {
   final String label;
   final String? icon;
   final List<KlpFileExplorerItem> children;
+  final bool folder;
   final bool expanded;
   final bool selected;
   final String? badge;
@@ -74,7 +76,7 @@ class KlpFileExplorerItem {
   final Widget? trailing;
   final Object? data;
 
-  bool get isFolder => children.isNotEmpty;
+  bool get isFolder => folder || children.isNotEmpty;
 }
 
 /// 檔案瀏覽器（File Explorer）。
