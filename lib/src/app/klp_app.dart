@@ -301,7 +301,7 @@ class _KlpAppState extends State<KlpApp> implements KlpAppController {
   }
 }
 
-/// 在視窗轉場的暫時高度內，讓 Header 遵守父層約束而非撐破根版面。
+/// 統一管理 App 外圈與 Header inset，並在視窗轉場時遵守父層高度約束。
 class _KlpAppFrame extends StatelessWidget {
   const _KlpAppFrame({
     required this.header,
@@ -315,29 +315,31 @@ class _KlpAppFrame extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final headerInset = context.klp.space.compact / 2;
-    final headerRegionHeight = toolbarHeight + headerInset * 2;
+    final appInset = context.klp.space.compact / 2;
 
-    return LayoutBuilder(
-      builder: (context, constraints) {
-        final effectiveHeaderHeight = constraints.hasBoundedHeight
-            ? constraints.maxHeight.clamp(0.0, headerRegionHeight).toDouble()
-            : headerRegionHeight;
+    return Padding(
+      padding: EdgeInsets.all(appInset),
+      child: LayoutBuilder(
+        builder: (context, constraints) {
+          final effectiveHeaderHeight = constraints.hasBoundedHeight
+              ? constraints.maxHeight.clamp(0.0, toolbarHeight).toDouble()
+              : toolbarHeight;
 
-        return Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: [
-            SizedBox(
-              height: effectiveHeaderHeight,
-              child: Padding(
-                padding: EdgeInsets.all(headerInset),
-                child: ClipRect(child: header),
+          return Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              SizedBox(
+                height: effectiveHeaderHeight,
+                child: Padding(
+                  padding: EdgeInsets.all(appInset),
+                  child: ClipRect(child: header),
+                ),
               ),
-            ),
-            if (constraints.hasBoundedHeight) Expanded(child: body) else body,
-          ],
-        );
-      },
+              if (constraints.hasBoundedHeight) Expanded(child: body) else body,
+            ],
+          );
+        },
+      ),
     );
   }
 }

@@ -1036,7 +1036,7 @@ graph LR
 | `KlpWindowControls` | 135 | `KlpIcon`、`KlpTooltip` |
 | `KlpWindowControlsStyle` | 11 | （葉節點） |
 | `KlpWindowHeader` | 233 | `KlpText`、`KlpWindowControls` |
-| `KlpWorkbenchShell` | 248 | `KlpResizeHandle` |
+| `KlpWorkbenchShell` | 250 | `KlpResizeHandle` |
 | `KlpWorkbenchWindowHeader` | 90 | `KlpIconButton`、`KlpWindowHeader` |
 
 ```mermaid
@@ -1148,7 +1148,7 @@ graph LR
 
 | 型別 | 行數 | 組成 |
 |---|---|---|
-| `KlpApp` | 310 | `KlpLocalizationsDelegate`、`KlpRouterOutlet`、`KlpRouterScope`、`KlpWindowHeader` |
+| `KlpApp` | 312 | `KlpLocalizationsDelegate`、`KlpRouterOutlet`、`KlpRouterScope`、`KlpWindowHeader` |
 
 ```mermaid
 graph LR

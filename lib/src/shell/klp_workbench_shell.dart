@@ -32,8 +32,10 @@ class KlpWorkbenchShell extends StatelessWidget {
   final ValueChanged<double>? onPrimaryWidthChanged;
   final ValueChanged<double>? onSecondaryWidthChanged;
 
-  /// 外殼與三欄內容之間的留白；`null` 時頂部貼齊全寬 header，
-  /// 其餘三邊沿用緊湊間距。
+  /// 外殼與三欄內容之間的額外留白。
+  ///
+  /// `null` 且使用預設 individual-pane 模式時不重複加入 App 外圈留白；
+  /// 整體外圈由 `KlpApp` 統一管理。
   final EdgeInsetsGeometry? padding;
 
   /// 相鄰欄位之間的單一留白與拖曳命中寬度。
@@ -62,7 +64,7 @@ class KlpWorkbenchShell extends StatelessWidget {
     final effectivePadding =
         padding ??
         (usesIndividualPanePadding
-            ? EdgeInsets.all(paneInset)
+            ? EdgeInsets.zero
             : EdgeInsets.fromLTRB(compact, 0, compact, compact));
     final effectivePaneGap = paneGap ?? context.klp.space.compact;
 
