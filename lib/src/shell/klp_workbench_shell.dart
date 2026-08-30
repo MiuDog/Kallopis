@@ -19,8 +19,13 @@ class KlpWorkbenchShell extends StatelessWidget {
     this.onSecondaryWidthChanged,
     this.padding,
     this.paneGap,
+    this.paneMargin,
     this.panePadding,
-  }) : assert(paneGap == null || (paneGap >= 0 && paneGap != double.infinity));
+  }) : assert(paneGap == null || (paneGap >= 0 && paneGap != double.infinity)),
+       assert(
+         paneMargin == null || panePadding == null,
+         'paneMargin and panePadding cannot both be provided.',
+       );
 
   final Widget primary;
   final Widget stage;
@@ -34,21 +39,25 @@ class KlpWorkbenchShell extends StatelessWidget {
 
   /// 外殼與三欄內容之間的額外留白。
   ///
-  /// `null` 且使用預設 individual-pane 模式時不重複加入 App 外圈留白；
+  /// `null` 且使用預設 individual-pane 模式時不重複加入 App 外圈 margin；
   /// 整體外圈由 `KlpApp` 統一管理。
   final EdgeInsetsGeometry? padding;
 
   /// 相鄰欄位之間的單一留白與拖曳命中寬度。
   ///
   /// 這是舊版的 shared-gap 模式；只有明確指定時才啟用。`null` 時每個 pane
-  /// 預設各自擁有四周半個緊湊留白。
+  /// 預設各自擁有四周半個緊湊 margin。
   final double? paneGap;
 
-  /// 各欄位各自擁有的四周留白。
+  /// 各欄位可視表面之外的四周 margin。
   ///
-  /// 指定後，Primary、Stage、Secondary 會分別在自己的版面範圍內套用此留白；
-  /// resize handle 疊在兩側欄位的留白區，不再額外佔用欄間寬度。
+  /// Primary、Stage、Secondary 的表面與碰撞範圍不包含 margin；相鄰欄位各自
+  /// 貢獻一半 margin，resize handle 位於兩個可視表面之間的 margin 正中央。
   /// `null` 且未指定 [paneGap] 時使用半個語意緊湊間距。
+  final EdgeInsetsGeometry? paneMargin;
+
+  /// [paneMargin] 的舊名稱；此空間位於 pane 表面之外，不是 padding。
+  @Deprecated('Use paneMargin; this space is outside the pane surface.')
   final EdgeInsetsGeometry? panePadding;
 
   @override
@@ -59,17 +68,18 @@ class KlpWorkbenchShell extends StatelessWidget {
     final effectiveSecondaryWidth =
         secondaryWidth ?? geometry.secondaryPaneWidth;
     final compact = context.klp.space.compact;
-    final paneInset = compact / 2;
-    final usesIndividualPanePadding = panePadding != null || paneGap == null;
+    final paneMarginValue = paneMargin ?? panePadding;
+    final defaultPaneMargin = compact / 2;
+    final usesIndividualPaneMargin = paneMarginValue != null || paneGap == null;
     final effectivePadding =
         padding ??
-        (usesIndividualPanePadding
+        (usesIndividualPaneMargin
             ? EdgeInsets.zero
             : EdgeInsets.fromLTRB(compact, 0, compact, compact));
     final effectivePaneGap = paneGap ?? context.klp.space.compact;
 
-    if (usesIndividualPanePadding) {
-      return _KlpIndividuallyPaddedWorkbench(
+    if (usesIndividualPaneMargin) {
+      return _KlpIndividuallyMarginedWorkbench(
         primary: primary,
         stage: stage,
         secondary: secondary,
@@ -80,7 +90,7 @@ class KlpWorkbenchShell extends StatelessWidget {
         onPrimaryWidthChanged: onPrimaryWidthChanged,
         onSecondaryWidthChanged: onSecondaryWidthChanged,
         outerPadding: effectivePadding,
-        panePadding: panePadding ?? EdgeInsets.all(paneInset),
+        paneMargin: paneMarginValue ?? EdgeInsets.all(defaultPaneMargin),
         resizeHandleWidth: compact,
       );
     }
@@ -140,8 +150,8 @@ class KlpWorkbenchShell extends StatelessWidget {
   }
 }
 
-class _KlpIndividuallyPaddedWorkbench extends StatelessWidget {
-  const _KlpIndividuallyPaddedWorkbench({
+class _KlpIndividuallyMarginedWorkbench extends StatelessWidget {
+  const _KlpIndividuallyMarginedWorkbench({
     required this.primary,
     required this.stage,
     required this.secondary,
@@ -152,7 +162,7 @@ class _KlpIndividuallyPaddedWorkbench extends StatelessWidget {
     required this.onPrimaryWidthChanged,
     required this.onSecondaryWidthChanged,
     required this.outerPadding,
-    required this.panePadding,
+    required this.paneMargin,
     required this.resizeHandleWidth,
   });
 
@@ -166,13 +176,13 @@ class _KlpIndividuallyPaddedWorkbench extends StatelessWidget {
   final ValueChanged<double>? onPrimaryWidthChanged;
   final ValueChanged<double>? onSecondaryWidthChanged;
   final EdgeInsetsGeometry outerPadding;
-  final EdgeInsetsGeometry panePadding;
+  final EdgeInsetsGeometry paneMargin;
   final double resizeHandleWidth;
 
   @override
   Widget build(BuildContext context) {
     final geometry = context.klp.geometry.layout;
-    final resolvedPadding = panePadding.resolve(Directionality.of(context));
+    final resolvedMargin = paneMargin.resolve(Directionality.of(context));
 
     return LayoutBuilder(
       builder: (context, constraints) {
@@ -203,18 +213,15 @@ class _KlpIndividuallyPaddedWorkbench extends StatelessWidget {
                       if (showPrimary)
                         SizedBox(
                           width: resolvedPrimaryWidth,
-                          child: Padding(padding: panePadding, child: primary),
+                          child: Padding(padding: paneMargin, child: primary),
                         ),
                       Expanded(
-                        child: Padding(padding: panePadding, child: stage),
+                        child: Padding(padding: paneMargin, child: stage),
                       ),
                       if (showSecondary)
                         SizedBox(
                           width: secondaryWidth,
-                          child: Padding(
-                            padding: panePadding,
-                            child: secondary,
-                          ),
+                          child: Padding(padding: paneMargin, child: secondary),
                         ),
                     ],
                   ),
@@ -222,8 +229,8 @@ class _KlpIndividuallyPaddedWorkbench extends StatelessWidget {
                 if (showPrimaryContent && onPrimaryWidthChanged != null)
                   PositionedDirectional(
                     start: resolvedPrimaryWidth - resizeHandleWidth / 2,
-                    top: resolvedPadding.top,
-                    bottom: resolvedPadding.bottom,
+                    top: resolvedMargin.top,
+                    bottom: resolvedMargin.bottom,
                     width: resizeHandleWidth,
                     child: KlpResizeHandle(
                       key: const ValueKey('primary-pane-resize-handle'),
@@ -236,8 +243,8 @@ class _KlpIndividuallyPaddedWorkbench extends StatelessWidget {
                 if (showSecondary && onSecondaryWidthChanged != null)
                   PositionedDirectional(
                     end: secondaryWidth - resizeHandleWidth / 2,
-                    top: resolvedPadding.top,
-                    bottom: resolvedPadding.bottom,
+                    top: resolvedMargin.top,
+                    bottom: resolvedMargin.bottom,
                     width: resizeHandleWidth,
                     child: KlpResizeHandle(
                       key: const ValueKey('secondary-pane-resize-handle'),

@@ -11,7 +11,10 @@ import 'klp_window_controls.dart';
 /// 視窗標題列的 App icon 固定槽位識別鍵。
 const String klpWindowAppIconSlotKey = 'klp-window-app-icon-slot';
 
-/// Header 外框高度；內容高度加上上下各半個 compact insert。
+/// 視窗標題列可視表面的識別鍵；不包含四周 margin。
+const String klpWindowHeaderSurfaceKey = 'klp-window-header-surface';
+
+/// Header 版面占位高度；內容高度加上上下各半個 compact margin。
 double klpWindowHeaderHeight(KlpGeometryTheme geometry, {double? compact}) =>
     geometry.layout.windowHeaderHeight +
     (compact ?? KlpSpacingTheme.comfortableDensity.compact);
@@ -125,7 +128,7 @@ class KlpWindowHeader extends StatelessWidget implements PreferredSizeWidget {
   /// 手動指定平台外觀風格（預設依系統環境判定）。
   final TargetPlatform? platform;
 
-  /// 標題列外框高度；未指定時為內容高度加上上下 insert。
+  /// 標題列版面占位高度；未指定時為內容高度加上上下 margin。
   final double? height;
 
   /// 標題列背景色（預設為視窗底色 `tokens.app`）。
@@ -156,9 +159,13 @@ class KlpWindowHeader extends StatelessWidget implements PreferredSizeWidget {
     final tokens = context.klpColors;
     final klp = context.klp;
     final layout = klp.geometry.layout;
-    final headerInset = klp.space.compact / 2;
+    final headerMargin = klp.space.compact / 2;
     final effectiveHeight =
-        height ?? layout.windowHeaderHeight + headerInset * 2;
+        height ?? layout.windowHeaderHeight + headerMargin * 2;
+    final surfaceHeight = (effectiveHeight - headerMargin * 2).clamp(
+      0.0,
+      double.infinity,
+    );
     final effectivePlatform = platform ?? Theme.of(context).platform;
     final isMac = effectivePlatform == TargetPlatform.macOS;
 
@@ -196,12 +203,13 @@ class KlpWindowHeader extends StatelessWidget implements PreferredSizeWidget {
           )
         : const SizedBox.shrink();
 
-    return Material(
-      color: backgroundColor ?? tokens.app,
-      child: SizedBox(
-        height: effectiveHeight,
-        child: Padding(
-          padding: EdgeInsets.all(headerInset),
+    return Padding(
+      padding: EdgeInsets.all(headerMargin),
+      child: Material(
+        key: const ValueKey(klpWindowHeaderSurfaceKey),
+        color: backgroundColor ?? tokens.app,
+        child: SizedBox(
+          height: surfaceHeight,
           child: isMac
               ? _buildMacLayout(
                   context,

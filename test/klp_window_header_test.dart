@@ -114,14 +114,22 @@ void main() {
     expect(tester.widget<KlpIcon>(closeIcon).color, closeTokens.onStatus);
 
     final space = tester.element(closeFinder).klp.space;
-    final inset = space.compact / 2;
+    final margin = space.compact / 2;
     final geometry = tester.element(closeFinder).klp.geometry;
     final headerRect = tester.getRect(find.byType(KlpWindowHeader));
+    final surfaceRect = tester.getRect(
+      find.byKey(const ValueKey(klpWindowHeaderSurfaceKey)),
+    );
     final closeRect = tester.getRect(closeFinder);
     expect(headerRect.height, klpWindowHeaderHeight(geometry));
-    expect(closeRect.top, headerRect.top + inset);
-    expect(closeRect.right, headerRect.right - inset);
-    expect(closeRect.bottom, headerRect.bottom - inset);
+    expect(surfaceRect.height, geometry.layout.windowHeaderHeight);
+    expect(surfaceRect.top, headerRect.top + margin);
+    expect(surfaceRect.left, headerRect.left + margin);
+    expect(surfaceRect.right, headerRect.right - margin);
+    expect(surfaceRect.bottom, headerRect.bottom - margin);
+    expect(closeRect.top, surfaceRect.top);
+    expect(closeRect.right, surfaceRect.right);
+    expect(closeRect.bottom, surfaceRect.bottom);
     await tester.tap(closeFinder);
     expect(closed, isTrue);
   });
@@ -204,6 +212,17 @@ void main() {
           isMaximized: true,
         ),
       ),
+    );
+
+    final headerRect = tester.getRect(find.byType(KlpWindowHeader));
+    await tester.dragFrom(
+      Offset(headerRect.center.dx, headerRect.top + 1),
+      const Offset(20.0, 0.0),
+    );
+    expect(
+      calls.map((call) => call.method),
+      isNot(contains('drag')),
+      reason: 'Header margin 不屬於標題列碰撞範圍。',
     );
 
     await tester.drag(find.byType(KlpWindowHeader), const Offset(20.0, 0.0));

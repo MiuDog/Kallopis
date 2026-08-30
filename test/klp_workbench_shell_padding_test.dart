@@ -58,7 +58,7 @@ void main() {
     expect(tester.takeException(), isNull);
   });
 
-  testWidgets('each pane can own four-sided padding without extra gap', (
+  testWidgets('each pane can have four-sided margin without extra gap', (
     tester,
   ) async {
     tester.view.physicalSize = const Size(1280, 720);
@@ -72,7 +72,7 @@ void main() {
         home: KlpAppScreen(
           child: KlpWorkbenchShell(
             padding: EdgeInsets.zero,
-            panePadding: const EdgeInsets.all(8),
+            paneMargin: const EdgeInsets.all(8),
             primaryWidth: 280,
             secondaryWidth: 300,
             onPrimaryWidthChanged: (_) {},
@@ -234,7 +234,7 @@ void main() {
     expect(stageBox.bottom - stageContent.bottom, compact);
   });
 
-  testWidgets('panel and stage inset header, content, and footer on all sides', (
+  testWidgets('panel and stage pad header, content, and footer on all sides', (
     tester,
   ) async {
     await tester.pumpWidget(

@@ -1037,8 +1037,8 @@ graph LR
 | `KlpWindowAction` | 64 | （葉節點） |
 | `KlpWindowControls` | 135 | `KlpIcon`、`KlpTooltip` |
 | `KlpWindowControlsStyle` | 11 | （葉節點） |
-| `KlpWindowHeader` | 255 | `KlpText`、`KlpWindowControls` |
-| `KlpWorkbenchShell` | 250 | `KlpResizeHandle` |
+| `KlpWindowHeader` | 260 | `KlpText`、`KlpWindowControls` |
+| `KlpWorkbenchShell` | 257 | `KlpResizeHandle` |
 | `KlpWorkbenchWindowHeader` | 90 | `KlpIconButton`、`KlpWindowHeader` |
 
 ```mermaid

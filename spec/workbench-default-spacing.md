@@ -3,34 +3,38 @@
 ## Outcome
 
 `KlpWorkbenchShell` 與 shell panel 不需消費端指定 spacing，即可呈現一致的 Kallopis
-工作台版面：window header 維持全寬，panel 頂部緊接 header，左右、底部與
-相鄰 panel 之間使用相同留白，panel 內容則自帶一致內距。
+工作台版面。App padding、header／pane margin、panel 內部 padding 是三個不同
+幾何層，不再以 insert 混稱。
 
 ## In scope / out of scope
 
-- 範圍內：`KlpWorkbenchShell` 預設外距與欄距、`KlpPanelFrame`／`KlpSidebarFrame`／
-  `KlpStageFrame` 預設內容內距、Notist 移除同義覆寫。
-- 範圍外：個別產品頁面的內容排版、window header 內部圖示與控制按鈕幾何、色票與圓角。
+- 範圍內：`KlpWindowHeader` margin、`KlpWorkbenchShell` pane margin、
+  `KlpPanelFrame`／`KlpSidebarFrame`／`KlpStageFrame` 內容 padding。
+- 範圍外：個別產品頁面的內容排版、色票與圓角。
 
 ## Visual contract
 
-1. workbench 左右、底部與相鄰 panel 之間都解析為
-   `context.klp.space.compact`；頂部為 0，避免與全寬 header 重複留白。
-2. panel 內容四周預設解析為 `context.klp.space.base`。
-3. window header 不包進 workbench padding，外框仍與視窗左右邊界對齊。
-4. 消費端明確提供 `padding`、`paneGap` 或 panel `padding` 時，仍以消費端值為準。
+1. App 四周 padding 為半個 `space.compact`，背景仍填滿整個視窗。
+2. Header 可視表面高度為 24px，四周 margin 為半個 `space.compact`；margin
+   不屬於 Header 的繪製或碰撞範圍。
+3. 每個 pane 可視表面四周 margin 為半個 `space.compact`；兩個相鄰 pane
+   各自貢獻一半，因此可視表面之間合計為一個 `space.compact`。
+4. Resize handle 位於兩個 pane 可視表面之間的 margin 正中央。
+5. Panel 可視表面內部 padding 為一個 `space.compact`，屬於 Panel 自身。
+6. 從視窗頂端到 pane 可視表面的垂直節奏為 `8 + 24 + 8 = 40px`。
 
 ## Architecture constraints
 
-- 預設值只能讀取 `context.klp` semantic token，不可參照 primitive 或寫死數值。
-- Notist 不重複宣告與 Kallopis 預設相同的 spacing。
-- 本契約取代歷史發布任務中「未指定 `paneGap` 維持 `space.base`」的舊版相容條件。
+- 預設 spacing 只能讀取 `context.klp` semantic token，不可參照 primitive。
+- `paneMargin` 是正式 API；舊 `panePadding` 僅保留 deprecated 相容入口。
+- Margin 必須在可視表面與碰撞範圍之外；Padding 必須位於元件背景之內。
 
 ## Acceptance criteria
 
-1. 未傳入 spacing 的 `KlpWorkbenchShell`，頂部 gutter 為 0；左右、底部與
-   primary／stage／secondary 欄距皆等於 `space.compact`。
-2. 同一畫面中的 `KlpWindowHeader` bounds 維持全寬，只有 workbench panel 被內縮。
-3. 未傳入 panel padding 時，sidebar 與 stage 的內容四周皆等於 `space.base`。
-4. Notist 的 `KlpWorkbenchShell`、`KlpPanelFrame` 與 `KlpStageFrame` 不再傳入同義 spacing。
-5. 呼叫端覆寫 spacing 的既有測試繼續通過。
+1. Header surface bounds 比 Header 版面占位四周各縮半個 `space.compact`。
+2. 未傳入 spacing 的 `KlpWorkbenchShell`，相鄰 pane 表面距離為
+   `space.compact`，外側 margin 為其一半。
+3. Resize handle 中線等於兩個相鄰 pane 表面之間距的中線。
+4. 未傳入 panel padding 時，sidebar 與 stage 的完整內容四周皆等於
+   `space.compact`。
+5. 呼叫端仍可用 `padding`、`paneGap`、`paneMargin` 與 panel `padding` 覆寫。

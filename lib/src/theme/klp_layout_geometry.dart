@@ -44,7 +44,7 @@ class KlpLayoutGeometry {
   /// 顏色模式預覽磚的預設寬度。
   final double themePreviewTileWidth;
 
-  /// Header 可渲染內容高度；外框另加四周各半個 compact insert。
+  /// Header 可視表面高度；版面占位另加四周各半個 compact margin。
   final double windowHeaderHeight;
 
   /// 視窗 Header 內正方形控制按鈕的語意尺寸。
