@@ -119,10 +119,14 @@ void main() {
     );
     final iconRect = tester.getRect(fittedBoxFinder);
     final titleRect = tester.getRect(find.text('Notist'));
+    final appFrameBackground = tester.widget<ColoredBox>(
+      find.byKey(const ValueKey('klp-app-frame-background')),
+    );
 
     expect(fittedBoxFinder, findsOneWidget);
-    expect(headerRect.left, compact);
-    expect(headerRect.top, compact);
+    expect(appFrameBackground.color, iconContext.klpColors.app);
+    expect(headerRect.left, compact / 2);
+    expect(headerRect.top, compact / 2);
     expect(headerRect.height, layout.windowToolbarHeight - compact);
     expect(
       tester.getSize(fittedBoxFinder),

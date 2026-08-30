@@ -151,10 +151,8 @@ void main() {
         find.byKey(const ValueKey('secondary')),
       );
 
-      expect(headerRect.left - shellRect.left, compact / 2);
-      expect(shellRect.right - headerRect.right, compact / 2);
-      expect(headerRect.left, primaryRect.left);
-      expect(headerRect.right, secondaryRect.right);
+      expect(headerRect.left, shellRect.left);
+      expect(headerRect.right, shellRect.right);
       expect(primaryRect.left - shellRect.left, compact / 2);
       expect(primaryRect.top - shellRect.top, compact / 2);
       expect(shellRect.bottom - primaryRect.bottom, compact / 2);

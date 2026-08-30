@@ -301,7 +301,7 @@ class _KlpAppState extends State<KlpApp> implements KlpAppController {
   }
 }
 
-/// 統一管理 App 外圈與 Header inset，並在視窗轉場時遵守父層高度約束。
+/// 統一管理 App 外圈與縮短後的 Header 高度，並在視窗轉場時遵守父層約束。
 class _KlpAppFrame extends StatelessWidget {
   const _KlpAppFrame({
     required this.header,
@@ -316,29 +316,36 @@ class _KlpAppFrame extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final appInset = context.klp.space.compact / 2;
+    final headerHeight = (toolbarHeight - context.klp.space.compact)
+        .clamp(0.0, toolbarHeight)
+        .toDouble();
 
-    return Padding(
-      padding: EdgeInsets.all(appInset),
-      child: LayoutBuilder(
-        builder: (context, constraints) {
-          final effectiveHeaderHeight = constraints.hasBoundedHeight
-              ? constraints.maxHeight.clamp(0.0, toolbarHeight).toDouble()
-              : toolbarHeight;
+    return ColoredBox(
+      key: const ValueKey('klp-app-frame-background'),
+      color: context.klpColors.app,
+      child: Padding(
+        padding: EdgeInsets.all(appInset),
+        child: LayoutBuilder(
+          builder: (context, constraints) {
+            final effectiveHeaderHeight = constraints.hasBoundedHeight
+                ? constraints.maxHeight.clamp(0.0, headerHeight).toDouble()
+                : headerHeight;
 
-          return Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: [
-              SizedBox(
-                height: effectiveHeaderHeight,
-                child: Padding(
-                  padding: EdgeInsets.all(appInset),
+            return Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [
+                SizedBox(
+                  height: effectiveHeaderHeight,
                   child: ClipRect(child: header),
                 ),
-              ),
-              if (constraints.hasBoundedHeight) Expanded(child: body) else body,
-            ],
-          );
-        },
+                if (constraints.hasBoundedHeight)
+                  Expanded(child: body)
+                else
+                  body,
+              ],
+            );
+          },
+        ),
       ),
     );
   }

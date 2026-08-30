@@ -1148,7 +1148,7 @@ graph LR
 
 | 型別 | 行數 | 組成 |
 |---|---|---|
-| `KlpApp` | 312 | `KlpLocalizationsDelegate`、`KlpRouterOutlet`、`KlpRouterScope`、`KlpWindowHeader` |
+| `KlpApp` | 319 | `KlpLocalizationsDelegate`、`KlpRouterOutlet`、`KlpRouterScope`、`KlpWindowHeader` |
 
 ```mermaid
 graph LR
