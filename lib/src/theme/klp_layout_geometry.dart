@@ -18,6 +18,8 @@ class KlpLayoutGeometry {
     required this.statusBarBreakpoint,
     required this.settingsContentMaximumWidth,
     required this.themePreviewTileWidth,
+    required this.windowHeaderHeight,
+    required this.windowHeaderControlSize,
     required this.windowAppIconSize,
     required this.windowIdentityGap,
   });
@@ -42,6 +44,13 @@ class KlpLayoutGeometry {
   /// 顏色模式預覽磚的預設寬度。
   final double themePreviewTileWidth;
 
+  /// Header 可渲染內容高度；外框另加四周各半個 compact insert。
+  final double windowHeaderHeight;
+
+  /// 視窗 Header 內正方形控制按鈕的語意尺寸。
+  final double windowHeaderControlSize;
+
+  /// 視窗 Header 按鈕內部圖示的語意尺寸。
   final double windowAppIconSize;
   final double windowIdentityGap;
 
@@ -63,6 +72,8 @@ class KlpLayoutGeometry {
           statusBarBreakpoint == other.statusBarBreakpoint &&
           settingsContentMaximumWidth == other.settingsContentMaximumWidth &&
           themePreviewTileWidth == other.themePreviewTileWidth &&
+          windowHeaderHeight == other.windowHeaderHeight &&
+          windowHeaderControlSize == other.windowHeaderControlSize &&
           windowAppIconSize == other.windowAppIconSize &&
           windowIdentityGap == other.windowIdentityGap;
 
@@ -82,6 +93,8 @@ class KlpLayoutGeometry {
     statusBarBreakpoint,
     settingsContentMaximumWidth,
     themePreviewTileWidth,
+    windowHeaderHeight,
+    windowHeaderControlSize,
     windowAppIconSize,
     windowIdentityGap,
   ]);

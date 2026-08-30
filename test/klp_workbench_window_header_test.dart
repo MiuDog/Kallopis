@@ -12,15 +12,18 @@ void main() {
       KlpApp(
         showWindowHeader: false,
         home: KlpAppScreen(
-          child: SizedBox(
-            width: 1000,
-            child: KlpWorkbenchWindowHeader(
-              titleText: 'Notist',
-              primaryPaneWidth: 268,
-              primaryVisible: true,
-              onTogglePrimary: () => toggles += 1,
-              collapseLabel: '收合側邊面板',
-              expandLabel: '展開側邊面板',
+          child: Align(
+            alignment: Alignment.topCenter,
+            child: SizedBox(
+              width: 1000,
+              child: KlpWorkbenchWindowHeader(
+                titleText: 'Notist',
+                primaryPaneWidth: 268,
+                primaryVisible: true,
+                onTogglePrimary: () => toggles += 1,
+                collapseLabel: '收合側邊面板',
+                expandLabel: '展開側邊面板',
+              ),
             ),
           ),
         ),
@@ -33,11 +36,29 @@ void main() {
       tester.widget<KlpIconButton>(find.byType(KlpIconButton)).tone,
       KlpIconButtonTone.inline,
     );
+    final layout = tester
+        .element(find.byType(KlpWorkbenchWindowHeader))
+        .klp
+        .geometry
+        .layout;
+    expect(
+      tester.getSize(find.bySemanticsLabel('收合側邊面板')),
+      Size.square(layout.windowHeaderControlSize),
+    );
 
     await tester.tap(find.bySemanticsLabel('收合側邊面板'));
     expect(toggles, 1);
 
-    final headerRect = tester.getRect(find.byType(KlpWorkbenchWindowHeader));
+    final headerRect = tester.getRect(find.byType(KlpWindowHeader));
+    expect(
+      headerRect.height,
+      layout.windowHeaderHeight +
+          tester
+              .element(find.byType(KlpWorkbenchWindowHeader))
+              .klp
+              .space
+              .compact,
+    );
     final toggleRect = tester.getRect(find.bySemanticsLabel('收合側邊面板'));
     expect(toggleRect.center.dx, closeTo(headerRect.left + 268, 40));
   });

@@ -249,16 +249,14 @@ class _KlpAppState extends State<KlpApp> implements KlpAppController {
     }
 
     if (widget.showWindowHeader && content != null) {
-      final toolbarHeight = klpWindowHeaderHeight(effectiveStyle.geometry);
+      final toolbarHeight = klpWindowHeaderHeight(
+        effectiveStyle.geometry,
+        compact: effectiveStyle.spacing.compact,
+      );
       final header =
           widget.windowHeader ??
           KlpWindowHeader(
-            appIcon: widget.appIcon == null
-                ? null
-                : _KlpAppIcon(
-                    size: effectiveStyle.geometry.layout.windowAppIconSize,
-                    child: widget.appIcon!,
-                  ),
+            appIcon: widget.appIcon,
             titleText: widget.title.isNotEmpty ? widget.title : null,
             height: toolbarHeight,
             actions: widget.headerActions,
@@ -345,25 +343,6 @@ class _KlpAppFrame extends StatelessWidget {
             );
           },
         ),
-      ),
-    );
-  }
-}
-
-/// 將消費端提供的圖示收斂到 Kallopis 的標題列尺寸。
-class _KlpAppIcon extends StatelessWidget {
-  const _KlpAppIcon({required this.size, required this.child});
-
-  final double size;
-  final Widget child;
-
-  @override
-  Widget build(BuildContext context) {
-    return SizedBox.square(
-      dimension: size,
-      child: IconTheme.merge(
-        data: IconThemeData(size: size),
-        child: FittedBox(fit: BoxFit.contain, child: child),
       ),
     );
   }

@@ -130,11 +130,11 @@ class _WindowControlButtonState extends State<_WindowControlButton> {
         onFocusChange: (value) => setState(() => _focused = value),
         borderRadius: BorderRadius.circular(context.klp.shape.control),
         child: SizedBox.square(
-          dimension: context.klp.geometry.layout.windowAppIconSize,
+          dimension: context.klp.geometry.layout.windowHeaderControlSize,
           child: Center(
             child: KlpIcon(
               widget.icon,
-              size: context.klp.space.iconSmall,
+              size: context.klp.geometry.layout.windowAppIconSize,
               color: color,
             ),
           ),

@@ -35,6 +35,14 @@ void main() {
     expect(find.text('Planist'), findsOneWidget);
     expect(find.byKey(const ValueKey('app-icon')), findsOneWidget);
     expect(find.byType(KlpWindowControls), findsOneWidget);
+    final appIcon = find.byKey(const ValueKey('app-icon'));
+    final appIconLayout = tester.element(appIcon).klp.geometry.layout;
+    expect(
+      tester.getSize(
+        find.ancestor(of: appIcon, matching: find.byType(FittedBox)),
+      ),
+      Size.square(appIconLayout.windowAppIconSize),
+    );
 
     // 驗證按鈕點擊
     final minimizeFinder = find.byWidgetPredicate(
@@ -44,7 +52,12 @@ void main() {
     expect(
       tester.getSize(minimizeFinder),
       Size.square(
-        tester.element(minimizeFinder).klp.geometry.layout.windowAppIconSize,
+        tester
+            .element(minimizeFinder)
+            .klp
+            .geometry
+            .layout
+            .windowHeaderControlSize,
       ),
     );
 
@@ -106,9 +119,9 @@ void main() {
     final headerRect = tester.getRect(find.byType(KlpWindowHeader));
     final closeRect = tester.getRect(closeFinder);
     expect(headerRect.height, klpWindowHeaderHeight(geometry));
-    expect(closeRect.top, headerRect.top);
+    expect(closeRect.top, headerRect.top + inset);
     expect(closeRect.right, headerRect.right - inset);
-    expect(closeRect.bottom, headerRect.bottom);
+    expect(closeRect.bottom, headerRect.bottom - inset);
     await tester.tap(closeFinder);
     expect(closed, isTrue);
   });
@@ -129,7 +142,7 @@ void main() {
     final layout = tester.element(slot).klp.geometry.layout;
 
     expect(slot, findsOneWidget);
-    expect(tester.getSize(slot), Size.square(layout.windowAppIconSize));
+    expect(tester.getSize(slot), Size.square(layout.windowHeaderControlSize));
     expect(
       tester.getRect(title).left - tester.getRect(slot).right,
       layout.windowIdentityGap,

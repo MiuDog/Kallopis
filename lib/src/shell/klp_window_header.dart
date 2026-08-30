@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 
 import '../theme/klp_theme.dart';
 import '../theme/klp_geometry_theme.dart';
+import '../theme/klp_spacing_theme.dart';
 import '../typography/klp_text.dart';
 import 'internal/klp_window_header_extras.dart';
 import 'klp_window_controls.dart';
@@ -10,9 +11,10 @@ import 'klp_window_controls.dart';
 /// 視窗標題列的 App icon 固定槽位識別鍵。
 const String klpWindowAppIconSlotKey = 'klp-window-app-icon-slot';
 
-/// Header 總高度與 App icon 的語意正方形尺寸一致。
-double klpWindowHeaderHeight(KlpGeometryTheme geometry) =>
-    geometry.layout.windowAppIconSize;
+/// Header 外框高度；內容高度加上上下各半個 compact insert。
+double klpWindowHeaderHeight(KlpGeometryTheme geometry, {double? compact}) =>
+    geometry.layout.windowHeaderHeight +
+    (compact ?? KlpSpacingTheme.comfortableDensity.compact);
 
 /// 桌面平台視窗控制操作（最小化、最大化／還原、關閉、拖曳、限制尺寸）。
 abstract final class KlpWindowAction {
@@ -123,7 +125,7 @@ class KlpWindowHeader extends StatelessWidget implements PreferredSizeWidget {
   /// 手動指定平台外觀風格（預設依系統環境判定）。
   final TargetPlatform? platform;
 
-  /// 標題列高度；未指定時使用 shell geometry token。
+  /// 標題列外框高度；未指定時為內容高度加上上下 insert。
   final double? height;
 
   /// 標題列背景色（預設為視窗底色 `tokens.app`）。
@@ -154,7 +156,9 @@ class KlpWindowHeader extends StatelessWidget implements PreferredSizeWidget {
     final tokens = context.klpColors;
     final klp = context.klp;
     final layout = klp.geometry.layout;
-    final effectiveHeight = height ?? klpWindowHeaderHeight(klp.geometry);
+    final headerInset = klp.space.compact / 2;
+    final effectiveHeight =
+        height ?? layout.windowHeaderHeight + headerInset * 2;
     final effectivePlatform = platform ?? Theme.of(context).platform;
     final isMac = effectivePlatform == TargetPlatform.macOS;
 
@@ -165,14 +169,14 @@ class KlpWindowHeader extends StatelessWidget implements PreferredSizeWidget {
             : const SizedBox.shrink());
 
     final Widget identityWidget = SizedBox(
-      height: layout.windowAppIconSize,
+      height: layout.windowHeaderControlSize,
       child: buildKlpWindowHeaderRegion(
         alignment: AlignmentDirectional.centerStart,
         children: [
           SizedBox.square(
             key: const ValueKey(klpWindowAppIconSlotKey),
-            dimension: layout.windowAppIconSize,
-            child: appIcon == null ? null : Center(child: appIcon!),
+            dimension: layout.windowHeaderControlSize,
+            child: appIcon == null ? null : _KlpAppIcon(child: appIcon!),
           ),
           SizedBox(width: layout.windowIdentityGap),
           Center(child: titleWidget),
@@ -197,7 +201,7 @@ class KlpWindowHeader extends StatelessWidget implements PreferredSizeWidget {
       child: SizedBox(
         height: effectiveHeight,
         child: Padding(
-          padding: EdgeInsets.symmetric(horizontal: klp.space.compact / 2),
+          padding: EdgeInsets.all(headerInset),
           child: isMac
               ? _buildMacLayout(
                   context,
@@ -304,6 +308,31 @@ class KlpWindowHeader extends StatelessWidget implements PreferredSizeWidget {
           ),
         ),
       ],
+    );
+  }
+}
+
+/// 以視窗按鈕尺寸包裝消費端圖示，圖形本身維持 App icon 語意尺寸。
+class _KlpAppIcon extends StatelessWidget {
+  const _KlpAppIcon({required this.child});
+
+  final Widget child;
+
+  @override
+  Widget build(BuildContext context) {
+    final layout = context.klp.geometry.layout;
+
+    return SizedBox.square(
+      dimension: layout.windowHeaderControlSize,
+      child: Center(
+        child: SizedBox.square(
+          dimension: layout.windowAppIconSize,
+          child: IconTheme.merge(
+            data: IconThemeData(size: layout.windowAppIconSize),
+            child: FittedBox(fit: BoxFit.contain, child: child),
+          ),
+        ),
+      ),
     );
   }
 }

@@ -67,7 +67,7 @@ class _KlpIconButtonState extends State<KlpIconButton> {
     final klp = context.klp;
     final dimension = switch (widget.size) {
       KlpIconButtonSize.standard => klp.space.iconButton,
-      KlpIconButtonSize.window => klp.geometry.layout.windowAppIconSize,
+      KlpIconButtonSize.window => klp.geometry.layout.windowHeaderControlSize,
     };
     final active = (_hovered || _focused) && widget.onPressed != null;
 
@@ -100,7 +100,7 @@ class _KlpIconButtonState extends State<KlpIconButton> {
               child: KlpIcon(
                 widget.icon,
                 size: widget.size == KlpIconButtonSize.window
-                    ? klp.space.iconSmall
+                    ? klp.geometry.layout.windowAppIconSize
                     : null,
                 color: widget.onPressed == null
                     ? tokens.textFaint

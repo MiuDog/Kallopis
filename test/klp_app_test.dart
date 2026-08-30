@@ -118,6 +118,9 @@ void main() {
       matching: find.byType(FittedBox),
     );
     final iconRect = tester.getRect(fittedBoxFinder);
+    final iconSlotRect = tester.getRect(
+      find.byKey(const ValueKey(klpWindowAppIconSlotKey)),
+    );
     final titleRect = tester.getRect(find.text('Notist'));
     final appFrameBackground = tester.widget<ColoredBox>(
       find.byKey(const ValueKey('klp-app-frame-background')),
@@ -128,12 +131,18 @@ void main() {
     expect(headerRect.left, compact / 2);
     expect(headerRect.top, compact / 2);
     expect(headerRect.height, klpWindowHeaderHeight(iconContext.klp.geometry));
+    expect(headerRect.height, layout.windowHeaderHeight + compact);
     expect(
       tester.getSize(fittedBoxFinder),
       Size.square(layout.windowAppIconSize),
     );
-    expect(iconRect.left, headerRect.left + compact / 2);
-    expect(titleRect.left - iconRect.right, layout.windowIdentityGap);
+    expect(
+      iconRect.left,
+      headerRect.left +
+          compact / 2 +
+          (layout.windowHeaderControlSize - layout.windowAppIconSize) / 2,
+    );
+    expect(titleRect.left - iconSlotRect.right, layout.windowIdentityGap);
   });
 
   testWidgets('視窗轉場暫時低於 header 高度時不產生垂直溢出', (tester) async {

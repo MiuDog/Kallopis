@@ -129,8 +129,8 @@ graph TD
 | `KlpDataVisualizationTheme` | 190 | （葉節點） |
 | `KlpFieldFillState` | 3 | （葉節點） |
 | `KlpFieldStyle` | 269 | （葉節點） |
-| `KlpGeometryTheme` | 115 | `KlpControlGeometry`、`KlpDataGeometry`、`KlpLayoutGeometry`、`KlpOpticalGeometry` |
-| `KlpLayoutGeometry` | 84 | （葉節點） |
+| `KlpGeometryTheme` | 117 | `KlpControlGeometry`、`KlpDataGeometry`、`KlpLayoutGeometry`、`KlpOpticalGeometry` |
+| `KlpLayoutGeometry` | 97 | （葉節點） |
 | `KlpMotionTheme` | 139 | （葉節點） |
 | `KlpOpticalGeometry` | 34 | （葉節點） |
 | `KlpShapeTheme` | 150 | （葉節點） |
@@ -1037,9 +1037,9 @@ graph LR
 | `KlpWindowAction` | 64 | （葉節點） |
 | `KlpWindowControls` | 135 | `KlpIcon`、`KlpTooltip` |
 | `KlpWindowControlsStyle` | 11 | （葉節點） |
-| `KlpWindowHeader` | 228 | `KlpText`、`KlpWindowControls` |
+| `KlpWindowHeader` | 255 | `KlpText`、`KlpWindowControls` |
 | `KlpWorkbenchShell` | 250 | `KlpResizeHandle` |
-| `KlpWorkbenchWindowHeader` | 93 | `KlpIconButton`、`KlpWindowHeader` |
+| `KlpWorkbenchWindowHeader` | 90 | `KlpIconButton`、`KlpWindowHeader` |
 
 ```mermaid
 graph LR
@@ -1152,7 +1152,7 @@ graph LR
 
 | 型別 | 行數 | 組成 |
 |---|---|---|
-| `KlpApp` | 318 | `KlpLocalizationsDelegate`、`KlpRouterOutlet`、`KlpRouterScope`、`KlpWindowHeader` |
+| `KlpApp` | 297 | `KlpLocalizationsDelegate`、`KlpRouterOutlet`、`KlpRouterScope`、`KlpWindowHeader` |
 
 ```mermaid
 graph LR

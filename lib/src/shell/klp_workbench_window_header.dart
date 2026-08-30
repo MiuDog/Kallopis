@@ -44,19 +44,21 @@ class KlpWorkbenchWindowHeader extends StatelessWidget
   final bool showWindowControls;
 
   @override
-  Size get preferredSize => Size.fromHeight(
-    klpWindowHeaderHeight(KlpGeometryTheme.standard),
-  );
+  Size get preferredSize =>
+      Size.fromHeight(klpWindowHeaderHeight(KlpGeometryTheme.standard));
 
   @override
   Widget build(BuildContext context) {
     final klp = context.klp;
     final layout = klp.geometry.layout;
-    final headerHeight = klpWindowHeaderHeight(klp.geometry);
+    final headerHeight = klpWindowHeaderHeight(
+      klp.geometry,
+      compact: klp.space.compact,
+    );
     final toggleStart = primaryVisible
         ? klp.space.compact +
               primaryPaneWidth -
-              layout.windowAppIconSize -
+              layout.windowHeaderControlSize -
               klp.space.tight
         : klp.space.compact;
 
@@ -67,12 +69,7 @@ class KlpWorkbenchWindowHeader extends StatelessWidget
           Positioned.fill(
             child: KlpWindowHeader(
               titleText: titleText,
-              appIcon: appIcon == null
-                  ? null
-                  : SizedBox.square(
-                      dimension: layout.windowAppIconSize,
-                      child: appIcon,
-                    ),
+              appIcon: appIcon,
               actions: actions,
               height: headerHeight,
               onMinimize: onMinimize,

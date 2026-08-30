@@ -18,6 +18,8 @@ const _layoutKeys = {
   'statusBarBreakpoint',
   'settingsContentMaximumWidth',
   'themePreviewTileWidth',
+  'windowHeaderHeight',
+  'windowHeaderControlSize',
   'windowAppIconSize',
   'windowIdentityGap',
 };
@@ -69,6 +71,11 @@ KlpLayoutGeometry decodeLayoutGeometry(
     themePreviewTileWidth: read(
       'themePreviewTileWidth',
       base.themePreviewTileWidth,
+    ),
+    windowHeaderHeight: read('windowHeaderHeight', base.windowHeaderHeight),
+    windowHeaderControlSize: read(
+      'windowHeaderControlSize',
+      base.windowHeaderControlSize,
     ),
     windowAppIconSize: read('windowAppIconSize', base.windowAppIconSize),
     windowIdentityGap: read('windowIdentityGap', base.windowIdentityGap),
