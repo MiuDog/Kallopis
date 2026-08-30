@@ -37,6 +37,7 @@ class KlpStatusIndicator extends StatelessWidget {
     this.active = true,
     this.kind = KlpStatusKind.dot,
     this.color,
+    this.expanded = false,
   });
 
   /// 狀態標籤文字。
@@ -48,8 +49,11 @@ class KlpStatusIndicator extends StatelessWidget {
   /// 指示圖示種類。
   final KlpStatusKind kind;
 
-  /// 自訂覆蓋顏色。
+  /// 自訂狀態標記顏色；標籤仍沿用狀態列的 muted 文字語意。
   final Color? color;
+
+  /// 是否占滿可用寬度，並讓標籤在空間不足時省略。
+  final bool expanded;
 
   @override
   Widget build(BuildContext context) {
@@ -100,25 +104,29 @@ class KlpStatusIndicator extends StatelessWidget {
         height: context.klp.space.indicatorDot,
         decoration: BoxDecoration(
           color: effectiveColor,
-          borderRadius: BorderRadius.circular(context.klp.shape.pill),
+          shape: BoxShape.circle,
         ),
       ),
     };
 
+    final labelWidget = KlpText(
+      label,
+      role: KlpTextRole.code,
+      tone: KlpTextTone.muted,
+      maxLines: 1,
+      overflow: TextOverflow.ellipsis,
+    );
+
     return Row(
-      mainAxisSize: MainAxisSize.min,
+      mainAxisSize: expanded ? MainAxisSize.max : MainAxisSize.min,
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
         Transform.translate(
           offset: Offset(0, context.klp.geometry.optical.statusIconOffsetY),
           child: iconWidget,
         ),
-        SizedBox(width: context.klp.space.tight),
-        KlpText(
-          label.toUpperCase(),
-          role: KlpTextRole.label,
-          color: effectiveColor,
-        ),
+        SizedBox(width: context.klp.space.compact),
+        if (expanded) Expanded(child: labelWidget) else labelWidget,
       ],
     );
   }

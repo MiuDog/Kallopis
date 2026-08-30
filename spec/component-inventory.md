@@ -89,6 +89,7 @@ graph TD
   settings -->|1| shell
   shell -->|1| controls
   shell -->|1| data
+  shell -->|1| feedback
   shell -->|1| interaction
   shell -->|1| layout
   shell -->|1| overlay
@@ -802,7 +803,7 @@ graph LR
 | `KlpRegionPlaceholder` | 275 | `KlpPressable`、`KlpText` |
 | `KlpRegionPlaceholderTone` | 2 | （葉節點） |
 | `KlpSkeletonLine` | 19 | （葉節點） |
-| `KlpStatusIndicator` | 93 | `KlpIcon`、`KlpText` |
+| `KlpStatusIndicator` | 101 | `KlpIcon`、`KlpText` |
 | `KlpStatusKind` | 24 | （葉節點） |
 | `KlpToast` | 115 | `KlpButton`、`KlpIcon`、`KlpText` |
 | `KlpToastStack` | 20 | （葉節點） |
@@ -1028,7 +1029,7 @@ graph LR
 | `KlpSidebarIdentityHeader` | 63 | `KlpAvatar`、`KlpIcon`、`KlpSurface`、`KlpText` |
 | `KlpStageFrame` | 58 | `KlpTokenOverride` |
 | `KlpStageHeader` | 97 | `KlpText` |
-| `KlpStatusBar` | 57 | `KlpText` |
+| `KlpStatusBar` | 44 | `KlpStatusIndicator`、`KlpText` |
 | `KlpThemePreviewMode` | 2 | （葉節點） |
 | `KlpThemePreviewTile` | 311 | `KlpPressable`、`KlpText` |
 | `KlpThemeToggle` | 25 | `KlpSurface`、`KlpText` |
@@ -1057,6 +1058,7 @@ graph LR
   KlpStageFrame["KlpStageFrame"]
   KlpStageHeader["KlpStageHeader"]
   KlpStatusBar["KlpStatusBar"]
+  KlpStatusIndicator["KlpStatusIndicator"]:::external
   KlpSurface["KlpSurface"]:::external
   KlpText["KlpText"]:::external
   KlpThemePreviewTile["KlpThemePreviewTile"]
@@ -1080,6 +1082,7 @@ graph LR
   KlpSidebarIdentityHeader --> KlpText
   KlpStageFrame --> KlpTokenOverride
   KlpStageHeader --> KlpText
+  KlpStatusBar --> KlpStatusIndicator
   KlpStatusBar --> KlpText
   KlpThemePreviewTile --> KlpPressable
   KlpThemePreviewTile --> KlpText
