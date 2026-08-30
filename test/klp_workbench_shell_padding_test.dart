@@ -153,12 +153,12 @@ void main() {
 
       expect(headerRect.left, shellRect.left);
       expect(headerRect.right, shellRect.right);
-      expect(primaryRect.left - shellRect.left, compact * 2);
-      expect(primaryRect.top - shellRect.top, compact * 2);
-      expect(shellRect.bottom - primaryRect.bottom, compact * 2);
-      expect(stageRect.left - primaryRect.right, compact * 2);
-      expect(secondaryRect.left - stageRect.right, compact * 2);
-      expect(shellRect.right - secondaryRect.right, compact * 2);
+      expect(primaryRect.left - shellRect.left, compact);
+      expect(primaryRect.top - shellRect.top, compact);
+      expect(shellRect.bottom - primaryRect.bottom, compact);
+      expect(stageRect.left - primaryRect.right, compact);
+      expect(secondaryRect.left - stageRect.right, compact);
+      expect(shellRect.right - secondaryRect.right, compact);
 
       final primaryHandleRect = tester.getRect(
         find.byKey(const ValueKey('primary-pane-resize-handle')),

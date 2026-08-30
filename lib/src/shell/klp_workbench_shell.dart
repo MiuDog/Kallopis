@@ -46,7 +46,7 @@ class KlpWorkbenchShell extends StatelessWidget {
   ///
   /// 指定後，Primary、Stage、Secondary 會分別在自己的版面範圍內套用此留白；
   /// resize handle 疊在兩側欄位的留白區，不再額外佔用欄間寬度。
-  /// `null` 且未指定 [paneGap] 時使用 Workbench 的語意緊湊間距。
+  /// `null` 且未指定 [paneGap] 時使用語意緊湊間距的一半。
   final EdgeInsetsGeometry? panePadding;
 
   @override
@@ -57,11 +57,12 @@ class KlpWorkbenchShell extends StatelessWidget {
     final effectiveSecondaryWidth =
         secondaryWidth ?? geometry.secondaryPaneWidth;
     final compact = context.klp.space.compact;
+    final paneInset = compact / 2;
     final usesIndividualPanePadding = panePadding != null || paneGap == null;
     final effectivePadding =
         padding ??
         (usesIndividualPanePadding
-            ? EdgeInsets.all(compact)
+            ? EdgeInsets.all(paneInset)
             : EdgeInsets.fromLTRB(compact, 0, compact, compact));
     final effectivePaneGap = paneGap ?? context.klp.space.compact;
 
@@ -77,7 +78,7 @@ class KlpWorkbenchShell extends StatelessWidget {
         onPrimaryWidthChanged: onPrimaryWidthChanged,
         onSecondaryWidthChanged: onSecondaryWidthChanged,
         outerPadding: effectivePadding,
-        panePadding: panePadding ?? EdgeInsets.all(compact),
+        panePadding: panePadding ?? EdgeInsets.all(paneInset),
         resizeHandleWidth: compact,
       );
     }
