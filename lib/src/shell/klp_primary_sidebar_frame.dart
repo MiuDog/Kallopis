@@ -24,26 +24,30 @@ class KlpPrimarySidebarFrame extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final space = context.klp.space;
+    final compact = context.klp.geometry.layout.workbenchCompactSpacing;
 
     return KlpPanelFrame(
       headerHeight: space.controlHeightSmall,
       flushContent: true,
       header: Padding(
-        padding: EdgeInsets.symmetric(horizontal: space.compact),
+        padding: EdgeInsets.symmetric(horizontal: compact),
         child: header,
       ),
-      content: Column(
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: [
-          navigation,
-          SizedBox(height: space.compact - space.tight),
-          Expanded(child: explorer),
-        ],
+      content: Padding(
+        padding: EdgeInsets.all(compact),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            navigation,
+            SizedBox(height: space.compact - space.tight),
+            Expanded(child: explorer),
+          ],
+        ),
       ),
       footer: footer == null
           ? null
           : Padding(
-              padding: EdgeInsets.symmetric(horizontal: space.compact),
+              padding: EdgeInsets.symmetric(horizontal: compact),
               child: footer,
             ),
     );

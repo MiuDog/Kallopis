@@ -72,6 +72,7 @@ class KlpGeometryTheme extends ThemeExtension<KlpGeometryTheme> {
       primaryPaneBreakpoint: KlpSize.primaryPaneBreakpoint,
       primaryPaneContentBreakpoint: KlpSize.primaryPaneContentBreakpoint,
       secondaryPaneBreakpoint: KlpSize.secondaryPaneBreakpoint,
+      workbenchCompactSpacing: KlpScale.space200,
       menuWidth: KlpSize.menu,
       menuHeaderHeight: KlpSize.menuHeader,
       menuItemHeight: KlpSize.menuItem,

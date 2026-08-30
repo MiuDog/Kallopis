@@ -9,6 +9,7 @@ const _layoutKeys = {
   'primaryPaneBreakpoint',
   'primaryPaneContentBreakpoint',
   'secondaryPaneBreakpoint',
+  'workbenchCompactSpacing',
   'menuWidth',
   'menuHeaderHeight',
   'menuItemHeight',
@@ -56,6 +57,10 @@ KlpLayoutGeometry decodeLayoutGeometry(
     secondaryPaneBreakpoint: read(
       'secondaryPaneBreakpoint',
       base.secondaryPaneBreakpoint,
+    ),
+    workbenchCompactSpacing: read(
+      'workbenchCompactSpacing',
+      base.workbenchCompactSpacing,
     ),
     menuWidth: read('menuWidth', base.menuWidth),
     menuHeaderHeight: read('menuHeaderHeight', base.menuHeaderHeight),

@@ -26,7 +26,7 @@ class KlpPanelFrame extends StatelessWidget {
   final double? footerHeight;
   final Color? background;
 
-  /// 內容與面板之間的內距。預設為 `context.klp.space.base`。
+  /// 內容與面板之間的內距。預設使用 Workbench 的語意緊湊間距。
   final EdgeInsetsGeometry? padding;
 
   /// 讓內容自行管理內距；用於 explorer 這類每列已具備水平節奏的面板。
@@ -62,7 +62,13 @@ class KlpPanelFrame extends StatelessWidget {
                       padding ??
                       (flushContent
                           ? EdgeInsets.zero
-                          : EdgeInsets.all(context.klp.space.base)),
+                          : EdgeInsets.all(
+                              context
+                                  .klp
+                                  .geometry
+                                  .layout
+                                  .workbenchCompactSpacing,
+                            )),
                   child: content,
                 ),
               ),

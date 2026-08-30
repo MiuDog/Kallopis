@@ -58,6 +58,75 @@ void main() {
     expect(tester.takeException(), isNull);
   });
 
+  testWidgets('each pane can own four-sided padding without extra gap', (
+    tester,
+  ) async {
+    tester.view.physicalSize = const Size(1280, 720);
+    tester.view.devicePixelRatio = 1;
+    addTearDown(tester.view.resetPhysicalSize);
+    addTearDown(tester.view.resetDevicePixelRatio);
+
+    await tester.pumpWidget(
+      KlpApp(
+        showWindowHeader: false,
+        home: KlpAppScreen(
+          child: KlpWorkbenchShell(
+            padding: EdgeInsets.zero,
+            panePadding: const EdgeInsets.all(8),
+            primaryWidth: 280,
+            secondaryWidth: 300,
+            onPrimaryWidthChanged: (_) {},
+            onSecondaryWidthChanged: (_) {},
+            primary: const SizedBox(key: ValueKey('padded-primary')),
+            stage: const SizedBox(key: ValueKey('padded-stage')),
+            secondary: const SizedBox(key: ValueKey('padded-secondary')),
+          ),
+        ),
+      ),
+    );
+
+    final shellRect = tester.getRect(find.byType(KlpWorkbenchShell));
+    final primaryRect = tester.getRect(
+      find.byKey(const ValueKey('padded-primary')),
+    );
+    final stageRect = tester.getRect(
+      find.byKey(const ValueKey('padded-stage')),
+    );
+    final secondaryRect = tester.getRect(
+      find.byKey(const ValueKey('padded-secondary')),
+    );
+
+    expect(primaryRect.left - shellRect.left, 8);
+    expect(primaryRect.top - shellRect.top, 8);
+    expect(shellRect.bottom - primaryRect.bottom, 8);
+    expect(stageRect.left - primaryRect.right, 16);
+    expect(secondaryRect.left - stageRect.right, 16);
+    expect(shellRect.right - secondaryRect.right, 8);
+    expect(
+      tester
+          .getSize(find.byKey(const ValueKey('primary-pane-resize-handle')))
+          .width,
+      tester
+          .element(find.byType(KlpWorkbenchShell))
+          .klp
+          .geometry
+          .layout
+          .workbenchCompactSpacing,
+    );
+    expect(
+      tester
+          .getSize(find.byKey(const ValueKey('secondary-pane-resize-handle')))
+          .width,
+      tester
+          .element(find.byType(KlpWorkbenchShell))
+          .klp
+          .geometry
+          .layout
+          .workbenchCompactSpacing,
+    );
+    expect(tester.takeException(), isNull);
+  });
+
   testWidgets(
     'default workbench starts panels directly below full-width header',
     (tester) async {
@@ -67,25 +136,29 @@ void main() {
       addTearDown(tester.view.resetDevicePixelRatio);
 
       await tester.pumpWidget(
-        const KlpApp(
+        KlpApp(
           title: 'Kallopis',
-          appIcon: Icon(Icons.edit, key: ValueKey('app-icon')),
+          appIcon: const Icon(Icons.edit, key: ValueKey('app-icon')),
           home: KlpAppScreen(
             child: KlpWorkbenchShell(
-              primary: SizedBox(key: ValueKey('primary')),
-              stage: SizedBox(key: ValueKey('stage')),
-              secondary: SizedBox(key: ValueKey('secondary')),
+              onPrimaryWidthChanged: (_) {},
+              onSecondaryWidthChanged: (_) {},
+              primary: const SizedBox(key: ValueKey('primary')),
+              stage: const SizedBox(key: ValueKey('stage')),
+              secondary: const SizedBox(key: ValueKey('secondary')),
             ),
           ),
         ),
       );
 
       final shellFinder = find.byType(KlpWorkbenchShell);
-      final compact = tester.element(shellFinder).klp.space.compact;
+      final compact = tester
+          .element(shellFinder)
+          .klp
+          .geometry
+          .layout
+          .workbenchCompactSpacing;
       final headerRect = tester.getRect(find.byType(KlpWindowHeader));
-      final appIconRect = tester.getRect(
-        find.byKey(const ValueKey('app-icon')),
-      );
       final shellRect = tester.getRect(shellFinder);
       final primaryRect = tester.getRect(find.byKey(const ValueKey('primary')));
       final stageRect = tester.getRect(find.byKey(const ValueKey('stage')));
@@ -95,17 +168,31 @@ void main() {
 
       expect(headerRect.left, shellRect.left);
       expect(headerRect.right, shellRect.right);
-      expect(appIconRect.left, primaryRect.left);
-      expect(primaryRect.left - shellRect.left, compact);
-      expect(primaryRect.top, shellRect.top);
-      expect(shellRect.bottom - primaryRect.bottom, compact);
-      expect(stageRect.left - primaryRect.right, compact);
-      expect(secondaryRect.left - stageRect.right, compact);
-      expect(shellRect.right - secondaryRect.right, compact);
+      expect(primaryRect.left - shellRect.left, compact * 2);
+      expect(primaryRect.top - shellRect.top, compact * 2);
+      expect(shellRect.bottom - primaryRect.bottom, compact * 2);
+      expect(stageRect.left - primaryRect.right, compact * 2);
+      expect(secondaryRect.left - stageRect.right, compact * 2);
+      expect(shellRect.right - secondaryRect.right, compact * 2);
+
+      final primaryHandleRect = tester.getRect(
+        find.byKey(const ValueKey('primary-pane-resize-handle')),
+      );
+      final secondaryHandleRect = tester.getRect(
+        find.byKey(const ValueKey('secondary-pane-resize-handle')),
+      );
+      expect(
+        primaryHandleRect.center.dx,
+        (primaryRect.right + stageRect.left) / 2,
+      );
+      expect(
+        secondaryHandleRect.center.dx,
+        (stageRect.right + secondaryRect.left) / 2,
+      );
     },
   );
 
-  testWidgets('sidebar and stage contents use base padding by default', (
+  testWidgets('sidebar and stage contents use compact padding by default', (
     tester,
   ) async {
     await tester.pumpWidget(
@@ -149,16 +236,16 @@ void main() {
       find.byKey(const ValueKey('stage-content')),
     );
     final context = tester.element(find.byKey(const ValueKey('stage-content')));
-    final base = context.klp.space.base;
+    final compact = context.klp.geometry.layout.workbenchCompactSpacing;
     final headerHeight = context.klp.space.chromeHeader;
 
-    expect(sidebarContent.left - sidebarBox.left, base);
-    expect(sidebarBox.right - sidebarContent.right, base);
-    expect(sidebarContent.top - sidebarBox.top, headerHeight + base);
-    expect(sidebarBox.bottom - sidebarContent.bottom, base);
-    expect(stageContent.left - stageBox.left, base);
-    expect(stageBox.right - stageContent.right, base);
-    expect(stageContent.top - stageBox.top, headerHeight + base);
-    expect(stageBox.bottom - stageContent.bottom, base);
+    expect(sidebarContent.left - sidebarBox.left, compact);
+    expect(sidebarBox.right - sidebarContent.right, compact);
+    expect(sidebarContent.top - sidebarBox.top, headerHeight + compact);
+    expect(sidebarBox.bottom - sidebarContent.bottom, compact);
+    expect(stageContent.left - stageBox.left, compact);
+    expect(stageBox.right - stageContent.right, compact);
+    expect(stageContent.top - stageBox.top, headerHeight + compact);
+    expect(stageBox.bottom - stageContent.bottom, compact);
   });
 }

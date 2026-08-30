@@ -16,7 +16,7 @@ class KlpStageFrame extends StatelessWidget {
   final Widget content;
   final Widget? status;
 
-  /// 內容與舞台區之間的內距。預設為 `context.klp.space.base`。
+  /// 內容與舞台區之間的內距。預設使用 Workbench 的語意緊湊間距。
   final EdgeInsetsGeometry? padding;
 
   @override
@@ -45,7 +45,11 @@ class KlpStageFrame extends StatelessWidget {
               ),
               Expanded(
                 child: Padding(
-                  padding: padding ?? EdgeInsets.all(context.klp.space.base),
+                  padding:
+                      padding ??
+                      EdgeInsets.all(
+                        context.klp.geometry.layout.workbenchCompactSpacing,
+                      ),
                   child: content,
                 ),
               ),

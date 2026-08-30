@@ -11,6 +11,7 @@ class KlpLayoutGeometry {
     required this.primaryPaneBreakpoint,
     required this.primaryPaneContentBreakpoint,
     required this.secondaryPaneBreakpoint,
+    this.workbenchCompactSpacing = KlpScale.space200,
     required this.menuWidth,
     required this.menuHeaderHeight,
     required this.menuItemHeight,
@@ -34,6 +35,9 @@ class KlpLayoutGeometry {
   final double primaryPaneBreakpoint;
   final double primaryPaneContentBreakpoint;
   final double secondaryPaneBreakpoint;
+
+  /// Workbench 外圈、各 pane inset 與 resize handle 的共用緊湊間距。
+  final double workbenchCompactSpacing;
   final double menuWidth;
   final double menuHeaderHeight;
   final double menuItemHeight;
@@ -69,6 +73,7 @@ class KlpLayoutGeometry {
           primaryPaneBreakpoint == other.primaryPaneBreakpoint &&
           primaryPaneContentBreakpoint == other.primaryPaneContentBreakpoint &&
           secondaryPaneBreakpoint == other.secondaryPaneBreakpoint &&
+          workbenchCompactSpacing == other.workbenchCompactSpacing &&
           menuWidth == other.menuWidth &&
           menuHeaderHeight == other.menuHeaderHeight &&
           menuItemHeight == other.menuItemHeight &&
@@ -93,6 +98,7 @@ class KlpLayoutGeometry {
     primaryPaneBreakpoint,
     primaryPaneContentBreakpoint,
     secondaryPaneBreakpoint,
+    workbenchCompactSpacing,
     menuWidth,
     menuHeaderHeight,
     menuItemHeight,

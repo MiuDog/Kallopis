@@ -52,6 +52,7 @@ KlpJsonMap encodeGeometry(KlpGeometryTheme v) => <String, Object?>{
     'primaryPaneBreakpoint': v.layout.primaryPaneBreakpoint,
     'primaryPaneContentBreakpoint': v.layout.primaryPaneContentBreakpoint,
     'secondaryPaneBreakpoint': v.layout.secondaryPaneBreakpoint,
+    'workbenchCompactSpacing': v.layout.workbenchCompactSpacing,
     'menuWidth': v.layout.menuWidth,
     'menuHeaderHeight': v.layout.menuHeaderHeight,
     'menuItemHeight': v.layout.menuItemHeight,

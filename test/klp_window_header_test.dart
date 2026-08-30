@@ -124,6 +124,30 @@ void main() {
     expect(closed, isTrue);
   });
 
+  testWidgets('沒有 App icon 時仍保留同尺寸 identity 槽位', (tester) async {
+    await tester.pumpWidget(
+      testBed(
+        child: const KlpWindowHeader(
+          titleText: 'Designist',
+          platform: TargetPlatform.windows,
+          showWindowControls: false,
+        ),
+      ),
+    );
+
+    final slot = find.byKey(const ValueKey(klpWindowAppIconSlotKey));
+    final title = find.text('Designist');
+    final layout = tester.element(slot).klp.geometry.layout;
+
+    expect(slot, findsOneWidget);
+    expect(tester.getSize(slot), Size.square(layout.windowAppIconSize));
+    expect(
+      tester.getRect(title).left - tester.getRect(slot).right,
+      layout.windowIdentityGap,
+    );
+    expect(tester.takeException(), isNull);
+  });
+
   testWidgets('Windows 模式在極窄寬度下保留控制鈕且不溢出', (tester) async {
     bool closed = false;
 

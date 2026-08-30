@@ -7,6 +7,9 @@ import '../typography/klp_text.dart';
 import 'internal/klp_window_header_extras.dart';
 import 'klp_window_controls.dart';
 
+/// 視窗標題列的 App icon 固定槽位識別鍵。
+const String klpWindowAppIconSlotKey = 'klp-window-app-icon-slot';
+
 /// 桌面平台視窗控制操作（最小化、最大化／還原、關閉、拖曳、限制尺寸）。
 abstract final class KlpWindowAction {
   static const MethodChannel _channel = MethodChannel('kallopis/window');
@@ -162,10 +165,12 @@ class KlpWindowHeader extends StatelessWidget implements PreferredSizeWidget {
       child: buildKlpWindowHeaderRegion(
         alignment: AlignmentDirectional.centerStart,
         children: [
-          if (appIcon != null) ...[
-            Center(child: appIcon!),
-            SizedBox(width: layout.windowIdentityGap),
-          ],
+          SizedBox.square(
+            key: const ValueKey(klpWindowAppIconSlotKey),
+            dimension: layout.windowAppIconSize,
+            child: appIcon == null ? null : Center(child: appIcon!),
+          ),
+          SizedBox(width: layout.windowIdentityGap),
           Center(child: titleWidget),
         ],
       ),
