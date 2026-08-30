@@ -128,8 +128,8 @@ graph TD
 | `KlpDataVisualizationTheme` | 190 | （葉節點） |
 | `KlpFieldFillState` | 3 | （葉節點） |
 | `KlpFieldStyle` | 269 | （葉節點） |
-| `KlpGeometryTheme` | 121 | `KlpControlGeometry`、`KlpDataGeometry`、`KlpLayoutGeometry`、`KlpOpticalGeometry` |
-| `KlpLayoutGeometry` | 107 | （葉節點） |
+| `KlpGeometryTheme` | 122 | `KlpControlGeometry`、`KlpDataGeometry`、`KlpLayoutGeometry`、`KlpOpticalGeometry` |
+| `KlpLayoutGeometry` | 113 | （葉節點） |
 | `KlpMotionTheme` | 139 | （葉節點） |
 | `KlpOpticalGeometry` | 34 | （葉節點） |
 | `KlpShapeTheme` | 150 | （葉節點） |
@@ -1020,14 +1020,14 @@ graph LR
 | `KlpAppWindowHeader` | 26 | `KlpPanelHeader` |
 | `KlpContentState` | 3 | （葉節點） |
 | `KlpPaneCollapseControl` | 65 | `KlpIcon` |
-| `KlpPanelFrame` | 74 | `KlpTokenOverride` |
+| `KlpPanelFrame` | 80 | `KlpTokenOverride` |
 | `KlpPanelHeader` | 57 | `KlpText` |
-| `KlpPrimarySidebarFrame` | 42 | `KlpPanelFrame` |
+| `KlpPrimarySidebarFrame` | 46 | `KlpPanelFrame` |
 | `KlpResponsivePaneCoordinator` | 22 | （葉節點） |
 | `KlpSidebarFrame` | 33 | `KlpPanelFrame` |
 | `KlpSidebarIdentityHeader` | 63 | `KlpAvatar`、`KlpIcon`、`KlpSurface`、`KlpText` |
-| `KlpStageFrame` | 58 | `KlpTokenOverride` |
-| `KlpStageHeader` | 96 | `KlpText` |
+| `KlpStageFrame` | 62 | `KlpTokenOverride` |
+| `KlpStageHeader` | 97 | `KlpText` |
 | `KlpStatusBar` | 57 | `KlpText` |
 | `KlpThemePreviewMode` | 2 | （葉節點） |
 | `KlpThemePreviewTile` | 311 | `KlpPressable`、`KlpText` |
@@ -1035,8 +1035,8 @@ graph LR
 | `KlpWindowAction` | 64 | （葉節點） |
 | `KlpWindowControls` | 135 | `KlpIcon`、`KlpTooltip` |
 | `KlpWindowControlsStyle` | 11 | （葉節點） |
-| `KlpWindowHeader` | 231 | `KlpText`、`KlpWindowControls` |
-| `KlpWorkbenchShell` | 99 | `KlpResizeHandle` |
+| `KlpWindowHeader` | 233 | `KlpText`、`KlpWindowControls` |
+| `KlpWorkbenchShell` | 247 | `KlpResizeHandle` |
 | `KlpWorkbenchWindowHeader` | 90 | `KlpIconButton`、`KlpWindowHeader` |
 
 ```mermaid
