@@ -1,14 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-import '../theme/klp_geometry_theme.dart';
 import '../theme/klp_theme.dart';
+import '../theme/klp_spacing_theme.dart';
 import '../typography/klp_text.dart';
 import 'internal/klp_window_header_extras.dart';
 import 'klp_window_controls.dart';
 
 /// 視窗標題列的 App icon 固定槽位識別鍵。
 const String klpWindowAppIconSlotKey = 'klp-window-app-icon-slot';
+
+/// Header 總高度：上下各半個 compact inset 加上正方形 icon button。
+double klpWindowHeaderHeight(KlpSpacingTheme spacing) =>
+    spacing.compact + spacing.iconButton;
 
 /// 桌面平台視窗控制操作（最小化、最大化／還原、關閉、拖曳、限制尺寸）。
 abstract final class KlpWindowAction {
@@ -142,7 +146,7 @@ class KlpWindowHeader extends StatelessWidget implements PreferredSizeWidget {
 
   @override
   Size get preferredSize => Size.fromHeight(
-    height ?? KlpGeometryTheme.standard.layout.windowToolbarHeight,
+    height ?? klpWindowHeaderHeight(KlpSpacingTheme.comfortableDensity),
   );
 
   @override
@@ -150,7 +154,7 @@ class KlpWindowHeader extends StatelessWidget implements PreferredSizeWidget {
     final tokens = context.klpColors;
     final klp = context.klp;
     final layout = klp.geometry.layout;
-    final effectiveHeight = height ?? layout.windowToolbarHeight;
+    final effectiveHeight = height ?? klpWindowHeaderHeight(klp.space);
     final effectivePlatform = platform ?? Theme.of(context).platform;
     final isMac = effectivePlatform == TargetPlatform.macOS;
 
@@ -161,7 +165,7 @@ class KlpWindowHeader extends StatelessWidget implements PreferredSizeWidget {
             : const SizedBox.shrink());
 
     final Widget identityWidget = SizedBox(
-      height: layout.windowControlButtonSize,
+      height: klp.space.iconButton,
       child: buildKlpWindowHeaderRegion(
         alignment: AlignmentDirectional.centerStart,
         children: [
@@ -193,12 +197,7 @@ class KlpWindowHeader extends StatelessWidget implements PreferredSizeWidget {
       child: SizedBox(
         height: effectiveHeight,
         child: Padding(
-          padding: EdgeInsetsDirectional.fromSTEB(
-            layout.windowToolbarPaddingStart,
-            layout.windowToolbarPaddingVertical,
-            layout.windowToolbarPaddingEnd,
-            layout.windowToolbarPaddingVertical,
-          ),
+          padding: EdgeInsets.all(klp.space.compact / 2),
           child: isMac
               ? _buildMacLayout(
                   context,

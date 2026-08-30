@@ -249,6 +249,7 @@ class _KlpAppState extends State<KlpApp> implements KlpAppController {
     }
 
     if (widget.showWindowHeader && content != null) {
+      final toolbarHeight = klpWindowHeaderHeight(effectiveStyle.spacing);
       final header =
           widget.windowHeader ??
           KlpWindowHeader(
@@ -259,7 +260,7 @@ class _KlpAppState extends State<KlpApp> implements KlpAppController {
                     child: widget.appIcon!,
                   ),
             titleText: widget.title.isNotEmpty ? widget.title : null,
-            height: effectiveStyle.geometry.layout.windowToolbarHeight,
+            height: toolbarHeight,
             actions: widget.headerActions,
             onMinimize: widget.onMinimize,
             onToggleMaximize: widget.onToggleMaximize,
@@ -270,7 +271,7 @@ class _KlpAppState extends State<KlpApp> implements KlpAppController {
       content = _KlpAppFrame(
         header: header,
         body: content,
-        toolbarHeight: effectiveStyle.geometry.layout.windowToolbarHeight,
+        toolbarHeight: toolbarHeight,
       );
     }
 
@@ -316,9 +317,7 @@ class _KlpAppFrame extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final appInset = context.klp.space.compact / 2;
-    final headerHeight = (toolbarHeight - context.klp.space.compact)
-        .clamp(0.0, toolbarHeight)
-        .toDouble();
+    final headerHeight = toolbarHeight;
 
     return ColoredBox(
       key: const ValueKey('klp-app-frame-background'),

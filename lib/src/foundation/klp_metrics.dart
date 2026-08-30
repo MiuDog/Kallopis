@@ -98,8 +98,6 @@ abstract final class KlpSize {
   static const double icon = 20; // 20px
   static const double iconMedium = 24; // 24px
   static const double iconLarge = 32; // 32px
-  static const double windowToolbar = 44;
-  static const double windowControlButton = 30;
   static const double rail = 56;
   static const double header = 60;
   static const double statusBar = 30;

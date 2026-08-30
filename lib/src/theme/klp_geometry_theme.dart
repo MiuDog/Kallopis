@@ -81,12 +81,6 @@ class KlpGeometryTheme extends ThemeExtension<KlpGeometryTheme> {
       statusBarBreakpoint: 400,
       settingsContentMaximumWidth: 820,
       themePreviewTileWidth: 168,
-      windowToolbarHeight: KlpSize.windowToolbar,
-      windowControlButtonSize: KlpSize.windowControlButton,
-      windowToolbarPaddingStart: KlpScale.space200,
-      windowToolbarPaddingEnd: KlpScale.space200,
-      windowToolbarPaddingVertical:
-          (KlpSize.windowToolbar - KlpSize.windowControlButton) / 2,
       windowAppIconSize: 18,
       windowIdentityGap: KlpScale.space200,
     ),

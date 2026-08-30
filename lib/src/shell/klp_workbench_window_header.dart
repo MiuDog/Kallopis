@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../controls/klp_icon_button.dart';
 import '../foundation/klp_icons.dart';
-import '../theme/klp_geometry_theme.dart';
+import '../theme/klp_spacing_theme.dart';
 import '../theme/klp_theme.dart';
 import 'klp_window_header.dart';
 
@@ -44,13 +44,15 @@ class KlpWorkbenchWindowHeader extends StatelessWidget
   final bool showWindowControls;
 
   @override
-  Size get preferredSize =>
-      Size.fromHeight(KlpGeometryTheme.standard.layout.windowToolbarHeight);
+  Size get preferredSize => Size.fromHeight(
+    klpWindowHeaderHeight(KlpSpacingTheme.comfortableDensity),
+  );
 
   @override
   Widget build(BuildContext context) {
     final klp = context.klp;
     final layout = klp.geometry.layout;
+    final headerHeight = klpWindowHeaderHeight(klp.space);
     final toggleStart = primaryVisible
         ? klp.space.compact +
               primaryPaneWidth -
@@ -59,7 +61,7 @@ class KlpWorkbenchWindowHeader extends StatelessWidget
         : klp.space.compact;
 
     return SizedBox(
-      height: layout.windowToolbarHeight,
+      height: headerHeight,
       child: Stack(
         children: [
           Positioned.fill(
@@ -72,7 +74,7 @@ class KlpWorkbenchWindowHeader extends StatelessWidget
                       child: appIcon,
                     ),
               actions: actions,
-              height: layout.windowToolbarHeight,
+              height: headerHeight,
               onMinimize: onMinimize,
               onToggleMaximize: onToggleMaximize,
               onClose: onClose,

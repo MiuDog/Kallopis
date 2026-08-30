@@ -110,7 +110,8 @@ void main() {
 
     final iconFinder = find.byKey(const ValueKey('app_icon'));
     final iconContext = tester.element(iconFinder);
-    final compact = iconContext.klp.space.compact;
+    final space = iconContext.klp.space;
+    final compact = space.compact;
     final layout = iconContext.klp.geometry.layout;
     final headerRect = tester.getRect(find.byType(KlpWindowHeader));
     final fittedBoxFinder = find.ancestor(
@@ -127,12 +128,12 @@ void main() {
     expect(appFrameBackground.color, iconContext.klpColors.app);
     expect(headerRect.left, compact / 2);
     expect(headerRect.top, compact / 2);
-    expect(headerRect.height, layout.windowToolbarHeight - compact);
+    expect(headerRect.height, klpWindowHeaderHeight(space));
     expect(
       tester.getSize(fittedBoxFinder),
       Size.square(layout.windowAppIconSize),
     );
-    expect(iconRect.left, headerRect.left + layout.windowToolbarPaddingStart);
+    expect(iconRect.left, headerRect.left + compact / 2);
     expect(titleRect.left - iconRect.right, layout.windowIdentityGap);
   });
 

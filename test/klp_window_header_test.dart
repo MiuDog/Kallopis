@@ -43,14 +43,7 @@ void main() {
     expect(minimizeFinder, findsOneWidget);
     expect(
       tester.getSize(minimizeFinder),
-      Size.square(
-        tester
-            .element(minimizeFinder)
-            .klp
-            .geometry
-            .layout
-            .windowControlButtonSize,
-      ),
+      Size.square(tester.element(minimizeFinder).klp.space.iconButton),
     );
 
     final mouse = await tester.createGesture(kind: PointerDeviceKind.mouse);
@@ -105,21 +98,14 @@ void main() {
     expect(tester.widget<Material>(closeMaterial).color, closeTokens.danger);
     expect(tester.widget<KlpIcon>(closeIcon).color, closeTokens.onStatus);
 
-    final layout = tester.element(closeFinder).klp.geometry.layout;
-    expect(layout.windowToolbarPaddingStart, layout.windowToolbarPaddingEnd);
-    expect(
-      layout.windowToolbarPaddingStart,
-      tester.element(closeFinder).klp.space.compact,
-    );
-    expect(
-      layout.windowToolbarPaddingVertical,
-      (layout.windowToolbarHeight - layout.windowControlButtonSize) / 2,
-    );
-    expect(
-      tester.getRect(closeFinder).right,
-      tester.getRect(find.byType(KlpWindowHeader)).right -
-          layout.windowToolbarPaddingEnd,
-    );
+    final space = tester.element(closeFinder).klp.space;
+    final inset = space.compact / 2;
+    final headerRect = tester.getRect(find.byType(KlpWindowHeader));
+    final closeRect = tester.getRect(closeFinder);
+    expect(headerRect.height, klpWindowHeaderHeight(space));
+    expect(closeRect.top, headerRect.top + inset);
+    expect(closeRect.right, headerRect.right - inset);
+    expect(closeRect.bottom, headerRect.bottom - inset);
     await tester.tap(closeFinder);
     expect(closed, isTrue);
   });
@@ -174,11 +160,10 @@ void main() {
       (widget) => widget is KlpTooltip && widget.message == 'Close window',
     );
     expect(closeFinder, findsOneWidget);
-    final layout = tester.element(closeFinder).klp.geometry.layout;
+    final space = tester.element(closeFinder).klp.space;
     expect(
       tester.getRect(closeFinder).right,
-      tester.getRect(find.byType(KlpWindowHeader)).right -
-          layout.windowToolbarPaddingEnd,
+      tester.getRect(find.byType(KlpWindowHeader)).right - space.compact / 2,
     );
 
     await tester.tap(closeFinder);

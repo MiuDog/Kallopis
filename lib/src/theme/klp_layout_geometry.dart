@@ -1,7 +1,5 @@
 import 'package:flutter/foundation.dart';
 
-import '../tokens/klp_scale.dart';
-
 /// Shell、overlay 與 responsive layout 的精確幾何。
 @immutable
 class KlpLayoutGeometry {
@@ -20,11 +18,6 @@ class KlpLayoutGeometry {
     required this.statusBarBreakpoint,
     required this.settingsContentMaximumWidth,
     required this.themePreviewTileWidth,
-    required this.windowToolbarHeight,
-    this.windowControlButtonSize = 30,
-    required this.windowToolbarPaddingStart,
-    required this.windowToolbarPaddingEnd,
-    this.windowToolbarPaddingVertical = KlpScale.space100,
     required this.windowAppIconSize,
     required this.windowIdentityGap,
   });
@@ -49,15 +42,6 @@ class KlpLayoutGeometry {
   /// 顏色模式預覽磚的預設寬度。
   final double themePreviewTileWidth;
 
-  final double windowToolbarHeight;
-
-  /// 視窗最小化、最大化與關閉按鈕的外部方形尺寸，不影響內部 icon 尺寸。
-  final double windowControlButtonSize;
-  final double windowToolbarPaddingStart;
-  final double windowToolbarPaddingEnd;
-
-  /// Header 上下內距；與水平 gutter 分離，避免調整 panel 對齊時壓縮控制鈕。
-  final double windowToolbarPaddingVertical;
   final double windowAppIconSize;
   final double windowIdentityGap;
 
@@ -79,11 +63,6 @@ class KlpLayoutGeometry {
           statusBarBreakpoint == other.statusBarBreakpoint &&
           settingsContentMaximumWidth == other.settingsContentMaximumWidth &&
           themePreviewTileWidth == other.themePreviewTileWidth &&
-          windowToolbarHeight == other.windowToolbarHeight &&
-          windowControlButtonSize == other.windowControlButtonSize &&
-          windowToolbarPaddingStart == other.windowToolbarPaddingStart &&
-          windowToolbarPaddingEnd == other.windowToolbarPaddingEnd &&
-          windowToolbarPaddingVertical == other.windowToolbarPaddingVertical &&
           windowAppIconSize == other.windowAppIconSize &&
           windowIdentityGap == other.windowIdentityGap;
 
@@ -103,11 +82,6 @@ class KlpLayoutGeometry {
     statusBarBreakpoint,
     settingsContentMaximumWidth,
     themePreviewTileWidth,
-    windowToolbarHeight,
-    windowControlButtonSize,
-    windowToolbarPaddingStart,
-    windowToolbarPaddingEnd,
-    windowToolbarPaddingVertical,
     windowAppIconSize,
     windowIdentityGap,
   ]);

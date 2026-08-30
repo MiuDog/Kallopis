@@ -18,11 +18,6 @@ const _layoutKeys = {
   'statusBarBreakpoint',
   'settingsContentMaximumWidth',
   'themePreviewTileWidth',
-  'windowToolbarHeight',
-  'windowControlButtonSize',
-  'windowToolbarPaddingStart',
-  'windowToolbarPaddingEnd',
-  'windowToolbarPaddingVertical',
   'windowAppIconSize',
   'windowIdentityGap',
 };
@@ -74,23 +69,6 @@ KlpLayoutGeometry decodeLayoutGeometry(
     themePreviewTileWidth: read(
       'themePreviewTileWidth',
       base.themePreviewTileWidth,
-    ),
-    windowToolbarHeight: read('windowToolbarHeight', base.windowToolbarHeight),
-    windowControlButtonSize: read(
-      'windowControlButtonSize',
-      base.windowControlButtonSize,
-    ),
-    windowToolbarPaddingStart: read(
-      'windowToolbarPaddingStart',
-      base.windowToolbarPaddingStart,
-    ),
-    windowToolbarPaddingEnd: read(
-      'windowToolbarPaddingEnd',
-      base.windowToolbarPaddingEnd,
-    ),
-    windowToolbarPaddingVertical: read(
-      'windowToolbarPaddingVertical',
-      base.windowToolbarPaddingVertical,
     ),
     windowAppIconSize: read('windowAppIconSize', base.windowAppIconSize),
     windowIdentityGap: read('windowIdentityGap', base.windowIdentityGap),
