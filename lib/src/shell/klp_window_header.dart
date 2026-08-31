@@ -90,7 +90,9 @@ class KlpWindowHeader extends StatelessWidget implements PreferredSizeWidget {
     this.title,
     this.titleText,
     this.titleRole = KlpTextRole.label,
+    this.titleTrailing,
     this.appIcon,
+    this.appIconButton,
     this.actions,
     this.leading,
     this.trailing,
@@ -113,8 +115,14 @@ class KlpWindowHeader extends StatelessWidget implements PreferredSizeWidget {
   /// 產品標題字體角色（預設為細等寬字體角色 [KlpTextRole.label]）。
   final KlpTextRole titleRole;
 
+  /// 緊接在標題右方的控制項；適合在面板收合後保留展開按鈕。
+  final Widget? titleTrailing;
+
   /// 應用程式圖示。
   final Widget? appIcon;
+
+  /// 佔用 App icon 槽位的互動按鈕。提供時優先於 [appIcon]。
+  final Widget? appIconButton;
 
   /// 頂部自訂動作按鈕清單。
   final List<Widget>? actions;
@@ -168,6 +176,7 @@ class KlpWindowHeader extends StatelessWidget implements PreferredSizeWidget {
     );
     final effectivePlatform = platform ?? Theme.of(context).platform;
     final isMac = effectivePlatform == TargetPlatform.macOS;
+    final appIconUsesIndependentSlot = appIconButton != null && !isMac;
 
     final Widget titleWidget =
         title ??
@@ -180,13 +189,21 @@ class KlpWindowHeader extends StatelessWidget implements PreferredSizeWidget {
       child: buildKlpWindowHeaderRegion(
         alignment: AlignmentDirectional.centerStart,
         children: [
-          SizedBox.square(
-            key: const ValueKey(klpWindowAppIconSlotKey),
-            dimension: layout.windowHeaderControlSize,
-            child: appIcon == null ? null : _KlpAppIcon(child: appIcon!),
-          ),
-          SizedBox(width: layout.windowIdentityGap),
+          if (!appIconUsesIndependentSlot) ...[
+            SizedBox.square(
+              key: const ValueKey(klpWindowAppIconSlotKey),
+              dimension: layout.windowHeaderControlSize,
+              child:
+                  appIconButton ??
+                  (appIcon == null ? null : _KlpAppIcon(child: appIcon!)),
+            ),
+            SizedBox(width: layout.windowIdentityGap),
+          ],
           Center(child: titleWidget),
+          if (titleTrailing != null) ...[
+            SizedBox(width: layout.windowIdentityGap),
+            titleTrailing!,
+          ],
         ],
       ),
     );
@@ -252,6 +269,14 @@ class KlpWindowHeader extends StatelessWidget implements PreferredSizeWidget {
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
         if (leading != null) ...[leading!, SizedBox(width: klp.space.compact)],
+        if (appIconButton != null) ...[
+          SizedBox.square(
+            key: const ValueKey(klpWindowAppIconSlotKey),
+            dimension: klp.geometry.layout.windowHeaderControlSize,
+            child: appIconButton,
+          ),
+          SizedBox(width: klp.geometry.layout.windowIdentityGap),
+        ],
         Expanded(
           child: buildKlpWindowHeaderContent(
             identity: GestureDetector(

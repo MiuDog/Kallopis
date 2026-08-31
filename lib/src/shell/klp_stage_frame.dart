@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
 import '../theme/klp_theme.dart';
+import 'klp_stage_header.dart';
+import 'klp_status_bar.dart';
 
 /// 舞台區：頂部 header、中央 content、底部選用的 status 列。
 class KlpStageFrame extends StatelessWidget {
@@ -9,16 +11,49 @@ class KlpStageFrame extends StatelessWidget {
     required this.header,
     required this.content,
     this.status,
-    this.padding,
   });
+
+  /// 建立具備 Kallopis 標準識別列與狀態列的工作舞台。
+  ///
+  /// 產品只提供語意資料與主要內容；header、status 的元件選擇、排列、間距與
+  /// 響應式行為都留在 Kallopis。若提供狀態文字，leading 與 trailing 必須成對。
+  factory KlpStageFrame.workbench({
+    Key? key,
+    required String projectName,
+    required String sectionLabel,
+    required String title,
+    required String typeLabel,
+    required Widget content,
+    String? statusLeading,
+    String? statusTrailing,
+    bool statusActive = true,
+  }) {
+    assert(
+      (statusLeading == null) == (statusTrailing == null),
+      'statusLeading and statusTrailing must be provided together.',
+    );
+    return KlpStageFrame(
+      key: key,
+      header: KlpStageHeader(
+        projectName: projectName,
+        sectionLabel: sectionLabel,
+        title: title,
+        typeLabel: typeLabel,
+      ),
+      content: content,
+      status: statusLeading == null
+          ? null
+          : KlpStatusBar(
+              leading: statusLeading,
+              trailing: statusTrailing!,
+              active: statusActive,
+            ),
+    );
+  }
 
   final Widget header;
   final Widget content;
   final Widget? status;
-
-  /// 舞台可視邊界與其完整內容（header、content、status）之間的內距。
-  /// 預設使用語意緊湊間距。
-  final EdgeInsetsGeometry? padding;
 
   @override
   Widget build(BuildContext context) {
@@ -36,7 +71,7 @@ class KlpStageFrame extends StatelessWidget {
         child: KlpTokenOverride(
           colors: surfaceTokens,
           child: Padding(
-            padding: padding ?? EdgeInsets.all(context.klp.space.compact),
+            padding: EdgeInsets.all(context.klp.space.compact),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [

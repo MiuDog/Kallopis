@@ -22,6 +22,7 @@
 4. Resize handle 位於兩個 pane 可視表面之間的 margin 正中央。
 5. Panel 可視表面內部 padding 為一個 `space.compact`，屬於 Panel 自身。
 6. 從視窗頂端到 pane 可視表面的垂直節奏為 `8 + 24 + 8 = 40px`。
+7. Header 的左右 pane 收合按鈕分別貼齊對應 pane 的內側邊界，拖曳調寬時同步移動。
 
 ## Architecture constraints
 
@@ -37,4 +38,5 @@
 3. Resize handle 中線等於兩個相鄰 pane 表面之間距的中線。
 4. 未傳入 panel padding 時，sidebar 與 stage 的完整內容四周皆等於
    `space.compact`。
-5. 呼叫端仍可用 `padding`、`paneGap`、`paneMargin` 與 panel `padding` 覆寫。
+5. 標準 `KlpStageFrame.workbench` 不提供 stage padding、header action 或換行模式覆寫；
+   產品只傳入語意資料與內容。

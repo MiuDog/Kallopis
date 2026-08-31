@@ -1039,8 +1039,8 @@ graph LR
 | `KlpResponsivePaneCoordinator` | 22 | （葉節點） |
 | `KlpSidebarFrame` | 33 | `KlpPanelFrame` |
 | `KlpSidebarIdentityHeader` | 63 | `KlpAvatar`、`KlpIcon`、`KlpSurface`、`KlpText` |
-| `KlpStageFrame` | 57 | `KlpTokenOverride` |
-| `KlpStageHeader` | 97 | `KlpText` |
+| `KlpStageFrame` | 90 | `KlpStageHeader`、`KlpStatusBar`、`KlpTokenOverride` |
+| `KlpStageHeader` | 76 | `KlpText` |
 | `KlpStatusBar` | 44 | `KlpStatusIndicator`、`KlpText` |
 | `KlpThemePreviewMode` | 2 | （葉節點） |
 | `KlpThemePreviewTile` | 311 | `KlpPressable`、`KlpText` |
@@ -1048,9 +1048,9 @@ graph LR
 | `KlpWindowAction` | 64 | （葉節點） |
 | `KlpWindowControls` | 135 | `KlpIcon`、`KlpTooltip` |
 | `KlpWindowControlsStyle` | 11 | （葉節點） |
-| `KlpWindowHeader` | 260 | `KlpText`、`KlpWindowControls` |
+| `KlpWindowHeader` | 285 | `KlpText`、`KlpWindowControls` |
 | `KlpWorkbenchShell` | 257 | `KlpResizeHandle` |
-| `KlpWorkbenchWindowHeader` | 90 | `KlpIconButton`、`KlpWindowHeader` |
+| `KlpWorkbenchWindowHeader` | 128 | `KlpIconButton`、`KlpWindowHeader` |
 
 ```mermaid
 graph LR
@@ -1092,6 +1092,8 @@ graph LR
   KlpSidebarIdentityHeader --> KlpIcon
   KlpSidebarIdentityHeader --> KlpSurface
   KlpSidebarIdentityHeader --> KlpText
+  KlpStageFrame --> KlpStageHeader
+  KlpStageFrame --> KlpStatusBar
   KlpStageFrame --> KlpTokenOverride
   KlpStageHeader --> KlpText
   KlpStatusBar --> KlpStatusIndicator

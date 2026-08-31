@@ -7,8 +7,9 @@ Kallopis 提供桌面知識工作區所需的無產品語意視覺元件，讓�
 
 ## Visual contract
 
-1. Window header 預設高度為 44px。
-2. Workbench 外框左右與底部、相鄰 panel 間距皆沿用 `space.compact`；預設為 10px，頂部為 0。
+1. Window header 版面占位為 40px，其中可視表面高度為 24px，上下各有一個
+   `space.compact` margin。
+2. Workbench 外框與相鄰 panel 的可視表面間距皆沿用 `space.compact`；預設為 8px。
 3. Primary Sidebar identity 與 navigation row 高度皆為 36px。
 4. Navigation group 的相鄰列間距為 hairline（預設 2px）。
 5. Workbench resize hit area 與 pane gap 同寬，中央 grip 為 2×28px。
@@ -18,7 +19,8 @@ Kallopis 提供桌面知識工作區所需的無產品語意視覺元件，讓�
 ## Architecture constraints
 
 - 元件的風格只讀取 `context.klp`。
-- Notist 只組合公開元件；sidebar width 與 destination 是產品布局／狀態，不下沉 Kallopis。
+- 產品只提供 sidebar destination 等產品狀態；標準工作舞台透過
+  `KlpStageFrame.workbench` 取得 Kallopis 的完整組合，不自行排 header 與 status。
 - Catalog 必須展示新增的公開 Widget，並由既有 Catalog coverage 與三主題渲染測試覆蓋。
 
 ## Acceptance criteria

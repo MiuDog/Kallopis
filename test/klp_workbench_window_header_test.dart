@@ -62,4 +62,49 @@ void main() {
     final toggleRect = tester.getRect(find.bySemanticsLabel('收合側邊面板'));
     expect(toggleRect.center.dx, closeTo(headerRect.left + 268, 40));
   });
+
+  testWidgets('secondary pane toggle follows the live pane width', (
+    tester,
+  ) async {
+    var secondaryWidth = 300.0;
+    late StateSetter updateHeader;
+
+    await tester.pumpWidget(
+      KlpApp(
+        showWindowHeader: false,
+        home: StatefulBuilder(
+          builder: (context, setState) {
+            updateHeader = setState;
+            return SizedBox(
+              width: 1000,
+              child: KlpWorkbenchWindowHeader(
+                titleText: 'Notist',
+                primaryPaneWidth: 268,
+                primaryVisible: true,
+                onTogglePrimary: () {},
+                collapseLabel: '收合側邊面板',
+                expandLabel: '展開側邊面板',
+                secondaryPaneWidth: secondaryWidth,
+                secondaryVisible: true,
+                onToggleSecondary: () {},
+                collapseSecondaryLabel: '收合檢查器',
+                expandSecondaryLabel: '展開檢查器',
+                showWindowControls: false,
+              ),
+            );
+          },
+        ),
+      ),
+    );
+
+    final secondaryToggle = find.bySemanticsLabel('收合檢查器');
+    expect(secondaryToggle, findsOneWidget);
+    final before = tester.getRect(secondaryToggle);
+
+    updateHeader(() => secondaryWidth = 360);
+    await tester.pump();
+
+    final after = tester.getRect(secondaryToggle);
+    expect(after.left, closeTo(before.left - 60, 0.01));
+  });
 }
