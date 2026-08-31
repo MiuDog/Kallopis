@@ -871,9 +871,9 @@ graph LR
 | `KlpActionGroup` | 20 | （葉節點） |
 | `KlpBreadcrumb` | 34 | `KlpText` |
 | `KlpFileExplorer` | 147 | `KlpFileExplorerSectionView` |
-| `KlpFileExplorerFolderView` | 108 | `KlpIcon`、`KlpStateHighlight`、`KlpText` |
+| `KlpFileExplorerFolderView` | 149 | `KlpIcon`、`KlpStateHighlight`、`KlpText` |
 | `KlpFileExplorerItem` | 33 | （葉節點） |
-| `KlpFileExplorerItemView` | 105 | `KlpIcon`、`KlpStateHighlight`、`KlpText` |
+| `KlpFileExplorerItemView` | 102 | `KlpIcon`、`KlpStateHighlight`、`KlpText` |
 | `KlpFileExplorerSection` | 39 | （葉節點） |
 | `KlpFileExplorerSectionView` | 150 | `KlpFileExplorerFolderView`、`KlpFileExplorerItemView`、`KlpIcon`、`KlpPressable`、`KlpText` |
 | `KlpPagination` | 46 | `KlpButton`、`KlpText` |
@@ -1050,7 +1050,7 @@ graph LR
 | `KlpWindowControlsStyle` | 11 | （葉節點） |
 | `KlpWindowHeader` | 285 | `KlpText`、`KlpWindowControls` |
 | `KlpWorkbenchShell` | 257 | `KlpResizeHandle` |
-| `KlpWorkbenchWindowHeader` | 128 | `KlpIconButton`、`KlpWindowHeader` |
+| `KlpWorkbenchWindowHeader` | 186 | `KlpIconButton`、`KlpWindowHeader` |
 
 ```mermaid
 graph LR

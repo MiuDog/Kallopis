@@ -25,6 +25,7 @@ class KlpWorkbenchWindowHeader extends StatelessWidget
     this.onToggleSecondary,
     this.collapseSecondaryLabel,
     this.expandSecondaryLabel,
+    this.stageTopBar,
     this.appIcon,
     this.appIconButton,
     this.actions,
@@ -46,6 +47,9 @@ class KlpWorkbenchWindowHeader extends StatelessWidget
   final VoidCallback? onToggleSecondary;
   final String? collapseSecondaryLabel;
   final String? expandSecondaryLabel;
+
+  /// 位於 Primary 與 Secondary pane 之間的 Stage header 內容。
+  final Widget? stageTopBar;
   final Widget? appIcon;
   final Widget? appIconButton;
   final List<Widget>? actions;
@@ -90,10 +94,20 @@ class KlpWorkbenchWindowHeader extends StatelessWidget
             tone: KlpIconButtonTone.inline,
           )
         : null;
+    final windowControlsExtent = showWindowControls
+        ? layout.windowHeaderControlSize * 3
+        : 0.0;
+    final collapsedActions = actions ?? const <Widget>[];
+    final hasCollapsedChrome =
+        !secondaryVisible &&
+        (stageTopBar != null ||
+            collapsedActions.isNotEmpty ||
+            secondaryToggle != null);
 
     return SizedBox(
       height: headerHeight,
       child: Stack(
+        clipBehavior: Clip.none,
         children: [
           Positioned.fill(
             child: KlpWindowHeader(
@@ -101,8 +115,7 @@ class KlpWorkbenchWindowHeader extends StatelessWidget
               titleTrailing: primaryVisible ? null : primaryToggle,
               appIcon: appIcon,
               appIconButton: appIconButton,
-              actions: actions,
-              trailing: !secondaryVisible ? secondaryToggle : null,
+              actions: secondaryVisible ? actions : null,
               height: headerHeight,
               onMinimize: onMinimize,
               onToggleMaximize: onToggleMaximize,
@@ -111,6 +124,51 @@ class KlpWorkbenchWindowHeader extends StatelessWidget
               showWindowControls: showWindowControls,
             ),
           ),
+          if (stageTopBar != null && secondaryVisible)
+            PositionedDirectional(
+              start: primaryVisible
+                  ? primaryPaneWidth + panelMargin
+                  : panelMargin,
+              end: secondaryPaneWidth != null
+                  ? secondaryPaneWidth! + panelMargin
+                  : panelMargin,
+              top: 0,
+              bottom: -panelMargin,
+              child: stageTopBar!,
+            ),
+          if (hasCollapsedChrome)
+            PositionedDirectional(
+              start: primaryVisible
+                  ? primaryPaneWidth + panelMargin
+                  : panelMargin,
+              end: panelMargin + windowControlsExtent,
+              top: 0,
+              bottom: -panelMargin,
+              child: Row(
+                children: [
+                  if (stageTopBar != null)
+                    Expanded(child: stageTopBar!)
+                  else
+                    const Spacer(),
+                  if (collapsedActions.isNotEmpty) ...[
+                    SizedBox(width: klp.space.compact),
+                    for (
+                      var index = 0;
+                      index < collapsedActions.length;
+                      index++
+                    ) ...[
+                      if (index > 0) SizedBox(width: klp.space.tight),
+                      collapsedActions[index],
+                    ],
+                  ],
+                  if (secondaryToggle != null) ...[
+                    SizedBox(width: klp.space.compact),
+                    secondaryToggle,
+                  ],
+                  SizedBox(width: klp.space.compact),
+                ],
+              ),
+            ),
           if (primaryVisible)
             PositionedDirectional(
               start:

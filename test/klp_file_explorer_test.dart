@@ -102,4 +102,105 @@ void main() {
     expect(find.text('規格文件'), findsNothing);
     expect(find.text('ADR-0003 : 團隊導向'), findsNothing);
   });
+
+  testWidgets('folder and file content areas align with half-size nesting', (
+    tester,
+  ) async {
+    await tester.pumpWidget(
+      MaterialApp(
+        theme: buildKlpTheme(Brightness.light),
+        home: const Scaffold(
+          body: KlpFileExplorer(
+            sections: [
+              KlpFileExplorerSection(
+                id: 'design',
+                title: 'DESIGN',
+                items: [
+                  KlpFileExplorerItem(
+                    id: 'root-folder',
+                    label: 'Root folder',
+                    expanded: true,
+                    icon: KlpIcons.folder,
+                    children: [
+                      KlpFileExplorerItem(
+                        id: 'nested-folder',
+                        label: 'Nested folder',
+                        icon: KlpIcons.archive,
+                        children: [
+                          KlpFileExplorerItem(id: 'dummy', label: 'Dummy'),
+                        ],
+                      ),
+                      KlpFileExplorerItem(
+                        id: 'nested-file',
+                        label: 'Nested file',
+                        icon: KlpIcons.bookmark,
+                      ),
+                    ],
+                  ),
+                  KlpFileExplorerItem(
+                    id: 'root-file',
+                    label: 'Root file',
+                    icon: KlpIcons.clipboard,
+                  ),
+                ],
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+
+    Finder icon(KlpIconData data) => find.byWidgetPredicate(
+      (widget) => widget is KlpIcon && widget.icon.codePoint == data.codePoint,
+    );
+    final rootFolder = icon(KlpIcons.folder);
+    final rootFile = icon(KlpIcons.clipboard);
+    final nestedFolder = icon(KlpIcons.archive);
+    final nestedFile = icon(KlpIcons.bookmark);
+    final rootFolderView = find.byWidgetPredicate(
+      (widget) =>
+          widget is KlpFileExplorerFolderView &&
+          widget.item.id == 'root-folder',
+    );
+    final rootFileView = find.byWidgetPredicate(
+      (widget) =>
+          widget is KlpFileExplorerItemView && widget.item.id == 'root-file',
+    );
+    Finder leadingArea(Finder view) => find.descendant(
+      of: view,
+      matching: find.byKey(const ValueKey('klp-file-explorer-leading-area')),
+    );
+    Finder contentArea(Finder view) => find.descendant(
+      of: view,
+      matching: find.byKey(const ValueKey('klp-file-explorer-content-area')),
+    );
+    final context = tester.element(find.byType(KlpFileExplorer));
+
+    expect(leadingArea(rootFolderView), findsOneWidget);
+    expect(leadingArea(rootFileView), findsOneWidget);
+    expect(
+      find.descendant(
+        of: leadingArea(rootFileView),
+        matching: find.byType(KlpIcon),
+      ),
+      findsNothing,
+    );
+    expect(
+      tester.getTopLeft(contentArea(rootFolderView)).dx,
+      tester.getTopLeft(rootFolder).dx,
+    );
+    expect(
+      tester.getTopLeft(contentArea(rootFileView)).dx,
+      tester.getTopLeft(rootFile).dx,
+    );
+    expect(tester.getTopLeft(rootFolder).dx, tester.getTopLeft(rootFile).dx);
+    expect(
+      tester.getTopLeft(nestedFolder).dx,
+      tester.getTopLeft(nestedFile).dx,
+    );
+    expect(
+      tester.getTopLeft(nestedFolder).dx - tester.getTopLeft(rootFolder).dx,
+      context.klp.space.tight,
+    );
+  });
 }

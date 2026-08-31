@@ -46,6 +46,10 @@ token，仍會產生多份不同的前端規格。這會讓新產品必須重新
   stage padding 覆寫。
 - `KlpWorkbenchWindowHeader` 依 primary 與 secondary pane 的即時寬度定位兩側收合按鈕；
   產品不計算按鈕座標。
+- Secondary pane 收合時，Stage actions、header actions、pane toggle 與視窗控制區必須由
+  `KlpWorkbenchWindowHeader` 配置在同一條互斥水平序列中，不得以重疊 Stack 各自搶占空間。
+- `KlpFileExplorer` 的節點列分為樹狀控制區與內容區；沒有展開控制的節點仍保留控制區空槽，
+  同層節點以內容 icon 左緣對齊，預設層級縮排使用 `space.tight`（`space.compact` 的一半）。
 - `KlpStatusIndicator` 自身擁有左右 `space.compact` padding，垂直 padding 固定為零；
   `KlpStatusBar` 不重複包覆整列間距。
 - Stage header 測試機械驗證兩行距離、自動長標題換行、沒有 action button，以及 factory

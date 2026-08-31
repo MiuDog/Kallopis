@@ -107,4 +107,65 @@ void main() {
     final after = tester.getRect(secondaryToggle);
     expect(after.left, closeTo(before.left - 60, 0.01));
   });
+
+  testWidgets('collapsed secondary pane reserves header action space', (
+    tester,
+  ) async {
+    const stageActionKey = ValueKey('stage-action');
+    const headerActionKey = ValueKey('header-action');
+
+    await tester.pumpWidget(
+      KlpApp(
+        showWindowHeader: false,
+        home: KlpAppScreen(
+          child: SizedBox(
+            width: 1000,
+            child: KlpWorkbenchWindowHeader(
+              titleText: 'Notist',
+              primaryPaneWidth: 268,
+              primaryVisible: false,
+              onTogglePrimary: () {},
+              collapseLabel: '收合側邊面板',
+              expandLabel: '展開側邊面板',
+              secondaryPaneWidth: 300,
+              secondaryVisible: false,
+              onToggleSecondary: () {},
+              collapseSecondaryLabel: '收合檢查器',
+              expandSecondaryLabel: '展開檢查器',
+              stageTopBar: const Stack(
+                children: [
+                  PositionedDirectional(
+                    end: 0,
+                    top: 0,
+                    child: SizedBox(
+                      key: stageActionKey,
+                      width: 240,
+                      height: 24,
+                    ),
+                  ),
+                ],
+              ),
+              actions: const [
+                SizedBox(key: headerActionKey, width: 80, height: 24),
+              ],
+            ),
+          ),
+        ),
+      ),
+    );
+
+    final stageActionRect = tester.getRect(find.byKey(stageActionKey));
+    final headerActionRect = tester.getRect(find.byKey(headerActionKey));
+    final secondaryToggleRect = tester.getRect(find.bySemanticsLabel('展開檢查器'));
+    final windowControlsRect = tester.getRect(find.byType(KlpWindowControls));
+    final compact = tester
+        .element(find.byType(KlpWorkbenchWindowHeader))
+        .klp
+        .space
+        .compact;
+
+    expect(headerActionRect.left - stageActionRect.right, compact);
+    expect(secondaryToggleRect.left - headerActionRect.right, compact);
+    expect(windowControlsRect.left - secondaryToggleRect.right, compact);
+  });
 }
