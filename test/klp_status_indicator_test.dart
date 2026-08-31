@@ -33,13 +33,31 @@ void main() {
       ),
     );
     final compact = tester.element(indicator).klp.space.compact;
+    final padding = tester.widget<Padding>(
+      find.descendant(
+        of: indicator,
+        matching: find.byWidgetPredicate(
+          (widget) => widget is Padding && widget.child is Row,
+        ),
+      ),
+    );
+    final resolvedPadding = padding.padding.resolve(TextDirection.ltr);
 
     expect(label, findsOneWidget);
     expect(find.text('SAVED LOCALLY'), findsNothing);
     expect(text.role, KlpTextRole.code);
     expect(text.tone, KlpTextTone.muted);
     expect(text.color, isNull);
+    expect(resolvedPadding, EdgeInsets.symmetric(horizontal: compact));
+    expect(
+      tester.getRect(marker).left - tester.getRect(indicator).left,
+      compact,
+    );
     expect(tester.getRect(label).left - tester.getRect(marker).right, compact);
+    expect(
+      tester.getRect(indicator).right - tester.getRect(label).right,
+      compact,
+    );
   });
 
   testWidgets('status bar composes the shared status indicator', (
@@ -60,5 +78,11 @@ void main() {
     expect(find.byType(KlpStatusIndicator), findsOneWidget);
     expect(find.text('Flutter · Design IR v0.1'), findsOneWidget);
     expect(find.text('80% · 1 frame · 6 nodes'), findsOneWidget);
+    final barRect = tester.getRect(find.byType(KlpStatusBar));
+    final indicatorRect = tester.getRect(find.byType(KlpStatusIndicator));
+    final trailingRect = tester.getRect(find.text('80% · 1 frame · 6 nodes'));
+    final compact = tester.element(find.byType(KlpStatusBar)).klp.space.compact;
+    expect(indicatorRect.left, barRect.left);
+    expect(barRect.right - trailingRect.right, compact);
   });
 }

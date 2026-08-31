@@ -117,17 +117,20 @@ class KlpStatusIndicator extends StatelessWidget {
       overflow: TextOverflow.ellipsis,
     );
 
-    return Row(
-      mainAxisSize: expanded ? MainAxisSize.max : MainAxisSize.min,
-      crossAxisAlignment: CrossAxisAlignment.center,
-      children: [
-        Transform.translate(
-          offset: Offset(0, context.klp.geometry.optical.statusIconOffsetY),
-          child: iconWidget,
-        ),
-        SizedBox(width: context.klp.space.compact),
-        if (expanded) Expanded(child: labelWidget) else labelWidget,
-      ],
+    return Padding(
+      padding: EdgeInsets.symmetric(horizontal: context.klp.space.compact),
+      child: Row(
+        mainAxisSize: expanded ? MainAxisSize.max : MainAxisSize.min,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          Transform.translate(
+            offset: Offset(0, context.klp.geometry.optical.statusIconOffsetY),
+            child: iconWidget,
+          ),
+          SizedBox(width: context.klp.space.compact),
+          if (expanded) Expanded(child: labelWidget) else labelWidget,
+        ],
+      ),
     );
   }
 }

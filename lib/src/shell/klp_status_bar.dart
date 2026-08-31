@@ -24,25 +24,27 @@ class KlpStatusBar extends StatelessWidget {
             constraints.maxWidth <
             context.klp.geometry.layout.statusBarBreakpoint;
 
-        return Padding(
-          padding: EdgeInsets.symmetric(horizontal: context.klp.space.compact),
-          child: Row(
-            children: [
-              Expanded(
-                child: KlpStatusIndicator(
-                  label: leading,
-                  active: active,
-                  expanded: true,
-                ),
+        return Row(
+          children: [
+            Expanded(
+              child: KlpStatusIndicator(
+                label: leading,
+                active: active,
+                expanded: true,
               ),
-              if (!compact)
-                KlpText(
+            ),
+            if (!compact)
+              Padding(
+                padding: EdgeInsetsDirectional.only(
+                  end: context.klp.space.compact,
+                ),
+                child: KlpText(
                   trailing,
                   role: KlpTextRole.code,
                   tone: KlpTextTone.faint,
                 ),
-            ],
-          ),
+              ),
+          ],
         );
       },
     );

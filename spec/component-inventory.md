@@ -815,7 +815,7 @@ graph LR
 | `KlpRegionPlaceholder` | 275 | `KlpPressable`、`KlpText` |
 | `KlpRegionPlaceholderTone` | 2 | （葉節點） |
 | `KlpSkeletonLine` | 19 | （葉節點） |
-| `KlpStatusIndicator` | 101 | `KlpIcon`、`KlpText` |
+| `KlpStatusIndicator` | 104 | `KlpIcon`、`KlpText` |
 | `KlpStatusKind` | 24 | （葉節點） |
 | `KlpToast` | 115 | `KlpButton`、`KlpIcon`、`KlpText` |
 | `KlpToastStack` | 20 | （葉節點） |
@@ -1041,7 +1041,7 @@ graph LR
 | `KlpSidebarIdentityHeader` | 63 | `KlpAvatar`、`KlpIcon`、`KlpSurface`、`KlpText` |
 | `KlpStageFrame` | 90 | `KlpStageHeader`、`KlpStatusBar`、`KlpTokenOverride` |
 | `KlpStageHeader` | 76 | `KlpText` |
-| `KlpStatusBar` | 44 | `KlpStatusIndicator`、`KlpText` |
+| `KlpStatusBar` | 46 | `KlpStatusIndicator`、`KlpText` |
 | `KlpThemePreviewMode` | 2 | （葉節點） |
 | `KlpThemePreviewTile` | 311 | `KlpPressable`、`KlpText` |
 | `KlpThemeToggle` | 25 | `KlpSurface`、`KlpText` |

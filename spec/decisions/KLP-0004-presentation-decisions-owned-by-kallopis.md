@@ -46,6 +46,8 @@ token，仍會產生多份不同的前端規格。這會讓新產品必須重新
   stage padding 覆寫。
 - `KlpWorkbenchWindowHeader` 依 primary 與 secondary pane 的即時寬度定位兩側收合按鈕；
   產品不計算按鈕座標。
+- `KlpStatusIndicator` 自身擁有左右 `space.compact` padding，垂直 padding 固定為零；
+  `KlpStatusBar` 不重複包覆整列間距。
 - Stage header 測試機械驗證兩行距離、自動長標題換行、沒有 action button，以及 factory
   會建立 header 與 status。
 - `tool/verify.ps1` 必須通過 format、analyze、inventory、根套件與 Catalog golden 全部閘門。
