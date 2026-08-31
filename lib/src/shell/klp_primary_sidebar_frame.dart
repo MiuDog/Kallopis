@@ -26,6 +26,7 @@ class KlpPrimarySidebarFrame extends StatelessWidget {
     final space = context.klp.space;
 
     return KlpPanelFrame(
+      padding: EdgeInsets.symmetric(horizontal: space.compact),
       headerHeight: space.controlHeightSmall,
       header: header,
       content: Column(

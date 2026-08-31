@@ -1035,7 +1035,7 @@ graph LR
 | `KlpPaneCollapseControl` | 65 | `KlpIcon` |
 | `KlpPanelFrame` | 71 | `KlpTokenOverride` |
 | `KlpPanelHeader` | 57 | `KlpText` |
-| `KlpPrimarySidebarFrame` | 33 | `KlpPanelFrame` |
+| `KlpPrimarySidebarFrame` | 34 | `KlpPanelFrame` |
 | `KlpResponsivePaneCoordinator` | 22 | （葉節點） |
 | `KlpSidebarFrame` | 33 | `KlpPanelFrame` |
 | `KlpSidebarIdentityHeader` | 63 | `KlpAvatar`、`KlpIcon`、`KlpSurface`、`KlpText` |
