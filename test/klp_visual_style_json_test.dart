@@ -53,7 +53,7 @@ void main() {
       });
       expect((encoded['colors'] as Map).length, 32);
       expect((encoded['typography'] as Map).length, 44);
-      expect((encoded['spacing'] as Map).length, 63);
+      expect((encoded['spacing'] as Map).length, 64);
       expect((encoded['spacing'] as Map)['iconGlyph'], 18);
       expect((encoded['spacing'] as Map)['gridTileWidth'], 170);
       expect((encoded['shape'] as Map).length, 13);
@@ -65,7 +65,7 @@ void main() {
       expect(geometry.keys, <String>{'control', 'data', 'layout', 'optical'});
       expect((geometry['control'] as Map).length, 18);
       expect((geometry['data'] as Map).length, 21);
-      expect((geometry['layout'] as Map).length, 22);
+      expect((geometry['layout'] as Map).length, 24);
       expect((geometry['optical'] as Map).length, 5);
     });
 

@@ -30,6 +30,7 @@ KlpJsonMap encodeSpacing(KlpSpacingTheme v) => <String, Object?>{
   'containerPadding': v.containerPadding,
   'itemGap': v.itemGap,
   'groupGap': v.groupGap,
+  'controlHeightXSmall': v.controlHeightXSmall,
   'controlHeightSmall': v.controlHeightSmall,
   'controlHeight': v.controlHeight,
   'controlHeightLarge': v.controlHeightLarge,

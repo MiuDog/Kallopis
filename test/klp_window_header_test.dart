@@ -24,7 +24,7 @@ void main() {
         child: KlpWindowHeader(
           titleText: 'Planist',
           platform: TargetPlatform.windows,
-          appIcon: const Icon(Icons.circle, key: ValueKey('app-icon')),
+          appIcon: const KlpIcon(KlpIcons.circle, key: ValueKey('app-icon')),
           onMinimize: () => minimized = true,
           onToggleMaximize: () => maximized = true,
           onClose: () => closed = true,
@@ -49,7 +49,7 @@ void main() {
             .klp
             .geometry
             .layout
-            .windowControlButtonSize,
+            .windowHeaderControlSize,
       ),
     );
 
@@ -104,22 +104,22 @@ void main() {
     final closeTokens = tester.element(closeFinder).klpColors;
     expect(tester.widget<Material>(closeMaterial).color, closeTokens.danger);
     expect(tester.widget<KlpIcon>(closeIcon).color, closeTokens.onStatus);
+    expect(
+      tester.widget<KlpIcon>(closeIcon).size,
+      tester.element(closeFinder).klp.geometry.layout.windowHeaderControlSize /
+          2,
+    );
+    expect(tester.widget<KlpIcon>(closeIcon).size, 12);
 
-    final layout = tester.element(closeFinder).klp.geometry.layout;
-    expect(layout.windowToolbarPaddingStart, layout.windowToolbarPaddingEnd);
-    expect(
-      layout.windowToolbarPaddingStart,
-      tester.element(closeFinder).klp.space.compact,
-    );
-    expect(
-      layout.windowToolbarPaddingVertical,
-      (layout.windowToolbarHeight - layout.windowControlButtonSize) / 2,
-    );
-    expect(
-      tester.getRect(closeFinder).right,
-      tester.getRect(find.byType(KlpWindowHeader)).right -
-          layout.windowToolbarPaddingEnd,
-    );
+    final space = tester.element(closeFinder).klp.space;
+    final inset = space.compact / 2;
+    final geometry = tester.element(closeFinder).klp.geometry;
+    final headerRect = tester.getRect(find.byType(KlpWindowHeader));
+    final closeRect = tester.getRect(closeFinder);
+    expect(headerRect.height, klpWindowHeaderHeight(geometry));
+    expect(closeRect.top, headerRect.top + inset);
+    expect(closeRect.right, headerRect.right - inset);
+    expect(closeRect.bottom, headerRect.bottom - inset);
     await tester.tap(closeFinder);
     expect(closed, isTrue);
   });
@@ -140,7 +140,7 @@ void main() {
     final layout = tester.element(slot).klp.geometry.layout;
 
     expect(slot, findsOneWidget);
-    expect(tester.getSize(slot), Size.square(layout.windowAppIconSize));
+    expect(tester.getSize(slot), Size.square(layout.windowHeaderControlSize));
     expect(
       tester.getRect(title).left - tester.getRect(slot).right,
       layout.windowIdentityGap,
@@ -160,7 +160,7 @@ void main() {
             child: KlpWindowHeader(
               titleText: 'A deliberately long application title',
               platform: TargetPlatform.windows,
-              appIcon: const Icon(Icons.circle),
+              appIcon: const KlpIcon(KlpIcons.circle),
               onClose: () => closed = true,
             ),
           ),
@@ -174,11 +174,10 @@ void main() {
       (widget) => widget is KlpTooltip && widget.message == 'Close window',
     );
     expect(closeFinder, findsOneWidget);
-    final layout = tester.element(closeFinder).klp.geometry.layout;
+    final space = tester.element(closeFinder).klp.space;
     expect(
       tester.getRect(closeFinder).right,
-      tester.getRect(find.byType(KlpWindowHeader)).right -
-          layout.windowToolbarPaddingEnd,
+      tester.getRect(find.byType(KlpWindowHeader)).right - space.compact / 2,
     );
 
     await tester.tap(closeFinder);
@@ -217,7 +216,7 @@ void main() {
         child: const KlpWindowHeader(
           titleText: 'Planist Mac',
           platform: TargetPlatform.macOS,
-          appIcon: Icon(Icons.circle, key: ValueKey('mac-app-icon')),
+          appIcon: KlpIcon(KlpIcons.circle, key: ValueKey('mac-app-icon')),
         ),
       ),
     );

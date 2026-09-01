@@ -186,7 +186,7 @@ class _KlpTableLine extends StatelessWidget {
       onTap: onPressed,
       child: Container(
         constraints: BoxConstraints(
-          minHeight: context.klp.space.controlHeightLarge,
+          minHeight: context.klp.space.controlHeight,
         ),
         decoration: BoxDecoration(
           color: header
@@ -223,7 +223,7 @@ class _KlpTableLine extends StatelessWidget {
                   child: Padding(
                     padding: EdgeInsets.symmetric(
                       horizontal: context.klp.space.base,
-                      vertical: context.klp.space.compact,
+                      vertical: context.klp.space.tight,
                     ),
                     child: Row(
                       mainAxisAlignment:
@@ -298,7 +298,7 @@ class KlpTreeNode {
 
   final String id;
   final String label;
-  final String? icon;
+  final KlpIconData? icon;
   final List<KlpTreeNode> children;
   final bool expanded;
   final bool selected;
@@ -743,7 +743,7 @@ class KlpFilePreview extends StatelessWidget {
 
   final String name;
   final String metadata;
-  final String icon;
+  final KlpIconData icon;
   final Widget? preview;
   final VoidCallback? onPressed;
   final KlpFilePreviewState state;

@@ -105,7 +105,7 @@ class KlpPaneCollapseControl extends StatefulWidget {
     required this.onToggle,
   });
 
-  final String? icon;
+  final KlpIconData? icon;
 
   /// 無障礙標籤。`null` 時回退到 [KlpLocalizations.panelToggleLabel]——
   /// 預設值不能寫在建構子裡，因為它得等 [BuildContext] 到位才能解析。

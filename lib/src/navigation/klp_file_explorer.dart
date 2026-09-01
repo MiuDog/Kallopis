@@ -66,7 +66,7 @@ class KlpFileExplorerItem {
 
   final String id;
   final String label;
-  final String? icon;
+  final KlpIconData? icon;
   final List<KlpFileExplorerItem> children;
   final bool folder;
   final bool expanded;
@@ -194,17 +194,41 @@ class _KlpFileExplorerState extends State<KlpFileExplorer> {
     }
   }
 
+  String? _firstSelectedItemId(List<KlpFileExplorerSection> sections) {
+    String? selectedId;
+
+    void traverse(List<KlpFileExplorerItem> items) {
+      for (final item in items) {
+        if (selectedId != null) return;
+        if (item.selected) {
+          selectedId = item.id;
+          return;
+        }
+        traverse(item.children);
+      }
+    }
+
+    for (final section in sections) {
+      traverse(section.items);
+      if (selectedId != null) break;
+    }
+    return selectedId;
+  }
+
   @override
   Widget build(BuildContext context) {
     final effectiveExpandedSections =
         widget.expandedSectionIds ?? _internalExpandedSections;
     final effectiveExpandedItems =
         widget.expandedItemIds ?? _internalExpandedItems;
-    final effectiveSelectedId = widget.selectedId ?? _internalSelectedId;
-    final effectiveIndent = widget.indent ?? context.klp.space.base;
+    final effectiveIndent = widget.indent ?? context.klp.space.tight;
     final effectiveSections = widget.sections.isEmpty
         ? widget.emptyStateSections
         : widget.sections;
+    final effectiveSelectedId =
+        widget.selectedId ??
+        _internalSelectedId ??
+        _firstSelectedItemId(effectiveSections);
 
     return ListView(
       shrinkWrap: true,
@@ -262,13 +286,14 @@ class KlpFileExplorerSectionView extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.stretch,
       mainAxisSize: MainAxisSize.min,
       children: [
-        Padding(
-          padding: EdgeInsets.symmetric(horizontal: klp.space.itemGap),
+        SizedBox(
+          width: double.infinity,
+          height: klp.space.icon,
           child: KlpPressable(
             onPressed: section.collapsible ? onToggle : null,
             hoverHighlight: false,
-            child: SizedBox(
-              height: klp.space.icon,
+            child: Padding(
+              padding: EdgeInsets.symmetric(horizontal: klp.space.compact),
               child: Row(
                 children: [
                   if (section.collapsible) ...[
@@ -287,7 +312,7 @@ class KlpFileExplorerSectionView extends StatelessWidget {
                   Expanded(
                     child: KlpText(
                       section.title,
-                      role: KlpTextRole.code,
+                      role: KlpTextRole.caption,
                       tone: KlpTextTone.muted,
                     ),
                   ),
@@ -336,7 +361,7 @@ class _KlpFileExplorerNodeView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final isExpanded = expandedItemIds.contains(item.id);
-    final isSelected = selectedId == item.id || item.selected;
+    final isSelected = selectedId == item.id;
 
     if (item.isFolder) {
       return Column(
@@ -406,6 +431,47 @@ class KlpFileExplorerFolderView extends StatefulWidget {
       _KlpFileExplorerFolderViewState();
 }
 
+/// 將樹狀控制區與內容區分開，讓同層節點以內容圖示左緣對齊。
+class _KlpFileExplorerRowAreas extends StatelessWidget {
+  const _KlpFileExplorerRowAreas({
+    required this.level,
+    required this.indent,
+    required this.content,
+    this.leading,
+  });
+
+  final int level;
+  final double indent;
+  final Widget? leading;
+  final Widget content;
+
+  @override
+  Widget build(BuildContext context) {
+    final klp = context.klp;
+
+    return Row(
+      children: [
+        Padding(
+          key: const ValueKey('klp-file-explorer-leading-area'),
+          padding: EdgeInsets.only(left: level * indent),
+          child: SizedBox(
+            width: klp.space.iconSmall + klp.space.compact,
+            child: leading == null
+                ? null
+                : Align(alignment: Alignment.centerLeft, child: leading),
+          ),
+        ),
+        Expanded(
+          child: KeyedSubtree(
+            key: const ValueKey('klp-file-explorer-content-area'),
+            child: content,
+          ),
+        ),
+      ],
+    );
+  }
+}
+
 class _KlpFileExplorerFolderViewState extends State<KlpFileExplorerFolderView> {
   bool _isHovered = false;
 
@@ -414,58 +480,56 @@ class _KlpFileExplorerFolderViewState extends State<KlpFileExplorerFolderView> {
     final klp = context.klp;
     final tokens = context.klpColors;
 
-    final fg = widget.isSelected ? tokens.text : tokens.textMuted;
-
     Widget row = Container(
-      height: klp.space.controlHeightSmall,
-      padding: EdgeInsets.only(
-        left: widget.level * widget.indent + klp.space.tight,
-        right: klp.space.tight,
-      ),
+      height: klp.space.controlHeightXSmall,
+      padding: EdgeInsets.only(right: klp.space.tight),
       decoration: BoxDecoration(
         color: tokens.clear,
         borderRadius: BorderRadius.circular(klp.shape.control),
       ),
-      child: Row(
-        children: [
-          GestureDetector(
-            behavior: HitTestBehavior.opaque,
-            onTap: widget.onToggle,
-            child: AnimatedRotation(
-              turns: widget.isExpanded ? 0 : -0.25,
-              duration: klp.motion.stateTransition,
-              curve: Curves.easeOutCubic,
-              child: KlpIcon(
-                KlpIcons.chevronDown,
-                size: klp.space.iconSmall,
-                color: tokens.textMuted,
+      child: _KlpFileExplorerRowAreas(
+        level: widget.level,
+        indent: widget.indent,
+        leading: GestureDetector(
+          behavior: HitTestBehavior.opaque,
+          onTap: widget.onToggle,
+          child: AnimatedRotation(
+            turns: widget.isExpanded ? 0 : -0.25,
+            duration: klp.motion.stateTransition,
+            curve: Curves.easeOutCubic,
+            child: KlpIcon(
+              KlpIcons.chevronDown,
+              size: klp.space.iconSmall,
+              color: widget.isSelected ? tokens.text : tokens.textMuted,
+            ),
+          ),
+        ),
+        content: Row(
+          children: [
+            KlpIcon(
+              widget.item.icon ?? KlpIcons.folder,
+              size: klp.space.iconSmall,
+              color: widget.isSelected ? tokens.text : tokens.textMuted,
+            ),
+            SizedBox(width: klp.space.compact),
+            Expanded(
+              child: KlpText(
+                widget.item.label,
+                role: KlpTextRole.code,
+                color: tokens.text,
+                overflow: TextOverflow.ellipsis,
               ),
             ),
-          ),
-          SizedBox(width: klp.space.compact),
-          KlpIcon(
-            widget.item.icon ?? KlpIcons.folder,
-            size: klp.space.iconSmall,
-            color: widget.isSelected ? tokens.text : tokens.textMuted,
-          ),
-          SizedBox(width: klp.space.compact),
-          Expanded(
-            child: KlpText(
-              widget.item.label,
-              role: KlpTextRole.code,
-              color: fg,
-              overflow: TextOverflow.ellipsis,
-            ),
-          ),
-          if (widget.item.trailing != null) widget.item.trailing!,
-        ],
+            if (widget.item.trailing != null) widget.item.trailing!,
+          ],
+        ),
       ),
     );
 
     row = KlpStateHighlight(
-      state: widget.isSelected
-          ? KlpHighlightState.selected
-          : (_isHovered ? KlpHighlightState.hover : KlpHighlightState.none),
+      state: widget.isSelected || _isHovered
+          ? KlpHighlightState.hover
+          : KlpHighlightState.none,
       borderRadius: BorderRadius.circular(klp.shape.control),
       child: row,
     );
@@ -518,61 +582,52 @@ class _KlpFileExplorerItemViewState extends State<KlpFileExplorerItemView> {
     final klp = context.klp;
     final tokens = context.klpColors;
 
-    final fg = widget.isSelected
-        ? tokens.text
-        : (widget.item.tone == KlpFeedbackTone.danger
-              ? tokens.danger
-              : tokens.text);
-
     Widget row = Container(
       height:
-          klp.space.controlHeightSmall +
+          klp.space.controlHeightXSmall +
           klp.geometry.control.fileExplorerRowHeightAdjustment,
-      padding: EdgeInsets.only(
-        left:
-            widget.level * widget.indent +
-            klp.space.iconSmall +
-            klp.space.compact +
-            klp.space.tight,
-        right: klp.space.tight,
-      ),
+      padding: EdgeInsets.only(right: klp.space.tight),
       decoration: BoxDecoration(
         color: tokens.clear,
         borderRadius: BorderRadius.circular(klp.shape.control),
       ),
-      child: Row(
-        children: [
-          KlpIcon(
-            widget.item.icon ?? KlpIcons.clipboard,
-            size: klp.space.iconSmall,
-            color: widget.isSelected ? tokens.text : tokens.textMuted,
-          ),
-          SizedBox(width: klp.space.compact),
-          Expanded(
-            child: KlpText(
-              widget.item.label,
-              role: KlpTextRole.code,
-              color: fg,
-              overflow: TextOverflow.ellipsis,
+      child: _KlpFileExplorerRowAreas(
+        level: widget.level,
+        indent: widget.indent,
+        content: Row(
+          children: [
+            KlpIcon(
+              widget.item.icon ?? KlpIcons.clipboard,
+              size: klp.space.iconSmall,
+              color: widget.isSelected ? tokens.text : tokens.textMuted,
             ),
-          ),
-          if (widget.item.badge != null) ...[
             SizedBox(width: klp.space.compact),
-            KlpText(
-              widget.item.badge!,
-              role: KlpTextRole.code,
-              tone: KlpTextTone.muted,
+            Expanded(
+              child: KlpText(
+                widget.item.label,
+                role: KlpTextRole.code,
+                color: tokens.text,
+                overflow: TextOverflow.ellipsis,
+              ),
             ),
+            if (widget.item.badge != null) ...[
+              SizedBox(width: klp.space.compact),
+              KlpText(
+                widget.item.badge!,
+                role: KlpTextRole.code,
+                color: tokens.text,
+              ),
+            ],
+            if (widget.item.trailing != null) widget.item.trailing!,
           ],
-          if (widget.item.trailing != null) widget.item.trailing!,
-        ],
+        ),
       ),
     );
 
     row = KlpStateHighlight(
-      state: widget.isSelected
-          ? KlpHighlightState.selected
-          : (_isHovered ? KlpHighlightState.hover : KlpHighlightState.none),
+      state: widget.isSelected || _isHovered
+          ? KlpHighlightState.hover
+          : KlpHighlightState.none,
       borderRadius: BorderRadius.circular(klp.shape.control),
       child: row,
     );

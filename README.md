@@ -203,12 +203,16 @@ flutter run -d windows
 
 亦可執行完整驗證測試：
 
-```bash
-# 執行分析與單元/契約測試
-flutter analyze
-flutter test
-cd example && flutter test
+```powershell
+# 一次執行 root 與 example 的格式、分析、清單、單元、契約與 golden 測試
+.\tool\verify.ps1
+
+# 只有在已確認視覺變更正確時，才重建全部 golden
+.\tool\verify.ps1 -UpdateGoldens
 ```
+
+全量 script 會跑完所有互相獨立的同層級檢查後再彙整失敗；只有相依套件取得
+失敗等會讓後續無法執行的情況，才會停止對應分支並標記為 skipped。
 
 ---
 

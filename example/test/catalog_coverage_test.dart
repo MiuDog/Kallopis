@@ -143,7 +143,7 @@ void main() {
     );
   });
 
-  testWidgets('每一頁都能在明暗兩態下渲染', (tester) async {
+	testWidgets('每一頁都能在明暗兩態下渲染', (tester) async {
     tester.view.physicalSize = const Size(1400, 900);
     tester.view.devicePixelRatio = 1;
     addTearDown(tester.view.resetPhysicalSize);
@@ -172,5 +172,34 @@ void main() {
         );
       }
     }
-  });
+	});
+
+	testWidgets('每一個 specimen 可獨立放進捲動內容', (tester) async {
+		tester.view.physicalSize = const Size(1400, 900);
+		tester.view.devicePixelRatio = 1;
+		addTearDown(tester.view.resetPhysicalSize);
+		addTearDown(tester.view.resetDevicePixelRatio);
+
+		for (final page in catalogPages) {
+			for (final specimen in page.specimens.where((item) => item.hasDemo)) {
+				await tester.pumpWidget(
+					MaterialApp(
+						theme: buildKlpTheme(Brightness.dark),
+						home: Scaffold(
+							body: Builder(
+								builder: (context) => SingleChildScrollView(
+									child: Padding(
+										padding: const EdgeInsets.all(24),
+										child: specimen.build!(context),
+									),
+								),
+							),
+						),
+					),
+				);
+				await tester.pump();
+				expect(tester.takeException(), isNull, reason: specimen.name);
+			}
+		}
+	});
 }

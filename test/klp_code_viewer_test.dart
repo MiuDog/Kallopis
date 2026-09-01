@@ -1,16 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:kallopis/kallopis.dart';
 
+import 'support/load_test_fonts.dart';
+
 void main() {
-  setUpAll(() async {
-    if (KlpTypography.monoFamily.isNotEmpty) {
-      final mono = FontLoader(KlpTypography.monoFamily)
-        ..addFont(rootBundle.load('assets/fonts/IBMPlexMono-Regular.ttf'));
-      await mono.load();
-    }
-  });
+  setUpAll(loadKlpTestFonts);
 
   testWidgets('Code viewer exposes language, copy, menu, and view intents', (
     tester,
@@ -130,6 +125,30 @@ void main() {
       matchesGoldenFile('goldens/klp_code_viewer_dark.png'),
     );
   });
+
+	testWidgets('wrapped code uses the available narrow width', (tester) async {
+		await tester.pumpWidget(
+			MaterialApp(
+				theme: buildKlpTheme(Brightness.dark),
+				home: const Scaffold(
+					body: Align(
+						alignment: Alignment.topLeft,
+						child: SizedBox(
+							width: 248,
+							child: KlpCodeViewer(
+								code: 'A long command that must stay inside the inspector width',
+								language: 'json',
+								wrapped: true,
+							),
+						),
+					),
+				),
+			),
+		);
+
+		expect(tester.takeException(), isNull);
+		expect(tester.getSize(find.byType(KlpCodeViewer)).width, 248);
+	});
 }
 
 void _noop() {}

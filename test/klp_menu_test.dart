@@ -123,4 +123,28 @@ void main() {
     ).klpColors;
     expect(itemMaterial.color, tokens.selectionBackground);
   });
+
+  testWidgets('menu groups can opt into a dashed separator', (tester) async {
+    await tester.pumpWidget(
+      MaterialApp(
+        theme: buildKlpTheme(Brightness.dark),
+        home: Scaffold(
+          body: KlpMenu(
+            label: 'Projects',
+            items: [
+              KlpMenuItemData(label: 'Opened', onPressed: () {}),
+              KlpMenuItemData(
+                label: 'Import',
+                dashedSeparatorBefore: true,
+                onPressed: () {},
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+
+    expect(find.byType(KlpDashedDivider), findsOneWidget);
+    expect(find.byType(KlpDivider), findsNothing);
+  });
 }

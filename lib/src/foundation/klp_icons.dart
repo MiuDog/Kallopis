@@ -1,82 +1,63 @@
+import 'klp_icon.dart';
+
+/// Kallopis 使用的 Flaticon UIcons（Regular Rounded）語意別名。
+///
+/// 字碼固定取自 `@flaticon/flaticon-uicons` 3.3.1。公開名稱維持 Kallopis
+/// 的產品中立語意，呼叫端不需要知道 Flaticon 的 CSS class 名稱。
 abstract final class KlpIcons {
-  static const String archive = 'assets/icons/ui_oval/archive-svgrepo-com.svg';
-  static const String bookmark =
-      'assets/icons/ui_oval/bookmark-svgrepo-com.svg';
-  static const String box = 'assets/icons/ui_oval/box-svgrepo-com.svg';
-  static const String calendar =
-      'assets/icons/ui_oval/calendar-svgrepo-com.svg';
-  static const String check = 'assets/icons/ui_oval/check-svgrepo-com.svg';
-  static const String checkSquare =
-      'assets/icons/ui_oval/check-square-svgrepo-com.svg';
-  static const String chevronDown =
-      'assets/icons/ui_oval/chevron-down-svgrepo-com.svg';
-  static const String disclosureTriangle =
-      'assets/icons/ui_oval/triangle-down-svgrepo-com.svg';
-  static const String clipboard =
-      'assets/icons/ui_oval/clipboard-svgrepo-com.svg';
-  static const String collapse =
-      'assets/icons/ui_oval/collapse-svgrepo-com.svg';
-  static const String container =
-      'assets/icons/ui_oval/container-svgrepo-com.svg';
-  static const String cpu = 'assets/icons/ui_oval/cpu-chip-01-svgrepo-com.svg';
-  static const String edit = 'assets/icons/ui_oval/edit-05-svgrepo-com.svg';
-  static const String eye = 'assets/icons/ui_oval/eye-svgrepo-com.svg';
-  static const String folder = 'assets/icons/ui_oval/folder-svgrepo-com.svg';
-  static const String folderPlus =
-      'assets/icons/ui_oval/folder-plus-svgrepo-com.svg';
-  static const String grid = 'assets/icons/ui_oval/grid-01-svgrepo-com.svg';
-  static const String gripVertical =
-      'assets/icons/ui_oval/grip-vertical-svgrepo-com.svg';
-  static const String inbox = 'assets/icons/ui_oval/inbox-01-svgrepo-com.svg';
-  static const String handWriting = pencil;
-  static const String infoSquare =
-      'assets/icons/ui_oval/info-square-svgrepo-com.svg';
-  static const String alertSquare =
-      'assets/icons/ui_oval/alert-square-svgrepo-com.svg';
-  static const String minus = 'assets/icons/ui_oval/minus-svgrepo-com.svg';
-  static const String maximize =
-      'assets/icons/ui_oval/maximize-02-svgrepo-com.svg';
-  static const String restore = 'assets/icons/ui_oval/restore-svgrepo-com.svg';
-  static const String keyboard =
-      'assets/icons/ui_oval/keyboard-svgrepo-com.svg';
-  static const String menu =
-      'assets/icons/ui_oval/menu-hamburger-svgrepo-com.svg';
-  static const String pencil = 'assets/icons/ui_oval/pencil-02-svgrepo-com.svg';
-  static const String search = 'assets/icons/ui_oval/search-sm-svgrepo-com.svg';
-  static const String settings =
-      'assets/icons/ui_oval/settings-02-svgrepo-com.svg';
-  static const String slash =
-      'assets/icons/ui_oval/slash-octagon-svgrepo-com.svg';
-  static const String sparkles =
-      'assets/icons/ui_oval/stars-01-svgrepo-com.svg';
-  static const String switchVertical =
-      'assets/icons/ui_oval/switch-vertical-01-svgrepo-com.svg';
-  static const String telescope =
-      'assets/icons/ui_oval/telescope-svgrepo-com.svg';
-  static const String trash = 'assets/icons/ui_oval/trash-01-svgrepo-com.svg';
-  static const String users = 'assets/icons/ui_oval/users-01-svgrepo-com.svg';
-  static const String x = 'assets/icons/ui_oval/x-svgrepo-com.svg';
-  static const String xSquare = 'assets/icons/ui_oval/x-square-svgrepo-com.svg';
-  static const String circle = 'assets/icons/ui_oval/circle-svgrepo-com.svg';
-  static const String refresh =
-      'assets/icons/ui_oval/refresh-cw-01-svgrepo-com.svg';
-  static const String loader = 'assets/icons/ui_oval/loader-01-svgrepo-com.svg';
-  static const String timer = 'assets/icons/ui_oval/timer-svgrepo-com.svg';
-  static const String clock = 'assets/icons/ui_oval/clock-svgrepo-com.svg';
-  static const String splitCircle =
-      'assets/icons/ui_oval/split-circle-svgrepo-com.svg';
-  static const String panelLeft =
-      'assets/icons/ui_oval/panel-left-svgrepo-com.svg';
-  static const String panelRight =
-      'assets/icons/ui_oval/panel-right-svgrepo-com.svg';
-  static const String panelBottom =
-      'assets/icons/ui_oval/panel-bottom-svgrepo-com.svg';
-  static const String panelSplit =
-      'assets/icons/ui_oval/panel-split-svgrepo-com.svg';
-  static const String sidebarLeft = panelLeft;
-  static const String sidebarRight = panelRight;
-  static const String close = x;
-  static const String chevronUp = switchVertical;
-  static const String globe = telescope;
-  static const String filter = settings;
+  static const KlpIconData archive = KlpIconData(0xf16d);
+  static const KlpIconData bookmark = KlpIconData(0xf28b);
+  static const KlpIconData box = KlpIconData(0xf2b6);
+  static const KlpIconData calendar = KlpIconData(0xf339);
+  static const KlpIconData check = KlpIconData(0xf3c8);
+  static const KlpIconData checkSquare = KlpIconData(0xf3c9);
+  static const KlpIconData chevronDown = KlpIconData(0xf153);
+  static const KlpIconData disclosureTriangle = KlpIconData(0xf376);
+  static const KlpIconData clipboard = KlpIconData(0xf43f);
+  static const KlpIconData collapse = KlpIconData(0xf4c7);
+  static const KlpIconData container = KlpIconData(0xf4d2);
+  static const KlpIconData cpu = KlpIconData(0xf941);
+	static const KlpIconData diagramProject = KlpIconData(0xf540);
+  static const KlpIconData edit = KlpIconData(0xf5c1);
+  static const KlpIconData eye = KlpIconData(0xf5f8);
+  static const KlpIconData folder = KlpIconData(0xf6ba);
+  static const KlpIconData folderPlus = KlpIconData(0xf118);
+  static const KlpIconData grid = KlpIconData(0xf16c);
+  static const KlpIconData gripVertical = KlpIconData(0xf72d);
+  static const KlpIconData inbox = KlpIconData(0xf801);
+  static const KlpIconData handWriting = pencil;
+  static const KlpIconData infoSquare = KlpIconData(0xfcb6);
+  static const KlpIconData alertSquare = KlpIconData(0xfcb0);
+  static const KlpIconData minus = KlpIconData(0xf94e);
+  static const KlpIconData maximize = KlpIconData(0xff0f);
+  static const KlpIconData restore = KlpIconData(0xff11);
+  static const KlpIconData keyboard = KlpIconData(0xf84c);
+  static const KlpIconData menu = KlpIconData(0xf925);
+  static const KlpIconData pencil = KlpIconData(0xfa29);
+  static const KlpIconData search = KlpIconData(0xfbba);
+  static const KlpIconData settings = KlpIconData(0xfbd2);
+  static const KlpIconData slash = KlpIconData(0xf205);
+  static const KlpIconData sparkles = KlpIconData(0xfc84);
+  static const KlpIconData switchVertical = KlpIconData(0xf1bc);
+  static const KlpIconData telescope = KlpIconData(0xfd68);
+  static const KlpIconData trash = KlpIconData(0xfe17);
+  static const KlpIconData users = KlpIconData(0xfea6);
+  static const KlpIconData x = KlpIconData(0xff27);
+  static const KlpIconData xSquare = KlpIconData(0xfcd1);
+  static const KlpIconData circle = KlpIconData(0xf42c);
+  static const KlpIconData refresh = KlpIconData(0xfb34);
+  static const KlpIconData loader = KlpIconData(0xfc8f);
+  static const KlpIconData timer = KlpIconData(0xfdaf);
+  static const KlpIconData clock = KlpIconData(0xf45a);
+  static const KlpIconData splitCircle = KlpIconData(0xfc91);
+  static const KlpIconData panelLeft = KlpIconData(0xfc08);
+  static const KlpIconData panelRight = KlpIconData(0xfc07);
+  static const KlpIconData panelBottom = KlpIconData(0xf87d);
+  static const KlpIconData panelSplit = KlpIconData(0xf496);
+  static const KlpIconData sidebarLeft = panelLeft;
+  static const KlpIconData sidebarRight = panelRight;
+  static const KlpIconData close = x;
+  static const KlpIconData chevronUp = KlpIconData(0xf156);
+  static const KlpIconData globe = KlpIconData(0xff21);
+  static const KlpIconData filter = KlpIconData(0xf215);
 }

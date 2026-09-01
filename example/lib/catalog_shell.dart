@@ -71,22 +71,22 @@ class _CatalogNavigation extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final klp = context.klp;
     final selectedPageLabel = selected >= 0 && selected < pages.length
         ? pages[selected].label
         : null;
 
-    final explorerSections = [
+    final categories = [
       for (final group in groups)
-        KlpFileExplorerSection(
+        KlpExplorerCategory(
           id: group.label,
-          title: group.label,
+          label: group.label,
           collapsible: true,
-          items: [
+          nodes: [
             for (final page in group.pages)
-              KlpFileExplorerItem(
+              KlpExplorerNode(
                 id: page.label,
                 label: page.label,
+                kind: KlpExplorerNodeKind.file,
                 icon: page.icon,
                 badge: page.specimens.isNotEmpty
                     ? '${page.specimens.length}'
@@ -97,65 +97,14 @@ class _CatalogNavigation extends StatelessWidget {
         ),
     ];
 
-    return KlpSurface(
-      tone: KlpSurfaceTone.inset,
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: [
-          Padding(
-            padding: EdgeInsets.all(klp.space.compact),
-            child: Row(
-              children: [
-                Expanded(
-                  child: Container(
-                    padding: EdgeInsets.symmetric(
-                      horizontal: klp.space.compact,
-                      vertical: klp.space.tight,
-                    ),
-                    decoration: BoxDecoration(
-                      color: klp.color.component,
-                      borderRadius: BorderRadius.circular(klp.shape.control),
-                    ),
-                    child: Row(
-                      children: [
-                        KlpIcon(
-                          KlpIcons.search,
-                          size: klp.space.iconSmall,
-                          color: klp.color.textFaint,
-                        ),
-                        SizedBox(width: klp.space.compact),
-                        KlpText(
-                          '搜尋元件...',
-                          role: KlpTextRole.code,
-                          tone: KlpTextTone.faint,
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-              ],
-            ),
-          ),
-          Expanded(
-            child: KlpScrollViewport(
-              key: const ValueKey('catalog-navigation-scroll'),
-              child: Padding(
-                padding: EdgeInsets.symmetric(vertical: klp.space.tight),
-                child: KlpFileExplorer(
-                  sections: explorerSections,
-                  selectedId: selectedPageLabel,
-                  onItemSelected: (id) {
-                    final index = pages.indexWhere((p) => p.label == id);
-                    if (index >= 0) {
-                      onSelected(index);
-                    }
-                  },
-                ),
-              ),
-            ),
-          ),
-        ],
-      ),
+    return KlpExplorer(
+      scrollKey: const ValueKey('catalog-navigation-scroll'),
+      categories: categories,
+      selectedNodeId: selectedPageLabel,
+      onNodeSelected: (id) {
+        final index = pages.indexWhere((page) => page.label == id);
+        if (index >= 0) onSelected(index);
+      },
     );
   }
 }
@@ -174,10 +123,10 @@ class _CatalogStage extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-          SizedBox(
-            height: 72,
-            child: Padding(
-              padding: EdgeInsets.symmetric(horizontal: klp.space.base),
+			SizedBox(
+				height: 72,
+				child: Padding(
+					padding: EdgeInsets.symmetric(horizontal: klp.space.base),
               child: Row(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [

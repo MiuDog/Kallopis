@@ -36,3 +36,6 @@ devtools_options.yaml
 
 # 執行截圖等本機產物
 example/build/
+
+# 本機工作樹清理備份，不納入套件版本。
+/.clean-kallopis-workbench/

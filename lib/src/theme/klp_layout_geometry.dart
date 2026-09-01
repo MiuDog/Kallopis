@@ -1,7 +1,5 @@
 import 'package:flutter/foundation.dart';
 
-import '../tokens/klp_scale.dart';
-
 /// Shell、overlay 與 responsive layout 的精確幾何。
 @immutable
 class KlpLayoutGeometry {
@@ -11,7 +9,6 @@ class KlpLayoutGeometry {
     required this.primaryPaneBreakpoint,
     required this.primaryPaneContentBreakpoint,
     required this.secondaryPaneBreakpoint,
-    this.workbenchCompactSpacing = KlpScale.space200,
     required this.menuWidth,
     required this.menuHeaderHeight,
     required this.menuItemHeight,
@@ -19,13 +16,16 @@ class KlpLayoutGeometry {
     required this.toastMaximumWidth,
     required this.inlineNoticeBreakpoint,
     required this.statusBarBreakpoint,
+    required this.settingsDialogMaximumWidth,
+    required this.settingsDialogMaximumHeight,
+    required this.settingsPaneGap,
+    required this.settingsNavigationWidth,
+    required this.settingsNavigationMinimumWidth,
+    required this.settingsNavigationMaximumWidth,
     required this.settingsContentMaximumWidth,
     required this.themePreviewTileWidth,
-    required this.windowToolbarHeight,
-    this.windowControlButtonSize = 30,
-    required this.windowToolbarPaddingStart,
-    required this.windowToolbarPaddingEnd,
-    this.windowToolbarPaddingVertical = KlpScale.space100,
+    required this.windowHeaderHeight,
+    required this.windowHeaderControlSize,
     required this.windowAppIconSize,
     required this.windowIdentityGap,
   });
@@ -36,8 +36,6 @@ class KlpLayoutGeometry {
   final double primaryPaneContentBreakpoint;
   final double secondaryPaneBreakpoint;
 
-  /// Workbench 外圈、各 pane inset 與 resize handle 的共用緊湊間距。
-  final double workbenchCompactSpacing;
   final double menuWidth;
   final double menuHeaderHeight;
   final double menuItemHeight;
@@ -46,21 +44,29 @@ class KlpLayoutGeometry {
   final double inlineNoticeBreakpoint;
   final double statusBarBreakpoint;
 
+  /// Settings modal 的桌面尺寸上限與兩個獨立 pane 之間的間距。
+  final double settingsDialogMaximumWidth;
+  final double settingsDialogMaximumHeight;
+  final double settingsPaneGap;
+
+  /// Settings 寬版導覽欄的預設、最小與最大寬度。
+  final double settingsNavigationWidth;
+  final double settingsNavigationMinimumWidth;
+  final double settingsNavigationMaximumWidth;
+
   /// Settings 內容欄的閱讀寬度上限。
   final double settingsContentMaximumWidth;
 
   /// 顏色模式預覽磚的預設寬度。
   final double themePreviewTileWidth;
 
-  final double windowToolbarHeight;
+  /// Header 可視表面高度；版面占位另加四周各半個 compact margin。
+  final double windowHeaderHeight;
 
-  /// 視窗最小化、最大化與關閉按鈕的外部方形尺寸，不影響內部 icon 尺寸。
-  final double windowControlButtonSize;
-  final double windowToolbarPaddingStart;
-  final double windowToolbarPaddingEnd;
+  /// 視窗 Header 內正方形控制按鈕的語意尺寸。
+  final double windowHeaderControlSize;
 
-  /// Header 上下內距；與水平 gutter 分離，避免調整 panel 對齊時壓縮控制鈕。
-  final double windowToolbarPaddingVertical;
+  /// 視窗 Header 按鈕內部圖示的語意尺寸。
   final double windowAppIconSize;
   final double windowIdentityGap;
 
@@ -73,7 +79,6 @@ class KlpLayoutGeometry {
           primaryPaneBreakpoint == other.primaryPaneBreakpoint &&
           primaryPaneContentBreakpoint == other.primaryPaneContentBreakpoint &&
           secondaryPaneBreakpoint == other.secondaryPaneBreakpoint &&
-          workbenchCompactSpacing == other.workbenchCompactSpacing &&
           menuWidth == other.menuWidth &&
           menuHeaderHeight == other.menuHeaderHeight &&
           menuItemHeight == other.menuItemHeight &&
@@ -81,13 +86,18 @@ class KlpLayoutGeometry {
           toastMaximumWidth == other.toastMaximumWidth &&
           inlineNoticeBreakpoint == other.inlineNoticeBreakpoint &&
           statusBarBreakpoint == other.statusBarBreakpoint &&
+          settingsDialogMaximumWidth == other.settingsDialogMaximumWidth &&
+          settingsDialogMaximumHeight == other.settingsDialogMaximumHeight &&
+          settingsPaneGap == other.settingsPaneGap &&
+          settingsNavigationWidth == other.settingsNavigationWidth &&
+          settingsNavigationMinimumWidth ==
+              other.settingsNavigationMinimumWidth &&
+          settingsNavigationMaximumWidth ==
+              other.settingsNavigationMaximumWidth &&
           settingsContentMaximumWidth == other.settingsContentMaximumWidth &&
           themePreviewTileWidth == other.themePreviewTileWidth &&
-          windowToolbarHeight == other.windowToolbarHeight &&
-          windowControlButtonSize == other.windowControlButtonSize &&
-          windowToolbarPaddingStart == other.windowToolbarPaddingStart &&
-          windowToolbarPaddingEnd == other.windowToolbarPaddingEnd &&
-          windowToolbarPaddingVertical == other.windowToolbarPaddingVertical &&
+          windowHeaderHeight == other.windowHeaderHeight &&
+          windowHeaderControlSize == other.windowHeaderControlSize &&
           windowAppIconSize == other.windowAppIconSize &&
           windowIdentityGap == other.windowIdentityGap;
 
@@ -98,7 +108,6 @@ class KlpLayoutGeometry {
     primaryPaneBreakpoint,
     primaryPaneContentBreakpoint,
     secondaryPaneBreakpoint,
-    workbenchCompactSpacing,
     menuWidth,
     menuHeaderHeight,
     menuItemHeight,
@@ -106,13 +115,16 @@ class KlpLayoutGeometry {
     toastMaximumWidth,
     inlineNoticeBreakpoint,
     statusBarBreakpoint,
+    settingsDialogMaximumWidth,
+    settingsDialogMaximumHeight,
+    settingsPaneGap,
+    settingsNavigationWidth,
+    settingsNavigationMinimumWidth,
+    settingsNavigationMaximumWidth,
     settingsContentMaximumWidth,
     themePreviewTileWidth,
-    windowToolbarHeight,
-    windowControlButtonSize,
-    windowToolbarPaddingStart,
-    windowToolbarPaddingEnd,
-    windowToolbarPaddingVertical,
+    windowHeaderHeight,
+    windowHeaderControlSize,
     windowAppIconSize,
     windowIdentityGap,
   ]);

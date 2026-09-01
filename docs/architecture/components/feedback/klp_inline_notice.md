@@ -4,7 +4,7 @@
 
 - **核心元件**：`KlpInlineNotice`
 - **所屬領域**：`feedback — 狀態與回饋`
-- **核心職責**：Kallopis KlpInlineNotice 元件
+- **核心職責**：以語意 tone 顯示行內回饋。icon 尺寸跟隨 body 字級，並與 mono 狀態碼及 UI 標題共用 alphabetic baseline；不同字體風格不得靠 Catalog 局部位移修正。
 - **包含範圍**：`build()` 內部建構的完整 Widget 樹（展開 Flutter 原生元件與純容器）
 - **外部引用**：本專案其他非純容器元件（遇引用即停下並鏈結）
 
@@ -62,4 +62,3 @@ flowchart TD
 - **容器節點（圓角/綠框）**：本專案之純容器元件（如 `KlpSurface` 等），已持續向下展開其子樹。
 - **虛線/引號節點（黃框/:::reference）**：本專案其他功能性元件，依規則停止展開並提供文件引用。
 - **插槽節點（橘框/:::slot）**：外部傳入之 `child`、`builder` 或內容參數。
-

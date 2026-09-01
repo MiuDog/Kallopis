@@ -14,24 +14,20 @@ class KlpStageHeader extends StatelessWidget {
     required this.sectionLabel,
     required this.title,
     required this.typeLabel,
-    this.actions = const [],
-    this.wrapTitle = false,
   });
 
   final String projectName;
   final String sectionLabel;
   final String title;
   final String typeLabel;
-  final List<Widget> actions;
-  final bool wrapTitle;
 
   @override
   Widget build(BuildContext context) {
     final space = context.klp.space;
-    final compact = context.klp.geometry.layout.workbenchCompactSpacing;
+    final compact = space.compact;
 
     return Padding(
-      padding: EdgeInsets.symmetric(horizontal: compact),
+      padding: EdgeInsets.symmetric(vertical: compact),
       child: Row(
         children: [
           Expanded(
@@ -59,21 +55,13 @@ class KlpStageHeader extends StatelessWidget {
                     KlpText(sectionLabel, role: KlpTextRole.code),
                   ],
                 ),
-                SizedBox(height: space.hairline),
                 Row(
                   children: [
                     Expanded(
                       child: Row(
                         children: [
                           Flexible(
-                            child: KlpText(
-                              title,
-                              role: KlpTextRole.bodyStrong,
-                              maxLines: wrapTitle ? null : 1,
-                              overflow: wrapTitle
-                                  ? TextOverflow.clip
-                                  : TextOverflow.ellipsis,
-                            ),
+                            child: KlpText(title, role: KlpTextRole.bodyStrong),
                           ),
                           SizedBox(width: space.compact),
                           KlpText(
@@ -85,15 +73,6 @@ class KlpStageHeader extends StatelessWidget {
                         ],
                       ),
                     ),
-                    // Actions 屬於**標題列**，不是整個 header。
-                    //
-                    // 放在 header 最外層 Row 時，它們會對齊「路徑列＋標題列」的整體中線，
-                    // 因而佔用上方路徑列的空間，且標題換行時會跟著往下飄
-                    // ——按鈕位置變成取決於標題有多長。
-                    for (final action in actions) ...[
-                      SizedBox(width: space.tight),
-                      action,
-                    ],
                   ],
                 ),
               ],

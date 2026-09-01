@@ -1,12 +1,13 @@
 import 'package:flutter/widgets.dart';
 
 import '../theme/klp_theme.dart';
-import 'klp_panel_frame.dart';
+import 'klp_sidebar_frame.dart';
 
 /// 桌面工作區的 Primary Sidebar 外框。
 ///
-/// Identity、導覽、Explorer 與 footer 的尺寸節奏由 Kallopis 統一；消費者只組合
-/// 產品內容，不需要覆寫 [KlpPanelFrame] 的 header 高度或內容 padding。
+/// Identity、導覽與 Explorer 緊密排列；上下節奏由各區域自行決定。
+/// content 與 footer 沿用 [KlpSidebarFrame] 的水平 padding 規則；footer 不再
+/// 額外包覆垂直 padding。
 class KlpPrimarySidebarFrame extends StatelessWidget {
   const KlpPrimarySidebarFrame({
     super.key,
@@ -23,33 +24,24 @@ class KlpPrimarySidebarFrame extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final space = context.klp.space;
-    final compact = context.klp.geometry.layout.workbenchCompactSpacing;
+    final compact = context.klp.space.compact;
 
-    return KlpPanelFrame(
-      headerHeight: space.controlHeightSmall,
-      flushContent: true,
-      header: Padding(
-        padding: EdgeInsets.symmetric(horizontal: compact),
-        child: header,
-      ),
-      content: Padding(
-        padding: EdgeInsets.all(compact),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: [
-            navigation,
-            SizedBox(height: space.compact - space.tight),
-            Expanded(child: explorer),
-          ],
-        ),
-      ),
-      footer: footer == null
-          ? null
-          : Padding(
-              padding: EdgeInsets.symmetric(horizontal: compact),
-              child: footer,
+    return KlpSidebarFrame(
+      content: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          Padding(
+            padding: EdgeInsets.symmetric(vertical: compact),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              mainAxisSize: MainAxisSize.min,
+              children: [header, navigation],
             ),
+          ),
+          Expanded(child: explorer),
+        ],
+      ),
+      footer: footer,
     );
   }
 }

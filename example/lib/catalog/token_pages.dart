@@ -78,14 +78,7 @@ final brandPage = CatalogPageData(
           Swatch(role: 'accentSoft', color: tokens.accentSoft),
           Swatch(role: 'interaction', color: tokens.interaction),
           Swatch(role: 'interactionSoft', color: tokens.interactionSoft),
-          Swatch(
-            role: 'onInteraction',
-            color: tokens.onInteraction,
-            previewBackground: tokens.interaction,
-            onColor: tokens.onInteraction,
-            offRamp: '對比前景',
-            note: '文字是 onInteraction；底色是 interaction',
-          ),
+          Swatch(role: 'onInteraction', color: tokens.onInteraction),
         ],
       ),
     );
@@ -573,7 +566,7 @@ final scalePage = CatalogPageData(
   label: 'Scale',
   title: '間距與尺寸',
   description:
-      '10 段精確間距階梯 (space-0.5 到 space-24)、10 段語意間距與 4 段標準控制項尺寸 (SM, MD, LG, XL)。',
+      '10 段精確間距階梯 (space-0.5 到 space-24)、10 段語意間距與 5 段標準控制項尺寸 (XS, SM, MD, LG, XL)。',
   icon: KlpIcons.grid,
   specimens: const [],
   tokenView: (context) {
@@ -683,13 +676,18 @@ final scalePage = CatalogPageData(
           ),
         ),
         CatalogSample(
-          label: '元件 4 段尺寸規範 (Component Sizing)',
+          label: '元件 5 段尺寸規範 (Component Sizing)',
           description: '標準按鈕與輸入框高度、橫向內邊距與搭配字級。',
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               ScaleRow(
-                name: 'Small (SM) - 32px 高度',
+                name: 'XSmall (XS) - 30px 高度',
+                value: s.controlHeightXSmall,
+                note: 'Header 等緊湊 chrome 中的動作',
+              ),
+              ScaleRow(
+                name: 'Small (SM) - 36px 高度',
                 value: s.controlHeightSmall,
                 note: '搭配 14px 字級、12px Padding X',
               ),
@@ -713,7 +711,7 @@ final scalePage = CatalogPageData(
         ),
         CatalogSample(
           label: '元件尺寸實際範例 (Buttons & Inputs)',
-          description: '四段高度 (SM, MD, LG, XL) 按鈕與輸入框的實際對照。文字顏色自動依據背景色階適應。',
+          description: '五段高度 (XS, SM, MD, LG, XL) 按鈕與輸入框的實際對照。文字顏色自動依據背景色階適應。',
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -724,6 +722,12 @@ final scalePage = CatalogPageData(
                 runSpacing: s.space4,
                 crossAxisAlignment: WrapCrossAlignment.center,
                 children: [
+                  KlpButton(
+                    label: 'Primary (XS)',
+                    size: KlpControlSize.xs,
+                    tone: KlpButtonTone.primary,
+                    onPressed: () {},
+                  ),
                   KlpButton(
                     label: 'Primary (SM)',
                     size: KlpControlSize.sm,

@@ -74,6 +74,13 @@ void main() {
         );
       await mono.load();
     }
+    final icons = FontLoader('packages/kallopis/${KlpIcon.fontFamily}')
+      ..addFont(
+        rootBundle.load(
+          'packages/kallopis/assets/fonts/FlaticonUIcons-RegularRounded.ttf',
+        ),
+      );
+    await icons.load();
   });
 
   Future<void> pumpSpecimen(

@@ -20,7 +20,7 @@ class KlpSegmentedControl extends StatelessWidget {
   final List<String> items;
   final int selected;
   final ValueChanged<int> onSelected;
-  final List<String>? icons;
+  final List<KlpIconData>? icons;
   final List<Key?>? itemKeys;
   final bool expanded;
   final bool dense;
@@ -81,7 +81,7 @@ class _KlpSegment extends StatefulWidget {
   });
 
   final String label;
-  final String? icon;
+  final KlpIconData? icon;
   final bool selected;
   final bool dense;
   final VoidCallback onPressed;

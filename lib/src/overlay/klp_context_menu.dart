@@ -112,6 +112,7 @@ class _KlpContextMenuState extends State<KlpContextMenu> {
         hasSubmenu: item.hasSubmenu,
         danger: item.danger,
         separatedBefore: item.separatedBefore,
+        dashedSeparatorBefore: item.dashedSeparatorBefore,
         selected: item.selected,
         enabled: item.enabled,
         onPressed: () {
@@ -124,7 +125,7 @@ class _KlpContextMenuState extends State<KlpContextMenu> {
   @override
   Widget build(BuildContext context) {
     final separatorCount = widget.items
-        .where((item) => item.separatedBefore)
+        .where((item) => item.separatedBefore || item.dashedSeparatorBefore)
         .length;
 
     return OverlayPortal(

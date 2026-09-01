@@ -25,7 +25,7 @@ class KlpSidebarNavigationButton extends StatefulWidget {
     this.selected = false,
   });
 
-  final String icon;
+  final KlpIconData icon;
   final String label;
   final VoidCallback? onPressed;
   final bool selected;
@@ -46,15 +46,14 @@ class _KlpSidebarNavigationButtonState
     final tokens = context.klpColors;
     final disabled = widget.onPressed == null;
     final active = !disabled && (_hovered || _focused);
-    final background = widget.selected
-        ? tokens.selectionBackground
-        : active
+    final background = widget.selected || active
         ? klp.selectionWash
         : tokens.clear;
-    final foreground = disabled
+    final textColor = disabled ? tokens.textFaint : tokens.text;
+    final iconColor = disabled
         ? tokens.textFaint
         : widget.selected
-        ? tokens.selectionForeground
+        ? tokens.text
         : tokens.textMuted;
     final radius = BorderRadius.circular(klp.shape.control);
 
@@ -71,28 +70,26 @@ class _KlpSidebarNavigationButtonState
         hoverHighlight: false,
         borderRadius: radius,
         child: Container(
-          height: klp.space.controlHeightSmall,
+          height: klp.space.controlHeightXSmall,
           padding: EdgeInsets.symmetric(horizontal: klp.space.compact),
           decoration: BoxDecoration(color: background, borderRadius: radius),
           child: Row(
             children: [
               SizedBox.square(
                 key: const ValueKey(klpNavigationIconBoxKey),
-                dimension: klp.space.icon,
-                child: Center(
-                  child: KlpIcon(
-                    widget.icon,
-                    size: klp.space.iconGlyph,
-                    color: foreground,
-                  ),
+                dimension: klp.space.iconSmall,
+                child: KlpIcon(
+                  widget.icon,
+                  size: klp.space.iconSmall,
+                  color: iconColor,
                 ),
               ),
               SizedBox(width: klp.space.itemGap),
               Expanded(
                 child: KlpText(
                   widget.label,
-                  role: KlpTextRole.body,
-                  color: foreground,
+                  role: KlpTextRole.code,
+                  color: textColor,
                   maxLines: 1,
                   overflow: TextOverflow.ellipsis,
                 ),
@@ -107,7 +104,7 @@ class _KlpSidebarNavigationButtonState
 
 /// Primary Sidebar 的全寬導覽列群組。
 ///
-/// 呼叫端只決定項目順序；Kallopis 統一管理相鄰列的垂直節奏。
+/// 呼叫端只決定項目順序；相鄰列緊密排列，不插入額外間距或分隔線。
 class KlpSidebarNavigationGroup extends StatelessWidget {
   const KlpSidebarNavigationGroup({super.key, required this.children});
 
@@ -118,13 +115,7 @@ class KlpSidebarNavigationGroup extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       mainAxisSize: MainAxisSize.min,
-      children: [
-        for (var index = 0; index < children.length; index++) ...[
-          children[index],
-          if (index < children.length - 1)
-            SizedBox(height: context.klp.space.hairline),
-        ],
-      ],
+      children: children,
     );
   }
 }

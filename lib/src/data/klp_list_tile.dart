@@ -23,7 +23,7 @@ class KlpListTile extends StatefulWidget {
 
   final String title;
   final String? subtitle;
-  final String? icon;
+  final KlpIconData? icon;
   final Widget? trailing;
   final String? badge;
   final bool selected;
@@ -104,6 +104,7 @@ class _KlpListTileState extends State<KlpListTile> {
                 Expanded(
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
+					mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       KlpText(
                         widget.title,

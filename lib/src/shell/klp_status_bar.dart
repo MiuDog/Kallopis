@@ -1,5 +1,6 @@
 import 'package:flutter/widgets.dart';
 
+import '../feedback/klp_status_indicator.dart';
 import '../theme/klp_theme.dart';
 import '../typography/klp_text.dart';
 
@@ -17,44 +18,33 @@ class KlpStatusBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final tokens = context.klpColors;
-
     return LayoutBuilder(
       builder: (context, constraints) {
         final compact =
             constraints.maxWidth <
             context.klp.geometry.layout.statusBarBreakpoint;
 
-        return Padding(
-          padding: EdgeInsets.symmetric(horizontal: context.klp.space.compact),
-          child: Row(
-            children: [
-              Container(
-                width: context.klp.space.indicatorDot,
-                height: context.klp.space.indicatorDot,
-                decoration: BoxDecoration(
-                  color: active ? tokens.success : tokens.textFaint,
-                  shape: BoxShape.circle,
-                ),
+        return Row(
+          children: [
+            Expanded(
+              child: KlpStatusIndicator(
+                label: leading,
+                active: active,
+                expanded: true,
               ),
-              SizedBox(width: context.klp.space.compact),
-              Expanded(
+            ),
+            if (!compact)
+              Padding(
+                padding: EdgeInsetsDirectional.only(
+                  end: context.klp.space.compact,
+                ),
                 child: KlpText(
-                  leading,
-                  role: KlpTextRole.code,
-                  tone: KlpTextTone.muted,
-                  maxLines: 1,
-                  overflow: TextOverflow.ellipsis,
-                ),
-              ),
-              if (!compact)
-                KlpText(
                   trailing,
                   role: KlpTextRole.code,
                   tone: KlpTextTone.faint,
                 ),
-            ],
-          ),
+              ),
+          ],
         );
       },
     );

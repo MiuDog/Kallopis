@@ -21,7 +21,8 @@ final actionsNavigationPage = CatalogPageData(
   specimens: [
     Specimen(
       name: 'KlpButton',
-      note: 'tone 決定語意強度，size 支援 SM (32px), MD (40px), LG (48px), XL (56px)。',
+      note:
+          'tone 決定語意強度，size 支援 XS (30px), SM (36px), MD (40px), LG (48px), XL (56px)。',
       build: (context) {
         final klp = context.klp;
         return Wrap(
@@ -33,7 +34,12 @@ final actionsNavigationPage = CatalogPageData(
               KlpButton(label: tone.name, onPressed: () {}, tone: tone),
             KlpButton(label: 'disabled', onPressed: null),
             KlpButton(
-              label: 'SM (32px)',
+              label: 'XS (30px)',
+              size: KlpControlSize.xs,
+              onPressed: () {},
+            ),
+            KlpButton(
+              label: 'SM (36px)',
               size: KlpControlSize.sm,
               onPressed: () {},
             ),
@@ -1068,7 +1074,7 @@ final layoutInteractionPage = CatalogPageData(
         120,
         const KlpApp(
           title: 'Kallopis',
-          appIcon: FlutterLogo(),
+          appIcon: KlpIcon(KlpIcons.sparkles),
           home: KlpAppScreen(child: Center(child: KlpText('KlpApp'))),
         ),
       ),
@@ -1198,6 +1204,38 @@ final layoutInteractionPage = CatalogPageData(
       ),
     ),
     Specimen(
+      name: 'KlpStageTopBar',
+      note: 'Stage 上方的檔案分頁與產品動作列。',
+      build: (context) => _boxed(
+        context,
+        180,
+        KlpStageTopBar(
+          tab: const KlpStageTab(label: 'notes.md'),
+          actions: [
+            KlpButton(
+              leading: const KlpIcon(KlpIcons.infoSquare),
+              label: '留言',
+              tone: KlpButtonTone.dashed,
+              size: KlpControlSize.xs,
+              onPressed: () {},
+            ),
+            KlpButton(
+              leading: const KlpIcon(KlpIcons.eye),
+              label: '展示',
+              tone: KlpButtonTone.primary,
+              size: KlpControlSize.sm,
+              onPressed: () {},
+            ),
+          ],
+        ),
+      ),
+    ),
+    Specimen(
+      name: 'KlpStageTab',
+      note: '顯示目前 Stage 項目的上緣分頁。',
+      build: (context) => const KlpStageTab(label: 'notes.md'),
+    ),
+    Specimen(
       name: 'KlpStageHeader',
       note: 'Stage 的專案、區域、項目與類型識別。',
       build: (context) => const KlpStageHeader(
@@ -1209,12 +1247,11 @@ final layoutInteractionPage = CatalogPageData(
     ),
     Specimen(
       name: 'KlpSidebarFrame',
-      note: '側邊欄：header、rail、content。',
+      note: '側邊欄外框只劃分 content、rail 與無外距 footer。',
       build: (context) => _boxed(
         context,
         160,
         const KlpSidebarFrame(
-          header: KlpPanelHeader(title: '導覽'),
           rail: Column(
             children: [
               KlpIcon(KlpIcons.folder),
@@ -1222,7 +1259,13 @@ final layoutInteractionPage = CatalogPageData(
               KlpIcon(KlpIcons.box),
             ],
           ),
-          content: KlpText('內容'),
+          content: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              KlpPanelHeader(title: '導覽'),
+              KlpText('內容'),
+            ],
+          ),
         ),
       ),
     ),
@@ -1595,6 +1638,42 @@ final fileExplorerPage = CatalogPageData(
   description: '樹狀檔案導航結構，支援分類折疊、資料夾樹狀層級與檔案選取。',
   icon: KlpIcons.folder,
   specimens: [
+    Specimen(
+      name: 'KlpExplorer',
+      note: '完整 Explorer；表面、分類與元素節點的排版皆由 Kallopis 管理。',
+      build: (context) => const SizedBox(
+        width: 280,
+        height: 520,
+        child: KlpExplorer(
+          categories: [
+            KlpExplorerCategory(
+              id: 'foundation',
+              label: 'Foundation',
+              nodes: [
+                KlpExplorerNode(
+                  id: 'tokens',
+                  label: 'Design Tokens',
+                  kind: KlpExplorerNodeKind.folder,
+                  expanded: true,
+                  children: [
+                    KlpExplorerNode(
+                      id: 'colors',
+                      label: 'Colors',
+                      kind: KlpExplorerNodeKind.file,
+                    ),
+                    KlpExplorerNode(
+                      id: 'spacing',
+                      label: 'Spacing',
+                      kind: KlpExplorerNodeKind.file,
+                    ),
+                  ],
+                ),
+              ],
+            ),
+          ],
+        ),
+      ),
+    ),
     Specimen(
       name: 'KlpFileExplorer',
       note: '檔案總管／筆記導航元件（含分類折疊、資料夾樹狀展開與檔案選取）。',

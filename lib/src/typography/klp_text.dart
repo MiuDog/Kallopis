@@ -1,3 +1,4 @@
+import 'package:flutter/rendering.dart';
 import 'package:flutter/widgets.dart';
 
 import '../theme/klp_theme.dart';
@@ -352,7 +353,7 @@ class KlpText extends StatelessWidget {
         ? optical.monoBaselineOffsetY
         : optical.uiBaselineOffsetY;
 
-    return Transform.translate(offset: Offset(0, yOffset), child: text);
+    return _KlpOpticalShift(offsetY: yOffset, child: text);
   }
 
   String _resolveVisibleData(
@@ -400,4 +401,45 @@ class KlpText extends StatelessWidget {
 
     return !painter.didExceedMaxLines;
   }
+}
+
+class _KlpOpticalShift extends SingleChildRenderObjectWidget {
+	const _KlpOpticalShift({required this.offsetY, required super.child});
+
+	final double offsetY;
+
+	@override
+	RenderObject createRenderObject(BuildContext context) => _RenderKlpOpticalShift(offsetY);
+
+	@override
+	void updateRenderObject(BuildContext context, _RenderKlpOpticalShift renderObject) {
+		renderObject.offsetY = offsetY;
+	}
+}
+
+class _RenderKlpOpticalShift extends RenderShiftedBox {
+	_RenderKlpOpticalShift(this._offsetY) : super(null);
+
+	double _offsetY;
+
+	set offsetY(double value) {
+		if (_offsetY == value) return;
+		_offsetY = value;
+		markNeedsLayout();
+	}
+
+	@override
+	void performLayout() {
+		child!.layout(constraints, parentUsesSize: true);
+		size = constraints.constrain(child!.size);
+		(child!.parentData! as BoxParentData).offset = Offset(0, _offsetY);
+	}
+
+	@override
+	double? computeDistanceToActualBaseline(TextBaseline baseline) {
+		final distance = child?.getDistanceToActualBaseline(baseline);
+		if (distance == null) return null;
+		final childOffset = (child!.parentData! as BoxParentData).offset.dy;
+		return distance + childOffset;
+	}
 }

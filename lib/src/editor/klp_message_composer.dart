@@ -53,6 +53,8 @@ class KlpMessageComposer extends StatelessWidget {
             value: value,
             placeholder: placeholder,
             onChanged: onChanged,
+			minLines: 1,
+			maxLines: 5,
           ),
           SizedBox(height: space.compact),
           Row(

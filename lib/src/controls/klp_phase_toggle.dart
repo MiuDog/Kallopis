@@ -18,7 +18,7 @@ class KlpPhaseOption<T> {
 
   final T value;
   final String? label;
-  final String? icon;
+  final KlpIconData? icon;
   final KlpFeedbackTone? activeTone;
   final Color? activeColor;
 }
@@ -44,7 +44,7 @@ class KlpPhaseToggle<T> extends StatelessWidget {
   Widget build(BuildContext context) {
     final klp = context.klp;
     final tokens = context.klpColors;
-    final size = klp.space.controlHeightSmall;
+    final size = klp.space.controlHeightXSmall;
     final padding = klp.space.hairline * 2;
     final border = klp.shape.hairline * 2;
     final totalWidth = size * options.length + padding * 2 + border;

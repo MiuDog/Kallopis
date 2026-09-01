@@ -12,9 +12,12 @@ Notist 與其他消費者可用相同元件組合自己的設定內容。
 
 | 元件 | 責任 | 不負責 |
 |---|---|---|
-| `KlpSettingsPage` | 依可用寬度在雙欄與上下排列間切換 | Popup、route、scope 或關閉流程 |
-| `KlpSettingsNavigationPane` | 提供設定導覽的表面、捲動與預設內距 | 搜尋、分組資料與選取狀態 |
+| `KlpSettingsPage` | 提供共同外框，依可用寬度切換雙欄／上下排列，並可受控調整導覽寬度 | Popup、route、scope 或寬度狀態 |
+| `KlpSettingsNavigationPane` | 固定 header 並讓分組導覽獨立捲動 | 分組資料與選取狀態 |
+| `KlpSettingsNavigationHeader` | 組合 identity、輔助動作與搜尋 slot | 帳號資料、搜尋狀態或權限 |
+| `KlpSettingsSearchField` | 提供設定搜尋的標準小型欄位 | 建立索引或過濾 section |
 | `KlpSettingsContentPane` | 提供標題、說明、可捲動內容與固定 footer | 取得或保存設定資料 |
+| `KlpSettingsContentHeader` | 組合內容標題、說明與右側關閉／輔助動作 | 關閉 overlay 或 route |
 | `KlpSettingsNavigationGroup` | 顯示不可收縮的分類標題 | 決定分類集合 |
 | `KlpSettingsNavigationItem` | 顯示 section，僅在選取時展開 field deep link | 權限、dirty guard 或 deep-link 路由 |
 | `KlpSettingsField` | 顯示欄位標題、說明、控制項與定位強調 | 驗證或資料繫結 |
@@ -25,8 +28,10 @@ Notist 與其他消費者可用相同元件組合自己的設定內容。
 
 - 所有顏色只能由 `context.klp` 的 semantic color token 解析。
 - 導覽 pane 使用 `base` 表面，內容 pane 使用 `raised` 表面；欄位定位使用 `muted` 表面。
-- pane 間距、內距、圓角、導引線與預覽圖尺寸全部由 theme token 決定。
-- 寬版使用固定 semantic navigation width；窄版改為上下排列，不縮放文字。
+- 兩個 pane 共用 overlay 外框；導覽與內容表面連續，以 semantic divider／resize handle 分隔。
+- pane 內距、圓角、導引線、導覽寬度範圍與預覽圖尺寸全部由 theme token 決定。
+- 寬版使用可受控調整的 semantic navigation width；窄版改為上下排列，不縮放文字。
+- identity 與搜尋固定於導覽捲動區外；長導覽只捲動分組項目。
 - footer 位於內容捲動區外；內容過長時只捲動內容，不捲走 footer。
 - section 的 field deep link 只在 section 被選取時建立，並以 semantic divider 顯示左側導引線。
 - 顏色模式選取是受控狀態；切換動畫與偏好保存由產品處理。
@@ -44,6 +49,8 @@ Notist 與其他消費者可用相同元件組合自己的設定內容。
 ## 驗收條件
 
 - 同一組內容在寬版呈現左右雙欄，在窄版呈現上下排列且不 overflow。
+- 寬版 resize handle 回報已依 semantic 最小／最大值夾制的導覽寬度。
+- identity 與搜尋在長導覽捲動時仍留在 pane 頂端。
 - 未選取 section 不建立 field deep link；選取後才建立並顯示 token 導引線。
 - content footer 不屬於捲動 viewport。
 - Theme picker 可呈現 Light、Dark、Ultra Dark、System 與 Transparent，且回報選取事件。

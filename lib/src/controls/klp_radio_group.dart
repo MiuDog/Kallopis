@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../interaction/klp_pressable.dart';
 import '../theme/klp_theme.dart';
 import '../typography/klp_text.dart';
 
@@ -71,21 +72,24 @@ class _KlpRadioItem extends StatelessWidget {
   Widget build(BuildContext context) {
     final tokens = context.klpColors;
 
-    return Padding(
-      padding: EdgeInsets.symmetric(vertical: context.klp.space.tight),
-      child: Row(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          Semantics(
-            checked: selected,
-            inMutuallyExclusiveGroup: true,
-            label: label,
-            child: Material(
-              color: tokens.clear,
-              shape: const CircleBorder(),
-              child: InkWell(
-                onTap: onPressed,
-                customBorder: const CircleBorder(),
+    return KlpPressable(
+      onPressed: onPressed,
+      borderRadius: BorderRadius.circular(context.klp.shape.control),
+      child: Padding(
+        padding: EdgeInsets.symmetric(
+          horizontal: context.klp.space.tight,
+          vertical: context.klp.space.tight,
+        ),
+        child: Row(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Semantics(
+              checked: selected,
+              inMutuallyExclusiveGroup: true,
+              label: label,
+              child: Material(
+                color: tokens.clear,
+                shape: const CircleBorder(),
                 child: DecoratedBox(
                   decoration: BoxDecoration(
                     shape: BoxShape.circle,
@@ -112,26 +116,26 @@ class _KlpRadioItem extends StatelessWidget {
                 ),
               ),
             ),
-          ),
-          SizedBox(width: context.klp.space.compact),
-          Expanded(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                KlpText(label, role: KlpTextRole.bodyStrong),
-                if (description != null) ...[
-                  SizedBox(height: context.klp.space.tight),
-                  KlpText(
-                    description!,
-                    role: KlpTextRole.caption,
-                    tone: KlpTextTone.muted,
-                  ),
+            SizedBox(width: context.klp.space.compact),
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  KlpText(label, role: KlpTextRole.bodyStrong),
+                  if (description != null) ...[
+                    SizedBox(height: context.klp.space.tight),
+                    KlpText(
+                      description!,
+                      role: KlpTextRole.caption,
+                      tone: KlpTextTone.muted,
+                    ),
+                  ],
                 ],
-              ],
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

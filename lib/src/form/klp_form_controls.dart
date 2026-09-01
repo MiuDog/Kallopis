@@ -18,6 +18,8 @@ class KlpTextArea extends StatelessWidget {
     this.error,
     this.onChanged,
     this.enabled = true,
+		this.minLines,
+		this.maxLines,
   });
 
   final String? label;
@@ -26,6 +28,8 @@ class KlpTextArea extends StatelessWidget {
   final String? error;
   final ValueChanged<String>? onChanged;
   final bool enabled;
+	final int? minLines;
+	final int? maxLines;
 
   @override
   Widget build(BuildContext context) {
@@ -37,6 +41,8 @@ class KlpTextArea extends StatelessWidget {
       onChanged: onChanged,
       enabled: enabled,
       multiline: true,
+		minLines: minLines,
+		maxLines: maxLines,
     );
   }
 }

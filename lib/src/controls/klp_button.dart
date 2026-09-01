@@ -2,14 +2,16 @@ import 'package:flutter/material.dart';
 
 import 'klp_control_size.dart';
 import '../interaction/klp_pressable.dart';
+import '../surface/klp_dashed_border.dart';
 import '../theme/klp_theme.dart';
 import '../typography/klp_text.dart';
 
-enum KlpButtonTone { primary, secondary, ghost, danger }
+enum KlpButtonTone { primary, secondary, ghost, dashed, danger }
 
-/// 主要動作按鈕。`tone` 決定語意強度（primary／secondary／ghost／danger），
-/// `size` 支援四段標準尺寸階級（sm: 32px, md: 40px, lg: 48px, xl: 56px），
-/// 圓角、內距、高度與邊框皆取自 theme。
+/// 主要動作按鈕。`tone` 決定語意強度（primary／secondary／ghost／dashed／danger），
+/// `size` 支援五段標準尺寸階級（xs: 30px, sm: 36px, md: 40px, lg: 48px, xl: 56px），
+/// 預設使用 sm，`compact` 使用 xs；`selected` 是由呼叫端持有的持續選取狀態。
+/// 圓角、內距、高度、狀態 wash 與邊框皆取自 theme。
 class KlpButton extends StatefulWidget {
   const KlpButton({
     super.key,
@@ -20,6 +22,7 @@ class KlpButton extends StatefulWidget {
     this.leading,
     this.trailing,
     this.compact = false,
+		this.selected = false,
     this.onLongPress,
   });
 
@@ -30,6 +33,7 @@ class KlpButton extends StatefulWidget {
   final Widget? leading;
   final Widget? trailing;
   final bool compact;
+	final bool selected;
   final VoidCallback? onLongPress;
 
   @override
@@ -54,30 +58,41 @@ class _KlpButtonState extends State<KlpButton> {
     final background = disabled
         ? tokens.surfaceInset
         : switch (widget.tone) {
-            KlpButtonTone.primary => tokens.interaction,
+			KlpButtonTone.primary => tokens.interactionSoft,
             KlpButtonTone.secondary => tokens.component,
             KlpButtonTone.ghost => tokens.clear,
+            KlpButtonTone.dashed => tokens.clear,
             KlpButtonTone.danger => tokens.danger.withValues(
               alpha: klp.surface.statusFillOpacity,
             ),
           };
-    final effectiveBackground = active
-        ? Color.alphaBlend(klp.selectionWash, background)
-        : background;
+		Color? stateWash;
+		if (widget.selected && !disabled) {
+			stateWash = tokens.interaction.withValues(alpha: klp.surface.focusWashOpacity);
+		} else if (active) {
+			stateWash = klp.selectionWash;
+		}
+		final effectiveBackground = stateWash == null ? background : Color.alphaBlend(stateWash, background);
     final foreground = disabled
         ? tokens.textFaint
         : switch (widget.tone) {
-            KlpButtonTone.primary => KlpThemeContrast.foregroundFor(background),
+			KlpButtonTone.primary => tokens.interaction,
             KlpButtonTone.danger => tokens.danger,
-            KlpButtonTone.secondary || KlpButtonTone.ghost => tokens.text,
+            KlpButtonTone.secondary ||
+            KlpButtonTone.ghost ||
+            KlpButtonTone.dashed => tokens.text,
           };
-    final resolvedSize =
-        widget.size ?? (widget.compact ? KlpControlSize.sm : KlpControlSize.md);
+		final resolvedSize = widget.size ?? (widget.compact ? KlpControlSize.xs : KlpControlSize.sm);
     final (height, insets, textRole) = switch (resolvedSize) {
+      KlpControlSize.xs => (
+        klp.space.controlHeightXSmall,
+        EdgeInsets.symmetric(horizontal: klp.space.compact),
+        KlpTextRole.caption,
+      ),
       KlpControlSize.sm => (
         klp.space.controlHeightSmall,
         EdgeInsets.symmetric(horizontal: klp.space.controlPaddingXSmall),
-        KlpTextRole.sub,
+		KlpTextRole.caption,
       ),
       KlpControlSize.md => (
         klp.buttonHeight,
@@ -106,32 +121,39 @@ class _KlpButtonState extends State<KlpButton> {
             ? null
             : Border.all(color: tokens.border, width: klp.buttonBorderWidth),
       ),
-      child: Row(
-        mainAxisSize: MainAxisSize.min,
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          if (widget.leading != null) ...[
-            widget.leading!,
-            SizedBox(width: klp.space.compact),
-          ],
-          Flexible(
-            child: KlpText(
-              widget.label,
-              role: textRole,
-              color: foreground,
-              maxLines: 1,
-              overflow: TextOverflow.ellipsis,
+      child: DefaultTextStyle.merge(
+        style: TextStyle(color: foreground),
+        child: Row(
+          mainAxisSize: MainAxisSize.min,
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            if (widget.leading != null) ...[
+              widget.leading!,
+              SizedBox(width: klp.space.compact),
+            ],
+            Flexible(
+              child: KlpText(
+                widget.label,
+                role: textRole,
+                color: foreground,
+                maxLines: 1,
+                overflow: TextOverflow.ellipsis,
+              ),
             ),
-          ),
-          if (widget.trailing != null) ...[
-            SizedBox(width: klp.space.compact),
-            widget.trailing!,
+            if (widget.trailing != null) ...[
+              SizedBox(width: klp.space.compact),
+              widget.trailing!,
+            ],
           ],
-        ],
+        ),
       ),
     );
 
-    return Material(
+    if (widget.tone == KlpButtonTone.dashed) {
+      content = KlpDashedBorder(radius: radius, child: content);
+    }
+
+		final pressable = Material(
       color: tokens.clear,
       child: KlpPressable(
         onPressed: widget.onPressed,
@@ -146,5 +168,6 @@ class _KlpButtonState extends State<KlpButton> {
         child: content,
       ),
     );
+		return Semantics(selected: widget.selected, child: pressable);
   }
 }

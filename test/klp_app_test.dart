@@ -7,6 +7,47 @@ import 'package:kallopis/kallopis.dart';
 /// （明暗解析、切換方向、router 掛載）。這些路徑先前只有人工執行 example 時
 /// 才會被走到——沒有任何自動化測試把關。
 void main() {
+	testWidgets('stage body paints above overflowing window header chrome', (
+		tester,
+	) async {
+		var headerTapped = false;
+		var bodyTapped = false;
+		await tester.pumpWidget(
+			KlpApp(
+				windowHeader: OverflowBox(
+					alignment: Alignment.topCenter,
+					maxHeight: 80,
+					child: GestureDetector(
+						behavior: HitTestBehavior.opaque,
+						onTap: () => headerTapped = true,
+						child: const SizedBox.expand(),
+					),
+				),
+				home: GestureDetector(
+					behavior: HitTestBehavior.opaque,
+					onTap: () => bodyTapped = true,
+					child: const SizedBox.expand(),
+				),
+			),
+		);
+
+		final frame = tester.getRect(
+			find.byKey(const ValueKey('klp-app-frame-background')),
+		);
+		final klp = tester
+			.element(find.byKey(const ValueKey('klp-app-frame-background')))
+			.klp;
+		final headerHeight =
+			klp.geometry.layout.windowHeaderHeight + klp.space.compact;
+		final appInset = klp.space.compact / 2;
+		await tester.tapAt(
+			Offset(frame.center.dx, frame.top + appInset + headerHeight + 2),
+		);
+
+		expect(bodyTapped, isTrue);
+		expect(headerTapped, isFalse);
+	});
+
   const windowChannel = MethodChannel('kallopis/window');
 
   /// 取出目前實際套用的 `KlpThemeData`，用來驗證 theme 真的換了，
@@ -103,13 +144,14 @@ void main() {
     await tester.pumpWidget(
       const KlpApp(
         title: 'Notist',
-        appIcon: Icon(Icons.edit, key: ValueKey('app_icon')),
+        appIcon: KlpIcon(KlpIcons.edit, key: ValueKey('app_icon')),
         home: SizedBox.shrink(),
       ),
     );
 
     final iconFinder = find.byKey(const ValueKey('app_icon'));
     final iconContext = tester.element(iconFinder);
+    final compact = iconContext.klp.space.compact;
     final layout = iconContext.klp.geometry.layout;
     final headerRect = tester.getRect(find.byType(KlpWindowHeader));
     final fittedBoxFinder = find.ancestor(
@@ -118,15 +160,30 @@ void main() {
     );
     final iconRect = tester.getRect(fittedBoxFinder);
     final titleRect = tester.getRect(find.text('Notist'));
+    final appFrameBackground = tester.widget<ColoredBox>(
+      find.byKey(const ValueKey('klp-app-frame-background')),
+    );
 
     expect(fittedBoxFinder, findsOneWidget);
-    expect(headerRect.height, layout.windowToolbarHeight);
+    expect(appFrameBackground.color, iconContext.klpColors.app);
+    expect(headerRect.left, compact / 2);
+    expect(headerRect.top, compact / 2);
+    expect(headerRect.height, klpWindowHeaderHeight(iconContext.klp.geometry));
     expect(
       tester.getSize(fittedBoxFinder),
       Size.square(layout.windowAppIconSize),
     );
-    expect(iconRect.left, headerRect.left + layout.windowToolbarPaddingStart);
-    expect(titleRect.left - iconRect.right, layout.windowIdentityGap);
+    expect(
+      iconRect.left,
+      headerRect.left +
+          compact / 2 +
+          (layout.windowHeaderControlSize - layout.windowAppIconSize) / 2,
+    );
+    expect(
+      titleRect.left - iconRect.right,
+      (layout.windowHeaderControlSize - layout.windowAppIconSize) / 2 +
+          layout.windowIdentityGap,
+    );
   });
 
   testWidgets('視窗轉場暫時低於 header 高度時不產生垂直溢出', (tester) async {

@@ -16,8 +16,11 @@ void main() {
       settingsPage.specimens.map((specimen) => specimen.name),
       containsAll({
         'KlpSettingsPage',
+        'KlpSettingsNavigationHeader',
+        'KlpSettingsSearchField',
         'KlpSettingsNavigationPane',
         'KlpSettingsContentPane',
+        'KlpSettingsContentHeader',
         'KlpSettingsNavigationGroup',
         'KlpSettingsNavigationItem',
         'KlpSettingsField',

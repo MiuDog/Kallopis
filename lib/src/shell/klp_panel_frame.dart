@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
 
 import '../theme/klp_theme.dart';
+import 'internal/klp_panel_padding.dart';
 
 /// 通用面板：header 與 content，選用 footer。高度預設沿用 theme 的外殼密度。
 /// 文字顏色依據背景顏色階梯（500 以下為深色文字，600 以上為淺色文字）渲染。
 class KlpPanelFrame extends StatelessWidget {
   const KlpPanelFrame({
     super.key,
-    required this.header,
+    this.header,
     required this.content,
     this.footer,
     this.headerHeight,
@@ -17,7 +18,7 @@ class KlpPanelFrame extends StatelessWidget {
     this.flushContent = false,
   });
 
-  final Widget header;
+  final Widget? header;
   final Widget content;
   final Widget? footer;
 
@@ -26,10 +27,13 @@ class KlpPanelFrame extends StatelessWidget {
   final double? footerHeight;
   final Color? background;
 
-  /// 內容與面板之間的內距。預設使用 Workbench 的語意緊湊間距。
+  /// 面板邊界往內的共用 padding。預設只提供左右各 8px；上下節奏由
+  /// header、content、footer 自己決定。
   final EdgeInsetsGeometry? padding;
 
-  /// 讓內容自行管理內距；用於 explorer 這類每列已具備水平節奏的面板。
+  /// 舊版只控制 content padding 的相容參數。面板現在由 [padding] 統一管理
+  /// 三個區域，因此此值不再改變 padding。
+  @Deprecated('Use padding to configure the panel padding.')
   final bool flushContent;
 
   @override
@@ -49,35 +53,24 @@ class KlpPanelFrame extends StatelessWidget {
         ),
         child: KlpTokenOverride(
           colors: surfaceTokens,
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: [
-              SizedBox(
-                height: headerHeight ?? context.klp.space.chromeHeader,
-                child: header,
-              ),
-              Expanded(
-                child: Padding(
-                  padding:
-                      padding ??
-                      (flushContent
-                          ? EdgeInsets.zero
-                          : EdgeInsets.all(
-                              context
-                                  .klp
-                                  .geometry
-                                  .layout
-                                  .workbenchCompactSpacing,
-                            )),
-                  child: content,
-                ),
-              ),
-              if (footer != null)
-                SizedBox(
-                  height: footerHeight ?? context.klp.space.chromeStatusBar,
-                  child: footer!,
-                ),
-            ],
+          child: Padding(
+            padding: resolveKlpPanelPadding(context, padding: padding),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [
+                if (header != null)
+                  SizedBox(
+                    height: headerHeight ?? context.klp.space.chromeHeader,
+                    child: header!,
+                  ),
+                Expanded(child: content),
+                if (footer != null)
+                  SizedBox(
+                    height: footerHeight ?? context.klp.space.chromeStatusBar,
+                    child: footer!,
+                  ),
+              ],
+            ),
           ),
         ),
       ),

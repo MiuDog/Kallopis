@@ -101,7 +101,7 @@
 
 | 元件名稱 | 類型 | 說明 | 架構文件 |
 |---|---|---|---|
-| `KlpButton` | `Stateful` | 主要動作按鈕。`tone` 決定語意強度（primary／secondary／ghost／danger）， `size` 支援四段標準尺寸階級（sm: 32px, md: 40px, lg: 48px, xl: 56px）， 圓角、內距、高度與邊框皆取自 theme。 | [klp_button.md](./controls/klp_button.md) |
+| `KlpButton` | `Stateful` | 主要動作按鈕。`tone` 提供 primary／secondary／ghost／dashed／danger；`size` 提供 xs／sm／md／lg／xl，預設為 sm、`compact` 為 xs。`selected` 由呼叫端持有，hover 與 selected 使用不同語意 wash。 | [klp_button.md](./controls/klp_button.md) |
 | `KlpCheckbox` | `Stateless` | Kallopis KlpCheckbox 元件 | [klp_checkbox.md](./controls/klp_checkbox.md) |
 | `KlpCombobox` | `Stateful` | 可輸入的下拉選單（autocomplete）。  **輸入框重用 [KlpTextField]，下拉面板重用 [KlpMenu]**——本庫「一條規則只能有 一個實作」：欄位外觀與選單外觀已經各自只有一份，這裡不重新畫一套。  是**受控元件**：目前的輸入文字（[query]）、候選清單（[options]）都由呼叫端 持有並傳入，本元件只負責過濾顯示、鍵盤導覽與觸發 [onQueryChanged]／ [onSelected]。選出一個選項後，呼叫端通常會把 [query] 更新成該選項的 [KlpComboboxOption.label]。  鍵盤：↓／↑ 在目前過濾結果間移動，Enter 選定醒目提示的項目；[allowFreeText] 為 `true` 時，Enter 在沒有醒目提示項目但輸入框非空時改觸發 [onFreeTextSubmitted]，讓呼叫端接受清單以外的自由輸入值。Esc 收起面板。 | [klp_combobox.md](./controls/klp_combobox.md) |
 | `KlpCompactSwitch` | `Stateless` | Kallopis KlpCompactSwitch 元件 | [klp_compact_switch.md](./controls/klp_compact_switch.md) |
@@ -161,7 +161,7 @@
 | `KlpBadge` | `Stateless` | 狀態標記 (Badge)。 | [klp_badge.md](./data/klp_badge.md) |
 | `KlpCard` | `Stateless` | 內容卡片。 | [klp_card.md](./data/klp_card.md) |
 | `KlpCodeViewer` | `Stateful` | Kallopis KlpCodeViewer 元件 | [klp_code_viewer.md](./data/klp_code_viewer.md) |
-| `KlpDataTable` | `Stateless` | 結構化資料表格：固定欄位、可選排序與多選。  不做分頁或虛擬捲動——列數多時請自行分頁後再傳入 [rows]。選取狀態 （[selectedIds]）與排序狀態（[sort]）都由呼叫端持有，這個元件本身無狀態， 只在使用者互動時透過 [onSelected]／[onSort] 回報意圖。 | [klp_data_table.md](./data/klp_data_table.md) |
+| `KlpDataTable` | `Stateless` | 緊湊的結構化資料表格；短內容列使用 `controlHeight` 與 `tight` 垂直 padding，較高內容可自然撐開。支援固定欄位、排序與多選。 | [klp_data_table.md](./data/klp_data_table.md) |
 | `KlpDiffViewer` | `Stateless` | 程式碼差異檢視器 (Diff Viewer)。  呈現檔案名稱標題、雙欄行號對照、新增（綠底）與刪除（紅底）標記行，以及逐行審查操作。 | [klp_diff_viewer.md](./data/klp_diff_viewer.md) |
 | `KlpFilePreview` | `Stateless` | 檔案預覽卡片：header 顯示檔名與中繼資料，中段畫預覽內容，footer 放外部 操作。  [preview] 優先於 [textContent]——兩者都給時只會用 [preview]；都不給且 [state] 為 [KlpFilePreviewState.ready] 時顯示「無可用預覽」。[state] 由 呼叫端管理，這個元件不會自己判斷載入或解析是否失敗。 | [klp_file_preview.md](./data/klp_file_preview.md) |
 | `KlpJsonTree` | `Stateless` | Kallopis KlpJsonTree 元件 | [klp_json_tree.md](./data/klp_json_tree.md) |
@@ -185,7 +185,7 @@
 |---|---|---|---|
 | `KlpEmptyState` | `Stateless` | Kallopis KlpEmptyState 元件 | [klp_empty_state.md](./feedback/klp_empty_state.md) |
 | `KlpErrorState` | `Stateless` | Kallopis KlpErrorState 元件 | [klp_error_state.md](./feedback/klp_error_state.md) |
-| `KlpInlineNotice` | `Stateless` | Kallopis KlpInlineNotice 元件 | [klp_inline_notice.md](./feedback/klp_inline_notice.md) |
+| `KlpInlineNotice` | `Stateless` | 以語意 tone 顯示行內回饋；icon 跟隨 body 字級，mono 狀態碼與 UI 標題共用 alphabetic baseline。 | [klp_inline_notice.md](./feedback/klp_inline_notice.md) |
 | `KlpLoadingState` | `Stateless` | Kallopis KlpLoadingState 元件 | [klp_loading_state.md](./feedback/klp_loading_state.md) |
 | `KlpPermissionState` | `Stateless` | Kallopis KlpPermissionState 元件 | [klp_permission_state.md](./feedback/klp_permission_state.md) |
 | `KlpProgressOverlay` | `Stateless` | Kallopis KlpProgressOverlay 元件 | [klp_progress_overlay.md](./feedback/klp_progress_overlay.md) |
@@ -274,4 +274,3 @@
 | 元件名稱 | 類型 | 說明 | 架構文件 |
 |---|---|---|---|
 | `KlpApp` | `Stateful` | `MaterialApp` 的接入層，收掉每個消費者都得自己組一次的樣板。  沒有它時，消費者要自己：套 `buildKlpTheme` 的亮／暗兩份 `ThemeData`、記得把 `themeAnimationDuration` 歸零（否則主題切換的動畫中途會有半數幀停在舊值上， 見 README「深淺切換不做過場」）、決定明暗狀態放哪裡並手刻切換入口、如果用了 [KlpRouter] 還要自己架 [KlpRouterScope]。這些細節不涉及任何產品語意，每個 `-ist` 產品各刻一次只會讓實作各自漂移——因此收進庫。  ## 最小用法  ```dart KlpApp(   home: const MyHomePage(), ) ```  ## 搭配 router  給了 [router] 但沒給 [home] 時，自動以 [KlpRouterOutlet] 當作首頁； 兩者都給時，[home] 仍會被包在 [KlpRouterScope] 之下，因此 [home] 的子樹 裡任何位置都能用 `context.klpRouter`（[KlpRouterOutlet] 放在哪一層由消費者 自己決定）。  ```dart KlpApp(   router: KlpRouter(     routes: [KlpRoute(id: 'home', builder: (_) => const HomePage())],     initialId: 'home',   ), ) ```  ## 切換明暗  ```dart KlpApp.of(context).toggleBrightness(); ```  ## 換視覺風格  [style] 決定字體、間距、圓角、動態、分層手法等**除了色彩以外**的每一層； 色彩固定由 [KlpApp] 依目前明暗在 `KlpThemeData.light` 與 `KlpThemeData.dark` 之間切換——這樣「切換明暗」才有事可做。要自訂色彩（例如品牌色），改用 `buildKlpTheme` 自己組 `MaterialApp`，而不是透過 [KlpApp]。 | [klp_app.md](./app/klp_app.md) |
-

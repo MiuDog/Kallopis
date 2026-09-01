@@ -39,6 +39,7 @@ class KlpSpacingTheme extends ThemeExtension<KlpSpacingTheme> {
     required this.itemGap,
     required this.groupGap,
     required this.controlHeight,
+    this.controlHeightXSmall = 30,
     required this.controlHeightSmall,
     required this.controlHeightLarge,
     this.controlHeightXLarge = 56,
@@ -109,7 +110,8 @@ class KlpSpacingTheme extends ThemeExtension<KlpSpacingTheme> {
   final double itemGap;
   final double groupGap;
 
-  // 四段控制項高度（SM: 32, MD: 40, LG: 48, XL: 56）
+  // 五段控制項高度（XS: 30, SM: 36, MD: 40, LG: 48, XL: 56）
+  final double controlHeightXSmall; // 30px (XS)
   final double controlHeightSmall; // 36px (SM)
   final double controlHeight; // 40px (MD 預設)
   final double controlHeightLarge; // 48px (LG)
@@ -225,7 +227,7 @@ class KlpSpacingTheme extends ThemeExtension<KlpSpacingTheme> {
     space24: KlpScale.space2400, // 96px
     hairline: KlpScale.space50, // 2px
     tight: KlpScale.space100, // 4px
-    compact: KlpScale.space250, // 10px
+    compact: KlpScale.space200, // 8px
     base: KlpScale.space400, // 16px (基準)
     comfortable: KlpScale.space600, // 24px
     loose: KlpScale.space800, // 32px
@@ -241,6 +243,7 @@ class KlpSpacingTheme extends ThemeExtension<KlpSpacingTheme> {
     containerPadding: KlpScale.space400, // 16px
     itemGap: KlpScale.space300, // 12px
     groupGap: KlpScale.space400, // 16px
+    controlHeightXSmall: 30, // 30px (XS)
     controlHeightSmall: 36, // 36px (SM)
     controlHeight: 40, // 40px (MD 預設)
     controlHeightLarge: 48, // 48px (LG)
@@ -327,6 +330,7 @@ class KlpSpacingTheme extends ThemeExtension<KlpSpacingTheme> {
     double? itemGap,
     double? groupGap,
     double? controlHeight,
+    double? controlHeightXSmall,
     double? controlHeightSmall,
     double? controlHeightLarge,
     double? controlHeightXLarge,
@@ -373,6 +377,7 @@ class KlpSpacingTheme extends ThemeExtension<KlpSpacingTheme> {
       itemGap: itemGap ?? this.itemGap,
       groupGap: groupGap ?? this.groupGap,
       controlHeight: controlHeight ?? this.controlHeight,
+      controlHeightXSmall: controlHeightXSmall ?? this.controlHeightXSmall,
       controlHeightSmall: controlHeightSmall ?? this.controlHeightSmall,
       controlHeightLarge: controlHeightLarge ?? this.controlHeightLarge,
       controlHeightXLarge: controlHeightXLarge ?? this.controlHeightXLarge,
@@ -448,6 +453,7 @@ class KlpSpacingTheme extends ThemeExtension<KlpSpacingTheme> {
           containerPadding == other.containerPadding &&
           itemGap == other.itemGap &&
           groupGap == other.groupGap &&
+          controlHeightXSmall == other.controlHeightXSmall &&
           controlHeightSmall == other.controlHeightSmall &&
           controlHeight == other.controlHeight &&
           controlHeightLarge == other.controlHeightLarge &&
@@ -514,6 +520,7 @@ class KlpSpacingTheme extends ThemeExtension<KlpSpacingTheme> {
     containerPadding,
     itemGap,
     groupGap,
+    controlHeightXSmall,
     controlHeightSmall,
     controlHeight,
     controlHeightLarge,

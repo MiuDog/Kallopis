@@ -11,6 +11,9 @@ Kallopis 是 `-ist` 產品家族共用的 **Flutter 視覺層**：design token�
 ## 硬規則
 
 - 完成＝證據（`flutter analyze` 與 `flutter test` 的輸出尾行）；「應該可以」不是完成。
+- 任何會改變布局或視覺呈現的任務，動檔前必須完整讀取
+  [`.agents/skills/kallopis-design-contract/SKILL.md`](.agents/skills/kallopis-design-contract/SKILL.md)，
+  完成其風格繼承、語意定義、屬性權限與使用者布局契約前置檢查。
 - **註解一律繁體中文**，identifier、測試名稱維持英文。
 - 大檔（>200 行）先內容搜尋定位再分段讀，不整檔讀。
 - 查不到的事實標「未查證」，嚴禁編造 API、路徑、來源。

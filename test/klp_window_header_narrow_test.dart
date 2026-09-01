@@ -28,7 +28,10 @@ void main() {
               child: KlpWindowHeader(
                 titleText: 'Kallopis',
                 platform: TargetPlatform.windows,
-                appIcon: const FlutterLogo(key: ValueKey('app-icon')),
+                appIcon: const KlpIcon(
+                  KlpIcons.sparkles,
+                  key: ValueKey('app-icon'),
+                ),
                 actions: const [SizedBox(width: 48, child: Text('Light'))],
               ),
             ),
@@ -64,7 +67,7 @@ void main() {
                   return KlpWindowHeader(
                     titleText: 'Kallopis',
                     platform: TargetPlatform.windows,
-                    appIcon: const FlutterLogo(),
+                    appIcon: const KlpIcon(KlpIcons.sparkles),
                     actions: [
                       Container(
                         height: 22,

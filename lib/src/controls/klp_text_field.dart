@@ -27,6 +27,9 @@ class KlpTextField extends StatefulWidget {
     this.autofocus = false,
     this.enabled = true,
     this.multiline = false,
+		this.minLines,
+		this.maxLines,
+		this.outlined = false,
     this.suffixText,
     this.stepper = false,
     this.clearable = false,
@@ -36,6 +39,9 @@ class KlpTextField extends StatefulWidget {
     this.onStepUp,
     this.onStepDown,
   }) : assert(maxLength == null || maxLength > 0),
+		assert(minLines == null || minLines > 0),
+		assert(maxLines == null || maxLines > 0),
+		assert(minLines == null || maxLines == null || minLines <= maxLines),
        assert(
          controller == null || initialValue == null,
          'controller 與 initialValue 互斥——給了 controller 就由它掌控文字內容。',
@@ -45,7 +51,7 @@ class KlpTextField extends StatefulWidget {
   final String? placeholder;
   final String? helper;
   final String? error;
-  final String? leadingIcon;
+  final KlpIconData? leadingIcon;
   final String? initialValue;
 
   /// 外部持有的文字控制器。多數呼叫端不需要——沒有給時本元件用 `initialValue`
@@ -61,6 +67,9 @@ class KlpTextField extends StatefulWidget {
   final bool autofocus;
   final bool enabled;
   final bool multiline;
+	final int? minLines;
+	final int? maxLines;
+	final bool outlined;
   final String? suffixText;
   final bool stepper;
   final bool clearable;
@@ -81,6 +90,11 @@ class _KlpTextFieldState extends State<KlpTextField> {
     final klp = context.klp;
     final hasError = widget.error != null;
     final (fieldHeight, fontSize, paddingX) = switch (widget.size) {
+      KlpControlSize.xs => (
+        klp.space.controlHeightXSmall,
+        klp.type.caption,
+        klp.space.tight,
+      ),
       KlpControlSize.sm => (
         klp.space.controlHeightSmall,
         klp.type.sub,
@@ -170,15 +184,19 @@ class _KlpTextFieldState extends State<KlpTextField> {
       error: isInvalid,
       surface: klp.surface,
     );
+		final borderWidth = widget.outlined
+			? klp.fieldBorderWidth.clamp(klp.shape.hairline, double.infinity)
+				.toDouble()
+			: klp.fieldBorderWidth;
 
     Widget fieldWidget = Container(
       height: widget.multiline ? null : fieldHeight,
       decoration: BoxDecoration(
         color: fillColor,
         borderRadius: BorderRadius.circular(klp.fieldRadius),
-        border: klp.fieldBorderWidth == klp.shape.none
+        border: borderWidth == klp.shape.none
             ? null
-            : Border.all(color: tokens.border, width: klp.fieldBorderWidth),
+            : Border.all(color: tokens.border, width: borderWidth),
       ),
       alignment: widget.multiline ? Alignment.topLeft : Alignment.centerLeft,
       child: Material(
@@ -202,11 +220,11 @@ class _KlpTextFieldState extends State<KlpTextField> {
             onChanged: widget.onChanged,
             onFieldSubmitted: widget.onSubmitted,
             minLines: widget.multiline
-                ? klp.geometry.control.textFieldMinLines
-                : 1,
+				? widget.minLines ?? klp.geometry.control.textFieldMinLines
+				: 1,
             maxLines: widget.multiline
-                ? klp.geometry.control.textFieldMaxLines
-                : 1,
+				? widget.maxLines ?? klp.geometry.control.textFieldMaxLines
+				: 1,
             style: TextStyle(
               color: !widget.enabled ? tokens.textFaint : tokens.text,
               fontSize: fontSize,

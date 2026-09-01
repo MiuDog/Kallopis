@@ -75,6 +75,13 @@ void main() {
         );
       await mono.load();
     }
+    final icons = FontLoader('packages/kallopis/${KlpIcon.fontFamily}')
+      ..addFont(
+        rootBundle.load(
+          'packages/kallopis/assets/fonts/FlaticonUIcons-RegularRounded.ttf',
+        ),
+      );
+    await icons.load();
   });
 
   /// 檔名用頁面標籤推導，改了標籤就會找不到基準——那是刻意的，

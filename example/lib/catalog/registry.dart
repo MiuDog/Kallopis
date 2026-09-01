@@ -1,4 +1,5 @@
 import '../catalog_model.dart';
+import 'button_system_page.dart';
 import 'form_pages.dart';
 import 'foundation_pages.dart';
 import 'guideline_pages.dart';
@@ -8,6 +9,8 @@ import 'workspace_agenda_page.dart';
 import 'workspace_assets_page.dart';
 import 'workspace_conversation_page.dart';
 import 'workspace_shell_page.dart';
+import 'workspace_assembly_page.dart';
+import 'workflow_pages.dart';
 
 /// 目錄的完整結構。
 ///
@@ -37,6 +40,7 @@ final List<CatalogGroup> catalogGroups = [
     label: 'Foundation',
     pages: [
       actionsNavigationPage,
+		buttonSystemPage,
       fileExplorerPage,
       dataDisplayPage,
       layoutInteractionPage,
@@ -52,8 +56,12 @@ final List<CatalogGroup> catalogGroups = [
       workspaceShellPage,
       workspaceAgendaPage,
       workspaceConversationPage,
-      workspaceAssetsPage,
-    ],
+		workspaceAssetsPage,
+		workspaceAssemblyPage,
+		workflowReviewPage,
+		artifactWorkspacePage,
+		canvasWorkspacePage,
+	],
   ),
 ];
 

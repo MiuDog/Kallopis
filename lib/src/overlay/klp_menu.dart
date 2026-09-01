@@ -8,6 +8,7 @@ import '../foundation/klp_icon.dart';
 import '../foundation/klp_icons.dart';
 import '../interaction/klp_roving_index.dart';
 import '../surface/klp_divider.dart';
+import '../surface/klp_dashed_border.dart';
 import '../surface/klp_surface.dart';
 import '../theme/klp_geometry_theme.dart';
 import '../theme/klp_theme.dart';
@@ -57,19 +58,26 @@ class KlpMenuItemData {
     this.hasSubmenu = false,
     this.danger = false,
     this.separatedBefore = false,
+    this.dashedSeparatorBefore = false,
     this.selected = false,
     this.enabled = true,
-  });
+  }) : assert(
+         !separatedBefore || !dashedSeparatorBefore,
+         'A menu item can only use one separator style.',
+       );
 
   final String label;
   final VoidCallback onPressed;
   final Key? key;
-  final String? icon;
+  final KlpIconData? icon;
   final String? shortcut;
   final bool? toggleValue;
   final bool hasSubmenu;
   final bool danger;
   final bool separatedBefore;
+
+  /// 在此項目前以虛線分組；不可與 [separatedBefore] 同時使用。
+  final bool dashedSeparatorBefore;
   final bool selected;
   final bool enabled;
 }
@@ -323,12 +331,15 @@ class _KlpMenuState extends State<KlpMenu> {
                 ),
                 SizedBox(height: context.klp.space.tight),
                 for (var index = 0; index < items.length; index++) ...[
-                  if (items[index].separatedBefore)
+                  if (items[index].separatedBefore ||
+                      items[index].dashedSeparatorBefore)
                     Padding(
                       padding: EdgeInsets.symmetric(
                         vertical: context.klp.space.tight,
                       ),
-                      child: KlpDivider(),
+                      child: items[index].dashedSeparatorBefore
+                          ? const KlpDashedDivider()
+                          : const KlpDivider(),
                     ),
                   KlpMenuItem(
                     key: items[index].key,

@@ -88,7 +88,7 @@ class _WindowControlButton extends StatefulWidget {
     this.destructive = false,
   });
 
-  final String icon;
+  final KlpIconData icon;
   final String label;
   final VoidCallback? onPressed;
   final bool destructive;
@@ -130,11 +130,11 @@ class _WindowControlButtonState extends State<_WindowControlButton> {
         onFocusChange: (value) => setState(() => _focused = value),
         borderRadius: BorderRadius.circular(context.klp.shape.control),
         child: SizedBox.square(
-          dimension: context.klp.geometry.layout.windowControlButtonSize,
+          dimension: context.klp.geometry.layout.windowHeaderControlSize,
           child: Center(
             child: KlpIcon(
               widget.icon,
-              size: context.klp.space.iconSmall,
+              size: context.klp.geometry.layout.windowHeaderControlSize / 2,
               color: color,
             ),
           ),

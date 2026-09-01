@@ -5,7 +5,11 @@ import 'package:flutter/services.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:kallopis/kallopis.dart';
 
+import 'support/load_test_fonts.dart';
+
 void main() {
+  setUpAll(loadKlpTestFonts);
+
   const buttonKey = ValueKey('icon-button');
 
   Widget buildSubject({KlpIconButtonTone? tone, bool selected = false}) {
@@ -95,6 +99,47 @@ void main() {
 
     final context = tester.element(find.byKey(buttonKey));
     expect(background(tester), context.klpColors.selectionBackground);
+  });
+
+  testWidgets('standard and window buttons use the 16px semantic glyph', (
+    tester,
+  ) async {
+    await tester.pumpWidget(
+      MaterialApp(
+        theme: buildKlpTheme(Brightness.light),
+        home: Scaffold(
+          body: Row(
+            children: [
+              KlpIconButton(
+                key: const ValueKey('standard-icon-button'),
+                icon: KlpIcons.edit,
+                label: 'Standard',
+                onPressed: () {},
+              ),
+              KlpIconButton(
+                key: const ValueKey('window-icon-button'),
+                icon: KlpIcons.edit,
+                label: 'Window',
+                size: KlpIconButtonSize.window,
+                onPressed: () {},
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+
+    for (final key in const [
+      ValueKey('standard-icon-button'),
+      ValueKey('window-icon-button'),
+    ]) {
+      final button = find.byKey(key);
+      final icon = tester.widget<KlpIcon>(
+        find.descendant(of: button, matching: find.byType(KlpIcon)),
+      );
+      expect(icon.size, tester.element(button).klp.space.iconBase);
+      expect(icon.size, 16);
+    }
   });
 
   testWidgets('matches the approved resting tones', (tester) async {

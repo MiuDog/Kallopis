@@ -38,15 +38,43 @@ final settingsPage = CatalogPageData(
   icon: KlpIcons.settings,
   specimens: [
     Specimen(
+      name: 'KlpSettingsDialog',
+      note: '設定專用 modal 尺寸與置中框架；內容仍由產品組裝。',
+      build: (context) => const SizedBox(
+        height: 360,
+        child: KlpSettingsDialog(child: _SettingsPageDemo()),
+      ),
+    ),
+    Specimen(
       name: 'KlpSettingsPage',
-      note: '依 semantic breakpoint 在雙欄與上下排列間切換，不擁有 route 或產品 scope。',
+      note: '設定殼層：寬版使用獨立雙 pane，窄版上下排列。',
       build: (context) => SizedBox(
         height: context.klp.geometry.layout.primaryPaneBreakpoint,
-        child: KlpSettingsPage(
-          navigation: _navigationPane(),
-          content: _contentPane(),
-        ),
+        child: const _SettingsPageDemo(),
       ),
+    ),
+    Specimen(
+      name: 'KlpSettingsScopeSwitcher',
+      note: '等寬切換專案與 App 等設定 scope；scope 狀態由產品持有。',
+      build: (context) => KlpSettingsScopeSwitcher(
+        options: const [
+          KlpSettingsScopeOption(label: 'Project', icon: KlpIcons.folder),
+          KlpSettingsScopeOption(label: 'App', icon: KlpIcons.settings),
+        ],
+        selectedIndex: 1,
+        onSelected: (_) {},
+      ),
+    ),
+    Specimen(
+      name: 'KlpSettingsNavigationHeader',
+      note: '固定在導覽捲動區外，組合 identity、輔助動作與搜尋欄。',
+      build: (context) => _navigationHeader(),
+    ),
+    Specimen(
+      name: 'KlpSettingsSearchField',
+      note: '設定搜尋的標準小型欄位；查詢和過濾仍由產品持有。',
+      build: (context) =>
+          const KlpSettingsSearchField(placeholder: 'Search settings'),
     ),
     Specimen(
       name: 'KlpSettingsNavigationPane',
@@ -62,6 +90,20 @@ final settingsPage = CatalogPageData(
       build: (context) => SizedBox(
         height: context.klp.geometry.layout.primaryPaneBreakpoint,
         child: _contentPane(),
+      ),
+    ),
+    Specimen(
+      name: 'KlpSettingsContentHeader',
+      note: '右欄標題、說明與關閉／輔助動作的共用組合。',
+      build: (context) => KlpSettingsContentHeader(
+        title: 'Appearance',
+        description: 'Choose how the application renders surfaces.',
+        trailing: KlpIconButton(
+          icon: KlpIcons.x,
+          label: 'Close settings',
+          tone: KlpIconButtonTone.inline,
+          onPressed: () {},
+        ),
       ),
     ),
     Specimen(
@@ -112,26 +154,25 @@ final settingsPage = CatalogPageData(
 );
 
 KlpSettingsNavigationPane _navigationPane() => KlpSettingsNavigationPane(
-  header: Column(
-    children: [
-      KlpSegmentedControl(
-        items: const ['Project', 'App'],
-        selected: 1,
-        expanded: true,
-        dense: true,
-        onSelected: (_) {},
-      ),
-      const SizedBox(height: KlpSpace.sm),
-      const KlpTextField(
-        placeholder: 'Search settings',
-        leadingIcon: KlpIcons.search,
-      ),
-    ],
-  ),
+  header: _navigationHeader(),
   children: [
     KlpSettingsNavigationGroup(label: 'APP', children: [_appearanceItem()]),
   ],
 );
+
+KlpSettingsNavigationHeader _navigationHeader() {
+  return KlpSettingsNavigationHeader(
+    scopeSwitcher: KlpSettingsScopeSwitcher(
+      options: const [
+        KlpSettingsScopeOption(label: 'Project', icon: KlpIcons.folder),
+        KlpSettingsScopeOption(label: 'App', icon: KlpIcons.settings),
+      ],
+      selectedIndex: 1,
+      onSelected: (_) {},
+    ),
+    search: const KlpSettingsSearchField(placeholder: 'Search settings'),
+  );
+}
 
 KlpSettingsNavigationItem _appearanceItem() => KlpSettingsNavigationItem(
   title: 'Appearance',
@@ -168,6 +209,30 @@ class _ThemeModePickerDemo extends StatefulWidget {
 
   @override
   State<_ThemeModePickerDemo> createState() => _ThemeModePickerDemoState();
+}
+
+class _SettingsPageDemo extends StatefulWidget {
+  const _SettingsPageDemo();
+
+  @override
+  State<_SettingsPageDemo> createState() => _SettingsPageDemoState();
+}
+
+class _SettingsPageDemoState extends State<_SettingsPageDemo> {
+  double? _navigationWidth;
+
+  @override
+  Widget build(BuildContext context) {
+    return KlpSettingsPage(
+      navigationWidth: _navigationWidth,
+      onNavigationWidthChanged: (value) {
+        setState(() => _navigationWidth = value);
+      },
+      navigationResizeLabel: 'Resize settings navigation',
+      navigation: _navigationPane(),
+      content: _contentPane(),
+    );
+  }
 }
 
 class _ThemeModePickerDemoState extends State<_ThemeModePickerDemo> {

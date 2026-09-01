@@ -1,21 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:kallopis/kallopis.dart';
 
+import 'support/load_test_fonts.dart';
+
 void main() {
-  setUpAll(() async {
-    if (KlpTypography.sansFamily.isNotEmpty) {
-      final sans = FontLoader(KlpTypography.sansFamily)
-        ..addFont(rootBundle.load('assets/fonts/IBMPlexSansTC-Regular.ttf'));
-      await sans.load();
-    }
-    if (KlpTypography.monoFamily.isNotEmpty) {
-      final mono = FontLoader(KlpTypography.monoFamily)
-        ..addFont(rootBundle.load('assets/fonts/IBMPlexMono-Regular.ttf'));
-      await mono.load();
-    }
-  });
+  setUpAll(loadKlpTestFonts);
 
   testWidgets('Region Placeholder 固定呈現 hatch、pending、action 與 flat', (
     tester,

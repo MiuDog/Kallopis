@@ -21,7 +21,7 @@ class KlpSidebarIdentityHeader extends StatelessWidget {
     this.avatarImage,
   }) : assert(trailing == null || avatarLabel == null);
 
-  final String icon;
+  final KlpIconData icon;
   final String title;
   final Widget? trailing;
 

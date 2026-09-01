@@ -44,6 +44,7 @@ final KlpVisualStyle contrastingStyle = KlpVisualStyle.defaultStyle.copyWith(
     itemGap: 4,
     groupGap: 8,
     controlHeight: 24,
+    controlHeightXSmall: 18,
     controlHeightSmall: 20,
     controlHeightLarge: 30,
     iconSmall: 12,

@@ -45,8 +45,11 @@ void main() {
     ]) {
       expect(windowSource, contains(hitTest));
     }
-    expect(windowSource, contains('IsZoomed(hwnd)'));
+    expect(windowSource, contains('IsZoomed(window_handle_)'));
     expect(windowSource, contains('return HTCLIENT'));
+    expect(windowSource, contains('SetWindowSubclass'));
+    expect(windowSource, contains('return HTTRANSPARENT'));
+    expect(windowSource, contains('HitTestResizeBorder(lparam)'));
     expect(windowSource, contains('ptMinTrackSize.x'));
     expect(windowSource, contains('ptMinTrackSize.y'));
     expect(windowSource, contains('FlutterDesktopGetDpiForMonitor'));

@@ -443,7 +443,7 @@ class _KlpCodeActionButton extends StatefulWidget {
     this.selected = false,
   });
 
-  final String icon;
+  final KlpIconData icon;
   final String label;
   final VoidCallback? onPressed;
   final bool selected;
@@ -608,13 +608,12 @@ class _KlpCodeLines extends StatelessWidget {
                 SizedBox(width: context.klp.space.compact),
               ],
               if (wrapped)
-                SizedBox(
-                  width: context.klp.geometry.data.codeWrappedLineWidth,
-                  child: KlpText(
-                    lines[index].isEmpty ? ' ' : lines[index],
-                    role: KlpTextRole.code,
-                  ),
-                )
+				Expanded(
+					child: KlpText(
+						lines[index].isEmpty ? ' ' : lines[index],
+						role: KlpTextRole.code,
+					),
+				)
               else
                 KlpText(
                   lines[index].isEmpty ? ' ' : lines[index],

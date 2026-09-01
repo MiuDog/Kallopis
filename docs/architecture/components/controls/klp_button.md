@@ -4,7 +4,7 @@
 
 - **核心元件**：`KlpButton`
 - **所屬領域**：`controls — 控制項`
-- **核心職責**：主要動作按鈕。`tone` 決定語意強度（primary／secondary／ghost／danger）， `size` 支援四段標準尺寸階級（sm: 32px, md: 40px, lg: 48px, xl: 56px）， 圓角、內距、高度與邊框皆取自 theme。
+- **核心職責**：主要動作按鈕。`tone` 提供 primary／secondary／ghost／dashed／danger；`size` 提供 xs／sm／md／lg／xl，預設為 sm、`compact` 為 xs。`selected` 由呼叫端持有，hover 與 selected 使用不同語意 wash；圓角、內距、高度、狀態 wash 與邊框皆取自 theme。
 - **包含範圍**：`build()` 內部建構的完整 Widget 樹（展開 Flutter 原生元件與純容器）
 - **外部引用**：本專案其他非純容器元件（遇引用即停下並鏈結）
 
@@ -57,4 +57,3 @@ flowchart TD
 - **容器節點（圓角/綠框）**：本專案之純容器元件（如 `KlpSurface` 等），已持續向下展開其子樹。
 - **虛線/引號節點（黃框/:::reference）**：本專案其他功能性元件，依規則停止展開並提供文件引用。
 - **插槽節點（橘框/:::slot）**：外部傳入之 `child`、`builder` 或內容參數。
-

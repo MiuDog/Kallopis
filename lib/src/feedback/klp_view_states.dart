@@ -55,7 +55,7 @@ class KlpErrorState extends StatelessWidget {
 
   final String title;
   final String message;
-  final String? icon;
+  final KlpIconData? icon;
   final String? retryLabel;
   final VoidCallback? onRetry;
 
@@ -88,7 +88,7 @@ class KlpPermissionState extends StatelessWidget {
 
   final String title;
   final String message;
-  final String? icon;
+  final KlpIconData? icon;
   final Widget? action;
 
   @override
@@ -152,7 +152,7 @@ class _KlpViewState extends StatelessWidget {
     required this.action,
   });
 
-  final String? icon;
+  final KlpIconData? icon;
   final Color iconColor;
   final String title;
   final String message;

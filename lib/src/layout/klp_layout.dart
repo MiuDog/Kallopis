@@ -124,12 +124,16 @@ class KlpResizeHandle extends StatelessWidget {
   const KlpResizeHandle({
     super.key,
     required this.onDelta,
+    this.onDragStart,
+    this.onDragEnd,
     this.semanticLabel,
     this.width,
     this.enabled = true,
   });
 
   final ValueChanged<double> onDelta;
+  final VoidCallback? onDragStart;
+  final VoidCallback? onDragEnd;
   final String? semanticLabel;
   final double? width;
   final bool enabled;
@@ -146,9 +150,12 @@ class KlpResizeHandle extends StatelessWidget {
             : SystemMouseCursors.basic,
         child: GestureDetector(
           behavior: HitTestBehavior.opaque,
+          onHorizontalDragStart: enabled ? (_) => onDragStart?.call() : null,
           onHorizontalDragUpdate: enabled
               ? (details) => onDelta(details.delta.dx)
               : null,
+          onHorizontalDragEnd: enabled ? (_) => onDragEnd?.call() : null,
+          onHorizontalDragCancel: enabled ? onDragEnd : null,
           child: SizedBox(
             width: width ?? klp.space.compact,
             child: Center(

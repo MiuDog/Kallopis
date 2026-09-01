@@ -3,17 +3,18 @@ import 'package:flutter/widgets.dart';
 import '../theme/klp_theme.dart';
 import 'klp_panel_frame.dart';
 
-/// 側邊欄：header、rail（圖示軌）、content 與選用的 footer。
+/// 側邊欄：外層只劃分 content 與 footer，再由各區域管理自己的風格。
+///
+/// Frame 一律只提供左右 8px；專案按鈕、Explorer、footer 的上下節奏由
+/// [content] 與下一層元件自行決定。
 class KlpSidebarFrame extends StatelessWidget {
   const KlpSidebarFrame({
     super.key,
-    required this.header,
     this.rail,
     required this.content,
     this.footer,
   });
 
-  final Widget header;
   final Widget? rail;
   final Widget content;
   final Widget? footer;
@@ -21,7 +22,6 @@ class KlpSidebarFrame extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return KlpPanelFrame(
-      header: header,
       footer: footer,
       background: context.klpColors.surface,
       content: Row(

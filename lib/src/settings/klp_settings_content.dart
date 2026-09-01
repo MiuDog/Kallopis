@@ -25,7 +25,7 @@ class KlpSettingsField extends StatelessWidget {
 
     return KlpSurface(
       tone: highlighted ? KlpSurfaceTone.muted : KlpSurfaceTone.transparent,
-      padding: EdgeInsets.all(klp.space.base),
+      padding: EdgeInsets.all(klp.space.tight),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
@@ -34,7 +34,7 @@ class KlpSettingsField extends StatelessWidget {
             SizedBox(height: klp.space.tight),
             KlpText(description!, tone: KlpTextTone.muted),
           ],
-          SizedBox(height: klp.space.base),
+          SizedBox(height: klp.space.compact),
           child,
         ],
       ),

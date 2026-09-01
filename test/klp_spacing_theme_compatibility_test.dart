@@ -50,5 +50,6 @@ void main() {
     );
 
     expect(legacySpacing.iconGlyph, 18);
+    expect(legacySpacing.controlHeightXSmall, 30);
   });
 }

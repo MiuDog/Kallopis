@@ -125,9 +125,13 @@ void main() {
     Widget workbench() => KlpAppScreen(
       child: KlpWorkbenchShell(
         primary: const KlpSidebarFrame(
-          header: KlpPanelHeader(title: 'nav'),
           rail: SizedBox.shrink(),
-          content: KlpText('sidebar'),
+          content: Column(
+            children: [
+              KlpPanelHeader(title: 'nav'),
+              KlpText('sidebar'),
+            ],
+          ),
         ),
         stage: KlpStageFrame(
           header: const KlpPanelHeader(title: 'stage'),

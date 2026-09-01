@@ -22,7 +22,6 @@ void main() {
               sectionLabel: 'Flow',
               title: title,
               typeLabel: 'FLOW',
-              wrapTitle: true,
             ),
             content: SizedBox.expand(),
           ),
@@ -40,16 +39,15 @@ void main() {
     expect(tester.takeException(), isNull);
   });
 
-  testWidgets('wrapped long title keeps its width beside trailing actions', (
+  testWidgets('wrapped long title automatically uses the available width', (
     tester,
   ) async {
     const title =
-        '這是一份很長的舞台標題，需要在保留右側操作按鈕的同時使用其餘全部寬度，'
-        '並且讓操作按鈕持續對齊完整標題列的中心';
-    const actionKey = ValueKey('stage-action');
+        '這是一份很長的舞台標題，必須由 Kallopis 自動使用可用寬度並完整換行，'
+        '不要求產品選擇任何排版模式';
 
     await tester.pumpWidget(
-      KlpApp(
+      const KlpApp(
         showWindowHeader: false,
         home: SizedBox(
           width: 280,
@@ -60,32 +58,23 @@ void main() {
               sectionLabel: 'Flow',
               title: title,
               typeLabel: 'FLOW',
-              wrapTitle: true,
-              actions: [
-                KlpIconButton(
-                  key: actionKey,
-                  icon: KlpIcons.edit,
-                  label: '編輯',
-                  onPressed: () {},
-                ),
-              ],
             ),
-            content: const SizedBox.expand(),
+            content: SizedBox.expand(),
           ),
         ),
       ),
     );
 
     final titleRect = tester.getRect(find.text(title));
-    final actionRect = tester.getRect(find.byKey(actionKey));
-
-    expect(titleRect.width, greaterThan(100));
-    expect(titleRect.right, lessThan(actionRect.left));
-    expect(actionRect.center.dy, closeTo(titleRect.center.dy, 1));
+    final headerRect = tester.getRect(find.byType(KlpStageHeader));
+    expect(titleRect.width, greaterThan(headerRect.width * 0.7));
+    expect(find.byType(KlpIconButton), findsNothing);
     expect(tester.takeException(), isNull);
   });
 
-  testWidgets('single-line stage title remains the default', (tester) async {
+  testWidgets('short stage title stays on one line automatically', (
+    tester,
+  ) async {
     await tester.pumpWidget(
       const KlpApp(
         showWindowHeader: false,
@@ -98,7 +87,6 @@ void main() {
       ),
     );
 
-    final header = tester.widget<KlpStageHeader>(find.byType(KlpStageHeader));
-    expect(header.wrapTitle, isFalse);
+    expect(tester.getSize(find.text('第一份筆記')).height, lessThan(30));
   });
 }

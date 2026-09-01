@@ -249,17 +249,16 @@ class _KlpAppState extends State<KlpApp> implements KlpAppController {
     }
 
     if (widget.showWindowHeader && content != null) {
+      final toolbarHeight = klpWindowHeaderHeight(
+        effectiveStyle.geometry,
+        compact: effectiveStyle.spacing.compact,
+      );
       final header =
           widget.windowHeader ??
           KlpWindowHeader(
-            appIcon: widget.appIcon == null
-                ? null
-                : _KlpAppIcon(
-                    size: effectiveStyle.geometry.layout.windowAppIconSize,
-                    child: widget.appIcon!,
-                  ),
+            appIcon: widget.appIcon,
             titleText: widget.title.isNotEmpty ? widget.title : null,
-            height: effectiveStyle.geometry.layout.windowToolbarHeight,
+            height: toolbarHeight,
             actions: widget.headerActions,
             onMinimize: widget.onMinimize,
             onToggleMaximize: widget.onToggleMaximize,
@@ -270,7 +269,7 @@ class _KlpAppState extends State<KlpApp> implements KlpAppController {
       content = _KlpAppFrame(
         header: header,
         body: content,
-        toolbarHeight: effectiveStyle.geometry.layout.windowToolbarHeight,
+        toolbarHeight: toolbarHeight,
       );
     }
 
@@ -301,7 +300,7 @@ class _KlpAppState extends State<KlpApp> implements KlpAppController {
   }
 }
 
-/// 在視窗轉場的暫時高度內，讓 Header 遵守父層約束而非撐破根版面。
+/// 統一管理 App 外圈與縮短後的 Header 高度，並在視窗轉場時遵守父層約束。
 class _KlpAppFrame extends StatelessWidget {
   const _KlpAppFrame({
     required this.header,
@@ -315,41 +314,45 @@ class _KlpAppFrame extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return LayoutBuilder(
-      builder: (context, constraints) {
-        final effectiveHeaderHeight = constraints.hasBoundedHeight
-            ? constraints.maxHeight.clamp(0.0, toolbarHeight).toDouble()
-            : toolbarHeight;
+    final appInset = context.klp.space.compact / 2;
+    final headerHeight = toolbarHeight;
 
-        return Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: [
-            SizedBox(
-              height: effectiveHeaderHeight,
-              child: ClipRect(child: header),
-            ),
-            if (constraints.hasBoundedHeight) Expanded(child: body) else body,
-          ],
-        );
-      },
-    );
-  }
-}
+    return ColoredBox(
+      key: const ValueKey('klp-app-frame-background'),
+      color: context.klpColors.app,
+      child: Padding(
+        padding: EdgeInsets.all(appInset),
+        child: LayoutBuilder(
+          builder: (context, constraints) {
+            final effectiveHeaderHeight = constraints.hasBoundedHeight
+                ? constraints.maxHeight.clamp(0.0, headerHeight).toDouble()
+                : headerHeight;
 
-/// 將消費端提供的圖示收斂到 Kallopis 的標題列尺寸。
-class _KlpAppIcon extends StatelessWidget {
-  const _KlpAppIcon({required this.size, required this.child});
+            if (!constraints.hasBoundedHeight) {
+              return Column(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: [
+                  SizedBox(height: effectiveHeaderHeight, child: header),
+                  body,
+                ],
+              );
+            }
 
-  final double size;
-  final Widget child;
-
-  @override
-  Widget build(BuildContext context) {
-    return SizedBox.square(
-      dimension: size,
-      child: IconTheme.merge(
-        data: IconThemeData(size: size),
-        child: FittedBox(fit: BoxFit.contain, child: child),
+            return Stack(
+              clipBehavior: Clip.hardEdge,
+              children: [
+                Positioned(
+                  top: 0,
+                  left: 0,
+                  right: 0,
+                  height: effectiveHeaderHeight,
+                  child: header,
+                ),
+				Positioned.fill(top: effectiveHeaderHeight, child: body),
+              ],
+            );
+          },
+        ),
       ),
     );
   }
