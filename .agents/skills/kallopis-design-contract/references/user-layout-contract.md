@@ -9,6 +9,7 @@
 | OWN-001 | Kallopis／Designist 邊界 | 呈現所有權 | 可重用視覺與元件呈現由 Kallopis 實作，Designist 只負責產品資料與組裝。 | 使用者明確要求，2026-08-31 | confirmed |
 | Z-001 | Workbench Stage chrome | 精確圖層 | Tab 位於 Stage 後方；Stage 必須在 tab overflow 之後繪製並取得重疊區 hit test。 | 使用者覆蓋問題修正，2026-08-31 | confirmed |
 | PROC-001 | 所有視覺實作 | 工作流程 | 修改前先理清風格繼承樹與語意定義，避免誤用；在溝通中持續學習並記錄使用者的布局邏輯。 | 使用者明確要求，2026-08-31 | confirmed |
+| SET-001 | 所有設定頁 | Kallopis 語意／精確關係 | 不論 Light、Dark、Ultra Dark、System 或 Transparent，設定頁一律保持左側導覽較深、右側內容較淺。 | 使用者明確要求「設定一律都是保持左深右淺」，2026-09-01 | confirmed |
 
 ## 新規則記錄格式
 

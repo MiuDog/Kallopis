@@ -81,7 +81,7 @@ class KlpGeometryTheme extends ThemeExtension<KlpGeometryTheme> {
       statusBarBreakpoint: 400,
       settingsDialogMaximumWidth: 1380,
       settingsDialogMaximumHeight: 880,
-      settingsPaneGap: 10,
+      settingsPaneGap: KlpScale.space200,
       settingsNavigationWidth: 300,
       settingsNavigationMinimumWidth: 260,
       settingsNavigationMaximumWidth: 360,

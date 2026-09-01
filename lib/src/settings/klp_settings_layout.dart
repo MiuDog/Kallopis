@@ -150,9 +150,10 @@ class KlpSettingsNavigationPane extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final klp = context.klp;
+		final tone = klp.byBrightness(light: KlpSurfaceTone.base, dark: KlpSurfaceTone.component);
 
     return KlpSurface(
-      tone: KlpSurfaceTone.base,
+			tone: tone,
       radius: klp.shape.panel,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,

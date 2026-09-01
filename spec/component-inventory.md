@@ -1302,7 +1302,7 @@ graph LR
 | `KlpSettingsNavigationGroup` | 37 | `KlpText` |
 | `KlpSettingsNavigationHeader` | 90 | `KlpPressable`、`KlpText` |
 | `KlpSettingsNavigationItem` | 54 | `KlpListTile`、`KlpSurface` |
-| `KlpSettingsNavigationPane` | 46 | `KlpSurface` |
+| `KlpSettingsNavigationPane` | 47 | `KlpSurface` |
 | `KlpSettingsPage` | 90 | `KlpResizeHandle` |
 | `KlpSettingsPaneScope` | 21 | （葉節點） |
 | `KlpSettingsScopeOption` | 8 | （葉節點） |

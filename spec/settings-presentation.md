@@ -27,7 +27,8 @@ Notist 與其他消費者可用相同元件組合自己的設定內容。
 ## 視覺規則
 
 - 所有顏色只能由 `context.klp` 的 semantic color token 解析。
-- 導覽 pane 使用 `base` 表面，內容 pane 使用 `raised` 表面；欄位定位使用 `muted` 表面。
+- 設定 pane 在所有模式都維持左深右淺：導覽 pane 亮態使用 `base`、暗態使用 `component`，內容 pane 固定使用 `raised`；欄位定位使用 `muted`。
+- 兩 pane 的間距由 `layout.settingsPaneGap` 控制，標準值使用 `space200`，resize handle 與窄版垂直間距必須共用同一值。
 - 兩個 pane 共用 overlay 外框；導覽與內容表面連續，以 semantic divider／resize handle 分隔。
 - pane 內距、圓角、導引線、導覽寬度範圍與預覽圖尺寸全部由 theme token 決定。
 - 寬版使用可受控調整的 semantic navigation width；窄版改為上下排列，不縮放文字。

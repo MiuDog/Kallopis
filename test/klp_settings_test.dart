@@ -75,7 +75,7 @@ void main() {
     expect(frame.size, const Size(1380, 880));
     expect(navigation.width, layout.settingsNavigationWidth);
     expect(content.left - navigation.right, layout.settingsPaneGap);
-    expect(content.width, 1070);
+		expect(content.width, frame.width - navigation.width - layout.settingsPaneGap);
     expect(frame.center, const Offset(960, 516));
   });
 
