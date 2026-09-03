@@ -124,13 +124,15 @@ void main() {
   group('消費者能組出一個完整畫面', () {
     Widget workbench() => KlpAppScreen(
       child: KlpWorkbenchShell(
-        primary: const KlpSidebarFrame(
-          rail: SizedBox.shrink(),
-          content: Column(
-            children: [
-              KlpPanelHeader(title: 'nav'),
-              KlpText('sidebar'),
-            ],
+        primary: const KlpWorkbenchNavigationRegion(
+          rail: KlpNavigationRailFrame(child: SizedBox.shrink()),
+          sidebar: KlpSidebarFrame(
+            content: Column(
+              children: [
+                KlpPanelHeader(title: 'nav'),
+                KlpText('sidebar'),
+              ],
+            ),
           ),
         ),
         stage: KlpStageFrame(

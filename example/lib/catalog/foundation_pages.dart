@@ -142,6 +142,19 @@ final actionsNavigationPage = CatalogPageData(
         ),
       ),
     ),
+		Specimen(
+			name: 'KlpNavigationRail',
+			note: 'Workbench 的主要圖示導覽軌；固定項與可排序項由呼叫端提供。',
+			build: (context) => SizedBox(
+				width: context.klp.space.chromeRail,
+				child: KlpNavigationRail(
+					children: [
+						KlpRailItem(icon: KlpIcons.folder, label: '檔案', onPressed: () {}),
+						KlpRailItem(icon: KlpIcons.box, label: '元件', onPressed: () {}),
+					],
+				),
+			),
+		),
     Specimen(
       name: 'KlpSidebarSectionLabel',
       note: '側邊欄的分組標題。',
@@ -1245,26 +1258,63 @@ final layoutInteractionPage = CatalogPageData(
         typeLabel: 'FLOW',
       ),
     ),
-    Specimen(
-      name: 'KlpSidebarFrame',
-      note: '側邊欄外框只劃分 content、rail 與無外距 footer。',
+		Specimen(
+			name: 'KlpNavigationRailFrame',
+			note: '為主要導覽 Rail 提供獨立 surface。',
+			build: (context) => SizedBox(
+				width: context.klp.space.chromeRail,
+				height: 160,
+				child: KlpNavigationRailFrame(
+					child: KlpNavigationRail(
+						children: [
+							KlpRailItem(icon: KlpIcons.folder, label: '檔案', onPressed: () {}),
+							KlpRailItem(icon: KlpIcons.box, label: '元件', onPressed: () {}),
+						],
+					),
+				),
+			),
+		),
+		Specimen(
+			name: 'KlpSidebarFrame',
+			note: '提供獨立 Sidebar surface，組合內容與選用 footer。',
+			build: (context) => _boxed(
+				context,
+				160,
+				const KlpSidebarFrame(
+					content: Column(
+						crossAxisAlignment: CrossAxisAlignment.stretch,
+						children: [
+							KlpPanelHeader(title: '導覽'),
+							KlpText('內容'),
+						],
+					),
+				),
+			),
+		),
+		Specimen(
+			name: 'KlpWorkbenchNavigationRegion',
+			note: '將具有獨立 surface 的 Rail 與 Sidebar 並排成共同收合區域。',
       build: (context) => _boxed(
         context,
         160,
-        const KlpSidebarFrame(
-          rail: Column(
-            children: [
-              KlpIcon(KlpIcons.folder),
-              SizedBox(height: 8),
-              KlpIcon(KlpIcons.box),
-            ],
+        const KlpWorkbenchNavigationRegion(
+          rail: KlpNavigationRailFrame(
+            child: Column(
+              children: [
+                KlpIcon(KlpIcons.folder),
+                SizedBox(height: 8),
+                KlpIcon(KlpIcons.box),
+              ],
+            ),
           ),
-          content: Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: [
-              KlpPanelHeader(title: '導覽'),
-              KlpText('內容'),
-            ],
+          sidebar: KlpSidebarFrame(
+            content: Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [
+                KlpPanelHeader(title: '導覽'),
+                KlpText('內容'),
+              ],
+            ),
           ),
         ),
       ),

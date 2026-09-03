@@ -4,7 +4,7 @@
 
 - **核心元件**：`KlpSidebarFrame`
 - **所屬領域**：`shell — 應用外殼`
-- **核心職責**：側邊欄：header、rail（圖示軌）、content 與選用的 footer。
+- **核心職責**：側邊欄獨立 surface：content 與選用的 footer；不包含 Rail。
 - **包含範圍**：`build()` 內部建構的完整 Widget 樹（展開 Flutter 原生元件與純容器）
 - **外部引用**：本專案其他非純容器元件（遇引用即停下並鏈結）
 
@@ -21,14 +21,10 @@ flowchart TD
   root["KlpSidebarFrame"]:::root
   n1["KlpPanelFrame"]:::container
   root --> n1
-  n2["Row"]
+  n2["content / slot"]:::slot
   n1 --> n2
-  n3["SizedBox"]
-  n2 --> n3
-  n4["Expanded"]
-  n3 --> n4
-  n5["child / slot"]:::slot
-  n4 --> n5
+  n3["footer / slot"]:::slot
+  n1 --> n3
 ```
 
 ## 外部元件引用
@@ -46,4 +42,3 @@ flowchart TD
 - **容器節點（圓角/綠框）**：本專案之純容器元件（如 `KlpSurface` 等），已持續向下展開其子樹。
 - **虛線/引號節點（黃框/:::reference）**：本專案其他功能性元件，依規則停止展開並提供文件引用。
 - **插槽節點（橘框/:::slot）**：外部傳入之 `child`、`builder` 或內容參數。
-

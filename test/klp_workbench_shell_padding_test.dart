@@ -471,7 +471,7 @@ void main() {
     expect(stageStatus.top, stageBody.bottom);
   });
 
-  testWidgets('stage and panel headers own vertical compact padding', (
+	testWidgets('stage and panel headers own their axis-specific compact padding', (
     tester,
   ) async {
     await tester.pumpWidget(
@@ -505,15 +505,16 @@ void main() {
         .klp
         .space
         .compact;
-    for (final owner in [
-      find.byType(KlpPanelHeader),
-      find.byType(KlpStageHeader),
-    ]) {
-      final padding = resolvedPadding(owner);
-      expect(padding.left, 0);
-      expect(padding.top, compact);
-      expect(padding.right, 0);
-      expect(padding.bottom, compact);
-    }
+		final panelPadding = resolvedPadding(find.byType(KlpPanelHeader));
+		expect(panelPadding.left, compact);
+		expect(panelPadding.top, 0);
+		expect(panelPadding.right, compact);
+		expect(panelPadding.bottom, 0);
+
+		final stagePadding = resolvedPadding(find.byType(KlpStageHeader));
+		expect(stagePadding.left, 0);
+		expect(stagePadding.top, compact);
+		expect(stagePadding.right, 0);
+		expect(stagePadding.bottom, compact);
   });
 }

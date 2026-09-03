@@ -167,6 +167,7 @@ export 'src/shell/klp_theme_toggle.dart';
 export 'src/shell/klp_window_controls.dart';
 export 'src/shell/klp_window_header.dart';
 export 'src/shell/klp_workbench_window_header.dart';
+export 'src/shell/klp_workbench_navigation_region.dart';
 export 'src/shell/klp_workbench_shell.dart';
 export 'src/shell/klp_shell_extras.dart';
 export 'src/surface/klp_divider.dart';

@@ -133,6 +133,10 @@ class KlpSpacingTheme extends ThemeExtension<KlpSpacingTheme> {
   final double chromeHeader;
   final double chromeStatusBar;
   final double chromeRail;
+
+	/// Workbench Rail surface 加上與 Sidebar surface 之間的語意間距。
+	double get workbenchRailExtent => chromeRail + compact;
+
   final double chromeTab;
   final double iconButton;
 
@@ -195,7 +199,7 @@ class KlpSpacingTheme extends ThemeExtension<KlpSpacingTheme> {
   /// 10px。骨架屏的單行高
   final double skeletonLine;
 
-  /// 42px。導覽軌上的可點區塊
+  /// 32px。導覽軌上的正方形可點區塊。
   final double railItem;
 
   /// 320px。`KlpDrawer` 在 `left`／`right` 方向的預設寬度。
@@ -255,7 +259,7 @@ class KlpSpacingTheme extends ThemeExtension<KlpSpacingTheme> {
     iconLarge: 32, // 32px (icon-lg)
     chromeHeader: 60,
     chromeStatusBar: 30,
-    chromeRail: 56,
+    chromeRail: 48,
     chromeTab: 32,
     iconButton: 32,
     iconTiny: 10,
@@ -274,7 +278,7 @@ class KlpSpacingTheme extends ThemeExtension<KlpSpacingTheme> {
     avatarSmall: 24,
     progressTrack: 3,
     skeletonLine: 10,
-    railItem: 42,
+    railItem: 32,
     drawerWidth: 320,
     drawerHeight: 320,
   );

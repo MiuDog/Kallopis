@@ -10,38 +10,42 @@ import 'klp_sidebar_frame.dart';
 /// 額外包覆垂直 padding。
 class KlpPrimarySidebarFrame extends StatelessWidget {
   const KlpPrimarySidebarFrame({
-    super.key,
-    required this.header,
-    required this.navigation,
-    required this.explorer,
-    this.footer,
-  });
+		super.key,
+		this.header,
+		this.navigation,
+		required this.explorer,
+		this.footer,
+	});
 
-  final Widget header;
-  final Widget navigation;
-  final Widget explorer;
-  final Widget? footer;
+	final Widget? header;
+	final Widget? navigation;
+	final Widget explorer;
+	final Widget? footer;
 
-  @override
-  Widget build(BuildContext context) {
-    final compact = context.klp.space.compact;
+	@override
+	Widget build(BuildContext context) {
+		final compact = context.klp.space.compact;
 
-    return KlpSidebarFrame(
-      content: Column(
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: [
-          Padding(
-            padding: EdgeInsets.symmetric(vertical: compact),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.stretch,
-              mainAxisSize: MainAxisSize.min,
-              children: [header, navigation],
-            ),
-          ),
-          Expanded(child: explorer),
-        ],
-      ),
-      footer: footer,
-    );
-  }
+		return KlpSidebarFrame(
+			content: Column(
+				crossAxisAlignment: CrossAxisAlignment.stretch,
+				children: [
+					if (header != null || navigation != null)
+						Padding(
+							padding: EdgeInsets.symmetric(vertical: compact),
+							child: Column(
+								crossAxisAlignment: CrossAxisAlignment.stretch,
+								mainAxisSize: MainAxisSize.min,
+								children: [
+									?header,
+									?navigation,
+								],
+							),
+						),
+					Expanded(child: explorer),
+				],
+			),
+			footer: footer,
+		);
+	}
 }

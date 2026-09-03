@@ -20,14 +20,14 @@ class KlpPaneWidthConstraints {
   double constrain(double width) => width.clamp(minWidth, maxWidth).toDouble();
 }
 
-/// 三欄工作區外殼：主要面板、舞台、次要面板，兩側可拖曳調寬並依斷點自動收合。
+/// 工作區外殼：主要面板、舞台與選用的次要面板。
 /// 這是桌面型應用最外層的版面骨架。
 class KlpWorkbenchShell extends StatefulWidget {
   const KlpWorkbenchShell({
     super.key,
     required this.primary,
     required this.stage,
-    required this.secondary,
+    this.secondary,
     this.primaryVisible = true,
     this.secondaryVisible = true,
     this.primaryWidth,
@@ -50,7 +50,7 @@ class KlpWorkbenchShell extends StatefulWidget {
 
   final Widget primary;
   final Widget stage;
-  final Widget secondary;
+  final Widget? secondary;
 
   final bool primaryVisible;
   final bool secondaryVisible;
@@ -167,9 +167,10 @@ class _KlpWorkbenchShellState extends State<KlpWorkbenchShell> {
     final primaryResizable =
         widget.onPrimaryWidthChanged != null ||
         widget.onPrimaryWidthChangeEnd != null;
-    final secondaryResizable =
-        widget.onSecondaryWidthChanged != null ||
-        widget.onSecondaryWidthChangeEnd != null;
+		final secondaryResizable =
+			widget.secondary != null &&
+			(widget.onSecondaryWidthChanged != null ||
+				widget.onSecondaryWidthChangeEnd != null);
 
     if (usesIndividualPaneMargin) {
       return _KlpIndividuallyMarginedWorkbench(
@@ -202,9 +203,10 @@ class _KlpWorkbenchShellState extends State<KlpWorkbenchShell> {
         final showPrimary =
             widget.primaryVisible &&
             constraints.maxWidth >= geometry.primaryPaneBreakpoint;
-        final showSecondary =
-            widget.secondaryVisible &&
-            constraints.maxWidth >= geometry.secondaryPaneBreakpoint;
+				final showSecondary =
+					widget.secondary != null &&
+					widget.secondaryVisible &&
+					constraints.maxWidth >= geometry.secondaryPaneBreakpoint;
         final resolvedPrimaryWidth = showPrimaryContent
             ? effectivePrimaryWidth
             : context.klp.space.chromeRail + context.klp.space.base;
@@ -241,7 +243,7 @@ class _KlpWorkbenchShellState extends State<KlpWorkbenchShell> {
                   ),
                   SizedBox(
                     width: effectiveSecondaryWidth,
-                    child: widget.secondary,
+                    child: widget.secondary!,
                   ),
                 ],
               ],
@@ -273,7 +275,7 @@ class _KlpIndividuallyMarginedWorkbench extends StatelessWidget {
 
   final Widget primary;
   final Widget stage;
-  final Widget secondary;
+  final Widget? secondary;
   final bool primaryVisible;
   final bool secondaryVisible;
   final double primaryWidth;
@@ -299,9 +301,10 @@ class _KlpIndividuallyMarginedWorkbench extends StatelessWidget {
         final showPrimary =
             primaryVisible &&
             constraints.maxWidth >= geometry.primaryPaneBreakpoint;
-        final showSecondary =
-            secondaryVisible &&
-            constraints.maxWidth >= geometry.secondaryPaneBreakpoint;
+				final showSecondary =
+					secondary != null &&
+					secondaryVisible &&
+					constraints.maxWidth >= geometry.secondaryPaneBreakpoint;
         final resolvedPrimaryWidth = showPrimaryContent
             ? primaryWidth
             : context.klp.space.chromeRail + context.klp.space.base;
@@ -328,7 +331,7 @@ class _KlpIndividuallyMarginedWorkbench extends StatelessWidget {
                       if (showSecondary)
                         SizedBox(
                           width: secondaryWidth,
-                          child: Padding(padding: paneMargin, child: secondary),
+                          child: Padding(padding: paneMargin, child: secondary!),
                         ),
                     ],
                   ),

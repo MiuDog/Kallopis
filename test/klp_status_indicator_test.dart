@@ -33,31 +33,15 @@ void main() {
       ),
     );
     final compact = tester.element(indicator).klp.space.compact;
-    final padding = tester.widget<Padding>(
-      find.descendant(
-        of: indicator,
-        matching: find.byWidgetPredicate(
-          (widget) => widget is Padding && widget.child is Row,
-        ),
-      ),
-    );
-    final resolvedPadding = padding.padding.resolve(TextDirection.ltr);
 
     expect(label, findsOneWidget);
     expect(find.text('SAVED LOCALLY'), findsNothing);
     expect(text.role, KlpTextRole.code);
     expect(text.tone, KlpTextTone.muted);
     expect(text.color, isNull);
-    expect(resolvedPadding, EdgeInsets.symmetric(horizontal: compact));
-    expect(
-      tester.getRect(marker).left - tester.getRect(indicator).left,
-      compact,
-    );
+		expect(tester.getRect(marker).left, tester.getRect(indicator).left);
     expect(tester.getRect(label).left - tester.getRect(marker).right, compact);
-    expect(
-      tester.getRect(indicator).right - tester.getRect(label).right,
-      compact,
-    );
+		expect(tester.getRect(label).right, tester.getRect(indicator).right);
   });
 
   testWidgets('status bar composes the shared status indicator', (

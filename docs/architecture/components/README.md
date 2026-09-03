@@ -221,7 +221,7 @@
 | `KlpFileExplorerItemView` | `Stateful` | 一般檔案項目視圖（含檔案圖示、文字標題、選取高亮與 Hover 回饋）。 | [klp_file_explorer_item_view.md](./navigation/klp_file_explorer_item_view.md) |
 | `KlpFileExplorerSectionView` | `Stateless` | 分類區塊視圖（含分類標題、折疊動畫與項目清單）。 | [klp_file_explorer_section_view.md](./navigation/klp_file_explorer_section_view.md) |
 | `KlpPagination` | `Stateless` | 上一頁／頁碼／下一頁的簡易分頁控制項。  頁碼從 1 開始（不是從 0）；在第一頁或最後一頁時對應按鈕會自動停用， 呼叫端不需要自己判斷邊界。不提供跳頁輸入框或頁碼清單，適合頁數不多、 只需要前後翻頁的場合。 | [klp_pagination.md](./navigation/klp_pagination.md) |
-| `KlpRailItem` | `Stateful` | Kallopis KlpRailItem 元件 | [klp_rail_item.md](./navigation/klp_rail_item.md) |
+| `KlpRailItem` | `Stateful` | 32px 圓角圖示入口；由 `KlpNavigationRail` 統一排列與提供 8px 節奏。 | [klp_rail_item.md](./navigation/klp_rail_item.md) |
 | `KlpSidebarSectionLabel` | `Stateless` | 側邊欄分組標題，固定高度且左對齊、使用低對比的 [KlpTextRole.label] 樣式。  固定高度是為了讓不同分組標題之間的垂直節奏一致，即使某個標題很短也不會 讓上下間距看起來不一樣。 | [klp_sidebar_section_label.md](./navigation/klp_sidebar_section_label.md) |
 | `KlpTabs` | `Stateless` | 分頁列。`selected` 是索引，`tabs` 是顯示文字；本元件不持有狀態。 | [klp_tabs.md](./navigation/klp_tabs.md) |
 | `KlpViewSwitcher` | `Stateless` | 同層級檢視切換器（例如「清單／看板」），以緊貼的膠囊按鈕組呈現， 選中項會有底色標示。  與 [KlpSegmentedControl] 的差異在於視覺重量更輕——[KlpViewSwitcher] 用 inset 表面搭配 hairline 間距，適合放在工具列這類次要控制的位置；需要更 強調的主要切換時請用 [KlpSegmentedControl]。 | [klp_view_switcher.md](./navigation/klp_view_switcher.md) |
@@ -258,7 +258,7 @@
 | `KlpThemeToggle` | `Stateless` | Kallopis KlpThemeToggle 元件 | [klp_theme_toggle.md](./shell/klp_theme_toggle.md) |
 | `KlpWindowControls` | `Stateless` | Kallopis KlpWindowControls 元件 | [klp_window_controls.md](./shell/klp_window_controls.md) |
 | `KlpWindowHeader` | `Stateless` | 桌面應用程式自帶視窗標題列（Chrome Header）。  - **Windows / Linux 模式**：左側展示 App Icon 與標題，右側展示自訂動作與視窗控制項。 - **macOS 模式**：左側展示視窗控制項（交通燈），中間展示 App Icon 與標題，右側展示自訂動作。 | [klp_window_header.md](./shell/klp_window_header.md) |
-| `KlpWorkbenchShell` | `Stateless` | 三欄工作區外殼：主要面板、舞台、次要面板，兩側可拖曳調寬並依斷點自動收合。 這是桌面型應用最外層的版面骨架。 | [klp_workbench_shell.md](./shell/klp_workbench_shell.md) |
+| `KlpWorkbenchShell` | `Stateful` | 工作區外殼：主要面板、舞台與選用的次要面板；存在的 pane 可調寬並依斷點收合。 | [klp_workbench_shell.md](./shell/klp_workbench_shell.md) |
 
 <a id="routing"></a>
 ### routing — 分發 (2)

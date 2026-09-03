@@ -22,7 +22,7 @@ class KlpPanelHeader extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.symmetric(vertical: context.klp.space.compact),
+      padding: EdgeInsets.symmetric(horizontal: context.klp.space.compact),
       child: Row(
         children: [
           if (leading != null) ...[

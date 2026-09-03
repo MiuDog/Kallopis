@@ -4,7 +4,7 @@
 
 - **核心元件**：`KlpWorkbenchShell`
 - **所屬領域**：`shell — 應用外殼`
-- **核心職責**：三欄工作區外殼：主要面板、舞台、次要面板，兩側可拖曳調寬並依斷點自動收合。 這是桌面型應用最外層的版面骨架。
+- **核心職責**：工作區外殼：主要區域、舞台與選用的次要面板；存在的 pane 可調寬並依斷點收合。主要區域可由 `KlpWorkbenchNavigationRegion` 再拆成同層 Rail 與 Sidebar surface。
 - **包含範圍**：`build()` 內部建構的完整 Widget 樹（展開 Flutter 原生元件與純容器）
 - **外部引用**：本專案其他非純容器元件（遇引用即停下並鏈結）
 
@@ -42,7 +42,7 @@ flowchart TD
 ## 程式碼證據
 
 - 檔案路徑：[`lib/src/shell/klp_workbench_shell.dart`](../../../../lib/src/shell/klp_workbench_shell.dart#L8)
-- 宣告型態：`StatelessWidget`
+- 宣告型態：`StatefulWidget`
 
 ## 閱讀說明
 
@@ -50,4 +50,3 @@ flowchart TD
 - **容器節點（圓角/綠框）**：本專案之純容器元件（如 `KlpSurface` 等），已持續向下展開其子樹。
 - **虛線/引號節點（黃框/:::reference）**：本專案其他功能性元件，依規則停止展開並提供文件引用。
 - **插槽節點（橘框/:::slot）**：外部傳入之 `child`、`builder` 或內容參數。
-

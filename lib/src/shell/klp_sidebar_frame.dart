@@ -9,31 +9,20 @@ import 'klp_panel_frame.dart';
 /// [content] 與下一層元件自行決定。
 class KlpSidebarFrame extends StatelessWidget {
   const KlpSidebarFrame({
-    super.key,
-    this.rail,
-    required this.content,
-    this.footer,
-  });
+		super.key,
+		required this.content,
+		this.footer,
+	});
 
-  final Widget? rail;
-  final Widget content;
-  final Widget? footer;
+	final Widget content;
+	final Widget? footer;
 
-  @override
-  Widget build(BuildContext context) {
-    return KlpPanelFrame(
-      footer: footer,
-      background: context.klpColors.surface,
-      content: Row(
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: [
-          if (rail != null) ...[
-            SizedBox(width: context.klp.space.chromeRail, child: rail!),
-            SizedBox(width: context.klp.space.tight),
-          ],
-          Expanded(child: content),
-        ],
-      ),
-    );
-  }
+	@override
+	Widget build(BuildContext context) {
+		return KlpPanelFrame(
+			footer: footer,
+			background: context.klpColors.surface,
+			content: content,
+		);
+	}
 }

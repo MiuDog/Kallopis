@@ -33,23 +33,12 @@ void main() {
     );
     final indicator = find.byType(KlpStatusIndicator);
     final indicatorRect = tester.getRect(indicator);
-    final theme = tester.element(indicator).klp;
-    final padding = tester.widget<Padding>(
-      find.descendant(
-        of: indicator,
-        matching: find.byWidgetPredicate(
-          (widget) => widget is Padding && widget.child is Row,
-        ),
-      ),
-    );
-    final resolvedPadding = padding.padding.resolve(TextDirection.ltr);
+		final theme = tester.element(indicator).klp;
 
     expect(indicatorRect.top, explorerRect.bottom);
     expect(indicatorRect.bottom, frameRect.bottom);
     expect(indicatorRect.height, theme.space.chromeStatusBar);
-    expect(
-      resolvedPadding,
-      EdgeInsets.symmetric(horizontal: theme.space.compact),
-    );
+		expect(indicatorRect.left, explorerRect.left);
+		expect(indicatorRect.right, explorerRect.right);
   });
 }

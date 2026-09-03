@@ -2,9 +2,9 @@
 
 ## 範圍
 
-- **核心元件**：`KlpRailItem`
+- **核心元件**：`KlpNavigationRail`、`KlpRailItem`
 - **所屬領域**：`navigation — 導覽元件`
-- **核心職責**：Kallopis KlpRailItem 元件
+- **核心職責**：以 32px 圓角圖示項目與 8px 語意間距組成 Workbench 主要導覽軌。
 - **包含範圍**：`build()` 內部建構的完整 Widget 樹（展開 Flutter 原生元件與純容器）
 - **外部引用**：本專案其他非純容器元件（遇引用即停下並鏈結）
 
@@ -18,7 +18,9 @@ flowchart TD
   classDef container fill:#2E3440,stroke:#A3BE8C,stroke-width:1.5px,color:#A3BE8C;
   classDef slot fill:#2E3440,stroke:#D08770,stroke-width:1px,stroke-dasharray: 2 2,color:#D08770;
 
+  rail["KlpNavigationRail"]:::root
   root["KlpRailItem"]:::root
+  rail --> root
   n1["Material"]
   root --> n1
   n2["InkWell"]
@@ -51,7 +53,16 @@ flowchart TD
 ## 程式碼證據
 
 - 檔案路徑：[`lib/src/navigation/klp_rail_item.dart`](../../../../lib/src/navigation/klp_rail_item.dart#L9)
-- 宣告型態：`StatefulWidget`
+- 宣告型態：`KlpNavigationRail: StatefulWidget`、`KlpRailItem: StatefulWidget`
+
+## 排序契約
+
+- `leading` 為固定項目，不進入拖曳索引。
+- `children` 在提供 `onReorder` 時可由整個 item 拖曳；未提供時維持靜態排列。
+- feedback 使用原 item，原位在拖曳期間隱藏但保留幾何。
+- 插入線寬度等於 32px item、厚度 2px、顏色取 `interaction`。
+- 提示顯示與排序位移使用 `motion.stateTransition`／`motion.standard`。
+- Kallopis 回傳可排序區段內的 `oldIndex`／`newIndex`，不保存產品順序。
 
 ## 閱讀說明
 
@@ -59,4 +70,3 @@ flowchart TD
 - **容器節點（圓角/綠框）**：本專案之純容器元件（如 `KlpSurface` 等），已持續向下展開其子樹。
 - **虛線/引號節點（黃框/:::reference）**：本專案其他功能性元件，依規則停止展開並提供文件引用。
 - **插槽節點（橘框/:::slot）**：外部傳入之 `child`、`builder` 或內容參數。
-

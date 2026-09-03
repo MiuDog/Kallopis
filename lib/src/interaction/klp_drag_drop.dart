@@ -42,15 +42,17 @@ class KlpDragPreview extends StatelessWidget {
 }
 
 class KlpDropIndicator extends StatelessWidget {
-  const KlpDropIndicator({super.key, this.vertical = false});
+  const KlpDropIndicator({super.key, this.vertical = false, this.thickness});
 
   final bool vertical;
+  final double? thickness;
 
   @override
   Widget build(BuildContext context) {
+    final effectiveThickness = thickness ?? context.klp.shape.stroke;
     return Container(
-      width: vertical ? context.klp.shape.stroke : double.infinity,
-      height: vertical ? double.infinity : context.klp.shape.stroke,
+      width: vertical ? effectiveThickness : double.infinity,
+      height: vertical ? double.infinity : effectiveThickness,
       decoration: BoxDecoration(
         color: context.klpColors.interaction,
         borderRadius: BorderRadius.circular(context.klp.shape.pill),
