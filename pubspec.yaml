@@ -28,6 +28,7 @@ flutter:
 
   assets:
     - assets/fonts/OFL-IBM-Plex.txt
+    - assets/fonts/OFL-NOTO-SANS-TC.txt
     - assets/fonts/LICENSE-FLATICON-UICONS.txt
 
   fonts:
@@ -35,6 +36,8 @@ flutter:
       fonts:
         - asset: assets/fonts/IBMPlexMono-Regular.ttf
           weight: 400
+        - asset: assets/fonts/IBMPlexMono-Medium.ttf
+          weight: 500
         - asset: assets/fonts/IBMPlexMono-SemiBold.ttf
           weight: 600
         - asset: assets/fonts/IBMPlexMono-Bold.ttf
@@ -47,7 +50,14 @@ flutter:
           weight: 600
         - asset: assets/fonts/IBMPlexSansTC-Bold.ttf
           weight: 700
+    - family: Noto Sans TC
+      fonts:
+        - asset: assets/fonts/NotoSansTC-Variable.ttf
     - family: Flaticon UIcons Regular Rounded
       fonts:
         - asset: assets/fonts/FlaticonUIcons-RegularRounded.ttf
+          weight: 400
+    - family: Flaticon UIcons Thin Rounded
+      fonts:
+        - asset: assets/fonts/FlaticonUIcons-ThinRounded.ttf
           weight: 400

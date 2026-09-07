@@ -1,0 +1,91 @@
+{
+	"$schema": "./kallopis.semantic-manifest.schema.json",
+	"schemaVersion": 1,
+	"id": "kallopis.default",
+	"scope": "Kallopis default product style",
+	"consumerPolicy": {
+		"overridable": [
+			"color.identity.brand"
+		],
+		"derivations": {
+			"color.action.primary": {
+				"from": "color.identity.brand",
+				"backgroundAlpha": 255,
+				"brightnessMetric": "srgb-luma-601",
+				"brightnessScale": 255,
+				"lightForegroundMax": 159,
+				"darkForegroundMin": 160
+			}
+		},
+		"locked": [
+			"primitive",
+			"foundation",
+			"component",
+			"pattern"
+		],
+		"isolatedFrom": [
+			"user-design-system.recipe"
+		]
+	},
+	"layers": [
+		{
+			"id": "primitive",
+			"label": "Primitives",
+			"description": "Internal raw scales and source values. Consumers do not use these directly.",
+			"pages": [
+				{"id": "primitive.color.neutrals", "source": "token_pages.dart", "symbol": "neutralsPage"},
+				{"id": "primitive.dimension.scale", "source": "token_pages.dart", "symbol": "scalePage"},
+				{"id": "primitive.shape.radius", "source": "token_pages.dart", "symbol": "radiiPage"}
+			]
+		},
+		{
+			"id": "foundation",
+			"label": "Foundation semantics",
+			"description": "Shared roles that describe identity, surfaces, type, status, motion and elevation.",
+			"pages": [
+				{"id": "foundation.identity.brand", "source": "token_pages.dart", "symbol": "brandPage"},
+				{"id": "foundation.color.modes", "source": "token_pages.dart", "symbol": "colorModesPage"},
+				{"id": "foundation.surface.roles", "source": "token_pages.dart", "symbol": "surfacesPage"},
+				{"id": "foundation.feedback.status", "source": "token_pages.dart", "symbol": "semanticStatusPage"},
+				{"id": "foundation.type.display", "source": "token_pages.dart", "symbol": "displayHeadingsPage"},
+				{"id": "foundation.type.body", "source": "token_pages.dart", "symbol": "bodyCopyPage"},
+				{"id": "foundation.type.monospace", "source": "token_pages.dart", "symbol": "monospacePage"},
+				{"id": "foundation.depth.elevation", "source": "token_pages.dart", "symbol": "elevationPage"}
+			]
+		},
+		{
+			"id": "component",
+			"label": "Component recipes",
+			"description": "Resolved controls and content components built from foundation semantics.",
+			"pages": [
+				{"id": "component.action.navigation", "source": "foundation_pages.dart", "symbol": "actionsNavigationPage"},
+				{"id": "component.action.button", "source": "button_system_page.dart", "symbol": "buttonSystemPage"},
+				{"id": "component.navigation.file-explorer", "source": "foundation_pages.dart", "symbol": "fileExplorerPage"},
+				{"id": "component.data.display", "source": "foundation_pages.dart", "symbol": "dataDisplayPage"},
+				{"id": "component.layout.interaction", "source": "foundation_pages.dart", "symbol": "layoutInteractionPage"},
+				{"id": "component.layout.placeholder", "source": "foundation_pages.dart", "symbol": "regionPlaceholderPage"},
+				{"id": "component.feedback.view-state", "source": "foundation_pages.dart", "symbol": "viewStatesPage"},
+				{"id": "component.form.controls", "source": "form_pages.dart", "symbol": "formControlsPage"},
+				{"id": "component.form.assembly", "source": "form_pages.dart", "symbol": "formAssemblyPage"}
+			]
+		},
+		{
+			"id": "pattern",
+			"label": "Patterns",
+			"description": "Reusable compositions and workspace-level interaction arrangements.",
+			"pages": [
+				{"id": "pattern.content.block-layout", "source": "guideline_pages.dart", "symbol": "blockLayoutPage"},
+				{"id": "pattern.content.prose", "source": "guideline_pages.dart", "symbol": "prosePage"},
+				{"id": "pattern.visual.stroke-language", "source": "guideline_pages.dart", "symbol": "strokeLanguagePage"},
+				{"id": "pattern.settings", "source": "settings_pages.dart", "symbol": "settingsPage"},
+				{"id": "pattern.workspace.shell", "source": "workspace_shell_page.dart", "symbol": "workspaceShellPage"},
+				{"id": "pattern.workspace.docking", "source": "docking_layout_page.dart", "symbol": "dockingLayoutPage"},
+				{"id": "pattern.workspace.agenda", "source": "workspace_agenda_page.dart", "symbol": "workspaceAgendaPage"},
+				{"id": "pattern.workspace.conversation", "source": "workspace_conversation_page.dart", "symbol": "workspaceConversationPage"},
+				{"id": "pattern.workspace.assets", "source": "workspace_assets_page.dart", "symbol": "workspaceAssetsPage"},
+				{"id": "pattern.workspace.artifact", "source": "workspace_pattern_pages.dart", "symbol": "artifactWorkspacePage"},
+				{"id": "pattern.workspace.canvas", "source": "workspace_pattern_pages.dart", "symbol": "canvasWorkspacePage"}
+			]
+		}
+	]
+}

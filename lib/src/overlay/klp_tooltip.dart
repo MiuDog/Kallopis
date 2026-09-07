@@ -48,7 +48,7 @@ class KlpTooltipSurface extends StatelessWidget {
         padding:
             theme.padding ??
             EdgeInsets.symmetric(
-              horizontal: context.klp.space.compact,
+              horizontal: context.klp.space.overlayContentInset,
               vertical: context.klp.space.tight,
             ),
         child: Text(message, style: textStyle),

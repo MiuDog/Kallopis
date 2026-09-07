@@ -23,7 +23,7 @@
 深淺色與視覺風格在切換時**原子性同步翻轉**，消除因動畫過場造成的混合中間態，確保所有介面元件同步響應。
 
 ### 4. 角色導向排版體系（Semantic-First Typography）
-以功能角色（`KlpTextRole`）為核心，搭載 IBM Plex Mono（等寬代碼與標籤）與 IBM Plex Sans TC（通用長文與 UI），在全平台上保持一致的渲染節奏。
+以功能角色（`KlpTextRole`）為核心，搭載 IBM Plex Mono（等寬代碼與標籤）與 Noto Sans TC（通用長文與 UI），在全平台上保持一致的渲染節奏。
 
 ### 5. 零語意洩漏與清晰分層（Pure Layer Isolation）
 嚴格遵循「抽層五原則」，拒絕任何與特定產品綁定的業務模型，確保視覺層的高內聚與零副作用。
@@ -56,10 +56,10 @@ dependencies:
       ref: v0.7.0
 ```
 
-然後 `flutter pub get`，接著只要一個 import：
+然後 `flutter pub get`。一般元件使用 Stable foundation 入口：
 
 ```dart
-import 'package:kallopis/kallopis.dart';
+import 'package:kallopis/kallopis_foundation.dart';
 ```
 
 **字型與圖示會自動跟過來**，消費端不需要在自己的 `pubspec.yaml` 宣告任何資產。
@@ -72,7 +72,7 @@ IBM Plex 字型與 svg 圖示都正常渲染，沒有任何額外設定。
 
 ```dart
 import 'package:flutter/material.dart';
-import 'package:kallopis/kallopis.dart';
+import 'package:kallopis/kallopis_foundation.dart';
 
 void main() {
   runApp(
@@ -90,6 +90,14 @@ void main() {
 ```dart
 KlpApp.of(context).toggleBrightness();
 ```
+
+Sidebar＋Stage 類型的產品畫面，預設以 `KlpDockLayout` 組合；第一層 panel 與 app
+background 的 4px 外距、panel 能力與 AI 組裝邊界請參閱
+[Sidebar＋Stage 畫面組合](docs/guides/sidebar-stage-layout.md)。
+Sidebar 內的分類、樹狀元素與操作元件則使用
+[KlpNavigator 組裝指南](docs/guides/navigator-composition.md) 的三種模型。
+Catalog 本身的 App chrome、Dock、目錄、Stage、捲動與語意追蹤關係整理於
+[Catalog 畫面組成](docs/guides/catalog-screen-composition.md)。
 
 若需套用自訂視覺風格或品牌色，可利用 `buildKlpTheme`：
 
@@ -124,13 +132,28 @@ MaterialApp(
 JSON 可完整描述顏色、字體、間距、邊界、圓角、動態、表面效果與稀疏的
 component token。局部 JSON 會沿用指定 base style 的其餘值；型別、範圍或欄位名稱
 不合法時，`FormatException` 會指出完整 JSON 路徑。`encode` 固定輸出
-`schemaVersion: 1`；局部設定可省略版本，明示不支援的版本則會被拒絕。
+`schemaVersion: 2`；局部設定可省略版本，明示不支援的版本則會被拒絕。解碼器仍接受
+v1，並只在匯入邊界把舊 `spacing.compact` 展開成各 scope 欄位；v2 不接受或輸出該欄位。
 Flutter 公開 API 仍接受任意 `Curve`；JSON 只接受可無損表示的 `Cubic`，其他 curve
 在 encode 時會明確失敗，不會被近似或靜默替換。
 公開 theme model 可使用任意 Flutter `Curve`；JSON 為了可攜與無損只支援四點
 cubic，encode 遇到其他 curve 會以完整欄位路徑拒絕。
 
 ---
+
+### 4. 環境與響應
+
+`KlpApp` 透過 `KlpEnvironmentScope` 注入執行平台，子樹以 `context.klpPlatform`
+讀取，不必訂閱 App 的明暗控制狀態。需要獨立組裝環境時，也可直接提供
+`KlpEnvironmentScope`；`KlpApp.of(context)` 仍負責明暗切換，視覺值仍由 `context.klp` 解析。
+
+`KlpAdaptive` 只依平台選擇 Windows、Android 或 `other` 分支；未提供 `other` 時回退
+Windows 分支。各分支回傳合法 `KlpPanelLayout`，局部可用尺寸以 `LayoutBuilder` 處理，
+不因 Windows 視窗變窄而切換成 Android 平台。完整示例見
+[Catalog 平台分支](example/lib/catalog/workspace_shell_page.dart)。
+
+視窗尺寸、safe area、鍵盤遮擋與文字縮放使用當前子樹的 `MediaQuery`；已解析語系與文案
+使用 `Localizations`／`KlpLocalizations`。環境 scope 不複製這些資料，也不保存另一份狀態快照。
 
 ## 架構全景
 
@@ -156,12 +179,12 @@ cubic，encode 遇到其他 curve 會以完整欄位路徑拒絕。
 
 ### 領域元件分類導覽
 
-Kallopis 將視覺元件解構為 16 個正交的專業領域，完整元件樹架構請參閱 [**全元件樹架構文件庫 (`docs/architecture/components/`)**](docs/architecture/components/README.md)：
+Kallopis 公開結構共有 19 個領域；扣除 token 與 theme 後，視覺元件解構為 17 個正交領域。完整元件樹架構請參閱 [**自動產生的元件清單 (`spec/component-inventory.md`)**](spec/component-inventory.md)：
 
 | 領域 | 職責與代表元件 | 元件樹文件 |
 |---|---|---|
 | **`app`** | 應用程式進入點、根容器與明暗狀態管理 (`KlpApp`) | [查看架構](docs/architecture/components/app/klp_app.md) |
-| **`shell`** | 桌面工作台外殼、多欄收合面板、視窗標題列 (`KlpWorkbenchShell`, `KlpPanelFrame`) | [查看架構](docs/architecture/components/shell/klp_workbench_shell.md) |
+| **`shell`** | Panel Tree、可停駐多面板與視窗標題列 (`KlpPanelFrame`, `KlpDockLayout`) | [查看架構](docs/architecture/components/shell/klp_panel_frame.md) |
 | **`controls`** | 按鈕、輸入框、開關、滑桿、分段選擇器 (`KlpButton`, `KlpTextField`, `KlpSelect`) | [查看架構](docs/architecture/components/controls/klp_button.md) |
 | **`form`** | 結構化表單、欄位群組、驗證摘要、複合編輯器 (`KlpForm`, `KlpSelectField`, `KlpCodeField`) | [查看架構](docs/architecture/components/form/klp_form.md) |
 | **`settings`** | 自適應設定頁、設定導覽、欄位與顏色模式選擇器 (`KlpSettingsPage`, `KlpThemeModePicker`) | [查看契約](spec/settings-presentation.md) |
@@ -194,6 +217,9 @@ Kallopis 將設計承諾轉化為由 CI 自動運行的**機械檢驗閘門**：
 ## 元件型錄展示（Interactive Catalog）
 
 Kallopis 提供獨立的 Catalog 應用程式供本機即時預覽、互動除錯與主題測試：
+
+畫面分層、資料注入與所有權界線請參閱
+[Catalog 畫面組成](docs/guides/catalog-screen-composition.md)。
 
 ```bash
 # 啟動 Windows 桌面端元件型錄

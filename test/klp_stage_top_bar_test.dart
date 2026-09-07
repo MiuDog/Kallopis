@@ -9,7 +9,7 @@ void main() {
     await tester.pumpWidget(
       KlpApp(
         showWindowHeader: false,
-        home: KlpAppScreen(
+				home: KlpPanelFrame(padding: EdgeInsets.zero, content: KlpAppScreen(
           child: SizedBox(
             width: 1000,
             height: 240,
@@ -48,7 +48,7 @@ void main() {
               ],
             ),
           ),
-        ),
+        )),
       ),
     );
 
@@ -58,23 +58,24 @@ void main() {
     final actionRect = tester.getRect(find.byKey(const ValueKey('action')));
     final headerRect = tester.getRect(find.byType(KlpWorkbenchWindowHeader));
     final klp = tester.element(find.byType(KlpStageTopBar)).klp;
-    final compact = klp.space.compact;
+		final margin = klp.space.dockMargin;
 
     expect(stageRect.top, headerRect.bottom);
     expect(
       topBarRect.bottom,
-      headerRect.bottom + compact / 2 + klp.shape.panel,
+			headerRect.bottom + margin + klp.shape.panel,
     );
-    expect(tabRect.left, headerRect.left + 260 + compact / 2);
-    expect(actionRect.right, headerRect.right - 300 - compact / 2);
-    expect(actionRect.bottom, lessThanOrEqualTo(headerRect.bottom));
+    expect(tabRect.left, headerRect.left + 260 + margin);
+    expect(actionRect.right, headerRect.right - 300 - margin);
+    expect(actionRect.bottom, lessThanOrEqualTo(topBarRect.bottom));
     expect(
       actionRect.height,
       tester
           .element(find.byKey(const ValueKey('action')))
           .klp
-          .space
-          .controlHeightXSmall,
+          .geometry
+          .control
+          .buttonHeightXSmall,
     );
   });
 
@@ -84,7 +85,7 @@ void main() {
     await tester.pumpWidget(
       const KlpApp(
         showWindowHeader: false,
-        home: KlpAppScreen(child: KlpStageTab(label: 'notes.md')),
+				home: KlpPanelFrame(padding: EdgeInsets.zero, content: KlpAppScreen(child: KlpStageTab(label: 'notes.md'))),
       ),
     );
 
@@ -128,7 +129,7 @@ void main() {
       await tester.pumpWidget(
         KlpApp(
           showWindowHeader: false,
-          home: KlpAppScreen(
+					home: KlpPanelFrame(padding: EdgeInsets.zero, content: KlpAppScreen(
             child: SizedBox(
               width: 1000,
               child: KlpWorkbenchWindowHeader(
@@ -146,7 +147,7 @@ void main() {
                 ),
               ),
             ),
-          ),
+          )),
         ),
       );
 
@@ -157,13 +158,13 @@ void main() {
         ),
       );
       final tabRect = tester.getRect(find.byType(KlpStageTab));
-      final compact = tester
+			final margin = tester
           .element(find.byType(KlpWorkbenchWindowHeader))
           .klp
           .space
-          .compact;
+					.dockMargin;
 
-      expect(tabRect.left, toggleRect.right + compact / 2);
+      expect(tabRect.left, toggleRect.right + margin);
     },
   );
 }

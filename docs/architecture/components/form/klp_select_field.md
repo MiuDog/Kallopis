@@ -25,24 +25,40 @@ flowchart TD
   n1 --> n2
   n3["SizedBox"]
   n1 --> n3
-  n4["GestureDetector"]
+  n4["MouseRegion"]
   n3 --> n4
-  n5["KlpStrokeFrame"]:::container
+  n5["Focus"]
   n4 --> n5
-  n6["Container"]
+  n6["Semantics"]
   n5 --> n6
-  n7["child / slot"]:::slot
+  n7["Material"]
   n6 --> n7
+  n8["InkWell"]
+  n7 --> n8
+  n9["Padding"]
+  n7 --> n9
+  n10["Row"]
+  n9 --> n10
+  n11["Expanded"]
+  n10 --> n11
+  n12["KlpIcon"]:::reference
+  n11 --> n12
+  n13["Container"]
+  n11 --> n13
+  n14["GestureDetector"]
+  n13 --> n14
+  n15["child / slot"]:::slot
+  n14 --> n15
 ```
 
 ## 外部元件引用
 
-- [`KlpStrokeFrame`](../surface/klp_stroke_frame.md) — `surface — 表面與描邊` *(純容器，已繼續向下展開)*
+- [`KlpIcon`](../foundation/klp_icon.md) — `foundation — 圖示、色盤、度量`
 - [`KlpText`](../typography/klp_text.md) — `typography — 文字`
 
 ## 程式碼證據
 
-- 檔案路徑：[`lib/src/form/klp_form_controls.dart`](../../../../lib/src/form/klp_form_controls.dart#L591)
+- 檔案路徑：[`lib/src/form/selection/klp_select_field.dart`](../../../../lib/src/form/selection/klp_select_field.dart#L10)
 - 宣告型態：`StatefulWidget`
 
 ## 閱讀說明
@@ -51,4 +67,3 @@ flowchart TD
 - **容器節點（圓角/綠框）**：本專案之純容器元件（如 `KlpSurface` 等），已持續向下展開其子樹。
 - **虛線/引號節點（黃框/:::reference）**：本專案其他功能性元件，依規則停止展開並提供文件引用。
 - **插槽節點（橘框/:::slot）**：外部傳入之 `child`、`builder` 或內容參數。
-

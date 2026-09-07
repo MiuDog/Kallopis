@@ -23,6 +23,8 @@ flowchart TD
   root --> n1
   n2["KlpFileExplorerSectionView"]:::reference
   root --> n2
+  n3["child / slot"]:::slot
+  root --> n3
 ```
 
 ## 外部元件引用
@@ -31,7 +33,7 @@ flowchart TD
 
 ## 程式碼證據
 
-- 檔案路徑：[`lib/src/navigation/klp_file_explorer.dart`](../../../../lib/src/navigation/klp_file_explorer.dart#L64)
+- 檔案路徑：[`lib/src/navigation/explorer/klp_file_explorer.dart`](../../../../lib/src/navigation/explorer/klp_file_explorer.dart#L87)
 - 宣告型態：`StatefulWidget`
 
 ## 閱讀說明

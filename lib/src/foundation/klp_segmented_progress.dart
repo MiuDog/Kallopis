@@ -21,7 +21,7 @@ class KlpSegmentedProgress extends StatelessWidget {
         for (var index = 0; index < segments; index++) ...[
           Expanded(
             child: Container(
-              height: context.klp.space.compact,
+							height: context.klp.geometry.control.segmentedProgressHeight,
               decoration: BoxDecoration(
                 color: index < completed
                     ? context.klpColors.info

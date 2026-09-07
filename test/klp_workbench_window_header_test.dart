@@ -12,7 +12,7 @@ void main() {
     await tester.pumpWidget(
       KlpApp(
         showWindowHeader: false,
-        home: KlpAppScreen(
+				home: KlpPanelFrame(padding: EdgeInsets.zero, content: KlpAppScreen(
           child: SizedBox(
             width: 1000,
             child: KlpWorkbenchWindowHeader(
@@ -36,7 +36,7 @@ void main() {
               ),
             ),
           ),
-        ),
+        )),
       ),
     );
 
@@ -69,14 +69,10 @@ void main() {
 
     final headerRect = tester.getRect(find.byType(KlpWorkbenchWindowHeader));
     final toggleRect = tester.getRect(find.bySemanticsLabel('收合側邊面板'));
-    final compact = tester
-        .element(find.byType(KlpWorkbenchWindowHeader))
-        .klp
-        .space
-        .compact;
-    expect(toggleRect.right, headerRect.left + 268 - compact / 2);
+		final windowHeaderMargin = tester.element(find.byType(KlpWorkbenchWindowHeader)).klp.space.windowHeaderMargin;
+		expect(toggleRect.right, headerRect.left + 268 - windowHeaderMargin);
     final secondaryToggleRect = tester.getRect(find.bySemanticsLabel('收合檢查器'));
-    expect(secondaryToggleRect.left, headerRect.right - 300 + compact / 2);
+		expect(secondaryToggleRect.left, headerRect.right - 300 + windowHeaderMargin);
   });
 
   testWidgets('collapsed pane controls remain next to title and actions', (
@@ -87,7 +83,7 @@ void main() {
     await tester.pumpWidget(
       KlpApp(
         showWindowHeader: false,
-        home: KlpAppScreen(
+				home: KlpPanelFrame(padding: EdgeInsets.zero, content: KlpAppScreen(
           child: SizedBox(
             width: 1000,
             child: KlpWorkbenchWindowHeader(
@@ -105,7 +101,7 @@ void main() {
               showWindowControls: false,
             ),
           ),
-        ),
+        )),
       ),
     );
 
@@ -142,7 +138,7 @@ void main() {
     await tester.pumpWidget(
       KlpApp(
         showWindowHeader: false,
-        home: KlpAppScreen(
+				home: KlpPanelFrame(padding: EdgeInsets.zero, content: KlpAppScreen(
           child: SizedBox(
             width: 1000,
             child: KlpWorkbenchWindowHeader(
@@ -168,24 +164,26 @@ void main() {
               ],
             ),
           ),
-        ),
+        )),
       ),
     );
 
     final stageActionRect = tester.getRect(find.byKey(stageActionKey));
     final headerActionRect = tester.getRect(find.byKey(headerActionKey));
-    final secondaryToggleRect = tester.getRect(find.bySemanticsLabel('展開檢查器'));
+		final secondaryToggle = find.byWidgetPredicate(
+			(widget) => widget is KlpIconButton && widget.label == '展開檢查器',
+		);
+		final secondaryToggleRect = tester.getRect(secondaryToggle);
     final windowControlsRect = tester.getRect(find.byType(KlpWindowControls));
     final headerRect = tester.getRect(find.byType(KlpWorkbenchWindowHeader));
-    final compact = tester
-        .element(find.byType(KlpWorkbenchWindowHeader))
-        .klp
-        .space
-        .compact;
+		final actionGap = tester.element(find.byType(KlpWorkbenchWindowHeader)).klp.space.actionGap;
 
-    expect(headerActionRect.left - stageActionRect.right, compact);
-    expect(secondaryToggleRect.left - headerActionRect.right, compact);
-    expect(windowControlsRect.left - secondaryToggleRect.right, compact);
+		expect(headerActionRect.left - stageActionRect.right, actionGap);
+		expect(secondaryToggleRect.left - headerActionRect.right, actionGap);
+    expect(
+		windowControlsRect.left - secondaryToggleRect.right,
+		actionGap,
+	);
     expect(secondaryToggleRect.center.dy, headerRect.center.dy);
   });
 }

@@ -111,6 +111,11 @@ Invoke-VerifyStep -Key 'inventory' -Name '元件清單新鮮度' -WorkingDirecto
 	'tool/inventory.dart',
 	'--check'
 ) -DependsOn @('root_pub_get')
+Invoke-VerifyStep -Key 'catalog_registry' -Name 'Catalog 語意分類新鮮度' -WorkingDirectory $projectRoot -Executable $dartExecutable -Arguments @(
+	'run',
+	'tool/generate_catalog_registry.dart',
+	'--check'
+) -DependsOn @('root_pub_get')
 Invoke-VerifyStep -Key 'example_analyze' -Name '範例套件靜態分析' -WorkingDirectory $exampleRoot -Executable $flutterExecutable -Arguments @(
 	'analyze',
 	'--fatal-infos'

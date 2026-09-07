@@ -1,6 +1,6 @@
 import 'package:flutter/widgets.dart';
 
-import '../controls/klp_button.dart';
+import '../controls/button/klp_button.dart';
 import '../surface/klp_surface.dart';
 import '../typography/klp_text.dart';
 import '../theme/klp_theme.dart';
@@ -48,7 +48,7 @@ class KlpDialog extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   KlpText(label.toUpperCase(), role: KlpTextRole.label),
-                  SizedBox(height: context.klp.space.compact),
+                  SizedBox(height: context.klp.space.overlayHeadingGap),
                   KlpText(title, role: KlpTextRole.title),
                 ],
               ),
@@ -61,8 +61,8 @@ class KlpDialog extends StatelessWidget {
               padding: EdgeInsets.all(context.klp.space.base),
               child: Wrap(
                 alignment: WrapAlignment.end,
-                spacing: context.klp.space.compact,
-                runSpacing: context.klp.space.compact,
+                spacing: context.klp.space.actionGap,
+                runSpacing: context.klp.space.actionGap,
                 children: [
                   KlpButton(
                     label: secondaryLabel,

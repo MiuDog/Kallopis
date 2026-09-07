@@ -4,7 +4,7 @@
 
 - **核心元件**：`KlpTabs`
 - **所屬領域**：`navigation — 導覽元件`
-- **核心職責**：分頁列。`selected` 是索引，`tabs` 是顯示文字；本元件不持有狀態。
+- **核心職責**：分頁列。`selected` 是索引，`tabs` 是顯示文字；本元件不持有狀態。  **鍵盤**：任一分頁取得焦點後，`←`／`→` 會在分頁之間移動並直接切換選取 （在頭尾之間循環），沿用 [KlpRovingIndex]，與 [KlpMenu]、[KlpCombobox] 共用 同一套索引移動規則。
 - **包含範圍**：`build()` 內部建構的完整 Widget 樹（展開 Flutter 原生元件與純容器）
 - **外部引用**：本專案其他非純容器元件（遇引用即停下並鏈結）
 
@@ -19,14 +19,16 @@ flowchart TD
   classDef slot fill:#2E3440,stroke:#D08770,stroke-width:1px,stroke-dasharray: 2 2,color:#D08770;
 
   root["KlpTabs"]:::root
-  n1["SizedBox"]
+  n1["Focus"]
   root --> n1
-  n2["SingleChildScrollView"]
+  n2["SizedBox"]
   n1 --> n2
-  n3["Row"]
+  n3["SingleChildScrollView"]
   n2 --> n3
-  n4["child / slot"]:::slot
+  n4["Row"]
   n3 --> n4
+  n5["child / slot"]:::slot
+  n4 --> n5
 ```
 
 ## 外部元件引用
@@ -35,7 +37,7 @@ flowchart TD
 
 ## 程式碼證據
 
-- 檔案路徑：[`lib/src/navigation/klp_tabs.dart`](../../../../lib/src/navigation/klp_tabs.dart#L7)
+- 檔案路徑：[`lib/src/navigation/tabs/klp_tabs.dart`](../../../../lib/src/navigation/tabs/klp_tabs.dart#L13)
 - 宣告型態：`StatelessWidget`
 
 ## 閱讀說明
@@ -44,4 +46,3 @@ flowchart TD
 - **容器節點（圓角/綠框）**：本專案之純容器元件（如 `KlpSurface` 等），已持續向下展開其子樹。
 - **虛線/引號節點（黃框/:::reference）**：本專案其他功能性元件，依規則停止展開並提供文件引用。
 - **插槽節點（橘框/:::slot）**：外部傳入之 `child`、`builder` 或內容參數。
-

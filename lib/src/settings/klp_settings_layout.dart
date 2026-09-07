@@ -99,6 +99,7 @@ class KlpSettingsPage extends StatelessWidget {
                 SizedBox(
                   width: layout.settingsPaneGap,
                   child: KlpResizeHandle(
+                    axis: Axis.horizontal,
                     width: layout.settingsPaneGap,
                     semanticLabel: navigationResizeLabel,
                     onDelta: (delta) {
@@ -249,7 +250,7 @@ class KlpSettingsContentPane extends StatelessWidget {
           if (trailing != null)
             PositionedDirectional(
               top: klp.space.tight,
-              end: klp.space.compact,
+							end: klp.space.contentInset,
               child: trailing!,
             ),
         ],

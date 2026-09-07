@@ -2,13 +2,14 @@ import 'package:flutter/widgets.dart';
 import 'package:kallopis/kallopis.dart';
 
 import '../catalog_model.dart';
+import 'navigation_rail_specimen.dart';
 
 /// 給需要固定尺寸才看得出行為的元件用。
 Widget _boxed(BuildContext context, double height, Widget child) => SizedBox(
   height: height,
   child: KlpSurface(
     tone: KlpSurfaceTone.transparent,
-    padding: EdgeInsets.all(context.klp.space.compact),
+    padding: EdgeInsets.all(context.klp.space.contentInset),
     child: child,
   ),
 );
@@ -26,8 +27,8 @@ final actionsNavigationPage = CatalogPageData(
       build: (context) {
         final klp = context.klp;
         return Wrap(
-          spacing: klp.space.compact,
-          runSpacing: klp.space.compact,
+          spacing: klp.space.actionGap,
+          runSpacing: klp.space.contentStackGap,
           crossAxisAlignment: WrapCrossAlignment.center,
           children: [
             for (final tone in KlpButtonTone.values)
@@ -68,7 +69,7 @@ final actionsNavigationPage = CatalogPageData(
       build: (context) {
         final klp = context.klp;
         return Wrap(
-          spacing: klp.space.compact,
+          spacing: klp.space.actionGap,
           children: [
             KlpIconButton(icon: KlpIcons.check, label: '確認', onPressed: () {}),
             KlpIconButton(
@@ -142,19 +143,12 @@ final actionsNavigationPage = CatalogPageData(
         ),
       ),
     ),
-		Specimen(
-			name: 'KlpNavigationRail',
-			note: 'Workbench 的主要圖示導覽軌；固定項與可排序項由呼叫端提供。',
-			build: (context) => SizedBox(
-				width: context.klp.space.chromeRail,
-				child: KlpNavigationRail(
-					children: [
-						KlpRailItem(icon: KlpIcons.folder, label: '檔案', onPressed: () {}),
-						KlpRailItem(icon: KlpIcons.box, label: '元件', onPressed: () {}),
-					],
-				),
-			),
-		),
+    Specimen(
+      name: 'KlpNavigationRail',
+      note:
+          '固定 Top／Center／Bottom 三區；兩端內容具有分隔線，Center 溢出後可捲動但不顯示 Scrollbar，拖曳只在原 Group 內排序。',
+      build: (context) => const NavigationRailSpecimen(),
+    ),
     Specimen(
       name: 'KlpSidebarSectionLabel',
       note: '側邊欄的分組標題。',
@@ -281,34 +275,59 @@ final dataDisplayPage = CatalogPageData(
   specimens: [
     Specimen(
       name: 'KlpIcon',
-      note: '隨套件散佈的 SVG。size 為 null 時沿用 theme 的圖示尺寸。',
+      note: 'Regular／Thin Rounded 雙粗細。Thin 缺少同名 glyph 時回退相同圖形的 Regular。',
       build: (context) {
         final klp = context.klp;
-        return Wrap(
-          spacing: klp.space.base,
-          runSpacing: klp.space.base,
+        const icons = [
+          KlpIcons.folderPlus,
+          KlpIcons.chevronDown,
+          KlpIcons.clipboard,
+          KlpIcons.collapse,
+          KlpIcons.container,
+          KlpIcons.cpu,
+          KlpIcons.diagramProject,
+          KlpIcons.gripVertical,
+          KlpIcons.infoSquare,
+          KlpIcons.alertSquare,
+          KlpIcons.maximize,
+          KlpIcons.keyboard,
+          KlpIcons.sparkles,
+          KlpIcons.switchVertical,
+          KlpIcons.telescope,
+          KlpIcons.users,
+          KlpIcons.xSquare,
+          KlpIcons.circle,
+          KlpIcons.splitCircle,
+          KlpIcons.panelLeft,
+          KlpIcons.panelRight,
+          KlpIcons.panelSplit,
+          KlpIcons.globe,
+          KlpIcons.filter,
+        ];
+
+        Widget iconSet(String label, KlpIconWeight weight) {
+          return Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              KlpText(label, role: KlpTextRole.code),
+              SizedBox(height: klp.space.contentStackGap),
+              Wrap(
+                spacing: klp.space.base,
+                runSpacing: klp.space.base,
+                children: [
+                  for (final icon in icons) KlpIcon(icon, weight: weight),
+                ],
+              ),
+            ],
+          );
+        }
+
+        return Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            for (final icon in const [
-              KlpIcons.archive,
-              KlpIcons.bookmark,
-              KlpIcons.box,
-              KlpIcons.calendar,
-              KlpIcons.clipboard,
-              KlpIcons.container,
-              KlpIcons.cpu,
-              KlpIcons.edit,
-              KlpIcons.eye,
-              KlpIcons.folder,
-              KlpIcons.grid,
-              KlpIcons.inbox,
-              KlpIcons.pencil,
-              KlpIcons.search,
-              KlpIcons.settings,
-              KlpIcons.sparkles,
-              KlpIcons.infoSquare,
-              KlpIcons.trash,
-            ])
-              KlpIcon(icon),
+            iconSet('REGULAR', KlpIconWeight.regular),
+            SizedBox(height: klp.space.base),
+            iconSet('THIN', KlpIconWeight.thin),
           ],
         );
       },
@@ -319,7 +338,7 @@ final dataDisplayPage = CatalogPageData(
       build: (context) {
         final klp = context.klp;
         return Wrap(
-          spacing: klp.space.compact,
+          spacing: klp.space.contentInlineGap,
           crossAxisAlignment: WrapCrossAlignment.center,
           children: const [
             KlpBadge(label: 'draft', variant: KlpBadgeVariant.outline),
@@ -344,7 +363,7 @@ final dataDisplayPage = CatalogPageData(
       build: (context) {
         final klp = context.klp;
         return Wrap(
-          spacing: klp.space.compact,
+          spacing: klp.space.contentInlineGap,
           children: [
             KlpTag(label: 'backend', prefix: '#', onRemove: () {}),
             KlpTag(label: 'schema', prefix: '#', onRemove: () {}),
@@ -530,11 +549,36 @@ final dataDisplayPage = CatalogPageData(
         return Wrap(
           spacing: klp.space.comfortable,
           children: const [
-            KlpStatusIndicator(label: 'RUNNING', kind: KlpStatusKind.running),
-            KlpStatusIndicator(label: 'SUCCESS', kind: KlpStatusKind.check),
-            KlpStatusIndicator(label: 'FAILURE', kind: KlpStatusKind.cross),
-            KlpStatusIndicator(label: 'WAITING', kind: KlpStatusKind.waiting),
-            KlpStatusIndicator(label: 'IDLE', kind: KlpStatusKind.circle),
+            KlpStatusIndicator(
+              data: KlpStatusItemData(
+                label: 'RUNNING',
+                kind: KlpStatusKind.running,
+              ),
+            ),
+            KlpStatusIndicator(
+              data: KlpStatusItemData(
+                label: 'SUCCESS',
+                kind: KlpStatusKind.check,
+              ),
+            ),
+            KlpStatusIndicator(
+              data: KlpStatusItemData(
+                label: 'FAILURE',
+                kind: KlpStatusKind.cross,
+              ),
+            ),
+            KlpStatusIndicator(
+              data: KlpStatusItemData(
+                label: 'WAITING',
+                kind: KlpStatusKind.waiting,
+              ),
+            ),
+            KlpStatusIndicator(
+              data: KlpStatusItemData(
+                label: 'IDLE',
+                kind: KlpStatusKind.circle,
+              ),
+            ),
           ],
         );
       },
@@ -656,7 +700,7 @@ final layoutInteractionPage = CatalogPageData(
                   child: KlpText(state.name, role: KlpTextRole.code),
                 ),
               ),
-              SizedBox(width: klp.space.compact),
+              SizedBox(width: klp.space.contentInlineGap),
             ],
           ],
         );
@@ -722,7 +766,7 @@ final layoutInteractionPage = CatalogPageData(
             size: 200,
             onScrimTap: () {},
             child: Padding(
-              padding: EdgeInsets.all(context.klp.space.compact),
+              padding: EdgeInsets.all(context.klp.space.contentInset),
               child: const KlpText('面板內容'),
             ),
           ),
@@ -758,14 +802,14 @@ final layoutInteractionPage = CatalogPageData(
               role: KlpTextRole.code,
               tone: KlpTextTone.muted,
             ),
-            SizedBox(height: klp.space.compact),
+            SizedBox(height: klp.space.contentStackGap),
             KlpSurface(
               tone: KlpSurfaceTone.inset,
               border: Border.all(
                 color: klp.color.divider,
                 width: klp.shape.hairline,
               ),
-              padding: EdgeInsets.all(klp.space.compact),
+              padding: EdgeInsets.all(klp.space.contentInset),
               child: SizedBox(
                 height: 140,
                 child: KlpSplitLayout(
@@ -897,7 +941,7 @@ final layoutInteractionPage = CatalogPageData(
       note: '排序控制項。',
       build: (context) => Container(
         padding: EdgeInsets.symmetric(
-          horizontal: context.klp.space.compact,
+          horizontal: context.klp.space.controlInset,
           vertical: context.klp.space.tight,
         ),
         decoration: BoxDecoration(
@@ -983,7 +1027,7 @@ final layoutInteractionPage = CatalogPageData(
       build: (context) => KlpSurface(
         tone: KlpSurfaceTone.component,
         padding: EdgeInsets.symmetric(
-          horizontal: context.klp.space.compact,
+          horizontal: context.klp.space.contentInset,
           vertical: context.klp.space.tight,
         ),
         radius: context.klp.shape.control,
@@ -1088,7 +1132,7 @@ final layoutInteractionPage = CatalogPageData(
         const KlpApp(
           title: 'Kallopis',
           appIcon: KlpIcon(KlpIcons.sparkles),
-          home: KlpAppScreen(child: Center(child: KlpText('KlpApp'))),
+          home: KlpPanelFrame(content: Center(child: KlpText('KlpApp'))),
         ),
       ),
     ),
@@ -1153,7 +1197,7 @@ final layoutInteractionPage = CatalogPageData(
               onToggleMaximize: () {},
               onClose: () {},
             ),
-            SizedBox(height: klp.space.compact),
+            SizedBox(height: klp.space.contentStackGap),
             KlpWindowHeader(
               titleText: 'Planist (macOS)',
               platform: TargetPlatform.macOS,
@@ -1258,42 +1302,58 @@ final layoutInteractionPage = CatalogPageData(
         typeLabel: 'FLOW',
       ),
     ),
-		Specimen(
-			name: 'KlpNavigationRailFrame',
-			note: '為主要導覽 Rail 提供獨立 surface。',
-			build: (context) => SizedBox(
-				width: context.klp.space.chromeRail,
-				height: 160,
-				child: KlpNavigationRailFrame(
-					child: KlpNavigationRail(
-						children: [
-							KlpRailItem(icon: KlpIcons.folder, label: '檔案', onPressed: () {}),
-							KlpRailItem(icon: KlpIcons.box, label: '元件', onPressed: () {}),
-						],
-					),
-				),
-			),
-		),
-		Specimen(
-			name: 'KlpSidebarFrame',
-			note: '提供獨立 Sidebar surface，組合內容與選用 footer。',
-			build: (context) => _boxed(
-				context,
-				160,
-				const KlpSidebarFrame(
-					content: Column(
-						crossAxisAlignment: CrossAxisAlignment.stretch,
-						children: [
-							KlpPanelHeader(title: '導覽'),
-							KlpText('內容'),
-						],
-					),
-				),
-			),
-		),
-		Specimen(
-			name: 'KlpWorkbenchNavigationRegion',
-			note: '將具有獨立 surface 的 Rail 與 Sidebar 並排成共同收合區域。',
+    Specimen(
+      name: 'KlpNavigationRailFrame',
+      note: '為主要導覽 Rail 提供獨立 surface。',
+      build: (context) => SizedBox(
+        width: context.klp.space.chromeRail,
+        height: 160,
+        child: KlpNavigationRailFrame(
+          child: KlpNavigationRail(
+            top: KlpRailItemGroup(
+              id: 'top',
+              isReorderable: false,
+              items: [
+                KlpRailButtonEntry(
+                  id: 'files',
+                  icon: KlpIcons.folder,
+                  label: '檔案',
+                  onPressed: () {},
+                ),
+                KlpRailButtonEntry(
+                  id: 'components',
+                  icon: KlpIcons.box,
+                  label: '元件',
+                  onPressed: () {},
+                ),
+              ],
+            ),
+            center: const KlpRailItemGroup(id: 'center', items: []),
+            bottom: const KlpRailItemGroup(id: 'bottom', items: []),
+          ),
+        ),
+      ),
+    ),
+    Specimen(
+      name: 'KlpSidebarFrame',
+      note: '提供獨立 Sidebar surface，組合內容與選用 footer。',
+      build: (context) => _boxed(
+        context,
+        160,
+        const KlpSidebarFrame(
+          content: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              KlpPanelHeader(title: '導覽'),
+              KlpText('內容'),
+            ],
+          ),
+        ),
+      ),
+    ),
+    Specimen(
+      name: 'KlpWorkbenchNavigationRegion',
+      note: '將具有獨立 surface 的 Rail 與 Sidebar 並排成共同收合區域。',
       build: (context) => _boxed(
         context,
         160,
@@ -1322,28 +1382,10 @@ final layoutInteractionPage = CatalogPageData(
     Specimen(
       name: 'KlpStatusBar',
       note: '底部狀態列。',
-      build: (context) =>
-          const KlpStatusBar(leading: 'ready', trailing: 'UTF-8'),
-    ),
-    Specimen(
-      name: 'KlpWorkbenchShell',
-      note: '三欄工作區外殼，兩側可拖曳並依斷點自動收合。',
-      build: (context) => _boxed(
-        context,
-        240,
-        const KlpWorkbenchShell(
-          primary: KlpPanelFrame(
-            header: KlpPanelHeader(title: '導覽'),
-            content: Center(child: KlpText('primary')),
-          ),
-          stage: KlpStageFrame(
-            header: KlpPanelHeader(title: '舞台'),
-            content: Center(child: KlpText('stage')),
-          ),
-          secondary: KlpPanelFrame(
-            header: KlpPanelHeader(title: '屬性'),
-            content: Center(child: KlpText('secondary')),
-          ),
+      build: (context) => const KlpStatusBar(
+        data: KlpStatusBarData(
+          leading: [KlpStatusItemData(label: 'ready')],
+          trailing: [KlpStatusItemData(label: 'UTF-8')],
         ),
       ),
     ),
@@ -1423,7 +1465,7 @@ final regionPlaceholderPage = CatalogPageData(
               role: KlpTextRole.code,
               tone: KlpTextTone.muted,
             ),
-            SizedBox(height: klp.space.compact),
+            SizedBox(height: klp.space.contentStackGap),
             KlpSurface(
               tone: KlpSurfaceTone.inset,
               border: Border.all(
@@ -1439,7 +1481,7 @@ final regionPlaceholderPage = CatalogPageData(
                     role: KlpTextRole.code,
                     tone: KlpTextTone.muted,
                   ),
-                  SizedBox(height: klp.space.compact),
+                  SizedBox(height: klp.space.contentStackGap),
                   KlpSurface(
                     tone: KlpSurfaceTone.component,
                     border: Border.all(
@@ -1514,7 +1556,7 @@ final regionPlaceholderPage = CatalogPageData(
                         role: KlpTextRole.code,
                         tone: KlpTextTone.muted,
                       ),
-                      SizedBox(height: klp.space.compact),
+                      SizedBox(height: klp.space.contentStackGap),
                       const KlpRegionPlaceholder(
                         tone: KlpRegionPlaceholderTone.pending,
                         label: 'diff view',
@@ -1535,7 +1577,7 @@ final regionPlaceholderPage = CatalogPageData(
                         role: KlpTextRole.code,
                         tone: KlpTextTone.muted,
                       ),
-                      SizedBox(height: klp.space.compact),
+                      SizedBox(height: klp.space.contentStackGap),
                       KlpRegionPlaceholder(
                         tone: KlpRegionPlaceholderTone.neutral,
                         label: 'chart slot',
@@ -1558,7 +1600,7 @@ final regionPlaceholderPage = CatalogPageData(
                         role: KlpTextRole.code,
                         tone: KlpTextTone.muted,
                       ),
-                      SizedBox(height: klp.space.compact),
+                      SizedBox(height: klp.space.contentStackGap),
                       const KlpRegionPlaceholder(
                         hatched: false,
                         label: 'preview',
@@ -1652,7 +1694,7 @@ final viewStatesPage = CatalogPageData(
           children: [
             for (final tone in KlpFeedbackTone.values)
               Padding(
-                padding: EdgeInsets.only(bottom: klp.space.compact),
+                padding: EdgeInsets.only(bottom: klp.space.contentStackGap),
                 child: KlpInlineNotice(title: tone.name, tone: tone),
               ),
           ],
@@ -1839,6 +1881,16 @@ final fileExplorerPage = CatalogPageData(
           ),
         );
       },
+    ),
+    Specimen(
+      name: 'KlpFileExplorerSection',
+      note: '舊 File Explorer API 的可收合結構分區；新 Sidebar 組合改用 KlpNavigatorCategory。',
+      build: (context) => const SizedBox(
+        width: 280,
+        child: KlpFileExplorer(
+          sections: [KlpFileExplorerSection(id: 'section', title: '分區')],
+        ),
+      ),
     ),
     Specimen(
       name: 'KlpFileExplorerSectionView',

@@ -4,7 +4,7 @@
 
 - **核心元件**：`KlpMenuItem`
 - **所屬領域**：`overlay — 浮層`
-- **核心職責**：[KlpMenu] 裡單一項目的渲染，自行追蹤 hover／focus 以決定外框與前景色。  選取狀態（[KlpMenuItemData.selected]）與 hover／focus 共用同一套「active」 視覺，但前景色只有選取或停用時才會變——hover 不改文字色，只加外框， 與本產品其他控制項的 hover 表達語言一致。一般透過 [KlpMenu] 間接使用， 只有要在選單容器之外單獨畫一個選單項目時才需要直接用它。
+- **核心職責**：[KlpMenu] 裡單一項目的渲染，自行追蹤 hover／focus 以決定背景與前景色。  選取狀態（[KlpMenuItemData.selected]）與 hover／focus 共用同一套「active」 視覺，但前景色只有選取或停用時才會變——hover 只加背景高亮， 與一般控制項的互動語言一致。一般透過 [KlpMenu] 間接使用， 只有要在選單容器之外單獨畫一個選單項目時才需要直接用它。
 - **包含範圍**：`build()` 內部建構的完整 Widget 樹（展開 Flutter 原生元件與純容器）
 - **外部引用**：本專案其他非純容器元件（遇引用即停下並鏈結）
 
@@ -51,7 +51,7 @@ flowchart TD
 
 ## 程式碼證據
 
-- 檔案路徑：[`lib/src/overlay/klp_menu.dart`](../../../../lib/src/overlay/klp_menu.dart#L239)
+- 檔案路徑：[`lib/src/overlay/klp_menu.dart`](../../../../lib/src/overlay/klp_menu.dart#L379)
 - 宣告型態：`StatefulWidget`
 
 ## 閱讀說明
@@ -60,4 +60,3 @@ flowchart TD
 - **容器節點（圓角/綠框）**：本專案之純容器元件（如 `KlpSurface` 等），已持續向下展開其子樹。
 - **虛線/引號節點（黃框/:::reference）**：本專案其他功能性元件，依規則停止展開並提供文件引用。
 - **插槽節點（橘框/:::slot）**：外部傳入之 `child`、`builder` 或內容參數。
-

@@ -130,7 +130,7 @@ void main() {
       );
       expect(
         tokens.buttonHeight,
-        KlpSpacingTheme.comfortableDensity.controlHeight,
+		KlpGeometryTheme.standard.control.buttonHeight,
       );
     });
 

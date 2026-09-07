@@ -4,7 +4,7 @@
 
 - **核心元件**：`KlpPaneCollapseControl`
 - **所屬領域**：`shell — 應用外殼`
-- **核心職責**：Kallopis KlpPaneCollapseControl 元件
+- **核心職責**：Pane 的收合互動控制。
 - **包含範圍**：`build()` 內部建構的完整 Widget 樹（展開 Flutter 原生元件與純容器）
 - **外部引用**：本專案其他非純容器元件（遇引用即停下並鏈結）
 
@@ -19,18 +19,20 @@ flowchart TD
   classDef slot fill:#2E3440,stroke:#D08770,stroke-width:1px,stroke-dasharray: 2 2,color:#D08770;
 
   root["KlpPaneCollapseControl"]:::root
-  n1["Center"]
+  n1["DecoratedBox"]
   root --> n1
-  n2["KlpIcon"]:::reference
+  n2["Center"]
   n1 --> n2
-  n3["MouseRegion"]
-  n1 --> n3
-  n4["GestureDetector"]
-  n3 --> n4
-  n5["Semantics"]
+  n3["KlpIcon"]:::reference
+  n2 --> n3
+  n4["MouseRegion"]
+  n2 --> n4
+  n5["GestureDetector"]
   n4 --> n5
-  n6["child / slot"]:::slot
+  n6["Semantics"]
   n5 --> n6
+  n7["child / slot"]:::slot
+  n6 --> n7
 ```
 
 ## 外部元件引用
@@ -39,7 +41,7 @@ flowchart TD
 
 ## 程式碼證據
 
-- 檔案路徑：[`lib/src/shell/klp_shell_extras.dart`](../../../../lib/src/shell/klp_shell_extras.dart#L100)
+- 檔案路徑：[`lib/src/shell/composition/pane/klp_pane_components.dart`](../../../../lib/src/shell/composition/pane/klp_pane_components.dart#L34)
 - 宣告型態：`StatefulWidget`
 
 ## 閱讀說明
@@ -48,4 +50,3 @@ flowchart TD
 - **容器節點（圓角/綠框）**：本專案之純容器元件（如 `KlpSurface` 等），已持續向下展開其子樹。
 - **虛線/引號節點（黃框/:::reference）**：本專案其他功能性元件，依規則停止展開並提供文件引用。
 - **插槽節點（橘框/:::slot）**：外部傳入之 `child`、`builder` 或內容參數。
-

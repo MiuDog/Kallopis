@@ -19,28 +19,29 @@ flowchart TD
   classDef slot fill:#2E3440,stroke:#D08770,stroke-width:1px,stroke-dasharray: 2 2,color:#D08770;
 
   root["KlpStatusIndicator"]:::root
-  n1["KlpIcon"]:::reference
+  n1["Container"]
   root --> n1
-  n2["Container"]
-  root --> n2
+  n2["KlpText"]:::reference
+  n1 --> n2
   n3["Row"]
-  n2 --> n3
+  n1 --> n3
   n4["SizedBox"]
   n3 --> n4
-  n5["KlpText"]:::reference
+  n5["Expanded"]
   n4 --> n5
-  n6["child / slot"]:::slot
-  n4 --> n6
+  n6["Flexible"]
+  n5 --> n6
+  n7["child / slot"]:::slot
+  n6 --> n7
 ```
 
 ## 外部元件引用
 
-- [`KlpIcon`](../foundation/klp_icon.md) — `foundation — 圖示、色盤、度量`
 - [`KlpText`](../typography/klp_text.md) — `typography — 文字`
 
 ## 程式碼證據
 
-- 檔案路徑：[`lib/src/feedback/klp_status_indicator.dart`](../../../../lib/src/feedback/klp_status_indicator.dart#L33)
+- 檔案路徑：[`lib/src/feedback/klp_status_indicator.dart`](../../../../lib/src/feedback/klp_status_indicator.dart#L31)
 - 宣告型態：`StatelessWidget`
 
 ## 閱讀說明
@@ -49,4 +50,3 @@ flowchart TD
 - **容器節點（圓角/綠框）**：本專案之純容器元件（如 `KlpSurface` 等），已持續向下展開其子樹。
 - **虛線/引號節點（黃框/:::reference）**：本專案其他功能性元件，依規則停止展開並提供文件引用。
 - **插槽節點（橘框/:::slot）**：外部傳入之 `child`、`builder` 或內容參數。
-

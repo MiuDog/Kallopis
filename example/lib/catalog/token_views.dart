@@ -78,7 +78,7 @@ class Swatch extends StatelessWidget {
         Container(
           height: 56,
           alignment: Alignment.center,
-          padding: EdgeInsets.symmetric(horizontal: klp.space.compact),
+          padding: EdgeInsets.symmetric(horizontal: klp.space.contentInset),
           decoration: BoxDecoration(
             color: color,
             borderRadius: BorderRadius.circular(klp.shape.card),
@@ -221,7 +221,7 @@ class TypeSample extends StatelessWidget {
           Row(
             children: [
               KlpText(role.name, role: KlpTextRole.body),
-              SizedBox(width: klp.space.compact),
+              SizedBox(width: klp.space.contentInlineGap),
               KlpText(
                 '${definition.fontSize.toStringAsFixed(0)}pt · '
                 'leading ${definition.lineHeight.toStringAsFixed(2)} · '

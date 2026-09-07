@@ -21,22 +21,28 @@ flowchart TD
   root["KlpThemePreviewTile"]:::root
   n1["ClipRRect"]
   root --> n1
-  n2["CustomPaint"]
+  n2["Stack"]
   n1 --> n2
-  n3["Semantics"]
-  n1 --> n3
-  n4["SizedBox"]
-  n3 --> n4
-  n5["KlpPressable"]:::reference
-  n4 --> n5
-  n6["Opacity"]
-  n4 --> n6
-  n7["Column"]
-  n4 --> n7
-  n8["KlpText"]:::reference
+  n3["CustomPaint"]
+  n2 --> n3
+  n4["IgnorePointer"]
+  n2 --> n4
+  n5["ColoredBox"]
+  n2 --> n5
+  n6["Semantics"]
+  n5 --> n6
+  n7["SizedBox"]
+  n6 --> n7
+  n8["KlpPressable"]:::reference
   n7 --> n8
-  n9["child / slot"]:::slot
+  n9["Opacity"]
   n7 --> n9
+  n10["Column"]
+  n7 --> n10
+  n11["KlpText"]:::reference
+  n10 --> n11
+  n12["child / slot"]:::slot
+  n10 --> n12
 ```
 
 ## 外部元件引用
@@ -46,7 +52,7 @@ flowchart TD
 
 ## 程式碼證據
 
-- 檔案路徑：[`lib/src/shell/klp_theme_preview_tile.dart`](../../../../lib/src/shell/klp_theme_preview_tile.dart#L11)
+- 檔案路徑：[`lib/src/shell/theme/klp_theme_preview_tile.dart`](../../../../lib/src/shell/theme/klp_theme_preview_tile.dart#L10)
 - 宣告型態：`StatelessWidget`
 
 ## 閱讀說明
@@ -55,4 +61,3 @@ flowchart TD
 - **容器節點（圓角/綠框）**：本專案之純容器元件（如 `KlpSurface` 等），已持續向下展開其子樹。
 - **虛線/引號節點（黃框/:::reference）**：本專案其他功能性元件，依規則停止展開並提供文件引用。
 - **插槽節點（橘框/:::slot）**：外部傳入之 `child`、`builder` 或內容參數。
-

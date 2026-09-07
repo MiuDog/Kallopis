@@ -9,16 +9,19 @@ void main() {
     await tester.pumpWidget(
       const KlpApp(
         showWindowHeader: false,
-        home: KlpAppScreen(
-          child: SizedBox(
-            key: ValueKey('sidebar-frame'),
-            width: 300,
-            height: 320,
-            child: KlpPrimarySidebarFrame(
-              header: SizedBox.shrink(),
-              navigation: SizedBox.shrink(),
-              explorer: SizedBox(key: ValueKey('sidebar-explorer')),
-              footer: KlpStatusIndicator(label: 'Saved locally'),
+        home: KlpPanelFrame(
+          padding: EdgeInsets.zero,
+          content: KlpAppScreen(
+            child: SizedBox(
+              key: ValueKey('sidebar-frame'),
+              width: 300,
+              height: 320,
+              child: KlpPrimarySidebarFrame(
+                header: SizedBox.shrink(),
+                navigation: SizedBox.shrink(),
+                explorer: SizedBox(key: ValueKey('sidebar-explorer')),
+                status: KlpStatusItemData(label: 'Saved locally'),
+              ),
             ),
           ),
         ),
@@ -33,12 +36,12 @@ void main() {
     );
     final indicator = find.byType(KlpStatusIndicator);
     final indicatorRect = tester.getRect(indicator);
-		final theme = tester.element(indicator).klp;
+    final theme = tester.element(indicator).klp;
 
     expect(indicatorRect.top, explorerRect.bottom);
-    expect(indicatorRect.bottom, frameRect.bottom);
+    expect(indicatorRect.bottom, frameRect.bottom - theme.space.dockMargin);
     expect(indicatorRect.height, theme.space.chromeStatusBar);
-		expect(indicatorRect.left, explorerRect.left);
-		expect(indicatorRect.right, explorerRect.right);
+    expect(indicatorRect.left, explorerRect.left);
+    expect(indicatorRect.right, explorerRect.right);
   });
 }

@@ -13,7 +13,7 @@ class KlpPopover extends StatelessWidget {
   Widget build(BuildContext context) {
     return KlpSurface(
       tone: KlpSurfaceTone.component,
-      padding: padding ?? EdgeInsets.all(context.klp.space.compact),
+      padding: padding ?? EdgeInsets.all(context.klp.space.overlayContentInset),
       child: child,
     );
   }

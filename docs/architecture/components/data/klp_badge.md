@@ -4,7 +4,7 @@
 
 - **核心元件**：`KlpBadge`
 - **所屬領域**：`data — 資料呈現`
-- **核心職責**：狀態標記 (Badge)。
+- **核心職責**：狀態標記 (Badge)。預設使用 12px／16px 文字、6px 水平與 2px 垂直內距， 組成約 20px 高的 pill。
 - **包含範圍**：`build()` 內部建構的完整 Widget 樹（展開 Flutter 原生元件與純容器）
 - **外部引用**：本專案其他非純容器元件（遇引用即停下並鏈結）
 
@@ -39,7 +39,7 @@ flowchart TD
 
 ## 程式碼證據
 
-- 檔案路徑：[`lib/src/data/klp_badge.dart`](../../../../lib/src/data/klp_badge.dart#L20)
+- 檔案路徑：[`lib/src/data/badge/klp_badge.dart`](../../../../lib/src/data/badge/klp_badge.dart#L21)
 - 宣告型態：`StatelessWidget`
 
 ## 閱讀說明
@@ -48,4 +48,3 @@ flowchart TD
 - **容器節點（圓角/綠框）**：本專案之純容器元件（如 `KlpSurface` 等），已持續向下展開其子樹。
 - **虛線/引號節點（黃框/:::reference）**：本專案其他功能性元件，依規則停止展開並提供文件引用。
 - **插槽節點（橘框/:::slot）**：外部傳入之 `child`、`builder` 或內容參數。
-

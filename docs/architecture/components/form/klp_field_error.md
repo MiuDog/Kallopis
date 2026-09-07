@@ -33,7 +33,7 @@ flowchart TD
 
 ## 程式碼證據
 
-- 檔案路徑：[`lib/src/form/klp_form.dart`](../../../../lib/src/form/klp_form.dart#L287)
+- 檔案路徑：[`lib/src/form/core/klp_field_error.dart`](../../../../lib/src/form/core/klp_field_error.dart#L8)
 - 宣告型態：`StatelessWidget`
 
 ## 閱讀說明
@@ -42,4 +42,3 @@ flowchart TD
 - **容器節點（圓角/綠框）**：本專案之純容器元件（如 `KlpSurface` 等），已持續向下展開其子樹。
 - **虛線/引號節點（黃框/:::reference）**：本專案其他功能性元件，依規則停止展開並提供文件引用。
 - **插槽節點（橘框/:::slot）**：外部傳入之 `child`、`builder` 或內容參數。
-

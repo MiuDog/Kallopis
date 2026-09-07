@@ -34,7 +34,7 @@ class KlpSettingsField extends StatelessWidget {
             SizedBox(height: klp.space.tight),
             KlpText(description!, tone: KlpTextTone.muted),
           ],
-          SizedBox(height: klp.space.compact),
+					SizedBox(height: klp.space.contentStackGap),
           child,
         ],
       ),
@@ -70,13 +70,13 @@ class KlpSettingsActionBar extends StatelessWidget {
       ),
       child: KlpSurface(
         tone: KlpSurfaceTone.overlay,
-        padding: EdgeInsets.all(klp.space.compact),
+				padding: EdgeInsets.all(klp.space.contentInset),
         child: Row(
           children: [
             Expanded(
               child: KlpText(message, role: KlpTextRole.bodyStrong, tone: tone),
             ),
-            SizedBox(width: klp.space.compact),
+						SizedBox(width: klp.space.actionGap),
             Flexible(
               child: Wrap(
                 alignment: WrapAlignment.end,

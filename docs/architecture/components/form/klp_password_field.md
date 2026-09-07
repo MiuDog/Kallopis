@@ -29,25 +29,28 @@ flowchart TD
   n2 --> n4
   n5["Material"]
   n4 --> n5
-  n6["GestureDetector"]
+  n6["Padding"]
   n5 --> n6
-  n7["Padding"]
+  n7["KlpIcon"]:::reference
   n6 --> n7
-  n8["Center"]
-  n7 --> n8
-  n9["Wrap"]
+  n8["Semantics"]
+  n6 --> n8
+  n9["InkWell"]
   n8 --> n9
-  n10["child / slot"]:::slot
+  n10["Wrap"]
   n8 --> n10
+  n11["child / slot"]:::slot
+  n8 --> n11
 ```
 
 ## 外部元件引用
 
+- [`KlpIcon`](../foundation/klp_icon.md) — `foundation — 圖示、色盤、度量`
 - [`KlpText`](../typography/klp_text.md) — `typography — 文字`
 
 ## 程式碼證據
 
-- 檔案路徑：[`lib/src/form/klp_form_controls.dart`](../../../../lib/src/form/klp_form_controls.dart#L101)
+- 檔案路徑：[`lib/src/form/input/klp_password_field.dart`](../../../../lib/src/form/input/klp_password_field.dart#L12)
 - 宣告型態：`StatefulWidget`
 
 ## 閱讀說明
@@ -56,4 +59,3 @@ flowchart TD
 - **容器節點（圓角/綠框）**：本專案之純容器元件（如 `KlpSurface` 等），已持續向下展開其子樹。
 - **虛線/引號節點（黃框/:::reference）**：本專案其他功能性元件，依規則停止展開並提供文件引用。
 - **插槽節點（橘框/:::slot）**：外部傳入之 `child`、`builder` 或內容參數。
-

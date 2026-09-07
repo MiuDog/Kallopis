@@ -2,7 +2,7 @@ import 'dart:math' as math;
 
 import 'package:flutter/widgets.dart';
 
-import '../shell/klp_theme_preview_tile.dart';
+import '../shell/theme/klp_theme_preview_tile.dart';
 import '../theme/klp_theme.dart';
 
 /// 顏色模式預覽的文案與可用狀態。

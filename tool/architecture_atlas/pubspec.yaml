@@ -1,0 +1,6 @@
+name: kallopis_architecture_atlas
+publish_to: none
+environment:
+  sdk: ^3.12.0
+dependencies:
+  analyzer: 10.1.0

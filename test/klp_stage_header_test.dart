@@ -11,12 +11,15 @@ void main() {
     await tester.pumpWidget(
       const KlpApp(
         showWindowHeader: false,
-        home: KlpAppScreen(
-          child: KlpStageHeader(
-            projectName: 'Notist',
-            sectionLabel: 'Flow',
-            title: '第一份筆記',
-            typeLabel: 'FLOW',
+        home: KlpPanelFrame(
+          padding: EdgeInsets.zero,
+          content: KlpAppScreen(
+            child: KlpStageHeader(
+              projectName: 'Notist',
+              sectionLabel: 'Flow',
+              title: '第一份筆記',
+              typeLabel: 'FLOW',
+            ),
           ),
         ),
       ),
@@ -42,11 +45,14 @@ void main() {
     await tester.pumpWidget(
       const KlpApp(
         showWindowHeader: false,
-        home: KlpStageHeader(
-          projectName: 'Notist',
-          sectionLabel: 'Flow',
-          title: '第一份筆記',
-          typeLabel: 'FLOW',
+        home: KlpPanelFrame(
+          padding: EdgeInsets.zero,
+          content: KlpStageHeader(
+            projectName: 'Notist',
+            sectionLabel: 'Flow',
+            title: '第一份筆記',
+            typeLabel: 'FLOW',
+          ),
         ),
       ),
     );
@@ -68,17 +74,22 @@ void main() {
     await tester.pumpWidget(
       KlpApp(
         showWindowHeader: false,
-        home: SizedBox(
-          width: 420,
-          height: 240,
-          child: KlpStageFrame.workbench(
-            projectName: 'Notist',
-            sectionLabel: 'Flow',
-            title: '第一份筆記',
-            typeLabel: 'FLOW',
-            content: const SizedBox.expand(),
-            statusLeading: 'Saved locally',
-            statusTrailing: '100% · 1 frame',
+        home: KlpPanelFrame(
+          padding: EdgeInsets.zero,
+          content: SizedBox(
+            width: 420,
+            height: 240,
+            child: KlpStageFrame.workbench(
+              projectName: 'Notist',
+              sectionLabel: 'Flow',
+              title: '第一份筆記',
+              typeLabel: 'FLOW',
+              content: const SizedBox.expand(),
+              status: const KlpStatusBarData(
+                leading: [KlpStatusItemData(label: 'Saved locally')],
+                trailing: [KlpStatusItemData(label: '100% · 1 frame')],
+              ),
+            ),
           ),
         ),
       ),
@@ -95,12 +106,15 @@ void main() {
     await tester.pumpWidget(
       const KlpApp(
         showWindowHeader: false,
-        home: SizedBox(
-          key: ValueKey('stage-without-header'),
-          width: 420,
-          height: 240,
-          child: KlpStageFrame(
-            content: SizedBox(key: ValueKey('stage-content')),
+        home: KlpPanelFrame(
+          padding: EdgeInsets.zero,
+          content: SizedBox(
+            key: ValueKey('stage-without-header'),
+            width: 420,
+            height: 240,
+            child: KlpStageFrame(
+              content: SizedBox(key: ValueKey('stage-content')),
+            ),
           ),
         ),
       ),

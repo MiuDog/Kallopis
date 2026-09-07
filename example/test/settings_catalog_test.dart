@@ -9,7 +9,7 @@ import 'package:kallopis_catalog/catalog_shell.dart';
 void main() {
   test('Catalog 登錄顏色模式與全部 Settings 公開元件', () {
     expect(
-      catalogGroups.singleWhere((group) => group.label == 'Colors').pages,
+      catalogGroups.singleWhere((group) => group.id == 'foundation').pages,
       contains(colorModesPage),
     );
     expect(

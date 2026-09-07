@@ -21,33 +21,32 @@ flowchart TD
   root["KlpStatusBar"]:::root
   n1["LayoutBuilder"]
   root --> n1
-  n2["Padding"]
+  n2["Row"]
   root --> n2
-  n3["Row"]
+  n3["Expanded"]
   n2 --> n3
-  n4["Container"]
+  n4["KlpStatusIndicator"]:::reference
   n3 --> n4
-  n5["SizedBox"]
-  n4 --> n5
-  n6["Expanded"]
+  n5["Padding"]
+  n3 --> n5
+  n6["KlpText"]:::reference
   n5 --> n6
-  n7["KlpText"]:::reference
-  n6 --> n7
-  n8["leading (slot)"]:::slot
-  n6 --> n8
-  n9["trailing (slot)"]:::slot
-  n6 --> n9
-  n10["child / slot"]:::slot
-  n6 --> n10
+  n7["leading (slot)"]:::slot
+  n5 --> n7
+  n8["trailing (slot)"]:::slot
+  n5 --> n8
+  n9["child / slot"]:::slot
+  n5 --> n9
 ```
 
 ## 外部元件引用
 
+- [`KlpStatusIndicator`](../feedback/klp_status_indicator.md) — `feedback — 狀態與回饋`
 - [`KlpText`](../typography/klp_text.md) — `typography — 文字`
 
 ## 程式碼證據
 
-- 檔案路徑：[`lib/src/shell/klp_status_bar.dart`](../../../../lib/src/shell/klp_status_bar.dart#L6)
+- 檔案路徑：[`lib/src/shell/status/klp_status_bar.dart`](../../../../lib/src/shell/status/klp_status_bar.dart#L7)
 - 宣告型態：`StatelessWidget`
 
 ## 閱讀說明
@@ -56,4 +55,3 @@ flowchart TD
 - **容器節點（圓角/綠框）**：本專案之純容器元件（如 `KlpSurface` 等），已持續向下展開其子樹。
 - **虛線/引號節點（黃框/:::reference）**：本專案其他功能性元件，依規則停止展開並提供文件引用。
 - **插槽節點（橘框/:::slot）**：外部傳入之 `child`、`builder` 或內容參數。
-

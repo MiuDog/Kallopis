@@ -3,7 +3,7 @@ import 'dart:math' as math;
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-import '../controls/klp_toggle.dart';
+import '../controls/toggle/klp_toggle.dart';
 import '../foundation/klp_icon.dart';
 import '../foundation/klp_icons.dart';
 import '../interaction/klp_roving_index.dart';
@@ -29,7 +29,8 @@ abstract final class _KlpMenuMetrics {
       context.klp.menuPadding;
   static double itemHeight(BuildContext context) => context.klp.menuItemHeight;
   static double iconSize(BuildContext context) => context.klp.space.iconSmall;
-  static double iconGap(BuildContext context) => context.klp.space.compact;
+  static double iconGap(BuildContext context) =>
+      context.klp.space.overlayItemGap;
   static double iconOpticalOffsetY(BuildContext context) =>
       context.klp.geometry.optical.menuIconOffsetY;
   // 這三項來自 theme，因此不能是編譯期常數。
@@ -105,7 +106,8 @@ abstract final class KlpMenuLayout {
         _KlpMenuMetrics.headerHeight(context) +
         context.klp.space.tight +
         itemCount * _KlpMenuMetrics.itemHeight(context) +
-        separatorCount * (context.klp.shape.stroke + context.klp.space.compact);
+        separatorCount *
+            (context.klp.shape.stroke + context.klp.space.tight * 2);
   }
 
   static Offset resolvePosition({
@@ -122,16 +124,18 @@ abstract final class KlpMenuLayout {
     );
     final left = anchor.dx
         .clamp(
-          context.klp.space.compact,
+          context.klp.geometry.layout.overlayViewportInset,
           viewport.width -
               _KlpMenuMetrics.width(context) -
-              context.klp.space.compact,
+              context.klp.geometry.layout.overlayViewportInset,
         )
         .toDouble();
     final top = anchor.dy
         .clamp(
-          context.klp.space.compact,
-          viewport.height - height - context.klp.space.compact,
+          context.klp.geometry.layout.overlayViewportInset,
+          viewport.height -
+              height -
+              context.klp.geometry.layout.overlayViewportInset,
         )
         .toDouble();
 
@@ -152,18 +156,28 @@ abstract final class KlpMenuLayout {
     );
     final preferredLeft = parentPosition.dx + width + context.klp.space.tight;
     final left =
-        preferredLeft + width + context.klp.space.compact <= viewport.width
+        preferredLeft +
+                    width +
+                    context.klp.geometry.layout.overlayViewportInset <=
+                viewport.width
         ? preferredLeft
         : parentPosition.dx - width - context.klp.space.tight;
     final top = parentPosition.dy
         .clamp(
-          context.klp.space.compact,
-          viewport.height - height - context.klp.space.compact,
+          context.klp.geometry.layout.overlayViewportInset,
+          viewport.height -
+              height -
+              context.klp.geometry.layout.overlayViewportInset,
         )
         .toDouble();
 
     return Offset(
-      left.clamp(context.klp.space.compact, viewport.width - width).toDouble(),
+      left
+          .clamp(
+            context.klp.geometry.layout.overlayViewportInset,
+            viewport.width - width,
+          )
+          .toDouble(),
       top,
     );
   }

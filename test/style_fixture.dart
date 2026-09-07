@@ -1,5 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:kallopis/kallopis.dart';
+import 'package:kallopis/src/theme/klp_component_theme.dart';
+import 'package:kallopis/src/theme/klp_geometry_theme.dart';
+import 'package:kallopis/src/theme/klp_motion_theme.dart';
+import 'package:kallopis/src/theme/klp_shape_theme.dart';
+import 'package:kallopis/src/theme/klp_spacing_theme.dart';
+import 'package:kallopis/src/theme/klp_surface_theme.dart';
+import 'package:kallopis/src/theme/klp_theme.dart';
+import 'package:kallopis/src/theme/klp_typography_theme.dart';
+import 'package:kallopis/src/theme/klp_visual_style.dart';
 
 /// 一套與 `KlpVisualStyle.defaultStyle` **每個維度都不同**的風格，只存在於測試裡。
 ///
@@ -12,89 +20,113 @@ import 'package:kallopis/kallopis.dart';
 ///
 /// **切換到它若需要改動任何元件的程式碼，就代表該元件還在硬編碼風格。**
 final KlpVisualStyle contrastingStyle = KlpVisualStyle.defaultStyle.copyWith(
-  name: 'contrasting',
+	name: 'contrasting',
 
-  // 顏色一樣取自色梯——連測試都不寫死色碼，否則色梯調整時這裡會悄悄變成孤兒。
-  colors: KlpThemeData.ultraDark,
+	// 顏色一樣取自色梯——連測試都不寫死色碼，否則色梯調整時這裡會悄悄變成孤兒。
+	colors: KlpThemeData.ultraDark,
 
-  // 全域等寬、行高收緊。
-  typography: KlpTypographyTheme.proportional.copyWith(
-    uiFamily: KlpTypographyTheme.proportional.monoFamily,
-    bodyFamily: KlpTypographyTheme.proportional.monoFamily,
-    bodyLeading: 1.4,
-    headingLeading: 1.3,
-    captionLeading: 1.3,
-    labelTracking: 0,
-    displayTracking: 0,
-  ),
+	// 全域等寬、行高收緊。
+	typography: KlpTypographyTheme.proportional.copyWith(
+		uiFamily: KlpTypographyTheme.proportional.monoFamily,
+		bodyFamily: KlpTypographyTheme.proportional.monoFamily,
+		bodyLeading: 1.4,
+		headingLeading: 1.3,
+		captionLeading: 1.3,
+		labelTracking: 0,
+		displayTracking: 0,
+	),
 
-  // 高密度。
-  spacing: KlpSpacingTheme.comfortableDensity.copyWith(
-    hairline: 0,
-    tight: 2,
-    compact: 4,
-    base: 8,
-    comfortable: 8,
-    loose: 12,
-    section: 16,
-    page: 16,
-    controlPaddingX: 8,
-    controlPaddingY: 2,
-    containerPadding: 8,
-    itemGap: 4,
-    groupGap: 8,
-    controlHeight: 24,
-    controlHeightXSmall: 18,
-    controlHeightSmall: 20,
-    controlHeightLarge: 30,
-    iconSmall: 12,
-    icon: 14,
-    iconLarge: 18,
-    chromeHeader: 36,
-    chromeStatusBar: 22,
-    chromeRail: 40,
-    chromeTab: 24,
-    iconButton: 22,
-  ),
+	// 高密度。
+	spacing: KlpSpacingTheme.comfortableDensity.copyWith(
+		hairline: 0,
+		tight: 2,
+		contentInlineGap: 4,
+		contentStackGap: 4,
+		contentInset: 4,
+		controlContentGap: 4,
+		controlInset: 4,
+		actionGap: 4,
+		chromeGap: 4,
+		chromePanelInset: 4,
+		chromeToolbarGap: 4,
+		navigationItemInset: 4,
+		navigationRailInset: 4,
+		navigationRailItemGap: 4,
+		overlayContentInset: 4,
+		overlayHeadingGap: 4,
+		overlayItemGap: 4,
+		navigationSectionGap: 3,
+		appFrameInset: 2,
+		workbenchContentInset: 2,
+		windowHeaderMargin: 2,
+		dockMargin: 2,
+		base: 8,
+		comfortable: 8,
+		loose: 12,
+		section: 16,
+		page: 16,
+		controlPaddingX: 8,
+		controlPaddingY: 2,
+		containerPadding: 8,
+		itemGap: 4,
+		groupGap: 8,
+		controlHeight: 24,
+		controlHeightXSmall: 18,
+		controlHeightSmall: 20,
+		controlHeightLarge: 30,
+		iconSmall: 12,
+		icon: 14,
+		iconLarge: 18,
+		chromeHeader: 36,
+		chromeStatusBar: 22,
+		chromeRail: 40,
+		chromeTab: 24,
+		iconButton: 22,
+	),
 
-  // 全部直角，虛線更長更疏。
-  shape: KlpShapeTheme.standardShape.copyWith(
-    control: 0,
-    card: 0,
-    panel: 0,
-    pill: 0,
-    dashedLength: 6,
-    dashedGap: 4,
-    dashedOpacity: 1,
-  ),
+	// 全部直角，虛線更長更疏。
+	shape: KlpShapeTheme.standardShape.copyWith(
+		control: 0,
+		card: 0,
+		panel: 0,
+		pill: 0,
+		dashedLength: 6,
+		dashedGap: 4,
+		dashedOpacity: 1,
+	),
 
-  // 完全沒有過場。
-  motion: KlpMotionTheme.standardMotion.copyWith(
-    stateTransition: Duration.zero,
-    overlayEnter: Duration.zero,
-    overlayExit: Duration.zero,
-    standard: Curves.linear,
-    emphasized: Curves.linear,
-  ),
+	// 完全沒有過場。
+	motion: KlpMotionTheme.standardMotion.copyWith(
+		stateTransition: Duration.zero,
+		overlayEnter: Duration.zero,
+		overlayExit: Duration.zero,
+		standard: Curves.linear,
+		emphasized: Curves.linear,
+	),
 
-  // 用實線框分層而不是陰影。
-  surface: KlpSurfaceTheme.elevated.copyWith(
-    separation: KlpSurfaceSeparation.outline,
-    overlayBlur: 0,
-    overlaySpread: 0,
-    overlayOffsetY: 0,
-    overlayShadowOpacity: 0,
-    scrimOpacity: 0.8,
-  ),
+	// 用實線框分層而不是陰影。
+	surface: KlpSurfaceTheme.elevated.copyWith(
+		separation: KlpSurfaceSeparation.outline,
+		overlayBlur: 0,
+		overlaySpread: 0,
+		overlayOffsetY: 0,
+		overlayShadowOpacity: 0,
+		scrimOpacity: 0.8,
+	),
 
-  // 控制項一律帶實線框。
-  components: KlpComponentTheme.inherited.copyWith(
-    buttonRadius: 0,
-    buttonBorderWidth: 1,
-    fieldRadius: 0,
-    fieldBorderWidth: 1,
-    menuRadius: 0,
-    cardRadius: 0,
-    badgeRadius: 0,
-  ),
+	// 控制項一律帶實線框。
+	components: KlpComponentTheme.inherited.copyWith(
+		buttonRadius: 0,
+		buttonBorderWidth: 1,
+		fieldRadius: 0,
+		fieldBorderWidth: 1,
+		menuRadius: 0,
+		cardRadius: 0,
+		badgeRadius: 0,
+	),
+
+	// 色彩平面的尺寸必須能從 geometry theme 完整抵達元件。
+	geometry: KlpGeometryTheme.standard.copyWith(
+		control: KlpGeometryTheme.standard.control.copyWith(colorPlaneExtent: 120),
+	),
 );

@@ -25,14 +25,20 @@ flowchart TD
   n1 --> n2
   n3["SizedBox"]
   n1 --> n3
-  n4["Wrap"]
+  n4["Semantics"]
   n3 --> n4
-  n5["GestureDetector"]
-  n3 --> n5
-  n6["Container"]
+  n5["Container"]
+  n4 --> n5
+  n6["Wrap"]
   n5 --> n6
-  n7["child / slot"]:::slot
-  n6 --> n7
+  n7["Material"]
+  n5 --> n7
+  n8["InkWell"]
+  n7 --> n8
+  n9["Padding"]
+  n7 --> n9
+  n10["child / slot"]:::slot
+  n9 --> n10
 ```
 
 ## 外部元件引用
@@ -41,7 +47,7 @@ flowchart TD
 
 ## 程式碼證據
 
-- 檔案路徑：[`lib/src/form/klp_form_controls.dart`](../../../../lib/src/form/klp_form_controls.dart#L692)
+- 檔案路徑：[`lib/src/form/selection/klp_multi_select_field.dart`](../../../../lib/src/form/selection/klp_multi_select_field.dart#L9)
 - 宣告型態：`StatelessWidget`
 
 ## 閱讀說明
@@ -50,4 +56,3 @@ flowchart TD
 - **容器節點（圓角/綠框）**：本專案之純容器元件（如 `KlpSurface` 等），已持續向下展開其子樹。
 - **虛線/引號節點（黃框/:::reference）**：本專案其他功能性元件，依規則停止展開並提供文件引用。
 - **插槽節點（橘框/:::slot）**：外部傳入之 `child`、`builder` 或內容參數。
-

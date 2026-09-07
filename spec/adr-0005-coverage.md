@@ -33,13 +33,13 @@ Kallopis only supplies visual composition, accessibility, and finite-state vocab
   `KlpAttachmentTray`, and `KlpPromptExamples`.
 - Discovery uses `KlpDiscoveryQuestionCard`; finite navigation remains typed callbacks supplied by
   the product controller.
-- Requirement entries use `KlpRequirementData` and `KlpRequirementSummary`, including distinct
-  assumption, conflict, answer, and confirmation states.
+- Requirement entries are Notist product components. Kallopis only supplies the generic feedback,
+  typography, surface, and control primitives used to compose them.
 
 ## Proposal review and execution
 
-- `KlpProposalReview` composes metadata, summary, ordered changes, issues, optional diff and
-  dependency surfaces, and three independent confirm/reject/revise callbacks.
+- Proposal review is owned by Notist. Kallopis keeps only generic diff, feedback, workflow progress,
+  and action controls without Requirement or Proposal domain models.
 - A stale message disables confirmation without converting the action to chat text.
 - Applying, applied, and failed states use `KlpWorkflowProgress` and
   `KlpWorkflowStateSurface`; callers supply real stage names and retry actions.

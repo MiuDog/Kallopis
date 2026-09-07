@@ -4,7 +4,7 @@
 
 - **核心元件**：`KlpSidebarFrame`
 - **所屬領域**：`shell — 應用外殼`
-- **核心職責**：側邊欄獨立 surface：content 與選用的 footer；不包含 Rail。
+- **核心職責**：側邊欄：由側邊欄自己決定內容與 footer 的內距，再交給無內距的 PanelFrame 提供背景、圓角與外側 dock margin。
 - **包含範圍**：`build()` 內部建構的完整 Widget 樹（展開 Flutter 原生元件與純容器）
 - **外部引用**：本專案其他非純容器元件（遇引用即停下並鏈結）
 
@@ -21,10 +21,10 @@ flowchart TD
   root["KlpSidebarFrame"]:::root
   n1["KlpPanelFrame"]:::container
   root --> n1
-  n2["content / slot"]:::slot
+  n2["Padding"]
   n1 --> n2
-  n3["footer / slot"]:::slot
-  n1 --> n3
+  n3["child / slot"]:::slot
+  n2 --> n3
 ```
 
 ## 外部元件引用
@@ -33,7 +33,7 @@ flowchart TD
 
 ## 程式碼證據
 
-- 檔案路徑：[`lib/src/shell/klp_sidebar_frame.dart`](../../../../lib/src/shell/klp_sidebar_frame.dart#L7)
+- 檔案路徑：[`lib/src/shell/sidebar/klp_sidebar_frame.dart`](../../../../lib/src/shell/sidebar/klp_sidebar_frame.dart#L8)
 - 宣告型態：`StatelessWidget`
 
 ## 閱讀說明

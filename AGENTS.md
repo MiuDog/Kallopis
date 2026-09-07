@@ -1,12 +1,25 @@
 # Kallopis — Agent 作業入口（AGENTS.md）
 
 Kallopis 是 `-ist` 產品家族共用的 **Flutter 視覺層**：design token、theme、排版與無產品語意的
-共用元件。公開入口是 `lib/kallopis.dart`，實作在 `lib/src/`，元件目錄在 `example/`，
+共用元件。公開入口依責任分為 `lib/kallopis_theme.dart`、`lib/kallopis_foundation.dart`、
+`lib/kallopis_experimental.dart`，`lib/kallopis.dart` 只保留相容總入口；實作在 `lib/src/`，元件目錄在 `example/`，
 決策在 `spec/decisions/`。
 
 **範圍、抽層規則與拒絕清單見 [`README.md`](README.md)。**
 
 本檔為通用入口（Codex 等工具原生讀取；CLAUDE.md / GEMINI.md 應指向本檔）。
+
+## 架構分析入口
+
+分析 `lib/src` 前，先從 [架構圖集](docs/architecture/README.md) 選取目錄與元件，
+沿圖中的依賴、宣告與來源行號進入程式。圖集描述目前實作，不取代設計契約。
+程式變動後依 [生成器說明](tool/architecture_atlas/README.md) 檢查並更新圖集，
+同步核對人工摘要；不要直接修改自動生成頁面。
+
+**所有 agent 開發前必須閱讀並遵守
+[前端架構契約](docs/architecture/frontend-boundaries.md)。** 不得破壞 Kallopis／Notist／Krepis
+的 authority、公開 API 分級或 theme／environment／l10n 的單一傳遞來源；變更完成時必須執行
+`test/frontend_architecture_boundary_test.dart`，不得以新增例外規避失敗。
 
 ## 硬規則
 
@@ -30,6 +43,10 @@ Kallopis 是 `-ist` 產品家族共用的 **Flutter 視覺層**：design token�
 - **一條規則只能有一個實作。** 同一個值若在 theme 與元件各有一份預設，兩者必然靜默分岔
   ——改了 theme 卻沒改元件時不會報錯，只是沒生效。
 - **加 allowlist／調高 baseline 等同於關掉閘門。** 若不得不加，必須在同一次提交寫明何時移除。
+- **公開入口必須保持分級。** `kallopis_theme.dart` 與 `kallopis_foundation.dart` 是 Stable；
+  `kallopis_experimental.dart` 不承諾相容，且不得被 Stable 入口反向匯出；`lib/src` 永遠是 private。
+- **產品語意不得回流。** Note／Requirement／Proposal 類型與產品目錄屬於 Notist；平台元件一律透過
+  `KlpEnvironmentScope` 讀取平台，禁止自行建立第二來源。
 
 ## 環境事實
 

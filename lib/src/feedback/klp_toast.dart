@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../controls/klp_button.dart';
+import '../controls/button/klp_button.dart';
 import '../foundation/klp_icon.dart';
 import '../l10n/klp_localizations.dart';
 import '../theme/klp_theme.dart';
@@ -67,7 +67,7 @@ class KlpToast extends StatelessWidget {
                       ),
                     ),
                   ),
-                  SizedBox(width: context.klp.space.compact),
+									SizedBox(width: context.klp.space.contentInlineGap),
                   Expanded(
                     child: KlpText(
                       tone.label,
@@ -138,7 +138,7 @@ class KlpToastStack extends StatelessWidget {
         for (var index = 0; index < children.length; index++) ...[
           children[index],
           if (index < children.length - 1)
-            SizedBox(height: context.klp.space.compact),
+						SizedBox(height: context.klp.space.contentStackGap),
         ],
       ],
     );

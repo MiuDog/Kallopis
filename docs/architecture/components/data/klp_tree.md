@@ -4,7 +4,7 @@
 
 - **核心元件**：`KlpTree`
 - **所屬領域**：`data — 資料呈現`
-- **核心職責**：樹狀節點清單，用於檔案總管、大綱這類階層式導覽。  展開／選取狀態預設由每個 [KlpTreeNode] 自帶（[KlpTreeNode.expanded]／ [KlpTreeNode.selected]），適合靜態或一次性渲染；若要由呼叫端集中控管， 傳入 [expandedIds]／[selectedId] 即可覆蓋節點自帶的狀態。
+- **核心職責**：[KlpTree]／[KlpTreeItem] 的一個節點。  [hasChildren] 與 [children] 是分開的兩個訊號：[hasChildren] 讓呼叫端在還沒 載入子節點（例如遠端延遲載入）時就先畫出展開箭頭，[children] 才是實際已知 的子節點資料。[expanded] 是這個節點的預設展開狀態，只有在 [KlpTree.expandedIds] 為 null 時才生效——傳了 `expandedIds` 之後展開狀態 改由呼叫端控管，這個欄位就不再讀取。[tone] 為節點加上狀態色（例如標示 錯誤或警告的檔案）。 樹狀節點清單，用於檔案總管、大綱這類階層式導覽。  展開／選取狀態預設由每個 [KlpTreeNode] 自帶（[KlpTreeNode.expanded]／ [KlpTreeNode.selected]），適合靜態或一次性渲染；若要由呼叫端集中控管， 傳入 [expandedIds]／[selectedId] 即可覆蓋節點自帶的狀態。
 - **包含範圍**：`build()` 內部建構的完整 Widget 樹（展開 Flutter 原生元件與純容器）
 - **外部引用**：本專案其他非純容器元件（遇引用即停下並鏈結）
 
@@ -33,7 +33,7 @@ flowchart TD
 
 ## 程式碼證據
 
-- 檔案路徑：[`lib/src/data/klp_advanced_data.dart`](../../../../lib/src/data/klp_advanced_data.dart#L315)
+- 檔案路徑：[`lib/src/data/advanced/klp_advanced_data.dart`](../../../../lib/src/data/advanced/klp_advanced_data.dart#L235)
 - 宣告型態：`StatelessWidget`
 
 ## 閱讀說明
@@ -42,4 +42,3 @@ flowchart TD
 - **容器節點（圓角/綠框）**：本專案之純容器元件（如 `KlpSurface` 等），已持續向下展開其子樹。
 - **虛線/引號節點（黃框/:::reference）**：本專案其他功能性元件，依規則停止展開並提供文件引用。
 - **插槽節點（橘框/:::slot）**：外部傳入之 `child`、`builder` 或內容參數。
-

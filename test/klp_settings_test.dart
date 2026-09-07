@@ -286,7 +286,7 @@ void main() {
     final space = tester.element(find.byType(KlpSettingsContentPane)).klp.space;
 
     expect(close.top - pane.top, space.tight);
-    expect(pane.right - close.right, space.compact);
+		expect(pane.right - close.right, space.contentInset);
   });
 
   testWidgets('theme mode picker 呈現所有選項並回報選取', (tester) async {

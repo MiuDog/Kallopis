@@ -38,9 +38,9 @@ class KlpInlineNotice extends StatelessWidget {
 							textBaseline: TextBaseline.alphabetic,
 							children: [
 								KlpIcon(tone.icon, size: iconSize, color: toneColor),
-								SizedBox(width: context.klp.space.compact),
+								SizedBox(width: context.klp.space.contentInlineGap),
 								KlpText(tone.label, role: KlpTextRole.label, tone: KlpTextTone.muted),
-								SizedBox(width: context.klp.space.compact),
+								SizedBox(width: context.klp.space.contentInlineGap),
 								Flexible(child: KlpText(title, role: KlpTextRole.body)),
 							],
 						),

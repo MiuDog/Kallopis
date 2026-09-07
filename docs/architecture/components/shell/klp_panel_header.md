@@ -19,22 +19,22 @@ flowchart TD
   classDef slot fill:#2E3440,stroke:#D08770,stroke-width:1px,stroke-dasharray: 2 2,color:#D08770;
 
   root["KlpPanelHeader"]:::root
-  n1["Padding"]
+  n1["Column"]
   root --> n1
-  n2["Row"]
+  n2["KlpText"]:::reference
   n1 --> n2
-  n3["SizedBox"]
-  n2 --> n3
-  n4["Expanded"]
+  n3["Padding"]
+  n1 --> n3
+  n4["Row"]
   n3 --> n4
-  n5["Column"]
+  n5["SizedBox"]
   n4 --> n5
-  n6["KlpText"]:::reference
+  n6["Expanded"]
   n5 --> n6
   n7["leading (slot)"]:::slot
-  n5 --> n7
+  n6 --> n7
   n8["child / slot"]:::slot
-  n5 --> n8
+  n6 --> n8
 ```
 
 ## 外部元件引用
@@ -43,7 +43,7 @@ flowchart TD
 
 ## 程式碼證據
 
-- 檔案路徑：[`lib/src/shell/klp_panel_header.dart`](../../../../lib/src/shell/klp_panel_header.dart#L6)
+- 檔案路徑：[`lib/src/shell/panel/klp_panel_header.dart`](../../../../lib/src/shell/panel/klp_panel_header.dart#L8)
 - 宣告型態：`StatelessWidget`
 
 ## 閱讀說明
@@ -52,4 +52,3 @@ flowchart TD
 - **容器節點（圓角/綠框）**：本專案之純容器元件（如 `KlpSurface` 等），已持續向下展開其子樹。
 - **虛線/引號節點（黃框/:::reference）**：本專案其他功能性元件，依規則停止展開並提供文件引用。
 - **插槽節點（橘框/:::slot）**：外部傳入之 `child`、`builder` 或內容參數。
-

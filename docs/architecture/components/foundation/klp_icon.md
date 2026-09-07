@@ -19,7 +19,8 @@ flowchart TD
   classDef slot fill:#2E3440,stroke:#D08770,stroke-width:1px,stroke-dasharray: 2 2,color:#D08770;
 
   root["KlpIcon"]:::root
-  root --> leaf["Widget (自訂/原生佈局)"]
+  n1["Icon"]
+  root --> n1
 ```
 
 ## 外部元件引用
@@ -28,7 +29,7 @@ flowchart TD
 
 ## 程式碼證據
 
-- 檔案路徑：[`lib/src/foundation/klp_icon.dart`](../../../../lib/src/foundation/klp_icon.dart#L6)
+- 檔案路徑：[`lib/src/foundation/klp_icon.dart`](../../../../lib/src/foundation/klp_icon.dart#L28)
 - 宣告型態：`StatelessWidget`
 
 ## 閱讀說明
@@ -37,4 +38,3 @@ flowchart TD
 - **容器節點（圓角/綠框）**：本專案之純容器元件（如 `KlpSurface` 等），已持續向下展開其子樹。
 - **虛線/引號節點（黃框/:::reference）**：本專案其他功能性元件，依規則停止展開並提供文件引用。
 - **插槽節點（橘框/:::slot）**：外部傳入之 `child`、`builder` 或內容參數。
-

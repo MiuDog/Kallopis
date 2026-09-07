@@ -49,6 +49,23 @@ class KlpLocalizations {
     this.searchCloseLabel = 'Close search',
     this.entityPickerRemoveLabel = 'Remove',
     this.entityPickerApplyLabel = 'Apply',
+		this.dockMoreActionsLabel = '更多操作',
+		this.oklchLightnessLabel = 'Lightness',
+		this.oklchChromaLabel = 'Chroma',
+		this.oklchHueLabel = 'Hue',
+		this.oklchAlphaLabel = 'Alpha',
+		this.oklchLightnessPlaneLabel = 'Lightness plane',
+		this.oklchChromaPlaneLabel = 'Chroma plane',
+		this.oklchHuePlaneLabel = 'Hue plane',
+		this.oklchOriginalPreviewLabel = 'Clipped original',
+		this.oklchFallbackPreviewLabel = 'sRGB fallback',
+		this.oklchFallbackWarningLabel = 'Outside sRGB gamut; fallback reduces chroma.',
+		this.formOptionsLabel = '選擇類型',
+		this.formPasswordShowLabel = '顯示密碼',
+		this.formPasswordHideLabel = '隱藏密碼',
+		this.formQuantityDecreaseLabel = '減少',
+		this.formQuantityIncreaseLabel = '增加',
+		this.formDateRangeCalendarLabel = '選擇日期區間',
   });
 
   /// [KlpToast] 時間戳徽章上的文字。
@@ -95,6 +112,57 @@ class KlpLocalizations {
   /// [KlpEntityPicker] 套用按鈕的文字。
   final String entityPickerApplyLabel;
 
+	/// Dock header 溢位選單與按鈕的無障礙標籤。
+	final String dockMoreActionsLabel;
+
+	/// [KlpOklchColorEditor] 的 Lightness 控制標籤。
+	final String oklchLightnessLabel;
+
+	/// [KlpOklchColorEditor] 的 Chroma 控制標籤。
+	final String oklchChromaLabel;
+
+	/// [KlpOklchColorEditor] 的 Hue 控制標籤。
+	final String oklchHueLabel;
+
+	/// [KlpOklchColorEditor] 的 Alpha 控制標籤。
+	final String oklchAlphaLabel;
+
+	/// [KlpOklchColorPicker] 的 Lightness 平面標籤。
+	final String oklchLightnessPlaneLabel;
+
+	/// [KlpOklchColorPicker] 的 Chroma 平面標籤。
+	final String oklchChromaPlaneLabel;
+
+	/// [KlpOklchColorPicker] 的 Hue 平面標籤。
+	final String oklchHuePlaneLabel;
+
+	/// [KlpOklchColorPicker] 原值裁切預覽的標籤。
+	final String oklchOriginalPreviewLabel;
+
+	/// [KlpOklchColorPicker] sRGB fallback 預覽的標籤。
+	final String oklchFallbackPreviewLabel;
+
+	/// [KlpOklchColorPicker] 超出 sRGB 色域時顯示的說明。
+	final String oklchFallbackWarningLabel;
+
+	/// 複合輸入欄位尾端選項按鈕的無障礙標籤。
+	final String formOptionsLabel;
+
+	/// 密碼欄位顯示密碼按鈕的無障礙標籤。
+	final String formPasswordShowLabel;
+
+	/// 密碼欄位隱藏密碼按鈕的無障礙標籤。
+	final String formPasswordHideLabel;
+
+	/// 數量欄位減少按鈕的無障礙標籤。
+	final String formQuantityDecreaseLabel;
+
+	/// 數量欄位增加按鈕的無障礙標籤。
+	final String formQuantityIncreaseLabel;
+
+	/// 日期區間欄位開啟日曆按鈕的無障礙標籤。
+	final String formDateRangeCalendarLabel;
+
   /// 取得目前子樹適用的字串集合。
   ///
   /// 沒有註冊 [KlpLocalizationsDelegate] 時回退到內建預設值而非拋錯——這與
@@ -122,7 +190,24 @@ class KlpLocalizations {
           searchNextResultLabel == other.searchNextResultLabel &&
           searchCloseLabel == other.searchCloseLabel &&
           entityPickerRemoveLabel == other.entityPickerRemoveLabel &&
-          entityPickerApplyLabel == other.entityPickerApplyLabel;
+          entityPickerApplyLabel == other.entityPickerApplyLabel &&
+				dockMoreActionsLabel == other.dockMoreActionsLabel &&
+				oklchLightnessLabel == other.oklchLightnessLabel &&
+				oklchChromaLabel == other.oklchChromaLabel &&
+				oklchHueLabel == other.oklchHueLabel &&
+				oklchAlphaLabel == other.oklchAlphaLabel &&
+				oklchLightnessPlaneLabel == other.oklchLightnessPlaneLabel &&
+				oklchChromaPlaneLabel == other.oklchChromaPlaneLabel &&
+				oklchHuePlaneLabel == other.oklchHuePlaneLabel &&
+				oklchOriginalPreviewLabel == other.oklchOriginalPreviewLabel &&
+				oklchFallbackPreviewLabel == other.oklchFallbackPreviewLabel &&
+				oklchFallbackWarningLabel == other.oklchFallbackWarningLabel &&
+				formOptionsLabel == other.formOptionsLabel &&
+				formPasswordShowLabel == other.formPasswordShowLabel &&
+				formPasswordHideLabel == other.formPasswordHideLabel &&
+				formQuantityDecreaseLabel == other.formQuantityDecreaseLabel &&
+				formQuantityIncreaseLabel == other.formQuantityIncreaseLabel &&
+				formDateRangeCalendarLabel == other.formDateRangeCalendarLabel;
 
   @override
   int get hashCode => Object.hashAll([
@@ -140,6 +225,23 @@ class KlpLocalizations {
     searchCloseLabel,
     entityPickerRemoveLabel,
     entityPickerApplyLabel,
+		dockMoreActionsLabel,
+		oklchLightnessLabel,
+		oklchChromaLabel,
+		oklchHueLabel,
+		oklchAlphaLabel,
+		oklchLightnessPlaneLabel,
+		oklchChromaPlaneLabel,
+		oklchHuePlaneLabel,
+		oklchOriginalPreviewLabel,
+		oklchFallbackPreviewLabel,
+		oklchFallbackWarningLabel,
+		formOptionsLabel,
+		formPasswordShowLabel,
+		formPasswordHideLabel,
+		formQuantityDecreaseLabel,
+		formQuantityIncreaseLabel,
+		formDateRangeCalendarLabel,
   ]);
 }
 

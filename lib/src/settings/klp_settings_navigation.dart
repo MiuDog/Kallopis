@@ -1,8 +1,8 @@
 import 'package:flutter/widgets.dart';
 
 import '../controls/klp_control_size.dart';
-import '../controls/klp_text_field.dart';
-import '../data/klp_list_tile.dart';
+import '../controls/input/klp_text_field.dart';
+import '../data/list_tile/klp_list_tile.dart';
 import '../foundation/klp_icon.dart';
 import '../foundation/klp_icons.dart';
 import '../interaction/klp_pressable.dart';
@@ -114,7 +114,7 @@ class KlpSettingsNavigationHeader extends StatelessWidget {
         children: [
           if (leading != null) ...[
             leading!,
-            SizedBox(width: klp.space.compact),
+						SizedBox(width: klp.space.contentInlineGap),
           ],
           Expanded(
             child: Column(
@@ -160,7 +160,7 @@ class KlpSettingsNavigationHeader extends StatelessWidget {
           SizedBox(
             height: scopeSwitcher != null && !hasIdentity
                 ? klp.space.tight
-                : klp.space.compact,
+								: klp.space.contentStackGap,
           ),
           search!,
         ],
@@ -218,9 +218,9 @@ class KlpSettingsNavigationGroup extends StatelessWidget {
       children: [
         Padding(
           padding: EdgeInsets.fromLTRB(
-            klp.space.compact,
-            klp.space.compact,
-            klp.space.compact,
+						klp.space.contentInset,
+						klp.space.contentInset,
+						klp.space.contentInset,
             klp.space.tight,
           ),
           child: KlpText(
@@ -274,7 +274,7 @@ class KlpSettingsNavigationItem extends StatelessWidget {
             key: const ValueKey('klp-settings-field-guide'),
             tone: KlpSurfaceTone.transparent,
             radius: klp.shape.none,
-            padding: EdgeInsets.only(left: klp.space.compact),
+						padding: EdgeInsets.only(left: klp.space.contentInset),
             border: Border(
               left: BorderSide(
                 color: klp.color.divider,

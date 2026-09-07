@@ -4,7 +4,7 @@
 
 - **核心元件**：`KlpInlineNotice`
 - **所屬領域**：`feedback — 狀態與回饋`
-- **核心職責**：以語意 tone 顯示行內回饋。icon 尺寸跟隨 body 字級，並與 mono 狀態碼及 UI 標題共用 alphabetic baseline；不同字體風格不得靠 Catalog 局部位移修正。
+- **核心職責**：Kallopis KlpInlineNotice 元件
 - **包含範圍**：`build()` 內部建構的完整 Widget 樹（展開 Flutter 原生元件與純容器）
 - **外部引用**：本專案其他非純容器元件（遇引用即停下並鏈結）
 
@@ -21,28 +21,26 @@ flowchart TD
   root["KlpInlineNotice"]:::root
   n1["LayoutBuilder"]
   root --> n1
-  n2["Row"]
+  n2["Column"]
   root --> n2
-  n3["SizedBox"]
+  n3["Row"]
   n2 --> n3
-  n4["Center"]
+  n4["KlpIcon"]:::reference
   n3 --> n4
-  n5["KlpIcon"]:::reference
-  n4 --> n5
-  n6["Expanded"]
-  n4 --> n6
-  n7["Column"]
-  n6 --> n7
-  n8["KlpText"]:::reference
+  n5["SizedBox"]
+  n3 --> n5
+  n6["KlpText"]:::reference
+  n5 --> n6
+  n7["Flexible"]
+  n5 --> n7
+  n8["Align"]
   n7 --> n8
-  n9["Flexible"]
-  n7 --> n9
+  n9["Expanded"]
+  n8 --> n9
   n10["KlpSurface"]:::container
   n9 --> n10
-  n11["Align"]
+  n11["child / slot"]:::slot
   n10 --> n11
-  n12["child / slot"]:::slot
-  n11 --> n12
 ```
 
 ## 外部元件引用

@@ -5,7 +5,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:kallopis/kallopis.dart';
 import 'package:kallopis_catalog/catalog/registry.dart';
+import 'package:kallopis_catalog/catalog/generated/catalog_style_semantics.g.dart';
 import 'package:kallopis_catalog/catalog_shell.dart';
+import 'package:kallopis_catalog/catalog_theme_scope.dart';
 
 /// 目錄的閘門。
 ///
@@ -13,14 +15,22 @@ import 'package:kallopis_catalog/catalog_shell.dart';
 /// 長什麼樣、該用在哪裡——它會被重新發明一次。因此「每個匯出的 widget 都要被歸類」
 /// 是機械檢查，不是自律。
 void main() {
+	Widget withCatalogTheme(Widget child) {
+		return CatalogThemeScope(
+			value: KlpOklchColor.fromColor(KlpThemeData.light.brand),
+			onChanged: (_) {},
+			child: child,
+		);
+	}
+
   /// 從庫的原始碼直接讀出公開的 widget 名。
   ///
   /// 不用反射：Dart 沒有可靠的執行期型別列舉，而且從原始碼讀才能在**新增元件當下**
   /// 就發現漏歸類，不必等到有人去用它。
   Set<String> exportedWidgets() {
     final declaration = RegExp(
-      r'^class\s+(Klp[A-Za-z0-9]+)(?:<[^>]+>)?\s+extends\s+'
-      r'(?:StatelessWidget|StatefulWidget)',
+      r'^(?:(?:final|base|sealed)\s+)?class\s+(Klp[A-Za-z0-9]+)(?:<[^>]+>)?\s+extends\s+'
+      r'(?:StatelessWidget|StatefulWidget|KlpPanelFrame)',
     );
     final names = <String>{};
 
@@ -28,7 +38,8 @@ void main() {
         in Directory('../lib/src')
             .listSync(recursive: true)
             .whereType<File>()
-            .where((f) => f.path.endsWith('.dart'))) {
+            .where((f) => f.path.endsWith('.dart'))
+						.where((f) => !f.path.replaceAll(r'\', '/').contains('/internal/'))) {
       for (final line in const LineSplitter().convert(
         file.readAsStringSync(),
       )) {
@@ -87,6 +98,16 @@ void main() {
     );
   });
 
+	test('每一個 specimen 都有風格語意追蹤資料', () {
+		final missing = catalogedComponents.difference(catalogStyleSemantics.keys.toSet()).toList()..sort();
+		expect(missing, isEmpty, reason: '這些元件缺少風格語意追蹤資料：\n${missing.join('\n')}');
+	});
+
+	test('風格語意追蹤資料沒有不存在的元件', () {
+		final stale = catalogStyleSemantics.keys.toSet().difference(exportedWidgets()).toList()..sort();
+		expect(stale, isEmpty, reason: '這些風格語意資料已沒有對應元件：\n${stale.join('\n')}');
+	});
+
   test('目錄不得印出色碼', () {
     // 目錄一旦顯示 hex，就等於邀請人把那串數字複製到自己的程式碼裡——那正是整個
     // token 架構要防的事。色票顯示的是它落在色梯的哪一階，不是色值。
@@ -117,10 +138,6 @@ void main() {
         .toList();
 
     expect(empty, isEmpty, reason: '這些頁面既沒有元件也沒有 token 視圖：$empty');
-  });
-
-  test('Catalog 不保留產品語意分組', () {
-    expect(catalogGroups.map((group) => group.label), isNot(contains('Notes')));
   });
 
   test('示範覆蓋率只能上升', () {
@@ -155,12 +172,12 @@ void main() {
           MaterialApp(
             debugShowCheckedModeBanner: false,
             theme: buildKlpTheme(brightness),
-            home: CatalogShell(
+				home: withCatalogTheme(CatalogShell(
               groups: catalogGroups,
               pages: catalogPages,
               selected: index,
               onSelected: (_) {},
-            ),
+				)),
           ),
         );
         await tester.pump(const Duration(milliseconds: 200));
@@ -185,7 +202,7 @@ void main() {
 				await tester.pumpWidget(
 					MaterialApp(
 						theme: buildKlpTheme(Brightness.dark),
-						home: Scaffold(
+						home: withCatalogTheme(Scaffold(
 							body: Builder(
 								builder: (context) => SingleChildScrollView(
 									child: Padding(
@@ -194,7 +211,7 @@ void main() {
 									),
 								),
 							),
-						),
+						)),
 					),
 				);
 				await tester.pump();

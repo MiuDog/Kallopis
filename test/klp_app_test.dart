@@ -23,11 +23,11 @@ void main() {
 						child: const SizedBox.expand(),
 					),
 				),
-				home: GestureDetector(
+				home: KlpPanelFrame(padding: EdgeInsets.zero, content: GestureDetector(
 					behavior: HitTestBehavior.opaque,
 					onTap: () => bodyTapped = true,
 					child: const SizedBox.expand(),
-				),
+				)),
 			),
 		);
 
@@ -38,10 +38,10 @@ void main() {
 			.element(find.byKey(const ValueKey('klp-app-frame-background')))
 			.klp;
 		final headerHeight =
-			klp.geometry.layout.windowHeaderHeight + klp.space.compact;
-		final appInset = klp.space.compact / 2;
+			klp.geometry.layout.windowHeaderHeight;
+		final appInset = klp.space.appFrameInset;
 		await tester.tapAt(
-			Offset(frame.center.dx, frame.top + appInset + headerHeight + 2),
+			Offset(frame.center.dx, frame.top + appInset + headerHeight + klp.space.dockMargin + 2),
 		);
 
 		expect(bodyTapped, isTrue);
@@ -64,13 +64,13 @@ void main() {
       KlpApp(
         initialThemeMode: initialThemeMode,
         router: router,
-        home: Builder(
+				home: KlpPanelFrame(padding: EdgeInsets.zero, content: Builder(
           builder: (context) {
             controller = KlpApp.of(context);
             colors = context.klp.color;
             return const SizedBox.shrink(key: ValueKey('test_target'));
           },
-        ),
+        )),
       ),
     );
 
@@ -145,13 +145,13 @@ void main() {
       const KlpApp(
         title: 'Notist',
         appIcon: KlpIcon(KlpIcons.edit, key: ValueKey('app_icon')),
-        home: SizedBox.shrink(),
+				home: KlpPanelFrame(padding: EdgeInsets.zero, content: SizedBox.shrink()),
       ),
     );
 
     final iconFinder = find.byKey(const ValueKey('app_icon'));
     final iconContext = tester.element(iconFinder);
-    final compact = iconContext.klp.space.compact;
+		final space = iconContext.klp.space;
     final layout = iconContext.klp.geometry.layout;
     final headerRect = tester.getRect(find.byType(KlpWindowHeader));
     final fittedBoxFinder = find.ancestor(
@@ -166,8 +166,8 @@ void main() {
 
     expect(fittedBoxFinder, findsOneWidget);
     expect(appFrameBackground.color, iconContext.klpColors.app);
-    expect(headerRect.left, compact / 2);
-    expect(headerRect.top, compact / 2);
+		expect(headerRect.left, space.appFrameInset);
+		expect(headerRect.top, space.appFrameInset);
     expect(headerRect.height, klpWindowHeaderHeight(iconContext.klp.geometry));
     expect(
       tester.getSize(fittedBoxFinder),
@@ -176,7 +176,7 @@ void main() {
     expect(
       iconRect.left,
       headerRect.left +
-          compact / 2 +
+					space.windowHeaderMargin +
           (layout.windowHeaderControlSize - layout.windowAppIconSize) / 2,
     );
     expect(
@@ -193,7 +193,7 @@ void main() {
     addTearDown(tester.view.resetPhysicalSize);
 
     await tester.pumpWidget(
-      const KlpApp(title: 'Notist', home: SizedBox.expand()),
+			const KlpApp(title: 'Notist', home: KlpPanelFrame(padding: EdgeInsets.zero, content: SizedBox.expand())),
     );
 
     expect(tester.takeException(), isNull);
@@ -214,7 +214,7 @@ void main() {
         key: ValueKey('app'),
         minWidth: 640.0,
         minHeight: 480.0,
-        home: SizedBox.shrink(),
+				home: KlpPanelFrame(padding: EdgeInsets.zero, content: SizedBox.shrink()),
       ),
     );
     await tester.pump();
@@ -224,7 +224,7 @@ void main() {
         key: ValueKey('app'),
         minWidth: 720.0,
         minHeight: 540.0,
-        home: SizedBox.shrink(),
+				home: KlpPanelFrame(padding: EdgeInsets.zero, content: SizedBox.shrink()),
       ),
     );
     await tester.pump();
@@ -255,11 +255,11 @@ void main() {
     addTearDown(() => messenger.setMockMethodCallHandler(windowChannel, null));
 
     await tester.pumpWidget(
-      const KlpApp(key: ValueKey('app'), home: SizedBox.shrink()),
+			const KlpApp(key: ValueKey('app'), home: KlpPanelFrame(padding: EdgeInsets.zero, content: SizedBox.shrink())),
     );
     await tester.pump();
     await tester.pumpWidget(
-      const KlpApp(key: ValueKey('app'), home: SizedBox.shrink()),
+			const KlpApp(key: ValueKey('app'), home: KlpPanelFrame(padding: EdgeInsets.zero, content: SizedBox.shrink())),
     );
     await tester.pump();
 
@@ -280,7 +280,7 @@ void main() {
     });
     addTearDown(() => messenger.setMockMethodCallHandler(windowChannel, null));
 
-    await tester.pumpWidget(const KlpApp(home: SizedBox.shrink()));
+		await tester.pumpWidget(const KlpApp(home: KlpPanelFrame(padding: EdgeInsets.zero, content: SizedBox.shrink())));
     await tester.pump();
 
     expect(calls.map((call) => call.method), orderedEquals(['isMaximized']));
@@ -297,7 +297,7 @@ void main() {
     addTearDown(() => messenger.setMockMethodCallHandler(windowChannel, null));
 
     await tester.pumpWidget(
-      const KlpApp(startMaximized: false, home: SizedBox.shrink()),
+			const KlpApp(startMaximized: false, home: KlpPanelFrame(padding: EdgeInsets.zero, content: SizedBox.shrink())),
     );
     await tester.pump();
 
@@ -306,18 +306,18 @@ void main() {
 
   test('最小視窗尺寸必須是正的邏輯像素', () {
     expect(
-      () => KlpApp(minWidth: 0.0, home: const SizedBox.shrink()),
+			() => KlpApp(minWidth: 0.0, home: KlpPanelFrame(padding: EdgeInsets.zero, content: const SizedBox.shrink())),
       throwsAssertionError,
     );
     expect(
-      () => KlpApp(minHeight: -1.0, home: const SizedBox.shrink()),
+			() => KlpApp(minHeight: -1.0, home: KlpPanelFrame(padding: EdgeInsets.zero, content: const SizedBox.shrink())),
       throwsAssertionError,
     );
   });
 
   testWidgets('給了 router 就自動架好 KlpRouterScope', (tester) async {
     final router = KlpRouter(
-      routes: [KlpRoute(id: 'home', builder: (_) => const SizedBox.shrink())],
+			routes: [KlpRoute(id: 'home', builder: (_) => const KlpPanelFrame(content: SizedBox.shrink()))],
       initialId: 'home',
     );
 
@@ -329,12 +329,12 @@ void main() {
   testWidgets('沒有 KlpApp 祖先時 KlpApp.of 明確拋錯', (tester) async {
     await tester.pumpWidget(
       MaterialApp(
-        home: Builder(
+				home: KlpPanelFrame(padding: EdgeInsets.zero, content: Builder(
           builder: (context) {
             expect(() => KlpApp.of(context), throwsStateError);
             return const SizedBox.shrink();
           },
-        ),
+        )),
       ),
     );
   });

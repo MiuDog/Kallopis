@@ -11,8 +11,8 @@ void main() {
 		for (final style in [KlpVisualStyle.defaultStyle, contrastingStyle]) {
 			await tester.pumpWidget(_sizeSpecimen(style));
 
-			expect(tester.getSize(_button(const ValueKey('default'))).height, style.spacing.controlHeightSmall);
-			expect(tester.getSize(_button(const ValueKey('compact'))).height, style.spacing.controlHeightXSmall);
+			expect(tester.getSize(_button(const ValueKey('default'))).height, style.geometry.control.buttonHeightSmall);
+			expect(tester.getSize(_button(const ValueKey('compact'))).height, style.geometry.control.buttonHeightXSmall);
 		}
 	});
 

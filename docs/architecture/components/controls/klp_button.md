@@ -4,7 +4,7 @@
 
 - **核心元件**：`KlpButton`
 - **所屬領域**：`controls — 控制項`
-- **核心職責**：主要動作按鈕。`tone` 提供 primary／secondary／ghost／dashed／danger；`size` 提供 xs／sm／md／lg／xl，預設為 sm、`compact` 為 xs。`selected` 由呼叫端持有，hover 與 selected 使用不同語意 wash；圓角、內距、高度、狀態 wash 與邊框皆取自 theme。
+- **核心職責**：主要動作按鈕。`tone` 決定語意強度（primary／secondary／ghost／dashed／danger）， `size` 支援五段緊湊尺寸階級（xs: 28px, sm: 32px, md: 36px, lg: 40px, xl: 48px）， 預設使用 sm，`compact` 使用 xs；`selected` 是由呼叫端持有的持續選取狀態。 圓角、內距、高度、狀態 wash 與邊框皆由風格表解析目前 theme。
 - **包含範圍**：`build()` 內部建構的完整 Widget 樹（展開 Flutter 原生元件與純容器）
 - **外部引用**：本專案其他非純容器元件（遇引用即停下並鏈結）
 
@@ -21,24 +21,26 @@ flowchart TD
   root["KlpButton"]:::root
   n1["Container"]
   root --> n1
-  n2["Row"]
+  n2["KlpPressable"]:::reference
   n1 --> n2
-  n3["SizedBox"]
-  n2 --> n3
-  n4["Flexible"]
+  n3["Material"]
+  n1 --> n3
+  n4["Semantics"]
   n3 --> n4
-  n5["KlpText"]:::reference
+  n5["Row"]
   n4 --> n5
-  n6["Material"]
-  n4 --> n6
-  n7["KlpPressable"]:::reference
+  n6["SizedBox"]
+  n5 --> n6
+  n7["Flexible"]
   n6 --> n7
-  n8["leading (slot)"]:::slot
-  n6 --> n8
-  n9["trailing (slot)"]:::slot
-  n6 --> n9
-  n10["child / slot"]:::slot
-  n6 --> n10
+  n8["KlpText"]:::reference
+  n7 --> n8
+  n9["leading (slot)"]:::slot
+  n7 --> n9
+  n10["trailing (slot)"]:::slot
+  n7 --> n10
+  n11["child / slot"]:::slot
+  n7 --> n11
 ```
 
 ## 外部元件引用
@@ -48,7 +50,7 @@ flowchart TD
 
 ## 程式碼證據
 
-- 檔案路徑：[`lib/src/controls/klp_button.dart`](../../../../lib/src/controls/klp_button.dart#L15)
+- 檔案路徑：[`lib/src/controls/button/klp_button.dart`](../../../../lib/src/controls/button/klp_button.dart#L17)
 - 宣告型態：`StatefulWidget`
 
 ## 閱讀說明

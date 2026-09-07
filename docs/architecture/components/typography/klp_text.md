@@ -4,7 +4,7 @@
 
 - **核心元件**：`KlpText`
 - **所屬領域**：`typography — 文字`
-- **核心職責**：文字。以**角色**指定樣式（`role`），不指定字級與字體——實際的字級、行高與家族由 theme 的 typography 層決定。光學 Y 位移同時作用於繪製位置與 baseline 回報，確保不同字族在 baseline Row 中仍能正確對齊。
+- **核心職責**：文字。以**角色**指定樣式（`role`），不指定字級與字體——實際的字級、行高與 家族由 theme 的 typography 層決定，因此換風格時整體會一起變。
 - **包含範圍**：`build()` 內部建構的完整 Widget 樹（展開 Flutter 原生元件與純容器）
 - **外部引用**：本專案其他非純容器元件（遇引用即停下並鏈結）
 
@@ -35,7 +35,7 @@ flowchart TD
 
 ## 程式碼證據
 
-- 檔案路徑：[`lib/src/typography/klp_text.dart`](../../../../lib/src/typography/klp_text.dart#L275)
+- 檔案路徑：[`lib/src/typography/klp_text.dart`](../../../../lib/src/typography/klp_text.dart#L314)
 - 宣告型態：`StatelessWidget`
 
 ## 閱讀說明

@@ -39,12 +39,10 @@ flowchart TD
   n8 --> n9
   n10["Focus"]
   n9 --> n10
-  n11["MouseRegion"]
+  n11["leading (slot)"]:::slot
   n10 --> n11
-  n12["leading (slot)"]:::slot
-  n11 --> n12
-  n13["child / slot"]:::slot
-  n11 --> n13
+  n12["child / slot"]:::slot
+  n10 --> n12
 ```
 
 ## 外部元件引用
@@ -54,7 +52,7 @@ flowchart TD
 
 ## 程式碼證據
 
-- 檔案路徑：[`lib/src/controls/klp_text_field.dart`](../../../../lib/src/controls/klp_text_field.dart#L13)
+- 檔案路徑：[`lib/src/controls/input/klp_text_field.dart`](../../../../lib/src/controls/input/klp_text_field.dart#L12)
 - 宣告型態：`StatefulWidget`
 
 ## 閱讀說明
@@ -63,4 +61,3 @@ flowchart TD
 - **容器節點（圓角/綠框）**：本專案之純容器元件（如 `KlpSurface` 等），已持續向下展開其子樹。
 - **虛線/引號節點（黃框/:::reference）**：本專案其他功能性元件，依規則停止展開並提供文件引用。
 - **插槽節點（橘框/:::slot）**：外部傳入之 `child`、`builder` 或內容參數。
-

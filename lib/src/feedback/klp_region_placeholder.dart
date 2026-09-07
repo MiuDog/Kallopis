@@ -83,7 +83,7 @@ class KlpRegionPlaceholder extends StatelessWidget {
                           mainAxisSize: MainAxisSize.min,
                           children: [
                             _PlaceholderMarker(tone: tone),
-                            SizedBox(width: context.klp.space.compact),
+														SizedBox(width: context.klp.space.contentInlineGap),
                             Flexible(
                               child: Text(
                                 '${label.toUpperCase()} · ${kindLabel.toUpperCase()}',

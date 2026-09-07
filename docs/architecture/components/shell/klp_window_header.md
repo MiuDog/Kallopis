@@ -4,7 +4,7 @@
 
 - **核心元件**：`KlpWindowHeader`
 - **所屬領域**：`shell — 應用外殼`
-- **核心職責**：桌面應用程式自帶視窗標題列（Chrome Header）。  - **Windows / Linux 模式**：左側展示 App Icon 與標題，右側展示自訂動作與視窗控制項。 - **macOS 模式**：左側展示視窗控制項（交通燈），中間展示 App Icon 與標題，右側展示自訂動作。
+- **核心職責**：桌面應用程式自帶視窗標題列（Chrome Header）。整個 Header 表面都可拖動視窗； 內部操作元件仍保留 tap 等自身事件。  - **Windows / Linux 模式**：左側展示 App Icon 與標題，右側展示自訂動作與視窗控制項。 - **macOS 模式**：左側展示視窗控制項（交通燈），中間展示 App Icon 與標題，右側展示自訂動作。
 - **包含範圍**：`build()` 內部建構的完整 Widget 樹（展開 Flutter 原生元件與純容器）
 - **外部引用**：本專案其他非純容器元件（遇引用即停下並鏈結）
 
@@ -19,41 +19,46 @@ flowchart TD
   classDef slot fill:#2E3440,stroke:#D08770,stroke-width:1px,stroke-dasharray: 2 2,color:#D08770;
 
   root["KlpWindowHeader"]:::root
-  n1["Text"]
+  n1["KlpText"]:::reference
   root --> n1
-  n2["Row"]
+  n2["SizedBox"]
   root --> n2
-  n3["SizedBox"]
+  n3["Center"]
   n2 --> n3
   n4["KlpWindowControls"]:::reference
   n3 --> n4
-  n5["Material"]
+  n5["GestureDetector"]
   n3 --> n5
   n6["Padding"]
   n5 --> n6
-  n7["Expanded"]
+  n7["Material"]
   n6 --> n7
-  n8["Stack"]
+  n8["Row"]
   n7 --> n8
-  n9["Spacer"]
+  n9["Expanded"]
   n8 --> n9
-  n10["Center"]
-  n8 --> n10
-  n11["leading (slot)"]:::slot
+  n10["Flexible"]
+  n9 --> n10
+  n11["Align"]
   n10 --> n11
-  n12["trailing (slot)"]:::slot
-  n10 --> n12
-  n13["child / slot"]:::slot
-  n10 --> n13
+  n12["Stack"]
+  n11 --> n12
+  n13["leading (slot)"]:::slot
+  n12 --> n13
+  n14["trailing (slot)"]:::slot
+  n12 --> n14
+  n15["child / slot"]:::slot
+  n12 --> n15
 ```
 
 ## 外部元件引用
 
+- [`KlpText`](../typography/klp_text.md) — `typography — 文字`
 - [`KlpWindowControls`](./klp_window_controls.md) — `shell — 應用外殼`
 
 ## 程式碼證據
 
-- 檔案路徑：[`lib/src/shell/klp_window_header.dart`](../../../../lib/src/shell/klp_window_header.dart#L11)
+- 檔案路徑：[`lib/src/shell/window/klp_window_header.dart`](../../../../lib/src/shell/window/klp_window_header.dart#L89)
 - 宣告型態：`StatelessWidget`
 
 ## 閱讀說明

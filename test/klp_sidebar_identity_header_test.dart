@@ -1,3 +1,4 @@
+import 'package:flutter/widgets.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:kallopis/kallopis.dart';
 
@@ -8,13 +9,13 @@ void main() {
     await tester.pumpWidget(
       const KlpApp(
         showWindowHeader: false,
-        home: KlpAppScreen(
+				home: KlpPanelFrame(padding: EdgeInsets.zero, content: KlpAppScreen(
           child: KlpSidebarIdentityHeader(
             icon: KlpIcons.folder,
             title: 'Flows',
             trailing: KlpAvatar(label: 'C', semanticLabel: 'Chia-Yu'),
           ),
-        ),
+        )),
       ),
     );
 
@@ -22,5 +23,9 @@ void main() {
     expect(find.byType(KlpIcon), findsOneWidget);
     expect(find.byType(KlpAvatar), findsOneWidget);
     expect(find.bySemanticsLabel(RegExp('Chia-Yu')), findsOneWidget);
+
+		final icon = find.byType(KlpIcon);
+		final context = tester.element(icon);
+		expect(tester.widget<KlpIcon>(icon).size, context.klp.space.iconGlyph);
   });
 }

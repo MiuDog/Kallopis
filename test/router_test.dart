@@ -8,7 +8,7 @@ import 'package:kallopis/kallopis.dart';
 void main() {
   KlpRoute route(String id) => KlpRoute(
     id: id,
-    builder: (_) => Text(id, textDirection: TextDirection.ltr),
+		builder: (_) => KlpPanelFrame(content: Text(id, textDirection: TextDirection.ltr)),
   );
 
   KlpRouter router() =>

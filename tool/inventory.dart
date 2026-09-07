@@ -30,6 +30,7 @@ const categoryOrder = <String>[
   'editor',
   'routing',
   'shell',
+	'note',
   'settings',
   'app',
 ];
@@ -50,6 +51,7 @@ const categoryLabel = <String, String>{
   'navigation': 'navigation — 導覽元件',
   'editor': 'editor — 編輯器周邊',
   'shell': 'shell — 應用外殼',
+	'note': 'note — 筆記視覺組合',
   'settings': 'settings — 設定呈現',
   'routing': 'routing — 分發',
   'app': 'app — 接入層',
@@ -80,6 +82,7 @@ String generateInventory() {
           .listSync(recursive: true)
           .whereType<File>()
           .where((f) => f.path.endsWith('.dart'))
+		  .where((f) => !f.path.replaceAll(r'\', '/').contains('/internal/'))
           .map((f) => f.path.replaceAll(r'\', '/'))
           .toList()
         ..sort();

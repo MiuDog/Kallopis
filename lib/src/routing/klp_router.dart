@@ -1,5 +1,9 @@
 import 'package:flutter/widgets.dart';
 
+import '../shell/panel/klp_panel_layout.dart';
+
+typedef KlpPanelLayoutBuilder = KlpPanelLayout Function(BuildContext context);
+
 /// 一個可被切換到的目的地。
 ///
 /// Kallopis **不知道**有哪些目的地存在，也不解讀 [data]——目的地是產品的決定，
@@ -11,7 +15,7 @@ class KlpRoute {
   /// 產品自訂的識別字串。庫不規定格式，也不預設任何值。
   final String id;
 
-  final WidgetBuilder builder;
+  final KlpPanelLayoutBuilder builder;
 
   /// 產品要附掛的任意資料（顯示名稱、圖示、權限旗標……）。
   ///
@@ -56,8 +60,14 @@ class KlpRouteNotFound extends Error {
 /// ```dart
 /// final router = KlpRouter(
 ///   routes: [
-///     KlpRoute(id: 'notes', builder: (_) => const NotesPage()),
-///     KlpRoute(id: 'search', builder: (_) => const SearchPage()),
+///     KlpRoute(
+///       id: 'notes',
+///       builder: (_) => KlpPanelFrame(content: const NotesPage()),
+///     ),
+///     KlpRoute(
+///       id: 'search',
+///       builder: (_) => KlpPanelFrame(content: const SearchPage()),
+///     ),
 ///   ],
 ///   initialId: 'notes',
 /// );
@@ -178,12 +188,15 @@ class KlpRouterScope extends InheritedNotifier<KlpRouter> {
 ///
 /// 它只做一件事：呼叫 `router.current.builder`。**不做轉場動畫**——轉場屬於產品外殼
 /// 的決定（有些頁該滑入，有些該直接換），庫替它決定就等於替所有產品決定。
-class KlpRouterOutlet extends StatelessWidget {
+class KlpRouterOutlet extends StatelessWidget implements KlpPanelLayout {
   const KlpRouterOutlet({super.key});
 
   @override
   Widget build(BuildContext context) =>
       KlpRouterScope.of(context).current.builder(context);
+
+  @override
+  Widget buildPanelLayout(BuildContext context) => build(context);
 }
 
 extension KlpRouterContext on BuildContext {

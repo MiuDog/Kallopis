@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:kallopis/kallopis.dart';
 
 import 'catalog/registry.dart';
+import 'catalog_theme_scope.dart';
 import 'catalog_shell.dart';
 
 void main() => runApp(const KallopisCatalogApp());
@@ -22,8 +23,11 @@ class KallopisCatalogApp extends StatefulWidget {
 
 class _KallopisCatalogAppState extends State<KallopisCatalogApp>
     with WidgetsBindingObserver {
-  int _selected = 0;
+  int _selected = catalogPages.indexWhere(
+    (page) => page.label == 'Note blocks',
+  );
   KlpThemeVariant _variant = KlpThemeVariant.light;
+  KlpOklchColor? _themeColor;
   bool _isMaximized = false;
 
   @override
@@ -62,28 +66,56 @@ class _KallopisCatalogAppState extends State<KallopisCatalogApp>
     });
   }
 
+  void _setThemeColor(KlpOklchColor value) =>
+      setState(() => _themeColor = value);
+
   @override
   Widget build(BuildContext context) {
-    final themeData = buildKlpThemeVariant(_variant);
+    final baseColors = switch (_variant) {
+      KlpThemeVariant.light => KlpThemeData.light,
+      KlpThemeVariant.dark => KlpThemeData.dark,
+      KlpThemeVariant.ultraDark => KlpThemeData.ultraDark,
+      KlpThemeVariant.transparent => KlpThemeData.dark,
+    };
+    final themeColor = _themeColor ?? KlpOklchColor.fromColor(baseColors.brand);
+    final style = KlpVisualStyle.defaultStyle.copyWith(
+      colors: baseColors.copyWith(brand: themeColor.toColor()),
+      dataVisualization: switch (_variant) {
+        KlpThemeVariant.light => KlpDataVisualizationTheme.light,
+        KlpThemeVariant.dark => KlpDataVisualizationTheme.dark,
+        KlpThemeVariant.ultraDark => KlpDataVisualizationTheme.ultraDark,
+        KlpThemeVariant.transparent => KlpDataVisualizationTheme.dark,
+      },
+    );
+    final themeData = buildKlpThemeVariant(_variant, style: style);
 
-    return KlpApp(
-      debugShowCheckedModeBanner: false,
-      title: 'Kallopis',
-      appIcon: const KlpIcon(KlpIcons.sparkles),
-      minWidth: 800,
-      minHeight: 500,
-      isMaximized: _isMaximized,
-      headerActions: [
-        _CatalogThemeButton(variant: _variant, onPressed: _cycleTheme),
-      ],
-      builder: (context, child) =>
-          Theme(data: themeData, child: child ?? const SizedBox.shrink()),
-      home: CatalogShell(
-        groups: catalogGroups,
-        pages: catalogPages,
-        selected: _selected.clamp(0, catalogPages.length - 1),
-        onSelected: (index) => setState(() => _selected = index),
-      ),
+    return CatalogShell(
+      groups: catalogGroups,
+      pages: catalogPages,
+      selected: _selected.clamp(0, catalogPages.length - 1),
+      onSelected: (index) => setState(() => _selected = index),
+      appBuilder: (panelLayout) {
+        return KlpApp(
+          debugShowCheckedModeBanner: false,
+          title: 'Kallopis',
+          appIcon: const KlpIcon(KlpIcons.sparkles),
+          minWidth: 800,
+          minHeight: 500,
+          isMaximized: _isMaximized,
+          headerActions: [
+            _CatalogThemeButton(variant: _variant, onPressed: _cycleTheme),
+          ],
+          builder: (context, child) => CatalogThemeScope(
+            value: themeColor,
+            onChanged: _setThemeColor,
+            child: Theme(
+              data: themeData,
+              child: child ?? const SizedBox.shrink(),
+            ),
+          ),
+          home: panelLayout,
+        );
+      },
     );
   }
 }
@@ -111,7 +143,7 @@ class _CatalogThemeButton extends StatelessWidget {
           onTap: onPressed,
           child: Container(
             height: 22.0,
-            padding: EdgeInsets.symmetric(horizontal: klp.space.compact),
+            padding: EdgeInsets.symmetric(horizontal: klp.space.controlInset),
             decoration: BoxDecoration(
               color: klp.color.component,
               borderRadius: BorderRadius.circular(klp.shape.control),
