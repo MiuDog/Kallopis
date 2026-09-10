@@ -13,7 +13,7 @@ void main() {
     await tester.pumpWidget(
       const KlpApp(
         showWindowHeader: false,
-				home: KlpPanelFrame(padding: EdgeInsets.zero, content: SizedBox(
+				home: KlpPanelFrame(content: SizedBox(
           width: 220,
           height: 400,
           child: KlpStageFrame(
@@ -49,7 +49,7 @@ void main() {
     await tester.pumpWidget(
       const KlpApp(
         showWindowHeader: false,
-				home: KlpPanelFrame(padding: EdgeInsets.zero, content: SizedBox(
+				home: KlpPanelFrame(content: SizedBox(
           width: 280,
           height: 400,
           child: KlpStageFrame(
@@ -78,7 +78,7 @@ void main() {
     await tester.pumpWidget(
       const KlpApp(
         showWindowHeader: false,
-				home: KlpPanelFrame(padding: EdgeInsets.zero, content: KlpStageHeader(
+				home: KlpPanelFrame(content: KlpStageHeader(
           projectName: 'Notist',
           sectionLabel: 'Flow',
           title: '第一份筆記',

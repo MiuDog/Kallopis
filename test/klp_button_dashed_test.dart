@@ -1,4 +1,3 @@
-import 'package:flutter/widgets.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:kallopis/kallopis.dart';
 
@@ -9,7 +8,7 @@ void main() {
     await tester.pumpWidget(
       KlpApp(
         showWindowHeader: false,
-				home: KlpPanelFrame(padding: EdgeInsets.zero, content: KlpAppScreen(
+				home: KlpPanelFrame(content: KlpAppScreen(
           child: KlpButton(
             leading: const KlpIcon(KlpIcons.edit),
             label: 'Edit',

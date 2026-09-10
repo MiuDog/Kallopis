@@ -41,7 +41,7 @@ flowchart TD
 	Navigation --> Sidebar[sidebar／側欄框架與側欄導覽]
 ```
 
-筆記的 block chrome、canvas、側欄節奏與工作台配方屬於 Notist `lib/src/components/note/`。Kallopis 只提供無產品語意的視覺積木；Note／Block 資料模型、內容 schema、selection、transaction、undo、layout authority 與 persistence 由 Krepis 提供。
+筆記的 block chrome、canvas、側欄節奏與工作台配方屬於 Notist `lib/src/foundation/surface/legacy_components/note/`。Kallopis 只提供無產品語意的視覺積木；Note／Block 資料模型、內容 schema、selection、transaction、undo、layout authority 與 persistence 由 Krepis 提供。
 
 ## Semantic Manifest 與 Catalog 生成鏈
 
@@ -307,13 +307,13 @@ KlpThemeData.brand 是產品主題色的獨立語意，並透過 KlpTheme.primar
 ## 查證來源
 
 - `lib/kallopis.dart`
-- `lib/src/app/klp_app.dart`
-- `lib/src/theme/klp_visual_style.dart`
-- `lib/src/theme/klp_theme_scope.dart`
-- `lib/src/theme/klp_component_theme.dart`
-- `lib/src/shell/klp_workbench_shell.dart`
-- `lib/src/shell/klp_workbench_window_header.dart`
-- `lib/src/shell/klp_stage_frame.dart`
+- `lib/src/application/legacy/klp_app.dart`
+- `lib/src/styling/legacy_theme/klp_visual_style.dart`
+- `lib/src/styling/legacy_theme/klp_theme_scope.dart`
+- `lib/src/styling/legacy_theme/klp_component_theme.dart`
+- `lib/src/features/workspace/shell/klp_workbench_shell.dart`
+- `lib/src/features/workspace/shell/klp_workbench_window_header.dart`
+- `lib/src/features/workspace/shell/klp_stage_frame.dart`
 - `spec/decisions/KLP-0001-scope-token-architecture-and-extraction-method.md`
 - `spec/decisions/KLP-0004-presentation-decisions-owned-by-kallopis.md`
 - `spec/component-inventory.md`
@@ -323,11 +323,11 @@ KlpThemeData.brand 是產品主題色的獨立語意，並透過 KlpTheme.primar
 使用者核准 primitive／semantic 分層入口、獨立預設風格與按鈕風格表的架構優化。
 本批保留既有數值、元件樹與互動狀態；不新增 screen 或將既有布局標為定型。
 
-- `lib/src/tokens/primitive_token.dart` 直接定義 KlpScale 與 KlpPalette；accent 以 tokens/internal 的 part 共用私有色值。2026-09-07 依使用者修訂移除數值舊路徑相容檔，裝飾色盤 KlpDecorativePalette 留在 foundation。
+- `lib/src/styling/legacy_tokens/primitive_token.dart` 直接定義 KlpScale 與 KlpPalette；accent 以 tokens/internal 的 part 共用私有色值。2026-09-07 依使用者修訂移除數值舊路徑相容檔，裝飾色盤 KlpDecorativePalette 留在 foundation。
 - KlpPalette 的公開顏色只以色族與色階命名；資料視覺化的系列、軸線、格線、數值、crosshair、漲跌角色及 light／dark／ultraDark 模式由 KlpDataVisualizationTheme 組合。
 - `lib/kallopis_theme.dart` 明列各語意模型；`src/tokens` 只保留 primitive 定義，不建立反向轉匯桶。
-- `lib/src/styles/default_style.dart` 是 KlpVisualStyle 函式庫的 part，集中預設組裝而不增加第二套值。
-- `lib/src/controls/internal/klp_button_style.dart` 依目前 KlpTheme 解析每個位置和狀態；元件每次 build 重新讀取 scope。
+- `lib/src/styling/presets/legacy/default_style.dart` 是 KlpVisualStyle 函式庫的 part，集中預設組裝而不增加第二套值。
+- `lib/src/foundation/interaction/controls/klp_button_style.dart` 依目前 KlpTheme 解析每個位置和狀態；元件每次 build 重新讀取 scope。
 - 可注入的 component token 保持稀疏，已解析的元件風格表可以完整；兩者責任不同。
 
 完整解析路徑、屬性權限與三種構成關係見 `docs/architecture/token-style-resolution.md`。

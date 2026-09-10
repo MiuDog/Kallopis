@@ -19,42 +19,15 @@
 ```mermaid
 flowchart LR
 	n0["lib/src"]
-	n1["app/"]
-	n2["controls/"]
-	n3["data/"]
-	n4["editor/"]
-	n5["feedback/"]
-	n6["form/"]
-	n7["foundation/"]
-	n8["interaction/"]
-	n9["l10n/"]
-	n10["layout/"]
-	n11["navigation/"]
-	n0 -->|"contains"| n1
-	n0 -->|"contains"| n2
-	n0 -->|"contains"| n3
-	n0 -->|"contains"| n4
-	n0 -->|"contains"| n5
-	n0 -->|"contains"| n6
-	n0 -->|"contains"| n7
-	n0 -->|"contains"| n8
-	n0 -->|"contains"| n9
-	n0 -->|"contains"| n10
-	n0 -->|"contains"| n11
-```
-
-```mermaid
-flowchart LR
-	n0["lib/src"]
-	n1["overlay/"]
-	n2["routing/"]
-	n3["settings/"]
-	n4["shell/"]
-	n5["styles/"]
-	n6["surface/"]
-	n7["theme/"]
-	n8["tokens/"]
-	n9["typography/"]
+	n1["application/"]
+	n2["capabilities/"]
+	n3["composition/"]
+	n4["features/"]
+	n5["foundation/"]
+	n6["kernel/"]
+	n7["rendering/"]
+	n8["runtime/"]
+	n9["styling/"]
 	n0 -->|"contains"| n1
 	n0 -->|"contains"| n2
 	n0 -->|"contains"| n3
@@ -70,26 +43,15 @@ flowchart LR
 
 | 目錄 | 導航 | 來源證據 |
 |---|---|---|
-| `app/` | [架構入口](app/README.md) | [來源目錄](../../../lib/src/app) |
-| `controls/` | [架構入口](controls/README.md) | [來源目錄](../../../lib/src/controls) |
-| `data/` | [架構入口](data/README.md) | [來源目錄](../../../lib/src/data) |
-| `editor/` | [架構入口](editor/README.md) | [來源目錄](../../../lib/src/editor) |
-| `feedback/` | [架構入口](feedback/README.md) | [來源目錄](../../../lib/src/feedback) |
-| `form/` | [架構入口](form/README.md) | [來源目錄](../../../lib/src/form) |
+| `application/` | [架構入口](application/README.md) | [來源目錄](../../../lib/src/application) |
+| `capabilities/` | [架構入口](capabilities/README.md) | [來源目錄](../../../lib/src/capabilities) |
+| `composition/` | [架構入口](composition/README.md) | [來源目錄](../../../lib/src/composition) |
+| `features/` | [架構入口](features/README.md) | [來源目錄](../../../lib/src/features) |
 | `foundation/` | [架構入口](foundation/README.md) | [來源目錄](../../../lib/src/foundation) |
-| `interaction/` | [架構入口](interaction/README.md) | [來源目錄](../../../lib/src/interaction) |
-| `l10n/` | [架構入口](l10n/README.md) | [來源目錄](../../../lib/src/l10n) |
-| `layout/` | [架構入口](layout/README.md) | [來源目錄](../../../lib/src/layout) |
-| `navigation/` | [架構入口](navigation/README.md) | [來源目錄](../../../lib/src/navigation) |
-| `overlay/` | [架構入口](overlay/README.md) | [來源目錄](../../../lib/src/overlay) |
-| `routing/` | [架構入口](routing/README.md) | [來源目錄](../../../lib/src/routing) |
-| `settings/` | [架構入口](settings/README.md) | [來源目錄](../../../lib/src/settings) |
-| `shell/` | [架構入口](shell/README.md) | [來源目錄](../../../lib/src/shell) |
-| `styles/` | [架構入口](styles/README.md) | [來源目錄](../../../lib/src/styles) |
-| `surface/` | [架構入口](surface/README.md) | [來源目錄](../../../lib/src/surface) |
-| `theme/` | [架構入口](theme/README.md) | [來源目錄](../../../lib/src/theme) |
-| `tokens/` | [架構入口](tokens/README.md) | [來源目錄](../../../lib/src/tokens) |
-| `typography/` | [架構入口](typography/README.md) | [來源目錄](../../../lib/src/typography) |
+| `kernel/` | [架構入口](kernel/README.md) | [來源目錄](../../../lib/src/kernel) |
+| `rendering/` | [架構入口](rendering/README.md) | [來源目錄](../../../lib/src/rendering) |
+| `runtime/` | [架構入口](runtime/README.md) | [來源目錄](../../../lib/src/runtime) |
+| `styling/` | [架構入口](styling/README.md) | [來源目錄](../../../lib/src/styling) |
 
 ## 本層檔案
 

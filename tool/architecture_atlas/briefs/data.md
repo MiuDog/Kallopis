@@ -4,8 +4,8 @@
 
 | 想回答的問題 | 精確符號與來源 |
 | --- | --- |
-| 表格列與欄的資料形狀在哪裡？ | `KlpDataColumn`、`KlpDataRow`：lib/src/data/klp_advanced_data.dart:21、64 |
-| 表格與樹各自從哪裡建構？ | `KlpDataTable`、`KlpTree`：lib/src/data/klp_advanced_data.dart:76、316 |
-| 訊息容器與單則訊息如何分工？ | `KlpMessageThread`、`KlpMessageBubble`：lib/src/data/klp_message_thread.dart:68、11 |
+| 表格列與欄的資料形狀在哪裡？ | `KlpDataColumn`、`KlpDataRow`：lib/src/features/collections/klp_advanced_data.dart:21、64 |
+| 表格與樹各自從哪裡建構？ | `KlpDataTable`、`KlpTree`：lib/src/features/collections/klp_advanced_data.dart:76、316 |
+| 訊息容器與單則訊息如何分工？ | `KlpMessageThread`、`KlpMessageBubble`：lib/src/features/collections/klp_message_thread.dart:68、11 |
 
 重要依賴：`klp_message_thread.dart:3` 匯入 `KlpButton` 所在模組；同檔 :4、:6 匯入 surface 與 typography。這些證據表示靜態來源依賴，不代表資料載入或執行時呼叫順序。

@@ -37,7 +37,7 @@ void main() {
   late Map<String, List<String>> fieldsOf;
 
   setUpAll(() {
-    codecSource = Directory('lib/src/theme/internal')
+    codecSource = Directory('lib/src/styling/legacy_theme/internal')
         .listSync()
         .whereType<File>()
         .where((file) => file.path.endsWith('.dart'))
@@ -46,7 +46,7 @@ void main() {
 
     fieldsOf = <String, List<String>>{};
     for (final file
-        in Directory('lib/src/theme').listSync().whereType<File>().where(
+        in Directory('lib/src/styling/legacy_theme').listSync().whereType<File>().where(
           (file) => file.path.endsWith('.dart'),
         )) {
       final source = file.readAsStringSync();

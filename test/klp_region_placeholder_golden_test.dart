@@ -99,7 +99,7 @@ class _RegionPlaceholderSpecimen extends StatelessWidget {
                   KlpRegionPlaceholder(
                     label: 'Stream view',
                     kindLabel: 'Placeholder',
-                    minHeight: 140,
+                    constraints: KlpBoxConstraints(minHeight: 140),
                   ),
                   SizedBox(height: KlpSpace.lg),
                   SizedBox(

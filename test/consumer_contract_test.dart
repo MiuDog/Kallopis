@@ -15,6 +15,11 @@ import 'support/public_library_graph.dart';
 /// 這道缺口是實測出來的：庫內 33 個測試全部通過的狀態下，第一個真實消費者一放上
 /// `KlpTextField` 就拋 "No Material widget found"。編譯過不等於畫得出來。
 void main() {
+	test('public barrel exposes typed OKLCH chroma range', () {
+		const range = KlpOklchChromaRange.custom(0.2);
+		expect(range.upperBound, 0.2);
+	});
+
 	Future<void> pump(
 		WidgetTester tester,
 		Widget child, {
@@ -196,8 +201,8 @@ void main() {
 		});
 	});
 
-	test('Public barrel reaches every public source and owned part', () {
-		final violations = publicLibraryViolations(File('lib/kallopis.dart'), Directory('lib/src'));
+	test('Isolated public barrels reach every public source and owned part', () {
+		final violations = publicLibraryViolations(File('lib/kallopis.dart'), Directory('lib/src'), isolatedEntries: [File('lib/kallopis_declarative.dart')]);
 		expect(violations, isEmpty, reason: violations.join('\n'));
 	});
 }

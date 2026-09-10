@@ -39,7 +39,7 @@
 4. 同一個預設值只能在 theme 或 resolver 存在一次，不得在元件內再建 fallback。
 5. 不得新增 allowlist、調高 baseline 或更新 golden 來讓失敗變綠。
 6. 不發布到 pub.dev；`publish_to: none` 維持不變。
-7. JSON 公開邊界只有 `KlpVisualStyleJson`；codec helper 留在 `lib/src/theme/internal/`。
+7. JSON 公開邊界只有 `KlpVisualStyleJson`；codec helper 留在 `lib/src/styling/legacy_theme/internal/`。
 8. 公開 Dart API 的相容性不得因內部檔案整理而破壞。
 9. 已發布 tag 不得 force-push 或移動。
 
@@ -84,7 +84,7 @@
    flutter test test/consumer_contract_test.dart test/l10n_discipline_test.dart
    ```
 
-4. 確認 `lib/src/theme/internal/` 檔案沒有從 `lib/kallopis.dart` 匯出。
+4. 確認 `lib/src/styling/legacy_theme/internal/` 檔案沒有從 `lib/kallopis.dart` 匯出。
 5. 確認所有 JSON error 保留完整欄位 path，且 l10n 關卡通過。
 
 **WP1 證據**：定點測試的 `All tests passed!` 與 exit code 0。

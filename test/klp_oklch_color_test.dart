@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:kallopis/src/controls/color/klp_oklch_color_editor.dart';
-import 'package:kallopis/src/controls/color/klp_oklch_color_picker.dart';
-import 'package:kallopis/src/controls/selection/klp_slider.dart';
+import 'package:kallopis/src/features/forms/color/klp_oklch_chroma_range.dart';
+import 'package:kallopis/src/features/forms/color/klp_oklch_color_editor.dart';
+import 'package:kallopis/src/features/forms/color/klp_oklch_color_picker.dart';
+import 'package:kallopis/src/features/forms/selection/klp_slider.dart';
 import 'package:kallopis/src/foundation/klp_oklch_color.dart';
-import 'package:kallopis/src/theme/klp_theme.dart';
-import 'package:kallopis/src/theme/klp_visual_style.dart';
-import 'package:kallopis/src/theme/klp_visual_style_json.dart';
+import 'package:kallopis/src/styling/legacy_theme/klp_theme.dart';
+import 'package:kallopis/src/styling/legacy_theme/klp_visual_style.dart';
+import 'package:kallopis/src/styling/legacy_theme/klp_visual_style_json.dart';
 
 import 'style_fixture.dart';
 
@@ -46,8 +47,12 @@ void main() {
 
 	test('brand 可由 visual style JSON 完整往返', () {
 		const brand = Color.fromARGB(255, 32, 128, 224);
-		final source = KlpVisualStyle.defaultStyle.copyWith(colors: KlpThemeData.light.copyWith(brand: brand));
-		final decoded = KlpVisualStyleJson.decode(KlpVisualStyleJson.encode(source));
+		final source = KlpVisualStyle.defaultStyle.copyWith(
+			colors: KlpThemeData.light.copyWith(brand: brand),
+		);
+		final decoded = KlpVisualStyleJson.decode(
+			KlpVisualStyleJson.encode(source),
+		);
 		expect(decoded.colors.brand, brand);
 		expect(decoded.colors.accent, KlpThemeData.light.accent);
 	});
@@ -55,10 +60,14 @@ void main() {
 	test('color plane geometry 可由 visual style JSON 完整往返', () {
 		final source = KlpVisualStyle.defaultStyle.copyWith(
 			geometry: KlpVisualStyle.defaultStyle.geometry.copyWith(
-				control: KlpVisualStyle.defaultStyle.geometry.control.copyWith(colorPlaneExtent: 222),
+				control: KlpVisualStyle.defaultStyle.geometry.control.copyWith(
+					colorPlaneExtent: 222,
+				),
 			),
 		);
-		final decoded = KlpVisualStyleJson.decode(KlpVisualStyleJson.encode(source));
+		final decoded = KlpVisualStyleJson.decode(
+			KlpVisualStyleJson.encode(source),
+		);
 		expect(decoded.geometry.control.colorPlaneExtent, 222);
 	});
 
@@ -80,14 +89,38 @@ void main() {
 		}
 
 		await tester.pumpWidget(subject(800));
-		final wideY = [for (var index = 0; index < 4; index++) tester.getTopLeft(find.byType(KlpSlider).at(index)).dy];
+		final wideY = [
+			for (var index = 0; index < 4; index++)
+				tester.getTopLeft(find.byType(KlpSlider).at(index)).dy,
+		];
 		expect(wideY.toSet(), hasLength(1));
 
 		await tester.pumpWidget(subject(160));
-		final narrowY = [for (var index = 0; index < 4; index++) tester.getTopLeft(find.byType(KlpSlider).at(index)).dy];
+		final narrowY = [
+			for (var index = 0; index < 4; index++)
+				tester.getTopLeft(find.byType(KlpSlider).at(index)).dy,
+		];
 		expect(narrowY[0], lessThan(narrowY[1]));
 		expect(narrowY[1], lessThan(narrowY[2]));
 		expect(narrowY[2], lessThan(narrowY[3]));
+	});
+
+	testWidgets('具名 Chroma 範圍會限制編輯器上限', (tester) async {
+		await tester.pumpWidget(
+			MaterialApp(
+				theme: buildKlpTheme(Brightness.dark),
+				home: Scaffold(
+					body: KlpOklchColorEditor(
+						value: const KlpOklchColor(lightness: 0.6, chroma: 0.1, hue: 220),
+						onChanged: (_) {},
+						chromaRange: const KlpOklchChromaRange.custom(0.2),
+					),
+				),
+			),
+		);
+
+		final chromaSlider = tester.widget<Slider>(find.byType(Slider).at(1));
+		expect(chromaSlider.max, 0.2);
 	});
 
 	for (final entry in {
@@ -157,7 +190,12 @@ void main() {
 					theme: buildKlpTheme(Brightness.dark, style: entry.value),
 					home: Scaffold(
 						body: KlpOklchColorPicker(
-							value: const KlpOklchColor(lightness: 0.7, chroma: 0.4, hue: 40, alpha: 0.8),
+							value: const KlpOklchColor(
+								lightness: 0.7,
+								chroma: 0.4,
+								hue: 40,
+								alpha: 0.8,
+							),
 							onChanged: (_) {},
 						),
 					),
@@ -165,14 +203,20 @@ void main() {
 			);
 
 			final lightnessPlane = find.bySemanticsLabel('Lightness plane');
-			final planePaint = find.descendant(of: lightnessPlane, matching: find.byType(CustomPaint));
+			final planePaint = find.descendant(
+				of: lightnessPlane,
+				matching: find.byType(CustomPaint),
+			);
 			final expectedExtent = entry.key == 'default' ? 168.0 : 120.0;
 			expect(tester.getSize(planePaint), Size.square(expectedExtent));
 			expect(find.bySemanticsLabel('Chroma plane'), findsOneWidget);
 			expect(find.bySemanticsLabel('Hue plane'), findsOneWidget);
 			expect(find.bySemanticsLabel('Clipped original'), findsOneWidget);
 			expect(find.bySemanticsLabel('sRGB fallback'), findsOneWidget);
-			expect(find.text('Outside sRGB gamut; fallback reduces chroma.'), findsOneWidget);
+			expect(
+				find.text('Outside sRGB gamut; fallback reduces chroma.'),
+				findsOneWidget,
+			);
 			semantics.dispose();
 		});
 	}
@@ -194,7 +238,9 @@ void main() {
 
 		final plane = find.bySemanticsLabel('Lightness plane');
 		final rect = tester.getRect(plane);
-		await tester.tapAt(rect.topLeft + Offset(rect.width * 0.75, rect.height * 0.25));
+		await tester.tapAt(
+			rect.topLeft + Offset(rect.width * 0.75, rect.height * 0.25),
+		);
 		expect(changed?.lightness, closeTo(0.75, 0.02));
 		expect(changed?.chroma, closeTo(0.3, 0.02));
 
@@ -206,7 +252,10 @@ void main() {
 		changed = null;
 		await tester.sendKeyEvent(LogicalKeyboardKey.arrowRight);
 		expect(changed?.chroma, closeTo(0.104, 0.001));
-		expect(find.descendant(of: plane, matching: find.byType(ClipRRect)), findsOneWidget);
+		expect(
+			find.descendant(of: plane, matching: find.byType(ClipRRect)),
+			findsOneWidget,
+		);
 		semantics.dispose();
 	});
 }

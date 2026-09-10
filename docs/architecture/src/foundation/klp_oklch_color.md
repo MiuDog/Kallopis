@@ -9,14 +9,18 @@
 ## 直接依賴圖
 
 ```mermaid
-flowchart TD
+flowchart LR
 	n0["klp_oklch_color.dart"]
 	n1["dart:math"]
 	n2["package:flutter/foundation.dart"]
 	n3["package:flutter/painting.dart"]
+	n4["klp_linear_to_srgb.dart"]
+	n5["klp_srgb_to_linear.dart"]
 	n0 -->|"import"| n1
 	n0 -->|"import"| n2
 	n0 -->|"import"| n3
+	n0 -->|"part"| n4
+	n0 -->|"part"| n5
 ```
 
 ## 依賴證據
@@ -26,6 +30,8 @@ flowchart TD
 | import | <code>import &#x27;dart:math&#x27; as math;</code> | [lib/src/foundation/klp_oklch_color.dart:1](../../../../lib/src/foundation/klp_oklch_color.dart#L1) |
 | import | <code>import &#x27;package:flutter/foundation.dart&#x27;;</code> | [lib/src/foundation/klp_oklch_color.dart:3](../../../../lib/src/foundation/klp_oklch_color.dart#L3) |
 | import | <code>import &#x27;package:flutter/painting.dart&#x27;;</code> | [lib/src/foundation/klp_oklch_color.dart:4](../../../../lib/src/foundation/klp_oklch_color.dart#L4) |
+| part | <code>part &#x27;klp_linear_to_srgb.dart&#x27;;</code> | [lib/src/foundation/klp_oklch_color.dart:6](../../../../lib/src/foundation/klp_oklch_color.dart#L6) |
+| part | <code>part &#x27;klp_srgb_to_linear.dart&#x27;;</code> | [lib/src/foundation/klp_oklch_color.dart:7](../../../../lib/src/foundation/klp_oklch_color.dart#L7) |
 
 ## 宣告關係圖
 
@@ -43,7 +49,7 @@ classDiagram
 
 ### KlpOklchColor
 
-ClassDeclaration · public · [lib/src/foundation/klp_oklch_color.dart:6](../../../../lib/src/foundation/klp_oklch_color.dart#L6)
+ClassDeclaration · public · [lib/src/foundation/klp_oklch_color.dart:9](../../../../lib/src/foundation/klp_oklch_color.dart#L9)
 
 <code>class KlpOklchColor</code>
 
@@ -52,34 +58,20 @@ ClassDeclaration · public · [lib/src/foundation/klp_oklch_color.dart:6](../../
 
 | 成員 | 可見性 | 簽章／型別 | 來源註解摘要 | 證據 |
 |---|---|---|---|---|
-| constructor <code>KlpOklchColor</code> | public | <code>const KlpOklchColor({ required this.lightness, required this.chroma, required this.hue, this.alpha = 1, })</code> |  | [lib/src/foundation/klp_oklch_color.dart:13](../../../../lib/src/foundation/klp_oklch_color.dart#L13) |
-| constructor <code>fromColor</code> | public | <code>factory KlpOklchColor.fromColor(Color color)</code> | 從 Flutter sRGB 色彩建立 OKLCH 值。 | [lib/src/foundation/klp_oklch_color.dart:22](../../../../lib/src/foundation/klp_oklch_color.dart#L22) |
-| field <code>lightness</code> | public | <code>final double lightness</code> |  | [lib/src/foundation/klp_oklch_color.dart:46](../../../../lib/src/foundation/klp_oklch_color.dart#L46) |
-| field <code>chroma</code> | public | <code>final double chroma</code> |  | [lib/src/foundation/klp_oklch_color.dart:47](../../../../lib/src/foundation/klp_oklch_color.dart#L47) |
-| field <code>hue</code> | public | <code>final double hue</code> |  | [lib/src/foundation/klp_oklch_color.dart:48](../../../../lib/src/foundation/klp_oklch_color.dart#L48) |
-| field <code>alpha</code> | public | <code>final double alpha</code> |  | [lib/src/foundation/klp_oklch_color.dart:49](../../../../lib/src/foundation/klp_oklch_color.dart#L49) |
-| getter <code>isInSrgbGamut</code> | public | <code>bool get isInSrgbGamut</code> | 未限制通道前的轉換結果是否完整落在 sRGB 色域。 | [lib/src/foundation/klp_oklch_color.dart:51](../../../../lib/src/foundation/klp_oklch_color.dart#L51) |
-| getter <code>closestSrgbFallback</code> | public | <code>KlpOklchColor get closestSrgbFallback</code> | 固定 Lightness 與 Hue，找出 sRGB 色域內的最大 Chroma。 | [lib/src/foundation/klp_oklch_color.dart:57](../../../../lib/src/foundation/klp_oklch_color.dart#L57) |
-| method <code>toSrgbFallbackColor</code> | public | <code>Color toSrgbFallbackColor()</code> | 取得以 Chroma fallback 映射後的 sRGB 色彩。 | [lib/src/foundation/klp_oklch_color.dart:78](../../../../lib/src/foundation/klp_oklch_color.dart#L78) |
-| method <code>toColor</code> | public | <code>Color toColor()</code> | 轉成 Flutter sRGB 色彩；超出色域的通道會限制在 0 到 1。 | [lib/src/foundation/klp_oklch_color.dart:81](../../../../lib/src/foundation/klp_oklch_color.dart#L81) |
-| method <code>copyWith</code> | public | <code>KlpOklchColor copyWith({double? lightness, double? chroma, double? hue, double? alpha})</code> | 建立只替換指定座標的新值。 | [lib/src/foundation/klp_oklch_color.dart:93](../../../../lib/src/foundation/klp_oklch_color.dart#L93) |
-| method <code>_toSrgb</code> | private | <code>List&lt;double&gt; _toSrgb()</code> |  | [lib/src/foundation/klp_oklch_color.dart:103](../../../../lib/src/foundation/klp_oklch_color.dart#L103) |
-| method <code>==</code> | public | <code>bool operator ==(Object other)</code> |  | [lib/src/foundation/klp_oklch_color.dart:121](../../../../lib/src/foundation/klp_oklch_color.dart#L121) |
-| getter <code>hashCode</code> | public | <code>int get hashCode</code> |  | [lib/src/foundation/klp_oklch_color.dart:131](../../../../lib/src/foundation/klp_oklch_color.dart#L131) |
-
-### _srgbToLinear
-
-FunctionDeclaration · private · [lib/src/foundation/klp_oklch_color.dart:135](../../../../lib/src/foundation/klp_oklch_color.dart#L135)
-
-<code>double _srgbToLinear(double value)</code>
-
-
-### _linearToSrgb
-
-FunctionDeclaration · private · [lib/src/foundation/klp_oklch_color.dart:139](../../../../lib/src/foundation/klp_oklch_color.dart#L139)
-
-<code>double _linearToSrgb(double value)</code>
-
+| constructor <code>KlpOklchColor</code> | public | <code>const KlpOklchColor({ required this.lightness, required this.chroma, required this.hue, this.alpha = 1, })</code> |  | [lib/src/foundation/klp_oklch_color.dart:16](../../../../lib/src/foundation/klp_oklch_color.dart#L16) |
+| constructor <code>fromColor</code> | public | <code>factory KlpOklchColor.fromColor(Color color)</code> | 從 Flutter sRGB 色彩建立 OKLCH 值。 | [lib/src/foundation/klp_oklch_color.dart:25](../../../../lib/src/foundation/klp_oklch_color.dart#L25) |
+| field <code>lightness</code> | public | <code>final double lightness</code> |  | [lib/src/foundation/klp_oklch_color.dart:49](../../../../lib/src/foundation/klp_oklch_color.dart#L49) |
+| field <code>chroma</code> | public | <code>final double chroma</code> |  | [lib/src/foundation/klp_oklch_color.dart:50](../../../../lib/src/foundation/klp_oklch_color.dart#L50) |
+| field <code>hue</code> | public | <code>final double hue</code> |  | [lib/src/foundation/klp_oklch_color.dart:51](../../../../lib/src/foundation/klp_oklch_color.dart#L51) |
+| field <code>alpha</code> | public | <code>final double alpha</code> |  | [lib/src/foundation/klp_oklch_color.dart:52](../../../../lib/src/foundation/klp_oklch_color.dart#L52) |
+| getter <code>isInSrgbGamut</code> | public | <code>bool get isInSrgbGamut</code> | 未限制通道前的轉換結果是否完整落在 sRGB 色域。 | [lib/src/foundation/klp_oklch_color.dart:54](../../../../lib/src/foundation/klp_oklch_color.dart#L54) |
+| getter <code>closestSrgbFallback</code> | public | <code>KlpOklchColor get closestSrgbFallback</code> | 固定 Lightness 與 Hue，找出 sRGB 色域內的最大 Chroma。 | [lib/src/foundation/klp_oklch_color.dart:60](../../../../lib/src/foundation/klp_oklch_color.dart#L60) |
+| method <code>toSrgbFallbackColor</code> | public | <code>Color toSrgbFallbackColor()</code> | 取得以 Chroma fallback 映射後的 sRGB 色彩。 | [lib/src/foundation/klp_oklch_color.dart:81](../../../../lib/src/foundation/klp_oklch_color.dart#L81) |
+| method <code>toColor</code> | public | <code>Color toColor()</code> | 轉成 Flutter sRGB 色彩；超出色域的通道會限制在 0 到 1。 | [lib/src/foundation/klp_oklch_color.dart:84](../../../../lib/src/foundation/klp_oklch_color.dart#L84) |
+| method <code>copyWith</code> | public | <code>KlpOklchColor copyWith({double? lightness, double? chroma, double? hue, double? alpha})</code> | 建立只替換指定座標的新值。 | [lib/src/foundation/klp_oklch_color.dart:96](../../../../lib/src/foundation/klp_oklch_color.dart#L96) |
+| method <code>_toSrgb</code> | private | <code>List&lt;double&gt; _toSrgb()</code> |  | [lib/src/foundation/klp_oklch_color.dart:106](../../../../lib/src/foundation/klp_oklch_color.dart#L106) |
+| method <code>==</code> | public | <code>bool operator ==(Object other)</code> |  | [lib/src/foundation/klp_oklch_color.dart:124](../../../../lib/src/foundation/klp_oklch_color.dart#L124) |
+| getter <code>hashCode</code> | public | <code>int get hashCode</code> |  | [lib/src/foundation/klp_oklch_color.dart:134](../../../../lib/src/foundation/klp_oklch_color.dart#L134) |
 
 ## 閱讀說明與限制
 

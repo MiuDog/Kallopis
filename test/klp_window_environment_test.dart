@@ -49,7 +49,7 @@ void main() {
 				environment: KlpAppPlatform.macos,
 				child: const KlpWindowHeader(
 					titleText: 'Explicit',
-					platform: TargetPlatform.windows,
+					platform: KlpAppPlatform.windows,
 				),
 			),
 		);

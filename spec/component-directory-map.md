@@ -18,6 +18,7 @@
 | Controls | `button/`、`color/`、`input/`、`selection/`、`toggle/` |
 | Feedback | `view_states/`、`workflow/` |
 | Surface | `page_background/` |
+| Components | `lib/src/foundation/surface/legacy_components/` 根層只放無產品語意、由基礎原語組成的通用元件 |
 
 ## 有意保留的複合視圖檔
 

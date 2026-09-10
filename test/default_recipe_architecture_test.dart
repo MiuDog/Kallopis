@@ -2,8 +2,8 @@ import 'dart:io';
 
 import 'package:flutter_test/flutter_test.dart';
 import 'package:kallopis/kallopis.dart';
-import 'package:kallopis/src/theme/klp_theme.dart' as legacy;
-import 'package:kallopis/src/theme/klp_theme_data.dart' as schema;
+import 'package:kallopis/src/styling/legacy_theme/klp_theme.dart' as legacy;
+import 'package:kallopis/src/styling/legacy_theme/klp_theme_data.dart' as schema;
 
 void main() {
 	test('Legacy color entry and schema preserve const identity', () {
@@ -46,13 +46,13 @@ void main() {
 		};
 		for (final entry in owners.entries) {
 			final owner = File(
-				'lib/src/theme/${entry.value}.dart',
+				'lib/src/styling/legacy_theme/${entry.value}.dart',
 			).readAsStringSync();
 			final recipe = File(
-				'lib/src/styles/default_${entry.key}.dart',
+				'lib/src/styling/presets/legacy/default_${entry.key}.dart',
 			).readAsStringSync();
-			expect(owner, contains("part '../styles/default_${entry.key}.dart';"));
-			expect(recipe, startsWith("part of '../theme/${entry.value}.dart';"));
+			expect(owner, contains("part '../presets/legacy/default_${entry.key}.dart';"));
+			expect(recipe, startsWith("part of '../../legacy_theme/${entry.value}.dart';"));
 		}
 	});
 
@@ -80,6 +80,6 @@ void main() {
 			active.removeLast();
 		}
 
-		visit(File('lib/src/theme/klp_theme.dart').absolute.uri.normalizePath());
+		visit(File('lib/src/styling/legacy_theme/klp_theme.dart').absolute.uri.normalizePath());
 	});
 }

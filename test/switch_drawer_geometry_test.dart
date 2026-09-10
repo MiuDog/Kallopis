@@ -105,7 +105,7 @@ void main() {
 						home: KlpDrawer(open: true, edge: edge, size: size, onScrimTap: () {}, child: const SizedBox.expand()),
 					));
 					final slide = tester.widget<AnimatedSlide>(find.byType(AnimatedSlide));
-					final panel = slide.child! as SizedBox;
+					final panel = slide.child! as KlpBox;
 					final horizontal = edge == KlpDrawerEdge.left || edge == KlpDrawerEdge.right;
 					expect(horizontal ? panel.width : panel.height, size ?? (horizontal ? style.geometry.layout.drawerWidth : style.geometry.layout.drawerHeight));
 					expect(tester.takeException(), isNull);

@@ -81,7 +81,6 @@ class _CatalogShellState extends State<CatalogShell> {
 
         final panelLayout = KlpDockLayout(
           stage: KlpPanelFrame(
-            padding: EdgeInsets.zero,
             content: _CatalogStage(page: widget.pages[widget.selected]),
           ),
           panels: [

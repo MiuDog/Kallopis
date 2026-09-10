@@ -7,7 +7,7 @@ void main() {
 		testWidgets('KlpPageBackground renders ${style.name} from theme tokens', (tester) async {
 			await tester.pumpWidget(
 				KlpApp(
-					home: KlpPanelFrame(padding: EdgeInsets.zero, content: SizedBox(
+					home: KlpPanelFrame(content: SizedBox(
 						width: 240,
 						height: 180,
 						child: KlpPageBackground(

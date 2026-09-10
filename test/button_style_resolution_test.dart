@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:kallopis/kallopis.dart';
-import 'package:kallopis/src/controls/internal/klp_button_style.dart';
-import 'package:kallopis/src/tokens/primitive_token.dart' as primitive;
-import 'package:kallopis/src/theme/klp_shape_theme.dart' as semantic;
+import 'package:kallopis/src/foundation/interaction/internal/klp_button_style.dart';
+import 'package:kallopis/src/styling/legacy_tokens/primitive_token.dart' as primitive;
+import 'package:kallopis/src/styling/legacy_theme/klp_shape_theme.dart' as semantic;
 
 /// 測試資料解析與注入邊界，不建立或定型新的畫面布局。
 void main() {

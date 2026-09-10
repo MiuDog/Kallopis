@@ -2,6 +2,8 @@
 
 ## 索引
 
+Kallopis 遷移：[KLP-0019](KLP-0019-declarative-framework-migration.md)，Implementing。此狀態表示方向已獲使用者核准、程式尚未全部符合；不能當成 Accepted。新功能與 primitive 權限依該文件，原決策保留舊 API 的歷史與過渡範圍。
+
 | 編號 | 題目 | 狀態 |
 |---|---|---|
 | [KLP-0001](KLP-0001-scope-token-architecture-and-extraction-method.md) | 範圍、token 架構，與「複製搬移」這個例外 | Accepted |

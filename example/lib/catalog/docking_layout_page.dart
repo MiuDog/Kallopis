@@ -22,7 +22,7 @@ final dockingLayoutPage = CatalogPageData(
         width: 220,
         height: 120,
         child: KlpPanelFrame(
-          headerHeight: KlpDockHeader.extent,
+			headerSize: KlpPanelHeaderSize.dock,
           header: KlpDockHeader(
             leading: const KlpText(
               'COMPACT DOCK HEADER',

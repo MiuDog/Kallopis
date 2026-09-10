@@ -10,7 +10,7 @@ import 'package:flutter_test/flutter_test.dart';
 /// 這道檢查是實測出來的：某次 token 擴充後，`KlpSpacingTheme` 有 42 個欄位而 `==` 只比 4 個，
 /// `KlpThemeData` 與 `KlpDataVisualizationTheme` 甚至完全沒有定義 `==`。當時所有測試全綠。
 void main() {
-	final files = Directory('lib/src/theme')
+	final files = Directory('lib/src/styling/legacy_theme')
 			.listSync()
 			.whereType<File>()
 			.where((f) => f.path.endsWith('.dart'))
@@ -103,7 +103,7 @@ void main() {
 	test('gridTileWidth 只由 constructor 提供預設值', () {
 		// 直接檢查 comfortableDensity 區段，避免相同預設值在兩處靜默分岔。
 		final source = File(
-			'lib/src/theme/klp_spacing_theme.dart',
+			'lib/src/styling/legacy_theme/klp_spacing_theme.dart',
 		).readAsStringSync();
 		final densityStart = source.indexOf(
 			'static const KlpSpacingTheme comfortableDensity',
@@ -120,7 +120,7 @@ void main() {
 
 	test('iconGlyph 只由 constructor 提供預設值', () {
 		final source = File(
-			'lib/src/theme/klp_spacing_theme.dart',
+			'lib/src/styling/legacy_theme/klp_spacing_theme.dart',
 		).readAsStringSync();
 		final densityStart = source.indexOf(
 			'static const KlpSpacingTheme comfortableDensity',

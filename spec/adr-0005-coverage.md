@@ -18,10 +18,10 @@ Kallopis only supplies visual composition, accessibility, and finite-state vocab
 ## Project explorer
 
 - Canonical nodes use `KlpExplorer`, `KlpFileExplorer`, and `KlpTree`.
-- Proposal-only nodes use `KlpPreviewTreeNode` and `KlpPreviewTree`, so their model and semantic
-  name cannot be confused with canonical navigation.
-- Atomic publication uses `KlpPublicationProgressOverlay` and `KlpWorkflowProgress` while leaving
-  the preview tree mounted.
+- Non-canonical preview nodes use `KlpPreviewTreeNode` and `KlpPreviewTree`; the product decides
+  when its domain data projects into this generic preview model, so Kallopis does not own Proposal semantics.
+- The product's atomic publication flow uses `KlpPublicationProgressOverlay` and
+  `KlpWorkflowProgress` while leaving the preview tree mounted.
 - Header controls, empty states, filtering, and contextual commands use `KlpFilterBar`,
   `KlpEmptyState`, and `KlpContextMenu`.
 

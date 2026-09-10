@@ -4,8 +4,8 @@
 
 | 想回答的問題 | 精確符號與來源 |
 | --- | --- |
-| 一般表面與語意 tone 在哪裡？ | `KlpSurface`、`KlpSurfaceTone`：lib/src/surface/klp_surface.dart:25、9 |
-| 背景如何接上 CustomPainter？ | `KlpPageBackground.build`：lib/src/surface/klp_page_background.dart:37；`KlpPageBackgroundPainter`：lib/src/surface/klp_page_background_painter.dart:40 |
-| recipe 與 painter 的內部所有權在哪裡？ | part directives：lib/src/surface/klp_page_background_recipe.dart:5；lib/src/surface/klp_page_background_painter.dart:6 |
+| 一般表面與語意 tone 在哪裡？ | `KlpSurface`、`KlpSurfaceTone`：lib/src/foundation/surface/klp_surface.dart:25、9 |
+| 背景如何接上 CustomPainter？ | `KlpPageBackground.build`：lib/src/foundation/surface/klp_page_background.dart:37；`KlpPageBackgroundPainter`：lib/src/foundation/surface/klp_page_background_painter.dart:40 |
+| recipe 與 painter 的內部所有權在哪裡？ | part directives：lib/src/foundation/surface/klp_page_background_recipe.dart:5；lib/src/foundation/surface/klp_page_background_painter.dart:6 |
 
 重要依賴：`klp_page_background.dart:40–44` 建構 `CustomPaint`／`KlpPageBackgroundPainter` 並傳入 recipe 與 viewport；:45–50 將 theme 值組成 `KlpPageBackgroundVisuals`。這是實際畫面組合與值傳遞，與單純 import 關係不同。

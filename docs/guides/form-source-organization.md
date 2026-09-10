@@ -1,6 +1,6 @@
 # Form 原始碼組織
 
-`lib/src/form/` 採「一個公開 Widget 一份檔案」；同類元件放在同一個子資料夾。
+`lib/src/features/forms/` 採「一個公開 Widget 一份檔案」；同類元件放在同一個子資料夾。
 此規則只調整原始碼所有權，不改變元件的視覺、互動、狀態或公開名稱。
 
 ## 目錄責任
@@ -27,8 +27,8 @@ flowchart TD
 
 ```dart
 package:kallopis/kallopis_foundation.dart
-	-> lib/src/form/klp_*.dart
-		-> lib/src/form/<類型>/klp_<component>.dart
+	-> lib/src/features/forms/klp_*.dart
+		-> lib/src/features/forms/<類型>/klp_<component>.dart
 ```
 
 頂層既有檔案保留為 compatibility barrel。消費端應優先匯入

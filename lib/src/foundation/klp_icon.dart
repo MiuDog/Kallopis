@@ -1,29 +1,11 @@
 import 'package:flutter/widgets.dart';
 
-import '../theme/klp_theme.dart';
+import '../styling/legacy_theme/klp_theme.dart';
+import 'klp_icon_data.dart';
+import 'klp_icon_weight.dart';
 
-@immutable
-final class KlpIconData {
-
-	const KlpIconData(this.regularCodePoint, {this.thinCodePoint});
-
-	final int regularCodePoint;
-	final int? thinCodePoint;
-
-	/// 向下相容的 Regular Rounded 字碼。
-	int get codePoint => regularCodePoint;
-
-	int codePointFor(KlpIconWeight weight) {
-		if (weight == KlpIconWeight.thin && thinCodePoint != null) return thinCodePoint!;
-
-		return regularCodePoint;
-	}
-
-	bool supports(KlpIconWeight weight) => weight == KlpIconWeight.regular || thinCodePoint != null;
-}
-
-/// 圖示線條的語意粗細。
-enum KlpIconWeight { thin, regular }
+export 'klp_icon_data.dart';
+export 'klp_icon_weight.dart';
 
 class KlpIcon extends StatelessWidget {
 

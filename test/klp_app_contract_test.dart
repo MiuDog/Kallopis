@@ -25,7 +25,6 @@ void main() {
 				lightStyle: lightStyle,
 				darkStyle: darkStyle,
 				home: KlpPanelFrame(
-					padding: EdgeInsets.zero,
 					content: Builder(
 						builder: (context) {
 							controller = KlpApp.of(context);
@@ -62,7 +61,6 @@ void main() {
 				initialThemeMode: ThemeMode.dark,
 				style: style,
 				home: KlpPanelFrame(
-					padding: EdgeInsets.zero,
 					content: Builder(
 						builder: (context) {
 							resolved = context.klp;
@@ -89,7 +87,6 @@ void main() {
 				showWindowHeader: false,
 				initialThemeMode: ThemeMode.system,
 				home: KlpPanelFrame(
-					padding: EdgeInsets.zero,
 					content: Builder(
 						builder: (context) {
 							controller = KlpApp.of(context);
@@ -124,7 +121,6 @@ void main() {
 					),
 				],
 				home: KlpPanelFrame(
-					padding: EdgeInsets.zero,
 					content: Builder(
 						builder: (context) {
 							resolved = KlpLocalizations.of(context);

@@ -3,6 +3,9 @@ import 'dart:math' as math;
 import 'package:flutter/foundation.dart';
 import 'package:flutter/painting.dart';
 
+part 'klp_linear_to_srgb.dart';
+part 'klp_srgb_to_linear.dart';
+
 /// 以 OKLCH 表示的裝置無關色彩。
 ///
 /// [lightness] 與 [alpha] 使用 0 到 1；[chroma] 不限制上界；[hue] 以角度表示。
@@ -130,14 +133,4 @@ class KlpOklchColor {
 
 	@override
 	int get hashCode => Object.hash(lightness, chroma, hue, alpha);
-}
-
-double _srgbToLinear(double value) {
-	return value <= 0.04045 ? value / 12.92 : math.pow((value + 0.055) / 1.055, 2.4).toDouble();
-}
-
-double _linearToSrgb(double value) {
-	final magnitude = value.abs();
-	final encoded = magnitude <= 0.0031308 ? 12.92 * magnitude : 1.055 * math.pow(magnitude, 1 / 2.4) - 0.055;
-	return value < 0 ? -encoded : encoded.toDouble();
 }

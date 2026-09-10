@@ -4,8 +4,8 @@
 
 | 想回答的問題 | 精確符號與來源 |
 | --- | --- |
-| 公開表單入口如何指向真正實作？ | export directives：lib/src/form/klp_form.dart:1；`KlpForm`：lib/src/form/core/klp_form.dart:9 |
-| 標籤與欄位容器從哪裡讀？ | `KlpField`：lib/src/form/core/klp_field.dart:14 |
-| 一般輸入與重複結構在哪裡分開？ | `KlpNumberField`：lib/src/form/input/klp_number_field.dart:9；`KlpRepeaterField`：lib/src/form/structured/klp_repeater_field.dart:19 |
+| 公開表單入口如何指向真正實作？ | export directives：lib/src/features/forms/klp_form.dart:1；`KlpForm`：lib/src/features/forms/core/klp_form.dart:9 |
+| 標籤與欄位容器從哪裡讀？ | `KlpField`：lib/src/features/forms/core/klp_field.dart:14 |
+| 一般輸入與重複結構在哪裡分開？ | `KlpNumberField`：lib/src/features/forms/input/klp_number_field.dart:9；`KlpRepeaterField`：lib/src/features/forms/structured/klp_repeater_field.dart:19 |
 
 重要依賴：`core/klp_form.dart:1` 匯入 `internal/klp_form_dependencies.dart`；:26–38 的建構內容讀取 `context.klp.space` 並插入呼叫端的 widgets。barrel export 是可達性關係，與上述 build 組合應分開畫。

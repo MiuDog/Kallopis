@@ -12,7 +12,7 @@
 flowchart TD
 	n0["klp_segmented_progress.dart"]
 	n1["package:flutter/material.dart"]
-	n2["../theme/klp_theme.dart"]
+	n2["../styling/legacy_theme/klp_theme.dart"]
 	n0 -->|"import"| n1
 	n0 -->|"import"| n2
 ```
@@ -22,7 +22,7 @@ flowchart TD
 | 關係 | 原始 directive | 來源 |
 |---|---|---|
 | import | <code>import &#x27;package:flutter/material.dart&#x27;;</code> | [lib/src/foundation/klp_segmented_progress.dart:1](../../../../lib/src/foundation/klp_segmented_progress.dart#L1) |
-| import | <code>import &#x27;../theme/klp_theme.dart&#x27;;</code> | [lib/src/foundation/klp_segmented_progress.dart:3](../../../../lib/src/foundation/klp_segmented_progress.dart#L3) |
+| import | <code>import &#x27;../styling/legacy_theme/klp_theme.dart&#x27;;</code> | [lib/src/foundation/klp_segmented_progress.dart:3](../../../../lib/src/foundation/klp_segmented_progress.dart#L3) |
 
 ## 宣告關係圖
 

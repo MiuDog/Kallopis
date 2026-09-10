@@ -27,7 +27,7 @@ void main() {
               width: 800,
               child: KlpWindowHeader(
                 titleText: 'Kallopis',
-                platform: TargetPlatform.windows,
+                platform: KlpAppPlatform.windows,
                 appIcon: const KlpIcon(
                   KlpIcons.sparkles,
                   key: ValueKey('app-icon'),
@@ -66,7 +66,7 @@ void main() {
 
                   return KlpWindowHeader(
                     titleText: 'Kallopis',
-                    platform: TargetPlatform.windows,
+                    platform: KlpAppPlatform.windows,
                     appIcon: const KlpIcon(KlpIcons.sparkles),
                     actions: [
                       Container(

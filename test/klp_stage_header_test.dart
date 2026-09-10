@@ -12,7 +12,6 @@ void main() {
       const KlpApp(
         showWindowHeader: false,
         home: KlpPanelFrame(
-          padding: EdgeInsets.zero,
           content: KlpAppScreen(
             child: KlpStageHeader(
               projectName: 'Notist',
@@ -46,7 +45,6 @@ void main() {
       const KlpApp(
         showWindowHeader: false,
         home: KlpPanelFrame(
-          padding: EdgeInsets.zero,
           content: KlpStageHeader(
             projectName: 'Notist',
             sectionLabel: 'Flow',
@@ -75,7 +73,6 @@ void main() {
       KlpApp(
         showWindowHeader: false,
         home: KlpPanelFrame(
-          padding: EdgeInsets.zero,
           content: SizedBox(
             width: 420,
             height: 240,
@@ -107,7 +104,6 @@ void main() {
       const KlpApp(
         showWindowHeader: false,
         home: KlpPanelFrame(
-          padding: EdgeInsets.zero,
           content: SizedBox(
             key: ValueKey('stage-without-header'),
             width: 420,

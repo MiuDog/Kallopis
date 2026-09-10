@@ -13,7 +13,10 @@ void main() {
 			expect(lineContainers, findsNWidgets(2));
 			for (final container in tester.widgetList<Container>(lineContainers)) {
 				expect(container.constraints!.minHeight, style.spacing.controlHeight);
-				expect(tester.getSize(find.byWidget(container)).height, lessThan(style.spacing.controlHeightLarge));
+				expect(
+					tester.getSize(find.byWidget(container)).height,
+					lessThan(style.spacing.controlHeightLarge),
+				);
 			}
 
 			final cellPaddings = tester.widgetList<Padding>(_cellPaddings());
@@ -38,28 +41,86 @@ void main() {
 			expect(tester.takeException(), isNull);
 		}
 	});
+
+	testWidgets('Advanced data 的 typed 幾何由 theme 解析', (tester) async {
+		final style = KlpVisualStyleJson.decode({
+			'geometry': {
+				'data': {'filePreviewHeight': 144},
+			},
+		});
+		await tester.pumpWidget(
+			MaterialApp(
+				theme: buildKlpTheme(Brightness.dark, style: style),
+				home: const KlpFilePreview(name: 'report.txt', metadata: '1 KB'),
+			),
+		);
+
+		final viewport = find.byWidgetPredicate(
+			(widget) => widget.runtimeType.toString() == '_KlpFilePreviewViewport',
+		);
+		expect(tester.getSize(viewport).height, 144);
+		expect(KlpDataColumnSpan.double.flex, 2);
+		expect(tester.takeException(), isNull);
+	});
 }
 
 Widget _specimen(KlpVisualStyle style) {
 	final table = KlpDataTable(
 		columns: const [KlpDataColumn(id: 'name', label: 'Name')],
-		rows: const [KlpDataRow(id: 'row', cells: {'name': 'Value'})],
+		rows: const [
+			KlpDataRow(id: 'row', cells: {'name': 'Value'}),
+		],
 	);
-	return MaterialApp(key: ValueKey(style.name), theme: buildKlpTheme(Brightness.dark, style: style), home: table);
+	return MaterialApp(
+		key: ValueKey(style.name),
+		theme: buildKlpTheme(Brightness.dark, style: style),
+		home: table,
+	);
 }
 
 Widget _contentSpecimen(KlpVisualStyle style) {
 	final table = KlpDataTable(
 		selectable: true,
-		columns: const [KlpDataColumn(id: 'name', label: 'Name'), KlpDataColumn(id: 'status', label: 'Status')],
-		rows: const [KlpDataRow(id: 'row', cells: {'name': 'A deliberately wrapping two-line value for density verification', 'status': KlpBadge(label: 'Canonical')})],
+		columns: const [
+			KlpDataColumn(id: 'name', label: 'Name'),
+			KlpDataColumn(id: 'status', label: 'Status'),
+		],
+		rows: const [
+			KlpDataRow(
+				id: 'row',
+				cells: {
+					'name':
+							'A deliberately wrapping two-line value for density verification',
+					'status': KlpBadge(label: 'Canonical'),
+				},
+			),
+		],
 	);
 	final home = Center(child: SizedBox(width: 420, child: table));
-	return MaterialApp(key: ValueKey('content-${style.name}'), theme: buildKlpTheme(Brightness.dark, style: style), home: home);
+	return MaterialApp(
+		key: ValueKey('content-${style.name}'),
+		theme: buildKlpTheme(Brightness.dark, style: style),
+		home: home,
+	);
 }
 
-Finder _tableLines() => find.byWidgetPredicate((widget) => widget.runtimeType.toString() == '_KlpTableLine');
+Finder _tableLines() => find.byWidgetPredicate(
+	(widget) => widget.runtimeType.toString() == '_KlpTableLine',
+);
 
-Finder _lineContainers() => find.descendant(of: _tableLines(), matching: find.byWidgetPredicate((widget) => widget is Container && widget.constraints is BoxConstraints && widget.constraints!.minHeight > 0));
+Finder _lineContainers() => find.descendant(
+	of: _tableLines(),
+	matching: find.byWidgetPredicate(
+		(widget) =>
+				widget is Container &&
+				widget.constraints is BoxConstraints &&
+				widget.constraints!.minHeight > 0,
+	),
+);
 
-Finder _cellPaddings() => find.byWidgetPredicate((widget) => widget is Padding && widget.padding is EdgeInsets && (widget.padding as EdgeInsets).horizontal > 0);
+Finder _cellPaddings() => find.byWidgetPredicate(
+	(widget) =>
+			widget is Padding &&
+			widget.padding is EdgeInsets &&
+			(widget.padding as EdgeInsets).horizontal > 0,
+);

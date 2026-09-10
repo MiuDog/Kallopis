@@ -1,4 +1,3 @@
-import 'dart:convert';
 import 'dart:io';
 
 import 'package:flutter/material.dart';
@@ -9,6 +8,8 @@ import 'package:kallopis_catalog/catalog/generated/catalog_style_semantics.g.dar
 import 'package:kallopis_catalog/catalog_shell.dart';
 import 'package:kallopis_catalog/catalog_theme_scope.dart';
 
+import '../../tool/support/public_library_sources.dart';
+
 /// 目錄的閘門。
 ///
 /// **列不出來的元件等於不存在。** 一個沒有出現在目錄裡的元件，沒有人會知道它存在、
@@ -16,87 +17,70 @@ import 'package:kallopis_catalog/catalog_theme_scope.dart';
 /// 是機械檢查，不是自律。
 void main() {
 	Widget withCatalogTheme(Widget child) {
-		return CatalogThemeScope(
-			value: KlpOklchColor.fromColor(KlpThemeData.light.brand),
-			onChanged: (_) {},
-			child: child,
-		);
+		return CatalogThemeScope(value: KlpOklchColor.fromColor(KlpThemeData.light.brand), onChanged: (_) {}, child: child);
 	}
 
-  /// 從庫的原始碼直接讀出公開的 widget 名。
-  ///
-  /// 不用反射：Dart 沒有可靠的執行期型別列舉，而且從原始碼讀才能在**新增元件當下**
-  /// 就發現漏歸類，不必等到有人去用它。
-  Set<String> exportedWidgets() {
-    final declaration = RegExp(
-      r'^(?:(?:final|base|sealed)\s+)?class\s+(Klp[A-Za-z0-9]+)(?:<[^>]+>)?\s+extends\s+'
-      r'(?:StatelessWidget|StatefulWidget|KlpPanelFrame)',
-    );
-    final names = <String>{};
+	/// 從總公開入口沿 export 與 part 讀出實際可見的 widget 名。
+	///
+	/// 不用反射：Dart 沒有可靠的執行期型別列舉，而且從公開 library 圖讀取，才能同時排除
+	/// 未匯出的原語，並辨識由公開 owner 納入的單一定義 part。
+	Set<String> exportedWidgets() {
+		final declaration = RegExp(
+			r'^(?:(?:final|base|sealed)\s+)?class\s+(Klp[A-Za-z0-9]+)(?:<[^>]+>)?\s+extends\s+'
+			r'(?:StatelessWidget|StatefulWidget|KlpPanelFrame)',
+			multiLine: true,
+		);
+		final names = <String>{};
+		for (final file in publicLibrarySources(File('../lib/kallopis.dart'))) {
+			for (final match in declaration.allMatches(file.readAsStringSync())) {
+				names.add(match.group(1)!);
+			}
+		}
+		return names;
+	}
 
-    for (final file
-        in Directory('../lib/src')
-            .listSync(recursive: true)
-            .whereType<File>()
-            .where((f) => f.path.endsWith('.dart'))
-						.where((f) => !f.path.replaceAll(r'\', '/').contains('/internal/'))) {
-      for (final line in const LineSplitter().convert(
-        file.readAsStringSync(),
-      )) {
-        final match = declaration.firstMatch(line);
-        if (match != null) names.add(match.group(1)!);
-      }
-    }
-    return names;
-  }
+	test('每一個匯出的 widget 都有被歸類', () {
+		final missing = exportedWidgets().difference(catalogedComponents).toList()..sort();
 
-  test('每一個匯出的 widget 都有被歸類', () {
-    final missing = exportedWidgets().difference(catalogedComponents).toList()
-      ..sort();
+		expect(
+			missing,
+			isEmpty,
+			reason:
+					'這些 widget 沒有出現在目錄的任何一頁：\n${missing.join('\n')}\n'
+					'請在 example/lib/catalog/ 底下把它加進對應的頁面。',
+		);
+	});
 
-    expect(
-      missing,
-      isEmpty,
-      reason:
-          '這些 widget 沒有出現在目錄的任何一頁：\n${missing.join('\n')}\n'
-          '請在 example/lib/catalog/ 底下把它加進對應的頁面。',
-    );
-  });
+	test('目錄裡沒有已經不存在的元件', () {
+		final exported = exportedWidgets();
+		final stale = catalogedComponents.difference(exported).toList()..sort();
 
-  test('目錄裡沒有已經不存在的元件', () {
-    final exported = exportedWidgets();
-    final stale = catalogedComponents.difference(exported).toList()..sort();
+		expect(
+			stale,
+			isEmpty,
+			reason:
+					'目錄列了這些元件，但庫裡已經沒有了：\n${stale.join('\n')}\n'
+					'名字打錯也會出現在這裡——Specimen.name 必須與型別名完全一致。',
+		);
+	});
 
-    expect(
-      stale,
-      isEmpty,
-      reason:
-          '目錄列了這些元件，但庫裡已經沒有了：\n${stale.join('\n')}\n'
-          '名字打錯也會出現在這裡——Specimen.name 必須與型別名完全一致。',
-    );
-  });
+	test('沒有重複歸類', () {
+		final seen = <String, String>{};
+		final duplicates = <String>[];
 
-  test('沒有重複歸類', () {
-    final seen = <String, String>{};
-    final duplicates = <String>[];
+		for (final page in catalogPages) {
+			for (final specimen in page.specimens) {
+				final previous = seen[specimen.name];
+				if (previous != null) {
+					duplicates.add('${specimen.name}：${page.label} 與 $previous');
+				} else {
+					seen[specimen.name] = page.label;
+				}
+			}
+		}
 
-    for (final page in catalogPages) {
-      for (final specimen in page.specimens) {
-        final previous = seen[specimen.name];
-        if (previous != null) {
-          duplicates.add('${specimen.name}：${page.label} 與 $previous');
-        } else {
-          seen[specimen.name] = page.label;
-        }
-      }
-    }
-
-    expect(
-      duplicates,
-      isEmpty,
-      reason: '同一個元件被歸在多頁，讀者會不知道該看哪一頁：\n${duplicates.join('\n')}',
-    );
-  });
+		expect(duplicates, isEmpty, reason: '同一個元件被歸在多頁，讀者會不知道該看哪一頁：\n${duplicates.join('\n')}');
+	});
 
 	test('每一個 specimen 都有風格語意追蹤資料', () {
 		final missing = catalogedComponents.difference(catalogStyleSemantics.keys.toSet()).toList()..sort();
@@ -108,87 +92,71 @@ void main() {
 		expect(stale, isEmpty, reason: '這些風格語意資料已沒有對應元件：\n${stale.join('\n')}');
 	});
 
-  test('目錄不得印出色碼', () {
-    // 目錄一旦顯示 hex，就等於邀請人把那串數字複製到自己的程式碼裡——那正是整個
-    // token 架構要防的事。色票顯示的是它落在色梯的哪一階，不是色值。
-    final hexOutput = RegExp(r'toRadixString\(16\)');
+	test('目錄不得印出色碼', () {
+		// 目錄一旦顯示 hex，就等於邀請人把那串數字複製到自己的程式碼裡——那正是整個
+		// token 架構要防的事。色票顯示的是它落在色梯的哪一階，不是色值。
+		final hexOutput = RegExp(r'toRadixString\(16\)');
 
-    final violations = <String>[];
-    for (final file
-        in Directory('lib')
-            .listSync(recursive: true)
-            .whereType<File>()
-            .where((f) => f.path.endsWith('.dart'))) {
-      if (hexOutput.hasMatch(file.readAsStringSync())) {
-        violations.add(file.path.replaceAll(r'\', '/'));
-      }
-    }
+		final violations = <String>[];
+		for (final file in Directory(
+			'lib',
+		).listSync(recursive: true).whereType<File>().where((f) => f.path.endsWith('.dart'))) {
+			if (hexOutput.hasMatch(file.readAsStringSync())) {
+				violations.add(file.path.replaceAll(r'\', '/'));
+			}
+		}
 
-    expect(
-      violations,
-      isEmpty,
-      reason: '這些檔案把色值轉成 hex 顯示：\n${violations.join('\n')}',
-    );
-  });
+		expect(violations, isEmpty, reason: '這些檔案把色值轉成 hex 顯示：\n${violations.join('\n')}');
+	});
 
-  test('每一頁都有內容', () {
-    final empty = catalogPages
-        .where((p) => p.specimens.isEmpty && p.tokenView == null)
-        .map((p) => p.label)
-        .toList();
+	test('每一頁都有內容', () {
+		final empty = catalogPages.where((p) => p.specimens.isEmpty && p.tokenView == null).map((p) => p.label).toList();
 
-    expect(empty, isEmpty, reason: '這些頁面既沒有元件也沒有 token 視圖：$empty');
-  });
+		expect(empty, isEmpty, reason: '這些頁面既沒有元件也沒有 token 視圖：$empty');
+	});
 
-  test('示範覆蓋率只能上升', () {
-    // 有歸類但還沒寫示範的元件。目錄仍會列出它們並標記為未展示——藏起來只會讓缺口
-    // 消失在視線外。
-    const baselineUndemoed = 1;
+	test('示範覆蓋率只能上升', () {
+		// 有歸類但還沒寫示範的元件。目錄仍會列出它們並標記為未展示——藏起來只會讓缺口
+		// 消失在視線外。
+		const baselineUndemoed = 1;
 
-    final undemoed = [
-      for (final page in catalogPages)
-        for (final specimen in page.specimens)
-          if (!specimen.hasDemo) specimen.name,
-    ]..sort();
+		final undemoed = [
+			for (final page in catalogPages)
+				for (final specimen in page.specimens)
+					if (!specimen.hasDemo) specimen.name,
+		]..sort();
 
-    expect(
-      undemoed.length,
-      lessThanOrEqualTo(baselineUndemoed),
-      reason:
-          '未展示的元件從 $baselineUndemoed 增加到 ${undemoed.length}：\n'
-          '${undemoed.join('\n')}',
-    );
-  });
+		expect(
+			undemoed.length,
+			lessThanOrEqualTo(baselineUndemoed),
+			reason:
+					'未展示的元件從 $baselineUndemoed 增加到 ${undemoed.length}：\n'
+					'${undemoed.join('\n')}',
+		);
+	});
 
 	testWidgets('每一頁都能在明暗兩態下渲染', (tester) async {
-    tester.view.physicalSize = const Size(1400, 900);
-    tester.view.devicePixelRatio = 1;
-    addTearDown(tester.view.resetPhysicalSize);
-    addTearDown(tester.view.resetDevicePixelRatio);
+		tester.view.physicalSize = const Size(1400, 900);
+		tester.view.devicePixelRatio = 1;
+		addTearDown(tester.view.resetPhysicalSize);
+		addTearDown(tester.view.resetDevicePixelRatio);
 
-    for (final brightness in Brightness.values) {
-      for (var index = 0; index < catalogPages.length; index++) {
-        await tester.pumpWidget(
-          MaterialApp(
-            debugShowCheckedModeBanner: false,
-            theme: buildKlpTheme(brightness),
-				home: withCatalogTheme(CatalogShell(
-              groups: catalogGroups,
-              pages: catalogPages,
-              selected: index,
-              onSelected: (_) {},
-				)),
-          ),
-        );
-        await tester.pump(const Duration(milliseconds: 200));
+		for (final brightness in Brightness.values) {
+			for (var index = 0; index < catalogPages.length; index++) {
+				await tester.pumpWidget(
+					MaterialApp(
+						debugShowCheckedModeBanner: false,
+						theme: buildKlpTheme(brightness),
+						home: withCatalogTheme(
+							CatalogShell(groups: catalogGroups, pages: catalogPages, selected: index, onSelected: (_) {}),
+						),
+					),
+				);
+				await tester.pump(const Duration(milliseconds: 200));
 
-        expect(
-          tester.takeException(),
-          isNull,
-          reason: '${catalogPages[index].label} 在 ${brightness.name} 下渲染時丟出例外',
-        );
-      }
-    }
+				expect(tester.takeException(), isNull, reason: '${catalogPages[index].label} 在 ${brightness.name} 下渲染時丟出例外');
+			}
+		}
 	});
 
 	testWidgets('每一個 specimen 可獨立放進捲動內容', (tester) async {
@@ -202,16 +170,15 @@ void main() {
 				await tester.pumpWidget(
 					MaterialApp(
 						theme: buildKlpTheme(Brightness.dark),
-						home: withCatalogTheme(Scaffold(
-							body: Builder(
-								builder: (context) => SingleChildScrollView(
-									child: Padding(
-										padding: const EdgeInsets.all(24),
-										child: specimen.build!(context),
+						home: withCatalogTheme(
+							Scaffold(
+								body: Builder(
+									builder: (context) => SingleChildScrollView(
+										child: Padding(padding: const EdgeInsets.all(24), child: specimen.build!(context)),
 									),
 								),
 							),
-						)),
+						),
 					),
 				);
 				await tester.pump();

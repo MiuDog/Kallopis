@@ -29,18 +29,18 @@ void main() {
 
 	test('chrome components declare their responsibility-specific text role', () {
 		const contracts = {
-			'lib/src/shell/window/klp_window_header.dart': 'KlpTextRole.appTitle',
-			'lib/src/shell/window/klp_workbench_window_header.dart':
+			'lib/src/features/workspace/shell/window/klp_window_header.dart': 'KlpTextRole.appTitle',
+			'lib/src/features/workspace/shell/window/klp_workbench_window_header.dart':
 					'KlpTextRole.appTitle',
-			'lib/src/shell/composition/window_header/klp_app_window_header.dart':
+			'lib/src/features/workspace/shell/composition/window_header/klp_app_window_header.dart':
 					'KlpTextRole.appTitle',
-			'lib/src/shell/panel/klp_panel_header.dart': 'KlpTextRole.header',
-			'lib/src/navigation/sidebar/klp_sidebar_identity_header.dart':
+			'lib/src/features/workspace/shell/panel/klp_panel_header.dart': 'KlpTextRole.header',
+			'lib/src/features/navigation/widgets/sidebar/klp_sidebar_identity_header.dart':
 					'KlpTextRole.header',
-			'lib/src/shell/stage/klp_stage_header.dart': 'KlpTextRole.header',
-			'lib/src/shell/stage/klp_stage_top_bar.dart': 'KlpTextRole.header',
-			'lib/src/shell/status/klp_status_bar.dart': 'KlpTextRole.status',
-			'lib/src/feedback/klp_status_indicator.dart': 'KlpTextRole.status',
+			'lib/src/features/workspace/shell/stage/klp_stage_header.dart': 'KlpTextRole.header',
+			'lib/src/features/workspace/shell/stage/klp_stage_tab.dart': 'KlpTextRole.header',
+			'lib/src/features/workspace/shell/status/klp_status_bar.dart': 'KlpTextRole.status',
+			'lib/src/features/feedback/klp_status_indicator.dart': 'KlpTextRole.status',
 		};
 
 		for (final entry in contracts.entries) {

@@ -29,7 +29,7 @@ flowchart TD
 
 ## 程式碼證據
 
-- 檔案路徑：[`lib/src/foundation/klp_icon.dart`](../../../../lib/src/foundation/klp_icon.dart#L28)
+- 檔案路徑：[`lib/src/foundation/klp_icon.dart`](../../../../lib/src/foundation/klp_icon.dart#L10)
 - 宣告型態：`StatelessWidget`
 
 ## 閱讀說明

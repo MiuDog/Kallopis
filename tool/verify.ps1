@@ -111,6 +111,11 @@ Invoke-VerifyStep -Key 'inventory' -Name '元件清單新鮮度' -WorkingDirecto
 	'tool/inventory.dart',
 	'--check'
 ) -DependsOn @('root_pub_get')
+Invoke-VerifyStep -Key 'declarative_consumer' -Name '宣告式消費端匯入邊界' -WorkingDirectory $projectRoot -Executable $dartExecutable -Arguments @(
+	'run',
+	'tool/verify_declarative_consumer.dart',
+	'example/lib/klp_runtime_demo.dart'
+) -DependsOn @('root_pub_get')
 Invoke-VerifyStep -Key 'catalog_registry' -Name 'Catalog 語意分類新鮮度' -WorkingDirectory $projectRoot -Executable $dartExecutable -Arguments @(
 	'run',
 	'tool/generate_catalog_registry.dart',

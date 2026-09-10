@@ -8,15 +8,15 @@
 
 | 模組 | 唯一責任 |
 |---|---|
-| [`primitive_token.dart`](../../lib/src/tokens/primitive_token.dart) | `KlpScale` 基礎階梯：stroke、spacing、radius、排版、時長與透明度；同檔直接定義 `KlpPalette` 色彩與 accent 私有色值；`tokens/internal/klp_accent.dart` 以 part 提供 `KlpAccent`。裝飾用 `KlpDecorativePalette` 留在 foundation。 |
+| [`primitive_token.dart`](../../lib/src/styling/legacy_tokens/primitive_token.dart) | `KlpScale` 基礎階梯：stroke、spacing、radius、排版、時長與透明度；同檔直接定義 `KlpPalette` 色彩與 accent 私有色值；`tokens/internal/klp_accent.dart` 以 part 提供 `KlpAccent`。裝飾用 `KlpDecorativePalette` 留在 foundation。 |
 | [`kallopis_theme.dart`](../../lib/kallopis_theme.dart) | 公開列出色彩、間距、形狀、排版與 geometry 語意模型；不透過 `src/tokens` 轉接桶。 |
-| [`default_style.dart`](../../lib/src/styles/default_style.dart) | 唯一預設風格組裝表，以 part 共用風格模型函式庫；不是可獨立 import 的函式庫。 |
-| [`KlpVisualStyle`](../../lib/src/theme/klp_visual_style.dart) | 完整風格模型、copyWith 與 ThemeExtension 清單；`defaultStyle` 和 `modern` 保留相容入口。 |
-| [`KlpSpacingTheme`](../../lib/src/theme/klp_spacing_theme.dart) | 依 content、control、action、chrome、navigation、overlay 與 App 組合 scope 暴露獨立語意；8px 與 4px 只是在預設風格共同指向相同 primitive，不共用萬用欄位。 |
-| [`KlpComponentTheme`](../../lib/src/theme/klp_component_theme.dart) | 消費端可選的稀疏元件覆寫，null 沿用語意預設。 |
-| [`KlpTheme`](../../lib/src/theme/klp_theme_scope.dart) | 從目前 Theme scope 讀取並解析 component override。 |
-| [`KlpButtonStyle`](../../lib/src/controls/internal/klp_button_style.dart) | 按鈕各位置的最終風格表；每次建構依當前 KlpTheme、tone、size 與狀態重新解析。 |
-| [`KlpButton`](../../lib/src/controls/button/klp_button.dart) | 組合內容插槽，持有 hover／focus，轉交按壓與長按事件。 |
+| [`default_style.dart`](../../lib/src/styling/presets/legacy/default_style.dart) | 唯一預設風格組裝表，以 part 共用風格模型函式庫；不是可獨立 import 的函式庫。 |
+| [`KlpVisualStyle`](../../lib/src/styling/legacy_theme/klp_visual_style.dart) | 完整風格模型、copyWith 與 ThemeExtension 清單；`defaultStyle` 和 `modern` 保留相容入口。 |
+| [`KlpSpacingTheme`](../../lib/src/styling/legacy_theme/klp_spacing_theme.dart) | 依 content、control、action、chrome、navigation、overlay 與 App 組合 scope 暴露獨立語意；8px 與 4px 只是在預設風格共同指向相同 primitive，不共用萬用欄位。 |
+| [`KlpComponentTheme`](../../lib/src/styling/legacy_theme/klp_component_theme.dart) | 消費端可選的稀疏元件覆寫，null 沿用語意預設。 |
+| [`KlpTheme`](../../lib/src/styling/legacy_theme/klp_theme_scope.dart) | 從目前 Theme scope 讀取並解析 component override。 |
+| [`KlpButtonStyle`](../../lib/src/foundation/interaction/controls/klp_button_style.dart) | 按鈕各位置的最終風格表；每次建構依當前 KlpTheme、tone、size 與狀態重新解析。 |
+| [`KlpButton`](../../lib/src/features/actions/button/klp_button.dart) | 組合內容插槽，持有 hover／focus，轉交按壓與長按事件。 |
 
 `KlpPalette` 的資料視覺化原色以 `sand500`、`warmNeutral100`、`green600` 等色族與色階命名。`series`、`axis`、`grid`、`marketUp` 及 `light`／`dark`／`ultraDark` 都由 `KlpDataVisualizationTheme` 組合，避免 primitive 宣告使用情境。
 

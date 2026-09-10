@@ -4,6 +4,9 @@
 // 避免 Catalog 另外維護一份會與實作分岔的手寫說明。
 import 'dart:io';
 
+import 'support/owned_library_sources.dart';
+import 'support/public_library_sources.dart';
+
 const _outputPath = 'example/lib/catalog/generated/catalog_style_semantics.g.dart';
 
 final _widgetDeclaration = RegExp(
@@ -27,7 +30,6 @@ final _styleConstruction = RegExp(
 final _literalColor = RegExp(r'\b(?:Color\([^;\n]*\)|Colors\.[A-Za-z_][A-Za-z0-9_]*)');
 
 class _ComponentSource {
-
 	const _ComponentSource({required this.name, required this.path, required this.body});
 
 	final String name;
@@ -36,7 +38,6 @@ class _ComponentSource {
 }
 
 class _StyleReferences {
-
 	final Set<String> colors = {};
 	final Set<String> surfaces = {};
 	final Set<String> borders = {};
@@ -89,7 +90,7 @@ class _StyleReferences {
 }
 
 void main(List<String> arguments) {
-	final generated = generateCatalogStyleSemantics(Directory('lib/src'));
+	final generated = generateCatalogStyleSemantics(Directory('lib/src'), publicEntry: File('lib/kallopis.dart'));
 	final output = File(_outputPath);
 	final checkOnly = arguments.contains('--check');
 
@@ -108,17 +109,20 @@ void main(List<String> arguments) {
 }
 
 /// 從指定來源根目錄產生追蹤表，供正式產生與隔離回歸測試共用。
-String generateCatalogStyleSemantics(Directory sourceDirectory) => _generate(_readComponents(sourceDirectory));
+String generateCatalogStyleSemantics(Directory sourceDirectory, {File? publicEntry}) {
+	return _generate(_readComponents(sourceDirectory, publicEntry: publicEntry));
+}
 
-Map<String, _ComponentSource> _readComponents(Directory sourceDirectory) {
+Map<String, _ComponentSource> _readComponents(Directory sourceDirectory, {File? publicEntry}) {
 	final result = <String, _ComponentSource>{};
-	final files = sourceDirectory
-		.listSync(recursive: true)
-		.whereType<File>()
-		.where((file) => file.path.endsWith('.dart'))
-		.where((file) => !file.path.replaceAll(r'\', '/').contains('/internal/'))
-		.toList()
-		..sort((left, right) => left.path.compareTo(right.path));
+	final files = publicEntry == null
+			? (sourceDirectory
+						.listSync(recursive: true)
+						.whereType<File>()
+						.where((file) => file.path.endsWith('.dart'))
+						.toList()
+					..sort((left, right) => left.path.compareTo(right.path)))
+			: publicLibrarySources(publicEntry);
 
 	for (final file in files) {
 		final source = file.readAsStringSync();
@@ -130,7 +134,7 @@ Map<String, _ComponentSource> _readComponents(Directory sourceDirectory) {
 			result[name] = _ComponentSource(
 				name: name,
 				path: file.path.replaceAll(r'\', '/'),
-				body: _withStyleDependencies(file, source.substring(match.start, end)),
+				body: _withStyleDependencies(file, _withPrivateDependencies(file, source.substring(match.start, end))),
 			);
 		}
 	}
@@ -138,20 +142,49 @@ Map<String, _ComponentSource> _readComponents(Directory sourceDirectory) {
 	return result;
 }
 
+String _withPrivateDependencies(File owner, String body) {
+	final sources = ownedLibrarySources(owner);
+	final result = StringBuffer(body);
+	final included = <String>{};
+	var pending = body;
+	while (true) {
+		final names = RegExp(r'\b(_Klp[A-Za-z0-9]+)\b').allMatches(pending).map((match) => match.group(1)!).toSet();
+		final additions = <String>[];
+		for (final name in names) {
+			if (!included.add(name)) continue;
+			for (final source in sources) {
+				final content = source.readAsStringSync();
+				if (!RegExp('\\bclass\\s+${RegExp.escape(name)}\\b').hasMatch(content)) continue;
+				additions.add(content);
+				result.writeln(content);
+				break;
+			}
+		}
+		if (additions.isEmpty) break;
+		pending = additions.join('\n');
+	}
+	return result.toString();
+}
+
 String _withStyleDependencies(File owner, String body) {
 	// 只追蹤元件明確呼叫且直接匯入的風格表，避免無關元件污染追蹤結果。
-	final calls = RegExp(r'\b(Klp[A-Za-z0-9]+Style)\.resolve\s*\(').allMatches(body);
+	final calls = RegExp(r'\b(_?Klp[A-Za-z0-9]+Style)\.resolve\s*\(').allMatches(body);
 	final names = calls.map((match) => match.group(1)!).toSet();
 	if (names.isEmpty) return body;
 	final result = StringBuffer(body);
+	final librarySources = ownedLibrarySources(owner);
+	final libraryOwner = librarySources.first;
+	final candidates = <File>[...librarySources];
 	final imports = RegExp(r'''^import\s+['"]([^'"]+)['"]''', multiLine: true);
-	for (final directive in imports.allMatches(owner.readAsStringSync())) {
-		final uri = owner.uri.resolve(directive.group(1)!);
+	for (final directive in imports.allMatches(libraryOwner.readAsStringSync())) {
+		final uri = libraryOwner.uri.resolve(directive.group(1)!);
 		if (uri.scheme != 'file') continue;
 		final dependency = File.fromUri(uri);
-		if (!dependency.existsSync()) continue;
+		if (dependency.existsSync()) candidates.add(dependency);
+	}
+	for (final dependency in candidates) {
 		final source = dependency.readAsStringSync();
-		if (!names.any((name) => RegExp('\\bclass\\s+$name\\b').hasMatch(source))) continue;
+		if (!names.any((name) => RegExp('\\bclass\\s+${RegExp.escape(name)}\\b').hasMatch(source))) continue;
 		result.writeln(source);
 		// 注入的 KlpTheme 是同一份已解析主題，以標準 context 路徑呈現。
 		for (final parameter in RegExp(r'\bKlpTheme\s+(\w+)').allMatches(source)) {

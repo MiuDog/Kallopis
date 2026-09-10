@@ -4,15 +4,15 @@
 
 | 想查的問題 | 符號與來源 |
 | --- | --- |
-| 區域與分割入口？ | KlpRegion／KlpSplitLayout — `lib/src/layout/klp_layout.dart:8`、`lib/src/layout/klp_layout.dart:48` |
-| 尺寸誰更新？ | KlpResizablePane／KlpResizeHandle — `lib/src/layout/klp_layout.dart:110`、`lib/src/layout/klp_layout.dart:123` |
-| 虛擬列表與網格在哪？ | KlpVirtualList／KlpVirtualGrid — `lib/src/layout/klp_layout.dart:216`、`lib/src/layout/klp_layout.dart:242` |
-| 瀑布流如何分欄？ | KlpMasonryGrid.build — `lib/src/layout/klp_masonry_grid.dart:17` |
+| 區域與分割入口？ | KlpRegion／KlpSplitLayout — `lib/src/foundation/layout/klp_layout.dart:8`、`lib/src/foundation/layout/klp_layout.dart:48` |
+| 尺寸誰更新？ | KlpResizablePane／KlpResizeHandle — `lib/src/foundation/layout/klp_layout.dart:110`、`lib/src/foundation/layout/klp_layout.dart:123` |
+| 虛擬列表與網格在哪？ | KlpVirtualList／KlpVirtualGrid — `lib/src/foundation/layout/klp_layout.dart:216`、`lib/src/foundation/layout/klp_layout.dart:242` |
+| 瀑布流如何分欄？ | KlpMasonryGrid.build — `lib/src/foundation/layout/klp_masonry_grid.dart:17` |
 
 重要關係：
 
-- `KlpResizeHandle` → `onDelta`：依 axis 回報 dx 或 dy（`lib/src/layout/klp_layout.dart:158`、`lib/src/layout/klp_layout.dart:162`），沒有在自身保存 pane width。
-- `KlpMasonryGrid.build` → theme／LayoutBuilder：gap 與預設最小欄寬取自 theme，依可用寬度算欄數，再以 index % count 分派 children（`lib/src/layout/klp_masonry_grid.dart:18`、`lib/src/layout/klp_masonry_grid.dart:30`）。
-- `klp_layout.dart` → surface 模組：直接引入 KlpDashedBorder 與 KlpSurface（`lib/src/layout/klp_layout.dart:3`）。
+- `KlpResizeHandle` → `onDelta`：依 axis 回報 dx 或 dy（`lib/src/foundation/layout/klp_layout.dart:158`、`lib/src/foundation/layout/klp_layout.dart:162`），沒有在自身保存 pane width。
+- `KlpMasonryGrid.build` → theme／LayoutBuilder：gap 與預設最小欄寬取自 theme，依可用寬度算欄數，再以 index % count 分派 children（`lib/src/foundation/layout/klp_masonry_grid.dart:18`、`lib/src/foundation/layout/klp_masonry_grid.dart:30`）。
+- `klp_layout.dart` → surface 模組：直接引入 KlpDashedBorder 與 KlpSurface（`lib/src/foundation/layout/klp_layout.dart:3`）。
 
 import 不是執行順序；尺寸變更路線應追蹤 callback 的消費者。

@@ -6,7 +6,22 @@ import 'style_fixture.dart';
 
 void main() {
 	testWidgets('PreviewCard 只在預覽區呈現語意虛線邊框', (tester) async {
-		await tester.pumpWidget(_specimen(KlpVisualStyle.defaultStyle));
+		await tester.pumpWidget(
+			MaterialApp(
+				key: ValueKey(KlpVisualStyle.defaultStyle.name),
+				theme: buildKlpTheme(Brightness.light),
+				home: const KlpCenter(
+					child: KlpConstrainedBox(
+						constraints: KlpBoxConstraints(maxWidth: 320),
+						child: KlpPreviewCard(
+							title: 'Asset title',
+							metadata: ['Image'],
+							preview: KlpCenter(child: KlpText('PREVIEW')),
+						),
+					),
+				),
+			),
+		);
 
 		final border = find.byType(KlpDashedBorder);
 		expect(border, findsOneWidget);
@@ -15,34 +30,60 @@ void main() {
 	});
 
 	testWidgets('PreviewCard 虛線邊框會解析對照風格 token', (tester) async {
-		await tester.pumpWidget(_specimen(KlpVisualStyle.defaultStyle));
-		final defaultPainter = _borderPainter(tester);
+		await tester.pumpWidget(
+			MaterialApp(
+				key: ValueKey(KlpVisualStyle.defaultStyle.name),
+				theme: buildKlpTheme(Brightness.light),
+				home: const KlpPreviewCard(
+					title: 'Asset title',
+					preview: KlpText('PREVIEW'),
+				),
+			),
+		);
+		final defaultPaint = find.descendant(
+			of: find.byType(KlpDashedBorder),
+			matching: find.byType(CustomPaint),
+		);
+		final defaultPainter = tester.widget<CustomPaint>(defaultPaint).foregroundPainter!;
 
-		await tester.pumpWidget(_specimen(contrastingStyle));
-		final contrastingPainter = _borderPainter(tester);
+		await tester.pumpWidget(
+			MaterialApp(
+				key: ValueKey(contrastingStyle.name),
+				theme: buildKlpTheme(Brightness.light, style: contrastingStyle),
+				home: const KlpPreviewCard(
+					title: 'Asset title',
+					preview: KlpText('PREVIEW'),
+				),
+			),
+		);
+		final contrastingPaint = find.descendant(
+			of: find.byType(KlpDashedBorder),
+			matching: find.byType(CustomPaint),
+		);
+		final contrastingPainter =
+				tester.widget<CustomPaint>(contrastingPaint).foregroundPainter!;
 
 		expect(contrastingPainter.shouldRepaint(defaultPainter), isTrue);
 	});
-}
 
-Widget _specimen(KlpVisualStyle style) {
-	return MaterialApp(
-		key: ValueKey(style.name),
-		theme: buildKlpTheme(Brightness.light, style: style),
-		home: const Center(
-			child: SizedBox(
-				width: 320,
-				child: KlpPreviewCard(
+	testWidgets('PreviewCard typed size 會解析 geometry data token', (tester) async {
+		final style = KlpVisualStyleJson.decode({
+			'geometry': {
+				'data': {'previewCardCompactHeight': 72},
+			},
+		});
+
+		await tester.pumpWidget(
+			MaterialApp(
+				theme: buildKlpTheme(Brightness.light, style: style),
+				home: const KlpPreviewCard(
 					title: 'Asset title',
-					metadata: ['Image'],
-					preview: Center(child: KlpText('PREVIEW')),
+					previewSize: KlpPreviewCardSize.compact,
+					preview: KlpText('PREVIEW'),
 				),
 			),
-		),
-	);
-}
+		);
 
-CustomPainter _borderPainter(WidgetTester tester) {
-	final paint = find.descendant(of: find.byType(KlpDashedBorder), matching: find.byType(CustomPaint));
-	return tester.widget<CustomPaint>(paint).foregroundPainter!;
+		expect(tester.getSize(find.byType(KlpDashedBorder)).height, 72);
+	});
 }

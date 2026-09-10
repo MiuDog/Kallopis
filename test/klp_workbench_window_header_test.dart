@@ -12,7 +12,7 @@ void main() {
     await tester.pumpWidget(
       KlpApp(
         showWindowHeader: false,
-				home: KlpPanelFrame(padding: EdgeInsets.zero, content: KlpAppScreen(
+				home: KlpPanelFrame(content: KlpAppScreen(
           child: SizedBox(
             width: 1000,
             child: KlpWorkbenchWindowHeader(
@@ -56,7 +56,7 @@ void main() {
       KlpIconButtonTone.inline,
     );
 
-    final appIconSlot = find.byKey(const ValueKey(klpWindowAppIconSlotKey));
+    final appIconSlot = find.byKey(const ValueKey(KlpWindowHeaderKeys.appIconSlot));
     expect(
       find.descendant(of: appIconSlot, matching: settingsButton),
       findsOneWidget,
@@ -83,7 +83,7 @@ void main() {
     await tester.pumpWidget(
       KlpApp(
         showWindowHeader: false,
-				home: KlpPanelFrame(padding: EdgeInsets.zero, content: KlpAppScreen(
+				home: KlpPanelFrame(content: KlpAppScreen(
           child: SizedBox(
             width: 1000,
             child: KlpWorkbenchWindowHeader(
@@ -138,7 +138,7 @@ void main() {
     await tester.pumpWidget(
       KlpApp(
         showWindowHeader: false,
-				home: KlpPanelFrame(padding: EdgeInsets.zero, content: KlpAppScreen(
+				home: KlpPanelFrame(content: KlpAppScreen(
           child: SizedBox(
             width: 1000,
             child: KlpWorkbenchWindowHeader(

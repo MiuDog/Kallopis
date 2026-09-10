@@ -1,5 +1,7 @@
 # Kallopis 前端架構契約
 
+> 遷移界線：2026-09-09 起，新 Klp 路徑依 [KLP-0019](../../spec/decisions/KLP-0019-declarative-framework-migration.md) 實作。新功能層允許筆記／畫布等功能語意，新 primitive 允許固定 schema 的整套替換；Klp 舊路徑下列契約暫維持。新舊不得互相匯出或以 Widget adapter 混用。資料權威不因 UI 入庫而移轉。新契約實作狀態見 [遷移進度](restructure-progress.md)。
+
 本文件提供給維護 Kallopis、Notist 或其他 `-ist` 產品的開發者與 agent。讀完後應能判斷程式應放在哪個倉庫、透過哪個公開入口引用，以及變更 theme、environment 或 l10n 時必須保留哪些傳遞關係。本文件是規範；[架構圖集](README.md) 只描述目前原始碼。
 
 ## 目標
@@ -30,16 +32,16 @@ graph TD
 
 | 模組 | 責任 | 不負責 |
 |---|---|---|
-| `lib/src/tokens/` | 不可覆寫的 primitive token | semantic 用途、元件布局、產品狀態 |
-| `lib/src/theme/` | semantic schema、風格合併、JSON 解析與 context 注入 | 平台與視窗狀態 |
-| `lib/src/styles/` | Kallopis 出貨的預設 recipe | 消費端品牌或產品規則 |
-| `lib/src/app/` | app 組合根、theme／environment／l10n 接線 | 筆記、提案或保存領域模型 |
+| `lib/src/styling/legacy_tokens/` | 不可覆寫的 primitive token | semantic 用途、元件布局、產品狀態 |
+| `lib/src/styling/legacy_theme/` | semantic schema、風格合併、JSON 解析與 context 注入 | 平台與視窗狀態 |
+| `lib/src/styling/presets/legacy/` | Kallopis 出貨的預設 recipe | 消費端品牌或產品規則 |
+| `lib/src/application/legacy/` | app 組合根、theme／environment／l10n 接線 | 筆記、提案或保存領域模型 |
 | 通用元件目錄 | 只接收呈現資料與 callback 的視覺、布局及通用互動 | repository、transaction、產品工作流程 |
-| Notist `lib/src/components/note/` | 筆記呈現元件與產品組合 | Krepis 內部狀態的第二份副本 |
+| Notist `lib/src/foundation/surface/legacy_components/note/` | 筆記呈現元件與產品組合 | Krepis 內部狀態的第二份副本 |
 
 ### Token 與風格
 
-`primitive_token.dart` 只保存不可被消費端覆寫的原始色階、距離與線寬。`lib/src/theme/` 下的各 theme 模型把 primitive 值命名成用途；預設 recipe 提供 semantic theme 的預設實例。元件只能讀 semantic 值，不得直接讀 primitive，也不得自行保存另一份預設值。Kallopis 不再提供 `semantic_token.dart` 轉接入口。
+`primitive_token.dart` 只保存不可被消費端覆寫的原始色階、距離與線寬。`lib/src/styling/legacy_theme/` 下的各 theme 模型把 primitive 值命名成用途；預設 recipe 提供 semantic theme 的預設實例。元件只能讀 semantic 值，不得直接讀 primitive，也不得自行保存另一份預設值。Kallopis 不再提供 `semantic_token.dart` 轉接入口。
 
 App 標題、Header 主標題與 Status 文字分別使用 `KlpTextRole.appTitle`、`KlpTextRole.header`、`KlpTextRole.status`。三者的拉丁字元預設解析至 IBM Plex Mono，中文字元 fallback 至套件內的 Noto Sans TC；App Title 與 Status 使用 500，Header 使用 600，並保留各自的字級與行高。Chrome 元件不得以 `label`、`code` 或 `bodyStrong` 代替這三個責任角色。
 
@@ -59,7 +61,7 @@ graph TD
 `KlpApp` 是預設組合根。它分別注入視覺風格與平台環境；兩者不得合併成同一個可變全域狀態。
 
 - Theme：`KlpVisualStyle` 經 `KlpThemeScope` 傳給 `context.klp`。明暗風格須保留消費端注入值。
-- Environment：平台由 `KlpEnvironmentScope` 傳給 `context.klpPlatform`。只有 `lib/src/app/klp_platform_info.dart` 可以讀取 `defaultTargetPlatform`；元件不得改讀 `Theme.of(context).platform` 或 `dart:io Platform.is*`。既有 standalone 視窗元件暫由 `lib/src/shell/window/internal/klp_window_platform.dart` 在 Scope 缺失時相容 Material theme，而且必須先嘗試 Scope；這是單一、可移除的相容接點，不得新增第二處。
+- Environment：平台由 `KlpEnvironmentScope` 傳給 `context.klpPlatform`。只有 `lib/src/application/legacy/klp_platform_info.dart` 可以讀取 `defaultTargetPlatform`；元件不得改讀 `Theme.of(context).platform` 或 `dart:io Platform.is*`。既有 standalone 視窗元件暫由 `lib/src/features/workspace/shell/window/internal/klp_window_platform.dart` 在 Scope 缺失時相容 Material theme，而且必須先嘗試 Scope；這是單一、可移除的相容接點，不得新增第二處。
 - Layout：視窗尺寸與父層限制直接讀 `MediaQuery`／`LayoutBuilder`，不複製進 `KlpEnvironmentScope`。
 - L10n：語系直接讀 Flutter `Localizations`。同一資源型別採第一個支援的 delegate，因此消費端 delegate 必須排在 Kallopis 預設 delegate 前面。
 
@@ -121,3 +123,5 @@ D:\flutter\bin\flutter.bat analyze
 ```
 
 架構變更完成時還必須確認：產品模型只存在 authority 倉庫、消費端只使用公開入口、theme／environment／l10n 各有單一傳遞來源、Stable 入口沒有反向依賴 Experimental。
+
+命名界線：品牌已確定保留 Kallopis，宣告式 API 使用 Klp 前綴與 kallopis_declarative.dart。新舊 API 依公開 library 可達性區分，不依 Klp 前綴；既有資料夾與 GitHub 倉庫不改名。

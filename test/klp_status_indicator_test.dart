@@ -31,9 +31,9 @@ void main() {
       of: indicator,
       matching: find.byWidgetPredicate(
         (widget) =>
-            widget is Container &&
+            widget is DecoratedBox &&
             widget.decoration is BoxDecoration &&
-            (widget.decoration! as BoxDecoration).shape == BoxShape.circle,
+            (widget.decoration as BoxDecoration).shape == BoxShape.circle,
       ),
     );
     final compact = tester.element(indicator).klp.space.contentInlineGap;

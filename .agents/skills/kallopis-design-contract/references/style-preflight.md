@@ -35,8 +35,8 @@ Kallopis widget
 - 三層架構與 override 規則：`README.md`「三層 Token 繼承架構」。
 - 抽層決策：`spec/decisions/KLP-0001-scope-token-architecture-and-extraction-method.md`。
 - 呈現所有權：`spec/decisions/KLP-0004-presentation-decisions-owned-by-kallopis.md`。
-- 完整風格組：`lib/src/theme/klp_visual_style.dart`。
-- runtime 解析與局部色彩覆寫：`lib/src/theme/klp_theme_scope.dart`。
+- 完整風格組：`lib/src/styling/legacy_theme/klp_visual_style.dart`。
+- runtime 解析與局部色彩覆寫：`lib/src/styling/legacy_theme/klp_theme_scope.dart`。
 - 元件實際組合：`docs/architecture/components/<domain>/<component>.md` 與元件原始碼。
 
 ## 屬性權限表

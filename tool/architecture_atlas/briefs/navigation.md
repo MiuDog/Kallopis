@@ -4,8 +4,8 @@
 
 | 想回答的問題 | 精確符號與來源 |
 | --- | --- |
-| 一般導覽的狀態入口在哪裡？ | `KlpNavigator`、`_KlpNavigatorState`：lib/src/navigation/klp_navigator.dart:16、49 |
-| Explorer 與 Rail 各自從哪裡開始？ | `KlpExplorer`：lib/src/navigation/explorer/klp_explorer.dart:12；`KlpNavigationRail`：lib/src/navigation/rail/klp_navigation_rail.dart:13 |
-| Sidebar 的版面外框在哪裡？ | `KlpSidebarFrame`：lib/src/navigation/sidebar/klp_sidebar_frame.dart:10 |
+| 一般導覽的狀態入口在哪裡？ | `KlpNavigator`、`_KlpNavigatorState`：lib/src/features/navigation/widgets/klp_navigator.dart:16、49 |
+| Explorer 與 Rail 各自從哪裡開始？ | `KlpExplorer`：lib/src/features/navigation/widgets/explorer/klp_explorer.dart:12；`KlpNavigationRail`：lib/src/features/navigation/widgets/rail/klp_navigation_rail.dart:13 |
+| Sidebar 的版面外框在哪裡？ | `KlpSidebarFrame`：lib/src/features/navigation/widgets/sidebar/klp_sidebar_frame.dart:10 |
 
 重要依賴：`klp_navigator.dart:10` 匯入自身 models，:5–6 匯入 pressable／state highlight，:7 匯入 surface。這些是靜態依賴，路由跳轉與事件先後需另外沿回呼驗證。

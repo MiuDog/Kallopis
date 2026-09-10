@@ -1,6 +1,9 @@
 import 'dart:convert';
 import 'dart:io';
 
+import 'support/owned_library_sources.dart';
+import 'support/public_library_sources.dart';
+
 /// 領域分類與標籤對應
 const categoryLabel = <String, String>{
 	'tokens': 'tokens — primitive 層',
@@ -59,18 +62,16 @@ class WidgetDoc {
 }
 
 void main() {
-	final files =
-			Directory('lib/src')
-					.listSync(recursive: true)
-					.whereType<File>()
-					.where((f) => f.path.endsWith('.dart'))
-		  .where((f) => !f.path.replaceAll(r'\', '/').contains('/internal/'))
-					.map((f) => f.path.replaceAll(r'\', '/'))
-					.toList()
-				..sort();
+	final root = Directory.current.absolute.path.replaceAll(r'\', '/');
+	final files = publicLibrarySources(File('lib/kallopis.dart'))
+		.map((file) => file.absolute.path.replaceAll(r'\', '/'))
+		.where((path) => path.contains('/lib/src/'))
+		.map((path) => path.startsWith('$root/') ? path.substring(root.length + 1) : path)
+		.toList()
+		..sort();
 
 	final widgetDeclRegex = RegExp(
-		r'^(?:abstract\s+)?class\s+(Klp[A-Za-z0-9]+)\s+extends\s+(StatelessWidget|StatefulWidget|InheritedNotifier|InheritedWidget|CustomPainter|KlpPanelFrame)',
+		r'^(?:abstract\s+)?class\s+(Klp[A-Za-z0-9]+)(?:<[^>]+>)?\s+extends\s+(StatelessWidget|StatefulWidget|InheritedNotifier|InheritedWidget|CustomPainter|KlpPanelFrame)',
 	);
 
 	final widgets = <WidgetDoc>[];
@@ -80,9 +81,12 @@ void main() {
 	// 1. 蒐集所有 Widget 宣告
 	for (final path in files) {
 		final parts = path.split('/');
-		final category = parts[2];
-		final fullText = File(path).readAsStringSync();
-		final lines = const LineSplitter().convert(fullText);
+		final sourceIndex = parts.indexOf('src');
+		final category = parts[sourceIndex + 1];
+		final sourceFile = File(path);
+		final ownText = sourceFile.readAsStringSync();
+		final fullText = ownedLibrarySources(sourceFile).map((file) => file.readAsStringSync()).join('\n');
+		final lines = const LineSplitter().convert(ownText);
 
 		for (var i = 0; i < lines.length; i++) {
 			final match = widgetDeclRegex.firstMatch(lines[i]);

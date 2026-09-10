@@ -28,7 +28,7 @@ void main() {
       testBed(
         child: KlpWindowHeader(
           titleText: 'Planist',
-          platform: TargetPlatform.windows,
+          platform: KlpAppPlatform.windows,
           appIcon: const KlpIcon(KlpIcons.circle, key: ValueKey('app-icon')),
           onMinimize: () => minimized = true,
           onToggleMaximize: () => maximized = true,
@@ -137,13 +137,13 @@ void main() {
       testBed(
         child: const KlpWindowHeader(
           titleText: 'Designist',
-          platform: TargetPlatform.windows,
+          platform: KlpAppPlatform.windows,
           showWindowControls: false,
         ),
       ),
     );
 
-    final slot = find.byKey(const ValueKey(klpWindowAppIconSlotKey));
+    final slot = find.byKey(const ValueKey(KlpWindowHeaderKeys.appIconSlot));
     final title = find.text('Designist');
     final layout = tester.element(slot).klp.geometry.layout;
 
@@ -161,7 +161,7 @@ void main() {
 			testBed(
 				child: KlpWindowHeader(
 					height: 16,
-					platform: TargetPlatform.windows,
+					platform: KlpAppPlatform.windows,
 					appIcon: const KlpIcon(
 						KlpIcons.circle,
 						key: ValueKey('short-header-app-icon'),
@@ -177,7 +177,7 @@ void main() {
 			(widget) => widget is KlpTooltip && widget.message == 'Close window',
 		);
 		final closeIcon = find.descendant(of: close, matching: find.byType(KlpIcon));
-		final appIconSlot = find.byKey(const ValueKey(klpWindowAppIconSlotKey));
+		final appIconSlot = find.byKey(const ValueKey(KlpWindowHeaderKeys.appIconSlot));
 
 		expect(tester.getSize(close), const Size.square(16));
 		expect(tester.widget<KlpIcon>(closeIcon).size, 8);
@@ -195,7 +195,7 @@ void main() {
             width: 156.0,
             child: KlpWindowHeader(
               titleText: 'A deliberately long application title',
-              platform: TargetPlatform.windows,
+              platform: KlpAppPlatform.windows,
               appIcon: const KlpIcon(KlpIcons.circle),
               onClose: () => closed = true,
             ),
@@ -234,7 +234,7 @@ void main() {
       testBed(
         child: const KlpWindowHeader(
           titleText: 'Kallopis',
-          platform: TargetPlatform.windows,
+          platform: KlpAppPlatform.windows,
           isMaximized: true,
         ),
       ),
@@ -251,7 +251,7 @@ void main() {
       testBed(
         child: const KlpWindowHeader(
           titleText: 'Planist Mac',
-          platform: TargetPlatform.macOS,
+          platform: KlpAppPlatform.macos,
           appIcon: KlpIcon(KlpIcons.circle, key: ValueKey('mac-app-icon')),
         ),
       ),

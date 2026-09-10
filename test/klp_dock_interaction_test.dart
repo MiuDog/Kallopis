@@ -160,7 +160,6 @@ class _DockHarnessState extends State<_DockHarness> {
       ),
       home: KlpDockLayout(
         stage: KlpPanelFrame(
-          padding: EdgeInsets.zero,
           content: const SizedBox.expand(key: ValueKey('dock-stage')),
         ),
         panels: const [

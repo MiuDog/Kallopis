@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:kallopis/src/theme/klp_component_theme.dart';
-import 'package:kallopis/src/theme/klp_geometry_theme.dart';
-import 'package:kallopis/src/theme/klp_motion_theme.dart';
-import 'package:kallopis/src/theme/klp_shape_theme.dart';
-import 'package:kallopis/src/theme/klp_spacing_theme.dart';
-import 'package:kallopis/src/theme/klp_surface_theme.dart';
-import 'package:kallopis/src/theme/klp_theme.dart';
-import 'package:kallopis/src/theme/klp_typography_theme.dart';
-import 'package:kallopis/src/theme/klp_visual_style.dart';
+import 'package:kallopis/src/styling/legacy_theme/klp_component_theme.dart';
+import 'package:kallopis/src/styling/legacy_theme/klp_geometry_theme.dart';
+import 'package:kallopis/src/styling/legacy_theme/klp_motion_theme.dart';
+import 'package:kallopis/src/styling/legacy_theme/klp_shape_theme.dart';
+import 'package:kallopis/src/styling/legacy_theme/klp_spacing_theme.dart';
+import 'package:kallopis/src/styling/legacy_theme/klp_surface_theme.dart';
+import 'package:kallopis/src/styling/legacy_theme/klp_theme.dart';
+import 'package:kallopis/src/styling/legacy_theme/klp_typography_theme.dart';
+import 'package:kallopis/src/styling/legacy_theme/klp_visual_style.dart';
 
 /// 一套與 `KlpVisualStyle.defaultStyle` **每個維度都不同**的風格，只存在於測試裡。
 ///

@@ -35,7 +35,7 @@ flowchart TD
 
 ## 程式碼證據
 
-- 檔案路徑：[`lib/src/foundation/klp_geometric_spinner.dart`](../../../../lib/src/foundation/klp_geometric_spinner.dart#L10)
+- 檔案路徑：[`lib/src/foundation/klp_geometric_spinner.dart`](../../../../lib/src/foundation/klp_geometric_spinner.dart#L13)
 - 宣告型態：`StatefulWidget`
 
 ## 閱讀說明

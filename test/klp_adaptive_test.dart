@@ -25,13 +25,39 @@ void main() {
 		}
 	});
 
-	testWidgets('adaptive requires environment even when other is supplied', (tester) async {
-		await tester.pumpWidget(KlpAdaptive(
-			windows: (_) => const _ProbePanel('windows'),
-			android: (_) => const _ProbePanel('android'),
-			other: (_) => const _ProbePanel('other'),
-		));
-		expect(tester.takeException(), isA<StateError>());
+	testWidgets('adaptive detects the current platform without an environment scope', (tester) async {
+		await tester.pumpWidget(
+			Directionality(
+				textDirection: TextDirection.ltr,
+				child: KlpAdaptive(
+					windows: (_) => const _ProbePanel('windows'),
+					android: (_) => const _ProbePanel('android'),
+					macos: (_) => const _ProbePanel('macos'),
+					linux: (_) => const _ProbePanel('linux'),
+					ios: (_) => const _ProbePanel('ios'),
+					other: (_) => const _ProbePanel('other'),
+				),
+			),
+		);
+
+		expect(tester.takeException(), isNull);
+		expect(find.byType(_ProbePanel), findsOneWidget);
+	});
+
+	testWidgets('adaptive accepts arbitrary widget strategies at component depth', (tester) async {
+		await tester.pumpWidget(
+			Directionality(
+				textDirection: TextDirection.ltr,
+				child: KlpAdaptive(
+					platform: KlpAppPlatform.macos,
+					windows: (_) => const Text('windows widget'),
+					android: (_) => const Text('android widget'),
+					macos: (_) => const Text('macOS widget'),
+				),
+			),
+		);
+
+		expect(find.text('macOS widget'), findsOneWidget);
 	});
 
 	testWidgets('adaptive rebuilds for platform changes but not legacy app theme changes', (tester) async {

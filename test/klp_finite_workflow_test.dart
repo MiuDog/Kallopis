@@ -31,6 +31,21 @@ void main() {
 		semantics.dispose();
 	});
 
+	testWidgets('preview tree forwards selection while enabled', (tester) async {
+		var selected = '';
+		await pump(
+			tester,
+			KlpPreviewTree(
+				label: 'Project preview',
+				nodes: const [KlpPreviewTreeNode(id: 'home', label: 'Home', accessibilityLabel: 'Preview page Home')],
+				onSelected: (value) => selected = value,
+			),
+		);
+
+		await tester.tap(find.text('Home'));
+		expect(selected, 'home');
+	});
+
 	testWidgets('publication overlay paints last and blocks preview hit testing', (tester) async {
 		var presses = 0;
 		Widget subject(bool visible) => SizedBox(
@@ -67,10 +82,10 @@ void main() {
 				),
 			);
 
-			final surface = tester.widget<KlpSurface>(
-				find.descendant(of: find.byType(KlpWorkflowStateSurface), matching: find.byType(KlpSurface)),
+			final contentBox = tester.widget<KlpBox>(
+				find.descendant(of: find.byType(KlpWorkflowStateSurface), matching: find.byType(KlpBox)).first,
 			);
-			expect(surface.padding, EdgeInsets.all(style.spacing.base));
+			expect(contentBox.paddingSize, KlpSpaceSize.base);
 			final canvas = tester.widget<ColoredBox>(
 				find.descendant(of: find.byType(KlpCanvasViewport), matching: find.byType(ColoredBox)),
 			);
