@@ -44,9 +44,9 @@ ClassDeclaration · public · [lib/src/capabilities/navigation/klp_navigation_ca
 
 | 成員 | 可見性 | 簽章／型別 | 來源註解摘要 | 證據 |
 |---|---|---|---|---|
-| field <code>whenCancelled</code> | public | <code>final Future&lt;void&gt; whenCancelled</code> |  | [lib/src/capabilities/navigation/klp_navigation_cancellation.dart:4](../../../../../lib/src/capabilities/navigation/klp_navigation_cancellation.dart#L4) |
-| field <code>_isCancelled</code> | private | <code>final bool Function() _isCancelled</code> |  | [lib/src/capabilities/navigation/klp_navigation_cancellation.dart:5](../../../../../lib/src/capabilities/navigation/klp_navigation_cancellation.dart#L5) |
-| constructor <code>KlpNavigationCancellation</code> | public | <code>KlpNavigationCancellation(this.whenCancelled, bool Function() isCancelled)</code> |  | [lib/src/capabilities/navigation/klp_navigation_cancellation.dart:7](../../../../../lib/src/capabilities/navigation/klp_navigation_cancellation.dart#L7) |
+| field <code>whenCancelled</code> | public | <code>final Future&lt;void&gt; whenCancelled</code> |  | [lib/src/capabilities/navigation/klp_navigation_cancellation.dart:3](../../../../../lib/src/capabilities/navigation/klp_navigation_cancellation.dart#L3) |
+| field <code>_isCancelled</code> | private | <code>final bool Function() _isCancelled</code> |  | [lib/src/capabilities/navigation/klp_navigation_cancellation.dart:4](../../../../../lib/src/capabilities/navigation/klp_navigation_cancellation.dart#L4) |
+| constructor <code>KlpNavigationCancellation</code> | public | <code>KlpNavigationCancellation(this.whenCancelled, bool Function() isCancelled)</code> |  | [lib/src/capabilities/navigation/klp_navigation_cancellation.dart:6](../../../../../lib/src/capabilities/navigation/klp_navigation_cancellation.dart#L6) |
 | getter <code>isCancelled</code> | public | <code>bool get isCancelled</code> |  | [lib/src/capabilities/navigation/klp_navigation_cancellation.dart:9](../../../../../lib/src/capabilities/navigation/klp_navigation_cancellation.dart#L9) |
 
 ## 閱讀說明與限制

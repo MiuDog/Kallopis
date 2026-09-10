@@ -63,12 +63,12 @@ ClassDeclaration · public · [lib/src/rendering/flutter/internal/klp_flutter_re
 
 | 成員 | 可見性 | 簽章／型別 | 來源註解摘要 | 證據 |
 |---|---|---|---|---|
-| field <code>content</code> | public | <code>final KlpBoundRegions content</code> |  | [lib/src/rendering/flutter/internal/klp_flutter_regions.dart:10](../../../../../../lib/src/rendering/flutter/internal/klp_flutter_regions.dart#L10) |
-| constructor <code>KlpFlutterRegions</code> | public | <code>const KlpFlutterRegions({required this.content, super.key})</code> |  | [lib/src/rendering/flutter/internal/klp_flutter_regions.dart:12](../../../../../../lib/src/rendering/flutter/internal/klp_flutter_regions.dart#L12) |
-| method <code>build</code> | public | <code>Widget build(BuildContext context)</code> |  | [lib/src/rendering/flutter/internal/klp_flutter_regions.dart:14](../../../../../../lib/src/rendering/flutter/internal/klp_flutter_regions.dart#L14) |
-| method <code>_layout</code> | private | <code>Widget _layout(BuildContext context, BoxConstraints constraints)</code> |  | [lib/src/rendering/flutter/internal/klp_flutter_regions.dart:17](../../../../../../lib/src/rendering/flutter/internal/klp_flutter_regions.dart#L17) |
-| method <code>_scroll</code> | private | <code>Widget _scroll(Axis axis, Widget child)</code> |  | [lib/src/rendering/flutter/internal/klp_flutter_regions.dart:39](../../../../../../lib/src/rendering/flutter/internal/klp_flutter_regions.dart#L39) |
-| method <code>_extent</code> | private | <code>Widget _extent(Axis axis, double? extent, Widget child)</code> |  | [lib/src/rendering/flutter/internal/klp_flutter_regions.dart:41](../../../../../../lib/src/rendering/flutter/internal/klp_flutter_regions.dart#L41) |
+| field <code>content</code> | public | <code>final KlpBoundRegions content</code> |  | [lib/src/rendering/flutter/internal/klp_flutter_regions.dart:9](../../../../../../lib/src/rendering/flutter/internal/klp_flutter_regions.dart#L9) |
+| constructor <code>KlpFlutterRegions</code> | public | <code>const KlpFlutterRegions({required this.content, super.key})</code> |  | [lib/src/rendering/flutter/internal/klp_flutter_regions.dart:11](../../../../../../lib/src/rendering/flutter/internal/klp_flutter_regions.dart#L11) |
+| method <code>build</code> | public | <code>Widget build(BuildContext context)</code> |  | [lib/src/rendering/flutter/internal/klp_flutter_regions.dart:13](../../../../../../lib/src/rendering/flutter/internal/klp_flutter_regions.dart#L13) |
+| method <code>_layout</code> | private | <code>Widget _layout(BuildContext context, BoxConstraints constraints)</code> |  | [lib/src/rendering/flutter/internal/klp_flutter_regions.dart:16](../../../../../../lib/src/rendering/flutter/internal/klp_flutter_regions.dart#L16) |
+| method <code>_scroll</code> | private | <code>Widget _scroll(Axis axis, Widget child)</code> |  | [lib/src/rendering/flutter/internal/klp_flutter_regions.dart:58](../../../../../../lib/src/rendering/flutter/internal/klp_flutter_regions.dart#L58) |
+| method <code>_extent</code> | private | <code>Widget _extent(Axis axis, double? extent, Widget child)</code> |  | [lib/src/rendering/flutter/internal/klp_flutter_regions.dart:64](../../../../../../lib/src/rendering/flutter/internal/klp_flutter_regions.dart#L64) |
 
 ## 閱讀說明與限制
 

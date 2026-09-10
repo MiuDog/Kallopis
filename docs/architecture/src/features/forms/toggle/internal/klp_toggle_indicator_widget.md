@@ -52,10 +52,10 @@ ClassDeclaration · public · [lib/src/features/forms/toggle/internal/klp_toggle
 
 | 成員 | 可見性 | 簽章／型別 | 來源註解摘要 | 證據 |
 |---|---|---|---|---|
-| constructor <code>KlpToggleIndicator</code> | public | <code>const KlpToggleIndicator({super.key, required this.value, this.enabled = true})</code> |  | [lib/src/features/forms/toggle/internal/klp_toggle_indicator_widget.dart:4](../../../../../../../lib/src/features/forms/toggle/internal/klp_toggle_indicator_widget.dart#L4) |
-| field <code>value</code> | public | <code>final bool value</code> |  | [lib/src/features/forms/toggle/internal/klp_toggle_indicator_widget.dart:6](../../../../../../../lib/src/features/forms/toggle/internal/klp_toggle_indicator_widget.dart#L6) |
-| field <code>enabled</code> | public | <code>final bool enabled</code> |  | [lib/src/features/forms/toggle/internal/klp_toggle_indicator_widget.dart:7](../../../../../../../lib/src/features/forms/toggle/internal/klp_toggle_indicator_widget.dart#L7) |
-| method <code>build</code> | public | <code>Widget build(BuildContext context)</code> |  | [lib/src/features/forms/toggle/internal/klp_toggle_indicator_widget.dart:9](../../../../../../../lib/src/features/forms/toggle/internal/klp_toggle_indicator_widget.dart#L9) |
+| constructor <code>KlpToggleIndicator</code> | public | <code>const KlpToggleIndicator({ super.key, required this.value, this.enabled = true, })</code> |  | [lib/src/features/forms/toggle/internal/klp_toggle_indicator_widget.dart:4](../../../../../../../lib/src/features/forms/toggle/internal/klp_toggle_indicator_widget.dart#L4) |
+| field <code>value</code> | public | <code>final bool value</code> |  | [lib/src/features/forms/toggle/internal/klp_toggle_indicator_widget.dart:10](../../../../../../../lib/src/features/forms/toggle/internal/klp_toggle_indicator_widget.dart#L10) |
+| field <code>enabled</code> | public | <code>final bool enabled</code> |  | [lib/src/features/forms/toggle/internal/klp_toggle_indicator_widget.dart:11](../../../../../../../lib/src/features/forms/toggle/internal/klp_toggle_indicator_widget.dart#L11) |
+| method <code>build</code> | public | <code>Widget build(BuildContext context)</code> |  | [lib/src/features/forms/toggle/internal/klp_toggle_indicator_widget.dart:13](../../../../../../../lib/src/features/forms/toggle/internal/klp_toggle_indicator_widget.dart#L13) |
 
 ## 閱讀說明與限制
 

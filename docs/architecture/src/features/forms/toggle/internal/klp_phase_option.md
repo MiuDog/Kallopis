@@ -46,11 +46,11 @@ ClassDeclaration · public · [lib/src/features/forms/toggle/internal/klp_phase_
 
 | 成員 | 可見性 | 簽章／型別 | 來源註解摘要 | 證據 |
 |---|---|---|---|---|
-| constructor <code>KlpPhaseOption</code> | public | <code>const KlpPhaseOption({required this.value, this.label, this.icon, this.activeTone})</code> |  | [lib/src/features/forms/toggle/internal/klp_phase_option.dart:6](../../../../../../../lib/src/features/forms/toggle/internal/klp_phase_option.dart#L6) |
-| field <code>value</code> | public | <code>final T value</code> |  | [lib/src/features/forms/toggle/internal/klp_phase_option.dart:9](../../../../../../../lib/src/features/forms/toggle/internal/klp_phase_option.dart#L9) |
-| field <code>label</code> | public | <code>final String? label</code> |  | [lib/src/features/forms/toggle/internal/klp_phase_option.dart:10](../../../../../../../lib/src/features/forms/toggle/internal/klp_phase_option.dart#L10) |
-| field <code>icon</code> | public | <code>final KlpIconData? icon</code> |  | [lib/src/features/forms/toggle/internal/klp_phase_option.dart:11](../../../../../../../lib/src/features/forms/toggle/internal/klp_phase_option.dart#L11) |
-| field <code>activeTone</code> | public | <code>final KlpFeedbackTone? activeTone</code> |  | [lib/src/features/forms/toggle/internal/klp_phase_option.dart:12](../../../../../../../lib/src/features/forms/toggle/internal/klp_phase_option.dart#L12) |
+| constructor <code>KlpPhaseOption</code> | public | <code>const KlpPhaseOption({ required this.value, this.label, this.icon, this.activeTone, })</code> |  | [lib/src/features/forms/toggle/internal/klp_phase_option.dart:6](../../../../../../../lib/src/features/forms/toggle/internal/klp_phase_option.dart#L6) |
+| field <code>value</code> | public | <code>final T value</code> |  | [lib/src/features/forms/toggle/internal/klp_phase_option.dart:13](../../../../../../../lib/src/features/forms/toggle/internal/klp_phase_option.dart#L13) |
+| field <code>label</code> | public | <code>final String? label</code> |  | [lib/src/features/forms/toggle/internal/klp_phase_option.dart:14](../../../../../../../lib/src/features/forms/toggle/internal/klp_phase_option.dart#L14) |
+| field <code>icon</code> | public | <code>final KlpIconData? icon</code> |  | [lib/src/features/forms/toggle/internal/klp_phase_option.dart:15](../../../../../../../lib/src/features/forms/toggle/internal/klp_phase_option.dart#L15) |
+| field <code>activeTone</code> | public | <code>final KlpFeedbackTone? activeTone</code> |  | [lib/src/features/forms/toggle/internal/klp_phase_option.dart:16](../../../../../../../lib/src/features/forms/toggle/internal/klp_phase_option.dart#L16) |
 
 ## 閱讀說明與限制
 

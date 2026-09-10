@@ -55,13 +55,13 @@ ClassDeclaration · public · [lib/src/foundation/binding/internal/klp_prepared_
 
 | 成員 | 可見性 | 簽章／型別 | 來源註解摘要 | 證據 |
 |---|---|---|---|---|
-| field <code>id</code> | public | <code>final String id</code> |  | [lib/src/foundation/binding/internal/klp_prepared_component.dart:9](../../../../../../lib/src/foundation/binding/internal/klp_prepared_component.dart#L9) |
-| field <code>definitionId</code> | public | <code>final String definitionId</code> |  | [lib/src/foundation/binding/internal/klp_prepared_component.dart:10](../../../../../../lib/src/foundation/binding/internal/klp_prepared_component.dart#L10) |
-| field <code>childCount</code> | public | <code>final int childCount</code> |  | [lib/src/foundation/binding/internal/klp_prepared_component.dart:11](../../../../../../lib/src/foundation/binding/internal/klp_prepared_component.dart#L11) |
-| field <code>content</code> | public | <code>final KlpPreparedTemplate content</code> |  | [lib/src/foundation/binding/internal/klp_prepared_component.dart:12](../../../../../../lib/src/foundation/binding/internal/klp_prepared_component.dart#L12) |
-| field <code>accessibilityLabel</code> | public | <code>final String? accessibilityLabel</code> |  | [lib/src/foundation/binding/internal/klp_prepared_component.dart:13](../../../../../../lib/src/foundation/binding/internal/klp_prepared_component.dart#L13) |
-| constructor <code>KlpPreparedComponent</code> | public | <code>const KlpPreparedComponent({ required this.id, required this.definitionId, required this.childCount, required this.content, this.accessibilityLabel, })</code> |  | [lib/src/foundation/binding/internal/klp_prepared_component.dart:15](../../../../../../lib/src/foundation/binding/internal/klp_prepared_component.dart#L15) |
-| method <code>materialize</code> | public | <code>KlpBoundComponent materialize(List&lt;KlpBoundTemplate&gt; children)</code> |  | [lib/src/foundation/binding/internal/klp_prepared_component.dart:23](../../../../../../lib/src/foundation/binding/internal/klp_prepared_component.dart#L23) |
+| field <code>id</code> | public | <code>final String id</code> |  | [lib/src/foundation/binding/internal/klp_prepared_component.dart:8](../../../../../../lib/src/foundation/binding/internal/klp_prepared_component.dart#L8) |
+| field <code>definitionId</code> | public | <code>final String definitionId</code> |  | [lib/src/foundation/binding/internal/klp_prepared_component.dart:9](../../../../../../lib/src/foundation/binding/internal/klp_prepared_component.dart#L9) |
+| field <code>childCount</code> | public | <code>final int childCount</code> |  | [lib/src/foundation/binding/internal/klp_prepared_component.dart:10](../../../../../../lib/src/foundation/binding/internal/klp_prepared_component.dart#L10) |
+| field <code>content</code> | public | <code>final KlpPreparedTemplate content</code> |  | [lib/src/foundation/binding/internal/klp_prepared_component.dart:11](../../../../../../lib/src/foundation/binding/internal/klp_prepared_component.dart#L11) |
+| field <code>accessibilityLabel</code> | public | <code>final String? accessibilityLabel</code> |  | [lib/src/foundation/binding/internal/klp_prepared_component.dart:12](../../../../../../lib/src/foundation/binding/internal/klp_prepared_component.dart#L12) |
+| constructor <code>KlpPreparedComponent</code> | public | <code>const KlpPreparedComponent({ required this.id, required this.definitionId, required this.childCount, required this.content, this.accessibilityLabel, })</code> |  | [lib/src/foundation/binding/internal/klp_prepared_component.dart:14](../../../../../../lib/src/foundation/binding/internal/klp_prepared_component.dart#L14) |
+| method <code>materialize</code> | public | <code>KlpBoundComponent materialize(List&lt;KlpBoundTemplate&gt; children)</code> |  | [lib/src/foundation/binding/internal/klp_prepared_component.dart:22](../../../../../../lib/src/foundation/binding/internal/klp_prepared_component.dart#L22) |
 
 ## 閱讀說明與限制
 

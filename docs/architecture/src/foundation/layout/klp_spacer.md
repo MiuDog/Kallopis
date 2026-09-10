@@ -54,9 +54,9 @@ ClassDeclaration · public · [lib/src/foundation/layout/klp_spacer.dart:3](../.
 
 | 成員 | 可見性 | 簽章／型別 | 來源註解摘要 | 證據 |
 |---|---|---|---|---|
-| constructor <code>KlpSpacer</code> | public | <code>const KlpSpacer({ super.key, this.flex = 1, })</code> |  | [lib/src/foundation/layout/klp_spacer.dart:5](../../../../../lib/src/foundation/layout/klp_spacer.dart#L5) |
-| field <code>flex</code> | public | <code>final int flex</code> |  | [lib/src/foundation/layout/klp_spacer.dart:10](../../../../../lib/src/foundation/layout/klp_spacer.dart#L10) |
-| method <code>build</code> | public | <code>Widget build(BuildContext context)</code> |  | [lib/src/foundation/layout/klp_spacer.dart:12](../../../../../lib/src/foundation/layout/klp_spacer.dart#L12) |
+| constructor <code>KlpSpacer</code> | public | <code>const KlpSpacer({super.key, this.flex = 1})</code> |  | [lib/src/foundation/layout/klp_spacer.dart:5](../../../../../lib/src/foundation/layout/klp_spacer.dart#L5) |
+| field <code>flex</code> | public | <code>final int flex</code> |  | [lib/src/foundation/layout/klp_spacer.dart:7](../../../../../lib/src/foundation/layout/klp_spacer.dart#L7) |
+| method <code>build</code> | public | <code>Widget build(BuildContext context)</code> |  | [lib/src/foundation/layout/klp_spacer.dart:9](../../../../../lib/src/foundation/layout/klp_spacer.dart#L9) |
 
 ## 閱讀說明與限制
 

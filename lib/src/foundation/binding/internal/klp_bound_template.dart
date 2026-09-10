@@ -20,6 +20,5 @@ part 'klp_bound_accessibility.dart';
 
 /// 本庫完成資料投影與風格求值後的封閉呈現輸入。
 sealed class KlpBoundTemplate {
-
-	const KlpBoundTemplate();
+  const KlpBoundTemplate();
 }

@@ -50,14 +50,14 @@ ClassDeclaration · public · [lib/src/foundation/templates/klp_children_templat
 
 來源註解摘要：定義期宣告合格子項的唯一位置與排列，實例只能填入插槽資料。
 
-- `extends` → <code>KlpTemplate&lt;T&gt;</code>：[lib/src/foundation/templates/klp_children_template.dart:4](../../../../../lib/src/foundation/templates/klp_children_template.dart#L4)
+- `extends` → <code>KlpTemplate&lt;T&gt;</code>：[lib/src/foundation/templates/klp_children_template.dart:5](../../../../../lib/src/foundation/templates/klp_children_template.dart#L5)
 
 | 成員 | 可見性 | 簽章／型別 | 來源註解摘要 | 證據 |
 |---|---|---|---|---|
 | field <code>slot</code> | public | <code>final KlpSlot&lt;C&gt; slot</code> |  | [lib/src/foundation/templates/klp_children_template.dart:6](../../../../../lib/src/foundation/templates/klp_children_template.dart#L6) |
 | field <code>axis</code> | public | <code>final KlpAxis axis</code> |  | [lib/src/foundation/templates/klp_children_template.dart:7](../../../../../lib/src/foundation/templates/klp_children_template.dart#L7) |
 | field <code>gap</code> | public | <code>final KlpSemanticKey&lt;KlpDistance&gt; gap</code> |  | [lib/src/foundation/templates/klp_children_template.dart:8](../../../../../lib/src/foundation/templates/klp_children_template.dart#L8) |
-| constructor <code>KlpChildrenTemplate</code> | public | <code>const KlpChildrenTemplate({required this.slot, required this.axis, required this.gap})</code> |  | [lib/src/foundation/templates/klp_children_template.dart:10](../../../../../lib/src/foundation/templates/klp_children_template.dart#L10) |
+| constructor <code>KlpChildrenTemplate</code> | public | <code>const KlpChildrenTemplate({ required this.slot, required this.axis, required this.gap, })</code> |  | [lib/src/foundation/templates/klp_children_template.dart:10](../../../../../lib/src/foundation/templates/klp_children_template.dart#L10) |
 
 ## 閱讀說明與限制
 

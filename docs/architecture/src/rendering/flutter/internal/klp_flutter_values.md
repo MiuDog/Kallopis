@@ -49,14 +49,14 @@ FunctionDeclaration · public · [lib/src/rendering/flutter/internal/klp_flutter
 
 ### klpFlutterAxis
 
-FunctionDeclaration · public · [lib/src/rendering/flutter/internal/klp_flutter_values.dart:10](../../../../../../lib/src/rendering/flutter/internal/klp_flutter_values.dart#L10)
+FunctionDeclaration · public · [lib/src/rendering/flutter/internal/klp_flutter_values.dart:11](../../../../../../lib/src/rendering/flutter/internal/klp_flutter_values.dart#L11)
 
 <code>Axis klpFlutterAxis(KlpAxis axis)</code>
 
 
 ### klpFlutterTextStyle
 
-FunctionDeclaration · public · [lib/src/rendering/flutter/internal/klp_flutter_values.dart:12](../../../../../../lib/src/rendering/flutter/internal/klp_flutter_values.dart#L12)
+FunctionDeclaration · public · [lib/src/rendering/flutter/internal/klp_flutter_values.dart:14](../../../../../../lib/src/rendering/flutter/internal/klp_flutter_values.dart#L14)
 
 <code>TextStyle klpFlutterTextStyle(KlpBoundTextStyle style)</code>
 

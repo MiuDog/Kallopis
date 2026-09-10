@@ -46,9 +46,9 @@ ClassDeclaration · public · [lib/src/capabilities/navigation/klp_navigation_de
 
 | 成員 | 可見性 | 簽章／型別 | 來源註解摘要 | 證據 |
 |---|---|---|---|---|
-| field <code>committed</code> | public | <code>final bool committed</code> |  | [lib/src/capabilities/navigation/klp_navigation_decision.dart:6](../../../../../lib/src/capabilities/navigation/klp_navigation_decision.dart#L6) |
-| field <code>outcome</code> | public | <code>final KlpNavigationOutcome&lt;void&gt; outcome</code> |  | [lib/src/capabilities/navigation/klp_navigation_decision.dart:7](../../../../../lib/src/capabilities/navigation/klp_navigation_decision.dart#L7) |
-| constructor <code>KlpNavigationDecision</code> | public | <code>const KlpNavigationDecision(this.committed, this.outcome)</code> |  | [lib/src/capabilities/navigation/klp_navigation_decision.dart:9](../../../../../lib/src/capabilities/navigation/klp_navigation_decision.dart#L9) |
+| field <code>committed</code> | public | <code>final bool committed</code> |  | [lib/src/capabilities/navigation/klp_navigation_decision.dart:5](../../../../../lib/src/capabilities/navigation/klp_navigation_decision.dart#L5) |
+| field <code>outcome</code> | public | <code>final KlpNavigationOutcome&lt;void&gt; outcome</code> |  | [lib/src/capabilities/navigation/klp_navigation_decision.dart:6](../../../../../lib/src/capabilities/navigation/klp_navigation_decision.dart#L6) |
+| constructor <code>KlpNavigationDecision</code> | public | <code>const KlpNavigationDecision(this.committed, this.outcome)</code> |  | [lib/src/capabilities/navigation/klp_navigation_decision.dart:8](../../../../../lib/src/capabilities/navigation/klp_navigation_decision.dart#L8) |
 
 ## 閱讀說明與限制
 

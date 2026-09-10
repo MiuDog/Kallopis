@@ -57,8 +57,8 @@ ClassDeclaration · public · [lib/src/features/navigation/rail/contracts/klp_ra
 
 | 成員 | 可見性 | 簽章／型別 | 來源註解摘要 | 證據 |
 |---|---|---|---|---|
-| getter <code>accessibilityLabel</code> | public | <code>String get accessibilityLabel</code> |  | [lib/src/features/navigation/rail/contracts/klp_rail_item.dart:7](../../../../../../../lib/src/features/navigation/rail/contracts/klp_rail_item.dart#L7) |
-| getter <code>action</code> | public | <code>KlpAction? get action</code> |  | [lib/src/features/navigation/rail/contracts/klp_rail_item.dart:8](../../../../../../../lib/src/features/navigation/rail/contracts/klp_rail_item.dart#L8) |
+| getter <code>accessibilityLabel</code> | public | <code>String get accessibilityLabel</code> |  | [lib/src/features/navigation/rail/contracts/klp_rail_item.dart:6](../../../../../../../lib/src/features/navigation/rail/contracts/klp_rail_item.dart#L6) |
+| getter <code>action</code> | public | <code>KlpAction? get action</code> |  | [lib/src/features/navigation/rail/contracts/klp_rail_item.dart:7](../../../../../../../lib/src/features/navigation/rail/contracts/klp_rail_item.dart#L7) |
 
 ## 閱讀說明與限制
 

@@ -8,8 +8,7 @@ part 'klp_semantic_ref.dart';
 
 /// 封閉的風格參照語言；消費端不能加入常值或任意求值函式。
 sealed class KlpStyleRef<T extends KlpStyleValue> {
+  const KlpStyleRef();
 
-	const KlpStyleRef();
-
-	KlpStyleKind<T> get kind;
+  KlpStyleKind<T> get kind;
 }

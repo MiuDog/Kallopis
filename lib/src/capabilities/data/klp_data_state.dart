@@ -7,6 +7,5 @@ part 'klp_data_failure.dart';
 ///
 /// 包裝不可變，但資料本身的不可變性由提供者負責。
 sealed class KlpDataState<T> {
-
-	const KlpDataState();
+  const KlpDataState();
 }

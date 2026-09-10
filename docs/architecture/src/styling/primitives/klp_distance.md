@@ -54,8 +54,8 @@ ClassDeclaration · public · [lib/src/styling/primitives/klp_distance.dart:3](.
 
 | 成員 | 可見性 | 簽章／型別 | 來源註解摘要 | 證據 |
 |---|---|---|---|---|
-| field <code>value</code> | public | <code>final double value</code> |  | [lib/src/styling/primitives/klp_distance.dart:6](../../../../../lib/src/styling/primitives/klp_distance.dart#L6) |
-| constructor <code>KlpDistance</code> | public | <code>KlpDistance(this.value)</code> |  | [lib/src/styling/primitives/klp_distance.dart:8](../../../../../lib/src/styling/primitives/klp_distance.dart#L8) |
+| field <code>value</code> | public | <code>final double value</code> |  | [lib/src/styling/primitives/klp_distance.dart:5](../../../../../lib/src/styling/primitives/klp_distance.dart#L5) |
+| constructor <code>KlpDistance</code> | public | <code>KlpDistance(this.value)</code> |  | [lib/src/styling/primitives/klp_distance.dart:7](../../../../../lib/src/styling/primitives/klp_distance.dart#L7) |
 
 ## 閱讀說明與限制
 

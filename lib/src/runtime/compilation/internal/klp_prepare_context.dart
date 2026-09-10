@@ -8,20 +8,20 @@ import '../../../capabilities/actions/klp_action_handler.dart';
 
 /// 單次準備使用的快照；renderer 不會取得外部節點物件。
 final class KlpPrepareContext {
+  final Map<KlpPlacementId, KlpNode> sources;
+  final Map<KlpPlacementId, KlpValidatedNode> nodes;
+  final KlpComponentCompiler components;
+  final KlpPrimitiveSet primitives;
+  final KlpSemanticResolution style;
+  final KlpActionHandler? actionHandler;
 
-	final Map<KlpPlacementId, KlpNode> sources;
-	final Map<KlpPlacementId, KlpValidatedNode> nodes;
-	final KlpComponentCompiler components;
-	final KlpPrimitiveSet primitives;
-	final KlpSemanticResolution style;
-	final KlpActionHandler? actionHandler;
-
-	KlpPrepareContext({
-		required Map<KlpPlacementId, KlpNode> sources,
-		required Map<KlpPlacementId, KlpValidatedNode> nodes,
-		required this.components,
-		required this.primitives,
-		required this.style,
-		this.actionHandler,
-	}) : sources = Map.unmodifiable(sources), nodes = Map.unmodifiable(nodes);
+  KlpPrepareContext({
+    required Map<KlpPlacementId, KlpNode> sources,
+    required Map<KlpPlacementId, KlpValidatedNode> nodes,
+    required this.components,
+    required this.primitives,
+    required this.style,
+    this.actionHandler,
+  }) : sources = Map.unmodifiable(sources),
+       nodes = Map.unmodifiable(nodes);
 }

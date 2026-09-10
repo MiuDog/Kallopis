@@ -6,17 +6,17 @@ part of '../klp_explorer_models.dart';
 /// 排版由 `KlpExplorer` 統一管理。
 @immutable
 class KlpExplorerCategory {
-	const KlpExplorerCategory({
-		required this.id,
-		required this.label,
-		this.nodes = const [],
-		this.expanded = true,
-		this.collapsible = true,
-	});
+  const KlpExplorerCategory({
+    required this.id,
+    required this.label,
+    this.nodes = const [],
+    this.expanded = true,
+    this.collapsible = true,
+  });
 
-	final String id;
-	final String label;
-	final List<KlpExplorerNode> nodes;
-	final bool expanded;
-	final bool collapsible;
+  final String id;
+  final String label;
+  final List<KlpExplorerNode> nodes;
+  final bool expanded;
+  final bool collapsible;
 }

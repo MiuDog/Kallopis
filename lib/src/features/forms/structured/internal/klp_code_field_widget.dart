@@ -7,41 +7,41 @@ part of '../klp_code_field.dart';
 /// [onChanged] 也沒有 [error] 提示，這兩者只在可編輯（[readOnly] 為 false）
 /// 時才有意義。[language] 只影響唯讀模式下的語法高亮，可編輯模式不使用。
 class KlpCodeField extends StatelessWidget {
-	const KlpCodeField({
-		super.key,
-		required this.label,
-		required this.value,
-		this.language,
-		this.onChanged,
-		this.readOnly = false,
-		this.error,
-	});
+  const KlpCodeField({
+    super.key,
+    required this.label,
+    required this.value,
+    this.language,
+    this.onChanged,
+    this.readOnly = false,
+    this.error,
+  });
 
-	final String label;
-	final String value;
-	final String? language;
-	final ValueChanged<String>? onChanged;
-	final bool readOnly;
-	final String? error;
+  final String label;
+  final String value;
+  final String? language;
+  final ValueChanged<String>? onChanged;
+  final bool readOnly;
+  final String? error;
 
-	@override
-	Widget build(BuildContext context) {
-		if (!readOnly) {
-			return KlpTextArea(
-				label: label,
-				value: value,
-				error: error,
-				onChanged: onChanged,
-			);
-		}
+  @override
+  Widget build(BuildContext context) {
+    if (!readOnly) {
+      return KlpTextArea(
+        label: label,
+        value: value,
+        error: error,
+        onChanged: onChanged,
+      );
+    }
 
-		return KlpColumn(
-			crossAxisAlignment: CrossAxisAlignment.stretch,
-			children: [
-				KlpText(label, role: KlpTextRole.caption),
-				const KlpGap.heightSize(KlpSpaceSize.tight),
-				KlpCodeViewer(code: value, language: language),
-			],
-		);
-	}
+    return KlpColumn(
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      children: [
+        KlpText(label, role: KlpTextRole.caption),
+        const KlpGap.heightSize(KlpSpaceSize.tight),
+        KlpCodeViewer(code: value, language: language),
+      ],
+    );
+  }
 }

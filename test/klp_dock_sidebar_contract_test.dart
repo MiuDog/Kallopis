@@ -11,7 +11,12 @@ void main() {
       KlpApp(
         showWindowHeader: false,
         startMaximized: false,
-				home: KlpPanelFrame(content: KlpFileExplorer(scrollController: controller, sections: const [])),
+        home: KlpPanelFrame(
+          content: KlpFileExplorer(
+            scrollController: controller,
+            sections: const [],
+          ),
+        ),
       ),
     );
 
@@ -57,7 +62,7 @@ void main() {
         showWindowHeader: false,
         startMaximized: false,
         home: KlpDockLayout(
-					stage: KlpPanelFrame(content: const SizedBox.expand()),
+          stage: KlpPanelFrame(content: const SizedBox.expand()),
           panels: const [
             KlpDockPanel(
               id: panelId,

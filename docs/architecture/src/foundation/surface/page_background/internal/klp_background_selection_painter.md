@@ -61,19 +61,19 @@ ClassDeclaration · private · [lib/src/foundation/surface/page_background/inter
 | field <code>width</code> | public | <code>final double width</code> |  | [lib/src/foundation/surface/page_background/internal/klp_background_selection_painter.dart:19](../../../../../../../lib/src/foundation/surface/page_background/internal/klp_background_selection_painter.dart#L19) |
 | field <code>snapSpacing</code> | public | <code>final double snapSpacing</code> |  | [lib/src/foundation/surface/page_background/internal/klp_background_selection_painter.dart:20](../../../../../../../lib/src/foundation/surface/page_background/internal/klp_background_selection_painter.dart#L20) |
 | method <code>paint</code> | public | <code>void paint(Canvas canvas, Size size)</code> |  | [lib/src/foundation/surface/page_background/internal/klp_background_selection_painter.dart:22](../../../../../../../lib/src/foundation/surface/page_background/internal/klp_background_selection_painter.dart#L22) |
-| method <code>_paintCoordinateGrid</code> | private | <code>void _paintCoordinateGrid(Canvas canvas, Size size)</code> |  | [lib/src/foundation/surface/page_background/internal/klp_background_selection_painter.dart:53](../../../../../../../lib/src/foundation/surface/page_background/internal/klp_background_selection_painter.dart#L53) |
-| method <code>shouldRepaint</code> | public | <code>bool shouldRepaint(covariant _KlpBackgroundSelectionPainter oldDelegate)</code> |  | [lib/src/foundation/surface/page_background/internal/klp_background_selection_painter.dart:74](../../../../../../../lib/src/foundation/surface/page_background/internal/klp_background_selection_painter.dart#L74) |
+| method <code>_paintCoordinateGrid</code> | private | <code>void _paintCoordinateGrid(Canvas canvas, Size size)</code> |  | [lib/src/foundation/surface/page_background/internal/klp_background_selection_painter.dart:63](../../../../../../../lib/src/foundation/surface/page_background/internal/klp_background_selection_painter.dart#L63) |
+| method <code>shouldRepaint</code> | public | <code>bool shouldRepaint(covariant _KlpBackgroundSelectionPainter oldDelegate)</code> |  | [lib/src/foundation/surface/page_background/internal/klp_background_selection_painter.dart:84](../../../../../../../lib/src/foundation/surface/page_background/internal/klp_background_selection_painter.dart#L84) |
 
 ### _selectionExists
 
-FunctionDeclaration · private · [lib/src/foundation/surface/page_background/internal/klp_background_selection_painter.dart:86](../../../../../../../lib/src/foundation/surface/page_background/internal/klp_background_selection_painter.dart#L86)
+FunctionDeclaration · private · [lib/src/foundation/surface/page_background/internal/klp_background_selection_painter.dart:96](../../../../../../../lib/src/foundation/surface/page_background/internal/klp_background_selection_painter.dart#L96)
 
-<code>bool _selectionExists(KlpPageBackgroundSelection selection, KlpCustomPageBackgroundRecipe recipe)</code>
+<code>bool _selectionExists( KlpPageBackgroundSelection selection, KlpCustomPageBackgroundRecipe recipe, )</code>
 
 
 ### _distanceToSegment
 
-FunctionDeclaration · private · [lib/src/foundation/surface/page_background/internal/klp_background_selection_painter.dart:93](../../../../../../../lib/src/foundation/surface/page_background/internal/klp_background_selection_painter.dart#L93)
+FunctionDeclaration · private · [lib/src/foundation/surface/page_background/internal/klp_background_selection_painter.dart:110](../../../../../../../lib/src/foundation/surface/page_background/internal/klp_background_selection_painter.dart#L110)
 
 <code>double _distanceToSegment(Offset point, Offset start, Offset end)</code>
 

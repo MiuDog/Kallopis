@@ -46,9 +46,9 @@ ClassDeclaration · public · [lib/src/capabilities/navigation/klp_location.dart
 
 | 成員 | 可見性 | 簽章／型別 | 來源註解摘要 | 證據 |
 |---|---|---|---|---|
-| field <code>destination</code> | public | <code>final KlpDestination&lt;Object?, R&gt; destination</code> |  | [lib/src/capabilities/navigation/klp_location.dart:6](../../../../../lib/src/capabilities/navigation/klp_location.dart#L6) |
-| field <code>parameters</code> | public | <code>final Object? parameters</code> |  | [lib/src/capabilities/navigation/klp_location.dart:7](../../../../../lib/src/capabilities/navigation/klp_location.dart#L7) |
-| constructor <code>KlpLocation</code> | public | <code>KlpLocation(this.destination, this.parameters)</code> |  | [lib/src/capabilities/navigation/klp_location.dart:9](../../../../../lib/src/capabilities/navigation/klp_location.dart#L9) |
+| field <code>destination</code> | public | <code>final KlpDestination&lt;Object?, R&gt; destination</code> |  | [lib/src/capabilities/navigation/klp_location.dart:5](../../../../../lib/src/capabilities/navigation/klp_location.dart#L5) |
+| field <code>parameters</code> | public | <code>final Object? parameters</code> |  | [lib/src/capabilities/navigation/klp_location.dart:6](../../../../../lib/src/capabilities/navigation/klp_location.dart#L6) |
+| constructor <code>KlpLocation</code> | public | <code>KlpLocation(this.destination, this.parameters)</code> |  | [lib/src/capabilities/navigation/klp_location.dart:8](../../../../../lib/src/capabilities/navigation/klp_location.dart#L8) |
 
 ## 閱讀說明與限制
 

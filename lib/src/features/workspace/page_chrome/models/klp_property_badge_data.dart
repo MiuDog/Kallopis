@@ -4,13 +4,13 @@ part of '../klp_page_chrome.dart';
 /// `label`／`tone`／`dot` 參數。
 @immutable
 class KlpPropertyBadgeData {
-	const KlpPropertyBadgeData({
-		required this.label,
-		this.tone = KlpFeedbackTone.neutral,
-		this.dot = false,
-	});
+  const KlpPropertyBadgeData({
+    required this.label,
+    this.tone = KlpFeedbackTone.neutral,
+    this.dot = false,
+  });
 
-	final String label;
-	final KlpFeedbackTone tone;
-	final bool dot;
+  final String label;
+  final KlpFeedbackTone tone;
+  final bool dot;
 }

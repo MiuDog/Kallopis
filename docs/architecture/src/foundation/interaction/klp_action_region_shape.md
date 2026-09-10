@@ -44,8 +44,8 @@ EnumDeclaration · public · [lib/src/foundation/interaction/klp_action_region_s
 
 | 成員 | 可見性 | 簽章／型別 | 來源註解摘要 | 證據 |
 |---|---|---|---|---|
-| enum value <code>card</code> | public | <code>card</code> |  | [lib/src/foundation/interaction/klp_action_region_shape.dart:3](../../../../../lib/src/foundation/interaction/klp_action_region_shape.dart#L3) |
-| enum value <code>control</code> | public | <code>control</code> |  | [lib/src/foundation/interaction/klp_action_region_shape.dart:4](../../../../../lib/src/foundation/interaction/klp_action_region_shape.dart#L4) |
+| enum value <code>card</code> | public | <code>card</code> |  | [lib/src/foundation/interaction/klp_action_region_shape.dart:2](../../../../../lib/src/foundation/interaction/klp_action_region_shape.dart#L2) |
+| enum value <code>control</code> | public | <code>control</code> |  | [lib/src/foundation/interaction/klp_action_region_shape.dart:2](../../../../../lib/src/foundation/interaction/klp_action_region_shape.dart#L2) |
 
 ## 閱讀說明與限制
 

@@ -80,30 +80,30 @@ ClassDeclaration · public · [lib/src/rendering/flutter/internal/klp_flutter_ch
 
 | 成員 | 可見性 | 簽章／型別 | 來源註解摘要 | 證據 |
 |---|---|---|---|---|
-| field <code>content</code> | public | <code>final KlpBoundChoice content</code> |  | [lib/src/rendering/flutter/internal/klp_flutter_choice.dart:14](../../../../../../lib/src/rendering/flutter/internal/klp_flutter_choice.dart#L14) |
-| constructor <code>KlpFlutterChoice</code> | public | <code>const KlpFlutterChoice({required this.content, super.key})</code> |  | [lib/src/rendering/flutter/internal/klp_flutter_choice.dart:16](../../../../../../lib/src/rendering/flutter/internal/klp_flutter_choice.dart#L16) |
-| method <code>createState</code> | public | <code>State&lt;KlpFlutterChoice&gt; createState()</code> |  | [lib/src/rendering/flutter/internal/klp_flutter_choice.dart:18](../../../../../../lib/src/rendering/flutter/internal/klp_flutter_choice.dart#L18) |
+| field <code>content</code> | public | <code>final KlpBoundChoice content</code> |  | [lib/src/rendering/flutter/internal/klp_flutter_choice.dart:13](../../../../../../lib/src/rendering/flutter/internal/klp_flutter_choice.dart#L13) |
+| constructor <code>KlpFlutterChoice</code> | public | <code>const KlpFlutterChoice({required this.content, super.key})</code> |  | [lib/src/rendering/flutter/internal/klp_flutter_choice.dart:15](../../../../../../lib/src/rendering/flutter/internal/klp_flutter_choice.dart#L15) |
+| method <code>createState</code> | public | <code>State&lt;KlpFlutterChoice&gt; createState()</code> |  | [lib/src/rendering/flutter/internal/klp_flutter_choice.dart:17](../../../../../../lib/src/rendering/flutter/internal/klp_flutter_choice.dart#L17) |
 
 ### _KlpFlutterChoiceState
 
-ClassDeclaration · private · [lib/src/rendering/flutter/internal/klp_flutter_choice.dart:22](../../../../../../lib/src/rendering/flutter/internal/klp_flutter_choice.dart#L22)
+ClassDeclaration · private · [lib/src/rendering/flutter/internal/klp_flutter_choice.dart:21](../../../../../../lib/src/rendering/flutter/internal/klp_flutter_choice.dart#L21)
 
 <code>final class _KlpFlutterChoiceState extends State&lt;KlpFlutterChoice&gt;</code>
 
-- `extends` → <code>State&lt;KlpFlutterChoice&gt;</code>：[lib/src/rendering/flutter/internal/klp_flutter_choice.dart:22](../../../../../../lib/src/rendering/flutter/internal/klp_flutter_choice.dart#L22)
+- `extends` → <code>State&lt;KlpFlutterChoice&gt;</code>：[lib/src/rendering/flutter/internal/klp_flutter_choice.dart:21](../../../../../../lib/src/rendering/flutter/internal/klp_flutter_choice.dart#L21)
 
 | 成員 | 可見性 | 簽章／型別 | 來源註解摘要 | 證據 |
 |---|---|---|---|---|
-| field <code>_focus</code> | private | <code>final (inferred) _focus</code> |  | [lib/src/rendering/flutter/internal/klp_flutter_choice.dart:24](../../../../../../lib/src/rendering/flutter/internal/klp_flutter_choice.dart#L24) |
-| field <code>_subscription</code> | private | <code>late KlpSubscription _subscription</code> |  | [lib/src/rendering/flutter/internal/klp_flutter_choice.dart:25](../../../../../../lib/src/rendering/flutter/internal/klp_flutter_choice.dart#L25) |
-| field <code>_selected</code> | private | <code>bool _selected</code> |  | [lib/src/rendering/flutter/internal/klp_flutter_choice.dart:26](../../../../../../lib/src/rendering/flutter/internal/klp_flutter_choice.dart#L26) |
-| field <code>_focused</code> | private | <code>bool _focused</code> |  | [lib/src/rendering/flutter/internal/klp_flutter_choice.dart:27](../../../../../../lib/src/rendering/flutter/internal/klp_flutter_choice.dart#L27) |
-| method <code>initState</code> | public | <code>void initState()</code> |  | [lib/src/rendering/flutter/internal/klp_flutter_choice.dart:29](../../../../../../lib/src/rendering/flutter/internal/klp_flutter_choice.dart#L29) |
-| method <code>didUpdateWidget</code> | public | <code>void didUpdateWidget(KlpFlutterChoice oldWidget)</code> |  | [lib/src/rendering/flutter/internal/klp_flutter_choice.dart:35](../../../../../../lib/src/rendering/flutter/internal/klp_flutter_choice.dart#L35) |
-| method <code>_subscribe</code> | private | <code>void _subscribe()</code> |  | [lib/src/rendering/flutter/internal/klp_flutter_choice.dart:44](../../../../../../lib/src/rendering/flutter/internal/klp_flutter_choice.dart#L44) |
-| method <code>dispose</code> | public | <code>void dispose()</code> |  | [lib/src/rendering/flutter/internal/klp_flutter_choice.dart:57](../../../../../../lib/src/rendering/flutter/internal/klp_flutter_choice.dart#L57) |
-| method <code>_activate</code> | private | <code>void _activate()</code> |  | [lib/src/rendering/flutter/internal/klp_flutter_choice.dart:64](../../../../../../lib/src/rendering/flutter/internal/klp_flutter_choice.dart#L64) |
-| method <code>build</code> | public | <code>Widget build(BuildContext context)</code> |  | [lib/src/rendering/flutter/internal/klp_flutter_choice.dart:72](../../../../../../lib/src/rendering/flutter/internal/klp_flutter_choice.dart#L72) |
+| field <code>_focus</code> | private | <code>final (inferred) _focus</code> |  | [lib/src/rendering/flutter/internal/klp_flutter_choice.dart:22](../../../../../../lib/src/rendering/flutter/internal/klp_flutter_choice.dart#L22) |
+| field <code>_subscription</code> | private | <code>late KlpSubscription _subscription</code> |  | [lib/src/rendering/flutter/internal/klp_flutter_choice.dart:23](../../../../../../lib/src/rendering/flutter/internal/klp_flutter_choice.dart#L23) |
+| field <code>_selected</code> | private | <code>bool _selected</code> |  | [lib/src/rendering/flutter/internal/klp_flutter_choice.dart:24](../../../../../../lib/src/rendering/flutter/internal/klp_flutter_choice.dart#L24) |
+| field <code>_focused</code> | private | <code>bool _focused</code> |  | [lib/src/rendering/flutter/internal/klp_flutter_choice.dart:25](../../../../../../lib/src/rendering/flutter/internal/klp_flutter_choice.dart#L25) |
+| method <code>initState</code> | public | <code>void initState()</code> |  | [lib/src/rendering/flutter/internal/klp_flutter_choice.dart:27](../../../../../../lib/src/rendering/flutter/internal/klp_flutter_choice.dart#L27) |
+| method <code>didUpdateWidget</code> | public | <code>void didUpdateWidget(KlpFlutterChoice oldWidget)</code> |  | [lib/src/rendering/flutter/internal/klp_flutter_choice.dart:33](../../../../../../lib/src/rendering/flutter/internal/klp_flutter_choice.dart#L33) |
+| method <code>_subscribe</code> | private | <code>void _subscribe()</code> |  | [lib/src/rendering/flutter/internal/klp_flutter_choice.dart:43](../../../../../../lib/src/rendering/flutter/internal/klp_flutter_choice.dart#L43) |
+| method <code>dispose</code> | public | <code>void dispose()</code> |  | [lib/src/rendering/flutter/internal/klp_flutter_choice.dart:56](../../../../../../lib/src/rendering/flutter/internal/klp_flutter_choice.dart#L56) |
+| method <code>_activate</code> | private | <code>void _activate()</code> |  | [lib/src/rendering/flutter/internal/klp_flutter_choice.dart:63](../../../../../../lib/src/rendering/flutter/internal/klp_flutter_choice.dart#L63) |
+| method <code>build</code> | public | <code>Widget build(BuildContext context)</code> |  | [lib/src/rendering/flutter/internal/klp_flutter_choice.dart:71](../../../../../../lib/src/rendering/flutter/internal/klp_flutter_choice.dart#L71) |
 
 ## 閱讀說明與限制
 

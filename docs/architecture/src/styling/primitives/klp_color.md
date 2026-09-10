@@ -54,12 +54,12 @@ ClassDeclaration · public · [lib/src/styling/primitives/klp_color.dart:3](../.
 
 | 成員 | 可見性 | 簽章／型別 | 來源註解摘要 | 證據 |
 |---|---|---|---|---|
-| field <code>red</code> | public | <code>final int red</code> |  | [lib/src/styling/primitives/klp_color.dart:6](../../../../../lib/src/styling/primitives/klp_color.dart#L6) |
-| field <code>green</code> | public | <code>final int green</code> |  | [lib/src/styling/primitives/klp_color.dart:7](../../../../../lib/src/styling/primitives/klp_color.dart#L7) |
-| field <code>blue</code> | public | <code>final int blue</code> |  | [lib/src/styling/primitives/klp_color.dart:8](../../../../../lib/src/styling/primitives/klp_color.dart#L8) |
-| field <code>alpha</code> | public | <code>final int alpha</code> |  | [lib/src/styling/primitives/klp_color.dart:9](../../../../../lib/src/styling/primitives/klp_color.dart#L9) |
-| constructor <code>KlpColor</code> | public | <code>KlpColor(this.red, this.green, this.blue, {this.alpha = 255})</code> |  | [lib/src/styling/primitives/klp_color.dart:11](../../../../../lib/src/styling/primitives/klp_color.dart#L11) |
-| method <code>_checkChannel</code> | private | <code>static void _checkChannel(int value, String path)</code> |  | [lib/src/styling/primitives/klp_color.dart:18](../../../../../lib/src/styling/primitives/klp_color.dart#L18) |
+| field <code>red</code> | public | <code>final int red</code> |  | [lib/src/styling/primitives/klp_color.dart:5](../../../../../lib/src/styling/primitives/klp_color.dart#L5) |
+| field <code>green</code> | public | <code>final int green</code> |  | [lib/src/styling/primitives/klp_color.dart:6](../../../../../lib/src/styling/primitives/klp_color.dart#L6) |
+| field <code>blue</code> | public | <code>final int blue</code> |  | [lib/src/styling/primitives/klp_color.dart:7](../../../../../lib/src/styling/primitives/klp_color.dart#L7) |
+| field <code>alpha</code> | public | <code>final int alpha</code> |  | [lib/src/styling/primitives/klp_color.dart:8](../../../../../lib/src/styling/primitives/klp_color.dart#L8) |
+| constructor <code>KlpColor</code> | public | <code>KlpColor(this.red, this.green, this.blue, {this.alpha = 255})</code> |  | [lib/src/styling/primitives/klp_color.dart:10](../../../../../lib/src/styling/primitives/klp_color.dart#L10) |
+| method <code>_checkChannel</code> | private | <code>static void _checkChannel(int value, String path)</code> |  | [lib/src/styling/primitives/klp_color.dart:17](../../../../../lib/src/styling/primitives/klp_color.dart#L17) |
 
 ## 閱讀說明與限制
 

@@ -55,12 +55,12 @@ ClassDeclaration · public · [lib/src/capabilities/actions/klp_action_handler.d
 
 | 成員 | 可見性 | 簽章／型別 | 來源註解摘要 | 證據 |
 |---|---|---|---|---|
-| method <code>accepts</code> | public | <code>bool accepts(KlpAction action)</code> |  | [lib/src/capabilities/actions/klp_action_handler.dart:10](../../../../../lib/src/capabilities/actions/klp_action_handler.dart#L10) |
-| method <code>activate</code> | public | <code>FutureOr&lt;KlpActionActivation&gt; activate(KlpAction action, KlpPlacementId source)</code> |  | [lib/src/capabilities/actions/klp_action_handler.dart:11](../../../../../lib/src/capabilities/actions/klp_action_handler.dart#L11) |
+| method <code>accepts</code> | public | <code>bool accepts(KlpAction action)</code> |  | [lib/src/capabilities/actions/klp_action_handler.dart:9](../../../../../lib/src/capabilities/actions/klp_action_handler.dart#L9) |
+| method <code>activate</code> | public | <code>FutureOr&lt;KlpActionActivation&gt; activate( KlpAction action, KlpPlacementId source, )</code> |  | [lib/src/capabilities/actions/klp_action_handler.dart:10](../../../../../lib/src/capabilities/actions/klp_action_handler.dart#L10) |
 
 ### acceptsKlpAction
 
-FunctionDeclaration · public · [lib/src/capabilities/actions/klp_action_handler.dart:14](../../../../../lib/src/capabilities/actions/klp_action_handler.dart#L14)
+FunctionDeclaration · public · [lib/src/capabilities/actions/klp_action_handler.dart:16](../../../../../lib/src/capabilities/actions/klp_action_handler.dart#L16)
 
 <code>bool acceptsKlpAction(KlpActionHandler? handler, KlpAction action)</code>
 
@@ -69,9 +69,9 @@ FunctionDeclaration · public · [lib/src/capabilities/actions/klp_action_handle
 
 ### dispatchKlpAction
 
-FunctionDeclaration · public · [lib/src/capabilities/actions/klp_action_handler.dart:17](../../../../../lib/src/capabilities/actions/klp_action_handler.dart#L17)
+FunctionDeclaration · public · [lib/src/capabilities/actions/klp_action_handler.dart:20](../../../../../lib/src/capabilities/actions/klp_action_handler.dart#L20)
 
-<code>FutureOr&lt;KlpActionActivation&gt; dispatchKlpAction(KlpActionHandler? handler, KlpAction action, KlpPlacementId source)</code>
+<code>FutureOr&lt;KlpActionActivation&gt; dispatchKlpAction( KlpActionHandler? handler, KlpAction action, KlpPlacementId source, )</code>
 
 來源註解摘要：唯一 action 派送入口；未綁定的導覽 action 一律拒絕。
 

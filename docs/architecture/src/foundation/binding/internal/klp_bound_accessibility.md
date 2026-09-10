@@ -54,9 +54,9 @@ ClassDeclaration · public · [lib/src/foundation/binding/internal/klp_bound_acc
 
 | 成員 | 可見性 | 簽章／型別 | 來源註解摘要 | 證據 |
 |---|---|---|---|---|
-| field <code>label</code> | public | <code>final String label</code> |  | [lib/src/foundation/binding/internal/klp_bound_accessibility.dart:6](../../../../../../lib/src/foundation/binding/internal/klp_bound_accessibility.dart#L6) |
-| field <code>child</code> | public | <code>final KlpBoundTemplate child</code> |  | [lib/src/foundation/binding/internal/klp_bound_accessibility.dart:7](../../../../../../lib/src/foundation/binding/internal/klp_bound_accessibility.dart#L7) |
-| constructor <code>KlpBoundAccessibility</code> | public | <code>const KlpBoundAccessibility({required this.label, required this.child})</code> |  | [lib/src/foundation/binding/internal/klp_bound_accessibility.dart:9](../../../../../../lib/src/foundation/binding/internal/klp_bound_accessibility.dart#L9) |
+| field <code>label</code> | public | <code>final String label</code> |  | [lib/src/foundation/binding/internal/klp_bound_accessibility.dart:5](../../../../../../lib/src/foundation/binding/internal/klp_bound_accessibility.dart#L5) |
+| field <code>child</code> | public | <code>final KlpBoundTemplate child</code> |  | [lib/src/foundation/binding/internal/klp_bound_accessibility.dart:6](../../../../../../lib/src/foundation/binding/internal/klp_bound_accessibility.dart#L6) |
+| constructor <code>KlpBoundAccessibility</code> | public | <code>const KlpBoundAccessibility({required this.label, required this.child})</code> |  | [lib/src/foundation/binding/internal/klp_bound_accessibility.dart:8](../../../../../../lib/src/foundation/binding/internal/klp_bound_accessibility.dart#L8) |
 
 ## 閱讀說明與限制
 

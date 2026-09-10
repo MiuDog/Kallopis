@@ -46,9 +46,9 @@ ClassDeclaration · public · [lib/src/composition/slots/klp_slot_assignment.dar
 
 | 成員 | 可見性 | 簽章／型別 | 來源註解摘要 | 證據 |
 |---|---|---|---|---|
-| field <code>slot</code> | public | <code>final KlpSlot&lt;C&gt; slot</code> |  | [lib/src/composition/slots/klp_slot_assignment.dart:6](../../../../../lib/src/composition/slots/klp_slot_assignment.dart#L6) |
-| field <code>children</code> | public | <code>final List&lt;C&gt; children</code> |  | [lib/src/composition/slots/klp_slot_assignment.dart:7](../../../../../lib/src/composition/slots/klp_slot_assignment.dart#L7) |
-| constructor <code>_</code> | private | <code>const KlpSlotAssignment._(this.slot, this.children)</code> |  | [lib/src/composition/slots/klp_slot_assignment.dart:9](../../../../../lib/src/composition/slots/klp_slot_assignment.dart#L9) |
+| field <code>slot</code> | public | <code>final KlpSlot&lt;C&gt; slot</code> |  | [lib/src/composition/slots/klp_slot_assignment.dart:5](../../../../../lib/src/composition/slots/klp_slot_assignment.dart#L5) |
+| field <code>children</code> | public | <code>final List&lt;C&gt; children</code> |  | [lib/src/composition/slots/klp_slot_assignment.dart:6](../../../../../lib/src/composition/slots/klp_slot_assignment.dart#L6) |
+| constructor <code>_</code> | private | <code>const KlpSlotAssignment._(this.slot, this.children)</code> |  | [lib/src/composition/slots/klp_slot_assignment.dart:8](../../../../../lib/src/composition/slots/klp_slot_assignment.dart#L8) |
 
 ## 閱讀說明與限制
 

@@ -54,10 +54,10 @@ ClassDeclaration · public · [lib/src/features/collections/date_grid/internal/k
 
 | 成員 | 可見性 | 簽章／型別 | 來源註解摘要 | 證據 |
 |---|---|---|---|---|
-| constructor <code>KlpDateGrid</code> | public | <code>const KlpDateGrid({ super.key, required this.items, this.onSelected, })</code> |  | [lib/src/features/collections/date_grid/internal/klp_date_grid_widget.dart:5](../../../../../../../lib/src/features/collections/date_grid/internal/klp_date_grid_widget.dart#L5) |
-| field <code>items</code> | public | <code>final List&lt;KlpDateGridItem&gt; items</code> |  | [lib/src/features/collections/date_grid/internal/klp_date_grid_widget.dart:11](../../../../../../../lib/src/features/collections/date_grid/internal/klp_date_grid_widget.dart#L11) |
-| field <code>onSelected</code> | public | <code>final ValueChanged&lt;int&gt;? onSelected</code> |  | [lib/src/features/collections/date_grid/internal/klp_date_grid_widget.dart:12](../../../../../../../lib/src/features/collections/date_grid/internal/klp_date_grid_widget.dart#L12) |
-| method <code>build</code> | public | <code>Widget build(BuildContext context)</code> |  | [lib/src/features/collections/date_grid/internal/klp_date_grid_widget.dart:14](../../../../../../../lib/src/features/collections/date_grid/internal/klp_date_grid_widget.dart#L14) |
+| constructor <code>KlpDateGrid</code> | public | <code>const KlpDateGrid({super.key, required this.items, this.onSelected})</code> |  | [lib/src/features/collections/date_grid/internal/klp_date_grid_widget.dart:5](../../../../../../../lib/src/features/collections/date_grid/internal/klp_date_grid_widget.dart#L5) |
+| field <code>items</code> | public | <code>final List&lt;KlpDateGridItem&gt; items</code> |  | [lib/src/features/collections/date_grid/internal/klp_date_grid_widget.dart:7](../../../../../../../lib/src/features/collections/date_grid/internal/klp_date_grid_widget.dart#L7) |
+| field <code>onSelected</code> | public | <code>final ValueChanged&lt;int&gt;? onSelected</code> |  | [lib/src/features/collections/date_grid/internal/klp_date_grid_widget.dart:8](../../../../../../../lib/src/features/collections/date_grid/internal/klp_date_grid_widget.dart#L8) |
+| method <code>build</code> | public | <code>Widget build(BuildContext context)</code> |  | [lib/src/features/collections/date_grid/internal/klp_date_grid_widget.dart:10](../../../../../../../lib/src/features/collections/date_grid/internal/klp_date_grid_widget.dart#L10) |
 
 ## 閱讀說明與限制
 

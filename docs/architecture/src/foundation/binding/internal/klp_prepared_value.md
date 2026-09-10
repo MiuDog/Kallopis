@@ -54,9 +54,9 @@ ClassDeclaration · public · [lib/src/foundation/binding/internal/klp_prepared_
 
 | 成員 | 可見性 | 簽章／型別 | 來源註解摘要 | 證據 |
 |---|---|---|---|---|
-| field <code>value</code> | public | <code>final KlpBoundTemplate value</code> |  | [lib/src/foundation/binding/internal/klp_prepared_value.dart:6](../../../../../../lib/src/foundation/binding/internal/klp_prepared_value.dart#L6) |
-| constructor <code>KlpPreparedValue</code> | public | <code>const KlpPreparedValue(this.value)</code> |  | [lib/src/foundation/binding/internal/klp_prepared_value.dart:8](../../../../../../lib/src/foundation/binding/internal/klp_prepared_value.dart#L8) |
-| method <code>materialize</code> | public | <code>KlpBoundTemplate materialize(List&lt;KlpBoundTemplate&gt; children)</code> |  | [lib/src/foundation/binding/internal/klp_prepared_value.dart:10](../../../../../../lib/src/foundation/binding/internal/klp_prepared_value.dart#L10) |
+| field <code>value</code> | public | <code>final KlpBoundTemplate value</code> |  | [lib/src/foundation/binding/internal/klp_prepared_value.dart:5](../../../../../../lib/src/foundation/binding/internal/klp_prepared_value.dart#L5) |
+| constructor <code>KlpPreparedValue</code> | public | <code>const KlpPreparedValue(this.value)</code> |  | [lib/src/foundation/binding/internal/klp_prepared_value.dart:7](../../../../../../lib/src/foundation/binding/internal/klp_prepared_value.dart#L7) |
+| method <code>materialize</code> | public | <code>KlpBoundTemplate materialize(List&lt;KlpBoundTemplate&gt; children)</code> |  | [lib/src/foundation/binding/internal/klp_prepared_value.dart:9](../../../../../../lib/src/foundation/binding/internal/klp_prepared_value.dart#L9) |
 
 ## 閱讀說明與限制
 

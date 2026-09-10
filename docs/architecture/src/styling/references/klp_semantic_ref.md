@@ -54,9 +54,9 @@ ClassDeclaration · public · [lib/src/styling/references/klp_semantic_ref.dart:
 
 | 成員 | 可見性 | 簽章／型別 | 來源註解摘要 | 證據 |
 |---|---|---|---|---|
-| field <code>key</code> | public | <code>final KlpSemanticKey&lt;T&gt; key</code> |  | [lib/src/styling/references/klp_semantic_ref.dart:6](../../../../../lib/src/styling/references/klp_semantic_ref.dart#L6) |
-| constructor <code>KlpSemanticRef</code> | public | <code>const KlpSemanticRef(this.key)</code> |  | [lib/src/styling/references/klp_semantic_ref.dart:8](../../../../../lib/src/styling/references/klp_semantic_ref.dart#L8) |
-| getter <code>kind</code> | public | <code>KlpStyleKind&lt;T&gt; get kind</code> |  | [lib/src/styling/references/klp_semantic_ref.dart:10](../../../../../lib/src/styling/references/klp_semantic_ref.dart#L10) |
+| field <code>key</code> | public | <code>final KlpSemanticKey&lt;T&gt; key</code> |  | [lib/src/styling/references/klp_semantic_ref.dart:5](../../../../../lib/src/styling/references/klp_semantic_ref.dart#L5) |
+| constructor <code>KlpSemanticRef</code> | public | <code>const KlpSemanticRef(this.key)</code> |  | [lib/src/styling/references/klp_semantic_ref.dart:7](../../../../../lib/src/styling/references/klp_semantic_ref.dart#L7) |
+| getter <code>kind</code> | public | <code>KlpStyleKind&lt;T&gt; get kind</code> |  | [lib/src/styling/references/klp_semantic_ref.dart:9](../../../../../lib/src/styling/references/klp_semantic_ref.dart#L9) |
 
 ## 閱讀說明與限制
 

@@ -81,7 +81,7 @@ ClassDeclaration · public · [lib/src/foundation/layout/klp_adaptive.dart:9](..
 | field <code>ios</code> | public | <code>final KlpAdaptiveBuilder? ios</code> |  | [lib/src/foundation/layout/klp_adaptive.dart:30](../../../../../lib/src/foundation/layout/klp_adaptive.dart#L30) |
 | field <code>other</code> | public | <code>final KlpAdaptiveBuilder? other</code> |  | [lib/src/foundation/layout/klp_adaptive.dart:31](../../../../../lib/src/foundation/layout/klp_adaptive.dart#L31) |
 | method <code>build</code> | public | <code>Widget build(BuildContext context)</code> |  | [lib/src/foundation/layout/klp_adaptive.dart:33](../../../../../lib/src/foundation/layout/klp_adaptive.dart#L33) |
-| method <code>buildPanelLayout</code> | public | <code>Widget buildPanelLayout(BuildContext context)</code> |  | [lib/src/foundation/layout/klp_adaptive.dart:46](../../../../../lib/src/foundation/layout/klp_adaptive.dart#L46) |
+| method <code>buildPanelLayout</code> | public | <code>Widget buildPanelLayout(BuildContext context)</code> |  | [lib/src/foundation/layout/klp_adaptive.dart:49](../../../../../lib/src/foundation/layout/klp_adaptive.dart#L49) |
 
 ## 閱讀說明與限制
 

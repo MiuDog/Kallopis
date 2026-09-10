@@ -12,64 +12,77 @@ enum KlpPageBackgroundElementKind { point, line }
 /// 背景編輯器的單一選取結果；選取狀態不會寫入 recipe。
 @immutable
 class KlpPageBackgroundSelection {
-	const KlpPageBackgroundSelection.point(this.id) : kind = KlpPageBackgroundElementKind.point;
-	const KlpPageBackgroundSelection.line(this.id) : kind = KlpPageBackgroundElementKind.line;
+  const KlpPageBackgroundSelection.point(this.id)
+    : kind = KlpPageBackgroundElementKind.point;
+  const KlpPageBackgroundSelection.line(this.id)
+    : kind = KlpPageBackgroundElementKind.line;
 
-	final KlpPageBackgroundElementKind kind;
-	final int id;
+  final KlpPageBackgroundElementKind kind;
+  final int id;
 
-	@override
-	bool operator ==(Object other) {
-		return other is KlpPageBackgroundSelection && other.kind == kind && other.id == id;
-	}
+  @override
+  bool operator ==(Object other) {
+    return other is KlpPageBackgroundSelection &&
+        other.kind == kind &&
+        other.id == id;
+  }
 
-	@override
-	int get hashCode => Object.hash(kind, id);
+  @override
+  int get hashCode => Object.hash(kind, id);
 }
 
 /// 頁面座標與 viewport 座標之間的單一轉換來源。
 @immutable
 class KlpPageBackgroundViewport {
-	KlpPageBackgroundViewport({this.origin = Offset.zero, this.scale = 1}) {
-		if (!_isFiniteOffset(origin)) throw ArgumentError.value(origin, 'origin', 'must be finite');
-		_requirePositiveFinite(scale, 'scale');
-	}
+  KlpPageBackgroundViewport({this.origin = Offset.zero, this.scale = 1}) {
+    if (!_isFiniteOffset(origin)) {
+      throw ArgumentError.value(origin, 'origin', 'must be finite');
+    }
+    _requirePositiveFinite(scale, 'scale');
+  }
 
-	final Offset origin;
-	final double scale;
+  final Offset origin;
+  final double scale;
 
-	Offset pageToViewport(Offset position) => (position - origin) * scale;
-	Offset viewportToPage(Offset position) => position / scale + origin;
+  Offset pageToViewport(Offset position) => (position - origin) * scale;
+  Offset viewportToPage(Offset position) => position / scale + origin;
 
-	@override
-	bool operator ==(Object other) {
-		return other is KlpPageBackgroundViewport && other.origin == origin && other.scale == scale;
-	}
+  @override
+  bool operator ==(Object other) {
+    return other is KlpPageBackgroundViewport &&
+        other.origin == origin &&
+        other.scale == scale;
+  }
 
-	@override
-	int get hashCode => Object.hash(origin, scale);
+  @override
+  int get hashCode => Object.hash(origin, scale);
 }
 
 /// 主軸、次軸、線或點的執行期外觀；null 代表沿用 semantic theme。
 @immutable
 class KlpPageBackgroundAxisStyle {
-	KlpPageBackgroundAxisStyle({this.color, this.width}) {
-		final resolvedWidth = width;
-		if (resolvedWidth != null) _requirePositiveFinite(resolvedWidth, 'width');
-	}
+  KlpPageBackgroundAxisStyle({this.color, this.width}) {
+    final resolvedWidth = width;
+    if (resolvedWidth != null) _requirePositiveFinite(resolvedWidth, 'width');
+  }
 
-	final Color? color;
-	final double? width;
+  final Color? color;
+  final double? width;
 
-	KlpPageBackgroundAxisStyle copyWith({Color? color, double? width}) {
-		return KlpPageBackgroundAxisStyle(color: color ?? this.color, width: width ?? this.width);
-	}
+  KlpPageBackgroundAxisStyle copyWith({Color? color, double? width}) {
+    return KlpPageBackgroundAxisStyle(
+      color: color ?? this.color,
+      width: width ?? this.width,
+    );
+  }
 
-	@override
-	bool operator ==(Object other) {
-		return other is KlpPageBackgroundAxisStyle && other.color == color && other.width == width;
-	}
+  @override
+  bool operator ==(Object other) {
+    return other is KlpPageBackgroundAxisStyle &&
+        other.color == color &&
+        other.width == width;
+  }
 
-	@override
-	int get hashCode => Object.hash(color, width);
+  @override
+  int get hashCode => Object.hash(color, width);
 }

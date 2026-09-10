@@ -63,30 +63,30 @@ ClassDeclaration · public · [lib/src/features/navigation/widgets/sidebar/klp_s
 
 | 成員 | 可見性 | 簽章／型別 | 來源註解摘要 | 證據 |
 |---|---|---|---|---|
-| field <code>label</code> | public | <code>final String label</code> |  | [lib/src/features/navigation/widgets/sidebar/klp_sidebar_button_group.dart:10](../../../../../../../lib/src/features/navigation/widgets/sidebar/klp_sidebar_button_group.dart#L10) |
-| field <code>icon</code> | public | <code>final KlpIconData icon</code> |  | [lib/src/features/navigation/widgets/sidebar/klp_sidebar_button_group.dart:11](../../../../../../../lib/src/features/navigation/widgets/sidebar/klp_sidebar_button_group.dart#L11) |
-| field <code>onPressed</code> | public | <code>final VoidCallback? onPressed</code> |  | [lib/src/features/navigation/widgets/sidebar/klp_sidebar_button_group.dart:12](../../../../../../../lib/src/features/navigation/widgets/sidebar/klp_sidebar_button_group.dart#L12) |
-| field <code>selected</code> | public | <code>final bool selected</code> |  | [lib/src/features/navigation/widgets/sidebar/klp_sidebar_button_group.dart:13](../../../../../../../lib/src/features/navigation/widgets/sidebar/klp_sidebar_button_group.dart#L13) |
-| constructor <code>KlpSidebarButtonData</code> | public | <code>const KlpSidebarButtonData({ required this.label, required this.icon, required this.onPressed, this.selected = false, })</code> |  | [lib/src/features/navigation/widgets/sidebar/klp_sidebar_button_group.dart:15](../../../../../../../lib/src/features/navigation/widgets/sidebar/klp_sidebar_button_group.dart#L15) |
+| field <code>label</code> | public | <code>final String label</code> |  | [lib/src/features/navigation/widgets/sidebar/klp_sidebar_button_group.dart:9](../../../../../../../lib/src/features/navigation/widgets/sidebar/klp_sidebar_button_group.dart#L9) |
+| field <code>icon</code> | public | <code>final KlpIconData icon</code> |  | [lib/src/features/navigation/widgets/sidebar/klp_sidebar_button_group.dart:10](../../../../../../../lib/src/features/navigation/widgets/sidebar/klp_sidebar_button_group.dart#L10) |
+| field <code>onPressed</code> | public | <code>final VoidCallback? onPressed</code> |  | [lib/src/features/navigation/widgets/sidebar/klp_sidebar_button_group.dart:11](../../../../../../../lib/src/features/navigation/widgets/sidebar/klp_sidebar_button_group.dart#L11) |
+| field <code>selected</code> | public | <code>final bool selected</code> |  | [lib/src/features/navigation/widgets/sidebar/klp_sidebar_button_group.dart:12](../../../../../../../lib/src/features/navigation/widgets/sidebar/klp_sidebar_button_group.dart#L12) |
+| constructor <code>KlpSidebarButtonData</code> | public | <code>const KlpSidebarButtonData({ required this.label, required this.icon, required this.onPressed, this.selected = false, })</code> |  | [lib/src/features/navigation/widgets/sidebar/klp_sidebar_button_group.dart:14](../../../../../../../lib/src/features/navigation/widgets/sidebar/klp_sidebar_button_group.dart#L14) |
 
 ### KlpSidebarButtonGroup
 
-ClassDeclaration · public · [lib/src/features/navigation/widgets/sidebar/klp_sidebar_button_group.dart:23](../../../../../../../lib/src/features/navigation/widgets/sidebar/klp_sidebar_button_group.dart#L23)
+ClassDeclaration · public · [lib/src/features/navigation/widgets/sidebar/klp_sidebar_button_group.dart:22](../../../../../../../lib/src/features/navigation/widgets/sidebar/klp_sidebar_button_group.dart#L22)
 
 <code>final class KlpSidebarButtonGroup extends StatelessWidget</code>
 
 來源註解摘要：使用 Sidebar chrome 留白與按鈕樣式呈現一組動作。 消費端只注入資料與事件；群組負責邊界留白、滿寬排列及共通按鈕外觀。
 
-- `extends` → <code>StatelessWidget</code>：[lib/src/features/navigation/widgets/sidebar/klp_sidebar_button_group.dart:26](../../../../../../../lib/src/features/navigation/widgets/sidebar/klp_sidebar_button_group.dart#L26)
+- `extends` → <code>StatelessWidget</code>：[lib/src/features/navigation/widgets/sidebar/klp_sidebar_button_group.dart:25](../../../../../../../lib/src/features/navigation/widgets/sidebar/klp_sidebar_button_group.dart#L25)
 
 | 成員 | 可見性 | 簽章／型別 | 來源註解摘要 | 證據 |
 |---|---|---|---|---|
-| field <code>items</code> | public | <code>final List&lt;KlpSidebarButtonData&gt; items</code> |  | [lib/src/features/navigation/widgets/sidebar/klp_sidebar_button_group.dart:28](../../../../../../../lib/src/features/navigation/widgets/sidebar/klp_sidebar_button_group.dart#L28) |
-| field <code>padding</code> | public | <code>final EdgeInsetsGeometry? padding</code> |  | [lib/src/features/navigation/widgets/sidebar/klp_sidebar_button_group.dart:29](../../../../../../../lib/src/features/navigation/widgets/sidebar/klp_sidebar_button_group.dart#L29) |
-| constructor <code>KlpSidebarButtonGroup</code> | public | <code>const KlpSidebarButtonGroup({ super.key, required this.items, this.padding, })</code> |  | [lib/src/features/navigation/widgets/sidebar/klp_sidebar_button_group.dart:31](../../../../../../../lib/src/features/navigation/widgets/sidebar/klp_sidebar_button_group.dart#L31) |
-| method <code>build</code> | public | <code>Widget build(BuildContext context)</code> |  | [lib/src/features/navigation/widgets/sidebar/klp_sidebar_button_group.dart:37](../../../../../../../lib/src/features/navigation/widgets/sidebar/klp_sidebar_button_group.dart#L37) |
-| method <code>_buildButtons</code> | private | <code>Widget _buildButtons()</code> |  | [lib/src/features/navigation/widgets/sidebar/klp_sidebar_button_group.dart:47](../../../../../../../lib/src/features/navigation/widgets/sidebar/klp_sidebar_button_group.dart#L47) |
-| method <code>_buildButton</code> | private | <code>Widget _buildButton(KlpSidebarButtonData item)</code> |  | [lib/src/features/navigation/widgets/sidebar/klp_sidebar_button_group.dart:58](../../../../../../../lib/src/features/navigation/widgets/sidebar/klp_sidebar_button_group.dart#L58) |
+| field <code>items</code> | public | <code>final List&lt;KlpSidebarButtonData&gt; items</code> |  | [lib/src/features/navigation/widgets/sidebar/klp_sidebar_button_group.dart:26](../../../../../../../lib/src/features/navigation/widgets/sidebar/klp_sidebar_button_group.dart#L26) |
+| field <code>padding</code> | public | <code>final EdgeInsetsGeometry? padding</code> |  | [lib/src/features/navigation/widgets/sidebar/klp_sidebar_button_group.dart:27](../../../../../../../lib/src/features/navigation/widgets/sidebar/klp_sidebar_button_group.dart#L27) |
+| constructor <code>KlpSidebarButtonGroup</code> | public | <code>const KlpSidebarButtonGroup({super.key, required this.items, this.padding})</code> |  | [lib/src/features/navigation/widgets/sidebar/klp_sidebar_button_group.dart:29](../../../../../../../lib/src/features/navigation/widgets/sidebar/klp_sidebar_button_group.dart#L29) |
+| method <code>build</code> | public | <code>Widget build(BuildContext context)</code> |  | [lib/src/features/navigation/widgets/sidebar/klp_sidebar_button_group.dart:31](../../../../../../../lib/src/features/navigation/widgets/sidebar/klp_sidebar_button_group.dart#L31) |
+| method <code>_buildButtons</code> | private | <code>Widget _buildButtons()</code> |  | [lib/src/features/navigation/widgets/sidebar/klp_sidebar_button_group.dart:39](../../../../../../../lib/src/features/navigation/widgets/sidebar/klp_sidebar_button_group.dart#L39) |
+| method <code>_buildButton</code> | private | <code>Widget _buildButton(KlpSidebarButtonData item)</code> |  | [lib/src/features/navigation/widgets/sidebar/klp_sidebar_button_group.dart:50](../../../../../../../lib/src/features/navigation/widgets/sidebar/klp_sidebar_button_group.dart#L50) |
 
 ## 閱讀說明與限制
 

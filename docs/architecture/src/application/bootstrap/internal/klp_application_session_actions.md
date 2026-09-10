@@ -60,49 +60,49 @@ ClassDeclaration · private · [lib/src/application/bootstrap/internal/klp_appli
 
 | 成員 | 可見性 | 簽章／型別 | 來源註解摘要 | 證據 |
 |---|---|---|---|---|
-| field <code>committed</code> | public | <code>bool committed</code> |  | [lib/src/application/bootstrap/internal/klp_application_session_actions.dart:5](../../../../../../lib/src/application/bootstrap/internal/klp_application_session_actions.dart#L5) |
+| field <code>committed</code> | public | <code>bool committed</code> |  | [lib/src/application/bootstrap/internal/klp_application_session_actions.dart:4](../../../../../../lib/src/application/bootstrap/internal/klp_application_session_actions.dart#L4) |
 
 ### _KlpSessionRouteActions
 
-ClassDeclaration · private · [lib/src/application/bootstrap/internal/klp_application_session_actions.dart:8](../../../../../../lib/src/application/bootstrap/internal/klp_application_session_actions.dart#L8)
+ClassDeclaration · private · [lib/src/application/bootstrap/internal/klp_application_session_actions.dart:7](../../../../../../lib/src/application/bootstrap/internal/klp_application_session_actions.dart#L7)
 
 <code>final class _KlpSessionRouteActions implements _KlpRouteActions</code>
 
 來源註解摘要：操作借用綁定完整 entry 與已提交世代，舊輸入與隱藏頁不能啟動交易。
 
-- `implements` → <code>_KlpRouteActions</code>：[lib/src/application/bootstrap/internal/klp_application_session_actions.dart:9](../../../../../../lib/src/application/bootstrap/internal/klp_application_session_actions.dart#L9)
+- `implements` → <code>_KlpRouteActions</code>：[lib/src/application/bootstrap/internal/klp_application_session_actions.dart:8](../../../../../../lib/src/application/bootstrap/internal/klp_application_session_actions.dart#L8)
 
 | 成員 | 可見性 | 簽章／型別 | 來源註解摘要 | 證據 |
 |---|---|---|---|---|
-| field <code>session</code> | public | <code>final _KlpApplicationSession session</code> |  | [lib/src/application/bootstrap/internal/klp_application_session_actions.dart:11](../../../../../../lib/src/application/bootstrap/internal/klp_application_session_actions.dart#L11) |
-| field <code>epoch</code> | public | <code>final _KlpApplicationEpoch epoch</code> |  | [lib/src/application/bootstrap/internal/klp_application_session_actions.dart:12](../../../../../../lib/src/application/bootstrap/internal/klp_application_session_actions.dart#L12) |
-| field <code>entry</code> | public | <code>final KlpNavigationEntry entry</code> |  | [lib/src/application/bootstrap/internal/klp_application_session_actions.dart:13](../../../../../../lib/src/application/bootstrap/internal/klp_application_session_actions.dart#L13) |
-| constructor <code>_KlpSessionRouteActions</code> | private | <code>const _KlpSessionRouteActions(this.session, this.epoch, this.entry)</code> |  | [lib/src/application/bootstrap/internal/klp_application_session_actions.dart:15](../../../../../../lib/src/application/bootstrap/internal/klp_application_session_actions.dart#L15) |
-| getter <code>_valid</code> | private | <code>bool get _valid</code> |  | [lib/src/application/bootstrap/internal/klp_application_session_actions.dart:17](../../../../../../lib/src/application/bootstrap/internal/klp_application_session_actions.dart#L17) |
-| method <code>push</code> | public | <code>KlpNavigationTicket&lt;T&gt; push&lt;T&gt;(KlpLocation&lt;T&gt; location)</code> |  | [lib/src/application/bootstrap/internal/klp_application_session_actions.dart:19](../../../../../../lib/src/application/bootstrap/internal/klp_application_session_actions.dart#L19) |
-| method <code>complete</code> | public | <code>Future&lt;KlpNavigationDecision&gt; complete(Object? result)</code> |  | [lib/src/application/bootstrap/internal/klp_application_session_actions.dart:25](../../../../../../lib/src/application/bootstrap/internal/klp_application_session_actions.dart#L25) |
-| method <code>cancel</code> | public | <code>Future&lt;KlpNavigationDecision&gt; cancel()</code> |  | [lib/src/application/bootstrap/internal/klp_application_session_actions.dart:31](../../../../../../lib/src/application/bootstrap/internal/klp_application_session_actions.dart#L31) |
+| field <code>session</code> | public | <code>final _KlpApplicationSession session</code> |  | [lib/src/application/bootstrap/internal/klp_application_session_actions.dart:9](../../../../../../lib/src/application/bootstrap/internal/klp_application_session_actions.dart#L9) |
+| field <code>epoch</code> | public | <code>final _KlpApplicationEpoch epoch</code> |  | [lib/src/application/bootstrap/internal/klp_application_session_actions.dart:10](../../../../../../lib/src/application/bootstrap/internal/klp_application_session_actions.dart#L10) |
+| field <code>entry</code> | public | <code>final KlpNavigationEntry entry</code> |  | [lib/src/application/bootstrap/internal/klp_application_session_actions.dart:11](../../../../../../lib/src/application/bootstrap/internal/klp_application_session_actions.dart#L11) |
+| constructor <code>_KlpSessionRouteActions</code> | private | <code>const _KlpSessionRouteActions(this.session, this.epoch, this.entry)</code> |  | [lib/src/application/bootstrap/internal/klp_application_session_actions.dart:13](../../../../../../lib/src/application/bootstrap/internal/klp_application_session_actions.dart#L13) |
+| getter <code>_valid</code> | private | <code>bool get _valid</code> |  | [lib/src/application/bootstrap/internal/klp_application_session_actions.dart:15](../../../../../../lib/src/application/bootstrap/internal/klp_application_session_actions.dart#L15) |
+| method <code>push</code> | public | <code>KlpNavigationTicket&lt;T&gt; push&lt;T&gt;(KlpLocation&lt;T&gt; location)</code> |  | [lib/src/application/bootstrap/internal/klp_application_session_actions.dart:25](../../../../../../lib/src/application/bootstrap/internal/klp_application_session_actions.dart#L25) |
+| method <code>complete</code> | public | <code>Future&lt;KlpNavigationDecision&gt; complete(Object? result)</code> |  | [lib/src/application/bootstrap/internal/klp_application_session_actions.dart:40](../../../../../../lib/src/application/bootstrap/internal/klp_application_session_actions.dart#L40) |
+| method <code>cancel</code> | public | <code>Future&lt;KlpNavigationDecision&gt; cancel()</code> |  | [lib/src/application/bootstrap/internal/klp_application_session_actions.dart:53](../../../../../../lib/src/application/bootstrap/internal/klp_application_session_actions.dart#L53) |
 
 ### _KlpApplicationActionHandler
 
-ClassDeclaration · private · [lib/src/application/bootstrap/internal/klp_application_session_actions.dart:38](../../../../../../lib/src/application/bootstrap/internal/klp_application_session_actions.dart#L38)
+ClassDeclaration · private · [lib/src/application/bootstrap/internal/klp_application_session_actions.dart:65](../../../../../../lib/src/application/bootstrap/internal/klp_application_session_actions.dart#L65)
 
 <code>final class _KlpApplicationActionHandler implements KlpActionHandler</code>
 
 來源註解摘要：application 是唯一能理解 route action 的層；feature 僅依賴 action handler 介面。
 
-- `implements` → <code>KlpActionHandler</code>：[lib/src/application/bootstrap/internal/klp_application_session_actions.dart:39](../../../../../../lib/src/application/bootstrap/internal/klp_application_session_actions.dart#L39)
+- `implements` → <code>KlpActionHandler</code>：[lib/src/application/bootstrap/internal/klp_application_session_actions.dart:66](../../../../../../lib/src/application/bootstrap/internal/klp_application_session_actions.dart#L66)
 
 | 成員 | 可見性 | 簽章／型別 | 來源註解摘要 | 證據 |
 |---|---|---|---|---|
-| field <code>session</code> | public | <code>final _KlpApplicationSession session</code> |  | [lib/src/application/bootstrap/internal/klp_application_session_actions.dart:41](../../../../../../lib/src/application/bootstrap/internal/klp_application_session_actions.dart#L41) |
-| constructor <code>_KlpApplicationActionHandler</code> | private | <code>const _KlpApplicationActionHandler(this.session)</code> |  | [lib/src/application/bootstrap/internal/klp_application_session_actions.dart:43](../../../../../../lib/src/application/bootstrap/internal/klp_application_session_actions.dart#L43) |
-| method <code>accepts</code> | public | <code>bool accepts(KlpAction action)</code> |  | [lib/src/application/bootstrap/internal/klp_application_session_actions.dart:45](../../../../../../lib/src/application/bootstrap/internal/klp_application_session_actions.dart#L45) |
-| method <code>activate</code> | public | <code>Future&lt;KlpActionActivation&gt; activate(KlpAction action, KlpPlacementId source)</code> |  | [lib/src/application/bootstrap/internal/klp_application_session_actions.dart:51](../../../../../../lib/src/application/bootstrap/internal/klp_application_session_actions.dart#L51) |
-| method <code>push</code> | public | <code>Future&lt;KlpActionActivation&gt; push&lt;T&gt;(_KlpPushAction&lt;T&gt; action)</code> |  | [lib/src/application/bootstrap/internal/klp_application_session_actions.dart:64](../../../../../../lib/src/application/bootstrap/internal/klp_application_session_actions.dart#L64) |
-| method <code>finish</code> | public | <code>Future&lt;KlpActionActivation&gt; finish(_KlpFinishAction action)</code> |  | [lib/src/application/bootstrap/internal/klp_application_session_actions.dart:70](../../../../../../lib/src/application/bootstrap/internal/klp_application_session_actions.dart#L70) |
-| method <code>back</code> | public | <code>Future&lt;KlpActionActivation&gt; back(_KlpBackAction action)</code> |  | [lib/src/application/bootstrap/internal/klp_application_session_actions.dart:72](../../../../../../lib/src/application/bootstrap/internal/klp_application_session_actions.dart#L72) |
-| method <code>_deliverResult</code> | private | <code>Future&lt;void&gt; _deliverResult&lt;T&gt;(KlpNavigationTicket&lt;T&gt; ticket, void Function(T value)? onResult)</code> |  | [lib/src/application/bootstrap/internal/klp_application_session_actions.dart:74](../../../../../../lib/src/application/bootstrap/internal/klp_application_session_actions.dart#L74) |
+| field <code>session</code> | public | <code>final _KlpApplicationSession session</code> |  | [lib/src/application/bootstrap/internal/klp_application_session_actions.dart:67](../../../../../../lib/src/application/bootstrap/internal/klp_application_session_actions.dart#L67) |
+| constructor <code>_KlpApplicationActionHandler</code> | private | <code>const _KlpApplicationActionHandler(this.session)</code> |  | [lib/src/application/bootstrap/internal/klp_application_session_actions.dart:69](../../../../../../lib/src/application/bootstrap/internal/klp_application_session_actions.dart#L69) |
+| method <code>accepts</code> | public | <code>bool accepts(KlpAction action)</code> |  | [lib/src/application/bootstrap/internal/klp_application_session_actions.dart:71](../../../../../../lib/src/application/bootstrap/internal/klp_application_session_actions.dart#L71) |
+| method <code>activate</code> | public | <code>Future&lt;KlpActionActivation&gt; activate( KlpAction action, KlpPlacementId source, )</code> |  | [lib/src/application/bootstrap/internal/klp_application_session_actions.dart:77](../../../../../../lib/src/application/bootstrap/internal/klp_application_session_actions.dart#L77) |
+| method <code>push</code> | public | <code>Future&lt;KlpActionActivation&gt; push&lt;T&gt;(_KlpPushAction&lt;T&gt; action)</code> |  | [lib/src/application/bootstrap/internal/klp_application_session_actions.dart:93](../../../../../../lib/src/application/bootstrap/internal/klp_application_session_actions.dart#L93) |
+| method <code>finish</code> | public | <code>Future&lt;KlpActionActivation&gt; finish(_KlpFinishAction action)</code> |  | [lib/src/application/bootstrap/internal/klp_application_session_actions.dart:99](../../../../../../lib/src/application/bootstrap/internal/klp_application_session_actions.dart#L99) |
+| method <code>back</code> | public | <code>Future&lt;KlpActionActivation&gt; back(_KlpBackAction action)</code> |  | [lib/src/application/bootstrap/internal/klp_application_session_actions.dart:104](../../../../../../lib/src/application/bootstrap/internal/klp_application_session_actions.dart#L104) |
+| method <code>_deliverResult</code> | private | <code>Future&lt;void&gt; _deliverResult&lt;T&gt;( KlpNavigationTicket&lt;T&gt; ticket, void Function(T value)? onResult, )</code> |  | [lib/src/application/bootstrap/internal/klp_application_session_actions.dart:107](../../../../../../lib/src/application/bootstrap/internal/klp_application_session_actions.dart#L107) |
 
 ## 閱讀說明與限制
 

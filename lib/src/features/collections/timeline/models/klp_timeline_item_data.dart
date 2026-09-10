@@ -7,17 +7,17 @@ part of '../klp_timeline.dart';
 /// 顏色深淺，不表達產品語意（不是「成功」或「危險」那種狀態）。
 @immutable
 class KlpTimelineItemData {
-	const KlpTimelineItemData({
-		required this.title,
-		this.time,
-		this.content,
-		this.marker,
-		this.highlighted = false,
-	});
+  const KlpTimelineItemData({
+    required this.title,
+    this.time,
+    this.content,
+    this.marker,
+    this.highlighted = false,
+  });
 
-	final String title;
-	final String? time;
-	final Widget? content;
-	final Widget? marker;
-	final bool highlighted;
+  final String title;
+  final String? time;
+  final Widget? content;
+  final Widget? marker;
+  final bool highlighted;
 }

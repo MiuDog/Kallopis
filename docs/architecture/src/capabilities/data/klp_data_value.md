@@ -54,8 +54,8 @@ ClassDeclaration · public · [lib/src/capabilities/data/klp_data_value.dart:3](
 
 | 成員 | 可見性 | 簽章／型別 | 來源註解摘要 | 證據 |
 |---|---|---|---|---|
-| field <code>value</code> | public | <code>final T value</code> |  | [lib/src/capabilities/data/klp_data_value.dart:6](../../../../../lib/src/capabilities/data/klp_data_value.dart#L6) |
-| constructor <code>KlpDataValue</code> | public | <code>const KlpDataValue(this.value)</code> |  | [lib/src/capabilities/data/klp_data_value.dart:8](../../../../../lib/src/capabilities/data/klp_data_value.dart#L8) |
+| field <code>value</code> | public | <code>final T value</code> |  | [lib/src/capabilities/data/klp_data_value.dart:5](../../../../../lib/src/capabilities/data/klp_data_value.dart#L5) |
+| constructor <code>KlpDataValue</code> | public | <code>const KlpDataValue(this.value)</code> |  | [lib/src/capabilities/data/klp_data_value.dart:7](../../../../../lib/src/capabilities/data/klp_data_value.dart#L7) |
 
 ## 閱讀說明與限制
 

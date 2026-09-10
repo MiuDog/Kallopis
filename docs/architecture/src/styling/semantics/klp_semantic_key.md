@@ -52,12 +52,12 @@ ClassDeclaration · public · [lib/src/styling/semantics/klp_semantic_key.dart:5
 
 | 成員 | 可見性 | 簽章／型別 | 來源註解摘要 | 證據 |
 |---|---|---|---|---|
-| field <code>owner</code> | public | <code>final String owner</code> |  | [lib/src/styling/semantics/klp_semantic_key.dart:8](../../../../../lib/src/styling/semantics/klp_semantic_key.dart#L8) |
-| field <code>name</code> | public | <code>final String name</code> |  | [lib/src/styling/semantics/klp_semantic_key.dart:9](../../../../../lib/src/styling/semantics/klp_semantic_key.dart#L9) |
-| field <code>kind</code> | public | <code>final KlpStyleKind&lt;T&gt; kind</code> |  | [lib/src/styling/semantics/klp_semantic_key.dart:10](../../../../../lib/src/styling/semantics/klp_semantic_key.dart#L10) |
-| constructor <code>KlpSemanticKey</code> | public | <code>KlpSemanticKey(this.owner, this.name, this.kind)</code> |  | [lib/src/styling/semantics/klp_semantic_key.dart:12](../../../../../lib/src/styling/semantics/klp_semantic_key.dart#L12) |
-| getter <code>identity</code> | public | <code>(String, String) get identity</code> |  | [lib/src/styling/semantics/klp_semantic_key.dart:17](../../../../../lib/src/styling/semantics/klp_semantic_key.dart#L17) |
-| getter <code>path</code> | public | <code>String get path</code> |  | [lib/src/styling/semantics/klp_semantic_key.dart:18](../../../../../lib/src/styling/semantics/klp_semantic_key.dart#L18) |
+| field <code>owner</code> | public | <code>final String owner</code> |  | [lib/src/styling/semantics/klp_semantic_key.dart:7](../../../../../lib/src/styling/semantics/klp_semantic_key.dart#L7) |
+| field <code>name</code> | public | <code>final String name</code> |  | [lib/src/styling/semantics/klp_semantic_key.dart:8](../../../../../lib/src/styling/semantics/klp_semantic_key.dart#L8) |
+| field <code>kind</code> | public | <code>final KlpStyleKind&lt;T&gt; kind</code> |  | [lib/src/styling/semantics/klp_semantic_key.dart:9](../../../../../lib/src/styling/semantics/klp_semantic_key.dart#L9) |
+| constructor <code>KlpSemanticKey</code> | public | <code>KlpSemanticKey(this.owner, this.name, this.kind)</code> |  | [lib/src/styling/semantics/klp_semantic_key.dart:11](../../../../../lib/src/styling/semantics/klp_semantic_key.dart#L11) |
+| getter <code>identity</code> | public | <code>(String, String) get identity</code> |  | [lib/src/styling/semantics/klp_semantic_key.dart:16](../../../../../lib/src/styling/semantics/klp_semantic_key.dart#L16) |
+| getter <code>path</code> | public | <code>String get path</code> |  | [lib/src/styling/semantics/klp_semantic_key.dart:17](../../../../../lib/src/styling/semantics/klp_semantic_key.dart#L17) |
 
 ## 閱讀說明與限制
 

@@ -11,23 +11,23 @@ part of '../klp_command_menu.dart';
 /// 面板預設會在出現時自動取得鍵盤焦點（[autofocus]），因為命令面板通常是剛彈出
 /// 的 overlay。
 class KlpCommandMenu extends StatefulWidget {
-	const KlpCommandMenu({
-		super.key,
-		required this.sections,
-		this.framed = true,
-		this.autofocus = true,
-		this.onEscape,
-	});
+  const KlpCommandMenu({
+    super.key,
+    required this.sections,
+    this.framed = true,
+    this.autofocus = true,
+    this.onEscape,
+  });
 
-	final List<KlpCommandSectionData> sections;
-	final bool framed;
+  final List<KlpCommandSectionData> sections;
+  final bool framed;
 
-	/// 是否在面板出現時自動取得鍵盤焦點。預設 `true`。
-	final bool autofocus;
+  /// 是否在面板出現時自動取得鍵盤焦點。預設 `true`。
+  final bool autofocus;
 
-	/// 按下 `Escape` 時呼叫，通常由呼叫端用來關閉面板；未提供時無效果。
-	final VoidCallback? onEscape;
+  /// 按下 `Escape` 時呼叫，通常由呼叫端用來關閉面板；未提供時無效果。
+  final VoidCallback? onEscape;
 
-	@override
-	State<KlpCommandMenu> createState() => _KlpCommandMenuState();
+  @override
+  State<KlpCommandMenu> createState() => _KlpCommandMenuState();
 }

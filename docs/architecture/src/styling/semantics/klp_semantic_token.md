@@ -55,10 +55,10 @@ ClassDeclaration · public · [lib/src/styling/semantics/klp_semantic_token.dart
 
 | 成員 | 可見性 | 簽章／型別 | 來源註解摘要 | 證據 |
 |---|---|---|---|---|
-| field <code>key</code> | public | <code>final KlpSemanticKey&lt;T&gt; key</code> |  | [lib/src/styling/semantics/klp_semantic_token.dart:9](../../../../../lib/src/styling/semantics/klp_semantic_token.dart#L9) |
-| field <code>reference</code> | public | <code>final KlpStyleRef&lt;T&gt; reference</code> |  | [lib/src/styling/semantics/klp_semantic_token.dart:10](../../../../../lib/src/styling/semantics/klp_semantic_token.dart#L10) |
-| field <code>isPublic</code> | public | <code>final bool isPublic</code> |  | [lib/src/styling/semantics/klp_semantic_token.dart:11](../../../../../lib/src/styling/semantics/klp_semantic_token.dart#L11) |
-| constructor <code>KlpSemanticToken</code> | public | <code>KlpSemanticToken(this.key, this.reference, {this.isPublic = false})</code> |  | [lib/src/styling/semantics/klp_semantic_token.dart:13](../../../../../lib/src/styling/semantics/klp_semantic_token.dart#L13) |
+| field <code>key</code> | public | <code>final KlpSemanticKey&lt;T&gt; key</code> |  | [lib/src/styling/semantics/klp_semantic_token.dart:8](../../../../../lib/src/styling/semantics/klp_semantic_token.dart#L8) |
+| field <code>reference</code> | public | <code>final KlpStyleRef&lt;T&gt; reference</code> |  | [lib/src/styling/semantics/klp_semantic_token.dart:9](../../../../../lib/src/styling/semantics/klp_semantic_token.dart#L9) |
+| field <code>isPublic</code> | public | <code>final bool isPublic</code> |  | [lib/src/styling/semantics/klp_semantic_token.dart:10](../../../../../lib/src/styling/semantics/klp_semantic_token.dart#L10) |
+| constructor <code>KlpSemanticToken</code> | public | <code>KlpSemanticToken(this.key, this.reference, {this.isPublic = false})</code> |  | [lib/src/styling/semantics/klp_semantic_token.dart:12](../../../../../lib/src/styling/semantics/klp_semantic_token.dart#L12) |
 
 ## 閱讀說明與限制
 

@@ -44,9 +44,9 @@ EnumDeclaration · public · [lib/src/foundation/content/klp_text_color_tier.dar
 
 | 成員 | 可見性 | 簽章／型別 | 來源註解摘要 | 證據 |
 |---|---|---|---|---|
-| enum value <code>prominent</code> | public | <code>prominent</code> |  | [lib/src/foundation/content/klp_text_color_tier.dart:3](../../../../../lib/src/foundation/content/klp_text_color_tier.dart#L3) |
-| enum value <code>standard</code> | public | <code>standard</code> |  | [lib/src/foundation/content/klp_text_color_tier.dart:4](../../../../../lib/src/foundation/content/klp_text_color_tier.dart#L4) |
-| enum value <code>subdued</code> | public | <code>subdued</code> |  | [lib/src/foundation/content/klp_text_color_tier.dart:5](../../../../../lib/src/foundation/content/klp_text_color_tier.dart#L5) |
+| enum value <code>prominent</code> | public | <code>prominent</code> |  | [lib/src/foundation/content/klp_text_color_tier.dart:2](../../../../../lib/src/foundation/content/klp_text_color_tier.dart#L2) |
+| enum value <code>standard</code> | public | <code>standard</code> |  | [lib/src/foundation/content/klp_text_color_tier.dart:2](../../../../../lib/src/foundation/content/klp_text_color_tier.dart#L2) |
+| enum value <code>subdued</code> | public | <code>subdued</code> |  | [lib/src/foundation/content/klp_text_color_tier.dart:2](../../../../../lib/src/foundation/content/klp_text_color_tier.dart#L2) |
 
 ## 閱讀說明與限制
 

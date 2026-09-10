@@ -71,9 +71,9 @@ ClassDeclaration · public · [lib/src/rendering/flutter/internal/klp_flutter_re
 
 | 成員 | 可見性 | 簽章／型別 | 來源註解摘要 | 證據 |
 |---|---|---|---|---|
-| field <code>content</code> | public | <code>final KlpBoundRetainedStack content</code> |  | [lib/src/rendering/flutter/internal/klp_flutter_retained_stack.dart:10](../../../../../../lib/src/rendering/flutter/internal/klp_flutter_retained_stack.dart#L10) |
-| constructor <code>KlpFlutterRetainedStack</code> | public | <code>const KlpFlutterRetainedStack({required this.content, super.key})</code> |  | [lib/src/rendering/flutter/internal/klp_flutter_retained_stack.dart:12](../../../../../../lib/src/rendering/flutter/internal/klp_flutter_retained_stack.dart#L12) |
-| method <code>createState</code> | public | <code>State&lt;KlpFlutterRetainedStack&gt; createState()</code> |  | [lib/src/rendering/flutter/internal/klp_flutter_retained_stack.dart:14](../../../../../../lib/src/rendering/flutter/internal/klp_flutter_retained_stack.dart#L14) |
+| field <code>content</code> | public | <code>final KlpBoundRetainedStack content</code> |  | [lib/src/rendering/flutter/internal/klp_flutter_retained_stack.dart:9](../../../../../../lib/src/rendering/flutter/internal/klp_flutter_retained_stack.dart#L9) |
+| constructor <code>KlpFlutterRetainedStack</code> | public | <code>const KlpFlutterRetainedStack({required this.content, super.key})</code> |  | [lib/src/rendering/flutter/internal/klp_flutter_retained_stack.dart:11](../../../../../../lib/src/rendering/flutter/internal/klp_flutter_retained_stack.dart#L11) |
+| method <code>createState</code> | public | <code>State&lt;KlpFlutterRetainedStack&gt; createState()</code> |  | [lib/src/rendering/flutter/internal/klp_flutter_retained_stack.dart:13](../../../../../../lib/src/rendering/flutter/internal/klp_flutter_retained_stack.dart#L13) |
 
 ### _KlpFlutterRetainedStackState
 
@@ -81,7 +81,7 @@ ClassDeclaration · private · [lib/src/rendering/flutter/internal/klp_flutter_r
 
 <code>final class _KlpFlutterRetainedStackState extends State&lt;KlpFlutterRetainedStack&gt;</code>
 
-- `extends` → <code>State&lt;KlpFlutterRetainedStack&gt;</code>：[lib/src/rendering/flutter/internal/klp_flutter_retained_stack.dart:18](../../../../../../lib/src/rendering/flutter/internal/klp_flutter_retained_stack.dart#L18)
+- `extends` → <code>State&lt;KlpFlutterRetainedStack&gt;</code>：[lib/src/rendering/flutter/internal/klp_flutter_retained_stack.dart:19](../../../../../../lib/src/rendering/flutter/internal/klp_flutter_retained_stack.dart#L19)
 
 | 成員 | 可見性 | 簽章／型別 | 來源註解摘要 | 證據 |
 |---|---|---|---|---|
@@ -91,9 +91,9 @@ ClassDeclaration · private · [lib/src/rendering/flutter/internal/klp_flutter_r
 | method <code>initState</code> | public | <code>void initState()</code> |  | [lib/src/rendering/flutter/internal/klp_flutter_retained_stack.dart:24](../../../../../../lib/src/rendering/flutter/internal/klp_flutter_retained_stack.dart#L24) |
 | method <code>didUpdateWidget</code> | public | <code>void didUpdateWidget(KlpFlutterRetainedStack oldWidget)</code> |  | [lib/src/rendering/flutter/internal/klp_flutter_retained_stack.dart:30](../../../../../../lib/src/rendering/flutter/internal/klp_flutter_retained_stack.dart#L30) |
 | method <code>_updateScopes</code> | private | <code>void _updateScopes(bool changed)</code> |  | [lib/src/rendering/flutter/internal/klp_flutter_retained_stack.dart:36](../../../../../../lib/src/rendering/flutter/internal/klp_flutter_retained_stack.dart#L36) |
-| method <code>dispose</code> | public | <code>void dispose()</code> |  | [lib/src/rendering/flutter/internal/klp_flutter_retained_stack.dart:79](../../../../../../lib/src/rendering/flutter/internal/klp_flutter_retained_stack.dart#L79) |
-| method <code>build</code> | public | <code>Widget build(BuildContext context)</code> |  | [lib/src/rendering/flutter/internal/klp_flutter_retained_stack.dart:90](../../../../../../lib/src/rendering/flutter/internal/klp_flutter_retained_stack.dart#L90) |
-| method <code>_page</code> | private | <code>Widget _page(KlpBoundPlacement page)</code> |  | [lib/src/rendering/flutter/internal/klp_flutter_retained_stack.dart:98](../../../../../../lib/src/rendering/flutter/internal/klp_flutter_retained_stack.dart#L98) |
+| method <code>dispose</code> | public | <code>void dispose()</code> |  | [lib/src/rendering/flutter/internal/klp_flutter_retained_stack.dart:88](../../../../../../lib/src/rendering/flutter/internal/klp_flutter_retained_stack.dart#L88) |
+| method <code>build</code> | public | <code>Widget build(BuildContext context)</code> |  | [lib/src/rendering/flutter/internal/klp_flutter_retained_stack.dart:99](../../../../../../lib/src/rendering/flutter/internal/klp_flutter_retained_stack.dart#L99) |
+| method <code>_page</code> | private | <code>Widget _page(KlpBoundPlacement page)</code> |  | [lib/src/rendering/flutter/internal/klp_flutter_retained_stack.dart:108](../../../../../../lib/src/rendering/flutter/internal/klp_flutter_retained_stack.dart#L108) |
 
 ## 閱讀說明與限制
 

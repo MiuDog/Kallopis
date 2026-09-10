@@ -55,7 +55,7 @@ ClassDeclaration · public · [lib/src/foundation/platform/klp_platform_info.dar
 | getter <code>isAndroid</code> | public | <code>bool get isAndroid</code> |  | [lib/src/foundation/platform/klp_platform_info.dart:25](../../../../../lib/src/foundation/platform/klp_platform_info.dart#L25) |
 | getter <code>isWindows</code> | public | <code>bool get isWindows</code> |  | [lib/src/foundation/platform/klp_platform_info.dart:26](../../../../../lib/src/foundation/platform/klp_platform_info.dart#L26) |
 | getter <code>isDesktop</code> | public | <code>bool get isDesktop</code> |  | [lib/src/foundation/platform/klp_platform_info.dart:27](../../../../../lib/src/foundation/platform/klp_platform_info.dart#L27) |
-| getter <code>isMobile</code> | public | <code>bool get isMobile</code> |  | [lib/src/foundation/platform/klp_platform_info.dart:28](../../../../../lib/src/foundation/platform/klp_platform_info.dart#L28) |
+| getter <code>isMobile</code> | public | <code>bool get isMobile</code> |  | [lib/src/foundation/platform/klp_platform_info.dart:31](../../../../../lib/src/foundation/platform/klp_platform_info.dart#L31) |
 
 ## 閱讀說明與限制
 

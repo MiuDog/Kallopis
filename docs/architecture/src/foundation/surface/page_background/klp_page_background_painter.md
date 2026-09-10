@@ -74,24 +74,24 @@ ClassDeclaration · public · [lib/src/foundation/surface/page_background/klp_pa
 
 ### KlpPageBackgroundPainter
 
-ClassDeclaration · public · [lib/src/foundation/surface/page_background/klp_page_background_painter.dart:39](../../../../../../lib/src/foundation/surface/page_background/klp_page_background_painter.dart#L39)
+ClassDeclaration · public · [lib/src/foundation/surface/page_background/klp_page_background_painter.dart:40](../../../../../../lib/src/foundation/surface/page_background/klp_page_background_painter.dart#L40)
 
 <code>class KlpPageBackgroundPainter extends CustomPainter</code>
 
 來源註解摘要：所有頁面背景 recipe 共用的 renderer。
 
-- `extends` → <code>CustomPainter</code>：[lib/src/foundation/surface/page_background/klp_page_background_painter.dart:40](../../../../../../lib/src/foundation/surface/page_background/klp_page_background_painter.dart#L40)
+- `extends` → <code>CustomPainter</code>：[lib/src/foundation/surface/page_background/klp_page_background_painter.dart:41](../../../../../../lib/src/foundation/surface/page_background/klp_page_background_painter.dart#L41)
 
 | 成員 | 可見性 | 簽章／型別 | 來源註解摘要 | 證據 |
 |---|---|---|---|---|
-| constructor <code>KlpPageBackgroundPainter</code> | public | <code>const KlpPageBackgroundPainter({ required this.recipe, required this.viewport, required this.visuals, })</code> |  | [lib/src/foundation/surface/page_background/klp_page_background_painter.dart:41](../../../../../../lib/src/foundation/surface/page_background/klp_page_background_painter.dart#L41) |
-| field <code>recipe</code> | public | <code>final KlpPageBackgroundRecipe recipe</code> |  | [lib/src/foundation/surface/page_background/klp_page_background_painter.dart:47](../../../../../../lib/src/foundation/surface/page_background/klp_page_background_painter.dart#L47) |
-| field <code>viewport</code> | public | <code>final KlpPageBackgroundViewport viewport</code> |  | [lib/src/foundation/surface/page_background/klp_page_background_painter.dart:48](../../../../../../lib/src/foundation/surface/page_background/klp_page_background_painter.dart#L48) |
-| field <code>visuals</code> | public | <code>final KlpPageBackgroundVisuals visuals</code> |  | [lib/src/foundation/surface/page_background/klp_page_background_painter.dart:49](../../../../../../lib/src/foundation/surface/page_background/klp_page_background_painter.dart#L49) |
-| method <code>paint</code> | public | <code>void paint(Canvas canvas, Size size)</code> |  | [lib/src/foundation/surface/page_background/klp_page_background_painter.dart:51](../../../../../../lib/src/foundation/surface/page_background/klp_page_background_painter.dart#L51) |
-| method <code>resolveMarkWidth</code> | public | <code>double resolveMarkWidth( KlpPageBackgroundAxisStyle axis, KlpPageBackgroundStrokeBehavior behavior, { double? defaultWidth, })</code> |  | [lib/src/foundation/surface/page_background/klp_page_background_painter.dart:70](../../../../../../lib/src/foundation/surface/page_background/klp_page_background_painter.dart#L70) |
-| method <code>_toViewportCoordinate</code> | private | <code>double _toViewportCoordinate(double coordinate, double origin)</code> |  | [lib/src/foundation/surface/page_background/klp_page_background_painter.dart:80](../../../../../../lib/src/foundation/surface/page_background/klp_page_background_painter.dart#L80) |
-| method <code>shouldRepaint</code> | public | <code>bool shouldRepaint(covariant KlpPageBackgroundPainter oldDelegate)</code> |  | [lib/src/foundation/surface/page_background/klp_page_background_painter.dart:82](../../../../../../lib/src/foundation/surface/page_background/klp_page_background_painter.dart#L82) |
+| constructor <code>KlpPageBackgroundPainter</code> | public | <code>const KlpPageBackgroundPainter({ required this.recipe, required this.viewport, required this.visuals, })</code> |  | [lib/src/foundation/surface/page_background/klp_page_background_painter.dart:42](../../../../../../lib/src/foundation/surface/page_background/klp_page_background_painter.dart#L42) |
+| field <code>recipe</code> | public | <code>final KlpPageBackgroundRecipe recipe</code> |  | [lib/src/foundation/surface/page_background/klp_page_background_painter.dart:48](../../../../../../lib/src/foundation/surface/page_background/klp_page_background_painter.dart#L48) |
+| field <code>viewport</code> | public | <code>final KlpPageBackgroundViewport viewport</code> |  | [lib/src/foundation/surface/page_background/klp_page_background_painter.dart:49](../../../../../../lib/src/foundation/surface/page_background/klp_page_background_painter.dart#L49) |
+| field <code>visuals</code> | public | <code>final KlpPageBackgroundVisuals visuals</code> |  | [lib/src/foundation/surface/page_background/klp_page_background_painter.dart:50](../../../../../../lib/src/foundation/surface/page_background/klp_page_background_painter.dart#L50) |
+| method <code>paint</code> | public | <code>void paint(Canvas canvas, Size size)</code> |  | [lib/src/foundation/surface/page_background/klp_page_background_painter.dart:52](../../../../../../lib/src/foundation/surface/page_background/klp_page_background_painter.dart#L52) |
+| method <code>resolveMarkWidth</code> | public | <code>double resolveMarkWidth( KlpPageBackgroundAxisStyle axis, KlpPageBackgroundStrokeBehavior behavior, { double? defaultWidth, })</code> |  | [lib/src/foundation/surface/page_background/klp_page_background_painter.dart:71](../../../../../../lib/src/foundation/surface/page_background/klp_page_background_painter.dart#L71) |
+| method <code>_toViewportCoordinate</code> | private | <code>double _toViewportCoordinate(double coordinate, double origin)</code> |  | [lib/src/foundation/surface/page_background/klp_page_background_painter.dart:83](../../../../../../lib/src/foundation/surface/page_background/klp_page_background_painter.dart#L83) |
+| method <code>shouldRepaint</code> | public | <code>bool shouldRepaint(covariant KlpPageBackgroundPainter oldDelegate)</code> |  | [lib/src/foundation/surface/page_background/klp_page_background_painter.dart:86](../../../../../../lib/src/foundation/surface/page_background/klp_page_background_painter.dart#L86) |
 
 ## 閱讀說明與限制
 

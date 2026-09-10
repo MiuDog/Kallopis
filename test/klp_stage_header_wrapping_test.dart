@@ -13,19 +13,21 @@ void main() {
     await tester.pumpWidget(
       const KlpApp(
         showWindowHeader: false,
-				home: KlpPanelFrame(content: SizedBox(
-          width: 220,
-          height: 400,
-          child: KlpStageFrame(
-            header: KlpStageHeader(
-              projectName: 'Notist',
-              sectionLabel: 'Flow',
-              title: title,
-              typeLabel: 'FLOW',
+        home: KlpPanelFrame(
+          content: SizedBox(
+            width: 220,
+            height: 400,
+            child: KlpStageFrame(
+              header: KlpStageHeader(
+                projectName: 'Notist',
+                sectionLabel: 'Flow',
+                title: title,
+                typeLabel: 'FLOW',
+              ),
+              content: SizedBox.expand(),
             ),
-            content: SizedBox.expand(),
           ),
-        )),
+        ),
       ),
     );
 
@@ -49,19 +51,21 @@ void main() {
     await tester.pumpWidget(
       const KlpApp(
         showWindowHeader: false,
-				home: KlpPanelFrame(content: SizedBox(
-          width: 280,
-          height: 400,
-          child: KlpStageFrame(
-            header: KlpStageHeader(
-              projectName: 'Notist',
-              sectionLabel: 'Flow',
-              title: title,
-              typeLabel: 'FLOW',
+        home: KlpPanelFrame(
+          content: SizedBox(
+            width: 280,
+            height: 400,
+            child: KlpStageFrame(
+              header: KlpStageHeader(
+                projectName: 'Notist',
+                sectionLabel: 'Flow',
+                title: title,
+                typeLabel: 'FLOW',
+              ),
+              content: SizedBox.expand(),
             ),
-            content: SizedBox.expand(),
           ),
-        )),
+        ),
       ),
     );
 
@@ -78,12 +82,14 @@ void main() {
     await tester.pumpWidget(
       const KlpApp(
         showWindowHeader: false,
-				home: KlpPanelFrame(content: KlpStageHeader(
-          projectName: 'Notist',
-          sectionLabel: 'Flow',
-          title: '第一份筆記',
-          typeLabel: 'FLOW',
-        )),
+        home: KlpPanelFrame(
+          content: KlpStageHeader(
+            projectName: 'Notist',
+            sectionLabel: 'Flow',
+            title: '第一份筆記',
+            typeLabel: 'FLOW',
+          ),
+        ),
       ),
     );
 

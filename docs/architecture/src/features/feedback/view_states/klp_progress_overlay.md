@@ -52,11 +52,11 @@ ClassDeclaration · public · [lib/src/features/feedback/view_states/klp_progres
 
 | 成員 | 可見性 | 簽章／型別 | 來源註解摘要 | 證據 |
 |---|---|---|---|---|
-| constructor <code>KlpProgressOverlay</code> | public | <code>const KlpProgressOverlay({super.key, required this.child, required this.visible, required this.label})</code> |  | [lib/src/features/feedback/view_states/klp_progress_overlay.dart:4](../../../../../../lib/src/features/feedback/view_states/klp_progress_overlay.dart#L4) |
-| field <code>child</code> | public | <code>final Widget child</code> |  | [lib/src/features/feedback/view_states/klp_progress_overlay.dart:6](../../../../../../lib/src/features/feedback/view_states/klp_progress_overlay.dart#L6) |
-| field <code>visible</code> | public | <code>final bool visible</code> |  | [lib/src/features/feedback/view_states/klp_progress_overlay.dart:7](../../../../../../lib/src/features/feedback/view_states/klp_progress_overlay.dart#L7) |
-| field <code>label</code> | public | <code>final String label</code> |  | [lib/src/features/feedback/view_states/klp_progress_overlay.dart:8](../../../../../../lib/src/features/feedback/view_states/klp_progress_overlay.dart#L8) |
-| method <code>build</code> | public | <code>Widget build(BuildContext context)</code> |  | [lib/src/features/feedback/view_states/klp_progress_overlay.dart:10](../../../../../../lib/src/features/feedback/view_states/klp_progress_overlay.dart#L10) |
+| constructor <code>KlpProgressOverlay</code> | public | <code>const KlpProgressOverlay({ super.key, required this.child, required this.visible, required this.label, })</code> |  | [lib/src/features/feedback/view_states/klp_progress_overlay.dart:4](../../../../../../lib/src/features/feedback/view_states/klp_progress_overlay.dart#L4) |
+| field <code>child</code> | public | <code>final Widget child</code> |  | [lib/src/features/feedback/view_states/klp_progress_overlay.dart:11](../../../../../../lib/src/features/feedback/view_states/klp_progress_overlay.dart#L11) |
+| field <code>visible</code> | public | <code>final bool visible</code> |  | [lib/src/features/feedback/view_states/klp_progress_overlay.dart:12](../../../../../../lib/src/features/feedback/view_states/klp_progress_overlay.dart#L12) |
+| field <code>label</code> | public | <code>final String label</code> |  | [lib/src/features/feedback/view_states/klp_progress_overlay.dart:13](../../../../../../lib/src/features/feedback/view_states/klp_progress_overlay.dart#L13) |
+| method <code>build</code> | public | <code>Widget build(BuildContext context)</code> |  | [lib/src/features/feedback/view_states/klp_progress_overlay.dart:15](../../../../../../lib/src/features/feedback/view_states/klp_progress_overlay.dart#L15) |
 
 ## 閱讀說明與限制
 

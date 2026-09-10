@@ -54,13 +54,13 @@ ClassDeclaration · public · [lib/src/foundation/binding/internal/klp_bound_cho
 
 | 成員 | 可見性 | 簽章／型別 | 來源註解摘要 | 證據 |
 |---|---|---|---|---|
-| field <code>id</code> | public | <code>final KlpPlacementId id</code> |  | [lib/src/foundation/binding/internal/klp_bound_choice.dart:6](../../../../../../lib/src/foundation/binding/internal/klp_bound_choice.dart#L6) |
-| field <code>label</code> | public | <code>final String label</code> |  | [lib/src/foundation/binding/internal/klp_bound_choice.dart:7](../../../../../../lib/src/foundation/binding/internal/klp_bound_choice.dart#L7) |
-| field <code>selection</code> | public | <code>final KlpState&lt;KlpPlacementId?&gt; selection</code> |  | [lib/src/foundation/binding/internal/klp_bound_choice.dart:8](../../../../../../lib/src/foundation/binding/internal/klp_bound_choice.dart#L8) |
-| field <code>onActivate</code> | public | <code>final FutureOr&lt;void&gt; Function()? onActivate</code> |  | [lib/src/foundation/binding/internal/klp_bound_choice.dart:9](../../../../../../lib/src/foundation/binding/internal/klp_bound_choice.dart#L9) |
-| field <code>child</code> | public | <code>final KlpBoundTemplate child</code> |  | [lib/src/foundation/binding/internal/klp_bound_choice.dart:10](../../../../../../lib/src/foundation/binding/internal/klp_bound_choice.dart#L10) |
-| field <code>style</code> | public | <code>final KlpBoundChoiceStyle style</code> |  | [lib/src/foundation/binding/internal/klp_bound_choice.dart:11](../../../../../../lib/src/foundation/binding/internal/klp_bound_choice.dart#L11) |
-| constructor <code>KlpBoundChoice</code> | public | <code>const KlpBoundChoice({ required this.id, required this.label, required this.selection, required this.onActivate, required this.child, required this.style, })</code> |  | [lib/src/foundation/binding/internal/klp_bound_choice.dart:13](../../../../../../lib/src/foundation/binding/internal/klp_bound_choice.dart#L13) |
+| field <code>id</code> | public | <code>final KlpPlacementId id</code> |  | [lib/src/foundation/binding/internal/klp_bound_choice.dart:5](../../../../../../lib/src/foundation/binding/internal/klp_bound_choice.dart#L5) |
+| field <code>label</code> | public | <code>final String label</code> |  | [lib/src/foundation/binding/internal/klp_bound_choice.dart:6](../../../../../../lib/src/foundation/binding/internal/klp_bound_choice.dart#L6) |
+| field <code>selection</code> | public | <code>final KlpState&lt;KlpPlacementId?&gt; selection</code> |  | [lib/src/foundation/binding/internal/klp_bound_choice.dart:7](../../../../../../lib/src/foundation/binding/internal/klp_bound_choice.dart#L7) |
+| field <code>onActivate</code> | public | <code>final FutureOr&lt;void&gt; Function()? onActivate</code> |  | [lib/src/foundation/binding/internal/klp_bound_choice.dart:8](../../../../../../lib/src/foundation/binding/internal/klp_bound_choice.dart#L8) |
+| field <code>child</code> | public | <code>final KlpBoundTemplate child</code> |  | [lib/src/foundation/binding/internal/klp_bound_choice.dart:9](../../../../../../lib/src/foundation/binding/internal/klp_bound_choice.dart#L9) |
+| field <code>style</code> | public | <code>final KlpBoundChoiceStyle style</code> |  | [lib/src/foundation/binding/internal/klp_bound_choice.dart:10](../../../../../../lib/src/foundation/binding/internal/klp_bound_choice.dart#L10) |
+| constructor <code>KlpBoundChoice</code> | public | <code>const KlpBoundChoice({ required this.id, required this.label, required this.selection, required this.onActivate, required this.child, required this.style, })</code> |  | [lib/src/foundation/binding/internal/klp_bound_choice.dart:12](../../../../../../lib/src/foundation/binding/internal/klp_bound_choice.dart#L12) |
 
 ## 閱讀說明與限制
 

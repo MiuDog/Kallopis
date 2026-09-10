@@ -46,8 +46,8 @@ ClassDeclaration · public · [lib/src/runtime/installation/internal/klp_placeme
 
 | 成員 | 可見性 | 簽章／型別 | 來源註解摘要 | 證據 |
 |---|---|---|---|---|
-| method <code>update</code> | public | <code>void update(KlpValidatedNode node)</code> | 先提交本地資料再通知；通知拋錯時已提交的資料不得退回。 | [lib/src/runtime/installation/internal/klp_placement_resource.dart:6](../../../../../../lib/src/runtime/installation/internal/klp_placement_resource.dart#L6) |
-| method <code>dispose</code> | public | <code>void dispose()</code> | 必須使本地資源終止且可重複呼叫，完成清理後才可回報外部錯誤。 | [lib/src/runtime/installation/internal/klp_placement_resource.dart:9](../../../../../../lib/src/runtime/installation/internal/klp_placement_resource.dart#L9) |
+| method <code>update</code> | public | <code>void update(KlpValidatedNode node)</code> | 先提交本地資料再通知；通知拋錯時已提交的資料不得退回。 | [lib/src/runtime/installation/internal/klp_placement_resource.dart:5](../../../../../../lib/src/runtime/installation/internal/klp_placement_resource.dart#L5) |
+| method <code>dispose</code> | public | <code>void dispose()</code> | 必須使本地資源終止且可重複呼叫，完成清理後才可回報外部錯誤。 | [lib/src/runtime/installation/internal/klp_placement_resource.dart:8](../../../../../../lib/src/runtime/installation/internal/klp_placement_resource.dart#L8) |
 
 ## 閱讀說明與限制
 

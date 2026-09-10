@@ -44,9 +44,9 @@ ClassDeclaration · public · [lib/src/composition/nodes/klp_node.dart:1](../../
 
 | 成員 | 可見性 | 簽章／型別 | 來源註解摘要 | 證據 |
 |---|---|---|---|---|
-| getter <code>id</code> | public | <code>String get id</code> |  | [lib/src/composition/nodes/klp_node.dart:4](../../../../../lib/src/composition/nodes/klp_node.dart#L4) |
-| getter <code>definitionId</code> | public | <code>String get definitionId</code> |  | [lib/src/composition/nodes/klp_node.dart:5](../../../../../lib/src/composition/nodes/klp_node.dart#L5) |
-| getter <code>children</code> | public | <code>Iterable&lt;KlpNode&gt; get children</code> |  | [lib/src/composition/nodes/klp_node.dart:6](../../../../../lib/src/composition/nodes/klp_node.dart#L6) |
+| getter <code>id</code> | public | <code>String get id</code> |  | [lib/src/composition/nodes/klp_node.dart:3](../../../../../lib/src/composition/nodes/klp_node.dart#L3) |
+| getter <code>definitionId</code> | public | <code>String get definitionId</code> |  | [lib/src/composition/nodes/klp_node.dart:4](../../../../../lib/src/composition/nodes/klp_node.dart#L4) |
+| getter <code>children</code> | public | <code>Iterable&lt;KlpNode&gt; get children</code> |  | [lib/src/composition/nodes/klp_node.dart:5](../../../../../lib/src/composition/nodes/klp_node.dart#L5) |
 
 ## 閱讀說明與限制
 

@@ -8,36 +8,36 @@ part of '../klp_menu.dart';
 /// 自行處理 [onPressed]。[separatedBefore] 在這個項目之前插入一條分隔線，
 /// 用來把選單切成語意上的幾組。
 class KlpMenuItemData {
-	const KlpMenuItemData({
-		required this.label,
-		required this.onPressed,
-		this.key,
-		this.icon,
-		this.shortcut,
-		this.toggleValue,
-		this.hasSubmenu = false,
-		this.danger = false,
-		this.separatedBefore = false,
-		this.dashedSeparatorBefore = false,
-		this.selected = false,
-		this.enabled = true,
-	}) : assert(
-				!separatedBefore || !dashedSeparatorBefore,
-				'A menu item can only use one separator style.',
-			);
+  const KlpMenuItemData({
+    required this.label,
+    required this.onPressed,
+    this.key,
+    this.icon,
+    this.shortcut,
+    this.toggleValue,
+    this.hasSubmenu = false,
+    this.danger = false,
+    this.separatedBefore = false,
+    this.dashedSeparatorBefore = false,
+    this.selected = false,
+    this.enabled = true,
+  }) : assert(
+         !separatedBefore || !dashedSeparatorBefore,
+         'A menu item can only use one separator style.',
+       );
 
-	final String label;
-	final VoidCallback onPressed;
-	final Key? key;
-	final KlpIconData? icon;
-	final String? shortcut;
-	final bool? toggleValue;
-	final bool hasSubmenu;
-	final bool danger;
-	final bool separatedBefore;
+  final String label;
+  final VoidCallback onPressed;
+  final Key? key;
+  final KlpIconData? icon;
+  final String? shortcut;
+  final bool? toggleValue;
+  final bool hasSubmenu;
+  final bool danger;
+  final bool separatedBefore;
 
-	/// 在此項目前以虛線分組；不可與 [separatedBefore] 同時使用。
-	final bool dashedSeparatorBefore;
-	final bool selected;
-	final bool enabled;
+  /// 在此項目前以虛線分組；不可與 [separatedBefore] 同時使用。
+  final bool dashedSeparatorBefore;
+  final bool selected;
+  final bool enabled;
 }

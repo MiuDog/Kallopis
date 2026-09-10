@@ -49,7 +49,7 @@ ClassDeclaration · private · [lib/src/features/forms/selection/internal/klp_se
 | field <code>height</code> | public | <code>final double? height</code> |  | [lib/src/features/forms/selection/internal/klp_segmented_control_style.dart:12](../../../../../../../lib/src/features/forms/selection/internal/klp_segmented_control_style.dart#L12) |
 | field <code>inset</code> | public | <code>final double inset</code> |  | [lib/src/features/forms/selection/internal/klp_segmented_control_style.dart:13](../../../../../../../lib/src/features/forms/selection/internal/klp_segmented_control_style.dart#L13) |
 | field <code>radius</code> | public | <code>final double radius</code> |  | [lib/src/features/forms/selection/internal/klp_segmented_control_style.dart:14](../../../../../../../lib/src/features/forms/selection/internal/klp_segmented_control_style.dart#L14) |
-| constructor <code>resolve</code> | public | <code>factory _KlpSegmentedControlStyle.resolve(KlpTheme klp, {required bool dense})</code> |  | [lib/src/features/forms/selection/internal/klp_segmented_control_style.dart:16](../../../../../../../lib/src/features/forms/selection/internal/klp_segmented_control_style.dart#L16) |
+| constructor <code>resolve</code> | public | <code>factory _KlpSegmentedControlStyle.resolve( KlpTheme klp, { required bool dense, })</code> |  | [lib/src/features/forms/selection/internal/klp_segmented_control_style.dart:16](../../../../../../../lib/src/features/forms/selection/internal/klp_segmented_control_style.dart#L16) |
 
 ## 閱讀說明與限制
 

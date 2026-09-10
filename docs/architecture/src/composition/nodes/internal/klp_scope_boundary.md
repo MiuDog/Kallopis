@@ -66,14 +66,14 @@ ClassDeclaration · public · [lib/src/composition/nodes/internal/klp_scope_boun
 
 | 成員 | 可見性 | 簽章／型別 | 來源註解摘要 | 證據 |
 |---|---|---|---|---|
-| field <code>typeId</code> | public | <code>static const (inferred) typeId</code> |  | [lib/src/composition/nodes/internal/klp_scope_boundary.dart:10](../../../../../../lib/src/composition/nodes/internal/klp_scope_boundary.dart#L10) |
-| field <code>childSlot</code> | public | <code>static final (inferred) childSlot</code> |  | [lib/src/composition/nodes/internal/klp_scope_boundary.dart:11](../../../../../../lib/src/composition/nodes/internal/klp_scope_boundary.dart#L11) |
-| field <code>contract</code> | public | <code>static final (inferred) contract</code> |  | [lib/src/composition/nodes/internal/klp_scope_boundary.dart:12](../../../../../../lib/src/composition/nodes/internal/klp_scope_boundary.dart#L12) |
-| field <code>id</code> | public | <code>final String id</code> |  | [lib/src/composition/nodes/internal/klp_scope_boundary.dart:15](../../../../../../lib/src/composition/nodes/internal/klp_scope_boundary.dart#L15) |
-| field <code>children</code> | public | <code>final KlpChildren children</code> |  | [lib/src/composition/nodes/internal/klp_scope_boundary.dart:17](../../../../../../lib/src/composition/nodes/internal/klp_scope_boundary.dart#L17) |
-| field <code>active</code> | public | <code>final bool active</code> |  | [lib/src/composition/nodes/internal/klp_scope_boundary.dart:18](../../../../../../lib/src/composition/nodes/internal/klp_scope_boundary.dart#L18) |
-| constructor <code>KlpScopeBoundary</code> | public | <code>KlpScopeBoundary({required this.id, required KlpNode child, this.active = true})</code> |  | [lib/src/composition/nodes/internal/klp_scope_boundary.dart:20](../../../../../../lib/src/composition/nodes/internal/klp_scope_boundary.dart#L20) |
-| getter <code>definitionId</code> | public | <code>String get definitionId</code> |  | [lib/src/composition/nodes/internal/klp_scope_boundary.dart:22](../../../../../../lib/src/composition/nodes/internal/klp_scope_boundary.dart#L22) |
+| field <code>typeId</code> | public | <code>static const (inferred) typeId</code> |  | [lib/src/composition/nodes/internal/klp_scope_boundary.dart:9](../../../../../../lib/src/composition/nodes/internal/klp_scope_boundary.dart#L9) |
+| field <code>childSlot</code> | public | <code>static final (inferred) childSlot</code> |  | [lib/src/composition/nodes/internal/klp_scope_boundary.dart:10](../../../../../../lib/src/composition/nodes/internal/klp_scope_boundary.dart#L10) |
+| field <code>contract</code> | public | <code>static final (inferred) contract</code> |  | [lib/src/composition/nodes/internal/klp_scope_boundary.dart:16](../../../../../../lib/src/composition/nodes/internal/klp_scope_boundary.dart#L16) |
+| field <code>id</code> | public | <code>final String id</code> |  | [lib/src/composition/nodes/internal/klp_scope_boundary.dart:22](../../../../../../lib/src/composition/nodes/internal/klp_scope_boundary.dart#L22) |
+| field <code>children</code> | public | <code>final KlpChildren children</code> |  | [lib/src/composition/nodes/internal/klp_scope_boundary.dart:24](../../../../../../lib/src/composition/nodes/internal/klp_scope_boundary.dart#L24) |
+| field <code>active</code> | public | <code>final bool active</code> |  | [lib/src/composition/nodes/internal/klp_scope_boundary.dart:25](../../../../../../lib/src/composition/nodes/internal/klp_scope_boundary.dart#L25) |
+| constructor <code>KlpScopeBoundary</code> | public | <code>KlpScopeBoundary({ required this.id, required KlpNode child, this.active = true, })</code> |  | [lib/src/composition/nodes/internal/klp_scope_boundary.dart:27](../../../../../../lib/src/composition/nodes/internal/klp_scope_boundary.dart#L27) |
+| getter <code>definitionId</code> | public | <code>String get definitionId</code> |  | [lib/src/composition/nodes/internal/klp_scope_boundary.dart:35](../../../../../../lib/src/composition/nodes/internal/klp_scope_boundary.dart#L35) |
 
 ## 閱讀說明與限制
 

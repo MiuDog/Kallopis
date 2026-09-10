@@ -44,13 +44,13 @@ ClassDeclaration · public · [lib/src/kernel/lifecycle/internal/klp_frame_lease
 
 | 成員 | 可見性 | 簽章／型別 | 來源註解摘要 | 證據 |
 |---|---|---|---|---|
-| field <code>_active</code> | private | <code>bool _active</code> |  | [lib/src/kernel/lifecycle/internal/klp_frame_lease.dart:4](../../../../../../lib/src/kernel/lifecycle/internal/klp_frame_lease.dart#L4) |
-| field <code>_parent</code> | private | <code>final KlpFrameLease? _parent</code> |  | [lib/src/kernel/lifecycle/internal/klp_frame_lease.dart:5](../../../../../../lib/src/kernel/lifecycle/internal/klp_frame_lease.dart#L5) |
-| field <code>_enabled</code> | private | <code>final bool _enabled</code> |  | [lib/src/kernel/lifecycle/internal/klp_frame_lease.dart:6](../../../../../../lib/src/kernel/lifecycle/internal/klp_frame_lease.dart#L6) |
-| constructor <code>KlpFrameLease</code> | public | <code>KlpFrameLease()</code> |  | [lib/src/kernel/lifecycle/internal/klp_frame_lease.dart:8](../../../../../../lib/src/kernel/lifecycle/internal/klp_frame_lease.dart#L8) |
-| constructor <code>_</code> | private | <code>KlpFrameLease._(this._parent, this._enabled)</code> |  | [lib/src/kernel/lifecycle/internal/klp_frame_lease.dart:9](../../../../../../lib/src/kernel/lifecycle/internal/klp_frame_lease.dart#L9) |
-| getter <code>isActive</code> | public | <code>bool get isActive</code> |  | [lib/src/kernel/lifecycle/internal/klp_frame_lease.dart:11](../../../../../../lib/src/kernel/lifecycle/internal/klp_frame_lease.dart#L11) |
-| method <code>derive</code> | public | <code>KlpFrameLease derive({required bool enabled})</code> |  | [lib/src/kernel/lifecycle/internal/klp_frame_lease.dart:12](../../../../../../lib/src/kernel/lifecycle/internal/klp_frame_lease.dart#L12) |
+| field <code>_active</code> | private | <code>bool _active</code> |  | [lib/src/kernel/lifecycle/internal/klp_frame_lease.dart:3](../../../../../../lib/src/kernel/lifecycle/internal/klp_frame_lease.dart#L3) |
+| field <code>_parent</code> | private | <code>final KlpFrameLease? _parent</code> |  | [lib/src/kernel/lifecycle/internal/klp_frame_lease.dart:4](../../../../../../lib/src/kernel/lifecycle/internal/klp_frame_lease.dart#L4) |
+| field <code>_enabled</code> | private | <code>final bool _enabled</code> |  | [lib/src/kernel/lifecycle/internal/klp_frame_lease.dart:5](../../../../../../lib/src/kernel/lifecycle/internal/klp_frame_lease.dart#L5) |
+| constructor <code>KlpFrameLease</code> | public | <code>KlpFrameLease()</code> |  | [lib/src/kernel/lifecycle/internal/klp_frame_lease.dart:7](../../../../../../lib/src/kernel/lifecycle/internal/klp_frame_lease.dart#L7) |
+| constructor <code>_</code> | private | <code>KlpFrameLease._(this._parent, this._enabled)</code> |  | [lib/src/kernel/lifecycle/internal/klp_frame_lease.dart:8](../../../../../../lib/src/kernel/lifecycle/internal/klp_frame_lease.dart#L8) |
+| getter <code>isActive</code> | public | <code>bool get isActive</code> |  | [lib/src/kernel/lifecycle/internal/klp_frame_lease.dart:10](../../../../../../lib/src/kernel/lifecycle/internal/klp_frame_lease.dart#L10) |
+| method <code>derive</code> | public | <code>KlpFrameLease derive({required bool enabled})</code> |  | [lib/src/kernel/lifecycle/internal/klp_frame_lease.dart:11](../../../../../../lib/src/kernel/lifecycle/internal/klp_frame_lease.dart#L11) |
 | method <code>revoke</code> | public | <code>void revoke()</code> |  | [lib/src/kernel/lifecycle/internal/klp_frame_lease.dart:13](../../../../../../lib/src/kernel/lifecycle/internal/klp_frame_lease.dart#L13) |
 | method <code>run</code> | public | <code>void run(void Function() callback)</code> |  | [lib/src/kernel/lifecycle/internal/klp_frame_lease.dart:14](../../../../../../lib/src/kernel/lifecycle/internal/klp_frame_lease.dart#L14) |
 | method <code>runAsync</code> | public | <code>Future&lt;void&gt; runAsync(Future&lt;void&gt; Function() callback)</code> | 非同步操作也必須在啟動當下檢查 lease；完成後由資源自行決定提交結果。 | [lib/src/kernel/lifecycle/internal/klp_frame_lease.dart:18](../../../../../../lib/src/kernel/lifecycle/internal/klp_frame_lease.dart#L18) |

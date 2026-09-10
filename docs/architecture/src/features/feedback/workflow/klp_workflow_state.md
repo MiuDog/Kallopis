@@ -46,14 +46,14 @@ EnumDeclaration · public · [lib/src/features/feedback/workflow/klp_workflow_st
 
 | 成員 | 可見性 | 簽章／型別 | 來源註解摘要 | 證據 |
 |---|---|---|---|---|
-| enum value <code>empty</code> | public | <code>empty</code> |  | [lib/src/features/feedback/workflow/klp_workflow_state.dart:4](../../../../../../lib/src/features/feedback/workflow/klp_workflow_state.dart#L4) |
-| enum value <code>collecting</code> | public | <code>collecting</code> |  | [lib/src/features/feedback/workflow/klp_workflow_state.dart:4](../../../../../../lib/src/features/feedback/workflow/klp_workflow_state.dart#L4) |
-| enum value <code>reviewing</code> | public | <code>reviewing</code> |  | [lib/src/features/feedback/workflow/klp_workflow_state.dart:4](../../../../../../lib/src/features/feedback/workflow/klp_workflow_state.dart#L4) |
-| enum value <code>ready</code> | public | <code>ready</code> |  | [lib/src/features/feedback/workflow/klp_workflow_state.dart:4](../../../../../../lib/src/features/feedback/workflow/klp_workflow_state.dart#L4) |
-| enum value <code>stale</code> | public | <code>stale</code> |  | [lib/src/features/feedback/workflow/klp_workflow_state.dart:4](../../../../../../lib/src/features/feedback/workflow/klp_workflow_state.dart#L4) |
-| enum value <code>applying</code> | public | <code>applying</code> |  | [lib/src/features/feedback/workflow/klp_workflow_state.dart:4](../../../../../../lib/src/features/feedback/workflow/klp_workflow_state.dart#L4) |
-| enum value <code>applied</code> | public | <code>applied</code> |  | [lib/src/features/feedback/workflow/klp_workflow_state.dart:4](../../../../../../lib/src/features/feedback/workflow/klp_workflow_state.dart#L4) |
-| enum value <code>failed</code> | public | <code>failed</code> |  | [lib/src/features/feedback/workflow/klp_workflow_state.dart:4](../../../../../../lib/src/features/feedback/workflow/klp_workflow_state.dart#L4) |
+| enum value <code>empty</code> | public | <code>empty</code> |  | [lib/src/features/feedback/workflow/klp_workflow_state.dart:5](../../../../../../lib/src/features/feedback/workflow/klp_workflow_state.dart#L5) |
+| enum value <code>collecting</code> | public | <code>collecting</code> |  | [lib/src/features/feedback/workflow/klp_workflow_state.dart:6](../../../../../../lib/src/features/feedback/workflow/klp_workflow_state.dart#L6) |
+| enum value <code>reviewing</code> | public | <code>reviewing</code> |  | [lib/src/features/feedback/workflow/klp_workflow_state.dart:7](../../../../../../lib/src/features/feedback/workflow/klp_workflow_state.dart#L7) |
+| enum value <code>ready</code> | public | <code>ready</code> |  | [lib/src/features/feedback/workflow/klp_workflow_state.dart:8](../../../../../../lib/src/features/feedback/workflow/klp_workflow_state.dart#L8) |
+| enum value <code>stale</code> | public | <code>stale</code> |  | [lib/src/features/feedback/workflow/klp_workflow_state.dart:9](../../../../../../lib/src/features/feedback/workflow/klp_workflow_state.dart#L9) |
+| enum value <code>applying</code> | public | <code>applying</code> |  | [lib/src/features/feedback/workflow/klp_workflow_state.dart:10](../../../../../../lib/src/features/feedback/workflow/klp_workflow_state.dart#L10) |
+| enum value <code>applied</code> | public | <code>applied</code> |  | [lib/src/features/feedback/workflow/klp_workflow_state.dart:11](../../../../../../lib/src/features/feedback/workflow/klp_workflow_state.dart#L11) |
+| enum value <code>failed</code> | public | <code>failed</code> |  | [lib/src/features/feedback/workflow/klp_workflow_state.dart:12](../../../../../../lib/src/features/feedback/workflow/klp_workflow_state.dart#L12) |
 
 ## 閱讀說明與限制
 

@@ -11,130 +11,130 @@ part '../presets/legacy/default_motion.dart';
 /// 因為它不會出錯，只會讓兩個看起來一樣的元件動得不一樣快。
 @immutable
 class KlpMotionTheme extends ThemeExtension<KlpMotionTheme> {
-	const KlpMotionTheme({
-		required this.themeTransition,
-		required this.styleTransition,
-		required this.stateTransition,
-		required this.overlayEnter,
-		required this.overlayExit,
-		required this.toastDwell,
-		required this.tooltipDelay,
-		this.tooltipDwell = const Duration(milliseconds: 4000),
-		this.spinnerCycle = const Duration(milliseconds: 1000),
-		required this.longPressThreshold,
-		required this.standard,
-		required this.emphasized,
-	});
+  const KlpMotionTheme({
+    required this.themeTransition,
+    required this.styleTransition,
+    required this.stateTransition,
+    required this.overlayEnter,
+    required this.overlayExit,
+    required this.toastDwell,
+    required this.tooltipDelay,
+    this.tooltipDwell = const Duration(milliseconds: 4000),
+    this.spinnerCycle = const Duration(milliseconds: 1000),
+    required this.longPressThreshold,
+    required this.standard,
+    required this.emphasized,
+  });
 
-	/// 明暗主題切換。預設瞬間完成——整個畫面漸變會讓切換感覺遲鈍。
-	final Duration themeTransition;
+  /// 明暗主題切換。預設瞬間完成——整個畫面漸變會讓切換感覺遲鈍。
+  final Duration themeTransition;
 
-	/// 強調色等樣式變更。
-	final Duration styleTransition;
+  /// 強調色等樣式變更。
+  final Duration styleTransition;
 
-	/// hover／focus／pressed 等互動狀態變化。這是使用者最常看到的過場。
-	final Duration stateTransition;
+  /// hover／focus／pressed 等互動狀態變化。這是使用者最常看到的過場。
+  final Duration stateTransition;
 
-	/// 選單、彈出層、對話框進場。
-	final Duration overlayEnter;
+  /// 選單、彈出層、對話框進場。
+  final Duration overlayEnter;
 
-	/// 同上，退場。退場比進場快是通用慣例——使用者已經決定要關掉了。
-	final Duration overlayExit;
+  /// 同上，退場。退場比進場快是通用慣例——使用者已經決定要關掉了。
+  final Duration overlayExit;
 
-	/// Toast 停留時間。
-	final Duration toastDwell;
+  /// Toast 停留時間。
+  final Duration toastDwell;
 
-	/// 游標停留多久才顯示 tooltip。
-	final Duration tooltipDelay;
-	final Duration tooltipDwell;
-	final Duration spinnerCycle;
+  /// 游標停留多久才顯示 tooltip。
+  final Duration tooltipDelay;
+  final Duration tooltipDwell;
+  final Duration spinnerCycle;
 
-	/// 長按判定門檻。這不是動畫，但同屬「時間」這個維度，而且**是無障礙參數**——
-	/// 行動不便的使用者需要更長的門檻。放進 theme 才能整體調整。
-	final Duration longPressThreshold;
+  /// 長按判定門檻。這不是動畫，但同屬「時間」這個維度，而且**是無障礙參數**——
+  /// 行動不便的使用者需要更長的門檻。放進 theme 才能整體調整。
+  final Duration longPressThreshold;
 
-	final Curve standard;
-	final Curve emphasized;
+  final Curve standard;
+  final Curve emphasized;
 
-	static const KlpMotionTheme standardMotion = _defaultMotion;
+  static const KlpMotionTheme standardMotion = _defaultMotion;
 
-	/// 尊重系統的「減少動態效果」設定。無障礙規則屬於庫的責任，不該由每個消費者各自實作
-	/// ——那必然會有人漏掉。
-	KlpMotionTheme reduced() => copyWith(
-		stateTransition: Duration.zero,
-		overlayEnter: Duration.zero,
-		overlayExit: Duration.zero,
-	);
+  /// 尊重系統的「減少動態效果」設定。無障礙規則屬於庫的責任，不該由每個消費者各自實作
+  /// ——那必然會有人漏掉。
+  KlpMotionTheme reduced() => copyWith(
+    stateTransition: Duration.zero,
+    overlayEnter: Duration.zero,
+    overlayExit: Duration.zero,
+  );
 
-	@override
-	KlpMotionTheme copyWith({
-		Duration? themeTransition,
-		Duration? styleTransition,
-		Duration? stateTransition,
-		Duration? overlayEnter,
-		Duration? overlayExit,
-		Duration? toastDwell,
-		Duration? tooltipDelay,
-		Duration? tooltipDwell,
-		Duration? spinnerCycle,
-		Duration? longPressThreshold,
-		Curve? standard,
-		Curve? emphasized,
-	}) {
-		return KlpMotionTheme(
-			themeTransition: themeTransition ?? this.themeTransition,
-			styleTransition: styleTransition ?? this.styleTransition,
-			stateTransition: stateTransition ?? this.stateTransition,
-			overlayEnter: overlayEnter ?? this.overlayEnter,
-			overlayExit: overlayExit ?? this.overlayExit,
-			toastDwell: toastDwell ?? this.toastDwell,
-			tooltipDelay: tooltipDelay ?? this.tooltipDelay,
-			tooltipDwell: tooltipDwell ?? this.tooltipDwell,
-			spinnerCycle: spinnerCycle ?? this.spinnerCycle,
-			longPressThreshold: longPressThreshold ?? this.longPressThreshold,
-			standard: standard ?? this.standard,
-			emphasized: emphasized ?? this.emphasized,
-		);
-	}
+  @override
+  KlpMotionTheme copyWith({
+    Duration? themeTransition,
+    Duration? styleTransition,
+    Duration? stateTransition,
+    Duration? overlayEnter,
+    Duration? overlayExit,
+    Duration? toastDwell,
+    Duration? tooltipDelay,
+    Duration? tooltipDwell,
+    Duration? spinnerCycle,
+    Duration? longPressThreshold,
+    Curve? standard,
+    Curve? emphasized,
+  }) {
+    return KlpMotionTheme(
+      themeTransition: themeTransition ?? this.themeTransition,
+      styleTransition: styleTransition ?? this.styleTransition,
+      stateTransition: stateTransition ?? this.stateTransition,
+      overlayEnter: overlayEnter ?? this.overlayEnter,
+      overlayExit: overlayExit ?? this.overlayExit,
+      toastDwell: toastDwell ?? this.toastDwell,
+      tooltipDelay: tooltipDelay ?? this.tooltipDelay,
+      tooltipDwell: tooltipDwell ?? this.tooltipDwell,
+      spinnerCycle: spinnerCycle ?? this.spinnerCycle,
+      longPressThreshold: longPressThreshold ?? this.longPressThreshold,
+      standard: standard ?? this.standard,
+      emphasized: emphasized ?? this.emphasized,
+    );
+  }
 
-	@override
-	KlpMotionTheme lerp(covariant KlpMotionTheme? other, double t) {
-		if (other == null) return this;
-		// duration 與 curve 沒有有意義的中間值：動畫進行中改變自身時長會造成跳動，
-		// 因此在中點直接切換，而不是內插。
-		return t < 0.5 ? this : other;
-	}
+  @override
+  KlpMotionTheme lerp(covariant KlpMotionTheme? other, double t) {
+    if (other == null) return this;
+    // duration 與 curve 沒有有意義的中間值：動畫進行中改變自身時長會造成跳動，
+    // 因此在中點直接切換，而不是內插。
+    return t < 0.5 ? this : other;
+  }
 
-	@override
-	bool operator ==(Object other) =>
-			identical(this, other) ||
-			other is KlpMotionTheme &&
-					themeTransition == other.themeTransition &&
-					styleTransition == other.styleTransition &&
-					stateTransition == other.stateTransition &&
-					overlayEnter == other.overlayEnter &&
-					overlayExit == other.overlayExit &&
-					toastDwell == other.toastDwell &&
-					tooltipDelay == other.tooltipDelay &&
-					tooltipDwell == other.tooltipDwell &&
-					spinnerCycle == other.spinnerCycle &&
-					longPressThreshold == other.longPressThreshold &&
-					standard == other.standard &&
-					emphasized == other.emphasized;
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is KlpMotionTheme &&
+          themeTransition == other.themeTransition &&
+          styleTransition == other.styleTransition &&
+          stateTransition == other.stateTransition &&
+          overlayEnter == other.overlayEnter &&
+          overlayExit == other.overlayExit &&
+          toastDwell == other.toastDwell &&
+          tooltipDelay == other.tooltipDelay &&
+          tooltipDwell == other.tooltipDwell &&
+          spinnerCycle == other.spinnerCycle &&
+          longPressThreshold == other.longPressThreshold &&
+          standard == other.standard &&
+          emphasized == other.emphasized;
 
-	@override
-	int get hashCode => Object.hash(
-		themeTransition,
-		styleTransition,
-		stateTransition,
-		overlayEnter,
-		overlayExit,
-		toastDwell,
-		tooltipDelay,
-		tooltipDwell,
-		spinnerCycle,
-		longPressThreshold,
-		standard,
-		emphasized,
-	);
+  @override
+  int get hashCode => Object.hash(
+    themeTransition,
+    styleTransition,
+    stateTransition,
+    overlayEnter,
+    overlayExit,
+    toastDwell,
+    tooltipDelay,
+    tooltipDwell,
+    spinnerCycle,
+    longPressThreshold,
+    standard,
+    emphasized,
+  );
 }

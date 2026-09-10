@@ -44,8 +44,8 @@ EnumDeclaration · public · [lib/src/features/workspace/shell/panel/klp_panel_t
 
 | 成員 | 可見性 | 簽章／型別 | 來源註解摘要 | 證據 |
 |---|---|---|---|---|
-| enum value <code>surface</code> | public | <code>surface</code> |  | [lib/src/features/workspace/shell/panel/klp_panel_tone.dart:3](../../../../../../../lib/src/features/workspace/shell/panel/klp_panel_tone.dart#L3) |
-| enum value <code>stage</code> | public | <code>stage</code> |  | [lib/src/features/workspace/shell/panel/klp_panel_tone.dart:4](../../../../../../../lib/src/features/workspace/shell/panel/klp_panel_tone.dart#L4) |
+| enum value <code>surface</code> | public | <code>surface</code> |  | [lib/src/features/workspace/shell/panel/klp_panel_tone.dart:2](../../../../../../../lib/src/features/workspace/shell/panel/klp_panel_tone.dart#L2) |
+| enum value <code>stage</code> | public | <code>stage</code> |  | [lib/src/features/workspace/shell/panel/klp_panel_tone.dart:2](../../../../../../../lib/src/features/workspace/shell/panel/klp_panel_tone.dart#L2) |
 
 ## 閱讀說明與限制
 

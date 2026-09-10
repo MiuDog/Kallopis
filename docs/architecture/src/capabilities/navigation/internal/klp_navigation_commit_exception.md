@@ -52,11 +52,11 @@ ClassDeclaration · public · [lib/src/capabilities/navigation/internal/klp_navi
 
 | 成員 | 可見性 | 簽章／型別 | 來源註解摘要 | 證據 |
 |---|---|---|---|---|
-| field <code>committed</code> | public | <code>final bool committed</code> |  | [lib/src/capabilities/navigation/internal/klp_navigation_commit_exception.dart:4](../../../../../../lib/src/capabilities/navigation/internal/klp_navigation_commit_exception.dart#L4) |
-| field <code>cause</code> | public | <code>final Object cause</code> |  | [lib/src/capabilities/navigation/internal/klp_navigation_commit_exception.dart:5](../../../../../../lib/src/capabilities/navigation/internal/klp_navigation_commit_exception.dart#L5) |
-| field <code>stackTrace</code> | public | <code>final StackTrace stackTrace</code> |  | [lib/src/capabilities/navigation/internal/klp_navigation_commit_exception.dart:6](../../../../../../lib/src/capabilities/navigation/internal/klp_navigation_commit_exception.dart#L6) |
-| constructor <code>KlpNavigationCommitException</code> | public | <code>const KlpNavigationCommitException(this.committed, this.cause, this.stackTrace)</code> |  | [lib/src/capabilities/navigation/internal/klp_navigation_commit_exception.dart:8](../../../../../../lib/src/capabilities/navigation/internal/klp_navigation_commit_exception.dart#L8) |
-| method <code>toString</code> | public | <code>String toString()</code> |  | [lib/src/capabilities/navigation/internal/klp_navigation_commit_exception.dart:10](../../../../../../lib/src/capabilities/navigation/internal/klp_navigation_commit_exception.dart#L10) |
+| field <code>committed</code> | public | <code>final bool committed</code> |  | [lib/src/capabilities/navigation/internal/klp_navigation_commit_exception.dart:3](../../../../../../lib/src/capabilities/navigation/internal/klp_navigation_commit_exception.dart#L3) |
+| field <code>cause</code> | public | <code>final Object cause</code> |  | [lib/src/capabilities/navigation/internal/klp_navigation_commit_exception.dart:4](../../../../../../lib/src/capabilities/navigation/internal/klp_navigation_commit_exception.dart#L4) |
+| field <code>stackTrace</code> | public | <code>final StackTrace stackTrace</code> |  | [lib/src/capabilities/navigation/internal/klp_navigation_commit_exception.dart:5](../../../../../../lib/src/capabilities/navigation/internal/klp_navigation_commit_exception.dart#L5) |
+| constructor <code>KlpNavigationCommitException</code> | public | <code>const KlpNavigationCommitException( this.committed, this.cause, this.stackTrace, )</code> |  | [lib/src/capabilities/navigation/internal/klp_navigation_commit_exception.dart:7](../../../../../../lib/src/capabilities/navigation/internal/klp_navigation_commit_exception.dart#L7) |
+| method <code>toString</code> | public | <code>String toString()</code> |  | [lib/src/capabilities/navigation/internal/klp_navigation_commit_exception.dart:13](../../../../../../lib/src/capabilities/navigation/internal/klp_navigation_commit_exception.dart#L13) |
 
 ## 閱讀說明與限制
 

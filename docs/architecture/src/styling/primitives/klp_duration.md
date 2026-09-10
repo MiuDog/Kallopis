@@ -54,8 +54,8 @@ ClassDeclaration · public · [lib/src/styling/primitives/klp_duration.dart:3](.
 
 | 成員 | 可見性 | 簽章／型別 | 來源註解摘要 | 證據 |
 |---|---|---|---|---|
-| field <code>milliseconds</code> | public | <code>final int milliseconds</code> |  | [lib/src/styling/primitives/klp_duration.dart:6](../../../../../lib/src/styling/primitives/klp_duration.dart#L6) |
-| constructor <code>KlpDuration</code> | public | <code>KlpDuration(this.milliseconds)</code> |  | [lib/src/styling/primitives/klp_duration.dart:8](../../../../../lib/src/styling/primitives/klp_duration.dart#L8) |
+| field <code>milliseconds</code> | public | <code>final int milliseconds</code> |  | [lib/src/styling/primitives/klp_duration.dart:5](../../../../../lib/src/styling/primitives/klp_duration.dart#L5) |
+| constructor <code>KlpDuration</code> | public | <code>KlpDuration(this.milliseconds)</code> |  | [lib/src/styling/primitives/klp_duration.dart:7](../../../../../lib/src/styling/primitives/klp_duration.dart#L7) |
 
 ## 閱讀說明與限制
 

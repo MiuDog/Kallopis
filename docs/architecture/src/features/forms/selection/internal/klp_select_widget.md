@@ -54,12 +54,12 @@ ClassDeclaration · public · [lib/src/features/forms/selection/internal/klp_sel
 
 | 成員 | 可見性 | 簽章／型別 | 來源註解摘要 | 證據 |
 |---|---|---|---|---|
-| constructor <code>KlpSelect</code> | public | <code>const KlpSelect({super.key, required this.label, required this.value, required this.onPressed, this.enabled = true})</code> |  | [lib/src/features/forms/selection/internal/klp_select_widget.dart:5](../../../../../../../lib/src/features/forms/selection/internal/klp_select_widget.dart#L5) |
-| field <code>label</code> | public | <code>final String label</code> |  | [lib/src/features/forms/selection/internal/klp_select_widget.dart:7](../../../../../../../lib/src/features/forms/selection/internal/klp_select_widget.dart#L7) |
-| field <code>value</code> | public | <code>final String value</code> |  | [lib/src/features/forms/selection/internal/klp_select_widget.dart:8](../../../../../../../lib/src/features/forms/selection/internal/klp_select_widget.dart#L8) |
-| field <code>onPressed</code> | public | <code>final VoidCallback onPressed</code> |  | [lib/src/features/forms/selection/internal/klp_select_widget.dart:9](../../../../../../../lib/src/features/forms/selection/internal/klp_select_widget.dart#L9) |
-| field <code>enabled</code> | public | <code>final bool enabled</code> |  | [lib/src/features/forms/selection/internal/klp_select_widget.dart:10](../../../../../../../lib/src/features/forms/selection/internal/klp_select_widget.dart#L10) |
-| method <code>createState</code> | public | <code>State&lt;KlpSelect&gt; createState()</code> |  | [lib/src/features/forms/selection/internal/klp_select_widget.dart:12](../../../../../../../lib/src/features/forms/selection/internal/klp_select_widget.dart#L12) |
+| constructor <code>KlpSelect</code> | public | <code>const KlpSelect({ super.key, required this.label, required this.value, required this.onPressed, this.enabled = true, })</code> |  | [lib/src/features/forms/selection/internal/klp_select_widget.dart:5](../../../../../../../lib/src/features/forms/selection/internal/klp_select_widget.dart#L5) |
+| field <code>label</code> | public | <code>final String label</code> |  | [lib/src/features/forms/selection/internal/klp_select_widget.dart:13](../../../../../../../lib/src/features/forms/selection/internal/klp_select_widget.dart#L13) |
+| field <code>value</code> | public | <code>final String value</code> |  | [lib/src/features/forms/selection/internal/klp_select_widget.dart:14](../../../../../../../lib/src/features/forms/selection/internal/klp_select_widget.dart#L14) |
+| field <code>onPressed</code> | public | <code>final VoidCallback onPressed</code> |  | [lib/src/features/forms/selection/internal/klp_select_widget.dart:15](../../../../../../../lib/src/features/forms/selection/internal/klp_select_widget.dart#L15) |
+| field <code>enabled</code> | public | <code>final bool enabled</code> |  | [lib/src/features/forms/selection/internal/klp_select_widget.dart:16](../../../../../../../lib/src/features/forms/selection/internal/klp_select_widget.dart#L16) |
+| method <code>createState</code> | public | <code>State&lt;KlpSelect&gt; createState()</code> |  | [lib/src/features/forms/selection/internal/klp_select_widget.dart:18](../../../../../../../lib/src/features/forms/selection/internal/klp_select_widget.dart#L18) |
 
 ## 閱讀說明與限制
 

@@ -4,10 +4,7 @@ FutureOr<KlpNavigationStart> _startNavigation(
   Iterable<KlpRoutePolicy> policies,
   KlpLocation<Object?> initial,
   Iterable<KlpLocation<Object?>>? restored,
-  void Function(
-    KlpNavigationSnapshot, {
-    required bool replaceRouteInformation,
-  })
+  void Function(KlpNavigationSnapshot, {required bool replaceRouteInformation})
   commit,
   KlpNavigationCancellation cancellation,
 ) {
@@ -123,10 +120,7 @@ KlpNavigationStart _commitStart(
     KlpNavigationCompleted<void>(null),
   );
   try {
-    machine.commit(
-      machine._state.value,
-      replaceRouteInformation: false,
-    );
+    machine.commit(machine._state.value, replaceRouteInformation: false);
   } on KlpNavigationCommitException catch (error) {
     if (!error.committed) {
       return _rejectStart(

@@ -54,9 +54,9 @@ ClassDeclaration · public · [lib/src/foundation/binding/internal/klp_bound_tex
 
 | 成員 | 可見性 | 簽章／型別 | 來源註解摘要 | 證據 |
 |---|---|---|---|---|
-| field <code>text</code> | public | <code>final String text</code> |  | [lib/src/foundation/binding/internal/klp_bound_text.dart:6](../../../../../../lib/src/foundation/binding/internal/klp_bound_text.dart#L6) |
-| field <code>style</code> | public | <code>final KlpBoundTextStyle style</code> |  | [lib/src/foundation/binding/internal/klp_bound_text.dart:7](../../../../../../lib/src/foundation/binding/internal/klp_bound_text.dart#L7) |
-| constructor <code>KlpBoundText</code> | public | <code>const KlpBoundText(this.text, this.style)</code> |  | [lib/src/foundation/binding/internal/klp_bound_text.dart:9](../../../../../../lib/src/foundation/binding/internal/klp_bound_text.dart#L9) |
+| field <code>text</code> | public | <code>final String text</code> |  | [lib/src/foundation/binding/internal/klp_bound_text.dart:5](../../../../../../lib/src/foundation/binding/internal/klp_bound_text.dart#L5) |
+| field <code>style</code> | public | <code>final KlpBoundTextStyle style</code> |  | [lib/src/foundation/binding/internal/klp_bound_text.dart:6](../../../../../../lib/src/foundation/binding/internal/klp_bound_text.dart#L6) |
+| constructor <code>KlpBoundText</code> | public | <code>const KlpBoundText(this.text, this.style)</code> |  | [lib/src/foundation/binding/internal/klp_bound_text.dart:8](../../../../../../lib/src/foundation/binding/internal/klp_bound_text.dart#L8) |
 
 ## 閱讀說明與限制
 

@@ -44,7 +44,7 @@ EnumDeclaration · public · [lib/src/foundation/content/klp_text_tracking.dart:
 
 | 成員 | 可見性 | 簽章／型別 | 來源註解摘要 | 證據 |
 |---|---|---|---|---|
-| enum value <code>placeholder</code> | public | <code>placeholder</code> |  | [lib/src/foundation/content/klp_text_tracking.dart:3](../../../../../lib/src/foundation/content/klp_text_tracking.dart#L3) |
+| enum value <code>placeholder</code> | public | <code>placeholder</code> |  | [lib/src/foundation/content/klp_text_tracking.dart:2](../../../../../lib/src/foundation/content/klp_text_tracking.dart#L2) |
 
 ## 閱讀說明與限制
 

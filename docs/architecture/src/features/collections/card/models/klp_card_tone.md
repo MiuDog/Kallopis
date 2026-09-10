@@ -46,10 +46,10 @@ EnumDeclaration · public · [lib/src/features/collections/card/models/klp_card_
 
 | 成員 | 可見性 | 簽章／型別 | 來源註解摘要 | 證據 |
 |---|---|---|---|---|
-| enum value <code>component</code> | public | <code>component</code> |  | [lib/src/features/collections/card/models/klp_card_tone.dart:5](../../../../../../../lib/src/features/collections/card/models/klp_card_tone.dart#L5) |
-| enum value <code>surface</code> | public | <code>surface</code> |  | [lib/src/features/collections/card/models/klp_card_tone.dart:6](../../../../../../../lib/src/features/collections/card/models/klp_card_tone.dart#L6) |
-| enum value <code>muted</code> | public | <code>muted</code> |  | [lib/src/features/collections/card/models/klp_card_tone.dart:7](../../../../../../../lib/src/features/collections/card/models/klp_card_tone.dart#L7) |
-| enum value <code>raised</code> | public | <code>raised</code> |  | [lib/src/features/collections/card/models/klp_card_tone.dart:8](../../../../../../../lib/src/features/collections/card/models/klp_card_tone.dart#L8) |
+| enum value <code>component</code> | public | <code>component</code> |  | [lib/src/features/collections/card/models/klp_card_tone.dart:4](../../../../../../../lib/src/features/collections/card/models/klp_card_tone.dart#L4) |
+| enum value <code>surface</code> | public | <code>surface</code> |  | [lib/src/features/collections/card/models/klp_card_tone.dart:4](../../../../../../../lib/src/features/collections/card/models/klp_card_tone.dart#L4) |
+| enum value <code>muted</code> | public | <code>muted</code> |  | [lib/src/features/collections/card/models/klp_card_tone.dart:4](../../../../../../../lib/src/features/collections/card/models/klp_card_tone.dart#L4) |
+| enum value <code>raised</code> | public | <code>raised</code> |  | [lib/src/features/collections/card/models/klp_card_tone.dart:4](../../../../../../../lib/src/features/collections/card/models/klp_card_tone.dart#L4) |
 
 ## 閱讀說明與限制
 

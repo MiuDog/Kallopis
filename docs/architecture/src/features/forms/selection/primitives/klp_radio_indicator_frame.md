@@ -52,11 +52,11 @@ ClassDeclaration · private · [lib/src/features/forms/selection/primitives/klp_
 
 | 成員 | 可見性 | 簽章／型別 | 來源註解摘要 | 證據 |
 |---|---|---|---|---|
-| constructor <code>_KlpRadioIndicatorFrame</code> | private | <code>const _KlpRadioIndicatorFrame({required this.label, required this.selected, required this.style})</code> |  | [lib/src/features/forms/selection/primitives/klp_radio_indicator_frame.dart:4](../../../../../../../lib/src/features/forms/selection/primitives/klp_radio_indicator_frame.dart#L4) |
-| field <code>label</code> | public | <code>final String label</code> |  | [lib/src/features/forms/selection/primitives/klp_radio_indicator_frame.dart:6](../../../../../../../lib/src/features/forms/selection/primitives/klp_radio_indicator_frame.dart#L6) |
-| field <code>selected</code> | public | <code>final bool selected</code> |  | [lib/src/features/forms/selection/primitives/klp_radio_indicator_frame.dart:7](../../../../../../../lib/src/features/forms/selection/primitives/klp_radio_indicator_frame.dart#L7) |
-| field <code>style</code> | public | <code>final _KlpRadioItemStyle style</code> |  | [lib/src/features/forms/selection/primitives/klp_radio_indicator_frame.dart:8](../../../../../../../lib/src/features/forms/selection/primitives/klp_radio_indicator_frame.dart#L8) |
-| method <code>build</code> | public | <code>Widget build(BuildContext context)</code> |  | [lib/src/features/forms/selection/primitives/klp_radio_indicator_frame.dart:10](../../../../../../../lib/src/features/forms/selection/primitives/klp_radio_indicator_frame.dart#L10) |
+| constructor <code>_KlpRadioIndicatorFrame</code> | private | <code>const _KlpRadioIndicatorFrame({ required this.label, required this.selected, required this.style, })</code> |  | [lib/src/features/forms/selection/primitives/klp_radio_indicator_frame.dart:4](../../../../../../../lib/src/features/forms/selection/primitives/klp_radio_indicator_frame.dart#L4) |
+| field <code>label</code> | public | <code>final String label</code> |  | [lib/src/features/forms/selection/primitives/klp_radio_indicator_frame.dart:10](../../../../../../../lib/src/features/forms/selection/primitives/klp_radio_indicator_frame.dart#L10) |
+| field <code>selected</code> | public | <code>final bool selected</code> |  | [lib/src/features/forms/selection/primitives/klp_radio_indicator_frame.dart:11](../../../../../../../lib/src/features/forms/selection/primitives/klp_radio_indicator_frame.dart#L11) |
+| field <code>style</code> | public | <code>final _KlpRadioItemStyle style</code> |  | [lib/src/features/forms/selection/primitives/klp_radio_indicator_frame.dart:12](../../../../../../../lib/src/features/forms/selection/primitives/klp_radio_indicator_frame.dart#L12) |
+| method <code>build</code> | public | <code>Widget build(BuildContext context)</code> |  | [lib/src/features/forms/selection/primitives/klp_radio_indicator_frame.dart:14](../../../../../../../lib/src/features/forms/selection/primitives/klp_radio_indicator_frame.dart#L14) |
 
 ## 閱讀說明與限制
 

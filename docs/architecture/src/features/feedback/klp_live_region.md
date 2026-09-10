@@ -60,11 +60,11 @@ ClassDeclaration · public · [lib/src/features/feedback/klp_live_region.dart:7]
 
 | 成員 | 可見性 | 簽章／型別 | 來源註解摘要 | 證據 |
 |---|---|---|---|---|
-| constructor <code>KlpLiveRegion</code> | public | <code>const KlpLiveRegion({super.key, required this.message, this.child = const KlpBox.shrink()})</code> |  | [lib/src/features/feedback/klp_live_region.dart:9](../../../../../lib/src/features/feedback/klp_live_region.dart#L9) |
-| constructor <code>fromDescendants</code> | public | <code>const KlpLiveRegion.fromDescendants({super.key, required this.child})</code> |  | [lib/src/features/feedback/klp_live_region.dart:11](../../../../../lib/src/features/feedback/klp_live_region.dart#L11) |
-| field <code>message</code> | public | <code>final String? message</code> |  | [lib/src/features/feedback/klp_live_region.dart:13](../../../../../lib/src/features/feedback/klp_live_region.dart#L13) |
-| field <code>child</code> | public | <code>final Widget child</code> |  | [lib/src/features/feedback/klp_live_region.dart:14](../../../../../lib/src/features/feedback/klp_live_region.dart#L14) |
-| method <code>build</code> | public | <code>Widget build(BuildContext context)</code> |  | [lib/src/features/feedback/klp_live_region.dart:16](../../../../../lib/src/features/feedback/klp_live_region.dart#L16) |
+| constructor <code>KlpLiveRegion</code> | public | <code>const KlpLiveRegion({ super.key, required this.message, this.child = const KlpBox.shrink(), })</code> |  | [lib/src/features/feedback/klp_live_region.dart:9](../../../../../lib/src/features/feedback/klp_live_region.dart#L9) |
+| constructor <code>fromDescendants</code> | public | <code>const KlpLiveRegion.fromDescendants({super.key, required this.child})</code> |  | [lib/src/features/feedback/klp_live_region.dart:15](../../../../../lib/src/features/feedback/klp_live_region.dart#L15) |
+| field <code>message</code> | public | <code>final String? message</code> |  | [lib/src/features/feedback/klp_live_region.dart:18](../../../../../lib/src/features/feedback/klp_live_region.dart#L18) |
+| field <code>child</code> | public | <code>final Widget child</code> |  | [lib/src/features/feedback/klp_live_region.dart:19](../../../../../lib/src/features/feedback/klp_live_region.dart#L19) |
+| method <code>build</code> | public | <code>Widget build(BuildContext context)</code> |  | [lib/src/features/feedback/klp_live_region.dart:21](../../../../../lib/src/features/feedback/klp_live_region.dart#L21) |
 
 ## 閱讀說明與限制
 

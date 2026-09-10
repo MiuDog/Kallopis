@@ -46,11 +46,11 @@ ClassDeclaration · public · [lib/src/foundation/binding/internal/klp_bound_com
 
 | 成員 | 可見性 | 簽章／型別 | 來源註解摘要 | 證據 |
 |---|---|---|---|---|
-| field <code>id</code> | public | <code>final String id</code> |  | [lib/src/foundation/binding/internal/klp_bound_component.dart:6](../../../../../../lib/src/foundation/binding/internal/klp_bound_component.dart#L6) |
-| field <code>definitionId</code> | public | <code>final String definitionId</code> |  | [lib/src/foundation/binding/internal/klp_bound_component.dart:7](../../../../../../lib/src/foundation/binding/internal/klp_bound_component.dart#L7) |
-| field <code>content</code> | public | <code>final KlpBoundTemplate content</code> |  | [lib/src/foundation/binding/internal/klp_bound_component.dart:8](../../../../../../lib/src/foundation/binding/internal/klp_bound_component.dart#L8) |
-| field <code>accessibilityLabel</code> | public | <code>final String? accessibilityLabel</code> |  | [lib/src/foundation/binding/internal/klp_bound_component.dart:9](../../../../../../lib/src/foundation/binding/internal/klp_bound_component.dart#L9) |
-| constructor <code>KlpBoundComponent</code> | public | <code>const KlpBoundComponent( this.id, this.definitionId, this.content, [ this.accessibilityLabel, ])</code> |  | [lib/src/foundation/binding/internal/klp_bound_component.dart:11](../../../../../../lib/src/foundation/binding/internal/klp_bound_component.dart#L11) |
+| field <code>id</code> | public | <code>final String id</code> |  | [lib/src/foundation/binding/internal/klp_bound_component.dart:5](../../../../../../lib/src/foundation/binding/internal/klp_bound_component.dart#L5) |
+| field <code>definitionId</code> | public | <code>final String definitionId</code> |  | [lib/src/foundation/binding/internal/klp_bound_component.dart:6](../../../../../../lib/src/foundation/binding/internal/klp_bound_component.dart#L6) |
+| field <code>content</code> | public | <code>final KlpBoundTemplate content</code> |  | [lib/src/foundation/binding/internal/klp_bound_component.dart:7](../../../../../../lib/src/foundation/binding/internal/klp_bound_component.dart#L7) |
+| field <code>accessibilityLabel</code> | public | <code>final String? accessibilityLabel</code> |  | [lib/src/foundation/binding/internal/klp_bound_component.dart:8](../../../../../../lib/src/foundation/binding/internal/klp_bound_component.dart#L8) |
+| constructor <code>KlpBoundComponent</code> | public | <code>const KlpBoundComponent( this.id, this.definitionId, this.content, [ this.accessibilityLabel, ])</code> |  | [lib/src/foundation/binding/internal/klp_bound_component.dart:10](../../../../../../lib/src/foundation/binding/internal/klp_bound_component.dart#L10) |
 
 ## 閱讀說明與限制
 

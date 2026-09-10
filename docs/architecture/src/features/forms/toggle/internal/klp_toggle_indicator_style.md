@@ -54,7 +54,7 @@ ClassDeclaration · private · [lib/src/features/forms/toggle/internal/klp_toggl
 | field <code>trackColor</code> | public | <code>final Color trackColor</code> |  | [lib/src/features/forms/toggle/internal/klp_toggle_indicator_style.dart:23](../../../../../../../lib/src/features/forms/toggle/internal/klp_toggle_indicator_style.dart#L23) |
 | field <code>thumbColor</code> | public | <code>final Color thumbColor</code> |  | [lib/src/features/forms/toggle/internal/klp_toggle_indicator_style.dart:24](../../../../../../../lib/src/features/forms/toggle/internal/klp_toggle_indicator_style.dart#L24) |
 | field <code>alignment</code> | public | <code>final Alignment alignment</code> |  | [lib/src/features/forms/toggle/internal/klp_toggle_indicator_style.dart:25](../../../../../../../lib/src/features/forms/toggle/internal/klp_toggle_indicator_style.dart#L25) |
-| constructor <code>resolve</code> | public | <code>factory _KlpToggleIndicatorStyle.resolve(KlpTheme klp, {required bool value, required bool enabled})</code> |  | [lib/src/features/forms/toggle/internal/klp_toggle_indicator_style.dart:27](../../../../../../../lib/src/features/forms/toggle/internal/klp_toggle_indicator_style.dart#L27) |
+| constructor <code>resolve</code> | public | <code>factory _KlpToggleIndicatorStyle.resolve( KlpTheme klp, { required bool value, required bool enabled, })</code> |  | [lib/src/features/forms/toggle/internal/klp_toggle_indicator_style.dart:27](../../../../../../../lib/src/features/forms/toggle/internal/klp_toggle_indicator_style.dart#L27) |
 
 ## 閱讀說明與限制
 

@@ -54,10 +54,10 @@ ClassDeclaration · public · [lib/src/foundation/binding/internal/klp_bound_ext
 
 | 成員 | 可見性 | 簽章／型別 | 來源註解摘要 | 證據 |
 |---|---|---|---|---|
-| field <code>axis</code> | public | <code>final KlpAxis axis</code> |  | [lib/src/foundation/binding/internal/klp_bound_extent.dart:6](../../../../../../lib/src/foundation/binding/internal/klp_bound_extent.dart#L6) |
-| field <code>extent</code> | public | <code>final KlpDistance extent</code> |  | [lib/src/foundation/binding/internal/klp_bound_extent.dart:7](../../../../../../lib/src/foundation/binding/internal/klp_bound_extent.dart#L7) |
-| field <code>child</code> | public | <code>final KlpBoundTemplate child</code> |  | [lib/src/foundation/binding/internal/klp_bound_extent.dart:8](../../../../../../lib/src/foundation/binding/internal/klp_bound_extent.dart#L8) |
-| constructor <code>KlpBoundExtent</code> | public | <code>const KlpBoundExtent(this.axis, this.extent, this.child)</code> |  | [lib/src/foundation/binding/internal/klp_bound_extent.dart:10](../../../../../../lib/src/foundation/binding/internal/klp_bound_extent.dart#L10) |
+| field <code>axis</code> | public | <code>final KlpAxis axis</code> |  | [lib/src/foundation/binding/internal/klp_bound_extent.dart:5](../../../../../../lib/src/foundation/binding/internal/klp_bound_extent.dart#L5) |
+| field <code>extent</code> | public | <code>final KlpDistance extent</code> |  | [lib/src/foundation/binding/internal/klp_bound_extent.dart:6](../../../../../../lib/src/foundation/binding/internal/klp_bound_extent.dart#L6) |
+| field <code>child</code> | public | <code>final KlpBoundTemplate child</code> |  | [lib/src/foundation/binding/internal/klp_bound_extent.dart:7](../../../../../../lib/src/foundation/binding/internal/klp_bound_extent.dart#L7) |
+| constructor <code>KlpBoundExtent</code> | public | <code>const KlpBoundExtent(this.axis, this.extent, this.child)</code> |  | [lib/src/foundation/binding/internal/klp_bound_extent.dart:9](../../../../../../lib/src/foundation/binding/internal/klp_bound_extent.dart#L9) |
 
 ## 閱讀說明與限制
 

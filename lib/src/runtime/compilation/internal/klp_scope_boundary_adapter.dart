@@ -13,26 +13,34 @@ import 'klp_prepared_activation_policy.dart';
 
 /// 作用域只隔離識別，不另建 runtime 或改寫子節點資料。
 final class KlpScopeBoundaryAdapter implements KlpNodeAdapter {
+  const KlpScopeBoundaryAdapter();
 
-	const KlpScopeBoundaryAdapter();
+  @override
+  KlpDefinition<KlpNode> get contract => KlpScopeBoundary.contract;
 
-	@override
-	KlpDefinition<KlpNode> get contract => KlpScopeBoundary.contract;
-
-	@override
-	KlpPreparedNode prepare(KlpNode node, KlpValidatedNode snapshot, KlpPrepareContext context) => _PreparedBoundary((node as KlpScopeBoundary).active);
+  @override
+  KlpPreparedNode prepare(
+    KlpNode node,
+    KlpValidatedNode snapshot,
+    KlpPrepareContext context,
+  ) => _PreparedBoundary((node as KlpScopeBoundary).active);
 }
 
-final class _PreparedBoundary implements KlpPreparedNode, KlpPreparedActivationPolicy {
+final class _PreparedBoundary
+    implements KlpPreparedNode, KlpPreparedActivationPolicy {
+  @override
+  final bool descendantsActive;
 
-	@override
-	final bool descendantsActive;
+  const _PreparedBoundary(this.descendantsActive);
 
-	const _PreparedBoundary(this.descendantsActive);
+  @override
+  KlpPlacementResource createResource(KlpValidatedNode node) =>
+      KlpDefaultPlacement(node);
 
-	@override
-	KlpPlacementResource createResource(KlpValidatedNode node) => KlpDefaultPlacement(node);
-
-	@override
-	KlpBoundTemplate materialize(KlpPlacementResource resource, List<KlpBoundTemplate> children, KlpFrameLease lease) => children.single;
+  @override
+  KlpBoundTemplate materialize(
+    KlpPlacementResource resource,
+    List<KlpBoundTemplate> children,
+    KlpFrameLease lease,
+  ) => children.single;
 }

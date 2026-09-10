@@ -33,7 +33,7 @@ flowchart TD
 
 FunctionDeclaration · public · [lib/src/features/workspace/shell/window/klp_window_header_height.dart:3](../../../../../../../lib/src/features/workspace/shell/window/klp_window_header_height.dart#L3)
 
-<code>double klpWindowHeaderHeight(KlpGeometryTheme geometry, {double? windowHeaderMargin})</code>
+<code>double klpWindowHeaderHeight( KlpGeometryTheme geometry, { double? windowHeaderMargin, })</code>
 
 來源註解摘要：解析 Header 的版面占位高度。
 

@@ -54,8 +54,8 @@ ClassDeclaration · private · [lib/src/features/forms/input/internal/klp_compou
 |---|---|---|---|---|
 | field <code>_expanded</code> | private | <code>bool _expanded</code> |  | [lib/src/features/forms/input/internal/klp_compound_field_state.dart:4](../../../../../../../lib/src/features/forms/input/internal/klp_compound_field_state.dart#L4) |
 | method <code>_toggleOptions</code> | private | <code>void _toggleOptions()</code> |  | [lib/src/features/forms/input/internal/klp_compound_field_state.dart:6](../../../../../../../lib/src/features/forms/input/internal/klp_compound_field_state.dart#L6) |
-| method <code>_selectOption</code> | private | <code>void _selectOption(String id)</code> |  | [lib/src/features/forms/input/internal/klp_compound_field_state.dart:16](../../../../../../../lib/src/features/forms/input/internal/klp_compound_field_state.dart#L16) |
-| method <code>build</code> | public | <code>Widget build(BuildContext context)</code> |  | [lib/src/features/forms/input/internal/klp_compound_field_state.dart:21](../../../../../../../lib/src/features/forms/input/internal/klp_compound_field_state.dart#L21) |
+| method <code>_selectOption</code> | private | <code>void _selectOption(String id)</code> |  | [lib/src/features/forms/input/internal/klp_compound_field_state.dart:14](../../../../../../../lib/src/features/forms/input/internal/klp_compound_field_state.dart#L14) |
+| method <code>build</code> | public | <code>Widget build(BuildContext context)</code> |  | [lib/src/features/forms/input/internal/klp_compound_field_state.dart:19](../../../../../../../lib/src/features/forms/input/internal/klp_compound_field_state.dart#L19) |
 
 ## 閱讀說明與限制
 

@@ -52,10 +52,10 @@ ClassDeclaration · private · [lib/src/features/navigation/widgets/rail/primiti
 
 | 成員 | 可見性 | 簽章／型別 | 來源註解摘要 | 證據 |
 |---|---|---|---|---|
-| constructor <code>_KlpRailTooltipAnchor</code> | private | <code>const _KlpRailTooltipAnchor({ required this.message, required this.child, })</code> |  | [lib/src/features/navigation/widgets/rail/primitives/klp_rail_tooltip_anchor.dart:4](../../../../../../../../lib/src/features/navigation/widgets/rail/primitives/klp_rail_tooltip_anchor.dart#L4) |
-| field <code>message</code> | public | <code>final String message</code> |  | [lib/src/features/navigation/widgets/rail/primitives/klp_rail_tooltip_anchor.dart:9](../../../../../../../../lib/src/features/navigation/widgets/rail/primitives/klp_rail_tooltip_anchor.dart#L9) |
-| field <code>child</code> | public | <code>final Widget child</code> |  | [lib/src/features/navigation/widgets/rail/primitives/klp_rail_tooltip_anchor.dart:10](../../../../../../../../lib/src/features/navigation/widgets/rail/primitives/klp_rail_tooltip_anchor.dart#L10) |
-| method <code>createState</code> | public | <code>State&lt;_KlpRailTooltipAnchor&gt; createState()</code> |  | [lib/src/features/navigation/widgets/rail/primitives/klp_rail_tooltip_anchor.dart:12](../../../../../../../../lib/src/features/navigation/widgets/rail/primitives/klp_rail_tooltip_anchor.dart#L12) |
+| constructor <code>_KlpRailTooltipAnchor</code> | private | <code>const _KlpRailTooltipAnchor({required this.message, required this.child})</code> |  | [lib/src/features/navigation/widgets/rail/primitives/klp_rail_tooltip_anchor.dart:4](../../../../../../../../lib/src/features/navigation/widgets/rail/primitives/klp_rail_tooltip_anchor.dart#L4) |
+| field <code>message</code> | public | <code>final String message</code> |  | [lib/src/features/navigation/widgets/rail/primitives/klp_rail_tooltip_anchor.dart:6](../../../../../../../../lib/src/features/navigation/widgets/rail/primitives/klp_rail_tooltip_anchor.dart#L6) |
+| field <code>child</code> | public | <code>final Widget child</code> |  | [lib/src/features/navigation/widgets/rail/primitives/klp_rail_tooltip_anchor.dart:7](../../../../../../../../lib/src/features/navigation/widgets/rail/primitives/klp_rail_tooltip_anchor.dart#L7) |
+| method <code>createState</code> | public | <code>State&lt;_KlpRailTooltipAnchor&gt; createState()</code> |  | [lib/src/features/navigation/widgets/rail/primitives/klp_rail_tooltip_anchor.dart:9](../../../../../../../../lib/src/features/navigation/widgets/rail/primitives/klp_rail_tooltip_anchor.dart#L9) |
 
 ## 閱讀說明與限制
 

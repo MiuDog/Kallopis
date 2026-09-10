@@ -75,7 +75,10 @@ void main() {
     expect(frame.size, const Size(1380, 880));
     expect(navigation.width, layout.settingsNavigationWidth);
     expect(content.left - navigation.right, layout.settingsPaneGap);
-		expect(content.width, frame.width - navigation.width - layout.settingsPaneGap);
+    expect(
+      content.width,
+      frame.width - navigation.width - layout.settingsPaneGap,
+    );
     expect(frame.center, const Offset(960, 516));
   });
 
@@ -102,14 +105,14 @@ void main() {
     final project = find.byKey(const ValueKey('klp-settings-scope-0'));
     final application = find.byKey(const ValueKey('klp-settings-scope-1'));
     expect(tester.getSize(project).width, tester.getSize(application).width);
-		expect(
-			tester.getSize(project).height,
-			tester
-				.element(find.byType(KlpSettingsScopeSwitcher))
-				.klp
-				.space
-				.controlHeightXSmall,
-		);
+    expect(
+      tester.getSize(project).height,
+      tester
+          .element(find.byType(KlpSettingsScopeSwitcher))
+          .klp
+          .space
+          .controlHeightXSmall,
+    );
 
     await tester.tap(project);
     await tester.pump();
@@ -136,9 +139,9 @@ void main() {
       find.byKey(const ValueKey('klp-settings-field-guide')),
     );
     expect(surface.border, isNotNull);
-		final tileCenter = tester.getRect(find.byType(KlpListTile)).center.dy;
-		final titleCenter = tester.getRect(find.text('Appearance')).center.dy;
-		expect(titleCenter, closeTo(tileCenter, 1));
+    final tileCenter = tester.getRect(find.byType(KlpListTile)).center.dy;
+    final titleCenter = tester.getRect(find.text('Appearance')).center.dy;
+    expect(titleCenter, closeTo(tileCenter, 1));
   });
 
   testWidgets('settings page 的拖曳寬度受 semantic 範圍限制', (tester) async {
@@ -201,39 +204,39 @@ void main() {
       findsNothing,
     );
     expect(find.byKey(const ValueKey('settings-header')), findsOneWidget);
-		final searchField = tester.widget<KlpTextField>(
-			find.descendant(
-				of: find.byType(KlpSettingsSearchField),
-				matching: find.byType(KlpTextField),
-			),
-		);
-		expect(searchField.outlined, isTrue);
+    final searchField = tester.widget<KlpTextField>(
+      find.descendant(
+        of: find.byType(KlpSettingsSearchField),
+        matching: find.byType(KlpTextField),
+      ),
+    );
+    expect(searchField.outlined, isTrue);
   });
 
-	testWidgets('message composer starts at one line and grows up to five', (
-		tester,
-	) async {
-		await tester.pumpWidget(
-			app(
-				KlpMessageComposer(
-					placeholder: 'Message',
-					sendLabel: 'Send',
-					attachLabel: 'Attach',
-					onSend: () {},
-					onAttach: () {},
-				),
-			),
-		);
+  testWidgets('message composer starts at one line and grows up to five', (
+    tester,
+  ) async {
+    await tester.pumpWidget(
+      app(
+        KlpMessageComposer(
+          placeholder: 'Message',
+          sendLabel: 'Send',
+          attachLabel: 'Attach',
+          onSend: () {},
+          onAttach: () {},
+        ),
+      ),
+    );
 
-		final field = tester.widget<KlpTextField>(
-			find.descendant(
-				of: find.byType(KlpMessageComposer),
-				matching: find.byType(KlpTextField),
-			),
-		);
-		expect(field.minLines, 1);
-		expect(field.maxLines, 5);
-	});
+    final field = tester.widget<KlpTextField>(
+      find.descendant(
+        of: find.byType(KlpMessageComposer),
+        matching: find.byType(KlpTextField),
+      ),
+    );
+    expect(field.minLines, 1);
+    expect(field.maxLines, 5);
+  });
 
   testWidgets('content pane 將 footer 保留在捲動區外', (tester) async {
     await tester.pumpWidget(
@@ -286,7 +289,7 @@ void main() {
     final space = tester.element(find.byType(KlpSettingsContentPane)).klp.space;
 
     expect(close.top - pane.top, space.tight);
-		expect(pane.right - close.right, space.contentInset);
+    expect(pane.right - close.right, space.contentInset);
   });
 
   testWidgets('theme mode picker 呈現所有選項並回報選取', (tester) async {

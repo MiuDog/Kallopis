@@ -57,10 +57,10 @@ ClassDeclaration · public · [lib/src/foundation/layout/klp_rotate.dart:5](../.
 
 | 成員 | 可見性 | 簽章／型別 | 來源註解摘要 | 證據 |
 |---|---|---|---|---|
-| constructor <code>KlpRotate</code> | public | <code>const KlpRotate({ super.key, required this.turn, required this.child, })</code> |  | [lib/src/foundation/layout/klp_rotate.dart:7](../../../../../lib/src/foundation/layout/klp_rotate.dart#L7) |
-| field <code>turn</code> | public | <code>final KlpQuarterTurn turn</code> |  | [lib/src/foundation/layout/klp_rotate.dart:13](../../../../../lib/src/foundation/layout/klp_rotate.dart#L13) |
-| field <code>child</code> | public | <code>final Widget child</code> |  | [lib/src/foundation/layout/klp_rotate.dart:14](../../../../../lib/src/foundation/layout/klp_rotate.dart#L14) |
-| method <code>build</code> | public | <code>Widget build(BuildContext context)</code> |  | [lib/src/foundation/layout/klp_rotate.dart:16](../../../../../lib/src/foundation/layout/klp_rotate.dart#L16) |
+| constructor <code>KlpRotate</code> | public | <code>const KlpRotate({super.key, required this.turn, required this.child})</code> |  | [lib/src/foundation/layout/klp_rotate.dart:7](../../../../../lib/src/foundation/layout/klp_rotate.dart#L7) |
+| field <code>turn</code> | public | <code>final KlpQuarterTurn turn</code> |  | [lib/src/foundation/layout/klp_rotate.dart:9](../../../../../lib/src/foundation/layout/klp_rotate.dart#L9) |
+| field <code>child</code> | public | <code>final Widget child</code> |  | [lib/src/foundation/layout/klp_rotate.dart:10](../../../../../lib/src/foundation/layout/klp_rotate.dart#L10) |
+| method <code>build</code> | public | <code>Widget build(BuildContext context)</code> |  | [lib/src/foundation/layout/klp_rotate.dart:12](../../../../../lib/src/foundation/layout/klp_rotate.dart#L12) |
 
 ## 閱讀說明與限制
 

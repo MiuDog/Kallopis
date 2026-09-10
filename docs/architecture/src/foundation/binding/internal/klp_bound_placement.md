@@ -54,9 +54,9 @@ ClassDeclaration · public · [lib/src/foundation/binding/internal/klp_bound_pla
 
 | 成員 | 可見性 | 簽章／型別 | 來源註解摘要 | 證據 |
 |---|---|---|---|---|
-| field <code>id</code> | public | <code>final KlpPlacementId id</code> |  | [lib/src/foundation/binding/internal/klp_bound_placement.dart:6](../../../../../../lib/src/foundation/binding/internal/klp_bound_placement.dart#L6) |
-| field <code>content</code> | public | <code>final KlpBoundTemplate content</code> |  | [lib/src/foundation/binding/internal/klp_bound_placement.dart:7](../../../../../../lib/src/foundation/binding/internal/klp_bound_placement.dart#L7) |
-| constructor <code>KlpBoundPlacement</code> | public | <code>const KlpBoundPlacement(this.id, this.content)</code> |  | [lib/src/foundation/binding/internal/klp_bound_placement.dart:9](../../../../../../lib/src/foundation/binding/internal/klp_bound_placement.dart#L9) |
+| field <code>id</code> | public | <code>final KlpPlacementId id</code> |  | [lib/src/foundation/binding/internal/klp_bound_placement.dart:5](../../../../../../lib/src/foundation/binding/internal/klp_bound_placement.dart#L5) |
+| field <code>content</code> | public | <code>final KlpBoundTemplate content</code> |  | [lib/src/foundation/binding/internal/klp_bound_placement.dart:6](../../../../../../lib/src/foundation/binding/internal/klp_bound_placement.dart#L6) |
+| constructor <code>KlpBoundPlacement</code> | public | <code>const KlpBoundPlacement(this.id, this.content)</code> |  | [lib/src/foundation/binding/internal/klp_bound_placement.dart:8](../../../../../../lib/src/foundation/binding/internal/klp_bound_placement.dart#L8) |
 
 ## 閱讀說明與限制
 

@@ -15,10 +15,6 @@ class KlpFlexible extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Flexible(
-      flex: flex,
-      fit: fit,
-      child: child,
-    );
+    return Flexible(flex: flex, fit: fit, child: child);
   }
 }

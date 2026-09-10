@@ -6,16 +6,16 @@ import '../internal/klp_form_dependencies.dart';
 /// [KlpField] 內部就是用它畫 `description`——需要在 [KlpField] 版面之外
 /// 單獨放一段樣式一致的欄位說明時才需要直接用它。
 class KlpFieldDescription extends StatelessWidget {
-	const KlpFieldDescription({super.key, required this.description});
+  const KlpFieldDescription({super.key, required this.description});
 
-	final String description;
+  final String description;
 
-	@override
-	Widget build(BuildContext context) {
-		return KlpText(
-			description,
-			role: KlpTextRole.caption,
-			tone: KlpTextTone.muted,
-		);
-	}
+  @override
+  Widget build(BuildContext context) {
+    return KlpText(
+      description,
+      role: KlpTextRole.caption,
+      tone: KlpTextTone.muted,
+    );
+  }
 }

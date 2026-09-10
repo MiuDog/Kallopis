@@ -61,7 +61,7 @@ FunctionDeclaration · public · [lib/src/styling/legacy_theme/internal/klp_visu
 
 ### decodeOpticalGeometry
 
-FunctionDeclaration · public · [lib/src/styling/legacy_theme/internal/klp_visual_style_json_geometry_layout.dart:137](../../../../../../lib/src/styling/legacy_theme/internal/klp_visual_style_json_geometry_layout.dart#L137)
+FunctionDeclaration · public · [lib/src/styling/legacy_theme/internal/klp_visual_style_json_geometry_layout.dart:143](../../../../../../lib/src/styling/legacy_theme/internal/klp_visual_style_json_geometry_layout.dart#L143)
 
 <code>KlpOpticalGeometry decodeOpticalGeometry( KlpJsonMap json, KlpOpticalGeometry base, )</code>
 

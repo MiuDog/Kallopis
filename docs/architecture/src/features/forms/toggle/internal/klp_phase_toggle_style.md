@@ -64,7 +64,7 @@ ClassDeclaration · private · [lib/src/features/forms/toggle/internal/klp_phase
 | field <code>styleDuration</code> | public | <code>final Duration styleDuration</code> |  | [lib/src/features/forms/toggle/internal/klp_phase_toggle_style.dart:42](../../../../../../../lib/src/features/forms/toggle/internal/klp_phase_toggle_style.dart#L42) |
 | field <code>positionCurve</code> | public | <code>final Curve positionCurve</code> |  | [lib/src/features/forms/toggle/internal/klp_phase_toggle_style.dart:43](../../../../../../../lib/src/features/forms/toggle/internal/klp_phase_toggle_style.dart#L43) |
 | constructor <code>resolve</code> | public | <code>factory _KlpPhaseToggleStyle.resolve( KlpTheme klp, { required int optionCount, required bool enabled, required KlpFeedbackTone? selectedTone, })</code> |  | [lib/src/features/forms/toggle/internal/klp_phase_toggle_style.dart:45](../../../../../../../lib/src/features/forms/toggle/internal/klp_phase_toggle_style.dart#L45) |
-| method <code>foregroundFor</code> | public | <code>Color foregroundFor(KlpFeedbackTone? tone, {required bool selected, required bool enabled})</code> |  | [lib/src/features/forms/toggle/internal/klp_phase_toggle_style.dart:96](../../../../../../../lib/src/features/forms/toggle/internal/klp_phase_toggle_style.dart#L96) |
+| method <code>foregroundFor</code> | public | <code>Color foregroundFor( KlpFeedbackTone? tone, { required bool selected, required bool enabled, })</code> |  | [lib/src/features/forms/toggle/internal/klp_phase_toggle_style.dart:105](../../../../../../../lib/src/features/forms/toggle/internal/klp_phase_toggle_style.dart#L105) |
 
 ## 閱讀說明與限制
 

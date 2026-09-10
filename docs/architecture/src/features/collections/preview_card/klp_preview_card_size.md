@@ -44,9 +44,9 @@ EnumDeclaration · public · [lib/src/features/collections/preview_card/klp_prev
 
 | 成員 | 可見性 | 簽章／型別 | 來源註解摘要 | 證據 |
 |---|---|---|---|---|
-| enum value <code>compact</code> | public | <code>compact</code> |  | [lib/src/features/collections/preview_card/klp_preview_card_size.dart:3](../../../../../../lib/src/features/collections/preview_card/klp_preview_card_size.dart#L3) |
-| enum value <code>standard</code> | public | <code>standard</code> |  | [lib/src/features/collections/preview_card/klp_preview_card_size.dart:4](../../../../../../lib/src/features/collections/preview_card/klp_preview_card_size.dart#L4) |
-| enum value <code>large</code> | public | <code>large</code> |  | [lib/src/features/collections/preview_card/klp_preview_card_size.dart:5](../../../../../../lib/src/features/collections/preview_card/klp_preview_card_size.dart#L5) |
+| enum value <code>compact</code> | public | <code>compact</code> |  | [lib/src/features/collections/preview_card/klp_preview_card_size.dart:2](../../../../../../lib/src/features/collections/preview_card/klp_preview_card_size.dart#L2) |
+| enum value <code>standard</code> | public | <code>standard</code> |  | [lib/src/features/collections/preview_card/klp_preview_card_size.dart:2](../../../../../../lib/src/features/collections/preview_card/klp_preview_card_size.dart#L2) |
+| enum value <code>large</code> | public | <code>large</code> |  | [lib/src/features/collections/preview_card/klp_preview_card_size.dart:2](../../../../../../lib/src/features/collections/preview_card/klp_preview_card_size.dart#L2) |
 
 ## 閱讀說明與限制
 

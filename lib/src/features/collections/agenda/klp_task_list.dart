@@ -58,7 +58,8 @@ class KlpTaskList extends StatelessWidget {
               ],
             ),
           ),
-          if (index < items.length - 1) KlpGap.heightSize(KlpSpaceSize.hairline),
+          if (index < items.length - 1)
+            KlpGap.heightSize(KlpSpaceSize.hairline),
         ],
       ],
     );

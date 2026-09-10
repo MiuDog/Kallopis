@@ -44,8 +44,8 @@ EnumDeclaration · public · [lib/src/features/workspace/shell/panel/klp_panel_h
 
 | 成員 | 可見性 | 簽章／型別 | 來源註解摘要 | 證據 |
 |---|---|---|---|---|
-| enum value <code>standard</code> | public | <code>standard</code> |  | [lib/src/features/workspace/shell/panel/klp_panel_header_size.dart:3](../../../../../../../lib/src/features/workspace/shell/panel/klp_panel_header_size.dart#L3) |
-| enum value <code>dock</code> | public | <code>dock</code> |  | [lib/src/features/workspace/shell/panel/klp_panel_header_size.dart:4](../../../../../../../lib/src/features/workspace/shell/panel/klp_panel_header_size.dart#L4) |
+| enum value <code>standard</code> | public | <code>standard</code> |  | [lib/src/features/workspace/shell/panel/klp_panel_header_size.dart:2](../../../../../../../lib/src/features/workspace/shell/panel/klp_panel_header_size.dart#L2) |
+| enum value <code>dock</code> | public | <code>dock</code> |  | [lib/src/features/workspace/shell/panel/klp_panel_header_size.dart:2](../../../../../../../lib/src/features/workspace/shell/panel/klp_panel_header_size.dart#L2) |
 
 ## 閱讀說明與限制
 

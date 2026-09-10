@@ -52,10 +52,10 @@ ClassDeclaration · public · [lib/src/kernel/diagnostics/klp_contract_error.dar
 
 | 成員 | 可見性 | 簽章／型別 | 來源註解摘要 | 證據 |
 |---|---|---|---|---|
-| field <code>code</code> | public | <code>final String code</code> |  | [lib/src/kernel/diagnostics/klp_contract_error.dart:4](../../../../../lib/src/kernel/diagnostics/klp_contract_error.dart#L4) |
-| field <code>message</code> | public | <code>final String message</code> |  | [lib/src/kernel/diagnostics/klp_contract_error.dart:5](../../../../../lib/src/kernel/diagnostics/klp_contract_error.dart#L5) |
-| constructor <code>KlpContractError</code> | public | <code>const KlpContractError(this.code, this.message)</code> |  | [lib/src/kernel/diagnostics/klp_contract_error.dart:7](../../../../../lib/src/kernel/diagnostics/klp_contract_error.dart#L7) |
-| method <code>toString</code> | public | <code>String toString()</code> |  | [lib/src/kernel/diagnostics/klp_contract_error.dart:9](../../../../../lib/src/kernel/diagnostics/klp_contract_error.dart#L9) |
+| field <code>code</code> | public | <code>final String code</code> |  | [lib/src/kernel/diagnostics/klp_contract_error.dart:3](../../../../../lib/src/kernel/diagnostics/klp_contract_error.dart#L3) |
+| field <code>message</code> | public | <code>final String message</code> |  | [lib/src/kernel/diagnostics/klp_contract_error.dart:4](../../../../../lib/src/kernel/diagnostics/klp_contract_error.dart#L4) |
+| constructor <code>KlpContractError</code> | public | <code>const KlpContractError(this.code, this.message)</code> |  | [lib/src/kernel/diagnostics/klp_contract_error.dart:6](../../../../../lib/src/kernel/diagnostics/klp_contract_error.dart#L6) |
+| method <code>toString</code> | public | <code>String toString()</code> |  | [lib/src/kernel/diagnostics/klp_contract_error.dart:8](../../../../../lib/src/kernel/diagnostics/klp_contract_error.dart#L8) |
 
 ## 閱讀說明與限制
 

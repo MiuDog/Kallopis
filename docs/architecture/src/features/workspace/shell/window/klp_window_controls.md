@@ -89,7 +89,7 @@ ClassDeclaration · public · [lib/src/features/workspace/shell/window/klp_windo
 | field <code>maximizeKey</code> | public | <code>final Key? maximizeKey</code> |  | [lib/src/features/workspace/shell/window/klp_window_controls.dart:34](../../../../../../../lib/src/features/workspace/shell/window/klp_window_controls.dart#L34) |
 | field <code>closeKey</code> | public | <code>final Key? closeKey</code> |  | [lib/src/features/workspace/shell/window/klp_window_controls.dart:35](../../../../../../../lib/src/features/workspace/shell/window/klp_window_controls.dart#L35) |
 | method <code>build</code> | public | <code>Widget build(BuildContext context)</code> |  | [lib/src/features/workspace/shell/window/klp_window_controls.dart:37](../../../../../../../lib/src/features/workspace/shell/window/klp_window_controls.dart#L37) |
-| method <code>buildPlatformControls</code> | public | <code>Widget buildPlatformControls(BuildContext context, bool isMac)</code> |  | [lib/src/features/workspace/shell/window/klp_window_controls.dart:53](../../../../../../../lib/src/features/workspace/shell/window/klp_window_controls.dart#L53) |
+| method <code>buildPlatformControls</code> | public | <code>Widget buildPlatformControls(BuildContext context, bool isMac)</code> |  | [lib/src/features/workspace/shell/window/klp_window_controls.dart:56](../../../../../../../lib/src/features/workspace/shell/window/klp_window_controls.dart#L56) |
 
 ## 閱讀說明與限制
 

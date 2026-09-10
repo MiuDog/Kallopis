@@ -76,7 +76,7 @@ ClassDeclaration · private · [lib/src/application/bootstrap/internal/klp_appli
 | method <code>_finishStart</code> | private | <code>void _finishStart(KlpNavigationStart result, int generation)</code> |  | [lib/src/application/bootstrap/internal/klp_application_session.dart:141](../../../../../../lib/src/application/bootstrap/internal/klp_application_session.dart#L141) |
 | method <code>handleBack</code> | public | <code>Future&lt;bool&gt; handleBack()</code> |  | [lib/src/application/bootstrap/internal/klp_application_session.dart:163](../../../../../../lib/src/application/bootstrap/internal/klp_application_session.dart#L163) |
 | method <code>restore</code> | public | <code>Future&lt;bool&gt; restore(KlpNavigationRestoration restoration)</code> |  | [lib/src/application/bootstrap/internal/klp_application_session.dart:188](../../../../../../lib/src/application/bootstrap/internal/klp_application_session.dart#L188) |
-| method <code>dispose</code> | public | <code>void dispose()</code> |  | [lib/src/application/bootstrap/internal/klp_application_session.dart:209](../../../../../../lib/src/application/bootstrap/internal/klp_application_session.dart#L209) |
+| method <code>dispose</code> | public | <code>void dispose()</code> |  | [lib/src/application/bootstrap/internal/klp_application_session.dart:211](../../../../../../lib/src/application/bootstrap/internal/klp_application_session.dart#L211) |
 
 ## 閱讀說明與限制
 

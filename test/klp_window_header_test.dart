@@ -5,10 +5,13 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:kallopis/kallopis.dart';
 
 void main() {
-	test('header height ignores horizontal semantic margins', () {
-		const geometry = KlpGeometryTheme.standard;
-		expect(klpWindowHeaderHeight(geometry, windowHeaderMargin: 9), geometry.layout.windowHeaderHeight);
-	});
+  test('header height ignores horizontal semantic margins', () {
+    const geometry = KlpGeometryTheme.standard;
+    expect(
+      klpWindowHeaderHeight(geometry, windowHeaderMargin: 9),
+      geometry.layout.windowHeaderHeight,
+    );
+  });
 
   const windowChannel = MethodChannel('kallopis/window');
 
@@ -108,17 +111,17 @@ void main() {
     );
     final closeTokens = tester.element(closeFinder).klpColors;
     expect(tester.widget<Material>(closeMaterial).color, closeTokens.danger);
-		expect(
-			tester.widget<Material>(closeMaterial).borderRadius,
-			BorderRadius.circular(tester.element(closeFinder).klp.shape.card),
-		);
+    expect(
+      tester.widget<Material>(closeMaterial).borderRadius,
+      BorderRadius.circular(tester.element(closeFinder).klp.shape.card),
+    );
     expect(tester.widget<KlpIcon>(closeIcon).color, closeTokens.onStatus);
     expect(
       tester.widget<KlpIcon>(closeIcon).size,
       tester.element(closeFinder).klp.geometry.layout.windowHeaderControlSize /
           2,
     );
-		expect(tester.widget<KlpIcon>(closeIcon).size, 12);
+    expect(tester.widget<KlpIcon>(closeIcon).size, 12);
 
     final space = tester.element(closeFinder).klp.space;
     final geometry = tester.element(closeFinder).klp.geometry;
@@ -126,7 +129,7 @@ void main() {
     final closeRect = tester.getRect(closeFinder);
     expect(headerRect.height, klpWindowHeaderHeight(geometry));
     expect(closeRect.top, headerRect.top);
-			expect(closeRect.right, headerRect.right - space.windowHeaderMargin);
+    expect(closeRect.right, headerRect.right - space.windowHeaderMargin);
     expect(closeRect.bottom, headerRect.bottom);
     await tester.tap(closeFinder);
     expect(closed, isTrue);
@@ -156,33 +159,38 @@ void main() {
     expect(tester.takeException(), isNull);
   });
 
-	testWidgets('較矮 Header 會依可用高度縮放 icon 與控制鈕', (tester) async {
-		await tester.pumpWidget(
-			testBed(
-				child: KlpWindowHeader(
-					height: 16,
-					platform: KlpAppPlatform.windows,
-					appIcon: const KlpIcon(
-						KlpIcons.circle,
-						key: ValueKey('short-header-app-icon'),
-					),
-					onMinimize: () {},
-					onToggleMaximize: () {},
-					onClose: () {},
-				),
-			),
-		);
+  testWidgets('較矮 Header 會依可用高度縮放 icon 與控制鈕', (tester) async {
+    await tester.pumpWidget(
+      testBed(
+        child: KlpWindowHeader(
+          height: 16,
+          platform: KlpAppPlatform.windows,
+          appIcon: const KlpIcon(
+            KlpIcons.circle,
+            key: ValueKey('short-header-app-icon'),
+          ),
+          onMinimize: () {},
+          onToggleMaximize: () {},
+          onClose: () {},
+        ),
+      ),
+    );
 
-		final close = find.byWidgetPredicate(
-			(widget) => widget is KlpTooltip && widget.message == 'Close window',
-		);
-		final closeIcon = find.descendant(of: close, matching: find.byType(KlpIcon));
-		final appIconSlot = find.byKey(const ValueKey(KlpWindowHeaderKeys.appIconSlot));
+    final close = find.byWidgetPredicate(
+      (widget) => widget is KlpTooltip && widget.message == 'Close window',
+    );
+    final closeIcon = find.descendant(
+      of: close,
+      matching: find.byType(KlpIcon),
+    );
+    final appIconSlot = find.byKey(
+      const ValueKey(KlpWindowHeaderKeys.appIconSlot),
+    );
 
-		expect(tester.getSize(close), const Size.square(16));
-		expect(tester.widget<KlpIcon>(closeIcon).size, 8);
-		expect(tester.getSize(appIconSlot), const Size.square(16));
-	});
+    expect(tester.getSize(close), const Size.square(16));
+    expect(tester.widget<KlpIcon>(closeIcon).size, 8);
+    expect(tester.getSize(appIconSlot), const Size.square(16));
+  });
 
   testWidgets('Windows 模式在極窄寬度下保留控制鈕且不溢出', (tester) async {
     bool closed = false;
@@ -213,7 +221,8 @@ void main() {
     final space = tester.element(closeFinder).klp.space;
     expect(
       tester.getRect(closeFinder).right,
-			tester.getRect(find.byType(KlpWindowHeader)).right - space.windowHeaderMargin,
+      tester.getRect(find.byType(KlpWindowHeader)).right -
+          space.windowHeaderMargin,
     );
 
     await tester.tap(closeFinder);

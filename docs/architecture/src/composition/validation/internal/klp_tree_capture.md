@@ -76,9 +76,9 @@ ClassDeclaration · public · [lib/src/composition/validation/internal/klp_tree_
 
 | 成員 | 可見性 | 簽章／型別 | 來源註解摘要 | 證據 |
 |---|---|---|---|---|
-| field <code>validation</code> | public | <code>final KlpTreeValidation validation</code> |  | [lib/src/composition/validation/internal/klp_tree_capture.dart:17](../../../../../../lib/src/composition/validation/internal/klp_tree_capture.dart#L17) |
-| field <code>sources</code> | public | <code>final Map&lt;KlpPlacementId, KlpNode&gt; sources</code> |  | [lib/src/composition/validation/internal/klp_tree_capture.dart:18](../../../../../../lib/src/composition/validation/internal/klp_tree_capture.dart#L18) |
-| constructor <code>KlpTreeCapture</code> | public | <code>KlpTreeCapture(this.validation, Map&lt;KlpPlacementId, KlpNode&gt; sources)</code> |  | [lib/src/composition/validation/internal/klp_tree_capture.dart:20](../../../../../../lib/src/composition/validation/internal/klp_tree_capture.dart#L20) |
+| field <code>validation</code> | public | <code>final KlpTreeValidation validation</code> |  | [lib/src/composition/validation/internal/klp_tree_capture.dart:16](../../../../../../lib/src/composition/validation/internal/klp_tree_capture.dart#L16) |
+| field <code>sources</code> | public | <code>final Map&lt;KlpPlacementId, KlpNode&gt; sources</code> |  | [lib/src/composition/validation/internal/klp_tree_capture.dart:17](../../../../../../lib/src/composition/validation/internal/klp_tree_capture.dart#L17) |
+| constructor <code>KlpTreeCapture</code> | public | <code>KlpTreeCapture(this.validation, Map&lt;KlpPlacementId, KlpNode&gt; sources)</code> |  | [lib/src/composition/validation/internal/klp_tree_capture.dart:19](../../../../../../lib/src/composition/validation/internal/klp_tree_capture.dart#L19) |
 
 ### captureKlpTree
 

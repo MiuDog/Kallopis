@@ -63,9 +63,9 @@ ClassDeclaration · public · [lib/src/rendering/flutter/internal/klp_flutter_li
 
 | 成員 | 可見性 | 簽章／型別 | 來源註解摘要 | 證據 |
 |---|---|---|---|---|
-| field <code>content</code> | public | <code>final KlpBoundLinear content</code> |  | [lib/src/rendering/flutter/internal/klp_flutter_linear.dart:10](../../../../../../lib/src/rendering/flutter/internal/klp_flutter_linear.dart#L10) |
-| constructor <code>KlpFlutterLinear</code> | public | <code>const KlpFlutterLinear({required this.content, super.key})</code> |  | [lib/src/rendering/flutter/internal/klp_flutter_linear.dart:12](../../../../../../lib/src/rendering/flutter/internal/klp_flutter_linear.dart#L12) |
-| method <code>build</code> | public | <code>Widget build(BuildContext context)</code> |  | [lib/src/rendering/flutter/internal/klp_flutter_linear.dart:14](../../../../../../lib/src/rendering/flutter/internal/klp_flutter_linear.dart#L14) |
+| field <code>content</code> | public | <code>final KlpBoundLinear content</code> |  | [lib/src/rendering/flutter/internal/klp_flutter_linear.dart:9](../../../../../../lib/src/rendering/flutter/internal/klp_flutter_linear.dart#L9) |
+| constructor <code>KlpFlutterLinear</code> | public | <code>const KlpFlutterLinear({required this.content, super.key})</code> |  | [lib/src/rendering/flutter/internal/klp_flutter_linear.dart:11](../../../../../../lib/src/rendering/flutter/internal/klp_flutter_linear.dart#L11) |
+| method <code>build</code> | public | <code>Widget build(BuildContext context)</code> |  | [lib/src/rendering/flutter/internal/klp_flutter_linear.dart:13](../../../../../../lib/src/rendering/flutter/internal/klp_flutter_linear.dart#L13) |
 
 ## 閱讀說明與限制
 

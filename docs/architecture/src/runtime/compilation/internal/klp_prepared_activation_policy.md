@@ -44,7 +44,7 @@ ClassDeclaration · public · [lib/src/runtime/compilation/internal/klp_prepared
 
 | 成員 | 可見性 | 簽章／型別 | 來源註解摘要 | 證據 |
 |---|---|---|---|---|
-| getter <code>descendantsActive</code> | public | <code>bool get descendantsActive</code> |  | [lib/src/runtime/compilation/internal/klp_prepared_activation_policy.dart:4](../../../../../../lib/src/runtime/compilation/internal/klp_prepared_activation_policy.dart#L4) |
+| getter <code>descendantsActive</code> | public | <code>bool get descendantsActive</code> |  | [lib/src/runtime/compilation/internal/klp_prepared_activation_policy.dart:3](../../../../../../lib/src/runtime/compilation/internal/klp_prepared_activation_policy.dart#L3) |
 
 ## 閱讀說明與限制
 

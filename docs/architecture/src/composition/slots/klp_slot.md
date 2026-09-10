@@ -55,13 +55,13 @@ ClassDeclaration · public · [lib/src/composition/slots/klp_slot.dart:7](../../
 
 | 成員 | 可見性 | 簽章／型別 | 來源註解摘要 | 證據 |
 |---|---|---|---|---|
-| field <code>owner</code> | public | <code>final String owner</code> |  | [lib/src/composition/slots/klp_slot.dart:10](../../../../../lib/src/composition/slots/klp_slot.dart#L10) |
-| field <code>name</code> | public | <code>final String name</code> |  | [lib/src/composition/slots/klp_slot.dart:11](../../../../../lib/src/composition/slots/klp_slot.dart#L11) |
-| field <code>min</code> | public | <code>final int min</code> |  | [lib/src/composition/slots/klp_slot.dart:12](../../../../../lib/src/composition/slots/klp_slot.dart#L12) |
-| field <code>max</code> | public | <code>final int? max</code> |  | [lib/src/composition/slots/klp_slot.dart:13](../../../../../lib/src/composition/slots/klp_slot.dart#L13) |
-| constructor <code>KlpSlot</code> | public | <code>KlpSlot({required this.owner, required this.name, this.min = 0, this.max})</code> |  | [lib/src/composition/slots/klp_slot.dart:15](../../../../../lib/src/composition/slots/klp_slot.dart#L15) |
-| method <code>accepts</code> | public | <code>bool accepts(KlpNode node)</code> |  | [lib/src/composition/slots/klp_slot.dart:20](../../../../../lib/src/composition/slots/klp_slot.dart#L20) |
-| method <code>assign</code> | public | <code>KlpSlotAssignment&lt;C&gt; assign(List&lt;C&gt; children)</code> |  | [lib/src/composition/slots/klp_slot.dart:22](../../../../../lib/src/composition/slots/klp_slot.dart#L22) |
+| field <code>owner</code> | public | <code>final String owner</code> |  | [lib/src/composition/slots/klp_slot.dart:9](../../../../../lib/src/composition/slots/klp_slot.dart#L9) |
+| field <code>name</code> | public | <code>final String name</code> |  | [lib/src/composition/slots/klp_slot.dart:10](../../../../../lib/src/composition/slots/klp_slot.dart#L10) |
+| field <code>min</code> | public | <code>final int min</code> |  | [lib/src/composition/slots/klp_slot.dart:11](../../../../../lib/src/composition/slots/klp_slot.dart#L11) |
+| field <code>max</code> | public | <code>final int? max</code> |  | [lib/src/composition/slots/klp_slot.dart:12](../../../../../lib/src/composition/slots/klp_slot.dart#L12) |
+| constructor <code>KlpSlot</code> | public | <code>KlpSlot({required this.owner, required this.name, this.min = 0, this.max})</code> |  | [lib/src/composition/slots/klp_slot.dart:14](../../../../../lib/src/composition/slots/klp_slot.dart#L14) |
+| method <code>accepts</code> | public | <code>bool accepts(KlpNode node)</code> |  | [lib/src/composition/slots/klp_slot.dart:26](../../../../../lib/src/composition/slots/klp_slot.dart#L26) |
+| method <code>assign</code> | public | <code>KlpSlotAssignment&lt;C&gt; assign(List&lt;C&gt; children)</code> |  | [lib/src/composition/slots/klp_slot.dart:28](../../../../../lib/src/composition/slots/klp_slot.dart#L28) |
 
 ## 閱讀說明與限制
 

@@ -46,9 +46,9 @@ ClassDeclaration · public · [lib/src/capabilities/navigation/internal/klp_navi
 
 | 成員 | 可見性 | 簽章／型別 | 來源註解摘要 | 證據 |
 |---|---|---|---|---|
-| field <code>machine</code> | public | <code>final KlpNavigationMachine? machine</code> |  | [lib/src/capabilities/navigation/internal/klp_navigation_start.dart:6](../../../../../../lib/src/capabilities/navigation/internal/klp_navigation_start.dart#L6) |
-| field <code>decision</code> | public | <code>final KlpNavigationDecision decision</code> |  | [lib/src/capabilities/navigation/internal/klp_navigation_start.dart:7](../../../../../../lib/src/capabilities/navigation/internal/klp_navigation_start.dart#L7) |
-| constructor <code>_</code> | private | <code>const KlpNavigationStart._(this.machine, this.decision)</code> |  | [lib/src/capabilities/navigation/internal/klp_navigation_start.dart:9](../../../../../../lib/src/capabilities/navigation/internal/klp_navigation_start.dart#L9) |
+| field <code>machine</code> | public | <code>final KlpNavigationMachine? machine</code> |  | [lib/src/capabilities/navigation/internal/klp_navigation_start.dart:5](../../../../../../lib/src/capabilities/navigation/internal/klp_navigation_start.dart#L5) |
+| field <code>decision</code> | public | <code>final KlpNavigationDecision decision</code> |  | [lib/src/capabilities/navigation/internal/klp_navigation_start.dart:6](../../../../../../lib/src/capabilities/navigation/internal/klp_navigation_start.dart#L6) |
+| constructor <code>_</code> | private | <code>const KlpNavigationStart._(this.machine, this.decision)</code> |  | [lib/src/capabilities/navigation/internal/klp_navigation_start.dart:8](../../../../../../lib/src/capabilities/navigation/internal/klp_navigation_start.dart#L8) |
 
 ## 閱讀說明與限制
 

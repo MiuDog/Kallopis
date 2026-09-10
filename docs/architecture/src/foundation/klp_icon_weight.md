@@ -44,8 +44,8 @@ EnumDeclaration · public · [lib/src/foundation/klp_icon_weight.dart:1](../../.
 
 | 成員 | 可見性 | 簽章／型別 | 來源註解摘要 | 證據 |
 |---|---|---|---|---|
-| enum value <code>thin</code> | public | <code>thin</code> |  | [lib/src/foundation/klp_icon_weight.dart:3](../../../../lib/src/foundation/klp_icon_weight.dart#L3) |
-| enum value <code>regular</code> | public | <code>regular</code> |  | [lib/src/foundation/klp_icon_weight.dart:4](../../../../lib/src/foundation/klp_icon_weight.dart#L4) |
+| enum value <code>thin</code> | public | <code>thin</code> |  | [lib/src/foundation/klp_icon_weight.dart:2](../../../../lib/src/foundation/klp_icon_weight.dart#L2) |
+| enum value <code>regular</code> | public | <code>regular</code> |  | [lib/src/foundation/klp_icon_weight.dart:2](../../../../lib/src/foundation/klp_icon_weight.dart#L2) |
 
 ## 閱讀說明與限制
 

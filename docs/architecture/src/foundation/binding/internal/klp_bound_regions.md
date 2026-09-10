@@ -54,14 +54,14 @@ ClassDeclaration · public · [lib/src/foundation/binding/internal/klp_bound_reg
 
 | 成員 | 可見性 | 簽章／型別 | 來源註解摘要 | 證據 |
 |---|---|---|---|---|
-| field <code>axis</code> | public | <code>final KlpAxis axis</code> |  | [lib/src/foundation/binding/internal/klp_bound_regions.dart:6](../../../../../../lib/src/foundation/binding/internal/klp_bound_regions.dart#L6) |
-| field <code>leading</code> | public | <code>final KlpBoundTemplate leading</code> |  | [lib/src/foundation/binding/internal/klp_bound_regions.dart:7](../../../../../../lib/src/foundation/binding/internal/klp_bound_regions.dart#L7) |
-| field <code>body</code> | public | <code>final KlpBoundTemplate body</code> |  | [lib/src/foundation/binding/internal/klp_bound_regions.dart:8](../../../../../../lib/src/foundation/binding/internal/klp_bound_regions.dart#L8) |
-| field <code>trailing</code> | public | <code>final KlpBoundTemplate trailing</code> |  | [lib/src/foundation/binding/internal/klp_bound_regions.dart:9](../../../../../../lib/src/foundation/binding/internal/klp_bound_regions.dart#L9) |
-| field <code>leadingExtent</code> | public | <code>final KlpDistance leadingExtent</code> |  | [lib/src/foundation/binding/internal/klp_bound_regions.dart:10](../../../../../../lib/src/foundation/binding/internal/klp_bound_regions.dart#L10) |
-| field <code>trailingExtent</code> | public | <code>final KlpDistance trailingExtent</code> |  | [lib/src/foundation/binding/internal/klp_bound_regions.dart:11](../../../../../../lib/src/foundation/binding/internal/klp_bound_regions.dart#L11) |
-| field <code>minimumBodyExtent</code> | public | <code>final KlpDistance minimumBodyExtent</code> |  | [lib/src/foundation/binding/internal/klp_bound_regions.dart:12](../../../../../../lib/src/foundation/binding/internal/klp_bound_regions.dart#L12) |
-| constructor <code>KlpBoundRegions</code> | public | <code>const KlpBoundRegions({ required this.axis, required this.leading, required this.body, required this.trailing, required this.leadingExtent, required this.trailingExtent, required this.minimumBodyExtent, })</code> |  | [lib/src/foundation/binding/internal/klp_bound_regions.dart:14](../../../../../../lib/src/foundation/binding/internal/klp_bound_regions.dart#L14) |
+| field <code>axis</code> | public | <code>final KlpAxis axis</code> |  | [lib/src/foundation/binding/internal/klp_bound_regions.dart:5](../../../../../../lib/src/foundation/binding/internal/klp_bound_regions.dart#L5) |
+| field <code>leading</code> | public | <code>final KlpBoundTemplate leading</code> |  | [lib/src/foundation/binding/internal/klp_bound_regions.dart:6](../../../../../../lib/src/foundation/binding/internal/klp_bound_regions.dart#L6) |
+| field <code>body</code> | public | <code>final KlpBoundTemplate body</code> |  | [lib/src/foundation/binding/internal/klp_bound_regions.dart:7](../../../../../../lib/src/foundation/binding/internal/klp_bound_regions.dart#L7) |
+| field <code>trailing</code> | public | <code>final KlpBoundTemplate trailing</code> |  | [lib/src/foundation/binding/internal/klp_bound_regions.dart:8](../../../../../../lib/src/foundation/binding/internal/klp_bound_regions.dart#L8) |
+| field <code>leadingExtent</code> | public | <code>final KlpDistance leadingExtent</code> |  | [lib/src/foundation/binding/internal/klp_bound_regions.dart:9](../../../../../../lib/src/foundation/binding/internal/klp_bound_regions.dart#L9) |
+| field <code>trailingExtent</code> | public | <code>final KlpDistance trailingExtent</code> |  | [lib/src/foundation/binding/internal/klp_bound_regions.dart:10](../../../../../../lib/src/foundation/binding/internal/klp_bound_regions.dart#L10) |
+| field <code>minimumBodyExtent</code> | public | <code>final KlpDistance minimumBodyExtent</code> |  | [lib/src/foundation/binding/internal/klp_bound_regions.dart:11](../../../../../../lib/src/foundation/binding/internal/klp_bound_regions.dart#L11) |
+| constructor <code>KlpBoundRegions</code> | public | <code>const KlpBoundRegions({ required this.axis, required this.leading, required this.body, required this.trailing, required this.leadingExtent, required this.trailingExtent, required this.minimumBodyExtent, })</code> |  | [lib/src/foundation/binding/internal/klp_bound_regions.dart:13](../../../../../../lib/src/foundation/binding/internal/klp_bound_regions.dart#L13) |
 
 ## 閱讀說明與限制
 

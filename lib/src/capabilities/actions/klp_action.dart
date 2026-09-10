@@ -3,8 +3,7 @@ abstract interface class KlpAction {}
 
 /// 消費端注入的一般 callback；是否啟動與呈現狀態仍由本庫控制。
 final class KlpCallbackAction implements KlpAction {
+  final void Function() callback;
 
-	final void Function() callback;
-
-	const KlpCallbackAction(this.callback);
+  const KlpCallbackAction(this.callback);
 }

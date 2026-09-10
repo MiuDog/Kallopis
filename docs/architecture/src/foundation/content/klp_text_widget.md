@@ -83,8 +83,8 @@ ClassDeclaration · public · [lib/src/foundation/content/klp_text_widget.dart:1
 | field <code>tracking</code> | public | <code>final KlpTextTracking? tracking</code> |  | [lib/src/foundation/content/klp_text_widget.dart:41](../../../../../lib/src/foundation/content/klp_text_widget.dart#L41) |
 | field <code>applyOpticalShift</code> | public | <code>final bool applyOpticalShift</code> |  | [lib/src/foundation/content/klp_text_widget.dart:42](../../../../../lib/src/foundation/content/klp_text_widget.dart#L42) |
 | method <code>build</code> | public | <code>Widget build(BuildContext context)</code> |  | [lib/src/foundation/content/klp_text_widget.dart:44](../../../../../lib/src/foundation/content/klp_text_widget.dart#L44) |
-| method <code>_resolveVisibleData</code> | private | <code>String _resolveVisibleData( BuildContext context, BoxConstraints constraints, TextStyle style, )</code> |  | [lib/src/foundation/content/klp_text_widget.dart:105](../../../../../lib/src/foundation/content/klp_text_widget.dart#L105) |
-| method <code>_fits</code> | private | <code>bool _fits( BuildContext context, String value, BoxConstraints constraints, TextStyle style, )</code> |  | [lib/src/foundation/content/klp_text_widget.dart:133](../../../../../lib/src/foundation/content/klp_text_widget.dart#L133) |
+| method <code>_resolveVisibleData</code> | private | <code>String _resolveVisibleData( BuildContext context, BoxConstraints constraints, TextStyle style, )</code> |  | [lib/src/foundation/content/klp_text_widget.dart:106](../../../../../lib/src/foundation/content/klp_text_widget.dart#L106) |
+| method <code>_fits</code> | private | <code>bool _fits( BuildContext context, String value, BoxConstraints constraints, TextStyle style, )</code> |  | [lib/src/foundation/content/klp_text_widget.dart:134](../../../../../lib/src/foundation/content/klp_text_widget.dart#L134) |
 
 ## 閱讀說明與限制
 

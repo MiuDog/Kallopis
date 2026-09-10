@@ -99,7 +99,7 @@ ClassDeclaration · public · [lib/src/foundation/binding/internal/klp_bound_tem
 
 | 成員 | 可見性 | 簽章／型別 | 來源註解摘要 | 證據 |
 |---|---|---|---|---|
-| constructor <code>KlpBoundTemplate</code> | public | <code>const KlpBoundTemplate()</code> |  | [lib/src/foundation/binding/internal/klp_bound_template.dart:24](../../../../../../lib/src/foundation/binding/internal/klp_bound_template.dart#L24) |
+| constructor <code>KlpBoundTemplate</code> | public | <code>const KlpBoundTemplate()</code> |  | [lib/src/foundation/binding/internal/klp_bound_template.dart:23](../../../../../../lib/src/foundation/binding/internal/klp_bound_template.dart#L23) |
 
 ## 閱讀說明與限制
 

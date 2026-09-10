@@ -54,9 +54,9 @@ ClassDeclaration · public · [lib/src/foundation/binding/internal/klp_bound_ret
 
 | 成員 | 可見性 | 簽章／型別 | 來源註解摘要 | 證據 |
 |---|---|---|---|---|
-| field <code>pages</code> | public | <code>final List&lt;KlpBoundPlacement&gt; pages</code> |  | [lib/src/foundation/binding/internal/klp_bound_retained_stack.dart:6](../../../../../../lib/src/foundation/binding/internal/klp_bound_retained_stack.dart#L6) |
-| field <code>activeId</code> | public | <code>final KlpPlacementId activeId</code> |  | [lib/src/foundation/binding/internal/klp_bound_retained_stack.dart:7](../../../../../../lib/src/foundation/binding/internal/klp_bound_retained_stack.dart#L7) |
-| constructor <code>KlpBoundRetainedStack</code> | public | <code>KlpBoundRetainedStack({required Iterable&lt;KlpBoundPlacement&gt; pages, required this.activeId})</code> |  | [lib/src/foundation/binding/internal/klp_bound_retained_stack.dart:9](../../../../../../lib/src/foundation/binding/internal/klp_bound_retained_stack.dart#L9) |
+| field <code>pages</code> | public | <code>final List&lt;KlpBoundPlacement&gt; pages</code> |  | [lib/src/foundation/binding/internal/klp_bound_retained_stack.dart:5](../../../../../../lib/src/foundation/binding/internal/klp_bound_retained_stack.dart#L5) |
+| field <code>activeId</code> | public | <code>final KlpPlacementId activeId</code> |  | [lib/src/foundation/binding/internal/klp_bound_retained_stack.dart:6](../../../../../../lib/src/foundation/binding/internal/klp_bound_retained_stack.dart#L6) |
+| constructor <code>KlpBoundRetainedStack</code> | public | <code>KlpBoundRetainedStack({ required Iterable&lt;KlpBoundPlacement&gt; pages, required this.activeId, })</code> |  | [lib/src/foundation/binding/internal/klp_bound_retained_stack.dart:8](../../../../../../lib/src/foundation/binding/internal/klp_bound_retained_stack.dart#L8) |
 
 ## 閱讀說明與限制
 

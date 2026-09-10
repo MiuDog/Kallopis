@@ -7,36 +7,36 @@ import '../internal/klp_form_dependencies.dart';
 /// [KlpFormSection]），[errorSummary] 通常放 [KlpFormErrorSummary]，
 /// [actions] 通常放 [KlpFormActions]。三者皆為可選，缺席時不佔版位。
 class KlpForm extends StatelessWidget {
-	const KlpForm({
-		super.key,
-		required this.sections,
-		this.errorSummary,
-		this.actions,
-	});
+  const KlpForm({
+    super.key,
+    required this.sections,
+    this.errorSummary,
+    this.actions,
+  });
 
-	final List<Widget> sections;
-	final Widget? errorSummary;
-	final Widget? actions;
+  final List<Widget> sections;
+  final Widget? errorSummary;
+  final Widget? actions;
 
-	@override
-	Widget build(BuildContext context) {
-		return KlpColumn(
-			crossAxisAlignment: CrossAxisAlignment.stretch,
-			children: [
-				if (errorSummary != null) ...[
-					errorSummary!,
-					const KlpGap.heightSize(KlpSpaceSize.base),
-				],
-				for (var index = 0; index < sections.length; index++) ...[
-					sections[index],
-					if (index < sections.length - 1)
-						const KlpGap.heightSize(KlpSpaceSize.comfortable),
-				],
-				if (actions != null) ...[
-					const KlpGap.heightSize(KlpSpaceSize.comfortable),
-					actions!,
-				],
-			],
-		);
-	}
+  @override
+  Widget build(BuildContext context) {
+    return KlpColumn(
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      children: [
+        if (errorSummary != null) ...[
+          errorSummary!,
+          const KlpGap.heightSize(KlpSpaceSize.base),
+        ],
+        for (var index = 0; index < sections.length; index++) ...[
+          sections[index],
+          if (index < sections.length - 1)
+            const KlpGap.heightSize(KlpSpaceSize.comfortable),
+        ],
+        if (actions != null) ...[
+          const KlpGap.heightSize(KlpSpaceSize.comfortable),
+          actions!,
+        ],
+      ],
+    );
+  }
 }

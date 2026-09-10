@@ -54,8 +54,8 @@ ClassDeclaration · public · [lib/src/styling/primitives/klp_line_height.dart:3
 
 | 成員 | 可見性 | 簽章／型別 | 來源註解摘要 | 證據 |
 |---|---|---|---|---|
-| field <code>value</code> | public | <code>final double value</code> |  | [lib/src/styling/primitives/klp_line_height.dart:6](../../../../../lib/src/styling/primitives/klp_line_height.dart#L6) |
-| constructor <code>KlpLineHeight</code> | public | <code>KlpLineHeight(this.value)</code> |  | [lib/src/styling/primitives/klp_line_height.dart:8](../../../../../lib/src/styling/primitives/klp_line_height.dart#L8) |
+| field <code>value</code> | public | <code>final double value</code> |  | [lib/src/styling/primitives/klp_line_height.dart:5](../../../../../lib/src/styling/primitives/klp_line_height.dart#L5) |
+| constructor <code>KlpLineHeight</code> | public | <code>KlpLineHeight(this.value)</code> |  | [lib/src/styling/primitives/klp_line_height.dart:7](../../../../../lib/src/styling/primitives/klp_line_height.dart#L7) |
 
 ## 閱讀說明與限制
 

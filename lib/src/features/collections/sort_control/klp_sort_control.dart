@@ -11,35 +11,35 @@ import '../../../foundation/content/klp_text.dart';
 
 /// 顯示目前方向並將排序切換事件交還呼叫端的中性控制項。
 class KlpSortControl extends StatelessWidget {
-	const KlpSortControl({
-		super.key,
-		required this.label,
-		required this.ascending,
-		required this.onPressed,
-		this.icon,
-	});
+  const KlpSortControl({
+    super.key,
+    required this.label,
+    required this.ascending,
+    required this.onPressed,
+    this.icon,
+  });
 
-	final String label;
-	final bool ascending;
-	final VoidCallback? onPressed;
-	final KlpIconData? icon;
+  final String label;
+  final bool ascending;
+  final VoidCallback? onPressed;
+  final KlpIconData? icon;
 
-	@override
-	Widget build(BuildContext context) {
-		final effectiveIcon =
-				icon ?? (ascending ? KlpIcons.chevronUp : KlpIcons.chevronDown);
+  @override
+  Widget build(BuildContext context) {
+    final effectiveIcon =
+        icon ?? (ascending ? KlpIcons.chevronUp : KlpIcons.chevronDown);
 
-		return KlpGestureRegion(
-			behavior: HitTestBehavior.opaque,
-			onTap: onPressed,
-			child: KlpRow(
-				mainAxisSize: MainAxisSize.min,
-				children: [
-					KlpText(label, role: KlpTextRole.caption),
-					const KlpGap.widthSize(KlpSpaceSize.tight),
-					KlpIcon(effectiveIcon, size: context.klp.space.iconSmall),
-				],
-			),
-		);
-	}
+    return KlpGestureRegion(
+      behavior: HitTestBehavior.opaque,
+      onTap: onPressed,
+      child: KlpRow(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          KlpText(label, role: KlpTextRole.caption),
+          const KlpGap.widthSize(KlpSpaceSize.tight),
+          KlpIcon(effectiveIcon, size: context.klp.space.iconSmall),
+        ],
+      ),
+    );
+  }
 }

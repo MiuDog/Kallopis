@@ -72,13 +72,13 @@ ClassDeclaration · public · [lib/src/application/bootstrap/internal/klp_prepar
 
 | 成員 | 可見性 | 簽章／型別 | 來源註解摘要 | 證據 |
 |---|---|---|---|---|
-| field <code>background</code> | public | <code>final KlpColor background</code> |  | [lib/src/application/bootstrap/internal/klp_prepared_screen.dart:12](../../../../../../lib/src/application/bootstrap/internal/klp_prepared_screen.dart#L12) |
-| field <code>radius</code> | public | <code>final KlpRadius radius</code> |  | [lib/src/application/bootstrap/internal/klp_prepared_screen.dart:13](../../../../../../lib/src/application/bootstrap/internal/klp_prepared_screen.dart#L13) |
-| field <code>inset</code> | public | <code>final KlpDistance inset</code> |  | [lib/src/application/bootstrap/internal/klp_prepared_screen.dart:14](../../../../../../lib/src/application/bootstrap/internal/klp_prepared_screen.dart#L14) |
-| field <code>accessibilityLabel</code> | public | <code>final String accessibilityLabel</code> |  | [lib/src/application/bootstrap/internal/klp_prepared_screen.dart:15](../../../../../../lib/src/application/bootstrap/internal/klp_prepared_screen.dart#L15) |
-| constructor <code>KlpPreparedScreen</code> | public | <code>const KlpPreparedScreen( this.background, this.radius, this.inset, this.accessibilityLabel, )</code> |  | [lib/src/application/bootstrap/internal/klp_prepared_screen.dart:17](../../../../../../lib/src/application/bootstrap/internal/klp_prepared_screen.dart#L17) |
-| method <code>createResource</code> | public | <code>KlpPlacementResource createResource(KlpValidatedNode node)</code> |  | [lib/src/application/bootstrap/internal/klp_prepared_screen.dart:24](../../../../../../lib/src/application/bootstrap/internal/klp_prepared_screen.dart#L24) |
-| method <code>materialize</code> | public | <code>KlpBoundTemplate materialize(KlpPlacementResource resource, List&lt;KlpBoundTemplate&gt; children, KlpFrameLease lease)</code> |  | [lib/src/application/bootstrap/internal/klp_prepared_screen.dart:27](../../../../../../lib/src/application/bootstrap/internal/klp_prepared_screen.dart#L27) |
+| field <code>background</code> | public | <code>final KlpColor background</code> |  | [lib/src/application/bootstrap/internal/klp_prepared_screen.dart:11](../../../../../../lib/src/application/bootstrap/internal/klp_prepared_screen.dart#L11) |
+| field <code>radius</code> | public | <code>final KlpRadius radius</code> |  | [lib/src/application/bootstrap/internal/klp_prepared_screen.dart:12](../../../../../../lib/src/application/bootstrap/internal/klp_prepared_screen.dart#L12) |
+| field <code>inset</code> | public | <code>final KlpDistance inset</code> |  | [lib/src/application/bootstrap/internal/klp_prepared_screen.dart:13](../../../../../../lib/src/application/bootstrap/internal/klp_prepared_screen.dart#L13) |
+| field <code>accessibilityLabel</code> | public | <code>final String accessibilityLabel</code> |  | [lib/src/application/bootstrap/internal/klp_prepared_screen.dart:14](../../../../../../lib/src/application/bootstrap/internal/klp_prepared_screen.dart#L14) |
+| constructor <code>KlpPreparedScreen</code> | public | <code>const KlpPreparedScreen( this.background, this.radius, this.inset, this.accessibilityLabel, )</code> |  | [lib/src/application/bootstrap/internal/klp_prepared_screen.dart:16](../../../../../../lib/src/application/bootstrap/internal/klp_prepared_screen.dart#L16) |
+| method <code>createResource</code> | public | <code>KlpPlacementResource createResource(KlpValidatedNode node)</code> |  | [lib/src/application/bootstrap/internal/klp_prepared_screen.dart:23](../../../../../../lib/src/application/bootstrap/internal/klp_prepared_screen.dart#L23) |
+| method <code>materialize</code> | public | <code>KlpBoundTemplate materialize( KlpPlacementResource resource, List&lt;KlpBoundTemplate&gt; children, KlpFrameLease lease, )</code> |  | [lib/src/application/bootstrap/internal/klp_prepared_screen.dart:27](../../../../../../lib/src/application/bootstrap/internal/klp_prepared_screen.dart#L27) |
 
 ## 閱讀說明與限制
 

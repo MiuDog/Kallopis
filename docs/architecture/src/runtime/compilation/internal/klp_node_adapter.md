@@ -58,8 +58,8 @@ ClassDeclaration · public · [lib/src/runtime/compilation/internal/klp_node_ada
 
 | 成員 | 可見性 | 簽章／型別 | 來源註解摘要 | 證據 |
 |---|---|---|---|---|
-| getter <code>contract</code> | public | <code>KlpDefinition&lt;KlpNode&gt; get contract</code> |  | [lib/src/runtime/compilation/internal/klp_node_adapter.dart:10](../../../../../../lib/src/runtime/compilation/internal/klp_node_adapter.dart#L10) |
-| method <code>prepare</code> | public | <code>KlpPreparedNode prepare(KlpNode node, KlpValidatedNode snapshot, KlpPrepareContext context)</code> |  | [lib/src/runtime/compilation/internal/klp_node_adapter.dart:11](../../../../../../lib/src/runtime/compilation/internal/klp_node_adapter.dart#L11) |
+| getter <code>contract</code> | public | <code>KlpDefinition&lt;KlpNode&gt; get contract</code> |  | [lib/src/runtime/compilation/internal/klp_node_adapter.dart:9](../../../../../../lib/src/runtime/compilation/internal/klp_node_adapter.dart#L9) |
+| method <code>prepare</code> | public | <code>KlpPreparedNode prepare( KlpNode node, KlpValidatedNode snapshot, KlpPrepareContext context, )</code> |  | [lib/src/runtime/compilation/internal/klp_node_adapter.dart:10](../../../../../../lib/src/runtime/compilation/internal/klp_node_adapter.dart#L10) |
 
 ## 閱讀說明與限制
 

@@ -23,7 +23,7 @@ class KlpThemeToggle extends StatelessWidget {
       onTap: onChanged == null ? null : () => onChanged!(!dark),
       child: KlpSurface(
         tone: dark ? KlpSurfaceTone.muted : KlpSurfaceTone.inset,
-				padding: EdgeInsets.all(context.klp.space.controlInset),
+        padding: EdgeInsets.all(context.klp.space.controlInset),
         child: KlpText(label, role: KlpTextRole.caption),
       ),
     );

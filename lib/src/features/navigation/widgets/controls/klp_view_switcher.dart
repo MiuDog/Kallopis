@@ -16,36 +16,36 @@ part 'primitives/klp_view_switcher_frame.dart';
 
 /// 以輕量分段表面呈現同層級檢視的受控切換器。
 class KlpViewSwitcher extends StatelessWidget {
-	const KlpViewSwitcher({
-		super.key,
-		required this.options,
-		required this.selectedId,
-		required this.onSelected,
-	});
+  const KlpViewSwitcher({
+    super.key,
+    required this.options,
+    required this.selectedId,
+    required this.onSelected,
+  });
 
-	final List<KlpViewOption> options;
-	final String selectedId;
-	final ValueChanged<String>? onSelected;
+  final List<KlpViewOption> options;
+  final String selectedId;
+  final ValueChanged<String>? onSelected;
 
-	@override
-	Widget build(BuildContext context) {
-		return _KlpViewSwitcherFrame(
-			child: KlpRow(
-				mainAxisSize: MainAxisSize.min,
-				children: [
-					for (var index = 0; index < options.length; index++) ...[
-						_KlpViewChoice(
-							option: options[index],
-							selected: options[index].id == selectedId,
-							onPressed: onSelected == null
-									? null
-									: () => onSelected!(options[index].id),
-						),
-						if (index < options.length - 1)
-							const KlpGap.widthSize(KlpSpaceSize.hairline),
-					],
-				],
-			),
-		);
-	}
+  @override
+  Widget build(BuildContext context) {
+    return _KlpViewSwitcherFrame(
+      child: KlpRow(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          for (var index = 0; index < options.length; index++) ...[
+            _KlpViewChoice(
+              option: options[index],
+              selected: options[index].id == selectedId,
+              onPressed: onSelected == null
+                  ? null
+                  : () => onSelected!(options[index].id),
+            ),
+            if (index < options.length - 1)
+              const KlpGap.widthSize(KlpSpaceSize.hairline),
+          ],
+        ],
+      ),
+    );
+  }
 }

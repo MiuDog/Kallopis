@@ -55,8 +55,8 @@ ClassDeclaration · public · [lib/src/runtime/compilation/internal/klp_prepared
 
 | 成員 | 可見性 | 簽章／型別 | 來源註解摘要 | 證據 |
 |---|---|---|---|---|
-| method <code>createResource</code> | public | <code>KlpPlacementResource createResource(KlpValidatedNode node)</code> |  | [lib/src/runtime/compilation/internal/klp_prepared_node.dart:9](../../../../../../lib/src/runtime/compilation/internal/klp_prepared_node.dart#L9) |
-| method <code>materialize</code> | public | <code>KlpBoundTemplate materialize(KlpPlacementResource resource, List&lt;KlpBoundTemplate&gt; children, KlpFrameLease lease)</code> |  | [lib/src/runtime/compilation/internal/klp_prepared_node.dart:10](../../../../../../lib/src/runtime/compilation/internal/klp_prepared_node.dart#L10) |
+| method <code>createResource</code> | public | <code>KlpPlacementResource createResource(KlpValidatedNode node)</code> |  | [lib/src/runtime/compilation/internal/klp_prepared_node.dart:8](../../../../../../lib/src/runtime/compilation/internal/klp_prepared_node.dart#L8) |
+| method <code>materialize</code> | public | <code>KlpBoundTemplate materialize( KlpPlacementResource resource, List&lt;KlpBoundTemplate&gt; children, KlpFrameLease lease, )</code> |  | [lib/src/runtime/compilation/internal/klp_prepared_node.dart:9](../../../../../../lib/src/runtime/compilation/internal/klp_prepared_node.dart#L9) |
 
 ## 閱讀說明與限制
 

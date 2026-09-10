@@ -52,10 +52,10 @@ ClassDeclaration · private · [lib/src/features/infinite_canvas/primitives/klp_
 
 | 成員 | 可見性 | 簽章／型別 | 來源註解摘要 | 證據 |
 |---|---|---|---|---|
-| constructor <code>_KlpCanvasDropIntentFrame</code> | private | <code>const _KlpCanvasDropIntentFrame({ required this.label, required this.child, })</code> |  | [lib/src/features/infinite_canvas/primitives/klp_canvas_drop_intent_frame.dart:4](../../../../../../lib/src/features/infinite_canvas/primitives/klp_canvas_drop_intent_frame.dart#L4) |
-| field <code>label</code> | public | <code>final String label</code> |  | [lib/src/features/infinite_canvas/primitives/klp_canvas_drop_intent_frame.dart:9](../../../../../../lib/src/features/infinite_canvas/primitives/klp_canvas_drop_intent_frame.dart#L9) |
-| field <code>child</code> | public | <code>final Widget child</code> |  | [lib/src/features/infinite_canvas/primitives/klp_canvas_drop_intent_frame.dart:10](../../../../../../lib/src/features/infinite_canvas/primitives/klp_canvas_drop_intent_frame.dart#L10) |
-| method <code>build</code> | public | <code>Widget build(BuildContext context)</code> |  | [lib/src/features/infinite_canvas/primitives/klp_canvas_drop_intent_frame.dart:12](../../../../../../lib/src/features/infinite_canvas/primitives/klp_canvas_drop_intent_frame.dart#L12) |
+| constructor <code>_KlpCanvasDropIntentFrame</code> | private | <code>const _KlpCanvasDropIntentFrame({required this.label, required this.child})</code> |  | [lib/src/features/infinite_canvas/primitives/klp_canvas_drop_intent_frame.dart:4](../../../../../../lib/src/features/infinite_canvas/primitives/klp_canvas_drop_intent_frame.dart#L4) |
+| field <code>label</code> | public | <code>final String label</code> |  | [lib/src/features/infinite_canvas/primitives/klp_canvas_drop_intent_frame.dart:6](../../../../../../lib/src/features/infinite_canvas/primitives/klp_canvas_drop_intent_frame.dart#L6) |
+| field <code>child</code> | public | <code>final Widget child</code> |  | [lib/src/features/infinite_canvas/primitives/klp_canvas_drop_intent_frame.dart:7](../../../../../../lib/src/features/infinite_canvas/primitives/klp_canvas_drop_intent_frame.dart#L7) |
+| method <code>build</code> | public | <code>Widget build(BuildContext context)</code> |  | [lib/src/features/infinite_canvas/primitives/klp_canvas_drop_intent_frame.dart:9](../../../../../../lib/src/features/infinite_canvas/primitives/klp_canvas_drop_intent_frame.dart#L9) |
 
 ## 閱讀說明與限制
 

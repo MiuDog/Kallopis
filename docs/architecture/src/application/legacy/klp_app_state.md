@@ -67,13 +67,13 @@ ClassDeclaration · private · [lib/src/application/legacy/klp_app_state.dart:3]
 | method <code>dispose</code> | public | <code>void dispose()</code> |  | [lib/src/application/legacy/klp_app_state.dart:27](../../../../../lib/src/application/legacy/klp_app_state.dart#L27) |
 | method <code>didChangePlatformBrightness</code> | public | <code>void didChangePlatformBrightness()</code> |  | [lib/src/application/legacy/klp_app_state.dart:34](../../../../../lib/src/application/legacy/klp_app_state.dart#L34) |
 | method <code>didUpdateWidget</code> | public | <code>void didUpdateWidget(covariant KlpApp oldWidget)</code> |  | [lib/src/application/legacy/klp_app_state.dart:41](../../../../../lib/src/application/legacy/klp_app_state.dart#L41) |
-| getter <code>themeMode</code> | public | <code>ThemeMode get themeMode</code> |  | [lib/src/application/legacy/klp_app_state.dart:58](../../../../../lib/src/application/legacy/klp_app_state.dart#L58) |
-| getter <code>keyBindings</code> | public | <code>KlpKeyBindingController get keyBindings</code> |  | [lib/src/application/legacy/klp_app_state.dart:61](../../../../../lib/src/application/legacy/klp_app_state.dart#L61) |
-| getter <code>brightness</code> | public | <code>Brightness get brightness</code> |  | [lib/src/application/legacy/klp_app_state.dart:64](../../../../../lib/src/application/legacy/klp_app_state.dart#L64) |
-| method <code>toggleBrightness</code> | public | <code>void toggleBrightness()</code> |  | [lib/src/application/legacy/klp_app_state.dart:72](../../../../../lib/src/application/legacy/klp_app_state.dart#L72) |
-| method <code>setThemeMode</code> | public | <code>void setThemeMode(ThemeMode mode)</code> |  | [lib/src/application/legacy/klp_app_state.dart:81](../../../../../lib/src/application/legacy/klp_app_state.dart#L81) |
-| method <code>build</code> | public | <code>Widget build(BuildContext context)</code> |  | [lib/src/application/legacy/klp_app_state.dart:86](../../../../../lib/src/application/legacy/klp_app_state.dart#L86) |
-| method <code>_styleFor</code> | private | <code>KlpVisualStyle _styleFor(Brightness brightness)</code> |  | [lib/src/application/legacy/klp_app_state.dart:164](../../../../../lib/src/application/legacy/klp_app_state.dart#L164) |
+| getter <code>themeMode</code> | public | <code>ThemeMode get themeMode</code> |  | [lib/src/application/legacy/klp_app_state.dart:61](../../../../../lib/src/application/legacy/klp_app_state.dart#L61) |
+| getter <code>keyBindings</code> | public | <code>KlpKeyBindingController get keyBindings</code> |  | [lib/src/application/legacy/klp_app_state.dart:64](../../../../../lib/src/application/legacy/klp_app_state.dart#L64) |
+| getter <code>brightness</code> | public | <code>Brightness get brightness</code> |  | [lib/src/application/legacy/klp_app_state.dart:67](../../../../../lib/src/application/legacy/klp_app_state.dart#L67) |
+| method <code>toggleBrightness</code> | public | <code>void toggleBrightness()</code> |  | [lib/src/application/legacy/klp_app_state.dart:75](../../../../../lib/src/application/legacy/klp_app_state.dart#L75) |
+| method <code>setThemeMode</code> | public | <code>void setThemeMode(ThemeMode mode)</code> |  | [lib/src/application/legacy/klp_app_state.dart:84](../../../../../lib/src/application/legacy/klp_app_state.dart#L84) |
+| method <code>build</code> | public | <code>Widget build(BuildContext context)</code> |  | [lib/src/application/legacy/klp_app_state.dart:89](../../../../../lib/src/application/legacy/klp_app_state.dart#L89) |
+| method <code>_styleFor</code> | private | <code>KlpVisualStyle _styleFor(Brightness brightness)</code> |  | [lib/src/application/legacy/klp_app_state.dart:165](../../../../../lib/src/application/legacy/klp_app_state.dart#L165) |
 
 ## 閱讀說明與限制
 

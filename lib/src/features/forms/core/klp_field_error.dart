@@ -6,18 +6,18 @@ import '../internal/klp_form_dependencies.dart';
 /// [KlpField] 的內建錯誤列沒有這層 live region 包裝；需要非同步驗證結果
 /// 出現時立即被報讀器感知，才需要在 [KlpField] 之外單獨用它。
 class KlpFieldError extends StatelessWidget {
-	const KlpFieldError({super.key, required this.error});
+  const KlpFieldError({super.key, required this.error});
 
-	final String error;
+  final String error;
 
-	@override
-	Widget build(BuildContext context) {
-		return KlpLiveRegion.fromDescendants(
-			child: KlpText(
-				error,
-				role: KlpTextRole.caption,
-				tone: KlpTextTone.danger,
-			),
-		);
-	}
+  @override
+  Widget build(BuildContext context) {
+    return KlpLiveRegion.fromDescendants(
+      child: KlpText(
+        error,
+        role: KlpTextRole.caption,
+        tone: KlpTextTone.danger,
+      ),
+    );
+  }
 }

@@ -54,11 +54,11 @@ ClassDeclaration · public · [lib/src/features/collections/badge/internal/klp_t
 
 | 成員 | 可見性 | 簽章／型別 | 來源註解摘要 | 證據 |
 |---|---|---|---|---|
-| constructor <code>KlpTag</code> | public | <code>const KlpTag({ super.key, required this.label, this.prefix, this.onRemove, })</code> |  | [lib/src/features/collections/badge/internal/klp_tag_widget.dart:5](../../../../../../../lib/src/features/collections/badge/internal/klp_tag_widget.dart#L5) |
-| field <code>label</code> | public | <code>final String label</code> | 標籤文字。 | [lib/src/features/collections/badge/internal/klp_tag_widget.dart:13](../../../../../../../lib/src/features/collections/badge/internal/klp_tag_widget.dart#L13) |
-| field <code>prefix</code> | public | <code>final String? prefix</code> | 前綴符號，例如 `#`。 | [lib/src/features/collections/badge/internal/klp_tag_widget.dart:16](../../../../../../../lib/src/features/collections/badge/internal/klp_tag_widget.dart#L16) |
-| field <code>onRemove</code> | public | <code>final VoidCallback? onRemove</code> | 移除標籤的回呼。 | [lib/src/features/collections/badge/internal/klp_tag_widget.dart:19](../../../../../../../lib/src/features/collections/badge/internal/klp_tag_widget.dart#L19) |
-| method <code>build</code> | public | <code>Widget build(BuildContext context)</code> |  | [lib/src/features/collections/badge/internal/klp_tag_widget.dart:21](../../../../../../../lib/src/features/collections/badge/internal/klp_tag_widget.dart#L21) |
+| constructor <code>KlpTag</code> | public | <code>const KlpTag({super.key, required this.label, this.prefix, this.onRemove})</code> |  | [lib/src/features/collections/badge/internal/klp_tag_widget.dart:5](../../../../../../../lib/src/features/collections/badge/internal/klp_tag_widget.dart#L5) |
+| field <code>label</code> | public | <code>final String label</code> | 標籤文字。 | [lib/src/features/collections/badge/internal/klp_tag_widget.dart:8](../../../../../../../lib/src/features/collections/badge/internal/klp_tag_widget.dart#L8) |
+| field <code>prefix</code> | public | <code>final String? prefix</code> | 前綴符號，例如 `#`。 | [lib/src/features/collections/badge/internal/klp_tag_widget.dart:11](../../../../../../../lib/src/features/collections/badge/internal/klp_tag_widget.dart#L11) |
+| field <code>onRemove</code> | public | <code>final VoidCallback? onRemove</code> | 移除標籤的回呼。 | [lib/src/features/collections/badge/internal/klp_tag_widget.dart:14](../../../../../../../lib/src/features/collections/badge/internal/klp_tag_widget.dart#L14) |
+| method <code>build</code> | public | <code>Widget build(BuildContext context)</code> |  | [lib/src/features/collections/badge/internal/klp_tag_widget.dart:16](../../../../../../../lib/src/features/collections/badge/internal/klp_tag_widget.dart#L16) |
 
 ## 閱讀說明與限制
 

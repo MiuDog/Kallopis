@@ -103,7 +103,7 @@ ClassDeclaration · public · [lib/src/features/workspace/shell/window/klp_windo
 | method <code>buildWindows</code> | public | <code>Widget buildWindows(BuildContext context)</code> |  | [lib/src/features/workspace/shell/window/klp_window_header_strategy.dart:51](../../../../../../../lib/src/features/workspace/shell/window/klp_window_header_strategy.dart#L51) |
 | method <code>buildMacOS</code> | public | <code>Widget buildMacOS(BuildContext context)</code> |  | [lib/src/features/workspace/shell/window/klp_window_header_strategy.dart:65](../../../../../../../lib/src/features/workspace/shell/window/klp_window_header_strategy.dart#L65) |
 | method <code>buildIdentity</code> | public | <code>Widget buildIdentity(BuildContext context, bool appIconUsesIndependentSlot)</code> |  | [lib/src/features/workspace/shell/window/klp_window_header_strategy.dart:77](../../../../../../../lib/src/features/workspace/shell/window/klp_window_header_strategy.dart#L77) |
-| method <code>buildControls</code> | public | <code>Widget buildControls(KlpWindowControlsStyle style)</code> |  | [lib/src/features/workspace/shell/window/klp_window_header_strategy.dart:98](../../../../../../../lib/src/features/workspace/shell/window/klp_window_header_strategy.dart#L98) |
+| method <code>buildControls</code> | public | <code>Widget buildControls(KlpWindowControlsStyle style)</code> |  | [lib/src/features/workspace/shell/window/klp_window_header_strategy.dart:106](../../../../../../../lib/src/features/workspace/shell/window/klp_window_header_strategy.dart#L106) |
 
 ## 閱讀說明與限制
 

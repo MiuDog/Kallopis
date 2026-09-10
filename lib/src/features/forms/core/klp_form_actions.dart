@@ -6,49 +6,49 @@ import '../internal/klp_form_dependencies.dart';
 /// [onSubmit] 恆為必填——表單至少要能送出。[submitting] 為 true 時三個按鈕
 /// 一併停用，避免送出過程中使用者重複觸發或誤按取消／重設。
 class KlpFormActions extends StatelessWidget {
-	const KlpFormActions({
-		super.key,
-		required this.submitLabel,
-		required this.onSubmit,
-		this.cancelLabel,
-		this.onCancel,
-		this.resetLabel,
-		this.onReset,
-		this.submitting = false,
-	});
+  const KlpFormActions({
+    super.key,
+    required this.submitLabel,
+    required this.onSubmit,
+    this.cancelLabel,
+    this.onCancel,
+    this.resetLabel,
+    this.onReset,
+    this.submitting = false,
+  });
 
-	final String submitLabel;
-	final VoidCallback? onSubmit;
-	final String? cancelLabel;
-	final VoidCallback? onCancel;
-	final String? resetLabel;
-	final VoidCallback? onReset;
-	final bool submitting;
+  final String submitLabel;
+  final VoidCallback? onSubmit;
+  final String? cancelLabel;
+  final VoidCallback? onCancel;
+  final String? resetLabel;
+  final VoidCallback? onReset;
+  final bool submitting;
 
-	@override
-	Widget build(BuildContext context) {
-		return KlpWrap(
-			alignment: WrapAlignment.end,
-			spacingSize: KlpSpaceSize.action,
-			runSpacingSize: KlpSpaceSize.contentStack,
-			children: [
-				if (resetLabel != null)
-					KlpButton(
-						label: resetLabel!,
-						tone: KlpButtonTone.ghost,
-						onPressed: submitting ? null : onReset,
-					),
-				if (cancelLabel != null)
-					KlpButton(
-						label: cancelLabel!,
-						onPressed: submitting ? null : onCancel,
-					),
-				KlpButton(
-					label: submitLabel,
-					tone: KlpButtonTone.primary,
-					onPressed: submitting ? null : onSubmit,
-				),
-			],
-		);
-	}
+  @override
+  Widget build(BuildContext context) {
+    return KlpWrap(
+      alignment: WrapAlignment.end,
+      spacingSize: KlpSpaceSize.action,
+      runSpacingSize: KlpSpaceSize.contentStack,
+      children: [
+        if (resetLabel != null)
+          KlpButton(
+            label: resetLabel!,
+            tone: KlpButtonTone.ghost,
+            onPressed: submitting ? null : onReset,
+          ),
+        if (cancelLabel != null)
+          KlpButton(
+            label: cancelLabel!,
+            onPressed: submitting ? null : onCancel,
+          ),
+        KlpButton(
+          label: submitLabel,
+          tone: KlpButtonTone.primary,
+          onPressed: submitting ? null : onSubmit,
+        ),
+      ],
+    );
+  }
 }

@@ -60,18 +60,18 @@ ClassDeclaration · public · [lib/src/foundation/klp_oklch_color.dart:9](../../
 |---|---|---|---|---|
 | constructor <code>KlpOklchColor</code> | public | <code>const KlpOklchColor({ required this.lightness, required this.chroma, required this.hue, this.alpha = 1, })</code> |  | [lib/src/foundation/klp_oklch_color.dart:16](../../../../lib/src/foundation/klp_oklch_color.dart#L16) |
 | constructor <code>fromColor</code> | public | <code>factory KlpOklchColor.fromColor(Color color)</code> | 從 Flutter sRGB 色彩建立 OKLCH 值。 | [lib/src/foundation/klp_oklch_color.dart:25](../../../../lib/src/foundation/klp_oklch_color.dart#L25) |
-| field <code>lightness</code> | public | <code>final double lightness</code> |  | [lib/src/foundation/klp_oklch_color.dart:49](../../../../lib/src/foundation/klp_oklch_color.dart#L49) |
-| field <code>chroma</code> | public | <code>final double chroma</code> |  | [lib/src/foundation/klp_oklch_color.dart:50](../../../../lib/src/foundation/klp_oklch_color.dart#L50) |
-| field <code>hue</code> | public | <code>final double hue</code> |  | [lib/src/foundation/klp_oklch_color.dart:51](../../../../lib/src/foundation/klp_oklch_color.dart#L51) |
-| field <code>alpha</code> | public | <code>final double alpha</code> |  | [lib/src/foundation/klp_oklch_color.dart:52](../../../../lib/src/foundation/klp_oklch_color.dart#L52) |
-| getter <code>isInSrgbGamut</code> | public | <code>bool get isInSrgbGamut</code> | 未限制通道前的轉換結果是否完整落在 sRGB 色域。 | [lib/src/foundation/klp_oklch_color.dart:54](../../../../lib/src/foundation/klp_oklch_color.dart#L54) |
-| getter <code>closestSrgbFallback</code> | public | <code>KlpOklchColor get closestSrgbFallback</code> | 固定 Lightness 與 Hue，找出 sRGB 色域內的最大 Chroma。 | [lib/src/foundation/klp_oklch_color.dart:60](../../../../lib/src/foundation/klp_oklch_color.dart#L60) |
-| method <code>toSrgbFallbackColor</code> | public | <code>Color toSrgbFallbackColor()</code> | 取得以 Chroma fallback 映射後的 sRGB 色彩。 | [lib/src/foundation/klp_oklch_color.dart:81](../../../../lib/src/foundation/klp_oklch_color.dart#L81) |
-| method <code>toColor</code> | public | <code>Color toColor()</code> | 轉成 Flutter sRGB 色彩；超出色域的通道會限制在 0 到 1。 | [lib/src/foundation/klp_oklch_color.dart:84](../../../../lib/src/foundation/klp_oklch_color.dart#L84) |
-| method <code>copyWith</code> | public | <code>KlpOklchColor copyWith({double? lightness, double? chroma, double? hue, double? alpha})</code> | 建立只替換指定座標的新值。 | [lib/src/foundation/klp_oklch_color.dart:96](../../../../lib/src/foundation/klp_oklch_color.dart#L96) |
-| method <code>_toSrgb</code> | private | <code>List&lt;double&gt; _toSrgb()</code> |  | [lib/src/foundation/klp_oklch_color.dart:106](../../../../lib/src/foundation/klp_oklch_color.dart#L106) |
-| method <code>==</code> | public | <code>bool operator ==(Object other)</code> |  | [lib/src/foundation/klp_oklch_color.dart:124](../../../../lib/src/foundation/klp_oklch_color.dart#L124) |
-| getter <code>hashCode</code> | public | <code>int get hashCode</code> |  | [lib/src/foundation/klp_oklch_color.dart:134](../../../../lib/src/foundation/klp_oklch_color.dart#L134) |
+| field <code>lightness</code> | public | <code>final double lightness</code> |  | [lib/src/foundation/klp_oklch_color.dart:66](../../../../lib/src/foundation/klp_oklch_color.dart#L66) |
+| field <code>chroma</code> | public | <code>final double chroma</code> |  | [lib/src/foundation/klp_oklch_color.dart:67](../../../../lib/src/foundation/klp_oklch_color.dart#L67) |
+| field <code>hue</code> | public | <code>final double hue</code> |  | [lib/src/foundation/klp_oklch_color.dart:68](../../../../lib/src/foundation/klp_oklch_color.dart#L68) |
+| field <code>alpha</code> | public | <code>final double alpha</code> |  | [lib/src/foundation/klp_oklch_color.dart:69](../../../../lib/src/foundation/klp_oklch_color.dart#L69) |
+| getter <code>isInSrgbGamut</code> | public | <code>bool get isInSrgbGamut</code> | 未限制通道前的轉換結果是否完整落在 sRGB 色域。 | [lib/src/foundation/klp_oklch_color.dart:71](../../../../lib/src/foundation/klp_oklch_color.dart#L71) |
+| getter <code>closestSrgbFallback</code> | public | <code>KlpOklchColor get closestSrgbFallback</code> | 固定 Lightness 與 Hue，找出 sRGB 色域內的最大 Chroma。 | [lib/src/foundation/klp_oklch_color.dart:77](../../../../lib/src/foundation/klp_oklch_color.dart#L77) |
+| method <code>toSrgbFallbackColor</code> | public | <code>Color toSrgbFallbackColor()</code> | 取得以 Chroma fallback 映射後的 sRGB 色彩。 | [lib/src/foundation/klp_oklch_color.dart:98](../../../../lib/src/foundation/klp_oklch_color.dart#L98) |
+| method <code>toColor</code> | public | <code>Color toColor()</code> | 轉成 Flutter sRGB 色彩；超出色域的通道會限制在 0 到 1。 | [lib/src/foundation/klp_oklch_color.dart:101](../../../../lib/src/foundation/klp_oklch_color.dart#L101) |
+| method <code>copyWith</code> | public | <code>KlpOklchColor copyWith({ double? lightness, double? chroma, double? hue, double? alpha, })</code> | 建立只替換指定座標的新值。 | [lib/src/foundation/klp_oklch_color.dart:113](../../../../lib/src/foundation/klp_oklch_color.dart#L113) |
+| method <code>_toSrgb</code> | private | <code>List&lt;double&gt; _toSrgb()</code> |  | [lib/src/foundation/klp_oklch_color.dart:128](../../../../lib/src/foundation/klp_oklch_color.dart#L128) |
+| method <code>==</code> | public | <code>bool operator ==(Object other)</code> |  | [lib/src/foundation/klp_oklch_color.dart:146](../../../../lib/src/foundation/klp_oklch_color.dart#L146) |
+| getter <code>hashCode</code> | public | <code>int get hashCode</code> |  | [lib/src/foundation/klp_oklch_color.dart:156](../../../../lib/src/foundation/klp_oklch_color.dart#L156) |
 
 ## 閱讀說明與限制
 

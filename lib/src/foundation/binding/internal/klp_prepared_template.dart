@@ -9,8 +9,7 @@ part 'klp_prepared_children.dart';
 
 /// 已完成外部資料投影的封閉準備樹，插槽不會流入 renderer。
 sealed class KlpPreparedTemplate {
+  const KlpPreparedTemplate();
 
-	const KlpPreparedTemplate();
-
-	KlpBoundTemplate materialize(List<KlpBoundTemplate> children);
+  KlpBoundTemplate materialize(List<KlpBoundTemplate> children);
 }

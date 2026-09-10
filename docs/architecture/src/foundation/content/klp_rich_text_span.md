@@ -49,10 +49,10 @@ ClassDeclaration · public · [lib/src/foundation/content/klp_rich_text_span.dar
 
 | 成員 | 可見性 | 簽章／型別 | 來源註解摘要 | 證據 |
 |---|---|---|---|---|
-| constructor <code>KlpRichTextSpan</code> | public | <code>const KlpRichTextSpan({ required this.text, this.strong = false, this.color, })</code> |  | [lib/src/foundation/content/klp_rich_text_span.dart:8](../../../../../lib/src/foundation/content/klp_rich_text_span.dart#L8) |
-| field <code>text</code> | public | <code>final String text</code> |  | [lib/src/foundation/content/klp_rich_text_span.dart:14](../../../../../lib/src/foundation/content/klp_rich_text_span.dart#L14) |
-| field <code>strong</code> | public | <code>final bool strong</code> |  | [lib/src/foundation/content/klp_rich_text_span.dart:15](../../../../../lib/src/foundation/content/klp_rich_text_span.dart#L15) |
-| field <code>color</code> | public | <code>final Color? color</code> |  | [lib/src/foundation/content/klp_rich_text_span.dart:16](../../../../../lib/src/foundation/content/klp_rich_text_span.dart#L16) |
+| constructor <code>KlpRichTextSpan</code> | public | <code>const KlpRichTextSpan({required this.text, this.strong = false, this.color})</code> |  | [lib/src/foundation/content/klp_rich_text_span.dart:8](../../../../../lib/src/foundation/content/klp_rich_text_span.dart#L8) |
+| field <code>text</code> | public | <code>final String text</code> |  | [lib/src/foundation/content/klp_rich_text_span.dart:10](../../../../../lib/src/foundation/content/klp_rich_text_span.dart#L10) |
+| field <code>strong</code> | public | <code>final bool strong</code> |  | [lib/src/foundation/content/klp_rich_text_span.dart:11](../../../../../lib/src/foundation/content/klp_rich_text_span.dart#L11) |
+| field <code>color</code> | public | <code>final Color? color</code> |  | [lib/src/foundation/content/klp_rich_text_span.dart:12](../../../../../lib/src/foundation/content/klp_rich_text_span.dart#L12) |
 
 ## 閱讀說明與限制
 

@@ -52,9 +52,9 @@ ExtensionDeclaration · private · [lib/src/capabilities/navigation/internal/klp
 
 | 成員 | 可見性 | 簽章／型別 | 來源註解摘要 | 證據 |
 |---|---|---|---|---|
-| method <code>_push</code> | private | <code>KlpNavigationTicket&lt;R&gt; _push&lt;R&gt;(KlpLocation&lt;R&gt; location)</code> |  | [lib/src/capabilities/navigation/internal/klp_navigation_machine_operations.dart:5](../../../../../../lib/src/capabilities/navigation/internal/klp_navigation_machine_operations.dart#L5) |
-| method <code>_remove</code> | private | <code>Future&lt;KlpNavigationDecision&gt; _remove(KlpDestination&lt;Object?, Object?&gt;? destination, Object? result, bool completed)</code> |  | [lib/src/capabilities/navigation/internal/klp_navigation_machine_operations.dart:48](../../../../../../lib/src/capabilities/navigation/internal/klp_navigation_machine_operations.dart#L48) |
-| method <code>_restore</code> | private | <code>Future&lt;KlpNavigationDecision&gt; _restore(Iterable&lt;KlpLocation&lt;Object?&gt;&gt; locations)</code> |  | [lib/src/capabilities/navigation/internal/klp_navigation_machine_operations.dart:66](../../../../../../lib/src/capabilities/navigation/internal/klp_navigation_machine_operations.dart#L66) |
+| method <code>_push</code> | private | <code>KlpNavigationTicket&lt;R&gt; _push&lt;R&gt;(KlpLocation&lt;R&gt; location)</code> |  | [lib/src/capabilities/navigation/internal/klp_navigation_machine_operations.dart:4](../../../../../../lib/src/capabilities/navigation/internal/klp_navigation_machine_operations.dart#L4) |
+| method <code>_remove</code> | private | <code>Future&lt;KlpNavigationDecision&gt; _remove( KlpDestination&lt;Object?, Object?&gt;? destination, Object? result, bool completed, )</code> |  | [lib/src/capabilities/navigation/internal/klp_navigation_machine_operations.dart:67](../../../../../../lib/src/capabilities/navigation/internal/klp_navigation_machine_operations.dart#L67) |
+| method <code>_restore</code> | private | <code>Future&lt;KlpNavigationDecision&gt; _restore( Iterable&lt;KlpLocation&lt;Object?&gt;&gt; locations, )</code> |  | [lib/src/capabilities/navigation/internal/klp_navigation_machine_operations.dart:111](../../../../../../lib/src/capabilities/navigation/internal/klp_navigation_machine_operations.dart#L111) |
 
 ## 閱讀說明與限制
 

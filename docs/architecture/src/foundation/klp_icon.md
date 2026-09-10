@@ -67,16 +67,16 @@ ClassDeclaration · public · [lib/src/foundation/klp_icon.dart:10](../../../../
 
 | 成員 | 可見性 | 簽章／型別 | 來源註解摘要 | 證據 |
 |---|---|---|---|---|
-| constructor <code>KlpIcon</code> | public | <code>const KlpIcon( this.icon, { super.key, this.size, this.color, this.semanticLabel, this.weight = KlpIconWeight.regular, })</code> |  | [lib/src/foundation/klp_icon.dart:12](../../../../lib/src/foundation/klp_icon.dart#L12) |
-| field <code>icon</code> | public | <code>final KlpIconData icon</code> |  | [lib/src/foundation/klp_icon.dart:21](../../../../lib/src/foundation/klp_icon.dart#L21) |
-| field <code>size</code> | public | <code>final double? size</code> | `null` 表示沿用 theme 的圖示尺寸。 | [lib/src/foundation/klp_icon.dart:24](../../../../lib/src/foundation/klp_icon.dart#L24) |
-| field <code>color</code> | public | <code>final Color? color</code> |  | [lib/src/foundation/klp_icon.dart:25](../../../../lib/src/foundation/klp_icon.dart#L25) |
-| field <code>semanticLabel</code> | public | <code>final String? semanticLabel</code> |  | [lib/src/foundation/klp_icon.dart:26](../../../../lib/src/foundation/klp_icon.dart#L26) |
-| field <code>weight</code> | public | <code>final KlpIconWeight weight</code> |  | [lib/src/foundation/klp_icon.dart:27](../../../../lib/src/foundation/klp_icon.dart#L27) |
-| field <code>regularFontFamily</code> | public | <code>static const (inferred) regularFontFamily</code> | Regular Rounded 在 Flutter asset manifest 中登記的 family 名稱。 | [lib/src/foundation/klp_icon.dart:30](../../../../lib/src/foundation/klp_icon.dart#L30) |
-| field <code>thinFontFamily</code> | public | <code>static const (inferred) thinFontFamily</code> | Thin Rounded 在 Flutter asset manifest 中登記的 family 名稱。 | [lib/src/foundation/klp_icon.dart:33](../../../../lib/src/foundation/klp_icon.dart#L33) |
-| field <code>fontFamily</code> | public | <code>static const (inferred) fontFamily</code> | 向下相容的預設字型名稱。 | [lib/src/foundation/klp_icon.dart:36](../../../../lib/src/foundation/klp_icon.dart#L36) |
-| method <code>build</code> | public | <code>Widget build(BuildContext context)</code> |  | [lib/src/foundation/klp_icon.dart:38](../../../../lib/src/foundation/klp_icon.dart#L38) |
+| constructor <code>KlpIcon</code> | public | <code>const KlpIcon( this.icon, { super.key, this.size, this.color, this.semanticLabel, this.weight = KlpIconWeight.regular, })</code> |  | [lib/src/foundation/klp_icon.dart:11](../../../../lib/src/foundation/klp_icon.dart#L11) |
+| field <code>icon</code> | public | <code>final KlpIconData icon</code> |  | [lib/src/foundation/klp_icon.dart:20](../../../../lib/src/foundation/klp_icon.dart#L20) |
+| field <code>size</code> | public | <code>final double? size</code> | `null` 表示沿用 theme 的圖示尺寸。 | [lib/src/foundation/klp_icon.dart:23](../../../../lib/src/foundation/klp_icon.dart#L23) |
+| field <code>color</code> | public | <code>final Color? color</code> |  | [lib/src/foundation/klp_icon.dart:24](../../../../lib/src/foundation/klp_icon.dart#L24) |
+| field <code>semanticLabel</code> | public | <code>final String? semanticLabel</code> |  | [lib/src/foundation/klp_icon.dart:25](../../../../lib/src/foundation/klp_icon.dart#L25) |
+| field <code>weight</code> | public | <code>final KlpIconWeight weight</code> |  | [lib/src/foundation/klp_icon.dart:26](../../../../lib/src/foundation/klp_icon.dart#L26) |
+| field <code>regularFontFamily</code> | public | <code>static const (inferred) regularFontFamily</code> | Regular Rounded 在 Flutter asset manifest 中登記的 family 名稱。 | [lib/src/foundation/klp_icon.dart:29](../../../../lib/src/foundation/klp_icon.dart#L29) |
+| field <code>thinFontFamily</code> | public | <code>static const (inferred) thinFontFamily</code> | Thin Rounded 在 Flutter asset manifest 中登記的 family 名稱。 | [lib/src/foundation/klp_icon.dart:32](../../../../lib/src/foundation/klp_icon.dart#L32) |
+| field <code>fontFamily</code> | public | <code>static const (inferred) fontFamily</code> | 向下相容的預設字型名稱。 | [lib/src/foundation/klp_icon.dart:35](../../../../lib/src/foundation/klp_icon.dart#L35) |
+| method <code>build</code> | public | <code>Widget build(BuildContext context)</code> |  | [lib/src/foundation/klp_icon.dart:37](../../../../lib/src/foundation/klp_icon.dart#L37) |
 
 ## 閱讀說明與限制
 

@@ -52,10 +52,10 @@ ClassDeclaration · private · [lib/src/features/collections/progress/primitives
 
 | 成員 | 可見性 | 簽章／型別 | 來源註解摘要 | 證據 |
 |---|---|---|---|---|
-| constructor <code>_KlpProgressTrack</code> | private | <code>const _KlpProgressTrack({ required this.value, required this.state, })</code> |  | [lib/src/features/collections/progress/primitives/klp_progress_track.dart:4](../../../../../../../lib/src/features/collections/progress/primitives/klp_progress_track.dart#L4) |
-| field <code>value</code> | public | <code>final double? value</code> |  | [lib/src/features/collections/progress/primitives/klp_progress_track.dart:9](../../../../../../../lib/src/features/collections/progress/primitives/klp_progress_track.dart#L9) |
-| field <code>state</code> | public | <code>final KlpProgressState state</code> |  | [lib/src/features/collections/progress/primitives/klp_progress_track.dart:10](../../../../../../../lib/src/features/collections/progress/primitives/klp_progress_track.dart#L10) |
-| method <code>build</code> | public | <code>Widget build(BuildContext context)</code> |  | [lib/src/features/collections/progress/primitives/klp_progress_track.dart:12](../../../../../../../lib/src/features/collections/progress/primitives/klp_progress_track.dart#L12) |
+| constructor <code>_KlpProgressTrack</code> | private | <code>const _KlpProgressTrack({required this.value, required this.state})</code> |  | [lib/src/features/collections/progress/primitives/klp_progress_track.dart:4](../../../../../../../lib/src/features/collections/progress/primitives/klp_progress_track.dart#L4) |
+| field <code>value</code> | public | <code>final double? value</code> |  | [lib/src/features/collections/progress/primitives/klp_progress_track.dart:6](../../../../../../../lib/src/features/collections/progress/primitives/klp_progress_track.dart#L6) |
+| field <code>state</code> | public | <code>final KlpProgressState state</code> |  | [lib/src/features/collections/progress/primitives/klp_progress_track.dart:7](../../../../../../../lib/src/features/collections/progress/primitives/klp_progress_track.dart#L7) |
+| method <code>build</code> | public | <code>Widget build(BuildContext context)</code> |  | [lib/src/features/collections/progress/primitives/klp_progress_track.dart:9](../../../../../../../lib/src/features/collections/progress/primitives/klp_progress_track.dart#L9) |
 
 ## 閱讀說明與限制
 

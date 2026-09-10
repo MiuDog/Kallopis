@@ -195,7 +195,9 @@ final class _KlpApplicationSession {
       return false;
     }
     try {
-      final decision = await machine.restore(application.router._restore(restoration));
+      final decision = await machine.restore(
+        application.router._restore(restoration),
+      );
       if (decision.outcome case KlpNavigationFailed<void> failure) {
         onAsyncError(failure.error, failure.stackTrace);
       }

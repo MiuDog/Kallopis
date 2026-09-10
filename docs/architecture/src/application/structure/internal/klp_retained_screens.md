@@ -69,15 +69,15 @@ ClassDeclaration · public · [lib/src/application/structure/internal/klp_retain
 
 | 成員 | 可見性 | 簽章／型別 | 來源註解摘要 | 證據 |
 |---|---|---|---|---|
-| field <code>typeId</code> | public | <code>static const (inferred) typeId</code> |  | [lib/src/application/structure/internal/klp_retained_screens.dart:11](../../../../../../lib/src/application/structure/internal/klp_retained_screens.dart#L11) |
-| field <code>entriesSlot</code> | public | <code>static final (inferred) entriesSlot</code> |  | [lib/src/application/structure/internal/klp_retained_screens.dart:12](../../../../../../lib/src/application/structure/internal/klp_retained_screens.dart#L12) |
-| field <code>contract</code> | public | <code>static final (inferred) contract</code> |  | [lib/src/application/structure/internal/klp_retained_screens.dart:13](../../../../../../lib/src/application/structure/internal/klp_retained_screens.dart#L13) |
-| field <code>id</code> | public | <code>final String id</code> |  | [lib/src/application/structure/internal/klp_retained_screens.dart:16](../../../../../../lib/src/application/structure/internal/klp_retained_screens.dart#L16) |
-| field <code>activeEntry</code> | public | <code>final String activeEntry</code> |  | [lib/src/application/structure/internal/klp_retained_screens.dart:17](../../../../../../lib/src/application/structure/internal/klp_retained_screens.dart#L17) |
-| field <code>children</code> | public | <code>final KlpChildren children</code> |  | [lib/src/application/structure/internal/klp_retained_screens.dart:19](../../../../../../lib/src/application/structure/internal/klp_retained_screens.dart#L19) |
-| constructor <code>KlpRetainedScreens</code> | public | <code>KlpRetainedScreens({required this.id, required this.activeEntry, required Map&lt;String, KlpScreen&gt; screens})</code> |  | [lib/src/application/structure/internal/klp_retained_screens.dart:21](../../../../../../lib/src/application/structure/internal/klp_retained_screens.dart#L21) |
-| method <code>_children</code> | private | <code>static KlpChildren _children(Map&lt;String, KlpScreen&gt; screens, String activeEntry)</code> |  | [lib/src/application/structure/internal/klp_retained_screens.dart:23](../../../../../../lib/src/application/structure/internal/klp_retained_screens.dart#L23) |
-| getter <code>definitionId</code> | public | <code>String get definitionId</code> |  | [lib/src/application/structure/internal/klp_retained_screens.dart:30](../../../../../../lib/src/application/structure/internal/klp_retained_screens.dart#L30) |
+| field <code>typeId</code> | public | <code>static const (inferred) typeId</code> |  | [lib/src/application/structure/internal/klp_retained_screens.dart:10](../../../../../../lib/src/application/structure/internal/klp_retained_screens.dart#L10) |
+| field <code>entriesSlot</code> | public | <code>static final (inferred) entriesSlot</code> |  | [lib/src/application/structure/internal/klp_retained_screens.dart:11](../../../../../../lib/src/application/structure/internal/klp_retained_screens.dart#L11) |
+| field <code>contract</code> | public | <code>static final (inferred) contract</code> |  | [lib/src/application/structure/internal/klp_retained_screens.dart:16](../../../../../../lib/src/application/structure/internal/klp_retained_screens.dart#L16) |
+| field <code>id</code> | public | <code>final String id</code> |  | [lib/src/application/structure/internal/klp_retained_screens.dart:22](../../../../../../lib/src/application/structure/internal/klp_retained_screens.dart#L22) |
+| field <code>activeEntry</code> | public | <code>final String activeEntry</code> |  | [lib/src/application/structure/internal/klp_retained_screens.dart:23](../../../../../../lib/src/application/structure/internal/klp_retained_screens.dart#L23) |
+| field <code>children</code> | public | <code>final KlpChildren children</code> |  | [lib/src/application/structure/internal/klp_retained_screens.dart:25](../../../../../../lib/src/application/structure/internal/klp_retained_screens.dart#L25) |
+| constructor <code>KlpRetainedScreens</code> | public | <code>KlpRetainedScreens({ required this.id, required this.activeEntry, required Map&lt;String, KlpScreen&gt; screens, })</code> |  | [lib/src/application/structure/internal/klp_retained_screens.dart:27](../../../../../../lib/src/application/structure/internal/klp_retained_screens.dart#L27) |
+| method <code>_children</code> | private | <code>static KlpChildren _children( Map&lt;String, KlpScreen&gt; screens, String activeEntry, )</code> |  | [lib/src/application/structure/internal/klp_retained_screens.dart:33](../../../../../../lib/src/application/structure/internal/klp_retained_screens.dart#L33) |
+| getter <code>definitionId</code> | public | <code>String get definitionId</code> |  | [lib/src/application/structure/internal/klp_retained_screens.dart:52](../../../../../../lib/src/application/structure/internal/klp_retained_screens.dart#L52) |
 
 ## 閱讀說明與限制
 

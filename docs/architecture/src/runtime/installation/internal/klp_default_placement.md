@@ -66,13 +66,13 @@ ClassDeclaration · public · [lib/src/runtime/installation/internal/klp_default
 
 | 成員 | 可見性 | 簽章／型別 | 來源註解摘要 | 證據 |
 |---|---|---|---|---|
-| field <code>_owner</code> | private | <code>final KlpMutableState&lt;KlpValidatedNode&gt; _owner</code> |  | [lib/src/runtime/installation/internal/klp_default_placement.dart:10](../../../../../../lib/src/runtime/installation/internal/klp_default_placement.dart#L10) |
-| field <code>controller</code> | public | <code>final KlpStateController&lt;KlpValidatedNode&gt; controller</code> |  | [lib/src/runtime/installation/internal/klp_default_placement.dart:11](../../../../../../lib/src/runtime/installation/internal/klp_default_placement.dart#L11) |
-| constructor <code>KlpDefaultPlacement</code> | public | <code>KlpDefaultPlacement(KlpValidatedNode node)</code> |  | [lib/src/runtime/installation/internal/klp_default_placement.dart:13](../../../../../../lib/src/runtime/installation/internal/klp_default_placement.dart#L13) |
-| getter <code>state</code> | public | <code>KlpState&lt;KlpValidatedNode&gt; get state</code> |  | [lib/src/runtime/installation/internal/klp_default_placement.dart:17](../../../../../../lib/src/runtime/installation/internal/klp_default_placement.dart#L17) |
-| getter <code>isDisposed</code> | public | <code>bool get isDisposed</code> |  | [lib/src/runtime/installation/internal/klp_default_placement.dart:18](../../../../../../lib/src/runtime/installation/internal/klp_default_placement.dart#L18) |
-| method <code>update</code> | public | <code>void update(KlpValidatedNode node)</code> |  | [lib/src/runtime/installation/internal/klp_default_placement.dart:20](../../../../../../lib/src/runtime/installation/internal/klp_default_placement.dart#L20) |
-| method <code>dispose</code> | public | <code>void dispose()</code> |  | [lib/src/runtime/installation/internal/klp_default_placement.dart:25](../../../../../../lib/src/runtime/installation/internal/klp_default_placement.dart#L25) |
+| field <code>_owner</code> | private | <code>final KlpMutableState&lt;KlpValidatedNode&gt; _owner</code> |  | [lib/src/runtime/installation/internal/klp_default_placement.dart:9](../../../../../../lib/src/runtime/installation/internal/klp_default_placement.dart#L9) |
+| field <code>controller</code> | public | <code>final KlpStateController&lt;KlpValidatedNode&gt; controller</code> |  | [lib/src/runtime/installation/internal/klp_default_placement.dart:10](../../../../../../lib/src/runtime/installation/internal/klp_default_placement.dart#L10) |
+| constructor <code>KlpDefaultPlacement</code> | public | <code>KlpDefaultPlacement(KlpValidatedNode node)</code> |  | [lib/src/runtime/installation/internal/klp_default_placement.dart:12](../../../../../../lib/src/runtime/installation/internal/klp_default_placement.dart#L12) |
+| getter <code>state</code> | public | <code>KlpState&lt;KlpValidatedNode&gt; get state</code> |  | [lib/src/runtime/installation/internal/klp_default_placement.dart:16](../../../../../../lib/src/runtime/installation/internal/klp_default_placement.dart#L16) |
+| getter <code>isDisposed</code> | public | <code>bool get isDisposed</code> |  | [lib/src/runtime/installation/internal/klp_default_placement.dart:17](../../../../../../lib/src/runtime/installation/internal/klp_default_placement.dart#L17) |
+| method <code>update</code> | public | <code>void update(KlpValidatedNode node)</code> |  | [lib/src/runtime/installation/internal/klp_default_placement.dart:19](../../../../../../lib/src/runtime/installation/internal/klp_default_placement.dart#L19) |
+| method <code>dispose</code> | public | <code>void dispose()</code> |  | [lib/src/runtime/installation/internal/klp_default_placement.dart:24](../../../../../../lib/src/runtime/installation/internal/klp_default_placement.dart#L24) |
 
 ## 閱讀說明與限制
 

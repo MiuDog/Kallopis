@@ -33,6 +33,7 @@
 ## 文件索引
 
 - [組裝模板](composition-templates.md)：application、router、screen、rail、資料更新。
+- [系統索引與能力範例](systems.md)：依 application、composition、styling、navigation、state、foundation、features、runtime 與 legacy 系統選擇功能。
 - [外部元件作者指南](external-components.md)：定義期與實例期的責任分離。
 - [驗證指南](verification.md)：CI 指令、預期結果與排錯。
 - [架構總覽](../architecture/current-refactor-overview.md)：目前實作、legacy 收納位置與未完成能力。

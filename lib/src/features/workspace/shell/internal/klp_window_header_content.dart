@@ -11,7 +11,8 @@ Widget buildKlpWindowHeaderContent({required Widget identity, Widget? extras}) {
     delegate: KlpWindowHeaderContentDelegate(),
     children: [
       LayoutId(id: KlpWindowHeaderSlot.identity, child: identity),
-      if (extras != null) LayoutId(id: KlpWindowHeaderSlot.extras, child: extras),
+      if (extras != null)
+        LayoutId(id: KlpWindowHeaderSlot.extras, child: extras),
     ],
   );
 }

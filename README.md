@@ -12,6 +12,7 @@ Kallopis 是 -ist 產品家族共用的 Flutter 視覺與互動框架。新架�
 2. [應用與組裝模板](docs/ai/composition-templates.md)：唯一的應用、路由、畫面與 rail 範本。
 3. [外部元件作者指南](docs/ai/external-components.md)：資格介面、semantic token、模板與插槽。
 4. [驗證指南](docs/ai/verification.md)：把原生 Flutter 組裝阻擋在 CI 外。
+5. [系統索引與能力範例](docs/ai/systems.md)：依系統查找所有目前功能、責任與範例。
 
 架構接手者應再讀 [目前架構總覽](docs/architecture/current-refactor-overview.md) 與 [架構圖集](docs/architecture/README.md)。
 

@@ -55,7 +55,7 @@ ClassDeclaration · public · [lib/src/capabilities/data/klp_data_state.dart:6](
 
 | 成員 | 可見性 | 簽章／型別 | 來源註解摘要 | 證據 |
 |---|---|---|---|---|
-| constructor <code>KlpDataState</code> | public | <code>const KlpDataState()</code> |  | [lib/src/capabilities/data/klp_data_state.dart:11](../../../../../lib/src/capabilities/data/klp_data_state.dart#L11) |
+| constructor <code>KlpDataState</code> | public | <code>const KlpDataState()</code> |  | [lib/src/capabilities/data/klp_data_state.dart:10](../../../../../lib/src/capabilities/data/klp_data_state.dart#L10) |
 
 ## 閱讀說明與限制
 

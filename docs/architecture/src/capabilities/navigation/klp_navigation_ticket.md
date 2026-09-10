@@ -49,10 +49,10 @@ ClassDeclaration · public · [lib/src/capabilities/navigation/klp_navigation_ti
 
 | 成員 | 可見性 | 簽章／型別 | 來源註解摘要 | 證據 |
 |---|---|---|---|---|
-| field <code>decision</code> | public | <code>final Future&lt;KlpNavigationDecision&gt; decision</code> |  | [lib/src/capabilities/navigation/klp_navigation_ticket.dart:7](../../../../../lib/src/capabilities/navigation/klp_navigation_ticket.dart#L7) |
-| field <code>result</code> | public | <code>final Future&lt;KlpNavigationOutcome&lt;R&gt;&gt; result</code> |  | [lib/src/capabilities/navigation/klp_navigation_ticket.dart:8](../../../../../lib/src/capabilities/navigation/klp_navigation_ticket.dart#L8) |
-| field <code>_cancel</code> | private | <code>final void Function() _cancel</code> |  | [lib/src/capabilities/navigation/klp_navigation_ticket.dart:9](../../../../../lib/src/capabilities/navigation/klp_navigation_ticket.dart#L9) |
-| constructor <code>KlpNavigationTicket</code> | public | <code>const KlpNavigationTicket(this.decision, this.result, void Function() cancel)</code> |  | [lib/src/capabilities/navigation/klp_navigation_ticket.dart:11](../../../../../lib/src/capabilities/navigation/klp_navigation_ticket.dart#L11) |
+| field <code>decision</code> | public | <code>final Future&lt;KlpNavigationDecision&gt; decision</code> |  | [lib/src/capabilities/navigation/klp_navigation_ticket.dart:6](../../../../../lib/src/capabilities/navigation/klp_navigation_ticket.dart#L6) |
+| field <code>result</code> | public | <code>final Future&lt;KlpNavigationOutcome&lt;R&gt;&gt; result</code> |  | [lib/src/capabilities/navigation/klp_navigation_ticket.dart:7](../../../../../lib/src/capabilities/navigation/klp_navigation_ticket.dart#L7) |
+| field <code>_cancel</code> | private | <code>final void Function() _cancel</code> |  | [lib/src/capabilities/navigation/klp_navigation_ticket.dart:8](../../../../../lib/src/capabilities/navigation/klp_navigation_ticket.dart#L8) |
+| constructor <code>KlpNavigationTicket</code> | public | <code>const KlpNavigationTicket(this.decision, this.result, void Function() cancel)</code> |  | [lib/src/capabilities/navigation/klp_navigation_ticket.dart:10](../../../../../lib/src/capabilities/navigation/klp_navigation_ticket.dart#L10) |
 | method <code>cancel</code> | public | <code>void cancel()</code> |  | [lib/src/capabilities/navigation/klp_navigation_ticket.dart:13](../../../../../lib/src/capabilities/navigation/klp_navigation_ticket.dart#L13) |
 
 ## 閱讀說明與限制

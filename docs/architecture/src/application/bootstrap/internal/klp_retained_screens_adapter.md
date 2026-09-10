@@ -100,24 +100,24 @@ ClassDeclaration · public · [lib/src/application/bootstrap/internal/klp_retain
 
 | 成員 | 可見性 | 簽章／型別 | 來源註解摘要 | 證據 |
 |---|---|---|---|---|
-| constructor <code>KlpRetainedScreensAdapter</code> | public | <code>const KlpRetainedScreensAdapter()</code> |  | [lib/src/application/bootstrap/internal/klp_retained_screens_adapter.dart:17](../../../../../../lib/src/application/bootstrap/internal/klp_retained_screens_adapter.dart#L17) |
-| getter <code>contract</code> | public | <code>KlpDefinition&lt;KlpNode&gt; get contract</code> |  | [lib/src/application/bootstrap/internal/klp_retained_screens_adapter.dart:19](../../../../../../lib/src/application/bootstrap/internal/klp_retained_screens_adapter.dart#L19) |
-| method <code>prepare</code> | public | <code>KlpPreparedNode prepare(KlpNode node, KlpValidatedNode snapshot, KlpPrepareContext context)</code> |  | [lib/src/application/bootstrap/internal/klp_retained_screens_adapter.dart:22](../../../../../../lib/src/application/bootstrap/internal/klp_retained_screens_adapter.dart#L22) |
+| constructor <code>KlpRetainedScreensAdapter</code> | public | <code>const KlpRetainedScreensAdapter()</code> |  | [lib/src/application/bootstrap/internal/klp_retained_screens_adapter.dart:16](../../../../../../lib/src/application/bootstrap/internal/klp_retained_screens_adapter.dart#L16) |
+| getter <code>contract</code> | public | <code>KlpDefinition&lt;KlpNode&gt; get contract</code> |  | [lib/src/application/bootstrap/internal/klp_retained_screens_adapter.dart:18](../../../../../../lib/src/application/bootstrap/internal/klp_retained_screens_adapter.dart#L18) |
+| method <code>prepare</code> | public | <code>KlpPreparedNode prepare( KlpNode node, KlpValidatedNode snapshot, KlpPrepareContext context, )</code> |  | [lib/src/application/bootstrap/internal/klp_retained_screens_adapter.dart:21](../../../../../../lib/src/application/bootstrap/internal/klp_retained_screens_adapter.dart#L21) |
 
 ### _PreparedRetainedScreens
 
-ClassDeclaration · private · [lib/src/application/bootstrap/internal/klp_retained_screens_adapter.dart:29](../../../../../../lib/src/application/bootstrap/internal/klp_retained_screens_adapter.dart#L29)
+ClassDeclaration · private · [lib/src/application/bootstrap/internal/klp_retained_screens_adapter.dart:34](../../../../../../lib/src/application/bootstrap/internal/klp_retained_screens_adapter.dart#L34)
 
 <code>final class _PreparedRetainedScreens implements KlpPreparedNode</code>
 
-- `implements` → <code>KlpPreparedNode</code>：[lib/src/application/bootstrap/internal/klp_retained_screens_adapter.dart:29](../../../../../../lib/src/application/bootstrap/internal/klp_retained_screens_adapter.dart#L29)
+- `implements` → <code>KlpPreparedNode</code>：[lib/src/application/bootstrap/internal/klp_retained_screens_adapter.dart:34](../../../../../../lib/src/application/bootstrap/internal/klp_retained_screens_adapter.dart#L34)
 
 | 成員 | 可見性 | 簽章／型別 | 來源註解摘要 | 證據 |
 |---|---|---|---|---|
-| field <code>activeId</code> | public | <code>final KlpPlacementId activeId</code> |  | [lib/src/application/bootstrap/internal/klp_retained_screens_adapter.dart:31](../../../../../../lib/src/application/bootstrap/internal/klp_retained_screens_adapter.dart#L31) |
-| constructor <code>_PreparedRetainedScreens</code> | private | <code>const _PreparedRetainedScreens(this.activeId)</code> |  | [lib/src/application/bootstrap/internal/klp_retained_screens_adapter.dart:33](../../../../../../lib/src/application/bootstrap/internal/klp_retained_screens_adapter.dart#L33) |
-| method <code>createResource</code> | public | <code>KlpPlacementResource createResource(KlpValidatedNode node)</code> |  | [lib/src/application/bootstrap/internal/klp_retained_screens_adapter.dart:35](../../../../../../lib/src/application/bootstrap/internal/klp_retained_screens_adapter.dart#L35) |
-| method <code>materialize</code> | public | <code>KlpBoundTemplate materialize(KlpPlacementResource resource, List&lt;KlpBoundTemplate&gt; children, KlpFrameLease lease)</code> |  | [lib/src/application/bootstrap/internal/klp_retained_screens_adapter.dart:38](../../../../../../lib/src/application/bootstrap/internal/klp_retained_screens_adapter.dart#L38) |
+| field <code>activeId</code> | public | <code>final KlpPlacementId activeId</code> |  | [lib/src/application/bootstrap/internal/klp_retained_screens_adapter.dart:35](../../../../../../lib/src/application/bootstrap/internal/klp_retained_screens_adapter.dart#L35) |
+| constructor <code>_PreparedRetainedScreens</code> | private | <code>const _PreparedRetainedScreens(this.activeId)</code> |  | [lib/src/application/bootstrap/internal/klp_retained_screens_adapter.dart:37](../../../../../../lib/src/application/bootstrap/internal/klp_retained_screens_adapter.dart#L37) |
+| method <code>createResource</code> | public | <code>KlpPlacementResource createResource(KlpValidatedNode node)</code> |  | [lib/src/application/bootstrap/internal/klp_retained_screens_adapter.dart:39](../../../../../../lib/src/application/bootstrap/internal/klp_retained_screens_adapter.dart#L39) |
+| method <code>materialize</code> | public | <code>KlpBoundTemplate materialize( KlpPlacementResource resource, List&lt;KlpBoundTemplate&gt; children, KlpFrameLease lease, )</code> |  | [lib/src/application/bootstrap/internal/klp_retained_screens_adapter.dart:43](../../../../../../lib/src/application/bootstrap/internal/klp_retained_screens_adapter.dart#L43) |
 
 ## 閱讀說明與限制
 

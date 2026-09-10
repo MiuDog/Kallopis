@@ -37,13 +37,25 @@ class KlpResizeHandle extends StatelessWidget {
         cursor: _resolveCursor(isHorizontal),
         child: GestureDetector(
           behavior: HitTestBehavior.opaque,
-          onHorizontalDragStart: enabled && isHorizontal ? (_) => onDragStart?.call() : null,
-          onHorizontalDragUpdate: enabled && isHorizontal ? (details) => onDelta(details.delta.dx) : null,
-          onHorizontalDragEnd: enabled && isHorizontal ? (_) => onDragEnd?.call() : null,
+          onHorizontalDragStart: enabled && isHorizontal
+              ? (_) => onDragStart?.call()
+              : null,
+          onHorizontalDragUpdate: enabled && isHorizontal
+              ? (details) => onDelta(details.delta.dx)
+              : null,
+          onHorizontalDragEnd: enabled && isHorizontal
+              ? (_) => onDragEnd?.call()
+              : null,
           onHorizontalDragCancel: enabled && isHorizontal ? onDragEnd : null,
-          onVerticalDragStart: enabled && !isHorizontal ? (_) => onDragStart?.call() : null,
-          onVerticalDragUpdate: enabled && !isHorizontal ? (details) => onDelta(details.delta.dy) : null,
-          onVerticalDragEnd: enabled && !isHorizontal ? (_) => onDragEnd?.call() : null,
+          onVerticalDragStart: enabled && !isHorizontal
+              ? (_) => onDragStart?.call()
+              : null,
+          onVerticalDragUpdate: enabled && !isHorizontal
+              ? (details) => onDelta(details.delta.dy)
+              : null,
+          onVerticalDragEnd: enabled && !isHorizontal
+              ? (_) => onDragEnd?.call()
+              : null,
           onVerticalDragCancel: enabled && !isHorizontal ? onDragEnd : null,
           child: SizedBox(
             width: isHorizontal
@@ -72,6 +84,8 @@ class KlpResizeHandle extends StatelessWidget {
 
   MouseCursor _resolveCursor(bool isHorizontal) {
     if (!enabled) return SystemMouseCursors.basic;
-    return isHorizontal ? SystemMouseCursors.resizeColumn : SystemMouseCursors.resizeRow;
+    return isHorizontal
+        ? SystemMouseCursors.resizeColumn
+        : SystemMouseCursors.resizeRow;
   }
 }

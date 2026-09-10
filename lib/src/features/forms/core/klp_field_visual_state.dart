@@ -4,14 +4,14 @@
 /// 這類已算好的字串當參數。它存在的目的是讓不同產品在描述「這個欄位現在算
 /// dirty 還是 conflict」時用同一套語彙，而不是各自發明字串常數。
 enum KlpFieldVisualState {
-	pristine,
-	dirty,
-	touched,
-	focused,
-	validating,
-	valid,
-	invalid,
-	disabled,
-	readOnly,
-	conflict,
+  pristine,
+  dirty,
+  touched,
+  focused,
+  validating,
+  valid,
+  invalid,
+  disabled,
+  readOnly,
+  conflict,
 }

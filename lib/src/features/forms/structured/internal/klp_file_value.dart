@@ -4,9 +4,9 @@ part of '../klp_file_field.dart';
 /// （例如檔案大小或上傳時間，顯示格式由呼叫端自行組字串）。
 @immutable
 class KlpFileValue {
-	const KlpFileValue({required this.id, required this.name, this.metadata});
+  const KlpFileValue({required this.id, required this.name, this.metadata});
 
-	final String id;
-	final String name;
-	final String? metadata;
+  final String id;
+  final String name;
+  final String? metadata;
 }

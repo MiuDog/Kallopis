@@ -52,7 +52,7 @@ ClassDeclaration · private · [lib/src/features/forms/selection/internal/klp_se
 | field <code>height</code> | public | <code>final double? height</code> |  | [lib/src/features/forms/selection/internal/klp_segment_style.dart:18](../../../../../../../lib/src/features/forms/selection/internal/klp_segment_style.dart#L18) |
 | field <code>horizontalInset</code> | public | <code>final double horizontalInset</code> |  | [lib/src/features/forms/selection/internal/klp_segment_style.dart:19](../../../../../../../lib/src/features/forms/selection/internal/klp_segment_style.dart#L19) |
 | field <code>verticalInset</code> | public | <code>final double verticalInset</code> |  | [lib/src/features/forms/selection/internal/klp_segment_style.dart:20](../../../../../../../lib/src/features/forms/selection/internal/klp_segment_style.dart#L20) |
-| constructor <code>resolve</code> | public | <code>factory _KlpSegmentStyle.resolve(KlpTheme klp, {required bool selected, required bool hovered, required bool dense})</code> |  | [lib/src/features/forms/selection/internal/klp_segment_style.dart:22](../../../../../../../lib/src/features/forms/selection/internal/klp_segment_style.dart#L22) |
+| constructor <code>resolve</code> | public | <code>factory _KlpSegmentStyle.resolve( KlpTheme klp, { required bool selected, required bool hovered, required bool dense, })</code> |  | [lib/src/features/forms/selection/internal/klp_segment_style.dart:22](../../../../../../../lib/src/features/forms/selection/internal/klp_segment_style.dart#L22) |
 
 ## 閱讀說明與限制
 

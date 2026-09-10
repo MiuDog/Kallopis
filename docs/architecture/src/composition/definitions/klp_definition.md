@@ -55,12 +55,12 @@ ClassDeclaration · public · [lib/src/composition/definitions/klp_definition.da
 
 | 成員 | 可見性 | 簽章／型別 | 來源註解摘要 | 證據 |
 |---|---|---|---|---|
-| field <code>id</code> | public | <code>final String id</code> |  | [lib/src/composition/definitions/klp_definition.dart:9](../../../../../lib/src/composition/definitions/klp_definition.dart#L9) |
-| field <code>dependencies</code> | public | <code>final List&lt;String&gt; dependencies</code> |  | [lib/src/composition/definitions/klp_definition.dart:10](../../../../../lib/src/composition/definitions/klp_definition.dart#L10) |
-| field <code>semantics</code> | public | <code>final KlpSemanticSchema semantics</code> |  | [lib/src/composition/definitions/klp_definition.dart:11](../../../../../lib/src/composition/definitions/klp_definition.dart#L11) |
-| field <code>slots</code> | public | <code>final List&lt;KlpSlot&lt;KlpNode&gt;&gt; slots</code> |  | [lib/src/composition/definitions/klp_definition.dart:12](../../../../../lib/src/composition/definitions/klp_definition.dart#L12) |
-| constructor <code>KlpDefinition</code> | public | <code>KlpDefinition(this.id, {Iterable&lt;String&gt; dependencies = const [], KlpSemanticSchema? semantics, Iterable&lt;KlpSlot&lt;KlpNode&gt;&gt; slots = const []})</code> |  | [lib/src/composition/definitions/klp_definition.dart:14](../../../../../lib/src/composition/definitions/klp_definition.dart#L14) |
-| method <code>accepts</code> | public | <code>bool accepts(KlpNode node)</code> |  | [lib/src/composition/definitions/klp_definition.dart:24](../../../../../lib/src/composition/definitions/klp_definition.dart#L24) |
+| field <code>id</code> | public | <code>final String id</code> |  | [lib/src/composition/definitions/klp_definition.dart:8](../../../../../lib/src/composition/definitions/klp_definition.dart#L8) |
+| field <code>dependencies</code> | public | <code>final List&lt;String&gt; dependencies</code> |  | [lib/src/composition/definitions/klp_definition.dart:9](../../../../../lib/src/composition/definitions/klp_definition.dart#L9) |
+| field <code>semantics</code> | public | <code>final KlpSemanticSchema semantics</code> |  | [lib/src/composition/definitions/klp_definition.dart:10](../../../../../lib/src/composition/definitions/klp_definition.dart#L10) |
+| field <code>slots</code> | public | <code>final List&lt;KlpSlot&lt;KlpNode&gt;&gt; slots</code> |  | [lib/src/composition/definitions/klp_definition.dart:11](../../../../../lib/src/composition/definitions/klp_definition.dart#L11) |
+| constructor <code>KlpDefinition</code> | public | <code>KlpDefinition( this.id, { Iterable&lt;String&gt; dependencies = const [], KlpSemanticSchema? semantics, Iterable&lt;KlpSlot&lt;KlpNode&gt;&gt; slots = const [], })</code> |  | [lib/src/composition/definitions/klp_definition.dart:13](../../../../../lib/src/composition/definitions/klp_definition.dart#L13) |
+| method <code>accepts</code> | public | <code>bool accepts(KlpNode node)</code> |  | [lib/src/composition/definitions/klp_definition.dart:45](../../../../../lib/src/composition/definitions/klp_definition.dart#L45) |
 
 ## 閱讀說明與限制
 

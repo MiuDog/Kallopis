@@ -46,15 +46,15 @@ ClassDeclaration · public · [lib/src/capabilities/controllers/klp_state_contro
 
 | 成員 | 可見性 | 簽章／型別 | 來源註解摘要 | 證據 |
 |---|---|---|---|---|
-| field <code>_state</code> | private | <code>KlpState&lt;T&gt;? _state</code> |  | [lib/src/capabilities/controllers/klp_state_controller.dart:8](../../../../../lib/src/capabilities/controllers/klp_state_controller.dart#L8) |
-| field <code>_isDisposed</code> | private | <code>bool _isDisposed</code> |  | [lib/src/capabilities/controllers/klp_state_controller.dart:9](../../../../../lib/src/capabilities/controllers/klp_state_controller.dart#L9) |
-| getter <code>isDisposed</code> | public | <code>bool get isDisposed</code> |  | [lib/src/capabilities/controllers/klp_state_controller.dart:11](../../../../../lib/src/capabilities/controllers/klp_state_controller.dart#L11) |
-| getter <code>isAttached</code> | public | <code>bool get isAttached</code> |  | [lib/src/capabilities/controllers/klp_state_controller.dart:12](../../../../../lib/src/capabilities/controllers/klp_state_controller.dart#L12) |
-| getter <code>state</code> | public | <code>KlpState&lt;T&gt; get state</code> |  | [lib/src/capabilities/controllers/klp_state_controller.dart:14](../../../../../lib/src/capabilities/controllers/klp_state_controller.dart#L14) |
-| method <code>attach</code> | public | <code>void attach(KlpState&lt;T&gt; source)</code> |  | [lib/src/capabilities/controllers/klp_state_controller.dart:24](../../../../../lib/src/capabilities/controllers/klp_state_controller.dart#L24) |
-| method <code>detach</code> | public | <code>void detach()</code> |  | [lib/src/capabilities/controllers/klp_state_controller.dart:33](../../../../../lib/src/capabilities/controllers/klp_state_controller.dart#L33) |
-| method <code>dispose</code> | public | <code>void dispose()</code> |  | [lib/src/capabilities/controllers/klp_state_controller.dart:42](../../../../../lib/src/capabilities/controllers/klp_state_controller.dart#L42) |
-| method <code>_requireActive</code> | private | <code>void _requireActive()</code> |  | [lib/src/capabilities/controllers/klp_state_controller.dart:49](../../../../../lib/src/capabilities/controllers/klp_state_controller.dart#L49) |
+| field <code>_state</code> | private | <code>KlpState&lt;T&gt;? _state</code> |  | [lib/src/capabilities/controllers/klp_state_controller.dart:7](../../../../../lib/src/capabilities/controllers/klp_state_controller.dart#L7) |
+| field <code>_isDisposed</code> | private | <code>bool _isDisposed</code> |  | [lib/src/capabilities/controllers/klp_state_controller.dart:8](../../../../../lib/src/capabilities/controllers/klp_state_controller.dart#L8) |
+| getter <code>isDisposed</code> | public | <code>bool get isDisposed</code> |  | [lib/src/capabilities/controllers/klp_state_controller.dart:10](../../../../../lib/src/capabilities/controllers/klp_state_controller.dart#L10) |
+| getter <code>isAttached</code> | public | <code>bool get isAttached</code> |  | [lib/src/capabilities/controllers/klp_state_controller.dart:11](../../../../../lib/src/capabilities/controllers/klp_state_controller.dart#L11) |
+| getter <code>state</code> | public | <code>KlpState&lt;T&gt; get state</code> |  | [lib/src/capabilities/controllers/klp_state_controller.dart:13](../../../../../lib/src/capabilities/controllers/klp_state_controller.dart#L13) |
+| method <code>attach</code> | public | <code>void attach(KlpState&lt;T&gt; source)</code> |  | [lib/src/capabilities/controllers/klp_state_controller.dart:23](../../../../../lib/src/capabilities/controllers/klp_state_controller.dart#L23) |
+| method <code>detach</code> | public | <code>void detach()</code> |  | [lib/src/capabilities/controllers/klp_state_controller.dart:32](../../../../../lib/src/capabilities/controllers/klp_state_controller.dart#L32) |
+| method <code>dispose</code> | public | <code>void dispose()</code> |  | [lib/src/capabilities/controllers/klp_state_controller.dart:41](../../../../../lib/src/capabilities/controllers/klp_state_controller.dart#L41) |
+| method <code>_requireActive</code> | private | <code>void _requireActive()</code> |  | [lib/src/capabilities/controllers/klp_state_controller.dart:48](../../../../../lib/src/capabilities/controllers/klp_state_controller.dart#L48) |
 
 ## 閱讀說明與限制
 

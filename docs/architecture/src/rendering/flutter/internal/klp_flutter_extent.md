@@ -66,10 +66,10 @@ ClassDeclaration · public · [lib/src/rendering/flutter/internal/klp_flutter_ex
 
 | 成員 | 可見性 | 簽章／型別 | 來源註解摘要 | 證據 |
 |---|---|---|---|---|
-| field <code>content</code> | public | <code>final KlpBoundExtent content</code> |  | [lib/src/rendering/flutter/internal/klp_flutter_extent.dart:12](../../../../../../lib/src/rendering/flutter/internal/klp_flutter_extent.dart#L12) |
-| constructor <code>KlpFlutterExtent</code> | public | <code>const KlpFlutterExtent({required this.content, super.key})</code> |  | [lib/src/rendering/flutter/internal/klp_flutter_extent.dart:14](../../../../../../lib/src/rendering/flutter/internal/klp_flutter_extent.dart#L14) |
-| method <code>build</code> | public | <code>Widget build(BuildContext context)</code> |  | [lib/src/rendering/flutter/internal/klp_flutter_extent.dart:16](../../../../../../lib/src/rendering/flutter/internal/klp_flutter_extent.dart#L16) |
-| method <code>_layout</code> | private | <code>Widget _layout(BuildContext context, BoxConstraints constraints)</code> |  | [lib/src/rendering/flutter/internal/klp_flutter_extent.dart:19](../../../../../../lib/src/rendering/flutter/internal/klp_flutter_extent.dart#L19) |
+| field <code>content</code> | public | <code>final KlpBoundExtent content</code> |  | [lib/src/rendering/flutter/internal/klp_flutter_extent.dart:11](../../../../../../lib/src/rendering/flutter/internal/klp_flutter_extent.dart#L11) |
+| constructor <code>KlpFlutterExtent</code> | public | <code>const KlpFlutterExtent({required this.content, super.key})</code> |  | [lib/src/rendering/flutter/internal/klp_flutter_extent.dart:13](../../../../../../lib/src/rendering/flutter/internal/klp_flutter_extent.dart#L13) |
+| method <code>build</code> | public | <code>Widget build(BuildContext context)</code> |  | [lib/src/rendering/flutter/internal/klp_flutter_extent.dart:15](../../../../../../lib/src/rendering/flutter/internal/klp_flutter_extent.dart#L15) |
+| method <code>_layout</code> | private | <code>Widget _layout(BuildContext context, BoxConstraints constraints)</code> |  | [lib/src/rendering/flutter/internal/klp_flutter_extent.dart:18](../../../../../../lib/src/rendering/flutter/internal/klp_flutter_extent.dart#L18) |
 
 ## 閱讀說明與限制
 

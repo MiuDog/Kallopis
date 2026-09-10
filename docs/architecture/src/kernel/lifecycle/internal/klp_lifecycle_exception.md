@@ -52,9 +52,9 @@ ClassDeclaration · public · [lib/src/kernel/lifecycle/internal/klp_lifecycle_e
 
 | 成員 | 可見性 | 簽章／型別 | 來源註解摘要 | 證據 |
 |---|---|---|---|---|
-| field <code>issues</code> | public | <code>final List&lt;({Object error, StackTrace stackTrace})&gt; issues</code> |  | [lib/src/kernel/lifecycle/internal/klp_lifecycle_exception.dart:4](../../../../../../lib/src/kernel/lifecycle/internal/klp_lifecycle_exception.dart#L4) |
-| constructor <code>KlpLifecycleException</code> | public | <code>KlpLifecycleException(Iterable&lt;({Object error, StackTrace stackTrace})&gt; issues)</code> |  | [lib/src/kernel/lifecycle/internal/klp_lifecycle_exception.dart:6](../../../../../../lib/src/kernel/lifecycle/internal/klp_lifecycle_exception.dart#L6) |
-| method <code>toString</code> | public | <code>String toString()</code> |  | [lib/src/kernel/lifecycle/internal/klp_lifecycle_exception.dart:8](../../../../../../lib/src/kernel/lifecycle/internal/klp_lifecycle_exception.dart#L8) |
+| field <code>issues</code> | public | <code>final List&lt;({Object error, StackTrace stackTrace})&gt; issues</code> |  | [lib/src/kernel/lifecycle/internal/klp_lifecycle_exception.dart:3](../../../../../../lib/src/kernel/lifecycle/internal/klp_lifecycle_exception.dart#L3) |
+| constructor <code>KlpLifecycleException</code> | public | <code>KlpLifecycleException( Iterable&lt;({Object error, StackTrace stackTrace})&gt; issues, )</code> |  | [lib/src/kernel/lifecycle/internal/klp_lifecycle_exception.dart:5](../../../../../../lib/src/kernel/lifecycle/internal/klp_lifecycle_exception.dart#L5) |
+| method <code>toString</code> | public | <code>String toString()</code> |  | [lib/src/kernel/lifecycle/internal/klp_lifecycle_exception.dart:9](../../../../../../lib/src/kernel/lifecycle/internal/klp_lifecycle_exception.dart#L9) |
 
 ## 閱讀說明與限制
 

@@ -52,9 +52,9 @@ ClassDeclaration · public · [lib/src/features/navigation/rail/internal/klp_rai
 
 | 成員 | 可見性 | 簽章／型別 | 來源註解摘要 | 證據 |
 |---|---|---|---|---|
-| field <code>failures</code> | public | <code>final List&lt;({Object error, StackTrace stackTrace})&gt; failures</code> |  | [lib/src/features/navigation/rail/internal/klp_rail_activation_exception.dart:4](../../../../../../../lib/src/features/navigation/rail/internal/klp_rail_activation_exception.dart#L4) |
-| constructor <code>KlpRailActivationException</code> | public | <code>KlpRailActivationException(Iterable&lt;({Object error, StackTrace stackTrace})&gt; failures)</code> |  | [lib/src/features/navigation/rail/internal/klp_rail_activation_exception.dart:6](../../../../../../../lib/src/features/navigation/rail/internal/klp_rail_activation_exception.dart#L6) |
-| method <code>toString</code> | public | <code>String toString()</code> |  | [lib/src/features/navigation/rail/internal/klp_rail_activation_exception.dart:8](../../../../../../../lib/src/features/navigation/rail/internal/klp_rail_activation_exception.dart#L8) |
+| field <code>failures</code> | public | <code>final List&lt;({Object error, StackTrace stackTrace})&gt; failures</code> |  | [lib/src/features/navigation/rail/internal/klp_rail_activation_exception.dart:3](../../../../../../../lib/src/features/navigation/rail/internal/klp_rail_activation_exception.dart#L3) |
+| constructor <code>KlpRailActivationException</code> | public | <code>KlpRailActivationException( Iterable&lt;({Object error, StackTrace stackTrace})&gt; failures, )</code> |  | [lib/src/features/navigation/rail/internal/klp_rail_activation_exception.dart:5](../../../../../../../lib/src/features/navigation/rail/internal/klp_rail_activation_exception.dart#L5) |
+| method <code>toString</code> | public | <code>String toString()</code> |  | [lib/src/features/navigation/rail/internal/klp_rail_activation_exception.dart:9](../../../../../../../lib/src/features/navigation/rail/internal/klp_rail_activation_exception.dart#L9) |
 
 ## 閱讀說明與限制
 

@@ -5,11 +5,11 @@ part of '../klp_page_chrome.dart';
 /// 使用對應的狀態色。
 @immutable
 class KlpStatusMessageData {
-	const KlpStatusMessageData({
-		required this.label,
-		this.tone = KlpFeedbackTone.neutral,
-	});
+  const KlpStatusMessageData({
+    required this.label,
+    this.tone = KlpFeedbackTone.neutral,
+  });
 
-	final String label;
-	final KlpFeedbackTone tone;
+  final String label;
+  final KlpFeedbackTone tone;
 }

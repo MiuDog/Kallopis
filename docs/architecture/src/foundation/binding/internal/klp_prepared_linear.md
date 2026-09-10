@@ -54,10 +54,10 @@ ClassDeclaration · public · [lib/src/foundation/binding/internal/klp_prepared_
 
 | 成員 | 可見性 | 簽章／型別 | 來源註解摘要 | 證據 |
 |---|---|---|---|---|
-| field <code>axis</code> | public | <code>final KlpAxis axis</code> |  | [lib/src/foundation/binding/internal/klp_prepared_linear.dart:6](../../../../../../lib/src/foundation/binding/internal/klp_prepared_linear.dart#L6) |
-| field <code>gap</code> | public | <code>final KlpDistance gap</code> |  | [lib/src/foundation/binding/internal/klp_prepared_linear.dart:7](../../../../../../lib/src/foundation/binding/internal/klp_prepared_linear.dart#L7) |
-| field <code>content</code> | public | <code>final List&lt;KlpPreparedTemplate&gt; content</code> |  | [lib/src/foundation/binding/internal/klp_prepared_linear.dart:8](../../../../../../lib/src/foundation/binding/internal/klp_prepared_linear.dart#L8) |
-| constructor <code>KlpPreparedLinear</code> | public | <code>KlpPreparedLinear(this.axis, this.gap, Iterable&lt;KlpPreparedTemplate&gt; content)</code> |  | [lib/src/foundation/binding/internal/klp_prepared_linear.dart:10](../../../../../../lib/src/foundation/binding/internal/klp_prepared_linear.dart#L10) |
+| field <code>axis</code> | public | <code>final KlpAxis axis</code> |  | [lib/src/foundation/binding/internal/klp_prepared_linear.dart:5](../../../../../../lib/src/foundation/binding/internal/klp_prepared_linear.dart#L5) |
+| field <code>gap</code> | public | <code>final KlpDistance gap</code> |  | [lib/src/foundation/binding/internal/klp_prepared_linear.dart:6](../../../../../../lib/src/foundation/binding/internal/klp_prepared_linear.dart#L6) |
+| field <code>content</code> | public | <code>final List&lt;KlpPreparedTemplate&gt; content</code> |  | [lib/src/foundation/binding/internal/klp_prepared_linear.dart:7](../../../../../../lib/src/foundation/binding/internal/klp_prepared_linear.dart#L7) |
+| constructor <code>KlpPreparedLinear</code> | public | <code>KlpPreparedLinear(this.axis, this.gap, Iterable&lt;KlpPreparedTemplate&gt; content)</code> |  | [lib/src/foundation/binding/internal/klp_prepared_linear.dart:9](../../../../../../lib/src/foundation/binding/internal/klp_prepared_linear.dart#L9) |
 | method <code>materialize</code> | public | <code>KlpBoundTemplate materialize(List&lt;KlpBoundTemplate&gt; children)</code> |  | [lib/src/foundation/binding/internal/klp_prepared_linear.dart:12](../../../../../../lib/src/foundation/binding/internal/klp_prepared_linear.dart#L12) |
 
 ## 閱讀說明與限制

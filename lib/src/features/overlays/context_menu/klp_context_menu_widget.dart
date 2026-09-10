@@ -7,24 +7,24 @@ part of '../klp_context_menu.dart';
 /// 彈出位置沿用 [KlpMenuLayout.resolvePosition]，與 [KlpMenu] 在其他彈出場景
 /// 使用同一套定位邏輯，才不會有兩份互相分岔的擺放規則。
 class KlpContextMenu extends StatefulWidget {
-	const KlpContextMenu({
-		super.key,
-		required this.child,
-		required this.label,
-		required this.items,
-		this.controller,
-	});
+  const KlpContextMenu({
+    super.key,
+    required this.child,
+    required this.label,
+    required this.items,
+    this.controller,
+  });
 
-	/// 掛載右鍵選單行為的子樹。
-	final Widget child;
+  /// 掛載右鍵選單行為的子樹。
+  final Widget child;
 
-	/// 選單標題。庫不替產品決定用什麼語言說明這組動作——呼叫端必須提供。
-	final String label;
+  /// 選單標題。庫不替產品決定用什麼語言說明這組動作——呼叫端必須提供。
+  final String label;
 
-	/// 選單項目，重用 [KlpMenu] 既有的資料模型。
-	final List<KlpMenuItemData> items;
-	final KlpContextMenuController? controller;
+  /// 選單項目，重用 [KlpMenu] 既有的資料模型。
+  final List<KlpMenuItemData> items;
+  final KlpContextMenuController? controller;
 
-	@override
-	State<KlpContextMenu> createState() => _KlpContextMenuState();
+  @override
+  State<KlpContextMenu> createState() => _KlpContextMenuState();
 }

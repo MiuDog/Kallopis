@@ -46,7 +46,7 @@ top-level variable · private · [lib/src/styling/legacy_theme/internal/klp_visu
 
 FunctionDeclaration · public · [lib/src/styling/legacy_theme/internal/klp_visual_style_json_geometry_control.dart:45](../../../../../../lib/src/styling/legacy_theme/internal/klp_visual_style_json_geometry_control.dart#L45)
 
-<code>KlpControlGeometry decodeControlGeometry(KlpJsonMap json, KlpControlGeometry base)</code>
+<code>KlpControlGeometry decodeControlGeometry( KlpJsonMap json, KlpControlGeometry base, )</code>
 
 
 ## 閱讀說明與限制

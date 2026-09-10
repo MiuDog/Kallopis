@@ -6,13 +6,13 @@ class KlpStack extends StatelessWidget {
     super.key,
     this.alignment = AlignmentDirectional.topStart,
     this.fit = StackFit.loose,
-		this.clipBehavior = Clip.hardEdge,
+    this.clipBehavior = Clip.hardEdge,
     this.children = const <Widget>[],
   });
 
   final AlignmentGeometry alignment;
   final StackFit fit;
-	final Clip clipBehavior;
+  final Clip clipBehavior;
   final List<Widget> children;
 
   @override
@@ -20,7 +20,7 @@ class KlpStack extends StatelessWidget {
     return Stack(
       alignment: alignment,
       fit: fit,
-		clipBehavior: clipBehavior,
+      clipBehavior: clipBehavior,
       children: children,
     );
   }

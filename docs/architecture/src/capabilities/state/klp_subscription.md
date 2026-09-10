@@ -44,10 +44,10 @@ ClassDeclaration · public · [lib/src/capabilities/state/klp_subscription.dart:
 
 | 成員 | 可見性 | 簽章／型別 | 來源註解摘要 | 證據 |
 |---|---|---|---|---|
-| field <code>_onCancel</code> | private | <code>void Function()? _onCancel</code> |  | [lib/src/capabilities/state/klp_subscription.dart:4](../../../../../lib/src/capabilities/state/klp_subscription.dart#L4) |
-| constructor <code>KlpSubscription</code> | public | <code>KlpSubscription(void Function() onCancel)</code> |  | [lib/src/capabilities/state/klp_subscription.dart:6](../../../../../lib/src/capabilities/state/klp_subscription.dart#L6) |
-| getter <code>isCancelled</code> | public | <code>bool get isCancelled</code> |  | [lib/src/capabilities/state/klp_subscription.dart:8](../../../../../lib/src/capabilities/state/klp_subscription.dart#L8) |
-| method <code>cancel</code> | public | <code>void cancel()</code> |  | [lib/src/capabilities/state/klp_subscription.dart:10](../../../../../lib/src/capabilities/state/klp_subscription.dart#L10) |
+| field <code>_onCancel</code> | private | <code>void Function()? _onCancel</code> |  | [lib/src/capabilities/state/klp_subscription.dart:3](../../../../../lib/src/capabilities/state/klp_subscription.dart#L3) |
+| constructor <code>KlpSubscription</code> | public | <code>KlpSubscription(void Function() onCancel)</code> |  | [lib/src/capabilities/state/klp_subscription.dart:5](../../../../../lib/src/capabilities/state/klp_subscription.dart#L5) |
+| getter <code>isCancelled</code> | public | <code>bool get isCancelled</code> |  | [lib/src/capabilities/state/klp_subscription.dart:7](../../../../../lib/src/capabilities/state/klp_subscription.dart#L7) |
+| method <code>cancel</code> | public | <code>void cancel()</code> |  | [lib/src/capabilities/state/klp_subscription.dart:9](../../../../../lib/src/capabilities/state/klp_subscription.dart#L9) |
 
 ## 閱讀說明與限制
 

@@ -44,8 +44,8 @@ ClassDeclaration · public · [lib/src/capabilities/actions/klp_action_activatio
 
 | 成員 | 可見性 | 簽章／型別 | 來源註解摘要 | 證據 |
 |---|---|---|---|---|
-| field <code>committed</code> | public | <code>final bool committed</code> |  | [lib/src/capabilities/actions/klp_action_activation.dart:4](../../../../../lib/src/capabilities/actions/klp_action_activation.dart#L4) |
-| constructor <code>KlpActionActivation</code> | public | <code>const KlpActionActivation(this.committed)</code> |  | [lib/src/capabilities/actions/klp_action_activation.dart:6](../../../../../lib/src/capabilities/actions/klp_action_activation.dart#L6) |
+| field <code>committed</code> | public | <code>final bool committed</code> |  | [lib/src/capabilities/actions/klp_action_activation.dart:3](../../../../../lib/src/capabilities/actions/klp_action_activation.dart#L3) |
+| constructor <code>KlpActionActivation</code> | public | <code>const KlpActionActivation(this.committed)</code> |  | [lib/src/capabilities/actions/klp_action_activation.dart:5](../../../../../lib/src/capabilities/actions/klp_action_activation.dart#L5) |
 
 ## 閱讀說明與限制
 

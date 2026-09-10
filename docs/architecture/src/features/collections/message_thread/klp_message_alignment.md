@@ -44,8 +44,8 @@ EnumDeclaration · public · [lib/src/features/collections/message_thread/klp_me
 
 | 成員 | 可見性 | 簽章／型別 | 來源註解摘要 | 證據 |
 |---|---|---|---|---|
-| enum value <code>leading</code> | public | <code>leading</code> |  | [lib/src/features/collections/message_thread/klp_message_alignment.dart:3](../../../../../../lib/src/features/collections/message_thread/klp_message_alignment.dart#L3) |
-| enum value <code>trailing</code> | public | <code>trailing</code> |  | [lib/src/features/collections/message_thread/klp_message_alignment.dart:4](../../../../../../lib/src/features/collections/message_thread/klp_message_alignment.dart#L4) |
+| enum value <code>leading</code> | public | <code>leading</code> |  | [lib/src/features/collections/message_thread/klp_message_alignment.dart:2](../../../../../../lib/src/features/collections/message_thread/klp_message_alignment.dart#L2) |
+| enum value <code>trailing</code> | public | <code>trailing</code> |  | [lib/src/features/collections/message_thread/klp_message_alignment.dart:2](../../../../../../lib/src/features/collections/message_thread/klp_message_alignment.dart#L2) |
 
 ## 閱讀說明與限制
 

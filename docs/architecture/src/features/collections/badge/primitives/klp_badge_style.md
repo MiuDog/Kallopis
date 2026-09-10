@@ -44,9 +44,9 @@ ClassDeclaration · private · [lib/src/features/collections/badge/primitives/kl
 
 | 成員 | 可見性 | 簽章／型別 | 來源註解摘要 | 證據 |
 |---|---|---|---|---|
-| constructor <code>_KlpBadgeStyle</code> | private | <code>const _KlpBadgeStyle({ required this.text, required this.dot, })</code> |  | [lib/src/features/collections/badge/primitives/klp_badge_style.dart:5](../../../../../../../lib/src/features/collections/badge/primitives/klp_badge_style.dart#L5) |
-| field <code>text</code> | public | <code>final Color text</code> |  | [lib/src/features/collections/badge/primitives/klp_badge_style.dart:10](../../../../../../../lib/src/features/collections/badge/primitives/klp_badge_style.dart#L10) |
-| field <code>dot</code> | public | <code>final Color dot</code> |  | [lib/src/features/collections/badge/primitives/klp_badge_style.dart:11](../../../../../../../lib/src/features/collections/badge/primitives/klp_badge_style.dart#L11) |
+| constructor <code>_KlpBadgeStyle</code> | private | <code>const _KlpBadgeStyle({required this.text, required this.dot})</code> |  | [lib/src/features/collections/badge/primitives/klp_badge_style.dart:5](../../../../../../../lib/src/features/collections/badge/primitives/klp_badge_style.dart#L5) |
+| field <code>text</code> | public | <code>final Color text</code> |  | [lib/src/features/collections/badge/primitives/klp_badge_style.dart:7](../../../../../../../lib/src/features/collections/badge/primitives/klp_badge_style.dart#L7) |
+| field <code>dot</code> | public | <code>final Color dot</code> |  | [lib/src/features/collections/badge/primitives/klp_badge_style.dart:8](../../../../../../../lib/src/features/collections/badge/primitives/klp_badge_style.dart#L8) |
 
 ## 閱讀說明與限制
 

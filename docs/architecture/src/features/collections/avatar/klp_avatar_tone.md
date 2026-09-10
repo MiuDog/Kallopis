@@ -44,8 +44,8 @@ EnumDeclaration · public · [lib/src/features/collections/avatar/klp_avatar_ton
 
 | 成員 | 可見性 | 簽章／型別 | 來源註解摘要 | 證據 |
 |---|---|---|---|---|
-| enum value <code>neutral</code> | public | <code>neutral</code> |  | [lib/src/features/collections/avatar/klp_avatar_tone.dart:3](../../../../../../lib/src/features/collections/avatar/klp_avatar_tone.dart#L3) |
-| enum value <code>emphasized</code> | public | <code>emphasized</code> |  | [lib/src/features/collections/avatar/klp_avatar_tone.dart:4](../../../../../../lib/src/features/collections/avatar/klp_avatar_tone.dart#L4) |
+| enum value <code>neutral</code> | public | <code>neutral</code> |  | [lib/src/features/collections/avatar/klp_avatar_tone.dart:2](../../../../../../lib/src/features/collections/avatar/klp_avatar_tone.dart#L2) |
+| enum value <code>emphasized</code> | public | <code>emphasized</code> |  | [lib/src/features/collections/avatar/klp_avatar_tone.dart:2](../../../../../../lib/src/features/collections/avatar/klp_avatar_tone.dart#L2) |
 
 ## 閱讀說明與限制
 

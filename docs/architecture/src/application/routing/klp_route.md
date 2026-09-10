@@ -46,14 +46,14 @@ ClassDeclaration · public · [lib/src/application/routing/klp_route.dart:3](../
 
 | 成員 | 可見性 | 簽章／型別 | 來源註解摘要 | 證據 |
 |---|---|---|---|---|
-| field <code>destination</code> | public | <code>final KlpDestination&lt;P, R&gt; destination</code> |  | [lib/src/application/routing/klp_route.dart:6](../../../../../lib/src/application/routing/klp_route.dart#L6) |
-| field <code>_screen</code> | private | <code>final KlpScreen Function(KlpRouteInput&lt;P, R&gt;) _screen</code> |  | [lib/src/application/routing/klp_route.dart:7](../../../../../lib/src/application/routing/klp_route.dart#L7) |
-| field <code>_beforeEnter</code> | private | <code>final FutureOr&lt;bool&gt; Function(KlpNavigationTransition)? _beforeEnter</code> |  | [lib/src/application/routing/klp_route.dart:8](../../../../../lib/src/application/routing/klp_route.dart#L8) |
-| field <code>_beforeLeave</code> | private | <code>final FutureOr&lt;bool&gt; Function(KlpNavigationTransition)? _beforeLeave</code> |  | [lib/src/application/routing/klp_route.dart:9](../../../../../lib/src/application/routing/klp_route.dart#L9) |
-| constructor <code>KlpRoute</code> | public | <code>KlpRoute(KlpDestination&lt;P, R&gt; destination, { required KlpScreen Function(KlpRouteInput&lt;P, R&gt;) screen, FutureOr&lt;bool&gt; Function(KlpNavigationTransition)? beforeEnter, FutureOr&lt;bool&gt; Function(KlpNavigationTransition)? beforeLeave, })</code> |  | [lib/src/application/routing/klp_route.dart:11](../../../../../lib/src/application/routing/klp_route.dart#L11) |
-| constructor <code>_</code> | private | <code>KlpRoute._(this.destination, this._screen, this._beforeEnter, this._beforeLeave)</code> |  | [lib/src/application/routing/klp_route.dart:17](../../../../../lib/src/application/routing/klp_route.dart#L17) |
-| getter <code>_policy</code> | private | <code>KlpRoutePolicy get _policy</code> |  | [lib/src/application/routing/klp_route.dart:19](../../../../../lib/src/application/routing/klp_route.dart#L19) |
-| method <code>_project</code> | private | <code>KlpScreen _project(KlpNavigationEntry entry, _KlpRouteActions actions)</code> |  | [lib/src/application/routing/klp_route.dart:21](../../../../../lib/src/application/routing/klp_route.dart#L21) |
+| field <code>destination</code> | public | <code>final KlpDestination&lt;P, R&gt; destination</code> |  | [lib/src/application/routing/klp_route.dart:5](../../../../../lib/src/application/routing/klp_route.dart#L5) |
+| field <code>_screen</code> | private | <code>final KlpScreen Function(KlpRouteInput&lt;P, R&gt;) _screen</code> |  | [lib/src/application/routing/klp_route.dart:6](../../../../../lib/src/application/routing/klp_route.dart#L6) |
+| field <code>_beforeEnter</code> | private | <code>final FutureOr&lt;bool&gt; Function(KlpNavigationTransition)? _beforeEnter</code> |  | [lib/src/application/routing/klp_route.dart:7](../../../../../lib/src/application/routing/klp_route.dart#L7) |
+| field <code>_beforeLeave</code> | private | <code>final FutureOr&lt;bool&gt; Function(KlpNavigationTransition)? _beforeLeave</code> |  | [lib/src/application/routing/klp_route.dart:8](../../../../../lib/src/application/routing/klp_route.dart#L8) |
+| constructor <code>KlpRoute</code> | public | <code>KlpRoute( KlpDestination&lt;P, R&gt; destination, { required KlpScreen Function(KlpRouteInput&lt;P, R&gt;) screen, FutureOr&lt;bool&gt; Function(KlpNavigationTransition)? beforeEnter, FutureOr&lt;bool&gt; Function(KlpNavigationTransition)? beforeLeave, })</code> |  | [lib/src/application/routing/klp_route.dart:10](../../../../../lib/src/application/routing/klp_route.dart#L10) |
+| constructor <code>_</code> | private | <code>KlpRoute._( this.destination, this._screen, this._beforeEnter, this._beforeLeave, )</code> |  | [lib/src/application/routing/klp_route.dart:17](../../../../../lib/src/application/routing/klp_route.dart#L17) |
+| getter <code>_policy</code> | private | <code>KlpRoutePolicy get _policy</code> |  | [lib/src/application/routing/klp_route.dart:24](../../../../../lib/src/application/routing/klp_route.dart#L24) |
+| method <code>_project</code> | private | <code>KlpScreen _project(KlpNavigationEntry entry, _KlpRouteActions actions)</code> |  | [lib/src/application/routing/klp_route.dart:30](../../../../../lib/src/application/routing/klp_route.dart#L30) |
 
 ## 閱讀說明與限制
 

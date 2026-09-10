@@ -52,11 +52,11 @@ ClassDeclaration · public · [lib/src/features/forms/toggle/internal/klp_tri_st
 
 | 成員 | 可見性 | 簽章／型別 | 來源註解摘要 | 證據 |
 |---|---|---|---|---|
-| constructor <code>KlpTriStateToggle</code> | public | <code>const KlpTriStateToggle({super.key, required this.value, required this.label, required this.onChanged})</code> |  | [lib/src/features/forms/toggle/internal/klp_tri_state_toggle_widget.dart:4](../../../../../../../lib/src/features/forms/toggle/internal/klp_tri_state_toggle_widget.dart#L4) |
-| field <code>value</code> | public | <code>final KlpTriState value</code> |  | [lib/src/features/forms/toggle/internal/klp_tri_state_toggle_widget.dart:6](../../../../../../../lib/src/features/forms/toggle/internal/klp_tri_state_toggle_widget.dart#L6) |
-| field <code>label</code> | public | <code>final String label</code> |  | [lib/src/features/forms/toggle/internal/klp_tri_state_toggle_widget.dart:7](../../../../../../../lib/src/features/forms/toggle/internal/klp_tri_state_toggle_widget.dart#L7) |
-| field <code>onChanged</code> | public | <code>final ValueChanged&lt;KlpTriState&gt;? onChanged</code> |  | [lib/src/features/forms/toggle/internal/klp_tri_state_toggle_widget.dart:8](../../../../../../../lib/src/features/forms/toggle/internal/klp_tri_state_toggle_widget.dart#L8) |
-| method <code>build</code> | public | <code>Widget build(BuildContext context)</code> |  | [lib/src/features/forms/toggle/internal/klp_tri_state_toggle_widget.dart:10](../../../../../../../lib/src/features/forms/toggle/internal/klp_tri_state_toggle_widget.dart#L10) |
+| constructor <code>KlpTriStateToggle</code> | public | <code>const KlpTriStateToggle({ super.key, required this.value, required this.label, required this.onChanged, })</code> |  | [lib/src/features/forms/toggle/internal/klp_tri_state_toggle_widget.dart:4](../../../../../../../lib/src/features/forms/toggle/internal/klp_tri_state_toggle_widget.dart#L4) |
+| field <code>value</code> | public | <code>final KlpTriState value</code> |  | [lib/src/features/forms/toggle/internal/klp_tri_state_toggle_widget.dart:11](../../../../../../../lib/src/features/forms/toggle/internal/klp_tri_state_toggle_widget.dart#L11) |
+| field <code>label</code> | public | <code>final String label</code> |  | [lib/src/features/forms/toggle/internal/klp_tri_state_toggle_widget.dart:12](../../../../../../../lib/src/features/forms/toggle/internal/klp_tri_state_toggle_widget.dart#L12) |
+| field <code>onChanged</code> | public | <code>final ValueChanged&lt;KlpTriState&gt;? onChanged</code> |  | [lib/src/features/forms/toggle/internal/klp_tri_state_toggle_widget.dart:13](../../../../../../../lib/src/features/forms/toggle/internal/klp_tri_state_toggle_widget.dart#L13) |
+| method <code>build</code> | public | <code>Widget build(BuildContext context)</code> |  | [lib/src/features/forms/toggle/internal/klp_tri_state_toggle_widget.dart:15](../../../../../../../lib/src/features/forms/toggle/internal/klp_tri_state_toggle_widget.dart#L15) |
 
 ## 閱讀說明與限制
 

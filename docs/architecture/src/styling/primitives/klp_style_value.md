@@ -84,7 +84,7 @@ ClassDeclaration · public · [lib/src/styling/primitives/klp_style_value.dart:1
 
 | 成員 | 可見性 | 簽章／型別 | 來源註解摘要 | 證據 |
 |---|---|---|---|---|
-| constructor <code>KlpStyleValue</code> | public | <code>const KlpStyleValue()</code> |  | [lib/src/styling/primitives/klp_style_value.dart:18](../../../../../lib/src/styling/primitives/klp_style_value.dart#L18) |
+| constructor <code>KlpStyleValue</code> | public | <code>const KlpStyleValue()</code> |  | [lib/src/styling/primitives/klp_style_value.dart:17](../../../../../lib/src/styling/primitives/klp_style_value.dart#L17) |
 
 ## 閱讀說明與限制
 

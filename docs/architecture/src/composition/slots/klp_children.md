@@ -60,11 +60,11 @@ ClassDeclaration · public · [lib/src/composition/slots/klp_children.dart:6](..
 
 | 成員 | 可見性 | 簽章／型別 | 來源註解摘要 | 證據 |
 |---|---|---|---|---|
-| field <code>assignments</code> | public | <code>final List&lt;KlpSlotAssignment&lt;KlpNode&gt;&gt; assignments</code> |  | [lib/src/composition/slots/klp_children.dart:9](../../../../../lib/src/composition/slots/klp_children.dart#L9) |
-| field <code>_children</code> | private | <code>late final List&lt;KlpNode&gt; _children</code> |  | [lib/src/composition/slots/klp_children.dart:10](../../../../../lib/src/composition/slots/klp_children.dart#L10) |
-| constructor <code>KlpChildren</code> | public | <code>KlpChildren(List&lt;KlpSlotAssignment&lt;KlpNode&gt;&gt; assignments)</code> |  | [lib/src/composition/slots/klp_children.dart:12](../../../../../lib/src/composition/slots/klp_children.dart#L12) |
-| getter <code>iterator</code> | public | <code>Iterator&lt;KlpNode&gt; get iterator</code> |  | [lib/src/composition/slots/klp_children.dart:16](../../../../../lib/src/composition/slots/klp_children.dart#L16) |
-| getter <code>length</code> | public | <code>int get length</code> |  | [lib/src/composition/slots/klp_children.dart:19](../../../../../lib/src/composition/slots/klp_children.dart#L19) |
+| field <code>assignments</code> | public | <code>final List&lt;KlpSlotAssignment&lt;KlpNode&gt;&gt; assignments</code> |  | [lib/src/composition/slots/klp_children.dart:8](../../../../../lib/src/composition/slots/klp_children.dart#L8) |
+| field <code>_children</code> | private | <code>late final List&lt;KlpNode&gt; _children</code> |  | [lib/src/composition/slots/klp_children.dart:9](../../../../../lib/src/composition/slots/klp_children.dart#L9) |
+| constructor <code>KlpChildren</code> | public | <code>KlpChildren(List&lt;KlpSlotAssignment&lt;KlpNode&gt;&gt; assignments)</code> |  | [lib/src/composition/slots/klp_children.dart:11](../../../../../lib/src/composition/slots/klp_children.dart#L11) |
+| getter <code>iterator</code> | public | <code>Iterator&lt;KlpNode&gt; get iterator</code> |  | [lib/src/composition/slots/klp_children.dart:18](../../../../../lib/src/composition/slots/klp_children.dart#L18) |
+| getter <code>length</code> | public | <code>int get length</code> |  | [lib/src/composition/slots/klp_children.dart:21](../../../../../lib/src/composition/slots/klp_children.dart#L21) |
 
 ## 閱讀說明與限制
 

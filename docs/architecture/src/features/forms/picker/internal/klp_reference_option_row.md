@@ -52,10 +52,10 @@ ClassDeclaration · private · [lib/src/features/forms/picker/internal/klp_refer
 
 | 成員 | 可見性 | 簽章／型別 | 來源註解摘要 | 證據 |
 |---|---|---|---|---|
-| constructor <code>_KlpReferenceOptionRow</code> | private | <code>const _KlpReferenceOptionRow({ required this.option, required this.onPressed, })</code> |  | [lib/src/features/forms/picker/internal/klp_reference_option_row.dart:4](../../../../../../../lib/src/features/forms/picker/internal/klp_reference_option_row.dart#L4) |
-| field <code>option</code> | public | <code>final KlpReferenceOption option</code> |  | [lib/src/features/forms/picker/internal/klp_reference_option_row.dart:9](../../../../../../../lib/src/features/forms/picker/internal/klp_reference_option_row.dart#L9) |
-| field <code>onPressed</code> | public | <code>final VoidCallback? onPressed</code> |  | [lib/src/features/forms/picker/internal/klp_reference_option_row.dart:10](../../../../../../../lib/src/features/forms/picker/internal/klp_reference_option_row.dart#L10) |
-| method <code>build</code> | public | <code>Widget build(BuildContext context)</code> |  | [lib/src/features/forms/picker/internal/klp_reference_option_row.dart:12](../../../../../../../lib/src/features/forms/picker/internal/klp_reference_option_row.dart#L12) |
+| constructor <code>_KlpReferenceOptionRow</code> | private | <code>const _KlpReferenceOptionRow({required this.option, required this.onPressed})</code> |  | [lib/src/features/forms/picker/internal/klp_reference_option_row.dart:4](../../../../../../../lib/src/features/forms/picker/internal/klp_reference_option_row.dart#L4) |
+| field <code>option</code> | public | <code>final KlpReferenceOption option</code> |  | [lib/src/features/forms/picker/internal/klp_reference_option_row.dart:6](../../../../../../../lib/src/features/forms/picker/internal/klp_reference_option_row.dart#L6) |
+| field <code>onPressed</code> | public | <code>final VoidCallback? onPressed</code> |  | [lib/src/features/forms/picker/internal/klp_reference_option_row.dart:7](../../../../../../../lib/src/features/forms/picker/internal/klp_reference_option_row.dart#L7) |
+| method <code>build</code> | public | <code>Widget build(BuildContext context)</code> |  | [lib/src/features/forms/picker/internal/klp_reference_option_row.dart:9](../../../../../../../lib/src/features/forms/picker/internal/klp_reference_option_row.dart#L9) |
 
 ## 閱讀說明與限制
 

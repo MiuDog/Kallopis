@@ -96,15 +96,15 @@ ClassDeclaration · public · [lib/src/foundation/surface/page_background/intern
 | 成員 | 可見性 | 簽章／型別 | 來源註解摘要 | 證據 |
 |---|---|---|---|---|
 | constructor <code>point</code> | public | <code>const KlpPageBackgroundSelection.point(this.id)</code> |  | [lib/src/foundation/surface/page_background/internal/klp_page_background_recipe_core.dart:15](../../../../../../../lib/src/foundation/surface/page_background/internal/klp_page_background_recipe_core.dart#L15) |
-| constructor <code>line</code> | public | <code>const KlpPageBackgroundSelection.line(this.id)</code> |  | [lib/src/foundation/surface/page_background/internal/klp_page_background_recipe_core.dart:16](../../../../../../../lib/src/foundation/surface/page_background/internal/klp_page_background_recipe_core.dart#L16) |
-| field <code>kind</code> | public | <code>final KlpPageBackgroundElementKind kind</code> |  | [lib/src/foundation/surface/page_background/internal/klp_page_background_recipe_core.dart:18](../../../../../../../lib/src/foundation/surface/page_background/internal/klp_page_background_recipe_core.dart#L18) |
-| field <code>id</code> | public | <code>final int id</code> |  | [lib/src/foundation/surface/page_background/internal/klp_page_background_recipe_core.dart:19](../../../../../../../lib/src/foundation/surface/page_background/internal/klp_page_background_recipe_core.dart#L19) |
-| method <code>==</code> | public | <code>bool operator ==(Object other)</code> |  | [lib/src/foundation/surface/page_background/internal/klp_page_background_recipe_core.dart:21](../../../../../../../lib/src/foundation/surface/page_background/internal/klp_page_background_recipe_core.dart#L21) |
-| getter <code>hashCode</code> | public | <code>int get hashCode</code> |  | [lib/src/foundation/surface/page_background/internal/klp_page_background_recipe_core.dart:26](../../../../../../../lib/src/foundation/surface/page_background/internal/klp_page_background_recipe_core.dart#L26) |
+| constructor <code>line</code> | public | <code>const KlpPageBackgroundSelection.line(this.id)</code> |  | [lib/src/foundation/surface/page_background/internal/klp_page_background_recipe_core.dart:17](../../../../../../../lib/src/foundation/surface/page_background/internal/klp_page_background_recipe_core.dart#L17) |
+| field <code>kind</code> | public | <code>final KlpPageBackgroundElementKind kind</code> |  | [lib/src/foundation/surface/page_background/internal/klp_page_background_recipe_core.dart:20](../../../../../../../lib/src/foundation/surface/page_background/internal/klp_page_background_recipe_core.dart#L20) |
+| field <code>id</code> | public | <code>final int id</code> |  | [lib/src/foundation/surface/page_background/internal/klp_page_background_recipe_core.dart:21](../../../../../../../lib/src/foundation/surface/page_background/internal/klp_page_background_recipe_core.dart#L21) |
+| method <code>==</code> | public | <code>bool operator ==(Object other)</code> |  | [lib/src/foundation/surface/page_background/internal/klp_page_background_recipe_core.dart:23](../../../../../../../lib/src/foundation/surface/page_background/internal/klp_page_background_recipe_core.dart#L23) |
+| getter <code>hashCode</code> | public | <code>int get hashCode</code> |  | [lib/src/foundation/surface/page_background/internal/klp_page_background_recipe_core.dart:30](../../../../../../../lib/src/foundation/surface/page_background/internal/klp_page_background_recipe_core.dart#L30) |
 
 ### KlpPageBackgroundViewport
 
-ClassDeclaration · public · [lib/src/foundation/surface/page_background/internal/klp_page_background_recipe_core.dart:30](../../../../../../../lib/src/foundation/surface/page_background/internal/klp_page_background_recipe_core.dart#L30)
+ClassDeclaration · public · [lib/src/foundation/surface/page_background/internal/klp_page_background_recipe_core.dart:34](../../../../../../../lib/src/foundation/surface/page_background/internal/klp_page_background_recipe_core.dart#L34)
 
 <code>class KlpPageBackgroundViewport</code>
 
@@ -113,17 +113,17 @@ ClassDeclaration · public · [lib/src/foundation/surface/page_background/intern
 
 | 成員 | 可見性 | 簽章／型別 | 來源註解摘要 | 證據 |
 |---|---|---|---|---|
-| constructor <code>KlpPageBackgroundViewport</code> | public | <code>KlpPageBackgroundViewport({this.origin = Offset.zero, this.scale = 1})</code> |  | [lib/src/foundation/surface/page_background/internal/klp_page_background_recipe_core.dart:33](../../../../../../../lib/src/foundation/surface/page_background/internal/klp_page_background_recipe_core.dart#L33) |
-| field <code>origin</code> | public | <code>final Offset origin</code> |  | [lib/src/foundation/surface/page_background/internal/klp_page_background_recipe_core.dart:38](../../../../../../../lib/src/foundation/surface/page_background/internal/klp_page_background_recipe_core.dart#L38) |
-| field <code>scale</code> | public | <code>final double scale</code> |  | [lib/src/foundation/surface/page_background/internal/klp_page_background_recipe_core.dart:39](../../../../../../../lib/src/foundation/surface/page_background/internal/klp_page_background_recipe_core.dart#L39) |
-| method <code>pageToViewport</code> | public | <code>Offset pageToViewport(Offset position)</code> |  | [lib/src/foundation/surface/page_background/internal/klp_page_background_recipe_core.dart:41](../../../../../../../lib/src/foundation/surface/page_background/internal/klp_page_background_recipe_core.dart#L41) |
-| method <code>viewportToPage</code> | public | <code>Offset viewportToPage(Offset position)</code> |  | [lib/src/foundation/surface/page_background/internal/klp_page_background_recipe_core.dart:42](../../../../../../../lib/src/foundation/surface/page_background/internal/klp_page_background_recipe_core.dart#L42) |
-| method <code>==</code> | public | <code>bool operator ==(Object other)</code> |  | [lib/src/foundation/surface/page_background/internal/klp_page_background_recipe_core.dart:44](../../../../../../../lib/src/foundation/surface/page_background/internal/klp_page_background_recipe_core.dart#L44) |
-| getter <code>hashCode</code> | public | <code>int get hashCode</code> |  | [lib/src/foundation/surface/page_background/internal/klp_page_background_recipe_core.dart:49](../../../../../../../lib/src/foundation/surface/page_background/internal/klp_page_background_recipe_core.dart#L49) |
+| constructor <code>KlpPageBackgroundViewport</code> | public | <code>KlpPageBackgroundViewport({this.origin = Offset.zero, this.scale = 1})</code> |  | [lib/src/foundation/surface/page_background/internal/klp_page_background_recipe_core.dart:37](../../../../../../../lib/src/foundation/surface/page_background/internal/klp_page_background_recipe_core.dart#L37) |
+| field <code>origin</code> | public | <code>final Offset origin</code> |  | [lib/src/foundation/surface/page_background/internal/klp_page_background_recipe_core.dart:44](../../../../../../../lib/src/foundation/surface/page_background/internal/klp_page_background_recipe_core.dart#L44) |
+| field <code>scale</code> | public | <code>final double scale</code> |  | [lib/src/foundation/surface/page_background/internal/klp_page_background_recipe_core.dart:45](../../../../../../../lib/src/foundation/surface/page_background/internal/klp_page_background_recipe_core.dart#L45) |
+| method <code>pageToViewport</code> | public | <code>Offset pageToViewport(Offset position)</code> |  | [lib/src/foundation/surface/page_background/internal/klp_page_background_recipe_core.dart:47](../../../../../../../lib/src/foundation/surface/page_background/internal/klp_page_background_recipe_core.dart#L47) |
+| method <code>viewportToPage</code> | public | <code>Offset viewportToPage(Offset position)</code> |  | [lib/src/foundation/surface/page_background/internal/klp_page_background_recipe_core.dart:48](../../../../../../../lib/src/foundation/surface/page_background/internal/klp_page_background_recipe_core.dart#L48) |
+| method <code>==</code> | public | <code>bool operator ==(Object other)</code> |  | [lib/src/foundation/surface/page_background/internal/klp_page_background_recipe_core.dart:50](../../../../../../../lib/src/foundation/surface/page_background/internal/klp_page_background_recipe_core.dart#L50) |
+| getter <code>hashCode</code> | public | <code>int get hashCode</code> |  | [lib/src/foundation/surface/page_background/internal/klp_page_background_recipe_core.dart:57](../../../../../../../lib/src/foundation/surface/page_background/internal/klp_page_background_recipe_core.dart#L57) |
 
 ### KlpPageBackgroundAxisStyle
 
-ClassDeclaration · public · [lib/src/foundation/surface/page_background/internal/klp_page_background_recipe_core.dart:53](../../../../../../../lib/src/foundation/surface/page_background/internal/klp_page_background_recipe_core.dart#L53)
+ClassDeclaration · public · [lib/src/foundation/surface/page_background/internal/klp_page_background_recipe_core.dart:61](../../../../../../../lib/src/foundation/surface/page_background/internal/klp_page_background_recipe_core.dart#L61)
 
 <code>class KlpPageBackgroundAxisStyle</code>
 
@@ -132,12 +132,12 @@ ClassDeclaration · public · [lib/src/foundation/surface/page_background/intern
 
 | 成員 | 可見性 | 簽章／型別 | 來源註解摘要 | 證據 |
 |---|---|---|---|---|
-| constructor <code>KlpPageBackgroundAxisStyle</code> | public | <code>KlpPageBackgroundAxisStyle({this.color, this.width})</code> |  | [lib/src/foundation/surface/page_background/internal/klp_page_background_recipe_core.dart:56](../../../../../../../lib/src/foundation/surface/page_background/internal/klp_page_background_recipe_core.dart#L56) |
-| field <code>color</code> | public | <code>final Color? color</code> |  | [lib/src/foundation/surface/page_background/internal/klp_page_background_recipe_core.dart:61](../../../../../../../lib/src/foundation/surface/page_background/internal/klp_page_background_recipe_core.dart#L61) |
-| field <code>width</code> | public | <code>final double? width</code> |  | [lib/src/foundation/surface/page_background/internal/klp_page_background_recipe_core.dart:62](../../../../../../../lib/src/foundation/surface/page_background/internal/klp_page_background_recipe_core.dart#L62) |
-| method <code>copyWith</code> | public | <code>KlpPageBackgroundAxisStyle copyWith({Color? color, double? width})</code> |  | [lib/src/foundation/surface/page_background/internal/klp_page_background_recipe_core.dart:64](../../../../../../../lib/src/foundation/surface/page_background/internal/klp_page_background_recipe_core.dart#L64) |
-| method <code>==</code> | public | <code>bool operator ==(Object other)</code> |  | [lib/src/foundation/surface/page_background/internal/klp_page_background_recipe_core.dart:68](../../../../../../../lib/src/foundation/surface/page_background/internal/klp_page_background_recipe_core.dart#L68) |
-| getter <code>hashCode</code> | public | <code>int get hashCode</code> |  | [lib/src/foundation/surface/page_background/internal/klp_page_background_recipe_core.dart:73](../../../../../../../lib/src/foundation/surface/page_background/internal/klp_page_background_recipe_core.dart#L73) |
+| constructor <code>KlpPageBackgroundAxisStyle</code> | public | <code>KlpPageBackgroundAxisStyle({this.color, this.width})</code> |  | [lib/src/foundation/surface/page_background/internal/klp_page_background_recipe_core.dart:64](../../../../../../../lib/src/foundation/surface/page_background/internal/klp_page_background_recipe_core.dart#L64) |
+| field <code>color</code> | public | <code>final Color? color</code> |  | [lib/src/foundation/surface/page_background/internal/klp_page_background_recipe_core.dart:69](../../../../../../../lib/src/foundation/surface/page_background/internal/klp_page_background_recipe_core.dart#L69) |
+| field <code>width</code> | public | <code>final double? width</code> |  | [lib/src/foundation/surface/page_background/internal/klp_page_background_recipe_core.dart:70](../../../../../../../lib/src/foundation/surface/page_background/internal/klp_page_background_recipe_core.dart#L70) |
+| method <code>copyWith</code> | public | <code>KlpPageBackgroundAxisStyle copyWith({Color? color, double? width})</code> |  | [lib/src/foundation/surface/page_background/internal/klp_page_background_recipe_core.dart:72](../../../../../../../lib/src/foundation/surface/page_background/internal/klp_page_background_recipe_core.dart#L72) |
+| method <code>==</code> | public | <code>bool operator ==(Object other)</code> |  | [lib/src/foundation/surface/page_background/internal/klp_page_background_recipe_core.dart:79](../../../../../../../lib/src/foundation/surface/page_background/internal/klp_page_background_recipe_core.dart#L79) |
+| getter <code>hashCode</code> | public | <code>int get hashCode</code> |  | [lib/src/foundation/surface/page_background/internal/klp_page_background_recipe_core.dart:86](../../../../../../../lib/src/foundation/surface/page_background/internal/klp_page_background_recipe_core.dart#L86) |
 
 ## 閱讀說明與限制
 

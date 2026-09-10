@@ -52,10 +52,10 @@ ExtensionDeclaration · private · [lib/src/capabilities/navigation/internal/klp
 
 | 成員 | 可見性 | 簽章／型別 | 來源註解摘要 | 證據 |
 |---|---|---|---|---|
-| method <code>_execute</code> | private | <code>Future&lt;void&gt; _execute(_NavigationPending pending)</code> |  | [lib/src/capabilities/navigation/internal/klp_navigation_machine_transaction.dart:5](../../../../../../lib/src/capabilities/navigation/internal/klp_navigation_machine_transaction.dart#L5) |
-| method <code>_current</code> | private | <code>bool _current(_NavigationPending pending)</code> |  | [lib/src/capabilities/navigation/internal/klp_navigation_machine_transaction.dart:73](../../../../../../lib/src/capabilities/navigation/internal/klp_navigation_machine_transaction.dart#L73) |
-| method <code>_cancel</code> | private | <code>void _cancel(_NavigationPending pending, String reason)</code> |  | [lib/src/capabilities/navigation/internal/klp_navigation_machine_transaction.dart:75](../../../../../../lib/src/capabilities/navigation/internal/klp_navigation_machine_transaction.dart#L75) |
-| method <code>_finishRejected</code> | private | <code>void _finishRejected(_NavigationPending pending, KlpNavigationOutcome&lt;void&gt; outcome)</code> |  | [lib/src/capabilities/navigation/internal/klp_navigation_machine_transaction.dart:82](../../../../../../lib/src/capabilities/navigation/internal/klp_navigation_machine_transaction.dart#L82) |
+| method <code>_execute</code> | private | <code>Future&lt;void&gt; _execute(_NavigationPending pending)</code> |  | [lib/src/capabilities/navigation/internal/klp_navigation_machine_transaction.dart:4](../../../../../../lib/src/capabilities/navigation/internal/klp_navigation_machine_transaction.dart#L4) |
+| method <code>_current</code> | private | <code>bool _current(_NavigationPending pending)</code> |  | [lib/src/capabilities/navigation/internal/klp_navigation_machine_transaction.dart:82](../../../../../../lib/src/capabilities/navigation/internal/klp_navigation_machine_transaction.dart#L82) |
+| method <code>_cancel</code> | private | <code>void _cancel(_NavigationPending pending, String reason)</code> |  | [lib/src/capabilities/navigation/internal/klp_navigation_machine_transaction.dart:85](../../../../../../lib/src/capabilities/navigation/internal/klp_navigation_machine_transaction.dart#L85) |
+| method <code>_finishRejected</code> | private | <code>void _finishRejected( _NavigationPending pending, KlpNavigationOutcome&lt;void&gt; outcome, )</code> |  | [lib/src/capabilities/navigation/internal/klp_navigation_machine_transaction.dart:92](../../../../../../lib/src/capabilities/navigation/internal/klp_navigation_machine_transaction.dart#L92) |
 
 ## 閱讀說明與限制
 

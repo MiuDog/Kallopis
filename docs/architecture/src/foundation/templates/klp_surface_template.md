@@ -54,11 +54,11 @@ ClassDeclaration · public · [lib/src/foundation/templates/klp_surface_template
 
 | 成員 | 可見性 | 簽章／型別 | 來源註解摘要 | 證據 |
 |---|---|---|---|---|
-| field <code>child</code> | public | <code>final KlpTemplate&lt;T&gt; child</code> |  | [lib/src/foundation/templates/klp_surface_template.dart:6](../../../../../lib/src/foundation/templates/klp_surface_template.dart#L6) |
-| field <code>background</code> | public | <code>final KlpSemanticKey&lt;KlpColor&gt; background</code> |  | [lib/src/foundation/templates/klp_surface_template.dart:7](../../../../../lib/src/foundation/templates/klp_surface_template.dart#L7) |
-| field <code>radius</code> | public | <code>final KlpSemanticKey&lt;KlpRadius&gt; radius</code> |  | [lib/src/foundation/templates/klp_surface_template.dart:8](../../../../../lib/src/foundation/templates/klp_surface_template.dart#L8) |
-| field <code>inset</code> | public | <code>final KlpSemanticKey&lt;KlpDistance&gt; inset</code> |  | [lib/src/foundation/templates/klp_surface_template.dart:9](../../../../../lib/src/foundation/templates/klp_surface_template.dart#L9) |
-| constructor <code>KlpSurfaceTemplate</code> | public | <code>const KlpSurfaceTemplate({ required this.child, required this.background, required this.radius, required this.inset, })</code> |  | [lib/src/foundation/templates/klp_surface_template.dart:11](../../../../../lib/src/foundation/templates/klp_surface_template.dart#L11) |
+| field <code>child</code> | public | <code>final KlpTemplate&lt;T&gt; child</code> |  | [lib/src/foundation/templates/klp_surface_template.dart:5](../../../../../lib/src/foundation/templates/klp_surface_template.dart#L5) |
+| field <code>background</code> | public | <code>final KlpSemanticKey&lt;KlpColor&gt; background</code> |  | [lib/src/foundation/templates/klp_surface_template.dart:6](../../../../../lib/src/foundation/templates/klp_surface_template.dart#L6) |
+| field <code>radius</code> | public | <code>final KlpSemanticKey&lt;KlpRadius&gt; radius</code> |  | [lib/src/foundation/templates/klp_surface_template.dart:7](../../../../../lib/src/foundation/templates/klp_surface_template.dart#L7) |
+| field <code>inset</code> | public | <code>final KlpSemanticKey&lt;KlpDistance&gt; inset</code> |  | [lib/src/foundation/templates/klp_surface_template.dart:8](../../../../../lib/src/foundation/templates/klp_surface_template.dart#L8) |
+| constructor <code>KlpSurfaceTemplate</code> | public | <code>const KlpSurfaceTemplate({ required this.child, required this.background, required this.radius, required this.inset, })</code> |  | [lib/src/foundation/templates/klp_surface_template.dart:10](../../../../../lib/src/foundation/templates/klp_surface_template.dart#L10) |
 
 ## 閱讀說明與限制
 

@@ -39,7 +39,7 @@ flowchart TD
 
 FunctionDeclaration · public · [lib/src/foundation/definitions/internal/klp_template_slots.dart:5](../../../../../../lib/src/foundation/definitions/internal/klp_template_slots.dart#L5)
 
-<code>Iterable&lt;KlpSlot&lt;KlpNode&gt;&gt; klpTemplateSlots(KlpTemplate&lt;KlpNode&gt; template)</code>
+<code>Iterable&lt;KlpSlot&lt;KlpNode&gt;&gt; klpTemplateSlots( KlpTemplate&lt;KlpNode&gt; template, )</code>
 
 來源註解摘要：由模板順序取得契約，避免作者另外維護一份插槽清單。
 

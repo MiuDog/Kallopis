@@ -8,7 +8,8 @@ import 'package:kallopis/kallopis.dart';
 void main() {
   KlpRoute route(String id) => KlpRoute(
     id: id,
-		builder: (_) => KlpPanelFrame(content: Text(id, textDirection: TextDirection.ltr)),
+    builder: (_) =>
+        KlpPanelFrame(content: Text(id, textDirection: TextDirection.ltr)),
   );
 
   KlpRouter router() =>
@@ -162,7 +163,9 @@ void main() {
   test('庫內不得出現任何具名路由', () {
     // router 是**機制**，不是導覽決策。庫一旦內建 'home'／'settings' 這類 id，
     // 就開始替產品決定有哪些頁——那正是拒絕清單擋的東西。
-    final source = File('lib/src/features/navigation/legacy_router/klp_router.dart').readAsStringSync();
+    final source = File(
+      'lib/src/features/navigation/legacy_router/klp_router.dart',
+    ).readAsStringSync();
 
     // 只看實際程式碼，不看文件註解裡的範例。
     final code = const LineSplitter()

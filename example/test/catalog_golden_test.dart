@@ -84,13 +84,13 @@ void main() {
       );
     await icons.load();
 
-	final thinIcons = FontLoader('packages/kallopis/${KlpIcon.thinFontFamily}')
-		..addFont(
-			rootBundle.load(
-				'packages/kallopis/assets/fonts/FlaticonUIcons-ThinRounded.ttf',
-			),
-		);
-	await thinIcons.load();
+    final thinIcons = FontLoader('packages/kallopis/${KlpIcon.thinFontFamily}')
+      ..addFont(
+        rootBundle.load(
+          'packages/kallopis/assets/fonts/FlaticonUIcons-ThinRounded.ttf',
+        ),
+      );
+    await thinIcons.load();
   });
 
   /// 檔名用頁面標籤推導，改了標籤就會找不到基準——那是刻意的，
@@ -115,15 +115,15 @@ void main() {
             MaterialApp(
               debugShowCheckedModeBanner: false,
               theme: buildKlpTheme(brightness),
-				home: CatalogThemeScope(
-					value: KlpOklchColor.fromColor(KlpThemeData.light.brand),
-					onChanged: (_) {},
-					child: CatalogShell(
-                groups: catalogGroups,
-                pages: catalogPages,
-                selected: index,
-                onSelected: (_) {},
-					),
+              home: CatalogThemeScope(
+                value: KlpOklchColor.fromColor(KlpThemeData.light.brand),
+                onChanged: (_) {},
+                child: CatalogShell(
+                  groups: catalogGroups,
+                  pages: catalogPages,
+                  selected: index,
+                  onSelected: (_) {},
+                ),
               ),
             ),
           );

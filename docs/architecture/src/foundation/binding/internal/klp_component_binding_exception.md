@@ -52,12 +52,12 @@ ClassDeclaration · public · [lib/src/foundation/binding/internal/klp_component
 
 | 成員 | 可見性 | 簽章／型別 | 來源註解摘要 | 證據 |
 |---|---|---|---|---|
-| field <code>placementId</code> | public | <code>final String placementId</code> |  | [lib/src/foundation/binding/internal/klp_component_binding_exception.dart:4](../../../../../../lib/src/foundation/binding/internal/klp_component_binding_exception.dart#L4) |
-| field <code>templatePath</code> | public | <code>final String templatePath</code> |  | [lib/src/foundation/binding/internal/klp_component_binding_exception.dart:5](../../../../../../lib/src/foundation/binding/internal/klp_component_binding_exception.dart#L5) |
-| field <code>cause</code> | public | <code>final Object cause</code> |  | [lib/src/foundation/binding/internal/klp_component_binding_exception.dart:6](../../../../../../lib/src/foundation/binding/internal/klp_component_binding_exception.dart#L6) |
-| field <code>stackTrace</code> | public | <code>final StackTrace stackTrace</code> |  | [lib/src/foundation/binding/internal/klp_component_binding_exception.dart:7](../../../../../../lib/src/foundation/binding/internal/klp_component_binding_exception.dart#L7) |
-| constructor <code>KlpComponentBindingException</code> | public | <code>const KlpComponentBindingException({ required this.placementId, required this.templatePath, required this.cause, required this.stackTrace, })</code> |  | [lib/src/foundation/binding/internal/klp_component_binding_exception.dart:9](../../../../../../lib/src/foundation/binding/internal/klp_component_binding_exception.dart#L9) |
-| method <code>toString</code> | public | <code>String toString()</code> |  | [lib/src/foundation/binding/internal/klp_component_binding_exception.dart:16](../../../../../../lib/src/foundation/binding/internal/klp_component_binding_exception.dart#L16) |
+| field <code>placementId</code> | public | <code>final String placementId</code> |  | [lib/src/foundation/binding/internal/klp_component_binding_exception.dart:3](../../../../../../lib/src/foundation/binding/internal/klp_component_binding_exception.dart#L3) |
+| field <code>templatePath</code> | public | <code>final String templatePath</code> |  | [lib/src/foundation/binding/internal/klp_component_binding_exception.dart:4](../../../../../../lib/src/foundation/binding/internal/klp_component_binding_exception.dart#L4) |
+| field <code>cause</code> | public | <code>final Object cause</code> |  | [lib/src/foundation/binding/internal/klp_component_binding_exception.dart:5](../../../../../../lib/src/foundation/binding/internal/klp_component_binding_exception.dart#L5) |
+| field <code>stackTrace</code> | public | <code>final StackTrace stackTrace</code> |  | [lib/src/foundation/binding/internal/klp_component_binding_exception.dart:6](../../../../../../lib/src/foundation/binding/internal/klp_component_binding_exception.dart#L6) |
+| constructor <code>KlpComponentBindingException</code> | public | <code>const KlpComponentBindingException({ required this.placementId, required this.templatePath, required this.cause, required this.stackTrace, })</code> |  | [lib/src/foundation/binding/internal/klp_component_binding_exception.dart:8](../../../../../../lib/src/foundation/binding/internal/klp_component_binding_exception.dart#L8) |
+| method <code>toString</code> | public | <code>String toString()</code> |  | [lib/src/foundation/binding/internal/klp_component_binding_exception.dart:15](../../../../../../lib/src/foundation/binding/internal/klp_component_binding_exception.dart#L15) |
 
 ## 閱讀說明與限制
 

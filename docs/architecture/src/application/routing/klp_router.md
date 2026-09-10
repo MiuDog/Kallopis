@@ -54,7 +54,7 @@ ClassDeclaration · public · [lib/src/application/routing/klp_router.dart:3](..
 | constructor <code>KlpRouter</code> | public | <code>KlpRouter({ required this.id, required this.initial, required List&lt;KlpRoute&lt;Object?, Object?&gt;&gt; routes, this.restoration, })</code> |  | [lib/src/application/routing/klp_router.dart:11](../../../../../lib/src/application/routing/klp_router.dart#L11) |
 | getter <code>supportsRestoration</code> | public | <code>bool get supportsRestoration</code> |  | [lib/src/application/routing/klp_router.dart:46](../../../../../lib/src/application/routing/klp_router.dart#L46) |
 | method <code>_decodeRestoration</code> | private | <code>List&lt;KlpLocation&lt;Object?&gt;&gt; _decodeRestoration( KlpNavigationRestoration value, Map&lt;String, KlpDestination&lt;Object?, Object?&gt;&gt; destinations, )</code> |  | [lib/src/application/routing/klp_router.dart:49](../../../../../lib/src/application/routing/klp_router.dart#L49) |
-| method <code>_restore</code> | private | <code>List&lt;KlpLocation&lt;Object?&gt;&gt; _restore( KlpNavigationRestoration value, )</code> |  | [lib/src/application/routing/klp_router.dart:69](../../../../../lib/src/application/routing/klp_router.dart#L69) |
+| method <code>_restore</code> | private | <code>List&lt;KlpLocation&lt;Object?&gt;&gt; _restore(KlpNavigationRestoration value)</code> |  | [lib/src/application/routing/klp_router.dart:69](../../../../../lib/src/application/routing/klp_router.dart#L69) |
 
 ## 閱讀說明與限制
 

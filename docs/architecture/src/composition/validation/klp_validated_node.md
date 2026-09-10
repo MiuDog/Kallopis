@@ -49,14 +49,14 @@ ClassDeclaration · public · [lib/src/composition/validation/klp_validated_node
 
 | 成員 | 可見性 | 簽章／型別 | 來源註解摘要 | 證據 |
 |---|---|---|---|---|
-| field <code>placementId</code> | public | <code>final KlpPlacementId placementId</code> |  | [lib/src/composition/validation/klp_validated_node.dart:7](../../../../../lib/src/composition/validation/klp_validated_node.dart#L7) |
-| field <code>definitionId</code> | public | <code>final String definitionId</code> |  | [lib/src/composition/validation/klp_validated_node.dart:8](../../../../../lib/src/composition/validation/klp_validated_node.dart#L8) |
-| field <code>childrenPlacements</code> | public | <code>final List&lt;KlpPlacementId&gt; childrenPlacements</code> |  | [lib/src/composition/validation/klp_validated_node.dart:9](../../../../../lib/src/composition/validation/klp_validated_node.dart#L9) |
-| field <code>slotRanges</code> | public | <code>final List&lt;KlpValidatedSlot&gt; slotRanges</code> |  | [lib/src/composition/validation/klp_validated_node.dart:10](../../../../../lib/src/composition/validation/klp_validated_node.dart#L10) |
-| constructor <code>KlpValidatedNode</code> | public | <code>KlpValidatedNode(String id, String definitionId, Iterable&lt;String&gt; childrenIds, {Iterable&lt;KlpValidatedSlot&gt; slotRanges = const []})</code> |  | [lib/src/composition/validation/klp_validated_node.dart:12](../../../../../lib/src/composition/validation/klp_validated_node.dart#L12) |
-| constructor <code>scoped</code> | public | <code>KlpValidatedNode.scoped(this.placementId, this.definitionId, Iterable&lt;KlpPlacementId&gt; childrenPlacements, {Iterable&lt;KlpValidatedSlot&gt; slotRanges = const []})</code> |  | [lib/src/composition/validation/klp_validated_node.dart:14](../../../../../lib/src/composition/validation/klp_validated_node.dart#L14) |
-| getter <code>id</code> | public | <code>String get id</code> |  | [lib/src/composition/validation/klp_validated_node.dart:16](../../../../../lib/src/composition/validation/klp_validated_node.dart#L16) |
-| getter <code>childrenIds</code> | public | <code>List&lt;String&gt; get childrenIds</code> |  | [lib/src/composition/validation/klp_validated_node.dart:17](../../../../../lib/src/composition/validation/klp_validated_node.dart#L17) |
+| field <code>placementId</code> | public | <code>final KlpPlacementId placementId</code> |  | [lib/src/composition/validation/klp_validated_node.dart:6](../../../../../lib/src/composition/validation/klp_validated_node.dart#L6) |
+| field <code>definitionId</code> | public | <code>final String definitionId</code> |  | [lib/src/composition/validation/klp_validated_node.dart:7](../../../../../lib/src/composition/validation/klp_validated_node.dart#L7) |
+| field <code>childrenPlacements</code> | public | <code>final List&lt;KlpPlacementId&gt; childrenPlacements</code> |  | [lib/src/composition/validation/klp_validated_node.dart:8](../../../../../lib/src/composition/validation/klp_validated_node.dart#L8) |
+| field <code>slotRanges</code> | public | <code>final List&lt;KlpValidatedSlot&gt; slotRanges</code> |  | [lib/src/composition/validation/klp_validated_node.dart:9](../../../../../lib/src/composition/validation/klp_validated_node.dart#L9) |
+| constructor <code>KlpValidatedNode</code> | public | <code>KlpValidatedNode( String id, String definitionId, Iterable&lt;String&gt; childrenIds, { Iterable&lt;KlpValidatedSlot&gt; slotRanges = const [], })</code> |  | [lib/src/composition/validation/klp_validated_node.dart:11](../../../../../lib/src/composition/validation/klp_validated_node.dart#L11) |
+| constructor <code>scoped</code> | public | <code>KlpValidatedNode.scoped( this.placementId, this.definitionId, Iterable&lt;KlpPlacementId&gt; childrenPlacements, { Iterable&lt;KlpValidatedSlot&gt; slotRanges = const [], })</code> |  | [lib/src/composition/validation/klp_validated_node.dart:23](../../../../../lib/src/composition/validation/klp_validated_node.dart#L23) |
+| getter <code>id</code> | public | <code>String get id</code> |  | [lib/src/composition/validation/klp_validated_node.dart:31](../../../../../lib/src/composition/validation/klp_validated_node.dart#L31) |
+| getter <code>childrenIds</code> | public | <code>List&lt;String&gt; get childrenIds</code> |  | [lib/src/composition/validation/klp_validated_node.dart:32](../../../../../lib/src/composition/validation/klp_validated_node.dart#L32) |
 
 ## 閱讀說明與限制
 

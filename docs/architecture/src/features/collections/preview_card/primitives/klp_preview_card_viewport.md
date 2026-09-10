@@ -54,10 +54,10 @@ ClassDeclaration · private · [lib/src/features/collections/preview_card/primit
 
 | 成員 | 可見性 | 簽章／型別 | 來源註解摘要 | 證據 |
 |---|---|---|---|---|
-| constructor <code>_KlpPreviewCardViewport</code> | private | <code>const _KlpPreviewCardViewport({ required this.size, required this.child, })</code> |  | [lib/src/features/collections/preview_card/primitives/klp_preview_card_viewport.dart:5](../../../../../../../lib/src/features/collections/preview_card/primitives/klp_preview_card_viewport.dart#L5) |
-| field <code>size</code> | public | <code>final KlpPreviewCardSize size</code> |  | [lib/src/features/collections/preview_card/primitives/klp_preview_card_viewport.dart:10](../../../../../../../lib/src/features/collections/preview_card/primitives/klp_preview_card_viewport.dart#L10) |
-| field <code>child</code> | public | <code>final Widget child</code> |  | [lib/src/features/collections/preview_card/primitives/klp_preview_card_viewport.dart:11](../../../../../../../lib/src/features/collections/preview_card/primitives/klp_preview_card_viewport.dart#L11) |
-| method <code>build</code> | public | <code>Widget build(BuildContext context)</code> |  | [lib/src/features/collections/preview_card/primitives/klp_preview_card_viewport.dart:13](../../../../../../../lib/src/features/collections/preview_card/primitives/klp_preview_card_viewport.dart#L13) |
+| constructor <code>_KlpPreviewCardViewport</code> | private | <code>const _KlpPreviewCardViewport({required this.size, required this.child})</code> |  | [lib/src/features/collections/preview_card/primitives/klp_preview_card_viewport.dart:5](../../../../../../../lib/src/features/collections/preview_card/primitives/klp_preview_card_viewport.dart#L5) |
+| field <code>size</code> | public | <code>final KlpPreviewCardSize size</code> |  | [lib/src/features/collections/preview_card/primitives/klp_preview_card_viewport.dart:7](../../../../../../../lib/src/features/collections/preview_card/primitives/klp_preview_card_viewport.dart#L7) |
+| field <code>child</code> | public | <code>final Widget child</code> |  | [lib/src/features/collections/preview_card/primitives/klp_preview_card_viewport.dart:8](../../../../../../../lib/src/features/collections/preview_card/primitives/klp_preview_card_viewport.dart#L8) |
+| method <code>build</code> | public | <code>Widget build(BuildContext context)</code> |  | [lib/src/features/collections/preview_card/primitives/klp_preview_card_viewport.dart:10](../../../../../../../lib/src/features/collections/preview_card/primitives/klp_preview_card_viewport.dart#L10) |
 
 ## 閱讀說明與限制
 

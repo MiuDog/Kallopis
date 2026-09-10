@@ -100,24 +100,24 @@ ClassDeclaration · public · [lib/src/runtime/compilation/internal/klp_componen
 
 | 成員 | 可見性 | 簽章／型別 | 來源註解摘要 | 證據 |
 |---|---|---|---|---|
-| field <code>contract</code> | public | <code>final KlpDefinition&lt;KlpNode&gt; contract</code> |  | [lib/src/runtime/compilation/internal/klp_component_adapter.dart:18](../../../../../../lib/src/runtime/compilation/internal/klp_component_adapter.dart#L18) |
-| constructor <code>KlpComponentAdapter</code> | public | <code>KlpComponentAdapter(KlpComponentDefinition&lt;KlpNode&gt; definition)</code> |  | [lib/src/runtime/compilation/internal/klp_component_adapter.dart:20](../../../../../../lib/src/runtime/compilation/internal/klp_component_adapter.dart#L20) |
-| method <code>prepare</code> | public | <code>KlpPreparedNode prepare(KlpNode node, KlpValidatedNode snapshot, KlpPrepareContext context)</code> |  | [lib/src/runtime/compilation/internal/klp_component_adapter.dart:22](../../../../../../lib/src/runtime/compilation/internal/klp_component_adapter.dart#L22) |
+| field <code>contract</code> | public | <code>final KlpDefinition&lt;KlpNode&gt; contract</code> |  | [lib/src/runtime/compilation/internal/klp_component_adapter.dart:17](../../../../../../lib/src/runtime/compilation/internal/klp_component_adapter.dart#L17) |
+| constructor <code>KlpComponentAdapter</code> | public | <code>KlpComponentAdapter(KlpComponentDefinition&lt;KlpNode&gt; definition)</code> |  | [lib/src/runtime/compilation/internal/klp_component_adapter.dart:19](../../../../../../lib/src/runtime/compilation/internal/klp_component_adapter.dart#L19) |
+| method <code>prepare</code> | public | <code>KlpPreparedNode prepare( KlpNode node, KlpValidatedNode snapshot, KlpPrepareContext context, )</code> |  | [lib/src/runtime/compilation/internal/klp_component_adapter.dart:22](../../../../../../lib/src/runtime/compilation/internal/klp_component_adapter.dart#L22) |
 
 ### _PreparedComponent
 
-ClassDeclaration · private · [lib/src/runtime/compilation/internal/klp_component_adapter.dart:29](../../../../../../lib/src/runtime/compilation/internal/klp_component_adapter.dart#L29)
+ClassDeclaration · private · [lib/src/runtime/compilation/internal/klp_component_adapter.dart:38](../../../../../../lib/src/runtime/compilation/internal/klp_component_adapter.dart#L38)
 
 <code>final class _PreparedComponent implements KlpPreparedNode</code>
 
-- `implements` → <code>KlpPreparedNode</code>：[lib/src/runtime/compilation/internal/klp_component_adapter.dart:29](../../../../../../lib/src/runtime/compilation/internal/klp_component_adapter.dart#L29)
+- `implements` → <code>KlpPreparedNode</code>：[lib/src/runtime/compilation/internal/klp_component_adapter.dart:38](../../../../../../lib/src/runtime/compilation/internal/klp_component_adapter.dart#L38)
 
 | 成員 | 可見性 | 簽章／型別 | 來源註解摘要 | 證據 |
 |---|---|---|---|---|
-| field <code>component</code> | public | <code>final KlpPreparedComponent component</code> |  | [lib/src/runtime/compilation/internal/klp_component_adapter.dart:31](../../../../../../lib/src/runtime/compilation/internal/klp_component_adapter.dart#L31) |
-| constructor <code>_PreparedComponent</code> | private | <code>const _PreparedComponent(this.component)</code> |  | [lib/src/runtime/compilation/internal/klp_component_adapter.dart:33](../../../../../../lib/src/runtime/compilation/internal/klp_component_adapter.dart#L33) |
-| method <code>createResource</code> | public | <code>KlpPlacementResource createResource(KlpValidatedNode node)</code> |  | [lib/src/runtime/compilation/internal/klp_component_adapter.dart:35](../../../../../../lib/src/runtime/compilation/internal/klp_component_adapter.dart#L35) |
-| method <code>materialize</code> | public | <code>KlpBoundTemplate materialize( KlpPlacementResource resource, List&lt;KlpBoundTemplate&gt; children, KlpFrameLease lease, )</code> |  | [lib/src/runtime/compilation/internal/klp_component_adapter.dart:38](../../../../../../lib/src/runtime/compilation/internal/klp_component_adapter.dart#L38) |
+| field <code>component</code> | public | <code>final KlpPreparedComponent component</code> |  | [lib/src/runtime/compilation/internal/klp_component_adapter.dart:39](../../../../../../lib/src/runtime/compilation/internal/klp_component_adapter.dart#L39) |
+| constructor <code>_PreparedComponent</code> | private | <code>const _PreparedComponent(this.component)</code> |  | [lib/src/runtime/compilation/internal/klp_component_adapter.dart:41](../../../../../../lib/src/runtime/compilation/internal/klp_component_adapter.dart#L41) |
+| method <code>createResource</code> | public | <code>KlpPlacementResource createResource(KlpValidatedNode node)</code> |  | [lib/src/runtime/compilation/internal/klp_component_adapter.dart:43](../../../../../../lib/src/runtime/compilation/internal/klp_component_adapter.dart#L43) |
+| method <code>materialize</code> | public | <code>KlpBoundTemplate materialize( KlpPlacementResource resource, List&lt;KlpBoundTemplate&gt; children, KlpFrameLease lease, )</code> |  | [lib/src/runtime/compilation/internal/klp_component_adapter.dart:47](../../../../../../lib/src/runtime/compilation/internal/klp_component_adapter.dart#L47) |
 
 ## 閱讀說明與限制
 

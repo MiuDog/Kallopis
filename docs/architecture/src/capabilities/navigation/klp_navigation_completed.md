@@ -52,8 +52,8 @@ ClassDeclaration · public · [lib/src/capabilities/navigation/klp_navigation_co
 
 | 成員 | 可見性 | 簽章／型別 | 來源註解摘要 | 證據 |
 |---|---|---|---|---|
-| field <code>value</code> | public | <code>final R value</code> |  | [lib/src/capabilities/navigation/klp_navigation_completed.dart:5](../../../../../lib/src/capabilities/navigation/klp_navigation_completed.dart#L5) |
-| constructor <code>KlpNavigationCompleted</code> | public | <code>const KlpNavigationCompleted(this.value)</code> |  | [lib/src/capabilities/navigation/klp_navigation_completed.dart:7](../../../../../lib/src/capabilities/navigation/klp_navigation_completed.dart#L7) |
+| field <code>value</code> | public | <code>final R value</code> |  | [lib/src/capabilities/navigation/klp_navigation_completed.dart:4](../../../../../lib/src/capabilities/navigation/klp_navigation_completed.dart#L4) |
+| constructor <code>KlpNavigationCompleted</code> | public | <code>const KlpNavigationCompleted(this.value)</code> |  | [lib/src/capabilities/navigation/klp_navigation_completed.dart:6](../../../../../lib/src/capabilities/navigation/klp_navigation_completed.dart#L6) |
 
 ## 閱讀說明與限制
 

@@ -4,13 +4,13 @@ import '../internal/klp_form_dependencies.dart';
 /// 選項資料：識別碼、顯示文字，以及是否停用。
 @immutable
 class KlpChoiceOption {
-	const KlpChoiceOption({
-		required this.id,
-		required this.label,
-		this.disabled = false,
-	});
+  const KlpChoiceOption({
+    required this.id,
+    required this.label,
+    this.disabled = false,
+  });
 
-	final String id;
-	final String label;
-	final bool disabled;
+  final String id;
+  final String label;
+  final bool disabled;
 }

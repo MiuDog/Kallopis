@@ -58,12 +58,12 @@ ClassDeclaration · public · [lib/src/foundation/definitions/klp_component_defi
 
 | 成員 | 可見性 | 簽章／型別 | 來源註解摘要 | 證據 |
 |---|---|---|---|---|
-| field <code>contract</code> | public | <code>final KlpDefinition&lt;T&gt; contract</code> |  | [lib/src/foundation/definitions/klp_component_definition.dart:10](../../../../../lib/src/foundation/definitions/klp_component_definition.dart#L10) |
-| field <code>content</code> | public | <code>final KlpTemplate&lt;T&gt; content</code> |  | [lib/src/foundation/definitions/klp_component_definition.dart:11](../../../../../lib/src/foundation/definitions/klp_component_definition.dart#L11) |
-| field <code>accessibilityLabel</code> | public | <code>final String Function(T)? accessibilityLabel</code> |  | [lib/src/foundation/definitions/klp_component_definition.dart:12](../../../../../lib/src/foundation/definitions/klp_component_definition.dart#L12) |
-| getter <code>hasAccessibilityLabel</code> | public | <code>bool get hasAccessibilityLabel</code> |  | [lib/src/foundation/definitions/klp_component_definition.dart:13](../../../../../lib/src/foundation/definitions/klp_component_definition.dart#L13) |
-| constructor <code>KlpComponentDefinition</code> | public | <code>KlpComponentDefinition(String id, { required this.content, required KlpSemanticSchema semantics, this.accessibilityLabel, Iterable&lt;String&gt; dependencies = const [], })</code> |  | [lib/src/foundation/definitions/klp_component_definition.dart:15](../../../../../lib/src/foundation/definitions/klp_component_definition.dart#L15) |
-| method <code>selectAccessibilityLabel</code> | public | <code>String? selectAccessibilityLabel(KlpNode node)</code> | 與模板 selector 相同，泛型上轉後仍保留原本實例型別資格。 | [lib/src/foundation/definitions/klp_component_definition.dart:22](../../../../../lib/src/foundation/definitions/klp_component_definition.dart#L22) |
+| field <code>contract</code> | public | <code>final KlpDefinition&lt;T&gt; contract</code> |  | [lib/src/foundation/definitions/klp_component_definition.dart:9](../../../../../lib/src/foundation/definitions/klp_component_definition.dart#L9) |
+| field <code>content</code> | public | <code>final KlpTemplate&lt;T&gt; content</code> |  | [lib/src/foundation/definitions/klp_component_definition.dart:10](../../../../../lib/src/foundation/definitions/klp_component_definition.dart#L10) |
+| field <code>accessibilityLabel</code> | public | <code>final String Function(T)? accessibilityLabel</code> |  | [lib/src/foundation/definitions/klp_component_definition.dart:11](../../../../../lib/src/foundation/definitions/klp_component_definition.dart#L11) |
+| getter <code>hasAccessibilityLabel</code> | public | <code>bool get hasAccessibilityLabel</code> |  | [lib/src/foundation/definitions/klp_component_definition.dart:12](../../../../../lib/src/foundation/definitions/klp_component_definition.dart#L12) |
+| constructor <code>KlpComponentDefinition</code> | public | <code>KlpComponentDefinition( String id, { required this.content, required KlpSemanticSchema semantics, this.accessibilityLabel, Iterable&lt;String&gt; dependencies = const [], })</code> |  | [lib/src/foundation/definitions/klp_component_definition.dart:14](../../../../../lib/src/foundation/definitions/klp_component_definition.dart#L14) |
+| method <code>selectAccessibilityLabel</code> | public | <code>String? selectAccessibilityLabel(KlpNode node)</code> | 與模板 selector 相同，泛型上轉後仍保留原本實例型別資格。 | [lib/src/foundation/definitions/klp_component_definition.dart:27](../../../../../lib/src/foundation/definitions/klp_component_definition.dart#L27) |
 
 ## 閱讀說明與限制
 

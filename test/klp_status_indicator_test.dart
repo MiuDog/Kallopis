@@ -69,13 +69,13 @@ void main() {
       ),
     );
 
-		expect(find.byType(KlpStatusIndicator), findsNWidgets(2));
+    expect(find.byType(KlpStatusIndicator), findsNWidgets(2));
     expect(find.text('Flutter · Design IR v0.1'), findsOneWidget);
     expect(find.text('80% · 1 frame · 6 nodes'), findsOneWidget);
     final barRect = tester.getRect(find.byType(KlpStatusBar));
     final indicatorRect = tester.getRect(find.byType(KlpStatusIndicator).first);
     final trailingRect = tester.getRect(find.text('80% · 1 frame · 6 nodes'));
-		expect(indicatorRect.left, barRect.left);
-		expect(trailingRect.right, barRect.right);
+    expect(indicatorRect.left, barRect.left);
+    expect(trailingRect.right, barRect.right);
   });
 }

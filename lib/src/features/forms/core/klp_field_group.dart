@@ -8,26 +8,26 @@ import 'klp_field.dart';
 /// 內部直接委派給 [KlpField]，因此標籤／錯誤的排版與單一欄位完全一致；
 /// 差別只在 `child` 換成 [children] 這組垂直排列的子項目。
 class KlpFieldGroup extends StatelessWidget {
-	const KlpFieldGroup({
-		super.key,
-		required this.legend,
-		required this.children,
-		this.error,
-	});
+  const KlpFieldGroup({
+    super.key,
+    required this.legend,
+    required this.children,
+    this.error,
+  });
 
-	final String legend;
-	final List<Widget> children;
-	final String? error;
+  final String legend;
+  final List<Widget> children;
+  final String? error;
 
-	@override
-	Widget build(BuildContext context) {
-		return KlpField(
-			label: legend,
-			error: error,
-			child: KlpColumn(
-				crossAxisAlignment: CrossAxisAlignment.stretch,
-				children: children,
-			),
-		);
-	}
+  @override
+  Widget build(BuildContext context) {
+    return KlpField(
+      label: legend,
+      error: error,
+      child: KlpColumn(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: children,
+      ),
+    );
+  }
 }

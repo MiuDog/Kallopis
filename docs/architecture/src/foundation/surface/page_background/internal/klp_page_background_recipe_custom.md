@@ -59,11 +59,11 @@ ClassDeclaration · public · [lib/src/foundation/surface/page_background/intern
 | field <code>id</code> | public | <code>final int id</code> |  | [lib/src/foundation/surface/page_background/internal/klp_page_background_recipe_custom.dart:7](../../../../../../../lib/src/foundation/surface/page_background/internal/klp_page_background_recipe_custom.dart#L7) |
 | field <code>position</code> | public | <code>final Offset position</code> |  | [lib/src/foundation/surface/page_background/internal/klp_page_background_recipe_custom.dart:8](../../../../../../../lib/src/foundation/surface/page_background/internal/klp_page_background_recipe_custom.dart#L8) |
 | method <code>==</code> | public | <code>bool operator ==(Object other)</code> |  | [lib/src/foundation/surface/page_background/internal/klp_page_background_recipe_custom.dart:10](../../../../../../../lib/src/foundation/surface/page_background/internal/klp_page_background_recipe_custom.dart#L10) |
-| getter <code>hashCode</code> | public | <code>int get hashCode</code> |  | [lib/src/foundation/surface/page_background/internal/klp_page_background_recipe_custom.dart:12](../../../../../../../lib/src/foundation/surface/page_background/internal/klp_page_background_recipe_custom.dart#L12) |
+| getter <code>hashCode</code> | public | <code>int get hashCode</code> |  | [lib/src/foundation/surface/page_background/internal/klp_page_background_recipe_custom.dart:15](../../../../../../../lib/src/foundation/surface/page_background/internal/klp_page_background_recipe_custom.dart#L15) |
 
 ### KlpPageBackgroundLine
 
-ClassDeclaration · public · [lib/src/foundation/surface/page_background/internal/klp_page_background_recipe_custom.dart:16](../../../../../../../lib/src/foundation/surface/page_background/internal/klp_page_background_recipe_custom.dart#L16)
+ClassDeclaration · public · [lib/src/foundation/surface/page_background/internal/klp_page_background_recipe_custom.dart:19](../../../../../../../lib/src/foundation/surface/page_background/internal/klp_page_background_recipe_custom.dart#L19)
 
 <code>class KlpPageBackgroundLine</code>
 
@@ -72,65 +72,65 @@ ClassDeclaration · public · [lib/src/foundation/surface/page_background/intern
 
 | 成員 | 可見性 | 簽章／型別 | 來源註解摘要 | 證據 |
 |---|---|---|---|---|
-| constructor <code>KlpPageBackgroundLine</code> | public | <code>const KlpPageBackgroundLine({required this.id, required this.startPointId, required this.endPointId})</code> |  | [lib/src/foundation/surface/page_background/internal/klp_page_background_recipe_custom.dart:19](../../../../../../../lib/src/foundation/surface/page_background/internal/klp_page_background_recipe_custom.dart#L19) |
-| field <code>id</code> | public | <code>final int id</code> |  | [lib/src/foundation/surface/page_background/internal/klp_page_background_recipe_custom.dart:20](../../../../../../../lib/src/foundation/surface/page_background/internal/klp_page_background_recipe_custom.dart#L20) |
-| field <code>startPointId</code> | public | <code>final int startPointId</code> |  | [lib/src/foundation/surface/page_background/internal/klp_page_background_recipe_custom.dart:21](../../../../../../../lib/src/foundation/surface/page_background/internal/klp_page_background_recipe_custom.dart#L21) |
-| field <code>endPointId</code> | public | <code>final int endPointId</code> |  | [lib/src/foundation/surface/page_background/internal/klp_page_background_recipe_custom.dart:22](../../../../../../../lib/src/foundation/surface/page_background/internal/klp_page_background_recipe_custom.dart#L22) |
-| method <code>==</code> | public | <code>bool operator ==(Object other)</code> |  | [lib/src/foundation/surface/page_background/internal/klp_page_background_recipe_custom.dart:24](../../../../../../../lib/src/foundation/surface/page_background/internal/klp_page_background_recipe_custom.dart#L24) |
-| getter <code>hashCode</code> | public | <code>int get hashCode</code> |  | [lib/src/foundation/surface/page_background/internal/klp_page_background_recipe_custom.dart:32](../../../../../../../lib/src/foundation/surface/page_background/internal/klp_page_background_recipe_custom.dart#L32) |
+| constructor <code>KlpPageBackgroundLine</code> | public | <code>const KlpPageBackgroundLine({ required this.id, required this.startPointId, required this.endPointId, })</code> |  | [lib/src/foundation/surface/page_background/internal/klp_page_background_recipe_custom.dart:22](../../../../../../../lib/src/foundation/surface/page_background/internal/klp_page_background_recipe_custom.dart#L22) |
+| field <code>id</code> | public | <code>final int id</code> |  | [lib/src/foundation/surface/page_background/internal/klp_page_background_recipe_custom.dart:27](../../../../../../../lib/src/foundation/surface/page_background/internal/klp_page_background_recipe_custom.dart#L27) |
+| field <code>startPointId</code> | public | <code>final int startPointId</code> |  | [lib/src/foundation/surface/page_background/internal/klp_page_background_recipe_custom.dart:28](../../../../../../../lib/src/foundation/surface/page_background/internal/klp_page_background_recipe_custom.dart#L28) |
+| field <code>endPointId</code> | public | <code>final int endPointId</code> |  | [lib/src/foundation/surface/page_background/internal/klp_page_background_recipe_custom.dart:29](../../../../../../../lib/src/foundation/surface/page_background/internal/klp_page_background_recipe_custom.dart#L29) |
+| method <code>==</code> | public | <code>bool operator ==(Object other)</code> |  | [lib/src/foundation/surface/page_background/internal/klp_page_background_recipe_custom.dart:31](../../../../../../../lib/src/foundation/surface/page_background/internal/klp_page_background_recipe_custom.dart#L31) |
+| getter <code>hashCode</code> | public | <code>int get hashCode</code> |  | [lib/src/foundation/surface/page_background/internal/klp_page_background_recipe_custom.dart:39](../../../../../../../lib/src/foundation/surface/page_background/internal/klp_page_background_recipe_custom.dart#L39) |
 
 ### KlpCustomPageBackgroundRecipe
 
-ClassDeclaration · public · [lib/src/foundation/surface/page_background/internal/klp_page_background_recipe_custom.dart:36](../../../../../../../lib/src/foundation/surface/page_background/internal/klp_page_background_recipe_custom.dart#L36)
+ClassDeclaration · public · [lib/src/foundation/surface/page_background/internal/klp_page_background_recipe_custom.dart:43](../../../../../../../lib/src/foundation/surface/page_background/internal/klp_page_background_recipe_custom.dart#L43)
 
 <code>final class KlpCustomPageBackgroundRecipe extends KlpPageBackgroundRecipe</code>
 
 來源註解摘要：只允許 point 與 line 的自訂背景資料，不保存產品狀態。
 
-- `extends` → <code>KlpPageBackgroundRecipe</code>：[lib/src/foundation/surface/page_background/internal/klp_page_background_recipe_custom.dart:37](../../../../../../../lib/src/foundation/surface/page_background/internal/klp_page_background_recipe_custom.dart#L37)
+- `extends` → <code>KlpPageBackgroundRecipe</code>：[lib/src/foundation/surface/page_background/internal/klp_page_background_recipe_custom.dart:44](../../../../../../../lib/src/foundation/surface/page_background/internal/klp_page_background_recipe_custom.dart#L44)
 
 | 成員 | 可見性 | 簽章／型別 | 來源註解摘要 | 證據 |
 |---|---|---|---|---|
-| constructor <code>KlpCustomPageBackgroundRecipe</code> | public | <code>KlpCustomPageBackgroundRecipe({ List&lt;KlpPageBackgroundPoint&gt; points = const [], List&lt;KlpPageBackgroundLine&gt; lines = const [], KlpPageBackgroundAxisStyle? pointStyle, KlpPageBackgroundAxisStyle? lineStyle, this.snapSpacing, this.strokeBehavior = KlpPageBackgroundStrokeBehavior.fixed, })</code> |  | [lib/src/foundation/surface/page_background/internal/klp_page_background_recipe_custom.dart:38](../../../../../../../lib/src/foundation/surface/page_background/internal/klp_page_background_recipe_custom.dart#L38) |
-| field <code>points</code> | public | <code>final List&lt;KlpPageBackgroundPoint&gt; points</code> |  | [lib/src/foundation/surface/page_background/internal/klp_page_background_recipe_custom.dart:54](../../../../../../../lib/src/foundation/surface/page_background/internal/klp_page_background_recipe_custom.dart#L54) |
-| field <code>lines</code> | public | <code>final List&lt;KlpPageBackgroundLine&gt; lines</code> |  | [lib/src/foundation/surface/page_background/internal/klp_page_background_recipe_custom.dart:55](../../../../../../../lib/src/foundation/surface/page_background/internal/klp_page_background_recipe_custom.dart#L55) |
-| field <code>pointStyle</code> | public | <code>final KlpPageBackgroundAxisStyle pointStyle</code> |  | [lib/src/foundation/surface/page_background/internal/klp_page_background_recipe_custom.dart:56](../../../../../../../lib/src/foundation/surface/page_background/internal/klp_page_background_recipe_custom.dart#L56) |
-| field <code>lineStyle</code> | public | <code>final KlpPageBackgroundAxisStyle lineStyle</code> |  | [lib/src/foundation/surface/page_background/internal/klp_page_background_recipe_custom.dart:57](../../../../../../../lib/src/foundation/surface/page_background/internal/klp_page_background_recipe_custom.dart#L57) |
-| field <code>snapSpacing</code> | public | <code>final double? snapSpacing</code> |  | [lib/src/foundation/surface/page_background/internal/klp_page_background_recipe_custom.dart:58](../../../../../../../lib/src/foundation/surface/page_background/internal/klp_page_background_recipe_custom.dart#L58) |
-| field <code>strokeBehavior</code> | public | <code>final KlpPageBackgroundStrokeBehavior strokeBehavior</code> |  | [lib/src/foundation/surface/page_background/internal/klp_page_background_recipe_custom.dart:59](../../../../../../../lib/src/foundation/surface/page_background/internal/klp_page_background_recipe_custom.dart#L59) |
-| getter <code>nextPointId</code> | public | <code>int get nextPointId</code> |  | [lib/src/foundation/surface/page_background/internal/klp_page_background_recipe_custom.dart:61](../../../../../../../lib/src/foundation/surface/page_background/internal/klp_page_background_recipe_custom.dart#L61) |
-| getter <code>nextLineId</code> | public | <code>int get nextLineId</code> |  | [lib/src/foundation/surface/page_background/internal/klp_page_background_recipe_custom.dart:62](../../../../../../../lib/src/foundation/surface/page_background/internal/klp_page_background_recipe_custom.dart#L62) |
-| method <code>pointById</code> | public | <code>KlpPageBackgroundPoint? pointById(int id)</code> |  | [lib/src/foundation/surface/page_background/internal/klp_page_background_recipe_custom.dart:64](../../../../../../../lib/src/foundation/surface/page_background/internal/klp_page_background_recipe_custom.dart#L64) |
-| method <code>copyWith</code> | public | <code>KlpCustomPageBackgroundRecipe copyWith({ List&lt;KlpPageBackgroundPoint&gt;? points, List&lt;KlpPageBackgroundLine&gt;? lines, KlpPageBackgroundAxisStyle? pointStyle, KlpPageBackgroundAxisStyle? lineStyle, double? snapSpacing, KlpPageBackgroundStrokeBehavior? strokeBehavior, })</code> |  | [lib/src/foundation/surface/page_background/internal/klp_page_background_recipe_custom.dart:71](../../../../../../../lib/src/foundation/surface/page_background/internal/klp_page_background_recipe_custom.dart#L71) |
-| method <code>removePoint</code> | public | <code>KlpCustomPageBackgroundRecipe removePoint(int id)</code> |  | [lib/src/foundation/surface/page_background/internal/klp_page_background_recipe_custom.dart:89](../../../../../../../lib/src/foundation/surface/page_background/internal/klp_page_background_recipe_custom.dart#L89) |
-| method <code>removeLine</code> | public | <code>KlpCustomPageBackgroundRecipe removeLine(int id)</code> |  | [lib/src/foundation/surface/page_background/internal/klp_page_background_recipe_custom.dart:96](../../../../../../../lib/src/foundation/surface/page_background/internal/klp_page_background_recipe_custom.dart#L96) |
-| method <code>==</code> | public | <code>bool operator ==(Object other)</code> |  | [lib/src/foundation/surface/page_background/internal/klp_page_background_recipe_custom.dart:100](../../../../../../../lib/src/foundation/surface/page_background/internal/klp_page_background_recipe_custom.dart#L100) |
-| getter <code>hashCode</code> | public | <code>int get hashCode</code> |  | [lib/src/foundation/surface/page_background/internal/klp_page_background_recipe_custom.dart:111](../../../../../../../lib/src/foundation/surface/page_background/internal/klp_page_background_recipe_custom.dart#L111) |
+| constructor <code>KlpCustomPageBackgroundRecipe</code> | public | <code>KlpCustomPageBackgroundRecipe({ List&lt;KlpPageBackgroundPoint&gt; points = const [], List&lt;KlpPageBackgroundLine&gt; lines = const [], KlpPageBackgroundAxisStyle? pointStyle, KlpPageBackgroundAxisStyle? lineStyle, this.snapSpacing, this.strokeBehavior = KlpPageBackgroundStrokeBehavior.fixed, })</code> |  | [lib/src/foundation/surface/page_background/internal/klp_page_background_recipe_custom.dart:45](../../../../../../../lib/src/foundation/surface/page_background/internal/klp_page_background_recipe_custom.dart#L45) |
+| field <code>points</code> | public | <code>final List&lt;KlpPageBackgroundPoint&gt; points</code> |  | [lib/src/foundation/surface/page_background/internal/klp_page_background_recipe_custom.dart:63](../../../../../../../lib/src/foundation/surface/page_background/internal/klp_page_background_recipe_custom.dart#L63) |
+| field <code>lines</code> | public | <code>final List&lt;KlpPageBackgroundLine&gt; lines</code> |  | [lib/src/foundation/surface/page_background/internal/klp_page_background_recipe_custom.dart:64](../../../../../../../lib/src/foundation/surface/page_background/internal/klp_page_background_recipe_custom.dart#L64) |
+| field <code>pointStyle</code> | public | <code>final KlpPageBackgroundAxisStyle pointStyle</code> |  | [lib/src/foundation/surface/page_background/internal/klp_page_background_recipe_custom.dart:65](../../../../../../../lib/src/foundation/surface/page_background/internal/klp_page_background_recipe_custom.dart#L65) |
+| field <code>lineStyle</code> | public | <code>final KlpPageBackgroundAxisStyle lineStyle</code> |  | [lib/src/foundation/surface/page_background/internal/klp_page_background_recipe_custom.dart:66](../../../../../../../lib/src/foundation/surface/page_background/internal/klp_page_background_recipe_custom.dart#L66) |
+| field <code>snapSpacing</code> | public | <code>final double? snapSpacing</code> |  | [lib/src/foundation/surface/page_background/internal/klp_page_background_recipe_custom.dart:67](../../../../../../../lib/src/foundation/surface/page_background/internal/klp_page_background_recipe_custom.dart#L67) |
+| field <code>strokeBehavior</code> | public | <code>final KlpPageBackgroundStrokeBehavior strokeBehavior</code> |  | [lib/src/foundation/surface/page_background/internal/klp_page_background_recipe_custom.dart:68](../../../../../../../lib/src/foundation/surface/page_background/internal/klp_page_background_recipe_custom.dart#L68) |
+| getter <code>nextPointId</code> | public | <code>int get nextPointId</code> |  | [lib/src/foundation/surface/page_background/internal/klp_page_background_recipe_custom.dart:70](../../../../../../../lib/src/foundation/surface/page_background/internal/klp_page_background_recipe_custom.dart#L70) |
+| getter <code>nextLineId</code> | public | <code>int get nextLineId</code> |  | [lib/src/foundation/surface/page_background/internal/klp_page_background_recipe_custom.dart:71](../../../../../../../lib/src/foundation/surface/page_background/internal/klp_page_background_recipe_custom.dart#L71) |
+| method <code>pointById</code> | public | <code>KlpPageBackgroundPoint? pointById(int id)</code> |  | [lib/src/foundation/surface/page_background/internal/klp_page_background_recipe_custom.dart:73](../../../../../../../lib/src/foundation/surface/page_background/internal/klp_page_background_recipe_custom.dart#L73) |
+| method <code>copyWith</code> | public | <code>KlpCustomPageBackgroundRecipe copyWith({ List&lt;KlpPageBackgroundPoint&gt;? points, List&lt;KlpPageBackgroundLine&gt;? lines, KlpPageBackgroundAxisStyle? pointStyle, KlpPageBackgroundAxisStyle? lineStyle, double? snapSpacing, KlpPageBackgroundStrokeBehavior? strokeBehavior, })</code> |  | [lib/src/foundation/surface/page_background/internal/klp_page_background_recipe_custom.dart:80](../../../../../../../lib/src/foundation/surface/page_background/internal/klp_page_background_recipe_custom.dart#L80) |
+| method <code>removePoint</code> | public | <code>KlpCustomPageBackgroundRecipe removePoint(int id)</code> |  | [lib/src/foundation/surface/page_background/internal/klp_page_background_recipe_custom.dart:98](../../../../../../../lib/src/foundation/surface/page_background/internal/klp_page_background_recipe_custom.dart#L98) |
+| method <code>removeLine</code> | public | <code>KlpCustomPageBackgroundRecipe removeLine(int id)</code> |  | [lib/src/foundation/surface/page_background/internal/klp_page_background_recipe_custom.dart:111](../../../../../../../lib/src/foundation/surface/page_background/internal/klp_page_background_recipe_custom.dart#L111) |
+| method <code>==</code> | public | <code>bool operator ==(Object other)</code> |  | [lib/src/foundation/surface/page_background/internal/klp_page_background_recipe_custom.dart:120](../../../../../../../lib/src/foundation/surface/page_background/internal/klp_page_background_recipe_custom.dart#L120) |
+| getter <code>hashCode</code> | public | <code>int get hashCode</code> |  | [lib/src/foundation/surface/page_background/internal/klp_page_background_recipe_custom.dart:131](../../../../../../../lib/src/foundation/surface/page_background/internal/klp_page_background_recipe_custom.dart#L131) |
 
 ### _validateElements
 
-FunctionDeclaration · private · [lib/src/foundation/surface/page_background/internal/klp_page_background_recipe_custom.dart:115](../../../../../../../lib/src/foundation/surface/page_background/internal/klp_page_background_recipe_custom.dart#L115)
+FunctionDeclaration · private · [lib/src/foundation/surface/page_background/internal/klp_page_background_recipe_custom.dart:142](../../../../../../../lib/src/foundation/surface/page_background/internal/klp_page_background_recipe_custom.dart#L142)
 
-<code>void _validateElements(List&lt;KlpPageBackgroundPoint&gt; points, List&lt;KlpPageBackgroundLine&gt; lines)</code>
+<code>void _validateElements( List&lt;KlpPageBackgroundPoint&gt; points, List&lt;KlpPageBackgroundLine&gt; lines, )</code>
 
 
 ### _nextId
 
-FunctionDeclaration · private · [lib/src/foundation/surface/page_background/internal/klp_page_background_recipe_custom.dart:131](../../../../../../../lib/src/foundation/surface/page_background/internal/klp_page_background_recipe_custom.dart#L131)
+FunctionDeclaration · private · [lib/src/foundation/surface/page_background/internal/klp_page_background_recipe_custom.dart:173](../../../../../../../lib/src/foundation/surface/page_background/internal/klp_page_background_recipe_custom.dart#L173)
 
 <code>int _nextId(Iterable&lt;int&gt; ids)</code>
 
 
 ### _isFiniteOffset
 
-FunctionDeclaration · private · [lib/src/foundation/surface/page_background/internal/klp_page_background_recipe_custom.dart:139](../../../../../../../lib/src/foundation/surface/page_background/internal/klp_page_background_recipe_custom.dart#L139)
+FunctionDeclaration · private · [lib/src/foundation/surface/page_background/internal/klp_page_background_recipe_custom.dart:181](../../../../../../../lib/src/foundation/surface/page_background/internal/klp_page_background_recipe_custom.dart#L181)
 
 <code>bool _isFiniteOffset(Offset value)</code>
 
 
 ### _requirePositiveFinite
 
-FunctionDeclaration · private · [lib/src/foundation/surface/page_background/internal/klp_page_background_recipe_custom.dart:141](../../../../../../../lib/src/foundation/surface/page_background/internal/klp_page_background_recipe_custom.dart#L141)
+FunctionDeclaration · private · [lib/src/foundation/surface/page_background/internal/klp_page_background_recipe_custom.dart:183](../../../../../../../lib/src/foundation/surface/page_background/internal/klp_page_background_recipe_custom.dart#L183)
 
 <code>void _requirePositiveFinite(double value, String name)</code>
 

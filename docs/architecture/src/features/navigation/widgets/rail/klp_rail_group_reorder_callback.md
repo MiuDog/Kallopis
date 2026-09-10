@@ -31,7 +31,7 @@ flowchart TD
 
 GenericTypeAlias · public · [lib/src/features/navigation/widgets/rail/klp_rail_group_reorder_callback.dart:1](../../../../../../../lib/src/features/navigation/widgets/rail/klp_rail_group_reorder_callback.dart#L1)
 
-<code>typedef KlpRailGroupReorderCallback = void Function( int oldIndex, int newIndex, );</code>
+<code>typedef KlpRailGroupReorderCallback = void Function(int oldIndex, int newIndex);</code>
 
 
 ## 閱讀說明與限制

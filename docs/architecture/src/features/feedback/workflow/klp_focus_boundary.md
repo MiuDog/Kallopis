@@ -54,11 +54,11 @@ ClassDeclaration · public · [lib/src/features/feedback/workflow/klp_focus_boun
 
 | 成員 | 可見性 | 簽章／型別 | 來源註解摘要 | 證據 |
 |---|---|---|---|---|
-| constructor <code>KlpFocusBoundary</code> | public | <code>const KlpFocusBoundary({super.key, required this.child, this.autofocus = false})</code> |  | [lib/src/features/feedback/workflow/klp_focus_boundary.dart:5](../../../../../../lib/src/features/feedback/workflow/klp_focus_boundary.dart#L5) |
-| field <code>child</code> | public | <code>final Widget child</code> |  | [lib/src/features/feedback/workflow/klp_focus_boundary.dart:7](../../../../../../lib/src/features/feedback/workflow/klp_focus_boundary.dart#L7) |
-| field <code>autofocus</code> | public | <code>final bool autofocus</code> |  | [lib/src/features/feedback/workflow/klp_focus_boundary.dart:8](../../../../../../lib/src/features/feedback/workflow/klp_focus_boundary.dart#L8) |
-| method <code>requestFocus</code> | public | <code>static void requestFocus(BuildContext context)</code> |  | [lib/src/features/feedback/workflow/klp_focus_boundary.dart:10](../../../../../../lib/src/features/feedback/workflow/klp_focus_boundary.dart#L10) |
-| method <code>createState</code> | public | <code>State&lt;KlpFocusBoundary&gt; createState()</code> |  | [lib/src/features/feedback/workflow/klp_focus_boundary.dart:14](../../../../../../lib/src/features/feedback/workflow/klp_focus_boundary.dart#L14) |
+| constructor <code>KlpFocusBoundary</code> | public | <code>const KlpFocusBoundary({ super.key, required this.child, this.autofocus = false, })</code> |  | [lib/src/features/feedback/workflow/klp_focus_boundary.dart:5](../../../../../../lib/src/features/feedback/workflow/klp_focus_boundary.dart#L5) |
+| field <code>child</code> | public | <code>final Widget child</code> |  | [lib/src/features/feedback/workflow/klp_focus_boundary.dart:11](../../../../../../lib/src/features/feedback/workflow/klp_focus_boundary.dart#L11) |
+| field <code>autofocus</code> | public | <code>final bool autofocus</code> |  | [lib/src/features/feedback/workflow/klp_focus_boundary.dart:12](../../../../../../lib/src/features/feedback/workflow/klp_focus_boundary.dart#L12) |
+| method <code>requestFocus</code> | public | <code>static void requestFocus(BuildContext context)</code> |  | [lib/src/features/feedback/workflow/klp_focus_boundary.dart:14](../../../../../../lib/src/features/feedback/workflow/klp_focus_boundary.dart#L14) |
+| method <code>createState</code> | public | <code>State&lt;KlpFocusBoundary&gt; createState()</code> |  | [lib/src/features/feedback/workflow/klp_focus_boundary.dart:18](../../../../../../lib/src/features/feedback/workflow/klp_focus_boundary.dart#L18) |
 
 ## 閱讀說明與限制
 

@@ -54,8 +54,8 @@ ClassDeclaration · public · [lib/src/styling/primitives/klp_stroke_width.dart:
 
 | 成員 | 可見性 | 簽章／型別 | 來源註解摘要 | 證據 |
 |---|---|---|---|---|
-| field <code>value</code> | public | <code>final double value</code> |  | [lib/src/styling/primitives/klp_stroke_width.dart:6](../../../../../lib/src/styling/primitives/klp_stroke_width.dart#L6) |
-| constructor <code>KlpStrokeWidth</code> | public | <code>KlpStrokeWidth(this.value)</code> |  | [lib/src/styling/primitives/klp_stroke_width.dart:8](../../../../../lib/src/styling/primitives/klp_stroke_width.dart#L8) |
+| field <code>value</code> | public | <code>final double value</code> |  | [lib/src/styling/primitives/klp_stroke_width.dart:5](../../../../../lib/src/styling/primitives/klp_stroke_width.dart#L5) |
+| constructor <code>KlpStrokeWidth</code> | public | <code>KlpStrokeWidth(this.value)</code> |  | [lib/src/styling/primitives/klp_stroke_width.dart:7](../../../../../lib/src/styling/primitives/klp_stroke_width.dart#L7) |
 
 ## 閱讀說明與限制
 

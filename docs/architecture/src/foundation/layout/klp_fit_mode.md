@@ -44,13 +44,13 @@ EnumDeclaration · public · [lib/src/foundation/layout/klp_fit_mode.dart:1](../
 
 | 成員 | 可見性 | 簽章／型別 | 來源註解摘要 | 證據 |
 |---|---|---|---|---|
-| enum value <code>contain</code> | public | <code>contain</code> |  | [lib/src/foundation/layout/klp_fit_mode.dart:3](../../../../../lib/src/foundation/layout/klp_fit_mode.dart#L3) |
-| enum value <code>cover</code> | public | <code>cover</code> |  | [lib/src/foundation/layout/klp_fit_mode.dart:4](../../../../../lib/src/foundation/layout/klp_fit_mode.dart#L4) |
-| enum value <code>fill</code> | public | <code>fill</code> |  | [lib/src/foundation/layout/klp_fit_mode.dart:5](../../../../../lib/src/foundation/layout/klp_fit_mode.dart#L5) |
-| enum value <code>scaleDown</code> | public | <code>scaleDown</code> |  | [lib/src/foundation/layout/klp_fit_mode.dart:6](../../../../../lib/src/foundation/layout/klp_fit_mode.dart#L6) |
-| enum value <code>fitWidth</code> | public | <code>fitWidth</code> |  | [lib/src/foundation/layout/klp_fit_mode.dart:7](../../../../../lib/src/foundation/layout/klp_fit_mode.dart#L7) |
-| enum value <code>fitHeight</code> | public | <code>fitHeight</code> |  | [lib/src/foundation/layout/klp_fit_mode.dart:8](../../../../../lib/src/foundation/layout/klp_fit_mode.dart#L8) |
-| enum value <code>none</code> | public | <code>none</code> |  | [lib/src/foundation/layout/klp_fit_mode.dart:9](../../../../../lib/src/foundation/layout/klp_fit_mode.dart#L9) |
+| enum value <code>contain</code> | public | <code>contain</code> |  | [lib/src/foundation/layout/klp_fit_mode.dart:2](../../../../../lib/src/foundation/layout/klp_fit_mode.dart#L2) |
+| enum value <code>cover</code> | public | <code>cover</code> |  | [lib/src/foundation/layout/klp_fit_mode.dart:2](../../../../../lib/src/foundation/layout/klp_fit_mode.dart#L2) |
+| enum value <code>fill</code> | public | <code>fill</code> |  | [lib/src/foundation/layout/klp_fit_mode.dart:2](../../../../../lib/src/foundation/layout/klp_fit_mode.dart#L2) |
+| enum value <code>scaleDown</code> | public | <code>scaleDown</code> |  | [lib/src/foundation/layout/klp_fit_mode.dart:2](../../../../../lib/src/foundation/layout/klp_fit_mode.dart#L2) |
+| enum value <code>fitWidth</code> | public | <code>fitWidth</code> |  | [lib/src/foundation/layout/klp_fit_mode.dart:2](../../../../../lib/src/foundation/layout/klp_fit_mode.dart#L2) |
+| enum value <code>fitHeight</code> | public | <code>fitHeight</code> |  | [lib/src/foundation/layout/klp_fit_mode.dart:2](../../../../../lib/src/foundation/layout/klp_fit_mode.dart#L2) |
+| enum value <code>none</code> | public | <code>none</code> |  | [lib/src/foundation/layout/klp_fit_mode.dart:2](../../../../../lib/src/foundation/layout/klp_fit_mode.dart#L2) |
 
 ## 閱讀說明與限制
 

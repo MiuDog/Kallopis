@@ -54,10 +54,10 @@ ClassDeclaration · private · [lib/src/features/workspace/shell/theme/primitive
 
 | 成員 | 可見性 | 簽章／型別 | 來源註解摘要 | 證據 |
 |---|---|---|---|---|
-| constructor <code>_KlpThemePreviewArtwork</code> | private | <code>const _KlpThemePreviewArtwork({ required this.mode, required this.selected, })</code> |  | [lib/src/features/workspace/shell/theme/primitives/klp_theme_preview_artwork.dart:5](../../../../../../../../lib/src/features/workspace/shell/theme/primitives/klp_theme_preview_artwork.dart#L5) |
-| field <code>mode</code> | public | <code>final KlpThemePreviewMode mode</code> |  | [lib/src/features/workspace/shell/theme/primitives/klp_theme_preview_artwork.dart:10](../../../../../../../../lib/src/features/workspace/shell/theme/primitives/klp_theme_preview_artwork.dart#L10) |
-| field <code>selected</code> | public | <code>final bool selected</code> |  | [lib/src/features/workspace/shell/theme/primitives/klp_theme_preview_artwork.dart:11](../../../../../../../../lib/src/features/workspace/shell/theme/primitives/klp_theme_preview_artwork.dart#L11) |
-| method <code>build</code> | public | <code>Widget build(BuildContext context)</code> |  | [lib/src/features/workspace/shell/theme/primitives/klp_theme_preview_artwork.dart:13](../../../../../../../../lib/src/features/workspace/shell/theme/primitives/klp_theme_preview_artwork.dart#L13) |
+| constructor <code>_KlpThemePreviewArtwork</code> | private | <code>const _KlpThemePreviewArtwork({required this.mode, required this.selected})</code> |  | [lib/src/features/workspace/shell/theme/primitives/klp_theme_preview_artwork.dart:5](../../../../../../../../lib/src/features/workspace/shell/theme/primitives/klp_theme_preview_artwork.dart#L5) |
+| field <code>mode</code> | public | <code>final KlpThemePreviewMode mode</code> |  | [lib/src/features/workspace/shell/theme/primitives/klp_theme_preview_artwork.dart:7](../../../../../../../../lib/src/features/workspace/shell/theme/primitives/klp_theme_preview_artwork.dart#L7) |
+| field <code>selected</code> | public | <code>final bool selected</code> |  | [lib/src/features/workspace/shell/theme/primitives/klp_theme_preview_artwork.dart:8](../../../../../../../../lib/src/features/workspace/shell/theme/primitives/klp_theme_preview_artwork.dart#L8) |
+| method <code>build</code> | public | <code>Widget build(BuildContext context)</code> |  | [lib/src/features/workspace/shell/theme/primitives/klp_theme_preview_artwork.dart:10](../../../../../../../../lib/src/features/workspace/shell/theme/primitives/klp_theme_preview_artwork.dart#L10) |
 
 ## 閱讀說明與限制
 

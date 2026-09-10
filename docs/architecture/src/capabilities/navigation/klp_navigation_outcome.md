@@ -55,7 +55,7 @@ ClassDeclaration · public · [lib/src/capabilities/navigation/klp_navigation_ou
 
 | 成員 | 可見性 | 簽章／型別 | 來源註解摘要 | 證據 |
 |---|---|---|---|---|
-| constructor <code>KlpNavigationOutcome</code> | public | <code>const KlpNavigationOutcome()</code> |  | [lib/src/capabilities/navigation/klp_navigation_outcome.dart:9](../../../../../lib/src/capabilities/navigation/klp_navigation_outcome.dart#L9) |
+| constructor <code>KlpNavigationOutcome</code> | public | <code>const KlpNavigationOutcome()</code> |  | [lib/src/capabilities/navigation/klp_navigation_outcome.dart:8](../../../../../lib/src/capabilities/navigation/klp_navigation_outcome.dart#L8) |
 
 ## 閱讀說明與限制
 

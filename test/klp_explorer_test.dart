@@ -51,7 +51,7 @@ void main() {
   testWidgets('owns the category and nested explorer layout', (tester) async {
     await tester.pumpWidget(buildExplorer());
 
-		expect(find.byType(KlpNavigator), findsOneWidget);
+    expect(find.byType(KlpNavigator), findsOneWidget);
     expect(find.text('Colors'), findsOneWidget);
 
     final categoryText = find.widgetWithText(KlpText, 'Foundation');
@@ -84,7 +84,7 @@ void main() {
       ),
     );
 
-		expect(find.byType(KlpNavigator), findsOneWidget);
+    expect(find.byType(KlpNavigator), findsOneWidget);
     expect(find.text('Design Tokens'), findsOneWidget);
     expect(find.text('Colors'), findsOneWidget);
     expect(find.text('Guides'), findsOneWidget);

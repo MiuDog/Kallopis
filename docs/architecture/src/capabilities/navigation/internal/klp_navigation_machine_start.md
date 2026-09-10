@@ -33,33 +33,33 @@ flowchart TD
 
 FunctionDeclaration · private · [lib/src/capabilities/navigation/internal/klp_navigation_machine_start.dart:3](../../../../../../lib/src/capabilities/navigation/internal/klp_navigation_machine_start.dart#L3)
 
-<code>FutureOr&lt;KlpNavigationStart&gt; _startNavigation( Iterable&lt;KlpRoutePolicy&gt; policies, KlpLocation&lt;Object?&gt; initial, Iterable&lt;KlpLocation&lt;Object?&gt;&gt;? restored, void Function( KlpNavigationSnapshot, { required bool replaceRouteInformation, }) commit, KlpNavigationCancellation cancellation, )</code>
+<code>FutureOr&lt;KlpNavigationStart&gt; _startNavigation( Iterable&lt;KlpRoutePolicy&gt; policies, KlpLocation&lt;Object?&gt; initial, Iterable&lt;KlpLocation&lt;Object?&gt;&gt;? restored, void Function(KlpNavigationSnapshot, {required bool replaceRouteInformation}) commit, KlpNavigationCancellation cancellation, )</code>
 
 
 ### _runInitialGuards
 
-FunctionDeclaration · private · [lib/src/capabilities/navigation/internal/klp_navigation_machine_start.dart:44](../../../../../../lib/src/capabilities/navigation/internal/klp_navigation_machine_start.dart#L44)
+FunctionDeclaration · private · [lib/src/capabilities/navigation/internal/klp_navigation_machine_start.dart:41](../../../../../../lib/src/capabilities/navigation/internal/klp_navigation_machine_start.dart#L41)
 
 <code>FutureOr&lt;KlpNavigationStart&gt; _runInitialGuards( KlpNavigationMachine machine, KlpNavigationCancellation cancellation, [ int index = 0, ])</code>
 
 
 ### _awaitInitialGuard
 
-FunctionDeclaration · private · [lib/src/capabilities/navigation/internal/klp_navigation_machine_start.dart:80](../../../../../../lib/src/capabilities/navigation/internal/klp_navigation_machine_start.dart#L80)
+FunctionDeclaration · private · [lib/src/capabilities/navigation/internal/klp_navigation_machine_start.dart:77](../../../../../../lib/src/capabilities/navigation/internal/klp_navigation_machine_start.dart#L77)
 
 <code>Future&lt;KlpNavigationStart&gt; _awaitInitialGuard( KlpNavigationMachine machine, KlpNavigationCancellation cancellation, Future&lt;bool&gt; guard, int index, )</code>
 
 
 ### _commitStart
 
-FunctionDeclaration · private · [lib/src/capabilities/navigation/internal/klp_navigation_machine_start.dart:112](../../../../../../lib/src/capabilities/navigation/internal/klp_navigation_machine_start.dart#L112)
+FunctionDeclaration · private · [lib/src/capabilities/navigation/internal/klp_navigation_machine_start.dart:109](../../../../../../lib/src/capabilities/navigation/internal/klp_navigation_machine_start.dart#L109)
 
 <code>KlpNavigationStart _commitStart( KlpNavigationMachine machine, KlpNavigationCancellation cancellation, )</code>
 
 
 ### _rejectStart
 
-FunctionDeclaration · private · [lib/src/capabilities/navigation/internal/klp_navigation_machine_start.dart:150](../../../../../../lib/src/capabilities/navigation/internal/klp_navigation_machine_start.dart#L150)
+FunctionDeclaration · private · [lib/src/capabilities/navigation/internal/klp_navigation_machine_start.dart:144](../../../../../../lib/src/capabilities/navigation/internal/klp_navigation_machine_start.dart#L144)
 
 <code>KlpNavigationStart _rejectStart( KlpNavigationMachine machine, KlpNavigationOutcome&lt;void&gt; outcome, )</code>
 

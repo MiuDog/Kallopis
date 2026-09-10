@@ -54,10 +54,10 @@ ClassDeclaration · public · [lib/src/foundation/binding/internal/klp_bound_lin
 
 | 成員 | 可見性 | 簽章／型別 | 來源註解摘要 | 證據 |
 |---|---|---|---|---|
-| field <code>axis</code> | public | <code>final KlpAxis axis</code> |  | [lib/src/foundation/binding/internal/klp_bound_linear.dart:6](../../../../../../lib/src/foundation/binding/internal/klp_bound_linear.dart#L6) |
-| field <code>gap</code> | public | <code>final KlpDistance gap</code> |  | [lib/src/foundation/binding/internal/klp_bound_linear.dart:7](../../../../../../lib/src/foundation/binding/internal/klp_bound_linear.dart#L7) |
-| field <code>children</code> | public | <code>final List&lt;KlpBoundTemplate&gt; children</code> |  | [lib/src/foundation/binding/internal/klp_bound_linear.dart:8](../../../../../../lib/src/foundation/binding/internal/klp_bound_linear.dart#L8) |
-| constructor <code>KlpBoundLinear</code> | public | <code>KlpBoundLinear(this.axis, this.gap, Iterable&lt;KlpBoundTemplate&gt; children)</code> |  | [lib/src/foundation/binding/internal/klp_bound_linear.dart:10](../../../../../../lib/src/foundation/binding/internal/klp_bound_linear.dart#L10) |
+| field <code>axis</code> | public | <code>final KlpAxis axis</code> |  | [lib/src/foundation/binding/internal/klp_bound_linear.dart:5](../../../../../../lib/src/foundation/binding/internal/klp_bound_linear.dart#L5) |
+| field <code>gap</code> | public | <code>final KlpDistance gap</code> |  | [lib/src/foundation/binding/internal/klp_bound_linear.dart:6](../../../../../../lib/src/foundation/binding/internal/klp_bound_linear.dart#L6) |
+| field <code>children</code> | public | <code>final List&lt;KlpBoundTemplate&gt; children</code> |  | [lib/src/foundation/binding/internal/klp_bound_linear.dart:7](../../../../../../lib/src/foundation/binding/internal/klp_bound_linear.dart#L7) |
+| constructor <code>KlpBoundLinear</code> | public | <code>KlpBoundLinear(this.axis, this.gap, Iterable&lt;KlpBoundTemplate&gt; children)</code> |  | [lib/src/foundation/binding/internal/klp_bound_linear.dart:9](../../../../../../lib/src/foundation/binding/internal/klp_bound_linear.dart#L9) |
 
 ## 閱讀說明與限制
 

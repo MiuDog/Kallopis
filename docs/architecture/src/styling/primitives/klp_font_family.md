@@ -54,9 +54,9 @@ ClassDeclaration · public · [lib/src/styling/primitives/klp_font_family.dart:3
 
 | 成員 | 可見性 | 簽章／型別 | 來源註解摘要 | 證據 |
 |---|---|---|---|---|
-| field <code>family</code> | public | <code>final String family</code> |  | [lib/src/styling/primitives/klp_font_family.dart:6](../../../../../lib/src/styling/primitives/klp_font_family.dart#L6) |
-| field <code>fallback</code> | public | <code>final List&lt;String&gt; fallback</code> |  | [lib/src/styling/primitives/klp_font_family.dart:7](../../../../../lib/src/styling/primitives/klp_font_family.dart#L7) |
-| constructor <code>KlpFontFamily</code> | public | <code>KlpFontFamily(this.family, {Iterable&lt;String&gt; fallback = const []})</code> |  | [lib/src/styling/primitives/klp_font_family.dart:9](../../../../../lib/src/styling/primitives/klp_font_family.dart#L9) |
+| field <code>family</code> | public | <code>final String family</code> |  | [lib/src/styling/primitives/klp_font_family.dart:5](../../../../../lib/src/styling/primitives/klp_font_family.dart#L5) |
+| field <code>fallback</code> | public | <code>final List&lt;String&gt; fallback</code> |  | [lib/src/styling/primitives/klp_font_family.dart:6](../../../../../lib/src/styling/primitives/klp_font_family.dart#L6) |
+| constructor <code>KlpFontFamily</code> | public | <code>KlpFontFamily(this.family, {Iterable&lt;String&gt; fallback = const []})</code> |  | [lib/src/styling/primitives/klp_font_family.dart:8](../../../../../lib/src/styling/primitives/klp_font_family.dart#L8) |
 | method <code>_checkName</code> | private | <code>static void _checkName(String name, String path)</code> |  | [lib/src/styling/primitives/klp_font_family.dart:16](../../../../../lib/src/styling/primitives/klp_font_family.dart#L16) |
 
 ## 閱讀說明與限制

@@ -54,10 +54,10 @@ ClassDeclaration · private · [lib/src/foundation/layout/primitives/klp_split_p
 
 | 成員 | 可見性 | 簽章／型別 | 來源註解摘要 | 證據 |
 |---|---|---|---|---|
-| constructor <code>_KlpSplitPaneFrame</code> | private | <code>const _KlpSplitPaneFrame({ required this.size, required this.child, })</code> |  | [lib/src/foundation/layout/primitives/klp_split_pane_frame.dart:5](../../../../../../lib/src/foundation/layout/primitives/klp_split_pane_frame.dart#L5) |
-| field <code>size</code> | public | <code>final KlpSplitPaneSize size</code> |  | [lib/src/foundation/layout/primitives/klp_split_pane_frame.dart:10](../../../../../../lib/src/foundation/layout/primitives/klp_split_pane_frame.dart#L10) |
-| field <code>child</code> | public | <code>final Widget child</code> |  | [lib/src/foundation/layout/primitives/klp_split_pane_frame.dart:11](../../../../../../lib/src/foundation/layout/primitives/klp_split_pane_frame.dart#L11) |
-| method <code>build</code> | public | <code>Widget build(BuildContext context)</code> |  | [lib/src/foundation/layout/primitives/klp_split_pane_frame.dart:13](../../../../../../lib/src/foundation/layout/primitives/klp_split_pane_frame.dart#L13) |
+| constructor <code>_KlpSplitPaneFrame</code> | private | <code>const _KlpSplitPaneFrame({required this.size, required this.child})</code> |  | [lib/src/foundation/layout/primitives/klp_split_pane_frame.dart:5](../../../../../../lib/src/foundation/layout/primitives/klp_split_pane_frame.dart#L5) |
+| field <code>size</code> | public | <code>final KlpSplitPaneSize size</code> |  | [lib/src/foundation/layout/primitives/klp_split_pane_frame.dart:7](../../../../../../lib/src/foundation/layout/primitives/klp_split_pane_frame.dart#L7) |
+| field <code>child</code> | public | <code>final Widget child</code> |  | [lib/src/foundation/layout/primitives/klp_split_pane_frame.dart:8](../../../../../../lib/src/foundation/layout/primitives/klp_split_pane_frame.dart#L8) |
+| method <code>build</code> | public | <code>Widget build(BuildContext context)</code> |  | [lib/src/foundation/layout/primitives/klp_split_pane_frame.dart:10](../../../../../../lib/src/foundation/layout/primitives/klp_split_pane_frame.dart#L10) |
 
 ## 閱讀說明與限制
 

@@ -52,10 +52,10 @@ ClassDeclaration · public · [lib/src/runtime/installation/internal/klp_install
 
 | 成員 | 可見性 | 簽章／型別 | 來源註解摘要 | 證據 |
 |---|---|---|---|---|
-| field <code>committed</code> | public | <code>final bool committed</code> |  | [lib/src/runtime/installation/internal/klp_installation_exception.dart:4](../../../../../../lib/src/runtime/installation/internal/klp_installation_exception.dart#L4) |
-| field <code>issues</code> | public | <code>final List&lt;({Object error, StackTrace stackTrace})&gt; issues</code> |  | [lib/src/runtime/installation/internal/klp_installation_exception.dart:5](../../../../../../lib/src/runtime/installation/internal/klp_installation_exception.dart#L5) |
-| constructor <code>KlpInstallationException</code> | public | <code>KlpInstallationException(this.committed, Iterable&lt;({Object error, StackTrace stackTrace})&gt; issues)</code> |  | [lib/src/runtime/installation/internal/klp_installation_exception.dart:7](../../../../../../lib/src/runtime/installation/internal/klp_installation_exception.dart#L7) |
-| method <code>toString</code> | public | <code>String toString()</code> |  | [lib/src/runtime/installation/internal/klp_installation_exception.dart:9](../../../../../../lib/src/runtime/installation/internal/klp_installation_exception.dart#L9) |
+| field <code>committed</code> | public | <code>final bool committed</code> |  | [lib/src/runtime/installation/internal/klp_installation_exception.dart:3](../../../../../../lib/src/runtime/installation/internal/klp_installation_exception.dart#L3) |
+| field <code>issues</code> | public | <code>final List&lt;({Object error, StackTrace stackTrace})&gt; issues</code> |  | [lib/src/runtime/installation/internal/klp_installation_exception.dart:4](../../../../../../lib/src/runtime/installation/internal/klp_installation_exception.dart#L4) |
+| constructor <code>KlpInstallationException</code> | public | <code>KlpInstallationException( this.committed, Iterable&lt;({Object error, StackTrace stackTrace})&gt; issues, )</code> |  | [lib/src/runtime/installation/internal/klp_installation_exception.dart:6](../../../../../../lib/src/runtime/installation/internal/klp_installation_exception.dart#L6) |
+| method <code>toString</code> | public | <code>String toString()</code> |  | [lib/src/runtime/installation/internal/klp_installation_exception.dart:11](../../../../../../lib/src/runtime/installation/internal/klp_installation_exception.dart#L11) |
 
 ## 閱讀說明與限制
 

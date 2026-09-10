@@ -17,65 +17,65 @@ part 'primitives/klp_tabs_viewport.dart';
 /// （在頭尾之間循環），沿用 [KlpRovingIndex]，與 [KlpMenu]、[KlpCombobox] 共用
 /// 同一套索引移動規則。
 class KlpTabs extends StatelessWidget {
-	const KlpTabs({
-		super.key,
-		required this.tabs,
-		required this.selected,
-		required this.onSelected,
-	});
+  const KlpTabs({
+    super.key,
+    required this.tabs,
+    required this.selected,
+    required this.onSelected,
+  });
 
-	final List<String> tabs;
-	final int selected;
-	final ValueChanged<int> onSelected;
+  final List<String> tabs;
+  final int selected;
+  final ValueChanged<int> onSelected;
 
-	KeyEventResult _handleKey(FocusNode node, KeyEvent event) {
-		if (event is! KeyDownEvent) return KeyEventResult.ignored;
-		if (tabs.isEmpty) return KeyEventResult.ignored;
+  KeyEventResult _handleKey(FocusNode node, KeyEvent event) {
+    if (event is! KeyDownEvent) return KeyEventResult.ignored;
+    if (tabs.isEmpty) return KeyEventResult.ignored;
 
-		if (event.logicalKey == LogicalKeyboardKey.arrowRight) {
-			onSelected(
-				KlpRovingIndex.move(
-					current: selected,
-					count: tabs.length,
-					forward: true,
-				),
-			);
-			return KeyEventResult.handled;
-		}
-		if (event.logicalKey == LogicalKeyboardKey.arrowLeft) {
-			onSelected(
-				KlpRovingIndex.move(
-					current: selected,
-					count: tabs.length,
-					forward: false,
-				),
-			);
-			return KeyEventResult.handled;
-		}
+    if (event.logicalKey == LogicalKeyboardKey.arrowRight) {
+      onSelected(
+        KlpRovingIndex.move(
+          current: selected,
+          count: tabs.length,
+          forward: true,
+        ),
+      );
+      return KeyEventResult.handled;
+    }
+    if (event.logicalKey == LogicalKeyboardKey.arrowLeft) {
+      onSelected(
+        KlpRovingIndex.move(
+          current: selected,
+          count: tabs.length,
+          forward: false,
+        ),
+      );
+      return KeyEventResult.handled;
+    }
 
-		return KeyEventResult.ignored;
-	}
+    return KeyEventResult.ignored;
+  }
 
-	@override
-	Widget build(BuildContext context) {
-		return KlpFocusRegion(
-			onKeyEvent: _handleKey,
-			child: _KlpTabsViewport(
-				child: KlpRow(
-					mainAxisSize: MainAxisSize.min,
-					children: [
-						for (var index = 0; index < tabs.length; index++) ...[
-							_KlpTab(
-								label: tabs[index],
-								selected: selected == index,
-								onPressed: () => onSelected(index),
-							),
-							if (index < tabs.length - 1)
-								const KlpGap.widthSize(KlpSpaceSize.tight),
-						],
-					],
-				),
-			),
-		);
-	}
+  @override
+  Widget build(BuildContext context) {
+    return KlpFocusRegion(
+      onKeyEvent: _handleKey,
+      child: _KlpTabsViewport(
+        child: KlpRow(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            for (var index = 0; index < tabs.length; index++) ...[
+              _KlpTab(
+                label: tabs[index],
+                selected: selected == index,
+                onPressed: () => onSelected(index),
+              ),
+              if (index < tabs.length - 1)
+                const KlpGap.widthSize(KlpSpaceSize.tight),
+            ],
+          ],
+        ),
+      ),
+    );
+  }
 }

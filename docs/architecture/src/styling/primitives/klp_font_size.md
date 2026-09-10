@@ -54,8 +54,8 @@ ClassDeclaration · public · [lib/src/styling/primitives/klp_font_size.dart:3](
 
 | 成員 | 可見性 | 簽章／型別 | 來源註解摘要 | 證據 |
 |---|---|---|---|---|
-| field <code>value</code> | public | <code>final double value</code> |  | [lib/src/styling/primitives/klp_font_size.dart:6](../../../../../lib/src/styling/primitives/klp_font_size.dart#L6) |
-| constructor <code>KlpFontSize</code> | public | <code>KlpFontSize(this.value)</code> |  | [lib/src/styling/primitives/klp_font_size.dart:8](../../../../../lib/src/styling/primitives/klp_font_size.dart#L8) |
+| field <code>value</code> | public | <code>final double value</code> |  | [lib/src/styling/primitives/klp_font_size.dart:5](../../../../../lib/src/styling/primitives/klp_font_size.dart#L5) |
+| constructor <code>KlpFontSize</code> | public | <code>KlpFontSize(this.value)</code> |  | [lib/src/styling/primitives/klp_font_size.dart:7](../../../../../lib/src/styling/primitives/klp_font_size.dart#L7) |
 
 ## 閱讀說明與限制
 

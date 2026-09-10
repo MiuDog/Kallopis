@@ -46,9 +46,9 @@ ClassDeclaration · public · [lib/src/features/forms/input/models/klp_password_
 
 | 成員 | 可見性 | 簽章／型別 | 來源註解摘要 | 證據 |
 |---|---|---|---|---|
-| constructor <code>KlpPasswordRequirement</code> | public | <code>const KlpPasswordRequirement({ required this.label, required this.satisfied, })</code> |  | [lib/src/features/forms/input/models/klp_password_requirement.dart:6](../../../../../../../lib/src/features/forms/input/models/klp_password_requirement.dart#L6) |
-| field <code>label</code> | public | <code>final String label</code> |  | [lib/src/features/forms/input/models/klp_password_requirement.dart:11](../../../../../../../lib/src/features/forms/input/models/klp_password_requirement.dart#L11) |
-| field <code>satisfied</code> | public | <code>final bool satisfied</code> |  | [lib/src/features/forms/input/models/klp_password_requirement.dart:12](../../../../../../../lib/src/features/forms/input/models/klp_password_requirement.dart#L12) |
+| constructor <code>KlpPasswordRequirement</code> | public | <code>const KlpPasswordRequirement({required this.label, required this.satisfied})</code> |  | [lib/src/features/forms/input/models/klp_password_requirement.dart:6](../../../../../../../lib/src/features/forms/input/models/klp_password_requirement.dart#L6) |
+| field <code>label</code> | public | <code>final String label</code> |  | [lib/src/features/forms/input/models/klp_password_requirement.dart:8](../../../../../../../lib/src/features/forms/input/models/klp_password_requirement.dart#L8) |
+| field <code>satisfied</code> | public | <code>final bool satisfied</code> |  | [lib/src/features/forms/input/models/klp_password_requirement.dart:9](../../../../../../../lib/src/features/forms/input/models/klp_password_requirement.dart#L9) |
 
 ## 閱讀說明與限制
 

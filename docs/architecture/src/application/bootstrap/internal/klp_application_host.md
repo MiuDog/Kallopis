@@ -54,9 +54,9 @@ ClassDeclaration · private · [lib/src/application/bootstrap/internal/klp_appli
 
 | 成員 | 可見性 | 簽章／型別 | 來源註解摘要 | 證據 |
 |---|---|---|---|---|
-| field <code>source</code> | public | <code>final KlpState&lt;KlpApplication&gt; source</code> |  | [lib/src/application/bootstrap/internal/klp_application_host.dart:6](../../../../../../lib/src/application/bootstrap/internal/klp_application_host.dart#L6) |
-| constructor <code>_KlpApplicationHost</code> | private | <code>const _KlpApplicationHost({required this.source})</code> |  | [lib/src/application/bootstrap/internal/klp_application_host.dart:8](../../../../../../lib/src/application/bootstrap/internal/klp_application_host.dart#L8) |
-| method <code>createState</code> | public | <code>State&lt;_KlpApplicationHost&gt; createState()</code> |  | [lib/src/application/bootstrap/internal/klp_application_host.dart:10](../../../../../../lib/src/application/bootstrap/internal/klp_application_host.dart#L10) |
+| field <code>source</code> | public | <code>final KlpState&lt;KlpApplication&gt; source</code> |  | [lib/src/application/bootstrap/internal/klp_application_host.dart:5](../../../../../../lib/src/application/bootstrap/internal/klp_application_host.dart#L5) |
+| constructor <code>_KlpApplicationHost</code> | private | <code>const _KlpApplicationHost({required this.source})</code> |  | [lib/src/application/bootstrap/internal/klp_application_host.dart:7](../../../../../../lib/src/application/bootstrap/internal/klp_application_host.dart#L7) |
+| method <code>createState</code> | public | <code>State&lt;_KlpApplicationHost&gt; createState()</code> |  | [lib/src/application/bootstrap/internal/klp_application_host.dart:9](../../../../../../lib/src/application/bootstrap/internal/klp_application_host.dart#L9) |
 
 ## 閱讀說明與限制
 

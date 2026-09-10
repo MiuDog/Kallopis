@@ -44,8 +44,8 @@ EnumDeclaration · public · [lib/src/foundation/interaction/klp_action_region_t
 
 | 成員 | 可見性 | 簽章／型別 | 來源註解摘要 | 證據 |
 |---|---|---|---|---|
-| enum value <code>neutral</code> | public | <code>neutral</code> |  | [lib/src/foundation/interaction/klp_action_region_tone.dart:3](../../../../../lib/src/foundation/interaction/klp_action_region_tone.dart#L3) |
-| enum value <code>destructive</code> | public | <code>destructive</code> |  | [lib/src/foundation/interaction/klp_action_region_tone.dart:4](../../../../../lib/src/foundation/interaction/klp_action_region_tone.dart#L4) |
+| enum value <code>neutral</code> | public | <code>neutral</code> |  | [lib/src/foundation/interaction/klp_action_region_tone.dart:2](../../../../../lib/src/foundation/interaction/klp_action_region_tone.dart#L2) |
+| enum value <code>destructive</code> | public | <code>destructive</code> |  | [lib/src/foundation/interaction/klp_action_region_tone.dart:2](../../../../../lib/src/foundation/interaction/klp_action_region_tone.dart#L2) |
 
 ## 閱讀說明與限制
 

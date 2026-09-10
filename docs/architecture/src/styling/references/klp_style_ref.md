@@ -61,8 +61,8 @@ ClassDeclaration · public · [lib/src/styling/references/klp_style_ref.dart:9](
 
 | 成員 | 可見性 | 簽章／型別 | 來源註解摘要 | 證據 |
 |---|---|---|---|---|
-| constructor <code>KlpStyleRef</code> | public | <code>const KlpStyleRef()</code> |  | [lib/src/styling/references/klp_style_ref.dart:12](../../../../../lib/src/styling/references/klp_style_ref.dart#L12) |
-| getter <code>kind</code> | public | <code>KlpStyleKind&lt;T&gt; get kind</code> |  | [lib/src/styling/references/klp_style_ref.dart:14](../../../../../lib/src/styling/references/klp_style_ref.dart#L14) |
+| constructor <code>KlpStyleRef</code> | public | <code>const KlpStyleRef()</code> |  | [lib/src/styling/references/klp_style_ref.dart:11](../../../../../lib/src/styling/references/klp_style_ref.dart#L11) |
+| getter <code>kind</code> | public | <code>KlpStyleKind&lt;T&gt; get kind</code> |  | [lib/src/styling/references/klp_style_ref.dart:13](../../../../../lib/src/styling/references/klp_style_ref.dart#L13) |
 
 ## 閱讀說明與限制
 

@@ -72,7 +72,7 @@ void main() {
                       Container(
                         height: 22,
                         padding: EdgeInsets.symmetric(
-													horizontal: klp.space.chromePanelInset,
+                          horizontal: klp.space.chromePanelInset,
                         ),
                         child: Row(
                           mainAxisSize: MainAxisSize.min,

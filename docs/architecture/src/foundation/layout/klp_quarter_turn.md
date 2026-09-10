@@ -44,9 +44,9 @@ EnumDeclaration · public · [lib/src/foundation/layout/klp_quarter_turn.dart:1]
 
 | 成員 | 可見性 | 簽章／型別 | 來源註解摘要 | 證據 |
 |---|---|---|---|---|
-| enum value <code>clockwise</code> | public | <code>clockwise</code> |  | [lib/src/foundation/layout/klp_quarter_turn.dart:3](../../../../../lib/src/foundation/layout/klp_quarter_turn.dart#L3) |
-| enum value <code>half</code> | public | <code>half</code> |  | [lib/src/foundation/layout/klp_quarter_turn.dart:4](../../../../../lib/src/foundation/layout/klp_quarter_turn.dart#L4) |
-| enum value <code>counterClockwise</code> | public | <code>counterClockwise</code> |  | [lib/src/foundation/layout/klp_quarter_turn.dart:5](../../../../../lib/src/foundation/layout/klp_quarter_turn.dart#L5) |
+| enum value <code>clockwise</code> | public | <code>clockwise</code> |  | [lib/src/foundation/layout/klp_quarter_turn.dart:2](../../../../../lib/src/foundation/layout/klp_quarter_turn.dart#L2) |
+| enum value <code>half</code> | public | <code>half</code> |  | [lib/src/foundation/layout/klp_quarter_turn.dart:2](../../../../../lib/src/foundation/layout/klp_quarter_turn.dart#L2) |
+| enum value <code>counterClockwise</code> | public | <code>counterClockwise</code> |  | [lib/src/foundation/layout/klp_quarter_turn.dart:2](../../../../../lib/src/foundation/layout/klp_quarter_turn.dart#L2) |
 
 ## 閱讀說明與限制
 

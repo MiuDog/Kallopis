@@ -12,9 +12,8 @@ part 'klp_children_template.dart';
 
 /// 元件定義期使用的封閉模板；不提供外部渲染或風格求值入口。
 sealed class KlpTemplate<T extends KlpNode> {
+  const KlpTemplate();
 
-	const KlpTemplate();
-
-	/// 泛型上轉不能取消模板自身的資料資格。
-	bool accepts(KlpNode node) => node is T;
+  /// 泛型上轉不能取消模板自身的資料資格。
+  bool accepts(KlpNode node) => node is T;
 }

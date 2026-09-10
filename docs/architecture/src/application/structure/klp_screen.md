@@ -63,14 +63,14 @@ ClassDeclaration · public · [lib/src/application/structure/klp_screen.dart:6](
 
 | 成員 | 可見性 | 簽章／型別 | 來源註解摘要 | 證據 |
 |---|---|---|---|---|
-| field <code>typeId</code> | public | <code>static const String typeId</code> |  | [lib/src/application/structure/klp_screen.dart:9](../../../../../lib/src/application/structure/klp_screen.dart#L9) |
-| field <code>bodySlot</code> | public | <code>static final (inferred) bodySlot</code> |  | [lib/src/application/structure/klp_screen.dart:10](../../../../../lib/src/application/structure/klp_screen.dart#L10) |
-| field <code>id</code> | public | <code>final String id</code> |  | [lib/src/application/structure/klp_screen.dart:13](../../../../../lib/src/application/structure/klp_screen.dart#L13) |
-| field <code>accessibilityLabel</code> | public | <code>final String accessibilityLabel</code> |  | [lib/src/application/structure/klp_screen.dart:14](../../../../../lib/src/application/structure/klp_screen.dart#L14) |
-| field <code>child</code> | public | <code>final KlpScreenBody child</code> |  | [lib/src/application/structure/klp_screen.dart:15](../../../../../lib/src/application/structure/klp_screen.dart#L15) |
-| field <code>children</code> | public | <code>final KlpChildren children</code> |  | [lib/src/application/structure/klp_screen.dart:17](../../../../../lib/src/application/structure/klp_screen.dart#L17) |
-| constructor <code>KlpScreen</code> | public | <code>KlpScreen({ required this.id, required this.accessibilityLabel, required this.child, })</code> |  | [lib/src/application/structure/klp_screen.dart:19](../../../../../lib/src/application/structure/klp_screen.dart#L19) |
-| getter <code>definitionId</code> | public | <code>String get definitionId</code> |  | [lib/src/application/structure/klp_screen.dart:33](../../../../../lib/src/application/structure/klp_screen.dart#L33) |
+| field <code>typeId</code> | public | <code>static const String typeId</code> |  | [lib/src/application/structure/klp_screen.dart:8](../../../../../lib/src/application/structure/klp_screen.dart#L8) |
+| field <code>bodySlot</code> | public | <code>static final (inferred) bodySlot</code> |  | [lib/src/application/structure/klp_screen.dart:9](../../../../../lib/src/application/structure/klp_screen.dart#L9) |
+| field <code>id</code> | public | <code>final String id</code> |  | [lib/src/application/structure/klp_screen.dart:17](../../../../../lib/src/application/structure/klp_screen.dart#L17) |
+| field <code>accessibilityLabel</code> | public | <code>final String accessibilityLabel</code> |  | [lib/src/application/structure/klp_screen.dart:18](../../../../../lib/src/application/structure/klp_screen.dart#L18) |
+| field <code>child</code> | public | <code>final KlpScreenBody child</code> |  | [lib/src/application/structure/klp_screen.dart:19](../../../../../lib/src/application/structure/klp_screen.dart#L19) |
+| field <code>children</code> | public | <code>final KlpChildren children</code> |  | [lib/src/application/structure/klp_screen.dart:21](../../../../../lib/src/application/structure/klp_screen.dart#L21) |
+| constructor <code>KlpScreen</code> | public | <code>KlpScreen({ required this.id, required this.accessibilityLabel, required this.child, })</code> |  | [lib/src/application/structure/klp_screen.dart:23](../../../../../lib/src/application/structure/klp_screen.dart#L23) |
+| getter <code>definitionId</code> | public | <code>String get definitionId</code> |  | [lib/src/application/structure/klp_screen.dart:39](../../../../../lib/src/application/structure/klp_screen.dart#L39) |
 
 ## 閱讀說明與限制
 

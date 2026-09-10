@@ -54,10 +54,10 @@ ClassDeclaration · public · [lib/src/foundation/layout/klp_expanded.dart:3](..
 
 | 成員 | 可見性 | 簽章／型別 | 來源註解摘要 | 證據 |
 |---|---|---|---|---|
-| constructor <code>KlpExpanded</code> | public | <code>const KlpExpanded({ super.key, this.flex = 1, required this.child, })</code> |  | [lib/src/foundation/layout/klp_expanded.dart:5](../../../../../lib/src/foundation/layout/klp_expanded.dart#L5) |
-| field <code>flex</code> | public | <code>final int flex</code> |  | [lib/src/foundation/layout/klp_expanded.dart:11](../../../../../lib/src/foundation/layout/klp_expanded.dart#L11) |
-| field <code>child</code> | public | <code>final Widget child</code> |  | [lib/src/foundation/layout/klp_expanded.dart:12](../../../../../lib/src/foundation/layout/klp_expanded.dart#L12) |
-| method <code>build</code> | public | <code>Widget build(BuildContext context)</code> |  | [lib/src/foundation/layout/klp_expanded.dart:14](../../../../../lib/src/foundation/layout/klp_expanded.dart#L14) |
+| constructor <code>KlpExpanded</code> | public | <code>const KlpExpanded({super.key, this.flex = 1, required this.child})</code> |  | [lib/src/foundation/layout/klp_expanded.dart:5](../../../../../lib/src/foundation/layout/klp_expanded.dart#L5) |
+| field <code>flex</code> | public | <code>final int flex</code> |  | [lib/src/foundation/layout/klp_expanded.dart:7](../../../../../lib/src/foundation/layout/klp_expanded.dart#L7) |
+| field <code>child</code> | public | <code>final Widget child</code> |  | [lib/src/foundation/layout/klp_expanded.dart:8](../../../../../lib/src/foundation/layout/klp_expanded.dart#L8) |
+| method <code>build</code> | public | <code>Widget build(BuildContext context)</code> |  | [lib/src/foundation/layout/klp_expanded.dart:10](../../../../../lib/src/foundation/layout/klp_expanded.dart#L10) |
 
 ## 閱讀說明與限制
 

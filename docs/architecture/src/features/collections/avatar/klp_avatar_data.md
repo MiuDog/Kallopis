@@ -46,10 +46,10 @@ ClassDeclaration · public · [lib/src/features/collections/avatar/klp_avatar_da
 
 | 成員 | 可見性 | 簽章／型別 | 來源註解摘要 | 證據 |
 |---|---|---|---|---|
-| constructor <code>KlpAvatarData</code> | public | <code>const KlpAvatarData({ required this.id, required this.label, this.image, })</code> |  | [lib/src/features/collections/avatar/klp_avatar_data.dart:6](../../../../../../lib/src/features/collections/avatar/klp_avatar_data.dart#L6) |
-| field <code>id</code> | public | <code>final String id</code> |  | [lib/src/features/collections/avatar/klp_avatar_data.dart:12](../../../../../../lib/src/features/collections/avatar/klp_avatar_data.dart#L12) |
-| field <code>label</code> | public | <code>final String label</code> |  | [lib/src/features/collections/avatar/klp_avatar_data.dart:13](../../../../../../lib/src/features/collections/avatar/klp_avatar_data.dart#L13) |
-| field <code>image</code> | public | <code>final ImageProvider? image</code> |  | [lib/src/features/collections/avatar/klp_avatar_data.dart:14](../../../../../../lib/src/features/collections/avatar/klp_avatar_data.dart#L14) |
+| constructor <code>KlpAvatarData</code> | public | <code>const KlpAvatarData({required this.id, required this.label, this.image})</code> |  | [lib/src/features/collections/avatar/klp_avatar_data.dart:6](../../../../../../lib/src/features/collections/avatar/klp_avatar_data.dart#L6) |
+| field <code>id</code> | public | <code>final String id</code> |  | [lib/src/features/collections/avatar/klp_avatar_data.dart:8](../../../../../../lib/src/features/collections/avatar/klp_avatar_data.dart#L8) |
+| field <code>label</code> | public | <code>final String label</code> |  | [lib/src/features/collections/avatar/klp_avatar_data.dart:9](../../../../../../lib/src/features/collections/avatar/klp_avatar_data.dart#L9) |
+| field <code>image</code> | public | <code>final ImageProvider? image</code> |  | [lib/src/features/collections/avatar/klp_avatar_data.dart:10](../../../../../../lib/src/features/collections/avatar/klp_avatar_data.dart#L10) |
 
 ## 閱讀說明與限制
 

@@ -60,10 +60,10 @@ ClassDeclaration · public · [lib/src/features/overlays/primitives/klp_modal_fr
 
 | 成員 | 可見性 | 簽章／型別 | 來源註解摘要 | 證據 |
 |---|---|---|---|---|
-| constructor <code>KlpModalFrame</code> | public | <code>const KlpModalFrame({ super.key, required this.insets, required this.child, })</code> |  | [lib/src/features/overlays/primitives/klp_modal_frame.dart:8](../../../../../../lib/src/features/overlays/primitives/klp_modal_frame.dart#L8) |
-| field <code>insets</code> | public | <code>final KlpBoxInsets insets</code> |  | [lib/src/features/overlays/primitives/klp_modal_frame.dart:14](../../../../../../lib/src/features/overlays/primitives/klp_modal_frame.dart#L14) |
-| field <code>child</code> | public | <code>final Widget child</code> |  | [lib/src/features/overlays/primitives/klp_modal_frame.dart:15](../../../../../../lib/src/features/overlays/primitives/klp_modal_frame.dart#L15) |
-| method <code>build</code> | public | <code>Widget build(BuildContext context)</code> |  | [lib/src/features/overlays/primitives/klp_modal_frame.dart:17](../../../../../../lib/src/features/overlays/primitives/klp_modal_frame.dart#L17) |
+| constructor <code>KlpModalFrame</code> | public | <code>const KlpModalFrame({super.key, required this.insets, required this.child})</code> |  | [lib/src/features/overlays/primitives/klp_modal_frame.dart:8](../../../../../../lib/src/features/overlays/primitives/klp_modal_frame.dart#L8) |
+| field <code>insets</code> | public | <code>final KlpBoxInsets insets</code> |  | [lib/src/features/overlays/primitives/klp_modal_frame.dart:10](../../../../../../lib/src/features/overlays/primitives/klp_modal_frame.dart#L10) |
+| field <code>child</code> | public | <code>final Widget child</code> |  | [lib/src/features/overlays/primitives/klp_modal_frame.dart:11](../../../../../../lib/src/features/overlays/primitives/klp_modal_frame.dart#L11) |
+| method <code>build</code> | public | <code>Widget build(BuildContext context)</code> |  | [lib/src/features/overlays/primitives/klp_modal_frame.dart:13](../../../../../../lib/src/features/overlays/primitives/klp_modal_frame.dart#L13) |
 
 ## 閱讀說明與限制
 

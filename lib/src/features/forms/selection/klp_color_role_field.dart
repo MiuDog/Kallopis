@@ -8,31 +8,31 @@ import 'klp_select_field.dart';
 /// [roles] 直接複用 [KlpChoiceOption]，實際渲染完全委派給 [KlpSelectField]。
 /// 找不到 [selectedId] 對應的角色時會退回顯示 [roles] 的第一項。
 class KlpColorRoleField extends StatelessWidget {
-	const KlpColorRoleField({
-		super.key,
-		required this.label,
-		required this.roles,
-		required this.selectedId,
-		required this.onSelected,
-	});
+  const KlpColorRoleField({
+    super.key,
+    required this.label,
+    required this.roles,
+    required this.selectedId,
+    required this.onSelected,
+  });
 
-	final String label;
-	final List<KlpChoiceOption> roles;
-	final String selectedId;
-	final ValueChanged<String>? onSelected;
+  final String label;
+  final List<KlpChoiceOption> roles;
+  final String selectedId;
+  final ValueChanged<String>? onSelected;
 
-	@override
-	Widget build(BuildContext context) {
-		return KlpSelectField(
-			label: label,
-			valueLabel: roles
-					.firstWhere(
-						(role) => role.id == selectedId,
-						orElse: () => roles.first,
-					)
-					.label,
-			options: roles,
-			onSelected: onSelected,
-		);
-	}
+  @override
+  Widget build(BuildContext context) {
+    return KlpSelectField(
+      label: label,
+      valueLabel: roles
+          .firstWhere(
+            (role) => role.id == selectedId,
+            orElse: () => roles.first,
+          )
+          .label,
+      options: roles,
+      onSelected: onSelected,
+    );
+  }
 }

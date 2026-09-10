@@ -54,11 +54,11 @@ ClassDeclaration · public · [lib/src/foundation/binding/internal/klp_bound_sur
 
 | 成員 | 可見性 | 簽章／型別 | 來源註解摘要 | 證據 |
 |---|---|---|---|---|
-| field <code>background</code> | public | <code>final KlpColor background</code> |  | [lib/src/foundation/binding/internal/klp_bound_surface.dart:6](../../../../../../lib/src/foundation/binding/internal/klp_bound_surface.dart#L6) |
-| field <code>radius</code> | public | <code>final KlpRadius radius</code> |  | [lib/src/foundation/binding/internal/klp_bound_surface.dart:7](../../../../../../lib/src/foundation/binding/internal/klp_bound_surface.dart#L7) |
-| field <code>inset</code> | public | <code>final KlpDistance inset</code> |  | [lib/src/foundation/binding/internal/klp_bound_surface.dart:8](../../../../../../lib/src/foundation/binding/internal/klp_bound_surface.dart#L8) |
-| field <code>child</code> | public | <code>final KlpBoundTemplate child</code> |  | [lib/src/foundation/binding/internal/klp_bound_surface.dart:9](../../../../../../lib/src/foundation/binding/internal/klp_bound_surface.dart#L9) |
-| constructor <code>KlpBoundSurface</code> | public | <code>const KlpBoundSurface({ required this.background, required this.radius, required this.inset, required this.child, })</code> |  | [lib/src/foundation/binding/internal/klp_bound_surface.dart:11](../../../../../../lib/src/foundation/binding/internal/klp_bound_surface.dart#L11) |
+| field <code>background</code> | public | <code>final KlpColor background</code> |  | [lib/src/foundation/binding/internal/klp_bound_surface.dart:5](../../../../../../lib/src/foundation/binding/internal/klp_bound_surface.dart#L5) |
+| field <code>radius</code> | public | <code>final KlpRadius radius</code> |  | [lib/src/foundation/binding/internal/klp_bound_surface.dart:6](../../../../../../lib/src/foundation/binding/internal/klp_bound_surface.dart#L6) |
+| field <code>inset</code> | public | <code>final KlpDistance inset</code> |  | [lib/src/foundation/binding/internal/klp_bound_surface.dart:7](../../../../../../lib/src/foundation/binding/internal/klp_bound_surface.dart#L7) |
+| field <code>child</code> | public | <code>final KlpBoundTemplate child</code> |  | [lib/src/foundation/binding/internal/klp_bound_surface.dart:8](../../../../../../lib/src/foundation/binding/internal/klp_bound_surface.dart#L8) |
+| constructor <code>KlpBoundSurface</code> | public | <code>const KlpBoundSurface({ required this.background, required this.radius, required this.inset, required this.child, })</code> |  | [lib/src/foundation/binding/internal/klp_bound_surface.dart:10](../../../../../../lib/src/foundation/binding/internal/klp_bound_surface.dart#L10) |
 
 ## 閱讀說明與限制
 

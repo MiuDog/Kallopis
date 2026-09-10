@@ -13,39 +13,48 @@ import 'klp_prepared_node.dart';
 
 /// 外部元件一律由受限模板展開，不能註冊自訂 runtime 或 renderer。
 final class KlpComponentAdapter implements KlpNodeAdapter {
+  @override
+  final KlpDefinition<KlpNode> contract;
 
-	@override
-	final KlpDefinition<KlpNode> contract;
+  KlpComponentAdapter(KlpComponentDefinition<KlpNode> definition)
+    : contract = definition.contract;
 
-	KlpComponentAdapter(KlpComponentDefinition<KlpNode> definition) : contract = definition.contract;
-
-	@override
-	KlpPreparedNode prepare(KlpNode node, KlpValidatedNode snapshot, KlpPrepareContext context) {
-		final prepared = context.components.prepareCaptured(node, snapshot, context.primitives, resolved: context.style);
-		return _PreparedComponent(prepared);
-	}
+  @override
+  KlpPreparedNode prepare(
+    KlpNode node,
+    KlpValidatedNode snapshot,
+    KlpPrepareContext context,
+  ) {
+    final prepared = context.components.prepareCaptured(
+      node,
+      snapshot,
+      context.primitives,
+      resolved: context.style,
+    );
+    return _PreparedComponent(prepared);
+  }
 }
 
 final class _PreparedComponent implements KlpPreparedNode {
+  final KlpPreparedComponent component;
 
-	final KlpPreparedComponent component;
+  const _PreparedComponent(this.component);
 
-	const _PreparedComponent(this.component);
+  @override
+  KlpPlacementResource createResource(KlpValidatedNode node) =>
+      KlpDefaultPlacement(node);
 
-	@override
-	KlpPlacementResource createResource(KlpValidatedNode node) => KlpDefaultPlacement(node);
-
-	@override
-	KlpBoundTemplate materialize(
-		KlpPlacementResource resource,
-		List<KlpBoundTemplate> children,
-		KlpFrameLease lease,
-	) {
-		final bound = component.materialize(children);
-		final label = bound.accessibilityLabel;
-		if (label == null) {
-			return bound.content;
-		}
-		return KlpBoundAccessibility(label: label, child: bound.content);
-	}
+  @override
+  KlpBoundTemplate materialize(
+    KlpPlacementResource resource,
+    List<KlpBoundTemplate> children,
+    KlpFrameLease lease,
+  ) {
+    final bound = component.materialize(children);
+    final label = bound.accessibilityLabel;
+    if (label == null) {
+      return bound.content;
+    }
+    return KlpBoundAccessibility(label: label, child: bound.content);
+  }
 }

@@ -61,13 +61,13 @@ ClassDeclaration · public · [lib/src/composition/registry/klp_registry.dart:8]
 
 | 成員 | 可見性 | 簽章／型別 | 來源註解摘要 | 證據 |
 |---|---|---|---|---|
-| field <code>definitions</code> | public | <code>final List&lt;KlpDefinition&lt;KlpNode&gt;&gt; definitions</code> |  | [lib/src/composition/registry/klp_registry.dart:11](../../../../../lib/src/composition/registry/klp_registry.dart#L11) |
-| field <code>_byId</code> | private | <code>final Map&lt;String, KlpDefinition&lt;KlpNode&gt;&gt; _byId</code> |  | [lib/src/composition/registry/klp_registry.dart:12](../../../../../lib/src/composition/registry/klp_registry.dart#L12) |
-| constructor <code>KlpRegistry</code> | public | <code>KlpRegistry(Iterable&lt;KlpDefinition&lt;KlpNode&gt;&gt; definitions)</code> |  | [lib/src/composition/registry/klp_registry.dart:14](../../../../../lib/src/composition/registry/klp_registry.dart#L14) |
-| method <code>definition</code> | public | <code>KlpDefinition&lt;KlpNode&gt; definition(String id)</code> |  | [lib/src/composition/registry/klp_registry.dart:31](../../../../../lib/src/composition/registry/klp_registry.dart#L31) |
-| method <code>validate</code> | public | <code>KlpTreeValidation validate(KlpNode root)</code> |  | [lib/src/composition/registry/klp_registry.dart:39](../../../../../lib/src/composition/registry/klp_registry.dart#L39) |
-| method <code>_validateDependencies</code> | private | <code>void _validateDependencies(String id, Set&lt;String&gt; active, Set&lt;String&gt; complete)</code> |  | [lib/src/composition/registry/klp_registry.dart:41](../../../../../lib/src/composition/registry/klp_registry.dart#L41) |
-| method <code>_requireId</code> | private | <code>void _requireId(String id)</code> |  | [lib/src/composition/registry/klp_registry.dart:54](../../../../../lib/src/composition/registry/klp_registry.dart#L54) |
+| field <code>definitions</code> | public | <code>final List&lt;KlpDefinition&lt;KlpNode&gt;&gt; definitions</code> |  | [lib/src/composition/registry/klp_registry.dart:10](../../../../../lib/src/composition/registry/klp_registry.dart#L10) |
+| field <code>_byId</code> | private | <code>final Map&lt;String, KlpDefinition&lt;KlpNode&gt;&gt; _byId</code> |  | [lib/src/composition/registry/klp_registry.dart:11](../../../../../lib/src/composition/registry/klp_registry.dart#L11) |
+| constructor <code>KlpRegistry</code> | public | <code>KlpRegistry(Iterable&lt;KlpDefinition&lt;KlpNode&gt;&gt; definitions)</code> |  | [lib/src/composition/registry/klp_registry.dart:13](../../../../../lib/src/composition/registry/klp_registry.dart#L13) |
+| method <code>definition</code> | public | <code>KlpDefinition&lt;KlpNode&gt; definition(String id)</code> |  | [lib/src/composition/registry/klp_registry.dart:33](../../../../../lib/src/composition/registry/klp_registry.dart#L33) |
+| method <code>validate</code> | public | <code>KlpTreeValidation validate(KlpNode root)</code> |  | [lib/src/composition/registry/klp_registry.dart:41](../../../../../lib/src/composition/registry/klp_registry.dart#L41) |
+| method <code>_validateDependencies</code> | private | <code>void _validateDependencies( String id, Set&lt;String&gt; active, Set&lt;String&gt; complete, )</code> |  | [lib/src/composition/registry/klp_registry.dart:44](../../../../../lib/src/composition/registry/klp_registry.dart#L44) |
+| method <code>_requireId</code> | private | <code>void _requireId(String id)</code> |  | [lib/src/composition/registry/klp_registry.dart:61](../../../../../lib/src/composition/registry/klp_registry.dart#L61) |
 
 ## 閱讀說明與限制
 

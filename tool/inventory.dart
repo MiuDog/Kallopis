@@ -23,7 +23,7 @@ const categoryOrder = <String>[
   'layout',
   'overlay',
   'controls',
-	'components',
+  'components',
   'data',
   'form',
   'feedback',
@@ -31,7 +31,7 @@ const categoryOrder = <String>[
   'editor',
   'routing',
   'shell',
-	'note',
+  'note',
   'settings',
   'app',
 ];
@@ -45,7 +45,7 @@ const categoryLabel = <String, String>{
   'layout': 'layout — 版面原語',
   'interaction': 'interaction — 互動',
   'controls': 'controls — 控制項',
-	'components': 'components — 無產品語意通用組裝',
+  'components': 'components — 無產品語意通用組裝',
   'form': 'form — 表單',
   'data': 'data — 資料呈現',
   'feedback': 'feedback — 狀態與回饋',
@@ -53,7 +53,7 @@ const categoryLabel = <String, String>{
   'navigation': 'navigation — 導覽元件',
   'editor': 'editor — 編輯器周邊',
   'shell': 'shell — 應用外殼',
-	'note': 'note — 筆記視覺組合',
+  'note': 'note — 筆記視覺組合',
   'settings': 'settings — 設定呈現',
   'routing': 'routing — 分發',
   'app': 'app — 接入層',
@@ -84,7 +84,7 @@ String generateInventory() {
           .listSync(recursive: true)
           .whereType<File>()
           .where((f) => f.path.endsWith('.dart'))
-		  .where((f) => !f.path.replaceAll(r'\', '/').contains('/internal/'))
+          .where((f) => !f.path.replaceAll(r'\', '/').contains('/internal/'))
           .map((f) => f.path.replaceAll(r'\', '/'))
           .toList()
         ..sort();

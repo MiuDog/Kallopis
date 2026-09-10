@@ -44,12 +44,12 @@ ClassDeclaration · public · [lib/src/kernel/identity/klp_placement_id.dart:1](
 
 | 成員 | 可見性 | 簽章／型別 | 來源註解摘要 | 證據 |
 |---|---|---|---|---|
-| field <code>scope</code> | public | <code>final List&lt;String&gt; scope</code> |  | [lib/src/kernel/identity/klp_placement_id.dart:4](../../../../../lib/src/kernel/identity/klp_placement_id.dart#L4) |
-| field <code>localId</code> | public | <code>final String localId</code> |  | [lib/src/kernel/identity/klp_placement_id.dart:5](../../../../../lib/src/kernel/identity/klp_placement_id.dart#L5) |
-| constructor <code>KlpPlacementId</code> | public | <code>KlpPlacementId({List&lt;String&gt; scope = const [], required this.localId})</code> |  | [lib/src/kernel/identity/klp_placement_id.dart:7](../../../../../lib/src/kernel/identity/klp_placement_id.dart#L7) |
+| field <code>scope</code> | public | <code>final List&lt;String&gt; scope</code> |  | [lib/src/kernel/identity/klp_placement_id.dart:3](../../../../../lib/src/kernel/identity/klp_placement_id.dart#L3) |
+| field <code>localId</code> | public | <code>final String localId</code> |  | [lib/src/kernel/identity/klp_placement_id.dart:4](../../../../../lib/src/kernel/identity/klp_placement_id.dart#L4) |
+| constructor <code>KlpPlacementId</code> | public | <code>KlpPlacementId({List&lt;String&gt; scope = const [], required this.localId})</code> |  | [lib/src/kernel/identity/klp_placement_id.dart:6](../../../../../lib/src/kernel/identity/klp_placement_id.dart#L6) |
 | method <code>==</code> | public | <code>bool operator ==(Object other)</code> |  | [lib/src/kernel/identity/klp_placement_id.dart:9](../../../../../lib/src/kernel/identity/klp_placement_id.dart#L9) |
-| getter <code>hashCode</code> | public | <code>int get hashCode</code> |  | [lib/src/kernel/identity/klp_placement_id.dart:19](../../../../../lib/src/kernel/identity/klp_placement_id.dart#L19) |
-| method <code>toString</code> | public | <code>String toString()</code> |  | [lib/src/kernel/identity/klp_placement_id.dart:22](../../../../../lib/src/kernel/identity/klp_placement_id.dart#L22) |
+| getter <code>hashCode</code> | public | <code>int get hashCode</code> |  | [lib/src/kernel/identity/klp_placement_id.dart:23](../../../../../lib/src/kernel/identity/klp_placement_id.dart#L23) |
+| method <code>toString</code> | public | <code>String toString()</code> |  | [lib/src/kernel/identity/klp_placement_id.dart:26](../../../../../lib/src/kernel/identity/klp_placement_id.dart#L26) |
 
 ## 閱讀說明與限制
 

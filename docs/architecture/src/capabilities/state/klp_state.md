@@ -46,8 +46,8 @@ ClassDeclaration · public · [lib/src/capabilities/state/klp_state.dart:3](../.
 
 | 成員 | 可見性 | 簽章／型別 | 來源註解摘要 | 證據 |
 |---|---|---|---|---|
-| getter <code>value</code> | public | <code>T get value</code> |  | [lib/src/capabilities/state/klp_state.dart:8](../../../../../lib/src/capabilities/state/klp_state.dart#L8) |
-| method <code>subscribe</code> | public | <code>KlpSubscription subscribe(void Function(T value) listener)</code> |  | [lib/src/capabilities/state/klp_state.dart:10](../../../../../lib/src/capabilities/state/klp_state.dart#L10) |
+| getter <code>value</code> | public | <code>T get value</code> |  | [lib/src/capabilities/state/klp_state.dart:7](../../../../../lib/src/capabilities/state/klp_state.dart#L7) |
+| method <code>subscribe</code> | public | <code>KlpSubscription subscribe(void Function(T value) listener)</code> |  | [lib/src/capabilities/state/klp_state.dart:9](../../../../../lib/src/capabilities/state/klp_state.dart#L9) |
 
 ## 閱讀說明與限制
 

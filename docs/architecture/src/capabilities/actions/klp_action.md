@@ -62,8 +62,8 @@ ClassDeclaration · public · [lib/src/capabilities/actions/klp_action.dart:4](.
 
 | 成員 | 可見性 | 簽章／型別 | 來源註解摘要 | 證據 |
 |---|---|---|---|---|
-| field <code>callback</code> | public | <code>final void Function() callback</code> |  | [lib/src/capabilities/actions/klp_action.dart:7](../../../../../lib/src/capabilities/actions/klp_action.dart#L7) |
-| constructor <code>KlpCallbackAction</code> | public | <code>const KlpCallbackAction(this.callback)</code> |  | [lib/src/capabilities/actions/klp_action.dart:9](../../../../../lib/src/capabilities/actions/klp_action.dart#L9) |
+| field <code>callback</code> | public | <code>final void Function() callback</code> |  | [lib/src/capabilities/actions/klp_action.dart:6](../../../../../lib/src/capabilities/actions/klp_action.dart#L6) |
+| constructor <code>KlpCallbackAction</code> | public | <code>const KlpCallbackAction(this.callback)</code> |  | [lib/src/capabilities/actions/klp_action.dart:8](../../../../../lib/src/capabilities/actions/klp_action.dart#L8) |
 
 ## 閱讀說明與限制
 

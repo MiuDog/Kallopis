@@ -7,51 +7,51 @@ import '../internal/klp_form_dependencies.dart';
 /// 不會反查欄位在畫面上的位置——[KlpForm] 之類的容器也不知道每個欄位的
 /// GlobalKey，捲動與聚焦的實作留給呼叫端。
 class KlpFormErrorSummary extends StatelessWidget {
-	const KlpFormErrorSummary({
-		super.key,
-		required this.title,
-		required this.errors,
-		this.onSelected,
-	});
+  const KlpFormErrorSummary({
+    super.key,
+    required this.title,
+    required this.errors,
+    this.onSelected,
+  });
 
-	final String title;
-	final Map<String, String> errors;
-	final ValueChanged<String>? onSelected;
+  final String title;
+  final Map<String, String> errors;
+  final ValueChanged<String>? onSelected;
 
-	@override
-	Widget build(BuildContext context) {
-		return KlpSurface(
-			tone: KlpSurfaceTone.component,
-			child: KlpBox(
-				paddingSize: KlpSpaceSize.base,
-				child: KlpColumn(
-					crossAxisAlignment: CrossAxisAlignment.stretch,
-					children: [
-						KlpText(
-							title,
-							role: KlpTextRole.bodyStrong,
-							tone: KlpTextTone.danger,
-						),
-						const KlpGap.heightSize(KlpSpaceSize.tight),
-						for (final error in errors.entries)
-							KlpGestureRegion(
-								behavior: HitTestBehavior.opaque,
-								onTap: onSelected == null ? null : () => onSelected!(error.key),
-								child: KlpBox(
-									insets: KlpBoxInsets.directional(
-										top: context.klp.space.tight,
-										bottom: context.klp.space.tight,
-									),
-									child: KlpText(
-										error.value,
-										role: KlpTextRole.caption,
-										tone: KlpTextTone.danger,
-									),
-								),
-							),
-					],
-				),
-			),
-		);
-	}
+  @override
+  Widget build(BuildContext context) {
+    return KlpSurface(
+      tone: KlpSurfaceTone.component,
+      child: KlpBox(
+        paddingSize: KlpSpaceSize.base,
+        child: KlpColumn(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            KlpText(
+              title,
+              role: KlpTextRole.bodyStrong,
+              tone: KlpTextTone.danger,
+            ),
+            const KlpGap.heightSize(KlpSpaceSize.tight),
+            for (final error in errors.entries)
+              KlpGestureRegion(
+                behavior: HitTestBehavior.opaque,
+                onTap: onSelected == null ? null : () => onSelected!(error.key),
+                child: KlpBox(
+                  insets: KlpBoxInsets.directional(
+                    top: context.klp.space.tight,
+                    bottom: context.klp.space.tight,
+                  ),
+                  child: KlpText(
+                    error.value,
+                    role: KlpTextRole.caption,
+                    tone: KlpTextTone.danger,
+                  ),
+                ),
+              ),
+          ],
+        ),
+      ),
+    );
+  }
 }

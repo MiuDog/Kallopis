@@ -80,32 +80,32 @@ ClassDeclaration · public · [lib/src/application/routing/klp_route_input.dart:
 
 | 成員 | 可見性 | 簽章／型別 | 來源註解摘要 | 證據 |
 |---|---|---|---|---|
-| field <code>parameters</code> | public | <code>final P parameters</code> |  | [lib/src/application/routing/klp_route_input.dart:6](../../../../../lib/src/application/routing/klp_route_input.dart#L6) |
-| field <code>_actions</code> | private | <code>final _KlpRouteActions _actions</code> |  | [lib/src/application/routing/klp_route_input.dart:7](../../../../../lib/src/application/routing/klp_route_input.dart#L7) |
-| constructor <code>_</code> | private | <code>const KlpRouteInput._(this.parameters, this._actions)</code> |  | [lib/src/application/routing/klp_route_input.dart:9](../../../../../lib/src/application/routing/klp_route_input.dart#L9) |
-| method <code>navigate</code> | public | <code>KlpAction navigate&lt;T&gt;(KlpLocation&lt;T&gt; location, {void Function(T value)? onResult})</code> | 建立受目前 entry 綁定的導覽宣告；只有安裝後的本庫 handler 能派送它。 | [lib/src/application/routing/klp_route_input.dart:11](../../../../../lib/src/application/routing/klp_route_input.dart#L11) |
-| method <code>finish</code> | public | <code>KlpAction finish(R result)</code> | 建立目前 route 的完成宣告；結果型別維持 route 宣告的 R。 | [lib/src/application/routing/klp_route_input.dart:14](../../../../../lib/src/application/routing/klp_route_input.dart#L14) |
-| method <code>back</code> | public | <code>KlpAction back()</code> | 建立目前 route 的返回宣告；根畫面會由導覽核心拒絕。 | [lib/src/application/routing/klp_route_input.dart:17](../../../../../lib/src/application/routing/klp_route_input.dart#L17) |
+| field <code>parameters</code> | public | <code>final P parameters</code> |  | [lib/src/application/routing/klp_route_input.dart:5](../../../../../lib/src/application/routing/klp_route_input.dart#L5) |
+| field <code>_actions</code> | private | <code>final _KlpRouteActions _actions</code> |  | [lib/src/application/routing/klp_route_input.dart:6](../../../../../lib/src/application/routing/klp_route_input.dart#L6) |
+| constructor <code>_</code> | private | <code>const KlpRouteInput._(this.parameters, this._actions)</code> |  | [lib/src/application/routing/klp_route_input.dart:8](../../../../../lib/src/application/routing/klp_route_input.dart#L8) |
+| method <code>navigate</code> | public | <code>KlpAction navigate&lt;T&gt;( KlpLocation&lt;T&gt; location, { void Function(T value)? onResult, })</code> | 建立受目前 entry 綁定的導覽宣告；只有安裝後的本庫 handler 能派送它。 | [lib/src/application/routing/klp_route_input.dart:10](../../../../../lib/src/application/routing/klp_route_input.dart#L10) |
+| method <code>finish</code> | public | <code>KlpAction finish(R result)</code> | 建立目前 route 的完成宣告；結果型別維持 route 宣告的 R。 | [lib/src/application/routing/klp_route_input.dart:16](../../../../../lib/src/application/routing/klp_route_input.dart#L16) |
+| method <code>back</code> | public | <code>KlpAction back()</code> | 建立目前 route 的返回宣告；根畫面會由導覽核心拒絕。 | [lib/src/application/routing/klp_route_input.dart:19](../../../../../lib/src/application/routing/klp_route_input.dart#L19) |
 
 ### _KlpRouteAction
 
-ClassDeclaration · private · [lib/src/application/routing/klp_route_input.dart:21](../../../../../lib/src/application/routing/klp_route_input.dart#L21)
+ClassDeclaration · private · [lib/src/application/routing/klp_route_input.dart:23](../../../../../lib/src/application/routing/klp_route_input.dart#L23)
 
 <code>abstract interface class _KlpRouteAction implements KlpAction</code>
 
-- `implements` → <code>KlpAction</code>：[lib/src/application/routing/klp_route_input.dart:21](../../../../../lib/src/application/routing/klp_route_input.dart#L21)
+- `implements` → <code>KlpAction</code>：[lib/src/application/routing/klp_route_input.dart:23](../../../../../lib/src/application/routing/klp_route_input.dart#L23)
 
 | 成員 | 可見性 | 簽章／型別 | 來源註解摘要 | 證據 |
 |---|---|---|---|---|
-| method <code>activate</code> | public | <code>Future&lt;KlpActionActivation&gt; activate(_KlpApplicationActionHandler handler)</code> |  | [lib/src/application/routing/klp_route_input.dart:23](../../../../../lib/src/application/routing/klp_route_input.dart#L23) |
+| method <code>activate</code> | public | <code>Future&lt;KlpActionActivation&gt; activate(_KlpApplicationActionHandler handler)</code> |  | [lib/src/application/routing/klp_route_input.dart:24](../../../../../lib/src/application/routing/klp_route_input.dart#L24) |
 
 ### _KlpPushAction
 
-ClassDeclaration · private · [lib/src/application/routing/klp_route_input.dart:26](../../../../../lib/src/application/routing/klp_route_input.dart#L26)
+ClassDeclaration · private · [lib/src/application/routing/klp_route_input.dart:27](../../../../../lib/src/application/routing/klp_route_input.dart#L27)
 
 <code>final class _KlpPushAction&lt;T&gt; implements _KlpRouteAction</code>
 
-- `implements` → <code>_KlpRouteAction</code>：[lib/src/application/routing/klp_route_input.dart:26](../../../../../lib/src/application/routing/klp_route_input.dart#L26)
+- `implements` → <code>_KlpRouteAction</code>：[lib/src/application/routing/klp_route_input.dart:27](../../../../../lib/src/application/routing/klp_route_input.dart#L27)
 
 | 成員 | 可見性 | 簽章／型別 | 來源註解摘要 | 證據 |
 |---|---|---|---|---|
@@ -117,11 +117,11 @@ ClassDeclaration · private · [lib/src/application/routing/klp_route_input.dart
 
 ### _KlpFinishAction
 
-ClassDeclaration · private · [lib/src/application/routing/klp_route_input.dart:38](../../../../../lib/src/application/routing/klp_route_input.dart#L38)
+ClassDeclaration · private · [lib/src/application/routing/klp_route_input.dart:39](../../../../../lib/src/application/routing/klp_route_input.dart#L39)
 
 <code>final class _KlpFinishAction implements _KlpRouteAction</code>
 
-- `implements` → <code>_KlpRouteAction</code>：[lib/src/application/routing/klp_route_input.dart:38](../../../../../lib/src/application/routing/klp_route_input.dart#L38)
+- `implements` → <code>_KlpRouteAction</code>：[lib/src/application/routing/klp_route_input.dart:39](../../../../../lib/src/application/routing/klp_route_input.dart#L39)
 
 | 成員 | 可見性 | 簽章／型別 | 來源註解摘要 | 證據 |
 |---|---|---|---|---|
@@ -132,11 +132,11 @@ ClassDeclaration · private · [lib/src/application/routing/klp_route_input.dart
 
 ### _KlpBackAction
 
-ClassDeclaration · private · [lib/src/application/routing/klp_route_input.dart:49](../../../../../lib/src/application/routing/klp_route_input.dart#L49)
+ClassDeclaration · private · [lib/src/application/routing/klp_route_input.dart:50](../../../../../lib/src/application/routing/klp_route_input.dart#L50)
 
 <code>final class _KlpBackAction implements _KlpRouteAction</code>
 
-- `implements` → <code>_KlpRouteAction</code>：[lib/src/application/routing/klp_route_input.dart:49](../../../../../lib/src/application/routing/klp_route_input.dart#L49)
+- `implements` → <code>_KlpRouteAction</code>：[lib/src/application/routing/klp_route_input.dart:50](../../../../../lib/src/application/routing/klp_route_input.dart#L50)
 
 | 成員 | 可見性 | 簽章／型別 | 來源註解摘要 | 證據 |
 |---|---|---|---|---|
@@ -146,7 +146,7 @@ ClassDeclaration · private · [lib/src/application/routing/klp_route_input.dart
 
 ### _KlpRouteActions
 
-ClassDeclaration · private · [lib/src/application/routing/klp_route_input.dart:59](../../../../../lib/src/application/routing/klp_route_input.dart#L59)
+ClassDeclaration · private · [lib/src/application/routing/klp_route_input.dart:60](../../../../../lib/src/application/routing/klp_route_input.dart#L60)
 
 <code>abstract interface class _KlpRouteActions</code>
 

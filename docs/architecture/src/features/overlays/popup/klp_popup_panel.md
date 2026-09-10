@@ -54,12 +54,12 @@ ClassDeclaration · public · [lib/src/features/overlays/popup/klp_popup_panel.d
 
 | 成員 | 可見性 | 簽章／型別 | 來源註解摘要 | 證據 |
 |---|---|---|---|---|
-| constructor <code>KlpPopupPanel</code> | public | <code>const KlpPopupPanel({ super.key, required this.kind, required this.child, })</code> |  | [lib/src/features/overlays/popup/klp_popup_panel.dart:5](../../../../../../lib/src/features/overlays/popup/klp_popup_panel.dart#L5) |
-| field <code>standardSize</code> | public | <code>static const Size standardSize</code> | 普通表單面板固定為 600×816，對應建立頻道等完整輸入流程。 | [lib/src/features/overlays/popup/klp_popup_panel.dart:12](../../../../../../lib/src/features/overlays/popup/klp_popup_panel.dart#L12) |
-| field <code>largeSize</code> | public | <code>static const Size largeSize</code> |  | [lib/src/features/overlays/popup/klp_popup_panel.dart:13](../../../../../../lib/src/features/overlays/popup/klp_popup_panel.dart#L13) |
-| field <code>kind</code> | public | <code>final KlpPopupPanelKind kind</code> |  | [lib/src/features/overlays/popup/klp_popup_panel.dart:15](../../../../../../lib/src/features/overlays/popup/klp_popup_panel.dart#L15) |
-| field <code>child</code> | public | <code>final Widget child</code> |  | [lib/src/features/overlays/popup/klp_popup_panel.dart:16](../../../../../../lib/src/features/overlays/popup/klp_popup_panel.dart#L16) |
-| method <code>build</code> | public | <code>Widget build(BuildContext context)</code> |  | [lib/src/features/overlays/popup/klp_popup_panel.dart:18](../../../../../../lib/src/features/overlays/popup/klp_popup_panel.dart#L18) |
+| constructor <code>KlpPopupPanel</code> | public | <code>const KlpPopupPanel({super.key, required this.kind, required this.child})</code> |  | [lib/src/features/overlays/popup/klp_popup_panel.dart:5](../../../../../../lib/src/features/overlays/popup/klp_popup_panel.dart#L5) |
+| field <code>standardSize</code> | public | <code>static const Size standardSize</code> | 普通表單面板固定為 600×816，對應建立頻道等完整輸入流程。 | [lib/src/features/overlays/popup/klp_popup_panel.dart:8](../../../../../../lib/src/features/overlays/popup/klp_popup_panel.dart#L8) |
+| field <code>largeSize</code> | public | <code>static const Size largeSize</code> |  | [lib/src/features/overlays/popup/klp_popup_panel.dart:9](../../../../../../lib/src/features/overlays/popup/klp_popup_panel.dart#L9) |
+| field <code>kind</code> | public | <code>final KlpPopupPanelKind kind</code> |  | [lib/src/features/overlays/popup/klp_popup_panel.dart:11](../../../../../../lib/src/features/overlays/popup/klp_popup_panel.dart#L11) |
+| field <code>child</code> | public | <code>final Widget child</code> |  | [lib/src/features/overlays/popup/klp_popup_panel.dart:12](../../../../../../lib/src/features/overlays/popup/klp_popup_panel.dart#L12) |
+| method <code>build</code> | public | <code>Widget build(BuildContext context)</code> |  | [lib/src/features/overlays/popup/klp_popup_panel.dart:14](../../../../../../lib/src/features/overlays/popup/klp_popup_panel.dart#L14) |
 
 ## 閱讀說明與限制
 

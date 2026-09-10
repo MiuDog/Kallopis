@@ -54,8 +54,8 @@ ClassDeclaration · public · [lib/src/styling/primitives/klp_radius.dart:3](../
 
 | 成員 | 可見性 | 簽章／型別 | 來源註解摘要 | 證據 |
 |---|---|---|---|---|
-| field <code>value</code> | public | <code>final double value</code> |  | [lib/src/styling/primitives/klp_radius.dart:6](../../../../../lib/src/styling/primitives/klp_radius.dart#L6) |
-| constructor <code>KlpRadius</code> | public | <code>KlpRadius(this.value)</code> |  | [lib/src/styling/primitives/klp_radius.dart:8](../../../../../lib/src/styling/primitives/klp_radius.dart#L8) |
+| field <code>value</code> | public | <code>final double value</code> |  | [lib/src/styling/primitives/klp_radius.dart:5](../../../../../lib/src/styling/primitives/klp_radius.dart#L5) |
+| constructor <code>KlpRadius</code> | public | <code>KlpRadius(this.value)</code> |  | [lib/src/styling/primitives/klp_radius.dart:7](../../../../../lib/src/styling/primitives/klp_radius.dart#L7) |
 
 ## 閱讀說明與限制
 

@@ -31,7 +31,7 @@ flowchart TD
 
 ## 程式碼證據
 
-- 檔案路徑：[`lib/src/foundation/interaction/keybinding/klp_key_binding_controller.dart`](../../../../lib/src/foundation/interaction/keybinding/klp_key_binding_controller.dart#L102)
+- 檔案路徑：[`lib/src/foundation/interaction/keybinding/klp_key_binding_controller.dart`](../../../../lib/src/foundation/interaction/keybinding/klp_key_binding_controller.dart#L104)
 - 宣告型態：`StatelessWidget`
 
 ## 閱讀說明

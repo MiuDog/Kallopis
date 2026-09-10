@@ -734,21 +734,21 @@ final formControlsPage = CatalogPageData(
         );
       },
     ),
-		Specimen(
-			name: 'KlpStatusRoleSwatches',
-			note: '色彩角色選擇（Roles only — raw hex is intentionally not offered）。',
-			build: (context) {
-				var selected = KlpStatusRole.success;
-				return StatefulBuilder(
-					builder: (context, setState) => KlpStatusRoleSwatches(
-						label: 'Status color role',
-						helper: 'Roles only — raw hex is intentionally not offered.',
-						selectedRole: selected,
-						onSelectRole: (role) => setState(() => selected = role),
-					),
-				);
-			},
-		),
+    Specimen(
+      name: 'KlpStatusRoleSwatches',
+      note: '色彩角色選擇（Roles only — raw hex is intentionally not offered）。',
+      build: (context) {
+        var selected = KlpStatusRole.success;
+        return StatefulBuilder(
+          builder: (context, setState) => KlpStatusRoleSwatches(
+            label: 'Status color role',
+            helper: 'Roles only — raw hex is intentionally not offered.',
+            selectedRole: selected,
+            onSelectRole: (role) => setState(() => selected = role),
+          ),
+        );
+      },
+    ),
     Specimen(
       name: 'KlpCompactSwitch',
       note: '緊湊版開關，用於清單列。',
@@ -786,17 +786,20 @@ final formControlsPage = CatalogPageData(
       name: 'KlpSlidingSelection',
       note: '滑動式選擇，用於少量互斥選項。',
       build: (context) {
-		var selectedIdx = 1;
+        var selectedIdx = 1;
         return StatefulBuilder(
           builder: (context, setState) => KlpSlidingSelection(
             label: '檢視模式',
             selectedIndex: selectedIdx,
             options: [
-				const KlpSelectionOption(icon: KlpIcons.grid, tone: KlpSelectionTone.info),
-				const KlpSelectionOption(
-					icon: KlpIcons.container,
-					tone: KlpSelectionTone.primary,
-				),
+              const KlpSelectionOption(
+                icon: KlpIcons.grid,
+                tone: KlpSelectionTone.info,
+              ),
+              const KlpSelectionOption(
+                icon: KlpIcons.container,
+                tone: KlpSelectionTone.primary,
+              ),
             ],
             onSelected: (idx) => setState(() => selectedIdx = idx),
           ),

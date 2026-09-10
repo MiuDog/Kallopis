@@ -62,8 +62,8 @@ ClassDeclaration · private · [lib/src/features/forms/selection/internal/klp_sl
 | field <code>styleDuration</code> | public | <code>final Duration styleDuration</code> |  | [lib/src/features/forms/selection/internal/klp_sliding_selection_style.dart:37](../../../../../../../lib/src/features/forms/selection/internal/klp_sliding_selection_style.dart#L37) |
 | field <code>curve</code> | public | <code>final Curve curve</code> |  | [lib/src/features/forms/selection/internal/klp_sliding_selection_style.dart:38](../../../../../../../lib/src/features/forms/selection/internal/klp_sliding_selection_style.dart#L38) |
 | method <code>totalWidth</code> | public | <code>double totalWidth(int optionCount)</code> |  | [lib/src/features/forms/selection/internal/klp_sliding_selection_style.dart:40](../../../../../../../lib/src/features/forms/selection/internal/klp_sliding_selection_style.dart#L40) |
-| method <code>toneColor</code> | public | <code>Color toneColor(KlpSelectionTone tone)</code> |  | [lib/src/features/forms/selection/internal/klp_sliding_selection_style.dart:42](../../../../../../../lib/src/features/forms/selection/internal/klp_sliding_selection_style.dart#L42) |
-| constructor <code>resolve</code> | public | <code>factory _KlpSlidingSelectionStyle.resolve(KlpTheme klp)</code> |  | [lib/src/features/forms/selection/internal/klp_sliding_selection_style.dart:44](../../../../../../../lib/src/features/forms/selection/internal/klp_sliding_selection_style.dart#L44) |
+| method <code>toneColor</code> | public | <code>Color toneColor(KlpSelectionTone tone)</code> |  | [lib/src/features/forms/selection/internal/klp_sliding_selection_style.dart:43](../../../../../../../lib/src/features/forms/selection/internal/klp_sliding_selection_style.dart#L43) |
+| constructor <code>resolve</code> | public | <code>factory _KlpSlidingSelectionStyle.resolve(KlpTheme klp)</code> |  | [lib/src/features/forms/selection/internal/klp_sliding_selection_style.dart:45](../../../../../../../lib/src/features/forms/selection/internal/klp_sliding_selection_style.dart#L45) |
 
 ## 閱讀說明與限制
 

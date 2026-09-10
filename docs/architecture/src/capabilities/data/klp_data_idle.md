@@ -54,7 +54,7 @@ ClassDeclaration · public · [lib/src/capabilities/data/klp_data_idle.dart:3](.
 
 | 成員 | 可見性 | 簽章／型別 | 來源註解摘要 | 證據 |
 |---|---|---|---|---|
-| constructor <code>KlpDataIdle</code> | public | <code>const KlpDataIdle()</code> |  | [lib/src/capabilities/data/klp_data_idle.dart:6](../../../../../lib/src/capabilities/data/klp_data_idle.dart#L6) |
+| constructor <code>KlpDataIdle</code> | public | <code>const KlpDataIdle()</code> |  | [lib/src/capabilities/data/klp_data_idle.dart:5](../../../../../lib/src/capabilities/data/klp_data_idle.dart#L5) |
 
 ## 閱讀說明與限制
 

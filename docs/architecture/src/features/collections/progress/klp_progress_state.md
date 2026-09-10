@@ -44,10 +44,10 @@ EnumDeclaration · public · [lib/src/features/collections/progress/klp_progress
 
 | 成員 | 可見性 | 簽章／型別 | 來源註解摘要 | 證據 |
 |---|---|---|---|---|
-| enum value <code>active</code> | public | <code>active</code> |  | [lib/src/features/collections/progress/klp_progress_state.dart:3](../../../../../../lib/src/features/collections/progress/klp_progress_state.dart#L3) |
-| enum value <code>paused</code> | public | <code>paused</code> |  | [lib/src/features/collections/progress/klp_progress_state.dart:4](../../../../../../lib/src/features/collections/progress/klp_progress_state.dart#L4) |
-| enum value <code>success</code> | public | <code>success</code> |  | [lib/src/features/collections/progress/klp_progress_state.dart:5](../../../../../../lib/src/features/collections/progress/klp_progress_state.dart#L5) |
-| enum value <code>failure</code> | public | <code>failure</code> |  | [lib/src/features/collections/progress/klp_progress_state.dart:6](../../../../../../lib/src/features/collections/progress/klp_progress_state.dart#L6) |
+| enum value <code>active</code> | public | <code>active</code> |  | [lib/src/features/collections/progress/klp_progress_state.dart:2](../../../../../../lib/src/features/collections/progress/klp_progress_state.dart#L2) |
+| enum value <code>paused</code> | public | <code>paused</code> |  | [lib/src/features/collections/progress/klp_progress_state.dart:2](../../../../../../lib/src/features/collections/progress/klp_progress_state.dart#L2) |
+| enum value <code>success</code> | public | <code>success</code> |  | [lib/src/features/collections/progress/klp_progress_state.dart:2](../../../../../../lib/src/features/collections/progress/klp_progress_state.dart#L2) |
+| enum value <code>failure</code> | public | <code>failure</code> |  | [lib/src/features/collections/progress/klp_progress_state.dart:2](../../../../../../lib/src/features/collections/progress/klp_progress_state.dart#L2) |
 
 ## 閱讀說明與限制
 

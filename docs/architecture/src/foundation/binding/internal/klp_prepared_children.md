@@ -54,12 +54,12 @@ ClassDeclaration · public · [lib/src/foundation/binding/internal/klp_prepared_
 
 | 成員 | 可見性 | 簽章／型別 | 來源註解摘要 | 證據 |
 |---|---|---|---|---|
-| field <code>axis</code> | public | <code>final KlpAxis axis</code> |  | [lib/src/foundation/binding/internal/klp_prepared_children.dart:6](../../../../../../lib/src/foundation/binding/internal/klp_prepared_children.dart#L6) |
-| field <code>gap</code> | public | <code>final KlpDistance gap</code> |  | [lib/src/foundation/binding/internal/klp_prepared_children.dart:7](../../../../../../lib/src/foundation/binding/internal/klp_prepared_children.dart#L7) |
-| field <code>start</code> | public | <code>final int start</code> |  | [lib/src/foundation/binding/internal/klp_prepared_children.dart:8](../../../../../../lib/src/foundation/binding/internal/klp_prepared_children.dart#L8) |
-| field <code>end</code> | public | <code>final int end</code> |  | [lib/src/foundation/binding/internal/klp_prepared_children.dart:9](../../../../../../lib/src/foundation/binding/internal/klp_prepared_children.dart#L9) |
-| constructor <code>KlpPreparedChildren</code> | public | <code>const KlpPreparedChildren({required this.axis, required this.gap, required this.start, required this.end})</code> |  | [lib/src/foundation/binding/internal/klp_prepared_children.dart:11](../../../../../../lib/src/foundation/binding/internal/klp_prepared_children.dart#L11) |
-| method <code>materialize</code> | public | <code>KlpBoundTemplate materialize(List&lt;KlpBoundTemplate&gt; children)</code> |  | [lib/src/foundation/binding/internal/klp_prepared_children.dart:13](../../../../../../lib/src/foundation/binding/internal/klp_prepared_children.dart#L13) |
+| field <code>axis</code> | public | <code>final KlpAxis axis</code> |  | [lib/src/foundation/binding/internal/klp_prepared_children.dart:5](../../../../../../lib/src/foundation/binding/internal/klp_prepared_children.dart#L5) |
+| field <code>gap</code> | public | <code>final KlpDistance gap</code> |  | [lib/src/foundation/binding/internal/klp_prepared_children.dart:6](../../../../../../lib/src/foundation/binding/internal/klp_prepared_children.dart#L6) |
+| field <code>start</code> | public | <code>final int start</code> |  | [lib/src/foundation/binding/internal/klp_prepared_children.dart:7](../../../../../../lib/src/foundation/binding/internal/klp_prepared_children.dart#L7) |
+| field <code>end</code> | public | <code>final int end</code> |  | [lib/src/foundation/binding/internal/klp_prepared_children.dart:8](../../../../../../lib/src/foundation/binding/internal/klp_prepared_children.dart#L8) |
+| constructor <code>KlpPreparedChildren</code> | public | <code>const KlpPreparedChildren({ required this.axis, required this.gap, required this.start, required this.end, })</code> |  | [lib/src/foundation/binding/internal/klp_prepared_children.dart:10](../../../../../../lib/src/foundation/binding/internal/klp_prepared_children.dart#L10) |
+| method <code>materialize</code> | public | <code>KlpBoundTemplate materialize(List&lt;KlpBoundTemplate&gt; children)</code> |  | [lib/src/foundation/binding/internal/klp_prepared_children.dart:17](../../../../../../lib/src/foundation/binding/internal/klp_prepared_children.dart#L17) |
 
 ## 閱讀說明與限制
 

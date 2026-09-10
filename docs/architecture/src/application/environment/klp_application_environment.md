@@ -49,14 +49,14 @@ ClassDeclaration · public · [lib/src/application/environment/klp_application_e
 
 | 成員 | 可見性 | 簽章／型別 | 來源註解摘要 | 證據 |
 |---|---|---|---|---|
-| constructor <code>_</code> | private | <code>const KlpApplicationEnvironment._({ required this.platform, required this.accessibility, required this.motion, })</code> |  | [lib/src/application/environment/klp_application_environment.dart:9](../../../../../lib/src/application/environment/klp_application_environment.dart#L9) |
-| field <code>platform</code> | public | <code>final KlpApplicationPlatform platform</code> |  | [lib/src/application/environment/klp_application_environment.dart:15](../../../../../lib/src/application/environment/klp_application_environment.dart#L15) |
-| field <code>accessibility</code> | public | <code>final KlpAccessibilityPreferences accessibility</code> |  | [lib/src/application/environment/klp_application_environment.dart:16](../../../../../lib/src/application/environment/klp_application_environment.dart#L16) |
-| field <code>motion</code> | public | <code>final KlpMotionPolicy motion</code> |  | [lib/src/application/environment/klp_application_environment.dart:17](../../../../../lib/src/application/environment/klp_application_environment.dart#L17) |
+| constructor <code>_</code> | private | <code>const KlpApplicationEnvironment._({ required this.platform, required this.accessibility, required this.motion, })</code> |  | [lib/src/application/environment/klp_application_environment.dart:8](../../../../../lib/src/application/environment/klp_application_environment.dart#L8) |
+| field <code>platform</code> | public | <code>final KlpApplicationPlatform platform</code> |  | [lib/src/application/environment/klp_application_environment.dart:14](../../../../../lib/src/application/environment/klp_application_environment.dart#L14) |
+| field <code>accessibility</code> | public | <code>final KlpAccessibilityPreferences accessibility</code> |  | [lib/src/application/environment/klp_application_environment.dart:15](../../../../../lib/src/application/environment/klp_application_environment.dart#L15) |
+| field <code>motion</code> | public | <code>final KlpMotionPolicy motion</code> |  | [lib/src/application/environment/klp_application_environment.dart:16](../../../../../lib/src/application/environment/klp_application_environment.dart#L16) |
 
 ### KlpApplicationPlatform
 
-EnumDeclaration · public · [lib/src/application/environment/klp_application_environment.dart:20](../../../../../lib/src/application/environment/klp_application_environment.dart#L20)
+EnumDeclaration · public · [lib/src/application/environment/klp_application_environment.dart:19](../../../../../lib/src/application/environment/klp_application_environment.dart#L19)
 
 <code>enum KlpApplicationPlatform</code>
 
@@ -65,17 +65,17 @@ EnumDeclaration · public · [lib/src/application/environment/klp_application_en
 
 | 成員 | 可見性 | 簽章／型別 | 來源註解摘要 | 證據 |
 |---|---|---|---|---|
-| enum value <code>android</code> | public | <code>android</code> |  | [lib/src/application/environment/klp_application_environment.dart:21](../../../../../lib/src/application/environment/klp_application_environment.dart#L21) |
-| enum value <code>ios</code> | public | <code>ios</code> |  | [lib/src/application/environment/klp_application_environment.dart:21](../../../../../lib/src/application/environment/klp_application_environment.dart#L21) |
-| enum value <code>windows</code> | public | <code>windows</code> |  | [lib/src/application/environment/klp_application_environment.dart:21](../../../../../lib/src/application/environment/klp_application_environment.dart#L21) |
-| enum value <code>macos</code> | public | <code>macos</code> |  | [lib/src/application/environment/klp_application_environment.dart:21](../../../../../lib/src/application/environment/klp_application_environment.dart#L21) |
-| enum value <code>linux</code> | public | <code>linux</code> |  | [lib/src/application/environment/klp_application_environment.dart:21](../../../../../lib/src/application/environment/klp_application_environment.dart#L21) |
-| enum value <code>web</code> | public | <code>web</code> |  | [lib/src/application/environment/klp_application_environment.dart:21](../../../../../lib/src/application/environment/klp_application_environment.dart#L21) |
-| enum value <code>other</code> | public | <code>other</code> |  | [lib/src/application/environment/klp_application_environment.dart:21](../../../../../lib/src/application/environment/klp_application_environment.dart#L21) |
+| enum value <code>android</code> | public | <code>android</code> |  | [lib/src/application/environment/klp_application_environment.dart:20](../../../../../lib/src/application/environment/klp_application_environment.dart#L20) |
+| enum value <code>ios</code> | public | <code>ios</code> |  | [lib/src/application/environment/klp_application_environment.dart:20](../../../../../lib/src/application/environment/klp_application_environment.dart#L20) |
+| enum value <code>windows</code> | public | <code>windows</code> |  | [lib/src/application/environment/klp_application_environment.dart:20](../../../../../lib/src/application/environment/klp_application_environment.dart#L20) |
+| enum value <code>macos</code> | public | <code>macos</code> |  | [lib/src/application/environment/klp_application_environment.dart:20](../../../../../lib/src/application/environment/klp_application_environment.dart#L20) |
+| enum value <code>linux</code> | public | <code>linux</code> |  | [lib/src/application/environment/klp_application_environment.dart:20](../../../../../lib/src/application/environment/klp_application_environment.dart#L20) |
+| enum value <code>web</code> | public | <code>web</code> |  | [lib/src/application/environment/klp_application_environment.dart:20](../../../../../lib/src/application/environment/klp_application_environment.dart#L20) |
+| enum value <code>other</code> | public | <code>other</code> |  | [lib/src/application/environment/klp_application_environment.dart:20](../../../../../lib/src/application/environment/klp_application_environment.dart#L20) |
 
 ### KlpAccessibilityPreferences
 
-ClassDeclaration · public · [lib/src/application/environment/klp_application_environment.dart:23](../../../../../lib/src/application/environment/klp_application_environment.dart#L23)
+ClassDeclaration · public · [lib/src/application/environment/klp_application_environment.dart:22](../../../../../lib/src/application/environment/klp_application_environment.dart#L22)
 
 <code>final class KlpAccessibilityPreferences</code>
 
@@ -84,14 +84,14 @@ ClassDeclaration · public · [lib/src/application/environment/klp_application_e
 
 | 成員 | 可見性 | 簽章／型別 | 來源註解摘要 | 證據 |
 |---|---|---|---|---|
-| constructor <code>_</code> | private | <code>const KlpAccessibilityPreferences._({ required this.accessibleNavigation, required this.boldText, required this.highContrast, })</code> |  | [lib/src/application/environment/klp_application_environment.dart:26](../../../../../lib/src/application/environment/klp_application_environment.dart#L26) |
-| field <code>accessibleNavigation</code> | public | <code>final bool accessibleNavigation</code> |  | [lib/src/application/environment/klp_application_environment.dart:32](../../../../../lib/src/application/environment/klp_application_environment.dart#L32) |
-| field <code>boldText</code> | public | <code>final bool boldText</code> |  | [lib/src/application/environment/klp_application_environment.dart:33](../../../../../lib/src/application/environment/klp_application_environment.dart#L33) |
-| field <code>highContrast</code> | public | <code>final bool highContrast</code> |  | [lib/src/application/environment/klp_application_environment.dart:34](../../../../../lib/src/application/environment/klp_application_environment.dart#L34) |
+| constructor <code>_</code> | private | <code>const KlpAccessibilityPreferences._({ required this.accessibleNavigation, required this.boldText, required this.highContrast, })</code> |  | [lib/src/application/environment/klp_application_environment.dart:24](../../../../../lib/src/application/environment/klp_application_environment.dart#L24) |
+| field <code>accessibleNavigation</code> | public | <code>final bool accessibleNavigation</code> |  | [lib/src/application/environment/klp_application_environment.dart:30](../../../../../lib/src/application/environment/klp_application_environment.dart#L30) |
+| field <code>boldText</code> | public | <code>final bool boldText</code> |  | [lib/src/application/environment/klp_application_environment.dart:31](../../../../../lib/src/application/environment/klp_application_environment.dart#L31) |
+| field <code>highContrast</code> | public | <code>final bool highContrast</code> |  | [lib/src/application/environment/klp_application_environment.dart:32](../../../../../lib/src/application/environment/klp_application_environment.dart#L32) |
 
 ### KlpMotionPolicy
 
-EnumDeclaration · public · [lib/src/application/environment/klp_application_environment.dart:37](../../../../../lib/src/application/environment/klp_application_environment.dart#L37)
+EnumDeclaration · public · [lib/src/application/environment/klp_application_environment.dart:35](../../../../../lib/src/application/environment/klp_application_environment.dart#L35)
 
 <code>enum KlpMotionPolicy</code>
 
@@ -100,9 +100,9 @@ EnumDeclaration · public · [lib/src/application/environment/klp_application_en
 
 | 成員 | 可見性 | 簽章／型別 | 來源註解摘要 | 證據 |
 |---|---|---|---|---|
-| enum value <code>standard</code> | public | <code>standard</code> |  | [lib/src/application/environment/klp_application_environment.dart:38](../../../../../lib/src/application/environment/klp_application_environment.dart#L38) |
-| enum value <code>reduced</code> | public | <code>reduced</code> |  | [lib/src/application/environment/klp_application_environment.dart:38](../../../../../lib/src/application/environment/klp_application_environment.dart#L38) |
-| enum value <code>immediate</code> | public | <code>immediate</code> |  | [lib/src/application/environment/klp_application_environment.dart:38](../../../../../lib/src/application/environment/klp_application_environment.dart#L38) |
+| enum value <code>standard</code> | public | <code>standard</code> |  | [lib/src/application/environment/klp_application_environment.dart:36](../../../../../lib/src/application/environment/klp_application_environment.dart#L36) |
+| enum value <code>reduced</code> | public | <code>reduced</code> |  | [lib/src/application/environment/klp_application_environment.dart:36](../../../../../lib/src/application/environment/klp_application_environment.dart#L36) |
+| enum value <code>immediate</code> | public | <code>immediate</code> |  | [lib/src/application/environment/klp_application_environment.dart:36](../../../../../lib/src/application/environment/klp_application_environment.dart#L36) |
 
 ## 閱讀說明與限制
 

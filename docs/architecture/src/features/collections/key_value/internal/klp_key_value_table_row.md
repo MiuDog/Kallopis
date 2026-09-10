@@ -52,10 +52,10 @@ ClassDeclaration · private · [lib/src/features/collections/key_value/internal/
 
 | 成員 | 可見性 | 簽章／型別 | 來源註解摘要 | 證據 |
 |---|---|---|---|---|
-| constructor <code>_KlpKeyValueTableRow</code> | private | <code>const _KlpKeyValueTableRow({ required this.row, required this.labelWidth, })</code> |  | [lib/src/features/collections/key_value/internal/klp_key_value_table_row.dart:4](../../../../../../../lib/src/features/collections/key_value/internal/klp_key_value_table_row.dart#L4) |
-| field <code>row</code> | public | <code>final KlpKeyValueRowData row</code> |  | [lib/src/features/collections/key_value/internal/klp_key_value_table_row.dart:9](../../../../../../../lib/src/features/collections/key_value/internal/klp_key_value_table_row.dart#L9) |
-| field <code>labelWidth</code> | public | <code>final KlpKeyValueLabelWidth labelWidth</code> |  | [lib/src/features/collections/key_value/internal/klp_key_value_table_row.dart:10](../../../../../../../lib/src/features/collections/key_value/internal/klp_key_value_table_row.dart#L10) |
-| method <code>build</code> | public | <code>Widget build(BuildContext context)</code> |  | [lib/src/features/collections/key_value/internal/klp_key_value_table_row.dart:12](../../../../../../../lib/src/features/collections/key_value/internal/klp_key_value_table_row.dart#L12) |
+| constructor <code>_KlpKeyValueTableRow</code> | private | <code>const _KlpKeyValueTableRow({required this.row, required this.labelWidth})</code> |  | [lib/src/features/collections/key_value/internal/klp_key_value_table_row.dart:4](../../../../../../../lib/src/features/collections/key_value/internal/klp_key_value_table_row.dart#L4) |
+| field <code>row</code> | public | <code>final KlpKeyValueRowData row</code> |  | [lib/src/features/collections/key_value/internal/klp_key_value_table_row.dart:6](../../../../../../../lib/src/features/collections/key_value/internal/klp_key_value_table_row.dart#L6) |
+| field <code>labelWidth</code> | public | <code>final KlpKeyValueLabelWidth labelWidth</code> |  | [lib/src/features/collections/key_value/internal/klp_key_value_table_row.dart:7](../../../../../../../lib/src/features/collections/key_value/internal/klp_key_value_table_row.dart#L7) |
+| method <code>build</code> | public | <code>Widget build(BuildContext context)</code> |  | [lib/src/features/collections/key_value/internal/klp_key_value_table_row.dart:9](../../../../../../../lib/src/features/collections/key_value/internal/klp_key_value_table_row.dart#L9) |
 
 ## 閱讀說明與限制
 

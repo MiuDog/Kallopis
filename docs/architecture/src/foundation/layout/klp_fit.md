@@ -57,10 +57,10 @@ ClassDeclaration · public · [lib/src/foundation/layout/klp_fit.dart:5](../../.
 
 | 成員 | 可見性 | 簽章／型別 | 來源註解摘要 | 證據 |
 |---|---|---|---|---|
-| constructor <code>KlpFit</code> | public | <code>const KlpFit({ super.key, required this.mode, required this.child, })</code> |  | [lib/src/foundation/layout/klp_fit.dart:7](../../../../../lib/src/foundation/layout/klp_fit.dart#L7) |
-| field <code>mode</code> | public | <code>final KlpFitMode mode</code> |  | [lib/src/foundation/layout/klp_fit.dart:13](../../../../../lib/src/foundation/layout/klp_fit.dart#L13) |
-| field <code>child</code> | public | <code>final Widget child</code> |  | [lib/src/foundation/layout/klp_fit.dart:14](../../../../../lib/src/foundation/layout/klp_fit.dart#L14) |
-| method <code>build</code> | public | <code>Widget build(BuildContext context)</code> |  | [lib/src/foundation/layout/klp_fit.dart:16](../../../../../lib/src/foundation/layout/klp_fit.dart#L16) |
+| constructor <code>KlpFit</code> | public | <code>const KlpFit({super.key, required this.mode, required this.child})</code> |  | [lib/src/foundation/layout/klp_fit.dart:7](../../../../../lib/src/foundation/layout/klp_fit.dart#L7) |
+| field <code>mode</code> | public | <code>final KlpFitMode mode</code> |  | [lib/src/foundation/layout/klp_fit.dart:9](../../../../../lib/src/foundation/layout/klp_fit.dart#L9) |
+| field <code>child</code> | public | <code>final Widget child</code> |  | [lib/src/foundation/layout/klp_fit.dart:10](../../../../../lib/src/foundation/layout/klp_fit.dart#L10) |
+| method <code>build</code> | public | <code>Widget build(BuildContext context)</code> |  | [lib/src/foundation/layout/klp_fit.dart:12](../../../../../lib/src/foundation/layout/klp_fit.dart#L12) |
 
 ## 閱讀說明與限制
 

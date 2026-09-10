@@ -8,14 +8,16 @@ void main() {
     await tester.pumpWidget(
       KlpApp(
         showWindowHeader: false,
-				home: KlpPanelFrame(content: KlpAppScreen(
-          child: KlpButton(
-            leading: const KlpIcon(KlpIcons.edit),
-            label: 'Edit',
-            tone: KlpButtonTone.dashed,
-            onPressed: () {},
+        home: KlpPanelFrame(
+          content: KlpAppScreen(
+            child: KlpButton(
+              leading: const KlpIcon(KlpIcons.edit),
+              label: 'Edit',
+              tone: KlpButtonTone.dashed,
+              onPressed: () {},
+            ),
           ),
-        )),
+        ),
       ),
     );
 

@@ -61,7 +61,7 @@ ClassDeclaration · public · [lib/src/features/forms/selection/internal/klp_seg
 | field <code>expanded</code> | public | <code>final bool expanded</code> |  | [lib/src/features/forms/selection/internal/klp_segmented_control_widget.dart:21](../../../../../../../lib/src/features/forms/selection/internal/klp_segmented_control_widget.dart#L21) |
 | field <code>dense</code> | public | <code>final bool dense</code> |  | [lib/src/features/forms/selection/internal/klp_segmented_control_widget.dart:22](../../../../../../../lib/src/features/forms/selection/internal/klp_segmented_control_widget.dart#L22) |
 | method <code>build</code> | public | <code>Widget build(BuildContext context)</code> |  | [lib/src/features/forms/selection/internal/klp_segmented_control_widget.dart:24](../../../../../../../lib/src/features/forms/selection/internal/klp_segmented_control_widget.dart#L24) |
-| method <code>_segment</code> | private | <code>Widget _segment(int index)</code> |  | [lib/src/features/forms/selection/internal/klp_segmented_control_widget.dart:38](../../../../../../../lib/src/features/forms/selection/internal/klp_segmented_control_widget.dart#L38) |
+| method <code>_segment</code> | private | <code>Widget _segment(int index)</code> |  | [lib/src/features/forms/selection/internal/klp_segmented_control_widget.dart:41](../../../../../../../lib/src/features/forms/selection/internal/klp_segmented_control_widget.dart#L41) |
 
 ## 閱讀說明與限制
 

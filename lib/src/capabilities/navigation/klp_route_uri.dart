@@ -41,7 +41,9 @@ final class KlpRouteUri {
 
   /// 無法辨識的 URI 交還平台，避免攔截宿主或其他框架的位址。
   static KlpNavigationRestoration? decode(Uri uri) {
-    if (uri.scheme.isNotEmpty || uri.host.isNotEmpty || uri.fragment.isNotEmpty) {
+    if (uri.scheme.isNotEmpty ||
+        uri.host.isNotEmpty ||
+        uri.fragment.isNotEmpty) {
       return null;
     }
     final segments = uri.pathSegments;
@@ -62,10 +64,7 @@ final class KlpRouteUri {
       return KlpNavigationRestoration(
         routerId: segments.first,
         stack: [
-          KlpRouteAddress(
-            destinationId: segments.last,
-            parameters: parameters,
-          ),
+          KlpRouteAddress(destinationId: segments.last, parameters: parameters),
         ],
       );
     } on ArgumentError {
@@ -98,7 +97,8 @@ final class KlpRouteUri {
           return null;
         }
         final values = <String, String>{};
-        for (final parameter in (entry['parameters']! as Map<Object?, Object?>).entries) {
+        for (final parameter
+            in (entry['parameters']! as Map<Object?, Object?>).entries) {
           if (parameter.key is! String || parameter.value is! String) {
             return null;
           }

@@ -69,10 +69,10 @@ ClassDeclaration · public · [lib/src/features/feedback/klp_status_indicator.da
 
 | 成員 | 可見性 | 簽章／型別 | 來源註解摘要 | 證據 |
 |---|---|---|---|---|
-| constructor <code>KlpStatusIndicator</code> | public | <code>const KlpStatusIndicator({super.key, required this.data, this.expanded = false})</code> |  | [lib/src/features/feedback/klp_status_indicator.dart:12](../../../../../lib/src/features/feedback/klp_status_indicator.dart#L12) |
-| field <code>data</code> | public | <code>final KlpStatusItemData data</code> | 由容器注入的狀態資料。 | [lib/src/features/feedback/klp_status_indicator.dart:15](../../../../../lib/src/features/feedback/klp_status_indicator.dart#L15) |
-| field <code>expanded</code> | public | <code>final bool expanded</code> | 是否占滿可用寬度，並讓標籤在空間不足時省略。 | [lib/src/features/feedback/klp_status_indicator.dart:18](../../../../../lib/src/features/feedback/klp_status_indicator.dart#L18) |
-| method <code>build</code> | public | <code>Widget build(BuildContext context)</code> |  | [lib/src/features/feedback/klp_status_indicator.dart:20](../../../../../lib/src/features/feedback/klp_status_indicator.dart#L20) |
+| constructor <code>KlpStatusIndicator</code> | public | <code>const KlpStatusIndicator({ super.key, required this.data, this.expanded = false, })</code> |  | [lib/src/features/feedback/klp_status_indicator.dart:12](../../../../../lib/src/features/feedback/klp_status_indicator.dart#L12) |
+| field <code>data</code> | public | <code>final KlpStatusItemData data</code> | 由容器注入的狀態資料。 | [lib/src/features/feedback/klp_status_indicator.dart:19](../../../../../lib/src/features/feedback/klp_status_indicator.dart#L19) |
+| field <code>expanded</code> | public | <code>final bool expanded</code> | 是否占滿可用寬度，並讓標籤在空間不足時省略。 | [lib/src/features/feedback/klp_status_indicator.dart:22](../../../../../lib/src/features/feedback/klp_status_indicator.dart#L22) |
+| method <code>build</code> | public | <code>Widget build(BuildContext context)</code> |  | [lib/src/features/feedback/klp_status_indicator.dart:24](../../../../../lib/src/features/feedback/klp_status_indicator.dart#L24) |
 
 ## 閱讀說明與限制
 

@@ -79,8 +79,8 @@ ClassDeclaration · public · [lib/src/features/forms/input/klp_quantity_field.d
 | field <code>increaseLabel</code> | public | <code>final String? increaseLabel</code> |  | [lib/src/features/forms/input/klp_quantity_field.dart:19](../../../../../../lib/src/features/forms/input/klp_quantity_field.dart#L19) |
 | constructor <code>KlpQuantityField</code> | public | <code>const KlpQuantityField({ super.key, required this.label, required this.value, this.step = 1, this.minimum, this.maximum, this.onChanged, this.enabled = true, this.readOnly = false, this.error, this.decreaseLabel, this.increaseLabel, })</code> |  | [lib/src/features/forms/input/klp_quantity_field.dart:21](../../../../../../lib/src/features/forms/input/klp_quantity_field.dart#L21) |
 | getter <code>_canDecrease</code> | private | <code>bool get _canDecrease</code> |  | [lib/src/features/forms/input/klp_quantity_field.dart:36](../../../../../../lib/src/features/forms/input/klp_quantity_field.dart#L36) |
-| getter <code>_canIncrease</code> | private | <code>bool get _canIncrease</code> |  | [lib/src/features/forms/input/klp_quantity_field.dart:37](../../../../../../lib/src/features/forms/input/klp_quantity_field.dart#L37) |
-| method <code>build</code> | public | <code>Widget build(BuildContext context)</code> |  | [lib/src/features/forms/input/klp_quantity_field.dart:39](../../../../../../lib/src/features/forms/input/klp_quantity_field.dart#L39) |
+| getter <code>_canIncrease</code> | private | <code>bool get _canIncrease</code> |  | [lib/src/features/forms/input/klp_quantity_field.dart:41](../../../../../../lib/src/features/forms/input/klp_quantity_field.dart#L41) |
+| method <code>build</code> | public | <code>Widget build(BuildContext context)</code> |  | [lib/src/features/forms/input/klp_quantity_field.dart:47](../../../../../../lib/src/features/forms/input/klp_quantity_field.dart#L47) |
 
 ## 閱讀說明與限制
 

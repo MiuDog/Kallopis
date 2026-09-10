@@ -54,8 +54,8 @@ ClassDeclaration · public · [lib/src/styling/primitives/klp_font_weight.dart:3
 
 | 成員 | 可見性 | 簽章／型別 | 來源註解摘要 | 證據 |
 |---|---|---|---|---|
-| field <code>value</code> | public | <code>final int value</code> |  | [lib/src/styling/primitives/klp_font_weight.dart:6](../../../../../lib/src/styling/primitives/klp_font_weight.dart#L6) |
-| constructor <code>KlpFontWeight</code> | public | <code>KlpFontWeight(this.value)</code> |  | [lib/src/styling/primitives/klp_font_weight.dart:8](../../../../../lib/src/styling/primitives/klp_font_weight.dart#L8) |
+| field <code>value</code> | public | <code>final int value</code> |  | [lib/src/styling/primitives/klp_font_weight.dart:5](../../../../../lib/src/styling/primitives/klp_font_weight.dart#L5) |
+| constructor <code>KlpFontWeight</code> | public | <code>KlpFontWeight(this.value)</code> |  | [lib/src/styling/primitives/klp_font_weight.dart:7](../../../../../lib/src/styling/primitives/klp_font_weight.dart#L7) |
 
 ## 閱讀說明與限制
 

@@ -8,11 +8,12 @@ import 'klp_retained_screens_adapter.dart';
 
 /// 功能註冊集中在組合根，執行核心不反向認識個別功能。
 List<KlpNodeAdapter> klpApplicationAdapters(KlpApplication application) {
-	return [
-		KlpScopeBoundaryAdapter(),
-		KlpRetainedScreensAdapter(),
-		KlpScreenAdapter(),
-		KlpRailAdapter(),
-		for (final component in application.components) KlpComponentAdapter(component),
-	];
+  return [
+    KlpScopeBoundaryAdapter(),
+    KlpRetainedScreensAdapter(),
+    KlpScreenAdapter(),
+    KlpRailAdapter(),
+    for (final component in application.components)
+      KlpComponentAdapter(component),
+  ];
 }

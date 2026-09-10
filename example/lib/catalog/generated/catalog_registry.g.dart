@@ -43,6 +43,7 @@ final List<CatalogGroup> catalogGroups = [
 			bodyCopyPage,
 			monospacePage,
 			elevationPage,
+			compatibilityBuildingBlocksPage,
 		],
 	),
 	CatalogGroup(
@@ -90,4 +91,5 @@ final List<CatalogPageData> catalogPages = [
 final Set<String> catalogedComponents = {
 	for (final page in catalogPages)
 		for (final specimen in page.specimens) specimen.name,
+	for (final page in catalogPages) ...page.coveredComponents,
 };

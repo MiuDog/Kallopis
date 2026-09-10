@@ -44,9 +44,9 @@ EnumDeclaration · public · [lib/src/foundation/content/klp_font_role.dart:1](.
 
 | 成員 | 可見性 | 簽章／型別 | 來源註解摘要 | 證據 |
 |---|---|---|---|---|
-| enum value <code>ui</code> | public | <code>ui</code> |  | [lib/src/foundation/content/klp_font_role.dart:3](../../../../../lib/src/foundation/content/klp_font_role.dart#L3) |
-| enum value <code>body</code> | public | <code>body</code> |  | [lib/src/foundation/content/klp_font_role.dart:4](../../../../../lib/src/foundation/content/klp_font_role.dart#L4) |
-| enum value <code>mono</code> | public | <code>mono</code> |  | [lib/src/foundation/content/klp_font_role.dart:5](../../../../../lib/src/foundation/content/klp_font_role.dart#L5) |
+| enum value <code>ui</code> | public | <code>ui</code> |  | [lib/src/foundation/content/klp_font_role.dart:2](../../../../../lib/src/foundation/content/klp_font_role.dart#L2) |
+| enum value <code>body</code> | public | <code>body</code> |  | [lib/src/foundation/content/klp_font_role.dart:2](../../../../../lib/src/foundation/content/klp_font_role.dart#L2) |
+| enum value <code>mono</code> | public | <code>mono</code> |  | [lib/src/foundation/content/klp_font_role.dart:2](../../../../../lib/src/foundation/content/klp_font_role.dart#L2) |
 
 ## 閱讀說明與限制
 

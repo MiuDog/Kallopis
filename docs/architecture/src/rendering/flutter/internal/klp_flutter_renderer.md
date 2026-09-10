@@ -75,11 +75,11 @@ ClassDeclaration · public · [lib/src/rendering/flutter/internal/klp_flutter_re
 
 | 成員 | 可見性 | 簽章／型別 | 來源註解摘要 | 證據 |
 |---|---|---|---|---|
-| field <code>content</code> | public | <code>final KlpBoundTemplate content</code> |  | [lib/src/rendering/flutter/internal/klp_flutter_renderer.dart:14](../../../../../../lib/src/rendering/flutter/internal/klp_flutter_renderer.dart#L14) |
-| constructor <code>KlpFlutterRenderer</code> | public | <code>KlpFlutterRenderer({required this.content, Key? key})</code> |  | [lib/src/rendering/flutter/internal/klp_flutter_renderer.dart:16](../../../../../../lib/src/rendering/flutter/internal/klp_flutter_renderer.dart#L16) |
+| field <code>content</code> | public | <code>final KlpBoundTemplate content</code> |  | [lib/src/rendering/flutter/internal/klp_flutter_renderer.dart:13](../../../../../../lib/src/rendering/flutter/internal/klp_flutter_renderer.dart#L13) |
+| constructor <code>KlpFlutterRenderer</code> | public | <code>KlpFlutterRenderer({required this.content, Key? key})</code> |  | [lib/src/rendering/flutter/internal/klp_flutter_renderer.dart:15](../../../../../../lib/src/rendering/flutter/internal/klp_flutter_renderer.dart#L15) |
 | method <code>_placementKey</code> | private | <code>static Key? _placementKey(KlpBoundTemplate content)</code> |  | [lib/src/rendering/flutter/internal/klp_flutter_renderer.dart:18](../../../../../../lib/src/rendering/flutter/internal/klp_flutter_renderer.dart#L18) |
 | method <code>build</code> | public | <code>Widget build(BuildContext context)</code> |  | [lib/src/rendering/flutter/internal/klp_flutter_renderer.dart:24](../../../../../../lib/src/rendering/flutter/internal/klp_flutter_renderer.dart#L24) |
-| method <code>_surface</code> | private | <code>Widget _surface(KlpBoundSurface value)</code> |  | [lib/src/rendering/flutter/internal/klp_flutter_renderer.dart:49](../../../../../../lib/src/rendering/flutter/internal/klp_flutter_renderer.dart#L49) |
+| method <code>_surface</code> | private | <code>Widget _surface(KlpBoundSurface value)</code> |  | [lib/src/rendering/flutter/internal/klp_flutter_renderer.dart:52](../../../../../../lib/src/rendering/flutter/internal/klp_flutter_renderer.dart#L52) |
 
 ## 閱讀說明與限制
 

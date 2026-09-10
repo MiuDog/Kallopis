@@ -52,10 +52,10 @@ ClassDeclaration · private · [lib/src/features/forms/selection/internal/klp_se
 
 | 成員 | 可見性 | 簽章／型別 | 來源註解摘要 | 證據 |
 |---|---|---|---|---|
-| constructor <code>_KlpSelectFieldOption</code> | private | <code>const _KlpSelectFieldOption({ required this.option, required this.onSelected, })</code> |  | [lib/src/features/forms/selection/internal/klp_select_field_option.dart:4](../../../../../../../lib/src/features/forms/selection/internal/klp_select_field_option.dart#L4) |
-| field <code>option</code> | public | <code>final KlpChoiceOption option</code> |  | [lib/src/features/forms/selection/internal/klp_select_field_option.dart:9](../../../../../../../lib/src/features/forms/selection/internal/klp_select_field_option.dart#L9) |
-| field <code>onSelected</code> | public | <code>final VoidCallback onSelected</code> |  | [lib/src/features/forms/selection/internal/klp_select_field_option.dart:10](../../../../../../../lib/src/features/forms/selection/internal/klp_select_field_option.dart#L10) |
-| method <code>build</code> | public | <code>Widget build(BuildContext context)</code> |  | [lib/src/features/forms/selection/internal/klp_select_field_option.dart:12](../../../../../../../lib/src/features/forms/selection/internal/klp_select_field_option.dart#L12) |
+| constructor <code>_KlpSelectFieldOption</code> | private | <code>const _KlpSelectFieldOption({required this.option, required this.onSelected})</code> |  | [lib/src/features/forms/selection/internal/klp_select_field_option.dart:4](../../../../../../../lib/src/features/forms/selection/internal/klp_select_field_option.dart#L4) |
+| field <code>option</code> | public | <code>final KlpChoiceOption option</code> |  | [lib/src/features/forms/selection/internal/klp_select_field_option.dart:6](../../../../../../../lib/src/features/forms/selection/internal/klp_select_field_option.dart#L6) |
+| field <code>onSelected</code> | public | <code>final VoidCallback onSelected</code> |  | [lib/src/features/forms/selection/internal/klp_select_field_option.dart:7](../../../../../../../lib/src/features/forms/selection/internal/klp_select_field_option.dart#L7) |
+| method <code>build</code> | public | <code>Widget build(BuildContext context)</code> |  | [lib/src/features/forms/selection/internal/klp_select_field_option.dart:9](../../../../../../../lib/src/features/forms/selection/internal/klp_select_field_option.dart#L9) |
 
 ## 閱讀說明與限制
 

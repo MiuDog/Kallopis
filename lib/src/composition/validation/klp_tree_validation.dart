@@ -3,13 +3,14 @@ import 'klp_validated_node.dart';
 
 /// 不可變的前序結構快照。
 final class KlpTreeValidation {
+  final KlpPlacementId rootPlacement;
+  final List<KlpValidatedNode> nodes;
 
-	final KlpPlacementId rootPlacement;
-	final List<KlpValidatedNode> nodes;
+  KlpTreeValidation(String rootId, Iterable<KlpValidatedNode> nodes)
+    : this.scoped(KlpPlacementId(localId: rootId), nodes);
 
-	KlpTreeValidation(String rootId, Iterable<KlpValidatedNode> nodes) : this.scoped(KlpPlacementId(localId: rootId), nodes);
+  KlpTreeValidation.scoped(this.rootPlacement, Iterable<KlpValidatedNode> nodes)
+    : nodes = List.unmodifiable(nodes);
 
-	KlpTreeValidation.scoped(this.rootPlacement, Iterable<KlpValidatedNode> nodes) : nodes = List.unmodifiable(nodes);
-
-	String get rootId => rootPlacement.localId;
+  String get rootId => rootPlacement.localId;
 }

@@ -73,8 +73,8 @@ ClassDeclaration · public · [lib/src/foundation/templates/klp_template.dart:13
 
 | 成員 | 可見性 | 簽章／型別 | 來源註解摘要 | 證據 |
 |---|---|---|---|---|
-| constructor <code>KlpTemplate</code> | public | <code>const KlpTemplate()</code> |  | [lib/src/foundation/templates/klp_template.dart:16](../../../../../lib/src/foundation/templates/klp_template.dart#L16) |
-| method <code>accepts</code> | public | <code>bool accepts(KlpNode node)</code> | 泛型上轉不能取消模板自身的資料資格。 | [lib/src/foundation/templates/klp_template.dart:18](../../../../../lib/src/foundation/templates/klp_template.dart#L18) |
+| constructor <code>KlpTemplate</code> | public | <code>const KlpTemplate()</code> |  | [lib/src/foundation/templates/klp_template.dart:15](../../../../../lib/src/foundation/templates/klp_template.dart#L15) |
+| method <code>accepts</code> | public | <code>bool accepts(KlpNode node)</code> | 泛型上轉不能取消模板自身的資料資格。 | [lib/src/foundation/templates/klp_template.dart:17](../../../../../lib/src/foundation/templates/klp_template.dart#L17) |
 
 ## 閱讀說明與限制
 

@@ -54,10 +54,10 @@ ClassDeclaration · public · [lib/src/foundation/templates/klp_linear_template.
 
 | 成員 | 可見性 | 簽章／型別 | 來源註解摘要 | 證據 |
 |---|---|---|---|---|
-| field <code>axis</code> | public | <code>final KlpAxis axis</code> |  | [lib/src/foundation/templates/klp_linear_template.dart:6](../../../../../lib/src/foundation/templates/klp_linear_template.dart#L6) |
-| field <code>children</code> | public | <code>final List&lt;KlpTemplate&lt;T&gt;&gt; children</code> |  | [lib/src/foundation/templates/klp_linear_template.dart:7](../../../../../lib/src/foundation/templates/klp_linear_template.dart#L7) |
-| field <code>gap</code> | public | <code>final KlpSemanticKey&lt;KlpDistance&gt; gap</code> |  | [lib/src/foundation/templates/klp_linear_template.dart:8](../../../../../lib/src/foundation/templates/klp_linear_template.dart#L8) |
-| constructor <code>KlpLinearTemplate</code> | public | <code>KlpLinearTemplate({required this.axis, required List&lt;KlpTemplate&lt;T&gt;&gt; children, required this.gap})</code> |  | [lib/src/foundation/templates/klp_linear_template.dart:10](../../../../../lib/src/foundation/templates/klp_linear_template.dart#L10) |
+| field <code>axis</code> | public | <code>final KlpAxis axis</code> |  | [lib/src/foundation/templates/klp_linear_template.dart:5](../../../../../lib/src/foundation/templates/klp_linear_template.dart#L5) |
+| field <code>children</code> | public | <code>final List&lt;KlpTemplate&lt;T&gt;&gt; children</code> |  | [lib/src/foundation/templates/klp_linear_template.dart:6](../../../../../lib/src/foundation/templates/klp_linear_template.dart#L6) |
+| field <code>gap</code> | public | <code>final KlpSemanticKey&lt;KlpDistance&gt; gap</code> |  | [lib/src/foundation/templates/klp_linear_template.dart:7](../../../../../lib/src/foundation/templates/klp_linear_template.dart#L7) |
+| constructor <code>KlpLinearTemplate</code> | public | <code>KlpLinearTemplate({ required this.axis, required List&lt;KlpTemplate&lt;T&gt;&gt; children, required this.gap, })</code> |  | [lib/src/foundation/templates/klp_linear_template.dart:9](../../../../../lib/src/foundation/templates/klp_linear_template.dart#L9) |
 
 ## 閱讀說明與限制
 

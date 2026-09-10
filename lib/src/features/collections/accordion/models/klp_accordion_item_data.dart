@@ -6,15 +6,15 @@ part of '../klp_accordion.dart';
 /// 內容——它何時被建構、狀態如何保留由呼叫端決定，這裡不快取也不知道內容是什麼。
 @immutable
 class KlpAccordionItemData {
-	const KlpAccordionItemData({
-		required this.id,
-		required this.title,
-		required this.child,
-		this.subtitle,
-	});
+  const KlpAccordionItemData({
+    required this.id,
+    required this.title,
+    required this.child,
+    this.subtitle,
+  });
 
-	final String id;
-	final String title;
-	final String? subtitle;
-	final Widget child;
+  final String id;
+  final String title;
+  final String? subtitle;
+  final Widget child;
 }

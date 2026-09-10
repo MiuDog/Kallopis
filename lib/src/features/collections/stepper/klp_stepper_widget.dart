@@ -5,34 +5,34 @@ part of 'klp_stepper.dart';
 /// 純顯示元件——不持有互動狀態，也不處理點擊；切換到下一步是呼叫端更新
 /// [currentIndex] 後重建的結果。[direction] 決定排列方向。
 class KlpStepper extends StatelessWidget {
-	const KlpStepper({
-		super.key,
-		required this.steps,
-		required this.currentIndex,
-		this.direction = KlpStepperDirection.horizontal,
-	});
+  const KlpStepper({
+    super.key,
+    required this.steps,
+    required this.currentIndex,
+    this.direction = KlpStepperDirection.horizontal,
+  });
 
-	final List<KlpStepData> steps;
-	final int currentIndex;
-	final KlpStepperDirection direction;
+  final List<KlpStepData> steps;
+  final int currentIndex;
+  final KlpStepperDirection direction;
 
-	@override
-	Widget build(BuildContext context) {
-		assert(steps.isNotEmpty, 'KlpStepper 至少需要一個步驟');
-		assert(
-			currentIndex >= 0 && currentIndex < steps.length,
-			'currentIndex 必須落在 steps 範圍內',
-		);
+  @override
+  Widget build(BuildContext context) {
+    assert(steps.isNotEmpty, 'KlpStepper 至少需要一個步驟');
+    assert(
+      currentIndex >= 0 && currentIndex < steps.length,
+      'currentIndex 必須落在 steps 範圍內',
+    );
 
-		return switch (direction) {
-			KlpStepperDirection.horizontal => _KlpStepperHorizontalLayout(
-				steps: steps,
-				currentIndex: currentIndex,
-			),
-			KlpStepperDirection.vertical => _KlpStepperVerticalLayout(
-				steps: steps,
-				currentIndex: currentIndex,
-			),
-		};
-	}
+    return switch (direction) {
+      KlpStepperDirection.horizontal => _KlpStepperHorizontalLayout(
+        steps: steps,
+        currentIndex: currentIndex,
+      ),
+      KlpStepperDirection.vertical => _KlpStepperVerticalLayout(
+        steps: steps,
+        currentIndex: currentIndex,
+      ),
+    };
+  }
 }

@@ -54,12 +54,12 @@ ClassDeclaration · public · [lib/src/styling/primitives/klp_curve.dart:3](../.
 
 | 成員 | 可見性 | 簽章／型別 | 來源註解摘要 | 證據 |
 |---|---|---|---|---|
-| field <code>x1</code> | public | <code>final double x1</code> |  | [lib/src/styling/primitives/klp_curve.dart:6](../../../../../lib/src/styling/primitives/klp_curve.dart#L6) |
-| field <code>y1</code> | public | <code>final double y1</code> |  | [lib/src/styling/primitives/klp_curve.dart:7](../../../../../lib/src/styling/primitives/klp_curve.dart#L7) |
-| field <code>x2</code> | public | <code>final double x2</code> |  | [lib/src/styling/primitives/klp_curve.dart:8](../../../../../lib/src/styling/primitives/klp_curve.dart#L8) |
-| field <code>y2</code> | public | <code>final double y2</code> |  | [lib/src/styling/primitives/klp_curve.dart:9](../../../../../lib/src/styling/primitives/klp_curve.dart#L9) |
-| constructor <code>KlpCurve</code> | public | <code>KlpCurve(this.x1, this.y1, this.x2, this.y2)</code> |  | [lib/src/styling/primitives/klp_curve.dart:11](../../../../../lib/src/styling/primitives/klp_curve.dart#L11) |
-| method <code>_checkCoordinate</code> | private | <code>static void _checkCoordinate(double value, String path, {required bool horizontal})</code> |  | [lib/src/styling/primitives/klp_curve.dart:18](../../../../../lib/src/styling/primitives/klp_curve.dart#L18) |
+| field <code>x1</code> | public | <code>final double x1</code> |  | [lib/src/styling/primitives/klp_curve.dart:5](../../../../../lib/src/styling/primitives/klp_curve.dart#L5) |
+| field <code>y1</code> | public | <code>final double y1</code> |  | [lib/src/styling/primitives/klp_curve.dart:6](../../../../../lib/src/styling/primitives/klp_curve.dart#L6) |
+| field <code>x2</code> | public | <code>final double x2</code> |  | [lib/src/styling/primitives/klp_curve.dart:7](../../../../../lib/src/styling/primitives/klp_curve.dart#L7) |
+| field <code>y2</code> | public | <code>final double y2</code> |  | [lib/src/styling/primitives/klp_curve.dart:8](../../../../../lib/src/styling/primitives/klp_curve.dart#L8) |
+| constructor <code>KlpCurve</code> | public | <code>KlpCurve(this.x1, this.y1, this.x2, this.y2)</code> |  | [lib/src/styling/primitives/klp_curve.dart:10](../../../../../lib/src/styling/primitives/klp_curve.dart#L10) |
+| method <code>_checkCoordinate</code> | private | <code>static void _checkCoordinate( double value, String path, { required bool horizontal, })</code> |  | [lib/src/styling/primitives/klp_curve.dart:17](../../../../../lib/src/styling/primitives/klp_curve.dart#L17) |
 
 ## 閱讀說明與限制
 

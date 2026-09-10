@@ -14,34 +14,29 @@ part 'primitives/klp_avatar_frame.dart';
 
 /// 以文字或圖片呈現無產品語意的身份識別圖像。
 class KlpAvatar extends StatelessWidget {
-	const KlpAvatar({
-		super.key,
-		required this.label,
-		this.image,
-		this.size = KlpAvatarSize.standard,
-		this.semanticLabel,
-		this.tone = KlpAvatarTone.neutral,
-	});
+  const KlpAvatar({
+    super.key,
+    required this.label,
+    this.image,
+    this.size = KlpAvatarSize.standard,
+    this.semanticLabel,
+    this.tone = KlpAvatarTone.neutral,
+  });
 
-	final String label;
-	final ImageProvider? image;
-	final KlpAvatarSize size;
-	final String? semanticLabel;
-	final KlpAvatarTone tone;
+  final String label;
+  final ImageProvider? image;
+  final KlpAvatarSize size;
+  final String? semanticLabel;
+  final KlpAvatarTone tone;
 
-	@override
-	Widget build(BuildContext context) {
-		return _KlpAvatarFrame(
-			label: semanticLabel ?? label,
-			image: image,
-			size: size,
-			tone: tone,
-			child: image == null
-					? KlpText(
-							label,
-							role: KlpTextRole.label,
-						)
-					: null,
-		);
-	}
+  @override
+  Widget build(BuildContext context) {
+    return _KlpAvatarFrame(
+      label: semanticLabel ?? label,
+      image: image,
+      size: size,
+      tone: tone,
+      child: image == null ? KlpText(label, role: KlpTextRole.label) : null,
+    );
+  }
 }

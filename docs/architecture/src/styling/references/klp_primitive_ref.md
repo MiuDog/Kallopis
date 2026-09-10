@@ -54,9 +54,9 @@ ClassDeclaration · public · [lib/src/styling/references/klp_primitive_ref.dart
 
 | 成員 | 可見性 | 簽章／型別 | 來源註解摘要 | 證據 |
 |---|---|---|---|---|
-| field <code>kind</code> | public | <code>final KlpStyleKind&lt;T&gt; kind</code> |  | [lib/src/styling/references/klp_primitive_ref.dart:7](../../../../../lib/src/styling/references/klp_primitive_ref.dart#L7) |
-| field <code>index</code> | public | <code>final KlpPrimitiveIndex index</code> |  | [lib/src/styling/references/klp_primitive_ref.dart:8](../../../../../lib/src/styling/references/klp_primitive_ref.dart#L8) |
-| constructor <code>KlpPrimitiveRef</code> | public | <code>const KlpPrimitiveRef(this.kind, this.index)</code> |  | [lib/src/styling/references/klp_primitive_ref.dart:10](../../../../../lib/src/styling/references/klp_primitive_ref.dart#L10) |
+| field <code>kind</code> | public | <code>final KlpStyleKind&lt;T&gt; kind</code> |  | [lib/src/styling/references/klp_primitive_ref.dart:6](../../../../../lib/src/styling/references/klp_primitive_ref.dart#L6) |
+| field <code>index</code> | public | <code>final KlpPrimitiveIndex index</code> |  | [lib/src/styling/references/klp_primitive_ref.dart:7](../../../../../lib/src/styling/references/klp_primitive_ref.dart#L7) |
+| constructor <code>KlpPrimitiveRef</code> | public | <code>const KlpPrimitiveRef(this.kind, this.index)</code> |  | [lib/src/styling/references/klp_primitive_ref.dart:9](../../../../../lib/src/styling/references/klp_primitive_ref.dart#L9) |
 
 ## 閱讀說明與限制
 

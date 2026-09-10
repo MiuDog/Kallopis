@@ -54,11 +54,11 @@ ClassDeclaration · public · [lib/src/foundation/templates/klp_text_template.da
 
 | 成員 | 可見性 | 簽章／型別 | 來源註解摘要 | 證據 |
 |---|---|---|---|---|
-| field <code>_text</code> | private | <code>final String Function(T) _text</code> |  | [lib/src/foundation/templates/klp_text_template.dart:6](../../../../../lib/src/foundation/templates/klp_text_template.dart#L6) |
-| field <code>semantics</code> | public | <code>final KlpTextSemantics semantics</code> |  | [lib/src/foundation/templates/klp_text_template.dart:7](../../../../../lib/src/foundation/templates/klp_text_template.dart#L7) |
-| constructor <code>KlpTextTemplate</code> | public | <code>const KlpTextTemplate({required String Function(T) text, required KlpTextSemantics semantics})</code> |  | [lib/src/foundation/templates/klp_text_template.dart:9](../../../../../lib/src/foundation/templates/klp_text_template.dart#L9) |
-| constructor <code>_</code> | private | <code>const KlpTextTemplate._(this._text, this.semantics)</code> |  | [lib/src/foundation/templates/klp_text_template.dart:11](../../../../../lib/src/foundation/templates/klp_text_template.dart#L11) |
-| method <code>selectText</code> | public | <code>String selectText(T node)</code> | 經方法派送保留 T 的參數檢查，不將窄型別函式上轉成廣型別函式。 | [lib/src/foundation/templates/klp_text_template.dart:13](../../../../../lib/src/foundation/templates/klp_text_template.dart#L13) |
+| field <code>_text</code> | private | <code>final String Function(T) _text</code> |  | [lib/src/foundation/templates/klp_text_template.dart:5](../../../../../lib/src/foundation/templates/klp_text_template.dart#L5) |
+| field <code>semantics</code> | public | <code>final KlpTextSemantics semantics</code> |  | [lib/src/foundation/templates/klp_text_template.dart:6](../../../../../lib/src/foundation/templates/klp_text_template.dart#L6) |
+| constructor <code>KlpTextTemplate</code> | public | <code>const KlpTextTemplate({ required String Function(T) text, required KlpTextSemantics semantics, })</code> |  | [lib/src/foundation/templates/klp_text_template.dart:8](../../../../../lib/src/foundation/templates/klp_text_template.dart#L8) |
+| constructor <code>_</code> | private | <code>const KlpTextTemplate._(this._text, this.semantics)</code> |  | [lib/src/foundation/templates/klp_text_template.dart:13](../../../../../lib/src/foundation/templates/klp_text_template.dart#L13) |
+| method <code>selectText</code> | public | <code>String selectText(T node)</code> | 經方法派送保留 T 的參數檢查，不將窄型別函式上轉成廣型別函式。 | [lib/src/foundation/templates/klp_text_template.dart:15](../../../../../lib/src/foundation/templates/klp_text_template.dart#L15) |
 
 ## 閱讀說明與限制
 

@@ -55,7 +55,7 @@ ClassDeclaration · public · [lib/src/foundation/metrics/klp_control_metrics.da
 | field <code>scrollbarThickness</code> | public | <code>static const double scrollbarThickness</code> |  | [lib/src/foundation/metrics/klp_control_metrics.dart:11](../../../../../lib/src/foundation/metrics/klp_control_metrics.dart#L11) |
 | field <code>scrollbarEndControlExtent</code> | public | <code>static const double scrollbarEndControlExtent</code> |  | [lib/src/foundation/metrics/klp_control_metrics.dart:12](../../../../../lib/src/foundation/metrics/klp_control_metrics.dart#L12) |
 | field <code>scrollbarEndControlRightInset</code> | public | <code>static const double scrollbarEndControlRightInset</code> |  | [lib/src/foundation/metrics/klp_control_metrics.dart:13](../../../../../lib/src/foundation/metrics/klp_control_metrics.dart#L13) |
-| field <code>scrollbarPageIncrement</code> | public | <code>static const double scrollbarPageIncrement</code> |  | [lib/src/foundation/metrics/klp_control_metrics.dart:14](../../../../../lib/src/foundation/metrics/klp_control_metrics.dart#L14) |
+| field <code>scrollbarPageIncrement</code> | public | <code>static const double scrollbarPageIncrement</code> |  | [lib/src/foundation/metrics/klp_control_metrics.dart:15](../../../../../lib/src/foundation/metrics/klp_control_metrics.dart#L15) |
 
 ## 閱讀說明與限制
 

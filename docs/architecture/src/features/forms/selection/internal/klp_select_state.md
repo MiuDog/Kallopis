@@ -55,7 +55,7 @@ ClassDeclaration · private · [lib/src/features/forms/selection/internal/klp_se
 | field <code>_hovered</code> | private | <code>bool _hovered</code> |  | [lib/src/features/forms/selection/internal/klp_select_state.dart:4](../../../../../../../lib/src/features/forms/selection/internal/klp_select_state.dart#L4) |
 | field <code>_focused</code> | private | <code>bool _focused</code> |  | [lib/src/features/forms/selection/internal/klp_select_state.dart:5](../../../../../../../lib/src/features/forms/selection/internal/klp_select_state.dart#L5) |
 | method <code>build</code> | public | <code>Widget build(BuildContext context)</code> |  | [lib/src/features/forms/selection/internal/klp_select_state.dart:7](../../../../../../../lib/src/features/forms/selection/internal/klp_select_state.dart#L7) |
-| getter <code>_strokeState</code> | private | <code>KlpStrokeState get _strokeState</code> |  | [lib/src/features/forms/selection/internal/klp_select_state.dart:37](../../../../../../../lib/src/features/forms/selection/internal/klp_select_state.dart#L37) |
+| getter <code>_strokeState</code> | private | <code>KlpStrokeState get _strokeState</code> |  | [lib/src/features/forms/selection/internal/klp_select_state.dart:46](../../../../../../../lib/src/features/forms/selection/internal/klp_select_state.dart#L46) |
 
 ## 閱讀說明與限制
 

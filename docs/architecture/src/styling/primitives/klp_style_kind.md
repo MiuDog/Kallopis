@@ -46,20 +46,20 @@ ClassDeclaration · public · [lib/src/styling/primitives/klp_style_kind.dart:3]
 
 | 成員 | 可見性 | 簽章／型別 | 來源註解摘要 | 證據 |
 |---|---|---|---|---|
-| field <code>name</code> | public | <code>final String name</code> |  | [lib/src/styling/primitives/klp_style_kind.dart:6](../../../../../lib/src/styling/primitives/klp_style_kind.dart#L6) |
-| field <code>color</code> | public | <code>static const KlpStyleKind&lt;KlpColor&gt; color</code> |  | [lib/src/styling/primitives/klp_style_kind.dart:8](../../../../../lib/src/styling/primitives/klp_style_kind.dart#L8) |
-| field <code>distance</code> | public | <code>static const KlpStyleKind&lt;KlpDistance&gt; distance</code> |  | [lib/src/styling/primitives/klp_style_kind.dart:9](../../../../../lib/src/styling/primitives/klp_style_kind.dart#L9) |
-| field <code>radius</code> | public | <code>static const KlpStyleKind&lt;KlpRadius&gt; radius</code> |  | [lib/src/styling/primitives/klp_style_kind.dart:10](../../../../../lib/src/styling/primitives/klp_style_kind.dart#L10) |
-| field <code>strokeWidth</code> | public | <code>static const KlpStyleKind&lt;KlpStrokeWidth&gt; strokeWidth</code> |  | [lib/src/styling/primitives/klp_style_kind.dart:11](../../../../../lib/src/styling/primitives/klp_style_kind.dart#L11) |
-| field <code>fontSize</code> | public | <code>static const KlpStyleKind&lt;KlpFontSize&gt; fontSize</code> |  | [lib/src/styling/primitives/klp_style_kind.dart:12](../../../../../lib/src/styling/primitives/klp_style_kind.dart#L12) |
-| field <code>fontWeight</code> | public | <code>static const KlpStyleKind&lt;KlpFontWeight&gt; fontWeight</code> |  | [lib/src/styling/primitives/klp_style_kind.dart:13](../../../../../lib/src/styling/primitives/klp_style_kind.dart#L13) |
-| field <code>lineHeight</code> | public | <code>static const KlpStyleKind&lt;KlpLineHeight&gt; lineHeight</code> |  | [lib/src/styling/primitives/klp_style_kind.dart:14](../../../../../lib/src/styling/primitives/klp_style_kind.dart#L14) |
-| field <code>letterSpacing</code> | public | <code>static const KlpStyleKind&lt;KlpLetterSpacing&gt; letterSpacing</code> |  | [lib/src/styling/primitives/klp_style_kind.dart:15](../../../../../lib/src/styling/primitives/klp_style_kind.dart#L15) |
-| field <code>duration</code> | public | <code>static const KlpStyleKind&lt;KlpDuration&gt; duration</code> |  | [lib/src/styling/primitives/klp_style_kind.dart:16](../../../../../lib/src/styling/primitives/klp_style_kind.dart#L16) |
-| field <code>fontFamily</code> | public | <code>static const KlpStyleKind&lt;KlpFontFamily&gt; fontFamily</code> |  | [lib/src/styling/primitives/klp_style_kind.dart:17](../../../../../lib/src/styling/primitives/klp_style_kind.dart#L17) |
-| field <code>curve</code> | public | <code>static const KlpStyleKind&lt;KlpCurve&gt; curve</code> |  | [lib/src/styling/primitives/klp_style_kind.dart:18](../../../../../lib/src/styling/primitives/klp_style_kind.dart#L18) |
-| constructor <code>_</code> | private | <code>const KlpStyleKind._(this.name)</code> |  | [lib/src/styling/primitives/klp_style_kind.dart:20](../../../../../lib/src/styling/primitives/klp_style_kind.dart#L20) |
-| method <code>accepts</code> | public | <code>bool accepts(KlpStyleValue value)</code> |  | [lib/src/styling/primitives/klp_style_kind.dart:22](../../../../../lib/src/styling/primitives/klp_style_kind.dart#L22) |
+| field <code>name</code> | public | <code>final String name</code> |  | [lib/src/styling/primitives/klp_style_kind.dart:5](../../../../../lib/src/styling/primitives/klp_style_kind.dart#L5) |
+| field <code>color</code> | public | <code>static const KlpStyleKind&lt;KlpColor&gt; color</code> |  | [lib/src/styling/primitives/klp_style_kind.dart:7](../../../../../lib/src/styling/primitives/klp_style_kind.dart#L7) |
+| field <code>distance</code> | public | <code>static const KlpStyleKind&lt;KlpDistance&gt; distance</code> |  | [lib/src/styling/primitives/klp_style_kind.dart:8](../../../../../lib/src/styling/primitives/klp_style_kind.dart#L8) |
+| field <code>radius</code> | public | <code>static const KlpStyleKind&lt;KlpRadius&gt; radius</code> |  | [lib/src/styling/primitives/klp_style_kind.dart:9](../../../../../lib/src/styling/primitives/klp_style_kind.dart#L9) |
+| field <code>strokeWidth</code> | public | <code>static const KlpStyleKind&lt;KlpStrokeWidth&gt; strokeWidth</code> |  | [lib/src/styling/primitives/klp_style_kind.dart:10](../../../../../lib/src/styling/primitives/klp_style_kind.dart#L10) |
+| field <code>fontSize</code> | public | <code>static const KlpStyleKind&lt;KlpFontSize&gt; fontSize</code> |  | [lib/src/styling/primitives/klp_style_kind.dart:13](../../../../../lib/src/styling/primitives/klp_style_kind.dart#L13) |
+| field <code>fontWeight</code> | public | <code>static const KlpStyleKind&lt;KlpFontWeight&gt; fontWeight</code> |  | [lib/src/styling/primitives/klp_style_kind.dart:14](../../../../../lib/src/styling/primitives/klp_style_kind.dart#L14) |
+| field <code>lineHeight</code> | public | <code>static const KlpStyleKind&lt;KlpLineHeight&gt; lineHeight</code> |  | [lib/src/styling/primitives/klp_style_kind.dart:17](../../../../../lib/src/styling/primitives/klp_style_kind.dart#L17) |
+| field <code>letterSpacing</code> | public | <code>static const KlpStyleKind&lt;KlpLetterSpacing&gt; letterSpacing</code> |  | [lib/src/styling/primitives/klp_style_kind.dart:20](../../../../../lib/src/styling/primitives/klp_style_kind.dart#L20) |
+| field <code>duration</code> | public | <code>static const KlpStyleKind&lt;KlpDuration&gt; duration</code> |  | [lib/src/styling/primitives/klp_style_kind.dart:23](../../../../../lib/src/styling/primitives/klp_style_kind.dart#L23) |
+| field <code>fontFamily</code> | public | <code>static const KlpStyleKind&lt;KlpFontFamily&gt; fontFamily</code> |  | [lib/src/styling/primitives/klp_style_kind.dart:24](../../../../../lib/src/styling/primitives/klp_style_kind.dart#L24) |
+| field <code>curve</code> | public | <code>static const KlpStyleKind&lt;KlpCurve&gt; curve</code> |  | [lib/src/styling/primitives/klp_style_kind.dart:27](../../../../../lib/src/styling/primitives/klp_style_kind.dart#L27) |
+| constructor <code>_</code> | private | <code>const KlpStyleKind._(this.name)</code> |  | [lib/src/styling/primitives/klp_style_kind.dart:29](../../../../../lib/src/styling/primitives/klp_style_kind.dart#L29) |
+| method <code>accepts</code> | public | <code>bool accepts(KlpStyleValue value)</code> |  | [lib/src/styling/primitives/klp_style_kind.dart:31](../../../../../lib/src/styling/primitives/klp_style_kind.dart#L31) |
 
 ## 閱讀說明與限制
 

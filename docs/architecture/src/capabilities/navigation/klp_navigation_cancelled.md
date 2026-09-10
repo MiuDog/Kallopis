@@ -52,8 +52,8 @@ ClassDeclaration · public · [lib/src/capabilities/navigation/klp_navigation_ca
 
 | 成員 | 可見性 | 簽章／型別 | 來源註解摘要 | 證據 |
 |---|---|---|---|---|
-| field <code>reason</code> | public | <code>final String reason</code> |  | [lib/src/capabilities/navigation/klp_navigation_cancelled.dart:5](../../../../../lib/src/capabilities/navigation/klp_navigation_cancelled.dart#L5) |
-| constructor <code>KlpNavigationCancelled</code> | public | <code>const KlpNavigationCancelled(this.reason)</code> |  | [lib/src/capabilities/navigation/klp_navigation_cancelled.dart:7](../../../../../lib/src/capabilities/navigation/klp_navigation_cancelled.dart#L7) |
+| field <code>reason</code> | public | <code>final String reason</code> |  | [lib/src/capabilities/navigation/klp_navigation_cancelled.dart:4](../../../../../lib/src/capabilities/navigation/klp_navigation_cancelled.dart#L4) |
+| constructor <code>KlpNavigationCancelled</code> | public | <code>const KlpNavigationCancelled(this.reason)</code> |  | [lib/src/capabilities/navigation/klp_navigation_cancelled.dart:6](../../../../../lib/src/capabilities/navigation/klp_navigation_cancelled.dart#L6) |
 
 ## 閱讀說明與限制
 

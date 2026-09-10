@@ -52,9 +52,9 @@ ClassDeclaration · public · [lib/src/capabilities/navigation/klp_navigation_fa
 
 | 成員 | 可見性 | 簽章／型別 | 來源註解摘要 | 證據 |
 |---|---|---|---|---|
-| field <code>error</code> | public | <code>final Object error</code> |  | [lib/src/capabilities/navigation/klp_navigation_failed.dart:5](../../../../../lib/src/capabilities/navigation/klp_navigation_failed.dart#L5) |
-| field <code>stackTrace</code> | public | <code>final StackTrace stackTrace</code> |  | [lib/src/capabilities/navigation/klp_navigation_failed.dart:6](../../../../../lib/src/capabilities/navigation/klp_navigation_failed.dart#L6) |
-| constructor <code>KlpNavigationFailed</code> | public | <code>const KlpNavigationFailed(this.error, this.stackTrace)</code> |  | [lib/src/capabilities/navigation/klp_navigation_failed.dart:8](../../../../../lib/src/capabilities/navigation/klp_navigation_failed.dart#L8) |
+| field <code>error</code> | public | <code>final Object error</code> |  | [lib/src/capabilities/navigation/klp_navigation_failed.dart:4](../../../../../lib/src/capabilities/navigation/klp_navigation_failed.dart#L4) |
+| field <code>stackTrace</code> | public | <code>final StackTrace stackTrace</code> |  | [lib/src/capabilities/navigation/klp_navigation_failed.dart:5](../../../../../lib/src/capabilities/navigation/klp_navigation_failed.dart#L5) |
+| constructor <code>KlpNavigationFailed</code> | public | <code>const KlpNavigationFailed(this.error, this.stackTrace)</code> |  | [lib/src/capabilities/navigation/klp_navigation_failed.dart:7](../../../../../lib/src/capabilities/navigation/klp_navigation_failed.dart#L7) |
 
 ## 閱讀說明與限制
 

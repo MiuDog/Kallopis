@@ -57,7 +57,7 @@ ClassDeclaration · public · [lib/src/composition/nodes/klp_composite_node.dart
 
 | 成員 | 可見性 | 簽章／型別 | 來源註解摘要 | 證據 |
 |---|---|---|---|---|
-| getter <code>children</code> | public | <code>KlpChildren get children</code> |  | [lib/src/composition/nodes/klp_composite_node.dart:7](../../../../../lib/src/composition/nodes/klp_composite_node.dart#L7) |
+| getter <code>children</code> | public | <code>KlpChildren get children</code> |  | [lib/src/composition/nodes/klp_composite_node.dart:6](../../../../../lib/src/composition/nodes/klp_composite_node.dart#L6) |
 
 ## 閱讀說明與限制
 

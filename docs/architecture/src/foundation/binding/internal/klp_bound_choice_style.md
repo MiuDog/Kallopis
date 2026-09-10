@@ -46,13 +46,13 @@ ClassDeclaration · public · [lib/src/foundation/binding/internal/klp_bound_cho
 
 | 成員 | 可見性 | 簽章／型別 | 來源註解摘要 | 證據 |
 |---|---|---|---|---|
-| field <code>background</code> | public | <code>final KlpColor background</code> |  | [lib/src/foundation/binding/internal/klp_bound_choice_style.dart:6](../../../../../../lib/src/foundation/binding/internal/klp_bound_choice_style.dart#L6) |
-| field <code>selectedBackground</code> | public | <code>final KlpColor selectedBackground</code> |  | [lib/src/foundation/binding/internal/klp_bound_choice_style.dart:7](../../../../../../lib/src/foundation/binding/internal/klp_bound_choice_style.dart#L7) |
-| field <code>focusColor</code> | public | <code>final KlpColor focusColor</code> |  | [lib/src/foundation/binding/internal/klp_bound_choice_style.dart:8](../../../../../../lib/src/foundation/binding/internal/klp_bound_choice_style.dart#L8) |
-| field <code>extent</code> | public | <code>final KlpDistance extent</code> |  | [lib/src/foundation/binding/internal/klp_bound_choice_style.dart:9](../../../../../../lib/src/foundation/binding/internal/klp_bound_choice_style.dart#L9) |
-| field <code>radius</code> | public | <code>final KlpRadius radius</code> |  | [lib/src/foundation/binding/internal/klp_bound_choice_style.dart:10](../../../../../../lib/src/foundation/binding/internal/klp_bound_choice_style.dart#L10) |
-| field <code>focusWidth</code> | public | <code>final KlpStrokeWidth focusWidth</code> |  | [lib/src/foundation/binding/internal/klp_bound_choice_style.dart:11](../../../../../../lib/src/foundation/binding/internal/klp_bound_choice_style.dart#L11) |
-| constructor <code>KlpBoundChoiceStyle</code> | public | <code>const KlpBoundChoiceStyle({ required this.background, required this.selectedBackground, required this.focusColor, required this.extent, required this.radius, required this.focusWidth, })</code> |  | [lib/src/foundation/binding/internal/klp_bound_choice_style.dart:13](../../../../../../lib/src/foundation/binding/internal/klp_bound_choice_style.dart#L13) |
+| field <code>background</code> | public | <code>final KlpColor background</code> |  | [lib/src/foundation/binding/internal/klp_bound_choice_style.dart:5](../../../../../../lib/src/foundation/binding/internal/klp_bound_choice_style.dart#L5) |
+| field <code>selectedBackground</code> | public | <code>final KlpColor selectedBackground</code> |  | [lib/src/foundation/binding/internal/klp_bound_choice_style.dart:6](../../../../../../lib/src/foundation/binding/internal/klp_bound_choice_style.dart#L6) |
+| field <code>focusColor</code> | public | <code>final KlpColor focusColor</code> |  | [lib/src/foundation/binding/internal/klp_bound_choice_style.dart:7](../../../../../../lib/src/foundation/binding/internal/klp_bound_choice_style.dart#L7) |
+| field <code>extent</code> | public | <code>final KlpDistance extent</code> |  | [lib/src/foundation/binding/internal/klp_bound_choice_style.dart:8](../../../../../../lib/src/foundation/binding/internal/klp_bound_choice_style.dart#L8) |
+| field <code>radius</code> | public | <code>final KlpRadius radius</code> |  | [lib/src/foundation/binding/internal/klp_bound_choice_style.dart:9](../../../../../../lib/src/foundation/binding/internal/klp_bound_choice_style.dart#L9) |
+| field <code>focusWidth</code> | public | <code>final KlpStrokeWidth focusWidth</code> |  | [lib/src/foundation/binding/internal/klp_bound_choice_style.dart:10](../../../../../../lib/src/foundation/binding/internal/klp_bound_choice_style.dart#L10) |
+| constructor <code>KlpBoundChoiceStyle</code> | public | <code>const KlpBoundChoiceStyle({ required this.background, required this.selectedBackground, required this.focusColor, required this.extent, required this.radius, required this.focusWidth, })</code> |  | [lib/src/foundation/binding/internal/klp_bound_choice_style.dart:12](../../../../../../lib/src/foundation/binding/internal/klp_bound_choice_style.dart#L12) |
 
 ## 閱讀說明與限制
 

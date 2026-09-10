@@ -64,13 +64,13 @@ ClassDeclaration · public · [lib/src/runtime/compilation/internal/klp_prepare_
 
 | 成員 | 可見性 | 簽章／型別 | 來源註解摘要 | 證據 |
 |---|---|---|---|---|
-| field <code>sources</code> | public | <code>final Map&lt;KlpPlacementId, KlpNode&gt; sources</code> |  | [lib/src/runtime/compilation/internal/klp_prepare_context.dart:12](../../../../../../lib/src/runtime/compilation/internal/klp_prepare_context.dart#L12) |
-| field <code>nodes</code> | public | <code>final Map&lt;KlpPlacementId, KlpValidatedNode&gt; nodes</code> |  | [lib/src/runtime/compilation/internal/klp_prepare_context.dart:13](../../../../../../lib/src/runtime/compilation/internal/klp_prepare_context.dart#L13) |
-| field <code>components</code> | public | <code>final KlpComponentCompiler components</code> |  | [lib/src/runtime/compilation/internal/klp_prepare_context.dart:14](../../../../../../lib/src/runtime/compilation/internal/klp_prepare_context.dart#L14) |
-| field <code>primitives</code> | public | <code>final KlpPrimitiveSet primitives</code> |  | [lib/src/runtime/compilation/internal/klp_prepare_context.dart:15](../../../../../../lib/src/runtime/compilation/internal/klp_prepare_context.dart#L15) |
-| field <code>style</code> | public | <code>final KlpSemanticResolution style</code> |  | [lib/src/runtime/compilation/internal/klp_prepare_context.dart:16](../../../../../../lib/src/runtime/compilation/internal/klp_prepare_context.dart#L16) |
-| field <code>actionHandler</code> | public | <code>final KlpActionHandler? actionHandler</code> |  | [lib/src/runtime/compilation/internal/klp_prepare_context.dart:17](../../../../../../lib/src/runtime/compilation/internal/klp_prepare_context.dart#L17) |
-| constructor <code>KlpPrepareContext</code> | public | <code>KlpPrepareContext({ required Map&lt;KlpPlacementId, KlpNode&gt; sources, required Map&lt;KlpPlacementId, KlpValidatedNode&gt; nodes, required this.components, required this.primitives, required this.style, this.actionHandler, })</code> |  | [lib/src/runtime/compilation/internal/klp_prepare_context.dart:19](../../../../../../lib/src/runtime/compilation/internal/klp_prepare_context.dart#L19) |
+| field <code>sources</code> | public | <code>final Map&lt;KlpPlacementId, KlpNode&gt; sources</code> |  | [lib/src/runtime/compilation/internal/klp_prepare_context.dart:11](../../../../../../lib/src/runtime/compilation/internal/klp_prepare_context.dart#L11) |
+| field <code>nodes</code> | public | <code>final Map&lt;KlpPlacementId, KlpValidatedNode&gt; nodes</code> |  | [lib/src/runtime/compilation/internal/klp_prepare_context.dart:12](../../../../../../lib/src/runtime/compilation/internal/klp_prepare_context.dart#L12) |
+| field <code>components</code> | public | <code>final KlpComponentCompiler components</code> |  | [lib/src/runtime/compilation/internal/klp_prepare_context.dart:13](../../../../../../lib/src/runtime/compilation/internal/klp_prepare_context.dart#L13) |
+| field <code>primitives</code> | public | <code>final KlpPrimitiveSet primitives</code> |  | [lib/src/runtime/compilation/internal/klp_prepare_context.dart:14](../../../../../../lib/src/runtime/compilation/internal/klp_prepare_context.dart#L14) |
+| field <code>style</code> | public | <code>final KlpSemanticResolution style</code> |  | [lib/src/runtime/compilation/internal/klp_prepare_context.dart:15](../../../../../../lib/src/runtime/compilation/internal/klp_prepare_context.dart#L15) |
+| field <code>actionHandler</code> | public | <code>final KlpActionHandler? actionHandler</code> |  | [lib/src/runtime/compilation/internal/klp_prepare_context.dart:16](../../../../../../lib/src/runtime/compilation/internal/klp_prepare_context.dart#L16) |
+| constructor <code>KlpPrepareContext</code> | public | <code>KlpPrepareContext({ required Map&lt;KlpPlacementId, KlpNode&gt; sources, required Map&lt;KlpPlacementId, KlpValidatedNode&gt; nodes, required this.components, required this.primitives, required this.style, this.actionHandler, })</code> |  | [lib/src/runtime/compilation/internal/klp_prepare_context.dart:18](../../../../../../lib/src/runtime/compilation/internal/klp_prepare_context.dart#L18) |
 
 ## 閱讀說明與限制
 

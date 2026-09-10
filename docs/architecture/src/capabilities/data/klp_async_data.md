@@ -55,18 +55,18 @@ ClassDeclaration · public · [lib/src/capabilities/data/klp_async_data.dart:6](
 
 | 成員 | 可見性 | 簽章／型別 | 來源註解摘要 | 證據 |
 |---|---|---|---|---|
-| field <code>_state</code> | private | <code>final KlpMutableState&lt;KlpDataState&lt;T&gt;&gt; _state</code> |  | [lib/src/capabilities/data/klp_async_data.dart:9](../../../../../lib/src/capabilities/data/klp_async_data.dart#L9) |
-| field <code>_generation</code> | private | <code>int _generation</code> |  | [lib/src/capabilities/data/klp_async_data.dart:10](../../../../../lib/src/capabilities/data/klp_async_data.dart#L10) |
-| field <code>_publishing</code> | private | <code>bool _publishing</code> |  | [lib/src/capabilities/data/klp_async_data.dart:11](../../../../../lib/src/capabilities/data/klp_async_data.dart#L11) |
-| getter <code>state</code> | public | <code>KlpState&lt;KlpDataState&lt;T&gt;&gt; get state</code> |  | [lib/src/capabilities/data/klp_async_data.dart:13](../../../../../lib/src/capabilities/data/klp_async_data.dart#L13) |
-| getter <code>isDisposed</code> | public | <code>bool get isDisposed</code> |  | [lib/src/capabilities/data/klp_async_data.dart:14](../../../../../lib/src/capabilities/data/klp_async_data.dart#L14) |
-| method <code>load</code> | public | <code>Future&lt;void&gt; load(Future&lt;T&gt; Function() operation)</code> | 等待本次操作結束並採納或捨棄結果後完成；取消不提早完成。 操作的同步或非同步錯誤成為資料狀態，不拒絕回傳的 Future。 已釋放使用與訂閱者錯誤仍拒絕 Future，不偽裝成資料失敗。 若載入通知中被取消、取代或釋放，操作不會啟動。 通知內重入的載入先保留請求識別，延至通知結束才發布與啟動。 | [lib/src/capabilities/data/klp_async_data.dart:16](../../../../../lib/src/capabilities/data/klp_async_data.dart#L16) |
+| field <code>_state</code> | private | <code>final KlpMutableState&lt;KlpDataState&lt;T&gt;&gt; _state</code> |  | [lib/src/capabilities/data/klp_async_data.dart:8](../../../../../lib/src/capabilities/data/klp_async_data.dart#L8) |
+| field <code>_generation</code> | private | <code>int _generation</code> |  | [lib/src/capabilities/data/klp_async_data.dart:11](../../../../../lib/src/capabilities/data/klp_async_data.dart#L11) |
+| field <code>_publishing</code> | private | <code>bool _publishing</code> |  | [lib/src/capabilities/data/klp_async_data.dart:12](../../../../../lib/src/capabilities/data/klp_async_data.dart#L12) |
+| getter <code>state</code> | public | <code>KlpState&lt;KlpDataState&lt;T&gt;&gt; get state</code> |  | [lib/src/capabilities/data/klp_async_data.dart:14](../../../../../lib/src/capabilities/data/klp_async_data.dart#L14) |
+| getter <code>isDisposed</code> | public | <code>bool get isDisposed</code> |  | [lib/src/capabilities/data/klp_async_data.dart:15](../../../../../lib/src/capabilities/data/klp_async_data.dart#L15) |
+| method <code>load</code> | public | <code>Future&lt;void&gt; load(Future&lt;T&gt; Function() operation)</code> | 等待本次操作結束並採納或捨棄結果後完成；取消不提早完成。 操作的同步或非同步錯誤成為資料狀態，不拒絕回傳的 Future。 已釋放使用與訂閱者錯誤仍拒絕 Future，不偽裝成資料失敗。 若載入通知中被取消、取代或釋放，操作不會啟動。 通知內重入的載入先保留請求識別，延至通知結束才發布與啟動。 | [lib/src/capabilities/data/klp_async_data.dart:17](../../../../../lib/src/capabilities/data/klp_async_data.dart#L17) |
 | method <code>cancel</code> | public | <code>void cancel()</code> | 停止採納目前載入結果並回到待命，不取消底層 I/O。 非載入階段不改變資料；釋放後呼叫會失敗。 | [lib/src/capabilities/data/klp_async_data.dart:48](../../../../../lib/src/capabilities/data/klp_async_data.dart#L48) |
 | method <code>dispose</code> | public | <code>void dispose()</code> | 釋放訂閱並使所有未完成請求失效，可重複呼叫。 | [lib/src/capabilities/data/klp_async_data.dart:58](../../../../../lib/src/capabilities/data/klp_async_data.dart#L58) |
 | method <code>_accepts</code> | private | <code>bool _accepts(int generation)</code> |  | [lib/src/capabilities/data/klp_async_data.dart:66](../../../../../lib/src/capabilities/data/klp_async_data.dart#L66) |
 | method <code>_startLoading</code> | private | <code>void _startLoading(int generation)</code> |  | [lib/src/capabilities/data/klp_async_data.dart:68](../../../../../lib/src/capabilities/data/klp_async_data.dart#L68) |
-| method <code>_publish</code> | private | <code>void _publish(KlpDataState&lt;T&gt; value)</code> |  | [lib/src/capabilities/data/klp_async_data.dart:90](../../../../../lib/src/capabilities/data/klp_async_data.dart#L90) |
-| method <code>_requireActive</code> | private | <code>void _requireActive()</code> |  | [lib/src/capabilities/data/klp_async_data.dart:102](../../../../../lib/src/capabilities/data/klp_async_data.dart#L102) |
+| method <code>_publish</code> | private | <code>void _publish(KlpDataState&lt;T&gt; value)</code> |  | [lib/src/capabilities/data/klp_async_data.dart:88](../../../../../lib/src/capabilities/data/klp_async_data.dart#L88) |
+| method <code>_requireActive</code> | private | <code>void _requireActive()</code> |  | [lib/src/capabilities/data/klp_async_data.dart:99](../../../../../lib/src/capabilities/data/klp_async_data.dart#L99) |
 
 ## 閱讀說明與限制
 

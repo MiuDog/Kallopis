@@ -13,16 +13,14 @@ class KlpPositioned extends StatelessWidget {
     required this.child,
   }) : fill = false;
 
-  const KlpPositioned.fill({
-    super.key,
-    required this.child,
-  })  : left = 0,
-        top = 0,
-        right = 0,
-        bottom = 0,
-        width = null,
-        height = null,
-        fill = true;
+  const KlpPositioned.fill({super.key, required this.child})
+    : left = 0,
+      top = 0,
+      right = 0,
+      bottom = 0,
+      width = null,
+      height = null,
+      fill = true;
 
   final double? left;
   final double? top;

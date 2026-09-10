@@ -48,13 +48,13 @@ ClassDeclaration · private · [lib/src/features/collections/accordion/primitive
 
 <code>class _KlpAccordionHeaderFrameState extends State&lt;_KlpAccordionHeaderFrame&gt;</code>
 
-- `extends` → <code>State&lt;_KlpAccordionHeaderFrame&gt;</code>：[lib/src/features/collections/accordion/primitives/klp_accordion_header_frame_state.dart:4](../../../../../../../lib/src/features/collections/accordion/primitives/klp_accordion_header_frame_state.dart#L4)
+- `extends` → <code>State&lt;_KlpAccordionHeaderFrame&gt;</code>：[lib/src/features/collections/accordion/primitives/klp_accordion_header_frame_state.dart:3](../../../../../../../lib/src/features/collections/accordion/primitives/klp_accordion_header_frame_state.dart#L3)
 
 | 成員 | 可見性 | 簽章／型別 | 來源註解摘要 | 證據 |
 |---|---|---|---|---|
-| field <code>_hovered</code> | private | <code>bool _hovered</code> |  | [lib/src/features/collections/accordion/primitives/klp_accordion_header_frame_state.dart:5](../../../../../../../lib/src/features/collections/accordion/primitives/klp_accordion_header_frame_state.dart#L5) |
-| field <code>_focused</code> | private | <code>bool _focused</code> |  | [lib/src/features/collections/accordion/primitives/klp_accordion_header_frame_state.dart:6](../../../../../../../lib/src/features/collections/accordion/primitives/klp_accordion_header_frame_state.dart#L6) |
-| method <code>build</code> | public | <code>Widget build(BuildContext context)</code> |  | [lib/src/features/collections/accordion/primitives/klp_accordion_header_frame_state.dart:8](../../../../../../../lib/src/features/collections/accordion/primitives/klp_accordion_header_frame_state.dart#L8) |
+| field <code>_hovered</code> | private | <code>bool _hovered</code> |  | [lib/src/features/collections/accordion/primitives/klp_accordion_header_frame_state.dart:4](../../../../../../../lib/src/features/collections/accordion/primitives/klp_accordion_header_frame_state.dart#L4) |
+| field <code>_focused</code> | private | <code>bool _focused</code> |  | [lib/src/features/collections/accordion/primitives/klp_accordion_header_frame_state.dart:5](../../../../../../../lib/src/features/collections/accordion/primitives/klp_accordion_header_frame_state.dart#L5) |
+| method <code>build</code> | public | <code>Widget build(BuildContext context)</code> |  | [lib/src/features/collections/accordion/primitives/klp_accordion_header_frame_state.dart:7](../../../../../../../lib/src/features/collections/accordion/primitives/klp_accordion_header_frame_state.dart#L7) |
 
 ## 閱讀說明與限制
 

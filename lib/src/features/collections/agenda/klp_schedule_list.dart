@@ -48,7 +48,8 @@ class KlpScheduleList extends StatelessWidget {
               ],
             ),
           ),
-          if (index < items.length - 1) KlpGap.heightSize(KlpSpaceSize.contentStack),
+          if (index < items.length - 1)
+            KlpGap.heightSize(KlpSpaceSize.contentStack),
         ],
       ],
     );

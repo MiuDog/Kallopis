@@ -60,35 +60,35 @@ ClassDeclaration · public · [lib/src/capabilities/state/klp_mutable_state.dart
 
 | 成員 | 可見性 | 簽章／型別 | 來源註解摘要 | 證據 |
 |---|---|---|---|---|
-| field <code>_value</code> | private | <code>T _value</code> |  | [lib/src/capabilities/state/klp_mutable_state.dart:12](../../../../../lib/src/capabilities/state/klp_mutable_state.dart#L12) |
-| field <code>_isDisposed</code> | private | <code>bool _isDisposed</code> |  | [lib/src/capabilities/state/klp_mutable_state.dart:13](../../../../../lib/src/capabilities/state/klp_mutable_state.dart#L13) |
-| field <code>_isNotifying</code> | private | <code>bool _isNotifying</code> |  | [lib/src/capabilities/state/klp_mutable_state.dart:14](../../../../../lib/src/capabilities/state/klp_mutable_state.dart#L14) |
-| field <code>_listeners</code> | private | <code>final (inferred) _listeners</code> |  | [lib/src/capabilities/state/klp_mutable_state.dart:15](../../../../../lib/src/capabilities/state/klp_mutable_state.dart#L15) |
-| field <code>_pending</code> | private | <code>final (inferred) _pending</code> |  | [lib/src/capabilities/state/klp_mutable_state.dart:16](../../../../../lib/src/capabilities/state/klp_mutable_state.dart#L16) |
-| field <code>readOnly</code> | public | <code>late final KlpState&lt;T&gt; readOnly</code> |  | [lib/src/capabilities/state/klp_mutable_state.dart:17](../../../../../lib/src/capabilities/state/klp_mutable_state.dart#L17) |
-| constructor <code>KlpMutableState</code> | public | <code>KlpMutableState(T value)</code> |  | [lib/src/capabilities/state/klp_mutable_state.dart:19](../../../../../lib/src/capabilities/state/klp_mutable_state.dart#L19) |
-| getter <code>isDisposed</code> | public | <code>bool get isDisposed</code> |  | [lib/src/capabilities/state/klp_mutable_state.dart:21](../../../../../lib/src/capabilities/state/klp_mutable_state.dart#L21) |
-| getter <code>value</code> | public | <code>T get value</code> |  | [lib/src/capabilities/state/klp_mutable_state.dart:23](../../../../../lib/src/capabilities/state/klp_mutable_state.dart#L23) |
-| setter <code>value</code> | public | <code>set value(T next)</code> |  | [lib/src/capabilities/state/klp_mutable_state.dart:28](../../../../../lib/src/capabilities/state/klp_mutable_state.dart#L28) |
-| method <code>dispose</code> | public | <code>void dispose()</code> |  | [lib/src/capabilities/state/klp_mutable_state.dart:37](../../../../../lib/src/capabilities/state/klp_mutable_state.dart#L37) |
-| method <code>_subscribe</code> | private | <code>KlpSubscription _subscribe(void Function(T) listener)</code> |  | [lib/src/capabilities/state/klp_mutable_state.dart:47](../../../../../lib/src/capabilities/state/klp_mutable_state.dart#L47) |
-| method <code>_drain</code> | private | <code>void _drain()</code> |  | [lib/src/capabilities/state/klp_mutable_state.dart:55](../../../../../lib/src/capabilities/state/klp_mutable_state.dart#L55) |
-| method <code>_requireActive</code> | private | <code>void _requireActive()</code> |  | [lib/src/capabilities/state/klp_mutable_state.dart:89](../../../../../lib/src/capabilities/state/klp_mutable_state.dart#L89) |
+| field <code>_value</code> | private | <code>T _value</code> |  | [lib/src/capabilities/state/klp_mutable_state.dart:11](../../../../../lib/src/capabilities/state/klp_mutable_state.dart#L11) |
+| field <code>_isDisposed</code> | private | <code>bool _isDisposed</code> |  | [lib/src/capabilities/state/klp_mutable_state.dart:12](../../../../../lib/src/capabilities/state/klp_mutable_state.dart#L12) |
+| field <code>_isNotifying</code> | private | <code>bool _isNotifying</code> |  | [lib/src/capabilities/state/klp_mutable_state.dart:13](../../../../../lib/src/capabilities/state/klp_mutable_state.dart#L13) |
+| field <code>_listeners</code> | private | <code>final (inferred) _listeners</code> |  | [lib/src/capabilities/state/klp_mutable_state.dart:14](../../../../../lib/src/capabilities/state/klp_mutable_state.dart#L14) |
+| field <code>_pending</code> | private | <code>final (inferred) _pending</code> |  | [lib/src/capabilities/state/klp_mutable_state.dart:15](../../../../../lib/src/capabilities/state/klp_mutable_state.dart#L15) |
+| field <code>readOnly</code> | public | <code>late final KlpState&lt;T&gt; readOnly</code> |  | [lib/src/capabilities/state/klp_mutable_state.dart:16](../../../../../lib/src/capabilities/state/klp_mutable_state.dart#L16) |
+| constructor <code>KlpMutableState</code> | public | <code>KlpMutableState(T value)</code> |  | [lib/src/capabilities/state/klp_mutable_state.dart:18](../../../../../lib/src/capabilities/state/klp_mutable_state.dart#L18) |
+| getter <code>isDisposed</code> | public | <code>bool get isDisposed</code> |  | [lib/src/capabilities/state/klp_mutable_state.dart:20](../../../../../lib/src/capabilities/state/klp_mutable_state.dart#L20) |
+| getter <code>value</code> | public | <code>T get value</code> |  | [lib/src/capabilities/state/klp_mutable_state.dart:22](../../../../../lib/src/capabilities/state/klp_mutable_state.dart#L22) |
+| setter <code>value</code> | public | <code>set value(T next)</code> |  | [lib/src/capabilities/state/klp_mutable_state.dart:27](../../../../../lib/src/capabilities/state/klp_mutable_state.dart#L27) |
+| method <code>dispose</code> | public | <code>void dispose()</code> |  | [lib/src/capabilities/state/klp_mutable_state.dart:36](../../../../../lib/src/capabilities/state/klp_mutable_state.dart#L36) |
+| method <code>_subscribe</code> | private | <code>KlpSubscription _subscribe(void Function(T) listener)</code> |  | [lib/src/capabilities/state/klp_mutable_state.dart:46](../../../../../lib/src/capabilities/state/klp_mutable_state.dart#L46) |
+| method <code>_drain</code> | private | <code>void _drain()</code> |  | [lib/src/capabilities/state/klp_mutable_state.dart:54](../../../../../lib/src/capabilities/state/klp_mutable_state.dart#L54) |
+| method <code>_requireActive</code> | private | <code>void _requireActive()</code> |  | [lib/src/capabilities/state/klp_mutable_state.dart:86](../../../../../lib/src/capabilities/state/klp_mutable_state.dart#L86) |
 
 ### _ReadOnlyState
 
-ClassDeclaration · private · [lib/src/capabilities/state/klp_mutable_state.dart:96](../../../../../lib/src/capabilities/state/klp_mutable_state.dart#L96)
+ClassDeclaration · private · [lib/src/capabilities/state/klp_mutable_state.dart:93](../../../../../lib/src/capabilities/state/klp_mutable_state.dart#L93)
 
 <code>final class _ReadOnlyState&lt;T&gt; implements KlpState&lt;T&gt;</code>
 
-- `implements` → <code>KlpState&lt;T&gt;</code>：[lib/src/capabilities/state/klp_mutable_state.dart:96](../../../../../lib/src/capabilities/state/klp_mutable_state.dart#L96)
+- `implements` → <code>KlpState&lt;T&gt;</code>：[lib/src/capabilities/state/klp_mutable_state.dart:93](../../../../../lib/src/capabilities/state/klp_mutable_state.dart#L93)
 
 | 成員 | 可見性 | 簽章／型別 | 來源註解摘要 | 證據 |
 |---|---|---|---|---|
-| field <code>_owner</code> | private | <code>final KlpMutableState&lt;T&gt; _owner</code> |  | [lib/src/capabilities/state/klp_mutable_state.dart:98](../../../../../lib/src/capabilities/state/klp_mutable_state.dart#L98) |
-| constructor <code>_ReadOnlyState</code> | private | <code>_ReadOnlyState(this._owner)</code> |  | [lib/src/capabilities/state/klp_mutable_state.dart:100](../../../../../lib/src/capabilities/state/klp_mutable_state.dart#L100) |
-| getter <code>value</code> | public | <code>T get value</code> |  | [lib/src/capabilities/state/klp_mutable_state.dart:102](../../../../../lib/src/capabilities/state/klp_mutable_state.dart#L102) |
-| method <code>subscribe</code> | public | <code>KlpSubscription subscribe(void Function(T) listener)</code> |  | [lib/src/capabilities/state/klp_mutable_state.dart:105](../../../../../lib/src/capabilities/state/klp_mutable_state.dart#L105) |
+| field <code>_owner</code> | private | <code>final KlpMutableState&lt;T&gt; _owner</code> |  | [lib/src/capabilities/state/klp_mutable_state.dart:94](../../../../../lib/src/capabilities/state/klp_mutable_state.dart#L94) |
+| constructor <code>_ReadOnlyState</code> | private | <code>_ReadOnlyState(this._owner)</code> |  | [lib/src/capabilities/state/klp_mutable_state.dart:96](../../../../../lib/src/capabilities/state/klp_mutable_state.dart#L96) |
+| getter <code>value</code> | public | <code>T get value</code> |  | [lib/src/capabilities/state/klp_mutable_state.dart:98](../../../../../lib/src/capabilities/state/klp_mutable_state.dart#L98) |
+| method <code>subscribe</code> | public | <code>KlpSubscription subscribe(void Function(T) listener)</code> |  | [lib/src/capabilities/state/klp_mutable_state.dart:101](../../../../../lib/src/capabilities/state/klp_mutable_state.dart#L101) |
 
 ## 閱讀說明與限制
 

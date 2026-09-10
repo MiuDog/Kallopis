@@ -52,10 +52,10 @@ ClassDeclaration · public · [lib/src/runtime/compilation/internal/klp_runtime_
 
 | 成員 | 可見性 | 簽章／型別 | 來源註解摘要 | 證據 |
 |---|---|---|---|---|
-| field <code>rootId</code> | public | <code>final KlpPlacementId rootId</code> |  | [lib/src/runtime/compilation/internal/klp_runtime_frame.dart:8](../../../../../../lib/src/runtime/compilation/internal/klp_runtime_frame.dart#L8) |
-| field <code>content</code> | public | <code>final KlpBoundTemplate content</code> |  | [lib/src/runtime/compilation/internal/klp_runtime_frame.dart:9](../../../../../../lib/src/runtime/compilation/internal/klp_runtime_frame.dart#L9) |
-| field <code>lease</code> | public | <code>final KlpFrameLease lease</code> |  | [lib/src/runtime/compilation/internal/klp_runtime_frame.dart:10](../../../../../../lib/src/runtime/compilation/internal/klp_runtime_frame.dart#L10) |
-| constructor <code>KlpRuntimeFrame</code> | public | <code>const KlpRuntimeFrame(this.rootId, this.content, this.lease)</code> |  | [lib/src/runtime/compilation/internal/klp_runtime_frame.dart:12](../../../../../../lib/src/runtime/compilation/internal/klp_runtime_frame.dart#L12) |
+| field <code>rootId</code> | public | <code>final KlpPlacementId rootId</code> |  | [lib/src/runtime/compilation/internal/klp_runtime_frame.dart:7](../../../../../../lib/src/runtime/compilation/internal/klp_runtime_frame.dart#L7) |
+| field <code>content</code> | public | <code>final KlpBoundTemplate content</code> |  | [lib/src/runtime/compilation/internal/klp_runtime_frame.dart:8](../../../../../../lib/src/runtime/compilation/internal/klp_runtime_frame.dart#L8) |
+| field <code>lease</code> | public | <code>final KlpFrameLease lease</code> |  | [lib/src/runtime/compilation/internal/klp_runtime_frame.dart:9](../../../../../../lib/src/runtime/compilation/internal/klp_runtime_frame.dart#L9) |
+| constructor <code>KlpRuntimeFrame</code> | public | <code>const KlpRuntimeFrame(this.rootId, this.content, this.lease)</code> |  | [lib/src/runtime/compilation/internal/klp_runtime_frame.dart:11](../../../../../../lib/src/runtime/compilation/internal/klp_runtime_frame.dart#L11) |
 
 ## 閱讀說明與限制
 

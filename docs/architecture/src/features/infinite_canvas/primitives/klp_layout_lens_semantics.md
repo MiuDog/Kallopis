@@ -52,10 +52,10 @@ ClassDeclaration · private · [lib/src/features/infinite_canvas/primitives/klp_
 
 | 成員 | 可見性 | 簽章／型別 | 來源註解摘要 | 證據 |
 |---|---|---|---|---|
-| constructor <code>_KlpLayoutLensSemantics</code> | private | <code>const _KlpLayoutLensSemantics({ required this.label, required this.child, })</code> |  | [lib/src/features/infinite_canvas/primitives/klp_layout_lens_semantics.dart:4](../../../../../../lib/src/features/infinite_canvas/primitives/klp_layout_lens_semantics.dart#L4) |
-| field <code>label</code> | public | <code>final String label</code> |  | [lib/src/features/infinite_canvas/primitives/klp_layout_lens_semantics.dart:9](../../../../../../lib/src/features/infinite_canvas/primitives/klp_layout_lens_semantics.dart#L9) |
-| field <code>child</code> | public | <code>final Widget child</code> |  | [lib/src/features/infinite_canvas/primitives/klp_layout_lens_semantics.dart:10](../../../../../../lib/src/features/infinite_canvas/primitives/klp_layout_lens_semantics.dart#L10) |
-| method <code>build</code> | public | <code>Widget build(BuildContext context)</code> |  | [lib/src/features/infinite_canvas/primitives/klp_layout_lens_semantics.dart:12](../../../../../../lib/src/features/infinite_canvas/primitives/klp_layout_lens_semantics.dart#L12) |
+| constructor <code>_KlpLayoutLensSemantics</code> | private | <code>const _KlpLayoutLensSemantics({required this.label, required this.child})</code> |  | [lib/src/features/infinite_canvas/primitives/klp_layout_lens_semantics.dart:4](../../../../../../lib/src/features/infinite_canvas/primitives/klp_layout_lens_semantics.dart#L4) |
+| field <code>label</code> | public | <code>final String label</code> |  | [lib/src/features/infinite_canvas/primitives/klp_layout_lens_semantics.dart:6](../../../../../../lib/src/features/infinite_canvas/primitives/klp_layout_lens_semantics.dart#L6) |
+| field <code>child</code> | public | <code>final Widget child</code> |  | [lib/src/features/infinite_canvas/primitives/klp_layout_lens_semantics.dart:7](../../../../../../lib/src/features/infinite_canvas/primitives/klp_layout_lens_semantics.dart#L7) |
+| method <code>build</code> | public | <code>Widget build(BuildContext context)</code> |  | [lib/src/features/infinite_canvas/primitives/klp_layout_lens_semantics.dart:9](../../../../../../lib/src/features/infinite_canvas/primitives/klp_layout_lens_semantics.dart#L9) |
 
 ## 閱讀說明與限制
 

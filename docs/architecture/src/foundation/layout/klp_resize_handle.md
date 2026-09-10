@@ -67,7 +67,7 @@ ClassDeclaration · public · [lib/src/foundation/layout/klp_resize_handle.dart:
 | field <code>height</code> | public | <code>final double? height</code> |  | [lib/src/foundation/layout/klp_resize_handle.dart:25](../../../../../lib/src/foundation/layout/klp_resize_handle.dart#L25) |
 | field <code>enabled</code> | public | <code>final bool enabled</code> |  | [lib/src/foundation/layout/klp_resize_handle.dart:26](../../../../../lib/src/foundation/layout/klp_resize_handle.dart#L26) |
 | method <code>build</code> | public | <code>Widget build(BuildContext context)</code> |  | [lib/src/foundation/layout/klp_resize_handle.dart:28](../../../../../lib/src/foundation/layout/klp_resize_handle.dart#L28) |
-| method <code>_resolveCursor</code> | private | <code>MouseCursor _resolveCursor(bool isHorizontal)</code> |  | [lib/src/foundation/layout/klp_resize_handle.dart:73](../../../../../lib/src/foundation/layout/klp_resize_handle.dart#L73) |
+| method <code>_resolveCursor</code> | private | <code>MouseCursor _resolveCursor(bool isHorizontal)</code> |  | [lib/src/foundation/layout/klp_resize_handle.dart:85](../../../../../lib/src/foundation/layout/klp_resize_handle.dart#L85) |
 
 ## 閱讀說明與限制
 

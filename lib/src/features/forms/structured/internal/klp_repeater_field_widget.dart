@@ -6,57 +6,57 @@ part of '../klp_repeater_field.dart';
 /// [onAdd]／[onRemove] 回報意圖，實際要不要新增一項、刪哪一項由呼叫端決定
 /// 並重新傳入新的 [items]。
 class KlpRepeaterField extends StatelessWidget {
-	const KlpRepeaterField({
-		super.key,
-		required this.label,
-		required this.addLabel,
-		required this.removeLabel,
-		required this.items,
-		required this.onAdd,
-		required this.onRemove,
-	});
+  const KlpRepeaterField({
+    super.key,
+    required this.label,
+    required this.addLabel,
+    required this.removeLabel,
+    required this.items,
+    required this.onAdd,
+    required this.onRemove,
+  });
 
-	final String label;
-	final String addLabel;
-	final String removeLabel;
-	final List<KlpRepeaterItem> items;
-	final VoidCallback? onAdd;
-	final ValueChanged<String>? onRemove;
+  final String label;
+  final String addLabel;
+  final String removeLabel;
+  final List<KlpRepeaterItem> items;
+  final VoidCallback? onAdd;
+  final ValueChanged<String>? onRemove;
 
-	@override
-	Widget build(BuildContext context) {
-		return KlpColumn(
-			crossAxisAlignment: CrossAxisAlignment.stretch,
-			children: [
-				KlpText(label, role: KlpTextRole.caption),
-				const KlpGap.heightSize(KlpSpaceSize.tight),
-				for (final item in items) ...[
-					KlpSurface(
-						tone: KlpSurfaceTone.component,
-						padding: KlpBoxInsets.uniform(
-							context.klp.space.contentInset,
-						).edgeInsets,
-						child: KlpRow(
-							crossAxisAlignment: CrossAxisAlignment.start,
-							children: [
-								KlpExpanded(child: item.child),
-								const KlpGap.widthSize(KlpSpaceSize.contentInline),
-								KlpButton(
-									label: removeLabel,
-									compact: true,
-									tone: KlpButtonTone.ghost,
-									onPressed: onRemove == null ? null : () => onRemove!(item.id),
-								),
-							],
-						),
-					),
-					const KlpGap.heightSize(KlpSpaceSize.tight),
-				],
-				KlpAlign(
-					alignment: Alignment.centerLeft,
-					child: KlpButton(label: addLabel, compact: true, onPressed: onAdd),
-				),
-			],
-		);
-	}
+  @override
+  Widget build(BuildContext context) {
+    return KlpColumn(
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      children: [
+        KlpText(label, role: KlpTextRole.caption),
+        const KlpGap.heightSize(KlpSpaceSize.tight),
+        for (final item in items) ...[
+          KlpSurface(
+            tone: KlpSurfaceTone.component,
+            padding: KlpBoxInsets.uniform(
+              context.klp.space.contentInset,
+            ).edgeInsets,
+            child: KlpRow(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                KlpExpanded(child: item.child),
+                const KlpGap.widthSize(KlpSpaceSize.contentInline),
+                KlpButton(
+                  label: removeLabel,
+                  compact: true,
+                  tone: KlpButtonTone.ghost,
+                  onPressed: onRemove == null ? null : () => onRemove!(item.id),
+                ),
+              ],
+            ),
+          ),
+          const KlpGap.heightSize(KlpSpaceSize.tight),
+        ],
+        KlpAlign(
+          alignment: Alignment.centerLeft,
+          child: KlpButton(label: addLabel, compact: true, onPressed: onAdd),
+        ),
+      ],
+    );
+  }
 }

@@ -49,13 +49,13 @@ ClassDeclaration · public · [lib/src/foundation/templates/klp_text_semantics.d
 
 | 成員 | 可見性 | 簽章／型別 | 來源註解摘要 | 證據 |
 |---|---|---|---|---|
-| field <code>color</code> | public | <code>final KlpSemanticKey&lt;KlpColor&gt; color</code> |  | [lib/src/foundation/templates/klp_text_semantics.dart:7](../../../../../lib/src/foundation/templates/klp_text_semantics.dart#L7) |
-| field <code>fontFamily</code> | public | <code>final KlpSemanticKey&lt;KlpFontFamily&gt; fontFamily</code> |  | [lib/src/foundation/templates/klp_text_semantics.dart:8](../../../../../lib/src/foundation/templates/klp_text_semantics.dart#L8) |
-| field <code>fontSize</code> | public | <code>final KlpSemanticKey&lt;KlpFontSize&gt; fontSize</code> |  | [lib/src/foundation/templates/klp_text_semantics.dart:9](../../../../../lib/src/foundation/templates/klp_text_semantics.dart#L9) |
-| field <code>fontWeight</code> | public | <code>final KlpSemanticKey&lt;KlpFontWeight&gt; fontWeight</code> |  | [lib/src/foundation/templates/klp_text_semantics.dart:10](../../../../../lib/src/foundation/templates/klp_text_semantics.dart#L10) |
-| field <code>lineHeight</code> | public | <code>final KlpSemanticKey&lt;KlpLineHeight&gt; lineHeight</code> |  | [lib/src/foundation/templates/klp_text_semantics.dart:11](../../../../../lib/src/foundation/templates/klp_text_semantics.dart#L11) |
-| field <code>letterSpacing</code> | public | <code>final KlpSemanticKey&lt;KlpLetterSpacing&gt; letterSpacing</code> |  | [lib/src/foundation/templates/klp_text_semantics.dart:12](../../../../../lib/src/foundation/templates/klp_text_semantics.dart#L12) |
-| constructor <code>KlpTextSemantics</code> | public | <code>const KlpTextSemantics({ required this.color, required this.fontFamily, required this.fontSize, required this.fontWeight, required this.lineHeight, required this.letterSpacing, })</code> |  | [lib/src/foundation/templates/klp_text_semantics.dart:14](../../../../../lib/src/foundation/templates/klp_text_semantics.dart#L14) |
+| field <code>color</code> | public | <code>final KlpSemanticKey&lt;KlpColor&gt; color</code> |  | [lib/src/foundation/templates/klp_text_semantics.dart:6](../../../../../lib/src/foundation/templates/klp_text_semantics.dart#L6) |
+| field <code>fontFamily</code> | public | <code>final KlpSemanticKey&lt;KlpFontFamily&gt; fontFamily</code> |  | [lib/src/foundation/templates/klp_text_semantics.dart:7](../../../../../lib/src/foundation/templates/klp_text_semantics.dart#L7) |
+| field <code>fontSize</code> | public | <code>final KlpSemanticKey&lt;KlpFontSize&gt; fontSize</code> |  | [lib/src/foundation/templates/klp_text_semantics.dart:8](../../../../../lib/src/foundation/templates/klp_text_semantics.dart#L8) |
+| field <code>fontWeight</code> | public | <code>final KlpSemanticKey&lt;KlpFontWeight&gt; fontWeight</code> |  | [lib/src/foundation/templates/klp_text_semantics.dart:9](../../../../../lib/src/foundation/templates/klp_text_semantics.dart#L9) |
+| field <code>lineHeight</code> | public | <code>final KlpSemanticKey&lt;KlpLineHeight&gt; lineHeight</code> |  | [lib/src/foundation/templates/klp_text_semantics.dart:10](../../../../../lib/src/foundation/templates/klp_text_semantics.dart#L10) |
+| field <code>letterSpacing</code> | public | <code>final KlpSemanticKey&lt;KlpLetterSpacing&gt; letterSpacing</code> |  | [lib/src/foundation/templates/klp_text_semantics.dart:11](../../../../../lib/src/foundation/templates/klp_text_semantics.dart#L11) |
+| constructor <code>KlpTextSemantics</code> | public | <code>const KlpTextSemantics({ required this.color, required this.fontFamily, required this.fontSize, required this.fontWeight, required this.lineHeight, required this.letterSpacing, })</code> |  | [lib/src/foundation/templates/klp_text_semantics.dart:13](../../../../../lib/src/foundation/templates/klp_text_semantics.dart#L13) |
 
 ## 閱讀說明與限制
 

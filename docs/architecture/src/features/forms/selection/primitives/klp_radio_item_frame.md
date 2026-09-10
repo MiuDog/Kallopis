@@ -52,12 +52,12 @@ ClassDeclaration · private · [lib/src/features/forms/selection/primitives/klp_
 
 | 成員 | 可見性 | 簽章／型別 | 來源註解摘要 | 證據 |
 |---|---|---|---|---|
-| constructor <code>_KlpRadioItemFrame</code> | private | <code>const _KlpRadioItemFrame({required this.label, required this.onPressed, required this.style, required this.child})</code> |  | [lib/src/features/forms/selection/primitives/klp_radio_item_frame.dart:4](../../../../../../../lib/src/features/forms/selection/primitives/klp_radio_item_frame.dart#L4) |
-| field <code>label</code> | public | <code>final String label</code> |  | [lib/src/features/forms/selection/primitives/klp_radio_item_frame.dart:6](../../../../../../../lib/src/features/forms/selection/primitives/klp_radio_item_frame.dart#L6) |
-| field <code>onPressed</code> | public | <code>final VoidCallback onPressed</code> |  | [lib/src/features/forms/selection/primitives/klp_radio_item_frame.dart:7](../../../../../../../lib/src/features/forms/selection/primitives/klp_radio_item_frame.dart#L7) |
-| field <code>style</code> | public | <code>final _KlpRadioItemStyle style</code> |  | [lib/src/features/forms/selection/primitives/klp_radio_item_frame.dart:8](../../../../../../../lib/src/features/forms/selection/primitives/klp_radio_item_frame.dart#L8) |
-| field <code>child</code> | public | <code>final Widget child</code> |  | [lib/src/features/forms/selection/primitives/klp_radio_item_frame.dart:9](../../../../../../../lib/src/features/forms/selection/primitives/klp_radio_item_frame.dart#L9) |
-| method <code>build</code> | public | <code>Widget build(BuildContext context)</code> |  | [lib/src/features/forms/selection/primitives/klp_radio_item_frame.dart:11](../../../../../../../lib/src/features/forms/selection/primitives/klp_radio_item_frame.dart#L11) |
+| constructor <code>_KlpRadioItemFrame</code> | private | <code>const _KlpRadioItemFrame({ required this.label, required this.onPressed, required this.style, required this.child, })</code> |  | [lib/src/features/forms/selection/primitives/klp_radio_item_frame.dart:4](../../../../../../../lib/src/features/forms/selection/primitives/klp_radio_item_frame.dart#L4) |
+| field <code>label</code> | public | <code>final String label</code> |  | [lib/src/features/forms/selection/primitives/klp_radio_item_frame.dart:11](../../../../../../../lib/src/features/forms/selection/primitives/klp_radio_item_frame.dart#L11) |
+| field <code>onPressed</code> | public | <code>final VoidCallback onPressed</code> |  | [lib/src/features/forms/selection/primitives/klp_radio_item_frame.dart:12](../../../../../../../lib/src/features/forms/selection/primitives/klp_radio_item_frame.dart#L12) |
+| field <code>style</code> | public | <code>final _KlpRadioItemStyle style</code> |  | [lib/src/features/forms/selection/primitives/klp_radio_item_frame.dart:13](../../../../../../../lib/src/features/forms/selection/primitives/klp_radio_item_frame.dart#L13) |
+| field <code>child</code> | public | <code>final Widget child</code> |  | [lib/src/features/forms/selection/primitives/klp_radio_item_frame.dart:14](../../../../../../../lib/src/features/forms/selection/primitives/klp_radio_item_frame.dart#L14) |
+| method <code>build</code> | public | <code>Widget build(BuildContext context)</code> |  | [lib/src/features/forms/selection/primitives/klp_radio_item_frame.dart:16](../../../../../../../lib/src/features/forms/selection/primitives/klp_radio_item_frame.dart#L16) |
 
 ## 閱讀說明與限制
 

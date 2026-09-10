@@ -7,22 +7,22 @@ import '../../../../foundation/layout/klp_stack.dart';
 
 /// 長時間操作期間保持預覽內容穩定，並在其上呈現呼叫端提供的具名階段。
 class KlpPublicationProgressOverlay extends StatelessWidget {
-	const KlpPublicationProgressOverlay({
-		super.key,
-		required this.child,
-		required this.visible,
-		required this.progress,
-	});
+  const KlpPublicationProgressOverlay({
+    super.key,
+    required this.child,
+    required this.visible,
+    required this.progress,
+  });
 
-	final Widget child;
-	final bool visible;
-	final KlpWorkflowProgress progress;
+  final Widget child;
+  final bool visible;
+  final KlpWorkflowProgress progress;
 
-	@override
-	Widget build(BuildContext context) => KlpStack(
-		children: [
-			KlpPointerBlocker(blocking: visible, child: child),
-			if (visible) KlpPositioned.fill(child: progress),
-		],
-	);
+  @override
+  Widget build(BuildContext context) => KlpStack(
+    children: [
+      KlpPointerBlocker(blocking: visible, child: child),
+      if (visible) KlpPositioned.fill(child: progress),
+    ],
+  );
 }

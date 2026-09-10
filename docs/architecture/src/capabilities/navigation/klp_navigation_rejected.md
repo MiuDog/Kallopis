@@ -52,8 +52,8 @@ ClassDeclaration · public · [lib/src/capabilities/navigation/klp_navigation_re
 
 | 成員 | 可見性 | 簽章／型別 | 來源註解摘要 | 證據 |
 |---|---|---|---|---|
-| field <code>reason</code> | public | <code>final String reason</code> |  | [lib/src/capabilities/navigation/klp_navigation_rejected.dart:5](../../../../../lib/src/capabilities/navigation/klp_navigation_rejected.dart#L5) |
-| constructor <code>KlpNavigationRejected</code> | public | <code>const KlpNavigationRejected(this.reason)</code> |  | [lib/src/capabilities/navigation/klp_navigation_rejected.dart:7](../../../../../lib/src/capabilities/navigation/klp_navigation_rejected.dart#L7) |
+| field <code>reason</code> | public | <code>final String reason</code> |  | [lib/src/capabilities/navigation/klp_navigation_rejected.dart:4](../../../../../lib/src/capabilities/navigation/klp_navigation_rejected.dart#L4) |
+| constructor <code>KlpNavigationRejected</code> | public | <code>const KlpNavigationRejected(this.reason)</code> |  | [lib/src/capabilities/navigation/klp_navigation_rejected.dart:6](../../../../../lib/src/capabilities/navigation/klp_navigation_rejected.dart#L6) |
 
 ## 閱讀說明與限制
 

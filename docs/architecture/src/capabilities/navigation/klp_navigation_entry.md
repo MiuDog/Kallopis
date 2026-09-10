@@ -46,9 +46,9 @@ ClassDeclaration · public · [lib/src/capabilities/navigation/klp_navigation_en
 
 | 成員 | 可見性 | 簽章／型別 | 來源註解摘要 | 證據 |
 |---|---|---|---|---|
-| field <code>id</code> | public | <code>final String id</code> |  | [lib/src/capabilities/navigation/klp_navigation_entry.dart:6](../../../../../lib/src/capabilities/navigation/klp_navigation_entry.dart#L6) |
-| field <code>location</code> | public | <code>final KlpLocation&lt;Object?&gt; location</code> |  | [lib/src/capabilities/navigation/klp_navigation_entry.dart:7](../../../../../lib/src/capabilities/navigation/klp_navigation_entry.dart#L7) |
-| constructor <code>KlpNavigationEntry</code> | public | <code>const KlpNavigationEntry(this.id, this.location)</code> |  | [lib/src/capabilities/navigation/klp_navigation_entry.dart:9](../../../../../lib/src/capabilities/navigation/klp_navigation_entry.dart#L9) |
+| field <code>id</code> | public | <code>final String id</code> |  | [lib/src/capabilities/navigation/klp_navigation_entry.dart:5](../../../../../lib/src/capabilities/navigation/klp_navigation_entry.dart#L5) |
+| field <code>location</code> | public | <code>final KlpLocation&lt;Object?&gt; location</code> |  | [lib/src/capabilities/navigation/klp_navigation_entry.dart:6](../../../../../lib/src/capabilities/navigation/klp_navigation_entry.dart#L6) |
+| constructor <code>KlpNavigationEntry</code> | public | <code>const KlpNavigationEntry(this.id, this.location)</code> |  | [lib/src/capabilities/navigation/klp_navigation_entry.dart:8](../../../../../lib/src/capabilities/navigation/klp_navigation_entry.dart#L8) |
 
 ## 閱讀說明與限制
 

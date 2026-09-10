@@ -98,11 +98,11 @@ ClassDeclaration · public · [lib/src/application/bootstrap/internal/klp_screen
 
 | 成員 | 可見性 | 簽章／型別 | 來源註解摘要 | 證據 |
 |---|---|---|---|---|
-| field <code>background</code> | public | <code>static final (inferred) background</code> |  | [lib/src/application/bootstrap/internal/klp_screen_adapter.dart:19](../../../../../../lib/src/application/bootstrap/internal/klp_screen_adapter.dart#L19) |
-| field <code>radius</code> | public | <code>static final (inferred) radius</code> |  | [lib/src/application/bootstrap/internal/klp_screen_adapter.dart:20](../../../../../../lib/src/application/bootstrap/internal/klp_screen_adapter.dart#L20) |
-| field <code>inset</code> | public | <code>static final (inferred) inset</code> |  | [lib/src/application/bootstrap/internal/klp_screen_adapter.dart:21](../../../../../../lib/src/application/bootstrap/internal/klp_screen_adapter.dart#L21) |
-| field <code>contract</code> | public | <code>final KlpDefinition&lt;KlpScreen&gt; contract</code> |  | [lib/src/application/bootstrap/internal/klp_screen_adapter.dart:24](../../../../../../lib/src/application/bootstrap/internal/klp_screen_adapter.dart#L24) |
-| method <code>prepare</code> | public | <code>KlpPreparedNode prepare(KlpNode node, KlpValidatedNode snapshot, KlpPrepareContext context)</code> |  | [lib/src/application/bootstrap/internal/klp_screen_adapter.dart:30](../../../../../../lib/src/application/bootstrap/internal/klp_screen_adapter.dart#L30) |
+| field <code>background</code> | public | <code>static final (inferred) background</code> |  | [lib/src/application/bootstrap/internal/klp_screen_adapter.dart:18](../../../../../../lib/src/application/bootstrap/internal/klp_screen_adapter.dart#L18) |
+| field <code>radius</code> | public | <code>static final (inferred) radius</code> |  | [lib/src/application/bootstrap/internal/klp_screen_adapter.dart:23](../../../../../../lib/src/application/bootstrap/internal/klp_screen_adapter.dart#L23) |
+| field <code>inset</code> | public | <code>static final (inferred) inset</code> |  | [lib/src/application/bootstrap/internal/klp_screen_adapter.dart:28](../../../../../../lib/src/application/bootstrap/internal/klp_screen_adapter.dart#L28) |
+| field <code>contract</code> | public | <code>final KlpDefinition&lt;KlpScreen&gt; contract</code> |  | [lib/src/application/bootstrap/internal/klp_screen_adapter.dart:35](../../../../../../lib/src/application/bootstrap/internal/klp_screen_adapter.dart#L35) |
+| method <code>prepare</code> | public | <code>KlpPreparedNode prepare( KlpNode node, KlpValidatedNode snapshot, KlpPrepareContext context, )</code> |  | [lib/src/application/bootstrap/internal/klp_screen_adapter.dart:54](../../../../../../lib/src/application/bootstrap/internal/klp_screen_adapter.dart#L54) |
 
 ## 閱讀說明與限制
 

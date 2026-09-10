@@ -52,10 +52,10 @@ ClassDeclaration · private · [lib/src/features/navigation/widgets/controls/pri
 
 | 成員 | 可見性 | 簽章／型別 | 來源註解摘要 | 證據 |
 |---|---|---|---|---|
-| constructor <code>_KlpViewChoiceFrame</code> | private | <code>const _KlpViewChoiceFrame({ required this.selected, required this.child, })</code> |  | [lib/src/features/navigation/widgets/controls/primitives/klp_view_choice_frame.dart:4](../../../../../../../../lib/src/features/navigation/widgets/controls/primitives/klp_view_choice_frame.dart#L4) |
-| field <code>selected</code> | public | <code>final bool selected</code> |  | [lib/src/features/navigation/widgets/controls/primitives/klp_view_choice_frame.dart:9](../../../../../../../../lib/src/features/navigation/widgets/controls/primitives/klp_view_choice_frame.dart#L9) |
-| field <code>child</code> | public | <code>final Widget child</code> |  | [lib/src/features/navigation/widgets/controls/primitives/klp_view_choice_frame.dart:10](../../../../../../../../lib/src/features/navigation/widgets/controls/primitives/klp_view_choice_frame.dart#L10) |
-| method <code>build</code> | public | <code>Widget build(BuildContext context)</code> |  | [lib/src/features/navigation/widgets/controls/primitives/klp_view_choice_frame.dart:12](../../../../../../../../lib/src/features/navigation/widgets/controls/primitives/klp_view_choice_frame.dart#L12) |
+| constructor <code>_KlpViewChoiceFrame</code> | private | <code>const _KlpViewChoiceFrame({required this.selected, required this.child})</code> |  | [lib/src/features/navigation/widgets/controls/primitives/klp_view_choice_frame.dart:4](../../../../../../../../lib/src/features/navigation/widgets/controls/primitives/klp_view_choice_frame.dart#L4) |
+| field <code>selected</code> | public | <code>final bool selected</code> |  | [lib/src/features/navigation/widgets/controls/primitives/klp_view_choice_frame.dart:6](../../../../../../../../lib/src/features/navigation/widgets/controls/primitives/klp_view_choice_frame.dart#L6) |
+| field <code>child</code> | public | <code>final Widget child</code> |  | [lib/src/features/navigation/widgets/controls/primitives/klp_view_choice_frame.dart:7](../../../../../../../../lib/src/features/navigation/widgets/controls/primitives/klp_view_choice_frame.dart#L7) |
+| method <code>build</code> | public | <code>Widget build(BuildContext context)</code> |  | [lib/src/features/navigation/widgets/controls/primitives/klp_view_choice_frame.dart:9](../../../../../../../../lib/src/features/navigation/widgets/controls/primitives/klp_view_choice_frame.dart#L9) |
 
 ## 閱讀說明與限制
 

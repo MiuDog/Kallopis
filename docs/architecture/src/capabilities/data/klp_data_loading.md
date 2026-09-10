@@ -54,7 +54,7 @@ ClassDeclaration · public · [lib/src/capabilities/data/klp_data_loading.dart:3
 
 | 成員 | 可見性 | 簽章／型別 | 來源註解摘要 | 證據 |
 |---|---|---|---|---|
-| constructor <code>KlpDataLoading</code> | public | <code>const KlpDataLoading()</code> |  | [lib/src/capabilities/data/klp_data_loading.dart:6](../../../../../lib/src/capabilities/data/klp_data_loading.dart#L6) |
+| constructor <code>KlpDataLoading</code> | public | <code>const KlpDataLoading()</code> |  | [lib/src/capabilities/data/klp_data_loading.dart:5](../../../../../lib/src/capabilities/data/klp_data_loading.dart#L5) |
 
 ## 閱讀說明與限制
 

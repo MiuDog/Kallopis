@@ -52,8 +52,8 @@ ClassDeclaration · public · [lib/src/styling/resolution/internal/klp_semantic_
 
 | 成員 | 可見性 | 簽章／型別 | 來源註解摘要 | 證據 |
 |---|---|---|---|---|
-| field <code>_values</code> | private | <code>final Map&lt;(String, String), KlpStyleValue&gt; _values</code> |  | [lib/src/styling/resolution/internal/klp_semantic_resolution.dart:8](../../../../../../lib/src/styling/resolution/internal/klp_semantic_resolution.dart#L8) |
-| constructor <code>KlpSemanticResolution</code> | public | <code>KlpSemanticResolution(Map&lt;(String, String), KlpStyleValue&gt; values)</code> |  | [lib/src/styling/resolution/internal/klp_semantic_resolution.dart:10](../../../../../../lib/src/styling/resolution/internal/klp_semantic_resolution.dart#L10) |
+| field <code>_values</code> | private | <code>final Map&lt;(String, String), KlpStyleValue&gt; _values</code> |  | [lib/src/styling/resolution/internal/klp_semantic_resolution.dart:7](../../../../../../lib/src/styling/resolution/internal/klp_semantic_resolution.dart#L7) |
+| constructor <code>KlpSemanticResolution</code> | public | <code>KlpSemanticResolution(Map&lt;(String, String), KlpStyleValue&gt; values)</code> |  | [lib/src/styling/resolution/internal/klp_semantic_resolution.dart:9](../../../../../../lib/src/styling/resolution/internal/klp_semantic_resolution.dart#L9) |
 | method <code>read</code> | public | <code>T read&lt;T extends KlpStyleValue&gt;(KlpSemanticKey&lt;T&gt; key)</code> |  | [lib/src/styling/resolution/internal/klp_semantic_resolution.dart:12](../../../../../../lib/src/styling/resolution/internal/klp_semantic_resolution.dart#L12) |
 
 ## 閱讀說明與限制

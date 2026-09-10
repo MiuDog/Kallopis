@@ -14,6 +14,5 @@ part 'klp_curve.dart';
 
 /// 封閉的中立風格值集合，不允許外部加入新種類。
 sealed class KlpStyleValue {
-
-	const KlpStyleValue();
+  const KlpStyleValue();
 }

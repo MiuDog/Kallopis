@@ -46,11 +46,11 @@ ClassDeclaration · public · [lib/src/capabilities/navigation/klp_navigation_sn
 
 | 成員 | 可見性 | 簽章／型別 | 來源註解摘要 | 證據 |
 |---|---|---|---|---|
-| field <code>revision</code> | public | <code>final int revision</code> |  | [lib/src/capabilities/navigation/klp_navigation_snapshot.dart:6](../../../../../lib/src/capabilities/navigation/klp_navigation_snapshot.dart#L6) |
-| field <code>entries</code> | public | <code>final List&lt;KlpNavigationEntry&gt; entries</code> |  | [lib/src/capabilities/navigation/klp_navigation_snapshot.dart:7](../../../../../lib/src/capabilities/navigation/klp_navigation_snapshot.dart#L7) |
-| constructor <code>KlpNavigationSnapshot</code> | public | <code>KlpNavigationSnapshot(this.revision, Iterable&lt;KlpNavigationEntry&gt; entries)</code> |  | [lib/src/capabilities/navigation/klp_navigation_snapshot.dart:9](../../../../../lib/src/capabilities/navigation/klp_navigation_snapshot.dart#L9) |
-| getter <code>current</code> | public | <code>KlpNavigationEntry get current</code> |  | [lib/src/capabilities/navigation/klp_navigation_snapshot.dart:13](../../../../../lib/src/capabilities/navigation/klp_navigation_snapshot.dart#L13) |
-| getter <code>canPop</code> | public | <code>bool get canPop</code> |  | [lib/src/capabilities/navigation/klp_navigation_snapshot.dart:14](../../../../../lib/src/capabilities/navigation/klp_navigation_snapshot.dart#L14) |
+| field <code>revision</code> | public | <code>final int revision</code> |  | [lib/src/capabilities/navigation/klp_navigation_snapshot.dart:5](../../../../../lib/src/capabilities/navigation/klp_navigation_snapshot.dart#L5) |
+| field <code>entries</code> | public | <code>final List&lt;KlpNavigationEntry&gt; entries</code> |  | [lib/src/capabilities/navigation/klp_navigation_snapshot.dart:6](../../../../../lib/src/capabilities/navigation/klp_navigation_snapshot.dart#L6) |
+| constructor <code>KlpNavigationSnapshot</code> | public | <code>KlpNavigationSnapshot(this.revision, Iterable&lt;KlpNavigationEntry&gt; entries)</code> |  | [lib/src/capabilities/navigation/klp_navigation_snapshot.dart:8](../../../../../lib/src/capabilities/navigation/klp_navigation_snapshot.dart#L8) |
+| getter <code>current</code> | public | <code>KlpNavigationEntry get current</code> |  | [lib/src/capabilities/navigation/klp_navigation_snapshot.dart:15](../../../../../lib/src/capabilities/navigation/klp_navigation_snapshot.dart#L15) |
+| getter <code>canPop</code> | public | <code>bool get canPop</code> |  | [lib/src/capabilities/navigation/klp_navigation_snapshot.dart:16](../../../../../lib/src/capabilities/navigation/klp_navigation_snapshot.dart#L16) |
 
 ## 閱讀說明與限制
 

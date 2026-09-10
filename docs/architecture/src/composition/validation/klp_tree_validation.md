@@ -49,11 +49,11 @@ ClassDeclaration · public · [lib/src/composition/validation/klp_tree_validatio
 
 | 成員 | 可見性 | 簽章／型別 | 來源註解摘要 | 證據 |
 |---|---|---|---|---|
-| field <code>rootPlacement</code> | public | <code>final KlpPlacementId rootPlacement</code> |  | [lib/src/composition/validation/klp_tree_validation.dart:7](../../../../../lib/src/composition/validation/klp_tree_validation.dart#L7) |
-| field <code>nodes</code> | public | <code>final List&lt;KlpValidatedNode&gt; nodes</code> |  | [lib/src/composition/validation/klp_tree_validation.dart:8](../../../../../lib/src/composition/validation/klp_tree_validation.dart#L8) |
-| constructor <code>KlpTreeValidation</code> | public | <code>KlpTreeValidation(String rootId, Iterable&lt;KlpValidatedNode&gt; nodes)</code> |  | [lib/src/composition/validation/klp_tree_validation.dart:10](../../../../../lib/src/composition/validation/klp_tree_validation.dart#L10) |
+| field <code>rootPlacement</code> | public | <code>final KlpPlacementId rootPlacement</code> |  | [lib/src/composition/validation/klp_tree_validation.dart:6](../../../../../lib/src/composition/validation/klp_tree_validation.dart#L6) |
+| field <code>nodes</code> | public | <code>final List&lt;KlpValidatedNode&gt; nodes</code> |  | [lib/src/composition/validation/klp_tree_validation.dart:7](../../../../../lib/src/composition/validation/klp_tree_validation.dart#L7) |
+| constructor <code>KlpTreeValidation</code> | public | <code>KlpTreeValidation(String rootId, Iterable&lt;KlpValidatedNode&gt; nodes)</code> |  | [lib/src/composition/validation/klp_tree_validation.dart:9](../../../../../lib/src/composition/validation/klp_tree_validation.dart#L9) |
 | constructor <code>scoped</code> | public | <code>KlpTreeValidation.scoped(this.rootPlacement, Iterable&lt;KlpValidatedNode&gt; nodes)</code> |  | [lib/src/composition/validation/klp_tree_validation.dart:12](../../../../../lib/src/composition/validation/klp_tree_validation.dart#L12) |
-| getter <code>rootId</code> | public | <code>String get rootId</code> |  | [lib/src/composition/validation/klp_tree_validation.dart:14](../../../../../lib/src/composition/validation/klp_tree_validation.dart#L14) |
+| getter <code>rootId</code> | public | <code>String get rootId</code> |  | [lib/src/composition/validation/klp_tree_validation.dart:15](../../../../../lib/src/composition/validation/klp_tree_validation.dart#L15) |
 
 ## 閱讀說明與限制
 

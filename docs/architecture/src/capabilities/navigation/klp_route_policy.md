@@ -52,10 +52,10 @@ ClassDeclaration · public · [lib/src/capabilities/navigation/klp_route_policy.
 
 | 成員 | 可見性 | 簽章／型別 | 來源註解摘要 | 證據 |
 |---|---|---|---|---|
-| field <code>destination</code> | public | <code>final KlpDestination&lt;Object?, Object?&gt; destination</code> |  | [lib/src/capabilities/navigation/klp_route_policy.dart:9](../../../../../lib/src/capabilities/navigation/klp_route_policy.dart#L9) |
-| field <code>beforeEnter</code> | public | <code>final FutureOr&lt;bool&gt; Function(KlpNavigationTransition)? beforeEnter</code> |  | [lib/src/capabilities/navigation/klp_route_policy.dart:10](../../../../../lib/src/capabilities/navigation/klp_route_policy.dart#L10) |
-| field <code>beforeLeave</code> | public | <code>final FutureOr&lt;bool&gt; Function(KlpNavigationTransition)? beforeLeave</code> |  | [lib/src/capabilities/navigation/klp_route_policy.dart:11](../../../../../lib/src/capabilities/navigation/klp_route_policy.dart#L11) |
-| constructor <code>KlpRoutePolicy</code> | public | <code>const KlpRoutePolicy({required this.destination, this.beforeEnter, this.beforeLeave})</code> |  | [lib/src/capabilities/navigation/klp_route_policy.dart:13](../../../../../lib/src/capabilities/navigation/klp_route_policy.dart#L13) |
+| field <code>destination</code> | public | <code>final KlpDestination&lt;Object?, Object?&gt; destination</code> |  | [lib/src/capabilities/navigation/klp_route_policy.dart:8](../../../../../lib/src/capabilities/navigation/klp_route_policy.dart#L8) |
+| field <code>beforeEnter</code> | public | <code>final FutureOr&lt;bool&gt; Function(KlpNavigationTransition)? beforeEnter</code> |  | [lib/src/capabilities/navigation/klp_route_policy.dart:9](../../../../../lib/src/capabilities/navigation/klp_route_policy.dart#L9) |
+| field <code>beforeLeave</code> | public | <code>final FutureOr&lt;bool&gt; Function(KlpNavigationTransition)? beforeLeave</code> |  | [lib/src/capabilities/navigation/klp_route_policy.dart:10](../../../../../lib/src/capabilities/navigation/klp_route_policy.dart#L10) |
+| constructor <code>KlpRoutePolicy</code> | public | <code>const KlpRoutePolicy({ required this.destination, this.beforeEnter, this.beforeLeave, })</code> |  | [lib/src/capabilities/navigation/klp_route_policy.dart:12](../../../../../lib/src/capabilities/navigation/klp_route_policy.dart#L12) |
 
 ## 閱讀說明與限制
 

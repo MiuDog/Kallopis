@@ -7,19 +7,19 @@ part of '../klp_accordion.dart';
 /// 因此元件自行持有——需要預先展開特定項目或觀察變化時用 [initialExpandedIds] 與
 /// [onExpandedChanged]。
 class KlpAccordion extends StatefulWidget {
-	const KlpAccordion({
-		super.key,
-		required this.items,
-		this.multiple = false,
-		this.initialExpandedIds = const <String>{},
-		this.onExpandedChanged,
-	});
+  const KlpAccordion({
+    super.key,
+    required this.items,
+    this.multiple = false,
+    this.initialExpandedIds = const <String>{},
+    this.onExpandedChanged,
+  });
 
-	final List<KlpAccordionItemData> items;
-	final bool multiple;
-	final Set<String> initialExpandedIds;
-	final ValueChanged<Set<String>>? onExpandedChanged;
+  final List<KlpAccordionItemData> items;
+  final bool multiple;
+  final Set<String> initialExpandedIds;
+  final ValueChanged<Set<String>>? onExpandedChanged;
 
-	@override
-	State<KlpAccordion> createState() => _KlpAccordionState();
+  @override
+  State<KlpAccordion> createState() => _KlpAccordionState();
 }

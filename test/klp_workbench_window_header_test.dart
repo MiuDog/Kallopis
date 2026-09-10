@@ -12,31 +12,33 @@ void main() {
     await tester.pumpWidget(
       KlpApp(
         showWindowHeader: false,
-				home: KlpPanelFrame(content: KlpAppScreen(
-          child: SizedBox(
-            width: 1000,
-            child: KlpWorkbenchWindowHeader(
-              titleText: 'Notist',
-              primaryPaneWidth: 268,
-              primaryVisible: true,
-              onTogglePrimary: () => toggles += 1,
-              collapseLabel: '收合側邊面板',
-              expandLabel: '展開側邊面板',
-              secondaryPaneWidth: 300,
-              secondaryVisible: true,
-              onToggleSecondary: () => toggles += 1,
-              collapseSecondaryLabel: '收合檢查器',
-              expandSecondaryLabel: '展開檢查器',
-              appIconButton: KlpIconButton(
-                icon: KlpIcons.edit,
-                label: '設定',
-                size: KlpIconButtonSize.window,
-                tone: KlpIconButtonTone.inline,
-                onPressed: () => settingsOpens += 1,
+        home: KlpPanelFrame(
+          content: KlpAppScreen(
+            child: SizedBox(
+              width: 1000,
+              child: KlpWorkbenchWindowHeader(
+                titleText: 'Notist',
+                primaryPaneWidth: 268,
+                primaryVisible: true,
+                onTogglePrimary: () => toggles += 1,
+                collapseLabel: '收合側邊面板',
+                expandLabel: '展開側邊面板',
+                secondaryPaneWidth: 300,
+                secondaryVisible: true,
+                onToggleSecondary: () => toggles += 1,
+                collapseSecondaryLabel: '收合檢查器',
+                expandSecondaryLabel: '展開檢查器',
+                appIconButton: KlpIconButton(
+                  icon: KlpIcons.edit,
+                  label: '設定',
+                  size: KlpIconButtonSize.window,
+                  tone: KlpIconButtonTone.inline,
+                  onPressed: () => settingsOpens += 1,
+                ),
               ),
             ),
           ),
-        )),
+        ),
       ),
     );
 
@@ -56,7 +58,9 @@ void main() {
       KlpIconButtonTone.inline,
     );
 
-    final appIconSlot = find.byKey(const ValueKey(KlpWindowHeaderKeys.appIconSlot));
+    final appIconSlot = find.byKey(
+      const ValueKey(KlpWindowHeaderKeys.appIconSlot),
+    );
     expect(
       find.descendant(of: appIconSlot, matching: settingsButton),
       findsOneWidget,
@@ -69,10 +73,17 @@ void main() {
 
     final headerRect = tester.getRect(find.byType(KlpWorkbenchWindowHeader));
     final toggleRect = tester.getRect(find.bySemanticsLabel('收合側邊面板'));
-		final windowHeaderMargin = tester.element(find.byType(KlpWorkbenchWindowHeader)).klp.space.windowHeaderMargin;
-		expect(toggleRect.right, headerRect.left + 268 - windowHeaderMargin);
+    final windowHeaderMargin = tester
+        .element(find.byType(KlpWorkbenchWindowHeader))
+        .klp
+        .space
+        .windowHeaderMargin;
+    expect(toggleRect.right, headerRect.left + 268 - windowHeaderMargin);
     final secondaryToggleRect = tester.getRect(find.bySemanticsLabel('收合檢查器'));
-		expect(secondaryToggleRect.left, headerRect.right - 300 + windowHeaderMargin);
+    expect(
+      secondaryToggleRect.left,
+      headerRect.right - 300 + windowHeaderMargin,
+    );
   });
 
   testWidgets('collapsed pane controls remain next to title and actions', (
@@ -83,25 +94,27 @@ void main() {
     await tester.pumpWidget(
       KlpApp(
         showWindowHeader: false,
-				home: KlpPanelFrame(content: KlpAppScreen(
-          child: SizedBox(
-            width: 1000,
-            child: KlpWorkbenchWindowHeader(
-              titleText: 'Notist',
-              primaryPaneWidth: 268,
-              primaryVisible: false,
-              onTogglePrimary: () => primaryExpansions += 1,
-              collapseLabel: '收合側邊面板',
-              expandLabel: '展開側邊面板',
-              secondaryPaneWidth: 300,
-              secondaryVisible: false,
-              onToggleSecondary: () {},
-              collapseSecondaryLabel: '收合檢查器',
-              expandSecondaryLabel: '展開檢查器',
-              showWindowControls: false,
+        home: KlpPanelFrame(
+          content: KlpAppScreen(
+            child: SizedBox(
+              width: 1000,
+              child: KlpWorkbenchWindowHeader(
+                titleText: 'Notist',
+                primaryPaneWidth: 268,
+                primaryVisible: false,
+                onTogglePrimary: () => primaryExpansions += 1,
+                collapseLabel: '收合側邊面板',
+                expandLabel: '展開側邊面板',
+                secondaryPaneWidth: 300,
+                secondaryVisible: false,
+                onToggleSecondary: () {},
+                collapseSecondaryLabel: '收合檢查器',
+                expandSecondaryLabel: '展開檢查器',
+                showWindowControls: false,
+              ),
             ),
           ),
-        )),
+        ),
       ),
     );
 
@@ -115,13 +128,13 @@ void main() {
     final primaryToggleRect = tester.getRect(primaryToggle);
     final secondaryToggleRect = tester.getRect(secondaryToggle);
 
-		final identityGap = tester
-				.element(find.byType(KlpWorkbenchWindowHeader))
-				.klp
-				.geometry
-				.layout
-				.windowIdentityGap;
-		expect(primaryToggleRect.left - titleRect.right, identityGap);
+    final identityGap = tester
+        .element(find.byType(KlpWorkbenchWindowHeader))
+        .klp
+        .geometry
+        .layout
+        .windowIdentityGap;
+    expect(primaryToggleRect.left - titleRect.right, identityGap);
     expect(secondaryToggleRect.left, greaterThan(primaryToggleRect.right));
 
     final gesture = await tester.startGesture(primaryToggleRect.center);
@@ -138,52 +151,55 @@ void main() {
     await tester.pumpWidget(
       KlpApp(
         showWindowHeader: false,
-				home: KlpPanelFrame(content: KlpAppScreen(
-          child: SizedBox(
-            width: 1000,
-            child: KlpWorkbenchWindowHeader(
-              titleText: 'Notist',
-              primaryPaneWidth: 268,
-              primaryVisible: false,
-              onTogglePrimary: () {},
-              collapseLabel: '收合側邊面板',
-              expandLabel: '展開側邊面板',
-              secondaryPaneWidth: 300,
-              secondaryVisible: false,
-              onToggleSecondary: () {},
-              collapseSecondaryLabel: '收合檢查器',
-              expandSecondaryLabel: '展開檢查器',
-              stageTopBar: const KlpStageTopBar(
-                tab: SizedBox(width: 80),
-                actions: [
-                  SizedBox(key: stageActionKey, width: 240, height: 24),
+        home: KlpPanelFrame(
+          content: KlpAppScreen(
+            child: SizedBox(
+              width: 1000,
+              child: KlpWorkbenchWindowHeader(
+                titleText: 'Notist',
+                primaryPaneWidth: 268,
+                primaryVisible: false,
+                onTogglePrimary: () {},
+                collapseLabel: '收合側邊面板',
+                expandLabel: '展開側邊面板',
+                secondaryPaneWidth: 300,
+                secondaryVisible: false,
+                onToggleSecondary: () {},
+                collapseSecondaryLabel: '收合檢查器',
+                expandSecondaryLabel: '展開檢查器',
+                stageTopBar: const KlpStageTopBar(
+                  tab: SizedBox(width: 80),
+                  actions: [
+                    SizedBox(key: stageActionKey, width: 240, height: 24),
+                  ],
+                ),
+                actions: const [
+                  SizedBox(key: headerActionKey, width: 80, height: 24),
                 ],
               ),
-              actions: const [
-                SizedBox(key: headerActionKey, width: 80, height: 24),
-              ],
             ),
           ),
-        )),
+        ),
       ),
     );
 
     final stageActionRect = tester.getRect(find.byKey(stageActionKey));
     final headerActionRect = tester.getRect(find.byKey(headerActionKey));
-		final secondaryToggle = find.byWidgetPredicate(
-			(widget) => widget is KlpIconButton && widget.label == '展開檢查器',
-		);
-		final secondaryToggleRect = tester.getRect(secondaryToggle);
+    final secondaryToggle = find.byWidgetPredicate(
+      (widget) => widget is KlpIconButton && widget.label == '展開檢查器',
+    );
+    final secondaryToggleRect = tester.getRect(secondaryToggle);
     final windowControlsRect = tester.getRect(find.byType(KlpWindowControls));
     final headerRect = tester.getRect(find.byType(KlpWorkbenchWindowHeader));
-		final actionGap = tester.element(find.byType(KlpWorkbenchWindowHeader)).klp.space.actionGap;
+    final actionGap = tester
+        .element(find.byType(KlpWorkbenchWindowHeader))
+        .klp
+        .space
+        .actionGap;
 
-		expect(headerActionRect.left - stageActionRect.right, actionGap);
-		expect(secondaryToggleRect.left - headerActionRect.right, actionGap);
-    expect(
-		windowControlsRect.left - secondaryToggleRect.right,
-		actionGap,
-	);
+    expect(headerActionRect.left - stageActionRect.right, actionGap);
+    expect(secondaryToggleRect.left - headerActionRect.right, actionGap);
+    expect(windowControlsRect.left - secondaryToggleRect.right, actionGap);
     expect(secondaryToggleRect.center.dy, headerRect.center.dy);
   });
 }

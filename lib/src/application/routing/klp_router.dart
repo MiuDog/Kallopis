@@ -66,10 +66,8 @@ final class KlpRouter {
     );
   }
 
-  List<KlpLocation<Object?>> _restore(
-    KlpNavigationRestoration value,
-  ) => _decodeRestoration(
-    value,
-    {for (final route in routes) route.destination.id: route.destination},
-  );
+  List<KlpLocation<Object?>> _restore(KlpNavigationRestoration value) =>
+      _decodeRestoration(value, {
+        for (final route in routes) route.destination.id: route.destination,
+      });
 }

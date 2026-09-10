@@ -49,11 +49,11 @@ ClassDeclaration · public · [lib/src/capabilities/navigation/klp_navigation_tr
 
 | 成員 | 可見性 | 簽章／型別 | 來源註解摘要 | 證據 |
 |---|---|---|---|---|
-| field <code>from</code> | public | <code>final KlpNavigationSnapshot? from</code> |  | [lib/src/capabilities/navigation/klp_navigation_transition.dart:7](../../../../../lib/src/capabilities/navigation/klp_navigation_transition.dart#L7) |
-| field <code>to</code> | public | <code>final KlpNavigationSnapshot to</code> |  | [lib/src/capabilities/navigation/klp_navigation_transition.dart:8](../../../../../lib/src/capabilities/navigation/klp_navigation_transition.dart#L8) |
-| field <code>cancellation</code> | public | <code>final KlpNavigationCancellation cancellation</code> |  | [lib/src/capabilities/navigation/klp_navigation_transition.dart:9](../../../../../lib/src/capabilities/navigation/klp_navigation_transition.dart#L9) |
-| constructor <code>KlpNavigationTransition</code> | public | <code>const KlpNavigationTransition(this.from, this.to, this.cancellation)</code> |  | [lib/src/capabilities/navigation/klp_navigation_transition.dart:11](../../../../../lib/src/capabilities/navigation/klp_navigation_transition.dart#L11) |
-| getter <code>isInitial</code> | public | <code>bool get isInitial</code> |  | [lib/src/capabilities/navigation/klp_navigation_transition.dart:13](../../../../../lib/src/capabilities/navigation/klp_navigation_transition.dart#L13) |
+| field <code>from</code> | public | <code>final KlpNavigationSnapshot? from</code> |  | [lib/src/capabilities/navigation/klp_navigation_transition.dart:6](../../../../../lib/src/capabilities/navigation/klp_navigation_transition.dart#L6) |
+| field <code>to</code> | public | <code>final KlpNavigationSnapshot to</code> |  | [lib/src/capabilities/navigation/klp_navigation_transition.dart:7](../../../../../lib/src/capabilities/navigation/klp_navigation_transition.dart#L7) |
+| field <code>cancellation</code> | public | <code>final KlpNavigationCancellation cancellation</code> |  | [lib/src/capabilities/navigation/klp_navigation_transition.dart:8](../../../../../lib/src/capabilities/navigation/klp_navigation_transition.dart#L8) |
+| constructor <code>KlpNavigationTransition</code> | public | <code>const KlpNavigationTransition(this.from, this.to, this.cancellation)</code> |  | [lib/src/capabilities/navigation/klp_navigation_transition.dart:10](../../../../../lib/src/capabilities/navigation/klp_navigation_transition.dart#L10) |
+| getter <code>isInitial</code> | public | <code>bool get isInitial</code> |  | [lib/src/capabilities/navigation/klp_navigation_transition.dart:12](../../../../../lib/src/capabilities/navigation/klp_navigation_transition.dart#L12) |
 
 ## 閱讀說明與限制
 

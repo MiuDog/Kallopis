@@ -6,7 +6,7 @@ part of '../klp_navigator_models.dart';
 /// [KlpNavigatorComponent] 三種具體模型。
 @immutable
 sealed class KlpNavigatorItem {
-	const KlpNavigatorItem({required this.id});
+  const KlpNavigatorItem({required this.id});
 
-	final String id;
+  final String id;
 }

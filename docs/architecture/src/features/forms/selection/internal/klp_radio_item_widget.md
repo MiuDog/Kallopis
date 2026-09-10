@@ -52,12 +52,12 @@ ClassDeclaration · private · [lib/src/features/forms/selection/internal/klp_ra
 
 | 成員 | 可見性 | 簽章／型別 | 來源註解摘要 | 證據 |
 |---|---|---|---|---|
-| constructor <code>_KlpRadioItem</code> | private | <code>const _KlpRadioItem({required this.label, this.description, required this.selected, required this.onPressed})</code> |  | [lib/src/features/forms/selection/internal/klp_radio_item_widget.dart:4](../../../../../../../lib/src/features/forms/selection/internal/klp_radio_item_widget.dart#L4) |
-| field <code>label</code> | public | <code>final String label</code> |  | [lib/src/features/forms/selection/internal/klp_radio_item_widget.dart:6](../../../../../../../lib/src/features/forms/selection/internal/klp_radio_item_widget.dart#L6) |
-| field <code>description</code> | public | <code>final String? description</code> |  | [lib/src/features/forms/selection/internal/klp_radio_item_widget.dart:7](../../../../../../../lib/src/features/forms/selection/internal/klp_radio_item_widget.dart#L7) |
-| field <code>selected</code> | public | <code>final bool selected</code> |  | [lib/src/features/forms/selection/internal/klp_radio_item_widget.dart:8](../../../../../../../lib/src/features/forms/selection/internal/klp_radio_item_widget.dart#L8) |
-| field <code>onPressed</code> | public | <code>final VoidCallback onPressed</code> |  | [lib/src/features/forms/selection/internal/klp_radio_item_widget.dart:9](../../../../../../../lib/src/features/forms/selection/internal/klp_radio_item_widget.dart#L9) |
-| method <code>build</code> | public | <code>Widget build(BuildContext context)</code> |  | [lib/src/features/forms/selection/internal/klp_radio_item_widget.dart:11](../../../../../../../lib/src/features/forms/selection/internal/klp_radio_item_widget.dart#L11) |
+| constructor <code>_KlpRadioItem</code> | private | <code>const _KlpRadioItem({ required this.label, this.description, required this.selected, required this.onPressed, })</code> |  | [lib/src/features/forms/selection/internal/klp_radio_item_widget.dart:4](../../../../../../../lib/src/features/forms/selection/internal/klp_radio_item_widget.dart#L4) |
+| field <code>label</code> | public | <code>final String label</code> |  | [lib/src/features/forms/selection/internal/klp_radio_item_widget.dart:11](../../../../../../../lib/src/features/forms/selection/internal/klp_radio_item_widget.dart#L11) |
+| field <code>description</code> | public | <code>final String? description</code> |  | [lib/src/features/forms/selection/internal/klp_radio_item_widget.dart:12](../../../../../../../lib/src/features/forms/selection/internal/klp_radio_item_widget.dart#L12) |
+| field <code>selected</code> | public | <code>final bool selected</code> |  | [lib/src/features/forms/selection/internal/klp_radio_item_widget.dart:13](../../../../../../../lib/src/features/forms/selection/internal/klp_radio_item_widget.dart#L13) |
+| field <code>onPressed</code> | public | <code>final VoidCallback onPressed</code> |  | [lib/src/features/forms/selection/internal/klp_radio_item_widget.dart:14](../../../../../../../lib/src/features/forms/selection/internal/klp_radio_item_widget.dart#L14) |
+| method <code>build</code> | public | <code>Widget build(BuildContext context)</code> |  | [lib/src/features/forms/selection/internal/klp_radio_item_widget.dart:16](../../../../../../../lib/src/features/forms/selection/internal/klp_radio_item_widget.dart#L16) |
 
 ## 閱讀說明與限制
 

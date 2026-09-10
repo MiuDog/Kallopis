@@ -104,9 +104,9 @@ ClassDeclaration · public · [lib/src/features/navigation/rail/internal/klp_rai
 
 | 成員 | 可見性 | 簽章／型別 | 來源註解摘要 | 證據 |
 |---|---|---|---|---|
-| constructor <code>KlpRailAdapter</code> | public | <code>const KlpRailAdapter()</code> |  | [lib/src/features/navigation/rail/internal/klp_rail_adapter.dart:21](../../../../../../../lib/src/features/navigation/rail/internal/klp_rail_adapter.dart#L21) |
-| getter <code>contract</code> | public | <code>KlpDefinition&lt;KlpNode&gt; get contract</code> |  | [lib/src/features/navigation/rail/internal/klp_rail_adapter.dart:23](../../../../../../../lib/src/features/navigation/rail/internal/klp_rail_adapter.dart#L23) |
-| method <code>prepare</code> | public | <code>KlpPreparedNode prepare(KlpNode node, KlpValidatedNode snapshot, KlpPrepareContext context)</code> |  | [lib/src/features/navigation/rail/internal/klp_rail_adapter.dart:26](../../../../../../../lib/src/features/navigation/rail/internal/klp_rail_adapter.dart#L26) |
+| constructor <code>KlpRailAdapter</code> | public | <code>const KlpRailAdapter()</code> |  | [lib/src/features/navigation/rail/internal/klp_rail_adapter.dart:20](../../../../../../../lib/src/features/navigation/rail/internal/klp_rail_adapter.dart#L20) |
+| getter <code>contract</code> | public | <code>KlpDefinition&lt;KlpNode&gt; get contract</code> |  | [lib/src/features/navigation/rail/internal/klp_rail_adapter.dart:22](../../../../../../../lib/src/features/navigation/rail/internal/klp_rail_adapter.dart#L22) |
+| method <code>prepare</code> | public | <code>KlpPreparedNode prepare( KlpNode node, KlpValidatedNode snapshot, KlpPrepareContext context, )</code> |  | [lib/src/features/navigation/rail/internal/klp_rail_adapter.dart:29](../../../../../../../lib/src/features/navigation/rail/internal/klp_rail_adapter.dart#L29) |
 
 ## 閱讀說明與限制
 

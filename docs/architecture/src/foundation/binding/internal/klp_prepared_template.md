@@ -64,8 +64,8 @@ ClassDeclaration · public · [lib/src/foundation/binding/internal/klp_prepared_
 
 | 成員 | 可見性 | 簽章／型別 | 來源註解摘要 | 證據 |
 |---|---|---|---|---|
-| constructor <code>KlpPreparedTemplate</code> | public | <code>const KlpPreparedTemplate()</code> |  | [lib/src/foundation/binding/internal/klp_prepared_template.dart:13](../../../../../../lib/src/foundation/binding/internal/klp_prepared_template.dart#L13) |
-| method <code>materialize</code> | public | <code>KlpBoundTemplate materialize(List&lt;KlpBoundTemplate&gt; children)</code> |  | [lib/src/foundation/binding/internal/klp_prepared_template.dart:15](../../../../../../lib/src/foundation/binding/internal/klp_prepared_template.dart#L15) |
+| constructor <code>KlpPreparedTemplate</code> | public | <code>const KlpPreparedTemplate()</code> |  | [lib/src/foundation/binding/internal/klp_prepared_template.dart:12](../../../../../../lib/src/foundation/binding/internal/klp_prepared_template.dart#L12) |
+| method <code>materialize</code> | public | <code>KlpBoundTemplate materialize(List&lt;KlpBoundTemplate&gt; children)</code> |  | [lib/src/foundation/binding/internal/klp_prepared_template.dart:14](../../../../../../lib/src/foundation/binding/internal/klp_prepared_template.dart#L14) |
 
 ## 閱讀說明與限制
 

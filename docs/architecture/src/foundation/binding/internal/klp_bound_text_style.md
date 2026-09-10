@@ -46,13 +46,13 @@ ClassDeclaration · public · [lib/src/foundation/binding/internal/klp_bound_tex
 
 | 成員 | 可見性 | 簽章／型別 | 來源註解摘要 | 證據 |
 |---|---|---|---|---|
-| field <code>color</code> | public | <code>final KlpColor color</code> |  | [lib/src/foundation/binding/internal/klp_bound_text_style.dart:6](../../../../../../lib/src/foundation/binding/internal/klp_bound_text_style.dart#L6) |
-| field <code>fontFamily</code> | public | <code>final KlpFontFamily fontFamily</code> |  | [lib/src/foundation/binding/internal/klp_bound_text_style.dart:7](../../../../../../lib/src/foundation/binding/internal/klp_bound_text_style.dart#L7) |
-| field <code>fontSize</code> | public | <code>final KlpFontSize fontSize</code> |  | [lib/src/foundation/binding/internal/klp_bound_text_style.dart:8](../../../../../../lib/src/foundation/binding/internal/klp_bound_text_style.dart#L8) |
-| field <code>fontWeight</code> | public | <code>final KlpFontWeight fontWeight</code> |  | [lib/src/foundation/binding/internal/klp_bound_text_style.dart:9](../../../../../../lib/src/foundation/binding/internal/klp_bound_text_style.dart#L9) |
-| field <code>lineHeight</code> | public | <code>final KlpLineHeight lineHeight</code> |  | [lib/src/foundation/binding/internal/klp_bound_text_style.dart:10](../../../../../../lib/src/foundation/binding/internal/klp_bound_text_style.dart#L10) |
-| field <code>letterSpacing</code> | public | <code>final KlpLetterSpacing letterSpacing</code> |  | [lib/src/foundation/binding/internal/klp_bound_text_style.dart:11](../../../../../../lib/src/foundation/binding/internal/klp_bound_text_style.dart#L11) |
-| constructor <code>KlpBoundTextStyle</code> | public | <code>const KlpBoundTextStyle({ required this.color, required this.fontFamily, required this.fontSize, required this.fontWeight, required this.lineHeight, required this.letterSpacing, })</code> |  | [lib/src/foundation/binding/internal/klp_bound_text_style.dart:13](../../../../../../lib/src/foundation/binding/internal/klp_bound_text_style.dart#L13) |
+| field <code>color</code> | public | <code>final KlpColor color</code> |  | [lib/src/foundation/binding/internal/klp_bound_text_style.dart:5](../../../../../../lib/src/foundation/binding/internal/klp_bound_text_style.dart#L5) |
+| field <code>fontFamily</code> | public | <code>final KlpFontFamily fontFamily</code> |  | [lib/src/foundation/binding/internal/klp_bound_text_style.dart:6](../../../../../../lib/src/foundation/binding/internal/klp_bound_text_style.dart#L6) |
+| field <code>fontSize</code> | public | <code>final KlpFontSize fontSize</code> |  | [lib/src/foundation/binding/internal/klp_bound_text_style.dart:7](../../../../../../lib/src/foundation/binding/internal/klp_bound_text_style.dart#L7) |
+| field <code>fontWeight</code> | public | <code>final KlpFontWeight fontWeight</code> |  | [lib/src/foundation/binding/internal/klp_bound_text_style.dart:8](../../../../../../lib/src/foundation/binding/internal/klp_bound_text_style.dart#L8) |
+| field <code>lineHeight</code> | public | <code>final KlpLineHeight lineHeight</code> |  | [lib/src/foundation/binding/internal/klp_bound_text_style.dart:9](../../../../../../lib/src/foundation/binding/internal/klp_bound_text_style.dart#L9) |
+| field <code>letterSpacing</code> | public | <code>final KlpLetterSpacing letterSpacing</code> |  | [lib/src/foundation/binding/internal/klp_bound_text_style.dart:10](../../../../../../lib/src/foundation/binding/internal/klp_bound_text_style.dart#L10) |
+| constructor <code>KlpBoundTextStyle</code> | public | <code>const KlpBoundTextStyle({ required this.color, required this.fontFamily, required this.fontSize, required this.fontWeight, required this.lineHeight, required this.letterSpacing, })</code> |  | [lib/src/foundation/binding/internal/klp_bound_text_style.dart:12](../../../../../../lib/src/foundation/binding/internal/klp_bound_text_style.dart#L12) |
 
 ## 閱讀說明與限制
 

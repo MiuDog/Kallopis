@@ -8,32 +8,36 @@ import '../../../styling/primitives/klp_style_value.dart';
 
 /// 準備階段已取得風格值，提交後只組合本庫封閉輸出。
 final class KlpPreparedScreen implements KlpPreparedNode {
+  final KlpColor background;
+  final KlpRadius radius;
+  final KlpDistance inset;
+  final String accessibilityLabel;
 
-	final KlpColor background;
-	final KlpRadius radius;
-	final KlpDistance inset;
-	final String accessibilityLabel;
+  const KlpPreparedScreen(
+    this.background,
+    this.radius,
+    this.inset,
+    this.accessibilityLabel,
+  );
 
-	const KlpPreparedScreen(
-		this.background,
-		this.radius,
-		this.inset,
-		this.accessibilityLabel,
-	);
+  @override
+  KlpPlacementResource createResource(KlpValidatedNode node) =>
+      KlpDefaultPlacement(node);
 
-	@override
-	KlpPlacementResource createResource(KlpValidatedNode node) => KlpDefaultPlacement(node);
-
-	@override
-	KlpBoundTemplate materialize(KlpPlacementResource resource, List<KlpBoundTemplate> children, KlpFrameLease lease) {
-		return KlpBoundScreen(
-			accessibilityLabel: accessibilityLabel,
-			child: KlpBoundSurface(
-				background: background,
-				radius: radius,
-				inset: inset,
-				child: children.single,
-			),
-		);
-	}
+  @override
+  KlpBoundTemplate materialize(
+    KlpPlacementResource resource,
+    List<KlpBoundTemplate> children,
+    KlpFrameLease lease,
+  ) {
+    return KlpBoundScreen(
+      accessibilityLabel: accessibilityLabel,
+      child: KlpBoundSurface(
+        background: background,
+        radius: radius,
+        inset: inset,
+        child: children.single,
+      ),
+    );
+  }
 }

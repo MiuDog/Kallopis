@@ -52,10 +52,10 @@ ClassDeclaration · private · [lib/src/foundation/interaction/filter/primitives
 
 | 成員 | 可見性 | 簽章／型別 | 來源註解摘要 | 證據 |
 |---|---|---|---|---|
-| constructor <code>_KlpPresenceLabel</code> | private | <code>const _KlpPresenceLabel({ required this.label, required this.active, })</code> |  | [lib/src/foundation/interaction/filter/primitives/klp_presence_label.dart:4](../../../../../../../lib/src/foundation/interaction/filter/primitives/klp_presence_label.dart#L4) |
-| field <code>label</code> | public | <code>final String label</code> |  | [lib/src/foundation/interaction/filter/primitives/klp_presence_label.dart:9](../../../../../../../lib/src/foundation/interaction/filter/primitives/klp_presence_label.dart#L9) |
-| field <code>active</code> | public | <code>final bool active</code> |  | [lib/src/foundation/interaction/filter/primitives/klp_presence_label.dart:10](../../../../../../../lib/src/foundation/interaction/filter/primitives/klp_presence_label.dart#L10) |
-| method <code>build</code> | public | <code>Widget build(BuildContext context)</code> |  | [lib/src/foundation/interaction/filter/primitives/klp_presence_label.dart:12](../../../../../../../lib/src/foundation/interaction/filter/primitives/klp_presence_label.dart#L12) |
+| constructor <code>_KlpPresenceLabel</code> | private | <code>const _KlpPresenceLabel({required this.label, required this.active})</code> |  | [lib/src/foundation/interaction/filter/primitives/klp_presence_label.dart:4](../../../../../../../lib/src/foundation/interaction/filter/primitives/klp_presence_label.dart#L4) |
+| field <code>label</code> | public | <code>final String label</code> |  | [lib/src/foundation/interaction/filter/primitives/klp_presence_label.dart:6](../../../../../../../lib/src/foundation/interaction/filter/primitives/klp_presence_label.dart#L6) |
+| field <code>active</code> | public | <code>final bool active</code> |  | [lib/src/foundation/interaction/filter/primitives/klp_presence_label.dart:7](../../../../../../../lib/src/foundation/interaction/filter/primitives/klp_presence_label.dart#L7) |
+| method <code>build</code> | public | <code>Widget build(BuildContext context)</code> |  | [lib/src/foundation/interaction/filter/primitives/klp_presence_label.dart:9](../../../../../../../lib/src/foundation/interaction/filter/primitives/klp_presence_label.dart#L9) |
 
 ## 閱讀說明與限制
 

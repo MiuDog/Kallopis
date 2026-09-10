@@ -65,7 +65,7 @@ ClassDeclaration · public · [lib/src/foundation/interaction/keybinding/klp_key
 | field <code>focusNode</code> | public | <code>final FocusNode? focusNode</code> |  | [lib/src/foundation/interaction/keybinding/klp_key_binding_region.dart:21](../../../../../../lib/src/foundation/interaction/keybinding/klp_key_binding_region.dart#L21) |
 | field <code>autofocus</code> | public | <code>final bool autofocus</code> |  | [lib/src/foundation/interaction/keybinding/klp_key_binding_region.dart:22](../../../../../../lib/src/foundation/interaction/keybinding/klp_key_binding_region.dart#L22) |
 | method <code>_activate</code> | private | <code>void _activate()</code> |  | [lib/src/foundation/interaction/keybinding/klp_key_binding_region.dart:24](../../../../../../lib/src/foundation/interaction/keybinding/klp_key_binding_region.dart#L24) |
-| method <code>build</code> | public | <code>Widget build(BuildContext context)</code> |  | [lib/src/foundation/interaction/keybinding/klp_key_binding_region.dart:26](../../../../../../lib/src/foundation/interaction/keybinding/klp_key_binding_region.dart#L26) |
+| method <code>build</code> | public | <code>Widget build(BuildContext context)</code> |  | [lib/src/foundation/interaction/keybinding/klp_key_binding_region.dart:27](../../../../../../lib/src/foundation/interaction/keybinding/klp_key_binding_region.dart#L27) |
 
 ## 閱讀說明與限制
 

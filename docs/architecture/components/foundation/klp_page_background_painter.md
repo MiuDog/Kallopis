@@ -28,7 +28,7 @@ flowchart TD
 
 ## 程式碼證據
 
-- 檔案路徑：[`lib/src/foundation/surface/page_background/klp_page_background_painter.dart`](../../../../lib/src/foundation/surface/page_background/klp_page_background_painter.dart#L40)
+- 檔案路徑：[`lib/src/foundation/surface/page_background/klp_page_background_painter.dart`](../../../../lib/src/foundation/surface/page_background/klp_page_background_painter.dart#L41)
 - 宣告型態：`StatelessWidget`
 
 ## 閱讀說明

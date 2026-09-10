@@ -57,7 +57,7 @@ ClassDeclaration · public · [lib/src/features/overlays/popup/klp_popup_interac
 | constructor <code>KlpPopupInteractionScope</code> | public | <code>const KlpPopupInteractionScope({ super.key, required this.topInset, required super.child, })</code> |  | [lib/src/features/overlays/popup/klp_popup_interaction_scope.dart:5](../../../../../../lib/src/features/overlays/popup/klp_popup_interaction_scope.dart#L5) |
 | field <code>topInset</code> | public | <code>final double topInset</code> |  | [lib/src/features/overlays/popup/klp_popup_interaction_scope.dart:11](../../../../../../lib/src/features/overlays/popup/klp_popup_interaction_scope.dart#L11) |
 | method <code>topInsetOf</code> | public | <code>static double topInsetOf(BuildContext context)</code> |  | [lib/src/features/overlays/popup/klp_popup_interaction_scope.dart:13](../../../../../../lib/src/features/overlays/popup/klp_popup_interaction_scope.dart#L13) |
-| method <code>updateShouldNotify</code> | public | <code>bool updateShouldNotify(KlpPopupInteractionScope oldWidget)</code> |  | [lib/src/features/overlays/popup/klp_popup_interaction_scope.dart:16](../../../../../../lib/src/features/overlays/popup/klp_popup_interaction_scope.dart#L16) |
+| method <code>updateShouldNotify</code> | public | <code>bool updateShouldNotify(KlpPopupInteractionScope oldWidget)</code> |  | [lib/src/features/overlays/popup/klp_popup_interaction_scope.dart:19](../../../../../../lib/src/features/overlays/popup/klp_popup_interaction_scope.dart#L19) |
 
 ## 閱讀說明與限制
 

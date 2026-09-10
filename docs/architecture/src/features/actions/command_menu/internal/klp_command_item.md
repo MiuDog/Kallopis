@@ -52,10 +52,10 @@ ClassDeclaration · private · [lib/src/features/actions/command_menu/internal/k
 
 | 成員 | 可見性 | 簽章／型別 | 來源註解摘要 | 證據 |
 |---|---|---|---|---|
-| constructor <code>_KlpCommandItem</code> | private | <code>const _KlpCommandItem({ required this.data, this.keyboardHighlighted = false, })</code> |  | [lib/src/features/actions/command_menu/internal/klp_command_item.dart:4](../../../../../../../lib/src/features/actions/command_menu/internal/klp_command_item.dart#L4) |
-| field <code>data</code> | public | <code>final KlpCommandItemData data</code> |  | [lib/src/features/actions/command_menu/internal/klp_command_item.dart:9](../../../../../../../lib/src/features/actions/command_menu/internal/klp_command_item.dart#L9) |
-| field <code>keyboardHighlighted</code> | public | <code>final bool keyboardHighlighted</code> | 由 [KlpCommandMenu] 以鍵盤方向鍵移動出的高亮狀態。沿用與 [KlpCommandItemData.selected] 相同的底色語言。 | [lib/src/features/actions/command_menu/internal/klp_command_item.dart:13](../../../../../../../lib/src/features/actions/command_menu/internal/klp_command_item.dart#L13) |
-| method <code>build</code> | public | <code>Widget build(BuildContext context)</code> |  | [lib/src/features/actions/command_menu/internal/klp_command_item.dart:15](../../../../../../../lib/src/features/actions/command_menu/internal/klp_command_item.dart#L15) |
+| constructor <code>_KlpCommandItem</code> | private | <code>const _KlpCommandItem({required this.data, this.keyboardHighlighted = false})</code> |  | [lib/src/features/actions/command_menu/internal/klp_command_item.dart:4](../../../../../../../lib/src/features/actions/command_menu/internal/klp_command_item.dart#L4) |
+| field <code>data</code> | public | <code>final KlpCommandItemData data</code> |  | [lib/src/features/actions/command_menu/internal/klp_command_item.dart:6](../../../../../../../lib/src/features/actions/command_menu/internal/klp_command_item.dart#L6) |
+| field <code>keyboardHighlighted</code> | public | <code>final bool keyboardHighlighted</code> | 由 [KlpCommandMenu] 以鍵盤方向鍵移動出的高亮狀態。沿用與 [KlpCommandItemData.selected] 相同的底色語言。 | [lib/src/features/actions/command_menu/internal/klp_command_item.dart:10](../../../../../../../lib/src/features/actions/command_menu/internal/klp_command_item.dart#L10) |
+| method <code>build</code> | public | <code>Widget build(BuildContext context)</code> |  | [lib/src/features/actions/command_menu/internal/klp_command_item.dart:12](../../../../../../../lib/src/features/actions/command_menu/internal/klp_command_item.dart#L12) |
 
 ## 閱讀說明與限制
 

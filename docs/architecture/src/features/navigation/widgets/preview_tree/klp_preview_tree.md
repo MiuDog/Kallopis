@@ -75,12 +75,12 @@ ClassDeclaration · public · [lib/src/features/navigation/widgets/preview_tree/
 
 | 成員 | 可見性 | 簽章／型別 | 來源註解摘要 | 證據 |
 |---|---|---|---|---|
-| constructor <code>KlpPreviewTree</code> | public | <code>const KlpPreviewTree({super.key, required this.label, required this.nodes, this.enabled = true, this.onSelected})</code> |  | [lib/src/features/navigation/widgets/preview_tree/klp_preview_tree.dart:14](../../../../../../../lib/src/features/navigation/widgets/preview_tree/klp_preview_tree.dart#L14) |
-| field <code>label</code> | public | <code>final String label</code> |  | [lib/src/features/navigation/widgets/preview_tree/klp_preview_tree.dart:16](../../../../../../../lib/src/features/navigation/widgets/preview_tree/klp_preview_tree.dart#L16) |
-| field <code>nodes</code> | public | <code>final List&lt;KlpPreviewTreeNode&gt; nodes</code> |  | [lib/src/features/navigation/widgets/preview_tree/klp_preview_tree.dart:17](../../../../../../../lib/src/features/navigation/widgets/preview_tree/klp_preview_tree.dart#L17) |
-| field <code>enabled</code> | public | <code>final bool enabled</code> |  | [lib/src/features/navigation/widgets/preview_tree/klp_preview_tree.dart:18](../../../../../../../lib/src/features/navigation/widgets/preview_tree/klp_preview_tree.dart#L18) |
-| field <code>onSelected</code> | public | <code>final ValueChanged&lt;String&gt;? onSelected</code> |  | [lib/src/features/navigation/widgets/preview_tree/klp_preview_tree.dart:19](../../../../../../../lib/src/features/navigation/widgets/preview_tree/klp_preview_tree.dart#L19) |
-| method <code>build</code> | public | <code>Widget build(BuildContext context)</code> |  | [lib/src/features/navigation/widgets/preview_tree/klp_preview_tree.dart:21](../../../../../../../lib/src/features/navigation/widgets/preview_tree/klp_preview_tree.dart#L21) |
+| constructor <code>KlpPreviewTree</code> | public | <code>const KlpPreviewTree({ super.key, required this.label, required this.nodes, this.enabled = true, this.onSelected, })</code> |  | [lib/src/features/navigation/widgets/preview_tree/klp_preview_tree.dart:14](../../../../../../../lib/src/features/navigation/widgets/preview_tree/klp_preview_tree.dart#L14) |
+| field <code>label</code> | public | <code>final String label</code> |  | [lib/src/features/navigation/widgets/preview_tree/klp_preview_tree.dart:22](../../../../../../../lib/src/features/navigation/widgets/preview_tree/klp_preview_tree.dart#L22) |
+| field <code>nodes</code> | public | <code>final List&lt;KlpPreviewTreeNode&gt; nodes</code> |  | [lib/src/features/navigation/widgets/preview_tree/klp_preview_tree.dart:23](../../../../../../../lib/src/features/navigation/widgets/preview_tree/klp_preview_tree.dart#L23) |
+| field <code>enabled</code> | public | <code>final bool enabled</code> |  | [lib/src/features/navigation/widgets/preview_tree/klp_preview_tree.dart:24](../../../../../../../lib/src/features/navigation/widgets/preview_tree/klp_preview_tree.dart#L24) |
+| field <code>onSelected</code> | public | <code>final ValueChanged&lt;String&gt;? onSelected</code> |  | [lib/src/features/navigation/widgets/preview_tree/klp_preview_tree.dart:25](../../../../../../../lib/src/features/navigation/widgets/preview_tree/klp_preview_tree.dart#L25) |
+| method <code>build</code> | public | <code>Widget build(BuildContext context)</code> |  | [lib/src/features/navigation/widgets/preview_tree/klp_preview_tree.dart:27](../../../../../../../lib/src/features/navigation/widgets/preview_tree/klp_preview_tree.dart#L27) |
 
 ## 閱讀說明與限制
 

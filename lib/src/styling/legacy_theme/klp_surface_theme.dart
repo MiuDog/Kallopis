@@ -10,300 +10,300 @@ part '../presets/legacy/default_surface.dart';
 /// 多種手法各有適用場景。不推薦單純依賴陰影；現代介面更推崇純色階明度差、
 /// 清晰邊框、壓克力霧化或微漸層光澤。
 enum KlpSurfaceSeparation {
-	/// 單調特殊顏色 / 表面色階分層（純色明度階梯，無邊框無陰影）。
-	tone,
+  /// 單調特殊顏色 / 表面色階分層（純色明度階梯，無邊框無陰影）。
+  tone,
 
-	/// 用實線邊框分層，不使用陰影（推薦之清晰結構手法）。
-	outline,
+  /// 用實線邊框分層，不使用陰影（推薦之清晰結構手法）。
+  outline,
 
-	/// 霧化透明 / 毛玻璃分層（BackdropFilter 搭配半透明表面）。
-	frosted,
+  /// 霧化透明 / 毛玻璃分層（BackdropFilter 搭配半透明表面）。
+  frosted,
 
-	/// 原生 Box 漸層與微光分層。
-	gradient,
+  /// 原生 Box 漸層與微光分層。
+  gradient,
 
-	/// 用陰影分層（不推薦之傳統做法，僅為相容性保留）。
-	shadow,
+  /// 用陰影分層（不推薦之傳統做法，僅為相容性保留）。
+  shadow,
 }
 
 /// Layer 2：表面分層與陰影的 semantic token。
 @immutable
 class KlpSurfaceTheme extends ThemeExtension<KlpSurfaceTheme> {
-	const KlpSurfaceTheme({
-		required this.separation,
-		required this.overlayBlur,
-		required this.overlaySpread,
-		required this.overlayOffsetY,
-		required this.overlayShadowOpacity,
-		required this.scrimOpacity,
-		required this.selectionWashOpacity,
-		required this.focusWashOpacity,
-		required this.statusFillOpacity,
-		required this.pressProgressOpacity,
-		required this.diffFillOpacity,
-		required this.gridLineOpacity,
-		required this.veilOpacity,
-		required this.statusRowOpacity,
-		required this.statusRowSelectedOpacity,
-		required this.statusRowOpacityDark,
-		required this.statusRowSelectedOpacityDark,
-		required this.frostedOpacity,
-		required this.frostedVeilOpacity,
-		this.backdropBlurSigma = 12,
-		this.dragOpacity = KlpScale.opacity820,
-		this.dragSourceOpacity = KlpScale.opacity350,
-		this.themePreviewDisabledOpacity = KlpScale.opacity620,
-		this.listStatusOpacity = KlpScale.opacity140,
-		this.listStatusSelectedOpacity = KlpScale.opacity320,
-		this.accentSoftOpacityLight = KlpScale.opacity160,
-		this.accentSoftOpacityDark = KlpScale.opacity220,
-		this.windowPaneOpacityLight = KlpTransparency.lightPaneOpacity,
-		this.windowPaneOpacityDark = KlpTransparency.darkPaneOpacity,
-		this.invalidFillOpacity = KlpScale.opacity180,
-	});
+  const KlpSurfaceTheme({
+    required this.separation,
+    required this.overlayBlur,
+    required this.overlaySpread,
+    required this.overlayOffsetY,
+    required this.overlayShadowOpacity,
+    required this.scrimOpacity,
+    required this.selectionWashOpacity,
+    required this.focusWashOpacity,
+    required this.statusFillOpacity,
+    required this.pressProgressOpacity,
+    required this.diffFillOpacity,
+    required this.gridLineOpacity,
+    required this.veilOpacity,
+    required this.statusRowOpacity,
+    required this.statusRowSelectedOpacity,
+    required this.statusRowOpacityDark,
+    required this.statusRowSelectedOpacityDark,
+    required this.frostedOpacity,
+    required this.frostedVeilOpacity,
+    this.backdropBlurSigma = 12,
+    this.dragOpacity = KlpScale.opacity820,
+    this.dragSourceOpacity = KlpScale.opacity350,
+    this.themePreviewDisabledOpacity = KlpScale.opacity620,
+    this.listStatusOpacity = KlpScale.opacity140,
+    this.listStatusSelectedOpacity = KlpScale.opacity320,
+    this.accentSoftOpacityLight = KlpScale.opacity160,
+    this.accentSoftOpacityDark = KlpScale.opacity220,
+    this.windowPaneOpacityLight = KlpTransparency.lightPaneOpacity,
+    this.windowPaneOpacityDark = KlpTransparency.darkPaneOpacity,
+    this.invalidFillOpacity = KlpScale.opacity180,
+  });
 
-	final KlpSurfaceSeparation separation;
+  final KlpSurfaceSeparation separation;
 
-	final double overlayBlur;
-	final double overlaySpread;
-	final double overlayOffsetY;
-	final double overlayShadowOpacity;
+  final double overlayBlur;
+  final double overlaySpread;
+  final double overlayOffsetY;
+  final double overlayShadowOpacity;
 
-	final double scrimOpacity;
+  final double scrimOpacity;
 
-	/// 一般互動狀態的背景高亮強度。用前景色以低 alpha 疊上，因此亮態壓暗、暗態壓亮，
-	/// 且底下表面原本的階層差不會被蓋掉。
-	///
-	/// Explorer 與表單不使用這層，改以低／高對比虛線區分 hover 與選取。
-	final double selectionWashOpacity;
+  /// 一般互動狀態的背景高亮強度。用前景色以低 alpha 疊上，因此亮態壓暗、暗態壓亮，
+  /// 且底下表面原本的階層差不會被蓋掉。
+  ///
+  /// Explorer 與表單不使用這層，改以低／高對比虛線區分 hover 與選取。
+  final double selectionWashOpacity;
 
-	/// 鍵盤聚焦時的高亮強度。
-	///
-	/// 必須比 [selectionWashOpacity] 強：hover 與 focus 若同強度，鍵盤使用者在
-	/// 滑鼠同時停在別處時就分不出焦點在哪。也不能借用其他角色的透明度——借用會在
-	/// 調整那個角色時靜默失去同步。
-	final double focusWashOpacity;
+  /// 鍵盤聚焦時的高亮強度。
+  ///
+  /// 必須比 [selectionWashOpacity] 強：hover 與 focus 若同強度，鍵盤使用者在
+  /// 滑鼠同時停在別處時就分不出焦點在哪。也不能借用其他角色的透明度——借用會在
+  /// 調整那個角色時靜默失去同步。
+  final double focusWashOpacity;
 
-	/// 語意色當底時的疊層強度（danger 按鈕、狀態晶片）。
-	final double statusFillOpacity;
+  /// 語意色當底時的疊層強度（danger 按鈕、狀態晶片）。
+  final double statusFillOpacity;
 
-	/// 長按進度條的疊層強度。
-	final double pressProgressOpacity;
+  /// 長按進度條的疊層強度。
+  final double pressProgressOpacity;
 
-	/// 差異檢視中整行增刪底色的強度。
-	final double diffFillOpacity;
+  /// 差異檢視中整行增刪底色的強度。
+  final double diffFillOpacity;
 
-	/// 資料格線由前景色推導時的強度。
-	final double gridLineOpacity;
+  /// 資料格線由前景色推導時的強度。
+  final double gridLineOpacity;
 
-	/// 載入／禁用時蓋在內容上的遮罩強度。
-	final double veilOpacity;
+  /// 載入／禁用時蓋在內容上的遮罩強度。
+  final double veilOpacity;
 
-	/// 資料列以語意色染底時的強度。亮暗兩態分開，因為同一個 alpha 疊在深底與淺底上
-	/// 讀起來的強度差很多。
-	final double statusRowOpacity;
+  /// 資料列以語意色染底時的強度。亮暗兩態分開，因為同一個 alpha 疊在深底與淺底上
+  /// 讀起來的強度差很多。
+  final double statusRowOpacity;
 
-	/// 同上，選取中的資料列。
-	final double statusRowSelectedOpacity;
+  /// 同上，選取中的資料列。
+  final double statusRowSelectedOpacity;
 
-	/// 同 [statusRowOpacity]，暗態。
-	final double statusRowOpacityDark;
+  /// 同 [statusRowOpacity]，暗態。
+  final double statusRowOpacityDark;
 
-	/// 同 [statusRowSelectedOpacity]，暗態。
-	final double statusRowSelectedOpacityDark;
+  /// 同 [statusRowSelectedOpacity]，暗態。
+  final double statusRowSelectedOpacityDark;
 
-	/// 霧化表面本身的透明度。
-	final double frostedOpacity;
+  /// 霧化表面本身的透明度。
+  final double frostedOpacity;
 
-	/// 霧化套在透明表面上時借用的底色強度。
-	final double frostedVeilOpacity;
-	final double backdropBlurSigma;
-	final double dragOpacity;
+  /// 霧化套在透明表面上時借用的底色強度。
+  final double frostedVeilOpacity;
+  final double backdropBlurSigma;
+  final double dragOpacity;
 
-	/// 拖曳期間原位置內容的保留強度。
-	final double dragSourceOpacity;
+  /// 拖曳期間原位置內容的保留強度。
+  final double dragSourceOpacity;
 
-	/// 主題預覽選項停用時保留的內容強度。
-	final double themePreviewDisabledOpacity;
-	final double listStatusOpacity;
-	final double listStatusSelectedOpacity;
-	final double accentSoftOpacityLight;
-	final double accentSoftOpacityDark;
-	final double windowPaneOpacityLight;
-	final double windowPaneOpacityDark;
-	final double invalidFillOpacity;
+  /// 主題預覽選項停用時保留的內容強度。
+  final double themePreviewDisabledOpacity;
+  final double listStatusOpacity;
+  final double listStatusSelectedOpacity;
+  final double accentSoftOpacityLight;
+  final double accentSoftOpacityDark;
+  final double windowPaneOpacityLight;
+  final double windowPaneOpacityDark;
+  final double invalidFillOpacity;
 
-	bool get usesShadow => separation == KlpSurfaceSeparation.shadow;
+  bool get usesShadow => separation == KlpSurfaceSeparation.shadow;
 
-	/// 依分層手法產生浮層陰影。`outline` 風格回傳空清單——元件不需要知道現在是哪種風格。
-	List<BoxShadow> overlayShadow(Color shadowColor) {
-		if (!usesShadow) return const <BoxShadow>[];
-		return [
-			BoxShadow(
-				color: shadowColor.withValues(alpha: overlayShadowOpacity),
-				blurRadius: overlayBlur,
-				spreadRadius: overlaySpread,
-				offset: Offset(0, overlayOffsetY),
-			),
-		];
-	}
+  /// 依分層手法產生浮層陰影。`outline` 風格回傳空清單——元件不需要知道現在是哪種風格。
+  List<BoxShadow> overlayShadow(Color shadowColor) {
+    if (!usesShadow) return const <BoxShadow>[];
+    return [
+      BoxShadow(
+        color: shadowColor.withValues(alpha: overlayShadowOpacity),
+        blurRadius: overlayBlur,
+        spreadRadius: overlaySpread,
+        offset: Offset(0, overlayOffsetY),
+      ),
+    ];
+  }
 
-	static const KlpSurfaceTheme elevated = _defaultSurface;
+  static const KlpSurfaceTheme elevated = _defaultSurface;
 
-	@override
-	KlpSurfaceTheme copyWith({
-		KlpSurfaceSeparation? separation,
-		double? overlayBlur,
-		double? overlaySpread,
-		double? overlayOffsetY,
-		double? overlayShadowOpacity,
-		double? scrimOpacity,
-		double? selectionWashOpacity,
-		double? focusWashOpacity,
-		double? statusFillOpacity,
-		double? pressProgressOpacity,
-		double? diffFillOpacity,
-		double? gridLineOpacity,
-		double? veilOpacity,
-		double? statusRowOpacity,
-		double? statusRowSelectedOpacity,
-		double? statusRowOpacityDark,
-		double? statusRowSelectedOpacityDark,
-		double? frostedOpacity,
-		double? frostedVeilOpacity,
-		double? backdropBlurSigma,
-		double? dragOpacity,
-		double? dragSourceOpacity,
-		double? themePreviewDisabledOpacity,
-		double? listStatusOpacity,
-		double? listStatusSelectedOpacity,
-		double? accentSoftOpacityLight,
-		double? accentSoftOpacityDark,
-		double? windowPaneOpacityLight,
-		double? windowPaneOpacityDark,
-		double? invalidFillOpacity,
-	}) {
-		return KlpSurfaceTheme(
-			separation: separation ?? this.separation,
-			overlayBlur: overlayBlur ?? this.overlayBlur,
-			overlaySpread: overlaySpread ?? this.overlaySpread,
-			overlayOffsetY: overlayOffsetY ?? this.overlayOffsetY,
-			overlayShadowOpacity: overlayShadowOpacity ?? this.overlayShadowOpacity,
-			scrimOpacity: scrimOpacity ?? this.scrimOpacity,
-			selectionWashOpacity: selectionWashOpacity ?? this.selectionWashOpacity,
-			focusWashOpacity: focusWashOpacity ?? this.focusWashOpacity,
-			statusFillOpacity: statusFillOpacity ?? this.statusFillOpacity,
-			pressProgressOpacity: pressProgressOpacity ?? this.pressProgressOpacity,
-			diffFillOpacity: diffFillOpacity ?? this.diffFillOpacity,
-			gridLineOpacity: gridLineOpacity ?? this.gridLineOpacity,
-			veilOpacity: veilOpacity ?? this.veilOpacity,
-			statusRowOpacity: statusRowOpacity ?? this.statusRowOpacity,
-			statusRowSelectedOpacity:
-					statusRowSelectedOpacity ?? this.statusRowSelectedOpacity,
-			statusRowOpacityDark: statusRowOpacityDark ?? this.statusRowOpacityDark,
-			statusRowSelectedOpacityDark:
-					statusRowSelectedOpacityDark ?? this.statusRowSelectedOpacityDark,
-			frostedOpacity: frostedOpacity ?? this.frostedOpacity,
-			frostedVeilOpacity: frostedVeilOpacity ?? this.frostedVeilOpacity,
-			backdropBlurSigma: backdropBlurSigma ?? this.backdropBlurSigma,
-			dragOpacity: dragOpacity ?? this.dragOpacity,
-			dragSourceOpacity: dragSourceOpacity ?? this.dragSourceOpacity,
-			themePreviewDisabledOpacity:
-					themePreviewDisabledOpacity ?? this.themePreviewDisabledOpacity,
-			listStatusOpacity: listStatusOpacity ?? this.listStatusOpacity,
-			listStatusSelectedOpacity:
-					listStatusSelectedOpacity ?? this.listStatusSelectedOpacity,
-			accentSoftOpacityLight:
-					accentSoftOpacityLight ?? this.accentSoftOpacityLight,
-			accentSoftOpacityDark:
-					accentSoftOpacityDark ?? this.accentSoftOpacityDark,
-			windowPaneOpacityLight:
-					windowPaneOpacityLight ?? this.windowPaneOpacityLight,
-			windowPaneOpacityDark:
-					windowPaneOpacityDark ?? this.windowPaneOpacityDark,
-			invalidFillOpacity: invalidFillOpacity ?? this.invalidFillOpacity,
-		);
-	}
+  @override
+  KlpSurfaceTheme copyWith({
+    KlpSurfaceSeparation? separation,
+    double? overlayBlur,
+    double? overlaySpread,
+    double? overlayOffsetY,
+    double? overlayShadowOpacity,
+    double? scrimOpacity,
+    double? selectionWashOpacity,
+    double? focusWashOpacity,
+    double? statusFillOpacity,
+    double? pressProgressOpacity,
+    double? diffFillOpacity,
+    double? gridLineOpacity,
+    double? veilOpacity,
+    double? statusRowOpacity,
+    double? statusRowSelectedOpacity,
+    double? statusRowOpacityDark,
+    double? statusRowSelectedOpacityDark,
+    double? frostedOpacity,
+    double? frostedVeilOpacity,
+    double? backdropBlurSigma,
+    double? dragOpacity,
+    double? dragSourceOpacity,
+    double? themePreviewDisabledOpacity,
+    double? listStatusOpacity,
+    double? listStatusSelectedOpacity,
+    double? accentSoftOpacityLight,
+    double? accentSoftOpacityDark,
+    double? windowPaneOpacityLight,
+    double? windowPaneOpacityDark,
+    double? invalidFillOpacity,
+  }) {
+    return KlpSurfaceTheme(
+      separation: separation ?? this.separation,
+      overlayBlur: overlayBlur ?? this.overlayBlur,
+      overlaySpread: overlaySpread ?? this.overlaySpread,
+      overlayOffsetY: overlayOffsetY ?? this.overlayOffsetY,
+      overlayShadowOpacity: overlayShadowOpacity ?? this.overlayShadowOpacity,
+      scrimOpacity: scrimOpacity ?? this.scrimOpacity,
+      selectionWashOpacity: selectionWashOpacity ?? this.selectionWashOpacity,
+      focusWashOpacity: focusWashOpacity ?? this.focusWashOpacity,
+      statusFillOpacity: statusFillOpacity ?? this.statusFillOpacity,
+      pressProgressOpacity: pressProgressOpacity ?? this.pressProgressOpacity,
+      diffFillOpacity: diffFillOpacity ?? this.diffFillOpacity,
+      gridLineOpacity: gridLineOpacity ?? this.gridLineOpacity,
+      veilOpacity: veilOpacity ?? this.veilOpacity,
+      statusRowOpacity: statusRowOpacity ?? this.statusRowOpacity,
+      statusRowSelectedOpacity:
+          statusRowSelectedOpacity ?? this.statusRowSelectedOpacity,
+      statusRowOpacityDark: statusRowOpacityDark ?? this.statusRowOpacityDark,
+      statusRowSelectedOpacityDark:
+          statusRowSelectedOpacityDark ?? this.statusRowSelectedOpacityDark,
+      frostedOpacity: frostedOpacity ?? this.frostedOpacity,
+      frostedVeilOpacity: frostedVeilOpacity ?? this.frostedVeilOpacity,
+      backdropBlurSigma: backdropBlurSigma ?? this.backdropBlurSigma,
+      dragOpacity: dragOpacity ?? this.dragOpacity,
+      dragSourceOpacity: dragSourceOpacity ?? this.dragSourceOpacity,
+      themePreviewDisabledOpacity:
+          themePreviewDisabledOpacity ?? this.themePreviewDisabledOpacity,
+      listStatusOpacity: listStatusOpacity ?? this.listStatusOpacity,
+      listStatusSelectedOpacity:
+          listStatusSelectedOpacity ?? this.listStatusSelectedOpacity,
+      accentSoftOpacityLight:
+          accentSoftOpacityLight ?? this.accentSoftOpacityLight,
+      accentSoftOpacityDark:
+          accentSoftOpacityDark ?? this.accentSoftOpacityDark,
+      windowPaneOpacityLight:
+          windowPaneOpacityLight ?? this.windowPaneOpacityLight,
+      windowPaneOpacityDark:
+          windowPaneOpacityDark ?? this.windowPaneOpacityDark,
+      invalidFillOpacity: invalidFillOpacity ?? this.invalidFillOpacity,
+    );
+  }
 
-	/// **不做內插。**
-	///
-	/// `MaterialApp` 在 theme 變更時會跑一段過場並沿路呼叫 `lerp`。各層若各自內插，
-	/// 中途會出現「某幾層已經換了、某幾層還沒」的混合狀態——那正是切換深淺色時看起來
-	/// 「有些元件沒有跟著變」的原因：它們不是沒變，是停在中間值上。
-	///
-	/// 因此整個 token 疊層一律在中點原子性地翻轉，任何時刻都只會是完整的其中一套。
-	@override
-	KlpSurfaceTheme lerp(covariant KlpSurfaceTheme? other, double t) {
-		if (other == null) return this;
-		return t < 0.5 ? this : other;
-	}
+  /// **不做內插。**
+  ///
+  /// `MaterialApp` 在 theme 變更時會跑一段過場並沿路呼叫 `lerp`。各層若各自內插，
+  /// 中途會出現「某幾層已經換了、某幾層還沒」的混合狀態——那正是切換深淺色時看起來
+  /// 「有些元件沒有跟著變」的原因：它們不是沒變，是停在中間值上。
+  ///
+  /// 因此整個 token 疊層一律在中點原子性地翻轉，任何時刻都只會是完整的其中一套。
+  @override
+  KlpSurfaceTheme lerp(covariant KlpSurfaceTheme? other, double t) {
+    if (other == null) return this;
+    return t < 0.5 ? this : other;
+  }
 
-	@override
-	bool operator ==(Object other) =>
-			identical(this, other) ||
-			other is KlpSurfaceTheme &&
-					separation == other.separation &&
-					overlayBlur == other.overlayBlur &&
-					overlaySpread == other.overlaySpread &&
-					overlayOffsetY == other.overlayOffsetY &&
-					overlayShadowOpacity == other.overlayShadowOpacity &&
-					scrimOpacity == other.scrimOpacity &&
-					selectionWashOpacity == other.selectionWashOpacity &&
-					focusWashOpacity == other.focusWashOpacity &&
-					statusFillOpacity == other.statusFillOpacity &&
-					pressProgressOpacity == other.pressProgressOpacity &&
-					diffFillOpacity == other.diffFillOpacity &&
-					gridLineOpacity == other.gridLineOpacity &&
-					veilOpacity == other.veilOpacity &&
-					statusRowOpacity == other.statusRowOpacity &&
-					statusRowSelectedOpacity == other.statusRowSelectedOpacity &&
-					statusRowOpacityDark == other.statusRowOpacityDark &&
-					statusRowSelectedOpacityDark == other.statusRowSelectedOpacityDark &&
-					frostedOpacity == other.frostedOpacity &&
-					frostedVeilOpacity == other.frostedVeilOpacity &&
-					backdropBlurSigma == other.backdropBlurSigma &&
-					dragOpacity == other.dragOpacity &&
-					dragSourceOpacity == other.dragSourceOpacity &&
-					themePreviewDisabledOpacity == other.themePreviewDisabledOpacity &&
-					listStatusOpacity == other.listStatusOpacity &&
-					listStatusSelectedOpacity == other.listStatusSelectedOpacity &&
-					accentSoftOpacityLight == other.accentSoftOpacityLight &&
-					accentSoftOpacityDark == other.accentSoftOpacityDark &&
-					windowPaneOpacityLight == other.windowPaneOpacityLight &&
-					windowPaneOpacityDark == other.windowPaneOpacityDark &&
-					invalidFillOpacity == other.invalidFillOpacity;
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is KlpSurfaceTheme &&
+          separation == other.separation &&
+          overlayBlur == other.overlayBlur &&
+          overlaySpread == other.overlaySpread &&
+          overlayOffsetY == other.overlayOffsetY &&
+          overlayShadowOpacity == other.overlayShadowOpacity &&
+          scrimOpacity == other.scrimOpacity &&
+          selectionWashOpacity == other.selectionWashOpacity &&
+          focusWashOpacity == other.focusWashOpacity &&
+          statusFillOpacity == other.statusFillOpacity &&
+          pressProgressOpacity == other.pressProgressOpacity &&
+          diffFillOpacity == other.diffFillOpacity &&
+          gridLineOpacity == other.gridLineOpacity &&
+          veilOpacity == other.veilOpacity &&
+          statusRowOpacity == other.statusRowOpacity &&
+          statusRowSelectedOpacity == other.statusRowSelectedOpacity &&
+          statusRowOpacityDark == other.statusRowOpacityDark &&
+          statusRowSelectedOpacityDark == other.statusRowSelectedOpacityDark &&
+          frostedOpacity == other.frostedOpacity &&
+          frostedVeilOpacity == other.frostedVeilOpacity &&
+          backdropBlurSigma == other.backdropBlurSigma &&
+          dragOpacity == other.dragOpacity &&
+          dragSourceOpacity == other.dragSourceOpacity &&
+          themePreviewDisabledOpacity == other.themePreviewDisabledOpacity &&
+          listStatusOpacity == other.listStatusOpacity &&
+          listStatusSelectedOpacity == other.listStatusSelectedOpacity &&
+          accentSoftOpacityLight == other.accentSoftOpacityLight &&
+          accentSoftOpacityDark == other.accentSoftOpacityDark &&
+          windowPaneOpacityLight == other.windowPaneOpacityLight &&
+          windowPaneOpacityDark == other.windowPaneOpacityDark &&
+          invalidFillOpacity == other.invalidFillOpacity;
 
-	@override
-	int get hashCode => Object.hashAll(<Object>[
-		separation,
-		overlayBlur,
-		overlaySpread,
-		overlayOffsetY,
-		overlayShadowOpacity,
-		scrimOpacity,
-		selectionWashOpacity,
-		focusWashOpacity,
-		statusFillOpacity,
-		pressProgressOpacity,
-		diffFillOpacity,
-		gridLineOpacity,
-		veilOpacity,
-		statusRowOpacity,
-		statusRowSelectedOpacity,
-		statusRowOpacityDark,
-		statusRowSelectedOpacityDark,
-		frostedOpacity,
-		frostedVeilOpacity,
-		backdropBlurSigma,
-		dragOpacity,
-		dragSourceOpacity,
-		themePreviewDisabledOpacity,
-		listStatusOpacity,
-		listStatusSelectedOpacity,
-		accentSoftOpacityLight,
-		accentSoftOpacityDark,
-		windowPaneOpacityLight,
-		windowPaneOpacityDark,
-		invalidFillOpacity,
-	]);
+  @override
+  int get hashCode => Object.hashAll(<Object>[
+    separation,
+    overlayBlur,
+    overlaySpread,
+    overlayOffsetY,
+    overlayShadowOpacity,
+    scrimOpacity,
+    selectionWashOpacity,
+    focusWashOpacity,
+    statusFillOpacity,
+    pressProgressOpacity,
+    diffFillOpacity,
+    gridLineOpacity,
+    veilOpacity,
+    statusRowOpacity,
+    statusRowSelectedOpacity,
+    statusRowOpacityDark,
+    statusRowSelectedOpacityDark,
+    frostedOpacity,
+    frostedVeilOpacity,
+    backdropBlurSigma,
+    dragOpacity,
+    dragSourceOpacity,
+    themePreviewDisabledOpacity,
+    listStatusOpacity,
+    listStatusSelectedOpacity,
+    accentSoftOpacityLight,
+    accentSoftOpacityDark,
+    windowPaneOpacityLight,
+    windowPaneOpacityDark,
+    invalidFillOpacity,
+  ]);
 }

@@ -16,7 +16,7 @@ class KlpBreadcrumb extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Wrap(
-			spacing: context.klp.space.contentInlineGap,
+      spacing: context.klp.space.contentInlineGap,
       crossAxisAlignment: WrapCrossAlignment.center,
       children: [
         for (var index = 0; index < segments.length; index++) ...[

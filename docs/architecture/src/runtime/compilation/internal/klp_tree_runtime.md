@@ -108,18 +108,18 @@ ClassDeclaration · public · [lib/src/runtime/compilation/internal/klp_tree_run
 
 | 成員 | 可見性 | 簽章／型別 | 來源註解摘要 | 證據 |
 |---|---|---|---|---|
-| field <code>_installation</code> | private | <code>KlpInstallation? _installation</code> |  | [lib/src/runtime/compilation/internal/klp_tree_runtime.dart:25](../../../../../../lib/src/runtime/compilation/internal/klp_tree_runtime.dart#L25) |
-| field <code>_pending</code> | private | <code>Map&lt;KlpPlacementId, KlpPreparedNode&gt; _pending</code> |  | [lib/src/runtime/compilation/internal/klp_tree_runtime.dart:26](../../../../../../lib/src/runtime/compilation/internal/klp_tree_runtime.dart#L26) |
-| field <code>_frame</code> | private | <code>KlpRuntimeFrame? _frame</code> |  | [lib/src/runtime/compilation/internal/klp_tree_runtime.dart:27](../../../../../../lib/src/runtime/compilation/internal/klp_tree_runtime.dart#L27) |
-| field <code>_busy</code> | private | <code>bool _busy</code> |  | [lib/src/runtime/compilation/internal/klp_tree_runtime.dart:28](../../../../../../lib/src/runtime/compilation/internal/klp_tree_runtime.dart#L28) |
-| field <code>_disposed</code> | private | <code>bool _disposed</code> |  | [lib/src/runtime/compilation/internal/klp_tree_runtime.dart:29](../../../../../../lib/src/runtime/compilation/internal/klp_tree_runtime.dart#L29) |
-| getter <code>frame</code> | public | <code>KlpRuntimeFrame? get frame</code> |  | [lib/src/runtime/compilation/internal/klp_tree_runtime.dart:31](../../../../../../lib/src/runtime/compilation/internal/klp_tree_runtime.dart#L31) |
-| getter <code>isDisposed</code> | public | <code>bool get isDisposed</code> |  | [lib/src/runtime/compilation/internal/klp_tree_runtime.dart:32](../../../../../../lib/src/runtime/compilation/internal/klp_tree_runtime.dart#L32) |
-| getter <code>resources</code> | public | <code>Map&lt;KlpPlacementId, KlpPlacementResource&gt; get resources</code> |  | [lib/src/runtime/compilation/internal/klp_tree_runtime.dart:33](../../../../../../lib/src/runtime/compilation/internal/klp_tree_runtime.dart#L33) |
+| field <code>_installation</code> | private | <code>KlpInstallation? _installation</code> |  | [lib/src/runtime/compilation/internal/klp_tree_runtime.dart:24](../../../../../../lib/src/runtime/compilation/internal/klp_tree_runtime.dart#L24) |
+| field <code>_pending</code> | private | <code>Map&lt;KlpPlacementId, KlpPreparedNode&gt; _pending</code> |  | [lib/src/runtime/compilation/internal/klp_tree_runtime.dart:25](../../../../../../lib/src/runtime/compilation/internal/klp_tree_runtime.dart#L25) |
+| field <code>_frame</code> | private | <code>KlpRuntimeFrame? _frame</code> |  | [lib/src/runtime/compilation/internal/klp_tree_runtime.dart:26](../../../../../../lib/src/runtime/compilation/internal/klp_tree_runtime.dart#L26) |
+| field <code>_busy</code> | private | <code>bool _busy</code> |  | [lib/src/runtime/compilation/internal/klp_tree_runtime.dart:27](../../../../../../lib/src/runtime/compilation/internal/klp_tree_runtime.dart#L27) |
+| field <code>_disposed</code> | private | <code>bool _disposed</code> |  | [lib/src/runtime/compilation/internal/klp_tree_runtime.dart:28](../../../../../../lib/src/runtime/compilation/internal/klp_tree_runtime.dart#L28) |
+| getter <code>frame</code> | public | <code>KlpRuntimeFrame? get frame</code> |  | [lib/src/runtime/compilation/internal/klp_tree_runtime.dart:30](../../../../../../lib/src/runtime/compilation/internal/klp_tree_runtime.dart#L30) |
+| getter <code>isDisposed</code> | public | <code>bool get isDisposed</code> |  | [lib/src/runtime/compilation/internal/klp_tree_runtime.dart:31](../../../../../../lib/src/runtime/compilation/internal/klp_tree_runtime.dart#L31) |
+| getter <code>resources</code> | public | <code>Map&lt;KlpPlacementId, KlpPlacementResource&gt; get resources</code> |  | [lib/src/runtime/compilation/internal/klp_tree_runtime.dart:32](../../../../../../lib/src/runtime/compilation/internal/klp_tree_runtime.dart#L32) |
 | method <code>update</code> | public | <code>void update({ required KlpNode root, required Iterable&lt;KlpNodeAdapter&gt; adapters, required Iterable&lt;KlpComponentDefinition&lt;KlpNode&gt;&gt; components, required KlpPrimitiveSet primitives, KlpActionHandler? actionHandler, })</code> |  | [lib/src/runtime/compilation/internal/klp_tree_runtime.dart:35](../../../../../../lib/src/runtime/compilation/internal/klp_tree_runtime.dart#L35) |
-| method <code>dispose</code> | public | <code>void dispose()</code> |  | [lib/src/runtime/compilation/internal/klp_tree_runtime.dart:121](../../../../../../lib/src/runtime/compilation/internal/klp_tree_runtime.dart#L121) |
-| method <code>_create</code> | private | <code>KlpPlacementResource _create(KlpValidatedNode node)</code> |  | [lib/src/runtime/compilation/internal/klp_tree_runtime.dart:136](../../../../../../lib/src/runtime/compilation/internal/klp_tree_runtime.dart#L136) |
-| method <code>_enter</code> | private | <code>void _enter()</code> |  | [lib/src/runtime/compilation/internal/klp_tree_runtime.dart:138](../../../../../../lib/src/runtime/compilation/internal/klp_tree_runtime.dart#L138) |
+| method <code>dispose</code> | public | <code>void dispose()</code> |  | [lib/src/runtime/compilation/internal/klp_tree_runtime.dart:166](../../../../../../lib/src/runtime/compilation/internal/klp_tree_runtime.dart#L166) |
+| method <code>_create</code> | private | <code>KlpPlacementResource _create(KlpValidatedNode node)</code> |  | [lib/src/runtime/compilation/internal/klp_tree_runtime.dart:180](../../../../../../lib/src/runtime/compilation/internal/klp_tree_runtime.dart#L180) |
+| method <code>_enter</code> | private | <code>void _enter()</code> |  | [lib/src/runtime/compilation/internal/klp_tree_runtime.dart:183](../../../../../../lib/src/runtime/compilation/internal/klp_tree_runtime.dart#L183) |
 
 ## 閱讀說明與限制
 

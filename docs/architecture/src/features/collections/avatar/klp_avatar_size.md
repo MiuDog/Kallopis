@@ -44,8 +44,8 @@ EnumDeclaration · public · [lib/src/features/collections/avatar/klp_avatar_siz
 
 | 成員 | 可見性 | 簽章／型別 | 來源註解摘要 | 證據 |
 |---|---|---|---|---|
-| enum value <code>standard</code> | public | <code>standard</code> |  | [lib/src/features/collections/avatar/klp_avatar_size.dart:3](../../../../../../lib/src/features/collections/avatar/klp_avatar_size.dart#L3) |
-| enum value <code>small</code> | public | <code>small</code> |  | [lib/src/features/collections/avatar/klp_avatar_size.dart:4](../../../../../../lib/src/features/collections/avatar/klp_avatar_size.dart#L4) |
+| enum value <code>standard</code> | public | <code>standard</code> |  | [lib/src/features/collections/avatar/klp_avatar_size.dart:2](../../../../../../lib/src/features/collections/avatar/klp_avatar_size.dart#L2) |
+| enum value <code>small</code> | public | <code>small</code> |  | [lib/src/features/collections/avatar/klp_avatar_size.dart:2](../../../../../../lib/src/features/collections/avatar/klp_avatar_size.dart#L2) |
 
 ## 閱讀說明與限制
 

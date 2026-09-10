@@ -18,20 +18,20 @@ part 'primitives/klp_sidebar_navigation_button_frame.dart';
 /// 消費者只提供圖示、標籤、選取狀態與事件；高度、內距、圓角、圖示尺寸、
 /// hover 與選取色全部由 Kallopis theme 決定。
 class KlpSidebarNavigationButton extends StatefulWidget {
-	const KlpSidebarNavigationButton({
-		super.key,
-		required this.icon,
-		required this.label,
-		required this.onPressed,
-		this.selected = false,
-	});
+  const KlpSidebarNavigationButton({
+    super.key,
+    required this.icon,
+    required this.label,
+    required this.onPressed,
+    this.selected = false,
+  });
 
-	final KlpIconData icon;
-	final String label;
-	final VoidCallback? onPressed;
-	final bool selected;
+  final KlpIconData icon;
+  final String label;
+  final VoidCallback? onPressed;
+  final bool selected;
 
-	@override
-	State<KlpSidebarNavigationButton> createState() =>
-		_KlpSidebarNavigationButtonState();
+  @override
+  State<KlpSidebarNavigationButton> createState() =>
+      _KlpSidebarNavigationButtonState();
 }

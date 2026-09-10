@@ -16,38 +16,38 @@ part 'primitives/klp_panel_frame_view.dart';
 /// 消費者只選擇語意背景與 header 尺寸；外距、圓角、裁切、footer 高度與
 /// scrollbar 全由 Kallopis token 與 primitive frame 決定。
 class KlpPanelFrame extends StatelessWidget implements KlpPanelLayout {
-	const KlpPanelFrame({
-		super.key,
-		this.header,
-		required this.content,
-		this.footer,
-		this.headerSize = KlpPanelHeaderSize.standard,
-		this.tone = KlpPanelTone.surface,
-		this.contentScrollController,
-	});
+  const KlpPanelFrame({
+    super.key,
+    this.header,
+    required this.content,
+    this.footer,
+    this.headerSize = KlpPanelHeaderSize.standard,
+    this.tone = KlpPanelTone.surface,
+    this.contentScrollController,
+  });
 
-	final Widget? header;
-	final Widget content;
-	final Widget? footer;
-	final KlpPanelHeaderSize headerSize;
-	final KlpPanelTone tone;
+  final Widget? header;
+  final Widget content;
+  final Widget? footer;
+  final KlpPanelHeaderSize headerSize;
+  final KlpPanelTone tone;
 
-	/// 內容區的捲動控制器。提供時，Frame 只負責繪製 Scrollbar；內容的
-	/// 內距由 [content] 自己決定。
-	final ScrollController? contentScrollController;
+  /// 內容區的捲動控制器。提供時，Frame 只負責繪製 Scrollbar；內容的
+  /// 內距由 [content] 自己決定。
+  final ScrollController? contentScrollController;
 
-	@override
-	Widget build(BuildContext context) {
-		return _KlpPanelFrameView(
-			header: header,
-			content: content,
-			footer: footer,
-			headerSize: headerSize,
-			tone: tone,
-			contentScrollController: contentScrollController,
-		);
-	}
+  @override
+  Widget build(BuildContext context) {
+    return _KlpPanelFrameView(
+      header: header,
+      content: content,
+      footer: footer,
+      headerSize: headerSize,
+      tone: tone,
+      contentScrollController: contentScrollController,
+    );
+  }
 
-	@override
-	Widget buildPanelLayout(BuildContext context) => build(context);
+  @override
+  Widget buildPanelLayout(BuildContext context) => build(context);
 }

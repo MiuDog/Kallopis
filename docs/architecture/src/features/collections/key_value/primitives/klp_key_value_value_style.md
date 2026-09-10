@@ -52,10 +52,10 @@ ClassDeclaration · private · [lib/src/features/collections/key_value/primitive
 
 | 成員 | 可見性 | 簽章／型別 | 來源註解摘要 | 證據 |
 |---|---|---|---|---|
-| constructor <code>_KlpKeyValueValueStyle</code> | private | <code>const _KlpKeyValueValueStyle({ required this.verbatim, required this.child, })</code> |  | [lib/src/features/collections/key_value/primitives/klp_key_value_value_style.dart:4](../../../../../../../lib/src/features/collections/key_value/primitives/klp_key_value_value_style.dart#L4) |
-| field <code>verbatim</code> | public | <code>final bool verbatim</code> |  | [lib/src/features/collections/key_value/primitives/klp_key_value_value_style.dart:9](../../../../../../../lib/src/features/collections/key_value/primitives/klp_key_value_value_style.dart#L9) |
-| field <code>child</code> | public | <code>final Widget child</code> |  | [lib/src/features/collections/key_value/primitives/klp_key_value_value_style.dart:10](../../../../../../../lib/src/features/collections/key_value/primitives/klp_key_value_value_style.dart#L10) |
-| method <code>build</code> | public | <code>Widget build(BuildContext context)</code> |  | [lib/src/features/collections/key_value/primitives/klp_key_value_value_style.dart:12](../../../../../../../lib/src/features/collections/key_value/primitives/klp_key_value_value_style.dart#L12) |
+| constructor <code>_KlpKeyValueValueStyle</code> | private | <code>const _KlpKeyValueValueStyle({required this.verbatim, required this.child})</code> |  | [lib/src/features/collections/key_value/primitives/klp_key_value_value_style.dart:4](../../../../../../../lib/src/features/collections/key_value/primitives/klp_key_value_value_style.dart#L4) |
+| field <code>verbatim</code> | public | <code>final bool verbatim</code> |  | [lib/src/features/collections/key_value/primitives/klp_key_value_value_style.dart:6](../../../../../../../lib/src/features/collections/key_value/primitives/klp_key_value_value_style.dart#L6) |
+| field <code>child</code> | public | <code>final Widget child</code> |  | [lib/src/features/collections/key_value/primitives/klp_key_value_value_style.dart:7](../../../../../../../lib/src/features/collections/key_value/primitives/klp_key_value_value_style.dart#L7) |
+| method <code>build</code> | public | <code>Widget build(BuildContext context)</code> |  | [lib/src/features/collections/key_value/primitives/klp_key_value_value_style.dart:9](../../../../../../../lib/src/features/collections/key_value/primitives/klp_key_value_value_style.dart#L9) |
 
 ## 閱讀說明與限制
 

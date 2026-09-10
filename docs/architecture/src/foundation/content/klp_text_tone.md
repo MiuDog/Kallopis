@@ -44,13 +44,13 @@ EnumDeclaration · public · [lib/src/foundation/content/klp_text_tone.dart:1](.
 
 | 成員 | 可見性 | 簽章／型別 | 來源註解摘要 | 證據 |
 |---|---|---|---|---|
-| enum value <code>automatic</code> | public | <code>automatic</code> |  | [lib/src/foundation/content/klp_text_tone.dart:3](../../../../../lib/src/foundation/content/klp_text_tone.dart#L3) |
-| enum value <code>primary</code> | public | <code>primary</code> |  | [lib/src/foundation/content/klp_text_tone.dart:4](../../../../../lib/src/foundation/content/klp_text_tone.dart#L4) |
-| enum value <code>muted</code> | public | <code>muted</code> |  | [lib/src/foundation/content/klp_text_tone.dart:5](../../../../../lib/src/foundation/content/klp_text_tone.dart#L5) |
-| enum value <code>faint</code> | public | <code>faint</code> |  | [lib/src/foundation/content/klp_text_tone.dart:6](../../../../../lib/src/foundation/content/klp_text_tone.dart#L6) |
-| enum value <code>accent</code> | public | <code>accent</code> |  | [lib/src/foundation/content/klp_text_tone.dart:7](../../../../../lib/src/foundation/content/klp_text_tone.dart#L7) |
-| enum value <code>danger</code> | public | <code>danger</code> |  | [lib/src/foundation/content/klp_text_tone.dart:8](../../../../../lib/src/foundation/content/klp_text_tone.dart#L8) |
-| enum value <code>success</code> | public | <code>success</code> |  | [lib/src/foundation/content/klp_text_tone.dart:9](../../../../../lib/src/foundation/content/klp_text_tone.dart#L9) |
+| enum value <code>automatic</code> | public | <code>automatic</code> |  | [lib/src/foundation/content/klp_text_tone.dart:2](../../../../../lib/src/foundation/content/klp_text_tone.dart#L2) |
+| enum value <code>primary</code> | public | <code>primary</code> |  | [lib/src/foundation/content/klp_text_tone.dart:2](../../../../../lib/src/foundation/content/klp_text_tone.dart#L2) |
+| enum value <code>muted</code> | public | <code>muted</code> |  | [lib/src/foundation/content/klp_text_tone.dart:2](../../../../../lib/src/foundation/content/klp_text_tone.dart#L2) |
+| enum value <code>faint</code> | public | <code>faint</code> |  | [lib/src/foundation/content/klp_text_tone.dart:2](../../../../../lib/src/foundation/content/klp_text_tone.dart#L2) |
+| enum value <code>accent</code> | public | <code>accent</code> |  | [lib/src/foundation/content/klp_text_tone.dart:2](../../../../../lib/src/foundation/content/klp_text_tone.dart#L2) |
+| enum value <code>danger</code> | public | <code>danger</code> |  | [lib/src/foundation/content/klp_text_tone.dart:2](../../../../../lib/src/foundation/content/klp_text_tone.dart#L2) |
+| enum value <code>success</code> | public | <code>success</code> |  | [lib/src/foundation/content/klp_text_tone.dart:2](../../../../../lib/src/foundation/content/klp_text_tone.dart#L2) |
 
 ## 閱讀說明與限制
 

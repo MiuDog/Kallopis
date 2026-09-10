@@ -55,10 +55,10 @@ ClassDeclaration · public · [lib/src/styling/semantics/klp_semantic_schema.dar
 
 | 成員 | 可見性 | 簽章／型別 | 來源註解摘要 | 證據 |
 |---|---|---|---|---|
-| field <code>owner</code> | public | <code>final String owner</code> |  | [lib/src/styling/semantics/klp_semantic_schema.dart:9](../../../../../lib/src/styling/semantics/klp_semantic_schema.dart#L9) |
-| field <code>tokens</code> | public | <code>final List&lt;KlpSemanticToken&lt;KlpStyleValue&gt;&gt; tokens</code> |  | [lib/src/styling/semantics/klp_semantic_schema.dart:10](../../../../../lib/src/styling/semantics/klp_semantic_schema.dart#L10) |
-| field <code>dependencies</code> | public | <code>final List&lt;String&gt; dependencies</code> |  | [lib/src/styling/semantics/klp_semantic_schema.dart:11](../../../../../lib/src/styling/semantics/klp_semantic_schema.dart#L11) |
-| constructor <code>KlpSemanticSchema</code> | public | <code>KlpSemanticSchema(this.owner, Iterable&lt;KlpSemanticToken&lt;KlpStyleValue&gt;&gt; tokens, {Iterable&lt;String&gt; dependencies = const []})</code> |  | [lib/src/styling/semantics/klp_semantic_schema.dart:13](../../../../../lib/src/styling/semantics/klp_semantic_schema.dart#L13) |
+| field <code>owner</code> | public | <code>final String owner</code> |  | [lib/src/styling/semantics/klp_semantic_schema.dart:8](../../../../../lib/src/styling/semantics/klp_semantic_schema.dart#L8) |
+| field <code>tokens</code> | public | <code>final List&lt;KlpSemanticToken&lt;KlpStyleValue&gt;&gt; tokens</code> |  | [lib/src/styling/semantics/klp_semantic_schema.dart:9](../../../../../lib/src/styling/semantics/klp_semantic_schema.dart#L9) |
+| field <code>dependencies</code> | public | <code>final List&lt;String&gt; dependencies</code> |  | [lib/src/styling/semantics/klp_semantic_schema.dart:10](../../../../../lib/src/styling/semantics/klp_semantic_schema.dart#L10) |
+| constructor <code>KlpSemanticSchema</code> | public | <code>KlpSemanticSchema( this.owner, Iterable&lt;KlpSemanticToken&lt;KlpStyleValue&gt;&gt; tokens, { Iterable&lt;String&gt; dependencies = const [], })</code> |  | [lib/src/styling/semantics/klp_semantic_schema.dart:12](../../../../../lib/src/styling/semantics/klp_semantic_schema.dart#L12) |
 
 ## 閱讀說明與限制
 

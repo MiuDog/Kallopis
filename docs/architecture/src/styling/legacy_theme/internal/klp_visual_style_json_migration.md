@@ -46,7 +46,7 @@ FunctionDeclaration · public · [lib/src/styling/legacy_theme/internal/klp_visu
 
 ### migrateLegacyDimensions
 
-FunctionDeclaration · public · [lib/src/styling/legacy_theme/internal/klp_visual_style_json_migration.dart:80](../../../../../../lib/src/styling/legacy_theme/internal/klp_visual_style_json_migration.dart#L80)
+FunctionDeclaration · public · [lib/src/styling/legacy_theme/internal/klp_visual_style_json_migration.dart:91](../../../../../../lib/src/styling/legacy_theme/internal/klp_visual_style_json_migration.dart#L91)
 
 <code>KlpJsonMap migrateLegacyDimensions(KlpJsonMap json)</code>
 

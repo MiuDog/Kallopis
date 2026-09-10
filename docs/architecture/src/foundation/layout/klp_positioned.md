@@ -55,16 +55,16 @@ ClassDeclaration · public · [lib/src/foundation/layout/klp_positioned.dart:3](
 | 成員 | 可見性 | 簽章／型別 | 來源註解摘要 | 證據 |
 |---|---|---|---|---|
 | constructor <code>KlpPositioned</code> | public | <code>const KlpPositioned({ super.key, this.left, this.top, this.right, this.bottom, this.width, this.height, required this.child, })</code> |  | [lib/src/foundation/layout/klp_positioned.dart:5](../../../../../lib/src/foundation/layout/klp_positioned.dart#L5) |
-| constructor <code>fill</code> | public | <code>const KlpPositioned.fill({ super.key, required this.child, })</code> |  | [lib/src/foundation/layout/klp_positioned.dart:16](../../../../../lib/src/foundation/layout/klp_positioned.dart#L16) |
-| field <code>left</code> | public | <code>final double? left</code> |  | [lib/src/foundation/layout/klp_positioned.dart:27](../../../../../lib/src/foundation/layout/klp_positioned.dart#L27) |
-| field <code>top</code> | public | <code>final double? top</code> |  | [lib/src/foundation/layout/klp_positioned.dart:28](../../../../../lib/src/foundation/layout/klp_positioned.dart#L28) |
-| field <code>right</code> | public | <code>final double? right</code> |  | [lib/src/foundation/layout/klp_positioned.dart:29](../../../../../lib/src/foundation/layout/klp_positioned.dart#L29) |
-| field <code>bottom</code> | public | <code>final double? bottom</code> |  | [lib/src/foundation/layout/klp_positioned.dart:30](../../../../../lib/src/foundation/layout/klp_positioned.dart#L30) |
-| field <code>width</code> | public | <code>final double? width</code> |  | [lib/src/foundation/layout/klp_positioned.dart:31](../../../../../lib/src/foundation/layout/klp_positioned.dart#L31) |
-| field <code>height</code> | public | <code>final double? height</code> |  | [lib/src/foundation/layout/klp_positioned.dart:32](../../../../../lib/src/foundation/layout/klp_positioned.dart#L32) |
-| field <code>fill</code> | public | <code>final bool fill</code> |  | [lib/src/foundation/layout/klp_positioned.dart:33](../../../../../lib/src/foundation/layout/klp_positioned.dart#L33) |
-| field <code>child</code> | public | <code>final Widget child</code> |  | [lib/src/foundation/layout/klp_positioned.dart:34](../../../../../lib/src/foundation/layout/klp_positioned.dart#L34) |
-| method <code>build</code> | public | <code>Widget build(BuildContext context)</code> |  | [lib/src/foundation/layout/klp_positioned.dart:36](../../../../../lib/src/foundation/layout/klp_positioned.dart#L36) |
+| constructor <code>fill</code> | public | <code>const KlpPositioned.fill({super.key, required this.child})</code> |  | [lib/src/foundation/layout/klp_positioned.dart:16](../../../../../lib/src/foundation/layout/klp_positioned.dart#L16) |
+| field <code>left</code> | public | <code>final double? left</code> |  | [lib/src/foundation/layout/klp_positioned.dart:25](../../../../../lib/src/foundation/layout/klp_positioned.dart#L25) |
+| field <code>top</code> | public | <code>final double? top</code> |  | [lib/src/foundation/layout/klp_positioned.dart:26](../../../../../lib/src/foundation/layout/klp_positioned.dart#L26) |
+| field <code>right</code> | public | <code>final double? right</code> |  | [lib/src/foundation/layout/klp_positioned.dart:27](../../../../../lib/src/foundation/layout/klp_positioned.dart#L27) |
+| field <code>bottom</code> | public | <code>final double? bottom</code> |  | [lib/src/foundation/layout/klp_positioned.dart:28](../../../../../lib/src/foundation/layout/klp_positioned.dart#L28) |
+| field <code>width</code> | public | <code>final double? width</code> |  | [lib/src/foundation/layout/klp_positioned.dart:29](../../../../../lib/src/foundation/layout/klp_positioned.dart#L29) |
+| field <code>height</code> | public | <code>final double? height</code> |  | [lib/src/foundation/layout/klp_positioned.dart:30](../../../../../lib/src/foundation/layout/klp_positioned.dart#L30) |
+| field <code>fill</code> | public | <code>final bool fill</code> |  | [lib/src/foundation/layout/klp_positioned.dart:31](../../../../../lib/src/foundation/layout/klp_positioned.dart#L31) |
+| field <code>child</code> | public | <code>final Widget child</code> |  | [lib/src/foundation/layout/klp_positioned.dart:32](../../../../../lib/src/foundation/layout/klp_positioned.dart#L32) |
+| method <code>build</code> | public | <code>Widget build(BuildContext context)</code> |  | [lib/src/foundation/layout/klp_positioned.dart:34](../../../../../lib/src/foundation/layout/klp_positioned.dart#L34) |
 
 ## 閱讀說明與限制
 

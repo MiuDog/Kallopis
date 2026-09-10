@@ -102,25 +102,25 @@ ClassDeclaration · public · [lib/src/runtime/compilation/internal/klp_scope_bo
 
 | 成員 | 可見性 | 簽章／型別 | 來源註解摘要 | 證據 |
 |---|---|---|---|---|
-| constructor <code>KlpScopeBoundaryAdapter</code> | public | <code>const KlpScopeBoundaryAdapter()</code> |  | [lib/src/runtime/compilation/internal/klp_scope_boundary_adapter.dart:17](../../../../../../lib/src/runtime/compilation/internal/klp_scope_boundary_adapter.dart#L17) |
-| getter <code>contract</code> | public | <code>KlpDefinition&lt;KlpNode&gt; get contract</code> |  | [lib/src/runtime/compilation/internal/klp_scope_boundary_adapter.dart:19](../../../../../../lib/src/runtime/compilation/internal/klp_scope_boundary_adapter.dart#L19) |
-| method <code>prepare</code> | public | <code>KlpPreparedNode prepare(KlpNode node, KlpValidatedNode snapshot, KlpPrepareContext context)</code> |  | [lib/src/runtime/compilation/internal/klp_scope_boundary_adapter.dart:22](../../../../../../lib/src/runtime/compilation/internal/klp_scope_boundary_adapter.dart#L22) |
+| constructor <code>KlpScopeBoundaryAdapter</code> | public | <code>const KlpScopeBoundaryAdapter()</code> |  | [lib/src/runtime/compilation/internal/klp_scope_boundary_adapter.dart:16](../../../../../../lib/src/runtime/compilation/internal/klp_scope_boundary_adapter.dart#L16) |
+| getter <code>contract</code> | public | <code>KlpDefinition&lt;KlpNode&gt; get contract</code> |  | [lib/src/runtime/compilation/internal/klp_scope_boundary_adapter.dart:18](../../../../../../lib/src/runtime/compilation/internal/klp_scope_boundary_adapter.dart#L18) |
+| method <code>prepare</code> | public | <code>KlpPreparedNode prepare( KlpNode node, KlpValidatedNode snapshot, KlpPrepareContext context, )</code> |  | [lib/src/runtime/compilation/internal/klp_scope_boundary_adapter.dart:21](../../../../../../lib/src/runtime/compilation/internal/klp_scope_boundary_adapter.dart#L21) |
 
 ### _PreparedBoundary
 
-ClassDeclaration · private · [lib/src/runtime/compilation/internal/klp_scope_boundary_adapter.dart:26](../../../../../../lib/src/runtime/compilation/internal/klp_scope_boundary_adapter.dart#L26)
+ClassDeclaration · private · [lib/src/runtime/compilation/internal/klp_scope_boundary_adapter.dart:29](../../../../../../lib/src/runtime/compilation/internal/klp_scope_boundary_adapter.dart#L29)
 
 <code>final class _PreparedBoundary implements KlpPreparedNode, KlpPreparedActivationPolicy</code>
 
-- `implements` → <code>KlpPreparedNode</code>：[lib/src/runtime/compilation/internal/klp_scope_boundary_adapter.dart:26](../../../../../../lib/src/runtime/compilation/internal/klp_scope_boundary_adapter.dart#L26)
-- `implements` → <code>KlpPreparedActivationPolicy</code>：[lib/src/runtime/compilation/internal/klp_scope_boundary_adapter.dart:26](../../../../../../lib/src/runtime/compilation/internal/klp_scope_boundary_adapter.dart#L26)
+- `implements` → <code>KlpPreparedNode</code>：[lib/src/runtime/compilation/internal/klp_scope_boundary_adapter.dart:30](../../../../../../lib/src/runtime/compilation/internal/klp_scope_boundary_adapter.dart#L30)
+- `implements` → <code>KlpPreparedActivationPolicy</code>：[lib/src/runtime/compilation/internal/klp_scope_boundary_adapter.dart:30](../../../../../../lib/src/runtime/compilation/internal/klp_scope_boundary_adapter.dart#L30)
 
 | 成員 | 可見性 | 簽章／型別 | 來源註解摘要 | 證據 |
 |---|---|---|---|---|
-| field <code>descendantsActive</code> | public | <code>final bool descendantsActive</code> |  | [lib/src/runtime/compilation/internal/klp_scope_boundary_adapter.dart:29](../../../../../../lib/src/runtime/compilation/internal/klp_scope_boundary_adapter.dart#L29) |
-| constructor <code>_PreparedBoundary</code> | private | <code>const _PreparedBoundary(this.descendantsActive)</code> |  | [lib/src/runtime/compilation/internal/klp_scope_boundary_adapter.dart:31](../../../../../../lib/src/runtime/compilation/internal/klp_scope_boundary_adapter.dart#L31) |
-| method <code>createResource</code> | public | <code>KlpPlacementResource createResource(KlpValidatedNode node)</code> |  | [lib/src/runtime/compilation/internal/klp_scope_boundary_adapter.dart:33](../../../../../../lib/src/runtime/compilation/internal/klp_scope_boundary_adapter.dart#L33) |
-| method <code>materialize</code> | public | <code>KlpBoundTemplate materialize(KlpPlacementResource resource, List&lt;KlpBoundTemplate&gt; children, KlpFrameLease lease)</code> |  | [lib/src/runtime/compilation/internal/klp_scope_boundary_adapter.dart:36](../../../../../../lib/src/runtime/compilation/internal/klp_scope_boundary_adapter.dart#L36) |
+| field <code>descendantsActive</code> | public | <code>final bool descendantsActive</code> |  | [lib/src/runtime/compilation/internal/klp_scope_boundary_adapter.dart:32](../../../../../../lib/src/runtime/compilation/internal/klp_scope_boundary_adapter.dart#L32) |
+| constructor <code>_PreparedBoundary</code> | private | <code>const _PreparedBoundary(this.descendantsActive)</code> |  | [lib/src/runtime/compilation/internal/klp_scope_boundary_adapter.dart:34](../../../../../../lib/src/runtime/compilation/internal/klp_scope_boundary_adapter.dart#L34) |
+| method <code>createResource</code> | public | <code>KlpPlacementResource createResource(KlpValidatedNode node)</code> |  | [lib/src/runtime/compilation/internal/klp_scope_boundary_adapter.dart:36](../../../../../../lib/src/runtime/compilation/internal/klp_scope_boundary_adapter.dart#L36) |
+| method <code>materialize</code> | public | <code>KlpBoundTemplate materialize( KlpPlacementResource resource, List&lt;KlpBoundTemplate&gt; children, KlpFrameLease lease, )</code> |  | [lib/src/runtime/compilation/internal/klp_scope_boundary_adapter.dart:40](../../../../../../lib/src/runtime/compilation/internal/klp_scope_boundary_adapter.dart#L40) |
 
 ## 閱讀說明與限制
 

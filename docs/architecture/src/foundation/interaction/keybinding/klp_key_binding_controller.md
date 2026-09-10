@@ -102,20 +102,20 @@ ClassDeclaration · public · [lib/src/foundation/interaction/keybinding/klp_key
 
 ### KlpKeyBindingHost
 
-ClassDeclaration · public · [lib/src/foundation/interaction/keybinding/klp_key_binding_controller.dart:101](../../../../../../lib/src/foundation/interaction/keybinding/klp_key_binding_controller.dart#L101)
+ClassDeclaration · public · [lib/src/foundation/interaction/keybinding/klp_key_binding_controller.dart:103](../../../../../../lib/src/foundation/interaction/keybinding/klp_key_binding_controller.dart#L103)
 
 <code>class KlpKeyBindingHost extends StatelessWidget</code>
 
 來源註解摘要：將 controller 的目前 scope 接到 Flutter Shortcuts／Actions。
 
-- `extends` → <code>StatelessWidget</code>：[lib/src/foundation/interaction/keybinding/klp_key_binding_controller.dart:102](../../../../../../lib/src/foundation/interaction/keybinding/klp_key_binding_controller.dart#L102)
+- `extends` → <code>StatelessWidget</code>：[lib/src/foundation/interaction/keybinding/klp_key_binding_controller.dart:104](../../../../../../lib/src/foundation/interaction/keybinding/klp_key_binding_controller.dart#L104)
 
 | 成員 | 可見性 | 簽章／型別 | 來源註解摘要 | 證據 |
 |---|---|---|---|---|
-| constructor <code>KlpKeyBindingHost</code> | public | <code>const KlpKeyBindingHost({super.key, required this.controller, required this.child})</code> |  | [lib/src/foundation/interaction/keybinding/klp_key_binding_controller.dart:103](../../../../../../lib/src/foundation/interaction/keybinding/klp_key_binding_controller.dart#L103) |
-| field <code>controller</code> | public | <code>final KlpKeyBindingController controller</code> |  | [lib/src/foundation/interaction/keybinding/klp_key_binding_controller.dart:105](../../../../../../lib/src/foundation/interaction/keybinding/klp_key_binding_controller.dart#L105) |
-| field <code>child</code> | public | <code>final Widget child</code> |  | [lib/src/foundation/interaction/keybinding/klp_key_binding_controller.dart:106](../../../../../../lib/src/foundation/interaction/keybinding/klp_key_binding_controller.dart#L106) |
-| method <code>build</code> | public | <code>Widget build(BuildContext context)</code> |  | [lib/src/foundation/interaction/keybinding/klp_key_binding_controller.dart:108](../../../../../../lib/src/foundation/interaction/keybinding/klp_key_binding_controller.dart#L108) |
+| constructor <code>KlpKeyBindingHost</code> | public | <code>const KlpKeyBindingHost({ super.key, required this.controller, required this.child, })</code> |  | [lib/src/foundation/interaction/keybinding/klp_key_binding_controller.dart:105](../../../../../../lib/src/foundation/interaction/keybinding/klp_key_binding_controller.dart#L105) |
+| field <code>controller</code> | public | <code>final KlpKeyBindingController controller</code> |  | [lib/src/foundation/interaction/keybinding/klp_key_binding_controller.dart:111](../../../../../../lib/src/foundation/interaction/keybinding/klp_key_binding_controller.dart#L111) |
+| field <code>child</code> | public | <code>final Widget child</code> |  | [lib/src/foundation/interaction/keybinding/klp_key_binding_controller.dart:112](../../../../../../lib/src/foundation/interaction/keybinding/klp_key_binding_controller.dart#L112) |
+| method <code>build</code> | public | <code>Widget build(BuildContext context)</code> |  | [lib/src/foundation/interaction/keybinding/klp_key_binding_controller.dart:114](../../../../../../lib/src/foundation/interaction/keybinding/klp_key_binding_controller.dart#L114) |
 
 ## 閱讀說明與限制
 

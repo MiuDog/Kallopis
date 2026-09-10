@@ -49,10 +49,10 @@ ClassDeclaration · public · [lib/src/composition/validation/klp_validated_slot
 
 | 成員 | 可見性 | 簽章／型別 | 來源註解摘要 | 證據 |
 |---|---|---|---|---|
-| field <code>slot</code> | public | <code>final KlpSlot&lt;KlpNode&gt; slot</code> |  | [lib/src/composition/validation/klp_validated_slot.dart:7](../../../../../lib/src/composition/validation/klp_validated_slot.dart#L7) |
-| field <code>start</code> | public | <code>final int start</code> |  | [lib/src/composition/validation/klp_validated_slot.dart:8](../../../../../lib/src/composition/validation/klp_validated_slot.dart#L8) |
-| field <code>end</code> | public | <code>final int end</code> |  | [lib/src/composition/validation/klp_validated_slot.dart:9](../../../../../lib/src/composition/validation/klp_validated_slot.dart#L9) |
-| constructor <code>KlpValidatedSlot</code> | public | <code>const KlpValidatedSlot(this.slot, this.start, this.end)</code> |  | [lib/src/composition/validation/klp_validated_slot.dart:11](../../../../../lib/src/composition/validation/klp_validated_slot.dart#L11) |
+| field <code>slot</code> | public | <code>final KlpSlot&lt;KlpNode&gt; slot</code> |  | [lib/src/composition/validation/klp_validated_slot.dart:6](../../../../../lib/src/composition/validation/klp_validated_slot.dart#L6) |
+| field <code>start</code> | public | <code>final int start</code> |  | [lib/src/composition/validation/klp_validated_slot.dart:7](../../../../../lib/src/composition/validation/klp_validated_slot.dart#L7) |
+| field <code>end</code> | public | <code>final int end</code> |  | [lib/src/composition/validation/klp_validated_slot.dart:8](../../../../../lib/src/composition/validation/klp_validated_slot.dart#L8) |
+| constructor <code>KlpValidatedSlot</code> | public | <code>const KlpValidatedSlot(this.slot, this.start, this.end)</code> |  | [lib/src/composition/validation/klp_validated_slot.dart:10](../../../../../lib/src/composition/validation/klp_validated_slot.dart#L10) |
 
 ## 閱讀說明與限制
 

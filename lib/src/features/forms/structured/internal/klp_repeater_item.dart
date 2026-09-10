@@ -6,8 +6,8 @@ part of '../klp_repeater_field.dart';
 /// [KlpRepeaterField.onRemove] 回報要刪除哪一項，與顯示內容無關。
 @immutable
 class KlpRepeaterItem {
-	const KlpRepeaterItem({required this.id, required this.child});
+  const KlpRepeaterItem({required this.id, required this.child});
 
-	final String id;
-	final Widget child;
+  final String id;
+  final Widget child;
 }
