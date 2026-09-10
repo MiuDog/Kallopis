@@ -1,5 +1,7 @@
 # Kallopis — Agent 作業入口（AGENTS.md）
 
+> 遷移中（2026-09-09）：使用者已核准 Kallopis 方向並要求實作。新 `Klp` 契約以 [KLP-0019](spec/decisions/KLP-0019-declarative-framework-migration.md) 及 [遷移計畫](docs/architecture/restructure-migration-plan.md) 為準：唯一結構樹、受限插槽、固定 primitive schema 整套替換、功能層可包含筆記 UI。下文的旧 Klp 風格與抽層限制在舊實作維持，不能用來否決已核准的新契約；也不能將新規則當作舊路徑的任意例外。資料權威、資產、驗證及單一來源規則持續有效。
+
 Kallopis 是 `-ist` 產品家族共用的 **Flutter 視覺層**：design token、theme、排版與無產品語意的
 共用元件。公開入口依責任分為 `lib/kallopis_theme.dart`、`lib/kallopis_foundation.dart`、
 `lib/kallopis_experimental.dart`，`lib/kallopis.dart` 只保留相容總入口；實作在 `lib/src/`，元件目錄在 `example/`，
@@ -8,6 +10,8 @@ Kallopis 是 `-ist` 產品家族共用的 **Flutter 視覺層**：design token�
 **範圍、抽層規則與拒絕清單見 [`README.md`](README.md)。**
 
 本檔為通用入口（Codex 等工具原生讀取；CLAUDE.md / GEMINI.md 應指向本檔）。
+
+新宣告式 consumer 與 AI 操作格式以 [docs/ai/README.md](docs/ai/README.md) 為唯一教學入口；分析本庫實作仍從 [架構圖集](docs/architecture/README.md) 開始。舊 Flutter 公開入口只供相容維護，不能作為新 consumer 範本。
 
 ## 架構分析入口
 
@@ -81,3 +85,5 @@ theme 改變。這類錯誤沒有任何徵兆，只在換風格時表現為「�
 ## 規則衝突時
 
 使用者當下指示 > 本檔 > `README.md` 的抽層規則 > `spec/decisions/`。裁決不了就批次提問。
+
+命名界線：品牌已確定保留 Kallopis，宣告式 API 使用 Klp 前綴與 kallopis_declarative.dart。新舊 API 依公開 library 可達性區分，不依 Klp 前綴；既有資料夾與 GitHub 倉庫不改名。
