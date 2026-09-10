@@ -22,6 +22,7 @@ metadata:
 | --- | --- | --- |
 | 「要做一個新功能/系統」「幫我規劃」「先想清楚再做」 | **計畫類** | `task-planning` |
 | 「實作」「修 bug」「重構」「接 API」「改畫面」 | **開發類** | `task-development` |
+| 「對照設計稿」「調整布局／樣式」「修改 Kallopis 元件呈現」 | **視覺開發類** | 先載入 `kallopis-design-contract`，再載入 `task-development` |
 | 「寫文件」「畫架構圖」「出報告」「發版本」「整理交付」 | **產出類** | `task-delivery` |
 | 需求聽不懂、範圍模糊、多種解讀 | **先別分型** | `human-intent`（先把需求談清楚） |
 

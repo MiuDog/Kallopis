@@ -1,7 +1,9 @@
 #include "win32_window.h"
 
+#include <commctrl.h>
 #include <dwmapi.h>
 #include <flutter_windows.h>
+#include <windowsx.h>
 
 #include "resource.h"
 
@@ -18,6 +20,7 @@ namespace {
 
 constexpr const wchar_t kWindowClassName[] = L"FLUTTER_RUNNER_WIN32_WINDOW";
 constexpr int kResizeBorderLogicalPixels = 8;
+constexpr UINT_PTR kFlutterViewSubclassId = 1;
 
 /// Registry key for app theme preference.
 ///
@@ -200,6 +203,62 @@ LRESULT CALLBACK Win32Window::WndProc(HWND const window,
   return DefWindowProc(window, message, wparam, lparam);
 }
 
+// static
+LRESULT CALLBACK Win32Window::ChildWindowSubclassProc(
+    HWND const window,
+    UINT const message,
+    WPARAM const wparam,
+    LPARAM const lparam,
+    UINT_PTR const subclass_id,
+    DWORD_PTR const reference_data) noexcept {
+  auto* owner = reinterpret_cast<Win32Window*>(reference_data);
+  if (message == WM_NCHITTEST && owner != nullptr) {
+    const LRESULT hit = owner->HitTestResizeBorder(lparam);
+    if (hit != HTCLIENT) {
+      // Flutter view 鋪滿 client area；HTTRANSPARENT 讓同執行緒的父視窗
+      // 繼續命中測試，最後由頂層 WS_THICKFRAME 啟動 Windows 原生縮放。
+      return HTTRANSPARENT;
+    }
+  }
+
+  if (message == WM_NCDESTROY) {
+    RemoveWindowSubclass(window, ChildWindowSubclassProc, subclass_id);
+  }
+  return DefSubclassProc(window, message, wparam, lparam);
+}
+
+LRESULT Win32Window::HitTestResizeBorder(LPARAM const lparam) const noexcept {
+  if (window_handle_ == nullptr || IsZoomed(window_handle_)) {
+    return HTCLIENT;
+  }
+
+  const POINT point = {GET_X_LPARAM(lparam), GET_Y_LPARAM(lparam)};
+  RECT rect;
+  if (!GetWindowRect(window_handle_, &rect)) {
+    return HTCLIENT;
+  }
+
+  HMONITOR monitor =
+      MonitorFromWindow(window_handle_, MONITOR_DEFAULTTONEAREST);
+  const int border = Scale(
+      kResizeBorderLogicalPixels,
+      FlutterDesktopGetDpiForMonitor(monitor) / 96.0);
+  const bool left = point.x >= rect.left && point.x < rect.left + border;
+  const bool right = point.x < rect.right && point.x >= rect.right - border;
+  const bool top = point.y >= rect.top && point.y < rect.top + border;
+  const bool bottom = point.y < rect.bottom && point.y >= rect.bottom - border;
+
+  if (top && left) return HTTOPLEFT;
+  if (top && right) return HTTOPRIGHT;
+  if (bottom && left) return HTBOTTOMLEFT;
+  if (bottom && right) return HTBOTTOMRIGHT;
+  if (left) return HTLEFT;
+  if (right) return HTRIGHT;
+  if (top) return HTTOP;
+  if (bottom) return HTBOTTOM;
+  return HTCLIENT;
+}
+
 LRESULT
 Win32Window::MessageHandler(HWND hwnd,
                             UINT const message,
@@ -273,34 +332,8 @@ Win32Window::MessageHandler(HWND hwnd,
       return 0;
     }
 
-    case WM_NCHITTEST: {
-      if (IsZoomed(hwnd)) {
-        return HTCLIENT;
-      }
-      POINT pt = {static_cast<SHORT>(LOWORD(lparam)),
-                  static_cast<SHORT>(HIWORD(lparam))};
-      RECT rect;
-      GetWindowRect(hwnd, &rect);
-      HMONITOR monitor = MonitorFromWindow(hwnd, MONITOR_DEFAULTTONEAREST);
-      UINT dpi = FlutterDesktopGetDpiForMonitor(monitor);
-      const int border = Scale(kResizeBorderLogicalPixels, dpi / 96.0);
-
-      bool left = pt.x >= rect.left && pt.x < rect.left + border;
-      bool right = pt.x < rect.right && pt.x >= rect.right - border;
-      bool top = pt.y >= rect.top && pt.y < rect.top + border;
-      bool bottom = pt.y < rect.bottom && pt.y >= rect.bottom - border;
-
-      if (top && left) return HTTOPLEFT;
-      if (top && right) return HTTOPRIGHT;
-      if (bottom && left) return HTBOTTOMLEFT;
-      if (bottom && right) return HTBOTTOMRIGHT;
-      if (left) return HTLEFT;
-      if (right) return HTRIGHT;
-      if (top) return HTTOP;
-      if (bottom) return HTBOTTOM;
-
-      return HTCLIENT;
-    }
+    case WM_NCHITTEST:
+      return HitTestResizeBorder(lparam);
 
     case WM_DWMCOLORIZATIONCOLORCHANGED:
       UpdateTheme(hwnd);
@@ -316,6 +349,11 @@ void Win32Window::SetMinSize(int min_width, int min_height) {
 }
 
 void Win32Window::Destroy() {
+  if (child_content_ != nullptr && IsWindow(child_content_)) {
+    RemoveWindowSubclass(
+        child_content_, ChildWindowSubclassProc, kFlutterViewSubclassId);
+  }
+  child_content_ = nullptr;
   OnDestroy();
 
   if (window_handle_) {
@@ -333,8 +371,14 @@ Win32Window* Win32Window::GetThisFromHandle(HWND const window) noexcept {
 }
 
 void Win32Window::SetChildContent(HWND content) {
+  if (child_content_ != nullptr && IsWindow(child_content_)) {
+    RemoveWindowSubclass(
+        child_content_, ChildWindowSubclassProc, kFlutterViewSubclassId);
+  }
   child_content_ = content;
   SetParent(content, window_handle_);
+  SetWindowSubclass(content, ChildWindowSubclassProc, kFlutterViewSubclassId,
+                    reinterpret_cast<DWORD_PTR>(this));
   RECT frame = GetClientArea();
 
   MoveWindow(content, frame.left, frame.top, frame.right - frame.left,

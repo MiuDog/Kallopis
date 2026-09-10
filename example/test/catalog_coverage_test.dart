@@ -1,11 +1,14 @@
-import 'dart:convert';
 import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:kallopis/kallopis.dart';
 import 'package:kallopis_catalog/catalog/registry.dart';
+import 'package:kallopis_catalog/catalog/generated/catalog_style_semantics.g.dart';
 import 'package:kallopis_catalog/catalog_shell.dart';
+import 'package:kallopis_catalog/catalog_theme_scope.dart';
+
+import '../../tool/support/public_library_sources.dart';
 
 /// 目錄的閘門。
 ///
@@ -13,27 +16,28 @@ import 'package:kallopis_catalog/catalog_shell.dart';
 /// 長什麼樣、該用在哪裡——它會被重新發明一次。因此「每個匯出的 widget 都要被歸類」
 /// 是機械檢查，不是自律。
 void main() {
-  /// 從庫的原始碼直接讀出公開的 widget 名。
+  Widget withCatalogTheme(Widget child) {
+    return CatalogThemeScope(
+      value: KlpOklchColor.fromColor(KlpThemeData.light.brand),
+      onChanged: (_) {},
+      child: child,
+    );
+  }
+
+  /// 從總公開入口沿 export 與 part 讀出實際可見的 widget 名。
   ///
-  /// 不用反射：Dart 沒有可靠的執行期型別列舉，而且從原始碼讀才能在**新增元件當下**
-  /// 就發現漏歸類，不必等到有人去用它。
+  /// 不用反射：Dart 沒有可靠的執行期型別列舉，而且從公開 library 圖讀取，才能同時排除
+  /// 未匯出的原語，並辨識由公開 owner 納入的單一定義 part。
   Set<String> exportedWidgets() {
     final declaration = RegExp(
-      r'^class\s+(Klp[A-Za-z0-9]+)(?:<[^>]+>)?\s+extends\s+'
-      r'(?:StatelessWidget|StatefulWidget)',
+      r'^(?:(?:final|base|sealed)\s+)?class\s+(Klp[A-Za-z0-9]+)(?:<[^>]+>)?\s+extends\s+'
+      r'(?:StatelessWidget|StatefulWidget|KlpPanelFrame)',
+      multiLine: true,
     );
     final names = <String>{};
-
-    for (final file
-        in Directory('../lib/src')
-            .listSync(recursive: true)
-            .whereType<File>()
-            .where((f) => f.path.endsWith('.dart'))) {
-      for (final line in const LineSplitter().convert(
-        file.readAsStringSync(),
-      )) {
-        final match = declaration.firstMatch(line);
-        if (match != null) names.add(match.group(1)!);
+    for (final file in publicLibrarySources(File('../lib/kallopis.dart'))) {
+      for (final match in declaration.allMatches(file.readAsStringSync())) {
+        names.add(match.group(1)!);
       }
     }
     return names;
@@ -87,6 +91,25 @@ void main() {
     );
   });
 
+  test('每一個 specimen 都有風格語意追蹤資料', () {
+    final missing =
+        catalogedComponents
+            .difference(catalogStyleSemantics.keys.toSet())
+            .toList()
+          ..sort();
+    expect(missing, isEmpty, reason: '這些元件缺少風格語意追蹤資料：\n${missing.join('\n')}');
+  });
+
+  test('風格語意追蹤資料沒有不存在的元件', () {
+    final stale =
+        catalogStyleSemantics.keys
+            .toSet()
+            .difference(exportedWidgets())
+            .toList()
+          ..sort();
+    expect(stale, isEmpty, reason: '這些風格語意資料已沒有對應元件：\n${stale.join('\n')}');
+  });
+
   test('目錄不得印出色碼', () {
     // 目錄一旦顯示 hex，就等於邀請人把那串數字複製到自己的程式碼裡——那正是整個
     // token 架構要防的事。色票顯示的是它落在色梯的哪一階，不是色值。
@@ -117,10 +140,6 @@ void main() {
         .toList();
 
     expect(empty, isEmpty, reason: '這些頁面既沒有元件也沒有 token 視圖：$empty');
-  });
-
-  test('Catalog 不保留產品語意分組', () {
-    expect(catalogGroups.map((group) => group.label), isNot(contains('Notes')));
   });
 
   test('示範覆蓋率只能上升', () {
@@ -155,11 +174,13 @@ void main() {
           MaterialApp(
             debugShowCheckedModeBanner: false,
             theme: buildKlpTheme(brightness),
-            home: CatalogShell(
-              groups: catalogGroups,
-              pages: catalogPages,
-              selected: index,
-              onSelected: (_) {},
+            home: withCatalogTheme(
+              CatalogShell(
+                groups: catalogGroups,
+                pages: catalogPages,
+                selected: index,
+                onSelected: (_) {},
+              ),
             ),
           ),
         );
@@ -170,6 +191,37 @@ void main() {
           isNull,
           reason: '${catalogPages[index].label} 在 ${brightness.name} 下渲染時丟出例外',
         );
+      }
+    }
+  });
+
+  testWidgets('每一個 specimen 可獨立放進捲動內容', (tester) async {
+    tester.view.physicalSize = const Size(1400, 900);
+    tester.view.devicePixelRatio = 1;
+    addTearDown(tester.view.resetPhysicalSize);
+    addTearDown(tester.view.resetDevicePixelRatio);
+
+    for (final page in catalogPages) {
+      for (final specimen in page.specimens.where((item) => item.hasDemo)) {
+        await tester.pumpWidget(
+          MaterialApp(
+            theme: buildKlpTheme(Brightness.dark),
+            home: withCatalogTheme(
+              Scaffold(
+                body: Builder(
+                  builder: (context) => SingleChildScrollView(
+                    child: Padding(
+                      padding: const EdgeInsets.all(24),
+                      child: specimen.build!(context),
+                    ),
+                  ),
+                ),
+              ),
+            ),
+          ),
+        );
+        await tester.pump();
+        expect(tester.takeException(), isNull, reason: specimen.name);
       }
     }
   });

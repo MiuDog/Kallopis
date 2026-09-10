@@ -1,6 +1,9 @@
 import 'dart:convert';
 import 'dart:io';
 
+import 'support/owned_library_sources.dart';
+import 'support/public_library_sources.dart';
+
 /// 領域分類與標籤對應
 const categoryLabel = <String, String>{
   'tokens': 'tokens — primitive 層',
@@ -59,17 +62,21 @@ class WidgetDoc {
 }
 
 void main() {
+  final root = Directory.current.absolute.path.replaceAll(r'\', '/');
   final files =
-      Directory('lib/src')
-          .listSync(recursive: true)
-          .whereType<File>()
-          .where((f) => f.path.endsWith('.dart'))
-          .map((f) => f.path.replaceAll(r'\', '/'))
+      publicLibrarySources(File('lib/kallopis.dart'))
+          .map((file) => file.absolute.path.replaceAll(r'\', '/'))
+          .where((path) => path.contains('/lib/src/'))
+          .map(
+            (path) => path.startsWith('$root/')
+                ? path.substring(root.length + 1)
+                : path,
+          )
           .toList()
         ..sort();
 
   final widgetDeclRegex = RegExp(
-    r'^(?:abstract\s+)?class\s+(Klp[A-Za-z0-9]+)\s+extends\s+(StatelessWidget|StatefulWidget|InheritedNotifier|InheritedWidget|CustomPainter)',
+    r'^(?:abstract\s+)?class\s+(Klp[A-Za-z0-9]+)(?:<[^>]+>)?\s+extends\s+(StatelessWidget|StatefulWidget|InheritedNotifier|InheritedWidget|CustomPainter|KlpPanelFrame)',
   );
 
   final widgets = <WidgetDoc>[];
@@ -79,9 +86,14 @@ void main() {
   // 1. 蒐集所有 Widget 宣告
   for (final path in files) {
     final parts = path.split('/');
-    final category = parts[2];
-    final fullText = File(path).readAsStringSync();
-    final lines = const LineSplitter().convert(fullText);
+    final sourceIndex = parts.indexOf('src');
+    final category = parts[sourceIndex + 1];
+    final sourceFile = File(path);
+    final ownText = sourceFile.readAsStringSync();
+    final fullText = ownedLibrarySources(
+      sourceFile,
+    ).map((file) => file.readAsStringSync()).join('\n');
+    final lines = const LineSplitter().convert(ownText);
 
     for (var i = 0; i < lines.length; i++) {
       final match = widgetDeclRegex.firstMatch(lines[i]);
@@ -128,6 +140,10 @@ void main() {
   final baseDir = Directory('docs/architecture/components');
   if (!baseDir.existsSync()) {
     baseDir.createSync(recursive: true);
+  }
+  // 此目錄完全由本工具擁有；先移除舊頁，避免搬檔或刪除元件後留下幽靈入口。
+  for (final entity in baseDir.listSync(recursive: true).whereType<File>()) {
+    if (entity.path.endsWith('.md')) entity.deleteSync();
   }
 
   for (final cat in categoryLabel.keys) {
@@ -234,7 +250,8 @@ void _generateWidgetDoc(
   if (!targetDir.existsSync()) {
     targetDir.createSync(recursive: true);
   }
-  File(targetPath).writeAsStringSync(buffer.toString());
+  // 生成檔固定只保留一個結尾換行，避免架構圖集產生空白行差異。
+  File(targetPath).writeAsStringSync('${buffer.toString().trimRight()}\n');
 }
 
 String _extractCompleteWidgetAndState(WidgetDoc w) {
@@ -779,5 +796,6 @@ void _generateIndexDoc(
 
   File(
     'docs/architecture/components/README.md',
-  ).writeAsStringSync(b.toString());
+    // 索引與個別元件文件採相同的結尾格式。
+  ).writeAsStringSync('${b.toString().trimRight()}\n');
 }

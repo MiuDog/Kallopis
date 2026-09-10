@@ -1,0 +1,31 @@
+import 'package:flutter/material.dart';
+
+import '../collections/badge/klp_badge.dart';
+import '../feedback/klp_feedback_tone.dart';
+import '../feedback/klp_inline_notice.dart';
+import '../../foundation/layout/klp_box.dart';
+import '../../foundation/layout/klp_column.dart';
+import '../../foundation/layout/klp_expanded.dart';
+import '../../foundation/layout/klp_gap.dart';
+import '../../foundation/layout/klp_row.dart';
+import '../../foundation/layout/klp_space_size.dart';
+import '../../foundation/layout/klp_wrap.dart';
+import '../../foundation/surface/klp_surface.dart';
+import '../../styling/legacy_theme/klp_theme.dart';
+import '../../foundation/content/klp_text.dart';
+
+part 'internal/klp_canvas_drop_intent.dart';
+part 'internal/klp_canvas_minimap.dart';
+part 'internal/klp_canvas_selection_overlay.dart';
+part 'internal/klp_canvas_toolbar.dart';
+part 'internal/klp_canvas_viewport.dart';
+part 'internal/klp_flow_node_card.dart';
+part 'internal/klp_flow_validation_panel.dart';
+part 'internal/klp_layout_lens.dart';
+part 'models/klp_layout_diagnostic_data.dart';
+part 'primitives/klp_canvas_drop_intent_frame.dart';
+part 'primitives/klp_canvas_minimap_frame.dart';
+part 'primitives/klp_canvas_selection_frame.dart';
+part 'primitives/klp_canvas_viewport_frame.dart';
+part 'primitives/klp_flow_node_frame.dart';
+part 'primitives/klp_layout_lens_semantics.dart';

@@ -1,0 +1,17 @@
+{
+  "sourceFiles": 229,
+  "recursiveDirectories": 40,
+  "markdownPages": 270,
+  "diagrams": 920,
+  "renderedSvgFiles": 920,
+  "layoutUpdatesRendered": 197,
+  "maxDiagramNodes": 12,
+  "renderer": "@mermaid-js/mermaid-cli 11.17.0",
+  "browser": "Installed Google Chrome",
+  "initialRenderExit": 0,
+  "layoutRenderExit": 0,
+  "sampleRenderExit": 0,
+  "sourceChanges": 0,
+  "preview": "VS Code Markdown Preview to the Side; final controls graph also inspected as PNG",
+  "scope": "Static directives and declared type relationships, not resolved runtime calls"
+}

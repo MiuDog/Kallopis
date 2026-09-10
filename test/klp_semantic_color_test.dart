@@ -9,10 +9,10 @@ void main() {
       KlpThemeData.dark,
       KlpThemeData.ultraDark,
     ]) {
-      expect(tokens.success, KlpPalette.success);
-      expect(tokens.warning, KlpPalette.warning);
-      expect(tokens.danger, KlpPalette.danger);
-      expect(tokens.info, KlpPalette.info);
+      expect(tokens.success, KlpPalette.green500);
+      expect(tokens.warning, KlpPalette.amber500);
+      expect(tokens.danger, KlpPalette.red300);
+      expect(tokens.info, KlpPalette.blue500);
     }
   });
 

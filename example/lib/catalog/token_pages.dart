@@ -3,6 +3,7 @@ import 'package:kallopis/kallopis.dart';
 
 import '../catalog_components.dart';
 import '../catalog_model.dart';
+import '../catalog_theme_scope.dart';
 import 'token_views.dart';
 
 final colorModesPage = CatalogPageData(
@@ -41,7 +42,7 @@ final colorModesPage = CatalogPageData(
                           padding: EdgeInsets.all(KlpSpace.md),
                           child: KlpText('stage'),
                         ),
-                        SizedBox(height: context.klp.space.compact),
+                        SizedBox(height: context.klp.space.contentStackGap),
                         const KlpSurface(
                           tone: KlpSurfaceTone.component,
                           padding: EdgeInsets.all(KlpSpace.md),
@@ -64,41 +65,78 @@ final colorModesPage = CatalogPageData(
 final brandPage = CatalogPageData(
   label: 'Brand',
   title: '品牌色',
-  description: '強調色與互動色。包含淺色 (Light)、深色 (Dark) 與超深色 (Ultra Dark) 對照。',
+  description: '以 OKLCH 調整獨立主題色，並保留淺色、深色與超深色的操作色對照。',
   icon: KlpIcons.sparkles,
-  specimens: const [],
-  tokenView: (context) {
-    Widget sampleFor(String modeLabel, KlpThemeData tokens) => CatalogSample(
-      label: 'accent / interaction ($modeLabel)',
-      description: '產品覆寫品牌色時只需要改這兩個角色；其餘的色階由它們推導。',
+  specimens: [
+    Specimen(
+      name: 'KlpOklchColorEditor',
+      note: '編輯 OKLCH 的 Lightness、Chroma、Hue 與 Alpha 四軸。',
+      build: (context) => KlpOklchColorEditor(
+        value: KlpOklchColor.fromColor(context.klp.color.brand),
+        onChanged: (_) {},
+      ),
+    ),
+    Specimen(
+      name: 'KlpOklchColorPicker',
+      note: '以三個二維平面編輯 OKLCH，並比較 clipped original 與 sRGB fallback。',
+      build: (context) => KlpOklchColorPicker(
+        value: KlpOklchColor.fromColor(context.klp.color.brand),
+        onChanged: (_) {},
+      ),
+    ),
+  ],
+  tokenView: (context) => const _BrandTokenView(),
+);
+
+class _BrandTokenView extends StatelessWidget {
+  const _BrandTokenView();
+
+  @override
+  Widget build(BuildContext context) {
+    final theme = CatalogThemeScope.of(context);
+    final value = theme.value;
+    final themeColor = value.toColor();
+
+    return CatalogCanvas(
+      children: [
+        CatalogSample(
+          label: 'Theme Color',
+          description: '即時更新整個 Catalog 的主題色與 primary 元件；重新啟動後回到預設值。',
+          child: KlpOklchColorPicker(value: value, onChanged: theme.onChanged),
+        ),
+        _sampleFor('Light', KlpThemeData.light.copyWith(brand: themeColor)),
+        _sampleFor('Dark', KlpThemeData.dark.copyWith(brand: themeColor)),
+        _sampleFor(
+          'Ultra Dark',
+          KlpThemeData.ultraDark.copyWith(brand: themeColor),
+        ),
+      ],
+    );
+  }
+
+  Widget _sampleFor(String modeLabel, KlpThemeData tokens) {
+    return CatalogSample(
+      label: 'brand / primary / accent / interaction ($modeLabel)',
+      description: 'primary 使用不透明 brand 背景；亮度低於 0xA0 使用淺色字，0xA0 以上使用深色字。',
       child: CatalogGrid(
         minItemWidth: 160,
         children: [
+          Swatch(role: 'brand', color: tokens.brand, offRamp: 'theme'),
+          Swatch(
+            role: 'primary',
+            color: tokens.brand.withValues(alpha: 1),
+            offRamp: 'brand',
+          ),
           Swatch(role: 'accent', color: tokens.accent),
           Swatch(role: 'accentSoft', color: tokens.accentSoft),
           Swatch(role: 'interaction', color: tokens.interaction),
           Swatch(role: 'interactionSoft', color: tokens.interactionSoft),
-          Swatch(
-            role: 'onInteraction',
-            color: tokens.onInteraction,
-            previewBackground: tokens.interaction,
-            onColor: tokens.onInteraction,
-            offRamp: '對比前景',
-            note: '文字是 onInteraction；底色是 interaction',
-          ),
+          Swatch(role: 'onInteraction', color: tokens.onInteraction),
         ],
       ),
     );
-
-    return CatalogCanvas(
-      children: [
-        sampleFor('Light', KlpThemeData.light),
-        sampleFor('Dark', KlpThemeData.dark),
-        sampleFor('Ultra Dark', KlpThemeData.ultraDark),
-      ],
-    );
-  },
-);
+  }
+}
 
 final surfacesPage = CatalogPageData(
   label: 'Light vs Dark surfaces',
@@ -573,7 +611,7 @@ final scalePage = CatalogPageData(
   label: 'Scale',
   title: '間距與尺寸',
   description:
-      '10 段精確間距階梯 (space-0.5 到 space-24)、10 段語意間距與 4 段標準控制項尺寸 (SM, MD, LG, XL)。',
+      '10 段精確間距階梯 (space-0.5 到 space-24)、10 段語意間距與 5 段標準控制項尺寸 (XS, SM, MD, LG, XL)。',
   icon: KlpIcons.grid,
   specimens: const [],
   tokenView: (context) {
@@ -652,9 +690,9 @@ final scalePage = CatalogPageData(
               ),
               ScaleRow(name: 'tight (4px)', value: s.tight, note: '緊湊元件內部間距'),
               ScaleRow(
-                name: 'compact (8px)',
-                value: s.compact,
-                note: '緊密相鄰元件間距',
+                name: 'contentInlineGap (8px)',
+                value: s.contentInlineGap,
+                note: '同行內容之間的間距',
               ),
               ScaleRow(name: 'base (16px)', value: s.base, note: '標準內邊距與間隔'),
               ScaleRow(
@@ -683,13 +721,18 @@ final scalePage = CatalogPageData(
           ),
         ),
         CatalogSample(
-          label: '元件 4 段尺寸規範 (Component Sizing)',
+          label: '元件 5 段尺寸規範 (Component Sizing)',
           description: '標準按鈕與輸入框高度、橫向內邊距與搭配字級。',
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               ScaleRow(
-                name: 'Small (SM) - 32px 高度',
+                name: 'XSmall (XS) - 30px 高度',
+                value: s.controlHeightXSmall,
+                note: 'Header 等緊湊 chrome 中的動作',
+              ),
+              ScaleRow(
+                name: 'Small (SM) - 36px 高度',
                 value: s.controlHeightSmall,
                 note: '搭配 14px 字級、12px Padding X',
               ),
@@ -713,7 +756,7 @@ final scalePage = CatalogPageData(
         ),
         CatalogSample(
           label: '元件尺寸實際範例 (Buttons & Inputs)',
-          description: '四段高度 (SM, MD, LG, XL) 按鈕與輸入框的實際對照。文字顏色自動依據背景色階適應。',
+          description: '五段高度 (XS, SM, MD, LG, XL) 按鈕與輸入框的實際對照。文字顏色自動依據背景色階適應。',
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -724,6 +767,12 @@ final scalePage = CatalogPageData(
                 runSpacing: s.space4,
                 crossAxisAlignment: WrapCrossAlignment.center,
                 children: [
+                  KlpButton(
+                    label: 'Primary (XS)',
+                    size: KlpControlSize.xs,
+                    tone: KlpButtonTone.primary,
+                    onPressed: () {},
+                  ),
                   KlpButton(
                     label: 'Primary (SM)',
                     size: KlpControlSize.sm,
@@ -1225,7 +1274,7 @@ final elevationPage = CatalogPageData(
                     children: [
                       Padding(
                         padding: EdgeInsets.symmetric(
-                          vertical: klp.space.compact,
+                          vertical: klp.space.contentInset,
                         ),
                         child: Container(
                           width: 3,
@@ -1235,7 +1284,7 @@ final elevationPage = CatalogPageData(
                           ),
                         ),
                       ),
-                      SizedBox(width: klp.space.compact),
+                      SizedBox(width: klp.space.contentInlineGap),
                       Expanded(
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,

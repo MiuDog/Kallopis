@@ -1,0 +1,87 @@
+# ADR-0005 Kallopis coverage
+
+This document records the product-neutral Kallopis surfaces used to implement the Designist
+component inventory. Product components keep the names and feature ownership from ADR-0005;
+Kallopis only supplies visual composition, accessibility, and finite-state vocabulary.
+
+## Application shell and navigation
+
+- `DesignistWorkbenchScaffold` composes `KlpWorkbenchShell`, `KlpWorkbenchWindowHeader`,
+  `KlpStageFrame`, and `KlpPanelFrame`.
+- `ProductSwitcher` and `WorkspaceDestinationRail` use `KlpTabs`, `KlpRailItem`, and
+  `KlpSidebarNavigationButton`.
+- `ProjectBreadcrumbs`, `WorkspacePane`, and `ResizablePaneDivider` use `KlpBreadcrumb`,
+  `KlpRegion`, `KlpResizablePane`, and `KlpResizeHandle`.
+- `GlobalCommandPalette` uses `KlpCommandMenu`.
+- `GlobalStatusRegion` uses `KlpStatusBar`, `KlpLiveRegion`, and `KlpWorkflowStateSurface`.
+
+## Project explorer
+
+- Canonical nodes use `KlpExplorer`, `KlpFileExplorer`, and `KlpTree`.
+- Non-canonical preview nodes use `KlpPreviewTreeNode` and `KlpPreviewTree`; the product decides
+  when its domain data projects into this generic preview model, so Kallopis does not own Proposal semantics.
+- The product's atomic publication flow uses `KlpPublicationProgressOverlay` and
+  `KlpWorkflowProgress` while leaving the preview tree mounted.
+- Header controls, empty states, filtering, and contextual commands use `KlpFilterBar`,
+  `KlpEmptyState`, and `KlpContextMenu`.
+
+## AI conversation, discovery, and requirements
+
+- Conversation history uses `KlpMessageThread`, `KlpMessageBubble`, `KlpInlineNotice`, and
+  `KlpLoadingState`; system notices remain separate from message bubbles.
+- Composer responsibilities are split across `KlpWorkflowComposer`, `KlpPromptTextField`,
+  `KlpAttachmentTray`, and `KlpPromptExamples`.
+- Discovery uses `KlpDiscoveryQuestionCard`; finite navigation remains typed callbacks supplied by
+  the product controller.
+- Requirement entries are Notist product components. Kallopis only supplies the generic feedback,
+  typography, surface, and control primitives used to compose them.
+
+## Proposal review and execution
+
+- Proposal review is owned by Notist. Kallopis keeps only generic diff, feedback, workflow progress,
+  and action controls without Requirement or Proposal domain models.
+- A stale message disables confirmation without converting the action to chat text.
+- Applying, applied, and failed states use `KlpWorkflowProgress` and
+  `KlpWorkflowStateSurface`; callers supply real stage names and retry actions.
+
+## Context and page hosts
+
+- `KlpPanelFrame`, `KlpPanelHeader`, `KlpSection`, `KlpFormErrorSummary`, `KlpEmptyState`,
+  `KlpLoadingState`, and `KlpErrorState` cover selection, property, validation, unsupported,
+  loading, failure, and missing-page surfaces.
+- Container headings must describe the selected object or state; they must not repeat “Inspector”.
+
+## Canonical documents
+
+- `KlpDocumentHeader`, `KlpDocumentSection`, `KlpDocumentField`,
+  `KlpDocumentReferenceLink`, and `KlpDocumentEditActions` cover structured document pages.
+- Comments use `KlpMessageThread`; scoped AI revision uses a typed `KlpButton` supplied to the
+  section action slot.
+
+## Tokens and component library
+
+- `KlpTokenTable`, `KlpTokenDefinitionData`, `KlpReferencePicker`, `KlpTokenValidationBanner`,
+  and caller-supplied dependency views cover token collections and graph validation.
+- `KlpComponentLibraryGrid`, `KlpComponentDefinitionCard`, `KlpComponentStateSelector`,
+  `KlpTree`, `KlpDataTable`, and `KlpAccessibilityContractPanel` cover previews, anatomy,
+  variants, states, accessibility, and instance overrides.
+
+## Screen and Flow editors
+
+- `KlpCanvasViewport` inherits the Stage surface as required by the Designist design guideline.
+- `KlpCanvasToolbar`, `KlpCanvasSelectionOverlay`, `KlpCanvasDropIntent`, and `KlpLayoutLens`
+  cover insert, selection, resize handles, drop intent, anchor diagnostics, multi-selection,
+  states, breakpoints, and Layout Lens composition.
+- `KlpFlowNodeCard`, `KlpFlowValidationPanel`, and `KlpCanvasMinimap` cover node rendering,
+  validation, risk/recovery surfaces, and large-canvas navigation. Connections and gestures remain
+  document commands owned by the product controller.
+
+## Shared feedback and accessibility
+
+- Existing `KlpButton`, `KlpIconButton`, fields, selection controls, tabs, trees, badges,
+  tooltips, dialogs, menus, empty states, progress, error summaries, and skeletons cover the shared
+  primitive inventory without Designist aliases.
+- `KlpLiveRegion` controls announcements and `KlpFocusBoundary` restores focus after dialogs,
+  publication, and navigation.
+- `KlpWorkflowState` and its dedicated surfaces cover every pending, empty, stale, failed, and
+  completed state in the ADR state-to-surface matrix.

@@ -56,6 +56,9 @@ jobs:
       - name: 元件清單新鮮度（inventory --check）
         run: dart run tool/inventory.dart --check
 
+      - name: 宣告式消費端匯入邊界
+        run: dart run tool/verify_declarative_consumer.dart example/lib/klp_runtime_demo.dart
+
   test:
     name: tests (golden 基準平台)
     # 不能改成 ubuntu：golden 產生於 Windows，換平台會整批假失敗。

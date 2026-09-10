@@ -1,11 +1,6 @@
-import 'package:flutter/widgets.dart';
 import 'package:kallopis/kallopis.dart';
 
 import '../catalog_model.dart';
-
-Widget _preview(String label) => Center(
-  child: KlpText(label, role: KlpTextRole.code, tone: KlpTextTone.faint),
-);
 
 final workspaceAssetsPage = CatalogPageData(
   label: 'Masonry',
@@ -17,29 +12,53 @@ final workspaceAssetsPage = CatalogPageData(
       name: 'KlpMasonryGrid',
       note: '依可用寬度建立多欄，內容按順序分配至各欄。',
       build: (context) => KlpMasonryGrid(
-        children: [
+        children: const [
           KlpPreviewCard(
             title: '白板拍照.png',
-            metadata: const ['圖片', '今天'],
-            preview: _preview('IMAGE'),
+            metadata: ['圖片', '今天'],
+            preview: KlpCenter(
+              child: KlpText(
+                'IMAGE',
+                role: KlpTextRole.code,
+                tone: KlpTextTone.faint,
+              ),
+            ),
           ),
           KlpPreviewCard(
             title: '訪談逐字稿.md',
-            metadata: const ['文字', '41 KB'],
-            previewHeight: context.klp.space.pageLarge,
-            preview: _preview('TEXT'),
+            metadata: ['文字', '41 KB'],
+            previewSize: KlpPreviewCardSize.standard,
+            preview: KlpCenter(
+              child: KlpText(
+                'TEXT',
+                role: KlpTextRole.code,
+                tone: KlpTextTone.faint,
+              ),
+            ),
           ),
           KlpPreviewCard(
             title: '競品截圖合輯.png',
-            metadata: const ['圖片', '7.8 MB'],
-            previewHeight: context.klp.space.pageLarge * 2,
-            preview: _preview('IMAGE'),
+            metadata: ['圖片', '7.8 MB'],
+            previewSize: KlpPreviewCardSize.large,
+            preview: KlpCenter(
+              child: KlpText(
+                'IMAGE',
+                role: KlpTextRole.code,
+                tone: KlpTextTone.faint,
+              ),
+            ),
           ),
           KlpPreviewCard(
             title: '月結表.csv',
-            metadata: const ['表格', '82 KB'],
-            previewHeight: context.klp.space.page,
-            preview: _preview('SHEET'),
+            metadata: ['表格', '82 KB'],
+            previewSize: KlpPreviewCardSize.compact,
+            preview: KlpCenter(
+              child: KlpText(
+                'SHEET',
+                role: KlpTextRole.code,
+                tone: KlpTextTone.faint,
+              ),
+            ),
           ),
         ],
       ),
@@ -47,10 +66,16 @@ final workspaceAssetsPage = CatalogPageData(
     Specimen(
       name: 'KlpPreviewCard',
       note: '預覽區、標題與中繼資訊的內容卡片。',
-      build: (context) => KlpPreviewCard(
+      build: (context) => const KlpPreviewCard(
         title: '產品架構草圖.svg',
-        metadata: const ['向量', '214 KB', '昨天'],
-        preview: _preview('VECTOR'),
+        metadata: ['向量', '214 KB', '昨天'],
+        preview: KlpCenter(
+          child: KlpText(
+            'VECTOR',
+            role: KlpTextRole.code,
+            tone: KlpTextTone.faint,
+          ),
+        ),
       ),
     ),
   ],

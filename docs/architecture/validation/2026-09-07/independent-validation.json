@@ -1,0 +1,14 @@
+{
+  "sourceFiles": 229,
+  "recursiveDirectoriesExcludingRoot": 40,
+  "directoriesIncludingRoot": 41,
+  "markdownPages": 270,
+  "diagramsCounted": 920,
+  "maxNodesCounted": 12,
+  "lineLinksChecked": 6813,
+  "aggregateEdgesVerified": 205,
+  "lateMarkerPreserved": true,
+  "issues": [],
+  "excludedPendingReport": "docs/architecture/atlas-validation.md",
+  "sourceSafetyReview": "Freshness regenerates in a temporary source copy and compares bytes; normal generation backs up then replaces only docs/architecture/src after resolved-path equality check. No lib source writes found."
+}

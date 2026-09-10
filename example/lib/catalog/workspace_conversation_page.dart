@@ -1,3 +1,4 @@
+import 'package:flutter/widgets.dart';
 import 'package:kallopis/kallopis.dart';
 
 import '../catalog_model.dart';
@@ -28,6 +29,8 @@ final workspaceConversationPage = CatalogPageData(
           KlpMessageBubble(
             author: '你',
             timestamp: '11:58',
+            alignment: KlpMessageAlignment.trailing,
+            background: true,
             child: KlpText('請整理這段資料的三個重點。'),
           ),
           KlpMessageBubble(
@@ -37,6 +40,23 @@ final workspaceConversationPage = CatalogPageData(
             child: KlpText('第一個重點是統一入口，第二個是集中排程。'),
           ),
         ],
+      ),
+    ),
+    Specimen(
+      name: 'KlpMessageConversation',
+      note: '在有限區域內組合可捲動內容與底部輸入器，不持有訊息資料。',
+      build: (context) => SizedBox(
+        height: context.klp.space.pageLarge * 4,
+        child: KlpMessageConversation(
+          content: const SingleChildScrollView(child: KlpText('訊息內容由消費端提供。')),
+          composer: KlpMessageComposer(
+            placeholder: '輸入訊息…',
+            sendLabel: '送出',
+            attachLabel: '加入附件',
+            onAttach: () {},
+            onSend: () {},
+          ),
+        ),
       ),
     ),
     Specimen(

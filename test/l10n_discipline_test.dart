@@ -4,13 +4,13 @@ import 'package:flutter_test/flutter_test.dart';
 
 /// 這組測試是「庫不替產品決定用什麼語言」這條規則的閘門。
 ///
-/// 見 `lib/src/l10n/klp_localizations.dart` 的 dartdoc、`KlpToast.closeLabel`
+/// 見 `lib/src/application/localization/klp_localizations.dart` 的 dartdoc、`KlpToast.closeLabel`
 /// 與 `KlpCalendar` 的既有慣例。承諾寫在文件裡擋不下下一次提交裡新增的一個
 /// 寫死字串——這裡把它變成機械判準。
 ///
 /// ## 掃描範圍與判準
 ///
-/// 掃 `lib/src`（排除 `lib/src/l10n` 自己——那裡本來就該放字串），找兩類字面值：
+/// 掃 `lib/src`（排除 `lib/src/application/localization` 自己——那裡本來就該放字串），找兩類字面值：
 ///
 /// 1. 字串字面值裡出現中文字元——庫的消費者不必然說中文。
 /// 2. 字串字面值裡出現當圖示用的符號（`×`、`✓`、`✕`、`○`、`⌃`、`⌄`、`•`、`↑`、`↓`
@@ -33,7 +33,11 @@ void main() {
       .listSync(recursive: true)
       .whereType<File>()
       .where((file) => file.path.endsWith('.dart'))
-      .where((file) => !file.path.replaceAll(r'\', '/').contains('/l10n/'))
+      .where(
+        (file) => !file.path
+            .replaceAll(r'\', '/')
+            .contains('/application/localization/'),
+      )
       .toList();
 
   String relative(File file) => file.path.replaceAll(r'\', '/');
@@ -95,7 +99,7 @@ void main() {
 
   test('沒有新的元件寫死中文字串', () {
     // 抽取自 Planist 時散落的寫死中文字串已全數接上 KlpLocalizations
-    // （見 lib/src/l10n/klp_localizations.dart）。**這個集合只能維持為空。**
+    // （見 lib/src/application/localization/klp_localizations.dart）。**這個集合只能維持為空。**
     final violations = <String>[];
     for (final file in sourceFiles) {
       violations.addAll(

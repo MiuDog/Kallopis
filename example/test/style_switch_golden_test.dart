@@ -23,7 +23,26 @@ final _contrasting = KlpVisualStyle.defaultStyle.copyWith(
   ),
   spacing: KlpSpacingTheme.comfortableDensity.copyWith(
     tight: 2,
-    compact: 4,
+    contentInlineGap: 4,
+    contentStackGap: 4,
+    contentInset: 4,
+    controlContentGap: 4,
+    controlInset: 4,
+    actionGap: 4,
+    chromeGap: 4,
+    chromePanelInset: 4,
+    chromeToolbarGap: 4,
+    navigationItemInset: 4,
+    navigationRailInset: 4,
+    navigationRailItemGap: 4,
+    overlayContentInset: 4,
+    overlayHeadingGap: 4,
+    overlayItemGap: 4,
+    navigationSectionGap: 4 - KlpSpacingTheme.comfortableDensity.hairline,
+    appFrameInset: 2,
+    workbenchContentInset: 2,
+    windowHeaderMargin: 2,
+    dockMargin: 2,
     base: 8,
     comfortable: 8,
     section: 16,
@@ -31,6 +50,24 @@ final _contrasting = KlpVisualStyle.defaultStyle.copyWith(
     controlPaddingY: 2,
     containerPadding: 8,
     controlHeight: 24,
+  ),
+  // 對照風格維持原有整套密度；各幾何角色獨立賦值。
+  geometry: KlpVisualStyle.defaultStyle.geometry.copyWith(
+    layout: KlpVisualStyle.defaultStyle.geometry.layout.copyWith(
+      resizeHandleExtent: 4,
+      overlayViewportInset: 4,
+      railDropTargetExtent: 4,
+      disclosureIconSize: 4,
+      treeLeadingGap: 4,
+      tooltipOffsetX: 4,
+    ),
+    control: KlpVisualStyle.defaultStyle.geometry.control.copyWith(
+      pageBackgroundHitRadius: 4,
+      presenceMarkerExtent: 4,
+      colorPickerCursorRadius: 4,
+      swatchExtent: 4,
+      segmentedProgressHeight: 4,
+    ),
   ),
   shape: KlpShapeTheme.standardShape.copyWith(
     control: 0,
@@ -60,7 +97,7 @@ void main() {
       final sans = FontLoader(KlpTypographyTheme.proportional.sansFamily)
         ..addFont(
           rootBundle.load(
-            'packages/kallopis/assets/fonts/IBMPlexSansTC-Regular.ttf',
+            'packages/kallopis/assets/fonts/NotoSansTC-Variable.ttf',
           ),
         );
       await sans.load();
@@ -74,6 +111,21 @@ void main() {
         );
       await mono.load();
     }
+    final icons = FontLoader('packages/kallopis/${KlpIcon.fontFamily}')
+      ..addFont(
+        rootBundle.load(
+          'packages/kallopis/assets/fonts/FlaticonUIcons-RegularRounded.ttf',
+        ),
+      );
+    await icons.load();
+
+    final thinIcons = FontLoader('packages/kallopis/${KlpIcon.thinFontFamily}')
+      ..addFont(
+        rootBundle.load(
+          'packages/kallopis/assets/fonts/FlaticonUIcons-ThinRounded.ttf',
+        ),
+      );
+    await thinIcons.load();
   });
 
   Future<void> pumpSpecimen(
@@ -152,7 +204,7 @@ class _Specimen extends StatelessWidget {
                           onPressed: () {},
                           tone: KlpButtonTone.primary,
                         ),
-                        SizedBox(width: klp.space.compact),
+                        SizedBox(width: klp.space.contentInlineGap),
                         KlpButton(label: 'Secondary', onPressed: () {}),
                       ],
                     ),

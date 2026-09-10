@@ -1,6 +1,6 @@
 name: kallopis
 description: "Kallopis — the shared Flutter visual layer for the -ist product family."
-version: 0.7.0
+version: 0.8.0
 
 # 刻意不發布到 pub.dev。消費者是同一台機器上的 -ist 產品，以 path dependency
 # 引入即可（見 README「安裝與依賴」）；發版只會在改動與生效之間多插一道手續。
@@ -15,26 +15,30 @@ dependencies:
   flutter:
     sdk: flutter
 
-  flutter_svg: ^2.2.1
-
 dev_dependencies:
+  crypto: ^3.0.7
+
   flutter_test:
     sdk: flutter
 
   flutter_lints: ^6.0.0
+  analyzer: 10.1.0
 
 flutter:
   uses-material-design: false
 
   assets:
-    - assets/icons/ui_oval/
     - assets/fonts/OFL-IBM-Plex.txt
+    - assets/fonts/OFL-NOTO-SANS-TC.txt
+    - assets/fonts/LICENSE-FLATICON-UICONS.txt
 
   fonts:
     - family: IBM Plex Mono
       fonts:
         - asset: assets/fonts/IBMPlexMono-Regular.ttf
           weight: 400
+        - asset: assets/fonts/IBMPlexMono-Medium.ttf
+          weight: 500
         - asset: assets/fonts/IBMPlexMono-SemiBold.ttf
           weight: 600
         - asset: assets/fonts/IBMPlexMono-Bold.ttf
@@ -47,3 +51,14 @@ flutter:
           weight: 600
         - asset: assets/fonts/IBMPlexSansTC-Bold.ttf
           weight: 700
+    - family: Noto Sans TC
+      fonts:
+        - asset: assets/fonts/NotoSansTC-Variable.ttf
+    - family: Flaticon UIcons Regular Rounded
+      fonts:
+        - asset: assets/fonts/FlaticonUIcons-RegularRounded.ttf
+          weight: 400
+    - family: Flaticon UIcons Thin Rounded
+      fonts:
+        - asset: assets/fonts/FlaticonUIcons-ThinRounded.ttf
+          weight: 400

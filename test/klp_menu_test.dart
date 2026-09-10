@@ -3,6 +3,38 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:kallopis/kallopis.dart';
 
 void main() {
+  testWidgets('separator estimate is independent from menu item gap', (
+    tester,
+  ) async {
+    Future<double> estimate(double overlayItemGap) async {
+      final base = KlpVisualStyle.defaultStyle;
+      final style = base.copyWith(
+        spacing: base.spacing.copyWith(overlayItemGap: overlayItemGap),
+      );
+      late double result;
+
+      // 以實際 Theme scope 解析估算值，驗證項目圖文間距不會影響分隔線高度。
+      await tester.pumpWidget(
+        MaterialApp(
+          theme: buildKlpTheme(Brightness.dark, style: style),
+          home: Builder(
+            builder: (context) {
+              result = KlpMenuLayout.estimatedHeight(
+                context: context,
+                itemCount: 2,
+                separatorCount: 1,
+              );
+              return const SizedBox();
+            },
+          ),
+        ),
+      );
+      return result;
+    }
+
+    expect(await estimate(8), await estimate(20));
+  });
+
   testWidgets('disabled menu item cannot invoke its action', (tester) async {
     var enabledCount = 0;
     var disabledCount = 0;
@@ -122,5 +154,29 @@ void main() {
       tester.element(find.text('Heading 2')),
     ).klpColors;
     expect(itemMaterial.color, tokens.selectionBackground);
+  });
+
+  testWidgets('menu groups can opt into a dashed separator', (tester) async {
+    await tester.pumpWidget(
+      MaterialApp(
+        theme: buildKlpTheme(Brightness.dark),
+        home: Scaffold(
+          body: KlpMenu(
+            label: 'Projects',
+            items: [
+              KlpMenuItemData(label: 'Opened', onPressed: () {}),
+              KlpMenuItemData(
+                label: 'Import',
+                dashedSeparatorBefore: true,
+                onPressed: () {},
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+
+    expect(find.byType(KlpDashedDivider), findsOneWidget);
+    expect(find.byType(KlpDivider), findsNothing);
   });
 }

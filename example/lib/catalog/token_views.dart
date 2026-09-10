@@ -49,8 +49,6 @@ class Swatch extends StatelessWidget {
     required this.role,
     required this.color,
     this.note,
-    this.onColor,
-    this.previewBackground,
     this.offRamp,
   });
 
@@ -59,13 +57,6 @@ class Swatch extends StatelessWidget {
 
   final Color color;
   final String? note;
-  final Color? onColor;
-
-  /// 只改變預覽底色；色階標籤仍描述 [color] 本身。
-  ///
-  /// 用於 `on*` 對比前景，讓 Catalog 在它實際搭配的來源背景上呈現，而不是把前景色
-  /// 誤畫成整張色票的底色。
-  final Color? previewBackground;
 
   /// 這個角色**本來就不在中性色梯上**時，說明它是什麼。
   ///
@@ -76,12 +67,9 @@ class Swatch extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final klp = context.klp;
-    final background = previewBackground ?? color;
-    final foreground =
-        onColor ??
-        (background == KlpPalette.transparent || background.a == 0
-            ? klp.color.text
-            : KlpThemeContrast.foregroundFor(background));
+    final foreground = color == KlpPalette.transparent || color.a == 0
+        ? klp.color.text
+        : KlpThemeContrast.foregroundFor(color);
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -90,9 +78,9 @@ class Swatch extends StatelessWidget {
         Container(
           height: 56,
           alignment: Alignment.center,
-          padding: EdgeInsets.symmetric(horizontal: klp.space.compact),
+          padding: EdgeInsets.symmetric(horizontal: klp.space.contentInset),
           decoration: BoxDecoration(
-            color: background,
+            color: color,
             borderRadius: BorderRadius.circular(klp.shape.card),
             border: Border.all(
               color: klp.color.divider,
@@ -233,7 +221,7 @@ class TypeSample extends StatelessWidget {
           Row(
             children: [
               KlpText(role.name, role: KlpTextRole.body),
-              SizedBox(width: klp.space.compact),
+              SizedBox(width: klp.space.contentInlineGap),
               KlpText(
                 '${definition.fontSize.toStringAsFixed(0)}pt · '
                 'leading ${definition.lineHeight.toStringAsFixed(2)} · '

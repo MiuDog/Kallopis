@@ -4,6 +4,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:kallopis/kallopis.dart';
 import 'package:kallopis_catalog/catalog/registry.dart';
 import 'package:kallopis_catalog/catalog_shell.dart';
+import 'package:kallopis_catalog/catalog_theme_scope.dart';
 
 /// 每一頁在明暗兩態下的像素基準。
 ///
@@ -61,7 +62,7 @@ void main() {
       final sans = FontLoader(KlpTypographyTheme.proportional.sansFamily)
         ..addFont(
           rootBundle.load(
-            'packages/kallopis/assets/fonts/IBMPlexSansTC-Regular.ttf',
+            'packages/kallopis/assets/fonts/NotoSansTC-Variable.ttf',
           ),
         );
       await sans.load();
@@ -75,6 +76,21 @@ void main() {
         );
       await mono.load();
     }
+    final icons = FontLoader('packages/kallopis/${KlpIcon.fontFamily}')
+      ..addFont(
+        rootBundle.load(
+          'packages/kallopis/assets/fonts/FlaticonUIcons-RegularRounded.ttf',
+        ),
+      );
+    await icons.load();
+
+    final thinIcons = FontLoader('packages/kallopis/${KlpIcon.thinFontFamily}')
+      ..addFont(
+        rootBundle.load(
+          'packages/kallopis/assets/fonts/FlaticonUIcons-ThinRounded.ttf',
+        ),
+      );
+    await thinIcons.load();
   });
 
   /// 檔名用頁面標籤推導，改了標籤就會找不到基準——那是刻意的，
@@ -99,11 +115,15 @@ void main() {
             MaterialApp(
               debugShowCheckedModeBanner: false,
               theme: buildKlpTheme(brightness),
-              home: CatalogShell(
-                groups: catalogGroups,
-                pages: catalogPages,
-                selected: index,
-                onSelected: (_) {},
+              home: CatalogThemeScope(
+                value: KlpOklchColor.fromColor(KlpThemeData.light.brand),
+                onChanged: (_) {},
+                child: CatalogShell(
+                  groups: catalogGroups,
+                  pages: catalogPages,
+                  selected: index,
+                  onSelected: (_) {},
+                ),
               ),
             ),
           );

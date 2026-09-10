@@ -106,7 +106,7 @@ Kallopis 的 Light、Dark、Ultra Dark 與 Transparent token preset；System 仍
 | `foundation/klp_foundation_extras` | 11 | 509 |
 | `data/klp_code_viewer` | 9 | 584 |
 | `overlay/klp_menu` | 5 | 290 |
-| `controls/klp_segmented_control`、`klp_toggle` | 各 4 | 148／108 |
+| `controls/selection/klp_segmented_control`、`controls/toggle/klp_toggle` | 各 4 | 148／108 |
 
 `foundation/klp_foundation_extras` 另有問題：它是雜物袋（Avatar／StatusIndicator／RichText／
 Popover／DragDrop／SortControl／ThemeToggle 共 17 個類別擠在一檔），應依領域拆檔。

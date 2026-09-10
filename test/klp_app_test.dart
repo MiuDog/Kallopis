@@ -7,6 +7,51 @@ import 'package:kallopis/kallopis.dart';
 /// （明暗解析、切換方向、router 掛載）。這些路徑先前只有人工執行 example 時
 /// 才會被走到——沒有任何自動化測試把關。
 void main() {
+  testWidgets('stage body paints above overflowing window header chrome', (
+    tester,
+  ) async {
+    var headerTapped = false;
+    var bodyTapped = false;
+    await tester.pumpWidget(
+      KlpApp(
+        windowHeader: OverflowBox(
+          alignment: Alignment.topCenter,
+          maxHeight: 80,
+          child: GestureDetector(
+            behavior: HitTestBehavior.opaque,
+            onTap: () => headerTapped = true,
+            child: const SizedBox.expand(),
+          ),
+        ),
+        home: KlpPanelFrame(
+          content: GestureDetector(
+            behavior: HitTestBehavior.opaque,
+            onTap: () => bodyTapped = true,
+            child: const SizedBox.expand(),
+          ),
+        ),
+      ),
+    );
+
+    final frame = tester.getRect(
+      find.byKey(const ValueKey('klp-app-frame-background')),
+    );
+    final klp = tester
+        .element(find.byKey(const ValueKey('klp-app-frame-background')))
+        .klp;
+    final headerHeight = klp.geometry.layout.windowHeaderHeight;
+    final appInset = klp.space.appFrameInset;
+    await tester.tapAt(
+      Offset(
+        frame.center.dx,
+        frame.top + appInset + headerHeight + klp.space.dockMargin + 2,
+      ),
+    );
+
+    expect(bodyTapped, isTrue);
+    expect(headerTapped, isFalse);
+  });
+
   const windowChannel = MethodChannel('kallopis/window');
 
   /// 取出目前實際套用的 `KlpThemeData`，用來驗證 theme 真的換了，
@@ -23,12 +68,14 @@ void main() {
       KlpApp(
         initialThemeMode: initialThemeMode,
         router: router,
-        home: Builder(
-          builder: (context) {
-            controller = KlpApp.of(context);
-            colors = context.klp.color;
-            return const SizedBox.shrink(key: ValueKey('test_target'));
-          },
+        home: KlpPanelFrame(
+          content: Builder(
+            builder: (context) {
+              controller = KlpApp.of(context);
+              colors = context.klp.color;
+              return const SizedBox.shrink(key: ValueKey('test_target'));
+            },
+          ),
         ),
       ),
     );
@@ -103,13 +150,14 @@ void main() {
     await tester.pumpWidget(
       const KlpApp(
         title: 'Notist',
-        appIcon: Icon(Icons.edit, key: ValueKey('app_icon')),
-        home: SizedBox.shrink(),
+        appIcon: KlpIcon(KlpIcons.edit, key: ValueKey('app_icon')),
+        home: KlpPanelFrame(content: SizedBox.shrink()),
       ),
     );
 
     final iconFinder = find.byKey(const ValueKey('app_icon'));
     final iconContext = tester.element(iconFinder);
+    final space = iconContext.klp.space;
     final layout = iconContext.klp.geometry.layout;
     final headerRect = tester.getRect(find.byType(KlpWindowHeader));
     final fittedBoxFinder = find.ancestor(
@@ -118,15 +166,30 @@ void main() {
     );
     final iconRect = tester.getRect(fittedBoxFinder);
     final titleRect = tester.getRect(find.text('Notist'));
+    final appFrameBackground = tester.widget<KlpSurface>(
+      find.byKey(const ValueKey('klp-app-frame-background')),
+    );
 
     expect(fittedBoxFinder, findsOneWidget);
-    expect(headerRect.height, layout.windowToolbarHeight);
+    expect(appFrameBackground.tone, KlpSurfaceTone.app);
+    expect(headerRect.left, space.appFrameInset);
+    expect(headerRect.top, space.appFrameInset);
+    expect(headerRect.height, klpWindowHeaderHeight(iconContext.klp.geometry));
     expect(
       tester.getSize(fittedBoxFinder),
       Size.square(layout.windowAppIconSize),
     );
-    expect(iconRect.left, headerRect.left + layout.windowToolbarPaddingStart);
-    expect(titleRect.left - iconRect.right, layout.windowIdentityGap);
+    expect(
+      iconRect.left,
+      headerRect.left +
+          space.windowHeaderMargin +
+          (layout.windowHeaderControlSize - layout.windowAppIconSize) / 2,
+    );
+    expect(
+      titleRect.left - iconRect.right,
+      (layout.windowHeaderControlSize - layout.windowAppIconSize) / 2 +
+          layout.windowIdentityGap,
+    );
   });
 
   testWidgets('視窗轉場暫時低於 header 高度時不產生垂直溢出', (tester) async {
@@ -136,7 +199,10 @@ void main() {
     addTearDown(tester.view.resetPhysicalSize);
 
     await tester.pumpWidget(
-      const KlpApp(title: 'Notist', home: SizedBox.expand()),
+      const KlpApp(
+        title: 'Notist',
+        home: KlpPanelFrame(content: SizedBox.expand()),
+      ),
     );
 
     expect(tester.takeException(), isNull);
@@ -157,7 +223,7 @@ void main() {
         key: ValueKey('app'),
         minWidth: 640.0,
         minHeight: 480.0,
-        home: SizedBox.shrink(),
+        home: KlpPanelFrame(content: SizedBox.shrink()),
       ),
     );
     await tester.pump();
@@ -167,7 +233,7 @@ void main() {
         key: ValueKey('app'),
         minWidth: 720.0,
         minHeight: 540.0,
-        home: SizedBox.shrink(),
+        home: KlpPanelFrame(content: SizedBox.shrink()),
       ),
     );
     await tester.pump();
@@ -198,11 +264,17 @@ void main() {
     addTearDown(() => messenger.setMockMethodCallHandler(windowChannel, null));
 
     await tester.pumpWidget(
-      const KlpApp(key: ValueKey('app'), home: SizedBox.shrink()),
+      const KlpApp(
+        key: ValueKey('app'),
+        home: KlpPanelFrame(content: SizedBox.shrink()),
+      ),
     );
     await tester.pump();
     await tester.pumpWidget(
-      const KlpApp(key: ValueKey('app'), home: SizedBox.shrink()),
+      const KlpApp(
+        key: ValueKey('app'),
+        home: KlpPanelFrame(content: SizedBox.shrink()),
+      ),
     );
     await tester.pump();
 
@@ -223,7 +295,9 @@ void main() {
     });
     addTearDown(() => messenger.setMockMethodCallHandler(windowChannel, null));
 
-    await tester.pumpWidget(const KlpApp(home: SizedBox.shrink()));
+    await tester.pumpWidget(
+      const KlpApp(home: KlpPanelFrame(content: SizedBox.shrink())),
+    );
     await tester.pump();
 
     expect(calls.map((call) => call.method), orderedEquals(['isMaximized']));
@@ -240,7 +314,10 @@ void main() {
     addTearDown(() => messenger.setMockMethodCallHandler(windowChannel, null));
 
     await tester.pumpWidget(
-      const KlpApp(startMaximized: false, home: SizedBox.shrink()),
+      const KlpApp(
+        startMaximized: false,
+        home: KlpPanelFrame(content: SizedBox.shrink()),
+      ),
     );
     await tester.pump();
 
@@ -249,18 +326,29 @@ void main() {
 
   test('最小視窗尺寸必須是正的邏輯像素', () {
     expect(
-      () => KlpApp(minWidth: 0.0, home: const SizedBox.shrink()),
+      () => KlpApp(
+        minWidth: 0.0,
+        home: KlpPanelFrame(content: const SizedBox.shrink()),
+      ),
       throwsAssertionError,
     );
     expect(
-      () => KlpApp(minHeight: -1.0, home: const SizedBox.shrink()),
+      () => KlpApp(
+        minHeight: -1.0,
+        home: KlpPanelFrame(content: const SizedBox.shrink()),
+      ),
       throwsAssertionError,
     );
   });
 
   testWidgets('給了 router 就自動架好 KlpRouterScope', (tester) async {
     final router = KlpRouter(
-      routes: [KlpRoute(id: 'home', builder: (_) => const SizedBox.shrink())],
+      routes: [
+        KlpRoute(
+          id: 'home',
+          builder: (_) => const KlpPanelFrame(content: SizedBox.shrink()),
+        ),
+      ],
       initialId: 'home',
     );
 
@@ -272,11 +360,13 @@ void main() {
   testWidgets('沒有 KlpApp 祖先時 KlpApp.of 明確拋錯', (tester) async {
     await tester.pumpWidget(
       MaterialApp(
-        home: Builder(
-          builder: (context) {
-            expect(() => KlpApp.of(context), throwsStateError);
-            return const SizedBox.shrink();
-          },
+        home: KlpPanelFrame(
+          content: Builder(
+            builder: (context) {
+              expect(() => KlpApp.of(context), throwsStateError);
+              return const SizedBox.shrink();
+            },
+          ),
         ),
       ),
     );

@@ -3,6 +3,33 @@ import 'package:kallopis/kallopis.dart';
 
 import '../catalog_model.dart';
 
+Widget _formInputGrid(BuildContext context, List<Widget> children) {
+  final klp = context.klp;
+  final gap = klp.space.base;
+
+  return LayoutBuilder(
+    builder: (context, constraints) {
+      final columns =
+          constraints.maxWidth >=
+              klp.geometry.layout.primaryPaneContentBreakpoint
+          ? 2
+          : 1;
+      final itemWidth = columns == 2
+          ? (constraints.maxWidth - gap) / 2
+          : constraints.maxWidth;
+
+      return Wrap(
+        spacing: gap,
+        runSpacing: gap,
+        children: [
+          for (final child in children)
+            SizedBox(width: itemWidth, child: child),
+        ],
+      );
+    },
+  );
+}
+
 final formControlsPage = CatalogPageData(
   label: 'Form Controls',
   title: '表單控制項',
@@ -80,8 +107,248 @@ final formControlsPage = CatalogPageData(
       ),
     ),
     Specimen(
+      name: 'KlpSelectField',
+      sectionLabel: 'Input Types',
+      note:
+          '單選下拉輸入；底色、hover、focus、disabled、read-only 與 error 均沿用 Kallopis field 語意。',
+      build: (context) {
+        var value = 'Audi';
+
+        return StatefulBuilder(
+          builder: (context, setState) => _formInputGrid(context, [
+            KlpSelectField(
+              label: 'Select model',
+              valueLabel: value,
+              options: const [
+                KlpChoiceOption(id: 'audi', label: 'Audi'),
+                KlpChoiceOption(id: 'volvo', label: 'Volvo'),
+              ],
+              onSelected: (id) =>
+                  setState(() => value = id == 'audi' ? 'Audi' : 'Volvo'),
+            ),
+            KlpSelectField(
+              label: 'Disabled',
+              valueLabel: 'Audi',
+              options: const [],
+              onSelected: (_) {},
+              enabled: false,
+            ),
+            KlpSelectField(
+              label: 'Read-only',
+              valueLabel: 'Audi',
+              options: const [],
+              onSelected: (_) {},
+              readOnly: true,
+            ),
+            KlpSelectField(
+              label: 'Error',
+              valueLabel: 'Select a model',
+              options: const [KlpChoiceOption(id: 'audi', label: 'Audi')],
+              onSelected: (_) {},
+              error: 'A model is required.',
+            ),
+          ]),
+        );
+      },
+    ),
+    Specimen(
+      name: 'KlpQuantityField',
+      note: '數量步進輸入；兩側 action slot 與 40px MD field 等高，minimum／maximum 由呼叫端宣告。',
+      build: (context) {
+        var quantity = 1;
+
+        return StatefulBuilder(
+          builder: (context, setState) => _formInputGrid(context, [
+            KlpQuantityField(
+              label: 'Quantity',
+              value: quantity,
+              minimum: 0,
+              onChanged: (value) => setState(() => quantity = value.toInt()),
+            ),
+            const KlpQuantityField(label: 'Disabled', value: 1, enabled: false),
+            const KlpQuantityField(
+              label: 'Read-only',
+              value: 1,
+              readOnly: true,
+            ),
+            KlpQuantityField(
+              label: 'Error',
+              value: 0,
+              error: 'Quantity must be greater than zero.',
+              onChanged: (_) {},
+            ),
+          ]),
+        );
+      },
+    ),
+    Specimen(
+      name: 'KlpDateRangeField',
+      note: '單框日期區間；起訖值可獨立輸入，尾端 calendar action 交由產品接上日期挑選器。',
+      build: (context) => _formInputGrid(context, [
+        KlpDateRangeField(
+          label: 'Select period',
+          startPlaceholder: 'Starting date',
+          endPlaceholder: 'Ending date',
+          onCalendarPressed: () {},
+        ),
+        const KlpDateRangeField(
+          label: 'Filled',
+          initialStartValue: '2026-09-04',
+          initialEndValue: '2026-09-18',
+        ),
+        const KlpDateRangeField(label: 'Disabled', enabled: false),
+        const KlpDateRangeField(
+          label: 'Error',
+          initialStartValue: '2026-09-18',
+          initialEndValue: '2026-09-04',
+          error: 'Ending date must follow starting date.',
+        ),
+      ]),
+    ),
+    Specimen(
+      name: 'KlpMultiSelectField',
+      note: '多選標籤輸入；選項、選取集合與更新事件由產品持有，狀態色由 Kallopis 解析。',
+      build: (context) {
+        var selected = <String>{'football', 'volleyball'};
+        const options = [
+          KlpChoiceOption(id: 'football', label: 'Football'),
+          KlpChoiceOption(id: 'volleyball', label: 'Volleyball'),
+          KlpChoiceOption(id: 'basketball', label: 'Basketball'),
+        ];
+
+        return StatefulBuilder(
+          builder: (context, setState) => _formInputGrid(context, [
+            KlpMultiSelectField(
+              label: 'Select sports',
+              options: options,
+              selectedIds: selected,
+              onChanged: (next) => setState(() => selected = next),
+            ),
+            const KlpMultiSelectField(
+              label: 'Disabled',
+              options: options,
+              selectedIds: {'football'},
+              onChanged: null,
+              enabled: false,
+            ),
+            const KlpMultiSelectField(
+              label: 'Read-only',
+              options: options,
+              selectedIds: {'football'},
+              onChanged: null,
+              readOnly: true,
+            ),
+            const KlpMultiSelectField(
+              label: 'Error',
+              options: options,
+              selectedIds: {},
+              onChanged: null,
+              error: 'Select at least one sport.',
+            ),
+          ]),
+        );
+      },
+    ),
+    Specimen(
+      name: 'KlpAffixedTextField',
+      note: '前綴與尾端動作共用 recipe；可組成金額、單位、網址與複製欄位。',
+      build: (context) => _formInputGrid(context, [
+        const KlpAffixedTextField(
+          label: 'Amount',
+          prefixText: r'$',
+          initialValue: '12,400',
+        ),
+        KlpAffixedTextField(
+          label: 'URL',
+          prefixText: 'https',
+          initialValue: 'www.kallopis.dev/components',
+          actionIcon: KlpIcons.copy,
+          actionLabel: '複製網址',
+          onAction: () {},
+        ),
+        const KlpAffixedTextField(
+          label: 'Read-only',
+          prefixText: 'ID',
+          initialValue: 'KLP-001',
+          readOnly: true,
+        ),
+        const KlpAffixedTextField(
+          label: 'Error',
+          prefixText: r'$',
+          initialValue: '-10',
+          error: 'Amount cannot be negative.',
+        ),
+      ]),
+    ),
+    Specimen(
+      name: 'KlpCompoundField',
+      note: '主要文字與尾端受控選項共用單一欄位；不把產品角色或資料模型寫進 Kallopis。',
+      build: (context) {
+        var role = 'Admin';
+        const roles = [
+          KlpChoiceOption(id: 'admin', label: 'Admin'),
+          KlpChoiceOption(id: 'editor', label: 'Editor'),
+        ];
+
+        return StatefulBuilder(
+          builder: (context, setState) => _formInputGrid(context, [
+            KlpCompoundField(
+              label: 'Add user',
+              initialValue: 'Daniel',
+              selectedOptionLabel: role,
+              options: roles,
+              onOptionSelected: (id) =>
+                  setState(() => role = id == 'admin' ? 'Admin' : 'Editor'),
+            ),
+            const KlpCompoundField(
+              label: 'Disabled',
+              initialValue: 'Daniel',
+              selectedOptionLabel: 'Admin',
+              options: roles,
+              enabled: false,
+            ),
+            const KlpCompoundField(
+              label: 'Read-only',
+              initialValue: 'Daniel',
+              selectedOptionLabel: 'Admin',
+              options: roles,
+              readOnly: true,
+            ),
+            const KlpCompoundField(
+              label: 'Error',
+              selectedOptionLabel: 'Admin',
+              options: roles,
+              error: 'A user is required.',
+            ),
+          ]),
+        );
+      },
+    ),
+    Specimen(
+      name: 'KlpPasswordField',
+      note: '密碼輸入；使用 Flaticon lock 與 show／hide icon，並沿用 Kallopis field 狀態色。',
+      build: (context) => _formInputGrid(context, [
+        const KlpPasswordField(
+          label: 'Password',
+          value: 'correct horse battery staple',
+        ),
+        const KlpPasswordField(
+          label: 'Disabled',
+          value: 'secret',
+          enabled: false,
+        ),
+        const KlpPasswordField(
+          label: 'Read-only',
+          value: 'secret',
+          readOnly: true,
+        ),
+        const KlpPasswordField(label: 'Error', error: 'Password is required.'),
+      ]),
+    ),
+    Specimen(
       name: 'KlpNumberField',
-      note: '數值輸入（含單位與步進器）。',
+      sectionLabel: 'Other Form Controls',
+      note: '一般數值文字輸入；需要明確加減操作時改用 KlpQuantityField。',
       build: (context) => const KlpField(
         label: 'Timeout',
         child: KlpTextField(
@@ -89,19 +356,6 @@ final formControlsPage = CatalogPageData(
           suffixText: 'ms',
           stepper: true,
         ),
-      ),
-    ),
-    Specimen(
-      name: 'KlpPasswordField',
-      note: '密碼輸入（支援 Show/Hide 切換與要求檢核清單）。',
-      build: (context) => const KlpPasswordField(
-        label: 'Signing secret',
-        required: true,
-        value: 'correct horse battery staple',
-        requirements: [
-          KlpPasswordRequirement(label: '12+ chars', satisfied: true),
-          KlpPasswordRequirement(label: 'has digit', satisfied: true),
-        ],
       ),
     ),
     Specimen(
@@ -422,7 +676,7 @@ final formControlsPage = CatalogPageData(
                     label: 'Auto-retry',
                     onChanged: (v) => setState(() => autoRetry = v),
                   ),
-                  SizedBox(width: klp.space.compact),
+                  SizedBox(width: klp.space.contentInlineGap),
                   const KlpText(
                     'saving..',
                     role: KlpTextRole.caption,
@@ -484,7 +738,7 @@ final formControlsPage = CatalogPageData(
       name: 'KlpStatusRoleSwatches',
       note: '色彩角色選擇（Roles only — raw hex is intentionally not offered）。',
       build: (context) {
-        var selected = 'success';
+        var selected = KlpStatusRole.success;
         return StatefulBuilder(
           builder: (context, setState) => KlpStatusRoleSwatches(
             label: 'Status color role',
@@ -532,17 +786,19 @@ final formControlsPage = CatalogPageData(
       name: 'KlpSlidingSelection',
       note: '滑動式選擇，用於少量互斥選項。',
       build: (context) {
-        final tokens = context.klpColors;
         var selectedIdx = 1;
         return StatefulBuilder(
           builder: (context, setState) => KlpSlidingSelection(
             label: '檢視模式',
             selectedIndex: selectedIdx,
             options: [
-              KlpSelectionOption(icon: KlpIcons.grid, color: tokens.info),
-              KlpSelectionOption(
+              const KlpSelectionOption(
+                icon: KlpIcons.grid,
+                tone: KlpSelectionTone.info,
+              ),
+              const KlpSelectionOption(
                 icon: KlpIcons.container,
-                color: tokens.interaction,
+                tone: KlpSelectionTone.primary,
               ),
             ],
             onSelected: (idx) => setState(() => selectedIdx = idx),
@@ -733,7 +989,7 @@ final formAssemblyPage = CatalogPageData(
             Row(
               children: [
                 const KlpText('+ Add pair', role: KlpTextRole.caption),
-                SizedBox(width: klp.space.compact),
+                SizedBox(width: klp.space.contentInlineGap),
                 const KlpText(
                   '2/32',
                   role: KlpTextRole.caption,
@@ -816,32 +1072,6 @@ final formAssemblyPage = CatalogPageData(
           ],
         );
       },
-    ),
-    Specimen(
-      name: 'KlpSelectField',
-      note: '下拉選擇欄位。',
-      build: (context) => KlpSelectField(
-        label: '狀態',
-        valueLabel: '進行中',
-        options: const [
-          KlpChoiceOption(id: 'open', label: '進行中'),
-          KlpChoiceOption(id: 'done', label: '已完成'),
-        ],
-        onSelected: (_) {},
-      ),
-    ),
-    Specimen(
-      name: 'KlpMultiSelectField',
-      note: '多選欄位。',
-      build: (context) => KlpMultiSelectField(
-        label: '標籤',
-        options: const [
-          KlpChoiceOption(id: 'a', label: 'design'),
-          KlpChoiceOption(id: 'b', label: 'token'),
-        ],
-        selectedIds: const {'a'},
-        onChanged: (_) {},
-      ),
     ),
     Specimen(
       name: 'KlpReferencePicker',

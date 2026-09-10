@@ -5,6 +5,14 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:kallopis/kallopis.dart';
 
 void main() {
+  test('header height ignores horizontal semantic margins', () {
+    const geometry = KlpGeometryTheme.standard;
+    expect(
+      klpWindowHeaderHeight(geometry, windowHeaderMargin: 9),
+      geometry.layout.windowHeaderHeight,
+    );
+  });
+
   const windowChannel = MethodChannel('kallopis/window');
 
   Widget testBed({required Widget child}) {
@@ -23,8 +31,8 @@ void main() {
       testBed(
         child: KlpWindowHeader(
           titleText: 'Planist',
-          platform: TargetPlatform.windows,
-          appIcon: const Icon(Icons.circle, key: ValueKey('app-icon')),
+          platform: KlpAppPlatform.windows,
+          appIcon: const KlpIcon(KlpIcons.circle, key: ValueKey('app-icon')),
           onMinimize: () => minimized = true,
           onToggleMaximize: () => maximized = true,
           onClose: () => closed = true,
@@ -49,7 +57,7 @@ void main() {
             .klp
             .geometry
             .layout
-            .windowControlButtonSize,
+            .windowHeaderControlSize,
       ),
     );
 
@@ -103,25 +111,85 @@ void main() {
     );
     final closeTokens = tester.element(closeFinder).klpColors;
     expect(tester.widget<Material>(closeMaterial).color, closeTokens.danger);
+    expect(
+      tester.widget<Material>(closeMaterial).borderRadius,
+      BorderRadius.circular(tester.element(closeFinder).klp.shape.card),
+    );
     expect(tester.widget<KlpIcon>(closeIcon).color, closeTokens.onStatus);
+    expect(
+      tester.widget<KlpIcon>(closeIcon).size,
+      tester.element(closeFinder).klp.geometry.layout.windowHeaderControlSize /
+          2,
+    );
+    expect(tester.widget<KlpIcon>(closeIcon).size, 12);
 
-    final layout = tester.element(closeFinder).klp.geometry.layout;
-    expect(layout.windowToolbarPaddingStart, layout.windowToolbarPaddingEnd);
-    expect(
-      layout.windowToolbarPaddingStart,
-      tester.element(closeFinder).klp.space.compact,
-    );
-    expect(
-      layout.windowToolbarPaddingVertical,
-      (layout.windowToolbarHeight - layout.windowControlButtonSize) / 2,
-    );
-    expect(
-      tester.getRect(closeFinder).right,
-      tester.getRect(find.byType(KlpWindowHeader)).right -
-          layout.windowToolbarPaddingEnd,
-    );
+    final space = tester.element(closeFinder).klp.space;
+    final geometry = tester.element(closeFinder).klp.geometry;
+    final headerRect = tester.getRect(find.byType(KlpWindowHeader));
+    final closeRect = tester.getRect(closeFinder);
+    expect(headerRect.height, klpWindowHeaderHeight(geometry));
+    expect(closeRect.top, headerRect.top);
+    expect(closeRect.right, headerRect.right - space.windowHeaderMargin);
+    expect(closeRect.bottom, headerRect.bottom);
     await tester.tap(closeFinder);
     expect(closed, isTrue);
+  });
+
+  testWidgets('沒有 App icon 時仍保留同尺寸 identity 槽位', (tester) async {
+    await tester.pumpWidget(
+      testBed(
+        child: const KlpWindowHeader(
+          titleText: 'Designist',
+          platform: KlpAppPlatform.windows,
+          showWindowControls: false,
+        ),
+      ),
+    );
+
+    final slot = find.byKey(const ValueKey(KlpWindowHeaderKeys.appIconSlot));
+    final title = find.text('Designist');
+    final layout = tester.element(slot).klp.geometry.layout;
+
+    expect(slot, findsOneWidget);
+    expect(tester.getSize(slot), Size.square(layout.windowHeaderControlSize));
+    expect(
+      tester.getRect(title).left - tester.getRect(slot).right,
+      layout.windowIdentityGap,
+    );
+    expect(tester.takeException(), isNull);
+  });
+
+  testWidgets('較矮 Header 會依可用高度縮放 icon 與控制鈕', (tester) async {
+    await tester.pumpWidget(
+      testBed(
+        child: KlpWindowHeader(
+          height: 16,
+          platform: KlpAppPlatform.windows,
+          appIcon: const KlpIcon(
+            KlpIcons.circle,
+            key: ValueKey('short-header-app-icon'),
+          ),
+          onMinimize: () {},
+          onToggleMaximize: () {},
+          onClose: () {},
+        ),
+      ),
+    );
+
+    final close = find.byWidgetPredicate(
+      (widget) => widget is KlpTooltip && widget.message == 'Close window',
+    );
+    final closeIcon = find.descendant(
+      of: close,
+      matching: find.byType(KlpIcon),
+    );
+    final appIconSlot = find.byKey(
+      const ValueKey(KlpWindowHeaderKeys.appIconSlot),
+    );
+
+    expect(tester.getSize(close), const Size.square(16));
+    expect(tester.widget<KlpIcon>(closeIcon).size, 8);
+    expect(tester.getSize(appIconSlot), const Size.square(16));
   });
 
   testWidgets('Windows 模式在極窄寬度下保留控制鈕且不溢出', (tester) async {
@@ -135,8 +203,8 @@ void main() {
             width: 156.0,
             child: KlpWindowHeader(
               titleText: 'A deliberately long application title',
-              platform: TargetPlatform.windows,
-              appIcon: const Icon(Icons.circle),
+              platform: KlpAppPlatform.windows,
+              appIcon: const KlpIcon(KlpIcons.circle),
               onClose: () => closed = true,
             ),
           ),
@@ -150,11 +218,11 @@ void main() {
       (widget) => widget is KlpTooltip && widget.message == 'Close window',
     );
     expect(closeFinder, findsOneWidget);
-    final layout = tester.element(closeFinder).klp.geometry.layout;
+    final space = tester.element(closeFinder).klp.space;
     expect(
       tester.getRect(closeFinder).right,
       tester.getRect(find.byType(KlpWindowHeader)).right -
-          layout.windowToolbarPaddingEnd,
+          space.windowHeaderMargin,
     );
 
     await tester.tap(closeFinder);
@@ -175,7 +243,7 @@ void main() {
       testBed(
         child: const KlpWindowHeader(
           titleText: 'Kallopis',
-          platform: TargetPlatform.windows,
+          platform: KlpAppPlatform.windows,
           isMaximized: true,
         ),
       ),
@@ -192,8 +260,8 @@ void main() {
       testBed(
         child: const KlpWindowHeader(
           titleText: 'Planist Mac',
-          platform: TargetPlatform.macOS,
-          appIcon: Icon(Icons.circle, key: ValueKey('mac-app-icon')),
+          platform: KlpAppPlatform.macos,
+          appIcon: KlpIcon(KlpIcons.circle, key: ValueKey('mac-app-icon')),
         ),
       ),
     );

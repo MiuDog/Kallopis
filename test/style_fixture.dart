@@ -1,5 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:kallopis/kallopis.dart';
+import 'package:kallopis/src/styling/legacy_theme/klp_component_theme.dart';
+import 'package:kallopis/src/styling/legacy_theme/klp_geometry_theme.dart';
+import 'package:kallopis/src/styling/legacy_theme/klp_motion_theme.dart';
+import 'package:kallopis/src/styling/legacy_theme/klp_shape_theme.dart';
+import 'package:kallopis/src/styling/legacy_theme/klp_spacing_theme.dart';
+import 'package:kallopis/src/styling/legacy_theme/klp_surface_theme.dart';
+import 'package:kallopis/src/styling/legacy_theme/klp_theme.dart';
+import 'package:kallopis/src/styling/legacy_theme/klp_typography_theme.dart';
+import 'package:kallopis/src/styling/legacy_theme/klp_visual_style.dart';
 
 /// 一套與 `KlpVisualStyle.defaultStyle` **每個維度都不同**的風格，只存在於測試裡。
 ///
@@ -32,7 +40,26 @@ final KlpVisualStyle contrastingStyle = KlpVisualStyle.defaultStyle.copyWith(
   spacing: KlpSpacingTheme.comfortableDensity.copyWith(
     hairline: 0,
     tight: 2,
-    compact: 4,
+    contentInlineGap: 4,
+    contentStackGap: 4,
+    contentInset: 4,
+    controlContentGap: 4,
+    controlInset: 4,
+    actionGap: 4,
+    chromeGap: 4,
+    chromePanelInset: 4,
+    chromeToolbarGap: 4,
+    navigationItemInset: 4,
+    navigationRailInset: 4,
+    navigationRailItemGap: 4,
+    overlayContentInset: 4,
+    overlayHeadingGap: 4,
+    overlayItemGap: 4,
+    navigationSectionGap: 3,
+    appFrameInset: 2,
+    workbenchContentInset: 2,
+    windowHeaderMargin: 2,
+    dockMargin: 2,
     base: 8,
     comfortable: 8,
     loose: 12,
@@ -44,6 +71,7 @@ final KlpVisualStyle contrastingStyle = KlpVisualStyle.defaultStyle.copyWith(
     itemGap: 4,
     groupGap: 8,
     controlHeight: 24,
+    controlHeightXSmall: 18,
     controlHeightSmall: 20,
     controlHeightLarge: 30,
     iconSmall: 12,
@@ -95,5 +123,10 @@ final KlpVisualStyle contrastingStyle = KlpVisualStyle.defaultStyle.copyWith(
     menuRadius: 0,
     cardRadius: 0,
     badgeRadius: 0,
+  ),
+
+  // 色彩平面的尺寸必須能從 geometry theme 完整抵達元件。
+  geometry: KlpGeometryTheme.standard.copyWith(
+    control: KlpGeometryTheme.standard.control.copyWith(colorPlaneExtent: 120),
   ),
 );

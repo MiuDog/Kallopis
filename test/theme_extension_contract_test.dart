@@ -10,13 +10,13 @@ import 'package:flutter_test/flutter_test.dart';
 /// 這道檢查是實測出來的：某次 token 擴充後，`KlpSpacingTheme` 有 42 個欄位而 `==` 只比 4 個，
 /// `KlpThemeData` 與 `KlpDataVisualizationTheme` 甚至完全沒有定義 `==`。當時所有測試全綠。
 void main() {
-  final files = Directory('lib/src/theme')
+  final files = Directory('lib/src/styling/legacy_theme')
       .listSync()
       .whereType<File>()
       .where((f) => f.path.endsWith('.dart'))
       .toList();
 
-  final fieldPattern = RegExp(r'^  final [\w<>?, ]+ (\w+);', multiLine: true);
+  final fieldPattern = RegExp(r'^\s+final [\w<>?, ]+ (\w+);', multiLine: true);
 
   for (final file in files) {
     final source = file.readAsStringSync();
@@ -71,7 +71,7 @@ void main() {
     });
 
     test('$name 的 copyWith 涵蓋每一個欄位', () {
-      final marker = RegExp(r'\n  \w+ copyWith\(');
+      final marker = RegExp(r'\n\s+\w+ copyWith\(');
       final m = marker.firstMatch(source);
       expect(m, isNotNull, reason: '$name 沒有定義 copyWith');
 
@@ -99,4 +99,39 @@ void main() {
       );
     });
   }
+
+  test('gridTileWidth 只由 constructor 提供預設值', () {
+    // 直接檢查 comfortableDensity 區段，避免相同預設值在兩處靜默分岔。
+    final source = File(
+      'lib/src/styling/legacy_theme/klp_spacing_theme.dart',
+    ).readAsStringSync();
+    final densityStart = source.indexOf(
+      'static const KlpSpacingTheme comfortableDensity',
+    );
+    final copyWithStart = source.indexOf(
+      'KlpSpacingTheme copyWith',
+      densityStart,
+    );
+    final densitySource = source.substring(densityStart, copyWithStart);
+
+    expect(densitySource, isNot(contains('gridTileWidth:')));
+    expect(source, contains('this.gridTileWidth = 170,'));
+  });
+
+  test('iconGlyph 只由 constructor 提供預設值', () {
+    final source = File(
+      'lib/src/styling/legacy_theme/klp_spacing_theme.dart',
+    ).readAsStringSync();
+    final densityStart = source.indexOf(
+      'static const KlpSpacingTheme comfortableDensity',
+    );
+    final copyWithStart = source.indexOf(
+      'KlpSpacingTheme copyWith',
+      densityStart,
+    );
+    final densitySource = source.substring(densityStart, copyWithStart);
+
+    expect(densitySource, isNot(contains('iconGlyph:')));
+    expect(source, contains('this.iconGlyph = 18,'));
+  });
 }

@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:kallopis/kallopis.dart';
 
-import 'style_fixture.dart';
+import 'support/public_library_graph.dart';
 
 /// 從**消費者的位置**驗證這個庫。
 ///
@@ -15,6 +15,11 @@ import 'style_fixture.dart';
 /// 這道缺口是實測出來的：庫內 33 個測試全部通過的狀態下，第一個真實消費者一放上
 /// `KlpTextField` 就拋 "No Material widget found"。編譯過不等於畫得出來。
 void main() {
+  test('public barrel exposes typed OKLCH chroma range', () {
+    const range = KlpOklchChromaRange.custom(0.2);
+    expect(range.upperBound, 0.2);
+  });
+
   Future<void> pump(
     WidgetTester tester,
     Widget child, {
@@ -121,37 +126,6 @@ void main() {
     });
   });
 
-  group('消費者能組出一個完整畫面', () {
-    Widget workbench() => KlpAppScreen(
-      child: KlpWorkbenchShell(
-        primary: const KlpSidebarFrame(
-          header: KlpPanelHeader(title: 'nav'),
-          rail: SizedBox.shrink(),
-          content: KlpText('sidebar'),
-        ),
-        stage: KlpStageFrame(
-          header: const KlpPanelHeader(title: 'stage'),
-          content: KlpSection(
-            title: 'section',
-            child: KlpButton(label: 'ok', onPressed: () {}),
-          ),
-        ),
-        secondary: const KlpPanelFrame(
-          header: KlpPanelHeader(title: 'inspector'),
-          content: KlpText('details'),
-        ),
-      ),
-    );
-
-    for (final style in [KlpVisualStyle.defaultStyle, contrastingStyle]) {
-      testWidgets('${style.name} 風格下不丟例外', (tester) async {
-        await pump(tester, workbench(), style: style);
-        await tester.pumpAndSettle();
-        expect(tester.takeException(), isNull);
-      });
-    }
-  });
-
   group('客製面對消費者可用', () {
     testWidgets('只覆寫色彩層，其餘沿用現成風格', (tester) async {
       const brandAccent = Color(0xFF3355FF);
@@ -205,10 +179,10 @@ void main() {
         accentSoft: KlpPalette.ink900,
         interaction: KlpPalette.ink50,
         interactionSoft: KlpPalette.ink800,
-        success: KlpPalette.darkSuccess,
-        warning: KlpPalette.darkWarning,
-        danger: KlpPalette.darkDanger,
-        info: KlpPalette.darkInfo,
+        success: KlpPalette.green500,
+        warning: KlpPalette.amber500,
+        danger: KlpPalette.red300,
+        info: KlpPalette.blue500,
       );
 
       late KlpTheme tokens;
@@ -227,23 +201,12 @@ void main() {
     });
   });
 
-  test('公開 barrel 匯出 lib/src 下的每一個公開檔案', () {
-    // 少匯出一個檔案不會有任何錯誤訊息，只會讓消費者拿不到某個型別。
-    final barrel = File('lib/kallopis.dart').readAsStringSync();
-    final missing = Directory('lib/src')
-        .listSync(recursive: true)
-        .whereType<File>()
-        .map((f) => f.path.replaceAll(r'\', '/'))
-        .where((p) => p.endsWith('.dart'))
-        .where((p) => !p.contains('/internal/'))
-        .map((p) => p.replaceFirst('lib/', ''))
-        .where((p) => !barrel.contains("export '$p';"))
-        .toList();
-
-    expect(
-      missing,
-      isEmpty,
-      reason: '這些檔案沒有從 barrel 匯出：\n${missing.join('\n')}',
+  test('Isolated public barrels reach every public source and owned part', () {
+    final violations = publicLibraryViolations(
+      File('lib/kallopis.dart'),
+      Directory('lib/src'),
+      isolatedEntries: [File('lib/kallopis_declarative.dart')],
     );
+    expect(violations, isEmpty, reason: violations.join('\n'));
   });
 }

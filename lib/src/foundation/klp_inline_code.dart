@@ -1,6 +1,6 @@
 import 'package:flutter/widgets.dart';
 
-import '../theme/klp_theme.dart';
+import '../styling/legacy_theme/klp_theme.dart';
 
 /// 行內程式碼片段。帶有圓角背景與等寬字體，適合在段落文字中呈現指令、變數或路徑。
 class KlpInlineCode extends StatelessWidget {

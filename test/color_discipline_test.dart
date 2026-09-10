@@ -36,14 +36,10 @@ void main() {
   const offRamp = <String, Color>{
     'scrim': KlpPalette.scrim,
     'line': KlpPalette.line,
-    'lightSuccess': KlpPalette.lightSuccess,
-    'lightWarning': KlpPalette.lightWarning,
-    'lightDanger': KlpPalette.lightDanger,
-    'lightInfo': KlpPalette.lightInfo,
-    'darkSuccess': KlpPalette.darkSuccess,
-    'darkWarning': KlpPalette.darkWarning,
-    'darkDanger': KlpPalette.darkDanger,
-    'darkInfo': KlpPalette.darkInfo,
+    'green500': KlpPalette.green500,
+    'amber500': KlpPalette.amber500,
+    'red300': KlpPalette.red300,
+    'blue500': KlpPalette.blue500,
   };
 
   bool onRamp(Color c) => ramp.values.any((r) => r.toARGB32() == c.toARGB32());
@@ -111,7 +107,9 @@ void main() {
   test('元件不得直接取用具體顏色', () {
     // 元件只能透過 context.klp 取色，不保留任何 palette 例外。
     const allowedMembers = <String>{};
-    const decorativeOnly = {'lib/src/shell/klp_theme_preview_tile.dart'};
+    const decorativeOnly = {
+      'lib/src/features/workspace/shell/theme/primitives/klp_theme_preview_painter.dart',
+    };
 
     final reference = RegExp(r'KlpPalette\.([a-zA-Z0-9]+)');
     final violations = <String>[];
@@ -123,7 +121,11 @@ void main() {
             .where((f) => f.path.endsWith('.dart'))) {
       final path = file.path.replaceAll(r'\', '/');
       // token 與 theme 層本來就負責定義與組裝色彩。
-      if (path.startsWith('lib/src/theme/') ||
+      if (path.startsWith('lib/src/styling/legacy_theme/') ||
+          path == 'lib/src/styling/presets/legacy/default_colors.dart' ||
+          path ==
+              'lib/src/styling/presets/legacy/default_data_visualization.dart' ||
+          path == 'lib/src/styling/legacy_tokens/primitive_token.dart' ||
           path == 'lib/src/foundation/klp_palette.dart') {
         continue;
       }

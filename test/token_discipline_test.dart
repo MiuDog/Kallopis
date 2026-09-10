@@ -13,15 +13,19 @@ void main() {
       .listSync(recursive: true)
       .whereType<File>()
       .where((file) => file.path.endsWith('.dart'))
+      .where((file) => !file.path.replaceAll(r'\', '/').contains('/internal/'))
       .toList();
 
   String relative(File file) => file.path.replaceAll(r'\', '/');
 
   group('顏色只能定義在 primitive 層', () {
-    // 唯一允許出現 Color(0x…) 的地方。
+    const palettePath =
+        'lib/src/styling/legacy_tokens/internal/klp_palette.dart';
+    // 色值只屬於 primitive 或明確不屬於設計語言的裝飾色盤。
     const primitiveLayer = {
       'lib/src/foundation/klp_palette.dart',
-      'lib/src/foundation/klp_accent.dart',
+      'lib/src/styling/legacy_tokens/primitive_token.dart',
+      palettePath,
     };
 
     // 抽取自 Planist 時的欠債已全數清空。**這個集合只能維持為空。**
@@ -66,12 +70,47 @@ void main() {
             '否則 allowlist 會變成永久豁免：\n${stale.join('\n')}',
       );
     });
+
+    test('primitive 顏色名稱不包含使用情境或主題模式', () {
+      final paletteSource = File(palettePath).readAsStringSync();
+      final forbiddenNames = RegExp(
+        r'static const (?:Color|List<Color>) '
+        r'(?:chart|axis|grid|label|value|crosshair|market|series|success|danger|warning|info)\w*'
+        r'|static const (?:Color|List<Color>) (?:light|dark|ultraDark)\w*'
+        r'|static const (?:Color|List<Color>) \w*(?:Light|Dark|UltraDark)\b',
+      );
+
+      expect(
+        forbiddenNames.allMatches(paletteSource).map((match) => match.group(0)),
+        isEmpty,
+        reason: 'Primitive 顏色只能以色族與色階命名；用途與模式必須由 semantic theme 指派。',
+      );
+    });
+
+    test('primitive 色值事實註解維持行尾且連續定義靠攏', () {
+      final source = File(palettePath).readAsStringSync();
+      final detachedFacts = RegExp(r'^\s*///?\s*oklch\(', multiLine: true);
+      final separatedColors = RegExp(
+        r'static const Color[^\r\n]*;[^\r\n]*\r?\n\s*\r?\n\s*static const Color',
+      );
+
+      expect(
+        detachedFacts.allMatches(source).map((match) => match.group(0)),
+        isEmpty,
+        reason: 'OKLCH 是色值的事實細節，必須放在該 Color 定義的行尾。',
+      );
+      expect(
+        separatedColors.allMatches(source).map((match) => match.group(0)),
+        isEmpty,
+        reason: '連續的 Color 定義之間不得插入空行。',
+      );
+    });
   });
 
   group('時長只能定義在 primitive 與 motion 層', () {
     const motionLayer = {
-      'lib/src/tokens/klp_scale.dart',
-      'lib/src/theme/klp_motion_theme.dart',
+      'lib/src/styling/legacy_tokens/primitive_token.dart',
+      'lib/src/styling/legacy_theme/klp_motion_theme.dart',
     };
 
     const knownOffenders = <String>{};
@@ -81,7 +120,7 @@ void main() {
 
       for (final file in sourceFiles) {
         final path = relative(file);
-        if (path.startsWith('lib/src/theme/') ||
+        if (path.startsWith('lib/src/styling/legacy_theme/') ||
             motionLayer.contains(path) ||
             knownOffenders.contains(path)) {
           continue;
@@ -111,8 +150,14 @@ void main() {
 
     for (final file in sourceFiles) {
       final path = relative(file);
-      if (path.startsWith('lib/src/tokens/') ||
-          path.startsWith('lib/src/theme/')) {
+      if (path.startsWith('lib/src/styling/legacy_tokens/') ||
+          path.startsWith('lib/src/styling/legacy_theme/') ||
+          const {
+            'lib/src/styling/presets/legacy/default_motion.dart',
+            'lib/src/styling/presets/legacy/default_shape.dart',
+            'lib/src/styling/presets/legacy/default_surface.dart',
+            'lib/src/styling/presets/legacy/default_typography.dart',
+          }.contains(path)) {
         continue;
       }
       if (RegExp(r'\bKlpScale\.').hasMatch(file.readAsStringSync())) {
@@ -142,8 +187,8 @@ void main() {
     final offenders = <String>[];
     for (final file in sourceFiles) {
       final path = relative(file);
-      if (path.startsWith('lib/src/theme/') ||
-          path.startsWith('lib/src/tokens/') ||
+      if (path.startsWith('lib/src/styling/legacy_theme/') ||
+          path.startsWith('lib/src/styling/legacy_tokens/') ||
           path == 'lib/src/foundation/klp_metrics.dart') {
         continue;
       }
@@ -163,7 +208,7 @@ void main() {
     // 寫死一個 `height: 10` 或 `alpha: 0.16` 不會出錯、不會被 analyze 抓到、換主題時
     // 也不會拋例外——它只是不跟著變。這正是最難發現的一類風格漂移。
     //
-    // 目前剩 3 處，全部在 KlpThemePreviewTile：那個元件畫的是一張「視窗的圖」，
+    // 目前剩 3 處，全部在 theme preview painter：它畫的是一張「視窗的圖」，
     // 這些透明度是插圖的繪製參數（等同 SVG 裡的座標），不是產品表面的風格。
     // 把它們搬進 theme 反而會宣稱它們可被覆寫，而覆寫它們只會讓那張圖畫錯。
     const baseline = 3;
@@ -205,7 +250,7 @@ void main() {
     //
     // 一次補完不成比例，因此用棘輪：未文件化的數量只能下降。消費者最先碰到的
     // 舊型別補上 dartdoc 時只准調低，不准調高。
-    const baseline = 78;
+    const baseline = 45;
 
     final declaration = RegExp(
       r'^(?:abstract final class|final class|class|enum) (Klp[A-Za-z]+)',

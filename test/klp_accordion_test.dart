@@ -42,9 +42,7 @@ void main() {
     expect(find.text('內容 B'), findsOneWidget);
   });
 
-  testWidgets('initialExpandedIds 決定初始展開項目，並透過 onExpandedChanged 回報變化', (
-    tester,
-  ) async {
+  testWidgets('initialExpandedIds 決定初始展開項目並回報變化', (tester) async {
     Set<String>? reported;
 
     await pump(
@@ -62,5 +60,26 @@ void main() {
     await tester.pumpAndSettle();
 
     expect(reported, isEmpty);
+  });
+
+  testWidgets('標題、子標題與內容維持各自角色', (tester) async {
+    await pump(
+      tester,
+      const KlpAccordion(
+        initialExpandedIds: {'a'},
+        items: [
+          KlpAccordionItemData(
+            id: 'a',
+            title: 'Metadata',
+            subtitle: 'Optional details',
+            child: KlpText('Content'),
+          ),
+        ],
+      ),
+    );
+
+    expect(find.text('Metadata'), findsOneWidget);
+    expect(find.text('Optional details'), findsOneWidget);
+    expect(find.text('Content'), findsOneWidget);
   });
 }

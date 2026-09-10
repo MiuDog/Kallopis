@@ -1,17 +1,24 @@
+import 'package:flutter/widgets.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:kallopis/kallopis.dart';
 
+import 'support/load_test_fonts.dart';
+
 void main() {
+  setUpAll(loadKlpTestFonts);
+
   testWidgets('renders the shared two-line stage identity', (tester) async {
     await tester.pumpWidget(
       const KlpApp(
         showWindowHeader: false,
-        home: KlpAppScreen(
-          child: KlpStageHeader(
-            projectName: 'Notist',
-            sectionLabel: 'Flow',
-            title: '第一份筆記',
-            typeLabel: 'FLOW',
+        home: KlpPanelFrame(
+          content: KlpAppScreen(
+            child: KlpStageHeader(
+              projectName: 'Notist',
+              sectionLabel: 'Flow',
+              title: '第一份筆記',
+              typeLabel: 'FLOW',
+            ),
           ),
         ),
       ),
@@ -22,28 +29,100 @@ void main() {
     expect(find.text('Flow'), findsOneWidget);
     expect(find.text('第一份筆記'), findsOneWidget);
     expect(find.text('FLOW'), findsOneWidget);
+
+    final firstLine = tester.getRect(find.text('Notist'));
+    final secondLine = tester.getRect(find.text('第一份筆記'));
+    final hairline = tester.element(find.text('第一份筆記')).klp.space.hairline;
+    expect(secondLine.top - firstLine.bottom, lessThanOrEqualTo(hairline / 2));
   });
 
-  testWidgets('keeps trailing actions inside the shared header', (
+  testWidgets('keeps stage chrome fully owned by the shared header', (
     tester,
   ) async {
+    await tester.binding.setSurfaceSize(const Size(420, 80));
+    addTearDown(() => tester.binding.setSurfaceSize(null));
     await tester.pumpWidget(
-      KlpApp(
+      const KlpApp(
         showWindowHeader: false,
-        home: KlpAppScreen(
-          child: KlpStageHeader(
+        home: KlpPanelFrame(
+          content: KlpStageHeader(
             projectName: 'Notist',
             sectionLabel: 'Flow',
             title: '第一份筆記',
             typeLabel: 'FLOW',
-            actions: [
-              KlpIconButton(icon: KlpIcons.edit, label: '編輯', onPressed: () {}),
-            ],
           ),
         ),
       ),
     );
 
-    expect(find.bySemanticsLabel('編輯'), findsOneWidget);
+    expect(find.byType(KlpIconButton), findsNothing);
+    final title = tester.getRect(find.text('第一份筆記'));
+    final breadcrumb = tester.getRect(find.text('Notist'));
+    expect(title.center.dy, greaterThan(breadcrumb.center.dy));
+
+    await expectLater(
+      find.byType(KlpStageHeader),
+      matchesGoldenFile('goldens/klp_stage_header_actions_light.png'),
+    );
+  });
+
+  testWidgets('workbench stage owns header and status composition', (
+    tester,
+  ) async {
+    await tester.pumpWidget(
+      KlpApp(
+        showWindowHeader: false,
+        home: KlpPanelFrame(
+          content: SizedBox(
+            width: 420,
+            height: 240,
+            child: KlpStageFrame.workbench(
+              projectName: 'Notist',
+              sectionLabel: 'Flow',
+              title: '第一份筆記',
+              typeLabel: 'FLOW',
+              content: const SizedBox.expand(),
+              status: const KlpStatusBarData(
+                leading: [KlpStatusItemData(label: 'Saved locally')],
+                trailing: [KlpStatusItemData(label: '100% · 1 frame')],
+              ),
+            ),
+          ),
+        ),
+      ),
+    );
+
+    expect(find.byType(KlpStageHeader), findsOneWidget);
+    expect(find.byType(KlpStatusBar), findsOneWidget);
+    expect(find.text('Saved locally'), findsOneWidget);
+  });
+
+  testWidgets('stage without a header does not reserve header height', (
+    tester,
+  ) async {
+    await tester.pumpWidget(
+      const KlpApp(
+        showWindowHeader: false,
+        home: KlpPanelFrame(
+          content: SizedBox(
+            key: ValueKey('stage-without-header'),
+            width: 420,
+            height: 240,
+            child: KlpStageFrame(
+              content: SizedBox(key: ValueKey('stage-content')),
+            ),
+          ),
+        ),
+      ),
+    );
+
+    final stage = tester.getRect(
+      find.byKey(const ValueKey('stage-without-header')),
+    );
+    final content = tester.getRect(find.byKey(const ValueKey('stage-content')));
+
+    expect(content.top, stage.top);
+    expect(content.bottom, stage.bottom);
+    expect(find.byType(KlpStageHeader), findsNothing);
   });
 }

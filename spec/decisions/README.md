@@ -2,11 +2,27 @@
 
 ## 索引
 
+Kallopis 遷移：[KLP-0019](KLP-0019-declarative-framework-migration.md)，Implementing。此狀態表示方向已獲使用者核准、程式尚未全部符合；不能當成 Accepted。新功能與 primitive 權限依該文件，原決策保留舊 API 的歷史與過渡範圍。
+
 | 編號 | 題目 | 狀態 |
 |---|---|---|
 | [KLP-0001](KLP-0001-scope-token-architecture-and-extraction-method.md) | 範圍、token 架構，與「複製搬移」這個例外 | Accepted |
 | [KLP-0002](KLP-0002-json-theme-and-geometry-tokens.md) | JSON theme 與 geometry semantic token | Accepted |
 | [KLP-0003](KLP-0003-note-semantics-owned-by-notist.md) | 筆記語意元件由 Notist 擁有 | Accepted |
+| [KLP-0004](KLP-0004-presentation-decisions-owned-by-kallopis.md) | 產品提供語意，呈現決策由 Kallopis 擁有 | Accepted |
+| [KLP-0005](KLP-0005-semantic-manifest-and-catalog-taxonomy.md) | Semantic Manifest 與 Catalog 分類 | Accepted |
+| [KLP-0006](KLP-0006-first-layer-margin-and-dock-composition.md) | 第一層外距與 Dock 組合 | Superseded by KLP-0008 |
+| [KLP-0007](KLP-0007-navigator-composition-model.md) | Navigator 三模型組合 | Accepted |
+| [KLP-0008](KLP-0008-product-root-padding-ownership.md) | 產品主內容根節點的 half-compact padding | Superseded by KLP-0009 |
+| [KLP-0009](KLP-0009-composed-half-compact-boundaries.md) | 組合層級各自擁有 half-compact 邊界 | Superseded by KLP-0010 |
+| [KLP-0010](KLP-0010-app-padding-wraps-header.md) | App padding 同時包住 Header 與主內容 | Superseded by KLP-0012 |
+| [KLP-0011](KLP-0011-window-header-full-drag-surface.md) | App Header 全表面拖動視窗 | Accepted |
+| [KLP-0012](KLP-0012-half-compact-boundary-pairs.md) | App、Header 與 Dock 的 halfCompact 邊界配對 | Accepted |
+| [KLP-0013](KLP-0013-panel-scrollbar-padding-slot.md) | Panel Scrollbar 使用尾側 padding 槽 | Accepted |
+| [KLP-0014](KLP-0014-panel-tree-composition.md) | App 主內容採封閉 Panel Tree | Accepted |
+| [KLP-0015](KLP-0015-scoped-spacing-semantics.md) | 間距依使用 scope 定義語意 | Accepted |
+| [KLP-0016](KLP-0016-panel-frame-and-rail-spacing.md) | PanelFrame 無內距，Rail 自行管理節奏並使用 PanelFrame | Accepted |
+| [KLP-0018](KLP-0018-dock-drag-feedback-and-insertion-line.md) | Dock header 拖曳 feedback、放置線與滑鼠錨點 | Accepted |
 
 ## 每份決策的必要內容
 
