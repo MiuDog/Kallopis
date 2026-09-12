@@ -1,0 +1,32 @@
+{
+	"KlpApplication": {
+		"import": "package:kallopis/kallopis_declarative.dart",
+		"code": "final destination = KlpDestination<Object?, Object?>(KlpId.root('app'));\nfinal router = KlpRouter(\n\tid: KlpId.root('router'),\n\tinitial: destination.location(null),\n\troutes: [\n\t\tKlpRoute(destination, screen: (input) => screen),\n\t],\n);\nfinal application = KlpApplication(\n\ttitle: 'Example',\n\tprimitives: KlpWorkspacePreset.light(),\n\trouter: router,\n);\nrunKlpApp(KlpMutableState(application).readOnly);"
+	},
+	"KlpScreen": {
+		"import": "package:kallopis/kallopis_declarative.dart",
+		"code": "final screen = KlpScreen(\n\tid: KlpId.root('screen'),\n\taccessibilityLabel: 'Example screen',\n\tchild: KlpRail(id: KlpId.root('rail')),\n);"
+	},
+	"KlpAdaptive": {
+		"import": "package:kallopis/kallopis_declarative.dart",
+		"code": "final adaptive = KlpAdaptive(\n\tid: KlpId.root('adaptive'),\n\tfallback: KlpRail(id: KlpId.root('fallback_rail')),\n\tmodes: {\n\t\tKlpAdaptiveMode.tabletLandscape: KlpRail(id: KlpId.root('tablet_rail')),\n\t},\n);"
+	},
+	"KlpAppLayout": {
+		"import": "package:kallopis/kallopis_declarative.dart",
+		"code": "final layout = KlpAppLayout(\n\tid: KlpId.root('layout'),\n\tchild: LayoutRow(\n\t\tid: KlpId.root('layout_row'),\n\t\tchildren: [\n\t\t\tKlpAppFrame(\n\t\t\t\tid: KlpId.root('main_frame'),\n\t\t\t\tchild: KlpRail(id: KlpId.root('rail')),\n\t\t\t),\n\t\t],\n\t),\n);"
+	},
+	"KlpActionRegion": { "import": "package:kallopis/kallopis_foundation.dart", "code": "KlpActionRegion(\n\tchild: KlpText('Open'),\n\tstyle: const KlpActionRegionStyle(),\n);" },
+	"KlpBox": { "import": "package:kallopis/kallopis_foundation.dart", "code": "KlpBox(\n\tchild: KlpSurface(\n\t\tchild: KlpText('Content'),\n\t),\n);" },
+	"KlpDashedBorder": { "import": "package:kallopis/kallopis_foundation.dart", "code": "KlpDashedBorder(\n\tchild: KlpStrokeFrame(\n\t\tchild: KlpText('Content'),\n\t),\n);" },
+	"KlpDragPreview": { "import": "package:kallopis/kallopis_foundation.dart", "code": "KlpDragPreview(\n\tchild: KlpSurface(\n\t\tchild: KlpText('Dragging'),\n\t),\n);" },
+	"KlpDropTarget": { "import": "package:kallopis/kallopis_foundation.dart", "code": "KlpDropTarget(\n\tchild: KlpSurface(\n\t\tchild: KlpStrokeFrame(\n\t\t\tchild: KlpText('Drop here'),\n\t\t),\n\t),\n);" },
+	"KlpIcons": { "import": "package:kallopis/kallopis_foundation.dart", "code": "final icon = KlpIcons.fromData(\n\tKlpIconData('add'),\n);" },
+	"KlpKeyBindingController": { "import": "package:kallopis/kallopis_foundation.dart", "code": "final controller = KlpKeyBindingController(\n\tcommand: KlpCommandIntent('save'),\n);" },
+	"KlpPageBackground": { "import": "package:kallopis/kallopis_foundation.dart", "code": "KlpPageBackground(\n\tpainter: const KlpPageBackgroundPainter(),\n\tvisuals: const KlpPageBackgroundVisuals(),\n);" },
+	"KlpRegion": { "import": "package:kallopis/kallopis_foundation.dart", "code": "KlpRegion(\n\tchild: KlpSurface(\n\t\tchild: KlpText('Region content'),\n\t),\n);" },
+	"KlpRichText": { "import": "package:kallopis/kallopis_foundation.dart", "code": "KlpRichText(\n\tnodes: [\n\t\tKlpRichTextNode.text('Read '),\n\t\tKlpRichTextNode.inlineCode('docs'),\n\t],\n);" },
+	"KlpSection": { "import": "package:kallopis/kallopis_foundation.dart", "code": "KlpSection(\n\ttitle: 'Settings',\n\tchild: KlpColumn(\n\t\tchildren: [\n\t\t\tKlpText('Content'),\n\t\t],\n\t),\n);" },
+	"KlpSplitLayout": { "import": "package:kallopis/kallopis_foundation.dart", "code": "KlpSplitLayout(\n\tleading: KlpText('Navigation'),\n\ttrailing: KlpText('Content'),\n);" },
+	"KlpSurface": { "import": "package:kallopis/kallopis_foundation.dart", "code": "KlpSurface(\n\ttone: KlpSurfaceTone.base,\n\tchild: KlpText('Surface content'),\n);" },
+	"KlpTextStyles": { "import": "package:kallopis/kallopis_foundation.dart", "code": "final styles = KlpTextStyles(\n\tbody: KlpTextStyleDefinition.body(),\n);" }
+}
