@@ -26,7 +26,7 @@
 flowchart LR
   source["lib/ 與 public entry points"] -->|architecture_atlas| atlas["docs/architecture/src/"]
   source -->|inventory| inventory["spec/component-inventory.md"]
-  guides["docs/ai/ 與 docs/architecture/"] --> generator["tool/reference_site/generate.mjs"]
+  guides["docs/ 下所有 Markdown"] --> generator["tool/reference_site/generate.mjs"]
   atlas --> generator
   inventory --> generator
   examples["tool/reference_site/assembly_examples.json"] --> generator
@@ -40,6 +40,7 @@ flowchart LR
 2. `get-started.html`：以現有 `docs/ai/` 的 consumer 契約與組裝模板為依據。
 3. `components/<name>.html`：每個 `spec/component-inventory.md` 中列出的 public `Klp*` 型別各一頁；左側 navigator 依領域分組。
 4. `api/<source-path>.html`：每個 `docs/architecture/src/` 產生頁各一頁，保留來源宣告、架構圖與原始碼連結。
+5. `guides/<source-path>.html`：每個其餘 `docs/` Markdown 各一頁，保留原始目錄結構。
 
 產生器必須產出 `search-index.json`，讓純前端搜尋可依型別名、分類與說明過濾，不需要 server。
 

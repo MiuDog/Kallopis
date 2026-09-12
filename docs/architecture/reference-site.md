@@ -4,9 +4,8 @@
 
 ## Sources
 
-- `docs/ai/`：Get Started 與宣告式 consumer 教學。
-- `docs/architecture/`：架構與執行期說明。
-- `docs/architecture/src/`：逐一對應到來源檔的 API reference。
+- `docs/`：全部 Markdown 文件皆會保留目錄結構產生為 Documentation 頁面。
+- `docs/architecture/src/`：逐一對應到來源檔的 API reference，不重複產生為 Documentation 頁面。
 - `spec/component-inventory.md`：元件清單、分類與容器判定。
 - `tool/reference_site/assembly_examples.json`：容器元件的 Dart 組裝範例。
 

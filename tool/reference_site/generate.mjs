@@ -170,10 +170,7 @@ function main() {
 	}
 	const components = inventoryComponents();
 	const apiDocuments = files(architectureRoot, (item) => item.endsWith('.md'));
-	const guides = [
-		...files('docs/ai', (item) => item.endsWith('.md')),
-		...files('docs/architecture', (item) => item.endsWith('.md') && !item.includes('/src/') && !item.includes('/components/')),
-	];
+	const guides = files('docs', (item) => item.endsWith('.md') && !item.startsWith(`${architectureRoot}/`));
 	const search = [];
 	for (const component of components) {
 		const relative = `components/${slug(component.name)}.html`;
@@ -191,7 +188,8 @@ function main() {
 		const relative = pageLinkForGuide(guide);
 		const title = readText(guide).match(/^#\s+(.+)$/m)?.[1] ?? path.basename(guide, '.md');
 		write(relative, shell({ title, active: path.posix.dirname(relative), content: markdownToHtml(readText(guide)) }));
-		search.push({ title, category: 'Guide', href: relative });
+		const area = guide.slice('docs/'.length).split('/')[0] || 'root';
+		search.push({ title, category: 'Guide', guideArea: area, href: relative });
 	}
 	write('components/index.html', shell({ title: 'Components', active: 'components', content: `<h1>Components</h1><p>${components.length} 個 public component pages。使用左側搜尋或依分類瀏覽。</p><ul>${components.map((item) => `<li><a href="${slug(item.name)}.html">${item.name}</a> <small>${item.domain}</small></li>`).join('')}</ul>` }));
 	const apiGroups = new Map();

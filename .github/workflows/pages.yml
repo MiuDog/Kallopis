@@ -25,6 +25,8 @@ jobs:
         with:
           node-version: 24
       - uses: actions/configure-pages@v5
+        with:
+          enablement: true
       - run: node tool/reference_site/generate.mjs
       - run: node tool/reference_site/verify.mjs
       - uses: actions/upload-pages-artifact@v3
