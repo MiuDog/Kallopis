@@ -14,7 +14,7 @@ Kallopis 是 -ist 產品家族共用的 Flutter 視覺與互動框架。新架�
 4. [驗證指南](docs/ai/verification.md)：把原生 Flutter 組裝阻擋在 CI 外。
 5. [系統索引與能力範例](docs/ai/systems.md)：依系統查找所有目前功能、責任與範例。
 
-架構接手者應再讀 [目前架構總覽](docs/architecture/current-refactor-overview.md) 與 [架構圖集](docs/architecture/README.md)。完整元件、API 與教學請見 [Reference site](https://miudog.github.io/Kallopis/)。
+架構接手者應再讀 [目前架構總覽](docs/architecture/current-refactor-overview.md) 與 [架構圖集](docs/architecture/README.md)。[產品網站](https://miudog.github.io/Kallopis/) 提供框架介紹；完整元件、API 與教學集中於 [文件中心](https://miudog.github.io/Kallopis/docs/)。網站直接由本庫 Markdown 產生，不另存一份文件內容。
 
 ## 唯一消費端入口
 
