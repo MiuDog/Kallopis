@@ -6,7 +6,7 @@ Kallopis repository 提供可由 GitHub Pages 發布的靜態 reference site，�
 
 ## In scope
 
-- 以 `docs/ai/`、`docs/architecture/`、`docs/architecture/src/` 與 `spec/component-inventory.md` 產生網站。
+- 以 `docs/` 下所有 Markdown 與 `spec/component-inventory.md` 產生網站；`docs/architecture/src/` 另分類為 API reference。
 - 所有 component inventory 的 public `Klp*` 型別建立獨立 component page。
 - 所有 architecture-atlas source Markdown 建立獨立 API page。
 - 非葉組合型別和宣告式容器型別顯示 Dart 組裝範例。
