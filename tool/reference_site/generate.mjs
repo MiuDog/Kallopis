@@ -66,7 +66,7 @@ function inventoryComponents() {
 	return components.sort((left, right) => left.name.localeCompare(right.name));
 }
 
-function markdownToHtml(markdown) {
+function markdownToHtml(markdown, sourcePath = '', outputPage = '') {
 	const lines = markdown.replaceAll('\r\n', '\n').split('\n');
 	const html = [];
 	let fence = false;
@@ -94,7 +94,7 @@ function markdownToHtml(markdown) {
 				list = false;
 			}
 			const level = heading[1].length;
-			html.push(`<h${level}>${inlineMarkdown(heading[2])}</h${level}>`);
+			html.push(`<h${level}>${inlineMarkdown(heading[2], sourcePath, outputPage)}</h${level}>`);
 			continue;
 		}
 		if (line.startsWith('- ')) {
@@ -102,23 +102,36 @@ function markdownToHtml(markdown) {
 				html.push('<ul>');
 				list = true;
 			}
-			html.push(`<li>${inlineMarkdown(line.slice(2))}</li>`);
+			html.push(`<li>${inlineMarkdown(line.slice(2), sourcePath, outputPage)}</li>`);
 			continue;
 		}
 		if (list) {
 			html.push('</ul>');
 			list = false;
 		}
-		if (line.trim().length > 0 && !line.startsWith('|')) html.push(`<p>${inlineMarkdown(line)}</p>`);
+		if (line.trim().length > 0 && !line.startsWith('|')) html.push(`<p>${inlineMarkdown(line, sourcePath, outputPage)}</p>`);
 	}
 	if (list) html.push('</ul>');
 	return html.join('\n');
 }
 
-function inlineMarkdown(value) {
+function inlineMarkdown(value, sourcePath = '', outputPage = '') {
 	return escapeHtml(value)
 		.replace(/`([^`]+)`/g, '<code>$1</code>')
-		.replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2">$1</a>');
+		.replace(/\[([^\]]+)\]\(([^)]+)\)/g, (_, label, href) => `<a href="${escapeHtml(rewriteDocLink(href, sourcePath, outputPage))}">${label}</a>`);
+}
+
+function rewriteDocLink(href, sourcePath, outputPage) {
+	if (!sourcePath || !outputPage || href.startsWith('#') || /^[a-z]+:/i.test(href)) return href;
+	const [targetPath, fragment = ''] = href.split('#', 2);
+	if (!targetPath.endsWith('.md')) return href;
+	const targetSource = path.posix.normalize(path.posix.join(path.posix.dirname(sourcePath), targetPath));
+	if (!fs.existsSync(path.join(root, targetSource))) return href;
+	const targetPage = targetSource.startsWith(`${architectureRoot}/`)
+		? pageLinkForDoc(targetSource)
+		: pageLinkForGuide(targetSource);
+	const relative = path.posix.relative(path.posix.dirname(outputPage), targetPage);
+	return `${relative || path.posix.basename(targetPage)}${fragment ? `#${fragment}` : ''}`;
 }
 
 function shell({ title, content, active = '' }) {
@@ -180,14 +193,14 @@ function main() {
 	for (const document of apiDocuments) {
 		const relative = pageLinkForDoc(document);
 		const title = readText(document).match(/^#\s+(.+)$/m)?.[1] ?? path.basename(document, '.md');
-		write(relative, shell({ title, active: path.posix.dirname(relative), content: markdownToHtml(readText(document)) }));
+		write(relative, shell({ title, active: path.posix.dirname(relative), content: markdownToHtml(readText(document), document, relative) }));
 		const area = document.slice(architectureRoot.length + 1).split('/')[0] || 'root';
 		search.push({ title, category: 'API', apiArea: area, href: relative });
 	}
 	for (const guide of guides) {
 		const relative = pageLinkForGuide(guide);
 		const title = readText(guide).match(/^#\s+(.+)$/m)?.[1] ?? path.basename(guide, '.md');
-		write(relative, shell({ title, active: path.posix.dirname(relative), content: markdownToHtml(readText(guide)) }));
+		write(relative, shell({ title, active: path.posix.dirname(relative), content: markdownToHtml(readText(guide), guide, relative) }));
 		const area = guide.slice('docs/'.length).split('/')[0] || 'root';
 		search.push({ title, category: 'Guide', guideArea: area, href: relative });
 	}
@@ -204,7 +217,7 @@ function main() {
 		.map(([area, documents]) => `<section id="${slug(area)}"><h2>${escapeHtml(area)}</h2><ul>${documents.map((item) => `<li><a href="${pageLinkForDoc(item).replace(/^api\//, '')}">${escapeHtml(item)}</a></li>`).join('')}</ul></section>`)
 		.join('');
 	write('api/index.html', shell({ title: 'API Reference', active: 'api', content: `<h1>API Reference</h1><p>${apiDocuments.length} 個由 architecture-atlas 產生的來源頁。</p>${apiIndex}` }));
-	write('get-started.html', shell({ title: 'Get Started', content: markdownToHtml(readText('docs/ai/README.md')) }));
+	write('get-started.html', shell({ title: 'Get Started', content: markdownToHtml(readText('docs/ai/README.md'), 'docs/ai/README.md', 'get-started.html') }));
 	write('index.html', shell({ title: 'Reference', content: '<p class="eyebrow">Kallopis reference</p><h1>建構受控的 Flutter 視覺層</h1><p>從 Get Started 開始，或用分類與 API navigator 尋找元件。</p><p><a class="button" href="get-started.html">Get Started</a> <a class="button secondary" href="components/index.html">Browse components</a></p>' }));
 	write('search-index.json', JSON.stringify(search));
 	write('site-manifest.json', JSON.stringify({ components: components.map((item) => item.name), apiDocuments, guides }, null, '\t'));

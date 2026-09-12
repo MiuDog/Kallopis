@@ -25,6 +25,7 @@ jobs:
         with:
           node-version: 24
       - uses: actions/configure-pages@v5
+        if: github.event_name != 'pull_request'
         with:
           enablement: true
       - run: node tool/reference_site/generate.mjs

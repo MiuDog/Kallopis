@@ -1,52 +1,90 @@
 const root = document.body.dataset.root ?? '';
+
 fetch(`${root}search-index.json`)
 	.then((response) => response.ok ? response.json() : [])
 	.then((entries) => {
 		const navigation = document.querySelector('#navigation');
 		const search = document.querySelector('#search');
-		const groups = new Map();
-		const apiGroups = new Map();
-		const guideGroups = new Map();
-		for (const entry of entries) {
-			if (entry.category === 'API') {
-				const area = entry.apiArea || 'root';
-				apiGroups.set(area, (apiGroups.get(area) || 0) + 1);
-				continue;
-			}
-			if (entry.category === 'Guide') {
-				const area = entry.guideArea || 'root';
-				const guides = guideGroups.get(area) ?? [];
-				guides.push(entry);
-				guideGroups.set(area, guides);
-				continue;
-			}
-			const group = groups.get(entry.category) ?? [];
-			group.push(entry);
-			groups.set(entry.category, group);
-		}
+		const components = groupEntries(entries, 'API', 'category');
+		const apiGroups = groupEntries(entries, 'API', 'apiArea');
+		const guideGroups = groupEntries(entries, 'Guide', 'guideArea');
+
 		function render(filter = '') {
 			const normalized = filter.trim().toLowerCase();
-			const apiNavigation = [...apiGroups.entries()].sort(([left], [right]) => left.localeCompare(right)).map(([area, count]) => `<a href="${root}api/index.html#${slug(area)}">${escapeHtml(area)} <small>${count}</small></a>`).join('');
-			const guideNavigation = [...guideGroups.entries()].sort(([left], [right]) => left.localeCompare(right)).map(([area, guides]) => {
-				const visible = guides.filter((guide) => guide.title.toLowerCase().includes(normalized));
-				if (visible.length === 0) return '';
-				return `<details><summary>${escapeHtml(area)} docs</summary>${visible.map((guide) => `<a href="${root}${guide.href}">${escapeHtml(guide.title)}</a>`).join('')}</details>`;
-			}).join('');
-			const componentNavigation = [...groups.entries()].map(([group, items]) => {
-				const visible = items.filter((item) => item.title.toLowerCase().includes(normalized));
-				if (visible.length === 0) return '';
-				return `<details open><summary>${group}</summary>${visible.map((item) => `<a href="${root}${item.href}">${item.title}</a>`).join('')}</details>`;
-			}).join('');
-			navigation.innerHTML = `<a href="${root}index.html">Overview</a><a href="${root}get-started.html">Get started</a><details><summary>API Reference</summary><a href="${root}api/index.html">All API</a>${apiNavigation}</details><details><summary>Documentation</summary>${guideNavigation}</details>${componentNavigation || '<p>No matching component.</p>'}`;
+			navigation.replaceChildren();
+			appendLink(navigation, `${root}index.html`, 'Overview');
+			appendLink(navigation, `${root}get-started.html`, 'Get started');
+			appendApiNavigation(navigation, apiGroups);
+			appendGuideNavigation(navigation, guideGroups, normalized);
+			appendComponentNavigation(navigation, components, normalized);
 		}
+
 		search.addEventListener('input', (event) => render(event.target.value));
 		render();
 	});
 
-function slug(value) {
-	return value.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+function groupEntries(entries, excludedCategory, key) {
+	const groups = new Map();
+	for (const entry of entries) {
+		if (key === 'category' && (entry.category === 'API' || entry.category === 'Guide')) continue;
+		if (key !== 'category' && entry.category !== excludedCategory) continue;
+		const group = entry[key] || 'root';
+		groups.set(group, [...(groups.get(group) ?? []), entry]);
+	}
+	return groups;
 }
 
-function escapeHtml(value) {
-	return value.replaceAll('&', '&amp;').replaceAll('<', '&lt;').replaceAll('>', '&gt;').replaceAll('"', '&quot;');
+function appendApiNavigation(navigation, groups) {
+	const details = appendDetails(navigation, 'API Reference');
+	appendLink(details, `${root}api/index.html`, 'All API');
+	for (const [area, entries] of [...groups.entries()].sort(([left], [right]) => left.localeCompare(right))) {
+		appendLink(details, `${root}api/index.html#${slug(area)}`, `${area} ${entries.length}`);
+	}
+}
+
+function appendGuideNavigation(navigation, groups, filter) {
+	const details = appendDetails(navigation, 'Documentation');
+	for (const [area, entries] of [...groups.entries()].sort(([left], [right]) => left.localeCompare(right))) {
+		const visible = entries.filter((entry) => entry.title.toLowerCase().includes(filter));
+		if (visible.length === 0) continue;
+		const group = appendDetails(details, `${area} docs`);
+		for (const entry of visible) appendLink(group, `${root}${entry.href}`, entry.title);
+	}
+}
+
+function appendComponentNavigation(navigation, groups, filter) {
+	let found = false;
+	for (const [category, entries] of groups) {
+		const visible = entries.filter((entry) => entry.title.toLowerCase().includes(filter));
+		if (visible.length === 0) continue;
+		found = true;
+		const details = appendDetails(navigation, category, true);
+		for (const entry of visible) appendLink(details, `${root}${entry.href}`, entry.title);
+	}
+	if (!found) {
+		const message = document.createElement('p');
+		message.textContent = 'No matching component.';
+		navigation.append(message);
+	}
+}
+
+function appendDetails(parent, label, open = false) {
+	const details = document.createElement('details');
+	details.open = open;
+	const summary = document.createElement('summary');
+	summary.textContent = label;
+	details.append(summary);
+	parent.append(details);
+	return details;
+}
+
+function appendLink(parent, href, label) {
+	const link = document.createElement('a');
+	link.href = href;
+	link.textContent = label;
+	parent.append(link);
+}
+
+function slug(value) {
+	return value.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
 }
