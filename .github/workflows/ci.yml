@@ -53,6 +53,11 @@ jobs:
       - name: 靜態分析（flutter analyze）
         run: flutter analyze --fatal-infos
 
+      - name: 參考網站產生與驗證
+        run: |
+          node tool/reference_site/generate.mjs
+          node tool/reference_site/verify.mjs
+
       - name: 元件清單新鮮度（inventory --check）
         run: dart run tool/inventory.dart --check
 
