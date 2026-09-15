@@ -201,3 +201,7 @@ Drag 的套件內部型別固定為 KlpPageReferenceDrag，位於klp_page_refere
 正式Web封閉私有端點 window.kallopisBlockNote.probeDatabaseDrop(point, source?, commit=false)：point={x,y,width,height}為Flutter宿主矩形中的logical座標，JS以當前viewport換算CSS座標，從實際DOM重驗database/view/row，回null或{hostInstanceId,databaseId,viewId,rowIndex,expectedVersion}。source是完整Page，只在commit=true必填。preview不配置interaction也不改正文；release必須重新hit-test後只發一次typed database.drop，絕不直接insert。回傳placement不是成功edit ack。probe須受gate、attachment與pointer attempt次序控制；並行preview的late response不得復活已離開的目標。座標只在rendering與Web之間使用，不進consumer callback。
 
 本輪測試仍僅test/klp_block_note_flow_host_test.dart、test/klp_page_reference_drop_test.dart；正式Web測試補純probe與release事件/零正文變更，Flutter假平台驗receipt-before-callback、observer ownership、source single/multi、release re-probe和dispose晚到；原生跨WebView drag與視覺為human-pending。
+
+### 首次協商與投影更新的確定順序
+
+正式打包renderer的首次attachment一律prepareFlowCapabilities→open並確認ready→configurePages（包含空集合）→舊pending flush→onOpened；如此同attachment後來新增callbacks或投影時不需重開。這不刪除plain legacy receive/accept行為。非idle期間宣告更新只讀取最新bound，恢復idle後合併送最新投影一次；不把暫時busy當load failure、不reopen。transport.configurePages被明確呼叫時仍回報typed unsuccessful result，不吞失敗。
