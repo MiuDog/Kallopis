@@ -12,15 +12,15 @@
 flowchart LR
 	n0["klp_finite_workflow.dart"]
 	n1["package:flutter/widgets.dart"]
-	n2["../../actions/button/klp_button.dart"]
-	n3["../../collections/badge/klp_badge.dart"]
-	n4["../../../foundation/klp_geometric_spinner.dart"]
-	n5["../../../foundation/interaction/klp_focus_region.dart"]
-	n6["../../../foundation/layout/klp_layout.dart"]
-	n7["../../../foundation/surface/klp_surface.dart"]
-	n8["../../../foundation/content/klp_text.dart"]
-	n9["../klp_feedback_tone.dart"]
-	n10["../klp_live_region.dart"]
+	n2["package:kallopis/src/features/actions/button/klp_button.dart"]
+	n3["package:kallopis/src/features/collections/badge/klp_badge.dart"]
+	n4["package:kallopis/src/foundation/klp_geometric_spinner.dart"]
+	n5["package:kallopis/src/foundation/interaction/klp_focus_region.dart"]
+	n6["package:kallopis/src/foundation/layout/klp_layout.dart"]
+	n7["package:kallopis/src/foundation/surface/klp_surface.dart"]
+	n8["package:kallopis/src/foundation/content/klp_text.dart"]
+	n9["package:kallopis/src/features/feedback/klp_feedback_tone.dart"]
+	n10["package:kallopis/src/features/feedback/klp_live_region.dart"]
 	n11["klp_focus_boundary.dart"]
 	n0 -->|"import"| n1
 	n0 -->|"import"| n2
@@ -55,15 +55,15 @@ flowchart LR
 | 關係 | 原始 directive | 來源 |
 |---|---|---|
 | import | <code>import &#x27;package:flutter/widgets.dart&#x27;;</code> | [lib/src/features/feedback/workflow/klp_finite_workflow.dart:1](../../../../../../lib/src/features/feedback/workflow/klp_finite_workflow.dart#L1) |
-| import | <code>import &#x27;../../actions/button/klp_button.dart&#x27;;</code> | [lib/src/features/feedback/workflow/klp_finite_workflow.dart:3](../../../../../../lib/src/features/feedback/workflow/klp_finite_workflow.dart#L3) |
-| import | <code>import &#x27;../../collections/badge/klp_badge.dart&#x27;;</code> | [lib/src/features/feedback/workflow/klp_finite_workflow.dart:4](../../../../../../lib/src/features/feedback/workflow/klp_finite_workflow.dart#L4) |
-| import | <code>import &#x27;../../../foundation/klp_geometric_spinner.dart&#x27;;</code> | [lib/src/features/feedback/workflow/klp_finite_workflow.dart:5](../../../../../../lib/src/features/feedback/workflow/klp_finite_workflow.dart#L5) |
-| import | <code>import &#x27;../../../foundation/interaction/klp_focus_region.dart&#x27;;</code> | [lib/src/features/feedback/workflow/klp_finite_workflow.dart:6](../../../../../../lib/src/features/feedback/workflow/klp_finite_workflow.dart#L6) |
-| import | <code>import &#x27;../../../foundation/layout/klp_layout.dart&#x27;;</code> | [lib/src/features/feedback/workflow/klp_finite_workflow.dart:7](../../../../../../lib/src/features/feedback/workflow/klp_finite_workflow.dart#L7) |
-| import | <code>import &#x27;../../../foundation/surface/klp_surface.dart&#x27;;</code> | [lib/src/features/feedback/workflow/klp_finite_workflow.dart:8](../../../../../../lib/src/features/feedback/workflow/klp_finite_workflow.dart#L8) |
-| import | <code>import &#x27;../../../foundation/content/klp_text.dart&#x27;;</code> | [lib/src/features/feedback/workflow/klp_finite_workflow.dart:9](../../../../../../lib/src/features/feedback/workflow/klp_finite_workflow.dart#L9) |
-| import | <code>import &#x27;../klp_feedback_tone.dart&#x27;;</code> | [lib/src/features/feedback/workflow/klp_finite_workflow.dart:10](../../../../../../lib/src/features/feedback/workflow/klp_finite_workflow.dart#L10) |
-| import | <code>import &#x27;../klp_live_region.dart&#x27;;</code> | [lib/src/features/feedback/workflow/klp_finite_workflow.dart:11](../../../../../../lib/src/features/feedback/workflow/klp_finite_workflow.dart#L11) |
+| import | <code>import &#x27;package:kallopis/src/features/actions/button/klp_button.dart&#x27;;</code> | [lib/src/features/feedback/workflow/klp_finite_workflow.dart:3](../../../../../../lib/src/features/feedback/workflow/klp_finite_workflow.dart#L3) |
+| import | <code>import &#x27;package:kallopis/src/features/collections/badge/klp_badge.dart&#x27;;</code> | [lib/src/features/feedback/workflow/klp_finite_workflow.dart:4](../../../../../../lib/src/features/feedback/workflow/klp_finite_workflow.dart#L4) |
+| import | <code>import &#x27;package:kallopis/src/foundation/klp_geometric_spinner.dart&#x27;;</code> | [lib/src/features/feedback/workflow/klp_finite_workflow.dart:5](../../../../../../lib/src/features/feedback/workflow/klp_finite_workflow.dart#L5) |
+| import | <code>import &#x27;package:kallopis/src/foundation/interaction/klp_focus_region.dart&#x27;;</code> | [lib/src/features/feedback/workflow/klp_finite_workflow.dart:6](../../../../../../lib/src/features/feedback/workflow/klp_finite_workflow.dart#L6) |
+| import | <code>import &#x27;package:kallopis/src/foundation/layout/klp_layout.dart&#x27;;</code> | [lib/src/features/feedback/workflow/klp_finite_workflow.dart:7](../../../../../../lib/src/features/feedback/workflow/klp_finite_workflow.dart#L7) |
+| import | <code>import &#x27;package:kallopis/src/foundation/surface/klp_surface.dart&#x27;;</code> | [lib/src/features/feedback/workflow/klp_finite_workflow.dart:8](../../../../../../lib/src/features/feedback/workflow/klp_finite_workflow.dart#L8) |
+| import | <code>import &#x27;package:kallopis/src/foundation/content/klp_text.dart&#x27;;</code> | [lib/src/features/feedback/workflow/klp_finite_workflow.dart:9](../../../../../../lib/src/features/feedback/workflow/klp_finite_workflow.dart#L9) |
+| import | <code>import &#x27;package:kallopis/src/features/feedback/klp_feedback_tone.dart&#x27;;</code> | [lib/src/features/feedback/workflow/klp_finite_workflow.dart:10](../../../../../../lib/src/features/feedback/workflow/klp_finite_workflow.dart#L10) |
+| import | <code>import &#x27;package:kallopis/src/features/feedback/klp_live_region.dart&#x27;;</code> | [lib/src/features/feedback/workflow/klp_finite_workflow.dart:11](../../../../../../lib/src/features/feedback/workflow/klp_finite_workflow.dart#L11) |
 | part | <code>part &#x27;klp_focus_boundary.dart&#x27;;</code> | [lib/src/features/feedback/workflow/klp_finite_workflow.dart:13](../../../../../../lib/src/features/feedback/workflow/klp_finite_workflow.dart#L13) |
 | part | <code>part &#x27;klp_focus_boundary_state.dart&#x27;;</code> | [lib/src/features/feedback/workflow/klp_finite_workflow.dart:14](../../../../../../lib/src/features/feedback/workflow/klp_finite_workflow.dart#L14) |
 | part | <code>part &#x27;klp_workflow_progress.dart&#x27;;</code> | [lib/src/features/feedback/workflow/klp_finite_workflow.dart:15](../../../../../../lib/src/features/feedback/workflow/klp_finite_workflow.dart#L15) |

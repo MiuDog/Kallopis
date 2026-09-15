@@ -12,7 +12,7 @@
 flowchart LR
 	n0["klp_page_background.dart"]
 	n1["package:flutter/widgets.dart"]
-	n2["../../../styling/legacy_theme/klp_theme.dart"]
+	n2["package:kallopis/src/styling/legacy_theme/klp_theme.dart"]
 	n3["klp_page_background_painter.dart"]
 	n4["klp_page_background_recipe.dart"]
 	n0 -->|"import"| n1
@@ -26,7 +26,7 @@ flowchart LR
 | 關係 | 原始 directive | 來源 |
 |---|---|---|
 | import | <code>import &#x27;package:flutter/widgets.dart&#x27;;</code> | [lib/src/foundation/surface/page_background/klp_page_background.dart:4](../../../../../../lib/src/foundation/surface/page_background/klp_page_background.dart#L4) |
-| import | <code>import &#x27;../../../styling/legacy_theme/klp_theme.dart&#x27;;</code> | [lib/src/foundation/surface/page_background/klp_page_background.dart:6](../../../../../../lib/src/foundation/surface/page_background/klp_page_background.dart#L6) |
+| import | <code>import &#x27;package:kallopis/src/styling/legacy_theme/klp_theme.dart&#x27;;</code> | [lib/src/foundation/surface/page_background/klp_page_background.dart:6](../../../../../../lib/src/foundation/surface/page_background/klp_page_background.dart#L6) |
 | import | <code>import &#x27;klp_page_background_painter.dart&#x27;;</code> | [lib/src/foundation/surface/page_background/klp_page_background.dart:7](../../../../../../lib/src/foundation/surface/page_background/klp_page_background.dart#L7) |
 | import | <code>import &#x27;klp_page_background_recipe.dart&#x27;;</code> | [lib/src/foundation/surface/page_background/klp_page_background.dart:8](../../../../../../lib/src/foundation/surface/page_background/klp_page_background.dart#L8) |
 

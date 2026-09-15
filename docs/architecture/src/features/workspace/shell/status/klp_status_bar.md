@@ -12,9 +12,9 @@
 flowchart LR
 	n0["klp_status_bar.dart"]
 	n1["package:flutter/widgets.dart"]
-	n2["../../../feedback/klp_status_indicator.dart"]
-	n3["../../../../foundation/layout/klp_layout.dart"]
-	n4["../../../../styling/legacy_theme/klp_theme.dart"]
+	n2["package:kallopis/src/features/feedback/klp_status_indicator.dart"]
+	n3["package:kallopis/src/foundation/layout/klp_layout.dart"]
+	n4["package:kallopis/src/styling/legacy_theme/klp_theme.dart"]
 	n5["klp_status_data.dart"]
 	n6["internal/klp_status_group.dart"]
 	n0 -->|"import"| n1
@@ -30,9 +30,9 @@ flowchart LR
 | 關係 | 原始 directive | 來源 |
 |---|---|---|
 | import | <code>import &#x27;package:flutter/widgets.dart&#x27;;</code> | [lib/src/features/workspace/shell/status/klp_status_bar.dart:1](../../../../../../../lib/src/features/workspace/shell/status/klp_status_bar.dart#L1) |
-| import | <code>import &#x27;../../../feedback/klp_status_indicator.dart&#x27;;</code> | [lib/src/features/workspace/shell/status/klp_status_bar.dart:3](../../../../../../../lib/src/features/workspace/shell/status/klp_status_bar.dart#L3) |
-| import | <code>import &#x27;../../../../foundation/layout/klp_layout.dart&#x27;;</code> | [lib/src/features/workspace/shell/status/klp_status_bar.dart:4](../../../../../../../lib/src/features/workspace/shell/status/klp_status_bar.dart#L4) |
-| import | <code>import &#x27;../../../../styling/legacy_theme/klp_theme.dart&#x27;;</code> | [lib/src/features/workspace/shell/status/klp_status_bar.dart:5](../../../../../../../lib/src/features/workspace/shell/status/klp_status_bar.dart#L5) |
+| import | <code>import &#x27;package:kallopis/src/features/feedback/klp_status_indicator.dart&#x27;;</code> | [lib/src/features/workspace/shell/status/klp_status_bar.dart:3](../../../../../../../lib/src/features/workspace/shell/status/klp_status_bar.dart#L3) |
+| import | <code>import &#x27;package:kallopis/src/foundation/layout/klp_layout.dart&#x27;;</code> | [lib/src/features/workspace/shell/status/klp_status_bar.dart:4](../../../../../../../lib/src/features/workspace/shell/status/klp_status_bar.dart#L4) |
+| import | <code>import &#x27;package:kallopis/src/styling/legacy_theme/klp_theme.dart&#x27;;</code> | [lib/src/features/workspace/shell/status/klp_status_bar.dart:5](../../../../../../../lib/src/features/workspace/shell/status/klp_status_bar.dart#L5) |
 | import | <code>import &#x27;klp_status_data.dart&#x27;;</code> | [lib/src/features/workspace/shell/status/klp_status_bar.dart:6](../../../../../../../lib/src/features/workspace/shell/status/klp_status_bar.dart#L6) |
 | part | <code>part &#x27;internal/klp_status_group.dart&#x27;;</code> | [lib/src/features/workspace/shell/status/klp_status_bar.dart:8](../../../../../../../lib/src/features/workspace/shell/status/klp_status_bar.dart#L8) |
 

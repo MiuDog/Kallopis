@@ -12,16 +12,16 @@
 flowchart LR
 	n0["klp_advanced_data.dart"]
 	n1["package:flutter/widgets.dart"]
-	n2["../../forms/selection/klp_checkbox.dart"]
-	n3["../../feedback/klp_feedback_tone.dart"]
-	n4["../../../foundation/klp_geometric_spinner.dart"]
-	n5["../../../foundation/klp_icon.dart"]
-	n6["../../../foundation/klp_icons.dart"]
-	n7["../../../foundation/interaction/klp_gesture_region.dart"]
-	n8["../../../foundation/interaction/klp_state_highlight.dart"]
-	n9["../../../foundation/layout/klp_layout.dart"]
-	n10["../../../application/localization/klp_localizations.dart"]
-	n11["../../../foundation/surface/klp_dashed_border.dart"]
+	n2["package:kallopis/src/features/forms/selection/klp_checkbox.dart"]
+	n3["package:kallopis/src/features/feedback/klp_feedback_tone.dart"]
+	n4["package:kallopis/src/foundation/klp_geometric_spinner.dart"]
+	n5["package:kallopis/src/foundation/klp_icon.dart"]
+	n6["package:kallopis/src/foundation/klp_icons.dart"]
+	n7["package:kallopis/src/foundation/interaction/klp_gesture_region.dart"]
+	n8["package:kallopis/src/foundation/interaction/klp_state_highlight.dart"]
+	n9["package:kallopis/src/foundation/layout/klp_layout.dart"]
+	n10["package:kallopis/src/foundation/localization/klp_localizations.dart"]
+	n11["package:kallopis/src/foundation/surface/klp_dashed_border.dart"]
 	n0 -->|"import"| n1
 	n0 -->|"import"| n2
 	n0 -->|"import"| n3
@@ -38,9 +38,9 @@ flowchart LR
 ```mermaid
 flowchart LR
 	n0["klp_advanced_data.dart"]
-	n1["../../../foundation/surface/klp_surface.dart"]
-	n2["../../../styling/legacy_theme/klp_theme.dart"]
-	n3["../../../foundation/content/klp_text.dart"]
+	n1["package:kallopis/src/foundation/surface/klp_surface.dart"]
+	n2["package:kallopis/src/styling/legacy_theme/klp_theme.dart"]
+	n3["package:kallopis/src/foundation/content/klp_text.dart"]
 	n4["models/klp_advanced_models.dart"]
 	n5["models/klp_advanced_models.dart"]
 	n6["internal/klp_data_table.dart"]
@@ -111,19 +111,19 @@ flowchart LR
 | 關係 | 原始 directive | 來源 |
 |---|---|---|
 | import | <code>import &#x27;package:flutter/widgets.dart&#x27;;</code> | [lib/src/features/collections/advanced/klp_advanced_data.dart:1](../../../../../../lib/src/features/collections/advanced/klp_advanced_data.dart#L1) |
-| import | <code>import &#x27;../../forms/selection/klp_checkbox.dart&#x27;;</code> | [lib/src/features/collections/advanced/klp_advanced_data.dart:3](../../../../../../lib/src/features/collections/advanced/klp_advanced_data.dart#L3) |
-| import | <code>import &#x27;../../feedback/klp_feedback_tone.dart&#x27;;</code> | [lib/src/features/collections/advanced/klp_advanced_data.dart:4](../../../../../../lib/src/features/collections/advanced/klp_advanced_data.dart#L4) |
-| import | <code>import &#x27;../../../foundation/klp_geometric_spinner.dart&#x27;;</code> | [lib/src/features/collections/advanced/klp_advanced_data.dart:5](../../../../../../lib/src/features/collections/advanced/klp_advanced_data.dart#L5) |
-| import | <code>import &#x27;../../../foundation/klp_icon.dart&#x27;;</code> | [lib/src/features/collections/advanced/klp_advanced_data.dart:6](../../../../../../lib/src/features/collections/advanced/klp_advanced_data.dart#L6) |
-| import | <code>import &#x27;../../../foundation/klp_icons.dart&#x27;;</code> | [lib/src/features/collections/advanced/klp_advanced_data.dart:7](../../../../../../lib/src/features/collections/advanced/klp_advanced_data.dart#L7) |
-| import | <code>import &#x27;../../../foundation/interaction/klp_gesture_region.dart&#x27;;</code> | [lib/src/features/collections/advanced/klp_advanced_data.dart:8](../../../../../../lib/src/features/collections/advanced/klp_advanced_data.dart#L8) |
-| import | <code>import &#x27;../../../foundation/interaction/klp_state_highlight.dart&#x27;;</code> | [lib/src/features/collections/advanced/klp_advanced_data.dart:9](../../../../../../lib/src/features/collections/advanced/klp_advanced_data.dart#L9) |
-| import | <code>import &#x27;../../../foundation/layout/klp_layout.dart&#x27;;</code> | [lib/src/features/collections/advanced/klp_advanced_data.dart:10](../../../../../../lib/src/features/collections/advanced/klp_advanced_data.dart#L10) |
-| import | <code>import &#x27;../../../application/localization/klp_localizations.dart&#x27;;</code> | [lib/src/features/collections/advanced/klp_advanced_data.dart:11](../../../../../../lib/src/features/collections/advanced/klp_advanced_data.dart#L11) |
-| import | <code>import &#x27;../../../foundation/surface/klp_dashed_border.dart&#x27;;</code> | [lib/src/features/collections/advanced/klp_advanced_data.dart:12](../../../../../../lib/src/features/collections/advanced/klp_advanced_data.dart#L12) |
-| import | <code>import &#x27;../../../foundation/surface/klp_surface.dart&#x27;;</code> | [lib/src/features/collections/advanced/klp_advanced_data.dart:13](../../../../../../lib/src/features/collections/advanced/klp_advanced_data.dart#L13) |
-| import | <code>import &#x27;../../../styling/legacy_theme/klp_theme.dart&#x27;;</code> | [lib/src/features/collections/advanced/klp_advanced_data.dart:14](../../../../../../lib/src/features/collections/advanced/klp_advanced_data.dart#L14) |
-| import | <code>import &#x27;../../../foundation/content/klp_text.dart&#x27;;</code> | [lib/src/features/collections/advanced/klp_advanced_data.dart:15](../../../../../../lib/src/features/collections/advanced/klp_advanced_data.dart#L15) |
+| import | <code>import &#x27;package:kallopis/src/features/forms/selection/klp_checkbox.dart&#x27;;</code> | [lib/src/features/collections/advanced/klp_advanced_data.dart:3](../../../../../../lib/src/features/collections/advanced/klp_advanced_data.dart#L3) |
+| import | <code>import &#x27;package:kallopis/src/features/feedback/klp_feedback_tone.dart&#x27;;</code> | [lib/src/features/collections/advanced/klp_advanced_data.dart:4](../../../../../../lib/src/features/collections/advanced/klp_advanced_data.dart#L4) |
+| import | <code>import &#x27;package:kallopis/src/foundation/klp_geometric_spinner.dart&#x27;;</code> | [lib/src/features/collections/advanced/klp_advanced_data.dart:5](../../../../../../lib/src/features/collections/advanced/klp_advanced_data.dart#L5) |
+| import | <code>import &#x27;package:kallopis/src/foundation/klp_icon.dart&#x27;;</code> | [lib/src/features/collections/advanced/klp_advanced_data.dart:6](../../../../../../lib/src/features/collections/advanced/klp_advanced_data.dart#L6) |
+| import | <code>import &#x27;package:kallopis/src/foundation/klp_icons.dart&#x27;;</code> | [lib/src/features/collections/advanced/klp_advanced_data.dart:7](../../../../../../lib/src/features/collections/advanced/klp_advanced_data.dart#L7) |
+| import | <code>import &#x27;package:kallopis/src/foundation/interaction/klp_gesture_region.dart&#x27;;</code> | [lib/src/features/collections/advanced/klp_advanced_data.dart:8](../../../../../../lib/src/features/collections/advanced/klp_advanced_data.dart#L8) |
+| import | <code>import &#x27;package:kallopis/src/foundation/interaction/klp_state_highlight.dart&#x27;;</code> | [lib/src/features/collections/advanced/klp_advanced_data.dart:9](../../../../../../lib/src/features/collections/advanced/klp_advanced_data.dart#L9) |
+| import | <code>import &#x27;package:kallopis/src/foundation/layout/klp_layout.dart&#x27;;</code> | [lib/src/features/collections/advanced/klp_advanced_data.dart:10](../../../../../../lib/src/features/collections/advanced/klp_advanced_data.dart#L10) |
+| import | <code>import &#x27;package:kallopis/src/foundation/localization/klp_localizations.dart&#x27;;</code> | [lib/src/features/collections/advanced/klp_advanced_data.dart:11](../../../../../../lib/src/features/collections/advanced/klp_advanced_data.dart#L11) |
+| import | <code>import &#x27;package:kallopis/src/foundation/surface/klp_dashed_border.dart&#x27;;</code> | [lib/src/features/collections/advanced/klp_advanced_data.dart:12](../../../../../../lib/src/features/collections/advanced/klp_advanced_data.dart#L12) |
+| import | <code>import &#x27;package:kallopis/src/foundation/surface/klp_surface.dart&#x27;;</code> | [lib/src/features/collections/advanced/klp_advanced_data.dart:13](../../../../../../lib/src/features/collections/advanced/klp_advanced_data.dart#L13) |
+| import | <code>import &#x27;package:kallopis/src/styling/legacy_theme/klp_theme.dart&#x27;;</code> | [lib/src/features/collections/advanced/klp_advanced_data.dart:14](../../../../../../lib/src/features/collections/advanced/klp_advanced_data.dart#L14) |
+| import | <code>import &#x27;package:kallopis/src/foundation/content/klp_text.dart&#x27;;</code> | [lib/src/features/collections/advanced/klp_advanced_data.dart:15](../../../../../../lib/src/features/collections/advanced/klp_advanced_data.dart#L15) |
 | import | <code>import &#x27;models/klp_advanced_models.dart&#x27;;</code> | [lib/src/features/collections/advanced/klp_advanced_data.dart:16](../../../../../../lib/src/features/collections/advanced/klp_advanced_data.dart#L16) |
 | export | <code>export &#x27;models/klp_advanced_models.dart&#x27;;</code> | [lib/src/features/collections/advanced/klp_advanced_data.dart:18](../../../../../../lib/src/features/collections/advanced/klp_advanced_data.dart#L18) |
 | part | <code>part &#x27;internal/klp_data_table.dart&#x27;;</code> | [lib/src/features/collections/advanced/klp_advanced_data.dart:20](../../../../../../lib/src/features/collections/advanced/klp_advanced_data.dart#L20) |

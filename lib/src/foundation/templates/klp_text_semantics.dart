@@ -1,5 +1,5 @@
-import '../../styling/primitives/klp_style_value.dart';
-import '../../styling/semantics/klp_semantic_key.dart';
+import 'package:kallopis/src/styling/primitives/klp_style_value.dart';
+import 'package:kallopis/src/styling/semantics/klp_semantic_key.dart';
 
 /// 文字呈現所需的完整型別參照，實際值由本庫語意解析取得。
 final class KlpTextSemantics {

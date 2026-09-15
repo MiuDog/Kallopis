@@ -1,5 +1,5 @@
-import '../internal/klp_form_dependencies.dart';
-import '../../../foundation/layout/klp_center.dart';
+import 'package:kallopis/src/features/forms/internal/klp_form_dependencies.dart';
+import 'package:kallopis/src/foundation/layout/klp_center.dart';
 
 part 'internal/klp_calendar_day_cell.dart';
 part 'internal/klp_calendar_day_cell_state.dart';

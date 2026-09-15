@@ -12,9 +12,9 @@
 flowchart LR
 	n0["klp_rail_menu_entry.dart"]
 	n1["package:flutter/widgets.dart"]
-	n2["../../../../foundation/klp_icon.dart"]
-	n3["../../../overlays/klp_context_menu.dart"]
-	n4["../../../overlays/klp_menu.dart"]
+	n2["package:kallopis/src/foundation/klp_icon.dart"]
+	n3["package:kallopis/src/features/overlays/klp_context_menu.dart"]
+	n4["package:kallopis/src/features/overlays/klp_menu.dart"]
 	n5["klp_rail_entry.dart"]
 	n6["klp_rail_item.dart"]
 	n7["internal/klp_rail_menu_entry_view.dart"]
@@ -38,9 +38,9 @@ flowchart LR
 | 關係 | 原始 directive | 來源 |
 |---|---|---|
 | import | <code>import &#x27;package:flutter/widgets.dart&#x27;;</code> | [lib/src/features/navigation/widgets/rail/klp_rail_menu_entry.dart:1](../../../../../../../lib/src/features/navigation/widgets/rail/klp_rail_menu_entry.dart#L1) |
-| import | <code>import &#x27;../../../../foundation/klp_icon.dart&#x27;;</code> | [lib/src/features/navigation/widgets/rail/klp_rail_menu_entry.dart:3](../../../../../../../lib/src/features/navigation/widgets/rail/klp_rail_menu_entry.dart#L3) |
-| import | <code>import &#x27;../../../overlays/klp_context_menu.dart&#x27;;</code> | [lib/src/features/navigation/widgets/rail/klp_rail_menu_entry.dart:4](../../../../../../../lib/src/features/navigation/widgets/rail/klp_rail_menu_entry.dart#L4) |
-| import | <code>import &#x27;../../../overlays/klp_menu.dart&#x27;;</code> | [lib/src/features/navigation/widgets/rail/klp_rail_menu_entry.dart:5](../../../../../../../lib/src/features/navigation/widgets/rail/klp_rail_menu_entry.dart#L5) |
+| import | <code>import &#x27;package:kallopis/src/foundation/klp_icon.dart&#x27;;</code> | [lib/src/features/navigation/widgets/rail/klp_rail_menu_entry.dart:3](../../../../../../../lib/src/features/navigation/widgets/rail/klp_rail_menu_entry.dart#L3) |
+| import | <code>import &#x27;package:kallopis/src/features/overlays/klp_context_menu.dart&#x27;;</code> | [lib/src/features/navigation/widgets/rail/klp_rail_menu_entry.dart:4](../../../../../../../lib/src/features/navigation/widgets/rail/klp_rail_menu_entry.dart#L4) |
+| import | <code>import &#x27;package:kallopis/src/features/overlays/klp_menu.dart&#x27;;</code> | [lib/src/features/navigation/widgets/rail/klp_rail_menu_entry.dart:5](../../../../../../../lib/src/features/navigation/widgets/rail/klp_rail_menu_entry.dart#L5) |
 | import | <code>import &#x27;klp_rail_entry.dart&#x27;;</code> | [lib/src/features/navigation/widgets/rail/klp_rail_menu_entry.dart:6](../../../../../../../lib/src/features/navigation/widgets/rail/klp_rail_menu_entry.dart#L6) |
 | import | <code>import &#x27;klp_rail_item.dart&#x27;;</code> | [lib/src/features/navigation/widgets/rail/klp_rail_menu_entry.dart:7](../../../../../../../lib/src/features/navigation/widgets/rail/klp_rail_menu_entry.dart#L7) |
 | part | <code>part &#x27;internal/klp_rail_menu_entry_view.dart&#x27;;</code> | [lib/src/features/navigation/widgets/rail/klp_rail_menu_entry.dart:9](../../../../../../../lib/src/features/navigation/widgets/rail/klp_rail_menu_entry.dart#L9) |

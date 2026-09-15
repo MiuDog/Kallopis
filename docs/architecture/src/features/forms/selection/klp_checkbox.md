@@ -12,11 +12,11 @@
 flowchart LR
 	n0["klp_checkbox.dart"]
 	n1["package:flutter/material.dart"]
-	n2["../../../foundation/klp_icon.dart"]
-	n3["../../../foundation/klp_icons.dart"]
-	n4["../../../foundation/layout/klp_layout.dart"]
-	n5["../../../styling/legacy_theme/klp_theme.dart"]
-	n6["../../../foundation/content/klp_text.dart"]
+	n2["package:kallopis/src/foundation/klp_icon.dart"]
+	n3["package:kallopis/src/foundation/klp_icons.dart"]
+	n4["package:kallopis/src/foundation/layout/klp_layout.dart"]
+	n5["package:kallopis/src/styling/legacy_theme/klp_theme.dart"]
+	n6["package:kallopis/src/foundation/content/klp_text.dart"]
 	n7["internal/klp_checkbox_style.dart"]
 	n8["internal/klp_checkbox_widget.dart"]
 	n9["primitives/klp_checkbox_frame.dart"]
@@ -36,11 +36,11 @@ flowchart LR
 | 關係 | 原始 directive | 來源 |
 |---|---|---|
 | import | <code>import &#x27;package:flutter/material.dart&#x27;;</code> | [lib/src/features/forms/selection/klp_checkbox.dart:1](../../../../../../lib/src/features/forms/selection/klp_checkbox.dart#L1) |
-| import | <code>import &#x27;../../../foundation/klp_icon.dart&#x27;;</code> | [lib/src/features/forms/selection/klp_checkbox.dart:3](../../../../../../lib/src/features/forms/selection/klp_checkbox.dart#L3) |
-| import | <code>import &#x27;../../../foundation/klp_icons.dart&#x27;;</code> | [lib/src/features/forms/selection/klp_checkbox.dart:4](../../../../../../lib/src/features/forms/selection/klp_checkbox.dart#L4) |
-| import | <code>import &#x27;../../../foundation/layout/klp_layout.dart&#x27;;</code> | [lib/src/features/forms/selection/klp_checkbox.dart:5](../../../../../../lib/src/features/forms/selection/klp_checkbox.dart#L5) |
-| import | <code>import &#x27;../../../styling/legacy_theme/klp_theme.dart&#x27;;</code> | [lib/src/features/forms/selection/klp_checkbox.dart:6](../../../../../../lib/src/features/forms/selection/klp_checkbox.dart#L6) |
-| import | <code>import &#x27;../../../foundation/content/klp_text.dart&#x27;;</code> | [lib/src/features/forms/selection/klp_checkbox.dart:7](../../../../../../lib/src/features/forms/selection/klp_checkbox.dart#L7) |
+| import | <code>import &#x27;package:kallopis/src/foundation/klp_icon.dart&#x27;;</code> | [lib/src/features/forms/selection/klp_checkbox.dart:3](../../../../../../lib/src/features/forms/selection/klp_checkbox.dart#L3) |
+| import | <code>import &#x27;package:kallopis/src/foundation/klp_icons.dart&#x27;;</code> | [lib/src/features/forms/selection/klp_checkbox.dart:4](../../../../../../lib/src/features/forms/selection/klp_checkbox.dart#L4) |
+| import | <code>import &#x27;package:kallopis/src/foundation/layout/klp_layout.dart&#x27;;</code> | [lib/src/features/forms/selection/klp_checkbox.dart:5](../../../../../../lib/src/features/forms/selection/klp_checkbox.dart#L5) |
+| import | <code>import &#x27;package:kallopis/src/styling/legacy_theme/klp_theme.dart&#x27;;</code> | [lib/src/features/forms/selection/klp_checkbox.dart:6](../../../../../../lib/src/features/forms/selection/klp_checkbox.dart#L6) |
+| import | <code>import &#x27;package:kallopis/src/foundation/content/klp_text.dart&#x27;;</code> | [lib/src/features/forms/selection/klp_checkbox.dart:7](../../../../../../lib/src/features/forms/selection/klp_checkbox.dart#L7) |
 | part | <code>part &#x27;internal/klp_checkbox_style.dart&#x27;;</code> | [lib/src/features/forms/selection/klp_checkbox.dart:9](../../../../../../lib/src/features/forms/selection/klp_checkbox.dart#L9) |
 | part | <code>part &#x27;internal/klp_checkbox_widget.dart&#x27;;</code> | [lib/src/features/forms/selection/klp_checkbox.dart:10](../../../../../../lib/src/features/forms/selection/klp_checkbox.dart#L10) |
 | part | <code>part &#x27;primitives/klp_checkbox_frame.dart&#x27;;</code> | [lib/src/features/forms/selection/klp_checkbox.dart:11](../../../../../../lib/src/features/forms/selection/klp_checkbox.dart#L11) |

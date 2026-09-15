@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import '../../foundation/surface/klp_surface.dart';
-import '../../styling/legacy_theme/klp_theme.dart';
+import 'package:kallopis/src/foundation/surface/klp_surface.dart';
+import 'package:kallopis/src/styling/legacy_theme/klp_theme.dart';
 
 class KlpPopover extends StatelessWidget {
   const KlpPopover({super.key, required this.child, this.padding});

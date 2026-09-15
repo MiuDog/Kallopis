@@ -1,4 +1,4 @@
-import '../klp_control_geometry.dart';
+import 'package:kallopis/src/styling/legacy_theme/klp_control_geometry.dart';
 import 'klp_visual_style_json_helpers.dart';
 import 'klp_visual_style_json_validation.dart';
 

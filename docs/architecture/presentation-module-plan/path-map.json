@@ -1,0 +1,379 @@
+{
+	"contract": "PRES-V1-r1",
+	"moves": {
+		"lib/src/foundation/binding/internal/klp_bound_editing.dart": "lib/src/features/editing/presentation/klp_bound_editing.dart",
+		"lib/src/foundation/binding/internal/klp_bound_block_note_editing.dart": "lib/src/features/editing/presentation/klp_bound_block_note_editing.dart",
+		"lib/src/foundation/binding/internal/klp_bound_canva_editing.dart": "lib/src/features/editing/presentation/klp_bound_canva_editing.dart",
+		"lib/src/foundation/binding/internal/klp_bound_editing_layout.dart": "lib/src/features/editing/presentation/klp_bound_editing_layout.dart",
+		"lib/src/foundation/binding/internal/klp_bound_editing_actions.dart": "lib/src/features/editing/presentation/klp_bound_editing_actions.dart",
+		"lib/src/foundation/binding/internal/klp_bound_block_controls.dart": "lib/src/features/editing/presentation/klp_bound_block_controls.dart",
+		"lib/src/foundation/binding/internal/klp_bound_block_controls_slot.dart": "lib/src/features/editing/presentation/klp_bound_block_controls_slot.dart",
+		"lib/src/foundation/binding/internal/klp_bound_block_actions.dart": "lib/src/features/editing/presentation/klp_bound_block_actions.dart",
+		"lib/src/foundation/binding/internal/klp_bound_anchored_commands.dart": "lib/src/features/editing/presentation/klp_bound_anchored_commands.dart",
+		"lib/src/foundation/binding/internal/klp_bound_anchored_commands_slot.dart": "lib/src/features/editing/presentation/klp_bound_anchored_commands_slot.dart",
+		"lib/src/foundation/binding/internal/klp_bound_anchored_command_actions.dart": "lib/src/features/editing/presentation/klp_bound_anchored_command_actions.dart",
+		"lib/src/foundation/binding/internal/klp_bound_mode_toolbar.dart": "lib/src/features/editing/presentation/klp_bound_mode_toolbar.dart",
+		"lib/src/foundation/binding/internal/klp_bound_mode_toolbar_slot.dart": "lib/src/features/editing/presentation/klp_bound_mode_toolbar_slot.dart",
+		"lib/src/foundation/binding/internal/klp_bound_editor_mode_actions.dart": "lib/src/features/editing/presentation/klp_bound_editor_mode_actions.dart",
+		"lib/src/foundation/binding/internal/klp_bound_editing_save_actions.dart": "lib/src/features/editing/presentation/klp_bound_editing_save_actions.dart",
+		"lib/src/foundation/binding/internal/klp_bound_editing_style.dart": "lib/src/features/editing/presentation/klp_bound_editing_style.dart",
+		"lib/src/foundation/binding/internal/klp_bound_app_layout.dart": "lib/src/features/workspace/presentation/klp_bound_app_layout.dart",
+		"lib/src/foundation/binding/internal/klp_bound_frame_groups.dart": "lib/src/features/workspace/presentation/klp_bound_frame_groups.dart",
+		"lib/src/foundation/binding/internal/klp_bound_frame_group.dart": "lib/src/features/workspace/presentation/klp_bound_frame_group.dart",
+		"lib/src/foundation/binding/internal/klp_bound_explorer_item_data.dart": "lib/src/features/workspace/presentation/klp_bound_explorer_item_data.dart",
+		"lib/src/foundation/binding/internal/klp_bound_explorer.dart": "lib/src/features/workspace/presentation/klp_bound_explorer.dart",
+		"lib/src/foundation/binding/internal/klp_bound_document_tab_data.dart": "lib/src/features/workspace/presentation/klp_bound_document_tab_data.dart",
+		"lib/src/foundation/binding/internal/klp_bound_document_tabs.dart": "lib/src/features/workspace/presentation/klp_bound_document_tabs.dart",
+		"lib/src/foundation/binding/internal/klp_bound_window_controls.dart": "lib/src/features/workspace/presentation/klp_bound_window_controls.dart",
+		"lib/src/foundation/binding/internal/klp_bound_workspace_data.dart": "lib/src/features/workspace/presentation/klp_bound_workspace_data.dart",
+		"lib/src/foundation/binding/internal/klp_bound_workspace_item.dart": "lib/src/features/workspace/presentation/klp_bound_workspace_item.dart",
+		"lib/src/foundation/binding/internal/klp_bound_workspace_choice.dart": "lib/src/features/workspace/presentation/klp_bound_workspace_choice.dart",
+		"lib/src/foundation/binding/internal/klp_bound_workspace_content.dart": "lib/src/features/workspace/presentation/klp_bound_workspace_content.dart",
+		"lib/src/foundation/binding/internal/klp_bound_workspace_content_block.dart": "lib/src/features/workspace/presentation/klp_bound_workspace_content_block.dart",
+		"lib/src/foundation/binding/internal/klp_bound_workspace_block.dart": "lib/src/features/workspace/presentation/klp_bound_workspace_block.dart",
+		"lib/src/foundation/binding/internal/klp_bound_workspace_command.dart": "lib/src/features/workspace/presentation/klp_bound_workspace_command.dart",
+		"lib/src/foundation/interaction/internal/klp_button_style.dart": "lib/src/features/actions/button/internal/klp_button_style.dart",
+		"lib/src/foundation/interaction/filter/klp_selection_toolbar.dart": "lib/src/features/actions/selection_toolbar/klp_selection_toolbar.dart",
+		"lib/src/foundation/interaction/filter/internal/klp_selection_toolbar_widget.dart": "lib/src/features/actions/selection_toolbar/internal/klp_selection_toolbar_widget.dart",
+		"lib/src/foundation/interaction/filter/primitives/klp_selection_toolbar_dashed_frame.dart": "lib/src/features/actions/selection_toolbar/primitives/klp_selection_toolbar_dashed_frame.dart"
+	},
+	"generic_parts": [
+		"klp_bound_text.dart",
+		"klp_bound_linear.dart",
+		"klp_bound_surface.dart",
+		"klp_bound_surface_shadow.dart",
+		"klp_bound_choice.dart",
+		"klp_bound_regions.dart",
+		"klp_bound_extent.dart",
+		"klp_bound_placement.dart",
+		"klp_bound_retained_stack.dart",
+		"klp_bound_screen.dart",
+		"klp_bound_accessibility.dart"
+	],
+	"groups": {
+		"editing": [
+			"klp_bound_editing.dart",
+			"klp_bound_block_note_editing.dart",
+			"klp_bound_canva_editing.dart",
+			"klp_bound_editing_layout.dart",
+			"klp_bound_editing_actions.dart",
+			"klp_bound_block_controls.dart",
+			"klp_bound_block_controls_slot.dart",
+			"klp_bound_block_actions.dart",
+			"klp_bound_anchored_commands.dart",
+			"klp_bound_anchored_commands_slot.dart",
+			"klp_bound_anchored_command_actions.dart",
+			"klp_bound_mode_toolbar.dart",
+			"klp_bound_mode_toolbar_slot.dart",
+			"klp_bound_editor_mode_actions.dart",
+			"klp_bound_editing_save_actions.dart",
+			"klp_bound_editing_style.dart"
+		],
+		"workspace": [
+			"klp_bound_app_layout.dart",
+			"klp_bound_frame_groups.dart",
+			"klp_bound_frame_group.dart",
+			"klp_bound_explorer_item_data.dart",
+			"klp_bound_explorer.dart",
+			"klp_bound_document_tab_data.dart",
+			"klp_bound_document_tabs.dart",
+			"klp_bound_window_controls.dart",
+			"klp_bound_workspace_data.dart",
+			"klp_bound_workspace_item.dart",
+			"klp_bound_workspace_choice.dart",
+			"klp_bound_workspace_content.dart",
+			"klp_bound_workspace_content_block.dart",
+			"klp_bound_workspace_block.dart",
+			"klp_bound_workspace_command.dart"
+		]
+	},
+	"symbols": {
+		"editing": [
+			"KlpBoundAnchoredCommandActions",
+			"KlpBoundAnchoredCommands",
+			"KlpBoundAnchoredCommandsSlot",
+			"KlpBoundBlockActions",
+			"KlpBoundBlockControls",
+			"KlpBoundBlockControlsSlot",
+			"KlpBoundBlockNoteEditing",
+			"KlpBoundCanvaEditing",
+			"KlpBoundEditing",
+			"KlpBoundEditingActions",
+			"KlpBoundEditingLayout",
+			"KlpBoundEditingSaveActions",
+			"KlpBoundEditingStyle",
+			"KlpBoundEditorModeActions",
+			"KlpBoundModeToolbar",
+			"KlpBoundModeToolbarSlot"
+		],
+		"workspace": [
+			"KlpBoundAppLayout",
+			"KlpBoundDocumentTabData",
+			"KlpBoundDocumentTabs",
+			"KlpBoundExplorer",
+			"KlpBoundExplorerItemData",
+			"KlpBoundFrameGroup",
+			"KlpBoundFrameGroups",
+			"KlpBoundWindowControls",
+			"KlpBoundWorkspaceBlock",
+			"KlpBoundWorkspaceChoice",
+			"KlpBoundWorkspaceCommand",
+			"KlpBoundWorkspaceContent",
+			"KlpBoundWorkspaceContentBlock",
+			"KlpBoundWorkspaceData",
+			"KlpBoundWorkspaceItem"
+		]
+	},
+	"entries": {
+		"editing": "lib/src/features/editing/presentation/klp_editing_presentation.dart",
+		"workspace": "lib/src/features/workspace/presentation/klp_workspace_presentation.dart"
+	},
+	"caller_imports": {
+		"lib/src/features/editing/internal/klp_anchored_commands_adapter.dart": [
+			"lib/src/features/editing/presentation/klp_editing_presentation.dart"
+		],
+		"lib/src/features/editing/internal/klp_block_controls_adapter.dart": [
+			"lib/src/features/editing/presentation/klp_editing_presentation.dart"
+		],
+		"lib/src/features/editing/internal/klp_block_note_editing_adapter.dart": [
+			"lib/src/features/editing/presentation/klp_editing_presentation.dart"
+		],
+		"lib/src/features/editing/internal/klp_canva_editing_adapter.dart": [
+			"lib/src/features/editing/presentation/klp_editing_presentation.dart"
+		],
+		"lib/src/features/editing/internal/klp_editing_adapter.dart": [
+			"lib/src/features/editing/presentation/klp_editing_presentation.dart"
+		],
+		"lib/src/features/editing/internal/klp_editing_placement.dart": [
+			"lib/src/features/editing/presentation/klp_editing_presentation.dart"
+		],
+		"lib/src/features/editing/internal/klp_mode_toolbar_adapter.dart": [
+			"lib/src/features/editing/presentation/klp_editing_presentation.dart"
+		],
+		"lib/src/features/editing/internal/klp_prepared_editing.dart": [
+			"lib/src/features/editing/presentation/klp_editing_presentation.dart"
+		],
+		"lib/src/features/workspace/components/internal/klp_workspace_block_adapter.dart": [
+			"lib/src/features/workspace/presentation/klp_workspace_presentation.dart"
+		],
+		"lib/src/features/workspace/components/internal/klp_workspace_components_adapter.dart": [
+			"lib/src/features/workspace/presentation/klp_workspace_presentation.dart"
+		],
+		"lib/src/features/workspace/layout/internal/klp_app_layout_adapter.dart": [
+			"lib/src/features/workspace/presentation/klp_workspace_presentation.dart"
+		],
+		"lib/src/features/workspace/layout/internal/klp_frame_groups_adapter.dart": [
+			"lib/src/features/workspace/presentation/klp_workspace_presentation.dart"
+		],
+		"lib/src/rendering/flutter/internal/klp_anchored_command_session.dart": [
+			"lib/src/features/editing/presentation/klp_editing_presentation.dart"
+		],
+		"lib/src/rendering/flutter/internal/klp_editor_mode_session.dart": [
+			"lib/src/features/editing/presentation/klp_editing_presentation.dart"
+		],
+		"lib/src/rendering/flutter/internal/klp_flutter_app_layout.dart": [
+			"lib/src/features/workspace/presentation/klp_workspace_presentation.dart"
+		],
+		"lib/src/rendering/flutter/internal/klp_flutter_block_control_session.dart": [
+			"lib/src/features/editing/presentation/klp_editing_presentation.dart"
+		],
+		"lib/src/rendering/flutter/internal/klp_flutter_block_note_editing.dart": [
+			"lib/src/features/editing/presentation/klp_editing_presentation.dart"
+		],
+		"lib/src/rendering/flutter/internal/klp_flutter_canva_editing.dart": [
+			"lib/src/features/editing/presentation/klp_editing_presentation.dart"
+		],
+		"lib/src/rendering/flutter/internal/klp_flutter_editing.dart": [
+			"lib/src/features/editing/presentation/klp_editing_presentation.dart"
+		],
+		"lib/src/rendering/flutter/internal/klp_flutter_editing_painter.dart": [
+			"lib/src/features/editing/presentation/klp_editing_presentation.dart"
+		],
+		"lib/src/rendering/flutter/internal/klp_flutter_frame_groups.dart": [
+			"lib/src/features/editing/presentation/klp_editing_presentation.dart",
+			"lib/src/features/workspace/presentation/klp_workspace_presentation.dart"
+		],
+		"lib/src/rendering/flutter/internal/klp_flutter_renderer.dart": [
+			"lib/src/features/editing/presentation/klp_editing_presentation.dart",
+			"lib/src/features/workspace/presentation/klp_workspace_presentation.dart"
+		],
+		"lib/src/rendering/flutter/internal/klp_flutter_workspace_block.dart": [
+			"lib/src/features/workspace/presentation/klp_workspace_presentation.dart"
+		],
+		"lib/src/rendering/flutter/internal/klp_flutter_workspace_components.dart": [
+			"lib/src/features/workspace/presentation/klp_workspace_presentation.dart"
+		],
+		"test/klp_anchored_commands_installation_test.dart": [
+			"lib/src/features/editing/presentation/klp_editing_presentation.dart"
+		],
+		"test/klp_anchored_command_session_test.dart": [
+			"lib/src/features/editing/presentation/klp_editing_presentation.dart"
+		],
+		"test/klp_app_frame_style_test.dart": [
+			"lib/src/features/workspace/presentation/klp_workspace_presentation.dart"
+		],
+		"test/klp_block_controls_installation_test.dart": [
+			"lib/src/features/editing/presentation/klp_editing_presentation.dart"
+		],
+		"test/klp_component_binding_test.dart": [
+			"lib/src/features/workspace/presentation/klp_workspace_presentation.dart"
+		],
+		"test/klp_component_children_binding_test.dart": [
+			"lib/src/features/workspace/presentation/klp_workspace_presentation.dart"
+		],
+		"test/klp_editing_installation_test.dart": [
+			"lib/src/features/editing/presentation/klp_editing_presentation.dart"
+		],
+		"test/klp_editor_mode_session_test.dart": [
+			"lib/src/features/editing/presentation/klp_editing_presentation.dart"
+		],
+		"test/klp_flutter_block_control_session_test.dart": [
+			"lib/src/features/editing/presentation/klp_editing_presentation.dart"
+		],
+		"test/klp_frame_groups_test.dart": [
+			"lib/src/features/workspace/presentation/klp_workspace_presentation.dart"
+		],
+		"test/klp_mode_toolbar_installation_test.dart": [
+			"lib/src/features/editing/presentation/klp_editing_presentation.dart"
+		],
+		"test/klp_tree_runtime_test.dart": [
+			"lib/src/features/workspace/presentation/klp_workspace_presentation.dart"
+		]
+	},
+	"writes": {
+		"foundation": [
+			"lib/src/foundation/binding/internal/klp_bound_anchored_command_actions.dart",
+			"lib/src/foundation/binding/internal/klp_bound_anchored_commands.dart",
+			"lib/src/foundation/binding/internal/klp_bound_anchored_commands_slot.dart",
+			"lib/src/foundation/binding/internal/klp_bound_app_layout.dart",
+			"lib/src/foundation/binding/internal/klp_bound_block_actions.dart",
+			"lib/src/foundation/binding/internal/klp_bound_block_controls.dart",
+			"lib/src/foundation/binding/internal/klp_bound_block_controls_slot.dart",
+			"lib/src/foundation/binding/internal/klp_bound_block_note_editing.dart",
+			"lib/src/foundation/binding/internal/klp_bound_canva_editing.dart",
+			"lib/src/foundation/binding/internal/klp_bound_document_tab_data.dart",
+			"lib/src/foundation/binding/internal/klp_bound_document_tabs.dart",
+			"lib/src/foundation/binding/internal/klp_bound_editing.dart",
+			"lib/src/foundation/binding/internal/klp_bound_editing_actions.dart",
+			"lib/src/foundation/binding/internal/klp_bound_editing_layout.dart",
+			"lib/src/foundation/binding/internal/klp_bound_editing_save_actions.dart",
+			"lib/src/foundation/binding/internal/klp_bound_editing_style.dart",
+			"lib/src/foundation/binding/internal/klp_bound_editor_mode_actions.dart",
+			"lib/src/foundation/binding/internal/klp_bound_explorer.dart",
+			"lib/src/foundation/binding/internal/klp_bound_explorer_item_data.dart",
+			"lib/src/foundation/binding/internal/klp_bound_frame_group.dart",
+			"lib/src/foundation/binding/internal/klp_bound_frame_groups.dart",
+			"lib/src/foundation/binding/internal/klp_bound_mode_toolbar.dart",
+			"lib/src/foundation/binding/internal/klp_bound_mode_toolbar_slot.dart",
+			"lib/src/foundation/binding/internal/klp_bound_template.dart",
+			"lib/src/foundation/binding/internal/klp_bound_window_controls.dart",
+			"lib/src/foundation/binding/internal/klp_bound_workspace_block.dart",
+			"lib/src/foundation/binding/internal/klp_bound_workspace_choice.dart",
+			"lib/src/foundation/binding/internal/klp_bound_workspace_command.dart",
+			"lib/src/foundation/binding/internal/klp_bound_workspace_content.dart",
+			"lib/src/foundation/binding/internal/klp_bound_workspace_content_block.dart",
+			"lib/src/foundation/binding/internal/klp_bound_workspace_data.dart",
+			"lib/src/foundation/binding/internal/klp_bound_workspace_item.dart",
+			"lib/src/foundation/interaction/filter/internal/klp_selection_toolbar_widget.dart",
+			"lib/src/foundation/interaction/filter/klp_filter_bar.dart",
+			"lib/src/foundation/interaction/filter/klp_selection_toolbar.dart",
+			"lib/src/foundation/interaction/filter/primitives/klp_selection_toolbar_dashed_frame.dart",
+			"lib/src/foundation/interaction/internal/klp_button_style.dart"
+		],
+		"features": [
+			"lib/src/features/actions/button/internal/klp_button_style.dart",
+			"lib/src/features/actions/button/klp_button.dart",
+			"lib/src/features/actions/selection_toolbar/internal/klp_selection_toolbar_widget.dart",
+			"lib/src/features/actions/selection_toolbar/klp_selection_toolbar.dart",
+			"lib/src/features/actions/selection_toolbar/primitives/klp_selection_toolbar_dashed_frame.dart",
+			"lib/src/features/editing/internal/klp_anchored_commands_adapter.dart",
+			"lib/src/features/editing/internal/klp_block_controls_adapter.dart",
+			"lib/src/features/editing/internal/klp_block_note_editing_adapter.dart",
+			"lib/src/features/editing/internal/klp_canva_editing_adapter.dart",
+			"lib/src/features/editing/internal/klp_editing_adapter.dart",
+			"lib/src/features/editing/internal/klp_editing_placement.dart",
+			"lib/src/features/editing/internal/klp_mode_toolbar_adapter.dart",
+			"lib/src/features/editing/internal/klp_prepared_editing.dart",
+			"lib/src/features/editing/presentation/klp_bound_anchored_command_actions.dart",
+			"lib/src/features/editing/presentation/klp_bound_anchored_commands.dart",
+			"lib/src/features/editing/presentation/klp_bound_anchored_commands_slot.dart",
+			"lib/src/features/editing/presentation/klp_bound_block_actions.dart",
+			"lib/src/features/editing/presentation/klp_bound_block_controls.dart",
+			"lib/src/features/editing/presentation/klp_bound_block_controls_slot.dart",
+			"lib/src/features/editing/presentation/klp_bound_block_note_editing.dart",
+			"lib/src/features/editing/presentation/klp_bound_canva_editing.dart",
+			"lib/src/features/editing/presentation/klp_bound_editing.dart",
+			"lib/src/features/editing/presentation/klp_bound_editing_actions.dart",
+			"lib/src/features/editing/presentation/klp_bound_editing_layout.dart",
+			"lib/src/features/editing/presentation/klp_bound_editing_save_actions.dart",
+			"lib/src/features/editing/presentation/klp_bound_editing_style.dart",
+			"lib/src/features/editing/presentation/klp_bound_editor_mode_actions.dart",
+			"lib/src/features/editing/presentation/klp_bound_mode_toolbar.dart",
+			"lib/src/features/editing/presentation/klp_bound_mode_toolbar_slot.dart",
+			"lib/src/features/editing/presentation/klp_editing_presentation.dart",
+			"lib/src/features/workspace/components/internal/klp_workspace_block_adapter.dart",
+			"lib/src/features/workspace/components/internal/klp_workspace_components_adapter.dart",
+			"lib/src/features/workspace/layout/internal/klp_app_layout_adapter.dart",
+			"lib/src/features/workspace/layout/internal/klp_frame_groups_adapter.dart",
+			"lib/src/features/workspace/presentation/klp_bound_app_layout.dart",
+			"lib/src/features/workspace/presentation/klp_bound_document_tab_data.dart",
+			"lib/src/features/workspace/presentation/klp_bound_document_tabs.dart",
+			"lib/src/features/workspace/presentation/klp_bound_explorer.dart",
+			"lib/src/features/workspace/presentation/klp_bound_explorer_item_data.dart",
+			"lib/src/features/workspace/presentation/klp_bound_frame_group.dart",
+			"lib/src/features/workspace/presentation/klp_bound_frame_groups.dart",
+			"lib/src/features/workspace/presentation/klp_bound_window_controls.dart",
+			"lib/src/features/workspace/presentation/klp_bound_workspace_block.dart",
+			"lib/src/features/workspace/presentation/klp_bound_workspace_choice.dart",
+			"lib/src/features/workspace/presentation/klp_bound_workspace_command.dart",
+			"lib/src/features/workspace/presentation/klp_bound_workspace_content.dart",
+			"lib/src/features/workspace/presentation/klp_bound_workspace_content_block.dart",
+			"lib/src/features/workspace/presentation/klp_bound_workspace_data.dart",
+			"lib/src/features/workspace/presentation/klp_bound_workspace_item.dart",
+			"lib/src/features/workspace/presentation/klp_workspace_presentation.dart"
+		],
+		"rendering": [
+			"lib/src/rendering/flutter/internal/klp_anchored_command_session.dart",
+			"lib/src/rendering/flutter/internal/klp_editor_mode_session.dart",
+			"lib/src/rendering/flutter/internal/klp_flutter_app_layout.dart",
+			"lib/src/rendering/flutter/internal/klp_flutter_block_control_session.dart",
+			"lib/src/rendering/flutter/internal/klp_flutter_block_note_editing.dart",
+			"lib/src/rendering/flutter/internal/klp_flutter_canva_editing.dart",
+			"lib/src/rendering/flutter/internal/klp_flutter_editing.dart",
+			"lib/src/rendering/flutter/internal/klp_flutter_editing_painter.dart",
+			"lib/src/rendering/flutter/internal/klp_flutter_frame_groups.dart",
+			"lib/src/rendering/flutter/internal/klp_flutter_renderer.dart",
+			"lib/src/rendering/flutter/internal/klp_flutter_workspace_block.dart",
+			"lib/src/rendering/flutter/internal/klp_flutter_workspace_components.dart"
+		]
+	},
+	"steward_public_paths": [
+		"lib/kallopis_foundation.dart"
+	],
+	"test_paths": [
+		"test/button_style_resolution_test.dart",
+		"test/klp_anchored_command_session_test.dart",
+		"test/klp_anchored_commands_installation_test.dart",
+		"test/klp_app_frame_style_test.dart",
+		"test/klp_block_controls_installation_test.dart",
+		"test/klp_component_binding_test.dart",
+		"test/klp_component_children_binding_test.dart",
+		"test/klp_editing_installation_test.dart",
+		"test/klp_editor_mode_session_test.dart",
+		"test/klp_flutter_block_control_session_test.dart",
+		"test/klp_foundation_stable_toolbar_contract_test.dart",
+		"test/klp_frame_groups_test.dart",
+		"test/klp_mode_toolbar_installation_test.dart",
+		"test/klp_prepared_module_boundary_test.dart",
+		"test/klp_prepared_renderer_contract_test.dart",
+		"test/klp_tree_runtime_test.dart"
+	],
+	"steward_documentation": {
+		"reason": "Existing frontend test found a stale toolbar source link; update component evidence and regenerate AST atlas with repository generator. No assertion change.",
+		"paths": [
+			"docs/architecture/components/foundation/klp_selection_toolbar.md",
+			"docs/architecture/src/**"
+		],
+		"exact_original_hashes": "D:\\Projects\\Kallopis-v1-evidence\\presentation\\source-write-baseline.json"
+	}
+}

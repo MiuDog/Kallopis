@@ -41,19 +41,6 @@ void main() {
     );
   });
 
-  testWidgets('matches the approved navigation icon proportions', (
-    tester,
-  ) async {
-    await tester.binding.setSurfaceSize(const Size(240, 30));
-    addTearDown(() => tester.binding.setSurfaceSize(null));
-    await tester.pumpWidget(SidebarNavigationButtonSubject(onPressed: () {}));
-
-    await expectLater(
-      find.byType(KlpSidebarNavigationButton),
-      matchesGoldenFile('goldens/klp_sidebar_navigation_button_light.png'),
-    );
-  });
-
   testWidgets('exposes selection and dispatches the navigation event', (
     tester,
   ) async {

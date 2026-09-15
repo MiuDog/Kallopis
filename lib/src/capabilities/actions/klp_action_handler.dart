@@ -1,6 +1,6 @@
 import 'dart:async';
 
-import '../../kernel/identity/klp_placement_id.dart';
+import 'package:kallopis/src/kernel/identity/klp_placement_id.dart';
 import 'klp_action.dart';
 import 'klp_action_activation.dart';
 

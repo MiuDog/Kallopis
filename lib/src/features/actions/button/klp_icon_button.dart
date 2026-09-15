@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
-import '../../../foundation/klp_icon.dart';
-import '../../overlays/klp_tooltip.dart';
-import '../../../styling/legacy_theme/klp_theme.dart';
+import 'package:kallopis/src/foundation/klp_icon.dart';
+import 'package:kallopis/src/features/overlays/klp_tooltip.dart';
+import 'package:kallopis/src/styling/legacy_theme/klp_theme.dart';
 import 'klp_icon_button_size.dart';
 import 'klp_icon_button_tone.dart';
 

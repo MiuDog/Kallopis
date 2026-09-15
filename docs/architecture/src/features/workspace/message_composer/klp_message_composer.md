@@ -12,14 +12,14 @@
 flowchart LR
 	n0["klp_message_composer.dart"]
 	n1["package:flutter/widgets.dart"]
-	n2["../../actions/button/klp_button.dart"]
-	n3["../../actions/button/klp_icon_button.dart"]
-	n4["../../collections/badge/klp_badge.dart"]
-	n5["../../forms/klp_form_controls.dart"]
-	n6["../../../foundation/klp_icons.dart"]
-	n7["../../../foundation/layout/klp_layout.dart"]
-	n8["../../../foundation/surface/klp_surface.dart"]
-	n9["../../../styling/legacy_theme/klp_theme.dart"]
+	n2["package:kallopis/src/features/actions/button/klp_button.dart"]
+	n3["package:kallopis/src/features/actions/button/klp_icon_button.dart"]
+	n4["package:kallopis/src/features/collections/badge/klp_badge.dart"]
+	n5["package:kallopis/src/features/forms/klp_form_controls.dart"]
+	n6["package:kallopis/src/foundation/klp_icons.dart"]
+	n7["package:kallopis/src/foundation/layout/klp_layout.dart"]
+	n8["package:kallopis/src/foundation/surface/klp_surface.dart"]
+	n9["package:kallopis/src/styling/legacy_theme/klp_theme.dart"]
 	n10["internal/klp_message_composer_inline_layout.dart"]
 	n11["internal/klp_message_composer_stacked_layout.dart"]
 	n0 -->|"import"| n1
@@ -49,14 +49,14 @@ flowchart TD
 | 關係 | 原始 directive | 來源 |
 |---|---|---|
 | import | <code>import &#x27;package:flutter/widgets.dart&#x27;;</code> | [lib/src/features/workspace/message_composer/klp_message_composer.dart:1](../../../../../../lib/src/features/workspace/message_composer/klp_message_composer.dart#L1) |
-| import | <code>import &#x27;../../actions/button/klp_button.dart&#x27;;</code> | [lib/src/features/workspace/message_composer/klp_message_composer.dart:3](../../../../../../lib/src/features/workspace/message_composer/klp_message_composer.dart#L3) |
-| import | <code>import &#x27;../../actions/button/klp_icon_button.dart&#x27;;</code> | [lib/src/features/workspace/message_composer/klp_message_composer.dart:4](../../../../../../lib/src/features/workspace/message_composer/klp_message_composer.dart#L4) |
-| import | <code>import &#x27;../../collections/badge/klp_badge.dart&#x27;;</code> | [lib/src/features/workspace/message_composer/klp_message_composer.dart:5](../../../../../../lib/src/features/workspace/message_composer/klp_message_composer.dart#L5) |
-| import | <code>import &#x27;../../forms/klp_form_controls.dart&#x27;;</code> | [lib/src/features/workspace/message_composer/klp_message_composer.dart:6](../../../../../../lib/src/features/workspace/message_composer/klp_message_composer.dart#L6) |
-| import | <code>import &#x27;../../../foundation/klp_icons.dart&#x27;;</code> | [lib/src/features/workspace/message_composer/klp_message_composer.dart:7](../../../../../../lib/src/features/workspace/message_composer/klp_message_composer.dart#L7) |
-| import | <code>import &#x27;../../../foundation/layout/klp_layout.dart&#x27;;</code> | [lib/src/features/workspace/message_composer/klp_message_composer.dart:8](../../../../../../lib/src/features/workspace/message_composer/klp_message_composer.dart#L8) |
-| import | <code>import &#x27;../../../foundation/surface/klp_surface.dart&#x27;;</code> | [lib/src/features/workspace/message_composer/klp_message_composer.dart:9](../../../../../../lib/src/features/workspace/message_composer/klp_message_composer.dart#L9) |
-| import | <code>import &#x27;../../../styling/legacy_theme/klp_theme.dart&#x27;;</code> | [lib/src/features/workspace/message_composer/klp_message_composer.dart:10](../../../../../../lib/src/features/workspace/message_composer/klp_message_composer.dart#L10) |
+| import | <code>import &#x27;package:kallopis/src/features/actions/button/klp_button.dart&#x27;;</code> | [lib/src/features/workspace/message_composer/klp_message_composer.dart:3](../../../../../../lib/src/features/workspace/message_composer/klp_message_composer.dart#L3) |
+| import | <code>import &#x27;package:kallopis/src/features/actions/button/klp_icon_button.dart&#x27;;</code> | [lib/src/features/workspace/message_composer/klp_message_composer.dart:4](../../../../../../lib/src/features/workspace/message_composer/klp_message_composer.dart#L4) |
+| import | <code>import &#x27;package:kallopis/src/features/collections/badge/klp_badge.dart&#x27;;</code> | [lib/src/features/workspace/message_composer/klp_message_composer.dart:5](../../../../../../lib/src/features/workspace/message_composer/klp_message_composer.dart#L5) |
+| import | <code>import &#x27;package:kallopis/src/features/forms/klp_form_controls.dart&#x27;;</code> | [lib/src/features/workspace/message_composer/klp_message_composer.dart:6](../../../../../../lib/src/features/workspace/message_composer/klp_message_composer.dart#L6) |
+| import | <code>import &#x27;package:kallopis/src/foundation/klp_icons.dart&#x27;;</code> | [lib/src/features/workspace/message_composer/klp_message_composer.dart:7](../../../../../../lib/src/features/workspace/message_composer/klp_message_composer.dart#L7) |
+| import | <code>import &#x27;package:kallopis/src/foundation/layout/klp_layout.dart&#x27;;</code> | [lib/src/features/workspace/message_composer/klp_message_composer.dart:8](../../../../../../lib/src/features/workspace/message_composer/klp_message_composer.dart#L8) |
+| import | <code>import &#x27;package:kallopis/src/foundation/surface/klp_surface.dart&#x27;;</code> | [lib/src/features/workspace/message_composer/klp_message_composer.dart:9](../../../../../../lib/src/features/workspace/message_composer/klp_message_composer.dart#L9) |
+| import | <code>import &#x27;package:kallopis/src/styling/legacy_theme/klp_theme.dart&#x27;;</code> | [lib/src/features/workspace/message_composer/klp_message_composer.dart:10](../../../../../../lib/src/features/workspace/message_composer/klp_message_composer.dart#L10) |
 | part | <code>part &#x27;internal/klp_message_composer_inline_layout.dart&#x27;;</code> | [lib/src/features/workspace/message_composer/klp_message_composer.dart:12](../../../../../../lib/src/features/workspace/message_composer/klp_message_composer.dart#L12) |
 | part | <code>part &#x27;internal/klp_message_composer_stacked_layout.dart&#x27;;</code> | [lib/src/features/workspace/message_composer/klp_message_composer.dart:13](../../../../../../lib/src/features/workspace/message_composer/klp_message_composer.dart#L13) |
 | part | <code>part &#x27;internal/klp_message_composer_widget.dart&#x27;;</code> | [lib/src/features/workspace/message_composer/klp_message_composer.dart:14](../../../../../../lib/src/features/workspace/message_composer/klp_message_composer.dart#L14) |

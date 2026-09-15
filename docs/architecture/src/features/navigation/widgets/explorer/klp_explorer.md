@@ -12,10 +12,10 @@
 flowchart LR
 	n0["klp_explorer.dart"]
 	n1["package:flutter/material.dart"]
-	n2["../../../../foundation/surface/klp_surface.dart"]
+	n2["package:kallopis/src/foundation/surface/klp_surface.dart"]
 	n3["klp_explorer_models.dart"]
-	n4["../navigator/klp_navigator.dart"]
-	n5["../navigator/klp_navigator_models.dart"]
+	n4["package:kallopis/src/features/navigation/widgets/navigator/klp_navigator.dart"]
+	n5["package:kallopis/src/features/navigation/widgets/navigator/klp_navigator_models.dart"]
 	n0 -->|"import"| n1
 	n0 -->|"import"| n2
 	n0 -->|"import"| n3
@@ -28,10 +28,10 @@ flowchart LR
 | 關係 | 原始 directive | 來源 |
 |---|---|---|
 | import | <code>import &#x27;package:flutter/material.dart&#x27;;</code> | [lib/src/features/navigation/widgets/explorer/klp_explorer.dart:1](../../../../../../../lib/src/features/navigation/widgets/explorer/klp_explorer.dart#L1) |
-| import | <code>import &#x27;../../../../foundation/surface/klp_surface.dart&#x27;;</code> | [lib/src/features/navigation/widgets/explorer/klp_explorer.dart:3](../../../../../../../lib/src/features/navigation/widgets/explorer/klp_explorer.dart#L3) |
+| import | <code>import &#x27;package:kallopis/src/foundation/surface/klp_surface.dart&#x27;;</code> | [lib/src/features/navigation/widgets/explorer/klp_explorer.dart:3](../../../../../../../lib/src/features/navigation/widgets/explorer/klp_explorer.dart#L3) |
 | import | <code>import &#x27;klp_explorer_models.dart&#x27;;</code> | [lib/src/features/navigation/widgets/explorer/klp_explorer.dart:4](../../../../../../../lib/src/features/navigation/widgets/explorer/klp_explorer.dart#L4) |
-| import | <code>import &#x27;../navigator/klp_navigator.dart&#x27;;</code> | [lib/src/features/navigation/widgets/explorer/klp_explorer.dart:5](../../../../../../../lib/src/features/navigation/widgets/explorer/klp_explorer.dart#L5) |
-| import | <code>import &#x27;../navigator/klp_navigator_models.dart&#x27;;</code> | [lib/src/features/navigation/widgets/explorer/klp_explorer.dart:6](../../../../../../../lib/src/features/navigation/widgets/explorer/klp_explorer.dart#L6) |
+| import | <code>import &#x27;package:kallopis/src/features/navigation/widgets/navigator/klp_navigator.dart&#x27;;</code> | [lib/src/features/navigation/widgets/explorer/klp_explorer.dart:5](../../../../../../../lib/src/features/navigation/widgets/explorer/klp_explorer.dart#L5) |
+| import | <code>import &#x27;package:kallopis/src/features/navigation/widgets/navigator/klp_navigator_models.dart&#x27;;</code> | [lib/src/features/navigation/widgets/explorer/klp_explorer.dart:6](../../../../../../../lib/src/features/navigation/widgets/explorer/klp_explorer.dart#L6) |
 
 ## 宣告關係圖
 

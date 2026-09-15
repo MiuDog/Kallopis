@@ -11,13 +11,15 @@
 ```mermaid
 flowchart TD
 	n0["klp_node.dart"]
+	n1["package:kallopis/src/kernel/identity/klp_id.dart"]
+	n0 -->|"import"| n1
 ```
 
 ## 依賴證據
 
 | 關係 | 原始 directive | 來源 |
 |---|---|---|
-| 無 | 本檔未宣告 import／export／part | [lib/src/composition/nodes/klp_node.dart:1](../../../../../lib/src/composition/nodes/klp_node.dart#L1) |
+| import | <code>import &#x27;package:kallopis/src/kernel/identity/klp_id.dart&#x27;;</code> | [lib/src/composition/nodes/klp_node.dart:1](../../../../../lib/src/composition/nodes/klp_node.dart#L1) |
 
 ## 宣告關係圖
 
@@ -35,7 +37,7 @@ classDiagram
 
 ### KlpNode
 
-ClassDeclaration · public · [lib/src/composition/nodes/klp_node.dart:1](../../../../../lib/src/composition/nodes/klp_node.dart#L1)
+ClassDeclaration · public · [lib/src/composition/nodes/klp_node.dart:3](../../../../../lib/src/composition/nodes/klp_node.dart#L3)
 
 <code>abstract interface class KlpNode</code>
 
@@ -44,9 +46,9 @@ ClassDeclaration · public · [lib/src/composition/nodes/klp_node.dart:1](../../
 
 | 成員 | 可見性 | 簽章／型別 | 來源註解摘要 | 證據 |
 |---|---|---|---|---|
-| getter <code>id</code> | public | <code>String get id</code> |  | [lib/src/composition/nodes/klp_node.dart:3](../../../../../lib/src/composition/nodes/klp_node.dart#L3) |
-| getter <code>definitionId</code> | public | <code>String get definitionId</code> |  | [lib/src/composition/nodes/klp_node.dart:4](../../../../../lib/src/composition/nodes/klp_node.dart#L4) |
-| getter <code>children</code> | public | <code>Iterable&lt;KlpNode&gt; get children</code> |  | [lib/src/composition/nodes/klp_node.dart:5](../../../../../lib/src/composition/nodes/klp_node.dart#L5) |
+| getter <code>id</code> | public | <code>KlpId get id</code> |  | [lib/src/composition/nodes/klp_node.dart:5](../../../../../lib/src/composition/nodes/klp_node.dart#L5) |
+| getter <code>definitionId</code> | public | <code>String get definitionId</code> |  | [lib/src/composition/nodes/klp_node.dart:6](../../../../../lib/src/composition/nodes/klp_node.dart#L6) |
+| getter <code>children</code> | public | <code>Iterable&lt;KlpNode&gt; get children</code> |  | [lib/src/composition/nodes/klp_node.dart:7](../../../../../lib/src/composition/nodes/klp_node.dart#L7) |
 
 ## 閱讀說明與限制
 

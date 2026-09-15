@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
-import '../../../../foundation/surface/klp_surface.dart';
+import 'package:kallopis/src/foundation/surface/klp_surface.dart';
 import 'klp_explorer_models.dart';
-import '../navigator/klp_navigator.dart';
-import '../navigator/klp_navigator_models.dart';
+import 'package:kallopis/src/features/navigation/widgets/navigator/klp_navigator.dart';
+import 'package:kallopis/src/features/navigation/widgets/navigator/klp_navigator_models.dart';
 
 /// 具有統一表面、分類與節點排版的 Explorer。
 ///

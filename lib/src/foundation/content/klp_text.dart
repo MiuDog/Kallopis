@@ -1,7 +1,7 @@
 import 'package:flutter/widgets.dart';
 
-import '../../styling/legacy_theme/klp_theme.dart';
-import '../../styling/legacy_theme/klp_typography_theme.dart';
+import 'package:kallopis/src/styling/legacy_theme/klp_theme.dart';
+import 'package:kallopis/src/styling/legacy_theme/klp_typography_theme.dart';
 import 'klp_font_role.dart';
 import 'klp_text_color_tier.dart';
 import 'klp_text_role.dart';

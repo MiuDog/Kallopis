@@ -1,6 +1,6 @@
 import 'package:flutter/widgets.dart';
 
-import '../../../../foundation/klp_icon_data.dart';
+import 'package:kallopis/src/foundation/klp_icon_data.dart';
 
 /// 檢視切換器的一個識別、標籤與可選圖示。
 @immutable

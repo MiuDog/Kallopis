@@ -12,9 +12,9 @@
 flowchart LR
 	n0["klp_toggle.dart"]
 	n1["package:flutter/material.dart"]
-	n2["../../../foundation/layout/klp_layout.dart"]
-	n3["../../../styling/legacy_theme/klp_theme.dart"]
-	n4["../../../foundation/content/klp_text.dart"]
+	n2["package:kallopis/src/foundation/layout/klp_layout.dart"]
+	n3["package:kallopis/src/styling/legacy_theme/klp_theme.dart"]
+	n4["package:kallopis/src/foundation/content/klp_text.dart"]
 	n5["internal/klp_toggle_frame_style.dart"]
 	n6["internal/klp_toggle_indicator_style.dart"]
 	n7["internal/klp_toggle_indicator_widget.dart"]
@@ -38,9 +38,9 @@ flowchart LR
 | 關係 | 原始 directive | 來源 |
 |---|---|---|
 | import | <code>import &#x27;package:flutter/material.dart&#x27;;</code> | [lib/src/features/forms/toggle/klp_toggle.dart:1](../../../../../../lib/src/features/forms/toggle/klp_toggle.dart#L1) |
-| import | <code>import &#x27;../../../foundation/layout/klp_layout.dart&#x27;;</code> | [lib/src/features/forms/toggle/klp_toggle.dart:3](../../../../../../lib/src/features/forms/toggle/klp_toggle.dart#L3) |
-| import | <code>import &#x27;../../../styling/legacy_theme/klp_theme.dart&#x27;;</code> | [lib/src/features/forms/toggle/klp_toggle.dart:4](../../../../../../lib/src/features/forms/toggle/klp_toggle.dart#L4) |
-| import | <code>import &#x27;../../../foundation/content/klp_text.dart&#x27;;</code> | [lib/src/features/forms/toggle/klp_toggle.dart:5](../../../../../../lib/src/features/forms/toggle/klp_toggle.dart#L5) |
+| import | <code>import &#x27;package:kallopis/src/foundation/layout/klp_layout.dart&#x27;;</code> | [lib/src/features/forms/toggle/klp_toggle.dart:3](../../../../../../lib/src/features/forms/toggle/klp_toggle.dart#L3) |
+| import | <code>import &#x27;package:kallopis/src/styling/legacy_theme/klp_theme.dart&#x27;;</code> | [lib/src/features/forms/toggle/klp_toggle.dart:4](../../../../../../lib/src/features/forms/toggle/klp_toggle.dart#L4) |
+| import | <code>import &#x27;package:kallopis/src/foundation/content/klp_text.dart&#x27;;</code> | [lib/src/features/forms/toggle/klp_toggle.dart:5](../../../../../../lib/src/features/forms/toggle/klp_toggle.dart#L5) |
 | part | <code>part &#x27;internal/klp_toggle_frame_style.dart&#x27;;</code> | [lib/src/features/forms/toggle/klp_toggle.dart:7](../../../../../../lib/src/features/forms/toggle/klp_toggle.dart#L7) |
 | part | <code>part &#x27;internal/klp_toggle_indicator_style.dart&#x27;;</code> | [lib/src/features/forms/toggle/klp_toggle.dart:8](../../../../../../lib/src/features/forms/toggle/klp_toggle.dart#L8) |
 | part | <code>part &#x27;internal/klp_toggle_indicator_widget.dart&#x27;;</code> | [lib/src/features/forms/toggle/klp_toggle.dart:9](../../../../../../lib/src/features/forms/toggle/klp_toggle.dart#L9) |

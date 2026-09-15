@@ -1,21 +1,16 @@
 import 'dart:async';
 
 import 'package:flutter_test/flutter_test.dart';
-import 'package:kallopis/src/capabilities/navigation/internal/klp_navigation_commit_contract_exception.dart';
-import 'package:kallopis/src/capabilities/navigation/internal/klp_navigation_commit_exception.dart';
-import 'package:kallopis/src/capabilities/navigation/internal/klp_navigation_machine.dart';
-import 'package:kallopis/src/capabilities/navigation/klp_destination.dart';
-import 'package:kallopis/src/capabilities/navigation/klp_navigation_cancellation.dart';
-import 'package:kallopis/src/capabilities/navigation/klp_navigation_outcome.dart';
-import 'package:kallopis/src/capabilities/navigation/klp_navigation_snapshot.dart';
-import 'package:kallopis/src/capabilities/navigation/klp_navigation_transition.dart';
-import 'package:kallopis/src/capabilities/navigation/klp_route_policy.dart';
+import 'package:kallopis/kallopis_declarative.dart';
+import 'package:kallopis/src/capabilities/navigation/engine/klp_navigation_commit_contract_exception.dart';
+import 'package:kallopis/src/capabilities/navigation/engine/klp_navigation_commit_exception.dart';
+import 'package:kallopis/src/capabilities/navigation/engine/klp_navigation_machine.dart';
 
 void main() {
   late KlpDestination<int, String> home;
   late List<KlpNavigationSnapshot> commits;
   setUp(() {
-    home = KlpDestination('home');
+    home = KlpDestination(KlpId.parse('home'));
     commits = [];
   });
   FutureOr<KlpNavigationStart> start({

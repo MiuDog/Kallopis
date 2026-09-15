@@ -1,9 +1,9 @@
-import '../../kernel/diagnostics/klp_contract_error.dart';
-import '../../styling/resolution/internal/klp_semantic_resolver.dart';
-import '../definitions/klp_definition.dart';
-import '../nodes/klp_node.dart';
-import '../validation/klp_tree_validation.dart';
-import '../validation/internal/klp_tree_capture.dart';
+import 'package:kallopis/src/kernel/diagnostics/klp_contract_error.dart';
+import 'package:kallopis/src/styling/resolution/klp_semantic_graph.dart';
+import 'package:kallopis/src/composition/definitions/klp_definition.dart';
+import 'package:kallopis/src/composition/nodes/klp_node.dart';
+import 'package:kallopis/src/composition/validation/klp_tree_validation.dart';
+import 'package:kallopis/src/composition/validation/internal/klp_tree_capture.dart';
 
 /// 封存註冊定義，驗證依賴及結構，不能接受渲染回呼。
 final class KlpRegistry {
@@ -25,7 +25,7 @@ final class KlpRegistry {
       _validateDependencies(definition.id, active, complete);
     }
     // 掛載前拒絕缺漏、越權及循環引用；求值仍由本庫內部機制負責。
-    KlpSemanticResolver(
+    validateKlpSemanticGraph(
       this.definitions.map((definition) => definition.semantics),
     );
   }

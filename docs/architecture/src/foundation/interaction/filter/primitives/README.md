@@ -19,7 +19,7 @@ flowchart TD
 
 | 目標邊界 | 關係 | directive 數 | 第一筆來源證據 |
 |---|---|---|---|
-| <code>lib/src/foundation/interaction/filter</code> | part of | 7 | [lib/src/foundation/interaction/filter/primitives/klp_filter_chip_frame.dart:1](../../../../../../../lib/src/foundation/interaction/filter/primitives/klp_filter_chip_frame.dart#L1) |
+| <code>lib/src/foundation/interaction/filter</code> | part of | 6 | [lib/src/foundation/interaction/filter/primitives/klp_filter_chip_frame.dart:1](../../../../../../../lib/src/foundation/interaction/filter/primitives/klp_filter_chip_frame.dart#L1) |
 
 ## 目錄結構圖
 
@@ -31,15 +31,13 @@ flowchart LR
 	n3["klp_filter_remove_action.dart"]
 	n4["klp_presence_label.dart"]
 	n5["klp_presence_marker.dart"]
-	n6["klp_selection_toolbar_dashed_frame.dart"]
-	n7["klp_shortcut_hint_frame.dart"]
+	n6["klp_shortcut_hint_frame.dart"]
 	n0 -->|"contains"| n1
 	n0 -->|"contains"| n2
 	n0 -->|"contains"| n3
 	n0 -->|"contains"| n4
 	n0 -->|"contains"| n5
 	n0 -->|"contains"| n6
-	n0 -->|"contains"| n7
 ```
 
 ## 子目錄
@@ -57,7 +55,6 @@ flowchart LR
 | `klp_filter_remove_action.dart` | _KlpFilterRemoveAction | [架構與 API](klp_filter_remove_action.md) | [lib/src/foundation/interaction/filter/primitives/klp_filter_remove_action.dart:1](../../../../../../../lib/src/foundation/interaction/filter/primitives/klp_filter_remove_action.dart#L1) |
 | `klp_presence_label.dart` | _KlpPresenceLabel | [架構與 API](klp_presence_label.md) | [lib/src/foundation/interaction/filter/primitives/klp_presence_label.dart:1](../../../../../../../lib/src/foundation/interaction/filter/primitives/klp_presence_label.dart#L1) |
 | `klp_presence_marker.dart` | _KlpPresenceMarker | [架構與 API](klp_presence_marker.md) | [lib/src/foundation/interaction/filter/primitives/klp_presence_marker.dart:1](../../../../../../../lib/src/foundation/interaction/filter/primitives/klp_presence_marker.dart#L1) |
-| `klp_selection_toolbar_dashed_frame.dart` | _KlpSelectionToolbarDashedFrame | [架構與 API](klp_selection_toolbar_dashed_frame.md) | [lib/src/foundation/interaction/filter/primitives/klp_selection_toolbar_dashed_frame.dart:1](../../../../../../../lib/src/foundation/interaction/filter/primitives/klp_selection_toolbar_dashed_frame.dart#L1) |
 | `klp_shortcut_hint_frame.dart` | _KlpShortcutHintFrame | [架構與 API](klp_shortcut_hint_frame.md) | [lib/src/foundation/interaction/filter/primitives/klp_shortcut_hint_frame.dart:1](../../../../../../../lib/src/foundation/interaction/filter/primitives/klp_shortcut_hint_frame.dart#L1) |
 
 ## 閱讀說明

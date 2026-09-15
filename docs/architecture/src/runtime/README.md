@@ -40,9 +40,11 @@ capture/context、prepared、bound 與 installation 的 map 都以 `KlpPlacement
 flowchart TD
 	n0["lib/src/runtime"]
 	n1["compilation/"]
-	n2["installation/"]
+	n2["contracts/"]
+	n3["installation/"]
 	n0 -->|"contains"| n1
 	n0 -->|"contains"| n2
+	n0 -->|"contains"| n3
 ```
 
 ## 子目錄
@@ -50,6 +52,7 @@ flowchart TD
 | 目錄 | 導航 | 來源證據 |
 |---|---|---|
 | `compilation/` | [架構入口](compilation/README.md) | [來源目錄](../../../../lib/src/runtime/compilation) |
+| `contracts/` | [架構入口](contracts/README.md) | [來源目錄](../../../../lib/src/runtime/contracts) |
 | `installation/` | [架構入口](installation/README.md) | [來源目錄](../../../../lib/src/runtime/installation) |
 
 ## 本層檔案

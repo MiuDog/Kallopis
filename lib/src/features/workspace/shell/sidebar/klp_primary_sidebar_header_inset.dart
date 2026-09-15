@@ -1,7 +1,7 @@
 import 'package:flutter/widgets.dart';
 
-import '../../../../foundation/layout/klp_box_insets.dart';
-import '../../../../styling/legacy_theme/klp_theme.dart';
+import 'package:kallopis/src/foundation/layout/klp_box_insets.dart';
+import 'package:kallopis/src/styling/legacy_theme/klp_theme.dart';
 
 /// Primary Sidebar 的 header 與 navigation 區塊內縮。
 enum KlpPrimarySidebarHeaderInset {

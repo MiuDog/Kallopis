@@ -11,11 +11,11 @@
 ```mermaid
 flowchart LR
 	n0["klp_date_range_field.dart"]
-	n1["../internal/klp_form_dependencies.dart"]
-	n2["../internal/klp_input_frame.dart"]
-	n3["../internal/primitives/klp_input_action.dart"]
-	n4["../internal/primitives/klp_input_editor.dart"]
-	n5["../internal/primitives/klp_input_segment_divider.dart"]
+	n1["package:kallopis/src/features/forms/internal/klp_form_dependencies.dart"]
+	n2["package:kallopis/src/features/forms/internal/klp_input_frame.dart"]
+	n3["package:kallopis/src/features/forms/internal/primitives/klp_input_action.dart"]
+	n4["package:kallopis/src/features/forms/internal/primitives/klp_input_editor.dart"]
+	n5["package:kallopis/src/features/forms/internal/primitives/klp_input_segment_divider.dart"]
 	n0 -->|"import"| n1
 	n0 -->|"import"| n2
 	n0 -->|"import"| n3
@@ -27,11 +27,11 @@ flowchart LR
 
 | 關係 | 原始 directive | 來源 |
 |---|---|---|
-| import | <code>import &#x27;../internal/klp_form_dependencies.dart&#x27;;</code> | [lib/src/features/forms/selection/klp_date_range_field.dart:1](../../../../../../lib/src/features/forms/selection/klp_date_range_field.dart#L1) |
-| import | <code>import &#x27;../internal/klp_input_frame.dart&#x27;;</code> | [lib/src/features/forms/selection/klp_date_range_field.dart:2](../../../../../../lib/src/features/forms/selection/klp_date_range_field.dart#L2) |
-| import | <code>import &#x27;../internal/primitives/klp_input_action.dart&#x27;;</code> | [lib/src/features/forms/selection/klp_date_range_field.dart:3](../../../../../../lib/src/features/forms/selection/klp_date_range_field.dart#L3) |
-| import | <code>import &#x27;../internal/primitives/klp_input_editor.dart&#x27;;</code> | [lib/src/features/forms/selection/klp_date_range_field.dart:4](../../../../../../lib/src/features/forms/selection/klp_date_range_field.dart#L4) |
-| import | <code>import &#x27;../internal/primitives/klp_input_segment_divider.dart&#x27;;</code> | [lib/src/features/forms/selection/klp_date_range_field.dart:5](../../../../../../lib/src/features/forms/selection/klp_date_range_field.dart#L5) |
+| import | <code>import &#x27;package:kallopis/src/features/forms/internal/klp_form_dependencies.dart&#x27;;</code> | [lib/src/features/forms/selection/klp_date_range_field.dart:1](../../../../../../lib/src/features/forms/selection/klp_date_range_field.dart#L1) |
+| import | <code>import &#x27;package:kallopis/src/features/forms/internal/klp_input_frame.dart&#x27;;</code> | [lib/src/features/forms/selection/klp_date_range_field.dart:2](../../../../../../lib/src/features/forms/selection/klp_date_range_field.dart#L2) |
+| import | <code>import &#x27;package:kallopis/src/features/forms/internal/primitives/klp_input_action.dart&#x27;;</code> | [lib/src/features/forms/selection/klp_date_range_field.dart:3](../../../../../../lib/src/features/forms/selection/klp_date_range_field.dart#L3) |
+| import | <code>import &#x27;package:kallopis/src/features/forms/internal/primitives/klp_input_editor.dart&#x27;;</code> | [lib/src/features/forms/selection/klp_date_range_field.dart:4](../../../../../../lib/src/features/forms/selection/klp_date_range_field.dart#L4) |
+| import | <code>import &#x27;package:kallopis/src/features/forms/internal/primitives/klp_input_segment_divider.dart&#x27;;</code> | [lib/src/features/forms/selection/klp_date_range_field.dart:5](../../../../../../lib/src/features/forms/selection/klp_date_range_field.dart#L5) |
 
 ## 宣告關係圖
 

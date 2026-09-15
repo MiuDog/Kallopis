@@ -12,7 +12,7 @@
 flowchart LR
 	n0["klp_rail_button_entry.dart"]
 	n1["package:flutter/widgets.dart"]
-	n2["../../../../foundation/klp_icon.dart"]
+	n2["package:kallopis/src/foundation/klp_icon.dart"]
 	n3["klp_rail_entry.dart"]
 	n4["klp_rail_item.dart"]
 	n0 -->|"import"| n1
@@ -26,7 +26,7 @@ flowchart LR
 | 關係 | 原始 directive | 來源 |
 |---|---|---|
 | import | <code>import &#x27;package:flutter/widgets.dart&#x27;;</code> | [lib/src/features/navigation/widgets/rail/klp_rail_button_entry.dart:1](../../../../../../../lib/src/features/navigation/widgets/rail/klp_rail_button_entry.dart#L1) |
-| import | <code>import &#x27;../../../../foundation/klp_icon.dart&#x27;;</code> | [lib/src/features/navigation/widgets/rail/klp_rail_button_entry.dart:3](../../../../../../../lib/src/features/navigation/widgets/rail/klp_rail_button_entry.dart#L3) |
+| import | <code>import &#x27;package:kallopis/src/foundation/klp_icon.dart&#x27;;</code> | [lib/src/features/navigation/widgets/rail/klp_rail_button_entry.dart:3](../../../../../../../lib/src/features/navigation/widgets/rail/klp_rail_button_entry.dart#L3) |
 | import | <code>import &#x27;klp_rail_entry.dart&#x27;;</code> | [lib/src/features/navigation/widgets/rail/klp_rail_button_entry.dart:4](../../../../../../../lib/src/features/navigation/widgets/rail/klp_rail_button_entry.dart#L4) |
 | import | <code>import &#x27;klp_rail_item.dart&#x27;;</code> | [lib/src/features/navigation/widgets/rail/klp_rail_button_entry.dart:5](../../../../../../../lib/src/features/navigation/widgets/rail/klp_rail_button_entry.dart#L5) |
 

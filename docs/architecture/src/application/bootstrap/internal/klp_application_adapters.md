@@ -11,13 +11,17 @@
 ```mermaid
 flowchart LR
 	n0["klp_application_adapters.dart"]
-	n1["../../../features/navigation/rail/internal/klp_rail_adapter.dart"]
-	n2["../../../runtime/compilation/internal/klp_component_adapter.dart"]
-	n3["../../../runtime/compilation/internal/klp_node_adapter.dart"]
-	n4["../../../runtime/compilation/internal/klp_scope_boundary_adapter.dart"]
-	n5["../../structure/klp_application.dart"]
-	n6["klp_screen_adapter.dart"]
-	n7["klp_retained_screens_adapter.dart"]
+	n1["package:kallopis/src/runtime/compilation/klp_adaptive_adapter.dart"]
+	n2["package:kallopis/src/features/editing/adapters/klp_editing_adapter.dart"]
+	n3["package:kallopis/src/features/editing/adapters/klp_block_note_editing_adapter.dart"]
+	n4["package:kallopis/src/features/editing/adapters/klp_canva_editing_adapter.dart"]
+	n5["package:kallopis/src/features/editing/adapters/klp_block_controls_adapter.dart"]
+	n6["package:kallopis/src/features/editing/adapters/klp_anchored_commands_adapter.dart"]
+	n7["package:kallopis/src/features/editing/adapters/klp_mode_toolbar_adapter.dart"]
+	n8["package:kallopis/src/features/navigation/rail/adapters/klp_rail_adapter.dart"]
+	n9["package:kallopis/src/features/workspace/layout/adapters/klp_app_layout_adapter.dart"]
+	n10["package:kallopis/src/features/workspace/layout/adapters/klp_frame_groups_adapter.dart"]
+	n11["package:kallopis/src/features/workspace/components/adapters/klp_workspace_components_adapter.dart"]
 	n0 -->|"import"| n1
 	n0 -->|"import"| n2
 	n0 -->|"import"| n3
@@ -25,19 +29,47 @@ flowchart LR
 	n0 -->|"import"| n5
 	n0 -->|"import"| n6
 	n0 -->|"import"| n7
+	n0 -->|"import"| n8
+	n0 -->|"import"| n9
+	n0 -->|"import"| n10
+	n0 -->|"import"| n11
+```
+
+```mermaid
+flowchart LR
+	n0["klp_application_adapters.dart"]
+	n1["package:kallopis/src/features/workspace/components/adapters/klp_workspace_block_adapter.dart"]
+	n2["package:kallopis/src/runtime/contracts/klp_node_adapter.dart"]
+	n3["package:kallopis/src/runtime/compilation/klp_scope_boundary_adapter.dart"]
+	n4["klp_screen_adapter.dart"]
+	n5["klp_retained_screens_adapter.dart"]
+	n0 -->|"import"| n1
+	n0 -->|"import"| n2
+	n0 -->|"import"| n3
+	n0 -->|"import"| n4
+	n0 -->|"import"| n5
 ```
 
 ## 依賴證據
 
 | 關係 | 原始 directive | 來源 |
 |---|---|---|
-| import | <code>import &#x27;../../../features/navigation/rail/internal/klp_rail_adapter.dart&#x27;;</code> | [lib/src/application/bootstrap/internal/klp_application_adapters.dart:1](../../../../../../lib/src/application/bootstrap/internal/klp_application_adapters.dart#L1) |
-| import | <code>import &#x27;../../../runtime/compilation/internal/klp_component_adapter.dart&#x27;;</code> | [lib/src/application/bootstrap/internal/klp_application_adapters.dart:2](../../../../../../lib/src/application/bootstrap/internal/klp_application_adapters.dart#L2) |
-| import | <code>import &#x27;../../../runtime/compilation/internal/klp_node_adapter.dart&#x27;;</code> | [lib/src/application/bootstrap/internal/klp_application_adapters.dart:3](../../../../../../lib/src/application/bootstrap/internal/klp_application_adapters.dart#L3) |
-| import | <code>import &#x27;../../../runtime/compilation/internal/klp_scope_boundary_adapter.dart&#x27;;</code> | [lib/src/application/bootstrap/internal/klp_application_adapters.dart:4](../../../../../../lib/src/application/bootstrap/internal/klp_application_adapters.dart#L4) |
-| import | <code>import &#x27;../../structure/klp_application.dart&#x27;;</code> | [lib/src/application/bootstrap/internal/klp_application_adapters.dart:5](../../../../../../lib/src/application/bootstrap/internal/klp_application_adapters.dart#L5) |
-| import | <code>import &#x27;klp_screen_adapter.dart&#x27;;</code> | [lib/src/application/bootstrap/internal/klp_application_adapters.dart:6](../../../../../../lib/src/application/bootstrap/internal/klp_application_adapters.dart#L6) |
-| import | <code>import &#x27;klp_retained_screens_adapter.dart&#x27;;</code> | [lib/src/application/bootstrap/internal/klp_application_adapters.dart:7](../../../../../../lib/src/application/bootstrap/internal/klp_application_adapters.dart#L7) |
+| import | <code>import &#x27;package:kallopis/src/runtime/compilation/klp_adaptive_adapter.dart&#x27;;</code> | [lib/src/application/bootstrap/internal/klp_application_adapters.dart:1](../../../../../../lib/src/application/bootstrap/internal/klp_application_adapters.dart#L1) |
+| import | <code>import &#x27;package:kallopis/src/features/editing/adapters/klp_editing_adapter.dart&#x27;;</code> | [lib/src/application/bootstrap/internal/klp_application_adapters.dart:2](../../../../../../lib/src/application/bootstrap/internal/klp_application_adapters.dart#L2) |
+| import | <code>import &#x27;package:kallopis/src/features/editing/adapters/klp_block_note_editing_adapter.dart&#x27;;</code> | [lib/src/application/bootstrap/internal/klp_application_adapters.dart:3](../../../../../../lib/src/application/bootstrap/internal/klp_application_adapters.dart#L3) |
+| import | <code>import &#x27;package:kallopis/src/features/editing/adapters/klp_canva_editing_adapter.dart&#x27;;</code> | [lib/src/application/bootstrap/internal/klp_application_adapters.dart:4](../../../../../../lib/src/application/bootstrap/internal/klp_application_adapters.dart#L4) |
+| import | <code>import &#x27;package:kallopis/src/features/editing/adapters/klp_block_controls_adapter.dart&#x27;;</code> | [lib/src/application/bootstrap/internal/klp_application_adapters.dart:5](../../../../../../lib/src/application/bootstrap/internal/klp_application_adapters.dart#L5) |
+| import | <code>import &#x27;package:kallopis/src/features/editing/adapters/klp_anchored_commands_adapter.dart&#x27;;</code> | [lib/src/application/bootstrap/internal/klp_application_adapters.dart:6](../../../../../../lib/src/application/bootstrap/internal/klp_application_adapters.dart#L6) |
+| import | <code>import &#x27;package:kallopis/src/features/editing/adapters/klp_mode_toolbar_adapter.dart&#x27;;</code> | [lib/src/application/bootstrap/internal/klp_application_adapters.dart:7](../../../../../../lib/src/application/bootstrap/internal/klp_application_adapters.dart#L7) |
+| import | <code>import &#x27;package:kallopis/src/features/navigation/rail/adapters/klp_rail_adapter.dart&#x27;;</code> | [lib/src/application/bootstrap/internal/klp_application_adapters.dart:8](../../../../../../lib/src/application/bootstrap/internal/klp_application_adapters.dart#L8) |
+| import | <code>import &#x27;package:kallopis/src/features/workspace/layout/adapters/klp_app_layout_adapter.dart&#x27;;</code> | [lib/src/application/bootstrap/internal/klp_application_adapters.dart:9](../../../../../../lib/src/application/bootstrap/internal/klp_application_adapters.dart#L9) |
+| import | <code>import &#x27;package:kallopis/src/features/workspace/layout/adapters/klp_frame_groups_adapter.dart&#x27;;</code> | [lib/src/application/bootstrap/internal/klp_application_adapters.dart:10](../../../../../../lib/src/application/bootstrap/internal/klp_application_adapters.dart#L10) |
+| import | <code>import &#x27;package:kallopis/src/features/workspace/components/adapters/klp_workspace_components_adapter.dart&#x27;;</code> | [lib/src/application/bootstrap/internal/klp_application_adapters.dart:11](../../../../../../lib/src/application/bootstrap/internal/klp_application_adapters.dart#L11) |
+| import | <code>import &#x27;package:kallopis/src/features/workspace/components/adapters/klp_workspace_block_adapter.dart&#x27;;</code> | [lib/src/application/bootstrap/internal/klp_application_adapters.dart:12](../../../../../../lib/src/application/bootstrap/internal/klp_application_adapters.dart#L12) |
+| import | <code>import &#x27;package:kallopis/src/runtime/contracts/klp_node_adapter.dart&#x27;;</code> | [lib/src/application/bootstrap/internal/klp_application_adapters.dart:13](../../../../../../lib/src/application/bootstrap/internal/klp_application_adapters.dart#L13) |
+| import | <code>import &#x27;package:kallopis/src/runtime/compilation/klp_scope_boundary_adapter.dart&#x27;;</code> | [lib/src/application/bootstrap/internal/klp_application_adapters.dart:14](../../../../../../lib/src/application/bootstrap/internal/klp_application_adapters.dart#L14) |
+| import | <code>import &#x27;klp_screen_adapter.dart&#x27;;</code> | [lib/src/application/bootstrap/internal/klp_application_adapters.dart:15](../../../../../../lib/src/application/bootstrap/internal/klp_application_adapters.dart#L15) |
+| import | <code>import &#x27;klp_retained_screens_adapter.dart&#x27;;</code> | [lib/src/application/bootstrap/internal/klp_application_adapters.dart:16](../../../../../../lib/src/application/bootstrap/internal/klp_application_adapters.dart#L16) |
 
 ## 宣告關係圖
 
@@ -49,9 +81,9 @@ flowchart LR
 
 ### klpApplicationAdapters
 
-FunctionDeclaration · public · [lib/src/application/bootstrap/internal/klp_application_adapters.dart:9](../../../../../../lib/src/application/bootstrap/internal/klp_application_adapters.dart#L9)
+FunctionDeclaration · public · [lib/src/application/bootstrap/internal/klp_application_adapters.dart:18](../../../../../../lib/src/application/bootstrap/internal/klp_application_adapters.dart#L18)
 
-<code>List&lt;KlpNodeAdapter&gt; klpApplicationAdapters(KlpApplication application)</code>
+<code>List&lt;KlpNodeAdapter&gt; klpApplicationAdapters()</code>
 
 來源註解摘要：功能註冊集中在組合根，執行核心不反向認識個別功能。
 

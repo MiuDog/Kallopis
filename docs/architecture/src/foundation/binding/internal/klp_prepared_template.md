@@ -11,9 +11,9 @@
 ```mermaid
 flowchart LR
 	n0["klp_prepared_template.dart"]
-	n1["../../../styling/primitives/klp_style_value.dart"]
-	n2["../../templates/klp_axis.dart"]
-	n3["klp_bound_template.dart"]
+	n1["package:kallopis/src/styling/primitives/klp_style_value.dart"]
+	n2["package:kallopis/src/foundation/templates/klp_axis.dart"]
+	n3["../contracts/klp_bound_template.dart"]
 	n4["klp_prepared_value.dart"]
 	n5["klp_prepared_linear.dart"]
 	n6["klp_prepared_surface.dart"]
@@ -31,9 +31,9 @@ flowchart LR
 
 | 關係 | 原始 directive | 來源 |
 |---|---|---|
-| import | <code>import &#x27;../../../styling/primitives/klp_style_value.dart&#x27;;</code> | [lib/src/foundation/binding/internal/klp_prepared_template.dart:1](../../../../../../lib/src/foundation/binding/internal/klp_prepared_template.dart#L1) |
-| import | <code>import &#x27;../../templates/klp_axis.dart&#x27;;</code> | [lib/src/foundation/binding/internal/klp_prepared_template.dart:2](../../../../../../lib/src/foundation/binding/internal/klp_prepared_template.dart#L2) |
-| import | <code>import &#x27;klp_bound_template.dart&#x27;;</code> | [lib/src/foundation/binding/internal/klp_prepared_template.dart:3](../../../../../../lib/src/foundation/binding/internal/klp_prepared_template.dart#L3) |
+| import | <code>import &#x27;package:kallopis/src/styling/primitives/klp_style_value.dart&#x27;;</code> | [lib/src/foundation/binding/internal/klp_prepared_template.dart:1](../../../../../../lib/src/foundation/binding/internal/klp_prepared_template.dart#L1) |
+| import | <code>import &#x27;package:kallopis/src/foundation/templates/klp_axis.dart&#x27;;</code> | [lib/src/foundation/binding/internal/klp_prepared_template.dart:2](../../../../../../lib/src/foundation/binding/internal/klp_prepared_template.dart#L2) |
+| import | <code>import &#x27;../contracts/klp_bound_template.dart&#x27;;</code> | [lib/src/foundation/binding/internal/klp_prepared_template.dart:3](../../../../../../lib/src/foundation/binding/internal/klp_prepared_template.dart#L3) |
 | part | <code>part &#x27;klp_prepared_value.dart&#x27;;</code> | [lib/src/foundation/binding/internal/klp_prepared_template.dart:5](../../../../../../lib/src/foundation/binding/internal/klp_prepared_template.dart#L5) |
 | part | <code>part &#x27;klp_prepared_linear.dart&#x27;;</code> | [lib/src/foundation/binding/internal/klp_prepared_template.dart:6](../../../../../../lib/src/foundation/binding/internal/klp_prepared_template.dart#L6) |
 | part | <code>part &#x27;klp_prepared_surface.dart&#x27;;</code> | [lib/src/foundation/binding/internal/klp_prepared_template.dart:7](../../../../../../lib/src/foundation/binding/internal/klp_prepared_template.dart#L7) |

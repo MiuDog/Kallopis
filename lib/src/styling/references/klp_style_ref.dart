@@ -1,7 +1,7 @@
-import '../primitives/klp_primitive_index.dart';
-import '../primitives/klp_style_kind.dart';
-import '../primitives/klp_style_value.dart';
-import '../semantics/klp_semantic_key.dart';
+import 'package:kallopis/src/styling/primitives/klp_primitive_index.dart';
+import 'package:kallopis/src/styling/primitives/klp_style_kind.dart';
+import 'package:kallopis/src/styling/primitives/klp_style_value.dart';
+import 'package:kallopis/src/styling/semantics/klp_semantic_key.dart';
 
 part 'klp_primitive_ref.dart';
 part 'klp_semantic_ref.dart';

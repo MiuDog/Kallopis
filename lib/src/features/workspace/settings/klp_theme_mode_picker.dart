@@ -1,8 +1,8 @@
 import 'package:flutter/widgets.dart';
 
-import '../../../foundation/layout/klp_space_size.dart';
-import '../../../foundation/layout/klp_wrap.dart';
-import '../shell/theme/klp_theme_preview_tile.dart';
+import 'package:kallopis/src/foundation/layout/klp_space_size.dart';
+import 'package:kallopis/src/foundation/layout/klp_wrap.dart';
+import 'package:kallopis/src/features/workspace/shell/theme/klp_theme_preview_tile.dart';
 import 'klp_theme_mode_option.dart';
 
 export 'klp_theme_mode_option.dart';

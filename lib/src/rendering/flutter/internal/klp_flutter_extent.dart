@@ -2,9 +2,9 @@ import 'dart:math' as math;
 
 import 'package:flutter/widgets.dart';
 
-import '../../../foundation/binding/internal/klp_bound_template.dart';
-import '../../../foundation/templates/klp_axis.dart';
-import 'klp_flutter_renderer.dart';
+import 'package:kallopis/src/foundation/binding/contracts/klp_bound_template.dart';
+import 'package:kallopis/src/foundation/templates/klp_axis.dart';
+import '../klp_flutter_renderer.dart';
 
 /// 以方向起點承接父層配置，再限制子內容的指定方向尺寸。
 final class KlpFlutterExtent extends StatelessWidget {

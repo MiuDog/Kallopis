@@ -12,8 +12,8 @@
 flowchart LR
 	n0["klp_split_layout.dart"]
 	n1["package:flutter/widgets.dart"]
-	n2["../surface/klp_dashed_border.dart"]
-	n3["../../styling/legacy_theme/klp_theme.dart"]
+	n2["package:kallopis/src/foundation/surface/klp_dashed_border.dart"]
+	n3["package:kallopis/src/styling/legacy_theme/klp_theme.dart"]
 	n4["klp_expanded.dart"]
 	n5["klp_gap.dart"]
 	n6["klp_row.dart"]
@@ -38,8 +38,8 @@ flowchart LR
 | 關係 | 原始 directive | 來源 |
 |---|---|---|
 | import | <code>import &#x27;package:flutter/widgets.dart&#x27;;</code> | [lib/src/foundation/layout/klp_split_layout.dart:1](../../../../../lib/src/foundation/layout/klp_split_layout.dart#L1) |
-| import | <code>import &#x27;../surface/klp_dashed_border.dart&#x27;;</code> | [lib/src/foundation/layout/klp_split_layout.dart:3](../../../../../lib/src/foundation/layout/klp_split_layout.dart#L3) |
-| import | <code>import &#x27;../../styling/legacy_theme/klp_theme.dart&#x27;;</code> | [lib/src/foundation/layout/klp_split_layout.dart:4](../../../../../lib/src/foundation/layout/klp_split_layout.dart#L4) |
+| import | <code>import &#x27;package:kallopis/src/foundation/surface/klp_dashed_border.dart&#x27;;</code> | [lib/src/foundation/layout/klp_split_layout.dart:3](../../../../../lib/src/foundation/layout/klp_split_layout.dart#L3) |
+| import | <code>import &#x27;package:kallopis/src/styling/legacy_theme/klp_theme.dart&#x27;;</code> | [lib/src/foundation/layout/klp_split_layout.dart:4](../../../../../lib/src/foundation/layout/klp_split_layout.dart#L4) |
 | import | <code>import &#x27;klp_expanded.dart&#x27;;</code> | [lib/src/foundation/layout/klp_split_layout.dart:5](../../../../../lib/src/foundation/layout/klp_split_layout.dart#L5) |
 | import | <code>import &#x27;klp_gap.dart&#x27;;</code> | [lib/src/foundation/layout/klp_split_layout.dart:6](../../../../../lib/src/foundation/layout/klp_split_layout.dart#L6) |
 | import | <code>import &#x27;klp_row.dart&#x27;;</code> | [lib/src/foundation/layout/klp_split_layout.dart:7](../../../../../lib/src/foundation/layout/klp_split_layout.dart#L7) |

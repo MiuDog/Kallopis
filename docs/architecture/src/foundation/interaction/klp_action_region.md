@@ -12,7 +12,7 @@
 flowchart LR
 	n0["klp_action_region.dart"]
 	n1["package:flutter/material.dart"]
-	n2["../../styling/legacy_theme/klp_theme.dart"]
+	n2["package:kallopis/src/styling/legacy_theme/klp_theme.dart"]
 	n3["klp_action_region_shape.dart"]
 	n4["klp_action_region_style.dart"]
 	n5["klp_action_region_tone.dart"]
@@ -30,7 +30,7 @@ flowchart LR
 | 關係 | 原始 directive | 來源 |
 |---|---|---|
 | import | <code>import &#x27;package:flutter/material.dart&#x27;;</code> | [lib/src/foundation/interaction/klp_action_region.dart:1](../../../../../lib/src/foundation/interaction/klp_action_region.dart#L1) |
-| import | <code>import &#x27;../../styling/legacy_theme/klp_theme.dart&#x27;;</code> | [lib/src/foundation/interaction/klp_action_region.dart:3](../../../../../lib/src/foundation/interaction/klp_action_region.dart#L3) |
+| import | <code>import &#x27;package:kallopis/src/styling/legacy_theme/klp_theme.dart&#x27;;</code> | [lib/src/foundation/interaction/klp_action_region.dart:3](../../../../../lib/src/foundation/interaction/klp_action_region.dart#L3) |
 | import | <code>import &#x27;klp_action_region_shape.dart&#x27;;</code> | [lib/src/foundation/interaction/klp_action_region.dart:4](../../../../../lib/src/foundation/interaction/klp_action_region.dart#L4) |
 | import | <code>import &#x27;klp_action_region_style.dart&#x27;;</code> | [lib/src/foundation/interaction/klp_action_region.dart:5](../../../../../lib/src/foundation/interaction/klp_action_region.dart#L5) |
 | import | <code>import &#x27;klp_action_region_tone.dart&#x27;;</code> | [lib/src/foundation/interaction/klp_action_region.dart:6](../../../../../lib/src/foundation/interaction/klp_action_region.dart#L6) |

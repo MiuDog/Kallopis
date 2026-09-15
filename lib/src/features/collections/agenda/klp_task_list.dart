@@ -3,10 +3,10 @@ library;
 
 import 'package:flutter/widgets.dart';
 
-import '../../forms/selection/klp_checkbox.dart';
-import '../../../foundation/layout/klp_layout.dart';
-import '../../../styling/legacy_theme/klp_theme.dart';
-import '../../../foundation/content/klp_text.dart';
+import 'package:kallopis/src/features/forms/selection/klp_checkbox.dart';
+import 'package:kallopis/src/foundation/layout/klp_layout.dart';
+import 'package:kallopis/src/styling/legacy_theme/klp_theme.dart';
+import 'package:kallopis/src/foundation/content/klp_text.dart';
 import 'klp_task_item_data.dart';
 
 /// 帶有核取狀態與輔助資訊的待辦清單。

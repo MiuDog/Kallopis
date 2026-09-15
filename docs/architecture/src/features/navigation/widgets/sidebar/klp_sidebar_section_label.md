@@ -12,8 +12,8 @@
 flowchart TD
 	n0["klp_sidebar_section_label.dart"]
 	n1["package:flutter/widgets.dart"]
-	n2["../../../../styling/legacy_theme/klp_theme.dart"]
-	n3["../../../../foundation/content/klp_text.dart"]
+	n2["package:kallopis/src/styling/legacy_theme/klp_theme.dart"]
+	n3["package:kallopis/src/foundation/content/klp_text.dart"]
 	n0 -->|"import"| n1
 	n0 -->|"import"| n2
 	n0 -->|"import"| n3
@@ -24,8 +24,8 @@ flowchart TD
 | 關係 | 原始 directive | 來源 |
 |---|---|---|
 | import | <code>import &#x27;package:flutter/widgets.dart&#x27;;</code> | [lib/src/features/navigation/widgets/sidebar/klp_sidebar_section_label.dart:1](../../../../../../../lib/src/features/navigation/widgets/sidebar/klp_sidebar_section_label.dart#L1) |
-| import | <code>import &#x27;../../../../styling/legacy_theme/klp_theme.dart&#x27;;</code> | [lib/src/features/navigation/widgets/sidebar/klp_sidebar_section_label.dart:3](../../../../../../../lib/src/features/navigation/widgets/sidebar/klp_sidebar_section_label.dart#L3) |
-| import | <code>import &#x27;../../../../foundation/content/klp_text.dart&#x27;;</code> | [lib/src/features/navigation/widgets/sidebar/klp_sidebar_section_label.dart:4](../../../../../../../lib/src/features/navigation/widgets/sidebar/klp_sidebar_section_label.dart#L4) |
+| import | <code>import &#x27;package:kallopis/src/styling/legacy_theme/klp_theme.dart&#x27;;</code> | [lib/src/features/navigation/widgets/sidebar/klp_sidebar_section_label.dart:3](../../../../../../../lib/src/features/navigation/widgets/sidebar/klp_sidebar_section_label.dart#L3) |
+| import | <code>import &#x27;package:kallopis/src/foundation/content/klp_text.dart&#x27;;</code> | [lib/src/features/navigation/widgets/sidebar/klp_sidebar_section_label.dart:4](../../../../../../../lib/src/features/navigation/widgets/sidebar/klp_sidebar_section_label.dart#L4) |
 
 ## 宣告關係圖
 

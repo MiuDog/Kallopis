@@ -1,8 +1,8 @@
-import '../internal/klp_form_dependencies.dart';
-import '../internal/klp_input_frame.dart';
-import '../internal/primitives/klp_input_action.dart';
-import '../internal/primitives/klp_input_editor.dart';
-import '../internal/primitives/klp_input_segment_divider.dart';
+import 'package:kallopis/src/features/forms/internal/klp_form_dependencies.dart';
+import 'package:kallopis/src/features/forms/internal/klp_input_frame.dart';
+import 'package:kallopis/src/features/forms/internal/primitives/klp_input_action.dart';
+import 'package:kallopis/src/features/forms/internal/primitives/klp_input_editor.dart';
+import 'package:kallopis/src/features/forms/internal/primitives/klp_input_segment_divider.dart';
 
 /// 在文字輸入旁提供不可編輯前綴與尾端語意動作。
 class KlpAffixedTextField extends StatelessWidget {

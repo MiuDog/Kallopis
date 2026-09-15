@@ -11,7 +11,7 @@
 ```mermaid
 flowchart TD
 	n0["klp_file_field.dart"]
-	n1["../internal/klp_form_dependencies.dart"]
+	n1["package:kallopis/src/features/forms/internal/klp_form_dependencies.dart"]
 	n2["internal/klp_file_field_widget.dart"]
 	n3["internal/klp_file_value.dart"]
 	n0 -->|"import"| n1
@@ -23,7 +23,7 @@ flowchart TD
 
 | 關係 | 原始 directive | 來源 |
 |---|---|---|
-| import | <code>import &#x27;../internal/klp_form_dependencies.dart&#x27;;</code> | [lib/src/features/forms/structured/klp_file_field.dart:1](../../../../../../lib/src/features/forms/structured/klp_file_field.dart#L1) |
+| import | <code>import &#x27;package:kallopis/src/features/forms/internal/klp_form_dependencies.dart&#x27;;</code> | [lib/src/features/forms/structured/klp_file_field.dart:1](../../../../../../lib/src/features/forms/structured/klp_file_field.dart#L1) |
 | part | <code>part &#x27;internal/klp_file_field_widget.dart&#x27;;</code> | [lib/src/features/forms/structured/klp_file_field.dart:3](../../../../../../lib/src/features/forms/structured/klp_file_field.dart#L3) |
 | part | <code>part &#x27;internal/klp_file_value.dart&#x27;;</code> | [lib/src/features/forms/structured/klp_file_field.dart:4](../../../../../../lib/src/features/forms/structured/klp_file_field.dart#L4) |
 

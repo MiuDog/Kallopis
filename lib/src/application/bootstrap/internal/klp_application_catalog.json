@@ -1,0 +1,250 @@
+{
+	"schema_version": 1,
+	"feature_manifest": "lib/src/features/catalog/component-ownership.json",
+	"structural_components": [
+		{
+			"definition_id": "kallopis.scopeBoundary",
+			"declaration_symbol": "KlpScopeBoundary",
+			"declaration_path": "lib/src/composition/nodes/klp_scope_boundary.dart",
+			"owner_module": "composition",
+			"level": "L2",
+			"visibility": "internal",
+			"semantic_owner": "kallopis.scopeBoundary",
+			"qualifications": [
+				"KlpCompositeNode"
+			],
+			"slots": [
+				{
+					"name": "child",
+					"owner": "kallopis.scopeBoundary",
+					"child_type": "KlpNode",
+					"min": 1,
+					"max": 1
+				}
+			],
+			"adapter": {
+				"symbol": "KlpScopeBoundaryAdapter",
+				"source_path": "lib/src/runtime/compilation/klp_scope_boundary_adapter.dart",
+				"factory": "KlpScopeBoundaryAdapter()",
+				"variant": null
+			}
+		},
+		{
+			"definition_id": "kallopis.retainedScreens",
+			"declaration_symbol": "KlpRetainedScreens",
+			"declaration_path": "lib/src/application/structure/internal/klp_retained_screens.dart",
+			"owner_module": "application",
+			"level": "L7",
+			"visibility": "internal",
+			"semantic_owner": "kallopis.retainedScreens",
+			"qualifications": [
+				"KlpCompositeNode"
+			],
+			"slots": [
+				{
+					"name": "entries",
+					"owner": "kallopis.retainedScreens",
+					"child_type": "KlpScopeBoundary",
+					"min": 1,
+					"max": null
+				}
+			],
+			"adapter": {
+				"symbol": "KlpRetainedScreensAdapter",
+				"source_path": "lib/src/application/bootstrap/internal/klp_retained_screens_adapter.dart",
+				"factory": "KlpRetainedScreensAdapter()",
+				"variant": null
+			}
+		},
+		{
+			"definition_id": "kallopis.screen",
+			"declaration_symbol": "KlpScreen",
+			"declaration_path": "lib/src/application/structure/klp_screen.dart",
+			"owner_module": "application",
+			"level": "L7",
+			"visibility": "public",
+			"semantic_owner": "kallopis.screen",
+			"qualifications": [
+				"KlpCompositeNode"
+			],
+			"slots": [
+				{
+					"name": "body",
+					"owner": "kallopis.screen",
+					"child_type": "KlpScreenBody",
+					"min": 1,
+					"max": 1
+				}
+			],
+			"adapter": {
+				"symbol": "KlpScreenAdapter",
+				"source_path": "lib/src/application/bootstrap/internal/klp_screen_adapter.dart",
+				"factory": "KlpScreenAdapter()",
+				"variant": null
+			}
+		},
+		{
+			"definition_id": "kallopis.adaptive",
+			"declaration_symbol": "KlpAdaptive",
+			"declaration_path": "lib/src/composition/nodes/klp_adaptive.dart",
+			"owner_module": "composition",
+			"level": "L2",
+			"visibility": "public",
+			"semantic_owner": "kallopis.adaptive",
+			"qualifications": [
+				"KlpCompositeNode",
+				"KlpScreenBody"
+			],
+			"slots": [
+				{
+					"name": "fallback",
+					"owner": "kallopis.adaptive",
+					"child_type": "KlpCompositeNode",
+					"min": 1,
+					"max": 1
+				}
+			],
+			"adapter": {
+				"symbol": "KlpAdaptiveAdapter",
+				"source_path": "lib/src/runtime/compilation/klp_adaptive_adapter.dart",
+				"factory": "KlpAdaptiveAdapter()",
+				"variant": null
+			}
+		}
+	],
+	"assembly": [
+		{
+			"adapter_symbol": "KlpScopeBoundaryAdapter",
+			"adapter_path": "lib/src/runtime/compilation/klp_scope_boundary_adapter.dart",
+			"factory": "KlpScopeBoundaryAdapter()",
+			"definition_ids": [
+				"kallopis.scopeBoundary"
+			]
+		},
+		{
+			"adapter_symbol": "KlpRetainedScreensAdapter",
+			"adapter_path": "lib/src/application/bootstrap/internal/klp_retained_screens_adapter.dart",
+			"factory": "KlpRetainedScreensAdapter()",
+			"definition_ids": [
+				"kallopis.retainedScreens"
+			]
+		},
+		{
+			"adapter_symbol": "KlpScreenAdapter",
+			"adapter_path": "lib/src/application/bootstrap/internal/klp_screen_adapter.dart",
+			"factory": "KlpScreenAdapter()",
+			"definition_ids": [
+				"kallopis.screen"
+			]
+		},
+		{
+			"adapter_symbol": "KlpAdaptiveAdapter",
+			"adapter_path": "lib/src/runtime/compilation/klp_adaptive_adapter.dart",
+			"factory": "KlpAdaptiveAdapter()",
+			"definition_ids": [
+				"kallopis.adaptive"
+			]
+		},
+		{
+			"adapter_symbol": "KlpEditingAdapter",
+			"adapter_path": "lib/src/features/editing/adapters/klp_editing_adapter.dart",
+			"factory": "KlpEditingAdapter()",
+			"definition_ids": [
+				"kallopis.editing"
+			]
+		},
+		{
+			"adapter_symbol": "KlpBlockNoteEditingAdapter",
+			"adapter_path": "lib/src/features/editing/adapters/klp_block_note_editing_adapter.dart",
+			"factory": "KlpBlockNoteEditingAdapter()",
+			"definition_ids": [
+				"kallopis.blockNoteEditing"
+			]
+		},
+		{
+			"adapter_symbol": "KlpCanvaEditingAdapter",
+			"adapter_path": "lib/src/features/editing/adapters/klp_canva_editing_adapter.dart",
+			"factory": "KlpCanvaEditingAdapter()",
+			"definition_ids": [
+				"kallopis.canvaEditing"
+			]
+		},
+		{
+			"adapter_symbol": "KlpBlockControlsAdapter",
+			"adapter_path": "lib/src/features/editing/adapters/klp_block_controls_adapter.dart",
+			"factory": "KlpBlockControlsAdapter()",
+			"definition_ids": [
+				"kallopis.block-controls"
+			]
+		},
+		{
+			"adapter_symbol": "KlpAnchoredCommandsAdapter",
+			"adapter_path": "lib/src/features/editing/adapters/klp_anchored_commands_adapter.dart",
+			"factory": "KlpAnchoredCommandsAdapter()",
+			"definition_ids": [
+				"kallopis.anchored-commands"
+			]
+		},
+		{
+			"adapter_symbol": "KlpModeToolbarAdapter",
+			"adapter_path": "lib/src/features/editing/adapters/klp_mode_toolbar_adapter.dart",
+			"factory": "KlpModeToolbarAdapter()",
+			"definition_ids": [
+				"kallopis.editing.modeToolbar"
+			]
+		},
+		{
+			"adapter_symbol": "KlpRailAdapter",
+			"adapter_path": "lib/src/features/navigation/rail/adapters/klp_rail_adapter.dart",
+			"factory": "KlpRailAdapter()",
+			"definition_ids": [
+				"kallopis.rail"
+			]
+		},
+		{
+			"adapter_symbol": "KlpWorkspaceComponentsAdapter",
+			"adapter_path": "lib/src/features/workspace/components/adapters/klp_workspace_components_adapter.dart",
+			"factory": "KlpWorkspaceComponentsAdapter.createAll()",
+			"definition_ids": [
+				"kallopis.explorer",
+				"kallopis.explorer_item",
+				"kallopis.document_tabs",
+				"kallopis.document_tab",
+				"kallopis.window_controls"
+			]
+		},
+		{
+			"adapter_symbol": "KlpWorkspaceBlockAdapter",
+			"adapter_path": "lib/src/features/workspace/components/adapters/klp_workspace_block_adapter.dart",
+			"factory": "KlpWorkspaceBlockAdapter.createAll()",
+			"definition_ids": [
+				"kallopis.workspace_block",
+				"kallopis.workspace_content",
+				"kallopis.workspace_content_block"
+			]
+		},
+		{
+			"adapter_symbol": "KlpAppLayoutAdapter",
+			"adapter_path": "lib/src/features/workspace/layout/adapters/klp_app_layout_adapter.dart",
+			"factory": "KlpAppLayoutAdapter.createAll()",
+			"definition_ids": [
+				"kallopis.app_layout",
+				"kallopis.layout_row",
+				"kallopis.layout_column",
+				"kallopis.layout_resize_handle",
+				"kallopis.layout_spacer",
+				"kallopis.layout_pane",
+				"kallopis.app_frame"
+			]
+		},
+		{
+			"adapter_symbol": "KlpFrameGroupsAdapter",
+			"adapter_path": "lib/src/features/workspace/layout/adapters/klp_frame_groups_adapter.dart",
+			"factory": "KlpFrameGroupsAdapter.createAll()",
+			"definition_ids": [
+				"kallopis.frame_groups",
+				"kallopis.frame_group"
+			]
+		}
+	]
+}

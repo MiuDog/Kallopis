@@ -1,12 +1,12 @@
 import 'package:flutter/widgets.dart';
 
-import '../../../feedback/klp_status_indicator.dart';
-import '../../../../foundation/layout/klp_box.dart';
-import '../../../../foundation/layout/klp_column.dart';
-import '../../../../foundation/layout/klp_expanded.dart';
-import '../../../../foundation/layout/klp_gap.dart';
-import '../../../../foundation/layout/klp_space_size.dart';
-import '../status/klp_status_data.dart';
+import 'package:kallopis/src/features/feedback/klp_status_indicator.dart';
+import 'package:kallopis/src/foundation/layout/klp_box.dart';
+import 'package:kallopis/src/foundation/layout/klp_column.dart';
+import 'package:kallopis/src/foundation/layout/klp_expanded.dart';
+import 'package:kallopis/src/foundation/layout/klp_gap.dart';
+import 'package:kallopis/src/foundation/layout/klp_space_size.dart';
+import 'package:kallopis/src/features/workspace/shell/status/klp_status_data.dart';
 import 'klp_primary_sidebar_header_inset.dart';
 import 'klp_sidebar_frame.dart';
 

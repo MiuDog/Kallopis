@@ -48,18 +48,16 @@ ClassDeclaration · private · [lib/src/application/legacy/klp_app_frame.dart:3]
 
 <code>class _KlpAppFrame extends StatelessWidget</code>
 
-來源註解摘要：鋪設 App background，並以 appFrameInset 包住 Header 與產品主內容。
+來源註解摘要：鋪設 App background，不帶預設 padding 與 header，由消費端或 Layout 自行負責排版。
 
 - `extends` → <code>StatelessWidget</code>：[lib/src/application/legacy/klp_app_frame.dart:4](../../../../../lib/src/application/legacy/klp_app_frame.dart#L4)
 
 | 成員 | 可見性 | 簽章／型別 | 來源註解摘要 | 證據 |
 |---|---|---|---|---|
-| constructor <code>_KlpAppFrame</code> | private | <code>const _KlpAppFrame({ required this.header, required this.body, required this.toolbarHeight, this.popup, })</code> |  | [lib/src/application/legacy/klp_app_frame.dart:5](../../../../../lib/src/application/legacy/klp_app_frame.dart#L5) |
-| field <code>header</code> | public | <code>final Widget? header</code> |  | [lib/src/application/legacy/klp_app_frame.dart:12](../../../../../lib/src/application/legacy/klp_app_frame.dart#L12) |
-| field <code>body</code> | public | <code>final Widget body</code> |  | [lib/src/application/legacy/klp_app_frame.dart:13](../../../../../lib/src/application/legacy/klp_app_frame.dart#L13) |
-| field <code>toolbarHeight</code> | public | <code>final double toolbarHeight</code> |  | [lib/src/application/legacy/klp_app_frame.dart:14](../../../../../lib/src/application/legacy/klp_app_frame.dart#L14) |
-| field <code>popup</code> | public | <code>final KlpPopupBackground? popup</code> |  | [lib/src/application/legacy/klp_app_frame.dart:15](../../../../../lib/src/application/legacy/klp_app_frame.dart#L15) |
-| method <code>build</code> | public | <code>Widget build(BuildContext context)</code> |  | [lib/src/application/legacy/klp_app_frame.dart:17](../../../../../lib/src/application/legacy/klp_app_frame.dart#L17) |
+| constructor <code>_KlpAppFrame</code> | private | <code>const _KlpAppFrame({ required this.body, this.popup, })</code> |  | [lib/src/application/legacy/klp_app_frame.dart:5](../../../../../lib/src/application/legacy/klp_app_frame.dart#L5) |
+| field <code>body</code> | public | <code>final Widget body</code> |  | [lib/src/application/legacy/klp_app_frame.dart:10](../../../../../lib/src/application/legacy/klp_app_frame.dart#L10) |
+| field <code>popup</code> | public | <code>final KlpPopupBackground? popup</code> |  | [lib/src/application/legacy/klp_app_frame.dart:11](../../../../../lib/src/application/legacy/klp_app_frame.dart#L11) |
+| method <code>build</code> | public | <code>Widget build(BuildContext context)</code> |  | [lib/src/application/legacy/klp_app_frame.dart:13](../../../../../lib/src/application/legacy/klp_app_frame.dart#L13) |
 
 ## 閱讀說明與限制
 

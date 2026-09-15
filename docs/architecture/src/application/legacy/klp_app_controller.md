@@ -12,7 +12,7 @@
 flowchart TD
 	n0["klp_app_controller.dart"]
 	n1["package:flutter/material.dart"]
-	n2["../../foundation/interaction/keybinding/klp_key_binding_controller.dart"]
+	n2["package:kallopis/src/foundation/interaction/keybinding/klp_key_binding_controller.dart"]
 	n0 -->|"import"| n1
 	n0 -->|"import"| n2
 ```
@@ -22,7 +22,7 @@ flowchart TD
 | 關係 | 原始 directive | 來源 |
 |---|---|---|
 | import | <code>import &#x27;package:flutter/material.dart&#x27;;</code> | [lib/src/application/legacy/klp_app_controller.dart:1](../../../../../lib/src/application/legacy/klp_app_controller.dart#L1) |
-| import | <code>import &#x27;../../foundation/interaction/keybinding/klp_key_binding_controller.dart&#x27;;</code> | [lib/src/application/legacy/klp_app_controller.dart:3](../../../../../lib/src/application/legacy/klp_app_controller.dart#L3) |
+| import | <code>import &#x27;package:kallopis/src/foundation/interaction/keybinding/klp_key_binding_controller.dart&#x27;;</code> | [lib/src/application/legacy/klp_app_controller.dart:3](../../../../../lib/src/application/legacy/klp_app_controller.dart#L3) |
 
 ## 宣告關係圖
 

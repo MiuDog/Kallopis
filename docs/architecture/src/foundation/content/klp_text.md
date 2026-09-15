@@ -12,8 +12,8 @@
 flowchart LR
 	n0["klp_text.dart"]
 	n1["package:flutter/widgets.dart"]
-	n2["../../styling/legacy_theme/klp_theme.dart"]
-	n3["../../styling/legacy_theme/klp_typography_theme.dart"]
+	n2["package:kallopis/src/styling/legacy_theme/klp_theme.dart"]
+	n3["package:kallopis/src/styling/legacy_theme/klp_typography_theme.dart"]
 	n4["klp_font_role.dart"]
 	n5["klp_text_color_tier.dart"]
 	n6["klp_text_role.dart"]
@@ -53,8 +53,8 @@ flowchart LR
 | 關係 | 原始 directive | 來源 |
 |---|---|---|
 | import | <code>import &#x27;package:flutter/widgets.dart&#x27;;</code> | [lib/src/foundation/content/klp_text.dart:1](../../../../../lib/src/foundation/content/klp_text.dart#L1) |
-| import | <code>import &#x27;../../styling/legacy_theme/klp_theme.dart&#x27;;</code> | [lib/src/foundation/content/klp_text.dart:3](../../../../../lib/src/foundation/content/klp_text.dart#L3) |
-| import | <code>import &#x27;../../styling/legacy_theme/klp_typography_theme.dart&#x27;;</code> | [lib/src/foundation/content/klp_text.dart:4](../../../../../lib/src/foundation/content/klp_text.dart#L4) |
+| import | <code>import &#x27;package:kallopis/src/styling/legacy_theme/klp_theme.dart&#x27;;</code> | [lib/src/foundation/content/klp_text.dart:3](../../../../../lib/src/foundation/content/klp_text.dart#L3) |
+| import | <code>import &#x27;package:kallopis/src/styling/legacy_theme/klp_typography_theme.dart&#x27;;</code> | [lib/src/foundation/content/klp_text.dart:4](../../../../../lib/src/foundation/content/klp_text.dart#L4) |
 | import | <code>import &#x27;klp_font_role.dart&#x27;;</code> | [lib/src/foundation/content/klp_text.dart:5](../../../../../lib/src/foundation/content/klp_text.dart#L5) |
 | import | <code>import &#x27;klp_text_color_tier.dart&#x27;;</code> | [lib/src/foundation/content/klp_text.dart:6](../../../../../lib/src/foundation/content/klp_text.dart#L6) |
 | import | <code>import &#x27;klp_text_role.dart&#x27;;</code> | [lib/src/foundation/content/klp_text.dart:7](../../../../../lib/src/foundation/content/klp_text.dart#L7) |

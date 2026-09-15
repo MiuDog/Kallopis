@@ -10,36 +10,17 @@
 
 箭頭以本層 Dart 檔案明寫的 directive 彙總到目標所在目錄或外部套件邊界；不遞迴將子目錄依賴算入本層。相同目標的不同 directive 類型分開計數。
 
-```mermaid
-flowchart LR
-	n0["lib/src/foundation/interaction/internal"]
-	n1["lib/src/features/actions/button"]
-	n2["lib/src/foundation/content"]
-	n3["lib/src/foundation/interaction/controls"]
-	n4["lib/src/styling/legacy_theme"]
-	n5["package:flutter"]
-	n0 -->|"import"| n1
-	n0 -->|"import"| n2
-	n0 -->|"import"| n3
-	n0 -->|"import"| n4
-	n0 -->|"import"| n5
-```
+本層檔案未宣告跨目錄依賴；子目錄依賴請循下一層入口閱讀。
 
 | 目標邊界 | 關係 | directive 數 | 第一筆來源證據 |
 |---|---|---|---|
-| <code>lib/src/features/actions/button</code> | import | 1 | [lib/src/foundation/interaction/internal/klp_button_style.dart:5](../../../../../../lib/src/foundation/interaction/internal/klp_button_style.dart#L5) |
-| <code>lib/src/foundation/content</code> | import | 1 | [lib/src/foundation/interaction/internal/klp_button_style.dart:4](../../../../../../lib/src/foundation/interaction/internal/klp_button_style.dart#L4) |
-| <code>lib/src/foundation/interaction/controls</code> | import | 1 | [lib/src/foundation/interaction/internal/klp_button_style.dart:6](../../../../../../lib/src/foundation/interaction/internal/klp_button_style.dart#L6) |
-| <code>lib/src/styling/legacy_theme</code> | import | 1 | [lib/src/foundation/interaction/internal/klp_button_style.dart:3](../../../../../../lib/src/foundation/interaction/internal/klp_button_style.dart#L3) |
-| <code>package:flutter</code> | import | 1 | [lib/src/foundation/interaction/internal/klp_button_style.dart:1](../../../../../../lib/src/foundation/interaction/internal/klp_button_style.dart#L1) |
+| 無 | — | 0 | 來源清單見本層檔案 |
 
 ## 目錄結構圖
 
 ```mermaid
 flowchart TD
 	n0["lib/src/foundation/interaction/internal"]
-	n1["klp_button_style.dart"]
-	n0 -->|"contains"| n1
 ```
 
 ## 子目錄
@@ -52,7 +33,7 @@ flowchart TD
 
 | 檔案 | 宣告 | 細節 | 來源證據 |
 |---|---|---|---|
-| `klp_button_style.dart` | KlpButtonStyle | [架構與 API](klp_button_style.md) | [lib/src/foundation/interaction/internal/klp_button_style.dart:1](../../../../../../lib/src/foundation/interaction/internal/klp_button_style.dart#L1) |
+| 無 | 本層沒有 Dart 檔案 | — | — |
 
 ## 閱讀說明
 

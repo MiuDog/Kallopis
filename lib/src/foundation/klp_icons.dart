@@ -118,6 +118,7 @@ abstract final class KlpIcons {
   static const KlpIconData lock = KlpIconData(0xf8d5);
   static const KlpIconData sidebarLeft = panelLeft;
   static const KlpIconData sidebarRight = panelRight;
+  static const KlpIconData sidebar = sidebarLeft;
   static const KlpIconData close = x;
   static const KlpIconData chevronUp = KlpIconData(
     0xf156,

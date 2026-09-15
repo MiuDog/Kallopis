@@ -11,15 +11,18 @@
 ```mermaid
 flowchart TD
 	n0["klp_bound_component.dart"]
-	n1["klp_bound_template.dart"]
+	n1["package:kallopis/src/kernel/identity/klp_id.dart"]
+	n2["../contracts/klp_bound_template.dart"]
 	n0 -->|"import"| n1
+	n0 -->|"import"| n2
 ```
 
 ## 依賴證據
 
 | 關係 | 原始 directive | 來源 |
 |---|---|---|
-| import | <code>import &#x27;klp_bound_template.dart&#x27;;</code> | [lib/src/foundation/binding/internal/klp_bound_component.dart:1](../../../../../../lib/src/foundation/binding/internal/klp_bound_component.dart#L1) |
+| import | <code>import &#x27;package:kallopis/src/kernel/identity/klp_id.dart&#x27;;</code> | [lib/src/foundation/binding/internal/klp_bound_component.dart:1](../../../../../../lib/src/foundation/binding/internal/klp_bound_component.dart#L1) |
+| import | <code>import &#x27;../contracts/klp_bound_template.dart&#x27;;</code> | [lib/src/foundation/binding/internal/klp_bound_component.dart:2](../../../../../../lib/src/foundation/binding/internal/klp_bound_component.dart#L2) |
 
 ## 宣告關係圖
 
@@ -37,7 +40,7 @@ classDiagram
 
 ### KlpBoundComponent
 
-ClassDeclaration · public · [lib/src/foundation/binding/internal/klp_bound_component.dart:3](../../../../../../lib/src/foundation/binding/internal/klp_bound_component.dart#L3)
+ClassDeclaration · public · [lib/src/foundation/binding/internal/klp_bound_component.dart:4](../../../../../../lib/src/foundation/binding/internal/klp_bound_component.dart#L4)
 
 <code>final class KlpBoundComponent</code>
 
@@ -46,11 +49,11 @@ ClassDeclaration · public · [lib/src/foundation/binding/internal/klp_bound_com
 
 | 成員 | 可見性 | 簽章／型別 | 來源註解摘要 | 證據 |
 |---|---|---|---|---|
-| field <code>id</code> | public | <code>final String id</code> |  | [lib/src/foundation/binding/internal/klp_bound_component.dart:5](../../../../../../lib/src/foundation/binding/internal/klp_bound_component.dart#L5) |
-| field <code>definitionId</code> | public | <code>final String definitionId</code> |  | [lib/src/foundation/binding/internal/klp_bound_component.dart:6](../../../../../../lib/src/foundation/binding/internal/klp_bound_component.dart#L6) |
-| field <code>content</code> | public | <code>final KlpBoundTemplate content</code> |  | [lib/src/foundation/binding/internal/klp_bound_component.dart:7](../../../../../../lib/src/foundation/binding/internal/klp_bound_component.dart#L7) |
-| field <code>accessibilityLabel</code> | public | <code>final String? accessibilityLabel</code> |  | [lib/src/foundation/binding/internal/klp_bound_component.dart:8](../../../../../../lib/src/foundation/binding/internal/klp_bound_component.dart#L8) |
-| constructor <code>KlpBoundComponent</code> | public | <code>const KlpBoundComponent( this.id, this.definitionId, this.content, [ this.accessibilityLabel, ])</code> |  | [lib/src/foundation/binding/internal/klp_bound_component.dart:10](../../../../../../lib/src/foundation/binding/internal/klp_bound_component.dart#L10) |
+| field <code>id</code> | public | <code>final KlpId id</code> |  | [lib/src/foundation/binding/internal/klp_bound_component.dart:6](../../../../../../lib/src/foundation/binding/internal/klp_bound_component.dart#L6) |
+| field <code>definitionId</code> | public | <code>final String definitionId</code> |  | [lib/src/foundation/binding/internal/klp_bound_component.dart:7](../../../../../../lib/src/foundation/binding/internal/klp_bound_component.dart#L7) |
+| field <code>content</code> | public | <code>final KlpBoundTemplate content</code> |  | [lib/src/foundation/binding/internal/klp_bound_component.dart:8](../../../../../../lib/src/foundation/binding/internal/klp_bound_component.dart#L8) |
+| field <code>accessibilityLabel</code> | public | <code>final String? accessibilityLabel</code> |  | [lib/src/foundation/binding/internal/klp_bound_component.dart:9](../../../../../../lib/src/foundation/binding/internal/klp_bound_component.dart#L9) |
+| constructor <code>KlpBoundComponent</code> | public | <code>const KlpBoundComponent( this.id, this.definitionId, this.content, [ this.accessibilityLabel, ])</code> |  | [lib/src/foundation/binding/internal/klp_bound_component.dart:11](../../../../../../lib/src/foundation/binding/internal/klp_bound_component.dart#L11) |
 
 ## 閱讀說明與限制
 

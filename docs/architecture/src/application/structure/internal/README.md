@@ -16,8 +16,8 @@ flowchart LR
 	n1["lib/src/application/structure"]
 	n2["lib/src/composition/definitions"]
 	n3["lib/src/composition/nodes"]
-	n4["lib/src/composition/nodes/internal"]
-	n5["lib/src/composition/slots"]
+	n4["lib/src/composition/slots"]
+	n5["lib/src/kernel/identity"]
 	n0 -->|"import"| n1
 	n0 -->|"import"| n2
 	n0 -->|"import"| n3
@@ -27,11 +27,11 @@ flowchart LR
 
 | 目標邊界 | 關係 | directive 數 | 第一筆來源證據 |
 |---|---|---|---|
-| <code>lib/src/application/structure</code> | import | 1 | [lib/src/application/structure/internal/klp_retained_screens.dart:6](../../../../../../lib/src/application/structure/internal/klp_retained_screens.dart#L6) |
+| <code>lib/src/application/structure</code> | import | 1 | [lib/src/application/structure/internal/klp_retained_screens.dart:7](../../../../../../lib/src/application/structure/internal/klp_retained_screens.dart#L7) |
 | <code>lib/src/composition/definitions</code> | import | 1 | [lib/src/application/structure/internal/klp_retained_screens.dart:1](../../../../../../lib/src/application/structure/internal/klp_retained_screens.dart#L1) |
-| <code>lib/src/composition/nodes</code> | import | 1 | [lib/src/application/structure/internal/klp_retained_screens.dart:3](../../../../../../lib/src/application/structure/internal/klp_retained_screens.dart#L3) |
-| <code>lib/src/composition/nodes/internal</code> | import | 1 | [lib/src/application/structure/internal/klp_retained_screens.dart:2](../../../../../../lib/src/application/structure/internal/klp_retained_screens.dart#L2) |
+| <code>lib/src/composition/nodes</code> | import | 2 | [lib/src/application/structure/internal/klp_retained_screens.dart:2](../../../../../../lib/src/application/structure/internal/klp_retained_screens.dart#L2) |
 | <code>lib/src/composition/slots</code> | import | 2 | [lib/src/application/structure/internal/klp_retained_screens.dart:4](../../../../../../lib/src/application/structure/internal/klp_retained_screens.dart#L4) |
+| <code>lib/src/kernel/identity</code> | import | 1 | [lib/src/application/structure/internal/klp_retained_screens.dart:6](../../../../../../lib/src/application/structure/internal/klp_retained_screens.dart#L6) |
 
 ## 目錄結構圖
 

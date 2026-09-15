@@ -16,23 +16,11 @@
 |---|---|---|---|
 | 無 | — | 0 | 來源清單見本層檔案 |
 
-### 同目錄依賴
-
-| 來源 → 目標 | 關係 | 證據 |
-|---|---|---|
-| <code>klp_run_lifecycle_actions.dart → klp_lifecycle_exception.dart</code> | import | [lib/src/kernel/lifecycle/internal/klp_run_lifecycle_actions.dart:1](../../../../../../lib/src/kernel/lifecycle/internal/klp_run_lifecycle_actions.dart#L1) |
-
 ## 目錄結構圖
 
 ```mermaid
 flowchart TD
 	n0["lib/src/kernel/lifecycle/internal"]
-	n1["klp_frame_lease.dart"]
-	n2["klp_lifecycle_exception.dart"]
-	n3["klp_run_lifecycle_actions.dart"]
-	n0 -->|"contains"| n1
-	n0 -->|"contains"| n2
-	n0 -->|"contains"| n3
 ```
 
 ## 子目錄
@@ -45,9 +33,7 @@ flowchart TD
 
 | 檔案 | 宣告 | 細節 | 來源證據 |
 |---|---|---|---|
-| `klp_frame_lease.dart` | KlpFrameLease | [架構與 API](klp_frame_lease.md) | [lib/src/kernel/lifecycle/internal/klp_frame_lease.dart:1](../../../../../../lib/src/kernel/lifecycle/internal/klp_frame_lease.dart#L1) |
-| `klp_lifecycle_exception.dart` | KlpLifecycleException | [架構與 API](klp_lifecycle_exception.md) | [lib/src/kernel/lifecycle/internal/klp_lifecycle_exception.dart:1](../../../../../../lib/src/kernel/lifecycle/internal/klp_lifecycle_exception.dart#L1) |
-| `klp_run_lifecycle_actions.dart` | klpRunLifecycleActions | [架構與 API](klp_run_lifecycle_actions.md) | [lib/src/kernel/lifecycle/internal/klp_run_lifecycle_actions.dart:1](../../../../../../lib/src/kernel/lifecycle/internal/klp_run_lifecycle_actions.dart#L1) |
+| 無 | 本層沒有 Dart 檔案 | — | — |
 
 ## 閱讀說明
 

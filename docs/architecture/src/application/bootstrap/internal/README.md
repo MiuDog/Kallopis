@@ -19,11 +19,11 @@ flowchart LR
 	n4["lib/src/composition/definitions"]
 	n5["lib/src/composition/nodes"]
 	n6["lib/src/composition/validation"]
-	n7["lib/src/features/navigation/rail/internal"]
-	n8["lib/src/foundation/binding/internal"]
-	n9["lib/src/kernel/identity"]
-	n10["lib/src/kernel/lifecycle/internal"]
-	n11["lib/src/runtime/compilation/internal"]
+	n7["lib/src/features/editing/adapters"]
+	n8["lib/src/features/navigation/rail/adapters"]
+	n9["lib/src/features/workspace/components/adapters"]
+	n10["lib/src/features/workspace/layout/adapters"]
+	n11["lib/src/foundation/binding/contracts"]
 	n0 -->|"import"| n1
 	n0 -->|"part of"| n2
 	n0 -->|"import"| n3
@@ -40,30 +40,42 @@ flowchart LR
 ```mermaid
 flowchart LR
 	n0["lib/src/application/bootstrap/internal"]
-	n1["lib/src/runtime/installation/internal"]
-	n2["lib/src/styling/primitives"]
-	n3["lib/src/styling/references"]
-	n4["lib/src/styling/semantics"]
+	n1["lib/src/kernel/identity"]
+	n2["lib/src/kernel/lifecycle"]
+	n3["lib/src/runtime/compilation"]
+	n4["lib/src/runtime/contracts"]
+	n5["lib/src/runtime/installation"]
+	n6["lib/src/styling/primitives"]
+	n7["lib/src/styling/references"]
+	n8["lib/src/styling/semantics"]
 	n0 -->|"import"| n1
 	n0 -->|"import"| n2
 	n0 -->|"import"| n3
 	n0 -->|"import"| n4
+	n0 -->|"import"| n5
+	n0 -->|"import"| n6
+	n0 -->|"import"| n7
+	n0 -->|"import"| n8
 ```
 
 | 目標邊界 | 關係 | directive 數 | 第一筆來源證據 |
 |---|---|---|---|
-| <code>lib/src/application/structure</code> | import | 2 | [lib/src/application/bootstrap/internal/klp_application_adapters.dart:5](../../../../../../lib/src/application/bootstrap/internal/klp_application_adapters.dart#L5) |
+| <code>lib/src/application/structure</code> | import | 1 | [lib/src/application/bootstrap/internal/klp_screen_adapter.dart:13](../../../../../../lib/src/application/bootstrap/internal/klp_screen_adapter.dart#L13) |
 | <code>lib/src/application/structure</code> | part of | 5 | [lib/src/application/bootstrap/internal/klp_application_host.dart:1](../../../../../../lib/src/application/bootstrap/internal/klp_application_host.dart#L1) |
 | <code>lib/src/application/structure/internal</code> | import | 1 | [lib/src/application/bootstrap/internal/klp_retained_screens_adapter.dart:12](../../../../../../lib/src/application/bootstrap/internal/klp_retained_screens_adapter.dart#L12) |
 | <code>lib/src/composition/definitions</code> | import | 2 | [lib/src/application/bootstrap/internal/klp_retained_screens_adapter.dart:1](../../../../../../lib/src/application/bootstrap/internal/klp_retained_screens_adapter.dart#L1) |
 | <code>lib/src/composition/nodes</code> | import | 2 | [lib/src/application/bootstrap/internal/klp_retained_screens_adapter.dart:2](../../../../../../lib/src/application/bootstrap/internal/klp_retained_screens_adapter.dart#L2) |
 | <code>lib/src/composition/validation</code> | import | 3 | [lib/src/application/bootstrap/internal/klp_prepared_screen.dart:1](../../../../../../lib/src/application/bootstrap/internal/klp_prepared_screen.dart#L1) |
-| <code>lib/src/features/navigation/rail/internal</code> | import | 1 | [lib/src/application/bootstrap/internal/klp_application_adapters.dart:1](../../../../../../lib/src/application/bootstrap/internal/klp_application_adapters.dart#L1) |
-| <code>lib/src/foundation/binding/internal</code> | import | 2 | [lib/src/application/bootstrap/internal/klp_prepared_screen.dart:2](../../../../../../lib/src/application/bootstrap/internal/klp_prepared_screen.dart#L2) |
+| <code>lib/src/features/editing/adapters</code> | import | 6 | [lib/src/application/bootstrap/internal/klp_application_adapters.dart:2](../../../../../../lib/src/application/bootstrap/internal/klp_application_adapters.dart#L2) |
+| <code>lib/src/features/navigation/rail/adapters</code> | import | 1 | [lib/src/application/bootstrap/internal/klp_application_adapters.dart:8](../../../../../../lib/src/application/bootstrap/internal/klp_application_adapters.dart#L8) |
+| <code>lib/src/features/workspace/components/adapters</code> | import | 2 | [lib/src/application/bootstrap/internal/klp_application_adapters.dart:11](../../../../../../lib/src/application/bootstrap/internal/klp_application_adapters.dart#L11) |
+| <code>lib/src/features/workspace/layout/adapters</code> | import | 2 | [lib/src/application/bootstrap/internal/klp_application_adapters.dart:9](../../../../../../lib/src/application/bootstrap/internal/klp_application_adapters.dart#L9) |
+| <code>lib/src/foundation/binding/contracts</code> | import | 2 | [lib/src/application/bootstrap/internal/klp_prepared_screen.dart:2](../../../../../../lib/src/application/bootstrap/internal/klp_prepared_screen.dart#L2) |
 | <code>lib/src/kernel/identity</code> | import | 1 | [lib/src/application/bootstrap/internal/klp_retained_screens_adapter.dart:5](../../../../../../lib/src/application/bootstrap/internal/klp_retained_screens_adapter.dart#L5) |
-| <code>lib/src/kernel/lifecycle/internal</code> | import | 2 | [lib/src/application/bootstrap/internal/klp_prepared_screen.dart:3](../../../../../../lib/src/application/bootstrap/internal/klp_prepared_screen.dart#L3) |
-| <code>lib/src/runtime/compilation/internal</code> | import | 10 | [lib/src/application/bootstrap/internal/klp_application_adapters.dart:2](../../../../../../lib/src/application/bootstrap/internal/klp_application_adapters.dart#L2) |
-| <code>lib/src/runtime/installation/internal</code> | import | 4 | [lib/src/application/bootstrap/internal/klp_prepared_screen.dart:5](../../../../../../lib/src/application/bootstrap/internal/klp_prepared_screen.dart#L5) |
+| <code>lib/src/kernel/lifecycle</code> | import | 2 | [lib/src/application/bootstrap/internal/klp_prepared_screen.dart:3](../../../../../../lib/src/application/bootstrap/internal/klp_prepared_screen.dart#L3) |
+| <code>lib/src/runtime/compilation</code> | import | 2 | [lib/src/application/bootstrap/internal/klp_application_adapters.dart:1](../../../../../../lib/src/application/bootstrap/internal/klp_application_adapters.dart#L1) |
+| <code>lib/src/runtime/contracts</code> | import | 10 | [lib/src/application/bootstrap/internal/klp_application_adapters.dart:13](../../../../../../lib/src/application/bootstrap/internal/klp_application_adapters.dart#L13) |
+| <code>lib/src/runtime/installation</code> | import | 2 | [lib/src/application/bootstrap/internal/klp_prepared_screen.dart:5](../../../../../../lib/src/application/bootstrap/internal/klp_prepared_screen.dart#L5) |
 | <code>lib/src/styling/primitives</code> | import | 3 | [lib/src/application/bootstrap/internal/klp_prepared_screen.dart:7](../../../../../../lib/src/application/bootstrap/internal/klp_prepared_screen.dart#L7) |
 | <code>lib/src/styling/references</code> | import | 1 | [lib/src/application/bootstrap/internal/klp_screen_adapter.dart:9](../../../../../../lib/src/application/bootstrap/internal/klp_screen_adapter.dart#L9) |
 | <code>lib/src/styling/semantics</code> | import | 3 | [lib/src/application/bootstrap/internal/klp_screen_adapter.dart:10](../../../../../../lib/src/application/bootstrap/internal/klp_screen_adapter.dart#L10) |
@@ -72,8 +84,8 @@ flowchart LR
 
 | 來源 → 目標 | 關係 | 證據 |
 |---|---|---|
-| <code>klp_application_adapters.dart → klp_screen_adapter.dart</code> | import | [lib/src/application/bootstrap/internal/klp_application_adapters.dart:6](../../../../../../lib/src/application/bootstrap/internal/klp_application_adapters.dart#L6) |
-| <code>klp_application_adapters.dart → klp_retained_screens_adapter.dart</code> | import | [lib/src/application/bootstrap/internal/klp_application_adapters.dart:7](../../../../../../lib/src/application/bootstrap/internal/klp_application_adapters.dart#L7) |
+| <code>klp_application_adapters.dart → klp_screen_adapter.dart</code> | import | [lib/src/application/bootstrap/internal/klp_application_adapters.dart:15](../../../../../../lib/src/application/bootstrap/internal/klp_application_adapters.dart#L15) |
+| <code>klp_application_adapters.dart → klp_retained_screens_adapter.dart</code> | import | [lib/src/application/bootstrap/internal/klp_application_adapters.dart:16](../../../../../../lib/src/application/bootstrap/internal/klp_application_adapters.dart#L16) |
 | <code>klp_screen_adapter.dart → klp_prepared_screen.dart</code> | import | [lib/src/application/bootstrap/internal/klp_screen_adapter.dart:14](../../../../../../lib/src/application/bootstrap/internal/klp_screen_adapter.dart#L14) |
 
 ## 目錄結構圖

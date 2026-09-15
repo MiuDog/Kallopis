@@ -1,0 +1,65 @@
+{
+	"compatibility": {
+		"task_id": "TEST-COMPAT-COMPATIBILITY",
+		"allowed_write": [
+			"test/klp_editing_compatibility_contract_test.dart"
+		],
+		"protected": [
+			"lib/**",
+			"spec/**",
+			"docs/**",
+			"pubspec.yaml",
+			"pubspec.lock",
+			"test/support/**"
+		],
+		"contract": "COMPAT-V1-r1／CAP-V1-03：用途分類以符號及用途為準。舊 text/IME intent、request/reply、block/list/undo 操作、layout／hit testing／text window 與 pending-resync submission 僅作既有資料相容、必要維護與回退；新 BlockNote 不使用其即時正文操作建立第二交易／undo／正文權威。保留全部42 editing exports＋9 parts與root44exports、base provider snapshot/stream、save job/confirmed revision/unknown outcome、stamp identity、共用drawing／geometry／anchor／command資料與handwriting/mode合約；不將共享Projection/Endpoint一概棄用，不新增Deprecated警告、刪除export或停用舊路徑。手寫及Spatial未定案不在本片決定。新正文content/adapter/bound/renderer只借用原Krepis BlockNote controller/channel，正文／排版／選取／undo由上游掌管。共享presentation library為其他legacy parts匯入DTO合法；驗收依BlockNote typed members/操作，不把共享名稱解析誤當第二權威。",
+		"read_exception": "Accepted public interfaces, original declarations/DTO role boundary, assigned tests and existing compile fixture may be read; BlockNote shared root/part typed members and source use may be inspected because authority boundary is structural. Do not read integrated product reasoning.",
+		"milestones": [
+			"M1 valid semantic/compile-boundary Red; no missing-URI falseRed",
+			"M2 frozen hashes and preserved existing assertions; integrated Green pending"
+		],
+		"estimate": {
+			"basis": "cold-start",
+			"tokens": [
+				4000,
+				10000
+			],
+			"minutes": [
+				15,
+				45
+			]
+		}
+	},
+	"closure": {
+		"task_id": "TEST-COMPAT-CLOSURE",
+		"allowed_write": [
+			"test/klp_closed_component_catalog_contract_test.dart",
+			"test/klp_application_catalog_contract_test.dart"
+		],
+		"protected": [
+			"lib/**",
+			"spec/**",
+			"docs/**",
+			"pubspec.yaml",
+			"pubspec.lock",
+			"test/support/**"
+		],
+		"contract": "COMPAT-V1-r1／FEAT-V1-07：關閉清冊中仍開放的七個layout節點對外extends/implements，精確改為final class；原constructor/default/member/body/slots/definition IDs與合法建構保持。KlpLayoutNode等qualification仍可表達資料資格，不能取得註冊權或冒用已知catalog identity。真catalog必須以node_type_mismatch拒絕已知ID偽裝並保留前一個committed frame/resources。完整24feature components（23公開＋1rail）、28總ID、67exports與ownership/presentation分工不變。舊Stable Explorer/WindowControls與新declarative canonical維持不同library面向；P9完整條件為下游完成遷移、無受支援舊入口匯入、相容證據及發布說明允許破壞性移除。仍有舊caller，不執行P9刪除。",
+		"read_exception": "Accepted public interfaces, original declarations/DTO role boundary, assigned tests and existing compile fixture may be read; BlockNote shared root/part typed members and source use may be inspected because authority boundary is structural. Do not read integrated product reasoning.",
+		"milestones": [
+			"M1 valid semantic/compile-boundary Red; no missing-URI falseRed",
+			"M2 frozen hashes and preserved existing assertions; integrated Green pending"
+		],
+		"estimate": {
+			"basis": "cold-start",
+			"tokens": [
+				4000,
+				10000
+			],
+			"minutes": [
+				15,
+				45
+			]
+		}
+	}
+}

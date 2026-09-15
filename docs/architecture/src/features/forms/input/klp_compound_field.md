@@ -11,11 +11,11 @@
 ```mermaid
 flowchart LR
 	n0["klp_compound_field.dart"]
-	n1["../internal/klp_form_dependencies.dart"]
-	n2["../internal/klp_input_frame.dart"]
-	n3["../internal/primitives/klp_input_editor.dart"]
-	n4["../internal/primitives/klp_input_segment_divider.dart"]
-	n5["../selection/klp_choice_option.dart"]
+	n1["package:kallopis/src/features/forms/internal/klp_form_dependencies.dart"]
+	n2["package:kallopis/src/features/forms/internal/klp_input_frame.dart"]
+	n3["package:kallopis/src/features/forms/internal/primitives/klp_input_editor.dart"]
+	n4["package:kallopis/src/features/forms/internal/primitives/klp_input_segment_divider.dart"]
+	n5["package:kallopis/src/features/forms/selection/klp_choice_option.dart"]
 	n6["internal/klp_compound_field_option.dart"]
 	n7["internal/klp_compound_field_state.dart"]
 	n8["internal/klp_compound_field_widget.dart"]
@@ -39,11 +39,11 @@ flowchart LR
 
 | 關係 | 原始 directive | 來源 |
 |---|---|---|
-| import | <code>import &#x27;../internal/klp_form_dependencies.dart&#x27;;</code> | [lib/src/features/forms/input/klp_compound_field.dart:1](../../../../../../lib/src/features/forms/input/klp_compound_field.dart#L1) |
-| import | <code>import &#x27;../internal/klp_input_frame.dart&#x27;;</code> | [lib/src/features/forms/input/klp_compound_field.dart:2](../../../../../../lib/src/features/forms/input/klp_compound_field.dart#L2) |
-| import | <code>import &#x27;../internal/primitives/klp_input_editor.dart&#x27;;</code> | [lib/src/features/forms/input/klp_compound_field.dart:3](../../../../../../lib/src/features/forms/input/klp_compound_field.dart#L3) |
-| import | <code>import &#x27;../internal/primitives/klp_input_segment_divider.dart&#x27;;</code> | [lib/src/features/forms/input/klp_compound_field.dart:4](../../../../../../lib/src/features/forms/input/klp_compound_field.dart#L4) |
-| import | <code>import &#x27;../selection/klp_choice_option.dart&#x27;;</code> | [lib/src/features/forms/input/klp_compound_field.dart:5](../../../../../../lib/src/features/forms/input/klp_compound_field.dart#L5) |
+| import | <code>import &#x27;package:kallopis/src/features/forms/internal/klp_form_dependencies.dart&#x27;;</code> | [lib/src/features/forms/input/klp_compound_field.dart:1](../../../../../../lib/src/features/forms/input/klp_compound_field.dart#L1) |
+| import | <code>import &#x27;package:kallopis/src/features/forms/internal/klp_input_frame.dart&#x27;;</code> | [lib/src/features/forms/input/klp_compound_field.dart:2](../../../../../../lib/src/features/forms/input/klp_compound_field.dart#L2) |
+| import | <code>import &#x27;package:kallopis/src/features/forms/internal/primitives/klp_input_editor.dart&#x27;;</code> | [lib/src/features/forms/input/klp_compound_field.dart:3](../../../../../../lib/src/features/forms/input/klp_compound_field.dart#L3) |
+| import | <code>import &#x27;package:kallopis/src/features/forms/internal/primitives/klp_input_segment_divider.dart&#x27;;</code> | [lib/src/features/forms/input/klp_compound_field.dart:4](../../../../../../lib/src/features/forms/input/klp_compound_field.dart#L4) |
+| import | <code>import &#x27;package:kallopis/src/features/forms/selection/klp_choice_option.dart&#x27;;</code> | [lib/src/features/forms/input/klp_compound_field.dart:5](../../../../../../lib/src/features/forms/input/klp_compound_field.dart#L5) |
 | part | <code>part &#x27;internal/klp_compound_field_option.dart&#x27;;</code> | [lib/src/features/forms/input/klp_compound_field.dart:7](../../../../../../lib/src/features/forms/input/klp_compound_field.dart#L7) |
 | part | <code>part &#x27;internal/klp_compound_field_state.dart&#x27;;</code> | [lib/src/features/forms/input/klp_compound_field.dart:8](../../../../../../lib/src/features/forms/input/klp_compound_field.dart#L8) |
 | part | <code>part &#x27;internal/klp_compound_field_widget.dart&#x27;;</code> | [lib/src/features/forms/input/klp_compound_field.dart:9](../../../../../../lib/src/features/forms/input/klp_compound_field.dart#L9) |

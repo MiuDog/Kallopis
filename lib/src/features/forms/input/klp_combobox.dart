@@ -1,10 +1,10 @@
 import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
 
-import '../../../foundation/interaction/klp_focus_region.dart';
-import '../../../foundation/interaction/klp_roving_index.dart';
-import '../../../foundation/layout/klp_layout.dart';
-import '../../overlays/klp_menu.dart';
+import 'package:kallopis/src/foundation/interaction/klp_focus_region.dart';
+import 'package:kallopis/src/foundation/interaction/klp_roving_index.dart';
+import 'package:kallopis/src/foundation/layout/klp_layout.dart';
+import 'package:kallopis/src/features/overlays/klp_menu.dart';
 import 'klp_text_field.dart';
 
 part 'internal/klp_combobox_option.dart';

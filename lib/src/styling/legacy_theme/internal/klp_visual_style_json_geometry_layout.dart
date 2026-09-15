@@ -1,5 +1,5 @@
-import '../klp_layout_geometry.dart';
-import '../klp_optical_geometry.dart';
+import 'package:kallopis/src/styling/legacy_theme/klp_layout_geometry.dart';
+import 'package:kallopis/src/styling/legacy_theme/klp_optical_geometry.dart';
 import 'klp_visual_style_json_helpers.dart';
 import 'klp_visual_style_json_validation.dart';
 

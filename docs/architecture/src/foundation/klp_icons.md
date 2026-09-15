@@ -102,10 +102,11 @@ ClassDeclaration · public · [lib/src/foundation/klp_icons.dart:3](../../../../
 | field <code>lock</code> | public | <code>static const KlpIconData lock</code> |  | [lib/src/foundation/klp_icons.dart:118](../../../../lib/src/foundation/klp_icons.dart#L118) |
 | field <code>sidebarLeft</code> | public | <code>static const KlpIconData sidebarLeft</code> |  | [lib/src/foundation/klp_icons.dart:119](../../../../lib/src/foundation/klp_icons.dart#L119) |
 | field <code>sidebarRight</code> | public | <code>static const KlpIconData sidebarRight</code> |  | [lib/src/foundation/klp_icons.dart:120](../../../../lib/src/foundation/klp_icons.dart#L120) |
-| field <code>close</code> | public | <code>static const KlpIconData close</code> |  | [lib/src/foundation/klp_icons.dart:121](../../../../lib/src/foundation/klp_icons.dart#L121) |
-| field <code>chevronUp</code> | public | <code>static const KlpIconData chevronUp</code> |  | [lib/src/foundation/klp_icons.dart:122](../../../../lib/src/foundation/klp_icons.dart#L122) |
-| field <code>globe</code> | public | <code>static const KlpIconData globe</code> |  | [lib/src/foundation/klp_icons.dart:126](../../../../lib/src/foundation/klp_icons.dart#L126) |
-| field <code>filter</code> | public | <code>static const KlpIconData filter</code> |  | [lib/src/foundation/klp_icons.dart:127](../../../../lib/src/foundation/klp_icons.dart#L127) |
+| field <code>sidebar</code> | public | <code>static const KlpIconData sidebar</code> |  | [lib/src/foundation/klp_icons.dart:121](../../../../lib/src/foundation/klp_icons.dart#L121) |
+| field <code>close</code> | public | <code>static const KlpIconData close</code> |  | [lib/src/foundation/klp_icons.dart:122](../../../../lib/src/foundation/klp_icons.dart#L122) |
+| field <code>chevronUp</code> | public | <code>static const KlpIconData chevronUp</code> |  | [lib/src/foundation/klp_icons.dart:123](../../../../lib/src/foundation/klp_icons.dart#L123) |
+| field <code>globe</code> | public | <code>static const KlpIconData globe</code> |  | [lib/src/foundation/klp_icons.dart:127](../../../../lib/src/foundation/klp_icons.dart#L127) |
+| field <code>filter</code> | public | <code>static const KlpIconData filter</code> |  | [lib/src/foundation/klp_icons.dart:128](../../../../lib/src/foundation/klp_icons.dart#L128) |
 
 ## 閱讀說明與限制
 

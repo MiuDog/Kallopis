@@ -11,7 +11,7 @@
 ```mermaid
 flowchart TD
 	n0["klp_visual_style_json_surface.dart"]
-	n1["../klp_surface_theme.dart"]
+	n1["package:kallopis/src/styling/legacy_theme/klp_surface_theme.dart"]
 	n2["klp_visual_style_json_helpers.dart"]
 	n3["klp_visual_style_json_validation.dart"]
 	n0 -->|"import"| n1
@@ -23,7 +23,7 @@ flowchart TD
 
 | 關係 | 原始 directive | 來源 |
 |---|---|---|
-| import | <code>import &#x27;../klp_surface_theme.dart&#x27;;</code> | [lib/src/styling/legacy_theme/internal/klp_visual_style_json_surface.dart:1](../../../../../../lib/src/styling/legacy_theme/internal/klp_visual_style_json_surface.dart#L1) |
+| import | <code>import &#x27;package:kallopis/src/styling/legacy_theme/klp_surface_theme.dart&#x27;;</code> | [lib/src/styling/legacy_theme/internal/klp_visual_style_json_surface.dart:1](../../../../../../lib/src/styling/legacy_theme/internal/klp_visual_style_json_surface.dart#L1) |
 | import | <code>import &#x27;klp_visual_style_json_helpers.dart&#x27;;</code> | [lib/src/styling/legacy_theme/internal/klp_visual_style_json_surface.dart:2](../../../../../../lib/src/styling/legacy_theme/internal/klp_visual_style_json_surface.dart#L2) |
 | import | <code>import &#x27;klp_visual_style_json_validation.dart&#x27;;</code> | [lib/src/styling/legacy_theme/internal/klp_visual_style_json_surface.dart:3](../../../../../../lib/src/styling/legacy_theme/internal/klp_visual_style_json_surface.dart#L3) |
 
@@ -44,14 +44,14 @@ top-level variable · private · [lib/src/styling/legacy_theme/internal/klp_visu
 
 ### decodeSurface
 
-FunctionDeclaration · public · [lib/src/styling/legacy_theme/internal/klp_visual_style_json_surface.dart:38](../../../../../../lib/src/styling/legacy_theme/internal/klp_visual_style_json_surface.dart#L38)
+FunctionDeclaration · public · [lib/src/styling/legacy_theme/internal/klp_visual_style_json_surface.dart:42](../../../../../../lib/src/styling/legacy_theme/internal/klp_visual_style_json_surface.dart#L42)
 
 <code>KlpSurfaceTheme decodeSurface(KlpJsonMap json, KlpSurfaceTheme base)</code>
 
 
 ### encodeSurface
 
-FunctionDeclaration · public · [lib/src/styling/legacy_theme/internal/klp_visual_style_json_surface.dart:126](../../../../../../lib/src/styling/legacy_theme/internal/klp_visual_style_json_surface.dart#L126)
+FunctionDeclaration · public · [lib/src/styling/legacy_theme/internal/klp_visual_style_json_surface.dart:134](../../../../../../lib/src/styling/legacy_theme/internal/klp_visual_style_json_surface.dart#L134)
 
 <code>KlpJsonMap encodeSurface(KlpSurfaceTheme v)</code>
 

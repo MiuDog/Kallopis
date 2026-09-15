@@ -1,4 +1,4 @@
-import '../internal/klp_form_dependencies.dart';
+import 'package:kallopis/src/features/forms/internal/klp_form_dependencies.dart';
 import 'klp_tag_chip.dart';
 
 part 'primitives/klp_tag_input_action_frame.dart';

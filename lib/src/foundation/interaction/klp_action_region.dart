@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../styling/legacy_theme/klp_theme.dart';
+import 'package:kallopis/src/styling/legacy_theme/klp_theme.dart';
 import 'klp_action_region_shape.dart';
 import 'klp_action_region_style.dart';
 import 'klp_action_region_tone.dart';

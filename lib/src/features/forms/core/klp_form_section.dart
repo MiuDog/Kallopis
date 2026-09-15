@@ -1,4 +1,4 @@
-import '../internal/klp_form_dependencies.dart';
+import 'package:kallopis/src/features/forms/internal/klp_form_dependencies.dart';
 
 /// 表單中的一個可摺疊分組，帶標題、選填說明與一組欄位。
 ///

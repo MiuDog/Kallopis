@@ -12,10 +12,10 @@
 flowchart LR
 	n0["klp_window_app_icon.dart"]
 	n1["package:flutter/material.dart"]
-	n2["../../../../foundation/layout/klp_box.dart"]
-	n3["../../../../foundation/layout/klp_center.dart"]
-	n4["../../../../foundation/layout/klp_fit.dart"]
-	n5["../../../../foundation/layout/klp_fit_mode.dart"]
+	n2["package:kallopis/src/foundation/layout/klp_box.dart"]
+	n3["package:kallopis/src/foundation/layout/klp_center.dart"]
+	n4["package:kallopis/src/foundation/layout/klp_fit.dart"]
+	n5["package:kallopis/src/foundation/layout/klp_fit_mode.dart"]
 	n0 -->|"import"| n1
 	n0 -->|"import"| n2
 	n0 -->|"import"| n3
@@ -28,10 +28,10 @@ flowchart LR
 | 關係 | 原始 directive | 來源 |
 |---|---|---|
 | import | <code>import &#x27;package:flutter/material.dart&#x27;;</code> | [lib/src/features/workspace/shell/window/klp_window_app_icon.dart:4](../../../../../../../lib/src/features/workspace/shell/window/klp_window_app_icon.dart#L4) |
-| import | <code>import &#x27;../../../../foundation/layout/klp_box.dart&#x27;;</code> | [lib/src/features/workspace/shell/window/klp_window_app_icon.dart:6](../../../../../../../lib/src/features/workspace/shell/window/klp_window_app_icon.dart#L6) |
-| import | <code>import &#x27;../../../../foundation/layout/klp_center.dart&#x27;;</code> | [lib/src/features/workspace/shell/window/klp_window_app_icon.dart:7](../../../../../../../lib/src/features/workspace/shell/window/klp_window_app_icon.dart#L7) |
-| import | <code>import &#x27;../../../../foundation/layout/klp_fit.dart&#x27;;</code> | [lib/src/features/workspace/shell/window/klp_window_app_icon.dart:8](../../../../../../../lib/src/features/workspace/shell/window/klp_window_app_icon.dart#L8) |
-| import | <code>import &#x27;../../../../foundation/layout/klp_fit_mode.dart&#x27;;</code> | [lib/src/features/workspace/shell/window/klp_window_app_icon.dart:9](../../../../../../../lib/src/features/workspace/shell/window/klp_window_app_icon.dart#L9) |
+| import | <code>import &#x27;package:kallopis/src/foundation/layout/klp_box.dart&#x27;;</code> | [lib/src/features/workspace/shell/window/klp_window_app_icon.dart:6](../../../../../../../lib/src/features/workspace/shell/window/klp_window_app_icon.dart#L6) |
+| import | <code>import &#x27;package:kallopis/src/foundation/layout/klp_center.dart&#x27;;</code> | [lib/src/features/workspace/shell/window/klp_window_app_icon.dart:7](../../../../../../../lib/src/features/workspace/shell/window/klp_window_app_icon.dart#L7) |
+| import | <code>import &#x27;package:kallopis/src/foundation/layout/klp_fit.dart&#x27;;</code> | [lib/src/features/workspace/shell/window/klp_window_app_icon.dart:8](../../../../../../../lib/src/features/workspace/shell/window/klp_window_app_icon.dart#L8) |
+| import | <code>import &#x27;package:kallopis/src/foundation/layout/klp_fit_mode.dart&#x27;;</code> | [lib/src/features/workspace/shell/window/klp_window_app_icon.dart:9](../../../../../../../lib/src/features/workspace/shell/window/klp_window_app_icon.dart#L9) |
 
 ## 宣告關係圖
 

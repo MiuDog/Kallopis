@@ -12,16 +12,16 @@
 flowchart LR
 	n0["klp_message_thread.dart"]
 	n1["package:flutter/widgets.dart"]
-	n2["../../actions/button/klp_button.dart"]
-	n3["../../../foundation/layout/klp_align.dart"]
-	n4["../../../foundation/layout/klp_box.dart"]
-	n5["../../../foundation/layout/klp_box_insets.dart"]
-	n6["../../../foundation/layout/klp_column.dart"]
-	n7["../../../foundation/layout/klp_gap.dart"]
-	n8["../../../foundation/layout/klp_row.dart"]
-	n9["../../../foundation/layout/klp_space_size.dart"]
-	n10["../../../foundation/surface/klp_surface.dart"]
-	n11["../../../styling/legacy_theme/klp_theme.dart"]
+	n2["package:kallopis/src/features/actions/button/klp_button.dart"]
+	n3["package:kallopis/src/foundation/layout/klp_align.dart"]
+	n4["package:kallopis/src/foundation/layout/klp_box.dart"]
+	n5["package:kallopis/src/foundation/layout/klp_box_insets.dart"]
+	n6["package:kallopis/src/foundation/layout/klp_column.dart"]
+	n7["package:kallopis/src/foundation/layout/klp_gap.dart"]
+	n8["package:kallopis/src/foundation/layout/klp_row.dart"]
+	n9["package:kallopis/src/foundation/layout/klp_space_size.dart"]
+	n10["package:kallopis/src/foundation/surface/klp_surface.dart"]
+	n11["package:kallopis/src/styling/legacy_theme/klp_theme.dart"]
 	n0 -->|"import"| n1
 	n0 -->|"import"| n2
 	n0 -->|"import"| n3
@@ -38,7 +38,7 @@ flowchart LR
 ```mermaid
 flowchart LR
 	n0["klp_message_thread.dart"]
-	n1["../../../foundation/content/klp_text.dart"]
+	n1["package:kallopis/src/foundation/content/klp_text.dart"]
 	n2["klp_message_alignment.dart"]
 	n3["klp_message_alignment.dart"]
 	n4["internal/klp_message_bubble_widget.dart"]
@@ -55,17 +55,17 @@ flowchart LR
 | 關係 | 原始 directive | 來源 |
 |---|---|---|
 | import | <code>import &#x27;package:flutter/widgets.dart&#x27;;</code> | [lib/src/features/collections/message_thread/klp_message_thread.dart:1](../../../../../../lib/src/features/collections/message_thread/klp_message_thread.dart#L1) |
-| import | <code>import &#x27;../../actions/button/klp_button.dart&#x27;;</code> | [lib/src/features/collections/message_thread/klp_message_thread.dart:3](../../../../../../lib/src/features/collections/message_thread/klp_message_thread.dart#L3) |
-| import | <code>import &#x27;../../../foundation/layout/klp_align.dart&#x27;;</code> | [lib/src/features/collections/message_thread/klp_message_thread.dart:4](../../../../../../lib/src/features/collections/message_thread/klp_message_thread.dart#L4) |
-| import | <code>import &#x27;../../../foundation/layout/klp_box.dart&#x27;;</code> | [lib/src/features/collections/message_thread/klp_message_thread.dart:5](../../../../../../lib/src/features/collections/message_thread/klp_message_thread.dart#L5) |
-| import | <code>import &#x27;../../../foundation/layout/klp_box_insets.dart&#x27;;</code> | [lib/src/features/collections/message_thread/klp_message_thread.dart:6](../../../../../../lib/src/features/collections/message_thread/klp_message_thread.dart#L6) |
-| import | <code>import &#x27;../../../foundation/layout/klp_column.dart&#x27;;</code> | [lib/src/features/collections/message_thread/klp_message_thread.dart:7](../../../../../../lib/src/features/collections/message_thread/klp_message_thread.dart#L7) |
-| import | <code>import &#x27;../../../foundation/layout/klp_gap.dart&#x27;;</code> | [lib/src/features/collections/message_thread/klp_message_thread.dart:8](../../../../../../lib/src/features/collections/message_thread/klp_message_thread.dart#L8) |
-| import | <code>import &#x27;../../../foundation/layout/klp_row.dart&#x27;;</code> | [lib/src/features/collections/message_thread/klp_message_thread.dart:9](../../../../../../lib/src/features/collections/message_thread/klp_message_thread.dart#L9) |
-| import | <code>import &#x27;../../../foundation/layout/klp_space_size.dart&#x27;;</code> | [lib/src/features/collections/message_thread/klp_message_thread.dart:10](../../../../../../lib/src/features/collections/message_thread/klp_message_thread.dart#L10) |
-| import | <code>import &#x27;../../../foundation/surface/klp_surface.dart&#x27;;</code> | [lib/src/features/collections/message_thread/klp_message_thread.dart:11](../../../../../../lib/src/features/collections/message_thread/klp_message_thread.dart#L11) |
-| import | <code>import &#x27;../../../styling/legacy_theme/klp_theme.dart&#x27;;</code> | [lib/src/features/collections/message_thread/klp_message_thread.dart:12](../../../../../../lib/src/features/collections/message_thread/klp_message_thread.dart#L12) |
-| import | <code>import &#x27;../../../foundation/content/klp_text.dart&#x27;;</code> | [lib/src/features/collections/message_thread/klp_message_thread.dart:13](../../../../../../lib/src/features/collections/message_thread/klp_message_thread.dart#L13) |
+| import | <code>import &#x27;package:kallopis/src/features/actions/button/klp_button.dart&#x27;;</code> | [lib/src/features/collections/message_thread/klp_message_thread.dart:3](../../../../../../lib/src/features/collections/message_thread/klp_message_thread.dart#L3) |
+| import | <code>import &#x27;package:kallopis/src/foundation/layout/klp_align.dart&#x27;;</code> | [lib/src/features/collections/message_thread/klp_message_thread.dart:4](../../../../../../lib/src/features/collections/message_thread/klp_message_thread.dart#L4) |
+| import | <code>import &#x27;package:kallopis/src/foundation/layout/klp_box.dart&#x27;;</code> | [lib/src/features/collections/message_thread/klp_message_thread.dart:5](../../../../../../lib/src/features/collections/message_thread/klp_message_thread.dart#L5) |
+| import | <code>import &#x27;package:kallopis/src/foundation/layout/klp_box_insets.dart&#x27;;</code> | [lib/src/features/collections/message_thread/klp_message_thread.dart:6](../../../../../../lib/src/features/collections/message_thread/klp_message_thread.dart#L6) |
+| import | <code>import &#x27;package:kallopis/src/foundation/layout/klp_column.dart&#x27;;</code> | [lib/src/features/collections/message_thread/klp_message_thread.dart:7](../../../../../../lib/src/features/collections/message_thread/klp_message_thread.dart#L7) |
+| import | <code>import &#x27;package:kallopis/src/foundation/layout/klp_gap.dart&#x27;;</code> | [lib/src/features/collections/message_thread/klp_message_thread.dart:8](../../../../../../lib/src/features/collections/message_thread/klp_message_thread.dart#L8) |
+| import | <code>import &#x27;package:kallopis/src/foundation/layout/klp_row.dart&#x27;;</code> | [lib/src/features/collections/message_thread/klp_message_thread.dart:9](../../../../../../lib/src/features/collections/message_thread/klp_message_thread.dart#L9) |
+| import | <code>import &#x27;package:kallopis/src/foundation/layout/klp_space_size.dart&#x27;;</code> | [lib/src/features/collections/message_thread/klp_message_thread.dart:10](../../../../../../lib/src/features/collections/message_thread/klp_message_thread.dart#L10) |
+| import | <code>import &#x27;package:kallopis/src/foundation/surface/klp_surface.dart&#x27;;</code> | [lib/src/features/collections/message_thread/klp_message_thread.dart:11](../../../../../../lib/src/features/collections/message_thread/klp_message_thread.dart#L11) |
+| import | <code>import &#x27;package:kallopis/src/styling/legacy_theme/klp_theme.dart&#x27;;</code> | [lib/src/features/collections/message_thread/klp_message_thread.dart:12](../../../../../../lib/src/features/collections/message_thread/klp_message_thread.dart#L12) |
+| import | <code>import &#x27;package:kallopis/src/foundation/content/klp_text.dart&#x27;;</code> | [lib/src/features/collections/message_thread/klp_message_thread.dart:13](../../../../../../lib/src/features/collections/message_thread/klp_message_thread.dart#L13) |
 | import | <code>import &#x27;klp_message_alignment.dart&#x27;;</code> | [lib/src/features/collections/message_thread/klp_message_thread.dart:14](../../../../../../lib/src/features/collections/message_thread/klp_message_thread.dart#L14) |
 | export | <code>export &#x27;klp_message_alignment.dart&#x27;;</code> | [lib/src/features/collections/message_thread/klp_message_thread.dart:16](../../../../../../lib/src/features/collections/message_thread/klp_message_thread.dart#L16) |
 | part | <code>part &#x27;internal/klp_message_bubble_widget.dart&#x27;;</code> | [lib/src/features/collections/message_thread/klp_message_thread.dart:18](../../../../../../lib/src/features/collections/message_thread/klp_message_thread.dart#L18) |

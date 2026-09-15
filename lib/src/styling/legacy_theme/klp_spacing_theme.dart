@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../legacy_tokens/primitive_token.dart';
+import 'package:kallopis/src/styling/legacy_tokens/primitive_token.dart';
 
 /// Layer 2：間距與密度的 semantic token。
 ///
@@ -39,7 +39,6 @@ class KlpSpacingTheme extends ThemeExtension<KlpSpacingTheme> {
     this.overlayItemGap = KlpScale.space200,
     this.navigationSectionGap = KlpScale.space200 - KlpScale.space50,
     this.appFrameInset = KlpScale.space100,
-    this.workbenchContentInset = KlpScale.space100,
     this.windowHeaderMargin = KlpScale.space100,
     this.dockMargin = KlpScale.space100,
     required this.base,
@@ -123,7 +122,6 @@ class KlpSpacingTheme extends ThemeExtension<KlpSpacingTheme> {
   final double overlayItemGap;
   final double navigationSectionGap;
   final double appFrameInset;
-  final double workbenchContentInset;
   final double windowHeaderMargin;
   final double dockMargin;
   final double base;
@@ -167,9 +165,6 @@ class KlpSpacingTheme extends ThemeExtension<KlpSpacingTheme> {
   final double chromeHeader;
   final double chromeStatusBar;
   final double chromeRail;
-
-  /// Workbench Rail surface 加上與 Sidebar surface 之間的語意間距。
-  double get workbenchRailExtent => chromeRail + chromeGap;
 
   final double chromeTab;
   final double iconButton;
@@ -346,7 +341,6 @@ class KlpSpacingTheme extends ThemeExtension<KlpSpacingTheme> {
     double? overlayItemGap,
     double? navigationSectionGap,
     double? appFrameInset,
-    double? workbenchContentInset,
     double? windowHeaderMargin,
     double? dockMargin,
     double? base,
@@ -412,8 +406,6 @@ class KlpSpacingTheme extends ThemeExtension<KlpSpacingTheme> {
       overlayItemGap: overlayItemGap ?? this.overlayItemGap,
       navigationSectionGap: navigationSectionGap ?? this.navigationSectionGap,
       appFrameInset: appFrameInset ?? this.appFrameInset,
-      workbenchContentInset:
-          workbenchContentInset ?? this.workbenchContentInset,
       windowHeaderMargin: windowHeaderMargin ?? this.windowHeaderMargin,
       dockMargin: dockMargin ?? this.dockMargin,
       base: base ?? this.base,
@@ -506,7 +498,6 @@ class KlpSpacingTheme extends ThemeExtension<KlpSpacingTheme> {
           overlayItemGap == other.overlayItemGap &&
           navigationSectionGap == other.navigationSectionGap &&
           appFrameInset == other.appFrameInset &&
-          workbenchContentInset == other.workbenchContentInset &&
           windowHeaderMargin == other.windowHeaderMargin &&
           dockMargin == other.dockMargin &&
           base == other.base &&
@@ -587,7 +578,6 @@ class KlpSpacingTheme extends ThemeExtension<KlpSpacingTheme> {
     overlayItemGap,
     navigationSectionGap,
     appFrameInset,
-    workbenchContentInset,
     windowHeaderMargin,
     dockMargin,
     base,

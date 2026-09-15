@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
-import '../../../../../styling/legacy_theme/klp_theme.dart';
-import '../../../../../foundation/content/klp_text.dart';
-import '../../panel/klp_panel_header.dart';
+import 'package:kallopis/src/styling/legacy_theme/klp_theme.dart';
+import 'package:kallopis/src/foundation/content/klp_text.dart';
+import 'package:kallopis/src/features/workspace/shell/panel/klp_panel_header.dart';
 
 /// 組合 App 視窗標題列的通用配方。
 class KlpAppWindowHeader extends StatelessWidget {

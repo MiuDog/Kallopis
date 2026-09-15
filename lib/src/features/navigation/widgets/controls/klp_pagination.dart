@@ -1,10 +1,10 @@
 import 'package:flutter/widgets.dart';
 
-import '../../../actions/button/klp_button.dart';
-import '../../../../foundation/layout/klp_gap.dart';
-import '../../../../foundation/layout/klp_row.dart';
-import '../../../../foundation/layout/klp_space_size.dart';
-import '../../../../foundation/content/klp_text.dart';
+import 'package:kallopis/src/features/actions/button/klp_button.dart';
+import 'package:kallopis/src/foundation/layout/klp_gap.dart';
+import 'package:kallopis/src/foundation/layout/klp_row.dart';
+import 'package:kallopis/src/foundation/layout/klp_space_size.dart';
+import 'package:kallopis/src/foundation/content/klp_text.dart';
 
 /// 上一頁／頁碼／下一頁的受控分頁元件。
 class KlpPagination extends StatelessWidget {

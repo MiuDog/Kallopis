@@ -12,8 +12,8 @@
 flowchart TD
 	n0["klp_action_group.dart"]
 	n1["package:flutter/widgets.dart"]
-	n2["../../../../foundation/layout/klp_space_size.dart"]
-	n3["../../../../foundation/layout/klp_wrap.dart"]
+	n2["package:kallopis/src/foundation/layout/klp_space_size.dart"]
+	n3["package:kallopis/src/foundation/layout/klp_wrap.dart"]
 	n0 -->|"import"| n1
 	n0 -->|"import"| n2
 	n0 -->|"import"| n3
@@ -24,8 +24,8 @@ flowchart TD
 | 關係 | 原始 directive | 來源 |
 |---|---|---|
 | import | <code>import &#x27;package:flutter/widgets.dart&#x27;;</code> | [lib/src/features/navigation/widgets/controls/klp_action_group.dart:1](../../../../../../../lib/src/features/navigation/widgets/controls/klp_action_group.dart#L1) |
-| import | <code>import &#x27;../../../../foundation/layout/klp_space_size.dart&#x27;;</code> | [lib/src/features/navigation/widgets/controls/klp_action_group.dart:3](../../../../../../../lib/src/features/navigation/widgets/controls/klp_action_group.dart#L3) |
-| import | <code>import &#x27;../../../../foundation/layout/klp_wrap.dart&#x27;;</code> | [lib/src/features/navigation/widgets/controls/klp_action_group.dart:4](../../../../../../../lib/src/features/navigation/widgets/controls/klp_action_group.dart#L4) |
+| import | <code>import &#x27;package:kallopis/src/foundation/layout/klp_space_size.dart&#x27;;</code> | [lib/src/features/navigation/widgets/controls/klp_action_group.dart:3](../../../../../../../lib/src/features/navigation/widgets/controls/klp_action_group.dart#L3) |
+| import | <code>import &#x27;package:kallopis/src/foundation/layout/klp_wrap.dart&#x27;;</code> | [lib/src/features/navigation/widgets/controls/klp_action_group.dart:4](../../../../../../../lib/src/features/navigation/widgets/controls/klp_action_group.dart#L4) |
 
 ## 宣告關係圖
 

@@ -12,15 +12,15 @@
 flowchart LR
 	n0["klp_file_explorer.dart"]
 	n1["package:flutter/material.dart"]
-	n2["../../../feedback/klp_feedback_tone.dart"]
-	n3["../../../../foundation/klp_icon.dart"]
-	n4["../../../../foundation/klp_icons.dart"]
-	n5["../../../../foundation/interaction/klp_pressable.dart"]
-	n6["../../../../foundation/interaction/klp_gesture_region.dart"]
-	n7["../../../../foundation/interaction/klp_state_highlight.dart"]
-	n8["../../../../foundation/layout/klp_layout.dart"]
-	n9["../../../../styling/legacy_theme/klp_theme.dart"]
-	n10["../../../../foundation/content/klp_text.dart"]
+	n2["package:kallopis/src/features/feedback/klp_feedback_tone.dart"]
+	n3["package:kallopis/src/foundation/klp_icon.dart"]
+	n4["package:kallopis/src/foundation/klp_icons.dart"]
+	n5["package:kallopis/src/foundation/interaction/klp_pressable.dart"]
+	n6["package:kallopis/src/foundation/interaction/klp_gesture_region.dart"]
+	n7["package:kallopis/src/foundation/interaction/klp_state_highlight.dart"]
+	n8["package:kallopis/src/foundation/layout/klp_layout.dart"]
+	n9["package:kallopis/src/styling/legacy_theme/klp_theme.dart"]
+	n10["package:kallopis/src/foundation/content/klp_text.dart"]
 	n11["internal/klp_file_explorer_disclosure_size.dart"]
 	n0 -->|"import"| n1
 	n0 -->|"import"| n2
@@ -80,15 +80,15 @@ flowchart LR
 | 關係 | 原始 directive | 來源 |
 |---|---|---|
 | import | <code>import &#x27;package:flutter/material.dart&#x27;;</code> | [lib/src/features/navigation/widgets/explorer/klp_file_explorer.dart:1](../../../../../../../lib/src/features/navigation/widgets/explorer/klp_file_explorer.dart#L1) |
-| import | <code>import &#x27;../../../feedback/klp_feedback_tone.dart&#x27;;</code> | [lib/src/features/navigation/widgets/explorer/klp_file_explorer.dart:3](../../../../../../../lib/src/features/navigation/widgets/explorer/klp_file_explorer.dart#L3) |
-| import | <code>import &#x27;../../../../foundation/klp_icon.dart&#x27;;</code> | [lib/src/features/navigation/widgets/explorer/klp_file_explorer.dart:4](../../../../../../../lib/src/features/navigation/widgets/explorer/klp_file_explorer.dart#L4) |
-| import | <code>import &#x27;../../../../foundation/klp_icons.dart&#x27;;</code> | [lib/src/features/navigation/widgets/explorer/klp_file_explorer.dart:5](../../../../../../../lib/src/features/navigation/widgets/explorer/klp_file_explorer.dart#L5) |
-| import | <code>import &#x27;../../../../foundation/interaction/klp_pressable.dart&#x27;;</code> | [lib/src/features/navigation/widgets/explorer/klp_file_explorer.dart:6](../../../../../../../lib/src/features/navigation/widgets/explorer/klp_file_explorer.dart#L6) |
-| import | <code>import &#x27;../../../../foundation/interaction/klp_gesture_region.dart&#x27;;</code> | [lib/src/features/navigation/widgets/explorer/klp_file_explorer.dart:7](../../../../../../../lib/src/features/navigation/widgets/explorer/klp_file_explorer.dart#L7) |
-| import | <code>import &#x27;../../../../foundation/interaction/klp_state_highlight.dart&#x27;;</code> | [lib/src/features/navigation/widgets/explorer/klp_file_explorer.dart:8](../../../../../../../lib/src/features/navigation/widgets/explorer/klp_file_explorer.dart#L8) |
-| import | <code>import &#x27;../../../../foundation/layout/klp_layout.dart&#x27;;</code> | [lib/src/features/navigation/widgets/explorer/klp_file_explorer.dart:9](../../../../../../../lib/src/features/navigation/widgets/explorer/klp_file_explorer.dart#L9) |
-| import | <code>import &#x27;../../../../styling/legacy_theme/klp_theme.dart&#x27;;</code> | [lib/src/features/navigation/widgets/explorer/klp_file_explorer.dart:10](../../../../../../../lib/src/features/navigation/widgets/explorer/klp_file_explorer.dart#L10) |
-| import | <code>import &#x27;../../../../foundation/content/klp_text.dart&#x27;;</code> | [lib/src/features/navigation/widgets/explorer/klp_file_explorer.dart:11](../../../../../../../lib/src/features/navigation/widgets/explorer/klp_file_explorer.dart#L11) |
+| import | <code>import &#x27;package:kallopis/src/features/feedback/klp_feedback_tone.dart&#x27;;</code> | [lib/src/features/navigation/widgets/explorer/klp_file_explorer.dart:3](../../../../../../../lib/src/features/navigation/widgets/explorer/klp_file_explorer.dart#L3) |
+| import | <code>import &#x27;package:kallopis/src/foundation/klp_icon.dart&#x27;;</code> | [lib/src/features/navigation/widgets/explorer/klp_file_explorer.dart:4](../../../../../../../lib/src/features/navigation/widgets/explorer/klp_file_explorer.dart#L4) |
+| import | <code>import &#x27;package:kallopis/src/foundation/klp_icons.dart&#x27;;</code> | [lib/src/features/navigation/widgets/explorer/klp_file_explorer.dart:5](../../../../../../../lib/src/features/navigation/widgets/explorer/klp_file_explorer.dart#L5) |
+| import | <code>import &#x27;package:kallopis/src/foundation/interaction/klp_pressable.dart&#x27;;</code> | [lib/src/features/navigation/widgets/explorer/klp_file_explorer.dart:6](../../../../../../../lib/src/features/navigation/widgets/explorer/klp_file_explorer.dart#L6) |
+| import | <code>import &#x27;package:kallopis/src/foundation/interaction/klp_gesture_region.dart&#x27;;</code> | [lib/src/features/navigation/widgets/explorer/klp_file_explorer.dart:7](../../../../../../../lib/src/features/navigation/widgets/explorer/klp_file_explorer.dart#L7) |
+| import | <code>import &#x27;package:kallopis/src/foundation/interaction/klp_state_highlight.dart&#x27;;</code> | [lib/src/features/navigation/widgets/explorer/klp_file_explorer.dart:8](../../../../../../../lib/src/features/navigation/widgets/explorer/klp_file_explorer.dart#L8) |
+| import | <code>import &#x27;package:kallopis/src/foundation/layout/klp_layout.dart&#x27;;</code> | [lib/src/features/navigation/widgets/explorer/klp_file_explorer.dart:9](../../../../../../../lib/src/features/navigation/widgets/explorer/klp_file_explorer.dart#L9) |
+| import | <code>import &#x27;package:kallopis/src/styling/legacy_theme/klp_theme.dart&#x27;;</code> | [lib/src/features/navigation/widgets/explorer/klp_file_explorer.dart:10](../../../../../../../lib/src/features/navigation/widgets/explorer/klp_file_explorer.dart#L10) |
+| import | <code>import &#x27;package:kallopis/src/foundation/content/klp_text.dart&#x27;;</code> | [lib/src/features/navigation/widgets/explorer/klp_file_explorer.dart:11](../../../../../../../lib/src/features/navigation/widgets/explorer/klp_file_explorer.dart#L11) |
 | part | <code>part &#x27;internal/klp_file_explorer_disclosure_size.dart&#x27;;</code> | [lib/src/features/navigation/widgets/explorer/klp_file_explorer.dart:13](../../../../../../../lib/src/features/navigation/widgets/explorer/klp_file_explorer.dart#L13) |
 | part | <code>part &#x27;internal/klp_file_explorer_folder_view.dart&#x27;;</code> | [lib/src/features/navigation/widgets/explorer/klp_file_explorer.dart:14](../../../../../../../lib/src/features/navigation/widgets/explorer/klp_file_explorer.dart#L14) |
 | part | <code>part &#x27;internal/klp_file_explorer_folder_view_state.dart&#x27;;</code> | [lib/src/features/navigation/widgets/explorer/klp_file_explorer.dart:15](../../../../../../../lib/src/features/navigation/widgets/explorer/klp_file_explorer.dart#L15) |

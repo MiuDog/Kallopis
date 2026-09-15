@@ -1,6 +1,6 @@
 import 'package:flutter/widgets.dart';
 
-import '../../styling/legacy_theme/klp_theme.dart';
+import 'package:kallopis/src/styling/legacy_theme/klp_theme.dart';
 import 'klp_space_size.dart';
 
 /// 間距排版原語。取代 SizedBox 進行彈性與固定距離佔位。

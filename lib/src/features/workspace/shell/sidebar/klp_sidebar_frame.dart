@@ -1,7 +1,7 @@
 import 'package:flutter/widgets.dart';
 
-import '../../../../foundation/layout/klp_box.dart';
-import '../panel/klp_panel_frame.dart';
+import 'package:kallopis/src/foundation/layout/klp_box.dart';
+import 'package:kallopis/src/features/workspace/shell/panel/klp_panel_frame.dart';
 import 'klp_sidebar_inset.dart';
 
 export 'klp_sidebar_inset.dart';

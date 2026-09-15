@@ -46,7 +46,7 @@ ClassDeclaration · public · [lib/src/features/workspace/shell/window/klp_windo
 |---|---|---|---|---|
 | constructor <code>KlpWindowControlsGeometry</code> | public | <code>const KlpWindowControlsGeometry({required this.extent})</code> |  | [lib/src/features/workspace/shell/window/klp_window_controls_geometry.dart:3](../../../../../../../lib/src/features/workspace/shell/window/klp_window_controls_geometry.dart#L3) |
 | field <code>extent</code> | public | <code>final double extent</code> |  | [lib/src/features/workspace/shell/window/klp_window_controls_geometry.dart:5](../../../../../../../lib/src/features/workspace/shell/window/klp_window_controls_geometry.dart#L5) |
-| getter <code>iconExtent</code> | public | <code>double get iconExtent</code> |  | [lib/src/features/workspace/shell/window/klp_window_controls_geometry.dart:7](../../../../../../../lib/src/features/workspace/shell/window/klp_window_controls_geometry.dart#L7) |
+| getter <code>iconExtent</code> | public | <code>double get iconExtent</code> |  | [lib/src/features/workspace/shell/window/klp_window_controls_geometry.dart:8](../../../../../../../lib/src/features/workspace/shell/window/klp_window_controls_geometry.dart#L8) |
 
 ## 閱讀說明與限制
 

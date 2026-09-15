@@ -1,7 +1,7 @@
 import 'package:flutter/widgets.dart';
 
-import '../surface/klp_dashed_border.dart';
-import '../../styling/legacy_theme/klp_theme.dart';
+import 'package:kallopis/src/foundation/surface/klp_dashed_border.dart';
+import 'package:kallopis/src/styling/legacy_theme/klp_theme.dart';
 import 'klp_expanded.dart';
 import 'klp_gap.dart';
 import 'klp_row.dart';

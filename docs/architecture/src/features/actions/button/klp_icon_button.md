@@ -12,9 +12,9 @@
 flowchart LR
 	n0["klp_icon_button.dart"]
 	n1["package:flutter/material.dart"]
-	n2["../../../foundation/klp_icon.dart"]
-	n3["../../overlays/klp_tooltip.dart"]
-	n4["../../../styling/legacy_theme/klp_theme.dart"]
+	n2["package:kallopis/src/foundation/klp_icon.dart"]
+	n3["package:kallopis/src/features/overlays/klp_tooltip.dart"]
+	n4["package:kallopis/src/styling/legacy_theme/klp_theme.dart"]
 	n5["klp_icon_button_size.dart"]
 	n6["klp_icon_button_tone.dart"]
 	n7["klp_icon_button_size.dart"]
@@ -47,9 +47,9 @@ flowchart TD
 | 關係 | 原始 directive | 來源 |
 |---|---|---|
 | import | <code>import &#x27;package:flutter/material.dart&#x27;;</code> | [lib/src/features/actions/button/klp_icon_button.dart:1](../../../../../../lib/src/features/actions/button/klp_icon_button.dart#L1) |
-| import | <code>import &#x27;../../../foundation/klp_icon.dart&#x27;;</code> | [lib/src/features/actions/button/klp_icon_button.dart:3](../../../../../../lib/src/features/actions/button/klp_icon_button.dart#L3) |
-| import | <code>import &#x27;../../overlays/klp_tooltip.dart&#x27;;</code> | [lib/src/features/actions/button/klp_icon_button.dart:4](../../../../../../lib/src/features/actions/button/klp_icon_button.dart#L4) |
-| import | <code>import &#x27;../../../styling/legacy_theme/klp_theme.dart&#x27;;</code> | [lib/src/features/actions/button/klp_icon_button.dart:5](../../../../../../lib/src/features/actions/button/klp_icon_button.dart#L5) |
+| import | <code>import &#x27;package:kallopis/src/foundation/klp_icon.dart&#x27;;</code> | [lib/src/features/actions/button/klp_icon_button.dart:3](../../../../../../lib/src/features/actions/button/klp_icon_button.dart#L3) |
+| import | <code>import &#x27;package:kallopis/src/features/overlays/klp_tooltip.dart&#x27;;</code> | [lib/src/features/actions/button/klp_icon_button.dart:4](../../../../../../lib/src/features/actions/button/klp_icon_button.dart#L4) |
+| import | <code>import &#x27;package:kallopis/src/styling/legacy_theme/klp_theme.dart&#x27;;</code> | [lib/src/features/actions/button/klp_icon_button.dart:5](../../../../../../lib/src/features/actions/button/klp_icon_button.dart#L5) |
 | import | <code>import &#x27;klp_icon_button_size.dart&#x27;;</code> | [lib/src/features/actions/button/klp_icon_button.dart:6](../../../../../../lib/src/features/actions/button/klp_icon_button.dart#L6) |
 | import | <code>import &#x27;klp_icon_button_tone.dart&#x27;;</code> | [lib/src/features/actions/button/klp_icon_button.dart:7](../../../../../../lib/src/features/actions/button/klp_icon_button.dart#L7) |
 | export | <code>export &#x27;klp_icon_button_size.dart&#x27;;</code> | [lib/src/features/actions/button/klp_icon_button.dart:9](../../../../../../lib/src/features/actions/button/klp_icon_button.dart#L9) |

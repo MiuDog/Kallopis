@@ -1,8 +1,8 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
-import '../klp_inline_code.dart';
-import '../../styling/legacy_theme/klp_theme.dart';
+import 'package:kallopis/src/foundation/klp_inline_code.dart';
+import 'package:kallopis/src/styling/legacy_theme/klp_theme.dart';
 import 'klp_rich_text_kind.dart';
 import 'klp_rich_text_node.dart';
 import 'klp_rich_text_span.dart';

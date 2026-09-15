@@ -1,6 +1,6 @@
 import 'package:flutter/widgets.dart';
 
-import '../../styling/legacy_theme/klp_theme.dart';
+import 'package:kallopis/src/styling/legacy_theme/klp_theme.dart';
 
 /// 拖曳調整水平或垂直尺寸的把手。
 class KlpResizeHandle extends StatelessWidget {

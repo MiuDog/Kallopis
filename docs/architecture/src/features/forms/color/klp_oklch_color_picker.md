@@ -14,13 +14,13 @@ flowchart LR
 	n1["dart:math"]
 	n2["package:flutter/material.dart"]
 	n3["package:flutter/services.dart"]
-	n4["../../../foundation/klp_oklch_color.dart"]
-	n5["../../../foundation/interaction/klp_exclude_semantics.dart"]
-	n6["../../../foundation/interaction/klp_semantic_region.dart"]
-	n7["../../../foundation/layout/klp_layout.dart"]
-	n8["../../../application/localization/klp_localizations.dart"]
-	n9["../../../styling/legacy_theme/klp_theme.dart"]
-	n10["../../../foundation/content/klp_text.dart"]
+	n4["package:kallopis/src/foundation/klp_oklch_color.dart"]
+	n5["package:kallopis/src/foundation/interaction/klp_exclude_semantics.dart"]
+	n6["package:kallopis/src/foundation/interaction/klp_semantic_region.dart"]
+	n7["package:kallopis/src/foundation/layout/klp_layout.dart"]
+	n8["package:kallopis/src/foundation/localization/klp_localizations.dart"]
+	n9["package:kallopis/src/styling/legacy_theme/klp_theme.dart"]
+	n10["package:kallopis/src/foundation/content/klp_text.dart"]
 	n11["klp_oklch_chroma_range.dart"]
 	n0 -->|"import"| n1
 	n0 -->|"import"| n2
@@ -82,13 +82,13 @@ flowchart LR
 | import | <code>import &#x27;dart:math&#x27; as math;</code> | [lib/src/features/forms/color/klp_oklch_color_picker.dart:1](../../../../../../lib/src/features/forms/color/klp_oklch_color_picker.dart#L1) |
 | import | <code>import &#x27;package:flutter/material.dart&#x27;;</code> | [lib/src/features/forms/color/klp_oklch_color_picker.dart:3](../../../../../../lib/src/features/forms/color/klp_oklch_color_picker.dart#L3) |
 | import | <code>import &#x27;package:flutter/services.dart&#x27;;</code> | [lib/src/features/forms/color/klp_oklch_color_picker.dart:4](../../../../../../lib/src/features/forms/color/klp_oklch_color_picker.dart#L4) |
-| import | <code>import &#x27;../../../foundation/klp_oklch_color.dart&#x27;;</code> | [lib/src/features/forms/color/klp_oklch_color_picker.dart:6](../../../../../../lib/src/features/forms/color/klp_oklch_color_picker.dart#L6) |
-| import | <code>import &#x27;../../../foundation/interaction/klp_exclude_semantics.dart&#x27;;</code> | [lib/src/features/forms/color/klp_oklch_color_picker.dart:7](../../../../../../lib/src/features/forms/color/klp_oklch_color_picker.dart#L7) |
-| import | <code>import &#x27;../../../foundation/interaction/klp_semantic_region.dart&#x27;;</code> | [lib/src/features/forms/color/klp_oklch_color_picker.dart:8](../../../../../../lib/src/features/forms/color/klp_oklch_color_picker.dart#L8) |
-| import | <code>import &#x27;../../../foundation/layout/klp_layout.dart&#x27;;</code> | [lib/src/features/forms/color/klp_oklch_color_picker.dart:9](../../../../../../lib/src/features/forms/color/klp_oklch_color_picker.dart#L9) |
-| import | <code>import &#x27;../../../application/localization/klp_localizations.dart&#x27;;</code> | [lib/src/features/forms/color/klp_oklch_color_picker.dart:10](../../../../../../lib/src/features/forms/color/klp_oklch_color_picker.dart#L10) |
-| import | <code>import &#x27;../../../styling/legacy_theme/klp_theme.dart&#x27;;</code> | [lib/src/features/forms/color/klp_oklch_color_picker.dart:11](../../../../../../lib/src/features/forms/color/klp_oklch_color_picker.dart#L11) |
-| import | <code>import &#x27;../../../foundation/content/klp_text.dart&#x27;;</code> | [lib/src/features/forms/color/klp_oklch_color_picker.dart:12](../../../../../../lib/src/features/forms/color/klp_oklch_color_picker.dart#L12) |
+| import | <code>import &#x27;package:kallopis/src/foundation/klp_oklch_color.dart&#x27;;</code> | [lib/src/features/forms/color/klp_oklch_color_picker.dart:6](../../../../../../lib/src/features/forms/color/klp_oklch_color_picker.dart#L6) |
+| import | <code>import &#x27;package:kallopis/src/foundation/interaction/klp_exclude_semantics.dart&#x27;;</code> | [lib/src/features/forms/color/klp_oklch_color_picker.dart:7](../../../../../../lib/src/features/forms/color/klp_oklch_color_picker.dart#L7) |
+| import | <code>import &#x27;package:kallopis/src/foundation/interaction/klp_semantic_region.dart&#x27;;</code> | [lib/src/features/forms/color/klp_oklch_color_picker.dart:8](../../../../../../lib/src/features/forms/color/klp_oklch_color_picker.dart#L8) |
+| import | <code>import &#x27;package:kallopis/src/foundation/layout/klp_layout.dart&#x27;;</code> | [lib/src/features/forms/color/klp_oklch_color_picker.dart:9](../../../../../../lib/src/features/forms/color/klp_oklch_color_picker.dart#L9) |
+| import | <code>import &#x27;package:kallopis/src/foundation/localization/klp_localizations.dart&#x27;;</code> | [lib/src/features/forms/color/klp_oklch_color_picker.dart:10](../../../../../../lib/src/features/forms/color/klp_oklch_color_picker.dart#L10) |
+| import | <code>import &#x27;package:kallopis/src/styling/legacy_theme/klp_theme.dart&#x27;;</code> | [lib/src/features/forms/color/klp_oklch_color_picker.dart:11](../../../../../../lib/src/features/forms/color/klp_oklch_color_picker.dart#L11) |
+| import | <code>import &#x27;package:kallopis/src/foundation/content/klp_text.dart&#x27;;</code> | [lib/src/features/forms/color/klp_oklch_color_picker.dart:12](../../../../../../lib/src/features/forms/color/klp_oklch_color_picker.dart#L12) |
 | import | <code>import &#x27;klp_oklch_chroma_range.dart&#x27;;</code> | [lib/src/features/forms/color/klp_oklch_color_picker.dart:13](../../../../../../lib/src/features/forms/color/klp_oklch_color_picker.dart#L13) |
 | import | <code>import &#x27;klp_oklch_color_editor.dart&#x27;;</code> | [lib/src/features/forms/color/klp_oklch_color_picker.dart:14](../../../../../../lib/src/features/forms/color/klp_oklch_color_picker.dart#L14) |
 | part | <code>part &#x27;internal/klp_oklch_color_picker_content.dart&#x27;;</code> | [lib/src/features/forms/color/klp_oklch_color_picker.dart:16](../../../../../../lib/src/features/forms/color/klp_oklch_color_picker.dart#L16) |

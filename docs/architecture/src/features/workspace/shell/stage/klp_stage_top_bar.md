@@ -13,13 +13,13 @@ flowchart LR
 	n0["klp_stage_top_bar.dart"]
 	n1["dart:math"]
 	n2["package:flutter/widgets.dart"]
-	n3["../../../../foundation/layout/klp_directional_position.dart"]
-	n4["../../../../foundation/layout/klp_directional_positioned.dart"]
-	n5["../../../../foundation/layout/klp_gap.dart"]
-	n6["../../../../foundation/layout/klp_row.dart"]
-	n7["../../../../foundation/layout/klp_space_size.dart"]
-	n8["../../../../foundation/layout/klp_stack.dart"]
-	n9["../../../../styling/legacy_theme/klp_theme.dart"]
+	n3["package:kallopis/src/foundation/layout/klp_directional_position.dart"]
+	n4["package:kallopis/src/foundation/layout/klp_directional_positioned.dart"]
+	n5["package:kallopis/src/foundation/layout/klp_gap.dart"]
+	n6["package:kallopis/src/foundation/layout/klp_row.dart"]
+	n7["package:kallopis/src/foundation/layout/klp_space_size.dart"]
+	n8["package:kallopis/src/foundation/layout/klp_stack.dart"]
+	n9["package:kallopis/src/styling/legacy_theme/klp_theme.dart"]
 	n10["klp_stage_tab.dart"]
 	n0 -->|"import"| n1
 	n0 -->|"import"| n2
@@ -39,13 +39,13 @@ flowchart LR
 |---|---|---|
 | import | <code>import &#x27;dart:math&#x27; as math;</code> | [lib/src/features/workspace/shell/stage/klp_stage_top_bar.dart:1](../../../../../../../lib/src/features/workspace/shell/stage/klp_stage_top_bar.dart#L1) |
 | import | <code>import &#x27;package:flutter/widgets.dart&#x27;;</code> | [lib/src/features/workspace/shell/stage/klp_stage_top_bar.dart:3](../../../../../../../lib/src/features/workspace/shell/stage/klp_stage_top_bar.dart#L3) |
-| import | <code>import &#x27;../../../../foundation/layout/klp_directional_position.dart&#x27;;</code> | [lib/src/features/workspace/shell/stage/klp_stage_top_bar.dart:5](../../../../../../../lib/src/features/workspace/shell/stage/klp_stage_top_bar.dart#L5) |
-| import | <code>import &#x27;../../../../foundation/layout/klp_directional_positioned.dart&#x27;;</code> | [lib/src/features/workspace/shell/stage/klp_stage_top_bar.dart:6](../../../../../../../lib/src/features/workspace/shell/stage/klp_stage_top_bar.dart#L6) |
-| import | <code>import &#x27;../../../../foundation/layout/klp_gap.dart&#x27;;</code> | [lib/src/features/workspace/shell/stage/klp_stage_top_bar.dart:7](../../../../../../../lib/src/features/workspace/shell/stage/klp_stage_top_bar.dart#L7) |
-| import | <code>import &#x27;../../../../foundation/layout/klp_row.dart&#x27;;</code> | [lib/src/features/workspace/shell/stage/klp_stage_top_bar.dart:8](../../../../../../../lib/src/features/workspace/shell/stage/klp_stage_top_bar.dart#L8) |
-| import | <code>import &#x27;../../../../foundation/layout/klp_space_size.dart&#x27;;</code> | [lib/src/features/workspace/shell/stage/klp_stage_top_bar.dart:9](../../../../../../../lib/src/features/workspace/shell/stage/klp_stage_top_bar.dart#L9) |
-| import | <code>import &#x27;../../../../foundation/layout/klp_stack.dart&#x27;;</code> | [lib/src/features/workspace/shell/stage/klp_stage_top_bar.dart:10](../../../../../../../lib/src/features/workspace/shell/stage/klp_stage_top_bar.dart#L10) |
-| import | <code>import &#x27;../../../../styling/legacy_theme/klp_theme.dart&#x27;;</code> | [lib/src/features/workspace/shell/stage/klp_stage_top_bar.dart:11](../../../../../../../lib/src/features/workspace/shell/stage/klp_stage_top_bar.dart#L11) |
+| import | <code>import &#x27;package:kallopis/src/foundation/layout/klp_directional_position.dart&#x27;;</code> | [lib/src/features/workspace/shell/stage/klp_stage_top_bar.dart:5](../../../../../../../lib/src/features/workspace/shell/stage/klp_stage_top_bar.dart#L5) |
+| import | <code>import &#x27;package:kallopis/src/foundation/layout/klp_directional_positioned.dart&#x27;;</code> | [lib/src/features/workspace/shell/stage/klp_stage_top_bar.dart:6](../../../../../../../lib/src/features/workspace/shell/stage/klp_stage_top_bar.dart#L6) |
+| import | <code>import &#x27;package:kallopis/src/foundation/layout/klp_gap.dart&#x27;;</code> | [lib/src/features/workspace/shell/stage/klp_stage_top_bar.dart:7](../../../../../../../lib/src/features/workspace/shell/stage/klp_stage_top_bar.dart#L7) |
+| import | <code>import &#x27;package:kallopis/src/foundation/layout/klp_row.dart&#x27;;</code> | [lib/src/features/workspace/shell/stage/klp_stage_top_bar.dart:8](../../../../../../../lib/src/features/workspace/shell/stage/klp_stage_top_bar.dart#L8) |
+| import | <code>import &#x27;package:kallopis/src/foundation/layout/klp_space_size.dart&#x27;;</code> | [lib/src/features/workspace/shell/stage/klp_stage_top_bar.dart:9](../../../../../../../lib/src/features/workspace/shell/stage/klp_stage_top_bar.dart#L9) |
+| import | <code>import &#x27;package:kallopis/src/foundation/layout/klp_stack.dart&#x27;;</code> | [lib/src/features/workspace/shell/stage/klp_stage_top_bar.dart:10](../../../../../../../lib/src/features/workspace/shell/stage/klp_stage_top_bar.dart#L10) |
+| import | <code>import &#x27;package:kallopis/src/styling/legacy_theme/klp_theme.dart&#x27;;</code> | [lib/src/features/workspace/shell/stage/klp_stage_top_bar.dart:11](../../../../../../../lib/src/features/workspace/shell/stage/klp_stage_top_bar.dart#L11) |
 | export | <code>export &#x27;klp_stage_tab.dart&#x27;;</code> | [lib/src/features/workspace/shell/stage/klp_stage_top_bar.dart:13](../../../../../../../lib/src/features/workspace/shell/stage/klp_stage_top_bar.dart#L13) |
 
 ## 宣告關係圖

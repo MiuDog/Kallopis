@@ -13,24 +13,24 @@
 ```mermaid
 flowchart LR
 	n0["lib/src/features/workspace/entity_picker"]
-	n1["lib/src/application/localization"]
-	n2["lib/src/features/actions/button"]
-	n3["lib/src/features/collections/badge"]
-	n4["lib/src/features/forms/input"]
-	n5["lib/src/features/workspace/entity_picker/internal"]
-	n6["lib/src/features/workspace/entity_picker/models"]
-	n7["lib/src/features/workspace/entity_picker/primitives"]
-	n8["lib/src/foundation/content"]
-	n9["lib/src/foundation/layout"]
+	n1["lib/src/features/actions/button"]
+	n2["lib/src/features/collections/badge"]
+	n3["lib/src/features/forms/input"]
+	n4["lib/src/features/workspace/entity_picker/internal"]
+	n5["lib/src/features/workspace/entity_picker/models"]
+	n6["lib/src/features/workspace/entity_picker/primitives"]
+	n7["lib/src/foundation/content"]
+	n8["lib/src/foundation/layout"]
+	n9["lib/src/foundation/localization"]
 	n10["lib/src/foundation/surface"]
 	n11["lib/src/styling/legacy_theme"]
 	n0 -->|"import"| n1
 	n0 -->|"import"| n2
 	n0 -->|"import"| n3
-	n0 -->|"import"| n4
+	n0 -->|"part"| n4
 	n0 -->|"part"| n5
 	n0 -->|"part"| n6
-	n0 -->|"part"| n7
+	n0 -->|"import"| n7
 	n0 -->|"import"| n8
 	n0 -->|"import"| n9
 	n0 -->|"import"| n10
@@ -46,7 +46,6 @@ flowchart TD
 
 | 目標邊界 | 關係 | directive 數 | 第一筆來源證據 |
 |---|---|---|---|
-| <code>lib/src/application/localization</code> | import | 1 | [lib/src/features/workspace/entity_picker/klp_entity_picker.dart:7](../../../../../../lib/src/features/workspace/entity_picker/klp_entity_picker.dart#L7) |
 | <code>lib/src/features/actions/button</code> | import | 1 | [lib/src/features/workspace/entity_picker/klp_entity_picker.dart:3](../../../../../../lib/src/features/workspace/entity_picker/klp_entity_picker.dart#L3) |
 | <code>lib/src/features/collections/badge</code> | import | 1 | [lib/src/features/workspace/entity_picker/klp_entity_picker.dart:5](../../../../../../lib/src/features/workspace/entity_picker/klp_entity_picker.dart#L5) |
 | <code>lib/src/features/forms/input</code> | import | 1 | [lib/src/features/workspace/entity_picker/klp_entity_picker.dart:4](../../../../../../lib/src/features/workspace/entity_picker/klp_entity_picker.dart#L4) |
@@ -55,6 +54,7 @@ flowchart TD
 | <code>lib/src/features/workspace/entity_picker/primitives</code> | part | 1 | [lib/src/features/workspace/entity_picker/klp_entity_picker.dart:15](../../../../../../lib/src/features/workspace/entity_picker/klp_entity_picker.dart#L15) |
 | <code>lib/src/foundation/content</code> | import | 1 | [lib/src/features/workspace/entity_picker/klp_entity_picker.dart:10](../../../../../../lib/src/features/workspace/entity_picker/klp_entity_picker.dart#L10) |
 | <code>lib/src/foundation/layout</code> | import | 1 | [lib/src/features/workspace/entity_picker/klp_entity_picker.dart:6](../../../../../../lib/src/features/workspace/entity_picker/klp_entity_picker.dart#L6) |
+| <code>lib/src/foundation/localization</code> | import | 1 | [lib/src/features/workspace/entity_picker/klp_entity_picker.dart:7](../../../../../../lib/src/features/workspace/entity_picker/klp_entity_picker.dart#L7) |
 | <code>lib/src/foundation/surface</code> | import | 1 | [lib/src/features/workspace/entity_picker/klp_entity_picker.dart:8](../../../../../../lib/src/features/workspace/entity_picker/klp_entity_picker.dart#L8) |
 | <code>lib/src/styling/legacy_theme</code> | import | 1 | [lib/src/features/workspace/entity_picker/klp_entity_picker.dart:9](../../../../../../lib/src/features/workspace/entity_picker/klp_entity_picker.dart#L9) |
 | <code>package:flutter</code> | import | 1 | [lib/src/features/workspace/entity_picker/klp_entity_picker.dart:1](../../../../../../lib/src/features/workspace/entity_picker/klp_entity_picker.dart#L1) |

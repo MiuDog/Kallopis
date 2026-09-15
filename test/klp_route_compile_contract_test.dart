@@ -9,9 +9,9 @@ void main() {
     const imports =
         "import 'dart:async';\nimport 'package:kallopis/kallopis_declarative.dart';\nimport 'package:flutter/widgets.dart';\n";
     const base = '''final destination = KlpDestination<int, String>('main');
-KlpScreen screen(KlpRouteInput<int, String> input) => KlpScreen(id: 'screen', accessibilityLabel: 'Screen', child: KlpRail(id: 'rail'));
+KlpScreen screen(KlpRouteInput<int, String> input) => KlpScreen(id: KlpId.parse('screen'), accessibilityLabel: 'Screen', child: KlpRail(id: KlpId.parse('rail')));
 final configuredRoute = KlpRoute<int, String>(destination, screen: screen);
-final configuredRouter = KlpRouter(id: 'router', initial: destination.location(1), routes: [configuredRoute]);
+final configuredRouter = KlpRouter(id: KlpId.parse('router'), initial: destination.location(1), routes: [configuredRoute]);
 KlpApplication application(KlpPrimitiveSet primitives) => KlpApplication(title: 'App', primitives: primitives, router: configuredRouter);
 void typedOperations(KlpRouteInput<int, String> input) {
 	final int parameters = input.parameters;
@@ -41,7 +41,7 @@ void typedOperations(KlpRouteInput<int, String> input) {
       ),
       'wrong_input_type': (
         source:
-            "final route = KlpRoute(destination, screen: (KlpRouteInput<String, String> input) => KlpScreen(id: 'screen', accessibilityLabel: 'Screen', child: KlpRail(id: 'rail')));",
+            "final route = KlpRoute(destination, screen: (KlpRouteInput<String, String> input) => KlpScreen(id: KlpId.parse('screen'), accessibilityLabel: 'Screen', child: KlpRail(id: KlpId.parse('rail'))));",
         code: 'argument_type_not_assignable',
       ),
       'wrong_completion_type': (
@@ -70,7 +70,7 @@ void typedOperations(KlpRouteInput<int, String> input) {
       ),
       'screen_cannot_receive_widget': (
         source:
-            'final invalidScreen = KlpScreen(id: "screen", accessibilityLabel: "Screen", child: SizedBox());',
+            'final invalidScreen = KlpScreen(id: KlpId.parse("screen"), accessibilityLabel: "Screen", child: SizedBox());',
         code: 'argument_type_not_assignable',
       ),
       'no_environment_injection': (
@@ -136,17 +136,17 @@ void typedOperations(KlpRouteInput<int, String> input) {
       ),
       'widget_cannot_be_router_route': (
         source:
-            'final invalid = KlpRouter(id: "router", initial: destination.location(1), routes: [const SizedBox()]);',
+            'final invalid = KlpRouter(id: KlpId.parse("router"), initial: destination.location(1), routes: [const SizedBox()]);',
         code: 'list_element_type_not_assignable',
       ),
       'router_has_no_raw_child': (
         source:
-            'final invalid = KlpRouter(id: "router", initial: destination.location(1), routes: [configuredRoute], child: const SizedBox());',
+            'final invalid = KlpRouter(id: KlpId.parse("router"), initial: destination.location(1), routes: [configuredRoute], child: const SizedBox());',
         code: 'undefined_named_parameter',
       ),
       'route_mapper_cannot_receive_build_context': (
         source:
-            'final invalid = KlpRoute<int, String>(destination, screen: (BuildContext context) => KlpScreen(id: "screen", accessibilityLabel: "Screen", child: KlpRail(id: "rail")));',
+            'final invalid = KlpRoute<int, String>(destination, screen: (BuildContext context) => KlpScreen(id: KlpId.parse("screen"), accessibilityLabel: "Screen", child: KlpRail(id: KlpId.parse("rail"))));',
         code: 'argument_type_not_assignable',
       ),
       'route_has_no_context_parameter': (

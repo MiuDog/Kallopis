@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
-import '../../styling/legacy_theme/klp_theme.dart';
-import '../surface/klp_stroke.dart';
-import '../surface/klp_surface.dart';
+import 'package:kallopis/src/styling/legacy_theme/klp_theme.dart';
+import 'package:kallopis/src/foundation/surface/klp_stroke.dart';
+import 'package:kallopis/src/foundation/surface/klp_surface.dart';
 
 class KlpDropTarget extends StatelessWidget {
   const KlpDropTarget({super.key, required this.child, required this.active});

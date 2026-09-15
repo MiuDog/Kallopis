@@ -2,7 +2,7 @@
 library;
 
 import 'package:flutter/foundation.dart';
-import '../../feedback/klp_feedback_tone.dart';
+import 'package:kallopis/src/features/feedback/klp_feedback_tone.dart';
 
 /// 排程項目的視圖資料契約。
 @immutable

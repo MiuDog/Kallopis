@@ -11,7 +11,7 @@
 ```mermaid
 flowchart TD
 	n0["klp_tree_validation.dart"]
-	n1["../../kernel/identity/klp_placement_id.dart"]
+	n1["package:kallopis/src/kernel/identity/klp_placement_id.dart"]
 	n2["klp_validated_node.dart"]
 	n0 -->|"import"| n1
 	n0 -->|"import"| n2
@@ -21,7 +21,7 @@ flowchart TD
 
 | 關係 | 原始 directive | 來源 |
 |---|---|---|
-| import | <code>import &#x27;../../kernel/identity/klp_placement_id.dart&#x27;;</code> | [lib/src/composition/validation/klp_tree_validation.dart:1](../../../../../lib/src/composition/validation/klp_tree_validation.dart#L1) |
+| import | <code>import &#x27;package:kallopis/src/kernel/identity/klp_placement_id.dart&#x27;;</code> | [lib/src/composition/validation/klp_tree_validation.dart:1](../../../../../lib/src/composition/validation/klp_tree_validation.dart#L1) |
 | import | <code>import &#x27;klp_validated_node.dart&#x27;;</code> | [lib/src/composition/validation/klp_tree_validation.dart:2](../../../../../lib/src/composition/validation/klp_tree_validation.dart#L2) |
 
 ## 宣告關係圖

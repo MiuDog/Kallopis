@@ -11,46 +11,23 @@
 ```mermaid
 flowchart TD
 	n0["klp_app_platform.dart"]
+	n1["package:kallopis/src/capabilities/environment/klp_app_platform.dart"]
+	n0 -->|"export"| n1
 ```
 
 ## 依賴證據
 
 | 關係 | 原始 directive | 來源 |
 |---|---|---|
-| 無 | 本檔未宣告 import／export／part | [lib/src/foundation/platform/klp_app_platform.dart:1](../../../../../lib/src/foundation/platform/klp_app_platform.dart#L1) |
+| export | <code>export &#x27;package:kallopis/src/capabilities/environment/klp_app_platform.dart&#x27; show KlpAppPlatform;</code> | [lib/src/foundation/platform/klp_app_platform.dart:2](../../../../../lib/src/foundation/platform/klp_app_platform.dart#L2) |
 
 ## 宣告關係圖
 
-本組節點是本檔宣告；沒有箭頭的宣告未在此圖主張互相依賴。
-
-```mermaid
-classDiagram
-	class n0["KlpAppPlatform"]
-```
-
+本檔沒有 class／enum／mixin／extension 宣告；頂層函式、變數與 typedef 見下表。
 
 ## 宣告與成員證據
 
 成員包含 public 與 private；簽章取自來源，省略函式本體與欄位初始值。`(inferred)` 表示來源未明寫型別；建構子只顯示參數部分，不含初始化列表。
-
-### KlpAppPlatform
-
-EnumDeclaration · public · [lib/src/foundation/platform/klp_app_platform.dart:1](../../../../../lib/src/foundation/platform/klp_app_platform.dart#L1)
-
-<code>enum KlpAppPlatform</code>
-
-來源註解摘要：Kallopis 支援的執行平台分類。
-
-
-| 成員 | 可見性 | 簽章／型別 | 來源註解摘要 | 證據 |
-|---|---|---|---|---|
-| enum value <code>android</code> | public | <code>android</code> |  | [lib/src/foundation/platform/klp_app_platform.dart:2](../../../../../lib/src/foundation/platform/klp_app_platform.dart#L2) |
-| enum value <code>ios</code> | public | <code>ios</code> |  | [lib/src/foundation/platform/klp_app_platform.dart:2](../../../../../lib/src/foundation/platform/klp_app_platform.dart#L2) |
-| enum value <code>windows</code> | public | <code>windows</code> |  | [lib/src/foundation/platform/klp_app_platform.dart:2](../../../../../lib/src/foundation/platform/klp_app_platform.dart#L2) |
-| enum value <code>macos</code> | public | <code>macos</code> |  | [lib/src/foundation/platform/klp_app_platform.dart:2](../../../../../lib/src/foundation/platform/klp_app_platform.dart#L2) |
-| enum value <code>linux</code> | public | <code>linux</code> |  | [lib/src/foundation/platform/klp_app_platform.dart:2](../../../../../lib/src/foundation/platform/klp_app_platform.dart#L2) |
-| enum value <code>web</code> | public | <code>web</code> |  | [lib/src/foundation/platform/klp_app_platform.dart:2](../../../../../lib/src/foundation/platform/klp_app_platform.dart#L2) |
-| enum value <code>other</code> | public | <code>other</code> |  | [lib/src/foundation/platform/klp_app_platform.dart:2](../../../../../lib/src/foundation/platform/klp_app_platform.dart#L2) |
 
 ## 閱讀說明與限制
 

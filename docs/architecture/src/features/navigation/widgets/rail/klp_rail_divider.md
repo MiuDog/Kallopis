@@ -12,7 +12,7 @@
 flowchart TD
 	n0["klp_rail_divider.dart"]
 	n1["package:flutter/widgets.dart"]
-	n2["../../../../foundation/surface/klp_dashed_border.dart"]
+	n2["package:kallopis/src/foundation/surface/klp_dashed_border.dart"]
 	n3["klp_rail_entry.dart"]
 	n0 -->|"import"| n1
 	n0 -->|"import"| n2
@@ -24,7 +24,7 @@ flowchart TD
 | 關係 | 原始 directive | 來源 |
 |---|---|---|
 | import | <code>import &#x27;package:flutter/widgets.dart&#x27;;</code> | [lib/src/features/navigation/widgets/rail/klp_rail_divider.dart:1](../../../../../../../lib/src/features/navigation/widgets/rail/klp_rail_divider.dart#L1) |
-| import | <code>import &#x27;../../../../foundation/surface/klp_dashed_border.dart&#x27;;</code> | [lib/src/features/navigation/widgets/rail/klp_rail_divider.dart:3](../../../../../../../lib/src/features/navigation/widgets/rail/klp_rail_divider.dart#L3) |
+| import | <code>import &#x27;package:kallopis/src/foundation/surface/klp_dashed_border.dart&#x27;;</code> | [lib/src/features/navigation/widgets/rail/klp_rail_divider.dart:3](../../../../../../../lib/src/features/navigation/widgets/rail/klp_rail_divider.dart#L3) |
 | import | <code>import &#x27;klp_rail_entry.dart&#x27;;</code> | [lib/src/features/navigation/widgets/rail/klp_rail_divider.dart:4](../../../../../../../lib/src/features/navigation/widgets/rail/klp_rail_divider.dart#L4) |
 
 ## 宣告關係圖

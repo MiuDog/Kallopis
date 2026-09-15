@@ -1,5 +1,5 @@
-import '../primitives/klp_style_kind.dart';
-import '../primitives/klp_style_value.dart';
+import 'package:kallopis/src/styling/primitives/klp_style_kind.dart';
+import 'package:kallopis/src/styling/primitives/klp_style_value.dart';
 import 'internal/klp_semantic_identifier.dart';
 
 /// 用途名稱與量值種類分離；相同名稱不能藉不同型別重複註冊。

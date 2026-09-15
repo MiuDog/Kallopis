@@ -1,0 +1,81 @@
+{
+	"contract": "L10N-V1-r1",
+	"moves": {
+		"lib/src/application/localization/klp_localizations.dart": "lib/src/foundation/localization/klp_localizations.dart",
+		"lib/src/application/localization/klp_localizations_delegate.dart": "lib/src/foundation/localization/klp_localizations_delegate.dart",
+		"lib/src/application/localization/klp_default_saved_label.dart": "lib/src/foundation/localization/klp_default_saved_label.dart"
+	},
+	"writes": {
+		"foundation": [
+			"lib/src/foundation/localization/klp_default_saved_label.dart",
+			"lib/src/foundation/localization/klp_localizations.dart",
+			"lib/src/foundation/localization/klp_localizations_delegate.dart"
+		],
+		"features": [
+			"lib/src/features/actions/editor/klp_editor_action_bars.dart",
+			"lib/src/features/collections/advanced/klp_advanced_data.dart",
+			"lib/src/features/collections/code/klp_code_viewer.dart",
+			"lib/src/features/feedback/klp_toast.dart",
+			"lib/src/features/forms/color/klp_oklch_color_editor.dart",
+			"lib/src/features/forms/color/klp_oklch_color_picker.dart",
+			"lib/src/features/forms/internal/klp_form_dependencies.dart",
+			"lib/src/features/workspace/entity_picker/klp_entity_picker.dart",
+			"lib/src/features/workspace/page_chrome/klp_page_chrome.dart",
+			"lib/src/features/workspace/shell/composition/pane/klp_pane_collapse_control.dart",
+			"lib/src/features/workspace/shell/docking/klp_dock_header.dart",
+			"lib/src/features/workspace/shell/window/klp_window_controls.dart"
+		],
+		"rendering": [
+			"lib/src/rendering/flutter/internal/klp_flutter_editing.dart"
+		],
+		"application": [
+			"lib/src/application/bootstrap/internal/klp_application_host_state.dart",
+			"lib/src/application/legacy/klp_app.dart",
+			"lib/src/application/localization/klp_default_saved_label.dart",
+			"lib/src/application/localization/klp_localizations.dart",
+			"lib/src/application/localization/klp_localizations_delegate.dart",
+			"lib/src/application/structure/klp_application.dart"
+		]
+	},
+	"steward_public_paths": [
+		"lib/kallopis_foundation.dart"
+	],
+	"test_paths": [
+		"test/l10n_discipline_test.dart",
+		"test/frontend_architecture_boundary_test.dart",
+		"test/klp_localization_module_boundary_test.dart",
+		"test/klp_localization_contract_test.dart",
+		"test/klp_application_localization_test.dart",
+		"test/klp_app_contract_test.dart"
+	],
+	"existing_verification_paths": [
+		"test/klp_app_contract_test.dart",
+		"test/klp_application_host_test.dart"
+	],
+	"steward_generated_docs": [
+		"docs/architecture/src/**"
+	],
+	"test_amendment": "TEST-L10N-V1-01-r2: reproduced old baseline compile failure from four removed showWindowHeader named arguments. Only remove those four obsolete constructor argument lines; preserve all tests, assertions and remaining fixtures. Do not restore retired product API.",
+	"recovery": {
+		"revision": "L10N-V1-r2",
+		"labels": {
+			"editorLoadFailedTitle": "無法載入正文編輯器",
+			"editorLoadFailedMessage": "本機編輯器尚未完成啟動，請再試一次。",
+			"editorRetryLabel": "重試",
+			"editorInterruptedTitle": "編輯器已中斷",
+			"editorInterruptedMessage": "編輯器已中斷。請保留此視窗並嘗試儲存；尚未儲存內容不會自動重載。",
+			"editorEnvironmentFailedTitle": "無法啟動正文編輯器",
+			"editorEnvironmentFailedMessage": "系統無法建立本機 WebView2 環境。請確認 WebView2 Runtime 已安裝後重新開啟。"
+		},
+		"writes": {
+			"foundation": [
+				"lib/src/foundation/localization/klp_localizations.dart"
+			],
+			"rendering": [
+				"lib/src/rendering/flutter/internal/klp_block_note_load_error.dart",
+				"lib/src/rendering/flutter/internal/klp_flutter_block_note_editing.dart"
+			]
+		},
+		"test_revision": "TEST-L10N-V1-01-r3"
+	}
+}

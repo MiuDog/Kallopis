@@ -12,8 +12,8 @@
 flowchart LR
 	n0["klp_avatar.dart"]
 	n1["package:flutter/widgets.dart"]
-	n2["../../../styling/legacy_theme/klp_theme.dart"]
-	n3["../../../foundation/content/klp_text.dart"]
+	n2["package:kallopis/src/styling/legacy_theme/klp_theme.dart"]
+	n3["package:kallopis/src/foundation/content/klp_text.dart"]
 	n4["klp_avatar_size.dart"]
 	n5["klp_avatar_tone.dart"]
 	n6["klp_avatar_data.dart"]
@@ -38,8 +38,8 @@ flowchart LR
 | 關係 | 原始 directive | 來源 |
 |---|---|---|
 | import | <code>import &#x27;package:flutter/widgets.dart&#x27;;</code> | [lib/src/features/collections/avatar/klp_avatar.dart:1](../../../../../../lib/src/features/collections/avatar/klp_avatar.dart#L1) |
-| import | <code>import &#x27;../../../styling/legacy_theme/klp_theme.dart&#x27;;</code> | [lib/src/features/collections/avatar/klp_avatar.dart:3](../../../../../../lib/src/features/collections/avatar/klp_avatar.dart#L3) |
-| import | <code>import &#x27;../../../foundation/content/klp_text.dart&#x27;;</code> | [lib/src/features/collections/avatar/klp_avatar.dart:4](../../../../../../lib/src/features/collections/avatar/klp_avatar.dart#L4) |
+| import | <code>import &#x27;package:kallopis/src/styling/legacy_theme/klp_theme.dart&#x27;;</code> | [lib/src/features/collections/avatar/klp_avatar.dart:3](../../../../../../lib/src/features/collections/avatar/klp_avatar.dart#L3) |
+| import | <code>import &#x27;package:kallopis/src/foundation/content/klp_text.dart&#x27;;</code> | [lib/src/features/collections/avatar/klp_avatar.dart:4](../../../../../../lib/src/features/collections/avatar/klp_avatar.dart#L4) |
 | import | <code>import &#x27;klp_avatar_size.dart&#x27;;</code> | [lib/src/features/collections/avatar/klp_avatar.dart:5](../../../../../../lib/src/features/collections/avatar/klp_avatar.dart#L5) |
 | import | <code>import &#x27;klp_avatar_tone.dart&#x27;;</code> | [lib/src/features/collections/avatar/klp_avatar.dart:6](../../../../../../lib/src/features/collections/avatar/klp_avatar.dart#L6) |
 | export | <code>export &#x27;klp_avatar_data.dart&#x27;;</code> | [lib/src/features/collections/avatar/klp_avatar.dart:8](../../../../../../lib/src/features/collections/avatar/klp_avatar.dart#L8) |

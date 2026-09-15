@@ -11,13 +11,13 @@
 ```mermaid
 flowchart LR
 	n0["klp_prepared_screen.dart"]
-	n1["../../../composition/validation/klp_validated_node.dart"]
-	n2["../../../foundation/binding/internal/klp_bound_template.dart"]
-	n3["../../../kernel/lifecycle/internal/klp_frame_lease.dart"]
-	n4["../../../runtime/compilation/internal/klp_prepared_node.dart"]
-	n5["../../../runtime/installation/internal/klp_default_placement.dart"]
-	n6["../../../runtime/installation/internal/klp_placement_resource.dart"]
-	n7["../../../styling/primitives/klp_style_value.dart"]
+	n1["package:kallopis/src/composition/validation/klp_validated_node.dart"]
+	n2["package:kallopis/src/foundation/binding/contracts/klp_bound_template.dart"]
+	n3["package:kallopis/src/kernel/lifecycle/klp_frame_lease.dart"]
+	n4["package:kallopis/src/runtime/contracts/klp_prepared_node.dart"]
+	n5["package:kallopis/src/runtime/installation/klp_default_placement.dart"]
+	n6["package:kallopis/src/runtime/contracts/klp_placement_resource.dart"]
+	n7["package:kallopis/src/styling/primitives/klp_style_value.dart"]
 	n0 -->|"import"| n1
 	n0 -->|"import"| n2
 	n0 -->|"import"| n3
@@ -31,13 +31,13 @@ flowchart LR
 
 | 關係 | 原始 directive | 來源 |
 |---|---|---|
-| import | <code>import &#x27;../../../composition/validation/klp_validated_node.dart&#x27;;</code> | [lib/src/application/bootstrap/internal/klp_prepared_screen.dart:1](../../../../../../lib/src/application/bootstrap/internal/klp_prepared_screen.dart#L1) |
-| import | <code>import &#x27;../../../foundation/binding/internal/klp_bound_template.dart&#x27;;</code> | [lib/src/application/bootstrap/internal/klp_prepared_screen.dart:2](../../../../../../lib/src/application/bootstrap/internal/klp_prepared_screen.dart#L2) |
-| import | <code>import &#x27;../../../kernel/lifecycle/internal/klp_frame_lease.dart&#x27;;</code> | [lib/src/application/bootstrap/internal/klp_prepared_screen.dart:3](../../../../../../lib/src/application/bootstrap/internal/klp_prepared_screen.dart#L3) |
-| import | <code>import &#x27;../../../runtime/compilation/internal/klp_prepared_node.dart&#x27;;</code> | [lib/src/application/bootstrap/internal/klp_prepared_screen.dart:4](../../../../../../lib/src/application/bootstrap/internal/klp_prepared_screen.dart#L4) |
-| import | <code>import &#x27;../../../runtime/installation/internal/klp_default_placement.dart&#x27;;</code> | [lib/src/application/bootstrap/internal/klp_prepared_screen.dart:5](../../../../../../lib/src/application/bootstrap/internal/klp_prepared_screen.dart#L5) |
-| import | <code>import &#x27;../../../runtime/installation/internal/klp_placement_resource.dart&#x27;;</code> | [lib/src/application/bootstrap/internal/klp_prepared_screen.dart:6](../../../../../../lib/src/application/bootstrap/internal/klp_prepared_screen.dart#L6) |
-| import | <code>import &#x27;../../../styling/primitives/klp_style_value.dart&#x27;;</code> | [lib/src/application/bootstrap/internal/klp_prepared_screen.dart:7](../../../../../../lib/src/application/bootstrap/internal/klp_prepared_screen.dart#L7) |
+| import | <code>import &#x27;package:kallopis/src/composition/validation/klp_validated_node.dart&#x27;;</code> | [lib/src/application/bootstrap/internal/klp_prepared_screen.dart:1](../../../../../../lib/src/application/bootstrap/internal/klp_prepared_screen.dart#L1) |
+| import | <code>import &#x27;package:kallopis/src/foundation/binding/contracts/klp_bound_template.dart&#x27;;</code> | [lib/src/application/bootstrap/internal/klp_prepared_screen.dart:2](../../../../../../lib/src/application/bootstrap/internal/klp_prepared_screen.dart#L2) |
+| import | <code>import &#x27;package:kallopis/src/kernel/lifecycle/klp_frame_lease.dart&#x27;;</code> | [lib/src/application/bootstrap/internal/klp_prepared_screen.dart:3](../../../../../../lib/src/application/bootstrap/internal/klp_prepared_screen.dart#L3) |
+| import | <code>import &#x27;package:kallopis/src/runtime/contracts/klp_prepared_node.dart&#x27;;</code> | [lib/src/application/bootstrap/internal/klp_prepared_screen.dart:4](../../../../../../lib/src/application/bootstrap/internal/klp_prepared_screen.dart#L4) |
+| import | <code>import &#x27;package:kallopis/src/runtime/installation/klp_default_placement.dart&#x27;;</code> | [lib/src/application/bootstrap/internal/klp_prepared_screen.dart:5](../../../../../../lib/src/application/bootstrap/internal/klp_prepared_screen.dart#L5) |
+| import | <code>import &#x27;package:kallopis/src/runtime/contracts/klp_placement_resource.dart&#x27;;</code> | [lib/src/application/bootstrap/internal/klp_prepared_screen.dart:6](../../../../../../lib/src/application/bootstrap/internal/klp_prepared_screen.dart#L6) |
+| import | <code>import &#x27;package:kallopis/src/styling/primitives/klp_style_value.dart&#x27;;</code> | [lib/src/application/bootstrap/internal/klp_prepared_screen.dart:7](../../../../../../lib/src/application/bootstrap/internal/klp_prepared_screen.dart#L7) |
 
 ## 宣告關係圖
 

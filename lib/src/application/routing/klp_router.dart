@@ -2,7 +2,7 @@ part of '../structure/klp_application.dart';
 
 /// 單一或多畫面皆透過路由資料宣告，消費端不建立導覽控制器。
 final class KlpRouter {
-  final String id;
+  final KlpId id;
   final KlpLocation<Object?> initial;
   final List<KlpRoute<Object?, Object?>> routes;
   final KlpNavigationRestoration? restoration;
@@ -14,17 +14,17 @@ final class KlpRouter {
     required List<KlpRoute<Object?, Object?>> routes,
     this.restoration,
   }) : routes = List.unmodifiable(routes) {
-    if (id.trim().isEmpty) {
+    if (id.value.trim().isEmpty) {
       throw ArgumentError.value(id, 'id', 'Router identity cannot be empty.');
     }
     final names = <String>{};
     var initialRegistered = false;
     final destinations = <String, KlpDestination<Object?, Object?>>{};
     for (final route in this.routes) {
-      if (!names.add(route.destination.id)) {
-        throw ArgumentError('Duplicate destination: ${route.destination.id}.');
+      if (!names.add(route.destination.id.value)) {
+        throw ArgumentError('Duplicate destination: ${route.destination.id.value}.');
       }
-      destinations[route.destination.id] = route.destination;
+      destinations[route.destination.id.value] = route.destination;
       if (identical(route.destination, initial.destination)) {
         initialRegistered = true;
       }
@@ -50,7 +50,7 @@ final class KlpRouter {
     KlpNavigationRestoration value,
     Map<String, KlpDestination<Object?, Object?>> destinations,
   ) {
-    if (value.routerId != id) {
+    if (value.routerId != id.value) {
       throw ArgumentError('Restoration belongs to a different router.');
     }
     return List.unmodifiable(
@@ -68,6 +68,6 @@ final class KlpRouter {
 
   List<KlpLocation<Object?>> _restore(KlpNavigationRestoration value) =>
       _decodeRestoration(value, {
-        for (final route in routes) route.destination.id: route.destination,
+        for (final route in routes) route.destination.id.value: route.destination,
       });
 }

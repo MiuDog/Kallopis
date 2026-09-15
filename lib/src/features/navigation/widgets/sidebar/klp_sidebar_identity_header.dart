@@ -1,15 +1,15 @@
 import 'package:flutter/widgets.dart';
 
-import '../../../collections/avatar/klp_avatar.dart';
-import '../../../../foundation/klp_icon.dart';
-import '../../../../foundation/layout/klp_expanded.dart';
-import '../../../../foundation/layout/klp_gap.dart';
-import '../../../../foundation/layout/klp_layout_builder.dart';
-import '../../../../foundation/layout/klp_row.dart';
-import '../../../../foundation/layout/klp_space_size.dart';
-import '../../../../foundation/surface/klp_surface.dart';
-import '../../../../styling/legacy_theme/klp_theme.dart';
-import '../../../../foundation/content/klp_text.dart';
+import 'package:kallopis/src/features/collections/avatar/klp_avatar.dart';
+import 'package:kallopis/src/foundation/klp_icon.dart';
+import 'package:kallopis/src/foundation/layout/klp_expanded.dart';
+import 'package:kallopis/src/foundation/layout/klp_gap.dart';
+import 'package:kallopis/src/foundation/layout/klp_layout_builder.dart';
+import 'package:kallopis/src/foundation/layout/klp_row.dart';
+import 'package:kallopis/src/foundation/layout/klp_space_size.dart';
+import 'package:kallopis/src/foundation/surface/klp_surface.dart';
+import 'package:kallopis/src/styling/legacy_theme/klp_theme.dart';
+import 'package:kallopis/src/foundation/content/klp_text.dart';
 
 part 'primitives/klp_sidebar_identity_icon_frame.dart';
 

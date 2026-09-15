@@ -12,7 +12,7 @@
 
 目前先實作 `navigation/rail/`：`contracts/KlpRail` 固定 top／center／bottom 三區，全部只接受 `KlpRailItem`；外部項目可同時實作其他資格介面。清單及展開順序在建構時封存，重複放置識別由 composition registry 拒絕。Rail 本身具備 `KlpScreenBody` 資格。
 
-`internal/klp_rail_adapter.dart` 先解析本庫 semantic、驗證幾何及語意標籤並投影 callback；`klp_prepared_rail.dart` 將已準備資料降為選擇、線性排版、三區配置、表面與尺寸等基礎原語，沒有 Flutter 相依。`klp_rail_placement.dart` 擁有選取狀態及其借用 controller；移除選取項時清空選取，釋放時關閉自己建立的資源。操作接受後依序通知狀態、onSelected、onPressed，單一回呼失敗不吞掉其他通知。
+`adapters/klp_rail_adapter.dart` 先解析本庫 semantic、驗證幾何及語意標籤並投影 callback；`klp_prepared_rail.dart` 將已準備資料降為選擇、線性排版、三區配置、表面與尺寸等基礎原語，沒有 Flutter 相依。`klp_rail_placement.dart` 擁有選取狀態及其借用 controller；移除選取項時清空選取，釋放時關閉自己建立的資源。操作接受後依序通知狀態、onSelected、onPressed，單一回呼失敗不吞掉其他通知。
 
 焦點、鍵盤與輔助科技操作由通用 renderer 原語處理，feature 不另寫一份。目前尚未遷移原 rail 的排序、分隔線及完整平台行為，不能描述成全部 navigation rail 已完成。元件定義與內容投影參見 [模板樣板](../../component-template-prototype.md)。
 
@@ -32,13 +32,15 @@
 flowchart LR
 	n0["lib/src/features"]
 	n1["actions/"]
-	n2["collections/"]
-	n3["feedback/"]
-	n4["forms/"]
-	n5["infinite_canvas/"]
-	n6["navigation/"]
-	n7["overlays/"]
-	n8["workspace/"]
+	n2["catalog/"]
+	n3["collections/"]
+	n4["editing/"]
+	n5["feedback/"]
+	n6["forms/"]
+	n7["infinite_canvas/"]
+	n8["navigation/"]
+	n9["overlays/"]
+	n10["workspace/"]
 	n0 -->|"contains"| n1
 	n0 -->|"contains"| n2
 	n0 -->|"contains"| n3
@@ -47,6 +49,8 @@ flowchart LR
 	n0 -->|"contains"| n6
 	n0 -->|"contains"| n7
 	n0 -->|"contains"| n8
+	n0 -->|"contains"| n9
+	n0 -->|"contains"| n10
 ```
 
 ## 子目錄
@@ -54,7 +58,9 @@ flowchart LR
 | 目錄 | 導航 | 來源證據 |
 |---|---|---|
 | `actions/` | [架構入口](actions/README.md) | [來源目錄](../../../../lib/src/features/actions) |
+| `catalog/` | [架構入口](catalog/README.md) | [來源目錄](../../../../lib/src/features/catalog) |
 | `collections/` | [架構入口](collections/README.md) | [來源目錄](../../../../lib/src/features/collections) |
+| `editing/` | [架構入口](editing/README.md) | [來源目錄](../../../../lib/src/features/editing) |
 | `feedback/` | [架構入口](feedback/README.md) | [來源目錄](../../../../lib/src/features/feedback) |
 | `forms/` | [架構入口](forms/README.md) | [來源目錄](../../../../lib/src/features/forms) |
 | `infinite_canvas/` | [架構入口](infinite_canvas/README.md) | [來源目錄](../../../../lib/src/features/infinite_canvas) |

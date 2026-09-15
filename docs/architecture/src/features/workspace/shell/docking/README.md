@@ -13,23 +13,23 @@
 ```mermaid
 flowchart LR
 	n0["lib/src/features/workspace/shell/docking"]
-	n1["lib/src/application/localization"]
-	n2["lib/src/features/actions/button"]
-	n3["lib/src/features/overlays"]
-	n4["lib/src/features/workspace/shell/docking/internal"]
-	n5["lib/src/features/workspace/shell/docking/models"]
-	n6["lib/src/features/workspace/shell/docking/primitives"]
-	n7["lib/src/features/workspace/shell/panel"]
-	n8["lib/src/foundation"]
-	n9["lib/src/foundation/content"]
-	n10["lib/src/foundation/interaction"]
-	n11["lib/src/foundation/layout"]
+	n1["lib/src/features/actions/button"]
+	n2["lib/src/features/overlays"]
+	n3["lib/src/features/workspace/shell/docking/internal"]
+	n4["lib/src/features/workspace/shell/docking/models"]
+	n5["lib/src/features/workspace/shell/docking/primitives"]
+	n6["lib/src/features/workspace/shell/panel"]
+	n7["lib/src/foundation"]
+	n8["lib/src/foundation/content"]
+	n9["lib/src/foundation/interaction"]
+	n10["lib/src/foundation/layout"]
+	n11["lib/src/foundation/localization"]
 	n0 -->|"import"| n1
 	n0 -->|"import"| n2
-	n0 -->|"import"| n3
+	n0 -->|"part"| n3
 	n0 -->|"part"| n4
 	n0 -->|"part"| n5
-	n0 -->|"part"| n6
+	n0 -->|"import"| n6
 	n0 -->|"import"| n7
 	n0 -->|"import"| n8
 	n0 -->|"import"| n9
@@ -50,7 +50,6 @@ flowchart TD
 
 | 目標邊界 | 關係 | directive 數 | 第一筆來源證據 |
 |---|---|---|---|
-| <code>lib/src/application/localization</code> | import | 1 | [lib/src/features/workspace/shell/docking/klp_dock_header.dart:6](../../../../../../../lib/src/features/workspace/shell/docking/klp_dock_header.dart#L6) |
 | <code>lib/src/features/actions/button</code> | import | 1 | [lib/src/features/workspace/shell/docking/klp_dock_header.dart:4](../../../../../../../lib/src/features/workspace/shell/docking/klp_dock_header.dart#L4) |
 | <code>lib/src/features/overlays</code> | import | 2 | [lib/src/features/workspace/shell/docking/klp_dock_header.dart:8](../../../../../../../lib/src/features/workspace/shell/docking/klp_dock_header.dart#L8) |
 | <code>lib/src/features/workspace/shell/docking/internal</code> | part | 8 | [lib/src/features/workspace/shell/docking/klp_dock_header.dart:14](../../../../../../../lib/src/features/workspace/shell/docking/klp_dock_header.dart#L14) |
@@ -61,6 +60,7 @@ flowchart TD
 | <code>lib/src/foundation/content</code> | import | 1 | [lib/src/features/workspace/shell/docking/klp_dock_layout.dart:7](../../../../../../../lib/src/features/workspace/shell/docking/klp_dock_layout.dart#L7) |
 | <code>lib/src/foundation/interaction</code> | import | 1 | [lib/src/features/workspace/shell/docking/klp_dock_layout.dart:3](../../../../../../../lib/src/features/workspace/shell/docking/klp_dock_layout.dart#L3) |
 | <code>lib/src/foundation/layout</code> | import | 2 | [lib/src/features/workspace/shell/docking/klp_dock_header.dart:7](../../../../../../../lib/src/features/workspace/shell/docking/klp_dock_header.dart#L7) |
+| <code>lib/src/foundation/localization</code> | import | 1 | [lib/src/features/workspace/shell/docking/klp_dock_header.dart:6](../../../../../../../lib/src/features/workspace/shell/docking/klp_dock_header.dart#L6) |
 | <code>lib/src/foundation/surface</code> | import | 1 | [lib/src/features/workspace/shell/docking/klp_dock_layout.dart:5](../../../../../../../lib/src/features/workspace/shell/docking/klp_dock_layout.dart#L5) |
 | <code>lib/src/styling/legacy_theme</code> | import | 2 | [lib/src/features/workspace/shell/docking/klp_dock_header.dart:10](../../../../../../../lib/src/features/workspace/shell/docking/klp_dock_header.dart#L10) |
 | <code>package:flutter</code> | import | 5 | [lib/src/features/workspace/shell/docking/klp_dock_header.dart:1](../../../../../../../lib/src/features/workspace/shell/docking/klp_dock_header.dart#L1) |

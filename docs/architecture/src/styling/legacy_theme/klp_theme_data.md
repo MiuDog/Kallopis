@@ -12,7 +12,7 @@
 flowchart LR
 	n0["klp_theme_data.dart"]
 	n1["package:flutter/material.dart"]
-	n2["../legacy_tokens/primitive_token.dart"]
+	n2["package:kallopis/src/styling/legacy_tokens/primitive_token.dart"]
 	n3["klp_surface_theme.dart"]
 	n4["../presets/legacy/default_colors.dart"]
 	n0 -->|"import"| n1
@@ -26,7 +26,7 @@ flowchart LR
 | 關係 | 原始 directive | 來源 |
 |---|---|---|
 | import | <code>import &#x27;package:flutter/material.dart&#x27;;</code> | [lib/src/styling/legacy_theme/klp_theme_data.dart:1](../../../../../lib/src/styling/legacy_theme/klp_theme_data.dart#L1) |
-| import | <code>import &#x27;../legacy_tokens/primitive_token.dart&#x27;;</code> | [lib/src/styling/legacy_theme/klp_theme_data.dart:3](../../../../../lib/src/styling/legacy_theme/klp_theme_data.dart#L3) |
+| import | <code>import &#x27;package:kallopis/src/styling/legacy_tokens/primitive_token.dart&#x27;;</code> | [lib/src/styling/legacy_theme/klp_theme_data.dart:3](../../../../../lib/src/styling/legacy_theme/klp_theme_data.dart#L3) |
 | import | <code>import &#x27;klp_surface_theme.dart&#x27;;</code> | [lib/src/styling/legacy_theme/klp_theme_data.dart:4](../../../../../lib/src/styling/legacy_theme/klp_theme_data.dart#L4) |
 | part | <code>part &#x27;../presets/legacy/default_colors.dart&#x27;;</code> | [lib/src/styling/legacy_theme/klp_theme_data.dart:6](../../../../../lib/src/styling/legacy_theme/klp_theme_data.dart#L6) |
 

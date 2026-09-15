@@ -12,13 +12,13 @@
 flowchart LR
 	n0["klp_date_grid.dart"]
 	n1["package:flutter/widgets.dart"]
-	n2["../../../foundation/interaction/klp_gesture_region.dart"]
-	n3["../../../foundation/layout/klp_column.dart"]
-	n4["../../../foundation/layout/klp_gap.dart"]
-	n5["../../../foundation/layout/klp_space_size.dart"]
-	n6["../../../foundation/surface/klp_surface.dart"]
-	n7["../../../styling/legacy_theme/klp_theme.dart"]
-	n8["../../../foundation/content/klp_text.dart"]
+	n2["package:kallopis/src/foundation/interaction/klp_gesture_region.dart"]
+	n3["package:kallopis/src/foundation/layout/klp_column.dart"]
+	n4["package:kallopis/src/foundation/layout/klp_gap.dart"]
+	n5["package:kallopis/src/foundation/layout/klp_space_size.dart"]
+	n6["package:kallopis/src/foundation/surface/klp_surface.dart"]
+	n7["package:kallopis/src/styling/legacy_theme/klp_theme.dart"]
+	n8["package:kallopis/src/foundation/content/klp_text.dart"]
 	n9["klp_date_grid_item.dart"]
 	n10["klp_date_grid_item.dart"]
 	n11["internal/klp_date_grid_cell.dart"]
@@ -51,13 +51,13 @@ flowchart TD
 | 關係 | 原始 directive | 來源 |
 |---|---|---|
 | import | <code>import &#x27;package:flutter/widgets.dart&#x27;;</code> | [lib/src/features/collections/date_grid/klp_date_grid.dart:1](../../../../../../lib/src/features/collections/date_grid/klp_date_grid.dart#L1) |
-| import | <code>import &#x27;../../../foundation/interaction/klp_gesture_region.dart&#x27;;</code> | [lib/src/features/collections/date_grid/klp_date_grid.dart:3](../../../../../../lib/src/features/collections/date_grid/klp_date_grid.dart#L3) |
-| import | <code>import &#x27;../../../foundation/layout/klp_column.dart&#x27;;</code> | [lib/src/features/collections/date_grid/klp_date_grid.dart:4](../../../../../../lib/src/features/collections/date_grid/klp_date_grid.dart#L4) |
-| import | <code>import &#x27;../../../foundation/layout/klp_gap.dart&#x27;;</code> | [lib/src/features/collections/date_grid/klp_date_grid.dart:5](../../../../../../lib/src/features/collections/date_grid/klp_date_grid.dart#L5) |
-| import | <code>import &#x27;../../../foundation/layout/klp_space_size.dart&#x27;;</code> | [lib/src/features/collections/date_grid/klp_date_grid.dart:6](../../../../../../lib/src/features/collections/date_grid/klp_date_grid.dart#L6) |
-| import | <code>import &#x27;../../../foundation/surface/klp_surface.dart&#x27;;</code> | [lib/src/features/collections/date_grid/klp_date_grid.dart:7](../../../../../../lib/src/features/collections/date_grid/klp_date_grid.dart#L7) |
-| import | <code>import &#x27;../../../styling/legacy_theme/klp_theme.dart&#x27;;</code> | [lib/src/features/collections/date_grid/klp_date_grid.dart:8](../../../../../../lib/src/features/collections/date_grid/klp_date_grid.dart#L8) |
-| import | <code>import &#x27;../../../foundation/content/klp_text.dart&#x27;;</code> | [lib/src/features/collections/date_grid/klp_date_grid.dart:9](../../../../../../lib/src/features/collections/date_grid/klp_date_grid.dart#L9) |
+| import | <code>import &#x27;package:kallopis/src/foundation/interaction/klp_gesture_region.dart&#x27;;</code> | [lib/src/features/collections/date_grid/klp_date_grid.dart:3](../../../../../../lib/src/features/collections/date_grid/klp_date_grid.dart#L3) |
+| import | <code>import &#x27;package:kallopis/src/foundation/layout/klp_column.dart&#x27;;</code> | [lib/src/features/collections/date_grid/klp_date_grid.dart:4](../../../../../../lib/src/features/collections/date_grid/klp_date_grid.dart#L4) |
+| import | <code>import &#x27;package:kallopis/src/foundation/layout/klp_gap.dart&#x27;;</code> | [lib/src/features/collections/date_grid/klp_date_grid.dart:5](../../../../../../lib/src/features/collections/date_grid/klp_date_grid.dart#L5) |
+| import | <code>import &#x27;package:kallopis/src/foundation/layout/klp_space_size.dart&#x27;;</code> | [lib/src/features/collections/date_grid/klp_date_grid.dart:6](../../../../../../lib/src/features/collections/date_grid/klp_date_grid.dart#L6) |
+| import | <code>import &#x27;package:kallopis/src/foundation/surface/klp_surface.dart&#x27;;</code> | [lib/src/features/collections/date_grid/klp_date_grid.dart:7](../../../../../../lib/src/features/collections/date_grid/klp_date_grid.dart#L7) |
+| import | <code>import &#x27;package:kallopis/src/styling/legacy_theme/klp_theme.dart&#x27;;</code> | [lib/src/features/collections/date_grid/klp_date_grid.dart:8](../../../../../../lib/src/features/collections/date_grid/klp_date_grid.dart#L8) |
+| import | <code>import &#x27;package:kallopis/src/foundation/content/klp_text.dart&#x27;;</code> | [lib/src/features/collections/date_grid/klp_date_grid.dart:9](../../../../../../lib/src/features/collections/date_grid/klp_date_grid.dart#L9) |
 | import | <code>import &#x27;klp_date_grid_item.dart&#x27;;</code> | [lib/src/features/collections/date_grid/klp_date_grid.dart:10](../../../../../../lib/src/features/collections/date_grid/klp_date_grid.dart#L10) |
 | export | <code>export &#x27;klp_date_grid_item.dart&#x27;;</code> | [lib/src/features/collections/date_grid/klp_date_grid.dart:12](../../../../../../lib/src/features/collections/date_grid/klp_date_grid.dart#L12) |
 | part | <code>part &#x27;internal/klp_date_grid_cell.dart&#x27;;</code> | [lib/src/features/collections/date_grid/klp_date_grid.dart:14](../../../../../../lib/src/features/collections/date_grid/klp_date_grid.dart#L14) |

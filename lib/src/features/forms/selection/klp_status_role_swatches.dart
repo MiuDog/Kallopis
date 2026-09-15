@@ -1,4 +1,4 @@
-import '../internal/klp_form_dependencies.dart';
+import 'package:kallopis/src/features/forms/internal/klp_form_dependencies.dart';
 import 'models/klp_status_role.dart';
 
 export 'models/klp_status_role.dart';

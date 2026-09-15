@@ -12,7 +12,7 @@
 flowchart TD
 	n0["klp_view_option.dart"]
 	n1["package:flutter/widgets.dart"]
-	n2["../../../../foundation/klp_icon_data.dart"]
+	n2["package:kallopis/src/foundation/klp_icon_data.dart"]
 	n0 -->|"import"| n1
 	n0 -->|"import"| n2
 ```
@@ -22,7 +22,7 @@ flowchart TD
 | 關係 | 原始 directive | 來源 |
 |---|---|---|
 | import | <code>import &#x27;package:flutter/widgets.dart&#x27;;</code> | [lib/src/features/navigation/widgets/controls/klp_view_option.dart:1](../../../../../../../lib/src/features/navigation/widgets/controls/klp_view_option.dart#L1) |
-| import | <code>import &#x27;../../../../foundation/klp_icon_data.dart&#x27;;</code> | [lib/src/features/navigation/widgets/controls/klp_view_option.dart:3](../../../../../../../lib/src/features/navigation/widgets/controls/klp_view_option.dart#L3) |
+| import | <code>import &#x27;package:kallopis/src/foundation/klp_icon_data.dart&#x27;;</code> | [lib/src/features/navigation/widgets/controls/klp_view_option.dart:3](../../../../../../../lib/src/features/navigation/widgets/controls/klp_view_option.dart#L3) |
 
 ## 宣告關係圖
 

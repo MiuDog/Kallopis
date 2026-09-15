@@ -13,11 +13,11 @@ flowchart LR
 	n0["klp_settings_layout.dart"]
 	n1["dart:math"]
 	n2["package:flutter/material.dart"]
-	n3["../../../foundation/layout/klp_layout.dart"]
-	n4["../../overlays/primitives/klp_modal_frame.dart"]
-	n5["../../../foundation/surface/klp_surface.dart"]
-	n6["../../../styling/legacy_theme/klp_theme.dart"]
-	n7["../../../foundation/content/klp_text.dart"]
+	n3["package:kallopis/src/foundation/layout/klp_layout.dart"]
+	n4["package:kallopis/src/features/overlays/primitives/klp_modal_frame.dart"]
+	n5["package:kallopis/src/foundation/surface/klp_surface.dart"]
+	n6["package:kallopis/src/styling/legacy_theme/klp_theme.dart"]
+	n7["package:kallopis/src/foundation/content/klp_text.dart"]
 	n8["layout/klp_settings_content_header.dart"]
 	n9["layout/klp_settings_content_pane.dart"]
 	n10["layout/klp_settings_dialog.dart"]
@@ -48,11 +48,11 @@ flowchart TD
 |---|---|---|
 | import | <code>import &#x27;dart:math&#x27; as math;</code> | [lib/src/features/workspace/settings/klp_settings_layout.dart:1](../../../../../../lib/src/features/workspace/settings/klp_settings_layout.dart#L1) |
 | import | <code>import &#x27;package:flutter/material.dart&#x27;;</code> | [lib/src/features/workspace/settings/klp_settings_layout.dart:3](../../../../../../lib/src/features/workspace/settings/klp_settings_layout.dart#L3) |
-| import | <code>import &#x27;../../../foundation/layout/klp_layout.dart&#x27;;</code> | [lib/src/features/workspace/settings/klp_settings_layout.dart:5](../../../../../../lib/src/features/workspace/settings/klp_settings_layout.dart#L5) |
-| import | <code>import &#x27;../../overlays/primitives/klp_modal_frame.dart&#x27;;</code> | [lib/src/features/workspace/settings/klp_settings_layout.dart:6](../../../../../../lib/src/features/workspace/settings/klp_settings_layout.dart#L6) |
-| import | <code>import &#x27;../../../foundation/surface/klp_surface.dart&#x27;;</code> | [lib/src/features/workspace/settings/klp_settings_layout.dart:7](../../../../../../lib/src/features/workspace/settings/klp_settings_layout.dart#L7) |
-| import | <code>import &#x27;../../../styling/legacy_theme/klp_theme.dart&#x27;;</code> | [lib/src/features/workspace/settings/klp_settings_layout.dart:8](../../../../../../lib/src/features/workspace/settings/klp_settings_layout.dart#L8) |
-| import | <code>import &#x27;../../../foundation/content/klp_text.dart&#x27;;</code> | [lib/src/features/workspace/settings/klp_settings_layout.dart:9](../../../../../../lib/src/features/workspace/settings/klp_settings_layout.dart#L9) |
+| import | <code>import &#x27;package:kallopis/src/foundation/layout/klp_layout.dart&#x27;;</code> | [lib/src/features/workspace/settings/klp_settings_layout.dart:5](../../../../../../lib/src/features/workspace/settings/klp_settings_layout.dart#L5) |
+| import | <code>import &#x27;package:kallopis/src/features/overlays/primitives/klp_modal_frame.dart&#x27;;</code> | [lib/src/features/workspace/settings/klp_settings_layout.dart:6](../../../../../../lib/src/features/workspace/settings/klp_settings_layout.dart#L6) |
+| import | <code>import &#x27;package:kallopis/src/foundation/surface/klp_surface.dart&#x27;;</code> | [lib/src/features/workspace/settings/klp_settings_layout.dart:7](../../../../../../lib/src/features/workspace/settings/klp_settings_layout.dart#L7) |
+| import | <code>import &#x27;package:kallopis/src/styling/legacy_theme/klp_theme.dart&#x27;;</code> | [lib/src/features/workspace/settings/klp_settings_layout.dart:8](../../../../../../lib/src/features/workspace/settings/klp_settings_layout.dart#L8) |
+| import | <code>import &#x27;package:kallopis/src/foundation/content/klp_text.dart&#x27;;</code> | [lib/src/features/workspace/settings/klp_settings_layout.dart:9](../../../../../../lib/src/features/workspace/settings/klp_settings_layout.dart#L9) |
 | part | <code>part &#x27;layout/klp_settings_content_header.dart&#x27;;</code> | [lib/src/features/workspace/settings/klp_settings_layout.dart:11](../../../../../../lib/src/features/workspace/settings/klp_settings_layout.dart#L11) |
 | part | <code>part &#x27;layout/klp_settings_content_pane.dart&#x27;;</code> | [lib/src/features/workspace/settings/klp_settings_layout.dart:12](../../../../../../lib/src/features/workspace/settings/klp_settings_layout.dart#L12) |
 | part | <code>part &#x27;layout/klp_settings_dialog.dart&#x27;;</code> | [lib/src/features/workspace/settings/klp_settings_layout.dart:13](../../../../../../lib/src/features/workspace/settings/klp_settings_layout.dart#L13) |

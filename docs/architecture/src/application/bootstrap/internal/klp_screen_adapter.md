@@ -11,17 +11,17 @@
 ```mermaid
 flowchart LR
 	n0["klp_screen_adapter.dart"]
-	n1["../../../composition/definitions/klp_definition.dart"]
-	n2["../../../composition/nodes/klp_node.dart"]
-	n3["../../../composition/validation/klp_validated_node.dart"]
-	n4["../../../runtime/compilation/internal/klp_node_adapter.dart"]
-	n5["../../../runtime/compilation/internal/klp_prepare_context.dart"]
-	n6["../../../runtime/compilation/internal/klp_prepared_node.dart"]
-	n7["../../../styling/primitives/klp_primitive_index.dart"]
-	n8["../../../styling/primitives/klp_style_kind.dart"]
-	n9["../../../styling/references/klp_style_ref.dart"]
-	n10["../../../styling/semantics/klp_semantic_key.dart"]
-	n11["../../../styling/semantics/klp_semantic_schema.dart"]
+	n1["package:kallopis/src/composition/definitions/klp_definition.dart"]
+	n2["package:kallopis/src/composition/nodes/klp_node.dart"]
+	n3["package:kallopis/src/composition/validation/klp_validated_node.dart"]
+	n4["package:kallopis/src/runtime/contracts/klp_node_adapter.dart"]
+	n5["package:kallopis/src/runtime/contracts/klp_prepare_context.dart"]
+	n6["package:kallopis/src/runtime/contracts/klp_prepared_node.dart"]
+	n7["package:kallopis/src/styling/primitives/klp_primitive_index.dart"]
+	n8["package:kallopis/src/styling/primitives/klp_style_kind.dart"]
+	n9["package:kallopis/src/styling/references/klp_style_ref.dart"]
+	n10["package:kallopis/src/styling/semantics/klp_semantic_key.dart"]
+	n11["package:kallopis/src/styling/semantics/klp_semantic_schema.dart"]
 	n0 -->|"import"| n1
 	n0 -->|"import"| n2
 	n0 -->|"import"| n3
@@ -38,8 +38,8 @@ flowchart LR
 ```mermaid
 flowchart TD
 	n0["klp_screen_adapter.dart"]
-	n1["../../../styling/semantics/klp_semantic_token.dart"]
-	n2["../../structure/klp_screen.dart"]
+	n1["package:kallopis/src/styling/semantics/klp_semantic_token.dart"]
+	n2["package:kallopis/src/application/structure/klp_screen.dart"]
 	n3["klp_prepared_screen.dart"]
 	n0 -->|"import"| n1
 	n0 -->|"import"| n2
@@ -50,19 +50,19 @@ flowchart TD
 
 | 關係 | 原始 directive | 來源 |
 |---|---|---|
-| import | <code>import &#x27;../../../composition/definitions/klp_definition.dart&#x27;;</code> | [lib/src/application/bootstrap/internal/klp_screen_adapter.dart:1](../../../../../../lib/src/application/bootstrap/internal/klp_screen_adapter.dart#L1) |
-| import | <code>import &#x27;../../../composition/nodes/klp_node.dart&#x27;;</code> | [lib/src/application/bootstrap/internal/klp_screen_adapter.dart:2](../../../../../../lib/src/application/bootstrap/internal/klp_screen_adapter.dart#L2) |
-| import | <code>import &#x27;../../../composition/validation/klp_validated_node.dart&#x27;;</code> | [lib/src/application/bootstrap/internal/klp_screen_adapter.dart:3](../../../../../../lib/src/application/bootstrap/internal/klp_screen_adapter.dart#L3) |
-| import | <code>import &#x27;../../../runtime/compilation/internal/klp_node_adapter.dart&#x27;;</code> | [lib/src/application/bootstrap/internal/klp_screen_adapter.dart:4](../../../../../../lib/src/application/bootstrap/internal/klp_screen_adapter.dart#L4) |
-| import | <code>import &#x27;../../../runtime/compilation/internal/klp_prepare_context.dart&#x27;;</code> | [lib/src/application/bootstrap/internal/klp_screen_adapter.dart:5](../../../../../../lib/src/application/bootstrap/internal/klp_screen_adapter.dart#L5) |
-| import | <code>import &#x27;../../../runtime/compilation/internal/klp_prepared_node.dart&#x27;;</code> | [lib/src/application/bootstrap/internal/klp_screen_adapter.dart:6](../../../../../../lib/src/application/bootstrap/internal/klp_screen_adapter.dart#L6) |
-| import | <code>import &#x27;../../../styling/primitives/klp_primitive_index.dart&#x27;;</code> | [lib/src/application/bootstrap/internal/klp_screen_adapter.dart:7](../../../../../../lib/src/application/bootstrap/internal/klp_screen_adapter.dart#L7) |
-| import | <code>import &#x27;../../../styling/primitives/klp_style_kind.dart&#x27;;</code> | [lib/src/application/bootstrap/internal/klp_screen_adapter.dart:8](../../../../../../lib/src/application/bootstrap/internal/klp_screen_adapter.dart#L8) |
-| import | <code>import &#x27;../../../styling/references/klp_style_ref.dart&#x27;;</code> | [lib/src/application/bootstrap/internal/klp_screen_adapter.dart:9](../../../../../../lib/src/application/bootstrap/internal/klp_screen_adapter.dart#L9) |
-| import | <code>import &#x27;../../../styling/semantics/klp_semantic_key.dart&#x27;;</code> | [lib/src/application/bootstrap/internal/klp_screen_adapter.dart:10](../../../../../../lib/src/application/bootstrap/internal/klp_screen_adapter.dart#L10) |
-| import | <code>import &#x27;../../../styling/semantics/klp_semantic_schema.dart&#x27;;</code> | [lib/src/application/bootstrap/internal/klp_screen_adapter.dart:11](../../../../../../lib/src/application/bootstrap/internal/klp_screen_adapter.dart#L11) |
-| import | <code>import &#x27;../../../styling/semantics/klp_semantic_token.dart&#x27;;</code> | [lib/src/application/bootstrap/internal/klp_screen_adapter.dart:12](../../../../../../lib/src/application/bootstrap/internal/klp_screen_adapter.dart#L12) |
-| import | <code>import &#x27;../../structure/klp_screen.dart&#x27;;</code> | [lib/src/application/bootstrap/internal/klp_screen_adapter.dart:13](../../../../../../lib/src/application/bootstrap/internal/klp_screen_adapter.dart#L13) |
+| import | <code>import &#x27;package:kallopis/src/composition/definitions/klp_definition.dart&#x27;;</code> | [lib/src/application/bootstrap/internal/klp_screen_adapter.dart:1](../../../../../../lib/src/application/bootstrap/internal/klp_screen_adapter.dart#L1) |
+| import | <code>import &#x27;package:kallopis/src/composition/nodes/klp_node.dart&#x27;;</code> | [lib/src/application/bootstrap/internal/klp_screen_adapter.dart:2](../../../../../../lib/src/application/bootstrap/internal/klp_screen_adapter.dart#L2) |
+| import | <code>import &#x27;package:kallopis/src/composition/validation/klp_validated_node.dart&#x27;;</code> | [lib/src/application/bootstrap/internal/klp_screen_adapter.dart:3](../../../../../../lib/src/application/bootstrap/internal/klp_screen_adapter.dart#L3) |
+| import | <code>import &#x27;package:kallopis/src/runtime/contracts/klp_node_adapter.dart&#x27;;</code> | [lib/src/application/bootstrap/internal/klp_screen_adapter.dart:4](../../../../../../lib/src/application/bootstrap/internal/klp_screen_adapter.dart#L4) |
+| import | <code>import &#x27;package:kallopis/src/runtime/contracts/klp_prepare_context.dart&#x27;;</code> | [lib/src/application/bootstrap/internal/klp_screen_adapter.dart:5](../../../../../../lib/src/application/bootstrap/internal/klp_screen_adapter.dart#L5) |
+| import | <code>import &#x27;package:kallopis/src/runtime/contracts/klp_prepared_node.dart&#x27;;</code> | [lib/src/application/bootstrap/internal/klp_screen_adapter.dart:6](../../../../../../lib/src/application/bootstrap/internal/klp_screen_adapter.dart#L6) |
+| import | <code>import &#x27;package:kallopis/src/styling/primitives/klp_primitive_index.dart&#x27;;</code> | [lib/src/application/bootstrap/internal/klp_screen_adapter.dart:7](../../../../../../lib/src/application/bootstrap/internal/klp_screen_adapter.dart#L7) |
+| import | <code>import &#x27;package:kallopis/src/styling/primitives/klp_style_kind.dart&#x27;;</code> | [lib/src/application/bootstrap/internal/klp_screen_adapter.dart:8](../../../../../../lib/src/application/bootstrap/internal/klp_screen_adapter.dart#L8) |
+| import | <code>import &#x27;package:kallopis/src/styling/references/klp_style_ref.dart&#x27;;</code> | [lib/src/application/bootstrap/internal/klp_screen_adapter.dart:9](../../../../../../lib/src/application/bootstrap/internal/klp_screen_adapter.dart#L9) |
+| import | <code>import &#x27;package:kallopis/src/styling/semantics/klp_semantic_key.dart&#x27;;</code> | [lib/src/application/bootstrap/internal/klp_screen_adapter.dart:10](../../../../../../lib/src/application/bootstrap/internal/klp_screen_adapter.dart#L10) |
+| import | <code>import &#x27;package:kallopis/src/styling/semantics/klp_semantic_schema.dart&#x27;;</code> | [lib/src/application/bootstrap/internal/klp_screen_adapter.dart:11](../../../../../../lib/src/application/bootstrap/internal/klp_screen_adapter.dart#L11) |
+| import | <code>import &#x27;package:kallopis/src/styling/semantics/klp_semantic_token.dart&#x27;;</code> | [lib/src/application/bootstrap/internal/klp_screen_adapter.dart:12](../../../../../../lib/src/application/bootstrap/internal/klp_screen_adapter.dart#L12) |
+| import | <code>import &#x27;package:kallopis/src/application/structure/klp_screen.dart&#x27;;</code> | [lib/src/application/bootstrap/internal/klp_screen_adapter.dart:13](../../../../../../lib/src/application/bootstrap/internal/klp_screen_adapter.dart#L13) |
 | import | <code>import &#x27;klp_prepared_screen.dart&#x27;;</code> | [lib/src/application/bootstrap/internal/klp_screen_adapter.dart:14](../../../../../../lib/src/application/bootstrap/internal/klp_screen_adapter.dart#L14) |
 
 ## 宣告關係圖

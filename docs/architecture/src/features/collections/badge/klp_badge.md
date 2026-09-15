@@ -12,11 +12,11 @@
 flowchart LR
 	n0["klp_badge.dart"]
 	n1["package:flutter/material.dart"]
-	n2["../../feedback/klp_feedback_tone.dart"]
-	n3["../../../foundation/interaction/klp_gesture_region.dart"]
-	n4["../../../foundation/layout/klp_layout.dart"]
-	n5["../../../styling/legacy_theme/klp_theme.dart"]
-	n6["../../../foundation/content/klp_text.dart"]
+	n2["package:kallopis/src/features/feedback/klp_feedback_tone.dart"]
+	n3["package:kallopis/src/foundation/interaction/klp_gesture_region.dart"]
+	n4["package:kallopis/src/foundation/layout/klp_layout.dart"]
+	n5["package:kallopis/src/styling/legacy_theme/klp_theme.dart"]
+	n6["package:kallopis/src/foundation/content/klp_text.dart"]
 	n7["klp_badge_variant.dart"]
 	n8["klp_badge_variant.dart"]
 	n9["internal/klp_badge_widget.dart"]
@@ -51,11 +51,11 @@ flowchart TD
 | 關係 | 原始 directive | 來源 |
 |---|---|---|
 | import | <code>import &#x27;package:flutter/material.dart&#x27;;</code> | [lib/src/features/collections/badge/klp_badge.dart:1](../../../../../../lib/src/features/collections/badge/klp_badge.dart#L1) |
-| import | <code>import &#x27;../../feedback/klp_feedback_tone.dart&#x27;;</code> | [lib/src/features/collections/badge/klp_badge.dart:3](../../../../../../lib/src/features/collections/badge/klp_badge.dart#L3) |
-| import | <code>import &#x27;../../../foundation/interaction/klp_gesture_region.dart&#x27;;</code> | [lib/src/features/collections/badge/klp_badge.dart:4](../../../../../../lib/src/features/collections/badge/klp_badge.dart#L4) |
-| import | <code>import &#x27;../../../foundation/layout/klp_layout.dart&#x27;;</code> | [lib/src/features/collections/badge/klp_badge.dart:5](../../../../../../lib/src/features/collections/badge/klp_badge.dart#L5) |
-| import | <code>import &#x27;../../../styling/legacy_theme/klp_theme.dart&#x27;;</code> | [lib/src/features/collections/badge/klp_badge.dart:6](../../../../../../lib/src/features/collections/badge/klp_badge.dart#L6) |
-| import | <code>import &#x27;../../../foundation/content/klp_text.dart&#x27;;</code> | [lib/src/features/collections/badge/klp_badge.dart:7](../../../../../../lib/src/features/collections/badge/klp_badge.dart#L7) |
+| import | <code>import &#x27;package:kallopis/src/features/feedback/klp_feedback_tone.dart&#x27;;</code> | [lib/src/features/collections/badge/klp_badge.dart:3](../../../../../../lib/src/features/collections/badge/klp_badge.dart#L3) |
+| import | <code>import &#x27;package:kallopis/src/foundation/interaction/klp_gesture_region.dart&#x27;;</code> | [lib/src/features/collections/badge/klp_badge.dart:4](../../../../../../lib/src/features/collections/badge/klp_badge.dart#L4) |
+| import | <code>import &#x27;package:kallopis/src/foundation/layout/klp_layout.dart&#x27;;</code> | [lib/src/features/collections/badge/klp_badge.dart:5](../../../../../../lib/src/features/collections/badge/klp_badge.dart#L5) |
+| import | <code>import &#x27;package:kallopis/src/styling/legacy_theme/klp_theme.dart&#x27;;</code> | [lib/src/features/collections/badge/klp_badge.dart:6](../../../../../../lib/src/features/collections/badge/klp_badge.dart#L6) |
+| import | <code>import &#x27;package:kallopis/src/foundation/content/klp_text.dart&#x27;;</code> | [lib/src/features/collections/badge/klp_badge.dart:7](../../../../../../lib/src/features/collections/badge/klp_badge.dart#L7) |
 | import | <code>import &#x27;klp_badge_variant.dart&#x27;;</code> | [lib/src/features/collections/badge/klp_badge.dart:8](../../../../../../lib/src/features/collections/badge/klp_badge.dart#L8) |
 | export | <code>export &#x27;klp_badge_variant.dart&#x27;;</code> | [lib/src/features/collections/badge/klp_badge.dart:10](../../../../../../lib/src/features/collections/badge/klp_badge.dart#L10) |
 | part | <code>part &#x27;internal/klp_badge_widget.dart&#x27;;</code> | [lib/src/features/collections/badge/klp_badge.dart:12](../../../../../../lib/src/features/collections/badge/klp_badge.dart#L12) |

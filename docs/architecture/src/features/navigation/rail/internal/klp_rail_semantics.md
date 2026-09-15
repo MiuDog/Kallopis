@@ -11,14 +11,14 @@
 ```mermaid
 flowchart LR
 	n0["klp_rail_semantics.dart"]
-	n1["../../../../styling/primitives/klp_primitive_index.dart"]
-	n2["../../../../styling/primitives/klp_style_kind.dart"]
-	n3["../../../../styling/primitives/klp_style_value.dart"]
-	n4["../../../../styling/references/klp_style_ref.dart"]
-	n5["../../../../styling/semantics/klp_semantic_key.dart"]
-	n6["../../../../styling/semantics/klp_semantic_schema.dart"]
-	n7["../../../../styling/semantics/klp_semantic_token.dart"]
-	n8["../contracts/klp_rail.dart"]
+	n1["package:kallopis/src/styling/primitives/klp_primitive_index.dart"]
+	n2["package:kallopis/src/styling/primitives/klp_style_kind.dart"]
+	n3["package:kallopis/src/styling/primitives/klp_style_value.dart"]
+	n4["package:kallopis/src/styling/references/klp_style_ref.dart"]
+	n5["package:kallopis/src/styling/semantics/klp_semantic_key.dart"]
+	n6["package:kallopis/src/styling/semantics/klp_semantic_schema.dart"]
+	n7["package:kallopis/src/styling/semantics/klp_semantic_token.dart"]
+	n8["package:kallopis/src/features/navigation/rail/contracts/klp_rail.dart"]
 	n0 -->|"import"| n1
 	n0 -->|"import"| n2
 	n0 -->|"import"| n3
@@ -33,14 +33,14 @@ flowchart LR
 
 | 關係 | 原始 directive | 來源 |
 |---|---|---|
-| import | <code>import &#x27;../../../../styling/primitives/klp_primitive_index.dart&#x27;;</code> | [lib/src/features/navigation/rail/internal/klp_rail_semantics.dart:1](../../../../../../../lib/src/features/navigation/rail/internal/klp_rail_semantics.dart#L1) |
-| import | <code>import &#x27;../../../../styling/primitives/klp_style_kind.dart&#x27;;</code> | [lib/src/features/navigation/rail/internal/klp_rail_semantics.dart:2](../../../../../../../lib/src/features/navigation/rail/internal/klp_rail_semantics.dart#L2) |
-| import | <code>import &#x27;../../../../styling/primitives/klp_style_value.dart&#x27;;</code> | [lib/src/features/navigation/rail/internal/klp_rail_semantics.dart:3](../../../../../../../lib/src/features/navigation/rail/internal/klp_rail_semantics.dart#L3) |
-| import | <code>import &#x27;../../../../styling/references/klp_style_ref.dart&#x27;;</code> | [lib/src/features/navigation/rail/internal/klp_rail_semantics.dart:4](../../../../../../../lib/src/features/navigation/rail/internal/klp_rail_semantics.dart#L4) |
-| import | <code>import &#x27;../../../../styling/semantics/klp_semantic_key.dart&#x27;;</code> | [lib/src/features/navigation/rail/internal/klp_rail_semantics.dart:5](../../../../../../../lib/src/features/navigation/rail/internal/klp_rail_semantics.dart#L5) |
-| import | <code>import &#x27;../../../../styling/semantics/klp_semantic_schema.dart&#x27;;</code> | [lib/src/features/navigation/rail/internal/klp_rail_semantics.dart:6](../../../../../../../lib/src/features/navigation/rail/internal/klp_rail_semantics.dart#L6) |
-| import | <code>import &#x27;../../../../styling/semantics/klp_semantic_token.dart&#x27;;</code> | [lib/src/features/navigation/rail/internal/klp_rail_semantics.dart:7](../../../../../../../lib/src/features/navigation/rail/internal/klp_rail_semantics.dart#L7) |
-| import | <code>import &#x27;../contracts/klp_rail.dart&#x27;;</code> | [lib/src/features/navigation/rail/internal/klp_rail_semantics.dart:8](../../../../../../../lib/src/features/navigation/rail/internal/klp_rail_semantics.dart#L8) |
+| import | <code>import &#x27;package:kallopis/src/styling/primitives/klp_primitive_index.dart&#x27;;</code> | [lib/src/features/navigation/rail/internal/klp_rail_semantics.dart:1](../../../../../../../lib/src/features/navigation/rail/internal/klp_rail_semantics.dart#L1) |
+| import | <code>import &#x27;package:kallopis/src/styling/primitives/klp_style_kind.dart&#x27;;</code> | [lib/src/features/navigation/rail/internal/klp_rail_semantics.dart:2](../../../../../../../lib/src/features/navigation/rail/internal/klp_rail_semantics.dart#L2) |
+| import | <code>import &#x27;package:kallopis/src/styling/primitives/klp_style_value.dart&#x27;;</code> | [lib/src/features/navigation/rail/internal/klp_rail_semantics.dart:3](../../../../../../../lib/src/features/navigation/rail/internal/klp_rail_semantics.dart#L3) |
+| import | <code>import &#x27;package:kallopis/src/styling/references/klp_style_ref.dart&#x27;;</code> | [lib/src/features/navigation/rail/internal/klp_rail_semantics.dart:4](../../../../../../../lib/src/features/navigation/rail/internal/klp_rail_semantics.dart#L4) |
+| import | <code>import &#x27;package:kallopis/src/styling/semantics/klp_semantic_key.dart&#x27;;</code> | [lib/src/features/navigation/rail/internal/klp_rail_semantics.dart:5](../../../../../../../lib/src/features/navigation/rail/internal/klp_rail_semantics.dart#L5) |
+| import | <code>import &#x27;package:kallopis/src/styling/semantics/klp_semantic_schema.dart&#x27;;</code> | [lib/src/features/navigation/rail/internal/klp_rail_semantics.dart:6](../../../../../../../lib/src/features/navigation/rail/internal/klp_rail_semantics.dart#L6) |
+| import | <code>import &#x27;package:kallopis/src/styling/semantics/klp_semantic_token.dart&#x27;;</code> | [lib/src/features/navigation/rail/internal/klp_rail_semantics.dart:7](../../../../../../../lib/src/features/navigation/rail/internal/klp_rail_semantics.dart#L7) |
+| import | <code>import &#x27;package:kallopis/src/features/navigation/rail/contracts/klp_rail.dart&#x27;;</code> | [lib/src/features/navigation/rail/internal/klp_rail_semantics.dart:8](../../../../../../../lib/src/features/navigation/rail/internal/klp_rail_semantics.dart#L8) |
 
 ## 宣告關係圖
 

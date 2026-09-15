@@ -12,11 +12,11 @@
 flowchart LR
 	n0["klp_inline_notice.dart"]
 	n1["package:flutter/widgets.dart"]
-	n2["../../foundation/klp_icon.dart"]
-	n3["../../foundation/layout/klp_layout.dart"]
-	n4["../../foundation/surface/klp_surface.dart"]
-	n5["../../styling/legacy_theme/klp_theme.dart"]
-	n6["../../foundation/content/klp_text.dart"]
+	n2["package:kallopis/src/foundation/klp_icon.dart"]
+	n3["package:kallopis/src/foundation/layout/klp_layout.dart"]
+	n4["package:kallopis/src/foundation/surface/klp_surface.dart"]
+	n5["package:kallopis/src/styling/legacy_theme/klp_theme.dart"]
+	n6["package:kallopis/src/foundation/content/klp_text.dart"]
 	n7["klp_feedback_tone.dart"]
 	n0 -->|"import"| n1
 	n0 -->|"import"| n2
@@ -32,11 +32,11 @@ flowchart LR
 | 關係 | 原始 directive | 來源 |
 |---|---|---|
 | import | <code>import &#x27;package:flutter/widgets.dart&#x27;;</code> | [lib/src/features/feedback/klp_inline_notice.dart:1](../../../../../lib/src/features/feedback/klp_inline_notice.dart#L1) |
-| import | <code>import &#x27;../../foundation/klp_icon.dart&#x27;;</code> | [lib/src/features/feedback/klp_inline_notice.dart:3](../../../../../lib/src/features/feedback/klp_inline_notice.dart#L3) |
-| import | <code>import &#x27;../../foundation/layout/klp_layout.dart&#x27;;</code> | [lib/src/features/feedback/klp_inline_notice.dart:4](../../../../../lib/src/features/feedback/klp_inline_notice.dart#L4) |
-| import | <code>import &#x27;../../foundation/surface/klp_surface.dart&#x27;;</code> | [lib/src/features/feedback/klp_inline_notice.dart:5](../../../../../lib/src/features/feedback/klp_inline_notice.dart#L5) |
-| import | <code>import &#x27;../../styling/legacy_theme/klp_theme.dart&#x27;;</code> | [lib/src/features/feedback/klp_inline_notice.dart:6](../../../../../lib/src/features/feedback/klp_inline_notice.dart#L6) |
-| import | <code>import &#x27;../../foundation/content/klp_text.dart&#x27;;</code> | [lib/src/features/feedback/klp_inline_notice.dart:7](../../../../../lib/src/features/feedback/klp_inline_notice.dart#L7) |
+| import | <code>import &#x27;package:kallopis/src/foundation/klp_icon.dart&#x27;;</code> | [lib/src/features/feedback/klp_inline_notice.dart:3](../../../../../lib/src/features/feedback/klp_inline_notice.dart#L3) |
+| import | <code>import &#x27;package:kallopis/src/foundation/layout/klp_layout.dart&#x27;;</code> | [lib/src/features/feedback/klp_inline_notice.dart:4](../../../../../lib/src/features/feedback/klp_inline_notice.dart#L4) |
+| import | <code>import &#x27;package:kallopis/src/foundation/surface/klp_surface.dart&#x27;;</code> | [lib/src/features/feedback/klp_inline_notice.dart:5](../../../../../lib/src/features/feedback/klp_inline_notice.dart#L5) |
+| import | <code>import &#x27;package:kallopis/src/styling/legacy_theme/klp_theme.dart&#x27;;</code> | [lib/src/features/feedback/klp_inline_notice.dart:6](../../../../../lib/src/features/feedback/klp_inline_notice.dart#L6) |
+| import | <code>import &#x27;package:kallopis/src/foundation/content/klp_text.dart&#x27;;</code> | [lib/src/features/feedback/klp_inline_notice.dart:7](../../../../../lib/src/features/feedback/klp_inline_notice.dart#L7) |
 | import | <code>import &#x27;klp_feedback_tone.dart&#x27;;</code> | [lib/src/features/feedback/klp_inline_notice.dart:8](../../../../../lib/src/features/feedback/klp_inline_notice.dart#L8) |
 
 ## 宣告關係圖

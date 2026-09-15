@@ -16,14 +16,14 @@ flowchart LR
 	n1["lib/src/capabilities/actions"]
 	n2["lib/src/capabilities/controllers"]
 	n3["lib/src/capabilities/state"]
-	n4["lib/src/composition/definitions"]
-	n5["lib/src/composition/nodes"]
-	n6["lib/src/composition/validation"]
-	n7["lib/src/features/navigation/rail/contracts"]
-	n8["lib/src/foundation/binding/internal"]
-	n9["lib/src/foundation/templates"]
-	n10["lib/src/kernel/diagnostics"]
-	n11["lib/src/kernel/identity"]
+	n4["lib/src/composition/validation"]
+	n5["lib/src/features/navigation/rail/contracts"]
+	n6["lib/src/foundation/binding/contracts"]
+	n7["lib/src/foundation/templates"]
+	n8["lib/src/kernel/identity"]
+	n9["lib/src/kernel/lifecycle"]
+	n10["lib/src/runtime/contracts"]
+	n11["lib/src/styling/primitives"]
 	n0 -->|"import"| n1
 	n0 -->|"import"| n2
 	n0 -->|"import"| n3
@@ -38,39 +38,27 @@ flowchart LR
 ```
 
 ```mermaid
-flowchart LR
+flowchart TD
 	n0["lib/src/features/navigation/rail/internal"]
-	n1["lib/src/kernel/lifecycle/internal"]
-	n2["lib/src/runtime/compilation/internal"]
-	n3["lib/src/runtime/installation/internal"]
-	n4["lib/src/styling/primitives"]
-	n5["lib/src/styling/references"]
-	n6["lib/src/styling/semantics"]
+	n1["lib/src/styling/references"]
+	n2["lib/src/styling/semantics"]
 	n0 -->|"import"| n1
 	n0 -->|"import"| n2
-	n0 -->|"import"| n3
-	n0 -->|"import"| n4
-	n0 -->|"import"| n5
-	n0 -->|"import"| n6
 ```
 
 | 目標邊界 | 關係 | directive 數 | 第一筆來源證據 |
 |---|---|---|---|
-| <code>lib/src/capabilities/actions</code> | import | 6 | [lib/src/features/navigation/rail/internal/klp_prepared_rail.dart:10](../../../../../../../lib/src/features/navigation/rail/internal/klp_prepared_rail.dart#L10) |
+| <code>lib/src/capabilities/actions</code> | import | 4 | [lib/src/features/navigation/rail/internal/klp_prepared_rail.dart:10](../../../../../../../lib/src/features/navigation/rail/internal/klp_prepared_rail.dart#L10) |
 | <code>lib/src/capabilities/controllers</code> | import | 1 | [lib/src/features/navigation/rail/internal/klp_rail_placement.dart:1](../../../../../../../lib/src/features/navigation/rail/internal/klp_rail_placement.dart#L1) |
 | <code>lib/src/capabilities/state</code> | import | 2 | [lib/src/features/navigation/rail/internal/klp_rail_placement.dart:2](../../../../../../../lib/src/features/navigation/rail/internal/klp_rail_placement.dart#L2) |
-| <code>lib/src/composition/definitions</code> | import | 1 | [lib/src/features/navigation/rail/internal/klp_rail_adapter.dart:1](../../../../../../../lib/src/features/navigation/rail/internal/klp_rail_adapter.dart#L1) |
-| <code>lib/src/composition/nodes</code> | import | 1 | [lib/src/features/navigation/rail/internal/klp_rail_adapter.dart:2](../../../../../../../lib/src/features/navigation/rail/internal/klp_rail_adapter.dart#L2) |
-| <code>lib/src/composition/validation</code> | import | 3 | [lib/src/features/navigation/rail/internal/klp_prepared_rail.dart:1](../../../../../../../lib/src/features/navigation/rail/internal/klp_prepared_rail.dart#L1) |
-| <code>lib/src/features/navigation/rail/contracts</code> | import | 3 | [lib/src/features/navigation/rail/internal/klp_rail_adapter.dart:13](../../../../../../../lib/src/features/navigation/rail/internal/klp_rail_adapter.dart#L13) |
-| <code>lib/src/foundation/binding/internal</code> | import | 3 | [lib/src/features/navigation/rail/internal/klp_prepared_rail.dart:2](../../../../../../../lib/src/features/navigation/rail/internal/klp_prepared_rail.dart#L2) |
+| <code>lib/src/composition/validation</code> | import | 2 | [lib/src/features/navigation/rail/internal/klp_prepared_rail.dart:1](../../../../../../../lib/src/features/navigation/rail/internal/klp_prepared_rail.dart#L1) |
+| <code>lib/src/features/navigation/rail/contracts</code> | import | 1 | [lib/src/features/navigation/rail/internal/klp_rail_semantics.dart:8](../../../../../../../lib/src/features/navigation/rail/internal/klp_rail_semantics.dart#L8) |
+| <code>lib/src/foundation/binding/contracts</code> | import | 2 | [lib/src/features/navigation/rail/internal/klp_prepared_rail.dart:2](../../../../../../../lib/src/features/navigation/rail/internal/klp_prepared_rail.dart#L2) |
 | <code>lib/src/foundation/templates</code> | import | 1 | [lib/src/features/navigation/rail/internal/klp_prepared_rail.dart:4](../../../../../../../lib/src/features/navigation/rail/internal/klp_prepared_rail.dart#L4) |
-| <code>lib/src/kernel/diagnostics</code> | import | 1 | [lib/src/features/navigation/rail/internal/klp_rail_adapter.dart:5](../../../../../../../lib/src/features/navigation/rail/internal/klp_rail_adapter.dart#L5) |
-| <code>lib/src/kernel/identity</code> | import | 3 | [lib/src/features/navigation/rail/internal/klp_prepared_rail.dart:6](../../../../../../../lib/src/features/navigation/rail/internal/klp_prepared_rail.dart#L6) |
-| <code>lib/src/kernel/lifecycle/internal</code> | import | 1 | [lib/src/features/navigation/rail/internal/klp_prepared_rail.dart:5](../../../../../../../lib/src/features/navigation/rail/internal/klp_prepared_rail.dart#L5) |
-| <code>lib/src/runtime/compilation/internal</code> | import | 4 | [lib/src/features/navigation/rail/internal/klp_prepared_rail.dart:7](../../../../../../../lib/src/features/navigation/rail/internal/klp_prepared_rail.dart#L7) |
-| <code>lib/src/runtime/installation/internal</code> | import | 2 | [lib/src/features/navigation/rail/internal/klp_prepared_rail.dart:8](../../../../../../../lib/src/features/navigation/rail/internal/klp_prepared_rail.dart#L8) |
-| <code>lib/src/styling/primitives</code> | import | 5 | [lib/src/features/navigation/rail/internal/klp_prepared_rail.dart:9](../../../../../../../lib/src/features/navigation/rail/internal/klp_prepared_rail.dart#L9) |
+| <code>lib/src/kernel/identity</code> | import | 2 | [lib/src/features/navigation/rail/internal/klp_prepared_rail.dart:6](../../../../../../../lib/src/features/navigation/rail/internal/klp_prepared_rail.dart#L6) |
+| <code>lib/src/kernel/lifecycle</code> | import | 1 | [lib/src/features/navigation/rail/internal/klp_prepared_rail.dart:5](../../../../../../../lib/src/features/navigation/rail/internal/klp_prepared_rail.dart#L5) |
+| <code>lib/src/runtime/contracts</code> | import | 3 | [lib/src/features/navigation/rail/internal/klp_prepared_rail.dart:7](../../../../../../../lib/src/features/navigation/rail/internal/klp_prepared_rail.dart#L7) |
+| <code>lib/src/styling/primitives</code> | import | 4 | [lib/src/features/navigation/rail/internal/klp_prepared_rail.dart:9](../../../../../../../lib/src/features/navigation/rail/internal/klp_prepared_rail.dart#L9) |
 | <code>lib/src/styling/references</code> | import | 1 | [lib/src/features/navigation/rail/internal/klp_rail_semantics.dart:4](../../../../../../../lib/src/features/navigation/rail/internal/klp_rail_semantics.dart#L4) |
 | <code>lib/src/styling/semantics</code> | import | 3 | [lib/src/features/navigation/rail/internal/klp_rail_semantics.dart:5](../../../../../../../lib/src/features/navigation/rail/internal/klp_rail_semantics.dart#L5) |
 
@@ -79,8 +67,6 @@ flowchart LR
 | 來源 → 目標 | 關係 | 證據 |
 |---|---|---|
 | <code>klp_prepared_rail.dart → klp_rail_placement.dart</code> | import | [lib/src/features/navigation/rail/internal/klp_prepared_rail.dart:12](../../../../../../../lib/src/features/navigation/rail/internal/klp_prepared_rail.dart#L12) |
-| <code>klp_rail_adapter.dart → klp_prepared_rail.dart</code> | import | [lib/src/features/navigation/rail/internal/klp_rail_adapter.dart:15](../../../../../../../lib/src/features/navigation/rail/internal/klp_rail_adapter.dart#L15) |
-| <code>klp_rail_adapter.dart → klp_rail_semantics.dart</code> | import | [lib/src/features/navigation/rail/internal/klp_rail_adapter.dart:16](../../../../../../../lib/src/features/navigation/rail/internal/klp_rail_adapter.dart#L16) |
 | <code>klp_rail_placement.dart → klp_rail_activation_exception.dart</code> | import | [lib/src/features/navigation/rail/internal/klp_rail_placement.dart:7](../../../../../../../lib/src/features/navigation/rail/internal/klp_rail_placement.dart#L7) |
 
 ## 目錄結構圖
@@ -90,14 +76,12 @@ flowchart LR
 	n0["lib/src/features/navigation/rail/internal"]
 	n1["klp_prepared_rail.dart"]
 	n2["klp_rail_activation_exception.dart"]
-	n3["klp_rail_adapter.dart"]
-	n4["klp_rail_placement.dart"]
-	n5["klp_rail_semantics.dart"]
+	n3["klp_rail_placement.dart"]
+	n4["klp_rail_semantics.dart"]
 	n0 -->|"contains"| n1
 	n0 -->|"contains"| n2
 	n0 -->|"contains"| n3
 	n0 -->|"contains"| n4
-	n0 -->|"contains"| n5
 ```
 
 ## 子目錄
@@ -112,7 +96,6 @@ flowchart LR
 |---|---|---|---|
 | `klp_prepared_rail.dart` | KlpPreparedRail | [架構與 API](klp_prepared_rail.md) | [lib/src/features/navigation/rail/internal/klp_prepared_rail.dart:1](../../../../../../../lib/src/features/navigation/rail/internal/klp_prepared_rail.dart#L1) |
 | `klp_rail_activation_exception.dart` | KlpRailActivationException | [架構與 API](klp_rail_activation_exception.md) | [lib/src/features/navigation/rail/internal/klp_rail_activation_exception.dart:1](../../../../../../../lib/src/features/navigation/rail/internal/klp_rail_activation_exception.dart#L1) |
-| `klp_rail_adapter.dart` | KlpRailAdapter | [架構與 API](klp_rail_adapter.md) | [lib/src/features/navigation/rail/internal/klp_rail_adapter.dart:1](../../../../../../../lib/src/features/navigation/rail/internal/klp_rail_adapter.dart#L1) |
 | `klp_rail_placement.dart` | KlpRailPlacement | [架構與 API](klp_rail_placement.md) | [lib/src/features/navigation/rail/internal/klp_rail_placement.dart:1](../../../../../../../lib/src/features/navigation/rail/internal/klp_rail_placement.dart#L1) |
 | `klp_rail_semantics.dart` | KlpRailSemantics | [架構與 API](klp_rail_semantics.md) | [lib/src/features/navigation/rail/internal/klp_rail_semantics.dart:1](../../../../../../../lib/src/features/navigation/rail/internal/klp_rail_semantics.dart#L1) |
 

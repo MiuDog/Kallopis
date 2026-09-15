@@ -17,7 +17,7 @@ flowchart LR
 	n4["klp_surface_theme.dart"]
 	n5["klp_visual_style.dart"]
 	n6["klp_theme_data.dart"]
-	n7["../legacy_tokens/primitive_token.dart"]
+	n7["package:kallopis/src/styling/legacy_tokens/primitive_token.dart"]
 	n8["klp_theme_data.dart"]
 	n9["klp_theme_scope.dart"]
 	n0 -->|"import"| n1
@@ -41,7 +41,7 @@ flowchart LR
 | import | <code>import &#x27;klp_surface_theme.dart&#x27;;</code> | [lib/src/styling/legacy_theme/klp_theme.dart:5](../../../../../lib/src/styling/legacy_theme/klp_theme.dart#L5) |
 | import | <code>import &#x27;klp_visual_style.dart&#x27;;</code> | [lib/src/styling/legacy_theme/klp_theme.dart:6](../../../../../lib/src/styling/legacy_theme/klp_theme.dart#L6) |
 | import | <code>import &#x27;klp_theme_data.dart&#x27;;</code> | [lib/src/styling/legacy_theme/klp_theme.dart:7](../../../../../lib/src/styling/legacy_theme/klp_theme.dart#L7) |
-| import | <code>import &#x27;../legacy_tokens/primitive_token.dart&#x27;;</code> | [lib/src/styling/legacy_theme/klp_theme.dart:8](../../../../../lib/src/styling/legacy_theme/klp_theme.dart#L8) |
+| import | <code>import &#x27;package:kallopis/src/styling/legacy_tokens/primitive_token.dart&#x27;;</code> | [lib/src/styling/legacy_theme/klp_theme.dart:8](../../../../../lib/src/styling/legacy_theme/klp_theme.dart#L8) |
 | export | <code>export &#x27;klp_theme_data.dart&#x27;;</code> | [lib/src/styling/legacy_theme/klp_theme.dart:12](../../../../../lib/src/styling/legacy_theme/klp_theme.dart#L12) |
 | export | <code>export &#x27;klp_theme_scope.dart&#x27;;</code> | [lib/src/styling/legacy_theme/klp_theme.dart:13](../../../../../lib/src/styling/legacy_theme/klp_theme.dart#L13) |
 

@@ -2,6 +2,8 @@
 
 ## 索引
 
+正文採用：[KLP-0020](KLP-0020-blocknote-editor-adoption.md)，Implementing；使用者已選 BlockNote，正式接入與轉換待完成。
+
 Kallopis 遷移：[KLP-0019](KLP-0019-declarative-framework-migration.md)，Implementing。此狀態表示方向已獲使用者核准、程式尚未全部符合；不能當成 Accepted。新功能與 primitive 權限依該文件，原決策保留舊 API 的歷史與過渡範圍。
 
 | 編號 | 題目 | 狀態 |

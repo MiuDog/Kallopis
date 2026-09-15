@@ -13,9 +13,9 @@ flowchart LR
 	n0["klp_context_menu.dart"]
 	n1["package:flutter/gestures.dart"]
 	n2["package:flutter/widgets.dart"]
-	n3["../../foundation/interaction/klp_gesture_region.dart"]
-	n4["../../foundation/layout/klp_layout.dart"]
-	n5["../../styling/legacy_theme/klp_theme.dart"]
+	n3["package:kallopis/src/foundation/interaction/klp_gesture_region.dart"]
+	n4["package:kallopis/src/foundation/layout/klp_layout.dart"]
+	n5["package:kallopis/src/styling/legacy_theme/klp_theme.dart"]
 	n6["klp_menu.dart"]
 	n7["context_menu/klp_context_menu_controller.dart"]
 	n8["context_menu/klp_context_menu_state.dart"]
@@ -37,9 +37,9 @@ flowchart LR
 |---|---|---|
 | import | <code>import &#x27;package:flutter/gestures.dart&#x27;;</code> | [lib/src/features/overlays/klp_context_menu.dart:1](../../../../../lib/src/features/overlays/klp_context_menu.dart#L1) |
 | import | <code>import &#x27;package:flutter/widgets.dart&#x27;;</code> | [lib/src/features/overlays/klp_context_menu.dart:2](../../../../../lib/src/features/overlays/klp_context_menu.dart#L2) |
-| import | <code>import &#x27;../../foundation/interaction/klp_gesture_region.dart&#x27;;</code> | [lib/src/features/overlays/klp_context_menu.dart:4](../../../../../lib/src/features/overlays/klp_context_menu.dart#L4) |
-| import | <code>import &#x27;../../foundation/layout/klp_layout.dart&#x27;;</code> | [lib/src/features/overlays/klp_context_menu.dart:5](../../../../../lib/src/features/overlays/klp_context_menu.dart#L5) |
-| import | <code>import &#x27;../../styling/legacy_theme/klp_theme.dart&#x27;;</code> | [lib/src/features/overlays/klp_context_menu.dart:6](../../../../../lib/src/features/overlays/klp_context_menu.dart#L6) |
+| import | <code>import &#x27;package:kallopis/src/foundation/interaction/klp_gesture_region.dart&#x27;;</code> | [lib/src/features/overlays/klp_context_menu.dart:4](../../../../../lib/src/features/overlays/klp_context_menu.dart#L4) |
+| import | <code>import &#x27;package:kallopis/src/foundation/layout/klp_layout.dart&#x27;;</code> | [lib/src/features/overlays/klp_context_menu.dart:5](../../../../../lib/src/features/overlays/klp_context_menu.dart#L5) |
+| import | <code>import &#x27;package:kallopis/src/styling/legacy_theme/klp_theme.dart&#x27;;</code> | [lib/src/features/overlays/klp_context_menu.dart:6](../../../../../lib/src/features/overlays/klp_context_menu.dart#L6) |
 | import | <code>import &#x27;klp_menu.dart&#x27;;</code> | [lib/src/features/overlays/klp_context_menu.dart:7](../../../../../lib/src/features/overlays/klp_context_menu.dart#L7) |
 | part | <code>part &#x27;context_menu/klp_context_menu_controller.dart&#x27;;</code> | [lib/src/features/overlays/klp_context_menu.dart:9](../../../../../lib/src/features/overlays/klp_context_menu.dart#L9) |
 | part | <code>part &#x27;context_menu/klp_context_menu_state.dart&#x27;;</code> | [lib/src/features/overlays/klp_context_menu.dart:10](../../../../../lib/src/features/overlays/klp_context_menu.dart#L10) |

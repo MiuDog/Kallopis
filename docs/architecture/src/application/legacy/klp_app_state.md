@@ -73,7 +73,7 @@ ClassDeclaration · private · [lib/src/application/legacy/klp_app_state.dart:3]
 | method <code>toggleBrightness</code> | public | <code>void toggleBrightness()</code> |  | [lib/src/application/legacy/klp_app_state.dart:75](../../../../../lib/src/application/legacy/klp_app_state.dart#L75) |
 | method <code>setThemeMode</code> | public | <code>void setThemeMode(ThemeMode mode)</code> |  | [lib/src/application/legacy/klp_app_state.dart:84](../../../../../lib/src/application/legacy/klp_app_state.dart#L84) |
 | method <code>build</code> | public | <code>Widget build(BuildContext context)</code> |  | [lib/src/application/legacy/klp_app_state.dart:89](../../../../../lib/src/application/legacy/klp_app_state.dart#L89) |
-| method <code>_styleFor</code> | private | <code>KlpVisualStyle _styleFor(Brightness brightness)</code> |  | [lib/src/application/legacy/klp_app_state.dart:165](../../../../../lib/src/application/legacy/klp_app_state.dart#L165) |
+| method <code>_styleFor</code> | private | <code>KlpVisualStyle _styleFor(Brightness brightness)</code> |  | [lib/src/application/legacy/klp_app_state.dart:143](../../../../../lib/src/application/legacy/klp_app_state.dart#L143) |
 
 ## 閱讀說明與限制
 

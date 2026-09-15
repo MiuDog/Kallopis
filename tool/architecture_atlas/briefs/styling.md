@@ -4,4 +4,4 @@
 
 `KlpDefinition` 將 schema owner 綁定定義 id，`KlpRegistry` 掛載前驗證全量語意。跨 owner 需宣告相依且目標公開，不能覆寫對方用途；實際目標 kind 仍需核對，避免同名假 key。
 
-目前只提供原料及用途引用，沒有 renderer、正式預設風格、狀態混合或無障礙求值政策。八槽原料 schema 尚未凍結，兩套測試資料只證明資料替換，不證明完整視覺穩定性。詳見 [契約樣板](../../styling-contract-prototype.md)。
+顏色、padding、圓角與陰影已採 [風格 v1.0.0](../../../../spec/style-v1.md)。`KlpWorkspacePreset` 提供完整暖灰／中性色調，`KlpPaperShadowRecipe` 為新舊表面共用的雙層陰影配方。宣告式 Surface 的陰影由可選 semantic color／scale 解析；Frame 維持平整。此版本不凍結其餘尺寸、完整畫面或擴張八槽原料 schema。引用限制見 [契約樣板](../../styling-contract-prototype.md)。

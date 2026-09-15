@@ -1,0 +1,255 @@
+{
+	"contract": "CC-V1-r1",
+	"date": "2026-09-14",
+	"status": "complete",
+	"record_type": "execution_receipt_not_a_task_packet",
+	"source": {
+		"source_root": "D:\\Projects\\Kallopis",
+		"source_head": "578d24ed111b95c429397b54245de09ade674704",
+		"snapshot_commit": "17216dcb4a7caa0dc32c0ae44d7c827b54fdf0e7",
+		"source_index_sha256": "3a87893357e96f77729183afb4ba34c2c11fdd70be69dcfae9fea1d577eadecd",
+		"worktrees": {
+			"integration": "D:\\Projects\\Kallopis-cc-integration",
+			"tests": "D:\\Projects\\Kallopis-cc-tests",
+			"features": "D:\\Projects\\Kallopis-cc-features",
+			"runtime": "D:\\Projects\\Kallopis-cc-runtime"
+		}
+	},
+	"integration_product_and_tests_revision": "a2e16072c294ffd19e2606161a513eccadd4f30b",
+	"workers": [
+		{
+			"task_id": "COMP-V1-02",
+			"status": "complete",
+			"signed_packet": "D:\\Projects\\Kallopis-cc-evidence\\COMP-V1-02.json",
+			"signed_packet_sha256": "2941e817cec31fc6eaabf15e3b344526254712115a6280cd28be514b64cce8cc",
+			"base_revision": "17216dcb4a7caa0dc32c0ae44d7c827b54fdf0e7",
+			"architecture_revision_at_dispatch": "sha256:3f3b55ac473d0deab9241a00332bf330b9a23af70db2be3f257fda58ce54690b",
+			"scope_receipt": {
+				"task_id": "COMP-V1-02",
+				"base_revision": "17216dcb4a7caa0dc32c0ae44d7c827b54fdf0e7",
+				"changed_paths": [
+					"lib/src/composition/registry/catalog-contract.md"
+				],
+				"violations": [],
+				"status": "pass"
+			},
+			"final_write_sha256": {
+				"lib/src/composition/registry/catalog-contract.md": "43c1fc2370c59a703257410d00a48754fb2ca2f40a787b6659a3a2e334fbdbbb"
+			}
+		},
+		{
+			"task_id": "FND-V1-02",
+			"status": "complete",
+			"signed_packet": "D:\\Projects\\Kallopis-cc-evidence\\FND-V1-02.json",
+			"signed_packet_sha256": "e7100a4adac5bf8d1fb8d7da14193720636b32f299bb810599dda3ffa1c5f917",
+			"base_revision": "dae57079c993abf5eb2984ac243274bfaeb82143",
+			"architecture_revision_at_dispatch": "sha256:e4705be75aa56826d4f2dd9f11dfe147217c8c5d090f3e3a5dd22bdc1c6411f5",
+			"scope_receipt": {
+				"task_id": "FND-V1-02",
+				"base_revision": "dae57079c993abf5eb2984ac243274bfaeb82143",
+				"changed_paths": [
+					"lib/src/foundation/binding/internal/klp_component_compiler.dart",
+					"lib/src/foundation/definitions/internal/klp_template_slots.dart",
+					"lib/src/foundation/definitions/klp_component_definition.dart"
+				],
+				"violations": [],
+				"status": "pass"
+			},
+			"final_write_sha256": {
+				"lib/src/foundation/binding/internal/klp_component_compiler.dart": null,
+				"lib/src/foundation/definitions/internal/klp_template_slots.dart": null,
+				"lib/src/foundation/definitions/klp_component_definition.dart": null
+			}
+		},
+		{
+			"task_id": "RUN-V1-03",
+			"status": "complete",
+			"signed_packet": "D:\\Projects\\Kallopis-cc-evidence\\RUN-V1-03.json",
+			"signed_packet_sha256": "905d372518a8ebd738a09384ca1d568d4c746c10a987132873cd21eff14f1ba0",
+			"base_revision": "17216dcb4a7caa0dc32c0ae44d7c827b54fdf0e7",
+			"architecture_revision_at_dispatch": "sha256:0315a512eecf6d149b4e734c25c042dd275ddb8b4e31b9eee79464d8a4aeef9b",
+			"scope_receipt": {
+				"task_id": "RUN-V1-03",
+				"base_revision": "17216dcb4a7caa0dc32c0ae44d7c827b54fdf0e7",
+				"changed_paths": [
+					"lib/src/runtime/compilation/internal/klp_component_adapter.dart",
+					"lib/src/runtime/compilation/internal/klp_prepare_context.dart",
+					"lib/src/runtime/compilation/internal/klp_tree_runtime.dart"
+				],
+				"violations": [],
+				"status": "pass"
+			},
+			"final_write_sha256": {
+				"lib/src/runtime/compilation/internal/klp_component_adapter.dart": null,
+				"lib/src/runtime/compilation/internal/klp_prepare_context.dart": "ba81953aa730a89727fec57466ea69026747d43abd281dacaf290c95978eb24e",
+				"lib/src/runtime/compilation/internal/klp_tree_runtime.dart": "00aeae444410456f033499c90392697111228de3f9981cd9c00e4da58e6c7156"
+			}
+		},
+		{
+			"task_id": "FEAT-V1-02",
+			"status": "complete",
+			"signed_packet": "D:\\Projects\\Kallopis-cc-evidence\\FEAT-V1-02.json",
+			"signed_packet_sha256": "067df4a0c3849a975ff87019d9c8f29f89d9c7d387b440cb65bf30317060ba5d",
+			"base_revision": "17216dcb4a7caa0dc32c0ae44d7c827b54fdf0e7",
+			"architecture_revision_at_dispatch": "sha256:45d7d7df7ade13bf3a5e1ee4d353d133930558de77182e5002a770c6abdd1786",
+			"scope_receipt": {
+				"task_id": "FEAT-V1-02",
+				"base_revision": "17216dcb4a7caa0dc32c0ae44d7c827b54fdf0e7",
+				"changed_paths": [
+					"lib/src/features/catalog/component-ownership.json"
+				],
+				"violations": [],
+				"status": "pass"
+			},
+			"final_write_sha256": {
+				"lib/src/features/catalog/component-ownership.json": "8c5361b0089a09d18a387ccb5f34e3e42b560645615146fa1b8c5d60a9de6cb8"
+			}
+		},
+		{
+			"task_id": "APP-V1-03",
+			"status": "complete",
+			"signed_packet": "D:\\Projects\\Kallopis-cc-evidence\\APP-V1-03.json",
+			"signed_packet_sha256": "f4551506ae4399755b44222c1ca908be951c389decd4b4db69282d708e467673",
+			"base_revision": "50b2c1f284e11392f13db2a90871e17255b14a27",
+			"architecture_revision_at_dispatch": "sha256:a35aea506c6c915657da69b81f296e8cf9fc4793a75c321e7f9fe9c84aef8931",
+			"scope_receipt": {
+				"task_id": "APP-V1-03",
+				"base_revision": "50b2c1f284e11392f13db2a90871e17255b14a27",
+				"changed_paths": [
+					"lib/src/application/bootstrap/internal/klp_application_catalog.json",
+					"lib/src/application/bootstrap/internal/klp_application_session_commit.dart"
+				],
+				"violations": [],
+				"status": "pass"
+			},
+			"final_write_sha256": {
+				"lib/src/application/bootstrap/internal/klp_application_catalog.json": "ee40ce22301e1092d7b700d3cdd7c9fc8fba7984735b5c6df129537ebc582b01",
+				"lib/src/application/bootstrap/internal/klp_application_session_commit.dart": "892af4615996e7ad20d2ea9806910333c6ee1f1bf334bc1fa638bdf18e99fec4"
+			}
+		}
+	],
+	"test_author": {
+		"scope_gate_result": "PASS",
+		"changed_paths": [
+			"test/frontend_architecture_boundary_test.dart",
+			"test/klp_anchored_commands_installation_test.dart",
+			"test/klp_app_frame_style_test.dart",
+			"test/klp_block_controls_installation_test.dart",
+			"test/klp_closed_component_catalog_contract_test.dart",
+			"test/klp_component_binding_test.dart",
+			"test/klp_component_children_binding_test.dart",
+			"test/klp_editing_installation_test.dart",
+			"test/klp_frame_groups_test.dart",
+			"test/klp_mode_toolbar_installation_test.dart",
+			"test/klp_rail_adapter_test.dart",
+			"test/klp_scope_activation_test.dart",
+			"test/klp_scoped_runtime_test.dart",
+			"test/klp_sidebar_interactions_test.dart",
+			"test/klp_slot_compile_contract_test.dart",
+			"test/klp_surface_shadow_test.dart",
+			"test/klp_template_compile_contract_test.dart",
+			"test/klp_tree_runtime_test.dart",
+			"test/klp_workspace_components_declarative_test.dart",
+			"test/support/klp_component_test_definition.dart",
+			"test/support/klp_composite_test_definition.dart",
+			"test/klp_application_catalog_contract_test.dart",
+			"test/support/closed_catalog_migration.md"
+		],
+		"sha256": {
+			"test/frontend_architecture_boundary_test.dart": "862a781ea34ec4c074d63e440686c5318af8a918bc2d4a8c0b649fff39639215",
+			"test/klp_anchored_commands_installation_test.dart": "78a2cd8fe3ce892f23190c7f637c105ebee73c7f4555557c89e9c8c985225554",
+			"test/klp_app_frame_style_test.dart": "cab51e731736631b6a6f399465ef23a297467478a47708253d945f21fb1ea248",
+			"test/klp_block_controls_installation_test.dart": "cfcfe40766a3703d27c9e8adc87ac5f7856ba3be7ad37459a9ff4a0cd6e03d2b",
+			"test/klp_closed_component_catalog_contract_test.dart": "6e99df0fb8f90c1bdef8e46238ed3a2162ed911511d18f25ad9f1ad9bb9ccf23",
+			"test/klp_component_binding_test.dart": "257a1687aebd47053701b6a6c3d037083df36920d63094db50bb5fae7cc1e244",
+			"test/klp_component_children_binding_test.dart": "d446b8ebf71085594cb7189188f0d101061521813d8eccfcf75bb2d0a80a6684",
+			"test/klp_editing_installation_test.dart": "ab40fbde49a7c2e3826b5cccf3189971cc91d7fb0235e02f3372f58e09b13d66",
+			"test/klp_frame_groups_test.dart": "5c0fcba2916116e71cc8fc8c66172c24ba4164520ef03d92a4f21770401d8855",
+			"test/klp_mode_toolbar_installation_test.dart": "c1b3ca720f8bef27e0cfedfcfbb1afb925a9528ce054d1d644fb882ce7fffca5",
+			"test/klp_rail_adapter_test.dart": "766f7037e97ff5213699e7ed7e7b9b75d622c97305ea6ac290fda623724f77f8",
+			"test/klp_scope_activation_test.dart": "abf93e3a6f1556a378fae65d33f0c6ec882efb247979734bbdcd7897c6bd5620",
+			"test/klp_scoped_runtime_test.dart": "021c30b5a522954d526158a599d194a49bcdda6db1c700c792f0011e06f74146",
+			"test/klp_sidebar_interactions_test.dart": "faffbed2ddc49ab479bcff44f4975054f7e36a964b809777326104c37a8e636a",
+			"test/klp_slot_compile_contract_test.dart": "4ee7269b01ba4f41241d9a55cb03a6c20ab8321673f635bd87109abb29a7360b",
+			"test/klp_surface_shadow_test.dart": "3b3df49591e706e91131ca31e3bbf8ed44519b943ca302f2b8a7a502d7f4a66c",
+			"test/klp_template_compile_contract_test.dart": "9ad6010f7322959f3a4c54f9adc81f80945804a2849016ed0b64f182f98b410c",
+			"test/klp_tree_runtime_test.dart": "7a1e15f6a5d9a21aa4e993d159b0239c29743369a45a3aa1e9d060ba5b9ff131",
+			"test/klp_workspace_components_declarative_test.dart": "9d4ac48faf8dac8b6454926a035486896718773bc39c49f0f9d301da86662dad",
+			"test/support/klp_component_test_definition.dart": "3551f3666d9fe5393666cbbf2162786e43a79872f30c847f10bc9b924debb782",
+			"test/support/klp_composite_test_definition.dart": "81aa3499478e01d09487cc015c2858d17553223f7e2f110707673ef439068e42",
+			"test/klp_application_catalog_contract_test.dart": "34dea61cc1578f5ce3c239c1c70aeba1a3c293b47da764b9132aab984cc38395",
+			"test/support/closed_catalog_migration.md": "d166a93f961ddd4e19480c92c3b7e02e97ea964ff1cf9feb2597fd92e7fc9b6c"
+		},
+		"report": "D:\\Projects\\Kallopis-cc-evidence\\test-author-final.json",
+		"report_sha256": "cb6e8f5c7c1c3f3c511eb5c4cf9ee67dadcbfe6a90592d4b5bab4f22bae7619c"
+	},
+	"checks": [
+		{
+			"group": "catalog_closed_runtime",
+			"passed": 38,
+			"exit_code": 0,
+			"log": "D:\\Projects\\Kallopis-cc-evidence\\primary-final.log",
+			"sha256": "a7fb0a16d59a71b008ed5ba63ef652f28001efce60fbb66312af3ba9c9cf31f3"
+		},
+		{
+			"group": "direct_callers",
+			"passed": 150,
+			"exit_code": 0,
+			"log": "D:\\Projects\\Kallopis-cc-evidence\\test-author-m3-callers.log",
+			"sha256": "457cbd6f41ec6e8924113c07a3723b7df338e5c1f565f8043eefdc240ee32c70"
+		},
+		{
+			"group": "application",
+			"passed": 13,
+			"exit_code": 0,
+			"log": "D:\\Projects\\Kallopis-cc-evidence\\application-integration.log",
+			"sha256": "43926ec2f74e67869637c9eb4485b7bf88312870e4cceb208ed938235a5e7cbf"
+		},
+		{
+			"group": "frontend_and_module_architecture",
+			"passed": 158,
+			"exit_code": 0,
+			"log": "D:\\Projects\\Kallopis-cc-evidence\\architecture-final.log",
+			"sha256": "a117d2d9f3ef318dcae0b40d8e9d063042210e15cb03e062c99257c58372cb8a"
+		},
+		{
+			"group": "import_root_baseline",
+			"passed": 0,
+			"exit_code": 1,
+			"log": "D:\\Projects\\Kallopis-cc-evidence\\import-root-baseline.log",
+			"sha256": "ec79fb1790835a9bbda8122cbec58facd5ef1e4311ce635e758ce98ffaa9ab30"
+		},
+		{
+			"group": "frontend_plus_import_root_initial",
+			"passed": 155,
+			"exit_code": 1,
+			"log": "D:\\Projects\\Kallopis-cc-evidence\\architecture-gates.log",
+			"sha256": "064d9a39573a02933282cae93fb8a5ad83575ea21628f7ce89cf80cc57362949"
+		},
+		{
+			"group": "module_docs_after_independent_review_fixes",
+			"passed": 3,
+			"exit_code": 0,
+			"log": "D:\\Projects\\Kallopis-cc-evidence\\module-docs-final.log",
+			"sha256": "aa25b1eff669fb2ce671a689a3c63732e509bac5addb2fefaca6615262486e7c"
+		}
+	],
+	"known_preexisting_failure": {
+		"test": "test/lib_import_root_contract_test.dart",
+		"path": "lib/src/features/workspace/components/internal/klp_workspace_components_adapter.dart",
+		"reason": "four cross-directory relative imports",
+		"baseline_reproduced": true,
+		"product_unchanged_from_snapshot": true,
+		"test_unchanged_from_snapshot": true,
+		"action": "record as existing features follow-up; no exception or weakened assertion"
+	},
+	"scope_adjustments": [
+		"Independent Test Author may remove only retired foundation/definitions from the frontend structural scan list.",
+		"Independent Test Author may read installed analyzer 10.1.0 AST API to repair catalog setup; assertions remain protected."
+	],
+	"measurement": {
+		"elapsed": "See per-worker external reports; total start timestamp was not consistently captured.",
+		"tokens": "Provider usage unavailable; no inferred token total."
+	},
+	"source_return": "Exact changed paths only, protected by source-write-baseline.json; transfer receipt stored beside external evidence. Original HEAD/index are not staged or committed."
+}

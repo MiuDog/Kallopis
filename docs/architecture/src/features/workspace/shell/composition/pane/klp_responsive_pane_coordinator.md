@@ -12,7 +12,7 @@
 flowchart TD
 	n0["klp_responsive_pane_coordinator.dart"]
 	n1["package:flutter/widgets.dart"]
-	n2["../../../../../foundation/layout/klp_layout_builder.dart"]
+	n2["package:kallopis/src/foundation/layout/klp_layout_builder.dart"]
 	n3["klp_responsive_pane_breakpoint.dart"]
 	n0 -->|"import"| n1
 	n0 -->|"import"| n2
@@ -24,7 +24,7 @@ flowchart TD
 | 關係 | 原始 directive | 來源 |
 |---|---|---|
 | import | <code>import &#x27;package:flutter/widgets.dart&#x27;;</code> | [lib/src/features/workspace/shell/composition/pane/klp_responsive_pane_coordinator.dart:1](../../../../../../../../lib/src/features/workspace/shell/composition/pane/klp_responsive_pane_coordinator.dart#L1) |
-| import | <code>import &#x27;../../../../../foundation/layout/klp_layout_builder.dart&#x27;;</code> | [lib/src/features/workspace/shell/composition/pane/klp_responsive_pane_coordinator.dart:3](../../../../../../../../lib/src/features/workspace/shell/composition/pane/klp_responsive_pane_coordinator.dart#L3) |
+| import | <code>import &#x27;package:kallopis/src/foundation/layout/klp_layout_builder.dart&#x27;;</code> | [lib/src/features/workspace/shell/composition/pane/klp_responsive_pane_coordinator.dart:3](../../../../../../../../lib/src/features/workspace/shell/composition/pane/klp_responsive_pane_coordinator.dart#L3) |
 | import | <code>import &#x27;klp_responsive_pane_breakpoint.dart&#x27;;</code> | [lib/src/features/workspace/shell/composition/pane/klp_responsive_pane_coordinator.dart:4](../../../../../../../../lib/src/features/workspace/shell/composition/pane/klp_responsive_pane_coordinator.dart#L4) |
 
 ## 宣告關係圖

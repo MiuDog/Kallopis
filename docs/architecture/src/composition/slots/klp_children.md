@@ -12,7 +12,7 @@
 flowchart TD
 	n0["klp_children.dart"]
 	n1["dart:collection"]
-	n2["../nodes/klp_node.dart"]
+	n2["package:kallopis/src/composition/nodes/klp_node.dart"]
 	n3["klp_slot.dart"]
 	n0 -->|"import"| n1
 	n0 -->|"import"| n2
@@ -24,7 +24,7 @@ flowchart TD
 | 關係 | 原始 directive | 來源 |
 |---|---|---|
 | import | <code>import &#x27;dart:collection&#x27;;</code> | [lib/src/composition/slots/klp_children.dart:1](../../../../../lib/src/composition/slots/klp_children.dart#L1) |
-| import | <code>import &#x27;../nodes/klp_node.dart&#x27;;</code> | [lib/src/composition/slots/klp_children.dart:3](../../../../../lib/src/composition/slots/klp_children.dart#L3) |
+| import | <code>import &#x27;package:kallopis/src/composition/nodes/klp_node.dart&#x27;;</code> | [lib/src/composition/slots/klp_children.dart:3](../../../../../lib/src/composition/slots/klp_children.dart#L3) |
 | import | <code>import &#x27;klp_slot.dart&#x27;;</code> | [lib/src/composition/slots/klp_children.dart:4](../../../../../lib/src/composition/slots/klp_children.dart#L4) |
 
 ## 宣告關係圖

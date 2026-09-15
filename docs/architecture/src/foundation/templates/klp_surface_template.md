@@ -58,7 +58,8 @@ ClassDeclaration · public · [lib/src/foundation/templates/klp_surface_template
 | field <code>background</code> | public | <code>final KlpSemanticKey&lt;KlpColor&gt; background</code> |  | [lib/src/foundation/templates/klp_surface_template.dart:6](../../../../../lib/src/foundation/templates/klp_surface_template.dart#L6) |
 | field <code>radius</code> | public | <code>final KlpSemanticKey&lt;KlpRadius&gt; radius</code> |  | [lib/src/foundation/templates/klp_surface_template.dart:7](../../../../../lib/src/foundation/templates/klp_surface_template.dart#L7) |
 | field <code>inset</code> | public | <code>final KlpSemanticKey&lt;KlpDistance&gt; inset</code> |  | [lib/src/foundation/templates/klp_surface_template.dart:8](../../../../../lib/src/foundation/templates/klp_surface_template.dart#L8) |
-| constructor <code>KlpSurfaceTemplate</code> | public | <code>const KlpSurfaceTemplate({ required this.child, required this.background, required this.radius, required this.inset, })</code> |  | [lib/src/foundation/templates/klp_surface_template.dart:10](../../../../../lib/src/foundation/templates/klp_surface_template.dart#L10) |
+| field <code>shadow</code> | public | <code>final KlpSurfaceShadowSemantics? shadow</code> |  | [lib/src/foundation/templates/klp_surface_template.dart:9](../../../../../lib/src/foundation/templates/klp_surface_template.dart#L9) |
+| constructor <code>KlpSurfaceTemplate</code> | public | <code>const KlpSurfaceTemplate({ required this.child, required this.background, required this.radius, required this.inset, this.shadow, })</code> |  | [lib/src/foundation/templates/klp_surface_template.dart:11](../../../../../lib/src/foundation/templates/klp_surface_template.dart#L11) |
 
 ## 閱讀說明與限制
 

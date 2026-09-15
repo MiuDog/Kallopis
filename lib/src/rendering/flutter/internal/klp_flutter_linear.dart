@@ -1,7 +1,7 @@
 import 'package:flutter/widgets.dart';
 
-import '../../../foundation/binding/internal/klp_bound_template.dart';
-import 'klp_flutter_renderer.dart';
+import 'package:kallopis/src/foundation/binding/contracts/klp_bound_template.dart';
+import '../klp_flutter_renderer.dart';
 import 'klp_flutter_values.dart';
 
 /// 線性內容沿主要方向保留自然尺寸，受限時由本庫提供捲動。

@@ -12,7 +12,7 @@
 flowchart TD
 	n0["klp_live_region.dart"]
 	n1["package:flutter/widgets.dart"]
-	n2["../../foundation/layout/klp_box.dart"]
+	n2["package:kallopis/src/foundation/layout/klp_box.dart"]
 	n3["primitives/klp_live_region_frame.dart"]
 	n0 -->|"import"| n1
 	n0 -->|"import"| n2
@@ -24,7 +24,7 @@ flowchart TD
 | 關係 | 原始 directive | 來源 |
 |---|---|---|
 | import | <code>import &#x27;package:flutter/widgets.dart&#x27;;</code> | [lib/src/features/feedback/klp_live_region.dart:1](../../../../../lib/src/features/feedback/klp_live_region.dart#L1) |
-| import | <code>import &#x27;../../foundation/layout/klp_box.dart&#x27;;</code> | [lib/src/features/feedback/klp_live_region.dart:3](../../../../../lib/src/features/feedback/klp_live_region.dart#L3) |
+| import | <code>import &#x27;package:kallopis/src/foundation/layout/klp_box.dart&#x27;;</code> | [lib/src/features/feedback/klp_live_region.dart:3](../../../../../lib/src/features/feedback/klp_live_region.dart#L3) |
 | part | <code>part &#x27;primitives/klp_live_region_frame.dart&#x27;;</code> | [lib/src/features/feedback/klp_live_region.dart:5](../../../../../lib/src/features/feedback/klp_live_region.dart#L5) |
 
 ## 宣告關係圖

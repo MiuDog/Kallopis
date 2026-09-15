@@ -10,11 +10,43 @@
 
 箭頭以本層 Dart 檔案明寫的 directive 彙總到目標所在目錄或外部套件邊界；不遞迴將子目錄依賴算入本層。相同目標的不同 directive 類型分開計數。
 
-本層檔案未宣告跨目錄依賴；子目錄依賴請循下一層入口閱讀。
+```mermaid
+flowchart LR
+	n0["lib/src/rendering/flutter"]
+	n1["lib/src/features/editing/contracts"]
+	n2["lib/src/features/editing/presentation"]
+	n3["lib/src/features/workspace/presentation"]
+	n4["lib/src/foundation/binding/contracts"]
+	n5["lib/src/foundation/platform"]
+	n6["lib/src/kernel/diagnostics"]
+	n7["lib/src/kernel/identity"]
+	n8["lib/src/rendering/flutter/internal"]
+	n9["lib/src/styling/presets"]
+	n10["package:flutter"]
+	n0 -->|"import"| n1
+	n0 -->|"import"| n2
+	n0 -->|"import"| n3
+	n0 -->|"import"| n4
+	n0 -->|"import"| n5
+	n0 -->|"import"| n6
+	n0 -->|"import"| n7
+	n0 -->|"import"| n8
+	n0 -->|"import"| n9
+	n0 -->|"import"| n10
+```
 
 | 目標邊界 | 關係 | directive 數 | 第一筆來源證據 |
 |---|---|---|---|
-| 無 | — | 0 | 來源清單見本層檔案 |
+| <code>lib/src/features/editing/contracts</code> | import | 1 | [lib/src/rendering/flutter/klp_viewport_capabilities.dart:2](../../../../../lib/src/rendering/flutter/klp_viewport_capabilities.dart#L2) |
+| <code>lib/src/features/editing/presentation</code> | import | 1 | [lib/src/rendering/flutter/klp_flutter_renderer.dart:3](../../../../../lib/src/rendering/flutter/klp_flutter_renderer.dart#L3) |
+| <code>lib/src/features/workspace/presentation</code> | import | 1 | [lib/src/rendering/flutter/klp_flutter_renderer.dart:2](../../../../../lib/src/rendering/flutter/klp_flutter_renderer.dart#L2) |
+| <code>lib/src/foundation/binding/contracts</code> | import | 1 | [lib/src/rendering/flutter/klp_flutter_renderer.dart:8](../../../../../lib/src/rendering/flutter/klp_flutter_renderer.dart#L8) |
+| <code>lib/src/foundation/platform</code> | import | 1 | [lib/src/rendering/flutter/klp_flutter_renderer.dart:9](../../../../../lib/src/rendering/flutter/klp_flutter_renderer.dart#L9) |
+| <code>lib/src/kernel/diagnostics</code> | import | 1 | [lib/src/rendering/flutter/klp_flutter_renderer.dart:1](../../../../../lib/src/rendering/flutter/klp_flutter_renderer.dart#L1) |
+| <code>lib/src/kernel/identity</code> | import | 2 | [lib/src/rendering/flutter/klp_flutter_renderer.dart:10](../../../../../lib/src/rendering/flutter/klp_flutter_renderer.dart#L10) |
+| <code>lib/src/rendering/flutter/internal</code> | import | 13 | [lib/src/rendering/flutter/klp_flutter_renderer.dart:12](../../../../../lib/src/rendering/flutter/klp_flutter_renderer.dart#L12) |
+| <code>lib/src/styling/presets</code> | import | 1 | [lib/src/rendering/flutter/klp_flutter_renderer.dart:6](../../../../../lib/src/rendering/flutter/klp_flutter_renderer.dart#L6) |
+| <code>package:flutter</code> | import | 3 | [lib/src/rendering/flutter/klp_flutter_renderer.dart:4](../../../../../lib/src/rendering/flutter/klp_flutter_renderer.dart#L4) |
 
 ## 目錄結構圖
 
@@ -22,7 +54,11 @@
 flowchart TD
 	n0["lib/src/rendering/flutter"]
 	n1["internal/"]
+	n2["klp_flutter_renderer.dart"]
+	n3["klp_viewport_capabilities.dart"]
 	n0 -->|"contains"| n1
+	n0 -->|"contains"| n2
+	n0 -->|"contains"| n3
 ```
 
 ## 子目錄
@@ -35,7 +71,8 @@ flowchart TD
 
 | 檔案 | 宣告 | 細節 | 來源證據 |
 |---|---|---|---|
-| 無 | 本層沒有 Dart 檔案 | — | — |
+| `klp_flutter_renderer.dart` | KlpFlutterRenderer, _KlpFlutterOverlayHost, _KlpFlutterOverlayHostState | [架構與 API](klp_flutter_renderer.md) | [lib/src/rendering/flutter/klp_flutter_renderer.dart:1](../../../../../lib/src/rendering/flutter/klp_flutter_renderer.dart#L1) |
+| `klp_viewport_capabilities.dart` | KlpViewportCapabilities | [架構與 API](klp_viewport_capabilities.md) | [lib/src/rendering/flutter/klp_viewport_capabilities.dart:1](../../../../../lib/src/rendering/flutter/klp_viewport_capabilities.dart#L1) |
 
 ## 閱讀說明
 

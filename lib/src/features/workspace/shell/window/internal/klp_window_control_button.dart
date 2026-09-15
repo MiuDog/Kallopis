@@ -1,12 +1,12 @@
 import 'package:flutter/widgets.dart';
 
-import '../../../../../foundation/klp_icon.dart';
-import '../../../../../foundation/interaction/klp_action_region.dart';
-import '../../../../../foundation/interaction/klp_action_region_tone.dart';
-import '../../../../../foundation/layout/klp_box.dart';
-import '../../../../../foundation/layout/klp_center.dart';
-import '../../../../overlays/klp_tooltip.dart';
-import '../klp_window_controls_geometry.dart';
+import 'package:kallopis/src/foundation/klp_icon.dart';
+import 'package:kallopis/src/foundation/interaction/klp_action_region.dart';
+import 'package:kallopis/src/foundation/interaction/klp_action_region_tone.dart';
+import 'package:kallopis/src/foundation/layout/klp_box.dart';
+import 'package:kallopis/src/foundation/layout/klp_center.dart';
+import 'package:kallopis/src/features/overlays/klp_tooltip.dart';
+import 'package:kallopis/src/features/workspace/shell/window/klp_window_controls_geometry.dart';
 
 /// 視窗控制列內部的單一按鈕呈現。
 class KlpWindowControlButton extends StatelessWidget {

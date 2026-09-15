@@ -36,13 +36,15 @@ flowchart LR
 |---|---|---|
 | <code>klp_children_template.dart → klp_template.dart</code> | part of | [lib/src/foundation/templates/klp_children_template.dart:1](../../../../../lib/src/foundation/templates/klp_children_template.dart#L1) |
 | <code>klp_linear_template.dart → klp_template.dart</code> | part of | [lib/src/foundation/templates/klp_linear_template.dart:1](../../../../../lib/src/foundation/templates/klp_linear_template.dart#L1) |
+| <code>klp_surface_shadow_semantics.dart → klp_template.dart</code> | part of | [lib/src/foundation/templates/klp_surface_shadow_semantics.dart:1](../../../../../lib/src/foundation/templates/klp_surface_shadow_semantics.dart#L1) |
 | <code>klp_surface_template.dart → klp_template.dart</code> | part of | [lib/src/foundation/templates/klp_surface_template.dart:1](../../../../../lib/src/foundation/templates/klp_surface_template.dart#L1) |
 | <code>klp_template.dart → klp_axis.dart</code> | import | [lib/src/foundation/templates/klp_template.dart:5](../../../../../lib/src/foundation/templates/klp_template.dart#L5) |
 | <code>klp_template.dart → klp_text_semantics.dart</code> | import | [lib/src/foundation/templates/klp_template.dart:6](../../../../../lib/src/foundation/templates/klp_template.dart#L6) |
 | <code>klp_template.dart → klp_text_template.dart</code> | part | [lib/src/foundation/templates/klp_template.dart:8](../../../../../lib/src/foundation/templates/klp_template.dart#L8) |
 | <code>klp_template.dart → klp_linear_template.dart</code> | part | [lib/src/foundation/templates/klp_template.dart:9](../../../../../lib/src/foundation/templates/klp_template.dart#L9) |
 | <code>klp_template.dart → klp_surface_template.dart</code> | part | [lib/src/foundation/templates/klp_template.dart:10](../../../../../lib/src/foundation/templates/klp_template.dart#L10) |
-| <code>klp_template.dart → klp_children_template.dart</code> | part | [lib/src/foundation/templates/klp_template.dart:11](../../../../../lib/src/foundation/templates/klp_template.dart#L11) |
+| <code>klp_template.dart → klp_surface_shadow_semantics.dart</code> | part | [lib/src/foundation/templates/klp_template.dart:11](../../../../../lib/src/foundation/templates/klp_template.dart#L11) |
+| <code>klp_template.dart → klp_children_template.dart</code> | part | [lib/src/foundation/templates/klp_template.dart:12](../../../../../lib/src/foundation/templates/klp_template.dart#L12) |
 | <code>klp_text_template.dart → klp_template.dart</code> | part of | [lib/src/foundation/templates/klp_text_template.dart:1](../../../../../lib/src/foundation/templates/klp_text_template.dart#L1) |
 
 ## 目錄結構圖
@@ -53,10 +55,11 @@ flowchart LR
 	n1["klp_axis.dart"]
 	n2["klp_children_template.dart"]
 	n3["klp_linear_template.dart"]
-	n4["klp_surface_template.dart"]
-	n5["klp_template.dart"]
-	n6["klp_text_semantics.dart"]
-	n7["klp_text_template.dart"]
+	n4["klp_surface_shadow_semantics.dart"]
+	n5["klp_surface_template.dart"]
+	n6["klp_template.dart"]
+	n7["klp_text_semantics.dart"]
+	n8["klp_text_template.dart"]
 	n0 -->|"contains"| n1
 	n0 -->|"contains"| n2
 	n0 -->|"contains"| n3
@@ -64,6 +67,7 @@ flowchart LR
 	n0 -->|"contains"| n5
 	n0 -->|"contains"| n6
 	n0 -->|"contains"| n7
+	n0 -->|"contains"| n8
 ```
 
 ## 子目錄
@@ -79,6 +83,7 @@ flowchart LR
 | `klp_axis.dart` | KlpAxis | [架構與 API](klp_axis.md) | [lib/src/foundation/templates/klp_axis.dart:1](../../../../../lib/src/foundation/templates/klp_axis.dart#L1) |
 | `klp_children_template.dart` | KlpChildrenTemplate | [架構與 API](klp_children_template.md) | [lib/src/foundation/templates/klp_children_template.dart:1](../../../../../lib/src/foundation/templates/klp_children_template.dart#L1) |
 | `klp_linear_template.dart` | KlpLinearTemplate | [架構與 API](klp_linear_template.md) | [lib/src/foundation/templates/klp_linear_template.dart:1](../../../../../lib/src/foundation/templates/klp_linear_template.dart#L1) |
+| `klp_surface_shadow_semantics.dart` | KlpSurfaceShadowSemantics | [架構與 API](klp_surface_shadow_semantics.md) | [lib/src/foundation/templates/klp_surface_shadow_semantics.dart:1](../../../../../lib/src/foundation/templates/klp_surface_shadow_semantics.dart#L1) |
 | `klp_surface_template.dart` | KlpSurfaceTemplate | [架構與 API](klp_surface_template.md) | [lib/src/foundation/templates/klp_surface_template.dart:1](../../../../../lib/src/foundation/templates/klp_surface_template.dart#L1) |
 | `klp_template.dart` | KlpTemplate | [架構與 API](klp_template.md) | [lib/src/foundation/templates/klp_template.dart:1](../../../../../lib/src/foundation/templates/klp_template.dart#L1) |
 | `klp_text_semantics.dart` | KlpTextSemantics | [架構與 API](klp_text_semantics.md) | [lib/src/foundation/templates/klp_text_semantics.dart:1](../../../../../lib/src/foundation/templates/klp_text_semantics.dart#L1) |

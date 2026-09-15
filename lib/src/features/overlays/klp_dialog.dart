@@ -1,10 +1,10 @@
 import 'package:flutter/widgets.dart';
 
-import '../actions/button/klp_button.dart';
-import '../../foundation/layout/klp_layout.dart';
-import '../../foundation/surface/klp_surface.dart';
-import '../../foundation/content/klp_text.dart';
-import '../../styling/legacy_theme/klp_theme.dart';
+import 'package:kallopis/src/features/actions/button/klp_button.dart';
+import 'package:kallopis/src/foundation/layout/klp_layout.dart';
+import 'package:kallopis/src/foundation/surface/klp_surface.dart';
+import 'package:kallopis/src/foundation/content/klp_text.dart';
+import 'package:kallopis/src/styling/legacy_theme/klp_theme.dart';
 
 /// 對話框內容。**不負責彈出**——呼叫端自行決定用 `showDialog` 或其他方式呈現。
 /// `secondaryLabel` 為必填：庫不替產品決定用什麼語言說「取消」。

@@ -12,7 +12,7 @@
 flowchart LR
 	n0["klp_router.dart"]
 	n1["package:flutter/widgets.dart"]
-	n2["../../../foundation/layout/klp_panel_layout.dart"]
+	n2["package:kallopis/src/foundation/layout/klp_panel_layout.dart"]
 	n3["klp_panel_layout_builder.dart"]
 	n4["klp_route.dart"]
 	n5["klp_route_not_found.dart"]
@@ -36,7 +36,7 @@ flowchart LR
 | 關係 | 原始 directive | 來源 |
 |---|---|---|
 | import | <code>import &#x27;package:flutter/widgets.dart&#x27;;</code> | [lib/src/features/navigation/legacy_router/klp_router.dart:1](../../../../../../lib/src/features/navigation/legacy_router/klp_router.dart#L1) |
-| import | <code>import &#x27;../../../foundation/layout/klp_panel_layout.dart&#x27;;</code> | [lib/src/features/navigation/legacy_router/klp_router.dart:3](../../../../../../lib/src/features/navigation/legacy_router/klp_router.dart#L3) |
+| import | <code>import &#x27;package:kallopis/src/foundation/layout/klp_panel_layout.dart&#x27;;</code> | [lib/src/features/navigation/legacy_router/klp_router.dart:3](../../../../../../lib/src/features/navigation/legacy_router/klp_router.dart#L3) |
 | part | <code>part &#x27;klp_panel_layout_builder.dart&#x27;;</code> | [lib/src/features/navigation/legacy_router/klp_router.dart:5](../../../../../../lib/src/features/navigation/legacy_router/klp_router.dart#L5) |
 | part | <code>part &#x27;klp_route.dart&#x27;;</code> | [lib/src/features/navigation/legacy_router/klp_router.dart:6](../../../../../../lib/src/features/navigation/legacy_router/klp_router.dart#L6) |
 | part | <code>part &#x27;klp_route_not_found.dart&#x27;;</code> | [lib/src/features/navigation/legacy_router/klp_router.dart:7](../../../../../../lib/src/features/navigation/legacy_router/klp_router.dart#L7) |

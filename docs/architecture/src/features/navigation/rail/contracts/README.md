@@ -11,14 +11,16 @@
 箭頭以本層 Dart 檔案明寫的 directive 彙總到目標所在目錄或外部套件邊界；不遞迴將子目錄依賴算入本層。相同目標的不同 directive 類型分開計數。
 
 ```mermaid
-flowchart TD
+flowchart LR
 	n0["lib/src/features/navigation/rail/contracts"]
 	n1["lib/src/capabilities/actions"]
 	n2["lib/src/composition/nodes"]
 	n3["lib/src/composition/slots"]
+	n4["lib/src/kernel/identity"]
 	n0 -->|"import"| n1
 	n0 -->|"import"| n2
 	n0 -->|"import"| n3
+	n0 -->|"import"| n4
 ```
 
 | 目標邊界 | 關係 | directive 數 | 第一筆來源證據 |
@@ -26,12 +28,13 @@ flowchart TD
 | <code>lib/src/capabilities/actions</code> | import | 1 | [lib/src/features/navigation/rail/contracts/klp_rail_item.dart:2](../../../../../../../lib/src/features/navigation/rail/contracts/klp_rail_item.dart#L2) |
 | <code>lib/src/composition/nodes</code> | import | 2 | [lib/src/features/navigation/rail/contracts/klp_rail.dart:1](../../../../../../../lib/src/features/navigation/rail/contracts/klp_rail.dart#L1) |
 | <code>lib/src/composition/slots</code> | import | 3 | [lib/src/features/navigation/rail/contracts/klp_rail.dart:2](../../../../../../../lib/src/features/navigation/rail/contracts/klp_rail.dart#L2) |
+| <code>lib/src/kernel/identity</code> | import | 1 | [lib/src/features/navigation/rail/contracts/klp_rail.dart:5](../../../../../../../lib/src/features/navigation/rail/contracts/klp_rail.dart#L5) |
 
 ### 同目錄依賴
 
 | 來源 → 目標 | 關係 | 證據 |
 |---|---|---|
-| <code>klp_rail.dart → klp_rail_item.dart</code> | import | [lib/src/features/navigation/rail/contracts/klp_rail.dart:5](../../../../../../../lib/src/features/navigation/rail/contracts/klp_rail.dart#L5) |
+| <code>klp_rail.dart → klp_rail_item.dart</code> | import | [lib/src/features/navigation/rail/contracts/klp_rail.dart:6](../../../../../../../lib/src/features/navigation/rail/contracts/klp_rail.dart#L6) |
 
 ## 目錄結構圖
 

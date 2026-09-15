@@ -1,8 +1,8 @@
 import 'package:flutter/widgets.dart';
 
-import '../../../foundation/layout/klp_gap.dart';
-import '../../../foundation/layout/klp_row.dart';
-import '../../../foundation/layout/klp_space_size.dart';
+import 'package:kallopis/src/foundation/layout/klp_gap.dart';
+import 'package:kallopis/src/foundation/layout/klp_row.dart';
+import 'package:kallopis/src/foundation/layout/klp_space_size.dart';
 import 'klp_avatar.dart';
 
 /// 以緊密水平排列呈現多個 Avatar，超出上限時顯示剩餘數量。

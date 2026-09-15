@@ -13,14 +13,14 @@ flowchart LR
 	n0["klp_region_placeholder.dart"]
 	n1["dart:math"]
 	n2["package:flutter/widgets.dart"]
-	n3["../../foundation/interaction/klp_action_region.dart"]
-	n4["../../foundation/interaction/klp_action_region_shape.dart"]
-	n5["../../foundation/interaction/klp_exclude_semantics.dart"]
-	n6["../../foundation/interaction/klp_semantic_region.dart"]
-	n7["../../foundation/layout/klp_layout.dart"]
-	n8["../../foundation/surface/klp_surface.dart"]
-	n9["../../styling/legacy_theme/klp_theme.dart"]
-	n10["../../foundation/content/klp_text.dart"]
+	n3["package:kallopis/src/foundation/interaction/klp_action_region.dart"]
+	n4["package:kallopis/src/foundation/interaction/klp_action_region_shape.dart"]
+	n5["package:kallopis/src/foundation/interaction/klp_exclude_semantics.dart"]
+	n6["package:kallopis/src/foundation/interaction/klp_semantic_region.dart"]
+	n7["package:kallopis/src/foundation/layout/klp_layout.dart"]
+	n8["package:kallopis/src/foundation/surface/klp_surface.dart"]
+	n9["package:kallopis/src/styling/legacy_theme/klp_theme.dart"]
+	n10["package:kallopis/src/foundation/content/klp_text.dart"]
 	n11["region_placeholder/klp_placeholder_action.dart"]
 	n0 -->|"import"| n1
 	n0 -->|"import"| n2
@@ -56,14 +56,14 @@ flowchart LR
 |---|---|---|
 | import | <code>import &#x27;dart:math&#x27; as math;</code> | [lib/src/features/feedback/klp_region_placeholder.dart:1](../../../../../lib/src/features/feedback/klp_region_placeholder.dart#L1) |
 | import | <code>import &#x27;package:flutter/widgets.dart&#x27;;</code> | [lib/src/features/feedback/klp_region_placeholder.dart:3](../../../../../lib/src/features/feedback/klp_region_placeholder.dart#L3) |
-| import | <code>import &#x27;../../foundation/interaction/klp_action_region.dart&#x27;;</code> | [lib/src/features/feedback/klp_region_placeholder.dart:5](../../../../../lib/src/features/feedback/klp_region_placeholder.dart#L5) |
-| import | <code>import &#x27;../../foundation/interaction/klp_action_region_shape.dart&#x27;;</code> | [lib/src/features/feedback/klp_region_placeholder.dart:6](../../../../../lib/src/features/feedback/klp_region_placeholder.dart#L6) |
-| import | <code>import &#x27;../../foundation/interaction/klp_exclude_semantics.dart&#x27;;</code> | [lib/src/features/feedback/klp_region_placeholder.dart:7](../../../../../lib/src/features/feedback/klp_region_placeholder.dart#L7) |
-| import | <code>import &#x27;../../foundation/interaction/klp_semantic_region.dart&#x27;;</code> | [lib/src/features/feedback/klp_region_placeholder.dart:8](../../../../../lib/src/features/feedback/klp_region_placeholder.dart#L8) |
-| import | <code>import &#x27;../../foundation/layout/klp_layout.dart&#x27;;</code> | [lib/src/features/feedback/klp_region_placeholder.dart:9](../../../../../lib/src/features/feedback/klp_region_placeholder.dart#L9) |
-| import | <code>import &#x27;../../foundation/surface/klp_surface.dart&#x27;;</code> | [lib/src/features/feedback/klp_region_placeholder.dart:10](../../../../../lib/src/features/feedback/klp_region_placeholder.dart#L10) |
-| import | <code>import &#x27;../../styling/legacy_theme/klp_theme.dart&#x27;;</code> | [lib/src/features/feedback/klp_region_placeholder.dart:11](../../../../../lib/src/features/feedback/klp_region_placeholder.dart#L11) |
-| import | <code>import &#x27;../../foundation/content/klp_text.dart&#x27;;</code> | [lib/src/features/feedback/klp_region_placeholder.dart:12](../../../../../lib/src/features/feedback/klp_region_placeholder.dart#L12) |
+| import | <code>import &#x27;package:kallopis/src/foundation/interaction/klp_action_region.dart&#x27;;</code> | [lib/src/features/feedback/klp_region_placeholder.dart:5](../../../../../lib/src/features/feedback/klp_region_placeholder.dart#L5) |
+| import | <code>import &#x27;package:kallopis/src/foundation/interaction/klp_action_region_shape.dart&#x27;;</code> | [lib/src/features/feedback/klp_region_placeholder.dart:6](../../../../../lib/src/features/feedback/klp_region_placeholder.dart#L6) |
+| import | <code>import &#x27;package:kallopis/src/foundation/interaction/klp_exclude_semantics.dart&#x27;;</code> | [lib/src/features/feedback/klp_region_placeholder.dart:7](../../../../../lib/src/features/feedback/klp_region_placeholder.dart#L7) |
+| import | <code>import &#x27;package:kallopis/src/foundation/interaction/klp_semantic_region.dart&#x27;;</code> | [lib/src/features/feedback/klp_region_placeholder.dart:8](../../../../../lib/src/features/feedback/klp_region_placeholder.dart#L8) |
+| import | <code>import &#x27;package:kallopis/src/foundation/layout/klp_layout.dart&#x27;;</code> | [lib/src/features/feedback/klp_region_placeholder.dart:9](../../../../../lib/src/features/feedback/klp_region_placeholder.dart#L9) |
+| import | <code>import &#x27;package:kallopis/src/foundation/surface/klp_surface.dart&#x27;;</code> | [lib/src/features/feedback/klp_region_placeholder.dart:10](../../../../../lib/src/features/feedback/klp_region_placeholder.dart#L10) |
+| import | <code>import &#x27;package:kallopis/src/styling/legacy_theme/klp_theme.dart&#x27;;</code> | [lib/src/features/feedback/klp_region_placeholder.dart:11](../../../../../lib/src/features/feedback/klp_region_placeholder.dart#L11) |
+| import | <code>import &#x27;package:kallopis/src/foundation/content/klp_text.dart&#x27;;</code> | [lib/src/features/feedback/klp_region_placeholder.dart:12](../../../../../lib/src/features/feedback/klp_region_placeholder.dart#L12) |
 | part | <code>part &#x27;region_placeholder/klp_placeholder_action.dart&#x27;;</code> | [lib/src/features/feedback/klp_region_placeholder.dart:14](../../../../../lib/src/features/feedback/klp_region_placeholder.dart#L14) |
 | part | <code>part &#x27;region_placeholder/klp_region_placeholder_tone.dart&#x27;;</code> | [lib/src/features/feedback/klp_region_placeholder.dart:15](../../../../../lib/src/features/feedback/klp_region_placeholder.dart#L15) |
 | part | <code>part &#x27;region_placeholder/klp_region_placeholder_widget.dart&#x27;;</code> | [lib/src/features/feedback/klp_region_placeholder.dart:16](../../../../../lib/src/features/feedback/klp_region_placeholder.dart#L16) |

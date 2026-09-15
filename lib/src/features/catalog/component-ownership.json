@@ -1,0 +1,1092 @@
+{
+	"schema_version": 1,
+	"exports": [
+		{
+			"symbol": "KlpAnchoredCommands",
+			"source_path": "lib/src/features/editing/contracts/klp_anchored_commands.dart",
+			"kind": "node",
+			"definition_ids": [
+				"kallopis.anchored-commands"
+			]
+		},
+		{
+			"symbol": "KlpBlockControlSlotChild",
+			"source_path": "lib/src/features/editing/contracts/klp_block_control_slot_child.dart",
+			"kind": "qualification",
+			"definition_ids": []
+		},
+		{
+			"symbol": "KlpBlockControls",
+			"source_path": "lib/src/features/editing/contracts/klp_block_controls.dart",
+			"kind": "node",
+			"definition_ids": [
+				"kallopis.block-controls"
+			]
+		},
+		{
+			"symbol": "KlpBlockNoteEditingContent",
+			"source_path": "lib/src/features/editing/contracts/klp_block_note_editing_content.dart",
+			"kind": "node",
+			"definition_ids": [
+				"kallopis.blockNoteEditing"
+			]
+		},
+		{
+			"symbol": "KlpResolvedAsset",
+			"source_path": "lib/src/features/editing/contracts/klp_block_note_editing_content.dart",
+			"kind": "data",
+			"definition_ids": []
+		},
+		{
+			"symbol": "KlpCanvaEditingContent",
+			"source_path": "lib/src/features/editing/contracts/klp_canva_editing_content.dart",
+			"kind": "node",
+			"definition_ids": [
+				"kallopis.canvaEditing"
+			]
+		},
+		{
+			"symbol": "KlpCommandSlotChild",
+			"source_path": "lib/src/features/editing/contracts/klp_command_slot_child.dart",
+			"kind": "qualification",
+			"definition_ids": []
+		},
+		{
+			"symbol": "KlpEditingContent",
+			"source_path": "lib/src/features/editing/contracts/klp_editing_content.dart",
+			"kind": "node",
+			"definition_ids": [
+				"kallopis.editing"
+			]
+		},
+		{
+			"symbol": "KlpModeToolSlotChild",
+			"source_path": "lib/src/features/editing/contracts/klp_mode_tool_slot_child.dart",
+			"kind": "qualification",
+			"definition_ids": []
+		},
+		{
+			"symbol": "KlpModeToolbar",
+			"source_path": "lib/src/features/editing/contracts/klp_mode_toolbar.dart",
+			"kind": "node",
+			"definition_ids": [
+				"kallopis.editing.modeToolbar"
+			]
+		},
+		{
+			"symbol": "KlpDocumentTab",
+			"source_path": "lib/src/features/workspace/components/klp_document_tabs.dart",
+			"kind": "node",
+			"definition_ids": [
+				"kallopis.document_tab"
+			]
+		},
+		{
+			"symbol": "KlpDocumentTabs",
+			"source_path": "lib/src/features/workspace/components/klp_document_tabs.dart",
+			"kind": "node",
+			"definition_ids": [
+				"kallopis.document_tabs"
+			]
+		},
+		{
+			"symbol": "KlpExplorer",
+			"source_path": "lib/src/features/workspace/components/klp_explorer.dart",
+			"kind": "node",
+			"definition_ids": [
+				"kallopis.explorer"
+			]
+		},
+		{
+			"symbol": "KlpExplorerDropPosition",
+			"source_path": "lib/src/features/workspace/components/klp_explorer.dart",
+			"kind": "data",
+			"definition_ids": []
+		},
+		{
+			"symbol": "KlpExplorerIcon",
+			"source_path": "lib/src/features/workspace/components/klp_explorer.dart",
+			"kind": "data",
+			"definition_ids": []
+		},
+		{
+			"symbol": "KlpExplorerItem",
+			"source_path": "lib/src/features/workspace/components/klp_explorer.dart",
+			"kind": "node",
+			"definition_ids": [
+				"kallopis.explorer_item"
+			]
+		},
+		{
+			"symbol": "KlpExplorerItemKind",
+			"source_path": "lib/src/features/workspace/components/klp_explorer.dart",
+			"kind": "data",
+			"definition_ids": []
+		},
+		{
+			"symbol": "KlpExplorerSpacing",
+			"source_path": "lib/src/features/workspace/components/klp_explorer.dart",
+			"kind": "data",
+			"definition_ids": []
+		},
+		{
+			"symbol": "KlpWindowCommands",
+			"source_path": "lib/src/features/workspace/components/klp_window_controls.dart",
+			"kind": "data",
+			"definition_ids": []
+		},
+		{
+			"symbol": "KlpWindowControls",
+			"source_path": "lib/src/features/workspace/components/klp_window_controls.dart",
+			"kind": "node",
+			"definition_ids": [
+				"kallopis.window_controls"
+			]
+		},
+		{
+			"symbol": "KlpWorkspaceBlock",
+			"source_path": "lib/src/features/workspace/components/klp_workspace_block.dart",
+			"kind": "node",
+			"definition_ids": [
+				"kallopis.workspace_block"
+			]
+		},
+		{
+			"symbol": "KlpWorkspaceBlockKind",
+			"source_path": "lib/src/features/workspace/components/klp_workspace_block.dart",
+			"kind": "data",
+			"definition_ids": []
+		},
+		{
+			"symbol": "KlpWorkspaceChoice",
+			"source_path": "lib/src/features/workspace/components/klp_workspace_block.dart",
+			"kind": "data",
+			"definition_ids": []
+		},
+		{
+			"symbol": "KlpWorkspaceContent",
+			"source_path": "lib/src/features/workspace/components/klp_workspace_block.dart",
+			"kind": "node",
+			"definition_ids": [
+				"kallopis.workspace_content"
+			]
+		},
+		{
+			"symbol": "KlpWorkspaceContentBlock",
+			"source_path": "lib/src/features/workspace/components/klp_workspace_block.dart",
+			"kind": "node",
+			"definition_ids": [
+				"kallopis.workspace_content_block"
+			]
+		},
+		{
+			"symbol": "KlpWorkspaceContentKind",
+			"source_path": "lib/src/features/workspace/components/klp_workspace_block.dart",
+			"kind": "data",
+			"definition_ids": []
+		},
+		{
+			"symbol": "KlpWorkspaceIcon",
+			"source_path": "lib/src/features/workspace/components/klp_workspace_block.dart",
+			"kind": "data",
+			"definition_ids": []
+		},
+		{
+			"symbol": "KlpWorkspaceItem",
+			"source_path": "lib/src/features/workspace/components/klp_workspace_block.dart",
+			"kind": "data",
+			"definition_ids": []
+		},
+		{
+			"symbol": "KlpWorkspaceMaterial",
+			"source_path": "lib/src/features/workspace/components/klp_workspace_block.dart",
+			"kind": "data",
+			"definition_ids": []
+		},
+		{
+			"symbol": "KlpWorkspaceCommand",
+			"source_path": "lib/src/features/workspace/components/klp_workspace_command.dart",
+			"kind": "data",
+			"definition_ids": []
+		},
+		{
+			"symbol": "KlpWorkspaceCommandShortcut",
+			"source_path": "lib/src/features/workspace/components/klp_workspace_command.dart",
+			"kind": "data",
+			"definition_ids": []
+		},
+		{
+			"symbol": "KlpAppFrame",
+			"source_path": "lib/src/features/workspace/layout/klp_app_layout.dart",
+			"kind": "node",
+			"definition_ids": [
+				"kallopis.app_frame"
+			]
+		},
+		{
+			"symbol": "KlpAppFrameRole",
+			"source_path": "lib/src/features/workspace/layout/klp_app_layout.dart",
+			"kind": "data",
+			"definition_ids": []
+		},
+		{
+			"symbol": "KlpAppLayout",
+			"source_path": "lib/src/features/workspace/layout/klp_app_layout.dart",
+			"kind": "node",
+			"definition_ids": [
+				"kallopis.app_layout"
+			]
+		},
+		{
+			"symbol": "KlpLayoutMainAlignment",
+			"source_path": "lib/src/features/workspace/layout/klp_app_layout.dart",
+			"kind": "data",
+			"definition_ids": []
+		},
+		{
+			"symbol": "KlpLayoutNode",
+			"source_path": "lib/src/features/workspace/layout/klp_app_layout.dart",
+			"kind": "qualification",
+			"definition_ids": []
+		},
+		{
+			"symbol": "KlpLayoutPane",
+			"source_path": "lib/src/features/workspace/layout/klp_app_layout.dart",
+			"kind": "node",
+			"definition_ids": [
+				"kallopis.layout_pane"
+			]
+		},
+		{
+			"symbol": "KlpLayoutPaneSize",
+			"source_path": "lib/src/features/workspace/layout/klp_app_layout.dart",
+			"kind": "data",
+			"definition_ids": []
+		},
+		{
+			"symbol": "KlpLayoutSpacing",
+			"source_path": "lib/src/features/workspace/layout/klp_app_layout.dart",
+			"kind": "data",
+			"definition_ids": []
+		},
+		{
+			"symbol": "LayoutColumn",
+			"source_path": "lib/src/features/workspace/layout/klp_app_layout.dart",
+			"kind": "node",
+			"definition_ids": [
+				"kallopis.layout_column"
+			]
+		},
+		{
+			"symbol": "LayoutResizeHandle",
+			"source_path": "lib/src/features/workspace/layout/klp_app_layout.dart",
+			"kind": "node",
+			"definition_ids": [
+				"kallopis.layout_resize_handle"
+			]
+		},
+		{
+			"symbol": "LayoutRow",
+			"source_path": "lib/src/features/workspace/layout/klp_app_layout.dart",
+			"kind": "node",
+			"definition_ids": [
+				"kallopis.layout_row"
+			]
+		},
+		{
+			"symbol": "LayoutSpacer",
+			"source_path": "lib/src/features/workspace/layout/klp_app_layout.dart",
+			"kind": "node",
+			"definition_ids": [
+				"kallopis.layout_spacer"
+			]
+		},
+		{
+			"symbol": "KlpFrameGroup",
+			"source_path": "lib/src/features/workspace/layout/klp_frame_groups.dart",
+			"kind": "node",
+			"definition_ids": [
+				"kallopis.frame_group"
+			]
+		},
+		{
+			"symbol": "KlpFrameGroupContentSpacing",
+			"source_path": "lib/src/features/workspace/layout/klp_frame_groups.dart",
+			"kind": "data",
+			"definition_ids": []
+		},
+		{
+			"symbol": "KlpFrameGroupDivider",
+			"source_path": "lib/src/features/workspace/layout/klp_frame_groups.dart",
+			"kind": "data",
+			"definition_ids": []
+		},
+		{
+			"symbol": "KlpFrameGroupPadding",
+			"source_path": "lib/src/features/workspace/layout/klp_frame_groups.dart",
+			"kind": "data",
+			"definition_ids": []
+		},
+		{
+			"symbol": "KlpFrameGroups",
+			"source_path": "lib/src/features/workspace/layout/klp_frame_groups.dart",
+			"kind": "node",
+			"definition_ids": [
+				"kallopis.frame_groups"
+			]
+		},
+		{
+			"symbol": "KlpFrameGroupStyle",
+			"source_path": "lib/src/features/workspace/layout/klp_frame_groups.dart",
+			"kind": "data",
+			"definition_ids": []
+		},
+		{
+			"symbol": "KlpPadding",
+			"source_path": "lib/src/features/workspace/layout/klp_frame_groups.dart",
+			"kind": "node",
+			"definition_ids": [
+				"kallopis.frame_group"
+			]
+		},
+		{
+			"symbol": "KlpPaddingDivider",
+			"source_path": "lib/src/features/workspace/layout/klp_frame_groups.dart",
+			"kind": "data",
+			"definition_ids": []
+		},
+		{
+			"symbol": "KlpPaddingHorizontal",
+			"source_path": "lib/src/features/workspace/layout/klp_frame_groups.dart",
+			"kind": "data",
+			"definition_ids": []
+		},
+		{
+			"symbol": "KlpPaddingStyle",
+			"source_path": "lib/src/features/workspace/layout/klp_frame_groups.dart",
+			"kind": "data",
+			"definition_ids": []
+		},
+		{
+			"symbol": "KlpBlockNoteBridgeChannel",
+			"source_path": "package:krepis_block_note/krepis_block_note.dart",
+			"kind": "reexport",
+			"definition_ids": []
+		},
+		{
+			"symbol": "KlpBlockNoteBridgePort",
+			"source_path": "package:krepis_block_note/krepis_block_note.dart",
+			"kind": "reexport",
+			"definition_ids": []
+		},
+		{
+			"symbol": "KlpBlockNoteCloseResult",
+			"source_path": "package:krepis_block_note/krepis_block_note.dart",
+			"kind": "reexport",
+			"definition_ids": []
+		},
+		{
+			"symbol": "KlpBlockNoteDocument",
+			"source_path": "package:krepis_block_note/krepis_block_note.dart",
+			"kind": "reexport",
+			"definition_ids": []
+		},
+		{
+			"symbol": "KlpBlockNotePersist",
+			"source_path": "package:krepis_block_note/krepis_block_note.dart",
+			"kind": "reexport",
+			"definition_ids": []
+		},
+		{
+			"symbol": "KlpBlockNoteSaveResult",
+			"source_path": "package:krepis_block_note/krepis_block_note.dart",
+			"kind": "reexport",
+			"definition_ids": []
+		},
+		{
+			"symbol": "KlpBlockNoteSessionController",
+			"source_path": "package:krepis_block_note/krepis_block_note.dart",
+			"kind": "reexport",
+			"definition_ids": []
+		},
+		{
+			"symbol": "KrepisCanvaBridgeChannel",
+			"source_path": "package:krepis_canva/krepis_canva.dart",
+			"kind": "reexport",
+			"definition_ids": []
+		},
+		{
+			"symbol": "KrepisCanvaBridgePort",
+			"source_path": "package:krepis_canva/krepis_canva.dart",
+			"kind": "reexport",
+			"definition_ids": []
+		},
+		{
+			"symbol": "KrepisCanvaCloseResult",
+			"source_path": "package:krepis_canva/krepis_canva.dart",
+			"kind": "reexport",
+			"definition_ids": []
+		},
+		{
+			"symbol": "KrepisCanvaDocument",
+			"source_path": "package:krepis_canva/krepis_canva.dart",
+			"kind": "reexport",
+			"definition_ids": []
+		},
+		{
+			"symbol": "KrepisCanvaPersist",
+			"source_path": "package:krepis_canva/krepis_canva.dart",
+			"kind": "reexport",
+			"definition_ids": []
+		},
+		{
+			"symbol": "KrepisCanvaSessionController",
+			"source_path": "package:krepis_canva/krepis_canva.dart",
+			"kind": "reexport",
+			"definition_ids": []
+		}
+	],
+	"components": [
+		{
+			"definition_id": "kallopis.anchored-commands",
+			"declaration_symbol": "KlpAnchoredCommands",
+			"declaration_path": "lib/src/features/editing/contracts/klp_anchored_commands.dart",
+			"owner_module": "features",
+			"level": "L5",
+			"visibility": "public",
+			"semantic_owner": "kallopis.anchored-commands",
+			"qualifications": [
+				"KlpCommandSlotChild"
+			],
+			"slots": [],
+			"adapter": {
+				"symbol": "KlpAnchoredCommandsAdapter",
+				"source_path": "lib/src/features/editing/adapters/klp_anchored_commands_adapter.dart",
+				"factory": "KlpAnchoredCommandsAdapter()",
+				"variant": null
+			}
+		},
+		{
+			"definition_id": "kallopis.app_frame",
+			"declaration_symbol": "KlpAppFrame",
+			"declaration_path": "lib/src/features/workspace/layout/klp_app_layout.dart",
+			"owner_module": "features",
+			"level": "L5",
+			"visibility": "public",
+			"semantic_owner": "kallopis.app_frame",
+			"qualifications": [
+				"KlpLayoutNode"
+			],
+			"slots": [
+				{
+					"name": "child",
+					"owner": "kallopis.app_frame",
+					"child_type": "KlpFrameGroups",
+					"min": 1,
+					"max": 1
+				}
+			],
+			"adapter": {
+				"symbol": "KlpAppLayoutAdapter",
+				"source_path": "lib/src/features/workspace/layout/adapters/klp_app_layout_adapter.dart",
+				"factory": "KlpAppLayoutAdapter.createAll()",
+				"variant": "kallopis.app_frame"
+			}
+		},
+		{
+			"definition_id": "kallopis.app_layout",
+			"declaration_symbol": "KlpAppLayout",
+			"declaration_path": "lib/src/features/workspace/layout/klp_app_layout.dart",
+			"owner_module": "features",
+			"level": "L5",
+			"visibility": "public",
+			"semantic_owner": "kallopis.app_layout",
+			"qualifications": [
+				"KlpCompositeNode",
+				"KlpScreenBody"
+			],
+			"slots": [
+				{
+					"name": "child",
+					"owner": "kallopis.app_layout",
+					"child_type": "KlpLayoutNode",
+					"min": 1,
+					"max": 1
+				},
+				{
+					"name": "floatingAction",
+					"owner": "kallopis.app_layout",
+					"child_type": "KlpWorkspaceBlock",
+					"min": 0,
+					"max": 1
+				}
+			],
+			"adapter": {
+				"symbol": "KlpAppLayoutAdapter",
+				"source_path": "lib/src/features/workspace/layout/adapters/klp_app_layout_adapter.dart",
+				"factory": "KlpAppLayoutAdapter.createAll()",
+				"variant": "kallopis.app_layout"
+			}
+		},
+		{
+			"definition_id": "kallopis.block-controls",
+			"declaration_symbol": "KlpBlockControls",
+			"declaration_path": "lib/src/features/editing/contracts/klp_block_controls.dart",
+			"owner_module": "features",
+			"level": "L5",
+			"visibility": "public",
+			"semantic_owner": "kallopis.block-controls",
+			"qualifications": [
+				"KlpBlockControlSlotChild"
+			],
+			"slots": [],
+			"adapter": {
+				"symbol": "KlpBlockControlsAdapter",
+				"source_path": "lib/src/features/editing/adapters/klp_block_controls_adapter.dart",
+				"factory": "KlpBlockControlsAdapter()",
+				"variant": null
+			}
+		},
+		{
+			"definition_id": "kallopis.blockNoteEditing",
+			"declaration_symbol": "KlpBlockNoteEditingContent",
+			"declaration_path": "lib/src/features/editing/contracts/klp_block_note_editing_content.dart",
+			"owner_module": "features",
+			"level": "L5",
+			"visibility": "public",
+			"semantic_owner": "kallopis.blockNoteEditing",
+			"qualifications": [
+				"KlpScreenBody",
+				"KlpCompositeNode"
+			],
+			"slots": [],
+			"adapter": {
+				"symbol": "KlpBlockNoteEditingAdapter",
+				"source_path": "lib/src/features/editing/adapters/klp_block_note_editing_adapter.dart",
+				"factory": "KlpBlockNoteEditingAdapter()",
+				"variant": null
+			}
+		},
+		{
+			"definition_id": "kallopis.canvaEditing",
+			"declaration_symbol": "KlpCanvaEditingContent",
+			"declaration_path": "lib/src/features/editing/contracts/klp_canva_editing_content.dart",
+			"owner_module": "features",
+			"level": "L5",
+			"visibility": "public",
+			"semantic_owner": "kallopis.canvaEditing",
+			"qualifications": [
+				"KlpScreenBody",
+				"KlpCompositeNode"
+			],
+			"slots": [],
+			"adapter": {
+				"symbol": "KlpCanvaEditingAdapter",
+				"source_path": "lib/src/features/editing/adapters/klp_canva_editing_adapter.dart",
+				"factory": "KlpCanvaEditingAdapter()",
+				"variant": null
+			}
+		},
+		{
+			"definition_id": "kallopis.document_tab",
+			"declaration_symbol": "KlpDocumentTab",
+			"declaration_path": "lib/src/features/workspace/components/klp_document_tabs.dart",
+			"owner_module": "features",
+			"level": "L5",
+			"visibility": "public",
+			"semantic_owner": "kallopis.document_tab",
+			"qualifications": [
+				"KlpNode"
+			],
+			"slots": [],
+			"adapter": {
+				"symbol": "KlpWorkspaceComponentsAdapter",
+				"source_path": "lib/src/features/workspace/components/adapters/klp_workspace_components_adapter.dart",
+				"factory": "KlpWorkspaceComponentsAdapter.createAll()",
+				"variant": "kallopis.document_tab"
+			}
+		},
+		{
+			"definition_id": "kallopis.document_tabs",
+			"declaration_symbol": "KlpDocumentTabs",
+			"declaration_path": "lib/src/features/workspace/components/klp_document_tabs.dart",
+			"owner_module": "features",
+			"level": "L5",
+			"visibility": "public",
+			"semantic_owner": "kallopis.document_tabs",
+			"qualifications": [
+				"KlpCompositeNode"
+			],
+			"slots": [
+				{
+					"name": "tabs",
+					"owner": "kallopis.document_tabs",
+					"child_type": "KlpDocumentTab",
+					"min": 0,
+					"max": null
+				}
+			],
+			"adapter": {
+				"symbol": "KlpWorkspaceComponentsAdapter",
+				"source_path": "lib/src/features/workspace/components/adapters/klp_workspace_components_adapter.dart",
+				"factory": "KlpWorkspaceComponentsAdapter.createAll()",
+				"variant": "kallopis.document_tabs"
+			}
+		},
+		{
+			"definition_id": "kallopis.editing",
+			"declaration_symbol": "KlpEditingContent",
+			"declaration_path": "lib/src/features/editing/contracts/klp_editing_content.dart",
+			"owner_module": "features",
+			"level": "L5",
+			"visibility": "public",
+			"semantic_owner": "kallopis.editing",
+			"qualifications": [
+				"KlpScreenBody",
+				"KlpCompositeNode"
+			],
+			"slots": [
+				{
+					"name": "blockControls",
+					"owner": "kallopis.editing",
+					"child_type": "KlpBlockControlSlotChild",
+					"min": 0,
+					"max": 1
+				},
+				{
+					"name": "anchoredCommands",
+					"owner": "kallopis.editing",
+					"child_type": "KlpCommandSlotChild",
+					"min": 0,
+					"max": 1
+				},
+				{
+					"name": "modeToolbar",
+					"owner": "kallopis.editing",
+					"child_type": "KlpModeToolSlotChild",
+					"min": 0,
+					"max": 1
+				}
+			],
+			"adapter": {
+				"symbol": "KlpEditingAdapter",
+				"source_path": "lib/src/features/editing/adapters/klp_editing_adapter.dart",
+				"factory": "KlpEditingAdapter()",
+				"variant": null
+			}
+		},
+		{
+			"definition_id": "kallopis.editing.modeToolbar",
+			"declaration_symbol": "KlpModeToolbar",
+			"declaration_path": "lib/src/features/editing/contracts/klp_mode_toolbar.dart",
+			"owner_module": "features",
+			"level": "L5",
+			"visibility": "public",
+			"semantic_owner": "kallopis.editing.modeToolbar",
+			"qualifications": [
+				"KlpModeToolSlotChild"
+			],
+			"slots": [],
+			"adapter": {
+				"symbol": "KlpModeToolbarAdapter",
+				"source_path": "lib/src/features/editing/adapters/klp_mode_toolbar_adapter.dart",
+				"factory": "KlpModeToolbarAdapter()",
+				"variant": null
+			}
+		},
+		{
+			"definition_id": "kallopis.explorer",
+			"declaration_symbol": "KlpExplorer",
+			"declaration_path": "lib/src/features/workspace/components/klp_explorer.dart",
+			"owner_module": "features",
+			"level": "L5",
+			"visibility": "public",
+			"semantic_owner": "kallopis.explorer",
+			"qualifications": [
+				"KlpCompositeNode"
+			],
+			"slots": [
+				{
+					"name": "items",
+					"owner": "kallopis.explorer",
+					"child_type": "KlpExplorerItem",
+					"min": 0,
+					"max": null
+				}
+			],
+			"adapter": {
+				"symbol": "KlpWorkspaceComponentsAdapter",
+				"source_path": "lib/src/features/workspace/components/adapters/klp_workspace_components_adapter.dart",
+				"factory": "KlpWorkspaceComponentsAdapter.createAll()",
+				"variant": "kallopis.explorer"
+			}
+		},
+		{
+			"definition_id": "kallopis.explorer_item",
+			"declaration_symbol": "KlpExplorerItem",
+			"declaration_path": "lib/src/features/workspace/components/klp_explorer.dart",
+			"owner_module": "features",
+			"level": "L5",
+			"visibility": "public",
+			"semantic_owner": "kallopis.explorer_item",
+			"qualifications": [
+				"KlpCompositeNode"
+			],
+			"slots": [
+				{
+					"name": "children",
+					"owner": "kallopis.explorer_item",
+					"child_type": "KlpExplorerItem",
+					"min": 0,
+					"max": null
+				}
+			],
+			"adapter": {
+				"symbol": "KlpWorkspaceComponentsAdapter",
+				"source_path": "lib/src/features/workspace/components/adapters/klp_workspace_components_adapter.dart",
+				"factory": "KlpWorkspaceComponentsAdapter.createAll()",
+				"variant": "kallopis.explorer_item"
+			}
+		},
+		{
+			"definition_id": "kallopis.frame_group",
+			"declaration_symbol": "KlpFrameGroup",
+			"declaration_path": "lib/src/features/workspace/layout/klp_frame_groups.dart",
+			"owner_module": "features",
+			"level": "L5",
+			"visibility": "public",
+			"semantic_owner": "kallopis.frame_group",
+			"qualifications": [
+				"KlpCompositeNode"
+			],
+			"slots": [
+				{
+					"name": "content",
+					"owner": "kallopis.frame_group",
+					"child_type": "KlpNode",
+					"min": 1,
+					"max": null
+				}
+			],
+			"adapter": {
+				"symbol": "KlpFrameGroupsAdapter",
+				"source_path": "lib/src/features/workspace/layout/adapters/klp_frame_groups_adapter.dart",
+				"factory": "KlpFrameGroupsAdapter.createAll()",
+				"variant": "kallopis.frame_group"
+			}
+		},
+		{
+			"definition_id": "kallopis.frame_groups",
+			"declaration_symbol": "KlpFrameGroups",
+			"declaration_path": "lib/src/features/workspace/layout/klp_frame_groups.dart",
+			"owner_module": "features",
+			"level": "L5",
+			"visibility": "public",
+			"semantic_owner": "kallopis.frame_groups",
+			"qualifications": [
+				"KlpCompositeNode"
+			],
+			"slots": [
+				{
+					"name": "groups",
+					"owner": "kallopis.frame_groups",
+					"child_type": "KlpFrameGroup",
+					"min": 1,
+					"max": null
+				},
+				{
+					"name": "footer",
+					"owner": "kallopis.frame_groups",
+					"child_type": "KlpFrameGroup",
+					"min": 0,
+					"max": 1
+				}
+			],
+			"adapter": {
+				"symbol": "KlpFrameGroupsAdapter",
+				"source_path": "lib/src/features/workspace/layout/adapters/klp_frame_groups_adapter.dart",
+				"factory": "KlpFrameGroupsAdapter.createAll()",
+				"variant": "kallopis.frame_groups"
+			}
+		},
+		{
+			"definition_id": "kallopis.layout_column",
+			"declaration_symbol": "LayoutColumn",
+			"declaration_path": "lib/src/features/workspace/layout/klp_app_layout.dart",
+			"owner_module": "features",
+			"level": "L5",
+			"visibility": "public",
+			"semantic_owner": "kallopis.layout_column",
+			"qualifications": [
+				"KlpLayoutNode"
+			],
+			"slots": [
+				{
+					"name": "children",
+					"owner": "kallopis.layout_column",
+					"child_type": "KlpLayoutNode",
+					"min": 1,
+					"max": null
+				}
+			],
+			"adapter": {
+				"symbol": "KlpAppLayoutAdapter",
+				"source_path": "lib/src/features/workspace/layout/adapters/klp_app_layout_adapter.dart",
+				"factory": "KlpAppLayoutAdapter.createAll()",
+				"variant": "kallopis.layout_column"
+			}
+		},
+		{
+			"definition_id": "kallopis.layout_pane",
+			"declaration_symbol": "KlpLayoutPane",
+			"declaration_path": "lib/src/features/workspace/layout/klp_app_layout.dart",
+			"owner_module": "features",
+			"level": "L5",
+			"visibility": "public",
+			"semantic_owner": "kallopis.layout_pane",
+			"qualifications": [
+				"KlpLayoutNode"
+			],
+			"slots": [
+				{
+					"name": "child",
+					"owner": "kallopis.layout_pane",
+					"child_type": "KlpFrameGroups",
+					"min": 1,
+					"max": 1
+				}
+			],
+			"adapter": {
+				"symbol": "KlpAppLayoutAdapter",
+				"source_path": "lib/src/features/workspace/layout/adapters/klp_app_layout_adapter.dart",
+				"factory": "KlpAppLayoutAdapter.createAll()",
+				"variant": "kallopis.layout_pane"
+			}
+		},
+		{
+			"definition_id": "kallopis.layout_resize_handle",
+			"declaration_symbol": "LayoutResizeHandle",
+			"declaration_path": "lib/src/features/workspace/layout/klp_app_layout.dart",
+			"owner_module": "features",
+			"level": "L5",
+			"visibility": "public",
+			"semantic_owner": "kallopis.layout_resize_handle",
+			"qualifications": [
+				"KlpLayoutNode"
+			],
+			"slots": [],
+			"adapter": {
+				"symbol": "KlpAppLayoutAdapter",
+				"source_path": "lib/src/features/workspace/layout/adapters/klp_app_layout_adapter.dart",
+				"factory": "KlpAppLayoutAdapter.createAll()",
+				"variant": "kallopis.layout_resize_handle"
+			}
+		},
+		{
+			"definition_id": "kallopis.layout_row",
+			"declaration_symbol": "LayoutRow",
+			"declaration_path": "lib/src/features/workspace/layout/klp_app_layout.dart",
+			"owner_module": "features",
+			"level": "L5",
+			"visibility": "public",
+			"semantic_owner": "kallopis.layout_row",
+			"qualifications": [
+				"KlpLayoutNode"
+			],
+			"slots": [
+				{
+					"name": "children",
+					"owner": "kallopis.layout_row",
+					"child_type": "KlpLayoutNode",
+					"min": 1,
+					"max": null
+				}
+			],
+			"adapter": {
+				"symbol": "KlpAppLayoutAdapter",
+				"source_path": "lib/src/features/workspace/layout/adapters/klp_app_layout_adapter.dart",
+				"factory": "KlpAppLayoutAdapter.createAll()",
+				"variant": "kallopis.layout_row"
+			}
+		},
+		{
+			"definition_id": "kallopis.layout_spacer",
+			"declaration_symbol": "LayoutSpacer",
+			"declaration_path": "lib/src/features/workspace/layout/klp_app_layout.dart",
+			"owner_module": "features",
+			"level": "L5",
+			"visibility": "public",
+			"semantic_owner": "kallopis.layout_spacer",
+			"qualifications": [
+				"KlpLayoutNode"
+			],
+			"slots": [],
+			"adapter": {
+				"symbol": "KlpAppLayoutAdapter",
+				"source_path": "lib/src/features/workspace/layout/adapters/klp_app_layout_adapter.dart",
+				"factory": "KlpAppLayoutAdapter.createAll()",
+				"variant": "kallopis.layout_spacer"
+			}
+		},
+		{
+			"definition_id": "kallopis.rail",
+			"declaration_symbol": "KlpRail",
+			"declaration_path": "lib/src/features/navigation/rail/contracts/klp_rail.dart",
+			"owner_module": "features",
+			"level": "L5",
+			"visibility": "internal",
+			"semantic_owner": "kallopis.rail",
+			"qualifications": [
+				"KlpCompositeNode",
+				"KlpScreenBody"
+			],
+			"slots": [
+				{
+					"name": "top",
+					"owner": "kallopis.rail",
+					"child_type": "KlpRailItem",
+					"min": 0,
+					"max": null
+				},
+				{
+					"name": "center",
+					"owner": "kallopis.rail",
+					"child_type": "KlpRailItem",
+					"min": 0,
+					"max": null
+				},
+				{
+					"name": "bottom",
+					"owner": "kallopis.rail",
+					"child_type": "KlpRailItem",
+					"min": 0,
+					"max": null
+				}
+			],
+			"adapter": {
+				"symbol": "KlpRailAdapter",
+				"source_path": "lib/src/features/navigation/rail/adapters/klp_rail_adapter.dart",
+				"factory": "KlpRailAdapter()",
+				"variant": null
+			}
+		},
+		{
+			"definition_id": "kallopis.window_controls",
+			"declaration_symbol": "KlpWindowControls",
+			"declaration_path": "lib/src/features/workspace/components/klp_window_controls.dart",
+			"owner_module": "features",
+			"level": "L5",
+			"visibility": "public",
+			"semantic_owner": "kallopis.window_controls",
+			"qualifications": [
+				"KlpNode"
+			],
+			"slots": [],
+			"adapter": {
+				"symbol": "KlpWorkspaceComponentsAdapter",
+				"source_path": "lib/src/features/workspace/components/adapters/klp_workspace_components_adapter.dart",
+				"factory": "KlpWorkspaceComponentsAdapter.createAll()",
+				"variant": "kallopis.window_controls"
+			}
+		},
+		{
+			"definition_id": "kallopis.workspace_block",
+			"declaration_symbol": "KlpWorkspaceBlock",
+			"declaration_path": "lib/src/features/workspace/components/klp_workspace_block.dart",
+			"owner_module": "features",
+			"level": "L5",
+			"visibility": "public",
+			"semantic_owner": "kallopis.workspace_block",
+			"qualifications": [
+				"KlpCompositeNode"
+			],
+			"slots": [
+				{
+					"name": "content",
+					"owner": "kallopis.workspace_block",
+					"child_type": "KlpWorkspaceContent",
+					"min": 0,
+					"max": 1
+				}
+			],
+			"adapter": {
+				"symbol": "KlpWorkspaceBlockAdapter",
+				"source_path": "lib/src/features/workspace/components/adapters/klp_workspace_block_adapter.dart",
+				"factory": "KlpWorkspaceBlockAdapter.createAll()",
+				"variant": "kallopis.workspace_block"
+			}
+		},
+		{
+			"definition_id": "kallopis.workspace_content",
+			"declaration_symbol": "KlpWorkspaceContent",
+			"declaration_path": "lib/src/features/workspace/components/klp_workspace_block.dart",
+			"owner_module": "features",
+			"level": "L5",
+			"visibility": "public",
+			"semantic_owner": "kallopis.workspace_content",
+			"qualifications": [
+				"KlpCompositeNode"
+			],
+			"slots": [
+				{
+					"name": "children",
+					"owner": "kallopis.workspace_content",
+					"child_type": "KlpWorkspaceContentBlock",
+					"min": 1,
+					"max": null
+				}
+			],
+			"adapter": {
+				"symbol": "KlpWorkspaceBlockAdapter",
+				"source_path": "lib/src/features/workspace/components/adapters/klp_workspace_block_adapter.dart",
+				"factory": "KlpWorkspaceBlockAdapter.createAll()",
+				"variant": "kallopis.workspace_content"
+			}
+		},
+		{
+			"definition_id": "kallopis.workspace_content_block",
+			"declaration_symbol": "KlpWorkspaceContentBlock",
+			"declaration_path": "lib/src/features/workspace/components/klp_workspace_block.dart",
+			"owner_module": "features",
+			"level": "L5",
+			"visibility": "public",
+			"semantic_owner": "kallopis.workspace_content_block",
+			"qualifications": [
+				"KlpCompositeNode"
+			],
+			"slots": [
+				{
+					"name": "children",
+					"owner": "kallopis.workspace_content_block",
+					"child_type": "KlpWorkspaceContentBlock",
+					"min": 0,
+					"max": null
+				}
+			],
+			"adapter": {
+				"symbol": "KlpWorkspaceBlockAdapter",
+				"source_path": "lib/src/features/workspace/components/adapters/klp_workspace_block_adapter.dart",
+				"factory": "KlpWorkspaceBlockAdapter.createAll()",
+				"variant": "kallopis.workspace_content_block"
+			}
+		}
+	],
+	"compatibility": [
+		{
+			"legacy_symbol": "KlpExplorer",
+			"legacy_path": "lib/src/features/navigation/widgets/explorer/klp_explorer.dart",
+			"canonical_symbol": "KlpExplorer",
+			"canonical_path": "lib/src/features/workspace/components/klp_explorer.dart",
+			"removal_owner": "features",
+			"removal_gate": "P9：下游使用端完成遷移，沒有受支援的使用端匯入退役入口，且相容性證據與發布說明允許破壞性移除。"
+		},
+		{
+			"legacy_symbol": "KlpWindowControls",
+			"legacy_path": "lib/src/features/workspace/shell/window/klp_window_controls.dart",
+			"canonical_symbol": "KlpWindowControls",
+			"canonical_path": "lib/src/features/workspace/components/klp_window_controls.dart",
+			"removal_owner": "features",
+			"removal_gate": "P9：下游使用端完成遷移，沒有受支援的使用端匯入退役入口，且相容性證據與發布說明允許破壞性移除。"
+		}
+	]
+}

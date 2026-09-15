@@ -10,30 +10,17 @@
 
 箭頭以本層 Dart 檔案明寫的 directive 彙總到目標所在目錄或外部套件邊界；不遞迴將子目錄依賴算入本層。相同目標的不同 directive 類型分開計數。
 
-```mermaid
-flowchart TD
-	n0["lib/src/composition/nodes/internal"]
-	n1["lib/src/composition/definitions"]
-	n2["lib/src/composition/nodes"]
-	n3["lib/src/composition/slots"]
-	n0 -->|"import"| n1
-	n0 -->|"import"| n2
-	n0 -->|"import"| n3
-```
+本層檔案未宣告跨目錄依賴；子目錄依賴請循下一層入口閱讀。
 
 | 目標邊界 | 關係 | directive 數 | 第一筆來源證據 |
 |---|---|---|---|
-| <code>lib/src/composition/definitions</code> | import | 1 | [lib/src/composition/nodes/internal/klp_scope_boundary.dart:1](../../../../../../lib/src/composition/nodes/internal/klp_scope_boundary.dart#L1) |
-| <code>lib/src/composition/nodes</code> | import | 2 | [lib/src/composition/nodes/internal/klp_scope_boundary.dart:4](../../../../../../lib/src/composition/nodes/internal/klp_scope_boundary.dart#L4) |
-| <code>lib/src/composition/slots</code> | import | 2 | [lib/src/composition/nodes/internal/klp_scope_boundary.dart:2](../../../../../../lib/src/composition/nodes/internal/klp_scope_boundary.dart#L2) |
+| 無 | — | 0 | 來源清單見本層檔案 |
 
 ## 目錄結構圖
 
 ```mermaid
 flowchart TD
 	n0["lib/src/composition/nodes/internal"]
-	n1["klp_scope_boundary.dart"]
-	n0 -->|"contains"| n1
 ```
 
 ## 子目錄
@@ -46,7 +33,7 @@ flowchart TD
 
 | 檔案 | 宣告 | 細節 | 來源證據 |
 |---|---|---|---|
-| `klp_scope_boundary.dart` | KlpScopeBoundary | [架構與 API](klp_scope_boundary.md) | [lib/src/composition/nodes/internal/klp_scope_boundary.dart:1](../../../../../../lib/src/composition/nodes/internal/klp_scope_boundary.dart#L1) |
+| 無 | 本層沒有 Dart 檔案 | — | — |
 
 ## 閱讀說明
 

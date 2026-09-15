@@ -1,11 +1,11 @@
 import 'package:flutter/widgets.dart';
 
-import '../../../foundation/layout/klp_box.dart';
-import '../../../foundation/layout/klp_box_insets.dart';
-import '../../../foundation/layout/klp_column.dart';
-import '../../../foundation/surface/klp_surface.dart';
-import '../../../styling/legacy_theme/klp_theme.dart';
-import '../../../foundation/content/klp_text.dart';
+import 'package:kallopis/src/foundation/layout/klp_box.dart';
+import 'package:kallopis/src/foundation/layout/klp_box_insets.dart';
+import 'package:kallopis/src/foundation/layout/klp_column.dart';
+import 'package:kallopis/src/foundation/surface/klp_surface.dart';
+import 'package:kallopis/src/styling/legacy_theme/klp_theme.dart';
+import 'package:kallopis/src/foundation/content/klp_text.dart';
 
 export 'klp_settings_action_bar.dart';
 

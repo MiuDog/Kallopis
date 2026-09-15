@@ -12,9 +12,9 @@
 flowchart LR
 	n0["klp_flutter_values.dart"]
 	n1["package:flutter/widgets.dart"]
-	n2["../../../foundation/binding/internal/klp_bound_text_style.dart"]
-	n3["../../../foundation/templates/klp_axis.dart"]
-	n4["../../../styling/primitives/klp_style_value.dart"]
+	n2["package:kallopis/src/foundation/binding/contracts/klp_bound_text_style.dart"]
+	n3["package:kallopis/src/foundation/templates/klp_axis.dart"]
+	n4["package:kallopis/src/styling/primitives/klp_style_value.dart"]
 	n0 -->|"import"| n1
 	n0 -->|"import"| n2
 	n0 -->|"import"| n3
@@ -26,9 +26,9 @@ flowchart LR
 | 關係 | 原始 directive | 來源 |
 |---|---|---|
 | import | <code>import &#x27;package:flutter/widgets.dart&#x27;;</code> | [lib/src/rendering/flutter/internal/klp_flutter_values.dart:1](../../../../../../lib/src/rendering/flutter/internal/klp_flutter_values.dart#L1) |
-| import | <code>import &#x27;../../../foundation/binding/internal/klp_bound_text_style.dart&#x27;;</code> | [lib/src/rendering/flutter/internal/klp_flutter_values.dart:3](../../../../../../lib/src/rendering/flutter/internal/klp_flutter_values.dart#L3) |
-| import | <code>import &#x27;../../../foundation/templates/klp_axis.dart&#x27;;</code> | [lib/src/rendering/flutter/internal/klp_flutter_values.dart:4](../../../../../../lib/src/rendering/flutter/internal/klp_flutter_values.dart#L4) |
-| import | <code>import &#x27;../../../styling/primitives/klp_style_value.dart&#x27;;</code> | [lib/src/rendering/flutter/internal/klp_flutter_values.dart:5](../../../../../../lib/src/rendering/flutter/internal/klp_flutter_values.dart#L5) |
+| import | <code>import &#x27;package:kallopis/src/foundation/binding/contracts/klp_bound_text_style.dart&#x27;;</code> | [lib/src/rendering/flutter/internal/klp_flutter_values.dart:3](../../../../../../lib/src/rendering/flutter/internal/klp_flutter_values.dart#L3) |
+| import | <code>import &#x27;package:kallopis/src/foundation/templates/klp_axis.dart&#x27;;</code> | [lib/src/rendering/flutter/internal/klp_flutter_values.dart:4](../../../../../../lib/src/rendering/flutter/internal/klp_flutter_values.dart#L4) |
+| import | <code>import &#x27;package:kallopis/src/styling/primitives/klp_style_value.dart&#x27;;</code> | [lib/src/rendering/flutter/internal/klp_flutter_values.dart:5](../../../../../../lib/src/rendering/flutter/internal/klp_flutter_values.dart#L5) |
 
 ## 宣告關係圖
 

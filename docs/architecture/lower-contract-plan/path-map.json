@@ -1,0 +1,2003 @@
+{
+	"status": "LOWER-V1-r1 PLAN READY; implementation pending",
+	"provider_exports": [
+		"lib/src/capabilities/editing/internal/klp_block_item.dart",
+		"lib/src/capabilities/editing/internal/klp_block_projection.dart",
+		"lib/src/capabilities/editing/internal/klp_block_request.dart",
+		"lib/src/capabilities/editing/internal/klp_block_viewport_request.dart",
+		"lib/src/capabilities/editing/internal/klp_command_anchor.dart",
+		"lib/src/capabilities/editing/internal/klp_command_item.dart",
+		"lib/src/capabilities/editing/internal/klp_command_projection.dart",
+		"lib/src/capabilities/editing/internal/klp_command_request.dart",
+		"lib/src/capabilities/editing/internal/klp_command_reply.dart",
+		"lib/src/capabilities/editing/internal/klp_editor_mode_item.dart",
+		"lib/src/capabilities/editing/internal/klp_editor_tool_item.dart",
+		"lib/src/capabilities/editing/internal/klp_editor_viewport_projection.dart",
+		"lib/src/capabilities/editing/internal/klp_editor_mode_projection.dart",
+		"lib/src/capabilities/editing/internal/klp_editor_mode_request.dart",
+		"lib/src/capabilities/editing/internal/klp_editor_viewport_request.dart",
+		"lib/src/capabilities/editing/internal/klp_editor_mode_reply.dart",
+		"lib/src/capabilities/editing/internal/klp_handwriting_state.dart",
+		"lib/src/capabilities/editing/internal/klp_handwriting_state_source.dart",
+		"lib/src/capabilities/editing/internal/klp_editing_draw_command.dart",
+		"lib/src/capabilities/editing/internal/klp_editing_drawing.dart",
+		"lib/src/capabilities/editing/internal/klp_editing_interaction.dart",
+		"lib/src/capabilities/editing/internal/klp_editing_layout.dart",
+		"lib/src/capabilities/editing/internal/klp_editing_point_request.dart",
+		"lib/src/capabilities/editing/internal/klp_editing_path.dart",
+		"lib/src/capabilities/editing/internal/klp_editing_source.dart",
+		"lib/src/capabilities/editing/internal/klp_editing_style.dart",
+		"lib/src/capabilities/editing/internal/klp_editing_viewport.dart",
+		"lib/src/capabilities/editing/internal/klp_composition_attribute.dart",
+		"lib/src/capabilities/editing/internal/klp_composition_segment.dart",
+		"lib/src/capabilities/editing/internal/klp_composition_text.dart",
+		"lib/src/capabilities/editing/internal/klp_editing_endpoint.dart",
+		"lib/src/capabilities/editing/internal/klp_editing_intent.dart",
+		"lib/src/capabilities/editing/internal/klp_editing_projection.dart",
+		"lib/src/capabilities/editing/internal/klp_editing_reply.dart",
+		"lib/src/capabilities/editing/internal/klp_editing_request.dart",
+		"lib/src/capabilities/editing/internal/klp_editing_save_projection.dart",
+		"lib/src/capabilities/editing/internal/klp_editing_save_reply.dart",
+		"lib/src/capabilities/editing/internal/klp_editing_save_request.dart",
+		"lib/src/capabilities/editing/internal/klp_editing_save_source.dart",
+		"lib/src/capabilities/editing/internal/klp_editing_stamp.dart",
+		"lib/src/capabilities/editing/internal/klp_editing_text_window.dart",
+		"lib/src/capabilities/editing/internal/klp_text_offsets.dart"
+	],
+	"public_source_closure": [
+		"lib/src/capabilities/editing/internal/klp_begin_composition_intent.dart",
+		"lib/src/capabilities/editing/internal/klp_block_command_anchor.dart",
+		"lib/src/capabilities/editing/internal/klp_block_item.dart",
+		"lib/src/capabilities/editing/internal/klp_block_projection.dart",
+		"lib/src/capabilities/editing/internal/klp_block_request.dart",
+		"lib/src/capabilities/editing/internal/klp_block_viewport_request.dart",
+		"lib/src/capabilities/editing/internal/klp_cancel_composition_intent.dart",
+		"lib/src/capabilities/editing/internal/klp_caret_command_anchor.dart",
+		"lib/src/capabilities/editing/internal/klp_command_anchor.dart",
+		"lib/src/capabilities/editing/internal/klp_command_item.dart",
+		"lib/src/capabilities/editing/internal/klp_command_projection.dart",
+		"lib/src/capabilities/editing/internal/klp_command_reply.dart",
+		"lib/src/capabilities/editing/internal/klp_command_request.dart",
+		"lib/src/capabilities/editing/internal/klp_commit_composition_intent.dart",
+		"lib/src/capabilities/editing/internal/klp_composition_attribute.dart",
+		"lib/src/capabilities/editing/internal/klp_composition_segment.dart",
+		"lib/src/capabilities/editing/internal/klp_composition_text.dart",
+		"lib/src/capabilities/editing/internal/klp_editing_command_intent.dart",
+		"lib/src/capabilities/editing/internal/klp_editing_draw_command.dart",
+		"lib/src/capabilities/editing/internal/klp_editing_drawing.dart",
+		"lib/src/capabilities/editing/internal/klp_editing_endpoint.dart",
+		"lib/src/capabilities/editing/internal/klp_editing_intent.dart",
+		"lib/src/capabilities/editing/internal/klp_editing_interaction.dart",
+		"lib/src/capabilities/editing/internal/klp_editing_layout.dart",
+		"lib/src/capabilities/editing/internal/klp_editing_path.dart",
+		"lib/src/capabilities/editing/internal/klp_editing_point_request.dart",
+		"lib/src/capabilities/editing/internal/klp_editing_projection.dart",
+		"lib/src/capabilities/editing/internal/klp_editing_reply.dart",
+		"lib/src/capabilities/editing/internal/klp_editing_request.dart",
+		"lib/src/capabilities/editing/internal/klp_editing_save_projection.dart",
+		"lib/src/capabilities/editing/internal/klp_editing_save_reply.dart",
+		"lib/src/capabilities/editing/internal/klp_editing_save_request.dart",
+		"lib/src/capabilities/editing/internal/klp_editing_save_source.dart",
+		"lib/src/capabilities/editing/internal/klp_editing_source.dart",
+		"lib/src/capabilities/editing/internal/klp_editing_stamp.dart",
+		"lib/src/capabilities/editing/internal/klp_editing_style.dart",
+		"lib/src/capabilities/editing/internal/klp_editing_text_window.dart",
+		"lib/src/capabilities/editing/internal/klp_editing_viewport.dart",
+		"lib/src/capabilities/editing/internal/klp_editor_mode_item.dart",
+		"lib/src/capabilities/editing/internal/klp_editor_mode_projection.dart",
+		"lib/src/capabilities/editing/internal/klp_editor_mode_reply.dart",
+		"lib/src/capabilities/editing/internal/klp_editor_mode_request.dart",
+		"lib/src/capabilities/editing/internal/klp_editor_tool_item.dart",
+		"lib/src/capabilities/editing/internal/klp_editor_viewport_projection.dart",
+		"lib/src/capabilities/editing/internal/klp_editor_viewport_request.dart",
+		"lib/src/capabilities/editing/internal/klp_handwriting_state.dart",
+		"lib/src/capabilities/editing/internal/klp_handwriting_state_source.dart",
+		"lib/src/capabilities/editing/internal/klp_replace_text_intent.dart",
+		"lib/src/capabilities/editing/internal/klp_select_text_intent.dart",
+		"lib/src/capabilities/editing/internal/klp_text_offsets.dart",
+		"lib/src/capabilities/editing/internal/klp_update_composition_intent.dart"
+	],
+	"moves": {
+		"lib/src/capabilities/editing/internal/klp_begin_composition_intent.dart": "lib/src/capabilities/editing/contracts/klp_begin_composition_intent.dart",
+		"lib/src/capabilities/editing/internal/klp_block_command_anchor.dart": "lib/src/capabilities/editing/contracts/klp_block_command_anchor.dart",
+		"lib/src/capabilities/editing/internal/klp_block_item.dart": "lib/src/capabilities/editing/contracts/klp_block_item.dart",
+		"lib/src/capabilities/editing/internal/klp_block_projection.dart": "lib/src/capabilities/editing/contracts/klp_block_projection.dart",
+		"lib/src/capabilities/editing/internal/klp_block_request.dart": "lib/src/capabilities/editing/contracts/klp_block_request.dart",
+		"lib/src/capabilities/editing/internal/klp_block_viewport_request.dart": "lib/src/capabilities/editing/contracts/klp_block_viewport_request.dart",
+		"lib/src/capabilities/editing/internal/klp_cancel_composition_intent.dart": "lib/src/capabilities/editing/contracts/klp_cancel_composition_intent.dart",
+		"lib/src/capabilities/editing/internal/klp_caret_command_anchor.dart": "lib/src/capabilities/editing/contracts/klp_caret_command_anchor.dart",
+		"lib/src/capabilities/editing/internal/klp_command_anchor.dart": "lib/src/capabilities/editing/contracts/klp_command_anchor.dart",
+		"lib/src/capabilities/editing/internal/klp_command_item.dart": "lib/src/capabilities/editing/contracts/klp_command_item.dart",
+		"lib/src/capabilities/editing/internal/klp_command_projection.dart": "lib/src/capabilities/editing/contracts/klp_command_projection.dart",
+		"lib/src/capabilities/editing/internal/klp_command_reply.dart": "lib/src/capabilities/editing/contracts/klp_command_reply.dart",
+		"lib/src/capabilities/editing/internal/klp_command_request.dart": "lib/src/capabilities/editing/contracts/klp_command_request.dart",
+		"lib/src/capabilities/editing/internal/klp_commit_composition_intent.dart": "lib/src/capabilities/editing/contracts/klp_commit_composition_intent.dart",
+		"lib/src/capabilities/editing/internal/klp_composition_attribute.dart": "lib/src/capabilities/editing/contracts/klp_composition_attribute.dart",
+		"lib/src/capabilities/editing/internal/klp_composition_segment.dart": "lib/src/capabilities/editing/contracts/klp_composition_segment.dart",
+		"lib/src/capabilities/editing/internal/klp_composition_text.dart": "lib/src/capabilities/editing/contracts/klp_composition_text.dart",
+		"lib/src/capabilities/editing/internal/klp_editing_command_intent.dart": "lib/src/capabilities/editing/contracts/klp_editing_command_intent.dart",
+		"lib/src/capabilities/editing/internal/klp_editing_draw_command.dart": "lib/src/capabilities/editing/contracts/klp_editing_draw_command.dart",
+		"lib/src/capabilities/editing/internal/klp_editing_drawing.dart": "lib/src/capabilities/editing/contracts/klp_editing_drawing.dart",
+		"lib/src/capabilities/editing/internal/klp_editing_endpoint.dart": "lib/src/capabilities/editing/contracts/klp_editing_endpoint.dart",
+		"lib/src/capabilities/editing/internal/klp_editing_intent.dart": "lib/src/capabilities/editing/contracts/klp_editing_intent.dart",
+		"lib/src/capabilities/editing/internal/klp_editing_interaction.dart": "lib/src/capabilities/editing/contracts/klp_editing_interaction.dart",
+		"lib/src/capabilities/editing/internal/klp_editing_layout.dart": "lib/src/capabilities/editing/contracts/klp_editing_layout.dart",
+		"lib/src/capabilities/editing/internal/klp_editing_path.dart": "lib/src/capabilities/editing/contracts/klp_editing_path.dart",
+		"lib/src/capabilities/editing/internal/klp_editing_point_request.dart": "lib/src/capabilities/editing/contracts/klp_editing_point_request.dart",
+		"lib/src/capabilities/editing/internal/klp_editing_projection.dart": "lib/src/capabilities/editing/contracts/klp_editing_projection.dart",
+		"lib/src/capabilities/editing/internal/klp_editing_reply.dart": "lib/src/capabilities/editing/contracts/klp_editing_reply.dart",
+		"lib/src/capabilities/editing/internal/klp_editing_request.dart": "lib/src/capabilities/editing/contracts/klp_editing_request.dart",
+		"lib/src/capabilities/editing/internal/klp_editing_save_projection.dart": "lib/src/capabilities/editing/contracts/klp_editing_save_projection.dart",
+		"lib/src/capabilities/editing/internal/klp_editing_save_reply.dart": "lib/src/capabilities/editing/contracts/klp_editing_save_reply.dart",
+		"lib/src/capabilities/editing/internal/klp_editing_save_request.dart": "lib/src/capabilities/editing/contracts/klp_editing_save_request.dart",
+		"lib/src/capabilities/editing/internal/klp_editing_save_source.dart": "lib/src/capabilities/editing/contracts/klp_editing_save_source.dart",
+		"lib/src/capabilities/editing/internal/klp_editing_source.dart": "lib/src/capabilities/editing/contracts/klp_editing_source.dart",
+		"lib/src/capabilities/editing/internal/klp_editing_stamp.dart": "lib/src/capabilities/editing/contracts/klp_editing_stamp.dart",
+		"lib/src/capabilities/editing/internal/klp_editing_style.dart": "lib/src/capabilities/editing/contracts/klp_editing_style.dart",
+		"lib/src/capabilities/editing/internal/klp_editing_text_window.dart": "lib/src/capabilities/editing/contracts/klp_editing_text_window.dart",
+		"lib/src/capabilities/editing/internal/klp_editing_viewport.dart": "lib/src/capabilities/editing/contracts/klp_editing_viewport.dart",
+		"lib/src/capabilities/editing/internal/klp_editor_mode_item.dart": "lib/src/capabilities/editing/contracts/klp_editor_mode_item.dart",
+		"lib/src/capabilities/editing/internal/klp_editor_mode_projection.dart": "lib/src/capabilities/editing/contracts/klp_editor_mode_projection.dart",
+		"lib/src/capabilities/editing/internal/klp_editor_mode_reply.dart": "lib/src/capabilities/editing/contracts/klp_editor_mode_reply.dart",
+		"lib/src/capabilities/editing/internal/klp_editor_mode_request.dart": "lib/src/capabilities/editing/contracts/klp_editor_mode_request.dart",
+		"lib/src/capabilities/editing/internal/klp_editor_tool_item.dart": "lib/src/capabilities/editing/contracts/klp_editor_tool_item.dart",
+		"lib/src/capabilities/editing/internal/klp_editor_viewport_projection.dart": "lib/src/capabilities/editing/contracts/klp_editor_viewport_projection.dart",
+		"lib/src/capabilities/editing/internal/klp_editor_viewport_request.dart": "lib/src/capabilities/editing/contracts/klp_editor_viewport_request.dart",
+		"lib/src/capabilities/editing/internal/klp_handwriting_state.dart": "lib/src/capabilities/editing/contracts/klp_handwriting_state.dart",
+		"lib/src/capabilities/editing/internal/klp_handwriting_state_source.dart": "lib/src/capabilities/editing/contracts/klp_handwriting_state_source.dart",
+		"lib/src/capabilities/editing/internal/klp_replace_text_intent.dart": "lib/src/capabilities/editing/contracts/klp_replace_text_intent.dart",
+		"lib/src/capabilities/editing/internal/klp_select_text_intent.dart": "lib/src/capabilities/editing/contracts/klp_select_text_intent.dart",
+		"lib/src/capabilities/editing/internal/klp_text_offsets.dart": "lib/src/capabilities/editing/contracts/klp_text_offsets.dart",
+		"lib/src/capabilities/editing/internal/klp_update_composition_intent.dart": "lib/src/capabilities/editing/contracts/klp_update_composition_intent.dart",
+		"lib/src/capabilities/editing/internal/klp_block_drop_preview.dart": "lib/src/capabilities/editing/contracts/klp_block_drop_preview.dart",
+		"lib/src/capabilities/editing/internal/klp_block_drop_target.dart": "lib/src/capabilities/editing/klp_block_drop_target.dart",
+		"lib/src/capabilities/editing/internal/klp_editing_submission.dart": "lib/src/capabilities/editing/klp_editing_submission.dart",
+		"lib/src/foundation/binding/internal/klp_bound_template.dart": "lib/src/foundation/binding/contracts/klp_bound_template.dart",
+		"lib/src/foundation/binding/internal/klp_bound_text_style.dart": "lib/src/foundation/binding/contracts/klp_bound_text_style.dart",
+		"lib/src/foundation/binding/internal/klp_bound_control_style.dart": "lib/src/foundation/binding/contracts/klp_bound_control_style.dart",
+		"lib/src/foundation/binding/internal/klp_bound_choice_style.dart": "lib/src/foundation/binding/contracts/klp_bound_choice_style.dart",
+		"lib/src/foundation/binding/internal/klp_bound_text.dart": "lib/src/foundation/binding/contracts/klp_bound_text.dart",
+		"lib/src/foundation/binding/internal/klp_bound_linear.dart": "lib/src/foundation/binding/contracts/klp_bound_linear.dart",
+		"lib/src/foundation/binding/internal/klp_bound_surface.dart": "lib/src/foundation/binding/contracts/klp_bound_surface.dart",
+		"lib/src/foundation/binding/internal/klp_bound_surface_shadow.dart": "lib/src/foundation/binding/contracts/klp_bound_surface_shadow.dart",
+		"lib/src/foundation/binding/internal/klp_bound_choice.dart": "lib/src/foundation/binding/contracts/klp_bound_choice.dart",
+		"lib/src/foundation/binding/internal/klp_bound_regions.dart": "lib/src/foundation/binding/contracts/klp_bound_regions.dart",
+		"lib/src/foundation/binding/internal/klp_bound_extent.dart": "lib/src/foundation/binding/contracts/klp_bound_extent.dart",
+		"lib/src/foundation/binding/internal/klp_bound_placement.dart": "lib/src/foundation/binding/contracts/klp_bound_placement.dart",
+		"lib/src/foundation/binding/internal/klp_bound_retained_stack.dart": "lib/src/foundation/binding/contracts/klp_bound_retained_stack.dart",
+		"lib/src/foundation/binding/internal/klp_bound_screen.dart": "lib/src/foundation/binding/contracts/klp_bound_screen.dart",
+		"lib/src/foundation/binding/internal/klp_bound_accessibility.dart": "lib/src/foundation/binding/contracts/klp_bound_accessibility.dart",
+		"lib/src/styling/presets/internal/klp_paper_shadow_recipe.dart": "lib/src/styling/presets/klp_paper_shadow_recipe.dart",
+		"lib/src/styling/semantics/internal/klp_control_density.dart": "lib/src/styling/semantics/klp_control_density.dart"
+	},
+	"callers": {
+		"lib/kallopis_editing_provider.dart": [
+			{
+				"kind": "export",
+				"uri": "src/capabilities/editing/internal/klp_block_item.dart",
+				"target": "lib/src/capabilities/editing/internal/klp_block_item.dart"
+			},
+			{
+				"kind": "export",
+				"uri": "src/capabilities/editing/internal/klp_block_projection.dart",
+				"target": "lib/src/capabilities/editing/internal/klp_block_projection.dart"
+			},
+			{
+				"kind": "export",
+				"uri": "src/capabilities/editing/internal/klp_block_request.dart",
+				"target": "lib/src/capabilities/editing/internal/klp_block_request.dart"
+			},
+			{
+				"kind": "export",
+				"uri": "src/capabilities/editing/internal/klp_block_viewport_request.dart",
+				"target": "lib/src/capabilities/editing/internal/klp_block_viewport_request.dart"
+			},
+			{
+				"kind": "export",
+				"uri": "src/capabilities/editing/internal/klp_command_anchor.dart",
+				"target": "lib/src/capabilities/editing/internal/klp_command_anchor.dart"
+			},
+			{
+				"kind": "export",
+				"uri": "src/capabilities/editing/internal/klp_command_item.dart",
+				"target": "lib/src/capabilities/editing/internal/klp_command_item.dart"
+			},
+			{
+				"kind": "export",
+				"uri": "src/capabilities/editing/internal/klp_command_projection.dart",
+				"target": "lib/src/capabilities/editing/internal/klp_command_projection.dart"
+			},
+			{
+				"kind": "export",
+				"uri": "src/capabilities/editing/internal/klp_command_request.dart",
+				"target": "lib/src/capabilities/editing/internal/klp_command_request.dart"
+			},
+			{
+				"kind": "export",
+				"uri": "src/capabilities/editing/internal/klp_command_reply.dart",
+				"target": "lib/src/capabilities/editing/internal/klp_command_reply.dart"
+			},
+			{
+				"kind": "export",
+				"uri": "src/capabilities/editing/internal/klp_editor_mode_item.dart",
+				"target": "lib/src/capabilities/editing/internal/klp_editor_mode_item.dart"
+			},
+			{
+				"kind": "export",
+				"uri": "src/capabilities/editing/internal/klp_editor_tool_item.dart",
+				"target": "lib/src/capabilities/editing/internal/klp_editor_tool_item.dart"
+			},
+			{
+				"kind": "export",
+				"uri": "src/capabilities/editing/internal/klp_editor_viewport_projection.dart",
+				"target": "lib/src/capabilities/editing/internal/klp_editor_viewport_projection.dart"
+			},
+			{
+				"kind": "export",
+				"uri": "src/capabilities/editing/internal/klp_editor_mode_projection.dart",
+				"target": "lib/src/capabilities/editing/internal/klp_editor_mode_projection.dart"
+			},
+			{
+				"kind": "export",
+				"uri": "src/capabilities/editing/internal/klp_editor_mode_request.dart",
+				"target": "lib/src/capabilities/editing/internal/klp_editor_mode_request.dart"
+			},
+			{
+				"kind": "export",
+				"uri": "src/capabilities/editing/internal/klp_editor_viewport_request.dart",
+				"target": "lib/src/capabilities/editing/internal/klp_editor_viewport_request.dart"
+			},
+			{
+				"kind": "export",
+				"uri": "src/capabilities/editing/internal/klp_editor_mode_reply.dart",
+				"target": "lib/src/capabilities/editing/internal/klp_editor_mode_reply.dart"
+			},
+			{
+				"kind": "export",
+				"uri": "src/capabilities/editing/internal/klp_handwriting_state.dart",
+				"target": "lib/src/capabilities/editing/internal/klp_handwriting_state.dart"
+			},
+			{
+				"kind": "export",
+				"uri": "src/capabilities/editing/internal/klp_handwriting_state_source.dart",
+				"target": "lib/src/capabilities/editing/internal/klp_handwriting_state_source.dart"
+			},
+			{
+				"kind": "export",
+				"uri": "src/capabilities/editing/internal/klp_editing_draw_command.dart",
+				"target": "lib/src/capabilities/editing/internal/klp_editing_draw_command.dart"
+			},
+			{
+				"kind": "export",
+				"uri": "src/capabilities/editing/internal/klp_editing_drawing.dart",
+				"target": "lib/src/capabilities/editing/internal/klp_editing_drawing.dart"
+			},
+			{
+				"kind": "export",
+				"uri": "src/capabilities/editing/internal/klp_editing_interaction.dart",
+				"target": "lib/src/capabilities/editing/internal/klp_editing_interaction.dart"
+			},
+			{
+				"kind": "export",
+				"uri": "src/capabilities/editing/internal/klp_editing_layout.dart",
+				"target": "lib/src/capabilities/editing/internal/klp_editing_layout.dart"
+			},
+			{
+				"kind": "export",
+				"uri": "src/capabilities/editing/internal/klp_editing_point_request.dart",
+				"target": "lib/src/capabilities/editing/internal/klp_editing_point_request.dart"
+			},
+			{
+				"kind": "export",
+				"uri": "src/capabilities/editing/internal/klp_editing_path.dart",
+				"target": "lib/src/capabilities/editing/internal/klp_editing_path.dart"
+			},
+			{
+				"kind": "export",
+				"uri": "src/capabilities/editing/internal/klp_editing_source.dart",
+				"target": "lib/src/capabilities/editing/internal/klp_editing_source.dart"
+			},
+			{
+				"kind": "export",
+				"uri": "src/capabilities/editing/internal/klp_editing_style.dart",
+				"target": "lib/src/capabilities/editing/internal/klp_editing_style.dart"
+			},
+			{
+				"kind": "export",
+				"uri": "src/capabilities/editing/internal/klp_editing_viewport.dart",
+				"target": "lib/src/capabilities/editing/internal/klp_editing_viewport.dart"
+			},
+			{
+				"kind": "export",
+				"uri": "src/capabilities/editing/internal/klp_composition_attribute.dart",
+				"target": "lib/src/capabilities/editing/internal/klp_composition_attribute.dart"
+			},
+			{
+				"kind": "export",
+				"uri": "src/capabilities/editing/internal/klp_composition_segment.dart",
+				"target": "lib/src/capabilities/editing/internal/klp_composition_segment.dart"
+			},
+			{
+				"kind": "export",
+				"uri": "src/capabilities/editing/internal/klp_composition_text.dart",
+				"target": "lib/src/capabilities/editing/internal/klp_composition_text.dart"
+			},
+			{
+				"kind": "export",
+				"uri": "src/capabilities/editing/internal/klp_editing_endpoint.dart",
+				"target": "lib/src/capabilities/editing/internal/klp_editing_endpoint.dart"
+			},
+			{
+				"kind": "export",
+				"uri": "src/capabilities/editing/internal/klp_editing_intent.dart",
+				"target": "lib/src/capabilities/editing/internal/klp_editing_intent.dart"
+			},
+			{
+				"kind": "export",
+				"uri": "src/capabilities/editing/internal/klp_editing_projection.dart",
+				"target": "lib/src/capabilities/editing/internal/klp_editing_projection.dart"
+			},
+			{
+				"kind": "export",
+				"uri": "src/capabilities/editing/internal/klp_editing_reply.dart",
+				"target": "lib/src/capabilities/editing/internal/klp_editing_reply.dart"
+			},
+			{
+				"kind": "export",
+				"uri": "src/capabilities/editing/internal/klp_editing_request.dart",
+				"target": "lib/src/capabilities/editing/internal/klp_editing_request.dart"
+			},
+			{
+				"kind": "export",
+				"uri": "src/capabilities/editing/internal/klp_editing_save_projection.dart",
+				"target": "lib/src/capabilities/editing/internal/klp_editing_save_projection.dart"
+			},
+			{
+				"kind": "export",
+				"uri": "src/capabilities/editing/internal/klp_editing_save_reply.dart",
+				"target": "lib/src/capabilities/editing/internal/klp_editing_save_reply.dart"
+			},
+			{
+				"kind": "export",
+				"uri": "src/capabilities/editing/internal/klp_editing_save_request.dart",
+				"target": "lib/src/capabilities/editing/internal/klp_editing_save_request.dart"
+			},
+			{
+				"kind": "export",
+				"uri": "src/capabilities/editing/internal/klp_editing_save_source.dart",
+				"target": "lib/src/capabilities/editing/internal/klp_editing_save_source.dart"
+			},
+			{
+				"kind": "export",
+				"uri": "src/capabilities/editing/internal/klp_editing_stamp.dart",
+				"target": "lib/src/capabilities/editing/internal/klp_editing_stamp.dart"
+			},
+			{
+				"kind": "export",
+				"uri": "src/capabilities/editing/internal/klp_editing_text_window.dart",
+				"target": "lib/src/capabilities/editing/internal/klp_editing_text_window.dart"
+			},
+			{
+				"kind": "export",
+				"uri": "src/capabilities/editing/internal/klp_text_offsets.dart",
+				"target": "lib/src/capabilities/editing/internal/klp_text_offsets.dart"
+			}
+		],
+		"lib/src/application/bootstrap/internal/klp_prepared_screen.dart": [
+			{
+				"kind": "import",
+				"uri": "package:kallopis/src/foundation/binding/internal/klp_bound_template.dart",
+				"target": "lib/src/foundation/binding/internal/klp_bound_template.dart"
+			}
+		],
+		"lib/src/application/bootstrap/internal/klp_retained_screens_adapter.dart": [
+			{
+				"kind": "import",
+				"uri": "package:kallopis/src/foundation/binding/internal/klp_bound_template.dart",
+				"target": "lib/src/foundation/binding/internal/klp_bound_template.dart"
+			}
+		],
+		"lib/src/application/structure/klp_application.dart": [
+			{
+				"kind": "import",
+				"uri": "package:kallopis/src/foundation/binding/internal/klp_bound_template.dart",
+				"target": "lib/src/foundation/binding/internal/klp_bound_template.dart"
+			}
+		],
+		"lib/src/capabilities/editing/internal/klp_editing_draw_command_validation.dart": [
+			{
+				"kind": "import",
+				"uri": "klp_editing_draw_command.dart",
+				"target": "lib/src/capabilities/editing/internal/klp_editing_draw_command.dart"
+			}
+		],
+		"lib/src/features/editing/contracts/klp_editing_content.dart": [
+			{
+				"kind": "import",
+				"uri": "package:kallopis/src/capabilities/editing/internal/klp_editing_source.dart",
+				"target": "lib/src/capabilities/editing/internal/klp_editing_source.dart"
+			}
+		],
+		"lib/src/features/editing/internal/klp_anchored_commands_adapter.dart": [
+			{
+				"kind": "import",
+				"uri": "package:kallopis/src/foundation/binding/internal/klp_bound_template.dart",
+				"target": "lib/src/foundation/binding/internal/klp_bound_template.dart"
+			}
+		],
+		"lib/src/features/editing/internal/klp_block_controls_adapter.dart": [
+			{
+				"kind": "import",
+				"uri": "package:kallopis/src/foundation/binding/internal/klp_bound_template.dart",
+				"target": "lib/src/foundation/binding/internal/klp_bound_template.dart"
+			}
+		],
+		"lib/src/features/editing/internal/klp_block_note_editing_adapter.dart": [
+			{
+				"kind": "import",
+				"uri": "package:kallopis/src/foundation/binding/internal/klp_bound_template.dart",
+				"target": "lib/src/foundation/binding/internal/klp_bound_template.dart"
+			}
+		],
+		"lib/src/features/editing/internal/klp_canva_editing_adapter.dart": [
+			{
+				"kind": "import",
+				"uri": "package:kallopis/src/foundation/binding/internal/klp_bound_template.dart",
+				"target": "lib/src/foundation/binding/internal/klp_bound_template.dart"
+			}
+		],
+		"lib/src/features/editing/internal/klp_editing_adapter.dart": [
+			{
+				"kind": "import",
+				"uri": "package:kallopis/src/foundation/binding/internal/klp_bound_control_style.dart",
+				"target": "lib/src/foundation/binding/internal/klp_bound_control_style.dart"
+			},
+			{
+				"kind": "import",
+				"uri": "package:kallopis/src/foundation/binding/internal/klp_bound_text_style.dart",
+				"target": "lib/src/foundation/binding/internal/klp_bound_text_style.dart"
+			},
+			{
+				"kind": "import",
+				"uri": "package:kallopis/src/styling/semantics/internal/klp_control_density.dart",
+				"target": "lib/src/styling/semantics/internal/klp_control_density.dart"
+			},
+			{
+				"kind": "import",
+				"uri": "package:kallopis/src/capabilities/editing/internal/klp_editing_source.dart",
+				"target": "lib/src/capabilities/editing/internal/klp_editing_source.dart"
+			}
+		],
+		"lib/src/features/editing/internal/klp_editing_placement.dart": [
+			{
+				"kind": "import",
+				"uri": "package:kallopis/src/capabilities/editing/internal/klp_editing_drawing.dart",
+				"target": "lib/src/capabilities/editing/internal/klp_editing_drawing.dart"
+			},
+			{
+				"kind": "import",
+				"uri": "package:kallopis/src/capabilities/editing/internal/klp_editing_source.dart",
+				"target": "lib/src/capabilities/editing/internal/klp_editing_source.dart"
+			},
+			{
+				"kind": "import",
+				"uri": "package:kallopis/src/capabilities/editing/internal/klp_editing_interaction.dart",
+				"target": "lib/src/capabilities/editing/internal/klp_editing_interaction.dart"
+			},
+			{
+				"kind": "import",
+				"uri": "package:kallopis/src/capabilities/editing/internal/klp_editing_layout.dart",
+				"target": "lib/src/capabilities/editing/internal/klp_editing_layout.dart"
+			},
+			{
+				"kind": "import",
+				"uri": "package:kallopis/src/capabilities/editing/internal/klp_editing_point_request.dart",
+				"target": "lib/src/capabilities/editing/internal/klp_editing_point_request.dart"
+			},
+			{
+				"kind": "import",
+				"uri": "package:kallopis/src/capabilities/editing/internal/klp_editing_reply.dart",
+				"target": "lib/src/capabilities/editing/internal/klp_editing_reply.dart"
+			},
+			{
+				"kind": "import",
+				"uri": "package:kallopis/src/capabilities/editing/internal/klp_editing_request.dart",
+				"target": "lib/src/capabilities/editing/internal/klp_editing_request.dart"
+			},
+			{
+				"kind": "import",
+				"uri": "package:kallopis/src/capabilities/editing/internal/klp_block_request.dart",
+				"target": "lib/src/capabilities/editing/internal/klp_block_request.dart"
+			},
+			{
+				"kind": "import",
+				"uri": "package:kallopis/src/capabilities/editing/internal/klp_block_viewport_request.dart",
+				"target": "lib/src/capabilities/editing/internal/klp_block_viewport_request.dart"
+			},
+			{
+				"kind": "import",
+				"uri": "package:kallopis/src/capabilities/editing/internal/klp_command_request.dart",
+				"target": "lib/src/capabilities/editing/internal/klp_command_request.dart"
+			},
+			{
+				"kind": "import",
+				"uri": "package:kallopis/src/capabilities/editing/internal/klp_command_reply.dart",
+				"target": "lib/src/capabilities/editing/internal/klp_command_reply.dart"
+			},
+			{
+				"kind": "import",
+				"uri": "package:kallopis/src/capabilities/editing/internal/klp_editor_mode_reply.dart",
+				"target": "lib/src/capabilities/editing/internal/klp_editor_mode_reply.dart"
+			},
+			{
+				"kind": "import",
+				"uri": "package:kallopis/src/capabilities/editing/internal/klp_editor_mode_request.dart",
+				"target": "lib/src/capabilities/editing/internal/klp_editor_mode_request.dart"
+			},
+			{
+				"kind": "import",
+				"uri": "package:kallopis/src/capabilities/editing/internal/klp_editor_viewport_request.dart",
+				"target": "lib/src/capabilities/editing/internal/klp_editor_viewport_request.dart"
+			},
+			{
+				"kind": "import",
+				"uri": "package:kallopis/src/capabilities/editing/internal/klp_editing_save_projection.dart",
+				"target": "lib/src/capabilities/editing/internal/klp_editing_save_projection.dart"
+			},
+			{
+				"kind": "import",
+				"uri": "package:kallopis/src/capabilities/editing/internal/klp_editing_save_reply.dart",
+				"target": "lib/src/capabilities/editing/internal/klp_editing_save_reply.dart"
+			},
+			{
+				"kind": "import",
+				"uri": "package:kallopis/src/capabilities/editing/internal/klp_editing_save_request.dart",
+				"target": "lib/src/capabilities/editing/internal/klp_editing_save_request.dart"
+			},
+			{
+				"kind": "import",
+				"uri": "package:kallopis/src/capabilities/editing/internal/klp_editing_save_source.dart",
+				"target": "lib/src/capabilities/editing/internal/klp_editing_save_source.dart"
+			}
+		],
+		"lib/src/features/editing/internal/klp_editor_mode_capability.dart": [
+			{
+				"kind": "import",
+				"uri": "package:kallopis/src/capabilities/editing/internal/klp_editing_drawing.dart",
+				"target": "lib/src/capabilities/editing/internal/klp_editing_drawing.dart"
+			},
+			{
+				"kind": "import",
+				"uri": "package:kallopis/src/capabilities/editing/internal/klp_editing_source.dart",
+				"target": "lib/src/capabilities/editing/internal/klp_editing_source.dart"
+			}
+		],
+		"lib/src/features/editing/internal/klp_mode_toolbar_adapter.dart": [
+			{
+				"kind": "import",
+				"uri": "package:kallopis/src/foundation/binding/internal/klp_bound_template.dart",
+				"target": "lib/src/foundation/binding/internal/klp_bound_template.dart"
+			}
+		],
+		"lib/src/features/editing/internal/klp_prepared_editing.dart": [
+			{
+				"kind": "import",
+				"uri": "package:kallopis/src/capabilities/editing/internal/klp_editing_drawing.dart",
+				"target": "lib/src/capabilities/editing/internal/klp_editing_drawing.dart"
+			},
+			{
+				"kind": "import",
+				"uri": "package:kallopis/src/capabilities/editing/internal/klp_editing_source.dart",
+				"target": "lib/src/capabilities/editing/internal/klp_editing_source.dart"
+			},
+			{
+				"kind": "import",
+				"uri": "package:kallopis/src/capabilities/editing/internal/klp_editing_save_source.dart",
+				"target": "lib/src/capabilities/editing/internal/klp_editing_save_source.dart"
+			},
+			{
+				"kind": "import",
+				"uri": "package:kallopis/src/foundation/binding/internal/klp_bound_template.dart",
+				"target": "lib/src/foundation/binding/internal/klp_bound_template.dart"
+			}
+		],
+		"lib/src/features/editing/presentation/klp_bound_editing_style.dart": [
+			{
+				"kind": "import",
+				"uri": "package:kallopis/src/capabilities/editing/internal/klp_editing_draw_command.dart",
+				"target": "lib/src/capabilities/editing/internal/klp_editing_draw_command.dart"
+			},
+			{
+				"kind": "import",
+				"uri": "package:kallopis/src/capabilities/editing/internal/klp_editing_style.dart",
+				"target": "lib/src/capabilities/editing/internal/klp_editing_style.dart"
+			},
+			{
+				"kind": "import",
+				"uri": "package:kallopis/src/foundation/binding/internal/klp_bound_control_style.dart",
+				"target": "lib/src/foundation/binding/internal/klp_bound_control_style.dart"
+			}
+		],
+		"lib/src/features/editing/presentation/klp_editing_presentation.dart": [
+			{
+				"kind": "import",
+				"uri": "package:kallopis/src/capabilities/editing/internal/klp_editing_drawing.dart",
+				"target": "lib/src/capabilities/editing/internal/klp_editing_drawing.dart"
+			},
+			{
+				"kind": "import",
+				"uri": "package:kallopis/src/capabilities/editing/internal/klp_editing_interaction.dart",
+				"target": "lib/src/capabilities/editing/internal/klp_editing_interaction.dart"
+			},
+			{
+				"kind": "import",
+				"uri": "package:kallopis/src/capabilities/editing/internal/klp_editing_layout.dart",
+				"target": "lib/src/capabilities/editing/internal/klp_editing_layout.dart"
+			},
+			{
+				"kind": "import",
+				"uri": "package:kallopis/src/capabilities/editing/internal/klp_editing_point_request.dart",
+				"target": "lib/src/capabilities/editing/internal/klp_editing_point_request.dart"
+			},
+			{
+				"kind": "import",
+				"uri": "package:kallopis/src/capabilities/editing/internal/klp_editing_reply.dart",
+				"target": "lib/src/capabilities/editing/internal/klp_editing_reply.dart"
+			},
+			{
+				"kind": "import",
+				"uri": "package:kallopis/src/capabilities/editing/internal/klp_editing_request.dart",
+				"target": "lib/src/capabilities/editing/internal/klp_editing_request.dart"
+			},
+			{
+				"kind": "import",
+				"uri": "package:kallopis/src/capabilities/editing/internal/klp_block_request.dart",
+				"target": "lib/src/capabilities/editing/internal/klp_block_request.dart"
+			},
+			{
+				"kind": "import",
+				"uri": "package:kallopis/src/capabilities/editing/internal/klp_block_viewport_request.dart",
+				"target": "lib/src/capabilities/editing/internal/klp_block_viewport_request.dart"
+			},
+			{
+				"kind": "import",
+				"uri": "package:kallopis/src/capabilities/editing/internal/klp_command_request.dart",
+				"target": "lib/src/capabilities/editing/internal/klp_command_request.dart"
+			},
+			{
+				"kind": "import",
+				"uri": "package:kallopis/src/capabilities/editing/internal/klp_command_reply.dart",
+				"target": "lib/src/capabilities/editing/internal/klp_command_reply.dart"
+			},
+			{
+				"kind": "import",
+				"uri": "package:kallopis/src/capabilities/editing/internal/klp_editor_mode_reply.dart",
+				"target": "lib/src/capabilities/editing/internal/klp_editor_mode_reply.dart"
+			},
+			{
+				"kind": "import",
+				"uri": "package:kallopis/src/capabilities/editing/internal/klp_editor_mode_request.dart",
+				"target": "lib/src/capabilities/editing/internal/klp_editor_mode_request.dart"
+			},
+			{
+				"kind": "import",
+				"uri": "package:kallopis/src/capabilities/editing/internal/klp_editor_viewport_request.dart",
+				"target": "lib/src/capabilities/editing/internal/klp_editor_viewport_request.dart"
+			},
+			{
+				"kind": "import",
+				"uri": "package:kallopis/src/capabilities/editing/internal/klp_editing_save_projection.dart",
+				"target": "lib/src/capabilities/editing/internal/klp_editing_save_projection.dart"
+			},
+			{
+				"kind": "import",
+				"uri": "package:kallopis/src/capabilities/editing/internal/klp_editing_save_reply.dart",
+				"target": "lib/src/capabilities/editing/internal/klp_editing_save_reply.dart"
+			},
+			{
+				"kind": "import",
+				"uri": "package:kallopis/src/capabilities/editing/internal/klp_editing_save_request.dart",
+				"target": "lib/src/capabilities/editing/internal/klp_editing_save_request.dart"
+			},
+			{
+				"kind": "import",
+				"uri": "package:kallopis/src/foundation/binding/internal/klp_bound_template.dart",
+				"target": "lib/src/foundation/binding/internal/klp_bound_template.dart"
+			}
+		],
+		"lib/src/features/navigation/rail/internal/klp_prepared_rail.dart": [
+			{
+				"kind": "import",
+				"uri": "package:kallopis/src/foundation/binding/internal/klp_bound_choice_style.dart",
+				"target": "lib/src/foundation/binding/internal/klp_bound_choice_style.dart"
+			},
+			{
+				"kind": "import",
+				"uri": "package:kallopis/src/foundation/binding/internal/klp_bound_template.dart",
+				"target": "lib/src/foundation/binding/internal/klp_bound_template.dart"
+			}
+		],
+		"lib/src/features/navigation/rail/internal/klp_rail_adapter.dart": [
+			{
+				"kind": "import",
+				"uri": "package:kallopis/src/foundation/binding/internal/klp_bound_choice_style.dart",
+				"target": "lib/src/foundation/binding/internal/klp_bound_choice_style.dart"
+			}
+		],
+		"lib/src/features/workspace/components/internal/klp_workspace_block_adapter.dart": [
+			{
+				"kind": "import",
+				"uri": "package:kallopis/src/foundation/binding/internal/klp_bound_template.dart",
+				"target": "lib/src/foundation/binding/internal/klp_bound_template.dart"
+			},
+			{
+				"kind": "import",
+				"uri": "package:kallopis/src/foundation/binding/internal/klp_bound_text_style.dart",
+				"target": "lib/src/foundation/binding/internal/klp_bound_text_style.dart"
+			}
+		],
+		"lib/src/features/workspace/components/internal/klp_workspace_components_adapter.dart": [
+			{
+				"kind": "import",
+				"uri": "package:kallopis/src/foundation/binding/internal/klp_bound_template.dart",
+				"target": "lib/src/foundation/binding/internal/klp_bound_template.dart"
+			},
+			{
+				"kind": "import",
+				"uri": "package:kallopis/src/foundation/binding/internal/klp_bound_text_style.dart",
+				"target": "lib/src/foundation/binding/internal/klp_bound_text_style.dart"
+			}
+		],
+		"lib/src/features/workspace/layout/internal/klp_app_layout_adapter.dart": [
+			{
+				"kind": "import",
+				"uri": "package:kallopis/src/foundation/binding/internal/klp_bound_template.dart",
+				"target": "lib/src/foundation/binding/internal/klp_bound_template.dart"
+			}
+		],
+		"lib/src/features/workspace/layout/internal/klp_frame_groups_adapter.dart": [
+			{
+				"kind": "import",
+				"uri": "package:kallopis/src/foundation/binding/internal/klp_bound_template.dart",
+				"target": "lib/src/foundation/binding/internal/klp_bound_template.dart"
+			}
+		],
+		"lib/src/features/workspace/presentation/klp_workspace_presentation.dart": [
+			{
+				"kind": "import",
+				"uri": "package:kallopis/src/foundation/binding/internal/klp_bound_template.dart",
+				"target": "lib/src/foundation/binding/internal/klp_bound_template.dart"
+			},
+			{
+				"kind": "import",
+				"uri": "package:kallopis/src/foundation/binding/internal/klp_bound_text_style.dart",
+				"target": "lib/src/foundation/binding/internal/klp_bound_text_style.dart"
+			}
+		],
+		"lib/src/foundation/binding/internal/klp_bound_component.dart": [
+			{
+				"kind": "import",
+				"uri": "klp_bound_template.dart",
+				"target": "lib/src/foundation/binding/internal/klp_bound_template.dart"
+			}
+		],
+		"lib/src/foundation/binding/internal/klp_prepared_component.dart": [
+			{
+				"kind": "import",
+				"uri": "klp_bound_template.dart",
+				"target": "lib/src/foundation/binding/internal/klp_bound_template.dart"
+			}
+		],
+		"lib/src/foundation/binding/internal/klp_prepared_template.dart": [
+			{
+				"kind": "import",
+				"uri": "klp_bound_template.dart",
+				"target": "lib/src/foundation/binding/internal/klp_bound_template.dart"
+			}
+		],
+		"lib/src/rendering/flutter/internal/klp_anchored_command_session.dart": [
+			{
+				"kind": "import",
+				"uri": "package:kallopis/src/capabilities/editing/internal/klp_command_anchor.dart",
+				"target": "lib/src/capabilities/editing/internal/klp_command_anchor.dart"
+			},
+			{
+				"kind": "import",
+				"uri": "package:kallopis/src/capabilities/editing/internal/klp_command_projection.dart",
+				"target": "lib/src/capabilities/editing/internal/klp_command_projection.dart"
+			},
+			{
+				"kind": "import",
+				"uri": "package:kallopis/src/capabilities/editing/internal/klp_command_reply.dart",
+				"target": "lib/src/capabilities/editing/internal/klp_command_reply.dart"
+			},
+			{
+				"kind": "import",
+				"uri": "package:kallopis/src/capabilities/editing/internal/klp_command_request.dart",
+				"target": "lib/src/capabilities/editing/internal/klp_command_request.dart"
+			},
+			{
+				"kind": "import",
+				"uri": "package:kallopis/src/capabilities/editing/internal/klp_editing_drawing.dart",
+				"target": "lib/src/capabilities/editing/internal/klp_editing_drawing.dart"
+			}
+		],
+		"lib/src/rendering/flutter/internal/klp_editor_mode_session.dart": [
+			{
+				"kind": "import",
+				"uri": "package:kallopis/src/capabilities/editing/internal/klp_editor_mode_item.dart",
+				"target": "lib/src/capabilities/editing/internal/klp_editor_mode_item.dart"
+			},
+			{
+				"kind": "import",
+				"uri": "package:kallopis/src/capabilities/editing/internal/klp_editor_mode_projection.dart",
+				"target": "lib/src/capabilities/editing/internal/klp_editor_mode_projection.dart"
+			},
+			{
+				"kind": "import",
+				"uri": "package:kallopis/src/capabilities/editing/internal/klp_editor_mode_reply.dart",
+				"target": "lib/src/capabilities/editing/internal/klp_editor_mode_reply.dart"
+			},
+			{
+				"kind": "import",
+				"uri": "package:kallopis/src/capabilities/editing/internal/klp_editor_mode_request.dart",
+				"target": "lib/src/capabilities/editing/internal/klp_editor_mode_request.dart"
+			},
+			{
+				"kind": "import",
+				"uri": "package:kallopis/src/capabilities/editing/internal/klp_editor_viewport_request.dart",
+				"target": "lib/src/capabilities/editing/internal/klp_editor_viewport_request.dart"
+			},
+			{
+				"kind": "import",
+				"uri": "package:kallopis/src/capabilities/editing/internal/klp_editing_drawing.dart",
+				"target": "lib/src/capabilities/editing/internal/klp_editing_drawing.dart"
+			},
+			{
+				"kind": "import",
+				"uri": "package:kallopis/src/capabilities/editing/internal/klp_editing_viewport.dart",
+				"target": "lib/src/capabilities/editing/internal/klp_editing_viewport.dart"
+			}
+		],
+		"lib/src/rendering/flutter/internal/klp_flutter_app_layout.dart": [
+			{
+				"kind": "import",
+				"uri": "package:kallopis/src/foundation/binding/internal/klp_bound_template.dart",
+				"target": "lib/src/foundation/binding/internal/klp_bound_template.dart"
+			}
+		],
+		"lib/src/rendering/flutter/internal/klp_flutter_block_control_session.dart": [
+			{
+				"kind": "import",
+				"uri": "package:kallopis/src/capabilities/editing/internal/klp_block_drop_preview.dart",
+				"target": "lib/src/capabilities/editing/internal/klp_block_drop_preview.dart"
+			},
+			{
+				"kind": "import",
+				"uri": "package:kallopis/src/capabilities/editing/internal/klp_block_drop_target.dart",
+				"target": "lib/src/capabilities/editing/internal/klp_block_drop_target.dart"
+			},
+			{
+				"kind": "import",
+				"uri": "package:kallopis/src/capabilities/editing/internal/klp_block_item.dart",
+				"target": "lib/src/capabilities/editing/internal/klp_block_item.dart"
+			},
+			{
+				"kind": "import",
+				"uri": "package:kallopis/src/capabilities/editing/internal/klp_block_projection.dart",
+				"target": "lib/src/capabilities/editing/internal/klp_block_projection.dart"
+			},
+			{
+				"kind": "import",
+				"uri": "package:kallopis/src/capabilities/editing/internal/klp_block_request.dart",
+				"target": "lib/src/capabilities/editing/internal/klp_block_request.dart"
+			},
+			{
+				"kind": "import",
+				"uri": "package:kallopis/src/capabilities/editing/internal/klp_block_viewport_request.dart",
+				"target": "lib/src/capabilities/editing/internal/klp_block_viewport_request.dart"
+			},
+			{
+				"kind": "import",
+				"uri": "package:kallopis/src/capabilities/editing/internal/klp_editing_drawing.dart",
+				"target": "lib/src/capabilities/editing/internal/klp_editing_drawing.dart"
+			},
+			{
+				"kind": "import",
+				"uri": "package:kallopis/src/capabilities/editing/internal/klp_editing_reply.dart",
+				"target": "lib/src/capabilities/editing/internal/klp_editing_reply.dart"
+			},
+			{
+				"kind": "import",
+				"uri": "package:kallopis/src/capabilities/editing/internal/klp_editing_stamp.dart",
+				"target": "lib/src/capabilities/editing/internal/klp_editing_stamp.dart"
+			}
+		],
+		"lib/src/rendering/flutter/internal/klp_flutter_block_state_control.dart": [
+			{
+				"kind": "import",
+				"uri": "package:kallopis/src/foundation/binding/internal/klp_bound_control_style.dart",
+				"target": "lib/src/foundation/binding/internal/klp_bound_control_style.dart"
+			}
+		],
+		"lib/src/rendering/flutter/internal/klp_flutter_choice.dart": [
+			{
+				"kind": "import",
+				"uri": "package:kallopis/src/foundation/binding/internal/klp_bound_template.dart",
+				"target": "lib/src/foundation/binding/internal/klp_bound_template.dart"
+			}
+		],
+		"lib/src/rendering/flutter/internal/klp_flutter_control.dart": [
+			{
+				"kind": "import",
+				"uri": "package:kallopis/src/foundation/binding/internal/klp_bound_control_style.dart",
+				"target": "lib/src/foundation/binding/internal/klp_bound_control_style.dart"
+			}
+		],
+		"lib/src/rendering/flutter/internal/klp_flutter_editing.dart": [
+			{
+				"kind": "import",
+				"uri": "package:kallopis/src/capabilities/editing/internal/klp_editing_drawing.dart",
+				"target": "lib/src/capabilities/editing/internal/klp_editing_drawing.dart"
+			},
+			{
+				"kind": "import",
+				"uri": "package:kallopis/src/capabilities/editing/internal/klp_editing_interaction.dart",
+				"target": "lib/src/capabilities/editing/internal/klp_editing_interaction.dart"
+			},
+			{
+				"kind": "import",
+				"uri": "package:kallopis/src/capabilities/editing/internal/klp_editing_intent.dart",
+				"target": "lib/src/capabilities/editing/internal/klp_editing_intent.dart"
+			},
+			{
+				"kind": "import",
+				"uri": "package:kallopis/src/capabilities/editing/internal/klp_editing_layout.dart",
+				"target": "lib/src/capabilities/editing/internal/klp_editing_layout.dart"
+			},
+			{
+				"kind": "import",
+				"uri": "package:kallopis/src/capabilities/editing/internal/klp_editing_point_request.dart",
+				"target": "lib/src/capabilities/editing/internal/klp_editing_point_request.dart"
+			},
+			{
+				"kind": "import",
+				"uri": "package:kallopis/src/capabilities/editing/internal/klp_editing_projection.dart",
+				"target": "lib/src/capabilities/editing/internal/klp_editing_projection.dart"
+			},
+			{
+				"kind": "import",
+				"uri": "package:kallopis/src/capabilities/editing/internal/klp_editing_reply.dart",
+				"target": "lib/src/capabilities/editing/internal/klp_editing_reply.dart"
+			},
+			{
+				"kind": "import",
+				"uri": "package:kallopis/src/capabilities/editing/internal/klp_editing_request.dart",
+				"target": "lib/src/capabilities/editing/internal/klp_editing_request.dart"
+			},
+			{
+				"kind": "import",
+				"uri": "package:kallopis/src/capabilities/editing/internal/klp_editing_viewport.dart",
+				"target": "lib/src/capabilities/editing/internal/klp_editing_viewport.dart"
+			},
+			{
+				"kind": "import",
+				"uri": "package:kallopis/src/capabilities/editing/internal/klp_editor_mode_item.dart",
+				"target": "lib/src/capabilities/editing/internal/klp_editor_mode_item.dart"
+			},
+			{
+				"kind": "import",
+				"uri": "package:kallopis/src/capabilities/editing/internal/klp_editor_mode_projection.dart",
+				"target": "lib/src/capabilities/editing/internal/klp_editor_mode_projection.dart"
+			},
+			{
+				"kind": "import",
+				"uri": "package:kallopis/src/capabilities/editing/internal/klp_block_item.dart",
+				"target": "lib/src/capabilities/editing/internal/klp_block_item.dart"
+			},
+			{
+				"kind": "import",
+				"uri": "package:kallopis/src/capabilities/editing/internal/klp_block_drop_preview.dart",
+				"target": "lib/src/capabilities/editing/internal/klp_block_drop_preview.dart"
+			},
+			{
+				"kind": "import",
+				"uri": "package:kallopis/src/capabilities/editing/internal/klp_block_drop_target.dart",
+				"target": "lib/src/capabilities/editing/internal/klp_block_drop_target.dart"
+			},
+			{
+				"kind": "import",
+				"uri": "package:kallopis/src/capabilities/editing/internal/klp_block_request.dart",
+				"target": "lib/src/capabilities/editing/internal/klp_block_request.dart"
+			},
+			{
+				"kind": "import",
+				"uri": "package:kallopis/src/capabilities/editing/internal/klp_editing_save_projection.dart",
+				"target": "lib/src/capabilities/editing/internal/klp_editing_save_projection.dart"
+			},
+			{
+				"kind": "import",
+				"uri": "package:kallopis/src/capabilities/editing/internal/klp_editing_save_request.dart",
+				"target": "lib/src/capabilities/editing/internal/klp_editing_save_request.dart"
+			},
+			{
+				"kind": "import",
+				"uri": "package:kallopis/src/capabilities/editing/internal/klp_text_offsets.dart",
+				"target": "lib/src/capabilities/editing/internal/klp_text_offsets.dart"
+			}
+		],
+		"lib/src/rendering/flutter/internal/klp_flutter_editing_painter.dart": [
+			{
+				"kind": "import",
+				"uri": "package:kallopis/src/capabilities/editing/internal/klp_editing_draw_command.dart",
+				"target": "lib/src/capabilities/editing/internal/klp_editing_draw_command.dart"
+			},
+			{
+				"kind": "import",
+				"uri": "package:kallopis/src/capabilities/editing/internal/klp_editing_drawing.dart",
+				"target": "lib/src/capabilities/editing/internal/klp_editing_drawing.dart"
+			},
+			{
+				"kind": "import",
+				"uri": "package:kallopis/src/capabilities/editing/internal/klp_editing_path.dart",
+				"target": "lib/src/capabilities/editing/internal/klp_editing_path.dart"
+			}
+		],
+		"lib/src/rendering/flutter/internal/klp_flutter_extent.dart": [
+			{
+				"kind": "import",
+				"uri": "package:kallopis/src/foundation/binding/internal/klp_bound_template.dart",
+				"target": "lib/src/foundation/binding/internal/klp_bound_template.dart"
+			}
+		],
+		"lib/src/rendering/flutter/internal/klp_flutter_frame_groups.dart": [
+			{
+				"kind": "import",
+				"uri": "package:kallopis/src/foundation/binding/internal/klp_bound_template.dart",
+				"target": "lib/src/foundation/binding/internal/klp_bound_template.dart"
+			}
+		],
+		"lib/src/rendering/flutter/internal/klp_flutter_linear.dart": [
+			{
+				"kind": "import",
+				"uri": "package:kallopis/src/foundation/binding/internal/klp_bound_template.dart",
+				"target": "lib/src/foundation/binding/internal/klp_bound_template.dart"
+			}
+		],
+		"lib/src/rendering/flutter/internal/klp_flutter_regions.dart": [
+			{
+				"kind": "import",
+				"uri": "package:kallopis/src/foundation/binding/internal/klp_bound_template.dart",
+				"target": "lib/src/foundation/binding/internal/klp_bound_template.dart"
+			}
+		],
+		"lib/src/rendering/flutter/internal/klp_flutter_renderer.dart": [
+			{
+				"kind": "import",
+				"uri": "package:kallopis/src/styling/presets/internal/klp_paper_shadow_recipe.dart",
+				"target": "lib/src/styling/presets/internal/klp_paper_shadow_recipe.dart"
+			},
+			{
+				"kind": "import",
+				"uri": "package:kallopis/src/foundation/binding/internal/klp_bound_template.dart",
+				"target": "lib/src/foundation/binding/internal/klp_bound_template.dart"
+			}
+		],
+		"lib/src/rendering/flutter/internal/klp_flutter_retained_stack.dart": [
+			{
+				"kind": "import",
+				"uri": "package:kallopis/src/foundation/binding/internal/klp_bound_template.dart",
+				"target": "lib/src/foundation/binding/internal/klp_bound_template.dart"
+			}
+		],
+		"lib/src/rendering/flutter/internal/klp_flutter_text_delta.dart": [
+			{
+				"kind": "import",
+				"uri": "package:kallopis/src/capabilities/editing/internal/klp_editing_text_window.dart",
+				"target": "lib/src/capabilities/editing/internal/klp_editing_text_window.dart"
+			},
+			{
+				"kind": "import",
+				"uri": "package:kallopis/src/capabilities/editing/internal/klp_text_offsets.dart",
+				"target": "lib/src/capabilities/editing/internal/klp_text_offsets.dart"
+			}
+		],
+		"lib/src/rendering/flutter/internal/klp_flutter_text_input_result.dart": [
+			{
+				"kind": "import",
+				"uri": "package:kallopis/src/capabilities/editing/internal/klp_editing_projection.dart",
+				"target": "lib/src/capabilities/editing/internal/klp_editing_projection.dart"
+			},
+			{
+				"kind": "import",
+				"uri": "package:kallopis/src/capabilities/editing/internal/klp_editing_reply.dart",
+				"target": "lib/src/capabilities/editing/internal/klp_editing_reply.dart"
+			}
+		],
+		"lib/src/rendering/flutter/internal/klp_flutter_text_input_session.dart": [
+			{
+				"kind": "import",
+				"uri": "package:kallopis/src/capabilities/editing/internal/klp_editing_intent.dart",
+				"target": "lib/src/capabilities/editing/internal/klp_editing_intent.dart"
+			},
+			{
+				"kind": "import",
+				"uri": "package:kallopis/src/capabilities/editing/internal/klp_editing_projection.dart",
+				"target": "lib/src/capabilities/editing/internal/klp_editing_projection.dart"
+			},
+			{
+				"kind": "import",
+				"uri": "package:kallopis/src/capabilities/editing/internal/klp_editing_reply.dart",
+				"target": "lib/src/capabilities/editing/internal/klp_editing_reply.dart"
+			},
+			{
+				"kind": "import",
+				"uri": "package:kallopis/src/capabilities/editing/internal/klp_editing_request.dart",
+				"target": "lib/src/capabilities/editing/internal/klp_editing_request.dart"
+			},
+			{
+				"kind": "import",
+				"uri": "package:kallopis/src/capabilities/editing/internal/klp_editing_submission.dart",
+				"target": "lib/src/capabilities/editing/internal/klp_editing_submission.dart"
+			},
+			{
+				"kind": "import",
+				"uri": "package:kallopis/src/capabilities/editing/internal/klp_text_offsets.dart",
+				"target": "lib/src/capabilities/editing/internal/klp_text_offsets.dart"
+			}
+		],
+		"lib/src/rendering/flutter/internal/klp_flutter_text_plan.dart": [
+			{
+				"kind": "import",
+				"uri": "package:kallopis/src/capabilities/editing/internal/klp_composition_text.dart",
+				"target": "lib/src/capabilities/editing/internal/klp_composition_text.dart"
+			},
+			{
+				"kind": "import",
+				"uri": "package:kallopis/src/capabilities/editing/internal/klp_editing_intent.dart",
+				"target": "lib/src/capabilities/editing/internal/klp_editing_intent.dart"
+			},
+			{
+				"kind": "import",
+				"uri": "package:kallopis/src/capabilities/editing/internal/klp_text_offsets.dart",
+				"target": "lib/src/capabilities/editing/internal/klp_text_offsets.dart"
+			}
+		],
+		"lib/src/rendering/flutter/internal/klp_flutter_values.dart": [
+			{
+				"kind": "import",
+				"uri": "package:kallopis/src/foundation/binding/internal/klp_bound_text_style.dart",
+				"target": "lib/src/foundation/binding/internal/klp_bound_text_style.dart"
+			}
+		],
+		"lib/src/rendering/flutter/internal/klp_flutter_window_controls.dart": [
+			{
+				"kind": "import",
+				"uri": "package:kallopis/src/foundation/binding/internal/klp_bound_control_style.dart",
+				"target": "lib/src/foundation/binding/internal/klp_bound_control_style.dart"
+			}
+		],
+		"lib/src/rendering/flutter/internal/klp_flutter_workspace_block.dart": [
+			{
+				"kind": "import",
+				"uri": "package:kallopis/src/foundation/binding/internal/klp_bound_template.dart",
+				"target": "lib/src/foundation/binding/internal/klp_bound_template.dart"
+			}
+		],
+		"lib/src/rendering/flutter/internal/klp_flutter_workspace_components.dart": [
+			{
+				"kind": "import",
+				"uri": "package:kallopis/src/foundation/binding/internal/klp_bound_text_style.dart",
+				"target": "lib/src/foundation/binding/internal/klp_bound_text_style.dart"
+			}
+		],
+		"lib/src/runtime/compilation/klp_scope_boundary_adapter.dart": [
+			{
+				"kind": "import",
+				"uri": "package:kallopis/src/foundation/binding/internal/klp_bound_template.dart",
+				"target": "lib/src/foundation/binding/internal/klp_bound_template.dart"
+			}
+		],
+		"lib/src/runtime/compilation/klp_tree_runtime.dart": [
+			{
+				"kind": "import",
+				"uri": "package:kallopis/src/foundation/binding/internal/klp_bound_template.dart",
+				"target": "lib/src/foundation/binding/internal/klp_bound_template.dart"
+			}
+		],
+		"lib/src/runtime/compilation/internal/klp_prepared_adaptive.dart": [
+			{
+				"kind": "import",
+				"uri": "package:kallopis/src/foundation/binding/internal/klp_bound_template.dart",
+				"target": "lib/src/foundation/binding/internal/klp_bound_template.dart"
+			}
+		],
+		"lib/src/runtime/contracts/klp_prepared_node.dart": [
+			{
+				"kind": "import",
+				"uri": "package:kallopis/src/foundation/binding/internal/klp_bound_template.dart",
+				"target": "lib/src/foundation/binding/internal/klp_bound_template.dart"
+			}
+		],
+		"lib/src/runtime/contracts/klp_runtime_frame.dart": [
+			{
+				"kind": "import",
+				"uri": "package:kallopis/src/foundation/binding/internal/klp_bound_template.dart",
+				"target": "lib/src/foundation/binding/internal/klp_bound_template.dart"
+			}
+		],
+		"lib/src/styling/legacy_theme/klp_surface_theme.dart": [
+			{
+				"kind": "import",
+				"uri": "package:kallopis/src/styling/presets/internal/klp_paper_shadow_recipe.dart",
+				"target": "lib/src/styling/presets/internal/klp_paper_shadow_recipe.dart"
+			}
+		],
+		"lib/src/styling/presets/klp_workspace_preset.dart": [
+			{
+				"kind": "import",
+				"uri": "internal/klp_paper_shadow_recipe.dart",
+				"target": "lib/src/styling/presets/internal/klp_paper_shadow_recipe.dart"
+			}
+		],
+		"test/klp_anchored_commands_installation_test.dart": [
+			{
+				"kind": "import",
+				"uri": "package:kallopis/src/foundation/binding/internal/klp_bound_template.dart",
+				"target": "lib/src/foundation/binding/internal/klp_bound_template.dart"
+			}
+		],
+		"test/klp_anchored_command_session_test.dart": [
+			{
+				"kind": "import",
+				"uri": "package:kallopis/src/foundation/binding/internal/klp_bound_template.dart",
+				"target": "lib/src/foundation/binding/internal/klp_bound_template.dart"
+			}
+		],
+		"test/klp_app_frame_style_test.dart": [
+			{
+				"kind": "import",
+				"uri": "package:kallopis/src/foundation/binding/internal/klp_bound_template.dart",
+				"target": "lib/src/foundation/binding/internal/klp_bound_template.dart"
+			}
+		],
+		"test/klp_block_controls_installation_test.dart": [
+			{
+				"kind": "import",
+				"uri": "package:kallopis/src/foundation/binding/internal/klp_bound_template.dart",
+				"target": "lib/src/foundation/binding/internal/klp_bound_template.dart"
+			}
+		],
+		"test/klp_block_drop_preview_test.dart": [
+			{
+				"kind": "import",
+				"uri": "package:kallopis/src/capabilities/editing/internal/klp_block_drop_preview.dart",
+				"target": "lib/src/capabilities/editing/internal/klp_block_drop_preview.dart"
+			},
+			{
+				"kind": "import",
+				"uri": "package:kallopis/src/capabilities/editing/internal/klp_block_drop_target.dart",
+				"target": "lib/src/capabilities/editing/internal/klp_block_drop_target.dart"
+			},
+			{
+				"kind": "import",
+				"uri": "package:kallopis/src/capabilities/editing/internal/klp_block_item.dart",
+				"target": "lib/src/capabilities/editing/internal/klp_block_item.dart"
+			},
+			{
+				"kind": "import",
+				"uri": "package:kallopis/src/capabilities/editing/internal/klp_block_request.dart",
+				"target": "lib/src/capabilities/editing/internal/klp_block_request.dart"
+			},
+			{
+				"kind": "import",
+				"uri": "package:kallopis/src/capabilities/editing/internal/klp_editing_stamp.dart",
+				"target": "lib/src/capabilities/editing/internal/klp_editing_stamp.dart"
+			}
+		],
+		"test/klp_component_binding_test.dart": [
+			{
+				"kind": "import",
+				"uri": "package:kallopis/src/foundation/binding/internal/klp_bound_template.dart",
+				"target": "lib/src/foundation/binding/internal/klp_bound_template.dart"
+			}
+		],
+		"test/klp_component_children_binding_test.dart": [
+			{
+				"kind": "import",
+				"uri": "package:kallopis/src/foundation/binding/internal/klp_bound_template.dart",
+				"target": "lib/src/foundation/binding/internal/klp_bound_template.dart"
+			}
+		],
+		"test/klp_composition_segments_test.dart": [
+			{
+				"kind": "import",
+				"uri": "package:kallopis/src/capabilities/editing/internal/klp_composition_attribute.dart",
+				"target": "lib/src/capabilities/editing/internal/klp_composition_attribute.dart"
+			},
+			{
+				"kind": "import",
+				"uri": "package:kallopis/src/capabilities/editing/internal/klp_composition_segment.dart",
+				"target": "lib/src/capabilities/editing/internal/klp_composition_segment.dart"
+			},
+			{
+				"kind": "import",
+				"uri": "package:kallopis/src/capabilities/editing/internal/klp_composition_text.dart",
+				"target": "lib/src/capabilities/editing/internal/klp_composition_text.dart"
+			}
+		],
+		"test/klp_control_density_test.dart": [
+			{
+				"kind": "import",
+				"uri": "package:kallopis/src/styling/semantics/internal/klp_control_density.dart",
+				"target": "lib/src/styling/semantics/internal/klp_control_density.dart"
+			}
+		],
+		"test/klp_editing_composition_test.dart": [
+			{
+				"kind": "import",
+				"uri": "package:kallopis/src/capabilities/editing/internal/klp_editing_projection.dart",
+				"target": "lib/src/capabilities/editing/internal/klp_editing_projection.dart"
+			},
+			{
+				"kind": "import",
+				"uri": "package:kallopis/src/capabilities/editing/internal/klp_composition_text.dart",
+				"target": "lib/src/capabilities/editing/internal/klp_composition_text.dart"
+			},
+			{
+				"kind": "import",
+				"uri": "package:kallopis/src/capabilities/editing/internal/klp_editing_intent.dart",
+				"target": "lib/src/capabilities/editing/internal/klp_editing_intent.dart"
+			},
+			{
+				"kind": "import",
+				"uri": "package:kallopis/src/capabilities/editing/internal/klp_editing_reply.dart",
+				"target": "lib/src/capabilities/editing/internal/klp_editing_reply.dart"
+			},
+			{
+				"kind": "import",
+				"uri": "package:kallopis/src/capabilities/editing/internal/klp_editing_request.dart",
+				"target": "lib/src/capabilities/editing/internal/klp_editing_request.dart"
+			},
+			{
+				"kind": "import",
+				"uri": "package:kallopis/src/capabilities/editing/internal/klp_editing_stamp.dart",
+				"target": "lib/src/capabilities/editing/internal/klp_editing_stamp.dart"
+			},
+			{
+				"kind": "import",
+				"uri": "package:kallopis/src/capabilities/editing/internal/klp_editing_submission.dart",
+				"target": "lib/src/capabilities/editing/internal/klp_editing_submission.dart"
+			},
+			{
+				"kind": "import",
+				"uri": "package:kallopis/src/capabilities/editing/internal/klp_editing_text_window.dart",
+				"target": "lib/src/capabilities/editing/internal/klp_editing_text_window.dart"
+			}
+		],
+		"test/klp_editing_installation_test.dart": [
+			{
+				"kind": "import",
+				"uri": "package:kallopis/src/foundation/binding/internal/klp_bound_template.dart",
+				"target": "lib/src/foundation/binding/internal/klp_bound_template.dart"
+			}
+		],
+		"test/klp_editing_projection_test.dart": [
+			{
+				"kind": "import",
+				"uri": "package:kallopis/src/capabilities/editing/internal/klp_editing_endpoint.dart",
+				"target": "lib/src/capabilities/editing/internal/klp_editing_endpoint.dart"
+			},
+			{
+				"kind": "import",
+				"uri": "package:kallopis/src/capabilities/editing/internal/klp_editing_intent.dart",
+				"target": "lib/src/capabilities/editing/internal/klp_editing_intent.dart"
+			},
+			{
+				"kind": "import",
+				"uri": "package:kallopis/src/capabilities/editing/internal/klp_editing_projection.dart",
+				"target": "lib/src/capabilities/editing/internal/klp_editing_projection.dart"
+			},
+			{
+				"kind": "import",
+				"uri": "package:kallopis/src/capabilities/editing/internal/klp_editing_reply.dart",
+				"target": "lib/src/capabilities/editing/internal/klp_editing_reply.dart"
+			},
+			{
+				"kind": "import",
+				"uri": "package:kallopis/src/capabilities/editing/internal/klp_editing_request.dart",
+				"target": "lib/src/capabilities/editing/internal/klp_editing_request.dart"
+			},
+			{
+				"kind": "import",
+				"uri": "package:kallopis/src/capabilities/editing/internal/klp_editing_stamp.dart",
+				"target": "lib/src/capabilities/editing/internal/klp_editing_stamp.dart"
+			},
+			{
+				"kind": "import",
+				"uri": "package:kallopis/src/capabilities/editing/internal/klp_editing_submission.dart",
+				"target": "lib/src/capabilities/editing/internal/klp_editing_submission.dart"
+			},
+			{
+				"kind": "import",
+				"uri": "package:kallopis/src/capabilities/editing/internal/klp_editing_text_window.dart",
+				"target": "lib/src/capabilities/editing/internal/klp_editing_text_window.dart"
+			}
+		],
+		"test/klp_editing_submission_test.dart": [
+			{
+				"kind": "import",
+				"uri": "package:kallopis/src/capabilities/editing/internal/klp_editing_projection.dart",
+				"target": "lib/src/capabilities/editing/internal/klp_editing_projection.dart"
+			},
+			{
+				"kind": "import",
+				"uri": "package:kallopis/src/capabilities/editing/internal/klp_editing_intent.dart",
+				"target": "lib/src/capabilities/editing/internal/klp_editing_intent.dart"
+			},
+			{
+				"kind": "import",
+				"uri": "package:kallopis/src/capabilities/editing/internal/klp_editing_reply.dart",
+				"target": "lib/src/capabilities/editing/internal/klp_editing_reply.dart"
+			},
+			{
+				"kind": "import",
+				"uri": "package:kallopis/src/capabilities/editing/internal/klp_editing_request.dart",
+				"target": "lib/src/capabilities/editing/internal/klp_editing_request.dart"
+			},
+			{
+				"kind": "import",
+				"uri": "package:kallopis/src/capabilities/editing/internal/klp_editing_stamp.dart",
+				"target": "lib/src/capabilities/editing/internal/klp_editing_stamp.dart"
+			},
+			{
+				"kind": "import",
+				"uri": "package:kallopis/src/capabilities/editing/internal/klp_editing_submission.dart",
+				"target": "lib/src/capabilities/editing/internal/klp_editing_submission.dart"
+			},
+			{
+				"kind": "import",
+				"uri": "package:kallopis/src/capabilities/editing/internal/klp_editing_text_window.dart",
+				"target": "lib/src/capabilities/editing/internal/klp_editing_text_window.dart"
+			}
+		],
+		"test/klp_editing_text_window_test.dart": [
+			{
+				"kind": "import",
+				"uri": "package:kallopis/src/capabilities/editing/internal/klp_editing_stamp.dart",
+				"target": "lib/src/capabilities/editing/internal/klp_editing_stamp.dart"
+			},
+			{
+				"kind": "import",
+				"uri": "package:kallopis/src/capabilities/editing/internal/klp_editing_text_window.dart",
+				"target": "lib/src/capabilities/editing/internal/klp_editing_text_window.dart"
+			}
+		],
+		"test/klp_editor_mode_session_test.dart": [
+			{
+				"kind": "import",
+				"uri": "package:kallopis/src/foundation/binding/internal/klp_bound_template.dart",
+				"target": "lib/src/foundation/binding/internal/klp_bound_template.dart"
+			}
+		],
+		"test/klp_flutter_block_control_session_test.dart": [
+			{
+				"kind": "import",
+				"uri": "package:kallopis/src/foundation/binding/internal/klp_bound_template.dart",
+				"target": "lib/src/foundation/binding/internal/klp_bound_template.dart"
+			},
+			{
+				"kind": "import",
+				"uri": "package:kallopis/src/capabilities/editing/internal/klp_block_drop_preview.dart",
+				"target": "lib/src/capabilities/editing/internal/klp_block_drop_preview.dart"
+			}
+		],
+		"test/klp_flutter_choice_test.dart": [
+			{
+				"kind": "import",
+				"uri": "package:kallopis/src/foundation/binding/internal/klp_bound_template.dart",
+				"target": "lib/src/foundation/binding/internal/klp_bound_template.dart"
+			}
+		],
+		"test/klp_flutter_control_keyboard_test.dart": [
+			{
+				"kind": "import",
+				"uri": "package:kallopis/src/foundation/binding/internal/klp_bound_control_style.dart",
+				"target": "lib/src/foundation/binding/internal/klp_bound_control_style.dart"
+			},
+			{
+				"kind": "import",
+				"uri": "package:kallopis/src/foundation/binding/internal/klp_bound_text_style.dart",
+				"target": "lib/src/foundation/binding/internal/klp_bound_text_style.dart"
+			},
+			{
+				"kind": "import",
+				"uri": "package:kallopis/src/styling/semantics/internal/klp_control_density.dart",
+				"target": "lib/src/styling/semantics/internal/klp_control_density.dart"
+			}
+		],
+		"test/klp_flutter_renderer_test.dart": [
+			{
+				"kind": "import",
+				"uri": "package:kallopis/src/foundation/binding/internal/klp_bound_template.dart",
+				"target": "lib/src/foundation/binding/internal/klp_bound_template.dart"
+			}
+		],
+		"test/klp_flutter_retained_stack_test.dart": [
+			{
+				"kind": "import",
+				"uri": "package:kallopis/src/foundation/binding/internal/klp_bound_template.dart",
+				"target": "lib/src/foundation/binding/internal/klp_bound_template.dart"
+			}
+		],
+		"test/klp_flutter_text_delta_test.dart": [
+			{
+				"kind": "import",
+				"uri": "package:kallopis/src/capabilities/editing/internal/klp_editing_stamp.dart",
+				"target": "lib/src/capabilities/editing/internal/klp_editing_stamp.dart"
+			},
+			{
+				"kind": "import",
+				"uri": "package:kallopis/src/capabilities/editing/internal/klp_editing_text_window.dart",
+				"target": "lib/src/capabilities/editing/internal/klp_editing_text_window.dart"
+			}
+		],
+		"test/klp_flutter_text_input_session_test.dart": [
+			{
+				"kind": "import",
+				"uri": "package:kallopis/src/capabilities/editing/internal/klp_editing_intent.dart",
+				"target": "lib/src/capabilities/editing/internal/klp_editing_intent.dart"
+			},
+			{
+				"kind": "import",
+				"uri": "package:kallopis/src/capabilities/editing/internal/klp_editing_endpoint.dart",
+				"target": "lib/src/capabilities/editing/internal/klp_editing_endpoint.dart"
+			},
+			{
+				"kind": "import",
+				"uri": "package:kallopis/src/capabilities/editing/internal/klp_editing_projection.dart",
+				"target": "lib/src/capabilities/editing/internal/klp_editing_projection.dart"
+			},
+			{
+				"kind": "import",
+				"uri": "package:kallopis/src/capabilities/editing/internal/klp_editing_reply.dart",
+				"target": "lib/src/capabilities/editing/internal/klp_editing_reply.dart"
+			},
+			{
+				"kind": "import",
+				"uri": "package:kallopis/src/capabilities/editing/internal/klp_editing_request.dart",
+				"target": "lib/src/capabilities/editing/internal/klp_editing_request.dart"
+			},
+			{
+				"kind": "import",
+				"uri": "package:kallopis/src/capabilities/editing/internal/klp_editing_stamp.dart",
+				"target": "lib/src/capabilities/editing/internal/klp_editing_stamp.dart"
+			},
+			{
+				"kind": "import",
+				"uri": "package:kallopis/src/capabilities/editing/internal/klp_editing_text_window.dart",
+				"target": "lib/src/capabilities/editing/internal/klp_editing_text_window.dart"
+			}
+		],
+		"test/klp_frame_groups_test.dart": [
+			{
+				"kind": "import",
+				"uri": "package:kallopis/src/foundation/binding/internal/klp_bound_template.dart",
+				"target": "lib/src/foundation/binding/internal/klp_bound_template.dart"
+			}
+		],
+		"test/klp_mode_toolbar_installation_test.dart": [
+			{
+				"kind": "import",
+				"uri": "package:kallopis/src/foundation/binding/internal/klp_bound_template.dart",
+				"target": "lib/src/foundation/binding/internal/klp_bound_template.dart"
+			}
+		],
+		"test/klp_placement_identity_test.dart": [
+			{
+				"kind": "import",
+				"uri": "package:kallopis/src/foundation/binding/internal/klp_bound_template.dart",
+				"target": "lib/src/foundation/binding/internal/klp_bound_template.dart"
+			}
+		],
+		"test/klp_prepared_renderer_contract_test.dart": [
+			{
+				"kind": "import",
+				"uri": "package:kallopis/src/foundation/binding/internal/klp_bound_template.dart",
+				"target": "lib/src/foundation/binding/internal/klp_bound_template.dart"
+			}
+		],
+		"test/klp_rail_adapter_test.dart": [
+			{
+				"kind": "import",
+				"uri": "package:kallopis/src/foundation/binding/internal/klp_bound_template.dart",
+				"target": "lib/src/foundation/binding/internal/klp_bound_template.dart"
+			}
+		],
+		"test/klp_scope_activation_test.dart": [
+			{
+				"kind": "import",
+				"uri": "package:kallopis/src/foundation/binding/internal/klp_bound_template.dart",
+				"target": "lib/src/foundation/binding/internal/klp_bound_template.dart"
+			}
+		],
+		"test/klp_surface_shadow_test.dart": [
+			{
+				"kind": "import",
+				"uri": "package:kallopis/src/foundation/binding/internal/klp_bound_template.dart",
+				"target": "lib/src/foundation/binding/internal/klp_bound_template.dart"
+			}
+		],
+		"test/klp_text_offsets_test.dart": [
+			{
+				"kind": "import",
+				"uri": "package:kallopis/src/capabilities/editing/internal/klp_text_offsets.dart",
+				"target": "lib/src/capabilities/editing/internal/klp_text_offsets.dart"
+			}
+		],
+		"test/klp_tree_runtime_test.dart": [
+			{
+				"kind": "import",
+				"uri": "package:kallopis/src/foundation/binding/internal/klp_bound_template.dart",
+				"target": "lib/src/foundation/binding/internal/klp_bound_template.dart"
+			}
+		],
+		"test/support/klp_component_test_definition.dart": [
+			{
+				"kind": "import",
+				"uri": "package:kallopis/src/foundation/binding/internal/klp_bound_template.dart",
+				"target": "lib/src/foundation/binding/internal/klp_bound_template.dart"
+			}
+		],
+		"test/support/klp_editing_fixture.dart": [
+			{
+				"kind": "import",
+				"uri": "package:kallopis/src/capabilities/editing/internal/klp_editing_endpoint.dart",
+				"target": "lib/src/capabilities/editing/internal/klp_editing_endpoint.dart"
+			},
+			{
+				"kind": "import",
+				"uri": "package:kallopis/src/capabilities/editing/internal/klp_editing_projection.dart",
+				"target": "lib/src/capabilities/editing/internal/klp_editing_projection.dart"
+			},
+			{
+				"kind": "import",
+				"uri": "package:kallopis/src/capabilities/editing/internal/klp_editing_text_window.dart",
+				"target": "lib/src/capabilities/editing/internal/klp_editing_text_window.dart"
+			}
+		],
+		"test/support/klp_renderer_fixture.dart": [
+			{
+				"kind": "import",
+				"uri": "package:kallopis/src/foundation/binding/internal/klp_bound_choice_style.dart",
+				"target": "lib/src/foundation/binding/internal/klp_bound_choice_style.dart"
+			},
+			{
+				"kind": "import",
+				"uri": "package:kallopis/src/foundation/binding/internal/klp_bound_template.dart",
+				"target": "lib/src/foundation/binding/internal/klp_bound_template.dart"
+			},
+			{
+				"kind": "import",
+				"uri": "package:kallopis/src/foundation/binding/internal/klp_bound_text_style.dart",
+				"target": "lib/src/foundation/binding/internal/klp_bound_text_style.dart"
+			}
+		],
+		"test/support/klp_runtime_fixture.dart": [
+			{
+				"kind": "import",
+				"uri": "package:kallopis/src/foundation/binding/internal/klp_bound_template.dart",
+				"target": "lib/src/foundation/binding/internal/klp_bound_template.dart"
+			}
+		]
+	},
+	"direct_test_paths": [
+		"test/klp_anchored_command_session_test.dart",
+		"test/klp_anchored_commands_installation_test.dart",
+		"test/klp_app_frame_style_test.dart",
+		"test/klp_block_controls_installation_test.dart",
+		"test/klp_block_drop_preview_test.dart",
+		"test/klp_component_binding_test.dart",
+		"test/klp_component_children_binding_test.dart",
+		"test/klp_composition_segments_test.dart",
+		"test/klp_control_density_test.dart",
+		"test/klp_editing_composition_test.dart",
+		"test/klp_editing_installation_test.dart",
+		"test/klp_editing_projection_test.dart",
+		"test/klp_editing_submission_test.dart",
+		"test/klp_editing_text_window_test.dart",
+		"test/klp_editor_mode_session_test.dart",
+		"test/klp_flutter_block_control_session_test.dart",
+		"test/klp_flutter_choice_test.dart",
+		"test/klp_flutter_control_keyboard_test.dart",
+		"test/klp_flutter_renderer_test.dart",
+		"test/klp_flutter_retained_stack_test.dart",
+		"test/klp_flutter_text_delta_test.dart",
+		"test/klp_flutter_text_input_session_test.dart",
+		"test/klp_frame_groups_test.dart",
+		"test/klp_mode_toolbar_installation_test.dart",
+		"test/klp_placement_identity_test.dart",
+		"test/klp_prepared_renderer_contract_test.dart",
+		"test/klp_rail_adapter_test.dart",
+		"test/klp_scope_activation_test.dart",
+		"test/klp_surface_shadow_test.dart",
+		"test/klp_text_offsets_test.dart",
+		"test/klp_tree_runtime_test.dart",
+		"test/support/klp_component_test_definition.dart",
+		"test/support/klp_editing_fixture.dart",
+		"test/support/klp_renderer_fixture.dart",
+		"test/support/klp_runtime_fixture.dart"
+	],
+	"counts": {
+		"public": 1,
+		"application": 3,
+		"capabilities": 1,
+		"features": 19,
+		"foundation": 3,
+		"rendering": 23,
+		"runtime": 5,
+		"styling": 2,
+		"test": 35
+	},
+	"writes": {
+		"capabilities": [
+			"lib/src/capabilities/editing/contracts/klp_begin_composition_intent.dart",
+			"lib/src/capabilities/editing/contracts/klp_block_command_anchor.dart",
+			"lib/src/capabilities/editing/contracts/klp_block_drop_preview.dart",
+			"lib/src/capabilities/editing/contracts/klp_block_item.dart",
+			"lib/src/capabilities/editing/contracts/klp_block_projection.dart",
+			"lib/src/capabilities/editing/contracts/klp_block_request.dart",
+			"lib/src/capabilities/editing/contracts/klp_block_viewport_request.dart",
+			"lib/src/capabilities/editing/contracts/klp_cancel_composition_intent.dart",
+			"lib/src/capabilities/editing/contracts/klp_caret_command_anchor.dart",
+			"lib/src/capabilities/editing/contracts/klp_command_anchor.dart",
+			"lib/src/capabilities/editing/contracts/klp_command_item.dart",
+			"lib/src/capabilities/editing/contracts/klp_command_projection.dart",
+			"lib/src/capabilities/editing/contracts/klp_command_reply.dart",
+			"lib/src/capabilities/editing/contracts/klp_command_request.dart",
+			"lib/src/capabilities/editing/contracts/klp_commit_composition_intent.dart",
+			"lib/src/capabilities/editing/contracts/klp_composition_attribute.dart",
+			"lib/src/capabilities/editing/contracts/klp_composition_segment.dart",
+			"lib/src/capabilities/editing/contracts/klp_composition_text.dart",
+			"lib/src/capabilities/editing/contracts/klp_editing_command_intent.dart",
+			"lib/src/capabilities/editing/contracts/klp_editing_draw_command.dart",
+			"lib/src/capabilities/editing/contracts/klp_editing_drawing.dart",
+			"lib/src/capabilities/editing/contracts/klp_editing_endpoint.dart",
+			"lib/src/capabilities/editing/contracts/klp_editing_intent.dart",
+			"lib/src/capabilities/editing/contracts/klp_editing_interaction.dart",
+			"lib/src/capabilities/editing/contracts/klp_editing_layout.dart",
+			"lib/src/capabilities/editing/contracts/klp_editing_path.dart",
+			"lib/src/capabilities/editing/contracts/klp_editing_point_request.dart",
+			"lib/src/capabilities/editing/contracts/klp_editing_projection.dart",
+			"lib/src/capabilities/editing/contracts/klp_editing_reply.dart",
+			"lib/src/capabilities/editing/contracts/klp_editing_request.dart",
+			"lib/src/capabilities/editing/contracts/klp_editing_save_projection.dart",
+			"lib/src/capabilities/editing/contracts/klp_editing_save_reply.dart",
+			"lib/src/capabilities/editing/contracts/klp_editing_save_request.dart",
+			"lib/src/capabilities/editing/contracts/klp_editing_save_source.dart",
+			"lib/src/capabilities/editing/contracts/klp_editing_source.dart",
+			"lib/src/capabilities/editing/contracts/klp_editing_stamp.dart",
+			"lib/src/capabilities/editing/contracts/klp_editing_style.dart",
+			"lib/src/capabilities/editing/contracts/klp_editing_text_window.dart",
+			"lib/src/capabilities/editing/contracts/klp_editing_viewport.dart",
+			"lib/src/capabilities/editing/contracts/klp_editor_mode_item.dart",
+			"lib/src/capabilities/editing/contracts/klp_editor_mode_projection.dart",
+			"lib/src/capabilities/editing/contracts/klp_editor_mode_reply.dart",
+			"lib/src/capabilities/editing/contracts/klp_editor_mode_request.dart",
+			"lib/src/capabilities/editing/contracts/klp_editor_tool_item.dart",
+			"lib/src/capabilities/editing/contracts/klp_editor_viewport_projection.dart",
+			"lib/src/capabilities/editing/contracts/klp_editor_viewport_request.dart",
+			"lib/src/capabilities/editing/contracts/klp_handwriting_state.dart",
+			"lib/src/capabilities/editing/contracts/klp_handwriting_state_source.dart",
+			"lib/src/capabilities/editing/contracts/klp_replace_text_intent.dart",
+			"lib/src/capabilities/editing/contracts/klp_select_text_intent.dart",
+			"lib/src/capabilities/editing/contracts/klp_text_offsets.dart",
+			"lib/src/capabilities/editing/contracts/klp_update_composition_intent.dart",
+			"lib/src/capabilities/editing/internal/klp_begin_composition_intent.dart",
+			"lib/src/capabilities/editing/internal/klp_block_command_anchor.dart",
+			"lib/src/capabilities/editing/internal/klp_block_drop_preview.dart",
+			"lib/src/capabilities/editing/internal/klp_block_drop_target.dart",
+			"lib/src/capabilities/editing/internal/klp_block_item.dart",
+			"lib/src/capabilities/editing/internal/klp_block_projection.dart",
+			"lib/src/capabilities/editing/internal/klp_block_request.dart",
+			"lib/src/capabilities/editing/internal/klp_block_viewport_request.dart",
+			"lib/src/capabilities/editing/internal/klp_cancel_composition_intent.dart",
+			"lib/src/capabilities/editing/internal/klp_caret_command_anchor.dart",
+			"lib/src/capabilities/editing/internal/klp_command_anchor.dart",
+			"lib/src/capabilities/editing/internal/klp_command_item.dart",
+			"lib/src/capabilities/editing/internal/klp_command_projection.dart",
+			"lib/src/capabilities/editing/internal/klp_command_reply.dart",
+			"lib/src/capabilities/editing/internal/klp_command_request.dart",
+			"lib/src/capabilities/editing/internal/klp_commit_composition_intent.dart",
+			"lib/src/capabilities/editing/internal/klp_composition_attribute.dart",
+			"lib/src/capabilities/editing/internal/klp_composition_segment.dart",
+			"lib/src/capabilities/editing/internal/klp_composition_text.dart",
+			"lib/src/capabilities/editing/internal/klp_editing_command_intent.dart",
+			"lib/src/capabilities/editing/internal/klp_editing_draw_command.dart",
+			"lib/src/capabilities/editing/internal/klp_editing_draw_command_validation.dart",
+			"lib/src/capabilities/editing/internal/klp_editing_drawing.dart",
+			"lib/src/capabilities/editing/internal/klp_editing_endpoint.dart",
+			"lib/src/capabilities/editing/internal/klp_editing_intent.dart",
+			"lib/src/capabilities/editing/internal/klp_editing_interaction.dart",
+			"lib/src/capabilities/editing/internal/klp_editing_layout.dart",
+			"lib/src/capabilities/editing/internal/klp_editing_path.dart",
+			"lib/src/capabilities/editing/internal/klp_editing_point_request.dart",
+			"lib/src/capabilities/editing/internal/klp_editing_projection.dart",
+			"lib/src/capabilities/editing/internal/klp_editing_reply.dart",
+			"lib/src/capabilities/editing/internal/klp_editing_request.dart",
+			"lib/src/capabilities/editing/internal/klp_editing_save_projection.dart",
+			"lib/src/capabilities/editing/internal/klp_editing_save_reply.dart",
+			"lib/src/capabilities/editing/internal/klp_editing_save_request.dart",
+			"lib/src/capabilities/editing/internal/klp_editing_save_source.dart",
+			"lib/src/capabilities/editing/internal/klp_editing_source.dart",
+			"lib/src/capabilities/editing/internal/klp_editing_stamp.dart",
+			"lib/src/capabilities/editing/internal/klp_editing_style.dart",
+			"lib/src/capabilities/editing/internal/klp_editing_submission.dart",
+			"lib/src/capabilities/editing/internal/klp_editing_text_window.dart",
+			"lib/src/capabilities/editing/internal/klp_editing_viewport.dart",
+			"lib/src/capabilities/editing/internal/klp_editor_mode_item.dart",
+			"lib/src/capabilities/editing/internal/klp_editor_mode_projection.dart",
+			"lib/src/capabilities/editing/internal/klp_editor_mode_reply.dart",
+			"lib/src/capabilities/editing/internal/klp_editor_mode_request.dart",
+			"lib/src/capabilities/editing/internal/klp_editor_tool_item.dart",
+			"lib/src/capabilities/editing/internal/klp_editor_viewport_projection.dart",
+			"lib/src/capabilities/editing/internal/klp_editor_viewport_request.dart",
+			"lib/src/capabilities/editing/internal/klp_handwriting_state.dart",
+			"lib/src/capabilities/editing/internal/klp_handwriting_state_source.dart",
+			"lib/src/capabilities/editing/internal/klp_replace_text_intent.dart",
+			"lib/src/capabilities/editing/internal/klp_select_text_intent.dart",
+			"lib/src/capabilities/editing/internal/klp_text_offsets.dart",
+			"lib/src/capabilities/editing/internal/klp_update_composition_intent.dart",
+			"lib/src/capabilities/editing/klp_block_drop_target.dart",
+			"lib/src/capabilities/editing/klp_editing_submission.dart"
+		],
+		"foundation": [
+			"lib/src/foundation/binding/contracts/klp_bound_accessibility.dart",
+			"lib/src/foundation/binding/contracts/klp_bound_choice.dart",
+			"lib/src/foundation/binding/contracts/klp_bound_choice_style.dart",
+			"lib/src/foundation/binding/contracts/klp_bound_control_style.dart",
+			"lib/src/foundation/binding/contracts/klp_bound_extent.dart",
+			"lib/src/foundation/binding/contracts/klp_bound_linear.dart",
+			"lib/src/foundation/binding/contracts/klp_bound_placement.dart",
+			"lib/src/foundation/binding/contracts/klp_bound_regions.dart",
+			"lib/src/foundation/binding/contracts/klp_bound_retained_stack.dart",
+			"lib/src/foundation/binding/contracts/klp_bound_screen.dart",
+			"lib/src/foundation/binding/contracts/klp_bound_surface.dart",
+			"lib/src/foundation/binding/contracts/klp_bound_surface_shadow.dart",
+			"lib/src/foundation/binding/contracts/klp_bound_template.dart",
+			"lib/src/foundation/binding/contracts/klp_bound_text.dart",
+			"lib/src/foundation/binding/contracts/klp_bound_text_style.dart",
+			"lib/src/foundation/binding/internal/klp_bound_accessibility.dart",
+			"lib/src/foundation/binding/internal/klp_bound_choice.dart",
+			"lib/src/foundation/binding/internal/klp_bound_choice_style.dart",
+			"lib/src/foundation/binding/internal/klp_bound_component.dart",
+			"lib/src/foundation/binding/internal/klp_bound_control_style.dart",
+			"lib/src/foundation/binding/internal/klp_bound_extent.dart",
+			"lib/src/foundation/binding/internal/klp_bound_linear.dart",
+			"lib/src/foundation/binding/internal/klp_bound_placement.dart",
+			"lib/src/foundation/binding/internal/klp_bound_regions.dart",
+			"lib/src/foundation/binding/internal/klp_bound_retained_stack.dart",
+			"lib/src/foundation/binding/internal/klp_bound_screen.dart",
+			"lib/src/foundation/binding/internal/klp_bound_surface.dart",
+			"lib/src/foundation/binding/internal/klp_bound_surface_shadow.dart",
+			"lib/src/foundation/binding/internal/klp_bound_template.dart",
+			"lib/src/foundation/binding/internal/klp_bound_text.dart",
+			"lib/src/foundation/binding/internal/klp_bound_text_style.dart",
+			"lib/src/foundation/binding/internal/klp_prepared_component.dart",
+			"lib/src/foundation/binding/internal/klp_prepared_template.dart"
+		],
+		"styling": [
+			"lib/src/styling/legacy_theme/klp_surface_theme.dart",
+			"lib/src/styling/presets/internal/klp_paper_shadow_recipe.dart",
+			"lib/src/styling/presets/klp_paper_shadow_recipe.dart",
+			"lib/src/styling/presets/klp_workspace_preset.dart",
+			"lib/src/styling/semantics/internal/klp_control_density.dart",
+			"lib/src/styling/semantics/klp_control_density.dart"
+		],
+		"rendering": [
+			"lib/src/rendering/flutter/internal/klp_anchored_command_session.dart",
+			"lib/src/rendering/flutter/internal/klp_editor_mode_session.dart",
+			"lib/src/rendering/flutter/internal/klp_flutter_app_layout.dart",
+			"lib/src/rendering/flutter/internal/klp_flutter_block_control_session.dart",
+			"lib/src/rendering/flutter/internal/klp_flutter_block_state_control.dart",
+			"lib/src/rendering/flutter/internal/klp_flutter_choice.dart",
+			"lib/src/rendering/flutter/internal/klp_flutter_control.dart",
+			"lib/src/rendering/flutter/internal/klp_flutter_editing.dart",
+			"lib/src/rendering/flutter/internal/klp_flutter_editing_painter.dart",
+			"lib/src/rendering/flutter/internal/klp_flutter_extent.dart",
+			"lib/src/rendering/flutter/internal/klp_flutter_frame_groups.dart",
+			"lib/src/rendering/flutter/internal/klp_flutter_linear.dart",
+			"lib/src/rendering/flutter/internal/klp_flutter_regions.dart",
+			"lib/src/rendering/flutter/internal/klp_flutter_renderer.dart",
+			"lib/src/rendering/flutter/internal/klp_flutter_retained_stack.dart",
+			"lib/src/rendering/flutter/internal/klp_flutter_text_delta.dart",
+			"lib/src/rendering/flutter/internal/klp_flutter_text_input_result.dart",
+			"lib/src/rendering/flutter/internal/klp_flutter_text_input_session.dart",
+			"lib/src/rendering/flutter/internal/klp_flutter_text_plan.dart",
+			"lib/src/rendering/flutter/internal/klp_flutter_values.dart",
+			"lib/src/rendering/flutter/internal/klp_flutter_window_controls.dart",
+			"lib/src/rendering/flutter/internal/klp_flutter_workspace_block.dart",
+			"lib/src/rendering/flutter/internal/klp_flutter_workspace_components.dart"
+		],
+		"features": [
+			"lib/src/features/editing/contracts/klp_editing_content.dart",
+			"lib/src/features/editing/internal/klp_anchored_commands_adapter.dart",
+			"lib/src/features/editing/internal/klp_block_controls_adapter.dart",
+			"lib/src/features/editing/internal/klp_block_note_editing_adapter.dart",
+			"lib/src/features/editing/internal/klp_canva_editing_adapter.dart",
+			"lib/src/features/editing/internal/klp_editing_adapter.dart",
+			"lib/src/features/editing/internal/klp_editing_placement.dart",
+			"lib/src/features/editing/internal/klp_editor_mode_capability.dart",
+			"lib/src/features/editing/internal/klp_mode_toolbar_adapter.dart",
+			"lib/src/features/editing/internal/klp_prepared_editing.dart",
+			"lib/src/features/editing/presentation/klp_bound_editing_style.dart",
+			"lib/src/features/editing/presentation/klp_editing_presentation.dart",
+			"lib/src/features/navigation/rail/internal/klp_prepared_rail.dart",
+			"lib/src/features/navigation/rail/internal/klp_rail_adapter.dart",
+			"lib/src/features/workspace/components/internal/klp_workspace_block_adapter.dart",
+			"lib/src/features/workspace/components/internal/klp_workspace_components_adapter.dart",
+			"lib/src/features/workspace/layout/internal/klp_app_layout_adapter.dart",
+			"lib/src/features/workspace/layout/internal/klp_frame_groups_adapter.dart",
+			"lib/src/features/workspace/presentation/klp_workspace_presentation.dart"
+		],
+		"runtime": [
+			"lib/src/runtime/compilation/internal/klp_prepared_adaptive.dart",
+			"lib/src/runtime/compilation/klp_scope_boundary_adapter.dart",
+			"lib/src/runtime/compilation/klp_tree_runtime.dart",
+			"lib/src/runtime/contracts/klp_prepared_node.dart",
+			"lib/src/runtime/contracts/klp_runtime_frame.dart"
+		],
+		"application": [
+			"lib/src/application/bootstrap/internal/klp_prepared_screen.dart",
+			"lib/src/application/bootstrap/internal/klp_retained_screens_adapter.dart",
+			"lib/src/application/structure/klp_application.dart"
+		]
+	},
+	"tests": {
+		"migration": [
+			"test/klp_anchored_command_session_test.dart",
+			"test/klp_anchored_commands_installation_test.dart",
+			"test/klp_app_frame_style_test.dart",
+			"test/klp_block_controls_installation_test.dart",
+			"test/klp_block_drop_preview_test.dart",
+			"test/klp_component_binding_test.dart",
+			"test/klp_component_children_binding_test.dart",
+			"test/klp_composition_segments_test.dart",
+			"test/klp_control_density_test.dart",
+			"test/klp_editing_composition_test.dart",
+			"test/klp_editing_installation_test.dart",
+			"test/klp_editing_projection_test.dart",
+			"test/klp_editing_submission_test.dart",
+			"test/klp_editing_text_window_test.dart",
+			"test/klp_editor_mode_session_test.dart",
+			"test/klp_flutter_block_control_session_test.dart",
+			"test/klp_flutter_choice_test.dart",
+			"test/klp_flutter_control_keyboard_test.dart",
+			"test/klp_flutter_renderer_test.dart",
+			"test/klp_flutter_retained_stack_test.dart",
+			"test/klp_flutter_text_delta_test.dart",
+			"test/klp_flutter_text_input_session_test.dart",
+			"test/klp_frame_groups_test.dart",
+			"test/klp_mode_toolbar_installation_test.dart",
+			"test/klp_placement_identity_test.dart",
+			"test/klp_prepared_renderer_contract_test.dart",
+			"test/klp_rail_adapter_test.dart",
+			"test/klp_scope_activation_test.dart",
+			"test/klp_surface_shadow_test.dart",
+			"test/klp_text_offsets_test.dart",
+			"test/klp_tree_runtime_test.dart",
+			"test/support/klp_component_test_definition.dart",
+			"test/support/klp_editing_fixture.dart",
+			"test/support/klp_renderer_fixture.dart",
+			"test/support/klp_runtime_fixture.dart",
+			"test/klp_prepared_module_boundary_test.dart"
+		],
+		"contracts": [
+			"test/klp_lower_module_boundary_test.dart",
+			"test/klp_provider_contract_paths_test.dart"
+		]
+	},
+	"steward": [
+		"lib/kallopis_editing_provider.dart"
+	]
+}

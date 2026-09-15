@@ -12,8 +12,8 @@
 flowchart LR
 	n0["klp_explorer_models.dart"]
 	n1["package:flutter/foundation.dart"]
-	n2["../../../feedback/klp_feedback_tone.dart"]
-	n3["../../../../foundation/klp_icon.dart"]
+	n2["package:kallopis/src/features/feedback/klp_feedback_tone.dart"]
+	n3["package:kallopis/src/foundation/klp_icon.dart"]
 	n4["models/klp_explorer_category.dart"]
 	n5["models/klp_explorer_node.dart"]
 	n6["models/klp_explorer_node_kind.dart"]
@@ -30,8 +30,8 @@ flowchart LR
 | 關係 | 原始 directive | 來源 |
 |---|---|---|
 | import | <code>import &#x27;package:flutter/foundation.dart&#x27;;</code> | [lib/src/features/navigation/widgets/explorer/klp_explorer_models.dart:1](../../../../../../../lib/src/features/navigation/widgets/explorer/klp_explorer_models.dart#L1) |
-| import | <code>import &#x27;../../../feedback/klp_feedback_tone.dart&#x27;;</code> | [lib/src/features/navigation/widgets/explorer/klp_explorer_models.dart:3](../../../../../../../lib/src/features/navigation/widgets/explorer/klp_explorer_models.dart#L3) |
-| import | <code>import &#x27;../../../../foundation/klp_icon.dart&#x27;;</code> | [lib/src/features/navigation/widgets/explorer/klp_explorer_models.dart:4](../../../../../../../lib/src/features/navigation/widgets/explorer/klp_explorer_models.dart#L4) |
+| import | <code>import &#x27;package:kallopis/src/features/feedback/klp_feedback_tone.dart&#x27;;</code> | [lib/src/features/navigation/widgets/explorer/klp_explorer_models.dart:3](../../../../../../../lib/src/features/navigation/widgets/explorer/klp_explorer_models.dart#L3) |
+| import | <code>import &#x27;package:kallopis/src/foundation/klp_icon.dart&#x27;;</code> | [lib/src/features/navigation/widgets/explorer/klp_explorer_models.dart:4](../../../../../../../lib/src/features/navigation/widgets/explorer/klp_explorer_models.dart#L4) |
 | part | <code>part &#x27;models/klp_explorer_category.dart&#x27;;</code> | [lib/src/features/navigation/widgets/explorer/klp_explorer_models.dart:6](../../../../../../../lib/src/features/navigation/widgets/explorer/klp_explorer_models.dart#L6) |
 | part | <code>part &#x27;models/klp_explorer_node.dart&#x27;;</code> | [lib/src/features/navigation/widgets/explorer/klp_explorer_models.dart:7](../../../../../../../lib/src/features/navigation/widgets/explorer/klp_explorer_models.dart#L7) |
 | part | <code>part &#x27;models/klp_explorer_node_kind.dart&#x27;;</code> | [lib/src/features/navigation/widgets/explorer/klp_explorer_models.dart:8](../../../../../../../lib/src/features/navigation/widgets/explorer/klp_explorer_models.dart#L8) |

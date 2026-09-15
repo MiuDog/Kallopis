@@ -2,13 +2,13 @@ import 'dart:math' as math;
 
 import 'package:flutter/widgets.dart';
 
-import '../../../../foundation/layout/klp_directional_position.dart';
-import '../../../../foundation/layout/klp_directional_positioned.dart';
-import '../../../../foundation/layout/klp_gap.dart';
-import '../../../../foundation/layout/klp_row.dart';
-import '../../../../foundation/layout/klp_space_size.dart';
-import '../../../../foundation/layout/klp_stack.dart';
-import '../../../../styling/legacy_theme/klp_theme.dart';
+import 'package:kallopis/src/foundation/layout/klp_directional_position.dart';
+import 'package:kallopis/src/foundation/layout/klp_directional_positioned.dart';
+import 'package:kallopis/src/foundation/layout/klp_gap.dart';
+import 'package:kallopis/src/foundation/layout/klp_row.dart';
+import 'package:kallopis/src/foundation/layout/klp_space_size.dart';
+import 'package:kallopis/src/foundation/layout/klp_stack.dart';
+import 'package:kallopis/src/styling/legacy_theme/klp_theme.dart';
 
 export 'klp_stage_tab.dart';
 

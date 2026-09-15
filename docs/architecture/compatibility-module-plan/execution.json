@@ -1,0 +1,367 @@
+{
+	"contract": "COMPAT-V1-r1",
+	"status": "complete",
+	"completed_slices": [
+		"CAP-V1-03",
+		"FEAT-V1-07"
+	],
+	"full_goal": "active;46/50;four remaining plus final audit",
+	"baseline": {
+		"snapshot_commit": "062bb6199a2b4959c58633304e1e48ececb8b9bb",
+		"source_head": "578d24ed111b95c429397b54245de09ade674704",
+		"source_index_sha256": "3a87893357e96f77729183afb4ba34c2c11fdd70be69dcfae9fea1d577eadecd",
+		"started_at": "2026-09-14T15:32:57.790057+08:00"
+	},
+	"workers": [
+		{
+			"task_id": "CAP-V1-03",
+			"packet": "D:\\Projects\\Kallopis-v1-evidence\\compatibility\\CAP-V1-03.json",
+			"packet_sha256": "9306631a0c5fd4ab744ccf7e8a599040acb8b0a3da0f45881d7ba5c2e01f7907",
+			"scope": {
+				"task_id": "CAP-V1-03",
+				"base_revision": "0e71602f7bad6c6ed724a2b9f3a71ab5d8d0b949",
+				"changed_paths": [
+					"lib/src/capabilities/editing/contracts/klp_editing_source.dart"
+				],
+				"violations": [],
+				"status": "pass"
+			}
+		},
+		{
+			"task_id": "FEAT-COMPAT-01",
+			"packet": "D:\\Projects\\Kallopis-v1-evidence\\compatibility\\FEAT-COMPAT-01.json",
+			"packet_sha256": "2ad9f1c3799aa5aaaea01b72d122305df49d833c9fb4a8a7095413c8d169a50d",
+			"scope": {
+				"task_id": "FEAT-COMPAT-01",
+				"base_revision": "350bdaea4434c6396150d9c7054b42c8e93b2516",
+				"changed_paths": [
+					"lib/src/features/editing/contracts/klp_editing_content.dart"
+				],
+				"violations": [],
+				"status": "pass"
+			}
+		},
+		{
+			"task_id": "FEAT-V1-07",
+			"packet": "D:\\Projects\\Kallopis-v1-evidence\\compatibility\\FEAT-V1-07.json",
+			"packet_sha256": "c2b7188e249e96b326fd150f1de4089598d8dadf833109e13e2661d49e87c27d",
+			"scope": {
+				"task_id": "FEAT-V1-07",
+				"base_revision": "c33aaae416f70e1073fc1f250bec156afb9a30c5",
+				"changed_paths": [
+					"lib/src/features/workspace/layout/klp_app_layout.dart"
+				],
+				"violations": [],
+				"status": "pass"
+			}
+		}
+	],
+	"authors": [
+		{
+			"task_id": "TEST-COMPAT-CLOSURE",
+			"milestone": "M2 frozen",
+			"worktree": "D:/Projects/Klp-cmp-b",
+			"head": "0e71602f7bad6c6ed724a2b9f3a71ab5d8d0b949",
+			"changed_paths": [
+				"test/klp_closed_component_catalog_contract_test.dart",
+				"test/klp_application_catalog_contract_test.dart"
+			],
+			"sha256": [
+				{
+					"sha256": "ab64ec8321000e1e142950518a1f3350e3185a60462228113705bb5efaf99c81",
+					"path": "test/klp_closed_component_catalog_contract_test.dart"
+				},
+				{
+					"sha256": "d9a1a3fc7ed51bbbea4fd38ce50f1ec9aeb13ff7a78dee5677bbdd1b97904dff",
+					"path": "test/klp_application_catalog_contract_test.dart"
+				}
+			],
+			"commands": [
+				{
+					"result": "Dependencies resolved; root pubspec.lock SHA256 unchanged at 84bacd6105ed21bd9d5834d8b1141fc1767303ad19b073f427cf63fa3bb18060",
+					"command": "D:/flutter/bin/flutter.bat pub get",
+					"log": "tool output",
+					"exit_code": 0
+				},
+				{
+					"passed": 40,
+					"expected_failed": 15,
+					"command": "D:/flutter/bin/flutter.bat test --no-pub test/klp_closed_component_catalog_contract_test.dart test/klp_application_catalog_contract_test.dart --reporter expanded",
+					"log": "D:/Projects/Kallopis-v1-evidence/compatibility/closure-baseline-tests.log",
+					"exit_code": 1
+				},
+				{
+					"exit_code": 0,
+					"command": "git diff --check"
+				},
+				{
+					"result": "application catalog: 94 insertions, 0 deletions; closed catalog: 69 insertions, 0 deletions",
+					"command": "git diff --numstat"
+				}
+			],
+			"baselinevalidRed": {
+				"exact_diagnostics": [
+					"final_class_extended_outside_of_library",
+					"final_class_implemented_outside_of_library"
+				],
+				"checked_diagnostic_location": "Exact supertype source offset and type-name length; exactly one ERROR required after closure.",
+				"valid": true,
+				"reason": "All 14 external extends/implements cases resolve with zero ERROR diagnostics at baseline, so fail only the exact expected final-class diagnostic assertion. Public-catalog closure test finds exactly the 7 accepted open layout classes. No missing constructors, missing URI, syntax or harness failures."
+			},
+			"positiveGreen": {
+				"catalog": "7 known definition IDs each rejected by the production catalog with node_type_mismatch, unchanged committed frame/resource identity and usable lease, before probe resources; fixed 24 feature rows (23 public + 1 KlpRail), 28 identities and 67 exports; both complete P9 gate strings and original Stable declarations/exports passed",
+				"existing_tests": "All 29 original tests passed",
+				"total_positive_tests": 40,
+				"observed": true,
+				"legal_external_constructions": 7,
+				"external_qualification_implementation": "KlpLayoutNode remains implementable"
+			},
+			"bodypreservation": {
+				"pure_additions": true,
+				"deleted_lines": 0,
+				"original_tests_and_assertions": "Entire original file content preserved in order; only new helper calls, groups, tests and local impostor class inserted."
+			},
+			"scope": {
+				"staged_or_committed": false,
+				"read_exceptions": [
+					"Read the accepted seven public class signatures to build constructor-valid consumer subclasses.",
+					"Read production adapter assembly entry to reuse its real catalog.",
+					"Use existing AST helpers on catalog declarations and Stable exports for public identity closure and compatibility; no integration-worker reasoning read."
+				],
+				"product_docs_config_modified": false,
+				"fixture_modified": false,
+				"write_paths": [
+					"test/klp_closed_component_catalog_contract_test.dart",
+					"test/klp_application_catalog_contract_test.dart"
+				]
+			},
+			"fixtureownership": {
+				"new_shared_fixtures": [],
+				"protected_hashes": [
+					{
+						"sha256": "38d9037649e5e1db4b358a000bc64f5654e62876cf5d40b66efa5ee9db6f11c1",
+						"path": "test/support/klp_external_compile_fixture.dart"
+					},
+					{
+						"sha256": "00426861a24b3a579880e00fd0f972d379ecb0bc5e9b99abdc21d3af863f3fff",
+						"path": "test/support/klp_runtime_fixture.dart"
+					},
+					{
+						"sha256": "84bacd6105ed21bd9d5834d8b1141fc1767303ad19b073f427cf63fa3bb18060",
+						"path": "pubspec.lock"
+					}
+				],
+				"reused_read_only": [
+					"test/support/klp_external_compile_fixture.dart",
+					"test/support/klp_runtime_fixture.dart"
+				]
+			},
+			"limitations": [
+				"Integrated product Green is pending; baseline intentionally remains unmodified.",
+				"No sensory-quality claims.",
+				"Constructor/default/member bodies are not edited here; production preservation evidence belongs to integration owner."
+			],
+			"usage": "unknown",
+			"usageunknown": true
+		},
+		{
+			"worktree": "D:/Projects/Klp-cmp-a",
+			"baseline_head": "0e71602f7bad6c6ed724a2b9f3a71ab5d8d0b949",
+			"changed_paths": [
+				"test/klp_editing_compatibility_contract_test.dart"
+			],
+			"sha256": [
+				{
+					"path": "test/klp_editing_compatibility_contract_test.dart",
+					"sha256": "929c4a971b20cf1c3b49be02a810566415b81778b25e0c9f7ba0604c25a04c6d"
+				}
+			],
+			"exactcommands": [
+				{
+					"command": "D:/flutter/bin/flutter.bat pub get --offline",
+					"log": "D:/Projects/Kallopis-v1-evidence/compatibility/author-pub-get.log",
+					"exit_code": 0,
+					"note": "pubspec.lock original bytes saved in memory and restored in finally; git status confirmed only assigned test changed"
+				},
+				{
+					"command": "D:/flutter/bin/flutter.bat test --no-pub test/klp_editing_compatibility_contract_test.dart --reporter expanded",
+					"log": "D:/Projects/Kallopis-v1-evidence/compatibility/author-frozen-test.log",
+					"exit_code": 0,
+					"passed": 5,
+					"frozen_test": true
+				},
+				{
+					"command": "D:/flutter/bin/flutter.bat test --no-pub test/klp_editing_compatibility_contract_test.dart test/klp_provider_contract_paths_test.dart test/klp_editing_save_state_test.dart test/klp_handwriting_state_test.dart test/klp_block_note_session_test.dart --reporter expanded",
+					"log": "D:/Projects/Kallopis-v1-evidence/compatibility/author-final-test.log",
+					"exit_code": 0,
+					"passed": 23,
+					"note": "Before analyzer-compatible ClassDeclaration.namePart substitution; protected new suite rerun afterward"
+				},
+				{
+					"command": "D:/flutter/bin/flutter.bat test --no-pub test/klp_editing_compatibility_contract_test.dart test/klp_lower_module_boundary_test.dart --plain-name \"provider keeps exactly 44 exports with 42 editing contracts and 9 parts\" --reporter expanded",
+					"log": "D:/Projects/Kallopis-v1-evidence/compatibility/author-lower-test.log",
+					"exit_code": 0,
+					"passed": 1
+				},
+				{
+					"command": "D:/flutter/bin/flutter.bat analyze --no-pub test/klp_editing_compatibility_contract_test.dart",
+					"log": "D:/Projects/Kallopis-v1-evidence/compatibility/author-analyze.log",
+					"exit_code": 0,
+					"result": "No issues found"
+				}
+			],
+			"coveredrequirements": [
+				"CAP-V1-03: true compiled legacy DTO/capability symbols plus AST declaration contracts distinguish snapshot/save from text/block transactions; original KlpBlockIntent enum values remain usable",
+				"Four fixed BlockNote content/adapter/bound/renderer source units reject legacy body typed use, constructor/enum expressions, old transaction calls/cascades/tearoffs, and newly constructed Krepis controller/channel owners",
+				"Shared presentation root permits legal DTO imports and legacy part directives but all root declarations remain inspected; injected root operation fails guard",
+				"Positive and negative guard controls cover prefixed types, casts, inferred construction, dynamic old operations, comments/string false positives, shared provider/save/projection/endpoint/drawing/anchor/command/handwriting/mode values, and borrowed upstream channel",
+				"Real runtime adapter prepare/materialize preserves public content controller identity into bound and renderer; channel identity and original upstream public document/controller/save-result Type identity; nonhosted port rejected",
+				"Reused LOWER exact 44 exports, 42 editing exports, 9 parts, 90 declarations; reused provider identity and request/stamp/save contracts without rewriting assertions",
+				"Reused save unknown outcome/confirmed revisions and handwriting frozen state/retired capture/unknown terminal protections; reused existing BlockNote save/session regressions"
+			],
+			"oldbaselineRedorGreen": "GREEN: final five-test protection passes on original product HEAD; no product edits. Initial failing synthetic constructor control was a test-harness gap (implicit constructor parses as MethodInvocation), corrected within test-owned path, not counted as valid product Red.",
+			"scope": {
+				"written": [
+					"test/klp_editing_compatibility_contract_test.dart"
+				],
+				"fixture_ownership": "No fixture/config/product/doc modifications; no staging or commits",
+				"read_exception": "Original fixed four BlockNote sources and shared presentation root, DTO/source contracts, and necessary public runtime/prepare/validated/style/lease interfaces read to express actual controller borrowing; existing tests read for conventions. No integrated implementation reasoning read.",
+				"milestones": [
+					"M1: source/behavior evidence and baseline Green established",
+					"M2: final content SHA256 frozen; integrated product validation pending parent"
+				]
+			},
+			"limitations": [
+				"AST guard observes explicit named types and operations in fixed four source units and root declarations; it is not whole-program resolved data-flow or transitive helper/alias analysis.",
+				"Guard synthetic inputs intentionally parse structural examples, including incomplete classes; actual package/runtime public probe compiles and executes separately.",
+				"No WebView mounting, JavaScript bridge execution, visual quality, UX acceptance or new save/handwriting protocol claims; existing regression suites reused.",
+				"Dartdoc wording is reviewed as documentation and is not mirrored in tests."
+			],
+			"usageunknown": {
+				"tokens": "unknown",
+				"wall_clock_attribution": "unknown",
+				"model": "inherited parent",
+				"measured_usage": false
+			}
+		}
+	],
+	"proofs": {
+		"capabilities": [
+			{
+				"path": "lib/src/capabilities/editing/contracts/klp_editing_source.dart",
+				"before_sha256": "182d670eeba657702fb591984702cbd6126f1152f01b82fd5acf183d63494749",
+				"sha256": "83983b0cc9f46ea49e7937925e0334c88cd8b39bd56c65f5e700056c7eb390b8",
+				"reverse_transform_exact": true,
+				"additions": [
+					"/// 基礎 provider 快照／廣播合約持續保留；KLP-0020 不將保存或手寫等共用用途整體棄用。\r\n",
+					"/// 此 layout 通道只維護舊正文相容與回退；新 BlockNote 的排版由上游引擎掌管。\r\n",
+					"/// 文字、IME 與 hit testing 操作限舊正文相容；新 BlockNote 不經此通道建立第二交易或 undo 權威。\r\n",
+					"/// 區塊、清單與 undo 操作限舊正文相容；不向新 BlockNote 回放本合約的正文操作。\r\n",
+					"/// 保留共用候選命令與定位資料；舊正文 caret／block 操作用途仍受相容界線約束。\r\n",
+					"/// 保留現有模式與手寫通道合約；不在此決定未定案的手寫正文整合或 Spatial 引擎。\r\n"
+				],
+				"final_nodes": []
+			}
+		],
+		"feature_compat": [
+			{
+				"path": "lib/src/features/editing/contracts/klp_editing_content.dart",
+				"before_sha256": "d4772093faadbdc5b0fcbd891f43083d598d9b0571502c5d616fc6c8d293cb51",
+				"sha256": "d3be7cdb9c855dd8a7e00f5a21929e0b0121abdc9f60cf75bd34fc13197b11ec",
+				"reverse_transform_exact": true,
+				"additions": [
+					"/// KLP-0020 的舊正文相容／必要維護與回退節點；新正文使用 KlpBlockNoteEditingContent，且由上游掌管正文、選取與 undo。\r\n"
+				],
+				"final_nodes": []
+			}
+		],
+		"feature_closure": [
+			{
+				"path": "lib/src/features/workspace/layout/klp_app_layout.dart",
+				"before_sha256": "b1445e91fee34f926b010745a8af6895a5fccb8d510b9833d75c755f6199ed99",
+				"sha256": "9d0de4a8436557d3bf914b38c94a017bb12d4e4a813e6df62045b6926ea8046e",
+				"reverse_transform_exact": true,
+				"additions": [],
+				"final_nodes": [
+					"KlpAppLayout",
+					"LayoutRow",
+					"LayoutColumn",
+					"LayoutResizeHandle",
+					"LayoutSpacer",
+					"KlpLayoutPane",
+					"KlpAppFrame"
+				]
+			}
+		],
+		"steward": [
+			{
+				"path": "lib/kallopis_editing_provider.dart",
+				"before_sha256": "fdb1097611be631889641efc94bb9aeece378dd1ee2225e9eec4f730c5e5a223",
+				"sha256": "0faa27fc9e98f2338a3ef0751786fc5df586d7adc09770b8e3bc21cd542922e7",
+				"reverse_transform_exact": true,
+				"additions": [
+					"/// KLP-0020 保留 provider／保存／身分及既有手寫合約；舊即時正文操作僅供相容與回退，BlockNote 不建立第二份正文權威。\r\n/// 精確用途分類見 lib/src/capabilities/architecture.md 的 COMPAT-V1-r1 合約。\r\n"
+				],
+				"final_nodes": []
+			}
+		]
+	},
+	"checks": [
+		{
+			"name": "closure",
+			"passed": 55,
+			"exit_code": 0,
+			"log": "D:\\Projects\\Kallopis-v1-evidence\\compatibility\\closure-tests.log",
+			"sha256": "932ae60e9cc7edf2fbe7b5c76bb7513a3cbeaa8ab5cf1d727254266032cc13f9"
+		},
+		{
+			"name": "compatibility",
+			"passed": 5,
+			"exit_code": 0,
+			"log": "D:\\Projects\\Kallopis-v1-evidence\\compatibility\\compatibility-tests.log",
+			"sha256": "c9ca9233bdbc3b66a6987ec69074975e0e5fcb3b20ee7d62599f9d9489f8fa26"
+		},
+		{
+			"name": "existing",
+			"passed": 37,
+			"exit_code": 0,
+			"log": "D:\\Projects\\Kallopis-v1-evidence\\compatibility\\existing-tests.log",
+			"sha256": "4d80a1c13386d23fb01ec876fa28905cbb0a9e692c3cc872733bde423f656808"
+		},
+		{
+			"name": "architecture",
+			"passed": 158,
+			"exit_code": 0,
+			"log": "D:\\Projects\\Kallopis-v1-evidence\\compatibility\\architecture-tests.log",
+			"sha256": "14e9a88fcac0e0934402ace419c53f718e13b3e18dd4cc5a9a4ab4e0c9351476"
+		}
+	],
+	"analysis": {
+		"command": "D:/flutter/bin/flutter.bat analyze --no-pub lib/src/features/workspace/layout/klp_app_layout.dart lib/src/features/editing/contracts/klp_editing_content.dart lib/src/capabilities/editing/contracts/klp_editing_source.dart lib/kallopis_editing_provider.dart",
+		"exit_code": 0,
+		"log": "D:\\Projects\\Kallopis-v1-evidence\\compatibility\\analysis.log",
+		"sha256": "8ee89ff124e60c2936e8d3cccd42e0e99cc5bbce308b7c07ce55929b1484e7ed"
+	},
+	"atlas": {
+		"sources": 1196,
+		"folders": 278,
+		"diagrams": 3713,
+		"freshness_files": 1475,
+		"logs": [
+			{
+				"path": "D:\\Projects\\Kallopis-v1-evidence\\compatibility\\atlas-generation.log",
+				"sha256": "be7965227498a37f9dbeb6aa3c584f905a80fd252451f0856f9f0e6e0b30350a"
+			},
+			{
+				"path": "D:\\Projects\\Kallopis-v1-evidence\\compatibility\\atlas-check.log",
+				"sha256": "27d2f93e876d22272bba51cd64b1859f948001b0896b7a4ac5586c5bc82b19de"
+			}
+		]
+	},
+	"limitations": [
+		"No full-suite or sensory evidence claimed.",
+		"P9 legacy paths/exports retained; unresolved handwriting/Spatial scope not decided.",
+		"APP05/06,FEAT06,REND05 remain open."
+	],
+	"source_return": "Exact original hashes/HEAD/index preserved; external transfer-receipt.json."
+}

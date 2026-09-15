@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import '../../../foundation/layout/klp_box_insets.dart';
-import '../../../styling/legacy_theme/klp_theme.dart';
+import 'package:kallopis/src/foundation/layout/klp_box_insets.dart';
+import 'package:kallopis/src/styling/legacy_theme/klp_theme.dart';
 
 /// 透明 modal chrome 的基礎呈現原語；內容尺寸與產品語意由呼叫端提供。
 class KlpModalFrame extends StatelessWidget {
