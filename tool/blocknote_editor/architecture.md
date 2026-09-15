@@ -37,3 +37,7 @@ operation.lock 收斂 composition 與已接受 transaction 後才 ack。每個 a
 ## 本次執行補充（KBF-WEB-r2a）
 
 本輪新隔離工作樹已準備，使用 KBF-WIRE-r2a 與 KBF-PAIR-r2a 精確契約。KP-B1/B2 共同提供一次可驗證的正式 editor stage；scope 僅含原表六個 source 路徑。公開頁面／資料庫型別與兩端共享 fixture 由 Krepis 協定定義。測試須先由獨立 Test Author 凍結。source worker 不改樣式檔或依賴；原文字／背景／字型由既有 appearance 繼承，資料顯示不另加固定風格。需要新增語意 token 時先向 owner 提出精確需求。bundle 由 delivery owner 建立到 D:/Projects/f2-delivery/editor-bundle，通過後才接回 assets。
+
+## KBF-WEB-r2b 型別接線補充
+
+KP-B1 另允許 src/templateInsert.ts 僅把 Block／BlockNoteEditor 型別泛化為已配對 Flow schema；交易、驗證與 history 行為不變。原預設 schema 型別不能承載 custom blocks，實際 tsc 已證實此接縫。既有範本驗收仍受保護。
