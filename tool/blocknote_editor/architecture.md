@@ -33,3 +33,7 @@ operation.lock 收斂 composition 與已接受 transaction 後才 ack。每個 a
 - 皆為 cold-start，無歷史 task ID，沿用目前模型及本機鎖定 npm dependencies；超過上限或遇未涵蓋資料遺失案例即回 architecture owner。等待 peer／人工操作不算估算內。
 - `assets/blocknote_editor/` 是本 module 既有生成產物 ownership，只有 bundle delivery owner 的窄 packet 可以由 build 更新；不能手改或讓一般 source worker 跨範圍重建。
 - 新能力測試尚未執行。0.54.2 的 custom props/transact/isEditable/initialContent/trailingBlock 目前只有本機來源核對證據；不能稱為 runtime 已通過。
+
+## 本次執行補充（KBF-WEB-r2a）
+
+本輪新隔離工作樹已準備，使用 KBF-WIRE-r2a 與 KBF-PAIR-r2a 精確契約。KP-B1/B2 共同提供一次可驗證的正式 editor stage；scope 僅含原表六個 source 路徑。公開頁面／資料庫型別與兩端共享 fixture 由 Krepis 協定定義。測試須先由獨立 Test Author 凍結。source worker 不改樣式檔或依賴；原文字／背景／字型由既有 appearance 繼承，資料顯示不另加固定風格。需要新增語意 token 時先向 owner 提出精確需求。bundle 由 delivery owner 建立到 D:/Projects/f2-delivery/editor-bundle，通過後才接回 assets。

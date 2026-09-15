@@ -1,8 +1,33 @@
 # BlockNote Flow：Kallopis／Krepis 配對
 
-修訂 `KBF-PAIR-r2`，2026-09-15。使用者已授權本任務提供 Kallopis 方配對；本輪同時擔任兩庫的配對 architecture owner。**兩庫技術契約已配對，實作與獨立驗收尚未交付**。
+修訂 `KBF-PAIR-r2a`，2026-09-15。使用者已授權本任務提供 Kallopis 方配對；本輪同時擔任兩庫的配對 architecture owner。r2a 補足 r2 的精確技術表示，不改已接受產品語意。**兩庫技術契約已配對，正式 editor 實作與獨立驗收尚未交付**。
 
-唯一 wire／正文 schema 來源為 [KBF-WIRE-r2](../../../Krepis-m0-checked-save/bindings/block_note/contracts/flow-protocol.md)，不在本檔維護第二份 schema。Krepis 的 [公開 API](../../../Krepis-m0-checked-save/bindings/block_note/architecture.md) 與 [產品定義](../../../Krepis-m0-checked-save/spec/block-note-flow-capabilities.md) 保持權威。本檔定義 Kallopis 如何滿足該契約，不取得 E owner 的磁碟版本及跨檔交易權威。
+唯一 wire／正文 schema 來源為 [KBF-WIRE-r2a](../../../Krepis-flow-f2/bindings/block_note/contracts/flow-protocol.md)，不在本檔維護第二份 schema。Krepis 的 [公開 API](../../../Krepis-flow-f2/bindings/block_note/architecture.md) 與 [產品定義](../../../Krepis-flow-f2/spec/block-note-flow-capabilities.md) 保持權威。本檔定義 Kallopis 如何滿足該契約，不取得 E owner 的磁碟版本及跨檔交易權威。本輪僅在使用者授權的新工作樹補充契約；原樹唯讀。
+
+## r2a 實作配對鎖定
+
+本節與 Krepis architecture 的「r2a：可獨立實作的公開型別表示」、wire 的「r2a 精確表示」共同作為 S2／S3／KP-F1/B1/B2/R1 packet 輸入；不是完成宣告。後文 r2 簡寫若不夠精確，以這兩個權威章節為準。
+
+| 接縫 | Kallopis 必須採用的表示與責任 |
+| --- | --- |
+| 共通 wire | top-level 欄位，沒有 payload wrapper；數字 protocolVersion/flowProtocolVersion 仍為 1，requestId 沿用正整數；正文 expectedVersion 是 `{epoch,revision}`，不可混入 storage expectedRevision |
+| 能力 | capabilities 為三個 bool 的 object：pageLinksV1/databaseTableV1/operationGateV1；映射到公開 Capabilities 的 pageLinks/databaseTable/operationGate；不是字串 array |
+| 命令 ack | command.result 用 status，不能寫 result；版本取頂層 epoch/revision；applied 的 outline 用既有 `{blockId,title,level}`，不能寫 text；成功／失敗身分欄位照唯一 wire 矩陣 |
+| Typed callback | page.open 解碼為 KrepisPageOpenInteraction.request；database.drop 解碼為 KrepisDatabaseDropInteraction.request；onDatabaseDrop 回公開 sealed EditApplied/Unchanged/Rejected/Uncertain；renderer 不能把 send Future 包成 applied |
+| 接收入口 | 兩種 lane 都呼叫同步 acceptFlowMessage；返回 KrepisBlockNoteDeliveryReceipt，以 toJson() 給 JS；typed interaction 不放進 JSON receipt |
+| control lane | capabilities/reconcile 回覆使用獨立 callHandler，不分配普通 deliverySeq；typed receipt 以 lane/hostInstanceId/messageType/requestId 及 reconcile recoveryId 相符；同樣要 await receipt，不能 fire-and-forget |
+| 觀察 | 精確 OperationState/Status/Recovery/ReconcileReceipt constructor 與 enum 以 Krepis architecture 為準；operationChanges 為 broadcast，只訂閱，不取代 onChanged，不用 observer 偽造正文／保存狀態 |
+| 恢復終點 | reconcile 的 lockedWithEdits 使用原 saveLocked 保存最新快照，再 resumeSaved(lock) 等原 unlock ack；不 reload、不增加 epoch、不覆蓋新增文字 |
+
+renderer handler 的一次責任為驗證、採納、立即回 receipt；consumer callback 是異步工作，不能把 callback Future 接成 handler 回傳值。callback 完成後使用唯一 wire 的 interaction.result 報告結果；該訊息不再變更正文、不要求額外 ack。callback 例外以 failure.code=transportFailure、detail=interactionCallbackFailed 回報，底層 Object 保留於 Dart 的錯誤處理，不序列化任意例外。無 callback 時不接受 drop；已在途 callback 因 barrier 失效時不重播、不派發第二次。
+
+reconcile 只等待已接受的 editor transaction／mutator 收斂，取消舊 async completion 的提交資格，**不等待 consumer callback**（它可能正在等待 lock/save）。control receipt 也不等待真正 persist 完成；Krepis 的 reconcile Future 另外負責該等待。普通 outbox 被 snapshot／interaction 卡住時，control lane 仍能交付完整 barrier；採納 coveredDeliverySeq 後才清理已涵蓋正文與失效 interaction，不悄悄略過未涵蓋文字。
+
+operation.unlock 的 ack 仍在 ordinary lane。host 可在 ack 已排入普通次序後恢復輸入，但之後 changed 必須排在該 ack 之後；若 receipt 遺失則收緊 gate，reconcile 重新鎖定並回最新快照。只有 Session 收到相符 operation.unlocked 才使 resume Future 成功，回覆傳送成功與 Dart receipt 都不等於 durable save。
+
+hostReplaced 維持 blocked，保留舊恢復資料；新宿主只能依 wire 回 recoveryRequired/detail=hostReplaced，不能普通 open、移用舊 lock 或重播 committed。產品重建與 UI 不在 F2 底層。本輪沒有新增相關 UI 授權。
+
+配對驗收必須加入：ordinary/control receipt identity、重送不二次派發、callback → save/lock 不死鎖、control 回覆先於 persist settle、snapshot 等待受阻的 reconcile、成功保存最新 reconcile 快照後 resumeSaved、保存失敗／舊版本保存不允許 resumeSaved、再次 unlock ack 遺失仍保留新字、hostReplaced 不自動重建。此處列的是待測接受條件，未宣告通過。
 
 ## 本輪接受的配對決定
 
@@ -98,7 +123,7 @@ KBF-WIRE-r2 定義 hostInstanceId（一次 JS 宿主生命週期）及 deliveryS
 - JS 的單一 outbox 依序 await callHandler 的 typed receipt；只在 receipt 相符後移除。失敗停止後續交付，保留資料並收緊輸入 gate，不 fire-and-forget。
 - Dart 收到 raw message，先由 Krepis.acceptFlowMessage 驗證／套用／去重，再回 receipt。typed page/drop 回呼在 receipt 之後非同步派發；不等待 callback 內 save 才回 receipt，避免 outbox 阻擋 snapshot 造成死鎖。
 - 重複 delivery 回相同 receipt，不重複派發 typed 回呼。未知 future gap 需要 resync；不能直接略過未涵蓋的 changed。
-- acquiring/reloading/releasing 不確定時，Krepis.reconcileOperation 觸發 host 重新封鎖輸入、排空既有有效編輯及 callback，回完整最終快照／版本／lock與reload狀態。此控制回覆使用獨立 recovery lane，不被已失敗的普通 outbox 頭部阻擋；快照明列涵蓋的 delivery/event 界線。
+- acquiring/reloading/releasing 不確定時，Krepis.reconcileOperation 觸發 host 重新封鎖輸入、排空已接受的有效編輯與 mutator，令舊 callback completion 失效而不等待其 Future，回完整最終快照／版本／lock與reload狀態。此控制回覆使用獨立 recovery lane，不被已失敗的普通 outbox 頭部阻擋；快照明列涵蓋的 delivery/event 界線。
 - 解鎖 ack 遺失後若已新增文字，reconcile 的新快照以較新的 revision 回復到 locked/dirty；不重播 committed document，不將其設為 clean。E owner 能再 saveLocked 保存新增輸入。
 - 若 hostInstanceId 改變，代表先前 JS editor 已消失。renderer 不呼叫普通 open 去覆蓋 blocked session；Krepis 保留已取得的快照並回 recoveryRequired／hostReplaced。未曾傳出的瀏覽器記憶體無法被恢復時明示不完整，不宣稱資料已安全保存。由 E owner 決定重建 session，且不得清掉舊恢復資料。
 
