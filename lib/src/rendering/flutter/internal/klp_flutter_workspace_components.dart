@@ -11,6 +11,7 @@ import 'klp_flutter_lucide_icon.dart';
 import 'klp_flutter_values.dart';
 import 'klp_flutter_selection_surface.dart';
 import 'klp_flutter_interaction_theme.dart';
+import 'klp_page_reference_drag.dart';
 
 final class KlpFlutterExplorer extends StatefulWidget {
 	final KlpBoundExplorer content;
@@ -132,10 +133,14 @@ final class _ExplorerItem extends StatelessWidget {
 	}
 
 	Widget _dragSurface(Widget row) {
-		if (content.onMove == null) return row;
 		final selected = _selectedBound(content.items);
 		final source = item.selected && selected.isNotEmpty ? selected : {item.sourceId};
+		final carrier = KlpPageReferenceDrag(sourceIds: source, pageReferences: content.pageReferences);
+		if (content.onMove == null && carrier.page == null) return row;
+
 		final target = Builder(builder: (rowContext) {
+			if (content.onMove == null) return row;
+
 			int position(Offset offset) {
 				if (item.category) return 1;
 				final box = rowContext.findRenderObject()! as RenderBox;
@@ -144,15 +149,26 @@ final class _ExplorerItem extends StatelessWidget {
 				if (y > box.size.height * 2 / 3) return 2;
 				return item.folder || item.branch ? 1 : y < box.size.height / 2 ? 0 : 2;
 			}
-			bool accepts(DragTargetDetails<Set<KlpId>> details) => !details.data.contains(item.sourceId) && (content.canMove?.call(details.data, item.id, position(details.offset)) ?? true);
-			return DragTarget<Set<KlpId>>(
-				onWillAcceptWithDetails: (details) => !details.data.contains(item.sourceId) && [0, 1, 2].any((value) => content.canMove?.call(details.data, item.id, value) ?? true),
-				onAcceptWithDetails: (details) { if (accepts(details)) content.onMove!(details.data, item.id, position(details.offset)); },
+			bool accepts(DragTargetDetails<KlpPageReferenceDrag> details) => !details.data.sourceIds.contains(item.sourceId) && (content.canMove?.call(details.data.sourceIds, item.id, position(details.offset)) ?? true);
+			return DragTarget<KlpPageReferenceDrag>(
+				onWillAcceptWithDetails: (details) => !details.data.sourceIds.contains(item.sourceId) && [0, 1, 2].any((value) => content.canMove?.call(details.data.sourceIds, item.id, value) ?? true),
+				onAcceptWithDetails: (details) { if (accepts(details)) content.onMove!(details.data.sourceIds, item.id, position(details.offset)); },
 				builder: (_, candidates, _) => DecoratedBox(decoration: BoxDecoration(border: candidates.isEmpty ? null : Border.all(color: klpFlutterColor(content.focusColor), width: content.focusWidth.value), borderRadius: BorderRadius.circular(content.radius.value)), child: row),
 			);
 		});
 		if (item.category) return target;
-		return Draggable<Set<KlpId>>(dragAnchorStrategy: pointerDragAnchorStrategy, data: source, feedback: Material(type: MaterialType.transparency, child: DecoratedBox(decoration: BoxDecoration(color: klpFlutterColor(content.selectedBackground), borderRadius: BorderRadius.circular(content.radius.value)), child: Padding(padding: EdgeInsets.all(content.inset.value), child: Text(item.label, style: _textStyle(content, content.foreground))))), childWhenDragging: Opacity(opacity: 0.5, child: target), child: target);
+		return Draggable<KlpPageReferenceDrag>(
+			dragAnchorStrategy: pointerDragAnchorStrategy,
+			data: carrier,
+			onDragStarted: () { klpActivePageReferenceDrag.value = carrier; },
+			onDragEnd: (_) {
+				// 只清除自己開始的拖放，避免舊手勢結束時取消新的 carrier。
+				if (identical(klpActivePageReferenceDrag.value, carrier)) klpActivePageReferenceDrag.value = null;
+			},
+			feedback: Material(type: MaterialType.transparency, child: DecoratedBox(decoration: BoxDecoration(color: klpFlutterColor(content.selectedBackground), borderRadius: BorderRadius.circular(content.radius.value)), child: Padding(padding: EdgeInsets.all(content.inset.value), child: Text(item.label, style: _textStyle(content, content.foreground))))),
+			childWhenDragging: Opacity(opacity: 0.5, child: target),
+			child: target,
+		);
 	}
 }
 

@@ -1,6 +1,16 @@
 {
 	"schemaVersion": 1,
-	"contractRevision": "KBF-WIRE-r2a",
+	"contractRevision": "KBF-WIRE-r2c",
+	"r2cRequiredFields": {
+		"operation.retire": ["lockId", "retirementId", "savedVersion"],
+		"operation.retired": ["lockId", "retirementId", "document", "outline"],
+		"operation.reconcile": ["lockId", "recoveryId", "reloadId", "nextEpoch", "retirementId"],
+		"operation.reconciled": ["lockId", "recoveryId", "coveredDeliverySeq", "document", "outline", "lastAppliedReloadId", "lastReloadEpoch", "hostLifecycle", "retirementId"],
+		"operation.error.retire": ["commandType", "lockId", "retirementId", "failure"],
+		"operation.error.reconcile": ["commandType", "lockId", "recoveryId", "retirementId", "failure"],
+		"ready.negotiated": ["document", "outline"]
+	},
+	"r2cHostLifecycle": ["active", "retired"],
 	"documentCases": [
 		{
 			"name": "nested-table-and-page-identities",

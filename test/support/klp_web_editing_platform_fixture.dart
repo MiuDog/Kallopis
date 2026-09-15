@@ -92,6 +92,7 @@ final class KlpWebController extends PlatformInAppWebViewController {
 	int readinessCalls = 0;
 	Future<dynamic> Function()? readiness;
 	Future<void> Function(Map<String, Object?>)? send;
+	Future<void> Function(Map<String, Object?>)? respond;
 	KlpWebController() : super.implementation(const PlatformInAppWebViewControllerCreationParams(id: 'test'));
 	@override
 	void addJavaScriptHandler({required String handlerName, required JavaScriptHandlerCallback callback}) => handlers[handlerName] = callback;
@@ -104,6 +105,7 @@ final class KlpWebController extends PlatformInAppWebViewController {
 		final command = Map<String, Object?>.from(jsonDecode(source.substring(source.indexOf('(') + 1, source.lastIndexOf(')'))) as Map);
 		commands.add(command);
 		await send?.call(command);
+		await respond?.call(command);
 		return null;
 	}
 }

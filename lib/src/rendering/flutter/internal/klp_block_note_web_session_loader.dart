@@ -2,23 +2,25 @@ import 'dart:async';
 
 /// 管理首次 Web editor 開啟；成功後不允許重送初始文件。
 final class KlpBlockNoteWebSessionLoader {
+
 	final Future<void> Function() _attempt;
 	final void Function(Object error, StackTrace stackTrace) onFailure;
+	final bool Function()? canOpen;
 	Object? _error;
 	bool _opened = false;
 	Future<void>? _active;
 
-	KlpBlockNoteWebSessionLoader(this._attempt, {required this.onFailure});
+	KlpBlockNoteWebSessionLoader(this._attempt, {required this.onFailure, this.canOpen});
 
 	Object? get error => _error;
 	bool get opening => _active != null;
-	bool get canRetry => !_opened && !opening && _error != null;
+	bool get canRetry => !_opened && !opening && _error != null && (canOpen?.call() ?? true);
 
 	/// 上游開啟成功後立即固定；後續通知失敗不能重播初始文件。
 	void markOpened() => _opened = true;
 
 	Future<void> open() {
-		if (_opened) return Future<void>.value();
+		if (_opened || !(canOpen?.call() ?? true)) return Future<void>.value();
 		final active = _active;
 		if (active != null) return active;
 		final future = _run();

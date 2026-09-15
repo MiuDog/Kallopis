@@ -4,6 +4,7 @@ import 'package:flutter_inappwebview/flutter_inappwebview.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:kallopis/src/rendering/flutter/internal/klp_flutter_block_note_editing.dart';
 import 'package:kallopis/src/rendering/flutter/internal/klp_flutter_canva_editing.dart';
+import 'package:krepis_block_note/krepis_block_note.dart';
 
 import 'support/klp_web_editing_platform_fixture.dart';
 import 'support/load_test_fonts.dart';
@@ -28,6 +29,7 @@ void main() {
 			await settleWeb(tester);
 			final originalState = tester.state(find.byType(type));
 			final view = platform.views.single;
+			_attachFlowResponder(view, kind);
 			view.loadStop();
 			await settleWeb(tester);
 			expect(view.platform.commands.where((c) => c['type'] == 'open'), hasLength(1));
@@ -35,17 +37,28 @@ void main() {
 			await settleWeb(tester);
 			expect(tester.state(find.byType(type)), same(originalState));
 			expect(platform.views, hasLength(1));
+			if (kind == KlpWebKind.blockNote) {
+				final close = first.controller.requestClose();
+				await settleWeb(tester);
+				expect(await close, KrepisBlockNoteCloseResult.closed);
+			}
 			await tester.pumpWidget(klpWebHost([second.content()]));
 			await settleWeb(tester);
 			expect(tester.state(find.byType(type)), isNot(same(originalState)), reason: 'A replacement controller needs a fresh attachment');
 			expect(view.disposals, 1);
 			expect(platform.views, hasLength(2));
+			_attachFlowResponder(platform.views.last, kind);
 			platform.views.last.loadStop();
 			await settleWeb(tester);
 			expect(platform.views.last.platform.commands.where((c) => c['type'] == 'open'), hasLength(1));
+			if (kind == KlpWebKind.blockNote) {
+				final close = second.controller.requestClose();
+				await settleWeb(tester);
+				expect(await close, KrepisBlockNoteCloseResult.closed);
+			}
 			await tester.pumpWidget(const SizedBox.shrink());
 			await settleWeb(tester);
-			expect((first.saves, second.saves), (0, 0));
+			expect((first.saves, second.saves), kind == KlpWebKind.blockNote ? (1, 1) : (0, 0));
 		});
 	}
 
@@ -55,6 +68,7 @@ void main() {
 			await tester.pumpWidget(klpWebHost([session.content()]));
 			await settleWeb(tester);
 			final view = platform.views.single;
+			_attachFlowResponder(view, kind);
 			final gate = Completer<void>();
 			view.platform.send = (command) async { if (command['type'] == 'open') await gate.future; };
 			view.loadStop();
@@ -76,13 +90,17 @@ void main() {
 			await settleWeb(tester);
 			final winner = platform.views.first;
 			final loser = platform.views.last;
+			_attachFlowResponder(winner, kind);
+			_attachFlowResponder(loser, kind);
 			winner.loadStop();
 			await settleWeb(tester);
 			loser.loadStop();
 			await settleWeb(tester);
-			expect(failures, hasLength(1));
-			expect(failures.single.phase, KlpEditingHostPhase.bind);
-			expect(failures.single.origin.name, kind.name);
+			expect(failures, hasLength(kind == KlpWebKind.blockNote ? 0 : 1));
+			if (kind == KlpWebKind.canva) {
+				expect(failures.single.phase, KlpEditingHostPhase.bind);
+				expect(failures.single.origin.name, kind.name);
+			}
 			await tester.pumpWidget(klpWebHost([session.content()], onFailure: failures.add));
 			await settleWeb(tester);
 			await session.channel.send({'type': 'probe-winner'});
@@ -94,12 +112,12 @@ void main() {
 			await session.channel.bindPlatformSender((Map<String, Object?> command) async { successor.add(command); });
 			await session.channel.send({'type': 'probe-successor'});
 			expect(successor.single['type'], 'probe-successor');
-			expect(failures, hasLength(1));
+			expect(failures, hasLength(kind == KlpWebKind.blockNote ? 0 : 1));
 			expect(session.saves, 0);
 			session.channel.unbindPlatformSender();
 		});
 
-		for (final boundary in ['bridge', 'delay', if (kind == KlpWebKind.blockNote) 'configure', 'open', 'flush']) {
+		for (final boundary in ['bridge', 'delay', if (kind == KlpWebKind.blockNote) 'configure', if (kind == KlpWebKind.canva) 'open', 'flush']) {
 			testWidgets('$kind detach at $boundary prevents subsequent side effects', (tester) async {
 				final failures = <KlpEditingHostFailure>[];
 				final session = KlpWebSession(kind, 'old-$boundary');
@@ -109,6 +127,7 @@ void main() {
 				await tester.pumpWidget(klpWebHost([session.content(onOpened: () async { callbacks++; })], onFailure: failures.add));
 				await settleWeb(tester);
 				final old = platform.views.single;
+				_attachFlowResponder(old, kind);
 				final gate = Completer<void>();
 				var reached = false;
 				if (boundary == 'bridge') old.platform.readiness = () async { reached = true; await gate.future; return true; };
@@ -127,6 +146,7 @@ void main() {
 				await tester.pumpWidget(klpWebHost([replacement.content()], onFailure: failures.add));
 				await settleWeb(tester);
 				final current = platform.views.last;
+				_attachFlowResponder(current, kind);
 				current.loadStop();
 				await settleWeb(tester);
 				final successor = <Map<String, Object?>>[];
@@ -195,6 +215,7 @@ void main() {
 			await tester.pumpWidget(klpWebHost([KlpWebSession(kind, 'receive').content()], onFailure: failures.add));
 			await settleWeb(tester);
 			final view = platform.views.single;
+			_attachFlowResponder(view, kind);
 			Object? caught;
 			StackTrace? caughtStack;
 			try { await view.receive(kind == KlpWebKind.blockNote ? 'KallopisBlockNote' : 'KallopisCanva', []); }
@@ -212,7 +233,7 @@ void main() {
 		});
 	}
 	for (final kind in KlpWebKind.values) {
-		testWidgets('$kind initial open failure retains retry policy and original failure', (tester) async {
+		testWidgets('$kind initial open failure retains typed policy and never replays automatically', (tester) async {
 			final failures = <KlpEditingHostFailure>[];
 			final error = StateError('open transmission failed');
 			final stack = StackTrace.fromString('original open transmission');
@@ -220,26 +241,31 @@ void main() {
 			await tester.pumpWidget(klpWebHost([session.content()], onFailure: failures.add));
 			await settleWeb(tester);
 			final view = platform.views.single;
+			_attachFlowResponder(view, kind);
 			view.platform.send = (command) async { if (command['type'] == 'open') Error.throwWithStackTrace(error, stack); };
 			view.loadStop();
 			await settleWeb(tester);
 			expect(failures, hasLength(1));
 			expect(failures.single.phase, KlpEditingHostPhase.open);
-			expect(failures.single.error, same(error));
-			expect(failures.single.stackTrace, same(stack));
+			if (kind == KlpWebKind.blockNote) {
+				final typed = failures.single.error as KrepisBlockNoteOperationException;
+				expect(typed.failure.code, KrepisBlockNoteFailureCode.transportFailure);
+				expect(typed.failure.cause, same(error));
+			} else {
+				expect(failures.single.error, same(error));
+				expect(failures.single.stackTrace, same(stack));
+			}
 			view.platform.send = null;
 			if (kind == KlpWebKind.blockNote) {
-				expect(find.text('重試'), findsOneWidget);
-				await tester.tap(find.text('重試'));
-				await settleWeb(tester);
 				expect(find.text('重試'), findsNothing);
+				expect(find.text('編輯器已中斷。請保留此視窗並嘗試儲存；尚未儲存內容不會自動重載。'), findsOneWidget);
 			} else {
 				expect(find.text('重試'), findsNothing);
 			}
 			view.loadStop();
 			view.loadStop();
 			await settleWeb(tester);
-			expect(view.platform.commands.where((c) => c['type'] == 'open'), hasLength(kind == KlpWebKind.blockNote ? 2 : 1));
+			expect(view.platform.commands.where((c) => c['type'] == 'open'), hasLength(1));
 			expect(failures, hasLength(1));
 		});
 	}
@@ -259,6 +285,7 @@ void main() {
 			await settleWeb(tester);
 			final originalState = tester.state(find.byType(KlpFlutterBlockNoteEditing));
 			final view = platform.views.single;
+			_attachFlowResponder(view, KlpWebKind.blockNote);
 			view.platform.send = (command) async { if (command['type'] == 'queued-flush') Error.throwWithStackTrace(error, stack); };
 			view.loadStop();
 			await settleWeb(tester);
@@ -292,6 +319,7 @@ void main() {
 		await tester.pumpWidget(klpWebHost([session.content(onOpened: () async { callbacks++; await gate.future; })], onFailure: failures.add));
 		await settleWeb(tester);
 		final view = platform.views.single;
+		_attachFlowResponder(view, KlpWebKind.blockNote);
 		view.loadStop();
 		await settleWeb(tester);
 		expect(callbacks, 1);
@@ -373,5 +401,71 @@ void main() {
 			expect(platform.views, isEmpty);
 			expect(failures, isEmpty);
 		});
+	}
+}
+
+void _attachFlowResponder(KlpWebView view, KlpWebKind kind) {
+	if (kind == KlpWebKind.blockNote) {
+		view.platform.respond = _LifecycleFlowResponder(view).respond;
+	}
+}
+
+final class _LifecycleFlowResponder {
+	final KlpWebView view;
+	int deliverySeq = 0;
+	Object? document;
+	_LifecycleFlowResponder(this.view);
+
+	Future<void> respond(Map<String, Object?> command) async {
+		switch (command['type']) {
+			case 'flow.capabilities.request':
+				await _receive(command, 'flow.capabilities.response', control: true, fields: {
+					'capabilities': {'pageLinksV1': true, 'databaseTableV1': true, 'operationGateV1': true},
+					'lastDeliverySeq': 0,
+				});
+			case 'open':
+				document = command['document'];
+				await _receive(command, 'ready', fields: {
+					'document': document,
+					'outline': <Object?>[],
+				});
+			case 'page.configure':
+				await _receive(command, 'command.result', fields: {
+					'commandType': 'page.configure',
+					'status': 'unchanged',
+				});
+			case 'operation.lock':
+				await _receive(command, 'operation.locked', fields: {
+					'lockId': command['lockId'],
+					'barrierEventSeq': command['barrierEventSeq'] ?? 0,
+					'document': document,
+					'outline': <Object?>[],
+				});
+			case 'operation.retire':
+				await _receive(command, 'operation.retired', fields: {
+					'lockId': command['lockId'],
+					'retirementId': command['retirementId'],
+					'document': document,
+					'outline': <Object?>[],
+				});
+		}
+	}
+
+	Future<Object?> _receive(Map<String, Object?> command, String type, {bool control = false, Map<String, Object?> fields = const {}}) {
+		return view.receive('KallopisBlockNote', [{
+			'protocolVersion': 1,
+			'flowProtocolVersion': 1,
+			'type': type,
+			'documentId': command['documentId'],
+			'sessionId': command['sessionId'],
+			'requestId': command['requestId'],
+			'hostInstanceId': command['hostInstanceId'] ?? 'lifecycle-host',
+			'epoch': command['epoch'] ?? 0,
+			'revision': command['revision'] ?? 0,
+			'eventSeq': command['eventSeq'] ?? 0,
+			'lane': control ? 'control' : 'ordinary',
+			if (!control) 'deliverySeq': ++deliverySeq,
+			...fields,
+		}]);
 	}
 }

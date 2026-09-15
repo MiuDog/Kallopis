@@ -1,5 +1,27 @@
 # BlockNote Flow：Kallopis／Krepis 配對
 
+## r2c 正常退休／重新掛載配對（目前契約）
+
+修訂 `KBF-PAIR-r2c`，2026-09-15，未發布、runtime 驗收待後續 BUILD。唯一 wire 為 [KBF-WIRE-r2c](../../../Krepis-flow-f2/bindings/block_note/contracts/flow-protocol.md#r2c-精確生命週期表示目前唯一-wire)，公開 Dart 型別為 [KBF-PLAN-r2c](../../../Krepis-flow-f2/bindings/block_note/architecture.md#r2c正常宿主退休與重新接線目前契約)。本節取代後文將所有 host replacement 一律禁止的簡寫：**只有私有 retirement proof 證明正常退休才可重新掛載**；無證據的 hostReplaced 仍 blocked。數字 protocolVersion／flowProtocolVersion 均為 1，持久 schema、既有 UI 與 plain legacy 行為不變。
+
+### 宿主與 renderer 責任
+
+- 正常頁面卸載由 consumer 先 await session.requestClose；Flow 協商後即使 Dart dirty=false 仍需 editor barrier → 原 persist 保存最新 snapshot → operation.retire/retired。renderer 不得因 widget dispose、controller 更換、load-error retry、canClose=true 或收到 dispose notification 自行宣告保存成功／退休。
+- 同一 renderer 更新投影、callback、appearance 不更換宿主。必要銷毀/替换 WebView 前 consumer 必須有 canDetachHost；renderer 在仍可否決的 controller/loader 切換點讀同一 getter，無證據不主動重建。Flutter dispose 已不可取消，不能在 dispose 才 async close；若外層意外卸載，保留原 session/recovery 並將之視為未證明的 hostReplaced，絕不自動 open 新正文。
+- 所有 mutator 共用 operation gate。retired 是永久終態，IME、paste/drop、undo/redo、asset/template async completion、資料庫 callback 完成皆不得提交；成功 unlock、reload 或重新 open 都不能復活該 host。retire ack 不解除 gate；control reconcile 必須明示 retired disposition，不以沒有 dirty/reload 推論。
+- onOpened 重新接線仍沿 bridge → appearance → prepareFlowCapabilities → open 的既有順序；持有 proof 時由 Session 自己選已保存正文，renderer 不以建構時 document 快取取代。新 host 在完整 negotiated ready/readback 獲 typed receipt 前不接受輸入；Session 確認新 host 後再送最新 page projections 與 callback。舊 host 的 pending command/interaction、async continuation 或表面相同的 block ID 不能帶到新 incarnation。
+- renderer 的回覆 handler 永遠同步取得 acceptFlowMessage receipt.toJson；consumer page.open callback 可正在等待 requestClose 的 save/retire，不能成為 handler/outbox 的等待條件。retirement 的普通 ack 與 reconcile 控制回覆保留原 lane 身分與重送規則，不建立第二份 wire schema。已派發 interaction 在退休後不重播；其完成結果只能忽略或報失敗，不能產生正文變更。
+- 正常返回頁面保持同一 Krepis session、registry item 與 storage binding；僅 JS hostInstanceId 更新。遇到未知 replacement 或 reattach ready timeout，保留錯誤與候選 recovery，使用現有錯誤呈現，不新增 UI 或悄悄建立第二份 session。
+
+### 本 stage BUILD 與 Test Author 邊界
+
+| slice | 產品精確路徑（本庫相對） | Test Author 專有路徑／接受證據 |
+| --- | --- | --- |
+| KP-R2C-H：永久退休與 terminal replay | `tool/blocknote_editor/src/flowOperationHost.ts`、`flowProtocol.ts`、`flowMessageOutbox.ts`、`EditorApp.tsx`（後三檔同 src 目錄） | `tool/verify_blocknote_flow_retirement.mjs`、`tool/fixtures/blocknote_flow_protocol.json`；真實 gate、exact savedVersion、相符 retired ack、retire ack 遺失→control retired reconcile、重送不二次提交／永不 unlock |
+| KP-R2C-A：安全宿主接線 | `lib/src/rendering/flutter/internal/klp_flutter_block_note_editing.dart`、`klp_block_note_web_session_loader.dart`、`klp_block_note_load_error.dart`（後兩檔同 internal 目錄） | `test/klp_block_note_host_retirement_test.dart`；無 proof 拒絕重建、有 proof 同 session 新 host 只開最後保存正文、ready receipt gate、callback→close 不死鎖 |
+
+上述為派工候選精確白名單，root 依凍結 base/hashes 產生各 Packet；產品 worker 不改 test/fixture／契約。既有 flow schema/outbox/reload/undo/receipt conformance 與所有 S1/S2/S3 測試保護。KP-R2C-H 依賴 core r2c Test Author fixture checkpoint；KP-R2C-A 依賴 core r2c API 與 H。cold-start 各 5k–9k tokens／30–60 分鐘，reference_task_ids=[]；M1 合約測試凍結，M2 局部 Green，M3 兩庫配對驗證。越界、正式 editor 無法排空或驗證超時回 owner，不能放寬 gate。此處未宣稱測試通過，人工互動驗收仍 pending。
+
 修訂 `KBF-PAIR-r2a`，2026-09-15。使用者已授權本任務提供 Kallopis 方配對；本輪同時擔任兩庫的配對 architecture owner。r2a 補足 r2 的精確技術表示，不改已接受產品語意。**兩庫技術契約已配對，正式 editor 實作與獨立驗收尚未交付**。
 
 唯一 wire／正文 schema 來源為 [KBF-WIRE-r2a](../../../Krepis-flow-f2/bindings/block_note/contracts/flow-protocol.md)，不在本檔維護第二份 schema。Krepis 的 [公開 API](../../../Krepis-flow-f2/bindings/block_note/architecture.md) 與 [產品定義](../../../Krepis-flow-f2/spec/block-note-flow-capabilities.md) 保持權威。本檔定義 Kallopis 如何滿足該契約，不取得 E owner 的磁碟版本及跨檔交易權威。本輪僅在使用者授權的新工作樹補充契約；原樹唯讀。

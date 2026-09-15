@@ -32,6 +32,7 @@ export class FlowOperationHost {
 	private compositionDone: (() => void)[] = []
 	private lockId: string | null = null
 	private lastReload: { id: string; epoch: number; document: FlowDocument; lockId: string } | null = null
+	private retired: { command: Message; response: Message | null; retirementId: string; snapshot: Message } | null = null
 	private controlResponses = new Map<string, { command: Message; response: Message }>()
 	private pendingInteractions = new Map<number, Message>()
 	private lastIncomingRequest = 0
@@ -40,7 +41,7 @@ export class FlowOperationHost {
 
 	constructor(private readonly access: HostAccess) {}
 
-	get writable() { return !this.gated && (!this.flow || this.outbox.capacityAvailable) }
+	get writable() { return !this.retired && !this.gated && (!this.flow || this.outbox.capacityAvailable) }
 	get transactionAllowed() { return this.applying || this.writable || (this.composing || this.drainingComposition) && this.gated }
 	allowsTransaction(compositionId: unknown) {
 		return this.applying || this.writable || this.transactionAllowed && typeof compositionId === 'number' && Number.isSafeInteger(compositionId) && compositionId > 0
@@ -156,7 +157,7 @@ export class FlowOperationHost {
 				capabilities: { pageLinksV1: true, databaseTableV1: true, operationGateV1: true }, lastDeliverySeq: this.outbox.tail,
 			})
 			this.controlResponses.set(key, { command: structuredClone(command), response })
-			if (await this.outbox.control(response) && resume && token === this.token) {
+			if (await this.outbox.control(response) && resume && !this.retired && token === this.token) {
 				this.gated = false
 				this.access.editable(true)
 			}
@@ -167,6 +168,25 @@ export class FlowOperationHost {
 				commandType: command.type, lockId: command.lockId, recoveryId: command.recoveryId,
 				failure: { code: 'recoveryRequired', detail: 'hostReplaced' },
 			}))
+			return true
+		}
+		if (this.retired) {
+			if (command.type === 'operation.reconcile') {
+				await this.operation(command)
+				return true
+			}
+			if (command.type === 'operation.retire') {
+				if (equalJson(command, this.retired.command) && this.retired.response) {
+					await this.outbox.replayOrdinary(this.retired.response)
+				}
+				else {
+					await this.send('operation.error', command.requestId, {
+						commandType: command.type, lockId: command.lockId, retirementId: command.retirementId,
+						failure: { code: 'protocolMismatch' },
+					})
+				}
+				return true
+			}
 			return true
 		}
 		if (this.flow && command.type !== 'interaction.result' && command.type !== 'operation.reconcile') {
@@ -189,7 +209,7 @@ export class FlowOperationHost {
 				this.messageId = command.messageIdStart ?? 1000
 			}
 			this.opened = true
-			await this.send('ready', command.requestId, { outline: this.access.outline() })
+			await this.send('ready', command.requestId, { document: structuredClone(command.document), outline: this.access.outline() })
 			return true
 		}
 		if (command.sessionId !== this.sessionId || this.flow && command.documentId !== this.documentId) return true
@@ -240,6 +260,7 @@ export class FlowOperationHost {
 			id(command.lockId)
 			if (command.type === 'operation.reconcile') {
 				id(command.recoveryId)
+				if (command.retirementId !== null) id(command.retirementId)
 				if ((command.reloadId === null) !== (command.nextEpoch === null)) throw new FlowFailure('protocolMismatch')
 				if (command.reloadId !== null) { id(command.reloadId); count(command.nextEpoch) }
 				const key = `${command.requestId}:${command.recoveryId}`
@@ -250,12 +271,19 @@ export class FlowOperationHost {
 					if (this.controlResponses.size >= 128) throw new FlowFailure('busy')
 					if (command.requestId <= this.lastRecoveryRequest) throw new FlowFailure('recoveryRequired')
 					this.lastRecoveryRequest = command.requestId
-					await this.barrier()
-					if (this.lockId && this.lockId !== command.lockId) throw new FlowFailure('recoveryRequired', 'invalidLock')
-					this.lockId = command.lockId
+					if (this.retired) {
+						if (command.lockId !== this.lockId || command.retirementId !== this.retired.retirementId) throw new FlowFailure('recoveryRequired', 'invalidRetirement')
+					}
+					else {
+						await this.barrier()
+						if (command.retirementId !== null) throw new FlowFailure('recoveryRequired', 'invalidRetirement')
+						if (this.lockId && this.lockId !== command.lockId) throw new FlowFailure('recoveryRequired', 'invalidLock')
+						this.lockId = command.lockId
+					}
 					response = this.envelope('operation.reconciled', command.requestId, {
 						lockId: this.lockId, recoveryId: command.recoveryId, coveredDeliverySeq: this.outbox.tail,
-						...this.snapshot(), lastAppliedReloadId: this.lastReload?.id ?? null, lastReloadEpoch: this.lastReload?.epoch ?? null,
+						...(this.retired?.snapshot ?? this.snapshot()), lastAppliedReloadId: this.lastReload?.id ?? null, lastReloadEpoch: this.lastReload?.epoch ?? null,
+						hostLifecycle: this.retired ? 'retired' : 'active', retirementId: this.retired?.retirementId ?? null,
 					})
 					this.controlResponses.set(key, { command: structuredClone(command), response })
 				}
@@ -270,6 +298,21 @@ export class FlowOperationHost {
 				return
 			}
 			if (!this.gated || this.lockId !== command.lockId) throw new FlowFailure('recoveryRequired', 'invalidLock')
+			if (command.type === 'operation.retire') {
+				const retirementId = id(command.retirementId)
+				if (!command.savedVersion || typeof command.savedVersion !== 'object') throw new FlowFailure('protocolMismatch')
+				const savedEpoch = count(command.savedVersion.epoch)
+				const savedRevision = count(command.savedVersion.revision)
+				if (command.epoch !== this.epoch || command.revision !== this.revision || savedEpoch !== this.epoch || savedRevision !== this.revision) throw new FlowFailure('staleVersion')
+				const snapshot = structuredClone(this.snapshot())
+				this.retired = { command: structuredClone(command), response: null, retirementId, snapshot }
+				this.pendingInteractions.clear()
+				this.access.editable(false)
+				const delivery = this.outbox.freezeOrdinary(this.envelope('operation.retired', command.requestId, { lockId: this.lockId, retirementId, ...snapshot }))
+				this.retired.response = structuredClone(delivery.message)
+				await delivery.received
+				return
+			}
 			if (command.type === 'operation.reload') {
 				id(command.reloadId)
 				validateDocument(command.document)
@@ -304,7 +347,7 @@ export class FlowOperationHost {
 		}
 		catch (error) {
 			if (!(error instanceof FlowFailure && error.detail === 'superseded')) this.block()
-			const fields = { commandType: command.type, lockId: command.lockId, ...(command.reloadId ? { reloadId: command.reloadId } : {}), ...(command.recoveryId ? { recoveryId: command.recoveryId } : {}), failure: { code: error instanceof FlowFailure ? error.code : 'transportFailure' } }
+			const fields = { commandType: command.type, lockId: command.lockId, ...(command.reloadId ? { reloadId: command.reloadId } : {}), ...(command.recoveryId ? { recoveryId: command.recoveryId } : {}), ...(command.type === 'operation.retire' || command.type === 'operation.reconcile' ? { retirementId: command.retirementId ?? null } : {}), failure: { code: error instanceof FlowFailure ? error.code : 'transportFailure' } }
 			if (command.type === 'operation.reconcile') await this.outbox.control(this.envelope('operation.error', command.requestId, fields))
 			else await this.send('operation.error', command.requestId, fields)
 		}

@@ -1,6 +1,8 @@
+import { count } from './flowProtocol'
 import type { Message } from './flowProtocol'
 
 type Pending = { message: Message; finish: (received: boolean) => void }
+type FrozenDelivery = { message: Message; received: Promise<boolean> }
 
 /** 普通交付串行；恢復回覆不等待普通佇列。 */
 export class FlowMessageOutbox {
@@ -17,16 +19,28 @@ export class FlowMessageOutbox {
 	get capacityAvailable() { return this.queue.length < 126 && !this.stalled }
 
 	ordinary(message: Message): Promise<boolean> {
+		return this.freezeOrdinary(message).received
+	}
+
+	freezeOrdinary(message: Message): FrozenDelivery {
 		if (this.sequence >= Number.MAX_SAFE_INTEGER || this.queue.length >= 128) {
 			this.failClosed()
-			return Promise.resolve(false)
+			return { message, received: Promise.resolve(false) }
 		}
+		const delivery = { ...message, lane: 'ordinary', deliverySeq: ++this.sequence }
 		const promise = new Promise<boolean>((finish) => {
-			this.queue.push({ message: { ...message, lane: 'ordinary', deliverySeq: ++this.sequence }, finish })
+			this.queue.push({ message: delivery, finish })
 		})
 		if (this.queue.length >= 128) this.failClosed()
 		void this.drain()
-		return promise
+		return { message: delivery, received: promise }
+	}
+
+	async replayOrdinary(message: Message): Promise<boolean> {
+		if (message.lane !== 'ordinary' || count(message.deliverySeq) < 1) return false
+		const received = await this.deliver(message)
+		if (!received) this.failClosed()
+		return received
 	}
 
 	async control(message: Message): Promise<boolean> {
