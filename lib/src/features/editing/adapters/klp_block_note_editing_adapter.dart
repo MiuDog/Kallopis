@@ -15,6 +15,7 @@ import '../internal/klp_block_note_editing_semantics.dart';
 
 /// 內建 BlockNote 節點的語意與準備資料轉接器；借用上游 controller，不建立正文權威或使用端註冊入口。
 final class KlpBlockNoteEditingAdapter implements KlpNodeAdapter {
+
 	@override
 	KlpDefinition<KlpNode> get contract => KlpDefinition<KlpBlockNoteEditingContent>(KlpBlockNoteEditingContent.typeId, semantics: KlpBlockNoteEditingSemantics.schema());
 
@@ -25,6 +26,9 @@ final class KlpBlockNoteEditingAdapter implements KlpNodeAdapter {
 		final text = context.style.read(KlpBlockNoteEditingSemantics.text);
 		return _KlpPreparedBlockNoteEditing(
 			content.controller,
+			pageProjections: content.pageProjections,
+			onOpenPage: content.onOpenPage,
+			onDatabaseDrop: content.onDatabaseDrop,
 			onOpened: content.onOpened,
 			resolveAsset: content.resolveAsset,
 			onOpenAsset: content.onOpenAsset,
@@ -40,7 +44,11 @@ final class KlpBlockNoteEditingAdapter implements KlpNodeAdapter {
 }
 
 final class _KlpPreparedBlockNoteEditing implements KlpPreparedNode {
+
 	final KlpBlockNoteSessionController controller;
+	final List<KrepisPageProjection> pageProjections;
+	final Future<void> Function(KrepisPageOpenRequest request)? onOpenPage;
+	final Future<KrepisBlockNoteEditResult> Function(KrepisDatabaseDropRequest request)? onDatabaseDrop;
 	final String background;
 	final String text;
 	final String fontFamily;
@@ -49,16 +57,17 @@ final class _KlpPreparedBlockNoteEditing implements KlpPreparedNode {
 	final Future<KlpResolvedAsset> Function(String assetId)? resolveAsset;
 	final Future<void> Function(String assetId)? onOpenAsset;
 	final Future<void> Function(String referenceId, String sourceDocumentId, String sourceBlockId)? onOpenReference;
-	const _KlpPreparedBlockNoteEditing(this.controller, {required this.background, required this.text, required this.fontFamily, required this.fontSize, this.onOpened, this.resolveAsset, this.onOpenAsset, this.onOpenReference});
+	const _KlpPreparedBlockNoteEditing(this.controller, {required this.background, required this.text, required this.fontFamily, required this.fontSize, required this.pageProjections, this.onOpenPage, this.onDatabaseDrop, this.onOpened, this.resolveAsset, this.onOpenAsset, this.onOpenReference});
 
 	@override
 	KlpPlacementResource createResource(KlpValidatedNode node) => _KlpBlockNotePlacement();
 
 	@override
-	KlpBoundTemplate materialize(KlpPlacementResource resource, List<KlpBoundTemplate> children, KlpFrameLease lease) => KlpBoundBlockNoteEditing(controller, background: background, text: text, fontFamily: fontFamily, fontSize: fontSize, onOpened: onOpened, resolveAsset: resolveAsset, onOpenAsset: onOpenAsset, onOpenReference: onOpenReference);
+	KlpBoundTemplate materialize(KlpPlacementResource resource, List<KlpBoundTemplate> children, KlpFrameLease lease) => KlpBoundBlockNoteEditing(controller, background: background, text: text, fontFamily: fontFamily, fontSize: fontSize, pageProjections: pageProjections, onOpenPage: onOpenPage, onDatabaseDrop: onDatabaseDrop, onOpened: onOpened, resolveAsset: resolveAsset, onOpenAsset: onOpenAsset, onOpenReference: onOpenReference);
 }
 
 final class _KlpBlockNotePlacement implements KlpPlacementResource {
+
 	@override
 	void update(KlpValidatedNode node) {}
 

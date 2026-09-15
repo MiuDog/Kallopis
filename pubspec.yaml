@@ -18,7 +18,7 @@ dependencies:
   flutter_svg: ^2.3.0
   file_selector: ^1.0.3
   krepis_block_note:
-    path: ../Krepis/bindings/block_note
+    path: ../Krepis-flow-f2/bindings/block_note
   krepis_canva:
     path: ../Krepis/bindings/canva
 

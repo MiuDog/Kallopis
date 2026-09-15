@@ -291,7 +291,7 @@ packages:
   krepis_block_note:
     dependency: "direct main"
     description:
-      path: "../Krepis/bindings/block_note"
+      path: "../Krepis-flow-f2/bindings/block_note"
       relative: true
     source: path
     version: "0.1.0"

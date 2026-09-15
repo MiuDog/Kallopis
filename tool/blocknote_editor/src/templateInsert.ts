@@ -1,4 +1,4 @@
-import type { Block, BlockNoteEditor } from '@blocknote/core'
+import type { FlowBlock as Block, FlowEditor as BlockNoteEditor } from './flowProtocol'
 import { closeHistory } from '@tiptap/pm/history'
 
 export function insertTemplateBlocks(editor: BlockNoteEditor, blocks: Block[], afterBlockId?: string) {

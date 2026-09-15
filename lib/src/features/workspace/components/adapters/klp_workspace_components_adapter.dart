@@ -1,4 +1,5 @@
 import 'package:kallopis/src/features/workspace/presentation/klp_workspace_presentation.dart';
+import 'package:krepis_block_note/krepis_block_note.dart' show KrepisPageReference;
 import 'package:kallopis/src/composition/definitions/klp_definition.dart';
 import 'package:kallopis/src/composition/nodes/klp_node.dart';
 import 'package:kallopis/src/composition/validation/klp_validated_node.dart';
@@ -58,6 +59,7 @@ final class KlpWorkspaceComponentsAdapter implements KlpNodeAdapter {
 		final style = context.style;
 		return _KlpPreparedExplorer(
 			actionsLabel: explorer.actionsLabel, expandLabel: explorer.expandLabel, collapseLabel: explorer.collapseLabel, allowNesting: explorer.allowNesting, showCommandButtons: explorer.commandPresentation == KlpExplorerCommandPresentation.buttonAndContextMenu, spacing: explorer.spacing.index,
+			pageReferences: explorer.pageReferences,
 			items: [for (final child in snapshot.childrenPlacements) itemData(context.nodes[child]!)],
 			onSelected: explorer.onSelected == null ? null : (placement) => explorer.onSelected!(ids[placement]!),
 			onSelectionChanged: explorer.onSelectionChanged == null ? null : (placements) => explorer.onSelectionChanged!({for (final placement in placements) ids[placement]!}),
@@ -140,22 +142,24 @@ final class _KlpWorkspaceStyle {
 }
 
 final class _KlpPreparedExplorer implements KlpPreparedNode {
+
 	final bool allowNesting;
 	final bool showCommandButtons;
 	final String actionsLabel, expandLabel, collapseLabel;
 	final int spacing;
 	final List<KlpBoundExplorerItemData> items;
+	final Map<KlpId, KrepisPageReference> pageReferences;
 	final void Function(KlpPlacementId)? onSelected;
 	final void Function(KlpPlacementId, bool)? onExpandedChanged;
 	final void Function(Set<KlpPlacementId>)? onSelectionChanged;
 	final bool Function(Set<KlpId>, KlpPlacementId, int)? canMove;
 	final void Function(Set<KlpId>, KlpPlacementId, int)? onMove;
 	final _KlpWorkspaceStyle style;
-	const _KlpPreparedExplorer({required this.actionsLabel, required this.expandLabel, required this.collapseLabel, required this.allowNesting, required this.showCommandButtons, required this.spacing, required this.items, required this.onSelected, required this.onExpandedChanged, required this.onSelectionChanged, required this.canMove, required this.onMove, required this.style});
+	const _KlpPreparedExplorer({required this.actionsLabel, required this.expandLabel, required this.collapseLabel, required this.allowNesting, required this.showCommandButtons, required this.spacing, required this.items, required this.pageReferences, required this.onSelected, required this.onExpandedChanged, required this.onSelectionChanged, required this.canMove, required this.onMove, required this.style});
 	@override
 	KlpPlacementResource createResource(KlpValidatedNode node) => KlpDefaultPlacement(node);
 	@override
-	KlpBoundTemplate materialize(KlpPlacementResource resource, List<KlpBoundTemplate> children, KlpFrameLease lease) => KlpBoundExplorer(actionsLabel: actionsLabel, expandLabel: expandLabel, collapseLabel: collapseLabel, allowNesting: allowNesting, showCommandButtons: showCommandButtons, spacing: spacing, items: items, onSelected: onSelected, onExpandedChanged: onExpandedChanged, onSelectionChanged: onSelectionChanged, canMove: canMove, onMove: onMove, background: style.background, foreground: style.foreground, selectedBackground: style.selectedBackground, mutedForeground: style.mutedForeground, focusColor: style.focusColor, gap: style.gap, rowExtent: style.extent, indent: style.indent, inset: style.inset, radius: style.radius, focusWidth: style.focusWidth, textStyle: style.text);
+	KlpBoundTemplate materialize(KlpPlacementResource resource, List<KlpBoundTemplate> children, KlpFrameLease lease) => KlpBoundExplorer(actionsLabel: actionsLabel, expandLabel: expandLabel, collapseLabel: collapseLabel, allowNesting: allowNesting, showCommandButtons: showCommandButtons, spacing: spacing, items: items, pageReferences: pageReferences, onSelected: onSelected, onExpandedChanged: onExpandedChanged, onSelectionChanged: onSelectionChanged, canMove: canMove, onMove: onMove, background: style.background, foreground: style.foreground, selectedBackground: style.selectedBackground, mutedForeground: style.mutedForeground, focusColor: style.focusColor, gap: style.gap, rowExtent: style.extent, indent: style.indent, inset: style.inset, radius: style.radius, focusWidth: style.focusWidth, textStyle: style.text);
 }
 
 final class _KlpPreparedTabs implements KlpPreparedNode {

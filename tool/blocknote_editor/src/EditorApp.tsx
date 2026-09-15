@@ -1,36 +1,16 @@
-import type { Block } from '@blocknote/core'
+import { BlockNoteEditor } from '@blocknote/core'
+import type { FlowBlock as Block, FlowDocument, FlowEditor, Message, PageProjection } from './flowProtocol'
+import { equalJson, FlowFailure } from './flowProtocol'
+import { FlowPresentation, flowSchema } from './flowReferenceBlocks'
+import { FlowOperationHost } from './flowOperationHost'
 import { BlockNoteView } from '@blocknote/mantine'
 import type { Theme } from '@blocknote/mantine'
-import { useCreateBlockNote } from '@blocknote/react'
 import { useEffect, useRef, useState } from 'react'
 import { insertTemplateBlocks } from './templateInsert'
 import '@blocknote/core/fonts/inter.css'
 import '@blocknote/mantine/style.css'
 
-type Envelope = {
-	protocolVersion: number
-	type: string
-	sessionId: string
-	requestId: number
-	revision: number
-	documentId?: string
-	messageIdStart?: number
-	document?: { format: string; schemaVersion: number; blockNoteVersion: string; blocks: Block[] }
-	appearance?: { background: string; text: string; fontFamily: string; fontSize: number }
-	assetId?: string
-	name?: string
-	mediaType?: string
-	blockId?: string
-	blocks?: Block[]
-	afterBlockId?: string
-	query?: string
-	replacement?: string
-	matchBlockId?: string
-	matchStart?: number
-	matchLength?: number
-	outline?: OutlineItem[]
-	references?: ReferenceProjection[]
-}
+type Envelope = Message
 
 type OutlineItem = { blockId: string; title: string; level: number }
 type ReferenceProjection = { referenceId: string; hostBlockId: string; sourceDocumentId: string; sourceBlockId: string; title: string; text: string; available: boolean }
@@ -38,31 +18,67 @@ type ReferenceProjection = { referenceId: string; hostBlockId: string; sourceDoc
 declare global {
 	interface Window {
 		flutter_inappwebview?: { callHandler: (name: string, message: unknown) => Promise<unknown> }
-		kallopisBlockNote?: { receive: (command: Envelope) => Promise<void> }
+		kallopisBlockNote?: { receive: (command: Envelope) => Promise<void>; probeDatabaseDrop: (point: Message, source?: Message, commit?: boolean) => Message | null }
 	}
 }
 
 export function EditorApp() {
-	const sessionId = useRef('')
-	const revision = useRef(0)
-	const messageId = useRef(1000)
-	const applying = useRef(false)
+	const runtime = useRef<FlowOperationHost | null>(null)
+	const editorRef = useRef<FlowEditor | null>(null)
 	const [references, setReferences] = useState<ReferenceProjection[]>([])
+	const [projections, setProjections] = useState<PageProjection[]>([])
+	const [editable, setEditable] = useState(true)
 	const [theme, setTheme] = useState<Theme>({})
-	const editor = useCreateBlockNote({
-		uploadFile: async (file) => readAsDataUrl(file),
+	const [editor, setEditor] = useState<FlowEditor>(() => createEditor())
+	if (!editorRef.current) editorRef.current = editor
+	if (!runtime.current) runtime.current = new FlowOperationHost({
+		editor: () => editorRef.current!,
+		document: () => documentOf(editorRef.current!),
+		outline: () => extractOutline(editorRef.current!.document),
+		editable: (value) => { editorRef.current!.isEditable = value; setEditable(value) },
+		projections: setProjections,
+		replace: async (document, exact, validateCommit) => {
+			const host = runtime.current!
+			const sources = new Map<string, string>()
+			const blocks = await hydrateAssets(document.blocks, sources)
+			validateCommit()
+			const candidate = createEditor(blocks)
+			const normalized = { ...document, blocks: persistedBlocks(candidate.document, sources) }
+			if (exact && !equalJson(normalized, document)) {
+				candidate._tiptapEditor.destroy()
+				throw new FlowFailure('protocolMismatch', 'reloadNormalizationChangedDocument')
+			}
+			candidate.isEditable = host.writable
+			assetSources.clear()
+			for (const [id, source] of sources) assetSources.set(id, source)
+			editorRef.current = candidate
+			setEditor(candidate)
+		},
 	})
+	const host = runtime.current
 
-	function send(type: string, requestId: number, fields: Pick<Envelope, 'document' | 'outline'> = {}) {
-		const message: Envelope = {
-			protocolVersion: 1,
-			type,
-			sessionId: sessionId.current,
-			requestId,
-			revision: revision.current,
-			...fields,
-		}
-		void window.flutter_inappwebview?.callHandler('KallopisBlockNote', message)
+	function createEditor(blocks?: Block[]): FlowEditor {
+		const value = BlockNoteEditor.create({
+			schema: flowSchema,
+			initialContent: blocks?.length ? blocks : undefined,
+			trailingBlock: false,
+			uploadFile: async (file) => {
+				const host = runtime.current!
+				const token = host.beginMutation()
+				const result = await readAsDataUrl(file)
+				host.checkMutation(token)
+				return result
+			},
+		})
+		value.onBeforeChange(({ tr }) => runtime.current?.allowsTransaction(tr.getMeta('composition')) ?? true)
+		value.onChange((_, context) => {
+			if (editorRef.current === value && context.getChanges().length > 0) runtime.current?.changed()
+		})
+		return value
+	}
+
+	function documentOf(value: FlowEditor): FlowDocument {
+		return { format: 'kallopis.blocknote', schemaVersion: 1, blockNoteVersion: '0.54.2', blocks: persistedBlocks(value.document) }
 	}
 
 	async function receive(command: Envelope) {
@@ -74,25 +90,20 @@ export function EditorApp() {
 			document.documentElement.style.setProperty('--kallopis-editor-font-size', `${appearance.fontSize}px`)
 			return
 		}
-		if (command.type === 'open' && command.document) {
-			sessionId.current = command.sessionId
-			revision.current = command.revision
-			if (typeof command.messageIdStart === 'number') messageId.current = command.messageIdStart
-			applying.current = true
-			const blocks = await hydrateAssets(command.document.blocks)
-			editor.replaceBlocks(editor.document, blocks)
-			applying.current = false
-			send('ready', command.requestId)
+		if (await host.receive(command)) return
+		const editor = editorRef.current!
+		if (command.type === 'reference.configure') {
+			setReferences(command.references ?? [])
 			return
 		}
-		if (command.sessionId !== sessionId.current) return
+		const token = host.beginMutation()
 		if (command.type === 'template.insert') {
 			if (!Array.isArray(command.blocks) || command.blocks.length === 0) throw new Error('範本區塊不得為空')
 
 			// 資產先在暫存映射解析；切頁或插入失敗時不發布到目前文件。
 			const sources = new Map<string, string>()
 			const blocks = await hydrateAssets(command.blocks, sources)
-			if (command.sessionId !== sessionId.current) throw new Error('範本插入工作階段已失效')
+			host.checkMutation(token)
 
 			insertTemplateBlocks(editor, blocks, command.afterBlockId)
 			for (const [id, source] of sources) assetSources.set(id, source)
@@ -102,6 +113,7 @@ export function EditorApp() {
 			const source = `asset://${command.assetId}`
 			if (command.mediaType?.startsWith('image/')) {
 				const url = await resolveAsset(command.assetId)
+				host.checkMutation(token)
 				editor.insertBlocks([{ type: 'image', props: { url, name: command.name, caption: command.name } }], editor.document.at(-1)!, 'after')
 				rememberAssetSource(editor.document.at(-1), source)
 			}
@@ -112,19 +124,6 @@ export function EditorApp() {
 		}
 		if ((command.type === 'replace.one' || command.type === 'replace.all') && command.query && command.replacement !== undefined) {
 			replaceText(command.query, command.replacement, command.type === 'replace.all', command.matchBlockId)
-			return
-		}
-		if (command.type === 'reference.configure') {
-			setReferences(command.references ?? [])
-			return
-		}
-		if (command.type === 'snapshot.request') {
-			send('snapshot.response', command.requestId, { document: {
-					format: 'kallopis.blocknote',
-					schemaVersion: 1,
-					blockNoteVersion: '0.54.2',
-					blocks: persistedBlocks(editor.document),
-				} })
 			return
 		}
 		if (command.type === 'block.focus' && command.blockId && editor.getBlock(command.blockId)) {
@@ -168,6 +167,7 @@ export function EditorApp() {
 	}
 
 	function replaceText(query: string, replacement: string, replaceAll: boolean, matchBlockId?: string) {
+		const editor = editorRef.current!
 		let replaced = false
 		// 讓跨區塊的全部取代成為單一 BlockNote undo 交易。
 		editor.transact(() => {
@@ -183,7 +183,7 @@ export function EditorApp() {
 	}
 
 	useEffect(() => {
-		window.kallopisBlockNote = { receive }
+		window.kallopisBlockNote = { receive, probeDatabaseDrop: (point, source, commit) => host.probeDatabaseDrop(point, source, commit) }
 		return () => { delete window.kallopisBlockNote }
 	})
 
@@ -201,17 +201,32 @@ export function EditorApp() {
 		return () => document.removeEventListener('click', openAttachment, true)
 	}, [])
 
+	useEffect(() => {
+		const compositionStart = (event: Event) => {
+			if (!host.writable) { event.preventDefault(); event.stopImmediatePropagation(); return }
+			host.composition(true)
+		}
+		const compositionEnd = () => host.composition(false)
+		const guard = (event: Event) => {
+			const compositionInput = event instanceof InputEvent && (event.isComposing || event.inputType === 'insertCompositionText' || event.inputType === 'deleteCompositionText')
+			const compositionKey = event instanceof KeyboardEvent && event.isComposing && !event.ctrlKey && !event.metaKey
+			if (!host.writable && !(host.transactionAllowed && (compositionInput || compositionKey))) { event.preventDefault(); event.stopImmediatePropagation() }
+		}
+		document.addEventListener('compositionstart', compositionStart, true)
+		document.addEventListener('compositionend', compositionEnd, true)
+		for (const type of ['beforeinput', 'paste', 'drop', 'keydown']) document.addEventListener(type, guard, true)
+		return () => {
+			document.removeEventListener('compositionstart', compositionStart, true)
+			document.removeEventListener('compositionend', compositionEnd, true)
+			for (const type of ['beforeinput', 'paste', 'drop', 'keydown']) document.removeEventListener(type, guard, true)
+		}
+	}, [host])
+
 	return (
 		<main>
-			<BlockNoteView
-				editor={editor}
-				theme={theme}
-				onChange={() => {
-					if (applying.current || sessionId.current === '') return
-					revision.current += 1
-					send('changed', messageId.current++, { outline: extractOutline(editor.document) })
-				}}
-			/>
+			<FlowPresentation.Provider value={{ projections, open: (request) => host.openPage(request) }}>
+				<BlockNoteView editor={editor} theme={theme} editable={editable} />
+			</FlowPresentation.Provider>
 			<section className="kallopis-reference-projections" aria-label="參考區塊">
 				{references.map((projection) => (
 					<button
@@ -313,11 +328,11 @@ function rememberAssetSource(block: Block | undefined, source: string) {
 	if (block?.type === 'image') assetSources.set(block.id, source)
 }
 
-function persistedBlocks(blocks: Block[]): Block[] {
+function persistedBlocks(blocks: Block[], sources = assetSources): Block[] {
 	// 巢狀範本圖片與根區塊使用相同的持久化資產表示。
 	return structuredClone(blocks).map((block) => {
-		if (block.children?.length) block.children = persistedBlocks(block.children)
-		const source = assetSources.get(block.id)
+		if (block.children?.length) block.children = persistedBlocks(block.children, sources)
+		const source = sources.get(block.id)
 		if (block.type !== 'image' || !source) return block
 		return { ...block, props: { ...block.props, url: source } } as Block
 	})

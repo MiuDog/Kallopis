@@ -1,4 +1,5 @@
 import 'package:kallopis/src/kernel/identity/klp_id.dart';
+import 'package:krepis_block_note/krepis_block_note.dart' show KrepisPageReference;
 import 'package:kallopis/src/kernel/identity/klp_placement_id.dart';
 import 'package:kallopis/src/styling/primitives/klp_style_value.dart';
 import 'package:kallopis/src/foundation/binding/contracts/klp_bound_template.dart';

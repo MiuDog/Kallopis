@@ -1,0 +1,615 @@
+{
+	"schemaVersion": 1,
+	"contractRevision": "KBF-WIRE-r2a",
+	"documentCases": [
+		{
+			"name": "nested-table-and-page-identities",
+			"valid": true,
+			"document": {
+				"format": "kallopis.blocknote",
+				"schemaVersion": 1,
+				"blockNoteVersion": "0.54.2",
+				"blocks": [
+					{
+						"id": "link-A",
+						"type": "krepisPageLink",
+						"props": {
+							"referenceVersion": 1,
+							"projectId": "project-A",
+							"documentId": "shared"
+						},
+						"children": []
+					},
+					{
+						"id": "parent",
+						"type": "paragraph",
+						"children": [
+							{
+								"id": "db-A",
+								"type": "krepisDatabase",
+								"props": {
+									"referenceVersion": 1,
+									"viewId": "table",
+									"viewKind": "table",
+									"rowsJson": "[{\"referenceId\":\"row-1\",\"projectId\":\"project-A\",\"documentId\":\"shared\"},{\"referenceId\":\"row-2\",\"projectId\":\"project-B\",\"documentId\":\"shared\"},{\"referenceId\":\"row-3\",\"projectId\":\"project-A\",\"documentId\":\"shared\"}]"
+								},
+								"children": []
+							}
+						]
+					},
+					{
+						"id": "db-B",
+						"type": "krepisDatabase",
+						"props": {
+							"referenceVersion": 1,
+							"viewId": "table",
+							"viewKind": "table",
+							"rowsJson": "[]"
+						},
+						"children": []
+					}
+				]
+			},
+			"databaseIds": [
+				"db-A",
+				"db-B"
+			],
+			"pageLinkIds": [
+				"link-A"
+			]
+		},
+		{
+			"name": "unknown-block-and-props-id",
+			"valid": true,
+			"document": {
+				"format": "kallopis.blocknote",
+				"schemaVersion": 1,
+				"blockNoteVersion": "0.54.2",
+				"blocks": [
+					{
+						"type": "futureWidget",
+						"props": {
+							"id": "db-A",
+							"nested": {
+								"type": "krepisDatabase",
+								"id": "ignored"
+							}
+						},
+						"content": [
+							{
+								"type": "text",
+								"text": "留存",
+								"styles": {
+									"bold": true
+								}
+							}
+						]
+					},
+					{
+						"id": "db-A",
+						"type": "krepisDatabase",
+						"props": {
+							"referenceVersion": 1,
+							"viewId": "table",
+							"viewKind": "table",
+							"rowsJson": "[]"
+						},
+						"children": []
+					}
+				]
+			},
+			"databaseIds": [
+				"db-A"
+			],
+			"pageLinkIds": []
+		},
+		{
+			"name": "unsupported-version",
+			"valid": false,
+			"document": {
+				"format": "kallopis.blocknote",
+				"schemaVersion": 1,
+				"blockNoteVersion": "0.54.2",
+				"blocks": [
+					{
+						"id": "bad",
+						"type": "krepisDatabase",
+						"props": {
+							"referenceVersion": 2,
+							"viewId": "table",
+							"viewKind": "table",
+							"rowsJson": "[{\"referenceId\":\"row-1\",\"projectId\":\"project-A\",\"documentId\":\"shared\"},{\"referenceId\":\"row-2\",\"projectId\":\"project-B\",\"documentId\":\"shared\"},{\"referenceId\":\"row-3\",\"projectId\":\"project-A\",\"documentId\":\"shared\"}]"
+						},
+						"children": []
+					}
+				]
+			}
+		},
+		{
+			"name": "string-version",
+			"valid": false,
+			"document": {
+				"format": "kallopis.blocknote",
+				"schemaVersion": 1,
+				"blockNoteVersion": "0.54.2",
+				"blocks": [
+					{
+						"id": "bad",
+						"type": "krepisDatabase",
+						"props": {
+							"referenceVersion": "1",
+							"viewId": "table",
+							"viewKind": "table",
+							"rowsJson": "[{\"referenceId\":\"row-1\",\"projectId\":\"project-A\",\"documentId\":\"shared\"},{\"referenceId\":\"row-2\",\"projectId\":\"project-B\",\"documentId\":\"shared\"},{\"referenceId\":\"row-3\",\"projectId\":\"project-A\",\"documentId\":\"shared\"}]"
+						},
+						"children": []
+					}
+				]
+			}
+		},
+		{
+			"name": "unsupported-view-kind",
+			"valid": false,
+			"document": {
+				"format": "kallopis.blocknote",
+				"schemaVersion": 1,
+				"blockNoteVersion": "0.54.2",
+				"blocks": [
+					{
+						"id": "bad",
+						"type": "krepisDatabase",
+						"props": {
+							"referenceVersion": 1,
+							"viewId": "table",
+							"viewKind": "gallery",
+							"rowsJson": "[{\"referenceId\":\"row-1\",\"projectId\":\"project-A\",\"documentId\":\"shared\"},{\"referenceId\":\"row-2\",\"projectId\":\"project-B\",\"documentId\":\"shared\"},{\"referenceId\":\"row-3\",\"projectId\":\"project-A\",\"documentId\":\"shared\"}]"
+						},
+						"children": []
+					}
+				]
+			}
+		},
+		{
+			"name": "blank-view-id",
+			"valid": false,
+			"document": {
+				"format": "kallopis.blocknote",
+				"schemaVersion": 1,
+				"blockNoteVersion": "0.54.2",
+				"blocks": [
+					{
+						"id": "bad",
+						"type": "krepisDatabase",
+						"props": {
+							"referenceVersion": 1,
+							"viewId": " \t",
+							"viewKind": "table",
+							"rowsJson": "[{\"referenceId\":\"row-1\",\"projectId\":\"project-A\",\"documentId\":\"shared\"},{\"referenceId\":\"row-2\",\"projectId\":\"project-B\",\"documentId\":\"shared\"},{\"referenceId\":\"row-3\",\"projectId\":\"project-A\",\"documentId\":\"shared\"}]"
+						},
+						"children": []
+					}
+				]
+			}
+		},
+		{
+			"name": "rows-json-not-string",
+			"valid": false,
+			"document": {
+				"format": "kallopis.blocknote",
+				"schemaVersion": 1,
+				"blockNoteVersion": "0.54.2",
+				"blocks": [
+					{
+						"id": "bad",
+						"type": "krepisDatabase",
+						"props": {
+							"referenceVersion": 1,
+							"viewId": "table",
+							"viewKind": "table",
+							"rowsJson": []
+						},
+						"children": []
+					}
+				]
+			}
+		},
+		{
+			"name": "rows-json-corrupt",
+			"valid": false,
+			"document": {
+				"format": "kallopis.blocknote",
+				"schemaVersion": 1,
+				"blockNoteVersion": "0.54.2",
+				"blocks": [
+					{
+						"id": "bad",
+						"type": "krepisDatabase",
+						"props": {
+							"referenceVersion": 1,
+							"viewId": "table",
+							"viewKind": "table",
+							"rowsJson": "{"
+						},
+						"children": []
+					}
+				]
+			}
+		},
+		{
+			"name": "rows-json-object",
+			"valid": false,
+			"document": {
+				"format": "kallopis.blocknote",
+				"schemaVersion": 1,
+				"blockNoteVersion": "0.54.2",
+				"blocks": [
+					{
+						"id": "bad",
+						"type": "krepisDatabase",
+						"props": {
+							"referenceVersion": 1,
+							"viewId": "table",
+							"viewKind": "table",
+							"rowsJson": "{}"
+						},
+						"children": []
+					}
+				]
+			}
+		},
+		{
+			"name": "duplicate-row-id",
+			"valid": false,
+			"document": {
+				"format": "kallopis.blocknote",
+				"schemaVersion": 1,
+				"blockNoteVersion": "0.54.2",
+				"blocks": [
+					{
+						"id": "bad",
+						"type": "krepisDatabase",
+						"props": {
+							"referenceVersion": 1,
+							"viewId": "table",
+							"viewKind": "table",
+							"rowsJson": "[{\"referenceId\":\"row-1\",\"projectId\":\"project-A\",\"documentId\":\"shared\"},{\"referenceId\":\"row-1\",\"projectId\":\"project-A\",\"documentId\":\"shared\"}]"
+						},
+						"children": []
+					}
+				]
+			}
+		},
+		{
+			"name": "row-missing-project",
+			"valid": false,
+			"document": {
+				"format": "kallopis.blocknote",
+				"schemaVersion": 1,
+				"blockNoteVersion": "0.54.2",
+				"blocks": [
+					{
+						"id": "bad",
+						"type": "krepisDatabase",
+						"props": {
+							"referenceVersion": 1,
+							"viewId": "table",
+							"viewKind": "table",
+							"rowsJson": "[{\"referenceId\":\"r\",\"documentId\":\"p\"}]"
+						},
+						"children": []
+					}
+				]
+			}
+		},
+		{
+			"name": "nonempty-custom-children",
+			"valid": false,
+			"document": {
+				"format": "kallopis.blocknote",
+				"schemaVersion": 1,
+				"blockNoteVersion": "0.54.2",
+				"blocks": [
+					{
+						"id": "bad",
+						"type": "krepisDatabase",
+						"props": {
+							"referenceVersion": 1,
+							"viewId": "table",
+							"viewKind": "table",
+							"rowsJson": "[{\"referenceId\":\"row-1\",\"projectId\":\"project-A\",\"documentId\":\"shared\"},{\"referenceId\":\"row-2\",\"projectId\":\"project-B\",\"documentId\":\"shared\"},{\"referenceId\":\"row-3\",\"projectId\":\"project-A\",\"documentId\":\"shared\"}]"
+						},
+						"children": [
+							{
+								"type": "paragraph",
+								"content": "bad"
+							}
+						]
+					}
+				]
+			}
+		},
+		{
+			"name": "editable-custom-content",
+			"valid": false,
+			"document": {
+				"format": "kallopis.blocknote",
+				"schemaVersion": 1,
+				"blockNoteVersion": "0.54.2",
+				"blocks": [
+					{
+						"id": "bad",
+						"type": "krepisDatabase",
+						"props": {
+							"referenceVersion": 1,
+							"viewId": "table",
+							"viewKind": "table",
+							"rowsJson": "[{\"referenceId\":\"row-1\",\"projectId\":\"project-A\",\"documentId\":\"shared\"},{\"referenceId\":\"row-2\",\"projectId\":\"project-B\",\"documentId\":\"shared\"},{\"referenceId\":\"row-3\",\"projectId\":\"project-A\",\"documentId\":\"shared\"}]"
+						},
+						"children": [],
+						"content": "bad"
+					}
+				]
+			}
+		},
+		{
+			"name": "duplicate-nested-block-id",
+			"valid": false,
+			"document": {
+				"format": "kallopis.blocknote",
+				"schemaVersion": 1,
+				"blockNoteVersion": "0.54.2",
+				"blocks": [
+					{
+						"id": "same",
+						"type": "krepisDatabase",
+						"props": {
+							"referenceVersion": 1,
+							"viewId": "table",
+							"viewKind": "table",
+							"rowsJson": "[]"
+						},
+						"children": []
+					},
+					{
+						"type": "paragraph",
+						"children": [
+							{
+								"id": "same",
+								"type": "krepisDatabase",
+								"props": {
+									"referenceVersion": 1,
+									"viewId": "table",
+									"viewKind": "table",
+									"rowsJson": "[]"
+								},
+								"children": []
+							}
+						]
+					}
+				]
+			}
+		},
+		{
+			"name": "page-link-blank-project",
+			"valid": false,
+			"document": {
+				"format": "kallopis.blocknote",
+				"schemaVersion": 1,
+				"blockNoteVersion": "0.54.2",
+				"blocks": [
+					{
+						"id": "link-A",
+						"type": "krepisPageLink",
+						"props": {
+							"referenceVersion": 1,
+							"projectId": " ",
+							"documentId": "shared"
+						},
+						"children": []
+					}
+				]
+			}
+		}
+	],
+	"wireCases": [
+		{
+			"name": "ordinary-changed",
+			"valid": true,
+			"message": {
+				"type": "changed",
+				"protocolVersion": 1,
+				"flowProtocolVersion": 1,
+				"documentId": "document",
+				"sessionId": "session",
+				"requestId": 1000,
+				"hostInstanceId": "host-A",
+				"epoch": 0,
+				"revision": 1,
+				"eventSeq": 1,
+				"lane": "ordinary",
+				"deliverySeq": 1,
+				"outline": [
+					{
+						"blockId": "heading",
+						"title": " 標題 ",
+						"level": 2
+					}
+				]
+			}
+		},
+		{
+			"name": "double-revision",
+			"valid": false,
+			"message": {
+				"type": "changed",
+				"protocolVersion": 1,
+				"flowProtocolVersion": 1,
+				"documentId": "document",
+				"sessionId": "session",
+				"requestId": 1000,
+				"hostInstanceId": "host-A",
+				"epoch": 0,
+				"revision": 1.5,
+				"eventSeq": 1,
+				"lane": "ordinary",
+				"deliverySeq": 1,
+				"outline": [
+					{
+						"blockId": "heading",
+						"title": " 標題 ",
+						"level": 2
+					}
+				]
+			}
+		},
+		{
+			"name": "unsafe-event-seq",
+			"valid": false,
+			"message": {
+				"type": "changed",
+				"protocolVersion": 1,
+				"flowProtocolVersion": 1,
+				"documentId": "document",
+				"sessionId": "session",
+				"requestId": 1000,
+				"hostInstanceId": "host-A",
+				"epoch": 0,
+				"revision": 1,
+				"eventSeq": 9007199254740992,
+				"lane": "ordinary",
+				"deliverySeq": 1,
+				"outline": [
+					{
+						"blockId": "heading",
+						"title": " 標題 ",
+						"level": 2
+					}
+				]
+			}
+		},
+		{
+			"name": "empty-outline-title",
+			"valid": false,
+			"message": {
+				"type": "changed",
+				"protocolVersion": 1,
+				"flowProtocolVersion": 1,
+				"documentId": "document",
+				"sessionId": "session",
+				"requestId": 1000,
+				"hostInstanceId": "host-A",
+				"epoch": 0,
+				"revision": 1,
+				"eventSeq": 1,
+				"lane": "ordinary",
+				"deliverySeq": 1,
+				"outline": [
+					{
+						"blockId": "heading",
+						"title": " ",
+						"level": 2
+					}
+				]
+			}
+		},
+		{
+			"name": "invalid-outline-level",
+			"valid": false,
+			"message": {
+				"type": "changed",
+				"protocolVersion": 1,
+				"flowProtocolVersion": 1,
+				"documentId": "document",
+				"sessionId": "session",
+				"requestId": 1000,
+				"hostInstanceId": "host-A",
+				"epoch": 0,
+				"revision": 1,
+				"eventSeq": 1,
+				"lane": "ordinary",
+				"deliverySeq": 1,
+				"outline": [
+					{
+						"blockId": "heading",
+						"title": "標題",
+						"level": 7
+					}
+				]
+			}
+		},
+		{
+			"name": "ordinary-missing-delivery",
+			"valid": false,
+			"message": {
+				"type": "changed",
+				"protocolVersion": 1,
+				"flowProtocolVersion": 1,
+				"documentId": "document",
+				"sessionId": "session",
+				"requestId": 1000,
+				"hostInstanceId": "host-A",
+				"epoch": 0,
+				"revision": 1,
+				"eventSeq": 1,
+				"lane": "ordinary",
+				"outline": [
+					{
+						"blockId": "heading",
+						"title": " 標題 ",
+						"level": 2
+					}
+				]
+			}
+		},
+		{
+			"name": "changed-control-lane",
+			"valid": false,
+			"message": {
+				"type": "changed",
+				"protocolVersion": 1,
+				"flowProtocolVersion": 1,
+				"documentId": "document",
+				"sessionId": "session",
+				"requestId": 1000,
+				"hostInstanceId": "host-A",
+				"epoch": 0,
+				"revision": 1,
+				"eventSeq": 1,
+				"lane": "control",
+				"deliverySeq": 1,
+				"outline": [
+					{
+						"blockId": "heading",
+						"title": " 標題 ",
+						"level": 2
+					}
+				]
+			}
+		},
+		{
+			"name": "unknown-type",
+			"valid": false,
+			"message": {
+				"type": "future.message",
+				"protocolVersion": 1,
+				"flowProtocolVersion": 1,
+				"documentId": "document",
+				"sessionId": "session",
+				"requestId": 1000,
+				"hostInstanceId": "host-A",
+				"epoch": 0,
+				"revision": 1,
+				"eventSeq": 1,
+				"lane": "ordinary",
+				"deliverySeq": 1,
+				"outline": [
+					{
+						"blockId": "heading",
+						"title": " 標題 ",
+						"level": 2
+					}
+				]
+			}
+		}
+	]
+}

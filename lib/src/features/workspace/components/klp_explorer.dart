@@ -2,6 +2,7 @@ import 'package:kallopis/src/composition/nodes/klp_composite_node.dart';
 import 'package:kallopis/src/composition/slots/klp_children.dart';
 import 'package:kallopis/src/composition/slots/klp_slot.dart';
 import 'package:kallopis/src/kernel/identity/klp_id.dart';
+import 'package:krepis_block_note/krepis_block_note.dart' show KrepisPageReference;
 import 'klp_workspace_command.dart';
 
 /// Explorer 項目的封閉種類；不定義產品的檔案副檔名或資料來源。
@@ -47,12 +48,14 @@ final class KlpExplorerItem implements KlpCompositeNode {
 
 /// 可控 Explorer；互動只通知 consumer，重建前不自行改變資料。
 final class KlpExplorer implements KlpCompositeNode {
+
 	static const typeId = 'kallopis.explorer';
 	static final itemSlot = KlpSlot<KlpExplorerItem>(owner: typeId, name: 'items');
 
 	@override
 	final KlpId id;
 	final List<KlpExplorerItem> items;
+	final Map<KlpId, KrepisPageReference> pageReferences;
 	final bool allowNesting;
 	final String actionsLabel, expandLabel, collapseLabel;
 	final KlpExplorerSpacing spacing;
@@ -68,11 +71,27 @@ final class KlpExplorer implements KlpCompositeNode {
 	@override
 	final KlpChildren children;
 
-	KlpExplorer({required this.id, required List<KlpExplorerItem> items, this.selectedId, Set<KlpId> selectedIds = const {}, this.allowNesting = true, this.actionsLabel = 'Actions', this.expandLabel = 'Expand', this.collapseLabel = 'Collapse', this.spacing = KlpExplorerSpacing.flush, this.commandPresentation = KlpExplorerCommandPresentation.buttonAndContextMenu, Set<KlpId> expandedIds = const {}, this.onSelected, this.onSelectionChanged, this.onExpandedChanged, this.canMove, this.onMove})
+	KlpExplorer({required this.id, required List<KlpExplorerItem> items, Map<KlpId, KrepisPageReference> pageReferences = const {}, this.selectedId, Set<KlpId> selectedIds = const {}, this.allowNesting = true, this.actionsLabel = 'Actions', this.expandLabel = 'Expand', this.collapseLabel = 'Collapse', this.spacing = KlpExplorerSpacing.flush, this.commandPresentation = KlpExplorerCommandPresentation.buttonAndContextMenu, Set<KlpId> expandedIds = const {}, this.onSelected, this.onSelectionChanged, this.onExpandedChanged, this.canMove, this.onMove})
 		: items = List.unmodifiable(items),
+			pageReferences = Map.unmodifiable(pageReferences),
 			selectedIds = Set.unmodifiable(selectedIds),
 			expandedIds = Set.unmodifiable(expandedIds),
-			children = KlpChildren([itemSlot.assign(items)]);
+			children = KlpChildren([itemSlot.assign(items)]) {
+		// 只驗證既有可選來源；頁面身分不改寫角色、階層或移動權限。
+		if (this.pageReferences.isEmpty) return;
+
+		final eligible = <KlpId>{};
+		void collect(Iterable<KlpExplorerItem> items) {
+			for (final item in items) {
+				if (item.selectable && item.kind != KlpExplorerItemKind.category) eligible.add(item.id);
+				collect(item.items);
+			}
+		}
+		collect(this.items);
+		for (final sourceId in this.pageReferences.keys) {
+			if (!eligible.contains(sourceId)) throw ArgumentError.value(sourceId, 'pageReferences', 'Page references require a present selectable non-category Explorer item.');
+		}
+	}
 
 	@override
 	String get definitionId => typeId;
