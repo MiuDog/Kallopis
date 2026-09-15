@@ -189,3 +189,15 @@ APP-CONTRACT-V1-r1：APP-V1-06 剩餘完整 application foreign-internal 邊以2
 REND-HOST-V1-r1 接受 REND-V1-05 的兩個實作里程碑。R1：features 純 Dart typed failure 經既有 viewport sink 由 application 安裝，原始 error/stack 與 origin/phase 送既有 recovery；renderer local input/binding 以捕捉身分且冪等的 detach 在所有 interrupt 結果後 finally 釋放。R2：兩 WebView 使用 controller identity key 與固定 attachment，依上游既有 bind 排他規則只解除自己成功取得的 sender；每個 await 後檢驗存活。BlockNote 開啟成功立即標記，後續 flush/callback 失敗不得重播初始文件；Canva 去重且不新增自動重試或 UI。環境 late result/dispose 只有一次清理及回報。借用的 provider/controller 不 close/save，不新增正文、theme、environment、l10n 或全域 registry 權威。細部已接受 API、失敗歸屬與驗收由同版 path-map 決策定義。R1 只代表部分完成，R1/R2 與整合證據全部通過才完成 REND-V1-05。
 
 具體 API 與本模組寫入路徑见 [配對計畫](../../../docs/architecture/rendering-host-plan/README.md)。REND-HOST-V1-r1 已整合，文字與 WebView 的真實生命週期、原行為、公開／模組邊界及 scope 已通過，見 [驗證](../../../docs/architecture/rendering-host-plan/verification.md)。
+
+## KBF-RENDER-r2b 本輪隔離接線
+
+本次 F2 使用隔離快照中已存在的 legacy Explorer renderer（workspace_components）；EXP-V1-r2 是另一個尚未發布接線stage，此處不藉F2搬移或保留新舊雙API。其實際遷移時需同批搬移pageReferences。KP-R1 的本輪五路徑仍依上表。
+
+Transport 的套件內部型別固定為 KlpBlockNoteFlowTransport，位於 klp_block_note_flow_transport.dart。constructor named required：session（KlpBlockNoteSessionController）、content（KlpBoundBlockNoteEditing Function()）、send（Future<void> Function(Map<String,Object?>)）、onFailure（void Function(Object,StackTrace)）、onStatusChanged（void Function()）。receive(Map<String,Object?>) 同步回 Object? receipt JSON；legacy返回null。configurePages()回Future<void>且拒絕typed unsuccessful result；dispose()使後續回覆失效並取消唯一operationChanges訂閱。blocked getter據目前operationStatus是否idle；acceptsPageDrop getter另要求current onDatabaseDrop存在與未dispose。先訂閱再讀status，按statusVersion去重，不覆寫onChanged。首次已接受interaction用Future event排程在receive返回後派發；callback/save/lock不得延遲receipt。dispatch前和完成後核對attachment存活、hostInstanceId與operationStatus的相關失效世代；barrier後不派發舊事件，不重播已派發callback。send只傳固定interaction.result封套，依wire正確編碼sealed edit結果；失敗保留error/stack送onFailure。renderer輸入事件不能偽造applied。
+
+Drag 的套件內部型別固定為 KlpPageReferenceDrag，位於klp_page_reference_drag.dart。constructor named required sourceIds:Set<KlpId>與pageReferences:Map<KlpId,KrepisPageReference>，複製不可變sourceIds；唯讀page只在sourceIds恰一項且已映射時有值。原Explorer onMove/canMove只接其sourceIds，資料庫目的地只接page；多選絕不取第一頁。klpActivePageReferenceDrag 是僅拖放期間的ValueNotifier<KlpPageReferenceDrag?>，結束時只清除相同carrier；不是session、catalog或正文registry。
+
+正式Web封閉私有端點 window.kallopisBlockNote.probeDatabaseDrop(point, source?, commit=false)：point={x,y,width,height}為Flutter宿主矩形中的logical座標，JS以當前viewport換算CSS座標，從實際DOM重驗database/view/row，回null或{hostInstanceId,databaseId,viewId,rowIndex,expectedVersion}。source是完整Page，只在commit=true必填。preview不配置interaction也不改正文；release必須重新hit-test後只發一次typed database.drop，絕不直接insert。回傳placement不是成功edit ack。probe須受gate、attachment與pointer attempt次序控制；並行preview的late response不得復活已離開的目標。座標只在rendering與Web之間使用，不進consumer callback。
+
+本輪測試仍僅test/klp_block_note_flow_host_test.dart、test/klp_page_reference_drop_test.dart；正式Web測試補純probe與release事件/零正文變更，Flutter假平台驗receipt-before-callback、observer ownership、source single/multi、release re-probe和dispose晚到；原生跨WebView drag與視覺為human-pending。
