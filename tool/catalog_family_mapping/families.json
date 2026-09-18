@@ -2,8 +2,8 @@
 	"schemaVersion": 1,
 	"classificationRevision": "0fcf54782b0fc0013a296bd4d505a85fd50ffd1a",
 	"classificationSha256": "e837e0d6be2ee36dbba4a94bb4869c1989050b232d3c0fefa640435ffcb07de8",
-	"reviewStatus": "proposed",
-	"acceptedAt": null,
+	"reviewStatus": "accepted",
+	"acceptedAt": "2026-09-18T22:11:27+08:00",
 	"families": [
 		{"id":"FAM-ACTION-COMMAND-MENU","title":"命令搜尋與執行","consumerJob":"搜尋並執行目前上下文允許的命令。","compositionLevel":"container","dataInvariants":["命令具有穩定身分、標籤、可用狀態與語意群組。"],"eventContract":"以單一命令 intent 回報選取的命令身分。","lifecycleContract":"查詢與目前命令集合隨 projection 更新；暫態選取由Kallopis管理。","members":["KlpCommandMenu"],"roles":[]},
 		{"id":"FAM-ACTION-DOCUMENT-EDIT","title":"文件編輯動作群組","consumerJob":"提供目前文件內容可以執行的編輯動作。","compositionLevel":"container","dataInvariants":["動作具有穩定身分、可用狀態與文件上下文。"],"eventContract":"以文件動作 intent 回報被啟用的操作。","lifecycleContract":"動作集合隨文件狀態重新宣告，不持有文件資料權威。","members":["KlpDocumentEditActions"],"roles":[{"id":"actions","purpose":"文件編輯操作。","acceptedFamilyIds":["FAM-ACTION-TRIGGER","FAM-SYSTEM-SHORTCUT-HINT"],"min":1,"max":null,"orderMeaning":"consumer-semantic"}]},

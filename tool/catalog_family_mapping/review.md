@@ -2,8 +2,8 @@
 
 > 此頁由已接受的固定分類與 `families.json` 產生，請勿手動修改。Family 接受不代表公開處置、module ownership 或 migration 完成。
 
-- Family 狀態：`proposed`
-- 接受時間：`尚未接受`
+- Family 狀態：`accepted`
+- 接受時間：`2026-09-18T22:11:27+08:00`
 - Classification revision：`0fcf54782b0fc0013a296bd4d505a85fd50ffd1a`
 - Classification SHA-256：`e837e0d6be2ee36dbba4a94bb4869c1989050b232d3c0fefa640435ffcb07de8`
 - 固定 legacy members：`254`

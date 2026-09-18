@@ -1,6 +1,6 @@
 # Catalog capability family mapping
 
-狀態：`SCL-FAM-r1` PLAN READY。Owning module 是 Catalog migration governance；本階段只把已接受的固定 254 項形成 capability families，並固定每個公開 family 的 exact semantic roles。公開處置、Dart 名稱、owning module 與 runtime migration 均不在本階段。
+狀態：`SCL-FAM-r1` ACCEPTED。固定 254 項已形成 161 個 capability families，127 個公開 families 透過 281 條 exact semantic role edges 全部可由 screen 到達；使用者於 2026-09-18 接受。公開處置、Dart 名稱、owning module 與 runtime migration 仍不屬於本階段。
 
 ## 目的、非目標與階段
 
@@ -143,14 +143,14 @@ Verifier 對真實資料與獨立 test 都 Green；review 顯示每個 family �
 
 估算：6k–12k tokens／45–90 分鐘，參考 `SCL-TAX-V`，historical adjusted。M1 schema／membership verifier（3k–6k／25–50 分）；M2 graph verification（5k–10k／40–75 分）；M3 deterministic review（6k–12k／45–90 分）。超過 18k／130 分鐘或 verifier 開始判斷語意好壞即異常，縮回 deterministic evidence。
 
-### `SCL-FAM-A` — Human acceptance
+### `SCL-FAM-A` — Human acceptance（已完成）
 
-Family architect 只在使用者審閱 generated review 並明確接受後更新 `reviewStatus` 與 `acceptedAt`，再執行 `--require-accepted`。這個 slice 不修改 family 內容，不授權 disposition、module mapping 或 runtime BUILD。
+使用者於 2026-09-18 以「下一步」確認 generated review；Family architect 更新 `reviewStatus` 與 `acceptedAt`，再執行 `--require-accepted`。這個 slice 不修改 family 內容，只解除 disposition／module mapping PLAN 的前置條件。
 
 ## 驗證狀態、保護與 readiness
 
-目前 test state 為 Red 尚未建立：已接受 classification 已具 254/254 前置證據，但 family graph、獨立 test、verifier 與 review 都尚不存在。第一個 BUILD slice 必須是 `SCL-FAM-T`。
+目前 test state 為 Green：254/254 membership、161 個 family、四層合法邊、127/127 public reachability、deterministic review 與 accepted gate 均已通過。這仍不代表任何 family 已取得 module owner、公開處置或 runtime migration 證據。
 
 受保護：`spec/**`、`tool/catalog_classification/**`、`docs/architecture/catalog-migration/legacy-baseline.json`、`coverage.json`、`lib/**`、`example/**`、reference site、既有 migration evidence、非當前 slice tests 與本 `architecture.md`。各 worker 只能修改 slice 明列路徑。
 
-TAX-08、TAX-11～15 在此階段需要的 family boundary、四層合法邊、exact roles 與 human acceptance 均已映射到 owner、資料契約、slice 與證據；TAX-09 的 disposition 明確保留到 family 接受後。依賴方向一致，下一 slice `SCL-FAM-T` 無未決 P1 架構選擇，因此 `SCL-FAM-r1` 為 PLAN READY。
+TAX-08、TAX-11～15 在此階段需要的 family boundary、四層合法邊、exact roles 與 human acceptance 已全部完成，`SCL-FAM-r1` 封閉。TAX-09 的 disposition 與 TAX-08 的單一 owning module 現在可進入下一個 PLAN；runtime BUILD 仍未授權。
