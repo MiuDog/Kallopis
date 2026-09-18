@@ -1,10 +1,10 @@
 # Catalog classification tool
 
-狀態：`CAT-TAX-01` PLAN REVISION REQUIRED。接受規格已新增 TAX-11～15 的公開語意邊界；現有 254 筆 proposed 資料與 review 是重審輸入，不是可接受結果。下一個 PLAN 必須把資料／功能群組注入、語意原子受控組合與 Kallopis 元件樹所有權的全項 role／intent 稽核納入 slice，仍不決定 owning module、公開 API 或 migration 處置。
+狀態：`SCL-TAX-r1` PLAN READY。完整四層結構、合法邊、跨模組責任、當前 slices、估算及 runtime gate 見 [`semantic-composition-layer-plan`](../../docs/architecture/semantic-composition-layer-plan/README.md)。現有 254 筆 proposed 資料與 review 是重審輸入，不是可接受結果。
 
 ## 目的與邊界
 
-本 module 把固定 baseline 中的每個 legacy 項目轉成一筆分類記錄：consumer intent、一個 primary category、零至多個 secondary categories，以及一個 catalog role。分類服務 consumer 導航；baseline 繼續擁有固定名稱與來源，coverage 繼續擁有 migration 狀態。
+本 module 把固定 baseline 中的每個 legacy 項目轉成一筆分類記錄：consumer intent、一個 primary category、零至多個 secondary categories、一個 catalog role，以及一個 screen／layout／container／element／internal／none 的 public composition level candidate。分類服務 consumer 導航與後續 family formation；baseline 繼續擁有固定名稱與來源，coverage 繼續擁有 migration 狀態。
 
 非目標：不修改 254 分母、coverage、public Dart surface、renderer、style、Catalog specimen 或舊 API；不產生 owner、module、package、layer、disposition、replacement 等後續階段欄位。已完成的 2 migrated／1 preserved 保持原證據。
 
@@ -42,15 +42,17 @@ dart run tool/catalog_classification/render_review.dart
 
 ## 資料契約與不變條件
 
-`classification.json` 頂層固定為 `schemaVersion`、`specRevision`、`reviewStatus`、`acceptedAt`、`items`。每個 item 只包含：
+`classification.json` schema v2 頂層固定為 `schemaVersion`、`specRevision`、`reviewStatus`、`acceptedAt`、`items`。每個 item 只包含：
 
 - `legacyName`：與 baseline 唯一名稱精確相等。
 - `consumerIntent`：不以 class、資料夾、module 或 layer 描述用途的非空句子。
 - `primaryCategory`：接受規格中的 18 個 ID 之一。
 - `secondaryCategories`：穩定排序、無重複、不可含 primary 的 0 至多個接受 ID。
 - `role`：`consumer-capability`、`composition-part`、`system-contract`、`implementation-material` 或 `catalog-artifact` 之一。
+- `compositionLevel`：`screen`、`layout`、`container`、`element`、`internal` 或 `none` 之一；這是 public-layer candidate，不是 disposition。
+- `compositionRationale`：不以現有資料夾或 renderer 形狀判斷，說明 consumer 注入的資料／功能、合法直接 parent，或沒有 public composition level 的原因。
 
-items 依 `legacyName` 排序。baseline 與 classification 名稱集合必須完全相等且恰為 254；分類不得出現 `owner`、`module`、`package`、`layer`、`disposition`、`replacement` 或同義欄位。Verifier 不從舊頁面、來源路徑或舊能力 map 自動決定分類。
+items 依 `legacyName` 排序。baseline 與 classification 名稱集合必須完全相等且恰為 254；分類不得出現 `owner`、`module`、`package`、一般 architecture `layer`、`disposition`、`replacement` 或同義欄位。唯一允許的結構層欄位是上述 `compositionLevel`。Verifier 不從舊頁面、來源路徑或舊能力 map 自動決定分類。
 
 `specRevision` 必須指向包含已接受 TAX-01～15 的 Git commit。`reviewStatus=proposed` 可以通過資料完整性，但不能解除 migration 暫停；只有 254 筆依新語意邊界重審、重新產生 review 並由使用者審閱後，才能更新為 accepted。
 
@@ -70,11 +72,11 @@ accepted taxonomy spec + immutable legacy baseline
 
 ## 當前 slices
 
-### `TAX-R` — Semantic exposure re-audit
+### `SCL-TAX-r1` — Semantic composition level re-audit
 
-寫入：更新本 architecture 後另行指定的 classification／review 路徑。逐項套用 TAX-11～15，特別重審所有 layout、surface、List／Grid／Masonry／virtualization 與任意 children 候選；判斷 consumer 注入的是語意原子、封閉資料／功能群組，還是實際上仍在組裝元件樹。不得把舊 class 名稱直接視為公開能力，也不得強迫每項支援多 view。輸出仍保持 `reviewStatus=proposed`，等待人類接受。
+依配對計畫依序執行 `SCL-TAX-T → SCL-TAX-D → SCL-TAX-V → SCL-TAX-A`。逐項套用 TAX-11～15 與四層合法邊，特別重審所有 layout、surface、List／Grid／Masonry／virtualization 與任意 children 候選；判斷 consumer 注入的是 screen、layout role、container projection、element data，還是實際上仍在組裝元件樹。不得把舊 class 名稱直接視為公開能力，也不得強迫每項支援多 view。
 
-本 slice 尚未 PLAN READY；需要先更新 testable metadata 與 write boundary。以下已完成 slices 保留為歷史證據，不代表新版語意審核完成。
+精確 write paths、role-level consistency、里程碑、估算與異常門檻以 [`semantic-composition-layer-plan`](../../docs/architecture/semantic-composition-layer-plan/README.md) 為準。輸出保持 `reviewStatus=proposed`，直到人類接受。
 
 ### `TAX-T` — Independent Test Author（已完成，待新契約擴充）
 
@@ -102,4 +104,4 @@ taxonomy owner 僅在使用者審閱 generated `review.md` 並明確接受後，
 
 當前 test state 為 Yellow：舊分類的 contract test、verifier 與 deterministic review 已 Green，但 TAX-11～15 尚未反映到逐項資料與可機械審閱的 metadata。既有 254/254 只證明集合完整，不證明公開語意邊界正確；人類分類語意接受另列，不由程式推定。
 
-受保護：`spec/**`、`docs/architecture/catalog-migration/legacy-baseline.json`、`coverage.json`、既有 migration evidence、`lib/**`、`example/**`、其他 tests、build 設定與本 `architecture.md`。目前停止 BUILD；下一步由 PLAN 更新 TAX-R 的資料欄位、獨立檢查、write paths 與驗收，不得直接修改 runtime API。
+受保護：`spec/**`、`docs/architecture/catalog-migration/legacy-baseline.json`、`coverage.json`、既有 migration evidence、`lib/**`、`example/**`、其他 tests、build 設定與本 `architecture.md`。目前只授權 `SCL-TAX-r1`；不得直接修改 runtime API。

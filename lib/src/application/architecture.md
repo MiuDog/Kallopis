@@ -1,5 +1,9 @@
 # Application 模組架構
 
+## SCL：Screen root boundary
+
+架構目標已接受，runtime BUILD gated。依 [`screen → layout → container → element`](../../../docs/architecture/semantic-composition-layer-plan/README.md)，application 只擁有 application／router／screen root；每個 screen 最終只接受一個 Kallopis-owned root layout，不得直接接受 container、element、generic node 或 Widget。具體 constructor 替換等待固定分類與 family mapping，不併入既有 SFC packet。
+
 ## SFC-V1-r1：Application visual authority
 
 當前新增 stage 狀態：PLAN READY。精確契約與配對順序見 [SFC-V1-r1](../../../docs/architecture/semantic-feature-contract-plan/README.md)。

@@ -1,5 +1,9 @@
 # Rendering 模組架構
 
+## SCL：Private visual tree
+
+架構目標已接受，runtime BUILD gated。依 [`screen → layout → container → element`](../../../docs/architecture/semantic-composition-layer-plan/README.md)，rendering 可在任何公開層的實作內自由使用 Row／Column／Stack／sliver／overlay 等平台容器，但只能消費 immutable bound records；不得把 Widget tree、geometry、builder、style 或跨層 child 能力回傳至 public API。具體 renderer 替換等待 family packets。
+
 ## CAT-MIG-02：移除未使用的 legacy WindowControls bridge
 
 狀態：PLAN READY。現行 `KlpFlutterRenderer` 對 `KlpBoundWindowControls` 的唯一 dispatch 位於 `flutter/internal/klp_flutter_workspace_components.dart`，直接消費 bound 色彩、尺度、文字與 callback。`flutter/internal/klp_flutter_window_controls.dart` 沒有 import caller，仍自行採樣 runner 狀態並橋接 legacy theme／Widget，違反單一新版呈現路徑且已無責任。

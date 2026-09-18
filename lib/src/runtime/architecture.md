@@ -1,5 +1,9 @@
 # 執行階段（runtime）模組架構
 
+## SCL：Validated level consumption
+
+架構目標已接受，runtime BUILD gated。依 [`screen → layout → container → element`](../../../docs/architecture/semantic-composition-layer-plan/README.md)，runtime 只消費 composition 已驗證的合法層級與 role snapshot，不能自動包裝、補 child、重排或修正跨層結構。Runtime 不取得 feature data 或 public level 定義權；確切 compilation 變更等待分類與 family mapping。
+
 Status: PLAN READY — v1 的通用封閉目錄 runtime，以及與 foundation、composition、features 和 application 配對的介面邊界均已接受
 
 阻擋中的架構決策：無。BUILD 仍依下列已接受的配對切片分開執行。

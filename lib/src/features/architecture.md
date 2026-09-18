@@ -1,5 +1,9 @@
 # Features 模組架構
 
+## SCL：Layout／container／element ownership
+
+架構目標已接受，runtime BUILD gated。依 [`screen → layout → container → element`](../../../docs/architecture/semantic-composition-layer-plan/README.md)，features 最終擁有 concrete semantic layouts、feature containers、immutable element data、single feature intent 與 optional controller。Layout 只公布具名 typed container roles；container 只接自身 schema 的 element data；element 不再是可任意放置的 node。Row／Column／Stack 等只可出現在 private renderer。精確 family 與 paths 等固定 254 項分類接受後再 PLAN，不併入既有 SFC packet。
+
 ## SFC-V1-r1：Semantic feature consumer contract
 
 當前階段狀態：PLAN READY。精確公開形狀、生命週期、錯誤、配對 packets、估算與異常門檻見 [SFC-V1-r1 配對計畫](../../../docs/architecture/semantic-feature-contract-plan/README.md)。本節接替下方已完成 v1 目錄切片的「當前階段」描述，但不改寫其實作證據。

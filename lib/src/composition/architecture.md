@@ -1,5 +1,13 @@
 # 組合（composition）模組架構
 
+## SCL：四層公開結構
+
+架構目標已接受，當前 runtime BUILD 尚未授權。共通計畫為 [`screen → layout → container → element`](../../../docs/architecture/semantic-composition-layer-plan/README.md)；目前只執行固定 254 項的 `SCL-TAX-r1` 層級重審。
+
+Composition 將擁有四層 vocabulary、封閉 catalog metadata、capture 與合法直接邊驗證，但不擁有 feature data。唯一合法公開結構邊為 screen→layout、layout→container、container→element data；跳層、逆向、同層、循環與 generic recursive children 均拒絕。現行 `KlpNode`／`KlpCompositeNode`／slot／children 公開 authoring 面及任意 node list 是已知 migration gap，不能作為新版 family 的目標 API。
+
+確切 public qualification 與 capture 替換須等待 classification、family、disposition 與 module ownership 接受；不得在本 module 先建立萬用 `KlpLayout`／`KlpContainer`／`KlpElement` 或修改 runtime。
+
 Status: PLAN READY — v1 的封閉目錄目標，以及與 capabilities、foundation、runtime 和 application 配對的介面邊界均已接受
 
 阻擋中的架構決策：無。BUILD 仍依下列已接受的配對切片分開執行。
