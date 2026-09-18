@@ -18,7 +18,7 @@ Catalog 必須先回答 consumer「我要完成哪一類產品工作」，不能
 | --- | --- | --- | --- | --- | --- |
 | TAX-01 | CAT-TAX-01 | P1 | 分類依 consumer 產品意圖，不依現有資料夾、架構層或舊 Catalog 頁面。 | 每項分類理由能以「consumer 用它完成什麼」描述；移動原始碼不改變分類。 | accepted |
 | TAX-02 | CAT-TAX-01 | P1 | 分類、能力家族、公開處置、module ownership 分階段決定。 | 逐項資料在分類接受前沒有正式 owner；module 欄位不能作為分類輸入。 | accepted |
-| TAX-03 | CAT-TAX-01 | P1 | 採用本規格提出的 16 個第一層分類。 | 254 項各有且只有一個 primary category；無法歸類者必須回到分類定義，不得用 `misc`。 | open |
+| TAX-03 | CAT-TAX-01 | P1 | 採用本規格經 254 項壓力測試後提出的 18 個第一層分類。 | 254 項各有且只有一個 primary category；無法歸類者必須回到分類定義，不得用 `misc`。 | open |
 | TAX-04 | CAT-TAX-01 | P1 | 跨用途項目採一個 primary category 加零至多個 secondary tags；primary 依主要 consumer 任務決定。 | 同一項不複製計數；secondary tag 不產生第二個 owner 或第二份公開 API。 | open |
 | TAX-05 | CAT-TAX-01 | P1 | 每項另標記 catalog role，區分可直接選用能力與應被吸收的實作材料。 | 低階 layout／interaction／surface class 不會只因有 demo 就被當成新版公開元件承諾。 | accepted |
 | TAX-06 | CAT-TAX-01 | P1 | 固定 254 項全部完成分類與理由後，才允許建立能力家族與 module ownership。 | 有機械檢查證明 254/254 皆具合法 primary category、role、consumer intent 與來源；owner 欄仍為空。 | accepted |
@@ -35,20 +35,38 @@ Catalog 必須先回答 consumer「我要完成哪一類產品工作」，不能
 | --- | --- | --- | --- | --- |
 | `CAT-APP` | 應用與工作區 | 如何建立 app、screen、window 與主要工作區？ | app root、screen、window chrome、workspace shell、主要 pane | 純排列工具進 `CAT-LAYOUT`；跨平台規則進 `CAT-SYSTEM` |
 | `CAT-LAYOUT` | 布局與組成 | 如何安排區域、容器、分割、捲動與響應結構？ | row／column、frame、surface、split、resize、dock、region | 具明確業務意圖的完整 workspace view 不放這裡 |
-| `CAT-NAV` | 導覽與探索 | 如何前往、切換或尋找另一個位置／內容？ | tabs、rail、sidebar navigation、breadcrumb、pagination、Explorer 導覽用途 | 資料集合本身進 `CAT-DATA`；命令搜尋進 `CAT-ACTION` |
+| `CAT-NAV` | 導覽與探索 | 如何前往、切換或探索另一個位置／內容？ | tabs、rail、sidebar navigation、breadcrumb、pagination、Explorer 導覽用途 | 查詢、篩選與排序進 `CAT-SEARCH`；資料集合本身進 `CAT-DATA` |
 | `CAT-ACTION` | 動作與命令 | 如何讓使用者觸發、選擇或批次執行操作？ | button、toolbar、command、menu action、selection action | 欄位值輸入進 `CAT-FORM`；暫態承載表面進 `CAT-OVERLAY` |
-| `CAT-DATA` | 資料與集合 | 如何呈現、選取、排序或瀏覽結構化資料？ | list、tree、table、grid、card、badge、avatar、metric | 時間規劃 view 進 `CAT-PLAN`；圖表進 `CAT-CHART` |
+| `CAT-DATA` | 資料與集合 | 如何呈現、選取或瀏覽結構化資料？ | list、tree、table、grid、card、badge、avatar、metric | 查詢與排序進 `CAT-SEARCH`；時間規劃 view 進 `CAT-PLAN`；圖表進 `CAT-CHART` |
+| `CAT-SEARCH` | 搜尋與篩選 | 如何查找、縮小、排序並定位資料或命令？ | search input、filter、sort、result navigation、command lookup | 導覽結構進 `CAT-NAV`；底層集合與 selection 進 `CAT-DATA` |
 | `CAT-FORM` | 表單與輸入 | 如何輸入、編輯、驗證與提交結構化值？ | field、text／number／date input、selection、form assembly、picker | 文件正文編輯進 `CAT-DOC`；檔案生命週期進 `CAT-FILE` |
 | `CAT-FEEDBACK` | 狀態與回饋 | 如何表達 loading、empty、error、permission、progress 與結果？ | view state、notice、toast、progress、skeleton、status | 不把單一控制的 hover／focus 拆成獨立項目 |
 | `CAT-OVERLAY` | 浮層與暫態介面 | 如何在目前上下文上顯示暫態內容？ | dialog、popover、tooltip、context menu、drawer、modal、overlay host | 內部 surface primitive 只標 role，不自動成為公開能力 |
 | `CAT-DOC` | 文件、內容與編輯 | 如何閱讀、編輯與組織筆記、長文、程式碼與引用？ | prose、rich text、document section、editor host、code/diff | 檔案選取與資產解析進 `CAT-FILE` |
 | `CAT-PLAN` | 規劃與時間 | 如何處理日期、排程、任務、流程與時間軸？ | calendar、schedule、task、board、timeline、stepper、workflow | 一般集合控制仍進 `CAT-DATA` |
+| `CAT-SETTINGS` | 設定與偏好 | 如何瀏覽、搜尋與修改 app 或工作區偏好？ | settings page、scope、navigation、field、action、theme preference | 泛用欄位仍進 `CAT-FORM`；視覺規格與 token 工具進 `CAT-VISUAL` |
 | `CAT-FILE` | 檔案與資產 | 如何選取、預覽、解析、拖放或附加檔案資產？ | file field、dropzone、preview、asset resolution、file explorer 資產用途 | 一般樹狀導覽進 `CAT-NAV` |
 | `CAT-COLLAB` | 溝通與協作 | 如何呈現訊息、討論、presence、mention 與協作狀態？ | conversation、thread、composer、presence、comment | session、權限、同步與身分權威仍由產品擁有 |
 | `CAT-CANVAS` | 畫布、圖解與手寫 | 如何在空間畫布上選取、繪製、連接或手寫？ | infinite canvas、diagram、node、minimap、stroke、tool | 一般拖放只作 secondary system tag |
 | `CAT-CHART` | 圖表與資料視覺化 | 如何把數值資料轉為可探索的視覺表達？ | chart、axis、legend、series、selection、zoom、a11y summary | metric card 屬 `CAT-DATA`，除非其主要任務是圖表探索 |
 | `CAT-SYSTEM` | 無障礙、輸入與平台適應 | 如何保證鍵盤、焦點、語意、IME、pointer 與平台差異？ | accessibility、focus、key binding、drag/drop mechanics、adaptive platform、window host | 通常作 secondary tag；只有直接面向該任務的清冊項才作 primary |
 | `CAT-VISUAL` | 視覺語言與體驗 | 如何理解品牌、token、文字、surface、狀態與動畫規範？ | token view、theme preview、色彩工具、visual contract artifact | consumer 不取得 style override；一般元件的外觀仍留在其主要功能分類 |
+
+## 固定清冊壓力測試
+
+現有舊對照把 254 項分成 25 個能力 ID；它只用來檢查新分類是否有缺口，不作分類權威。18 類能承接所有舊 ID，但下列群組證明不能直接整組搬運：
+
+| 舊群組 | 代表項目 | 新分類時必須拆分的原因 |
+| --- | --- | --- |
+| `OVR-MENU` | `KlpMenu`、`KlpMenuItem` | 主要任務是選擇／執行動作，建議 primary 為 `CAT-ACTION`；浮層只作 secondary tag。 |
+| `SEARCH-FILTER` | `KlpFilterBar`、`KlpSearchNavigator`、`KlpSettingsSearchField`、`KlpSortControl` | 前三者分別可能服務資料、全域尋找或設定；新增 `CAT-SEARCH` 讓主要查詢任務有一致入口，設定專用項仍可歸 `CAT-SETTINGS`。 |
+| `WKS-BLOCKS` | 九個 `KlpSettings*` 項目 | 舊名把設定功能誤當 workspace block；其 consumer 任務其實是設定與偏好，因此新增 `CAT-SETTINGS`。 |
+| `WKS-WINDOW` | `KlpWindowControls`、`KlpWindowHeaderMacLayout` | 前者是 app/window 任務；平台 layout 多半是 implementation material 或 system contract，不能因同一舊群組得到相同公開處置。 |
+| `FORM-SELECTION` | `KlpDateField`、`KlpOklchColorEditor`、`KlpThemeModePicker` | 日期值輸入、視覺設計工具、使用者偏好雖都有 selection UI，consumer 任務不同。 |
+| `STYLE-EXPERIENCE` | `KlpIcon`、`KlpText`、`KlpThemePreviewTile`、`KlpDashedBorder` | 一般內容能力、Catalog artifact 與低階視覺材料必須靠 role 分開，不能全部承諾為可自訂 style API。 |
+| `ACCESS-INPUT` | `KlpShortcutHint`、`KlpFocusBoundary`、`KlpDragPreview` | 可見提示、系統契約與 implementation material 需分別判斷 primary 與 role；多數跨切面性質只作 secondary tag。 |
+
+這個檢查也支持單一 primary：若讓每項同時屬於多個第一層分類，Menu、日期欄位、檔案 Explorer、theme picker 與 window controls 都會重複出現在多處，無法維持 254 項的一對一審核，也會再次把分類誤當多 module ownership。
 
 ## Catalog role
 
@@ -86,7 +104,7 @@ role 與分類正交，每個固定項目必須擇一：
 
 ## Open P1
 
-- `TAX-03`：是否接受上述 16 個第一層分類。
+- `TAX-03`：是否接受上述 18 個第一層分類。
 - `TAX-04`：是否接受「一個 primary category＋secondary tags」而不是讓同一項同時屬於多個第一層分類。
 
 兩項接受後，本規格才可標記 DEFINE READY；下一階段只會建立 254 項分類清冊與 verifier，不會同時決定 module。
