@@ -68,6 +68,41 @@ Catalog 必須先回答 consumer「我要完成哪一類產品工作」，不能
 
 這個檢查也支持單一 primary：若讓每項同時屬於多個第一層分類，Menu、日期欄位、檔案 Explorer、theme picker 與 window controls 都會重複出現在多處，無法維持 254 項的一對一審核，也會再次把分類誤當多 module ownership。
 
+### 25 個舊能力群組的覆蓋投影
+
+下表覆蓋舊對照中的全部 254 項。`直接`只表示群組意圖大致單一，仍須逐項寫 consumer intent；`拆分`表示不能整組搬入同一分類。候選分類不等於正式 assignment。
+
+| 舊能力 ID | 項數 | 候選分類 | 結果 |
+| --- | ---: | --- | --- |
+| `ACCESS-INPUT` | 15 | `CAT-SYSTEM`、個別 `CAT-ACTION` | 拆分 |
+| `ACT-CONTROLS` | 10 | `CAT-ACTION` | 直接 |
+| `APP-ADAPT` | 1 | `CAT-SYSTEM` | 直接 |
+| `APP-NAV` | 1 | `CAT-NAV` | 直接 |
+| `APP-ROOT` | 1 | `CAT-APP` | 直接 |
+| `CANVAS-DRAWING` | 7 | `CAT-CANVAS` | 直接 |
+| `COMM-COLLAB` | 5 | `CAT-COLLAB` | 直接 |
+| `DATA-COLLECTIONS` | 15 | `CAT-DATA`、個別 `CAT-DOC` | 拆分 |
+| `FEEDBACK-STATES` | 17 | `CAT-FEEDBACK` | 直接 |
+| `FILE-ASSET` | 8 | `CAT-FILE` | 直接 |
+| `FORM-INPUT` | 24 | `CAT-FORM`、個別 `CAT-FILE` | 拆分 |
+| `FORM-SELECTION` | 21 | `CAT-FORM`、`CAT-VISUAL`、`CAT-SETTINGS` | 拆分 |
+| `LAY-WORKSPACE` | 39 | `CAT-LAYOUT`、個別 `CAT-APP` | 拆分 |
+| `NAV-SHELL` | 15 | `CAT-NAV` | 直接 |
+| `NOTE-CONTENT` | 12 | `CAT-DOC` | 直接 |
+| `OVERLAY-SURFACES` | 11 | `CAT-OVERLAY` | 直接 |
+| `OVR-MENU` | 2 | `CAT-ACTION`，secondary `CAT-OVERLAY` | 直接但更換主分類 |
+| `PLAN-VIEWS` | 8 | `CAT-PLAN` | 直接 |
+| `SEARCH-FILTER` | 4 | `CAT-SEARCH`、個別 `CAT-SETTINGS` | 拆分 |
+| `STYLE-EXPERIENCE` | 19 | `CAT-VISUAL`、`CAT-LAYOUT`、`CAT-DOC`、`CAT-SETTINGS` | 拆分 |
+| `VIS-CHARTS` | 1 | `CAT-CHART` | 直接 |
+| `WKS-BLOCKS` | 9 | `CAT-SETTINGS` | 直接但修正舊語意 |
+| `WKS-EXPLORER` | 1 | `CAT-NAV`，secondary `CAT-FILE` | 直接 |
+| `WKS-TABS` | 2 | `CAT-NAV`，secondary `CAT-DOC` | 直接 |
+| `WKS-WINDOW` | 6 | `CAT-APP`、`CAT-SYSTEM` | 拆分 |
+| **合計** | **254** | 18 類皆有可達路徑 | 無遺漏；正式分類仍待 TAX-03／04 接受 |
+
+投影結果顯示 17 個舊群組可大致直接轉入，8 個必須逐項拆分；因此不能用舊能力 ID 批次生成正式分類。18 類沒有出現需要 `misc` 的舊群組，也沒有要求先知道 module 才能分類的項目。
+
 ## Catalog role
 
 role 與分類正交，每個固定項目必須擇一：
