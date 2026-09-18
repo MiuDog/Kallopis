@@ -115,6 +115,8 @@ Kallopis 對 consumer 只暴露封閉的產品輸入與語意互動契約，不�
 
 `KlpExplorer` 只保留 `id`、`data`、`onIntent` 與可選 `controller`。`actionsLabel`、`expandLabel`、`collapseLabel`、`onSelectionChanged`、`onActivate`、`onExpandedChanged`、`canDrop` 與 `onDrop` 全部移除；通用 chrome 字串改由 Kallopis l10n 提供。
 
+唯一 `KlpLocalizations` 增加 Explorer 的 actions／expand／collapse，以及 Document Tabs 的 modified／pin／unpin／close chrome 字串。這是既有 l10n 權威的加法擴充，不建立 feature 私有字串來源，也不讓 consumer 以 feature constructor 注入 chrome 文案。
+
 `KlpExplorerIntent` 的 r1 封閉變體：
 
 - `KlpExplorerSelectionRequested`：scope ID、proposed selected IDs 與 proposed anchor ID。
@@ -201,11 +203,12 @@ consumer declaration
 | --- | --- | --- | --- | --- |
 | `SFC-V1-T` | Independent Test Author | 新增 semantic feature／public boundary 測試與專用 fixtures；不改 production | 真實 Red：application 仍要求 primitives、style exports 可達、Explorer／Tabs 仍有多 callback／permission callback／old tab node；保留現有功能行為的正向驗收。 | 每個 Red 在 baseline 因目標違約失敗，不因缺檔或無關編譯錯誤失敗；測試 worker 不寫 production。 |
 | `SFC-V1-APP` | Application | `lib/src/application/structure/klp_application.dart`、`lib/src/application/environment/klp_application_environment.dart`、`lib/src/application/environment/klp_application_environment_observer.dart`、`lib/src/application/bootstrap/internal/klp_application_host_state.dart`、`lib/src/application/bootstrap/internal/klp_application_session.dart`、`lib/src/application/bootstrap/internal/klp_application_session_commit.dart` | 移除 public primitives 輸入；由既有唯一環境觀察器取得 appearance，session 保存提交輸入，Kallopis 宿主選擇唯一內建呈現來源。 | light／dark 選擇與平台亮度變更重投影具確定性、沒有 consumer style input；同一次提交只用一份 appearance，導覽、l10n、environment 單一權威不變。 |
+| `SFC-V1-L10N` | Foundation | `lib/src/foundation/localization/klp_localizations.dart` 與直接 localization contract test | 在唯一 l10n authority 增加 Explorer／Document Tabs chrome 字串。 | 預設文字保持現有輸出；copyWith-like constructor、equality／hash 及 delegate 路徑仍使用同一份 `KlpLocalizations`，feature constructor 沒有文案逃生口。 |
 | `SFC-V1-F` | Features | `lib/src/features/workspace/explorer/**`、`lib/src/features/workspace/components/klp_document_tabs.dart`、兩者直接的 workspace presentation／adapter contract | 新 data／intent／controller 形狀、純資料 drop／command 許可、frame-leased 單一 intent。 | 建構驗證、快照不可變、intent 窮盡、controller 附接生命週期，且沒有舊 callback 或 consumer query callback。 |
 | `SFC-V1-R` | Rendering | `lib/src/rendering/flutter/internal/klp_flutter_explorer.dart`、承載 tabs 的 workspace renderer 分支與直接 helper | 現有指標、鍵盤、焦點、drag／drop、tabs 操作改為 intent／controller port，視覺保持。 | 事件次數、disabled／stale lease、drag acceptance snapshot、focus／reveal result、semantics 與幾何行為沒有感官 golden。 |
 | `SFC-V1-I` | Integration Steward | `lib/kallopis_declarative.dart`、application adapter catalog／feature ownership metadata 的受影響列、直接 consumer 範例／Catalog／reference | 移除 style／callback 舊入口，接入新公開類型，將其餘 gap 誠實標示 non-conforming。 | 公開匯出清冊、封閉 catalog、負向編譯、Catalog 真實互動、reference 連結；Stable legacy 匯出不變。 |
 
-執行順序為 `SFC-V1-T → SFC-V1-APP → SFC-V1-F → SFC-V1-R → SFC-V1-I`。Test Author 首先凍結 Red，Features 先發布 bound／port 契約才能讓 Rendering 實作；Integration 最後才替換 barrel 與範例，避免暫時對 consumer 公開不完整形狀。
+執行順序為 `SFC-V1-T → SFC-V1-APP → SFC-V1-L10N → SFC-V1-F → SFC-V1-R → SFC-V1-I`。Test Author 首先凍結 Red；Foundation 先補齊唯一 chrome 字串來源，Features 再發布 bound／port 契約供 Rendering 實作；Integration 最後才替換 barrel 與範例，避免暫時對 consumer 公開不完整形狀。
 
 ## 任務估算與里程碑
 
@@ -215,6 +218,7 @@ consumer declaration
 | --- | ---: | ---: | --- | --- |
 | `SFC-V1-T` | 6k–12k | 45–90 分 | M1 公開 Red（3k／25 分）；M2 行為／生命週期 Red 與正向保留（6k–12k／45–90 分） | 任一 Red 來自缺檔或必須修 production，立即回報。 |
 | `SFC-V1-APP` | 6k–12k | 45–90 分 | M1 private appearance snapshot 與 host-owned preset（3k–6k／25–50 分）；M2 亮度變更重投影與 application API Green（6k–12k／45–90 分） | 需新增第二 theme／environment 權威、公開 appearance selector 或超過 12k／90 分。 |
+| `SFC-V1-L10N` | 2k–4k | 15–30 分 | M1 欄位／預設／相等性（1k–2k／10–20 分）；M2 localization contract Green（2k–4k／15–30 分） | 需新增另一份 localization authority、feature constructor 文案或超過 4k／30 分。 |
 | `SFC-V1-F` | 12k–24k | 90–180 分 | M1 Explorer data／intent／drop／command（10k／75 分累計）；M2 controller／Tabs／adapter／bound（12k–24k／90–180 分） | 必須修改第三個 feature family、新建萬用基類或超過 24k／180 分。 |
 | `SFC-V1-R` | 10k–20k | 75–150 分 | M1 intents／drag／tabs（8k／60 分累計）；M2 controller lifecycle／semantics／局部 Green（10k–20k／75–150 分） | 必須改全域 renderer 架構、引入 consumer Widget 或超過 20k／150 分。 |
 | `SFC-V1-I` | 8k–16k | 60–120 分 | M1 barrel／catalog／examples（8k／60 分累計）；M2 reference／public boundary／scope（8k–16k／60–120 分） | 需變更固定 254 分母、Stable legacy API 或超過 16k／120 分。 |
