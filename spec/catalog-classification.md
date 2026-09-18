@@ -1,9 +1,9 @@
 # Catalog 分類與 module 歸屬前置規格
 
-擁有語意：Catalog taxonomy（文件與遷移治理，不是 runtime module）  
-階段：DEFINE／0→1  
-目標階段：`CAT-TAX-01`  
-狀態：DEFINE READY；使用者於 2026-09-18 接受 18 個第一層分類與單一 primary／多個 secondary tags  
+擁有語意：Catalog taxonomy（文件與遷移治理，不是 runtime module）
+階段：DEFINE／0→1
+目標階段：`CAT-TAX-01`
+狀態：DEFINE READY；使用者於 2026-09-18 接受 18 個第一層分類與單一 primary／多個 secondary tags
 能力地平線：固定 254 項先完成重新分類，再形成能力家族、公開處置與 module ownership；之後才恢復逐家族遷移。
 
 ## 目標與動機

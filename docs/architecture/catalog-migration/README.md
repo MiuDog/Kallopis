@@ -19,7 +19,7 @@
 
 ## 當前階段 CAT-TAX-01：重新定義 Catalog 分類
 
-狀態：DEFINE READY，等待 `CAT-TAX-01` PLAN。使用者已接受 18 個 consumer-oriented 第一層分類，以及每項一個 primary category／多個 secondary tags；仍禁止依現有 class、資料夾或舊頁面直接配對 module。當前規格為 [`spec/catalog-classification.md`](../../../spec/catalog-classification.md)。
+狀態：PLAN READY。使用者已接受 18 個 consumer-oriented 第一層分類，以及每項一個 primary category／多個 secondary tags；分類資料、verifier 與人類審閱輸出依 [`tool/catalog_classification/architecture.md`](../../../tool/catalog_classification/architecture.md) 執行，仍禁止依現有 class、資料夾或舊頁面直接配對 module。
 
 固定 254 項、既有 2 migrated／1 preserved 證據與已接受新版風格不變。分類規格接受後，先完成 254 項無 owner 欄位的分類清冊及 verifier；全部分類通過並由人類接受後，才形成能力家族、公開處置與 module ownership。
 
