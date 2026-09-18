@@ -1,6 +1,6 @@
-import '../../../styling/primitives/klp_style_value.dart';
-import '../../templates/klp_axis.dart';
-import 'klp_bound_template.dart';
+import 'package:kallopis/src/styling/primitives/klp_style_value.dart';
+import 'package:kallopis/src/foundation/templates/klp_axis.dart';
+import '../contracts/klp_bound_template.dart';
 
 part 'klp_prepared_value.dart';
 part 'klp_prepared_linear.dart';

@@ -57,7 +57,6 @@ final KlpVisualStyle contrastingStyle = KlpVisualStyle.defaultStyle.copyWith(
     overlayItemGap: 4,
     navigationSectionGap: 3,
     appFrameInset: 2,
-    workbenchContentInset: 2,
     windowHeaderMargin: 2,
     dockMargin: 2,
     base: 8,

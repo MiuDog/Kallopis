@@ -1,5 +1,8 @@
 import 'dart:io';
 
+import 'package:analyzer/dart/analysis/utilities.dart';
+import 'package:analyzer/dart/ast/ast.dart';
+import 'package:analyzer/dart/ast/visitor.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 Iterable<File> _dartFiles(Directory root) {
@@ -11,6 +14,77 @@ Iterable<File> _dartFiles(Directory root) {
 }
 
 String _relativePath(File file) => file.path.replaceAll(r'\', '/');
+
+const _platformSamplingOwners = {
+	'lib/src/foundation/platform/klp_platform_info.dart': 'KlpPlatformInfo.current',
+	'lib/src/application/environment/klp_application_environment_observer.dart': '_KlpApplicationEnvironmentObserver.observe',
+};
+
+/// 只分析讀取運算式；import 的 show 名稱、字串與註解都不是平台採樣。
+final class _PlatformSamplingVisitor extends RecursiveAstVisitor<void> {
+
+	final String path;
+	final List<String> violations = [];
+	int platformReads = 0;
+	static final _nativeGetter = RegExp(r'^is(?:Windows|MacOS|Linux|Android|IOS|Fuchsia)$');
+
+	_PlatformSamplingVisitor(this.path);
+
+	@override
+	void visitImportDirective(ImportDirective node) {}
+
+	@override
+	void visitExportDirective(ExportDirective node) {}
+
+	@override
+	void visitSimpleIdentifier(SimpleIdentifier node) {
+		if (node.name != 'defaultTargetPlatform' || node.inDeclarationContext()) return;
+
+		platformReads++;
+		final owner = node.thisOrAncestorOfType<ClassDeclaration>()?.namePart.typeName.lexeme;
+		final method = node.thisOrAncestorOfType<MethodDeclaration>()?.name.lexeme;
+		final constructor = node.thisOrAncestorOfType<ConstructorDeclaration>()?.name?.lexeme;
+		if (_platformSamplingOwners[path] != '$owner.${method ?? constructor}') {
+			violations.add('$path:${node.offset} defaultTargetPlatform');
+		}
+	}
+
+	@override
+	void visitPrefixedIdentifier(PrefixedIdentifier node) {
+		if (node.prefix.name == 'Platform' && _nativeGetter.hasMatch(node.identifier.name)) {
+			violations.add('$path:${node.offset} ${node.toSource()}');
+		}
+		super.visitPrefixedIdentifier(node);
+	}
+
+	@override
+	void visitPropertyAccess(PropertyAccess node) {
+		final target = node.target;
+		final targetName = target?.toSource().split('.').last;
+		final native = targetName == 'Platform' && _nativeGetter.hasMatch(node.propertyName.name);
+		final theme = node.propertyName.name == 'platform' && target is MethodInvocation && target.methodName.name == 'of' && target.target?.toSource().split('.').last == 'Theme';
+		if (native || theme) violations.add('$path:${node.offset} ${node.toSource()}');
+		super.visitPropertyAccess(node);
+	}
+
+	@override
+	void visitMethodInvocation(MethodInvocation node) {
+		// 現行宿主不能回頭採用 Stable facade；既有 legacy app 仍保留相容路徑。
+		final currentHost = path == 'lib/src/application/bootstrap/internal/klp_application_host_state.dart';
+		final stableSampling = node.target?.toSource().split('.').last == 'KlpPlatformInfo' && node.methodName.name == 'current';
+		if (currentHost && stableSampling) violations.add('$path:${node.offset} KlpPlatformInfo.current');
+		super.visitMethodInvocation(node);
+	}
+}
+
+_PlatformSamplingVisitor _platformSampling(String path, String source) {
+	// 使用 AST 保留真實讀取與方法歸屬，避免文字掃描誤判 import show。
+	final parsed = parseString(content: source, throwIfDiagnostics: false);
+	expect(parsed.errors, isEmpty, reason: '$path 必須可解析才能執行平台邊界檢查。');
+	final visitor = _PlatformSamplingVisitor(path);
+	parsed.unit.accept(visitor);
+	return visitor;
+}
 
 Set<String> _exportUris(File library) {
   final directive = RegExp("^export\\s+['\"]([^'\"]+)['\"]", multiLine: true);
@@ -341,42 +415,60 @@ void main() {
     );
   });
 
-  test('platform strategies dispatch only through KlpAdaptive', () {
-    const providerPath = 'lib/src/foundation/platform/klp_platform_info.dart';
-    const adaptivePath = 'lib/src/foundation/layout/klp_adaptive.dart';
-    const appScopePath = 'lib/src/application/legacy/klp_app_scope.dart';
-    final bypass = RegExp(
-      r'Theme\.of\(context\)\.platform|defaultTargetPlatform|'
-      r'Platform\.is(?:Windows|MacOS|Linux|Android|IOS|Fuchsia)',
-    );
-    final violations = <String>[];
+	test('platform strategies dispatch only through KlpAdaptive', () {
+		const adaptivePath = 'lib/src/foundation/layout/klp_adaptive.dart';
+		const appScopePath = 'lib/src/application/legacy/klp_app_scope.dart';
+		final violations = <String>[];
 
-    for (final file in sources) {
-      final path = _relativePath(file);
-      final source = file.readAsStringSync();
-      if (path == providerPath) {
-        final providerUses = RegExp(
-          r'\bdefaultTargetPlatform\b',
-        ).allMatches(source);
-        expect(providerUses, hasLength(1));
-        continue;
-      }
-      if (bypass.hasMatch(source)) violations.add(path);
-      if (source.contains('KlpEnvironmentScope.maybeOf(context)') &&
-          path != adaptivePath &&
-          path != appScopePath) {
-        violations.add(path);
-      }
-    }
+		for (final file in sources) {
+			final path = _relativePath(file);
+			final source = file.readAsStringSync();
+			final sampling = _platformSampling(path, source);
+			violations.addAll(sampling.violations);
+			if (_platformSamplingOwners.containsKey(path)) {
+				expect(sampling.platformReads, 1, reason: '$path 只能採樣一次 Flutter 平台。');
+			}
+			if (source.contains('KlpEnvironmentScope.maybeOf(context)') && path != adaptivePath && path != appScopePath) {
+				violations.add(path);
+			}
+		}
 
-    expect(
-      violations,
-      isEmpty,
-      reason:
-          '平台偵測只能由 $providerPath 提供並由 $adaptivePath 分發：\n'
-          '${violations.join('\n')}',
-    );
-  });
+		expect(violations, isEmpty, reason: '平台採樣僅限精確的 Stable facade／私有 observer 方法，並保留 $adaptivePath 分發：\n${violations.join('\n')}');
+	});
+
+	test('platform sampling guard rejects unauthorized reads without matching import show', () {
+		const providerPath = 'lib/src/foundation/platform/klp_platform_info.dart';
+		const observerPath = 'lib/src/application/environment/klp_application_environment_observer.dart';
+		const hostPath = 'lib/src/application/bootstrap/internal/klp_application_host_state.dart';
+		const importOnly = "import 'package:flutter/foundation.dart' show defaultTargetPlatform;";
+		const provider = 'class KlpPlatformInfo { factory KlpPlatformInfo.current() { return defaultTargetPlatform; } }';
+		const observer = 'class _KlpApplicationEnvironmentObserver { Object observe() => defaultTargetPlatform; }';
+		for (final path in [providerPath, observerPath, hostPath, 'lib/src/capabilities/environment/other.dart']) {
+			expect(_platformSampling(path, importOnly).platformReads, 0);
+			expect(_platformSampling(path, importOnly).violations, isEmpty);
+		}
+		expect(_platformSampling(providerPath, provider).violations, isEmpty);
+		expect(_platformSampling(observerPath, observer).violations, isEmpty);
+		expect(_platformSampling('lib/src/application/legacy/klp_app_state.dart', 'Object f() => KlpPlatformInfo.current();').violations, isEmpty);
+
+		// 精確路徑、類別及方法三者都必須符合，不給整個 module 豁免。
+		final denied = <(String, String)>[
+			('lib/src/application/environment/other.dart', observer),
+			('lib/src/foundation/platform/other.dart', provider),
+			('lib/src/capabilities/environment/other.dart', 'Object f() => defaultTargetPlatform;'),
+			(providerPath, 'class Other { Object current() => defaultTargetPlatform; }'),
+			(providerPath, 'class KlpPlatformInfo { Object wrong() => defaultTargetPlatform; }'),
+			(observerPath, 'class _KlpApplicationEnvironmentObserver { Object environment() => defaultTargetPlatform; }'),
+			(hostPath, 'Object f() => KlpPlatformInfo.current();'),
+			(hostPath, 'Object f() => native.defaultTargetPlatform;'),
+			(hostPath, 'Object f() => Platform.isWindows;'),
+			(hostPath, 'Object f() => io.Platform.isAndroid;'),
+			(hostPath, 'Object f() => Theme.of(context).platform;'),
+		];
+		for (final probe in denied) {
+			expect(_platformSampling(probe.$1, probe.$2).violations, isNotEmpty, reason: '${probe.$1}: ${probe.$2}');
+		}
+	});
 
   test('window components dogfood Kallopis primitives', () {
     final protectedPath = RegExp(
@@ -3939,11 +4031,10 @@ void main() {
         'lib/src/features/forms/internal',
         'lib/src/features/forms/structured',
         'lib/src/foundation/binding',
-        'lib/src/foundation/definitions',
         'lib/src/foundation/metrics',
         'lib/src/foundation/platform',
         'lib/src/foundation/templates',
-        'lib/src/application/localization',
+        'lib/src/foundation/localization',
         'lib/src/features/overlays',
         'lib/src/features/navigation/legacy_router',
         'lib/src/features/workspace/settings',

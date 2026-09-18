@@ -1,12 +1,12 @@
-import '../../../../capabilities/controllers/klp_state_controller.dart';
-import '../../../../capabilities/state/klp_mutable_state.dart';
-import '../../../../capabilities/state/klp_state.dart';
-import '../../../../composition/validation/klp_validated_node.dart';
-import '../../../../kernel/identity/klp_placement_id.dart';
-import '../../../../runtime/installation/internal/klp_placement_resource.dart';
+import 'package:kallopis/src/capabilities/controllers/klp_state_controller.dart';
+import 'package:kallopis/src/capabilities/state/klp_mutable_state.dart';
+import 'package:kallopis/src/capabilities/state/klp_state.dart';
+import 'package:kallopis/src/composition/validation/klp_validated_node.dart';
+import 'package:kallopis/src/kernel/identity/klp_placement_id.dart';
+import 'package:kallopis/src/runtime/contracts/klp_placement_resource.dart';
 import 'klp_rail_activation_exception.dart';
-import '../../../../capabilities/actions/klp_action.dart';
-import '../../../../capabilities/actions/klp_action_handler.dart';
+import 'package:kallopis/src/capabilities/actions/klp_action.dart';
+import 'package:kallopis/src/capabilities/actions/klp_action_handler.dart';
 
 /// Rail 擁有選取狀態；畫面與控制器只借用同一來源。
 final class KlpRailPlacement implements KlpPlacementResource {

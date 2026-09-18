@@ -9,20 +9,35 @@
 ## 直接依賴圖
 
 ```mermaid
-flowchart TD
+flowchart LR
 	n0["klp_platform_info.dart"]
-	n1["package:flutter/foundation.dart"]
-	n2["klp_app_platform.dart"]
+	n1["dart:ui"]
+	n2["package:flutter/foundation.dart"]
+	n3["package:kallopis/src/capabilities/environment/klp_environment_snapshot.dart"]
+	n4["klp_app_platform.dart"]
+	n5["klp_device_class.dart"]
+	n6["klp_display_mode.dart"]
+	n7["klp_orientation.dart"]
 	n0 -->|"import"| n1
 	n0 -->|"import"| n2
+	n0 -->|"import"| n3
+	n0 -->|"import"| n4
+	n0 -->|"import"| n5
+	n0 -->|"import"| n6
+	n0 -->|"import"| n7
 ```
 
 ## 依賴證據
 
 | 關係 | 原始 directive | 來源 |
 |---|---|---|
-| import | <code>import &#x27;package:flutter/foundation.dart&#x27;;</code> | [lib/src/foundation/platform/klp_platform_info.dart:1](../../../../../lib/src/foundation/platform/klp_platform_info.dart#L1) |
-| import | <code>import &#x27;klp_app_platform.dart&#x27;;</code> | [lib/src/foundation/platform/klp_platform_info.dart:3](../../../../../lib/src/foundation/platform/klp_platform_info.dart#L3) |
+| import | <code>import &#x27;dart:ui&#x27; show Size;</code> | [lib/src/foundation/platform/klp_platform_info.dart:1](../../../../../lib/src/foundation/platform/klp_platform_info.dart#L1) |
+| import | <code>import &#x27;package:flutter/foundation.dart&#x27;;</code> | [lib/src/foundation/platform/klp_platform_info.dart:2](../../../../../lib/src/foundation/platform/klp_platform_info.dart#L2) |
+| import | <code>import &#x27;package:kallopis/src/capabilities/environment/klp_environment_snapshot.dart&#x27;;</code> | [lib/src/foundation/platform/klp_platform_info.dart:4](../../../../../lib/src/foundation/platform/klp_platform_info.dart#L4) |
+| import | <code>import &#x27;klp_app_platform.dart&#x27;;</code> | [lib/src/foundation/platform/klp_platform_info.dart:5](../../../../../lib/src/foundation/platform/klp_platform_info.dart#L5) |
+| import | <code>import &#x27;klp_device_class.dart&#x27;;</code> | [lib/src/foundation/platform/klp_platform_info.dart:6](../../../../../lib/src/foundation/platform/klp_platform_info.dart#L6) |
+| import | <code>import &#x27;klp_display_mode.dart&#x27;;</code> | [lib/src/foundation/platform/klp_platform_info.dart:7](../../../../../lib/src/foundation/platform/klp_platform_info.dart#L7) |
+| import | <code>import &#x27;klp_orientation.dart&#x27;;</code> | [lib/src/foundation/platform/klp_platform_info.dart:8](../../../../../lib/src/foundation/platform/klp_platform_info.dart#L8) |
 
 ## 宣告關係圖
 
@@ -40,22 +55,29 @@ classDiagram
 
 ### KlpPlatformInfo
 
-ClassDeclaration · public · [lib/src/foundation/platform/klp_platform_info.dart:5](../../../../../lib/src/foundation/platform/klp_platform_info.dart#L5)
+ClassDeclaration · public · [lib/src/foundation/platform/klp_platform_info.dart:10](../../../../../lib/src/foundation/platform/klp_platform_info.dart#L10)
 
 <code>class KlpPlatformInfo</code>
 
-來源註解摘要：由 Kallopis 環境 scope 注入子樹的執行平台資訊。
+來源註解摘要：由 Kallopis 環境 scope 注入子樹的執行平台與自適應環境資訊。
 
 
 | 成員 | 可見性 | 簽章／型別 | 來源註解摘要 | 證據 |
 |---|---|---|---|---|
-| constructor <code>KlpPlatformInfo</code> | public | <code>const KlpPlatformInfo({required this.platform})</code> |  | [lib/src/foundation/platform/klp_platform_info.dart:8](../../../../../lib/src/foundation/platform/klp_platform_info.dart#L8) |
-| constructor <code>current</code> | public | <code>factory KlpPlatformInfo.current()</code> |  | [lib/src/foundation/platform/klp_platform_info.dart:10](../../../../../lib/src/foundation/platform/klp_platform_info.dart#L10) |
-| field <code>platform</code> | public | <code>final KlpAppPlatform platform</code> |  | [lib/src/foundation/platform/klp_platform_info.dart:24](../../../../../lib/src/foundation/platform/klp_platform_info.dart#L24) |
-| getter <code>isAndroid</code> | public | <code>bool get isAndroid</code> |  | [lib/src/foundation/platform/klp_platform_info.dart:25](../../../../../lib/src/foundation/platform/klp_platform_info.dart#L25) |
-| getter <code>isWindows</code> | public | <code>bool get isWindows</code> |  | [lib/src/foundation/platform/klp_platform_info.dart:26](../../../../../lib/src/foundation/platform/klp_platform_info.dart#L26) |
-| getter <code>isDesktop</code> | public | <code>bool get isDesktop</code> |  | [lib/src/foundation/platform/klp_platform_info.dart:27](../../../../../lib/src/foundation/platform/klp_platform_info.dart#L27) |
-| getter <code>isMobile</code> | public | <code>bool get isMobile</code> |  | [lib/src/foundation/platform/klp_platform_info.dart:31](../../../../../lib/src/foundation/platform/klp_platform_info.dart#L31) |
+| field <code>platform</code> | public | <code>final KlpAppPlatform platform</code> |  | [lib/src/foundation/platform/klp_platform_info.dart:14](../../../../../lib/src/foundation/platform/klp_platform_info.dart#L14) |
+| field <code>deviceClass</code> | public | <code>final KlpDeviceClass deviceClass</code> |  | [lib/src/foundation/platform/klp_platform_info.dart:15](../../../../../lib/src/foundation/platform/klp_platform_info.dart#L15) |
+| field <code>orientation</code> | public | <code>final KlpOrientation orientation</code> |  | [lib/src/foundation/platform/klp_platform_info.dart:16](../../../../../lib/src/foundation/platform/klp_platform_info.dart#L16) |
+| field <code>displayMode</code> | public | <code>final KlpDisplayMode displayMode</code> |  | [lib/src/foundation/platform/klp_platform_info.dart:17](../../../../../lib/src/foundation/platform/klp_platform_info.dart#L17) |
+| field <code>adaptiveMode</code> | public | <code>final String adaptiveMode</code> |  | [lib/src/foundation/platform/klp_platform_info.dart:18](../../../../../lib/src/foundation/platform/klp_platform_info.dart#L18) |
+| constructor <code>KlpPlatformInfo</code> | public | <code>const KlpPlatformInfo({ required this.platform, this.deviceClass = KlpDeviceClass.desktop, this.orientation = KlpOrientation.landscape, this.displayMode = KlpDisplayMode.browser, this.adaptiveMode = &#x27;&#x27;, })</code> |  | [lib/src/foundation/platform/klp_platform_info.dart:20](../../../../../lib/src/foundation/platform/klp_platform_info.dart#L20) |
+| constructor <code>current</code> | public | <code>factory KlpPlatformInfo.current({Size? viewportSize})</code> | 初始環境解析：支援 Web 尺寸、模擬參數與原生平台。 | [lib/src/foundation/platform/klp_platform_info.dart:28](../../../../../lib/src/foundation/platform/klp_platform_info.dart#L28) |
+| getter <code>_snapshot</code> | private | <code>KlpEnvironmentSnapshot get _snapshot</code> |  | [lib/src/foundation/platform/klp_platform_info.dart:68](../../../../../lib/src/foundation/platform/klp_platform_info.dart#L68) |
+| getter <code>effectiveAdaptiveMode</code> | public | <code>String get effectiveAdaptiveMode</code> |  | [lib/src/foundation/platform/klp_platform_info.dart:77](../../../../../lib/src/foundation/platform/klp_platform_info.dart#L77) |
+| getter <code>isAndroid</code> | public | <code>bool get isAndroid</code> |  | [lib/src/foundation/platform/klp_platform_info.dart:78](../../../../../lib/src/foundation/platform/klp_platform_info.dart#L78) |
+| getter <code>isWindows</code> | public | <code>bool get isWindows</code> |  | [lib/src/foundation/platform/klp_platform_info.dart:79](../../../../../lib/src/foundation/platform/klp_platform_info.dart#L79) |
+| getter <code>isDesktop</code> | public | <code>bool get isDesktop</code> |  | [lib/src/foundation/platform/klp_platform_info.dart:80](../../../../../lib/src/foundation/platform/klp_platform_info.dart#L80) |
+| getter <code>isMobile</code> | public | <code>bool get isMobile</code> |  | [lib/src/foundation/platform/klp_platform_info.dart:81](../../../../../lib/src/foundation/platform/klp_platform_info.dart#L81) |
+| getter <code>isTablet</code> | public | <code>bool get isTablet</code> |  | [lib/src/foundation/platform/klp_platform_info.dart:82](../../../../../lib/src/foundation/platform/klp_platform_info.dart#L82) |
 
 ## 閱讀說明與限制
 

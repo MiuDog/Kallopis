@@ -1,6 +1,6 @@
 # 應用與組裝模板
 
-這些模板是目前可驗證的宣告式 consumer 寫法。程式中的資料型別、callback 與自訂節點可以替換；不要加入 Widget、Context、視覺參數或另一種 app root。
+這些模板是宣告式 consumer 寫法。程式中的資料與 callback 可以替換；節點型別必須來自 `kallopis_declarative.dart`，不要加入自訂 component、Widget、Context、視覺參數或另一種 app root。
 
 ## 1. 準備完整 primitive set
 
@@ -45,32 +45,24 @@ KlpAction openDetails(KlpRouteInput<Object?, Object?> input) {
     // 只更新產品資料，再以新的 KlpApplication 送入 source。
   });
 }
+
+KlpWorkspaceBlock(
+	id: KlpId.parse('product.open-details'),
+	kind: KlpWorkspaceBlockKind.action,
+	title: 'Open details',
+	action: openDetails(input),
+)
 ```
 
-詳細頁可用 `input.finish(result)` 回傳值，或 `input.back()` 取消。`beforeEnter` 與 `beforeLeave` 可在 `KlpRoute` 定義，並接收 `KlpNavigationTransition` 作為 guard 資料。
+詳細頁可用 `input.finish(result)` 回傳值，或 `input.back()` 取消。路由 action 必須放入支援 `KlpAction` 的庫擁有元件，由 runtime 的 action handler 派送；不能包成 consumer 自行執行的 callback。`KlpWorkspaceBlock.action` 與相容用的 `onPressed` 不可同時提供。`beforeEnter` 與 `beforeLeave` 可在 `KlpRoute` 定義，並接收 `KlpNavigationTransition` 作為 guard 資料。
 
-## 3. 用資格化容器組畫面
+## 3. 用受限容器組畫面
 
-`KlpRail` 的三個區域只接受 `KlpRailItem`。自訂項目可同時實作更多資格介面，但不能傳入一般 `KlpNode`。
-
-```dart
-KlpRail productRail(KlpRouteInput<Object?, Object?> input) {
-  return KlpRail(
-    id: 'product.rail',
-    top: [
-      ProductRailItem(
-        id: 'product.open',
-        label: 'Open',
-        action: input.navigate(details.location(42)),
-      ),
-    ],
-    center: const [],
-    bottom: const [],
-  );
-}
-```
+只使用 `kallopis_declarative.dart` 已公開的具體容器，例如 `KlpAppLayout`、`LayoutRow`、`LayoutColumn` 與 `KlpFrameGroups`。每個容器的具名插槽只接受相符資格的庫擁有節點；資格介面不是 consumer 建立新 component type 的擴充點。
 
 容器將自身 slot 轉成 `KlpChildren`，本庫再驗證每個 placement、重複 id 與樹狀結構。不要另外手動組 `KlpChildren` 來繞過容器 API。
+
+舊實驗 `KlpRail`／`KlpRailItem` 沒有可由目前公開目錄完整組裝的庫擁有 item，因此不屬於 consumer 入口。需要工作區導覽動作時使用 `KlpWorkspaceBlock`；需要其他容器能力時先提出庫內元件需求。
 
 ## 4. 將資料宣告送給 Kallopis
 
@@ -85,7 +77,6 @@ KlpApplication declaration() {
     title: 'Product | $counter',
     primitives: primitives,
     router: router,
-    components: [productRailItemDefinition()],
   );
 }
 
@@ -104,7 +95,7 @@ void main() {
 | 唯一 root | 一個 `KlpState<KlpApplication>` 與一次 `runKlpApp(source.readOnly)` |
 | style | `KlpApplication.primitives` 是完整 `KlpPrimitiveSet` |
 | navigation | router 的 initial destination 已註冊，所有 screen 有非空 accessibility label |
-| extension | 每一個自訂 node type 都有一個註冊的 `KlpComponentDefinition` |
+| component source | 所有 node type 都由 `kallopis_declarative.dart` 公開，application 不接受外部註冊 |
 | children | 容器只取得其資格介面允許的節點 |
 | update | callback 改資料後替換 application 宣告，不接觸 Flutter state |
 

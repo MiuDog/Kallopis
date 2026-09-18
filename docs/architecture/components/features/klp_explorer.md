@@ -1,40 +1,21 @@
-# KlpExplorer：元件樹架構
-
-## 範圍
-
-- **核心元件**：`KlpExplorer`
-- **所屬領域**：`features`
-- **核心職責**：具有統一表面、分類與節點排版的 Explorer。  產品只提供 [categories] 與互動 callback。分類節奏、節點列高、縮排與 表面層級全由 Kallopis 管理；查詢、搜尋 UI 與後端資料取得由產品負責。
-- **包含範圍**：`build()` 內部建構的完整 Widget 樹（展開 Flutter 原生元件與純容器）
-- **外部引用**：本專案其他非純容器元件（遇引用即停下並鏈結）
-
-## 架構圖
+# Workspace.Explorer：實際層級
 
 ```mermaid
 flowchart TD
-  classDef default fill:#1E222B,stroke:#4C566A,stroke-width:1px,color:#ECEFF4;
-  classDef root fill:#2E3440,stroke:#88C0D0,stroke-width:2px,color:#ECEFF4,font-weight:bold;
-  classDef reference fill:#3B4252,stroke:#EBCB8B,stroke-width:1.5px,stroke-dasharray: 4 3,color:#EBCB8B;
-  classDef container fill:#2E3440,stroke:#A3BE8C,stroke-width:1.5px,color:#A3BE8C;
-  classDef slot fill:#2E3440,stroke:#D08770,stroke-width:1px,stroke-dasharray: 2 2,color:#D08770;
-
-  root["KlpExplorer"]:::root
-  n1["KlpNavigator"]:::reference
-  root --> n1
+  C[Consumer interface / method] --> D[TreeData + SelectionScope]
+  D --> F[KlpExplorerData 完整森林]
+  F --> S[不可變 snapshot]
+  S --> E[KlpExplorer + 內部 EntryNode]
+  E --> A[Explorer adapter / semantic resolver]
+  A --> B[KlpBoundExplorer]
+  B --> R[Explorer renderer]
+  R --> M[共享命令 renderer]
+  R --> U[Consumer 事件 / 狀態提交]
+  U --> D
 ```
 
-## 外部元件引用
-
-- [`KlpNavigator`](./klp_navigator.md) — `features`
-
-## 程式碼證據
-
-- 檔案路徑：[`lib/src/features/navigation/widgets/explorer/klp_explorer.dart`](../../../../lib/src/features/navigation/widgets/explorer/klp_explorer.dart#L12)
-- 宣告型態：`StatelessWidget`
-
-## 閱讀說明
-
-- **實線節點**：Flutter 原生元件或本元件自身節點。
-- **容器節點（圓角/綠框）**：本專案之純容器元件（如 `KlpSurface` 等），已持續向下展開其子樹。
-- **虛線/引號節點（黃框/:::reference）**：本專案其他功能性元件，依規則停止展開並提供文件引用。
-- **插槽節點（橘框/:::slot）**：外部傳入之 `child`、`builder` 或內容參數。
+- 公開資料與結構：[explorer/](../../../../lib/src/features/workspace/explorer/klp_explorer.dart)。Consumer 不傳 Widget 或局部 style。
+- 樣式用途：[adapter](../../../../lib/src/features/workspace/explorer/internal/klp_explorer_adapter.dart)。修改風格從用途對應開始，與產品組合分開。
+- 列互動及呈現：[renderer](../../../../lib/src/rendering/flutter/internal/klp_flutter_explorer.dart)。不再使用舊 Widget Explorer／KlpNavigator 鏈。
+- 命令：[shared renderer](../../../../lib/src/rendering/flutter/internal/klp_flutter_commands.dart)。Explorer 與 WorkspaceBlock 共用。
+- 跨 agent 名稱：**Workspace.Explorer / EXP-V1-r2**；[宣告與組裝](../../../ai/explorer-model.md)，[Catalog](../../../ai/explorer-catalog.md)。

@@ -1,6 +1,6 @@
 import 'package:flutter/widgets.dart';
 
-import '../surface/klp_surface.dart';
+import 'package:kallopis/src/foundation/surface/klp_surface.dart';
 import 'klp_gap.dart';
 import 'klp_box_insets.dart';
 import 'klp_space_size.dart';

@@ -10,41 +10,17 @@
 
 箭頭以本層 Dart 檔案明寫的 directive 彙總到目標所在目錄或外部套件邊界；不遞迴將子目錄依賴算入本層。相同目標的不同 directive 類型分開計數。
 
-```mermaid
-flowchart LR
-	n0["lib/src/styling/resolution/internal"]
-	n1["lib/src/kernel/diagnostics"]
-	n2["lib/src/styling/primitives"]
-	n3["lib/src/styling/references"]
-	n4["lib/src/styling/semantics"]
-	n0 -->|"import"| n1
-	n0 -->|"import"| n2
-	n0 -->|"import"| n3
-	n0 -->|"import"| n4
-```
+本層檔案未宣告跨目錄依賴；子目錄依賴請循下一層入口閱讀。
 
 | 目標邊界 | 關係 | directive 數 | 第一筆來源證據 |
 |---|---|---|---|
-| <code>lib/src/kernel/diagnostics</code> | import | 2 | [lib/src/styling/resolution/internal/klp_semantic_resolution.dart:1](../../../../../../lib/src/styling/resolution/internal/klp_semantic_resolution.dart#L1) |
-| <code>lib/src/styling/primitives</code> | import | 3 | [lib/src/styling/resolution/internal/klp_semantic_resolution.dart:2](../../../../../../lib/src/styling/resolution/internal/klp_semantic_resolution.dart#L2) |
-| <code>lib/src/styling/references</code> | import | 1 | [lib/src/styling/resolution/internal/klp_semantic_resolver.dart:4](../../../../../../lib/src/styling/resolution/internal/klp_semantic_resolver.dart#L4) |
-| <code>lib/src/styling/semantics</code> | import | 4 | [lib/src/styling/resolution/internal/klp_semantic_resolution.dart:3](../../../../../../lib/src/styling/resolution/internal/klp_semantic_resolution.dart#L3) |
-
-### 同目錄依賴
-
-| 來源 → 目標 | 關係 | 證據 |
-|---|---|---|
-| <code>klp_semantic_resolver.dart → klp_semantic_resolution.dart</code> | import | [lib/src/styling/resolution/internal/klp_semantic_resolver.dart:8](../../../../../../lib/src/styling/resolution/internal/klp_semantic_resolver.dart#L8) |
+| 無 | — | 0 | 來源清單見本層檔案 |
 
 ## 目錄結構圖
 
 ```mermaid
 flowchart TD
 	n0["lib/src/styling/resolution/internal"]
-	n1["klp_semantic_resolution.dart"]
-	n2["klp_semantic_resolver.dart"]
-	n0 -->|"contains"| n1
-	n0 -->|"contains"| n2
 ```
 
 ## 子目錄
@@ -57,8 +33,7 @@ flowchart TD
 
 | 檔案 | 宣告 | 細節 | 來源證據 |
 |---|---|---|---|
-| `klp_semantic_resolution.dart` | KlpSemanticResolution | [架構與 API](klp_semantic_resolution.md) | [lib/src/styling/resolution/internal/klp_semantic_resolution.dart:1](../../../../../../lib/src/styling/resolution/internal/klp_semantic_resolution.dart#L1) |
-| `klp_semantic_resolver.dart` | KlpSemanticResolver | [架構與 API](klp_semantic_resolver.md) | [lib/src/styling/resolution/internal/klp_semantic_resolver.dart:1](../../../../../../lib/src/styling/resolution/internal/klp_semantic_resolver.dart#L1) |
+| 無 | 本層沒有 Dart 檔案 | — | — |
 
 ## 閱讀說明
 

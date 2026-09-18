@@ -12,8 +12,8 @@
 flowchart LR
 	n0["klp_sidebar_button_group.dart"]
 	n1["package:flutter/widgets.dart"]
-	n2["../../../../foundation/klp_icon.dart"]
-	n3["../../../../styling/legacy_theme/klp_theme.dart"]
+	n2["package:kallopis/src/foundation/klp_icon.dart"]
+	n3["package:kallopis/src/styling/legacy_theme/klp_theme.dart"]
 	n4["klp_sidebar_navigation_button.dart"]
 	n0 -->|"import"| n1
 	n0 -->|"import"| n2
@@ -26,8 +26,8 @@ flowchart LR
 | 關係 | 原始 directive | 來源 |
 |---|---|---|
 | import | <code>import &#x27;package:flutter/widgets.dart&#x27;;</code> | [lib/src/features/navigation/widgets/sidebar/klp_sidebar_button_group.dart:1](../../../../../../../lib/src/features/navigation/widgets/sidebar/klp_sidebar_button_group.dart#L1) |
-| import | <code>import &#x27;../../../../foundation/klp_icon.dart&#x27;;</code> | [lib/src/features/navigation/widgets/sidebar/klp_sidebar_button_group.dart:3](../../../../../../../lib/src/features/navigation/widgets/sidebar/klp_sidebar_button_group.dart#L3) |
-| import | <code>import &#x27;../../../../styling/legacy_theme/klp_theme.dart&#x27;;</code> | [lib/src/features/navigation/widgets/sidebar/klp_sidebar_button_group.dart:4](../../../../../../../lib/src/features/navigation/widgets/sidebar/klp_sidebar_button_group.dart#L4) |
+| import | <code>import &#x27;package:kallopis/src/foundation/klp_icon.dart&#x27;;</code> | [lib/src/features/navigation/widgets/sidebar/klp_sidebar_button_group.dart:3](../../../../../../../lib/src/features/navigation/widgets/sidebar/klp_sidebar_button_group.dart#L3) |
+| import | <code>import &#x27;package:kallopis/src/styling/legacy_theme/klp_theme.dart&#x27;;</code> | [lib/src/features/navigation/widgets/sidebar/klp_sidebar_button_group.dart:4](../../../../../../../lib/src/features/navigation/widgets/sidebar/klp_sidebar_button_group.dart#L4) |
 | import | <code>import &#x27;klp_sidebar_navigation_button.dart&#x27;;</code> | [lib/src/features/navigation/widgets/sidebar/klp_sidebar_button_group.dart:5](../../../../../../../lib/src/features/navigation/widgets/sidebar/klp_sidebar_button_group.dart#L5) |
 
 ## 宣告關係圖

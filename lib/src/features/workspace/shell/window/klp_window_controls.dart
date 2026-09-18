@@ -1,10 +1,10 @@
 import 'package:flutter/widgets.dart';
 
-import '../../../../foundation/klp_icons.dart';
-import '../../../../application/localization/klp_localizations.dart';
-import '../../../../foundation/layout/klp_row.dart';
-import '../../../../foundation/layout/klp_adaptive.dart';
-import '../../../../styling/legacy_theme/klp_theme.dart';
+import 'package:kallopis/src/foundation/klp_icons.dart';
+import 'package:kallopis/src/foundation/localization/klp_localizations.dart';
+import 'package:kallopis/src/foundation/layout/klp_row.dart';
+import 'package:kallopis/src/foundation/layout/klp_adaptive.dart';
+import 'package:kallopis/src/styling/legacy_theme/klp_theme.dart';
 import 'internal/klp_window_control_button.dart';
 import 'klp_window_controls_geometry.dart';
 import 'klp_window_controls_style.dart';

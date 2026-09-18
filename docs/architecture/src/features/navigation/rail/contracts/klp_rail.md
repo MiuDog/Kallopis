@@ -11,27 +11,30 @@
 ```mermaid
 flowchart LR
 	n0["klp_rail.dart"]
-	n1["../../../../composition/nodes/klp_composite_node.dart"]
-	n2["../../../../composition/slots/klp_children.dart"]
-	n3["../../../../composition/slots/klp_slot.dart"]
-	n4["../../../../composition/slots/klp_screen_body.dart"]
-	n5["klp_rail_item.dart"]
+	n1["package:kallopis/src/composition/nodes/klp_composite_node.dart"]
+	n2["package:kallopis/src/composition/slots/klp_children.dart"]
+	n3["package:kallopis/src/composition/slots/klp_slot.dart"]
+	n4["package:kallopis/src/composition/slots/klp_screen_body.dart"]
+	n5["package:kallopis/src/kernel/identity/klp_id.dart"]
+	n6["klp_rail_item.dart"]
 	n0 -->|"import"| n1
 	n0 -->|"import"| n2
 	n0 -->|"import"| n3
 	n0 -->|"import"| n4
 	n0 -->|"import"| n5
+	n0 -->|"import"| n6
 ```
 
 ## 依賴證據
 
 | 關係 | 原始 directive | 來源 |
 |---|---|---|
-| import | <code>import &#x27;../../../../composition/nodes/klp_composite_node.dart&#x27;;</code> | [lib/src/features/navigation/rail/contracts/klp_rail.dart:1](../../../../../../../lib/src/features/navigation/rail/contracts/klp_rail.dart#L1) |
-| import | <code>import &#x27;../../../../composition/slots/klp_children.dart&#x27;;</code> | [lib/src/features/navigation/rail/contracts/klp_rail.dart:2](../../../../../../../lib/src/features/navigation/rail/contracts/klp_rail.dart#L2) |
-| import | <code>import &#x27;../../../../composition/slots/klp_slot.dart&#x27;;</code> | [lib/src/features/navigation/rail/contracts/klp_rail.dart:3](../../../../../../../lib/src/features/navigation/rail/contracts/klp_rail.dart#L3) |
-| import | <code>import &#x27;../../../../composition/slots/klp_screen_body.dart&#x27;;</code> | [lib/src/features/navigation/rail/contracts/klp_rail.dart:4](../../../../../../../lib/src/features/navigation/rail/contracts/klp_rail.dart#L4) |
-| import | <code>import &#x27;klp_rail_item.dart&#x27;;</code> | [lib/src/features/navigation/rail/contracts/klp_rail.dart:5](../../../../../../../lib/src/features/navigation/rail/contracts/klp_rail.dart#L5) |
+| import | <code>import &#x27;package:kallopis/src/composition/nodes/klp_composite_node.dart&#x27;;</code> | [lib/src/features/navigation/rail/contracts/klp_rail.dart:1](../../../../../../../lib/src/features/navigation/rail/contracts/klp_rail.dart#L1) |
+| import | <code>import &#x27;package:kallopis/src/composition/slots/klp_children.dart&#x27;;</code> | [lib/src/features/navigation/rail/contracts/klp_rail.dart:2](../../../../../../../lib/src/features/navigation/rail/contracts/klp_rail.dart#L2) |
+| import | <code>import &#x27;package:kallopis/src/composition/slots/klp_slot.dart&#x27;;</code> | [lib/src/features/navigation/rail/contracts/klp_rail.dart:3](../../../../../../../lib/src/features/navigation/rail/contracts/klp_rail.dart#L3) |
+| import | <code>import &#x27;package:kallopis/src/composition/slots/klp_screen_body.dart&#x27;;</code> | [lib/src/features/navigation/rail/contracts/klp_rail.dart:4](../../../../../../../lib/src/features/navigation/rail/contracts/klp_rail.dart#L4) |
+| import | <code>import &#x27;package:kallopis/src/kernel/identity/klp_id.dart&#x27;;</code> | [lib/src/features/navigation/rail/contracts/klp_rail.dart:5](../../../../../../../lib/src/features/navigation/rail/contracts/klp_rail.dart#L5) |
+| import | <code>import &#x27;klp_rail_item.dart&#x27;;</code> | [lib/src/features/navigation/rail/contracts/klp_rail.dart:6](../../../../../../../lib/src/features/navigation/rail/contracts/klp_rail.dart#L6) |
 
 ## 宣告關係圖
 
@@ -58,30 +61,30 @@ classDiagram
 
 ### KlpRail
 
-ClassDeclaration · public · [lib/src/features/navigation/rail/contracts/klp_rail.dart:7](../../../../../../../lib/src/features/navigation/rail/contracts/klp_rail.dart#L7)
+ClassDeclaration · public · [lib/src/features/navigation/rail/contracts/klp_rail.dart:8](../../../../../../../lib/src/features/navigation/rail/contracts/klp_rail.dart#L8)
 
 <code>final class KlpRail implements KlpCompositeNode, KlpScreenBody</code>
 
 來源註解摘要：三區受控結構宣告；選取狀態與呈現由本庫在安裝後持有。
 
-- `implements` → <code>KlpCompositeNode</code>：[lib/src/features/navigation/rail/contracts/klp_rail.dart:8](../../../../../../../lib/src/features/navigation/rail/contracts/klp_rail.dart#L8)
-- `implements` → <code>KlpScreenBody</code>：[lib/src/features/navigation/rail/contracts/klp_rail.dart:8](../../../../../../../lib/src/features/navigation/rail/contracts/klp_rail.dart#L8)
+- `implements` → <code>KlpCompositeNode</code>：[lib/src/features/navigation/rail/contracts/klp_rail.dart:9](../../../../../../../lib/src/features/navigation/rail/contracts/klp_rail.dart#L9)
+- `implements` → <code>KlpScreenBody</code>：[lib/src/features/navigation/rail/contracts/klp_rail.dart:9](../../../../../../../lib/src/features/navigation/rail/contracts/klp_rail.dart#L9)
 
 | 成員 | 可見性 | 簽章／型別 | 來源註解摘要 | 證據 |
 |---|---|---|---|---|
-| field <code>typeId</code> | public | <code>static const String typeId</code> |  | [lib/src/features/navigation/rail/contracts/klp_rail.dart:9](../../../../../../../lib/src/features/navigation/rail/contracts/klp_rail.dart#L9) |
-| field <code>topSlot</code> | public | <code>static final (inferred) topSlot</code> |  | [lib/src/features/navigation/rail/contracts/klp_rail.dart:10](../../../../../../../lib/src/features/navigation/rail/contracts/klp_rail.dart#L10) |
-| field <code>centerSlot</code> | public | <code>static final (inferred) centerSlot</code> |  | [lib/src/features/navigation/rail/contracts/klp_rail.dart:11](../../../../../../../lib/src/features/navigation/rail/contracts/klp_rail.dart#L11) |
-| field <code>bottomSlot</code> | public | <code>static final (inferred) bottomSlot</code> |  | [lib/src/features/navigation/rail/contracts/klp_rail.dart:12](../../../../../../../lib/src/features/navigation/rail/contracts/klp_rail.dart#L12) |
-| field <code>id</code> | public | <code>final String id</code> |  | [lib/src/features/navigation/rail/contracts/klp_rail.dart:15](../../../../../../../lib/src/features/navigation/rail/contracts/klp_rail.dart#L15) |
-| field <code>top</code> | public | <code>final List&lt;KlpRailItem&gt; top</code> |  | [lib/src/features/navigation/rail/contracts/klp_rail.dart:16](../../../../../../../lib/src/features/navigation/rail/contracts/klp_rail.dart#L16) |
-| field <code>center</code> | public | <code>final List&lt;KlpRailItem&gt; center</code> |  | [lib/src/features/navigation/rail/contracts/klp_rail.dart:17](../../../../../../../lib/src/features/navigation/rail/contracts/klp_rail.dart#L17) |
-| field <code>bottom</code> | public | <code>final List&lt;KlpRailItem&gt; bottom</code> |  | [lib/src/features/navigation/rail/contracts/klp_rail.dart:18](../../../../../../../lib/src/features/navigation/rail/contracts/klp_rail.dart#L18) |
-| field <code>onSelected</code> | public | <code>final void Function(String)? onSelected</code> |  | [lib/src/features/navigation/rail/contracts/klp_rail.dart:19](../../../../../../../lib/src/features/navigation/rail/contracts/klp_rail.dart#L19) |
-| field <code>children</code> | public | <code>final KlpChildren children</code> |  | [lib/src/features/navigation/rail/contracts/klp_rail.dart:21](../../../../../../../lib/src/features/navigation/rail/contracts/klp_rail.dart#L21) |
-| constructor <code>KlpRail</code> | public | <code>KlpRail({ required String id, List&lt;KlpRailItem&gt; top = const [], List&lt;KlpRailItem&gt; center = const [], List&lt;KlpRailItem&gt; bottom = const [], void Function(String)? onSelected, })</code> |  | [lib/src/features/navigation/rail/contracts/klp_rail.dart:23](../../../../../../../lib/src/features/navigation/rail/contracts/klp_rail.dart#L23) |
-| constructor <code>_</code> | private | <code>KlpRail._(this.id, this.top, this.center, this.bottom, this.onSelected)</code> |  | [lib/src/features/navigation/rail/contracts/klp_rail.dart:37](../../../../../../../lib/src/features/navigation/rail/contracts/klp_rail.dart#L37) |
-| getter <code>definitionId</code> | public | <code>String get definitionId</code> |  | [lib/src/features/navigation/rail/contracts/klp_rail.dart:44](../../../../../../../lib/src/features/navigation/rail/contracts/klp_rail.dart#L44) |
+| field <code>typeId</code> | public | <code>static const String typeId</code> |  | [lib/src/features/navigation/rail/contracts/klp_rail.dart:10](../../../../../../../lib/src/features/navigation/rail/contracts/klp_rail.dart#L10) |
+| field <code>topSlot</code> | public | <code>static final (inferred) topSlot</code> |  | [lib/src/features/navigation/rail/contracts/klp_rail.dart:11](../../../../../../../lib/src/features/navigation/rail/contracts/klp_rail.dart#L11) |
+| field <code>centerSlot</code> | public | <code>static final (inferred) centerSlot</code> |  | [lib/src/features/navigation/rail/contracts/klp_rail.dart:12](../../../../../../../lib/src/features/navigation/rail/contracts/klp_rail.dart#L12) |
+| field <code>bottomSlot</code> | public | <code>static final (inferred) bottomSlot</code> |  | [lib/src/features/navigation/rail/contracts/klp_rail.dart:13](../../../../../../../lib/src/features/navigation/rail/contracts/klp_rail.dart#L13) |
+| field <code>id</code> | public | <code>final KlpId id</code> |  | [lib/src/features/navigation/rail/contracts/klp_rail.dart:16](../../../../../../../lib/src/features/navigation/rail/contracts/klp_rail.dart#L16) |
+| field <code>top</code> | public | <code>final List&lt;KlpRailItem&gt; top</code> |  | [lib/src/features/navigation/rail/contracts/klp_rail.dart:17](../../../../../../../lib/src/features/navigation/rail/contracts/klp_rail.dart#L17) |
+| field <code>center</code> | public | <code>final List&lt;KlpRailItem&gt; center</code> |  | [lib/src/features/navigation/rail/contracts/klp_rail.dart:18](../../../../../../../lib/src/features/navigation/rail/contracts/klp_rail.dart#L18) |
+| field <code>bottom</code> | public | <code>final List&lt;KlpRailItem&gt; bottom</code> |  | [lib/src/features/navigation/rail/contracts/klp_rail.dart:19](../../../../../../../lib/src/features/navigation/rail/contracts/klp_rail.dart#L19) |
+| field <code>onSelected</code> | public | <code>final void Function(String)? onSelected</code> |  | [lib/src/features/navigation/rail/contracts/klp_rail.dart:20](../../../../../../../lib/src/features/navigation/rail/contracts/klp_rail.dart#L20) |
+| field <code>children</code> | public | <code>final KlpChildren children</code> |  | [lib/src/features/navigation/rail/contracts/klp_rail.dart:22](../../../../../../../lib/src/features/navigation/rail/contracts/klp_rail.dart#L22) |
+| constructor <code>KlpRail</code> | public | <code>KlpRail({ required KlpId id, List&lt;KlpRailItem&gt; top = const [], List&lt;KlpRailItem&gt; center = const [], List&lt;KlpRailItem&gt; bottom = const [], void Function(String)? onSelected, })</code> |  | [lib/src/features/navigation/rail/contracts/klp_rail.dart:24](../../../../../../../lib/src/features/navigation/rail/contracts/klp_rail.dart#L24) |
+| constructor <code>_</code> | private | <code>KlpRail._(this.id, this.top, this.center, this.bottom, this.onSelected)</code> |  | [lib/src/features/navigation/rail/contracts/klp_rail.dart:38](../../../../../../../lib/src/features/navigation/rail/contracts/klp_rail.dart#L38) |
+| getter <code>definitionId</code> | public | <code>String get definitionId</code> |  | [lib/src/features/navigation/rail/contracts/klp_rail.dart:45](../../../../../../../lib/src/features/navigation/rail/contracts/klp_rail.dart#L45) |
 
 ## 閱讀說明與限制
 

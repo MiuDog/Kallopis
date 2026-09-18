@@ -16,11 +16,10 @@ flowchart LR
 	n1["dart:math"]
 	n2["lib/src/features/workspace/shell/panel"]
 	n3["lib/src/features/workspace/shell/stage/primitives"]
-	n4["lib/src/features/workspace/shell/status"]
-	n5["lib/src/foundation/content"]
-	n6["lib/src/foundation/layout"]
-	n7["lib/src/styling/legacy_theme"]
-	n8["package:flutter"]
+	n4["lib/src/foundation/content"]
+	n5["lib/src/foundation/layout"]
+	n6["lib/src/styling/legacy_theme"]
+	n7["package:flutter"]
 	n0 -->|"import"| n1
 	n0 -->|"import"| n2
 	n0 -->|"part"| n3
@@ -28,15 +27,13 @@ flowchart LR
 	n0 -->|"import"| n5
 	n0 -->|"import"| n6
 	n0 -->|"import"| n7
-	n0 -->|"import"| n8
 ```
 
 | 目標邊界 | 關係 | directive 數 | 第一筆來源證據 |
 |---|---|---|---|
 | <code>dart:math</code> | import | 1 | [lib/src/features/workspace/shell/stage/klp_stage_top_bar.dart:1](../../../../../../../lib/src/features/workspace/shell/stage/klp_stage_top_bar.dart#L1) |
 | <code>lib/src/features/workspace/shell/panel</code> | import | 1 | [lib/src/features/workspace/shell/stage/klp_stage_frame.dart:5](../../../../../../../lib/src/features/workspace/shell/stage/klp_stage_frame.dart#L5) |
-| <code>lib/src/features/workspace/shell/stage/primitives</code> | part | 4 | [lib/src/features/workspace/shell/stage/klp_stage_frame.dart:10](../../../../../../../lib/src/features/workspace/shell/stage/klp_stage_frame.dart#L10) |
-| <code>lib/src/features/workspace/shell/status</code> | import | 2 | [lib/src/features/workspace/shell/stage/klp_stage_frame.dart:6](../../../../../../../lib/src/features/workspace/shell/stage/klp_stage_frame.dart#L6) |
+| <code>lib/src/features/workspace/shell/stage/primitives</code> | part | 4 | [lib/src/features/workspace/shell/stage/klp_stage_frame.dart:7](../../../../../../../lib/src/features/workspace/shell/stage/klp_stage_frame.dart#L7) |
 | <code>lib/src/foundation/content</code> | import | 2 | [lib/src/features/workspace/shell/stage/klp_stage_header.dart:5](../../../../../../../lib/src/features/workspace/shell/stage/klp_stage_header.dart#L5) |
 | <code>lib/src/foundation/layout</code> | import | 8 | [lib/src/features/workspace/shell/stage/klp_stage_frame.dart:3](../../../../../../../lib/src/features/workspace/shell/stage/klp_stage_frame.dart#L3) |
 | <code>lib/src/styling/legacy_theme</code> | import | 4 | [lib/src/features/workspace/shell/stage/klp_stage_frame.dart:4](../../../../../../../lib/src/features/workspace/shell/stage/klp_stage_frame.dart#L4) |
@@ -46,7 +43,6 @@ flowchart LR
 
 | 來源 → 目標 | 關係 | 證據 |
 |---|---|---|
-| <code>klp_stage_frame.dart → klp_stage_header.dart</code> | import | [lib/src/features/workspace/shell/stage/klp_stage_frame.dart:8](../../../../../../../lib/src/features/workspace/shell/stage/klp_stage_frame.dart#L8) |
 | <code>klp_stage_top_bar.dart → klp_stage_tab.dart</code> | export | [lib/src/features/workspace/shell/stage/klp_stage_top_bar.dart:13](../../../../../../../lib/src/features/workspace/shell/stage/klp_stage_top_bar.dart#L13) |
 
 ## 目錄結構圖

@@ -34,12 +34,10 @@ flowchart TD
 - [`KlpColumn`](../foundation/klp_column.md) — `foundation — 圖示、色盤、度量`
 - [`KlpExpanded`](../foundation/klp_expanded.md) — `foundation — 圖示、色盤、度量`
 - [`KlpPanelFooter`](./klp_panel_footer.md) — `features`
-- [`KlpStageHeader`](./klp_stage_header.md) — `features`
-- [`KlpStatusBar`](./klp_status_bar.md) — `features`
 
 ## 程式碼證據
 
-- 檔案路徑：[`lib/src/features/workspace/shell/stage/klp_stage_frame.dart`](../../../../lib/src/features/workspace/shell/stage/klp_stage_frame.dart#L15)
+- 檔案路徑：[`lib/src/features/workspace/shell/stage/klp_stage_frame.dart`](../../../../lib/src/features/workspace/shell/stage/klp_stage_frame.dart#L12)
 - 宣告型態：`StatelessWidget`
 
 ## 閱讀說明

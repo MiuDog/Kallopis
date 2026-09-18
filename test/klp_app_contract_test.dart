@@ -22,7 +22,6 @@ void main() {
     await tester.pumpWidget(
       KlpApp(
         startMaximized: false,
-        showWindowHeader: false,
         lightStyle: lightStyle,
         darkStyle: darkStyle,
         home: KlpPanelFrame(
@@ -72,7 +71,6 @@ void main() {
     await tester.pumpWidget(
       KlpApp(
         startMaximized: false,
-        showWindowHeader: false,
         initialThemeMode: ThemeMode.dark,
         style: style,
         home: KlpPanelFrame(
@@ -104,7 +102,6 @@ void main() {
     await tester.pumpWidget(
       KlpApp(
         startMaximized: false,
-        showWindowHeader: false,
         initialThemeMode: ThemeMode.system,
         home: KlpPanelFrame(
           content: Builder(
@@ -136,7 +133,6 @@ void main() {
     await tester.pumpWidget(
       KlpApp(
         startMaximized: false,
-        showWindowHeader: false,
         localizationsDelegates: const [
           KlpLocalizationsDelegate(
             KlpLocalizations(windowCloseLabel: 'Close from consumer'),

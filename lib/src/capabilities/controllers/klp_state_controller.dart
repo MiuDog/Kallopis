@@ -1,4 +1,4 @@
-import '../state/klp_state.dart';
+import 'package:kallopis/src/capabilities/state/klp_state.dart';
 
 /// 控制器僅借用狀態來源，不快取值，也不替來源擁有者釋放資源。
 ///

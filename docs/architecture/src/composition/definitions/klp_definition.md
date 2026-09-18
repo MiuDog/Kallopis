@@ -11,10 +11,10 @@
 ```mermaid
 flowchart LR
 	n0["klp_definition.dart"]
-	n1["../nodes/klp_node.dart"]
-	n2["../slots/klp_slot.dart"]
-	n3["../../kernel/diagnostics/klp_contract_error.dart"]
-	n4["../../styling/semantics/klp_semantic_schema.dart"]
+	n1["package:kallopis/src/composition/nodes/klp_node.dart"]
+	n2["package:kallopis/src/composition/slots/klp_slot.dart"]
+	n3["package:kallopis/src/kernel/diagnostics/klp_contract_error.dart"]
+	n4["package:kallopis/src/styling/semantics/klp_semantic_schema.dart"]
 	n0 -->|"import"| n1
 	n0 -->|"import"| n2
 	n0 -->|"import"| n3
@@ -25,10 +25,10 @@ flowchart LR
 
 | 關係 | 原始 directive | 來源 |
 |---|---|---|
-| import | <code>import &#x27;../nodes/klp_node.dart&#x27;;</code> | [lib/src/composition/definitions/klp_definition.dart:1](../../../../../lib/src/composition/definitions/klp_definition.dart#L1) |
-| import | <code>import &#x27;../slots/klp_slot.dart&#x27;;</code> | [lib/src/composition/definitions/klp_definition.dart:2](../../../../../lib/src/composition/definitions/klp_definition.dart#L2) |
-| import | <code>import &#x27;../../kernel/diagnostics/klp_contract_error.dart&#x27;;</code> | [lib/src/composition/definitions/klp_definition.dart:3](../../../../../lib/src/composition/definitions/klp_definition.dart#L3) |
-| import | <code>import &#x27;../../styling/semantics/klp_semantic_schema.dart&#x27;;</code> | [lib/src/composition/definitions/klp_definition.dart:4](../../../../../lib/src/composition/definitions/klp_definition.dart#L4) |
+| import | <code>import &#x27;package:kallopis/src/composition/nodes/klp_node.dart&#x27;;</code> | [lib/src/composition/definitions/klp_definition.dart:1](../../../../../lib/src/composition/definitions/klp_definition.dart#L1) |
+| import | <code>import &#x27;package:kallopis/src/composition/slots/klp_slot.dart&#x27;;</code> | [lib/src/composition/definitions/klp_definition.dart:2](../../../../../lib/src/composition/definitions/klp_definition.dart#L2) |
+| import | <code>import &#x27;package:kallopis/src/kernel/diagnostics/klp_contract_error.dart&#x27;;</code> | [lib/src/composition/definitions/klp_definition.dart:3](../../../../../lib/src/composition/definitions/klp_definition.dart#L3) |
+| import | <code>import &#x27;package:kallopis/src/styling/semantics/klp_semantic_schema.dart&#x27;;</code> | [lib/src/composition/definitions/klp_definition.dart:4](../../../../../lib/src/composition/definitions/klp_definition.dart#L4) |
 
 ## 宣告關係圖
 

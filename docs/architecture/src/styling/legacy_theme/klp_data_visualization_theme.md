@@ -13,7 +13,7 @@ flowchart LR
 	n0["klp_data_visualization_theme.dart"]
 	n1["package:flutter/foundation.dart"]
 	n2["package:flutter/material.dart"]
-	n3["../legacy_tokens/primitive_token.dart"]
+	n3["package:kallopis/src/styling/legacy_tokens/primitive_token.dart"]
 	n4["../presets/legacy/default_data_visualization.dart"]
 	n0 -->|"import"| n1
 	n0 -->|"import"| n2
@@ -27,7 +27,7 @@ flowchart LR
 |---|---|---|
 | import | <code>import &#x27;package:flutter/foundation.dart&#x27;;</code> | [lib/src/styling/legacy_theme/klp_data_visualization_theme.dart:1](../../../../../lib/src/styling/legacy_theme/klp_data_visualization_theme.dart#L1) |
 | import | <code>import &#x27;package:flutter/material.dart&#x27;;</code> | [lib/src/styling/legacy_theme/klp_data_visualization_theme.dart:2](../../../../../lib/src/styling/legacy_theme/klp_data_visualization_theme.dart#L2) |
-| import | <code>import &#x27;../legacy_tokens/primitive_token.dart&#x27;;</code> | [lib/src/styling/legacy_theme/klp_data_visualization_theme.dart:3](../../../../../lib/src/styling/legacy_theme/klp_data_visualization_theme.dart#L3) |
+| import | <code>import &#x27;package:kallopis/src/styling/legacy_tokens/primitive_token.dart&#x27;;</code> | [lib/src/styling/legacy_theme/klp_data_visualization_theme.dart:3](../../../../../lib/src/styling/legacy_theme/klp_data_visualization_theme.dart#L3) |
 | part | <code>part &#x27;../presets/legacy/default_data_visualization.dart&#x27;;</code> | [lib/src/styling/legacy_theme/klp_data_visualization_theme.dart:5](../../../../../lib/src/styling/legacy_theme/klp_data_visualization_theme.dart#L5) |
 
 ## 宣告關係圖

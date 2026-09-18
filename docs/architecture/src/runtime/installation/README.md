@@ -10,11 +10,25 @@
 
 箭頭以本層 Dart 檔案明寫的 directive 彙總到目標所在目錄或外部套件邊界；不遞迴將子目錄依賴算入本層。相同目標的不同 directive 類型分開計數。
 
-本層檔案未宣告跨目錄依賴；子目錄依賴請循下一層入口閱讀。
+```mermaid
+flowchart LR
+	n0["lib/src/runtime/installation"]
+	n1["lib/src/capabilities/controllers"]
+	n2["lib/src/capabilities/state"]
+	n3["lib/src/composition/validation"]
+	n4["lib/src/runtime/contracts"]
+	n0 -->|"import"| n1
+	n0 -->|"import"| n2
+	n0 -->|"import"| n3
+	n0 -->|"import"| n4
+```
 
 | 目標邊界 | 關係 | directive 數 | 第一筆來源證據 |
 |---|---|---|---|
-| 無 | — | 0 | 來源清單見本層檔案 |
+| <code>lib/src/capabilities/controllers</code> | import | 1 | [lib/src/runtime/installation/klp_default_placement.dart:1](../../../../../lib/src/runtime/installation/klp_default_placement.dart#L1) |
+| <code>lib/src/capabilities/state</code> | import | 2 | [lib/src/runtime/installation/klp_default_placement.dart:2](../../../../../lib/src/runtime/installation/klp_default_placement.dart#L2) |
+| <code>lib/src/composition/validation</code> | import | 1 | [lib/src/runtime/installation/klp_default_placement.dart:4](../../../../../lib/src/runtime/installation/klp_default_placement.dart#L4) |
+| <code>lib/src/runtime/contracts</code> | import | 1 | [lib/src/runtime/installation/klp_default_placement.dart:5](../../../../../lib/src/runtime/installation/klp_default_placement.dart#L5) |
 
 ## 目錄結構圖
 
@@ -22,7 +36,9 @@
 flowchart TD
 	n0["lib/src/runtime/installation"]
 	n1["internal/"]
+	n2["klp_default_placement.dart"]
 	n0 -->|"contains"| n1
+	n0 -->|"contains"| n2
 ```
 
 ## 子目錄
@@ -35,7 +51,7 @@ flowchart TD
 
 | 檔案 | 宣告 | 細節 | 來源證據 |
 |---|---|---|---|
-| 無 | 本層沒有 Dart 檔案 | — | — |
+| `klp_default_placement.dart` | KlpDefaultPlacement | [架構與 API](klp_default_placement.md) | [lib/src/runtime/installation/klp_default_placement.dart:1](../../../../../lib/src/runtime/installation/klp_default_placement.dart#L1) |
 
 ## 閱讀說明
 

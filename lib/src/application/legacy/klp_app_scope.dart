@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import '../../foundation/platform/klp_environment_scope.dart';
-import '../../foundation/platform/klp_platform_info.dart';
+import 'package:kallopis/src/foundation/platform/klp_environment_scope.dart';
+import 'package:kallopis/src/foundation/platform/klp_platform_info.dart';
 import 'klp_app_controller.dart';
 
 /// 將應用程式控制器、平台及主題狀態注入子樹。

@@ -1,5 +1,5 @@
-import '../internal/klp_form_dependencies.dart';
-import '../../../foundation/interaction/primitives/klp_pointer_blocker.dart';
+import 'package:kallopis/src/features/forms/internal/klp_form_dependencies.dart';
+import 'package:kallopis/src/foundation/interaction/primitives/klp_pointer_blocker.dart';
 import 'klp_calendar.dart';
 import 'klp_date_field_calendar.dart';
 

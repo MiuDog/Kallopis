@@ -12,16 +12,16 @@
 flowchart LR
 	n0["klp_artifact_workspace.dart"]
 	n1["package:flutter/material.dart"]
-	n2["../../actions/button/klp_button.dart"]
-	n3["../../collections/advanced/klp_advanced_data.dart"]
-	n4["../../collections/badge/klp_badge.dart"]
-	n5["../../collections/preview_card/klp_preview_card.dart"]
-	n6["../../feedback/klp_feedback_tone.dart"]
-	n7["../../feedback/klp_inline_notice.dart"]
-	n8["../../forms/klp_form.dart"]
-	n9["../../../foundation/interaction/klp_gesture_region.dart"]
-	n10["../../../foundation/layout/klp_box.dart"]
-	n11["../../../foundation/layout/klp_column.dart"]
+	n2["package:kallopis/src/features/actions/button/klp_button.dart"]
+	n3["package:kallopis/src/features/collections/advanced/klp_advanced_data.dart"]
+	n4["package:kallopis/src/features/collections/badge/klp_badge.dart"]
+	n5["package:kallopis/src/features/collections/preview_card/klp_preview_card.dart"]
+	n6["package:kallopis/src/features/feedback/klp_feedback_tone.dart"]
+	n7["package:kallopis/src/features/feedback/klp_inline_notice.dart"]
+	n8["package:kallopis/src/features/forms/klp_form.dart"]
+	n9["package:kallopis/src/foundation/interaction/klp_gesture_region.dart"]
+	n10["package:kallopis/src/foundation/layout/klp_box.dart"]
+	n11["package:kallopis/src/foundation/layout/klp_column.dart"]
 	n0 -->|"import"| n1
 	n0 -->|"import"| n2
 	n0 -->|"import"| n3
@@ -38,15 +38,15 @@ flowchart LR
 ```mermaid
 flowchart LR
 	n0["klp_artifact_workspace.dart"]
-	n1["../../../foundation/layout/klp_expanded.dart"]
-	n2["../../../foundation/layout/klp_flexible.dart"]
-	n3["../../../foundation/layout/klp_gap.dart"]
-	n4["../../../foundation/layout/klp_row.dart"]
-	n5["../../../foundation/layout/klp_space_size.dart"]
-	n6["../../../foundation/layout/klp_wrap.dart"]
-	n7["../../navigation/widgets/tabs/klp_tabs.dart"]
-	n8["../../../foundation/surface/klp_surface.dart"]
-	n9["../../../foundation/content/klp_text.dart"]
+	n1["package:kallopis/src/foundation/layout/klp_expanded.dart"]
+	n2["package:kallopis/src/foundation/layout/klp_flexible.dart"]
+	n3["package:kallopis/src/foundation/layout/klp_gap.dart"]
+	n4["package:kallopis/src/foundation/layout/klp_row.dart"]
+	n5["package:kallopis/src/foundation/layout/klp_space_size.dart"]
+	n6["package:kallopis/src/foundation/layout/klp_wrap.dart"]
+	n7["package:kallopis/src/features/navigation/widgets/tabs/klp_tabs.dart"]
+	n8["package:kallopis/src/foundation/surface/klp_surface.dart"]
+	n9["package:kallopis/src/foundation/content/klp_text.dart"]
 	n10["internal/klp_accessibility_contract_panel.dart"]
 	n11["internal/klp_component_definition_card.dart"]
 	n0 -->|"import"| n1
@@ -105,25 +105,25 @@ flowchart TD
 | 關係 | 原始 directive | 來源 |
 |---|---|---|
 | import | <code>import &#x27;package:flutter/material.dart&#x27;;</code> | [lib/src/features/workspace/artifact/klp_artifact_workspace.dart:1](../../../../../../lib/src/features/workspace/artifact/klp_artifact_workspace.dart#L1) |
-| import | <code>import &#x27;../../actions/button/klp_button.dart&#x27;;</code> | [lib/src/features/workspace/artifact/klp_artifact_workspace.dart:3](../../../../../../lib/src/features/workspace/artifact/klp_artifact_workspace.dart#L3) |
-| import | <code>import &#x27;../../collections/advanced/klp_advanced_data.dart&#x27;;</code> | [lib/src/features/workspace/artifact/klp_artifact_workspace.dart:4](../../../../../../lib/src/features/workspace/artifact/klp_artifact_workspace.dart#L4) |
-| import | <code>import &#x27;../../collections/badge/klp_badge.dart&#x27;;</code> | [lib/src/features/workspace/artifact/klp_artifact_workspace.dart:5](../../../../../../lib/src/features/workspace/artifact/klp_artifact_workspace.dart#L5) |
-| import | <code>import &#x27;../../collections/preview_card/klp_preview_card.dart&#x27;;</code> | [lib/src/features/workspace/artifact/klp_artifact_workspace.dart:6](../../../../../../lib/src/features/workspace/artifact/klp_artifact_workspace.dart#L6) |
-| import | <code>import &#x27;../../feedback/klp_feedback_tone.dart&#x27;;</code> | [lib/src/features/workspace/artifact/klp_artifact_workspace.dart:7](../../../../../../lib/src/features/workspace/artifact/klp_artifact_workspace.dart#L7) |
-| import | <code>import &#x27;../../feedback/klp_inline_notice.dart&#x27;;</code> | [lib/src/features/workspace/artifact/klp_artifact_workspace.dart:8](../../../../../../lib/src/features/workspace/artifact/klp_artifact_workspace.dart#L8) |
-| import | <code>import &#x27;../../forms/klp_form.dart&#x27;;</code> | [lib/src/features/workspace/artifact/klp_artifact_workspace.dart:9](../../../../../../lib/src/features/workspace/artifact/klp_artifact_workspace.dart#L9) |
-| import | <code>import &#x27;../../../foundation/interaction/klp_gesture_region.dart&#x27;;</code> | [lib/src/features/workspace/artifact/klp_artifact_workspace.dart:10](../../../../../../lib/src/features/workspace/artifact/klp_artifact_workspace.dart#L10) |
-| import | <code>import &#x27;../../../foundation/layout/klp_box.dart&#x27;;</code> | [lib/src/features/workspace/artifact/klp_artifact_workspace.dart:11](../../../../../../lib/src/features/workspace/artifact/klp_artifact_workspace.dart#L11) |
-| import | <code>import &#x27;../../../foundation/layout/klp_column.dart&#x27;;</code> | [lib/src/features/workspace/artifact/klp_artifact_workspace.dart:12](../../../../../../lib/src/features/workspace/artifact/klp_artifact_workspace.dart#L12) |
-| import | <code>import &#x27;../../../foundation/layout/klp_expanded.dart&#x27;;</code> | [lib/src/features/workspace/artifact/klp_artifact_workspace.dart:13](../../../../../../lib/src/features/workspace/artifact/klp_artifact_workspace.dart#L13) |
-| import | <code>import &#x27;../../../foundation/layout/klp_flexible.dart&#x27;;</code> | [lib/src/features/workspace/artifact/klp_artifact_workspace.dart:14](../../../../../../lib/src/features/workspace/artifact/klp_artifact_workspace.dart#L14) |
-| import | <code>import &#x27;../../../foundation/layout/klp_gap.dart&#x27;;</code> | [lib/src/features/workspace/artifact/klp_artifact_workspace.dart:15](../../../../../../lib/src/features/workspace/artifact/klp_artifact_workspace.dart#L15) |
-| import | <code>import &#x27;../../../foundation/layout/klp_row.dart&#x27;;</code> | [lib/src/features/workspace/artifact/klp_artifact_workspace.dart:16](../../../../../../lib/src/features/workspace/artifact/klp_artifact_workspace.dart#L16) |
-| import | <code>import &#x27;../../../foundation/layout/klp_space_size.dart&#x27;;</code> | [lib/src/features/workspace/artifact/klp_artifact_workspace.dart:17](../../../../../../lib/src/features/workspace/artifact/klp_artifact_workspace.dart#L17) |
-| import | <code>import &#x27;../../../foundation/layout/klp_wrap.dart&#x27;;</code> | [lib/src/features/workspace/artifact/klp_artifact_workspace.dart:18](../../../../../../lib/src/features/workspace/artifact/klp_artifact_workspace.dart#L18) |
-| import | <code>import &#x27;../../navigation/widgets/tabs/klp_tabs.dart&#x27;;</code> | [lib/src/features/workspace/artifact/klp_artifact_workspace.dart:19](../../../../../../lib/src/features/workspace/artifact/klp_artifact_workspace.dart#L19) |
-| import | <code>import &#x27;../../../foundation/surface/klp_surface.dart&#x27;;</code> | [lib/src/features/workspace/artifact/klp_artifact_workspace.dart:20](../../../../../../lib/src/features/workspace/artifact/klp_artifact_workspace.dart#L20) |
-| import | <code>import &#x27;../../../foundation/content/klp_text.dart&#x27;;</code> | [lib/src/features/workspace/artifact/klp_artifact_workspace.dart:21](../../../../../../lib/src/features/workspace/artifact/klp_artifact_workspace.dart#L21) |
+| import | <code>import &#x27;package:kallopis/src/features/actions/button/klp_button.dart&#x27;;</code> | [lib/src/features/workspace/artifact/klp_artifact_workspace.dart:3](../../../../../../lib/src/features/workspace/artifact/klp_artifact_workspace.dart#L3) |
+| import | <code>import &#x27;package:kallopis/src/features/collections/advanced/klp_advanced_data.dart&#x27;;</code> | [lib/src/features/workspace/artifact/klp_artifact_workspace.dart:4](../../../../../../lib/src/features/workspace/artifact/klp_artifact_workspace.dart#L4) |
+| import | <code>import &#x27;package:kallopis/src/features/collections/badge/klp_badge.dart&#x27;;</code> | [lib/src/features/workspace/artifact/klp_artifact_workspace.dart:5](../../../../../../lib/src/features/workspace/artifact/klp_artifact_workspace.dart#L5) |
+| import | <code>import &#x27;package:kallopis/src/features/collections/preview_card/klp_preview_card.dart&#x27;;</code> | [lib/src/features/workspace/artifact/klp_artifact_workspace.dart:6](../../../../../../lib/src/features/workspace/artifact/klp_artifact_workspace.dart#L6) |
+| import | <code>import &#x27;package:kallopis/src/features/feedback/klp_feedback_tone.dart&#x27;;</code> | [lib/src/features/workspace/artifact/klp_artifact_workspace.dart:7](../../../../../../lib/src/features/workspace/artifact/klp_artifact_workspace.dart#L7) |
+| import | <code>import &#x27;package:kallopis/src/features/feedback/klp_inline_notice.dart&#x27;;</code> | [lib/src/features/workspace/artifact/klp_artifact_workspace.dart:8](../../../../../../lib/src/features/workspace/artifact/klp_artifact_workspace.dart#L8) |
+| import | <code>import &#x27;package:kallopis/src/features/forms/klp_form.dart&#x27;;</code> | [lib/src/features/workspace/artifact/klp_artifact_workspace.dart:9](../../../../../../lib/src/features/workspace/artifact/klp_artifact_workspace.dart#L9) |
+| import | <code>import &#x27;package:kallopis/src/foundation/interaction/klp_gesture_region.dart&#x27;;</code> | [lib/src/features/workspace/artifact/klp_artifact_workspace.dart:10](../../../../../../lib/src/features/workspace/artifact/klp_artifact_workspace.dart#L10) |
+| import | <code>import &#x27;package:kallopis/src/foundation/layout/klp_box.dart&#x27;;</code> | [lib/src/features/workspace/artifact/klp_artifact_workspace.dart:11](../../../../../../lib/src/features/workspace/artifact/klp_artifact_workspace.dart#L11) |
+| import | <code>import &#x27;package:kallopis/src/foundation/layout/klp_column.dart&#x27;;</code> | [lib/src/features/workspace/artifact/klp_artifact_workspace.dart:12](../../../../../../lib/src/features/workspace/artifact/klp_artifact_workspace.dart#L12) |
+| import | <code>import &#x27;package:kallopis/src/foundation/layout/klp_expanded.dart&#x27;;</code> | [lib/src/features/workspace/artifact/klp_artifact_workspace.dart:13](../../../../../../lib/src/features/workspace/artifact/klp_artifact_workspace.dart#L13) |
+| import | <code>import &#x27;package:kallopis/src/foundation/layout/klp_flexible.dart&#x27;;</code> | [lib/src/features/workspace/artifact/klp_artifact_workspace.dart:14](../../../../../../lib/src/features/workspace/artifact/klp_artifact_workspace.dart#L14) |
+| import | <code>import &#x27;package:kallopis/src/foundation/layout/klp_gap.dart&#x27;;</code> | [lib/src/features/workspace/artifact/klp_artifact_workspace.dart:15](../../../../../../lib/src/features/workspace/artifact/klp_artifact_workspace.dart#L15) |
+| import | <code>import &#x27;package:kallopis/src/foundation/layout/klp_row.dart&#x27;;</code> | [lib/src/features/workspace/artifact/klp_artifact_workspace.dart:16](../../../../../../lib/src/features/workspace/artifact/klp_artifact_workspace.dart#L16) |
+| import | <code>import &#x27;package:kallopis/src/foundation/layout/klp_space_size.dart&#x27;;</code> | [lib/src/features/workspace/artifact/klp_artifact_workspace.dart:17](../../../../../../lib/src/features/workspace/artifact/klp_artifact_workspace.dart#L17) |
+| import | <code>import &#x27;package:kallopis/src/foundation/layout/klp_wrap.dart&#x27;;</code> | [lib/src/features/workspace/artifact/klp_artifact_workspace.dart:18](../../../../../../lib/src/features/workspace/artifact/klp_artifact_workspace.dart#L18) |
+| import | <code>import &#x27;package:kallopis/src/features/navigation/widgets/tabs/klp_tabs.dart&#x27;;</code> | [lib/src/features/workspace/artifact/klp_artifact_workspace.dart:19](../../../../../../lib/src/features/workspace/artifact/klp_artifact_workspace.dart#L19) |
+| import | <code>import &#x27;package:kallopis/src/foundation/surface/klp_surface.dart&#x27;;</code> | [lib/src/features/workspace/artifact/klp_artifact_workspace.dart:20](../../../../../../lib/src/features/workspace/artifact/klp_artifact_workspace.dart#L20) |
+| import | <code>import &#x27;package:kallopis/src/foundation/content/klp_text.dart&#x27;;</code> | [lib/src/features/workspace/artifact/klp_artifact_workspace.dart:21](../../../../../../lib/src/features/workspace/artifact/klp_artifact_workspace.dart#L21) |
 | part | <code>part &#x27;internal/klp_accessibility_contract_panel.dart&#x27;;</code> | [lib/src/features/workspace/artifact/klp_artifact_workspace.dart:23](../../../../../../lib/src/features/workspace/artifact/klp_artifact_workspace.dart#L23) |
 | part | <code>part &#x27;internal/klp_component_definition_card.dart&#x27;;</code> | [lib/src/features/workspace/artifact/klp_artifact_workspace.dart:24](../../../../../../lib/src/features/workspace/artifact/klp_artifact_workspace.dart#L24) |
 | part | <code>part &#x27;internal/klp_component_library_grid.dart&#x27;;</code> | [lib/src/features/workspace/artifact/klp_artifact_workspace.dart:25](../../../../../../lib/src/features/workspace/artifact/klp_artifact_workspace.dart#L25) |

@@ -11,7 +11,7 @@
 ```mermaid
 flowchart TD
 	n0["klp_visual_style_json_geometry_encode.dart"]
-	n1["../klp_geometry_theme.dart"]
+	n1["package:kallopis/src/styling/legacy_theme/klp_geometry_theme.dart"]
 	n2["klp_visual_style_json_helpers.dart"]
 	n0 -->|"import"| n1
 	n0 -->|"import"| n2
@@ -21,7 +21,7 @@ flowchart TD
 
 | 關係 | 原始 directive | 來源 |
 |---|---|---|
-| import | <code>import &#x27;../klp_geometry_theme.dart&#x27;;</code> | [lib/src/styling/legacy_theme/internal/klp_visual_style_json_geometry_encode.dart:1](../../../../../../lib/src/styling/legacy_theme/internal/klp_visual_style_json_geometry_encode.dart#L1) |
+| import | <code>import &#x27;package:kallopis/src/styling/legacy_theme/klp_geometry_theme.dart&#x27;;</code> | [lib/src/styling/legacy_theme/internal/klp_visual_style_json_geometry_encode.dart:1](../../../../../../lib/src/styling/legacy_theme/internal/klp_visual_style_json_geometry_encode.dart#L1) |
 | import | <code>import &#x27;klp_visual_style_json_helpers.dart&#x27;;</code> | [lib/src/styling/legacy_theme/internal/klp_visual_style_json_geometry_encode.dart:2](../../../../../../lib/src/styling/legacy_theme/internal/klp_visual_style_json_geometry_encode.dart#L2) |
 
 ## 宣告關係圖

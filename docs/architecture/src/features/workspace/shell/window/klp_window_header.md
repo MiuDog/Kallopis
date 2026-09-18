@@ -12,14 +12,14 @@
 flowchart LR
 	n0["klp_window_header.dart"]
 	n1["package:flutter/widgets.dart"]
-	n2["../../../../foundation/platform/klp_app_platform.dart"]
-	n3["../../../../foundation/interaction/klp_gesture_region.dart"]
-	n4["../../../../foundation/layout/klp_adaptive.dart"]
-	n5["../../../../foundation/layout/klp_box.dart"]
-	n6["../../../../foundation/surface/klp_surface.dart"]
-	n7["../../../../styling/legacy_theme/klp_geometry_theme.dart"]
-	n8["../../../../styling/legacy_theme/klp_theme.dart"]
-	n9["../../../../foundation/content/klp_text.dart"]
+	n2["package:kallopis/src/foundation/platform/klp_app_platform.dart"]
+	n3["package:kallopis/src/foundation/interaction/klp_gesture_region.dart"]
+	n4["package:kallopis/src/foundation/layout/klp_adaptive.dart"]
+	n5["package:kallopis/src/foundation/layout/klp_box.dart"]
+	n6["package:kallopis/src/foundation/surface/klp_surface.dart"]
+	n7["package:kallopis/src/styling/legacy_theme/klp_geometry_theme.dart"]
+	n8["package:kallopis/src/styling/legacy_theme/klp_theme.dart"]
+	n9["package:kallopis/src/foundation/content/klp_text.dart"]
 	n10["klp_window_action.dart"]
 	n11["klp_window_header_height.dart"]
 	n0 -->|"import"| n1
@@ -49,14 +49,14 @@ flowchart TD
 | 關係 | 原始 directive | 來源 |
 |---|---|---|
 | import | <code>import &#x27;package:flutter/widgets.dart&#x27;;</code> | [lib/src/features/workspace/shell/window/klp_window_header.dart:1](../../../../../../../lib/src/features/workspace/shell/window/klp_window_header.dart#L1) |
-| import | <code>import &#x27;../../../../foundation/platform/klp_app_platform.dart&#x27;;</code> | [lib/src/features/workspace/shell/window/klp_window_header.dart:3](../../../../../../../lib/src/features/workspace/shell/window/klp_window_header.dart#L3) |
-| import | <code>import &#x27;../../../../foundation/interaction/klp_gesture_region.dart&#x27;;</code> | [lib/src/features/workspace/shell/window/klp_window_header.dart:4](../../../../../../../lib/src/features/workspace/shell/window/klp_window_header.dart#L4) |
-| import | <code>import &#x27;../../../../foundation/layout/klp_adaptive.dart&#x27;;</code> | [lib/src/features/workspace/shell/window/klp_window_header.dart:5](../../../../../../../lib/src/features/workspace/shell/window/klp_window_header.dart#L5) |
-| import | <code>import &#x27;../../../../foundation/layout/klp_box.dart&#x27;;</code> | [lib/src/features/workspace/shell/window/klp_window_header.dart:6](../../../../../../../lib/src/features/workspace/shell/window/klp_window_header.dart#L6) |
-| import | <code>import &#x27;../../../../foundation/surface/klp_surface.dart&#x27;;</code> | [lib/src/features/workspace/shell/window/klp_window_header.dart:7](../../../../../../../lib/src/features/workspace/shell/window/klp_window_header.dart#L7) |
-| import | <code>import &#x27;../../../../styling/legacy_theme/klp_geometry_theme.dart&#x27;;</code> | [lib/src/features/workspace/shell/window/klp_window_header.dart:8](../../../../../../../lib/src/features/workspace/shell/window/klp_window_header.dart#L8) |
-| import | <code>import &#x27;../../../../styling/legacy_theme/klp_theme.dart&#x27;;</code> | [lib/src/features/workspace/shell/window/klp_window_header.dart:9](../../../../../../../lib/src/features/workspace/shell/window/klp_window_header.dart#L9) |
-| import | <code>import &#x27;../../../../foundation/content/klp_text.dart&#x27;;</code> | [lib/src/features/workspace/shell/window/klp_window_header.dart:10](../../../../../../../lib/src/features/workspace/shell/window/klp_window_header.dart#L10) |
+| import | <code>import &#x27;package:kallopis/src/foundation/platform/klp_app_platform.dart&#x27;;</code> | [lib/src/features/workspace/shell/window/klp_window_header.dart:3](../../../../../../../lib/src/features/workspace/shell/window/klp_window_header.dart#L3) |
+| import | <code>import &#x27;package:kallopis/src/foundation/interaction/klp_gesture_region.dart&#x27;;</code> | [lib/src/features/workspace/shell/window/klp_window_header.dart:4](../../../../../../../lib/src/features/workspace/shell/window/klp_window_header.dart#L4) |
+| import | <code>import &#x27;package:kallopis/src/foundation/layout/klp_adaptive.dart&#x27;;</code> | [lib/src/features/workspace/shell/window/klp_window_header.dart:5](../../../../../../../lib/src/features/workspace/shell/window/klp_window_header.dart#L5) |
+| import | <code>import &#x27;package:kallopis/src/foundation/layout/klp_box.dart&#x27;;</code> | [lib/src/features/workspace/shell/window/klp_window_header.dart:6](../../../../../../../lib/src/features/workspace/shell/window/klp_window_header.dart#L6) |
+| import | <code>import &#x27;package:kallopis/src/foundation/surface/klp_surface.dart&#x27;;</code> | [lib/src/features/workspace/shell/window/klp_window_header.dart:7](../../../../../../../lib/src/features/workspace/shell/window/klp_window_header.dart#L7) |
+| import | <code>import &#x27;package:kallopis/src/styling/legacy_theme/klp_geometry_theme.dart&#x27;;</code> | [lib/src/features/workspace/shell/window/klp_window_header.dart:8](../../../../../../../lib/src/features/workspace/shell/window/klp_window_header.dart#L8) |
+| import | <code>import &#x27;package:kallopis/src/styling/legacy_theme/klp_theme.dart&#x27;;</code> | [lib/src/features/workspace/shell/window/klp_window_header.dart:9](../../../../../../../lib/src/features/workspace/shell/window/klp_window_header.dart#L9) |
+| import | <code>import &#x27;package:kallopis/src/foundation/content/klp_text.dart&#x27;;</code> | [lib/src/features/workspace/shell/window/klp_window_header.dart:10](../../../../../../../lib/src/features/workspace/shell/window/klp_window_header.dart#L10) |
 | import | <code>import &#x27;klp_window_action.dart&#x27;;</code> | [lib/src/features/workspace/shell/window/klp_window_header.dart:11](../../../../../../../lib/src/features/workspace/shell/window/klp_window_header.dart#L11) |
 | import | <code>import &#x27;klp_window_header_height.dart&#x27;;</code> | [lib/src/features/workspace/shell/window/klp_window_header.dart:12](../../../../../../../lib/src/features/workspace/shell/window/klp_window_header.dart#L12) |
 | import | <code>import &#x27;klp_window_header_keys.dart&#x27;;</code> | [lib/src/features/workspace/shell/window/klp_window_header.dart:13](../../../../../../../lib/src/features/workspace/shell/window/klp_window_header.dart#L13) |

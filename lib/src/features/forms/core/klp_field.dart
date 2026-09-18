@@ -1,4 +1,4 @@
-import '../internal/klp_form_dependencies.dart';
+import 'package:kallopis/src/features/forms/internal/klp_form_dependencies.dart';
 
 import 'klp_field_description.dart';
 import 'klp_field_label.dart';

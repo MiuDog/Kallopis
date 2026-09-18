@@ -11,7 +11,7 @@
 ```mermaid
 flowchart TD
 	n0["klp_window_header_height.dart"]
-	n1["../../../../styling/legacy_theme/klp_geometry_theme.dart"]
+	n1["package:kallopis/src/styling/legacy_theme/klp_geometry_theme.dart"]
 	n0 -->|"import"| n1
 ```
 
@@ -19,7 +19,7 @@ flowchart TD
 
 | 關係 | 原始 directive | 來源 |
 |---|---|---|
-| import | <code>import &#x27;../../../../styling/legacy_theme/klp_geometry_theme.dart&#x27;;</code> | [lib/src/features/workspace/shell/window/klp_window_header_height.dart:1](../../../../../../../lib/src/features/workspace/shell/window/klp_window_header_height.dart#L1) |
+| import | <code>import &#x27;package:kallopis/src/styling/legacy_theme/klp_geometry_theme.dart&#x27;;</code> | [lib/src/features/workspace/shell/window/klp_window_header_height.dart:1](../../../../../../../lib/src/features/workspace/shell/window/klp_window_header_height.dart#L1) |
 
 ## 宣告關係圖
 

@@ -1,0 +1,1054 @@
+{
+	"schemaVersion": 1,
+	"complete": false,
+	"components": [
+		{
+			"name": "KlpAccessibilityContractPanel",
+			"status": "pending"
+		},
+		{
+			"name": "KlpAccordion",
+			"status": "pending"
+		},
+		{
+			"name": "KlpActionGroup",
+			"status": "pending"
+		},
+		{
+			"name": "KlpActionRegion",
+			"status": "pending"
+		},
+		{
+			"name": "KlpAdaptive",
+			"status": "pending"
+		},
+		{
+			"name": "KlpAffixedTextField",
+			"status": "pending"
+		},
+		{
+			"name": "KlpAlign",
+			"status": "pending"
+		},
+		{
+			"name": "KlpApp",
+			"status": "pending"
+		},
+		{
+			"name": "KlpAppScreen",
+			"status": "pending"
+		},
+		{
+			"name": "KlpAppWindowHeader",
+			"status": "pending"
+		},
+		{
+			"name": "KlpApprovalStepsField",
+			"status": "pending"
+		},
+		{
+			"name": "KlpAvatar",
+			"status": "pending"
+		},
+		{
+			"name": "KlpAvatarGroup",
+			"status": "pending"
+		},
+		{
+			"name": "KlpBadge",
+			"status": "pending"
+		},
+		{
+			"name": "KlpBox",
+			"status": "pending"
+		},
+		{
+			"name": "KlpBreadcrumb",
+			"status": "pending"
+		},
+		{
+			"name": "KlpBulkActionBar",
+			"status": "pending"
+		},
+		{
+			"name": "KlpButton",
+			"status": "pending"
+		},
+		{
+			"name": "KlpCalendar",
+			"status": "pending"
+		},
+		{
+			"name": "KlpCanvasDropIntent",
+			"status": "pending"
+		},
+		{
+			"name": "KlpCanvasMinimap",
+			"status": "pending"
+		},
+		{
+			"name": "KlpCanvasSelectionOverlay",
+			"status": "pending"
+		},
+		{
+			"name": "KlpCanvasToolbar",
+			"status": "pending"
+		},
+		{
+			"name": "KlpCanvasViewport",
+			"status": "pending"
+		},
+		{
+			"name": "KlpCard",
+			"status": "pending"
+		},
+		{
+			"name": "KlpCenter",
+			"status": "pending"
+		},
+		{
+			"name": "KlpCheckbox",
+			"status": "pending"
+		},
+		{
+			"name": "KlpCodeEditorField",
+			"status": "pending"
+		},
+		{
+			"name": "KlpCodeField",
+			"status": "pending"
+		},
+		{
+			"name": "KlpCodeViewer",
+			"status": "pending"
+		},
+		{
+			"name": "KlpColorRoleField",
+			"status": "pending"
+		},
+		{
+			"name": "KlpColumn",
+			"status": "pending"
+		},
+		{
+			"name": "KlpCombobox",
+			"status": "pending"
+		},
+		{
+			"name": "KlpCommandMenu",
+			"status": "pending"
+		},
+		{
+			"name": "KlpCompactSwitch",
+			"status": "pending"
+		},
+		{
+			"name": "KlpComponentDefinitionCard",
+			"status": "pending"
+		},
+		{
+			"name": "KlpComponentLibraryGrid",
+			"status": "pending"
+		},
+		{
+			"name": "KlpComponentStateSelector",
+			"status": "pending"
+		},
+		{
+			"name": "KlpCompoundField",
+			"status": "pending"
+		},
+		{
+			"name": "KlpConditionalFieldRegion",
+			"status": "pending"
+		},
+		{
+			"name": "KlpConstrainedBox",
+			"status": "pending"
+		},
+		{
+			"name": "KlpContextMenu",
+			"status": "pending"
+		},
+		{
+			"name": "KlpDashedBorder",
+			"status": "pending"
+		},
+		{
+			"name": "KlpDashedDivider",
+			"status": "pending"
+		},
+		{
+			"name": "KlpDataTable",
+			"status": "pending"
+		},
+		{
+			"name": "KlpDateField",
+			"status": "pending"
+		},
+		{
+			"name": "KlpDateGrid",
+			"status": "pending"
+		},
+		{
+			"name": "KlpDateRangeField",
+			"status": "pending"
+		},
+		{
+			"name": "KlpDialog",
+			"status": "pending"
+		},
+		{
+			"name": "KlpDiffViewer",
+			"status": "pending"
+		},
+		{
+			"name": "KlpDirectionalPositioned",
+			"status": "pending"
+		},
+		{
+			"name": "KlpDivider",
+			"status": "pending"
+		},
+		{
+			"name": "KlpDockHeader",
+			"status": "pending"
+		},
+		{
+			"name": "KlpDockLayout",
+			"status": "pending"
+		},
+		{
+			"name": "KlpDocumentEditActions",
+			"status": "pending"
+		},
+		{
+			"name": "KlpDocumentField",
+			"status": "pending"
+		},
+		{
+			"name": "KlpDocumentHeader",
+			"status": "pending"
+		},
+		{
+			"name": "KlpDocumentReferenceLink",
+			"status": "pending"
+		},
+		{
+			"name": "KlpDocumentSection",
+			"status": "pending"
+		},
+		{
+			"name": "KlpDragPreview",
+			"status": "pending"
+		},
+		{
+			"name": "KlpDrawer",
+			"status": "pending"
+		},
+		{
+			"name": "KlpDropIndicator",
+			"status": "pending"
+		},
+		{
+			"name": "KlpDropTarget",
+			"status": "pending"
+		},
+		{
+			"name": "KlpEditorToolbar",
+			"status": "pending"
+		},
+		{
+			"name": "KlpEmptyState",
+			"status": "pending"
+		},
+		{
+			"name": "KlpEntityPicker",
+			"status": "pending"
+		},
+		{
+			"name": "KlpErrorState",
+			"status": "pending"
+		},
+		{
+			"name": "KlpExcludeSemantics",
+			"status": "pending"
+		},
+		{
+			"name": "KlpExpanded",
+			"status": "pending"
+		},
+		{
+			"name": "KlpExplorer",
+			"status": "preserved",
+			"newApi": "KlpExplorer",
+			"source": "lib/src/features/workspace/explorer/klp_explorer.dart",
+			"demo": "example/lib/catalog/explorer_preview.dart",
+			"evidence": [
+				{
+					"path": "docs/ai/explorer-catalog.md",
+					"description": "使用者已接受EXP-V1-r2目前Catalog，新版外觀與已完成的API替換保留。"
+				}
+			],
+			"visualAcceptance": "accepted-existing"
+		},
+		{
+			"name": "KlpField",
+			"status": "pending"
+		},
+		{
+			"name": "KlpFieldDescription",
+			"status": "pending"
+		},
+		{
+			"name": "KlpFieldError",
+			"status": "pending"
+		},
+		{
+			"name": "KlpFieldGroup",
+			"status": "pending"
+		},
+		{
+			"name": "KlpFieldLabel",
+			"status": "pending"
+		},
+		{
+			"name": "KlpFileDropzoneField",
+			"status": "pending"
+		},
+		{
+			"name": "KlpFileExplorer",
+			"status": "pending"
+		},
+		{
+			"name": "KlpFileExplorerFolderView",
+			"status": "pending"
+		},
+		{
+			"name": "KlpFileExplorerItemView",
+			"status": "pending"
+		},
+		{
+			"name": "KlpFileExplorerSection",
+			"status": "pending"
+		},
+		{
+			"name": "KlpFileExplorerSectionView",
+			"status": "pending"
+		},
+		{
+			"name": "KlpFileField",
+			"status": "pending"
+		},
+		{
+			"name": "KlpFilePreview",
+			"status": "pending"
+		},
+		{
+			"name": "KlpFilterBar",
+			"status": "pending"
+		},
+		{
+			"name": "KlpFit",
+			"status": "pending"
+		},
+		{
+			"name": "KlpFlexible",
+			"status": "pending"
+		},
+		{
+			"name": "KlpFlowNodeCard",
+			"status": "pending"
+		},
+		{
+			"name": "KlpFlowValidationPanel",
+			"status": "pending"
+		},
+		{
+			"name": "KlpFocusBoundary",
+			"status": "pending"
+		},
+		{
+			"name": "KlpFocusRegion",
+			"status": "pending"
+		},
+		{
+			"name": "KlpForm",
+			"status": "pending"
+		},
+		{
+			"name": "KlpFormActions",
+			"status": "pending"
+		},
+		{
+			"name": "KlpFormErrorSummary",
+			"status": "pending"
+		},
+		{
+			"name": "KlpFormSection",
+			"status": "pending"
+		},
+		{
+			"name": "KlpGap",
+			"status": "pending"
+		},
+		{
+			"name": "KlpGeometricSpinner",
+			"status": "pending"
+		},
+		{
+			"name": "KlpGestureRegion",
+			"status": "pending"
+		},
+		{
+			"name": "KlpIcon",
+			"status": "pending"
+		},
+		{
+			"name": "KlpIconButton",
+			"status": "pending"
+		},
+		{
+			"name": "KlpInlineCode",
+			"status": "pending"
+		},
+		{
+			"name": "KlpInlineNotice",
+			"status": "pending"
+		},
+		{
+			"name": "KlpJsonTree",
+			"status": "pending"
+		},
+		{
+			"name": "KlpKeyBindingHost",
+			"status": "pending"
+		},
+		{
+			"name": "KlpKeyBindingRegion",
+			"status": "pending"
+		},
+		{
+			"name": "KlpKeyValueEditor",
+			"status": "pending"
+		},
+		{
+			"name": "KlpKeyValueList",
+			"status": "pending"
+		},
+		{
+			"name": "KlpKeyValueTable",
+			"status": "pending"
+		},
+		{
+			"name": "KlpLayoutBuilder",
+			"status": "pending"
+		},
+		{
+			"name": "KlpLayoutLens",
+			"status": "pending"
+		},
+		{
+			"name": "KlpListTile",
+			"status": "pending"
+		},
+		{
+			"name": "KlpLiveRegion",
+			"status": "pending"
+		},
+		{
+			"name": "KlpLoadingState",
+			"status": "pending"
+		},
+		{
+			"name": "KlpMasonryGrid",
+			"status": "pending"
+		},
+		{
+			"name": "KlpMenu",
+			"status": "migrated",
+			"newApi": "KlpMenu",
+			"source": "lib/src/features/overlays/declarative/klp_menu.dart",
+			"demo": "example/lib/catalog_declarative/menu_specimen.dart",
+			"evidence": [
+				{
+					"path": "test/klp_declarative_menu_test.dart",
+					"description": "公開 application 中6項行為檢查通過：資料/不可變/拒絕、點擊、鍵盤、disabled、hover selected 同色與舊frame事件失效。"
+				}
+			],
+			"visualAcceptance": "human-pending",
+			"legacyRemoval": "等待全庫完成後刪除"
+		},
+		{
+			"name": "KlpMenuItem",
+			"status": "migrated",
+			"newApi": "KlpMenuItem",
+			"source": "lib/src/features/overlays/declarative/klp_menu_item.dart",
+			"demo": "example/lib/catalog_declarative/menu_specimen.dart",
+			"evidence": [
+				{
+					"path": "test/klp_declarative_menu_test.dart",
+					"description": "公開 application 中6項行為檢查通過：資料/不可變/拒絕、點擊、鍵盤、disabled、hover selected 同色與舊frame事件失效。"
+				}
+			],
+			"visualAcceptance": "human-pending",
+			"legacyRemoval": "等待全庫完成後刪除"
+		},
+		{
+			"name": "KlpMessageBubble",
+			"status": "pending"
+		},
+		{
+			"name": "KlpMessageComposer",
+			"status": "pending"
+		},
+		{
+			"name": "KlpMessageConversation",
+			"status": "pending"
+		},
+		{
+			"name": "KlpMessageThread",
+			"status": "pending"
+		},
+		{
+			"name": "KlpMetricCard",
+			"status": "pending"
+		},
+		{
+			"name": "KlpModalFrame",
+			"status": "pending"
+		},
+		{
+			"name": "KlpMultiSelectField",
+			"status": "pending"
+		},
+		{
+			"name": "KlpNavigationRail",
+			"status": "pending"
+		},
+		{
+			"name": "KlpNavigationRailFrame",
+			"status": "pending"
+		},
+		{
+			"name": "KlpNavigator",
+			"status": "pending"
+		},
+		{
+			"name": "KlpNumberField",
+			"status": "pending"
+		},
+		{
+			"name": "KlpOklchColorEditor",
+			"status": "pending"
+		},
+		{
+			"name": "KlpOklchColorPicker",
+			"status": "pending"
+		},
+		{
+			"name": "KlpOverlayHost",
+			"status": "pending"
+		},
+		{
+			"name": "KlpPageBackground",
+			"status": "pending"
+		},
+		{
+			"name": "KlpPageBackgroundEditor",
+			"status": "pending"
+		},
+		{
+			"name": "KlpPageChrome",
+			"status": "pending"
+		},
+		{
+			"name": "KlpPagination",
+			"status": "pending"
+		},
+		{
+			"name": "KlpPaneCollapseControl",
+			"status": "pending"
+		},
+		{
+			"name": "KlpPanelFooter",
+			"status": "pending"
+		},
+		{
+			"name": "KlpPanelFrame",
+			"status": "pending"
+		},
+		{
+			"name": "KlpPanelHeader",
+			"status": "pending"
+		},
+		{
+			"name": "KlpPasswordField",
+			"status": "pending"
+		},
+		{
+			"name": "KlpPermissionState",
+			"status": "pending"
+		},
+		{
+			"name": "KlpPhaseToggle",
+			"status": "pending"
+		},
+		{
+			"name": "KlpPointerBlocker",
+			"status": "pending"
+		},
+		{
+			"name": "KlpPopover",
+			"status": "pending"
+		},
+		{
+			"name": "KlpPopupBackground",
+			"status": "pending"
+		},
+		{
+			"name": "KlpPopupPanel",
+			"status": "pending"
+		},
+		{
+			"name": "KlpPositioned",
+			"status": "pending"
+		},
+		{
+			"name": "KlpPresenceIndicator",
+			"status": "pending"
+		},
+		{
+			"name": "KlpPressable",
+			"status": "pending"
+		},
+		{
+			"name": "KlpPreviewCard",
+			"status": "pending"
+		},
+		{
+			"name": "KlpPreviewTree",
+			"status": "pending"
+		},
+		{
+			"name": "KlpPrimarySidebarFrame",
+			"status": "pending"
+		},
+		{
+			"name": "KlpProgress",
+			"status": "pending"
+		},
+		{
+			"name": "KlpProgressOverlay",
+			"status": "pending"
+		},
+		{
+			"name": "KlpPropertySummary",
+			"status": "pending"
+		},
+		{
+			"name": "KlpPublicationProgressOverlay",
+			"status": "pending"
+		},
+		{
+			"name": "KlpQuantityField",
+			"status": "pending"
+		},
+		{
+			"name": "KlpRadioGroup",
+			"status": "pending"
+		},
+		{
+			"name": "KlpRailItem",
+			"status": "pending"
+		},
+		{
+			"name": "KlpReferencePicker",
+			"status": "pending"
+		},
+		{
+			"name": "KlpRegion",
+			"status": "pending"
+		},
+		{
+			"name": "KlpRegionPlaceholder",
+			"status": "pending"
+		},
+		{
+			"name": "KlpRepeaterField",
+			"status": "pending"
+		},
+		{
+			"name": "KlpResizablePane",
+			"status": "pending"
+		},
+		{
+			"name": "KlpResizeHandle",
+			"status": "pending"
+		},
+		{
+			"name": "KlpResponsivePaneCoordinator",
+			"status": "pending"
+		},
+		{
+			"name": "KlpRichText",
+			"status": "pending"
+		},
+		{
+			"name": "KlpRotate",
+			"status": "pending"
+		},
+		{
+			"name": "KlpRouterOutlet",
+			"status": "pending"
+		},
+		{
+			"name": "KlpRow",
+			"status": "pending"
+		},
+		{
+			"name": "KlpSaveStatusCard",
+			"status": "pending"
+		},
+		{
+			"name": "KlpScheduleList",
+			"status": "pending"
+		},
+		{
+			"name": "KlpScrollViewport",
+			"status": "pending"
+		},
+		{
+			"name": "KlpSearchNavigator",
+			"status": "pending"
+		},
+		{
+			"name": "KlpSection",
+			"status": "pending"
+		},
+		{
+			"name": "KlpSegmentedControl",
+			"status": "pending"
+		},
+		{
+			"name": "KlpSegmentedProgress",
+			"status": "pending"
+		},
+		{
+			"name": "KlpSelect",
+			"status": "pending"
+		},
+		{
+			"name": "KlpSelectField",
+			"status": "pending"
+		},
+		{
+			"name": "KlpSelectionToolbar",
+			"status": "pending"
+		},
+		{
+			"name": "KlpSemanticRegion",
+			"status": "pending"
+		},
+		{
+			"name": "KlpSettingsActionBar",
+			"status": "pending"
+		},
+		{
+			"name": "KlpSettingsContentHeader",
+			"status": "pending"
+		},
+		{
+			"name": "KlpSettingsContentPane",
+			"status": "pending"
+		},
+		{
+			"name": "KlpSettingsDialog",
+			"status": "pending"
+		},
+		{
+			"name": "KlpSettingsField",
+			"status": "pending"
+		},
+		{
+			"name": "KlpSettingsNavigationGroup",
+			"status": "pending"
+		},
+		{
+			"name": "KlpSettingsNavigationHeader",
+			"status": "pending"
+		},
+		{
+			"name": "KlpSettingsNavigationItem",
+			"status": "pending"
+		},
+		{
+			"name": "KlpSettingsNavigationPane",
+			"status": "pending"
+		},
+		{
+			"name": "KlpSettingsPage",
+			"status": "pending"
+		},
+		{
+			"name": "KlpSettingsScopeSwitcher",
+			"status": "pending"
+		},
+		{
+			"name": "KlpSettingsSearchField",
+			"status": "pending"
+		},
+		{
+			"name": "KlpShortcutHint",
+			"status": "pending"
+		},
+		{
+			"name": "KlpSidebarButtonGroup",
+			"status": "pending"
+		},
+		{
+			"name": "KlpSidebarFrame",
+			"status": "pending"
+		},
+		{
+			"name": "KlpSidebarIdentityHeader",
+			"status": "pending"
+		},
+		{
+			"name": "KlpSidebarNavigationButton",
+			"status": "pending"
+		},
+		{
+			"name": "KlpSidebarNavigationGroup",
+			"status": "pending"
+		},
+		{
+			"name": "KlpSidebarSectionLabel",
+			"status": "pending"
+		},
+		{
+			"name": "KlpSkeletonLine",
+			"status": "pending"
+		},
+		{
+			"name": "KlpSlider",
+			"status": "pending"
+		},
+		{
+			"name": "KlpSlidingSelection",
+			"status": "pending"
+		},
+		{
+			"name": "KlpSortControl",
+			"status": "pending"
+		},
+		{
+			"name": "KlpSpacer",
+			"status": "pending"
+		},
+		{
+			"name": "KlpSplitLayout",
+			"status": "pending"
+		},
+		{
+			"name": "KlpStack",
+			"status": "pending"
+		},
+		{
+			"name": "KlpStageFrame",
+			"status": "pending"
+		},
+		{
+			"name": "KlpStageHeader",
+			"status": "pending"
+		},
+		{
+			"name": "KlpStageTab",
+			"status": "pending"
+		},
+		{
+			"name": "KlpStageTopBar",
+			"status": "pending"
+		},
+		{
+			"name": "KlpStateHighlight",
+			"status": "pending"
+		},
+		{
+			"name": "KlpStatusBar",
+			"status": "pending"
+		},
+		{
+			"name": "KlpStatusIndicator",
+			"status": "pending"
+		},
+		{
+			"name": "KlpStatusRoleSwatches",
+			"status": "pending"
+		},
+		{
+			"name": "KlpStepper",
+			"status": "pending"
+		},
+		{
+			"name": "KlpStrokeFrame",
+			"status": "pending"
+		},
+		{
+			"name": "KlpSurface",
+			"status": "pending"
+		},
+		{
+			"name": "KlpTabs",
+			"status": "pending"
+		},
+		{
+			"name": "KlpTag",
+			"status": "pending"
+		},
+		{
+			"name": "KlpTagChip",
+			"status": "pending"
+		},
+		{
+			"name": "KlpTagInputField",
+			"status": "pending"
+		},
+		{
+			"name": "KlpTaskList",
+			"status": "pending"
+		},
+		{
+			"name": "KlpTerminal",
+			"status": "pending"
+		},
+		{
+			"name": "KlpText",
+			"status": "pending"
+		},
+		{
+			"name": "KlpTextArea",
+			"status": "pending"
+		},
+		{
+			"name": "KlpTextField",
+			"status": "pending"
+		},
+		{
+			"name": "KlpThemeModePicker",
+			"status": "pending"
+		},
+		{
+			"name": "KlpThemePreviewTile",
+			"status": "pending"
+		},
+		{
+			"name": "KlpThemeToggle",
+			"status": "pending"
+		},
+		{
+			"name": "KlpTimeline",
+			"status": "pending"
+		},
+		{
+			"name": "KlpToast",
+			"status": "pending"
+		},
+		{
+			"name": "KlpToastStack",
+			"status": "pending"
+		},
+		{
+			"name": "KlpToggle",
+			"status": "pending"
+		},
+		{
+			"name": "KlpToggleIndicator",
+			"status": "pending"
+		},
+		{
+			"name": "KlpTokenOverride",
+			"status": "pending"
+		},
+		{
+			"name": "KlpTokenTable",
+			"status": "pending"
+		},
+		{
+			"name": "KlpTokenValidationBanner",
+			"status": "pending"
+		},
+		{
+			"name": "KlpTooltip",
+			"status": "pending"
+		},
+		{
+			"name": "KlpTooltipSurface",
+			"status": "pending"
+		},
+		{
+			"name": "KlpTranslate",
+			"status": "pending"
+		},
+		{
+			"name": "KlpTree",
+			"status": "pending"
+		},
+		{
+			"name": "KlpTreeItem",
+			"status": "pending"
+		},
+		{
+			"name": "KlpTriStateToggle",
+			"status": "pending"
+		},
+		{
+			"name": "KlpVeil",
+			"status": "pending"
+		},
+		{
+			"name": "KlpViewSwitcher",
+			"status": "pending"
+		},
+		{
+			"name": "KlpVirtualGrid",
+			"status": "pending"
+		},
+		{
+			"name": "KlpVirtualList",
+			"status": "pending"
+		},
+		{
+			"name": "KlpWindowAppIcon",
+			"status": "pending"
+		},
+		{
+			"name": "KlpWindowControls",
+			"status": "pending"
+		},
+		{
+			"name": "KlpWindowHeader",
+			"status": "pending"
+		},
+		{
+			"name": "KlpWindowHeaderMacLayout",
+			"status": "pending"
+		},
+		{
+			"name": "KlpWindowHeaderWindowsLayout",
+			"status": "pending"
+		},
+		{
+			"name": "KlpWorkflowProgress",
+			"status": "pending"
+		},
+		{
+			"name": "KlpWorkflowStateSurface",
+			"status": "pending"
+		},
+		{
+			"name": "KlpWrap",
+			"status": "pending"
+		}
+	]
+}

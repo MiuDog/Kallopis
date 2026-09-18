@@ -12,16 +12,16 @@
 flowchart LR
 	n0["klp_canvas_workspace.dart"]
 	n1["package:flutter/material.dart"]
-	n2["../collections/badge/klp_badge.dart"]
-	n3["../feedback/klp_feedback_tone.dart"]
-	n4["../feedback/klp_inline_notice.dart"]
-	n5["../../foundation/layout/klp_box.dart"]
-	n6["../../foundation/layout/klp_column.dart"]
-	n7["../../foundation/layout/klp_expanded.dart"]
-	n8["../../foundation/layout/klp_gap.dart"]
-	n9["../../foundation/layout/klp_row.dart"]
-	n10["../../foundation/layout/klp_space_size.dart"]
-	n11["../../foundation/layout/klp_wrap.dart"]
+	n2["package:kallopis/src/features/collections/badge/klp_badge.dart"]
+	n3["package:kallopis/src/features/feedback/klp_feedback_tone.dart"]
+	n4["package:kallopis/src/features/feedback/klp_inline_notice.dart"]
+	n5["package:kallopis/src/foundation/layout/klp_box.dart"]
+	n6["package:kallopis/src/foundation/layout/klp_column.dart"]
+	n7["package:kallopis/src/foundation/layout/klp_expanded.dart"]
+	n8["package:kallopis/src/foundation/layout/klp_gap.dart"]
+	n9["package:kallopis/src/foundation/layout/klp_row.dart"]
+	n10["package:kallopis/src/foundation/layout/klp_space_size.dart"]
+	n11["package:kallopis/src/foundation/layout/klp_wrap.dart"]
 	n0 -->|"import"| n1
 	n0 -->|"import"| n2
 	n0 -->|"import"| n3
@@ -38,9 +38,9 @@ flowchart LR
 ```mermaid
 flowchart LR
 	n0["klp_canvas_workspace.dart"]
-	n1["../../foundation/surface/klp_surface.dart"]
-	n2["../../styling/legacy_theme/klp_theme.dart"]
-	n3["../../foundation/content/klp_text.dart"]
+	n1["package:kallopis/src/foundation/surface/klp_surface.dart"]
+	n2["package:kallopis/src/styling/legacy_theme/klp_theme.dart"]
+	n3["package:kallopis/src/foundation/content/klp_text.dart"]
 	n4["internal/klp_canvas_drop_intent.dart"]
 	n5["internal/klp_canvas_minimap.dart"]
 	n6["internal/klp_canvas_selection_overlay.dart"]
@@ -86,19 +86,19 @@ flowchart LR
 | 關係 | 原始 directive | 來源 |
 |---|---|---|
 | import | <code>import &#x27;package:flutter/material.dart&#x27;;</code> | [lib/src/features/infinite_canvas/klp_canvas_workspace.dart:1](../../../../../lib/src/features/infinite_canvas/klp_canvas_workspace.dart#L1) |
-| import | <code>import &#x27;../collections/badge/klp_badge.dart&#x27;;</code> | [lib/src/features/infinite_canvas/klp_canvas_workspace.dart:3](../../../../../lib/src/features/infinite_canvas/klp_canvas_workspace.dart#L3) |
-| import | <code>import &#x27;../feedback/klp_feedback_tone.dart&#x27;;</code> | [lib/src/features/infinite_canvas/klp_canvas_workspace.dart:4](../../../../../lib/src/features/infinite_canvas/klp_canvas_workspace.dart#L4) |
-| import | <code>import &#x27;../feedback/klp_inline_notice.dart&#x27;;</code> | [lib/src/features/infinite_canvas/klp_canvas_workspace.dart:5](../../../../../lib/src/features/infinite_canvas/klp_canvas_workspace.dart#L5) |
-| import | <code>import &#x27;../../foundation/layout/klp_box.dart&#x27;;</code> | [lib/src/features/infinite_canvas/klp_canvas_workspace.dart:6](../../../../../lib/src/features/infinite_canvas/klp_canvas_workspace.dart#L6) |
-| import | <code>import &#x27;../../foundation/layout/klp_column.dart&#x27;;</code> | [lib/src/features/infinite_canvas/klp_canvas_workspace.dart:7](../../../../../lib/src/features/infinite_canvas/klp_canvas_workspace.dart#L7) |
-| import | <code>import &#x27;../../foundation/layout/klp_expanded.dart&#x27;;</code> | [lib/src/features/infinite_canvas/klp_canvas_workspace.dart:8](../../../../../lib/src/features/infinite_canvas/klp_canvas_workspace.dart#L8) |
-| import | <code>import &#x27;../../foundation/layout/klp_gap.dart&#x27;;</code> | [lib/src/features/infinite_canvas/klp_canvas_workspace.dart:9](../../../../../lib/src/features/infinite_canvas/klp_canvas_workspace.dart#L9) |
-| import | <code>import &#x27;../../foundation/layout/klp_row.dart&#x27;;</code> | [lib/src/features/infinite_canvas/klp_canvas_workspace.dart:10](../../../../../lib/src/features/infinite_canvas/klp_canvas_workspace.dart#L10) |
-| import | <code>import &#x27;../../foundation/layout/klp_space_size.dart&#x27;;</code> | [lib/src/features/infinite_canvas/klp_canvas_workspace.dart:11](../../../../../lib/src/features/infinite_canvas/klp_canvas_workspace.dart#L11) |
-| import | <code>import &#x27;../../foundation/layout/klp_wrap.dart&#x27;;</code> | [lib/src/features/infinite_canvas/klp_canvas_workspace.dart:12](../../../../../lib/src/features/infinite_canvas/klp_canvas_workspace.dart#L12) |
-| import | <code>import &#x27;../../foundation/surface/klp_surface.dart&#x27;;</code> | [lib/src/features/infinite_canvas/klp_canvas_workspace.dart:13](../../../../../lib/src/features/infinite_canvas/klp_canvas_workspace.dart#L13) |
-| import | <code>import &#x27;../../styling/legacy_theme/klp_theme.dart&#x27;;</code> | [lib/src/features/infinite_canvas/klp_canvas_workspace.dart:14](../../../../../lib/src/features/infinite_canvas/klp_canvas_workspace.dart#L14) |
-| import | <code>import &#x27;../../foundation/content/klp_text.dart&#x27;;</code> | [lib/src/features/infinite_canvas/klp_canvas_workspace.dart:15](../../../../../lib/src/features/infinite_canvas/klp_canvas_workspace.dart#L15) |
+| import | <code>import &#x27;package:kallopis/src/features/collections/badge/klp_badge.dart&#x27;;</code> | [lib/src/features/infinite_canvas/klp_canvas_workspace.dart:3](../../../../../lib/src/features/infinite_canvas/klp_canvas_workspace.dart#L3) |
+| import | <code>import &#x27;package:kallopis/src/features/feedback/klp_feedback_tone.dart&#x27;;</code> | [lib/src/features/infinite_canvas/klp_canvas_workspace.dart:4](../../../../../lib/src/features/infinite_canvas/klp_canvas_workspace.dart#L4) |
+| import | <code>import &#x27;package:kallopis/src/features/feedback/klp_inline_notice.dart&#x27;;</code> | [lib/src/features/infinite_canvas/klp_canvas_workspace.dart:5](../../../../../lib/src/features/infinite_canvas/klp_canvas_workspace.dart#L5) |
+| import | <code>import &#x27;package:kallopis/src/foundation/layout/klp_box.dart&#x27;;</code> | [lib/src/features/infinite_canvas/klp_canvas_workspace.dart:6](../../../../../lib/src/features/infinite_canvas/klp_canvas_workspace.dart#L6) |
+| import | <code>import &#x27;package:kallopis/src/foundation/layout/klp_column.dart&#x27;;</code> | [lib/src/features/infinite_canvas/klp_canvas_workspace.dart:7](../../../../../lib/src/features/infinite_canvas/klp_canvas_workspace.dart#L7) |
+| import | <code>import &#x27;package:kallopis/src/foundation/layout/klp_expanded.dart&#x27;;</code> | [lib/src/features/infinite_canvas/klp_canvas_workspace.dart:8](../../../../../lib/src/features/infinite_canvas/klp_canvas_workspace.dart#L8) |
+| import | <code>import &#x27;package:kallopis/src/foundation/layout/klp_gap.dart&#x27;;</code> | [lib/src/features/infinite_canvas/klp_canvas_workspace.dart:9](../../../../../lib/src/features/infinite_canvas/klp_canvas_workspace.dart#L9) |
+| import | <code>import &#x27;package:kallopis/src/foundation/layout/klp_row.dart&#x27;;</code> | [lib/src/features/infinite_canvas/klp_canvas_workspace.dart:10](../../../../../lib/src/features/infinite_canvas/klp_canvas_workspace.dart#L10) |
+| import | <code>import &#x27;package:kallopis/src/foundation/layout/klp_space_size.dart&#x27;;</code> | [lib/src/features/infinite_canvas/klp_canvas_workspace.dart:11](../../../../../lib/src/features/infinite_canvas/klp_canvas_workspace.dart#L11) |
+| import | <code>import &#x27;package:kallopis/src/foundation/layout/klp_wrap.dart&#x27;;</code> | [lib/src/features/infinite_canvas/klp_canvas_workspace.dart:12](../../../../../lib/src/features/infinite_canvas/klp_canvas_workspace.dart#L12) |
+| import | <code>import &#x27;package:kallopis/src/foundation/surface/klp_surface.dart&#x27;;</code> | [lib/src/features/infinite_canvas/klp_canvas_workspace.dart:13](../../../../../lib/src/features/infinite_canvas/klp_canvas_workspace.dart#L13) |
+| import | <code>import &#x27;package:kallopis/src/styling/legacy_theme/klp_theme.dart&#x27;;</code> | [lib/src/features/infinite_canvas/klp_canvas_workspace.dart:14](../../../../../lib/src/features/infinite_canvas/klp_canvas_workspace.dart#L14) |
+| import | <code>import &#x27;package:kallopis/src/foundation/content/klp_text.dart&#x27;;</code> | [lib/src/features/infinite_canvas/klp_canvas_workspace.dart:15](../../../../../lib/src/features/infinite_canvas/klp_canvas_workspace.dart#L15) |
 | part | <code>part &#x27;internal/klp_canvas_drop_intent.dart&#x27;;</code> | [lib/src/features/infinite_canvas/klp_canvas_workspace.dart:17](../../../../../lib/src/features/infinite_canvas/klp_canvas_workspace.dart#L17) |
 | part | <code>part &#x27;internal/klp_canvas_minimap.dart&#x27;;</code> | [lib/src/features/infinite_canvas/klp_canvas_workspace.dart:18](../../../../../lib/src/features/infinite_canvas/klp_canvas_workspace.dart#L18) |
 | part | <code>part &#x27;internal/klp_canvas_selection_overlay.dart&#x27;;</code> | [lib/src/features/infinite_canvas/klp_canvas_workspace.dart:19](../../../../../lib/src/features/infinite_canvas/klp_canvas_workspace.dart#L19) |

@@ -12,8 +12,8 @@
 flowchart LR
 	n0["klp_geometry_theme.dart"]
 	n1["package:flutter/material.dart"]
-	n2["../../foundation/klp_metrics.dart"]
-	n3["../legacy_tokens/primitive_token.dart"]
+	n2["package:kallopis/src/styling/legacy_metrics/klp_metrics.dart"]
+	n3["package:kallopis/src/styling/legacy_tokens/primitive_token.dart"]
 	n4["klp_control_geometry.dart"]
 	n5["klp_data_geometry.dart"]
 	n6["klp_layout_geometry.dart"]
@@ -32,8 +32,8 @@ flowchart LR
 | 關係 | 原始 directive | 來源 |
 |---|---|---|
 | import | <code>import &#x27;package:flutter/material.dart&#x27;;</code> | [lib/src/styling/legacy_theme/klp_geometry_theme.dart:1](../../../../../lib/src/styling/legacy_theme/klp_geometry_theme.dart#L1) |
-| import | <code>import &#x27;../../foundation/klp_metrics.dart&#x27;;</code> | [lib/src/styling/legacy_theme/klp_geometry_theme.dart:3](../../../../../lib/src/styling/legacy_theme/klp_geometry_theme.dart#L3) |
-| import | <code>import &#x27;../legacy_tokens/primitive_token.dart&#x27;;</code> | [lib/src/styling/legacy_theme/klp_geometry_theme.dart:4](../../../../../lib/src/styling/legacy_theme/klp_geometry_theme.dart#L4) |
+| import | <code>import &#x27;package:kallopis/src/styling/legacy_metrics/klp_metrics.dart&#x27;;</code> | [lib/src/styling/legacy_theme/klp_geometry_theme.dart:3](../../../../../lib/src/styling/legacy_theme/klp_geometry_theme.dart#L3) |
+| import | <code>import &#x27;package:kallopis/src/styling/legacy_tokens/primitive_token.dart&#x27;;</code> | [lib/src/styling/legacy_theme/klp_geometry_theme.dart:4](../../../../../lib/src/styling/legacy_theme/klp_geometry_theme.dart#L4) |
 | import | <code>import &#x27;klp_control_geometry.dart&#x27;;</code> | [lib/src/styling/legacy_theme/klp_geometry_theme.dart:5](../../../../../lib/src/styling/legacy_theme/klp_geometry_theme.dart#L5) |
 | import | <code>import &#x27;klp_data_geometry.dart&#x27;;</code> | [lib/src/styling/legacy_theme/klp_geometry_theme.dart:6](../../../../../lib/src/styling/legacy_theme/klp_geometry_theme.dart#L6) |
 | import | <code>import &#x27;klp_layout_geometry.dart&#x27;;</code> | [lib/src/styling/legacy_theme/klp_geometry_theme.dart:7](../../../../../lib/src/styling/legacy_theme/klp_geometry_theme.dart#L7) |

@@ -13,11 +13,11 @@ flowchart LR
 	n0["klp_schedule_list.dart"]
 	n1["package:flutter/widgets.dart"]
 	n2["klp_schedule_item_data.dart"]
-	n3["../badge/klp_badge.dart"]
-	n4["../../../foundation/layout/klp_layout.dart"]
-	n5["../../../foundation/surface/klp_surface.dart"]
-	n6["../../../styling/legacy_theme/klp_theme.dart"]
-	n7["../../../foundation/content/klp_text.dart"]
+	n3["package:kallopis/src/features/collections/badge/klp_badge.dart"]
+	n4["package:kallopis/src/foundation/layout/klp_layout.dart"]
+	n5["package:kallopis/src/foundation/surface/klp_surface.dart"]
+	n6["package:kallopis/src/styling/legacy_theme/klp_theme.dart"]
+	n7["package:kallopis/src/foundation/content/klp_text.dart"]
 	n0 -->|"import"| n1
 	n0 -->|"import"| n2
 	n0 -->|"import"| n3
@@ -33,11 +33,11 @@ flowchart LR
 |---|---|---|
 | import | <code>import &#x27;package:flutter/widgets.dart&#x27;;</code> | [lib/src/features/collections/agenda/klp_schedule_list.dart:4](../../../../../../lib/src/features/collections/agenda/klp_schedule_list.dart#L4) |
 | import | <code>import &#x27;klp_schedule_item_data.dart&#x27;;</code> | [lib/src/features/collections/agenda/klp_schedule_list.dart:6](../../../../../../lib/src/features/collections/agenda/klp_schedule_list.dart#L6) |
-| import | <code>import &#x27;../badge/klp_badge.dart&#x27;;</code> | [lib/src/features/collections/agenda/klp_schedule_list.dart:7](../../../../../../lib/src/features/collections/agenda/klp_schedule_list.dart#L7) |
-| import | <code>import &#x27;../../../foundation/layout/klp_layout.dart&#x27;;</code> | [lib/src/features/collections/agenda/klp_schedule_list.dart:8](../../../../../../lib/src/features/collections/agenda/klp_schedule_list.dart#L8) |
-| import | <code>import &#x27;../../../foundation/surface/klp_surface.dart&#x27;;</code> | [lib/src/features/collections/agenda/klp_schedule_list.dart:9](../../../../../../lib/src/features/collections/agenda/klp_schedule_list.dart#L9) |
-| import | <code>import &#x27;../../../styling/legacy_theme/klp_theme.dart&#x27;;</code> | [lib/src/features/collections/agenda/klp_schedule_list.dart:10](../../../../../../lib/src/features/collections/agenda/klp_schedule_list.dart#L10) |
-| import | <code>import &#x27;../../../foundation/content/klp_text.dart&#x27;;</code> | [lib/src/features/collections/agenda/klp_schedule_list.dart:11](../../../../../../lib/src/features/collections/agenda/klp_schedule_list.dart#L11) |
+| import | <code>import &#x27;package:kallopis/src/features/collections/badge/klp_badge.dart&#x27;;</code> | [lib/src/features/collections/agenda/klp_schedule_list.dart:7](../../../../../../lib/src/features/collections/agenda/klp_schedule_list.dart#L7) |
+| import | <code>import &#x27;package:kallopis/src/foundation/layout/klp_layout.dart&#x27;;</code> | [lib/src/features/collections/agenda/klp_schedule_list.dart:8](../../../../../../lib/src/features/collections/agenda/klp_schedule_list.dart#L8) |
+| import | <code>import &#x27;package:kallopis/src/foundation/surface/klp_surface.dart&#x27;;</code> | [lib/src/features/collections/agenda/klp_schedule_list.dart:9](../../../../../../lib/src/features/collections/agenda/klp_schedule_list.dart#L9) |
+| import | <code>import &#x27;package:kallopis/src/styling/legacy_theme/klp_theme.dart&#x27;;</code> | [lib/src/features/collections/agenda/klp_schedule_list.dart:10](../../../../../../lib/src/features/collections/agenda/klp_schedule_list.dart#L10) |
+| import | <code>import &#x27;package:kallopis/src/foundation/content/klp_text.dart&#x27;;</code> | [lib/src/features/collections/agenda/klp_schedule_list.dart:11](../../../../../../lib/src/features/collections/agenda/klp_schedule_list.dart#L11) |
 
 ## 宣告關係圖
 

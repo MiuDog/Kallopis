@@ -1,0 +1,48 @@
+{
+	"contract": "AD-V1-r1",
+	"completed_slices": [
+		"COMP-V1-03",
+		"COMP-V1-04",
+		"RUN-V1-04",
+		"CAP-V1-04",
+		"FND-V1-06"
+	],
+	"enum_moves": {
+		"lib/src/foundation/platform/klp_device_class.dart": "lib/src/capabilities/environment/klp_device_class.dart",
+		"lib/src/foundation/platform/klp_display_mode.dart": "lib/src/capabilities/environment/klp_display_mode.dart",
+		"lib/src/foundation/platform/klp_orientation.dart": "lib/src/capabilities/environment/klp_orientation.dart"
+	},
+	"implementation_moves": {
+		"lib/src/composition/nodes/internal/klp_adaptive_adapter.dart": "lib/src/runtime/compilation/klp_adaptive_adapter.dart",
+		"lib/src/composition/nodes/internal/klp_prepared_adaptive.dart": "lib/src/runtime/compilation/internal/klp_prepared_adaptive.dart"
+	},
+	"writes": {
+		"capabilities": [
+			"lib/src/capabilities/environment/klp_device_class.dart",
+			"lib/src/capabilities/environment/klp_display_mode.dart",
+			"lib/src/capabilities/environment/klp_orientation.dart"
+		],
+		"foundation": [
+			"lib/src/foundation/platform/klp_device_class.dart",
+			"lib/src/foundation/platform/klp_display_mode.dart",
+			"lib/src/foundation/platform/klp_orientation.dart"
+		],
+		"composition": [
+			"lib/src/composition/nodes/internal/klp_adaptive_adapter.dart",
+			"lib/src/composition/nodes/internal/klp_prepared_adaptive.dart",
+			"lib/src/composition/nodes/klp_platform_strategy.dart"
+		],
+		"runtime": [
+			"lib/src/runtime/compilation/klp_adaptive_adapter.dart",
+			"lib/src/runtime/compilation/internal/klp_prepared_adaptive.dart"
+		],
+		"application": [
+			"lib/src/application/bootstrap/internal/klp_application_adapters.dart",
+			"lib/src/application/bootstrap/internal/klp_application_catalog.json"
+		]
+	},
+	"tests": [
+		"test/klp_adaptive_module_boundary_test.dart",
+		"test/klp_environment_alias_contract_test.dart"
+	]
+}

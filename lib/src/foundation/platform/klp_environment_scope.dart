@@ -28,5 +28,6 @@ class KlpEnvironmentScope extends InheritedWidget {
 
   @override
   bool updateShouldNotify(KlpEnvironmentScope oldWidget) =>
-      platform.platform != oldWidget.platform.platform;
+      platform.platform != oldWidget.platform.platform ||
+      platform.adaptiveMode != oldWidget.platform.adaptiveMode;
 }

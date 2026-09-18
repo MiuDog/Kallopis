@@ -11,7 +11,7 @@
 ```mermaid
 flowchart LR
 	n0["klp_visual_style_json_geometry.dart"]
-	n1["../klp_geometry_theme.dart"]
+	n1["package:kallopis/src/styling/legacy_theme/klp_geometry_theme.dart"]
 	n2["klp_visual_style_json_geometry_control.dart"]
 	n3["klp_visual_style_json_geometry_data.dart"]
 	n4["klp_visual_style_json_geometry_layout.dart"]
@@ -27,7 +27,7 @@ flowchart LR
 
 | 關係 | 原始 directive | 來源 |
 |---|---|---|
-| import | <code>import &#x27;../klp_geometry_theme.dart&#x27;;</code> | [lib/src/styling/legacy_theme/internal/klp_visual_style_json_geometry.dart:1](../../../../../../lib/src/styling/legacy_theme/internal/klp_visual_style_json_geometry.dart#L1) |
+| import | <code>import &#x27;package:kallopis/src/styling/legacy_theme/klp_geometry_theme.dart&#x27;;</code> | [lib/src/styling/legacy_theme/internal/klp_visual_style_json_geometry.dart:1](../../../../../../lib/src/styling/legacy_theme/internal/klp_visual_style_json_geometry.dart#L1) |
 | import | <code>import &#x27;klp_visual_style_json_geometry_control.dart&#x27;;</code> | [lib/src/styling/legacy_theme/internal/klp_visual_style_json_geometry.dart:2](../../../../../../lib/src/styling/legacy_theme/internal/klp_visual_style_json_geometry.dart#L2) |
 | import | <code>import &#x27;klp_visual_style_json_geometry_data.dart&#x27;;</code> | [lib/src/styling/legacy_theme/internal/klp_visual_style_json_geometry.dart:3](../../../../../../lib/src/styling/legacy_theme/internal/klp_visual_style_json_geometry.dart#L3) |
 | import | <code>import &#x27;klp_visual_style_json_geometry_layout.dart&#x27;;</code> | [lib/src/styling/legacy_theme/internal/klp_visual_style_json_geometry.dart:4](../../../../../../lib/src/styling/legacy_theme/internal/klp_visual_style_json_geometry.dart#L4) |

@@ -11,9 +11,9 @@
 ```mermaid
 flowchart LR
 	n0["klp_semantic_token.dart"]
-	n1["../../kernel/diagnostics/klp_contract_error.dart"]
-	n2["../primitives/klp_style_value.dart"]
-	n3["../references/klp_style_ref.dart"]
+	n1["package:kallopis/src/kernel/diagnostics/klp_contract_error.dart"]
+	n2["package:kallopis/src/styling/primitives/klp_style_value.dart"]
+	n3["package:kallopis/src/styling/references/klp_style_ref.dart"]
 	n4["klp_semantic_key.dart"]
 	n0 -->|"import"| n1
 	n0 -->|"import"| n2
@@ -25,9 +25,9 @@ flowchart LR
 
 | 關係 | 原始 directive | 來源 |
 |---|---|---|
-| import | <code>import &#x27;../../kernel/diagnostics/klp_contract_error.dart&#x27;;</code> | [lib/src/styling/semantics/klp_semantic_token.dart:1](../../../../../lib/src/styling/semantics/klp_semantic_token.dart#L1) |
-| import | <code>import &#x27;../primitives/klp_style_value.dart&#x27;;</code> | [lib/src/styling/semantics/klp_semantic_token.dart:2](../../../../../lib/src/styling/semantics/klp_semantic_token.dart#L2) |
-| import | <code>import &#x27;../references/klp_style_ref.dart&#x27;;</code> | [lib/src/styling/semantics/klp_semantic_token.dart:3](../../../../../lib/src/styling/semantics/klp_semantic_token.dart#L3) |
+| import | <code>import &#x27;package:kallopis/src/kernel/diagnostics/klp_contract_error.dart&#x27;;</code> | [lib/src/styling/semantics/klp_semantic_token.dart:1](../../../../../lib/src/styling/semantics/klp_semantic_token.dart#L1) |
+| import | <code>import &#x27;package:kallopis/src/styling/primitives/klp_style_value.dart&#x27;;</code> | [lib/src/styling/semantics/klp_semantic_token.dart:2](../../../../../lib/src/styling/semantics/klp_semantic_token.dart#L2) |
+| import | <code>import &#x27;package:kallopis/src/styling/references/klp_style_ref.dart&#x27;;</code> | [lib/src/styling/semantics/klp_semantic_token.dart:3](../../../../../lib/src/styling/semantics/klp_semantic_token.dart#L3) |
 | import | <code>import &#x27;klp_semantic_key.dart&#x27;;</code> | [lib/src/styling/semantics/klp_semantic_token.dart:4](../../../../../lib/src/styling/semantics/klp_semantic_token.dart#L4) |
 
 ## 宣告關係圖

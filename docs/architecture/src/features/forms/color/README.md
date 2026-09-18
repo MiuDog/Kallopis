@@ -14,20 +14,20 @@
 flowchart LR
 	n0["lib/src/features/forms/color"]
 	n1["dart:math"]
-	n2["lib/src/application/localization"]
-	n3["lib/src/features/forms/color/internal"]
-	n4["lib/src/features/forms/color/primitives"]
-	n5["lib/src/features/forms/selection"]
-	n6["lib/src/foundation"]
-	n7["lib/src/foundation/content"]
-	n8["lib/src/foundation/interaction"]
-	n9["lib/src/foundation/layout"]
+	n2["lib/src/features/forms/color/internal"]
+	n3["lib/src/features/forms/color/primitives"]
+	n4["lib/src/features/forms/selection"]
+	n5["lib/src/foundation"]
+	n6["lib/src/foundation/content"]
+	n7["lib/src/foundation/interaction"]
+	n8["lib/src/foundation/layout"]
+	n9["lib/src/foundation/localization"]
 	n10["lib/src/styling/legacy_theme"]
 	n11["package:flutter"]
 	n0 -->|"import"| n1
-	n0 -->|"import"| n2
+	n0 -->|"part"| n2
 	n0 -->|"part"| n3
-	n0 -->|"part"| n4
+	n0 -->|"import"| n4
 	n0 -->|"import"| n5
 	n0 -->|"import"| n6
 	n0 -->|"import"| n7
@@ -40,7 +40,6 @@ flowchart LR
 | 目標邊界 | 關係 | directive 數 | 第一筆來源證據 |
 |---|---|---|---|
 | <code>dart:math</code> | import | 2 | [lib/src/features/forms/color/klp_oklch_color_editor.dart:1](../../../../../../lib/src/features/forms/color/klp_oklch_color_editor.dart#L1) |
-| <code>lib/src/application/localization</code> | import | 2 | [lib/src/features/forms/color/klp_oklch_color_editor.dart:8](../../../../../../lib/src/features/forms/color/klp_oklch_color_editor.dart#L8) |
 | <code>lib/src/features/forms/color/internal</code> | part | 11 | [lib/src/features/forms/color/klp_oklch_color_editor.dart:13](../../../../../../lib/src/features/forms/color/klp_oklch_color_editor.dart#L13) |
 | <code>lib/src/features/forms/color/primitives</code> | part | 6 | [lib/src/features/forms/color/klp_oklch_color_editor.dart:15](../../../../../../lib/src/features/forms/color/klp_oklch_color_editor.dart#L15) |
 | <code>lib/src/features/forms/selection</code> | import | 1 | [lib/src/features/forms/color/klp_oklch_color_editor.dart:10](../../../../../../lib/src/features/forms/color/klp_oklch_color_editor.dart#L10) |
@@ -48,6 +47,7 @@ flowchart LR
 | <code>lib/src/foundation/content</code> | import | 1 | [lib/src/features/forms/color/klp_oklch_color_picker.dart:12](../../../../../../lib/src/features/forms/color/klp_oklch_color_picker.dart#L12) |
 | <code>lib/src/foundation/interaction</code> | import | 3 | [lib/src/features/forms/color/klp_oklch_color_editor.dart:6](../../../../../../lib/src/features/forms/color/klp_oklch_color_editor.dart#L6) |
 | <code>lib/src/foundation/layout</code> | import | 2 | [lib/src/features/forms/color/klp_oklch_color_editor.dart:7](../../../../../../lib/src/features/forms/color/klp_oklch_color_editor.dart#L7) |
+| <code>lib/src/foundation/localization</code> | import | 2 | [lib/src/features/forms/color/klp_oklch_color_editor.dart:8](../../../../../../lib/src/features/forms/color/klp_oklch_color_editor.dart#L8) |
 | <code>lib/src/styling/legacy_theme</code> | import | 2 | [lib/src/features/forms/color/klp_oklch_color_editor.dart:9](../../../../../../lib/src/features/forms/color/klp_oklch_color_editor.dart#L9) |
 | <code>package:flutter</code> | import | 4 | [lib/src/features/forms/color/klp_oklch_chroma_range.dart:1](../../../../../../lib/src/features/forms/color/klp_oklch_chroma_range.dart#L1) |
 

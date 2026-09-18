@@ -1,4 +1,4 @@
-import '../internal/klp_form_dependencies.dart';
+import 'package:kallopis/src/features/forms/internal/klp_form_dependencies.dart';
 
 /// 欄位標籤文字，統一使用 [KlpTextRole.caption] 樣式。
 ///

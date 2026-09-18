@@ -12,13 +12,13 @@
 flowchart LR
 	n0["klp_page_chrome.dart"]
 	n1["package:flutter/widgets.dart"]
-	n2["../../collections/badge/klp_badge.dart"]
-	n3["../../feedback/klp_feedback_tone.dart"]
-	n4["../../../foundation/layout/klp_layout.dart"]
-	n5["../../../application/localization/klp_localizations.dart"]
-	n6["../../../foundation/surface/klp_surface.dart"]
-	n7["../../../styling/legacy_theme/klp_theme.dart"]
-	n8["../../../foundation/content/klp_text.dart"]
+	n2["package:kallopis/src/features/collections/badge/klp_badge.dart"]
+	n3["package:kallopis/src/features/feedback/klp_feedback_tone.dart"]
+	n4["package:kallopis/src/foundation/layout/klp_layout.dart"]
+	n5["package:kallopis/src/foundation/localization/klp_localizations.dart"]
+	n6["package:kallopis/src/foundation/surface/klp_surface.dart"]
+	n7["package:kallopis/src/styling/legacy_theme/klp_theme.dart"]
+	n8["package:kallopis/src/foundation/content/klp_text.dart"]
 	n9["internal/klp_page_chrome_widget.dart"]
 	n10["internal/klp_property_summary.dart"]
 	n11["internal/klp_save_status_card.dart"]
@@ -49,13 +49,13 @@ flowchart TD
 | 關係 | 原始 directive | 來源 |
 |---|---|---|
 | import | <code>import &#x27;package:flutter/widgets.dart&#x27;;</code> | [lib/src/features/workspace/page_chrome/klp_page_chrome.dart:1](../../../../../../lib/src/features/workspace/page_chrome/klp_page_chrome.dart#L1) |
-| import | <code>import &#x27;../../collections/badge/klp_badge.dart&#x27;;</code> | [lib/src/features/workspace/page_chrome/klp_page_chrome.dart:3](../../../../../../lib/src/features/workspace/page_chrome/klp_page_chrome.dart#L3) |
-| import | <code>import &#x27;../../feedback/klp_feedback_tone.dart&#x27;;</code> | [lib/src/features/workspace/page_chrome/klp_page_chrome.dart:4](../../../../../../lib/src/features/workspace/page_chrome/klp_page_chrome.dart#L4) |
-| import | <code>import &#x27;../../../foundation/layout/klp_layout.dart&#x27;;</code> | [lib/src/features/workspace/page_chrome/klp_page_chrome.dart:5](../../../../../../lib/src/features/workspace/page_chrome/klp_page_chrome.dart#L5) |
-| import | <code>import &#x27;../../../application/localization/klp_localizations.dart&#x27;;</code> | [lib/src/features/workspace/page_chrome/klp_page_chrome.dart:6](../../../../../../lib/src/features/workspace/page_chrome/klp_page_chrome.dart#L6) |
-| import | <code>import &#x27;../../../foundation/surface/klp_surface.dart&#x27;;</code> | [lib/src/features/workspace/page_chrome/klp_page_chrome.dart:7](../../../../../../lib/src/features/workspace/page_chrome/klp_page_chrome.dart#L7) |
-| import | <code>import &#x27;../../../styling/legacy_theme/klp_theme.dart&#x27;;</code> | [lib/src/features/workspace/page_chrome/klp_page_chrome.dart:8](../../../../../../lib/src/features/workspace/page_chrome/klp_page_chrome.dart#L8) |
-| import | <code>import &#x27;../../../foundation/content/klp_text.dart&#x27;;</code> | [lib/src/features/workspace/page_chrome/klp_page_chrome.dart:9](../../../../../../lib/src/features/workspace/page_chrome/klp_page_chrome.dart#L9) |
+| import | <code>import &#x27;package:kallopis/src/features/collections/badge/klp_badge.dart&#x27;;</code> | [lib/src/features/workspace/page_chrome/klp_page_chrome.dart:3](../../../../../../lib/src/features/workspace/page_chrome/klp_page_chrome.dart#L3) |
+| import | <code>import &#x27;package:kallopis/src/features/feedback/klp_feedback_tone.dart&#x27;;</code> | [lib/src/features/workspace/page_chrome/klp_page_chrome.dart:4](../../../../../../lib/src/features/workspace/page_chrome/klp_page_chrome.dart#L4) |
+| import | <code>import &#x27;package:kallopis/src/foundation/layout/klp_layout.dart&#x27;;</code> | [lib/src/features/workspace/page_chrome/klp_page_chrome.dart:5](../../../../../../lib/src/features/workspace/page_chrome/klp_page_chrome.dart#L5) |
+| import | <code>import &#x27;package:kallopis/src/foundation/localization/klp_localizations.dart&#x27;;</code> | [lib/src/features/workspace/page_chrome/klp_page_chrome.dart:6](../../../../../../lib/src/features/workspace/page_chrome/klp_page_chrome.dart#L6) |
+| import | <code>import &#x27;package:kallopis/src/foundation/surface/klp_surface.dart&#x27;;</code> | [lib/src/features/workspace/page_chrome/klp_page_chrome.dart:7](../../../../../../lib/src/features/workspace/page_chrome/klp_page_chrome.dart#L7) |
+| import | <code>import &#x27;package:kallopis/src/styling/legacy_theme/klp_theme.dart&#x27;;</code> | [lib/src/features/workspace/page_chrome/klp_page_chrome.dart:8](../../../../../../lib/src/features/workspace/page_chrome/klp_page_chrome.dart#L8) |
+| import | <code>import &#x27;package:kallopis/src/foundation/content/klp_text.dart&#x27;;</code> | [lib/src/features/workspace/page_chrome/klp_page_chrome.dart:9](../../../../../../lib/src/features/workspace/page_chrome/klp_page_chrome.dart#L9) |
 | part | <code>part &#x27;internal/klp_page_chrome_widget.dart&#x27;;</code> | [lib/src/features/workspace/page_chrome/klp_page_chrome.dart:11](../../../../../../lib/src/features/workspace/page_chrome/klp_page_chrome.dart#L11) |
 | part | <code>part &#x27;internal/klp_property_summary.dart&#x27;;</code> | [lib/src/features/workspace/page_chrome/klp_page_chrome.dart:12](../../../../../../lib/src/features/workspace/page_chrome/klp_page_chrome.dart#L12) |
 | part | <code>part &#x27;internal/klp_save_status_card.dart&#x27;;</code> | [lib/src/features/workspace/page_chrome/klp_page_chrome.dart:13](../../../../../../lib/src/features/workspace/page_chrome/klp_page_chrome.dart#L13) |

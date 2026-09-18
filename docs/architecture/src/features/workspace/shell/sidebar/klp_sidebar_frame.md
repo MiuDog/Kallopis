@@ -12,8 +12,8 @@
 flowchart LR
 	n0["klp_sidebar_frame.dart"]
 	n1["package:flutter/widgets.dart"]
-	n2["../../../../foundation/layout/klp_box.dart"]
-	n3["../panel/klp_panel_frame.dart"]
+	n2["package:kallopis/src/foundation/layout/klp_box.dart"]
+	n3["package:kallopis/src/features/workspace/shell/panel/klp_panel_frame.dart"]
 	n4["klp_sidebar_inset.dart"]
 	n5["klp_sidebar_inset.dart"]
 	n0 -->|"import"| n1
@@ -28,8 +28,8 @@ flowchart LR
 | 關係 | 原始 directive | 來源 |
 |---|---|---|
 | import | <code>import &#x27;package:flutter/widgets.dart&#x27;;</code> | [lib/src/features/workspace/shell/sidebar/klp_sidebar_frame.dart:1](../../../../../../../lib/src/features/workspace/shell/sidebar/klp_sidebar_frame.dart#L1) |
-| import | <code>import &#x27;../../../../foundation/layout/klp_box.dart&#x27;;</code> | [lib/src/features/workspace/shell/sidebar/klp_sidebar_frame.dart:3](../../../../../../../lib/src/features/workspace/shell/sidebar/klp_sidebar_frame.dart#L3) |
-| import | <code>import &#x27;../panel/klp_panel_frame.dart&#x27;;</code> | [lib/src/features/workspace/shell/sidebar/klp_sidebar_frame.dart:4](../../../../../../../lib/src/features/workspace/shell/sidebar/klp_sidebar_frame.dart#L4) |
+| import | <code>import &#x27;package:kallopis/src/foundation/layout/klp_box.dart&#x27;;</code> | [lib/src/features/workspace/shell/sidebar/klp_sidebar_frame.dart:3](../../../../../../../lib/src/features/workspace/shell/sidebar/klp_sidebar_frame.dart#L3) |
+| import | <code>import &#x27;package:kallopis/src/features/workspace/shell/panel/klp_panel_frame.dart&#x27;;</code> | [lib/src/features/workspace/shell/sidebar/klp_sidebar_frame.dart:4](../../../../../../../lib/src/features/workspace/shell/sidebar/klp_sidebar_frame.dart#L4) |
 | import | <code>import &#x27;klp_sidebar_inset.dart&#x27;;</code> | [lib/src/features/workspace/shell/sidebar/klp_sidebar_frame.dart:5](../../../../../../../lib/src/features/workspace/shell/sidebar/klp_sidebar_frame.dart#L5) |
 | export | <code>export &#x27;klp_sidebar_inset.dart&#x27;;</code> | [lib/src/features/workspace/shell/sidebar/klp_sidebar_frame.dart:7](../../../../../../../lib/src/features/workspace/shell/sidebar/klp_sidebar_frame.dart#L7) |
 

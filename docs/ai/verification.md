@@ -28,7 +28,7 @@ flutter test test/klp_declarative_public_api_test.dart
 flutter test test/verify_declarative_consumer_test.dart
 ```
 
-修改路徑、公開匯出或架構圖集後，依 [圖集生成器](../architecture/README.md#更新圖集) 重建並檢查圖集。變更視覺結果時，另依專案規則執行適用 golden；未有已核准的視覺變更時不得更新 golden。
+修改路徑、公開匯出或架構圖集後，依 [圖集生成器](../architecture/README.md#更新圖集) 重建並檢查圖集。Pixel 外觀、視覺品味與互動感受由人工驗收，不建立或更新 golden；程式測試只保護可確定的幾何、語意、無障礙、狀態、生命週期與錯誤契約。
 
 ## 常見失敗
 
@@ -36,9 +36,9 @@ flutter test test/verify_declarative_consumer_test.dart
 |---|---|---|
 | Flutter import 被拒絕 | consumer 建立了 Flutter 呈現層 | 改為 `KlpApplication` 和 Kallopis node tree |
 | private `src` import 被拒絕 | 直接跨越公開邊界 | 只從 `kallopis_declarative.dart` 匯入 |
-| style input 被拒絕 | 實例試圖掌管樣式 | 把參照移到 `KlpComponentDefinition` 的 semantic schema |
-| child 型別錯誤 | 節點未實作容器所需資格 | 實作正確介面或改用相容容器 |
+| style input 被拒絕 | 實例試圖掌管樣式 | 使用既有元件語意；缺少能力時提出庫內元件／semantic 契約 |
+| child 型別錯誤 | 節點不符合容器所需資格 | 改用已實作正確資格的公開庫元件或相容容器；consumer 自行實作資格不會加入 catalog |
 | primitive slots 錯誤 | 一個種類不是剛好八個值 | 建立完整 `KlpPrimitiveSet`，不做局部覆寫 |
-| 元件未註冊 | application components 缺少 definition | 將唯一 `KlpComponentDefinition` 加入 `components` |
+| 元件型別未支援 | 使用了非公開或非庫擁有 node | 改用 `kallopis_declarative.dart` 已公開元件，或提出庫內能力需求 |
 
 通過 analyzer 並不代表實際功能完成。每個新增功能仍需有對應的資料、slot、semantic、生命週期與 renderer 驗收；尚未支援的 capability 應明確維持未支援狀態。

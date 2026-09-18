@@ -12,8 +12,8 @@
 flowchart TD
 	n0["klp_region.dart"]
 	n1["package:flutter/widgets.dart"]
-	n2["../surface/klp_surface.dart"]
-	n3["../../styling/legacy_theme/klp_theme.dart"]
+	n2["package:kallopis/src/foundation/surface/klp_surface.dart"]
+	n3["package:kallopis/src/styling/legacy_theme/klp_theme.dart"]
 	n0 -->|"import"| n1
 	n0 -->|"import"| n2
 	n0 -->|"import"| n3
@@ -24,8 +24,8 @@ flowchart TD
 | 關係 | 原始 directive | 來源 |
 |---|---|---|
 | import | <code>import &#x27;package:flutter/widgets.dart&#x27;;</code> | [lib/src/foundation/layout/klp_region.dart:1](../../../../../lib/src/foundation/layout/klp_region.dart#L1) |
-| import | <code>import &#x27;../surface/klp_surface.dart&#x27;;</code> | [lib/src/foundation/layout/klp_region.dart:3](../../../../../lib/src/foundation/layout/klp_region.dart#L3) |
-| import | <code>import &#x27;../../styling/legacy_theme/klp_theme.dart&#x27;;</code> | [lib/src/foundation/layout/klp_region.dart:4](../../../../../lib/src/foundation/layout/klp_region.dart#L4) |
+| import | <code>import &#x27;package:kallopis/src/foundation/surface/klp_surface.dart&#x27;;</code> | [lib/src/foundation/layout/klp_region.dart:3](../../../../../lib/src/foundation/layout/klp_region.dart#L3) |
+| import | <code>import &#x27;package:kallopis/src/styling/legacy_theme/klp_theme.dart&#x27;;</code> | [lib/src/foundation/layout/klp_region.dart:4](../../../../../lib/src/foundation/layout/klp_region.dart#L4) |
 
 ## 宣告關係圖
 

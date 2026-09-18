@@ -12,15 +12,15 @@
 flowchart LR
 	n0["klp_filter_bar.dart"]
 	n1["package:flutter/material.dart"]
-	n2["../../klp_icon.dart"]
-	n3["../../klp_icons.dart"]
-	n4["../../layout/klp_layout.dart"]
-	n5["../../surface/klp_dashed_border.dart"]
-	n6["../../../styling/legacy_theme/klp_theme.dart"]
-	n7["../../content/klp_text.dart"]
-	n8["../klp_action_region.dart"]
-	n9["../klp_action_region_shape.dart"]
-	n10["../klp_gesture_region.dart"]
+	n2["package:kallopis/src/foundation/klp_icon.dart"]
+	n3["package:kallopis/src/foundation/klp_icons.dart"]
+	n4["package:kallopis/src/foundation/layout/klp_layout.dart"]
+	n5["package:kallopis/src/foundation/surface/klp_dashed_border.dart"]
+	n6["package:kallopis/src/styling/legacy_theme/klp_theme.dart"]
+	n7["package:kallopis/src/foundation/content/klp_text.dart"]
+	n8["package:kallopis/src/foundation/interaction/klp_action_region.dart"]
+	n9["package:kallopis/src/foundation/interaction/klp_action_region_shape.dart"]
+	n10["package:kallopis/src/foundation/interaction/klp_gesture_region.dart"]
 	n11["klp_filter_models.dart"]
 	n0 -->|"import"| n1
 	n0 -->|"import"| n2
@@ -40,22 +40,20 @@ flowchart LR
 	n0["klp_filter_bar.dart"]
 	n1["klp_filter_models.dart"]
 	n2["klp_presence_indicator.dart"]
-	n3["klp_selection_toolbar.dart"]
-	n4["klp_shortcut_hint.dart"]
-	n5["internal/klp_filter_bar_widget.dart"]
-	n6["internal/klp_filter_chip.dart"]
-	n7["primitives/klp_filter_chip_frame.dart"]
-	n8["primitives/klp_filter_chip_style.dart"]
-	n9["primitives/klp_filter_remove_action.dart"]
+	n3["klp_shortcut_hint.dart"]
+	n4["internal/klp_filter_bar_widget.dart"]
+	n5["internal/klp_filter_chip.dart"]
+	n6["primitives/klp_filter_chip_frame.dart"]
+	n7["primitives/klp_filter_chip_style.dart"]
+	n8["primitives/klp_filter_remove_action.dart"]
 	n0 -->|"export"| n1
 	n0 -->|"export"| n2
 	n0 -->|"export"| n3
-	n0 -->|"export"| n4
+	n0 -->|"part"| n4
 	n0 -->|"part"| n5
 	n0 -->|"part"| n6
 	n0 -->|"part"| n7
 	n0 -->|"part"| n8
-	n0 -->|"part"| n9
 ```
 
 ## 依賴證據
@@ -63,25 +61,24 @@ flowchart LR
 | 關係 | 原始 directive | 來源 |
 |---|---|---|
 | import | <code>import &#x27;package:flutter/material.dart&#x27;;</code> | [lib/src/foundation/interaction/filter/klp_filter_bar.dart:1](../../../../../../lib/src/foundation/interaction/filter/klp_filter_bar.dart#L1) |
-| import | <code>import &#x27;../../klp_icon.dart&#x27;;</code> | [lib/src/foundation/interaction/filter/klp_filter_bar.dart:3](../../../../../../lib/src/foundation/interaction/filter/klp_filter_bar.dart#L3) |
-| import | <code>import &#x27;../../klp_icons.dart&#x27;;</code> | [lib/src/foundation/interaction/filter/klp_filter_bar.dart:4](../../../../../../lib/src/foundation/interaction/filter/klp_filter_bar.dart#L4) |
-| import | <code>import &#x27;../../layout/klp_layout.dart&#x27;;</code> | [lib/src/foundation/interaction/filter/klp_filter_bar.dart:5](../../../../../../lib/src/foundation/interaction/filter/klp_filter_bar.dart#L5) |
-| import | <code>import &#x27;../../surface/klp_dashed_border.dart&#x27;;</code> | [lib/src/foundation/interaction/filter/klp_filter_bar.dart:6](../../../../../../lib/src/foundation/interaction/filter/klp_filter_bar.dart#L6) |
-| import | <code>import &#x27;../../../styling/legacy_theme/klp_theme.dart&#x27;;</code> | [lib/src/foundation/interaction/filter/klp_filter_bar.dart:7](../../../../../../lib/src/foundation/interaction/filter/klp_filter_bar.dart#L7) |
-| import | <code>import &#x27;../../content/klp_text.dart&#x27;;</code> | [lib/src/foundation/interaction/filter/klp_filter_bar.dart:8](../../../../../../lib/src/foundation/interaction/filter/klp_filter_bar.dart#L8) |
-| import | <code>import &#x27;../klp_action_region.dart&#x27;;</code> | [lib/src/foundation/interaction/filter/klp_filter_bar.dart:9](../../../../../../lib/src/foundation/interaction/filter/klp_filter_bar.dart#L9) |
-| import | <code>import &#x27;../klp_action_region_shape.dart&#x27;;</code> | [lib/src/foundation/interaction/filter/klp_filter_bar.dart:10](../../../../../../lib/src/foundation/interaction/filter/klp_filter_bar.dart#L10) |
-| import | <code>import &#x27;../klp_gesture_region.dart&#x27;;</code> | [lib/src/foundation/interaction/filter/klp_filter_bar.dart:11](../../../../../../lib/src/foundation/interaction/filter/klp_filter_bar.dart#L11) |
+| import | <code>import &#x27;package:kallopis/src/foundation/klp_icon.dart&#x27;;</code> | [lib/src/foundation/interaction/filter/klp_filter_bar.dart:3](../../../../../../lib/src/foundation/interaction/filter/klp_filter_bar.dart#L3) |
+| import | <code>import &#x27;package:kallopis/src/foundation/klp_icons.dart&#x27;;</code> | [lib/src/foundation/interaction/filter/klp_filter_bar.dart:4](../../../../../../lib/src/foundation/interaction/filter/klp_filter_bar.dart#L4) |
+| import | <code>import &#x27;package:kallopis/src/foundation/layout/klp_layout.dart&#x27;;</code> | [lib/src/foundation/interaction/filter/klp_filter_bar.dart:5](../../../../../../lib/src/foundation/interaction/filter/klp_filter_bar.dart#L5) |
+| import | <code>import &#x27;package:kallopis/src/foundation/surface/klp_dashed_border.dart&#x27;;</code> | [lib/src/foundation/interaction/filter/klp_filter_bar.dart:6](../../../../../../lib/src/foundation/interaction/filter/klp_filter_bar.dart#L6) |
+| import | <code>import &#x27;package:kallopis/src/styling/legacy_theme/klp_theme.dart&#x27;;</code> | [lib/src/foundation/interaction/filter/klp_filter_bar.dart:7](../../../../../../lib/src/foundation/interaction/filter/klp_filter_bar.dart#L7) |
+| import | <code>import &#x27;package:kallopis/src/foundation/content/klp_text.dart&#x27;;</code> | [lib/src/foundation/interaction/filter/klp_filter_bar.dart:8](../../../../../../lib/src/foundation/interaction/filter/klp_filter_bar.dart#L8) |
+| import | <code>import &#x27;package:kallopis/src/foundation/interaction/klp_action_region.dart&#x27;;</code> | [lib/src/foundation/interaction/filter/klp_filter_bar.dart:9](../../../../../../lib/src/foundation/interaction/filter/klp_filter_bar.dart#L9) |
+| import | <code>import &#x27;package:kallopis/src/foundation/interaction/klp_action_region_shape.dart&#x27;;</code> | [lib/src/foundation/interaction/filter/klp_filter_bar.dart:10](../../../../../../lib/src/foundation/interaction/filter/klp_filter_bar.dart#L10) |
+| import | <code>import &#x27;package:kallopis/src/foundation/interaction/klp_gesture_region.dart&#x27;;</code> | [lib/src/foundation/interaction/filter/klp_filter_bar.dart:11](../../../../../../lib/src/foundation/interaction/filter/klp_filter_bar.dart#L11) |
 | import | <code>import &#x27;klp_filter_models.dart&#x27;;</code> | [lib/src/foundation/interaction/filter/klp_filter_bar.dart:12](../../../../../../lib/src/foundation/interaction/filter/klp_filter_bar.dart#L12) |
 | export | <code>export &#x27;klp_filter_models.dart&#x27;;</code> | [lib/src/foundation/interaction/filter/klp_filter_bar.dart:14](../../../../../../lib/src/foundation/interaction/filter/klp_filter_bar.dart#L14) |
 | export | <code>export &#x27;klp_presence_indicator.dart&#x27;;</code> | [lib/src/foundation/interaction/filter/klp_filter_bar.dart:15](../../../../../../lib/src/foundation/interaction/filter/klp_filter_bar.dart#L15) |
-| export | <code>export &#x27;klp_selection_toolbar.dart&#x27;;</code> | [lib/src/foundation/interaction/filter/klp_filter_bar.dart:16](../../../../../../lib/src/foundation/interaction/filter/klp_filter_bar.dart#L16) |
-| export | <code>export &#x27;klp_shortcut_hint.dart&#x27;;</code> | [lib/src/foundation/interaction/filter/klp_filter_bar.dart:17](../../../../../../lib/src/foundation/interaction/filter/klp_filter_bar.dart#L17) |
-| part | <code>part &#x27;internal/klp_filter_bar_widget.dart&#x27;;</code> | [lib/src/foundation/interaction/filter/klp_filter_bar.dart:19](../../../../../../lib/src/foundation/interaction/filter/klp_filter_bar.dart#L19) |
-| part | <code>part &#x27;internal/klp_filter_chip.dart&#x27;;</code> | [lib/src/foundation/interaction/filter/klp_filter_bar.dart:20](../../../../../../lib/src/foundation/interaction/filter/klp_filter_bar.dart#L20) |
-| part | <code>part &#x27;primitives/klp_filter_chip_frame.dart&#x27;;</code> | [lib/src/foundation/interaction/filter/klp_filter_bar.dart:21](../../../../../../lib/src/foundation/interaction/filter/klp_filter_bar.dart#L21) |
-| part | <code>part &#x27;primitives/klp_filter_chip_style.dart&#x27;;</code> | [lib/src/foundation/interaction/filter/klp_filter_bar.dart:22](../../../../../../lib/src/foundation/interaction/filter/klp_filter_bar.dart#L22) |
-| part | <code>part &#x27;primitives/klp_filter_remove_action.dart&#x27;;</code> | [lib/src/foundation/interaction/filter/klp_filter_bar.dart:23](../../../../../../lib/src/foundation/interaction/filter/klp_filter_bar.dart#L23) |
+| export | <code>export &#x27;klp_shortcut_hint.dart&#x27;;</code> | [lib/src/foundation/interaction/filter/klp_filter_bar.dart:16](../../../../../../lib/src/foundation/interaction/filter/klp_filter_bar.dart#L16) |
+| part | <code>part &#x27;internal/klp_filter_bar_widget.dart&#x27;;</code> | [lib/src/foundation/interaction/filter/klp_filter_bar.dart:18](../../../../../../lib/src/foundation/interaction/filter/klp_filter_bar.dart#L18) |
+| part | <code>part &#x27;internal/klp_filter_chip.dart&#x27;;</code> | [lib/src/foundation/interaction/filter/klp_filter_bar.dart:19](../../../../../../lib/src/foundation/interaction/filter/klp_filter_bar.dart#L19) |
+| part | <code>part &#x27;primitives/klp_filter_chip_frame.dart&#x27;;</code> | [lib/src/foundation/interaction/filter/klp_filter_bar.dart:20](../../../../../../lib/src/foundation/interaction/filter/klp_filter_bar.dart#L20) |
+| part | <code>part &#x27;primitives/klp_filter_chip_style.dart&#x27;;</code> | [lib/src/foundation/interaction/filter/klp_filter_bar.dart:21](../../../../../../lib/src/foundation/interaction/filter/klp_filter_bar.dart#L21) |
+| part | <code>part &#x27;primitives/klp_filter_remove_action.dart&#x27;;</code> | [lib/src/foundation/interaction/filter/klp_filter_bar.dart:22](../../../../../../lib/src/foundation/interaction/filter/klp_filter_bar.dart#L22) |
 
 ## 宣告關係圖
 

@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="zh-Hant" data-theme="light" data-tone="warm" data-shadow="on">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Planist · 產品設計參考</title>
+	<link rel="icon" href="data:,">
+	<link rel="stylesheet" href="style.css">
+</head>
+<body>
+	<div class="workspace">
+		<aside class="sidebar frame" aria-label="專案與文件">
+			<div class="group identity"><span class="brand-mark">p.</span><span class="brand">Planist</span><div class="identity-actions"><button class="icon-button" id="open-search" aria-label="搜尋專案文件" title="搜尋專案文件" data-icon="search"></button><button class="icon-button" id="appearance" aria-label="外觀與設計說明" title="外觀與設計說明" data-icon="sliders"></button></div></div>
+			<nav class="group primary" aria-label="主要功能">
+				<button data-page="documents" class="nav-item current"><span data-icon="folder"></span>專案</button>
+				<button data-page="ai" class="nav-item"><span data-icon="spark"></span>Planist AI</button>
+				<button data-page="tasks" class="nav-item"><span data-icon="check"></span>待辦事項</button>
+				<button data-page="assets" class="nav-item"><span data-icon="image"></span>資產庫</button>
+			</nav>
+			<div class="navigation-divider" aria-hidden="true"></div>
+			<div class="explorer group">
+				<details open><summary>置頂<span class="small muted">1</span></summary><button class="file" data-doc="brief"><span data-icon="file"></span>工作室改造計畫<span class="pin-mark" data-icon="pin"></span></button></details>
+				<details open><summary>文件<span class="small muted">4</span></summary><details class="folder" open><summary><span data-icon="folder"></span>空間改造</summary><button class="file selected" data-doc="brief"><span data-icon="file"></span>工作室改造計畫</button><button class="file" data-doc="board"><span data-icon="board"></span>靈感牆</button><button class="file" data-doc="meeting"><span data-icon="file"></span>第一次現場紀錄</button></details><button class="file" data-doc="inbox"><span data-icon="file"></span>隨手記</button></details>
+				<details open><summary>收藏<span class="small muted">1</span></summary><button class="file collection" id="collection"><span data-icon="layers"></span>空間提案<span class="count">2</span></button></details>
+			</div>
+		</aside>
+		<main class="main">
+			<div class="top-strip"><button class="icon-button mobile-nav" id="sidebar-toggle" aria-label="展開側欄" data-icon="menu"></button><div class="toolbar" role="toolbar" aria-label="工具列預留區"><span class="toolbar-placeholder">工具列</span></div><div class="window-controls" aria-label="視窗控制外觀示意"><span data-icon="minus" title="最小化（外觀示意）"></span><span data-icon="window" title="最大化（外觀示意）"></span><span data-icon="close" title="關閉（外觀示意）"></span></div></div>
+			<div class="stage-row">
+			<section class="stage frame" aria-label="主要內容">
+				<div id="content" class="content"></div>
+			</section>
+			<aside id="right-sidebar" class="right-sidebar" aria-label="右側欄"></aside>
+			</div>
+		</main>
+	</div>
+	<dialog id="settings"><form method="dialog" class="dialog-head"><div><span class="eyebrow">DESIGN REFERENCE · 01</span><h2>外觀與設計基準</h2></div><button class="icon-button" aria-label="關閉外觀設定" data-icon="close"></button></form><div class="settings-body"><p class="muted">第一步：畫面評鑑稿。確認後才作為元件 API 與產品實作的驗收依據。</p><label>明暗模式<select id="theme-select"><option value="light">淺色</option><option value="dark">深色</option></select></label><label>框架色調<select id="tone-select"><option value="warm">暖灰 · 預設</option><option value="neutral">中性灰</option></select></label><label class="check-setting">內容微浮陰影<input type="checkbox" id="shadow-toggle" checked></label><div class="design-facts"><p>Frame：外距 12 · 欄距 12 · 圓角 12px</p><p>Frame 內距 0；功能分群水平 padding 12px</p><p>Frame 無邊框、無陰影；內部分隔線採虛線</p><p>正文內距：水平 30 · 垂直 28px</p><p>深色亮度：底板 ＜ 輔助區 ＜ 主內容</p></div><p class="small muted">文件、任務與資產均為示例。編輯與畫布移動僅在目前頁面暫存；重新整理會重設。視窗控制僅供外觀對照。</p></div></dialog>
+	<dialog id="search-dialog"><form method="dialog" class="dialog-head"><h2>搜尋專案文件</h2><button class="icon-button" aria-label="關閉搜尋" data-icon="close"></button></form><label class="search"><span data-icon="search"></span><input id="search" aria-label="搜尋專案文件" placeholder="輸入文件名稱" autocomplete="off"></label><div id="search-results"></div><p id="search-empty" hidden class="muted small">沒有符合的文件</p></dialog>
+	<script src="app.js"></script>
+</body>
+</html>

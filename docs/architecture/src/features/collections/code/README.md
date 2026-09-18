@@ -13,21 +13,21 @@
 ```mermaid
 flowchart LR
 	n0["lib/src/features/collections/code"]
-	n1["lib/src/application/localization"]
-	n2["lib/src/features/collections/code/internal"]
-	n3["lib/src/features/collections/code/models"]
-	n4["lib/src/features/collections/code/primitives"]
-	n5["lib/src/features/overlays"]
-	n6["lib/src/foundation"]
-	n7["lib/src/foundation/content"]
-	n8["lib/src/foundation/interaction"]
-	n9["lib/src/foundation/layout"]
+	n1["lib/src/features/collections/code/internal"]
+	n2["lib/src/features/collections/code/models"]
+	n3["lib/src/features/collections/code/primitives"]
+	n4["lib/src/features/overlays"]
+	n5["lib/src/foundation"]
+	n6["lib/src/foundation/content"]
+	n7["lib/src/foundation/interaction"]
+	n8["lib/src/foundation/layout"]
+	n9["lib/src/foundation/localization"]
 	n10["lib/src/styling/legacy_theme"]
 	n11["package:flutter"]
-	n0 -->|"import"| n1
-	n0 -->|"part"| n2
-	n0 -->|"import"| n3
-	n0 -->|"part"| n4
+	n0 -->|"part"| n1
+	n0 -->|"import"| n2
+	n0 -->|"part"| n3
+	n0 -->|"import"| n4
 	n0 -->|"import"| n5
 	n0 -->|"import"| n6
 	n0 -->|"import"| n7
@@ -39,7 +39,6 @@ flowchart LR
 
 | 目標邊界 | 關係 | directive 數 | 第一筆來源證據 |
 |---|---|---|---|
-| <code>lib/src/application/localization</code> | import | 1 | [lib/src/features/collections/code/klp_code_viewer.dart:7](../../../../../../lib/src/features/collections/code/klp_code_viewer.dart#L7) |
 | <code>lib/src/features/collections/code/internal</code> | part | 9 | [lib/src/features/collections/code/klp_code_viewer.dart:14](../../../../../../lib/src/features/collections/code/klp_code_viewer.dart#L14) |
 | <code>lib/src/features/collections/code/models</code> | import | 1 | [lib/src/features/collections/code/klp_code_viewer.dart:12](../../../../../../lib/src/features/collections/code/klp_code_viewer.dart#L12) |
 | <code>lib/src/features/collections/code/primitives</code> | part | 11 | [lib/src/features/collections/code/klp_code_viewer.dart:24](../../../../../../lib/src/features/collections/code/klp_code_viewer.dart#L24) |
@@ -48,6 +47,7 @@ flowchart LR
 | <code>lib/src/foundation/content</code> | import | 1 | [lib/src/features/collections/code/klp_code_viewer.dart:11](../../../../../../lib/src/features/collections/code/klp_code_viewer.dart#L11) |
 | <code>lib/src/foundation/interaction</code> | import | 1 | [lib/src/features/collections/code/klp_code_viewer.dart:5](../../../../../../lib/src/features/collections/code/klp_code_viewer.dart#L5) |
 | <code>lib/src/foundation/layout</code> | import | 1 | [lib/src/features/collections/code/klp_code_viewer.dart:6](../../../../../../lib/src/features/collections/code/klp_code_viewer.dart#L6) |
+| <code>lib/src/foundation/localization</code> | import | 1 | [lib/src/features/collections/code/klp_code_viewer.dart:7](../../../../../../lib/src/features/collections/code/klp_code_viewer.dart#L7) |
 | <code>lib/src/styling/legacy_theme</code> | import | 1 | [lib/src/features/collections/code/klp_code_viewer.dart:10](../../../../../../lib/src/features/collections/code/klp_code_viewer.dart#L10) |
 | <code>package:flutter</code> | import | 1 | [lib/src/features/collections/code/klp_code_viewer.dart:1](../../../../../../lib/src/features/collections/code/klp_code_viewer.dart#L1) |
 

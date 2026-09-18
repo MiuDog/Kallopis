@@ -18,19 +18,19 @@ flowchart LR
 	n3["lib/src/application/bootstrap/internal"]
 	n4["lib/src/application/bootstrap/internal"]
 	n5["lib/src/application/environment"]
-	n6["lib/src/application/routing"]
-	n7["lib/src/application/structure/internal"]
-	n8["lib/src/capabilities/actions"]
-	n9["lib/src/capabilities/navigation"]
-	n10["lib/src/capabilities/navigation/internal"]
-	n11["lib/src/capabilities/state"]
+	n6["lib/src/application/environment"]
+	n7["lib/src/application/routing"]
+	n8["lib/src/application/structure/internal"]
+	n9["lib/src/capabilities/actions"]
+	n10["lib/src/capabilities/environment"]
+	n11["lib/src/capabilities/files"]
 	n0 -->|"import"| n1
 	n0 -->|"part"| n2
 	n0 -->|"import"| n3
 	n0 -->|"part"| n4
-	n0 -->|"part"| n5
+	n0 -->|"import"| n5
 	n0 -->|"part"| n6
-	n0 -->|"import"| n7
+	n0 -->|"part"| n7
 	n0 -->|"import"| n8
 	n0 -->|"import"| n9
 	n0 -->|"import"| n10
@@ -40,17 +40,17 @@ flowchart LR
 ```mermaid
 flowchart LR
 	n0["lib/src/application/structure"]
-	n1["lib/src/composition/nodes"]
-	n2["lib/src/composition/nodes/internal"]
-	n3["lib/src/composition/slots"]
-	n4["lib/src/foundation/binding/internal"]
-	n5["lib/src/foundation/definitions"]
-	n6["lib/src/foundation/platform"]
-	n7["lib/src/kernel/identity"]
-	n8["lib/src/kernel/lifecycle/internal"]
-	n9["lib/src/rendering/flutter/internal"]
-	n10["lib/src/runtime/compilation/internal"]
-	n11["lib/src/runtime/installation/internal"]
+	n1["lib/src/capabilities/navigation"]
+	n2["lib/src/capabilities/navigation/engine"]
+	n3["lib/src/capabilities/state"]
+	n4["lib/src/composition/nodes"]
+	n5["lib/src/composition/slots"]
+	n6["lib/src/features/editing/contracts"]
+	n7["lib/src/foundation/binding/contracts"]
+	n8["lib/src/foundation/localization"]
+	n9["lib/src/foundation/platform"]
+	n10["lib/src/kernel/identity"]
+	n11["lib/src/kernel/lifecycle"]
 	n0 -->|"import"| n1
 	n0 -->|"import"| n2
 	n0 -->|"import"| n3
@@ -65,46 +65,55 @@ flowchart LR
 ```
 
 ```mermaid
-flowchart TD
+flowchart LR
 	n0["lib/src/application/structure"]
-	n1["lib/src/styling/primitives"]
-	n2["package:flutter"]
+	n1["lib/src/rendering/flutter"]
+	n2["lib/src/runtime/compilation"]
+	n3["lib/src/runtime/contracts"]
+	n4["lib/src/styling/primitives"]
+	n5["package:flutter"]
 	n0 -->|"import"| n1
 	n0 -->|"import"| n2
+	n0 -->|"import"| n3
+	n0 -->|"import"| n4
+	n0 -->|"import"| n5
 ```
 
 | 目標邊界 | 關係 | directive 數 | 第一筆來源證據 |
 |---|---|---|---|
-| <code>dart:async</code> | import | 1 | [lib/src/application/structure/klp_application.dart:1](../../../../../lib/src/application/structure/klp_application.dart#L1) |
-| <code>lib/src/application/bootstrap</code> | part | 1 | [lib/src/application/structure/klp_application.dart:47](../../../../../lib/src/application/structure/klp_application.dart#L47) |
-| <code>lib/src/application/bootstrap/internal</code> | import | 1 | [lib/src/application/structure/klp_application.dart:39](../../../../../lib/src/application/structure/klp_application.dart#L39) |
-| <code>lib/src/application/bootstrap/internal</code> | part | 5 | [lib/src/application/structure/klp_application.dart:48](../../../../../lib/src/application/structure/klp_application.dart#L48) |
-| <code>lib/src/application/environment</code> | part | 1 | [lib/src/application/structure/klp_application.dart:46](../../../../../lib/src/application/structure/klp_application.dart#L46) |
-| <code>lib/src/application/routing</code> | part | 3 | [lib/src/application/structure/klp_application.dart:43](../../../../../lib/src/application/structure/klp_application.dart#L43) |
-| <code>lib/src/application/structure/internal</code> | import | 1 | [lib/src/application/structure/klp_application.dart:41](../../../../../lib/src/application/structure/klp_application.dart#L41) |
-| <code>lib/src/capabilities/actions</code> | import | 3 | [lib/src/application/structure/klp_application.dart:8](../../../../../lib/src/application/structure/klp_application.dart#L8) |
-| <code>lib/src/capabilities/navigation</code> | import | 12 | [lib/src/application/structure/klp_application.dart:11](../../../../../lib/src/application/structure/klp_application.dart#L11) |
-| <code>lib/src/capabilities/navigation/internal</code> | import | 2 | [lib/src/application/structure/klp_application.dart:18](../../../../../lib/src/application/structure/klp_application.dart#L18) |
-| <code>lib/src/capabilities/state</code> | import | 2 | [lib/src/application/structure/klp_application.dart:6](../../../../../lib/src/application/structure/klp_application.dart#L6) |
-| <code>lib/src/composition/nodes</code> | import | 2 | [lib/src/application/structure/klp_application.dart:26](../../../../../lib/src/application/structure/klp_application.dart#L26) |
-| <code>lib/src/composition/nodes/internal</code> | import | 1 | [lib/src/application/structure/klp_application.dart:25](../../../../../lib/src/application/structure/klp_application.dart#L25) |
+| <code>dart:async</code> | import | 1 | [lib/src/application/structure/klp_application.dart:3](../../../../../lib/src/application/structure/klp_application.dart#L3) |
+| <code>lib/src/application/bootstrap</code> | part | 1 | [lib/src/application/structure/klp_application.dart:56](../../../../../lib/src/application/structure/klp_application.dart#L56) |
+| <code>lib/src/application/bootstrap/internal</code> | import | 1 | [lib/src/application/structure/klp_application.dart:47](../../../../../lib/src/application/structure/klp_application.dart#L47) |
+| <code>lib/src/application/bootstrap/internal</code> | part | 5 | [lib/src/application/structure/klp_application.dart:57](../../../../../lib/src/application/structure/klp_application.dart#L57) |
+| <code>lib/src/application/environment</code> | import | 1 | [lib/src/application/structure/klp_application.dart:6](../../../../../lib/src/application/structure/klp_application.dart#L6) |
+| <code>lib/src/application/environment</code> | part | 2 | [lib/src/application/structure/klp_application.dart:54](../../../../../lib/src/application/structure/klp_application.dart#L54) |
+| <code>lib/src/application/routing</code> | part | 3 | [lib/src/application/structure/klp_application.dart:51](../../../../../lib/src/application/structure/klp_application.dart#L51) |
+| <code>lib/src/application/structure/internal</code> | import | 1 | [lib/src/application/structure/klp_application.dart:49](../../../../../lib/src/application/structure/klp_application.dart#L49) |
+| <code>lib/src/capabilities/actions</code> | import | 4 | [lib/src/application/structure/klp_application.dart:4](../../../../../lib/src/application/structure/klp_application.dart#L4) |
+| <code>lib/src/capabilities/environment</code> | import | 2 | [lib/src/application/structure/klp_application.dart:34](../../../../../lib/src/application/structure/klp_application.dart#L34) |
+| <code>lib/src/capabilities/files</code> | import | 1 | [lib/src/application/structure/klp_application.dart:5](../../../../../lib/src/application/structure/klp_application.dart#L5) |
+| <code>lib/src/capabilities/navigation</code> | import | 12 | [lib/src/application/structure/klp_application.dart:17](../../../../../lib/src/application/structure/klp_application.dart#L17) |
+| <code>lib/src/capabilities/navigation/engine</code> | import | 2 | [lib/src/application/structure/klp_application.dart:24](../../../../../lib/src/application/structure/klp_application.dart#L24) |
+| <code>lib/src/capabilities/state</code> | import | 2 | [lib/src/application/structure/klp_application.dart:12](../../../../../lib/src/application/structure/klp_application.dart#L12) |
+| <code>lib/src/composition/nodes</code> | import | 3 | [lib/src/application/structure/klp_application.dart:31](../../../../../lib/src/application/structure/klp_application.dart#L31) |
 | <code>lib/src/composition/slots</code> | import | 3 | [lib/src/application/structure/klp_screen.dart:2](../../../../../lib/src/application/structure/klp_screen.dart#L2) |
-| <code>lib/src/foundation/binding/internal</code> | import | 1 | [lib/src/application/structure/klp_application.dart:27](../../../../../lib/src/application/structure/klp_application.dart#L27) |
-| <code>lib/src/foundation/definitions</code> | import | 1 | [lib/src/application/structure/klp_application.dart:28](../../../../../lib/src/application/structure/klp_application.dart#L28) |
-| <code>lib/src/foundation/platform</code> | import | 2 | [lib/src/application/structure/klp_application.dart:29](../../../../../lib/src/application/structure/klp_application.dart#L29) |
-| <code>lib/src/kernel/identity</code> | import | 1 | [lib/src/application/structure/klp_application.dart:32](../../../../../lib/src/application/structure/klp_application.dart#L32) |
-| <code>lib/src/kernel/lifecycle/internal</code> | import | 1 | [lib/src/application/structure/klp_application.dart:31](../../../../../lib/src/application/structure/klp_application.dart#L31) |
-| <code>lib/src/rendering/flutter/internal</code> | import | 1 | [lib/src/application/structure/klp_application.dart:33](../../../../../lib/src/application/structure/klp_application.dart#L33) |
-| <code>lib/src/runtime/compilation/internal</code> | import | 2 | [lib/src/application/structure/klp_application.dart:34](../../../../../lib/src/application/structure/klp_application.dart#L34) |
-| <code>lib/src/runtime/installation/internal</code> | import | 1 | [lib/src/application/structure/klp_application.dart:36](../../../../../lib/src/application/structure/klp_application.dart#L36) |
-| <code>lib/src/styling/primitives</code> | import | 2 | [lib/src/application/structure/klp_application.dart:37](../../../../../lib/src/application/structure/klp_application.dart#L37) |
-| <code>package:flutter</code> | import | 2 | [lib/src/application/structure/klp_application.dart:3](../../../../../lib/src/application/structure/klp_application.dart#L3) |
+| <code>lib/src/features/editing/contracts</code> | import | 1 | [lib/src/application/structure/klp_application.dart:1](../../../../../lib/src/application/structure/klp_application.dart#L1) |
+| <code>lib/src/foundation/binding/contracts</code> | import | 1 | [lib/src/application/structure/klp_application.dart:33](../../../../../lib/src/application/structure/klp_application.dart#L33) |
+| <code>lib/src/foundation/localization</code> | import | 1 | [lib/src/application/structure/klp_application.dart:2](../../../../../lib/src/application/structure/klp_application.dart#L2) |
+| <code>lib/src/foundation/platform</code> | import | 1 | [lib/src/application/structure/klp_application.dart:36](../../../../../lib/src/application/structure/klp_application.dart#L36) |
+| <code>lib/src/kernel/identity</code> | import | 3 | [lib/src/application/structure/klp_application.dart:38](../../../../../lib/src/application/structure/klp_application.dart#L38) |
+| <code>lib/src/kernel/lifecycle</code> | import | 1 | [lib/src/application/structure/klp_application.dart:37](../../../../../lib/src/application/structure/klp_application.dart#L37) |
+| <code>lib/src/rendering/flutter</code> | import | 2 | [lib/src/application/structure/klp_application.dart:40](../../../../../lib/src/application/structure/klp_application.dart#L40) |
+| <code>lib/src/runtime/compilation</code> | import | 1 | [lib/src/application/structure/klp_application.dart:42](../../../../../lib/src/application/structure/klp_application.dart#L42) |
+| <code>lib/src/runtime/contracts</code> | import | 2 | [lib/src/application/structure/klp_application.dart:43](../../../../../lib/src/application/structure/klp_application.dart#L43) |
+| <code>lib/src/styling/primitives</code> | import | 2 | [lib/src/application/structure/klp_application.dart:45](../../../../../lib/src/application/structure/klp_application.dart#L45) |
+| <code>package:flutter</code> | import | 3 | [lib/src/application/structure/klp_application.dart:8](../../../../../lib/src/application/structure/klp_application.dart#L8) |
 
 ### 同目錄依賴
 
 | 來源 → 目標 | 關係 | 證據 |
 |---|---|---|
-| <code>klp_application.dart → klp_screen.dart</code> | import | [lib/src/application/structure/klp_application.dart:40](../../../../../lib/src/application/structure/klp_application.dart#L40) |
+| <code>klp_application.dart → klp_screen.dart</code> | import | [lib/src/application/structure/klp_application.dart:48](../../../../../lib/src/application/structure/klp_application.dart#L48) |
 
 ## 目錄結構圖
 

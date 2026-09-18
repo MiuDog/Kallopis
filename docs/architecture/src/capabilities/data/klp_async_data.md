@@ -11,8 +11,8 @@
 ```mermaid
 flowchart LR
 	n0["klp_async_data.dart"]
-	n1["../state/klp_mutable_state.dart"]
-	n2["../state/klp_state.dart"]
+	n1["package:kallopis/src/capabilities/state/klp_mutable_state.dart"]
+	n2["package:kallopis/src/capabilities/state/klp_state.dart"]
 	n3["klp_data_notification_exception.dart"]
 	n4["klp_data_state.dart"]
 	n0 -->|"import"| n1
@@ -25,8 +25,8 @@ flowchart LR
 
 | 關係 | 原始 directive | 來源 |
 |---|---|---|
-| import | <code>import &#x27;../state/klp_mutable_state.dart&#x27;;</code> | [lib/src/capabilities/data/klp_async_data.dart:1](../../../../../lib/src/capabilities/data/klp_async_data.dart#L1) |
-| import | <code>import &#x27;../state/klp_state.dart&#x27;;</code> | [lib/src/capabilities/data/klp_async_data.dart:2](../../../../../lib/src/capabilities/data/klp_async_data.dart#L2) |
+| import | <code>import &#x27;package:kallopis/src/capabilities/state/klp_mutable_state.dart&#x27;;</code> | [lib/src/capabilities/data/klp_async_data.dart:1](../../../../../lib/src/capabilities/data/klp_async_data.dart#L1) |
+| import | <code>import &#x27;package:kallopis/src/capabilities/state/klp_state.dart&#x27;;</code> | [lib/src/capabilities/data/klp_async_data.dart:2](../../../../../lib/src/capabilities/data/klp_async_data.dart#L2) |
 | import | <code>import &#x27;klp_data_notification_exception.dart&#x27;;</code> | [lib/src/capabilities/data/klp_async_data.dart:3](../../../../../lib/src/capabilities/data/klp_async_data.dart#L3) |
 | import | <code>import &#x27;klp_data_state.dart&#x27;;</code> | [lib/src/capabilities/data/klp_async_data.dart:4](../../../../../lib/src/capabilities/data/klp_async_data.dart#L4) |
 

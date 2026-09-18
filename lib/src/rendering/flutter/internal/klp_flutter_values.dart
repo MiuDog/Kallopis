@@ -1,8 +1,8 @@
 import 'package:flutter/widgets.dart';
 
-import '../../../foundation/binding/internal/klp_bound_text_style.dart';
-import '../../../foundation/templates/klp_axis.dart';
-import '../../../styling/primitives/klp_style_value.dart';
+import 'package:kallopis/src/foundation/binding/contracts/klp_bound_text_style.dart';
+import 'package:kallopis/src/foundation/templates/klp_axis.dart';
+import 'package:kallopis/src/styling/primitives/klp_style_value.dart';
 
 /// 平台型別轉換不新增預設值，也不重新求解語意。
 Color klpFlutterColor(KlpColor color) =>

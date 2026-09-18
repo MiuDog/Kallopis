@@ -12,8 +12,8 @@
 flowchart LR
 	n0["klp_flutter_linear.dart"]
 	n1["package:flutter/widgets.dart"]
-	n2["../../../foundation/binding/internal/klp_bound_template.dart"]
-	n3["klp_flutter_renderer.dart"]
+	n2["package:kallopis/src/foundation/binding/contracts/klp_bound_template.dart"]
+	n3["../klp_flutter_renderer.dart"]
 	n4["klp_flutter_values.dart"]
 	n0 -->|"import"| n1
 	n0 -->|"import"| n2
@@ -26,8 +26,8 @@ flowchart LR
 | 關係 | 原始 directive | 來源 |
 |---|---|---|
 | import | <code>import &#x27;package:flutter/widgets.dart&#x27;;</code> | [lib/src/rendering/flutter/internal/klp_flutter_linear.dart:1](../../../../../../lib/src/rendering/flutter/internal/klp_flutter_linear.dart#L1) |
-| import | <code>import &#x27;../../../foundation/binding/internal/klp_bound_template.dart&#x27;;</code> | [lib/src/rendering/flutter/internal/klp_flutter_linear.dart:3](../../../../../../lib/src/rendering/flutter/internal/klp_flutter_linear.dart#L3) |
-| import | <code>import &#x27;klp_flutter_renderer.dart&#x27;;</code> | [lib/src/rendering/flutter/internal/klp_flutter_linear.dart:4](../../../../../../lib/src/rendering/flutter/internal/klp_flutter_linear.dart#L4) |
+| import | <code>import &#x27;package:kallopis/src/foundation/binding/contracts/klp_bound_template.dart&#x27;;</code> | [lib/src/rendering/flutter/internal/klp_flutter_linear.dart:3](../../../../../../lib/src/rendering/flutter/internal/klp_flutter_linear.dart#L3) |
+| import | <code>import &#x27;../klp_flutter_renderer.dart&#x27;;</code> | [lib/src/rendering/flutter/internal/klp_flutter_linear.dart:4](../../../../../../lib/src/rendering/flutter/internal/klp_flutter_linear.dart#L4) |
 | import | <code>import &#x27;klp_flutter_values.dart&#x27;;</code> | [lib/src/rendering/flutter/internal/klp_flutter_linear.dart:5](../../../../../../lib/src/rendering/flutter/internal/klp_flutter_linear.dart#L5) |
 
 ## 宣告關係圖

@@ -13,15 +13,15 @@
 ```mermaid
 flowchart LR
 	n0["lib/src/features/workspace/shell/composition/pane"]
-	n1["lib/src/application/localization"]
-	n2["lib/src/features/workspace/shell/composition/pane/primitives"]
-	n3["lib/src/foundation"]
-	n4["lib/src/foundation/interaction"]
-	n5["lib/src/foundation/layout"]
+	n1["lib/src/features/workspace/shell/composition/pane/primitives"]
+	n2["lib/src/foundation"]
+	n3["lib/src/foundation/interaction"]
+	n4["lib/src/foundation/layout"]
+	n5["lib/src/foundation/localization"]
 	n6["lib/src/styling/legacy_theme"]
 	n7["package:flutter"]
-	n0 -->|"import"| n1
-	n0 -->|"part"| n2
+	n0 -->|"part"| n1
+	n0 -->|"import"| n2
 	n0 -->|"import"| n3
 	n0 -->|"import"| n4
 	n0 -->|"import"| n5
@@ -31,11 +31,11 @@ flowchart LR
 
 | 目標邊界 | 關係 | directive 數 | 第一筆來源證據 |
 |---|---|---|---|
-| <code>lib/src/application/localization</code> | import | 1 | [lib/src/features/workspace/shell/composition/pane/klp_pane_collapse_control.dart:7](../../../../../../../../lib/src/features/workspace/shell/composition/pane/klp_pane_collapse_control.dart#L7) |
 | <code>lib/src/features/workspace/shell/composition/pane/primitives</code> | part | 1 | [lib/src/features/workspace/shell/composition/pane/klp_pane_collapse_control.dart:10](../../../../../../../../lib/src/features/workspace/shell/composition/pane/klp_pane_collapse_control.dart#L10) |
 | <code>lib/src/foundation</code> | import | 2 | [lib/src/features/workspace/shell/composition/pane/klp_pane_collapse_control.dart:3](../../../../../../../../lib/src/features/workspace/shell/composition/pane/klp_pane_collapse_control.dart#L3) |
 | <code>lib/src/foundation/interaction</code> | import | 2 | [lib/src/features/workspace/shell/composition/pane/klp_pane_collapse_control.dart:5](../../../../../../../../lib/src/features/workspace/shell/composition/pane/klp_pane_collapse_control.dart#L5) |
 | <code>lib/src/foundation/layout</code> | import | 1 | [lib/src/features/workspace/shell/composition/pane/klp_responsive_pane_coordinator.dart:3](../../../../../../../../lib/src/features/workspace/shell/composition/pane/klp_responsive_pane_coordinator.dart#L3) |
+| <code>lib/src/foundation/localization</code> | import | 1 | [lib/src/features/workspace/shell/composition/pane/klp_pane_collapse_control.dart:7](../../../../../../../../lib/src/features/workspace/shell/composition/pane/klp_pane_collapse_control.dart#L7) |
 | <code>lib/src/styling/legacy_theme</code> | import | 2 | [lib/src/features/workspace/shell/composition/pane/klp_pane_collapse_control.dart:8](../../../../../../../../lib/src/features/workspace/shell/composition/pane/klp_pane_collapse_control.dart#L8) |
 | <code>package:flutter</code> | import | 3 | [lib/src/features/workspace/shell/composition/pane/klp_pane_collapse_control.dart:1](../../../../../../../../lib/src/features/workspace/shell/composition/pane/klp_pane_collapse_control.dart#L1) |
 

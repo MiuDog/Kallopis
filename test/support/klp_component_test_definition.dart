@@ -1,95 +1,41 @@
 import 'package:kallopis/kallopis_declarative.dart';
+import 'package:kallopis/src/composition/definitions/klp_definition.dart';
+import 'package:kallopis/src/composition/validation/klp_validated_node.dart';
+import 'package:kallopis/src/foundation/binding/contracts/klp_bound_template.dart';
+import 'package:kallopis/src/kernel/lifecycle/klp_frame_lease.dart';
+import 'package:kallopis/src/runtime/contracts/klp_node_adapter.dart';
+import 'package:kallopis/src/runtime/contracts/klp_prepare_context.dart';
+import 'package:kallopis/src/runtime/contracts/klp_prepared_node.dart';
+import 'package:kallopis/src/runtime/contracts/klp_placement_resource.dart';
 
 import 'klp_component_test_item.dart';
 
-/// 只在定義期建立所有風格參照及基礎組合。
-KlpComponentDefinition<KlpComponentTestItem> klpComponentTestDefinition({
-  String Function(KlpComponentTestItem)? select,
-  String Function(KlpComponentTestItem)? accessibilityLabel,
-  KlpSemanticKey<KlpColor>? textColor,
-  Iterable<String> dependencies = const [],
-}) {
-  final color = KlpSemanticKey('fixture', 'color', KlpStyleKind.color);
-  final fontFamily = KlpSemanticKey(
-    'fixture',
-    'fontFamily',
-    KlpStyleKind.fontFamily,
-  );
-  final fontSize = KlpSemanticKey('fixture', 'fontSize', KlpStyleKind.fontSize);
-  final fontWeight = KlpSemanticKey(
-    'fixture',
-    'fontWeight',
-    KlpStyleKind.fontWeight,
-  );
-  final lineHeight = KlpSemanticKey(
-    'fixture',
-    'lineHeight',
-    KlpStyleKind.lineHeight,
-  );
-  final letterSpacing = KlpSemanticKey(
-    'fixture',
-    'letterSpacing',
-    KlpStyleKind.letterSpacing,
-  );
-  final distance = KlpSemanticKey('fixture', 'distance', KlpStyleKind.distance);
-  final radius = KlpSemanticKey('fixture', 'radius', KlpStyleKind.radius);
-  final text = KlpTextTemplate<KlpComponentTestItem>(
-    text: select ?? (item) => item.label,
-    semantics: KlpTextSemantics(
-      color: textColor ?? color,
-      fontFamily: fontFamily,
-      fontSize: fontSize,
-      fontWeight: fontWeight,
-      lineHeight: lineHeight,
-      letterSpacing: letterSpacing,
-    ),
-  );
-  return KlpComponentDefinition(
-    'fixture',
-    semantics: KlpSemanticSchema('fixture', [
-      KlpSemanticToken(
-        color,
-        KlpPrimitiveRef(KlpStyleKind.color, KlpPrimitiveIndex.i1),
-      ),
-      KlpSemanticToken(
-        fontFamily,
-        KlpPrimitiveRef(KlpStyleKind.fontFamily, KlpPrimitiveIndex.i1),
-      ),
-      KlpSemanticToken(
-        fontSize,
-        KlpPrimitiveRef(KlpStyleKind.fontSize, KlpPrimitiveIndex.i1),
-      ),
-      KlpSemanticToken(
-        fontWeight,
-        KlpPrimitiveRef(KlpStyleKind.fontWeight, KlpPrimitiveIndex.i1),
-      ),
-      KlpSemanticToken(
-        lineHeight,
-        KlpPrimitiveRef(KlpStyleKind.lineHeight, KlpPrimitiveIndex.i1),
-      ),
-      KlpSemanticToken(
-        letterSpacing,
-        KlpPrimitiveRef(KlpStyleKind.letterSpacing, KlpPrimitiveIndex.i1),
-      ),
-      KlpSemanticToken(
-        distance,
-        KlpPrimitiveRef(KlpStyleKind.distance, KlpPrimitiveIndex.i1),
-      ),
-      KlpSemanticToken(
-        radius,
-        KlpPrimitiveRef(KlpStyleKind.radius, KlpPrimitiveIndex.i1),
-      ),
-    ], dependencies: dependencies),
-    content: KlpSurfaceTemplate(
-      background: color,
-      radius: radius,
-      inset: distance,
-      child: KlpLinearTemplate(
-        axis: KlpAxis.vertical,
-        gap: distance,
-        children: [text, text],
-      ),
-    ),
-    accessibilityLabel: accessibilityLabel,
-  );
+/// Rail／frame 測試的固定葉節點；不接受模板、selector 或外部定義。
+final class KlpComponentTestAdapter implements KlpNodeAdapter {
+
+	@override
+	final contract = KlpDefinition<KlpComponentTestItem>('fixture');
+
+	@override
+	KlpPreparedNode prepare(KlpNode node, KlpValidatedNode snapshot, KlpPrepareContext context) => const _PreparedItem();
+}
+
+final class _PreparedItem implements KlpPreparedNode {
+
+	const _PreparedItem();
+
+	@override
+	KlpPlacementResource createResource(KlpValidatedNode node) => _ItemResource();
+
+	@override
+	KlpBoundTemplate materialize(KlpPlacementResource resource, List<KlpBoundTemplate> children, KlpFrameLease lease) => KlpBoundLinear(KlpAxis.vertical, KlpDistance(0), const []);
+}
+
+final class _ItemResource implements KlpPlacementResource {
+
+	@override
+	void update(KlpValidatedNode node) {}
+
+	@override
+	void dispose() {}
 }

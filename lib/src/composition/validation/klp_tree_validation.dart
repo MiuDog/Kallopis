@@ -1,4 +1,4 @@
-import '../../kernel/identity/klp_placement_id.dart';
+import 'package:kallopis/src/kernel/identity/klp_placement_id.dart';
 import 'klp_validated_node.dart';
 
 /// 不可變的前序結構快照。

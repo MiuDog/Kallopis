@@ -32,10 +32,6 @@ void main() {
           base.spacing.copyWith(navigationSectionGap: 37),
         ),
         ('appFrameInset', base.spacing.copyWith(appFrameInset: 37)),
-        (
-          'workbenchContentInset',
-          base.spacing.copyWith(workbenchContentInset: 37),
-        ),
         ('windowHeaderMargin', base.spacing.copyWith(windowHeaderMargin: 37)),
         ('dockMargin', base.spacing.copyWith(dockMargin: 37)),
       ];
@@ -165,7 +161,6 @@ void main() {
         }
         for (final key in <String>[
           'appFrameInset',
-          'workbenchContentInset',
           'windowHeaderMargin',
           'dockMargin',
         ]) {
@@ -360,12 +355,12 @@ void main() {
       });
       expect((encoded['colors'] as Map).length, 33);
       expect((encoded['typography'] as Map).length, 44);
-      expect((encoded['spacing'] as Map).length, 78);
+      expect((encoded['spacing'] as Map).length, 77);
       expect((encoded['spacing'] as Map)['iconGlyph'], 18);
       expect((encoded['spacing'] as Map)['gridTileWidth'], 170);
       expect((encoded['shape'] as Map).length, 13);
       expect((encoded['motion'] as Map).length, 12);
-      expect((encoded['surface'] as Map).length, 30);
+      expect((encoded['surface'] as Map).length, 34);
       expect(
         (encoded['surface'] as Map)['dragSourceOpacity'],
         KlpScale.opacity350,

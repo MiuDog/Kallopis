@@ -1,0 +1,124 @@
+{
+	"schema_version": 1,
+	"task_id": "COMP-V1-02",
+	"goal": "固定套件內定義與登錄表的建構邊界，交付封閉目錄契約文件且保留內建節點驗證介面。",
+	"module_root": "lib/src/composition",
+	"architecture_path": "lib/src/composition/architecture.md",
+	"architecture_revision": "sha256:fd9234d689329632ddc9fe5a865c43bdac4664392bc6819a898b66a60b408121",
+	"base_revision": "578d24ed111b95c429397b54245de09ade674704",
+	"allowed_read": [
+		"AGENTS.md",
+		".agents/skills/incremental-implementation/SKILL.md",
+		".agents/skills/incremental-implementation/references/task-packet.schema.json",
+		".agents/skills/incremental-implementation/scripts/check-task-scope.mjs",
+		"spec/module-architecture-v1.md",
+		"docs/architecture/closed-catalog-plan/README.md",
+		"docs/architecture/closed-catalog-plan/TEST-CC-V1-01.md",
+		"lib/kallopis_declarative.dart",
+		"docs/architecture/declarative-public-surface.md",
+		"pubspec.yaml",
+		"pubspec.lock",
+		".dart_tool/package_config.json",
+		"lib/src/composition/architecture.md",
+		"lib/src/composition/definitions/klp_definition.dart",
+		"lib/src/composition/registry/klp_registry.dart",
+		"lib/src/composition/nodes/klp_node.dart",
+		"lib/src/composition/slots/klp_slot.dart",
+		"lib/src/composition/validation/**",
+		"test/klp_closed_component_catalog_contract_test.dart",
+		"test/klp_composition_contract_test.dart",
+		"test/klp_slot_contract_test.dart"
+	],
+	"allowed_write": [
+		"lib/src/composition/registry/catalog-contract.md"
+	],
+	"forbidden": [
+		"lib/src/composition/architecture.md",
+		"test/**",
+		"example/**",
+		"spec/**",
+		"docs/**",
+		".agents/**",
+		".github/**",
+		"AGENTS.md",
+		"pubspec.yaml",
+		"pubspec.lock",
+		"lib/kallopis_declarative.dart",
+		"lib/kallopis_foundation.dart",
+		"lib/kallopis_theme.dart",
+		"lib/src/application/**",
+		"lib/src/capabilities/**",
+		"lib/src/features/**",
+		"lib/src/foundation/**",
+		"lib/src/kernel/**",
+		"lib/src/rendering/**",
+		"lib/src/runtime/**",
+		"lib/src/styling/**"
+	],
+	"contract_excerpts": [
+		{
+			"source": "spec/module-architecture-v1.md",
+			"revision": "sha256:ffe82d8b7c0cd028dcdae31d2f50b3e9b45948c1805db74200fe4cc4a055bcc7",
+			"content": "CC-V1-r1：application 唯一組合根；composition 保留內部定義與驗證；runtime 移除舊 components 編譯路徑，foundation 配對退役；清冊只作證據、不在 runtime 載入；欄位定義及 Test Author 退役案例政策均按本節。RUN-V1-02 非前置。"
+		},
+		{
+			"source": "lib/src/composition/architecture.md",
+			"revision": "sha256:fd9234d689329632ddc9fe5a865c43bdac4664392bc6819a898b66a60b408121",
+			"content": "COMP-V1-02 保留 KlpDefinition／KlpRegistry 套件內建構；不新增類別、私有命名遷移、上層匯入或執行期元件清單。交付 registry/catalog-contract.md；共同整合證據完成前不標 complete。"
+		}
+	],
+	"acceptance": [
+		"文件列清 production：application 零參數內建目錄 → runtime adapters.contract → composition registry/capture；測試轉接器不屬於使用端 API。",
+		"列出未知身分、重複定義、相依循環、插槽與單次擷取之既有錯誤權責；引用共通規格及整合驗收，不宣稱已完成 BUILD。",
+		"本包只有文件，讀回檢查路徑／契約一致即可；不新增或例行重跑 runtime 產品測試。",
+		"僅修改 allowed_write；產品 worker 不改任何測試／fixture／架構／公開 barrel。使用 tab 縮排（顯示寬度 2），程式註解繁體中文。",
+		"完成後從隔離基線執行既有 scope checker；報 changed_paths、acceptance_evidence、unresolved_blockers、scope_gate_result 及可取得的實際時間／token（無 provider usage 時明示無法量測）。"
+	],
+	"test_state": {
+		"red": [],
+		"yellow": [
+			"此為 CC-V1-r1 規劃版；base_revision 只是觀察 HEAD。README 的乾淨隔離基線、契約 hash 與測試交接前置完成並重簽後才能派工。",
+			"本輪只有 PLAN；上述成果與局部檢查尚未執行。尚不存在的清冊／Test Author 檔為已定名交接產物，派工前按前置順序提供。"
+		],
+		"green": [
+			"既有 architecture 記錄公開封閉與局部測試歷史通過；本 packet 不把它當成此次或未來 BUILD 的 Green。"
+		]
+	},
+	"estimate": {
+		"basis": "cold-start",
+		"reference_task_ids": [],
+		"expected_total_tokens": {
+			"low": 1500,
+			"high": 3500
+		},
+		"expected_duration_ms": {
+			"low": 900000,
+			"high": 2400000
+		},
+		"assumptions": [
+			"同主對話模型／推理設定；不強制另派代理，若委派則一次一模組一切片。",
+			"Windows/PowerShell，已確認 D:/flutter/bin/flutter.bat 存在；派工時重驗環境。",
+			"無可比較已量測任務；依指定檔數、清冊範圍及配對成本冷啟動估算。總 elapsed 包含短交接；外部等待單獨記錄。",
+			"此為 CC-V1-r1 規劃版；base_revision 只是觀察 HEAD。README 的乾淨隔離基線、契約 hash 與測試交接前置完成並重簽後才能派工。"
+		]
+	},
+	"milestones": [
+		{
+			"id": "M1",
+			"outcome": "完成建構責任與公開／內部邊界文件",
+			"evidence": "讀回與 CC-V1-r1、module 契約一致",
+			"expected_cumulative_tokens": 2000,
+			"expected_cumulative_duration_ms": 1500000,
+			"anomaly_threshold": "超過 3000 token 或 38 分鐘，或出現任何 forbidden write／契約缺口，向架構負責人回報一次具體證據並縮限範圍；不得自行放寬測試。"
+		},
+		{
+			"id": "M2",
+			"outcome": "交付可供其他模組引用的整合驗收條件",
+			"evidence": "連結有效、scope gate 通過；共同測試仍標待整合",
+			"expected_cumulative_tokens": 3500,
+			"expected_cumulative_duration_ms": 2400000,
+			"anomaly_threshold": "超過 5250 token 或 60 分鐘，或出現任何 forbidden write／契約缺口，向架構負責人回報一次具體證據並縮限範圍；不得自行放寬測試。"
+		}
+	],
+	"experiment": null
+}

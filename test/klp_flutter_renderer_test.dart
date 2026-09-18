@@ -1,8 +1,8 @@
 import 'package:flutter/widgets.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:kallopis/src/foundation/binding/internal/klp_bound_template.dart';
+import 'package:kallopis/src/foundation/binding/contracts/klp_bound_template.dart';
 import 'package:kallopis/src/foundation/templates/klp_axis.dart';
-import 'package:kallopis/src/rendering/flutter/internal/klp_flutter_renderer.dart';
+import 'package:kallopis/src/rendering/flutter/klp_flutter_renderer.dart';
 import 'package:kallopis/src/styling/primitives/klp_style_value.dart';
 
 import 'support/klp_renderer_fixture.dart';

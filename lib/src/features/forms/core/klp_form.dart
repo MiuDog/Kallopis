@@ -1,4 +1,4 @@
-import '../internal/klp_form_dependencies.dart';
+import 'package:kallopis/src/features/forms/internal/klp_form_dependencies.dart';
 
 /// 整份表單的最外層版面：錯誤總覽、各個區塊（[sections]）與底部動作列
 /// 依序排列，各區塊之間插入固定間距。

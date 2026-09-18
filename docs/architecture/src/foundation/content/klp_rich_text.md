@@ -13,8 +13,8 @@ flowchart LR
 	n0["klp_rich_text.dart"]
 	n1["package:flutter/gestures.dart"]
 	n2["package:flutter/material.dart"]
-	n3["../klp_inline_code.dart"]
-	n4["../../styling/legacy_theme/klp_theme.dart"]
+	n3["package:kallopis/src/foundation/klp_inline_code.dart"]
+	n4["package:kallopis/src/styling/legacy_theme/klp_theme.dart"]
 	n5["klp_rich_text_kind.dart"]
 	n6["klp_rich_text_node.dart"]
 	n7["klp_rich_text_span.dart"]
@@ -41,8 +41,8 @@ flowchart LR
 |---|---|---|
 | import | <code>import &#x27;package:flutter/gestures.dart&#x27;;</code> | [lib/src/foundation/content/klp_rich_text.dart:1](../../../../../lib/src/foundation/content/klp_rich_text.dart#L1) |
 | import | <code>import &#x27;package:flutter/material.dart&#x27;;</code> | [lib/src/foundation/content/klp_rich_text.dart:2](../../../../../lib/src/foundation/content/klp_rich_text.dart#L2) |
-| import | <code>import &#x27;../klp_inline_code.dart&#x27;;</code> | [lib/src/foundation/content/klp_rich_text.dart:4](../../../../../lib/src/foundation/content/klp_rich_text.dart#L4) |
-| import | <code>import &#x27;../../styling/legacy_theme/klp_theme.dart&#x27;;</code> | [lib/src/foundation/content/klp_rich_text.dart:5](../../../../../lib/src/foundation/content/klp_rich_text.dart#L5) |
+| import | <code>import &#x27;package:kallopis/src/foundation/klp_inline_code.dart&#x27;;</code> | [lib/src/foundation/content/klp_rich_text.dart:4](../../../../../lib/src/foundation/content/klp_rich_text.dart#L4) |
+| import | <code>import &#x27;package:kallopis/src/styling/legacy_theme/klp_theme.dart&#x27;;</code> | [lib/src/foundation/content/klp_rich_text.dart:5](../../../../../lib/src/foundation/content/klp_rich_text.dart#L5) |
 | import | <code>import &#x27;klp_rich_text_kind.dart&#x27;;</code> | [lib/src/foundation/content/klp_rich_text.dart:6](../../../../../lib/src/foundation/content/klp_rich_text.dart#L6) |
 | import | <code>import &#x27;klp_rich_text_node.dart&#x27;;</code> | [lib/src/foundation/content/klp_rich_text.dart:7](../../../../../lib/src/foundation/content/klp_rich_text.dart#L7) |
 | import | <code>import &#x27;klp_rich_text_span.dart&#x27;;</code> | [lib/src/foundation/content/klp_rich_text.dart:8](../../../../../lib/src/foundation/content/klp_rich_text.dart#L8) |

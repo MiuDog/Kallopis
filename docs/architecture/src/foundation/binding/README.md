@@ -21,14 +21,17 @@
 ```mermaid
 flowchart TD
 	n0["lib/src/foundation/binding"]
-	n1["internal/"]
+	n1["contracts/"]
+	n2["internal/"]
 	n0 -->|"contains"| n1
+	n0 -->|"contains"| n2
 ```
 
 ## 子目錄
 
 | 目錄 | 導航 | 來源證據 |
 |---|---|---|
+| `contracts/` | [架構入口](contracts/README.md) | [來源目錄](../../../../../lib/src/foundation/binding/contracts) |
 | `internal/` | [架構入口](internal/README.md) | [來源目錄](../../../../../lib/src/foundation/binding/internal) |
 
 ## 本層檔案

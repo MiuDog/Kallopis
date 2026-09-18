@@ -2,7 +2,7 @@
 library;
 
 import 'package:flutter/widgets.dart';
-import '../../../../foundation/layout/klp_row.dart';
+import 'package:kallopis/src/foundation/layout/klp_row.dart';
 
 /// 建立可保留自然寬度，並在空間不足時依方向裁切的標題列區域。
 Widget buildKlpWindowHeaderRegion({

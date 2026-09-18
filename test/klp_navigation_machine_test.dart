@@ -1,12 +1,8 @@
 import 'dart:async';
 
 import 'package:flutter_test/flutter_test.dart';
-import 'package:kallopis/src/capabilities/navigation/internal/klp_navigation_machine.dart';
-import 'package:kallopis/src/capabilities/navigation/klp_destination.dart';
-import 'package:kallopis/src/capabilities/navigation/klp_location.dart';
-import 'package:kallopis/src/capabilities/navigation/klp_navigation_outcome.dart';
-import 'package:kallopis/src/capabilities/navigation/klp_navigation_snapshot.dart';
-import 'package:kallopis/src/capabilities/navigation/klp_route_policy.dart';
+import 'package:kallopis/kallopis_declarative.dart';
+import 'package:kallopis/src/capabilities/navigation/engine/klp_navigation_machine.dart';
 
 import 'support/klp_navigation_fixture.dart';
 
@@ -17,8 +13,8 @@ void main() {
   late KlpNavigationMachine machine;
 
   setUp(() {
-    home = KlpDestination('home');
-    detail = KlpDestination('detail');
+    home = KlpDestination(KlpId.parse('home'));
+    detail = KlpDestination(KlpId.parse('detail'));
     commits = [];
     machine = klpNavigationTestMachine(
       policies: [
@@ -82,7 +78,7 @@ void main() {
   test(
     'same text identity does not impersonate a registered destination',
     () async {
-      final impostor = KlpDestination<int, String?>('detail');
+      final impostor = KlpDestination<int, String?>(KlpId.parse('detail'));
       final ticket = machine.push(impostor.location(1));
       expect((await ticket.decision).committed, isFalse);
       expect(await ticket.result, isA<KlpNavigationFailed<String?>>());

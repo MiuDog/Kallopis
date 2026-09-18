@@ -13,13 +13,13 @@ flowchart LR
 	n0["klp_theme_preview_tile.dart"]
 	n1["dart:math"]
 	n2["package:flutter/material.dart"]
-	n3["../../../../foundation/klp_palette.dart"]
-	n4["../../../../foundation/interaction/klp_pressable.dart"]
-	n5["../../../../foundation/layout/klp_column.dart"]
-	n6["../../../../foundation/layout/klp_gap.dart"]
-	n7["../../../../foundation/layout/klp_space_size.dart"]
-	n8["../../../../styling/legacy_theme/klp_theme.dart"]
-	n9["../../../../foundation/content/klp_text.dart"]
+	n3["package:kallopis/src/foundation/klp_palette.dart"]
+	n4["package:kallopis/src/foundation/interaction/klp_pressable.dart"]
+	n5["package:kallopis/src/foundation/layout/klp_column.dart"]
+	n6["package:kallopis/src/foundation/layout/klp_gap.dart"]
+	n7["package:kallopis/src/foundation/layout/klp_space_size.dart"]
+	n8["package:kallopis/src/styling/legacy_theme/klp_theme.dart"]
+	n9["package:kallopis/src/foundation/content/klp_text.dart"]
 	n10["klp_theme_preview_mode.dart"]
 	n11["klp_theme_preview_mode.dart"]
 	n0 -->|"import"| n1
@@ -54,13 +54,13 @@ flowchart LR
 |---|---|---|
 | import | <code>import &#x27;dart:math&#x27; as math;</code> | [lib/src/features/workspace/shell/theme/klp_theme_preview_tile.dart:1](../../../../../../../lib/src/features/workspace/shell/theme/klp_theme_preview_tile.dart#L1) |
 | import | <code>import &#x27;package:flutter/material.dart&#x27;;</code> | [lib/src/features/workspace/shell/theme/klp_theme_preview_tile.dart:3](../../../../../../../lib/src/features/workspace/shell/theme/klp_theme_preview_tile.dart#L3) |
-| import | <code>import &#x27;../../../../foundation/klp_palette.dart&#x27;;</code> | [lib/src/features/workspace/shell/theme/klp_theme_preview_tile.dart:5](../../../../../../../lib/src/features/workspace/shell/theme/klp_theme_preview_tile.dart#L5) |
-| import | <code>import &#x27;../../../../foundation/interaction/klp_pressable.dart&#x27;;</code> | [lib/src/features/workspace/shell/theme/klp_theme_preview_tile.dart:6](../../../../../../../lib/src/features/workspace/shell/theme/klp_theme_preview_tile.dart#L6) |
-| import | <code>import &#x27;../../../../foundation/layout/klp_column.dart&#x27;;</code> | [lib/src/features/workspace/shell/theme/klp_theme_preview_tile.dart:7](../../../../../../../lib/src/features/workspace/shell/theme/klp_theme_preview_tile.dart#L7) |
-| import | <code>import &#x27;../../../../foundation/layout/klp_gap.dart&#x27;;</code> | [lib/src/features/workspace/shell/theme/klp_theme_preview_tile.dart:8](../../../../../../../lib/src/features/workspace/shell/theme/klp_theme_preview_tile.dart#L8) |
-| import | <code>import &#x27;../../../../foundation/layout/klp_space_size.dart&#x27;;</code> | [lib/src/features/workspace/shell/theme/klp_theme_preview_tile.dart:9](../../../../../../../lib/src/features/workspace/shell/theme/klp_theme_preview_tile.dart#L9) |
-| import | <code>import &#x27;../../../../styling/legacy_theme/klp_theme.dart&#x27;;</code> | [lib/src/features/workspace/shell/theme/klp_theme_preview_tile.dart:10](../../../../../../../lib/src/features/workspace/shell/theme/klp_theme_preview_tile.dart#L10) |
-| import | <code>import &#x27;../../../../foundation/content/klp_text.dart&#x27;;</code> | [lib/src/features/workspace/shell/theme/klp_theme_preview_tile.dart:11](../../../../../../../lib/src/features/workspace/shell/theme/klp_theme_preview_tile.dart#L11) |
+| import | <code>import &#x27;package:kallopis/src/foundation/klp_palette.dart&#x27;;</code> | [lib/src/features/workspace/shell/theme/klp_theme_preview_tile.dart:5](../../../../../../../lib/src/features/workspace/shell/theme/klp_theme_preview_tile.dart#L5) |
+| import | <code>import &#x27;package:kallopis/src/foundation/interaction/klp_pressable.dart&#x27;;</code> | [lib/src/features/workspace/shell/theme/klp_theme_preview_tile.dart:6](../../../../../../../lib/src/features/workspace/shell/theme/klp_theme_preview_tile.dart#L6) |
+| import | <code>import &#x27;package:kallopis/src/foundation/layout/klp_column.dart&#x27;;</code> | [lib/src/features/workspace/shell/theme/klp_theme_preview_tile.dart:7](../../../../../../../lib/src/features/workspace/shell/theme/klp_theme_preview_tile.dart#L7) |
+| import | <code>import &#x27;package:kallopis/src/foundation/layout/klp_gap.dart&#x27;;</code> | [lib/src/features/workspace/shell/theme/klp_theme_preview_tile.dart:8](../../../../../../../lib/src/features/workspace/shell/theme/klp_theme_preview_tile.dart#L8) |
+| import | <code>import &#x27;package:kallopis/src/foundation/layout/klp_space_size.dart&#x27;;</code> | [lib/src/features/workspace/shell/theme/klp_theme_preview_tile.dart:9](../../../../../../../lib/src/features/workspace/shell/theme/klp_theme_preview_tile.dart#L9) |
+| import | <code>import &#x27;package:kallopis/src/styling/legacy_theme/klp_theme.dart&#x27;;</code> | [lib/src/features/workspace/shell/theme/klp_theme_preview_tile.dart:10](../../../../../../../lib/src/features/workspace/shell/theme/klp_theme_preview_tile.dart#L10) |
+| import | <code>import &#x27;package:kallopis/src/foundation/content/klp_text.dart&#x27;;</code> | [lib/src/features/workspace/shell/theme/klp_theme_preview_tile.dart:11](../../../../../../../lib/src/features/workspace/shell/theme/klp_theme_preview_tile.dart#L11) |
 | import | <code>import &#x27;klp_theme_preview_mode.dart&#x27;;</code> | [lib/src/features/workspace/shell/theme/klp_theme_preview_tile.dart:12](../../../../../../../lib/src/features/workspace/shell/theme/klp_theme_preview_tile.dart#L12) |
 | export | <code>export &#x27;klp_theme_preview_mode.dart&#x27;;</code> | [lib/src/features/workspace/shell/theme/klp_theme_preview_tile.dart:14](../../../../../../../lib/src/features/workspace/shell/theme/klp_theme_preview_tile.dart#L14) |
 | part | <code>part &#x27;internal/klp_theme_preview_skin.dart&#x27;;</code> | [lib/src/features/workspace/shell/theme/klp_theme_preview_tile.dart:16](../../../../../../../lib/src/features/workspace/shell/theme/klp_theme_preview_tile.dart#L16) |

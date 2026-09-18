@@ -1,0 +1,114 @@
+{
+	"E": {
+		"task_id": "TEST-HOST-PORTS-E",
+		"allowed_write": [
+			"test/klp_environment_snapshot_test.dart",
+			"test/klp_application_environment_observer_test.dart",
+			"test/support/klp_environment_host_fixture.dart"
+		],
+		"forbidden": [
+			"lib/**",
+			"docs/**",
+			"spec/**",
+			"pubspec.yaml",
+			"pubspec.lock"
+		],
+		"contract": "HOST-PORTS-V1-r1 接受 APP-V1-05／FEAT-V1-06 的 E 環境與 P 檔案選取配對。Capabilities 持有純環境解析及既有 KlpAppPlatform／KlpAdaptiveMode 唯一宣告，Stable foundation 原 facade、型別與 current(Size?) 行為保留；application 唯一既有 host 採樣並安裝，不增加 observer、store 或預設。P 接替已接受的 concrete picker 宣告式面：公開 L1 KlpPickFileAction，port/result 套件內部；application 唯一 plugin adapter，既有 action handler 用原 frame/lease/epoch/entry 在 await 前後檢驗。有效 selected 才回呼一次，cancel/stale/failed 為 false，平台或 callback error 原物件／stack 由 host 一次回報。舊零 host picker 搬 application/legacy 並由專用 legacy root 保留 const/欄位/pick Future 成功取消與原 error 傳播；不作現行宿主 fallback。公開 roots 6→7，僅 declarative 一增一刪及新 legacy，feature exports 67→66，24 components/28 IDs/順序保持。原 R1/APP06 root/hash/closure/catalog 基準依 path-map 精確增減由獨立作者更新，不 blanket resnapshot 或放寬原守衛。E 單獨不完成 APP05；E/P 與完整證據通過才 APP05/FEAT06 complete。",
+		"read_exception": "Read exact existing public/private interfaces and platform test factory solely to exercise real host, pure resolver, compatibility and AST boundary; no BUILD reasoning. Existing hash tests may be revised only approved exact delta, no automatic snapshots.",
+		"api": {
+			"environment_canonical": "KlpEnvironmentSnapshot: const value fields platform, deviceClass=desktop, orientation=landscape, displayMode=browser, adaptiveMode='', required isWebRuntime. factory resolve({required KlpAppPlatform platform, required bool isWebRuntime, double? width, double? height, Map<String,String> queryParameters=const {}}); getters effectiveAdaptiveMode/isAndroid/isWindows/isDesktop/isMobile/isTablet. Package-internal, no root export.",
+			"environment_adapter": "Private application library part _KlpApplicationEnvironmentObserver: const constructor; KlpEnvironmentSnapshot observe({Size? viewportSize}); KlpApplicationEnvironment environment(KlpEnvironmentSnapshot snapshot) projects original private platform/accessibility/motion constructor and dispatcher flags. One host-owned instance, no additional observer or stream. _accept uses observe with original optional size, build builder calls observe with original MediaQuery size and reuses snapshot for viewport + environment.",
+			"stable_facade": "Original KlpPlatformInfo class/const constructor/fields/getters/factory current({Size? viewportSize}) retained; samples globals only and delegates pure resolver/getters. Retain runtime !kIsWeb dependence in manually constructed getters.",
+			"moved_types": "KlpAppPlatform is enum with original values/order. KlpAdaptiveMode is abstract final class, not enum. Both original paths reexport exact moved type via show. Existing device/orientation/display enums readonly.",
+			"public_action": "final class KlpPickFileAction implements KlpAction { final List<String> acceptedExtensions; final void Function(String path) onPicked; const KlpPickFileAction({this.acceptedExtensions=const [], required this.onPicked}); } No pick(), host, port or dispatch API.",
+			"private_port": "KlpFileSelectionPort.select(KlpFileSelectionRequest request) -> Future<KlpFileSelectionResult>; immutable request extensions snapshot; sealed result: KlpFileSelected(String path), KlpFileSelectionCancelled(), KlpFileSelectionFailed(Object error, StackTrace stackTrace).",
+			"application_adapter": "const KlpFileSelectionAdapter implements KlpFileSelectionPort; sole file_selector import. Original group label assets, empty groups unrestricted, path unchanged, original error/stack -> failure.",
+			"session": "Required internal final KlpFileSelectionPort fileSelection constructor parameter on _KlpApplicationSession, supplied by host. No public KlpApplication/runKlpApp signature change.",
+			"legacy": "Original final KlpLocalFilePicker const constructor/fields/defaults/Future<void> pick() now application/legacy; show export only from dedicated new public legacy root. Per-call stateless adapter; success callback once/cancel none/failed Error.throwWithStackTrace; callback errors naturally propagate, never double-report via host."
+		},
+		"supersession": {
+			"R1": "klp_rendering_host_boundary_test.dart whole root set/full-source hashes. E unchanged. P author adds seventh root and updates declarative hash only, preserving five other hashes and all failure privacy/borrowed ownership assertions.",
+			"APP_CONTRACT": "klp_application_module_boundary_test.dart baseline roots directives + closure hashes. Author accepts enumerated environment facade additions, new private part closure, picker replacement + new legacy root. Preserve moved25 private and directive-order assertions outside exact approved delta; no blanket resnapshot.",
+			"CATALOG": "klp_application_catalog_contract_test.dart lines84/93 67->66; line303 obsolete utility special case removed. Retain strict completeness/metadata/schema/24/23/1/28/order assertions, add exact removed symbol/new capability action delta.",
+			"BOUNDARY": "Do not ban plugin from entire declarative implementation import graph: public application imports its private adapter legitimately. Ban plugin/upper app from capability/feature contract paths, and ban adapter/port/plugin export reachability. Keep current public authoring-negative tests."
+		},
+		"public_files": {
+			"lib/kallopis_declarative.dart": "/// 宣告式框架遷移入口；目前為實驗實作，尚未作 Stable 承諾。\nlibrary;\n\n// L0 — 核心識別與契約錯誤。\nexport 'src/kernel/diagnostics/klp_contract_error.dart';\nexport 'src/kernel/identity/klp_id.dart';\nexport 'src/kernel/identity/klp_placement_id.dart';\n\n// L1 — 狀態、資料、動作、導覽與固定風格原料。\nexport 'src/capabilities/controllers/klp_state_controller.dart';\nexport 'src/capabilities/actions/klp_action.dart';\nexport 'src/capabilities/actions/klp_pick_file_action.dart' show KlpPickFileAction;\nexport 'src/capabilities/navigation/klp_destination.dart';\nexport 'src/capabilities/navigation/klp_location.dart';\nexport 'src/capabilities/navigation/klp_navigation_cancellation.dart';\nexport 'src/capabilities/navigation/klp_navigation_decision.dart';\nexport 'src/capabilities/navigation/klp_navigation_entry.dart';\nexport 'src/capabilities/navigation/klp_navigation_restoration.dart';\nexport 'src/capabilities/navigation/klp_navigation_outcome.dart';\nexport 'src/capabilities/navigation/klp_navigation_snapshot.dart';\nexport 'src/capabilities/navigation/klp_navigation_ticket.dart';\nexport 'src/capabilities/navigation/klp_navigation_transition.dart';\nexport 'src/capabilities/navigation/klp_route_policy.dart';\nexport 'src/capabilities/navigation/klp_route_address.dart';\nexport 'src/capabilities/navigation/klp_route_codec.dart';\nexport 'src/capabilities/navigation/klp_route_uri.dart';\nexport 'src/capabilities/data/klp_async_data.dart';\nexport 'src/capabilities/data/klp_data_notification_exception.dart';\nexport 'src/capabilities/data/klp_data_state.dart';\nexport 'src/capabilities/state/klp_mutable_state.dart';\nexport 'src/capabilities/state/klp_state.dart';\nexport 'src/capabilities/state/klp_subscription.dart';\nexport 'src/styling/primitives/klp_primitive_index.dart';\nexport 'src/styling/primitives/klp_primitive_set.dart';\nexport 'src/styling/primitives/klp_style_kind.dart';\nexport 'src/styling/primitives/klp_style_value.dart';\nexport 'src/styling/presets/klp_workspace_preset.dart';\n\n// L2 — 庫擁有節點的組裝資格與受限插槽。\nexport 'src/composition/nodes/klp_node.dart';\nexport 'src/composition/nodes/klp_composite_node.dart';\nexport 'src/composition/nodes/klp_adaptive.dart';\nexport 'src/composition/nodes/klp_platform_strategy.dart';\nexport 'src/composition/slots/klp_slot.dart';\nexport 'src/composition/slots/klp_children.dart';\nexport 'src/composition/slots/klp_screen_body.dart';\n\n// L3 — 組裝所需的平台與排版值；模板由庫內元件擁有。\nexport 'src/foundation/platform/klp_adaptive_mode.dart';\nexport 'src/foundation/platform/klp_device_class.dart';\nexport 'src/foundation/platform/klp_display_mode.dart';\nexport 'src/foundation/platform/klp_orientation.dart';\nexport 'src/foundation/platform/klp_id_context.dart';\nexport 'src/foundation/platform/klp_id_scope.dart';\nexport 'src/foundation/templates/klp_axis.dart';\n\n// L4 — runtime 僅供庫內編譯與安裝，不提供 consumer 匯出。\n\n// L5 — 庫擁有、可組裝的功能節點與資料／事件契約。\nexport 'src/features/editing/contracts/klp_editing_content.dart';\nexport 'src/features/editing/contracts/klp_block_note_editing_content.dart';\nexport 'src/features/editing/contracts/klp_canva_editing_content.dart';\nexport 'package:krepis_canva/krepis_canva.dart'\n\tshow\n\t\tKrepisCanvaBridgeChannel,\n\t\tKrepisCanvaBridgePort,\n\t\tKrepisCanvaCloseResult,\n\t\tKrepisCanvaDocument,\n\t\tKrepisCanvaPersist,\n\t\tKrepisCanvaSessionController;\nexport 'package:krepis_block_note/krepis_block_note.dart'\n\tshow\n\t\tKlpBlockNoteBridgeChannel,\n\t\tKlpBlockNoteBridgePort,\n\t\tKlpBlockNoteCloseResult,\n\t\tKlpBlockNoteDocument,\n\t\tKlpBlockNotePersist,\n\t\tKlpBlockNoteSaveResult,\n\t\tKlpBlockNoteSessionController;\nexport 'src/features/editing/contracts/klp_block_controls.dart';\nexport 'src/features/editing/contracts/klp_block_control_slot_child.dart';\nexport 'src/features/editing/contracts/klp_anchored_commands.dart';\nexport 'src/features/editing/contracts/klp_mode_toolbar.dart';\nexport 'src/features/editing/contracts/klp_mode_tool_slot_child.dart';\nexport 'src/features/editing/contracts/klp_command_slot_child.dart';\nexport 'src/features/workspace/layout/klp_app_layout.dart';\nexport 'src/features/workspace/layout/klp_frame_groups.dart';\nexport 'src/features/workspace/components/klp_explorer.dart';\nexport 'src/features/workspace/components/klp_workspace_command.dart';\nexport 'src/features/workspace/components/klp_document_tabs.dart';\nexport 'src/features/workspace/components/klp_window_controls.dart';\nexport 'src/features/workspace/components/klp_workspace_block.dart';\n\n// L6 — renderer 僅實現已封閉的準備結果，不提供 consumer 匯出。\n\n// L7 — 唯一應用程式組合根。\nexport 'src/application/structure/klp_application.dart';\nexport 'src/application/structure/klp_screen.dart';\n",
+			"lib/kallopis_legacy_file_picker.dart": "/// 舊零宿主檔案選取相容入口；現行宣告式應用使用 KlpPickFileAction。\nlibrary;\n\nexport 'src/application/legacy/klp_local_file_picker.dart' show KlpLocalFilePicker;\n"
+		},
+		"milestones": [
+			"M1 original local baseline and validRed only when behavior tested; missingAPI compilation notRed",
+			"M2 frozen hashes ARRAY and integrated checks"
+		],
+		"estimate": {
+			"basis": "cold-start",
+			"tokens": [
+				7000,
+				16000
+			],
+			"minutes": [
+				45,
+				100
+			]
+		}
+	},
+	"P": {
+		"task_id": "TEST-HOST-PORTS-P",
+		"allowed_write": [
+			"test/klp_file_selection_contract_test.dart",
+			"test/klp_application_file_selection_test.dart",
+			"test/klp_legacy_file_picker_test.dart",
+			"test/klp_host_ports_boundary_test.dart",
+			"test/klp_rendering_host_boundary_test.dart",
+			"test/klp_application_module_boundary_test.dart",
+			"test/klp_application_catalog_contract_test.dart",
+			"test/klp_closed_component_catalog_contract_test.dart",
+			"test/support/klp_file_selection_fixture.dart"
+		],
+		"forbidden": [
+			"lib/**",
+			"docs/**",
+			"spec/**",
+			"pubspec.yaml",
+			"pubspec.lock"
+		],
+		"contract": "HOST-PORTS-V1-r1 接受 APP-V1-05／FEAT-V1-06 的 E 環境與 P 檔案選取配對。Capabilities 持有純環境解析及既有 KlpAppPlatform／KlpAdaptiveMode 唯一宣告，Stable foundation 原 facade、型別與 current(Size?) 行為保留；application 唯一既有 host 採樣並安裝，不增加 observer、store 或預設。P 接替已接受的 concrete picker 宣告式面：公開 L1 KlpPickFileAction，port/result 套件內部；application 唯一 plugin adapter，既有 action handler 用原 frame/lease/epoch/entry 在 await 前後檢驗。有效 selected 才回呼一次，cancel/stale/failed 為 false，平台或 callback error 原物件／stack 由 host 一次回報。舊零 host picker 搬 application/legacy 並由專用 legacy root 保留 const/欄位/pick Future 成功取消與原 error 傳播；不作現行宿主 fallback。公開 roots 6→7，僅 declarative 一增一刪及新 legacy，feature exports 67→66，24 components/28 IDs/順序保持。原 R1/APP06 root/hash/closure/catalog 基準依 path-map 精確增減由獨立作者更新，不 blanket resnapshot 或放寬原守衛。E 單獨不完成 APP05；E/P 與完整證據通過才 APP05/FEAT06 complete。",
+		"read_exception": "Read exact existing public/private interfaces and platform test factory solely to exercise real host, pure resolver, compatibility and AST boundary; no BUILD reasoning. Existing hash tests may be revised only approved exact delta, no automatic snapshots.",
+		"api": {
+			"environment_canonical": "KlpEnvironmentSnapshot: const value fields platform, deviceClass=desktop, orientation=landscape, displayMode=browser, adaptiveMode='', required isWebRuntime. factory resolve({required KlpAppPlatform platform, required bool isWebRuntime, double? width, double? height, Map<String,String> queryParameters=const {}}); getters effectiveAdaptiveMode/isAndroid/isWindows/isDesktop/isMobile/isTablet. Package-internal, no root export.",
+			"environment_adapter": "Private application library part _KlpApplicationEnvironmentObserver: const constructor; KlpEnvironmentSnapshot observe({Size? viewportSize}); KlpApplicationEnvironment environment(KlpEnvironmentSnapshot snapshot) projects original private platform/accessibility/motion constructor and dispatcher flags. One host-owned instance, no additional observer or stream. _accept uses observe with original optional size, build builder calls observe with original MediaQuery size and reuses snapshot for viewport + environment.",
+			"stable_facade": "Original KlpPlatformInfo class/const constructor/fields/getters/factory current({Size? viewportSize}) retained; samples globals only and delegates pure resolver/getters. Retain runtime !kIsWeb dependence in manually constructed getters.",
+			"moved_types": "KlpAppPlatform is enum with original values/order. KlpAdaptiveMode is abstract final class, not enum. Both original paths reexport exact moved type via show. Existing device/orientation/display enums readonly.",
+			"public_action": "final class KlpPickFileAction implements KlpAction { final List<String> acceptedExtensions; final void Function(String path) onPicked; const KlpPickFileAction({this.acceptedExtensions=const [], required this.onPicked}); } No pick(), host, port or dispatch API.",
+			"private_port": "KlpFileSelectionPort.select(KlpFileSelectionRequest request) -> Future<KlpFileSelectionResult>; immutable request extensions snapshot; sealed result: KlpFileSelected(String path), KlpFileSelectionCancelled(), KlpFileSelectionFailed(Object error, StackTrace stackTrace).",
+			"application_adapter": "const KlpFileSelectionAdapter implements KlpFileSelectionPort; sole file_selector import. Original group label assets, empty groups unrestricted, path unchanged, original error/stack -> failure.",
+			"session": "Required internal final KlpFileSelectionPort fileSelection constructor parameter on _KlpApplicationSession, supplied by host. No public KlpApplication/runKlpApp signature change.",
+			"legacy": "Original final KlpLocalFilePicker const constructor/fields/defaults/Future<void> pick() now application/legacy; show export only from dedicated new public legacy root. Per-call stateless adapter; success callback once/cancel none/failed Error.throwWithStackTrace; callback errors naturally propagate, never double-report via host."
+		},
+		"supersession": {
+			"R1": "klp_rendering_host_boundary_test.dart whole root set/full-source hashes. E unchanged. P author adds seventh root and updates declarative hash only, preserving five other hashes and all failure privacy/borrowed ownership assertions.",
+			"APP_CONTRACT": "klp_application_module_boundary_test.dart baseline roots directives + closure hashes. Author accepts enumerated environment facade additions, new private part closure, picker replacement + new legacy root. Preserve moved25 private and directive-order assertions outside exact approved delta; no blanket resnapshot.",
+			"CATALOG": "klp_application_catalog_contract_test.dart lines84/93 67->66; line303 obsolete utility special case removed. Retain strict completeness/metadata/schema/24/23/1/28/order assertions, add exact removed symbol/new capability action delta.",
+			"BOUNDARY": "Do not ban plugin from entire declarative implementation import graph: public application imports its private adapter legitimately. Ban plugin/upper app from capability/feature contract paths, and ban adapter/port/plugin export reachability. Keep current public authoring-negative tests."
+		},
+		"public_files": {
+			"lib/kallopis_declarative.dart": "/// 宣告式框架遷移入口；目前為實驗實作，尚未作 Stable 承諾。\nlibrary;\n\n// L0 — 核心識別與契約錯誤。\nexport 'src/kernel/diagnostics/klp_contract_error.dart';\nexport 'src/kernel/identity/klp_id.dart';\nexport 'src/kernel/identity/klp_placement_id.dart';\n\n// L1 — 狀態、資料、動作、導覽與固定風格原料。\nexport 'src/capabilities/controllers/klp_state_controller.dart';\nexport 'src/capabilities/actions/klp_action.dart';\nexport 'src/capabilities/actions/klp_pick_file_action.dart' show KlpPickFileAction;\nexport 'src/capabilities/navigation/klp_destination.dart';\nexport 'src/capabilities/navigation/klp_location.dart';\nexport 'src/capabilities/navigation/klp_navigation_cancellation.dart';\nexport 'src/capabilities/navigation/klp_navigation_decision.dart';\nexport 'src/capabilities/navigation/klp_navigation_entry.dart';\nexport 'src/capabilities/navigation/klp_navigation_restoration.dart';\nexport 'src/capabilities/navigation/klp_navigation_outcome.dart';\nexport 'src/capabilities/navigation/klp_navigation_snapshot.dart';\nexport 'src/capabilities/navigation/klp_navigation_ticket.dart';\nexport 'src/capabilities/navigation/klp_navigation_transition.dart';\nexport 'src/capabilities/navigation/klp_route_policy.dart';\nexport 'src/capabilities/navigation/klp_route_address.dart';\nexport 'src/capabilities/navigation/klp_route_codec.dart';\nexport 'src/capabilities/navigation/klp_route_uri.dart';\nexport 'src/capabilities/data/klp_async_data.dart';\nexport 'src/capabilities/data/klp_data_notification_exception.dart';\nexport 'src/capabilities/data/klp_data_state.dart';\nexport 'src/capabilities/state/klp_mutable_state.dart';\nexport 'src/capabilities/state/klp_state.dart';\nexport 'src/capabilities/state/klp_subscription.dart';\nexport 'src/styling/primitives/klp_primitive_index.dart';\nexport 'src/styling/primitives/klp_primitive_set.dart';\nexport 'src/styling/primitives/klp_style_kind.dart';\nexport 'src/styling/primitives/klp_style_value.dart';\nexport 'src/styling/presets/klp_workspace_preset.dart';\n\n// L2 — 庫擁有節點的組裝資格與受限插槽。\nexport 'src/composition/nodes/klp_node.dart';\nexport 'src/composition/nodes/klp_composite_node.dart';\nexport 'src/composition/nodes/klp_adaptive.dart';\nexport 'src/composition/nodes/klp_platform_strategy.dart';\nexport 'src/composition/slots/klp_slot.dart';\nexport 'src/composition/slots/klp_children.dart';\nexport 'src/composition/slots/klp_screen_body.dart';\n\n// L3 — 組裝所需的平台與排版值；模板由庫內元件擁有。\nexport 'src/foundation/platform/klp_adaptive_mode.dart';\nexport 'src/foundation/platform/klp_device_class.dart';\nexport 'src/foundation/platform/klp_display_mode.dart';\nexport 'src/foundation/platform/klp_orientation.dart';\nexport 'src/foundation/platform/klp_id_context.dart';\nexport 'src/foundation/platform/klp_id_scope.dart';\nexport 'src/foundation/templates/klp_axis.dart';\n\n// L4 — runtime 僅供庫內編譯與安裝，不提供 consumer 匯出。\n\n// L5 — 庫擁有、可組裝的功能節點與資料／事件契約。\nexport 'src/features/editing/contracts/klp_editing_content.dart';\nexport 'src/features/editing/contracts/klp_block_note_editing_content.dart';\nexport 'src/features/editing/contracts/klp_canva_editing_content.dart';\nexport 'package:krepis_canva/krepis_canva.dart'\n\tshow\n\t\tKrepisCanvaBridgeChannel,\n\t\tKrepisCanvaBridgePort,\n\t\tKrepisCanvaCloseResult,\n\t\tKrepisCanvaDocument,\n\t\tKrepisCanvaPersist,\n\t\tKrepisCanvaSessionController;\nexport 'package:krepis_block_note/krepis_block_note.dart'\n\tshow\n\t\tKlpBlockNoteBridgeChannel,\n\t\tKlpBlockNoteBridgePort,\n\t\tKlpBlockNoteCloseResult,\n\t\tKlpBlockNoteDocument,\n\t\tKlpBlockNotePersist,\n\t\tKlpBlockNoteSaveResult,\n\t\tKlpBlockNoteSessionController;\nexport 'src/features/editing/contracts/klp_block_controls.dart';\nexport 'src/features/editing/contracts/klp_block_control_slot_child.dart';\nexport 'src/features/editing/contracts/klp_anchored_commands.dart';\nexport 'src/features/editing/contracts/klp_mode_toolbar.dart';\nexport 'src/features/editing/contracts/klp_mode_tool_slot_child.dart';\nexport 'src/features/editing/contracts/klp_command_slot_child.dart';\nexport 'src/features/workspace/layout/klp_app_layout.dart';\nexport 'src/features/workspace/layout/klp_frame_groups.dart';\nexport 'src/features/workspace/components/klp_explorer.dart';\nexport 'src/features/workspace/components/klp_workspace_command.dart';\nexport 'src/features/workspace/components/klp_document_tabs.dart';\nexport 'src/features/workspace/components/klp_window_controls.dart';\nexport 'src/features/workspace/components/klp_workspace_block.dart';\n\n// L6 — renderer 僅實現已封閉的準備結果，不提供 consumer 匯出。\n\n// L7 — 唯一應用程式組合根。\nexport 'src/application/structure/klp_application.dart';\nexport 'src/application/structure/klp_screen.dart';\n",
+			"lib/kallopis_legacy_file_picker.dart": "/// 舊零宿主檔案選取相容入口；現行宣告式應用使用 KlpPickFileAction。\nlibrary;\n\nexport 'src/application/legacy/klp_local_file_picker.dart' show KlpLocalFilePicker;\n"
+		},
+		"milestones": [
+			"M1 original local baseline and validRed only when behavior tested; missingAPI compilation notRed",
+			"M2 frozen hashes ARRAY and integrated checks"
+		],
+		"estimate": {
+			"basis": "cold-start",
+			"tokens": [
+				7000,
+				16000
+			],
+			"minutes": [
+				45,
+				100
+			]
+		}
+	}
+}

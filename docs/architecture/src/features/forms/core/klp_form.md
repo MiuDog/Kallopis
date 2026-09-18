@@ -11,7 +11,7 @@
 ```mermaid
 flowchart TD
 	n0["klp_form.dart"]
-	n1["../internal/klp_form_dependencies.dart"]
+	n1["package:kallopis/src/features/forms/internal/klp_form_dependencies.dart"]
 	n0 -->|"import"| n1
 ```
 
@@ -19,7 +19,7 @@ flowchart TD
 
 | 關係 | 原始 directive | 來源 |
 |---|---|---|
-| import | <code>import &#x27;../internal/klp_form_dependencies.dart&#x27;;</code> | [lib/src/features/forms/core/klp_form.dart:1](../../../../../../lib/src/features/forms/core/klp_form.dart#L1) |
+| import | <code>import &#x27;package:kallopis/src/features/forms/internal/klp_form_dependencies.dart&#x27;;</code> | [lib/src/features/forms/core/klp_form.dart:1](../../../../../../lib/src/features/forms/core/klp_form.dart#L1) |
 
 ## 宣告關係圖
 

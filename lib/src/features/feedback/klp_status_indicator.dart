@@ -1,9 +1,9 @@
 import 'package:flutter/widgets.dart';
 
-import '../../foundation/layout/klp_layout.dart';
-import '../workspace/shell/status/klp_status_data.dart';
-import '../../styling/legacy_theme/klp_theme.dart';
-import '../../foundation/content/klp_text.dart';
+import 'package:kallopis/src/foundation/layout/klp_layout.dart';
+import 'package:kallopis/src/features/workspace/shell/status/klp_status_data.dart';
+import 'package:kallopis/src/styling/legacy_theme/klp_theme.dart';
+import 'package:kallopis/src/foundation/content/klp_text.dart';
 
 part 'primitives/klp_status_dot.dart';
 

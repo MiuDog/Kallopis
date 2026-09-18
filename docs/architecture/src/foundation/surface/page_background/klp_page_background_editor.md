@@ -15,7 +15,7 @@ flowchart LR
 	n2["package:flutter/gestures.dart"]
 	n3["package:flutter/services.dart"]
 	n4["package:flutter/widgets.dart"]
-	n5["../../../styling/legacy_theme/klp_theme.dart"]
+	n5["package:kallopis/src/styling/legacy_theme/klp_theme.dart"]
 	n6["klp_page_background.dart"]
 	n7["klp_page_background_recipe.dart"]
 	n8["internal/klp_background_selection_painter.dart"]
@@ -37,7 +37,7 @@ flowchart LR
 | import | <code>import &#x27;package:flutter/gestures.dart&#x27;;</code> | [lib/src/foundation/surface/page_background/klp_page_background_editor.dart:3](../../../../../../lib/src/foundation/surface/page_background/klp_page_background_editor.dart#L3) |
 | import | <code>import &#x27;package:flutter/services.dart&#x27;;</code> | [lib/src/foundation/surface/page_background/klp_page_background_editor.dart:4](../../../../../../lib/src/foundation/surface/page_background/klp_page_background_editor.dart#L4) |
 | import | <code>import &#x27;package:flutter/widgets.dart&#x27;;</code> | [lib/src/foundation/surface/page_background/klp_page_background_editor.dart:5](../../../../../../lib/src/foundation/surface/page_background/klp_page_background_editor.dart#L5) |
-| import | <code>import &#x27;../../../styling/legacy_theme/klp_theme.dart&#x27;;</code> | [lib/src/foundation/surface/page_background/klp_page_background_editor.dart:7](../../../../../../lib/src/foundation/surface/page_background/klp_page_background_editor.dart#L7) |
+| import | <code>import &#x27;package:kallopis/src/styling/legacy_theme/klp_theme.dart&#x27;;</code> | [lib/src/foundation/surface/page_background/klp_page_background_editor.dart:7](../../../../../../lib/src/foundation/surface/page_background/klp_page_background_editor.dart#L7) |
 | import | <code>import &#x27;klp_page_background.dart&#x27;;</code> | [lib/src/foundation/surface/page_background/klp_page_background_editor.dart:8](../../../../../../lib/src/foundation/surface/page_background/klp_page_background_editor.dart#L8) |
 | import | <code>import &#x27;klp_page_background_recipe.dart&#x27;;</code> | [lib/src/foundation/surface/page_background/klp_page_background_editor.dart:9](../../../../../../lib/src/foundation/surface/page_background/klp_page_background_editor.dart#L9) |
 | part | <code>part &#x27;internal/klp_background_selection_painter.dart&#x27;;</code> | [lib/src/foundation/surface/page_background/klp_page_background_editor.dart:11](../../../../../../lib/src/foundation/surface/page_background/klp_page_background_editor.dart#L11) |

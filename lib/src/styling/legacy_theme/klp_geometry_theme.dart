@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import '../../foundation/klp_metrics.dart';
-import '../legacy_tokens/primitive_token.dart';
+import 'package:kallopis/src/styling/legacy_metrics/klp_metrics.dart';
+import 'package:kallopis/src/styling/legacy_tokens/primitive_token.dart';
 import 'klp_control_geometry.dart';
 import 'klp_data_geometry.dart';
 import 'klp_layout_geometry.dart';

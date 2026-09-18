@@ -13,7 +13,7 @@ flowchart LR
 	n0["klp_text_widget.dart"]
 	n1["package:flutter/rendering.dart"]
 	n2["package:flutter/widgets.dart"]
-	n3["../../styling/legacy_theme/klp_theme.dart"]
+	n3["package:kallopis/src/styling/legacy_theme/klp_theme.dart"]
 	n4["klp_text.dart"]
 	n5["klp_optical_shift.dart"]
 	n6["klp_render_optical_shift.dart"]
@@ -31,7 +31,7 @@ flowchart LR
 |---|---|---|
 | import | <code>import &#x27;package:flutter/rendering.dart&#x27;;</code> | [lib/src/foundation/content/klp_text_widget.dart:1](../../../../../lib/src/foundation/content/klp_text_widget.dart#L1) |
 | import | <code>import &#x27;package:flutter/widgets.dart&#x27;;</code> | [lib/src/foundation/content/klp_text_widget.dart:2](../../../../../lib/src/foundation/content/klp_text_widget.dart#L2) |
-| import | <code>import &#x27;../../styling/legacy_theme/klp_theme.dart&#x27;;</code> | [lib/src/foundation/content/klp_text_widget.dart:4](../../../../../lib/src/foundation/content/klp_text_widget.dart#L4) |
+| import | <code>import &#x27;package:kallopis/src/styling/legacy_theme/klp_theme.dart&#x27;;</code> | [lib/src/foundation/content/klp_text_widget.dart:4](../../../../../lib/src/foundation/content/klp_text_widget.dart#L4) |
 | import | <code>import &#x27;klp_text.dart&#x27;;</code> | [lib/src/foundation/content/klp_text_widget.dart:5](../../../../../lib/src/foundation/content/klp_text_widget.dart#L5) |
 | part | <code>part &#x27;klp_optical_shift.dart&#x27;;</code> | [lib/src/foundation/content/klp_text_widget.dart:7](../../../../../lib/src/foundation/content/klp_text_widget.dart#L7) |
 | part | <code>part &#x27;klp_render_optical_shift.dart&#x27;;</code> | [lib/src/foundation/content/klp_text_widget.dart:8](../../../../../lib/src/foundation/content/klp_text_widget.dart#L8) |

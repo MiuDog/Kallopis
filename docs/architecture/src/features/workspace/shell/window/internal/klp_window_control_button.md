@@ -12,13 +12,13 @@
 flowchart LR
 	n0["klp_window_control_button.dart"]
 	n1["package:flutter/widgets.dart"]
-	n2["../../../../../foundation/klp_icon.dart"]
-	n3["../../../../../foundation/interaction/klp_action_region.dart"]
-	n4["../../../../../foundation/interaction/klp_action_region_tone.dart"]
-	n5["../../../../../foundation/layout/klp_box.dart"]
-	n6["../../../../../foundation/layout/klp_center.dart"]
-	n7["../../../../overlays/klp_tooltip.dart"]
-	n8["../klp_window_controls_geometry.dart"]
+	n2["package:kallopis/src/foundation/klp_icon.dart"]
+	n3["package:kallopis/src/foundation/interaction/klp_action_region.dart"]
+	n4["package:kallopis/src/foundation/interaction/klp_action_region_tone.dart"]
+	n5["package:kallopis/src/foundation/layout/klp_box.dart"]
+	n6["package:kallopis/src/foundation/layout/klp_center.dart"]
+	n7["package:kallopis/src/features/overlays/klp_tooltip.dart"]
+	n8["package:kallopis/src/features/workspace/shell/window/klp_window_controls_geometry.dart"]
 	n0 -->|"import"| n1
 	n0 -->|"import"| n2
 	n0 -->|"import"| n3
@@ -34,13 +34,13 @@ flowchart LR
 | 關係 | 原始 directive | 來源 |
 |---|---|---|
 | import | <code>import &#x27;package:flutter/widgets.dart&#x27;;</code> | [lib/src/features/workspace/shell/window/internal/klp_window_control_button.dart:1](../../../../../../../../lib/src/features/workspace/shell/window/internal/klp_window_control_button.dart#L1) |
-| import | <code>import &#x27;../../../../../foundation/klp_icon.dart&#x27;;</code> | [lib/src/features/workspace/shell/window/internal/klp_window_control_button.dart:3](../../../../../../../../lib/src/features/workspace/shell/window/internal/klp_window_control_button.dart#L3) |
-| import | <code>import &#x27;../../../../../foundation/interaction/klp_action_region.dart&#x27;;</code> | [lib/src/features/workspace/shell/window/internal/klp_window_control_button.dart:4](../../../../../../../../lib/src/features/workspace/shell/window/internal/klp_window_control_button.dart#L4) |
-| import | <code>import &#x27;../../../../../foundation/interaction/klp_action_region_tone.dart&#x27;;</code> | [lib/src/features/workspace/shell/window/internal/klp_window_control_button.dart:5](../../../../../../../../lib/src/features/workspace/shell/window/internal/klp_window_control_button.dart#L5) |
-| import | <code>import &#x27;../../../../../foundation/layout/klp_box.dart&#x27;;</code> | [lib/src/features/workspace/shell/window/internal/klp_window_control_button.dart:6](../../../../../../../../lib/src/features/workspace/shell/window/internal/klp_window_control_button.dart#L6) |
-| import | <code>import &#x27;../../../../../foundation/layout/klp_center.dart&#x27;;</code> | [lib/src/features/workspace/shell/window/internal/klp_window_control_button.dart:7](../../../../../../../../lib/src/features/workspace/shell/window/internal/klp_window_control_button.dart#L7) |
-| import | <code>import &#x27;../../../../overlays/klp_tooltip.dart&#x27;;</code> | [lib/src/features/workspace/shell/window/internal/klp_window_control_button.dart:8](../../../../../../../../lib/src/features/workspace/shell/window/internal/klp_window_control_button.dart#L8) |
-| import | <code>import &#x27;../klp_window_controls_geometry.dart&#x27;;</code> | [lib/src/features/workspace/shell/window/internal/klp_window_control_button.dart:9](../../../../../../../../lib/src/features/workspace/shell/window/internal/klp_window_control_button.dart#L9) |
+| import | <code>import &#x27;package:kallopis/src/foundation/klp_icon.dart&#x27;;</code> | [lib/src/features/workspace/shell/window/internal/klp_window_control_button.dart:3](../../../../../../../../lib/src/features/workspace/shell/window/internal/klp_window_control_button.dart#L3) |
+| import | <code>import &#x27;package:kallopis/src/foundation/interaction/klp_action_region.dart&#x27;;</code> | [lib/src/features/workspace/shell/window/internal/klp_window_control_button.dart:4](../../../../../../../../lib/src/features/workspace/shell/window/internal/klp_window_control_button.dart#L4) |
+| import | <code>import &#x27;package:kallopis/src/foundation/interaction/klp_action_region_tone.dart&#x27;;</code> | [lib/src/features/workspace/shell/window/internal/klp_window_control_button.dart:5](../../../../../../../../lib/src/features/workspace/shell/window/internal/klp_window_control_button.dart#L5) |
+| import | <code>import &#x27;package:kallopis/src/foundation/layout/klp_box.dart&#x27;;</code> | [lib/src/features/workspace/shell/window/internal/klp_window_control_button.dart:6](../../../../../../../../lib/src/features/workspace/shell/window/internal/klp_window_control_button.dart#L6) |
+| import | <code>import &#x27;package:kallopis/src/foundation/layout/klp_center.dart&#x27;;</code> | [lib/src/features/workspace/shell/window/internal/klp_window_control_button.dart:7](../../../../../../../../lib/src/features/workspace/shell/window/internal/klp_window_control_button.dart#L7) |
+| import | <code>import &#x27;package:kallopis/src/features/overlays/klp_tooltip.dart&#x27;;</code> | [lib/src/features/workspace/shell/window/internal/klp_window_control_button.dart:8](../../../../../../../../lib/src/features/workspace/shell/window/internal/klp_window_control_button.dart#L8) |
+| import | <code>import &#x27;package:kallopis/src/features/workspace/shell/window/klp_window_controls_geometry.dart&#x27;;</code> | [lib/src/features/workspace/shell/window/internal/klp_window_control_button.dart:9](../../../../../../../../lib/src/features/workspace/shell/window/internal/klp_window_control_button.dart#L9) |
 
 ## 宣告關係圖
 

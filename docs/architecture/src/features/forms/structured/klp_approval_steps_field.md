@@ -11,7 +11,7 @@
 ```mermaid
 flowchart LR
 	n0["klp_approval_steps_field.dart"]
-	n1["../internal/klp_form_dependencies.dart"]
+	n1["package:kallopis/src/features/forms/internal/klp_form_dependencies.dart"]
 	n2["primitives/internal/klp_structured_frame.dart"]
 	n3["internal/klp_approval_step_data.dart"]
 	n4["internal/klp_approval_steps_field_widget.dart"]
@@ -25,7 +25,7 @@ flowchart LR
 
 | 關係 | 原始 directive | 來源 |
 |---|---|---|
-| import | <code>import &#x27;../internal/klp_form_dependencies.dart&#x27;;</code> | [lib/src/features/forms/structured/klp_approval_steps_field.dart:1](../../../../../../lib/src/features/forms/structured/klp_approval_steps_field.dart#L1) |
+| import | <code>import &#x27;package:kallopis/src/features/forms/internal/klp_form_dependencies.dart&#x27;;</code> | [lib/src/features/forms/structured/klp_approval_steps_field.dart:1](../../../../../../lib/src/features/forms/structured/klp_approval_steps_field.dart#L1) |
 | import | <code>import &#x27;primitives/internal/klp_structured_frame.dart&#x27;;</code> | [lib/src/features/forms/structured/klp_approval_steps_field.dart:2](../../../../../../lib/src/features/forms/structured/klp_approval_steps_field.dart#L2) |
 | part | <code>part &#x27;internal/klp_approval_step_data.dart&#x27;;</code> | [lib/src/features/forms/structured/klp_approval_steps_field.dart:4](../../../../../../lib/src/features/forms/structured/klp_approval_steps_field.dart#L4) |
 | part | <code>part &#x27;internal/klp_approval_steps_field_widget.dart&#x27;;</code> | [lib/src/features/forms/structured/klp_approval_steps_field.dart:5](../../../../../../lib/src/features/forms/structured/klp_approval_steps_field.dart#L5) |

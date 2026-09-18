@@ -1,8 +1,8 @@
-import '../internal/klp_form_dependencies.dart';
-import '../internal/klp_input_frame.dart';
-import '../internal/primitives/klp_input_action.dart';
-import '../internal/primitives/klp_input_segment_divider.dart';
-import '../../../foundation/layout/klp_center.dart';
+import 'package:kallopis/src/features/forms/internal/klp_form_dependencies.dart';
+import 'package:kallopis/src/features/forms/internal/klp_input_frame.dart';
+import 'package:kallopis/src/features/forms/internal/primitives/klp_input_action.dart';
+import 'package:kallopis/src/features/forms/internal/primitives/klp_input_segment_divider.dart';
+import 'package:kallopis/src/foundation/layout/klp_center.dart';
 
 /// 以欄位等高的減少／增加操作調整數量。
 class KlpQuantityField extends StatelessWidget {

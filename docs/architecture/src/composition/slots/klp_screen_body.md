@@ -11,7 +11,7 @@
 ```mermaid
 flowchart TD
 	n0["klp_screen_body.dart"]
-	n1["../nodes/klp_node.dart"]
+	n1["package:kallopis/src/composition/nodes/klp_node.dart"]
 	n0 -->|"import"| n1
 ```
 
@@ -19,7 +19,7 @@ flowchart TD
 
 | 關係 | 原始 directive | 來源 |
 |---|---|---|
-| import | <code>import &#x27;../nodes/klp_node.dart&#x27;;</code> | [lib/src/composition/slots/klp_screen_body.dart:1](../../../../../lib/src/composition/slots/klp_screen_body.dart#L1) |
+| import | <code>import &#x27;package:kallopis/src/composition/nodes/klp_node.dart&#x27;;</code> | [lib/src/composition/slots/klp_screen_body.dart:1](../../../../../lib/src/composition/slots/klp_screen_body.dart#L1) |
 
 ## 宣告關係圖
 

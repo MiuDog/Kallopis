@@ -13,23 +13,26 @@
 ```mermaid
 flowchart LR
 	n0["lib/src/styling/legacy_theme"]
-	n1["lib/src/foundation"]
+	n1["lib/src/styling/legacy_metrics"]
 	n2["lib/src/styling/legacy_theme/internal"]
 	n3["lib/src/styling/legacy_tokens"]
-	n4["lib/src/styling/presets/legacy"]
-	n5["package:flutter"]
+	n4["lib/src/styling/presets"]
+	n5["lib/src/styling/presets/legacy"]
+	n6["package:flutter"]
 	n0 -->|"import"| n1
 	n0 -->|"import"| n2
 	n0 -->|"import"| n3
-	n0 -->|"part"| n4
-	n0 -->|"import"| n5
+	n0 -->|"import"| n4
+	n0 -->|"part"| n5
+	n0 -->|"import"| n6
 ```
 
 | 目標邊界 | 關係 | directive 數 | 第一筆來源證據 |
 |---|---|---|---|
-| <code>lib/src/foundation</code> | import | 2 | [lib/src/styling/legacy_theme/klp_geometry_theme.dart:3](../../../../../lib/src/styling/legacy_theme/klp_geometry_theme.dart#L3) |
+| <code>lib/src/styling/legacy_metrics</code> | import | 2 | [lib/src/styling/legacy_theme/klp_geometry_theme.dart:3](../../../../../lib/src/styling/legacy_theme/klp_geometry_theme.dart#L3) |
 | <code>lib/src/styling/legacy_theme/internal</code> | import | 12 | [lib/src/styling/legacy_theme/klp_visual_style_json.dart:2](../../../../../lib/src/styling/legacy_theme/klp_visual_style_json.dart#L2) |
 | <code>lib/src/styling/legacy_tokens</code> | import | 11 | [lib/src/styling/legacy_theme/klp_control_geometry.dart:3](../../../../../lib/src/styling/legacy_theme/klp_control_geometry.dart#L3) |
+| <code>lib/src/styling/presets</code> | import | 1 | [lib/src/styling/legacy_theme/klp_surface_theme.dart:6](../../../../../lib/src/styling/legacy_theme/klp_surface_theme.dart#L6) |
 | <code>lib/src/styling/presets/legacy</code> | part | 7 | [lib/src/styling/legacy_theme/klp_data_visualization_theme.dart:5](../../../../../lib/src/styling/legacy_theme/klp_data_visualization_theme.dart#L5) |
 | <code>package:flutter</code> | import | 17 | [lib/src/styling/legacy_theme/klp_component_theme.dart:1](../../../../../lib/src/styling/legacy_theme/klp_component_theme.dart#L1) |
 
@@ -143,7 +146,7 @@ flowchart LR
 | `klp_optical_geometry.dart` | KlpOpticalGeometry | [架構與 API](klp_optical_geometry.md) | [lib/src/styling/legacy_theme/klp_optical_geometry.dart:1](../../../../../lib/src/styling/legacy_theme/klp_optical_geometry.dart#L1) |
 | `klp_shape_theme.dart` | KlpShapeTheme | [架構與 API](klp_shape_theme.md) | [lib/src/styling/legacy_theme/klp_shape_theme.dart:1](../../../../../lib/src/styling/legacy_theme/klp_shape_theme.dart#L1) |
 | `klp_spacing_theme.dart` | KlpSpacingTheme | [架構與 API](klp_spacing_theme.md) | [lib/src/styling/legacy_theme/klp_spacing_theme.dart:1](../../../../../lib/src/styling/legacy_theme/klp_spacing_theme.dart#L1) |
-| `klp_surface_theme.dart` | KlpSurfaceSeparation, KlpSurfaceTheme | [架構與 API](klp_surface_theme.md) | [lib/src/styling/legacy_theme/klp_surface_theme.dart:1](../../../../../lib/src/styling/legacy_theme/klp_surface_theme.dart#L1) |
+| `klp_surface_theme.dart` | _defaultOverlayShadowColor, KlpSurfaceSeparation, KlpSurfaceTheme | [架構與 API](klp_surface_theme.md) | [lib/src/styling/legacy_theme/klp_surface_theme.dart:1](../../../../../lib/src/styling/legacy_theme/klp_surface_theme.dart#L1) |
 | `klp_theme.dart` | KlpThemeVariant, KlpFieldFillState, KlpFieldStyle, buildKlpTheme, buildKlpThemeVariant, _buildKlpThemeData | [架構與 API](klp_theme.md) | [lib/src/styling/legacy_theme/klp_theme.dart:1](../../../../../lib/src/styling/legacy_theme/klp_theme.dart#L1) |
 | `klp_theme_data.dart` | KlpThemeContrast, KlpThemeData | [架構與 API](klp_theme_data.md) | [lib/src/styling/legacy_theme/klp_theme_data.dart:1](../../../../../lib/src/styling/legacy_theme/klp_theme_data.dart#L1) |
 | `klp_theme_scope.dart` | KlpTheme, KlpTokenOverride, KlpThemeContext | [架構與 API](klp_theme_scope.md) | [lib/src/styling/legacy_theme/klp_theme_scope.dart:1](../../../../../lib/src/styling/legacy_theme/klp_theme_scope.dart#L1) |

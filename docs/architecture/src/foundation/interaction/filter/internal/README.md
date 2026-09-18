@@ -19,7 +19,7 @@ flowchart TD
 
 | 目標邊界 | 關係 | directive 數 | 第一筆來源證據 |
 |---|---|---|---|
-| <code>lib/src/foundation/interaction/filter</code> | part of | 5 | [lib/src/foundation/interaction/filter/internal/klp_filter_bar_widget.dart:1](../../../../../../../lib/src/foundation/interaction/filter/internal/klp_filter_bar_widget.dart#L1) |
+| <code>lib/src/foundation/interaction/filter</code> | part of | 4 | [lib/src/foundation/interaction/filter/internal/klp_filter_bar_widget.dart:1](../../../../../../../lib/src/foundation/interaction/filter/internal/klp_filter_bar_widget.dart#L1) |
 
 ## 目錄結構圖
 
@@ -29,13 +29,11 @@ flowchart LR
 	n1["klp_filter_bar_widget.dart"]
 	n2["klp_filter_chip.dart"]
 	n3["klp_presence_indicator_widget.dart"]
-	n4["klp_selection_toolbar_widget.dart"]
-	n5["klp_shortcut_hint_widget.dart"]
+	n4["klp_shortcut_hint_widget.dart"]
 	n0 -->|"contains"| n1
 	n0 -->|"contains"| n2
 	n0 -->|"contains"| n3
 	n0 -->|"contains"| n4
-	n0 -->|"contains"| n5
 ```
 
 ## 子目錄
@@ -51,7 +49,6 @@ flowchart LR
 | `klp_filter_bar_widget.dart` | KlpFilterBar | [架構與 API](klp_filter_bar_widget.md) | [lib/src/foundation/interaction/filter/internal/klp_filter_bar_widget.dart:1](../../../../../../../lib/src/foundation/interaction/filter/internal/klp_filter_bar_widget.dart#L1) |
 | `klp_filter_chip.dart` | _KlpFilterChip | [架構與 API](klp_filter_chip.md) | [lib/src/foundation/interaction/filter/internal/klp_filter_chip.dart:1](../../../../../../../lib/src/foundation/interaction/filter/internal/klp_filter_chip.dart#L1) |
 | `klp_presence_indicator_widget.dart` | KlpPresenceIndicator | [架構與 API](klp_presence_indicator_widget.md) | [lib/src/foundation/interaction/filter/internal/klp_presence_indicator_widget.dart:1](../../../../../../../lib/src/foundation/interaction/filter/internal/klp_presence_indicator_widget.dart#L1) |
-| `klp_selection_toolbar_widget.dart` | KlpSelectionToolbar | [架構與 API](klp_selection_toolbar_widget.md) | [lib/src/foundation/interaction/filter/internal/klp_selection_toolbar_widget.dart:1](../../../../../../../lib/src/foundation/interaction/filter/internal/klp_selection_toolbar_widget.dart#L1) |
 | `klp_shortcut_hint_widget.dart` | KlpShortcutHint | [架構與 API](klp_shortcut_hint_widget.md) | [lib/src/foundation/interaction/filter/internal/klp_shortcut_hint_widget.dart:1](../../../../../../../lib/src/foundation/interaction/filter/internal/klp_shortcut_hint_widget.dart#L1) |
 
 ## 閱讀說明

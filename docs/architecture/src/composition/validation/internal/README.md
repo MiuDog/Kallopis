@@ -15,12 +15,11 @@ flowchart LR
 	n0["lib/src/composition/validation/internal"]
 	n1["dart:collection"]
 	n2["lib/src/composition/nodes"]
-	n3["lib/src/composition/nodes/internal"]
-	n4["lib/src/composition/registry"]
-	n5["lib/src/composition/slots"]
-	n6["lib/src/composition/validation"]
-	n7["lib/src/kernel/diagnostics"]
-	n8["lib/src/kernel/identity"]
+	n3["lib/src/composition/registry"]
+	n4["lib/src/composition/slots"]
+	n5["lib/src/composition/validation"]
+	n6["lib/src/kernel/diagnostics"]
+	n7["lib/src/kernel/identity"]
 	n0 -->|"import"| n1
 	n0 -->|"import"| n2
 	n0 -->|"import"| n3
@@ -28,17 +27,15 @@ flowchart LR
 	n0 -->|"import"| n5
 	n0 -->|"import"| n6
 	n0 -->|"import"| n7
-	n0 -->|"import"| n8
 ```
 
 | 目標邊界 | 關係 | directive 數 | 第一筆來源證據 |
 |---|---|---|---|
 | <code>dart:collection</code> | import | 1 | [lib/src/composition/validation/internal/klp_tree_capture.dart:1](../../../../../../lib/src/composition/validation/internal/klp_tree_capture.dart#L1) |
-| <code>lib/src/composition/nodes</code> | import | 2 | [lib/src/composition/validation/internal/klp_tree_capture.dart:5](../../../../../../lib/src/composition/validation/internal/klp_tree_capture.dart#L5) |
-| <code>lib/src/composition/nodes/internal</code> | import | 1 | [lib/src/composition/validation/internal/klp_tree_capture.dart:7](../../../../../../lib/src/composition/validation/internal/klp_tree_capture.dart#L7) |
-| <code>lib/src/composition/registry</code> | import | 1 | [lib/src/composition/validation/internal/klp_tree_capture.dart:9](../../../../../../lib/src/composition/validation/internal/klp_tree_capture.dart#L9) |
-| <code>lib/src/composition/slots</code> | import | 1 | [lib/src/composition/validation/internal/klp_tree_capture.dart:8](../../../../../../lib/src/composition/validation/internal/klp_tree_capture.dart#L8) |
-| <code>lib/src/composition/validation</code> | import | 3 | [lib/src/composition/validation/internal/klp_tree_capture.dart:10](../../../../../../lib/src/composition/validation/internal/klp_tree_capture.dart#L10) |
+| <code>lib/src/composition/nodes</code> | import | 5 | [lib/src/composition/validation/internal/klp_tree_capture.dart:5](../../../../../../lib/src/composition/validation/internal/klp_tree_capture.dart#L5) |
+| <code>lib/src/composition/registry</code> | import | 1 | [lib/src/composition/validation/internal/klp_tree_capture.dart:11](../../../../../../lib/src/composition/validation/internal/klp_tree_capture.dart#L11) |
+| <code>lib/src/composition/slots</code> | import | 1 | [lib/src/composition/validation/internal/klp_tree_capture.dart:10](../../../../../../lib/src/composition/validation/internal/klp_tree_capture.dart#L10) |
+| <code>lib/src/composition/validation</code> | import | 3 | [lib/src/composition/validation/internal/klp_tree_capture.dart:12](../../../../../../lib/src/composition/validation/internal/klp_tree_capture.dart#L12) |
 | <code>lib/src/kernel/diagnostics</code> | import | 1 | [lib/src/composition/validation/internal/klp_tree_capture.dart:3](../../../../../../lib/src/composition/validation/internal/klp_tree_capture.dart#L3) |
 | <code>lib/src/kernel/identity</code> | import | 1 | [lib/src/composition/validation/internal/klp_tree_capture.dart:4](../../../../../../lib/src/composition/validation/internal/klp_tree_capture.dart#L4) |
 

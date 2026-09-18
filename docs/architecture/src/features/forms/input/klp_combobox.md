@@ -13,10 +13,10 @@ flowchart LR
 	n0["klp_combobox.dart"]
 	n1["package:flutter/services.dart"]
 	n2["package:flutter/widgets.dart"]
-	n3["../../../foundation/interaction/klp_focus_region.dart"]
-	n4["../../../foundation/interaction/klp_roving_index.dart"]
-	n5["../../../foundation/layout/klp_layout.dart"]
-	n6["../../overlays/klp_menu.dart"]
+	n3["package:kallopis/src/foundation/interaction/klp_focus_region.dart"]
+	n4["package:kallopis/src/foundation/interaction/klp_roving_index.dart"]
+	n5["package:kallopis/src/foundation/layout/klp_layout.dart"]
+	n6["package:kallopis/src/features/overlays/klp_menu.dart"]
 	n7["klp_text_field.dart"]
 	n8["internal/klp_combobox_option.dart"]
 	n9["internal/klp_combobox_state.dart"]
@@ -39,10 +39,10 @@ flowchart LR
 |---|---|---|
 | import | <code>import &#x27;package:flutter/services.dart&#x27;;</code> | [lib/src/features/forms/input/klp_combobox.dart:1](../../../../../../lib/src/features/forms/input/klp_combobox.dart#L1) |
 | import | <code>import &#x27;package:flutter/widgets.dart&#x27;;</code> | [lib/src/features/forms/input/klp_combobox.dart:2](../../../../../../lib/src/features/forms/input/klp_combobox.dart#L2) |
-| import | <code>import &#x27;../../../foundation/interaction/klp_focus_region.dart&#x27;;</code> | [lib/src/features/forms/input/klp_combobox.dart:4](../../../../../../lib/src/features/forms/input/klp_combobox.dart#L4) |
-| import | <code>import &#x27;../../../foundation/interaction/klp_roving_index.dart&#x27;;</code> | [lib/src/features/forms/input/klp_combobox.dart:5](../../../../../../lib/src/features/forms/input/klp_combobox.dart#L5) |
-| import | <code>import &#x27;../../../foundation/layout/klp_layout.dart&#x27;;</code> | [lib/src/features/forms/input/klp_combobox.dart:6](../../../../../../lib/src/features/forms/input/klp_combobox.dart#L6) |
-| import | <code>import &#x27;../../overlays/klp_menu.dart&#x27;;</code> | [lib/src/features/forms/input/klp_combobox.dart:7](../../../../../../lib/src/features/forms/input/klp_combobox.dart#L7) |
+| import | <code>import &#x27;package:kallopis/src/foundation/interaction/klp_focus_region.dart&#x27;;</code> | [lib/src/features/forms/input/klp_combobox.dart:4](../../../../../../lib/src/features/forms/input/klp_combobox.dart#L4) |
+| import | <code>import &#x27;package:kallopis/src/foundation/interaction/klp_roving_index.dart&#x27;;</code> | [lib/src/features/forms/input/klp_combobox.dart:5](../../../../../../lib/src/features/forms/input/klp_combobox.dart#L5) |
+| import | <code>import &#x27;package:kallopis/src/foundation/layout/klp_layout.dart&#x27;;</code> | [lib/src/features/forms/input/klp_combobox.dart:6](../../../../../../lib/src/features/forms/input/klp_combobox.dart#L6) |
+| import | <code>import &#x27;package:kallopis/src/features/overlays/klp_menu.dart&#x27;;</code> | [lib/src/features/forms/input/klp_combobox.dart:7](../../../../../../lib/src/features/forms/input/klp_combobox.dart#L7) |
 | import | <code>import &#x27;klp_text_field.dart&#x27;;</code> | [lib/src/features/forms/input/klp_combobox.dart:8](../../../../../../lib/src/features/forms/input/klp_combobox.dart#L8) |
 | part | <code>part &#x27;internal/klp_combobox_option.dart&#x27;;</code> | [lib/src/features/forms/input/klp_combobox.dart:10](../../../../../../lib/src/features/forms/input/klp_combobox.dart#L10) |
 | part | <code>part &#x27;internal/klp_combobox_state.dart&#x27;;</code> | [lib/src/features/forms/input/klp_combobox.dart:11](../../../../../../lib/src/features/forms/input/klp_combobox.dart#L11) |

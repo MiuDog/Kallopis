@@ -1,4 +1,4 @@
-import '../../kernel/diagnostics/klp_contract_error.dart';
+import 'package:kallopis/src/kernel/diagnostics/klp_contract_error.dart';
 
 part 'klp_distance.dart';
 part 'klp_radius.dart';

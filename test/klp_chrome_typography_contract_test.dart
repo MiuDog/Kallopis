@@ -31,8 +31,6 @@ void main() {
     const contracts = {
       'lib/src/features/workspace/shell/window/klp_window_header.dart':
           'KlpTextRole.appTitle',
-      'lib/src/features/workspace/shell/window/klp_workbench_window_header.dart':
-          'KlpTextRole.appTitle',
       'lib/src/features/workspace/shell/composition/window_header/klp_app_window_header.dart':
           'KlpTextRole.appTitle',
       'lib/src/features/workspace/shell/panel/klp_panel_header.dart':

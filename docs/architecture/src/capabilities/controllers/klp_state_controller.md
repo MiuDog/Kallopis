@@ -11,7 +11,7 @@
 ```mermaid
 flowchart TD
 	n0["klp_state_controller.dart"]
-	n1["../state/klp_state.dart"]
+	n1["package:kallopis/src/capabilities/state/klp_state.dart"]
 	n0 -->|"import"| n1
 ```
 
@@ -19,7 +19,7 @@ flowchart TD
 
 | 關係 | 原始 directive | 來源 |
 |---|---|---|
-| import | <code>import &#x27;../state/klp_state.dart&#x27;;</code> | [lib/src/capabilities/controllers/klp_state_controller.dart:1](../../../../../lib/src/capabilities/controllers/klp_state_controller.dart#L1) |
+| import | <code>import &#x27;package:kallopis/src/capabilities/state/klp_state.dart&#x27;;</code> | [lib/src/capabilities/controllers/klp_state_controller.dart:1](../../../../../lib/src/capabilities/controllers/klp_state_controller.dart#L1) |
 
 ## 宣告關係圖
 

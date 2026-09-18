@@ -12,12 +12,12 @@
 flowchart LR
 	n0["klp_settings_content.dart"]
 	n1["package:flutter/widgets.dart"]
-	n2["../../../foundation/layout/klp_box.dart"]
-	n3["../../../foundation/layout/klp_box_insets.dart"]
-	n4["../../../foundation/layout/klp_column.dart"]
-	n5["../../../foundation/surface/klp_surface.dart"]
-	n6["../../../styling/legacy_theme/klp_theme.dart"]
-	n7["../../../foundation/content/klp_text.dart"]
+	n2["package:kallopis/src/foundation/layout/klp_box.dart"]
+	n3["package:kallopis/src/foundation/layout/klp_box_insets.dart"]
+	n4["package:kallopis/src/foundation/layout/klp_column.dart"]
+	n5["package:kallopis/src/foundation/surface/klp_surface.dart"]
+	n6["package:kallopis/src/styling/legacy_theme/klp_theme.dart"]
+	n7["package:kallopis/src/foundation/content/klp_text.dart"]
 	n8["klp_settings_action_bar.dart"]
 	n0 -->|"import"| n1
 	n0 -->|"import"| n2
@@ -34,12 +34,12 @@ flowchart LR
 | 關係 | 原始 directive | 來源 |
 |---|---|---|
 | import | <code>import &#x27;package:flutter/widgets.dart&#x27;;</code> | [lib/src/features/workspace/settings/klp_settings_content.dart:1](../../../../../../lib/src/features/workspace/settings/klp_settings_content.dart#L1) |
-| import | <code>import &#x27;../../../foundation/layout/klp_box.dart&#x27;;</code> | [lib/src/features/workspace/settings/klp_settings_content.dart:3](../../../../../../lib/src/features/workspace/settings/klp_settings_content.dart#L3) |
-| import | <code>import &#x27;../../../foundation/layout/klp_box_insets.dart&#x27;;</code> | [lib/src/features/workspace/settings/klp_settings_content.dart:4](../../../../../../lib/src/features/workspace/settings/klp_settings_content.dart#L4) |
-| import | <code>import &#x27;../../../foundation/layout/klp_column.dart&#x27;;</code> | [lib/src/features/workspace/settings/klp_settings_content.dart:5](../../../../../../lib/src/features/workspace/settings/klp_settings_content.dart#L5) |
-| import | <code>import &#x27;../../../foundation/surface/klp_surface.dart&#x27;;</code> | [lib/src/features/workspace/settings/klp_settings_content.dart:6](../../../../../../lib/src/features/workspace/settings/klp_settings_content.dart#L6) |
-| import | <code>import &#x27;../../../styling/legacy_theme/klp_theme.dart&#x27;;</code> | [lib/src/features/workspace/settings/klp_settings_content.dart:7](../../../../../../lib/src/features/workspace/settings/klp_settings_content.dart#L7) |
-| import | <code>import &#x27;../../../foundation/content/klp_text.dart&#x27;;</code> | [lib/src/features/workspace/settings/klp_settings_content.dart:8](../../../../../../lib/src/features/workspace/settings/klp_settings_content.dart#L8) |
+| import | <code>import &#x27;package:kallopis/src/foundation/layout/klp_box.dart&#x27;;</code> | [lib/src/features/workspace/settings/klp_settings_content.dart:3](../../../../../../lib/src/features/workspace/settings/klp_settings_content.dart#L3) |
+| import | <code>import &#x27;package:kallopis/src/foundation/layout/klp_box_insets.dart&#x27;;</code> | [lib/src/features/workspace/settings/klp_settings_content.dart:4](../../../../../../lib/src/features/workspace/settings/klp_settings_content.dart#L4) |
+| import | <code>import &#x27;package:kallopis/src/foundation/layout/klp_column.dart&#x27;;</code> | [lib/src/features/workspace/settings/klp_settings_content.dart:5](../../../../../../lib/src/features/workspace/settings/klp_settings_content.dart#L5) |
+| import | <code>import &#x27;package:kallopis/src/foundation/surface/klp_surface.dart&#x27;;</code> | [lib/src/features/workspace/settings/klp_settings_content.dart:6](../../../../../../lib/src/features/workspace/settings/klp_settings_content.dart#L6) |
+| import | <code>import &#x27;package:kallopis/src/styling/legacy_theme/klp_theme.dart&#x27;;</code> | [lib/src/features/workspace/settings/klp_settings_content.dart:7](../../../../../../lib/src/features/workspace/settings/klp_settings_content.dart#L7) |
+| import | <code>import &#x27;package:kallopis/src/foundation/content/klp_text.dart&#x27;;</code> | [lib/src/features/workspace/settings/klp_settings_content.dart:8](../../../../../../lib/src/features/workspace/settings/klp_settings_content.dart#L8) |
 | export | <code>export &#x27;klp_settings_action_bar.dart&#x27;;</code> | [lib/src/features/workspace/settings/klp_settings_content.dart:10](../../../../../../lib/src/features/workspace/settings/klp_settings_content.dart#L10) |
 
 ## 宣告關係圖

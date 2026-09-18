@@ -12,7 +12,7 @@
 flowchart TD
 	n0["klp_selection_option.dart"]
 	n1["package:flutter/foundation.dart"]
-	n2["../../../foundation/klp_icon.dart"]
+	n2["package:kallopis/src/foundation/klp_icon.dart"]
 	n3["klp_selection_tone.dart"]
 	n0 -->|"import"| n1
 	n0 -->|"import"| n2
@@ -24,7 +24,7 @@ flowchart TD
 | 關係 | 原始 directive | 來源 |
 |---|---|---|
 | import | <code>import &#x27;package:flutter/foundation.dart&#x27;;</code> | [lib/src/features/forms/selection/klp_selection_option.dart:1](../../../../../../lib/src/features/forms/selection/klp_selection_option.dart#L1) |
-| import | <code>import &#x27;../../../foundation/klp_icon.dart&#x27;;</code> | [lib/src/features/forms/selection/klp_selection_option.dart:3](../../../../../../lib/src/features/forms/selection/klp_selection_option.dart#L3) |
+| import | <code>import &#x27;package:kallopis/src/foundation/klp_icon.dart&#x27;;</code> | [lib/src/features/forms/selection/klp_selection_option.dart:3](../../../../../../lib/src/features/forms/selection/klp_selection_option.dart#L3) |
 | import | <code>import &#x27;klp_selection_tone.dart&#x27;;</code> | [lib/src/features/forms/selection/klp_selection_option.dart:4](../../../../../../lib/src/features/forms/selection/klp_selection_option.dart#L4) |
 
 ## 宣告關係圖

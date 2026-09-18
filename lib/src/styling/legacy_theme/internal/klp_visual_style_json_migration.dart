@@ -1,4 +1,4 @@
-import '../klp_visual_style.dart';
+import 'package:kallopis/src/styling/legacy_theme/klp_visual_style.dart';
 import 'klp_visual_style_json_helpers.dart';
 import 'klp_visual_style_json_validation.dart';
 
@@ -45,7 +45,6 @@ KlpJsonMap migrateLegacySpacing(KlpJsonMap json, KlpVisualStyle base) {
     }
     for (final key in <String>[
       'appFrameInset',
-      'workbenchContentInset',
       'windowHeaderMargin',
       'dockMargin',
     ]) {

@@ -1368,18 +1368,6 @@ const Map<String, CatalogStyleSemantics> catalogStyleSemantics = {
     motion: [],
     components: [],
   ),
-  'KlpExplorer': CatalogStyleSemantics(
-    source:
-        'D:/Projects/Kallopis/lib/src/features/navigation/widgets/explorer/klp_explorer.dart',
-    colors: [],
-    surfaces: ['KlpSurfaceTone.inset'],
-    borders: [],
-    spacing: [],
-    typography: [],
-    geometry: [],
-    motion: [],
-    components: ['KlpNavigator'],
-  ),
   'KlpField': CatalogStyleSemantics(
     source: 'D:/Projects/Kallopis/lib/src/features/forms/core/klp_field.dart',
     colors: [],

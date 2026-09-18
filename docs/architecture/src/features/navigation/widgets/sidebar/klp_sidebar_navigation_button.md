@@ -13,10 +13,10 @@ flowchart LR
 	n0["klp_sidebar_navigation_button.dart"]
 	n1["dart:math"]
 	n2["package:flutter/widgets.dart"]
-	n3["../../../../foundation/klp_icon.dart"]
-	n4["../../../../foundation/interaction/klp_pressable.dart"]
-	n5["../../../../styling/legacy_theme/klp_theme.dart"]
-	n6["../../../../foundation/content/klp_text.dart"]
+	n3["package:kallopis/src/foundation/klp_icon.dart"]
+	n4["package:kallopis/src/foundation/interaction/klp_pressable.dart"]
+	n5["package:kallopis/src/styling/legacy_theme/klp_theme.dart"]
+	n6["package:kallopis/src/foundation/content/klp_text.dart"]
 	n7["klp_navigation_icon_box_key.dart"]
 	n8["klp_navigation_icon_box_key.dart"]
 	n9["internal/klp_sidebar_navigation_button_state.dart"]
@@ -39,10 +39,10 @@ flowchart LR
 |---|---|---|
 | import | <code>import &#x27;dart:math&#x27; as math;</code> | [lib/src/features/navigation/widgets/sidebar/klp_sidebar_navigation_button.dart:1](../../../../../../../lib/src/features/navigation/widgets/sidebar/klp_sidebar_navigation_button.dart#L1) |
 | import | <code>import &#x27;package:flutter/widgets.dart&#x27;;</code> | [lib/src/features/navigation/widgets/sidebar/klp_sidebar_navigation_button.dart:3](../../../../../../../lib/src/features/navigation/widgets/sidebar/klp_sidebar_navigation_button.dart#L3) |
-| import | <code>import &#x27;../../../../foundation/klp_icon.dart&#x27;;</code> | [lib/src/features/navigation/widgets/sidebar/klp_sidebar_navigation_button.dart:5](../../../../../../../lib/src/features/navigation/widgets/sidebar/klp_sidebar_navigation_button.dart#L5) |
-| import | <code>import &#x27;../../../../foundation/interaction/klp_pressable.dart&#x27;;</code> | [lib/src/features/navigation/widgets/sidebar/klp_sidebar_navigation_button.dart:6](../../../../../../../lib/src/features/navigation/widgets/sidebar/klp_sidebar_navigation_button.dart#L6) |
-| import | <code>import &#x27;../../../../styling/legacy_theme/klp_theme.dart&#x27;;</code> | [lib/src/features/navigation/widgets/sidebar/klp_sidebar_navigation_button.dart:7](../../../../../../../lib/src/features/navigation/widgets/sidebar/klp_sidebar_navigation_button.dart#L7) |
-| import | <code>import &#x27;../../../../foundation/content/klp_text.dart&#x27;;</code> | [lib/src/features/navigation/widgets/sidebar/klp_sidebar_navigation_button.dart:8](../../../../../../../lib/src/features/navigation/widgets/sidebar/klp_sidebar_navigation_button.dart#L8) |
+| import | <code>import &#x27;package:kallopis/src/foundation/klp_icon.dart&#x27;;</code> | [lib/src/features/navigation/widgets/sidebar/klp_sidebar_navigation_button.dart:5](../../../../../../../lib/src/features/navigation/widgets/sidebar/klp_sidebar_navigation_button.dart#L5) |
+| import | <code>import &#x27;package:kallopis/src/foundation/interaction/klp_pressable.dart&#x27;;</code> | [lib/src/features/navigation/widgets/sidebar/klp_sidebar_navigation_button.dart:6](../../../../../../../lib/src/features/navigation/widgets/sidebar/klp_sidebar_navigation_button.dart#L6) |
+| import | <code>import &#x27;package:kallopis/src/styling/legacy_theme/klp_theme.dart&#x27;;</code> | [lib/src/features/navigation/widgets/sidebar/klp_sidebar_navigation_button.dart:7](../../../../../../../lib/src/features/navigation/widgets/sidebar/klp_sidebar_navigation_button.dart#L7) |
+| import | <code>import &#x27;package:kallopis/src/foundation/content/klp_text.dart&#x27;;</code> | [lib/src/features/navigation/widgets/sidebar/klp_sidebar_navigation_button.dart:8](../../../../../../../lib/src/features/navigation/widgets/sidebar/klp_sidebar_navigation_button.dart#L8) |
 | import | <code>import &#x27;klp_navigation_icon_box_key.dart&#x27;;</code> | [lib/src/features/navigation/widgets/sidebar/klp_sidebar_navigation_button.dart:9](../../../../../../../lib/src/features/navigation/widgets/sidebar/klp_sidebar_navigation_button.dart#L9) |
 | export | <code>export &#x27;klp_navigation_icon_box_key.dart&#x27;;</code> | [lib/src/features/navigation/widgets/sidebar/klp_sidebar_navigation_button.dart:11](../../../../../../../lib/src/features/navigation/widgets/sidebar/klp_sidebar_navigation_button.dart#L11) |
 | part | <code>part &#x27;internal/klp_sidebar_navigation_button_state.dart&#x27;;</code> | [lib/src/features/navigation/widgets/sidebar/klp_sidebar_navigation_button.dart:13](../../../../../../../lib/src/features/navigation/widgets/sidebar/klp_sidebar_navigation_button.dart#L13) |

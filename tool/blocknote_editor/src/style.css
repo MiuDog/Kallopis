@@ -1,0 +1,40 @@
+:root {
+	font-family: 'Noto Sans TC', sans-serif;
+	background: white;
+	color: #101828;
+}
+
+@font-face {
+	font-family: 'Noto Sans TC';
+	src: url('./assets/NotoSansTC-Variable.ttf') format('truetype');
+	font-weight: 100 900;
+}
+
+body { margin: 0; min-width: 320px; min-height: 100vh; }
+#root, main { min-height: 100vh; background: var(--kallopis-editor-background, white); }
+.bn-container { min-height: 100vh; padding: 24px; }
+.bn-editor { font-size: var(--kallopis-editor-font-size, 16px); }
+* { box-sizing: border-box; }
+
+::highlight(kallopis-search-hit) {
+	background: #f6d365;
+	color: inherit;
+}
+
+.kallopis-reference-projection {
+	display: grid;
+	width: 100%;
+	margin: 8px 0;
+	padding: 12px 14px;
+	border: 1px solid #d8d4ca;
+	border-radius: 10px;
+	background: #f7f5ef;
+	color: inherit;
+	font: inherit;
+	text-align: start;
+	white-space: pre-wrap;
+}
+
+.kallopis-reference-projection:disabled {
+	opacity: 0.65;
+}

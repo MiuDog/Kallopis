@@ -1,0 +1,353 @@
+{
+	"contract": "RC-V1-r1",
+	"date": "2026-09-14",
+	"status": "complete",
+	"slices": {
+		"RUN-V1-02": "complete",
+		"FEAT-V1-03": "complete",
+		"APP-V1-06": "in progress; runtime portion complete",
+		"COMP-V1-03": "planned; import-only companion complete"
+	},
+	"baseline": {
+		"started_at": "2026-09-14T14:06:55.798258+08:00",
+		"source_head": "578d24ed111b95c429397b54245de09ade674704",
+		"source_index_sha256": "3a87893357e96f77729183afb4ba34c2c11fdd70be69dcfae9fea1d577eadecd",
+		"snapshot_commit": "119de2d8d17512ee5fdb9c22db5b1cd870203753"
+	},
+	"plan_base": "2849ba0cccbed892ee9d8468487ea1e5720bcefa",
+	"workers": [
+		{
+			"task_id": "RUN-V1-02",
+			"base_revision": "2849ba0cccbed892ee9d8468487ea1e5720bcefa",
+			"architecture_revision_at_dispatch": "sha256:2fa7963638dae7772904140051753361ddff4a3ddb8987b3a02f623ce39a45a3",
+			"packet": "D:\\Projects\\Kallopis-rc-evidence\\RUN-V1-02.json",
+			"packet_sha256": "6e7aa5ddf9cb35726be6aaa72ee3f1cf29997b67dfe875af0c373913809a16ce",
+			"scope": {
+				"task_id": "RUN-V1-02",
+				"base_revision": "2849ba0cccbed892ee9d8468487ea1e5720bcefa",
+				"changed_paths": [
+					"lib/src/runtime/compilation/internal/klp_node_adapter.dart",
+					"lib/src/runtime/compilation/internal/klp_prepare_context.dart",
+					"lib/src/runtime/compilation/internal/klp_prepared_activation_policy.dart",
+					"lib/src/runtime/compilation/internal/klp_prepared_node.dart",
+					"lib/src/runtime/compilation/internal/klp_prepared_resource_policy.dart",
+					"lib/src/runtime/compilation/internal/klp_runtime_frame.dart",
+					"lib/src/runtime/compilation/internal/klp_scope_boundary_adapter.dart",
+					"lib/src/runtime/compilation/internal/klp_tree_runtime.dart",
+					"lib/src/runtime/compilation/klp_scope_boundary_adapter.dart",
+					"lib/src/runtime/compilation/klp_tree_runtime.dart",
+					"lib/src/runtime/contracts/klp_installation_exception.dart",
+					"lib/src/runtime/contracts/klp_node_adapter.dart",
+					"lib/src/runtime/contracts/klp_placement_resource.dart",
+					"lib/src/runtime/contracts/klp_prepare_context.dart",
+					"lib/src/runtime/contracts/klp_prepared_activation_policy.dart",
+					"lib/src/runtime/contracts/klp_prepared_node.dart",
+					"lib/src/runtime/contracts/klp_prepared_resource_policy.dart",
+					"lib/src/runtime/contracts/klp_runtime_frame.dart",
+					"lib/src/runtime/installation/internal/klp_default_placement.dart",
+					"lib/src/runtime/installation/internal/klp_installation.dart",
+					"lib/src/runtime/installation/internal/klp_installation_exception.dart",
+					"lib/src/runtime/installation/internal/klp_placement_resource.dart",
+					"lib/src/runtime/installation/klp_default_placement.dart"
+				],
+				"violations": [],
+				"status": "pass"
+			}
+		},
+		{
+			"task_id": "FEAT-V1-03",
+			"base_revision": "2849ba0cccbed892ee9d8468487ea1e5720bcefa",
+			"architecture_revision_at_dispatch": "sha256:3c576fcddd4093420f6f55f03cbd5c40f715174dae2454c6ff403e3754e0b87a",
+			"packet": "D:\\Projects\\Kallopis-rc-evidence\\FEAT-V1-03.json",
+			"packet_sha256": "6df22a5db74e2b4172b0990e17eb4c9730c3549b11bf6c5f78d541d56636380b",
+			"scope": {
+				"task_id": "FEAT-V1-03",
+				"base_revision": "2849ba0cccbed892ee9d8468487ea1e5720bcefa",
+				"changed_paths": [
+					"lib/src/features/editing/internal/klp_anchored_commands_adapter.dart",
+					"lib/src/features/editing/internal/klp_block_controls_adapter.dart",
+					"lib/src/features/editing/internal/klp_block_note_editing_adapter.dart",
+					"lib/src/features/editing/internal/klp_canva_editing_adapter.dart",
+					"lib/src/features/editing/internal/klp_editing_adapter.dart",
+					"lib/src/features/editing/internal/klp_editing_placement.dart",
+					"lib/src/features/editing/internal/klp_mode_toolbar_adapter.dart",
+					"lib/src/features/editing/internal/klp_prepared_editing.dart",
+					"lib/src/features/navigation/rail/internal/klp_prepared_rail.dart",
+					"lib/src/features/navigation/rail/internal/klp_rail_adapter.dart",
+					"lib/src/features/navigation/rail/internal/klp_rail_placement.dart",
+					"lib/src/features/workspace/components/internal/klp_workspace_block_adapter.dart",
+					"lib/src/features/workspace/components/internal/klp_workspace_components_adapter.dart",
+					"lib/src/features/workspace/layout/internal/klp_app_layout_adapter.dart",
+					"lib/src/features/workspace/layout/internal/klp_frame_groups_adapter.dart"
+				],
+				"violations": [],
+				"status": "pass"
+			}
+		},
+		{
+			"task_id": "APP-V1-06-RUNTIME",
+			"base_revision": "2849ba0cccbed892ee9d8468487ea1e5720bcefa",
+			"architecture_revision_at_dispatch": "sha256:9e51ec5068147534758927f4a153a71f359d31b7d2a5b9d3375b94c11cdf8b0b",
+			"packet": "D:\\Projects\\Kallopis-rc-evidence\\APP-V1-06-RUNTIME.json",
+			"packet_sha256": "48004ef10cf295bd1853451579ef5a874f7727b9cf4c5f191dabba681ce4e9b9",
+			"scope": {
+				"task_id": "APP-V1-06-RUNTIME",
+				"base_revision": "2849ba0cccbed892ee9d8468487ea1e5720bcefa",
+				"changed_paths": [
+					"lib/src/application/bootstrap/internal/klp_application_adapters.dart",
+					"lib/src/application/bootstrap/internal/klp_application_catalog.json",
+					"lib/src/application/bootstrap/internal/klp_prepared_screen.dart",
+					"lib/src/application/bootstrap/internal/klp_retained_screens_adapter.dart",
+					"lib/src/application/bootstrap/internal/klp_screen_adapter.dart",
+					"lib/src/application/structure/klp_application.dart"
+				],
+				"violations": [],
+				"status": "pass"
+			}
+		},
+		{
+			"task_id": "COMP-RC-V1-01",
+			"base_revision": "1efe2e2bfb9974a573684d14f0578de526f1ae17",
+			"architecture_revision_at_dispatch": "sha256:866b588d43c42e41163076f13bfa5ee33239e7fd9beb6186ed18dd2b21e054a0",
+			"packet": "D:\\Projects\\Kallopis-rc-evidence\\COMP-RC-V1-01.json",
+			"packet_sha256": "9218da56ef22d1bf56853cbc5003132aaa209d25894613074329a2d2908caa99",
+			"scope": {
+				"task_id": "COMP-RC-V1-01",
+				"base_revision": "1efe2e2bfb9974a573684d14f0578de526f1ae17",
+				"changed_paths": [
+					"lib/src/composition/nodes/internal/klp_adaptive_adapter.dart",
+					"lib/src/composition/nodes/internal/klp_prepared_adaptive.dart"
+				],
+				"violations": [],
+				"status": "pass"
+			}
+		}
+	],
+	"test_author": {
+		"report": "D:\\Projects\\Kallopis-rc-evidence\\test-author-final.json",
+		"report_sha256": "d6b0c8f926ce8a3ca9d55553ced296c8d85ec14b0366800618286fde55667f98",
+		"red": {
+			"command": "& D:/flutter/bin/flutter.bat test --no-pub test/klp_runtime_contract_paths_test.dart --reporter expanded",
+			"exit_code": 1,
+			"passed": 3,
+			"failed": 1,
+			"failure": "Expected empty cross-module runtime internal dependencies; real baseline application/composition/features imports reported by assertion.",
+			"evidence": "D:/Projects/Kallopis-rc-evidence/test-author-red.json",
+			"compilation_failure": false
+		},
+		"preservation": {
+			"changed_files": 21,
+			"examined_existing_files": 21,
+			"uri_replacements": 33.0,
+			"preserved_test_declaration_sites": 101.0,
+			"preserved_expect_call_sites": 390.0,
+			"all_existing_text_matches_allowed_uri_substitutions": true
+		},
+		"changed_paths": [
+			"test/klp_anchored_commands_installation_test.dart",
+			"test/klp_app_frame_style_test.dart",
+			"test/klp_application_catalog_contract_test.dart",
+			"test/klp_block_controls_installation_test.dart",
+			"test/klp_component_binding_test.dart",
+			"test/klp_component_children_binding_test.dart",
+			"test/klp_editing_installation_test.dart",
+			"test/klp_frame_groups_test.dart",
+			"test/klp_installation_test.dart",
+			"test/klp_mode_toolbar_installation_test.dart",
+			"test/klp_rail_adapter_test.dart",
+			"test/klp_scope_activation_test.dart",
+			"test/klp_scoped_runtime_test.dart",
+			"test/klp_sidebar_interactions_test.dart",
+			"test/klp_tree_runtime_test.dart",
+			"test/klp_workspace_components_declarative_test.dart",
+			"test/support/klp_component_test_definition.dart",
+			"test/support/klp_installation_resource.dart",
+			"test/support/klp_runtime_fixture.dart",
+			"test/verify_declarative_consumer_test.dart",
+			"test/klp_runtime_contract_paths_test.dart"
+		],
+		"protected_files": [
+			{
+				"path": "test/klp_anchored_commands_installation_test.dart",
+				"sha256": "7e7b6ca633ff047944dd49de034fc769df36f3ab169d78b7b4d9fad9724f1bc6",
+				"changed": true
+			},
+			{
+				"path": "test/klp_block_controls_installation_test.dart",
+				"sha256": "80b5451e96f4c91b906d2930ab34bddd3f1f686a90433e4ab4d8bb8f463af808",
+				"changed": true
+			},
+			{
+				"path": "test/klp_app_frame_style_test.dart",
+				"sha256": "0e79233bb46c93040c75cd545a77faa4523827d6bffe22b3d05ce8f688fcbf13",
+				"changed": true
+			},
+			{
+				"path": "test/klp_application_catalog_contract_test.dart",
+				"sha256": "f62f3110b3db935c4bea7e8a4275e15cdd39fd29583494f9591f207cd306dda6",
+				"changed": true
+			},
+			{
+				"path": "test/klp_component_children_binding_test.dart",
+				"sha256": "379ddaa10f47437178d44dbf61bd9300e370074efe1e6e437bef0643a4af69bf",
+				"changed": true
+			},
+			{
+				"path": "test/klp_component_binding_test.dart",
+				"sha256": "90aafea5f7e4f5a2b9a58de6d47b7e0ae268d81b176ebe1abf0fe736ef8826cd",
+				"changed": true
+			},
+			{
+				"path": "test/klp_editing_installation_test.dart",
+				"sha256": "1d19c36428839780e47552392e6c4ff7749c7ffc2591010cafed386d653e7ec6",
+				"changed": true
+			},
+			{
+				"path": "test/klp_frame_groups_test.dart",
+				"sha256": "095212ac6bce6ffaacfe220dddebcbc5fab33c16d81b19f878bf2c79794f69ad",
+				"changed": true
+			},
+			{
+				"path": "test/klp_installation_test.dart",
+				"sha256": "f5eccf9ce3bdca7f185dce62e691fc94ae6e5b7cb57c04abdfff4c9f19830a98",
+				"changed": true
+			},
+			{
+				"path": "test/klp_mode_toolbar_installation_test.dart",
+				"sha256": "d3e1733b85b98f72109caf72b36274cf241a1851f5c98730a1106bf46032de4f",
+				"changed": true
+			},
+			{
+				"path": "test/klp_rail_adapter_test.dart",
+				"sha256": "fce938b487015dca7db1b44a28942b2a5ed1afe762bbe9dac845ea252fcc7a1a",
+				"changed": true
+			},
+			{
+				"path": "test/klp_scoped_runtime_test.dart",
+				"sha256": "204c4e5db74c17a358051bed217f517e4f48831d730b7469112bedd42b058f38",
+				"changed": true
+			},
+			{
+				"path": "test/klp_scope_activation_test.dart",
+				"sha256": "b2deecc5af705b114ac482e39b42904c62f1c20dd27d33c44374d09cf4648c92",
+				"changed": true
+			},
+			{
+				"path": "test/klp_sidebar_interactions_test.dart",
+				"sha256": "98021a3e1e01358ef69acc79994c7a2e4db9b3b4633190454ffff468354ff51f",
+				"changed": true
+			},
+			{
+				"path": "test/klp_tree_runtime_test.dart",
+				"sha256": "c8476dc4df5c3b873b14c865d93b367defb1003d70bc2385fa9dc15f656d1885",
+				"changed": true
+			},
+			{
+				"path": "test/klp_workspace_components_declarative_test.dart",
+				"sha256": "980721be76e9d53c235375ab8828110d786209075e1614e3537636998430e1d8",
+				"changed": true
+			},
+			{
+				"path": "test/support/klp_component_test_definition.dart",
+				"sha256": "d71d4d25ebf16b96c07925806e0865527fcc5d52a8621ed522495405d5fed4ec",
+				"changed": true
+			},
+			{
+				"path": "test/verify_declarative_consumer_test.dart",
+				"sha256": "c5e6b63d39e67ac14faf1da828018a97128db75f708beb2e9788b78003daed32",
+				"changed": true
+			},
+			{
+				"path": "test/support/klp_installation_fixture.dart",
+				"sha256": "792c66a0b28c439771573b9c3a173e523401519f065ecdcffd37ee14cb411ebd",
+				"changed": false
+			},
+			{
+				"path": "test/support/klp_installation_resource.dart",
+				"sha256": "3210191c67528e7b50d2ae555888ce421b603c2854d86be007b84e93bdb0e868",
+				"changed": true
+			},
+			{
+				"path": "test/support/klp_runtime_fixture.dart",
+				"sha256": "245f81a44aa64a83b9fe9b9c07c4b1d96a4df3ff7fd9e56c4d5af739a72e8d71",
+				"changed": true
+			},
+			{
+				"path": "test/klp_runtime_contract_paths_test.dart",
+				"sha256": "07d845240efd6e913cff066dbc12fc9692c9a7bccfe9a7cfb77e84961382cdb2",
+				"changed": true
+			}
+		],
+		"unchanged_assigned_path": "test/support/klp_installation_fixture.dart only imports KlpInstallation, whose internal location is retained by contract.",
+		"integration_hashes": "21 changed files match exact author bytes; unchanged installation fixture preserves original source bytes (checkout line endings can differ)."
+	},
+	"checks": [
+		{
+			"name": "affected_tests",
+			"files": [
+				"test/klp_anchored_commands_installation_test.dart",
+				"test/klp_block_controls_installation_test.dart",
+				"test/klp_app_frame_style_test.dart",
+				"test/klp_application_catalog_contract_test.dart",
+				"test/klp_component_children_binding_test.dart",
+				"test/klp_component_binding_test.dart",
+				"test/klp_editing_installation_test.dart",
+				"test/klp_frame_groups_test.dart",
+				"test/klp_installation_test.dart",
+				"test/klp_mode_toolbar_installation_test.dart",
+				"test/klp_rail_adapter_test.dart",
+				"test/klp_scoped_runtime_test.dart",
+				"test/klp_scope_activation_test.dart",
+				"test/klp_sidebar_interactions_test.dart",
+				"test/klp_tree_runtime_test.dart",
+				"test/klp_workspace_components_declarative_test.dart",
+				"test/verify_declarative_consumer_test.dart",
+				"test/klp_runtime_contract_paths_test.dart",
+				"test/klp_closed_component_catalog_contract_test.dart"
+			],
+			"passed": 139,
+			"exit_code": 0,
+			"log": "integration-tests.log",
+			"log_sha256": "a8e2572e65f61bdf718f5596dfccfcaf8c5c68a17ea15fd2ca659c57674829e5"
+		},
+		{
+			"name": "application_and_import_root",
+			"files": [
+				"test/klp_application_router_session_test.dart",
+				"test/klp_application_review_test.dart",
+				"test/lib_import_root_contract_test.dart"
+			],
+			"passed": 14,
+			"exit_code": 0,
+			"log": "application-import-root.log",
+			"log_sha256": "8439ef61c7b4dfdbf72fc05358b530d32deeab10afadac63c41947412e735cb6"
+		},
+		{
+			"name": "runtime_analysis",
+			"scope": "lib/src/runtime",
+			"exit_code": 0,
+			"log": "runtime-analysis.log",
+			"log_sha256": "9cec80ee81bdbf9d9e801cabdd4b65ba086fdc2ba59a4aa9e04df725093f369f"
+		},
+		{
+			"name": "frontend_and_module_architecture",
+			"files": [
+				"test/frontend_architecture_boundary_test.dart",
+				"test/module_architecture_contract_test.dart"
+			],
+			"passed": 158,
+			"exit_code": 0,
+			"log": "architecture-tests.log",
+			"log_sha256": "5df3fd3df19a45a9cfd2a5ccdcbc3785b8831dcb9cb6e5ee3c397da584c38479"
+		}
+	],
+	"preservation_evidence": {
+		"caller_bodies": "D:\\Projects\\Kallopis-rc-evidence\\caller-equivalence.json",
+		"runtime_bodies": "D:\\Projects\\Kallopis-rc-evidence\\runtime-content-equivalence.json",
+		"public_barrels": "unchanged",
+		"catalog_identities": 28
+	},
+	"known_preexisting_failure": "workspace adapter four relative imports fixed; import-root now PASS",
+	"documentation": "Current module contracts, consumer guide and next-slice index updated; generated atlas retains its original snapshot/manifest and is not regenerated.",
+	"source_return": "Exact path transfer guarded by original hashes, HEAD/index; external transfer-receipt.json records final result."
+}

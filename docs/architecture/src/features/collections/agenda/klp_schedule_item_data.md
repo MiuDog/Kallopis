@@ -12,7 +12,7 @@
 flowchart TD
 	n0["klp_schedule_item_data.dart"]
 	n1["package:flutter/foundation.dart"]
-	n2["../../feedback/klp_feedback_tone.dart"]
+	n2["package:kallopis/src/features/feedback/klp_feedback_tone.dart"]
 	n0 -->|"import"| n1
 	n0 -->|"import"| n2
 ```
@@ -22,7 +22,7 @@ flowchart TD
 | 關係 | 原始 directive | 來源 |
 |---|---|---|
 | import | <code>import &#x27;package:flutter/foundation.dart&#x27;;</code> | [lib/src/features/collections/agenda/klp_schedule_item_data.dart:4](../../../../../../lib/src/features/collections/agenda/klp_schedule_item_data.dart#L4) |
-| import | <code>import &#x27;../../feedback/klp_feedback_tone.dart&#x27;;</code> | [lib/src/features/collections/agenda/klp_schedule_item_data.dart:5](../../../../../../lib/src/features/collections/agenda/klp_schedule_item_data.dart#L5) |
+| import | <code>import &#x27;package:kallopis/src/features/feedback/klp_feedback_tone.dart&#x27;;</code> | [lib/src/features/collections/agenda/klp_schedule_item_data.dart:5](../../../../../../lib/src/features/collections/agenda/klp_schedule_item_data.dart#L5) |
 
 ## 宣告關係圖
 

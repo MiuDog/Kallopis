@@ -1,5 +1,5 @@
-import '../../kernel/diagnostics/klp_contract_error.dart';
-import '../primitives/klp_style_value.dart';
+import 'package:kallopis/src/kernel/diagnostics/klp_contract_error.dart';
+import 'package:kallopis/src/styling/primitives/klp_style_value.dart';
 import 'internal/klp_semantic_identifier.dart';
 import 'klp_semantic_token.dart';
 

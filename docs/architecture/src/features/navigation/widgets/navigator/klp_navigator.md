@@ -12,15 +12,15 @@
 flowchart LR
 	n0["klp_navigator.dart"]
 	n1["package:flutter/material.dart"]
-	n2["../../../../foundation/klp_icon.dart"]
-	n3["../../../../foundation/klp_icons.dart"]
-	n4["../../../../foundation/interaction/klp_gesture_region.dart"]
-	n5["../../../../foundation/interaction/klp_pressable.dart"]
-	n6["../../../../foundation/interaction/klp_state_highlight.dart"]
-	n7["../../../../foundation/layout/klp_layout.dart"]
-	n8["../../../../foundation/surface/klp_surface.dart"]
-	n9["../../../../styling/legacy_theme/klp_theme.dart"]
-	n10["../../../../foundation/content/klp_text.dart"]
+	n2["package:kallopis/src/foundation/klp_icon.dart"]
+	n3["package:kallopis/src/foundation/klp_icons.dart"]
+	n4["package:kallopis/src/foundation/interaction/klp_gesture_region.dart"]
+	n5["package:kallopis/src/foundation/interaction/klp_pressable.dart"]
+	n6["package:kallopis/src/foundation/interaction/klp_state_highlight.dart"]
+	n7["package:kallopis/src/foundation/layout/klp_layout.dart"]
+	n8["package:kallopis/src/foundation/surface/klp_surface.dart"]
+	n9["package:kallopis/src/styling/legacy_theme/klp_theme.dart"]
+	n10["package:kallopis/src/foundation/content/klp_text.dart"]
 	n11["klp_navigator_models.dart"]
 	n0 -->|"import"| n1
 	n0 -->|"import"| n2
@@ -67,15 +67,15 @@ flowchart LR
 | 關係 | 原始 directive | 來源 |
 |---|---|---|
 | import | <code>import &#x27;package:flutter/material.dart&#x27;;</code> | [lib/src/features/navigation/widgets/navigator/klp_navigator.dart:1](../../../../../../../lib/src/features/navigation/widgets/navigator/klp_navigator.dart#L1) |
-| import | <code>import &#x27;../../../../foundation/klp_icon.dart&#x27;;</code> | [lib/src/features/navigation/widgets/navigator/klp_navigator.dart:3](../../../../../../../lib/src/features/navigation/widgets/navigator/klp_navigator.dart#L3) |
-| import | <code>import &#x27;../../../../foundation/klp_icons.dart&#x27;;</code> | [lib/src/features/navigation/widgets/navigator/klp_navigator.dart:4](../../../../../../../lib/src/features/navigation/widgets/navigator/klp_navigator.dart#L4) |
-| import | <code>import &#x27;../../../../foundation/interaction/klp_gesture_region.dart&#x27;;</code> | [lib/src/features/navigation/widgets/navigator/klp_navigator.dart:5](../../../../../../../lib/src/features/navigation/widgets/navigator/klp_navigator.dart#L5) |
-| import | <code>import &#x27;../../../../foundation/interaction/klp_pressable.dart&#x27;;</code> | [lib/src/features/navigation/widgets/navigator/klp_navigator.dart:6](../../../../../../../lib/src/features/navigation/widgets/navigator/klp_navigator.dart#L6) |
-| import | <code>import &#x27;../../../../foundation/interaction/klp_state_highlight.dart&#x27;;</code> | [lib/src/features/navigation/widgets/navigator/klp_navigator.dart:7](../../../../../../../lib/src/features/navigation/widgets/navigator/klp_navigator.dart#L7) |
-| import | <code>import &#x27;../../../../foundation/layout/klp_layout.dart&#x27;;</code> | [lib/src/features/navigation/widgets/navigator/klp_navigator.dart:8](../../../../../../../lib/src/features/navigation/widgets/navigator/klp_navigator.dart#L8) |
-| import | <code>import &#x27;../../../../foundation/surface/klp_surface.dart&#x27;;</code> | [lib/src/features/navigation/widgets/navigator/klp_navigator.dart:9](../../../../../../../lib/src/features/navigation/widgets/navigator/klp_navigator.dart#L9) |
-| import | <code>import &#x27;../../../../styling/legacy_theme/klp_theme.dart&#x27;;</code> | [lib/src/features/navigation/widgets/navigator/klp_navigator.dart:10](../../../../../../../lib/src/features/navigation/widgets/navigator/klp_navigator.dart#L10) |
-| import | <code>import &#x27;../../../../foundation/content/klp_text.dart&#x27;;</code> | [lib/src/features/navigation/widgets/navigator/klp_navigator.dart:11](../../../../../../../lib/src/features/navigation/widgets/navigator/klp_navigator.dart#L11) |
+| import | <code>import &#x27;package:kallopis/src/foundation/klp_icon.dart&#x27;;</code> | [lib/src/features/navigation/widgets/navigator/klp_navigator.dart:3](../../../../../../../lib/src/features/navigation/widgets/navigator/klp_navigator.dart#L3) |
+| import | <code>import &#x27;package:kallopis/src/foundation/klp_icons.dart&#x27;;</code> | [lib/src/features/navigation/widgets/navigator/klp_navigator.dart:4](../../../../../../../lib/src/features/navigation/widgets/navigator/klp_navigator.dart#L4) |
+| import | <code>import &#x27;package:kallopis/src/foundation/interaction/klp_gesture_region.dart&#x27;;</code> | [lib/src/features/navigation/widgets/navigator/klp_navigator.dart:5](../../../../../../../lib/src/features/navigation/widgets/navigator/klp_navigator.dart#L5) |
+| import | <code>import &#x27;package:kallopis/src/foundation/interaction/klp_pressable.dart&#x27;;</code> | [lib/src/features/navigation/widgets/navigator/klp_navigator.dart:6](../../../../../../../lib/src/features/navigation/widgets/navigator/klp_navigator.dart#L6) |
+| import | <code>import &#x27;package:kallopis/src/foundation/interaction/klp_state_highlight.dart&#x27;;</code> | [lib/src/features/navigation/widgets/navigator/klp_navigator.dart:7](../../../../../../../lib/src/features/navigation/widgets/navigator/klp_navigator.dart#L7) |
+| import | <code>import &#x27;package:kallopis/src/foundation/layout/klp_layout.dart&#x27;;</code> | [lib/src/features/navigation/widgets/navigator/klp_navigator.dart:8](../../../../../../../lib/src/features/navigation/widgets/navigator/klp_navigator.dart#L8) |
+| import | <code>import &#x27;package:kallopis/src/foundation/surface/klp_surface.dart&#x27;;</code> | [lib/src/features/navigation/widgets/navigator/klp_navigator.dart:9](../../../../../../../lib/src/features/navigation/widgets/navigator/klp_navigator.dart#L9) |
+| import | <code>import &#x27;package:kallopis/src/styling/legacy_theme/klp_theme.dart&#x27;;</code> | [lib/src/features/navigation/widgets/navigator/klp_navigator.dart:10](../../../../../../../lib/src/features/navigation/widgets/navigator/klp_navigator.dart#L10) |
+| import | <code>import &#x27;package:kallopis/src/foundation/content/klp_text.dart&#x27;;</code> | [lib/src/features/navigation/widgets/navigator/klp_navigator.dart:11](../../../../../../../lib/src/features/navigation/widgets/navigator/klp_navigator.dart#L11) |
 | import | <code>import &#x27;klp_navigator_models.dart&#x27;;</code> | [lib/src/features/navigation/widgets/navigator/klp_navigator.dart:12](../../../../../../../lib/src/features/navigation/widgets/navigator/klp_navigator.dart#L12) |
 | part | <code>part &#x27;internal/klp_navigator_category_view.dart&#x27;;</code> | [lib/src/features/navigation/widgets/navigator/klp_navigator.dart:14](../../../../../../../lib/src/features/navigation/widgets/navigator/klp_navigator.dart#L14) |
 | part | <code>part &#x27;internal/klp_navigator_element_row.dart&#x27;;</code> | [lib/src/features/navigation/widgets/navigator/klp_navigator.dart:15](../../../../../../../lib/src/features/navigation/widgets/navigator/klp_navigator.dart#L15) |

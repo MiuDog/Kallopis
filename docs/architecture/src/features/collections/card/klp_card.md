@@ -12,10 +12,10 @@
 flowchart LR
 	n0["klp_card.dart"]
 	n1["package:flutter/material.dart"]
-	n2["../../feedback/klp_feedback_tone.dart"]
-	n3["../../../foundation/layout/klp_layout.dart"]
-	n4["../../../styling/legacy_theme/klp_theme.dart"]
-	n5["../../../foundation/content/klp_text.dart"]
+	n2["package:kallopis/src/features/feedback/klp_feedback_tone.dart"]
+	n3["package:kallopis/src/foundation/layout/klp_layout.dart"]
+	n4["package:kallopis/src/styling/legacy_theme/klp_theme.dart"]
+	n5["package:kallopis/src/foundation/content/klp_text.dart"]
 	n6["internal/klp_card_widget.dart"]
 	n7["internal/klp_metric_card_widget.dart"]
 	n8["models/klp_card_tone.dart"]
@@ -40,10 +40,10 @@ flowchart LR
 | 關係 | 原始 directive | 來源 |
 |---|---|---|
 | import | <code>import &#x27;package:flutter/material.dart&#x27;;</code> | [lib/src/features/collections/card/klp_card.dart:1](../../../../../../lib/src/features/collections/card/klp_card.dart#L1) |
-| import | <code>import &#x27;../../feedback/klp_feedback_tone.dart&#x27;;</code> | [lib/src/features/collections/card/klp_card.dart:3](../../../../../../lib/src/features/collections/card/klp_card.dart#L3) |
-| import | <code>import &#x27;../../../foundation/layout/klp_layout.dart&#x27;;</code> | [lib/src/features/collections/card/klp_card.dart:4](../../../../../../lib/src/features/collections/card/klp_card.dart#L4) |
-| import | <code>import &#x27;../../../styling/legacy_theme/klp_theme.dart&#x27;;</code> | [lib/src/features/collections/card/klp_card.dart:5](../../../../../../lib/src/features/collections/card/klp_card.dart#L5) |
-| import | <code>import &#x27;../../../foundation/content/klp_text.dart&#x27;;</code> | [lib/src/features/collections/card/klp_card.dart:6](../../../../../../lib/src/features/collections/card/klp_card.dart#L6) |
+| import | <code>import &#x27;package:kallopis/src/features/feedback/klp_feedback_tone.dart&#x27;;</code> | [lib/src/features/collections/card/klp_card.dart:3](../../../../../../lib/src/features/collections/card/klp_card.dart#L3) |
+| import | <code>import &#x27;package:kallopis/src/foundation/layout/klp_layout.dart&#x27;;</code> | [lib/src/features/collections/card/klp_card.dart:4](../../../../../../lib/src/features/collections/card/klp_card.dart#L4) |
+| import | <code>import &#x27;package:kallopis/src/styling/legacy_theme/klp_theme.dart&#x27;;</code> | [lib/src/features/collections/card/klp_card.dart:5](../../../../../../lib/src/features/collections/card/klp_card.dart#L5) |
+| import | <code>import &#x27;package:kallopis/src/foundation/content/klp_text.dart&#x27;;</code> | [lib/src/features/collections/card/klp_card.dart:6](../../../../../../lib/src/features/collections/card/klp_card.dart#L6) |
 | part | <code>part &#x27;internal/klp_card_widget.dart&#x27;;</code> | [lib/src/features/collections/card/klp_card.dart:8](../../../../../../lib/src/features/collections/card/klp_card.dart#L8) |
 | part | <code>part &#x27;internal/klp_metric_card_widget.dart&#x27;;</code> | [lib/src/features/collections/card/klp_card.dart:9](../../../../../../lib/src/features/collections/card/klp_card.dart#L9) |
 | part | <code>part &#x27;models/klp_card_tone.dart&#x27;;</code> | [lib/src/features/collections/card/klp_card.dart:10](../../../../../../lib/src/features/collections/card/klp_card.dart#L10) |

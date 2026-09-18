@@ -1,10 +1,11 @@
+import 'package:kallopis/src/kernel/identity/klp_id.dart';
 import 'klp_location.dart';
 import 'klp_route_address.dart';
 import 'klp_route_codec.dart';
 
 /// 目的地保留建立當時的型別驗證，不因泛型向上轉型而放寬。
 final class KlpDestination<P, R> {
-  final String id;
+  final KlpId id;
   final bool Function(Object?) _parameters;
   final bool Function(Object?) _result;
   final Map<String, String> Function(Object?)? _encode;
@@ -15,7 +16,7 @@ final class KlpDestination<P, R> {
       _result = ((value) => value is R),
       _encode = codec == null ? null : ((value) => codec.encode(value as P)),
       _decode = codec == null ? null : ((values) => codec.decode(values)) {
-    if (id.isEmpty) {
+    if (id.value.isEmpty) {
       throw ArgumentError.value(
         id,
         'id',
@@ -53,11 +54,11 @@ final class KlpDestination<P, R> {
       throw StateError('Destination $id does not define a restoration codec.');
     }
 
-    return KlpRouteAddress(destinationId: id, parameters: encode(parameters));
+    return KlpRouteAddress(destinationId: id.value, parameters: encode(parameters));
   }
 
   KlpLocation<Object?> decodeAddress(KlpRouteAddress address) {
-    if (address.destinationId != id) {
+    if (address.destinationId != id.value) {
       throw ArgumentError.value(
         address.destinationId,
         'address',

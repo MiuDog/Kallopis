@@ -13,8 +13,8 @@ flowchart LR
 	n0["klp_pressable.dart"]
 	n1["package:flutter/material.dart"]
 	n2["klp_interaction_settings.dart"]
-	n3["../../styling/legacy_theme/klp_motion_theme.dart"]
-	n4["../../styling/legacy_theme/klp_theme.dart"]
+	n3["package:kallopis/src/styling/legacy_theme/klp_motion_theme.dart"]
+	n4["package:kallopis/src/styling/legacy_theme/klp_theme.dart"]
 	n0 -->|"import"| n1
 	n0 -->|"import"| n2
 	n0 -->|"import"| n3
@@ -27,8 +27,8 @@ flowchart LR
 |---|---|---|
 | import | <code>import &#x27;package:flutter/material.dart&#x27;;</code> | [lib/src/foundation/interaction/klp_pressable.dart:1](../../../../../lib/src/foundation/interaction/klp_pressable.dart#L1) |
 | import | <code>import &#x27;klp_interaction_settings.dart&#x27;;</code> | [lib/src/foundation/interaction/klp_pressable.dart:3](../../../../../lib/src/foundation/interaction/klp_pressable.dart#L3) |
-| import | <code>import &#x27;../../styling/legacy_theme/klp_motion_theme.dart&#x27;;</code> | [lib/src/foundation/interaction/klp_pressable.dart:4](../../../../../lib/src/foundation/interaction/klp_pressable.dart#L4) |
-| import | <code>import &#x27;../../styling/legacy_theme/klp_theme.dart&#x27;;</code> | [lib/src/foundation/interaction/klp_pressable.dart:5](../../../../../lib/src/foundation/interaction/klp_pressable.dart#L5) |
+| import | <code>import &#x27;package:kallopis/src/styling/legacy_theme/klp_motion_theme.dart&#x27;;</code> | [lib/src/foundation/interaction/klp_pressable.dart:4](../../../../../lib/src/foundation/interaction/klp_pressable.dart#L4) |
+| import | <code>import &#x27;package:kallopis/src/styling/legacy_theme/klp_theme.dart&#x27;;</code> | [lib/src/foundation/interaction/klp_pressable.dart:5](../../../../../lib/src/foundation/interaction/klp_pressable.dart#L5) |
 
 ## 宣告關係圖
 

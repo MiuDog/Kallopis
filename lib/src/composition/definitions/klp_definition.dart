@@ -1,7 +1,7 @@
-import '../nodes/klp_node.dart';
-import '../slots/klp_slot.dart';
-import '../../kernel/diagnostics/klp_contract_error.dart';
-import '../../styling/semantics/klp_semantic_schema.dart';
+import 'package:kallopis/src/composition/nodes/klp_node.dart';
+import 'package:kallopis/src/composition/slots/klp_slot.dart';
+import 'package:kallopis/src/kernel/diagnostics/klp_contract_error.dart';
+import 'package:kallopis/src/styling/semantics/klp_semantic_schema.dart';
 
 /// 不可變的節點定義；資格只由型別決定，不能注入驗證演算法。
 final class KlpDefinition<T extends KlpNode> {

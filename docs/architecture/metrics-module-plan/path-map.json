@@ -1,0 +1,107 @@
+{
+	"status": "METRICS-V1-r1 PLAN READY",
+	"moves": {
+		"lib/src/foundation/klp_metrics.dart": "lib/src/styling/legacy_metrics/klp_metrics.dart",
+		"lib/src/foundation/metrics/klp_code_metrics.dart": "lib/src/styling/legacy_metrics/klp_code_metrics.dart",
+		"lib/src/foundation/metrics/klp_control_metrics.dart": "lib/src/styling/legacy_metrics/klp_control_metrics.dart",
+		"lib/src/foundation/metrics/klp_elevation.dart": "lib/src/styling/legacy_metrics/klp_elevation.dart",
+		"lib/src/foundation/metrics/klp_form_metrics.dart": "lib/src/styling/legacy_metrics/klp_form_metrics.dart",
+		"lib/src/foundation/metrics/klp_layout_gap.dart": "lib/src/styling/legacy_metrics/klp_layout_gap.dart",
+		"lib/src/foundation/metrics/klp_line.dart": "lib/src/styling/legacy_metrics/klp_line.dart",
+		"lib/src/foundation/metrics/klp_motion.dart": "lib/src/styling/legacy_metrics/klp_motion.dart",
+		"lib/src/foundation/metrics/klp_placeholder_metrics.dart": "lib/src/styling/legacy_metrics/klp_placeholder_metrics.dart",
+		"lib/src/foundation/metrics/klp_radius.dart": "lib/src/styling/legacy_metrics/klp_radius.dart",
+		"lib/src/foundation/metrics/klp_size.dart": "lib/src/styling/legacy_metrics/klp_size.dart",
+		"lib/src/foundation/metrics/klp_space.dart": "lib/src/styling/legacy_metrics/klp_space.dart",
+		"lib/src/foundation/metrics/klp_transparency.dart": "lib/src/styling/legacy_metrics/klp_transparency.dart",
+		"lib/src/foundation/metrics/klp_typography.dart": "lib/src/styling/legacy_metrics/klp_typography.dart"
+	},
+	"compatibility_export": "lib/src/foundation/klp_metrics.dart",
+	"writes": {
+		"styling": [
+			"lib/src/styling/legacy_metrics/klp_code_metrics.dart",
+			"lib/src/styling/legacy_metrics/klp_control_metrics.dart",
+			"lib/src/styling/legacy_metrics/klp_elevation.dart",
+			"lib/src/styling/legacy_metrics/klp_form_metrics.dart",
+			"lib/src/styling/legacy_metrics/klp_layout_gap.dart",
+			"lib/src/styling/legacy_metrics/klp_line.dart",
+			"lib/src/styling/legacy_metrics/klp_metrics.dart",
+			"lib/src/styling/legacy_metrics/klp_motion.dart",
+			"lib/src/styling/legacy_metrics/klp_placeholder_metrics.dart",
+			"lib/src/styling/legacy_metrics/klp_radius.dart",
+			"lib/src/styling/legacy_metrics/klp_size.dart",
+			"lib/src/styling/legacy_metrics/klp_space.dart",
+			"lib/src/styling/legacy_metrics/klp_transparency.dart",
+			"lib/src/styling/legacy_metrics/klp_typography.dart",
+			"lib/src/styling/legacy_theme/klp_geometry_theme.dart",
+			"lib/src/styling/legacy_theme/klp_surface_theme.dart"
+		],
+		"foundation": [
+			"lib/src/foundation/klp_metrics.dart",
+			"lib/src/foundation/metrics/klp_code_metrics.dart",
+			"lib/src/foundation/metrics/klp_control_metrics.dart",
+			"lib/src/foundation/metrics/klp_elevation.dart",
+			"lib/src/foundation/metrics/klp_form_metrics.dart",
+			"lib/src/foundation/metrics/klp_layout_gap.dart",
+			"lib/src/foundation/metrics/klp_line.dart",
+			"lib/src/foundation/metrics/klp_motion.dart",
+			"lib/src/foundation/metrics/klp_placeholder_metrics.dart",
+			"lib/src/foundation/metrics/klp_radius.dart",
+			"lib/src/foundation/metrics/klp_size.dart",
+			"lib/src/foundation/metrics/klp_space.dart",
+			"lib/src/foundation/metrics/klp_transparency.dart",
+			"lib/src/foundation/metrics/klp_typography.dart"
+		]
+	},
+	"test_paths": [
+		"test/klp_metrics_module_contract_test.dart"
+	],
+	"existing_checks": [
+		"test/token_discipline_test.dart",
+		"test/geometry_theme_compatibility_test.dart",
+		"test/klp_spacing_theme_compatibility_test.dart",
+		"test/klp_chrome_typography_contract_test.dart",
+		"test/theme_extension_contract_test.dart",
+		"test/frontend_architecture_boundary_test.dart",
+		"test/module_architecture_contract_test.dart"
+	],
+	"recovery_writes": {
+		"capabilities": [
+			"lib/src/capabilities/editing/contracts/klp_block_item.dart",
+			"lib/src/capabilities/editing/contracts/klp_block_request.dart",
+			"lib/src/capabilities/editing/contracts/klp_command_item.dart",
+			"lib/src/capabilities/editing/contracts/klp_editing_command_intent.dart",
+			"lib/src/capabilities/editing/contracts/klp_editing_draw_command.dart",
+			"lib/src/capabilities/editing/contracts/klp_editing_endpoint.dart",
+			"lib/src/capabilities/editing/contracts/klp_editing_path.dart",
+			"lib/src/capabilities/editing/contracts/klp_editing_reply.dart",
+			"lib/src/capabilities/editing/contracts/klp_editing_save_projection.dart",
+			"lib/src/capabilities/editing/contracts/klp_editing_save_reply.dart",
+			"lib/src/capabilities/editing/contracts/klp_editing_save_request.dart",
+			"lib/src/capabilities/editing/contracts/klp_editing_style.dart",
+			"lib/src/capabilities/editing/contracts/klp_editor_mode_item.dart",
+			"lib/src/capabilities/editing/contracts/klp_editor_mode_projection.dart",
+			"lib/src/capabilities/editing/contracts/klp_editor_tool_item.dart",
+			"lib/src/capabilities/editing/contracts/klp_handwriting_state.dart"
+		],
+		"features": [
+			"lib/src/features/editing/contracts/klp_block_note_editing_content.dart",
+			"lib/src/features/workspace/components/klp_explorer.dart",
+			"lib/src/features/workspace/components/klp_workspace_block.dart",
+			"lib/src/features/workspace/layout/klp_app_layout.dart",
+			"lib/src/features/workspace/layout/klp_frame_groups.dart",
+			"lib/src/features/workspace/presentation/klp_bound_document_tab_data.dart",
+			"lib/src/features/workspace/presentation/klp_bound_document_tabs.dart",
+			"lib/src/features/workspace/presentation/klp_bound_explorer.dart",
+			"lib/src/features/workspace/presentation/klp_bound_explorer_item_data.dart",
+			"lib/src/features/workspace/presentation/klp_bound_window_controls.dart",
+			"lib/src/features/workspace/presentation/klp_bound_workspace_block.dart",
+			"lib/src/features/workspace/presentation/klp_bound_workspace_choice.dart",
+			"lib/src/features/workspace/presentation/klp_bound_workspace_command.dart",
+			"lib/src/features/workspace/presentation/klp_bound_workspace_content.dart",
+			"lib/src/features/workspace/presentation/klp_bound_workspace_content_block.dart",
+			"lib/src/features/workspace/presentation/klp_bound_workspace_data.dart",
+			"lib/src/features/workspace/presentation/klp_bound_workspace_item.dart"
+		]
+	}
+}

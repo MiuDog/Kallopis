@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import '../../../../../foundation/layout/klp_box_insets.dart';
-import '../../../../../styling/legacy_theme/klp_theme.dart';
+import 'package:kallopis/src/foundation/layout/klp_box_insets.dart';
+import 'package:kallopis/src/styling/legacy_theme/klp_theme.dart';
 
 /// Structured form frame 解析後的完整風格。
 class KlpStructuredFrameStyle {

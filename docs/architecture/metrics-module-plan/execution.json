@@ -1,0 +1,1424 @@
+{
+	"contract": "METRICS-V1-r1",
+	"status": "complete",
+	"completed_slices": [
+		"FND-V1-05"
+	],
+	"full_goal": "active; 44/50; six remaining slices and final whole-goal audit pending",
+	"baseline": {
+		"snapshot_commit": "6bd26c4d5190b86ab32700d407027e14f626ba51",
+		"source_head": "578d24ed111b95c429397b54245de09ade674704",
+		"source_index_sha256": "3a87893357e96f77729183afb4ba34c2c11fdd70be69dcfae9fea1d577eadecd",
+		"started_at": "2026-09-14T15:21:44.586673+08:00"
+	},
+	"workers": [
+		{
+			"task_id": "FND-V1-05",
+			"packet": "D:\\Projects\\Kallopis-v1-evidence\\metrics\\FND-V1-05.json",
+			"packet_sha256": "2f9326af6e8fd5149cf007825adf3da612a5969c9ade2cec5097f636e7fbc270",
+			"scope": {
+				"task_id": "FND-V1-05",
+				"base_revision": "268aa29f58aab0efbf2137479c379057646ec2e3",
+				"changed_paths": [
+					"lib/src/foundation/klp_metrics.dart",
+					"lib/src/foundation/metrics/klp_code_metrics.dart",
+					"lib/src/foundation/metrics/klp_control_metrics.dart",
+					"lib/src/foundation/metrics/klp_elevation.dart",
+					"lib/src/foundation/metrics/klp_form_metrics.dart",
+					"lib/src/foundation/metrics/klp_layout_gap.dart",
+					"lib/src/foundation/metrics/klp_line.dart",
+					"lib/src/foundation/metrics/klp_motion.dart",
+					"lib/src/foundation/metrics/klp_placeholder_metrics.dart",
+					"lib/src/foundation/metrics/klp_radius.dart",
+					"lib/src/foundation/metrics/klp_size.dart",
+					"lib/src/foundation/metrics/klp_space.dart",
+					"lib/src/foundation/metrics/klp_transparency.dart",
+					"lib/src/foundation/metrics/klp_typography.dart"
+				],
+				"violations": [],
+				"status": "pass"
+			}
+		},
+		{
+			"task_id": "STYLE-METRICS-01",
+			"packet": "D:\\Projects\\Kallopis-v1-evidence\\metrics\\STYLE-METRICS-01.json",
+			"packet_sha256": "67db6de0ce88d5d6a32cfaad19734e6148453af54e2ef127a4f9291f9b75d558",
+			"scope": {
+				"task_id": "STYLE-METRICS-01",
+				"base_revision": "e44813e627eff9d62f851bd0432b5a3731a72eae",
+				"changed_paths": [
+					"lib/src/styling/legacy_metrics/klp_code_metrics.dart",
+					"lib/src/styling/legacy_metrics/klp_control_metrics.dart",
+					"lib/src/styling/legacy_metrics/klp_elevation.dart",
+					"lib/src/styling/legacy_metrics/klp_form_metrics.dart",
+					"lib/src/styling/legacy_metrics/klp_layout_gap.dart",
+					"lib/src/styling/legacy_metrics/klp_line.dart",
+					"lib/src/styling/legacy_metrics/klp_metrics.dart",
+					"lib/src/styling/legacy_metrics/klp_motion.dart",
+					"lib/src/styling/legacy_metrics/klp_placeholder_metrics.dart",
+					"lib/src/styling/legacy_metrics/klp_radius.dart",
+					"lib/src/styling/legacy_metrics/klp_size.dart",
+					"lib/src/styling/legacy_metrics/klp_space.dart",
+					"lib/src/styling/legacy_metrics/klp_transparency.dart",
+					"lib/src/styling/legacy_metrics/klp_typography.dart",
+					"lib/src/styling/legacy_theme/klp_geometry_theme.dart",
+					"lib/src/styling/legacy_theme/klp_surface_theme.dart"
+				],
+				"violations": [],
+				"status": "pass"
+			}
+		},
+		{
+			"task_id": "CAPABILITIES-METRICS-DOC-01",
+			"packet": "D:\\Projects\\Kallopis-v1-evidence\\metrics\\CAPABILITIES-METRICS-DOC-01.json",
+			"packet_sha256": "1e6ea267baf23f80cee04b9d07346d465c581a8221227f0f8fa5d5945a70d568",
+			"scope": {
+				"task_id": "CAPABILITIES-METRICS-DOC-01",
+				"base_revision": "d304e95bd689e092919dbeb925e2f9e8199d375c",
+				"changed_paths": [
+					"lib/src/capabilities/editing/contracts/klp_block_item.dart",
+					"lib/src/capabilities/editing/contracts/klp_block_request.dart",
+					"lib/src/capabilities/editing/contracts/klp_command_item.dart",
+					"lib/src/capabilities/editing/contracts/klp_editing_command_intent.dart",
+					"lib/src/capabilities/editing/contracts/klp_editing_draw_command.dart",
+					"lib/src/capabilities/editing/contracts/klp_editing_endpoint.dart",
+					"lib/src/capabilities/editing/contracts/klp_editing_path.dart",
+					"lib/src/capabilities/editing/contracts/klp_editing_reply.dart",
+					"lib/src/capabilities/editing/contracts/klp_editing_save_projection.dart",
+					"lib/src/capabilities/editing/contracts/klp_editing_save_reply.dart",
+					"lib/src/capabilities/editing/contracts/klp_editing_save_request.dart",
+					"lib/src/capabilities/editing/contracts/klp_editing_style.dart",
+					"lib/src/capabilities/editing/contracts/klp_editor_mode_item.dart",
+					"lib/src/capabilities/editing/contracts/klp_editor_mode_projection.dart",
+					"lib/src/capabilities/editing/contracts/klp_editor_tool_item.dart",
+					"lib/src/capabilities/editing/contracts/klp_handwriting_state.dart"
+				],
+				"violations": [],
+				"status": "pass"
+			}
+		},
+		{
+			"task_id": "FEATURES-METRICS-DOC-01",
+			"packet": "D:\\Projects\\Kallopis-v1-evidence\\metrics\\FEATURES-METRICS-DOC-01.json",
+			"packet_sha256": "45ad2bf5d2709682f59bc3fa4d7807f24612ec7b9637084b21dc9daa305ddeca",
+			"scope": {
+				"task_id": "FEATURES-METRICS-DOC-01",
+				"base_revision": "d304e95bd689e092919dbeb925e2f9e8199d375c",
+				"changed_paths": [
+					"lib/src/features/editing/contracts/klp_block_note_editing_content.dart",
+					"lib/src/features/workspace/components/klp_explorer.dart",
+					"lib/src/features/workspace/components/klp_workspace_block.dart",
+					"lib/src/features/workspace/layout/klp_app_layout.dart",
+					"lib/src/features/workspace/layout/klp_frame_groups.dart",
+					"lib/src/features/workspace/presentation/klp_bound_document_tab_data.dart",
+					"lib/src/features/workspace/presentation/klp_bound_document_tabs.dart",
+					"lib/src/features/workspace/presentation/klp_bound_explorer.dart",
+					"lib/src/features/workspace/presentation/klp_bound_explorer_item_data.dart",
+					"lib/src/features/workspace/presentation/klp_bound_window_controls.dart",
+					"lib/src/features/workspace/presentation/klp_bound_workspace_block.dart",
+					"lib/src/features/workspace/presentation/klp_bound_workspace_choice.dart",
+					"lib/src/features/workspace/presentation/klp_bound_workspace_command.dart",
+					"lib/src/features/workspace/presentation/klp_bound_workspace_content.dart",
+					"lib/src/features/workspace/presentation/klp_bound_workspace_content_block.dart",
+					"lib/src/features/workspace/presentation/klp_bound_workspace_data.dart",
+					"lib/src/features/workspace/presentation/klp_bound_workspace_item.dart"
+				],
+				"violations": [],
+				"status": "pass"
+			}
+		}
+	],
+	"checks": [
+		{
+			"name": "protected",
+			"passed": 8,
+			"exit_code": 0,
+			"log": "D:\\Projects\\Kallopis-v1-evidence\\metrics\\protected-tests.log",
+			"sha256": "9a55c670e33d0672ef2e17b0ad1a49d6010c77d5c5fa5d8b8b6336245f563015"
+		},
+		{
+			"name": "token-recovery",
+			"passed": 9,
+			"exit_code": 0,
+			"log": "D:\\Projects\\Kallopis-v1-evidence\\metrics\\token-recovery-tests.log",
+			"sha256": "84b9946e83af4478880648dd0fbb828090be9d1660d086cb553aed2475c8d3d0"
+		},
+		{
+			"name": "frontend",
+			"passed": 155,
+			"exit_code": 0,
+			"log": "D:\\Projects\\Kallopis-v1-evidence\\metrics\\frontend-tests.log",
+			"sha256": "cb1fd3402738a4613d5d27d85b57ea2476b7673b3fe03de96a20605c6959bdaa"
+		},
+		{
+			"name": "module",
+			"passed": 3,
+			"exit_code": 0,
+			"log": "D:\\Projects\\Kallopis-v1-evidence\\metrics\\module-tests.log",
+			"sha256": "2609d2719d3d2083aa948c64c9f53ea7ac7e955d71ad45f7309cebb7b205fc59"
+		}
+	],
+	"theme": {
+		"passed": 33,
+		"source_log": "D:\\Projects\\Kallopis-v1-evidence\\metrics\\theme-tests.log",
+		"sha256": "5769dee36ca76771221074bffa3d2f031b5f618d2e602a236d9f9d041032f08a",
+		"qualification": "Initial mixed run41 pass/1fail includes33 theme plus8 token pass. Sole token failure reproduced on original source and repaired without test changes; final token9 pass recorded separately."
+	},
+	"analysis": {
+		"exit_code": 0,
+		"command": "D:/flutter/bin/flutter.bat analyze --no-pub lib/src/styling/legacy_metrics lib/src/foundation/klp_metrics.dart lib/src/styling/legacy_theme/klp_geometry_theme.dart lib/src/styling/legacy_theme/klp_surface_theme.dart",
+		"log": "D:\\Projects\\Kallopis-v1-evidence\\metrics\\analysis.log",
+		"sha256": "a6510c0dc35848f15f8ca92e60d4ef331060b177aa3f575ca0df730aa4699d06"
+	},
+	"author": {
+		"worktree": "D:/Projects/Klp-met-t",
+		"base_revision": "e44813e627eff9d62f851bd0432b5a3731a72eae",
+		"changed_paths": [
+			"test/klp_metrics_module_contract_test.dart"
+		],
+		"sha256": [
+			{
+				"path": "test/klp_metrics_module_contract_test.dart",
+				"sha256": "29c92894d743b9834b0960f03cb799d6598ef5d398b8051c60f89e980a1f498c"
+			}
+		],
+		"commands": [
+			{
+				"command": "D:/flutter/bin/flutter.bat pub get --enforce-lockfile",
+				"exit_code": 0,
+				"log": "D:/Projects/Kallopis-v1-evidence/metrics/test-author-pubget.log",
+				"lock_unchanged": true
+			},
+			{
+				"command": "D:/flutter/bin/flutter.bat test --no-pub test/klp_metrics_module_contract_test.dart --name 'old baseline|frozen declaration|13 public|boundary' --reporter expanded",
+				"exit_code": 1,
+				"log": "D:/Projects/Kallopis-v1-evidence/metrics/test-author-red.log",
+				"result": "5 passed, 1 expected boundary assertion failure; no compilation or harness errors"
+			},
+			{
+				"command": "D:/flutter/bin/flutter.bat test --no-pub test/token_discipline_test.dart --reporter expanded",
+				"exit_code": 1,
+				"log": "D:/Projects/Kallopis-v1-evidence/metrics/test-author-token-baseline.log",
+				"result": "8 passed, 1 existing dartdoc failure: 95 undocumented public types > 45; test unchanged"
+			},
+			{
+				"command": "git status --short",
+				"result": "?? test/klp_metrics_module_contract_test.dart"
+			},
+			{
+				"command": "D:/flutter/bin/flutter.bat test --no-pub test/klp_metrics_module_contract_test.dart --name 'old baseline|frozen declaration|13 public|boundary|legacy uniqueness' --reporter expanded",
+				"exit_code": 1,
+				"log": "D:/Projects/Kallopis-v1-evidence/metrics/test-author-r2-red.log",
+				"result": "6 passed, 1 expected foundation boundary assertion failure; original 150 public values, 13 declarations, identity and boundary synthetics unchanged and passed; fixed homonym snapshot and duplicate rejection synthetics passed",
+				"probe_only_difference_from_final": {
+					"before": "import 'package:kallopis/src/foundation/klp_metrics.dart' as owner;",
+					"after": "import 'package:kallopis/src/styling/legacy_metrics/klp_metrics.dart' as owner;"
+				}
+			}
+		],
+		"valid_red": {
+			"observed": true,
+			"reason": "styling legacy geometry/surface theme retain foundation/klp_metrics.dart dependencies; complete traversal also reports transitive routes",
+			"probe_sha256": "d568c6a4045917be145b278ccb43317d7e08d5b1cefb3e487e1a160b73f8a71e",
+			"probe_only_difference_from_final": {
+				"before": "import 'package:kallopis/src/foundation/klp_metrics.dart' as owner;",
+				"after": "import 'package:kallopis/src/styling/legacy_metrics/klp_metrics.dart' as owner;"
+			}
+		},
+		"oldbaselinevaluespass": {
+			"observed": true,
+			"public_constant_count": 150,
+			"class_count": 13,
+			"declaration_snapshots": "all 13 pass against original declarations",
+			"types": "Stable and original compatibility identities pass; old probe owner alias intentionally pointed to same original URI"
+		},
+		"protection": [
+			"all 150 stable public constants including list order/package font names/durations and FontWeight values",
+			"frozen full 13 class declarations including exact static const types/order and expressions",
+			"13 Stable/compatibility/new-owner identities in frozen final test",
+			"full styling dependency traversal for package/relative/conditional imports,exports,parts,part-of,named-part and multi-level barrels",
+			"true/false synthetic cases including legitimate private helper, lower foundation_helper filename, comments and ordinary strings",
+			"single owner library, all 13 reciprocal parts, retired old parts, single physical class declarations across lib",
+			"old root single unrestricted export and Stable original export retained",
+			"Exact oldbaseline primitive KlpRadius homonym declaration and part-of fingerprint; duplicate legacy declarations including same-part copies detected with positive/negative synthetics"
+		],
+		"integration_command": "D:/flutter/bin/flutter.bat test --no-pub test/klp_metrics_module_contract_test.dart --reporter expanded",
+		"scope": {
+			"only_assigned_test_changed": true,
+			"product_docs_configs_existing_tests_untouched": true,
+			"stage_or_commit": false,
+			"read_exception": "Only original metrics declarations and directives read to freeze baseline; package analyzer AST interfaces read for test harness. No integrated product or BUILD reasoning read. For r2, independent old-baseline class declaration name scan across lib and the sole existing primitive KlpRadius homonym source read; no integrated product read."
+		},
+		"limitations": [
+			"Final new-owner import cannot compile until product migration creates that URI; final integration Green pending root integration. This absent URI is not reported as Red.",
+			"Final reciprocal library/uniqueness success path pending integration; harness syntax and corrected uniqueness synthetics compiled and passed against original baseline probe.",
+			"Existing token discipline baseline failure is independent and left unchanged.",
+			"No sensory acceptance or broader implementation correctness claimed."
+		],
+		"actualusage": "unknown",
+		"revision": "r2",
+		"revision_reason": {
+			"kind": "test harness false positive",
+			"evidence": "Root integration reported 6 pass / 1 fail in D:/Projects/Kallopis-v1-evidence/metrics/protected-tests.log. Uniqueness scanner incorrectly equated class names with library/type authority. Independent old-baseline scan found one pre-existing nonlegacy homonym: styling/primitives/klp_radius.dart.",
+			"fix": "Freeze the exact original KlpRadius primitive declaration and part-of authority as a token signature at its single exact path; retain it unchanged and count all other same-name declarations individually. No directory or arbitrary path exclusions.",
+			"synthetics": [
+				"known exact nonlegacy homonym accepted beside one legacy declaration",
+				"second legacy declaration rejected in legacy_metrics, primitives, and foundation directories",
+				"replacement of known homonym with legacy copy rejected",
+				"duplicate declaration within one part rejected"
+			],
+			"line_endings": "Normalized CRCRLF introduced by previous write encoding to LF in the one test file; no original assertions changed."
+		},
+		"previous_record": "D:/Projects/Kallopis-v1-evidence/metrics/test-author-r1.json"
+	},
+	"equivalence": {
+		"status": "PASS",
+		"baseline": "e44813e627eff9d62f851bd0432b5a3731a72eae",
+		"moves": 14,
+		"sources": 16,
+		"proof": [
+			{
+				"old": "lib/src/foundation/klp_metrics.dart",
+				"new": "lib/src/styling/legacy_metrics/klp_metrics.dart",
+				"body_equivalent": true,
+				"body_sha256": "94f59a48294d99f8d9b7632cd5a1742670c7735fe37ec7c555aab939b635fdde",
+				"directive_identity_preserved": true
+			},
+			{
+				"old": "lib/src/foundation/metrics/klp_code_metrics.dart",
+				"new": "lib/src/styling/legacy_metrics/klp_code_metrics.dart",
+				"body_equivalent": true,
+				"body_sha256": "946c7bea31e261509cb95fdd6f4ba8e856d67a3295c9103cdf02d772382d0db4",
+				"directive_identity_preserved": true
+			},
+			{
+				"old": "lib/src/foundation/metrics/klp_control_metrics.dart",
+				"new": "lib/src/styling/legacy_metrics/klp_control_metrics.dart",
+				"body_equivalent": true,
+				"body_sha256": "91ee4fa035511d3b148a5d55973cd6187843a7fce8b4da38fa116ce65e9d0aa9",
+				"directive_identity_preserved": true
+			},
+			{
+				"old": "lib/src/foundation/metrics/klp_elevation.dart",
+				"new": "lib/src/styling/legacy_metrics/klp_elevation.dart",
+				"body_equivalent": true,
+				"body_sha256": "28752e2e8410786d4fd57cfcf409b3685a617efbd009f3a55bcf6c236b290c18",
+				"directive_identity_preserved": true
+			},
+			{
+				"old": "lib/src/foundation/metrics/klp_form_metrics.dart",
+				"new": "lib/src/styling/legacy_metrics/klp_form_metrics.dart",
+				"body_equivalent": true,
+				"body_sha256": "6362bd20fd4df962cfa91360d3a65c8f0410f583a4b1f1d18a034a07a8f97b5d",
+				"directive_identity_preserved": true
+			},
+			{
+				"old": "lib/src/foundation/metrics/klp_layout_gap.dart",
+				"new": "lib/src/styling/legacy_metrics/klp_layout_gap.dart",
+				"body_equivalent": true,
+				"body_sha256": "91f0d1ba0a9b183e3e9a4ac7b391af568446db0df1c6aebd659460e872fe18e8",
+				"directive_identity_preserved": true
+			},
+			{
+				"old": "lib/src/foundation/metrics/klp_line.dart",
+				"new": "lib/src/styling/legacy_metrics/klp_line.dart",
+				"body_equivalent": true,
+				"body_sha256": "2a7794770ef12437b6cf5eb6bcc5a4e46d1d962b741c8efd8089f7d58674335f",
+				"directive_identity_preserved": true
+			},
+			{
+				"old": "lib/src/foundation/metrics/klp_motion.dart",
+				"new": "lib/src/styling/legacy_metrics/klp_motion.dart",
+				"body_equivalent": true,
+				"body_sha256": "5b9a6a9cb294e1fef9f55faea6b4b27058f8506108babc23e65c9cebc2f0505c",
+				"directive_identity_preserved": true
+			},
+			{
+				"old": "lib/src/foundation/metrics/klp_placeholder_metrics.dart",
+				"new": "lib/src/styling/legacy_metrics/klp_placeholder_metrics.dart",
+				"body_equivalent": true,
+				"body_sha256": "aa99923dc6e0e08c5395ad3c024733191e09cbce956d352b28e6f1d9267fb68c",
+				"directive_identity_preserved": true
+			},
+			{
+				"old": "lib/src/foundation/metrics/klp_radius.dart",
+				"new": "lib/src/styling/legacy_metrics/klp_radius.dart",
+				"body_equivalent": true,
+				"body_sha256": "ae491e7266c3f8ce533be6d7a9d6163acd65f33776eb1008de3e38c95b3d3974",
+				"directive_identity_preserved": true
+			},
+			{
+				"old": "lib/src/foundation/metrics/klp_size.dart",
+				"new": "lib/src/styling/legacy_metrics/klp_size.dart",
+				"body_equivalent": true,
+				"body_sha256": "60cc27f02eeb5a919b375650800aec45ec4140d0ad8591007dcb43e2e7b8c961",
+				"directive_identity_preserved": true
+			},
+			{
+				"old": "lib/src/foundation/metrics/klp_space.dart",
+				"new": "lib/src/styling/legacy_metrics/klp_space.dart",
+				"body_equivalent": true,
+				"body_sha256": "72764d5c954e6d76f917d62438985d9d57f2536e4e8e40be773b210b72fc2ea4",
+				"directive_identity_preserved": true
+			},
+			{
+				"old": "lib/src/foundation/metrics/klp_transparency.dart",
+				"new": "lib/src/styling/legacy_metrics/klp_transparency.dart",
+				"body_equivalent": true,
+				"body_sha256": "85a5b03a65ab9c19d2cac6eb15e1df5551049e304efd76e8d4bdabe97814e605",
+				"directive_identity_preserved": true
+			},
+			{
+				"old": "lib/src/foundation/metrics/klp_typography.dart",
+				"new": "lib/src/styling/legacy_metrics/klp_typography.dart",
+				"body_equivalent": true,
+				"body_sha256": "d0ff47ffd5327fd62d2858f442517b89692b64b271ea5c1847773c86504f98ab",
+				"directive_identity_preserved": true
+			},
+			{
+				"old": "lib/src/styling/legacy_theme/klp_geometry_theme.dart",
+				"new": "lib/src/styling/legacy_theme/klp_geometry_theme.dart",
+				"body_equivalent": true,
+				"body_sha256": "5c81f0944b3301b426ba4525190bb1156e02a2f282ed4c747de17e421e3c0128",
+				"directive_identity_preserved": true
+			},
+			{
+				"old": "lib/src/styling/legacy_theme/klp_surface_theme.dart",
+				"new": "lib/src/styling/legacy_theme/klp_surface_theme.dart",
+				"body_equivalent": true,
+				"body_sha256": "e9f027e87a5bde481333e5ee9be112dd9c088c718840e1f7c6f10d02804b82e5",
+				"directive_identity_preserved": true
+			}
+		],
+		"compatibility": "old foundation root has only one export; new unique owner"
+	},
+	"module_graph": {
+		"status": "PASS",
+		"scope": "All lib/src Dart directive targets, relative/package/conditional strings, public library routing; module self-edges ignored.",
+		"modules": [
+			"application",
+			"capabilities",
+			"composition",
+			"features",
+			"foundation",
+			"kernel",
+			"rendering",
+			"runtime",
+			"styling"
+		],
+		"dependencies": {
+			"application": [
+				"capabilities",
+				"composition",
+				"features",
+				"foundation",
+				"kernel",
+				"rendering",
+				"runtime",
+				"styling"
+			],
+			"capabilities": [
+				"kernel"
+			],
+			"composition": [
+				"capabilities",
+				"kernel",
+				"styling"
+			],
+			"features": [
+				"capabilities",
+				"composition",
+				"foundation",
+				"kernel",
+				"runtime",
+				"styling"
+			],
+			"foundation": [
+				"capabilities",
+				"composition",
+				"kernel",
+				"styling"
+			],
+			"kernel": [],
+			"rendering": [
+				"capabilities",
+				"features",
+				"foundation",
+				"kernel",
+				"styling"
+			],
+			"runtime": [
+				"capabilities",
+				"composition",
+				"foundation",
+				"kernel",
+				"styling"
+			],
+			"styling": [
+				"kernel"
+			]
+		},
+		"dependency_first_order": [
+			"kernel",
+			"capabilities",
+			"styling",
+			"composition",
+			"foundation",
+			"runtime",
+			"features",
+			"rendering",
+			"application"
+		]
+	},
+	"documentation_recovery": {
+		"contract": "METRICS-DOC-r1",
+		"initial_undocumented": 95,
+		"final_undocumented": 45,
+		"test_baseline_unchanged": 45,
+		"capabilities": [
+			{
+				"path": "lib/src/capabilities/editing/contracts/klp_block_item.dart",
+				"before_sha256": "6c82681a38e5a5906fe4281157c8576a1e3852f7ff529d42900db52c0b1cfcb8",
+				"sha256": "595e2ffd721c9e45a636c5e471c6ba560fc4398026725fbf3981ecaa1e83cad4",
+				"added": [
+					"/// 舊正文區塊的呈現種類；結構與內容仍由提供者掌管。\r\n"
+				],
+				"reverse_removal_exact": true
+			},
+			{
+				"path": "lib/src/capabilities/editing/contracts/klp_block_request.dart",
+				"before_sha256": "eef71b9db34da752e9102f6f456adbf95be57f12c56cf9d47969bf1eb410f9ca",
+				"sha256": "d1d5aabe7b095eb0faf069bf8354837fd2c35abac41167ca628fd1fbec48af85",
+				"added": [
+					"/// 舊正文區塊操作的請求種類；不在呈現層執行交易或維護 undo。\r\n"
+				],
+				"reverse_removal_exact": true
+			},
+			{
+				"path": "lib/src/capabilities/editing/contracts/klp_command_item.dart",
+				"before_sha256": "0c48c9f4c51bf50da2ed0dec74949e76a53d07220541d2d094582be4a42fa89e",
+				"sha256": "4478c48c33d802c55bcc5596059a2972fcce3f6edff6aef97d95b02c5c0164ce",
+				"added": [
+					"/// 提供者回報的命令可用性；畫面不自行推定執行權限。\r\n",
+					"/// 命令的語意強調用途；實際風格由本庫解析。\r\n"
+				],
+				"reverse_removal_exact": true
+			},
+			{
+				"path": "lib/src/capabilities/editing/contracts/klp_editing_command_intent.dart",
+				"before_sha256": "790a0c8d14ce7fd6e1990b8ddc6c230b37045ff8c896dd65711b1c3354457904",
+				"sha256": "3525c9aac5811d2f65b419348855c9e5526220c0906402b049fa7dae4dd8b9c1",
+				"added": [
+					"/// 舊正文輸入命令的種類；實際文字變更由來源處理。\r\n",
+					"/// 送往舊正文來源的具型別命令；本值不套用交易或保存歷史。\r\n"
+				],
+				"reverse_removal_exact": true
+			},
+			{
+				"path": "lib/src/capabilities/editing/contracts/klp_editing_draw_command.dart",
+				"before_sha256": "0a3c9dec1feabea419fc9c22342f4b8edbb9c478bd50baa178f16c05a84e4e0f",
+				"sha256": "f750e91628d8d0ed6fe09e5ab29e937d60be4e606b2feab627b0b0b6f889b8a5",
+				"added": [
+					"/// 以語意用途繪製矩形的資料指令；不攜帶原生 painter 或顏色。\r\n",
+					"/// 以語意用途繪製提供者路徑的指令；不擁有筆刷或平台畫布。\r\n",
+					"/// 將矩形裁切範圍推入繪製狀態；只描述操作而不持有畫布。\r\n",
+					"/// 結束最近一層裁切的資料指令；配對與執行由繪製流程驗證。\r\n",
+					"/// 結束最近一層座標轉換的資料指令；不保存平台矩陣狀態。\r\n"
+				],
+				"reverse_removal_exact": true
+			},
+			{
+				"path": "lib/src/capabilities/editing/contracts/klp_editing_endpoint.dart",
+				"before_sha256": "b5f0899e16654c9f3507141887324edf91afaf8b4c1db0df2cfe0df38329dfca",
+				"sha256": "696725fa29f04f00765de28774af6663cd6283cfe9f3c7db6546ec0c169eef9c",
+				"added": [
+					"/// 文字端點在邊界上的親和方向；不決定排版或選取權威。\r\n"
+				],
+				"reverse_removal_exact": true
+			},
+			{
+				"path": "lib/src/capabilities/editing/contracts/klp_editing_path.dart",
+				"before_sha256": "a262d9a397004c9a93203af8b186bcbcbfd2ea286602285838bb34e47c7d86d4",
+				"sha256": "7f3589f15a9cf0005255c92892a89134fde3f01d824383384c44f303ed86e97e",
+				"added": [
+					"/// 提供者路徑片段的幾何操作；不引入平台 Path 或筆刷。\r\n"
+				],
+				"reverse_removal_exact": true
+			},
+			{
+				"path": "lib/src/capabilities/editing/contracts/klp_editing_reply.dart",
+				"before_sha256": "a3bd1dedbf5cd3830f3276768ed1c625fa0f417161295b54f75afc0314a31e7c",
+				"sha256": "4d4fc47347679734a7c2cb3359aed8146d840e44ecff2470d4b4c65be97fc1c5",
+				"added": [
+					"/// 舊正文來源對編輯請求的裁決；畫面依回覆呈現而不重做交易。\r\n"
+				],
+				"reverse_removal_exact": true
+			},
+			{
+				"path": "lib/src/capabilities/editing/contracts/klp_editing_save_projection.dart",
+				"before_sha256": "5fc8cea286d495c3cee7bdddf317a9dbcd2c56cd1a04b8540e34b1da52cfb03a",
+				"sha256": "3e1cfd7217298467b71545a54191dbe5409e29ab8b2337e752799cfcca26fbb6",
+				"added": [
+					"/// 來源回報的保存作業階段；階段本身不證明特定修訂已落盤。\r\n",
+					"/// 保存失敗的具型別原因；結果是否確定另由保存投影表達。\r\n"
+				],
+				"reverse_removal_exact": true
+			},
+			{
+				"path": "lib/src/capabilities/editing/contracts/klp_editing_save_reply.dart",
+				"before_sha256": "dcb1586265ee9fadcf42ed43d849ba3117a8653a8860994b4d9a294144e31f4b",
+				"sha256": "b27c55435301521a393efbb576aaec160ef332d33e7a3c6d5938e3c50e88d8bb",
+				"added": [
+					"/// 來源對保存請求的裁決，包含結果未明；不允許畫面推定保存成功。\r\n",
+					"/// 保存裁決與同一來源狀態投影的回覆；不持有文件內容或執行 I/O。\r\n"
+				],
+				"reverse_removal_exact": true
+			},
+			{
+				"path": "lib/src/capabilities/editing/contracts/klp_editing_save_request.dart",
+				"before_sha256": "32debc29e8d16b5c28b471e0555e4253795dcd0510585f38348b0ea0e3b22294",
+				"sha256": "03f4d3a4ae6f4d3c2a45d07f426fb8c007677f6ca1503b0dde093e70d6a400d6",
+				"added": [
+					"/// 提供者支援的保存請求種類；實際保存與確認修訂由來源掌管。\r\n"
+				],
+				"reverse_removal_exact": true
+			},
+			{
+				"path": "lib/src/capabilities/editing/contracts/klp_editing_style.dart",
+				"before_sha256": "94b2d2d9db808cbac9fb9fc151d93178438f2d796996b96b8841a08027a33115",
+				"sha256": "41a15ba9ec0c8d4c2d6f77ec0d663e449a8af44f0c7fd8a42337880df1bf9473",
+				"added": [
+					"/// 舊正文標記的呈現格式；不在 Kallopis 建立清單資料權威。\r\n"
+				],
+				"reverse_removal_exact": true
+			},
+			{
+				"path": "lib/src/capabilities/editing/contracts/klp_editor_mode_item.dart",
+				"before_sha256": "7cb7da813072ca5fdc437b30364114196cdb7cb43a823a67eafd818b11fd1e71",
+				"sha256": "b712e8c932ea28a0510c53ff193e387e5e089f71cdaef8920a978689542e1161",
+				"added": [
+					"/// 編輯模式的輸入通道用途；不實作文字、導覽或筆跡引擎。\r\n",
+					"/// 來源回報的模式可用性；不由畫面重新判定模式能力。\r\n"
+				],
+				"reverse_removal_exact": true
+			},
+			{
+				"path": "lib/src/capabilities/editing/contracts/klp_editor_mode_projection.dart",
+				"before_sha256": "6b428395dc14ad2fb8ce6ffdaa06dcb7dce177efe0a32cd4aed7c8f2734e3c21",
+				"sha256": "ccf7e1681bbd827de92e50d0594fca1ea148823a11575b309dd196f6e46bd121",
+				"added": [
+					"/// 編輯模式切換的暫態階段；文件與工具狀態仍以提供者投影為準。\r\n"
+				],
+				"reverse_removal_exact": true
+			},
+			{
+				"path": "lib/src/capabilities/editing/contracts/klp_editor_tool_item.dart",
+				"before_sha256": "9755a460fc9e9b37f65ed1cfbc9309d9c3b1ea28ce80f44db29fd1cf3e050fbd",
+				"sha256": "79f5f1a6a280a3a66713574c4c29f0a4cdbe296f3adbacf6756fd68a6eed0220",
+				"added": [
+					"/// 工具接受的指標種類；不攜帶平台事件或取代輸入路由。\r\n"
+				],
+				"reverse_removal_exact": true
+			},
+			{
+				"path": "lib/src/capabilities/editing/contracts/klp_handwriting_state.dart",
+				"before_sha256": "46e323fcb8441701fc62509e6e0e44a25691d281c06c44f00765b0fb586ffbe7",
+				"sha256": "55fa230cb279c7337bc81e63b6f86a0de20904382de6619e2ac51bda5129f145",
+				"added": [
+					"/// 來源回報的筆跡擷取階段；未知結果不代表已提交或可安全重試。\r\n"
+				],
+				"reverse_removal_exact": true
+			}
+		],
+		"features": {
+			"task_id": "FEATURES-METRICS-DOC-01",
+			"milestone": "M1",
+			"worktree": "D:/Projects/Klp-doc-f",
+			"base_revision": "d304e95bd689e092919dbeb925e2f9e8199d375c",
+			"architecture_revision": "sha256:4175663639eb1c9bef03a4eeaab2bf03e5cc034208d91463f06193380005018b",
+			"packet_sha256": "45ad2bf5d2709682f59bc3fa4d7807f24612ec7b9637084b21dc9daa305ddeca",
+			"changed_paths": [
+				"lib/src/features/editing/contracts/klp_block_note_editing_content.dart",
+				"lib/src/features/workspace/components/klp_explorer.dart",
+				"lib/src/features/workspace/components/klp_workspace_block.dart",
+				"lib/src/features/workspace/layout/klp_app_layout.dart",
+				"lib/src/features/workspace/layout/klp_frame_groups.dart",
+				"lib/src/features/workspace/presentation/klp_bound_document_tab_data.dart",
+				"lib/src/features/workspace/presentation/klp_bound_document_tabs.dart",
+				"lib/src/features/workspace/presentation/klp_bound_explorer.dart",
+				"lib/src/features/workspace/presentation/klp_bound_explorer_item_data.dart",
+				"lib/src/features/workspace/presentation/klp_bound_window_controls.dart",
+				"lib/src/features/workspace/presentation/klp_bound_workspace_block.dart",
+				"lib/src/features/workspace/presentation/klp_bound_workspace_choice.dart",
+				"lib/src/features/workspace/presentation/klp_bound_workspace_command.dart",
+				"lib/src/features/workspace/presentation/klp_bound_workspace_content.dart",
+				"lib/src/features/workspace/presentation/klp_bound_workspace_content_block.dart",
+				"lib/src/features/workspace/presentation/klp_bound_workspace_data.dart",
+				"lib/src/features/workspace/presentation/klp_bound_workspace_item.dart"
+			],
+			"declaration_count": 25,
+			"added_line_count": 34,
+			"sha256": [
+				{
+					"path": "lib/src/features/editing/contracts/klp_block_note_editing_content.dart",
+					"sha256": "11f46dd8d05a3af7e0b83df8bdf61a053a593e470fee2478db743703ab2671e7"
+				},
+				{
+					"path": "lib/src/features/workspace/components/klp_explorer.dart",
+					"sha256": "207b24938372398af06ea367c49edcd986ecdcecb0f0b3c11e769b5b0815b58c"
+				},
+				{
+					"path": "lib/src/features/workspace/components/klp_workspace_block.dart",
+					"sha256": "657381fcad7985f8be8be696468869733569e202fe83c754c2f4abf5571709df"
+				},
+				{
+					"path": "lib/src/features/workspace/layout/klp_app_layout.dart",
+					"sha256": "b1445e91fee34f926b010745a8af6895a5fccb8d510b9833d75c755f6199ed99"
+				},
+				{
+					"path": "lib/src/features/workspace/layout/klp_frame_groups.dart",
+					"sha256": "5894b12ab5b0b94681e39e1c07620e42d5c087c800d579e5d9300ae2f6d526bb"
+				},
+				{
+					"path": "lib/src/features/workspace/presentation/klp_bound_document_tab_data.dart",
+					"sha256": "db7aa638eaa2a0214de7bdffd2a0dbed4c623f9bec36592ab63b658f448b1370"
+				},
+				{
+					"path": "lib/src/features/workspace/presentation/klp_bound_document_tabs.dart",
+					"sha256": "72f3255d635cfb76560487e17884ea5d598854f0488bb3082ef371df4e963783"
+				},
+				{
+					"path": "lib/src/features/workspace/presentation/klp_bound_explorer.dart",
+					"sha256": "8df69523db8c67e4a2dba6bb0fd77866c213991b0b07537391340b83bbe02aa2"
+				},
+				{
+					"path": "lib/src/features/workspace/presentation/klp_bound_explorer_item_data.dart",
+					"sha256": "d3e0b9493ed6b3f5e9551d32cfe9ff4f418f3a8b146001d82261c7a092e42f6a"
+				},
+				{
+					"path": "lib/src/features/workspace/presentation/klp_bound_window_controls.dart",
+					"sha256": "c6ab3e7eb965f8608a4adf3c3568bcd89677657ff4de2a86124069f7ac94dafc"
+				},
+				{
+					"path": "lib/src/features/workspace/presentation/klp_bound_workspace_block.dart",
+					"sha256": "58ae7e90ab1c3aa7c47c721a792f523a8b0a76f4f16fdca082ae83d4197f9474"
+				},
+				{
+					"path": "lib/src/features/workspace/presentation/klp_bound_workspace_choice.dart",
+					"sha256": "533b6f5fb73df07ed6524d6ac5bcd761a6e99a7cef9c757f9f82ba17e538ccc4"
+				},
+				{
+					"path": "lib/src/features/workspace/presentation/klp_bound_workspace_command.dart",
+					"sha256": "871dcfb01d73408917c3a57fbfdc742ff8b1906feab0ddf45e7aa22aaa718147"
+				},
+				{
+					"path": "lib/src/features/workspace/presentation/klp_bound_workspace_content.dart",
+					"sha256": "802b6ceda94fdb7a2e6ff6621e64f8fcc9383eeb329393a6c4fed89ab9e9fe9e"
+				},
+				{
+					"path": "lib/src/features/workspace/presentation/klp_bound_workspace_content_block.dart",
+					"sha256": "842270c70d04d10428139b2f637257db4f9c8878863a616e8eeefe06edfb6282"
+				},
+				{
+					"path": "lib/src/features/workspace/presentation/klp_bound_workspace_data.dart",
+					"sha256": "b7efb55f0bd3cacf4c3ca3a726a93b8338c870095fd89a6907162994da7f2190"
+				},
+				{
+					"path": "lib/src/features/workspace/presentation/klp_bound_workspace_item.dart",
+					"sha256": "4d2198ceeff4312e2f619a010e3076d069da0ec73b66f641f53b88ccde2d3933"
+				}
+			],
+			"files": [
+				{
+					"path": "lib/src/features/editing/contracts/klp_block_note_editing_content.dart",
+					"sha256": "11f46dd8d05a3af7e0b83df8bdf61a053a593e470fee2478db743703ab2671e7",
+					"original_sha256": "8459f64edb3b0c6947e2cd2ea9c1784540c9bdc9162a050b35136d7169e987bf",
+					"original_bytes": 1481,
+					"result_bytes": 1589,
+					"added_line_count": 1,
+					"insertions": [
+						{
+							"name": "KlpResolvedAsset",
+							"original_line": 7,
+							"original_byte_offset": 329,
+							"added_lines": [
+								"/// BlockNote 資產解析結果，攜帶位元組與媒體型別；不負責資產儲存或正文模型。"
+							],
+							"newline": "LF",
+							"new_comment_line": 7,
+							"new_declaration_line": 8,
+							"new_byte_offset": 329,
+							"inserted_bytes": 108
+						}
+					],
+					"reverse_removal": {
+						"status": "pass",
+						"method": "Remove only recorded inserted byte ranges in reverse offset order; compare Buffer byte equality with original clean-worktree bytes.",
+						"restored_sha256": "8459f64edb3b0c6947e2cd2ea9c1784540c9bdc9162a050b35136d7169e987bf",
+						"exact_original_bytes": true
+					}
+				},
+				{
+					"path": "lib/src/features/workspace/components/klp_explorer.dart",
+					"sha256": "207b24938372398af06ea367c49edcd986ecdcecb0f0b3c11e769b5b0815b58c",
+					"original_sha256": "f0af93443ceef4e3a8a3ab2a9c87dd96ad4c01c68d0504e552cd632b5774fc62",
+					"original_bytes": 3376,
+					"result_bytes": 3581,
+					"added_line_count": 2,
+					"insertions": [
+						{
+							"name": "KlpExplorerSpacing",
+							"original_line": 12,
+							"original_byte_offset": 574,
+							"added_lines": [
+								"/// Explorer 項目間距的語意選項；實際距離由本庫呈現契約決定，不承載原始尺寸。"
+							],
+							"newline": "LF",
+							"new_comment_line": 12,
+							"new_declaration_line": 13,
+							"new_byte_offset": 574,
+							"inserted_bytes": 110
+						},
+						{
+							"name": "KlpExplorerDropPosition",
+							"original_line": 13,
+							"original_byte_offset": 627,
+							"added_lines": [
+								"/// Explorer 移動請求相對目標的位置；不執行資料搬移或決定移動權限。"
+							],
+							"newline": "LF",
+							"new_comment_line": 14,
+							"new_declaration_line": 15,
+							"new_byte_offset": 737,
+							"inserted_bytes": 95
+						}
+					],
+					"reverse_removal": {
+						"status": "pass",
+						"method": "Remove only recorded inserted byte ranges in reverse offset order; compare Buffer byte equality with original clean-worktree bytes.",
+						"restored_sha256": "f0af93443ceef4e3a8a3ab2a9c87dd96ad4c01c68d0504e552cd632b5774fc62",
+						"exact_original_bytes": true
+					}
+				},
+				{
+					"path": "lib/src/features/workspace/components/klp_workspace_block.dart",
+					"sha256": "657381fcad7985f8be8be696468869733569e202fe83c754c2f4abf5571709df",
+					"original_sha256": "d26968163b9c737672fc5756eb4da4c4e95a1928d359b3c11f30f3ce10959a2f",
+					"original_bytes": 6292,
+					"result_bytes": 6874,
+					"added_line_count": 6,
+					"insertions": [
+						{
+							"name": "KlpWorkspaceBlockKind",
+							"original_line": 9,
+							"original_byte_offset": 434,
+							"added_lines": [
+								"/// 工作區區塊的封閉語意種類；不定義產品資料模型或提供自訂渲染器。"
+							],
+							"newline": "LF",
+							"new_comment_line": 9,
+							"new_declaration_line": 10,
+							"new_byte_offset": 434,
+							"inserted_bytes": 98
+						},
+						{
+							"name": "KlpWorkspaceMaterial",
+							"original_line": 10,
+							"original_byte_offset": 546,
+							"added_lines": [
+								"/// 工作區區塊的材質語意選項；不保存色彩值或建立另一份主題。"
+							],
+							"newline": "LF",
+							"new_comment_line": 11,
+							"new_declaration_line": 12,
+							"new_byte_offset": 644,
+							"inserted_bytes": 89
+						},
+						{
+							"name": "KlpWorkspaceIcon",
+							"original_line": 11,
+							"original_byte_offset": 591,
+							"added_lines": [
+								"/// 工作區可選用的封閉圖示語意；不接受外部資產路徑或原生元件。"
+							],
+							"newline": "LF",
+							"new_comment_line": 13,
+							"new_declaration_line": 14,
+							"new_byte_offset": 778,
+							"inserted_bytes": 92
+						},
+						{
+							"name": "KlpWorkspaceContentKind",
+							"original_line": 12,
+							"original_byte_offset": 809,
+							"added_lines": [
+								"/// 工作區內容區塊的封閉語意種類；不提供正文編輯引擎或自訂排版規則。"
+							],
+							"newline": "LF",
+							"new_comment_line": 15,
+							"new_declaration_line": 16,
+							"new_byte_offset": 1088,
+							"inserted_bytes": 101
+						},
+						{
+							"name": "KlpWorkspaceItem",
+							"original_line": 14,
+							"original_byte_offset": 905,
+							"added_lines": [
+								"/// 工作區項目的文字、圖示、勾選與選取輸入及事件回呼；不自行維護產品狀態。"
+							],
+							"newline": "LF",
+							"new_comment_line": 18,
+							"new_declaration_line": 19,
+							"new_byte_offset": 1285,
+							"inserted_bytes": 110
+						},
+						{
+							"name": "KlpWorkspaceChoice",
+							"original_line": 26,
+							"original_byte_offset": 1327,
+							"added_lines": [
+								"/// 工作區選項的標籤、選取輸入與通知回呼；不自行變更選取權威。"
+							],
+							"newline": "LF",
+							"new_comment_line": 31,
+							"new_declaration_line": 32,
+							"new_byte_offset": 1817,
+							"inserted_bytes": 92
+						}
+					],
+					"reverse_removal": {
+						"status": "pass",
+						"method": "Remove only recorded inserted byte ranges in reverse offset order; compare Buffer byte equality with original clean-worktree bytes.",
+						"restored_sha256": "d26968163b9c737672fc5756eb4da4c4e95a1928d359b3c11f30f3ce10959a2f",
+						"exact_original_bytes": true
+					}
+				},
+				{
+					"path": "lib/src/features/workspace/layout/klp_app_layout.dart",
+					"sha256": "b1445e91fee34f926b010745a8af6895a5fccb8d510b9833d75c755f6199ed99",
+					"original_sha256": "0578c34c464658b9d9f56d2305c79937028204eb8a0701b08a6bc0240bf3cbd1",
+					"original_bytes": 5957,
+					"result_bytes": 6221,
+					"added_line_count": 3,
+					"insertions": [
+						{
+							"name": "KlpLayoutMainAlignment",
+							"original_line": 59,
+							"original_byte_offset": 2598,
+							"added_lines": [
+								"/// 水平布局的主軸起端或末端對齊選項；不定義原始幾何位置。"
+							],
+							"newline": "LF",
+							"new_comment_line": 59,
+							"new_declaration_line": 60,
+							"new_byte_offset": 2598,
+							"inserted_bytes": 86
+						},
+						{
+							"name": "KlpLayoutSpacing",
+							"original_line": 60,
+							"original_byte_offset": 2641,
+							"added_lines": [
+								"/// 線性布局的標準或無間距選項；實際距離由本庫語意樣式決定。"
+							],
+							"newline": "LF",
+							"new_comment_line": 61,
+							"new_declaration_line": 62,
+							"new_byte_offset": 2727,
+							"inserted_bytes": 89
+						},
+						{
+							"name": "KlpLayoutPaneSize",
+							"original_line": 115,
+							"original_byte_offset": 4237,
+							"added_lines": [
+								"/// 布局欄的尺寸角色選項；不承載原始寬度或自行管理拖曳尺寸。"
+							],
+							"newline": "LF",
+							"new_comment_line": 117,
+							"new_declaration_line": 118,
+							"new_byte_offset": 4412,
+							"inserted_bytes": 89
+						}
+					],
+					"reverse_removal": {
+						"status": "pass",
+						"method": "Remove only recorded inserted byte ranges in reverse offset order; compare Buffer byte equality with original clean-worktree bytes.",
+						"restored_sha256": "0578c34c464658b9d9f56d2305c79937028204eb8a0701b08a6bc0240bf3cbd1",
+						"exact_original_bytes": true
+					}
+				},
+				{
+					"path": "lib/src/features/workspace/layout/klp_frame_groups.dart",
+					"sha256": "5894b12ab5b0b94681e39e1c07620e42d5c087c800d579e5d9300ae2f6d526bb",
+					"original_sha256": "aacc147b3555722c36f64a38b8d55f8308d6d3beb68a1e157716cc6141cdd0bb",
+					"original_bytes": 3645,
+					"result_bytes": 3743,
+					"added_line_count": 1,
+					"insertions": [
+						{
+							"name": "KlpFrameGroupContentSpacing",
+							"original_line": 68,
+							"original_byte_offset": 2454,
+							"added_lines": [
+								"/// 群組內容之間的標準或無間距選項；不改變群組內距或定義原始距離。"
+							],
+							"newline": "LF",
+							"new_comment_line": 68,
+							"new_declaration_line": 69,
+							"new_byte_offset": 2454,
+							"inserted_bytes": 98
+						}
+					],
+					"reverse_removal": {
+						"status": "pass",
+						"method": "Remove only recorded inserted byte ranges in reverse offset order; compare Buffer byte equality with original clean-worktree bytes.",
+						"restored_sha256": "aacc147b3555722c36f64a38b8d55f8308d6d3beb68a1e157716cc6141cdd0bb",
+						"exact_original_bytes": true
+					}
+				},
+				{
+					"path": "lib/src/features/workspace/presentation/klp_bound_document_tab_data.dart",
+					"sha256": "db7aa638eaa2a0214de7bdffd2a0dbed4c623f9bec36592ab63b658f448b1370",
+					"original_sha256": "5b2d90e2c2dbe17cdf9fd80cc29e74a4781c380ad1ac3d6bec2f6739307555a6",
+					"original_bytes": 378,
+					"result_bytes": 504,
+					"added_line_count": 1,
+					"insertions": [
+						{
+							"name": "KlpBoundDocumentTabData",
+							"original_line": 3,
+							"original_byte_offset": 44,
+							"added_lines": [
+								"/// 套件內部的唯讀頁籤呈現資料，攜帶放置身分與文件狀態；不屬使用端 API，也不保存文件。"
+							],
+							"newline": "LF",
+							"new_comment_line": 3,
+							"new_declaration_line": 4,
+							"new_byte_offset": 44,
+							"inserted_bytes": 126
+						}
+					],
+					"reverse_removal": {
+						"status": "pass",
+						"method": "Remove only recorded inserted byte ranges in reverse offset order; compare Buffer byte equality with original clean-worktree bytes.",
+						"restored_sha256": "5b2d90e2c2dbe17cdf9fd80cc29e74a4781c380ad1ac3d6bec2f6739307555a6",
+						"exact_original_bytes": true
+					}
+				},
+				{
+					"path": "lib/src/features/workspace/presentation/klp_bound_document_tabs.dart",
+					"sha256": "72f3255d635cfb76560487e17884ea5d598854f0488bb3082ef371df4e963783",
+					"original_sha256": "506ba452f12aa6d74fcd2fd0a767ccaae8960b314591161e7325d0bacca64548",
+					"original_bytes": 1041,
+					"result_bytes": 1211,
+					"added_line_count": 2,
+					"insertions": [
+						{
+							"name": "KlpBoundDocumentTabs",
+							"original_line": 3,
+							"original_byte_offset": 44,
+							"added_lines": [
+								"/// 套件內部的唯讀頁籤呈現紀錄，攜帶頁籤、事件回呼及已解析樣式。",
+								"/// 不屬使用端 API，不擁有文件選取、關閉或釘選狀態。"
+							],
+							"newline": "LF",
+							"new_comment_line": 3,
+							"new_declaration_line": 5,
+							"new_byte_offset": 44,
+							"inserted_bytes": 170
+						}
+					],
+					"reverse_removal": {
+						"status": "pass",
+						"method": "Remove only recorded inserted byte ranges in reverse offset order; compare Buffer byte equality with original clean-worktree bytes.",
+						"restored_sha256": "506ba452f12aa6d74fcd2fd0a767ccaae8960b314591161e7325d0bacca64548",
+						"exact_original_bytes": true
+					}
+				},
+				{
+					"path": "lib/src/features/workspace/presentation/klp_bound_explorer.dart",
+					"sha256": "8df69523db8c67e4a2dba6bb0fd77866c213991b0b07537391340b83bbe02aa2",
+					"original_sha256": "6fb6ed48020bc5920f2908b790dfb764d03c61b1ee40b92d1ab542567e9e7a95",
+					"original_bytes": 1785,
+					"result_bytes": 1965,
+					"added_line_count": 2,
+					"insertions": [
+						{
+							"name": "KlpBoundExplorer",
+							"original_line": 3,
+							"original_byte_offset": 44,
+							"added_lines": [
+								"/// 套件內部的唯讀 Explorer 呈現紀錄，攜帶階層資料、事件回呼及已解析樣式。",
+								"/// 不屬使用端 API，不擁有產品階層、選取或移動權威。"
+							],
+							"newline": "LF",
+							"new_comment_line": 3,
+							"new_declaration_line": 5,
+							"new_byte_offset": 44,
+							"inserted_bytes": 180
+						}
+					],
+					"reverse_removal": {
+						"status": "pass",
+						"method": "Remove only recorded inserted byte ranges in reverse offset order; compare Buffer byte equality with original clean-worktree bytes.",
+						"restored_sha256": "6fb6ed48020bc5920f2908b790dfb764d03c61b1ee40b92d1ab542567e9e7a95",
+						"exact_original_bytes": true
+					}
+				},
+				{
+					"path": "lib/src/features/workspace/presentation/klp_bound_explorer_item_data.dart",
+					"sha256": "d3e0b9493ed6b3f5e9551d32cfe9ff4f418f3a8b146001d82261c7a092e42f6a",
+					"original_sha256": "2c38da25401b7c9418a86d254b6e0beb7519237d7db3226def2988fca53514d4",
+					"original_bytes": 692,
+					"result_bytes": 869,
+					"added_line_count": 2,
+					"insertions": [
+						{
+							"name": "KlpBoundExplorerItemData",
+							"original_line": 3,
+							"original_byte_offset": 44,
+							"added_lines": [
+								"/// 套件內部的唯讀 Explorer 項目資料，保留來源與放置身分、子項目及動作。",
+								"/// 不屬使用端 API，不自行變更階層、選取或展開狀態。"
+							],
+							"newline": "LF",
+							"new_comment_line": 3,
+							"new_declaration_line": 5,
+							"new_byte_offset": 44,
+							"inserted_bytes": 177
+						}
+					],
+					"reverse_removal": {
+						"status": "pass",
+						"method": "Remove only recorded inserted byte ranges in reverse offset order; compare Buffer byte equality with original clean-worktree bytes.",
+						"restored_sha256": "2c38da25401b7c9418a86d254b6e0beb7519237d7db3226def2988fca53514d4",
+						"exact_original_bytes": true
+					}
+				},
+				{
+					"path": "lib/src/features/workspace/presentation/klp_bound_window_controls.dart",
+					"sha256": "c6ab3e7eb965f8608a4adf3c3568bcd89677657ff4de2a86124069f7ac94dafc",
+					"original_sha256": "6e8ec6787aec7e47dce4c5dcd04b5a7afe754b1cfa5f567a0a85ddb89cccdf6b",
+					"original_bytes": 861,
+					"result_bytes": 1049,
+					"added_line_count": 2,
+					"insertions": [
+						{
+							"name": "KlpBoundWindowControls",
+							"original_line": 3,
+							"original_byte_offset": 44,
+							"added_lines": [
+								"/// 套件內部的唯讀視窗控制呈現紀錄，攜帶最大化輸入、操作回呼及已解析樣式。",
+								"/// 不屬使用端 API，不擁有原生視窗狀態或執行平台操作。"
+							],
+							"newline": "LF",
+							"new_comment_line": 3,
+							"new_declaration_line": 5,
+							"new_byte_offset": 44,
+							"inserted_bytes": 188
+						}
+					],
+					"reverse_removal": {
+						"status": "pass",
+						"method": "Remove only recorded inserted byte ranges in reverse offset order; compare Buffer byte equality with original clean-worktree bytes.",
+						"restored_sha256": "6e8ec6787aec7e47dce4c5dcd04b5a7afe754b1cfa5f567a0a85ddb89cccdf6b",
+						"exact_original_bytes": true
+					}
+				},
+				{
+					"path": "lib/src/features/workspace/presentation/klp_bound_workspace_block.dart",
+					"sha256": "58ae7e90ab1c3aa7c47c721a792f523a8b0a76f4f16fdca082ae83d4197f9474",
+					"original_sha256": "d6f755c73bebe1d4904878e4663c4d8743149fe35ff1cb934ee3c99e0ed98809",
+					"original_bytes": 3768,
+					"result_bytes": 3938,
+					"added_line_count": 2,
+					"insertions": [
+						{
+							"name": "KlpBoundWorkspaceBlock",
+							"original_line": 3,
+							"original_byte_offset": 44,
+							"added_lines": [
+								"/// 套件內部的唯讀工作區區塊呈現紀錄，彙整內容、事件回呼及已解析樣式。",
+								"/// 不屬使用端 API，不另建產品狀態或主題來源。"
+							],
+							"newline": "LF",
+							"new_comment_line": 3,
+							"new_declaration_line": 5,
+							"new_byte_offset": 44,
+							"inserted_bytes": 170
+						}
+					],
+					"reverse_removal": {
+						"status": "pass",
+						"method": "Remove only recorded inserted byte ranges in reverse offset order; compare Buffer byte equality with original clean-worktree bytes.",
+						"restored_sha256": "d6f755c73bebe1d4904878e4663c4d8743149fe35ff1cb934ee3c99e0ed98809",
+						"exact_original_bytes": true
+					}
+				},
+				{
+					"path": "lib/src/features/workspace/presentation/klp_bound_workspace_choice.dart",
+					"sha256": "533b6f5fb73df07ed6524d6ac5bcd761a6e99a7cef9c757f9f82ba17e538ccc4",
+					"original_sha256": "0b358ff29679222a2279ff1c96d95efc39000b1001cf5a056b332a3fe24931d3",
+					"original_bytes": 259,
+					"result_bytes": 394,
+					"added_line_count": 1,
+					"insertions": [
+						{
+							"name": "KlpBoundWorkspaceChoice",
+							"original_line": 3,
+							"original_byte_offset": 44,
+							"added_lines": [
+								"/// 套件內部的唯讀選項呈現資料，攜帶標籤、選取輸入與回呼；不屬使用端 API，也不管理選取狀態。"
+							],
+							"newline": "LF",
+							"new_comment_line": 3,
+							"new_declaration_line": 4,
+							"new_byte_offset": 44,
+							"inserted_bytes": 135
+						}
+					],
+					"reverse_removal": {
+						"status": "pass",
+						"method": "Remove only recorded inserted byte ranges in reverse offset order; compare Buffer byte equality with original clean-worktree bytes.",
+						"restored_sha256": "0b358ff29679222a2279ff1c96d95efc39000b1001cf5a056b332a3fe24931d3",
+						"exact_original_bytes": true
+					}
+				},
+				{
+					"path": "lib/src/features/workspace/presentation/klp_bound_workspace_command.dart",
+					"sha256": "871dcfb01d73408917c3a57fbfdc742ff8b1906feab0ddf45e7aa22aaa718147",
+					"original_sha256": "98ffeac7e2f50e867561cd6c5e53698492145f91457d4acc0c9d310f5511cc39",
+					"original_bytes": 607,
+					"result_bytes": 771,
+					"added_line_count": 2,
+					"insertions": [
+						{
+							"name": "KlpBoundWorkspaceCommand",
+							"original_line": 3,
+							"original_byte_offset": 44,
+							"added_lines": [
+								"/// 套件內部的唯讀命令呈現資料，攜帶輸入、確認文案與呼叫回呼。",
+								"/// 不屬使用端 API，不自行執行產品命令或決定授權。"
+							],
+							"newline": "LF",
+							"new_comment_line": 3,
+							"new_declaration_line": 5,
+							"new_byte_offset": 44,
+							"inserted_bytes": 164
+						}
+					],
+					"reverse_removal": {
+						"status": "pass",
+						"method": "Remove only recorded inserted byte ranges in reverse offset order; compare Buffer byte equality with original clean-worktree bytes.",
+						"restored_sha256": "98ffeac7e2f50e867561cd6c5e53698492145f91457d4acc0c9d310f5511cc39",
+						"exact_original_bytes": true
+					}
+				},
+				{
+					"path": "lib/src/features/workspace/presentation/klp_bound_workspace_content.dart",
+					"sha256": "802b6ceda94fdb7a2e6ff6621e64f8fcc9383eeb329393a6c4fed89ab9e9fe9e",
+					"original_sha256": "7e1bbe0a7a9811b467016b6e5d0f133a92175066c645b8ce486d7eee6ddb8711",
+					"original_bytes": 303,
+					"result_bytes": 473,
+					"added_line_count": 2,
+					"insertions": [
+						{
+							"name": "KlpBoundWorkspaceContent",
+							"original_line": 3,
+							"original_byte_offset": 44,
+							"added_lines": [
+								"/// 套件內部的唯讀線性內容呈現紀錄，攜帶軸向與已綁定子項目。",
+								"/// 不屬使用端 API，不建立另一棵使用端結構樹或正文模型。"
+							],
+							"newline": "LF",
+							"new_comment_line": 3,
+							"new_declaration_line": 5,
+							"new_byte_offset": 44,
+							"inserted_bytes": 170
+						}
+					],
+					"reverse_removal": {
+						"status": "pass",
+						"method": "Remove only recorded inserted byte ranges in reverse offset order; compare Buffer byte equality with original clean-worktree bytes.",
+						"restored_sha256": "7e1bbe0a7a9811b467016b6e5d0f133a92175066c645b8ce486d7eee6ddb8711",
+						"exact_original_bytes": true
+					}
+				},
+				{
+					"path": "lib/src/features/workspace/presentation/klp_bound_workspace_content_block.dart",
+					"sha256": "842270c70d04d10428139b2f637257db4f9c8878863a616e8eeefe06edfb6282",
+					"original_sha256": "de49a9958d193b9b122e5158fd385e97e82896d1b18ecdbb064184cb488e9bab",
+					"original_bytes": 615,
+					"result_bytes": 794,
+					"added_line_count": 2,
+					"insertions": [
+						{
+							"name": "KlpBoundWorkspaceContentBlock",
+							"original_line": 3,
+							"original_byte_offset": 44,
+							"added_lines": [
+								"/// 套件內部的唯讀內容區塊呈現紀錄，攜帶文字、勾選輸入、回呼與已綁定子項目。",
+								"/// 不屬使用端 API，不擁有正文交易或勾選狀態。"
+							],
+							"newline": "LF",
+							"new_comment_line": 3,
+							"new_declaration_line": 5,
+							"new_byte_offset": 44,
+							"inserted_bytes": 179
+						}
+					],
+					"reverse_removal": {
+						"status": "pass",
+						"method": "Remove only recorded inserted byte ranges in reverse offset order; compare Buffer byte equality with original clean-worktree bytes.",
+						"restored_sha256": "de49a9958d193b9b122e5158fd385e97e82896d1b18ecdbb064184cb488e9bab",
+						"exact_original_bytes": true
+					}
+				},
+				{
+					"path": "lib/src/features/workspace/presentation/klp_bound_workspace_data.dart",
+					"sha256": "b7efb55f0bd3cacf4c3ca3a726a93b8338c870095fd89a6907162994da7f2190",
+					"original_sha256": "111972854f318292a0d6f33b61a5e1442cd03009d092b540225e4b628b5249ba",
+					"original_bytes": 139,
+					"result_bytes": 265,
+					"added_line_count": 1,
+					"insertions": [
+						{
+							"name": "KlpBoundWorkspaceData",
+							"original_line": 3,
+							"original_byte_offset": 44,
+							"added_lines": [
+								"/// 套件內部不含欄位的唯讀工作區資料標記；不屬使用端 API，也不承載產品資料或渲染邏輯。"
+							],
+							"newline": "LF",
+							"new_comment_line": 3,
+							"new_declaration_line": 4,
+							"new_byte_offset": 44,
+							"inserted_bytes": 126
+						}
+					],
+					"reverse_removal": {
+						"status": "pass",
+						"method": "Remove only recorded inserted byte ranges in reverse offset order; compare Buffer byte equality with original clean-worktree bytes.",
+						"restored_sha256": "111972854f318292a0d6f33b61a5e1442cd03009d092b540225e4b628b5249ba",
+						"exact_original_bytes": true
+					}
+				},
+				{
+					"path": "lib/src/features/workspace/presentation/klp_bound_workspace_item.dart",
+					"sha256": "4d2198ceeff4312e2f619a010e3076d069da0ec73b66f641f53b88ccde2d3933",
+					"original_sha256": "6eec642f94fd96b95b6310c4b0ca9eb7347ce91658a9b6e4e8563c241feab019",
+					"original_bytes": 462,
+					"result_bytes": 629,
+					"added_line_count": 2,
+					"insertions": [
+						{
+							"name": "KlpBoundWorkspaceItem",
+							"original_line": 3,
+							"original_byte_offset": 44,
+							"added_lines": [
+								"/// 套件內部的唯讀項目呈現資料，攜帶文字、圖示、狀態輸入及事件回呼。",
+								"/// 不屬使用端 API，不自行管理勾選或選取狀態。"
+							],
+							"newline": "LF",
+							"new_comment_line": 3,
+							"new_declaration_line": 5,
+							"new_byte_offset": 44,
+							"inserted_bytes": 167
+						}
+					],
+					"reverse_removal": {
+						"status": "pass",
+						"method": "Remove only recorded inserted byte ranges in reverse offset order; compare Buffer byte equality with original clean-worktree bytes.",
+						"restored_sha256": "6eec642f94fd96b95b6310c4b0ca9eb7347ce91658a9b6e4e8563c241feab019",
+						"exact_original_bytes": true
+					}
+				}
+			],
+			"body_preservation": "pass: all 17 original clean-worktree byte sequences, including CRLF and existing comments, restored exactly by reverse removal of 25 inserted dartdoc blocks",
+			"scope_checker": {
+				"command": [
+					"C:\\Program Files\\nodejs\\node.exe",
+					".agents/skills/incremental-implementation/scripts/check-task-scope.mjs",
+					"--packet",
+					"D:/Projects/Kallopis-v1-evidence/metrics/FEATURES-METRICS-DOC-01.json",
+					"--repo",
+					"D:/Projects/Klp-doc-f"
+				],
+				"logpath": "D:/Projects/Kallopis-v1-evidence/metrics/features-doc-scope.json",
+				"exit_code": 0,
+				"result": {
+					"task_id": "FEATURES-METRICS-DOC-01",
+					"base_revision": "d304e95bd689e092919dbeb925e2f9e8199d375c",
+					"changed_paths": [
+						"lib/src/features/editing/contracts/klp_block_note_editing_content.dart",
+						"lib/src/features/workspace/components/klp_explorer.dart",
+						"lib/src/features/workspace/components/klp_workspace_block.dart",
+						"lib/src/features/workspace/layout/klp_app_layout.dart",
+						"lib/src/features/workspace/layout/klp_frame_groups.dart",
+						"lib/src/features/workspace/presentation/klp_bound_document_tab_data.dart",
+						"lib/src/features/workspace/presentation/klp_bound_document_tabs.dart",
+						"lib/src/features/workspace/presentation/klp_bound_explorer.dart",
+						"lib/src/features/workspace/presentation/klp_bound_explorer_item_data.dart",
+						"lib/src/features/workspace/presentation/klp_bound_window_controls.dart",
+						"lib/src/features/workspace/presentation/klp_bound_workspace_block.dart",
+						"lib/src/features/workspace/presentation/klp_bound_workspace_choice.dart",
+						"lib/src/features/workspace/presentation/klp_bound_workspace_command.dart",
+						"lib/src/features/workspace/presentation/klp_bound_workspace_content.dart",
+						"lib/src/features/workspace/presentation/klp_bound_workspace_content_block.dart",
+						"lib/src/features/workspace/presentation/klp_bound_workspace_data.dart",
+						"lib/src/features/workspace/presentation/klp_bound_workspace_item.dart"
+					],
+					"violations": [],
+					"status": "pass"
+				}
+			},
+			"tests": {
+				"token_discipline": "integration-pending: root owns paired 50-declaration Red/Green run",
+				"local_analysis": "not-run: root owns paired check",
+				"new_or_modified_tests": false
+			},
+			"staged": false,
+			"committed": false,
+			"usage": {
+				"tokens": "unknown",
+				"elapsed_ms": "unknown",
+				"measurement_note": "Tool execution durations are not total task usage; no full-task meter is available."
+			},
+			"blockers": []
+		},
+		"baseline_failure_logs": [
+			"D:\\Projects\\Kallopis-v1-evidence\\metrics\\theme-tests.log",
+			"D:\\Projects\\Kallopis-v1-evidence\\metrics\\token-original-baseline.log"
+		]
+	},
+	"test_harness_recovery": {
+		"kind": "existing different-library primitive KlpRadius homonym",
+		"action": "Independent author exact-froze existing distinct primitive declaration fingerprint, added duplicate-authority controls, retained all legacy values/types/parts and boundary assertions.",
+		"original_report": "D:\\Projects\\Kallopis-v1-evidence\\metrics\\test-author-r1.json",
+		"original_failure": "D:\\Projects\\Kallopis-v1-evidence\\metrics\\protected-r1-homonym-failure.log"
+	},
+	"atlas": {
+		"sources": 1196,
+		"folders": 278,
+		"diagrams": 3713,
+		"freshness_files": 1475,
+		"logs": [
+			{
+				"path": "D:\\Projects\\Kallopis-v1-evidence\\metrics\\atlas-generation.log",
+				"sha256": "5a32ebb9d86565119ba44813e7de45f15aeeb75991a80bd6b84b41fb5d65d4e7"
+			},
+			{
+				"path": "D:\\Projects\\Kallopis-v1-evidence\\metrics\\atlas-check.log",
+				"sha256": "27d2f93e876d22272bba51cd64b1859f948001b0896b7a4ac5586c5bc82b19de"
+			}
+		]
+	},
+	"limitations": [
+		"No full-suite or visual acceptance claim.",
+		"Worker architecture hash differed only CRLF from clean integration LF; exact normalized content verified before re-signing worker packet.",
+		"CAP03/FEAT07 and host/session/APP06/P9 not closed by documentation recovery."
+	],
+	"source_return": "Exact original hashes and HEAD/index preservation; external transfer-receipt.json."
+}

@@ -1,11 +1,11 @@
 import 'package:flutter/widgets.dart';
 
-import '../../../../../foundation/klp_icon.dart';
-import '../../../../../foundation/klp_icons.dart';
-import '../../../../../foundation/interaction/klp_action_region.dart';
-import '../../../../../foundation/interaction/klp_action_region_shape.dart';
-import '../../../../../application/localization/klp_localizations.dart';
-import '../../../../../styling/legacy_theme/klp_theme.dart';
+import 'package:kallopis/src/foundation/klp_icon.dart';
+import 'package:kallopis/src/foundation/klp_icons.dart';
+import 'package:kallopis/src/foundation/interaction/klp_action_region.dart';
+import 'package:kallopis/src/foundation/interaction/klp_action_region_shape.dart';
+import 'package:kallopis/src/foundation/localization/klp_localizations.dart';
+import 'package:kallopis/src/styling/legacy_theme/klp_theme.dart';
 
 part 'primitives/klp_pane_collapse_icon_frame.dart';
 

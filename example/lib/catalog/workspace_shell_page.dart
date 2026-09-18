@@ -16,7 +16,6 @@ final workspaceShellPage = CatalogPageData(
         width: context.klp.geometry.layout.primaryPaneWidth,
         height: context.klp.space.pageLarge,
         child: KlpApp(
-          showWindowHeader: false,
           startMaximized: false,
           home: KlpAdaptive(
             windows: (_) =>

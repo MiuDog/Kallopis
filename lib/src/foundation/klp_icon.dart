@@ -1,7 +1,8 @@
 import 'package:flutter/widgets.dart';
 
-import '../styling/legacy_theme/klp_theme.dart';
+import 'package:kallopis/src/styling/legacy_theme/klp_theme.dart';
 import 'klp_icon_data.dart';
+import 'klp_icon_fonts.dart';
 import 'klp_icon_weight.dart';
 
 export 'klp_icon_data.dart';
@@ -26,10 +27,10 @@ class KlpIcon extends StatelessWidget {
   final KlpIconWeight weight;
 
   /// Regular Rounded 在 Flutter asset manifest 中登記的 family 名稱。
-  static const regularFontFamily = 'Flaticon UIcons Regular Rounded';
+  static const regularFontFamily = KlpIconFonts.regular;
 
   /// Thin Rounded 在 Flutter asset manifest 中登記的 family 名稱。
-  static const thinFontFamily = 'Flaticon UIcons Thin Rounded';
+  static const thinFontFamily = KlpIconFonts.thin;
 
   /// 向下相容的預設字型名稱。
   static const fontFamily = regularFontFamily;

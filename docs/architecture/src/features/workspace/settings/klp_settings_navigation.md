@@ -12,16 +12,16 @@
 flowchart LR
 	n0["klp_settings_navigation.dart"]
 	n1["package:flutter/widgets.dart"]
-	n2["../../../foundation/interaction/controls/klp_control_size.dart"]
-	n3["../../forms/input/klp_text_field.dart"]
-	n4["../../collections/list_tile/klp_list_tile.dart"]
-	n5["../../../foundation/klp_icon.dart"]
-	n6["../../../foundation/klp_icons.dart"]
-	n7["../../../foundation/interaction/klp_pressable.dart"]
-	n8["../../../foundation/layout/klp_layout.dart"]
-	n9["../../../foundation/surface/klp_surface.dart"]
-	n10["../../../styling/legacy_theme/klp_theme.dart"]
-	n11["../../../foundation/content/klp_text.dart"]
+	n2["package:kallopis/src/foundation/interaction/controls/klp_control_size.dart"]
+	n3["package:kallopis/src/features/forms/input/klp_text_field.dart"]
+	n4["package:kallopis/src/features/collections/list_tile/klp_list_tile.dart"]
+	n5["package:kallopis/src/foundation/klp_icon.dart"]
+	n6["package:kallopis/src/foundation/klp_icons.dart"]
+	n7["package:kallopis/src/foundation/interaction/klp_pressable.dart"]
+	n8["package:kallopis/src/foundation/layout/klp_layout.dart"]
+	n9["package:kallopis/src/foundation/surface/klp_surface.dart"]
+	n10["package:kallopis/src/styling/legacy_theme/klp_theme.dart"]
+	n11["package:kallopis/src/foundation/content/klp_text.dart"]
 	n0 -->|"import"| n1
 	n0 -->|"import"| n2
 	n0 -->|"import"| n3
@@ -57,16 +57,16 @@ flowchart LR
 | 關係 | 原始 directive | 來源 |
 |---|---|---|
 | import | <code>import &#x27;package:flutter/widgets.dart&#x27;;</code> | [lib/src/features/workspace/settings/klp_settings_navigation.dart:1](../../../../../../lib/src/features/workspace/settings/klp_settings_navigation.dart#L1) |
-| import | <code>import &#x27;../../../foundation/interaction/controls/klp_control_size.dart&#x27;;</code> | [lib/src/features/workspace/settings/klp_settings_navigation.dart:3](../../../../../../lib/src/features/workspace/settings/klp_settings_navigation.dart#L3) |
-| import | <code>import &#x27;../../forms/input/klp_text_field.dart&#x27;;</code> | [lib/src/features/workspace/settings/klp_settings_navigation.dart:4](../../../../../../lib/src/features/workspace/settings/klp_settings_navigation.dart#L4) |
-| import | <code>import &#x27;../../collections/list_tile/klp_list_tile.dart&#x27;;</code> | [lib/src/features/workspace/settings/klp_settings_navigation.dart:5](../../../../../../lib/src/features/workspace/settings/klp_settings_navigation.dart#L5) |
-| import | <code>import &#x27;../../../foundation/klp_icon.dart&#x27;;</code> | [lib/src/features/workspace/settings/klp_settings_navigation.dart:6](../../../../../../lib/src/features/workspace/settings/klp_settings_navigation.dart#L6) |
-| import | <code>import &#x27;../../../foundation/klp_icons.dart&#x27;;</code> | [lib/src/features/workspace/settings/klp_settings_navigation.dart:7](../../../../../../lib/src/features/workspace/settings/klp_settings_navigation.dart#L7) |
-| import | <code>import &#x27;../../../foundation/interaction/klp_pressable.dart&#x27;;</code> | [lib/src/features/workspace/settings/klp_settings_navigation.dart:8](../../../../../../lib/src/features/workspace/settings/klp_settings_navigation.dart#L8) |
-| import | <code>import &#x27;../../../foundation/layout/klp_layout.dart&#x27;;</code> | [lib/src/features/workspace/settings/klp_settings_navigation.dart:9](../../../../../../lib/src/features/workspace/settings/klp_settings_navigation.dart#L9) |
-| import | <code>import &#x27;../../../foundation/surface/klp_surface.dart&#x27;;</code> | [lib/src/features/workspace/settings/klp_settings_navigation.dart:10](../../../../../../lib/src/features/workspace/settings/klp_settings_navigation.dart#L10) |
-| import | <code>import &#x27;../../../styling/legacy_theme/klp_theme.dart&#x27;;</code> | [lib/src/features/workspace/settings/klp_settings_navigation.dart:11](../../../../../../lib/src/features/workspace/settings/klp_settings_navigation.dart#L11) |
-| import | <code>import &#x27;../../../foundation/content/klp_text.dart&#x27;;</code> | [lib/src/features/workspace/settings/klp_settings_navigation.dart:12](../../../../../../lib/src/features/workspace/settings/klp_settings_navigation.dart#L12) |
+| import | <code>import &#x27;package:kallopis/src/foundation/interaction/controls/klp_control_size.dart&#x27;;</code> | [lib/src/features/workspace/settings/klp_settings_navigation.dart:3](../../../../../../lib/src/features/workspace/settings/klp_settings_navigation.dart#L3) |
+| import | <code>import &#x27;package:kallopis/src/features/forms/input/klp_text_field.dart&#x27;;</code> | [lib/src/features/workspace/settings/klp_settings_navigation.dart:4](../../../../../../lib/src/features/workspace/settings/klp_settings_navigation.dart#L4) |
+| import | <code>import &#x27;package:kallopis/src/features/collections/list_tile/klp_list_tile.dart&#x27;;</code> | [lib/src/features/workspace/settings/klp_settings_navigation.dart:5](../../../../../../lib/src/features/workspace/settings/klp_settings_navigation.dart#L5) |
+| import | <code>import &#x27;package:kallopis/src/foundation/klp_icon.dart&#x27;;</code> | [lib/src/features/workspace/settings/klp_settings_navigation.dart:6](../../../../../../lib/src/features/workspace/settings/klp_settings_navigation.dart#L6) |
+| import | <code>import &#x27;package:kallopis/src/foundation/klp_icons.dart&#x27;;</code> | [lib/src/features/workspace/settings/klp_settings_navigation.dart:7](../../../../../../lib/src/features/workspace/settings/klp_settings_navigation.dart#L7) |
+| import | <code>import &#x27;package:kallopis/src/foundation/interaction/klp_pressable.dart&#x27;;</code> | [lib/src/features/workspace/settings/klp_settings_navigation.dart:8](../../../../../../lib/src/features/workspace/settings/klp_settings_navigation.dart#L8) |
+| import | <code>import &#x27;package:kallopis/src/foundation/layout/klp_layout.dart&#x27;;</code> | [lib/src/features/workspace/settings/klp_settings_navigation.dart:9](../../../../../../lib/src/features/workspace/settings/klp_settings_navigation.dart#L9) |
+| import | <code>import &#x27;package:kallopis/src/foundation/surface/klp_surface.dart&#x27;;</code> | [lib/src/features/workspace/settings/klp_settings_navigation.dart:10](../../../../../../lib/src/features/workspace/settings/klp_settings_navigation.dart#L10) |
+| import | <code>import &#x27;package:kallopis/src/styling/legacy_theme/klp_theme.dart&#x27;;</code> | [lib/src/features/workspace/settings/klp_settings_navigation.dart:11](../../../../../../lib/src/features/workspace/settings/klp_settings_navigation.dart#L11) |
+| import | <code>import &#x27;package:kallopis/src/foundation/content/klp_text.dart&#x27;;</code> | [lib/src/features/workspace/settings/klp_settings_navigation.dart:12](../../../../../../lib/src/features/workspace/settings/klp_settings_navigation.dart#L12) |
 | part | <code>part &#x27;navigation/klp_settings_navigation_group.dart&#x27;;</code> | [lib/src/features/workspace/settings/klp_settings_navigation.dart:14](../../../../../../lib/src/features/workspace/settings/klp_settings_navigation.dart#L14) |
 | part | <code>part &#x27;navigation/klp_settings_navigation_header.dart&#x27;;</code> | [lib/src/features/workspace/settings/klp_settings_navigation.dart:15](../../../../../../lib/src/features/workspace/settings/klp_settings_navigation.dart#L15) |
 | part | <code>part &#x27;navigation/klp_settings_navigation_item.dart&#x27;;</code> | [lib/src/features/workspace/settings/klp_settings_navigation.dart:16](../../../../../../lib/src/features/workspace/settings/klp_settings_navigation.dart#L16) |

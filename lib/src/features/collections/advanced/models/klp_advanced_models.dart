@@ -1,7 +1,7 @@
 import 'package:flutter/foundation.dart';
 
-import '../../../feedback/klp_feedback_tone.dart';
-import '../../../../foundation/klp_icon.dart';
+import 'package:kallopis/src/features/feedback/klp_feedback_tone.dart';
+import 'package:kallopis/src/foundation/klp_icon.dart';
 
 part 'klp_data_alignment.dart';
 part 'klp_data_column.dart';

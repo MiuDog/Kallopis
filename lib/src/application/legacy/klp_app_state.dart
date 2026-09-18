@@ -1,4 +1,4 @@
-part of 'klp_app.dart';
+﻿part of 'klp_app.dart';
 
 /// 管理 Kallopis 應用程式主題、快捷鍵與平台生命週期。
 class _KlpAppState extends State<KlpApp>
@@ -99,31 +99,9 @@ class _KlpAppState extends State<KlpApp>
       );
     }
 
-    if (content != null && (widget.showWindowHeader || widget.popup != null)) {
-      final toolbarHeight = widget.showWindowHeader
-          ? klpWindowHeaderHeight(
-              effectiveStyle.geometry,
-              windowHeaderMargin: effectiveStyle.spacing.windowHeaderMargin,
-            )
-          : 0.0;
-      final header = !widget.showWindowHeader
-          ? null
-          : widget.windowHeader ??
-                KlpWindowHeader(
-                  appIcon: widget.appIcon,
-                  titleText: widget.title.isNotEmpty ? widget.title : null,
-                  height: toolbarHeight,
-                  actions: widget.headerActions,
-                  onMinimize: widget.onMinimize,
-                  onToggleMaximize: widget.onToggleMaximize,
-                  onClose: widget.onClose,
-                  isMaximized: widget.isMaximized,
-                  showWindowControls: widget.showWindowControls,
-                );
+    if (content != null) {
       content = _KlpAppFrame(
-        header: header,
         body: content,
-        toolbarHeight: toolbarHeight,
         popup: widget.popup,
       );
     }

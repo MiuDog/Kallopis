@@ -33,6 +33,12 @@ python -m http.server 57921 --bind 127.0.0.1 --directory build/reference-site
 - 瀏覽器：桌面與 390px 手機首頁／文件無水平溢出；手機導覽收合；API 搜尋可找到 klp_workspace_preset；明暗、色調與陰影偏好跨頁保留；含兩個 Mermaid 的規格頁成功渲染且無 console error。
 - 獨立審查抓出的選取小字及圖表深色對比均已修正。此變更未修改 Flutter 元件或幾何尺寸。
 
-推送前另以最新 main 建立獨立發布版本：124 元件、1283 API、291 指南、37 規格、2 專案文件；3446 HTML 驗證通過，來源警告 10 筆。數量差異來自開發工作區尚未提交的其他文件；本次發布不夾帶其他 Flutter 變更。首頁畫面組裝入口指向 main 現有組裝模板。
+## PE-B4 驗證（2026-09-18）
 
-GitHub Pages 在 main 推送後自動建置；實際部署狀態以 Actions 為準。
+- Markdown renderer：5 passed、0 failed。
+- 產生：128 元件、1495 API、377 指南、47 規格、2 專案文件。
+- 驗證：4060 HTML；來源覆蓋、表格、站內連結與錨點通過。
+- 全站既有來源警告 43 筆；新增的初學者入口、能力清冊、固定 Catalog 轉接與 reference flows 各為 0 筆。
+- 桌面與窄寬導航及可理解性仍待人類接受。
+
+GitHub Pages 在 main 推送後自動部署；pull request 只執行同一套建置與驗證，不發布正式站。實際狀態以 Actions 為準。

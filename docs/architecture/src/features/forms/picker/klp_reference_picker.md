@@ -11,8 +11,8 @@
 ```mermaid
 flowchart LR
 	n0["klp_reference_picker.dart"]
-	n1["../internal/klp_form_dependencies.dart"]
-	n2["../../../foundation/layout/klp_center.dart"]
+	n1["package:kallopis/src/features/forms/internal/klp_form_dependencies.dart"]
+	n2["package:kallopis/src/foundation/layout/klp_center.dart"]
 	n3["klp_reference_option.dart"]
 	n4["klp_reference_option.dart"]
 	n5["internal/klp_reference_option_row.dart"]
@@ -31,8 +31,8 @@ flowchart LR
 
 | 關係 | 原始 directive | 來源 |
 |---|---|---|
-| import | <code>import &#x27;../internal/klp_form_dependencies.dart&#x27;;</code> | [lib/src/features/forms/picker/klp_reference_picker.dart:1](../../../../../../lib/src/features/forms/picker/klp_reference_picker.dart#L1) |
-| import | <code>import &#x27;../../../foundation/layout/klp_center.dart&#x27;;</code> | [lib/src/features/forms/picker/klp_reference_picker.dart:2](../../../../../../lib/src/features/forms/picker/klp_reference_picker.dart#L2) |
+| import | <code>import &#x27;package:kallopis/src/features/forms/internal/klp_form_dependencies.dart&#x27;;</code> | [lib/src/features/forms/picker/klp_reference_picker.dart:1](../../../../../../lib/src/features/forms/picker/klp_reference_picker.dart#L1) |
+| import | <code>import &#x27;package:kallopis/src/foundation/layout/klp_center.dart&#x27;;</code> | [lib/src/features/forms/picker/klp_reference_picker.dart:2](../../../../../../lib/src/features/forms/picker/klp_reference_picker.dart#L2) |
 | import | <code>import &#x27;klp_reference_option.dart&#x27;;</code> | [lib/src/features/forms/picker/klp_reference_picker.dart:3](../../../../../../lib/src/features/forms/picker/klp_reference_picker.dart#L3) |
 | export | <code>export &#x27;klp_reference_option.dart&#x27;;</code> | [lib/src/features/forms/picker/klp_reference_picker.dart:5](../../../../../../lib/src/features/forms/picker/klp_reference_picker.dart#L5) |
 | part | <code>part &#x27;internal/klp_reference_option_row.dart&#x27;;</code> | [lib/src/features/forms/picker/klp_reference_picker.dart:7](../../../../../../lib/src/features/forms/picker/klp_reference_picker.dart#L7) |

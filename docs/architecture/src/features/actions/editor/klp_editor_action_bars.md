@@ -12,16 +12,16 @@
 flowchart LR
 	n0["klp_editor_action_bars.dart"]
 	n1["package:flutter/material.dart"]
-	n2["../button/klp_icon_button.dart"]
-	n3["../../forms/input/klp_text_field.dart"]
-	n4["../../../foundation/klp_icons.dart"]
-	n5["../../../foundation/layout/klp_box.dart"]
-	n6["../../../foundation/layout/klp_expanded.dart"]
-	n7["../../../foundation/layout/klp_gap.dart"]
-	n8["../../../foundation/layout/klp_quarter_turn.dart"]
-	n9["../../../foundation/layout/klp_rotate.dart"]
-	n10["../../../foundation/layout/klp_row.dart"]
-	n11["../../../foundation/layout/klp_space_size.dart"]
+	n2["package:kallopis/src/features/actions/button/klp_icon_button.dart"]
+	n3["package:kallopis/src/features/forms/input/klp_text_field.dart"]
+	n4["package:kallopis/src/foundation/klp_icons.dart"]
+	n5["package:kallopis/src/foundation/layout/klp_box.dart"]
+	n6["package:kallopis/src/foundation/layout/klp_expanded.dart"]
+	n7["package:kallopis/src/foundation/layout/klp_gap.dart"]
+	n8["package:kallopis/src/foundation/layout/klp_quarter_turn.dart"]
+	n9["package:kallopis/src/foundation/layout/klp_rotate.dart"]
+	n10["package:kallopis/src/foundation/layout/klp_row.dart"]
+	n11["package:kallopis/src/foundation/layout/klp_space_size.dart"]
 	n0 -->|"import"| n1
 	n0 -->|"import"| n2
 	n0 -->|"import"| n3
@@ -38,11 +38,11 @@ flowchart LR
 ```mermaid
 flowchart LR
 	n0["klp_editor_action_bars.dart"]
-	n1["../../../foundation/layout/klp_wrap.dart"]
-	n2["../../../application/localization/klp_localizations.dart"]
-	n3["../../../foundation/surface/klp_surface.dart"]
-	n4["../../../styling/legacy_theme/klp_theme.dart"]
-	n5["../../../foundation/content/klp_text.dart"]
+	n1["package:kallopis/src/foundation/layout/klp_wrap.dart"]
+	n2["package:kallopis/src/foundation/localization/klp_localizations.dart"]
+	n3["package:kallopis/src/foundation/surface/klp_surface.dart"]
+	n4["package:kallopis/src/styling/legacy_theme/klp_theme.dart"]
+	n5["package:kallopis/src/foundation/content/klp_text.dart"]
 	n6["internal/klp_editor_action.dart"]
 	n7["internal/klp_editor_action_surface.dart"]
 	n8["klp_bulk_action_bar.dart"]
@@ -74,21 +74,21 @@ flowchart TD
 | 關係 | 原始 directive | 來源 |
 |---|---|---|
 | import | <code>import &#x27;package:flutter/material.dart&#x27;;</code> | [lib/src/features/actions/editor/klp_editor_action_bars.dart:3](../../../../../../lib/src/features/actions/editor/klp_editor_action_bars.dart#L3) |
-| import | <code>import &#x27;../button/klp_icon_button.dart&#x27;;</code> | [lib/src/features/actions/editor/klp_editor_action_bars.dart:5](../../../../../../lib/src/features/actions/editor/klp_editor_action_bars.dart#L5) |
-| import | <code>import &#x27;../../forms/input/klp_text_field.dart&#x27;;</code> | [lib/src/features/actions/editor/klp_editor_action_bars.dart:6](../../../../../../lib/src/features/actions/editor/klp_editor_action_bars.dart#L6) |
-| import | <code>import &#x27;../../../foundation/klp_icons.dart&#x27;;</code> | [lib/src/features/actions/editor/klp_editor_action_bars.dart:7](../../../../../../lib/src/features/actions/editor/klp_editor_action_bars.dart#L7) |
-| import | <code>import &#x27;../../../foundation/layout/klp_box.dart&#x27;;</code> | [lib/src/features/actions/editor/klp_editor_action_bars.dart:8](../../../../../../lib/src/features/actions/editor/klp_editor_action_bars.dart#L8) |
-| import | <code>import &#x27;../../../foundation/layout/klp_expanded.dart&#x27;;</code> | [lib/src/features/actions/editor/klp_editor_action_bars.dart:9](../../../../../../lib/src/features/actions/editor/klp_editor_action_bars.dart#L9) |
-| import | <code>import &#x27;../../../foundation/layout/klp_gap.dart&#x27;;</code> | [lib/src/features/actions/editor/klp_editor_action_bars.dart:10](../../../../../../lib/src/features/actions/editor/klp_editor_action_bars.dart#L10) |
-| import | <code>import &#x27;../../../foundation/layout/klp_quarter_turn.dart&#x27;;</code> | [lib/src/features/actions/editor/klp_editor_action_bars.dart:11](../../../../../../lib/src/features/actions/editor/klp_editor_action_bars.dart#L11) |
-| import | <code>import &#x27;../../../foundation/layout/klp_rotate.dart&#x27;;</code> | [lib/src/features/actions/editor/klp_editor_action_bars.dart:12](../../../../../../lib/src/features/actions/editor/klp_editor_action_bars.dart#L12) |
-| import | <code>import &#x27;../../../foundation/layout/klp_row.dart&#x27;;</code> | [lib/src/features/actions/editor/klp_editor_action_bars.dart:13](../../../../../../lib/src/features/actions/editor/klp_editor_action_bars.dart#L13) |
-| import | <code>import &#x27;../../../foundation/layout/klp_space_size.dart&#x27;;</code> | [lib/src/features/actions/editor/klp_editor_action_bars.dart:14](../../../../../../lib/src/features/actions/editor/klp_editor_action_bars.dart#L14) |
-| import | <code>import &#x27;../../../foundation/layout/klp_wrap.dart&#x27;;</code> | [lib/src/features/actions/editor/klp_editor_action_bars.dart:15](../../../../../../lib/src/features/actions/editor/klp_editor_action_bars.dart#L15) |
-| import | <code>import &#x27;../../../application/localization/klp_localizations.dart&#x27;;</code> | [lib/src/features/actions/editor/klp_editor_action_bars.dart:16](../../../../../../lib/src/features/actions/editor/klp_editor_action_bars.dart#L16) |
-| import | <code>import &#x27;../../../foundation/surface/klp_surface.dart&#x27;;</code> | [lib/src/features/actions/editor/klp_editor_action_bars.dart:17](../../../../../../lib/src/features/actions/editor/klp_editor_action_bars.dart#L17) |
-| import | <code>import &#x27;../../../styling/legacy_theme/klp_theme.dart&#x27;;</code> | [lib/src/features/actions/editor/klp_editor_action_bars.dart:18](../../../../../../lib/src/features/actions/editor/klp_editor_action_bars.dart#L18) |
-| import | <code>import &#x27;../../../foundation/content/klp_text.dart&#x27;;</code> | [lib/src/features/actions/editor/klp_editor_action_bars.dart:19](../../../../../../lib/src/features/actions/editor/klp_editor_action_bars.dart#L19) |
+| import | <code>import &#x27;package:kallopis/src/features/actions/button/klp_icon_button.dart&#x27;;</code> | [lib/src/features/actions/editor/klp_editor_action_bars.dart:5](../../../../../../lib/src/features/actions/editor/klp_editor_action_bars.dart#L5) |
+| import | <code>import &#x27;package:kallopis/src/features/forms/input/klp_text_field.dart&#x27;;</code> | [lib/src/features/actions/editor/klp_editor_action_bars.dart:6](../../../../../../lib/src/features/actions/editor/klp_editor_action_bars.dart#L6) |
+| import | <code>import &#x27;package:kallopis/src/foundation/klp_icons.dart&#x27;;</code> | [lib/src/features/actions/editor/klp_editor_action_bars.dart:7](../../../../../../lib/src/features/actions/editor/klp_editor_action_bars.dart#L7) |
+| import | <code>import &#x27;package:kallopis/src/foundation/layout/klp_box.dart&#x27;;</code> | [lib/src/features/actions/editor/klp_editor_action_bars.dart:8](../../../../../../lib/src/features/actions/editor/klp_editor_action_bars.dart#L8) |
+| import | <code>import &#x27;package:kallopis/src/foundation/layout/klp_expanded.dart&#x27;;</code> | [lib/src/features/actions/editor/klp_editor_action_bars.dart:9](../../../../../../lib/src/features/actions/editor/klp_editor_action_bars.dart#L9) |
+| import | <code>import &#x27;package:kallopis/src/foundation/layout/klp_gap.dart&#x27;;</code> | [lib/src/features/actions/editor/klp_editor_action_bars.dart:10](../../../../../../lib/src/features/actions/editor/klp_editor_action_bars.dart#L10) |
+| import | <code>import &#x27;package:kallopis/src/foundation/layout/klp_quarter_turn.dart&#x27;;</code> | [lib/src/features/actions/editor/klp_editor_action_bars.dart:11](../../../../../../lib/src/features/actions/editor/klp_editor_action_bars.dart#L11) |
+| import | <code>import &#x27;package:kallopis/src/foundation/layout/klp_rotate.dart&#x27;;</code> | [lib/src/features/actions/editor/klp_editor_action_bars.dart:12](../../../../../../lib/src/features/actions/editor/klp_editor_action_bars.dart#L12) |
+| import | <code>import &#x27;package:kallopis/src/foundation/layout/klp_row.dart&#x27;;</code> | [lib/src/features/actions/editor/klp_editor_action_bars.dart:13](../../../../../../lib/src/features/actions/editor/klp_editor_action_bars.dart#L13) |
+| import | <code>import &#x27;package:kallopis/src/foundation/layout/klp_space_size.dart&#x27;;</code> | [lib/src/features/actions/editor/klp_editor_action_bars.dart:14](../../../../../../lib/src/features/actions/editor/klp_editor_action_bars.dart#L14) |
+| import | <code>import &#x27;package:kallopis/src/foundation/layout/klp_wrap.dart&#x27;;</code> | [lib/src/features/actions/editor/klp_editor_action_bars.dart:15](../../../../../../lib/src/features/actions/editor/klp_editor_action_bars.dart#L15) |
+| import | <code>import &#x27;package:kallopis/src/foundation/localization/klp_localizations.dart&#x27;;</code> | [lib/src/features/actions/editor/klp_editor_action_bars.dart:16](../../../../../../lib/src/features/actions/editor/klp_editor_action_bars.dart#L16) |
+| import | <code>import &#x27;package:kallopis/src/foundation/surface/klp_surface.dart&#x27;;</code> | [lib/src/features/actions/editor/klp_editor_action_bars.dart:17](../../../../../../lib/src/features/actions/editor/klp_editor_action_bars.dart#L17) |
+| import | <code>import &#x27;package:kallopis/src/styling/legacy_theme/klp_theme.dart&#x27;;</code> | [lib/src/features/actions/editor/klp_editor_action_bars.dart:18](../../../../../../lib/src/features/actions/editor/klp_editor_action_bars.dart#L18) |
+| import | <code>import &#x27;package:kallopis/src/foundation/content/klp_text.dart&#x27;;</code> | [lib/src/features/actions/editor/klp_editor_action_bars.dart:19](../../../../../../lib/src/features/actions/editor/klp_editor_action_bars.dart#L19) |
 | part | <code>part &#x27;internal/klp_editor_action.dart&#x27;;</code> | [lib/src/features/actions/editor/klp_editor_action_bars.dart:21](../../../../../../lib/src/features/actions/editor/klp_editor_action_bars.dart#L21) |
 | part | <code>part &#x27;internal/klp_editor_action_surface.dart&#x27;;</code> | [lib/src/features/actions/editor/klp_editor_action_bars.dart:22](../../../../../../lib/src/features/actions/editor/klp_editor_action_bars.dart#L22) |
 | part | <code>part &#x27;klp_bulk_action_bar.dart&#x27;;</code> | [lib/src/features/actions/editor/klp_editor_action_bars.dart:23](../../../../../../lib/src/features/actions/editor/klp_editor_action_bars.dart#L23) |

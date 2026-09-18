@@ -1,13 +1,13 @@
 import 'package:flutter/widgets.dart';
 
-import '../../../../foundation/platform/klp_app_platform.dart';
-import '../../../../foundation/interaction/klp_gesture_region.dart';
-import '../../../../foundation/layout/klp_adaptive.dart';
-import '../../../../foundation/layout/klp_box.dart';
-import '../../../../foundation/surface/klp_surface.dart';
-import '../../../../styling/legacy_theme/klp_geometry_theme.dart';
-import '../../../../styling/legacy_theme/klp_theme.dart';
-import '../../../../foundation/content/klp_text.dart';
+import 'package:kallopis/src/foundation/platform/klp_app_platform.dart';
+import 'package:kallopis/src/foundation/interaction/klp_gesture_region.dart';
+import 'package:kallopis/src/foundation/layout/klp_adaptive.dart';
+import 'package:kallopis/src/foundation/layout/klp_box.dart';
+import 'package:kallopis/src/foundation/surface/klp_surface.dart';
+import 'package:kallopis/src/styling/legacy_theme/klp_geometry_theme.dart';
+import 'package:kallopis/src/styling/legacy_theme/klp_theme.dart';
+import 'package:kallopis/src/foundation/content/klp_text.dart';
 import 'klp_window_action.dart';
 import 'klp_window_header_height.dart';
 import 'klp_window_header_keys.dart';

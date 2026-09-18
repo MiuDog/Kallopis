@@ -1,4 +1,4 @@
-import '../internal/klp_form_dependencies.dart';
+import 'package:kallopis/src/features/forms/internal/klp_form_dependencies.dart';
 
 /// 數值輸入欄位，底層仍是文字輸入框（[KlpTextField]），但只在能解析成
 /// [double] 且落在 [minimum]／[maximum] 範圍內時才呼叫 [onChanged]。

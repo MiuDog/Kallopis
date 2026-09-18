@@ -19,14 +19,16 @@
 ## 目錄結構圖
 
 ```mermaid
-flowchart TD
+flowchart LR
 	n0["lib/src/features/actions"]
 	n1["button/"]
 	n2["command_menu/"]
 	n3["editor/"]
+	n4["selection_toolbar/"]
 	n0 -->|"contains"| n1
 	n0 -->|"contains"| n2
 	n0 -->|"contains"| n3
+	n0 -->|"contains"| n4
 ```
 
 ## 子目錄
@@ -36,6 +38,7 @@ flowchart TD
 | `button/` | [架構入口](button/README.md) | [來源目錄](../../../../../lib/src/features/actions/button) |
 | `command_menu/` | [架構入口](command_menu/README.md) | [來源目錄](../../../../../lib/src/features/actions/command_menu) |
 | `editor/` | [架構入口](editor/README.md) | [來源目錄](../../../../../lib/src/features/actions/editor) |
+| `selection_toolbar/` | [架構入口](selection_toolbar/README.md) | [來源目錄](../../../../../lib/src/features/actions/selection_toolbar) |
 
 ## 本層檔案
 

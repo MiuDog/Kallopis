@@ -1,4 +1,4 @@
-import '../internal/klp_form_dependencies.dart';
+import 'package:kallopis/src/features/forms/internal/klp_form_dependencies.dart';
 
 /// 表單底部的動作列：送出／取消／重設按鈕，靠右對齊並在寬度不足時自動換行。
 ///

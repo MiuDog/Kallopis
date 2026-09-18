@@ -14,12 +14,18 @@
 flowchart TD
 	n0["lib/src/application/environment"]
 	n1["lib/src/application/structure"]
+	n2["lib/src/capabilities/files"]
+	n3["package:file_selector"]
 	n0 -->|"part of"| n1
+	n0 -->|"import"| n2
+	n0 -->|"import"| n3
 ```
 
 | 目標邊界 | 關係 | directive 數 | 第一筆來源證據 |
 |---|---|---|---|
-| <code>lib/src/application/structure</code> | part of | 1 | [lib/src/application/environment/klp_application_environment.dart:1](../../../../../lib/src/application/environment/klp_application_environment.dart#L1) |
+| <code>lib/src/application/structure</code> | part of | 2 | [lib/src/application/environment/klp_application_environment.dart:1](../../../../../lib/src/application/environment/klp_application_environment.dart#L1) |
+| <code>lib/src/capabilities/files</code> | import | 1 | [lib/src/application/environment/klp_file_selection_adapter.dart:2](../../../../../lib/src/application/environment/klp_file_selection_adapter.dart#L2) |
+| <code>package:file_selector</code> | import | 1 | [lib/src/application/environment/klp_file_selection_adapter.dart:1](../../../../../lib/src/application/environment/klp_file_selection_adapter.dart#L1) |
 
 ## 目錄結構圖
 
@@ -27,7 +33,11 @@ flowchart TD
 flowchart TD
 	n0["lib/src/application/environment"]
 	n1["klp_application_environment.dart"]
+	n2["klp_application_environment_observer.dart"]
+	n3["klp_file_selection_adapter.dart"]
 	n0 -->|"contains"| n1
+	n0 -->|"contains"| n2
+	n0 -->|"contains"| n3
 ```
 
 ## 子目錄
@@ -41,6 +51,8 @@ flowchart TD
 | 檔案 | 宣告 | 細節 | 來源證據 |
 |---|---|---|---|
 | `klp_application_environment.dart` | KlpApplicationEnvironment, KlpApplicationPlatform, KlpAccessibilityPreferences, KlpMotionPolicy | [架構與 API](klp_application_environment.md) | [lib/src/application/environment/klp_application_environment.dart:1](../../../../../lib/src/application/environment/klp_application_environment.dart#L1) |
+| `klp_application_environment_observer.dart` | _KlpApplicationEnvironmentObserver | [架構與 API](klp_application_environment_observer.md) | [lib/src/application/environment/klp_application_environment_observer.dart:1](../../../../../lib/src/application/environment/klp_application_environment_observer.dart#L1) |
+| `klp_file_selection_adapter.dart` | KlpFileSelectionAdapter | [架構與 API](klp_file_selection_adapter.md) | [lib/src/application/environment/klp_file_selection_adapter.dart:1](../../../../../lib/src/application/environment/klp_file_selection_adapter.dart#L1) |
 
 ## 閱讀說明
 

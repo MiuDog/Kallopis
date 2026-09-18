@@ -148,36 +148,59 @@ class _DockHarnessState extends State<_DockHarness> {
   Widget build(BuildContext context) {
     return KlpApp(
       startMaximized: false,
-      showWindowControls: false,
-      windowHeader: KlpWorkbenchWindowHeader(
-        titleText: 'Dock test',
-        primaryPaneWidth: navigationExtent,
-        primaryVisible: navigationVisible,
-        onTogglePrimary: _toggleNavigation,
-        collapseLabel: '收合導覽',
-        expandLabel: '展開導覽',
-        showWindowControls: false,
-      ),
-      home: KlpDockLayout(
-        stage: KlpPanelFrame(
-          content: const SizedBox.expand(key: ValueKey('dock-stage')),
+      home: _DockTestPanelLayout(
+        header: KlpWindowHeader(
+          titleText: 'Dock test',
+          actions: [
+            KlpIconButton(
+              icon: KlpIcons.collapse,
+              label: navigationVisible ? '收合導覽' : '展開導覽',
+              onPressed: _toggleNavigation,
+            ),
+          ],
+          showWindowControls: false,
         ),
-        panels: const [
-          KlpDockPanel(
-            id: 'navigation',
-            header: KlpText('NAVIGATION', role: KlpTextRole.code),
-            content: SizedBox.expand(key: ValueKey('navigation-content')),
-            allowSide: true,
-            allowBottom: false,
+        body: KlpDockLayout(
+          stage: KlpPanelFrame(
+            content: const SizedBox.expand(key: ValueKey('dock-stage')),
           ),
-        ],
-        layout: layout,
-        onLayoutChanged: _setLayout,
-        leftConstraints: _sideConstraints,
-        rightConstraints: _sideConstraints,
+          panels: const [
+            KlpDockPanel(
+              id: 'navigation',
+              header: KlpText('NAVIGATION', role: KlpTextRole.code),
+              content: SizedBox.expand(key: ValueKey('navigation-content')),
+              allowSide: true,
+              allowBottom: false,
+            ),
+          ],
+          layout: layout,
+          onLayoutChanged: _setLayout,
+          leftConstraints: _sideConstraints,
+          rightConstraints: _sideConstraints,
+        ),
       ),
     );
   }
+}
+
+class _DockTestPanelLayout extends StatelessWidget implements KlpPanelLayout {
+  const _DockTestPanelLayout({required this.header, required this.body});
+
+  final Widget header;
+  final Widget body;
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        header,
+        Expanded(child: body),
+      ],
+    );
+  }
+
+  @override
+  Widget buildPanelLayout(BuildContext context) => build(context);
 }
 
 const _sideConstraints = KlpDockAreaConstraints(minExtent: 200, maxExtent: 460);

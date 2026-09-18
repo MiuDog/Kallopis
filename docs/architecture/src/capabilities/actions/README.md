@@ -30,18 +30,21 @@ flowchart TD
 |---|---|---|
 | <code>klp_action_handler.dart → klp_action.dart</code> | import | [lib/src/capabilities/actions/klp_action_handler.dart:4](../../../../../lib/src/capabilities/actions/klp_action_handler.dart#L4) |
 | <code>klp_action_handler.dart → klp_action_activation.dart</code> | import | [lib/src/capabilities/actions/klp_action_handler.dart:5](../../../../../lib/src/capabilities/actions/klp_action_handler.dart#L5) |
+| <code>klp_pick_file_action.dart → klp_action.dart</code> | import | [lib/src/capabilities/actions/klp_pick_file_action.dart:1](../../../../../lib/src/capabilities/actions/klp_pick_file_action.dart#L1) |
 
 ## 目錄結構圖
 
 ```mermaid
-flowchart TD
+flowchart LR
 	n0["lib/src/capabilities/actions"]
 	n1["klp_action.dart"]
 	n2["klp_action_activation.dart"]
 	n3["klp_action_handler.dart"]
+	n4["klp_pick_file_action.dart"]
 	n0 -->|"contains"| n1
 	n0 -->|"contains"| n2
 	n0 -->|"contains"| n3
+	n0 -->|"contains"| n4
 ```
 
 ## 子目錄
@@ -57,6 +60,7 @@ flowchart TD
 | `klp_action.dart` | KlpAction, KlpCallbackAction | [架構與 API](klp_action.md) | [lib/src/capabilities/actions/klp_action.dart:1](../../../../../lib/src/capabilities/actions/klp_action.dart#L1) |
 | `klp_action_activation.dart` | KlpActionActivation | [架構與 API](klp_action_activation.md) | [lib/src/capabilities/actions/klp_action_activation.dart:1](../../../../../lib/src/capabilities/actions/klp_action_activation.dart#L1) |
 | `klp_action_handler.dart` | KlpActionHandler, acceptsKlpAction, dispatchKlpAction | [架構與 API](klp_action_handler.md) | [lib/src/capabilities/actions/klp_action_handler.dart:1](../../../../../lib/src/capabilities/actions/klp_action_handler.dart#L1) |
+| `klp_pick_file_action.dart` | KlpPickFileAction | [架構與 API](klp_pick_file_action.md) | [lib/src/capabilities/actions/klp_pick_file_action.dart:1](../../../../../lib/src/capabilities/actions/klp_pick_file_action.dart#L1) |
 
 ## 閱讀說明
 

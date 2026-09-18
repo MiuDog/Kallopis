@@ -12,16 +12,16 @@
 flowchart LR
 	n0["klp_tree_capture.dart"]
 	n1["dart:collection"]
-	n2["../../../kernel/diagnostics/klp_contract_error.dart"]
-	n3["../../../kernel/identity/klp_placement_id.dart"]
-	n4["../../nodes/klp_node.dart"]
-	n5["../../nodes/klp_composite_node.dart"]
-	n6["../../nodes/internal/klp_scope_boundary.dart"]
-	n7["../../slots/klp_children.dart"]
-	n8["../../registry/klp_registry.dart"]
-	n9["../klp_tree_validation.dart"]
-	n10["../klp_validated_node.dart"]
-	n11["../klp_validated_slot.dart"]
+	n2["package:kallopis/src/kernel/diagnostics/klp_contract_error.dart"]
+	n3["package:kallopis/src/kernel/identity/klp_placement_id.dart"]
+	n4["package:kallopis/src/composition/nodes/klp_node.dart"]
+	n5["package:kallopis/src/composition/nodes/klp_composite_node.dart"]
+	n6["package:kallopis/src/composition/nodes/klp_scope_boundary.dart"]
+	n7["package:kallopis/src/composition/nodes/klp_adaptive.dart"]
+	n8["package:kallopis/src/composition/nodes/klp_platform_strategy.dart"]
+	n9["package:kallopis/src/composition/slots/klp_children.dart"]
+	n10["package:kallopis/src/composition/registry/klp_registry.dart"]
+	n11["package:kallopis/src/composition/validation/klp_tree_validation.dart"]
 	n0 -->|"import"| n1
 	n0 -->|"import"| n2
 	n0 -->|"import"| n3
@@ -35,21 +35,32 @@ flowchart LR
 	n0 -->|"import"| n11
 ```
 
+```mermaid
+flowchart TD
+	n0["klp_tree_capture.dart"]
+	n1["package:kallopis/src/composition/validation/klp_validated_node.dart"]
+	n2["package:kallopis/src/composition/validation/klp_validated_slot.dart"]
+	n0 -->|"import"| n1
+	n0 -->|"import"| n2
+```
+
 ## 依賴證據
 
 | 關係 | 原始 directive | 來源 |
 |---|---|---|
 | import | <code>import &#x27;dart:collection&#x27;;</code> | [lib/src/composition/validation/internal/klp_tree_capture.dart:1](../../../../../../lib/src/composition/validation/internal/klp_tree_capture.dart#L1) |
-| import | <code>import &#x27;../../../kernel/diagnostics/klp_contract_error.dart&#x27;;</code> | [lib/src/composition/validation/internal/klp_tree_capture.dart:3](../../../../../../lib/src/composition/validation/internal/klp_tree_capture.dart#L3) |
-| import | <code>import &#x27;../../../kernel/identity/klp_placement_id.dart&#x27;;</code> | [lib/src/composition/validation/internal/klp_tree_capture.dart:4](../../../../../../lib/src/composition/validation/internal/klp_tree_capture.dart#L4) |
-| import | <code>import &#x27;../../nodes/klp_node.dart&#x27;;</code> | [lib/src/composition/validation/internal/klp_tree_capture.dart:5](../../../../../../lib/src/composition/validation/internal/klp_tree_capture.dart#L5) |
-| import | <code>import &#x27;../../nodes/klp_composite_node.dart&#x27;;</code> | [lib/src/composition/validation/internal/klp_tree_capture.dart:6](../../../../../../lib/src/composition/validation/internal/klp_tree_capture.dart#L6) |
-| import | <code>import &#x27;../../nodes/internal/klp_scope_boundary.dart&#x27;;</code> | [lib/src/composition/validation/internal/klp_tree_capture.dart:7](../../../../../../lib/src/composition/validation/internal/klp_tree_capture.dart#L7) |
-| import | <code>import &#x27;../../slots/klp_children.dart&#x27;;</code> | [lib/src/composition/validation/internal/klp_tree_capture.dart:8](../../../../../../lib/src/composition/validation/internal/klp_tree_capture.dart#L8) |
-| import | <code>import &#x27;../../registry/klp_registry.dart&#x27;;</code> | [lib/src/composition/validation/internal/klp_tree_capture.dart:9](../../../../../../lib/src/composition/validation/internal/klp_tree_capture.dart#L9) |
-| import | <code>import &#x27;../klp_tree_validation.dart&#x27;;</code> | [lib/src/composition/validation/internal/klp_tree_capture.dart:10](../../../../../../lib/src/composition/validation/internal/klp_tree_capture.dart#L10) |
-| import | <code>import &#x27;../klp_validated_node.dart&#x27;;</code> | [lib/src/composition/validation/internal/klp_tree_capture.dart:11](../../../../../../lib/src/composition/validation/internal/klp_tree_capture.dart#L11) |
-| import | <code>import &#x27;../klp_validated_slot.dart&#x27;;</code> | [lib/src/composition/validation/internal/klp_tree_capture.dart:12](../../../../../../lib/src/composition/validation/internal/klp_tree_capture.dart#L12) |
+| import | <code>import &#x27;package:kallopis/src/kernel/diagnostics/klp_contract_error.dart&#x27;;</code> | [lib/src/composition/validation/internal/klp_tree_capture.dart:3](../../../../../../lib/src/composition/validation/internal/klp_tree_capture.dart#L3) |
+| import | <code>import &#x27;package:kallopis/src/kernel/identity/klp_placement_id.dart&#x27;;</code> | [lib/src/composition/validation/internal/klp_tree_capture.dart:4](../../../../../../lib/src/composition/validation/internal/klp_tree_capture.dart#L4) |
+| import | <code>import &#x27;package:kallopis/src/composition/nodes/klp_node.dart&#x27;;</code> | [lib/src/composition/validation/internal/klp_tree_capture.dart:5](../../../../../../lib/src/composition/validation/internal/klp_tree_capture.dart#L5) |
+| import | <code>import &#x27;package:kallopis/src/composition/nodes/klp_composite_node.dart&#x27;;</code> | [lib/src/composition/validation/internal/klp_tree_capture.dart:6](../../../../../../lib/src/composition/validation/internal/klp_tree_capture.dart#L6) |
+| import | <code>import &#x27;package:kallopis/src/composition/nodes/klp_scope_boundary.dart&#x27;;</code> | [lib/src/composition/validation/internal/klp_tree_capture.dart:7](../../../../../../lib/src/composition/validation/internal/klp_tree_capture.dart#L7) |
+| import | <code>import &#x27;package:kallopis/src/composition/nodes/klp_adaptive.dart&#x27;;</code> | [lib/src/composition/validation/internal/klp_tree_capture.dart:8](../../../../../../lib/src/composition/validation/internal/klp_tree_capture.dart#L8) |
+| import | <code>import &#x27;package:kallopis/src/composition/nodes/klp_platform_strategy.dart&#x27;;</code> | [lib/src/composition/validation/internal/klp_tree_capture.dart:9](../../../../../../lib/src/composition/validation/internal/klp_tree_capture.dart#L9) |
+| import | <code>import &#x27;package:kallopis/src/composition/slots/klp_children.dart&#x27;;</code> | [lib/src/composition/validation/internal/klp_tree_capture.dart:10](../../../../../../lib/src/composition/validation/internal/klp_tree_capture.dart#L10) |
+| import | <code>import &#x27;package:kallopis/src/composition/registry/klp_registry.dart&#x27;;</code> | [lib/src/composition/validation/internal/klp_tree_capture.dart:11](../../../../../../lib/src/composition/validation/internal/klp_tree_capture.dart#L11) |
+| import | <code>import &#x27;package:kallopis/src/composition/validation/klp_tree_validation.dart&#x27;;</code> | [lib/src/composition/validation/internal/klp_tree_capture.dart:12](../../../../../../lib/src/composition/validation/internal/klp_tree_capture.dart#L12) |
+| import | <code>import &#x27;package:kallopis/src/composition/validation/klp_validated_node.dart&#x27;;</code> | [lib/src/composition/validation/internal/klp_tree_capture.dart:13](../../../../../../lib/src/composition/validation/internal/klp_tree_capture.dart#L13) |
+| import | <code>import &#x27;package:kallopis/src/composition/validation/klp_validated_slot.dart&#x27;;</code> | [lib/src/composition/validation/internal/klp_tree_capture.dart:14](../../../../../../lib/src/composition/validation/internal/klp_tree_capture.dart#L14) |
 
 ## 宣告關係圖
 
@@ -67,7 +78,7 @@ classDiagram
 
 ### KlpTreeCapture
 
-ClassDeclaration · public · [lib/src/composition/validation/internal/klp_tree_capture.dart:14](../../../../../../lib/src/composition/validation/internal/klp_tree_capture.dart#L14)
+ClassDeclaration · public · [lib/src/composition/validation/internal/klp_tree_capture.dart:16](../../../../../../lib/src/composition/validation/internal/klp_tree_capture.dart#L16)
 
 <code>final class KlpTreeCapture</code>
 
@@ -76,15 +87,15 @@ ClassDeclaration · public · [lib/src/composition/validation/internal/klp_tree_
 
 | 成員 | 可見性 | 簽章／型別 | 來源註解摘要 | 證據 |
 |---|---|---|---|---|
-| field <code>validation</code> | public | <code>final KlpTreeValidation validation</code> |  | [lib/src/composition/validation/internal/klp_tree_capture.dart:16](../../../../../../lib/src/composition/validation/internal/klp_tree_capture.dart#L16) |
-| field <code>sources</code> | public | <code>final Map&lt;KlpPlacementId, KlpNode&gt; sources</code> |  | [lib/src/composition/validation/internal/klp_tree_capture.dart:17](../../../../../../lib/src/composition/validation/internal/klp_tree_capture.dart#L17) |
-| constructor <code>KlpTreeCapture</code> | public | <code>KlpTreeCapture(this.validation, Map&lt;KlpPlacementId, KlpNode&gt; sources)</code> |  | [lib/src/composition/validation/internal/klp_tree_capture.dart:19](../../../../../../lib/src/composition/validation/internal/klp_tree_capture.dart#L19) |
+| field <code>validation</code> | public | <code>final KlpTreeValidation validation</code> |  | [lib/src/composition/validation/internal/klp_tree_capture.dart:18](../../../../../../lib/src/composition/validation/internal/klp_tree_capture.dart#L18) |
+| field <code>sources</code> | public | <code>final Map&lt;KlpPlacementId, KlpNode&gt; sources</code> |  | [lib/src/composition/validation/internal/klp_tree_capture.dart:19](../../../../../../lib/src/composition/validation/internal/klp_tree_capture.dart#L19) |
+| constructor <code>KlpTreeCapture</code> | public | <code>KlpTreeCapture(this.validation, Map&lt;KlpPlacementId, KlpNode&gt; sources)</code> |  | [lib/src/composition/validation/internal/klp_tree_capture.dart:21](../../../../../../lib/src/composition/validation/internal/klp_tree_capture.dart#L21) |
 
 ### captureKlpTree
 
-FunctionDeclaration · public · [lib/src/composition/validation/internal/klp_tree_capture.dart:23](../../../../../../lib/src/composition/validation/internal/klp_tree_capture.dart#L23)
+FunctionDeclaration · public · [lib/src/composition/validation/internal/klp_tree_capture.dart:25](../../../../../../lib/src/composition/validation/internal/klp_tree_capture.dart#L25)
 
-<code>KlpTreeCapture captureKlpTree(KlpRegistry registry, KlpNode root)</code>
+<code>KlpTreeCapture captureKlpTree(KlpRegistry registry, KlpNode root, {KlpAdaptiveContext? adaptiveContext})</code>
 
 來源註解摘要：結構驗證與編譯共用唯一擷取流程，每個結構 getter 僅讀取一次。
 

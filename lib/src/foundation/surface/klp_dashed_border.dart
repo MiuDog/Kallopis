@@ -1,6 +1,6 @@
 import 'package:flutter/widgets.dart';
 
-import '../../styling/legacy_theme/klp_theme.dart';
+import 'package:kallopis/src/styling/legacy_theme/klp_theme.dart';
 import 'klp_stroke.dart';
 
 /// 虛線邊框容器。為子元件提供自訂粗細、圓角、顏色與虛線間距的虛線外框。

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import '../../../../foundation/layout/klp_panel_layout.dart';
-import '../../../../styling/legacy_theme/klp_theme.dart';
+import 'package:kallopis/src/foundation/layout/klp_panel_layout.dart';
+import 'package:kallopis/src/styling/legacy_theme/klp_theme.dart';
 import 'klp_panel_footer.dart';
 import 'klp_panel_header_size.dart';
 import 'klp_panel_tone.dart';

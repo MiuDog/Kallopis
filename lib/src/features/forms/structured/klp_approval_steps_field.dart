@@ -1,4 +1,4 @@
-import '../internal/klp_form_dependencies.dart';
+import 'package:kallopis/src/features/forms/internal/klp_form_dependencies.dart';
 import 'primitives/internal/klp_structured_frame.dart';
 
 part 'internal/klp_approval_step_data.dart';

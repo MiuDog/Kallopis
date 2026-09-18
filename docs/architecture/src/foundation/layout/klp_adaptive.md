@@ -12,9 +12,9 @@
 flowchart LR
 	n0["klp_adaptive.dart"]
 	n1["package:flutter/widgets.dart"]
-	n2["../platform/klp_app_platform.dart"]
-	n3["../platform/klp_environment_scope.dart"]
-	n4["../platform/klp_platform_info.dart"]
+	n2["package:kallopis/src/foundation/platform/klp_app_platform.dart"]
+	n3["package:kallopis/src/foundation/platform/klp_environment_scope.dart"]
+	n4["package:kallopis/src/foundation/platform/klp_platform_info.dart"]
 	n5["klp_adaptive_builder.dart"]
 	n6["klp_panel_layout.dart"]
 	n0 -->|"import"| n1
@@ -30,9 +30,9 @@ flowchart LR
 | 關係 | 原始 directive | 來源 |
 |---|---|---|
 | import | <code>import &#x27;package:flutter/widgets.dart&#x27;;</code> | [lib/src/foundation/layout/klp_adaptive.dart:1](../../../../../lib/src/foundation/layout/klp_adaptive.dart#L1) |
-| import | <code>import &#x27;../platform/klp_app_platform.dart&#x27;;</code> | [lib/src/foundation/layout/klp_adaptive.dart:3](../../../../../lib/src/foundation/layout/klp_adaptive.dart#L3) |
-| import | <code>import &#x27;../platform/klp_environment_scope.dart&#x27;;</code> | [lib/src/foundation/layout/klp_adaptive.dart:4](../../../../../lib/src/foundation/layout/klp_adaptive.dart#L4) |
-| import | <code>import &#x27;../platform/klp_platform_info.dart&#x27;;</code> | [lib/src/foundation/layout/klp_adaptive.dart:5](../../../../../lib/src/foundation/layout/klp_adaptive.dart#L5) |
+| import | <code>import &#x27;package:kallopis/src/foundation/platform/klp_app_platform.dart&#x27;;</code> | [lib/src/foundation/layout/klp_adaptive.dart:3](../../../../../lib/src/foundation/layout/klp_adaptive.dart#L3) |
+| import | <code>import &#x27;package:kallopis/src/foundation/platform/klp_environment_scope.dart&#x27;;</code> | [lib/src/foundation/layout/klp_adaptive.dart:4](../../../../../lib/src/foundation/layout/klp_adaptive.dart#L4) |
+| import | <code>import &#x27;package:kallopis/src/foundation/platform/klp_platform_info.dart&#x27;;</code> | [lib/src/foundation/layout/klp_adaptive.dart:5](../../../../../lib/src/foundation/layout/klp_adaptive.dart#L5) |
 | import | <code>import &#x27;klp_adaptive_builder.dart&#x27;;</code> | [lib/src/foundation/layout/klp_adaptive.dart:6](../../../../../lib/src/foundation/layout/klp_adaptive.dart#L6) |
 | import | <code>import &#x27;klp_panel_layout.dart&#x27;;</code> | [lib/src/foundation/layout/klp_adaptive.dart:7](../../../../../lib/src/foundation/layout/klp_adaptive.dart#L7) |
 

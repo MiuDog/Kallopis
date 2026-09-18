@@ -11,8 +11,8 @@
 ```mermaid
 flowchart LR
 	n0["klp_calendar.dart"]
-	n1["../internal/klp_form_dependencies.dart"]
-	n2["../../../foundation/layout/klp_center.dart"]
+	n1["package:kallopis/src/features/forms/internal/klp_form_dependencies.dart"]
+	n2["package:kallopis/src/foundation/layout/klp_center.dart"]
 	n3["internal/klp_calendar_day_cell.dart"]
 	n4["internal/klp_calendar_day_cell_state.dart"]
 	n5["internal/klp_calendar_widget.dart"]
@@ -35,8 +35,8 @@ flowchart LR
 
 | 關係 | 原始 directive | 來源 |
 |---|---|---|
-| import | <code>import &#x27;../internal/klp_form_dependencies.dart&#x27;;</code> | [lib/src/features/forms/selection/klp_calendar.dart:1](../../../../../../lib/src/features/forms/selection/klp_calendar.dart#L1) |
-| import | <code>import &#x27;../../../foundation/layout/klp_center.dart&#x27;;</code> | [lib/src/features/forms/selection/klp_calendar.dart:2](../../../../../../lib/src/features/forms/selection/klp_calendar.dart#L2) |
+| import | <code>import &#x27;package:kallopis/src/features/forms/internal/klp_form_dependencies.dart&#x27;;</code> | [lib/src/features/forms/selection/klp_calendar.dart:1](../../../../../../lib/src/features/forms/selection/klp_calendar.dart#L1) |
+| import | <code>import &#x27;package:kallopis/src/foundation/layout/klp_center.dart&#x27;;</code> | [lib/src/features/forms/selection/klp_calendar.dart:2](../../../../../../lib/src/features/forms/selection/klp_calendar.dart#L2) |
 | part | <code>part &#x27;internal/klp_calendar_day_cell.dart&#x27;;</code> | [lib/src/features/forms/selection/klp_calendar.dart:4](../../../../../../lib/src/features/forms/selection/klp_calendar.dart#L4) |
 | part | <code>part &#x27;internal/klp_calendar_day_cell_state.dart&#x27;;</code> | [lib/src/features/forms/selection/klp_calendar.dart:5](../../../../../../lib/src/features/forms/selection/klp_calendar.dart#L5) |
 | part | <code>part &#x27;internal/klp_calendar_widget.dart&#x27;;</code> | [lib/src/features/forms/selection/klp_calendar.dart:6](../../../../../../lib/src/features/forms/selection/klp_calendar.dart#L6) |

@@ -38,7 +38,7 @@ void main() {
       _write(
         root,
         'private.dart',
-        "import 'package:kallopis/src/runtime/compilation/internal/klp_tree_runtime.dart';\n",
+				"import 'package:kallopis/src/runtime/compilation/klp_tree_runtime.dart';\n",
       );
       _write(
         root,
@@ -53,7 +53,7 @@ void main() {
           contains('package:flutter/widgets.dart'),
           contains('dart:ui'),
           contains(
-            'package:kallopis/src/runtime/compilation/internal/klp_tree_runtime.dart',
+						'package:kallopis/src/runtime/compilation/klp_tree_runtime.dart',
           ),
           contains('package:kallopis/kallopis.dart'),
         ),

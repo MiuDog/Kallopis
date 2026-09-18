@@ -3,10 +3,10 @@ library;
 
 import 'package:flutter/material.dart';
 
-import '../../../../foundation/layout/klp_box.dart';
-import '../../../../foundation/layout/klp_center.dart';
-import '../../../../foundation/layout/klp_fit.dart';
-import '../../../../foundation/layout/klp_fit_mode.dart';
+import 'package:kallopis/src/foundation/layout/klp_box.dart';
+import 'package:kallopis/src/foundation/layout/klp_center.dart';
+import 'package:kallopis/src/foundation/layout/klp_fit.dart';
+import 'package:kallopis/src/foundation/layout/klp_fit_mode.dart';
 
 /// 以視窗按鈕尺寸包裝消費端圖示，圖形本身維持 App icon 語意尺寸。
 class KlpWindowAppIcon extends StatelessWidget {

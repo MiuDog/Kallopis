@@ -1,4 +1,4 @@
-import '../klp_spacing_theme.dart';
+import 'package:kallopis/src/styling/legacy_theme/klp_spacing_theme.dart';
 import 'klp_visual_style_json_helpers.dart';
 import 'klp_visual_style_json_validation.dart';
 
@@ -32,7 +32,6 @@ const _keys = <String>{
   'overlayItemGap',
   'navigationSectionGap',
   'appFrameInset',
-  'workbenchContentInset',
   'windowHeaderMargin',
   'dockMargin',
   'base',
@@ -124,10 +123,6 @@ KlpSpacingTheme decodeSpacing(KlpJsonMap json, KlpSpacingTheme base) {
       base.navigationSectionGap,
     ),
     appFrameInset: read('appFrameInset', base.appFrameInset),
-    workbenchContentInset: read(
-      'workbenchContentInset',
-      base.workbenchContentInset,
-    ),
     windowHeaderMargin: read('windowHeaderMargin', base.windowHeaderMargin),
     dockMargin: read('dockMargin', base.dockMargin),
     base: read('base', base.base),

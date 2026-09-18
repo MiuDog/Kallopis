@@ -1,4 +1,4 @@
-import '../klp_data_visualization_theme.dart';
+import 'package:kallopis/src/styling/legacy_theme/klp_data_visualization_theme.dart';
 import 'klp_visual_style_json_helpers.dart';
 
 const _keys = <String>{

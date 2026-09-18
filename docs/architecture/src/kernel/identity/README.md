@@ -10,11 +10,22 @@
 
 箭頭以本層 Dart 檔案明寫的 directive 彙總到目標所在目錄或外部套件邊界；不遞迴將子目錄依賴算入本層。相同目標的不同 directive 類型分開計數。
 
-本層檔案未宣告跨目錄依賴；子目錄依賴請循下一層入口閱讀。
+```mermaid
+flowchart TD
+	n0["lib/src/kernel/identity"]
+	n1["dart:async"]
+	n0 -->|"import"| n1
+```
 
 | 目標邊界 | 關係 | directive 數 | 第一筆來源證據 |
 |---|---|---|---|
-| 無 | — | 0 | 來源清單見本層檔案 |
+| <code>dart:async</code> | import | 1 | [lib/src/kernel/identity/klp_id.dart:1](../../../../../lib/src/kernel/identity/klp_id.dart#L1) |
+
+### 同目錄依賴
+
+| 來源 → 目標 | 關係 | 證據 |
+|---|---|---|
+| <code>klp_id.dart → klp_placement_id.dart</code> | import | [lib/src/kernel/identity/klp_id.dart:3](../../../../../lib/src/kernel/identity/klp_id.dart#L3) |
 
 ## 目錄結構圖
 
@@ -22,9 +33,11 @@
 flowchart TD
 	n0["lib/src/kernel/identity"]
 	n1["internal/"]
-	n2["klp_placement_id.dart"]
+	n2["klp_id.dart"]
+	n3["klp_placement_id.dart"]
 	n0 -->|"contains"| n1
 	n0 -->|"contains"| n2
+	n0 -->|"contains"| n3
 ```
 
 ## 子目錄
@@ -37,6 +50,7 @@ flowchart TD
 
 | 檔案 | 宣告 | 細節 | 來源證據 |
 |---|---|---|---|
+| `klp_id.dart` | KlpId | [架構與 API](klp_id.md) | [lib/src/kernel/identity/klp_id.dart:1](../../../../../lib/src/kernel/identity/klp_id.dart#L1) |
 | `klp_placement_id.dart` | KlpPlacementId | [架構與 API](klp_placement_id.md) | [lib/src/kernel/identity/klp_placement_id.dart:1](../../../../../lib/src/kernel/identity/klp_placement_id.dart#L1) |
 
 ## 閱讀說明

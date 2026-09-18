@@ -1,7 +1,7 @@
 import 'package:flutter/widgets.dart';
 
-import '../../../../foundation/content/klp_text.dart';
-import '../../../../styling/legacy_theme/klp_theme.dart';
+import 'package:kallopis/src/foundation/content/klp_text.dart';
+import 'package:kallopis/src/styling/legacy_theme/klp_theme.dart';
 
 class KlpBreadcrumb extends StatelessWidget {
   const KlpBreadcrumb({

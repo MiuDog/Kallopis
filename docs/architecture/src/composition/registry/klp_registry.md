@@ -11,12 +11,12 @@
 ```mermaid
 flowchart LR
 	n0["klp_registry.dart"]
-	n1["../../kernel/diagnostics/klp_contract_error.dart"]
-	n2["../../styling/resolution/internal/klp_semantic_resolver.dart"]
-	n3["../definitions/klp_definition.dart"]
-	n4["../nodes/klp_node.dart"]
-	n5["../validation/klp_tree_validation.dart"]
-	n6["../validation/internal/klp_tree_capture.dart"]
+	n1["package:kallopis/src/kernel/diagnostics/klp_contract_error.dart"]
+	n2["package:kallopis/src/styling/resolution/klp_semantic_graph.dart"]
+	n3["package:kallopis/src/composition/definitions/klp_definition.dart"]
+	n4["package:kallopis/src/composition/nodes/klp_node.dart"]
+	n5["package:kallopis/src/composition/validation/klp_tree_validation.dart"]
+	n6["package:kallopis/src/composition/validation/internal/klp_tree_capture.dart"]
 	n0 -->|"import"| n1
 	n0 -->|"import"| n2
 	n0 -->|"import"| n3
@@ -29,12 +29,12 @@ flowchart LR
 
 | 關係 | 原始 directive | 來源 |
 |---|---|---|
-| import | <code>import &#x27;../../kernel/diagnostics/klp_contract_error.dart&#x27;;</code> | [lib/src/composition/registry/klp_registry.dart:1](../../../../../lib/src/composition/registry/klp_registry.dart#L1) |
-| import | <code>import &#x27;../../styling/resolution/internal/klp_semantic_resolver.dart&#x27;;</code> | [lib/src/composition/registry/klp_registry.dart:2](../../../../../lib/src/composition/registry/klp_registry.dart#L2) |
-| import | <code>import &#x27;../definitions/klp_definition.dart&#x27;;</code> | [lib/src/composition/registry/klp_registry.dart:3](../../../../../lib/src/composition/registry/klp_registry.dart#L3) |
-| import | <code>import &#x27;../nodes/klp_node.dart&#x27;;</code> | [lib/src/composition/registry/klp_registry.dart:4](../../../../../lib/src/composition/registry/klp_registry.dart#L4) |
-| import | <code>import &#x27;../validation/klp_tree_validation.dart&#x27;;</code> | [lib/src/composition/registry/klp_registry.dart:5](../../../../../lib/src/composition/registry/klp_registry.dart#L5) |
-| import | <code>import &#x27;../validation/internal/klp_tree_capture.dart&#x27;;</code> | [lib/src/composition/registry/klp_registry.dart:6](../../../../../lib/src/composition/registry/klp_registry.dart#L6) |
+| import | <code>import &#x27;package:kallopis/src/kernel/diagnostics/klp_contract_error.dart&#x27;;</code> | [lib/src/composition/registry/klp_registry.dart:1](../../../../../lib/src/composition/registry/klp_registry.dart#L1) |
+| import | <code>import &#x27;package:kallopis/src/styling/resolution/klp_semantic_graph.dart&#x27;;</code> | [lib/src/composition/registry/klp_registry.dart:2](../../../../../lib/src/composition/registry/klp_registry.dart#L2) |
+| import | <code>import &#x27;package:kallopis/src/composition/definitions/klp_definition.dart&#x27;;</code> | [lib/src/composition/registry/klp_registry.dart:3](../../../../../lib/src/composition/registry/klp_registry.dart#L3) |
+| import | <code>import &#x27;package:kallopis/src/composition/nodes/klp_node.dart&#x27;;</code> | [lib/src/composition/registry/klp_registry.dart:4](../../../../../lib/src/composition/registry/klp_registry.dart#L4) |
+| import | <code>import &#x27;package:kallopis/src/composition/validation/klp_tree_validation.dart&#x27;;</code> | [lib/src/composition/registry/klp_registry.dart:5](../../../../../lib/src/composition/registry/klp_registry.dart#L5) |
+| import | <code>import &#x27;package:kallopis/src/composition/validation/internal/klp_tree_capture.dart&#x27;;</code> | [lib/src/composition/registry/klp_registry.dart:6](../../../../../lib/src/composition/registry/klp_registry.dart#L6) |
 
 ## 宣告關係圖
 

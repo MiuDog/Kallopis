@@ -1,5 +1,5 @@
-import '../klp_motion_theme.dart';
-import '../klp_shape_theme.dart';
+import 'package:kallopis/src/styling/legacy_theme/klp_motion_theme.dart';
+import 'package:kallopis/src/styling/legacy_theme/klp_shape_theme.dart';
 import 'klp_visual_style_json_helpers.dart';
 import 'klp_visual_style_json_validation.dart';
 

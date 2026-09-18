@@ -12,10 +12,10 @@
 flowchart LR
 	n0["klp_tri_state_toggle.dart"]
 	n1["package:flutter/widgets.dart"]
-	n2["../../../foundation/klp_icons.dart"]
-	n3["../../../foundation/layout/klp_layout.dart"]
-	n4["../../../foundation/content/klp_text.dart"]
-	n5["../selection/klp_sliding_selection.dart"]
+	n2["package:kallopis/src/foundation/klp_icons.dart"]
+	n3["package:kallopis/src/foundation/layout/klp_layout.dart"]
+	n4["package:kallopis/src/foundation/content/klp_text.dart"]
+	n5["package:kallopis/src/features/forms/selection/klp_sliding_selection.dart"]
 	n6["internal/klp_tri_state.dart"]
 	n7["internal/klp_tri_state_toggle_widget.dart"]
 	n0 -->|"import"| n1
@@ -32,10 +32,10 @@ flowchart LR
 | 關係 | 原始 directive | 來源 |
 |---|---|---|
 | import | <code>import &#x27;package:flutter/widgets.dart&#x27;;</code> | [lib/src/features/forms/toggle/klp_tri_state_toggle.dart:1](../../../../../../lib/src/features/forms/toggle/klp_tri_state_toggle.dart#L1) |
-| import | <code>import &#x27;../../../foundation/klp_icons.dart&#x27;;</code> | [lib/src/features/forms/toggle/klp_tri_state_toggle.dart:3](../../../../../../lib/src/features/forms/toggle/klp_tri_state_toggle.dart#L3) |
-| import | <code>import &#x27;../../../foundation/layout/klp_layout.dart&#x27;;</code> | [lib/src/features/forms/toggle/klp_tri_state_toggle.dart:4](../../../../../../lib/src/features/forms/toggle/klp_tri_state_toggle.dart#L4) |
-| import | <code>import &#x27;../../../foundation/content/klp_text.dart&#x27;;</code> | [lib/src/features/forms/toggle/klp_tri_state_toggle.dart:5](../../../../../../lib/src/features/forms/toggle/klp_tri_state_toggle.dart#L5) |
-| import | <code>import &#x27;../selection/klp_sliding_selection.dart&#x27;;</code> | [lib/src/features/forms/toggle/klp_tri_state_toggle.dart:6](../../../../../../lib/src/features/forms/toggle/klp_tri_state_toggle.dart#L6) |
+| import | <code>import &#x27;package:kallopis/src/foundation/klp_icons.dart&#x27;;</code> | [lib/src/features/forms/toggle/klp_tri_state_toggle.dart:3](../../../../../../lib/src/features/forms/toggle/klp_tri_state_toggle.dart#L3) |
+| import | <code>import &#x27;package:kallopis/src/foundation/layout/klp_layout.dart&#x27;;</code> | [lib/src/features/forms/toggle/klp_tri_state_toggle.dart:4](../../../../../../lib/src/features/forms/toggle/klp_tri_state_toggle.dart#L4) |
+| import | <code>import &#x27;package:kallopis/src/foundation/content/klp_text.dart&#x27;;</code> | [lib/src/features/forms/toggle/klp_tri_state_toggle.dart:5](../../../../../../lib/src/features/forms/toggle/klp_tri_state_toggle.dart#L5) |
+| import | <code>import &#x27;package:kallopis/src/features/forms/selection/klp_sliding_selection.dart&#x27;;</code> | [lib/src/features/forms/toggle/klp_tri_state_toggle.dart:6](../../../../../../lib/src/features/forms/toggle/klp_tri_state_toggle.dart#L6) |
 | part | <code>part &#x27;internal/klp_tri_state.dart&#x27;;</code> | [lib/src/features/forms/toggle/klp_tri_state_toggle.dart:8](../../../../../../lib/src/features/forms/toggle/klp_tri_state_toggle.dart#L8) |
 | part | <code>part &#x27;internal/klp_tri_state_toggle_widget.dart&#x27;;</code> | [lib/src/features/forms/toggle/klp_tri_state_toggle.dart:9](../../../../../../lib/src/features/forms/toggle/klp_tri_state_toggle.dart#L9) |
 

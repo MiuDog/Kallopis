@@ -11,8 +11,8 @@
 ```mermaid
 flowchart TD
 	n0["klp_text_semantics.dart"]
-	n1["../../styling/primitives/klp_style_value.dart"]
-	n2["../../styling/semantics/klp_semantic_key.dart"]
+	n1["package:kallopis/src/styling/primitives/klp_style_value.dart"]
+	n2["package:kallopis/src/styling/semantics/klp_semantic_key.dart"]
 	n0 -->|"import"| n1
 	n0 -->|"import"| n2
 ```
@@ -21,8 +21,8 @@ flowchart TD
 
 | 關係 | 原始 directive | 來源 |
 |---|---|---|
-| import | <code>import &#x27;../../styling/primitives/klp_style_value.dart&#x27;;</code> | [lib/src/foundation/templates/klp_text_semantics.dart:1](../../../../../lib/src/foundation/templates/klp_text_semantics.dart#L1) |
-| import | <code>import &#x27;../../styling/semantics/klp_semantic_key.dart&#x27;;</code> | [lib/src/foundation/templates/klp_text_semantics.dart:2](../../../../../lib/src/foundation/templates/klp_text_semantics.dart#L2) |
+| import | <code>import &#x27;package:kallopis/src/styling/primitives/klp_style_value.dart&#x27;;</code> | [lib/src/foundation/templates/klp_text_semantics.dart:1](../../../../../lib/src/foundation/templates/klp_text_semantics.dart#L1) |
+| import | <code>import &#x27;package:kallopis/src/styling/semantics/klp_semantic_key.dart&#x27;;</code> | [lib/src/foundation/templates/klp_text_semantics.dart:2](../../../../../lib/src/foundation/templates/klp_text_semantics.dart#L2) |
 
 ## 宣告關係圖
 

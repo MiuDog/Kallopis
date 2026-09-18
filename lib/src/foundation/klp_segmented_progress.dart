@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../styling/legacy_theme/klp_theme.dart';
+import 'package:kallopis/src/styling/legacy_theme/klp_theme.dart';
 
 class KlpSegmentedProgress extends StatelessWidget {
   const KlpSegmentedProgress({

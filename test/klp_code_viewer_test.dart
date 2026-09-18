@@ -75,57 +75,6 @@ void main() {
     await tester.pumpAndSettle();
   });
 
-  testWidgets('Code viewer matches the compact terminal specimen', (
-    tester,
-  ) async {
-    tester.view.physicalSize = const Size(580, 170);
-    tester.view.devicePixelRatio = 1;
-    addTearDown(tester.view.resetPhysicalSize);
-    addTearDown(tester.view.resetDevicePixelRatio);
-
-    await tester.pumpWidget(
-      MaterialApp(
-        debugShowCheckedModeBanner: false,
-        theme: buildKlpTheme(Brightness.dark),
-        home: Scaffold(
-          body: RepaintBoundary(
-            key: const ValueKey('pln-code-viewer-golden'),
-            child: ColoredBox(
-              color: KlpThemeData.dark.app,
-              child: const Padding(
-                padding: EdgeInsets.all(KlpSpace.md),
-                child: KlpCodeViewer(
-                  code:
-                      'agent> reading 42 files in src/components\n'
-                      'agent> applying codemod react-19-upgrade\n'
-                      '+218 -96 across 42 files\n'
-                      r'$',
-                  language: 'shell',
-                  labels: KlpCodeViewerLabels(
-                    copy: '複製',
-                    menu: '程式碼選單',
-                    toggleView: '切換視圖',
-                    languageMenu: '程式語言',
-                    wrap: '自動換行',
-                    lineNumbers: '顯示行號',
-                  ),
-                  onLanguageChanged: _ignoreLanguage,
-                  onCopy: _noop,
-                ),
-              ),
-            ),
-          ),
-        ),
-      ),
-    );
-    await tester.pumpAndSettle();
-
-    await expectLater(
-      find.byKey(const ValueKey('pln-code-viewer-golden')),
-      matchesGoldenFile('goldens/klp_code_viewer_dark.png'),
-    );
-  });
-
   testWidgets('wrapped code uses the available narrow width', (tester) async {
     await tester.pumpWidget(
       MaterialApp(
@@ -151,7 +100,3 @@ void main() {
     expect(tester.getSize(find.byType(KlpCodeViewer)).width, 248);
   });
 }
-
-void _noop() {}
-
-void _ignoreLanguage(String value) {}

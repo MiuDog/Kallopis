@@ -1,6 +1,6 @@
 ## 分析入口
 
-`flutter/internal/klp_flutter_renderer.dart` 將封閉 `KlpBoundTemplate` 分派成 Flutter 原語：文字、線性排版、表面、選擇操作、三區配置及單方向尺寸。`KlpBoundPlacement` 包住已完成內容，renderer 使用位置 id 建立 key；此層不辨認自訂插槽，也不接受未完成子項。所有風格值來自已解析 bound 資料；`klp_flutter_values.dart` 只轉換平台型別，不建立另一份 token 預設。此層不引用 rail 或其他功能，也不執行消費端資料 selector。
+`flutter/klp_flutter_renderer.dart` 將封閉 `KlpBoundTemplate` 分派成 Flutter 原語：文字、線性排版、表面、選擇操作、三區配置及單方向尺寸。`KlpBoundPlacement` 包住已完成內容，renderer 使用位置 id 建立 key；此層不辨認自訂插槽，也不接受未完成子項。所有風格值來自已解析 bound 資料；`klp_flutter_values.dart` 只轉換平台型別，不建立另一份 token 預設。此層不引用 rail 或其他功能，也不執行消費端資料 selector。
 
 `klp_flutter_choice.dart` 擁有 Flutter 焦點，借用同一選取來源並管理訂閱；滑鼠、Enter、Space 與語意操作共用啟動入口。相同 id 的放置以 key 保留 element；風格更新不重建選取來源。停用項目不能鍵盤聚焦，停用語意使用空的 focused 狀態。
 

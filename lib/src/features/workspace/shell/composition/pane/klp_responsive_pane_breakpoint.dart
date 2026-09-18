@@ -1,6 +1,6 @@
 import 'package:flutter/widgets.dart';
 
-import '../../../../../styling/legacy_theme/klp_theme.dart';
+import 'package:kallopis/src/styling/legacy_theme/klp_theme.dart';
 
 /// Pane 協調器可選用的 theme breakpoint。
 enum KlpResponsivePaneBreakpoint {

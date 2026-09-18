@@ -1,6 +1,6 @@
 # Kallopis 元件樹架構全覽
 
-> 本目錄遵循 `/focused-architecture-diagram` 規範，精確繪製 Kallopis 全部 260 個 Widget 元件之內部組成架構。
+> 本目錄遵循 `/focused-architecture-diagram` 規範，精確繪製 Kallopis 全部 259 個 Widget 元件之內部組成架構。
 
 ## 架構分層與展開規範
 
@@ -11,10 +11,10 @@
 
 ## 領域分類索引
 
-- [foundation — 圖示、色盤、度量 (62)](#foundation)
+- [foundation — 圖示、色盤、度量 (63)](#foundation)
 
 <a id="foundation"></a>
-### foundation — 圖示、色盤、度量 (62)
+### foundation — 圖示、色盤、度量 (63)
 
 | 元件名稱 | 類型 | 說明 | 架構文件 |
 |---|---|---|---|

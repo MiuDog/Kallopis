@@ -52,10 +52,10 @@ ExtensionDeclaration · private · [lib/src/application/bootstrap/internal/klp_a
 
 | 成員 | 可見性 | 簽章／型別 | 來源註解摘要 | 證據 |
 |---|---|---|---|---|
-| method <code>_refresh</code> | private | <code>void _refresh(KlpApplication next)</code> |  | [lib/src/application/bootstrap/internal/klp_application_session_commit.dart:4](../../../../../../lib/src/application/bootstrap/internal/klp_application_session_commit.dart#L4) |
-| method <code>_commit</code> | private | <code>void _commit( KlpApplication application, KlpNavigationSnapshot snapshot, { required bool replaceRouteInformation, })</code> |  | [lib/src/application/bootstrap/internal/klp_application_session_commit.dart:39](../../../../../../lib/src/application/bootstrap/internal/klp_application_session_commit.dart#L39) |
-| method <code>_publishRestoration</code> | private | <code>void _publishRestoration( KlpApplication application, KlpNavigationSnapshot snapshot, )</code> |  | [lib/src/application/bootstrap/internal/klp_application_session_commit.dart:122](../../../../../../lib/src/application/bootstrap/internal/klp_application_session_commit.dart#L122) |
-| method <code>_publishRouteInformation</code> | private | <code>void _publishRouteInformation( KlpApplication application, KlpNavigationSnapshot snapshot, { required bool replace, })</code> |  | [lib/src/application/bootstrap/internal/klp_application_session_commit.dart:139](../../../../../../lib/src/application/bootstrap/internal/klp_application_session_commit.dart#L139) |
+| method <code>_refresh</code> | private | <code>void _refresh(KlpApplication next)</code> |  | [lib/src/application/bootstrap/internal/klp_application_session_commit.dart:5](../../../../../../lib/src/application/bootstrap/internal/klp_application_session_commit.dart#L5) |
+| method <code>_commit</code> | private | <code>void _commit(KlpApplication application, KlpNavigationSnapshot snapshot, {required bool replaceRouteInformation})</code> |  | [lib/src/application/bootstrap/internal/klp_application_session_commit.dart:43](../../../../../../lib/src/application/bootstrap/internal/klp_application_session_commit.dart#L43) |
+| method <code>_publishRestoration</code> | private | <code>void _publishRestoration(KlpApplication application, KlpNavigationSnapshot snapshot)</code> |  | [lib/src/application/bootstrap/internal/klp_application_session_commit.dart:113](../../../../../../lib/src/application/bootstrap/internal/klp_application_session_commit.dart#L113) |
+| method <code>_publishRouteInformation</code> | private | <code>void _publishRouteInformation(KlpApplication application, KlpNavigationSnapshot snapshot, {required bool replace})</code> |  | [lib/src/application/bootstrap/internal/klp_application_session_commit.dart:136](../../../../../../lib/src/application/bootstrap/internal/klp_application_session_commit.dart#L136) |
 
 ## 閱讀說明與限制
 

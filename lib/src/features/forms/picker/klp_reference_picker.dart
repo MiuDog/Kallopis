@@ -1,5 +1,5 @@
-import '../internal/klp_form_dependencies.dart';
-import '../../../foundation/layout/klp_center.dart';
+import 'package:kallopis/src/features/forms/internal/klp_form_dependencies.dart';
+import 'package:kallopis/src/foundation/layout/klp_center.dart';
 import 'klp_reference_option.dart';
 
 export 'klp_reference_option.dart';

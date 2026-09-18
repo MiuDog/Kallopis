@@ -1,7 +1,8 @@
-import '../../composition/nodes/klp_composite_node.dart';
-import '../../composition/slots/klp_children.dart';
-import '../../composition/slots/klp_slot.dart';
-import '../../composition/slots/klp_screen_body.dart';
+import 'package:kallopis/src/composition/nodes/klp_composite_node.dart';
+import 'package:kallopis/src/composition/slots/klp_children.dart';
+import 'package:kallopis/src/composition/slots/klp_slot.dart';
+import 'package:kallopis/src/composition/slots/klp_screen_body.dart';
+import 'package:kallopis/src/kernel/identity/klp_id.dart';
 
 /// 畫面宣告只接受具有畫面內容資格的節點，渲染由本庫負責。
 final class KlpScreen implements KlpCompositeNode {
@@ -14,7 +15,7 @@ final class KlpScreen implements KlpCompositeNode {
   );
 
   @override
-  final String id;
+  final KlpId id;
   final String accessibilityLabel;
   final KlpScreenBody child;
   @override

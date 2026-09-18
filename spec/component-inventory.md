@@ -6,7 +6,7 @@
 
 ## 總覽
 
-- 公開型別 **433** 個，其中 widget **166** 個
+- 公開型別 **643** 個，其中 widget **164** 個
 - 分為 **20** 個領域
 
 ### 領域之間的依賴方向
@@ -18,14 +18,28 @@
 ```mermaid
 graph TD
   foundation["foundation — 圖示、色盤、度量"]
-  features -->|313| foundation
-  styling -->|14| kernel
+  features -->|308| foundation
+  features -->|22| styling
+  features -->|16| composition
+  styling -->|16| kernel
+  application -->|8| capabilities
+  features -->|7| runtime
+  features -->|6| kernel
+  rendering -->|6| features
   composition -->|5| kernel
-  application -->|1| capabilities
+  rendering -->|3| foundation
+  runtime -->|2| capabilities
   application -->|1| composition
+  capabilities -->|1| kernel
   composition -->|1| styling
-  features -->|1| composition
+  features -->|1| capabilities
+  foundation -->|1| capabilities
   foundation -->|1| styling
+  rendering -->|1| kernel
+  runtime -->|1| composition
+  runtime -->|1| foundation
+  runtime -->|1| kernel
+  runtime -->|1| styling
 ```
 
 ### 分層違規
@@ -36,7 +50,7 @@ graph TD
 
 ### foundation — 圖示、色盤、度量
 
-型別 121 個，widget 56 個。
+型別 125 個，widget 56 個。
 
 | 型別 | 行數 | 組成 |
 |---|---|---|
@@ -46,19 +60,29 @@ graph TD
 | `KlpActionRegionTone` | 1 | （葉節點） |
 | `KlpAdaptive` | 39 | （葉節點） |
 | `KlpAlign` | 21 | （葉節點） |
-| `KlpAppPlatform` | 1 | （葉節點） |
 | `KlpAxis` | 1 | （葉節點） |
+| `KlpBoundAccessibility` | 6 | （葉節點） |
+| `KlpBoundChoice` | 17 | （葉節點） |
+| `KlpBoundChoiceStyle` | 17 | （葉節點） |
+| `KlpBoundControlStyle` | 7 | （葉節點） |
+| `KlpBoundExtent` | 7 | （葉節點） |
+| `KlpBoundLinear` | 8 | （葉節點） |
+| `KlpBoundPlacement` | 6 | （葉節點） |
+| `KlpBoundRegions` | 19 | （葉節點） |
+| `KlpBoundRetainedStack` | 19 | （葉節點） |
+| `KlpBoundScreen` | 6 | （葉節點） |
+| `KlpBoundSurface` | 15 | （葉節點） |
+| `KlpBoundSurfaceShadow` | 7 | （葉節點） |
+| `KlpBoundText` | 6 | （葉節點） |
+| `KlpBoundTextStyle` | 17 | （葉節點） |
 | `KlpBox` | 123 | `KlpSurface` |
 | `KlpBoxConstraints` | 13 | （葉節點） |
 | `KlpBoxInsets` | 22 | （葉節點） |
 | `KlpCenter` | 21 | （葉節點） |
 | `KlpChildrenTemplate` | 12 | （葉節點） |
-| `KlpCodeMetrics` | 14 | （葉節點） |
 | `KlpColumn` | 37 | （葉節點） |
 | `KlpCommandIntent` | 5 | （葉節點） |
-| `KlpComponentDefinition` | 35 | （葉節點） |
 | `KlpConstrainedBox` | 23 | （葉節點） |
-| `KlpControlMetrics` | 13 | （葉節點） |
 | `KlpControlSize` | 1 | （葉節點） |
 | `KlpDashedBorder` | 51 | `KlpStrokeFrame` |
 | `KlpDashedDivider` | 111 | （葉節點） |
@@ -69,8 +93,7 @@ graph TD
 | `KlpDragPreview` | 18 | `KlpSurface` |
 | `KlpDropIndicator` | 19 | （葉節點） |
 | `KlpDropTarget` | 19 | `KlpStrokeFrame`、`KlpSurface` |
-| `KlpElevation` | 6 | （葉節點） |
-| `KlpEnvironmentScope` | 27 | （葉節點） |
+| `KlpEnvironmentScope` | 28 | （葉節點） |
 | `KlpExcludeSemantics` | 8 | （葉節點） |
 | `KlpExpanded` | 11 | （葉節點） |
 | `KlpFilterOption` | 13 | （葉節點） |
@@ -79,15 +102,16 @@ graph TD
 | `KlpFlexible` | 17 | （葉節點） |
 | `KlpFocusRegion` | 24 | （葉節點） |
 | `KlpFontRole` | 1 | （葉節點） |
-| `KlpFormMetrics` | 12 | （葉節點） |
 | `KlpGap` | 179 | （葉節點） |
 | `KlpGeometricSpinner` | 24 | （葉節點） |
 | `KlpGestureRegion` | 39 | （葉節點） |
 | `KlpHighlightState` | 19 | （葉節點） |
 | `KlpIcon` | 53 | （葉節點） |
 | `KlpIconData` | 18 | （葉節點） |
+| `KlpIconFonts` | 5 | （葉節點） |
 | `KlpIconWeight` | 1 | （葉節點） |
-| `KlpIcons` | 122 | `KlpIconData` |
+| `KlpIcons` | 123 | `KlpIconData` |
+| `KlpIdScope` | 35 | （葉節點） |
 | `KlpInlineCode` | 54 | （葉節點） |
 | `KlpInteractionSettings` | 27 | （葉節點） |
 | `KlpKeyBinding` | 17 | （葉節點） |
@@ -96,11 +120,10 @@ graph TD
 | `KlpKeyBindingRegion` | 34 | （葉節點） |
 | `KlpKeyBindingScope` | 3 | （葉節點） |
 | `KlpLayoutBuilder` | 10 | （葉節點） |
-| `KlpLayoutGap` | 3 | （葉節點） |
-| `KlpLine` | 7 | （葉節點） |
 | `KlpLinearTemplate` | 11 | （葉節點） |
+| `KlpLocalizations` | 432 | （葉節點） |
+| `KlpLocalizationsDelegate` | 14 | `KlpLocalizations` |
 | `KlpMasonryGrid` | 56 | （葉節點） |
-| `KlpMotion` | 4 | （葉節點） |
 | `KlpOklchColor` | 144 | （葉節點） |
 | `KlpOverlayHost` | 16 | （葉節點） |
 | `KlpPageBackground` | 52 | `KlpPageBackgroundPainter`、`KlpPageBackgroundVisuals` |
@@ -108,13 +131,11 @@ graph TD
 | `KlpPageBackgroundPainter` | 52 | （葉節點） |
 | `KlpPageBackgroundStyle` | 3 | （葉節點） |
 | `KlpPageBackgroundVisuals` | 31 | （葉節點） |
-| `KlpPlaceholderMetrics` | 17 | （葉節點） |
-| `KlpPlatformInfo` | 27 | （葉節點） |
+| `KlpPlatformInfo` | 72 | `KlpEnvironmentSnapshot` |
 | `KlpPointerBlocker` | 15 | （葉節點） |
 | `KlpPositioned` | 46 | （葉節點） |
 | `KlpPressable` | 191 | （葉節點） |
 | `KlpQuarterTurn` | 1 | （葉節點） |
-| `KlpRadius` | 11 | （葉節點） |
 | `KlpRegion` | 38 | `KlpSurface` |
 | `KlpResizablePane` | 11 | （葉節點） |
 | `KlpResizeHandle` | 86 | （葉節點） |
@@ -130,8 +151,6 @@ graph TD
 | `KlpSegmentedProgress` | 34 | （葉節點） |
 | `KlpSelectionAction` | 13 | （葉節點） |
 | `KlpSemanticRegion` | 33 | （葉節點） |
-| `KlpSize` | 29 | （葉節點） |
-| `KlpSpace` | 12 | （葉節點） |
 | `KlpSpaceSize` | 70 | （葉節點） |
 | `KlpSpacer` | 10 | （葉節點） |
 | `KlpSplitLayout` | 45 | `KlpExpanded`、`KlpRow` |
@@ -142,7 +161,8 @@ graph TD
 | `KlpStrokeRole` | 2 | （葉節點） |
 | `KlpStrokeState` | 2 | （葉節點） |
 | `KlpSurface` | 101 | `KlpTokenOverride` |
-| `KlpSurfaceTemplate` | 13 | （葉節點） |
+| `KlpSurfaceShadowSemantics` | 7 | （葉節點） |
+| `KlpSurfaceTemplate` | 15 | （葉節點） |
 | `KlpSurfaceTone` | 13 | （葉節點） |
 | `KlpText` | 141 | （葉節點） |
 | `KlpTextColorTier` | 1 | （葉節點） |
@@ -155,8 +175,6 @@ graph TD
 | `KlpTextTracking` | 1 | （葉節點） |
 | `KlpTranslate` | 18 | （葉節點） |
 | `KlpTranslation` | 6 | （葉節點） |
-| `KlpTransparency` | 4 | （葉節點） |
-| `KlpTypography` | 58 | （葉節點） |
 | `KlpVeil` | 19 | （葉節點） |
 | `KlpVirtualGrid` | 43 | （葉節點） |
 | `KlpVirtualList` | 24 | （葉節點） |
@@ -172,14 +190,18 @@ graph LR
   KlpDashedBorder["KlpDashedBorder"]
   KlpDragPreview["KlpDragPreview"]
   KlpDropTarget["KlpDropTarget"]
+  KlpEnvironmentSnapshot["KlpEnvironmentSnapshot"]:::external
   KlpExpanded["KlpExpanded"]
   KlpIconData["KlpIconData"]
   KlpIcons["KlpIcons"]
   KlpInlineCode["KlpInlineCode"]
   KlpKeyBindingController["KlpKeyBindingController"]
+  KlpLocalizations["KlpLocalizations"]
+  KlpLocalizationsDelegate["KlpLocalizationsDelegate"]
   KlpPageBackground["KlpPageBackground"]
   KlpPageBackgroundPainter["KlpPageBackgroundPainter"]
   KlpPageBackgroundVisuals["KlpPageBackgroundVisuals"]
+  KlpPlatformInfo["KlpPlatformInfo"]
   KlpRegion["KlpRegion"]
   KlpRichText["KlpRichText"]
   KlpRow["KlpRow"]
@@ -200,8 +222,10 @@ graph LR
   KlpDropTarget --> KlpSurface
   KlpIcons --> KlpIconData
   KlpKeyBindingController --> KlpCommandIntent
+  KlpLocalizationsDelegate --> KlpLocalizations
   KlpPageBackground --> KlpPageBackgroundPainter
   KlpPageBackground --> KlpPageBackgroundVisuals
+  KlpPlatformInfo --> KlpEnvironmentSnapshot
   KlpRegion --> KlpSurface
   KlpRichText --> KlpInlineCode
   KlpRichText --> KlpText
@@ -224,7 +248,7 @@ graph LR
 不組合任何其他 Kallopis 型別的 widget。它們是這套視覺語言的**詞根**——
 每一個都直接對應一個不可再分的視覺概念。
 
-`KlpAdaptive`、`KlpAlign`、`KlpApp`、`KlpCenter`、`KlpColorRoleField`、`KlpColumn`、`KlpConditionalFieldRegion`、`KlpConstrainedBox`、`KlpContextMenu`、`KlpDashedDivider`、`KlpDateField`、`KlpDirectionalPositioned`、`KlpDivider`、`KlpDropIndicator`、`KlpErrorState`、`KlpExcludeSemantics`、`KlpExpanded`、`KlpFileExplorerSection`、`KlpFit`、`KlpFlexible`、`KlpFocusBoundary`、`KlpFocusRegion`、`KlpGap`、`KlpGeometricSpinner`、`KlpGestureRegion`、`KlpIcon`、`KlpInlineCode`、`KlpKeyBindingHost`、`KlpKeyBindingRegion`、`KlpLayoutBuilder`、`KlpLiveRegion`、`KlpMasonryGrid`、`KlpMenu`、`KlpModalFrame`、`KlpNumberField`、`KlpOverlayHost`、`KlpPageBackgroundEditor`、`KlpPageBackgroundPainter`、`KlpPanelFooter`、`KlpPanelFrame`、`KlpPermissionState`、`KlpPointerBlocker`、`KlpPositioned`、`KlpPressable`、`KlpResizablePane`、`KlpResizeHandle`、`KlpRotate`、`KlpRouterOutlet`、`KlpRouterScope`、`KlpRow`、`KlpScrollViewport`、`KlpSegmentedProgress`、`KlpSemanticRegion`、`KlpSettingsSearchField`、`KlpSidebarNavigationButton`、`KlpSidebarNavigationGroup`、`KlpSpacer`、`KlpStack`、`KlpStateHighlight`、`KlpStepper`、`KlpStrokeFrame`、`KlpText`、`KlpTextArea`、`KlpTokenOverride`、`KlpTooltip`、`KlpTranslate`、`KlpVeil`、`KlpVirtualGrid`、`KlpVirtualList`、`KlpWorkbenchNavigationRegion`、`KlpWrap`
+`KlpAdaptive`、`KlpAlign`、`KlpApp`、`KlpCenter`、`KlpColorRoleField`、`KlpColumn`、`KlpConditionalFieldRegion`、`KlpConstrainedBox`、`KlpContextMenu`、`KlpDashedDivider`、`KlpDateField`、`KlpDirectionalPositioned`、`KlpDivider`、`KlpDropIndicator`、`KlpErrorState`、`KlpExcludeSemantics`、`KlpExpanded`、`KlpFileExplorerSection`、`KlpFit`、`KlpFlexible`、`KlpFocusBoundary`、`KlpFocusRegion`、`KlpGap`、`KlpGeometricSpinner`、`KlpGestureRegion`、`KlpIcon`、`KlpInlineCode`、`KlpKeyBindingHost`、`KlpKeyBindingRegion`、`KlpLayoutBuilder`、`KlpLiveRegion`、`KlpMasonryGrid`、`KlpMenu`、`KlpModalFrame`、`KlpNumberField`、`KlpOverlayHost`、`KlpPageBackgroundEditor`、`KlpPageBackgroundPainter`、`KlpPanelFooter`、`KlpPanelFrame`、`KlpPermissionState`、`KlpPointerBlocker`、`KlpPositioned`、`KlpPressable`、`KlpResizablePane`、`KlpResizeHandle`、`KlpRotate`、`KlpRouterOutlet`、`KlpRouterScope`、`KlpRow`、`KlpScrollViewport`、`KlpSegmentedProgress`、`KlpSemanticRegion`、`KlpSettingsSearchField`、`KlpSidebarNavigationButton`、`KlpSidebarNavigationGroup`、`KlpSpacer`、`KlpStack`、`KlpStateHighlight`、`KlpStepper`、`KlpStrokeFrame`、`KlpText`、`KlpTextArea`、`KlpTokenOverride`、`KlpTooltip`、`KlpTranslate`、`KlpVeil`、`KlpVirtualGrid`、`KlpVirtualList`、`KlpWrap`
 
 ## 被最多型別使用的
 
@@ -233,18 +257,18 @@ graph LR
 | 型別 | 被幾個型別使用 |
 |---|---|
 | `KlpText` | 49 |
-| `KlpRow` | 37 |
-| `KlpBox` | 36 |
 | `KlpColumn` | 36 |
-| `KlpExpanded` | 32 |
+| `KlpRow` | 36 |
+| `KlpBox` | 35 |
+| `KlpExpanded` | 31 |
+| `KlpContractError` | 27 |
 | `KlpSurface` | 24 |
-| `KlpContractError` | 17 |
+| `KlpChildren` | 19 |
 | `KlpWrap` | 12 |
 | `KlpGestureRegion` | 11 |
-| `KlpCenter` | 10 |
-| `KlpStack` | 8 |
+| `KlpCenter` | 9 |
+| `KlpDefaultPlacement` | 8 |
 | `KlpFlexible` | 7 |
 | `KlpIcon` | 7 |
-| `KlpLayoutBuilder` | 6 |
-| `KlpAlign` | 5 |
+| `KlpStack` | 7 |
 

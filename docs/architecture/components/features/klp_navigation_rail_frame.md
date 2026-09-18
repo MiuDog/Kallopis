@@ -4,7 +4,7 @@
 
 - **核心元件**：`KlpNavigationRailFrame`
 - **所屬領域**：`features`
-- **核心職責**：Workbench Rail 的獨立表面。
+- **核心職責**：Rail 的獨立表面相容配方。
 - **包含範圍**：`build()` 內部建構的完整 Widget 樹（展開 Flutter 原生元件與純容器）
 - **外部引用**：本專案其他非純容器元件（遇引用即停下並鏈結）
 
@@ -28,7 +28,7 @@ flowchart TD
 
 ## 程式碼證據
 
-- 檔案路徑：[`lib/src/features/workspace/shell/sidebar/klp_workbench_navigation_region.dart`](../../../../lib/src/features/workspace/shell/sidebar/klp_workbench_navigation_region.dart#L33)
+- 檔案路徑：[`lib/src/features/workspace/shell/composition/klp_navigation_rail_frame.dart`](../../../../lib/src/features/workspace/shell/composition/klp_navigation_rail_frame.dart#L6)
 - 宣告型態：`StatelessWidget`
 
 ## 閱讀說明

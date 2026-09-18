@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
 import 'klp_interaction_settings.dart';
-import '../../styling/legacy_theme/klp_motion_theme.dart';
-import '../../styling/legacy_theme/klp_theme.dart';
+import 'package:kallopis/src/styling/legacy_theme/klp_motion_theme.dart';
+import 'package:kallopis/src/styling/legacy_theme/klp_theme.dart';
 
 /// 可按壓表面的 hover／focus 視覺。
 class KlpPressable extends StatefulWidget {

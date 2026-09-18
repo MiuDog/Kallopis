@@ -12,14 +12,14 @@
 flowchart LR
 	n0["klp_sort_control.dart"]
 	n1["package:flutter/widgets.dart"]
-	n2["../../../foundation/klp_icon.dart"]
-	n3["../../../foundation/klp_icons.dart"]
-	n4["../../../foundation/interaction/klp_gesture_region.dart"]
-	n5["../../../foundation/layout/klp_gap.dart"]
-	n6["../../../foundation/layout/klp_row.dart"]
-	n7["../../../foundation/layout/klp_space_size.dart"]
-	n8["../../../styling/legacy_theme/klp_theme.dart"]
-	n9["../../../foundation/content/klp_text.dart"]
+	n2["package:kallopis/src/foundation/klp_icon.dart"]
+	n3["package:kallopis/src/foundation/klp_icons.dart"]
+	n4["package:kallopis/src/foundation/interaction/klp_gesture_region.dart"]
+	n5["package:kallopis/src/foundation/layout/klp_gap.dart"]
+	n6["package:kallopis/src/foundation/layout/klp_row.dart"]
+	n7["package:kallopis/src/foundation/layout/klp_space_size.dart"]
+	n8["package:kallopis/src/styling/legacy_theme/klp_theme.dart"]
+	n9["package:kallopis/src/foundation/content/klp_text.dart"]
 	n0 -->|"import"| n1
 	n0 -->|"import"| n2
 	n0 -->|"import"| n3
@@ -36,14 +36,14 @@ flowchart LR
 | 關係 | 原始 directive | 來源 |
 |---|---|---|
 | import | <code>import &#x27;package:flutter/widgets.dart&#x27;;</code> | [lib/src/features/collections/sort_control/klp_sort_control.dart:1](../../../../../../lib/src/features/collections/sort_control/klp_sort_control.dart#L1) |
-| import | <code>import &#x27;../../../foundation/klp_icon.dart&#x27;;</code> | [lib/src/features/collections/sort_control/klp_sort_control.dart:3](../../../../../../lib/src/features/collections/sort_control/klp_sort_control.dart#L3) |
-| import | <code>import &#x27;../../../foundation/klp_icons.dart&#x27;;</code> | [lib/src/features/collections/sort_control/klp_sort_control.dart:4](../../../../../../lib/src/features/collections/sort_control/klp_sort_control.dart#L4) |
-| import | <code>import &#x27;../../../foundation/interaction/klp_gesture_region.dart&#x27;;</code> | [lib/src/features/collections/sort_control/klp_sort_control.dart:5](../../../../../../lib/src/features/collections/sort_control/klp_sort_control.dart#L5) |
-| import | <code>import &#x27;../../../foundation/layout/klp_gap.dart&#x27;;</code> | [lib/src/features/collections/sort_control/klp_sort_control.dart:6](../../../../../../lib/src/features/collections/sort_control/klp_sort_control.dart#L6) |
-| import | <code>import &#x27;../../../foundation/layout/klp_row.dart&#x27;;</code> | [lib/src/features/collections/sort_control/klp_sort_control.dart:7](../../../../../../lib/src/features/collections/sort_control/klp_sort_control.dart#L7) |
-| import | <code>import &#x27;../../../foundation/layout/klp_space_size.dart&#x27;;</code> | [lib/src/features/collections/sort_control/klp_sort_control.dart:8](../../../../../../lib/src/features/collections/sort_control/klp_sort_control.dart#L8) |
-| import | <code>import &#x27;../../../styling/legacy_theme/klp_theme.dart&#x27;;</code> | [lib/src/features/collections/sort_control/klp_sort_control.dart:9](../../../../../../lib/src/features/collections/sort_control/klp_sort_control.dart#L9) |
-| import | <code>import &#x27;../../../foundation/content/klp_text.dart&#x27;;</code> | [lib/src/features/collections/sort_control/klp_sort_control.dart:10](../../../../../../lib/src/features/collections/sort_control/klp_sort_control.dart#L10) |
+| import | <code>import &#x27;package:kallopis/src/foundation/klp_icon.dart&#x27;;</code> | [lib/src/features/collections/sort_control/klp_sort_control.dart:3](../../../../../../lib/src/features/collections/sort_control/klp_sort_control.dart#L3) |
+| import | <code>import &#x27;package:kallopis/src/foundation/klp_icons.dart&#x27;;</code> | [lib/src/features/collections/sort_control/klp_sort_control.dart:4](../../../../../../lib/src/features/collections/sort_control/klp_sort_control.dart#L4) |
+| import | <code>import &#x27;package:kallopis/src/foundation/interaction/klp_gesture_region.dart&#x27;;</code> | [lib/src/features/collections/sort_control/klp_sort_control.dart:5](../../../../../../lib/src/features/collections/sort_control/klp_sort_control.dart#L5) |
+| import | <code>import &#x27;package:kallopis/src/foundation/layout/klp_gap.dart&#x27;;</code> | [lib/src/features/collections/sort_control/klp_sort_control.dart:6](../../../../../../lib/src/features/collections/sort_control/klp_sort_control.dart#L6) |
+| import | <code>import &#x27;package:kallopis/src/foundation/layout/klp_row.dart&#x27;;</code> | [lib/src/features/collections/sort_control/klp_sort_control.dart:7](../../../../../../lib/src/features/collections/sort_control/klp_sort_control.dart#L7) |
+| import | <code>import &#x27;package:kallopis/src/foundation/layout/klp_space_size.dart&#x27;;</code> | [lib/src/features/collections/sort_control/klp_sort_control.dart:8](../../../../../../lib/src/features/collections/sort_control/klp_sort_control.dart#L8) |
+| import | <code>import &#x27;package:kallopis/src/styling/legacy_theme/klp_theme.dart&#x27;;</code> | [lib/src/features/collections/sort_control/klp_sort_control.dart:9](../../../../../../lib/src/features/collections/sort_control/klp_sort_control.dart#L9) |
+| import | <code>import &#x27;package:kallopis/src/foundation/content/klp_text.dart&#x27;;</code> | [lib/src/features/collections/sort_control/klp_sort_control.dart:10](../../../../../../lib/src/features/collections/sort_control/klp_sort_control.dart#L10) |
 
 ## 宣告關係圖
 

@@ -13,21 +13,21 @@
 ```mermaid
 flowchart LR
 	n0["lib/src/features/workspace/page_chrome"]
-	n1["lib/src/application/localization"]
-	n2["lib/src/features/collections/badge"]
-	n3["lib/src/features/feedback"]
-	n4["lib/src/features/workspace/page_chrome/internal"]
-	n5["lib/src/features/workspace/page_chrome/models"]
-	n6["lib/src/foundation/content"]
-	n7["lib/src/foundation/layout"]
+	n1["lib/src/features/collections/badge"]
+	n2["lib/src/features/feedback"]
+	n3["lib/src/features/workspace/page_chrome/internal"]
+	n4["lib/src/features/workspace/page_chrome/models"]
+	n5["lib/src/foundation/content"]
+	n6["lib/src/foundation/layout"]
+	n7["lib/src/foundation/localization"]
 	n8["lib/src/foundation/surface"]
 	n9["lib/src/styling/legacy_theme"]
 	n10["package:flutter"]
 	n0 -->|"import"| n1
 	n0 -->|"import"| n2
-	n0 -->|"import"| n3
+	n0 -->|"part"| n3
 	n0 -->|"part"| n4
-	n0 -->|"part"| n5
+	n0 -->|"import"| n5
 	n0 -->|"import"| n6
 	n0 -->|"import"| n7
 	n0 -->|"import"| n8
@@ -37,13 +37,13 @@ flowchart LR
 
 | 目標邊界 | 關係 | directive 數 | 第一筆來源證據 |
 |---|---|---|---|
-| <code>lib/src/application/localization</code> | import | 1 | [lib/src/features/workspace/page_chrome/klp_page_chrome.dart:6](../../../../../../lib/src/features/workspace/page_chrome/klp_page_chrome.dart#L6) |
 | <code>lib/src/features/collections/badge</code> | import | 1 | [lib/src/features/workspace/page_chrome/klp_page_chrome.dart:3](../../../../../../lib/src/features/workspace/page_chrome/klp_page_chrome.dart#L3) |
 | <code>lib/src/features/feedback</code> | import | 1 | [lib/src/features/workspace/page_chrome/klp_page_chrome.dart:4](../../../../../../lib/src/features/workspace/page_chrome/klp_page_chrome.dart#L4) |
 | <code>lib/src/features/workspace/page_chrome/internal</code> | part | 3 | [lib/src/features/workspace/page_chrome/klp_page_chrome.dart:11](../../../../../../lib/src/features/workspace/page_chrome/klp_page_chrome.dart#L11) |
 | <code>lib/src/features/workspace/page_chrome/models</code> | part | 2 | [lib/src/features/workspace/page_chrome/klp_page_chrome.dart:14](../../../../../../lib/src/features/workspace/page_chrome/klp_page_chrome.dart#L14) |
 | <code>lib/src/foundation/content</code> | import | 1 | [lib/src/features/workspace/page_chrome/klp_page_chrome.dart:9](../../../../../../lib/src/features/workspace/page_chrome/klp_page_chrome.dart#L9) |
 | <code>lib/src/foundation/layout</code> | import | 1 | [lib/src/features/workspace/page_chrome/klp_page_chrome.dart:5](../../../../../../lib/src/features/workspace/page_chrome/klp_page_chrome.dart#L5) |
+| <code>lib/src/foundation/localization</code> | import | 1 | [lib/src/features/workspace/page_chrome/klp_page_chrome.dart:6](../../../../../../lib/src/features/workspace/page_chrome/klp_page_chrome.dart#L6) |
 | <code>lib/src/foundation/surface</code> | import | 1 | [lib/src/features/workspace/page_chrome/klp_page_chrome.dart:7](../../../../../../lib/src/features/workspace/page_chrome/klp_page_chrome.dart#L7) |
 | <code>lib/src/styling/legacy_theme</code> | import | 1 | [lib/src/features/workspace/page_chrome/klp_page_chrome.dart:8](../../../../../../lib/src/features/workspace/page_chrome/klp_page_chrome.dart#L8) |
 | <code>package:flutter</code> | import | 1 | [lib/src/features/workspace/page_chrome/klp_page_chrome.dart:1](../../../../../../lib/src/features/workspace/page_chrome/klp_page_chrome.dart#L1) |

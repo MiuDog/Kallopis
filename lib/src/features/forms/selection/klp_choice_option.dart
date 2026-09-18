@@ -1,4 +1,4 @@
-import '../internal/klp_form_dependencies.dart';
+import 'package:kallopis/src/features/forms/internal/klp_form_dependencies.dart';
 
 /// [KlpSelectField]、[KlpMultiSelectField] 與 [KlpColorRoleField] 共用的
 /// 選項資料：識別碼、顯示文字，以及是否停用。

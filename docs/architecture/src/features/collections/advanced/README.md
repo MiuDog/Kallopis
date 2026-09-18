@@ -13,22 +13,22 @@
 ```mermaid
 flowchart LR
 	n0["lib/src/features/collections/advanced"]
-	n1["lib/src/application/localization"]
-	n2["lib/src/features/collections/advanced/internal"]
+	n1["lib/src/features/collections/advanced/internal"]
+	n2["lib/src/features/collections/advanced/models"]
 	n3["lib/src/features/collections/advanced/models"]
-	n4["lib/src/features/collections/advanced/models"]
-	n5["lib/src/features/collections/advanced/primitives"]
-	n6["lib/src/features/feedback"]
-	n7["lib/src/features/forms/selection"]
-	n8["lib/src/foundation"]
-	n9["lib/src/foundation/content"]
-	n10["lib/src/foundation/interaction"]
-	n11["lib/src/foundation/layout"]
-	n0 -->|"import"| n1
-	n0 -->|"part"| n2
-	n0 -->|"export"| n3
-	n0 -->|"import"| n4
-	n0 -->|"part"| n5
+	n4["lib/src/features/collections/advanced/primitives"]
+	n5["lib/src/features/feedback"]
+	n6["lib/src/features/forms/selection"]
+	n7["lib/src/foundation"]
+	n8["lib/src/foundation/content"]
+	n9["lib/src/foundation/interaction"]
+	n10["lib/src/foundation/layout"]
+	n11["lib/src/foundation/localization"]
+	n0 -->|"part"| n1
+	n0 -->|"export"| n2
+	n0 -->|"import"| n3
+	n0 -->|"part"| n4
+	n0 -->|"import"| n5
 	n0 -->|"import"| n6
 	n0 -->|"import"| n7
 	n0 -->|"import"| n8
@@ -50,7 +50,6 @@ flowchart TD
 
 | 目標邊界 | 關係 | directive 數 | 第一筆來源證據 |
 |---|---|---|---|
-| <code>lib/src/application/localization</code> | import | 1 | [lib/src/features/collections/advanced/klp_advanced_data.dart:11](../../../../../../lib/src/features/collections/advanced/klp_advanced_data.dart#L11) |
 | <code>lib/src/features/collections/advanced/internal</code> | part | 10 | [lib/src/features/collections/advanced/klp_advanced_data.dart:20](../../../../../../lib/src/features/collections/advanced/klp_advanced_data.dart#L20) |
 | <code>lib/src/features/collections/advanced/models</code> | export | 1 | [lib/src/features/collections/advanced/klp_advanced_data.dart:18](../../../../../../lib/src/features/collections/advanced/klp_advanced_data.dart#L18) |
 | <code>lib/src/features/collections/advanced/models</code> | import | 1 | [lib/src/features/collections/advanced/klp_advanced_data.dart:16](../../../../../../lib/src/features/collections/advanced/klp_advanced_data.dart#L16) |
@@ -61,6 +60,7 @@ flowchart TD
 | <code>lib/src/foundation/content</code> | import | 1 | [lib/src/features/collections/advanced/klp_advanced_data.dart:15](../../../../../../lib/src/features/collections/advanced/klp_advanced_data.dart#L15) |
 | <code>lib/src/foundation/interaction</code> | import | 2 | [lib/src/features/collections/advanced/klp_advanced_data.dart:8](../../../../../../lib/src/features/collections/advanced/klp_advanced_data.dart#L8) |
 | <code>lib/src/foundation/layout</code> | import | 1 | [lib/src/features/collections/advanced/klp_advanced_data.dart:10](../../../../../../lib/src/features/collections/advanced/klp_advanced_data.dart#L10) |
+| <code>lib/src/foundation/localization</code> | import | 1 | [lib/src/features/collections/advanced/klp_advanced_data.dart:11](../../../../../../lib/src/features/collections/advanced/klp_advanced_data.dart#L11) |
 | <code>lib/src/foundation/surface</code> | import | 2 | [lib/src/features/collections/advanced/klp_advanced_data.dart:12](../../../../../../lib/src/features/collections/advanced/klp_advanced_data.dart#L12) |
 | <code>lib/src/styling/legacy_theme</code> | import | 1 | [lib/src/features/collections/advanced/klp_advanced_data.dart:14](../../../../../../lib/src/features/collections/advanced/klp_advanced_data.dart#L14) |
 | <code>package:flutter</code> | import | 1 | [lib/src/features/collections/advanced/klp_advanced_data.dart:1](../../../../../../lib/src/features/collections/advanced/klp_advanced_data.dart#L1) |

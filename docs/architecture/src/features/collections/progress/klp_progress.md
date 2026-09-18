@@ -12,10 +12,10 @@
 flowchart LR
 	n0["klp_progress.dart"]
 	n1["package:flutter/material.dart"]
-	n2["../../../foundation/interaction/klp_gesture_region.dart"]
-	n3["../../../foundation/layout/klp_layout.dart"]
-	n4["../../../styling/legacy_theme/klp_theme.dart"]
-	n5["../../../foundation/content/klp_text.dart"]
+	n2["package:kallopis/src/foundation/interaction/klp_gesture_region.dart"]
+	n3["package:kallopis/src/foundation/layout/klp_layout.dart"]
+	n4["package:kallopis/src/styling/legacy_theme/klp_theme.dart"]
+	n5["package:kallopis/src/foundation/content/klp_text.dart"]
 	n6["klp_progress_state.dart"]
 	n7["klp_progress_state.dart"]
 	n8["internal/klp_progress_widget.dart"]
@@ -36,10 +36,10 @@ flowchart LR
 | 關係 | 原始 directive | 來源 |
 |---|---|---|
 | import | <code>import &#x27;package:flutter/material.dart&#x27;;</code> | [lib/src/features/collections/progress/klp_progress.dart:1](../../../../../../lib/src/features/collections/progress/klp_progress.dart#L1) |
-| import | <code>import &#x27;../../../foundation/interaction/klp_gesture_region.dart&#x27;;</code> | [lib/src/features/collections/progress/klp_progress.dart:3](../../../../../../lib/src/features/collections/progress/klp_progress.dart#L3) |
-| import | <code>import &#x27;../../../foundation/layout/klp_layout.dart&#x27;;</code> | [lib/src/features/collections/progress/klp_progress.dart:4](../../../../../../lib/src/features/collections/progress/klp_progress.dart#L4) |
-| import | <code>import &#x27;../../../styling/legacy_theme/klp_theme.dart&#x27;;</code> | [lib/src/features/collections/progress/klp_progress.dart:5](../../../../../../lib/src/features/collections/progress/klp_progress.dart#L5) |
-| import | <code>import &#x27;../../../foundation/content/klp_text.dart&#x27;;</code> | [lib/src/features/collections/progress/klp_progress.dart:6](../../../../../../lib/src/features/collections/progress/klp_progress.dart#L6) |
+| import | <code>import &#x27;package:kallopis/src/foundation/interaction/klp_gesture_region.dart&#x27;;</code> | [lib/src/features/collections/progress/klp_progress.dart:3](../../../../../../lib/src/features/collections/progress/klp_progress.dart#L3) |
+| import | <code>import &#x27;package:kallopis/src/foundation/layout/klp_layout.dart&#x27;;</code> | [lib/src/features/collections/progress/klp_progress.dart:4](../../../../../../lib/src/features/collections/progress/klp_progress.dart#L4) |
+| import | <code>import &#x27;package:kallopis/src/styling/legacy_theme/klp_theme.dart&#x27;;</code> | [lib/src/features/collections/progress/klp_progress.dart:5](../../../../../../lib/src/features/collections/progress/klp_progress.dart#L5) |
+| import | <code>import &#x27;package:kallopis/src/foundation/content/klp_text.dart&#x27;;</code> | [lib/src/features/collections/progress/klp_progress.dart:6](../../../../../../lib/src/features/collections/progress/klp_progress.dart#L6) |
 | import | <code>import &#x27;klp_progress_state.dart&#x27;;</code> | [lib/src/features/collections/progress/klp_progress.dart:7](../../../../../../lib/src/features/collections/progress/klp_progress.dart#L7) |
 | export | <code>export &#x27;klp_progress_state.dart&#x27;;</code> | [lib/src/features/collections/progress/klp_progress.dart:9](../../../../../../lib/src/features/collections/progress/klp_progress.dart#L9) |
 | part | <code>part &#x27;internal/klp_progress_widget.dart&#x27;;</code> | [lib/src/features/collections/progress/klp_progress.dart:11](../../../../../../lib/src/features/collections/progress/klp_progress.dart#L11) |

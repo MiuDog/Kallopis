@@ -1,4 +1,4 @@
-import '../../kernel/identity/klp_placement_id.dart';
+import 'package:kallopis/src/kernel/identity/klp_placement_id.dart';
 import 'klp_validated_slot.dart';
 
 /// 一次驗證取得的放置快照，不再讀取消費端節點 getter。

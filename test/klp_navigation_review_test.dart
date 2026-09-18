@@ -1,13 +1,9 @@
 import 'dart:async';
 
 import 'package:flutter_test/flutter_test.dart';
-import 'package:kallopis/src/capabilities/navigation/internal/klp_navigation_commit_exception.dart';
-import 'package:kallopis/src/capabilities/navigation/internal/klp_navigation_commit_contract_exception.dart';
-import 'package:kallopis/src/capabilities/navigation/klp_destination.dart';
-import 'package:kallopis/src/capabilities/navigation/klp_location.dart';
-import 'package:kallopis/src/capabilities/navigation/klp_navigation_decision.dart';
-import 'package:kallopis/src/capabilities/navigation/klp_navigation_outcome.dart';
-import 'package:kallopis/src/capabilities/navigation/klp_route_policy.dart';
+import 'package:kallopis/kallopis_declarative.dart';
+import 'package:kallopis/src/capabilities/navigation/engine/klp_navigation_commit_exception.dart';
+import 'package:kallopis/src/capabilities/navigation/engine/klp_navigation_commit_contract_exception.dart';
 
 import 'support/klp_navigation_fixture.dart';
 
@@ -15,7 +11,7 @@ void main() {
   test(
     'public location retains original parameter validator after explicit widening',
     () {
-      final narrow = KlpDestination<int, String>('detail');
+      final narrow = KlpDestination<int, String>(KlpId.parse('detail'));
       final KlpDestination<Object?, Object?> wide = narrow;
       expect(() => KlpLocation<Object?>(wide, 'wrong'), throwsArgumentError);
       expect(() => KlpLocation<Object?>(wide, null), throwsArgumentError);
@@ -28,8 +24,8 @@ void main() {
   test(
     'unclassified removal failure settles the current retained ticket',
     () async {
-      final home = KlpDestination<int, String>('home');
-      final detail = KlpDestination<int, String>('detail');
+      final home = KlpDestination<int, String>(KlpId.parse('home'));
+      final detail = KlpDestination<int, String>(KlpId.parse('detail'));
       final machine = klpNavigationTestMachine(
         policies: [
           KlpRoutePolicy(destination: home),
@@ -66,8 +62,8 @@ void main() {
     test(
       'complete failure settles results according to commit authority $committed',
       () async {
-        final home = KlpDestination<int, String>('home');
-        final detail = KlpDestination<int, String>('detail');
+        final home = KlpDestination<int, String>(KlpId.parse('home'));
+        final detail = KlpDestination<int, String>(KlpId.parse('detail'));
         var fail = false;
         final machine = klpNavigationTestMachine(
           policies: [
@@ -121,8 +117,8 @@ void main() {
   test(
     'cancelled pending pop preserves retained result until a later valid removal',
     () async {
-      final home = KlpDestination<int, String>('home');
-      final detail = KlpDestination<int, String>('detail');
+      final home = KlpDestination<int, String>(KlpId.parse('home'));
+      final detail = KlpDestination<int, String>(KlpId.parse('detail'));
       final gate = Completer<bool>();
       final machine = klpNavigationTestMachine(
         policies: [
@@ -156,8 +152,8 @@ void main() {
   test(
     'cancelled leave guard cannot invoke an enter guard after replacement',
     () async {
-      final home = KlpDestination<int, String>('home');
-      final detail = KlpDestination<int, String>('detail');
+      final home = KlpDestination<int, String>(KlpId.parse('home'));
+      final detail = KlpDestination<int, String>(KlpId.parse('detail'));
       final leave = Completer<bool>();
       var enterCalls = 0;
       var commitCalls = 0;
@@ -196,8 +192,8 @@ void main() {
   test(
     'commit notification cannot reenter removal or dispose the active transaction',
     () async {
-      final home = KlpDestination<int, String>('home');
-      final detail = KlpDestination<int, String>('detail');
+      final home = KlpDestination<int, String>(KlpId.parse('home'));
+      final detail = KlpDestination<int, String>(KlpId.parse('detail'));
       final machine = klpNavigationTestMachine(
         policies: [
           KlpRoutePolicy(destination: home),

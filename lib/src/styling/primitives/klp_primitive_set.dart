@@ -1,4 +1,4 @@
-import '../../kernel/diagnostics/klp_contract_error.dart';
+import 'package:kallopis/src/kernel/diagnostics/klp_contract_error.dart';
 import 'klp_primitive_index.dart';
 import 'klp_style_kind.dart';
 import 'klp_style_value.dart';

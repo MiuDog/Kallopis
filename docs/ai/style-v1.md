@@ -16,7 +16,7 @@ final primitives = KlpWorkspacePreset.light(tone: KlpWorkspaceTone.neutral);
 
 `KlpSurfaceTemplate.shadow` 可接受 `KlpSurfaceShadowSemantics(color: shadowColor, scale: shadowScale)`，兩者必須是所屬定義可讀取的 semantic key。顏色可映射 color i6，尺度映射 distance i3；暖灰配方下分別為黑色 alpha34 與 12px。
 
-`shadow: null` 保持平面。使用者的微浮偏好由應用選用有陰影或無陰影的元件定義，再循現有 Application／registry 重建流程更新；不是 renderer 讀取全域變數。切換時保持元件的其他語意與內容一致。
+`shadow: null` 保持平面。使用者的微浮偏好由應用在已公開的庫擁有元件與完整 primitive set 中選擇，再循現有 Application／runtime 提交流程更新；不是 renderer 讀取全域變數，也不是 consumer 註冊另一個元件定義。切換時保持元件的其他語意與內容一致。
 
 不要讓 Frame 或 Rail 取得紙片陰影。Surface 只有明確屬於獨立內容物件時才選用；既有未宣告陰影的 Surface 保持平整。此能力不自動生成紙色、紋理、便利貼或筆記畫面。
 

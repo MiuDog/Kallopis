@@ -1,0 +1,154 @@
+{
+	"status": "APP-V1-06 complete",
+	"plan_revision": "b1b8e2659ebe5f3ce274a2f446731c30915df8a8",
+	"validated_source_revision": "995b36912eeb7b4fc18ce6c3167f66fad05915c2",
+	"external_evidence": "D:\\Projects\\Kallopis-v1-evidence\\application-contracts",
+	"tests": {
+		"migration-integrated.log": 170,
+		"boundary-integrated.log": 11,
+		"catalog-integrated.log": 55,
+		"architecture-token-integrated.log": 167
+	},
+	"authors": {
+		"migration": [
+			{
+				"path": "test/klp_anchored_commands_installation_test.dart",
+				"sha256": "c77b0ed0cfa15ae15872c38b7870df54755bc814482f12c5f2e5799091f1810b"
+			},
+			{
+				"path": "test/klp_app_frame_style_test.dart",
+				"sha256": "fd0584a841f6fff8774278623c5dfe12c05d4b3cf4f8bba0bad4e9fd5c05d001"
+			},
+			{
+				"path": "test/klp_application_review_test.dart",
+				"sha256": "1da844a746dff0ad159ac5d0039237f4fe07718ad4b525475f65ea1f6700dc39"
+			},
+			{
+				"path": "test/klp_block_controls_installation_test.dart",
+				"sha256": "393546735b18e82f17a5d3c1d5190d4329d3eaee3b0d585555678abad77718e6"
+			},
+			{
+				"path": "test/klp_component_binding_test.dart",
+				"sha256": "b866d3b3f72aaa45e6643f1ddd7b9a72d5288a0f66d9f5f6b7d036bd6e1d50d6"
+			},
+			{
+				"path": "test/klp_component_children_binding_test.dart",
+				"sha256": "14f89ad716b6a8a25c996d8f9e8c2f004d6432e73caa8f5c117a322a776518a6"
+			},
+			{
+				"path": "test/klp_editing_compatibility_contract_test.dart",
+				"sha256": "65d3baaac4fe042d07c6629b4fe01444b833b21b62d6096761f02bb560478a6f"
+			},
+			{
+				"path": "test/klp_editing_installation_test.dart",
+				"sha256": "d9df5b5104ba8ae9b9bd4a8dbf83dd83facf5f738744a9545ce17198086bf19e"
+			},
+			{
+				"path": "test/klp_flutter_renderer_test.dart",
+				"sha256": "b3abcbd6307278e194d89d78043802e510ba0850a332e61c52b2fb9583061aca"
+			},
+			{
+				"path": "test/klp_frame_groups_test.dart",
+				"sha256": "87e54a7ee6a4dc9c754fff8137b6d6990d3f0e94561df78beda8fe71927c1d64"
+			},
+			{
+				"path": "test/klp_lower_module_boundary_test.dart",
+				"sha256": "4bbeced884bad8a470854e3118e0a05d2309eb62c8baa0e11134bbb61cb6abb7"
+			},
+			{
+				"path": "test/klp_mode_toolbar_installation_test.dart",
+				"sha256": "5334602ca80a5db7e0984b70573fd83c0ce755b28fd36b6a67c3ccb17da89cc6"
+			},
+			{
+				"path": "test/klp_navigation_commit_test.dart",
+				"sha256": "02502267c13a762b650b74bcf9c9f6d7f36177e45caf8f28c76924f046de42cf"
+			},
+			{
+				"path": "test/klp_navigation_machine_test.dart",
+				"sha256": "c8a240bc461e6f7a08973d6b6f402a7c677a3f49e389d04f82e0fc6091f6e3cd"
+			},
+			{
+				"path": "test/klp_navigation_review_test.dart",
+				"sha256": "9f6b30951ba046aa42bcafd708833136918809e78817b7ae5be910df0b4a39cd"
+			},
+			{
+				"path": "test/klp_navigation_start_test.dart",
+				"sha256": "d404fff087d9220e1948f299e77133bc816d0222d61e0e9162bb4aad31e8f93c"
+			},
+			{
+				"path": "test/klp_prepared_renderer_contract_test.dart",
+				"sha256": "093a0c08b460dd8d5b6efb32fb126be7cc2f91c3983c583426e84f6af3f58192"
+			},
+			{
+				"path": "test/klp_rail_adapter_test.dart",
+				"sha256": "04d5fb7e3dc97df7c6840d235259d53f7058e44901a918cd42f875a8bca5196e"
+			},
+			{
+				"path": "test/klp_scope_activation_test.dart",
+				"sha256": "ba5c559df329ed9cc08762dc25496595d8fda5ca4fcc8489c23c8ed2985b4f8d"
+			},
+			{
+				"path": "test/klp_scoped_capture_test.dart",
+				"sha256": "aa9af63b6005b9c623a7a70881f56002612f235d54ef904450c5b5207276c9bf"
+			},
+			{
+				"path": "test/klp_scoped_runtime_test.dart",
+				"sha256": "162ff9d5e66000f2525a3013b914817e6db1206c0c07ba55c27f541936507a4a"
+			},
+			{
+				"path": "test/klp_sidebar_interactions_test.dart",
+				"sha256": "5696cb4e8bc3659842a716db822e66edaaedbd2a29a6dd250fd4b611788070ae"
+			},
+			{
+				"path": "test/klp_tree_runtime_test.dart",
+				"sha256": "06cf0a1ed2ffd415103fc61d6c7abb1174b18ddfe84ae1a95becd03d727d2055"
+			},
+			{
+				"path": "test/klp_workspace_components_declarative_test.dart",
+				"sha256": "a1f0a6c62e48a6ad1d0858b2ac4e95a2fbf78d9018c3acd30df7a9358866acc8"
+			},
+			{
+				"path": "test/support/klp_component_test_definition.dart",
+				"sha256": "6ec9448600cb17ee759539588afcfa6d296aa34e7276bd3ceba7315dc562800a"
+			},
+			{
+				"path": "test/support/klp_navigation_fixture.dart",
+				"sha256": "cd1d086734fbd405f5de589056cbb3ae283413f95dd7833e9be801c16258c5dd"
+			},
+			{
+				"path": "test/support/klp_renderer_fixture.dart",
+				"sha256": "e5ef9cd4a3b92e9e5216b3bcd80823ab003d260cca9dfd8020031526934d277e"
+			},
+			{
+				"path": "test/support/klp_runtime_fixture.dart",
+				"sha256": "bf3f13eef1f6092609c868b320cfadae9d3f8788667b9008bd918f48048406ce"
+			}
+		],
+		"boundary": [
+			{
+				"path": "test/klp_application_module_boundary_test.dart",
+				"sha256": "137a45f157bb1c97f1d13e65f41332c34f23d9c20728ed2942de1777118d84ab"
+			}
+		]
+	},
+	"scope_reports": [
+		"D:\\Projects\\Kallopis-v1-evidence\\application-contracts\\APP06-kernel-scope.json",
+		"D:\\Projects\\Kallopis-v1-evidence\\application-contracts\\APP06-capabilities-scope.json",
+		"D:\\Projects\\Kallopis-v1-evidence\\application-contracts\\APP06-composition-scope.json",
+		"D:\\Projects\\Kallopis-v1-evidence\\application-contracts\\APP06-rendering-scope.json",
+		"D:\\Projects\\Kallopis-v1-evidence\\application-contracts\\APP06-features-scope.json",
+		"D:\\Projects\\Kallopis-v1-evidence\\application-contracts\\APP06-application-scope.json",
+		"D:\\Projects\\Kallopis-v1-evidence\\application-contracts\\APP06-runtime-scope.json"
+	],
+	"source_equivalence_count": 49,
+	"moves": 25,
+	"metadata_updates": 36,
+	"public_root_export_changes": 0,
+	"analysis": {
+		"errors": 0,
+		"warnings": 0,
+		"preexisting_infos": 3
+	},
+	"atlas_fresh_files": 1480,
+	"source_transfer": "External transfer-receipt.json records final exact commit and original HEAD/index preservation."
+}

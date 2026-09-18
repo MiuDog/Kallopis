@@ -98,13 +98,8 @@ class _KallopisCatalogAppState extends State<KallopisCatalogApp>
         return KlpApp(
           debugShowCheckedModeBanner: false,
           title: 'Kallopis',
-          appIcon: const KlpIcon(KlpIcons.sparkles),
           minWidth: 800,
           minHeight: 500,
-          isMaximized: _isMaximized,
-          headerActions: [
-            _CatalogThemeButton(variant: _variant, onPressed: _cycleTheme),
-          ],
           builder: (context, child) => CatalogThemeScope(
             value: themeColor,
             onChanged: _setThemeColor,

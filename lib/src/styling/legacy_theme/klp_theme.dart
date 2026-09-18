@@ -5,7 +5,7 @@ import 'klp_shape_theme.dart';
 import 'klp_surface_theme.dart';
 import 'klp_visual_style.dart';
 import 'klp_theme_data.dart';
-import '../legacy_tokens/primitive_token.dart';
+import 'package:kallopis/src/styling/legacy_tokens/primitive_token.dart';
 
 // 元件 import 色彩層時一併取得 token 存取面（`context.klp` 與 `context.klpColors`），
 // 否則每個元件都要 import 兩個 theme 檔才拿得到值——那種摩擦會讓人選擇寫死。

@@ -11,7 +11,7 @@
 ```mermaid
 flowchart LR
 	n0["klp_primitive_set.dart"]
-	n1["../../kernel/diagnostics/klp_contract_error.dart"]
+	n1["package:kallopis/src/kernel/diagnostics/klp_contract_error.dart"]
 	n2["klp_primitive_index.dart"]
 	n3["klp_style_kind.dart"]
 	n4["klp_style_value.dart"]
@@ -25,7 +25,7 @@ flowchart LR
 
 | 關係 | 原始 directive | 來源 |
 |---|---|---|
-| import | <code>import &#x27;../../kernel/diagnostics/klp_contract_error.dart&#x27;;</code> | [lib/src/styling/primitives/klp_primitive_set.dart:1](../../../../../lib/src/styling/primitives/klp_primitive_set.dart#L1) |
+| import | <code>import &#x27;package:kallopis/src/kernel/diagnostics/klp_contract_error.dart&#x27;;</code> | [lib/src/styling/primitives/klp_primitive_set.dart:1](../../../../../lib/src/styling/primitives/klp_primitive_set.dart#L1) |
 | import | <code>import &#x27;klp_primitive_index.dart&#x27;;</code> | [lib/src/styling/primitives/klp_primitive_set.dart:2](../../../../../lib/src/styling/primitives/klp_primitive_set.dart#L2) |
 | import | <code>import &#x27;klp_style_kind.dart&#x27;;</code> | [lib/src/styling/primitives/klp_primitive_set.dart:3](../../../../../lib/src/styling/primitives/klp_primitive_set.dart#L3) |
 | import | <code>import &#x27;klp_style_value.dart&#x27;;</code> | [lib/src/styling/primitives/klp_primitive_set.dart:4](../../../../../lib/src/styling/primitives/klp_primitive_set.dart#L4) |

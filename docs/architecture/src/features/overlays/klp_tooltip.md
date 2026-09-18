@@ -12,10 +12,10 @@
 flowchart LR
 	n0["klp_tooltip.dart"]
 	n1["package:flutter/material.dart"]
-	n2["../../foundation/layout/klp_layout.dart"]
-	n3["../../foundation/surface/klp_surface.dart"]
-	n4["../../styling/legacy_theme/klp_theme.dart"]
-	n5["../../foundation/content/klp_text.dart"]
+	n2["package:kallopis/src/foundation/layout/klp_layout.dart"]
+	n3["package:kallopis/src/foundation/surface/klp_surface.dart"]
+	n4["package:kallopis/src/styling/legacy_theme/klp_theme.dart"]
+	n5["package:kallopis/src/foundation/content/klp_text.dart"]
 	n6["tooltip/klp_tooltip_surface.dart"]
 	n7["primitives/klp_tooltip_widget.dart"]
 	n0 -->|"import"| n1
@@ -32,10 +32,10 @@ flowchart LR
 | 關係 | 原始 directive | 來源 |
 |---|---|---|
 | import | <code>import &#x27;package:flutter/material.dart&#x27;;</code> | [lib/src/features/overlays/klp_tooltip.dart:1](../../../../../lib/src/features/overlays/klp_tooltip.dart#L1) |
-| import | <code>import &#x27;../../foundation/layout/klp_layout.dart&#x27;;</code> | [lib/src/features/overlays/klp_tooltip.dart:3](../../../../../lib/src/features/overlays/klp_tooltip.dart#L3) |
-| import | <code>import &#x27;../../foundation/surface/klp_surface.dart&#x27;;</code> | [lib/src/features/overlays/klp_tooltip.dart:4](../../../../../lib/src/features/overlays/klp_tooltip.dart#L4) |
-| import | <code>import &#x27;../../styling/legacy_theme/klp_theme.dart&#x27;;</code> | [lib/src/features/overlays/klp_tooltip.dart:5](../../../../../lib/src/features/overlays/klp_tooltip.dart#L5) |
-| import | <code>import &#x27;../../foundation/content/klp_text.dart&#x27;;</code> | [lib/src/features/overlays/klp_tooltip.dart:6](../../../../../lib/src/features/overlays/klp_tooltip.dart#L6) |
+| import | <code>import &#x27;package:kallopis/src/foundation/layout/klp_layout.dart&#x27;;</code> | [lib/src/features/overlays/klp_tooltip.dart:3](../../../../../lib/src/features/overlays/klp_tooltip.dart#L3) |
+| import | <code>import &#x27;package:kallopis/src/foundation/surface/klp_surface.dart&#x27;;</code> | [lib/src/features/overlays/klp_tooltip.dart:4](../../../../../lib/src/features/overlays/klp_tooltip.dart#L4) |
+| import | <code>import &#x27;package:kallopis/src/styling/legacy_theme/klp_theme.dart&#x27;;</code> | [lib/src/features/overlays/klp_tooltip.dart:5](../../../../../lib/src/features/overlays/klp_tooltip.dart#L5) |
+| import | <code>import &#x27;package:kallopis/src/foundation/content/klp_text.dart&#x27;;</code> | [lib/src/features/overlays/klp_tooltip.dart:6](../../../../../lib/src/features/overlays/klp_tooltip.dart#L6) |
 | part | <code>part &#x27;tooltip/klp_tooltip_surface.dart&#x27;;</code> | [lib/src/features/overlays/klp_tooltip.dart:8](../../../../../lib/src/features/overlays/klp_tooltip.dart#L8) |
 | part | <code>part &#x27;primitives/klp_tooltip_widget.dart&#x27;;</code> | [lib/src/features/overlays/klp_tooltip.dart:9](../../../../../lib/src/features/overlays/klp_tooltip.dart#L9) |
 

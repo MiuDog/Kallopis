@@ -12,10 +12,10 @@
 flowchart LR
 	n0["klp_radio_group.dart"]
 	n1["package:flutter/material.dart"]
-	n2["../../../foundation/interaction/klp_pressable.dart"]
-	n3["../../../foundation/layout/klp_layout.dart"]
-	n4["../../../styling/legacy_theme/klp_theme.dart"]
-	n5["../../../foundation/content/klp_text.dart"]
+	n2["package:kallopis/src/foundation/interaction/klp_pressable.dart"]
+	n3["package:kallopis/src/foundation/layout/klp_layout.dart"]
+	n4["package:kallopis/src/styling/legacy_theme/klp_theme.dart"]
+	n5["package:kallopis/src/foundation/content/klp_text.dart"]
 	n6["internal/klp_radio_group_widget.dart"]
 	n7["internal/klp_radio_item_style.dart"]
 	n8["internal/klp_radio_item_widget.dart"]
@@ -38,10 +38,10 @@ flowchart LR
 | 關係 | 原始 directive | 來源 |
 |---|---|---|
 | import | <code>import &#x27;package:flutter/material.dart&#x27;;</code> | [lib/src/features/forms/selection/klp_radio_group.dart:1](../../../../../../lib/src/features/forms/selection/klp_radio_group.dart#L1) |
-| import | <code>import &#x27;../../../foundation/interaction/klp_pressable.dart&#x27;;</code> | [lib/src/features/forms/selection/klp_radio_group.dart:3](../../../../../../lib/src/features/forms/selection/klp_radio_group.dart#L3) |
-| import | <code>import &#x27;../../../foundation/layout/klp_layout.dart&#x27;;</code> | [lib/src/features/forms/selection/klp_radio_group.dart:4](../../../../../../lib/src/features/forms/selection/klp_radio_group.dart#L4) |
-| import | <code>import &#x27;../../../styling/legacy_theme/klp_theme.dart&#x27;;</code> | [lib/src/features/forms/selection/klp_radio_group.dart:5](../../../../../../lib/src/features/forms/selection/klp_radio_group.dart#L5) |
-| import | <code>import &#x27;../../../foundation/content/klp_text.dart&#x27;;</code> | [lib/src/features/forms/selection/klp_radio_group.dart:6](../../../../../../lib/src/features/forms/selection/klp_radio_group.dart#L6) |
+| import | <code>import &#x27;package:kallopis/src/foundation/interaction/klp_pressable.dart&#x27;;</code> | [lib/src/features/forms/selection/klp_radio_group.dart:3](../../../../../../lib/src/features/forms/selection/klp_radio_group.dart#L3) |
+| import | <code>import &#x27;package:kallopis/src/foundation/layout/klp_layout.dart&#x27;;</code> | [lib/src/features/forms/selection/klp_radio_group.dart:4](../../../../../../lib/src/features/forms/selection/klp_radio_group.dart#L4) |
+| import | <code>import &#x27;package:kallopis/src/styling/legacy_theme/klp_theme.dart&#x27;;</code> | [lib/src/features/forms/selection/klp_radio_group.dart:5](../../../../../../lib/src/features/forms/selection/klp_radio_group.dart#L5) |
+| import | <code>import &#x27;package:kallopis/src/foundation/content/klp_text.dart&#x27;;</code> | [lib/src/features/forms/selection/klp_radio_group.dart:6](../../../../../../lib/src/features/forms/selection/klp_radio_group.dart#L6) |
 | part | <code>part &#x27;internal/klp_radio_group_widget.dart&#x27;;</code> | [lib/src/features/forms/selection/klp_radio_group.dart:8](../../../../../../lib/src/features/forms/selection/klp_radio_group.dart#L8) |
 | part | <code>part &#x27;internal/klp_radio_item_style.dart&#x27;;</code> | [lib/src/features/forms/selection/klp_radio_group.dart:9](../../../../../../lib/src/features/forms/selection/klp_radio_group.dart#L9) |
 | part | <code>part &#x27;internal/klp_radio_item_widget.dart&#x27;;</code> | [lib/src/features/forms/selection/klp_radio_group.dart:10](../../../../../../lib/src/features/forms/selection/klp_radio_group.dart#L10) |

@@ -11,7 +11,7 @@
 ```mermaid
 flowchart TD
 	n0["klp_tag_chip.dart"]
-	n1["../internal/klp_form_dependencies.dart"]
+	n1["package:kallopis/src/features/forms/internal/klp_form_dependencies.dart"]
 	n2["primitives/klp_tag_chip_frame.dart"]
 	n0 -->|"import"| n1
 	n0 -->|"part"| n2
@@ -21,7 +21,7 @@ flowchart TD
 
 | 關係 | 原始 directive | 來源 |
 |---|---|---|
-| import | <code>import &#x27;../internal/klp_form_dependencies.dart&#x27;;</code> | [lib/src/features/forms/selection/klp_tag_chip.dart:1](../../../../../../lib/src/features/forms/selection/klp_tag_chip.dart#L1) |
+| import | <code>import &#x27;package:kallopis/src/features/forms/internal/klp_form_dependencies.dart&#x27;;</code> | [lib/src/features/forms/selection/klp_tag_chip.dart:1](../../../../../../lib/src/features/forms/selection/klp_tag_chip.dart#L1) |
 | part | <code>part &#x27;primitives/klp_tag_chip_frame.dart&#x27;;</code> | [lib/src/features/forms/selection/klp_tag_chip.dart:3](../../../../../../lib/src/features/forms/selection/klp_tag_chip.dart#L3) |
 
 ## 宣告關係圖

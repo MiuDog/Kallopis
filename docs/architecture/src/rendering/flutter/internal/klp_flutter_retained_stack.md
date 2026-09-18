@@ -12,9 +12,9 @@
 flowchart LR
 	n0["klp_flutter_retained_stack.dart"]
 	n1["package:flutter/widgets.dart"]
-	n2["../../../foundation/binding/internal/klp_bound_template.dart"]
-	n3["../../../kernel/identity/klp_placement_id.dart"]
-	n4["klp_flutter_renderer.dart"]
+	n2["package:kallopis/src/foundation/binding/contracts/klp_bound_template.dart"]
+	n3["package:kallopis/src/kernel/identity/klp_placement_id.dart"]
+	n4["../klp_flutter_renderer.dart"]
 	n0 -->|"import"| n1
 	n0 -->|"import"| n2
 	n0 -->|"import"| n3
@@ -26,9 +26,9 @@ flowchart LR
 | 關係 | 原始 directive | 來源 |
 |---|---|---|
 | import | <code>import &#x27;package:flutter/widgets.dart&#x27;;</code> | [lib/src/rendering/flutter/internal/klp_flutter_retained_stack.dart:1](../../../../../../lib/src/rendering/flutter/internal/klp_flutter_retained_stack.dart#L1) |
-| import | <code>import &#x27;../../../foundation/binding/internal/klp_bound_template.dart&#x27;;</code> | [lib/src/rendering/flutter/internal/klp_flutter_retained_stack.dart:3](../../../../../../lib/src/rendering/flutter/internal/klp_flutter_retained_stack.dart#L3) |
-| import | <code>import &#x27;../../../kernel/identity/klp_placement_id.dart&#x27;;</code> | [lib/src/rendering/flutter/internal/klp_flutter_retained_stack.dart:4](../../../../../../lib/src/rendering/flutter/internal/klp_flutter_retained_stack.dart#L4) |
-| import | <code>import &#x27;klp_flutter_renderer.dart&#x27;;</code> | [lib/src/rendering/flutter/internal/klp_flutter_retained_stack.dart:5](../../../../../../lib/src/rendering/flutter/internal/klp_flutter_retained_stack.dart#L5) |
+| import | <code>import &#x27;package:kallopis/src/foundation/binding/contracts/klp_bound_template.dart&#x27;;</code> | [lib/src/rendering/flutter/internal/klp_flutter_retained_stack.dart:3](../../../../../../lib/src/rendering/flutter/internal/klp_flutter_retained_stack.dart#L3) |
+| import | <code>import &#x27;package:kallopis/src/kernel/identity/klp_placement_id.dart&#x27;;</code> | [lib/src/rendering/flutter/internal/klp_flutter_retained_stack.dart:4](../../../../../../lib/src/rendering/flutter/internal/klp_flutter_retained_stack.dart#L4) |
+| import | <code>import &#x27;../klp_flutter_renderer.dart&#x27;;</code> | [lib/src/rendering/flutter/internal/klp_flutter_retained_stack.dart:5](../../../../../../lib/src/rendering/flutter/internal/klp_flutter_retained_stack.dart#L5) |
 
 ## 宣告關係圖
 
