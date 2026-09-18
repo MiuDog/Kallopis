@@ -1,6 +1,6 @@
 # Semantic composition layers
 
-狀態：ARCHITECTURE READY；目前只授權 `SCL-TAX-r1` 分類層級重審。Runtime 公開面替換必須等待固定 254 項分類、人類接受、能力 family 與 disposition 完成，不得跳過 Catalog migration 閘門。
+狀態：`SCL-TAX-r1` ACCEPTED；固定 254 項分類與層級已由使用者接受。下一步只規劃 capability family 與 exact roles；Runtime 公開面替換仍須等待 family 與 disposition／module ownership 完成，不得跳過 Catalog migration 閘門。
 
 依據：[Catalog taxonomy](../../../spec/catalog-classification.md)、[KLP-0019](../../../spec/decisions/KLP-0019-declarative-framework-migration.md)、[KLP-0021](../../../spec/decisions/KLP-0021-productivity-component-ecosystem.md)、[composition module](../../../lib/src/composition/architecture.md)。
 
@@ -105,7 +105,7 @@ Consumer 可提供代表工作流程、優先級或閱讀順序的資料順序�
 
 上述都是 migration gap，不在 `SCL-TAX-r1` 直接修改。最終替換不得保留同義 compatibility shim；需先遷移 repo consumers、Catalog、tests、reference，再依固定 coverage 更新證據並刪除舊入口。
 
-## 當前 stage：`SCL-TAX-r1`
+## 已完成 stage：`SCL-TAX-r1`
 
 本 stage 只擴充固定分類資料，使每個 legacy item 除 category／role 外，再有：
 
@@ -129,7 +129,7 @@ Consumer 可提供代表工作流程、優先級或閱讀順序的資料順序�
 | `SCL-TAX-T` | Independent Test Author；`test/catalog_classification_contract_test.dart` | 將 schema v2、兩個新欄位、enum、role-level consistency 與 forbidden architecture fields 固定為真實 Red。 | Red 必須來自現有 classification 缺欄位，不是 harness／dependency failure；原 254 集合與 category 斷言保留。 |
 | `SCL-TAX-D` | Taxonomy data；`tool/catalog_classification/classification.json` | 逐項重審 254 筆 intent、role、compositionLevel、rationale，維持 proposed。 | 254/254 schema Green；raw layout、arbitrary group、view-only class 不因名稱取得 public level。 |
 | `SCL-TAX-V` | Tooling；`tool/catalog_classification/verify.dart`、`render_review.dart`、`review.md` | Verifier 與人類 review 顯示層級、理由及各層統計。 | verifier Green；review 重建無 diff；`--require-accepted` 仍因 proposed 正確失敗。 |
-| `SCL-TAX-A` | Taxonomy owner；只更新 classification review status／acceptedAt／specRevision | 人類接受 254 項分類與層級。 | `--require-accepted` Green，coverage 仍為 2 migrated／1 preserved／251 pending。 |
+| `SCL-TAX-A` | Taxonomy owner；只更新 classification review status／acceptedAt／specRevision | 人類已於 2026-09-18 接受 254 項分類與層級。 | `--require-accepted` Green，coverage 仍為 2 migrated／1 preserved／251 pending。 |
 
 估算採已完成 TAX-T／D／V 為 historical basis，使用目前模型、本機 Dart／Flutter、無網路下載：
 
@@ -143,6 +143,6 @@ Consumer 可提供代表工作流程、優先級或閱讀順序的資料順序�
 
 分類接受後依序進入：能力 family 與 exact roles → disposition／module ownership → 一個端到端 pilot family → 按 family 遷移固定 254 項 → 移除舊 public/adapter/renderer → 重新產生正式 Reference → 254/254 evidence 與最後 push。後續不得一次建立 254 個同名 public class，也不得在 family contract 未接受前批次改 source。
 
-## PLAN readiness
+## Stage closure
 
-`SCL-TAX-r1` 的全部當前 P1 已映射至資料欄位、獨立測試、逐項重審、deterministic review 與人類接受。下一個 slice `SCL-TAX-T` 沒有未決架構選擇，PLAN READY。Runtime migration 明確 gated，不因本計畫 READY 而獲得 BUILD 授權。
+`SCL-TAX-r1` 的全部 P1 已映射至資料欄位、獨立測試、逐項重審、deterministic review 與人類接受，stage 已封閉。下一個 PLAN 必須只處理 capability family 與 exact roles；Runtime migration 明確 gated，不因分類接受而獲得 BUILD 授權。

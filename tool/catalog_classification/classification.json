@@ -1,8 +1,8 @@
 {
 	"schemaVersion": 2,
 	"specRevision": "320d2a036c6b199c78e399579d5f8a7bbc752321",
-	"reviewStatus": "proposed",
-	"acceptedAt": null,
+	"reviewStatus": "accepted",
+	"acceptedAt": "2026-09-18T17:15:25+08:00",
 	"items": [
 		{"legacyName":"KlpAccessibilityContractPanel","consumerIntent":"檢查一項設計能力的無障礙要求與支援狀態。","primaryCategory":"CAT-SYSTEM","secondaryCategories":["CAT-VISUAL"],"role":"catalog-artifact","compositionLevel":"none","compositionRationale":"「檢查一項設計能力的無障礙要求與支援狀態」只供Catalog檢查契約，不參與consumer runtime composition。"},
 		{"legacyName":"KlpAccordion","consumerIntent":"以可展開區段呈現需要逐段查看的資料。","primaryCategory":"CAT-DATA","secondaryCategories":[],"role":"consumer-capability","compositionLevel":"container","compositionRationale":"「以可展開區段呈現需要逐段查看的資料」需要獨立功能邊界，接收不可變projection並以單一intent回報操作，內部只投影自身element data。"},

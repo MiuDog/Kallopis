@@ -1,6 +1,6 @@
 # Catalog classification tool
 
-狀態：`SCL-TAX-r1` PLAN READY。完整四層結構、合法邊、跨模組責任、當前 slices、估算及 runtime gate 見 [`semantic-composition-layer-plan`](../../docs/architecture/semantic-composition-layer-plan/README.md)。現有 254 筆 proposed 資料與 review 是重審輸入，不是可接受結果。
+狀態：`SCL-TAX-r1` ACCEPTED。完整四層結構、合法邊、跨模組責任與 runtime gate 見 [`semantic-composition-layer-plan`](../../docs/architecture/semantic-composition-layer-plan/README.md)。254 筆分類已於 2026-09-18 由使用者接受；這只解除 capability family 規劃的前置條件，不代表 migration 完成。
 
 ## 目的與邊界
 
@@ -76,32 +76,32 @@ accepted taxonomy spec + immutable legacy baseline
 
 依配對計畫依序執行 `SCL-TAX-T → SCL-TAX-D → SCL-TAX-V → SCL-TAX-A`。逐項套用 TAX-11～15 與四層合法邊，特別重審所有 layout、surface、List／Grid／Masonry／virtualization 與任意 children 候選；判斷 consumer 注入的是 screen、layout role、container projection、element data，還是實際上仍在組裝元件樹。不得把舊 class 名稱直接視為公開能力，也不得強迫每項支援多 view。
 
-精確 write paths、role-level consistency、里程碑、估算與異常門檻以 [`semantic-composition-layer-plan`](../../docs/architecture/semantic-composition-layer-plan/README.md) 為準。輸出保持 `reviewStatus=proposed`，直到人類接受。
+精確 write paths、role-level consistency、里程碑、估算與異常門檻以 [`semantic-composition-layer-plan`](../../docs/architecture/semantic-composition-layer-plan/README.md) 為準。輸出目前為 `reviewStatus=accepted`，後續不得以 family 或 migration 進度回寫分類語意。
 
-### `TAX-T` — Independent Test Author（已完成，待新契約擴充）
+### `TAX-T` — Independent Test Author（已完成）
 
 寫入：`test/catalog_classification_contract_test.dart`。以 fixed baseline 為獨立來源，要求 classification 存在、恰為 254、一對一、排序穩定、欄位封閉、enum 合法、intent 非空、secondary 合法且沒有 owner/module/disposition。初始 Red 必須因 classification 尚不存在或不完整，而不是測試 harness 失敗。
 
 估算：2k–5k tokens／15–35 分鐘，參考 `AR-T`，historical。M1 完整性 Red（1k–3k／10–20 分）；M2 failure messages 與 test hash（2k–5k／15–35 分）。若 root 測試 harness 的既有 primitive compile failure污染此純資料測試，改用 `dart test` 精確路徑；不得弱化斷言。
 
-### `TAX-D` — Classification data（已完成舊版 proposed 資料）
+### `TAX-D` — Classification data（已完成）
 
-寫入：`tool/catalog_classification/classification.json`。逐項撰寫 254 個 consumer intent、primary、secondary 與 role；不得從舊 map 自動搬運。完成時同一 test 從 Red 轉 Green，資料保持 `reviewStatus=proposed`。
+寫入：`tool/catalog_classification/classification.json`。逐項撰寫 254 個 consumer intent、primary、secondary、role、composition level 與 rationale；不得從舊 map 自動搬運。人類接受前資料保持 `reviewStatus=proposed`。
 
 估算：12k–28k tokens／90–210 分鐘，cold-start。M1 254 名稱與 role 完整（6k–14k／45–100 分）；M2 intent 與分類語意審查（12k–28k／90–210 分）。超過 40k／300 分鐘或遇到無法由接受分類表達的項目時回 DEFINE，不新增 misc。
 
-### `TAX-V` — Verifier and review renderer（已完成舊版投影）
+### `TAX-V` — Verifier and review renderer（已完成）
 
 寫入：`tool/catalog_classification/verify.dart`、`render_review.dart`、`review.md`。Verifier 與獨立 test 對真實資料都必須 Green；renderer 產物重跑無 diff，並列出 18 分類、每項 intent、tags、role、legacy page 與來源。
 
 估算：6k–14k tokens／45–100 分鐘，參考 `AR-V`，historical。M1 verifier（3k–7k／25–50 分）；M2 deterministic review（6k–14k／45–100 分）。若 baseline 缺少生成 review 所需資料，只能使用其既有欄位，不回填 module 或猜測來源。
 
-### `TAX-A` — Human acceptance
+### `TAX-A` — Human acceptance（已完成）
 
-taxonomy owner 僅在使用者審閱 generated `review.md` 並明確接受後，更新 `reviewStatus`、`acceptedAt`，以 `--require-accepted` 驗證。這是文件狀態更新，不授權 module mapping 或 migration BUILD。
+使用者於 2026-09-18 明確接受 generated `review.md`；taxonomy owner 已更新 `reviewStatus`、`acceptedAt`，並以 `--require-accepted` 驗證。這只授權進入 capability family PLAN，不授權 module mapping 或 migration BUILD。
 
 ## 驗證、錯誤與保護
 
-當前 test state 為 Yellow：舊分類的 contract test、verifier 與 deterministic review 已 Green，但 TAX-11～15 尚未反映到逐項資料與可機械審閱的 metadata。既有 254/254 只證明集合完整，不證明公開語意邊界正確；人類分類語意接受另列，不由程式推定。
+當前 test state 為 Green：schema v2 contract test、254/254 verifier、deterministic review 與 `--require-accepted` 全部通過；人類語意接受已記錄。這仍不證明任何 legacy 項目已完成新版公開宣告、Catalog specimen 或 migration evidence。
 
-受保護：`spec/**`、`docs/architecture/catalog-migration/legacy-baseline.json`、`coverage.json`、既有 migration evidence、`lib/**`、`example/**`、其他 tests、build 設定與本 `architecture.md`。目前只授權 `SCL-TAX-r1`；不得直接修改 runtime API。
+受保護：`spec/**`、`docs/architecture/catalog-migration/legacy-baseline.json`、`coverage.json`、既有 migration evidence、`lib/**`、`example/**`、其他 tests 與 build 設定。`SCL-TAX-r1` 已封閉；下一步只能規劃 capability families，不得直接修改 runtime API。

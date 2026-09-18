@@ -2,8 +2,8 @@
 
 > 此頁由 `classification.json` 與固定 legacy baseline 產生，請勿手動修改。分類服務 consumer 導航，不代表 module ownership、公開處置或 migration 完成。
 
-- 分類狀態：`proposed`
-- 接受時間：`尚未接受`
+- 分類狀態：`accepted`
+- 接受時間：`2026-09-18T17:15:25+08:00`
 - 規格 revision：`320d2a036c6b199c78e399579d5f8a7bbc752321`
 - 固定項目：`254`
 

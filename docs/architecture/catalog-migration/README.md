@@ -19,9 +19,9 @@
 
 ## 當前階段 CAT-TAX-01：重新定義 Catalog 分類
 
-狀態：DEFINE READY／`SCL-TAX-r1` PLAN READY。使用者已接受 18 個 consumer-oriented 第一層分類、每項一個 primary category／多個 secondary tags，以及 consumer 組合語意原子／功能群組、Kallopis 擁有具體元件樹與視覺佈局的邊界。四層具體計畫見 [`screen → layout → container → element`](../semantic-composition-layer-plan/README.md)。現有 proposed 分類須依新邊界重審：raw layout primitive 與只描述呈現策略的 class 原則上吸收；功能原子只可進入 typed groups／roles；多 view 只在個別能力需要時提供，不是全域要求。仍禁止依現有 class、資料夾或舊頁面直接配對 module。
+狀態：`SCL-TAX-r1` ACCEPTED。使用者已接受 18 個 consumer-oriented 第一層分類、每項一個 primary category／多個 secondary tags，以及固定 254 項的 role 與 `screen → layout → container → element` 層級判斷。Raw layout primitive 與只描述呈現策略的 class 原則上吸收；功能原子只可進入 typed groups／roles；多 view 只在個別能力需要時提供，不是全域要求。仍禁止依現有 class、資料夾或舊頁面直接配對 module。
 
-固定 254 項、既有 2 migrated／1 preserved 證據與已接受新版風格不變。254/254 集合完整性已建立，但人類尚未接受分類語意；下一步先擴充分類計畫並逐項重審 intent／role，重新產生無 owner 欄位的 review。全部分類通過並由人類接受後，才形成能力家族、公開處置與 module ownership。
+固定 254 項、既有 2 migrated／1 preserved 證據與已接受新版風格不變。254/254 分類契約、review 與 human acceptance 已完成；下一階段形成能力家族與 exact roles。公開處置與 module ownership 仍須等 family 結果接受後另行規劃。
 
 下列 `CAT-MIG-02` 保留為未執行候選，不是目前 BUILD 授權；其 `KlpAdaptive`／`KlpWindowControls` 配對必須等待新分類與能力家族結果重新確認。
 
