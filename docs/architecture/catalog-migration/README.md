@@ -21,7 +21,7 @@
 
 狀態：`SCL-TAX-r1` ACCEPTED。使用者已接受 18 個 consumer-oriented 第一層分類、每項一個 primary category／多個 secondary tags，以及固定 254 項的 role 與 `screen → layout → container → element` 層級判斷。Raw layout primitive 與只描述呈現策略的 class 原則上吸收；功能原子只可進入 typed groups／roles；多 view 只在個別能力需要時提供，不是全域要求。仍禁止依現有 class、資料夾或舊頁面直接配對 module。
 
-固定 254 項、既有 2 migrated／1 preserved 證據與已接受新版風格不變。254/254 分類與 [`SCL-FAM-r1`](../../../tool/catalog_family_mapping/architecture.md) 的 161 個 families／281 條 exact roles 已完成並接受；下一階段逐項決定公開處置，並為每個 family 指定單一 owning module。Runtime migration 仍保持暫停。
+固定 254 項、既有 2 migrated／1 preserved 證據與已接受新版風格不變。254/254 分類與 [`SCL-FAM-r1`](../../../tool/catalog_family_mapping/architecture.md) 的 161 個 families／281 條 exact roles 已完成並接受；當前只依 [`SCL-DISP-r1`](../../../tool/catalog_public_mapping/architecture.md) 逐項決定公開處置。單一 module ownership 必須等 disposition 接受後規劃，Runtime migration 仍保持暫停。
 
 下列 `CAT-MIG-02` 保留為未執行候選，不是目前 BUILD 授權；其 `KlpAdaptive`／`KlpWindowControls` 配對必須等待新分類與能力家族結果重新確認。
 

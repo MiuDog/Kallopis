@@ -1,6 +1,6 @@
 # Semantic composition layers
 
-狀態：`SCL-TAX-r1` 與 [`SCL-FAM-r1`](../../../tool/catalog_family_mapping/architecture.md) ACCEPTED；固定 254 項分類、161 個 capability families 與 exact roles 已由使用者接受。Runtime 公開面替換仍須等待 disposition／module ownership 完成，不得跳過 Catalog migration 閘門。
+狀態：`SCL-TAX-r1` 與 [`SCL-FAM-r1`](../../../tool/catalog_family_mapping/architecture.md) ACCEPTED；固定 254 項分類、161 個 capability families 與 exact roles 已由使用者接受。當前計畫是 [`SCL-DISP-r1`](../../../tool/catalog_public_mapping/architecture.md)；Runtime 公開面替換仍須等待 disposition／module ownership 完成。
 
 依據：[Catalog taxonomy](../../../spec/catalog-classification.md)、[KLP-0019](../../../spec/decisions/KLP-0019-declarative-framework-migration.md)、[KLP-0021](../../../spec/decisions/KLP-0021-productivity-component-ecosystem.md)、[composition module](../../../lib/src/composition/architecture.md)。
 
@@ -145,4 +145,4 @@ Consumer 可提供代表工作流程、優先級或閱讀順序的資料順序�
 
 ## Stage closure
 
-`SCL-TAX-r1` 與 `SCL-FAM-r1` 均已封閉。下一個 PLAN 只處理逐項 disposition 與單一 module ownership；Runtime migration 明確 gated，不因 family 接受而獲得 BUILD 授權。
+`SCL-TAX-r1` 與 `SCL-FAM-r1` 均已封閉。`SCL-DISP-r1` 先處理逐項 disposition；單一 module ownership 依已接受順序留到 disposition 接受後。Runtime migration 明確 gated。
