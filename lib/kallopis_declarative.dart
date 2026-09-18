@@ -9,9 +9,9 @@ export 'src/kernel/diagnostics/klp_contract_error.dart';
 export 'src/kernel/identity/klp_id.dart';
 export 'src/kernel/identity/klp_placement_id.dart';
 
-// L1 — 狀態、資料、動作、導覽與固定風格原料。
+// L1 — 狀態、資料、受限動作與導覽。
 export 'src/capabilities/controllers/klp_state_controller.dart';
-export 'src/capabilities/actions/klp_action.dart';
+export 'src/capabilities/actions/klp_action.dart' show KlpAction;
 export 'src/capabilities/actions/klp_pick_file_action.dart' show KlpPickFileAction;
 export 'src/capabilities/navigation/klp_destination.dart';
 export 'src/capabilities/navigation/klp_location.dart';
@@ -33,11 +33,6 @@ export 'src/capabilities/data/klp_data_state.dart';
 export 'src/capabilities/state/klp_mutable_state.dart';
 export 'src/capabilities/state/klp_state.dart';
 export 'src/capabilities/state/klp_subscription.dart';
-export 'src/styling/primitives/klp_primitive_index.dart';
-export 'src/styling/primitives/klp_primitive_set.dart';
-export 'src/styling/primitives/klp_style_kind.dart';
-export 'src/styling/primitives/klp_style_value.dart';
-export 'src/styling/presets/klp_workspace_preset.dart';
 
 // L2 — 庫擁有節點的組裝資格與受限插槽。
 export 'src/composition/nodes/klp_node.dart';
