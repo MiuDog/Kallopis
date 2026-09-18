@@ -1,5 +1,11 @@
 # Rendering 模組架構
 
+## CAT-MIG-02：移除未使用的 legacy WindowControls bridge
+
+狀態：PLAN READY。現行 `KlpFlutterRenderer` 對 `KlpBoundWindowControls` 的唯一 dispatch 位於 `flutter/internal/klp_flutter_workspace_components.dart`，直接消費 bound 色彩、尺度、文字與 callback。`flutter/internal/klp_flutter_window_controls.dart` 沒有 import caller，仍自行採樣 runner 狀態並橋接 legacy theme／Widget，違反單一新版呈現路徑且已無責任。
+
+ACW-R 只刪除該零 caller 檔案；不得修改現行 renderer、window action、legacy shell、style resolver 或 public API。驗收以 import graph、renderer dispatch、既有 workspace declarative tests 與 Catalog contract 證明刪除後沒有缺失。若發現動態或 generated caller，stage 返回 PLAN，不建立 shim。
+
 ## SFC-V1-r1：Explorer／Document Tabs intent 與 controller 實現配對
 
 當前新增 stage 狀態：PLAN READY。共通契約見 [SFC-V1-r1](../../../docs/architecture/semantic-feature-contract-plan/README.md)；本節不改寫下方已完成 rendering v1／Explorer 視覺證據。
