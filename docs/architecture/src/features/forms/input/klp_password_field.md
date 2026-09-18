@@ -11,7 +11,7 @@
 ```mermaid
 flowchart LR
 	n0["klp_password_field.dart"]
-	n1["../internal/klp_form_dependencies.dart"]
+	n1["package:kallopis/src/features/forms/internal/klp_form_dependencies.dart"]
 	n2["internal/klp_password_field_state.dart"]
 	n3["internal/klp_password_field_widget.dart"]
 	n4["models/klp_password_requirement.dart"]
@@ -25,7 +25,7 @@ flowchart LR
 
 | 關係 | 原始 directive | 來源 |
 |---|---|---|
-| import | <code>import &#x27;../internal/klp_form_dependencies.dart&#x27;;</code> | [lib/src/features/forms/input/klp_password_field.dart:1](../../../../../../lib/src/features/forms/input/klp_password_field.dart#L1) |
+| import | <code>import &#x27;package:kallopis/src/features/forms/internal/klp_form_dependencies.dart&#x27;;</code> | [lib/src/features/forms/input/klp_password_field.dart:1](../../../../../../lib/src/features/forms/input/klp_password_field.dart#L1) |
 | part | <code>part &#x27;internal/klp_password_field_state.dart&#x27;;</code> | [lib/src/features/forms/input/klp_password_field.dart:3](../../../../../../lib/src/features/forms/input/klp_password_field.dart#L3) |
 | part | <code>part &#x27;internal/klp_password_field_widget.dart&#x27;;</code> | [lib/src/features/forms/input/klp_password_field.dart:4](../../../../../../lib/src/features/forms/input/klp_password_field.dart#L4) |
 | part | <code>part &#x27;models/klp_password_requirement.dart&#x27;;</code> | [lib/src/features/forms/input/klp_password_field.dart:5](../../../../../../lib/src/features/forms/input/klp_password_field.dart#L5) |

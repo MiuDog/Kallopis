@@ -1,0 +1,156 @@
+{
+	"migration": {
+		"task_id": "TEST-LOWER-MIGRATION",
+		"allowed_write": [
+			"test/klp_anchored_command_session_test.dart",
+			"test/klp_anchored_commands_installation_test.dart",
+			"test/klp_app_frame_style_test.dart",
+			"test/klp_block_controls_installation_test.dart",
+			"test/klp_block_drop_preview_test.dart",
+			"test/klp_component_binding_test.dart",
+			"test/klp_component_children_binding_test.dart",
+			"test/klp_composition_segments_test.dart",
+			"test/klp_control_density_test.dart",
+			"test/klp_editing_composition_test.dart",
+			"test/klp_editing_installation_test.dart",
+			"test/klp_editing_projection_test.dart",
+			"test/klp_editing_submission_test.dart",
+			"test/klp_editing_text_window_test.dart",
+			"test/klp_editor_mode_session_test.dart",
+			"test/klp_flutter_block_control_session_test.dart",
+			"test/klp_flutter_choice_test.dart",
+			"test/klp_flutter_control_keyboard_test.dart",
+			"test/klp_flutter_renderer_test.dart",
+			"test/klp_flutter_retained_stack_test.dart",
+			"test/klp_flutter_text_delta_test.dart",
+			"test/klp_flutter_text_input_session_test.dart",
+			"test/klp_frame_groups_test.dart",
+			"test/klp_mode_toolbar_installation_test.dart",
+			"test/klp_placement_identity_test.dart",
+			"test/klp_prepared_renderer_contract_test.dart",
+			"test/klp_rail_adapter_test.dart",
+			"test/klp_scope_activation_test.dart",
+			"test/klp_surface_shadow_test.dart",
+			"test/klp_text_offsets_test.dart",
+			"test/klp_tree_runtime_test.dart",
+			"test/support/klp_component_test_definition.dart",
+			"test/support/klp_editing_fixture.dart",
+			"test/support/klp_renderer_fixture.dart",
+			"test/support/klp_runtime_fixture.dart",
+			"test/klp_prepared_module_boundary_test.dart"
+		],
+		"allowed_read": [
+			"AGENTS.md",
+			".agents/skills/test-driven-development/SKILL.md",
+			"docs/architecture/lower-contract-plan/README.md",
+			"docs/architecture/lower-contract-plan/path-map.json",
+			"lib/src/capabilities/architecture.md",
+			"lib/src/rendering/architecture.md",
+			"lib/src/foundation/architecture.md",
+			"test/klp_anchored_command_session_test.dart",
+			"test/klp_anchored_commands_installation_test.dart",
+			"test/klp_app_frame_style_test.dart",
+			"test/klp_block_controls_installation_test.dart",
+			"test/klp_block_drop_preview_test.dart",
+			"test/klp_component_binding_test.dart",
+			"test/klp_component_children_binding_test.dart",
+			"test/klp_composition_segments_test.dart",
+			"test/klp_control_density_test.dart",
+			"test/klp_editing_composition_test.dart",
+			"test/klp_editing_installation_test.dart",
+			"test/klp_editing_projection_test.dart",
+			"test/klp_editing_submission_test.dart",
+			"test/klp_editing_text_window_test.dart",
+			"test/klp_editor_mode_session_test.dart",
+			"test/klp_flutter_block_control_session_test.dart",
+			"test/klp_flutter_choice_test.dart",
+			"test/klp_flutter_control_keyboard_test.dart",
+			"test/klp_flutter_renderer_test.dart",
+			"test/klp_flutter_retained_stack_test.dart",
+			"test/klp_flutter_text_delta_test.dart",
+			"test/klp_flutter_text_input_session_test.dart",
+			"test/klp_frame_groups_test.dart",
+			"test/klp_mode_toolbar_installation_test.dart",
+			"test/klp_placement_identity_test.dart",
+			"test/klp_prepared_renderer_contract_test.dart",
+			"test/klp_rail_adapter_test.dart",
+			"test/klp_scope_activation_test.dart",
+			"test/klp_surface_shadow_test.dart",
+			"test/klp_text_offsets_test.dart",
+			"test/klp_tree_runtime_test.dart",
+			"test/support/klp_component_test_definition.dart",
+			"test/support/klp_editing_fixture.dart",
+			"test/support/klp_renderer_fixture.dart",
+			"test/support/klp_runtime_fixture.dart",
+			"test/klp_prepared_module_boundary_test.dart"
+		],
+		"protected": [
+			"lib/**",
+			"spec/**",
+			"docs/**",
+			"pubspec.yaml",
+			"pubspec.lock"
+		],
+		"acceptance": "LOWER-V1-r1：CAP-V1-02 與 REND-V1-04 配對，71 個既有檔案實體移至具名路徑；全部名稱、constructor、預設值、演算法、狀態與 callback 身分不變。Provider 42 個 editing export 與 9 個 part 移至 editing/contracts，根入口原 44 個 export 的符號可達性不變。draw_command_validation 留 internal，不新增公開；block_drop_preview 仍非公開，drop_target 與 editing_submission 為 editing/ 下具名套件內入口，保留整體演算法及狀態。Foundation 15 個通用 binding 檔案含 11 part 移至 binding/contracts，維持同 library、abstract KlpBoundTemplate 與非 consumer 公開協定；此條明確接替 PRES-V1-r1 的「路徑保留」，其名稱、constructor、模組責任與原行為仍保留。Styling 的 paper_shadow_recipe 與 control_density 移至各自具名入口，值與唯一來源不變。所有直接呼叫端與測試 URI 配對更新，不留 shim、不新增 export。完整 rendering 的 import/export/part/part-of/conditional 指令不得跨到任何其他模組 internal；不能只檢查 capabilities/foundation。維持 26 renderer 分支、28 catalog ID、未知類型拒絕、同模組 reciprocal part、Stable 與 provider 可達性。編輯 pending/resync、save job/confirmed revision、手寫生命週期與上游正文／undo 權威不變。CAP-V1-03 舊正文分類、FND-V1-05 metrics、host 與剩餘 APP-V1-06 不藉此宣告完成。",
+		"estimate": {
+			"tokens": [
+				4000,
+				10000
+			],
+			"minutes": [
+				15,
+				45
+			],
+			"basis": "cold-start",
+			"model": "inherited"
+		},
+		"milestones": [
+			"M1 freeze original assertions and expected Red boundary evidence",
+			"M2 author tests, record exact hashes and unchanged body proof; integrated Green pending"
+		],
+		"read_exception": "Read existing old declared public interfaces/directives and test source as needed for accepted export/part/URI boundary; do not read BUILD worker reasoning or integrated product internals."
+	},
+	"contracts": {
+		"task_id": "TEST-LOWER-CONTRACTS",
+		"allowed_write": [
+			"test/klp_lower_module_boundary_test.dart",
+			"test/klp_provider_contract_paths_test.dart"
+		],
+		"allowed_read": [
+			"AGENTS.md",
+			".agents/skills/test-driven-development/SKILL.md",
+			"docs/architecture/lower-contract-plan/README.md",
+			"docs/architecture/lower-contract-plan/path-map.json",
+			"lib/src/capabilities/architecture.md",
+			"lib/src/rendering/architecture.md",
+			"lib/src/foundation/architecture.md",
+			"test/klp_lower_module_boundary_test.dart",
+			"test/klp_provider_contract_paths_test.dart"
+		],
+		"protected": [
+			"lib/**",
+			"spec/**",
+			"docs/**",
+			"pubspec.yaml",
+			"pubspec.lock"
+		],
+		"acceptance": "LOWER-V1-r1：CAP-V1-02 與 REND-V1-04 配對，71 個既有檔案實體移至具名路徑；全部名稱、constructor、預設值、演算法、狀態與 callback 身分不變。Provider 42 個 editing export 與 9 個 part 移至 editing/contracts，根入口原 44 個 export 的符號可達性不變。draw_command_validation 留 internal，不新增公開；block_drop_preview 仍非公開，drop_target 與 editing_submission 為 editing/ 下具名套件內入口，保留整體演算法及狀態。Foundation 15 個通用 binding 檔案含 11 part 移至 binding/contracts，維持同 library、abstract KlpBoundTemplate 與非 consumer 公開協定；此條明確接替 PRES-V1-r1 的「路徑保留」，其名稱、constructor、模組責任與原行為仍保留。Styling 的 paper_shadow_recipe 與 control_density 移至各自具名入口，值與唯一來源不變。所有直接呼叫端與測試 URI 配對更新，不留 shim、不新增 export。完整 rendering 的 import/export/part/part-of/conditional 指令不得跨到任何其他模組 internal；不能只檢查 capabilities/foundation。維持 26 renderer 分支、28 catalog ID、未知類型拒絕、同模組 reciprocal part、Stable 與 provider 可達性。編輯 pending/resync、save job/confirmed revision、手寫生命週期與上游正文／undo 權威不變。CAP-V1-03 舊正文分類、FND-V1-05 metrics、host 與剩餘 APP-V1-06 不藉此宣告完成。",
+		"estimate": {
+			"tokens": [
+				4000,
+				10000
+			],
+			"minutes": [
+				15,
+				45
+			],
+			"basis": "cold-start",
+			"model": "inherited"
+		},
+		"milestones": [
+			"M1 freeze original assertions and expected Red boundary evidence",
+			"M2 author tests, record exact hashes and unchanged body proof; integrated Green pending"
+		],
+		"read_exception": "Read existing old declared public interfaces/directives and test source as needed for accepted export/part/URI boundary; do not read BUILD worker reasoning or integrated product internals."
+	}
+}

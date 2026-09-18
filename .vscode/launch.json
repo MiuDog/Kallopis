@@ -1,0 +1,59 @@
+{
+	"version": "0.2.0",
+	"configurations": [
+		{
+			"name": "Catalog — 新架構・淺色 (Windows Debug)",
+			"type": "dart",
+			"request": "launch",
+			"cwd": "${workspaceFolder}/example",
+			"program": "${workspaceFolder}/example/lib/catalog_main.dart",
+			"deviceId": "windows",
+			"flutterMode": "debug"
+		},
+		{
+			"name": "Catalog — 新架構・深色 (Windows Debug)",
+			"type": "dart",
+			"request": "launch",
+			"cwd": "${workspaceFolder}/example",
+			"program": "${workspaceFolder}/example/lib/catalog_main.dart",
+			"deviceId": "windows",
+			"flutterMode": "debug",
+			"toolArgs": ["--dart-define=CATALOG_DARK=true"]
+		},
+		{
+			"name": "Catalog — 新架構 (Windows Profile)",
+			"type": "dart",
+			"request": "launch",
+			"cwd": "${workspaceFolder}/example",
+			"program": "${workspaceFolder}/example/lib/catalog_main.dart",
+			"deviceId": "windows",
+			"flutterMode": "profile"
+		},
+		{
+			"name": "Catalog — 真實 Krepis 編輯內容 (Windows Debug)",
+			"type": "dart",
+			"request": "launch",
+			"cwd": "${workspaceFolder}/example/editor_native",
+			"program": "${workspaceFolder}/example/editor_native/lib/main.dart",
+			"deviceId": "windows",
+			"flutterMode": "debug",
+			"toolArgs": ["--dart-define=KREPIS_DLL=${input:krepisDll}"]
+		},
+		{
+			"name": "Catalog — 舊相容元件 (Windows Debug)",
+			"type": "dart",
+			"request": "launch",
+			"cwd": "${workspaceFolder}/example",
+			"program": "${workspaceFolder}/example/lib/main.dart",
+			"deviceId": "windows",
+			"flutterMode": "debug"
+		}
+	],
+	"inputs": [
+		{
+			"id": "krepisDll",
+			"type": "promptString",
+			"description": "Krepis DLL 絕對路徑"
+		}
+	]
+}

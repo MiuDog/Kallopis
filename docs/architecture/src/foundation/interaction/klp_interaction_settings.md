@@ -12,7 +12,7 @@
 flowchart TD
 	n0["klp_interaction_settings.dart"]
 	n1["package:flutter/widgets.dart"]
-	n2["../../styling/legacy_theme/klp_theme_scope.dart"]
+	n2["package:kallopis/src/styling/legacy_theme/klp_theme_scope.dart"]
 	n0 -->|"import"| n1
 	n0 -->|"import"| n2
 ```
@@ -22,7 +22,7 @@ flowchart TD
 | 關係 | 原始 directive | 來源 |
 |---|---|---|
 | import | <code>import &#x27;package:flutter/widgets.dart&#x27;;</code> | [lib/src/foundation/interaction/klp_interaction_settings.dart:1](../../../../../lib/src/foundation/interaction/klp_interaction_settings.dart#L1) |
-| import | <code>import &#x27;../../styling/legacy_theme/klp_theme_scope.dart&#x27;;</code> | [lib/src/foundation/interaction/klp_interaction_settings.dart:3](../../../../../lib/src/foundation/interaction/klp_interaction_settings.dart#L3) |
+| import | <code>import &#x27;package:kallopis/src/styling/legacy_theme/klp_theme_scope.dart&#x27;;</code> | [lib/src/foundation/interaction/klp_interaction_settings.dart:3](../../../../../lib/src/foundation/interaction/klp_interaction_settings.dart#L3) |
 
 ## 宣告關係圖
 

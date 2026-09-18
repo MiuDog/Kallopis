@@ -5,7 +5,7 @@ import 'klp_test_rail_item.dart';
 
 final class KlpTestItem implements KlpTestRailItem, KlpTestMenuItem {
   @override
-  String id;
+  KlpId id;
   @override
   String definitionId;
   @override

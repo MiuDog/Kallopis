@@ -19,25 +19,19 @@ flowchart TD
 
 | 目標邊界 | 關係 | directive 數 | 第一筆來源證據 |
 |---|---|---|---|
-| <code>lib/src/features/navigation/widgets/explorer</code> | part of | 6 | [lib/src/features/navigation/widgets/explorer/models/klp_explorer_category.dart:1](../../../../../../../../lib/src/features/navigation/widgets/explorer/models/klp_explorer_category.dart#L1) |
+| <code>lib/src/features/navigation/widgets/explorer</code> | part of | 3 | [lib/src/features/navigation/widgets/explorer/models/klp_file_explorer_item.dart:1](../../../../../../../../lib/src/features/navigation/widgets/explorer/models/klp_file_explorer_item.dart#L1) |
 
 ## 目錄結構圖
 
 ```mermaid
-flowchart LR
+flowchart TD
 	n0["lib/src/features/navigation/widgets/explorer/models"]
-	n1["klp_explorer_category.dart"]
-	n2["klp_explorer_node.dart"]
-	n3["klp_explorer_node_kind.dart"]
-	n4["klp_file_explorer_item.dart"]
-	n5["klp_file_explorer_section.dart"]
-	n6["klp_file_explorer_spacing.dart"]
+	n1["klp_file_explorer_item.dart"]
+	n2["klp_file_explorer_section.dart"]
+	n3["klp_file_explorer_spacing.dart"]
 	n0 -->|"contains"| n1
 	n0 -->|"contains"| n2
 	n0 -->|"contains"| n3
-	n0 -->|"contains"| n4
-	n0 -->|"contains"| n5
-	n0 -->|"contains"| n6
 ```
 
 ## 子目錄
@@ -50,9 +44,6 @@ flowchart LR
 
 | 檔案 | 宣告 | 細節 | 來源證據 |
 |---|---|---|---|
-| `klp_explorer_category.dart` | KlpExplorerCategory | [架構與 API](klp_explorer_category.md) | [lib/src/features/navigation/widgets/explorer/models/klp_explorer_category.dart:1](../../../../../../../../lib/src/features/navigation/widgets/explorer/models/klp_explorer_category.dart#L1) |
-| `klp_explorer_node.dart` | KlpExplorerNode | [架構與 API](klp_explorer_node.md) | [lib/src/features/navigation/widgets/explorer/models/klp_explorer_node.dart:1](../../../../../../../../lib/src/features/navigation/widgets/explorer/models/klp_explorer_node.dart#L1) |
-| `klp_explorer_node_kind.dart` | KlpExplorerNodeKind | [架構與 API](klp_explorer_node_kind.md) | [lib/src/features/navigation/widgets/explorer/models/klp_explorer_node_kind.dart:1](../../../../../../../../lib/src/features/navigation/widgets/explorer/models/klp_explorer_node_kind.dart#L1) |
 | `klp_file_explorer_item.dart` | KlpFileExplorerItem | [架構與 API](klp_file_explorer_item.md) | [lib/src/features/navigation/widgets/explorer/models/klp_file_explorer_item.dart:1](../../../../../../../../lib/src/features/navigation/widgets/explorer/models/klp_file_explorer_item.dart#L1) |
 | `klp_file_explorer_section.dart` | KlpFileExplorerSection | [架構與 API](klp_file_explorer_section.md) | [lib/src/features/navigation/widgets/explorer/models/klp_file_explorer_section.dart:1](../../../../../../../../lib/src/features/navigation/widgets/explorer/models/klp_file_explorer_section.dart#L1) |
 | `klp_file_explorer_spacing.dart` | KlpFileExplorerSpacing | [架構與 API](klp_file_explorer_spacing.md) | [lib/src/features/navigation/widgets/explorer/models/klp_file_explorer_spacing.dart:1](../../../../../../../../lib/src/features/navigation/widgets/explorer/models/klp_file_explorer_spacing.dart#L1) |

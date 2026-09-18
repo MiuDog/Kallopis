@@ -1,7 +1,7 @@
 import 'package:flutter/widgets.dart';
 
-import '../surface/klp_surface.dart';
-import '../../styling/legacy_theme/klp_theme.dart';
+import 'package:kallopis/src/foundation/surface/klp_surface.dart';
+import 'package:kallopis/src/styling/legacy_theme/klp_theme.dart';
 
 /// 區域容器。包裝標題、主要內容與頁尾。
 class KlpRegion extends StatelessWidget {

@@ -2,9 +2,11 @@
 
 本頁供本庫維護者與 AI 接手程式架構時使用。消費端組裝請先讀 [AI 使用手冊](../ai/README.md)；這裡描述的是目前原始碼的位置、依賴與遷移狀態。
 
-新架構現況見 [目前重構架構總覽](current-refactor-overview.md)。長期目標與驗收條件見 [遷移計畫](restructure-migration-plan.md)，已完成工作的證據見 [進度紀錄](restructure-progress.md)。
+工作狀態只讀 [交接頁](../session-handoff.md)。功能規格按 [筆記索引](note-components-plan.md) 選一頁；歷史進度不再作為載入入口。長期架構契約見 [遷移計畫](restructure-migration-plan.md)。
 
 ## 圖集閱讀方式
+
+先用搜尋定位涉及目錄或類別，不讀整套圖集。
 
 從 [lib/src 圖集總索引](src/README.md) 進入實際目錄，再以各頁的宣告、依賴圖與原始碼連結追查細節。圖集由程式生成，描述現況，不取代設計契約。
 
@@ -29,9 +31,11 @@
 python tool/architecture_atlas/generate.py --dart D:/flutter/bin/dart.bat
 ```
 
-之後檢查生成結果與本頁、[目前重構架構總覽](current-refactor-overview.md) 的人工摘要是否一致。不要直接手改 `docs/architecture/src/` 的自動產生頁面。
+只在本次結構變動影響圖集時更新並核對本頁摘要。不要直接手改 `docs/architecture/src/` 的自動產生頁面。
 
 ## 深入設計文件
+
+- [固定位置可拉伸工作區](resizable-workspace-prototype.md)
 
 - [Application runtime](application-runtime-prototype.md)
 - [外部元件與 template](component-template-prototype.md)

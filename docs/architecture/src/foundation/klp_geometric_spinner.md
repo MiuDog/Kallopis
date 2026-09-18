@@ -13,7 +13,7 @@ flowchart LR
 	n0["klp_geometric_spinner.dart"]
 	n1["dart:math"]
 	n2["package:flutter/material.dart"]
-	n3["../styling/legacy_theme/klp_theme.dart"]
+	n3["package:kallopis/src/styling/legacy_theme/klp_theme.dart"]
 	n4["klp_geometric_spinner_painter.dart"]
 	n5["klp_geometric_spinner_state.dart"]
 	n0 -->|"import"| n1
@@ -29,7 +29,7 @@ flowchart LR
 |---|---|---|
 | import | <code>import &#x27;dart:math&#x27; as math;</code> | [lib/src/foundation/klp_geometric_spinner.dart:1](../../../../lib/src/foundation/klp_geometric_spinner.dart#L1) |
 | import | <code>import &#x27;package:flutter/material.dart&#x27;;</code> | [lib/src/foundation/klp_geometric_spinner.dart:2](../../../../lib/src/foundation/klp_geometric_spinner.dart#L2) |
-| import | <code>import &#x27;../styling/legacy_theme/klp_theme.dart&#x27;;</code> | [lib/src/foundation/klp_geometric_spinner.dart:4](../../../../lib/src/foundation/klp_geometric_spinner.dart#L4) |
+| import | <code>import &#x27;package:kallopis/src/styling/legacy_theme/klp_theme.dart&#x27;;</code> | [lib/src/foundation/klp_geometric_spinner.dart:4](../../../../lib/src/foundation/klp_geometric_spinner.dart#L4) |
 | part | <code>part &#x27;klp_geometric_spinner_painter.dart&#x27;;</code> | [lib/src/foundation/klp_geometric_spinner.dart:6](../../../../lib/src/foundation/klp_geometric_spinner.dart#L6) |
 | part | <code>part &#x27;klp_geometric_spinner_state.dart&#x27;;</code> | [lib/src/foundation/klp_geometric_spinner.dart:7](../../../../lib/src/foundation/klp_geometric_spinner.dart#L7) |
 

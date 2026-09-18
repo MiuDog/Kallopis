@@ -1,0 +1,81 @@
+{
+  "schema_version": 1,
+  "task_id": "CM-02-F-cleanup",
+  "goal": "完成短期子選單層級導覽與遞迴租約，不變更其他元件外觀",
+  "module_root": "lib/src/features",
+  "architecture_path": "lib/src/features/architecture.md",
+  "architecture_revision": "CM-02",
+  "base_revision": "e51a4b76e400ba4484cd0327522bfd2d893e86b2",
+  "allowed_read": [
+    "lib/src/features/overlays/declarative/**",
+    "lib/src/rendering/flutter/internal/klp_flutter_menu_panel.dart",
+    "lib/src/rendering/flutter/internal/klp_flutter_values.dart",
+    "example/lib/catalog_declarative/menu_specimen.dart",
+    "test/klp_declarative_menu_test.dart",
+    "test/klp_declarative_submenu_test.dart"
+  ],
+  "allowed_write": [
+    "lib/src/features/overlays/declarative/klp_menu_item.dart",
+    "lib/src/features/overlays/declarative/klp_menu.dart",
+    "lib/src/features/overlays/declarative/klp_menu_adapter.dart"
+  ],
+  "forbidden": [
+    "spec/**",
+    "test/**",
+    "docs/architecture/catalog-migration/legacy-baseline.json",
+    "lib/src/features/architecture.md"
+  ],
+  "contract_excerpts": [
+    {
+      "content": "children 不可變；父項不可有 onPressed；整樹 id 唯一；所有巢狀 callback 套 lease；同面板前進返回；更新截斷失效路徑。",
+      "source": "spec/menu-interaction-migration.md",
+      "revision": "CM-02"
+    }
+  ],
+  "acceptance": [
+    "子選單指標和鍵盤前進返回",
+    "巢狀事件租約有效且停用不觸發",
+    "局部分析無錯誤"
+  ],
+  "test_state": {
+    "green": [],
+    "red": [],
+    "yellow": [
+      "analyze 新宣告／adapter"
+    ]
+  },
+  "estimate": {
+    "assumptions": [
+      "既有 adapter pattern；目前模型；D:/flutter；共用 recipe 由主線提供"
+    ],
+    "reference_task_ids": [],
+    "expected_duration_ms": {
+      "high": 1500000,
+      "low": 600000
+    },
+    "expected_total_tokens": {
+      "high": 8000,
+      "low": 4000
+    },
+    "basis": "cold-start"
+  },
+  "milestones": [
+    {
+      "evidence": "回報完整 API 及 bound 欄位",
+      "anomaly_threshold": "需跨 module 改動即回報",
+      "id": "M1",
+      "expected_cumulative_duration_ms": 600000,
+      "outcome": "純資料宣告與 bound 契約",
+      "expected_cumulative_tokens": 4000
+    },
+    {
+      "evidence": "analyze 與 scope checker",
+      "anomaly_threshold": "超估算上限回報",
+      "id": "M2",
+      "expected_cumulative_duration_ms": 1500000,
+      "outcome": "adapter 與局部驗證",
+      "expected_cumulative_tokens": 8000
+    }
+  ],
+  "experiment": null
+}

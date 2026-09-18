@@ -1,0 +1,70 @@
+part of 'klp_workspace_presentation.dart';
+
+/// 套件內部的唯讀工作區區塊呈現紀錄，彙整內容、事件回呼及已解析樣式。
+/// 不屬使用端 API，不另建產品狀態或主題來源。
+final class KlpBoundWorkspaceBlock extends KlpBoundTemplate {
+	final int kind;
+	final int toolbarAlignment;
+	final String title;
+	final String? symbol;
+	final int? icon;
+	final String? subtitle;
+	final List<String> lines;
+	final List<String> checklist;
+	final String? checklistTitle;
+	final List<KlpBoundWorkspaceItem> items;
+	final List<KlpBoundWorkspaceChoice> choices;
+	final String? query;
+	final String? hint;
+	final void Function(String)? onQueryChanged;
+	final String? toggleLabel;
+	final bool? toggleValue;
+	final void Function(bool)? onToggleChanged;
+	final bool selected;
+	final void Function()? onPressed;
+	final String? secondaryActionLabel;
+	final void Function()? onSecondaryAction;
+	final String? tertiaryActionLabel;
+	final void Function()? onTertiaryAction;
+	final int material;
+	final bool shadowed;
+	final KlpColor materialBackground;
+	final KlpColor calloutBackground;
+	final KlpBoundTemplate? content;
+	final List<KlpBoundWorkspaceCommand> actions;
+	final String actionsLabel;
+	final KlpColor background;
+	final KlpColor foreground;
+	final KlpColor mutedForeground;
+	final KlpColor selectedBackground;
+	final KlpColor shadowColor;
+	final KlpDistance compactGap;
+	final KlpDistance gap;
+	final KlpDistance rowExtent;
+	final KlpDistance headerExtent;
+	final KlpDistance inset;
+	final KlpRadius radius;
+	final KlpRadius stickyRadius;
+	final KlpBoundTextStyle textStyle;
+	final KlpFontSize eyebrowSize;
+	final KlpFontSize titleSize;
+	final KlpFontSize bodySize;
+	final KlpFontSize sectionSize;
+	final KlpLineHeight bodyLineHeight;
+	final KlpDistance shadowOffset;
+	final KlpDistance shadowBlur;
+	final KlpStrokeWidth dividerStroke;
+	final KlpFontFamily brandFamily;
+	final KlpFontSize brandMarkSize;
+	final KlpFontSize brandNameSize;
+	final KlpColor accentColor;
+	final KlpFontSize detailSize;
+	final KlpLineHeight detailLineHeight;
+	final KlpDistance controlExtent;
+	final KlpRadius controlRadius;
+	final KlpDistance controlGap;
+	final KlpDistance iconExtent;
+	final KlpDistance columnGap;
+
+	KlpBoundWorkspaceBlock({required this.kind, required this.title, this.toolbarAlignment = 0, this.symbol, this.icon, this.subtitle, required Iterable<String> lines, required Iterable<String> checklist, this.checklistTitle, Iterable<KlpBoundWorkspaceItem> items = const [], Iterable<KlpBoundWorkspaceChoice> choices = const [], this.query, this.hint, this.onQueryChanged, this.toggleLabel, this.toggleValue, this.onToggleChanged, required this.selected, this.onPressed, this.secondaryActionLabel, this.onSecondaryAction, this.tertiaryActionLabel, this.onTertiaryAction, required this.material, required this.shadowed, required this.materialBackground, required this.calloutBackground, this.content, this.actions = const [], this.actionsLabel = 'More actions', required this.background, required this.foreground, required this.mutedForeground, required this.selectedBackground, required this.shadowColor, required this.compactGap, required this.gap, required this.rowExtent, required this.headerExtent, required this.inset, required this.radius, required this.stickyRadius, required this.textStyle, required this.eyebrowSize, required this.titleSize, required this.bodySize, required this.sectionSize, required this.bodyLineHeight, required this.shadowOffset, required this.shadowBlur, required this.dividerStroke, required this.brandFamily, required this.brandMarkSize, required this.brandNameSize, required this.accentColor, required this.detailSize, required this.detailLineHeight, required this.controlExtent, required this.controlRadius, required this.controlGap, required this.iconExtent, required this.columnGap}) : lines = List.unmodifiable(lines), checklist = List.unmodifiable(checklist), items = List.unmodifiable(items), choices = List.unmodifiable(choices);
+}

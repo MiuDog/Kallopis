@@ -11,24 +11,27 @@
 ```mermaid
 flowchart LR
 	n0["klp_screen.dart"]
-	n1["../../composition/nodes/klp_composite_node.dart"]
-	n2["../../composition/slots/klp_children.dart"]
-	n3["../../composition/slots/klp_slot.dart"]
-	n4["../../composition/slots/klp_screen_body.dart"]
+	n1["package:kallopis/src/composition/nodes/klp_composite_node.dart"]
+	n2["package:kallopis/src/composition/slots/klp_children.dart"]
+	n3["package:kallopis/src/composition/slots/klp_slot.dart"]
+	n4["package:kallopis/src/composition/slots/klp_screen_body.dart"]
+	n5["package:kallopis/src/kernel/identity/klp_id.dart"]
 	n0 -->|"import"| n1
 	n0 -->|"import"| n2
 	n0 -->|"import"| n3
 	n0 -->|"import"| n4
+	n0 -->|"import"| n5
 ```
 
 ## 依賴證據
 
 | 關係 | 原始 directive | 來源 |
 |---|---|---|
-| import | <code>import &#x27;../../composition/nodes/klp_composite_node.dart&#x27;;</code> | [lib/src/application/structure/klp_screen.dart:1](../../../../../lib/src/application/structure/klp_screen.dart#L1) |
-| import | <code>import &#x27;../../composition/slots/klp_children.dart&#x27;;</code> | [lib/src/application/structure/klp_screen.dart:2](../../../../../lib/src/application/structure/klp_screen.dart#L2) |
-| import | <code>import &#x27;../../composition/slots/klp_slot.dart&#x27;;</code> | [lib/src/application/structure/klp_screen.dart:3](../../../../../lib/src/application/structure/klp_screen.dart#L3) |
-| import | <code>import &#x27;../../composition/slots/klp_screen_body.dart&#x27;;</code> | [lib/src/application/structure/klp_screen.dart:4](../../../../../lib/src/application/structure/klp_screen.dart#L4) |
+| import | <code>import &#x27;package:kallopis/src/composition/nodes/klp_composite_node.dart&#x27;;</code> | [lib/src/application/structure/klp_screen.dart:1](../../../../../lib/src/application/structure/klp_screen.dart#L1) |
+| import | <code>import &#x27;package:kallopis/src/composition/slots/klp_children.dart&#x27;;</code> | [lib/src/application/structure/klp_screen.dart:2](../../../../../lib/src/application/structure/klp_screen.dart#L2) |
+| import | <code>import &#x27;package:kallopis/src/composition/slots/klp_slot.dart&#x27;;</code> | [lib/src/application/structure/klp_screen.dart:3](../../../../../lib/src/application/structure/klp_screen.dart#L3) |
+| import | <code>import &#x27;package:kallopis/src/composition/slots/klp_screen_body.dart&#x27;;</code> | [lib/src/application/structure/klp_screen.dart:4](../../../../../lib/src/application/structure/klp_screen.dart#L4) |
+| import | <code>import &#x27;package:kallopis/src/kernel/identity/klp_id.dart&#x27;;</code> | [lib/src/application/structure/klp_screen.dart:5](../../../../../lib/src/application/structure/klp_screen.dart#L5) |
 
 ## 宣告關係圖
 
@@ -53,24 +56,24 @@ classDiagram
 
 ### KlpScreen
 
-ClassDeclaration · public · [lib/src/application/structure/klp_screen.dart:6](../../../../../lib/src/application/structure/klp_screen.dart#L6)
+ClassDeclaration · public · [lib/src/application/structure/klp_screen.dart:7](../../../../../lib/src/application/structure/klp_screen.dart#L7)
 
 <code>final class KlpScreen implements KlpCompositeNode</code>
 
 來源註解摘要：畫面宣告只接受具有畫面內容資格的節點，渲染由本庫負責。
 
-- `implements` → <code>KlpCompositeNode</code>：[lib/src/application/structure/klp_screen.dart:7](../../../../../lib/src/application/structure/klp_screen.dart#L7)
+- `implements` → <code>KlpCompositeNode</code>：[lib/src/application/structure/klp_screen.dart:8](../../../../../lib/src/application/structure/klp_screen.dart#L8)
 
 | 成員 | 可見性 | 簽章／型別 | 來源註解摘要 | 證據 |
 |---|---|---|---|---|
-| field <code>typeId</code> | public | <code>static const String typeId</code> |  | [lib/src/application/structure/klp_screen.dart:8](../../../../../lib/src/application/structure/klp_screen.dart#L8) |
-| field <code>bodySlot</code> | public | <code>static final (inferred) bodySlot</code> |  | [lib/src/application/structure/klp_screen.dart:9](../../../../../lib/src/application/structure/klp_screen.dart#L9) |
-| field <code>id</code> | public | <code>final String id</code> |  | [lib/src/application/structure/klp_screen.dart:17](../../../../../lib/src/application/structure/klp_screen.dart#L17) |
-| field <code>accessibilityLabel</code> | public | <code>final String accessibilityLabel</code> |  | [lib/src/application/structure/klp_screen.dart:18](../../../../../lib/src/application/structure/klp_screen.dart#L18) |
-| field <code>child</code> | public | <code>final KlpScreenBody child</code> |  | [lib/src/application/structure/klp_screen.dart:19](../../../../../lib/src/application/structure/klp_screen.dart#L19) |
-| field <code>children</code> | public | <code>final KlpChildren children</code> |  | [lib/src/application/structure/klp_screen.dart:21](../../../../../lib/src/application/structure/klp_screen.dart#L21) |
-| constructor <code>KlpScreen</code> | public | <code>KlpScreen({ required this.id, required this.accessibilityLabel, required this.child, })</code> |  | [lib/src/application/structure/klp_screen.dart:23](../../../../../lib/src/application/structure/klp_screen.dart#L23) |
-| getter <code>definitionId</code> | public | <code>String get definitionId</code> |  | [lib/src/application/structure/klp_screen.dart:39](../../../../../lib/src/application/structure/klp_screen.dart#L39) |
+| field <code>typeId</code> | public | <code>static const String typeId</code> |  | [lib/src/application/structure/klp_screen.dart:9](../../../../../lib/src/application/structure/klp_screen.dart#L9) |
+| field <code>bodySlot</code> | public | <code>static final (inferred) bodySlot</code> |  | [lib/src/application/structure/klp_screen.dart:10](../../../../../lib/src/application/structure/klp_screen.dart#L10) |
+| field <code>id</code> | public | <code>final KlpId id</code> |  | [lib/src/application/structure/klp_screen.dart:18](../../../../../lib/src/application/structure/klp_screen.dart#L18) |
+| field <code>accessibilityLabel</code> | public | <code>final String accessibilityLabel</code> |  | [lib/src/application/structure/klp_screen.dart:19](../../../../../lib/src/application/structure/klp_screen.dart#L19) |
+| field <code>child</code> | public | <code>final KlpScreenBody child</code> |  | [lib/src/application/structure/klp_screen.dart:20](../../../../../lib/src/application/structure/klp_screen.dart#L20) |
+| field <code>children</code> | public | <code>final KlpChildren children</code> |  | [lib/src/application/structure/klp_screen.dart:22](../../../../../lib/src/application/structure/klp_screen.dart#L22) |
+| constructor <code>KlpScreen</code> | public | <code>KlpScreen({ required this.id, required this.accessibilityLabel, required this.child, })</code> |  | [lib/src/application/structure/klp_screen.dart:24](../../../../../lib/src/application/structure/klp_screen.dart#L24) |
+| getter <code>definitionId</code> | public | <code>String get definitionId</code> |  | [lib/src/application/structure/klp_screen.dart:40](../../../../../lib/src/application/structure/klp_screen.dart#L40) |
 
 ## 閱讀說明與限制
 

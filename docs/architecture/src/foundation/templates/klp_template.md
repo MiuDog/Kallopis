@@ -11,16 +11,17 @@
 ```mermaid
 flowchart LR
 	n0["klp_template.dart"]
-	n1["../../composition/nodes/klp_node.dart"]
-	n2["../../composition/slots/klp_slot.dart"]
-	n3["../../styling/primitives/klp_style_value.dart"]
-	n4["../../styling/semantics/klp_semantic_key.dart"]
+	n1["package:kallopis/src/composition/nodes/klp_node.dart"]
+	n2["package:kallopis/src/composition/slots/klp_slot.dart"]
+	n3["package:kallopis/src/styling/primitives/klp_style_value.dart"]
+	n4["package:kallopis/src/styling/semantics/klp_semantic_key.dart"]
 	n5["klp_axis.dart"]
 	n6["klp_text_semantics.dart"]
 	n7["klp_text_template.dart"]
 	n8["klp_linear_template.dart"]
 	n9["klp_surface_template.dart"]
-	n10["klp_children_template.dart"]
+	n10["klp_surface_shadow_semantics.dart"]
+	n11["klp_children_template.dart"]
 	n0 -->|"import"| n1
 	n0 -->|"import"| n2
 	n0 -->|"import"| n3
@@ -31,22 +32,24 @@ flowchart LR
 	n0 -->|"part"| n8
 	n0 -->|"part"| n9
 	n0 -->|"part"| n10
+	n0 -->|"part"| n11
 ```
 
 ## 依賴證據
 
 | 關係 | 原始 directive | 來源 |
 |---|---|---|
-| import | <code>import &#x27;../../composition/nodes/klp_node.dart&#x27;;</code> | [lib/src/foundation/templates/klp_template.dart:1](../../../../../lib/src/foundation/templates/klp_template.dart#L1) |
-| import | <code>import &#x27;../../composition/slots/klp_slot.dart&#x27;;</code> | [lib/src/foundation/templates/klp_template.dart:2](../../../../../lib/src/foundation/templates/klp_template.dart#L2) |
-| import | <code>import &#x27;../../styling/primitives/klp_style_value.dart&#x27;;</code> | [lib/src/foundation/templates/klp_template.dart:3](../../../../../lib/src/foundation/templates/klp_template.dart#L3) |
-| import | <code>import &#x27;../../styling/semantics/klp_semantic_key.dart&#x27;;</code> | [lib/src/foundation/templates/klp_template.dart:4](../../../../../lib/src/foundation/templates/klp_template.dart#L4) |
+| import | <code>import &#x27;package:kallopis/src/composition/nodes/klp_node.dart&#x27;;</code> | [lib/src/foundation/templates/klp_template.dart:1](../../../../../lib/src/foundation/templates/klp_template.dart#L1) |
+| import | <code>import &#x27;package:kallopis/src/composition/slots/klp_slot.dart&#x27;;</code> | [lib/src/foundation/templates/klp_template.dart:2](../../../../../lib/src/foundation/templates/klp_template.dart#L2) |
+| import | <code>import &#x27;package:kallopis/src/styling/primitives/klp_style_value.dart&#x27;;</code> | [lib/src/foundation/templates/klp_template.dart:3](../../../../../lib/src/foundation/templates/klp_template.dart#L3) |
+| import | <code>import &#x27;package:kallopis/src/styling/semantics/klp_semantic_key.dart&#x27;;</code> | [lib/src/foundation/templates/klp_template.dart:4](../../../../../lib/src/foundation/templates/klp_template.dart#L4) |
 | import | <code>import &#x27;klp_axis.dart&#x27;;</code> | [lib/src/foundation/templates/klp_template.dart:5](../../../../../lib/src/foundation/templates/klp_template.dart#L5) |
 | import | <code>import &#x27;klp_text_semantics.dart&#x27;;</code> | [lib/src/foundation/templates/klp_template.dart:6](../../../../../lib/src/foundation/templates/klp_template.dart#L6) |
 | part | <code>part &#x27;klp_text_template.dart&#x27;;</code> | [lib/src/foundation/templates/klp_template.dart:8](../../../../../lib/src/foundation/templates/klp_template.dart#L8) |
 | part | <code>part &#x27;klp_linear_template.dart&#x27;;</code> | [lib/src/foundation/templates/klp_template.dart:9](../../../../../lib/src/foundation/templates/klp_template.dart#L9) |
 | part | <code>part &#x27;klp_surface_template.dart&#x27;;</code> | [lib/src/foundation/templates/klp_template.dart:10](../../../../../lib/src/foundation/templates/klp_template.dart#L10) |
-| part | <code>part &#x27;klp_children_template.dart&#x27;;</code> | [lib/src/foundation/templates/klp_template.dart:11](../../../../../lib/src/foundation/templates/klp_template.dart#L11) |
+| part | <code>part &#x27;klp_surface_shadow_semantics.dart&#x27;;</code> | [lib/src/foundation/templates/klp_template.dart:11](../../../../../lib/src/foundation/templates/klp_template.dart#L11) |
+| part | <code>part &#x27;klp_children_template.dart&#x27;;</code> | [lib/src/foundation/templates/klp_template.dart:12](../../../../../lib/src/foundation/templates/klp_template.dart#L12) |
 
 ## 宣告關係圖
 
@@ -64,7 +67,7 @@ classDiagram
 
 ### KlpTemplate
 
-ClassDeclaration · public · [lib/src/foundation/templates/klp_template.dart:13](../../../../../lib/src/foundation/templates/klp_template.dart#L13)
+ClassDeclaration · public · [lib/src/foundation/templates/klp_template.dart:14](../../../../../lib/src/foundation/templates/klp_template.dart#L14)
 
 <code>sealed class KlpTemplate&lt;T extends KlpNode&gt;</code>
 
@@ -73,8 +76,8 @@ ClassDeclaration · public · [lib/src/foundation/templates/klp_template.dart:13
 
 | 成員 | 可見性 | 簽章／型別 | 來源註解摘要 | 證據 |
 |---|---|---|---|---|
-| constructor <code>KlpTemplate</code> | public | <code>const KlpTemplate()</code> |  | [lib/src/foundation/templates/klp_template.dart:15](../../../../../lib/src/foundation/templates/klp_template.dart#L15) |
-| method <code>accepts</code> | public | <code>bool accepts(KlpNode node)</code> | 泛型上轉不能取消模板自身的資料資格。 | [lib/src/foundation/templates/klp_template.dart:17](../../../../../lib/src/foundation/templates/klp_template.dart#L17) |
+| constructor <code>KlpTemplate</code> | public | <code>const KlpTemplate()</code> |  | [lib/src/foundation/templates/klp_template.dart:16](../../../../../lib/src/foundation/templates/klp_template.dart#L16) |
+| method <code>accepts</code> | public | <code>bool accepts(KlpNode node)</code> | 泛型上轉不能取消模板自身的資料資格。 | [lib/src/foundation/templates/klp_template.dart:18](../../../../../lib/src/foundation/templates/klp_template.dart#L18) |
 
 ## 閱讀說明與限制
 

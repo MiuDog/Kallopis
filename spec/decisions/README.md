@@ -2,7 +2,11 @@
 
 ## 索引
 
+正文採用：[KLP-0020](KLP-0020-blocknote-editor-adoption.md)，Implementing；使用者已選 BlockNote，正式接入與轉換待完成。
+
 Kallopis 遷移：[KLP-0019](KLP-0019-declarative-framework-migration.md)，Implementing。此狀態表示方向已獲使用者核准、程式尚未全部符合；不能當成 Accepted。新功能與 primitive 權限依該文件，原決策保留舊 API 的歷史與過渡範圍。
+
+生產力 App 元件生態：[KLP-0021](KLP-0021-productivity-component-ecosystem.md)，Implementing／DEFINE READY。維持禁止 consumer Widget，改以完整的產品無關生產力能力與意圖導向 Consumer Reference 為主要責任；能力地平線已接受，實際清冊、reference 與缺口補齊尚未完成。
 
 | 編號 | 題目 | 狀態 |
 |---|---|---|
@@ -23,6 +27,9 @@ Kallopis 遷移：[KLP-0019](KLP-0019-declarative-framework-migration.md)，Impl
 | [KLP-0015](KLP-0015-scoped-spacing-semantics.md) | 間距依使用 scope 定義語意 | Accepted |
 | [KLP-0016](KLP-0016-panel-frame-and-rail-spacing.md) | PanelFrame 無內距，Rail 自行管理節奏並使用 PanelFrame | Accepted |
 | [KLP-0018](KLP-0018-dock-drag-feedback-and-insertion-line.md) | Dock header 拖曳 feedback、放置線與滑鼠錨點 | Accepted |
+| [KLP-0019](KLP-0019-declarative-framework-migration.md) | 宣告式功能框架遷移 | Implementing |
+| [KLP-0020](KLP-0020-blocknote-editor-adoption.md) | 採用 BlockNote 正文編輯器 | Implementing |
+| [KLP-0021](KLP-0021-productivity-component-ecosystem.md) | 生產力 App 元件生態與 Consumer Reference | Implementing／DEFINE READY |
 
 ## 每份決策的必要內容
 

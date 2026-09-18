@@ -4,6 +4,8 @@
 
 本文件提供給維護 Kallopis、Notist 或其他 `-ist` 產品的開發者與 agent。讀完後應能判斷程式應放在哪個倉庫、透過哪個公開入口引用，以及變更 theme、environment 或 l10n 時必須保留哪些傳遞關係。本文件是規範；[架構圖集](README.md) 只描述目前原始碼。
 
+> 正文權威更新：2026-09-12 起，新 BlockNote 路徑依 [KLP-0020](../../spec/decisions/KLP-0020-blocknote-editor-adoption.md)。BlockNote 管理文件、selection、排版與 undo；宿主 adapter 保存版本化快照與資產。Kallopis 封裝受限編輯節點與平台生命週期，不建立第二份即時正文模型。下列 Krepis 權威表述適用於保留的舊路徑；新路徑仍遵守公開組裝、語意風格及單一 environment／l10n 來源。
+
 ## 目標
 
 - Kallopis 提供跨產品共用、沒有產品語意的視覺與互動能力。
@@ -102,25 +104,13 @@ graph TD
 1. 先依跨倉邊界判定 authority；若只有單一產品需要，放在產品倉庫。
 2. 選擇 Stable 或 Experimental，並只從對應公開入口 export。
 3. 若改動資料契約，先更新提供者，再更新消費端；不得在消費端臨時複製模型。
-4. 同一批更新文件與守門測試；禁止以擴大 allowlist 或提高 baseline 取代修正。
-5. 執行受影響測試、完整 analyze，以及兩個倉庫的架構邊界測試。
+4. 更新受影響的契約；必要測試由指定測試作者處理，禁止擴大 allowlist 或提高 baseline 取代修正。
+5. 按 AGENTS 判斷驗證必要性，僅選受影響功能的最高層級局部主體；失敗才細分，不預設雙倉全量檢查。
 6. 視覺或布局有變化時，依專案規範完成 Windows 實機執行與截圖驗收。
 
 ## 驗收
 
-Kallopis：
-
-```powershell
-D:\flutter\bin\flutter.bat test test/frontend_architecture_boundary_test.dart
-D:\flutter\bin\flutter.bat analyze
-```
-
-Notist：
-
-```powershell
-D:\flutter\bin\flutter.bat test test/frontend_architecture_boundary_test.dart
-D:\flutter\bin\flutter.bat analyze
-```
+是否執行測試依 AGENTS 新政策。涉及本頁權威／公開入口邊界時，選擇相關 `test/frontend_architecture_boundary_test.dart` 主體；不為無關修改重跑。使用當前工具路徑，不沿歷史環境指令。
 
 架構變更完成時還必須確認：產品模型只存在 authority 倉庫、消費端只使用公開入口、theme／environment／l10n 各有單一傳遞來源、Stable 入口沒有反向依賴 Experimental。
 

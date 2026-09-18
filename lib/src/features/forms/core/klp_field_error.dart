@@ -1,4 +1,4 @@
-import '../internal/klp_form_dependencies.dart';
+import 'package:kallopis/src/features/forms/internal/klp_form_dependencies.dart';
 
 /// 單獨呈現的欄位錯誤文字，包了 Kallopis live region，讓螢幕
 /// 報讀器在錯誤出現時主動唸出來，不需要使用者手動聚焦。

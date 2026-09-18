@@ -12,7 +12,7 @@
 flowchart LR
 	n0["klp_navigator_models.dart"]
 	n1["package:flutter/widgets.dart"]
-	n2["../../../../foundation/klp_icon.dart"]
+	n2["package:kallopis/src/foundation/klp_icon.dart"]
 	n3["models/klp_navigator_category.dart"]
 	n4["models/klp_navigator_component.dart"]
 	n5["models/klp_navigator_element.dart"]
@@ -30,7 +30,7 @@ flowchart LR
 | 關係 | 原始 directive | 來源 |
 |---|---|---|
 | import | <code>import &#x27;package:flutter/widgets.dart&#x27;;</code> | [lib/src/features/navigation/widgets/navigator/klp_navigator_models.dart:1](../../../../../../../lib/src/features/navigation/widgets/navigator/klp_navigator_models.dart#L1) |
-| import | <code>import &#x27;../../../../foundation/klp_icon.dart&#x27;;</code> | [lib/src/features/navigation/widgets/navigator/klp_navigator_models.dart:3](../../../../../../../lib/src/features/navigation/widgets/navigator/klp_navigator_models.dart#L3) |
+| import | <code>import &#x27;package:kallopis/src/foundation/klp_icon.dart&#x27;;</code> | [lib/src/features/navigation/widgets/navigator/klp_navigator_models.dart:3](../../../../../../../lib/src/features/navigation/widgets/navigator/klp_navigator_models.dart#L3) |
 | part | <code>part &#x27;models/klp_navigator_category.dart&#x27;;</code> | [lib/src/features/navigation/widgets/navigator/klp_navigator_models.dart:5](../../../../../../../lib/src/features/navigation/widgets/navigator/klp_navigator_models.dart#L5) |
 | part | <code>part &#x27;models/klp_navigator_component.dart&#x27;;</code> | [lib/src/features/navigation/widgets/navigator/klp_navigator_models.dart:6](../../../../../../../lib/src/features/navigation/widgets/navigator/klp_navigator_models.dart#L6) |
 | part | <code>part &#x27;models/klp_navigator_element.dart&#x27;;</code> | [lib/src/features/navigation/widgets/navigator/klp_navigator_models.dart:7](../../../../../../../lib/src/features/navigation/widgets/navigator/klp_navigator_models.dart#L7) |

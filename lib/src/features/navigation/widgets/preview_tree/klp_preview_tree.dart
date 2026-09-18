@@ -1,10 +1,10 @@
 import 'package:flutter/widgets.dart';
 
-import '../../../collections/advanced/klp_advanced_data.dart';
-import '../../../../foundation/interaction/klp_exclude_semantics.dart';
-import '../../../../foundation/interaction/klp_semantic_region.dart';
-import '../../../../foundation/interaction/primitives/klp_pointer_blocker.dart';
-import '../../../../foundation/layout/klp_column.dart';
+import 'package:kallopis/src/features/collections/advanced/klp_advanced_data.dart';
+import 'package:kallopis/src/foundation/interaction/klp_exclude_semantics.dart';
+import 'package:kallopis/src/foundation/interaction/klp_semantic_region.dart';
+import 'package:kallopis/src/foundation/interaction/primitives/klp_pointer_blocker.dart';
+import 'package:kallopis/src/foundation/layout/klp_column.dart';
 import 'models/klp_preview_tree_node.dart';
 
 part 'internal/klp_preview_tree_item.dart';

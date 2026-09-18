@@ -1,7 +1,8 @@
-import '../../../../composition/nodes/klp_composite_node.dart';
-import '../../../../composition/slots/klp_children.dart';
-import '../../../../composition/slots/klp_slot.dart';
-import '../../../../composition/slots/klp_screen_body.dart';
+import 'package:kallopis/src/composition/nodes/klp_composite_node.dart';
+import 'package:kallopis/src/composition/slots/klp_children.dart';
+import 'package:kallopis/src/composition/slots/klp_slot.dart';
+import 'package:kallopis/src/composition/slots/klp_screen_body.dart';
+import 'package:kallopis/src/kernel/identity/klp_id.dart';
 import 'klp_rail_item.dart';
 
 /// 三區受控結構宣告；選取狀態與呈現由本庫在安裝後持有。
@@ -12,7 +13,7 @@ final class KlpRail implements KlpCompositeNode, KlpScreenBody {
   static final bottomSlot = KlpSlot<KlpRailItem>(owner: typeId, name: 'bottom');
 
   @override
-  final String id;
+  final KlpId id;
   final List<KlpRailItem> top;
   final List<KlpRailItem> center;
   final List<KlpRailItem> bottom;
@@ -21,7 +22,7 @@ final class KlpRail implements KlpCompositeNode, KlpScreenBody {
   final KlpChildren children;
 
   KlpRail({
-    required String id,
+    required KlpId id,
     List<KlpRailItem> top = const [],
     List<KlpRailItem> center = const [],
     List<KlpRailItem> bottom = const [],

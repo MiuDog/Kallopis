@@ -1,6 +1,6 @@
 import 'package:flutter/foundation.dart';
 
-import '../legacy_tokens/primitive_token.dart';
+import 'package:kallopis/src/styling/legacy_tokens/primitive_token.dart';
 
 /// Shell、overlay 與 responsive layout 的精確幾何。
 @immutable

@@ -1,8 +1,8 @@
 import 'package:flutter/widgets.dart';
 
-import '../../../feedback/klp_status_indicator.dart';
-import '../../../../foundation/layout/klp_layout.dart';
-import '../../../../styling/legacy_theme/klp_theme.dart';
+import 'package:kallopis/src/features/feedback/klp_status_indicator.dart';
+import 'package:kallopis/src/foundation/layout/klp_layout.dart';
+import 'package:kallopis/src/styling/legacy_theme/klp_theme.dart';
 import 'klp_status_data.dart';
 
 part 'internal/klp_status_group.dart';

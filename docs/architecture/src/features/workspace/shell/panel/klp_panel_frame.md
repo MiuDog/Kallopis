@@ -12,8 +12,8 @@
 flowchart LR
 	n0["klp_panel_frame.dart"]
 	n1["package:flutter/material.dart"]
-	n2["../../../../foundation/layout/klp_panel_layout.dart"]
-	n3["../../../../styling/legacy_theme/klp_theme.dart"]
+	n2["package:kallopis/src/foundation/layout/klp_panel_layout.dart"]
+	n3["package:kallopis/src/styling/legacy_theme/klp_theme.dart"]
 	n4["klp_panel_footer.dart"]
 	n5["klp_panel_header_size.dart"]
 	n6["klp_panel_tone.dart"]
@@ -36,8 +36,8 @@ flowchart LR
 | 關係 | 原始 directive | 來源 |
 |---|---|---|
 | import | <code>import &#x27;package:flutter/material.dart&#x27;;</code> | [lib/src/features/workspace/shell/panel/klp_panel_frame.dart:1](../../../../../../../lib/src/features/workspace/shell/panel/klp_panel_frame.dart#L1) |
-| import | <code>import &#x27;../../../../foundation/layout/klp_panel_layout.dart&#x27;;</code> | [lib/src/features/workspace/shell/panel/klp_panel_frame.dart:3](../../../../../../../lib/src/features/workspace/shell/panel/klp_panel_frame.dart#L3) |
-| import | <code>import &#x27;../../../../styling/legacy_theme/klp_theme.dart&#x27;;</code> | [lib/src/features/workspace/shell/panel/klp_panel_frame.dart:4](../../../../../../../lib/src/features/workspace/shell/panel/klp_panel_frame.dart#L4) |
+| import | <code>import &#x27;package:kallopis/src/foundation/layout/klp_panel_layout.dart&#x27;;</code> | [lib/src/features/workspace/shell/panel/klp_panel_frame.dart:3](../../../../../../../lib/src/features/workspace/shell/panel/klp_panel_frame.dart#L3) |
+| import | <code>import &#x27;package:kallopis/src/styling/legacy_theme/klp_theme.dart&#x27;;</code> | [lib/src/features/workspace/shell/panel/klp_panel_frame.dart:4](../../../../../../../lib/src/features/workspace/shell/panel/klp_panel_frame.dart#L4) |
 | import | <code>import &#x27;klp_panel_footer.dart&#x27;;</code> | [lib/src/features/workspace/shell/panel/klp_panel_frame.dart:5](../../../../../../../lib/src/features/workspace/shell/panel/klp_panel_frame.dart#L5) |
 | import | <code>import &#x27;klp_panel_header_size.dart&#x27;;</code> | [lib/src/features/workspace/shell/panel/klp_panel_frame.dart:6](../../../../../../../lib/src/features/workspace/shell/panel/klp_panel_frame.dart#L6) |
 | import | <code>import &#x27;klp_panel_tone.dart&#x27;;</code> | [lib/src/features/workspace/shell/panel/klp_panel_frame.dart:7](../../../../../../../lib/src/features/workspace/shell/panel/klp_panel_frame.dart#L7) |

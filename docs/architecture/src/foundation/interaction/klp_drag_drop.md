@@ -12,9 +12,9 @@
 flowchart LR
 	n0["klp_drag_drop.dart"]
 	n1["package:flutter/material.dart"]
-	n2["../../styling/legacy_theme/klp_theme.dart"]
-	n3["../surface/klp_stroke.dart"]
-	n4["../surface/klp_surface.dart"]
+	n2["package:kallopis/src/styling/legacy_theme/klp_theme.dart"]
+	n3["package:kallopis/src/foundation/surface/klp_stroke.dart"]
+	n4["package:kallopis/src/foundation/surface/klp_surface.dart"]
 	n0 -->|"import"| n1
 	n0 -->|"import"| n2
 	n0 -->|"import"| n3
@@ -26,9 +26,9 @@ flowchart LR
 | 關係 | 原始 directive | 來源 |
 |---|---|---|
 | import | <code>import &#x27;package:flutter/material.dart&#x27;;</code> | [lib/src/foundation/interaction/klp_drag_drop.dart:1](../../../../../lib/src/foundation/interaction/klp_drag_drop.dart#L1) |
-| import | <code>import &#x27;../../styling/legacy_theme/klp_theme.dart&#x27;;</code> | [lib/src/foundation/interaction/klp_drag_drop.dart:3](../../../../../lib/src/foundation/interaction/klp_drag_drop.dart#L3) |
-| import | <code>import &#x27;../surface/klp_stroke.dart&#x27;;</code> | [lib/src/foundation/interaction/klp_drag_drop.dart:4](../../../../../lib/src/foundation/interaction/klp_drag_drop.dart#L4) |
-| import | <code>import &#x27;../surface/klp_surface.dart&#x27;;</code> | [lib/src/foundation/interaction/klp_drag_drop.dart:5](../../../../../lib/src/foundation/interaction/klp_drag_drop.dart#L5) |
+| import | <code>import &#x27;package:kallopis/src/styling/legacy_theme/klp_theme.dart&#x27;;</code> | [lib/src/foundation/interaction/klp_drag_drop.dart:3](../../../../../lib/src/foundation/interaction/klp_drag_drop.dart#L3) |
+| import | <code>import &#x27;package:kallopis/src/foundation/surface/klp_stroke.dart&#x27;;</code> | [lib/src/foundation/interaction/klp_drag_drop.dart:4](../../../../../lib/src/foundation/interaction/klp_drag_drop.dart#L4) |
+| import | <code>import &#x27;package:kallopis/src/foundation/surface/klp_surface.dart&#x27;;</code> | [lib/src/foundation/interaction/klp_drag_drop.dart:5](../../../../../lib/src/foundation/interaction/klp_drag_drop.dart#L5) |
 
 ## 宣告關係圖
 

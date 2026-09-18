@@ -1,7 +1,7 @@
 import 'package:flutter/widgets.dart';
 
-import '../../layout/klp_layout.dart';
-import '../../content/klp_text.dart';
+import 'package:kallopis/src/foundation/layout/klp_layout.dart';
+import 'package:kallopis/src/foundation/content/klp_text.dart';
 
 /// 帶標題的內容分段。`label` 是標題上方的小型分類文字。
 class KlpSection extends StatelessWidget {

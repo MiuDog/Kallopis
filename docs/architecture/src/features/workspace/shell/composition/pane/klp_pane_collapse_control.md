@@ -12,12 +12,12 @@
 flowchart LR
 	n0["klp_pane_collapse_control.dart"]
 	n1["package:flutter/widgets.dart"]
-	n2["../../../../../foundation/klp_icon.dart"]
-	n3["../../../../../foundation/klp_icons.dart"]
-	n4["../../../../../foundation/interaction/klp_action_region.dart"]
-	n5["../../../../../foundation/interaction/klp_action_region_shape.dart"]
-	n6["../../../../../application/localization/klp_localizations.dart"]
-	n7["../../../../../styling/legacy_theme/klp_theme.dart"]
+	n2["package:kallopis/src/foundation/klp_icon.dart"]
+	n3["package:kallopis/src/foundation/klp_icons.dart"]
+	n4["package:kallopis/src/foundation/interaction/klp_action_region.dart"]
+	n5["package:kallopis/src/foundation/interaction/klp_action_region_shape.dart"]
+	n6["package:kallopis/src/foundation/localization/klp_localizations.dart"]
+	n7["package:kallopis/src/styling/legacy_theme/klp_theme.dart"]
 	n8["primitives/klp_pane_collapse_icon_frame.dart"]
 	n0 -->|"import"| n1
 	n0 -->|"import"| n2
@@ -34,12 +34,12 @@ flowchart LR
 | 關係 | 原始 directive | 來源 |
 |---|---|---|
 | import | <code>import &#x27;package:flutter/widgets.dart&#x27;;</code> | [lib/src/features/workspace/shell/composition/pane/klp_pane_collapse_control.dart:1](../../../../../../../../lib/src/features/workspace/shell/composition/pane/klp_pane_collapse_control.dart#L1) |
-| import | <code>import &#x27;../../../../../foundation/klp_icon.dart&#x27;;</code> | [lib/src/features/workspace/shell/composition/pane/klp_pane_collapse_control.dart:3](../../../../../../../../lib/src/features/workspace/shell/composition/pane/klp_pane_collapse_control.dart#L3) |
-| import | <code>import &#x27;../../../../../foundation/klp_icons.dart&#x27;;</code> | [lib/src/features/workspace/shell/composition/pane/klp_pane_collapse_control.dart:4](../../../../../../../../lib/src/features/workspace/shell/composition/pane/klp_pane_collapse_control.dart#L4) |
-| import | <code>import &#x27;../../../../../foundation/interaction/klp_action_region.dart&#x27;;</code> | [lib/src/features/workspace/shell/composition/pane/klp_pane_collapse_control.dart:5](../../../../../../../../lib/src/features/workspace/shell/composition/pane/klp_pane_collapse_control.dart#L5) |
-| import | <code>import &#x27;../../../../../foundation/interaction/klp_action_region_shape.dart&#x27;;</code> | [lib/src/features/workspace/shell/composition/pane/klp_pane_collapse_control.dart:6](../../../../../../../../lib/src/features/workspace/shell/composition/pane/klp_pane_collapse_control.dart#L6) |
-| import | <code>import &#x27;../../../../../application/localization/klp_localizations.dart&#x27;;</code> | [lib/src/features/workspace/shell/composition/pane/klp_pane_collapse_control.dart:7](../../../../../../../../lib/src/features/workspace/shell/composition/pane/klp_pane_collapse_control.dart#L7) |
-| import | <code>import &#x27;../../../../../styling/legacy_theme/klp_theme.dart&#x27;;</code> | [lib/src/features/workspace/shell/composition/pane/klp_pane_collapse_control.dart:8](../../../../../../../../lib/src/features/workspace/shell/composition/pane/klp_pane_collapse_control.dart#L8) |
+| import | <code>import &#x27;package:kallopis/src/foundation/klp_icon.dart&#x27;;</code> | [lib/src/features/workspace/shell/composition/pane/klp_pane_collapse_control.dart:3](../../../../../../../../lib/src/features/workspace/shell/composition/pane/klp_pane_collapse_control.dart#L3) |
+| import | <code>import &#x27;package:kallopis/src/foundation/klp_icons.dart&#x27;;</code> | [lib/src/features/workspace/shell/composition/pane/klp_pane_collapse_control.dart:4](../../../../../../../../lib/src/features/workspace/shell/composition/pane/klp_pane_collapse_control.dart#L4) |
+| import | <code>import &#x27;package:kallopis/src/foundation/interaction/klp_action_region.dart&#x27;;</code> | [lib/src/features/workspace/shell/composition/pane/klp_pane_collapse_control.dart:5](../../../../../../../../lib/src/features/workspace/shell/composition/pane/klp_pane_collapse_control.dart#L5) |
+| import | <code>import &#x27;package:kallopis/src/foundation/interaction/klp_action_region_shape.dart&#x27;;</code> | [lib/src/features/workspace/shell/composition/pane/klp_pane_collapse_control.dart:6](../../../../../../../../lib/src/features/workspace/shell/composition/pane/klp_pane_collapse_control.dart#L6) |
+| import | <code>import &#x27;package:kallopis/src/foundation/localization/klp_localizations.dart&#x27;;</code> | [lib/src/features/workspace/shell/composition/pane/klp_pane_collapse_control.dart:7](../../../../../../../../lib/src/features/workspace/shell/composition/pane/klp_pane_collapse_control.dart#L7) |
+| import | <code>import &#x27;package:kallopis/src/styling/legacy_theme/klp_theme.dart&#x27;;</code> | [lib/src/features/workspace/shell/composition/pane/klp_pane_collapse_control.dart:8](../../../../../../../../lib/src/features/workspace/shell/composition/pane/klp_pane_collapse_control.dart#L8) |
 | part | <code>part &#x27;primitives/klp_pane_collapse_icon_frame.dart&#x27;;</code> | [lib/src/features/workspace/shell/composition/pane/klp_pane_collapse_control.dart:10](../../../../../../../../lib/src/features/workspace/shell/composition/pane/klp_pane_collapse_control.dart#L10) |
 
 ## 宣告關係圖

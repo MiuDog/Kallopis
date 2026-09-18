@@ -15,22 +15,25 @@ flowchart TD
 	n0["lib/src/capabilities/navigation"]
 	n1["dart:async"]
 	n2["dart:convert"]
+	n3["lib/src/kernel/identity"]
 	n0 -->|"import"| n1
 	n0 -->|"import"| n2
+	n0 -->|"import"| n3
 ```
 
 | 目標邊界 | 關係 | directive 數 | 第一筆來源證據 |
 |---|---|---|---|
 | <code>dart:async</code> | import | 1 | [lib/src/capabilities/navigation/klp_route_policy.dart:1](../../../../../lib/src/capabilities/navigation/klp_route_policy.dart#L1) |
 | <code>dart:convert</code> | import | 1 | [lib/src/capabilities/navigation/klp_route_uri.dart:1](../../../../../lib/src/capabilities/navigation/klp_route_uri.dart#L1) |
+| <code>lib/src/kernel/identity</code> | import | 1 | [lib/src/capabilities/navigation/klp_destination.dart:1](../../../../../lib/src/capabilities/navigation/klp_destination.dart#L1) |
 
 ### 同目錄依賴
 
 | 來源 → 目標 | 關係 | 證據 |
 |---|---|---|
-| <code>klp_destination.dart → klp_location.dart</code> | import | [lib/src/capabilities/navigation/klp_destination.dart:1](../../../../../lib/src/capabilities/navigation/klp_destination.dart#L1) |
-| <code>klp_destination.dart → klp_route_address.dart</code> | import | [lib/src/capabilities/navigation/klp_destination.dart:2](../../../../../lib/src/capabilities/navigation/klp_destination.dart#L2) |
-| <code>klp_destination.dart → klp_route_codec.dart</code> | import | [lib/src/capabilities/navigation/klp_destination.dart:3](../../../../../lib/src/capabilities/navigation/klp_destination.dart#L3) |
+| <code>klp_destination.dart → klp_location.dart</code> | import | [lib/src/capabilities/navigation/klp_destination.dart:2](../../../../../lib/src/capabilities/navigation/klp_destination.dart#L2) |
+| <code>klp_destination.dart → klp_route_address.dart</code> | import | [lib/src/capabilities/navigation/klp_destination.dart:3](../../../../../lib/src/capabilities/navigation/klp_destination.dart#L3) |
+| <code>klp_destination.dart → klp_route_codec.dart</code> | import | [lib/src/capabilities/navigation/klp_destination.dart:4](../../../../../lib/src/capabilities/navigation/klp_destination.dart#L4) |
 | <code>klp_location.dart → klp_destination.dart</code> | import | [lib/src/capabilities/navigation/klp_location.dart:1](../../../../../lib/src/capabilities/navigation/klp_location.dart#L1) |
 | <code>klp_navigation_cancelled.dart → klp_navigation_outcome.dart</code> | part of | [lib/src/capabilities/navigation/klp_navigation_cancelled.dart:1](../../../../../lib/src/capabilities/navigation/klp_navigation_cancelled.dart#L1) |
 | <code>klp_navigation_completed.dart → klp_navigation_outcome.dart</code> | part of | [lib/src/capabilities/navigation/klp_navigation_completed.dart:1](../../../../../lib/src/capabilities/navigation/klp_navigation_completed.dart#L1) |
@@ -60,17 +63,17 @@ flowchart TD
 ```mermaid
 flowchart LR
 	n0["lib/src/capabilities/navigation"]
-	n1["internal/"]
-	n2["klp_destination.dart"]
-	n3["klp_location.dart"]
-	n4["klp_navigation_cancellation.dart"]
-	n5["klp_navigation_cancelled.dart"]
-	n6["klp_navigation_completed.dart"]
-	n7["klp_navigation_decision.dart"]
-	n8["klp_navigation_entry.dart"]
-	n9["klp_navigation_failed.dart"]
-	n10["klp_navigation_outcome.dart"]
-	n11["klp_navigation_rejected.dart"]
+	n1["engine/"]
+	n2["internal/"]
+	n3["klp_destination.dart"]
+	n4["klp_location.dart"]
+	n5["klp_navigation_cancellation.dart"]
+	n6["klp_navigation_cancelled.dart"]
+	n7["klp_navigation_completed.dart"]
+	n8["klp_navigation_decision.dart"]
+	n9["klp_navigation_entry.dart"]
+	n10["klp_navigation_failed.dart"]
+	n11["klp_navigation_outcome.dart"]
 	n0 -->|"contains"| n1
 	n0 -->|"contains"| n2
 	n0 -->|"contains"| n3
@@ -87,14 +90,15 @@ flowchart LR
 ```mermaid
 flowchart LR
 	n0["lib/src/capabilities/navigation"]
-	n1["klp_navigation_restoration.dart"]
-	n2["klp_navigation_snapshot.dart"]
-	n3["klp_navigation_ticket.dart"]
-	n4["klp_navigation_transition.dart"]
-	n5["klp_route_address.dart"]
-	n6["klp_route_codec.dart"]
-	n7["klp_route_policy.dart"]
-	n8["klp_route_uri.dart"]
+	n1["klp_navigation_rejected.dart"]
+	n2["klp_navigation_restoration.dart"]
+	n3["klp_navigation_snapshot.dart"]
+	n4["klp_navigation_ticket.dart"]
+	n5["klp_navigation_transition.dart"]
+	n6["klp_route_address.dart"]
+	n7["klp_route_codec.dart"]
+	n8["klp_route_policy.dart"]
+	n9["klp_route_uri.dart"]
 	n0 -->|"contains"| n1
 	n0 -->|"contains"| n2
 	n0 -->|"contains"| n3
@@ -103,12 +107,14 @@ flowchart LR
 	n0 -->|"contains"| n6
 	n0 -->|"contains"| n7
 	n0 -->|"contains"| n8
+	n0 -->|"contains"| n9
 ```
 
 ## 子目錄
 
 | 目錄 | 導航 | 來源證據 |
 |---|---|---|
+| `engine/` | [架構入口](engine/README.md) | [來源目錄](../../../../../lib/src/capabilities/navigation/engine) |
 | `internal/` | [架構入口](internal/README.md) | [來源目錄](../../../../../lib/src/capabilities/navigation/internal) |
 
 ## 本層檔案

@@ -11,7 +11,7 @@
 ```mermaid
 flowchart TD
 	n0["klp_date_field_calendar.dart"]
-	n1["../internal/klp_form_dependencies.dart"]
+	n1["package:kallopis/src/features/forms/internal/klp_form_dependencies.dart"]
 	n2["klp_calendar.dart"]
 	n3["klp_date_field.dart"]
 	n0 -->|"import"| n1
@@ -23,7 +23,7 @@ flowchart TD
 
 | 關係 | 原始 directive | 來源 |
 |---|---|---|
-| import | <code>import &#x27;../internal/klp_form_dependencies.dart&#x27;;</code> | [lib/src/features/forms/selection/klp_date_field_calendar.dart:1](../../../../../../lib/src/features/forms/selection/klp_date_field_calendar.dart#L1) |
+| import | <code>import &#x27;package:kallopis/src/features/forms/internal/klp_form_dependencies.dart&#x27;;</code> | [lib/src/features/forms/selection/klp_date_field_calendar.dart:1](../../../../../../lib/src/features/forms/selection/klp_date_field_calendar.dart#L1) |
 | import | <code>import &#x27;klp_calendar.dart&#x27;;</code> | [lib/src/features/forms/selection/klp_date_field_calendar.dart:2](../../../../../../lib/src/features/forms/selection/klp_date_field_calendar.dart#L2) |
 | import | <code>import &#x27;klp_date_field.dart&#x27;;</code> | [lib/src/features/forms/selection/klp_date_field_calendar.dart:3](../../../../../../lib/src/features/forms/selection/klp_date_field_calendar.dart#L3) |
 

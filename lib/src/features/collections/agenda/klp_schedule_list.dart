@@ -4,11 +4,11 @@ library;
 import 'package:flutter/widgets.dart';
 
 import 'klp_schedule_item_data.dart';
-import '../badge/klp_badge.dart';
-import '../../../foundation/layout/klp_layout.dart';
-import '../../../foundation/surface/klp_surface.dart';
-import '../../../styling/legacy_theme/klp_theme.dart';
-import '../../../foundation/content/klp_text.dart';
+import 'package:kallopis/src/features/collections/badge/klp_badge.dart';
+import 'package:kallopis/src/foundation/layout/klp_layout.dart';
+import 'package:kallopis/src/foundation/surface/klp_surface.dart';
+import 'package:kallopis/src/styling/legacy_theme/klp_theme.dart';
+import 'package:kallopis/src/foundation/content/klp_text.dart';
 
 /// 固定時間欄、標題與選填標籤的排程清單。
 class KlpScheduleList extends StatelessWidget {

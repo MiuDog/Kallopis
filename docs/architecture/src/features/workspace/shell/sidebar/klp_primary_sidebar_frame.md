@@ -12,13 +12,13 @@
 flowchart LR
 	n0["klp_primary_sidebar_frame.dart"]
 	n1["package:flutter/widgets.dart"]
-	n2["../../../feedback/klp_status_indicator.dart"]
-	n3["../../../../foundation/layout/klp_box.dart"]
-	n4["../../../../foundation/layout/klp_column.dart"]
-	n5["../../../../foundation/layout/klp_expanded.dart"]
-	n6["../../../../foundation/layout/klp_gap.dart"]
-	n7["../../../../foundation/layout/klp_space_size.dart"]
-	n8["../status/klp_status_data.dart"]
+	n2["package:kallopis/src/features/feedback/klp_status_indicator.dart"]
+	n3["package:kallopis/src/foundation/layout/klp_box.dart"]
+	n4["package:kallopis/src/foundation/layout/klp_column.dart"]
+	n5["package:kallopis/src/foundation/layout/klp_expanded.dart"]
+	n6["package:kallopis/src/foundation/layout/klp_gap.dart"]
+	n7["package:kallopis/src/foundation/layout/klp_space_size.dart"]
+	n8["package:kallopis/src/features/workspace/shell/status/klp_status_data.dart"]
 	n9["klp_primary_sidebar_header_inset.dart"]
 	n10["klp_sidebar_frame.dart"]
 	n11["klp_primary_sidebar_header_inset.dart"]
@@ -40,13 +40,13 @@ flowchart LR
 | 關係 | 原始 directive | 來源 |
 |---|---|---|
 | import | <code>import &#x27;package:flutter/widgets.dart&#x27;;</code> | [lib/src/features/workspace/shell/sidebar/klp_primary_sidebar_frame.dart:1](../../../../../../../lib/src/features/workspace/shell/sidebar/klp_primary_sidebar_frame.dart#L1) |
-| import | <code>import &#x27;../../../feedback/klp_status_indicator.dart&#x27;;</code> | [lib/src/features/workspace/shell/sidebar/klp_primary_sidebar_frame.dart:3](../../../../../../../lib/src/features/workspace/shell/sidebar/klp_primary_sidebar_frame.dart#L3) |
-| import | <code>import &#x27;../../../../foundation/layout/klp_box.dart&#x27;;</code> | [lib/src/features/workspace/shell/sidebar/klp_primary_sidebar_frame.dart:4](../../../../../../../lib/src/features/workspace/shell/sidebar/klp_primary_sidebar_frame.dart#L4) |
-| import | <code>import &#x27;../../../../foundation/layout/klp_column.dart&#x27;;</code> | [lib/src/features/workspace/shell/sidebar/klp_primary_sidebar_frame.dart:5](../../../../../../../lib/src/features/workspace/shell/sidebar/klp_primary_sidebar_frame.dart#L5) |
-| import | <code>import &#x27;../../../../foundation/layout/klp_expanded.dart&#x27;;</code> | [lib/src/features/workspace/shell/sidebar/klp_primary_sidebar_frame.dart:6](../../../../../../../lib/src/features/workspace/shell/sidebar/klp_primary_sidebar_frame.dart#L6) |
-| import | <code>import &#x27;../../../../foundation/layout/klp_gap.dart&#x27;;</code> | [lib/src/features/workspace/shell/sidebar/klp_primary_sidebar_frame.dart:7](../../../../../../../lib/src/features/workspace/shell/sidebar/klp_primary_sidebar_frame.dart#L7) |
-| import | <code>import &#x27;../../../../foundation/layout/klp_space_size.dart&#x27;;</code> | [lib/src/features/workspace/shell/sidebar/klp_primary_sidebar_frame.dart:8](../../../../../../../lib/src/features/workspace/shell/sidebar/klp_primary_sidebar_frame.dart#L8) |
-| import | <code>import &#x27;../status/klp_status_data.dart&#x27;;</code> | [lib/src/features/workspace/shell/sidebar/klp_primary_sidebar_frame.dart:9](../../../../../../../lib/src/features/workspace/shell/sidebar/klp_primary_sidebar_frame.dart#L9) |
+| import | <code>import &#x27;package:kallopis/src/features/feedback/klp_status_indicator.dart&#x27;;</code> | [lib/src/features/workspace/shell/sidebar/klp_primary_sidebar_frame.dart:3](../../../../../../../lib/src/features/workspace/shell/sidebar/klp_primary_sidebar_frame.dart#L3) |
+| import | <code>import &#x27;package:kallopis/src/foundation/layout/klp_box.dart&#x27;;</code> | [lib/src/features/workspace/shell/sidebar/klp_primary_sidebar_frame.dart:4](../../../../../../../lib/src/features/workspace/shell/sidebar/klp_primary_sidebar_frame.dart#L4) |
+| import | <code>import &#x27;package:kallopis/src/foundation/layout/klp_column.dart&#x27;;</code> | [lib/src/features/workspace/shell/sidebar/klp_primary_sidebar_frame.dart:5](../../../../../../../lib/src/features/workspace/shell/sidebar/klp_primary_sidebar_frame.dart#L5) |
+| import | <code>import &#x27;package:kallopis/src/foundation/layout/klp_expanded.dart&#x27;;</code> | [lib/src/features/workspace/shell/sidebar/klp_primary_sidebar_frame.dart:6](../../../../../../../lib/src/features/workspace/shell/sidebar/klp_primary_sidebar_frame.dart#L6) |
+| import | <code>import &#x27;package:kallopis/src/foundation/layout/klp_gap.dart&#x27;;</code> | [lib/src/features/workspace/shell/sidebar/klp_primary_sidebar_frame.dart:7](../../../../../../../lib/src/features/workspace/shell/sidebar/klp_primary_sidebar_frame.dart#L7) |
+| import | <code>import &#x27;package:kallopis/src/foundation/layout/klp_space_size.dart&#x27;;</code> | [lib/src/features/workspace/shell/sidebar/klp_primary_sidebar_frame.dart:8](../../../../../../../lib/src/features/workspace/shell/sidebar/klp_primary_sidebar_frame.dart#L8) |
+| import | <code>import &#x27;package:kallopis/src/features/workspace/shell/status/klp_status_data.dart&#x27;;</code> | [lib/src/features/workspace/shell/sidebar/klp_primary_sidebar_frame.dart:9](../../../../../../../lib/src/features/workspace/shell/sidebar/klp_primary_sidebar_frame.dart#L9) |
 | import | <code>import &#x27;klp_primary_sidebar_header_inset.dart&#x27;;</code> | [lib/src/features/workspace/shell/sidebar/klp_primary_sidebar_frame.dart:10](../../../../../../../lib/src/features/workspace/shell/sidebar/klp_primary_sidebar_frame.dart#L10) |
 | import | <code>import &#x27;klp_sidebar_frame.dart&#x27;;</code> | [lib/src/features/workspace/shell/sidebar/klp_primary_sidebar_frame.dart:11](../../../../../../../lib/src/features/workspace/shell/sidebar/klp_primary_sidebar_frame.dart#L11) |
 | export | <code>export &#x27;klp_primary_sidebar_header_inset.dart&#x27;;</code> | [lib/src/features/workspace/shell/sidebar/klp_primary_sidebar_frame.dart:13](../../../../../../../lib/src/features/workspace/shell/sidebar/klp_primary_sidebar_frame.dart#L13) |

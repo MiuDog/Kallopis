@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:kallopis/kallopis.dart';
-import 'package:kallopis/src/foundation/interaction/internal/klp_button_style.dart';
+import 'package:kallopis/src/features/actions/button/internal/klp_button_style.dart';
 import 'package:kallopis/src/styling/legacy_tokens/primitive_token.dart'
     as primitive;
 import 'package:kallopis/src/styling/legacy_theme/klp_shape_theme.dart'

@@ -1,6 +1,6 @@
-import '../../kernel/diagnostics/klp_contract_error.dart';
-import '../../kernel/identity/internal/klp_identifier.dart';
-import '../nodes/klp_node.dart';
+import 'package:kallopis/src/kernel/diagnostics/klp_contract_error.dart';
+import 'package:kallopis/src/kernel/identity/internal/klp_identifier.dart';
+import 'package:kallopis/src/composition/nodes/klp_node.dart';
 
 part 'klp_slot_assignment.dart';
 

@@ -11,8 +11,8 @@
 ```mermaid
 flowchart TD
 	n0["klp_validated_slot.dart"]
-	n1["../nodes/klp_node.dart"]
-	n2["../slots/klp_slot.dart"]
+	n1["package:kallopis/src/composition/nodes/klp_node.dart"]
+	n2["package:kallopis/src/composition/slots/klp_slot.dart"]
 	n0 -->|"import"| n1
 	n0 -->|"import"| n2
 ```
@@ -21,8 +21,8 @@ flowchart TD
 
 | 關係 | 原始 directive | 來源 |
 |---|---|---|
-| import | <code>import &#x27;../nodes/klp_node.dart&#x27;;</code> | [lib/src/composition/validation/klp_validated_slot.dart:1](../../../../../lib/src/composition/validation/klp_validated_slot.dart#L1) |
-| import | <code>import &#x27;../slots/klp_slot.dart&#x27;;</code> | [lib/src/composition/validation/klp_validated_slot.dart:2](../../../../../lib/src/composition/validation/klp_validated_slot.dart#L2) |
+| import | <code>import &#x27;package:kallopis/src/composition/nodes/klp_node.dart&#x27;;</code> | [lib/src/composition/validation/klp_validated_slot.dart:1](../../../../../lib/src/composition/validation/klp_validated_slot.dart#L1) |
+| import | <code>import &#x27;package:kallopis/src/composition/slots/klp_slot.dart&#x27;;</code> | [lib/src/composition/validation/klp_validated_slot.dart:2](../../../../../lib/src/composition/validation/klp_validated_slot.dart#L2) |
 
 ## 宣告關係圖
 

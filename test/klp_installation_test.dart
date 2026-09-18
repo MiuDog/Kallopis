@@ -1,15 +1,15 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:kallopis/kallopis_declarative.dart';
-import 'package:kallopis/src/runtime/installation/internal/klp_default_placement.dart';
+import 'package:kallopis/src/runtime/installation/klp_default_placement.dart';
 import 'package:kallopis/src/runtime/installation/internal/klp_installation.dart';
-import 'package:kallopis/src/runtime/installation/internal/klp_installation_exception.dart';
+import 'package:kallopis/src/runtime/contracts/klp_installation_exception.dart';
 
 import 'support/klp_installation_fixture.dart';
 import 'klp_test_item.dart';
 
 KlpTestItem _tree([List<KlpNode> children = const []]) =>
-    KlpTestItem('root', 'item', children);
-KlpTestItem _item(String id) => KlpTestItem(id, 'item');
+    KlpTestItem(KlpId.parse('root'), 'item', children);
+KlpTestItem _item(String id) => KlpTestItem(KlpId.parse(id), 'item');
 
 void main() {
   late KlpInstallationFixture fixture;
@@ -17,7 +17,9 @@ void main() {
 
   test('invalid descendant allocates no resources', () {
     expect(
-      () => fixture.installation.update(_tree([KlpTestItem('bad', 'missing')])),
+      () => fixture.installation.update(
+        _tree([KlpTestItem(KlpId.parse('bad'), 'missing')]),
+      ),
       throwsA(isA<KlpContractError>()),
     );
     expect(fixture.events, isEmpty);
@@ -61,7 +63,7 @@ void main() {
     fixture.installation.update(_tree([_item('a')]));
     final old = fixture.resource('a');
     fixture.events.clear();
-    fixture.installation.update(_tree([KlpTestItem('a', 'other')]));
+    fixture.installation.update(_tree([KlpTestItem(KlpId.parse('a'), 'other')]));
     expect(fixture.resource('a'), isNot(same(old)));
     expect(old.disposed, isTrue);
     expect(fixture.events, ['create:a', 'dispose:a']);
@@ -138,7 +140,7 @@ void main() {
   test('disposal reverses current tree and continues after errors', () {
     fixture.installation.update(
       _tree([
-        KlpTestItem('a', 'item', [_item('nested')]),
+        KlpTestItem(KlpId.parse('a'), 'item', [_item('nested')]),
         _item('b'),
       ]),
     );

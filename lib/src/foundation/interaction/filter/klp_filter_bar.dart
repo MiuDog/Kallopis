@@ -1,19 +1,18 @@
 import 'package:flutter/material.dart';
 
-import '../../klp_icon.dart';
-import '../../klp_icons.dart';
-import '../../layout/klp_layout.dart';
-import '../../surface/klp_dashed_border.dart';
-import '../../../styling/legacy_theme/klp_theme.dart';
-import '../../content/klp_text.dart';
-import '../klp_action_region.dart';
-import '../klp_action_region_shape.dart';
-import '../klp_gesture_region.dart';
+import 'package:kallopis/src/foundation/klp_icon.dart';
+import 'package:kallopis/src/foundation/klp_icons.dart';
+import 'package:kallopis/src/foundation/layout/klp_layout.dart';
+import 'package:kallopis/src/foundation/surface/klp_dashed_border.dart';
+import 'package:kallopis/src/styling/legacy_theme/klp_theme.dart';
+import 'package:kallopis/src/foundation/content/klp_text.dart';
+import 'package:kallopis/src/foundation/interaction/klp_action_region.dart';
+import 'package:kallopis/src/foundation/interaction/klp_action_region_shape.dart';
+import 'package:kallopis/src/foundation/interaction/klp_gesture_region.dart';
 import 'klp_filter_models.dart';
 
 export 'klp_filter_models.dart';
 export 'klp_presence_indicator.dart';
-export 'klp_selection_toolbar.dart';
 export 'klp_shortcut_hint.dart';
 
 part 'internal/klp_filter_bar_widget.dart';

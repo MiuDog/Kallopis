@@ -1,0 +1,110 @@
+{
+	"R1": {
+		"task_id": "TEST-REND-HOST-R1",
+		"allowed_write": [
+			"test/klp_editing_host_failure_contract_test.dart",
+			"test/klp_flutter_editing_lifecycle_test.dart",
+			"test/klp_application_host_test.dart",
+			"test/support/klp_renderer_fixture.dart",
+			"test/support/klp_editing_lifecycle_fixture.dart",
+			"test/klp_rendering_host_boundary_test.dart"
+		],
+		"forbidden": [
+			"lib/**",
+			"docs/**",
+			"spec/**",
+			"pubspec.yaml",
+			"pubspec.lock"
+		],
+		"contract": "REND-HOST-V1-r1 接受 REND-V1-05 的兩個實作里程碑。R1：features 純 Dart typed failure 經既有 viewport sink 由 application 安裝，原始 error/stack 與 origin/phase 送既有 recovery；renderer local input/binding 以捕捉身分且冪等的 detach 在所有 interrupt 結果後 finally 釋放。R2：兩 WebView 使用 controller identity key 與固定 attachment，依上游既有 bind 排他規則只解除自己成功取得的 sender；每個 await 後檢驗存活。BlockNote 開啟成功立即標記，後續 flush/callback 失敗不得重播初始文件；Canva 去重且不新增自動重試或 UI。環境 late result/dispose 只有一次清理及回報。借用的 provider/controller 不 close/save，不新增正文、theme、environment、l10n 或全域 registry 權威。細部已接受 API、失敗歸屬與驗收由同版 path-map 決策定義。R1 只代表部分完成，R1/R2 與整合證據全部通過才完成 REND-V1-05。",
+		"decisions": {
+			"failure_contract": "features/editing/contracts/klp_editing_host_failure.dart: pure Dart KlpEditingHostOrigin {textInput, blockNote, canva}; KlpEditingHostPhase {environmentCreate, bridgeReady, bind, configure, open, flush, receive, callback, input, interrupt, dispose}; immutable KlpEditingHostFailure(origin, phase, error, stackTrace), all required; typedef KlpEditingHostFailureSink = void Function(KlpEditingHostFailure). No document, controller, context, ownership, new success result, or public export.",
+			"sink": "Required onEditingHostFailure on existing rendering/flutter/klp_viewport_capabilities.dart. Include callback identity in updateShouldNotify. Each editing widget captures installed sink in didChangeDependencies while mounted; late/dispose work uses captured sink. Missing editing host capabilities remains explicit StateError, never silent no-op. Application structure library imports failure contract; host state installs _reportEditingHostFailure tearoff. This adapts to existing _reportError(original error, original stack) and retains origin/phase as FlutterErrorDetails diagnostic context via optional named argument, leaving existing two-argument callers compatible.",
+			"text_detach": "One idempotent detach operation per captured KlpFlutterTextInputSession and KlpEditingInteractionBinding pair. Source change and dispose join same pending interrupt/detach, never independently close the same pair. Wait for existing pending operation, interrupt, finally close captured input then captured binding with nested finally so a local close exception cannot skip the other. Invalidate/null only matching old fields; no await continuation reads mutable _input/_interactionBinding as release target. Capture connection/input before first await in _interrupt and put pending wait inside its try/finally. Original interruption failure is reported once at interrupt operation owner, then remains failed to awaited interaction clients. Observing focus/lifecycle/source-swap/dispose callers consume it without re-reporting. Detach always releases local handles even when cancellation was rejected or unknown; it never claims rollback. Failed source swap releases/clears obsolete locals but does not auto-resume the failed old session or retry its cancellation. Current replacement can bind fresh handles only for current generation after detach, using its authoritative projection.",
+			"text_errors": "Route actual text-host async errors through typed sink, retaining typed session results and rejection semantics. _applyDeltas currently discards result.error because batch returns a typed result rather than throwing: inspect returned result, report non-null error with its stack, and stop subsequent work as today. synchronized=false without an error is not automatically a thrown failure. Input/selection/resume/synchronization failures use input phase; interruption uses interrupt; local release uses dispose. Other non-text block-menu/drag command failures are outside this R1 lifecycle slice and must not be silently counted complete.",
+			"replacement": "Choose ObjectKey(controller) at rendering/flutter/klp_flutter_renderer.dart BlockNote and Canva branches. Same placement+same controller retains State; different controller creates fresh State. Each State captures fixed controller/channel in initState. No didUpdateWidget detach/rebind implementation or alternate controller registry. Key solves identity replacement only; closed/attempt token and captured local WebView guard every asynchronous continuation. Callback/style values may refresh from widget.content only while same attachment is live.",
+			"borrowed_owner": "Existing KlpBlockNoteBridgeChannel and KrepisCanvaBridgeChannel already reject bindPlatformSender while bound. Keep this policy. An attachment owns a sender only after its own bind succeeds. A rejected second attachment reports bind failure and never calls unbind. Successful bind completion after detach immediately consumes/releases its own sender once. A synchronous detach releases a known own sender once and clears ownership before later catches/finally. No unconditional widget getter unbind; no upstream controller close/dispose/save, bridge replacement, global registry, stealing, or new lease API.",
+			"loader": "Keep BlockNote loader sole opened-state authority. Add explicit markOpened() checkpoint, called immediately once captured session.open() completes successfully and before flush/onOpened. Existing successful whole attempt may still mark opened for existing callers, but earlier mark can never be cleared by later failure. Required loader failure callback receives original error+stack once per failed attempt; phase captured by widget as awaits advance. Loader exposes existing error/opening/canRetry/open/retry/reportFailure; reportFailure UI state alone does not re-report. Do not give loader separate engine/document ownership. Engine open here means existing controller.open Future succeeded (bridge send/evaluateJavascript completion), not an added upstream ready/commit acknowledgement. Freeze constructor as KlpBlockNoteWebSessionLoader(Future<void> Function() attempt, {required void Function(Object error, StackTrace stackTrace) onFailure}); add void markOpened(). Two existing test constructor callers require author updates.",
+			"web_open": "BlockNote pre-open failure retains explicit retry and dedupe. After markOpened, flush/onOpened/page errors preserve mounted editor and canRetry=false; open/retry never resend configure/open or initial document. Keep bound sender after post-open failure so existing save route is not severed. Pre-open failure releases only own bind. Canva uses local active Future and opened flag for single initial open; no new retry UI or automatic retry/reopen: failed first automatic attempt is retained/reported and repeated load-stop does not restart it. Explicit controller replacement creates a new attachment.",
+			"async_disposal": "No new helper file: each of the two small widget States owns one captured attachment. Check live identity after bridge evaluation and delay, bind, configure, open, flush and callback waits. Invalidated operations do not start later side effects/callbacks; already-started plugin/consumer futures cannot be cancelled and their results/errors are settled. Environment creation has one reported future; dispose observes that same handled result instead of catching and reporting the creation failure twice. A late successfully created environment disposes once via one terminal route; its dispose failure reports once. No context lookup after detach. JS handler wrappers retain existing return/rethrow semantics and report exception once at their own operation boundary; raw JS console.error remains diagnostic only.",
+			"exact_constructor": "const KlpEditingHostFailure({required this.origin, required this.phase, required this.error, required this.stackTrace}); KlpBlockNoteWebSessionLoader(Future<void> Function() attempt, {required void Function(Object error, StackTrace stackTrace) onFailure}); markOpened() is idempotent and irreversible within the loader."
+		},
+		"acceptance": [
+			"Pure failure data preserves exact error and stack instances; no Flutter/engine dependency or public export.",
+			"Real runKlpApp installation supplies viewport sink; invoking it reaches existing FlutterError handler once with original exception/stack and origin/phase diagnostics; legacy application two-argument error routes unchanged.",
+			"Real KlpFlutterEditing source swap, dispose, overlapping swaps and swap+dispose: pending/throw/rejected cancellation all close captured old local input and binding exactly once; fresh generation binding survives old cleanup; no borrowed provider close/save.",
+			"Late pending result after invalidation does not submit next delta/selection or reattach focus. Unresolved cancellation is never reclassified success or retried.",
+			"Shared interruption observed by focus/lifecycle/source change/dispose reports once; returned session/batch errors are forwarded; ordinary typed rejection remains rejection."
+		],
+		"read_exception": "Read direct source interfaces, controller/channel contracts and Flutter plugin test platform APIs solely to exercise actual widget lifecycle; do not inspect BUILD reasoning. Independent author controls all assertions/fixtures and freezes sha256 ARRAY.",
+		"milestones": [
+			"M1 original relevant baseline and valid lifecycle Red where expressible; missing new API compilation is not behavioral Red",
+			"M2 frozen test hash/evidence, integrated Green pending"
+		],
+		"estimate": {
+			"basis": "cold-start",
+			"tokens": [
+				7000,
+				16000
+			],
+			"minutes": [
+				25,
+				90
+			]
+		}
+	},
+	"R2": {
+		"task_id": "TEST-REND-HOST-R2",
+		"allowed_write": [
+			"test/klp_block_note_web_session_loader_test.dart",
+			"test/klp_block_note_load_surface_test.dart",
+			"test/klp_web_editing_host_lifecycle_test.dart",
+			"test/support/klp_web_editing_platform_fixture.dart"
+		],
+		"forbidden": [
+			"lib/**",
+			"docs/**",
+			"spec/**",
+			"pubspec.yaml",
+			"pubspec.lock"
+		],
+		"contract": "REND-HOST-V1-r1 接受 REND-V1-05 的兩個實作里程碑。R1：features 純 Dart typed failure 經既有 viewport sink 由 application 安裝，原始 error/stack 與 origin/phase 送既有 recovery；renderer local input/binding 以捕捉身分且冪等的 detach 在所有 interrupt 結果後 finally 釋放。R2：兩 WebView 使用 controller identity key 與固定 attachment，依上游既有 bind 排他規則只解除自己成功取得的 sender；每個 await 後檢驗存活。BlockNote 開啟成功立即標記，後續 flush/callback 失敗不得重播初始文件；Canva 去重且不新增自動重試或 UI。環境 late result/dispose 只有一次清理及回報。借用的 provider/controller 不 close/save，不新增正文、theme、environment、l10n 或全域 registry 權威。細部已接受 API、失敗歸屬與驗收由同版 path-map 決策定義。R1 只代表部分完成，R1/R2 與整合證據全部通過才完成 REND-V1-05。",
+		"decisions": {
+			"failure_contract": "features/editing/contracts/klp_editing_host_failure.dart: pure Dart KlpEditingHostOrigin {textInput, blockNote, canva}; KlpEditingHostPhase {environmentCreate, bridgeReady, bind, configure, open, flush, receive, callback, input, interrupt, dispose}; immutable KlpEditingHostFailure(origin, phase, error, stackTrace), all required; typedef KlpEditingHostFailureSink = void Function(KlpEditingHostFailure). No document, controller, context, ownership, new success result, or public export.",
+			"sink": "Required onEditingHostFailure on existing rendering/flutter/klp_viewport_capabilities.dart. Include callback identity in updateShouldNotify. Each editing widget captures installed sink in didChangeDependencies while mounted; late/dispose work uses captured sink. Missing editing host capabilities remains explicit StateError, never silent no-op. Application structure library imports failure contract; host state installs _reportEditingHostFailure tearoff. This adapts to existing _reportError(original error, original stack) and retains origin/phase as FlutterErrorDetails diagnostic context via optional named argument, leaving existing two-argument callers compatible.",
+			"text_detach": "One idempotent detach operation per captured KlpFlutterTextInputSession and KlpEditingInteractionBinding pair. Source change and dispose join same pending interrupt/detach, never independently close the same pair. Wait for existing pending operation, interrupt, finally close captured input then captured binding with nested finally so a local close exception cannot skip the other. Invalidate/null only matching old fields; no await continuation reads mutable _input/_interactionBinding as release target. Capture connection/input before first await in _interrupt and put pending wait inside its try/finally. Original interruption failure is reported once at interrupt operation owner, then remains failed to awaited interaction clients. Observing focus/lifecycle/source-swap/dispose callers consume it without re-reporting. Detach always releases local handles even when cancellation was rejected or unknown; it never claims rollback. Failed source swap releases/clears obsolete locals but does not auto-resume the failed old session or retry its cancellation. Current replacement can bind fresh handles only for current generation after detach, using its authoritative projection.",
+			"text_errors": "Route actual text-host async errors through typed sink, retaining typed session results and rejection semantics. _applyDeltas currently discards result.error because batch returns a typed result rather than throwing: inspect returned result, report non-null error with its stack, and stop subsequent work as today. synchronized=false without an error is not automatically a thrown failure. Input/selection/resume/synchronization failures use input phase; interruption uses interrupt; local release uses dispose. Other non-text block-menu/drag command failures are outside this R1 lifecycle slice and must not be silently counted complete.",
+			"replacement": "Choose ObjectKey(controller) at rendering/flutter/klp_flutter_renderer.dart BlockNote and Canva branches. Same placement+same controller retains State; different controller creates fresh State. Each State captures fixed controller/channel in initState. No didUpdateWidget detach/rebind implementation or alternate controller registry. Key solves identity replacement only; closed/attempt token and captured local WebView guard every asynchronous continuation. Callback/style values may refresh from widget.content only while same attachment is live.",
+			"borrowed_owner": "Existing KlpBlockNoteBridgeChannel and KrepisCanvaBridgeChannel already reject bindPlatformSender while bound. Keep this policy. An attachment owns a sender only after its own bind succeeds. A rejected second attachment reports bind failure and never calls unbind. Successful bind completion after detach immediately consumes/releases its own sender once. A synchronous detach releases a known own sender once and clears ownership before later catches/finally. No unconditional widget getter unbind; no upstream controller close/dispose/save, bridge replacement, global registry, stealing, or new lease API.",
+			"loader": "Keep BlockNote loader sole opened-state authority. Add explicit markOpened() checkpoint, called immediately once captured session.open() completes successfully and before flush/onOpened. Existing successful whole attempt may still mark opened for existing callers, but earlier mark can never be cleared by later failure. Required loader failure callback receives original error+stack once per failed attempt; phase captured by widget as awaits advance. Loader exposes existing error/opening/canRetry/open/retry/reportFailure; reportFailure UI state alone does not re-report. Do not give loader separate engine/document ownership. Engine open here means existing controller.open Future succeeded (bridge send/evaluateJavascript completion), not an added upstream ready/commit acknowledgement. Freeze constructor as KlpBlockNoteWebSessionLoader(Future<void> Function() attempt, {required void Function(Object error, StackTrace stackTrace) onFailure}); add void markOpened(). Two existing test constructor callers require author updates.",
+			"web_open": "BlockNote pre-open failure retains explicit retry and dedupe. After markOpened, flush/onOpened/page errors preserve mounted editor and canRetry=false; open/retry never resend configure/open or initial document. Keep bound sender after post-open failure so existing save route is not severed. Pre-open failure releases only own bind. Canva uses local active Future and opened flag for single initial open; no new retry UI or automatic retry/reopen: failed first automatic attempt is retained/reported and repeated load-stop does not restart it. Explicit controller replacement creates a new attachment.",
+			"async_disposal": "No new helper file: each of the two small widget States owns one captured attachment. Check live identity after bridge evaluation and delay, bind, configure, open, flush and callback waits. Invalidated operations do not start later side effects/callbacks; already-started plugin/consumer futures cannot be cancelled and their results/errors are settled. Environment creation has one reported future; dispose observes that same handled result instead of catching and reporting the creation failure twice. A late successfully created environment disposes once via one terminal route; its dispose failure reports once. No context lookup after detach. JS handler wrappers retain existing return/rethrow semantics and report exception once at their own operation boundary; raw JS console.error remains diagnostic only.",
+			"exact_constructor": "const KlpEditingHostFailure({required this.origin, required this.phase, required this.error, required this.stackTrace}); KlpBlockNoteWebSessionLoader(Future<void> Function() attempt, {required void Function(Object error, StackTrace stackTrace) onFailure}); markOpened() is idempotent and irreversible within the loader."
+		},
+		"acceptance": [
+			"Both real renderer branches keep State for same controller and replace State for different controller. A same-controller callback/style rebuild does not reopen; new controller opens once.",
+			"Two attachments borrowing the same existing channel: winner stays usable, loser bind fails through sink; disposing loser never unbinds winner; winner disposal releases once; late old completion cannot unbind later winning attachment.",
+			"Repeated simultaneous load-stop dedupes. BlockNote pre-open fail allows one explicit retry; success followed by flush/onOpened failure makes canRetry false and never resends initial document on any load-stop/retry.",
+			"Post-open failure retains mounted editor and bound save sender; existing load-surface text/buttons remain unchanged. Canva initial failure reports once and subsequent load-stop does not silently retry.",
+			"At bridge wait/delay/bind/configure/open/flush/callback boundaries, detach prevents next side effect and new-controller access; old environment late success is disposed once; creation failure reported once across FutureBuilder+dispose; disposal failure reported once.",
+			"Malformed receive/asset/reference and real plugin page exceptions report original error+stack once while preserving bridge return/rethrow/navigation policy. Console diagnostics do not become failures.",
+			"No upstream controller dispose/close/save invoked; assets/envelope/appearance/l10n/source ownership unchanged."
+		],
+		"read_exception": "Read direct source interfaces, controller/channel contracts and Flutter plugin test platform APIs solely to exercise actual widget lifecycle; do not inspect BUILD reasoning. Independent author controls all assertions/fixtures and freezes sha256 ARRAY.",
+		"milestones": [
+			"M1 original relevant baseline and valid lifecycle Red where expressible; missing new API compilation is not behavioral Red",
+			"M2 frozen test hash/evidence, integrated Green pending"
+		],
+		"estimate": {
+			"basis": "cold-start",
+			"tokens": [
+				7000,
+				16000
+			],
+			"minutes": [
+				25,
+				90
+			]
+		}
+	}
+}

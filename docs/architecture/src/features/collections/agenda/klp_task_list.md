@@ -12,10 +12,10 @@
 flowchart LR
 	n0["klp_task_list.dart"]
 	n1["package:flutter/widgets.dart"]
-	n2["../../forms/selection/klp_checkbox.dart"]
-	n3["../../../foundation/layout/klp_layout.dart"]
-	n4["../../../styling/legacy_theme/klp_theme.dart"]
-	n5["../../../foundation/content/klp_text.dart"]
+	n2["package:kallopis/src/features/forms/selection/klp_checkbox.dart"]
+	n3["package:kallopis/src/foundation/layout/klp_layout.dart"]
+	n4["package:kallopis/src/styling/legacy_theme/klp_theme.dart"]
+	n5["package:kallopis/src/foundation/content/klp_text.dart"]
 	n6["klp_task_item_data.dart"]
 	n0 -->|"import"| n1
 	n0 -->|"import"| n2
@@ -30,10 +30,10 @@ flowchart LR
 | 關係 | 原始 directive | 來源 |
 |---|---|---|
 | import | <code>import &#x27;package:flutter/widgets.dart&#x27;;</code> | [lib/src/features/collections/agenda/klp_task_list.dart:4](../../../../../../lib/src/features/collections/agenda/klp_task_list.dart#L4) |
-| import | <code>import &#x27;../../forms/selection/klp_checkbox.dart&#x27;;</code> | [lib/src/features/collections/agenda/klp_task_list.dart:6](../../../../../../lib/src/features/collections/agenda/klp_task_list.dart#L6) |
-| import | <code>import &#x27;../../../foundation/layout/klp_layout.dart&#x27;;</code> | [lib/src/features/collections/agenda/klp_task_list.dart:7](../../../../../../lib/src/features/collections/agenda/klp_task_list.dart#L7) |
-| import | <code>import &#x27;../../../styling/legacy_theme/klp_theme.dart&#x27;;</code> | [lib/src/features/collections/agenda/klp_task_list.dart:8](../../../../../../lib/src/features/collections/agenda/klp_task_list.dart#L8) |
-| import | <code>import &#x27;../../../foundation/content/klp_text.dart&#x27;;</code> | [lib/src/features/collections/agenda/klp_task_list.dart:9](../../../../../../lib/src/features/collections/agenda/klp_task_list.dart#L9) |
+| import | <code>import &#x27;package:kallopis/src/features/forms/selection/klp_checkbox.dart&#x27;;</code> | [lib/src/features/collections/agenda/klp_task_list.dart:6](../../../../../../lib/src/features/collections/agenda/klp_task_list.dart#L6) |
+| import | <code>import &#x27;package:kallopis/src/foundation/layout/klp_layout.dart&#x27;;</code> | [lib/src/features/collections/agenda/klp_task_list.dart:7](../../../../../../lib/src/features/collections/agenda/klp_task_list.dart#L7) |
+| import | <code>import &#x27;package:kallopis/src/styling/legacy_theme/klp_theme.dart&#x27;;</code> | [lib/src/features/collections/agenda/klp_task_list.dart:8](../../../../../../lib/src/features/collections/agenda/klp_task_list.dart#L8) |
+| import | <code>import &#x27;package:kallopis/src/foundation/content/klp_text.dart&#x27;;</code> | [lib/src/features/collections/agenda/klp_task_list.dart:9](../../../../../../lib/src/features/collections/agenda/klp_task_list.dart#L9) |
 | import | <code>import &#x27;klp_task_item_data.dart&#x27;;</code> | [lib/src/features/collections/agenda/klp_task_list.dart:10](../../../../../../lib/src/features/collections/agenda/klp_task_list.dart#L10) |
 
 ## 宣告關係圖

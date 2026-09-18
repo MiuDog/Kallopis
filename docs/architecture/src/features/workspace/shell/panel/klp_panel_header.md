@@ -12,9 +12,9 @@
 flowchart LR
 	n0["klp_panel_header.dart"]
 	n1["package:flutter/widgets.dart"]
-	n2["../../../../foundation/layout/klp_layout.dart"]
-	n3["../../../../styling/legacy_theme/klp_theme.dart"]
-	n4["../../../../foundation/content/klp_text.dart"]
+	n2["package:kallopis/src/foundation/layout/klp_layout.dart"]
+	n3["package:kallopis/src/styling/legacy_theme/klp_theme.dart"]
+	n4["package:kallopis/src/foundation/content/klp_text.dart"]
 	n5["klp_panel_header_drag_region_builder.dart"]
 	n6["klp_panel_header_drag_region_builder.dart"]
 	n7["primitives/klp_panel_header_frame.dart"]
@@ -32,9 +32,9 @@ flowchart LR
 | 關係 | 原始 directive | 來源 |
 |---|---|---|
 | import | <code>import &#x27;package:flutter/widgets.dart&#x27;;</code> | [lib/src/features/workspace/shell/panel/klp_panel_header.dart:1](../../../../../../../lib/src/features/workspace/shell/panel/klp_panel_header.dart#L1) |
-| import | <code>import &#x27;../../../../foundation/layout/klp_layout.dart&#x27;;</code> | [lib/src/features/workspace/shell/panel/klp_panel_header.dart:3](../../../../../../../lib/src/features/workspace/shell/panel/klp_panel_header.dart#L3) |
-| import | <code>import &#x27;../../../../styling/legacy_theme/klp_theme.dart&#x27;;</code> | [lib/src/features/workspace/shell/panel/klp_panel_header.dart:4](../../../../../../../lib/src/features/workspace/shell/panel/klp_panel_header.dart#L4) |
-| import | <code>import &#x27;../../../../foundation/content/klp_text.dart&#x27;;</code> | [lib/src/features/workspace/shell/panel/klp_panel_header.dart:5](../../../../../../../lib/src/features/workspace/shell/panel/klp_panel_header.dart#L5) |
+| import | <code>import &#x27;package:kallopis/src/foundation/layout/klp_layout.dart&#x27;;</code> | [lib/src/features/workspace/shell/panel/klp_panel_header.dart:3](../../../../../../../lib/src/features/workspace/shell/panel/klp_panel_header.dart#L3) |
+| import | <code>import &#x27;package:kallopis/src/styling/legacy_theme/klp_theme.dart&#x27;;</code> | [lib/src/features/workspace/shell/panel/klp_panel_header.dart:4](../../../../../../../lib/src/features/workspace/shell/panel/klp_panel_header.dart#L4) |
+| import | <code>import &#x27;package:kallopis/src/foundation/content/klp_text.dart&#x27;;</code> | [lib/src/features/workspace/shell/panel/klp_panel_header.dart:5](../../../../../../../lib/src/features/workspace/shell/panel/klp_panel_header.dart#L5) |
 | import | <code>import &#x27;klp_panel_header_drag_region_builder.dart&#x27;;</code> | [lib/src/features/workspace/shell/panel/klp_panel_header.dart:6](../../../../../../../lib/src/features/workspace/shell/panel/klp_panel_header.dart#L6) |
 | export | <code>export &#x27;klp_panel_header_drag_region_builder.dart&#x27;;</code> | [lib/src/features/workspace/shell/panel/klp_panel_header.dart:8](../../../../../../../lib/src/features/workspace/shell/panel/klp_panel_header.dart#L8) |
 | part | <code>part &#x27;primitives/klp_panel_header_frame.dart&#x27;;</code> | [lib/src/features/workspace/shell/panel/klp_panel_header.dart:10](../../../../../../../lib/src/features/workspace/shell/panel/klp_panel_header.dart#L10) |

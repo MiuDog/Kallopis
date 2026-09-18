@@ -13,16 +13,17 @@
 ```mermaid
 flowchart LR
 	n0["lib/src/application/legacy"]
-	n1["lib/src/application/localization"]
-	n2["lib/src/features/navigation/legacy_router"]
-	n3["lib/src/features/overlays"]
-	n4["lib/src/features/workspace/shell/window"]
-	n5["lib/src/foundation/interaction/keybinding"]
-	n6["lib/src/foundation/layout"]
-	n7["lib/src/foundation/platform"]
-	n8["lib/src/foundation/surface"]
-	n9["lib/src/styling/legacy_theme"]
-	n10["package:flutter"]
+	n1["lib/src/application/environment"]
+	n2["lib/src/capabilities/files"]
+	n3["lib/src/features/navigation/legacy_router"]
+	n4["lib/src/features/overlays"]
+	n5["lib/src/features/workspace/shell/window"]
+	n6["lib/src/foundation/interaction/keybinding"]
+	n7["lib/src/foundation/layout"]
+	n8["lib/src/foundation/localization"]
+	n9["lib/src/foundation/platform"]
+	n10["lib/src/foundation/surface"]
+	n11["lib/src/styling/legacy_theme"]
 	n0 -->|"import"| n1
 	n0 -->|"import"| n2
 	n0 -->|"import"| n3
@@ -33,31 +34,41 @@ flowchart LR
 	n0 -->|"import"| n8
 	n0 -->|"import"| n9
 	n0 -->|"import"| n10
+	n0 -->|"import"| n11
+```
+
+```mermaid
+flowchart TD
+	n0["lib/src/application/legacy"]
+	n1["package:flutter"]
+	n0 -->|"import"| n1
 ```
 
 | 目標邊界 | 關係 | directive 數 | 第一筆來源證據 |
 |---|---|---|---|
-| <code>lib/src/application/localization</code> | import | 1 | [lib/src/application/legacy/klp_app.dart:3](../../../../../lib/src/application/legacy/klp_app.dart#L3) |
-| <code>lib/src/features/navigation/legacy_router</code> | import | 1 | [lib/src/application/legacy/klp_app.dart:14](../../../../../lib/src/application/legacy/klp_app.dart#L14) |
-| <code>lib/src/features/overlays</code> | import | 1 | [lib/src/application/legacy/klp_app.dart:13](../../../../../lib/src/application/legacy/klp_app.dart#L13) |
-| <code>lib/src/features/workspace/shell/window</code> | import | 3 | [lib/src/application/legacy/klp_app.dart:15](../../../../../lib/src/application/legacy/klp_app.dart#L15) |
-| <code>lib/src/foundation/interaction/keybinding</code> | import | 2 | [lib/src/application/legacy/klp_app.dart:20](../../../../../lib/src/application/legacy/klp_app.dart#L20) |
-| <code>lib/src/foundation/layout</code> | import | 7 | [lib/src/application/legacy/klp_app.dart:6](../../../../../lib/src/application/legacy/klp_app.dart#L6) |
+| <code>lib/src/application/environment</code> | import | 1 | [lib/src/application/legacy/klp_local_file_picker.dart:2](../../../../../lib/src/application/legacy/klp_local_file_picker.dart#L2) |
+| <code>lib/src/capabilities/files</code> | import | 1 | [lib/src/application/legacy/klp_local_file_picker.dart:1](../../../../../lib/src/application/legacy/klp_local_file_picker.dart#L1) |
+| <code>lib/src/features/navigation/legacy_router</code> | import | 1 | [lib/src/application/legacy/klp_app.dart:11](../../../../../lib/src/application/legacy/klp_app.dart#L11) |
+| <code>lib/src/features/overlays</code> | import | 1 | [lib/src/application/legacy/klp_app.dart:10](../../../../../lib/src/application/legacy/klp_app.dart#L10) |
+| <code>lib/src/features/workspace/shell/window</code> | import | 1 | [lib/src/application/legacy/klp_app.dart:12](../../../../../lib/src/application/legacy/klp_app.dart#L12) |
+| <code>lib/src/foundation/interaction/keybinding</code> | import | 2 | [lib/src/application/legacy/klp_app.dart:15](../../../../../lib/src/application/legacy/klp_app.dart#L15) |
+| <code>lib/src/foundation/layout</code> | import | 4 | [lib/src/application/legacy/klp_app.dart:6](../../../../../lib/src/application/legacy/klp_app.dart#L6) |
+| <code>lib/src/foundation/localization</code> | import | 1 | [lib/src/application/legacy/klp_app.dart:3](../../../../../lib/src/application/legacy/klp_app.dart#L3) |
 | <code>lib/src/foundation/platform</code> | import | 4 | [lib/src/application/legacy/klp_app.dart:4](../../../../../lib/src/application/legacy/klp_app.dart#L4) |
-| <code>lib/src/foundation/surface</code> | import | 1 | [lib/src/application/legacy/klp_app.dart:21](../../../../../lib/src/application/legacy/klp_app.dart#L21) |
-| <code>lib/src/styling/legacy_theme</code> | import | 2 | [lib/src/application/legacy/klp_app.dart:18](../../../../../lib/src/application/legacy/klp_app.dart#L18) |
+| <code>lib/src/foundation/surface</code> | import | 1 | [lib/src/application/legacy/klp_app.dart:16](../../../../../lib/src/application/legacy/klp_app.dart#L16) |
+| <code>lib/src/styling/legacy_theme</code> | import | 2 | [lib/src/application/legacy/klp_app.dart:13](../../../../../lib/src/application/legacy/klp_app.dart#L13) |
 | <code>package:flutter</code> | import | 3 | [lib/src/application/legacy/klp_app.dart:1](../../../../../lib/src/application/legacy/klp_app.dart#L1) |
 
 ### 同目錄依賴
 
 | 來源 → 目標 | 關係 | 證據 |
 |---|---|---|
-| <code>klp_app.dart → klp_app_controller.dart</code> | import | [lib/src/application/legacy/klp_app.dart:22](../../../../../lib/src/application/legacy/klp_app.dart#L22) |
-| <code>klp_app.dart → klp_app_scope.dart</code> | import | [lib/src/application/legacy/klp_app.dart:23](../../../../../lib/src/application/legacy/klp_app.dart#L23) |
-| <code>klp_app.dart → klp_app_controller.dart</code> | export | [lib/src/application/legacy/klp_app.dart:25](../../../../../lib/src/application/legacy/klp_app.dart#L25) |
-| <code>klp_app.dart → klp_app_scope.dart</code> | export | [lib/src/application/legacy/klp_app.dart:26](../../../../../lib/src/application/legacy/klp_app.dart#L26) |
-| <code>klp_app.dart → klp_app_frame.dart</code> | part | [lib/src/application/legacy/klp_app.dart:28](../../../../../lib/src/application/legacy/klp_app.dart#L28) |
-| <code>klp_app.dart → klp_app_state.dart</code> | part | [lib/src/application/legacy/klp_app.dart:29](../../../../../lib/src/application/legacy/klp_app.dart#L29) |
+| <code>klp_app.dart → klp_app_controller.dart</code> | import | [lib/src/application/legacy/klp_app.dart:17](../../../../../lib/src/application/legacy/klp_app.dart#L17) |
+| <code>klp_app.dart → klp_app_scope.dart</code> | import | [lib/src/application/legacy/klp_app.dart:18](../../../../../lib/src/application/legacy/klp_app.dart#L18) |
+| <code>klp_app.dart → klp_app_controller.dart</code> | export | [lib/src/application/legacy/klp_app.dart:20](../../../../../lib/src/application/legacy/klp_app.dart#L20) |
+| <code>klp_app.dart → klp_app_scope.dart</code> | export | [lib/src/application/legacy/klp_app.dart:21](../../../../../lib/src/application/legacy/klp_app.dart#L21) |
+| <code>klp_app.dart → klp_app_frame.dart</code> | part | [lib/src/application/legacy/klp_app.dart:23](../../../../../lib/src/application/legacy/klp_app.dart#L23) |
+| <code>klp_app.dart → klp_app_state.dart</code> | part | [lib/src/application/legacy/klp_app.dart:24](../../../../../lib/src/application/legacy/klp_app.dart#L24) |
 | <code>klp_app_frame.dart → klp_app.dart</code> | part of | [lib/src/application/legacy/klp_app_frame.dart:1](../../../../../lib/src/application/legacy/klp_app_frame.dart#L1) |
 | <code>klp_app_scope.dart → klp_app_controller.dart</code> | import | [lib/src/application/legacy/klp_app_scope.dart:5](../../../../../lib/src/application/legacy/klp_app_scope.dart#L5) |
 | <code>klp_app_state.dart → klp_app.dart</code> | part of | [lib/src/application/legacy/klp_app_state.dart:1](../../../../../lib/src/application/legacy/klp_app_state.dart#L1) |
@@ -72,11 +83,13 @@ flowchart LR
 	n3["klp_app_frame.dart"]
 	n4["klp_app_scope.dart"]
 	n5["klp_app_state.dart"]
+	n6["klp_local_file_picker.dart"]
 	n0 -->|"contains"| n1
 	n0 -->|"contains"| n2
 	n0 -->|"contains"| n3
 	n0 -->|"contains"| n4
 	n0 -->|"contains"| n5
+	n0 -->|"contains"| n6
 ```
 
 ## 子目錄
@@ -94,6 +107,7 @@ flowchart LR
 | `klp_app_frame.dart` | _KlpAppFrame | [架構與 API](klp_app_frame.md) | [lib/src/application/legacy/klp_app_frame.dart:1](../../../../../lib/src/application/legacy/klp_app_frame.dart#L1) |
 | `klp_app_scope.dart` | KlpAppScope | [架構與 API](klp_app_scope.md) | [lib/src/application/legacy/klp_app_scope.dart:1](../../../../../lib/src/application/legacy/klp_app_scope.dart#L1) |
 | `klp_app_state.dart` | _KlpAppState | [架構與 API](klp_app_state.md) | [lib/src/application/legacy/klp_app_state.dart:1](../../../../../lib/src/application/legacy/klp_app_state.dart#L1) |
+| `klp_local_file_picker.dart` | KlpLocalFilePicker | [架構與 API](klp_local_file_picker.md) | [lib/src/application/legacy/klp_local_file_picker.dart:1](../../../../../lib/src/application/legacy/klp_local_file_picker.dart#L1) |
 
 ## 閱讀說明
 

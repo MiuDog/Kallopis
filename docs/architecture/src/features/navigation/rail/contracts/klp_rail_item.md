@@ -11,8 +11,8 @@
 ```mermaid
 flowchart TD
 	n0["klp_rail_item.dart"]
-	n1["../../../../composition/nodes/klp_node.dart"]
-	n2["../../../../capabilities/actions/klp_action.dart"]
+	n1["package:kallopis/src/composition/nodes/klp_node.dart"]
+	n2["package:kallopis/src/capabilities/actions/klp_action.dart"]
 	n0 -->|"import"| n1
 	n0 -->|"import"| n2
 ```
@@ -21,8 +21,8 @@ flowchart TD
 
 | 關係 | 原始 directive | 來源 |
 |---|---|---|
-| import | <code>import &#x27;../../../../composition/nodes/klp_node.dart&#x27;;</code> | [lib/src/features/navigation/rail/contracts/klp_rail_item.dart:1](../../../../../../../lib/src/features/navigation/rail/contracts/klp_rail_item.dart#L1) |
-| import | <code>import &#x27;../../../../capabilities/actions/klp_action.dart&#x27;;</code> | [lib/src/features/navigation/rail/contracts/klp_rail_item.dart:2](../../../../../../../lib/src/features/navigation/rail/contracts/klp_rail_item.dart#L2) |
+| import | <code>import &#x27;package:kallopis/src/composition/nodes/klp_node.dart&#x27;;</code> | [lib/src/features/navigation/rail/contracts/klp_rail_item.dart:1](../../../../../../../lib/src/features/navigation/rail/contracts/klp_rail_item.dart#L1) |
+| import | <code>import &#x27;package:kallopis/src/capabilities/actions/klp_action.dart&#x27;;</code> | [lib/src/features/navigation/rail/contracts/klp_rail_item.dart:2](../../../../../../../lib/src/features/navigation/rail/contracts/klp_rail_item.dart#L2) |
 
 ## 宣告關係圖
 

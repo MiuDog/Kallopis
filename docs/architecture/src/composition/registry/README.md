@@ -18,7 +18,7 @@ flowchart LR
 	n3["lib/src/composition/validation"]
 	n4["lib/src/composition/validation/internal"]
 	n5["lib/src/kernel/diagnostics"]
-	n6["lib/src/styling/resolution/internal"]
+	n6["lib/src/styling/resolution"]
 	n0 -->|"import"| n1
 	n0 -->|"import"| n2
 	n0 -->|"import"| n3
@@ -34,7 +34,7 @@ flowchart LR
 | <code>lib/src/composition/validation</code> | import | 1 | [lib/src/composition/registry/klp_registry.dart:5](../../../../../lib/src/composition/registry/klp_registry.dart#L5) |
 | <code>lib/src/composition/validation/internal</code> | import | 1 | [lib/src/composition/registry/klp_registry.dart:6](../../../../../lib/src/composition/registry/klp_registry.dart#L6) |
 | <code>lib/src/kernel/diagnostics</code> | import | 1 | [lib/src/composition/registry/klp_registry.dart:1](../../../../../lib/src/composition/registry/klp_registry.dart#L1) |
-| <code>lib/src/styling/resolution/internal</code> | import | 1 | [lib/src/composition/registry/klp_registry.dart:2](../../../../../lib/src/composition/registry/klp_registry.dart#L2) |
+| <code>lib/src/styling/resolution</code> | import | 1 | [lib/src/composition/registry/klp_registry.dart:2](../../../../../lib/src/composition/registry/klp_registry.dart#L2) |
 
 ## 目錄結構圖
 

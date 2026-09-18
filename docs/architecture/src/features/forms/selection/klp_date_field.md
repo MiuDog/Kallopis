@@ -11,8 +11,8 @@
 ```mermaid
 flowchart LR
 	n0["klp_date_field.dart"]
-	n1["../internal/klp_form_dependencies.dart"]
-	n2["../../../foundation/interaction/primitives/klp_pointer_blocker.dart"]
+	n1["package:kallopis/src/features/forms/internal/klp_form_dependencies.dart"]
+	n2["package:kallopis/src/foundation/interaction/primitives/klp_pointer_blocker.dart"]
 	n3["klp_calendar.dart"]
 	n4["klp_date_field_calendar.dart"]
 	n5["internal/klp_date_field_state.dart"]
@@ -27,8 +27,8 @@ flowchart LR
 
 | 關係 | 原始 directive | 來源 |
 |---|---|---|
-| import | <code>import &#x27;../internal/klp_form_dependencies.dart&#x27;;</code> | [lib/src/features/forms/selection/klp_date_field.dart:1](../../../../../../lib/src/features/forms/selection/klp_date_field.dart#L1) |
-| import | <code>import &#x27;../../../foundation/interaction/primitives/klp_pointer_blocker.dart&#x27;;</code> | [lib/src/features/forms/selection/klp_date_field.dart:2](../../../../../../lib/src/features/forms/selection/klp_date_field.dart#L2) |
+| import | <code>import &#x27;package:kallopis/src/features/forms/internal/klp_form_dependencies.dart&#x27;;</code> | [lib/src/features/forms/selection/klp_date_field.dart:1](../../../../../../lib/src/features/forms/selection/klp_date_field.dart#L1) |
+| import | <code>import &#x27;package:kallopis/src/foundation/interaction/primitives/klp_pointer_blocker.dart&#x27;;</code> | [lib/src/features/forms/selection/klp_date_field.dart:2](../../../../../../lib/src/features/forms/selection/klp_date_field.dart#L2) |
 | import | <code>import &#x27;klp_calendar.dart&#x27;;</code> | [lib/src/features/forms/selection/klp_date_field.dart:3](../../../../../../lib/src/features/forms/selection/klp_date_field.dart#L3) |
 | import | <code>import &#x27;klp_date_field_calendar.dart&#x27;;</code> | [lib/src/features/forms/selection/klp_date_field.dart:4](../../../../../../lib/src/features/forms/selection/klp_date_field.dart#L4) |
 | part | <code>part &#x27;internal/klp_date_field_state.dart&#x27;;</code> | [lib/src/features/forms/selection/klp_date_field.dart:6](../../../../../../lib/src/features/forms/selection/klp_date_field.dart#L6) |

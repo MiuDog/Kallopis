@@ -1,0 +1,2665 @@
+{
+	"schemaVersion": 1,
+	"baseCommit": "2d761c29a7529ecf755cd9c9a058b0640051c3f1",
+	"pages": [
+		{
+			"label": "Neutrals (Ink/Stone)",
+			"title": "中性色",
+			"hasTokenView": true,
+			"specimens": [],
+			"coveredComponents": []
+		},
+		{
+			"label": "Scale",
+			"title": "間距與尺寸",
+			"hasTokenView": true,
+			"specimens": [],
+			"coveredComponents": []
+		},
+		{
+			"label": "Radii",
+			"title": "圓角系統",
+			"hasTokenView": true,
+			"specimens": [],
+			"coveredComponents": []
+		},
+		{
+			"label": "Brand",
+			"title": "品牌色",
+			"hasTokenView": true,
+			"specimens": [
+				{
+					"name": "KlpOklchColorEditor",
+					"hasDemo": true
+				},
+				{
+					"name": "KlpOklchColorPicker",
+					"hasDemo": true
+				}
+			],
+			"coveredComponents": []
+		},
+		{
+			"label": "Color Modes",
+			"title": "顏色模式",
+			"hasTokenView": true,
+			"specimens": [],
+			"coveredComponents": []
+		},
+		{
+			"label": "Light vs Dark surfaces",
+			"title": "表面階層",
+			"hasTokenView": true,
+			"specimens": [],
+			"coveredComponents": []
+		},
+		{
+			"label": "Semantic Status",
+			"title": "語意狀態色",
+			"hasTokenView": true,
+			"specimens": [],
+			"coveredComponents": []
+		},
+		{
+			"label": "Display / Headings",
+			"title": "標題層級",
+			"hasTokenView": true,
+			"specimens": [],
+			"coveredComponents": []
+		},
+		{
+			"label": "Body copy",
+			"title": "內文與附註",
+			"hasTokenView": true,
+			"specimens": [],
+			"coveredComponents": []
+		},
+		{
+			"label": "Monospace (data & logs)",
+			"title": "等寬",
+			"hasTokenView": true,
+			"specimens": [
+				{
+					"name": "KlpCodeViewer",
+					"hasDemo": true
+				},
+				{
+					"name": "KlpDiffViewer",
+					"hasDemo": true
+				},
+				{
+					"name": "KlpTerminal",
+					"hasDemo": true
+				},
+				{
+					"name": "KlpJsonTree",
+					"hasDemo": true
+				}
+			],
+			"coveredComponents": []
+		},
+		{
+			"label": "Elevation & Surface Effects",
+			"title": "分層與表面視覺手法",
+			"hasTokenView": true,
+			"specimens": [],
+			"coveredComponents": []
+		},
+		{
+			"label": "Compatibility building blocks",
+			"title": "相容層基礎建構塊",
+			"hasTokenView": true,
+			"specimens": [],
+			"coveredComponents": [
+				"KlpActionRegion",
+				"KlpAlign",
+				"KlpBox",
+				"KlpCenter",
+				"KlpColumn",
+				"KlpConstrainedBox",
+				"KlpDirectionalPositioned",
+				"KlpExcludeSemantics",
+				"KlpExpanded",
+				"KlpFit",
+				"KlpFlexible",
+				"KlpFocusBoundary",
+				"KlpFocusRegion",
+				"KlpGap",
+				"KlpGestureRegion",
+				"KlpKeyBindingHost",
+				"KlpKeyBindingRegion",
+				"KlpLayoutBuilder",
+				"KlpLiveRegion",
+				"KlpModalFrame",
+				"KlpPageBackground",
+				"KlpPageBackgroundEditor",
+				"KlpPanelFooter",
+				"KlpPointerBlocker",
+				"KlpPopupBackground",
+				"KlpPopupPanel",
+				"KlpPositioned",
+				"KlpPreviewTree",
+				"KlpPublicationProgressOverlay",
+				"KlpRotate",
+				"KlpRow",
+				"KlpSemanticRegion",
+				"KlpSidebarButtonGroup",
+				"KlpSpacer",
+				"KlpStack",
+				"KlpTranslate",
+				"KlpVeil",
+				"KlpWindowAppIcon",
+				"KlpWindowHeaderMacLayout",
+				"KlpWindowHeaderWindowsLayout",
+				"KlpWorkflowProgress",
+				"KlpWorkflowStateSurface",
+				"KlpWrap"
+			]
+		},
+		{
+			"label": "Actions & Navigation",
+			"title": "動作與導覽",
+			"hasTokenView": false,
+			"specimens": [
+				{
+					"name": "KlpButton",
+					"hasDemo": true
+				},
+				{
+					"name": "KlpIconButton",
+					"hasDemo": true
+				},
+				{
+					"name": "KlpActionGroup",
+					"hasDemo": true
+				},
+				{
+					"name": "KlpTabs",
+					"hasDemo": true
+				},
+				{
+					"name": "KlpBreadcrumb",
+					"hasDemo": true
+				},
+				{
+					"name": "KlpPagination",
+					"hasDemo": true
+				},
+				{
+					"name": "KlpViewSwitcher",
+					"hasDemo": true
+				},
+				{
+					"name": "KlpRailItem",
+					"hasDemo": true
+				},
+				{
+					"name": "KlpNavigationRail",
+					"hasDemo": true
+				},
+				{
+					"name": "KlpSidebarSectionLabel",
+					"hasDemo": true
+				},
+				{
+					"name": "KlpSidebarNavigationButton",
+					"hasDemo": true
+				},
+				{
+					"name": "KlpMenu",
+					"hasDemo": true
+				},
+				{
+					"name": "KlpMenuItem",
+					"hasDemo": true
+				},
+				{
+					"name": "KlpCommandMenu",
+					"hasDemo": true
+				},
+				{
+					"name": "KlpEditorToolbar",
+					"hasDemo": true
+				},
+				{
+					"name": "KlpBulkActionBar",
+					"hasDemo": true
+				},
+				{
+					"name": "KlpSearchNavigator",
+					"hasDemo": true
+				},
+				{
+					"name": "KlpRouterOutlet",
+					"hasDemo": false
+				}
+			],
+			"coveredComponents": []
+		},
+		{
+			"label": "Button system",
+			"title": "Button system",
+			"hasTokenView": true,
+			"specimens": [],
+			"coveredComponents": []
+		},
+		{
+			"label": "File Explorer",
+			"title": "檔案總管",
+			"hasTokenView": false,
+			"specimens": [
+				{
+					"name": "KlpExplorer",
+					"hasDemo": true
+				},
+				{
+					"name": "KlpFileExplorer",
+					"hasDemo": true
+				},
+				{
+					"name": "KlpFileExplorerSection",
+					"hasDemo": true
+				},
+				{
+					"name": "KlpFileExplorerSectionView",
+					"hasDemo": true
+				},
+				{
+					"name": "KlpFileExplorerFolderView",
+					"hasDemo": true
+				},
+				{
+					"name": "KlpFileExplorerItemView",
+					"hasDemo": true
+				}
+			],
+			"coveredComponents": []
+		},
+		{
+			"label": "Data Display",
+			"title": "資料呈現",
+			"hasTokenView": false,
+			"specimens": [
+				{
+					"name": "KlpIcon",
+					"hasDemo": true
+				},
+				{
+					"name": "KlpBadge",
+					"hasDemo": true
+				},
+				{
+					"name": "KlpTag",
+					"hasDemo": true
+				},
+				{
+					"name": "KlpListTile",
+					"hasDemo": true
+				},
+				{
+					"name": "KlpKeyValueList",
+					"hasDemo": true
+				},
+				{
+					"name": "KlpKeyValueTable",
+					"hasDemo": true
+				},
+				{
+					"name": "KlpDataTable",
+					"hasDemo": true
+				},
+				{
+					"name": "KlpTree",
+					"hasDemo": true
+				},
+				{
+					"name": "KlpTreeItem",
+					"hasDemo": true
+				},
+				{
+					"name": "KlpFilePreview",
+					"hasDemo": true
+				},
+				{
+					"name": "KlpProgress",
+					"hasDemo": true
+				},
+				{
+					"name": "KlpSegmentedProgress",
+					"hasDemo": true
+				},
+				{
+					"name": "KlpAvatar",
+					"hasDemo": true
+				},
+				{
+					"name": "KlpAvatarGroup",
+					"hasDemo": true
+				},
+				{
+					"name": "KlpStatusIndicator",
+					"hasDemo": true
+				},
+				{
+					"name": "KlpMetricCard",
+					"hasDemo": true
+				},
+				{
+					"name": "KlpAccordion",
+					"hasDemo": true
+				},
+				{
+					"name": "KlpStepper",
+					"hasDemo": true
+				},
+				{
+					"name": "KlpTimeline",
+					"hasDemo": true
+				}
+			],
+			"coveredComponents": []
+		},
+		{
+			"label": "Layout & Interaction",
+			"title": "版面與互動",
+			"hasTokenView": false,
+			"specimens": [
+				{
+					"name": "KlpStateHighlight",
+					"hasDemo": true
+				},
+				{
+					"name": "KlpPressable",
+					"hasDemo": true
+				},
+				{
+					"name": "KlpTooltip",
+					"hasDemo": true
+				},
+				{
+					"name": "KlpTooltipSurface",
+					"hasDemo": true
+				},
+				{
+					"name": "KlpPopover",
+					"hasDemo": true
+				},
+				{
+					"name": "KlpDialog",
+					"hasDemo": true
+				},
+				{
+					"name": "KlpDrawer",
+					"hasDemo": true
+				},
+				{
+					"name": "KlpContextMenu",
+					"hasDemo": true
+				},
+				{
+					"name": "KlpSplitLayout",
+					"hasDemo": true
+				},
+				{
+					"name": "KlpResizablePane",
+					"hasDemo": true
+				},
+				{
+					"name": "KlpResizeHandle",
+					"hasDemo": true
+				},
+				{
+					"name": "KlpScrollViewport",
+					"hasDemo": true
+				},
+				{
+					"name": "KlpFilterBar",
+					"hasDemo": true
+				},
+				{
+					"name": "KlpSelectionToolbar",
+					"hasDemo": true
+				},
+				{
+					"name": "KlpSortControl",
+					"hasDemo": true
+				},
+				{
+					"name": "KlpVirtualList",
+					"hasDemo": true
+				},
+				{
+					"name": "KlpVirtualGrid",
+					"hasDemo": true
+				},
+				{
+					"name": "KlpDragPreview",
+					"hasDemo": true
+				},
+				{
+					"name": "KlpDropTarget",
+					"hasDemo": true
+				},
+				{
+					"name": "KlpDropIndicator",
+					"hasDemo": true
+				},
+				{
+					"name": "KlpPresenceIndicator",
+					"hasDemo": true
+				},
+				{
+					"name": "KlpShortcutHint",
+					"hasDemo": true
+				},
+				{
+					"name": "KlpOverlayHost",
+					"hasDemo": true
+				},
+				{
+					"name": "KlpApp",
+					"hasDemo": true
+				},
+				{
+					"name": "KlpAppScreen",
+					"hasDemo": true
+				},
+				{
+					"name": "KlpAppWindowHeader",
+					"hasDemo": true
+				},
+				{
+					"name": "KlpWindowControls",
+					"hasDemo": true
+				},
+				{
+					"name": "KlpWindowHeader",
+					"hasDemo": true
+				},
+				{
+					"name": "KlpPanelHeader",
+					"hasDemo": true
+				},
+				{
+					"name": "KlpSidebarIdentityHeader",
+					"hasDemo": true
+				},
+				{
+					"name": "KlpPanelFrame",
+					"hasDemo": true
+				},
+				{
+					"name": "KlpStageFrame",
+					"hasDemo": true
+				},
+				{
+					"name": "KlpStageTopBar",
+					"hasDemo": true
+				},
+				{
+					"name": "KlpStageTab",
+					"hasDemo": true
+				},
+				{
+					"name": "KlpStageHeader",
+					"hasDemo": true
+				},
+				{
+					"name": "KlpNavigationRailFrame",
+					"hasDemo": true
+				},
+				{
+					"name": "KlpSidebarFrame",
+					"hasDemo": true
+				},
+				{
+					"name": "KlpStatusBar",
+					"hasDemo": true
+				},
+				{
+					"name": "KlpPaneCollapseControl",
+					"hasDemo": true
+				},
+				{
+					"name": "KlpResponsivePaneCoordinator",
+					"hasDemo": true
+				}
+			],
+			"coveredComponents": []
+		},
+		{
+			"label": "Region placeholder",
+			"title": "區域佔位",
+			"hasTokenView": false,
+			"specimens": [
+				{
+					"name": "KlpRegionPlaceholder",
+					"hasDemo": true
+				}
+			],
+			"coveredComponents": []
+		},
+		{
+			"label": "View States & Feedback",
+			"title": "檢視狀態與回饋",
+			"hasTokenView": false,
+			"specimens": [
+				{
+					"name": "KlpGeometricSpinner",
+					"hasDemo": true
+				},
+				{
+					"name": "KlpLoadingState",
+					"hasDemo": true
+				},
+				{
+					"name": "KlpEmptyState",
+					"hasDemo": true
+				},
+				{
+					"name": "KlpErrorState",
+					"hasDemo": true
+				},
+				{
+					"name": "KlpPermissionState",
+					"hasDemo": true
+				},
+				{
+					"name": "KlpSkeletonLine",
+					"hasDemo": true
+				},
+				{
+					"name": "KlpProgressOverlay",
+					"hasDemo": true
+				},
+				{
+					"name": "KlpInlineNotice",
+					"hasDemo": true
+				},
+				{
+					"name": "KlpToast",
+					"hasDemo": true
+				},
+				{
+					"name": "KlpToastStack",
+					"hasDemo": true
+				}
+			],
+			"coveredComponents": []
+		},
+		{
+			"label": "Form Controls",
+			"title": "表單控制項",
+			"hasTokenView": false,
+			"specimens": [
+				{
+					"name": "KlpTextField",
+					"hasDemo": true
+				},
+				{
+					"name": "KlpTextArea",
+					"hasDemo": true
+				},
+				{
+					"name": "KlpSelectField",
+					"hasDemo": true
+				},
+				{
+					"name": "KlpQuantityField",
+					"hasDemo": true
+				},
+				{
+					"name": "KlpDateRangeField",
+					"hasDemo": true
+				},
+				{
+					"name": "KlpMultiSelectField",
+					"hasDemo": true
+				},
+				{
+					"name": "KlpAffixedTextField",
+					"hasDemo": true
+				},
+				{
+					"name": "KlpCompoundField",
+					"hasDemo": true
+				},
+				{
+					"name": "KlpPasswordField",
+					"hasDemo": true
+				},
+				{
+					"name": "KlpNumberField",
+					"hasDemo": true
+				},
+				{
+					"name": "KlpSlider",
+					"hasDemo": true
+				},
+				{
+					"name": "KlpPhaseToggle",
+					"hasDemo": true
+				},
+				{
+					"name": "KlpRadioGroup",
+					"hasDemo": true
+				},
+				{
+					"name": "KlpDateField",
+					"hasDemo": true
+				},
+				{
+					"name": "KlpCalendar",
+					"hasDemo": true
+				},
+				{
+					"name": "KlpCombobox",
+					"hasDemo": true
+				},
+				{
+					"name": "KlpCheckbox",
+					"hasDemo": true
+				},
+				{
+					"name": "KlpToggle",
+					"hasDemo": true
+				},
+				{
+					"name": "KlpSegmentedControl",
+					"hasDemo": true
+				},
+				{
+					"name": "KlpTagInputField",
+					"hasDemo": true
+				},
+				{
+					"name": "KlpStatusRoleSwatches",
+					"hasDemo": true
+				},
+				{
+					"name": "KlpCompactSwitch",
+					"hasDemo": true
+				},
+				{
+					"name": "KlpTriStateToggle",
+					"hasDemo": true
+				},
+				{
+					"name": "KlpToggleIndicator",
+					"hasDemo": true
+				},
+				{
+					"name": "KlpSlidingSelection",
+					"hasDemo": true
+				},
+				{
+					"name": "KlpSelect",
+					"hasDemo": true
+				},
+				{
+					"name": "KlpCodeField",
+					"hasDemo": true
+				},
+				{
+					"name": "KlpFileField",
+					"hasDemo": true
+				},
+				{
+					"name": "KlpColorRoleField",
+					"hasDemo": true
+				},
+				{
+					"name": "KlpTagChip",
+					"hasDemo": true
+				}
+			],
+			"coveredComponents": []
+		},
+		{
+			"label": "Form Assembly & Pickers",
+			"title": "表單組裝與挑選器",
+			"hasTokenView": false,
+			"specimens": [
+				{
+					"name": "KlpForm",
+					"hasDemo": true
+				},
+				{
+					"name": "KlpFormSection",
+					"hasDemo": true
+				},
+				{
+					"name": "KlpField",
+					"hasDemo": true
+				},
+				{
+					"name": "KlpFieldLabel",
+					"hasDemo": true
+				},
+				{
+					"name": "KlpFieldDescription",
+					"hasDemo": true
+				},
+				{
+					"name": "KlpFieldError",
+					"hasDemo": true
+				},
+				{
+					"name": "KlpFieldGroup",
+					"hasDemo": true
+				},
+				{
+					"name": "KlpFormActions",
+					"hasDemo": true
+				},
+				{
+					"name": "KlpFormErrorSummary",
+					"hasDemo": true
+				},
+				{
+					"name": "KlpConditionalFieldRegion",
+					"hasDemo": true
+				},
+				{
+					"name": "KlpRepeaterField",
+					"hasDemo": true
+				},
+				{
+					"name": "KlpKeyValueEditor",
+					"hasDemo": true
+				},
+				{
+					"name": "KlpApprovalStepsField",
+					"hasDemo": true
+				},
+				{
+					"name": "KlpFileDropzoneField",
+					"hasDemo": true
+				},
+				{
+					"name": "KlpCodeEditorField",
+					"hasDemo": true
+				},
+				{
+					"name": "KlpReferencePicker",
+					"hasDemo": true
+				},
+				{
+					"name": "KlpEntityPicker",
+					"hasDemo": true
+				},
+				{
+					"name": "KlpPageChrome",
+					"hasDemo": true
+				},
+				{
+					"name": "KlpPropertySummary",
+					"hasDemo": true
+				},
+				{
+					"name": "KlpSaveStatusCard",
+					"hasDemo": true
+				}
+			],
+			"coveredComponents": []
+		},
+		{
+			"label": "Block Layout & Theme",
+			"title": "區塊與主題",
+			"hasTokenView": false,
+			"specimens": [
+				{
+					"name": "KlpSurface",
+					"hasDemo": true
+				},
+				{
+					"name": "KlpSection",
+					"hasDemo": true
+				},
+				{
+					"name": "KlpRegion",
+					"hasDemo": true
+				},
+				{
+					"name": "KlpCard",
+					"hasDemo": true
+				},
+				{
+					"name": "KlpThemePreviewTile",
+					"hasDemo": true
+				},
+				{
+					"name": "KlpTokenOverride",
+					"hasDemo": true
+				},
+				{
+					"name": "KlpThemeToggle",
+					"hasDemo": true
+				}
+			],
+			"coveredComponents": []
+		},
+		{
+			"label": "Prose / Text",
+			"title": "文字與長文",
+			"hasTokenView": false,
+			"specimens": [
+				{
+					"name": "KlpText",
+					"hasDemo": true
+				},
+				{
+					"name": "KlpRichText",
+					"hasDemo": true
+				},
+				{
+					"name": "KlpInlineCode",
+					"hasDemo": true
+				}
+			],
+			"coveredComponents": []
+		},
+		{
+			"label": "Stroke Language",
+			"title": "線條語言",
+			"hasTokenView": false,
+			"specimens": [
+				{
+					"name": "KlpStrokeFrame",
+					"hasDemo": true
+				},
+				{
+					"name": "KlpDashedBorder",
+					"hasDemo": true
+				},
+				{
+					"name": "KlpDashedDivider",
+					"hasDemo": true
+				},
+				{
+					"name": "KlpDivider",
+					"hasDemo": true
+				}
+			],
+			"coveredComponents": []
+		},
+		{
+			"label": "Settings",
+			"title": "設定頁與外觀",
+			"hasTokenView": false,
+			"specimens": [
+				{
+					"name": "KlpSettingsDialog",
+					"hasDemo": true
+				},
+				{
+					"name": "KlpSettingsPage",
+					"hasDemo": true
+				},
+				{
+					"name": "KlpSettingsScopeSwitcher",
+					"hasDemo": true
+				},
+				{
+					"name": "KlpSettingsNavigationHeader",
+					"hasDemo": true
+				},
+				{
+					"name": "KlpSettingsSearchField",
+					"hasDemo": true
+				},
+				{
+					"name": "KlpSettingsNavigationPane",
+					"hasDemo": true
+				},
+				{
+					"name": "KlpSettingsContentPane",
+					"hasDemo": true
+				},
+				{
+					"name": "KlpSettingsContentHeader",
+					"hasDemo": true
+				},
+				{
+					"name": "KlpSettingsNavigationGroup",
+					"hasDemo": true
+				},
+				{
+					"name": "KlpSettingsNavigationItem",
+					"hasDemo": true
+				},
+				{
+					"name": "KlpSettingsField",
+					"hasDemo": true
+				},
+				{
+					"name": "KlpSettingsActionBar",
+					"hasDemo": true
+				},
+				{
+					"name": "KlpThemeModePicker",
+					"hasDemo": true
+				}
+			],
+			"coveredComponents": []
+		},
+		{
+			"label": "Sidebar Shell",
+			"title": "Navigator Sidebar 組合",
+			"hasTokenView": false,
+			"specimens": [
+				{
+					"name": "KlpAdaptive",
+					"hasDemo": true
+				},
+				{
+					"name": "KlpPrimarySidebarFrame",
+					"hasDemo": true
+				},
+				{
+					"name": "KlpNavigator",
+					"hasDemo": true
+				},
+				{
+					"name": "KlpSidebarNavigationGroup",
+					"hasDemo": true
+				}
+			],
+			"coveredComponents": []
+		},
+		{
+			"label": "Docking",
+			"title": "可停駐工作區",
+			"hasTokenView": false,
+			"specimens": [
+				{
+					"name": "KlpDockLayout",
+					"hasDemo": true
+				},
+				{
+					"name": "KlpDockHeader",
+					"hasDemo": true
+				}
+			],
+			"coveredComponents": []
+		},
+		{
+			"label": "Agenda",
+			"title": "日期、待辦與排程",
+			"hasTokenView": false,
+			"specimens": [
+				{
+					"name": "KlpDateGrid",
+					"hasDemo": true
+				},
+				{
+					"name": "KlpTaskList",
+					"hasDemo": true
+				},
+				{
+					"name": "KlpScheduleList",
+					"hasDemo": true
+				}
+			],
+			"coveredComponents": []
+		},
+		{
+			"label": "Conversation",
+			"title": "訊息串與輸入器",
+			"hasTokenView": false,
+			"specimens": [
+				{
+					"name": "KlpMessageBubble",
+					"hasDemo": true
+				},
+				{
+					"name": "KlpMessageThread",
+					"hasDemo": true
+				},
+				{
+					"name": "KlpMessageConversation",
+					"hasDemo": true
+				},
+				{
+					"name": "KlpMessageComposer",
+					"hasDemo": true
+				}
+			],
+			"coveredComponents": []
+		},
+		{
+			"label": "Masonry",
+			"title": "瀑布流與預覽卡",
+			"hasTokenView": false,
+			"specimens": [
+				{
+					"name": "KlpMasonryGrid",
+					"hasDemo": true
+				},
+				{
+					"name": "KlpPreviewCard",
+					"hasDemo": true
+				}
+			],
+			"coveredComponents": []
+		},
+		{
+			"label": "Artifact workspace",
+			"title": "Canonical artifacts",
+			"hasTokenView": false,
+			"specimens": [
+				{
+					"name": "KlpDocumentHeader",
+					"hasDemo": true
+				},
+				{
+					"name": "KlpDocumentSection",
+					"hasDemo": true
+				},
+				{
+					"name": "KlpDocumentField",
+					"hasDemo": true
+				},
+				{
+					"name": "KlpDocumentReferenceLink",
+					"hasDemo": true
+				},
+				{
+					"name": "KlpDocumentEditActions",
+					"hasDemo": true
+				},
+				{
+					"name": "KlpTokenTable",
+					"hasDemo": true
+				},
+				{
+					"name": "KlpTokenValidationBanner",
+					"hasDemo": true
+				},
+				{
+					"name": "KlpComponentDefinitionCard",
+					"hasDemo": true
+				},
+				{
+					"name": "KlpComponentLibraryGrid",
+					"hasDemo": true
+				},
+				{
+					"name": "KlpComponentStateSelector",
+					"hasDemo": true
+				},
+				{
+					"name": "KlpAccessibilityContractPanel",
+					"hasDemo": true
+				}
+			],
+			"coveredComponents": []
+		},
+		{
+			"label": "Canvas workspace",
+			"title": "Screen and Flow canvas chrome",
+			"hasTokenView": false,
+			"specimens": [
+				{
+					"name": "KlpCanvasViewport",
+					"hasDemo": true
+				},
+				{
+					"name": "KlpCanvasToolbar",
+					"hasDemo": true
+				},
+				{
+					"name": "KlpCanvasSelectionOverlay",
+					"hasDemo": true
+				},
+				{
+					"name": "KlpCanvasDropIntent",
+					"hasDemo": true
+				},
+				{
+					"name": "KlpLayoutLens",
+					"hasDemo": true
+				},
+				{
+					"name": "KlpFlowNodeCard",
+					"hasDemo": true
+				},
+				{
+					"name": "KlpFlowValidationPanel",
+					"hasDemo": true
+				},
+				{
+					"name": "KlpCanvasMinimap",
+					"hasDemo": true
+				}
+			],
+			"coveredComponents": []
+		}
+	],
+	"components": [
+		{
+			"name": "KlpAccessibilityContractPanel",
+			"legacySources": [
+				"lib/src/features/workspace/artifact/internal/klp_accessibility_contract_panel.dart"
+			]
+		},
+		{
+			"name": "KlpAccordion",
+			"legacySources": [
+				"lib/src/features/collections/accordion/internal/klp_accordion_widget.dart"
+			]
+		},
+		{
+			"name": "KlpActionGroup",
+			"legacySources": [
+				"lib/src/features/navigation/widgets/controls/klp_action_group.dart"
+			]
+		},
+		{
+			"name": "KlpActionRegion",
+			"legacySources": [
+				"lib/src/foundation/interaction/primitives/klp_action_region_widget.dart"
+			]
+		},
+		{
+			"name": "KlpAdaptive",
+			"legacySources": [
+				"lib/src/foundation/layout/klp_adaptive.dart"
+			]
+		},
+		{
+			"name": "KlpAffixedTextField",
+			"legacySources": [
+				"lib/src/features/forms/input/klp_affixed_text_field.dart"
+			]
+		},
+		{
+			"name": "KlpAlign",
+			"legacySources": [
+				"lib/src/foundation/layout/klp_align.dart"
+			]
+		},
+		{
+			"name": "KlpApp",
+			"legacySources": [
+				"lib/src/application/legacy/klp_app.dart"
+			]
+		},
+		{
+			"name": "KlpAppScreen",
+			"legacySources": [
+				"lib/src/features/workspace/shell/composition/app_screen/klp_app_screen.dart"
+			]
+		},
+		{
+			"name": "KlpAppWindowHeader",
+			"legacySources": [
+				"lib/src/features/workspace/shell/composition/window_header/klp_app_window_header.dart"
+			]
+		},
+		{
+			"name": "KlpApprovalStepsField",
+			"legacySources": [
+				"lib/src/features/forms/structured/internal/klp_approval_steps_field_widget.dart"
+			]
+		},
+		{
+			"name": "KlpAvatar",
+			"legacySources": [
+				"lib/src/features/collections/avatar/klp_avatar.dart"
+			]
+		},
+		{
+			"name": "KlpAvatarGroup",
+			"legacySources": [
+				"lib/src/features/collections/avatar/klp_avatar_group.dart"
+			]
+		},
+		{
+			"name": "KlpBadge",
+			"legacySources": [
+				"lib/src/features/collections/badge/internal/klp_badge_widget.dart"
+			]
+		},
+		{
+			"name": "KlpBox",
+			"legacySources": [
+				"lib/src/foundation/layout/klp_box.dart"
+			]
+		},
+		{
+			"name": "KlpBreadcrumb",
+			"legacySources": [
+				"lib/src/features/navigation/widgets/breadcrumb/klp_breadcrumb.dart"
+			]
+		},
+		{
+			"name": "KlpBulkActionBar",
+			"legacySources": [
+				"lib/src/features/actions/editor/klp_bulk_action_bar.dart"
+			]
+		},
+		{
+			"name": "KlpButton",
+			"legacySources": [
+				"lib/src/features/actions/button/internal/klp_button_widget.dart"
+			]
+		},
+		{
+			"name": "KlpCalendar",
+			"legacySources": [
+				"lib/src/features/forms/selection/internal/klp_calendar_widget.dart"
+			]
+		},
+		{
+			"name": "KlpCanvasDropIntent",
+			"legacySources": [
+				"lib/src/features/infinite_canvas/internal/klp_canvas_drop_intent.dart"
+			]
+		},
+		{
+			"name": "KlpCanvasMinimap",
+			"legacySources": [
+				"lib/src/features/infinite_canvas/internal/klp_canvas_minimap.dart"
+			]
+		},
+		{
+			"name": "KlpCanvasSelectionOverlay",
+			"legacySources": [
+				"lib/src/features/infinite_canvas/internal/klp_canvas_selection_overlay.dart"
+			]
+		},
+		{
+			"name": "KlpCanvasToolbar",
+			"legacySources": [
+				"lib/src/features/infinite_canvas/internal/klp_canvas_toolbar.dart"
+			]
+		},
+		{
+			"name": "KlpCanvasViewport",
+			"legacySources": [
+				"lib/src/features/infinite_canvas/internal/klp_canvas_viewport.dart"
+			]
+		},
+		{
+			"name": "KlpCard",
+			"legacySources": [
+				"lib/src/features/collections/card/internal/klp_card_widget.dart"
+			]
+		},
+		{
+			"name": "KlpCenter",
+			"legacySources": [
+				"lib/src/foundation/layout/klp_center.dart"
+			]
+		},
+		{
+			"name": "KlpCheckbox",
+			"legacySources": [
+				"lib/src/features/forms/selection/internal/klp_checkbox_widget.dart"
+			]
+		},
+		{
+			"name": "KlpCodeEditorField",
+			"legacySources": [
+				"lib/src/features/forms/structured/internal/klp_code_editor_field_widget.dart"
+			]
+		},
+		{
+			"name": "KlpCodeField",
+			"legacySources": [
+				"lib/src/features/forms/structured/internal/klp_code_field_widget.dart"
+			]
+		},
+		{
+			"name": "KlpCodeViewer",
+			"legacySources": [
+				"lib/src/features/collections/code/internal/klp_code_viewer_widget.dart"
+			]
+		},
+		{
+			"name": "KlpColorRoleField",
+			"legacySources": [
+				"lib/src/features/forms/selection/klp_color_role_field.dart"
+			]
+		},
+		{
+			"name": "KlpColumn",
+			"legacySources": [
+				"lib/src/foundation/layout/klp_column.dart"
+			]
+		},
+		{
+			"name": "KlpCombobox",
+			"legacySources": [
+				"lib/src/features/forms/input/internal/klp_combobox_widget.dart"
+			]
+		},
+		{
+			"name": "KlpCommandMenu",
+			"legacySources": [
+				"lib/src/features/actions/command_menu/internal/klp_command_menu_widget.dart"
+			]
+		},
+		{
+			"name": "KlpCompactSwitch",
+			"legacySources": [
+				"lib/src/features/forms/toggle/internal/klp_compact_switch_widget.dart"
+			]
+		},
+		{
+			"name": "KlpComponentDefinitionCard",
+			"legacySources": [
+				"lib/src/features/workspace/artifact/internal/klp_component_definition_card.dart"
+			]
+		},
+		{
+			"name": "KlpComponentLibraryGrid",
+			"legacySources": [
+				"lib/src/features/workspace/artifact/internal/klp_component_library_grid.dart"
+			]
+		},
+		{
+			"name": "KlpComponentStateSelector",
+			"legacySources": [
+				"lib/src/features/workspace/artifact/internal/klp_component_state_selector.dart"
+			]
+		},
+		{
+			"name": "KlpCompoundField",
+			"legacySources": [
+				"lib/src/features/forms/input/internal/klp_compound_field_widget.dart"
+			]
+		},
+		{
+			"name": "KlpConditionalFieldRegion",
+			"legacySources": [
+				"lib/src/features/forms/core/klp_conditional_field_region.dart"
+			]
+		},
+		{
+			"name": "KlpConstrainedBox",
+			"legacySources": [
+				"lib/src/foundation/layout/klp_constrained_box.dart"
+			]
+		},
+		{
+			"name": "KlpContextMenu",
+			"legacySources": [
+				"lib/src/features/overlays/context_menu/klp_context_menu_widget.dart"
+			]
+		},
+		{
+			"name": "KlpDashedBorder",
+			"legacySources": [
+				"lib/src/foundation/surface/klp_dashed_border.dart"
+			]
+		},
+		{
+			"name": "KlpDashedDivider",
+			"legacySources": [
+				"lib/src/foundation/surface/klp_dashed_border.dart"
+			]
+		},
+		{
+			"name": "KlpDataTable",
+			"legacySources": [
+				"lib/src/features/collections/advanced/internal/klp_data_table.dart"
+			]
+		},
+		{
+			"name": "KlpDateField",
+			"legacySources": [
+				"lib/src/features/forms/selection/klp_date_field.dart"
+			]
+		},
+		{
+			"name": "KlpDateGrid",
+			"legacySources": [
+				"lib/src/features/collections/date_grid/internal/klp_date_grid_widget.dart"
+			]
+		},
+		{
+			"name": "KlpDateRangeField",
+			"legacySources": [
+				"lib/src/features/forms/selection/klp_date_range_field.dart"
+			]
+		},
+		{
+			"name": "KlpDialog",
+			"legacySources": [
+				"lib/src/features/overlays/klp_dialog.dart"
+			]
+		},
+		{
+			"name": "KlpDiffViewer",
+			"legacySources": [
+				"lib/src/features/collections/code/internal/klp_diff_viewer_widget.dart"
+			]
+		},
+		{
+			"name": "KlpDirectionalPositioned",
+			"legacySources": [
+				"lib/src/foundation/layout/klp_directional_positioned.dart"
+			]
+		},
+		{
+			"name": "KlpDivider",
+			"legacySources": [
+				"lib/src/foundation/surface/klp_divider.dart"
+			]
+		},
+		{
+			"name": "KlpDockHeader",
+			"legacySources": [
+				"lib/src/features/workspace/shell/docking/internal/klp_dock_header_widget.dart"
+			]
+		},
+		{
+			"name": "KlpDockLayout",
+			"legacySources": [
+				"lib/src/features/workspace/shell/docking/internal/klp_dock_layout_widget.dart"
+			]
+		},
+		{
+			"name": "KlpDocumentEditActions",
+			"legacySources": [
+				"lib/src/features/workspace/artifact/internal/klp_document_edit_actions.dart"
+			]
+		},
+		{
+			"name": "KlpDocumentField",
+			"legacySources": [
+				"lib/src/features/workspace/artifact/internal/klp_document_field.dart"
+			]
+		},
+		{
+			"name": "KlpDocumentHeader",
+			"legacySources": [
+				"lib/src/features/workspace/artifact/internal/klp_document_header.dart"
+			]
+		},
+		{
+			"name": "KlpDocumentReferenceLink",
+			"legacySources": [
+				"lib/src/features/workspace/artifact/internal/klp_document_reference_link.dart"
+			]
+		},
+		{
+			"name": "KlpDocumentSection",
+			"legacySources": [
+				"lib/src/features/workspace/artifact/internal/klp_document_section.dart"
+			]
+		},
+		{
+			"name": "KlpDragPreview",
+			"legacySources": [
+				"lib/src/foundation/interaction/klp_drag_drop.dart"
+			]
+		},
+		{
+			"name": "KlpDrawer",
+			"legacySources": [
+				"lib/src/features/overlays/drawer/klp_drawer_widget.dart"
+			]
+		},
+		{
+			"name": "KlpDropIndicator",
+			"legacySources": [
+				"lib/src/foundation/interaction/klp_drag_drop.dart"
+			]
+		},
+		{
+			"name": "KlpDropTarget",
+			"legacySources": [
+				"lib/src/foundation/interaction/klp_drag_drop.dart"
+			]
+		},
+		{
+			"name": "KlpEditorToolbar",
+			"legacySources": [
+				"lib/src/features/actions/editor/klp_editor_toolbar.dart"
+			]
+		},
+		{
+			"name": "KlpEmptyState",
+			"legacySources": [
+				"lib/src/features/feedback/empty_state/klp_empty_state_widget.dart"
+			]
+		},
+		{
+			"name": "KlpEntityPicker",
+			"legacySources": [
+				"lib/src/features/workspace/entity_picker/internal/klp_entity_picker_widget.dart"
+			]
+		},
+		{
+			"name": "KlpErrorState",
+			"legacySources": [
+				"lib/src/features/feedback/view_states/klp_error_state.dart"
+			]
+		},
+		{
+			"name": "KlpExcludeSemantics",
+			"legacySources": [
+				"lib/src/foundation/interaction/klp_exclude_semantics.dart"
+			]
+		},
+		{
+			"name": "KlpExpanded",
+			"legacySources": [
+				"lib/src/foundation/layout/klp_expanded.dart"
+			]
+		},
+		{
+			"name": "KlpExplorer",
+			"legacySources": [
+				"lib/src/features/workspace/explorer/klp_explorer.dart"
+			]
+		},
+		{
+			"name": "KlpField",
+			"legacySources": [
+				"lib/src/features/forms/core/klp_field.dart"
+			]
+		},
+		{
+			"name": "KlpFieldDescription",
+			"legacySources": [
+				"lib/src/features/forms/core/klp_field_description.dart"
+			]
+		},
+		{
+			"name": "KlpFieldError",
+			"legacySources": [
+				"lib/src/features/forms/core/klp_field_error.dart"
+			]
+		},
+		{
+			"name": "KlpFieldGroup",
+			"legacySources": [
+				"lib/src/features/forms/core/klp_field_group.dart"
+			]
+		},
+		{
+			"name": "KlpFieldLabel",
+			"legacySources": [
+				"lib/src/features/forms/core/klp_field_label.dart"
+			]
+		},
+		{
+			"name": "KlpFileDropzoneField",
+			"legacySources": [
+				"lib/src/features/forms/structured/internal/klp_file_dropzone_field_widget.dart"
+			]
+		},
+		{
+			"name": "KlpFileExplorer",
+			"legacySources": [
+				"lib/src/features/navigation/widgets/explorer/internal/klp_file_explorer_widget.dart"
+			]
+		},
+		{
+			"name": "KlpFileExplorerFolderView",
+			"legacySources": [
+				"lib/src/features/navigation/widgets/explorer/internal/klp_file_explorer_folder_view.dart"
+			]
+		},
+		{
+			"name": "KlpFileExplorerItemView",
+			"legacySources": [
+				"lib/src/features/navigation/widgets/explorer/internal/klp_file_explorer_item_view.dart"
+			]
+		},
+		{
+			"name": "KlpFileExplorerSection",
+			"legacySources": [
+				"lib/src/features/navigation/widgets/explorer/models/klp_file_explorer_section.dart"
+			]
+		},
+		{
+			"name": "KlpFileExplorerSectionView",
+			"legacySources": [
+				"lib/src/features/navigation/widgets/explorer/internal/klp_file_explorer_section_view.dart"
+			]
+		},
+		{
+			"name": "KlpFileField",
+			"legacySources": [
+				"lib/src/features/forms/structured/internal/klp_file_field_widget.dart"
+			]
+		},
+		{
+			"name": "KlpFilePreview",
+			"legacySources": [
+				"lib/src/features/collections/advanced/internal/klp_file_preview.dart"
+			]
+		},
+		{
+			"name": "KlpFilterBar",
+			"legacySources": [
+				"lib/src/foundation/interaction/filter/internal/klp_filter_bar_widget.dart"
+			]
+		},
+		{
+			"name": "KlpFit",
+			"legacySources": [
+				"lib/src/foundation/layout/klp_fit.dart"
+			]
+		},
+		{
+			"name": "KlpFlexible",
+			"legacySources": [
+				"lib/src/foundation/layout/klp_flexible.dart"
+			]
+		},
+		{
+			"name": "KlpFlowNodeCard",
+			"legacySources": [
+				"lib/src/features/infinite_canvas/internal/klp_flow_node_card.dart"
+			]
+		},
+		{
+			"name": "KlpFlowValidationPanel",
+			"legacySources": [
+				"lib/src/features/infinite_canvas/internal/klp_flow_validation_panel.dart"
+			]
+		},
+		{
+			"name": "KlpFocusBoundary",
+			"legacySources": [
+				"lib/src/features/feedback/workflow/klp_focus_boundary.dart"
+			]
+		},
+		{
+			"name": "KlpFocusRegion",
+			"legacySources": [
+				"lib/src/foundation/interaction/klp_focus_region.dart"
+			]
+		},
+		{
+			"name": "KlpForm",
+			"legacySources": [
+				"lib/src/features/forms/core/klp_form.dart"
+			]
+		},
+		{
+			"name": "KlpFormActions",
+			"legacySources": [
+				"lib/src/features/forms/core/klp_form_actions.dart"
+			]
+		},
+		{
+			"name": "KlpFormErrorSummary",
+			"legacySources": [
+				"lib/src/features/forms/core/klp_form_error_summary.dart"
+			]
+		},
+		{
+			"name": "KlpFormSection",
+			"legacySources": [
+				"lib/src/features/forms/core/klp_form_section.dart"
+			]
+		},
+		{
+			"name": "KlpGap",
+			"legacySources": [
+				"lib/src/foundation/layout/klp_gap.dart"
+			]
+		},
+		{
+			"name": "KlpGeometricSpinner",
+			"legacySources": [
+				"lib/src/foundation/klp_geometric_spinner.dart"
+			]
+		},
+		{
+			"name": "KlpGestureRegion",
+			"legacySources": [
+				"lib/src/foundation/interaction/klp_gesture_region.dart"
+			]
+		},
+		{
+			"name": "KlpIcon",
+			"legacySources": [
+				"lib/src/foundation/klp_icon.dart"
+			]
+		},
+		{
+			"name": "KlpIconButton",
+			"legacySources": [
+				"lib/src/features/actions/button/internal/klp_icon_button_widget.dart"
+			]
+		},
+		{
+			"name": "KlpInlineCode",
+			"legacySources": [
+				"lib/src/foundation/klp_inline_code.dart"
+			]
+		},
+		{
+			"name": "KlpInlineNotice",
+			"legacySources": [
+				"lib/src/features/feedback/klp_inline_notice.dart"
+			]
+		},
+		{
+			"name": "KlpJsonTree",
+			"legacySources": [
+				"lib/src/features/collections/advanced/internal/klp_json_tree.dart"
+			]
+		},
+		{
+			"name": "KlpKeyBindingHost",
+			"legacySources": [
+				"lib/src/foundation/interaction/keybinding/klp_key_binding_controller.dart"
+			]
+		},
+		{
+			"name": "KlpKeyBindingRegion",
+			"legacySources": [
+				"lib/src/foundation/interaction/keybinding/klp_key_binding_region.dart"
+			]
+		},
+		{
+			"name": "KlpKeyValueEditor",
+			"legacySources": [
+				"lib/src/features/forms/structured/internal/klp_key_value_editor_widget.dart"
+			]
+		},
+		{
+			"name": "KlpKeyValueList",
+			"legacySources": [
+				"lib/src/features/collections/key_value/internal/klp_key_value_list_widget.dart"
+			]
+		},
+		{
+			"name": "KlpKeyValueTable",
+			"legacySources": [
+				"lib/src/features/collections/key_value/internal/klp_key_value_table_widget.dart"
+			]
+		},
+		{
+			"name": "KlpLayoutBuilder",
+			"legacySources": [
+				"lib/src/foundation/layout/klp_layout_builder.dart"
+			]
+		},
+		{
+			"name": "KlpLayoutLens",
+			"legacySources": [
+				"lib/src/features/infinite_canvas/internal/klp_layout_lens.dart"
+			]
+		},
+		{
+			"name": "KlpListTile",
+			"legacySources": [
+				"lib/src/features/collections/list_tile/internal/klp_list_tile_widget.dart"
+			]
+		},
+		{
+			"name": "KlpLiveRegion",
+			"legacySources": [
+				"lib/src/features/feedback/klp_live_region.dart"
+			]
+		},
+		{
+			"name": "KlpLoadingState",
+			"legacySources": [
+				"lib/src/features/feedback/view_states/klp_loading_state.dart"
+			]
+		},
+		{
+			"name": "KlpMasonryGrid",
+			"legacySources": [
+				"lib/src/foundation/layout/klp_masonry_grid.dart"
+			]
+		},
+		{
+			"name": "KlpMenu",
+			"legacySources": [
+				"lib/src/features/overlays/menu/klp_menu_widget.dart"
+			]
+		},
+		{
+			"name": "KlpMenuItem",
+			"legacySources": [
+				"lib/src/features/overlays/menu/klp_menu_item.dart"
+			]
+		},
+		{
+			"name": "KlpMessageBubble",
+			"legacySources": [
+				"lib/src/features/collections/message_thread/internal/klp_message_bubble_widget.dart"
+			]
+		},
+		{
+			"name": "KlpMessageComposer",
+			"legacySources": [
+				"lib/src/features/workspace/message_composer/internal/klp_message_composer_widget.dart"
+			]
+		},
+		{
+			"name": "KlpMessageConversation",
+			"legacySources": [
+				"lib/src/features/workspace/message_composer/internal/klp_message_conversation_widget.dart"
+			]
+		},
+		{
+			"name": "KlpMessageThread",
+			"legacySources": [
+				"lib/src/features/collections/message_thread/internal/klp_message_thread_widget.dart"
+			]
+		},
+		{
+			"name": "KlpMetricCard",
+			"legacySources": [
+				"lib/src/features/collections/card/internal/klp_metric_card_widget.dart"
+			]
+		},
+		{
+			"name": "KlpModalFrame",
+			"legacySources": [
+				"lib/src/features/overlays/primitives/klp_modal_frame.dart"
+			]
+		},
+		{
+			"name": "KlpMultiSelectField",
+			"legacySources": [
+				"lib/src/features/forms/selection/klp_multi_select_field.dart"
+			]
+		},
+		{
+			"name": "KlpNavigationRail",
+			"legacySources": [
+				"lib/src/features/navigation/widgets/rail/internal/klp_navigation_rail_widget.dart"
+			]
+		},
+		{
+			"name": "KlpNavigationRailFrame",
+			"legacySources": [
+				"lib/src/features/workspace/shell/composition/klp_navigation_rail_frame.dart"
+			]
+		},
+		{
+			"name": "KlpNavigator",
+			"legacySources": [
+				"lib/src/features/navigation/widgets/navigator/internal/klp_navigator_widget.dart"
+			]
+		},
+		{
+			"name": "KlpNumberField",
+			"legacySources": [
+				"lib/src/features/forms/input/klp_number_field.dart"
+			]
+		},
+		{
+			"name": "KlpOklchColorEditor",
+			"legacySources": [
+				"lib/src/features/forms/color/internal/klp_oklch_color_editor_widget.dart"
+			]
+		},
+		{
+			"name": "KlpOklchColorPicker",
+			"legacySources": [
+				"lib/src/features/forms/color/internal/klp_oklch_color_picker_widget.dart"
+			]
+		},
+		{
+			"name": "KlpOverlayHost",
+			"legacySources": [
+				"lib/src/foundation/layout/klp_overlay_host.dart"
+			]
+		},
+		{
+			"name": "KlpPageBackground",
+			"legacySources": [
+				"lib/src/foundation/surface/page_background/klp_page_background.dart"
+			]
+		},
+		{
+			"name": "KlpPageBackgroundEditor",
+			"legacySources": [
+				"lib/src/foundation/surface/page_background/klp_page_background_editor.dart"
+			]
+		},
+		{
+			"name": "KlpPageChrome",
+			"legacySources": [
+				"lib/src/features/workspace/page_chrome/internal/klp_page_chrome_widget.dart"
+			]
+		},
+		{
+			"name": "KlpPagination",
+			"legacySources": [
+				"lib/src/features/navigation/widgets/controls/klp_pagination.dart"
+			]
+		},
+		{
+			"name": "KlpPaneCollapseControl",
+			"legacySources": [
+				"lib/src/features/workspace/shell/composition/pane/klp_pane_collapse_control.dart"
+			]
+		},
+		{
+			"name": "KlpPanelFooter",
+			"legacySources": [
+				"lib/src/features/workspace/shell/panel/klp_panel_footer.dart"
+			]
+		},
+		{
+			"name": "KlpPanelFrame",
+			"legacySources": [
+				"lib/src/features/workspace/shell/panel/klp_panel_frame.dart"
+			]
+		},
+		{
+			"name": "KlpPanelHeader",
+			"legacySources": [
+				"lib/src/features/workspace/shell/panel/klp_panel_header.dart"
+			]
+		},
+		{
+			"name": "KlpPasswordField",
+			"legacySources": [
+				"lib/src/features/forms/input/internal/klp_password_field_widget.dart"
+			]
+		},
+		{
+			"name": "KlpPermissionState",
+			"legacySources": [
+				"lib/src/features/feedback/view_states/klp_permission_state.dart"
+			]
+		},
+		{
+			"name": "KlpPhaseToggle",
+			"legacySources": [
+				"lib/src/features/forms/toggle/internal/klp_phase_toggle_widget.dart"
+			]
+		},
+		{
+			"name": "KlpPointerBlocker",
+			"legacySources": [
+				"lib/src/foundation/interaction/primitives/klp_pointer_blocker.dart"
+			]
+		},
+		{
+			"name": "KlpPopover",
+			"legacySources": [
+				"lib/src/features/overlays/klp_popover.dart"
+			]
+		},
+		{
+			"name": "KlpPopupBackground",
+			"legacySources": [
+				"lib/src/features/overlays/popup/klp_popup_background.dart"
+			]
+		},
+		{
+			"name": "KlpPopupPanel",
+			"legacySources": [
+				"lib/src/features/overlays/popup/klp_popup_panel.dart"
+			]
+		},
+		{
+			"name": "KlpPositioned",
+			"legacySources": [
+				"lib/src/foundation/layout/klp_positioned.dart"
+			]
+		},
+		{
+			"name": "KlpPresenceIndicator",
+			"legacySources": [
+				"lib/src/foundation/interaction/filter/internal/klp_presence_indicator_widget.dart"
+			]
+		},
+		{
+			"name": "KlpPressable",
+			"legacySources": [
+				"lib/src/foundation/interaction/klp_pressable.dart"
+			]
+		},
+		{
+			"name": "KlpPreviewCard",
+			"legacySources": [
+				"lib/src/features/collections/preview_card/internal/klp_preview_card_widget.dart"
+			]
+		},
+		{
+			"name": "KlpPreviewTree",
+			"legacySources": [
+				"lib/src/features/navigation/widgets/preview_tree/klp_preview_tree.dart"
+			]
+		},
+		{
+			"name": "KlpPrimarySidebarFrame",
+			"legacySources": [
+				"lib/src/features/workspace/shell/sidebar/klp_primary_sidebar_frame.dart"
+			]
+		},
+		{
+			"name": "KlpProgress",
+			"legacySources": [
+				"lib/src/features/collections/progress/internal/klp_progress_widget.dart"
+			]
+		},
+		{
+			"name": "KlpProgressOverlay",
+			"legacySources": [
+				"lib/src/features/feedback/view_states/klp_progress_overlay.dart"
+			]
+		},
+		{
+			"name": "KlpPropertySummary",
+			"legacySources": [
+				"lib/src/features/workspace/page_chrome/internal/klp_property_summary.dart"
+			]
+		},
+		{
+			"name": "KlpPublicationProgressOverlay",
+			"legacySources": [
+				"lib/src/features/navigation/widgets/preview_tree/klp_publication_progress_overlay.dart"
+			]
+		},
+		{
+			"name": "KlpQuantityField",
+			"legacySources": [
+				"lib/src/features/forms/input/klp_quantity_field.dart"
+			]
+		},
+		{
+			"name": "KlpRadioGroup",
+			"legacySources": [
+				"lib/src/features/forms/selection/internal/klp_radio_group_widget.dart"
+			]
+		},
+		{
+			"name": "KlpRailItem",
+			"legacySources": [
+				"lib/src/features/navigation/widgets/rail/internal/klp_rail_item_widget.dart"
+			]
+		},
+		{
+			"name": "KlpReferencePicker",
+			"legacySources": [
+				"lib/src/features/forms/picker/klp_reference_picker.dart"
+			]
+		},
+		{
+			"name": "KlpRegion",
+			"legacySources": [
+				"lib/src/foundation/layout/klp_region.dart"
+			]
+		},
+		{
+			"name": "KlpRegionPlaceholder",
+			"legacySources": [
+				"lib/src/features/feedback/region_placeholder/klp_region_placeholder_widget.dart"
+			]
+		},
+		{
+			"name": "KlpRepeaterField",
+			"legacySources": [
+				"lib/src/features/forms/structured/internal/klp_repeater_field_widget.dart"
+			]
+		},
+		{
+			"name": "KlpResizablePane",
+			"legacySources": [
+				"lib/src/foundation/layout/klp_resizable_pane.dart"
+			]
+		},
+		{
+			"name": "KlpResizeHandle",
+			"legacySources": [
+				"lib/src/foundation/layout/klp_resize_handle.dart"
+			]
+		},
+		{
+			"name": "KlpResponsivePaneCoordinator",
+			"legacySources": [
+				"lib/src/features/workspace/shell/composition/pane/klp_responsive_pane_coordinator.dart"
+			]
+		},
+		{
+			"name": "KlpRichText",
+			"legacySources": [
+				"lib/src/foundation/content/klp_rich_text.dart"
+			]
+		},
+		{
+			"name": "KlpRotate",
+			"legacySources": [
+				"lib/src/foundation/layout/klp_rotate.dart"
+			]
+		},
+		{
+			"name": "KlpRouterOutlet",
+			"legacySources": [
+				"lib/src/features/navigation/legacy_router/klp_router_outlet.dart"
+			]
+		},
+		{
+			"name": "KlpRow",
+			"legacySources": [
+				"lib/src/foundation/layout/klp_row.dart"
+			]
+		},
+		{
+			"name": "KlpSaveStatusCard",
+			"legacySources": [
+				"lib/src/features/workspace/page_chrome/internal/klp_save_status_card.dart"
+			]
+		},
+		{
+			"name": "KlpScheduleList",
+			"legacySources": [
+				"lib/src/features/collections/agenda/klp_schedule_list.dart"
+			]
+		},
+		{
+			"name": "KlpScrollViewport",
+			"legacySources": [
+				"lib/src/foundation/layout/klp_scroll_viewport.dart"
+			]
+		},
+		{
+			"name": "KlpSearchNavigator",
+			"legacySources": [
+				"lib/src/features/actions/editor/klp_search_navigator.dart"
+			]
+		},
+		{
+			"name": "KlpSection",
+			"legacySources": [
+				"lib/src/foundation/surface/legacy_components/klp_section.dart"
+			]
+		},
+		{
+			"name": "KlpSegmentedControl",
+			"legacySources": [
+				"lib/src/features/forms/selection/internal/klp_segmented_control_widget.dart"
+			]
+		},
+		{
+			"name": "KlpSegmentedProgress",
+			"legacySources": [
+				"lib/src/foundation/klp_segmented_progress.dart"
+			]
+		},
+		{
+			"name": "KlpSelect",
+			"legacySources": [
+				"lib/src/features/forms/selection/internal/klp_select_widget.dart"
+			]
+		},
+		{
+			"name": "KlpSelectField",
+			"legacySources": [
+				"lib/src/features/forms/selection/internal/klp_select_field_widget.dart"
+			]
+		},
+		{
+			"name": "KlpSelectionToolbar",
+			"legacySources": [
+				"lib/src/features/actions/selection_toolbar/internal/klp_selection_toolbar_widget.dart"
+			]
+		},
+		{
+			"name": "KlpSemanticRegion",
+			"legacySources": [
+				"lib/src/foundation/interaction/klp_semantic_region.dart"
+			]
+		},
+		{
+			"name": "KlpSettingsActionBar",
+			"legacySources": [
+				"lib/src/features/workspace/settings/klp_settings_action_bar.dart"
+			]
+		},
+		{
+			"name": "KlpSettingsContentHeader",
+			"legacySources": [
+				"lib/src/features/workspace/settings/layout/klp_settings_content_header.dart"
+			]
+		},
+		{
+			"name": "KlpSettingsContentPane",
+			"legacySources": [
+				"lib/src/features/workspace/settings/layout/klp_settings_content_pane.dart"
+			]
+		},
+		{
+			"name": "KlpSettingsDialog",
+			"legacySources": [
+				"lib/src/features/workspace/settings/layout/klp_settings_dialog.dart"
+			]
+		},
+		{
+			"name": "KlpSettingsField",
+			"legacySources": [
+				"lib/src/features/workspace/settings/klp_settings_content.dart"
+			]
+		},
+		{
+			"name": "KlpSettingsNavigationGroup",
+			"legacySources": [
+				"lib/src/features/workspace/settings/navigation/klp_settings_navigation_group.dart"
+			]
+		},
+		{
+			"name": "KlpSettingsNavigationHeader",
+			"legacySources": [
+				"lib/src/features/workspace/settings/navigation/klp_settings_navigation_header.dart"
+			]
+		},
+		{
+			"name": "KlpSettingsNavigationItem",
+			"legacySources": [
+				"lib/src/features/workspace/settings/navigation/klp_settings_navigation_item.dart"
+			]
+		},
+		{
+			"name": "KlpSettingsNavigationPane",
+			"legacySources": [
+				"lib/src/features/workspace/settings/layout/klp_settings_navigation_pane.dart"
+			]
+		},
+		{
+			"name": "KlpSettingsPage",
+			"legacySources": [
+				"lib/src/features/workspace/settings/layout/klp_settings_page.dart"
+			]
+		},
+		{
+			"name": "KlpSettingsScopeSwitcher",
+			"legacySources": [
+				"lib/src/features/workspace/settings/navigation/klp_settings_scope_switcher.dart"
+			]
+		},
+		{
+			"name": "KlpSettingsSearchField",
+			"legacySources": [
+				"lib/src/features/workspace/settings/navigation/klp_settings_search_field.dart"
+			]
+		},
+		{
+			"name": "KlpShortcutHint",
+			"legacySources": [
+				"lib/src/foundation/interaction/filter/internal/klp_shortcut_hint_widget.dart"
+			]
+		},
+		{
+			"name": "KlpSidebarButtonGroup",
+			"legacySources": [
+				"lib/src/features/navigation/widgets/sidebar/klp_sidebar_button_group.dart"
+			]
+		},
+		{
+			"name": "KlpSidebarFrame",
+			"legacySources": [
+				"lib/src/features/workspace/shell/sidebar/klp_sidebar_frame.dart"
+			]
+		},
+		{
+			"name": "KlpSidebarIdentityHeader",
+			"legacySources": [
+				"lib/src/features/navigation/widgets/sidebar/klp_sidebar_identity_header.dart"
+			]
+		},
+		{
+			"name": "KlpSidebarNavigationButton",
+			"legacySources": [
+				"lib/src/features/navigation/widgets/sidebar/klp_sidebar_navigation_button.dart"
+			]
+		},
+		{
+			"name": "KlpSidebarNavigationGroup",
+			"legacySources": [
+				"lib/src/features/navigation/widgets/sidebar/klp_sidebar_navigation_group.dart"
+			]
+		},
+		{
+			"name": "KlpSidebarSectionLabel",
+			"legacySources": [
+				"lib/src/features/navigation/widgets/sidebar/klp_sidebar_section_label.dart"
+			]
+		},
+		{
+			"name": "KlpSkeletonLine",
+			"legacySources": [
+				"lib/src/features/feedback/empty_state/klp_skeleton_line.dart"
+			]
+		},
+		{
+			"name": "KlpSlider",
+			"legacySources": [
+				"lib/src/features/forms/selection/internal/klp_slider_widget.dart"
+			]
+		},
+		{
+			"name": "KlpSlidingSelection",
+			"legacySources": [
+				"lib/src/features/forms/selection/internal/klp_sliding_selection_widget.dart"
+			]
+		},
+		{
+			"name": "KlpSortControl",
+			"legacySources": [
+				"lib/src/features/collections/sort_control/klp_sort_control.dart"
+			]
+		},
+		{
+			"name": "KlpSpacer",
+			"legacySources": [
+				"lib/src/foundation/layout/klp_spacer.dart"
+			]
+		},
+		{
+			"name": "KlpSplitLayout",
+			"legacySources": [
+				"lib/src/foundation/layout/klp_split_layout.dart"
+			]
+		},
+		{
+			"name": "KlpStack",
+			"legacySources": [
+				"lib/src/foundation/layout/klp_stack.dart"
+			]
+		},
+		{
+			"name": "KlpStageFrame",
+			"legacySources": [
+				"lib/src/features/workspace/shell/stage/klp_stage_frame.dart"
+			]
+		},
+		{
+			"name": "KlpStageHeader",
+			"legacySources": [
+				"lib/src/features/workspace/shell/stage/klp_stage_header.dart"
+			]
+		},
+		{
+			"name": "KlpStageTab",
+			"legacySources": [
+				"lib/src/features/workspace/shell/stage/klp_stage_tab.dart"
+			]
+		},
+		{
+			"name": "KlpStageTopBar",
+			"legacySources": [
+				"lib/src/features/workspace/shell/stage/klp_stage_top_bar.dart"
+			]
+		},
+		{
+			"name": "KlpStateHighlight",
+			"legacySources": [
+				"lib/src/foundation/interaction/klp_state_highlight.dart"
+			]
+		},
+		{
+			"name": "KlpStatusBar",
+			"legacySources": [
+				"lib/src/features/workspace/shell/status/klp_status_bar.dart"
+			]
+		},
+		{
+			"name": "KlpStatusIndicator",
+			"legacySources": [
+				"lib/src/features/feedback/klp_status_indicator.dart"
+			]
+		},
+		{
+			"name": "KlpStatusRoleSwatches",
+			"legacySources": [
+				"lib/src/features/forms/selection/klp_status_role_swatches.dart"
+			]
+		},
+		{
+			"name": "KlpStepper",
+			"legacySources": [
+				"lib/src/features/collections/stepper/klp_stepper_widget.dart"
+			]
+		},
+		{
+			"name": "KlpStrokeFrame",
+			"legacySources": [
+				"lib/src/foundation/surface/klp_stroke.dart"
+			]
+		},
+		{
+			"name": "KlpSurface",
+			"legacySources": [
+				"lib/src/foundation/surface/klp_surface.dart"
+			]
+		},
+		{
+			"name": "KlpTabs",
+			"legacySources": [
+				"lib/src/features/navigation/widgets/tabs/klp_tabs.dart"
+			]
+		},
+		{
+			"name": "KlpTag",
+			"legacySources": [
+				"lib/src/features/collections/badge/internal/klp_tag_widget.dart"
+			]
+		},
+		{
+			"name": "KlpTagChip",
+			"legacySources": [
+				"lib/src/features/forms/selection/klp_tag_chip.dart"
+			]
+		},
+		{
+			"name": "KlpTagInputField",
+			"legacySources": [
+				"lib/src/features/forms/selection/klp_tag_input_field.dart"
+			]
+		},
+		{
+			"name": "KlpTaskList",
+			"legacySources": [
+				"lib/src/features/collections/agenda/klp_task_list.dart"
+			]
+		},
+		{
+			"name": "KlpTerminal",
+			"legacySources": [
+				"lib/src/features/collections/code/internal/klp_terminal_widget.dart"
+			]
+		},
+		{
+			"name": "KlpText",
+			"legacySources": [
+				"lib/src/foundation/content/klp_text_widget.dart"
+			]
+		},
+		{
+			"name": "KlpTextArea",
+			"legacySources": [
+				"lib/src/features/forms/input/klp_text_area.dart"
+			]
+		},
+		{
+			"name": "KlpTextField",
+			"legacySources": [
+				"lib/src/features/forms/input/internal/klp_text_field_widget.dart"
+			]
+		},
+		{
+			"name": "KlpThemeModePicker",
+			"legacySources": [
+				"lib/src/features/workspace/settings/klp_theme_mode_picker.dart"
+			]
+		},
+		{
+			"name": "KlpThemePreviewTile",
+			"legacySources": [
+				"lib/src/features/workspace/shell/theme/klp_theme_preview_tile.dart"
+			]
+		},
+		{
+			"name": "KlpThemeToggle",
+			"legacySources": [
+				"lib/src/features/workspace/shell/theme/klp_theme_toggle.dart"
+			]
+		},
+		{
+			"name": "KlpTimeline",
+			"legacySources": [
+				"lib/src/features/collections/timeline/internal/klp_timeline_widget.dart"
+			]
+		},
+		{
+			"name": "KlpToast",
+			"legacySources": [
+				"lib/src/features/feedback/toast/klp_toast_widget.dart"
+			]
+		},
+		{
+			"name": "KlpToastStack",
+			"legacySources": [
+				"lib/src/features/feedback/toast/klp_toast_stack.dart"
+			]
+		},
+		{
+			"name": "KlpToggle",
+			"legacySources": [
+				"lib/src/features/forms/toggle/internal/klp_toggle_widget.dart"
+			]
+		},
+		{
+			"name": "KlpToggleIndicator",
+			"legacySources": [
+				"lib/src/features/forms/toggle/internal/klp_toggle_indicator_widget.dart"
+			]
+		},
+		{
+			"name": "KlpTokenOverride",
+			"legacySources": [
+				"lib/src/styling/legacy_theme/klp_theme_scope.dart"
+			]
+		},
+		{
+			"name": "KlpTokenTable",
+			"legacySources": [
+				"lib/src/features/workspace/artifact/internal/klp_token_table.dart"
+			]
+		},
+		{
+			"name": "KlpTokenValidationBanner",
+			"legacySources": [
+				"lib/src/features/workspace/artifact/internal/klp_token_validation_banner.dart"
+			]
+		},
+		{
+			"name": "KlpTooltip",
+			"legacySources": [
+				"lib/src/features/overlays/primitives/klp_tooltip_widget.dart"
+			]
+		},
+		{
+			"name": "KlpTooltipSurface",
+			"legacySources": [
+				"lib/src/features/overlays/tooltip/klp_tooltip_surface.dart"
+			]
+		},
+		{
+			"name": "KlpTranslate",
+			"legacySources": [
+				"lib/src/foundation/layout/klp_translate.dart"
+			]
+		},
+		{
+			"name": "KlpTree",
+			"legacySources": [
+				"lib/src/features/collections/advanced/internal/klp_tree.dart"
+			]
+		},
+		{
+			"name": "KlpTreeItem",
+			"legacySources": [
+				"lib/src/features/collections/advanced/internal/klp_tree_item.dart"
+			]
+		},
+		{
+			"name": "KlpTriStateToggle",
+			"legacySources": [
+				"lib/src/features/forms/toggle/internal/klp_tri_state_toggle_widget.dart"
+			]
+		},
+		{
+			"name": "KlpVeil",
+			"legacySources": [
+				"lib/src/foundation/surface/klp_veil.dart"
+			]
+		},
+		{
+			"name": "KlpViewSwitcher",
+			"legacySources": [
+				"lib/src/features/navigation/widgets/controls/klp_view_switcher.dart"
+			]
+		},
+		{
+			"name": "KlpVirtualGrid",
+			"legacySources": [
+				"lib/src/foundation/layout/klp_virtual_grid.dart"
+			]
+		},
+		{
+			"name": "KlpVirtualList",
+			"legacySources": [
+				"lib/src/foundation/layout/klp_virtual_list.dart"
+			]
+		},
+		{
+			"name": "KlpWindowAppIcon",
+			"legacySources": [
+				"lib/src/features/workspace/shell/window/klp_window_app_icon.dart"
+			]
+		},
+		{
+			"name": "KlpWindowControls",
+			"legacySources": [
+				"lib/src/features/workspace/shell/window/klp_window_controls.dart"
+			]
+		},
+		{
+			"name": "KlpWindowHeader",
+			"legacySources": [
+				"lib/src/features/workspace/shell/window/klp_window_header.dart"
+			]
+		},
+		{
+			"name": "KlpWindowHeaderMacLayout",
+			"legacySources": [
+				"lib/src/features/workspace/shell/window/klp_window_header_mac_layout.dart"
+			]
+		},
+		{
+			"name": "KlpWindowHeaderWindowsLayout",
+			"legacySources": [
+				"lib/src/features/workspace/shell/window/klp_window_header_windows_layout.dart"
+			]
+		},
+		{
+			"name": "KlpWorkflowProgress",
+			"legacySources": [
+				"lib/src/features/feedback/workflow/klp_workflow_progress.dart"
+			]
+		},
+		{
+			"name": "KlpWorkflowStateSurface",
+			"legacySources": [
+				"lib/src/features/feedback/workflow/klp_workflow_state_surface.dart"
+			]
+		},
+		{
+			"name": "KlpWrap",
+			"legacySources": [
+				"lib/src/foundation/layout/klp_wrap.dart"
+			]
+		}
+	]
+}

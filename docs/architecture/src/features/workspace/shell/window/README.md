@@ -13,17 +13,17 @@
 ```mermaid
 flowchart LR
 	n0["lib/src/features/workspace/shell/window"]
-	n1["lib/src/application/localization"]
-	n2["lib/src/features/actions/button"]
-	n3["lib/src/features/workspace/shell/internal"]
-	n4["lib/src/features/workspace/shell/window/internal"]
-	n5["lib/src/foundation"]
-	n6["lib/src/foundation/content"]
-	n7["lib/src/foundation/interaction"]
-	n8["lib/src/foundation/layout"]
-	n9["lib/src/foundation/platform"]
-	n10["lib/src/foundation/surface"]
-	n11["lib/src/styling/legacy_theme"]
+	n1["lib/src/features/workspace/shell/internal"]
+	n2["lib/src/features/workspace/shell/window/internal"]
+	n3["lib/src/foundation"]
+	n4["lib/src/foundation/content"]
+	n5["lib/src/foundation/interaction"]
+	n6["lib/src/foundation/layout"]
+	n7["lib/src/foundation/localization"]
+	n8["lib/src/foundation/platform"]
+	n9["lib/src/foundation/surface"]
+	n10["lib/src/styling/legacy_theme"]
+	n11["package:flutter"]
 	n0 -->|"import"| n1
 	n0 -->|"import"| n2
 	n0 -->|"import"| n3
@@ -37,27 +37,19 @@ flowchart LR
 	n0 -->|"import"| n11
 ```
 
-```mermaid
-flowchart TD
-	n0["lib/src/features/workspace/shell/window"]
-	n1["package:flutter"]
-	n0 -->|"import"| n1
-```
-
 | 目標邊界 | 關係 | directive 數 | 第一筆來源證據 |
 |---|---|---|---|
-| <code>lib/src/application/localization</code> | import | 1 | [lib/src/features/workspace/shell/window/klp_window_controls.dart:4](../../../../../../../lib/src/features/workspace/shell/window/klp_window_controls.dart#L4) |
-| <code>lib/src/features/actions/button</code> | import | 1 | [lib/src/features/workspace/shell/window/klp_workbench_window_header.dart:3](../../../../../../../lib/src/features/workspace/shell/window/klp_workbench_window_header.dart#L3) |
 | <code>lib/src/features/workspace/shell/internal</code> | import | 2 | [lib/src/features/workspace/shell/window/klp_window_header_strategy.dart:7](../../../../../../../lib/src/features/workspace/shell/window/klp_window_header_strategy.dart#L7) |
 | <code>lib/src/features/workspace/shell/window/internal</code> | import | 1 | [lib/src/features/workspace/shell/window/klp_window_controls.dart:8](../../../../../../../lib/src/features/workspace/shell/window/klp_window_controls.dart#L8) |
-| <code>lib/src/foundation</code> | import | 2 | [lib/src/features/workspace/shell/window/klp_window_controls.dart:3](../../../../../../../lib/src/features/workspace/shell/window/klp_window_controls.dart#L3) |
-| <code>lib/src/foundation/content</code> | import | 2 | [lib/src/features/workspace/shell/window/klp_window_header.dart:10](../../../../../../../lib/src/features/workspace/shell/window/klp_window_header.dart#L10) |
+| <code>lib/src/foundation</code> | import | 1 | [lib/src/features/workspace/shell/window/klp_window_controls.dart:3](../../../../../../../lib/src/features/workspace/shell/window/klp_window_controls.dart#L3) |
+| <code>lib/src/foundation/content</code> | import | 1 | [lib/src/features/workspace/shell/window/klp_window_header.dart:10](../../../../../../../lib/src/features/workspace/shell/window/klp_window_header.dart#L10) |
 | <code>lib/src/foundation/interaction</code> | import | 3 | [lib/src/features/workspace/shell/window/klp_window_header.dart:4](../../../../../../../lib/src/features/workspace/shell/window/klp_window_header.dart#L4) |
-| <code>lib/src/foundation/layout</code> | import | 35 | [lib/src/features/workspace/shell/window/klp_window_app_icon.dart:6](../../../../../../../lib/src/features/workspace/shell/window/klp_window_app_icon.dart#L6) |
+| <code>lib/src/foundation/layout</code> | import | 23 | [lib/src/features/workspace/shell/window/klp_window_app_icon.dart:6](../../../../../../../lib/src/features/workspace/shell/window/klp_window_app_icon.dart#L6) |
+| <code>lib/src/foundation/localization</code> | import | 1 | [lib/src/features/workspace/shell/window/klp_window_controls.dart:4](../../../../../../../lib/src/features/workspace/shell/window/klp_window_controls.dart#L4) |
 | <code>lib/src/foundation/platform</code> | import | 1 | [lib/src/features/workspace/shell/window/klp_window_header.dart:3](../../../../../../../lib/src/features/workspace/shell/window/klp_window_header.dart#L3) |
 | <code>lib/src/foundation/surface</code> | import | 1 | [lib/src/features/workspace/shell/window/klp_window_header.dart:7](../../../../../../../lib/src/features/workspace/shell/window/klp_window_header.dart#L7) |
-| <code>lib/src/styling/legacy_theme</code> | import | 9 | [lib/src/features/workspace/shell/window/klp_window_controls.dart:7](../../../../../../../lib/src/features/workspace/shell/window/klp_window_controls.dart#L7) |
-| <code>package:flutter</code> | import | 8 | [lib/src/features/workspace/shell/window/klp_window_action.dart:1](../../../../../../../lib/src/features/workspace/shell/window/klp_window_action.dart#L1) |
+| <code>lib/src/styling/legacy_theme</code> | import | 7 | [lib/src/features/workspace/shell/window/klp_window_controls.dart:7](../../../../../../../lib/src/features/workspace/shell/window/klp_window_controls.dart#L7) |
+| <code>package:flutter</code> | import | 7 | [lib/src/features/workspace/shell/window/klp_window_action.dart:1](../../../../../../../lib/src/features/workspace/shell/window/klp_window_action.dart#L1) |
 
 ### 同目錄依賴
 
@@ -78,8 +70,6 @@ flowchart TD
 | <code>klp_window_header_strategy.dart → klp_window_header_windows_layout.dart</code> | import | [lib/src/features/workspace/shell/window/klp_window_header_strategy.dart:13](../../../../../../../lib/src/features/workspace/shell/window/klp_window_header_strategy.dart#L13) |
 | <code>klp_window_header_windows_layout.dart → klp_window_action.dart</code> | import | [lib/src/features/workspace/shell/window/klp_window_header_windows_layout.dart:12](../../../../../../../lib/src/features/workspace/shell/window/klp_window_header_windows_layout.dart#L12) |
 | <code>klp_window_header_windows_layout.dart → klp_window_header_keys.dart</code> | import | [lib/src/features/workspace/shell/window/klp_window_header_windows_layout.dart:13](../../../../../../../lib/src/features/workspace/shell/window/klp_window_header_windows_layout.dart#L13) |
-| <code>klp_workbench_window_header.dart → klp_window_header.dart</code> | import | [lib/src/features/workspace/shell/window/klp_workbench_window_header.dart:20](../../../../../../../lib/src/features/workspace/shell/window/klp_workbench_window_header.dart#L20) |
-| <code>klp_workbench_window_header.dart → klp_window_header_height.dart</code> | import | [lib/src/features/workspace/shell/window/klp_workbench_window_header.dart:21](../../../../../../../lib/src/features/workspace/shell/window/klp_workbench_window_header.dart#L21) |
 
 ## 目錄結構圖
 
@@ -114,9 +104,7 @@ flowchart LR
 flowchart TD
 	n0["lib/src/features/workspace/shell/window"]
 	n1["klp_window_header_windows_layout.dart"]
-	n2["klp_workbench_window_header.dart"]
 	n0 -->|"contains"| n1
-	n0 -->|"contains"| n2
 ```
 
 ## 子目錄
@@ -140,7 +128,6 @@ flowchart TD
 | `klp_window_header_mac_layout.dart` | KlpWindowHeaderMacLayout | [架構與 API](klp_window_header_mac_layout.md) | [lib/src/features/workspace/shell/window/klp_window_header_mac_layout.dart:1](../../../../../../../lib/src/features/workspace/shell/window/klp_window_header_mac_layout.dart#L1) |
 | `klp_window_header_strategy.dart` | KlpWindowHeaderStrategy | [架構與 API](klp_window_header_strategy.md) | [lib/src/features/workspace/shell/window/klp_window_header_strategy.dart:1](../../../../../../../lib/src/features/workspace/shell/window/klp_window_header_strategy.dart#L1) |
 | `klp_window_header_windows_layout.dart` | KlpWindowHeaderWindowsLayout | [架構與 API](klp_window_header_windows_layout.md) | [lib/src/features/workspace/shell/window/klp_window_header_windows_layout.dart:1](../../../../../../../lib/src/features/workspace/shell/window/klp_window_header_windows_layout.dart#L1) |
-| `klp_workbench_window_header.dart` | KlpWorkbenchWindowHeader | [架構與 API](klp_workbench_window_header.md) | [lib/src/features/workspace/shell/window/klp_workbench_window_header.dart:1](../../../../../../../lib/src/features/workspace/shell/window/klp_workbench_window_header.dart#L1) |
 
 ## 閱讀說明
 

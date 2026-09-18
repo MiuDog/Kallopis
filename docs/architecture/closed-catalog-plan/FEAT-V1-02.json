@@ -1,0 +1,132 @@
+{
+	"schema_version": 1,
+	"task_id": "FEAT-V1-02",
+	"goal": "建立現行功能匯出與完整內建元件身分的唯一權責清冊，供 application 目錄完整性查核。",
+	"module_root": "lib/src/features",
+	"architecture_path": "lib/src/features/architecture.md",
+	"architecture_revision": "sha256:0dcc8069479540bc2a705fa9af357888e6661bd18a0815aa68b01062fe92e76b",
+	"base_revision": "578d24ed111b95c429397b54245de09ade674704",
+	"allowed_read": [
+		"AGENTS.md",
+		".agents/skills/incremental-implementation/SKILL.md",
+		".agents/skills/incremental-implementation/references/task-packet.schema.json",
+		".agents/skills/incremental-implementation/scripts/check-task-scope.mjs",
+		"spec/module-architecture-v1.md",
+		"docs/architecture/closed-catalog-plan/README.md",
+		"docs/architecture/closed-catalog-plan/TEST-CC-V1-01.md",
+		"lib/kallopis_declarative.dart",
+		"docs/architecture/declarative-public-surface.md",
+		"pubspec.yaml",
+		"pubspec.lock",
+		".dart_tool/package_config.json",
+		"lib/src/features/architecture.md",
+		"lib/src/features/editing/contracts/**",
+		"lib/src/features/workspace/components/**",
+		"lib/src/features/workspace/layout/**",
+		"lib/src/features/navigation/rail/contracts/**",
+		"lib/src/features/navigation/rail/internal/klp_rail_adapter.dart",
+		"lib/src/features/navigation/widgets/explorer/klp_explorer.dart",
+		"lib/src/features/workspace/shell/window/klp_window_controls.dart",
+		"lib/src/features/editing/internal/klp_editing_adapter.dart",
+		"lib/src/features/editing/internal/klp_block_note_editing_adapter.dart",
+		"lib/src/features/editing/internal/klp_canva_editing_adapter.dart",
+		"lib/src/features/editing/internal/klp_block_controls_adapter.dart",
+		"lib/src/features/editing/internal/klp_anchored_commands_adapter.dart",
+		"lib/src/features/editing/internal/klp_mode_toolbar_adapter.dart",
+		"test/klp_application_catalog_contract_test.dart",
+		"test/support/closed_catalog_migration.md"
+	],
+	"allowed_write": [
+		"lib/src/features/catalog/component-ownership.json"
+	],
+	"forbidden": [
+		"lib/src/features/architecture.md",
+		"test/**",
+		"example/**",
+		"spec/**",
+		"docs/**",
+		".agents/**",
+		".github/**",
+		"AGENTS.md",
+		"pubspec.yaml",
+		"pubspec.lock",
+		"lib/kallopis_declarative.dart",
+		"lib/kallopis_foundation.dart",
+		"lib/kallopis_theme.dart",
+		"lib/src/application/**",
+		"lib/src/capabilities/**",
+		"lib/src/composition/**",
+		"lib/src/foundation/**",
+		"lib/src/kernel/**",
+		"lib/src/rendering/**",
+		"lib/src/runtime/**",
+		"lib/src/styling/**"
+	],
+	"contract_excerpts": [
+		{
+			"source": "spec/module-architecture-v1.md",
+			"revision": "sha256:ffe82d8b7c0cd028dcdae31d2f50b3e9b45948c1805db74200fe4cc4a055bcc7",
+			"content": "CC-V1-r1：application 唯一組合根；composition 保留內部定義與驗證；runtime 移除舊 components 編譯路徑，foundation 配對退役；清冊只作證據、不在 runtime 載入；欄位定義及 Test Author 退役案例政策均按本節。RUN-V1-02 非前置。"
+		},
+		{
+			"source": "lib/src/features/architecture.md",
+			"revision": "sha256:0dcc8069479540bc2a705fa9af357888e6661bd18a0815aa68b01062fe92e76b",
+			"content": "FEAT-V1-02 僅寫 catalog/component-ownership.json。欄位採 CC-V1-r1；分開匯出資格／資料／工具與元件身分，包含內部 rail；同類別的多個 factory variant 各有身分。來源程式仍是權威，不改公開面。"
+		}
+	],
+	"acceptance": [
+		"exports 覆蓋宣告式 feature 匯出檔的可達符號（含 part／reexport）；沒有身分的資料、資格、工具不虛構 adapter。",
+		"components 的每個 definition_id 恰有一份宣告與 adapter 組態、正確語意擁有者及 slot owner/child_type/min/max；createAll 的每個身分都列入。",
+		"compatibility 記錄既有 KlpExplorer／KlpWindowControls 舊來源、現行正式來源及 P9 removal owner/gate；舊版不進入 components。",
+		"發布清冊檔 hash；由獨立清冊契約檢查對照來源與實際 adapter，缺少 application 交付時標 integration-pending，待配對測試後才能完整驗收。",
+		"僅修改 allowed_write；產品 worker 不改任何測試／fixture／架構／公開 barrel。使用 tab 縮排（顯示寬度 2），程式註解繁體中文。",
+		"完成後從隔離基線執行既有 scope checker；報 changed_paths、acceptance_evidence、unresolved_blockers、scope_gate_result 及可取得的實際時間／token（無 provider usage 時明示無法量測）。"
+	],
+	"test_state": {
+		"red": [],
+		"yellow": [
+			"此為 CC-V1-r1 規劃版；base_revision 只是觀察 HEAD。README 的乾淨隔離基線、契約 hash 與測試交接前置完成並重簽後才能派工。",
+			"本輪只有 PLAN；上述成果與局部檢查尚未執行。尚不存在的清冊／Test Author 檔為已定名交接產物，派工前按前置順序提供。"
+		],
+		"green": [
+			"既有 architecture 記錄公開封閉與局部測試歷史通過；本 packet 不把它當成此次或未來 BUILD 的 Green。"
+		]
+	},
+	"estimate": {
+		"basis": "cold-start",
+		"reference_task_ids": [],
+		"expected_total_tokens": {
+			"low": 5000,
+			"high": 10000
+		},
+		"expected_duration_ms": {
+			"low": 2700000,
+			"high": 6000000
+		},
+		"assumptions": [
+			"同主對話模型／推理設定；不強制另派代理，若委派則一次一模組一切片。",
+			"Windows/PowerShell，已確認 D:/flutter/bin/flutter.bat 存在；派工時重驗環境。",
+			"無可比較已量測任務；依指定檔數、清冊範圍及配對成本冷啟動估算。總 elapsed 包含短交接；外部等待單獨記錄。",
+			"此為 CC-V1-r1 規劃版；base_revision 只是觀察 HEAD。README 的乾淨隔離基線、契約 hash 與測試交接前置完成並重簽後才能派工。"
+		]
+	},
+	"milestones": [
+		{
+			"id": "M1",
+			"outcome": "完成匯出分類與身分／adapter 對照",
+			"evidence": "JSON 欄位完整，node identity 與多變體逐一列出",
+			"expected_cumulative_tokens": 7000,
+			"expected_cumulative_duration_ms": 3900000,
+			"anomaly_threshold": "超過 10500 token 或 98 分鐘，或出現任何 forbidden write／契約缺口，向架構負責人回報一次具體證據並縮限範圍；不得自行放寬測試。"
+		},
+		{
+			"id": "M2",
+			"outcome": "完成資格／插槽／相容對照並交接 application",
+			"evidence": "清冊 hash、來源核對與局部 catalog 檢查結果",
+			"expected_cumulative_tokens": 10000,
+			"expected_cumulative_duration_ms": 6000000,
+			"anomaly_threshold": "超過 15000 token 或 150 分鐘，或出現任何 forbidden write／契約缺口，向架構負責人回報一次具體證據並縮限範圍；不得自行放寬測試。"
+		}
+	],
+	"experiment": null
+}

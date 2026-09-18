@@ -11,8 +11,8 @@
 ```mermaid
 flowchart LR
 	n0["klp_visual_style_json_geometry_layout.dart"]
-	n1["../klp_layout_geometry.dart"]
-	n2["../klp_optical_geometry.dart"]
+	n1["package:kallopis/src/styling/legacy_theme/klp_layout_geometry.dart"]
+	n2["package:kallopis/src/styling/legacy_theme/klp_optical_geometry.dart"]
 	n3["klp_visual_style_json_helpers.dart"]
 	n4["klp_visual_style_json_validation.dart"]
 	n0 -->|"import"| n1
@@ -25,8 +25,8 @@ flowchart LR
 
 | 關係 | 原始 directive | 來源 |
 |---|---|---|
-| import | <code>import &#x27;../klp_layout_geometry.dart&#x27;;</code> | [lib/src/styling/legacy_theme/internal/klp_visual_style_json_geometry_layout.dart:1](../../../../../../lib/src/styling/legacy_theme/internal/klp_visual_style_json_geometry_layout.dart#L1) |
-| import | <code>import &#x27;../klp_optical_geometry.dart&#x27;;</code> | [lib/src/styling/legacy_theme/internal/klp_visual_style_json_geometry_layout.dart:2](../../../../../../lib/src/styling/legacy_theme/internal/klp_visual_style_json_geometry_layout.dart#L2) |
+| import | <code>import &#x27;package:kallopis/src/styling/legacy_theme/klp_layout_geometry.dart&#x27;;</code> | [lib/src/styling/legacy_theme/internal/klp_visual_style_json_geometry_layout.dart:1](../../../../../../lib/src/styling/legacy_theme/internal/klp_visual_style_json_geometry_layout.dart#L1) |
+| import | <code>import &#x27;package:kallopis/src/styling/legacy_theme/klp_optical_geometry.dart&#x27;;</code> | [lib/src/styling/legacy_theme/internal/klp_visual_style_json_geometry_layout.dart:2](../../../../../../lib/src/styling/legacy_theme/internal/klp_visual_style_json_geometry_layout.dart#L2) |
 | import | <code>import &#x27;klp_visual_style_json_helpers.dart&#x27;;</code> | [lib/src/styling/legacy_theme/internal/klp_visual_style_json_geometry_layout.dart:3](../../../../../../lib/src/styling/legacy_theme/internal/klp_visual_style_json_geometry_layout.dart#L3) |
 | import | <code>import &#x27;klp_visual_style_json_validation.dart&#x27;;</code> | [lib/src/styling/legacy_theme/internal/klp_visual_style_json_geometry_layout.dart:4](../../../../../../lib/src/styling/legacy_theme/internal/klp_visual_style_json_geometry_layout.dart#L4) |
 

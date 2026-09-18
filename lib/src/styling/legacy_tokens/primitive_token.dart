@@ -128,12 +128,12 @@ abstract final class KlpScale {
 const Color _inkAccentLight = KlpPalette.ink900;
 const Color _inkAccentDark = KlpPalette.ink50;
 const Color _terracottaAccentLight = Color(0xFF92563C);
-const Color _terracottaAccentDark = Color(0xFFC18468);
+const Color _terracottaAccentDark = Color(0xFFCB8E72);
 const Color _ochreAccentLight = Color(0xFF7D612F);
-const Color _ochreAccentDark = Color(0xFFAE8D55);
+const Color _ochreAccentDark = Color(0xFFB99860);
 const Color _oliveAccentLight = Color(0xFF5E6A39);
-const Color _oliveAccentDark = Color(0xFF8A995C);
+const Color _oliveAccentDark = Color(0xFF94A366);
 const Color _slateAccentLight = Color(0xFF4E678A);
-const Color _slateAccentDark = Color(0xFF7D94B3);
+const Color _slateAccentDark = Color(0xFF879EBD);
 const Color _crimsonAccentLight = Color(0xFF9F4B59);
-const Color _crimsonAccentDark = Color(0xFFC37F8A);
+const Color _crimsonAccentDark = Color(0xFFCE8A95);

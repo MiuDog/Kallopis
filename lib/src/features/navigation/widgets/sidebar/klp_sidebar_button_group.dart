@@ -1,7 +1,7 @@
 import 'package:flutter/widgets.dart';
 
-import '../../../../foundation/klp_icon.dart';
-import '../../../../styling/legacy_theme/klp_theme.dart';
+import 'package:kallopis/src/foundation/klp_icon.dart';
+import 'package:kallopis/src/styling/legacy_theme/klp_theme.dart';
 import 'klp_sidebar_navigation_button.dart';
 
 /// Sidebar 按鈕群組中的單一呈現資料。

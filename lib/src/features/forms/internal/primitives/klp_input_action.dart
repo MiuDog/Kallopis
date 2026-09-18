@@ -1,4 +1,4 @@
-import '../klp_form_dependencies.dart';
+import 'package:kallopis/src/features/forms/internal/klp_form_dependencies.dart';
 
 /// Form recipe 共用的尾端語意操作 primitive，不屬於公開元件 API。
 class KlpInputAction extends StatelessWidget {

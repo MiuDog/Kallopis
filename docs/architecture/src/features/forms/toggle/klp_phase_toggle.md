@@ -12,10 +12,10 @@
 flowchart LR
 	n0["klp_phase_toggle.dart"]
 	n1["package:flutter/material.dart"]
-	n2["../../feedback/klp_feedback_tone.dart"]
-	n3["../../../foundation/klp_icon.dart"]
-	n4["../../../styling/legacy_theme/klp_theme.dart"]
-	n5["../../../foundation/content/klp_text.dart"]
+	n2["package:kallopis/src/features/feedback/klp_feedback_tone.dart"]
+	n3["package:kallopis/src/foundation/klp_icon.dart"]
+	n4["package:kallopis/src/styling/legacy_theme/klp_theme.dart"]
+	n5["package:kallopis/src/foundation/content/klp_text.dart"]
 	n6["internal/klp_phase_option.dart"]
 	n7["internal/klp_phase_segment.dart"]
 	n8["internal/klp_phase_toggle_style.dart"]
@@ -40,10 +40,10 @@ flowchart LR
 | 關係 | 原始 directive | 來源 |
 |---|---|---|
 | import | <code>import &#x27;package:flutter/material.dart&#x27;;</code> | [lib/src/features/forms/toggle/klp_phase_toggle.dart:1](../../../../../../lib/src/features/forms/toggle/klp_phase_toggle.dart#L1) |
-| import | <code>import &#x27;../../feedback/klp_feedback_tone.dart&#x27;;</code> | [lib/src/features/forms/toggle/klp_phase_toggle.dart:3](../../../../../../lib/src/features/forms/toggle/klp_phase_toggle.dart#L3) |
-| import | <code>import &#x27;../../../foundation/klp_icon.dart&#x27;;</code> | [lib/src/features/forms/toggle/klp_phase_toggle.dart:4](../../../../../../lib/src/features/forms/toggle/klp_phase_toggle.dart#L4) |
-| import | <code>import &#x27;../../../styling/legacy_theme/klp_theme.dart&#x27;;</code> | [lib/src/features/forms/toggle/klp_phase_toggle.dart:5](../../../../../../lib/src/features/forms/toggle/klp_phase_toggle.dart#L5) |
-| import | <code>import &#x27;../../../foundation/content/klp_text.dart&#x27;;</code> | [lib/src/features/forms/toggle/klp_phase_toggle.dart:6](../../../../../../lib/src/features/forms/toggle/klp_phase_toggle.dart#L6) |
+| import | <code>import &#x27;package:kallopis/src/features/feedback/klp_feedback_tone.dart&#x27;;</code> | [lib/src/features/forms/toggle/klp_phase_toggle.dart:3](../../../../../../lib/src/features/forms/toggle/klp_phase_toggle.dart#L3) |
+| import | <code>import &#x27;package:kallopis/src/foundation/klp_icon.dart&#x27;;</code> | [lib/src/features/forms/toggle/klp_phase_toggle.dart:4](../../../../../../lib/src/features/forms/toggle/klp_phase_toggle.dart#L4) |
+| import | <code>import &#x27;package:kallopis/src/styling/legacy_theme/klp_theme.dart&#x27;;</code> | [lib/src/features/forms/toggle/klp_phase_toggle.dart:5](../../../../../../lib/src/features/forms/toggle/klp_phase_toggle.dart#L5) |
+| import | <code>import &#x27;package:kallopis/src/foundation/content/klp_text.dart&#x27;;</code> | [lib/src/features/forms/toggle/klp_phase_toggle.dart:6](../../../../../../lib/src/features/forms/toggle/klp_phase_toggle.dart#L6) |
 | part | <code>part &#x27;internal/klp_phase_option.dart&#x27;;</code> | [lib/src/features/forms/toggle/klp_phase_toggle.dart:8](../../../../../../lib/src/features/forms/toggle/klp_phase_toggle.dart#L8) |
 | part | <code>part &#x27;internal/klp_phase_segment.dart&#x27;;</code> | [lib/src/features/forms/toggle/klp_phase_toggle.dart:9](../../../../../../lib/src/features/forms/toggle/klp_phase_toggle.dart#L9) |
 | part | <code>part &#x27;internal/klp_phase_toggle_style.dart&#x27;;</code> | [lib/src/features/forms/toggle/klp_phase_toggle.dart:10](../../../../../../lib/src/features/forms/toggle/klp_phase_toggle.dart#L10) |

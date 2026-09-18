@@ -22,17 +22,25 @@
 flowchart LR
 	n0["lib/src/features/workspace"]
 	n1["artifact/"]
-	n2["entity_picker/"]
-	n3["message_composer/"]
-	n4["page_chrome/"]
-	n5["settings/"]
-	n6["shell/"]
+	n2["components/"]
+	n3["entity_picker/"]
+	n4["explorer/"]
+	n5["layout/"]
+	n6["message_composer/"]
+	n7["page_chrome/"]
+	n8["presentation/"]
+	n9["settings/"]
+	n10["shell/"]
 	n0 -->|"contains"| n1
 	n0 -->|"contains"| n2
 	n0 -->|"contains"| n3
 	n0 -->|"contains"| n4
 	n0 -->|"contains"| n5
 	n0 -->|"contains"| n6
+	n0 -->|"contains"| n7
+	n0 -->|"contains"| n8
+	n0 -->|"contains"| n9
+	n0 -->|"contains"| n10
 ```
 
 ## 子目錄
@@ -40,9 +48,13 @@ flowchart LR
 | 目錄 | 導航 | 來源證據 |
 |---|---|---|
 | `artifact/` | [架構入口](artifact/README.md) | [來源目錄](../../../../../lib/src/features/workspace/artifact) |
+| `components/` | [架構入口](components/README.md) | [來源目錄](../../../../../lib/src/features/workspace/components) |
 | `entity_picker/` | [架構入口](entity_picker/README.md) | [來源目錄](../../../../../lib/src/features/workspace/entity_picker) |
+| `explorer/` | [架構入口](explorer/README.md) | [來源目錄](../../../../../lib/src/features/workspace/explorer) |
+| `layout/` | [架構入口](layout/README.md) | [來源目錄](../../../../../lib/src/features/workspace/layout) |
 | `message_composer/` | [架構入口](message_composer/README.md) | [來源目錄](../../../../../lib/src/features/workspace/message_composer) |
 | `page_chrome/` | [架構入口](page_chrome/README.md) | [來源目錄](../../../../../lib/src/features/workspace/page_chrome) |
+| `presentation/` | [架構入口](presentation/README.md) | [來源目錄](../../../../../lib/src/features/workspace/presentation) |
 | `settings/` | [架構入口](settings/README.md) | [來源目錄](../../../../../lib/src/features/workspace/settings) |
 | `shell/` | [架構入口](shell/README.md) | [來源目錄](../../../../../lib/src/features/workspace/shell) |
 

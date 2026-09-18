@@ -13,12 +13,12 @@ flowchart LR
 	n0["klp_text_field.dart"]
 	n1["package:flutter/material.dart"]
 	n2["package:flutter/services.dart"]
-	n3["../../../foundation/klp_icon.dart"]
-	n4["../../../foundation/klp_icons.dart"]
-	n5["../../../foundation/layout/klp_layout.dart"]
-	n6["../../../styling/legacy_theme/klp_theme.dart"]
-	n7["../../../foundation/content/klp_text.dart"]
-	n8["../../../foundation/interaction/controls/klp_control_size.dart"]
+	n3["package:kallopis/src/foundation/klp_icon.dart"]
+	n4["package:kallopis/src/foundation/klp_icons.dart"]
+	n5["package:kallopis/src/foundation/layout/klp_layout.dart"]
+	n6["package:kallopis/src/styling/legacy_theme/klp_theme.dart"]
+	n7["package:kallopis/src/foundation/content/klp_text.dart"]
+	n8["package:kallopis/src/foundation/interaction/controls/klp_control_size.dart"]
 	n9["internal/klp_text_field_state.dart"]
 	n10["internal/klp_text_field_style.dart"]
 	n11["internal/klp_text_field_suffix.dart"]
@@ -52,12 +52,12 @@ flowchart TD
 |---|---|---|
 | import | <code>import &#x27;package:flutter/material.dart&#x27;;</code> | [lib/src/features/forms/input/klp_text_field.dart:1](../../../../../../lib/src/features/forms/input/klp_text_field.dart#L1) |
 | import | <code>import &#x27;package:flutter/services.dart&#x27;;</code> | [lib/src/features/forms/input/klp_text_field.dart:2](../../../../../../lib/src/features/forms/input/klp_text_field.dart#L2) |
-| import | <code>import &#x27;../../../foundation/klp_icon.dart&#x27;;</code> | [lib/src/features/forms/input/klp_text_field.dart:4](../../../../../../lib/src/features/forms/input/klp_text_field.dart#L4) |
-| import | <code>import &#x27;../../../foundation/klp_icons.dart&#x27;;</code> | [lib/src/features/forms/input/klp_text_field.dart:5](../../../../../../lib/src/features/forms/input/klp_text_field.dart#L5) |
-| import | <code>import &#x27;../../../foundation/layout/klp_layout.dart&#x27;;</code> | [lib/src/features/forms/input/klp_text_field.dart:6](../../../../../../lib/src/features/forms/input/klp_text_field.dart#L6) |
-| import | <code>import &#x27;../../../styling/legacy_theme/klp_theme.dart&#x27;;</code> | [lib/src/features/forms/input/klp_text_field.dart:7](../../../../../../lib/src/features/forms/input/klp_text_field.dart#L7) |
-| import | <code>import &#x27;../../../foundation/content/klp_text.dart&#x27;;</code> | [lib/src/features/forms/input/klp_text_field.dart:8](../../../../../../lib/src/features/forms/input/klp_text_field.dart#L8) |
-| import | <code>import &#x27;../../../foundation/interaction/controls/klp_control_size.dart&#x27;;</code> | [lib/src/features/forms/input/klp_text_field.dart:9](../../../../../../lib/src/features/forms/input/klp_text_field.dart#L9) |
+| import | <code>import &#x27;package:kallopis/src/foundation/klp_icon.dart&#x27;;</code> | [lib/src/features/forms/input/klp_text_field.dart:4](../../../../../../lib/src/features/forms/input/klp_text_field.dart#L4) |
+| import | <code>import &#x27;package:kallopis/src/foundation/klp_icons.dart&#x27;;</code> | [lib/src/features/forms/input/klp_text_field.dart:5](../../../../../../lib/src/features/forms/input/klp_text_field.dart#L5) |
+| import | <code>import &#x27;package:kallopis/src/foundation/layout/klp_layout.dart&#x27;;</code> | [lib/src/features/forms/input/klp_text_field.dart:6](../../../../../../lib/src/features/forms/input/klp_text_field.dart#L6) |
+| import | <code>import &#x27;package:kallopis/src/styling/legacy_theme/klp_theme.dart&#x27;;</code> | [lib/src/features/forms/input/klp_text_field.dart:7](../../../../../../lib/src/features/forms/input/klp_text_field.dart#L7) |
+| import | <code>import &#x27;package:kallopis/src/foundation/content/klp_text.dart&#x27;;</code> | [lib/src/features/forms/input/klp_text_field.dart:8](../../../../../../lib/src/features/forms/input/klp_text_field.dart#L8) |
+| import | <code>import &#x27;package:kallopis/src/foundation/interaction/controls/klp_control_size.dart&#x27;;</code> | [lib/src/features/forms/input/klp_text_field.dart:9](../../../../../../lib/src/features/forms/input/klp_text_field.dart#L9) |
 | part | <code>part &#x27;internal/klp_text_field_state.dart&#x27;;</code> | [lib/src/features/forms/input/klp_text_field.dart:11](../../../../../../lib/src/features/forms/input/klp_text_field.dart#L11) |
 | part | <code>part &#x27;internal/klp_text_field_style.dart&#x27;;</code> | [lib/src/features/forms/input/klp_text_field.dart:12](../../../../../../lib/src/features/forms/input/klp_text_field.dart#L12) |
 | part | <code>part &#x27;internal/klp_text_field_suffix.dart&#x27;;</code> | [lib/src/features/forms/input/klp_text_field.dart:13](../../../../../../lib/src/features/forms/input/klp_text_field.dart#L13) |

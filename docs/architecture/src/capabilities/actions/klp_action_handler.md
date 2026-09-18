@@ -12,7 +12,7 @@
 flowchart LR
 	n0["klp_action_handler.dart"]
 	n1["dart:async"]
-	n2["../../kernel/identity/klp_placement_id.dart"]
+	n2["package:kallopis/src/kernel/identity/klp_placement_id.dart"]
 	n3["klp_action.dart"]
 	n4["klp_action_activation.dart"]
 	n0 -->|"import"| n1
@@ -26,7 +26,7 @@ flowchart LR
 | 關係 | 原始 directive | 來源 |
 |---|---|---|
 | import | <code>import &#x27;dart:async&#x27;;</code> | [lib/src/capabilities/actions/klp_action_handler.dart:1](../../../../../lib/src/capabilities/actions/klp_action_handler.dart#L1) |
-| import | <code>import &#x27;../../kernel/identity/klp_placement_id.dart&#x27;;</code> | [lib/src/capabilities/actions/klp_action_handler.dart:3](../../../../../lib/src/capabilities/actions/klp_action_handler.dart#L3) |
+| import | <code>import &#x27;package:kallopis/src/kernel/identity/klp_placement_id.dart&#x27;;</code> | [lib/src/capabilities/actions/klp_action_handler.dart:3](../../../../../lib/src/capabilities/actions/klp_action_handler.dart#L3) |
 | import | <code>import &#x27;klp_action.dart&#x27;;</code> | [lib/src/capabilities/actions/klp_action_handler.dart:4](../../../../../lib/src/capabilities/actions/klp_action_handler.dart#L4) |
 | import | <code>import &#x27;klp_action_activation.dart&#x27;;</code> | [lib/src/capabilities/actions/klp_action_handler.dart:5](../../../../../lib/src/capabilities/actions/klp_action_handler.dart#L5) |
 

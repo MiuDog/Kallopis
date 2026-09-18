@@ -1,0 +1,43 @@
+{
+  "version": "0.3.1",
+  "scope": "project",
+  "platforms": [
+    "codex",
+    "claude",
+    "gemini",
+    "antigravity"
+  ],
+  "installedAt": "2026-09-13T18:41:28.124Z",
+  "files": {
+    ".agents/skills/debugging-and-error-recovery/agents/openai.yaml": "462c04179dbece31be0507294b755b9d982096bdc1e7f7f0292260ceef73f5f3",
+    ".agents/skills/debugging-and-error-recovery/SKILL.md": "d19bc25cb8ce65cff9041537f02bd7c770338e9ab36a61d0d3e1eaa3dc0e1be0",
+    ".agents/skills/incremental-implementation/agents/openai.yaml": "472253396db4e12e4fc1fd2dd438a885ba1131a054aadb00c5d23f0f3c943b62",
+    ".agents/skills/incremental-implementation/references/task-packet.schema.json": "b98fd0240e24fbd4504b17ca8745edabcb36bd1fece3bb2f72cb4982d8387172",
+    ".agents/skills/incremental-implementation/scripts/check-task-scope.mjs": "ce844bc4e1839b29db1fbcf12bf5ff9aae49ffdb0fa1ef00dab434965d0755fa",
+    ".agents/skills/incremental-implementation/SKILL.md": "b5488665024f4834358a0e9d3f9f7bc51bcbf044452dec3d137f58798e1ee0bb",
+    ".agents/skills/lean-development/agents/openai.yaml": "d6fc87b70bc4d759653d78323c2a3e5e66eba58b507cb09e632421111877bf98",
+    ".agents/skills/lean-development/SKILL.md": "323e39cf2e162e0f2b559a23dabf92ad8872c5aba324ba1b7870f9d180577527",
+    ".agents/skills/planning-and-task-breakdown/agents/openai.yaml": "8c18f93c432894d22616f586c936c64fc58f8f91fae92da796d6423d4dd7e474",
+    ".agents/skills/planning-and-task-breakdown/SKILL.md": "43286f480ae5b73cbc5122fd1b199cea3b9f4a4140b748845295d7a25454893e",
+    ".agents/skills/spec-driven-development/agents/openai.yaml": "566dbe2a555b67630b9eb0d20f602181b03538b136dc39d0b60dbf05b3103975",
+    ".agents/skills/spec-driven-development/SKILL.md": "853cb7bd34131e758c67c5ab3b5ba9031979e60ac6765ca8908148da73afaf57",
+    ".agents/skills/test-driven-development/agents/openai.yaml": "d5327dd7243ccb3eda8dbe2b0fbd2eea9e8fe95f8b9dc70e5cb6d86b7059164a",
+    ".agents/skills/test-driven-development/SKILL.md": "5919f58d9fdbc2e30701e758c5194caa62b450f86f2c62ff66f03516f2150b03",
+    ".claude/skills/debugging-and-error-recovery/agents/openai.yaml": "462c04179dbece31be0507294b755b9d982096bdc1e7f7f0292260ceef73f5f3",
+    ".claude/skills/debugging-and-error-recovery/SKILL.md": "d19bc25cb8ce65cff9041537f02bd7c770338e9ab36a61d0d3e1eaa3dc0e1be0",
+    ".claude/skills/incremental-implementation/agents/openai.yaml": "472253396db4e12e4fc1fd2dd438a885ba1131a054aadb00c5d23f0f3c943b62",
+    ".claude/skills/incremental-implementation/references/task-packet.schema.json": "b98fd0240e24fbd4504b17ca8745edabcb36bd1fece3bb2f72cb4982d8387172",
+    ".claude/skills/incremental-implementation/scripts/check-task-scope.mjs": "ce844bc4e1839b29db1fbcf12bf5ff9aae49ffdb0fa1ef00dab434965d0755fa",
+    ".claude/skills/incremental-implementation/SKILL.md": "b5488665024f4834358a0e9d3f9f7bc51bcbf044452dec3d137f58798e1ee0bb",
+    ".claude/skills/lean-development/agents/openai.yaml": "d6fc87b70bc4d759653d78323c2a3e5e66eba58b507cb09e632421111877bf98",
+    ".claude/skills/lean-development/SKILL.md": "323e39cf2e162e0f2b559a23dabf92ad8872c5aba324ba1b7870f9d180577527",
+    ".claude/skills/planning-and-task-breakdown/agents/openai.yaml": "8c18f93c432894d22616f586c936c64fc58f8f91fae92da796d6423d4dd7e474",
+    ".claude/skills/planning-and-task-breakdown/SKILL.md": "43286f480ae5b73cbc5122fd1b199cea3b9f4a4140b748845295d7a25454893e",
+    ".claude/skills/spec-driven-development/agents/openai.yaml": "566dbe2a555b67630b9eb0d20f602181b03538b136dc39d0b60dbf05b3103975",
+    ".claude/skills/spec-driven-development/SKILL.md": "853cb7bd34131e758c67c5ab3b5ba9031979e60ac6765ca8908148da73afaf57",
+    ".claude/skills/test-driven-development/agents/openai.yaml": "d5327dd7243ccb3eda8dbe2b0fbd2eea9e8fe95f8b9dc70e5cb6d86b7059164a",
+    ".claude/skills/test-driven-development/SKILL.md": "5919f58d9fdbc2e30701e758c5194caa62b450f86f2c62ff66f03516f2150b03",
+    ".agents/delegation-prompts.md": "9ad0b9deebc84accc038560ac0ddd4631310d3ce32a5e111d5f96df1eb600df0",
+    ".claude/docs/delegation-prompts.md": "9ad0b9deebc84accc038560ac0ddd4631310d3ce32a5e111d5f96df1eb600df0"
+  }
+}

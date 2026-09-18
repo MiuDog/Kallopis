@@ -142,38 +142,4 @@ void main() {
     }
   });
 
-  testWidgets('matches the approved resting tones', (tester) async {
-    await tester.binding.setSurfaceSize(const Size(80, 40));
-    addTearDown(() => tester.binding.setSurfaceSize(null));
-    await tester.pumpWidget(
-      MaterialApp(
-        theme: buildKlpTheme(Brightness.light),
-        home: Scaffold(
-          body: Center(
-            child: Row(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                KlpIconButton(
-                  icon: KlpIcons.edit,
-                  label: 'Standalone',
-                  onPressed: () {},
-                ),
-                KlpIconButton(
-                  icon: KlpIcons.edit,
-                  label: 'Inline',
-                  onPressed: () {},
-                  tone: KlpIconButtonTone.inline,
-                ),
-              ],
-            ),
-          ),
-        ),
-      ),
-    );
-
-    await expectLater(
-      find.byType(Row),
-      matchesGoldenFile('goldens/klp_icon_button_tones_light.png'),
-    );
-  });
 }

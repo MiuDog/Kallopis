@@ -1,0 +1,66 @@
+{
+	"task_id": "TEST-METRICS-V1-01",
+	"allowed_write": [
+		"test/klp_metrics_module_contract_test.dart"
+	],
+	"allowed_read": [
+		"AGENTS.md",
+		".agents/skills/test-driven-development/SKILL.md",
+		"docs/architecture/metrics-module-plan/README.md",
+		"docs/architecture/metrics-module-plan/path-map.json",
+		"lib/src/foundation/architecture.md",
+		"lib/src/styling/architecture.md",
+		"lib/src/foundation/klp_metrics.dart",
+		"lib/src/foundation/metrics/klp_code_metrics.dart",
+		"lib/src/foundation/metrics/klp_control_metrics.dart",
+		"lib/src/foundation/metrics/klp_elevation.dart",
+		"lib/src/foundation/metrics/klp_form_metrics.dart",
+		"lib/src/foundation/metrics/klp_layout_gap.dart",
+		"lib/src/foundation/metrics/klp_line.dart",
+		"lib/src/foundation/metrics/klp_motion.dart",
+		"lib/src/foundation/metrics/klp_placeholder_metrics.dart",
+		"lib/src/foundation/metrics/klp_radius.dart",
+		"lib/src/foundation/metrics/klp_size.dart",
+		"lib/src/foundation/metrics/klp_space.dart",
+		"lib/src/foundation/metrics/klp_transparency.dart",
+		"lib/src/foundation/metrics/klp_typography.dart",
+		"lib/src/styling/legacy_theme/klp_geometry_theme.dart",
+		"lib/src/styling/legacy_theme/klp_surface_theme.dart",
+		"test/token_discipline_test.dart",
+		"test/geometry_theme_compatibility_test.dart",
+		"test/klp_spacing_theme_compatibility_test.dart",
+		"test/klp_chrome_typography_contract_test.dart",
+		"test/theme_extension_contract_test.dart",
+		"test/frontend_architecture_boundary_test.dart",
+		"test/module_architecture_contract_test.dart"
+	],
+	"forbidden": [
+		"lib/**",
+		"docs/**",
+		"spec/**",
+		"pubspec.yaml",
+		"pubspec.lock"
+	],
+	"contract": "METRICS-V1-r1：FND-V1-05 配對 styling，14 個原 library／part 檔整體歸 lib/src/styling/legacy_metrics/，13 個 abstract final metrics 類型與全部 static 常數／list／Duration／字型 package 名稱、順序與型別完全保留。原 foundation/klp_metrics.dart 僅留單一相容 export 指向新唯一 library，13 個舊 part 刪除。此 export 是原切片明定 P9 前相容入口，非第二實作；根 Stable kallopis_foundation.dart 保持原 export，所有公開 barrel 可達性／型別身分不變。兩個 styling legacy_theme source 改用新下層權威；完整 styling 不得再 import/export/part 到 foundation，包含條件／相對／named part／barrel 旁路，不禁止正常同模組 private helper。part 與 part-of 仍在同 library/module。沒有第二 theme／environment／l10n 或新增 consumer API；只移動權責不重設預設值。",
+	"acceptance": [
+		"完整styling無foundation相依，具有true/false synthetics。",
+		"所有13類型跨Stable/oldcompat/newowner完全同身分、原值/列表/Duration/packagefonts不變；單一實體與part對稱。",
+		"取得真實oldbaselineRed；新URI缺失不算Red；固定hash交付。"
+	],
+	"milestones": [
+		"M1 old public values snapshot and valid boundary Red",
+		"M2 tests frozen and exact hash; integrated Green pending"
+	],
+	"estimate": {
+		"basis": "cold-start",
+		"tokens": [
+			3000,
+			8000
+		],
+		"minutes": [
+			10,
+			35
+		]
+	},
+	"read_exception": "Original metrics declarations/values/directives may be read to independently freeze every current public constant; no integrated product or BUILD reasoning read."
+}

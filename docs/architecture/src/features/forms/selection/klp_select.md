@@ -12,12 +12,12 @@
 flowchart LR
 	n0["klp_select.dart"]
 	n1["package:flutter/material.dart"]
-	n2["../../../foundation/klp_icon.dart"]
-	n3["../../../foundation/klp_icons.dart"]
-	n4["../../../foundation/layout/klp_layout.dart"]
-	n5["../../../foundation/surface/klp_stroke.dart"]
-	n6["../../../styling/legacy_theme/klp_theme.dart"]
-	n7["../../../foundation/content/klp_text.dart"]
+	n2["package:kallopis/src/foundation/klp_icon.dart"]
+	n3["package:kallopis/src/foundation/klp_icons.dart"]
+	n4["package:kallopis/src/foundation/layout/klp_layout.dart"]
+	n5["package:kallopis/src/foundation/surface/klp_stroke.dart"]
+	n6["package:kallopis/src/styling/legacy_theme/klp_theme.dart"]
+	n7["package:kallopis/src/foundation/content/klp_text.dart"]
 	n8["internal/klp_select_state.dart"]
 	n9["internal/klp_select_style.dart"]
 	n10["internal/klp_select_widget.dart"]
@@ -40,12 +40,12 @@ flowchart LR
 | 關係 | 原始 directive | 來源 |
 |---|---|---|
 | import | <code>import &#x27;package:flutter/material.dart&#x27;;</code> | [lib/src/features/forms/selection/klp_select.dart:1](../../../../../../lib/src/features/forms/selection/klp_select.dart#L1) |
-| import | <code>import &#x27;../../../foundation/klp_icon.dart&#x27;;</code> | [lib/src/features/forms/selection/klp_select.dart:3](../../../../../../lib/src/features/forms/selection/klp_select.dart#L3) |
-| import | <code>import &#x27;../../../foundation/klp_icons.dart&#x27;;</code> | [lib/src/features/forms/selection/klp_select.dart:4](../../../../../../lib/src/features/forms/selection/klp_select.dart#L4) |
-| import | <code>import &#x27;../../../foundation/layout/klp_layout.dart&#x27;;</code> | [lib/src/features/forms/selection/klp_select.dart:5](../../../../../../lib/src/features/forms/selection/klp_select.dart#L5) |
-| import | <code>import &#x27;../../../foundation/surface/klp_stroke.dart&#x27;;</code> | [lib/src/features/forms/selection/klp_select.dart:6](../../../../../../lib/src/features/forms/selection/klp_select.dart#L6) |
-| import | <code>import &#x27;../../../styling/legacy_theme/klp_theme.dart&#x27;;</code> | [lib/src/features/forms/selection/klp_select.dart:7](../../../../../../lib/src/features/forms/selection/klp_select.dart#L7) |
-| import | <code>import &#x27;../../../foundation/content/klp_text.dart&#x27;;</code> | [lib/src/features/forms/selection/klp_select.dart:8](../../../../../../lib/src/features/forms/selection/klp_select.dart#L8) |
+| import | <code>import &#x27;package:kallopis/src/foundation/klp_icon.dart&#x27;;</code> | [lib/src/features/forms/selection/klp_select.dart:3](../../../../../../lib/src/features/forms/selection/klp_select.dart#L3) |
+| import | <code>import &#x27;package:kallopis/src/foundation/klp_icons.dart&#x27;;</code> | [lib/src/features/forms/selection/klp_select.dart:4](../../../../../../lib/src/features/forms/selection/klp_select.dart#L4) |
+| import | <code>import &#x27;package:kallopis/src/foundation/layout/klp_layout.dart&#x27;;</code> | [lib/src/features/forms/selection/klp_select.dart:5](../../../../../../lib/src/features/forms/selection/klp_select.dart#L5) |
+| import | <code>import &#x27;package:kallopis/src/foundation/surface/klp_stroke.dart&#x27;;</code> | [lib/src/features/forms/selection/klp_select.dart:6](../../../../../../lib/src/features/forms/selection/klp_select.dart#L6) |
+| import | <code>import &#x27;package:kallopis/src/styling/legacy_theme/klp_theme.dart&#x27;;</code> | [lib/src/features/forms/selection/klp_select.dart:7](../../../../../../lib/src/features/forms/selection/klp_select.dart#L7) |
+| import | <code>import &#x27;package:kallopis/src/foundation/content/klp_text.dart&#x27;;</code> | [lib/src/features/forms/selection/klp_select.dart:8](../../../../../../lib/src/features/forms/selection/klp_select.dart#L8) |
 | part | <code>part &#x27;internal/klp_select_state.dart&#x27;;</code> | [lib/src/features/forms/selection/klp_select.dart:10](../../../../../../lib/src/features/forms/selection/klp_select.dart#L10) |
 | part | <code>part &#x27;internal/klp_select_style.dart&#x27;;</code> | [lib/src/features/forms/selection/klp_select.dart:11](../../../../../../lib/src/features/forms/selection/klp_select.dart#L11) |
 | part | <code>part &#x27;internal/klp_select_widget.dart&#x27;;</code> | [lib/src/features/forms/selection/klp_select.dart:12](../../../../../../lib/src/features/forms/selection/klp_select.dart#L12) |

@@ -1,6 +1,6 @@
 import 'package:flutter/widgets.dart';
 
-import '../../../foundation/layout/klp_panel_layout.dart';
+import 'package:kallopis/src/foundation/layout/klp_panel_layout.dart';
 
 part 'klp_panel_layout_builder.dart';
 part 'klp_route.dart';

@@ -12,9 +12,9 @@
 flowchart LR
 	n0["klp_theme_mode_picker.dart"]
 	n1["package:flutter/widgets.dart"]
-	n2["../../../foundation/layout/klp_space_size.dart"]
-	n3["../../../foundation/layout/klp_wrap.dart"]
-	n4["../shell/theme/klp_theme_preview_tile.dart"]
+	n2["package:kallopis/src/foundation/layout/klp_space_size.dart"]
+	n3["package:kallopis/src/foundation/layout/klp_wrap.dart"]
+	n4["package:kallopis/src/features/workspace/shell/theme/klp_theme_preview_tile.dart"]
 	n5["klp_theme_mode_option.dart"]
 	n6["klp_theme_mode_option.dart"]
 	n0 -->|"import"| n1
@@ -30,9 +30,9 @@ flowchart LR
 | 關係 | 原始 directive | 來源 |
 |---|---|---|
 | import | <code>import &#x27;package:flutter/widgets.dart&#x27;;</code> | [lib/src/features/workspace/settings/klp_theme_mode_picker.dart:1](../../../../../../lib/src/features/workspace/settings/klp_theme_mode_picker.dart#L1) |
-| import | <code>import &#x27;../../../foundation/layout/klp_space_size.dart&#x27;;</code> | [lib/src/features/workspace/settings/klp_theme_mode_picker.dart:3](../../../../../../lib/src/features/workspace/settings/klp_theme_mode_picker.dart#L3) |
-| import | <code>import &#x27;../../../foundation/layout/klp_wrap.dart&#x27;;</code> | [lib/src/features/workspace/settings/klp_theme_mode_picker.dart:4](../../../../../../lib/src/features/workspace/settings/klp_theme_mode_picker.dart#L4) |
-| import | <code>import &#x27;../shell/theme/klp_theme_preview_tile.dart&#x27;;</code> | [lib/src/features/workspace/settings/klp_theme_mode_picker.dart:5](../../../../../../lib/src/features/workspace/settings/klp_theme_mode_picker.dart#L5) |
+| import | <code>import &#x27;package:kallopis/src/foundation/layout/klp_space_size.dart&#x27;;</code> | [lib/src/features/workspace/settings/klp_theme_mode_picker.dart:3](../../../../../../lib/src/features/workspace/settings/klp_theme_mode_picker.dart#L3) |
+| import | <code>import &#x27;package:kallopis/src/foundation/layout/klp_wrap.dart&#x27;;</code> | [lib/src/features/workspace/settings/klp_theme_mode_picker.dart:4](../../../../../../lib/src/features/workspace/settings/klp_theme_mode_picker.dart#L4) |
+| import | <code>import &#x27;package:kallopis/src/features/workspace/shell/theme/klp_theme_preview_tile.dart&#x27;;</code> | [lib/src/features/workspace/settings/klp_theme_mode_picker.dart:5](../../../../../../lib/src/features/workspace/settings/klp_theme_mode_picker.dart#L5) |
 | import | <code>import &#x27;klp_theme_mode_option.dart&#x27;;</code> | [lib/src/features/workspace/settings/klp_theme_mode_picker.dart:6](../../../../../../lib/src/features/workspace/settings/klp_theme_mode_picker.dart#L6) |
 | export | <code>export &#x27;klp_theme_mode_option.dart&#x27;;</code> | [lib/src/features/workspace/settings/klp_theme_mode_picker.dart:8](../../../../../../lib/src/features/workspace/settings/klp_theme_mode_picker.dart#L8) |
 

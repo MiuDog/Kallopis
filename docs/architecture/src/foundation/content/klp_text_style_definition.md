@@ -12,7 +12,7 @@
 flowchart LR
 	n0["klp_text_style_definition.dart"]
 	n1["package:flutter/widgets.dart"]
-	n2["../../styling/legacy_theme/klp_typography_theme.dart"]
+	n2["package:kallopis/src/styling/legacy_theme/klp_typography_theme.dart"]
 	n3["klp_font_role.dart"]
 	n4["klp_text_color_tier.dart"]
 	n0 -->|"import"| n1
@@ -26,7 +26,7 @@ flowchart LR
 | 關係 | 原始 directive | 來源 |
 |---|---|---|
 | import | <code>import &#x27;package:flutter/widgets.dart&#x27;;</code> | [lib/src/foundation/content/klp_text_style_definition.dart:1](../../../../../lib/src/foundation/content/klp_text_style_definition.dart#L1) |
-| import | <code>import &#x27;../../styling/legacy_theme/klp_typography_theme.dart&#x27;;</code> | [lib/src/foundation/content/klp_text_style_definition.dart:3](../../../../../lib/src/foundation/content/klp_text_style_definition.dart#L3) |
+| import | <code>import &#x27;package:kallopis/src/styling/legacy_theme/klp_typography_theme.dart&#x27;;</code> | [lib/src/foundation/content/klp_text_style_definition.dart:3](../../../../../lib/src/foundation/content/klp_text_style_definition.dart#L3) |
 | import | <code>import &#x27;klp_font_role.dart&#x27;;</code> | [lib/src/foundation/content/klp_text_style_definition.dart:4](../../../../../lib/src/foundation/content/klp_text_style_definition.dart#L4) |
 | import | <code>import &#x27;klp_text_color_tier.dart&#x27;;</code> | [lib/src/foundation/content/klp_text_style_definition.dart:5](../../../../../lib/src/foundation/content/klp_text_style_definition.dart#L5) |
 

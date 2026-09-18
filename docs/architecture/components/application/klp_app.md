@@ -48,7 +48,7 @@ flowchart TD
 
 ## 程式碼證據
 
-- 檔案路徑：[`lib/src/application/legacy/klp_app.dart`](../../../../lib/src/application/legacy/klp_app.dart#L78)
+- 檔案路徑：[`lib/src/application/legacy/klp_app.dart`](../../../../lib/src/application/legacy/klp_app.dart#L76)
 - 宣告型態：`StatefulWidget`
 
 ## 閱讀說明

@@ -12,9 +12,9 @@
 flowchart LR
 	n0["klp_feedback_tone.dart"]
 	n1["package:flutter/widgets.dart"]
-	n2["../../foundation/klp_icon.dart"]
-	n3["../../foundation/klp_icons.dart"]
-	n4["../../styling/legacy_theme/klp_theme.dart"]
+	n2["package:kallopis/src/foundation/klp_icon.dart"]
+	n3["package:kallopis/src/foundation/klp_icons.dart"]
+	n4["package:kallopis/src/styling/legacy_theme/klp_theme.dart"]
 	n5["feedback_tone/klp_feedback_tone_style.dart"]
 	n6["feedback_tone/klp_feedback_tone_value.dart"]
 	n0 -->|"import"| n1
@@ -30,9 +30,9 @@ flowchart LR
 | 關係 | 原始 directive | 來源 |
 |---|---|---|
 | import | <code>import &#x27;package:flutter/widgets.dart&#x27;;</code> | [lib/src/features/feedback/klp_feedback_tone.dart:1](../../../../../lib/src/features/feedback/klp_feedback_tone.dart#L1) |
-| import | <code>import &#x27;../../foundation/klp_icon.dart&#x27;;</code> | [lib/src/features/feedback/klp_feedback_tone.dart:3](../../../../../lib/src/features/feedback/klp_feedback_tone.dart#L3) |
-| import | <code>import &#x27;../../foundation/klp_icons.dart&#x27;;</code> | [lib/src/features/feedback/klp_feedback_tone.dart:4](../../../../../lib/src/features/feedback/klp_feedback_tone.dart#L4) |
-| import | <code>import &#x27;../../styling/legacy_theme/klp_theme.dart&#x27;;</code> | [lib/src/features/feedback/klp_feedback_tone.dart:5](../../../../../lib/src/features/feedback/klp_feedback_tone.dart#L5) |
+| import | <code>import &#x27;package:kallopis/src/foundation/klp_icon.dart&#x27;;</code> | [lib/src/features/feedback/klp_feedback_tone.dart:3](../../../../../lib/src/features/feedback/klp_feedback_tone.dart#L3) |
+| import | <code>import &#x27;package:kallopis/src/foundation/klp_icons.dart&#x27;;</code> | [lib/src/features/feedback/klp_feedback_tone.dart:4](../../../../../lib/src/features/feedback/klp_feedback_tone.dart#L4) |
+| import | <code>import &#x27;package:kallopis/src/styling/legacy_theme/klp_theme.dart&#x27;;</code> | [lib/src/features/feedback/klp_feedback_tone.dart:5](../../../../../lib/src/features/feedback/klp_feedback_tone.dart#L5) |
 | part | <code>part &#x27;feedback_tone/klp_feedback_tone_style.dart&#x27;;</code> | [lib/src/features/feedback/klp_feedback_tone.dart:7](../../../../../lib/src/features/feedback/klp_feedback_tone.dart#L7) |
 | part | <code>part &#x27;feedback_tone/klp_feedback_tone_value.dart&#x27;;</code> | [lib/src/features/feedback/klp_feedback_tone.dart:8](../../../../../lib/src/features/feedback/klp_feedback_tone.dart#L8) |
 

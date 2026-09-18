@@ -12,17 +12,19 @@
 flowchart LR
 	n0["klp_icon.dart"]
 	n1["package:flutter/widgets.dart"]
-	n2["../styling/legacy_theme/klp_theme.dart"]
+	n2["package:kallopis/src/styling/legacy_theme/klp_theme.dart"]
 	n3["klp_icon_data.dart"]
-	n4["klp_icon_weight.dart"]
-	n5["klp_icon_data.dart"]
-	n6["klp_icon_weight.dart"]
+	n4["klp_icon_fonts.dart"]
+	n5["klp_icon_weight.dart"]
+	n6["klp_icon_data.dart"]
+	n7["klp_icon_weight.dart"]
 	n0 -->|"import"| n1
 	n0 -->|"import"| n2
 	n0 -->|"import"| n3
 	n0 -->|"import"| n4
-	n0 -->|"export"| n5
+	n0 -->|"import"| n5
 	n0 -->|"export"| n6
+	n0 -->|"export"| n7
 ```
 
 ## 依賴證據
@@ -30,11 +32,12 @@ flowchart LR
 | 關係 | 原始 directive | 來源 |
 |---|---|---|
 | import | <code>import &#x27;package:flutter/widgets.dart&#x27;;</code> | [lib/src/foundation/klp_icon.dart:1](../../../../lib/src/foundation/klp_icon.dart#L1) |
-| import | <code>import &#x27;../styling/legacy_theme/klp_theme.dart&#x27;;</code> | [lib/src/foundation/klp_icon.dart:3](../../../../lib/src/foundation/klp_icon.dart#L3) |
+| import | <code>import &#x27;package:kallopis/src/styling/legacy_theme/klp_theme.dart&#x27;;</code> | [lib/src/foundation/klp_icon.dart:3](../../../../lib/src/foundation/klp_icon.dart#L3) |
 | import | <code>import &#x27;klp_icon_data.dart&#x27;;</code> | [lib/src/foundation/klp_icon.dart:4](../../../../lib/src/foundation/klp_icon.dart#L4) |
-| import | <code>import &#x27;klp_icon_weight.dart&#x27;;</code> | [lib/src/foundation/klp_icon.dart:5](../../../../lib/src/foundation/klp_icon.dart#L5) |
-| export | <code>export &#x27;klp_icon_data.dart&#x27;;</code> | [lib/src/foundation/klp_icon.dart:7](../../../../lib/src/foundation/klp_icon.dart#L7) |
-| export | <code>export &#x27;klp_icon_weight.dart&#x27;;</code> | [lib/src/foundation/klp_icon.dart:8](../../../../lib/src/foundation/klp_icon.dart#L8) |
+| import | <code>import &#x27;klp_icon_fonts.dart&#x27;;</code> | [lib/src/foundation/klp_icon.dart:5](../../../../lib/src/foundation/klp_icon.dart#L5) |
+| import | <code>import &#x27;klp_icon_weight.dart&#x27;;</code> | [lib/src/foundation/klp_icon.dart:6](../../../../lib/src/foundation/klp_icon.dart#L6) |
+| export | <code>export &#x27;klp_icon_data.dart&#x27;;</code> | [lib/src/foundation/klp_icon.dart:8](../../../../lib/src/foundation/klp_icon.dart#L8) |
+| export | <code>export &#x27;klp_icon_weight.dart&#x27;;</code> | [lib/src/foundation/klp_icon.dart:9](../../../../lib/src/foundation/klp_icon.dart#L9) |
 
 ## 宣告關係圖
 
@@ -59,24 +62,24 @@ classDiagram
 
 ### KlpIcon
 
-ClassDeclaration · public · [lib/src/foundation/klp_icon.dart:10](../../../../lib/src/foundation/klp_icon.dart#L10)
+ClassDeclaration · public · [lib/src/foundation/klp_icon.dart:11](../../../../lib/src/foundation/klp_icon.dart#L11)
 
 <code>class KlpIcon extends StatelessWidget</code>
 
-- `extends` → <code>StatelessWidget</code>：[lib/src/foundation/klp_icon.dart:10](../../../../lib/src/foundation/klp_icon.dart#L10)
+- `extends` → <code>StatelessWidget</code>：[lib/src/foundation/klp_icon.dart:11](../../../../lib/src/foundation/klp_icon.dart#L11)
 
 | 成員 | 可見性 | 簽章／型別 | 來源註解摘要 | 證據 |
 |---|---|---|---|---|
-| constructor <code>KlpIcon</code> | public | <code>const KlpIcon( this.icon, { super.key, this.size, this.color, this.semanticLabel, this.weight = KlpIconWeight.regular, })</code> |  | [lib/src/foundation/klp_icon.dart:11](../../../../lib/src/foundation/klp_icon.dart#L11) |
-| field <code>icon</code> | public | <code>final KlpIconData icon</code> |  | [lib/src/foundation/klp_icon.dart:20](../../../../lib/src/foundation/klp_icon.dart#L20) |
-| field <code>size</code> | public | <code>final double? size</code> | `null` 表示沿用 theme 的圖示尺寸。 | [lib/src/foundation/klp_icon.dart:23](../../../../lib/src/foundation/klp_icon.dart#L23) |
-| field <code>color</code> | public | <code>final Color? color</code> |  | [lib/src/foundation/klp_icon.dart:24](../../../../lib/src/foundation/klp_icon.dart#L24) |
-| field <code>semanticLabel</code> | public | <code>final String? semanticLabel</code> |  | [lib/src/foundation/klp_icon.dart:25](../../../../lib/src/foundation/klp_icon.dart#L25) |
-| field <code>weight</code> | public | <code>final KlpIconWeight weight</code> |  | [lib/src/foundation/klp_icon.dart:26](../../../../lib/src/foundation/klp_icon.dart#L26) |
-| field <code>regularFontFamily</code> | public | <code>static const (inferred) regularFontFamily</code> | Regular Rounded 在 Flutter asset manifest 中登記的 family 名稱。 | [lib/src/foundation/klp_icon.dart:29](../../../../lib/src/foundation/klp_icon.dart#L29) |
-| field <code>thinFontFamily</code> | public | <code>static const (inferred) thinFontFamily</code> | Thin Rounded 在 Flutter asset manifest 中登記的 family 名稱。 | [lib/src/foundation/klp_icon.dart:32](../../../../lib/src/foundation/klp_icon.dart#L32) |
-| field <code>fontFamily</code> | public | <code>static const (inferred) fontFamily</code> | 向下相容的預設字型名稱。 | [lib/src/foundation/klp_icon.dart:35](../../../../lib/src/foundation/klp_icon.dart#L35) |
-| method <code>build</code> | public | <code>Widget build(BuildContext context)</code> |  | [lib/src/foundation/klp_icon.dart:37](../../../../lib/src/foundation/klp_icon.dart#L37) |
+| constructor <code>KlpIcon</code> | public | <code>const KlpIcon( this.icon, { super.key, this.size, this.color, this.semanticLabel, this.weight = KlpIconWeight.regular, })</code> |  | [lib/src/foundation/klp_icon.dart:12](../../../../lib/src/foundation/klp_icon.dart#L12) |
+| field <code>icon</code> | public | <code>final KlpIconData icon</code> |  | [lib/src/foundation/klp_icon.dart:21](../../../../lib/src/foundation/klp_icon.dart#L21) |
+| field <code>size</code> | public | <code>final double? size</code> | `null` 表示沿用 theme 的圖示尺寸。 | [lib/src/foundation/klp_icon.dart:24](../../../../lib/src/foundation/klp_icon.dart#L24) |
+| field <code>color</code> | public | <code>final Color? color</code> |  | [lib/src/foundation/klp_icon.dart:25](../../../../lib/src/foundation/klp_icon.dart#L25) |
+| field <code>semanticLabel</code> | public | <code>final String? semanticLabel</code> |  | [lib/src/foundation/klp_icon.dart:26](../../../../lib/src/foundation/klp_icon.dart#L26) |
+| field <code>weight</code> | public | <code>final KlpIconWeight weight</code> |  | [lib/src/foundation/klp_icon.dart:27](../../../../lib/src/foundation/klp_icon.dart#L27) |
+| field <code>regularFontFamily</code> | public | <code>static const (inferred) regularFontFamily</code> | Regular Rounded 在 Flutter asset manifest 中登記的 family 名稱。 | [lib/src/foundation/klp_icon.dart:30](../../../../lib/src/foundation/klp_icon.dart#L30) |
+| field <code>thinFontFamily</code> | public | <code>static const (inferred) thinFontFamily</code> | Thin Rounded 在 Flutter asset manifest 中登記的 family 名稱。 | [lib/src/foundation/klp_icon.dart:33](../../../../lib/src/foundation/klp_icon.dart#L33) |
+| field <code>fontFamily</code> | public | <code>static const (inferred) fontFamily</code> | 向下相容的預設字型名稱。 | [lib/src/foundation/klp_icon.dart:36](../../../../lib/src/foundation/klp_icon.dart#L36) |
+| method <code>build</code> | public | <code>Widget build(BuildContext context)</code> |  | [lib/src/foundation/klp_icon.dart:38](../../../../lib/src/foundation/klp_icon.dart#L38) |
 
 ## 閱讀說明與限制
 

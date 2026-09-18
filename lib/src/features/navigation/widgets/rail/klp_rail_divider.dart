@@ -1,6 +1,6 @@
 import 'package:flutter/widgets.dart';
 
-import '../../../../foundation/surface/klp_dashed_border.dart';
+import 'package:kallopis/src/foundation/surface/klp_dashed_border.dart';
 import 'klp_rail_entry.dart';
 
 /// Rail 專用的固定分隔 Entry。

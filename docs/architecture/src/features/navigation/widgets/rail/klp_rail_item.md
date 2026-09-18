@@ -13,12 +13,12 @@ flowchart LR
 	n0["klp_rail_item.dart"]
 	n1["package:flutter/gestures.dart"]
 	n2["package:flutter/material.dart"]
-	n3["../../../../foundation/klp_icon.dart"]
-	n4["../../../../foundation/interaction/klp_action_region.dart"]
-	n5["../../../../foundation/interaction/klp_action_region_shape.dart"]
-	n6["../../../../foundation/layout/klp_layout.dart"]
-	n7["../../../overlays/klp_tooltip.dart"]
-	n8["../../../../styling/legacy_theme/klp_theme.dart"]
+	n3["package:kallopis/src/foundation/klp_icon.dart"]
+	n4["package:kallopis/src/foundation/interaction/klp_action_region.dart"]
+	n5["package:kallopis/src/foundation/interaction/klp_action_region_shape.dart"]
+	n6["package:kallopis/src/foundation/layout/klp_layout.dart"]
+	n7["package:kallopis/src/features/overlays/klp_tooltip.dart"]
+	n8["package:kallopis/src/styling/legacy_theme/klp_theme.dart"]
 	n9["internal/klp_rail_item_widget.dart"]
 	n10["primitives/klp_rail_badge_indicator.dart"]
 	n11["primitives/klp_rail_tooltip_anchor.dart"]
@@ -48,12 +48,12 @@ flowchart TD
 |---|---|---|
 | import | <code>import &#x27;package:flutter/gestures.dart&#x27;;</code> | [lib/src/features/navigation/widgets/rail/klp_rail_item.dart:1](../../../../../../../lib/src/features/navigation/widgets/rail/klp_rail_item.dart#L1) |
 | import | <code>import &#x27;package:flutter/material.dart&#x27;;</code> | [lib/src/features/navigation/widgets/rail/klp_rail_item.dart:2](../../../../../../../lib/src/features/navigation/widgets/rail/klp_rail_item.dart#L2) |
-| import | <code>import &#x27;../../../../foundation/klp_icon.dart&#x27;;</code> | [lib/src/features/navigation/widgets/rail/klp_rail_item.dart:4](../../../../../../../lib/src/features/navigation/widgets/rail/klp_rail_item.dart#L4) |
-| import | <code>import &#x27;../../../../foundation/interaction/klp_action_region.dart&#x27;;</code> | [lib/src/features/navigation/widgets/rail/klp_rail_item.dart:5](../../../../../../../lib/src/features/navigation/widgets/rail/klp_rail_item.dart#L5) |
-| import | <code>import &#x27;../../../../foundation/interaction/klp_action_region_shape.dart&#x27;;</code> | [lib/src/features/navigation/widgets/rail/klp_rail_item.dart:6](../../../../../../../lib/src/features/navigation/widgets/rail/klp_rail_item.dart#L6) |
-| import | <code>import &#x27;../../../../foundation/layout/klp_layout.dart&#x27;;</code> | [lib/src/features/navigation/widgets/rail/klp_rail_item.dart:7](../../../../../../../lib/src/features/navigation/widgets/rail/klp_rail_item.dart#L7) |
-| import | <code>import &#x27;../../../overlays/klp_tooltip.dart&#x27;;</code> | [lib/src/features/navigation/widgets/rail/klp_rail_item.dart:8](../../../../../../../lib/src/features/navigation/widgets/rail/klp_rail_item.dart#L8) |
-| import | <code>import &#x27;../../../../styling/legacy_theme/klp_theme.dart&#x27;;</code> | [lib/src/features/navigation/widgets/rail/klp_rail_item.dart:9](../../../../../../../lib/src/features/navigation/widgets/rail/klp_rail_item.dart#L9) |
+| import | <code>import &#x27;package:kallopis/src/foundation/klp_icon.dart&#x27;;</code> | [lib/src/features/navigation/widgets/rail/klp_rail_item.dart:4](../../../../../../../lib/src/features/navigation/widgets/rail/klp_rail_item.dart#L4) |
+| import | <code>import &#x27;package:kallopis/src/foundation/interaction/klp_action_region.dart&#x27;;</code> | [lib/src/features/navigation/widgets/rail/klp_rail_item.dart:5](../../../../../../../lib/src/features/navigation/widgets/rail/klp_rail_item.dart#L5) |
+| import | <code>import &#x27;package:kallopis/src/foundation/interaction/klp_action_region_shape.dart&#x27;;</code> | [lib/src/features/navigation/widgets/rail/klp_rail_item.dart:6](../../../../../../../lib/src/features/navigation/widgets/rail/klp_rail_item.dart#L6) |
+| import | <code>import &#x27;package:kallopis/src/foundation/layout/klp_layout.dart&#x27;;</code> | [lib/src/features/navigation/widgets/rail/klp_rail_item.dart:7](../../../../../../../lib/src/features/navigation/widgets/rail/klp_rail_item.dart#L7) |
+| import | <code>import &#x27;package:kallopis/src/features/overlays/klp_tooltip.dart&#x27;;</code> | [lib/src/features/navigation/widgets/rail/klp_rail_item.dart:8](../../../../../../../lib/src/features/navigation/widgets/rail/klp_rail_item.dart#L8) |
+| import | <code>import &#x27;package:kallopis/src/styling/legacy_theme/klp_theme.dart&#x27;;</code> | [lib/src/features/navigation/widgets/rail/klp_rail_item.dart:9](../../../../../../../lib/src/features/navigation/widgets/rail/klp_rail_item.dart#L9) |
 | part | <code>part &#x27;internal/klp_rail_item_widget.dart&#x27;;</code> | [lib/src/features/navigation/widgets/rail/klp_rail_item.dart:11](../../../../../../../lib/src/features/navigation/widgets/rail/klp_rail_item.dart#L11) |
 | part | <code>part &#x27;primitives/klp_rail_badge_indicator.dart&#x27;;</code> | [lib/src/features/navigation/widgets/rail/klp_rail_item.dart:12](../../../../../../../lib/src/features/navigation/widgets/rail/klp_rail_item.dart#L12) |
 | part | <code>part &#x27;primitives/klp_rail_tooltip_anchor.dart&#x27;;</code> | [lib/src/features/navigation/widgets/rail/klp_rail_item.dart:13](../../../../../../../lib/src/features/navigation/widgets/rail/klp_rail_item.dart#L13) |

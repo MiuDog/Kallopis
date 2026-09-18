@@ -1,8 +1,8 @@
-import '../internal/klp_form_dependencies.dart';
-import '../internal/klp_input_frame.dart';
-import '../internal/primitives/klp_input_action.dart';
-import '../internal/primitives/klp_input_editor.dart';
-import '../internal/primitives/klp_input_segment_divider.dart';
+import 'package:kallopis/src/features/forms/internal/klp_form_dependencies.dart';
+import 'package:kallopis/src/features/forms/internal/klp_input_frame.dart';
+import 'package:kallopis/src/features/forms/internal/primitives/klp_input_action.dart';
+import 'package:kallopis/src/features/forms/internal/primitives/klp_input_editor.dart';
+import 'package:kallopis/src/features/forms/internal/primitives/klp_input_segment_divider.dart';
 
 /// 在同一控制框中編輯起訖日期，並可由尾端動作開啟產品提供的日期挑選器。
 class KlpDateRangeField extends StatelessWidget {

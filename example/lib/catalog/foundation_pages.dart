@@ -1,3 +1,5 @@
+import 'package:kallopis/kallopis_declarative.dart' as declarative;
+import 'explorer_preview.dart';
 import 'package:flutter/widgets.dart';
 import 'package:kallopis/kallopis.dart';
 
@@ -1114,7 +1116,6 @@ final layoutInteractionPage = CatalogPageData(
         120,
         const KlpApp(
           title: 'Kallopis',
-          appIcon: KlpIcon(KlpIcons.sparkles),
           home: KlpPanelFrame(content: Center(child: KlpText('KlpApp'))),
         ),
       ),
@@ -1191,19 +1192,6 @@ final layoutInteractionPage = CatalogPageData(
           ],
         );
       },
-    ),
-    Specimen(
-      name: 'KlpWorkbenchWindowHeader',
-      note: '單一工作台視窗列，依 Primary Sidebar 寬度定位收合控制。',
-      build: (context) => KlpWorkbenchWindowHeader(
-        titleText: 'Notist',
-        primaryPaneWidth: 268,
-        primaryVisible: true,
-        onTogglePrimary: () {},
-        collapseLabel: '收合側邊面板',
-        expandLabel: '展開側邊面板',
-        showWindowControls: false,
-      ),
     ),
     Specimen(
       name: 'KlpPanelHeader',
@@ -1330,34 +1318,6 @@ final layoutInteractionPage = CatalogPageData(
               KlpPanelHeader(title: '導覽'),
               KlpText('內容'),
             ],
-          ),
-        ),
-      ),
-    ),
-    Specimen(
-      name: 'KlpWorkbenchNavigationRegion',
-      note: '將具有獨立 surface 的 Rail 與 Sidebar 並排成共同收合區域。',
-      build: (context) => _boxed(
-        context,
-        160,
-        const KlpWorkbenchNavigationRegion(
-          rail: KlpNavigationRailFrame(
-            child: Column(
-              children: [
-                KlpIcon(KlpIcons.folder),
-                SizedBox(height: 8),
-                KlpIcon(KlpIcons.box),
-              ],
-            ),
-          ),
-          sidebar: KlpSidebarFrame(
-            content: Column(
-              crossAxisAlignment: CrossAxisAlignment.stretch,
-              children: [
-                KlpPanelHeader(title: '導覽'),
-                KlpText('內容'),
-              ],
-            ),
           ),
         ),
       ),
@@ -1714,41 +1674,17 @@ final fileExplorerPage = CatalogPageData(
   icon: KlpIcons.folder,
   specimens: [
     Specimen(
-      name: 'KlpExplorer',
-      note: '完整 Explorer；表面、分類與元素節點的排版皆由 Kallopis 管理。',
-      build: (context) => const SizedBox(
-        width: 280,
-        height: 520,
-        child: KlpExplorer(
-          categories: [
-            KlpExplorerCategory(
-              id: 'foundation',
-              label: 'Foundation',
-              nodes: [
-                KlpExplorerNode(
-                  id: 'tokens',
-                  label: 'Design Tokens',
-                  kind: KlpExplorerNodeKind.folder,
-                  expanded: true,
-                  children: [
-                    KlpExplorerNode(
-                      id: 'colors',
-                      label: 'Colors',
-                      kind: KlpExplorerNodeKind.file,
-                    ),
-                    KlpExplorerNode(
-                      id: 'spacing',
-                      label: 'Spacing',
-                      kind: KlpExplorerNodeKind.file,
-                    ),
-                  ],
-                ),
-              ],
-            ),
-          ],
-        ),
-      ),
-    ),
+			name: 'KlpExplorer',
+			note: 'Explorer v1；資料 interface、節點能力及共用列風格。完整互動候選見 explorer_catalog.dart。',
+			build: (context) => SizedBox(width: 280, height: 520, child: ExplorerPreview(items: [
+				declarative.KlpExplorerCategoryModel(
+					id: declarative.KlpId.root('foundation'),
+					row: declarative.KlpExplorerRowData(title: 'Foundation'),
+					capabilities: const declarative.KlpExplorerCapabilities(collapsible: true, primaryAction: declarative.KlpExplorerPrimaryAction.toggleExpansion),
+					children: [declarative.KlpExplorerNodeModel(id: declarative.KlpId.root('tokens'), row: declarative.KlpExplorerRowData(title: 'Design Tokens', icon: declarative.KlpExplorerGlyph.file), canHaveChildren: true, capabilities: const declarative.KlpExplorerCapabilities(selectable: true, collapsible: true, primaryAction: declarative.KlpExplorerPrimaryAction.activate), children: [for (final title in ['Colors', 'Spacing']) declarative.KlpExplorerNodeModel(id: declarative.KlpId.root(title), row: declarative.KlpExplorerRowData(title: title), canHaveChildren: false, capabilities: const declarative.KlpExplorerCapabilities(selectable: true))])],
+				),
+			])),
+		),
     Specimen(
       name: 'KlpFileExplorer',
       note: '檔案總管／筆記導航元件（含分類折疊、資料夾樹狀展開與檔案選取）。',

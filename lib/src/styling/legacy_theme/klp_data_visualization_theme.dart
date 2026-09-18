@@ -1,6 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import '../legacy_tokens/primitive_token.dart';
+import 'package:kallopis/src/styling/legacy_tokens/primitive_token.dart';
 
 part '../presets/legacy/default_data_visualization.dart';
 

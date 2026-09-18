@@ -1,6 +1,6 @@
 import 'package:flutter/widgets.dart';
 
-import '../../foundation/layout/klp_box.dart';
+import 'package:kallopis/src/foundation/layout/klp_box.dart';
 
 part 'primitives/klp_live_region_frame.dart';
 

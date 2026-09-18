@@ -1,4 +1,4 @@
-import '../internal/klp_form_dependencies.dart';
+import 'package:kallopis/src/features/forms/internal/klp_form_dependencies.dart';
 
 /// 多行文字輸入欄位，是 [KlpTextField] 的薄封裝——固定 `multiline: true`，
 /// 其餘外觀與行為完全繼承自 [KlpTextField]。

@@ -1,6 +1,6 @@
 import 'package:flutter/widgets.dart';
 
-import '../../styling/legacy_theme/klp_theme.dart';
+import 'package:kallopis/src/styling/legacy_theme/klp_theme.dart';
 
 /// 將高度不同的內容依序分配到多欄的瀑布流版面。
 class KlpMasonryGrid extends StatelessWidget {

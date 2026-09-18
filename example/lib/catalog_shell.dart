@@ -1,3 +1,5 @@
+import 'package:kallopis/kallopis_declarative.dart' as declarative;
+import 'catalog/explorer_preview.dart';
 import 'package:flutter/material.dart';
 import 'package:kallopis/kallopis.dart';
 
@@ -138,38 +140,28 @@ class _CatalogNavigation extends StatelessWidget {
         ? pages[selected].label
         : null;
 
-    final categories = [
-      for (final group in groups)
-        KlpExplorerCategory(
-          id: group.id,
-          label: group.label,
-          collapsible: true,
-          nodes: [
-            for (final page in group.pages)
-              KlpExplorerNode(
-                id: page.label,
-                label: page.label,
-                kind: KlpExplorerNodeKind.file,
-                icon: page.icon,
-                badge: page.specimens.isNotEmpty
-                    ? '${page.specimens.length}'
-                    : null,
-                selected: page.label == selectedPageLabel,
-              ),
-          ],
-        ),
-    ];
-
-    return KlpExplorer(
-      scrollKey: const ValueKey('catalog-navigation-scroll'),
-      categories: categories,
-      selectedNodeId: selectedPageLabel,
-      onNodeSelected: (id) {
-        final index = pages.indexWhere((page) => page.label == id);
-        if (index >= 0) onSelected(index);
-      },
-      scrollController: scrollController,
-    );
+		final pageScope = declarative.KlpId.root('catalog-page');
+		final categories = [for (final group in groups) declarative.KlpExplorerCategoryModel(
+			id: declarative.KlpId.root('catalog-group').child(group.id),
+			row: declarative.KlpExplorerRowData(title: group.label),
+			capabilities: const declarative.KlpExplorerCapabilities(collapsible: true, primaryAction: declarative.KlpExplorerPrimaryAction.toggleExpansion),
+			children: [for (final page in group.pages) declarative.KlpExplorerNodeModel(
+				id: pageScope.child(page.label),
+				row: declarative.KlpExplorerRowData(title: page.label, badge: page.specimens.isEmpty ? null : '${page.specimens.length}'),
+				canHaveChildren: false,
+				capabilities: const declarative.KlpExplorerCapabilities(selectable: true, primaryAction: declarative.KlpExplorerPrimaryAction.activate),
+			)],
+		)];
+		return ExplorerPreview(
+			items: categories,
+			selectedIds: {if (selectedPageLabel != null) pageScope.child(selectedPageLabel)},
+			scrollController: scrollController,
+			dark: Theme.of(context).brightness == Brightness.dark,
+			onActivate: (id) {
+				final index = pages.indexWhere((page) => pageScope.child(page.label) == id);
+				if (index >= 0) onSelected(index);
+			},
+		);
   }
 }
 

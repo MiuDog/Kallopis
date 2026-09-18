@@ -11,7 +11,7 @@
 ```mermaid
 flowchart TD
 	n0["klp_visual_style_json_migration.dart"]
-	n1["../klp_visual_style.dart"]
+	n1["package:kallopis/src/styling/legacy_theme/klp_visual_style.dart"]
 	n2["klp_visual_style_json_helpers.dart"]
 	n3["klp_visual_style_json_validation.dart"]
 	n0 -->|"import"| n1
@@ -23,7 +23,7 @@ flowchart TD
 
 | 關係 | 原始 directive | 來源 |
 |---|---|---|
-| import | <code>import &#x27;../klp_visual_style.dart&#x27;;</code> | [lib/src/styling/legacy_theme/internal/klp_visual_style_json_migration.dart:1](../../../../../../lib/src/styling/legacy_theme/internal/klp_visual_style_json_migration.dart#L1) |
+| import | <code>import &#x27;package:kallopis/src/styling/legacy_theme/klp_visual_style.dart&#x27;;</code> | [lib/src/styling/legacy_theme/internal/klp_visual_style_json_migration.dart:1](../../../../../../lib/src/styling/legacy_theme/internal/klp_visual_style_json_migration.dart#L1) |
 | import | <code>import &#x27;klp_visual_style_json_helpers.dart&#x27;;</code> | [lib/src/styling/legacy_theme/internal/klp_visual_style_json_migration.dart:2](../../../../../../lib/src/styling/legacy_theme/internal/klp_visual_style_json_migration.dart#L2) |
 | import | <code>import &#x27;klp_visual_style_json_validation.dart&#x27;;</code> | [lib/src/styling/legacy_theme/internal/klp_visual_style_json_migration.dart:3](../../../../../../lib/src/styling/legacy_theme/internal/klp_visual_style_json_migration.dart#L3) |
 
@@ -46,7 +46,7 @@ FunctionDeclaration · public · [lib/src/styling/legacy_theme/internal/klp_visu
 
 ### migrateLegacyDimensions
 
-FunctionDeclaration · public · [lib/src/styling/legacy_theme/internal/klp_visual_style_json_migration.dart:91](../../../../../../lib/src/styling/legacy_theme/internal/klp_visual_style_json_migration.dart#L91)
+FunctionDeclaration · public · [lib/src/styling/legacy_theme/internal/klp_visual_style_json_migration.dart:90](../../../../../../lib/src/styling/legacy_theme/internal/klp_visual_style_json_migration.dart#L90)
 
 <code>KlpJsonMap migrateLegacyDimensions(KlpJsonMap json)</code>
 

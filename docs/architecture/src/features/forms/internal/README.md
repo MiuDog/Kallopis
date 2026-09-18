@@ -13,25 +13,25 @@
 ```mermaid
 flowchart LR
 	n0["lib/src/features/forms/internal"]
-	n1["lib/src/application/localization"]
-	n2["lib/src/features/actions/button"]
-	n3["lib/src/features/collections/advanced"]
-	n4["lib/src/features/collections/badge"]
-	n5["lib/src/features/collections/code"]
-	n6["lib/src/features/feedback"]
-	n7["lib/src/features/forms/input"]
-	n8["lib/src/features/forms/internal/primitives"]
-	n9["lib/src/foundation"]
-	n10["lib/src/foundation/content"]
-	n11["lib/src/foundation/interaction"]
+	n1["lib/src/features/actions/button"]
+	n2["lib/src/features/collections/advanced"]
+	n3["lib/src/features/collections/badge"]
+	n4["lib/src/features/collections/code"]
+	n5["lib/src/features/feedback"]
+	n6["lib/src/features/forms/input"]
+	n7["lib/src/features/forms/internal/primitives"]
+	n8["lib/src/foundation"]
+	n9["lib/src/foundation/content"]
+	n10["lib/src/foundation/interaction"]
+	n11["lib/src/foundation/layout"]
 	n0 -->|"export"| n1
 	n0 -->|"export"| n2
 	n0 -->|"export"| n3
 	n0 -->|"export"| n4
 	n0 -->|"export"| n5
 	n0 -->|"export"| n6
-	n0 -->|"export"| n7
-	n0 -->|"part"| n8
+	n0 -->|"part"| n7
+	n0 -->|"export"| n8
 	n0 -->|"export"| n9
 	n0 -->|"export"| n10
 	n0 -->|"export"| n11
@@ -40,7 +40,7 @@ flowchart LR
 ```mermaid
 flowchart LR
 	n0["lib/src/features/forms/internal"]
-	n1["lib/src/foundation/layout"]
+	n1["lib/src/foundation/localization"]
 	n2["lib/src/foundation/surface"]
 	n3["lib/src/styling/legacy_theme"]
 	n4["package:flutter"]
@@ -52,7 +52,6 @@ flowchart LR
 
 | 目標邊界 | 關係 | directive 數 | 第一筆來源證據 |
 |---|---|---|---|
-| <code>lib/src/application/localization</code> | export | 1 | [lib/src/features/forms/internal/klp_form_dependencies.dart:26](../../../../../../lib/src/features/forms/internal/klp_form_dependencies.dart#L26) |
 | <code>lib/src/features/actions/button</code> | export | 2 | [lib/src/features/forms/internal/klp_form_dependencies.dart:3](../../../../../../lib/src/features/forms/internal/klp_form_dependencies.dart#L3) |
 | <code>lib/src/features/collections/advanced</code> | export | 1 | [lib/src/features/forms/internal/klp_form_dependencies.dart:6](../../../../../../lib/src/features/forms/internal/klp_form_dependencies.dart#L6) |
 | <code>lib/src/features/collections/badge</code> | export | 1 | [lib/src/features/forms/internal/klp_form_dependencies.dart:7](../../../../../../lib/src/features/forms/internal/klp_form_dependencies.dart#L7) |
@@ -64,6 +63,7 @@ flowchart LR
 | <code>lib/src/foundation/content</code> | export | 1 | [lib/src/features/forms/internal/klp_form_dependencies.dart:29](../../../../../../lib/src/features/forms/internal/klp_form_dependencies.dart#L29) |
 | <code>lib/src/foundation/interaction</code> | export | 2 | [lib/src/features/forms/internal/klp_form_dependencies.dart:12](../../../../../../lib/src/features/forms/internal/klp_form_dependencies.dart#L12) |
 | <code>lib/src/foundation/layout</code> | export | 12 | [lib/src/features/forms/internal/klp_form_dependencies.dart:14](../../../../../../lib/src/features/forms/internal/klp_form_dependencies.dart#L14) |
+| <code>lib/src/foundation/localization</code> | export | 1 | [lib/src/features/forms/internal/klp_form_dependencies.dart:26](../../../../../../lib/src/features/forms/internal/klp_form_dependencies.dart#L26) |
 | <code>lib/src/foundation/surface</code> | export | 1 | [lib/src/features/forms/internal/klp_form_dependencies.dart:27](../../../../../../lib/src/features/forms/internal/klp_form_dependencies.dart#L27) |
 | <code>lib/src/styling/legacy_theme</code> | export | 1 | [lib/src/features/forms/internal/klp_form_dependencies.dart:28](../../../../../../lib/src/features/forms/internal/klp_form_dependencies.dart#L28) |
 | <code>package:flutter</code> | export | 1 | [lib/src/features/forms/internal/klp_form_dependencies.dart:1](../../../../../../lib/src/features/forms/internal/klp_form_dependencies.dart#L1) |

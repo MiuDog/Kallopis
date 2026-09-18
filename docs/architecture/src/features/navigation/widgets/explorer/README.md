@@ -17,13 +17,12 @@ flowchart LR
 	n2["lib/src/features/navigation/widgets/explorer/internal"]
 	n3["lib/src/features/navigation/widgets/explorer/models"]
 	n4["lib/src/features/navigation/widgets/explorer/primitives"]
-	n5["lib/src/features/navigation/widgets/navigator"]
-	n6["lib/src/foundation"]
-	n7["lib/src/foundation/content"]
-	n8["lib/src/foundation/interaction"]
-	n9["lib/src/foundation/layout"]
-	n10["lib/src/foundation/surface"]
-	n11["lib/src/styling/legacy_theme"]
+	n5["lib/src/foundation"]
+	n6["lib/src/foundation/content"]
+	n7["lib/src/foundation/interaction"]
+	n8["lib/src/foundation/layout"]
+	n9["lib/src/styling/legacy_theme"]
+	n10["package:flutter"]
 	n0 -->|"import"| n1
 	n0 -->|"part"| n2
 	n0 -->|"part"| n3
@@ -34,36 +33,20 @@ flowchart LR
 	n0 -->|"import"| n8
 	n0 -->|"import"| n9
 	n0 -->|"import"| n10
-	n0 -->|"import"| n11
-```
-
-```mermaid
-flowchart TD
-	n0["lib/src/features/navigation/widgets/explorer"]
-	n1["package:flutter"]
-	n0 -->|"import"| n1
 ```
 
 | 目標邊界 | 關係 | directive 數 | 第一筆來源證據 |
 |---|---|---|---|
-| <code>lib/src/features/feedback</code> | import | 2 | [lib/src/features/navigation/widgets/explorer/klp_explorer_models.dart:3](../../../../../../../lib/src/features/navigation/widgets/explorer/klp_explorer_models.dart#L3) |
+| <code>lib/src/features/feedback</code> | import | 1 | [lib/src/features/navigation/widgets/explorer/klp_file_explorer.dart:3](../../../../../../../lib/src/features/navigation/widgets/explorer/klp_file_explorer.dart#L3) |
 | <code>lib/src/features/navigation/widgets/explorer/internal</code> | part | 10 | [lib/src/features/navigation/widgets/explorer/klp_file_explorer.dart:13](../../../../../../../lib/src/features/navigation/widgets/explorer/klp_file_explorer.dart#L13) |
-| <code>lib/src/features/navigation/widgets/explorer/models</code> | part | 6 | [lib/src/features/navigation/widgets/explorer/klp_explorer_models.dart:6](../../../../../../../lib/src/features/navigation/widgets/explorer/klp_explorer_models.dart#L6) |
+| <code>lib/src/features/navigation/widgets/explorer/models</code> | part | 3 | [lib/src/features/navigation/widgets/explorer/klp_file_explorer.dart:23](../../../../../../../lib/src/features/navigation/widgets/explorer/klp_file_explorer.dart#L23) |
 | <code>lib/src/features/navigation/widgets/explorer/primitives</code> | part | 3 | [lib/src/features/navigation/widgets/explorer/klp_file_explorer.dart:26](../../../../../../../lib/src/features/navigation/widgets/explorer/klp_file_explorer.dart#L26) |
-| <code>lib/src/features/navigation/widgets/navigator</code> | import | 2 | [lib/src/features/navigation/widgets/explorer/klp_explorer.dart:5](../../../../../../../lib/src/features/navigation/widgets/explorer/klp_explorer.dart#L5) |
-| <code>lib/src/foundation</code> | import | 3 | [lib/src/features/navigation/widgets/explorer/klp_explorer_models.dart:4](../../../../../../../lib/src/features/navigation/widgets/explorer/klp_explorer_models.dart#L4) |
+| <code>lib/src/foundation</code> | import | 2 | [lib/src/features/navigation/widgets/explorer/klp_file_explorer.dart:4](../../../../../../../lib/src/features/navigation/widgets/explorer/klp_file_explorer.dart#L4) |
 | <code>lib/src/foundation/content</code> | import | 1 | [lib/src/features/navigation/widgets/explorer/klp_file_explorer.dart:11](../../../../../../../lib/src/features/navigation/widgets/explorer/klp_file_explorer.dart#L11) |
 | <code>lib/src/foundation/interaction</code> | import | 3 | [lib/src/features/navigation/widgets/explorer/klp_file_explorer.dart:6](../../../../../../../lib/src/features/navigation/widgets/explorer/klp_file_explorer.dart#L6) |
 | <code>lib/src/foundation/layout</code> | import | 1 | [lib/src/features/navigation/widgets/explorer/klp_file_explorer.dart:9](../../../../../../../lib/src/features/navigation/widgets/explorer/klp_file_explorer.dart#L9) |
-| <code>lib/src/foundation/surface</code> | import | 1 | [lib/src/features/navigation/widgets/explorer/klp_explorer.dart:3](../../../../../../../lib/src/features/navigation/widgets/explorer/klp_explorer.dart#L3) |
 | <code>lib/src/styling/legacy_theme</code> | import | 1 | [lib/src/features/navigation/widgets/explorer/klp_file_explorer.dart:10](../../../../../../../lib/src/features/navigation/widgets/explorer/klp_file_explorer.dart#L10) |
-| <code>package:flutter</code> | import | 3 | [lib/src/features/navigation/widgets/explorer/klp_explorer.dart:1](../../../../../../../lib/src/features/navigation/widgets/explorer/klp_explorer.dart#L1) |
-
-### 同目錄依賴
-
-| 來源 → 目標 | 關係 | 證據 |
-|---|---|---|
-| <code>klp_explorer.dart → klp_explorer_models.dart</code> | import | [lib/src/features/navigation/widgets/explorer/klp_explorer.dart:4](../../../../../../../lib/src/features/navigation/widgets/explorer/klp_explorer.dart#L4) |
+| <code>package:flutter</code> | import | 1 | [lib/src/features/navigation/widgets/explorer/klp_file_explorer.dart:1](../../../../../../../lib/src/features/navigation/widgets/explorer/klp_file_explorer.dart#L1) |
 
 ## 目錄結構圖
 
@@ -73,15 +56,11 @@ flowchart LR
 	n1["internal/"]
 	n2["models/"]
 	n3["primitives/"]
-	n4["klp_explorer.dart"]
-	n5["klp_explorer_models.dart"]
-	n6["klp_file_explorer.dart"]
+	n4["klp_file_explorer.dart"]
 	n0 -->|"contains"| n1
 	n0 -->|"contains"| n2
 	n0 -->|"contains"| n3
 	n0 -->|"contains"| n4
-	n0 -->|"contains"| n5
-	n0 -->|"contains"| n6
 ```
 
 ## 子目錄
@@ -96,8 +75,6 @@ flowchart LR
 
 | 檔案 | 宣告 | 細節 | 來源證據 |
 |---|---|---|---|
-| `klp_explorer.dart` | KlpExplorer | [架構與 API](klp_explorer.md) | [lib/src/features/navigation/widgets/explorer/klp_explorer.dart:1](../../../../../../../lib/src/features/navigation/widgets/explorer/klp_explorer.dart#L1) |
-| `klp_explorer_models.dart` | 無頂層宣告 | [架構與 API](klp_explorer_models.md) | [lib/src/features/navigation/widgets/explorer/klp_explorer_models.dart:1](../../../../../../../lib/src/features/navigation/widgets/explorer/klp_explorer_models.dart#L1) |
 | `klp_file_explorer.dart` | 無頂層宣告 | [架構與 API](klp_file_explorer.md) | [lib/src/features/navigation/widgets/explorer/klp_file_explorer.dart:1](../../../../../../../lib/src/features/navigation/widgets/explorer/klp_file_explorer.dart#L1) |
 
 ## 閱讀說明

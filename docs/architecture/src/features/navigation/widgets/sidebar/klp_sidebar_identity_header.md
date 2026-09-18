@@ -12,16 +12,16 @@
 flowchart LR
 	n0["klp_sidebar_identity_header.dart"]
 	n1["package:flutter/widgets.dart"]
-	n2["../../../collections/avatar/klp_avatar.dart"]
-	n3["../../../../foundation/klp_icon.dart"]
-	n4["../../../../foundation/layout/klp_expanded.dart"]
-	n5["../../../../foundation/layout/klp_gap.dart"]
-	n6["../../../../foundation/layout/klp_layout_builder.dart"]
-	n7["../../../../foundation/layout/klp_row.dart"]
-	n8["../../../../foundation/layout/klp_space_size.dart"]
-	n9["../../../../foundation/surface/klp_surface.dart"]
-	n10["../../../../styling/legacy_theme/klp_theme.dart"]
-	n11["../../../../foundation/content/klp_text.dart"]
+	n2["package:kallopis/src/features/collections/avatar/klp_avatar.dart"]
+	n3["package:kallopis/src/foundation/klp_icon.dart"]
+	n4["package:kallopis/src/foundation/layout/klp_expanded.dart"]
+	n5["package:kallopis/src/foundation/layout/klp_gap.dart"]
+	n6["package:kallopis/src/foundation/layout/klp_layout_builder.dart"]
+	n7["package:kallopis/src/foundation/layout/klp_row.dart"]
+	n8["package:kallopis/src/foundation/layout/klp_space_size.dart"]
+	n9["package:kallopis/src/foundation/surface/klp_surface.dart"]
+	n10["package:kallopis/src/styling/legacy_theme/klp_theme.dart"]
+	n11["package:kallopis/src/foundation/content/klp_text.dart"]
 	n0 -->|"import"| n1
 	n0 -->|"import"| n2
 	n0 -->|"import"| n3
@@ -47,16 +47,16 @@ flowchart TD
 | 關係 | 原始 directive | 來源 |
 |---|---|---|
 | import | <code>import &#x27;package:flutter/widgets.dart&#x27;;</code> | [lib/src/features/navigation/widgets/sidebar/klp_sidebar_identity_header.dart:1](../../../../../../../lib/src/features/navigation/widgets/sidebar/klp_sidebar_identity_header.dart#L1) |
-| import | <code>import &#x27;../../../collections/avatar/klp_avatar.dart&#x27;;</code> | [lib/src/features/navigation/widgets/sidebar/klp_sidebar_identity_header.dart:3](../../../../../../../lib/src/features/navigation/widgets/sidebar/klp_sidebar_identity_header.dart#L3) |
-| import | <code>import &#x27;../../../../foundation/klp_icon.dart&#x27;;</code> | [lib/src/features/navigation/widgets/sidebar/klp_sidebar_identity_header.dart:4](../../../../../../../lib/src/features/navigation/widgets/sidebar/klp_sidebar_identity_header.dart#L4) |
-| import | <code>import &#x27;../../../../foundation/layout/klp_expanded.dart&#x27;;</code> | [lib/src/features/navigation/widgets/sidebar/klp_sidebar_identity_header.dart:5](../../../../../../../lib/src/features/navigation/widgets/sidebar/klp_sidebar_identity_header.dart#L5) |
-| import | <code>import &#x27;../../../../foundation/layout/klp_gap.dart&#x27;;</code> | [lib/src/features/navigation/widgets/sidebar/klp_sidebar_identity_header.dart:6](../../../../../../../lib/src/features/navigation/widgets/sidebar/klp_sidebar_identity_header.dart#L6) |
-| import | <code>import &#x27;../../../../foundation/layout/klp_layout_builder.dart&#x27;;</code> | [lib/src/features/navigation/widgets/sidebar/klp_sidebar_identity_header.dart:7](../../../../../../../lib/src/features/navigation/widgets/sidebar/klp_sidebar_identity_header.dart#L7) |
-| import | <code>import &#x27;../../../../foundation/layout/klp_row.dart&#x27;;</code> | [lib/src/features/navigation/widgets/sidebar/klp_sidebar_identity_header.dart:8](../../../../../../../lib/src/features/navigation/widgets/sidebar/klp_sidebar_identity_header.dart#L8) |
-| import | <code>import &#x27;../../../../foundation/layout/klp_space_size.dart&#x27;;</code> | [lib/src/features/navigation/widgets/sidebar/klp_sidebar_identity_header.dart:9](../../../../../../../lib/src/features/navigation/widgets/sidebar/klp_sidebar_identity_header.dart#L9) |
-| import | <code>import &#x27;../../../../foundation/surface/klp_surface.dart&#x27;;</code> | [lib/src/features/navigation/widgets/sidebar/klp_sidebar_identity_header.dart:10](../../../../../../../lib/src/features/navigation/widgets/sidebar/klp_sidebar_identity_header.dart#L10) |
-| import | <code>import &#x27;../../../../styling/legacy_theme/klp_theme.dart&#x27;;</code> | [lib/src/features/navigation/widgets/sidebar/klp_sidebar_identity_header.dart:11](../../../../../../../lib/src/features/navigation/widgets/sidebar/klp_sidebar_identity_header.dart#L11) |
-| import | <code>import &#x27;../../../../foundation/content/klp_text.dart&#x27;;</code> | [lib/src/features/navigation/widgets/sidebar/klp_sidebar_identity_header.dart:12](../../../../../../../lib/src/features/navigation/widgets/sidebar/klp_sidebar_identity_header.dart#L12) |
+| import | <code>import &#x27;package:kallopis/src/features/collections/avatar/klp_avatar.dart&#x27;;</code> | [lib/src/features/navigation/widgets/sidebar/klp_sidebar_identity_header.dart:3](../../../../../../../lib/src/features/navigation/widgets/sidebar/klp_sidebar_identity_header.dart#L3) |
+| import | <code>import &#x27;package:kallopis/src/foundation/klp_icon.dart&#x27;;</code> | [lib/src/features/navigation/widgets/sidebar/klp_sidebar_identity_header.dart:4](../../../../../../../lib/src/features/navigation/widgets/sidebar/klp_sidebar_identity_header.dart#L4) |
+| import | <code>import &#x27;package:kallopis/src/foundation/layout/klp_expanded.dart&#x27;;</code> | [lib/src/features/navigation/widgets/sidebar/klp_sidebar_identity_header.dart:5](../../../../../../../lib/src/features/navigation/widgets/sidebar/klp_sidebar_identity_header.dart#L5) |
+| import | <code>import &#x27;package:kallopis/src/foundation/layout/klp_gap.dart&#x27;;</code> | [lib/src/features/navigation/widgets/sidebar/klp_sidebar_identity_header.dart:6](../../../../../../../lib/src/features/navigation/widgets/sidebar/klp_sidebar_identity_header.dart#L6) |
+| import | <code>import &#x27;package:kallopis/src/foundation/layout/klp_layout_builder.dart&#x27;;</code> | [lib/src/features/navigation/widgets/sidebar/klp_sidebar_identity_header.dart:7](../../../../../../../lib/src/features/navigation/widgets/sidebar/klp_sidebar_identity_header.dart#L7) |
+| import | <code>import &#x27;package:kallopis/src/foundation/layout/klp_row.dart&#x27;;</code> | [lib/src/features/navigation/widgets/sidebar/klp_sidebar_identity_header.dart:8](../../../../../../../lib/src/features/navigation/widgets/sidebar/klp_sidebar_identity_header.dart#L8) |
+| import | <code>import &#x27;package:kallopis/src/foundation/layout/klp_space_size.dart&#x27;;</code> | [lib/src/features/navigation/widgets/sidebar/klp_sidebar_identity_header.dart:9](../../../../../../../lib/src/features/navigation/widgets/sidebar/klp_sidebar_identity_header.dart#L9) |
+| import | <code>import &#x27;package:kallopis/src/foundation/surface/klp_surface.dart&#x27;;</code> | [lib/src/features/navigation/widgets/sidebar/klp_sidebar_identity_header.dart:10](../../../../../../../lib/src/features/navigation/widgets/sidebar/klp_sidebar_identity_header.dart#L10) |
+| import | <code>import &#x27;package:kallopis/src/styling/legacy_theme/klp_theme.dart&#x27;;</code> | [lib/src/features/navigation/widgets/sidebar/klp_sidebar_identity_header.dart:11](../../../../../../../lib/src/features/navigation/widgets/sidebar/klp_sidebar_identity_header.dart#L11) |
+| import | <code>import &#x27;package:kallopis/src/foundation/content/klp_text.dart&#x27;;</code> | [lib/src/features/navigation/widgets/sidebar/klp_sidebar_identity_header.dart:12](../../../../../../../lib/src/features/navigation/widgets/sidebar/klp_sidebar_identity_header.dart#L12) |
 | part | <code>part &#x27;primitives/klp_sidebar_identity_icon_frame.dart&#x27;;</code> | [lib/src/features/navigation/widgets/sidebar/klp_sidebar_identity_header.dart:14](../../../../../../../lib/src/features/navigation/widgets/sidebar/klp_sidebar_identity_header.dart#L14) |
 
 ## 宣告關係圖

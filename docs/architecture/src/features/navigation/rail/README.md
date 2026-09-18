@@ -21,16 +21,19 @@
 ```mermaid
 flowchart TD
 	n0["lib/src/features/navigation/rail"]
-	n1["contracts/"]
-	n2["internal/"]
+	n1["adapters/"]
+	n2["contracts/"]
+	n3["internal/"]
 	n0 -->|"contains"| n1
 	n0 -->|"contains"| n2
+	n0 -->|"contains"| n3
 ```
 
 ## 子目錄
 
 | 目錄 | 導航 | 來源證據 |
 |---|---|---|
+| `adapters/` | [架構入口](adapters/README.md) | [來源目錄](../../../../../../lib/src/features/navigation/rail/adapters) |
 | `contracts/` | [架構入口](contracts/README.md) | [來源目錄](../../../../../../lib/src/features/navigation/rail/contracts) |
 | `internal/` | [架構入口](internal/README.md) | [來源目錄](../../../../../../lib/src/features/navigation/rail/internal) |
 

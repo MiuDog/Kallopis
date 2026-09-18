@@ -11,9 +11,9 @@
 ```mermaid
 flowchart LR
 	n0["klp_slot.dart"]
-	n1["../../kernel/diagnostics/klp_contract_error.dart"]
-	n2["../../kernel/identity/internal/klp_identifier.dart"]
-	n3["../nodes/klp_node.dart"]
+	n1["package:kallopis/src/kernel/diagnostics/klp_contract_error.dart"]
+	n2["package:kallopis/src/kernel/identity/internal/klp_identifier.dart"]
+	n3["package:kallopis/src/composition/nodes/klp_node.dart"]
 	n4["klp_slot_assignment.dart"]
 	n0 -->|"import"| n1
 	n0 -->|"import"| n2
@@ -25,9 +25,9 @@ flowchart LR
 
 | 關係 | 原始 directive | 來源 |
 |---|---|---|
-| import | <code>import &#x27;../../kernel/diagnostics/klp_contract_error.dart&#x27;;</code> | [lib/src/composition/slots/klp_slot.dart:1](../../../../../lib/src/composition/slots/klp_slot.dart#L1) |
-| import | <code>import &#x27;../../kernel/identity/internal/klp_identifier.dart&#x27;;</code> | [lib/src/composition/slots/klp_slot.dart:2](../../../../../lib/src/composition/slots/klp_slot.dart#L2) |
-| import | <code>import &#x27;../nodes/klp_node.dart&#x27;;</code> | [lib/src/composition/slots/klp_slot.dart:3](../../../../../lib/src/composition/slots/klp_slot.dart#L3) |
+| import | <code>import &#x27;package:kallopis/src/kernel/diagnostics/klp_contract_error.dart&#x27;;</code> | [lib/src/composition/slots/klp_slot.dart:1](../../../../../lib/src/composition/slots/klp_slot.dart#L1) |
+| import | <code>import &#x27;package:kallopis/src/kernel/identity/internal/klp_identifier.dart&#x27;;</code> | [lib/src/composition/slots/klp_slot.dart:2](../../../../../lib/src/composition/slots/klp_slot.dart#L2) |
+| import | <code>import &#x27;package:kallopis/src/composition/nodes/klp_node.dart&#x27;;</code> | [lib/src/composition/slots/klp_slot.dart:3](../../../../../lib/src/composition/slots/klp_slot.dart#L3) |
 | part | <code>part &#x27;klp_slot_assignment.dart&#x27;;</code> | [lib/src/composition/slots/klp_slot.dart:5](../../../../../lib/src/composition/slots/klp_slot.dart#L5) |
 
 ## 宣告關係圖

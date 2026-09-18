@@ -1,0 +1,30 @@
+{
+  "name": "kallopis-blocknote-prototype",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc -b && vite build",
+    "lint": "oxlint",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@blocknote/core": "^0.54.2",
+    "@blocknote/mantine": "^0.54.2",
+    "@blocknote/react": "^0.54.2",
+    "@mantine/core": "^9.6.1",
+    "@mantine/hooks": "^9.6.1",
+    "react": "^19.3.0",
+    "react-dom": "^19.3.0"
+  },
+  "devDependencies": {
+    "@types/node": "^24.13.3",
+    "@types/react": "^19.2.18",
+    "@types/react-dom": "^19.2.7",
+    "@vitejs/plugin-react": "^6.0.1",
+    "oxlint": "^1.81.0",
+    "typescript": "^5.9.3",
+    "vite": "^8.3.0"
+  }
+}

@@ -1,6 +1,6 @@
 import 'dart:collection';
 
-import '../nodes/klp_node.dart';
+import 'package:kallopis/src/composition/nodes/klp_node.dart';
 import 'klp_slot.dart';
 
 /// 複合節點的唯一子樹來源；配置與展平結果來自同一份不可變快照。

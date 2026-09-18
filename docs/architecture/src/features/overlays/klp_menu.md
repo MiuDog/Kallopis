@@ -13,15 +13,15 @@ flowchart LR
 	n0["klp_menu.dart"]
 	n1["package:flutter/material.dart"]
 	n2["package:flutter/services.dart"]
-	n3["../forms/toggle/klp_toggle.dart"]
-	n4["../../foundation/klp_icon.dart"]
-	n5["../../foundation/klp_icons.dart"]
-	n6["../../foundation/interaction/klp_action_region.dart"]
-	n7["../../foundation/interaction/klp_action_region_shape.dart"]
-	n8["../../foundation/interaction/klp_action_region_tone.dart"]
-	n9["../../foundation/interaction/klp_focus_region.dart"]
-	n10["../../foundation/interaction/klp_roving_index.dart"]
-	n11["../../foundation/layout/klp_layout.dart"]
+	n3["package:kallopis/src/features/forms/toggle/klp_toggle.dart"]
+	n4["package:kallopis/src/foundation/klp_icon.dart"]
+	n5["package:kallopis/src/foundation/klp_icons.dart"]
+	n6["package:kallopis/src/foundation/interaction/klp_action_region.dart"]
+	n7["package:kallopis/src/foundation/interaction/klp_action_region_shape.dart"]
+	n8["package:kallopis/src/foundation/interaction/klp_action_region_tone.dart"]
+	n9["package:kallopis/src/foundation/interaction/klp_focus_region.dart"]
+	n10["package:kallopis/src/foundation/interaction/klp_roving_index.dart"]
+	n11["package:kallopis/src/foundation/layout/klp_layout.dart"]
 	n0 -->|"import"| n1
 	n0 -->|"import"| n2
 	n0 -->|"import"| n3
@@ -38,12 +38,12 @@ flowchart LR
 ```mermaid
 flowchart LR
 	n0["klp_menu.dart"]
-	n1["../../foundation/surface/klp_dashed_border.dart"]
-	n2["../../foundation/surface/klp_divider.dart"]
-	n3["../../foundation/surface/klp_surface.dart"]
-	n4["../../styling/legacy_theme/klp_geometry_theme.dart"]
-	n5["../../styling/legacy_theme/klp_theme.dart"]
-	n6["../../foundation/content/klp_text.dart"]
+	n1["package:kallopis/src/foundation/surface/klp_dashed_border.dart"]
+	n2["package:kallopis/src/foundation/surface/klp_divider.dart"]
+	n3["package:kallopis/src/foundation/surface/klp_surface.dart"]
+	n4["package:kallopis/src/styling/legacy_theme/klp_geometry_theme.dart"]
+	n5["package:kallopis/src/styling/legacy_theme/klp_theme.dart"]
+	n6["package:kallopis/src/foundation/content/klp_text.dart"]
 	n7["menu/klp_menu_item.dart"]
 	n8["menu/klp_menu_item_data.dart"]
 	n9["menu/klp_menu_layout.dart"]
@@ -77,21 +77,21 @@ flowchart TD
 |---|---|---|
 | import | <code>import &#x27;package:flutter/material.dart&#x27;;</code> | [lib/src/features/overlays/klp_menu.dart:1](../../../../../lib/src/features/overlays/klp_menu.dart#L1) |
 | import | <code>import &#x27;package:flutter/services.dart&#x27;;</code> | [lib/src/features/overlays/klp_menu.dart:2](../../../../../lib/src/features/overlays/klp_menu.dart#L2) |
-| import | <code>import &#x27;../forms/toggle/klp_toggle.dart&#x27;;</code> | [lib/src/features/overlays/klp_menu.dart:4](../../../../../lib/src/features/overlays/klp_menu.dart#L4) |
-| import | <code>import &#x27;../../foundation/klp_icon.dart&#x27;;</code> | [lib/src/features/overlays/klp_menu.dart:5](../../../../../lib/src/features/overlays/klp_menu.dart#L5) |
-| import | <code>import &#x27;../../foundation/klp_icons.dart&#x27;;</code> | [lib/src/features/overlays/klp_menu.dart:6](../../../../../lib/src/features/overlays/klp_menu.dart#L6) |
-| import | <code>import &#x27;../../foundation/interaction/klp_action_region.dart&#x27;;</code> | [lib/src/features/overlays/klp_menu.dart:7](../../../../../lib/src/features/overlays/klp_menu.dart#L7) |
-| import | <code>import &#x27;../../foundation/interaction/klp_action_region_shape.dart&#x27;;</code> | [lib/src/features/overlays/klp_menu.dart:8](../../../../../lib/src/features/overlays/klp_menu.dart#L8) |
-| import | <code>import &#x27;../../foundation/interaction/klp_action_region_tone.dart&#x27;;</code> | [lib/src/features/overlays/klp_menu.dart:9](../../../../../lib/src/features/overlays/klp_menu.dart#L9) |
-| import | <code>import &#x27;../../foundation/interaction/klp_focus_region.dart&#x27;;</code> | [lib/src/features/overlays/klp_menu.dart:10](../../../../../lib/src/features/overlays/klp_menu.dart#L10) |
-| import | <code>import &#x27;../../foundation/interaction/klp_roving_index.dart&#x27;;</code> | [lib/src/features/overlays/klp_menu.dart:11](../../../../../lib/src/features/overlays/klp_menu.dart#L11) |
-| import | <code>import &#x27;../../foundation/layout/klp_layout.dart&#x27;;</code> | [lib/src/features/overlays/klp_menu.dart:12](../../../../../lib/src/features/overlays/klp_menu.dart#L12) |
-| import | <code>import &#x27;../../foundation/surface/klp_dashed_border.dart&#x27;;</code> | [lib/src/features/overlays/klp_menu.dart:13](../../../../../lib/src/features/overlays/klp_menu.dart#L13) |
-| import | <code>import &#x27;../../foundation/surface/klp_divider.dart&#x27;;</code> | [lib/src/features/overlays/klp_menu.dart:14](../../../../../lib/src/features/overlays/klp_menu.dart#L14) |
-| import | <code>import &#x27;../../foundation/surface/klp_surface.dart&#x27;;</code> | [lib/src/features/overlays/klp_menu.dart:15](../../../../../lib/src/features/overlays/klp_menu.dart#L15) |
-| import | <code>import &#x27;../../styling/legacy_theme/klp_geometry_theme.dart&#x27;;</code> | [lib/src/features/overlays/klp_menu.dart:16](../../../../../lib/src/features/overlays/klp_menu.dart#L16) |
-| import | <code>import &#x27;../../styling/legacy_theme/klp_theme.dart&#x27;;</code> | [lib/src/features/overlays/klp_menu.dart:17](../../../../../lib/src/features/overlays/klp_menu.dart#L17) |
-| import | <code>import &#x27;../../foundation/content/klp_text.dart&#x27;;</code> | [lib/src/features/overlays/klp_menu.dart:18](../../../../../lib/src/features/overlays/klp_menu.dart#L18) |
+| import | <code>import &#x27;package:kallopis/src/features/forms/toggle/klp_toggle.dart&#x27;;</code> | [lib/src/features/overlays/klp_menu.dart:4](../../../../../lib/src/features/overlays/klp_menu.dart#L4) |
+| import | <code>import &#x27;package:kallopis/src/foundation/klp_icon.dart&#x27;;</code> | [lib/src/features/overlays/klp_menu.dart:5](../../../../../lib/src/features/overlays/klp_menu.dart#L5) |
+| import | <code>import &#x27;package:kallopis/src/foundation/klp_icons.dart&#x27;;</code> | [lib/src/features/overlays/klp_menu.dart:6](../../../../../lib/src/features/overlays/klp_menu.dart#L6) |
+| import | <code>import &#x27;package:kallopis/src/foundation/interaction/klp_action_region.dart&#x27;;</code> | [lib/src/features/overlays/klp_menu.dart:7](../../../../../lib/src/features/overlays/klp_menu.dart#L7) |
+| import | <code>import &#x27;package:kallopis/src/foundation/interaction/klp_action_region_shape.dart&#x27;;</code> | [lib/src/features/overlays/klp_menu.dart:8](../../../../../lib/src/features/overlays/klp_menu.dart#L8) |
+| import | <code>import &#x27;package:kallopis/src/foundation/interaction/klp_action_region_tone.dart&#x27;;</code> | [lib/src/features/overlays/klp_menu.dart:9](../../../../../lib/src/features/overlays/klp_menu.dart#L9) |
+| import | <code>import &#x27;package:kallopis/src/foundation/interaction/klp_focus_region.dart&#x27;;</code> | [lib/src/features/overlays/klp_menu.dart:10](../../../../../lib/src/features/overlays/klp_menu.dart#L10) |
+| import | <code>import &#x27;package:kallopis/src/foundation/interaction/klp_roving_index.dart&#x27;;</code> | [lib/src/features/overlays/klp_menu.dart:11](../../../../../lib/src/features/overlays/klp_menu.dart#L11) |
+| import | <code>import &#x27;package:kallopis/src/foundation/layout/klp_layout.dart&#x27;;</code> | [lib/src/features/overlays/klp_menu.dart:12](../../../../../lib/src/features/overlays/klp_menu.dart#L12) |
+| import | <code>import &#x27;package:kallopis/src/foundation/surface/klp_dashed_border.dart&#x27;;</code> | [lib/src/features/overlays/klp_menu.dart:13](../../../../../lib/src/features/overlays/klp_menu.dart#L13) |
+| import | <code>import &#x27;package:kallopis/src/foundation/surface/klp_divider.dart&#x27;;</code> | [lib/src/features/overlays/klp_menu.dart:14](../../../../../lib/src/features/overlays/klp_menu.dart#L14) |
+| import | <code>import &#x27;package:kallopis/src/foundation/surface/klp_surface.dart&#x27;;</code> | [lib/src/features/overlays/klp_menu.dart:15](../../../../../lib/src/features/overlays/klp_menu.dart#L15) |
+| import | <code>import &#x27;package:kallopis/src/styling/legacy_theme/klp_geometry_theme.dart&#x27;;</code> | [lib/src/features/overlays/klp_menu.dart:16](../../../../../lib/src/features/overlays/klp_menu.dart#L16) |
+| import | <code>import &#x27;package:kallopis/src/styling/legacy_theme/klp_theme.dart&#x27;;</code> | [lib/src/features/overlays/klp_menu.dart:17](../../../../../lib/src/features/overlays/klp_menu.dart#L17) |
+| import | <code>import &#x27;package:kallopis/src/foundation/content/klp_text.dart&#x27;;</code> | [lib/src/features/overlays/klp_menu.dart:18](../../../../../lib/src/features/overlays/klp_menu.dart#L18) |
 | part | <code>part &#x27;menu/klp_menu_item.dart&#x27;;</code> | [lib/src/features/overlays/klp_menu.dart:20](../../../../../lib/src/features/overlays/klp_menu.dart#L20) |
 | part | <code>part &#x27;menu/klp_menu_item_data.dart&#x27;;</code> | [lib/src/features/overlays/klp_menu.dart:21](../../../../../lib/src/features/overlays/klp_menu.dart#L21) |
 | part | <code>part &#x27;menu/klp_menu_layout.dart&#x27;;</code> | [lib/src/features/overlays/klp_menu.dart:22](../../../../../lib/src/features/overlays/klp_menu.dart#L22) |

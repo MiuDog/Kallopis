@@ -13,9 +13,9 @@ flowchart LR
 	n0["klp_flutter_extent.dart"]
 	n1["dart:math"]
 	n2["package:flutter/widgets.dart"]
-	n3["../../../foundation/binding/internal/klp_bound_template.dart"]
-	n4["../../../foundation/templates/klp_axis.dart"]
-	n5["klp_flutter_renderer.dart"]
+	n3["package:kallopis/src/foundation/binding/contracts/klp_bound_template.dart"]
+	n4["package:kallopis/src/foundation/templates/klp_axis.dart"]
+	n5["../klp_flutter_renderer.dart"]
 	n0 -->|"import"| n1
 	n0 -->|"import"| n2
 	n0 -->|"import"| n3
@@ -29,9 +29,9 @@ flowchart LR
 |---|---|---|
 | import | <code>import &#x27;dart:math&#x27; as math;</code> | [lib/src/rendering/flutter/internal/klp_flutter_extent.dart:1](../../../../../../lib/src/rendering/flutter/internal/klp_flutter_extent.dart#L1) |
 | import | <code>import &#x27;package:flutter/widgets.dart&#x27;;</code> | [lib/src/rendering/flutter/internal/klp_flutter_extent.dart:3](../../../../../../lib/src/rendering/flutter/internal/klp_flutter_extent.dart#L3) |
-| import | <code>import &#x27;../../../foundation/binding/internal/klp_bound_template.dart&#x27;;</code> | [lib/src/rendering/flutter/internal/klp_flutter_extent.dart:5](../../../../../../lib/src/rendering/flutter/internal/klp_flutter_extent.dart#L5) |
-| import | <code>import &#x27;../../../foundation/templates/klp_axis.dart&#x27;;</code> | [lib/src/rendering/flutter/internal/klp_flutter_extent.dart:6](../../../../../../lib/src/rendering/flutter/internal/klp_flutter_extent.dart#L6) |
-| import | <code>import &#x27;klp_flutter_renderer.dart&#x27;;</code> | [lib/src/rendering/flutter/internal/klp_flutter_extent.dart:7](../../../../../../lib/src/rendering/flutter/internal/klp_flutter_extent.dart#L7) |
+| import | <code>import &#x27;package:kallopis/src/foundation/binding/contracts/klp_bound_template.dart&#x27;;</code> | [lib/src/rendering/flutter/internal/klp_flutter_extent.dart:5](../../../../../../lib/src/rendering/flutter/internal/klp_flutter_extent.dart#L5) |
+| import | <code>import &#x27;package:kallopis/src/foundation/templates/klp_axis.dart&#x27;;</code> | [lib/src/rendering/flutter/internal/klp_flutter_extent.dart:6](../../../../../../lib/src/rendering/flutter/internal/klp_flutter_extent.dart#L6) |
+| import | <code>import &#x27;../klp_flutter_renderer.dart&#x27;;</code> | [lib/src/rendering/flutter/internal/klp_flutter_extent.dart:7](../../../../../../lib/src/rendering/flutter/internal/klp_flutter_extent.dart#L7) |
 
 ## 宣告關係圖
 

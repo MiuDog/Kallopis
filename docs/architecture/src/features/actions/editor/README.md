@@ -13,21 +13,21 @@
 ```mermaid
 flowchart LR
 	n0["lib/src/features/actions/editor"]
-	n1["lib/src/application/localization"]
-	n2["lib/src/features/actions/button"]
-	n3["lib/src/features/actions/editor/internal"]
-	n4["lib/src/features/actions/editor/primitives"]
-	n5["lib/src/features/forms/input"]
-	n6["lib/src/foundation"]
-	n7["lib/src/foundation/content"]
-	n8["lib/src/foundation/layout"]
+	n1["lib/src/features/actions/button"]
+	n2["lib/src/features/actions/editor/internal"]
+	n3["lib/src/features/actions/editor/primitives"]
+	n4["lib/src/features/forms/input"]
+	n5["lib/src/foundation"]
+	n6["lib/src/foundation/content"]
+	n7["lib/src/foundation/layout"]
+	n8["lib/src/foundation/localization"]
 	n9["lib/src/foundation/surface"]
 	n10["lib/src/styling/legacy_theme"]
 	n11["package:flutter"]
 	n0 -->|"import"| n1
-	n0 -->|"import"| n2
+	n0 -->|"part"| n2
 	n0 -->|"part"| n3
-	n0 -->|"part"| n4
+	n0 -->|"import"| n4
 	n0 -->|"import"| n5
 	n0 -->|"import"| n6
 	n0 -->|"import"| n7
@@ -39,7 +39,6 @@ flowchart LR
 
 | 目標邊界 | 關係 | directive 數 | 第一筆來源證據 |
 |---|---|---|---|
-| <code>lib/src/application/localization</code> | import | 1 | [lib/src/features/actions/editor/klp_editor_action_bars.dart:16](../../../../../../lib/src/features/actions/editor/klp_editor_action_bars.dart#L16) |
 | <code>lib/src/features/actions/button</code> | import | 1 | [lib/src/features/actions/editor/klp_editor_action_bars.dart:5](../../../../../../lib/src/features/actions/editor/klp_editor_action_bars.dart#L5) |
 | <code>lib/src/features/actions/editor/internal</code> | part | 2 | [lib/src/features/actions/editor/klp_editor_action_bars.dart:21](../../../../../../lib/src/features/actions/editor/klp_editor_action_bars.dart#L21) |
 | <code>lib/src/features/actions/editor/primitives</code> | part | 1 | [lib/src/features/actions/editor/klp_editor_action_bars.dart:27](../../../../../../lib/src/features/actions/editor/klp_editor_action_bars.dart#L27) |
@@ -47,6 +46,7 @@ flowchart LR
 | <code>lib/src/foundation</code> | import | 1 | [lib/src/features/actions/editor/klp_editor_action_bars.dart:7](../../../../../../lib/src/features/actions/editor/klp_editor_action_bars.dart#L7) |
 | <code>lib/src/foundation/content</code> | import | 1 | [lib/src/features/actions/editor/klp_editor_action_bars.dart:19](../../../../../../lib/src/features/actions/editor/klp_editor_action_bars.dart#L19) |
 | <code>lib/src/foundation/layout</code> | import | 8 | [lib/src/features/actions/editor/klp_editor_action_bars.dart:8](../../../../../../lib/src/features/actions/editor/klp_editor_action_bars.dart#L8) |
+| <code>lib/src/foundation/localization</code> | import | 1 | [lib/src/features/actions/editor/klp_editor_action_bars.dart:16](../../../../../../lib/src/features/actions/editor/klp_editor_action_bars.dart#L16) |
 | <code>lib/src/foundation/surface</code> | import | 1 | [lib/src/features/actions/editor/klp_editor_action_bars.dart:17](../../../../../../lib/src/features/actions/editor/klp_editor_action_bars.dart#L17) |
 | <code>lib/src/styling/legacy_theme</code> | import | 1 | [lib/src/features/actions/editor/klp_editor_action_bars.dart:18](../../../../../../lib/src/features/actions/editor/klp_editor_action_bars.dart#L18) |
 | <code>package:flutter</code> | import | 1 | [lib/src/features/actions/editor/klp_editor_action_bars.dart:3](../../../../../../lib/src/features/actions/editor/klp_editor_action_bars.dart#L3) |

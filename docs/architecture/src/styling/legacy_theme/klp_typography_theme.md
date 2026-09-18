@@ -12,7 +12,7 @@
 flowchart TD
 	n0["klp_typography_theme.dart"]
 	n1["package:flutter/material.dart"]
-	n2["../legacy_tokens/primitive_token.dart"]
+	n2["package:kallopis/src/styling/legacy_tokens/primitive_token.dart"]
 	n3["../presets/legacy/default_typography.dart"]
 	n0 -->|"import"| n1
 	n0 -->|"import"| n2
@@ -24,7 +24,7 @@ flowchart TD
 | 關係 | 原始 directive | 來源 |
 |---|---|---|
 | import | <code>import &#x27;package:flutter/material.dart&#x27;;</code> | [lib/src/styling/legacy_theme/klp_typography_theme.dart:1](../../../../../lib/src/styling/legacy_theme/klp_typography_theme.dart#L1) |
-| import | <code>import &#x27;../legacy_tokens/primitive_token.dart&#x27;;</code> | [lib/src/styling/legacy_theme/klp_typography_theme.dart:3](../../../../../lib/src/styling/legacy_theme/klp_typography_theme.dart#L3) |
+| import | <code>import &#x27;package:kallopis/src/styling/legacy_tokens/primitive_token.dart&#x27;;</code> | [lib/src/styling/legacy_theme/klp_typography_theme.dart:3](../../../../../lib/src/styling/legacy_theme/klp_typography_theme.dart#L3) |
 | part | <code>part &#x27;../presets/legacy/default_typography.dart&#x27;;</code> | [lib/src/styling/legacy_theme/klp_typography_theme.dart:5](../../../../../lib/src/styling/legacy_theme/klp_typography_theme.dart#L5) |
 
 ## 宣告關係圖

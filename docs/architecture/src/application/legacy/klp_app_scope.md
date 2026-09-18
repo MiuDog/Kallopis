@@ -12,8 +12,8 @@
 flowchart LR
 	n0["klp_app_scope.dart"]
 	n1["package:flutter/material.dart"]
-	n2["../../foundation/platform/klp_environment_scope.dart"]
-	n3["../../foundation/platform/klp_platform_info.dart"]
+	n2["package:kallopis/src/foundation/platform/klp_environment_scope.dart"]
+	n3["package:kallopis/src/foundation/platform/klp_platform_info.dart"]
 	n4["klp_app_controller.dart"]
 	n0 -->|"import"| n1
 	n0 -->|"import"| n2
@@ -26,8 +26,8 @@ flowchart LR
 | 關係 | 原始 directive | 來源 |
 |---|---|---|
 | import | <code>import &#x27;package:flutter/material.dart&#x27;;</code> | [lib/src/application/legacy/klp_app_scope.dart:1](../../../../../lib/src/application/legacy/klp_app_scope.dart#L1) |
-| import | <code>import &#x27;../../foundation/platform/klp_environment_scope.dart&#x27;;</code> | [lib/src/application/legacy/klp_app_scope.dart:3](../../../../../lib/src/application/legacy/klp_app_scope.dart#L3) |
-| import | <code>import &#x27;../../foundation/platform/klp_platform_info.dart&#x27;;</code> | [lib/src/application/legacy/klp_app_scope.dart:4](../../../../../lib/src/application/legacy/klp_app_scope.dart#L4) |
+| import | <code>import &#x27;package:kallopis/src/foundation/platform/klp_environment_scope.dart&#x27;;</code> | [lib/src/application/legacy/klp_app_scope.dart:3](../../../../../lib/src/application/legacy/klp_app_scope.dart#L3) |
+| import | <code>import &#x27;package:kallopis/src/foundation/platform/klp_platform_info.dart&#x27;;</code> | [lib/src/application/legacy/klp_app_scope.dart:4](../../../../../lib/src/application/legacy/klp_app_scope.dart#L4) |
 | import | <code>import &#x27;klp_app_controller.dart&#x27;;</code> | [lib/src/application/legacy/klp_app_scope.dart:5](../../../../../lib/src/application/legacy/klp_app_scope.dart#L5) |
 
 ## 宣告關係圖

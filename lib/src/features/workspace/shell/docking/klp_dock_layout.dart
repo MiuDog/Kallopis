@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
-import '../../../../foundation/interaction/klp_drag_drop.dart';
-import '../../../../foundation/layout/klp_layout.dart';
-import '../../../../foundation/surface/klp_surface.dart';
-import '../../../../styling/legacy_theme/klp_theme.dart';
-import '../../../../foundation/content/klp_text.dart';
-import '../panel/klp_panel_frame.dart';
+import 'package:kallopis/src/foundation/interaction/klp_drag_drop.dart';
+import 'package:kallopis/src/foundation/layout/klp_layout.dart';
+import 'package:kallopis/src/foundation/surface/klp_surface.dart';
+import 'package:kallopis/src/styling/legacy_theme/klp_theme.dart';
+import 'package:kallopis/src/foundation/content/klp_text.dart';
+import 'package:kallopis/src/features/workspace/shell/panel/klp_panel_frame.dart';
 import 'klp_dock_header.dart';
 import 'klp_dock_layout_models.dart';
 import 'klp_dock_panel.dart';

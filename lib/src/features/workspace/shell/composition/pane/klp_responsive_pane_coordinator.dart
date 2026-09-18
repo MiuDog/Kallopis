@@ -1,6 +1,6 @@
 import 'package:flutter/widgets.dart';
 
-import '../../../../../foundation/layout/klp_layout_builder.dart';
+import 'package:kallopis/src/foundation/layout/klp_layout_builder.dart';
 import 'klp_responsive_pane_breakpoint.dart';
 
 /// 依可用寬度與 typed breakpoint 切換 Pane 呈現。

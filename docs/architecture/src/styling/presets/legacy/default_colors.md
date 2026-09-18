@@ -40,21 +40,21 @@ top-level variable · private · [lib/src/styling/presets/legacy/default_colors.
 
 ### _defaultColorsDark
 
-top-level variable · private · [lib/src/styling/presets/legacy/default_colors.dart:34](../../../../../../lib/src/styling/presets/legacy/default_colors.dart#L34)
+top-level variable · private · [lib/src/styling/presets/legacy/default_colors.dart:39](../../../../../../lib/src/styling/presets/legacy/default_colors.dart#L39)
 
 <code>const KlpThemeData _defaultColorsDark</code>
 
 
 ### _defaultColorsUltraDark
 
-top-level variable · private · [lib/src/styling/presets/legacy/default_colors.dart:63](../../../../../../lib/src/styling/presets/legacy/default_colors.dart#L63)
+top-level variable · private · [lib/src/styling/presets/legacy/default_colors.dart:73](../../../../../../lib/src/styling/presets/legacy/default_colors.dart#L73)
 
 <code>const KlpThemeData _defaultColorsUltraDark</code>
 
 
 ### _defaultColorsTransparent
 
-top-level variable · private · [lib/src/styling/presets/legacy/default_colors.dart:92](../../../../../../lib/src/styling/presets/legacy/default_colors.dart#L92)
+top-level variable · private · [lib/src/styling/presets/legacy/default_colors.dart:102](../../../../../../lib/src/styling/presets/legacy/default_colors.dart#L102)
 
 <code>final KlpThemeData _defaultColorsTransparent</code>
 

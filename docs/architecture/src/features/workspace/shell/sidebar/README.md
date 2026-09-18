@@ -30,11 +30,11 @@ flowchart LR
 | 目標邊界 | 關係 | directive 數 | 第一筆來源證據 |
 |---|---|---|---|
 | <code>lib/src/features/feedback</code> | import | 1 | [lib/src/features/workspace/shell/sidebar/klp_primary_sidebar_frame.dart:3](../../../../../../../lib/src/features/workspace/shell/sidebar/klp_primary_sidebar_frame.dart#L3) |
-| <code>lib/src/features/workspace/shell/panel</code> | import | 2 | [lib/src/features/workspace/shell/sidebar/klp_sidebar_frame.dart:4](../../../../../../../lib/src/features/workspace/shell/sidebar/klp_sidebar_frame.dart#L4) |
+| <code>lib/src/features/workspace/shell/panel</code> | import | 1 | [lib/src/features/workspace/shell/sidebar/klp_sidebar_frame.dart:4](../../../../../../../lib/src/features/workspace/shell/sidebar/klp_sidebar_frame.dart#L4) |
 | <code>lib/src/features/workspace/shell/status</code> | import | 1 | [lib/src/features/workspace/shell/sidebar/klp_primary_sidebar_frame.dart:9](../../../../../../../lib/src/features/workspace/shell/sidebar/klp_primary_sidebar_frame.dart#L9) |
 | <code>lib/src/foundation/layout</code> | import | 8 | [lib/src/features/workspace/shell/sidebar/klp_primary_sidebar_frame.dart:4](../../../../../../../lib/src/features/workspace/shell/sidebar/klp_primary_sidebar_frame.dart#L4) |
-| <code>lib/src/styling/legacy_theme</code> | import | 3 | [lib/src/features/workspace/shell/sidebar/klp_primary_sidebar_header_inset.dart:4](../../../../../../../lib/src/features/workspace/shell/sidebar/klp_primary_sidebar_header_inset.dart#L4) |
-| <code>package:flutter</code> | import | 5 | [lib/src/features/workspace/shell/sidebar/klp_primary_sidebar_frame.dart:1](../../../../../../../lib/src/features/workspace/shell/sidebar/klp_primary_sidebar_frame.dart#L1) |
+| <code>lib/src/styling/legacy_theme</code> | import | 2 | [lib/src/features/workspace/shell/sidebar/klp_primary_sidebar_header_inset.dart:4](../../../../../../../lib/src/features/workspace/shell/sidebar/klp_primary_sidebar_header_inset.dart#L4) |
+| <code>package:flutter</code> | import | 4 | [lib/src/features/workspace/shell/sidebar/klp_primary_sidebar_frame.dart:1](../../../../../../../lib/src/features/workspace/shell/sidebar/klp_primary_sidebar_frame.dart#L1) |
 
 ### 同目錄依賴
 
@@ -55,12 +55,10 @@ flowchart LR
 	n2["klp_primary_sidebar_header_inset.dart"]
 	n3["klp_sidebar_frame.dart"]
 	n4["klp_sidebar_inset.dart"]
-	n5["klp_workbench_navigation_region.dart"]
 	n0 -->|"contains"| n1
 	n0 -->|"contains"| n2
 	n0 -->|"contains"| n3
 	n0 -->|"contains"| n4
-	n0 -->|"contains"| n5
 ```
 
 ## 子目錄
@@ -77,7 +75,6 @@ flowchart LR
 | `klp_primary_sidebar_header_inset.dart` | KlpPrimarySidebarHeaderInset | [架構與 API](klp_primary_sidebar_header_inset.md) | [lib/src/features/workspace/shell/sidebar/klp_primary_sidebar_header_inset.dart:1](../../../../../../../lib/src/features/workspace/shell/sidebar/klp_primary_sidebar_header_inset.dart#L1) |
 | `klp_sidebar_frame.dart` | KlpSidebarFrame | [架構與 API](klp_sidebar_frame.md) | [lib/src/features/workspace/shell/sidebar/klp_sidebar_frame.dart:1](../../../../../../../lib/src/features/workspace/shell/sidebar/klp_sidebar_frame.dart#L1) |
 | `klp_sidebar_inset.dart` | KlpSidebarInset | [架構與 API](klp_sidebar_inset.md) | [lib/src/features/workspace/shell/sidebar/klp_sidebar_inset.dart:1](../../../../../../../lib/src/features/workspace/shell/sidebar/klp_sidebar_inset.dart#L1) |
-| `klp_workbench_navigation_region.dart` | KlpWorkbenchNavigationRegion, KlpNavigationRailFrame | [架構與 API](klp_workbench_navigation_region.md) | [lib/src/features/workspace/shell/sidebar/klp_workbench_navigation_region.dart:1](../../../../../../../lib/src/features/workspace/shell/sidebar/klp_workbench_navigation_region.dart#L1) |
 
 ## 閱讀說明
 

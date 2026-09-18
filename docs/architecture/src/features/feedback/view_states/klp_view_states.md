@@ -12,15 +12,15 @@
 flowchart LR
 	n0["klp_view_states.dart"]
 	n1["package:flutter/widgets.dart"]
-	n2["../../actions/button/klp_button.dart"]
-	n3["../../../foundation/klp_geometric_spinner.dart"]
-	n4["../../../foundation/klp_icon.dart"]
-	n5["../../../foundation/layout/klp_layout.dart"]
-	n6["../../../foundation/surface/klp_dashed_border.dart"]
-	n7["../../../foundation/surface/klp_veil.dart"]
-	n8["../../../styling/legacy_theme/klp_theme.dart"]
-	n9["../../../foundation/content/klp_text.dart"]
-	n10["../klp_live_region.dart"]
+	n2["package:kallopis/src/features/actions/button/klp_button.dart"]
+	n3["package:kallopis/src/foundation/klp_geometric_spinner.dart"]
+	n4["package:kallopis/src/foundation/klp_icon.dart"]
+	n5["package:kallopis/src/foundation/layout/klp_layout.dart"]
+	n6["package:kallopis/src/foundation/surface/klp_dashed_border.dart"]
+	n7["package:kallopis/src/foundation/surface/klp_veil.dart"]
+	n8["package:kallopis/src/styling/legacy_theme/klp_theme.dart"]
+	n9["package:kallopis/src/foundation/content/klp_text.dart"]
+	n10["package:kallopis/src/features/feedback/klp_live_region.dart"]
 	n11["klp_error_state.dart"]
 	n0 -->|"import"| n1
 	n0 -->|"import"| n2
@@ -53,15 +53,15 @@ flowchart LR
 | 關係 | 原始 directive | 來源 |
 |---|---|---|
 | import | <code>import &#x27;package:flutter/widgets.dart&#x27;;</code> | [lib/src/features/feedback/view_states/klp_view_states.dart:1](../../../../../../lib/src/features/feedback/view_states/klp_view_states.dart#L1) |
-| import | <code>import &#x27;../../actions/button/klp_button.dart&#x27;;</code> | [lib/src/features/feedback/view_states/klp_view_states.dart:3](../../../../../../lib/src/features/feedback/view_states/klp_view_states.dart#L3) |
-| import | <code>import &#x27;../../../foundation/klp_geometric_spinner.dart&#x27;;</code> | [lib/src/features/feedback/view_states/klp_view_states.dart:4](../../../../../../lib/src/features/feedback/view_states/klp_view_states.dart#L4) |
-| import | <code>import &#x27;../../../foundation/klp_icon.dart&#x27;;</code> | [lib/src/features/feedback/view_states/klp_view_states.dart:5](../../../../../../lib/src/features/feedback/view_states/klp_view_states.dart#L5) |
-| import | <code>import &#x27;../../../foundation/layout/klp_layout.dart&#x27;;</code> | [lib/src/features/feedback/view_states/klp_view_states.dart:6](../../../../../../lib/src/features/feedback/view_states/klp_view_states.dart#L6) |
-| import | <code>import &#x27;../../../foundation/surface/klp_dashed_border.dart&#x27;;</code> | [lib/src/features/feedback/view_states/klp_view_states.dart:7](../../../../../../lib/src/features/feedback/view_states/klp_view_states.dart#L7) |
-| import | <code>import &#x27;../../../foundation/surface/klp_veil.dart&#x27;;</code> | [lib/src/features/feedback/view_states/klp_view_states.dart:8](../../../../../../lib/src/features/feedback/view_states/klp_view_states.dart#L8) |
-| import | <code>import &#x27;../../../styling/legacy_theme/klp_theme.dart&#x27;;</code> | [lib/src/features/feedback/view_states/klp_view_states.dart:9](../../../../../../lib/src/features/feedback/view_states/klp_view_states.dart#L9) |
-| import | <code>import &#x27;../../../foundation/content/klp_text.dart&#x27;;</code> | [lib/src/features/feedback/view_states/klp_view_states.dart:10](../../../../../../lib/src/features/feedback/view_states/klp_view_states.dart#L10) |
-| import | <code>import &#x27;../klp_live_region.dart&#x27;;</code> | [lib/src/features/feedback/view_states/klp_view_states.dart:11](../../../../../../lib/src/features/feedback/view_states/klp_view_states.dart#L11) |
+| import | <code>import &#x27;package:kallopis/src/features/actions/button/klp_button.dart&#x27;;</code> | [lib/src/features/feedback/view_states/klp_view_states.dart:3](../../../../../../lib/src/features/feedback/view_states/klp_view_states.dart#L3) |
+| import | <code>import &#x27;package:kallopis/src/foundation/klp_geometric_spinner.dart&#x27;;</code> | [lib/src/features/feedback/view_states/klp_view_states.dart:4](../../../../../../lib/src/features/feedback/view_states/klp_view_states.dart#L4) |
+| import | <code>import &#x27;package:kallopis/src/foundation/klp_icon.dart&#x27;;</code> | [lib/src/features/feedback/view_states/klp_view_states.dart:5](../../../../../../lib/src/features/feedback/view_states/klp_view_states.dart#L5) |
+| import | <code>import &#x27;package:kallopis/src/foundation/layout/klp_layout.dart&#x27;;</code> | [lib/src/features/feedback/view_states/klp_view_states.dart:6](../../../../../../lib/src/features/feedback/view_states/klp_view_states.dart#L6) |
+| import | <code>import &#x27;package:kallopis/src/foundation/surface/klp_dashed_border.dart&#x27;;</code> | [lib/src/features/feedback/view_states/klp_view_states.dart:7](../../../../../../lib/src/features/feedback/view_states/klp_view_states.dart#L7) |
+| import | <code>import &#x27;package:kallopis/src/foundation/surface/klp_veil.dart&#x27;;</code> | [lib/src/features/feedback/view_states/klp_view_states.dart:8](../../../../../../lib/src/features/feedback/view_states/klp_view_states.dart#L8) |
+| import | <code>import &#x27;package:kallopis/src/styling/legacy_theme/klp_theme.dart&#x27;;</code> | [lib/src/features/feedback/view_states/klp_view_states.dart:9](../../../../../../lib/src/features/feedback/view_states/klp_view_states.dart#L9) |
+| import | <code>import &#x27;package:kallopis/src/foundation/content/klp_text.dart&#x27;;</code> | [lib/src/features/feedback/view_states/klp_view_states.dart:10](../../../../../../lib/src/features/feedback/view_states/klp_view_states.dart#L10) |
+| import | <code>import &#x27;package:kallopis/src/features/feedback/klp_live_region.dart&#x27;;</code> | [lib/src/features/feedback/view_states/klp_view_states.dart:11](../../../../../../lib/src/features/feedback/view_states/klp_view_states.dart#L11) |
 | part | <code>part &#x27;klp_error_state.dart&#x27;;</code> | [lib/src/features/feedback/view_states/klp_view_states.dart:13](../../../../../../lib/src/features/feedback/view_states/klp_view_states.dart#L13) |
 | part | <code>part &#x27;klp_loading_state.dart&#x27;;</code> | [lib/src/features/feedback/view_states/klp_view_states.dart:14](../../../../../../lib/src/features/feedback/view_states/klp_view_states.dart#L14) |
 | part | <code>part &#x27;klp_permission_state.dart&#x27;;</code> | [lib/src/features/feedback/view_states/klp_view_states.dart:15](../../../../../../lib/src/features/feedback/view_states/klp_view_states.dart#L15) |

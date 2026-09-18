@@ -1,6 +1,6 @@
 import 'package:flutter/widgets.dart';
 
-import '../../../../foundation/klp_icon.dart';
+import 'package:kallopis/src/foundation/klp_icon.dart';
 import 'klp_rail_entry.dart';
 import 'klp_rail_item.dart';
 

@@ -12,9 +12,9 @@
 flowchart LR
 	n0["klp_theme_toggle.dart"]
 	n1["package:flutter/material.dart"]
-	n2["../../../../foundation/surface/klp_surface.dart"]
-	n3["../../../../styling/legacy_theme/klp_theme.dart"]
-	n4["../../../../foundation/content/klp_text.dart"]
+	n2["package:kallopis/src/foundation/surface/klp_surface.dart"]
+	n3["package:kallopis/src/styling/legacy_theme/klp_theme.dart"]
+	n4["package:kallopis/src/foundation/content/klp_text.dart"]
 	n0 -->|"import"| n1
 	n0 -->|"import"| n2
 	n0 -->|"import"| n3
@@ -26,9 +26,9 @@ flowchart LR
 | 關係 | 原始 directive | 來源 |
 |---|---|---|
 | import | <code>import &#x27;package:flutter/material.dart&#x27;;</code> | [lib/src/features/workspace/shell/theme/klp_theme_toggle.dart:1](../../../../../../../lib/src/features/workspace/shell/theme/klp_theme_toggle.dart#L1) |
-| import | <code>import &#x27;../../../../foundation/surface/klp_surface.dart&#x27;;</code> | [lib/src/features/workspace/shell/theme/klp_theme_toggle.dart:3](../../../../../../../lib/src/features/workspace/shell/theme/klp_theme_toggle.dart#L3) |
-| import | <code>import &#x27;../../../../styling/legacy_theme/klp_theme.dart&#x27;;</code> | [lib/src/features/workspace/shell/theme/klp_theme_toggle.dart:4](../../../../../../../lib/src/features/workspace/shell/theme/klp_theme_toggle.dart#L4) |
-| import | <code>import &#x27;../../../../foundation/content/klp_text.dart&#x27;;</code> | [lib/src/features/workspace/shell/theme/klp_theme_toggle.dart:5](../../../../../../../lib/src/features/workspace/shell/theme/klp_theme_toggle.dart#L5) |
+| import | <code>import &#x27;package:kallopis/src/foundation/surface/klp_surface.dart&#x27;;</code> | [lib/src/features/workspace/shell/theme/klp_theme_toggle.dart:3](../../../../../../../lib/src/features/workspace/shell/theme/klp_theme_toggle.dart#L3) |
+| import | <code>import &#x27;package:kallopis/src/styling/legacy_theme/klp_theme.dart&#x27;;</code> | [lib/src/features/workspace/shell/theme/klp_theme_toggle.dart:4](../../../../../../../lib/src/features/workspace/shell/theme/klp_theme_toggle.dart#L4) |
+| import | <code>import &#x27;package:kallopis/src/foundation/content/klp_text.dart&#x27;;</code> | [lib/src/features/workspace/shell/theme/klp_theme_toggle.dart:5](../../../../../../../lib/src/features/workspace/shell/theme/klp_theme_toggle.dart#L5) |
 
 ## 宣告關係圖
 

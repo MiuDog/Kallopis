@@ -11,14 +11,14 @@
 ```mermaid
 flowchart LR
 	n0["klp_installation.dart"]
-	n1["../../../composition/nodes/klp_node.dart"]
-	n2["../../../kernel/identity/klp_placement_id.dart"]
-	n3["../../../composition/registry/klp_registry.dart"]
-	n4["../../../composition/validation/klp_tree_validation.dart"]
-	n5["../../../composition/validation/klp_validated_node.dart"]
-	n6["klp_default_placement.dart"]
-	n7["klp_installation_exception.dart"]
-	n8["klp_placement_resource.dart"]
+	n1["package:kallopis/src/composition/nodes/klp_node.dart"]
+	n2["package:kallopis/src/kernel/identity/klp_placement_id.dart"]
+	n3["package:kallopis/src/composition/registry/klp_registry.dart"]
+	n4["package:kallopis/src/composition/validation/klp_tree_validation.dart"]
+	n5["package:kallopis/src/composition/validation/klp_validated_node.dart"]
+	n6["package:kallopis/src/runtime/installation/klp_default_placement.dart"]
+	n7["package:kallopis/src/runtime/contracts/klp_installation_exception.dart"]
+	n8["package:kallopis/src/runtime/contracts/klp_placement_resource.dart"]
 	n0 -->|"import"| n1
 	n0 -->|"import"| n2
 	n0 -->|"import"| n3
@@ -33,14 +33,14 @@ flowchart LR
 
 | 關係 | 原始 directive | 來源 |
 |---|---|---|
-| import | <code>import &#x27;../../../composition/nodes/klp_node.dart&#x27;;</code> | [lib/src/runtime/installation/internal/klp_installation.dart:1](../../../../../../lib/src/runtime/installation/internal/klp_installation.dart#L1) |
-| import | <code>import &#x27;../../../kernel/identity/klp_placement_id.dart&#x27;;</code> | [lib/src/runtime/installation/internal/klp_installation.dart:2](../../../../../../lib/src/runtime/installation/internal/klp_installation.dart#L2) |
-| import | <code>import &#x27;../../../composition/registry/klp_registry.dart&#x27;;</code> | [lib/src/runtime/installation/internal/klp_installation.dart:3](../../../../../../lib/src/runtime/installation/internal/klp_installation.dart#L3) |
-| import | <code>import &#x27;../../../composition/validation/klp_tree_validation.dart&#x27;;</code> | [lib/src/runtime/installation/internal/klp_installation.dart:4](../../../../../../lib/src/runtime/installation/internal/klp_installation.dart#L4) |
-| import | <code>import &#x27;../../../composition/validation/klp_validated_node.dart&#x27;;</code> | [lib/src/runtime/installation/internal/klp_installation.dart:5](../../../../../../lib/src/runtime/installation/internal/klp_installation.dart#L5) |
-| import | <code>import &#x27;klp_default_placement.dart&#x27;;</code> | [lib/src/runtime/installation/internal/klp_installation.dart:6](../../../../../../lib/src/runtime/installation/internal/klp_installation.dart#L6) |
-| import | <code>import &#x27;klp_installation_exception.dart&#x27;;</code> | [lib/src/runtime/installation/internal/klp_installation.dart:7](../../../../../../lib/src/runtime/installation/internal/klp_installation.dart#L7) |
-| import | <code>import &#x27;klp_placement_resource.dart&#x27;;</code> | [lib/src/runtime/installation/internal/klp_installation.dart:8](../../../../../../lib/src/runtime/installation/internal/klp_installation.dart#L8) |
+| import | <code>import &#x27;package:kallopis/src/composition/nodes/klp_node.dart&#x27;;</code> | [lib/src/runtime/installation/internal/klp_installation.dart:1](../../../../../../lib/src/runtime/installation/internal/klp_installation.dart#L1) |
+| import | <code>import &#x27;package:kallopis/src/kernel/identity/klp_placement_id.dart&#x27;;</code> | [lib/src/runtime/installation/internal/klp_installation.dart:2](../../../../../../lib/src/runtime/installation/internal/klp_installation.dart#L2) |
+| import | <code>import &#x27;package:kallopis/src/composition/registry/klp_registry.dart&#x27;;</code> | [lib/src/runtime/installation/internal/klp_installation.dart:3](../../../../../../lib/src/runtime/installation/internal/klp_installation.dart#L3) |
+| import | <code>import &#x27;package:kallopis/src/composition/validation/klp_tree_validation.dart&#x27;;</code> | [lib/src/runtime/installation/internal/klp_installation.dart:4](../../../../../../lib/src/runtime/installation/internal/klp_installation.dart#L4) |
+| import | <code>import &#x27;package:kallopis/src/composition/validation/klp_validated_node.dart&#x27;;</code> | [lib/src/runtime/installation/internal/klp_installation.dart:5](../../../../../../lib/src/runtime/installation/internal/klp_installation.dart#L5) |
+| import | <code>import &#x27;package:kallopis/src/runtime/installation/klp_default_placement.dart&#x27;;</code> | [lib/src/runtime/installation/internal/klp_installation.dart:6](../../../../../../lib/src/runtime/installation/internal/klp_installation.dart#L6) |
+| import | <code>import &#x27;package:kallopis/src/runtime/contracts/klp_installation_exception.dart&#x27;;</code> | [lib/src/runtime/installation/internal/klp_installation.dart:7](../../../../../../lib/src/runtime/installation/internal/klp_installation.dart#L7) |
+| import | <code>import &#x27;package:kallopis/src/runtime/contracts/klp_placement_resource.dart&#x27;;</code> | [lib/src/runtime/installation/internal/klp_installation.dart:8](../../../../../../lib/src/runtime/installation/internal/klp_installation.dart#L8) |
 
 ## 宣告關係圖
 
@@ -69,21 +69,22 @@ ClassDeclaration · public · [lib/src/runtime/installation/internal/klp_install
 |---|---|---|---|---|
 | field <code>registry</code> | public | <code>final KlpRegistry registry</code> |  | [lib/src/runtime/installation/internal/klp_installation.dart:12](../../../../../../lib/src/runtime/installation/internal/klp_installation.dart#L12) |
 | field <code>_create</code> | private | <code>final KlpPlacementResource Function(KlpValidatedNode) _create</code> |  | [lib/src/runtime/installation/internal/klp_installation.dart:13](../../../../../../lib/src/runtime/installation/internal/klp_installation.dart#L13) |
-| field <code>_resources</code> | private | <code>Map&lt;KlpPlacementId, KlpPlacementResource&gt; _resources</code> |  | [lib/src/runtime/installation/internal/klp_installation.dart:14](../../../../../../lib/src/runtime/installation/internal/klp_installation.dart#L14) |
-| field <code>_tree</code> | private | <code>KlpTreeValidation? _tree</code> |  | [lib/src/runtime/installation/internal/klp_installation.dart:15](../../../../../../lib/src/runtime/installation/internal/klp_installation.dart#L15) |
-| field <code>_busy</code> | private | <code>bool _busy</code> |  | [lib/src/runtime/installation/internal/klp_installation.dart:16](../../../../../../lib/src/runtime/installation/internal/klp_installation.dart#L16) |
-| field <code>_disposed</code> | private | <code>bool _disposed</code> |  | [lib/src/runtime/installation/internal/klp_installation.dart:17](../../../../../../lib/src/runtime/installation/internal/klp_installation.dart#L17) |
-| constructor <code>KlpInstallation</code> | public | <code>KlpInstallation( this.registry, { KlpPlacementResource Function(KlpValidatedNode)? create, })</code> |  | [lib/src/runtime/installation/internal/klp_installation.dart:19](../../../../../../lib/src/runtime/installation/internal/klp_installation.dart#L19) |
-| getter <code>tree</code> | public | <code>KlpTreeValidation? get tree</code> |  | [lib/src/runtime/installation/internal/klp_installation.dart:24](../../../../../../lib/src/runtime/installation/internal/klp_installation.dart#L24) |
-| getter <code>isDisposed</code> | public | <code>bool get isDisposed</code> |  | [lib/src/runtime/installation/internal/klp_installation.dart:25](../../../../../../lib/src/runtime/installation/internal/klp_installation.dart#L25) |
-| getter <code>resources</code> | public | <code>Map&lt;KlpPlacementId, KlpPlacementResource&gt; get resources</code> |  | [lib/src/runtime/installation/internal/klp_installation.dart:26](../../../../../../lib/src/runtime/installation/internal/klp_installation.dart#L26) |
-| method <code>update</code> | public | <code>void update(KlpNode root)</code> |  | [lib/src/runtime/installation/internal/klp_installation.dart:29](../../../../../../lib/src/runtime/installation/internal/klp_installation.dart#L29) |
-| method <code>updateValidated</code> | public | <code>void updateValidated(KlpTreeValidation next, {void Function()? onCommitted})</code> | 僅供已完成同次註冊與資料準備的 runtime 使用，避免再次讀取外部節點。 | [lib/src/runtime/installation/internal/klp_installation.dart:40](../../../../../../lib/src/runtime/installation/internal/klp_installation.dart#L40) |
-| method <code>dispose</code> | public | <code>void dispose()</code> |  | [lib/src/runtime/installation/internal/klp_installation.dart:50](../../../../../../lib/src/runtime/installation/internal/klp_installation.dart#L50) |
-| method <code>_apply</code> | private | <code>void _apply(KlpTreeValidation next, {void Function()? onCommitted})</code> |  | [lib/src/runtime/installation/internal/klp_installation.dart:71](../../../../../../lib/src/runtime/installation/internal/klp_installation.dart#L71) |
-| method <code>_sameChildren</code> | private | <code>bool _sameChildren(KlpValidatedNode left, KlpValidatedNode right)</code> |  | [lib/src/runtime/installation/internal/klp_installation.dart:135](../../../../../../lib/src/runtime/installation/internal/klp_installation.dart#L135) |
-| method <code>_cleanup</code> | private | <code>void _cleanup( KlpPlacementResource resource, List&lt;({Object error, StackTrace stackTrace})&gt; issues, )</code> |  | [lib/src/runtime/installation/internal/klp_installation.dart:148](../../../../../../lib/src/runtime/installation/internal/klp_installation.dart#L148) |
-| method <code>_enter</code> | private | <code>void _enter()</code> |  | [lib/src/runtime/installation/internal/klp_installation.dart:159](../../../../../../lib/src/runtime/installation/internal/klp_installation.dart#L159) |
+| field <code>_canReuse</code> | private | <code>final bool Function(KlpValidatedNode, KlpPlacementResource) _canReuse</code> |  | [lib/src/runtime/installation/internal/klp_installation.dart:14](../../../../../../lib/src/runtime/installation/internal/klp_installation.dart#L14) |
+| field <code>_resources</code> | private | <code>Map&lt;KlpPlacementId, KlpPlacementResource&gt; _resources</code> |  | [lib/src/runtime/installation/internal/klp_installation.dart:15](../../../../../../lib/src/runtime/installation/internal/klp_installation.dart#L15) |
+| field <code>_tree</code> | private | <code>KlpTreeValidation? _tree</code> |  | [lib/src/runtime/installation/internal/klp_installation.dart:16](../../../../../../lib/src/runtime/installation/internal/klp_installation.dart#L16) |
+| field <code>_busy</code> | private | <code>bool _busy</code> |  | [lib/src/runtime/installation/internal/klp_installation.dart:17](../../../../../../lib/src/runtime/installation/internal/klp_installation.dart#L17) |
+| field <code>_disposed</code> | private | <code>bool _disposed</code> |  | [lib/src/runtime/installation/internal/klp_installation.dart:18](../../../../../../lib/src/runtime/installation/internal/klp_installation.dart#L18) |
+| constructor <code>KlpInstallation</code> | public | <code>KlpInstallation( this.registry, { KlpPlacementResource Function(KlpValidatedNode)? create, bool Function(KlpValidatedNode, KlpPlacementResource)? canReuse, })</code> |  | [lib/src/runtime/installation/internal/klp_installation.dart:20](../../../../../../lib/src/runtime/installation/internal/klp_installation.dart#L20) |
+| getter <code>tree</code> | public | <code>KlpTreeValidation? get tree</code> |  | [lib/src/runtime/installation/internal/klp_installation.dart:27](../../../../../../lib/src/runtime/installation/internal/klp_installation.dart#L27) |
+| getter <code>isDisposed</code> | public | <code>bool get isDisposed</code> |  | [lib/src/runtime/installation/internal/klp_installation.dart:28](../../../../../../lib/src/runtime/installation/internal/klp_installation.dart#L28) |
+| getter <code>resources</code> | public | <code>Map&lt;KlpPlacementId, KlpPlacementResource&gt; get resources</code> |  | [lib/src/runtime/installation/internal/klp_installation.dart:29](../../../../../../lib/src/runtime/installation/internal/klp_installation.dart#L29) |
+| method <code>update</code> | public | <code>void update(KlpNode root)</code> |  | [lib/src/runtime/installation/internal/klp_installation.dart:32](../../../../../../lib/src/runtime/installation/internal/klp_installation.dart#L32) |
+| method <code>updateValidated</code> | public | <code>void updateValidated(KlpTreeValidation next, {void Function()? onCommitted})</code> | 僅供已完成同次註冊與資料準備的 runtime 使用，避免再次讀取外部節點。 | [lib/src/runtime/installation/internal/klp_installation.dart:43](../../../../../../lib/src/runtime/installation/internal/klp_installation.dart#L43) |
+| method <code>dispose</code> | public | <code>void dispose()</code> |  | [lib/src/runtime/installation/internal/klp_installation.dart:53](../../../../../../lib/src/runtime/installation/internal/klp_installation.dart#L53) |
+| method <code>_apply</code> | private | <code>void _apply(KlpTreeValidation next, {void Function()? onCommitted})</code> |  | [lib/src/runtime/installation/internal/klp_installation.dart:74](../../../../../../lib/src/runtime/installation/internal/klp_installation.dart#L74) |
+| method <code>_sameChildren</code> | private | <code>bool _sameChildren(KlpValidatedNode left, KlpValidatedNode right)</code> |  | [lib/src/runtime/installation/internal/klp_installation.dart:139](../../../../../../lib/src/runtime/installation/internal/klp_installation.dart#L139) |
+| method <code>_cleanup</code> | private | <code>void _cleanup( KlpPlacementResource resource, List&lt;({Object error, StackTrace stackTrace})&gt; issues, )</code> |  | [lib/src/runtime/installation/internal/klp_installation.dart:152](../../../../../../lib/src/runtime/installation/internal/klp_installation.dart#L152) |
+| method <code>_enter</code> | private | <code>void _enter()</code> |  | [lib/src/runtime/installation/internal/klp_installation.dart:163](../../../../../../lib/src/runtime/installation/internal/klp_installation.dart#L163) |
 
 ## 閱讀說明與限制
 

@@ -1,7 +1,7 @@
 import 'package:flutter/services.dart';
 import 'package:kallopis/kallopis.dart';
 
-/// 載入 widget/golden 測試需要的 Kallopis 字型。
+/// 載入 widget 測試需要的 Kallopis 字型。
 ///
 /// `flutter_test` 不會自動載入 pubspec 登記的自訂字型；少了這一步會靜默
 /// fallback，私用區字碼就會顯示成缺字方框。

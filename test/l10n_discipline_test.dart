@@ -1,16 +1,18 @@
 import 'dart:io';
 
+import 'package:analyzer/dart/analysis/utilities.dart';
+import 'package:analyzer/dart/ast/token.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 /// 這組測試是「庫不替產品決定用什麼語言」這條規則的閘門。
 ///
-/// 見 `lib/src/application/localization/klp_localizations.dart` 的 dartdoc、`KlpToast.closeLabel`
+/// 見 `lib/src/foundation/localization/klp_localizations.dart` 的 dartdoc、`KlpToast.closeLabel`
 /// 與 `KlpCalendar` 的既有慣例。承諾寫在文件裡擋不下下一次提交裡新增的一個
 /// 寫死字串——這裡把它變成機械判準。
 ///
 /// ## 掃描範圍與判準
 ///
-/// 掃 `lib/src`（排除 `lib/src/application/localization` 自己——那裡本來就該放字串），找兩類字面值：
+/// 掃 `lib/src`（排除 `lib/src/foundation/localization` 自己——那裡本來就該放字串），找兩類字面值：
 ///
 /// 1. 字串字面值裡出現中文字元——庫的消費者不必然說中文。
 /// 2. 字串字面值裡出現當圖示用的符號（`×`、`✓`、`✕`、`○`、`⌃`、`⌄`、`•`、`↑`、`↓`
@@ -36,7 +38,7 @@ void main() {
       .where(
         (file) => !file.path
             .replaceAll(r'\', '/')
-            .contains('/application/localization/'),
+            .contains('/foundation/localization/'),
       )
       .toList();
 
@@ -56,6 +58,8 @@ void main() {
     String content,
     RegExp pattern,
   ) {
+		// 先遮罩真正註解並保留位置，字串內的 //、/* 不視為註解。
+		content = _maskComments(content);
     final boundaries = statementBoundaryPattern
         .allMatches(content)
         .map((m) => m.start)
@@ -97,9 +101,32 @@ void main() {
     return violations;
   }
 
+	test('註解排除保留字串與原始行號', () {
+		const comments = "// '↑' '中文'\r\n/* '↓' /* '中文' */ */\r\n/// '中文'\r\nconst value = '正文';\r\n// '↓'";
+		final masked = _maskComments(comments);
+		expect(masked.length, comments.length);
+		expect(masked.split('\r\n').length, comments.split('\r\n').length);
+		expect(findUserVisibleViolations('sample.dart', comments, iconGlyphPattern), isEmpty);
+		expect(findUserVisibleViolations('sample.dart', comments, chinesePattern), ['sample.dart:4']);
+
+		const strings = "const first = '正文 // still a string';\nconst second = '↑ /* still a string */';\nconst third = r'↓ // raw string';\nconst fourth = '''中文 /* multiline string */\nstill content''';";
+		expect(_maskComments(strings), strings);
+		expect(findUserVisibleViolations('sample.dart', strings, chinesePattern), ['sample.dart:1', 'sample.dart:4']);
+		expect(findUserVisibleViolations('sample.dart', strings, iconGlyphPattern), ['sample.dart:2', 'sample.dart:3']);
+	});
+
+	test('開發者訊息排除不受註解偽裝影響且十六個真圖示仍超標', () {
+		const source = "void f() { assert(false, '斷言'); throw StateError('錯誤'); }\nclass A { String toString() => '描述'; }\nconst visible = '正文'; // throw StateError('略過');";
+		expect(findUserVisibleViolations('sample.dart', source, chinesePattern), ['sample.dart:3']);
+		final sixteen = List.generate(16, (index) => "const icon$index = '↑';").join('\n');
+		final detected = findUserVisibleViolations('sample.dart', sixteen, iconGlyphPattern);
+		expect(detected.length, 16);
+		expect(detected.length, isNot(lessThanOrEqualTo(15)));
+	});
+
   test('沒有新的元件寫死中文字串', () {
     // 抽取自 Planist 時散落的寫死中文字串已全數接上 KlpLocalizations
-    // （見 lib/src/application/localization/klp_localizations.dart）。**這個集合只能維持為空。**
+    // （見 lib/src/foundation/localization/klp_localizations.dart）。**這個集合只能維持為空。**
     final violations = <String>[];
     for (final file in sourceFiles) {
       violations.addAll(
@@ -152,4 +179,24 @@ void main() {
       reason: '已降到 $count，請把 baseline 一併調低到這個數字。',
     );
   });
+}
+
+String _maskComments(String source) {
+	// 分詞器能辨識巢狀註解、原始字串和插值；以同長空白覆蓋註解，行號維持原始碼。
+	final unit = parseString(content: source, throwIfDiagnostics: false).unit;
+	final masked = source.codeUnits.toList();
+	var token = unit.beginToken;
+	while (true) {
+		Token? comment = token.precedingComments;
+		while (comment != null) {
+			for (var index = comment.offset; index < comment.end; index++) {
+				if (masked[index] != 10 && masked[index] != 13) masked[index] = 32;
+			}
+			comment = comment.next;
+		}
+		if (token.isEof) break;
+
+		token = token.next!;
+	}
+	return String.fromCharCodes(masked);
 }

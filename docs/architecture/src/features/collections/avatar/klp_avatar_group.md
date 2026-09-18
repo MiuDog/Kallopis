@@ -12,9 +12,9 @@
 flowchart LR
 	n0["klp_avatar_group.dart"]
 	n1["package:flutter/widgets.dart"]
-	n2["../../../foundation/layout/klp_gap.dart"]
-	n3["../../../foundation/layout/klp_row.dart"]
-	n4["../../../foundation/layout/klp_space_size.dart"]
+	n2["package:kallopis/src/foundation/layout/klp_gap.dart"]
+	n3["package:kallopis/src/foundation/layout/klp_row.dart"]
+	n4["package:kallopis/src/foundation/layout/klp_space_size.dart"]
 	n5["klp_avatar.dart"]
 	n0 -->|"import"| n1
 	n0 -->|"import"| n2
@@ -28,9 +28,9 @@ flowchart LR
 | 關係 | 原始 directive | 來源 |
 |---|---|---|
 | import | <code>import &#x27;package:flutter/widgets.dart&#x27;;</code> | [lib/src/features/collections/avatar/klp_avatar_group.dart:1](../../../../../../lib/src/features/collections/avatar/klp_avatar_group.dart#L1) |
-| import | <code>import &#x27;../../../foundation/layout/klp_gap.dart&#x27;;</code> | [lib/src/features/collections/avatar/klp_avatar_group.dart:3](../../../../../../lib/src/features/collections/avatar/klp_avatar_group.dart#L3) |
-| import | <code>import &#x27;../../../foundation/layout/klp_row.dart&#x27;;</code> | [lib/src/features/collections/avatar/klp_avatar_group.dart:4](../../../../../../lib/src/features/collections/avatar/klp_avatar_group.dart#L4) |
-| import | <code>import &#x27;../../../foundation/layout/klp_space_size.dart&#x27;;</code> | [lib/src/features/collections/avatar/klp_avatar_group.dart:5](../../../../../../lib/src/features/collections/avatar/klp_avatar_group.dart#L5) |
+| import | <code>import &#x27;package:kallopis/src/foundation/layout/klp_gap.dart&#x27;;</code> | [lib/src/features/collections/avatar/klp_avatar_group.dart:3](../../../../../../lib/src/features/collections/avatar/klp_avatar_group.dart#L3) |
+| import | <code>import &#x27;package:kallopis/src/foundation/layout/klp_row.dart&#x27;;</code> | [lib/src/features/collections/avatar/klp_avatar_group.dart:4](../../../../../../lib/src/features/collections/avatar/klp_avatar_group.dart#L4) |
+| import | <code>import &#x27;package:kallopis/src/foundation/layout/klp_space_size.dart&#x27;;</code> | [lib/src/features/collections/avatar/klp_avatar_group.dart:5](../../../../../../lib/src/features/collections/avatar/klp_avatar_group.dart#L5) |
 | import | <code>import &#x27;klp_avatar.dart&#x27;;</code> | [lib/src/features/collections/avatar/klp_avatar_group.dart:6](../../../../../../lib/src/features/collections/avatar/klp_avatar_group.dart#L6) |
 
 ## 宣告關係圖

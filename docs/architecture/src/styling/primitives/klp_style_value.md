@@ -11,7 +11,7 @@
 ```mermaid
 flowchart LR
 	n0["klp_style_value.dart"]
-	n1["../../kernel/diagnostics/klp_contract_error.dart"]
+	n1["package:kallopis/src/kernel/diagnostics/klp_contract_error.dart"]
 	n2["klp_distance.dart"]
 	n3["klp_radius.dart"]
 	n4["klp_stroke_width.dart"]
@@ -46,7 +46,7 @@ flowchart TD
 
 | 關係 | 原始 directive | 來源 |
 |---|---|---|
-| import | <code>import &#x27;../../kernel/diagnostics/klp_contract_error.dart&#x27;;</code> | [lib/src/styling/primitives/klp_style_value.dart:1](../../../../../lib/src/styling/primitives/klp_style_value.dart#L1) |
+| import | <code>import &#x27;package:kallopis/src/kernel/diagnostics/klp_contract_error.dart&#x27;;</code> | [lib/src/styling/primitives/klp_style_value.dart:1](../../../../../lib/src/styling/primitives/klp_style_value.dart#L1) |
 | part | <code>part &#x27;klp_distance.dart&#x27;;</code> | [lib/src/styling/primitives/klp_style_value.dart:3](../../../../../lib/src/styling/primitives/klp_style_value.dart#L3) |
 | part | <code>part &#x27;klp_radius.dart&#x27;;</code> | [lib/src/styling/primitives/klp_style_value.dart:4](../../../../../lib/src/styling/primitives/klp_style_value.dart#L4) |
 | part | <code>part &#x27;klp_stroke_width.dart&#x27;;</code> | [lib/src/styling/primitives/klp_style_value.dart:5](../../../../../lib/src/styling/primitives/klp_style_value.dart#L5) |

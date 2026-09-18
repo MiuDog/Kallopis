@@ -53,8 +53,14 @@ jobs:
       - name: 靜態分析（flutter analyze）
         run: flutter analyze --fatal-infos
 
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+
       - name: 參考網站產生與驗證
         run: |
+          npm ci --prefix tool/reference_site
+          npm test --prefix tool/reference_site
           node tool/reference_site/generate.mjs
           node tool/reference_site/verify.mjs
 

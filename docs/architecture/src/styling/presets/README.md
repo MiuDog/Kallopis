@@ -10,32 +10,51 @@
 
 箭頭以本層 Dart 檔案明寫的 directive 彙總到目標所在目錄或外部套件邊界；不遞迴將子目錄依賴算入本層。相同目標的不同 directive 類型分開計數。
 
-本層檔案未宣告跨目錄依賴；子目錄依賴請循下一層入口閱讀。
+```mermaid
+flowchart TD
+	n0["lib/src/styling/presets"]
+	n1["lib/src/styling/primitives"]
+	n0 -->|"import"| n1
+```
 
 | 目標邊界 | 關係 | directive 數 | 第一筆來源證據 |
 |---|---|---|---|
-| 無 | — | 0 | 來源清單見本層檔案 |
+| <code>lib/src/styling/primitives</code> | import | 2 | [lib/src/styling/presets/klp_workspace_preset.dart:1](../../../../../lib/src/styling/presets/klp_workspace_preset.dart#L1) |
+
+### 同目錄依賴
+
+| 來源 → 目標 | 關係 | 證據 |
+|---|---|---|
+| <code>klp_workspace_preset.dart → klp_paper_shadow_recipe.dart</code> | import | [lib/src/styling/presets/klp_workspace_preset.dart:3](../../../../../lib/src/styling/presets/klp_workspace_preset.dart#L3) |
 
 ## 目錄結構圖
 
 ```mermaid
-flowchart TD
+flowchart LR
 	n0["lib/src/styling/presets"]
-	n1["legacy/"]
+	n1["internal/"]
+	n2["legacy/"]
+	n3["klp_paper_shadow_recipe.dart"]
+	n4["klp_workspace_preset.dart"]
 	n0 -->|"contains"| n1
+	n0 -->|"contains"| n2
+	n0 -->|"contains"| n3
+	n0 -->|"contains"| n4
 ```
 
 ## 子目錄
 
 | 目錄 | 導航 | 來源證據 |
 |---|---|---|
+| `internal/` | [架構入口](internal/README.md) | [來源目錄](../../../../../lib/src/styling/presets/internal) |
 | `legacy/` | [架構入口](legacy/README.md) | [來源目錄](../../../../../lib/src/styling/presets/legacy) |
 
 ## 本層檔案
 
 | 檔案 | 宣告 | 細節 | 來源證據 |
 |---|---|---|---|
-| 無 | 本層沒有 Dart 檔案 | — | — |
+| `klp_paper_shadow_recipe.dart` | KlpPaperShadowRecipe | [架構與 API](klp_paper_shadow_recipe.md) | [lib/src/styling/presets/klp_paper_shadow_recipe.dart:1](../../../../../lib/src/styling/presets/klp_paper_shadow_recipe.dart#L1) |
+| `klp_workspace_preset.dart` | KlpWorkspaceTone, KlpWorkspacePreset | [架構與 API](klp_workspace_preset.md) | [lib/src/styling/presets/klp_workspace_preset.dart:1](../../../../../lib/src/styling/presets/klp_workspace_preset.dart#L1) |
 
 ## 閱讀說明
 

@@ -1,0 +1,82 @@
+{
+	"status": "REND-V1-05 complete",
+	"plan_revision": "90acc02e2a7bb80acfc17cdd59ed11b9183f4ace",
+	"validated_source_revision": "51a76c335e38aa4fdbd0b025c735cd90f059426c",
+	"source_files": [
+		"lib/src/application/bootstrap/internal/klp_application_host_state.dart",
+		"lib/src/application/structure/klp_application.dart",
+		"lib/src/features/editing/contracts/klp_editing_host_failure.dart",
+		"lib/src/rendering/flutter/internal/klp_block_note_web_session_loader.dart",
+		"lib/src/rendering/flutter/internal/klp_flutter_block_note_editing.dart",
+		"lib/src/rendering/flutter/internal/klp_flutter_canva_editing.dart",
+		"lib/src/rendering/flutter/internal/klp_flutter_editing.dart",
+		"lib/src/rendering/flutter/klp_flutter_renderer.dart",
+		"lib/src/rendering/flutter/klp_viewport_capabilities.dart"
+	],
+	"tests": {
+		"R1-integrated-fixed.log": 46,
+		"R2-integrated-frozen.log": 38,
+		"regression.log": 61,
+		"architecture.log": 178
+	},
+	"test_hashes": {
+		"R1": [
+			{
+				"path": "test/klp_editing_host_failure_contract_test.dart",
+				"sha256": "856d89657067bd2772c5e520775aa7b2c410f042475152fc10a4e2a900c36525"
+			},
+			{
+				"path": "test/klp_flutter_editing_lifecycle_test.dart",
+				"sha256": "a226b74e5e36afa0f161afff6a98b9b5f177850043f352a75bd67cad319e9912"
+			},
+			{
+				"path": "test/klp_application_host_test.dart",
+				"sha256": "7ad631ae0fd4a2c1b99d4c1c66093d8b113bdc919cb55e1e4379078eda475829"
+			},
+			{
+				"path": "test/support/klp_renderer_fixture.dart",
+				"sha256": "4f3f682bdf9dd0626b226e5b4eaff2a446556e002e0e1962823761a89ca97f7e"
+			},
+			{
+				"path": "test/support/klp_editing_lifecycle_fixture.dart",
+				"sha256": "3a278e8089d57b8ea129b602e7d5a4c9aa2deeaa0c3b2529eb94c356942967c3"
+			},
+			{
+				"path": "test/klp_rendering_host_boundary_test.dart",
+				"sha256": "8ccd2683f1b5ff8fe1553acfa1676e2d20e2edab4232917caf34826076a50807"
+			}
+		],
+		"R2": [
+			{
+				"sha256": "1edee485ce9a9b75d1e4a6b9078772405e71fb6d7aef19b4905d053e39386a93",
+				"path": "test/klp_block_note_web_session_loader_test.dart"
+			},
+			{
+				"sha256": "f0fd484ad51c26e44403e6f655ddd4c24f9874c940bdeb6127eb2fe8cf1f38d3",
+				"path": "test/klp_block_note_load_surface_test.dart"
+			},
+			{
+				"sha256": "72a03655241582576d11d8faf8f09286692cb75c9b9db3090bf579f91d59d099",
+				"path": "test/klp_web_editing_host_lifecycle_test.dart"
+			},
+			{
+				"sha256": "6ea394742e3b7fe19588829a3ebddb12c30ade4fc94457babd053b87579a9827",
+				"path": "test/support/klp_web_editing_platform_fixture.dart"
+			}
+		]
+	},
+	"scope_reports": [
+		"R1_features-scope.json",
+		"R1_application-scope.json",
+		"R1_rendering-scope.json",
+		"R2_rendering-scope.json",
+		"application-syntax-fix-scope.json",
+		"rendering-syntax-fix-scope.json",
+		"R1-cached-replay-fix-scope.json",
+		"R1-publication-resync-fix-scope.json"
+	],
+	"atlas": "Extracted 1197 Dart files without syntax errors.\nGenerated 1197 file pages, 283 folder pages, 3723 diagrams.\nFreshness check passed: 1481 files match byte for byte.",
+	"analysis": "No issues found",
+	"external_evidence": "D:\\Projects\\Kallopis-v1-evidence\\rendering-host",
+	"transfer": "Exact final commit and original HEAD/index preserved in external transfer-receipt.json."
+}

@@ -1,8 +1,8 @@
 import 'package:flutter/widgets.dart';
 
-import '../../../foundation/binding/internal/klp_bound_template.dart';
-import '../../../kernel/identity/klp_placement_id.dart';
-import 'klp_flutter_renderer.dart';
+import 'package:kallopis/src/foundation/binding/contracts/klp_bound_template.dart';
+import 'package:kallopis/src/kernel/identity/klp_placement_id.dart';
+import '../klp_flutter_renderer.dart';
 
 /// 同一頁保留相同元素與焦點範圍；只有目前頁參與互動。
 final class KlpFlutterRetainedStack extends StatefulWidget {

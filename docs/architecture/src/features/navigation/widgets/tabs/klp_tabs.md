@@ -13,11 +13,11 @@ flowchart LR
 	n0["klp_tabs.dart"]
 	n1["package:flutter/material.dart"]
 	n2["package:flutter/services.dart"]
-	n3["../../../../foundation/interaction/klp_focus_region.dart"]
-	n4["../../../../foundation/interaction/klp_roving_index.dart"]
-	n5["../../../../foundation/layout/klp_layout.dart"]
-	n6["../../../../styling/legacy_theme/klp_theme.dart"]
-	n7["../../../../foundation/content/klp_text.dart"]
+	n3["package:kallopis/src/foundation/interaction/klp_focus_region.dart"]
+	n4["package:kallopis/src/foundation/interaction/klp_roving_index.dart"]
+	n5["package:kallopis/src/foundation/layout/klp_layout.dart"]
+	n6["package:kallopis/src/styling/legacy_theme/klp_theme.dart"]
+	n7["package:kallopis/src/foundation/content/klp_text.dart"]
 	n8["internal/klp_tab.dart"]
 	n9["primitives/klp_tab_frame.dart"]
 	n10["primitives/klp_tabs_viewport.dart"]
@@ -39,11 +39,11 @@ flowchart LR
 |---|---|---|
 | import | <code>import &#x27;package:flutter/material.dart&#x27;;</code> | [lib/src/features/navigation/widgets/tabs/klp_tabs.dart:1](../../../../../../../lib/src/features/navigation/widgets/tabs/klp_tabs.dart#L1) |
 | import | <code>import &#x27;package:flutter/services.dart&#x27;;</code> | [lib/src/features/navigation/widgets/tabs/klp_tabs.dart:2](../../../../../../../lib/src/features/navigation/widgets/tabs/klp_tabs.dart#L2) |
-| import | <code>import &#x27;../../../../foundation/interaction/klp_focus_region.dart&#x27;;</code> | [lib/src/features/navigation/widgets/tabs/klp_tabs.dart:4](../../../../../../../lib/src/features/navigation/widgets/tabs/klp_tabs.dart#L4) |
-| import | <code>import &#x27;../../../../foundation/interaction/klp_roving_index.dart&#x27;;</code> | [lib/src/features/navigation/widgets/tabs/klp_tabs.dart:5](../../../../../../../lib/src/features/navigation/widgets/tabs/klp_tabs.dart#L5) |
-| import | <code>import &#x27;../../../../foundation/layout/klp_layout.dart&#x27;;</code> | [lib/src/features/navigation/widgets/tabs/klp_tabs.dart:6](../../../../../../../lib/src/features/navigation/widgets/tabs/klp_tabs.dart#L6) |
-| import | <code>import &#x27;../../../../styling/legacy_theme/klp_theme.dart&#x27;;</code> | [lib/src/features/navigation/widgets/tabs/klp_tabs.dart:7](../../../../../../../lib/src/features/navigation/widgets/tabs/klp_tabs.dart#L7) |
-| import | <code>import &#x27;../../../../foundation/content/klp_text.dart&#x27;;</code> | [lib/src/features/navigation/widgets/tabs/klp_tabs.dart:8](../../../../../../../lib/src/features/navigation/widgets/tabs/klp_tabs.dart#L8) |
+| import | <code>import &#x27;package:kallopis/src/foundation/interaction/klp_focus_region.dart&#x27;;</code> | [lib/src/features/navigation/widgets/tabs/klp_tabs.dart:4](../../../../../../../lib/src/features/navigation/widgets/tabs/klp_tabs.dart#L4) |
+| import | <code>import &#x27;package:kallopis/src/foundation/interaction/klp_roving_index.dart&#x27;;</code> | [lib/src/features/navigation/widgets/tabs/klp_tabs.dart:5](../../../../../../../lib/src/features/navigation/widgets/tabs/klp_tabs.dart#L5) |
+| import | <code>import &#x27;package:kallopis/src/foundation/layout/klp_layout.dart&#x27;;</code> | [lib/src/features/navigation/widgets/tabs/klp_tabs.dart:6](../../../../../../../lib/src/features/navigation/widgets/tabs/klp_tabs.dart#L6) |
+| import | <code>import &#x27;package:kallopis/src/styling/legacy_theme/klp_theme.dart&#x27;;</code> | [lib/src/features/navigation/widgets/tabs/klp_tabs.dart:7](../../../../../../../lib/src/features/navigation/widgets/tabs/klp_tabs.dart#L7) |
+| import | <code>import &#x27;package:kallopis/src/foundation/content/klp_text.dart&#x27;;</code> | [lib/src/features/navigation/widgets/tabs/klp_tabs.dart:8](../../../../../../../lib/src/features/navigation/widgets/tabs/klp_tabs.dart#L8) |
 | part | <code>part &#x27;internal/klp_tab.dart&#x27;;</code> | [lib/src/features/navigation/widgets/tabs/klp_tabs.dart:10](../../../../../../../lib/src/features/navigation/widgets/tabs/klp_tabs.dart#L10) |
 | part | <code>part &#x27;primitives/klp_tab_frame.dart&#x27;;</code> | [lib/src/features/navigation/widgets/tabs/klp_tabs.dart:11](../../../../../../../lib/src/features/navigation/widgets/tabs/klp_tabs.dart#L11) |
 | part | <code>part &#x27;primitives/klp_tabs_viewport.dart&#x27;;</code> | [lib/src/features/navigation/widgets/tabs/klp_tabs.dart:12](../../../../../../../lib/src/features/navigation/widgets/tabs/klp_tabs.dart#L12) |

@@ -1,6 +1,6 @@
 import 'package:flutter/widgets.dart';
 
-import '../../styling/legacy_theme/klp_theme_scope.dart';
+import 'package:kallopis/src/styling/legacy_theme/klp_theme_scope.dart';
 
 /// 長按門檻的區域覆寫。
 ///

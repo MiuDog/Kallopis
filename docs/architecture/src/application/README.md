@@ -40,15 +40,13 @@ flowchart LR
 	n1["bootstrap/"]
 	n2["environment/"]
 	n3["legacy/"]
-	n4["localization/"]
-	n5["routing/"]
-	n6["structure/"]
+	n4["routing/"]
+	n5["structure/"]
 	n0 -->|"contains"| n1
 	n0 -->|"contains"| n2
 	n0 -->|"contains"| n3
 	n0 -->|"contains"| n4
 	n0 -->|"contains"| n5
-	n0 -->|"contains"| n6
 ```
 
 ## 子目錄
@@ -58,7 +56,6 @@ flowchart LR
 | `bootstrap/` | [架構入口](bootstrap/README.md) | [來源目錄](../../../../lib/src/application/bootstrap) |
 | `environment/` | [架構入口](environment/README.md) | [來源目錄](../../../../lib/src/application/environment) |
 | `legacy/` | [架構入口](legacy/README.md) | [來源目錄](../../../../lib/src/application/legacy) |
-| `localization/` | [架構入口](localization/README.md) | [來源目錄](../../../../lib/src/application/localization) |
 | `routing/` | [架構入口](routing/README.md) | [來源目錄](../../../../lib/src/application/routing) |
 | `structure/` | [架構入口](structure/README.md) | [來源目錄](../../../../lib/src/application/structure) |
 

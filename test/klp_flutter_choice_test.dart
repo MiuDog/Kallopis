@@ -2,7 +2,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:kallopis/src/capabilities/state/klp_mutable_state.dart';
-import 'package:kallopis/src/foundation/binding/internal/klp_bound_template.dart';
+import 'package:kallopis/src/foundation/binding/contracts/klp_bound_template.dart';
 import 'package:kallopis/src/foundation/templates/klp_axis.dart';
 import 'package:kallopis/src/kernel/identity/klp_placement_id.dart';
 import 'package:kallopis/src/rendering/flutter/internal/klp_flutter_choice.dart';

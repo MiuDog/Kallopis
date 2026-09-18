@@ -12,7 +12,7 @@
 flowchart LR
 	n0["klp_box.dart"]
 	n1["package:flutter/widgets.dart"]
-	n2["../surface/klp_surface.dart"]
+	n2["package:kallopis/src/foundation/surface/klp_surface.dart"]
 	n3["klp_gap.dart"]
 	n4["klp_box_insets.dart"]
 	n5["klp_space_size.dart"]
@@ -28,7 +28,7 @@ flowchart LR
 | 關係 | 原始 directive | 來源 |
 |---|---|---|
 | import | <code>import &#x27;package:flutter/widgets.dart&#x27;;</code> | [lib/src/foundation/layout/klp_box.dart:1](../../../../../lib/src/foundation/layout/klp_box.dart#L1) |
-| import | <code>import &#x27;../surface/klp_surface.dart&#x27;;</code> | [lib/src/foundation/layout/klp_box.dart:3](../../../../../lib/src/foundation/layout/klp_box.dart#L3) |
+| import | <code>import &#x27;package:kallopis/src/foundation/surface/klp_surface.dart&#x27;;</code> | [lib/src/foundation/layout/klp_box.dart:3](../../../../../lib/src/foundation/layout/klp_box.dart#L3) |
 | import | <code>import &#x27;klp_gap.dart&#x27;;</code> | [lib/src/foundation/layout/klp_box.dart:4](../../../../../lib/src/foundation/layout/klp_box.dart#L4) |
 | import | <code>import &#x27;klp_box_insets.dart&#x27;;</code> | [lib/src/foundation/layout/klp_box.dart:5](../../../../../lib/src/foundation/layout/klp_box.dart#L5) |
 | import | <code>import &#x27;klp_space_size.dart&#x27;;</code> | [lib/src/foundation/layout/klp_box.dart:6](../../../../../lib/src/foundation/layout/klp_box.dart#L6) |

@@ -12,9 +12,9 @@
 flowchart LR
 	n0["klp_stage_header.dart"]
 	n1["package:flutter/widgets.dart"]
-	n2["../../../../foundation/layout/klp_layout.dart"]
-	n3["../../../../styling/legacy_theme/klp_theme.dart"]
-	n4["../../../../foundation/content/klp_text.dart"]
+	n2["package:kallopis/src/foundation/layout/klp_layout.dart"]
+	n3["package:kallopis/src/styling/legacy_theme/klp_theme.dart"]
+	n4["package:kallopis/src/foundation/content/klp_text.dart"]
 	n0 -->|"import"| n1
 	n0 -->|"import"| n2
 	n0 -->|"import"| n3
@@ -26,9 +26,9 @@ flowchart LR
 | 關係 | 原始 directive | 來源 |
 |---|---|---|
 | import | <code>import &#x27;package:flutter/widgets.dart&#x27;;</code> | [lib/src/features/workspace/shell/stage/klp_stage_header.dart:1](../../../../../../../lib/src/features/workspace/shell/stage/klp_stage_header.dart#L1) |
-| import | <code>import &#x27;../../../../foundation/layout/klp_layout.dart&#x27;;</code> | [lib/src/features/workspace/shell/stage/klp_stage_header.dart:3](../../../../../../../lib/src/features/workspace/shell/stage/klp_stage_header.dart#L3) |
-| import | <code>import &#x27;../../../../styling/legacy_theme/klp_theme.dart&#x27;;</code> | [lib/src/features/workspace/shell/stage/klp_stage_header.dart:4](../../../../../../../lib/src/features/workspace/shell/stage/klp_stage_header.dart#L4) |
-| import | <code>import &#x27;../../../../foundation/content/klp_text.dart&#x27;;</code> | [lib/src/features/workspace/shell/stage/klp_stage_header.dart:5](../../../../../../../lib/src/features/workspace/shell/stage/klp_stage_header.dart#L5) |
+| import | <code>import &#x27;package:kallopis/src/foundation/layout/klp_layout.dart&#x27;;</code> | [lib/src/features/workspace/shell/stage/klp_stage_header.dart:3](../../../../../../../lib/src/features/workspace/shell/stage/klp_stage_header.dart#L3) |
+| import | <code>import &#x27;package:kallopis/src/styling/legacy_theme/klp_theme.dart&#x27;;</code> | [lib/src/features/workspace/shell/stage/klp_stage_header.dart:4](../../../../../../../lib/src/features/workspace/shell/stage/klp_stage_header.dart#L4) |
+| import | <code>import &#x27;package:kallopis/src/foundation/content/klp_text.dart&#x27;;</code> | [lib/src/features/workspace/shell/stage/klp_stage_header.dart:5](../../../../../../../lib/src/features/workspace/shell/stage/klp_stage_header.dart#L5) |
 
 ## 宣告關係圖
 

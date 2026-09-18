@@ -12,8 +12,8 @@
 flowchart LR
 	n0["klp_switch.dart"]
 	n1["package:flutter/material.dart"]
-	n2["../../../foundation/interaction/klp_pressable.dart"]
-	n3["../../../styling/legacy_theme/klp_theme.dart"]
+	n2["package:kallopis/src/foundation/interaction/klp_pressable.dart"]
+	n3["package:kallopis/src/styling/legacy_theme/klp_theme.dart"]
 	n4["internal/klp_compact_switch_style.dart"]
 	n5["internal/klp_compact_switch_widget.dart"]
 	n6["primitives/klp_compact_switch_frame.dart"]
@@ -30,8 +30,8 @@ flowchart LR
 | 關係 | 原始 directive | 來源 |
 |---|---|---|
 | import | <code>import &#x27;package:flutter/material.dart&#x27;;</code> | [lib/src/features/forms/toggle/klp_switch.dart:1](../../../../../../lib/src/features/forms/toggle/klp_switch.dart#L1) |
-| import | <code>import &#x27;../../../foundation/interaction/klp_pressable.dart&#x27;;</code> | [lib/src/features/forms/toggle/klp_switch.dart:3](../../../../../../lib/src/features/forms/toggle/klp_switch.dart#L3) |
-| import | <code>import &#x27;../../../styling/legacy_theme/klp_theme.dart&#x27;;</code> | [lib/src/features/forms/toggle/klp_switch.dart:4](../../../../../../lib/src/features/forms/toggle/klp_switch.dart#L4) |
+| import | <code>import &#x27;package:kallopis/src/foundation/interaction/klp_pressable.dart&#x27;;</code> | [lib/src/features/forms/toggle/klp_switch.dart:3](../../../../../../lib/src/features/forms/toggle/klp_switch.dart#L3) |
+| import | <code>import &#x27;package:kallopis/src/styling/legacy_theme/klp_theme.dart&#x27;;</code> | [lib/src/features/forms/toggle/klp_switch.dart:4](../../../../../../lib/src/features/forms/toggle/klp_switch.dart#L4) |
 | part | <code>part &#x27;internal/klp_compact_switch_style.dart&#x27;;</code> | [lib/src/features/forms/toggle/klp_switch.dart:6](../../../../../../lib/src/features/forms/toggle/klp_switch.dart#L6) |
 | part | <code>part &#x27;internal/klp_compact_switch_widget.dart&#x27;;</code> | [lib/src/features/forms/toggle/klp_switch.dart:7](../../../../../../lib/src/features/forms/toggle/klp_switch.dart#L7) |
 | part | <code>part &#x27;primitives/klp_compact_switch_frame.dart&#x27;;</code> | [lib/src/features/forms/toggle/klp_switch.dart:8](../../../../../../lib/src/features/forms/toggle/klp_switch.dart#L8) |

@@ -1,6 +1,6 @@
-import '../../kernel/diagnostics/klp_contract_error.dart';
-import '../primitives/klp_style_value.dart';
-import '../references/klp_style_ref.dart';
+import 'package:kallopis/src/kernel/diagnostics/klp_contract_error.dart';
+import 'package:kallopis/src/styling/primitives/klp_style_value.dart';
+import 'package:kallopis/src/styling/references/klp_style_ref.dart';
 import 'klp_semantic_key.dart';
 
 /// 元件定義期提供用途參照；公開只授權引用，不授權覆寫。

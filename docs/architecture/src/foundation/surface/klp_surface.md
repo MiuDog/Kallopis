@@ -13,7 +13,7 @@ flowchart LR
 	n0["klp_surface.dart"]
 	n1["dart:ui"]
 	n2["package:flutter/material.dart"]
-	n3["../../styling/legacy_theme/klp_theme.dart"]
+	n3["package:kallopis/src/styling/legacy_theme/klp_theme.dart"]
 	n4["klp_surface_tone.dart"]
 	n5["klp_surface_tone.dart"]
 	n0 -->|"import"| n1
@@ -29,7 +29,7 @@ flowchart LR
 |---|---|---|
 | import | <code>import &#x27;dart:ui&#x27; show ImageFilter;</code> | [lib/src/foundation/surface/klp_surface.dart:1](../../../../../lib/src/foundation/surface/klp_surface.dart#L1) |
 | import | <code>import &#x27;package:flutter/material.dart&#x27;;</code> | [lib/src/foundation/surface/klp_surface.dart:3](../../../../../lib/src/foundation/surface/klp_surface.dart#L3) |
-| import | <code>import &#x27;../../styling/legacy_theme/klp_theme.dart&#x27;;</code> | [lib/src/foundation/surface/klp_surface.dart:5](../../../../../lib/src/foundation/surface/klp_surface.dart#L5) |
+| import | <code>import &#x27;package:kallopis/src/styling/legacy_theme/klp_theme.dart&#x27;;</code> | [lib/src/foundation/surface/klp_surface.dart:5](../../../../../lib/src/foundation/surface/klp_surface.dart#L5) |
 | import | <code>import &#x27;klp_surface_tone.dart&#x27;;</code> | [lib/src/foundation/surface/klp_surface.dart:6](../../../../../lib/src/foundation/surface/klp_surface.dart#L6) |
 | export | <code>export &#x27;klp_surface_tone.dart&#x27;;</code> | [lib/src/foundation/surface/klp_surface.dart:8](../../../../../lib/src/foundation/surface/klp_surface.dart#L8) |
 

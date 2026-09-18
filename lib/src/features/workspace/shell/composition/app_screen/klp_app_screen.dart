@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
-import '../../../../../foundation/layout/klp_column.dart';
-import '../../../../../foundation/layout/klp_expanded.dart';
-import '../../../../../foundation/surface/klp_surface.dart';
+import 'package:kallopis/src/foundation/layout/klp_column.dart';
+import 'package:kallopis/src/foundation/layout/klp_expanded.dart';
+import 'package:kallopis/src/foundation/surface/klp_surface.dart';
 
 part 'primitives/klp_app_screen_material_root.dart';
 

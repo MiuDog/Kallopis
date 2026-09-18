@@ -14,19 +14,19 @@
 flowchart LR
 	n0["lib/src/features/actions/button"]
 	n1["lib/src/features/actions/button/internal"]
-	n2["lib/src/features/actions/button/primitives"]
-	n3["lib/src/features/overlays"]
-	n4["lib/src/foundation"]
-	n5["lib/src/foundation/content"]
-	n6["lib/src/foundation/interaction"]
-	n7["lib/src/foundation/interaction/controls"]
-	n8["lib/src/foundation/interaction/internal"]
+	n2["lib/src/features/actions/button/internal"]
+	n3["lib/src/features/actions/button/primitives"]
+	n4["lib/src/features/overlays"]
+	n5["lib/src/foundation"]
+	n6["lib/src/foundation/content"]
+	n7["lib/src/foundation/interaction"]
+	n8["lib/src/foundation/interaction/controls"]
 	n9["lib/src/foundation/layout"]
 	n10["lib/src/foundation/surface"]
 	n11["lib/src/styling/legacy_theme"]
-	n0 -->|"part"| n1
+	n0 -->|"import"| n1
 	n0 -->|"part"| n2
-	n0 -->|"import"| n3
+	n0 -->|"part"| n3
 	n0 -->|"import"| n4
 	n0 -->|"import"| n5
 	n0 -->|"import"| n6
@@ -46,6 +46,7 @@ flowchart TD
 
 | 目標邊界 | 關係 | directive 數 | 第一筆來源證據 |
 |---|---|---|---|
+| <code>lib/src/features/actions/button/internal</code> | import | 1 | [lib/src/features/actions/button/klp_button.dart:8](../../../../../../lib/src/features/actions/button/klp_button.dart#L8) |
 | <code>lib/src/features/actions/button/internal</code> | part | 6 | [lib/src/features/actions/button/klp_button.dart:14](../../../../../../lib/src/features/actions/button/klp_button.dart#L14) |
 | <code>lib/src/features/actions/button/primitives</code> | part | 2 | [lib/src/features/actions/button/klp_button.dart:17](../../../../../../lib/src/features/actions/button/klp_button.dart#L17) |
 | <code>lib/src/features/overlays</code> | import | 1 | [lib/src/features/actions/button/klp_icon_button.dart:4](../../../../../../lib/src/features/actions/button/klp_icon_button.dart#L4) |
@@ -53,7 +54,6 @@ flowchart TD
 | <code>lib/src/foundation/content</code> | import | 1 | [lib/src/features/actions/button/klp_button.dart:7](../../../../../../lib/src/features/actions/button/klp_button.dart#L7) |
 | <code>lib/src/foundation/interaction</code> | import | 1 | [lib/src/features/actions/button/klp_button.dart:3](../../../../../../lib/src/features/actions/button/klp_button.dart#L3) |
 | <code>lib/src/foundation/interaction/controls</code> | import | 1 | [lib/src/features/actions/button/klp_button.dart:9](../../../../../../lib/src/features/actions/button/klp_button.dart#L9) |
-| <code>lib/src/foundation/interaction/internal</code> | import | 1 | [lib/src/features/actions/button/klp_button.dart:8](../../../../../../lib/src/features/actions/button/klp_button.dart#L8) |
 | <code>lib/src/foundation/layout</code> | import | 1 | [lib/src/features/actions/button/klp_button.dart:4](../../../../../../lib/src/features/actions/button/klp_button.dart#L4) |
 | <code>lib/src/foundation/surface</code> | import | 1 | [lib/src/features/actions/button/klp_button.dart:5](../../../../../../lib/src/features/actions/button/klp_button.dart#L5) |
 | <code>lib/src/styling/legacy_theme</code> | import | 2 | [lib/src/features/actions/button/klp_button.dart:6](../../../../../../lib/src/features/actions/button/klp_button.dart#L6) |

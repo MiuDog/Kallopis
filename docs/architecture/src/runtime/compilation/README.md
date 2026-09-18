@@ -10,19 +10,77 @@
 
 箭頭以本層 Dart 檔案明寫的 directive 彙總到目標所在目錄或外部套件邊界；不遞迴將子目錄依賴算入本層。相同目標的不同 directive 類型分開計數。
 
-本層檔案未宣告跨目錄依賴；子目錄依賴請循下一層入口閱讀。
+```mermaid
+flowchart LR
+	n0["lib/src/runtime/compilation"]
+	n1["lib/src/capabilities/actions"]
+	n2["lib/src/composition/definitions"]
+	n3["lib/src/composition/nodes"]
+	n4["lib/src/composition/registry"]
+	n5["lib/src/composition/validation"]
+	n6["lib/src/composition/validation/internal"]
+	n7["lib/src/foundation/binding/contracts"]
+	n8["lib/src/kernel/identity"]
+	n9["lib/src/kernel/lifecycle"]
+	n10["lib/src/runtime/compilation/internal"]
+	n11["lib/src/runtime/contracts"]
+	n0 -->|"import"| n1
+	n0 -->|"import"| n2
+	n0 -->|"import"| n3
+	n0 -->|"import"| n4
+	n0 -->|"import"| n5
+	n0 -->|"import"| n6
+	n0 -->|"import"| n7
+	n0 -->|"import"| n8
+	n0 -->|"import"| n9
+	n0 -->|"import"| n10
+	n0 -->|"import"| n11
+```
+
+```mermaid
+flowchart LR
+	n0["lib/src/runtime/compilation"]
+	n1["lib/src/runtime/installation"]
+	n2["lib/src/runtime/installation/internal"]
+	n3["lib/src/styling/primitives"]
+	n4["lib/src/styling/resolution"]
+	n0 -->|"import"| n1
+	n0 -->|"import"| n2
+	n0 -->|"import"| n3
+	n0 -->|"import"| n4
+```
 
 | 目標邊界 | 關係 | directive 數 | 第一筆來源證據 |
 |---|---|---|---|
-| 無 | — | 0 | 來源清單見本層檔案 |
+| <code>lib/src/capabilities/actions</code> | import | 1 | [lib/src/runtime/compilation/klp_tree_runtime.dart:10](../../../../../lib/src/runtime/compilation/klp_tree_runtime.dart#L10) |
+| <code>lib/src/composition/definitions</code> | import | 2 | [lib/src/runtime/compilation/klp_adaptive_adapter.dart:1](../../../../../lib/src/runtime/compilation/klp_adaptive_adapter.dart#L1) |
+| <code>lib/src/composition/nodes</code> | import | 6 | [lib/src/runtime/compilation/klp_adaptive_adapter.dart:2](../../../../../lib/src/runtime/compilation/klp_adaptive_adapter.dart#L2) |
+| <code>lib/src/composition/registry</code> | import | 1 | [lib/src/runtime/compilation/klp_tree_runtime.dart:2](../../../../../lib/src/runtime/compilation/klp_tree_runtime.dart#L2) |
+| <code>lib/src/composition/validation</code> | import | 3 | [lib/src/runtime/compilation/klp_adaptive_adapter.dart:3](../../../../../lib/src/runtime/compilation/klp_adaptive_adapter.dart#L3) |
+| <code>lib/src/composition/validation/internal</code> | import | 1 | [lib/src/runtime/compilation/klp_tree_runtime.dart:3](../../../../../lib/src/runtime/compilation/klp_tree_runtime.dart#L3) |
+| <code>lib/src/foundation/binding/contracts</code> | import | 2 | [lib/src/runtime/compilation/klp_scope_boundary_adapter.dart:5](../../../../../lib/src/runtime/compilation/klp_scope_boundary_adapter.dart#L5) |
+| <code>lib/src/kernel/identity</code> | import | 1 | [lib/src/runtime/compilation/klp_tree_runtime.dart:7](../../../../../lib/src/runtime/compilation/klp_tree_runtime.dart#L7) |
+| <code>lib/src/kernel/lifecycle</code> | import | 2 | [lib/src/runtime/compilation/klp_scope_boundary_adapter.dart:6](../../../../../lib/src/runtime/compilation/klp_scope_boundary_adapter.dart#L6) |
+| <code>lib/src/runtime/compilation/internal</code> | import | 1 | [lib/src/runtime/compilation/klp_adaptive_adapter.dart:8](../../../../../lib/src/runtime/compilation/klp_adaptive_adapter.dart#L8) |
+| <code>lib/src/runtime/contracts</code> | import | 16 | [lib/src/runtime/compilation/klp_adaptive_adapter.dart:4](../../../../../lib/src/runtime/compilation/klp_adaptive_adapter.dart#L4) |
+| <code>lib/src/runtime/installation</code> | import | 1 | [lib/src/runtime/compilation/klp_scope_boundary_adapter.dart:7](../../../../../lib/src/runtime/compilation/klp_scope_boundary_adapter.dart#L7) |
+| <code>lib/src/runtime/installation/internal</code> | import | 1 | [lib/src/runtime/compilation/klp_tree_runtime.dart:12](../../../../../lib/src/runtime/compilation/klp_tree_runtime.dart#L12) |
+| <code>lib/src/styling/primitives</code> | import | 1 | [lib/src/runtime/compilation/klp_tree_runtime.dart:8](../../../../../lib/src/runtime/compilation/klp_tree_runtime.dart#L8) |
+| <code>lib/src/styling/resolution</code> | import | 1 | [lib/src/runtime/compilation/klp_tree_runtime.dart:9](../../../../../lib/src/runtime/compilation/klp_tree_runtime.dart#L9) |
 
 ## 目錄結構圖
 
 ```mermaid
-flowchart TD
+flowchart LR
 	n0["lib/src/runtime/compilation"]
 	n1["internal/"]
+	n2["klp_adaptive_adapter.dart"]
+	n3["klp_scope_boundary_adapter.dart"]
+	n4["klp_tree_runtime.dart"]
 	n0 -->|"contains"| n1
+	n0 -->|"contains"| n2
+	n0 -->|"contains"| n3
+	n0 -->|"contains"| n4
 ```
 
 ## 子目錄
@@ -35,7 +93,9 @@ flowchart TD
 
 | 檔案 | 宣告 | 細節 | 來源證據 |
 |---|---|---|---|
-| 無 | 本層沒有 Dart 檔案 | — | — |
+| `klp_adaptive_adapter.dart` | KlpAdaptiveAdapter | [架構與 API](klp_adaptive_adapter.md) | [lib/src/runtime/compilation/klp_adaptive_adapter.dart:1](../../../../../lib/src/runtime/compilation/klp_adaptive_adapter.dart#L1) |
+| `klp_scope_boundary_adapter.dart` | KlpScopeBoundaryAdapter, _PreparedBoundary | [架構與 API](klp_scope_boundary_adapter.md) | [lib/src/runtime/compilation/klp_scope_boundary_adapter.dart:1](../../../../../lib/src/runtime/compilation/klp_scope_boundary_adapter.dart#L1) |
+| `klp_tree_runtime.dart` | KlpTreeRuntime | [架構與 API](klp_tree_runtime.md) | [lib/src/runtime/compilation/klp_tree_runtime.dart:1](../../../../../lib/src/runtime/compilation/klp_tree_runtime.dart#L1) |
 
 ## 閱讀說明
 

@@ -1,4 +1,4 @@
-import '../klp_spacing_theme.dart';
+import 'package:kallopis/src/styling/legacy_theme/klp_spacing_theme.dart';
 import 'klp_visual_style_json_helpers.dart';
 
 KlpJsonMap encodeSpacing(KlpSpacingTheme v) => <String, Object?>{
@@ -31,7 +31,6 @@ KlpJsonMap encodeSpacing(KlpSpacingTheme v) => <String, Object?>{
   'overlayItemGap': v.overlayItemGap,
   'navigationSectionGap': v.navigationSectionGap,
   'appFrameInset': v.appFrameInset,
-  'workbenchContentInset': v.workbenchContentInset,
   'windowHeaderMargin': v.windowHeaderMargin,
   'dockMargin': v.dockMargin,
   'base': v.base,

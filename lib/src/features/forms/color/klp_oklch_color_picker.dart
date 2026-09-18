@@ -3,13 +3,13 @@ import 'dart:math' as math;
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-import '../../../foundation/klp_oklch_color.dart';
-import '../../../foundation/interaction/klp_exclude_semantics.dart';
-import '../../../foundation/interaction/klp_semantic_region.dart';
-import '../../../foundation/layout/klp_layout.dart';
-import '../../../application/localization/klp_localizations.dart';
-import '../../../styling/legacy_theme/klp_theme.dart';
-import '../../../foundation/content/klp_text.dart';
+import 'package:kallopis/src/foundation/klp_oklch_color.dart';
+import 'package:kallopis/src/foundation/interaction/klp_exclude_semantics.dart';
+import 'package:kallopis/src/foundation/interaction/klp_semantic_region.dart';
+import 'package:kallopis/src/foundation/layout/klp_layout.dart';
+import 'package:kallopis/src/foundation/localization/klp_localizations.dart';
+import 'package:kallopis/src/styling/legacy_theme/klp_theme.dart';
+import 'package:kallopis/src/foundation/content/klp_text.dart';
 import 'klp_oklch_chroma_range.dart';
 import 'klp_oklch_color_editor.dart';
 

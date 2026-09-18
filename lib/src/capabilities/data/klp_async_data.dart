@@ -1,5 +1,5 @@
-import '../state/klp_mutable_state.dart';
-import '../state/klp_state.dart';
+import 'package:kallopis/src/capabilities/state/klp_mutable_state.dart';
+import 'package:kallopis/src/capabilities/state/klp_state.dart';
 import 'klp_data_notification_exception.dart';
 import 'klp_data_state.dart';
 

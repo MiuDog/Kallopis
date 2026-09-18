@@ -12,12 +12,12 @@
 flowchart LR
 	n0["klp_dock_layout.dart"]
 	n1["package:flutter/material.dart"]
-	n2["../../../../foundation/interaction/klp_drag_drop.dart"]
-	n3["../../../../foundation/layout/klp_layout.dart"]
-	n4["../../../../foundation/surface/klp_surface.dart"]
-	n5["../../../../styling/legacy_theme/klp_theme.dart"]
-	n6["../../../../foundation/content/klp_text.dart"]
-	n7["../panel/klp_panel_frame.dart"]
+	n2["package:kallopis/src/foundation/interaction/klp_drag_drop.dart"]
+	n3["package:kallopis/src/foundation/layout/klp_layout.dart"]
+	n4["package:kallopis/src/foundation/surface/klp_surface.dart"]
+	n5["package:kallopis/src/styling/legacy_theme/klp_theme.dart"]
+	n6["package:kallopis/src/foundation/content/klp_text.dart"]
+	n7["package:kallopis/src/features/workspace/shell/panel/klp_panel_frame.dart"]
 	n8["klp_dock_header.dart"]
 	n9["klp_dock_layout_models.dart"]
 	n10["klp_dock_panel.dart"]
@@ -65,12 +65,12 @@ flowchart LR
 | 關係 | 原始 directive | 來源 |
 |---|---|---|
 | import | <code>import &#x27;package:flutter/material.dart&#x27;;</code> | [lib/src/features/workspace/shell/docking/klp_dock_layout.dart:1](../../../../../../../lib/src/features/workspace/shell/docking/klp_dock_layout.dart#L1) |
-| import | <code>import &#x27;../../../../foundation/interaction/klp_drag_drop.dart&#x27;;</code> | [lib/src/features/workspace/shell/docking/klp_dock_layout.dart:3](../../../../../../../lib/src/features/workspace/shell/docking/klp_dock_layout.dart#L3) |
-| import | <code>import &#x27;../../../../foundation/layout/klp_layout.dart&#x27;;</code> | [lib/src/features/workspace/shell/docking/klp_dock_layout.dart:4](../../../../../../../lib/src/features/workspace/shell/docking/klp_dock_layout.dart#L4) |
-| import | <code>import &#x27;../../../../foundation/surface/klp_surface.dart&#x27;;</code> | [lib/src/features/workspace/shell/docking/klp_dock_layout.dart:5](../../../../../../../lib/src/features/workspace/shell/docking/klp_dock_layout.dart#L5) |
-| import | <code>import &#x27;../../../../styling/legacy_theme/klp_theme.dart&#x27;;</code> | [lib/src/features/workspace/shell/docking/klp_dock_layout.dart:6](../../../../../../../lib/src/features/workspace/shell/docking/klp_dock_layout.dart#L6) |
-| import | <code>import &#x27;../../../../foundation/content/klp_text.dart&#x27;;</code> | [lib/src/features/workspace/shell/docking/klp_dock_layout.dart:7](../../../../../../../lib/src/features/workspace/shell/docking/klp_dock_layout.dart#L7) |
-| import | <code>import &#x27;../panel/klp_panel_frame.dart&#x27;;</code> | [lib/src/features/workspace/shell/docking/klp_dock_layout.dart:8](../../../../../../../lib/src/features/workspace/shell/docking/klp_dock_layout.dart#L8) |
+| import | <code>import &#x27;package:kallopis/src/foundation/interaction/klp_drag_drop.dart&#x27;;</code> | [lib/src/features/workspace/shell/docking/klp_dock_layout.dart:3](../../../../../../../lib/src/features/workspace/shell/docking/klp_dock_layout.dart#L3) |
+| import | <code>import &#x27;package:kallopis/src/foundation/layout/klp_layout.dart&#x27;;</code> | [lib/src/features/workspace/shell/docking/klp_dock_layout.dart:4](../../../../../../../lib/src/features/workspace/shell/docking/klp_dock_layout.dart#L4) |
+| import | <code>import &#x27;package:kallopis/src/foundation/surface/klp_surface.dart&#x27;;</code> | [lib/src/features/workspace/shell/docking/klp_dock_layout.dart:5](../../../../../../../lib/src/features/workspace/shell/docking/klp_dock_layout.dart#L5) |
+| import | <code>import &#x27;package:kallopis/src/styling/legacy_theme/klp_theme.dart&#x27;;</code> | [lib/src/features/workspace/shell/docking/klp_dock_layout.dart:6](../../../../../../../lib/src/features/workspace/shell/docking/klp_dock_layout.dart#L6) |
+| import | <code>import &#x27;package:kallopis/src/foundation/content/klp_text.dart&#x27;;</code> | [lib/src/features/workspace/shell/docking/klp_dock_layout.dart:7](../../../../../../../lib/src/features/workspace/shell/docking/klp_dock_layout.dart#L7) |
+| import | <code>import &#x27;package:kallopis/src/features/workspace/shell/panel/klp_panel_frame.dart&#x27;;</code> | [lib/src/features/workspace/shell/docking/klp_dock_layout.dart:8](../../../../../../../lib/src/features/workspace/shell/docking/klp_dock_layout.dart#L8) |
 | import | <code>import &#x27;klp_dock_header.dart&#x27;;</code> | [lib/src/features/workspace/shell/docking/klp_dock_layout.dart:9](../../../../../../../lib/src/features/workspace/shell/docking/klp_dock_layout.dart#L9) |
 | import | <code>import &#x27;klp_dock_layout_models.dart&#x27;;</code> | [lib/src/features/workspace/shell/docking/klp_dock_layout.dart:10](../../../../../../../lib/src/features/workspace/shell/docking/klp_dock_layout.dart#L10) |
 | import | <code>import &#x27;klp_dock_panel.dart&#x27;;</code> | [lib/src/features/workspace/shell/docking/klp_dock_layout.dart:11](../../../../../../../lib/src/features/workspace/shell/docking/klp_dock_layout.dart#L11) |

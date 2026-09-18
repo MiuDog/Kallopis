@@ -11,7 +11,7 @@
 ```mermaid
 flowchart LR
 	n0["klp_multi_select_field.dart"]
-	n1["../internal/klp_form_dependencies.dart"]
+	n1["package:kallopis/src/features/forms/internal/klp_form_dependencies.dart"]
 	n2["klp_choice_option.dart"]
 	n3["primitives/klp_multi_select_field_frame.dart"]
 	n4["primitives/klp_multi_select_option_frame.dart"]
@@ -25,7 +25,7 @@ flowchart LR
 
 | 關係 | 原始 directive | 來源 |
 |---|---|---|
-| import | <code>import &#x27;../internal/klp_form_dependencies.dart&#x27;;</code> | [lib/src/features/forms/selection/klp_multi_select_field.dart:1](../../../../../../lib/src/features/forms/selection/klp_multi_select_field.dart#L1) |
+| import | <code>import &#x27;package:kallopis/src/features/forms/internal/klp_form_dependencies.dart&#x27;;</code> | [lib/src/features/forms/selection/klp_multi_select_field.dart:1](../../../../../../lib/src/features/forms/selection/klp_multi_select_field.dart#L1) |
 | import | <code>import &#x27;klp_choice_option.dart&#x27;;</code> | [lib/src/features/forms/selection/klp_multi_select_field.dart:2](../../../../../../lib/src/features/forms/selection/klp_multi_select_field.dart#L2) |
 | part | <code>part &#x27;primitives/klp_multi_select_field_frame.dart&#x27;;</code> | [lib/src/features/forms/selection/klp_multi_select_field.dart:4](../../../../../../lib/src/features/forms/selection/klp_multi_select_field.dart#L4) |
 | part | <code>part &#x27;primitives/klp_multi_select_option_frame.dart&#x27;;</code> | [lib/src/features/forms/selection/klp_multi_select_field.dart:5](../../../../../../lib/src/features/forms/selection/klp_multi_select_field.dart#L5) |

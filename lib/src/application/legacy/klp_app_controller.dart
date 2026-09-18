@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../foundation/interaction/keybinding/klp_key_binding_controller.dart';
+import 'package:kallopis/src/foundation/interaction/keybinding/klp_key_binding_controller.dart';
 
 /// Kallopis 應用程式對外提供的控制介面。
 abstract class KlpAppController {

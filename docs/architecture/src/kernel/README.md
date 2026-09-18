@@ -16,7 +16,7 @@
 
 `identity/klp_placement_id.dart` 不可變地保存 scope 各段與 local id，提供值比較與雜湊。它是結構快照、安裝資源與呈現 key 的共用識別；斜線、空白及 Unicode 不會因字串前綴編碼而碰撞。
 
-`lifecycle/internal/klp_frame_lease.dart` 管理已提交畫面的操作資格；撤銷後舊 callback 不能再啟動功能。`klp_run_lifecycle_actions.dart` 逐一執行生命週期步驟，即使個別步驟失敗也繼續後續清理；單一錯誤保留原始原因與堆疊，多個錯誤由 `klp_lifecycle_exception.dart` 完整保存。
+`lifecycle/klp_frame_lease.dart` 管理已提交畫面的操作資格；撤銷後舊 callback 不能再啟動功能。`klp_run_lifecycle_actions.dart` 逐一執行生命週期步驟，即使個別步驟失敗也繼續後續清理；單一錯誤保留原始原因與堆疊，多個錯誤由 `klp_lifecycle_exception.dart` 完整保存。
 
 Frame lease 可派生受限子 lease，有效性同時受本地啟用條件與整條父鏈限制；祖先撤銷或隱藏後，子 scope 無法重新取得操作資格。它只管理操作採納，不宣稱停止既有外部非同步 I/O。
 

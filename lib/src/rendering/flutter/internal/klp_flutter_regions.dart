@@ -1,7 +1,7 @@
 import 'package:flutter/widgets.dart';
 
-import '../../../foundation/binding/internal/klp_bound_template.dart';
-import 'klp_flutter_renderer.dart';
+import 'package:kallopis/src/foundation/binding/contracts/klp_bound_template.dart';
+import '../klp_flutter_renderer.dart';
 import 'klp_flutter_values.dart';
 
 /// 邊側配置與狹小空間退化規則由同一原語管理。

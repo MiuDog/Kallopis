@@ -12,11 +12,11 @@
 flowchart LR
 	n0["klp_dialog.dart"]
 	n1["package:flutter/widgets.dart"]
-	n2["../actions/button/klp_button.dart"]
-	n3["../../foundation/layout/klp_layout.dart"]
-	n4["../../foundation/surface/klp_surface.dart"]
-	n5["../../foundation/content/klp_text.dart"]
-	n6["../../styling/legacy_theme/klp_theme.dart"]
+	n2["package:kallopis/src/features/actions/button/klp_button.dart"]
+	n3["package:kallopis/src/foundation/layout/klp_layout.dart"]
+	n4["package:kallopis/src/foundation/surface/klp_surface.dart"]
+	n5["package:kallopis/src/foundation/content/klp_text.dart"]
+	n6["package:kallopis/src/styling/legacy_theme/klp_theme.dart"]
 	n0 -->|"import"| n1
 	n0 -->|"import"| n2
 	n0 -->|"import"| n3
@@ -30,11 +30,11 @@ flowchart LR
 | 關係 | 原始 directive | 來源 |
 |---|---|---|
 | import | <code>import &#x27;package:flutter/widgets.dart&#x27;;</code> | [lib/src/features/overlays/klp_dialog.dart:1](../../../../../lib/src/features/overlays/klp_dialog.dart#L1) |
-| import | <code>import &#x27;../actions/button/klp_button.dart&#x27;;</code> | [lib/src/features/overlays/klp_dialog.dart:3](../../../../../lib/src/features/overlays/klp_dialog.dart#L3) |
-| import | <code>import &#x27;../../foundation/layout/klp_layout.dart&#x27;;</code> | [lib/src/features/overlays/klp_dialog.dart:4](../../../../../lib/src/features/overlays/klp_dialog.dart#L4) |
-| import | <code>import &#x27;../../foundation/surface/klp_surface.dart&#x27;;</code> | [lib/src/features/overlays/klp_dialog.dart:5](../../../../../lib/src/features/overlays/klp_dialog.dart#L5) |
-| import | <code>import &#x27;../../foundation/content/klp_text.dart&#x27;;</code> | [lib/src/features/overlays/klp_dialog.dart:6](../../../../../lib/src/features/overlays/klp_dialog.dart#L6) |
-| import | <code>import &#x27;../../styling/legacy_theme/klp_theme.dart&#x27;;</code> | [lib/src/features/overlays/klp_dialog.dart:7](../../../../../lib/src/features/overlays/klp_dialog.dart#L7) |
+| import | <code>import &#x27;package:kallopis/src/features/actions/button/klp_button.dart&#x27;;</code> | [lib/src/features/overlays/klp_dialog.dart:3](../../../../../lib/src/features/overlays/klp_dialog.dart#L3) |
+| import | <code>import &#x27;package:kallopis/src/foundation/layout/klp_layout.dart&#x27;;</code> | [lib/src/features/overlays/klp_dialog.dart:4](../../../../../lib/src/features/overlays/klp_dialog.dart#L4) |
+| import | <code>import &#x27;package:kallopis/src/foundation/surface/klp_surface.dart&#x27;;</code> | [lib/src/features/overlays/klp_dialog.dart:5](../../../../../lib/src/features/overlays/klp_dialog.dart#L5) |
+| import | <code>import &#x27;package:kallopis/src/foundation/content/klp_text.dart&#x27;;</code> | [lib/src/features/overlays/klp_dialog.dart:6](../../../../../lib/src/features/overlays/klp_dialog.dart#L6) |
+| import | <code>import &#x27;package:kallopis/src/styling/legacy_theme/klp_theme.dart&#x27;;</code> | [lib/src/features/overlays/klp_dialog.dart:7](../../../../../lib/src/features/overlays/klp_dialog.dart#L7) |
 
 ## 宣告關係圖
 

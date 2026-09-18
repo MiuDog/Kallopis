@@ -1,4 +1,4 @@
-import '../internal/klp_form_dependencies.dart';
+import 'package:kallopis/src/features/forms/internal/klp_form_dependencies.dart';
 import 'klp_choice_option.dart';
 import 'klp_select_field.dart';
 

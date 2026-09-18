@@ -11,15 +11,15 @@
 ```mermaid
 flowchart LR
 	n0["klp_rail_placement.dart"]
-	n1["../../../../capabilities/controllers/klp_state_controller.dart"]
-	n2["../../../../capabilities/state/klp_mutable_state.dart"]
-	n3["../../../../capabilities/state/klp_state.dart"]
-	n4["../../../../composition/validation/klp_validated_node.dart"]
-	n5["../../../../kernel/identity/klp_placement_id.dart"]
-	n6["../../../../runtime/installation/internal/klp_placement_resource.dart"]
+	n1["package:kallopis/src/capabilities/controllers/klp_state_controller.dart"]
+	n2["package:kallopis/src/capabilities/state/klp_mutable_state.dart"]
+	n3["package:kallopis/src/capabilities/state/klp_state.dart"]
+	n4["package:kallopis/src/composition/validation/klp_validated_node.dart"]
+	n5["package:kallopis/src/kernel/identity/klp_placement_id.dart"]
+	n6["package:kallopis/src/runtime/contracts/klp_placement_resource.dart"]
 	n7["klp_rail_activation_exception.dart"]
-	n8["../../../../capabilities/actions/klp_action.dart"]
-	n9["../../../../capabilities/actions/klp_action_handler.dart"]
+	n8["package:kallopis/src/capabilities/actions/klp_action.dart"]
+	n9["package:kallopis/src/capabilities/actions/klp_action_handler.dart"]
 	n0 -->|"import"| n1
 	n0 -->|"import"| n2
 	n0 -->|"import"| n3
@@ -35,15 +35,15 @@ flowchart LR
 
 | 關係 | 原始 directive | 來源 |
 |---|---|---|
-| import | <code>import &#x27;../../../../capabilities/controllers/klp_state_controller.dart&#x27;;</code> | [lib/src/features/navigation/rail/internal/klp_rail_placement.dart:1](../../../../../../../lib/src/features/navigation/rail/internal/klp_rail_placement.dart#L1) |
-| import | <code>import &#x27;../../../../capabilities/state/klp_mutable_state.dart&#x27;;</code> | [lib/src/features/navigation/rail/internal/klp_rail_placement.dart:2](../../../../../../../lib/src/features/navigation/rail/internal/klp_rail_placement.dart#L2) |
-| import | <code>import &#x27;../../../../capabilities/state/klp_state.dart&#x27;;</code> | [lib/src/features/navigation/rail/internal/klp_rail_placement.dart:3](../../../../../../../lib/src/features/navigation/rail/internal/klp_rail_placement.dart#L3) |
-| import | <code>import &#x27;../../../../composition/validation/klp_validated_node.dart&#x27;;</code> | [lib/src/features/navigation/rail/internal/klp_rail_placement.dart:4](../../../../../../../lib/src/features/navigation/rail/internal/klp_rail_placement.dart#L4) |
-| import | <code>import &#x27;../../../../kernel/identity/klp_placement_id.dart&#x27;;</code> | [lib/src/features/navigation/rail/internal/klp_rail_placement.dart:5](../../../../../../../lib/src/features/navigation/rail/internal/klp_rail_placement.dart#L5) |
-| import | <code>import &#x27;../../../../runtime/installation/internal/klp_placement_resource.dart&#x27;;</code> | [lib/src/features/navigation/rail/internal/klp_rail_placement.dart:6](../../../../../../../lib/src/features/navigation/rail/internal/klp_rail_placement.dart#L6) |
+| import | <code>import &#x27;package:kallopis/src/capabilities/controllers/klp_state_controller.dart&#x27;;</code> | [lib/src/features/navigation/rail/internal/klp_rail_placement.dart:1](../../../../../../../lib/src/features/navigation/rail/internal/klp_rail_placement.dart#L1) |
+| import | <code>import &#x27;package:kallopis/src/capabilities/state/klp_mutable_state.dart&#x27;;</code> | [lib/src/features/navigation/rail/internal/klp_rail_placement.dart:2](../../../../../../../lib/src/features/navigation/rail/internal/klp_rail_placement.dart#L2) |
+| import | <code>import &#x27;package:kallopis/src/capabilities/state/klp_state.dart&#x27;;</code> | [lib/src/features/navigation/rail/internal/klp_rail_placement.dart:3](../../../../../../../lib/src/features/navigation/rail/internal/klp_rail_placement.dart#L3) |
+| import | <code>import &#x27;package:kallopis/src/composition/validation/klp_validated_node.dart&#x27;;</code> | [lib/src/features/navigation/rail/internal/klp_rail_placement.dart:4](../../../../../../../lib/src/features/navigation/rail/internal/klp_rail_placement.dart#L4) |
+| import | <code>import &#x27;package:kallopis/src/kernel/identity/klp_placement_id.dart&#x27;;</code> | [lib/src/features/navigation/rail/internal/klp_rail_placement.dart:5](../../../../../../../lib/src/features/navigation/rail/internal/klp_rail_placement.dart#L5) |
+| import | <code>import &#x27;package:kallopis/src/runtime/contracts/klp_placement_resource.dart&#x27;;</code> | [lib/src/features/navigation/rail/internal/klp_rail_placement.dart:6](../../../../../../../lib/src/features/navigation/rail/internal/klp_rail_placement.dart#L6) |
 | import | <code>import &#x27;klp_rail_activation_exception.dart&#x27;;</code> | [lib/src/features/navigation/rail/internal/klp_rail_placement.dart:7](../../../../../../../lib/src/features/navigation/rail/internal/klp_rail_placement.dart#L7) |
-| import | <code>import &#x27;../../../../capabilities/actions/klp_action.dart&#x27;;</code> | [lib/src/features/navigation/rail/internal/klp_rail_placement.dart:8](../../../../../../../lib/src/features/navigation/rail/internal/klp_rail_placement.dart#L8) |
-| import | <code>import &#x27;../../../../capabilities/actions/klp_action_handler.dart&#x27;;</code> | [lib/src/features/navigation/rail/internal/klp_rail_placement.dart:9](../../../../../../../lib/src/features/navigation/rail/internal/klp_rail_placement.dart#L9) |
+| import | <code>import &#x27;package:kallopis/src/capabilities/actions/klp_action.dart&#x27;;</code> | [lib/src/features/navigation/rail/internal/klp_rail_placement.dart:8](../../../../../../../lib/src/features/navigation/rail/internal/klp_rail_placement.dart#L8) |
+| import | <code>import &#x27;package:kallopis/src/capabilities/actions/klp_action_handler.dart&#x27;;</code> | [lib/src/features/navigation/rail/internal/klp_rail_placement.dart:9](../../../../../../../lib/src/features/navigation/rail/internal/klp_rail_placement.dart#L9) |
 
 ## 宣告關係圖
 

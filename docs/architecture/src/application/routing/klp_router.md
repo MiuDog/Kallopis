@@ -46,7 +46,7 @@ ClassDeclaration · public · [lib/src/application/routing/klp_router.dart:3](..
 
 | 成員 | 可見性 | 簽章／型別 | 來源註解摘要 | 證據 |
 |---|---|---|---|---|
-| field <code>id</code> | public | <code>final String id</code> |  | [lib/src/application/routing/klp_router.dart:5](../../../../../lib/src/application/routing/klp_router.dart#L5) |
+| field <code>id</code> | public | <code>final KlpId id</code> |  | [lib/src/application/routing/klp_router.dart:5](../../../../../lib/src/application/routing/klp_router.dart#L5) |
 | field <code>initial</code> | public | <code>final KlpLocation&lt;Object?&gt; initial</code> |  | [lib/src/application/routing/klp_router.dart:6](../../../../../lib/src/application/routing/klp_router.dart#L6) |
 | field <code>routes</code> | public | <code>final List&lt;KlpRoute&lt;Object?, Object?&gt;&gt; routes</code> |  | [lib/src/application/routing/klp_router.dart:7](../../../../../lib/src/application/routing/klp_router.dart#L7) |
 | field <code>restoration</code> | public | <code>final KlpNavigationRestoration? restoration</code> |  | [lib/src/application/routing/klp_router.dart:8](../../../../../lib/src/application/routing/klp_router.dart#L8) |

@@ -4,7 +4,7 @@ import 'klp_test_rail_item.dart';
 
 final class KlpTestRail implements KlpNode {
   @override
-  final String id;
+  final KlpId id;
   @override
   final List<KlpTestRailItem> children;
 

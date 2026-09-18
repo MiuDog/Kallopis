@@ -1,14 +1,14 @@
-import '../../../../composition/validation/klp_validated_node.dart';
-import '../../../../foundation/binding/internal/klp_bound_choice_style.dart';
-import '../../../../foundation/binding/internal/klp_bound_template.dart';
-import '../../../../foundation/templates/klp_axis.dart';
-import '../../../../kernel/lifecycle/internal/klp_frame_lease.dart';
-import '../../../../kernel/identity/klp_placement_id.dart';
-import '../../../../runtime/compilation/internal/klp_prepared_node.dart';
-import '../../../../runtime/installation/internal/klp_placement_resource.dart';
-import '../../../../styling/primitives/klp_style_value.dart';
-import '../../../../capabilities/actions/klp_action.dart';
-import '../../../../capabilities/actions/klp_action_handler.dart';
+import 'package:kallopis/src/composition/validation/klp_validated_node.dart';
+import 'package:kallopis/src/foundation/binding/contracts/klp_bound_choice_style.dart';
+import 'package:kallopis/src/foundation/binding/contracts/klp_bound_template.dart';
+import 'package:kallopis/src/foundation/templates/klp_axis.dart';
+import 'package:kallopis/src/kernel/lifecycle/klp_frame_lease.dart';
+import 'package:kallopis/src/kernel/identity/klp_placement_id.dart';
+import 'package:kallopis/src/runtime/contracts/klp_prepared_node.dart';
+import 'package:kallopis/src/runtime/contracts/klp_placement_resource.dart';
+import 'package:kallopis/src/styling/primitives/klp_style_value.dart';
+import 'package:kallopis/src/capabilities/actions/klp_action.dart';
+import 'package:kallopis/src/capabilities/actions/klp_action_handler.dart';
 import 'klp_rail_placement.dart';
 
 /// 已投影的 Rail 資料；實體化不再讀取外部節點或執行 selector。

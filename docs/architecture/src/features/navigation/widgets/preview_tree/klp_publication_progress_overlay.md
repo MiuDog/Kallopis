@@ -12,10 +12,10 @@
 flowchart LR
 	n0["klp_publication_progress_overlay.dart"]
 	n1["package:flutter/widgets.dart"]
-	n2["../../../feedback/workflow/klp_finite_workflow.dart"]
-	n3["../../../../foundation/interaction/primitives/klp_pointer_blocker.dart"]
-	n4["../../../../foundation/layout/klp_positioned.dart"]
-	n5["../../../../foundation/layout/klp_stack.dart"]
+	n2["package:kallopis/src/features/feedback/workflow/klp_finite_workflow.dart"]
+	n3["package:kallopis/src/foundation/interaction/primitives/klp_pointer_blocker.dart"]
+	n4["package:kallopis/src/foundation/layout/klp_positioned.dart"]
+	n5["package:kallopis/src/foundation/layout/klp_stack.dart"]
 	n0 -->|"import"| n1
 	n0 -->|"import"| n2
 	n0 -->|"import"| n3
@@ -28,10 +28,10 @@ flowchart LR
 | 關係 | 原始 directive | 來源 |
 |---|---|---|
 | import | <code>import &#x27;package:flutter/widgets.dart&#x27;;</code> | [lib/src/features/navigation/widgets/preview_tree/klp_publication_progress_overlay.dart:1](../../../../../../../lib/src/features/navigation/widgets/preview_tree/klp_publication_progress_overlay.dart#L1) |
-| import | <code>import &#x27;../../../feedback/workflow/klp_finite_workflow.dart&#x27;;</code> | [lib/src/features/navigation/widgets/preview_tree/klp_publication_progress_overlay.dart:3](../../../../../../../lib/src/features/navigation/widgets/preview_tree/klp_publication_progress_overlay.dart#L3) |
-| import | <code>import &#x27;../../../../foundation/interaction/primitives/klp_pointer_blocker.dart&#x27;;</code> | [lib/src/features/navigation/widgets/preview_tree/klp_publication_progress_overlay.dart:4](../../../../../../../lib/src/features/navigation/widgets/preview_tree/klp_publication_progress_overlay.dart#L4) |
-| import | <code>import &#x27;../../../../foundation/layout/klp_positioned.dart&#x27;;</code> | [lib/src/features/navigation/widgets/preview_tree/klp_publication_progress_overlay.dart:5](../../../../../../../lib/src/features/navigation/widgets/preview_tree/klp_publication_progress_overlay.dart#L5) |
-| import | <code>import &#x27;../../../../foundation/layout/klp_stack.dart&#x27;;</code> | [lib/src/features/navigation/widgets/preview_tree/klp_publication_progress_overlay.dart:6](../../../../../../../lib/src/features/navigation/widgets/preview_tree/klp_publication_progress_overlay.dart#L6) |
+| import | <code>import &#x27;package:kallopis/src/features/feedback/workflow/klp_finite_workflow.dart&#x27;;</code> | [lib/src/features/navigation/widgets/preview_tree/klp_publication_progress_overlay.dart:3](../../../../../../../lib/src/features/navigation/widgets/preview_tree/klp_publication_progress_overlay.dart#L3) |
+| import | <code>import &#x27;package:kallopis/src/foundation/interaction/primitives/klp_pointer_blocker.dart&#x27;;</code> | [lib/src/features/navigation/widgets/preview_tree/klp_publication_progress_overlay.dart:4](../../../../../../../lib/src/features/navigation/widgets/preview_tree/klp_publication_progress_overlay.dart#L4) |
+| import | <code>import &#x27;package:kallopis/src/foundation/layout/klp_positioned.dart&#x27;;</code> | [lib/src/features/navigation/widgets/preview_tree/klp_publication_progress_overlay.dart:5](../../../../../../../lib/src/features/navigation/widgets/preview_tree/klp_publication_progress_overlay.dart#L5) |
+| import | <code>import &#x27;package:kallopis/src/foundation/layout/klp_stack.dart&#x27;;</code> | [lib/src/features/navigation/widgets/preview_tree/klp_publication_progress_overlay.dart:6](../../../../../../../lib/src/features/navigation/widgets/preview_tree/klp_publication_progress_overlay.dart#L6) |
 
 ## 宣告關係圖
 

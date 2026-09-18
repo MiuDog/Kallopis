@@ -1,18 +1,16 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:kallopis/src/capabilities/navigation/internal/klp_navigation_commit_exception.dart';
-import 'package:kallopis/src/capabilities/navigation/internal/klp_navigation_commit_contract_exception.dart';
-import 'package:kallopis/src/capabilities/navigation/internal/klp_navigation_machine.dart';
-import 'package:kallopis/src/capabilities/navigation/klp_destination.dart';
-import 'package:kallopis/src/capabilities/navigation/klp_navigation_outcome.dart';
-import 'package:kallopis/src/capabilities/navigation/klp_route_policy.dart';
+import 'package:kallopis/kallopis_declarative.dart';
+import 'package:kallopis/src/capabilities/navigation/engine/klp_navigation_commit_exception.dart';
+import 'package:kallopis/src/capabilities/navigation/engine/klp_navigation_commit_contract_exception.dart';
+import 'package:kallopis/src/capabilities/navigation/engine/klp_navigation_machine.dart';
 
 import 'support/klp_navigation_fixture.dart';
 
 void main() {
   for (final committed in [false, true]) {
     test('commit failure preserves actual commit status $committed', () async {
-      final home = KlpDestination<int, String>('home');
-      final detail = KlpDestination<int, String>('detail');
+      final home = KlpDestination<int, String>(KlpId.parse('home'));
+      final detail = KlpDestination<int, String>(KlpId.parse('detail'));
       final machine = klpNavigationTestMachine(
         policies: [
           KlpRoutePolicy(destination: home),
@@ -48,8 +46,8 @@ void main() {
   test(
     'state listener failure still commits stack and preserves result delivery',
     () async {
-      final home = KlpDestination<int, String>('home');
-      final detail = KlpDestination<int, String>('detail');
+      final home = KlpDestination<int, String>(KlpId.parse('home'));
+      final detail = KlpDestination<int, String>(KlpId.parse('detail'));
       final machine = klpNavigationTestMachine(
         policies: [
           KlpRoutePolicy(destination: home),
@@ -81,8 +79,8 @@ void main() {
   );
 
   test('guard failure leaves stack and commit port unchanged', () async {
-    final home = KlpDestination<int, String>('home');
-    final detail = KlpDestination<int, String>('detail');
+    final home = KlpDestination<int, String>(KlpId.parse('home'));
+    final detail = KlpDestination<int, String>(KlpId.parse('detail'));
     var commits = 0;
     final machine = klpNavigationTestMachine(
       policies: [
@@ -103,7 +101,7 @@ void main() {
   });
 
   test('initial committed notification error retains usable initial state', () {
-    final home = KlpDestination<int, String>('home');
+    final home = KlpDestination<int, String>(KlpId.parse('home'));
     final machine = klpNavigationTestMachine(
       policies: [KlpRoutePolicy(destination: home)],
       initial: home.location(0),
@@ -122,8 +120,8 @@ void main() {
   test(
     'unclassified commit failure revokes the machine without claiming rollback',
     () async {
-      final home = KlpDestination<int, String>('home');
-      final detail = KlpDestination<int, String>('detail');
+      final home = KlpDestination<int, String>(KlpId.parse('home'));
+      final detail = KlpDestination<int, String>(KlpId.parse('detail'));
       final machine = klpNavigationTestMachine(
         policies: [
           KlpRoutePolicy(destination: home),
@@ -151,8 +149,8 @@ void main() {
   test(
     'guard reentry is busy and repeated cancellation resolves once',
     () async {
-      final home = KlpDestination<int, String>('home');
-      final detail = KlpDestination<int, String>('detail');
+      final home = KlpDestination<int, String>(KlpId.parse('home'));
+      final detail = KlpDestination<int, String>(KlpId.parse('detail'));
       late KlpNavigationMachine machine;
       machine = klpNavigationTestMachine(
         policies: [

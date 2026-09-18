@@ -1,6 +1,6 @@
 import 'package:flutter/foundation.dart';
 
-import '../../../foundation/klp_icon.dart';
+import 'package:kallopis/src/foundation/klp_icon.dart';
 import 'klp_selection_tone.dart';
 
 @immutable

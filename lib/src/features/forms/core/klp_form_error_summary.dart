@@ -1,4 +1,4 @@
-import '../internal/klp_form_dependencies.dart';
+import 'package:kallopis/src/features/forms/internal/klp_form_dependencies.dart';
 
 /// 表單頂部的錯誤總覽卡片，把所有驗證失敗的欄位集中列成清單。
 ///

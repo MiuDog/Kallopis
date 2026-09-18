@@ -10,7 +10,7 @@ Implementing（2026-09-09）。使用者已核准方向並要求開始；尚未�
 
 新 Klp API 以唯一結構樹組裝，容器限定插槽介面；同一元件可具多資格。消費端不建立 Widget、不提供 BuildContext／renderer callback。註冊定義固定於應用根，功能注入後由本庫建立預設資源。
 
-Primitive schema 由本庫固定，消費端只能整套替換值；自訂元件以可檢查 semantic 參照補充用途，本庫控制解析與呈現所有權。Features 可包含筆記、畫布及節點編排，產品可借用公開部件。這取代 KLP-0001 的至少兩產品與 primitive 不可替換規則，以及 KLP-0003 對新功能層的筆記 UI 禁令。
+Primitive schema 由本庫固定，消費端只能整套替換值；元件定義與 semantic schema 由本庫的封閉 catalog 擁有，消費端只能依公開節點、受限插槽與資料／事件契約組裝，不得註冊任意 `KlpComponentDefinition`、renderer 或未知元件型別。本庫控制解析與呈現所有權。Features 可包含筆記、畫布及節點編排，產品可借用公開部件；新增元件必須先進入本庫的分層 ownership 與公開契約審查，不能成為 runtime extension。這取代 KLP-0001 的至少兩產品與 primitive 不可替換規則、KLP-0003 對新功能層的筆記 UI 禁令，以及本決策舊版允許 consumer 自訂元件的擴充方向。
 
 舊視覺 API 保留目前行為直到對應遷移完成；舊入口與 kallopis_declarative.dart 不互相匯出。來源隔離以 library 可達性判定，不依相同的 Klp 前綴。既有風格與 golden 不是本次新設計；資料 transaction、undo、persistence 仍保留原權威。P8 收斂識別字與入口，不更改 package；名稱收斂不代表架構遷移完成。
 
@@ -24,7 +24,7 @@ Primitive schema 由本庫固定，消費端只能整套替換值；自訂元件
 
 ## 閘門
 
-新模型純 Dart；註冊衝突／依賴循環／重複放置／型別不符須拒絕。狀態只准一個寫入權威，controller 不代為釋放借用來源。安装先完整驗證再建立資源，取消訂閱與 dispose 有測試。舊 frontend boundary 持續執行；新契約另以正負案例驗證，不擴大 allowlist。
+新模型純 Dart；本庫 catalog 的註冊衝突／依賴循環／重複放置／型別不符須拒絕，consumer API 不提供註冊入口。狀態只准一個寫入權威，controller 不代為釋放借用來源。安装先完整驗證再建立資源，取消訂閱與 dispose 有測試。舊 frontend boundary 持續執行；新契約另以正負案例驗證，不擴大 allowlist。
 
 ## 已知欠債與移除條件
 

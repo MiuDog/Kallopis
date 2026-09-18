@@ -11,10 +11,10 @@
 ```mermaid
 flowchart LR
 	n0["klp_style_ref.dart"]
-	n1["../primitives/klp_primitive_index.dart"]
-	n2["../primitives/klp_style_kind.dart"]
-	n3["../primitives/klp_style_value.dart"]
-	n4["../semantics/klp_semantic_key.dart"]
+	n1["package:kallopis/src/styling/primitives/klp_primitive_index.dart"]
+	n2["package:kallopis/src/styling/primitives/klp_style_kind.dart"]
+	n3["package:kallopis/src/styling/primitives/klp_style_value.dart"]
+	n4["package:kallopis/src/styling/semantics/klp_semantic_key.dart"]
 	n5["klp_primitive_ref.dart"]
 	n6["klp_semantic_ref.dart"]
 	n0 -->|"import"| n1
@@ -29,10 +29,10 @@ flowchart LR
 
 | 關係 | 原始 directive | 來源 |
 |---|---|---|
-| import | <code>import &#x27;../primitives/klp_primitive_index.dart&#x27;;</code> | [lib/src/styling/references/klp_style_ref.dart:1](../../../../../lib/src/styling/references/klp_style_ref.dart#L1) |
-| import | <code>import &#x27;../primitives/klp_style_kind.dart&#x27;;</code> | [lib/src/styling/references/klp_style_ref.dart:2](../../../../../lib/src/styling/references/klp_style_ref.dart#L2) |
-| import | <code>import &#x27;../primitives/klp_style_value.dart&#x27;;</code> | [lib/src/styling/references/klp_style_ref.dart:3](../../../../../lib/src/styling/references/klp_style_ref.dart#L3) |
-| import | <code>import &#x27;../semantics/klp_semantic_key.dart&#x27;;</code> | [lib/src/styling/references/klp_style_ref.dart:4](../../../../../lib/src/styling/references/klp_style_ref.dart#L4) |
+| import | <code>import &#x27;package:kallopis/src/styling/primitives/klp_primitive_index.dart&#x27;;</code> | [lib/src/styling/references/klp_style_ref.dart:1](../../../../../lib/src/styling/references/klp_style_ref.dart#L1) |
+| import | <code>import &#x27;package:kallopis/src/styling/primitives/klp_style_kind.dart&#x27;;</code> | [lib/src/styling/references/klp_style_ref.dart:2](../../../../../lib/src/styling/references/klp_style_ref.dart#L2) |
+| import | <code>import &#x27;package:kallopis/src/styling/primitives/klp_style_value.dart&#x27;;</code> | [lib/src/styling/references/klp_style_ref.dart:3](../../../../../lib/src/styling/references/klp_style_ref.dart#L3) |
+| import | <code>import &#x27;package:kallopis/src/styling/semantics/klp_semantic_key.dart&#x27;;</code> | [lib/src/styling/references/klp_style_ref.dart:4](../../../../../lib/src/styling/references/klp_style_ref.dart#L4) |
 | part | <code>part &#x27;klp_primitive_ref.dart&#x27;;</code> | [lib/src/styling/references/klp_style_ref.dart:6](../../../../../lib/src/styling/references/klp_style_ref.dart#L6) |
 | part | <code>part &#x27;klp_semantic_ref.dart&#x27;;</code> | [lib/src/styling/references/klp_style_ref.dart:7](../../../../../lib/src/styling/references/klp_style_ref.dart#L7) |
 

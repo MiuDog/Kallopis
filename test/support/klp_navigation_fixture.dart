@@ -1,6 +1,6 @@
 import 'dart:async';
 
-import 'package:kallopis/src/capabilities/navigation/internal/klp_navigation_machine.dart';
+import 'package:kallopis/src/capabilities/navigation/engine/klp_navigation_machine.dart';
 import 'package:kallopis/src/capabilities/navigation/klp_location.dart';
 import 'package:kallopis/src/capabilities/navigation/klp_navigation_cancellation.dart';
 import 'package:kallopis/src/capabilities/navigation/klp_navigation_snapshot.dart';

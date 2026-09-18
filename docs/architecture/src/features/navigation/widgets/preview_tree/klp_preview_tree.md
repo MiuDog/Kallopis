@@ -12,11 +12,11 @@
 flowchart LR
 	n0["klp_preview_tree.dart"]
 	n1["package:flutter/widgets.dart"]
-	n2["../../../collections/advanced/klp_advanced_data.dart"]
-	n3["../../../../foundation/interaction/klp_exclude_semantics.dart"]
-	n4["../../../../foundation/interaction/klp_semantic_region.dart"]
-	n5["../../../../foundation/interaction/primitives/klp_pointer_blocker.dart"]
-	n6["../../../../foundation/layout/klp_column.dart"]
+	n2["package:kallopis/src/features/collections/advanced/klp_advanced_data.dart"]
+	n3["package:kallopis/src/foundation/interaction/klp_exclude_semantics.dart"]
+	n4["package:kallopis/src/foundation/interaction/klp_semantic_region.dart"]
+	n5["package:kallopis/src/foundation/interaction/primitives/klp_pointer_blocker.dart"]
+	n6["package:kallopis/src/foundation/layout/klp_column.dart"]
 	n7["models/klp_preview_tree_node.dart"]
 	n8["internal/klp_preview_tree_item.dart"]
 	n0 -->|"import"| n1
@@ -34,11 +34,11 @@ flowchart LR
 | 關係 | 原始 directive | 來源 |
 |---|---|---|
 | import | <code>import &#x27;package:flutter/widgets.dart&#x27;;</code> | [lib/src/features/navigation/widgets/preview_tree/klp_preview_tree.dart:1](../../../../../../../lib/src/features/navigation/widgets/preview_tree/klp_preview_tree.dart#L1) |
-| import | <code>import &#x27;../../../collections/advanced/klp_advanced_data.dart&#x27;;</code> | [lib/src/features/navigation/widgets/preview_tree/klp_preview_tree.dart:3](../../../../../../../lib/src/features/navigation/widgets/preview_tree/klp_preview_tree.dart#L3) |
-| import | <code>import &#x27;../../../../foundation/interaction/klp_exclude_semantics.dart&#x27;;</code> | [lib/src/features/navigation/widgets/preview_tree/klp_preview_tree.dart:4](../../../../../../../lib/src/features/navigation/widgets/preview_tree/klp_preview_tree.dart#L4) |
-| import | <code>import &#x27;../../../../foundation/interaction/klp_semantic_region.dart&#x27;;</code> | [lib/src/features/navigation/widgets/preview_tree/klp_preview_tree.dart:5](../../../../../../../lib/src/features/navigation/widgets/preview_tree/klp_preview_tree.dart#L5) |
-| import | <code>import &#x27;../../../../foundation/interaction/primitives/klp_pointer_blocker.dart&#x27;;</code> | [lib/src/features/navigation/widgets/preview_tree/klp_preview_tree.dart:6](../../../../../../../lib/src/features/navigation/widgets/preview_tree/klp_preview_tree.dart#L6) |
-| import | <code>import &#x27;../../../../foundation/layout/klp_column.dart&#x27;;</code> | [lib/src/features/navigation/widgets/preview_tree/klp_preview_tree.dart:7](../../../../../../../lib/src/features/navigation/widgets/preview_tree/klp_preview_tree.dart#L7) |
+| import | <code>import &#x27;package:kallopis/src/features/collections/advanced/klp_advanced_data.dart&#x27;;</code> | [lib/src/features/navigation/widgets/preview_tree/klp_preview_tree.dart:3](../../../../../../../lib/src/features/navigation/widgets/preview_tree/klp_preview_tree.dart#L3) |
+| import | <code>import &#x27;package:kallopis/src/foundation/interaction/klp_exclude_semantics.dart&#x27;;</code> | [lib/src/features/navigation/widgets/preview_tree/klp_preview_tree.dart:4](../../../../../../../lib/src/features/navigation/widgets/preview_tree/klp_preview_tree.dart#L4) |
+| import | <code>import &#x27;package:kallopis/src/foundation/interaction/klp_semantic_region.dart&#x27;;</code> | [lib/src/features/navigation/widgets/preview_tree/klp_preview_tree.dart:5](../../../../../../../lib/src/features/navigation/widgets/preview_tree/klp_preview_tree.dart#L5) |
+| import | <code>import &#x27;package:kallopis/src/foundation/interaction/primitives/klp_pointer_blocker.dart&#x27;;</code> | [lib/src/features/navigation/widgets/preview_tree/klp_preview_tree.dart:6](../../../../../../../lib/src/features/navigation/widgets/preview_tree/klp_preview_tree.dart#L6) |
+| import | <code>import &#x27;package:kallopis/src/foundation/layout/klp_column.dart&#x27;;</code> | [lib/src/features/navigation/widgets/preview_tree/klp_preview_tree.dart:7](../../../../../../../lib/src/features/navigation/widgets/preview_tree/klp_preview_tree.dart#L7) |
 | import | <code>import &#x27;models/klp_preview_tree_node.dart&#x27;;</code> | [lib/src/features/navigation/widgets/preview_tree/klp_preview_tree.dart:8](../../../../../../../lib/src/features/navigation/widgets/preview_tree/klp_preview_tree.dart#L8) |
 | part | <code>part &#x27;internal/klp_preview_tree_item.dart&#x27;;</code> | [lib/src/features/navigation/widgets/preview_tree/klp_preview_tree.dart:10](../../../../../../../lib/src/features/navigation/widgets/preview_tree/klp_preview_tree.dart#L10) |
 

@@ -1,6 +1,6 @@
 import 'package:flutter/widgets.dart';
 
-import '../../styling/legacy_theme/klp_theme.dart';
+import 'package:kallopis/src/styling/legacy_theme/klp_theme.dart';
 
 enum KlpStrokeRole { structure, latent, field }
 

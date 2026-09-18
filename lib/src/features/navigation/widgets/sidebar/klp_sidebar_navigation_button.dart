@@ -2,10 +2,10 @@ import 'dart:math' as math;
 
 import 'package:flutter/widgets.dart';
 
-import '../../../../foundation/klp_icon.dart';
-import '../../../../foundation/interaction/klp_pressable.dart';
-import '../../../../styling/legacy_theme/klp_theme.dart';
-import '../../../../foundation/content/klp_text.dart';
+import 'package:kallopis/src/foundation/klp_icon.dart';
+import 'package:kallopis/src/foundation/interaction/klp_pressable.dart';
+import 'package:kallopis/src/styling/legacy_theme/klp_theme.dart';
+import 'package:kallopis/src/foundation/content/klp_text.dart';
 import 'klp_navigation_icon_box_key.dart';
 
 export 'klp_navigation_icon_box_key.dart';

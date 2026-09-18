@@ -12,14 +12,14 @@
 flowchart LR
 	n0["klp_view_switcher.dart"]
 	n1["package:flutter/widgets.dart"]
-	n2["../../../../foundation/klp_icon.dart"]
-	n3["../../../../foundation/interaction/klp_gesture_region.dart"]
-	n4["../../../../foundation/layout/klp_gap.dart"]
-	n5["../../../../foundation/layout/klp_row.dart"]
-	n6["../../../../foundation/layout/klp_space_size.dart"]
-	n7["../../../../foundation/surface/klp_surface.dart"]
-	n8["../../../../styling/legacy_theme/klp_theme.dart"]
-	n9["../../../../foundation/content/klp_text.dart"]
+	n2["package:kallopis/src/foundation/klp_icon.dart"]
+	n3["package:kallopis/src/foundation/interaction/klp_gesture_region.dart"]
+	n4["package:kallopis/src/foundation/layout/klp_gap.dart"]
+	n5["package:kallopis/src/foundation/layout/klp_row.dart"]
+	n6["package:kallopis/src/foundation/layout/klp_space_size.dart"]
+	n7["package:kallopis/src/foundation/surface/klp_surface.dart"]
+	n8["package:kallopis/src/styling/legacy_theme/klp_theme.dart"]
+	n9["package:kallopis/src/foundation/content/klp_text.dart"]
 	n10["klp_view_option.dart"]
 	n11["internal/klp_view_choice.dart"]
 	n0 -->|"import"| n1
@@ -49,14 +49,14 @@ flowchart TD
 | 關係 | 原始 directive | 來源 |
 |---|---|---|
 | import | <code>import &#x27;package:flutter/widgets.dart&#x27;;</code> | [lib/src/features/navigation/widgets/controls/klp_view_switcher.dart:1](../../../../../../../lib/src/features/navigation/widgets/controls/klp_view_switcher.dart#L1) |
-| import | <code>import &#x27;../../../../foundation/klp_icon.dart&#x27;;</code> | [lib/src/features/navigation/widgets/controls/klp_view_switcher.dart:3](../../../../../../../lib/src/features/navigation/widgets/controls/klp_view_switcher.dart#L3) |
-| import | <code>import &#x27;../../../../foundation/interaction/klp_gesture_region.dart&#x27;;</code> | [lib/src/features/navigation/widgets/controls/klp_view_switcher.dart:4](../../../../../../../lib/src/features/navigation/widgets/controls/klp_view_switcher.dart#L4) |
-| import | <code>import &#x27;../../../../foundation/layout/klp_gap.dart&#x27;;</code> | [lib/src/features/navigation/widgets/controls/klp_view_switcher.dart:5](../../../../../../../lib/src/features/navigation/widgets/controls/klp_view_switcher.dart#L5) |
-| import | <code>import &#x27;../../../../foundation/layout/klp_row.dart&#x27;;</code> | [lib/src/features/navigation/widgets/controls/klp_view_switcher.dart:6](../../../../../../../lib/src/features/navigation/widgets/controls/klp_view_switcher.dart#L6) |
-| import | <code>import &#x27;../../../../foundation/layout/klp_space_size.dart&#x27;;</code> | [lib/src/features/navigation/widgets/controls/klp_view_switcher.dart:7](../../../../../../../lib/src/features/navigation/widgets/controls/klp_view_switcher.dart#L7) |
-| import | <code>import &#x27;../../../../foundation/surface/klp_surface.dart&#x27;;</code> | [lib/src/features/navigation/widgets/controls/klp_view_switcher.dart:8](../../../../../../../lib/src/features/navigation/widgets/controls/klp_view_switcher.dart#L8) |
-| import | <code>import &#x27;../../../../styling/legacy_theme/klp_theme.dart&#x27;;</code> | [lib/src/features/navigation/widgets/controls/klp_view_switcher.dart:9](../../../../../../../lib/src/features/navigation/widgets/controls/klp_view_switcher.dart#L9) |
-| import | <code>import &#x27;../../../../foundation/content/klp_text.dart&#x27;;</code> | [lib/src/features/navigation/widgets/controls/klp_view_switcher.dart:10](../../../../../../../lib/src/features/navigation/widgets/controls/klp_view_switcher.dart#L10) |
+| import | <code>import &#x27;package:kallopis/src/foundation/klp_icon.dart&#x27;;</code> | [lib/src/features/navigation/widgets/controls/klp_view_switcher.dart:3](../../../../../../../lib/src/features/navigation/widgets/controls/klp_view_switcher.dart#L3) |
+| import | <code>import &#x27;package:kallopis/src/foundation/interaction/klp_gesture_region.dart&#x27;;</code> | [lib/src/features/navigation/widgets/controls/klp_view_switcher.dart:4](../../../../../../../lib/src/features/navigation/widgets/controls/klp_view_switcher.dart#L4) |
+| import | <code>import &#x27;package:kallopis/src/foundation/layout/klp_gap.dart&#x27;;</code> | [lib/src/features/navigation/widgets/controls/klp_view_switcher.dart:5](../../../../../../../lib/src/features/navigation/widgets/controls/klp_view_switcher.dart#L5) |
+| import | <code>import &#x27;package:kallopis/src/foundation/layout/klp_row.dart&#x27;;</code> | [lib/src/features/navigation/widgets/controls/klp_view_switcher.dart:6](../../../../../../../lib/src/features/navigation/widgets/controls/klp_view_switcher.dart#L6) |
+| import | <code>import &#x27;package:kallopis/src/foundation/layout/klp_space_size.dart&#x27;;</code> | [lib/src/features/navigation/widgets/controls/klp_view_switcher.dart:7](../../../../../../../lib/src/features/navigation/widgets/controls/klp_view_switcher.dart#L7) |
+| import | <code>import &#x27;package:kallopis/src/foundation/surface/klp_surface.dart&#x27;;</code> | [lib/src/features/navigation/widgets/controls/klp_view_switcher.dart:8](../../../../../../../lib/src/features/navigation/widgets/controls/klp_view_switcher.dart#L8) |
+| import | <code>import &#x27;package:kallopis/src/styling/legacy_theme/klp_theme.dart&#x27;;</code> | [lib/src/features/navigation/widgets/controls/klp_view_switcher.dart:9](../../../../../../../lib/src/features/navigation/widgets/controls/klp_view_switcher.dart#L9) |
+| import | <code>import &#x27;package:kallopis/src/foundation/content/klp_text.dart&#x27;;</code> | [lib/src/features/navigation/widgets/controls/klp_view_switcher.dart:10](../../../../../../../lib/src/features/navigation/widgets/controls/klp_view_switcher.dart#L10) |
 | import | <code>import &#x27;klp_view_option.dart&#x27;;</code> | [lib/src/features/navigation/widgets/controls/klp_view_switcher.dart:11](../../../../../../../lib/src/features/navigation/widgets/controls/klp_view_switcher.dart#L11) |
 | part | <code>part &#x27;internal/klp_view_choice.dart&#x27;;</code> | [lib/src/features/navigation/widgets/controls/klp_view_switcher.dart:13](../../../../../../../lib/src/features/navigation/widgets/controls/klp_view_switcher.dart#L13) |
 | part | <code>part &#x27;primitives/klp_view_choice_frame.dart&#x27;;</code> | [lib/src/features/navigation/widgets/controls/klp_view_switcher.dart:14](../../../../../../../lib/src/features/navigation/widgets/controls/klp_view_switcher.dart#L14) |

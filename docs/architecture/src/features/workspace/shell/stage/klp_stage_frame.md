@@ -12,25 +12,19 @@
 flowchart LR
 	n0["klp_stage_frame.dart"]
 	n1["package:flutter/material.dart"]
-	n2["../../../../foundation/layout/klp_layout.dart"]
-	n3["../../../../styling/legacy_theme/klp_theme.dart"]
-	n4["../panel/klp_panel_footer.dart"]
-	n5["../status/klp_status_bar.dart"]
-	n6["../status/klp_status_data.dart"]
-	n7["klp_stage_header.dart"]
-	n8["primitives/klp_stage_header_slot.dart"]
-	n9["primitives/klp_stage_status_slot.dart"]
-	n10["primitives/klp_stage_surface.dart"]
+	n2["package:kallopis/src/foundation/layout/klp_layout.dart"]
+	n3["package:kallopis/src/styling/legacy_theme/klp_theme.dart"]
+	n4["package:kallopis/src/features/workspace/shell/panel/klp_panel_footer.dart"]
+	n5["primitives/klp_stage_header_slot.dart"]
+	n6["primitives/klp_stage_status_slot.dart"]
+	n7["primitives/klp_stage_surface.dart"]
 	n0 -->|"import"| n1
 	n0 -->|"import"| n2
 	n0 -->|"import"| n3
 	n0 -->|"import"| n4
-	n0 -->|"import"| n5
-	n0 -->|"import"| n6
-	n0 -->|"import"| n7
-	n0 -->|"part"| n8
-	n0 -->|"part"| n9
-	n0 -->|"part"| n10
+	n0 -->|"part"| n5
+	n0 -->|"part"| n6
+	n0 -->|"part"| n7
 ```
 
 ## 依賴證據
@@ -38,15 +32,12 @@ flowchart LR
 | 關係 | 原始 directive | 來源 |
 |---|---|---|
 | import | <code>import &#x27;package:flutter/material.dart&#x27;;</code> | [lib/src/features/workspace/shell/stage/klp_stage_frame.dart:1](../../../../../../../lib/src/features/workspace/shell/stage/klp_stage_frame.dart#L1) |
-| import | <code>import &#x27;../../../../foundation/layout/klp_layout.dart&#x27;;</code> | [lib/src/features/workspace/shell/stage/klp_stage_frame.dart:3](../../../../../../../lib/src/features/workspace/shell/stage/klp_stage_frame.dart#L3) |
-| import | <code>import &#x27;../../../../styling/legacy_theme/klp_theme.dart&#x27;;</code> | [lib/src/features/workspace/shell/stage/klp_stage_frame.dart:4](../../../../../../../lib/src/features/workspace/shell/stage/klp_stage_frame.dart#L4) |
-| import | <code>import &#x27;../panel/klp_panel_footer.dart&#x27;;</code> | [lib/src/features/workspace/shell/stage/klp_stage_frame.dart:5](../../../../../../../lib/src/features/workspace/shell/stage/klp_stage_frame.dart#L5) |
-| import | <code>import &#x27;../status/klp_status_bar.dart&#x27;;</code> | [lib/src/features/workspace/shell/stage/klp_stage_frame.dart:6](../../../../../../../lib/src/features/workspace/shell/stage/klp_stage_frame.dart#L6) |
-| import | <code>import &#x27;../status/klp_status_data.dart&#x27;;</code> | [lib/src/features/workspace/shell/stage/klp_stage_frame.dart:7](../../../../../../../lib/src/features/workspace/shell/stage/klp_stage_frame.dart#L7) |
-| import | <code>import &#x27;klp_stage_header.dart&#x27;;</code> | [lib/src/features/workspace/shell/stage/klp_stage_frame.dart:8](../../../../../../../lib/src/features/workspace/shell/stage/klp_stage_frame.dart#L8) |
-| part | <code>part &#x27;primitives/klp_stage_header_slot.dart&#x27;;</code> | [lib/src/features/workspace/shell/stage/klp_stage_frame.dart:10](../../../../../../../lib/src/features/workspace/shell/stage/klp_stage_frame.dart#L10) |
-| part | <code>part &#x27;primitives/klp_stage_status_slot.dart&#x27;;</code> | [lib/src/features/workspace/shell/stage/klp_stage_frame.dart:11](../../../../../../../lib/src/features/workspace/shell/stage/klp_stage_frame.dart#L11) |
-| part | <code>part &#x27;primitives/klp_stage_surface.dart&#x27;;</code> | [lib/src/features/workspace/shell/stage/klp_stage_frame.dart:12](../../../../../../../lib/src/features/workspace/shell/stage/klp_stage_frame.dart#L12) |
+| import | <code>import &#x27;package:kallopis/src/foundation/layout/klp_layout.dart&#x27;;</code> | [lib/src/features/workspace/shell/stage/klp_stage_frame.dart:3](../../../../../../../lib/src/features/workspace/shell/stage/klp_stage_frame.dart#L3) |
+| import | <code>import &#x27;package:kallopis/src/styling/legacy_theme/klp_theme.dart&#x27;;</code> | [lib/src/features/workspace/shell/stage/klp_stage_frame.dart:4](../../../../../../../lib/src/features/workspace/shell/stage/klp_stage_frame.dart#L4) |
+| import | <code>import &#x27;package:kallopis/src/features/workspace/shell/panel/klp_panel_footer.dart&#x27;;</code> | [lib/src/features/workspace/shell/stage/klp_stage_frame.dart:5](../../../../../../../lib/src/features/workspace/shell/stage/klp_stage_frame.dart#L5) |
+| part | <code>part &#x27;primitives/klp_stage_header_slot.dart&#x27;;</code> | [lib/src/features/workspace/shell/stage/klp_stage_frame.dart:7](../../../../../../../lib/src/features/workspace/shell/stage/klp_stage_frame.dart#L7) |
+| part | <code>part &#x27;primitives/klp_stage_status_slot.dart&#x27;;</code> | [lib/src/features/workspace/shell/stage/klp_stage_frame.dart:8](../../../../../../../lib/src/features/workspace/shell/stage/klp_stage_frame.dart#L8) |
+| part | <code>part &#x27;primitives/klp_stage_surface.dart&#x27;;</code> | [lib/src/features/workspace/shell/stage/klp_stage_frame.dart:9](../../../../../../../lib/src/features/workspace/shell/stage/klp_stage_frame.dart#L9) |
 
 ## 宣告關係圖
 
@@ -71,22 +62,21 @@ classDiagram
 
 ### KlpStageFrame
 
-ClassDeclaration · public · [lib/src/features/workspace/shell/stage/klp_stage_frame.dart:14](../../../../../../../lib/src/features/workspace/shell/stage/klp_stage_frame.dart#L14)
+ClassDeclaration · public · [lib/src/features/workspace/shell/stage/klp_stage_frame.dart:11](../../../../../../../lib/src/features/workspace/shell/stage/klp_stage_frame.dart#L11)
 
 <code>class KlpStageFrame extends StatelessWidget</code>
 
 來源註解摘要：舞台區：選用的頂部 header、中央 content、底部選用的 status 列。
 
-- `extends` → <code>StatelessWidget</code>：[lib/src/features/workspace/shell/stage/klp_stage_frame.dart:15](../../../../../../../lib/src/features/workspace/shell/stage/klp_stage_frame.dart#L15)
+- `extends` → <code>StatelessWidget</code>：[lib/src/features/workspace/shell/stage/klp_stage_frame.dart:12](../../../../../../../lib/src/features/workspace/shell/stage/klp_stage_frame.dart#L12)
 
 | 成員 | 可見性 | 簽章／型別 | 來源註解摘要 | 證據 |
 |---|---|---|---|---|
-| constructor <code>KlpStageFrame</code> | public | <code>const KlpStageFrame({ super.key, this.header, required this.content, this.status, })</code> |  | [lib/src/features/workspace/shell/stage/klp_stage_frame.dart:16](../../../../../../../lib/src/features/workspace/shell/stage/klp_stage_frame.dart#L16) |
-| constructor <code>workbench</code> | public | <code>factory KlpStageFrame.workbench({ Key? key, required String projectName, required String sectionLabel, required String title, required String typeLabel, required Widget content, KlpStatusBarData? status, })</code> | 建立具備 Kallopis 標準識別列與狀態列的工作舞台。 產品只提供語意資料與主要內容；header、status 的元件選擇、排列、間距與 響應式行為都留在 Kallopis。 | [lib/src/features/workspace/shell/stage/klp_stage_frame.dart:23](../../../../../../../lib/src/features/workspace/shell/stage/klp_stage_frame.dart#L23) |
-| field <code>header</code> | public | <code>final Widget? header</code> |  | [lib/src/features/workspace/shell/stage/klp_stage_frame.dart:49](../../../../../../../lib/src/features/workspace/shell/stage/klp_stage_frame.dart#L49) |
-| field <code>content</code> | public | <code>final Widget content</code> |  | [lib/src/features/workspace/shell/stage/klp_stage_frame.dart:50](../../../../../../../lib/src/features/workspace/shell/stage/klp_stage_frame.dart#L50) |
-| field <code>status</code> | public | <code>final Widget? status</code> |  | [lib/src/features/workspace/shell/stage/klp_stage_frame.dart:51](../../../../../../../lib/src/features/workspace/shell/stage/klp_stage_frame.dart#L51) |
-| method <code>build</code> | public | <code>Widget build(BuildContext context)</code> |  | [lib/src/features/workspace/shell/stage/klp_stage_frame.dart:53](../../../../../../../lib/src/features/workspace/shell/stage/klp_stage_frame.dart#L53) |
+| constructor <code>KlpStageFrame</code> | public | <code>const KlpStageFrame({ super.key, this.header, required this.content, this.status, })</code> |  | [lib/src/features/workspace/shell/stage/klp_stage_frame.dart:13](../../../../../../../lib/src/features/workspace/shell/stage/klp_stage_frame.dart#L13) |
+| field <code>header</code> | public | <code>final Widget? header</code> |  | [lib/src/features/workspace/shell/stage/klp_stage_frame.dart:20](../../../../../../../lib/src/features/workspace/shell/stage/klp_stage_frame.dart#L20) |
+| field <code>content</code> | public | <code>final Widget content</code> |  | [lib/src/features/workspace/shell/stage/klp_stage_frame.dart:21](../../../../../../../lib/src/features/workspace/shell/stage/klp_stage_frame.dart#L21) |
+| field <code>status</code> | public | <code>final Widget? status</code> |  | [lib/src/features/workspace/shell/stage/klp_stage_frame.dart:22](../../../../../../../lib/src/features/workspace/shell/stage/klp_stage_frame.dart#L22) |
+| method <code>build</code> | public | <code>Widget build(BuildContext context)</code> |  | [lib/src/features/workspace/shell/stage/klp_stage_frame.dart:24](../../../../../../../lib/src/features/workspace/shell/stage/klp_stage_frame.dart#L24) |
 
 ## 閱讀說明與限制
 

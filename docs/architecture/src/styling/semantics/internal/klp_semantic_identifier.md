@@ -11,8 +11,8 @@
 ```mermaid
 flowchart TD
 	n0["klp_semantic_identifier.dart"]
-	n1["../../../kernel/diagnostics/klp_contract_error.dart"]
-	n2["../../../kernel/identity/internal/klp_identifier.dart"]
+	n1["package:kallopis/src/kernel/diagnostics/klp_contract_error.dart"]
+	n2["package:kallopis/src/kernel/identity/internal/klp_identifier.dart"]
 	n0 -->|"import"| n1
 	n0 -->|"import"| n2
 ```
@@ -21,8 +21,8 @@ flowchart TD
 
 | 關係 | 原始 directive | 來源 |
 |---|---|---|
-| import | <code>import &#x27;../../../kernel/diagnostics/klp_contract_error.dart&#x27;;</code> | [lib/src/styling/semantics/internal/klp_semantic_identifier.dart:1](../../../../../../lib/src/styling/semantics/internal/klp_semantic_identifier.dart#L1) |
-| import | <code>import &#x27;../../../kernel/identity/internal/klp_identifier.dart&#x27;;</code> | [lib/src/styling/semantics/internal/klp_semantic_identifier.dart:2](../../../../../../lib/src/styling/semantics/internal/klp_semantic_identifier.dart#L2) |
+| import | <code>import &#x27;package:kallopis/src/kernel/diagnostics/klp_contract_error.dart&#x27;;</code> | [lib/src/styling/semantics/internal/klp_semantic_identifier.dart:1](../../../../../../lib/src/styling/semantics/internal/klp_semantic_identifier.dart#L1) |
+| import | <code>import &#x27;package:kallopis/src/kernel/identity/internal/klp_identifier.dart&#x27;;</code> | [lib/src/styling/semantics/internal/klp_semantic_identifier.dart:2](../../../../../../lib/src/styling/semantics/internal/klp_semantic_identifier.dart#L2) |
 
 ## 宣告關係圖
 

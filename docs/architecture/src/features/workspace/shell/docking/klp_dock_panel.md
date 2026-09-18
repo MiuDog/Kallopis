@@ -12,7 +12,7 @@
 flowchart LR
 	n0["klp_dock_panel.dart"]
 	n1["package:flutter/widgets.dart"]
-	n2["../../../../foundation/klp_icon.dart"]
+	n2["package:kallopis/src/foundation/klp_icon.dart"]
 	n3["models/klp_dock_header_action.dart"]
 	n4["models/klp_dock_panel_data.dart"]
 	n0 -->|"import"| n1
@@ -26,7 +26,7 @@ flowchart LR
 | 關係 | 原始 directive | 來源 |
 |---|---|---|
 | import | <code>import &#x27;package:flutter/widgets.dart&#x27;;</code> | [lib/src/features/workspace/shell/docking/klp_dock_panel.dart:1](../../../../../../../lib/src/features/workspace/shell/docking/klp_dock_panel.dart#L1) |
-| import | <code>import &#x27;../../../../foundation/klp_icon.dart&#x27;;</code> | [lib/src/features/workspace/shell/docking/klp_dock_panel.dart:3](../../../../../../../lib/src/features/workspace/shell/docking/klp_dock_panel.dart#L3) |
+| import | <code>import &#x27;package:kallopis/src/foundation/klp_icon.dart&#x27;;</code> | [lib/src/features/workspace/shell/docking/klp_dock_panel.dart:3](../../../../../../../lib/src/features/workspace/shell/docking/klp_dock_panel.dart#L3) |
 | part | <code>part &#x27;models/klp_dock_header_action.dart&#x27;;</code> | [lib/src/features/workspace/shell/docking/klp_dock_panel.dart:5](../../../../../../../lib/src/features/workspace/shell/docking/klp_dock_panel.dart#L5) |
 | part | <code>part &#x27;models/klp_dock_panel_data.dart&#x27;;</code> | [lib/src/features/workspace/shell/docking/klp_dock_panel.dart:6](../../../../../../../lib/src/features/workspace/shell/docking/klp_dock_panel.dart#L6) |
 

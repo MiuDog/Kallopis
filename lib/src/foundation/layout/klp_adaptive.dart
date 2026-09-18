@@ -1,8 +1,8 @@
 import 'package:flutter/widgets.dart';
 
-import '../platform/klp_app_platform.dart';
-import '../platform/klp_environment_scope.dart';
-import '../platform/klp_platform_info.dart';
+import 'package:kallopis/src/foundation/platform/klp_app_platform.dart';
+import 'package:kallopis/src/foundation/platform/klp_environment_scope.dart';
+import 'package:kallopis/src/foundation/platform/klp_platform_info.dart';
 import 'klp_adaptive_builder.dart';
 import 'klp_panel_layout.dart';
 
