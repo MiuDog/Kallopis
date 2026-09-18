@@ -1,10 +1,10 @@
 import 'dart:async';
 import 'package:kallopis/src/features/workspace/components/klp_workspace_command.dart';
 import 'package:kallopis/src/features/workspace/components/klp_anchored_popup.dart';
+import 'package:kallopis/src/features/workspace/components/klp_document_tabs.dart';
 import 'package:kallopis/src/features/workspace/explorer/klp_explorer_model.dart';
 import 'package:kallopis/src/features/workspace/explorer/klp_explorer_snapshot.dart';
 import 'package:kallopis/src/kernel/identity/klp_id.dart';
-import 'package:kallopis/src/kernel/identity/klp_placement_id.dart';
 import 'package:kallopis/src/styling/primitives/klp_style_value.dart';
 import 'package:kallopis/src/foundation/binding/contracts/klp_bound_template.dart';
 import 'package:kallopis/src/foundation/binding/contracts/klp_bound_text_style.dart';

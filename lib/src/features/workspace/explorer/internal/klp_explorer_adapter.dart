@@ -103,12 +103,10 @@ final class _PreparedExplorer implements KlpPreparedNode {
 		final nodeExtent = KlpDistance(style.read(KlpExplorerAdapter.nodeExtent).value * 7 / 8);
 		final categoryExtent = KlpDistance(style.read(KlpExplorerAdapter.categoryExtent).value * 7 / 8);
 		return KlpBoundExplorer(
-			treeId: explorer.id, snapshot: snapshot, actionsLabel: explorer.actionsLabel, expandLabel: explorer.expandLabel, collapseLabel: explorer.collapseLabel,
-			onSelectionChanged: explorer.onSelectionChanged == null ? null : (change) => lease.run(() => explorer.onSelectionChanged!(change)),
-			onActivate: explorer.onActivate == null ? null : (id) => lease.run(() => explorer.onActivate!(id)),
-			onExpandedChanged: explorer.onExpandedChanged == null ? null : (id, value) => lease.run(() => explorer.onExpandedChanged!(id, value)),
-			canDrop: (request) => lease.isActive && snapshot.permitsDrop(request, permission: explorer.canDrop),
-			onDrop: explorer.onDrop == null ? null : (request) { if (lease.isActive && snapshot.permitsDrop(request, permission: explorer.canDrop)) explorer.onDrop!(request); },
+			treeId: explorer.id,
+			snapshot: snapshot,
+			onIntent: explorer.onIntent == null ? null : (intent) => lease.run(() => explorer.onIntent!(intent)),
+			controller: explorer.controller,
 			isActive: () => lease.isActive,
 			surface: style.read(KlpExplorerAdapter.surface), foreground: style.read(KlpExplorerAdapter.foreground), mutedForeground: style.read(KlpExplorerAdapter.muted), selectedBackground: style.read(KlpExplorerAdapter.selected), focusColor: style.read(KlpExplorerAdapter.focus),
 			nodeExtent: nodeExtent, categoryExtent: categoryExtent, iconExtent: style.read(KlpExplorerAdapter.iconExtent), disclosureIconExtent: style.read(KlpExplorerAdapter.disclosureIconExtent), categoryFontSize: style.read(KlpExplorerAdapter.categoryFontSize), indent: style.read(KlpExplorerAdapter.indent), inset: style.read(KlpExplorerAdapter.inset), gap: style.read(KlpExplorerAdapter.gap), disclosureExtent: style.read(KlpExplorerAdapter.disclosureExtent), actionExtent: style.read(KlpExplorerAdapter.actionExtent), radius: style.read(KlpExplorerAdapter.radius), focusWidth: style.read(KlpExplorerAdapter.focusWidth),

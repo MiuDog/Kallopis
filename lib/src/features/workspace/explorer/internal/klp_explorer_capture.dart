@@ -36,7 +36,7 @@ final class _ItemVisit {
 	const _ItemVisit(this.source, this.parent, {this.exiting = false});
 }
 
-KlpExplorerSnapshot _captureExplorer(List<KlpExplorerTreeData> treeInput, List<KlpExplorerSelectionScope> scopeInput) {
+KlpExplorerSnapshot _captureExplorer(List<KlpExplorerTreeData> treeInput, List<KlpExplorerSelectionScope> scopeInput, List<KlpExplorerDropAcceptance> acceptedDrops) {
 	// 步驟 1：固定本次森林範圍，預留樹的出現身分以偵測跨層重複。
 	final declarations = List<KlpExplorerTreeData>.of(treeInput);
 	final scopes = List<KlpExplorerSelectionScope>.of(scopeInput);
@@ -91,6 +91,12 @@ KlpExplorerSnapshot _captureExplorer(List<KlpExplorerTreeData> treeInput, List<K
 
 			if (row.title.trim().isEmpty) {
 				throw KlpContractError('explorer_invalid_title', 'Explorer 主標題不得為空：$id。');
+			}
+			final commandIds = <KlpId>{};
+			for (final command in [...row.inlineActions, ...row.contextActions]) {
+				if (!commandIds.add(command.id)) {
+					throw KlpContractError('explorer_duplicate_command', '同一 Explorer 項目的命令 ID 不得重複：${command.id}。');
+				}
 			}
 
 			final item = _ItemCapture(
@@ -174,5 +180,5 @@ KlpExplorerSnapshot _captureExplorer(List<KlpExplorerTreeData> treeInput, List<K
 		throw const KlpContractError('explorer_invalid_scope', '每棵 Explorer 樹必須恰屬一個明確選取範圍。');
 	}
 
-	return KlpExplorerSnapshot._(items: items, trees: trees, selectionScopes: selectionScopes, scopeByTree: scopeByTree);
+	return KlpExplorerSnapshot._(items: items, trees: trees, selectionScopes: selectionScopes, scopeByTree: scopeByTree, acceptedDrops: acceptedDrops);
 }

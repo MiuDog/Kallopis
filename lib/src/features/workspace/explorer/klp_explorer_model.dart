@@ -4,3 +4,5 @@ library;
 export 'contracts/klp_explorer_item_model.dart';
 export 'contracts/klp_explorer_tree_data.dart';
 export 'contracts/klp_explorer_drop_request.dart';
+export 'contracts/klp_explorer_intent.dart';
+export 'contracts/klp_explorer_controller.dart';

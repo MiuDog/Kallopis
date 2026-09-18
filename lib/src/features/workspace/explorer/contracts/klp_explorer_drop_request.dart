@@ -13,4 +13,14 @@ final class KlpExplorerDropRequest {
 		: sourceIds = Set.unmodifiable(sourceIds);
 }
 
-typedef KlpExplorerDropPermission = bool Function(KlpExplorerDropRequest request);
+/// Consumer 預先宣告的精確放置許可；renderer 不在手勢期間查詢產品邏輯。
+final class KlpExplorerDropAcceptance {
+
+	final Set<KlpId> sourceIds;
+	final KlpId targetId;
+	final KlpExplorerDropPlacement position;
+
+	KlpExplorerDropAcceptance({required Set<KlpId> sourceIds, required this.targetId, required this.position}) : sourceIds = Set.unmodifiable(sourceIds);
+
+	bool matches(KlpExplorerDropRequest request) => targetId == request.targetId && position == request.position && sourceIds.length == request.sourceIds.length && sourceIds.containsAll(request.sourceIds);
+}
