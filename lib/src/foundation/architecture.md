@@ -1,5 +1,11 @@
 # 基礎呈現（foundation）模組架構
 
+## SFC-V1-r1：Explorer／Document Tabs chrome localization
+
+配對切片 `SFC-V1-L10N` 狀態：PLAN READY。精確順序與驗收見 [SFC-V1-r1](../../../docs/architecture/semantic-feature-contract-plan/README.md)。
+
+唯一 `KlpLocalizations` 增加 Explorer actions／expand／collapse 與 Document Tabs modified／pin／unpin／close 字串；預設值保持目前畫面文字。Feature constructor 不得新增相同文案輸入，renderer 只從目前 context 的 `KlpLocalizations` 取得。除此檔與直接 localization contract test 外，本切片不修改 foundation template、binding 或 Stable theme。
+
 Status: PLAN READY — v1 的目標邊界，以及與 composition、runtime、features、rendering 和 application 配對的介面邊界均已接受
 
 阻擋中的架構決策：無。BUILD 仍依下列已接受的配對切片分開執行。

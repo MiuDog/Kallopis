@@ -17,7 +17,41 @@
 
 人類可讀的逐項對照見 [inventory.md](inventory.md)；更新該頁不得修改固定分母。機械權威仍為 baseline 與 coverage。
 
-## 當前階段 CAT-MIG-01：選單垂直遷移
+## 當前階段 CAT-TAX-01：重新定義 Catalog 分類
+
+狀態：DEFINE READY／PLAN REVISION REQUIRED。使用者已接受 18 個 consumer-oriented 第一層分類、每項一個 primary category／多個 secondary tags，以及 consumer 組合語意原子／功能群組、Kallopis 擁有具體元件樹與視覺佈局的邊界。現有 proposed 分類須依新邊界重審：raw layout primitive 與只描述呈現策略的 class 原則上吸收；功能原子只可進入 typed groups／roles；多 view 只在個別能力需要時提供，不是全域要求。仍禁止依現有 class、資料夾或舊頁面直接配對 module。
+
+固定 254 項、既有 2 migrated／1 preserved 證據與已接受新版風格不變。254/254 集合完整性已建立，但人類尚未接受分類語意；下一步先擴充分類計畫並逐項重審 intent／role，重新產生無 owner 欄位的 review。全部分類通過並由人類接受後，才形成能力家族、公開處置與 module ownership。
+
+下列 `CAT-MIG-02` 保留為未執行候選，不是目前 BUILD 授權；其 `KlpAdaptive`／`KlpWindowControls` 配對必須等待新分類與能力家族結果重新確認。
+
+## 暫停階段 CAT-MIG-02：既有新版 Adaptive／WindowControls 對帳
+
+狀態：PAUSED；不得從本節啟動 BUILD。
+
+### 接受契約 ACW-01
+
+- `KlpAdaptive` 的新版權威是 `composition/nodes/klp_adaptive.dart`：consumer 只提供 `KlpPlatformStrategy` 回傳的 Kallopis-owned composite tree；不得使用 Flutter builder、`BuildContext` 或 Widget 分支。
+- `KlpWindowControls` 的新版權威是 `features/workspace/components/klp_window_controls.dart`：consumer 提供最大化資料及三個 host intent callback；尺寸、圖示、平台風格與命中區由 Kallopis semantic adapter／bound renderer 擁有。
+- 同一個正式 Catalog specimen 必須由 `kallopis_declarative.dart` 組裝，真實掛載 `KlpAdaptive`，並在命中的平台策略內呈現 `KlpWindowControls`。操作最小化、最大化／還原、關閉只更新展示資料，不呼叫原生 runner。
+- Catalog 顯示目前命中的 `KlpAdaptivePlatform` 與最近一次 window intent，證明策略與事件是資料流，不以靜態截圖或 legacy Widget 冒充。
+- `lib/src/rendering/flutter/internal/klp_flutter_window_controls.dart` 沒有 caller，且仍橋接 legacy theme／Widget；本 stage 刪除它，不建立 shim。現行 renderer `klp_flutter_workspace_components.dart` 保持唯一新版呈現。
+- legacy `foundation/layout/klp_adaptive.dart`、`features/workspace/shell/window/klp_window_controls.dart` 及 Stable export 暫留，因舊 WindowHeader／Catalog／測試仍有 caller。Coverage 可在新版 Catalog、資料／事件、renderer 與測試證據齊全後標為 migrated，並明列 legacyRemoval 等待各 caller family 遷移；不能把暫留解讀為雙權威。
+
+### ACW-01 切片與寫入邊界
+
+| Slice | Owner | 寫入範圍 | 可觀察成果 |
+| --- | --- | --- | --- |
+| `ACW-T` | Existing test evidence | `test/klp_adaptive_declarative_test.dart`、`test/klp_workspace_components_declarative_test.dart` | 既有 Green 已證明策略命中、三 intent 與不可變資料更新；不新增只檢查檔案存在的低價值測試。Catalog 邊界由既有 consumer verifier 檢查。 |
+| `ACW-C` | Catalog | `example/lib/catalog_declarative/adaptive_window_specimen.dart`、`example/lib/catalog_adaptive_window_main.dart` | 一個可執行 specimen 同時覆蓋兩個固定清冊項目，無 Flutter、`src`、legacy import。 |
+| `ACW-R` | Rendering cleanup | `lib/src/rendering/flutter/internal/klp_flutter_window_controls.dart` | 刪除零 caller bridge；現行 bound renderer 與 dispatch 不變。 |
+| `ACW-E` | Migration evidence | `docs/architecture/catalog-migration/coverage.json`、`inventory.md`、`verification.md`、`docs/ai/catalog-capability-map.md`、`docs/ai/catalog.md` | 兩項具有新版 API、Catalog、資料／事件、renderer 及測試路徑；固定分母仍為 254，pending 由 251 降至 249。 |
+
+估算：以 CM-01 與現有 declarative specimen 為參考，4k–9k tokens／25–60 分鐘。M1 test＋specimen（累計 3k–6k／20–40 分），M2 dead bridge＋evidence（累計 4k–9k／25–60 分）；超過 13k／90 分鐘、發現非零 bridge caller，或必須改 public API／semantic style 時停止並回 PLAN。
+
+驗收：兩個既有宣告式行為測試群保持 Green；新 Catalog 契約 Green；external compile boundary 拒絕 Widget／BuildContext；現行 renderer source 不 import legacy window shell；coverage 完整性仍以原 254 分母通過。視覺與原生視窗手感保持 human-pending。
+
+## 已完成階段 CAT-MIG-01：選單垂直遷移
 
 使用者已接受[完整選單互動](../../../spec/menu-interaction-migration.md)：庫管理定位、邊界、外部點擊／Escape 關閉、子選單展開／返回。以下 CM-01 是已實作面板切片的契約與證據，不是完整互動的能力上限。下一切片須依此規格更新配對契約；其餘元件按使用者要求逐組說明舊定位與新行為再決策。
 

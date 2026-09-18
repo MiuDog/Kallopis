@@ -1,5 +1,4 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:kallopis/src/features/workspace/components/klp_workspace_command.dart';
 import 'package:kallopis/src/features/workspace/explorer/klp_explorer_model.dart';
 import 'package:kallopis/src/features/workspace/explorer/klp_explorer_snapshot.dart';
 import 'package:kallopis/src/kernel/diagnostics/klp_contract_error.dart';
@@ -18,20 +17,21 @@ KlpExplorerNodeModel _node(String name, {List<KlpExplorerItemModel> children = c
 	return KlpExplorerNodeModel(id: _id(name), row: KlpExplorerRowData(title: name), canHaveChildren: canHaveChildren, children: children, capabilities: capabilities);
 }
 
-KlpExplorerSnapshot _capture(List<KlpExplorerItemModel> items, {Set<KlpId> expanded = const {}, Set<KlpId> selected = const {}}) {
+KlpExplorerSnapshot _capture(List<KlpExplorerItemModel> items, {Set<KlpId> expanded = const {}, Set<KlpId> selected = const {}, List<KlpExplorerDropAcceptance> acceptedDrops = const []}) {
 
 	final tree = KlpExplorerTreeData(id: _id('tree'), items: items, expandedIds: expanded);
 	final scope = KlpExplorerSelectionScope(id: _id('scope'), treeIds: [_id('tree')], mode: KlpExplorerSelectionMode.multiple, selectedIds: selected);
-	return KlpExplorerSnapshot.capture(trees: [tree], selectionScopes: [scope]);
+	return KlpExplorerSnapshot.capture(trees: [tree], selectionScopes: [scope], acceptedDrops: acceptedDrops);
 }
 
 void main() {
 
 	test('external item getters are sampled once and the complete snapshot stays immutable', () {
 		// 用可變 consumer 物件與集合驗證快照不保留輸入別名。
-		final command = KlpWorkspaceCommand(label: '開啟', onInvoke: (_) {});
-		final inlineActions = <KlpWorkspaceCommand>[command];
-		final contextActions = <KlpWorkspaceCommand>[command];
+		final inlineCommand = KlpExplorerCommand(id: _id('open-inline'), label: '開啟');
+		final contextCommand = KlpExplorerCommand(id: _id('open-context'), label: '開啟');
+		final inlineActions = <KlpExplorerCommand>[inlineCommand];
+		final contextActions = <KlpExplorerCommand>[contextCommand];
 		final children = <KlpExplorerItemModel>[_node('child', canHaveChildren: false)];
 		final item = _ConsumerItem(_id('parent'), children);
 		item.dataRow = KlpExplorerRowData(title: '原始標題', inlineActions: inlineActions, contextActions: contextActions);
@@ -67,8 +67,8 @@ void main() {
 		expect(parent.canHaveChildren, isTrue);
 		expect(parent.hasChildren, isTrue);
 		expect(parent.row.title, '原始標題');
-		expect(parent.row.inlineActions, [command]);
-		expect(parent.row.contextActions, [command]);
+		expect(parent.row.inlineActions, [inlineCommand]);
+		expect(parent.row.contextActions, [contextCommand]);
 		expect(parent.capabilities.collapsible, isTrue);
 		expect(parent.childIds, [_id('child')]);
 		expect(parent.parentId, isNull);
@@ -237,34 +237,32 @@ void main() {
 		expect(KlpExplorerSnapshot.capture(trees: [a], selectionScopes: [sameDomain]).scopeByTree, {_id('a'): _id('a')});
 	});
 
-	test('drop permission is denied by default, rechecked each call and never changes the tree', () {
-		final snapshot = _capture([_node('source', capabilities: _draggable), _node('target')]);
+	test('drop acceptance is denied by default, captured immutably and never changes the tree', () {
 		final request = KlpExplorerDropRequest(sourceIds: {_id('source')}, targetId: _id('target'), position: KlpExplorerDropPlacement.inside);
-		var allowed = true;
-		var calls = 0;
-		bool permission(KlpExplorerDropRequest current) {
-			calls++;
-			expect(current.sourceIds, {_id('source')});
-			expect(current.targetId, _id('target'));
-			expect(current.position, KlpExplorerDropPlacement.inside);
-			return allowed;
-		}
-		expect(snapshot.permitsDrop(request), isFalse);
-		expect(snapshot.permitsDrop(request, permission: permission), isTrue);
-		allowed = false;
-		expect(snapshot.permitsDrop(request, permission: permission), isFalse);
-		allowed = true;
-		expect(snapshot.permitsDrop(request, permission: permission), isTrue);
-		expect(calls, 3);
+		final inputs = <KlpExplorerDropAcceptance>[];
+		final denied = _capture([_node('source', capabilities: _draggable), _node('target')], acceptedDrops: inputs);
+		expect(denied.permitsDrop(request), isFalse);
+		inputs.add(KlpExplorerDropAcceptance(sourceIds: {_id('source')}, targetId: _id('target'), position: KlpExplorerDropPlacement.inside));
+		expect(denied.permitsDrop(request), isFalse);
+		final snapshot = _capture([_node('source', capabilities: _draggable), _node('target')], acceptedDrops: inputs);
+		inputs.clear();
+		expect(snapshot.permitsDrop(request), isTrue);
 		expect(snapshot.trees[_id('tree')]!.rootIds, [_id('source'), _id('target')]);
 		expect(snapshot.items[_id('target')]!.childIds, isEmpty);
 	});
 
 	test('drop structural checks cannot be bypassed by consumer permission', () {
 		final category = KlpExplorerCategoryModel(id: _id('category'), row: KlpExplorerRowData(title: '分類'), children: [_node('nested', capabilities: _draggable)], capabilities: _draggable);
-		final snapshot = _capture([category, _node('parent', capabilities: _draggable, children: [_node('descendant')]), _node('empty'), _node('leaf', canHaveChildren: false)]);
-		bool allow(KlpExplorerDropRequest _) => true;
-		bool drop(Set<KlpId> sources, String target, KlpExplorerDropPlacement placement) => snapshot.permitsDrop(KlpExplorerDropRequest(sourceIds: sources, targetId: _id(target), position: placement), permission: allow);
+		final validAcceptances = [
+			KlpExplorerDropAcceptance(sourceIds: {_id('category')}, targetId: _id('empty'), position: KlpExplorerDropPlacement.before),
+			KlpExplorerDropAcceptance(sourceIds: {_id('category')}, targetId: _id('empty'), position: KlpExplorerDropPlacement.after),
+			KlpExplorerDropAcceptance(sourceIds: {_id('parent')}, targetId: _id('category'), position: KlpExplorerDropPlacement.inside),
+			KlpExplorerDropAcceptance(sourceIds: {_id('nested')}, targetId: _id('empty'), position: KlpExplorerDropPlacement.inside),
+			KlpExplorerDropAcceptance(sourceIds: {_id('nested')}, targetId: _id('leaf'), position: KlpExplorerDropPlacement.before),
+			KlpExplorerDropAcceptance(sourceIds: {_id('nested')}, targetId: _id('leaf'), position: KlpExplorerDropPlacement.after),
+		];
+		final snapshot = _capture([category, _node('parent', capabilities: _draggable, children: [_node('descendant')]), _node('empty'), _node('leaf', canHaveChildren: false)], acceptedDrops: validAcceptances);
+		bool drop(Set<KlpId> sources, String target, KlpExplorerDropPlacement placement) => snapshot.permitsDrop(KlpExplorerDropRequest(sourceIds: sources, targetId: _id(target), position: placement));
 		expect(drop({}, 'empty', KlpExplorerDropPlacement.inside), isFalse);
 		expect(drop({_id('missing')}, 'empty', KlpExplorerDropPlacement.inside), isFalse);
 		expect(drop({_id('parent')}, 'missing', KlpExplorerDropPlacement.inside), isFalse);
@@ -286,18 +284,19 @@ void main() {
 		expect(drop({_id('nested')}, 'leaf', KlpExplorerDropPlacement.after), isTrue);
 	});
 
-	test('cross-tree node drops require permission and categories stay within their root tree', () {
+	test('cross-tree node acceptances are exact and categories stay within their root tree', () {
 		final category = KlpExplorerCategoryModel(id: _id('category'), row: KlpExplorerRowData(title: '分類'), capabilities: _draggable);
 		final a = KlpExplorerTreeData(id: _id('a'), items: [category, _node('source', capabilities: _draggable)], expandedIds: {});
 		final b = KlpExplorerTreeData(id: _id('b'), items: [_node('target')], expandedIds: {});
 		final scope = KlpExplorerSelectionScope(id: _id('shared'), treeIds: [_id('a'), _id('b')], mode: KlpExplorerSelectionMode.none, selectedIds: {});
-		final snapshot = KlpExplorerSnapshot.capture(trees: [a, b], selectionScopes: [scope]);
+		final accepted = [for (final position in KlpExplorerDropPlacement.values) KlpExplorerDropAcceptance(sourceIds: {_id('source')}, targetId: _id('target'), position: position)];
+		final snapshot = KlpExplorerSnapshot.capture(trees: [a, b], selectionScopes: [scope], acceptedDrops: accepted);
 		for (final position in KlpExplorerDropPlacement.values) {
 			final nodeRequest = KlpExplorerDropRequest(sourceIds: {_id('source')}, targetId: _id('target'), position: position);
-			expect(snapshot.permitsDrop(nodeRequest), isFalse);
-			expect(snapshot.permitsDrop(nodeRequest, permission: (_) => true), isTrue);
+			expect(snapshot.permitsDrop(nodeRequest), isTrue);
 			final categoryRequest = KlpExplorerDropRequest(sourceIds: {_id('category')}, targetId: _id('target'), position: position);
-			expect(snapshot.permitsDrop(categoryRequest, permission: (_) => true), isFalse);
+			expect(snapshot.permitsDrop(categoryRequest), isFalse);
+			expect(() => KlpExplorerSnapshot.capture(trees: [a, b], selectionScopes: [scope], acceptedDrops: [KlpExplorerDropAcceptance(sourceIds: {_id('category')}, targetId: _id('target'), position: position)]), _failsWith('explorer_invalid_drop_acceptance'));
 		}
 	});
 

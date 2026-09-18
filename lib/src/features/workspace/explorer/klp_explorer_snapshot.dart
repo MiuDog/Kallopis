@@ -46,14 +46,29 @@ final class KlpExplorerSnapshot {
 	final Map<KlpId, KlpExplorerTreeSnapshot> trees;
 	final Map<KlpId, KlpExplorerSelectionScope> selectionScopes;
 	final Map<KlpId, KlpId> scopeByTree;
+	final List<KlpExplorerDropAcceptance> acceptedDrops;
 
-	KlpExplorerSnapshot._({required Map<KlpId, KlpExplorerItemSnapshot> items, required Map<KlpId, KlpExplorerTreeSnapshot> trees, required Map<KlpId, KlpExplorerSelectionScope> selectionScopes, required Map<KlpId, KlpId> scopeByTree})
+	KlpExplorerSnapshot._({required Map<KlpId, KlpExplorerItemSnapshot> items, required Map<KlpId, KlpExplorerTreeSnapshot> trees, required Map<KlpId, KlpExplorerSelectionScope> selectionScopes, required Map<KlpId, KlpId> scopeByTree, required List<KlpExplorerDropAcceptance> acceptedDrops})
 		: items = Map.unmodifiable(items),
 		trees = Map.unmodifiable(trees),
 		selectionScopes = Map.unmodifiable(selectionScopes),
-		scopeByTree = Map.unmodifiable(scopeByTree);
+		scopeByTree = Map.unmodifiable(scopeByTree),
+		acceptedDrops = List.unmodifiable(acceptedDrops);
 
-	factory KlpExplorerSnapshot.capture({required List<KlpExplorerTreeData> trees, required List<KlpExplorerSelectionScope> selectionScopes}) => _captureExplorer(trees, selectionScopes);
+	factory KlpExplorerSnapshot.capture({required List<KlpExplorerTreeData> trees, required List<KlpExplorerSelectionScope> selectionScopes, List<KlpExplorerDropAcceptance> acceptedDrops = const []}) {
+		final snapshot = _captureExplorer(trees, selectionScopes, acceptedDrops);
+		for (var index = 0; index < acceptedDrops.length; index++) {
+			final acceptance = acceptedDrops[index];
+			final request = KlpExplorerDropRequest(sourceIds: acceptance.sourceIds, targetId: acceptance.targetId, position: acceptance.position);
+			if (!snapshot._structurallyPermitsDrop(request)) {
+				throw KlpContractError('explorer_invalid_drop_acceptance', 'Explorer 放置許可不符合目前完整資料。');
+			}
+			if (acceptedDrops.take(index).any((existing) => existing.matches(request))) {
+				throw KlpContractError('explorer_duplicate_drop_acceptance', 'Explorer 放置許可不得重複。');
+			}
+		}
+		return snapshot;
+	}
 
 	List<KlpId> visibleIdsForScope(KlpId scopeId) {
 		final scope = selectionScopes[scopeId];
@@ -66,10 +81,12 @@ final class KlpExplorerSnapshot {
 
 	List<KlpId> selectableIdsForScope(KlpId scopeId) => List.unmodifiable(visibleIdsForScope(scopeId).where((id) => items[id]!.capabilities.selectable));
 
-	/// 預覽與提交均呼叫此方法；不快取 consumer 許可，不執行業務操作。
-	bool permitsDrop(KlpExplorerDropRequest request, {KlpExplorerDropPermission? permission}) {
+	/// 預覽與提交均只讀取 capture 時固定的精確許可，不執行 consumer 邏輯。
+	bool permitsDrop(KlpExplorerDropRequest request) => _structurallyPermitsDrop(request) && acceptedDrops.any((acceptance) => acceptance.matches(request));
+
+	bool _structurallyPermitsDrop(KlpExplorerDropRequest request) {
 		// 步驟 1：先確認必要的來源、目標及子項承載資格。
-		if (permission == null || request.sourceIds.isEmpty) return false;
+		if (request.sourceIds.isEmpty) return false;
 
 		final target = items[request.targetId];
 		if (target == null) return false;
@@ -94,7 +111,6 @@ final class KlpExplorerSnapshot {
 			}
 		}
 
-		// 步驟 3：結構合法仍須本次 consumer 授權；不將承載能力當作移動許可。
-		return permission(request);
+		return true;
 	}
 }

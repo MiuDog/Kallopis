@@ -1,5 +1,7 @@
 # 生產力 App 能力清冊
 
+> 狀態：能力地平線參考，並非已接受的 Catalog 分類或 module ownership。當前先依 [`Catalog 分類規格`](../../spec/catalog-classification.md) 完成 254 項重新分類；本頁既有 owner 欄位不得用來反推分類。
+
 狀態：`PE-B1` 基線。此頁記錄目前工作樹的 consumer 能力與缺口，不代表所有列出的能力已交付，也不取代個別功能契約、Catalog 或固定遷移清冊。
 
 Kallopis 的完整能力地平線涵蓋所有產品無關的生產力 App 相關能力。筆記、圖表、規劃視圖、畫布、繪圖、手寫及溝通協作都是預期覆蓋範圍；可以分階段交付，但不因規模較大或較專門而永久排除。固定 254 項舊 Catalog 是目前已知基線，不是能力上限。
@@ -61,7 +63,7 @@ Kallopis 的完整能力地平線涵蓋所有產品無關的生產力 App 相關
 | LAY-WORKSPACE | 組合工作區行列、pane、resize handle、spacer 與 frame。 | S1、S4 | `KlpAppLayout`、`LayoutRow`、`LayoutColumn`、`KlpLayoutPane`、`LayoutResizeHandle`、`LayoutSpacer`、`KlpAppFrame` | `partial` | 7 個 public definitions 均已登錄；部分視覺已在工作區展示，但固定 legacy coverage 尚未完成，不能整組標 supported。 | features/workspace |
 | LAY-GROUPS | 在 frame 內組合具內容與 footer 的功能群組。 | S1、S3 | `KlpFrameGroups`、`KlpFrameGroup` | `partial` | 兩個 public definitions 與受限 slots 已登錄；仍需逐情境組裝與 Catalog 證據。 | features/workspace |
 | WKS-EXPLORER | 顯示階層資料，處理展開、選取、命令與受限拖放。 | S1–S4 | `KlpExplorer`／`kallopis.explorer` | `supported` | [Explorer 契約](explorer-model.md)包含資料、事件、組裝與限制；[Catalog](explorer-catalog.md)及固定 coverage 的 `preserved` 狀態提供操作與遷移證據。 | features/workspace |
-| WKS-TABS | 呈現文件分頁、選取、關閉意圖與 dirty 狀態。 | S1、S3–S4 | `KlpDocumentTabs`、`KlpDocumentTab` | `partial` | 兩個 public definitions 已登錄；產品仍擁有保存、刪除、重排及 retained state，完整 Catalog 接受未在固定 coverage 完成。 | features/workspace |
+| WKS-TABS | 呈現文件分頁、選取、關閉意圖與 dirty 狀態。 | S1、S3–S4 | `KlpDocumentTabs`、`KlpDocumentTabsData`、`KlpDocumentTabData`、`KlpDocumentTabsIntent` | `partial` | semantic data／intent 已接入；產品仍擁有保存、刪除、重排及 retained state，完整 Catalog 接受未在固定 coverage 完成。 | features/workspace |
 | WKS-WINDOW | 顯示視窗控制並發出 host 意圖。 | S1、S3–S4 | `KlpWindowControls` | `partial` | public definition 與 host callbacks 已存在；[系統索引](systems.md#legacy-compatibility-system)明示所有 OS backend 尚未驗證。 | features/workspace／application |
 | WKS-BLOCKS | 呈現通用工作區 action、content、choice、item 與 material。 | S1–S4 | `KlpWorkspaceBlock`、`KlpWorkspaceContent`、`KlpWorkspaceContentBlock` | `partial` | 三個 public definitions 已登錄；[工作區元件](workspace-components.md)列出資料責任，但多種 kind 仍需各自的合法位置及視覺證據。 | features/workspace |
 | OVR-MENU | 顯示選單、子選單、鍵盤導覽、關閉與項目事件。 | S1、S3–S4 | `KlpMenu`／`kallopis.menu` | `supported` | [Menu 契約](menu-model.md)具有宣告、組裝、更新、失敗行為、Catalog 與測試；固定 coverage 的 `KlpMenu`、`KlpMenuItem` 均為 `migrated`。 | features/overlays |

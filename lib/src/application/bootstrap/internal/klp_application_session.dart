@@ -22,6 +22,7 @@ final class _KlpApplicationSession {
 	bool _disposed = false;
 	Object? _startupError;
 	KlpAdaptiveContext? _adaptiveContext;
+	KlpApplicationAppearance _appearance = KlpApplicationAppearance.light;
 	void Function(KlpNavigationRestoration)? _lastRestorationCallback;
 	Uri? _lastRestorationUri;
 
@@ -38,10 +39,11 @@ final class _KlpApplicationSession {
 	bool get isPending => _starting || (_machine?.isBusy ?? false);
 	Object? get startupError => _startupError;
 
-	void accept(KlpApplication application, {KlpAdaptiveContext? adaptiveContext}) {
+	void accept(KlpApplication application, {required KlpApplicationAppearance appearance, KlpAdaptiveContext? adaptiveContext}) {
 		if (_disposed || _terminal) {
 			throw StateError('Application session is no longer usable.');
 		}
+		_appearance = appearance;
 		_adaptiveContext = adaptiveContext ?? _adaptiveContext;
 		_queue.add(application);
 		if (_processing || _projecting || (_machine?.isCommitting ?? false)) {

@@ -1,6 +1,7 @@
 import 'package:flutter/widgets.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:kallopis/kallopis_declarative.dart';
+import 'package:kallopis/src/capabilities/actions/klp_action.dart';
 import 'package:kallopis/src/kernel/lifecycle/klp_lifecycle_exception.dart';
 import 'package:kallopis/src/rendering/flutter/internal/klp_flutter_workspace_block.dart';
 
@@ -32,7 +33,7 @@ void main() {
 			expect(focus, isNotNull);
 
 			// 同一放置的焦點不應隨呈現策略切換被重建。
-			source.value = klpApplicationTestFixture(items: [item], alternate: true);
+			source.value = klpApplicationTestFixture(items: [item]);
 			await tester.pump();
 			expect(tester.takeException(), isNull);
 			expect(FocusManager.instance.primaryFocus, same(focus));

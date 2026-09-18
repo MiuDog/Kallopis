@@ -1,10 +1,31 @@
 import 'package:kallopis/src/kernel/identity/klp_id.dart';
-import 'package:kallopis/src/features/workspace/components/klp_workspace_command.dart';
+import 'package:kallopis/src/kernel/diagnostics/klp_contract_error.dart';
 
 /// 結構角色與產品種類分離；圖示不決定角色或互動能力。
 enum KlpExplorerRole { category, node }
 enum KlpExplorerGlyph { file, folder, image, music, board }
 enum KlpExplorerPrimaryAction { none, activate, toggleExpansion }
+enum KlpExplorerCommandShortcut { rename, delete }
+
+/// Explorer 命令只描述呈現與輸入需求；執行透過 feature intent 回報。
+final class KlpExplorerCommand {
+
+	final KlpId id;
+	final String label;
+	final bool enabled;
+	final bool destructive;
+	final String? inputLabel;
+	final String? initialValue;
+	final String? confirmation;
+	final KlpExplorerCommandShortcut? shortcut;
+
+	KlpExplorerCommand({required this.id, required this.label, this.enabled = true, this.destructive = false, this.inputLabel, this.initialValue, this.confirmation, this.shortcut}) {
+		if (label.trim().isEmpty) throw KlpContractError('explorer_invalid_command', 'Explorer 命令標籤不得為空。');
+		if (inputLabel != null && inputLabel!.trim().isEmpty) throw KlpContractError('explorer_invalid_command', 'Explorer 命令輸入標籤不得為空。');
+		if (confirmation != null && confirmation!.trim().isEmpty) throw KlpContractError('explorer_invalid_command', 'Explorer 命令確認內容不得為空。');
+		if (initialValue != null && inputLabel == null) throw KlpContractError('explorer_invalid_command', 'Explorer 命令初始值需要輸入欄位。');
+	}
+}
 
 /// Consumer 只選擇既有能力，互動實現仍屬於 Kallopis。
 final class KlpExplorerCapabilities {
@@ -23,10 +44,10 @@ final class KlpExplorerRowData {
 	final String title;
 	final KlpExplorerGlyph? icon;
 	final String? badge;
-	final List<KlpWorkspaceCommand> inlineActions;
-	final List<KlpWorkspaceCommand> contextActions;
+	final List<KlpExplorerCommand> inlineActions;
+	final List<KlpExplorerCommand> contextActions;
 
-	KlpExplorerRowData({required this.title, this.icon, this.badge, List<KlpWorkspaceCommand> inlineActions = const [], List<KlpWorkspaceCommand> contextActions = const []})
+	KlpExplorerRowData({required this.title, this.icon, this.badge, List<KlpExplorerCommand> inlineActions = const [], List<KlpExplorerCommand> contextActions = const []})
 		: inlineActions = List.unmodifiable(inlineActions),
 		contextActions = List.unmodifiable(contextActions);
 }

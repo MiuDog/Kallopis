@@ -12,11 +12,13 @@ final class KlpExplorerData {
 
 	final List<KlpExplorerTreeData> trees;
 	final List<KlpExplorerSelectionScope> selectionScopes;
-	late final KlpExplorerSnapshot snapshot = KlpExplorerSnapshot.capture(trees: trees, selectionScopes: selectionScopes);
+	final List<KlpExplorerDropAcceptance> acceptedDrops;
+	late final KlpExplorerSnapshot snapshot = KlpExplorerSnapshot.capture(trees: trees, selectionScopes: selectionScopes, acceptedDrops: acceptedDrops);
 
-	KlpExplorerData({required List<KlpExplorerTreeData> trees, required List<KlpExplorerSelectionScope> selectionScopes})
+	KlpExplorerData({required List<KlpExplorerTreeData> trees, required List<KlpExplorerSelectionScope> selectionScopes, List<KlpExplorerDropAcceptance> acceptedDrops = const []})
 		: trees = List.unmodifiable(trees),
-		selectionScopes = List.unmodifiable(selectionScopes);
+		selectionScopes = List.unmodifiable(selectionScopes),
+		acceptedDrops = List.unmodifiable(acceptedDrops);
 
 	/// 計算單樹的完整展開提案；是否提交及遞迴收合由 consumer 決定。
 	Set<KlpId> expandedIdsAfter(KlpId id, bool expanded, {bool collapseDescendants = false}) {
@@ -55,16 +57,18 @@ final class KlpExplorer implements KlpCompositeNode {
 	@override
 	final KlpId id;
 	final KlpExplorerData data;
-	final String actionsLabel, expandLabel, collapseLabel;
-	final void Function(KlpExplorerSelectionChange)? onSelectionChanged;
-	final void Function(KlpId)? onActivate;
-	final void Function(KlpId, bool)? onExpandedChanged;
-	final KlpExplorerDropPermission? canDrop;
-	final void Function(KlpExplorerDropRequest)? onDrop;
+	final void Function(KlpExplorerIntent)? onIntent;
+	final KlpExplorerController? controller;
 	@override
 	late final KlpChildren children = _captureChildren();
 
-	KlpExplorer({required this.id, required this.data, this.actionsLabel = 'Actions', this.expandLabel = 'Expand', this.collapseLabel = 'Collapse', this.onSelectionChanged, this.onActivate, this.onExpandedChanged, this.canDrop, this.onDrop});
+	KlpExplorer({required this.id, required this.data, this.onIntent, this.controller}) {
+		final snapshot = data.snapshot;
+		final interactive = snapshot.items.values.any((item) => item.capabilities.selectable || item.capabilities.collapsible || item.capabilities.primaryAction == KlpExplorerPrimaryAction.activate || item.row.inlineActions.any((command) => command.enabled) || item.row.contextActions.any((command) => command.enabled)) || data.acceptedDrops.isNotEmpty;
+		if (interactive && onIntent == null) {
+			throw KlpContractError('explorer_missing_intent_handler', '可互動的 Explorer 必須提供 onIntent。');
+		}
+	}
 
 	@override
 	String get definitionId => typeId;

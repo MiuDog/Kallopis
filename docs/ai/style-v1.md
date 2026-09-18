@@ -4,19 +4,13 @@
 
 ## 工作區配方
 
-`KlpWorkspacePreset.light()` 與 `.dark()` 預設暖灰；`KlpWorkspacePreset.styleVersion` 為 `1.0.0`。使用者選擇中性色調時，在 Application 組合根替換整套原料：
-
-```dart
-final primitives = KlpWorkspacePreset.light(tone: KlpWorkspaceTone.neutral);
-```
-
-沿用 `KlpApplication.primitives` 唯一注入來源，不在產品端重寫 widget 顏色。明暗選擇不由紙張材質推定。
+`KlpWorkspacePreset.light()` 與 `.dark()` 預設暖灰；`KlpWorkspacePreset.styleVersion` 為 `1.0.0`。這些是 Kallopis styling／application 宿主內部維護入口，不從 `kallopis_declarative.dart` 匯出。宿主依平台 brightness 選擇 light／dark；consumer 不能選 tone、替換 primitive 或在產品端重寫 widget 顏色。
 
 ## 可選紙片陰影
 
 `KlpSurfaceTemplate.shadow` 可接受 `KlpSurfaceShadowSemantics(color: shadowColor, scale: shadowScale)`，兩者必須是所屬定義可讀取的 semantic key。顏色可映射 color i6，尺度映射 distance i3；暖灰配方下分別為黑色 alpha34 與 12px。
 
-`shadow: null` 保持平面。使用者的微浮偏好由應用在已公開的庫擁有元件與完整 primitive set 中選擇，再循現有 Application／runtime 提交流程更新；不是 renderer 讀取全域變數，也不是 consumer 註冊另一個元件定義。切換時保持元件的其他語意與內容一致。
+`shadow: null` 保持平面。微浮等視覺選擇由 Kallopis 在庫內元件 recipe 與 Catalog 人類接受流程維護，不是 consumer preference、primitive 輸入、renderer 全域變數或外部元件定義。切換內建 recipe 時必須保持元件的其他語意與內容一致。
 
 不要讓 Frame 或 Rail 取得紙片陰影。Surface 只有明確屬於獨立內容物件時才選用；既有未宣告陰影的 Surface 保持平整。此能力不自動生成紙色、紋理、便利貼或筆記畫面。
 

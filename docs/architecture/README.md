@@ -35,6 +35,7 @@ python tool/architecture_atlas/generate.py --dart D:/flutter/bin/dart.bat
 
 ## 深入設計文件
 
+- [Semantic feature consumer contract](semantic-feature-contract-plan/README.md)
 - [固定位置可拉伸工作區](resizable-workspace-prototype.md)
 
 - [Application runtime](application-runtime-prototype.md)

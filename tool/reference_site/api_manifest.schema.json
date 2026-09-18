@@ -1,0 +1,80 @@
+{
+	"$schema": "https://json-schema.org/draft/2020-12/schema",
+	"$id": "https://kallopis.dev/schema/reference-api-v1.json",
+	"title": "Kallopis declarative API manifest",
+	"type": "object",
+	"additionalProperties": false,
+	"required": ["schemaVersion", "entrypoint", "modules"],
+	"properties": {
+		"schemaVersion": { "const": 1 },
+		"entrypoint": { "const": "package:kallopis/kallopis_declarative.dart" },
+		"modules": {
+			"type": "array",
+			"items": { "$ref": "#/$defs/module" }
+		}
+	},
+	"$defs": {
+		"module": {
+			"type": "object",
+			"additionalProperties": false,
+			"required": ["name", "declarations"],
+			"properties": {
+				"name": { "type": "string", "minLength": 1 },
+				"declarations": {
+					"type": "array",
+					"items": { "$ref": "#/$defs/declaration" }
+				}
+			}
+		},
+		"declaration": {
+			"type": "object",
+			"additionalProperties": false,
+			"required": [
+				"name",
+				"slug",
+				"kind",
+				"module",
+				"sourceUri",
+				"signature",
+				"documentation",
+				"typeRelationships",
+				"members"
+			],
+			"properties": {
+				"name": { "type": "string", "minLength": 1 },
+				"slug": { "type": "string", "pattern": "^[a-z0-9-]+$" },
+				"kind": { "type": "string", "minLength": 1 },
+				"module": { "type": "string", "minLength": 1 },
+				"sourceUri": { "type": "string", "minLength": 1 },
+				"signature": { "type": "string", "minLength": 1 },
+				"documentation": { "type": "string" },
+				"typeRelationships": { "$ref": "#/$defs/typeRelationships" },
+				"members": {
+					"type": "array",
+					"items": { "$ref": "#/$defs/member" }
+				}
+			}
+		},
+		"typeRelationships": {
+			"type": "object",
+			"additionalProperties": false,
+			"required": ["extends", "mixins", "implements"],
+			"properties": {
+				"extends": { "type": ["string", "null"] },
+				"mixins": { "type": "array", "items": { "type": "string" } },
+				"implements": { "type": "array", "items": { "type": "string" } }
+			}
+		},
+		"member": {
+			"type": "object",
+			"additionalProperties": false,
+			"required": ["name", "kind", "signature", "documentation"],
+			"properties": {
+				"name": { "type": "string" },
+				"kind": { "type": "string", "minLength": 1 },
+				"signature": { "type": "string", "minLength": 1 },
+				"documentation": { "type": "string" }
+			}
+		}
+	}
+}

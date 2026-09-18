@@ -1,6 +1,5 @@
 import 'package:kallopis/kallopis_declarative.dart';
-
-import 'klp_test_primitives.dart';
+import 'package:kallopis/src/capabilities/actions/klp_action.dart';
 
 /// 只用公開宣告式策略記錄真正宿主交付的環境，不自行解析平台。
 final class KlpEnvironmentHostFixture implements KlpPlatformStrategy {
@@ -14,7 +13,7 @@ final class KlpEnvironmentHostFixture implements KlpPlatformStrategy {
 		final screen = KlpScreen(id: KlpId.parse('screen'), accessibilityLabel: title, child: adaptive);
 		final route = KlpRoute(destination, screen: (_) => screen);
 		final router = KlpRouter(id: KlpId.parse('router'), initial: destination.location(null), routes: [route]);
-		return KlpApplication(title: title, primitives: klpTestPrimitives(), router: router);
+		return KlpApplication(title: title, router: router);
 	}
 
 	@override

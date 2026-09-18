@@ -39,9 +39,8 @@ final router = KlpRouter(
 	initial: destination.location(1),
 	routes: [route],
 );
-KlpApplication application(KlpPrimitiveSet primitives) => KlpApplication(
+KlpApplication application() => KlpApplication(
 	title: 'App',
-	primitives: primitives,
 	router: router,
 );
 ''';
@@ -55,7 +54,7 @@ void main() {
 		(
 			name: 'KlpApplication.components registration',
 			source:
-				"KlpApplication invalid(KlpPrimitiveSet primitives) => KlpApplication(title: 'App', primitives: primitives, router: router, components: const []);",
+				"KlpApplication invalid() => KlpApplication(title: 'App', router: router, components: const []);",
 			code: 'undefined_named_parameter',
 		),
 		(

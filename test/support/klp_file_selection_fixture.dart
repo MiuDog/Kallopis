@@ -8,8 +8,6 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:kallopis/kallopis_declarative.dart';
 import 'package:kallopis/src/rendering/flutter/internal/klp_flutter_workspace_block.dart';
 
-import 'klp_test_primitives.dart';
-
 /// 只替換平台邊界；真實宿主、action 派送、adapter 與 lease 仍由產品組裝。
 final class KlpFileSelectorProbe extends FileSelectorPlatform {
 
@@ -41,12 +39,12 @@ KlpScreen klpFileScreen(KlpAction action, {KlpAction? next}) {
 	return KlpScreen(id: KlpId.parse('screen'), accessibilityLabel: 'Files', child: KlpAppLayout(id: KlpId.parse('layout'), child: KlpAppFrame(id: KlpId.parse('frame'), child: groups)));
 }
 
-KlpApplication klpFileApplication(KlpAction action, {bool alternate = false, KlpAction? secondAction}) {
+KlpApplication klpFileApplication(KlpAction action, {KlpAction? secondAction}) {
 	final routes = <KlpRoute<Object?, Object?>>[
 		KlpRoute<int, String>(klpFileHome, screen: (input) => klpFileScreen(action, next: secondAction ?? input.navigate(klpFileDetail.location(1)))),
 		KlpRoute<int, String>(klpFileDetail, screen: (input) => klpFileScreen(action, next: input.finish('done'))),
 	];
-	return KlpApplication(title: 'File selection', primitives: klpTestPrimitives(alternate: alternate), router: KlpRouter(id: KlpId.parse('files.router'), initial: klpFileHome.location(0), routes: routes));
+	return KlpApplication(title: 'File selection', router: KlpRouter(id: KlpId.parse('files.router'), initial: klpFileHome.location(0), routes: routes));
 }
 
 void Function() klpFileActivation(WidgetTester tester, {String title = 'Pick'}) {

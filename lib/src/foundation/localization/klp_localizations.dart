@@ -61,6 +61,13 @@ class KlpLocalizations {
 		this.entityPickerRemoveLabel = 'Remove',
 		this.entityPickerApplyLabel = 'Apply',
 		this.dockMoreActionsLabel = '更多操作',
+		this.explorerActionsLabel = 'Actions',
+		this.explorerExpandLabel = 'Expand',
+		this.explorerCollapseLabel = 'Collapse',
+		this.documentTabModifiedLabel = 'Modified',
+		this.documentTabPinLabel = 'Pin',
+		this.documentTabUnpinLabel = 'Unpin',
+		this.documentTabCloseLabel = 'Close',
 		this.oklchLightnessLabel = 'Lightness',
 		this.oklchChromaLabel = 'Chroma',
 		this.oklchHueLabel = 'Hue',
@@ -202,6 +209,17 @@ class KlpLocalizations {
 	/// Dock header 溢位選單與按鈕的無障礙標籤。
 	final String dockMoreActionsLabel;
 
+	/// Explorer 列操作、展開與收合控制的 chrome 字串。
+	final String explorerActionsLabel;
+	final String explorerExpandLabel;
+	final String explorerCollapseLabel;
+
+	/// Document Tabs 修改狀態、釘選與關閉控制的 chrome 字串。
+	final String documentTabModifiedLabel;
+	final String documentTabPinLabel;
+	final String documentTabUnpinLabel;
+	final String documentTabCloseLabel;
+
 	/// [KlpOklchColorEditor] 的 Lightness 控制標籤。
 	final String oklchLightnessLabel;
 
@@ -330,6 +348,13 @@ class KlpLocalizations {
 					entityPickerRemoveLabel == other.entityPickerRemoveLabel &&
 					entityPickerApplyLabel == other.entityPickerApplyLabel &&
 					dockMoreActionsLabel == other.dockMoreActionsLabel &&
+					explorerActionsLabel == other.explorerActionsLabel &&
+					explorerExpandLabel == other.explorerExpandLabel &&
+					explorerCollapseLabel == other.explorerCollapseLabel &&
+					documentTabModifiedLabel == other.documentTabModifiedLabel &&
+					documentTabPinLabel == other.documentTabPinLabel &&
+					documentTabUnpinLabel == other.documentTabUnpinLabel &&
+					documentTabCloseLabel == other.documentTabCloseLabel &&
 					oklchLightnessLabel == other.oklchLightnessLabel &&
 					oklchChromaLabel == other.oklchChromaLabel &&
 					oklchHueLabel == other.oklchHueLabel &&
@@ -411,6 +436,13 @@ class KlpLocalizations {
 		entityPickerRemoveLabel,
 		entityPickerApplyLabel,
 		dockMoreActionsLabel,
+		explorerActionsLabel,
+		explorerExpandLabel,
+		explorerCollapseLabel,
+		documentTabModifiedLabel,
+		documentTabPinLabel,
+		documentTabUnpinLabel,
+		documentTabCloseLabel,
 		oklchLightnessLabel,
 		oklchChromaLabel,
 		oklchHueLabel,

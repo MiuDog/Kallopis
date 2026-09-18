@@ -8,11 +8,21 @@ void main() {
     late KlpExternalCompileFixture fixture;
     const imports =
         "import 'dart:async';\nimport 'package:kallopis/kallopis_declarative.dart';\nimport 'package:flutter/widgets.dart';\n";
-    const base = '''final destination = KlpDestination<int, String>('main');
-KlpScreen screen(KlpRouteInput<int, String> input) => KlpScreen(id: KlpId.parse('screen'), accessibilityLabel: 'Screen', child: KlpRail(id: KlpId.parse('rail')));
+    const base = '''final destination = KlpDestination<int, String>(KlpId.parse('main'));
+final screenBody = KlpAppLayout(
+	id: KlpId.parse('layout'),
+	child: KlpAppFrame(
+		id: KlpId.parse('frame'),
+		child: KlpFrameGroups(
+			id: KlpId.parse('groups'),
+			groups: [KlpFrameGroup(id: KlpId.parse('group'), content: [KlpWorkspaceBlock(id: KlpId.parse('content'), kind: KlpWorkspaceBlockKind.paper, title: 'Content')])],
+		),
+	),
+);
+KlpScreen screen(KlpRouteInput<int, String> input) => KlpScreen(id: KlpId.parse('screen'), accessibilityLabel: 'Screen', child: screenBody);
 final configuredRoute = KlpRoute<int, String>(destination, screen: screen);
 final configuredRouter = KlpRouter(id: KlpId.parse('router'), initial: destination.location(1), routes: [configuredRoute]);
-KlpApplication application(KlpPrimitiveSet primitives) => KlpApplication(title: 'App', primitives: primitives, router: configuredRouter);
+KlpApplication application() => KlpApplication(title: 'App', router: configuredRouter);
 void typedOperations(KlpRouteInput<int, String> input) {
 	final int parameters = input.parameters;
 	final KlpAction navigate = input.navigate(destination.location(parameters), onResult: (String value) {});
@@ -41,7 +51,7 @@ void typedOperations(KlpRouteInput<int, String> input) {
       ),
       'wrong_input_type': (
         source:
-            "final route = KlpRoute(destination, screen: (KlpRouteInput<String, String> input) => KlpScreen(id: KlpId.parse('screen'), accessibilityLabel: 'Screen', child: KlpRail(id: KlpId.parse('rail'))));",
+            "final route = KlpRoute(destination, screen: (KlpRouteInput<String, String> input) => KlpScreen(id: KlpId.parse('screen'), accessibilityLabel: 'Screen', child: screenBody));",
         code: 'argument_type_not_assignable',
       ),
       'wrong_completion_type': (
@@ -61,7 +71,7 @@ void typedOperations(KlpRouteInput<int, String> input) {
       ),
       'no_alternative_app_child': (
         source:
-            'KlpApplication invalid(KlpPrimitiveSet primitives, KlpRouter router, KlpScreen child) => KlpApplication(title: "App", primitives: primitives, router: router, child: child);',
+            'KlpApplication invalid(KlpRouter router, KlpScreen child) => KlpApplication(title: "App", router: router, child: child);',
         code: 'undefined_named_parameter',
       ),
       'bootstrap_cannot_receive_widget': (
@@ -75,7 +85,7 @@ void typedOperations(KlpRouteInput<int, String> input) {
       ),
       'no_environment_injection': (
         source:
-            'KlpApplication invalid(KlpPrimitiveSet primitives) => KlpApplication(title: "App", primitives: primitives, router: configuredRouter, environment: Object());',
+            'KlpApplication invalid() => KlpApplication(title: "App", router: configuredRouter, environment: Object());',
         code: 'undefined_named_parameter',
       ),
       'environment_has_no_public_constructor': (
@@ -84,7 +94,7 @@ void typedOperations(KlpRouteInput<int, String> input) {
       ),
       'mandatory_app_router': (
         source:
-            'KlpApplication invalid(KlpPrimitiveSet primitives) => KlpApplication(title: "App", primitives: primitives);',
+            'KlpApplication invalid() => KlpApplication(title: "App");',
         code: 'missing_required_argument',
       ),
       'input_private_constructor_inaccessible': (
@@ -131,7 +141,7 @@ void typedOperations(KlpRouteInput<int, String> input) {
       ),
       'widget_cannot_replace_app_router': (
         source:
-            'KlpApplication invalid(KlpPrimitiveSet primitives) => KlpApplication(title: "App", primitives: primitives, router: const SizedBox());',
+            'KlpApplication invalid() => KlpApplication(title: "App", router: const SizedBox());',
         code: 'argument_type_not_assignable',
       ),
       'widget_cannot_be_router_route': (
@@ -146,7 +156,7 @@ void typedOperations(KlpRouteInput<int, String> input) {
       ),
       'route_mapper_cannot_receive_build_context': (
         source:
-            'final invalid = KlpRoute<int, String>(destination, screen: (BuildContext context) => KlpScreen(id: KlpId.parse("screen"), accessibilityLabel: "Screen", child: KlpRail(id: KlpId.parse("rail"))));',
+            'final invalid = KlpRoute<int, String>(destination, screen: (BuildContext context) => KlpScreen(id: KlpId.parse("screen"), accessibilityLabel: "Screen", child: screenBody));',
         code: 'argument_type_not_assignable',
       ),
       'route_has_no_context_parameter': (

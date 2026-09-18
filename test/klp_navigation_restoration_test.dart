@@ -51,7 +51,6 @@ KlpApplication _restoredApplication({
 }) {
 	return KlpApplication(
 		title: 'Restoration observer',
-		primitives: klpTestPrimitives(),
 		router: KlpRouter(
 			id: KlpId.root('router'),
 			initial: home.location(0),
@@ -87,7 +86,6 @@ void main() {
 			final restorations = <KlpNavigationRestoration>[];
 			final application = KlpApplication(
 				title: 'Restoration',
-				primitives: klpTestPrimitives(),
 				router: KlpRouter(
 					id: KlpId.root('router'),
 					initial: home.location(0),
@@ -236,7 +234,6 @@ void main() {
 			final source = KlpMutableState(
 				KlpApplication(
 					title: 'Rejected restoration',
-					primitives: klpTestPrimitives(),
 					router: KlpRouter(
 						id: KlpId.root('router'),
 						initial: home.location(0),

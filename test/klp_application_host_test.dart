@@ -1,13 +1,13 @@
 import 'package:flutter/widgets.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:kallopis/kallopis_declarative.dart';
+import 'package:kallopis/src/capabilities/actions/klp_action.dart';
 import 'package:kallopis/src/features/editing/contracts/klp_editing_host_failure.dart';
 import 'package:kallopis/src/rendering/flutter/internal/klp_flutter_workspace_block.dart';
 import 'package:kallopis/src/rendering/flutter/klp_viewport_capabilities.dart';
 
 import 'support/klp_application_test_fixture.dart';
 import 'support/klp_component_test_item.dart';
-import 'support/klp_test_primitives.dart';
 
 void main() {
 	testWidgets('initial navigation failure renders its underlying error', (
@@ -20,7 +20,6 @@ void main() {
 		final source = KlpMutableState(
 			KlpApplication(
 				title: 'Failed initial navigation',
-				primitives: klpTestPrimitives(),
 				router: KlpRouter(
 					id: KlpId.parse('failed.router'),
 					initial: destination.location(null),
@@ -120,7 +119,7 @@ void main() {
 	});
 
 	testWidgets(
-		'public bootstrap mounts data and style replacement retains focus',
+		'public bootstrap mounts data replacement and retains focus',
 		(tester) async {
 			var calls = 0;
 			final item = KlpComponentTestItem(
@@ -142,9 +141,8 @@ void main() {
 			expect(focus!.hasPrimaryFocus, isTrue);
 
 			source.value = klpApplicationTestFixture(
-				title: 'Replaced style',
+				title: 'Replaced data',
 				items: [item],
-				alternate: true,
 			);
 			await tester.pump();
 		final updated = tester.widget<KlpFlutterWorkspaceBlock>(
@@ -153,26 +151,12 @@ void main() {
 		expect(updated.content.title, 'A');
 			expect(FocusManager.instance.primaryFocus, same(focus));
 			expect(
-		(
-			updated.content.selectedBackground.red,
-			updated.content.selectedBackground.green,
-			updated.content.selectedBackground.blue,
-			updated.content.selectedBackground.alpha,
-		),
-		(
-			source.value.primitives.colors[5].red,
-			source.value.primitives.colors[5].green,
-			source.value.primitives.colors[5].blue,
-			source.value.primitives.colors[5].alpha,
-		),
-			);
-			expect(
 				tester.widget<WidgetsApp>(find.byType(WidgetsApp)).title,
-				'Replaced style',
+				'Replaced data',
 			);
 			expect(tester.takeException(), isNull);
 			await tester.pumpWidget(const SizedBox.shrink());
-			expect(source.value.title, 'Replaced style');
+			expect(source.value.title, 'Replaced data');
 		},
 	);
 

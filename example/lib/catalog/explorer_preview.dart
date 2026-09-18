@@ -3,6 +3,7 @@ import 'package:kallopis/kallopis_declarative.dart' as klp;
 import 'package:kallopis/src/application/bootstrap/internal/klp_application_adapters.dart';
 import 'package:kallopis/src/rendering/flutter/klp_flutter_renderer.dart';
 import 'package:kallopis/src/runtime/compilation/klp_tree_runtime.dart';
+import 'package:kallopis/src/styling/presets/klp_workspace_preset.dart';
 
 /// Catalog 專用宿主，直接展示正式 renderer；不是提供給 consumer 的 Widget。
 final class ExplorerPreview extends StatefulWidget {
@@ -52,6 +53,43 @@ final class _ExplorerPreviewState extends State<ExplorerPreview> {
 		}
 	}
 
+	List<klp.KlpExplorerDropAcceptance> _acceptedDrops() {
+		if (!widget.allowDrop) return const [];
+
+		final items = <klp.KlpId, klp.KlpExplorerItemModel>{};
+		final parents = <klp.KlpId, klp.KlpId?>{};
+		final pending = <(klp.KlpExplorerItemModel, klp.KlpId?)>[
+			for (final item in widget.items.reversed) (item, null),
+		];
+		while (pending.isNotEmpty) {
+			final (item, parentId) = pending.removeLast();
+			items[item.id] = item;
+			parents[item.id] = parentId;
+			pending.addAll([for (final child in item.children.reversed) (child, item.id)]);
+		}
+
+		bool containsTarget(klp.KlpId sourceId, klp.KlpId targetId) {
+			klp.KlpId? current = targetId;
+			while (current != null) {
+				if (current == sourceId) return true;
+
+				current = parents[current];
+			}
+			return false;
+		}
+
+		return [
+			for (final source in items.values)
+				if (source.capabilities.draggable)
+					for (final target in items.values)
+						if (!containsTarget(source.id, target.id))
+							for (final position in klp.KlpExplorerDropPlacement.values)
+								if (source.role != klp.KlpExplorerRole.category || position != klp.KlpExplorerDropPlacement.inside && parents[target.id] == null)
+									if (position != klp.KlpExplorerDropPlacement.inside || target.canHaveChildren)
+										klp.KlpExplorerDropAcceptance(sourceIds: {source.id}, targetId: target.id, position: position),
+		];
+	}
+
 	@override
 	Widget build(BuildContext context) {
 		final items = _walk().toList();
@@ -65,23 +103,37 @@ final class _ExplorerPreviewState extends State<ExplorerPreview> {
 			selectedIds: (widget.selectedIds ?? _selected).intersection(selectable),
 			anchorId: selectable.contains(_anchor) ? _anchor : null,
 		);
-		final data = klp.KlpExplorerData(trees: [tree], selectionScopes: [scope]);
+		final data = klp.KlpExplorerData(trees: [tree], selectionScopes: [scope], acceptedDrops: _acceptedDrops());
 		final explorer = klp.KlpExplorer(
 			id: _treeId,
 			data: data,
-			onSelectionChanged: (change) => setState(() { _selected = change.selectedIds; _anchor = change.anchorId; widget.onEvent?.call('selection: ${change.selectedIds.join(', ')}'); }),
-			onActivate: (id) { widget.onActivate?.call(id); widget.onEvent?.call('activate: $id'); },
-			onExpandedChanged: (id, value) => setState(() {
-				_expanded = data.expandedIdsAfter(id, value, collapseDescendants: widget.collapseDescendants);
-				widget.onEvent?.call('expanded: $id = $value；遞迴收合：${widget.collapseDescendants}');
-			}),
-			canDrop: (_) => widget.allowDrop,
-			onDrop: (request) => widget.onEvent?.call('drop: ${request.position.name} ${request.targetId}'),
+			onIntent: (intent) {
+				switch (intent) {
+					case klp.KlpExplorerSelectionRequested(:final selectedIds, :final anchorId):
+						setState(() {
+							_selected = selectedIds;
+							_anchor = anchorId;
+							widget.onEvent?.call('selection: ${selectedIds.join(', ')}');
+						});
+					case klp.KlpExplorerActivationRequested(:final itemId):
+						widget.onActivate?.call(itemId);
+						widget.onEvent?.call('activate: $itemId');
+					case klp.KlpExplorerExpansionRequested(:final itemId, :final expanded):
+						setState(() {
+							_expanded = data.expandedIdsAfter(itemId, expanded, collapseDescendants: widget.collapseDescendants);
+							widget.onEvent?.call('expanded: $itemId = $expanded；遞迴收合：${widget.collapseDescendants}');
+						});
+					case klp.KlpExplorerDropRequested(:final targetId, :final position):
+						widget.onEvent?.call('drop: ${position.name} $targetId');
+					case klp.KlpExplorerCommandRequested(:final itemId, :final commandId, :final input):
+						widget.onEvent?.call('command: $itemId / $commandId / ${input ?? '-'}');
+				}
+			},
 		);
 
 		// 這是庫內 Catalog harness，原始 runtime 僅用來展示真正的 Explorer。
 		final root = widget.framed ? klp.KlpScreen(id: _treeId / 'screen', accessibilityLabel: 'Explorer Catalog', child: klp.KlpAppLayout(id: _treeId / 'layout', child: klp.KlpAppFrame(id: _treeId / 'frame', child: klp.KlpFrameGroups(id: _treeId / 'groups', groups: [klp.KlpFrameGroup(id: _treeId / 'group', content: [explorer])])))) : explorer;
-		_runtime.update(root: root, adapters: klpApplicationAdapters(), primitives: widget.dark ? klp.KlpWorkspacePreset.dark() : klp.KlpWorkspacePreset.light());
+		_runtime.update(root: root, adapters: klpApplicationAdapters(), primitives: widget.dark ? KlpWorkspacePreset.dark() : KlpWorkspacePreset.light());
 		final rendered = KlpFlutterRenderer(content: _runtime.frame!.content);
 		return widget.framed ? rendered : SingleChildScrollView(controller: widget.scrollController, child: rendered);
 	}

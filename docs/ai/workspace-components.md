@@ -53,7 +53,7 @@ Planist 左上頂列不顯示 logo／title，identity 可傳空標題且省略 s
 
 ## Explorer 整合契約
 
-使用 [Workspace.Explorer / EXP-V1-r2](explorer-model.md)：可實作的分類／節點資料、有限能力、完整森林與明確 selection scopes。Consumer 不提供 Widget、style 或任意排列；背景透明、事件受控。舊 Explorer 型別與專用 Widget 已移除，沒有相容路徑。
+使用 [Workspace.Explorer / SFC-V1-r1](explorer-model.md)：可實作的分類／節點資料、有限能力、完整森林、明確 selection scopes、不可變 drop acceptance 與單一 intent。Consumer 不提供 Widget、style 或任意排列；背景透明、事件受控。舊 Explorer callbacks 與專用 Widget 已移除，沒有相容路徑。
 
 所有尺寸、圖示、分類字級及間距都有獨立 semantic 用途；當前候選與人類接受項目見 [Explorer Catalog](explorer-catalog.md)。分類能否選取／收合及標題主動作依 consumer 能力宣告，角色不覆蓋能力。
 

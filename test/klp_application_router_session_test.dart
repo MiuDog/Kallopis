@@ -4,6 +4,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:kallopis/kallopis_declarative.dart';
+import 'package:kallopis/src/capabilities/actions/klp_action.dart';
 import 'package:kallopis/src/features/navigation/rail/contracts/klp_rail.dart';
 import 'package:kallopis/src/rendering/flutter/internal/klp_flutter_workspace_block.dart';
 
@@ -41,7 +42,6 @@ KlpApplication _app(
 	String title = 'Application',
 }) => KlpApplication(
 	title: title,
-	primitives: klpTestPrimitives(),
 	router: KlpRouter(id: KlpId.root('router'), initial: initial.location(0), routes: routes),
 );
 
@@ -218,7 +218,6 @@ void main() {
 		final source = KlpMutableState(
 			KlpApplication(
 				title: 'URI',
-				primitives: klpTestPrimitives(),
 				router: KlpRouter(
 					id: KlpId.root('router'),
 					initial: home.location(0),
@@ -284,7 +283,6 @@ void main() {
 			final source = KlpMutableState(
 				KlpApplication(
 					title: 'URI input',
-					primitives: klpTestPrimitives(),
 					router: KlpRouter(
 						id: KlpId.root('router'),
 						initial: home.location(0),
@@ -341,7 +339,6 @@ void main() {
 		final source = KlpMutableState(
 			KlpApplication(
 				title: 'URI stack input',
-				primitives: klpTestPrimitives(),
 				router: KlpRouter(
 					id: KlpId.root('router'),
 					initial: home.location(0),

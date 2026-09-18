@@ -5,17 +5,18 @@ import 'package:kallopis/kallopis_declarative.dart';
 import 'package:kallopis/src/application/bootstrap/internal/klp_application_adapters.dart';
 import 'package:kallopis/src/rendering/flutter/klp_flutter_renderer.dart';
 import 'package:kallopis/src/runtime/compilation/klp_tree_runtime.dart';
+import 'package:kallopis/src/styling/presets/klp_workspace_preset.dart';
 
 KlpId explorerId(String value) => KlpId.root(value);
 
-KlpExplorerNodeModel explorerNode(String title, {KlpExplorerCapabilities capabilities = const KlpExplorerCapabilities(selectable: true, primaryAction: KlpExplorerPrimaryAction.activate), List<KlpExplorerItemModel> children = const [], bool canHaveChildren = true, List<KlpWorkspaceCommand> commands = const []}) {
+KlpExplorerNodeModel explorerNode(String title, {KlpExplorerCapabilities capabilities = const KlpExplorerCapabilities(selectable: true, primaryAction: KlpExplorerPrimaryAction.activate), List<KlpExplorerItemModel> children = const [], bool canHaveChildren = true, List<KlpExplorerCommand> commands = const []}) {
 	return KlpExplorerNodeModel(id: explorerId(title), row: KlpExplorerRowData(title: title, contextActions: commands), canHaveChildren: canHaveChildren, capabilities: capabilities, children: children);
 }
 
-KlpExplorerData explorerData(List<KlpExplorerItemModel> items, {Set<KlpId> selected = const {}, Set<KlpId> expanded = const {}, KlpId? anchor, KlpExplorerSelectionMode mode = KlpExplorerSelectionMode.multiple}) {
+KlpExplorerData explorerData(List<KlpExplorerItemModel> items, {Set<KlpId> selected = const {}, Set<KlpId> expanded = const {}, KlpId? anchor, KlpExplorerSelectionMode mode = KlpExplorerSelectionMode.multiple, List<KlpExplorerDropAcceptance> acceptedDrops = const []}) {
 	final tree = KlpExplorerTreeData(id: explorerId('explorer'), items: items, expandedIds: expanded);
 	final scope = KlpExplorerSelectionScope(id: explorerId('scope'), treeIds: [tree.id], mode: mode, selectedIds: selected, anchorId: anchor);
-	return KlpExplorerData(trees: [tree], selectionScopes: [scope]);
+	return KlpExplorerData(trees: [tree], selectionScopes: [scope], acceptedDrops: acceptedDrops);
 }
 
 /// 以正式 root、runtime 與 renderer 觀察 consumer 可見結果。
@@ -38,9 +39,15 @@ void main() {
 		final harness = ExplorerTestHarness();
 		addTearDown(harness.runtime.dispose);
 		final events = <String>[];
-		final changes = <KlpExplorerSelectionChange>[];
+		final changes = <KlpExplorerSelectionRequested>[];
 		final data = explorerData([explorerNode('Alpha')]);
-		await harness.show(tester, KlpExplorer(id: explorerId('explorer'), data: data, onSelectionChanged: (change) { changes.add(change); events.add('selection'); }, onActivate: (id) => events.add('activate:${id.value}')));
+		await harness.show(tester, KlpExplorer(id: explorerId('explorer'), data: data, onIntent: (intent) {
+			if (intent case final KlpExplorerSelectionRequested change) {
+				changes.add(change);
+				events.add('selection');
+			}
+			if (intent case KlpExplorerActivationRequested(:final itemId)) events.add('activate:${itemId.value}');
+		}));
 		await tester.tap(find.text('Alpha'));
 		await tester.pump();
 		expect(events, ['selection', 'activate:Alpha']);
@@ -53,15 +60,17 @@ void main() {
 		expect(find.text('Alpha'), findsOneWidget);
 	});
 
-	testWidgets('失敗的完整更新保留上一影格與原有有效回呼', (tester) async {
+	testWidgets('失敗的新宣告保留上一影格與原有有效回呼', (tester) async {
 		final harness = ExplorerTestHarness();
 		addTearDown(harness.runtime.dispose);
 		var activations = 0;
-		KlpExplorer tree(KlpExplorerData data) => KlpExplorer(id: explorerId('explorer'), data: data, onActivate: (_) => activations++);
+		KlpExplorer tree(KlpExplorerData data) => KlpExplorer(id: explorerId('explorer'), data: data, onIntent: (intent) {
+			if (intent is KlpExplorerActivationRequested) activations++;
+		});
 		await harness.show(tester, tree(explorerData([explorerNode('Kept')])));
 		final previous = harness.runtime.frame!;
 		final invalid = explorerData([explorerNode('Replacement')], selected: {explorerId('Kept')});
-		await expectLater(harness.show(tester, tree(invalid)), throwsA(isA<KlpContractError>().having((error) => error.code, 'code', 'explorer_invalid_selection')));
+		expect(() => tree(invalid), throwsA(isA<KlpContractError>().having((error) => error.code, 'code', 'explorer_invalid_selection')));
 		expect(harness.runtime.frame, same(previous));
 		expect(previous.lease.isActive, isTrue);
 		expect(find.text('Kept'), findsOneWidget);
@@ -74,7 +83,7 @@ void main() {
 		final harness = ExplorerTestHarness();
 		addTearDown(harness.runtime.dispose);
 		var calls = 0;
-		KlpExplorer tree(String title) => KlpExplorer(id: explorerId('explorer'), data: explorerData([explorerNode(title)]), onSelectionChanged: (_) => calls++, onActivate: (_) => calls++);
+		KlpExplorer tree(String title) => KlpExplorer(id: explorerId('explorer'), data: explorerData([explorerNode(title)]), onIntent: (_) => calls++);
 		await harness.show(tester, tree('Old'));
 		final previous = harness.runtime.frame!;
 		await harness.show(tester, tree('New'));
@@ -96,8 +105,14 @@ void main() {
 			final trees = [KlpExplorerTreeData(id: explorerId('a-tree'), items: [explorerNode('A')]), KlpExplorerTreeData(id: explorerId('b-tree'), items: [explorerNode('B'), explorerNode('C')])];
 			final scope = KlpExplorerSelectionScope(id: explorerId('shared'), treeIds: trees.map((tree) => tree.id).toList(), mode: KlpExplorerSelectionMode.multiple, selectedIds: selected, anchorId: anchor);
 			final data = KlpExplorerData(trees: trees, selectionScopes: [scope]);
-			void change(KlpExplorerSelectionChange value) { selected = value.selectedIds; anchor = value.anchorId; }
-			return KlpFrameGroups(id: explorerId('forest'), groups: [for (final tree in trees) KlpFrameGroup(id: tree.id.child('group'), content: [KlpExplorer(id: tree.id, data: data, onSelectionChanged: change, onActivate: activations.add)])]);
+			void handle(KlpExplorerIntent intent) {
+				if (intent case KlpExplorerSelectionRequested(:final selectedIds, :final anchorId)) {
+					selected = selectedIds;
+					anchor = anchorId;
+				}
+				if (intent case KlpExplorerActivationRequested(:final itemId)) activations.add(itemId);
+			}
+			return KlpFrameGroups(id: explorerId('forest'), groups: [for (final tree in trees) KlpFrameGroup(id: tree.id.child('group'), content: [KlpExplorer(id: tree.id, data: data, onIntent: handle)])]);
 		}
 		await harness.show(tester, forest());
 		await tester.tap(find.text('A'));
@@ -115,7 +130,10 @@ void main() {
 		final activations = <KlpId>[];
 		final expansions = <(KlpId, bool)>[];
 		final branch = explorerNode('Parent', capabilities: const KlpExplorerCapabilities(collapsible: true, primaryAction: KlpExplorerPrimaryAction.activate), children: [explorerNode('Child')]);
-		KlpExplorer tree(bool open) => KlpExplorer(id: explorerId('explorer'), data: explorerData([branch, explorerNode('Next')], expanded: open ? {branch.id} : {}), onActivate: activations.add, onExpandedChanged: (id, expanded) => expansions.add((id, expanded)));
+		KlpExplorer tree(bool open) => KlpExplorer(id: explorerId('explorer'), data: explorerData([branch, explorerNode('Next')], expanded: open ? {branch.id} : {}), onIntent: (intent) {
+			if (intent case KlpExplorerActivationRequested(:final itemId)) activations.add(itemId);
+			if (intent case KlpExplorerExpansionRequested(:final itemId, :final expanded)) expansions.add((itemId, expanded));
+		});
 		await harness.show(tester, tree(false));
 		await tester.tap(find.text('Parent'));
 		activations.clear();

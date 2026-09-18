@@ -3,7 +3,8 @@
 	"private": true,
 	"type": "module",
 	"scripts": {
-		"test": "node --test markdown.test.mjs",
+		"test": "node --test",
+		"extract": "cd ../.. && dart run tool/reference_site/extract_api.dart --entry lib/kallopis_declarative.dart --output build/reference-api.json",
 		"build": "node generate.mjs",
 		"verify": "node verify.mjs"
 	},

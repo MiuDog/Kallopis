@@ -1,5 +1,7 @@
 # 固定 Catalog 逐項能力轉接
 
+> 狀態：舊分類提案，暫停作為 module ownership 或 migration 排程依據。使用者已要求先依 [`Catalog 分類規格`](../../spec/catalog-classification.md) 重新定義 consumer-oriented taxonomy；本表現有能力 ID、預定處置與下一 owner 只供重新分類時追溯，不是接受結果。
+
 本頁是 [完整生產力能力清冊](productivity-capabilities.md) 與 [固定 migration baseline](../architecture/catalog-migration/legacy-baseline.json) 之間的逐項轉接。它不取代 [coverage](../architecture/catalog-migration/coverage.json)，也不因分類、合併或改名縮小固定 254 項分母。
 
 ## 欄位與處置

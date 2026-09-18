@@ -17,7 +17,7 @@ Kallopis 擁有畫面的合法結構、視覺規範、renderer 與互動機制�
 
 ## 現在只做 S1：建立一個空資料工作區
 
-前置條件：consumer 已依[應用與組裝模板](composition-templates.md)建立 `KlpApplication`、router、完整 primitive set 與 runtime source。這一步只替換一個 route 的 `screen` 結果，不處理產品資料或事件。
+前置條件：consumer 已依[應用與組裝模板](composition-templates.md)建立 `KlpApplication`、router 與唯一 application source。外觀由 Kallopis 宿主依平台環境決定。這一步只替換一個 route 的 `screen` 結果，不處理產品資料或事件。
 
 ```dart
 import 'package:kallopis/kallopis_declarative.dart';
@@ -33,14 +33,10 @@ KlpScreen composeEmptyLibraryScreen() {
 					KlpExplorerCategoryModel(
 						id: scope / 'empty-category',
 						row: KlpExplorerRowData(title: '資料庫'),
-						capabilities: const KlpExplorerCapabilities(
-							collapsible: true,
-							primaryAction: KlpExplorerPrimaryAction.toggleExpansion,
-						),
 						children: const [],
 					),
 				],
-				expandedIds: {scope / 'empty-category'},
+				expandedIds: const {},
 			),
 		],
 		selectionScopes: [

@@ -1,5 +1,13 @@
 # Workspace 宣告式框架
 
+## CAT-MIG-02：WindowControls 固定清冊對帳
+
+狀態：PLAN READY。共通契約見 [ACW-01](../../../../docs/architecture/catalog-migration/README.md)。現行公開 `components/klp_window_controls.dart`、adapter、`KlpBoundWindowControls` 與 `rendering/flutter/internal/klp_flutter_workspace_components.dart` 已形成純資料／host intent／semantic style／bound renderer 的完整新版路徑；本 stage 不改其 API 或視覺。
+
+Catalog 只可用 `kallopis_declarative.dart` 建構 `KlpWindowControls`，最大化狀態由 specimen 持有，三個 callback 僅記錄意圖並重建同一 application tree。舊 shell WindowControls 仍供尚未遷移的 legacy WindowHeader 使用，不是新版 renderer 的 fallback。刪除的是 rendering 中零 caller 的舊 bridge，不是本 module 的仍在用 Stable 實作。
+
+本 module Dart 對 ACW-01 為唯讀；BUILD 只新增 Catalog，rendering cleanup 另有精確路徑。驗收沿用 `klp_workspace_components_declarative_test.dart` 的資料／callback／style證據，加上獨立 Catalog contract。完成後 coverage 可標 migrated、legacyRemoval 保持等待 caller family；不宣稱原生 OS backend 全平台已接受。
+
 ## 通用錨定 popup（POP-V1-r1）
 
 本 stage 依 [接受規格](../../../../spec/anchored-popup.md) 交付 `Workspace.AnchoredPopup`。Consumer 擁有 `open`、清單、回饋與業務操作；Kallopis 擁有 trigger 錨定、受限 panel、焦點、dismiss、命令呈現及 semantic style。它不擁有產品資料、導航、Stage／Explorer selection、持久化或 Planist 專用組裝。

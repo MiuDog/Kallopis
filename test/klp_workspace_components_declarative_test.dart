@@ -9,6 +9,8 @@ import 'package:kallopis/kallopis_declarative.dart';
 import 'package:kallopis/src/application/bootstrap/internal/klp_application_adapters.dart';
 import 'package:kallopis/src/rendering/flutter/klp_flutter_renderer.dart';
 import 'package:kallopis/src/runtime/compilation/klp_tree_runtime.dart';
+import 'package:kallopis/src/styling/primitives/klp_primitive_set.dart';
+import 'package:kallopis/src/styling/presets/klp_workspace_preset.dart';
 
 import 'klp_explorer_test.dart' show explorerData;
 
@@ -183,7 +185,7 @@ void main() {
 		final harness = _Harness();
 		addTearDown(harness.runtime.dispose);
 		final file = KlpId.parse('file');
-		KlpExplorer tree(bool selected) => KlpExplorer(id: KlpId.parse('explorer'), data: explorerData([KlpExplorerNodeModel(id: file, row: KlpExplorerRowData(title: 'Document'), canHaveChildren: false, capabilities: const KlpExplorerCapabilities(selectable: true))], selected: selected ? {file} : {}), onSelectionChanged: (_) {});
+		KlpExplorer tree(bool selected) => KlpExplorer(id: KlpId.parse('explorer'), data: explorerData([KlpExplorerNodeModel(id: file, row: KlpExplorerRowData(title: 'Document'), canHaveChildren: false, capabilities: const KlpExplorerCapabilities(selectable: true))], selected: selected ? {file} : {}), onIntent: (_) {});
 		await harness.show(tester, tree(false));
 		final mouse = await tester.createGesture(kind: PointerDeviceKind.mouse);
 		await mouse.addPointer(location: const Offset(1, 1));
@@ -212,7 +214,10 @@ void main() {
 		final selections = <KlpId>[];
 		final child = KlpExplorerNodeModel(id: file, row: KlpExplorerRowData(title: 'Photo', icon: KlpExplorerGlyph.image, badge: '3'), canHaveChildren: false, capabilities: const KlpExplorerCapabilities(selectable: true));
 		final parent = KlpExplorerCategoryModel(id: category, row: KlpExplorerRowData(title: 'Documents'), capabilities: const KlpExplorerCapabilities(collapsible: true, primaryAction: KlpExplorerPrimaryAction.toggleExpansion), children: [child]);
-		KlpExplorer tree(bool open) => KlpExplorer(id: KlpId.parse('explorer'), data: explorerData([parent], expanded: open ? {category} : {}), onSelectionChanged: (change) => selections.addAll(change.selectedIds), onExpandedChanged: (id, expanded) => toggles.add((id, expanded)));
+		KlpExplorer tree(bool open) => KlpExplorer(id: KlpId.parse('explorer'), data: explorerData([parent], expanded: open ? {category} : {}), onIntent: (intent) {
+			if (intent case KlpExplorerSelectionRequested(:final selectedIds)) selections.addAll(selectedIds);
+			if (intent case KlpExplorerExpansionRequested(:final itemId, :final expanded)) toggles.add((itemId, expanded));
+		});
 		await harness.show(tester, tree(false));
 		expect(find.text('Photo'), findsNothing);
 		await tester.tap(find.text('Documents'));
@@ -235,7 +240,9 @@ void main() {
 		final selections = <KlpId>[];
 		final child = KlpExplorerNodeModel(id: file, row: KlpExplorerRowData(title: 'File'), canHaveChildren: false, capabilities: const KlpExplorerCapabilities(selectable: true));
 		final parent = KlpExplorerNodeModel(id: folder, row: KlpExplorerRowData(title: 'Folder'), canHaveChildren: true, children: [child]);
-		await harness.show(tester, KlpExplorer(id: KlpId.parse('explorer'), data: explorerData([parent]), onSelectionChanged: (change) => selections.addAll(change.selectedIds)));
+		await harness.show(tester, KlpExplorer(id: KlpId.parse('explorer'), data: explorerData([parent]), onIntent: (intent) {
+			if (intent case KlpExplorerSelectionRequested(:final selectedIds)) selections.addAll(selectedIds);
+		}));
 		expect(find.text('File'), findsOneWidget);
 		expect(find.bySemanticsLabel('Expand Folder'), findsNothing);
 		expect(tester.getTopLeft(find.text('File')).dx, greaterThan(tester.getTopLeft(find.text('Folder')).dx));
@@ -294,8 +301,10 @@ void main() {
 		final hidden = KlpExplorerNodeModel(id: duplicate, row: KlpExplorerRowData(title: 'Hidden'), canHaveChildren: false);
 		final parent = KlpExplorerNodeModel(id: KlpId.parse('folder'), row: KlpExplorerRowData(title: 'Folder'), canHaveChildren: true, capabilities: const KlpExplorerCapabilities(collapsible: true), children: [hidden]);
 		final visible = KlpExplorerNodeModel(id: duplicate, row: KlpExplorerRowData(title: 'Visible'), canHaveChildren: false);
-		final node = KlpExplorer(id: KlpId.parse('explorer'), data: explorerData([parent, visible]));
-		await expectLater(harness.show(tester, node), throwsA(isA<KlpContractError>().having((error) => error.code, 'code', 'explorer_duplicate_id')));
+		expect(
+			() => KlpExplorer(id: KlpId.parse('explorer'), data: explorerData([parent, visible])),
+			throwsA(isA<KlpContractError>().having((error) => error.code, 'code', 'explorer_duplicate_id')),
+		);
 	});
 
 	testWidgets('explorer expansion and selection remain consumer controlled', (tester) async {
@@ -304,21 +313,24 @@ void main() {
 		final folder = KlpId.parse('folder');
 		final file = KlpId.parse('file');
 		final selected = <KlpId>[];
-		final expanded = <(KlpId, bool)>[];
+		final expansionEvents = <(KlpId, bool)>[];
 		final child = KlpExplorerNodeModel(id: file, row: KlpExplorerRowData(title: 'Readme'), canHaveChildren: false, capabilities: const KlpExplorerCapabilities(selectable: true));
 		final parent = KlpExplorerNodeModel(id: folder, row: KlpExplorerRowData(title: 'Folder'), canHaveChildren: true, capabilities: const KlpExplorerCapabilities(collapsible: true), children: [child]);
-		KlpExplorer tree(Set<KlpId> open) => KlpExplorer(id: KlpId.parse('explorer'), data: explorerData([parent], expanded: open), onSelectionChanged: (change) => selected.addAll(change.selectedIds), onExpandedChanged: (id, value) => expanded.add((id, value)));
+		KlpExplorer tree(Set<KlpId> open) => KlpExplorer(id: KlpId.parse('explorer'), data: explorerData([parent], expanded: open), onIntent: (intent) {
+			if (intent case KlpExplorerSelectionRequested(:final selectedIds)) selected.addAll(selectedIds);
+			if (intent case KlpExplorerExpansionRequested(:final itemId, :final expanded)) expansionEvents.add((itemId, expanded));
+		});
 		await harness.show(tester, tree({}));
 		expect(find.text('Readme'), findsNothing);
 		await tester.tap(find.bySemanticsLabel('Expand Folder'));
 		await tester.pump();
-		expect(expanded, [(folder, true)]);
+		expect(expansionEvents, [(folder, true)]);
 		expect(find.text('Readme'), findsNothing);
 		await harness.show(tester, tree({folder}));
 		await tester.tap(find.text('Readme'));
 		expect(selected, [file]);
 		await tester.tap(find.bySemanticsLabel('Collapse Folder'));
-		expect(expanded.last, (folder, false));
+		expect(expansionEvents.last, (folder, false));
 	});
 
 	testWidgets('document close requests preserve dirty data until consumer rebuilds', (tester) async {
@@ -329,9 +341,18 @@ void main() {
 		final selected = <KlpId>[];
 		final closed = <KlpId>[];
 		KlpDocumentTabs tabs({bool includeFirst = true}) => KlpDocumentTabs(
-			id: KlpId.parse('tabs'), selectedId: second,
-			tabs: [if (includeFirst) KlpDocumentTab(id: first, label: 'Draft', dirty: true), KlpDocumentTab(id: second, label: 'Reference', closable: false)],
-			onSelected: selected.add, onClose: closed.add,
+			id: KlpId.parse('tabs'),
+			data: KlpDocumentTabsData(
+				selectedId: second,
+				tabs: [
+					if (includeFirst) KlpDocumentTabData(id: first, label: 'Draft', dirty: true),
+					KlpDocumentTabData(id: second, label: 'Reference', closable: false),
+				],
+			),
+			onIntent: (intent) {
+				if (intent case KlpDocumentTabSelectionRequested(:final tabId)) selected.add(tabId);
+				if (intent case KlpDocumentTabCloseRequested(:final tabId)) closed.add(tabId);
+			},
 		);
 		await harness.show(tester, tabs());
 		expect(find.bySemanticsLabel(RegExp('Draft.*Modified')), findsOneWidget);
@@ -370,7 +391,11 @@ void main() {
 		final harness = _Harness();
 		addTearDown(harness.runtime.dispose);
 		final id = KlpId.parse('item');
-		final child = KlpDocumentTabs(id: KlpId.parse('tabs'), tabs: [KlpDocumentTab(id: id, label: 'Styled')], selectedId: id, onSelected: (_) {}, onClose: (_) {});
+		final child = KlpDocumentTabs(
+			id: KlpId.parse('tabs'),
+			data: KlpDocumentTabsData(tabs: [KlpDocumentTabData(id: id, label: 'Styled')], selectedId: id),
+			onIntent: (_) {},
+		);
 		await harness.show(tester, child, primitives: KlpWorkspacePreset.light());
 		final light = tester.widget<Text>(find.text('Styled')).style!.color;
 		final lightSurface = tester.widget<ColoredBox>(find.ancestor(of: find.text('Styled'), matching: find.byType(ColoredBox)).first).color;
@@ -389,7 +414,7 @@ void main() {
 		final screen = KlpScreen(id: KlpId.parse('screen'), accessibilityLabel: 'Workspace', child: KlpAppLayout(id: KlpId.parse('layout'), child: KlpAppFrame(id: KlpId.parse('frame'), child: _groups(node))));
 		final destination = KlpDestination<int, String>(KlpId.parse('home'));
 		final source = KlpMutableState(KlpApplication(
-			title: 'Keyboard workspace', primitives: KlpWorkspacePreset.light(),
+			title: 'Keyboard workspace',
 			router: KlpRouter(id: KlpId.parse('router'), initial: destination.location(0), routes: [KlpRoute(destination, screen: (_) => screen)]),
 		));
 		addTearDown(source.dispose);

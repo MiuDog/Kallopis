@@ -5,8 +5,6 @@ import 'package:kallopis/src/composition/validation/klp_validated_node.dart';
 import 'package:kallopis/src/foundation/binding/contracts/klp_bound_template.dart';
 import 'package:kallopis/src/foundation/binding/contracts/klp_bound_text_style.dart';
 import 'package:kallopis/src/kernel/lifecycle/klp_frame_lease.dart';
-import 'package:kallopis/src/kernel/identity/klp_id.dart';
-import 'package:kallopis/src/kernel/identity/klp_placement_id.dart';
 import 'package:kallopis/src/runtime/contracts/klp_node_adapter.dart';
 import 'package:kallopis/src/runtime/contracts/klp_prepare_context.dart';
 import 'package:kallopis/src/runtime/contracts/klp_prepared_node.dart';
@@ -31,31 +29,18 @@ final class KlpWorkspaceComponentsAdapter implements KlpNodeAdapter {
 	KlpDefinition<KlpNode> get contract => _contract;
 
 	static List<KlpNodeAdapter> createAll() => [
-		KlpWorkspaceComponentsAdapter._(KlpDefinition<KlpDocumentTabs>(KlpDocumentTabs.typeId, semantics: _KlpWorkspaceSemantics.schema(KlpDocumentTabs.typeId), slots: [KlpDocumentTabs.tabSlot])),
-		KlpWorkspaceComponentsAdapter._(KlpDefinition<KlpDocumentTab>(KlpDocumentTab.typeId)),
+		KlpWorkspaceComponentsAdapter._(KlpDefinition<KlpDocumentTabs>(KlpDocumentTabs.typeId, semantics: _KlpWorkspaceSemantics.schema(KlpDocumentTabs.typeId))),
 		KlpWorkspaceComponentsAdapter._(KlpDefinition<KlpWindowControls>(KlpWindowControls.typeId, semantics: _KlpWorkspaceSemantics.schema(KlpWindowControls.typeId))),
 	];
 
 	@override
 	KlpPreparedNode prepare(KlpNode node, KlpValidatedNode snapshot, KlpPrepareContext context) {
-		if (node is KlpDocumentTabs) return _prepareTabs(node, snapshot, context);
+		if (node is KlpDocumentTabs) return _prepareTabs(node, context);
 		if (node is KlpWindowControls) return _prepareWindow(node, context);
 		return const _KlpPreparedWorkspaceData();
 	}
 
-	KlpPreparedNode _prepareTabs(KlpDocumentTabs tabs, KlpValidatedNode snapshot, KlpPrepareContext context) {
-		final style = context.style;
-		final ids = <KlpPlacementId, KlpId>{for (final placement in snapshot.childrenPlacements) placement: context.sources[placement]!.id};
-		return _KlpPreparedTabs(
-			tabs: [for (final placement in snapshot.childrenPlacements) _tabData(context.sources[placement]! as KlpDocumentTab, placement, tabs.selectedId)],
-			onSelected: tabs.onSelected == null ? null : (placement) => tabs.onSelected!(ids[placement]!),
-			onClose: tabs.onClose == null ? null : (placement) => tabs.onClose!(ids[placement]!),
-			onPinnedChanged: tabs.onPinnedChanged == null ? null : (placement, pinned) => tabs.onPinnedChanged!(ids[placement]!, pinned),
-			style: _KlpWorkspaceStyle.read(style, KlpDocumentTabs.typeId),
-		);
-	}
-
-	KlpBoundDocumentTabData _tabData(KlpDocumentTab tab, KlpPlacementId placement, KlpId? selectedId) => KlpBoundDocumentTabData(id: placement, label: tab.label, dirty: tab.dirty, closable: tab.closable, pinned: tab.pinned, selected: selectedId == tab.id);
+	KlpPreparedNode _prepareTabs(KlpDocumentTabs tabs, KlpPrepareContext context) => _KlpPreparedTabs(tabs: tabs, style: _KlpWorkspaceStyle.read(context.style, KlpDocumentTabs.typeId));
 
 	KlpPreparedNode _prepareWindow(KlpWindowControls controls, KlpPrepareContext context) => _KlpPreparedWindow(controls: controls, style: _KlpWorkspaceStyle.read(context.style, KlpWindowControls.typeId));
 }
@@ -113,16 +98,30 @@ final class _KlpWorkspaceStyle {
 }
 
 final class _KlpPreparedTabs implements KlpPreparedNode {
-	final List<KlpBoundDocumentTabData> tabs;
-	final void Function(KlpPlacementId)? onSelected;
-	final void Function(KlpPlacementId)? onClose;
-	final void Function(KlpPlacementId, bool)? onPinnedChanged;
+	final KlpDocumentTabs tabs;
 	final _KlpWorkspaceStyle style;
-	const _KlpPreparedTabs({required this.tabs, required this.onSelected, required this.onClose, required this.onPinnedChanged, required this.style});
+	const _KlpPreparedTabs({required this.tabs, required this.style});
 	@override
 	KlpPlacementResource createResource(KlpValidatedNode node) => KlpDefaultPlacement(node);
 	@override
-	KlpBoundTemplate materialize(KlpPlacementResource resource, List<KlpBoundTemplate> children, KlpFrameLease lease) => KlpBoundDocumentTabs(tabs: tabs, onSelected: onSelected, onClose: onClose, onPinnedChanged: onPinnedChanged, background: style.background, foreground: style.foreground, selectedBackground: style.selectedBackground, mutedForeground: style.mutedForeground, focusColor: style.focusColor, extent: style.extent, inset: style.inset, gap: style.gap, radius: style.radius, focusWidth: style.focusWidth, textStyle: style.text);
+	KlpBoundTemplate materialize(KlpPlacementResource resource, List<KlpBoundTemplate> children, KlpFrameLease lease) {
+		final handler = tabs.onIntent;
+		return KlpBoundDocumentTabs(
+			tabs: [for (final tab in tabs.data.tabs) KlpBoundDocumentTabData(id: tab.id, label: tab.label, dirty: tab.dirty, selectable: tab.selectable, closable: tab.closable, pinnable: tab.pinnable, pinned: tab.pinned, selected: tabs.data.selectedId == tab.id)],
+			onIntent: handler == null ? null : (intent) => lease.run(() => handler(intent)),
+			background: style.background,
+			foreground: style.foreground,
+			selectedBackground: style.selectedBackground,
+			mutedForeground: style.mutedForeground,
+			focusColor: style.focusColor,
+			extent: style.extent,
+			inset: style.inset,
+			gap: style.gap,
+			radius: style.radius,
+			focusWidth: style.focusWidth,
+			textStyle: style.text,
+		);
+	}
 }
 
 final class _KlpPreparedWindow implements KlpPreparedNode {

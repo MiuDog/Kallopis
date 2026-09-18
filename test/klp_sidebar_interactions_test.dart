@@ -1,5 +1,3 @@
-import 'dart:async';
-
 import 'package:flutter/gestures.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
@@ -15,131 +13,163 @@ Future<void> _menu(WidgetTester tester, String command) async {
 	await tester.pumpAndSettle();
 }
 
-Future<void> _showCommands(WidgetTester tester, ExplorerTestHarness harness, List<KlpWorkspaceCommand> commands) async {
-	await harness.show(tester, KlpExplorer(id: explorerId('explorer'), data: explorerData([explorerNode('Note', commands: commands)])));
+Future<void> _showCommands(
+	WidgetTester tester,
+	ExplorerTestHarness harness,
+	List<KlpExplorerCommand> commands,
+	List<KlpExplorerIntent> intents,
+) async {
+	await harness.show(
+		tester,
+		KlpExplorer(
+			id: explorerId('explorer'),
+			data: explorerData([explorerNode('Note', commands: commands)]),
+			onIntent: intents.add,
+		),
+	);
 }
 
 void main() {
-
-	testWidgets('F2 輸入取消與 Escape 關閉選單不執行命令', (tester) async {
+	testWidgets('F2 輸入取消與 Escape 關閉選單不發出命令 intent', (tester) async {
 		final harness = ExplorerTestHarness();
 		addTearDown(harness.runtime.dispose);
-		var calls = 0;
-		final results = <KlpWorkspaceCommandResult>[];
-		await _showCommands(tester, harness, [KlpWorkspaceCommand(label: 'Rename', shortcut: KlpWorkspaceCommandShortcut.rename, inputLabel: 'Name', onInvoke: (_) { calls++; }, onResult: results.add)]);
+		final intents = <KlpExplorerIntent>[];
+		await _showCommands(tester, harness, [
+			KlpExplorerCommand(
+				id: explorerId('rename'),
+				label: 'Rename',
+				shortcut: KlpExplorerCommandShortcut.rename,
+				inputLabel: 'Name',
+			),
+		], intents);
 		await tester.tap(find.text('Note'));
 		await tester.sendKeyEvent(LogicalKeyboardKey.f2);
 		await tester.pumpAndSettle();
 		expect(find.byType(EditableText), findsOneWidget);
 		await tester.tap(find.text('Cancel'));
 		await tester.pumpAndSettle();
-		expect(results.single.status, KlpWorkspaceCommandStatus.canceled);
+		expect(intents.whereType<KlpExplorerCommandRequested>(), isEmpty);
 		await tester.tap(find.text('Note'), buttons: kSecondaryMouseButton, kind: PointerDeviceKind.mouse);
 		await tester.pumpAndSettle();
 		expect(find.text('Rename'), findsOneWidget);
 		await tester.sendKeyEvent(LogicalKeyboardKey.escape);
 		await tester.pumpAndSettle();
 		expect(find.text('Rename'), findsNothing);
-		expect(calls, 0);
 	});
 
 	testWidgets('右鍵不選取或啟用，停用命令不可執行，可用命令只提交一次', (tester) async {
 		final harness = ExplorerTestHarness();
 		addTearDown(harness.runtime.dispose);
-		var actions = 0;
-		var calls = 0;
-		final row = explorerNode('Note', commands: [KlpWorkspaceCommand(label: 'Unavailable', enabled: false, onInvoke: (_) { calls += 100; }), KlpWorkspaceCommand(label: 'Pin', onInvoke: (_) { calls++; })]);
-		await harness.show(tester, KlpExplorer(id: explorerId('explorer'), data: explorerData([row]), onSelectionChanged: (_) => actions++, onActivate: (_) => actions++));
+		final intents = <KlpExplorerIntent>[];
+		final row = explorerNode('Note', commands: [
+			KlpExplorerCommand(id: explorerId('unavailable'), label: 'Unavailable', enabled: false),
+			KlpExplorerCommand(id: explorerId('pin'), label: 'Pin'),
+		]);
+		await harness.show(tester, KlpExplorer(id: explorerId('explorer'), data: explorerData([row]), onIntent: intents.add));
 		await tester.tap(find.text('Note'), buttons: kSecondaryMouseButton, kind: PointerDeviceKind.mouse);
 		await tester.pumpAndSettle();
 		await tester.tap(find.text('Unavailable'));
 		await tester.pumpAndSettle();
-		expect(calls, 0);
+		expect(intents, isEmpty);
 		await tester.tap(find.text('Pin'));
 		await tester.pumpAndSettle();
-		expect(calls, 1);
-		expect(actions, 0);
+		final command = intents.single as KlpExplorerCommandRequested;
+		expect(command.itemId, row.id);
+		expect(command.commandId, explorerId('pin'));
 	});
 
-	testWidgets('命名驗證空白，取消不提交，確認回傳完成結果', (tester) async {
+	testWidgets('命名驗證空白，取消不提交，確認只輸出輸入值', (tester) async {
 		final harness = ExplorerTestHarness();
 		addTearDown(harness.runtime.dispose);
-		final names = <String?>[];
-		final results = <KlpWorkspaceCommandResult>[];
-		await _showCommands(tester, harness, [KlpWorkspaceCommand(label: 'Rename', inputLabel: 'Name', initialValue: 'Note', onInvoke: names.add, onResult: results.add)]);
+		final intents = <KlpExplorerIntent>[];
+		await _showCommands(tester, harness, [
+			KlpExplorerCommand(
+				id: explorerId('rename'),
+				label: 'Rename',
+				inputLabel: 'Name',
+				initialValue: 'Note',
+			),
+		], intents);
 		await _menu(tester, 'Rename');
 		await tester.tap(find.text('Cancel'));
 		await tester.pumpAndSettle();
-		expect(names, isEmpty);
-		expect(results.single.status, KlpWorkspaceCommandStatus.canceled);
+		expect(intents, isEmpty);
 		await _menu(tester, 'Rename');
 		await tester.enterText(find.byType(EditableText), '   ');
 		await tester.tap(find.text('OK'));
 		await tester.pumpAndSettle();
-		expect(names, isEmpty);
+		expect(intents, isEmpty);
 		expect(find.byType(EditableText), findsOneWidget);
 		await tester.enterText(find.byType(EditableText), 'Research');
 		await tester.tap(find.text('OK'));
 		await tester.pumpAndSettle();
-		expect(names, ['Research']);
-		expect(results.last.status, KlpWorkspaceCommandStatus.completed);
+		final command = intents.single as KlpExplorerCommandRequested;
+		expect(command.input, 'Research');
 		expect(find.byType(EditableText), findsNothing);
 	});
 
-	testWidgets('確認取消不執行，非同步完成與失敗保留結果資料', (tester) async {
+	testWidgets('確認取消不提交，確認只發出一個命令 intent', (tester) async {
 		final harness = ExplorerTestHarness();
 		addTearDown(harness.runtime.dispose);
-		final results = <KlpWorkspaceCommandResult>[];
-		var calls = 0;
-		final completed = Completer<void>();
-		await _showCommands(tester, harness, [KlpWorkspaceCommand(label: 'Purge', confirmation: 'Delete permanently?', onInvoke: (_) { calls++; return completed.future; }, onResult: results.add)]);
+		final intents = <KlpExplorerIntent>[];
+		await _showCommands(tester, harness, [
+			KlpExplorerCommand(
+				id: explorerId('purge'),
+				label: 'Purge',
+				confirmation: 'Delete permanently?',
+			),
+		], intents);
 		await _menu(tester, 'Purge');
 		expect(find.text('Delete permanently?'), findsOneWidget);
 		await tester.tap(find.text('Cancel'));
 		await tester.pumpAndSettle();
-		expect(calls, 0);
-		expect(results.single.status, KlpWorkspaceCommandStatus.canceled);
+		expect(intents, isEmpty);
 		await _menu(tester, 'Purge');
 		await tester.tap(find.text('OK'));
-		await tester.pump();
-		expect(calls, 1);
-		expect(results, hasLength(1));
-		completed.complete();
 		await tester.pumpAndSettle();
-		expect(results.last.status, KlpWorkspaceCommandStatus.completed);
-
-		// 失敗要回報原始錯誤及堆疊，不能偽裝完成或丟失列資料。
-		final failure = StateError('save failed');
-		final trace = StackTrace.current;
-		await _showCommands(tester, harness, [KlpWorkspaceCommand(label: 'Fail', onInvoke: (_) => Future<void>.error(failure, trace), onResult: results.add)]);
-		await _menu(tester, 'Fail');
-		expect(results.last.status, KlpWorkspaceCommandStatus.failed);
-		expect(results.last.error, same(failure));
-		expect(results.last.stackTrace.toString(), trace.toString());
-		expect(find.text('Note'), findsOneWidget);
-		expect(tester.takeException(), isNull);
+		expect(intents.whereType<KlpExplorerCommandRequested>(), hasLength(1));
 	});
 
 	testWidgets('命令確認等待期間替換影格不允許殘留提交', (tester) async {
 		final harness = ExplorerTestHarness();
 		addTearDown(harness.runtime.dispose);
-		var calls = 0;
-		await _showCommands(tester, harness, [KlpWorkspaceCommand(label: 'Purge', confirmation: 'Confirm?', onInvoke: (_) { calls++; })]);
+		final intents = <KlpExplorerIntent>[];
+		await _showCommands(tester, harness, [
+			KlpExplorerCommand(id: explorerId('purge'), label: 'Purge', confirmation: 'Confirm?'),
+		], intents);
 		await _menu(tester, 'Purge');
-		await harness.show(tester, KlpExplorer(id: explorerId('explorer'), data: explorerData([explorerNode('Replacement')])));
+		await harness.show(
+			tester,
+			KlpExplorer(
+				id: explorerId('explorer'),
+				data: explorerData([explorerNode('Replacement')]),
+				onIntent: (_) {},
+			),
+		);
 		if (find.text('OK').evaluate().isNotEmpty) {
 			await tester.tap(find.text('OK'));
 			await tester.pumpAndSettle();
 		}
-		expect(calls, 0);
+		expect(intents, isEmpty);
 	});
 
-	testWidgets('拖放預設拒絕，明示許可才發出 before inside after', (tester) async {
+	testWidgets('拖放預設拒絕，精確 acceptance 才發出 before inside after', (tester) async {
 		final harness = ExplorerTestHarness();
 		addTearDown(harness.runtime.dispose);
-		final drops = <KlpExplorerDropRequest>[];
+		final drops = <KlpExplorerDropRequested>[];
 		final source = explorerNode('Source', capabilities: const KlpExplorerCapabilities(draggable: true));
-		KlpExplorer tree(bool allowed) => KlpExplorer(id: explorerId('explorer'), data: explorerData([source, explorerNode('Target')]), canDrop: allowed ? (_) => true : null, onDrop: drops.add);
+		final target = explorerNode('Target');
+		final acceptances = [
+			for (final position in KlpExplorerDropPlacement.values)
+				KlpExplorerDropAcceptance(sourceIds: {source.id}, targetId: target.id, position: position),
+		];
+		KlpExplorer tree(bool allowed) => KlpExplorer(
+			id: explorerId('explorer'),
+			data: explorerData([source, target], acceptedDrops: allowed ? acceptances : const []),
+			onIntent: (intent) {
+				if (intent case final KlpExplorerDropRequested drop) drops.add(drop);
+			},
+		);
 		Future<void> drag(double offset) async {
 			final from = tester.getCenter(find.text('Source'));
 			final to = tester.getCenter(find.text('Target')) + Offset(0, offset);
@@ -150,45 +180,59 @@ void main() {
 		await drag(0);
 		expect(drops, isEmpty);
 		await harness.show(tester, tree(true));
-		for (final offset in [-12.0, 0.0, 12.0]) {
-			await drag(offset);
-		}
-		expect(drops.map((request) => request.position), [KlpExplorerDropPlacement.before, KlpExplorerDropPlacement.inside, KlpExplorerDropPlacement.after]);
-		expect(drops.every((request) => request.sourceIds.contains(source.id) && request.targetId == explorerId('Target')), isTrue);
-		expect(find.text('Source'), findsOneWidget);
+		for (final offset in [-12.0, 0.0, 12.0]) await drag(offset);
+		expect(drops.map((request) => request.position), KlpExplorerDropPlacement.values);
+		expect(drops.every((request) => request.sourceIds.contains(source.id) && request.targetId == target.id), isTrue);
 	});
 
-	testWidgets('拖放預覽許可不可取代提交當下的許可', (tester) async {
-		final harness = ExplorerTestHarness();
-		addTearDown(harness.runtime.dispose);
-		var allowed = true;
-		var checks = 0;
-		var drops = 0;
-		await harness.show(tester, KlpExplorer(id: explorerId('explorer'), data: explorerData([explorerNode('Source', capabilities: const KlpExplorerCapabilities(draggable: true)), explorerNode('Target')]), canDrop: (_) { checks++; return allowed; }, onDrop: (_) => drops++));
-		final gesture = await tester.startGesture(tester.getCenter(find.text('Source')), kind: PointerDeviceKind.mouse);
-		await gesture.moveBy(const Offset(20, 0));
-		await tester.pump();
-		await gesture.moveTo(tester.getCenter(find.text('Target')));
-		await tester.pump();
-		expect(checks, greaterThan(0));
-		final previewChecks = checks;
-		allowed = false;
-		await gesture.up();
-		await tester.pumpAndSettle();
-		expect(checks, greaterThan(previewChecks));
-		expect(drops, 0);
-	});
-
-	testWidgets('跨 Explorer 拖放保留來源出現身分與 inside 意圖', (tester) async {
+	testWidgets('手勢期間不再查詢 consumer，使用捕獲的不可變 acceptance', (tester) async {
 		final harness = ExplorerTestHarness();
 		addTearDown(harness.runtime.dispose);
 		final source = explorerNode('Source', capabilities: const KlpExplorerCapabilities(draggable: true));
 		final target = explorerNode('Target');
-		final trees = [KlpExplorerTreeData(id: explorerId('source-tree'), items: [source]), KlpExplorerTreeData(id: explorerId('target-tree'), items: [target])];
+		final drops = <KlpExplorerDropRequested>[];
+		final accepted = <KlpExplorerDropAcceptance>[
+			KlpExplorerDropAcceptance(sourceIds: {source.id}, targetId: target.id, position: KlpExplorerDropPlacement.inside),
+		];
+		final data = explorerData([source, target], acceptedDrops: accepted);
+		accepted.clear();
+		await harness.show(tester, KlpExplorer(id: explorerId('explorer'), data: data, onIntent: (intent) {
+			if (intent case final KlpExplorerDropRequested drop) drops.add(drop);
+		}));
+		final from = tester.getCenter(find.text('Source'));
+		await tester.dragFrom(from, tester.getCenter(find.text('Target')) - from, kind: PointerDeviceKind.mouse);
+		await tester.pumpAndSettle();
+		expect(drops, hasLength(1));
+	});
+
+	testWidgets('跨 Explorer 拖放保留來源身分與 inside 意圖', (tester) async {
+		final harness = ExplorerTestHarness();
+		addTearDown(harness.runtime.dispose);
+		final source = explorerNode('Source', capabilities: const KlpExplorerCapabilities(draggable: true));
+		final target = explorerNode('Target');
+		final trees = [
+			KlpExplorerTreeData(id: explorerId('source-tree'), items: [source]),
+			KlpExplorerTreeData(id: explorerId('target-tree'), items: [target]),
+		];
 		final scope = KlpExplorerSelectionScope(id: explorerId('shared'), treeIds: trees.map((tree) => tree.id).toList(), mode: KlpExplorerSelectionMode.none);
-		final data = KlpExplorerData(trees: trees, selectionScopes: [scope]);
-		final drops = <KlpExplorerDropRequest>[];
-		await harness.show(tester, KlpFrameGroups(id: explorerId('forest'), groups: [for (final tree in trees) KlpFrameGroup(id: tree.id.child('group'), content: [KlpExplorer(id: tree.id, data: data, canDrop: (request) => request.sourceIds.contains(source.id) && request.targetId == target.id && request.position == KlpExplorerDropPlacement.inside, onDrop: drops.add)])]));
+		final acceptance = KlpExplorerDropAcceptance(sourceIds: {source.id}, targetId: target.id, position: KlpExplorerDropPlacement.inside);
+		final data = KlpExplorerData(trees: trees, selectionScopes: [scope], acceptedDrops: [acceptance]);
+		final drops = <KlpExplorerDropRequested>[];
+		await harness.show(
+			tester,
+			KlpFrameGroups(
+				id: explorerId('forest'),
+				groups: [
+					for (final tree in trees)
+						KlpFrameGroup(
+							id: tree.id.child('group'),
+							content: [KlpExplorer(id: tree.id, data: data, onIntent: (intent) {
+								if (intent case final KlpExplorerDropRequested drop) drops.add(drop);
+							})],
+						),
+				],
+			),
+		);
 		final from = tester.getCenter(find.text('Source'));
 		await tester.dragFrom(from, tester.getCenter(find.text('Target')) - from, kind: PointerDeviceKind.mouse);
 		await tester.pumpAndSettle();

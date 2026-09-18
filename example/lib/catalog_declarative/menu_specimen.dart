@@ -19,10 +19,8 @@ final class _MenuCatalog {
 	}
 
 	KlpApplication _application() {
-		const dark = bool.fromEnvironment('CATALOG_DARK');
 		return KlpApplication(
 			title: 'Kallopis Catalog — Menu migration',
-			primitives: dark ? KlpWorkspacePreset.dark() : KlpWorkspacePreset.light(),
 			router: KlpRouter(id: KlpId.parse('menu.router'), initial: destination.location(null), routes: [KlpRoute<Object?, Object?>(destination, screen: (_) => KlpScreen(
 				id: KlpId.parse('menu.screen'),
 				accessibilityLabel: '新版選單元件展示',

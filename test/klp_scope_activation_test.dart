@@ -1,5 +1,6 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:kallopis/kallopis_declarative.dart';
+import 'package:kallopis/src/capabilities/actions/klp_action.dart';
 import 'package:kallopis/src/composition/nodes/klp_scope_boundary.dart';
 import 'package:kallopis/src/features/navigation/rail/contracts/klp_rail.dart';
 import 'package:kallopis/src/features/navigation/rail/adapters/klp_rail_adapter.dart';

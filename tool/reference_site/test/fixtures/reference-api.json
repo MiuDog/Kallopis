@@ -1,0 +1,85 @@
+{
+	"schemaVersion": 1,
+	"entrypoint": "package:kallopis/kallopis_declarative.dart",
+	"modules": [
+		{
+			"name": "application",
+			"declarations": [
+				{
+					"name": "KlpFixtureApplication",
+					"slug": "klp-fixture-application",
+					"kind": "sealedClass",
+					"module": "application",
+					"sourceUri": "package:kallopis/src/application/fixture.dart",
+					"signature": "sealed class KlpFixtureApplication",
+					"documentation": "測試用應用程式宣告。",
+					"typeRelationships": {
+						"extends": "Object",
+						"mixins": [],
+						"implements": []
+					},
+					"members": [
+						{
+							"name": "KlpFixtureApplication",
+							"kind": "constructor",
+							"signature": "const KlpFixtureApplication()",
+							"documentation": ""
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "capabilities",
+			"declarations": []
+		},
+		{
+			"name": "composition",
+			"declarations": []
+		},
+		{
+			"name": "features",
+			"declarations": []
+		},
+		{
+			"name": "features.editing.providers",
+			"declarations": [
+				{
+					"name": "KlpFixtureProvider",
+					"slug": "klp-fixture-provider",
+					"kind": "typedef",
+					"module": "features.editing.providers",
+					"sourceUri": "package:krepis/krepis.dart",
+					"signature": "typedef KlpFixtureProvider = void Function();",
+					"documentation": "測試用外部 provider。",
+					"typeRelationships": {
+						"extends": null,
+						"mixins": [],
+						"implements": []
+					},
+					"members": []
+				}
+			]
+		},
+		{
+			"name": "foundation",
+			"declarations": []
+		},
+		{
+			"name": "kernel",
+			"declarations": []
+		},
+		{
+			"name": "rendering",
+			"declarations": []
+		},
+		{
+			"name": "runtime",
+			"declarations": []
+		},
+		{
+			"name": "styling",
+			"declarations": []
+		}
+	]
+}

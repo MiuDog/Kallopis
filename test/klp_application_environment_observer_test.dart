@@ -132,6 +132,28 @@ void main() {
 		expect(tester.takeException(), isNull);
 	}, variant: TargetPlatformVariant(TargetPlatform.values.toSet()), skip: kIsWeb);
 
+	testWidgets('platform brightness reprojects the current application with an owned preset', (tester) async {
+		final fixture = KlpEnvironmentHostFixture();
+		final source = KlpMutableState(fixture.application());
+		addTearDown(source.dispose);
+		addTearDown(tester.platformDispatcher.clearPlatformBrightnessTestValue);
+		tester.platformDispatcher.platformBrightnessTestValue = Brightness.light;
+		runKlpApp(source.readOnly);
+		await tester.pump();
+		await tester.pump();
+		final light = tester.widget<WidgetsApp>(find.byType(WidgetsApp)).color;
+		final title = tester.widget<WidgetsApp>(find.byType(WidgetsApp)).title;
+
+		// 平台亮度事件只重新投影同一份應用，不要求 consumer 提供 theme 或重送來源。
+		tester.platformDispatcher.platformBrightnessTestValue = Brightness.dark;
+		await tester.pump();
+		final dark = tester.widget<WidgetsApp>(find.byType(WidgetsApp)).color;
+		expect(dark, isNot(light));
+		expect(tester.widget<WidgetsApp>(find.byType(WidgetsApp)).title, title);
+		expect(source.value.title, title);
+		expect(tester.takeException(), isNull);
+	});
+
 	testWidgets('accessibility transitions preserve installed content, focus and action ownership', (tester) async {
 		final fixture = KlpEnvironmentHostFixture();
 		final source = KlpMutableState(fixture.application());

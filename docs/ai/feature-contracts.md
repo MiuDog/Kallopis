@@ -27,7 +27,7 @@
 
 ## 2. 建議使用的功能名稱
 
-`Workspace.Explorer / EXP-V1-r2` 已完成 API 替換，精確資料、能力、事件及宣告 → 組裝見 [Explorer 契約](explorer-model.md)；新外觀仍由 [Catalog](explorer-catalog.md) 接受。其他功能的 DEFINE 狀態不因此改變。
+`Workspace.Explorer / SFC-V1-r1` 已完成 semantic API 替換，精確 data、intent、controller 及宣告 → 組裝見 [Explorer 契約](explorer-model.md)；新外觀仍由 [Catalog](explorer-catalog.md) 接受。其他功能的 DEFINE 狀態不因此改變。
 
 本節名稱只描述 Kallopis 的產品無關能力。Planist 的功能採用、組合順序、路由目的及商業流程由使用者設計並保存在 Planist；不在本庫新增產品組裝層。下列 Workspace 前綴對應現有來源分類，並非要求 consumer 使用固定工作區模板。
 
@@ -38,7 +38,7 @@
 | `Workspace.Layout` | 工作區區域的組裝、角色與相鄰關係 | `KlpAppLayout`、`LayoutRow/Column`、`KlpAppFrame`、`KlpLayoutPane`、`LayoutSpacer/ResizeHandle`；`features/workspace/layout/klp_app_layout.dart` | 不是任意 Flutter 排版工具；嚴格位置與參數規則待本輪收斂。 |
 | `Workspace.Groups` | Frame 內的分群、內容與 footer 插槽 | `KlpFrameGroups`、`KlpFrameGroup`；`features/workspace/layout/klp_frame_groups.dart` | 不負責業務資料；不能用 padding 選項補償其他元件錯配。 |
 | `Workspace.Explorer` | 樹狀資料、選取、展開與命令輸入 | `KlpExplorer`、`KlpExplorerItemModel`；`features/workspace/explorer/` | Planist 擁有資料與操作結果，本庫擁有呈現；不可當作任意導航模板。 |
-| `Workspace.DocumentTabs` | 文件分頁資料及對應事件 | `KlpDocumentTabs`、`KlpDocumentTab`；`features/workspace/components/klp_document_tabs.dart` | 不掌管文件持久化或正文。 |
+| `Workspace.DocumentTabs` | 文件分頁不可變資料及單一 intent 出口 | `KlpDocumentTabs`、`KlpDocumentTabsData`、`KlpDocumentTabData`、`KlpDocumentTabsIntent`；`features/workspace/components/klp_document_tabs.dart` | 不掌管文件持久化或正文。 |
 | `Workspace.WindowControls` | 最小化、最大化／還原、關閉的宣告 | `KlpWindowControls`；`features/workspace/components/klp_window_controls.dart` | 原生操作需宿主能力，不由 consumer 提供 Widget。 |
 | `Workspace.Blocks` | 既有通用工作區區塊家族 | `KlpWorkspaceBlock`；`features/workspace/components/klp_workspace_block.dart` | 交接時必須進一步指定下表用途；不能只寫此家族名便自由選 kind。 |
 | `Workspace.Content` | 非正文引擎的文字、標題、提示、分隔、連結、勾選與群組資料 | `KlpWorkspaceContent`、`KlpWorkspaceContentBlock`；同上來源 | 不替代 BlockNote 正文權威。 |

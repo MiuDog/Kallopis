@@ -1,13 +1,8 @@
 import 'package:kallopis/kallopis_declarative.dart';
 
-import 'klp_runtime_demo/demo_primitives.dart';
-
 /// 示範 consumer 只用庫擁有元件、資料與 callback 更新唯一 application source。
 void main() {
 	final destination = KlpDestination<Object?, Object?>(KlpId.parse('demo.main'));
-	final firstStyle = demoPrimitives(alternate: false);
-	final secondStyle = demoPrimitives(alternate: true);
-	var alternate = false;
 	var count = 0;
 	late final KlpMutableState<KlpApplication> source;
 
@@ -16,7 +11,6 @@ void main() {
 
 		return KlpApplication(
 			title: 'Klp closed catalog demo | count: $count',
-			primitives: alternate ? secondStyle : firstStyle,
 			router: KlpRouter(
 				id: scope / 'router',
 				initial: destination.location(null),
@@ -46,15 +40,15 @@ void main() {
 															source.value = declaration();
 														},
 													),
-													KlpWorkspaceBlock(
-														id: scope / 'style',
-														kind: KlpWorkspaceBlockKind.action,
-														title: 'Switch primitive set',
-														onPressed: () {
-															alternate = !alternate;
-															source.value = declaration();
-														},
-													),
+											KlpWorkspaceBlock(
+												id: scope / 'reset',
+												kind: KlpWorkspaceBlockKind.action,
+												title: 'Reset count',
+												onPressed: () {
+													count = 0;
+													source.value = declaration();
+												},
+											),
 												],
 											),
 										],

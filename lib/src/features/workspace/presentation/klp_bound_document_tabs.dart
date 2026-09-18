@@ -4,9 +4,7 @@ part of 'klp_workspace_presentation.dart';
 /// 不屬使用端 API，不擁有文件選取、關閉或釘選狀態。
 final class KlpBoundDocumentTabs extends KlpBoundTemplate {
 	final List<KlpBoundDocumentTabData> tabs;
-	final void Function(KlpPlacementId)? onSelected;
-	final void Function(KlpPlacementId)? onClose;
-	final void Function(KlpPlacementId, bool)? onPinnedChanged;
+	final void Function(KlpDocumentTabsIntent)? onIntent;
 	final KlpColor background;
 	final KlpColor foreground;
 	final KlpColor selectedBackground;
@@ -18,5 +16,5 @@ final class KlpBoundDocumentTabs extends KlpBoundTemplate {
 	final KlpRadius radius;
 	final KlpStrokeWidth focusWidth;
 	final KlpBoundTextStyle textStyle;
-	const KlpBoundDocumentTabs({required this.tabs, required this.onSelected, required this.onClose, required this.onPinnedChanged, required this.background, required this.foreground, required this.selectedBackground, required this.mutedForeground, required this.focusColor, required this.extent, required this.inset, required this.gap, required this.radius, required this.focusWidth, required this.textStyle});
+	const KlpBoundDocumentTabs({required this.tabs, required this.onIntent, required this.background, required this.foreground, required this.selectedBackground, required this.mutedForeground, required this.focusColor, required this.extent, required this.inset, required this.gap, required this.radius, required this.focusWidth, required this.textStyle});
 }

@@ -57,7 +57,10 @@ void main() {
 		final changes = <(KlpId, bool)>[];
 		var unrelated = 0;
 		final category = KlpExplorerCategoryModel(id: explorerId('Empty'), row: KlpExplorerRowData(title: 'Empty'), capabilities: _toggle);
-		KlpExplorer tree(bool open) => KlpExplorer(id: explorerId('explorer'), data: explorerData([category], expanded: open ? {category.id} : {}), onExpandedChanged: (id, expanded) => changes.add((id, expanded)), onActivate: (_) => unrelated++, onSelectionChanged: (_) => unrelated++);
+		KlpExplorer tree(bool open) => KlpExplorer(id: explorerId('explorer'), data: explorerData([category], expanded: open ? {category.id} : {}), onIntent: (intent) {
+			if (intent case KlpExplorerExpansionRequested(:final itemId, :final expanded)) changes.add((itemId, expanded));
+			if (intent is! KlpExplorerExpansionRequested) unrelated++;
+		});
 
 		// 指標命中箭頭與標題都只提出展開，資料仍由 consumer 提交。
 		await harness.show(tester, tree(false));
@@ -86,7 +89,7 @@ void main() {
 		final category = KlpExplorerCategoryModel(id: explorerId('Category'), row: KlpExplorerRowData(title: 'Category'), capabilities: _toggle);
 		final fixed = KlpExplorerCategoryModel(id: explorerId('Fixed'), row: KlpExplorerRowData(title: 'Fixed'));
 		final node = explorerNode('Node', capabilities: _branch, children: [explorerNode('Child')]);
-		await harness.show(tester, KlpExplorer(id: explorerId('explorer'), data: explorerData([category, fixed, node])));
+		await harness.show(tester, KlpExplorer(id: explorerId('explorer'), data: explorerData([category, fixed, node]), onIntent: (_) {}));
 		for (final label in ['Expand Category', 'Expand Node']) {
 			final arrow = find.bySemanticsLabel(label);
 			expect(arrow, findsOneWidget);

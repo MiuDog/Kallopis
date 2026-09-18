@@ -92,7 +92,7 @@ void main() {
 				case 'action':
 					source.value = klpFileApplication(KlpPickFileAction(onPicked: second.add));
 				case 'style':
-					source.value = klpFileApplication(action, alternate: true);
+					source.value = klpFileApplication(action);
 				case 'source':
 					final newer = KlpMutableState(klpFileApplication(KlpPickFileAction(onPicked: second.add)));
 					addTearDown(newer.dispose);
@@ -125,7 +125,7 @@ void main() {
 		late KlpMutableState<KlpApplication> source;
 		final action = KlpPickFileAction(onPicked: (path) {
 			picked.add(path);
-			source.value = klpFileApplication(KlpPickFileAction(onPicked: picked.add), alternate: true);
+			source.value = klpFileApplication(KlpPickFileAction(onPicked: picked.add));
 		});
 		source = KlpMutableState(klpFileApplication(action));
 		addTearDown(source.dispose);
@@ -158,7 +158,7 @@ void main() {
 			FlutterError.onError = reports.add;
 			try {
 				klpFileActivation(tester)();
-				if (scenario == 'stale platform') source.value = klpFileApplication(action, alternate: true);
+				if (scenario == 'stale platform') source.value = klpFileApplication(action);
 				if (scenario == 'disposed platform') await klpUnmountFiles(tester);
 
 				if (scenario == 'callback') {
