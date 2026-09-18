@@ -1,9 +1,6 @@
 /// 宣告式框架遷移入口；目前為實驗實作，尚未作 Stable 承諾。
 library;
 
-export 'src/features/overlays/declarative/klp_menu.dart';
-export 'src/features/overlays/declarative/klp_menu_item.dart';
-
 // L0 — 核心識別與契約錯誤。
 export 'src/kernel/diagnostics/klp_contract_error.dart';
 export 'src/kernel/identity/klp_id.dart';
@@ -55,6 +52,8 @@ export 'src/foundation/templates/klp_axis.dart';
 // L4 — runtime 僅供庫內編譯與安裝，不提供 consumer 匯出。
 
 // L5 — 庫擁有、可組裝的功能節點與資料／事件契約。
+export 'src/features/overlays/declarative/klp_menu.dart';
+export 'src/features/overlays/declarative/klp_menu_item.dart';
 export 'src/features/editing/contracts/klp_editing_content.dart';
 export 'src/features/editing/contracts/klp_block_note_editing_content.dart';
 export 'src/features/editing/contracts/klp_canva_editing_content.dart';
