@@ -5,7 +5,7 @@ import 'package:flutter_test/flutter_test.dart';
 
 const _baselinePath = 'docs/architecture/catalog-migration/legacy-baseline.json';
 const _classificationPath = 'tool/catalog_classification/classification.json';
-const _acceptedSpecRevision = '5e4ad9599ace8c3d1e2949964ea0db1aca88ceb3';
+const _acceptedSpecRevision = '320d2a036c6b199c78e399579d5f8a7bbc752321';
 const _categories = {
 	'CAT-ACTION',
 	'CAT-APP',
@@ -33,6 +33,14 @@ const _roles = {
 	'implementation-material',
 	'system-contract',
 };
+const _compositionLevels = {
+	'container',
+	'element',
+	'internal',
+	'layout',
+	'none',
+	'screen',
+};
 
 void main() {
 
@@ -44,7 +52,7 @@ void main() {
 		final baseline = _read(_baselinePath);
 		final classification = _read(_classificationPath);
 		_expectFields(classification, {'schemaVersion', 'specRevision', 'reviewStatus', 'acceptedAt', 'items'});
-		expect(classification['schemaVersion'], 1);
+		expect(classification['schemaVersion'], 2);
 		expect(classification['specRevision'], _acceptedSpecRevision);
 		_validateReviewState(classification);
 
@@ -58,12 +66,22 @@ void main() {
 
 		// 每筆只保存分類資料，後續 module 與 migration 處置不能提前滲入。
 		for (final item in items) {
-			_expectFields(item, {'legacyName', 'consumerIntent', 'primaryCategory', 'secondaryCategories', 'role'});
+			_expectFields(item, {
+				'legacyName',
+				'consumerIntent',
+				'primaryCategory',
+				'secondaryCategories',
+				'role',
+				'compositionLevel',
+				'compositionRationale',
+			});
 			final name = _string(item, 'legacyName');
 			final intent = _string(item, 'consumerIntent').trim();
 			final primary = _string(item, 'primaryCategory');
 			final secondary = _strings(item['secondaryCategories']);
 			final role = _string(item, 'role');
+			final compositionLevel = _string(item, 'compositionLevel');
+			final compositionRationale = _string(item, 'compositionRationale').trim();
 			expect(intent, isNotEmpty, reason: name);
 			expect(intent, isNot(contains(name)), reason: '$name intent must describe consumer work, not the class.');
 			expect(intent, isNot(matches(RegExp(r'\b(class|module|layer)\b|(?:^|/)lib/|(?:^|/)src/'))), reason: '$name intent must not derive classification from implementation.');
@@ -73,8 +91,25 @@ void main() {
 			expect(secondary, isNot(contains(primary)), reason: '$name primary must not be repeated as secondary.');
 			expect(secondary.every(_categories.contains), isTrue, reason: name);
 			expect(_roles, contains(role), reason: name);
+			expect(_compositionLevels, contains(compositionLevel), reason: name);
+			expect(compositionRationale, isNotEmpty, reason: '$name must explain its composition level.');
+			expect(compositionRationale, isNot(contains(name)), reason: '$name composition rationale must not depend on the legacy class name.');
+			_expectRoleLevelConsistency(name, role, compositionLevel);
 		}
 	});
+}
+
+void _expectRoleLevelConsistency(String name, String role, String level) {
+
+	final allowedLevels = switch (role) {
+		'consumer-capability' => {'screen', 'layout', 'container', 'element'},
+		'composition-part' => {'container', 'element'},
+		'implementation-material' => {'internal'},
+		'catalog-artifact' => {'none'},
+		'system-contract' => {'container', 'element', 'none'},
+		_ => const <String>{},
+	};
+	expect(allowedLevels, contains(level), reason: '$name role $role cannot use composition level $level.');
 }
 
 Map<String, dynamic> _read(String path) {
