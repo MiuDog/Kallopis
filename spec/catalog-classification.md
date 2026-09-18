@@ -3,7 +3,7 @@
 擁有語意：Catalog taxonomy（文件與遷移治理，不是 runtime module）  
 階段：DEFINE／0→1  
 目標階段：`CAT-TAX-01`  
-狀態：NOT READY；等待使用者接受分類集合與多重用途規則  
+狀態：DEFINE READY；使用者於 2026-09-18 接受 18 個第一層分類與單一 primary／多個 secondary tags  
 能力地平線：固定 254 項先完成重新分類，再形成能力家族、公開處置與 module ownership；之後才恢復逐家族遷移。
 
 ## 目標與動機
@@ -18,8 +18,8 @@ Catalog 必須先回答 consumer「我要完成哪一類產品工作」，不能
 | --- | --- | --- | --- | --- | --- |
 | TAX-01 | CAT-TAX-01 | P1 | 分類依 consumer 產品意圖，不依現有資料夾、架構層或舊 Catalog 頁面。 | 每項分類理由能以「consumer 用它完成什麼」描述；移動原始碼不改變分類。 | accepted |
 | TAX-02 | CAT-TAX-01 | P1 | 分類、能力家族、公開處置、module ownership 分階段決定。 | 逐項資料在分類接受前沒有正式 owner；module 欄位不能作為分類輸入。 | accepted |
-| TAX-03 | CAT-TAX-01 | P1 | 採用本規格經 254 項壓力測試後提出的 18 個第一層分類。 | 254 項各有且只有一個 primary category；無法歸類者必須回到分類定義，不得用 `misc`。 | open |
-| TAX-04 | CAT-TAX-01 | P1 | 跨用途項目採一個 primary category 加零至多個 secondary tags；primary 依主要 consumer 任務決定。 | 同一項不複製計數；secondary tag 不產生第二個 owner 或第二份公開 API。 | open |
+| TAX-03 | CAT-TAX-01 | P1 | 採用本規格經 254 項壓力測試後提出的 18 個第一層分類。 | 254 項各有且只有一個 primary category；無法歸類者必須回到分類定義，不得用 `misc`。 | accepted |
+| TAX-04 | CAT-TAX-01 | P1 | 跨用途項目採一個 primary category 加零至多個 secondary tags；primary 依主要 consumer 任務決定。 | 同一項不複製計數；secondary tag 不產生第二個 owner 或第二份公開 API。 | accepted |
 | TAX-05 | CAT-TAX-01 | P1 | 每項另標記 catalog role，區分可直接選用能力與應被吸收的實作材料。 | 低階 layout／interaction／surface class 不會只因有 demo 就被當成新版公開元件承諾。 | accepted |
 | TAX-06 | CAT-TAX-01 | P1 | 固定 254 項全部完成分類與理由後，才允許建立能力家族與 module ownership。 | 有機械檢查證明 254/254 皆具合法 primary category、role、consumer intent 與來源；owner 欄仍為空。 | accepted |
 | TAX-07 | CAT-TAX-01 | P1 | 已完成的 `KlpMenu`、`KlpMenuItem` 與 `KlpExplorer` 證據保留，但也要納入新分類。 | coverage 維持 2 migrated、1 preserved、251 pending；重新分類不回退程式或視覺接受結果。 | accepted |
@@ -137,9 +137,6 @@ role 與分類正交，每個固定項目必須擇一：
 - 人類審核分類定義及跨用途規則；程式檢查不代替其語意接受。
 - coverage 與已完成程式證據在分類階段不得改動。
 
-## Open P1
+## DEFINE 閘門
 
-- `TAX-03`：是否接受上述 18 個第一層分類。
-- `TAX-04`：是否接受「一個 primary category＋secondary tags」而不是讓同一項同時屬於多個第一層分類。
-
-兩項接受後，本規格才可標記 DEFINE READY；下一階段只會建立 254 項分類清冊與 verifier，不會同時決定 module。
+`TAX-01`～`TAX-10` 全部 accepted，沒有 open P1。下一階段只建立 254 項分類清冊、verifier 與人類審閱輸出，不會同時決定 module。
