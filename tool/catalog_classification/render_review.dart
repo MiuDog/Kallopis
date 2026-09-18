@@ -28,6 +28,7 @@ String _render(CatalogClassificationSnapshot snapshot) {
 		groups[item.primaryCategory]!.add(item);
 	}
 	final roleCounts = {for (final role in catalogRoles) role: snapshot.items.where((item) => item.role == role).length};
+	final levelCounts = {for (final level in catalogCompositionLevels) level: snapshot.items.where((item) => item.compositionLevel == level).length};
 	final buffer = StringBuffer()
 		..writeln('# 固定 Catalog 分類審閱')
 		..writeln()
@@ -54,6 +55,15 @@ String _render(CatalogClassificationSnapshot snapshot) {
 	for (final role in catalogRoles.toList()..sort()) {
 		buffer.writeln('| `$role` | ${roleCounts[role]} |');
 	}
+	buffer
+		..writeln()
+		..writeln('## Composition level 摘要')
+		..writeln()
+		..writeln('| Level | 項數 |')
+		..writeln('| --- | ---: |');
+	for (final level in catalogCompositionLevels.toList()..sort()) {
+		buffer.writeln('| `$level` | ${levelCounts[level]} |');
+	}
 
 	for (final category in catalogCategoryTitles.entries) {
 		final items = groups[category.key]!;
@@ -75,6 +85,8 @@ String _render(CatalogClassificationSnapshot snapshot) {
 				..writeln()
 				..writeln('- Consumer intent：${item.consumerIntent}')
 				..writeln('- Role：`${item.role}`')
+				..writeln('- Composition level：`${item.compositionLevel}`')
+				..writeln('- Composition rationale：${item.compositionRationale}')
 				..writeln('- Secondary：$secondary')
 				..writeln('- 舊 Catalog：${legacy.pageTitle}（`${legacy.pageLabel}`）')
 				..writeln('- 舊來源：$sources')

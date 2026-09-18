@@ -28,8 +28,16 @@ const catalogRoles = {
 	'implementation-material',
 	'system-contract',
 };
+const catalogCompositionLevels = {
+	'container',
+	'element',
+	'internal',
+	'layout',
+	'none',
+	'screen',
+};
 const _topLevelFields = {'schemaVersion', 'specRevision', 'reviewStatus', 'acceptedAt', 'items'};
-const _itemFields = {'legacyName', 'consumerIntent', 'primaryCategory', 'secondaryCategories', 'role'};
+const _itemFields = {'legacyName', 'consumerIntent', 'primaryCategory', 'secondaryCategories', 'role', 'compositionLevel', 'compositionRationale'};
 final _implementationReference = RegExp(r'\b(class|module|layer)\b|(?:^|/)lib/|(?:^|/)src/');
 
 void main(List<String> args) {
@@ -56,7 +64,7 @@ CatalogClassificationSnapshot loadAndVerifyClassification({required String basel
 
 	// 步驟 2：驗證分類頂層狀態與每筆封閉資料契約。
 	_requireFields(classification, _topLevelFields, 'classification');
-	_require(classification['schemaVersion'] == 1, 'schemaVersion must be 1.');
+	_require(classification['schemaVersion'] == 2, 'schemaVersion must be 2.');
 	final specRevision = _string(classification, 'specRevision', 'classification');
 	final reviewStatus = _string(classification, 'reviewStatus', 'classification');
 	final acceptedAt = classification['acceptedAt'];
@@ -100,8 +108,18 @@ final class CatalogClassificationItem {
 	final String primaryCategory;
 	final List<String> secondaryCategories;
 	final String role;
+	final String compositionLevel;
+	final String compositionRationale;
 
-	const CatalogClassificationItem({required this.legacyName, required this.consumerIntent, required this.primaryCategory, required this.secondaryCategories, required this.role});
+	const CatalogClassificationItem({
+		required this.legacyName,
+		required this.consumerIntent,
+		required this.primaryCategory,
+		required this.secondaryCategories,
+		required this.role,
+		required this.compositionLevel,
+		required this.compositionRationale,
+	});
 }
 
 final class LegacyCatalogEntry {
@@ -121,6 +139,8 @@ CatalogClassificationItem _classificationItem(Map<String, dynamic> row) {
 	final primary = _string(row, 'primaryCategory', name);
 	final secondary = _strings(row['secondaryCategories'], '$name.secondaryCategories');
 	final role = _string(row, 'role', name);
+	final compositionLevel = _string(row, 'compositionLevel', name);
+	final compositionRationale = _string(row, 'compositionRationale', name).trim();
 	_require(intent.isNotEmpty, '$name consumerIntent must not be empty.');
 	_require(!intent.contains(name) && !_implementationReference.hasMatch(intent), '$name consumerIntent must describe consumer work without implementation references.');
 	_require(catalogCategoryTitles.containsKey(primary), '$name has unknown primaryCategory $primary.');
@@ -129,13 +149,30 @@ CatalogClassificationItem _classificationItem(Map<String, dynamic> row) {
 	_require(!secondary.contains(primary), '$name primaryCategory must not repeat in secondaryCategories.');
 	_require(secondary.every(catalogCategoryTitles.containsKey), '$name has an unknown secondary category.');
 	_require(catalogRoles.contains(role), '$name has unknown role $role.');
+	_require(catalogCompositionLevels.contains(compositionLevel), '$name has unknown compositionLevel $compositionLevel.');
+	_require(compositionRationale.isNotEmpty && !compositionRationale.contains(name), '$name compositionRationale must explain the level without using the legacy class name.');
+	_validateRoleLevel(name, role, compositionLevel);
 	return CatalogClassificationItem(
 		legacyName: name,
 		consumerIntent: intent,
 		primaryCategory: primary,
 		secondaryCategories: List.unmodifiable(secondary),
 		role: role,
+		compositionLevel: compositionLevel,
+		compositionRationale: compositionRationale,
 	);
+}
+
+void _validateRoleLevel(String name, String role, String level) {
+	final allowedLevels = switch (role) {
+		'consumer-capability' => {'screen', 'layout', 'container', 'element'},
+		'composition-part' => {'container', 'element'},
+		'implementation-material' => {'internal'},
+		'catalog-artifact' => {'none'},
+		'system-contract' => {'container', 'element', 'none'},
+		_ => const <String>{},
+	};
+	_require(allowedLevels.contains(level), '$name role $role cannot use compositionLevel $level.');
 }
 
 Map<String, LegacyCatalogEntry> _legacyEntries(Map<String, dynamic> baseline) {
