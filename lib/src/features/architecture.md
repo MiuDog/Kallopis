@@ -1,5 +1,24 @@
 # Features 模組架構
 
+## SFC-V1-r1：Semantic feature consumer contract
+
+當前階段狀態：PLAN READY。精確公開形狀、生命週期、錯誤、配對 packets、估算與異常門檻見 [SFC-V1-r1 配對計畫](../../../docs/architecture/semantic-feature-contract-plan/README.md)。本節接替下方已完成 v1 目錄切片的「當前階段」描述，但不改寫其實作證據。
+
+本階段只將 Explorer 與 Document Tabs 改為統一 semantic feature 契約：`final` declaration、immutable data projection、單一 feature-specific sealed intent，以及只在一次性命令需求時才存在的 feature-specific controller。Features 擁有公開契約、adapter、bound record 與 controller 套件內 port；不執行產品 repository、不保存第二份 consumer state，不暴露 Flutter 物件。
+
+當前 write boundary 限於 `workspace/explorer/**`、`workspace/components/klp_document_tabs.dart` 與兩者直接的 workspace adapter／presentation contracts。Menu、Anchored Popup、Workspace Block、Window Controls、editing controls、raw layout／frame style 及其他 Catalog 家族只列 non-conforming gap，不可併入 r1。
+
+本階段新增不變條件：
+
+- 互動可用性由 data projection 表達，不從 callback 是否為 null 推導。
+- Feature 只透過單一 `onIntent` 輸出使用者意圖；item-level callback、permission predicate 與舊具名 callbacks 不保留 shim。
+- Explorer drop preview／commit 共用 immutable acceptance snapshot，不在 renderer 時機回呼 consumer 查詢。
+- Controller 同時只附接一個 live placement，不排隊未附接命令，frame 取代後回傳 typed superseded。
+- `KlpDocumentTab` 改為 feature data item，不再是 consumer 可單獨放置的 catalog node。
+- 現有 Explorer 資料、鍵盤、焦點、drag／drop、Document Tabs 選取／關閉／釘選行為及已接受視覺保留；改變的是 consumer contract 與資料方向。
+
+測試路徑、本模組 `architecture.md`、Catalog baseline／coverage 與任何第三個 feature family 對 BUILD worker 保護。必須先由獨立 Test Author 固定 Red，實作 worker 不得修弱斷言。
+
 ## CAT-MIG-01：舊 Catalog 全面遷移的選單切片
 
 當前新增切片依 [CM-01 共通契約](../../../docs/architecture/catalog-migration/README.md) 配對，PLAN READY。僅授權該契約列出的本模組路徑；既有已接受元件、全域 preset 與其他階段保持。最終以固定舊 Catalog 基準逐項完成新版後刪除舊元件，不能以此首批宣稱全面完成。

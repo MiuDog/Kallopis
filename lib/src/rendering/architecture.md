@@ -1,5 +1,15 @@
 # Rendering 模組架構
 
+## SFC-V1-r1：Explorer／Document Tabs intent 與 controller 實現配對
+
+當前新增 stage 狀態：PLAN READY。共通契約見 [SFC-V1-r1](../../../docs/architecture/semantic-feature-contract-plan/README.md)；本節不改寫下方已完成 rendering v1／Explorer 視覺證據。
+
+Rendering 只將現有 Explorer 與 Document Tabs 指標、鍵盤、焦點、drag／drop 操作改為消費 features-owned bound intent sink／controller port。不定義 public intent，不讀寫 consumer state，不對 consumer 暴露 FocusNode、ScrollController 或 Widget。舊 callback 只能在同一切片移除，不得與新 `onIntent` 並存。
+
+Explorer drop 只接受 bound acceptance snapshot 已列出的精確 source／target／placement；preview 與 commit 使用同一 snapshot。Controller `focusItem`／`revealItem` 以 placement／frame lease 保護，未附接、找不到目標與 frame 取代都回傳 typed result，不丟出晚到平台效果。
+
+本模組 write boundary 限 `flutter/internal/klp_flutter_explorer.dart`、承載 Document Tabs 的 workspace renderer 直接分支，以及當且僅當這兩者共用才必要的私有 helper。其他 renderer、視覺 recipe、全域焦點架構、測試與本模組契約對 BUILD worker 保護。
+
 ## CAT-MIG-01：舊 Catalog 全面遷移的選單切片
 
 當前新增切片依 [CM-01 共通契約](../../../docs/architecture/catalog-migration/README.md) 配對，PLAN READY。僅授權該契約列出的本模組路徑；既有已接受元件、全域 preset 與其他階段保持。最終以固定舊 Catalog 基準逐項完成新版後刪除舊元件，不能以此首批宣稱全面完成。

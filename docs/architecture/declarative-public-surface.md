@@ -1,15 +1,26 @@
 # 宣告式公開面清冊
 
-狀態：2026-09-14，架構 v1 目前真相。
+狀態：2026-09-18，架構 v1 現況與 SFC-V1-r1 已接受目標。
 
 `package:kallopis/kallopis_declarative.dart` 是新 consumer 的唯一元件來源。公開面按 `lib/src/architecture.md` 的 L0–L7 排列；一個匯出只能有一個擁有模組與一個責任層級。Dart 能直接匯入 `lib/src` 不代表該路徑是受支援 API。
+
+## SFC-V1-r1 已接受收窪
+
+[SFC-V1-r1](semantic-feature-contract-plan/README.md) 已接受下列目標，實作完成前必須將現行匯出與目標分開解讀：
+
+- L1 styling primitives／workspace preset 將從 declarative 入口移除；`KlpApplication` 將不再接收 consumer-supplied primitives。Stable theme／legacy libraries 依原相容契約保留。
+- L5 semantic feature 使用 declaration／immutable data／single feature-specific intent／optional feature-specific controller；不保留多 callback 或 item-level callback 第二路徑。
+- `KlpAction` 僅用於具體、跨 feature 的 application host 命令；任意 `KlpCallbackAction` 將從 declarative 入口移除。
+- Layout／frame 現行 flex／spacing／style 匯出仍是已知 non-conforming gap；在後續獨立 PLAN 改為具名語意 slots 前，不得標示它們符合 KLP-0021 consumer-ready。
+
+SFC-V1-r1 的第一實作階段只縱向替換 Application visual authority、Explorer 與 Document Tabs；其他公開 feature 維持明示 gap，不藉此自動宣稱遷移。
 
 ## 層級與公開類別
 
 | 層級 | 擁有模組 | 宣告式入口公開內容 | 不公開內容 |
 | --- | --- | --- | --- |
 | L0 | `kernel` | 契約錯誤、節點與 placement 識別 | 模組實作細節 |
-| L1 | `capabilities`、`styling` | 狀態、資料、`KlpAction`、導覽值、固定 primitive schema 與庫擁有 preset | action handler／activation、semantic schema／key／token、style reference、resolver |
+| L1 | `capabilities`、`styling` | 現行為狀態、資料、`KlpAction`、導覽值、固定 primitive schema 與庫擁有 preset；SFC-V1-r1 移除 declarative styling 匯出 | action handler／activation、semantic schema／key／token、style reference、resolver |
 | L2 | `composition` | 庫擁有節點的共同資格、adaptive strategy、受限 slot／children／screen body | definition、registry、validation／validated tree、catalog authoring |
 | L3 | `foundation` | 組裝現有節點需要的平台、自適應、識別 scope 與 axis 值 | template、text semantics、prepared/bound records、component compiler |
 | L4 | `runtime` | 無 consumer 匯出 | adapter、compiler、installation、resource、transaction |
@@ -21,7 +32,7 @@
 
 - Consumer 只能建立此入口已公開的具體節點，並在節點建構子提供的具名插槽中組裝其他已公開節點。
 - `KlpNode`、`KlpSlot<C>` 等資格只描述庫擁有節點之間的結構限制；實作資格不會把 consumer 型別加入 catalog。
-- 樣式輸入只有完整 `KlpPrimitiveSet`。Semantic key、schema、reference 與 template 都由 Kallopis 元件擁有者在庫內定義。
+- 現行實作仍以完整 `KlpPrimitiveSet` 作樣式輸入；SFC-V1-r1 完成後 consumer 將沒有任何 declarative 樣式輸入。Semantic key、schema、reference、preset 與 template 都由 Kallopis 在庫內定義與選擇。
 - Consumer 可以傳入 `KlpAction`，但 action 的 activation、handler、placement lease 與派送生命週期由 application/runtime 擁有。
 - 新元件必須經過擁有模組的架構切片，建立唯一 identity、受限插槽、庫擁有 adapter 與 renderer 分支；不能以公開 registry、definition 或自訂 rail item 動態加入。
 

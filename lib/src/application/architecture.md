@@ -1,5 +1,17 @@
 # Application 模組架構
 
+## SFC-V1-r1：Application visual authority
+
+當前新增 stage 狀態：PLAN READY。精確契約與配對順序見 [SFC-V1-r1](../../../docs/architecture/semantic-feature-contract-plan/README.md)。
+
+`KlpApplication` 當前要求 consumer 傳入 `KlpPrimitiveSet primitives`，且 `kallopis_declarative.dart` 目前匯出 primitive／style／preset 型別；這與 KLP-0021 已接受的封閉呈現相衝突。SFC-V1-r1 將移除該 public constructor 輸入，改由 application host 依 Kallopis-owned environment 選擇 Kallopis 內建 preset。不新增 consumer theme mode、preset selector、token override 或第二 environment 權威。
+
+既有私有 `KlpApplicationEnvironment` 增加由唯一 observer 從平台亮度投影的 `KlpApplicationAppearance.light／dark`。Host 在一次 accept 中固定同一份 appearance 與 adaptive context，session 保存 appearance，commit 才選擇 styling 擁有的固定 warm `KlpWorkspacePreset.light／dark`。平台亮度變更只以目前 application 與原 navigation snapshot 重投影，不重啟資料來源、導覽 machine 或 consumer state；Flutter `Brightness` 不離開 application 私有邊界。
+
+本模組 write boundary 限 `structure/klp_application.dart`、`environment/klp_application_environment.dart`、`environment/klp_application_environment_observer.dart`、`bootstrap/internal/klp_application_host_state.dart`、`bootstrap/internal/klp_application_session.dart` 與 `bootstrap/internal/klp_application_session_commit.dart`。路由、導覽還原、l10n 委派、內建 adapter 順序、Stable `KlpApp`／`kallopis_theme.dart`、測試與本契約對 BUILD worker 保護。
+
+根 barrel 移除 styling exports、Catalog 測試宿主與 consumer 範例調整由 integration steward 擁有，application worker 不跨出本模組修改公開清冊。
+
 ## CAT-MIG-01：舊 Catalog 全面遷移的選單切片
 
 當前新增切片依 [CM-01 共通契約](../../../docs/architecture/catalog-migration/README.md) 配對，PLAN READY。僅授權該契約列出的本模組路徑；既有已接受元件、全域 preset 與其他階段保持。最終以固定舊 Catalog 基準逐項完成新版後刪除舊元件，不能以此首批宣稱全面完成。

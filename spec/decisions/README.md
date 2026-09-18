@@ -6,7 +6,7 @@
 
 Kallopis 遷移：[KLP-0019](KLP-0019-declarative-framework-migration.md)，Implementing。此狀態表示方向已獲使用者核准、程式尚未全部符合；不能當成 Accepted。新功能與 primitive 權限依該文件，原決策保留舊 API 的歷史與過渡範圍。
 
-生產力 App 元件生態：[KLP-0021](KLP-0021-productivity-component-ecosystem.md)，Implementing／DEFINE READY。維持禁止 consumer Widget，改以完整的產品無關生產力能力與意圖導向 Consumer Reference 為主要責任；能力地平線已接受，實際清冊、reference 與缺口補齊尚未完成。
+生產力 App 元件生態：[KLP-0021](KLP-0021-productivity-component-ecosystem.md)，Implementing／DEFINE READY。維持禁止 consumer Widget 與呈現自訂，改以完整的產品無關生產力能力、統一 semantic feature 消費契約與意圖導向 Consumer Reference 為主要責任；`PE-B1`～`PE-B4` 已完成確定性驗證，可理解性待人類接受，其餘能力缺口與固定 Catalog 遷移仍進行中。
 
 | 編號 | 題目 | 狀態 |
 |---|---|---|
