@@ -1,8 +1,10 @@
 import 'package:kallopis/src/features/workspace/presentation/klp_workspace_presentation.dart';
+import 'package:kallopis/src/features/workspace/components/klp_document_tabs.dart';
 import 'dart:async';
 import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
 import 'package:kallopis/src/foundation/binding/contracts/klp_bound_text_style.dart';
+import 'package:kallopis/src/foundation/localization/klp_localizations.dart';
 import 'package:kallopis/src/styling/primitives/klp_style_value.dart';
 import 'klp_flutter_lucide_icon.dart';
 import 'klp_flutter_values.dart';
@@ -24,13 +26,14 @@ final class _DocumentTab extends StatelessWidget {
 	const _DocumentTab({required this.content, required this.tab});
 	@override
 	Widget build(BuildContext context) {
-		final label = tab.dirty ? '${tab.label}, Modified' : tab.label;
+		final localizations = KlpLocalizations.of(context);
+		final label = tab.dirty ? '${tab.label}, ${localizations.documentTabModifiedLabel}' : tab.label;
 		return DecoratedBox(
 			decoration: BoxDecoration(color: klpFlutterColor(tab.selected ? content.selectedBackground : content.background), borderRadius: BorderRadius.circular(content.radius.value)),
 			child: Row(mainAxisSize: MainAxisSize.min, children: [
-				_ActionSurface(label: label, selected: tab.selected, onActivate: content.onSelected == null ? null : () => content.onSelected!(tab.id), interactionColor: content.selectedBackground, radius: content.radius.value, child: Padding(padding: EdgeInsets.symmetric(horizontal: content.inset.value), child: Row(mainAxisSize: MainAxisSize.min, children: [Text(tab.label, style: _tabsTextStyle(content, content.foreground)), if (tab.dirty) Text(' •', style: _tabsTextStyle(content, content.mutedForeground))]))),
-				_ActionSurface(label: '${tab.pinned ? 'Unpin' : 'Pin'} ${tab.label}', selected: tab.pinned, onActivate: content.onPinnedChanged == null ? null : () => content.onPinnedChanged!(tab.id, !tab.pinned), interactionColor: content.selectedBackground, radius: content.radius.value, child: Padding(padding: EdgeInsets.all(content.inset.value), child: KlpFlutterLucideIcon(tab.pinned ? 'pin-off' : 'pin', size: content.textStyle.fontSize.value, color: klpFlutterColor(content.mutedForeground)))),
-				if (tab.closable) _ActionSurface(label: 'Close ${tab.label}', onActivate: content.onClose == null ? null : () => content.onClose!(tab.id), interactionColor: content.selectedBackground, radius: content.radius.value, child: Padding(padding: EdgeInsets.all(content.inset.value), child: Text('×', style: _tabsTextStyle(content, content.mutedForeground)))),
+				_ActionSurface(label: label, selected: tab.selected, onActivate: !tab.selectable || content.onIntent == null ? null : () => content.onIntent!(KlpDocumentTabSelectionRequested(tab.id)), interactionColor: content.selectedBackground, radius: content.radius.value, child: Padding(padding: EdgeInsets.symmetric(horizontal: content.inset.value), child: Row(mainAxisSize: MainAxisSize.min, children: [Text(tab.label, style: _tabsTextStyle(content, content.foreground)), if (tab.dirty) Text(' •', style: _tabsTextStyle(content, content.mutedForeground))]))),
+				if (tab.pinnable) _ActionSurface(label: '${tab.pinned ? localizations.documentTabUnpinLabel : localizations.documentTabPinLabel} ${tab.label}', selected: tab.pinned, onActivate: content.onIntent == null ? null : () => content.onIntent!(KlpDocumentTabPinRequested(tab.id, !tab.pinned)), interactionColor: content.selectedBackground, radius: content.radius.value, child: Padding(padding: EdgeInsets.all(content.inset.value), child: KlpFlutterLucideIcon(tab.pinned ? 'pin-off' : 'pin', size: content.textStyle.fontSize.value, color: klpFlutterColor(content.mutedForeground)))),
+				if (tab.closable) _ActionSurface(label: '${localizations.documentTabCloseLabel} ${tab.label}', onActivate: content.onIntent == null ? null : () => content.onIntent!(KlpDocumentTabCloseRequested(tab.id)), interactionColor: content.selectedBackground, radius: content.radius.value, child: Padding(padding: EdgeInsets.all(content.inset.value), child: Text('×', style: _tabsTextStyle(content, content.mutedForeground)))),
 			]),
 		);
 	}
