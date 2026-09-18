@@ -1,6 +1,6 @@
 # Catalog classification tool
 
-狀態：`CAT-TAX-01` PLAN REVISION REQUIRED。接受規格已新增 TAX-11～14 的公開語意邊界；現有 254 筆 proposed 資料與 review 是重審輸入，不是可接受結果。下一個 PLAN 必須把全項 role／intent 語意稽核納入 slice，仍不決定 owning module、公開 API 或 migration 處置。
+狀態：`CAT-TAX-01` PLAN REVISION REQUIRED。接受規格已新增 TAX-11～15 的公開語意邊界；現有 254 筆 proposed 資料與 review 是重審輸入，不是可接受結果。下一個 PLAN 必須把資料／功能群組注入、語意原子受控組合與 Kallopis 元件樹所有權的全項 role／intent 稽核納入 slice，仍不決定 owning module、公開 API 或 migration 處置。
 
 ## 目的與邊界
 
@@ -52,7 +52,7 @@ dart run tool/catalog_classification/render_review.dart
 
 items 依 `legacyName` 排序。baseline 與 classification 名稱集合必須完全相等且恰為 254；分類不得出現 `owner`、`module`、`package`、`layer`、`disposition`、`replacement` 或同義欄位。Verifier 不從舊頁面、來源路徑或舊能力 map 自動決定分類。
 
-`specRevision` 必須指向包含已接受 TAX-01～14 的 Git commit。`reviewStatus=proposed` 可以通過資料完整性，但不能解除 migration 暫停；只有 254 筆依新語意邊界重審、重新產生 review 並由使用者審閱後，才能更新為 accepted。
+`specRevision` 必須指向包含已接受 TAX-01～15 的 Git commit。`reviewStatus=proposed` 可以通過資料完整性，但不能解除 migration 暫停；只有 254 筆依新語意邊界重審、重新產生 review 並由使用者審閱後，才能更新為 accepted。
 
 ## 責任與依賴方向
 
@@ -64,7 +64,7 @@ accepted taxonomy spec + immutable legacy baseline
   → human acceptance
 ```
 
-分類資料由 taxonomy owner 逐項判斷，renderer 只做 deterministic projection；禁止用舊 capability ID、檔案路徑或 regex 批次決定 primary。每項還必須用 TAX-11～14 判斷它是語意能力、封閉 composition part，或應吸收的 primitive／view implementation。Verifier 擁有資料形狀與集合完整性，不判斷分類語意是否合理；語意由人類審閱。
+分類資料由 taxonomy owner 逐項判斷，renderer 只做 deterministic projection；禁止用舊 capability ID、檔案路徑或 regex 批次決定 primary。每項還必須用 TAX-11～15 判斷它是語意能力、語意原子、封閉功能群組／composition part，或應吸收的 primitive／renderer implementation；不以支援多 view 作為通過條件。Verifier 擁有資料形狀與集合完整性，不判斷分類語意是否合理；語意由人類審閱。
 
 採用 JSON source＋generated Markdown，因為 JSON 適合精確集合驗證，Markdown 適合按分類審閱。否決以 Markdown table 作機械權威，因為 escaping 與人工排版會使解析脆弱；也否決只保留 JSON，因為 254 筆資料不利於人類按分類檢查。
 
@@ -72,7 +72,7 @@ accepted taxonomy spec + immutable legacy baseline
 
 ### `TAX-R` — Semantic exposure re-audit
 
-寫入：更新本 architecture 後另行指定的 classification／review 路徑。逐項套用 TAX-11～14，特別重審所有 layout、surface、List／Grid／Masonry／virtualization 與任意 children 候選；不得把舊 class 名稱直接視為公開能力。輸出仍保持 `reviewStatus=proposed`，等待人類接受。
+寫入：更新本 architecture 後另行指定的 classification／review 路徑。逐項套用 TAX-11～15，特別重審所有 layout、surface、List／Grid／Masonry／virtualization 與任意 children 候選；判斷 consumer 注入的是語意原子、封閉資料／功能群組，還是實際上仍在組裝元件樹。不得把舊 class 名稱直接視為公開能力，也不得強迫每項支援多 view。輸出仍保持 `reviewStatus=proposed`，等待人類接受。
 
 本 slice 尚未 PLAN READY；需要先更新 testable metadata 與 write boundary。以下已完成 slices 保留為歷史證據，不代表新版語意審核完成。
 
@@ -100,6 +100,6 @@ taxonomy owner 僅在使用者審閱 generated `review.md` 並明確接受後，
 
 ## 驗證、錯誤與保護
 
-當前 test state 為 Yellow：舊分類的 contract test、verifier 與 deterministic review 已 Green，但 TAX-11～14 尚未反映到逐項資料與可機械審閱的 metadata。既有 254/254 只證明集合完整，不證明公開語意邊界正確；人類分類語意接受另列，不由程式推定。
+當前 test state 為 Yellow：舊分類的 contract test、verifier 與 deterministic review 已 Green，但 TAX-11～15 尚未反映到逐項資料與可機械審閱的 metadata。既有 254/254 只證明集合完整，不證明公開語意邊界正確；人類分類語意接受另列，不由程式推定。
 
 受保護：`spec/**`、`docs/architecture/catalog-migration/legacy-baseline.json`、`coverage.json`、既有 migration evidence、`lib/**`、`example/**`、其他 tests、build 設定與本 `architecture.md`。目前停止 BUILD；下一步由 PLAN 更新 TAX-R 的資料欄位、獨立檢查、write paths 與驗收，不得直接修改 runtime API。
