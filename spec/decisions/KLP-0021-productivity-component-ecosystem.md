@@ -40,6 +40,10 @@ Kallopis 的主要職責改為提供完整生產力 App 所需的通用元件生
 | PE-20 | v1 | P1 | 新 declarative consumer 只能透過 `kallopis_declarative.dart` 明列的 API 提供產品資料、內容、語意狀態、intent 處理與合法 Kallopis 組裝。Kallopis 不暴露任何 API 之外的自訂入口，尤其完整擁有視覺風格與互動呈現。 | 公開 declarative 契約不接受 theme／style／token 覆寫、顏色、字型、間距、尺寸、圓角、陰影、動畫參數、Widget、builder、`BuildContext`、painter、renderer、Flutter controller 或 consumer component／adapter 註冊；destructive、selected 等僅為語意，實際外觀由 Kallopis 決定。 | accepted |
 | PE-21 | v1 | P1 | Semantic feature 的程式契約完成與人類視覺／可理解性接受分開記錄。Consumer-ready 至少需有語意邊界、完整公開形狀、合法組裝、適用的功能狀態、鍵盤／焦點／accessibility、唯一呈現路徑、可操作 Catalog、consumer reference 及 deterministic evidence。 | 程式接通但契約不完整者不能標示 consumer-ready；自動證據不代替人類對視覺、操作方式與體驗的接受。 | accepted |
 | PE-22 | v1 | P1 | 失敗依責任分流：非法組裝、重複 ID 與錯誤 slot 等開發契約違反使用具穩定 code 的 `KlpContractError`；載入失敗、權限拒絕與資料不存在等預期結果使用 typed projection state、intent 或 controller result；非預期 Kallopis／provider 錯誤由唯一 host 診斷。 | 契約錯誤不被靜默修正；預期失敗不以未分類例外取代資料流；非預期失敗保留上一安全 frame 或使用 Kallopis 擁有的錯誤狀態，consumer 不注入自訂錯誤 Widget。 | accepted |
+| PE-23 | v1 | P1 | GitHub Pages 的正式 API Reference 以 `kallopis_declarative.dart` 實際可達的新版 consumer API 為唯一收錄權威；內部 `lib/src` 可見性、舊 Catalog class 或 Stable legacy library 不得自行進入正式 consumer API 導覽。 | 網站 API 清冊與 analyzer 解析出的 declarative export closure 一致；沒有未匯出型別，也沒有漏列已匯出的公開宣告。 | accepted |
+| PE-24 | v1 | P1 | 正式 API Reference 先列出全部 consumer-facing module 分類，再由 module 頁列出該 module 的所有公開 API；每個 public class／sealed class／mixin／enum／extension／typedef 各有獨立宣告頁，top-level function 與 variable 也各有可直接連結的獨立頁，不以巨型檔案頁取代。 | 任一公開名稱可由「API Reference → module → declaration」在兩次導覽內到達；class 頁只描述一個 class，並列出 constructors、fields、getters、methods、型別關係、用途與來源。 | accepted |
+| PE-25 | v1 | P1 | Reference 的 API 事實由 Dart analyzer 與公開來源產生，手寫 Markdown 只補用途、合法組裝、資料權威、intent／controller、限制、最小範例與能力證據；生成物不是第二份手寫權威。 | 公開簽名變更後重新產生即可更新清冊與宣告頁；驗證器拒絕缺頁、重複頁、失效來源、非公開 API、舊 callback／style 寫法及無法解析的範例。 | accepted |
+| PE-26 | 完整地平線 | P1 | 固定 254 項舊 Catalog 必須全部能由新版宣告式架構實際呈現。新版能力能取代舊寫法時，先遷移本庫 consumer、Catalog、測試與文件，再刪除舊公開宣告、adapter、renderer 與無使用者的專用實作；不得保留同義相容入口。 | `coverage.json` 保持固定 254 分母並達成 254／254 具新版公開宣告、資料／事件、合法組裝、唯一呈現、可操作 Catalog 與驗證證據；repo 內沒有對應舊入口使用，正式 Reference 只列新版 API，遷移對照另行保留。 | accepted |
 
 ## Consumer 開發階段
 
@@ -114,6 +118,7 @@ Feature 的程式契約完成和人類接受是兩個獨立證據面。程式存
 - 視覺擁有權、功能契約卡及 Catalog 人類接受仍依 `spec/visual-component-governance.md`。
 - 舊元件完整遷移仍依 `docs/architecture/catalog-migration/README.md` 的固定清冊與證據。
 - Reference 網站沿用 `spec/reference-site-v1.md` 的 Markdown 單一來源與文件網站能力；本決策定義其 consumer 學習內容，不建立第二份文章來源。
+- 正式 API Reference 的簽名與公開名稱由 analyzer 讀取 `kallopis_declarative.dart` export closure 產生；Markdown 單一來源只負責人類說明，不手動複製 API 簽名清冊。
 - 最終發佈位置為本專案既有 GitHub Pages／github.io 網站；是否 push 或觸發外部部署仍依當次交付授權，不能以本決策自動擴張外部操作。
 
 ## 代價與否決方案
@@ -129,7 +134,7 @@ Feature 的程式契約完成和人類接受是兩個獨立證據面。程式存
 
 ## 閘門與目前 readiness
 
-`PE-03` 與 `PE-14`～`PE-22` 已由使用者於 2026-09-18 接受；第一版能力領域、semantic feature 消費模型、權威邊界、封閉呈現、成熟度、失敗行為及代表性端到端證據已固定。所有 P1 均有可觀察驗收，且現行 KLP-0019、KLP-0020、視覺治理與固定 Catalog 清冊沒有相反要求。
+`PE-03`、`PE-14`～`PE-22` 與 `PE-23`～`PE-26` 已由使用者於 2026-09-18 接受；第一版能力領域、semantic feature 消費模型、權威邊界、封閉呈現、正式 API Reference 結構、舊 Catalog 全面新版呈現、成熟度、失敗行為及代表性端到端證據已固定。所有 P1 均有可觀察驗收，且現行 KLP-0019、KLP-0020、視覺治理與固定 Catalog 清冊沒有相反要求。
 
 目前 `DEFINE READY`，沒有 open P1。`PE-B1`～`PE-B4` 已完成確定性建置與驗證；網站的視覺與可理解性維持 human-pending。後續各 semantic feature 由所屬 module 依本契約另行進入 PLAN／BUILD，不能靜默改變禁止自訂、單一 intent、資料與狀態權威或 consumer-ready 證據門檻。
 
