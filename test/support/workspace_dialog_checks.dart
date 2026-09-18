@@ -8,7 +8,7 @@ void registerWorkspaceDialogChecks() {
 		Future<void> show(KlpNode node) async {
 			final screen = KlpScreen(id: KlpId.parse('screen'), accessibilityLabel: 'Dialog', child: KlpAppLayout(id: KlpId.parse('layout'), child: KlpAppFrame(id: KlpId.parse('frame'), child: _groups(node))));
 			final application = KlpApplication(
-				title: 'Dialog', primitives: KlpWorkspacePreset.light(),
+				title: 'Dialog',
 				router: KlpRouter(id: KlpId.parse('router'), initial: initial, routes: [KlpRoute(destination, screen: (_) => screen)]),
 			);
 			if (source == null) {

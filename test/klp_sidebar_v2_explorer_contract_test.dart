@@ -10,10 +10,13 @@ void main() {
 	testWidgets('標題選取與啟用分離，disclosure 只提出展開', (tester) async {
 		final harness = ExplorerTestHarness();
 		addTearDown(harness.runtime.dispose);
-		final selections = <KlpExplorerSelectionChange>[];
+		final selections = <KlpExplorerSelectionRequested>[];
 		final expansions = <(KlpId, bool)>[];
 		final parent = explorerNode('Project page', capabilities: const KlpExplorerCapabilities(selectable: true, collapsible: true), children: [explorerNode('Child page')]);
-		await harness.show(tester, KlpExplorer(id: explorerId('explorer'), data: explorerData([parent]), onSelectionChanged: selections.add, onExpandedChanged: (id, expanded) => expansions.add((id, expanded))));
+		await harness.show(tester, KlpExplorer(id: explorerId('explorer'), data: explorerData([parent]), onIntent: (intent) {
+			if (intent case final KlpExplorerSelectionRequested selection) selections.add(selection);
+			if (intent case KlpExplorerExpansionRequested(:final itemId, :final expanded)) expansions.add((itemId, expanded));
+		}));
 		await tester.tap(find.text('Project page'));
 		await tester.pump();
 		expect(selections.single.selectedIds, {parent.id});
@@ -28,13 +31,16 @@ void main() {
 	testWidgets('不可選取節點可切換展開，分類可明示選取，空節點没有 disclosure', (tester) async {
 		final harness = ExplorerTestHarness();
 		addTearDown(harness.runtime.dispose);
-		final selections = <KlpExplorerSelectionChange>[];
+		final selections = <KlpExplorerSelectionRequested>[];
 		final expansions = <(KlpId, bool)>[];
 		const toggle = KlpExplorerCapabilities(collapsible: true, primaryAction: KlpExplorerPrimaryAction.toggleExpansion);
 		final structure = explorerNode('Structure', capabilities: toggle, children: [explorerNode('Leaf')]);
 		final empty = explorerNode('Empty', capabilities: toggle);
 		final category = KlpExplorerCategoryModel(id: explorerId('Category'), row: KlpExplorerRowData(title: 'Category'), capabilities: const KlpExplorerCapabilities(selectable: true));
-		await harness.show(tester, KlpExplorer(id: explorerId('explorer'), data: explorerData([structure, empty, category]), onSelectionChanged: selections.add, onExpandedChanged: (id, expanded) => expansions.add((id, expanded))));
+		await harness.show(tester, KlpExplorer(id: explorerId('explorer'), data: explorerData([structure, empty, category]), onIntent: (intent) {
+			if (intent case final KlpExplorerSelectionRequested selection) selections.add(selection);
+			if (intent case KlpExplorerExpansionRequested(:final itemId, :final expanded)) expansions.add((itemId, expanded));
+		}));
 		await tester.tap(find.text('Structure'));
 		expect(selections, isEmpty);
 		expect(expansions, [(structure.id, true)]);
@@ -51,7 +57,13 @@ void main() {
 		Set<KlpId> selected = {};
 		KlpId? anchor;
 		final activated = <KlpId>[];
-		KlpExplorer tree() => KlpExplorer(id: explorerId('explorer'), data: explorerData([explorerNode('A'), explorerNode('B')], selected: selected, anchor: anchor), onSelectionChanged: (change) { selected = change.selectedIds; anchor = change.anchorId; }, onActivate: activated.add);
+		KlpExplorer tree() => KlpExplorer(id: explorerId('explorer'), data: explorerData([explorerNode('A'), explorerNode('B')], selected: selected, anchor: anchor), onIntent: (intent) {
+			if (intent case KlpExplorerSelectionRequested(:final selectedIds, :final anchorId)) {
+				selected = selectedIds;
+				anchor = anchorId;
+			}
+			if (intent case KlpExplorerActivationRequested(:final itemId)) activated.add(itemId);
+		});
 		await harness.show(tester, tree());
 		await tester.tap(find.text('A'));
 		await harness.show(tester, tree());
@@ -70,9 +82,9 @@ void main() {
 	testWidgets('只有內容選單不新增尾端按鈕，保留右鍵與鍵盤入口', (tester) async {
 		final harness = ExplorerTestHarness();
 		addTearDown(harness.runtime.dispose);
-		final page = explorerNode('Page', commands: [KlpWorkspaceCommand(label: 'Archive', onInvoke: (_) {})]);
-		await harness.show(tester, KlpExplorer(id: explorerId('explorer'), data: explorerData([page]), actionsLabel: 'Row actions'));
-		expect(find.bySemanticsLabel(RegExp('Row actions')), findsNothing);
+		final page = explorerNode('Page', commands: [KlpExplorerCommand(id: explorerId('archive'), label: 'Archive')]);
+		await harness.show(tester, KlpExplorer(id: explorerId('explorer'), data: explorerData([page]), onIntent: (_) {}));
+		expect(find.bySemanticsLabel(RegExp('Actions')), findsNothing);
 		await tester.tap(find.text('Page'), buttons: kSecondaryMouseButton, kind: PointerDeviceKind.mouse);
 		await tester.pumpAndSettle();
 		expect(find.text('Archive'), findsOneWidget);

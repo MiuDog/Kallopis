@@ -1,4 +1,5 @@
 import 'package:kallopis/kallopis_declarative.dart';
+import 'package:kallopis/src/capabilities/actions/klp_action.dart';
 
 /// 只用公開宣告式策略記錄真正宿主交付的環境，不自行解析平台。
 final class KlpEnvironmentHostFixture implements KlpPlatformStrategy {

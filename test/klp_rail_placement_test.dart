@@ -1,5 +1,6 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:kallopis/kallopis_declarative.dart';
+import 'package:kallopis/src/capabilities/actions/klp_action.dart';
 import 'package:kallopis/src/composition/validation/klp_validated_node.dart';
 import 'package:kallopis/src/features/navigation/rail/internal/klp_rail_placement.dart';
 

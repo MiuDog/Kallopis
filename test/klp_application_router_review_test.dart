@@ -1,6 +1,7 @@
 import 'package:flutter/widgets.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:kallopis/kallopis_declarative.dart';
+import 'package:kallopis/src/capabilities/actions/klp_action.dart';
 
 KlpWorkspaceBlock _actionBlock(
 	String label, {
@@ -40,7 +41,6 @@ KlpApplication _app(
 	String title = 'Review',
 }) => KlpApplication(
 	title: title,
-	primitives: KlpWorkspacePreset.light(),
 	router: KlpRouter(
 		id: KlpId.root('router'),
 		initial: home.location(0),

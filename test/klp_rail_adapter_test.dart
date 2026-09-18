@@ -1,5 +1,6 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:kallopis/kallopis_declarative.dart';
+import 'package:kallopis/src/capabilities/actions/klp_action.dart';
 import 'package:kallopis/src/composition/definitions/klp_definition.dart';
 import 'package:kallopis/src/composition/registry/klp_registry.dart';
 import 'package:kallopis/src/composition/validation/klp_validated_node.dart';

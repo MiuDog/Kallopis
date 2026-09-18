@@ -52,7 +52,6 @@ void main() {
 			final source = KlpMutableState(
 				KlpApplication(
 					title: 'Adaptive strategy',
-					primitives: klpTestPrimitives(),
 					router: KlpRouter(
 						id: root / 'router',
 						initial: destination.location(null),

@@ -25,7 +25,7 @@ void main() {
 		expect(KlpLocalizations.of(context), same(installed));
 
 		// 宣告和樣式更新後重新取得後代 context，確認新畫面仍由同一套在地化提供。
-		source.value = klpApplicationTestFixture(title: 'Rebuilt localization host', alternate: true);
+		source.value = klpApplicationTestFixture(title: 'Rebuilt localization host');
 		await tester.pump();
 		await tester.pump();
 		expect(tester.widget<WidgetsApp>(find.byType(WidgetsApp)).title, 'Rebuilt localization host');

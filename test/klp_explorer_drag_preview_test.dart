@@ -42,9 +42,17 @@ void main() {
 	testWidgets('拖曳回饋保留圖示與標題，圓角條填滿列間隙並在離開拒絕與提交後清除', (tester) async {
 		final harness = ExplorerTestHarness();
 		addTearDown(harness.runtime.dispose);
-		var allowed = true;
-		final drops = <KlpExplorerDropRequest>[];
-		await harness.show(tester, KlpExplorer(id: explorerId('explorer'), data: explorerData([explorerNode('First'), _source(), explorerNode('Target'), explorerNode('Following')]), canDrop: (_) => allowed, onDrop: drops.add));
+		final source = _source();
+		final targets = [explorerNode('First'), explorerNode('Target'), explorerNode('Following')];
+		final drops = <KlpExplorerDropRequested>[];
+		final accepted = [
+			for (final target in targets)
+				for (final position in KlpExplorerDropPlacement.values)
+					KlpExplorerDropAcceptance(sourceIds: {source.id}, targetId: target.id, position: position),
+		];
+		await harness.show(tester, KlpExplorer(id: explorerId('explorer'), data: explorerData([targets[0], source, targets[1], targets[2]], acceptedDrops: accepted), onIntent: (intent) {
+			if (intent case final KlpExplorerDropRequested drop) drops.add(drop);
+		}));
 
 		// 以來源列實際顯示的圖示為依據，不在測試重建 glyph 映射。
 		final sourceIcon = tester.widget<KlpFlutterLucideIcon>(find.descendant(of: _row('Source'), matching: find.byType(KlpFlutterLucideIcon)));
@@ -94,16 +102,11 @@ void main() {
 		expect(tester.getRect(_row('First')), firstRect);
 		expect(tester.getRect(_row('Following')), followingRect);
 
-		// 離開與拒絕都清除圓角條；再次允許後可恢復，放手才提交。
+		// 離開清除圓角條；回到已明示接受的位置後恢復，放手才提交。
 		await _move(tester, gesture, const Offset(790, 590));
 		expect(find.byKey(_indicatorKey), findsNothing);
 		expect(find.byKey(_feedbackKey), findsOneWidget);
-		allowed = false;
 		await _move(tester, gesture, targetRect.center);
-		expect(find.byKey(_indicatorKey), findsNothing);
-		expect(drops, isEmpty);
-		allowed = true;
-		await _move(tester, gesture, targetRect.center + const Offset(1, 0));
 		final inside = _markerRect(tester);
 		expect(inside.top, closeTo(targetRect.bottom, 0.5));
 		expect(inside.bottom, closeTo(followingRect.top, 0.5));
@@ -122,7 +125,12 @@ void main() {
 		addTearDown(harness.runtime.dispose);
 		final branch = explorerNode('Branch', capabilities: _collapsible, children: [explorerNode('Grandchild')]);
 		final target = explorerNode('Target', capabilities: _collapsible, children: [branch, explorerNode('Last')]);
-		await harness.show(tester, KlpExplorer(id: explorerId('explorer'), data: explorerData([_source(), target, explorerNode('Following')], expanded: {target.id, branch.id}), canDrop: (_) => true, onDrop: (_) {}));
+		final source = _source();
+		final accepted = [
+			for (final position in KlpExplorerDropPlacement.values)
+				KlpExplorerDropAcceptance(sourceIds: {source.id}, targetId: target.id, position: position),
+		];
+		await harness.show(tester, KlpExplorer(id: explorerId('explorer'), data: explorerData([source, target, explorerNode('Following')], expanded: {target.id, branch.id}, acceptedDrops: accepted), onIntent: (_) {}));
 		final sourceRect = tester.getRect(_row('Source'));
 		final sourceIconLeft = tester.getRect(find.descendant(of: _row('Source'), matching: find.byType(KlpFlutterLucideIcon))).left;
 		final targetRect = tester.getRect(_row('Target'));

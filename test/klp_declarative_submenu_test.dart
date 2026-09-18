@@ -183,7 +183,7 @@ KlpApplication _application(KlpMenu menu) {
 	final frame = KlpAppFrame(id: KlpId.parse('frame'), child: groups);
 	final screen = KlpScreen(id: KlpId.parse('screen'), accessibilityLabel: 'Submenu test', child: KlpAppLayout(id: KlpId.parse('layout'), child: frame));
 	final router = KlpRouter(id: KlpId.parse('router'), initial: _destination.location(0), routes: [KlpRoute(_destination, screen: (_) => screen)]);
-	return KlpApplication(title: 'Submenu test', primitives: KlpWorkspacePreset.light(), router: router);
+	return KlpApplication(title: 'Submenu test', router: router);
 }
 
 Future<KlpMutableState<KlpApplication>> _mount(WidgetTester tester, KlpMenu menu) async {
