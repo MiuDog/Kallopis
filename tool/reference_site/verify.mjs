@@ -7,6 +7,7 @@ import GithubSlugger from 'github-slugger';
 const root = path.resolve(import.meta.dirname, '..', '..');
 const output = path.join(root, 'build', 'reference-site');
 const manifest = JSON.parse(fs.readFileSync(path.join(output, 'site-manifest.json'), 'utf8'));
+const declarativeApi = JSON.parse(fs.readFileSync(path.join(root, 'build', 'reference-api.json'), 'utf8'));
 const examples = JSON.parse(fs.readFileSync(path.join(root, 'tool/reference_site/assembly_examples.json'), 'utf8'));
 const pages = new Map();
 const failures = [];
@@ -25,6 +26,14 @@ function decode(value) {
 	catch { return value; }
 }
 
+function apiModulePage(name) {
+	return `docs/api/${name.replaceAll('.', '/')}/index.html`;
+}
+
+function apiDeclarationPage(declaration) {
+	return `docs/api/${declaration.module.replaceAll('.', '/')}/${declaration.slug}.html`;
+}
+
 function inspect(node, result) {
 	const attrs = Object.fromEntries((node.attrs || []).map(({ name, value }) => [name, value]));
 	if (attrs.id) result.ids.add(attrs.id);
@@ -39,9 +48,79 @@ function inspect(node, result) {
 // 步驟 1：解析所有輸出，建立可驗證的實際錨點與資源清單。
 for (const file of files(output).filter((item) => item.endsWith('.html'))) {
 	const relative = path.relative(output, file).replaceAll('\\', '/');
-	const result = { ids: new Set(), links: [], tables: 0 };
-	inspect(parse(fs.readFileSync(file, 'utf8')), result);
+	const html = fs.readFileSync(file, 'utf8');
+	const result = { ids: new Set(), links: [], tables: 0, html };
+	inspect(parse(html), result);
 	pages.set(relative, result);
+}
+
+// 正式 API 是 analyzer manifest 的精確集合，不能由網站檔案反向猜測。
+const moduleNames = new Set();
+const declarationNames = new Set();
+const expectedModulePages = new Set();
+const expectedDeclarationPages = new Set();
+const declarations = [];
+if (declarativeApi.schemaVersion !== 1 || !Array.isArray(declarativeApi.modules)) {
+	failures.push('Unsupported or incomplete declarative API manifest');
+} else {
+	for (const module of declarativeApi.modules) {
+		if (moduleNames.has(module.name)) failures.push(`Duplicate declarative API module: ${module.name}`);
+		moduleNames.add(module.name);
+		expectedModulePages.add(apiModulePage(module.name));
+		for (const declaration of module.declarations || []) {
+			if (declaration.module !== module.name) failures.push(`Declaration module mismatch: ${declaration.name}`);
+			if (declarationNames.has(declaration.name)) failures.push(`Duplicate declarative API declaration: ${declaration.name}`);
+			declarationNames.add(declaration.name);
+			declarations.push(declaration);
+			expectedDeclarationPages.add(apiDeclarationPage(declaration));
+		}
+	}
+}
+
+for (const modulePage of expectedModulePages) {
+	if (!pages.has(modulePage)) failures.push(`Missing declarative API module page: ${modulePage}`);
+}
+for (const declaration of declarations) {
+	const declarationPage = apiDeclarationPage(declaration);
+	const page = pages.get(declarationPage);
+	if (!page) {
+		failures.push(`Missing declarative API page: ${declaration.name}`);
+		continue;
+	}
+	for (const anchor of ['signature', 'source', 'members']) {
+		if (!page.ids.has(anchor)) failures.push(`Missing declarative API section: ${declaration.name}#${anchor}`);
+	}
+	if (!page.html.includes(declaration.sourceUri)) failures.push(`Missing declaration source URI: ${declaration.name}`);
+	const modulePage = pages.get(apiModulePage(declaration.module));
+	const relative = path.posix.relative(path.posix.dirname(apiModulePage(declaration.module)), declarationPage);
+	if (!modulePage?.links.includes(relative)) failures.push(`Declaration absent from module index: ${declaration.name}`);
+}
+
+const declaredModulePages = new Set((manifest.apiModules || []).map((module) => module.href));
+const declaredApiPages = new Set((manifest.apiDeclarations || []).map((declaration) => declaration.href));
+for (const expected of expectedModulePages) {
+	if (!declaredModulePages.has(expected)) failures.push(`API module absent from site manifest: ${expected}`);
+}
+for (const extra of declaredModulePages.difference(expectedModulePages)) {
+	failures.push(`Unexpected API module in site manifest: ${extra}`);
+}
+for (const expected of expectedDeclarationPages) {
+	if (!declaredApiPages.has(expected)) failures.push(`API declaration absent from site manifest: ${expected}`);
+}
+for (const extra of declaredApiPages.difference(expectedDeclarationPages)) {
+	failures.push(`Unexpected API declaration in site manifest: ${extra}`);
+}
+
+const allowedApiPages = new Set([
+	'docs/api/index.html',
+	...expectedModulePages,
+	...expectedDeclarationPages,
+	...Object.keys(manifest.redirects).filter((item) => item.startsWith('docs/api/')),
+]);
+for (const page of pages.keys()) {
+	if (page.startsWith('docs/api/') && !allowedApiPages.has(page)) {
+		failures.push(`Unexpected formal API page: ${page}`);
+	}
 }
 for (const source of [...manifest.apiDocuments, ...manifest.guides, ...manifest.specs, ...manifest.projectDocuments]) {
 	const target = manifest.routeMap[source];
@@ -108,8 +187,18 @@ for (const [page, result] of pages) {
 for (const [legacy, current] of Object.entries(manifest.redirects)) {
 	if (!pages.has(legacy) || !pages.has(current)) failures.push(`Missing redirect: ${legacy} → ${current}`);
 }
-for (const entry of JSON.parse(fs.readFileSync(path.join(output, 'search-index.json'), 'utf8'))) {
+const searchEntries = JSON.parse(fs.readFileSync(path.join(output, 'search-index.json'), 'utf8'));
+for (const entry of searchEntries) {
 	if (!pages.has(entry.href)) failures.push(`Broken search entry: ${entry.href}`);
+}
+for (const declaration of declarations) {
+	const entries = searchEntries.filter((entry) => entry.category === 'API' && entry.title === declaration.name);
+	if (entries.length !== 1 || entries[0]?.href !== apiDeclarationPage(declaration)) {
+		failures.push(`Invalid declarative API search entry: ${declaration.name}`);
+	}
+}
+for (const entry of searchEntries.filter((item) => item.category === 'API')) {
+	if (!declarationNames.has(entry.title)) failures.push(`Unexpected declarative API search entry: ${entry.title}`);
 }
 for (const required of ['index.html', 'docs/index.html', 'docs/get-started.html', 'docs/components/index.html', 'docs/api/index.html', 'docs/guides/index.html', 'docs/spec/index.html']) {
 	if (!pages.has(required)) failures.push(`Missing site entry: ${required}`);
@@ -123,4 +212,4 @@ if (failures.length) {
 	console.error(failures.join('\n'));
 	process.exit(1);
 }
-console.log(`Reference site verified: ${manifest.components.length} components, ${manifest.apiDocuments.length} API pages, ${pages.size} HTML pages; source coverage, tables, internal links and anchors checked.`);
+console.log(`Reference site verified: ${manifest.components.length} components, ${declarations.length} declarative API pages, ${manifest.apiDocuments.length} internal documents, ${pages.size} HTML pages; API completeness, source coverage, tables, internal links and anchors checked.`);
