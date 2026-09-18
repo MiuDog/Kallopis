@@ -34,7 +34,7 @@
 
 | Slice | Owner | 寫入範圍 | 可觀察成果 |
 | --- | --- | --- | --- |
-| `ACW-T` | Independent Test Author | `test/klp_adaptive_window_catalog_test.dart` 與既有 migration evidence test 的精確項目 | Red 證明正式 specimen／入口尚不存在；Green 證明只匯入 declarative root、策略命中、三 intent 與不可變狀態更新。 |
+| `ACW-T` | Existing test evidence | `test/klp_adaptive_declarative_test.dart`、`test/klp_workspace_components_declarative_test.dart` | 既有 Green 已證明策略命中、三 intent 與不可變資料更新；不新增只檢查檔案存在的低價值測試。Catalog 邊界由既有 consumer verifier 檢查。 |
 | `ACW-C` | Catalog | `example/lib/catalog_declarative/adaptive_window_specimen.dart`、`example/lib/catalog_adaptive_window_main.dart` | 一個可執行 specimen 同時覆蓋兩個固定清冊項目，無 Flutter、`src`、legacy import。 |
 | `ACW-R` | Rendering cleanup | `lib/src/rendering/flutter/internal/klp_flutter_window_controls.dart` | 刪除零 caller bridge；現行 bound renderer 與 dispatch 不變。 |
 | `ACW-E` | Migration evidence | `docs/architecture/catalog-migration/coverage.json`、`inventory.md`、`verification.md`、`docs/ai/catalog-capability-map.md`、`docs/ai/catalog.md` | 兩項具有新版 API、Catalog、資料／事件、renderer 及測試路徑；固定分母仍為 254，pending 由 251 降至 249。 |
