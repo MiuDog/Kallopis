@@ -36,6 +36,7 @@ python tool/architecture_atlas/generate.py --dart D:/flutter/bin/dart.bat
 ## 深入設計文件
 
 - [Screen → layout → container → element 語意組合層](semantic-composition-layer-plan/README.md)
+- [固定 Catalog capability family mapping](../../tool/catalog_family_mapping/architecture.md)
 - [Semantic feature consumer contract](semantic-feature-contract-plan/README.md)
 - [固定位置可拉伸工作區](resizable-workspace-prototype.md)
 

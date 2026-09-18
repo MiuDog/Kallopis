@@ -1,6 +1,6 @@
 # Semantic composition layers
 
-狀態：`SCL-TAX-r1` ACCEPTED；固定 254 項分類與層級已由使用者接受。下一步只規劃 capability family 與 exact roles；Runtime 公開面替換仍須等待 family 與 disposition／module ownership 完成，不得跳過 Catalog migration 閘門。
+狀態：`SCL-TAX-r1` ACCEPTED；固定 254 項分類與層級已由使用者接受。Capability family 與 exact roles 的當前計畫為 [`SCL-FAM-r1`](../../../tool/catalog_family_mapping/architecture.md)；Runtime 公開面替換仍須等待 family 與 disposition／module ownership 完成，不得跳過 Catalog migration 閘門。
 
 依據：[Catalog taxonomy](../../../spec/catalog-classification.md)、[KLP-0019](../../../spec/decisions/KLP-0019-declarative-framework-migration.md)、[KLP-0021](../../../spec/decisions/KLP-0021-productivity-component-ecosystem.md)、[composition module](../../../lib/src/composition/architecture.md)。
 
@@ -141,7 +141,7 @@ Consumer 可提供代表工作流程、優先級或閱讀順序的資料順序�
 
 ## 後續 horizon（未授權 BUILD）
 
-分類接受後依序進入：能力 family 與 exact roles → disposition／module ownership → 一個端到端 pilot family → 按 family 遷移固定 254 項 → 移除舊 public/adapter/renderer → 重新產生正式 Reference → 254/254 evidence 與最後 push。後續不得一次建立 254 個同名 public class，也不得在 family contract 未接受前批次改 source。
+分類接受後依序進入：[能力 family 與 exact roles](../../../tool/catalog_family_mapping/architecture.md) → disposition／module ownership → 一個端到端 pilot family → 按 family 遷移固定 254 項 → 移除舊 public/adapter/renderer → 重新產生正式 Reference → 254/254 evidence 與最後 push。後續不得一次建立 254 個同名 public class，也不得在 family contract 未接受前批次改 source。
 
 ## Stage closure
 
