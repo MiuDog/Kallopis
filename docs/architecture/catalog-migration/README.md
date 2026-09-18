@@ -17,9 +17,17 @@
 
 人類可讀的逐項對照見 [inventory.md](inventory.md)；更新該頁不得修改固定分母。機械權威仍為 baseline 與 coverage。
 
-## 當前階段 CAT-MIG-02：既有新版 Adaptive／WindowControls 對帳
+## 當前階段 CAT-TAX-01：重新定義 Catalog 分類
 
-狀態：PLAN READY。此 stage 只處理固定清冊中的 `KlpAdaptive` 與 `KlpWindowControls`，將已存在且已測試的新版宣告接入正式 declarative Catalog，並清除零 caller 的舊 renderer bridge。它不藉同名 class 或測試存在直接宣稱完成，也不刪除仍被 legacy WindowHeader 使用的 Stable API。
+狀態：DEFINE NOT READY。使用者要求先重新定義 Catalog 分類，再決定能力屬於哪個 module；因此暫停依現有 class、資料夾或舊頁面直接配對 module 與遷移。當前規格為 [`spec/catalog-classification.md`](../../../spec/catalog-classification.md)。
+
+固定 254 項、既有 2 migrated／1 preserved 證據與已接受新版風格不變。分類規格接受後，先完成 254 項無 owner 欄位的分類清冊及 verifier；全部分類通過並由人類接受後，才形成能力家族、公開處置與 module ownership。
+
+下列 `CAT-MIG-02` 保留為未執行候選，不是目前 BUILD 授權；其 `KlpAdaptive`／`KlpWindowControls` 配對必須等待新分類與能力家族結果重新確認。
+
+## 暫停階段 CAT-MIG-02：既有新版 Adaptive／WindowControls 對帳
+
+狀態：PAUSED；不得從本節啟動 BUILD。
 
 ### 接受契約 ACW-01
 
