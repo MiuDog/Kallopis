@@ -86,8 +86,10 @@ class _KlpApplicationHostState extends State<_KlpApplicationHost>
 
 	void _accept(KlpApplication application, {Size? viewportSize}) {
 		final info = _environmentObserver.observe(viewportSize: viewportSize);
+		final environment = _environmentObserver.environment(info);
 		_session.accept(
 			application,
+			appearance: environment.appearance,
 			adaptiveContext: KlpAdaptiveContext(
 				platform: switch (info.platform) {
 					KlpAppPlatform.android => KlpAdaptivePlatform.android,
@@ -118,6 +120,14 @@ class _KlpApplicationHostState extends State<_KlpApplicationHost>
 
 	@override
 	void didChangeMetrics() {
+		final application = _session.application;
+		if (mounted && application != null) {
+			_accept(application, viewportSize: _viewportSize());
+		}
+	}
+
+	@override
+	void didChangePlatformBrightness() {
 		final application = _session.application;
 		if (mounted && application != null) {
 			_accept(application, viewportSize: _viewportSize());

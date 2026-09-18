@@ -42,8 +42,8 @@ import 'package:kallopis/src/rendering/flutter/klp_viewport_capabilities.dart';
 import 'package:kallopis/src/runtime/compilation/klp_tree_runtime.dart';
 import 'package:kallopis/src/runtime/contracts/klp_runtime_frame.dart';
 import 'package:kallopis/src/runtime/contracts/klp_installation_exception.dart';
-import 'package:kallopis/src/styling/primitives/klp_primitive_set.dart';
 import 'package:kallopis/src/styling/primitives/klp_style_value.dart';
+import 'package:kallopis/src/styling/presets/klp_workspace_preset.dart';
 import 'package:kallopis/src/application/bootstrap/internal/klp_application_adapters.dart';
 import 'klp_screen.dart';
 import 'internal/klp_retained_screens.dart';
@@ -64,16 +64,10 @@ part '../bootstrap/internal/klp_application_session_actions.dart';
 final class KlpApplication {
 
 	final String title;
-	final KlpPrimitiveSet primitives;
 	final KlpRouter router;
 	final void Function(KlpNavigationRestoration restoration)? onNavigationRestorationChanged;
 
-	KlpApplication({
-		required this.title,
-		required this.primitives,
-		required this.router,
-		this.onNavigationRestorationChanged,
-	}) {
+	KlpApplication({required this.title, required this.router, this.onNavigationRestorationChanged}) {
 		if (onNavigationRestorationChanged != null && !router.supportsRestoration) {
 			throw ArgumentError('Every registered route needs a restoration codec when restoration output is observed.');
 		}

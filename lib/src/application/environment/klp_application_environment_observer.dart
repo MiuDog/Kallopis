@@ -38,8 +38,9 @@ final class _KlpApplicationEnvironmentObserver {
 	}
 
 	KlpApplicationEnvironment environment(KlpEnvironmentSnapshot snapshot) {
-		// 從原 dispatcher 採樣輔助偏好，投影沿用原私有建構與動態優先序。
-		final features = WidgetsBinding.instance.platformDispatcher.accessibilityFeatures;
+		// 從同一個 dispatcher 採樣視覺與輔助偏好，避免建立第二份環境權威。
+		final dispatcher = WidgetsBinding.instance.platformDispatcher;
+		final features = dispatcher.accessibilityFeatures;
 		var motion = KlpMotionPolicy.standard;
 		if (features.disableAnimations) {
 			motion = KlpMotionPolicy.immediate;
@@ -57,6 +58,7 @@ final class _KlpApplicationEnvironmentObserver {
 				KlpAppPlatform.web => KlpApplicationPlatform.web,
 				KlpAppPlatform.other => KlpApplicationPlatform.other,
 			},
+			appearance: dispatcher.platformBrightness == Brightness.dark ? KlpApplicationAppearance.dark : KlpApplicationAppearance.light,
 			accessibility: KlpAccessibilityPreferences._(accessibleNavigation: features.accessibleNavigation, boldText: features.boldText, highContrast: features.highContrast),
 			motion: motion,
 		);

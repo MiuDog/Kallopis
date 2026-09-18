@@ -65,10 +65,14 @@ extension _KlpApplicationSessionCommit on _KlpApplicationSession {
 
 			// 由固定目錄提交整棵樹，只在新影格成立後發布導覽與還原。
 			try {
+				final primitives = switch (_appearance) {
+					KlpApplicationAppearance.light => KlpWorkspacePreset.light(),
+					KlpApplicationAppearance.dark => KlpWorkspacePreset.dark(),
+				};
 				_runtime.update(
 					root: root,
 					adapters: klpApplicationAdapters(),
-					primitives: application.primitives,
+					primitives: primitives,
 					actionHandler: _KlpApplicationActionHandler(this),
 					adaptiveContext: _adaptiveContext,
 				);
