@@ -23,7 +23,7 @@ final class _ExplorerCatalogState extends State<_ExplorerCatalog> {
 
 	List<klp.KlpExplorerItemModel> _items() {
 		klp.KlpExplorerNodeModel node(String id, String title, {bool container = false, List<klp.KlpExplorerItemModel> children = const []}) => klp.KlpExplorerNodeModel(
-			id: klp.KlpId.root(id), row: klp.KlpExplorerRowData(title: title, icon: klp.KlpExplorerGlyph.file, contextActions: [klp.KlpWorkspaceCommand(label: '重新命名', inputLabel: '名稱', initialValue: title, onInvoke: (value) => setState(() => _event = '提交名稱：$value'), onResult: (result) => setState(() => _event = '命令結果：${result.status.name}'))]), canHaveChildren: container, capabilities: const klp.KlpExplorerCapabilities(selectable: true, collapsible: true, draggable: true, primaryAction: klp.KlpExplorerPrimaryAction.activate), children: children,
+			id: klp.KlpId.root(id), row: klp.KlpExplorerRowData(title: title, icon: klp.KlpExplorerGlyph.file, contextActions: [klp.KlpExplorerCommand(id: klp.KlpId.root('$id.rename'), label: '重新命名', inputLabel: '名稱', initialValue: title)]), canHaveChildren: container, capabilities: const klp.KlpExplorerCapabilities(selectable: true, collapsible: true, draggable: true, primaryAction: klp.KlpExplorerPrimaryAction.activate), children: children,
 		);
 		return [
 			klp.KlpExplorerCategoryModel(
@@ -33,7 +33,7 @@ final class _ExplorerCatalogState extends State<_ExplorerCatalog> {
 			klp.KlpExplorerCategoryModel(id: klp.KlpId.root('selectable-category'), row: klp.KlpExplorerRowData(title: '分類也可選取', badge: '3'), capabilities: const klp.KlpExplorerCapabilities(selectable: true)),
 			klp.KlpExplorerCategoryModel(id: klp.KlpId.root('empty-category'), row: klp.KlpExplorerRowData(title: '空分類：仍可展開／收合'), capabilities: const klp.KlpExplorerCapabilities(collapsible: true, primaryAction: klp.KlpExplorerPrimaryAction.toggleExpansion)),
 			klp.KlpExplorerNodeModel(id: klp.KlpId.root('always-open'), row: klp.KlpExplorerRowData(title: '不收合，子項一直可見'), canHaveChildren: true, children: [node('visible', '沒有展開狀態仍可見')]),
-			klp.KlpExplorerNodeModel(id: klp.KlpId.root('inline'), row: klp.KlpExplorerRowData(title: '明列行內命令', inlineActions: [klp.KlpWorkspaceCommand(label: '確認', confirmation: '確定執行示例命令？', onInvoke: (_) => setState(() => _event = '已確認執行'))]), canHaveChildren: false),
+			klp.KlpExplorerNodeModel(id: klp.KlpId.root('inline'), row: klp.KlpExplorerRowData(title: '明列行內命令', inlineActions: [klp.KlpExplorerCommand(id: klp.KlpId.root('inline.confirm'), label: '確認', confirmation: '確定執行示例命令？')]), canHaveChildren: false),
 		];
 	}
 
