@@ -3,7 +3,7 @@
 擁有語意：Catalog taxonomy（文件與遷移治理，不是 runtime module）
 階段：DEFINE／0→1
 目標階段：`CAT-TAX-01`
-狀態：DEFINE READY；使用者於 2026-09-18 接受 18 個第一層分類與單一 primary／多個 secondary tags
+狀態：DEFINE READY；使用者於 2026-09-18 接受 18 個第一層分類、單一 primary／多個 secondary tags，以及只公開語意能力／封閉式語意佈局的邊界
 能力地平線：固定 254 項先完成重新分類，再形成能力家族、公開處置與 module ownership；之後才恢復逐家族遷移。
 
 ## 目標與動機
@@ -26,6 +26,33 @@ Catalog 必須先回答 consumer「我要完成哪一類產品工作」，不能
 | TAX-08 | CAT-TAX-02 | P1 | 分類完成後，以能力家族的不變資料、事件、合法組裝與生命週期決定單一 owning module。 | 每個家族只有一個 owner；styling、rendering、application 等支援責任另外列出，不以多 owner 模糊權威。 | accepted |
 | TAX-09 | CAT-TAX-02 | P1 | 公開處置只能在能力家族形成後決定為 preserve、migrate、absorb、replace 或 retire。 | 每個固定項目都有去向及新版公開對應；`absorb/replace/retire` 仍保留固定清冊證據。 | accepted |
 | TAX-10 | CAT-TAX-03 | P1 | 所有分類、家族、處置與 module mapping 接受後，才恢復 Catalog migration BUILD。 | Task Packet 能引用已接受的 category、family、owner 與 public target，不再從同名 class 猜測責任。 | accepted |
+| TAX-11 | CAT-TAX-01 | P1 | 公開 API 只保留 consumer 可辨識的語意能力、語意資料／事件契約，以及具有獨立用途的封閉式語意佈局；`Column`、`Row`、`Stack`、`Align`、`Gap`、`Spacer`、`Flex`、座標定位及幾何 transform 等基底排列材料一律為內部實作。 | Consumer 不需以空間排列 primitive 表達產品意圖；宣告式公開入口最終不可達上述基底材料。 | accepted |
+| TAX-12 | CAT-TAX-01 | P1 | 公開的語意佈局只能接受具名且具型別的角色／slot，並由 Kallopis 固定數量、次序、巢狀、響應規則與視覺規範；不得接受任意節點清單、raw flex、gap、alignment、尺寸或座標。 | 每個保留的 layout contract 都能說明其獨立 consumer 任務與合法 slot；無法說明者改標 `implementation-material`。 | accepted |
+| TAX-13 | CAT-TAX-01 | P1 | 同一資料模型、識別、選取、動作與事件權威可透過封閉的語意 view 選擇轉換為 Kallopis 核准的不同呈現；List、Grid、Masonry 等名稱不因有獨立舊 class 就各自取得公開能力。 | view 切換不改變資料權威與事件語意，且 consumer 不需重新組裝低階節點；只負責呈現差異的舊 class 原則上 absorb。 | accepted |
+| TAX-14 | CAT-TAX-01 | P1 | 資料不變條件或互動模型本質不同時，才可拆成不同語意能力；例如階層、欄列 schema、時間、空間畫布不能只靠同一 view enum 偽裝。內部 renderer 可自由使用受風格約束的基底 layout。 | 每個獨立 family 能指出不同的資料／事件不變條件；內部使用 `Column` 等不產生公開 API 或 customization escape hatch。 | accepted |
+
+## 公開語意邊界
+
+分類名稱回答「consumer 要完成什麼」，不回答「畫面用什麼 Flutter 形狀排出來」。因此 `KlpColumn` 即使具有一致間距，也仍只是在描述垂直排列；它沒有產品層語意，不得成為 consumer 的組裝工具。相同判準適用於其他 primitive、surface、interaction helper 與只描述呈現形狀的舊 class。
+
+公開候選必須通過下列順序：
+
+1. 先證明它具有不依賴 class 名稱、Flutter widget 或幾何形狀的 consumer intent。
+2. 若它是資料能力，公開資料身分、狀態、選取、動作與事件；呈現差異使用封閉 view 選擇，且 Kallopis 擁有所有視覺值。
+3. 若它是 layout，必須代表可獨立命名的產品無關區域或工作區關係，並只接受具名、具型別、數量受限的 slot。
+4. 若它只提供排列、裝飾、命中區、效能虛擬化或 renderer 技術，就標為 `implementation-material`，由語意能力在內部使用。
+
+這個判準不要求所有資料共享一個萬用 view。Tree 需要階層與展開不變條件、Table 需要欄位 schema、Timeline 需要時間關係、Canvas 需要空間座標與縮放模型；若差異改變資料或事件契約，應建立不同語意 family。反之，List／Grid／Masonry 若只改變同一集合的呈現密度與排列，應由同一集合能力的核准 view 表達。
+
+### 判定例
+
+| 舊項目或形狀 | 判定方向 | 理由 |
+| --- | --- | --- |
+| `KlpColumn`、`KlpRow`、`KlpStack`、`KlpGap`、`KlpSpacer` | absorb 為內部材料 | 只描述排列方式，consumer intent 不成立。 |
+| `KlpVirtualList`、`KlpVirtualGrid`、`KlpMasonryGrid` | 先歸入同一集合能力再判定 view | 虛擬化與排列形狀通常是 renderer／呈現策略，不應各自成為公開能力。 |
+| `KlpTree`、`KlpDataTable` | 可形成不同語意 family | 階層展開與欄列 schema 具有不同資料及互動不變條件。 |
+| Split、Dock、Panel、Region 類 | 逐項證明後才可公開 | 只有代表獨立工作區關係且使用封閉 typed slots 的項目可作語意 layout；任意 children 或 raw geometry 不合格。 |
+| 內部 renderer 使用 `Column` | 允許 | Kallopis 仍掌管間距、響應、風格與合法組裝，consumer 不可達。 |
 
 ## 第一層分類提案
 
@@ -109,19 +136,19 @@ role 與分類正交，每個固定項目必須擇一：
 
 | Role | 定義 | 後續含義 |
 | --- | --- | --- |
-| `consumer-capability` | consumer 直接以語意資料與事件選用的能力。 | 可進入 preserve 或 migrate 評估。 |
-| `composition-part` | 只在某個封閉能力內合法出現的子項或組裝角色。 | 可保留公開資料型別，但不能獨立宣稱完整 feature。 |
+| `consumer-capability` | consumer 直接以語意資料、封閉 view 意圖與事件選用的能力；名稱描述資料／任務，不描述 renderer 形狀。 | 可進入 preserve 或 migrate 評估；舊 class 若只是一種 view，必須先合併為 family。 |
+| `composition-part` | 只在某個封閉能力內合法出現的具名、具型別子項或組裝角色。 | 可保留公開資料型別，但不能獨立宣稱完整 feature，也不能接受任意節點或幾何參數。 |
 | `system-contract` | 平台、無障礙、視覺或互動契約的直接展示。 | 通常由跨切面 module 支援，不代表 consumer 可自訂。 |
-| `implementation-material` | 舊版低階 Widget、layout、surface 或 interaction building block。 | 原則上 absorb；若要成為公開能力須另有 consumer intent 證據。 |
+| `implementation-material` | 舊版低階 Widget、layout、surface、interaction building block，或只描述 List／Grid／Masonry／virtualization 等呈現策略的 class。 | 原則上 absorb；若要成為公開能力須另有資料／事件或封閉語意 layout 證據。 |
 | `catalog-artifact` | 只用於說明 token、規格或元件狀態的 Catalog 工具。 | 不自動進入 consumer API；文件與測試仍可保留。 |
 
 ## 分類流程與失敗行為
 
 1. 從固定 baseline 讀取名稱、舊頁面與來源，只作識別證據。
 2. 為每項寫一句不含 class、資料夾或 module 名稱的 consumer intent。
-3. 依 intent 指派一個 primary category、可選 secondary tags 與一個 role。
+3. 依 intent 指派一個 primary category、可選 secondary tags 與一個 role；先用 TAX-11～14 排除非語意 primitive 與純 view 實作。
 4. 無法唯一分類時標記 `needs-definition`，回到分類或 intent 決策；禁止 `misc`、依舊頁沿用或先填 module。
-5. 254 項全部通過分類檢查並由使用者接受後，才群組成 capability families。
+5. 254 項全部通過分類檢查並由使用者接受後，才群組成 capability families；同資料／事件契約的不同呈現 class 優先進入同一 family。
 6. capability family 接受後才決定公開處置；最後才依資料／事件／組裝／生命週期權威映射 owning module。
 
 同一項只能在固定分母計數一次。secondary tags 只支援搜尋與交叉入口，不複製頁面、不產生第二份 API，也不決定 owner。
@@ -134,9 +161,10 @@ role 與分類正交，每個固定項目必須擇一：
 
 - 機械檢查固定 baseline 254 項與分類記錄一對一、無遺漏、無額外項目、無重複 primary。
 - primary category 與 role 只允許本規格列舉值；每項 consumer intent 非空，且正式分類檔不含 owner/module 欄位。
+- 人類審閱時必須能從 intent／role 辨別語意能力、封閉 composition part 與純呈現材料；List／Grid／Masonry 等同資料 view 不得僅因舊 class 名稱分別承諾公開。
 - 人類審核分類定義及跨用途規則；程式檢查不代替其語意接受。
 - coverage 與已完成程式證據在分類階段不得改動。
 
 ## DEFINE 閘門
 
-`TAX-01`～`TAX-10` 全部 accepted，沒有 open P1。下一階段只建立 254 項分類清冊、verifier 與人類審閱輸出，不會同時決定 module。
+`TAX-01`～`TAX-14` 全部 accepted，沒有 open P1。既有 proposed 分類必須依 TAX-11～14 重新審核 role 與 intent，再產生新版人類審閱輸出；仍不會同時決定 module。
