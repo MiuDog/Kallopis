@@ -12,7 +12,7 @@
 |---|---|---|---|
 | Application | app root、screen、host、無障礙名稱 | 可用 | [Application](#application-system) |
 | Composition | 節點、資格、slot、封閉 catalog 驗證 | 可用 | [Composition](#composition-system) |
-| Styling | 固定 primitive 與庫內 semantic 解析 | 可用的最小流程 | [Styling](#styling-system) |
+| Styling | 宿主選擇內建外觀與庫內 semantic 解析 | consumer 不可注入 | [Styling](#styling-system) |
 | Navigation | typed destination、route、結果、guard、還原 | 可用；部分平台能力未完成 | [Navigation](#navigation-system) |
 | State and data | 唯讀來源、更新、非同步資料與 controller | 基礎契約可用 | [State and data](#state-and-data-system) |
 | Foundation | 庫內受控 template 與公開組裝值 | 組裝值可用；template 僅供庫內 | [Foundation](#foundation-system) |
@@ -38,10 +38,9 @@ graph TD
 
 ```dart
 final source = KlpMutableState(
-  KlpApplication(
-    title: 'Product',
-    primitives: productPrimitives(),
-    router: productRouter,
+	KlpApplication(
+		title: 'Product',
+		router: productRouter,
   ),
 );
 
@@ -58,21 +57,19 @@ Consumer 只組裝 `kallopis_declarative.dart` 已公開的 node。資格介面�
 
 ## Styling system
 
-**責任**：`KlpPrimitiveSet` 是 consumer 可提供的完整、固定 schema 中立原料；Kallopis 在庫內以 semantic schema 與受限 reference 把元件用途映射到 primitive，再解析與呈現。
-
-Primitive 必須整套提供，每種剛好八個值；實例不可傳入任何 style。Semantic schema、key 與 template 由 Kallopis 元件擁有者在庫內定義，consumer 只選擇完整 primitive set。
+**責任**：Kallopis 宿主依平台外觀選擇唯一內建 primitive preset，再以 semantic schema 與受限 reference 把元件用途解析並呈現。Consumer 不取得 primitive、preset、theme、token 或實例 style 輸入。
 
 ## Navigation system
 
 **責任**：`KlpDestination<P, R>` 固定參數與結果型別，`KlpRouter` 註冊 initial location 和 route，`KlpRouteInput` 建立受控 action，Kallopis session 持有 stack、取消與結果。
 
 ```dart
-final details = KlpDestination<int, int>('product.details');
+final details = KlpDestination<int, int>(KlpId.parse('product.details'));
 
 final route = KlpRoute<int, int>(
   details,
   screen: (input) => KlpScreen(
-    id: 'product.details.screen',
+		id: KlpId.parse('product.details.screen'),
     accessibilityLabel: 'Product details',
     child: productDetailsRail(
       onSave: input.finish(input.parameters + 1),
@@ -131,7 +128,7 @@ consumer 的唯一觸發方式是：
 source.value = declaration();
 ```
 
-同位置與 definition 的資源由 Kallopis 管理。資料或完整 primitives 更新後，consumer 不應重裝 controller、修改 renderer 或干涉 retention。
+同位置與 definition 的資源由 Kallopis 管理。資料更新或平台外觀改變後，consumer 不應重裝 controller、修改 renderer、替換 primitive 或干涉 retention。
 
 ## Legacy compatibility system
 
@@ -143,8 +140,8 @@ source.value = declaration();
 
 | 能力 | 舊版可用來源 | 新路徑的判讀 |
 |---|---|---|
-| Explorer | [Workspace.Explorer / EXP-V1-r2](explorer-model.md)：KlpExplorer＋可實作 item interface＋完整森林資料 | 分類／節點、有限能力、受控選取／展開、獨立命令與受限拖放。舊 Explorer 已移除；KlpFileExplorer 是另一個 Stable 檔案瀏覽 API。 |
-| 文件分頁 | 舊入口保留 [KlpTabs](../../lib/src/features/navigation/widgets/tabs/klp_tabs.dart)／[KlpStageTopBar](../../lib/src/features/workspace/shell/stage/klp_stage_top_bar.dart)；新入口提供 `KlpDocumentTabs`／`KlpDocumentTab` | 新入口已接入宣告式垂直流程，提供選取、關閉意圖、dirty 與不可關閉呈現；資料刪除、保存、重排及狀態保留仍由產品決定。 |
+| Explorer | [Workspace.Explorer / SFC-V1-r1](explorer-model.md)：`KlpExplorer`＋不可變森林／acceptance＋單一 intent＋可選 controller | 分類／節點、有限能力、受控選取／展開、資料式命令與受限拖放。舊 Explorer callbacks 與 consumer query 已移除；`KlpFileExplorer` 是待遷移的 Stable 檔案瀏覽 API。 |
+| 文件分頁 | 舊入口暫存 [KlpTabs](../../lib/src/features/navigation/widgets/tabs/klp_tabs.dart)／[KlpStageTopBar](../../lib/src/features/workspace/shell/stage/klp_stage_top_bar.dart)；新入口提供 `KlpDocumentTabs`／`KlpDocumentTabsData`／`KlpDocumentTabData` | 新入口提供選取、關閉、pin 單一 intent、dirty 與可用性呈現；產品擁有保存、刪除、重排及 retained state。舊入口在固定 Catalog 對應完成後刪除。 |
 | 視窗控制 | 舊入口保留既有 Flutter 視窗元件；新入口提供 declarative `KlpWindowControls` 與純 Dart host callbacks | 新入口直接使用已解析 semantic 呈現三個控制，不依賴舊 theme adapter。Host 擁有原生 runner 通道與最大化狀態投影；本庫不宣稱所有 OS backend 已驗證。 |
 
 新增 consumer 仍使用宣告式入口。既有能力的重用方式須符合目前架構契約；有舊實作不構成任意 Widget adapter 的授權。若採用庫內遷移，應說明可沿用部分與待接契約，不以整套重寫或「無法」取代具體盤點。

@@ -16,10 +16,9 @@
 
 | 類別 | 可提供內容 | Kallopis 持有內容 |
 |---|---|---|
-| application | 標題、完整 primitive set、router | 完整元件目錄、host、renderer、安裝交易 |
-| node 實例 | 已公開型別的 id、資料、合格子項、`KlpAction`／callback | 元件 identity、樣式解析、布局、互動狀態 |
+| application | 標題、router、完整宣告來源 | 外觀選擇、完整元件目錄、host、renderer、安裝交易 |
+| node 實例 | 已公開型別的 id、資料、合格子項、typed action／intent handler | 元件 identity、樣式解析、布局、互動暫態 |
 | route | 型別化參數、畫面映射、進出 guard | navigation session、回退與保留頁 |
-| primitive set | 固定欄位各八個值的完整替換 | schema、semantic 演算法、局部樣式決定 |
 
 ## 禁止的輸入
 
@@ -30,7 +29,7 @@
 - 個別元件的 style、color、padding、radius、duration、font 或 curve。
 - 不受容器資格限制的 child、任意 provider、手動 mount 或平台分支。
 - `KlpComponentDefinition`、`KlpDefinition`、`KlpRegistry`、adapter 或 compiler。
-- 部分 primitive 覆寫、增加 primitive 種類，或在實例覆寫 semantic token。
+- primitive／preset／theme 覆寫、增加 primitive 種類，或在實例覆寫 semantic token。
 
 ## 文件索引
 
@@ -38,7 +37,7 @@
 - [完整生產力能力清冊](productivity-capabilities.md)：依使用者意圖查詢可用狀態、證據、缺口與下一 owner。
 - [固定 254 項逐項轉接](catalog-capability-map.md)：查詢每個舊 Catalog 名稱的能力、階段、coverage 與預定處置。
 
-- [Workspace.Explorer / EXP-V1-r2](explorer-model.md)：正式 interface、能力、狀態、事件與宣告 → 組裝；[視覺 Catalog](explorer-catalog.md)。
+- [Workspace.Explorer / SFC-V1-r1](explorer-model.md)：正式 data、intent、controller 與宣告 → 組裝；[視覺 Catalog](explorer-catalog.md)。
 - [公開錨定 Popup](anchored-popup-model.md)：受控開關、穩定列 ID、原地回饋、子命令及錨點生命週期；[交付證據](../architecture/anchored-popup-delivery.md)。
 
 - [功能名稱、組裝與視覺維護入口（DEFINE）](feature-contracts.md)：實際組裝層級與來源位置、固定功能名稱提案、人類契約卡及跨 agent 交接方式；尚非全部已接受的功能契約。
