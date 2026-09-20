@@ -7,6 +7,7 @@ import '../docking_layout_page.dart';
 import '../form_pages.dart';
 import '../foundation_pages.dart';
 import '../guideline_pages.dart';
+import '../restored_workspace_components_page.dart';
 import '../settings_pages.dart';
 import '../token_pages.dart';
 import '../workspace_agenda_page.dart';
@@ -72,6 +73,7 @@ final List<CatalogGroup> catalogGroups = [
 			strokeLanguagePage,
 			settingsPage,
 			workspaceShellPage,
+			restoredWorkspaceComponentsPage,
 			dockingLayoutPage,
 			workspaceAgendaPage,
 			workspaceConversationPage,

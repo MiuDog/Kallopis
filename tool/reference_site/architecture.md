@@ -1,6 +1,6 @@
 # Thin Design System Reference Site
 
-狀態：`TDS-REF-r2` PLAN READY。
+狀態：`TDS-REF-r2` IMPLEMENTED；視覺理解性等待人類接受。
 
 ## 目的與非目標
 
@@ -52,4 +52,4 @@ current Markdown ─────────────────────
 
 估算：14k–28k tokens／75–180 分鐘，參考已刪除 AR-V1 的 generator 規模與本輪三 barrel 掃描，historical adjusted。M1 contract Red：4k–8k／20–45 分；M2 real extractor/site：10k–22k／55–140 分；M3 workflow/artifact：14k–28k／75–180 分。若需要恢復 declarative、修改 public exports 或無法由 source＋name 決定身分即回 PLAN。
 
-所有 P1 已對應 extractor、generator、verifier、workflow 與 evidence；下一 slice `TDS-REF-T` 無未決決策，因此 PLAN READY。
+三個 slices 均已完成。2026-09-20 以三個真實 public barrels 重新抽取、產生並驗證 17 個 module、515 個 canonical declaration 頁；schema／generator／verifier tests 4/4 通過。後續 public API 變更只需更新 committed manifest 並重跑同一條產生與驗證流程。

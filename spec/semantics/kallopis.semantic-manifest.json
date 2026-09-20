@@ -185,6 +185,11 @@
           "symbol": "workspaceShellPage"
         },
         {
+          "id": "pattern.workspace.components",
+          "source": "restored_workspace_components_page.dart",
+          "symbol": "restoredWorkspaceComponentsPage"
+        },
+        {
           "id": "pattern.workspace.docking",
           "source": "docking_layout_page.dart",
           "symbol": "dockingLayoutPage"

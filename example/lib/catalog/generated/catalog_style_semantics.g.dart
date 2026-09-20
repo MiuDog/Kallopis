@@ -5,7 +5,7 @@ import '../../catalog_model.dart';
 
 const Map<String, CatalogStyleSemantics> catalogStyleSemantics = {
 	'KlpAccessibilityContractPanel': CatalogStyleSemantics(
-		source: 'D:/Projects/Kallopis/lib/src/features/workspace/artifact/internal/klp_accessibility_contract_panel.dart',
+		source: 'lib/src/features/workspace/artifact/internal/klp_accessibility_contract_panel.dart',
 		colors: [],
 		surfaces: ['KlpSurfaceTone.inset'],
 		borders: [],
@@ -16,7 +16,7 @@ const Map<String, CatalogStyleSemantics> catalogStyleSemantics = {
 		components: ['KlpBox', 'KlpColumn', 'KlpExpanded', 'KlpRow', 'KlpText'],
 	),
 	'KlpAccordion': CatalogStyleSemantics(
-		source: 'D:/Projects/Kallopis/lib/src/features/collections/accordion/internal/klp_accordion_widget.dart',
+		source: 'lib/src/features/collections/accordion/internal/klp_accordion_widget.dart',
 		colors: ['context.klp.color.clear', 'context.klp.color.textMuted'],
 		surfaces: [],
 		borders: ['BorderRadius.circular(klp.shape.control)', 'context.klp.shape.control'],
@@ -27,7 +27,7 @@ const Map<String, CatalogStyleSemantics> catalogStyleSemantics = {
 		components: ['KlpColumn', 'KlpExpanded', 'KlpIcon', 'KlpRow', 'KlpText', 'context.klp.selectionWash'],
 	),
 	'KlpActionGroup': CatalogStyleSemantics(
-		source: 'D:/Projects/Kallopis/lib/src/features/navigation/widgets/controls/klp_action_group.dart',
+		source: 'lib/src/features/navigation/widgets/controls/klp_action_group.dart',
 		colors: [],
 		surfaces: [],
 		borders: [],
@@ -38,7 +38,7 @@ const Map<String, CatalogStyleSemantics> catalogStyleSemantics = {
 		components: ['KlpWrap'],
 	),
 	'KlpActionRegion': CatalogStyleSemantics(
-		source: 'D:/Projects/Kallopis/lib/src/foundation/interaction/primitives/klp_action_region_widget.dart',
+		source: 'lib/src/foundation/interaction/primitives/klp_action_region_widget.dart',
 		colors: ['context.klpColors.clear', 'context.klpColors.danger', 'context.klpColors.onStatus', 'context.klpColors.selectionBackground', 'context.klpColors.text', 'context.klpColors.textFaint', 'context.klpColors.textMuted'],
 		surfaces: [],
 		borders: ['BorderRadius.circular(radius)', 'context.klp.shape.card', 'context.klp.shape.control'],
@@ -49,7 +49,7 @@ const Map<String, CatalogStyleSemantics> catalogStyleSemantics = {
 		components: ['context.klp.selectionWash'],
 	),
 	'KlpAdaptive': CatalogStyleSemantics(
-		source: 'D:/Projects/Kallopis/lib/src/foundation/layout/klp_adaptive.dart',
+		source: 'lib/src/foundation/layout/klp_adaptive.dart',
 		colors: [],
 		surfaces: [],
 		borders: [],
@@ -60,7 +60,7 @@ const Map<String, CatalogStyleSemantics> catalogStyleSemantics = {
 		components: [],
 	),
 	'KlpAffixedTextField': CatalogStyleSemantics(
-		source: 'D:/Projects/Kallopis/lib/src/features/forms/input/klp_affixed_text_field.dart',
+		source: 'lib/src/features/forms/input/klp_affixed_text_field.dart',
 		colors: [],
 		surfaces: [],
 		borders: [],
@@ -71,7 +71,7 @@ const Map<String, CatalogStyleSemantics> catalogStyleSemantics = {
 		components: ['KlpBox', 'KlpExpanded', 'KlpRow', 'KlpText'],
 	),
 	'KlpAlign': CatalogStyleSemantics(
-		source: 'D:/Projects/Kallopis/lib/src/foundation/layout/klp_align.dart',
+		source: 'lib/src/foundation/layout/klp_align.dart',
 		colors: [],
 		surfaces: [],
 		borders: [],
@@ -81,8 +81,30 @@ const Map<String, CatalogStyleSemantics> catalogStyleSemantics = {
 		motion: [],
 		components: [],
 	),
+	'KlpAnchoredPopup': CatalogStyleSemantics(
+		source: 'lib/src/features/workspace/anchored_popup/klp_anchored_popup.dart',
+		colors: ['KlpFeedbackTone.danger', 'KlpFeedbackTone.success'],
+		surfaces: ['KlpSurfaceTone.overlay', 'context.klp.surface.overlayBlur', 'context.klp.surface.overlayOffsetY', 'context.klp.surface.overlayShadowColor'],
+		borders: ['context.klp.shape.panel'],
+		spacing: ['EdgeInsets.all(klp.space.overlayContentInset)', 'EdgeInsets.only(bottom: index == content.actions!.length - 1 ? 0 : gap)', 'EdgeInsets.symmetric(horizontal: context.klp.space.space2)', 'context.klp.space.icon', 'context.klp.space.iconSmall', 'context.klp.space.overlayContentInset', 'context.klp.space.space2', 'context.klp.space.space6'],
+		typography: ['KlpTextRole.body', 'KlpTextRole.caption', 'KlpTextRole.h4', 'KlpTextTone.muted'],
+		geometry: ['context.klp.geometry.layout', 'context.klp.geometry.layout.commandMenuWidth', 'context.klp.geometry.layout.layout', 'context.klp.geometry.layout.overlayViewportInset'],
+		motion: [],
+		components: ['KlpActionRegion', 'KlpButton', 'KlpContextMenu', 'KlpDialog', 'KlpGeometricSpinner', 'KlpIcon', 'KlpIconButton', 'KlpInlineNotice', 'KlpLiveRegion', 'KlpModalFrame', 'KlpSurface', 'KlpText', 'KlpTextField', 'context.klp.menuItemHeight'],
+	),
+	'KlpAppLayout': CatalogStyleSemantics(
+		source: 'lib/src/features/workspace/layout/klp_app_layout.dart',
+		colors: ['context.klp.geometry.layout.primaryPaneWidth', 'context.klpColors.onBackground', 'context.klpColors.surface', 'context.klpColors.surfaceInset'],
+		surfaces: ['KlpSurfaceTone.raised', 'context.klp.surface.overlayBlur', 'context.klp.surface.overlayOffsetY', 'context.klp.surface.overlayShadowColor'],
+		borders: ['BorderRadius.circular(klp.shape.panel)', 'context.klp.shape.panel'],
+		spacing: ['EdgeInsets.all(context.klp.space.space2)', 'EdgeInsets.all(inset)', 'EdgeInsets.all(inset))', 'context.klp.space.chromeHeader', 'context.klp.space.space1', 'context.klp.space.space2', 'context.klp.space.space8'],
+		typography: [],
+		geometry: ['context.klp.geometry.layout.secondaryPaneWidth'],
+		motion: [],
+		components: ['KlpSurface', 'KlpTokenOverride'],
+	),
 	'KlpAppScreen': CatalogStyleSemantics(
-		source: 'D:/Projects/Kallopis/lib/src/features/workspace/shell/composition/app_screen/klp_app_screen.dart',
+		source: 'lib/src/features/workspace/shell/composition/app_screen/klp_app_screen.dart',
 		colors: [],
 		surfaces: ['KlpSurfaceTone.app'],
 		borders: [],
@@ -93,7 +115,7 @@ const Map<String, CatalogStyleSemantics> catalogStyleSemantics = {
 		components: ['KlpColumn', 'KlpExpanded', 'KlpSurface'],
 	),
 	'KlpAppWindowHeader': CatalogStyleSemantics(
-		source: 'D:/Projects/Kallopis/lib/src/features/workspace/shell/composition/window_header/klp_app_window_header.dart',
+		source: 'lib/src/features/workspace/shell/composition/window_header/klp_app_window_header.dart',
 		colors: [],
 		surfaces: [],
 		borders: [],
@@ -104,7 +126,7 @@ const Map<String, CatalogStyleSemantics> catalogStyleSemantics = {
 		components: ['KlpPanelHeader'],
 	),
 	'KlpApprovalStepsField': CatalogStyleSemantics(
-		source: 'D:/Projects/Kallopis/lib/src/features/forms/structured/internal/klp_approval_steps_field_widget.dart',
+		source: 'lib/src/features/forms/structured/internal/klp_approval_steps_field_widget.dart',
 		colors: [],
 		surfaces: [],
 		borders: [],
@@ -115,7 +137,7 @@ const Map<String, CatalogStyleSemantics> catalogStyleSemantics = {
 		components: ['KlpBox', 'KlpColumn', 'KlpExpanded', 'KlpGestureRegion', 'KlpRow', 'KlpText'],
 	),
 	'KlpAvatar': CatalogStyleSemantics(
-		source: 'D:/Projects/Kallopis/lib/src/features/collections/avatar/klp_avatar.dart',
+		source: 'lib/src/features/collections/avatar/klp_avatar.dart',
 		colors: ['context.klpColors.accent', 'context.klpColors.copyWith', 'context.klpColors.onStatus', 'context.klpColors.surfaceMuted', 'context.klpColors.text'],
 		surfaces: [],
 		borders: ['context.klp.shape.card', 'context.klp.shape.pill'],
@@ -126,7 +148,7 @@ const Map<String, CatalogStyleSemantics> catalogStyleSemantics = {
 		components: ['KlpText', 'KlpTokenOverride'],
 	),
 	'KlpAvatarGroup': CatalogStyleSemantics(
-		source: 'D:/Projects/Kallopis/lib/src/features/collections/avatar/klp_avatar_group.dart',
+		source: 'lib/src/features/collections/avatar/klp_avatar_group.dart',
 		colors: [],
 		surfaces: [],
 		borders: [],
@@ -137,7 +159,7 @@ const Map<String, CatalogStyleSemantics> catalogStyleSemantics = {
 		components: ['KlpAvatar', 'KlpRow'],
 	),
 	'KlpBadge': CatalogStyleSemantics(
-		source: 'D:/Projects/Kallopis/lib/src/features/collections/badge/internal/klp_badge_widget.dart',
+		source: 'lib/src/features/collections/badge/internal/klp_badge_widget.dart',
 		colors: ['KlpFeedbackTone.neutral', 'context.klpColors.component', 'context.klpColors.divider', 'context.klpColors.stageSurface', 'context.klpColors.text', 'context.klpColors.textMuted'],
 		surfaces: ['context.klp.surface.statusFillOpacity'],
 		borders: ['Border.all(color: border, width: theme.shape.hairline)', 'BorderRadius.circular(theme.badgeRadius)', 'context.klp.shape.hairline'],
@@ -148,7 +170,7 @@ const Map<String, CatalogStyleSemantics> catalogStyleSemantics = {
 		components: ['KlpFlexible', 'KlpRow', 'KlpText', 'context.klp.badgePaddingX', 'context.klp.badgeRadius'],
 	),
 	'KlpBox': CatalogStyleSemantics(
-		source: 'D:/Projects/Kallopis/lib/src/foundation/layout/klp_box.dart',
+		source: 'lib/src/foundation/layout/klp_box.dart',
 		colors: [],
 		surfaces: [],
 		borders: [],
@@ -159,7 +181,7 @@ const Map<String, CatalogStyleSemantics> catalogStyleSemantics = {
 		components: ['KlpSurface'],
 	),
 	'KlpBreadcrumb': CatalogStyleSemantics(
-		source: 'D:/Projects/Kallopis/lib/src/features/navigation/widgets/breadcrumb/klp_breadcrumb.dart',
+		source: 'lib/src/features/navigation/widgets/breadcrumb/klp_breadcrumb.dart',
 		colors: ['KlpTextTone.primary'],
 		surfaces: [],
 		borders: [],
@@ -170,7 +192,7 @@ const Map<String, CatalogStyleSemantics> catalogStyleSemantics = {
 		components: ['KlpText'],
 	),
 	'KlpBulkActionBar': CatalogStyleSemantics(
-		source: 'D:/Projects/Kallopis/lib/src/features/actions/editor/klp_bulk_action_bar.dart',
+		source: 'lib/src/features/actions/editor/klp_bulk_action_bar.dart',
 		colors: ['KlpTextTone.primary', 'context.klpColors.surfaceInset', 'context.klpColors.surfaceMuted'],
 		surfaces: ['KlpSurfaceTone.component'],
 		borders: ['BorderRadius.circular(context.klp.shape.control)', 'context.klp.shape.control'],
@@ -181,7 +203,7 @@ const Map<String, CatalogStyleSemantics> catalogStyleSemantics = {
 		components: ['KlpBox', 'KlpText', 'KlpWrap'],
 	),
 	'KlpButton': CatalogStyleSemantics(
-		source: 'D:/Projects/Kallopis/lib/src/features/actions/button/internal/klp_button_widget.dart',
+		source: 'lib/src/features/actions/button/internal/klp_button_widget.dart',
 		colors: [],
 		surfaces: [],
 		borders: ['BorderRadius.circular(style.radius)'],
@@ -192,7 +214,7 @@ const Map<String, CatalogStyleSemantics> catalogStyleSemantics = {
 		components: ['KlpDashedBorder', 'KlpFlexible', 'KlpPressable', 'KlpRow', 'KlpText'],
 	),
 	'KlpCalendar': CatalogStyleSemantics(
-		source: 'D:/Projects/Kallopis/lib/src/features/forms/selection/internal/klp_calendar_widget.dart',
+		source: 'lib/src/features/forms/selection/internal/klp_calendar_widget.dart',
 		colors: ['context.klpColors.accent', 'context.klpColors.text'],
 		surfaces: [],
 		borders: ['Border.all(color: tokens.accent, width: klp.shape.hairline)', 'BorderRadius.circular(klp.shape.control)', 'context.klp.shape.control', 'context.klp.shape.hairline'],
@@ -203,7 +225,7 @@ const Map<String, CatalogStyleSemantics> catalogStyleSemantics = {
 		components: ['KlpBox', 'KlpCenter', 'KlpColumn', 'KlpExpanded', 'KlpGestureRegion', 'KlpIconButton', 'KlpRow', 'KlpStateHighlight', 'KlpText', 'context.klp.selectionWash'],
 	),
 	'KlpCanvasDropIntent': CatalogStyleSemantics(
-		source: 'D:/Projects/Kallopis/lib/src/features/infinite_canvas/internal/klp_canvas_drop_intent.dart',
+		source: 'lib/src/features/infinite_canvas/internal/klp_canvas_drop_intent.dart',
 		colors: ['context.klp.color.interaction'],
 		surfaces: [],
 		borders: ['context.klp.shape.hairline'],
@@ -214,7 +236,7 @@ const Map<String, CatalogStyleSemantics> catalogStyleSemantics = {
 		components: [],
 	),
 	'KlpCanvasMinimap': CatalogStyleSemantics(
-		source: 'D:/Projects/Kallopis/lib/src/features/infinite_canvas/internal/klp_canvas_minimap.dart',
+		source: 'lib/src/features/infinite_canvas/internal/klp_canvas_minimap.dart',
 		colors: [],
 		surfaces: ['KlpSurfaceTone.inset'],
 		borders: [],
@@ -225,7 +247,7 @@ const Map<String, CatalogStyleSemantics> catalogStyleSemantics = {
 		components: ['KlpSurface'],
 	),
 	'KlpCanvasSelectionOverlay': CatalogStyleSemantics(
-		source: 'D:/Projects/Kallopis/lib/src/features/infinite_canvas/internal/klp_canvas_selection_overlay.dart',
+		source: 'lib/src/features/infinite_canvas/internal/klp_canvas_selection_overlay.dart',
 		colors: ['context.klp.color.selection', 'context.klp.color.stageSurface'],
 		surfaces: [],
 		borders: ['context.klp.shape.hairline'],
@@ -236,7 +258,7 @@ const Map<String, CatalogStyleSemantics> catalogStyleSemantics = {
 		components: [],
 	),
 	'KlpCanvasToolbar': CatalogStyleSemantics(
-		source: 'D:/Projects/Kallopis/lib/src/features/infinite_canvas/internal/klp_canvas_toolbar.dart',
+		source: 'lib/src/features/infinite_canvas/internal/klp_canvas_toolbar.dart',
 		colors: [],
 		surfaces: ['KlpSurfaceTone.raised'],
 		borders: [],
@@ -247,7 +269,7 @@ const Map<String, CatalogStyleSemantics> catalogStyleSemantics = {
 		components: ['KlpBox', 'KlpWrap'],
 	),
 	'KlpCanvasViewport': CatalogStyleSemantics(
-		source: 'D:/Projects/Kallopis/lib/src/features/infinite_canvas/internal/klp_canvas_viewport.dart',
+		source: 'lib/src/features/infinite_canvas/internal/klp_canvas_viewport.dart',
 		colors: ['context.klp.color.stageSurface'],
 		surfaces: [],
 		borders: [],
@@ -258,7 +280,7 @@ const Map<String, CatalogStyleSemantics> catalogStyleSemantics = {
 		components: [],
 	),
 	'KlpCard': CatalogStyleSemantics(
-		source: 'D:/Projects/Kallopis/lib/src/features/collections/card/internal/klp_card_widget.dart',
+		source: 'lib/src/features/collections/card/internal/klp_card_widget.dart',
 		colors: ['context.klpColors.component', 'context.klpColors.surface', 'context.klpColors.surfaceMuted', 'context.klpColors.surfaceRaised'],
 		surfaces: [],
 		borders: ['BorderRadius.circular(klp.cardRadius)'],
@@ -269,7 +291,7 @@ const Map<String, CatalogStyleSemantics> catalogStyleSemantics = {
 		components: ['KlpBox', 'KlpColumn', 'KlpExpanded', 'KlpRow', 'KlpText', 'context.klp.cardPadding', 'context.klp.cardRadius', 'context.klp.selectionWash'],
 	),
 	'KlpCenter': CatalogStyleSemantics(
-		source: 'D:/Projects/Kallopis/lib/src/foundation/layout/klp_center.dart',
+		source: 'lib/src/foundation/layout/klp_center.dart',
 		colors: [],
 		surfaces: [],
 		borders: [],
@@ -280,7 +302,7 @@ const Map<String, CatalogStyleSemantics> catalogStyleSemantics = {
 		components: [],
 	),
 	'KlpCheckbox': CatalogStyleSemantics(
-		source: 'D:/Projects/Kallopis/lib/src/features/forms/selection/internal/klp_checkbox_widget.dart',
+		source: 'lib/src/features/forms/selection/internal/klp_checkbox_widget.dart',
 		colors: ['KlpTextTone.primary'],
 		surfaces: [],
 		borders: ['BorderRadius.circular(style.controlRadius)', 'BorderRadius.circular(style.indicatorRadius)', 'context.klp.shape.control', 'context.klp.shape.sm', 'context.klp.shape.stroke'],
@@ -291,7 +313,7 @@ const Map<String, CatalogStyleSemantics> catalogStyleSemantics = {
 		components: ['KlpBox', 'KlpExpanded', 'KlpIcon', 'KlpRow', 'KlpText', 'context.klp.color'],
 	),
 	'KlpCodeEditorField': CatalogStyleSemantics(
-		source: 'D:/Projects/Kallopis/lib/src/features/forms/structured/internal/klp_code_editor_field_widget.dart',
+		source: 'lib/src/features/forms/structured/internal/klp_code_editor_field_widget.dart',
 		colors: ['context.klp.color.warning'],
 		surfaces: [],
 		borders: [],
@@ -302,7 +324,7 @@ const Map<String, CatalogStyleSemantics> catalogStyleSemantics = {
 		components: ['KlpBox', 'KlpColumn', 'KlpRow', 'KlpText'],
 	),
 	'KlpCodeField': CatalogStyleSemantics(
-		source: 'D:/Projects/Kallopis/lib/src/features/forms/structured/internal/klp_code_field_widget.dart',
+		source: 'lib/src/features/forms/structured/internal/klp_code_field_widget.dart',
 		colors: [],
 		surfaces: [],
 		borders: [],
@@ -313,7 +335,7 @@ const Map<String, CatalogStyleSemantics> catalogStyleSemantics = {
 		components: ['KlpCodeViewer', 'KlpColumn', 'KlpText', 'KlpTextArea'],
 	),
 	'KlpCodeViewer': CatalogStyleSemantics(
-		source: 'D:/Projects/Kallopis/lib/src/features/collections/code/internal/klp_code_viewer_widget.dart',
+		source: 'lib/src/features/collections/code/internal/klp_code_viewer_widget.dart',
 		colors: ['context.klpColors.clear', 'context.klpColors.danger', 'context.klpColors.divider', 'context.klpColors.onStatus', 'context.klpColors.selectionBackground', 'context.klpColors.selectionForeground', 'context.klpColors.stageSurface', 'context.klpColors.success', 'context.klpColors.surfaceInset', 'context.klpColors.textFaint', 'context.klpColors.textMuted'],
 		surfaces: ['context.klp.surface.diffFillOpacity'],
 		borders: ['Border.all(color: style.divider, width: style.strokeWidth)', 'BorderRadius.circular(style.cardRadius)', 'BorderRadius.circular(widget.style.controlRadius)', 'BorderSide(color: style.divider, width: style.strokeWidth)', 'context.klp.shape.card', 'context.klp.shape.control', 'context.klp.shape.hairline'],
@@ -324,7 +346,7 @@ const Map<String, CatalogStyleSemantics> catalogStyleSemantics = {
 		components: ['KlpAlign', 'KlpCenter', 'KlpColumn', 'KlpExpanded', 'KlpIcon', 'KlpMenu', 'KlpPressable', 'KlpRow', 'KlpSpacer', 'KlpText', 'KlpTooltip', 'context.klp.selectionWash'],
 	),
 	'KlpColorRoleField': CatalogStyleSemantics(
-		source: 'D:/Projects/Kallopis/lib/src/features/forms/selection/klp_color_role_field.dart',
+		source: 'lib/src/features/forms/selection/klp_color_role_field.dart',
 		colors: [],
 		surfaces: [],
 		borders: [],
@@ -335,7 +357,7 @@ const Map<String, CatalogStyleSemantics> catalogStyleSemantics = {
 		components: ['KlpSelectField'],
 	),
 	'KlpColumn': CatalogStyleSemantics(
-		source: 'D:/Projects/Kallopis/lib/src/foundation/layout/klp_column.dart',
+		source: 'lib/src/foundation/layout/klp_column.dart',
 		colors: [],
 		surfaces: [],
 		borders: [],
@@ -346,7 +368,7 @@ const Map<String, CatalogStyleSemantics> catalogStyleSemantics = {
 		components: [],
 	),
 	'KlpCombobox': CatalogStyleSemantics(
-		source: 'D:/Projects/Kallopis/lib/src/features/forms/input/internal/klp_combobox_widget.dart',
+		source: 'lib/src/features/forms/input/internal/klp_combobox_widget.dart',
 		colors: [],
 		surfaces: [],
 		borders: [],
@@ -357,7 +379,7 @@ const Map<String, CatalogStyleSemantics> catalogStyleSemantics = {
 		components: ['KlpColumn', 'KlpFocusRegion', 'KlpMenu', 'KlpTextField'],
 	),
 	'KlpCommandMenu': CatalogStyleSemantics(
-		source: 'D:/Projects/Kallopis/lib/src/features/actions/command_menu/internal/klp_command_menu_widget.dart',
+		source: 'lib/src/features/actions/command_menu/internal/klp_command_menu_widget.dart',
 		colors: ['context.klpColors.clear', 'context.klpColors.component', 'context.klpColors.danger', 'context.klpColors.surfaceMuted', 'context.klpColors.text', 'context.klpColors.textFaint'],
 		surfaces: [],
 		borders: ['BorderRadius.circular(context.klp.shape.card)', 'BorderRadius.circular(context.klp.shape.control)', 'context.klp.shape.card', 'context.klp.shape.control'],
@@ -368,7 +390,7 @@ const Map<String, CatalogStyleSemantics> catalogStyleSemantics = {
 		components: ['KlpBox', 'KlpColumn', 'KlpExpanded', 'KlpRow', 'KlpText'],
 	),
 	'KlpCompactSwitch': CatalogStyleSemantics(
-		source: 'D:/Projects/Kallopis/lib/src/features/forms/toggle/internal/klp_compact_switch_widget.dart',
+		source: 'lib/src/features/forms/toggle/internal/klp_compact_switch_widget.dart',
 		colors: [],
 		surfaces: [],
 		borders: ['BorderRadius.circular(style.radius)', 'context.klp.shape.pill'],
@@ -379,7 +401,7 @@ const Map<String, CatalogStyleSemantics> catalogStyleSemantics = {
 		components: ['KlpPressable', 'context.klp.color'],
 	),
 	'KlpComponentDefinitionCard': CatalogStyleSemantics(
-		source: 'D:/Projects/Kallopis/lib/src/features/workspace/artifact/internal/klp_component_definition_card.dart',
+		source: 'lib/src/features/workspace/artifact/internal/klp_component_definition_card.dart',
 		colors: [],
 		surfaces: [],
 		borders: [],
@@ -390,7 +412,7 @@ const Map<String, CatalogStyleSemantics> catalogStyleSemantics = {
 		components: ['KlpGestureRegion', 'KlpPreviewCard'],
 	),
 	'KlpComponentLibraryGrid': CatalogStyleSemantics(
-		source: 'D:/Projects/Kallopis/lib/src/features/workspace/artifact/internal/klp_component_library_grid.dart',
+		source: 'lib/src/features/workspace/artifact/internal/klp_component_library_grid.dart',
 		colors: [],
 		surfaces: [],
 		borders: [],
@@ -401,7 +423,7 @@ const Map<String, CatalogStyleSemantics> catalogStyleSemantics = {
 		components: ['KlpComponentDefinitionCard', 'KlpWrap'],
 	),
 	'KlpComponentStateSelector': CatalogStyleSemantics(
-		source: 'D:/Projects/Kallopis/lib/src/features/workspace/artifact/internal/klp_component_state_selector.dart',
+		source: 'lib/src/features/workspace/artifact/internal/klp_component_state_selector.dart',
 		colors: [],
 		surfaces: [],
 		borders: [],
@@ -412,7 +434,7 @@ const Map<String, CatalogStyleSemantics> catalogStyleSemantics = {
 		components: ['KlpTabs'],
 	),
 	'KlpCompoundField': CatalogStyleSemantics(
-		source: 'D:/Projects/Kallopis/lib/src/features/forms/input/internal/klp_compound_field_widget.dart',
+		source: 'lib/src/features/forms/input/internal/klp_compound_field_widget.dart',
 		colors: ['KlpTextTone.primary', 'context.klp.color.clear', 'context.klp.color.component', 'context.klp.color.textFaint', 'context.klp.color.textMuted'],
 		surfaces: [],
 		borders: ['BorderRadius.circular(klp.shape.card)', 'context.klp.shape.card'],
@@ -423,7 +445,7 @@ const Map<String, CatalogStyleSemantics> catalogStyleSemantics = {
 		components: ['KlpColumn', 'KlpExpanded', 'KlpIcon', 'KlpRow', 'KlpText', 'context.klp.fieldHeight'],
 	),
 	'KlpConditionalFieldRegion': CatalogStyleSemantics(
-		source: 'D:/Projects/Kallopis/lib/src/features/forms/core/klp_conditional_field_region.dart',
+		source: 'lib/src/features/forms/core/klp_conditional_field_region.dart',
 		colors: [],
 		surfaces: [],
 		borders: [],
@@ -434,7 +456,7 @@ const Map<String, CatalogStyleSemantics> catalogStyleSemantics = {
 		components: [],
 	),
 	'KlpConstrainedBox': CatalogStyleSemantics(
-		source: 'D:/Projects/Kallopis/lib/src/foundation/layout/klp_constrained_box.dart',
+		source: 'lib/src/foundation/layout/klp_constrained_box.dart',
 		colors: [],
 		surfaces: [],
 		borders: [],
@@ -445,7 +467,7 @@ const Map<String, CatalogStyleSemantics> catalogStyleSemantics = {
 		components: [],
 	),
 	'KlpContextMenu': CatalogStyleSemantics(
-		source: 'D:/Projects/Kallopis/lib/src/features/overlays/context_menu/klp_context_menu_widget.dart',
+		source: 'lib/src/features/overlays/context_menu/klp_context_menu_widget.dart',
 		colors: [],
 		surfaces: [],
 		borders: [],
@@ -456,7 +478,7 @@ const Map<String, CatalogStyleSemantics> catalogStyleSemantics = {
 		components: ['KlpGestureRegion', 'KlpMenu', 'KlpPositioned', 'KlpStack'],
 	),
 	'KlpDashedBorder': CatalogStyleSemantics(
-		source: 'D:/Projects/Kallopis/lib/src/foundation/surface/klp_dashed_border.dart',
+		source: 'lib/src/foundation/surface/klp_dashed_border.dart',
 		colors: [],
 		surfaces: [],
 		borders: ['KlpStrokeRole.latent'],
@@ -467,7 +489,7 @@ const Map<String, CatalogStyleSemantics> catalogStyleSemantics = {
 		components: ['KlpStrokeFrame'],
 	),
 	'KlpDashedDivider': CatalogStyleSemantics(
-		source: 'D:/Projects/Kallopis/lib/src/foundation/surface/klp_dashed_border.dart',
+		source: 'lib/src/foundation/surface/klp_dashed_border.dart',
 		colors: ['context.klpColors.guide'],
 		surfaces: [],
 		borders: ['KlpStrokeRole.latent', 'context.klp.shape.dashedGap', 'context.klp.shape.dashedLength', 'context.klp.shape.dashedOpacity', 'context.klp.shape.hairline'],
@@ -478,7 +500,7 @@ const Map<String, CatalogStyleSemantics> catalogStyleSemantics = {
 		components: ['KlpDashedBorder', 'KlpStrokeFrame', 'context.klp.shape'],
 	),
 	'KlpDataTable': CatalogStyleSemantics(
-		source: 'D:/Projects/Kallopis/lib/src/features/collections/advanced/internal/klp_data_table.dart',
+		source: 'lib/src/features/collections/advanced/internal/klp_data_table.dart',
 		colors: ['context.klpColors.component', 'context.klpColors.danger', 'context.klpColors.divider', 'context.klpColors.info', 'context.klpColors.selectionForeground', 'context.klpColors.success', 'context.klpColors.surfaceInset', 'context.klpColors.surfaceMuted', 'context.klpColors.text', 'context.klpColors.textFaint', 'context.klpColors.textMuted', 'context.klpColors.warning'],
 		surfaces: ['KlpSurfaceTone.component'],
 		borders: ['Border.all(color: style.divider, width: style.strokeWidth)', 'BorderRadius.circular(style.cardRadius)', 'context.klp.shape.card', 'context.klp.shape.control', 'context.klp.shape.hairline'],
@@ -489,7 +511,7 @@ const Map<String, CatalogStyleSemantics> catalogStyleSemantics = {
 		components: ['KlpCheckbox', 'KlpColumn', 'KlpDashedDivider', 'KlpFlexible', 'KlpIcon', 'KlpRow', 'KlpSurface', 'KlpText', 'context.klp.isDark', 'context.klp.surface'],
 	),
 	'KlpDateField': CatalogStyleSemantics(
-		source: 'D:/Projects/Kallopis/lib/src/features/forms/selection/klp_date_field.dart',
+		source: 'lib/src/features/forms/selection/klp_date_field.dart',
 		colors: [],
 		surfaces: [],
 		borders: [],
@@ -500,7 +522,7 @@ const Map<String, CatalogStyleSemantics> catalogStyleSemantics = {
 		components: ['KlpCalendar', 'KlpColumn', 'KlpGestureRegion', 'KlpPointerBlocker', 'KlpTextField'],
 	),
 	'KlpDateGrid': CatalogStyleSemantics(
-		source: 'D:/Projects/Kallopis/lib/src/features/collections/date_grid/internal/klp_date_grid_widget.dart',
+		source: 'lib/src/features/collections/date_grid/internal/klp_date_grid_widget.dart',
 		colors: ['context.klpColors.border'],
 		surfaces: ['KlpSurfaceTone.component', 'KlpSurfaceTone.muted', 'KlpSurfaceTone.transparent'],
 		borders: ['context.klp.shape.hairline'],
@@ -511,7 +533,7 @@ const Map<String, CatalogStyleSemantics> catalogStyleSemantics = {
 		components: ['KlpColumn', 'KlpGestureRegion', 'KlpSurface', 'KlpText'],
 	),
 	'KlpDateRangeField': CatalogStyleSemantics(
-		source: 'D:/Projects/Kallopis/lib/src/features/forms/selection/klp_date_range_field.dart',
+		source: 'lib/src/features/forms/selection/klp_date_range_field.dart',
 		colors: [],
 		surfaces: [],
 		borders: [],
@@ -522,7 +544,7 @@ const Map<String, CatalogStyleSemantics> catalogStyleSemantics = {
 		components: ['KlpExpanded', 'KlpRow', 'KlpText'],
 	),
 	'KlpDialog': CatalogStyleSemantics(
-		source: 'D:/Projects/Kallopis/lib/src/features/overlays/klp_dialog.dart',
+		source: 'lib/src/features/overlays/klp_dialog.dart',
 		colors: [],
 		surfaces: ['KlpSurfaceTone.base'],
 		borders: ['context.klp.shape.panel'],
@@ -533,7 +555,7 @@ const Map<String, CatalogStyleSemantics> catalogStyleSemantics = {
 		components: ['KlpBox', 'KlpButton', 'KlpColumn', 'KlpConstrainedBox', 'KlpSurface', 'KlpText', 'KlpWrap'],
 	),
 	'KlpDiffViewer': CatalogStyleSemantics(
-		source: 'D:/Projects/Kallopis/lib/src/features/collections/code/internal/klp_diff_viewer_widget.dart',
+		source: 'lib/src/features/collections/code/internal/klp_diff_viewer_widget.dart',
 		colors: ['context.klpColors.clear', 'context.klpColors.danger', 'context.klpColors.divider', 'context.klpColors.onStatus', 'context.klpColors.selectionBackground', 'context.klpColors.selectionForeground', 'context.klpColors.stageSurface', 'context.klpColors.success', 'context.klpColors.surfaceInset', 'context.klpColors.textFaint', 'context.klpColors.textMuted'],
 		surfaces: ['context.klp.surface.diffFillOpacity'],
 		borders: ['Border.all(color: style.divider, width: style.strokeWidth)', 'BorderRadius.circular(style.cardRadius)', 'BorderRadius.circular(widget.style.controlRadius)', 'BorderSide(color: style.divider, width: style.strokeWidth)', 'context.klp.shape.card', 'context.klp.shape.control', 'context.klp.shape.hairline'],
@@ -544,7 +566,7 @@ const Map<String, CatalogStyleSemantics> catalogStyleSemantics = {
 		components: ['KlpColumn', 'KlpExpanded', 'KlpPressable', 'KlpRow', 'KlpSpacer', 'KlpText', 'context.klp.selectionWash'],
 	),
 	'KlpDirectionalPositioned': CatalogStyleSemantics(
-		source: 'D:/Projects/Kallopis/lib/src/foundation/layout/klp_directional_positioned.dart',
+		source: 'lib/src/foundation/layout/klp_directional_positioned.dart',
 		colors: [],
 		surfaces: [],
 		borders: [],
@@ -555,7 +577,7 @@ const Map<String, CatalogStyleSemantics> catalogStyleSemantics = {
 		components: [],
 	),
 	'KlpDivider': CatalogStyleSemantics(
-		source: 'D:/Projects/Kallopis/lib/src/foundation/surface/klp_divider.dart',
+		source: 'lib/src/foundation/surface/klp_divider.dart',
 		colors: ['context.klpColors.divider'],
 		surfaces: [],
 		borders: ['context.klp.shape.stroke'],
@@ -566,7 +588,7 @@ const Map<String, CatalogStyleSemantics> catalogStyleSemantics = {
 		components: [],
 	),
 	'KlpDockHeader': CatalogStyleSemantics(
-		source: 'D:/Projects/Kallopis/lib/src/features/workspace/shell/docking/internal/klp_dock_header_widget.dart',
+		source: 'lib/src/features/workspace/shell/docking/internal/klp_dock_header_widget.dart',
 		colors: [],
 		surfaces: [],
 		borders: [],
@@ -577,7 +599,7 @@ const Map<String, CatalogStyleSemantics> catalogStyleSemantics = {
 		components: ['KlpBox', 'KlpContextMenu', 'KlpIconButton', 'KlpLayoutBuilder', 'KlpPanelHeader'],
 	),
 	'KlpDockLayout': CatalogStyleSemantics(
-		source: 'D:/Projects/Kallopis/lib/src/features/workspace/shell/docking/internal/klp_dock_layout_widget.dart',
+		source: 'lib/src/features/workspace/shell/docking/internal/klp_dock_layout_widget.dart',
 		colors: ['context.klp.primary', 'context.klpColors.border', 'context.klpColors.surfaceInset', 'context.klpColors.surfaceMuted'],
 		surfaces: ['KlpSurfaceTone.app', 'context.klp.surface.dragSourceOpacity'],
 		borders: ['BorderRadius.circular(context.klp.shape.control)', 'BorderRadius.circular(context.klp.shape.pill)', 'context.klp.shape.control', 'context.klp.shape.pill', 'context.klp.shape.stroke'],
@@ -588,7 +610,7 @@ const Map<String, CatalogStyleSemantics> catalogStyleSemantics = {
 		components: ['KlpBox', 'KlpColumn', 'KlpDockHeader', 'KlpDragPreview', 'KlpExpanded', 'KlpLayoutBuilder', 'KlpPanelFrame', 'KlpPositioned', 'KlpRow', 'KlpStack', 'KlpSurface', 'KlpText', 'context.klp.type'],
 	),
 	'KlpDocumentEditActions': CatalogStyleSemantics(
-		source: 'D:/Projects/Kallopis/lib/src/features/workspace/artifact/internal/klp_document_edit_actions.dart',
+		source: 'lib/src/features/workspace/artifact/internal/klp_document_edit_actions.dart',
 		colors: [],
 		surfaces: [],
 		borders: [],
@@ -599,7 +621,7 @@ const Map<String, CatalogStyleSemantics> catalogStyleSemantics = {
 		components: ['KlpButton', 'KlpWrap'],
 	),
 	'KlpDocumentField': CatalogStyleSemantics(
-		source: 'D:/Projects/Kallopis/lib/src/features/workspace/artifact/internal/klp_document_field.dart',
+		source: 'lib/src/features/workspace/artifact/internal/klp_document_field.dart',
 		colors: [],
 		surfaces: [],
 		borders: [],
@@ -610,7 +632,7 @@ const Map<String, CatalogStyleSemantics> catalogStyleSemantics = {
 		components: ['KlpField'],
 	),
 	'KlpDocumentHeader': CatalogStyleSemantics(
-		source: 'D:/Projects/Kallopis/lib/src/features/workspace/artifact/internal/klp_document_header.dart',
+		source: 'lib/src/features/workspace/artifact/internal/klp_document_header.dart',
 		colors: ['KlpFeedbackTone.neutral', 'KlpFeedbackTone.warning'],
 		surfaces: [],
 		borders: [],
@@ -621,7 +643,7 @@ const Map<String, CatalogStyleSemantics> catalogStyleSemantics = {
 		components: ['KlpBadge', 'KlpColumn', 'KlpExpanded', 'KlpRow', 'KlpText', 'KlpWrap'],
 	),
 	'KlpDocumentReferenceLink': CatalogStyleSemantics(
-		source: 'D:/Projects/Kallopis/lib/src/features/workspace/artifact/internal/klp_document_reference_link.dart',
+		source: 'lib/src/features/workspace/artifact/internal/klp_document_reference_link.dart',
 		colors: [],
 		surfaces: [],
 		borders: [],
@@ -632,7 +654,7 @@ const Map<String, CatalogStyleSemantics> catalogStyleSemantics = {
 		components: ['KlpButton'],
 	),
 	'KlpDocumentSection': CatalogStyleSemantics(
-		source: 'D:/Projects/Kallopis/lib/src/features/workspace/artifact/internal/klp_document_section.dart',
+		source: 'lib/src/features/workspace/artifact/internal/klp_document_section.dart',
 		colors: [],
 		surfaces: [],
 		borders: [],
@@ -642,8 +664,19 @@ const Map<String, CatalogStyleSemantics> catalogStyleSemantics = {
 		motion: [],
 		components: ['KlpColumn', 'KlpExpanded', 'KlpRow', 'KlpText', 'KlpWrap'],
 	),
+	'KlpDocumentTabs': CatalogStyleSemantics(
+		source: 'lib/src/features/navigation/widgets/tabs/klp_document_tabs.dart',
+		colors: ['KlpTextTone.primary', 'context.klpColors.surfaceInset', 'context.klpColors.surfaceMuted'],
+		surfaces: [],
+		borders: ['BorderRadius.circular(klp.shape.control)', 'context.klp.shape.control'],
+		spacing: ['EdgeInsets.symmetric(horizontal: klp.space.space2)', 'context.klp.space.chromeTab', 'context.klp.space.space2'],
+		typography: ['KlpTextRole.body', 'KlpTextTone.muted'],
+		geometry: [],
+		motion: [],
+		components: ['KlpFocusRegion', 'KlpIconButton', 'KlpText'],
+	),
 	'KlpDragPreview': CatalogStyleSemantics(
-		source: 'D:/Projects/Kallopis/lib/src/foundation/interaction/klp_drag_drop.dart',
+		source: 'lib/src/foundation/interaction/klp_drag_drop.dart',
 		colors: [],
 		surfaces: ['KlpSurfaceTone.component', 'context.klp.surface.dragOpacity'],
 		borders: [],
@@ -654,7 +687,7 @@ const Map<String, CatalogStyleSemantics> catalogStyleSemantics = {
 		components: ['KlpSurface'],
 	),
 	'KlpDrawer': CatalogStyleSemantics(
-		source: 'D:/Projects/Kallopis/lib/src/features/overlays/drawer/klp_drawer_widget.dart',
+		source: 'lib/src/features/overlays/drawer/klp_drawer_widget.dart',
 		colors: ['context.klp.color.modalScrim'],
 		surfaces: ['KlpSurfaceTone.overlay', 'context.klp.surface.scrimOpacity'],
 		borders: ['context.klp.shape.panel'],
@@ -665,7 +698,7 @@ const Map<String, CatalogStyleSemantics> catalogStyleSemantics = {
 		components: ['KlpAlign', 'KlpBox', 'KlpGestureRegion', 'KlpStack', 'KlpSurface'],
 	),
 	'KlpDropIndicator': CatalogStyleSemantics(
-		source: 'D:/Projects/Kallopis/lib/src/foundation/interaction/klp_drag_drop.dart',
+		source: 'lib/src/foundation/interaction/klp_drag_drop.dart',
 		colors: ['context.klpColors.interaction'],
 		surfaces: [],
 		borders: ['BorderRadius.circular(context.klp.shape.pill)', 'context.klp.shape.pill', 'context.klp.shape.stroke'],
@@ -676,7 +709,7 @@ const Map<String, CatalogStyleSemantics> catalogStyleSemantics = {
 		components: [],
 	),
 	'KlpDropTarget': CatalogStyleSemantics(
-		source: 'D:/Projects/Kallopis/lib/src/foundation/interaction/klp_drag_drop.dart',
+		source: 'lib/src/foundation/interaction/klp_drag_drop.dart',
 		colors: [],
 		surfaces: ['KlpSurfaceTone.muted', 'KlpSurfaceTone.transparent'],
 		borders: ['KlpStrokeRole.latent'],
@@ -687,7 +720,7 @@ const Map<String, CatalogStyleSemantics> catalogStyleSemantics = {
 		components: ['KlpStrokeFrame', 'KlpSurface'],
 	),
 	'KlpEditorToolbar': CatalogStyleSemantics(
-		source: 'D:/Projects/Kallopis/lib/src/features/actions/editor/klp_editor_toolbar.dart',
+		source: 'lib/src/features/actions/editor/klp_editor_toolbar.dart',
 		colors: ['KlpTextTone.primary', 'context.klpColors.surfaceInset', 'context.klpColors.surfaceMuted'],
 		surfaces: ['KlpSurfaceTone.component'],
 		borders: ['BorderRadius.circular(context.klp.shape.control)', 'context.klp.shape.control'],
@@ -698,7 +731,7 @@ const Map<String, CatalogStyleSemantics> catalogStyleSemantics = {
 		components: ['KlpBox', 'KlpText', 'KlpWrap'],
 	),
 	'KlpEmptyState': CatalogStyleSemantics(
-		source: 'D:/Projects/Kallopis/lib/src/features/feedback/empty_state/klp_empty_state_widget.dart',
+		source: 'lib/src/features/feedback/empty_state/klp_empty_state_widget.dart',
 		colors: ['context.klpColors.textMuted'],
 		surfaces: [],
 		borders: ['context.klp.shape.card'],
@@ -709,7 +742,7 @@ const Map<String, CatalogStyleSemantics> catalogStyleSemantics = {
 		components: ['KlpBox', 'KlpColumn', 'KlpDashedBorder', 'KlpIcon', 'KlpText'],
 	),
 	'KlpEntityPicker': CatalogStyleSemantics(
-		source: 'D:/Projects/Kallopis/lib/src/features/workspace/entity_picker/internal/klp_entity_picker_widget.dart',
+		source: 'lib/src/features/workspace/entity_picker/internal/klp_entity_picker_widget.dart',
 		colors: ['context.klp.color.clear', 'context.klp.color.surfaceMuted'],
 		surfaces: ['KlpSurfaceTone.component'],
 		borders: ['BorderRadius.circular(klp.shape.control)', 'context.klp.shape.control'],
@@ -720,7 +753,7 @@ const Map<String, CatalogStyleSemantics> catalogStyleSemantics = {
 		components: ['KlpBadge', 'KlpBox', 'KlpButton', 'KlpColumn', 'KlpExpanded', 'KlpRow', 'KlpText', 'KlpTextField'],
 	),
 	'KlpErrorState': CatalogStyleSemantics(
-		source: 'D:/Projects/Kallopis/lib/src/features/feedback/view_states/klp_error_state.dart',
+		source: 'lib/src/features/feedback/view_states/klp_error_state.dart',
 		colors: ['context.klpColors.danger'],
 		surfaces: [],
 		borders: ['context.klp.shape.card'],
@@ -731,7 +764,7 @@ const Map<String, CatalogStyleSemantics> catalogStyleSemantics = {
 		components: ['KlpBox', 'KlpButton', 'KlpColumn', 'KlpDashedBorder', 'KlpIcon', 'KlpText'],
 	),
 	'KlpExcludeSemantics': CatalogStyleSemantics(
-		source: 'D:/Projects/Kallopis/lib/src/foundation/interaction/klp_exclude_semantics.dart',
+		source: 'lib/src/foundation/interaction/klp_exclude_semantics.dart',
 		colors: [],
 		surfaces: [],
 		borders: [],
@@ -742,7 +775,7 @@ const Map<String, CatalogStyleSemantics> catalogStyleSemantics = {
 		components: [],
 	),
 	'KlpExpanded': CatalogStyleSemantics(
-		source: 'D:/Projects/Kallopis/lib/src/foundation/layout/klp_expanded.dart',
+		source: 'lib/src/foundation/layout/klp_expanded.dart',
 		colors: [],
 		surfaces: [],
 		borders: [],
@@ -753,7 +786,7 @@ const Map<String, CatalogStyleSemantics> catalogStyleSemantics = {
 		components: [],
 	),
 	'KlpField': CatalogStyleSemantics(
-		source: 'D:/Projects/Kallopis/lib/src/features/forms/core/klp_field.dart',
+		source: 'lib/src/features/forms/core/klp_field.dart',
 		colors: [],
 		surfaces: [],
 		borders: [],
@@ -764,7 +797,7 @@ const Map<String, CatalogStyleSemantics> catalogStyleSemantics = {
 		components: ['KlpColumn', 'KlpExpanded', 'KlpFieldDescription', 'KlpFieldLabel', 'KlpRow', 'KlpSpacer', 'KlpText'],
 	),
 	'KlpFieldDescription': CatalogStyleSemantics(
-		source: 'D:/Projects/Kallopis/lib/src/features/forms/core/klp_field_description.dart',
+		source: 'lib/src/features/forms/core/klp_field_description.dart',
 		colors: [],
 		surfaces: [],
 		borders: [],
@@ -775,7 +808,7 @@ const Map<String, CatalogStyleSemantics> catalogStyleSemantics = {
 		components: ['KlpText'],
 	),
 	'KlpFieldError': CatalogStyleSemantics(
-		source: 'D:/Projects/Kallopis/lib/src/features/forms/core/klp_field_error.dart',
+		source: 'lib/src/features/forms/core/klp_field_error.dart',
 		colors: [],
 		surfaces: [],
 		borders: [],
@@ -786,7 +819,7 @@ const Map<String, CatalogStyleSemantics> catalogStyleSemantics = {
 		components: ['KlpText'],
 	),
 	'KlpFieldGroup': CatalogStyleSemantics(
-		source: 'D:/Projects/Kallopis/lib/src/features/forms/core/klp_field_group.dart',
+		source: 'lib/src/features/forms/core/klp_field_group.dart',
 		colors: [],
 		surfaces: [],
 		borders: [],
@@ -797,7 +830,7 @@ const Map<String, CatalogStyleSemantics> catalogStyleSemantics = {
 		components: ['KlpColumn', 'KlpField'],
 	),
 	'KlpFieldLabel': CatalogStyleSemantics(
-		source: 'D:/Projects/Kallopis/lib/src/features/forms/core/klp_field_label.dart',
+		source: 'lib/src/features/forms/core/klp_field_label.dart',
 		colors: [],
 		surfaces: [],
 		borders: [],
@@ -808,7 +841,7 @@ const Map<String, CatalogStyleSemantics> catalogStyleSemantics = {
 		components: ['KlpText'],
 	),
 	'KlpFileDropzoneField': CatalogStyleSemantics(
-		source: 'D:/Projects/Kallopis/lib/src/features/forms/structured/internal/klp_file_dropzone_field_widget.dart',
+		source: 'lib/src/features/forms/structured/internal/klp_file_dropzone_field_widget.dart',
 		colors: ['context.klp.color.border', 'context.klp.color.interaction'],
 		surfaces: [],
 		borders: ['BorderRadius.circular(klp.shape.control)', 'context.klp.shape.control', 'context.klp.shape.stroke'],
@@ -819,7 +852,7 @@ const Map<String, CatalogStyleSemantics> catalogStyleSemantics = {
 		components: ['KlpColumn', 'KlpExpanded', 'KlpGestureRegion', 'KlpRow', 'KlpText'],
 	),
 	'KlpFileExplorer': CatalogStyleSemantics(
-		source: 'D:/Projects/Kallopis/lib/src/features/navigation/widgets/explorer/internal/klp_file_explorer_widget.dart',
+		source: 'lib/src/features/navigation/widgets/explorer/internal/klp_file_explorer_widget.dart',
 		colors: [],
 		surfaces: [],
 		borders: [],
@@ -830,7 +863,7 @@ const Map<String, CatalogStyleSemantics> catalogStyleSemantics = {
 		components: ['KlpFileExplorerSectionView'],
 	),
 	'KlpFileExplorerFolderView': CatalogStyleSemantics(
-		source: 'D:/Projects/Kallopis/lib/src/features/navigation/widgets/explorer/internal/klp_file_explorer_folder_view.dart',
+		source: 'lib/src/features/navigation/widgets/explorer/internal/klp_file_explorer_folder_view.dart',
 		colors: ['context.klpColors.text', 'context.klpColors.textMuted'],
 		surfaces: [],
 		borders: [],
@@ -841,7 +874,7 @@ const Map<String, CatalogStyleSemantics> catalogStyleSemantics = {
 		components: ['KlpAlign', 'KlpBox', 'KlpExpanded', 'KlpGestureRegion', 'KlpIcon', 'KlpRow', 'KlpStateHighlight', 'KlpText'],
 	),
 	'KlpFileExplorerItemView': CatalogStyleSemantics(
-		source: 'D:/Projects/Kallopis/lib/src/features/navigation/widgets/explorer/internal/klp_file_explorer_item_view.dart',
+		source: 'lib/src/features/navigation/widgets/explorer/internal/klp_file_explorer_item_view.dart',
 		colors: ['context.klpColors.text', 'context.klpColors.textMuted'],
 		surfaces: [],
 		borders: [],
@@ -852,7 +885,7 @@ const Map<String, CatalogStyleSemantics> catalogStyleSemantics = {
 		components: ['KlpAlign', 'KlpBox', 'KlpExpanded', 'KlpGestureRegion', 'KlpIcon', 'KlpRow', 'KlpStateHighlight', 'KlpText'],
 	),
 	'KlpFileExplorerSection': CatalogStyleSemantics(
-		source: 'D:/Projects/Kallopis/lib/src/features/navigation/widgets/explorer/models/klp_file_explorer_section.dart',
+		source: 'lib/src/features/navigation/widgets/explorer/models/klp_file_explorer_section.dart',
 		colors: [],
 		surfaces: [],
 		borders: [],
@@ -863,7 +896,7 @@ const Map<String, CatalogStyleSemantics> catalogStyleSemantics = {
 		components: [],
 	),
 	'KlpFileExplorerSectionView': CatalogStyleSemantics(
-		source: 'D:/Projects/Kallopis/lib/src/features/navigation/widgets/explorer/internal/klp_file_explorer_section_view.dart',
+		source: 'lib/src/features/navigation/widgets/explorer/internal/klp_file_explorer_section_view.dart',
 		colors: ['context.klpColors.text', 'context.klpColors.textMuted'],
 		surfaces: [],
 		borders: [],
@@ -874,7 +907,7 @@ const Map<String, CatalogStyleSemantics> catalogStyleSemantics = {
 		components: ['KlpBox', 'KlpColumn', 'KlpExpanded', 'KlpFileExplorerFolderView', 'KlpFileExplorerItemView', 'KlpIcon', 'KlpPressable', 'KlpRow', 'KlpText'],
 	),
 	'KlpFileField': CatalogStyleSemantics(
-		source: 'D:/Projects/Kallopis/lib/src/features/forms/structured/internal/klp_file_field_widget.dart',
+		source: 'lib/src/features/forms/structured/internal/klp_file_field_widget.dart',
 		colors: [],
 		surfaces: [],
 		borders: [],
@@ -885,7 +918,7 @@ const Map<String, CatalogStyleSemantics> catalogStyleSemantics = {
 		components: ['KlpButton', 'KlpColumn', 'KlpFilePreview', 'KlpText', 'KlpWrap'],
 	),
 	'KlpFilePreview': CatalogStyleSemantics(
-		source: 'D:/Projects/Kallopis/lib/src/features/collections/advanced/internal/klp_file_preview.dart',
+		source: 'lib/src/features/collections/advanced/internal/klp_file_preview.dart',
 		colors: ['context.klpColors.component', 'context.klpColors.danger', 'context.klpColors.divider', 'context.klpColors.info', 'context.klpColors.selectionForeground', 'context.klpColors.success', 'context.klpColors.surfaceInset', 'context.klpColors.surfaceMuted', 'context.klpColors.text', 'context.klpColors.textFaint', 'context.klpColors.textMuted', 'context.klpColors.warning'],
 		surfaces: [],
 		borders: ['Border.all(color: style.divider, width: style.strokeWidth)', 'BorderRadius.circular(style.cardRadius)', 'context.klp.shape.card', 'context.klp.shape.control', 'context.klp.shape.hairline'],
@@ -896,7 +929,7 @@ const Map<String, CatalogStyleSemantics> catalogStyleSemantics = {
 		components: ['KlpAlign', 'KlpBox', 'KlpColumn', 'KlpDashedDivider', 'KlpExpanded', 'KlpGeometricSpinner', 'KlpGestureRegion', 'KlpRow', 'KlpText', 'context.klp.isDark', 'context.klp.surface'],
 	),
 	'KlpFilterBar': CatalogStyleSemantics(
-		source: 'D:/Projects/Kallopis/lib/src/foundation/interaction/filter/internal/klp_filter_bar_widget.dart',
+		source: 'lib/src/foundation/interaction/filter/internal/klp_filter_bar_widget.dart',
 		colors: ['context.klpColors.divider', 'context.klpColors.onSelection', 'context.klpColors.selection', 'context.klpColors.surfaceInset', 'context.klpColors.text', 'context.klpColors.textMuted'],
 		surfaces: [],
 		borders: ['BorderRadius.circular(theme.shape.control)', 'context.klp.shape.control', 'context.klp.shape.hairline'],
@@ -907,7 +940,7 @@ const Map<String, CatalogStyleSemantics> catalogStyleSemantics = {
 		components: ['KlpActionRegion', 'KlpBox', 'KlpCenter', 'KlpConstrainedBox', 'KlpDashedBorder', 'KlpGestureRegion', 'KlpIcon', 'KlpRow', 'KlpText', 'KlpWrap'],
 	),
 	'KlpFit': CatalogStyleSemantics(
-		source: 'D:/Projects/Kallopis/lib/src/foundation/layout/klp_fit.dart',
+		source: 'lib/src/foundation/layout/klp_fit.dart',
 		colors: [],
 		surfaces: [],
 		borders: [],
@@ -918,7 +951,7 @@ const Map<String, CatalogStyleSemantics> catalogStyleSemantics = {
 		components: [],
 	),
 	'KlpFlexible': CatalogStyleSemantics(
-		source: 'D:/Projects/Kallopis/lib/src/foundation/layout/klp_flexible.dart',
+		source: 'lib/src/foundation/layout/klp_flexible.dart',
 		colors: [],
 		surfaces: [],
 		borders: [],
@@ -929,7 +962,7 @@ const Map<String, CatalogStyleSemantics> catalogStyleSemantics = {
 		components: [],
 	),
 	'KlpFlowNodeCard': CatalogStyleSemantics(
-		source: 'D:/Projects/Kallopis/lib/src/features/infinite_canvas/internal/klp_flow_node_card.dart',
+		source: 'lib/src/features/infinite_canvas/internal/klp_flow_node_card.dart',
 		colors: ['context.klp.color.divider', 'context.klp.color.selection'],
 		surfaces: ['KlpSurfaceTone.component', 'KlpSurfaceTone.raised'],
 		borders: ['context.klp.shape.hairline'],
@@ -940,7 +973,7 @@ const Map<String, CatalogStyleSemantics> catalogStyleSemantics = {
 		components: ['KlpBadge', 'KlpColumn', 'KlpExpanded', 'KlpRow', 'KlpSurface', 'KlpText'],
 	),
 	'KlpFlowValidationPanel': CatalogStyleSemantics(
-		source: 'D:/Projects/Kallopis/lib/src/features/infinite_canvas/internal/klp_flow_validation_panel.dart',
+		source: 'lib/src/features/infinite_canvas/internal/klp_flow_validation_panel.dart',
 		colors: [],
 		surfaces: [],
 		borders: [],
@@ -951,7 +984,7 @@ const Map<String, CatalogStyleSemantics> catalogStyleSemantics = {
 		components: ['KlpColumn', 'KlpInlineNotice', 'KlpText', 'KlpWrap'],
 	),
 	'KlpFocusBoundary': CatalogStyleSemantics(
-		source: 'D:/Projects/Kallopis/lib/src/features/feedback/workflow/klp_focus_boundary.dart',
+		source: 'lib/src/features/feedback/workflow/klp_focus_boundary.dart',
 		colors: [],
 		surfaces: [],
 		borders: [],
@@ -962,7 +995,7 @@ const Map<String, CatalogStyleSemantics> catalogStyleSemantics = {
 		components: ['KlpFocusRegion'],
 	),
 	'KlpFocusRegion': CatalogStyleSemantics(
-		source: 'D:/Projects/Kallopis/lib/src/foundation/interaction/klp_focus_region.dart',
+		source: 'lib/src/foundation/interaction/klp_focus_region.dart',
 		colors: [],
 		surfaces: [],
 		borders: [],
@@ -973,7 +1006,7 @@ const Map<String, CatalogStyleSemantics> catalogStyleSemantics = {
 		components: [],
 	),
 	'KlpForm': CatalogStyleSemantics(
-		source: 'D:/Projects/Kallopis/lib/src/features/forms/core/klp_form.dart',
+		source: 'lib/src/features/forms/core/klp_form.dart',
 		colors: [],
 		surfaces: [],
 		borders: [],
@@ -984,7 +1017,7 @@ const Map<String, CatalogStyleSemantics> catalogStyleSemantics = {
 		components: ['KlpColumn'],
 	),
 	'KlpFormActions': CatalogStyleSemantics(
-		source: 'D:/Projects/Kallopis/lib/src/features/forms/core/klp_form_actions.dart',
+		source: 'lib/src/features/forms/core/klp_form_actions.dart',
 		colors: [],
 		surfaces: [],
 		borders: [],
@@ -995,7 +1028,7 @@ const Map<String, CatalogStyleSemantics> catalogStyleSemantics = {
 		components: ['KlpButton', 'KlpWrap'],
 	),
 	'KlpFormErrorSummary': CatalogStyleSemantics(
-		source: 'D:/Projects/Kallopis/lib/src/features/forms/core/klp_form_error_summary.dart',
+		source: 'lib/src/features/forms/core/klp_form_error_summary.dart',
 		colors: [],
 		surfaces: ['KlpSurfaceTone.component'],
 		borders: [],
@@ -1006,7 +1039,7 @@ const Map<String, CatalogStyleSemantics> catalogStyleSemantics = {
 		components: ['KlpBox', 'KlpColumn', 'KlpGestureRegion', 'KlpSurface', 'KlpText'],
 	),
 	'KlpFormSection': CatalogStyleSemantics(
-		source: 'D:/Projects/Kallopis/lib/src/features/forms/core/klp_form_section.dart',
+		source: 'lib/src/features/forms/core/klp_form_section.dart',
 		colors: [],
 		surfaces: ['KlpSurfaceTone.component'],
 		borders: [],
@@ -1016,8 +1049,30 @@ const Map<String, CatalogStyleSemantics> catalogStyleSemantics = {
 		motion: [],
 		components: ['KlpBox', 'KlpColumn', 'KlpGestureRegion', 'KlpSurface', 'KlpText'],
 	),
+	'KlpFrameGroup': CatalogStyleSemantics(
+		source: 'lib/src/features/workspace/layout/klp_frame_groups.dart',
+		colors: ['context.klpColors.divider'],
+		surfaces: [],
+		borders: ['context.klp.shape.dashedGap', 'context.klp.shape.dashedLength', 'context.klp.shape.hairline'],
+		spacing: ['context.klp.space.space2'],
+		typography: [],
+		geometry: [],
+		motion: [],
+		components: ['context.klp.shape'],
+	),
+	'KlpFrameGroups': CatalogStyleSemantics(
+		source: 'lib/src/features/workspace/layout/klp_frame_groups.dart',
+		colors: [],
+		surfaces: [],
+		borders: [],
+		spacing: [],
+		typography: [],
+		geometry: [],
+		motion: [],
+		components: [],
+	),
 	'KlpGap': CatalogStyleSemantics(
-		source: 'D:/Projects/Kallopis/lib/src/foundation/layout/klp_gap.dart',
+		source: 'lib/src/foundation/layout/klp_gap.dart',
 		colors: [],
 		surfaces: [],
 		borders: [],
@@ -1028,7 +1083,7 @@ const Map<String, CatalogStyleSemantics> catalogStyleSemantics = {
 		components: ['context.klp.space'],
 	),
 	'KlpGeometricSpinner': CatalogStyleSemantics(
-		source: 'D:/Projects/Kallopis/lib/src/foundation/klp_geometric_spinner.dart',
+		source: 'lib/src/foundation/klp_geometric_spinner.dart',
 		colors: ['context.klpColors.accent', 'context.klpColors.interaction', 'context.klpColors.text'],
 		surfaces: [],
 		borders: [],
@@ -1039,7 +1094,7 @@ const Map<String, CatalogStyleSemantics> catalogStyleSemantics = {
 		components: [],
 	),
 	'KlpGestureRegion': CatalogStyleSemantics(
-		source: 'D:/Projects/Kallopis/lib/src/foundation/interaction/klp_gesture_region.dart',
+		source: 'lib/src/foundation/interaction/klp_gesture_region.dart',
 		colors: [],
 		surfaces: [],
 		borders: [],
@@ -1050,7 +1105,7 @@ const Map<String, CatalogStyleSemantics> catalogStyleSemantics = {
 		components: [],
 	),
 	'KlpIcon': CatalogStyleSemantics(
-		source: 'D:/Projects/Kallopis/lib/src/foundation/klp_icon.dart',
+		source: 'lib/src/foundation/klp_icon.dart',
 		colors: [],
 		surfaces: [],
 		borders: [],
@@ -1061,7 +1116,7 @@ const Map<String, CatalogStyleSemantics> catalogStyleSemantics = {
 		components: [],
 	),
 	'KlpIconButton': CatalogStyleSemantics(
-		source: 'D:/Projects/Kallopis/lib/src/features/actions/button/internal/klp_icon_button_widget.dart',
+		source: 'lib/src/features/actions/button/internal/klp_icon_button_widget.dart',
 		colors: [],
 		surfaces: [],
 		borders: ['BorderRadius.circular(style.radius)', 'context.klp.shape.control'],
@@ -1072,7 +1127,7 @@ const Map<String, CatalogStyleSemantics> catalogStyleSemantics = {
 		components: ['KlpIcon', 'KlpTooltip', 'context.klp.color', 'context.klp.selectionWash'],
 	),
 	'KlpInlineCode': CatalogStyleSemantics(
-		source: 'D:/Projects/Kallopis/lib/src/foundation/klp_inline_code.dart',
+		source: 'lib/src/foundation/klp_inline_code.dart',
 		colors: ['context.klp.color.surfaceInset', 'context.klp.color.text'],
 		surfaces: [],
 		borders: ['BorderRadius.circular(effectiveRadius)', 'context.klp.shape.control'],
@@ -1083,7 +1138,7 @@ const Map<String, CatalogStyleSemantics> catalogStyleSemantics = {
 		components: [],
 	),
 	'KlpInlineNotice': CatalogStyleSemantics(
-		source: 'D:/Projects/Kallopis/lib/src/features/feedback/klp_inline_notice.dart',
+		source: 'lib/src/features/feedback/klp_inline_notice.dart',
 		colors: ['KlpFeedbackTone.info'],
 		surfaces: ['KlpSurfaceTone.component'],
 		borders: ['context.klp.shape.control'],
@@ -1094,7 +1149,7 @@ const Map<String, CatalogStyleSemantics> catalogStyleSemantics = {
 		components: ['KlpAlign', 'KlpBox', 'KlpColumn', 'KlpExpanded', 'KlpFlexible', 'KlpIcon', 'KlpLayoutBuilder', 'KlpRow', 'KlpSurface', 'KlpText', 'context.klp.type'],
 	),
 	'KlpJsonTree': CatalogStyleSemantics(
-		source: 'D:/Projects/Kallopis/lib/src/features/collections/advanced/internal/klp_json_tree.dart',
+		source: 'lib/src/features/collections/advanced/internal/klp_json_tree.dart',
 		colors: ['context.klpColors.component', 'context.klpColors.danger', 'context.klpColors.divider', 'context.klpColors.info', 'context.klpColors.selectionForeground', 'context.klpColors.success', 'context.klpColors.surfaceInset', 'context.klpColors.surfaceMuted', 'context.klpColors.text', 'context.klpColors.textFaint', 'context.klpColors.textMuted', 'context.klpColors.warning'],
 		surfaces: ['KlpSurfaceTone.component'],
 		borders: ['context.klp.shape.card', 'context.klp.shape.control', 'context.klp.shape.hairline'],
@@ -1105,7 +1160,7 @@ const Map<String, CatalogStyleSemantics> catalogStyleSemantics = {
 		components: ['KlpBox', 'KlpColumn', 'KlpGestureRegion', 'KlpIcon', 'KlpRow', 'KlpText', 'context.klp.isDark', 'context.klp.surface'],
 	),
 	'KlpKeyBindingHost': CatalogStyleSemantics(
-		source: 'D:/Projects/Kallopis/lib/src/foundation/interaction/keybinding/klp_key_binding_controller.dart',
+		source: 'lib/src/foundation/interaction/keybinding/klp_key_binding_controller.dart',
 		colors: [],
 		surfaces: [],
 		borders: [],
@@ -1116,7 +1171,7 @@ const Map<String, CatalogStyleSemantics> catalogStyleSemantics = {
 		components: [],
 	),
 	'KlpKeyBindingRegion': CatalogStyleSemantics(
-		source: 'D:/Projects/Kallopis/lib/src/foundation/interaction/keybinding/klp_key_binding_region.dart',
+		source: 'lib/src/foundation/interaction/keybinding/klp_key_binding_region.dart',
 		colors: [],
 		surfaces: [],
 		borders: [],
@@ -1127,7 +1182,7 @@ const Map<String, CatalogStyleSemantics> catalogStyleSemantics = {
 		components: [],
 	),
 	'KlpKeyValueEditor': CatalogStyleSemantics(
-		source: 'D:/Projects/Kallopis/lib/src/features/forms/structured/internal/klp_key_value_editor_widget.dart',
+		source: 'lib/src/features/forms/structured/internal/klp_key_value_editor_widget.dart',
 		colors: [],
 		surfaces: [],
 		borders: [],
@@ -1138,7 +1193,7 @@ const Map<String, CatalogStyleSemantics> catalogStyleSemantics = {
 		components: ['KlpColumn', 'KlpExpanded', 'KlpRow', 'KlpText', 'KlpTextField'],
 	),
 	'KlpKeyValueList': CatalogStyleSemantics(
-		source: 'D:/Projects/Kallopis/lib/src/features/collections/key_value/internal/klp_key_value_list_widget.dart',
+		source: 'lib/src/features/collections/key_value/internal/klp_key_value_list_widget.dart',
 		colors: ['context.klp.color.text', 'context.klpColors.textFaint'],
 		surfaces: [],
 		borders: [],
@@ -1149,7 +1204,7 @@ const Map<String, CatalogStyleSemantics> catalogStyleSemantics = {
 		components: ['KlpBox', 'KlpColumn', 'KlpExpanded', 'KlpGestureRegion', 'KlpIcon', 'KlpRow', 'KlpText'],
 	),
 	'KlpKeyValueTable': CatalogStyleSemantics(
-		source: 'D:/Projects/Kallopis/lib/src/features/collections/key_value/internal/klp_key_value_table_widget.dart',
+		source: 'lib/src/features/collections/key_value/internal/klp_key_value_table_widget.dart',
 		colors: ['Border.all(color: klp.color.divider, width: klp.shape.hairline)', 'context.klp.color.divider'],
 		surfaces: ['KlpSurfaceTone.component'],
 		borders: ['BorderRadius.circular(klp.shape.card)', 'context.klp.shape.card', 'context.klp.shape.hairline'],
@@ -1160,7 +1215,7 @@ const Map<String, CatalogStyleSemantics> catalogStyleSemantics = {
 		components: ['KlpColumn', 'KlpExpanded', 'KlpRow', 'KlpSurface', 'KlpText'],
 	),
 	'KlpLayoutBuilder': CatalogStyleSemantics(
-		source: 'D:/Projects/Kallopis/lib/src/foundation/layout/klp_layout_builder.dart',
+		source: 'lib/src/foundation/layout/klp_layout_builder.dart',
 		colors: [],
 		surfaces: [],
 		borders: [],
@@ -1171,7 +1226,7 @@ const Map<String, CatalogStyleSemantics> catalogStyleSemantics = {
 		components: [],
 	),
 	'KlpLayoutLens': CatalogStyleSemantics(
-		source: 'D:/Projects/Kallopis/lib/src/features/infinite_canvas/internal/klp_layout_lens.dart',
+		source: 'lib/src/features/infinite_canvas/internal/klp_layout_lens.dart',
 		colors: [],
 		surfaces: ['KlpSurfaceTone.raised'],
 		borders: [],
@@ -1182,7 +1237,7 @@ const Map<String, CatalogStyleSemantics> catalogStyleSemantics = {
 		components: ['KlpBadge', 'KlpBox', 'KlpColumn', 'KlpExpanded', 'KlpRow', 'KlpText'],
 	),
 	'KlpListTile': CatalogStyleSemantics(
-		source: 'D:/Projects/Kallopis/lib/src/features/collections/list_tile/internal/klp_list_tile_widget.dart',
+		source: 'lib/src/features/collections/list_tile/internal/klp_list_tile_widget.dart',
 		colors: ['KlpFeedbackTone.danger', 'KlpFeedbackTone.info', 'KlpFeedbackTone.neutral', 'KlpFeedbackTone.success', 'KlpFeedbackTone.warning', 'KlpTextTone.primary', 'context.klpColors.clear', 'context.klpColors.danger', 'context.klpColors.info', 'context.klpColors.selectionBackground', 'context.klpColors.selectionForeground', 'context.klpColors.success', 'context.klpColors.textMuted', 'context.klpColors.warning'],
 		surfaces: ['context.klp.surface.listStatusOpacity', 'context.klp.surface.listStatusSelectedOpacity'],
 		borders: ['BorderRadius.circular(style.radius)', 'context.klp.shape.control'],
@@ -1193,7 +1248,7 @@ const Map<String, CatalogStyleSemantics> catalogStyleSemantics = {
 		components: ['KlpColumn', 'KlpExpanded', 'KlpIcon', 'KlpRow', 'KlpText', 'context.klp.selectionWash'],
 	),
 	'KlpLiveRegion': CatalogStyleSemantics(
-		source: 'D:/Projects/Kallopis/lib/src/features/feedback/klp_live_region.dart',
+		source: 'lib/src/features/feedback/klp_live_region.dart',
 		colors: [],
 		surfaces: [],
 		borders: [],
@@ -1204,7 +1259,7 @@ const Map<String, CatalogStyleSemantics> catalogStyleSemantics = {
 		components: [],
 	),
 	'KlpLoadingState': CatalogStyleSemantics(
-		source: 'D:/Projects/Kallopis/lib/src/features/feedback/view_states/klp_loading_state.dart',
+		source: 'lib/src/features/feedback/view_states/klp_loading_state.dart',
 		colors: [],
 		surfaces: [],
 		borders: [],
@@ -1215,7 +1270,7 @@ const Map<String, CatalogStyleSemantics> catalogStyleSemantics = {
 		components: ['KlpBox', 'KlpColumn', 'KlpGeometricSpinner', 'KlpLiveRegion', 'KlpText'],
 	),
 	'KlpMasonryGrid': CatalogStyleSemantics(
-		source: 'D:/Projects/Kallopis/lib/src/foundation/layout/klp_masonry_grid.dart',
+		source: 'lib/src/foundation/layout/klp_masonry_grid.dart',
 		colors: [],
 		surfaces: [],
 		borders: [],
@@ -1226,7 +1281,7 @@ const Map<String, CatalogStyleSemantics> catalogStyleSemantics = {
 		components: [],
 	),
 	'KlpMenu': CatalogStyleSemantics(
-		source: 'D:/Projects/Kallopis/lib/src/features/overlays/menu/klp_menu_widget.dart',
+		source: 'lib/src/features/overlays/menu/klp_menu_widget.dart',
 		colors: ['context.klpColors.modalScrim.withValues'],
 		surfaces: ['KlpSurfaceTone.overlay', 'context.klp.surface.overlayBlur', 'context.klp.surface.overlayOffsetY', 'context.klp.surface.overlayShadowOpacity', 'context.klp.surface.overlaySpread'],
 		borders: [],
@@ -1237,7 +1292,7 @@ const Map<String, CatalogStyleSemantics> catalogStyleSemantics = {
 		components: ['KlpBox', 'KlpDashedDivider', 'KlpDivider', 'KlpFocusRegion', 'KlpMenuItem', 'KlpSurface', 'KlpText', 'KlpTextField', 'context.klp.menuItemHeight', 'context.klp.menuPadding', 'context.klp.menuRadius'],
 	),
 	'KlpMenuItem': CatalogStyleSemantics(
-		source: 'D:/Projects/Kallopis/lib/src/features/overlays/menu/klp_menu_item.dart',
+		source: 'lib/src/features/overlays/menu/klp_menu_item.dart',
 		colors: [],
 		surfaces: ['context.klp.surface.overlayBlur', 'context.klp.surface.overlayOffsetY'],
 		borders: [],
@@ -1248,7 +1303,7 @@ const Map<String, CatalogStyleSemantics> catalogStyleSemantics = {
 		components: ['KlpActionRegion', 'KlpBox', 'KlpExpanded', 'KlpIcon', 'KlpRotate', 'KlpRow', 'KlpText', 'KlpToggleIndicator', 'KlpTranslate', 'context.klp.menuItemHeight', 'context.klp.menuPadding', 'context.klp.menuRadius'],
 	),
 	'KlpMessageBubble': CatalogStyleSemantics(
-		source: 'D:/Projects/Kallopis/lib/src/features/collections/message_thread/internal/klp_message_bubble_widget.dart',
+		source: 'lib/src/features/collections/message_thread/internal/klp_message_bubble_widget.dart',
 		colors: [],
 		surfaces: ['KlpSurfaceTone.muted'],
 		borders: [],
@@ -1259,7 +1314,7 @@ const Map<String, CatalogStyleSemantics> catalogStyleSemantics = {
 		components: ['KlpAlign', 'KlpBox', 'KlpColumn', 'KlpRow', 'KlpSurface', 'KlpText'],
 	),
 	'KlpMessageComposer': CatalogStyleSemantics(
-		source: 'D:/Projects/Kallopis/lib/src/features/workspace/message_composer/internal/klp_message_composer_widget.dart',
+		source: 'lib/src/features/workspace/message_composer/internal/klp_message_composer_widget.dart',
 		colors: [],
 		surfaces: ['KlpSurfaceTone.muted'],
 		borders: [],
@@ -1270,7 +1325,7 @@ const Map<String, CatalogStyleSemantics> catalogStyleSemantics = {
 		components: ['KlpBadge', 'KlpBox', 'KlpButton', 'KlpColumn', 'KlpExpanded', 'KlpFlexible', 'KlpIconButton', 'KlpLayoutBuilder', 'KlpRow', 'KlpSpacer', 'KlpSurface', 'KlpTextArea', 'KlpWrap', 'context.klp.space'],
 	),
 	'KlpMessageConversation': CatalogStyleSemantics(
-		source: 'D:/Projects/Kallopis/lib/src/features/workspace/message_composer/internal/klp_message_conversation_widget.dart',
+		source: 'lib/src/features/workspace/message_composer/internal/klp_message_conversation_widget.dart',
 		colors: [],
 		surfaces: [],
 		borders: [],
@@ -1281,7 +1336,7 @@ const Map<String, CatalogStyleSemantics> catalogStyleSemantics = {
 		components: ['KlpBox', 'KlpColumn', 'KlpConstrainedBox', 'KlpExpanded', 'KlpLayoutBuilder', 'context.klp.space'],
 	),
 	'KlpMessageThread': CatalogStyleSemantics(
-		source: 'D:/Projects/Kallopis/lib/src/features/collections/message_thread/internal/klp_message_thread_widget.dart',
+		source: 'lib/src/features/collections/message_thread/internal/klp_message_thread_widget.dart',
 		colors: [],
 		surfaces: [],
 		borders: [],
@@ -1292,7 +1347,7 @@ const Map<String, CatalogStyleSemantics> catalogStyleSemantics = {
 		components: ['KlpAlign', 'KlpButton', 'KlpColumn'],
 	),
 	'KlpMetricCard': CatalogStyleSemantics(
-		source: 'D:/Projects/Kallopis/lib/src/features/collections/card/internal/klp_metric_card_widget.dart',
+		source: 'lib/src/features/collections/card/internal/klp_metric_card_widget.dart',
 		colors: ['KlpFeedbackTone.danger', 'KlpFeedbackTone.neutral', 'KlpTextTone.primary', 'context.klpColors.component', 'context.klpColors.danger', 'context.klpColors.divider'],
 		surfaces: [],
 		borders: ['Border.all(color: borderColor, width: klp.shape.hairline)', 'BorderRadius.circular(klp.shape.card)', 'context.klp.shape.card', 'context.klp.shape.hairline'],
@@ -1303,7 +1358,7 @@ const Map<String, CatalogStyleSemantics> catalogStyleSemantics = {
 		components: ['KlpColumn', 'KlpRow', 'KlpText'],
 	),
 	'KlpModalFrame': CatalogStyleSemantics(
-		source: 'D:/Projects/Kallopis/lib/src/features/overlays/primitives/klp_modal_frame.dart',
+		source: 'lib/src/features/overlays/primitives/klp_modal_frame.dart',
 		colors: ['context.klp.color.clear', 'context.klp.color.clear.clear'],
 		surfaces: [],
 		borders: [],
@@ -1314,7 +1369,7 @@ const Map<String, CatalogStyleSemantics> catalogStyleSemantics = {
 		components: [],
 	),
 	'KlpMultiSelectField': CatalogStyleSemantics(
-		source: 'D:/Projects/Kallopis/lib/src/features/forms/selection/klp_multi_select_field.dart',
+		source: 'lib/src/features/forms/selection/klp_multi_select_field.dart',
 		colors: ['context.klp.color.interactionSoft', 'context.klp.color.onSelection', 'context.klp.color.selection', 'context.klp.color.surfaceInset', 'context.klp.color.text', 'context.klp.color.textFaint'],
 		surfaces: [],
 		borders: ['BorderRadius.circular(klp.fieldRadius)', 'BorderRadius.circular(klp.shape.pill)', 'context.klp.shape.pill'],
@@ -1325,7 +1380,7 @@ const Map<String, CatalogStyleSemantics> catalogStyleSemantics = {
 		components: ['KlpColumn', 'KlpText', 'KlpWrap', 'context.klp.color', 'context.klp.fieldHeight', 'context.klp.fieldRadius', 'context.klp.surface'],
 	),
 	'KlpNavigationRail': CatalogStyleSemantics(
-		source: 'D:/Projects/Kallopis/lib/src/features/navigation/widgets/rail/internal/klp_navigation_rail_widget.dart',
+		source: 'lib/src/features/navigation/widgets/rail/internal/klp_navigation_rail_widget.dart',
 		colors: [],
 		surfaces: [],
 		borders: [],
@@ -1336,7 +1391,7 @@ const Map<String, CatalogStyleSemantics> catalogStyleSemantics = {
 		components: ['KlpBox', 'KlpColumn', 'KlpDropIndicator', 'KlpExpanded'],
 	),
 	'KlpNavigationRailFrame': CatalogStyleSemantics(
-		source: 'D:/Projects/Kallopis/lib/src/features/workspace/shell/composition/klp_navigation_rail_frame.dart',
+		source: 'lib/src/features/workspace/shell/composition/klp_navigation_rail_frame.dart',
 		colors: [],
 		surfaces: [],
 		borders: [],
@@ -1347,7 +1402,7 @@ const Map<String, CatalogStyleSemantics> catalogStyleSemantics = {
 		components: [],
 	),
 	'KlpNavigator': CatalogStyleSemantics(
-		source: 'D:/Projects/Kallopis/lib/src/features/navigation/widgets/navigator/internal/klp_navigator_widget.dart',
+		source: 'lib/src/features/navigation/widgets/navigator/internal/klp_navigator_widget.dart',
 		colors: ['context.klpColors.text', 'context.klpColors.textMuted'],
 		surfaces: ['KlpSurfaceTone.inset'],
 		borders: [],
@@ -1358,7 +1413,7 @@ const Map<String, CatalogStyleSemantics> catalogStyleSemantics = {
 		components: ['KlpBox', 'KlpColumn', 'KlpExpanded', 'KlpGestureRegion', 'KlpIcon', 'KlpPressable', 'KlpRow', 'KlpStateHighlight', 'KlpSurface', 'KlpText'],
 	),
 	'KlpNumberField': CatalogStyleSemantics(
-		source: 'D:/Projects/Kallopis/lib/src/features/forms/input/klp_number_field.dart',
+		source: 'lib/src/features/forms/input/klp_number_field.dart',
 		colors: [],
 		surfaces: [],
 		borders: [],
@@ -1369,7 +1424,7 @@ const Map<String, CatalogStyleSemantics> catalogStyleSemantics = {
 		components: ['KlpTextField'],
 	),
 	'KlpOklchColorEditor': CatalogStyleSemantics(
-		source: 'D:/Projects/Kallopis/lib/src/features/forms/color/internal/klp_oklch_color_editor_widget.dart',
+		source: 'lib/src/features/forms/color/internal/klp_oklch_color_editor_widget.dart',
 		colors: [],
 		surfaces: [],
 		borders: [],
@@ -1380,7 +1435,7 @@ const Map<String, CatalogStyleSemantics> catalogStyleSemantics = {
 		components: ['KlpColumn', 'KlpLayoutBuilder', 'KlpSemanticRegion', 'KlpSlider', 'KlpWrap'],
 	),
 	'KlpOklchColorPicker': CatalogStyleSemantics(
-		source: 'D:/Projects/Kallopis/lib/src/features/forms/color/internal/klp_oklch_color_picker_widget.dart',
+		source: 'lib/src/features/forms/color/internal/klp_oklch_color_picker_widget.dart',
 		colors: ['context.klp.color.border'],
 		surfaces: [],
 		borders: ['BorderRadius.circular(style.previewRadius)', 'context.klp.shape.card', 'context.klp.shape.hairline'],
@@ -1391,7 +1446,7 @@ const Map<String, CatalogStyleSemantics> catalogStyleSemantics = {
 		components: ['KlpColumn', 'KlpExcludeSemantics', 'KlpLayoutBuilder', 'KlpOklchColorEditor', 'KlpSemanticRegion', 'KlpText', 'KlpWrap'],
 	),
 	'KlpOverlayHost': CatalogStyleSemantics(
-		source: 'D:/Projects/Kallopis/lib/src/foundation/layout/klp_overlay_host.dart',
+		source: 'lib/src/foundation/layout/klp_overlay_host.dart',
 		colors: [],
 		surfaces: [],
 		borders: [],
@@ -1402,7 +1457,7 @@ const Map<String, CatalogStyleSemantics> catalogStyleSemantics = {
 		components: [],
 	),
 	'KlpPageBackground': CatalogStyleSemantics(
-		source: 'D:/Projects/Kallopis/lib/src/foundation/surface/page_background/klp_page_background.dart',
+		source: 'lib/src/foundation/surface/page_background/klp_page_background.dart',
 		colors: ['context.klp.color.pagePattern', 'context.klp.color.stageSurface'],
 		surfaces: [],
 		borders: ['context.klp.shape.hairline', 'context.klp.shape.stroke'],
@@ -1413,7 +1468,7 @@ const Map<String, CatalogStyleSemantics> catalogStyleSemantics = {
 		components: [],
 	),
 	'KlpPageBackgroundEditor': CatalogStyleSemantics(
-		source: 'D:/Projects/Kallopis/lib/src/foundation/surface/page_background/klp_page_background_editor.dart',
+		source: 'lib/src/foundation/surface/page_background/klp_page_background_editor.dart',
 		colors: ['context.klp.color.interaction', 'context.klp.color.pagePattern'],
 		surfaces: [],
 		borders: ['context.klp.shape.hairline'],
@@ -1424,7 +1479,7 @@ const Map<String, CatalogStyleSemantics> catalogStyleSemantics = {
 		components: [],
 	),
 	'KlpPageChrome': CatalogStyleSemantics(
-		source: 'D:/Projects/Kallopis/lib/src/features/workspace/page_chrome/internal/klp_page_chrome_widget.dart',
+		source: 'lib/src/features/workspace/page_chrome/internal/klp_page_chrome_widget.dart',
 		colors: ['context.klpColors.text'],
 		surfaces: ['KlpSurfaceTone.component'],
 		borders: [],
@@ -1435,7 +1490,7 @@ const Map<String, CatalogStyleSemantics> catalogStyleSemantics = {
 		components: ['KlpBadge', 'KlpBox', 'KlpColumn', 'KlpText', 'KlpWrap'],
 	),
 	'KlpPagination': CatalogStyleSemantics(
-		source: 'D:/Projects/Kallopis/lib/src/features/navigation/widgets/controls/klp_pagination.dart',
+		source: 'lib/src/features/navigation/widgets/controls/klp_pagination.dart',
 		colors: [],
 		surfaces: [],
 		borders: [],
@@ -1446,7 +1501,7 @@ const Map<String, CatalogStyleSemantics> catalogStyleSemantics = {
 		components: ['KlpButton', 'KlpRow', 'KlpText'],
 	),
 	'KlpPaneCollapseControl': CatalogStyleSemantics(
-		source: 'D:/Projects/Kallopis/lib/src/features/workspace/shell/composition/pane/klp_pane_collapse_control.dart',
+		source: 'lib/src/features/workspace/shell/composition/pane/klp_pane_collapse_control.dart',
 		colors: ['context.klpColors.textFaint'],
 		surfaces: [],
 		borders: [],
@@ -1457,7 +1512,7 @@ const Map<String, CatalogStyleSemantics> catalogStyleSemantics = {
 		components: ['KlpActionRegion', 'KlpIcon'],
 	),
 	'KlpPanelFooter': CatalogStyleSemantics(
-		source: 'D:/Projects/Kallopis/lib/src/features/workspace/shell/panel/klp_panel_footer.dart',
+		source: 'lib/src/features/workspace/shell/panel/klp_panel_footer.dart',
 		colors: [],
 		surfaces: [],
 		borders: [],
@@ -1468,7 +1523,7 @@ const Map<String, CatalogStyleSemantics> catalogStyleSemantics = {
 		components: [],
 	),
 	'KlpPanelFrame': CatalogStyleSemantics(
-		source: 'D:/Projects/Kallopis/lib/src/features/workspace/shell/panel/klp_panel_frame.dart',
+		source: 'lib/src/features/workspace/shell/panel/klp_panel_frame.dart',
 		colors: ['context.klpColors.onBackground', 'context.klpColors.stageSurface', 'context.klpColors.surface'],
 		surfaces: [],
 		borders: ['BorderRadius.circular(klp.shape.card)', 'context.klp.shape.card', 'context.klp.shape.stroke'],
@@ -1479,7 +1534,7 @@ const Map<String, CatalogStyleSemantics> catalogStyleSemantics = {
 		components: ['KlpPanelFooter', 'KlpTokenOverride'],
 	),
 	'KlpPanelHeader': CatalogStyleSemantics(
-		source: 'D:/Projects/Kallopis/lib/src/features/workspace/shell/panel/klp_panel_header.dart',
+		source: 'lib/src/features/workspace/shell/panel/klp_panel_header.dart',
 		colors: [],
 		surfaces: [],
 		borders: [],
@@ -1490,7 +1545,7 @@ const Map<String, CatalogStyleSemantics> catalogStyleSemantics = {
 		components: ['KlpColumn', 'KlpExpanded', 'KlpRow', 'KlpText'],
 	),
 	'KlpPasswordField': CatalogStyleSemantics(
-		source: 'D:/Projects/Kallopis/lib/src/features/forms/input/internal/klp_password_field_widget.dart',
+		source: 'lib/src/features/forms/input/internal/klp_password_field_widget.dart',
 		colors: [],
 		surfaces: [],
 		borders: [],
@@ -1501,7 +1556,7 @@ const Map<String, CatalogStyleSemantics> catalogStyleSemantics = {
 		components: ['KlpColumn', 'KlpRow', 'KlpText', 'KlpTextField', 'KlpWrap'],
 	),
 	'KlpPermissionState': CatalogStyleSemantics(
-		source: 'D:/Projects/Kallopis/lib/src/features/feedback/view_states/klp_permission_state.dart',
+		source: 'lib/src/features/feedback/view_states/klp_permission_state.dart',
 		colors: ['context.klpColors.warning'],
 		surfaces: [],
 		borders: ['context.klp.shape.card'],
@@ -1512,7 +1567,7 @@ const Map<String, CatalogStyleSemantics> catalogStyleSemantics = {
 		components: ['KlpBox', 'KlpColumn', 'KlpDashedBorder', 'KlpIcon', 'KlpText'],
 	),
 	'KlpPhaseToggle': CatalogStyleSemantics(
-		source: 'D:/Projects/Kallopis/lib/src/features/forms/toggle/internal/klp_phase_toggle_widget.dart',
+		source: 'lib/src/features/forms/toggle/internal/klp_phase_toggle_widget.dart',
 		colors: ['KlpFeedbackTone.danger', 'KlpFeedbackTone.info', 'KlpFeedbackTone.neutral', 'KlpFeedbackTone.success', 'KlpFeedbackTone.warning'],
 		surfaces: ['context.klp.surface.statusFillOpacity'],
 		borders: ['Border.all(color: colors.border, width: klp.shape.hairline)', 'BorderRadius.circular(style.selectionRadius)', 'BorderRadius.circular(style.trackRadius)', 'context.klp.shape.control', 'context.klp.shape.controlInner', 'context.klp.shape.hairline'],
@@ -1523,7 +1578,7 @@ const Map<String, CatalogStyleSemantics> catalogStyleSemantics = {
 		components: ['KlpIcon', 'KlpText', 'context.klp.byBrightness', 'context.klp.color'],
 	),
 	'KlpPointerBlocker': CatalogStyleSemantics(
-		source: 'D:/Projects/Kallopis/lib/src/foundation/interaction/primitives/klp_pointer_blocker.dart',
+		source: 'lib/src/foundation/interaction/primitives/klp_pointer_blocker.dart',
 		colors: [],
 		surfaces: [],
 		borders: [],
@@ -1534,7 +1589,7 @@ const Map<String, CatalogStyleSemantics> catalogStyleSemantics = {
 		components: [],
 	),
 	'KlpPopover': CatalogStyleSemantics(
-		source: 'D:/Projects/Kallopis/lib/src/features/overlays/klp_popover.dart',
+		source: 'lib/src/features/overlays/klp_popover.dart',
 		colors: [],
 		surfaces: ['KlpSurfaceTone.component'],
 		borders: [],
@@ -1545,7 +1600,7 @@ const Map<String, CatalogStyleSemantics> catalogStyleSemantics = {
 		components: ['KlpSurface'],
 	),
 	'KlpPopupBackground': CatalogStyleSemantics(
-		source: 'D:/Projects/Kallopis/lib/src/features/overlays/popup/klp_popup_background.dart',
+		source: 'lib/src/features/overlays/popup/klp_popup_background.dart',
 		colors: ['context.klp.color.modalScrim.withValues'],
 		surfaces: ['context.klp.surface.scrimOpacity'],
 		borders: [],
@@ -1556,7 +1611,7 @@ const Map<String, CatalogStyleSemantics> catalogStyleSemantics = {
 		components: ['KlpCenter', 'KlpGestureRegion', 'KlpPositioned', 'KlpStack'],
 	),
 	'KlpPopupPanel': CatalogStyleSemantics(
-		source: 'D:/Projects/Kallopis/lib/src/features/overlays/popup/klp_popup_panel.dart',
+		source: 'lib/src/features/overlays/popup/klp_popup_panel.dart',
 		colors: ['context.klp.color.overlay'],
 		surfaces: ['KlpSurfaceTone.overlay'],
 		borders: ['context.klp.shape.panel'],
@@ -1567,7 +1622,7 @@ const Map<String, CatalogStyleSemantics> catalogStyleSemantics = {
 		components: ['KlpBox', 'KlpLayoutBuilder', 'KlpSurface'],
 	),
 	'KlpPositioned': CatalogStyleSemantics(
-		source: 'D:/Projects/Kallopis/lib/src/foundation/layout/klp_positioned.dart',
+		source: 'lib/src/foundation/layout/klp_positioned.dart',
 		colors: [],
 		surfaces: [],
 		borders: [],
@@ -1578,7 +1633,7 @@ const Map<String, CatalogStyleSemantics> catalogStyleSemantics = {
 		components: [],
 	),
 	'KlpPresenceIndicator': CatalogStyleSemantics(
-		source: 'D:/Projects/Kallopis/lib/src/foundation/interaction/filter/internal/klp_presence_indicator_widget.dart',
+		source: 'lib/src/foundation/interaction/filter/internal/klp_presence_indicator_widget.dart',
 		colors: ['context.klpColors.success', 'context.klpColors.textFaint'],
 		surfaces: [],
 		borders: ['BorderRadius.circular(context.klp.shape.pill)', 'context.klp.shape.pill'],
@@ -1589,7 +1644,7 @@ const Map<String, CatalogStyleSemantics> catalogStyleSemantics = {
 		components: ['KlpRow', 'KlpText'],
 	),
 	'KlpPressable': CatalogStyleSemantics(
-		source: 'D:/Projects/Kallopis/lib/src/foundation/interaction/klp_pressable.dart',
+		source: 'lib/src/foundation/interaction/klp_pressable.dart',
 		colors: ['context.klp.color.clear'],
 		surfaces: [],
 		borders: [],
@@ -1600,7 +1655,7 @@ const Map<String, CatalogStyleSemantics> catalogStyleSemantics = {
 		components: ['context.klp.selectedWash', 'context.klp.selectionWash'],
 	),
 	'KlpPreviewCard': CatalogStyleSemantics(
-		source: 'D:/Projects/Kallopis/lib/src/features/collections/preview_card/internal/klp_preview_card_widget.dart',
+		source: 'lib/src/features/collections/preview_card/internal/klp_preview_card_widget.dart',
 		colors: [],
 		surfaces: ['KlpSurfaceTone.base', 'KlpSurfaceTone.component'],
 		borders: ['context.klp.shape.control'],
@@ -1611,7 +1666,7 @@ const Map<String, CatalogStyleSemantics> catalogStyleSemantics = {
 		components: ['KlpBox', 'KlpColumn', 'KlpDashedBorder', 'KlpSurface', 'KlpText', 'KlpWrap', 'context.klp.space'],
 	),
 	'KlpPreviewTree': CatalogStyleSemantics(
-		source: 'D:/Projects/Kallopis/lib/src/features/navigation/widgets/preview_tree/klp_preview_tree.dart',
+		source: 'lib/src/features/navigation/widgets/preview_tree/klp_preview_tree.dart',
 		colors: [],
 		surfaces: [],
 		borders: [],
@@ -1622,7 +1677,7 @@ const Map<String, CatalogStyleSemantics> catalogStyleSemantics = {
 		components: ['KlpColumn', 'KlpExcludeSemantics', 'KlpPointerBlocker', 'KlpSemanticRegion', 'KlpTreeItem'],
 	),
 	'KlpPrimarySidebarFrame': CatalogStyleSemantics(
-		source: 'D:/Projects/Kallopis/lib/src/features/workspace/shell/sidebar/klp_primary_sidebar_frame.dart',
+		source: 'lib/src/features/workspace/shell/sidebar/klp_primary_sidebar_frame.dart',
 		colors: [],
 		surfaces: [],
 		borders: [],
@@ -1633,7 +1688,7 @@ const Map<String, CatalogStyleSemantics> catalogStyleSemantics = {
 		components: ['KlpBox', 'KlpColumn', 'KlpExpanded', 'KlpSidebarFrame', 'KlpStatusIndicator'],
 	),
 	'KlpProgress': CatalogStyleSemantics(
-		source: 'D:/Projects/Kallopis/lib/src/features/collections/progress/internal/klp_progress_widget.dart',
+		source: 'lib/src/features/collections/progress/internal/klp_progress_widget.dart',
 		colors: ['context.klpColors.danger', 'context.klpColors.success', 'context.klpColors.surfaceMuted', 'context.klpColors.text', 'context.klpColors.warning'],
 		surfaces: [],
 		borders: ['BorderRadius.circular(context.klp.shape.pill)', 'context.klp.shape.pill'],
@@ -1644,7 +1699,7 @@ const Map<String, CatalogStyleSemantics> catalogStyleSemantics = {
 		components: ['KlpColumn', 'KlpExpanded', 'KlpGestureRegion', 'KlpRow', 'KlpSpacer', 'KlpText'],
 	),
 	'KlpProgressOverlay': CatalogStyleSemantics(
-		source: 'D:/Projects/Kallopis/lib/src/features/feedback/view_states/klp_progress_overlay.dart',
+		source: 'lib/src/features/feedback/view_states/klp_progress_overlay.dart',
 		colors: [],
 		surfaces: [],
 		borders: [],
@@ -1655,7 +1710,7 @@ const Map<String, CatalogStyleSemantics> catalogStyleSemantics = {
 		components: ['KlpCenter', 'KlpLoadingState', 'KlpStack', 'KlpVeil'],
 	),
 	'KlpPropertySummary': CatalogStyleSemantics(
-		source: 'D:/Projects/Kallopis/lib/src/features/workspace/page_chrome/internal/klp_property_summary.dart',
+		source: 'lib/src/features/workspace/page_chrome/internal/klp_property_summary.dart',
 		colors: [],
 		surfaces: ['KlpSurfaceTone.component'],
 		borders: [],
@@ -1666,7 +1721,7 @@ const Map<String, CatalogStyleSemantics> catalogStyleSemantics = {
 		components: ['KlpBadge', 'KlpBox', 'KlpColumn', 'KlpTag', 'KlpText', 'KlpWrap'],
 	),
 	'KlpPublicationProgressOverlay': CatalogStyleSemantics(
-		source: 'D:/Projects/Kallopis/lib/src/features/navigation/widgets/preview_tree/klp_publication_progress_overlay.dart',
+		source: 'lib/src/features/navigation/widgets/preview_tree/klp_publication_progress_overlay.dart',
 		colors: [],
 		surfaces: [],
 		borders: [],
@@ -1677,7 +1732,7 @@ const Map<String, CatalogStyleSemantics> catalogStyleSemantics = {
 		components: ['KlpPointerBlocker', 'KlpStack'],
 	),
 	'KlpQuantityField': CatalogStyleSemantics(
-		source: 'D:/Projects/Kallopis/lib/src/features/forms/input/klp_quantity_field.dart',
+		source: 'lib/src/features/forms/input/klp_quantity_field.dart',
 		colors: ['KlpTextTone.primary'],
 		surfaces: [],
 		borders: [],
@@ -1688,7 +1743,7 @@ const Map<String, CatalogStyleSemantics> catalogStyleSemantics = {
 		components: ['KlpCenter', 'KlpExpanded', 'KlpRow', 'KlpText'],
 	),
 	'KlpRadioGroup': CatalogStyleSemantics(
-		source: 'D:/Projects/Kallopis/lib/src/features/forms/selection/internal/klp_radio_group_widget.dart',
+		source: 'lib/src/features/forms/selection/internal/klp_radio_group_widget.dart',
 		colors: ['context.klp.color.clear', 'context.klp.color.text', 'context.klp.color.textMuted'],
 		surfaces: [],
 		borders: ['BorderRadius.circular(style.controlRadius)', 'context.klp.shape.control', 'context.klp.shape.stroke'],
@@ -1699,7 +1754,7 @@ const Map<String, CatalogStyleSemantics> catalogStyleSemantics = {
 		components: ['KlpBox', 'KlpColumn', 'KlpExpanded', 'KlpPressable', 'KlpRow', 'KlpText', 'KlpWrap'],
 	),
 	'KlpRailItem': CatalogStyleSemantics(
-		source: 'D:/Projects/Kallopis/lib/src/features/navigation/widgets/rail/internal/klp_rail_item_widget.dart',
+		source: 'lib/src/features/navigation/widgets/rail/internal/klp_rail_item_widget.dart',
 		colors: ['context.klpColors.info', 'context.klpColors.selectionForeground'],
 		surfaces: [],
 		borders: [],
@@ -1710,7 +1765,7 @@ const Map<String, CatalogStyleSemantics> catalogStyleSemantics = {
 		components: ['KlpActionRegion', 'KlpBox', 'KlpCenter', 'KlpIcon', 'KlpStack', 'KlpTooltipSurface'],
 	),
 	'KlpReferencePicker': CatalogStyleSemantics(
-		source: 'D:/Projects/Kallopis/lib/src/features/forms/picker/klp_reference_picker.dart',
+		source: 'lib/src/features/forms/picker/klp_reference_picker.dart',
 		colors: ['KlpTextTone.primary'],
 		surfaces: ['KlpSurfaceTone.component'],
 		borders: [],
@@ -1721,7 +1776,7 @@ const Map<String, CatalogStyleSemantics> catalogStyleSemantics = {
 		components: ['KlpBadge', 'KlpCenter', 'KlpColumn', 'KlpExpanded', 'KlpGestureRegion', 'KlpRow', 'KlpSurface', 'KlpText', 'KlpTextField'],
 	),
 	'KlpRegion': CatalogStyleSemantics(
-		source: 'D:/Projects/Kallopis/lib/src/foundation/layout/klp_region.dart',
+		source: 'lib/src/foundation/layout/klp_region.dart',
 		colors: [],
 		surfaces: ['KlpSurfaceTone.base'],
 		borders: ['context.klp.shape.panel'],
@@ -1732,7 +1787,7 @@ const Map<String, CatalogStyleSemantics> catalogStyleSemantics = {
 		components: ['KlpSurface'],
 	),
 	'KlpRegionPlaceholder': CatalogStyleSemantics(
-		source: 'D:/Projects/Kallopis/lib/src/features/feedback/region_placeholder/klp_region_placeholder_widget.dart',
+		source: 'lib/src/features/feedback/region_placeholder/klp_region_placeholder_widget.dart',
 		colors: ['context.klpColors.border', 'context.klpColors.component', 'context.klpColors.info', 'context.klpColors.surfaceInset', 'context.klpColors.textFaint'],
 		surfaces: [],
 		borders: ['Border.all(color: borderColor, width: borderWidth)', 'BorderRadius.circular(radius)', 'context.klp.shape.card', 'context.klp.shape.hairline'],
@@ -1743,7 +1798,7 @@ const Map<String, CatalogStyleSemantics> catalogStyleSemantics = {
 		components: ['KlpBox', 'KlpCenter', 'KlpColumn', 'KlpConstrainedBox', 'KlpExcludeSemantics', 'KlpFlexible', 'KlpRow', 'KlpSemanticRegion', 'KlpText'],
 	),
 	'KlpRepeaterField': CatalogStyleSemantics(
-		source: 'D:/Projects/Kallopis/lib/src/features/forms/structured/internal/klp_repeater_field_widget.dart',
+		source: 'lib/src/features/forms/structured/internal/klp_repeater_field_widget.dart',
 		colors: [],
 		surfaces: ['KlpSurfaceTone.component'],
 		borders: [],
@@ -1754,7 +1809,7 @@ const Map<String, CatalogStyleSemantics> catalogStyleSemantics = {
 		components: ['KlpAlign', 'KlpButton', 'KlpColumn', 'KlpExpanded', 'KlpRow', 'KlpSurface', 'KlpText'],
 	),
 	'KlpResizablePane': CatalogStyleSemantics(
-		source: 'D:/Projects/Kallopis/lib/src/foundation/layout/klp_resizable_pane.dart',
+		source: 'lib/src/foundation/layout/klp_resizable_pane.dart',
 		colors: [],
 		surfaces: [],
 		borders: [],
@@ -1765,7 +1820,7 @@ const Map<String, CatalogStyleSemantics> catalogStyleSemantics = {
 		components: [],
 	),
 	'KlpResizeHandle': CatalogStyleSemantics(
-		source: 'D:/Projects/Kallopis/lib/src/foundation/layout/klp_resize_handle.dart',
+		source: 'lib/src/foundation/layout/klp_resize_handle.dart',
 		colors: ['context.klpColors.border'],
 		surfaces: [],
 		borders: ['BorderRadius.circular(klp.shape.stroke)', 'context.klp.shape.stroke'],
@@ -1776,7 +1831,7 @@ const Map<String, CatalogStyleSemantics> catalogStyleSemantics = {
 		components: [],
 	),
 	'KlpResponsivePaneCoordinator': CatalogStyleSemantics(
-		source: 'D:/Projects/Kallopis/lib/src/features/workspace/shell/composition/pane/klp_responsive_pane_coordinator.dart',
+		source: 'lib/src/features/workspace/shell/composition/pane/klp_responsive_pane_coordinator.dart',
 		colors: [],
 		surfaces: [],
 		borders: [],
@@ -1787,7 +1842,7 @@ const Map<String, CatalogStyleSemantics> catalogStyleSemantics = {
 		components: ['KlpLayoutBuilder'],
 	),
 	'KlpRichText': CatalogStyleSemantics(
-		source: 'D:/Projects/Kallopis/lib/src/foundation/content/klp_rich_text.dart',
+		source: 'lib/src/foundation/content/klp_rich_text.dart',
 		colors: ['KlpTextTone.primary', 'context.klpColors.danger', 'context.klpColors.danger.withValues', 'context.klpColors.surfaceInset', 'context.klpColors.text'],
 		surfaces: ['context.klp.surface.statusFillOpacity'],
 		borders: ['BorderRadius.circular(context.klp.shape.control)', 'context.klp.shape.control'],
@@ -1798,7 +1853,7 @@ const Map<String, CatalogStyleSemantics> catalogStyleSemantics = {
 		components: ['KlpInlineCode', 'KlpText'],
 	),
 	'KlpRotate': CatalogStyleSemantics(
-		source: 'D:/Projects/Kallopis/lib/src/foundation/layout/klp_rotate.dart',
+		source: 'lib/src/foundation/layout/klp_rotate.dart',
 		colors: [],
 		surfaces: [],
 		borders: [],
@@ -1809,7 +1864,7 @@ const Map<String, CatalogStyleSemantics> catalogStyleSemantics = {
 		components: [],
 	),
 	'KlpRow': CatalogStyleSemantics(
-		source: 'D:/Projects/Kallopis/lib/src/foundation/layout/klp_row.dart',
+		source: 'lib/src/foundation/layout/klp_row.dart',
 		colors: [],
 		surfaces: [],
 		borders: [],
@@ -1820,7 +1875,7 @@ const Map<String, CatalogStyleSemantics> catalogStyleSemantics = {
 		components: [],
 	),
 	'KlpSaveStatusCard': CatalogStyleSemantics(
-		source: 'D:/Projects/Kallopis/lib/src/features/workspace/page_chrome/internal/klp_save_status_card.dart',
+		source: 'lib/src/features/workspace/page_chrome/internal/klp_save_status_card.dart',
 		colors: [],
 		surfaces: ['KlpSurfaceTone.component'],
 		borders: [],
@@ -1831,7 +1886,7 @@ const Map<String, CatalogStyleSemantics> catalogStyleSemantics = {
 		components: ['KlpBox', 'KlpColumn', 'KlpText', 'context.klp.color'],
 	),
 	'KlpScheduleList': CatalogStyleSemantics(
-		source: 'D:/Projects/Kallopis/lib/src/features/collections/agenda/klp_schedule_list.dart',
+		source: 'lib/src/features/collections/agenda/klp_schedule_list.dart',
 		colors: [],
 		surfaces: ['KlpSurfaceTone.component'],
 		borders: [],
@@ -1842,7 +1897,7 @@ const Map<String, CatalogStyleSemantics> catalogStyleSemantics = {
 		components: ['KlpBadge', 'KlpBox', 'KlpColumn', 'KlpExpanded', 'KlpRow', 'KlpSurface', 'KlpText', 'context.klp.space'],
 	),
 	'KlpScrollViewport': CatalogStyleSemantics(
-		source: 'D:/Projects/Kallopis/lib/src/foundation/layout/klp_scroll_viewport.dart',
+		source: 'lib/src/foundation/layout/klp_scroll_viewport.dart',
 		colors: [],
 		surfaces: [],
 		borders: [],
@@ -1853,7 +1908,7 @@ const Map<String, CatalogStyleSemantics> catalogStyleSemantics = {
 		components: [],
 	),
 	'KlpSearchNavigator': CatalogStyleSemantics(
-		source: 'D:/Projects/Kallopis/lib/src/features/actions/editor/klp_search_navigator.dart',
+		source: 'lib/src/features/actions/editor/klp_search_navigator.dart',
 		colors: [],
 		surfaces: ['KlpSurfaceTone.component'],
 		borders: [],
@@ -1864,7 +1919,7 @@ const Map<String, CatalogStyleSemantics> catalogStyleSemantics = {
 		components: ['KlpBox', 'KlpExpanded', 'KlpIconButton', 'KlpRotate', 'KlpRow', 'KlpText', 'KlpTextField'],
 	),
 	'KlpSection': CatalogStyleSemantics(
-		source: 'D:/Projects/Kallopis/lib/src/foundation/surface/legacy_components/klp_section.dart',
+		source: 'lib/src/foundation/surface/legacy_components/klp_section.dart',
 		colors: [],
 		surfaces: [],
 		borders: [],
@@ -1875,7 +1930,7 @@ const Map<String, CatalogStyleSemantics> catalogStyleSemantics = {
 		components: ['KlpColumn', 'KlpExpanded', 'KlpRow', 'KlpText', 'KlpWrap'],
 	),
 	'KlpSegmentedControl': CatalogStyleSemantics(
-		source: 'D:/Projects/Kallopis/lib/src/features/forms/selection/internal/klp_segmented_control_widget.dart',
+		source: 'lib/src/features/forms/selection/internal/klp_segmented_control_widget.dart',
 		colors: ['KlpTextTone.primary', 'context.klp.color.clear', 'context.klp.color.component', 'context.klp.color.interactionSoft', 'context.klp.color.text', 'context.klp.color.textMuted'],
 		surfaces: [],
 		borders: ['BorderRadius.circular(style.radius)', 'context.klp.shape.card', 'context.klp.shape.control'],
@@ -1886,7 +1941,7 @@ const Map<String, CatalogStyleSemantics> catalogStyleSemantics = {
 		components: ['KlpExpanded', 'KlpFlexible', 'KlpIcon', 'KlpRow', 'KlpText', 'context.klp.selectionWash'],
 	),
 	'KlpSegmentedProgress': CatalogStyleSemantics(
-		source: 'D:/Projects/Kallopis/lib/src/foundation/klp_segmented_progress.dart',
+		source: 'lib/src/foundation/klp_segmented_progress.dart',
 		colors: ['context.klpColors.info', 'context.klpColors.surfaceInset'],
 		surfaces: [],
 		borders: ['BorderRadius.circular(context.klp.shape.control)', 'context.klp.shape.control'],
@@ -1897,7 +1952,7 @@ const Map<String, CatalogStyleSemantics> catalogStyleSemantics = {
 		components: [],
 	),
 	'KlpSelect': CatalogStyleSemantics(
-		source: 'D:/Projects/Kallopis/lib/src/features/forms/selection/internal/klp_select_widget.dart',
+		source: 'lib/src/features/forms/selection/internal/klp_select_widget.dart',
 		colors: ['KlpTextTone.primary', 'context.klp.color.clear', 'context.klp.color.textFaint', 'context.klp.color.textMuted'],
 		surfaces: [],
 		borders: ['BorderRadius.circular(style.radius)', 'KlpStrokeRole.field', 'context.klp.shape.control'],
@@ -1908,7 +1963,7 @@ const Map<String, CatalogStyleSemantics> catalogStyleSemantics = {
 		components: ['KlpColumn', 'KlpExpanded', 'KlpIcon', 'KlpRow', 'KlpStrokeFrame', 'KlpText'],
 	),
 	'KlpSelectField': CatalogStyleSemantics(
-		source: 'D:/Projects/Kallopis/lib/src/features/forms/selection/internal/klp_select_field_widget.dart',
+		source: 'lib/src/features/forms/selection/internal/klp_select_field_widget.dart',
 		colors: ['KlpTextTone.primary', 'context.klp.color.clear', 'context.klp.color.textFaint', 'context.klp.color.textMuted'],
 		surfaces: ['KlpSurfaceTone.component'],
 		borders: ['BorderRadius.circular(klp.fieldRadius)'],
@@ -1919,7 +1974,7 @@ const Map<String, CatalogStyleSemantics> catalogStyleSemantics = {
 		components: ['KlpAlign', 'KlpBox', 'KlpColumn', 'KlpConstrainedBox', 'KlpExpanded', 'KlpGestureRegion', 'KlpIcon', 'KlpRow', 'KlpSurface', 'KlpText', 'context.klp.color', 'context.klp.fieldHeight', 'context.klp.fieldPaddingX', 'context.klp.fieldRadius', 'context.klp.surface'],
 	),
 	'KlpSelectionToolbar': CatalogStyleSemantics(
-		source: 'D:/Projects/Kallopis/lib/src/features/actions/selection_toolbar/internal/klp_selection_toolbar_widget.dart',
+		source: 'lib/src/features/actions/selection_toolbar/internal/klp_selection_toolbar_widget.dart',
 		colors: [],
 		surfaces: ['KlpSurfaceTone.component'],
 		borders: ['context.klp.shape.card'],
@@ -1930,7 +1985,7 @@ const Map<String, CatalogStyleSemantics> catalogStyleSemantics = {
 		components: ['KlpActionRegion', 'KlpBox', 'KlpButton', 'KlpDashedBorder', 'KlpRow', 'KlpSpacer', 'KlpSurface', 'KlpText'],
 	),
 	'KlpSemanticRegion': CatalogStyleSemantics(
-		source: 'D:/Projects/Kallopis/lib/src/foundation/interaction/klp_semantic_region.dart',
+		source: 'lib/src/foundation/interaction/klp_semantic_region.dart',
 		colors: [],
 		surfaces: [],
 		borders: [],
@@ -1941,7 +1996,7 @@ const Map<String, CatalogStyleSemantics> catalogStyleSemantics = {
 		components: [],
 	),
 	'KlpSettingsActionBar': CatalogStyleSemantics(
-		source: 'D:/Projects/Kallopis/lib/src/features/workspace/settings/klp_settings_action_bar.dart',
+		source: 'lib/src/features/workspace/settings/klp_settings_action_bar.dart',
 		colors: [],
 		surfaces: ['KlpSurfaceTone.overlay'],
 		borders: [],
@@ -1952,7 +2007,7 @@ const Map<String, CatalogStyleSemantics> catalogStyleSemantics = {
 		components: ['KlpBox', 'KlpExpanded', 'KlpFlexible', 'KlpRow', 'KlpSurface', 'KlpText', 'KlpWrap'],
 	),
 	'KlpSettingsContentHeader': CatalogStyleSemantics(
-		source: 'D:/Projects/Kallopis/lib/src/features/workspace/settings/layout/klp_settings_content_header.dart',
+		source: 'lib/src/features/workspace/settings/layout/klp_settings_content_header.dart',
 		colors: [],
 		surfaces: [],
 		borders: [],
@@ -1963,7 +2018,7 @@ const Map<String, CatalogStyleSemantics> catalogStyleSemantics = {
 		components: ['KlpBox', 'KlpColumn', 'KlpExpanded', 'KlpRow', 'KlpText'],
 	),
 	'KlpSettingsContentPane': CatalogStyleSemantics(
-		source: 'D:/Projects/Kallopis/lib/src/features/workspace/settings/layout/klp_settings_content_pane.dart',
+		source: 'lib/src/features/workspace/settings/layout/klp_settings_content_pane.dart',
 		colors: [],
 		surfaces: ['KlpSurfaceTone.raised'],
 		borders: ['context.klp.shape.panel'],
@@ -1974,7 +2029,7 @@ const Map<String, CatalogStyleSemantics> catalogStyleSemantics = {
 		components: ['KlpBox', 'KlpCenter', 'KlpColumn', 'KlpConstrainedBox', 'KlpDirectionalPositioned', 'KlpExpanded', 'KlpScrollViewport', 'KlpSettingsContentHeader', 'KlpStack', 'KlpSurface'],
 	),
 	'KlpSettingsDialog': CatalogStyleSemantics(
-		source: 'D:/Projects/Kallopis/lib/src/features/workspace/settings/layout/klp_settings_dialog.dart',
+		source: 'lib/src/features/workspace/settings/layout/klp_settings_dialog.dart',
 		colors: [],
 		surfaces: [],
 		borders: [],
@@ -1985,7 +2040,7 @@ const Map<String, CatalogStyleSemantics> catalogStyleSemantics = {
 		components: ['KlpBox', 'KlpModalFrame'],
 	),
 	'KlpSettingsField': CatalogStyleSemantics(
-		source: 'D:/Projects/Kallopis/lib/src/features/workspace/settings/klp_settings_content.dart',
+		source: 'lib/src/features/workspace/settings/klp_settings_content.dart',
 		colors: [],
 		surfaces: ['KlpSurfaceTone.muted', 'KlpSurfaceTone.transparent'],
 		borders: [],
@@ -1996,7 +2051,7 @@ const Map<String, CatalogStyleSemantics> catalogStyleSemantics = {
 		components: ['KlpBox', 'KlpColumn', 'KlpSurface', 'KlpText'],
 	),
 	'KlpSettingsNavigationGroup': CatalogStyleSemantics(
-		source: 'D:/Projects/Kallopis/lib/src/features/workspace/settings/navigation/klp_settings_navigation_group.dart',
+		source: 'lib/src/features/workspace/settings/navigation/klp_settings_navigation_group.dart',
 		colors: [],
 		surfaces: [],
 		borders: [],
@@ -2007,7 +2062,7 @@ const Map<String, CatalogStyleSemantics> catalogStyleSemantics = {
 		components: ['KlpBox', 'KlpColumn', 'KlpText'],
 	),
 	'KlpSettingsNavigationHeader': CatalogStyleSemantics(
-		source: 'D:/Projects/Kallopis/lib/src/features/workspace/settings/navigation/klp_settings_navigation_header.dart',
+		source: 'lib/src/features/workspace/settings/navigation/klp_settings_navigation_header.dart',
 		colors: [],
 		surfaces: [],
 		borders: ['BorderRadius.circular(klp.shape.control)', 'context.klp.shape.control'],
@@ -2018,7 +2073,7 @@ const Map<String, CatalogStyleSemantics> catalogStyleSemantics = {
 		components: ['KlpBox', 'KlpColumn', 'KlpExpanded', 'KlpPressable', 'KlpRow', 'KlpText'],
 	),
 	'KlpSettingsNavigationItem': CatalogStyleSemantics(
-		source: 'D:/Projects/Kallopis/lib/src/features/workspace/settings/navigation/klp_settings_navigation_item.dart',
+		source: 'lib/src/features/workspace/settings/navigation/klp_settings_navigation_item.dart',
 		colors: ['context.klp.color.divider'],
 		surfaces: ['KlpSurfaceTone.transparent'],
 		borders: ['context.klp.shape.hairline', 'context.klp.shape.none'],
@@ -2029,7 +2084,7 @@ const Map<String, CatalogStyleSemantics> catalogStyleSemantics = {
 		components: ['KlpBox', 'KlpColumn', 'KlpListTile', 'KlpSurface'],
 	),
 	'KlpSettingsNavigationPane': CatalogStyleSemantics(
-		source: 'D:/Projects/Kallopis/lib/src/features/workspace/settings/layout/klp_settings_navigation_pane.dart',
+		source: 'lib/src/features/workspace/settings/layout/klp_settings_navigation_pane.dart',
 		colors: [],
 		surfaces: ['KlpSurfaceTone.base', 'KlpSurfaceTone.component'],
 		borders: ['context.klp.shape.panel'],
@@ -2040,7 +2095,7 @@ const Map<String, CatalogStyleSemantics> catalogStyleSemantics = {
 		components: ['KlpBox', 'KlpColumn', 'KlpExpanded', 'KlpScrollViewport', 'KlpSurface', 'context.klp.byBrightness'],
 	),
 	'KlpSettingsPage': CatalogStyleSemantics(
-		source: 'D:/Projects/Kallopis/lib/src/features/workspace/settings/layout/klp_settings_page.dart',
+		source: 'lib/src/features/workspace/settings/layout/klp_settings_page.dart',
 		colors: ['context.klp.geometry.layout.primaryPaneContentBreakpoint'],
 		surfaces: [],
 		borders: [],
@@ -2051,7 +2106,7 @@ const Map<String, CatalogStyleSemantics> catalogStyleSemantics = {
 		components: ['KlpBox', 'KlpColumn', 'KlpExpanded', 'KlpFlexible', 'KlpLayoutBuilder', 'KlpResizeHandle', 'KlpRow'],
 	),
 	'KlpSettingsScopeSwitcher': CatalogStyleSemantics(
-		source: 'D:/Projects/Kallopis/lib/src/features/workspace/settings/navigation/klp_settings_scope_switcher.dart',
+		source: 'lib/src/features/workspace/settings/navigation/klp_settings_scope_switcher.dart',
 		colors: [],
 		surfaces: ['KlpSurfaceTone.inset', 'KlpSurfaceTone.raised', 'KlpSurfaceTone.transparent'],
 		borders: ['BorderRadius.circular(klp.shape.controlInner)', 'context.klp.shape.control', 'context.klp.shape.controlInner'],
@@ -2062,7 +2117,7 @@ const Map<String, CatalogStyleSemantics> catalogStyleSemantics = {
 		components: ['KlpBox', 'KlpExpanded', 'KlpIcon', 'KlpPressable', 'KlpRow', 'KlpSurface', 'KlpText'],
 	),
 	'KlpSettingsSearchField': CatalogStyleSemantics(
-		source: 'D:/Projects/Kallopis/lib/src/features/workspace/settings/navigation/klp_settings_search_field.dart',
+		source: 'lib/src/features/workspace/settings/navigation/klp_settings_search_field.dart',
 		colors: [],
 		surfaces: [],
 		borders: [],
@@ -2073,7 +2128,7 @@ const Map<String, CatalogStyleSemantics> catalogStyleSemantics = {
 		components: ['KlpTextField'],
 	),
 	'KlpShortcutHint': CatalogStyleSemantics(
-		source: 'D:/Projects/Kallopis/lib/src/foundation/interaction/filter/internal/klp_shortcut_hint_widget.dart',
+		source: 'lib/src/foundation/interaction/filter/internal/klp_shortcut_hint_widget.dart',
 		colors: [],
 		surfaces: ['KlpSurfaceTone.muted'],
 		borders: ['context.klp.shape.control'],
@@ -2084,7 +2139,7 @@ const Map<String, CatalogStyleSemantics> catalogStyleSemantics = {
 		components: ['KlpSurface', 'KlpText'],
 	),
 	'KlpSidebarButtonGroup': CatalogStyleSemantics(
-		source: 'D:/Projects/Kallopis/lib/src/features/navigation/widgets/sidebar/klp_sidebar_button_group.dart',
+		source: 'lib/src/features/navigation/widgets/sidebar/klp_sidebar_button_group.dart',
 		colors: [],
 		surfaces: [],
 		borders: [],
@@ -2095,7 +2150,7 @@ const Map<String, CatalogStyleSemantics> catalogStyleSemantics = {
 		components: ['KlpSidebarNavigationButton'],
 	),
 	'KlpSidebarFrame': CatalogStyleSemantics(
-		source: 'D:/Projects/Kallopis/lib/src/features/workspace/shell/sidebar/klp_sidebar_frame.dart',
+		source: 'lib/src/features/workspace/shell/sidebar/klp_sidebar_frame.dart',
 		colors: [],
 		surfaces: [],
 		borders: [],
@@ -2106,7 +2161,7 @@ const Map<String, CatalogStyleSemantics> catalogStyleSemantics = {
 		components: ['KlpBox', 'KlpPanelFrame'],
 	),
 	'KlpSidebarIdentityHeader': CatalogStyleSemantics(
-		source: 'D:/Projects/Kallopis/lib/src/features/navigation/widgets/sidebar/klp_sidebar_identity_header.dart',
+		source: 'lib/src/features/navigation/widgets/sidebar/klp_sidebar_identity_header.dart',
 		colors: [],
 		surfaces: ['KlpSurfaceTone.accentSoft'],
 		borders: ['context.klp.shape.control'],
@@ -2117,7 +2172,7 @@ const Map<String, CatalogStyleSemantics> catalogStyleSemantics = {
 		components: ['KlpAvatar', 'KlpExpanded', 'KlpIcon', 'KlpLayoutBuilder', 'KlpRow', 'KlpSurface', 'KlpText'],
 	),
 	'KlpSidebarNavigationButton': CatalogStyleSemantics(
-		source: 'D:/Projects/Kallopis/lib/src/features/navigation/widgets/sidebar/klp_sidebar_navigation_button.dart',
+		source: 'lib/src/features/navigation/widgets/sidebar/klp_sidebar_navigation_button.dart',
 		colors: ['context.klpColors.clear', 'context.klpColors.text', 'context.klpColors.textFaint', 'context.klpColors.textMuted'],
 		surfaces: [],
 		borders: ['BorderRadius.circular(klp.shape.control)', 'context.klp.shape.control'],
@@ -2128,7 +2183,7 @@ const Map<String, CatalogStyleSemantics> catalogStyleSemantics = {
 		components: ['KlpIcon', 'KlpPressable', 'KlpText', 'context.klp.selectionWash'],
 	),
 	'KlpSidebarNavigationGroup': CatalogStyleSemantics(
-		source: 'D:/Projects/Kallopis/lib/src/features/navigation/widgets/sidebar/klp_sidebar_navigation_group.dart',
+		source: 'lib/src/features/navigation/widgets/sidebar/klp_sidebar_navigation_group.dart',
 		colors: [],
 		surfaces: [],
 		borders: [],
@@ -2139,7 +2194,7 @@ const Map<String, CatalogStyleSemantics> catalogStyleSemantics = {
 		components: [],
 	),
 	'KlpSidebarSectionLabel': CatalogStyleSemantics(
-		source: 'D:/Projects/Kallopis/lib/src/features/navigation/widgets/sidebar/klp_sidebar_section_label.dart',
+		source: 'lib/src/features/navigation/widgets/sidebar/klp_sidebar_section_label.dart',
 		colors: [],
 		surfaces: [],
 		borders: [],
@@ -2150,7 +2205,7 @@ const Map<String, CatalogStyleSemantics> catalogStyleSemantics = {
 		components: ['KlpText'],
 	),
 	'KlpSkeletonLine': CatalogStyleSemantics(
-		source: 'D:/Projects/Kallopis/lib/src/features/feedback/empty_state/klp_skeleton_line.dart',
+		source: 'lib/src/features/feedback/empty_state/klp_skeleton_line.dart',
 		colors: [],
 		surfaces: ['KlpSurfaceTone.inset'],
 		borders: ['context.klp.shape.control'],
@@ -2161,7 +2216,7 @@ const Map<String, CatalogStyleSemantics> catalogStyleSemantics = {
 		components: ['KlpBox', 'KlpExcludeSemantics'],
 	),
 	'KlpSlider': CatalogStyleSemantics(
-		source: 'D:/Projects/Kallopis/lib/src/features/forms/selection/internal/klp_slider_widget.dart',
+		source: 'lib/src/features/forms/selection/internal/klp_slider_widget.dart',
 		colors: ['context.klp.color.clear', 'context.klp.color.interaction', 'context.klp.color.surfaceInset'],
 		surfaces: [],
 		borders: [],
@@ -2172,7 +2227,7 @@ const Map<String, CatalogStyleSemantics> catalogStyleSemantics = {
 		components: ['KlpColumn', 'KlpExpanded', 'KlpRow', 'KlpText'],
 	),
 	'KlpSlidingSelection': CatalogStyleSemantics(
-		source: 'D:/Projects/Kallopis/lib/src/features/forms/selection/internal/klp_sliding_selection_widget.dart',
+		source: 'lib/src/features/forms/selection/internal/klp_sliding_selection_widget.dart',
 		colors: ['context.klp.color.clear', 'context.klp.color.danger', 'context.klp.color.divider', 'context.klp.color.info', 'context.klp.color.interaction', 'context.klp.color.success', 'context.klp.color.surfaceInset', 'context.klp.color.textMuted', 'context.klp.color.warning'],
 		surfaces: ['context.klp.surface.statusFillOpacity'],
 		borders: ['BorderRadius.circular(style.controlRadius)', 'BorderRadius.circular(style.indicatorRadius)', 'context.klp.shape.control', 'context.klp.shape.controlInner', 'context.klp.shape.hairline'],
@@ -2183,7 +2238,7 @@ const Map<String, CatalogStyleSemantics> catalogStyleSemantics = {
 		components: ['KlpIcon'],
 	),
 	'KlpSortControl': CatalogStyleSemantics(
-		source: 'D:/Projects/Kallopis/lib/src/features/collections/sort_control/klp_sort_control.dart',
+		source: 'lib/src/features/collections/sort_control/klp_sort_control.dart',
 		colors: [],
 		surfaces: [],
 		borders: [],
@@ -2194,7 +2249,7 @@ const Map<String, CatalogStyleSemantics> catalogStyleSemantics = {
 		components: ['KlpGestureRegion', 'KlpIcon', 'KlpRow', 'KlpText'],
 	),
 	'KlpSpacer': CatalogStyleSemantics(
-		source: 'D:/Projects/Kallopis/lib/src/foundation/layout/klp_spacer.dart',
+		source: 'lib/src/foundation/layout/klp_spacer.dart',
 		colors: [],
 		surfaces: [],
 		borders: [],
@@ -2205,7 +2260,7 @@ const Map<String, CatalogStyleSemantics> catalogStyleSemantics = {
 		components: [],
 	),
 	'KlpSplitLayout': CatalogStyleSemantics(
-		source: 'D:/Projects/Kallopis/lib/src/foundation/layout/klp_split_layout.dart',
+		source: 'lib/src/foundation/layout/klp_split_layout.dart',
 		colors: ['context.klp.geometry.layout.primaryPaneWidth'],
 		surfaces: [],
 		borders: [],
@@ -2216,7 +2271,7 @@ const Map<String, CatalogStyleSemantics> catalogStyleSemantics = {
 		components: ['KlpDashedDivider', 'KlpExpanded', 'KlpRow'],
 	),
 	'KlpStack': CatalogStyleSemantics(
-		source: 'D:/Projects/Kallopis/lib/src/foundation/layout/klp_stack.dart',
+		source: 'lib/src/foundation/layout/klp_stack.dart',
 		colors: [],
 		surfaces: [],
 		borders: [],
@@ -2227,7 +2282,7 @@ const Map<String, CatalogStyleSemantics> catalogStyleSemantics = {
 		components: [],
 	),
 	'KlpStageFrame': CatalogStyleSemantics(
-		source: 'D:/Projects/Kallopis/lib/src/features/workspace/shell/stage/klp_stage_frame.dart',
+		source: 'lib/src/features/workspace/shell/stage/klp_stage_frame.dart',
 		colors: ['context.klpColors.onBackground', 'context.klpColors.stageSurface'],
 		surfaces: [],
 		borders: [],
@@ -2238,7 +2293,7 @@ const Map<String, CatalogStyleSemantics> catalogStyleSemantics = {
 		components: ['KlpColumn', 'KlpExpanded', 'KlpPanelFooter', 'KlpTokenOverride'],
 	),
 	'KlpStageHeader': CatalogStyleSemantics(
-		source: 'D:/Projects/Kallopis/lib/src/features/workspace/shell/stage/klp_stage_header.dart',
+		source: 'lib/src/features/workspace/shell/stage/klp_stage_header.dart',
 		colors: [],
 		surfaces: [],
 		borders: [],
@@ -2249,7 +2304,7 @@ const Map<String, CatalogStyleSemantics> catalogStyleSemantics = {
 		components: ['KlpBox', 'KlpColumn', 'KlpExpanded', 'KlpFlexible', 'KlpRow', 'KlpText', 'context.klp.space'],
 	),
 	'KlpStageTab': CatalogStyleSemantics(
-		source: 'D:/Projects/Kallopis/lib/src/features/workspace/shell/stage/klp_stage_tab.dart',
+		source: 'lib/src/features/workspace/shell/stage/klp_stage_tab.dart',
 		colors: ['context.klp.color.clear', 'context.klpColors.onBackground', 'context.klpColors.stageSurface'],
 		surfaces: [],
 		borders: ['context.klp.shape.panel'],
@@ -2260,7 +2315,7 @@ const Map<String, CatalogStyleSemantics> catalogStyleSemantics = {
 		components: ['KlpText', 'KlpTokenOverride', 'context.klp.buttonRadius'],
 	),
 	'KlpStageTopBar': CatalogStyleSemantics(
-		source: 'D:/Projects/Kallopis/lib/src/features/workspace/shell/stage/klp_stage_top_bar.dart',
+		source: 'lib/src/features/workspace/shell/stage/klp_stage_top_bar.dart',
 		colors: [],
 		surfaces: [],
 		borders: [],
@@ -2271,7 +2326,7 @@ const Map<String, CatalogStyleSemantics> catalogStyleSemantics = {
 		components: ['KlpDirectionalPositioned', 'KlpRow', 'KlpStack', 'context.klp.space'],
 	),
 	'KlpStateHighlight': CatalogStyleSemantics(
-		source: 'D:/Projects/Kallopis/lib/src/foundation/interaction/klp_state_highlight.dart',
+		source: 'lib/src/foundation/interaction/klp_state_highlight.dart',
 		colors: [],
 		surfaces: [],
 		borders: ['BorderRadius.circular(klp.shape.control)', 'context.klp.shape.control'],
@@ -2282,7 +2337,7 @@ const Map<String, CatalogStyleSemantics> catalogStyleSemantics = {
 		components: ['context.klp.selectedWash', 'context.klp.selectionWash'],
 	),
 	'KlpStatusBar': CatalogStyleSemantics(
-		source: 'D:/Projects/Kallopis/lib/src/features/workspace/shell/status/klp_status_bar.dart',
+		source: 'lib/src/features/workspace/shell/status/klp_status_bar.dart',
 		colors: [],
 		surfaces: [],
 		borders: [],
@@ -2293,7 +2348,7 @@ const Map<String, CatalogStyleSemantics> catalogStyleSemantics = {
 		components: ['KlpExpanded', 'KlpFlexible', 'KlpLayoutBuilder', 'KlpRow', 'KlpStatusIndicator'],
 	),
 	'KlpStatusIndicator': CatalogStyleSemantics(
-		source: 'D:/Projects/Kallopis/lib/src/features/feedback/klp_status_indicator.dart',
+		source: 'lib/src/features/feedback/klp_status_indicator.dart',
 		colors: ['context.klpColors.danger', 'context.klpColors.info', 'context.klpColors.success', 'context.klpColors.textFaint', 'context.klpColors.textMuted', 'context.klpColors.warning'],
 		surfaces: [],
 		borders: [],
@@ -2304,7 +2359,7 @@ const Map<String, CatalogStyleSemantics> catalogStyleSemantics = {
 		components: ['KlpExpanded', 'KlpFlexible', 'KlpRow', 'KlpText'],
 	),
 	'KlpStatusRoleSwatches': CatalogStyleSemantics(
-		source: 'D:/Projects/Kallopis/lib/src/features/forms/selection/klp_status_role_swatches.dart',
+		source: 'lib/src/features/forms/selection/klp_status_role_swatches.dart',
 		colors: ['KlpTextTone.primary', 'context.klp.color.danger', 'context.klp.color.info', 'context.klp.color.success', 'context.klp.color.warning'],
 		surfaces: [],
 		borders: ['BorderRadius.circular(klp.shape.control / 2)', 'context.klp.shape.control'],
@@ -2315,7 +2370,7 @@ const Map<String, CatalogStyleSemantics> catalogStyleSemantics = {
 		components: ['KlpColumn', 'KlpGestureRegion', 'KlpRow', 'KlpText', 'KlpWrap'],
 	),
 	'KlpStepper': CatalogStyleSemantics(
-		source: 'D:/Projects/Kallopis/lib/src/features/collections/stepper/klp_stepper_widget.dart',
+		source: 'lib/src/features/collections/stepper/klp_stepper_widget.dart',
 		colors: ['KlpTextTone.primary', 'context.klpColors.clear', 'context.klpColors.divider', 'context.klpColors.guide', 'context.klpColors.text', 'context.klpColors.textFaint'],
 		surfaces: [],
 		borders: ['Border.all(color: borderColor, width: borderWidth)', 'context.klp.shape.hairline', 'context.klp.shape.none', 'context.klp.shape.stroke'],
@@ -2326,7 +2381,7 @@ const Map<String, CatalogStyleSemantics> catalogStyleSemantics = {
 		components: ['KlpBox', 'KlpCenter', 'KlpColumn', 'KlpExpanded', 'KlpIcon', 'KlpRow', 'KlpText', 'context.klp.type'],
 	),
 	'KlpStrokeFrame': CatalogStyleSemantics(
-		source: 'D:/Projects/Kallopis/lib/src/foundation/surface/klp_stroke.dart',
+		source: 'lib/src/foundation/surface/klp_stroke.dart',
 		colors: ['context.klpColors.guide'],
 		surfaces: [],
 		borders: ['BorderRadius.circular(effectiveRadius)', 'KlpStrokeRole.field', 'KlpStrokeRole.latent', 'KlpStrokeRole.structure', 'context.klp.shape.control', 'context.klp.shape.dashedGap', 'context.klp.shape.dashedLength', 'context.klp.shape.dashedOpacity', 'context.klp.shape.hairline'],
@@ -2337,7 +2392,7 @@ const Map<String, CatalogStyleSemantics> catalogStyleSemantics = {
 		components: ['context.klp.shape', 'context.klp.surface'],
 	),
 	'KlpSurface': CatalogStyleSemantics(
-		source: 'D:/Projects/Kallopis/lib/src/foundation/surface/klp_surface.dart',
+		source: 'lib/src/foundation/surface/klp_surface.dart',
 		colors: [],
 		surfaces: ['KlpSurfaceTone.accent', 'KlpSurfaceTone.accentSoft', 'KlpSurfaceTone.app', 'KlpSurfaceTone.base', 'KlpSurfaceTone.component', 'KlpSurfaceTone.inset', 'KlpSurfaceTone.muted', 'KlpSurfaceTone.overlay', 'KlpSurfaceTone.raised', 'KlpSurfaceTone.stage', 'KlpSurfaceTone.transparent', 'context.klp.surface.backdropBlurSigma', 'context.klp.surface.frostedOpacity'],
 		borders: ['BorderRadius.circular(resolvedRadius)', 'context.klp.shape.control'],
@@ -2348,7 +2403,7 @@ const Map<String, CatalogStyleSemantics> catalogStyleSemantics = {
 		components: ['KlpTokenOverride', 'context.klp.cardRadius', 'context.klp.color'],
 	),
 	'KlpTabs': CatalogStyleSemantics(
-		source: 'D:/Projects/Kallopis/lib/src/features/navigation/widgets/tabs/klp_tabs.dart',
+		source: 'lib/src/features/navigation/widgets/tabs/klp_tabs.dart',
 		colors: ['KlpTextTone.primary', 'context.klpColors.surfaceInset', 'context.klpColors.surfaceMuted'],
 		surfaces: [],
 		borders: ['BorderRadius.circular(radius)', 'context.klp.shape.control'],
@@ -2359,7 +2414,7 @@ const Map<String, CatalogStyleSemantics> catalogStyleSemantics = {
 		components: ['KlpFocusRegion', 'KlpRow', 'KlpText'],
 	),
 	'KlpTag': CatalogStyleSemantics(
-		source: 'D:/Projects/Kallopis/lib/src/features/collections/badge/internal/klp_tag_widget.dart',
+		source: 'lib/src/features/collections/badge/internal/klp_tag_widget.dart',
 		colors: ['context.klpColors.divider', 'context.klpColors.surfaceInset'],
 		surfaces: [],
 		borders: ['BorderRadius.circular(context.klp.shape.control)', 'context.klp.shape.control', 'context.klp.shape.hairline'],
@@ -2370,7 +2425,7 @@ const Map<String, CatalogStyleSemantics> catalogStyleSemantics = {
 		components: ['KlpFlexible', 'KlpGestureRegion', 'KlpRow', 'KlpText'],
 	),
 	'KlpTagChip': CatalogStyleSemantics(
-		source: 'D:/Projects/Kallopis/lib/src/features/forms/selection/klp_tag_chip.dart',
+		source: 'lib/src/features/forms/selection/klp_tag_chip.dart',
 		colors: ['context.klpColors.border', 'context.klpColors.surfaceInset'],
 		surfaces: [],
 		borders: ['BorderRadius.circular(context.klp.shape.control)', 'context.klp.shape.control', 'context.klp.shape.hairline'],
@@ -2381,7 +2436,7 @@ const Map<String, CatalogStyleSemantics> catalogStyleSemantics = {
 		components: ['KlpGestureRegion', 'KlpRow', 'KlpText'],
 	),
 	'KlpTagInputField': CatalogStyleSemantics(
-		source: 'D:/Projects/Kallopis/lib/src/features/forms/selection/klp_tag_input_field.dart',
+		source: 'lib/src/features/forms/selection/klp_tag_input_field.dart',
 		colors: ['context.klpColors.border', 'context.klpColors.surfaceInset'],
 		surfaces: [],
 		borders: ['BorderRadius.circular(context.klp.shape.control)', 'context.klp.shape.control', 'context.klp.shape.hairline'],
@@ -2392,7 +2447,7 @@ const Map<String, CatalogStyleSemantics> catalogStyleSemantics = {
 		components: ['KlpColumn', 'KlpGestureRegion', 'KlpTagChip', 'KlpText', 'KlpWrap'],
 	),
 	'KlpTaskList': CatalogStyleSemantics(
-		source: 'D:/Projects/Kallopis/lib/src/features/collections/agenda/klp_task_list.dart',
+		source: 'lib/src/features/collections/agenda/klp_task_list.dart',
 		colors: [],
 		surfaces: [],
 		borders: [],
@@ -2403,7 +2458,7 @@ const Map<String, CatalogStyleSemantics> catalogStyleSemantics = {
 		components: ['KlpBox', 'KlpCheckbox', 'KlpColumn', 'KlpExpanded', 'KlpRow', 'KlpText', 'context.klp.space'],
 	),
 	'KlpTerminal': CatalogStyleSemantics(
-		source: 'D:/Projects/Kallopis/lib/src/features/collections/code/internal/klp_terminal_widget.dart',
+		source: 'lib/src/features/collections/code/internal/klp_terminal_widget.dart',
 		colors: ['context.klpColors.clear', 'context.klpColors.danger', 'context.klpColors.divider', 'context.klpColors.onStatus', 'context.klpColors.selectionBackground', 'context.klpColors.selectionForeground', 'context.klpColors.stageSurface', 'context.klpColors.success', 'context.klpColors.surfaceInset', 'context.klpColors.textFaint', 'context.klpColors.textMuted'],
 		surfaces: ['context.klp.surface.diffFillOpacity'],
 		borders: ['Border.all(color: style.divider, width: style.strokeWidth)', 'BorderRadius.circular(style.cardRadius)', 'BorderRadius.circular(widget.style.controlRadius)', 'BorderSide(color: style.divider, width: style.strokeWidth)', 'context.klp.shape.card', 'context.klp.shape.control', 'context.klp.shape.hairline'],
@@ -2414,7 +2469,7 @@ const Map<String, CatalogStyleSemantics> catalogStyleSemantics = {
 		components: ['KlpColumn', 'KlpPressable', 'KlpRow', 'KlpSpacer', 'KlpText', 'context.klp.selectionWash'],
 	),
 	'KlpText': CatalogStyleSemantics(
-		source: 'D:/Projects/Kallopis/lib/src/foundation/content/klp_text_widget.dart',
+		source: 'lib/src/foundation/content/klp_text_widget.dart',
 		colors: [],
 		surfaces: [],
 		borders: [],
@@ -2425,7 +2480,7 @@ const Map<String, CatalogStyleSemantics> catalogStyleSemantics = {
 		components: ['context.klp.type'],
 	),
 	'KlpTextArea': CatalogStyleSemantics(
-		source: 'D:/Projects/Kallopis/lib/src/features/forms/input/klp_text_area.dart',
+		source: 'lib/src/features/forms/input/klp_text_area.dart',
 		colors: [],
 		surfaces: [],
 		borders: [],
@@ -2436,7 +2491,7 @@ const Map<String, CatalogStyleSemantics> catalogStyleSemantics = {
 		components: ['KlpTextField'],
 	),
 	'KlpTextField': CatalogStyleSemantics(
-		source: 'D:/Projects/Kallopis/lib/src/features/forms/input/internal/klp_text_field_widget.dart',
+		source: 'lib/src/features/forms/input/internal/klp_text_field_widget.dart',
 		colors: ['context.klp.color.border', 'context.klp.color.interaction', 'context.klp.color.text', 'context.klp.color.textFaint', 'context.klp.color.textMuted'],
 		surfaces: [],
 		borders: ['Border.all(color: style.borderColor, width: style.borderWidth)', 'BorderRadius.circular(style.radius)', 'context.klp.fieldBorderWidth', 'context.klp.shape.none', 'context.klp.shape.stroke'],
@@ -2447,7 +2502,7 @@ const Map<String, CatalogStyleSemantics> catalogStyleSemantics = {
 		components: ['KlpBox', 'KlpColumn', 'KlpIcon', 'KlpRow', 'KlpText', 'context.klp.color', 'context.klp.fieldHeight', 'context.klp.fieldPaddingX', 'context.klp.fieldRadius', 'context.klp.surface'],
 	),
 	'KlpThemeModePicker': CatalogStyleSemantics(
-		source: 'D:/Projects/Kallopis/lib/src/features/workspace/settings/klp_theme_mode_picker.dart',
+		source: 'lib/src/features/workspace/settings/klp_theme_mode_picker.dart',
 		colors: [],
 		surfaces: [],
 		borders: [],
@@ -2458,7 +2513,7 @@ const Map<String, CatalogStyleSemantics> catalogStyleSemantics = {
 		components: ['KlpThemePreviewTile', 'KlpWrap'],
 	),
 	'KlpThemePreviewTile': CatalogStyleSemantics(
-		source: 'D:/Projects/Kallopis/lib/src/features/workspace/shell/theme/klp_theme_preview_tile.dart',
+		source: 'lib/src/features/workspace/shell/theme/klp_theme_preview_tile.dart',
 		colors: ['context.klpColors.length', 'context.klpColors.textFaint', 'context.klpColors.warning'],
 		surfaces: ['context.klp.surface.themePreviewDisabledOpacity'],
 		borders: ['BorderRadius.circular(context.klp.shape.panel)', 'context.klp.shape.panel'],
@@ -2469,7 +2524,7 @@ const Map<String, CatalogStyleSemantics> catalogStyleSemantics = {
 		components: ['KlpColumn', 'KlpPressable', 'KlpText', 'context.klp.selectionWash'],
 	),
 	'KlpThemeToggle': CatalogStyleSemantics(
-		source: 'D:/Projects/Kallopis/lib/src/features/workspace/shell/theme/klp_theme_toggle.dart',
+		source: 'lib/src/features/workspace/shell/theme/klp_theme_toggle.dart',
 		colors: [],
 		surfaces: ['KlpSurfaceTone.inset', 'KlpSurfaceTone.muted'],
 		borders: [],
@@ -2480,7 +2535,7 @@ const Map<String, CatalogStyleSemantics> catalogStyleSemantics = {
 		components: ['KlpSurface', 'KlpText'],
 	),
 	'KlpTimeline': CatalogStyleSemantics(
-		source: 'D:/Projects/Kallopis/lib/src/features/collections/timeline/internal/klp_timeline_widget.dart',
+		source: 'lib/src/features/collections/timeline/internal/klp_timeline_widget.dart',
 		colors: ['context.klpColors.divider', 'context.klpColors.text', 'context.klpColors.textFaint'],
 		surfaces: [],
 		borders: ['context.klp.shape.hairline'],
@@ -2491,7 +2546,7 @@ const Map<String, CatalogStyleSemantics> catalogStyleSemantics = {
 		components: ['KlpBox', 'KlpColumn', 'KlpExpanded', 'KlpRow', 'KlpText', 'context.klp.type'],
 	),
 	'KlpToast': CatalogStyleSemantics(
-		source: 'D:/Projects/Kallopis/lib/src/features/feedback/toast/klp_toast_widget.dart',
+		source: 'lib/src/features/feedback/toast/klp_toast_widget.dart',
 		colors: ['KlpFeedbackTone.info'],
 		surfaces: ['KlpSurfaceTone.inset'],
 		borders: ['context.klp.shape.card'],
@@ -2502,7 +2557,7 @@ const Map<String, CatalogStyleSemantics> catalogStyleSemantics = {
 		components: ['KlpBox', 'KlpButton', 'KlpCenter', 'KlpColumn', 'KlpConstrainedBox', 'KlpExpanded', 'KlpIcon', 'KlpRow', 'KlpSurface', 'KlpText', 'KlpWrap'],
 	),
 	'KlpToastStack': CatalogStyleSemantics(
-		source: 'D:/Projects/Kallopis/lib/src/features/feedback/toast/klp_toast_stack.dart',
+		source: 'lib/src/features/feedback/toast/klp_toast_stack.dart',
 		colors: [],
 		surfaces: [],
 		borders: [],
@@ -2513,7 +2568,7 @@ const Map<String, CatalogStyleSemantics> catalogStyleSemantics = {
 		components: ['KlpColumn'],
 	),
 	'KlpToggle': CatalogStyleSemantics(
-		source: 'D:/Projects/Kallopis/lib/src/features/forms/toggle/internal/klp_toggle_widget.dart',
+		source: 'lib/src/features/forms/toggle/internal/klp_toggle_widget.dart',
 		colors: ['KlpTextTone.primary', 'context.klp.color.clear'],
 		surfaces: [],
 		borders: ['BorderRadius.circular(style.radius)', 'context.klp.shape.toggleTrack'],
@@ -2524,7 +2579,7 @@ const Map<String, CatalogStyleSemantics> catalogStyleSemantics = {
 		components: ['KlpRow', 'KlpText', 'KlpToggleIndicator'],
 	),
 	'KlpToggleIndicator': CatalogStyleSemantics(
-		source: 'D:/Projects/Kallopis/lib/src/features/forms/toggle/internal/klp_toggle_indicator_widget.dart',
+		source: 'lib/src/features/forms/toggle/internal/klp_toggle_indicator_widget.dart',
 		colors: [],
 		surfaces: [],
 		borders: ['BorderRadius.circular(style.thumbRadius)', 'BorderRadius.circular(style.trackRadius)', 'context.klp.shape.sm', 'context.klp.shape.toggleTrack'],
@@ -2535,7 +2590,7 @@ const Map<String, CatalogStyleSemantics> catalogStyleSemantics = {
 		components: ['context.klp.color'],
 	),
 	'KlpTokenOverride': CatalogStyleSemantics(
-		source: 'D:/Projects/Kallopis/lib/src/styling/legacy_theme/klp_theme_scope.dart',
+		source: 'lib/src/styling/legacy_theme/klp_theme_scope.dart',
 		colors: [],
 		surfaces: [],
 		borders: [],
@@ -2546,7 +2601,7 @@ const Map<String, CatalogStyleSemantics> catalogStyleSemantics = {
 		components: [],
 	),
 	'KlpTokenTable': CatalogStyleSemantics(
-		source: 'D:/Projects/Kallopis/lib/src/features/workspace/artifact/internal/klp_token_table.dart',
+		source: 'lib/src/features/workspace/artifact/internal/klp_token_table.dart',
 		colors: [],
 		surfaces: [],
 		borders: [],
@@ -2557,7 +2612,7 @@ const Map<String, CatalogStyleSemantics> catalogStyleSemantics = {
 		components: ['KlpBadge', 'KlpDataTable', 'KlpFlexible', 'KlpRow', 'KlpText'],
 	),
 	'KlpTokenValidationBanner': CatalogStyleSemantics(
-		source: 'D:/Projects/Kallopis/lib/src/features/workspace/artifact/internal/klp_token_validation_banner.dart',
+		source: 'lib/src/features/workspace/artifact/internal/klp_token_validation_banner.dart',
 		colors: ['KlpFeedbackTone.danger', 'KlpFeedbackTone.success'],
 		surfaces: [],
 		borders: [],
@@ -2568,7 +2623,7 @@ const Map<String, CatalogStyleSemantics> catalogStyleSemantics = {
 		components: ['KlpInlineNotice'],
 	),
 	'KlpTooltip': CatalogStyleSemantics(
-		source: 'D:/Projects/Kallopis/lib/src/features/overlays/primitives/klp_tooltip_widget.dart',
+		source: 'lib/src/features/overlays/primitives/klp_tooltip_widget.dart',
 		colors: [],
 		surfaces: [],
 		borders: [],
@@ -2579,7 +2634,7 @@ const Map<String, CatalogStyleSemantics> catalogStyleSemantics = {
 		components: [],
 	),
 	'KlpTooltipSurface': CatalogStyleSemantics(
-		source: 'D:/Projects/Kallopis/lib/src/features/overlays/tooltip/klp_tooltip_surface.dart',
+		source: 'lib/src/features/overlays/tooltip/klp_tooltip_surface.dart',
 		colors: [],
 		surfaces: ['KlpSurfaceTone.overlay'],
 		borders: ['context.klp.shape.control'],
@@ -2590,7 +2645,7 @@ const Map<String, CatalogStyleSemantics> catalogStyleSemantics = {
 		components: ['KlpBox', 'KlpSurface', 'KlpText'],
 	),
 	'KlpTranslate': CatalogStyleSemantics(
-		source: 'D:/Projects/Kallopis/lib/src/foundation/layout/klp_translate.dart',
+		source: 'lib/src/foundation/layout/klp_translate.dart',
 		colors: [],
 		surfaces: [],
 		borders: [],
@@ -2601,7 +2656,7 @@ const Map<String, CatalogStyleSemantics> catalogStyleSemantics = {
 		components: [],
 	),
 	'KlpTree': CatalogStyleSemantics(
-		source: 'D:/Projects/Kallopis/lib/src/features/collections/advanced/internal/klp_tree.dart',
+		source: 'lib/src/features/collections/advanced/internal/klp_tree.dart',
 		colors: ['KlpFeedbackTone.danger', 'KlpFeedbackTone.info', 'KlpFeedbackTone.neutral', 'KlpFeedbackTone.success', 'KlpFeedbackTone.warning', 'context.klpColors.component', 'context.klpColors.danger', 'context.klpColors.divider', 'context.klpColors.info', 'context.klpColors.selectionForeground', 'context.klpColors.success', 'context.klpColors.surfaceInset', 'context.klpColors.surfaceMuted', 'context.klpColors.text', 'context.klpColors.textFaint', 'context.klpColors.textMuted', 'context.klpColors.warning'],
 		surfaces: [],
 		borders: ['BorderRadius.circular(style.controlRadius)', 'context.klp.shape.card', 'context.klp.shape.control', 'context.klp.shape.hairline'],
@@ -2612,7 +2667,7 @@ const Map<String, CatalogStyleSemantics> catalogStyleSemantics = {
 		components: ['KlpCenter', 'KlpColumn', 'KlpExpanded', 'KlpGestureRegion', 'KlpIcon', 'KlpRow', 'KlpStateHighlight', 'KlpText', 'context.klp.isDark', 'context.klp.surface'],
 	),
 	'KlpTreeItem': CatalogStyleSemantics(
-		source: 'D:/Projects/Kallopis/lib/src/features/collections/advanced/internal/klp_tree_item.dart',
+		source: 'lib/src/features/collections/advanced/internal/klp_tree_item.dart',
 		colors: ['KlpFeedbackTone.danger', 'KlpFeedbackTone.info', 'KlpFeedbackTone.neutral', 'KlpFeedbackTone.success', 'KlpFeedbackTone.warning', 'context.klpColors.component', 'context.klpColors.danger', 'context.klpColors.divider', 'context.klpColors.info', 'context.klpColors.selectionForeground', 'context.klpColors.success', 'context.klpColors.surfaceInset', 'context.klpColors.surfaceMuted', 'context.klpColors.text', 'context.klpColors.textFaint', 'context.klpColors.textMuted', 'context.klpColors.warning'],
 		surfaces: [],
 		borders: ['BorderRadius.circular(style.controlRadius)', 'context.klp.shape.card', 'context.klp.shape.control', 'context.klp.shape.hairline'],
@@ -2623,7 +2678,7 @@ const Map<String, CatalogStyleSemantics> catalogStyleSemantics = {
 		components: ['KlpCenter', 'KlpColumn', 'KlpExpanded', 'KlpGestureRegion', 'KlpIcon', 'KlpRow', 'KlpStateHighlight', 'KlpText', 'context.klp.isDark', 'context.klp.surface'],
 	),
 	'KlpTriStateToggle': CatalogStyleSemantics(
-		source: 'D:/Projects/Kallopis/lib/src/features/forms/toggle/internal/klp_tri_state_toggle_widget.dart',
+		source: 'lib/src/features/forms/toggle/internal/klp_tri_state_toggle_widget.dart',
 		colors: ['KlpTextTone.primary'],
 		surfaces: [],
 		borders: [],
@@ -2634,7 +2689,7 @@ const Map<String, CatalogStyleSemantics> catalogStyleSemantics = {
 		components: ['KlpRow', 'KlpSlidingSelection', 'KlpText'],
 	),
 	'KlpVeil': CatalogStyleSemantics(
-		source: 'D:/Projects/Kallopis/lib/src/foundation/surface/klp_veil.dart',
+		source: 'lib/src/foundation/surface/klp_veil.dart',
 		colors: ['context.klpColors.stageSurface', 'context.klpColors.surface'],
 		surfaces: ['context.klp.surface.veilOpacity'],
 		borders: [],
@@ -2645,7 +2700,7 @@ const Map<String, CatalogStyleSemantics> catalogStyleSemantics = {
 		components: ['context.klp.isDark'],
 	),
 	'KlpViewSwitcher': CatalogStyleSemantics(
-		source: 'D:/Projects/Kallopis/lib/src/features/navigation/widgets/controls/klp_view_switcher.dart',
+		source: 'lib/src/features/navigation/widgets/controls/klp_view_switcher.dart',
 		colors: ['KlpTextTone.primary', 'context.klpColors.onBackground', 'context.klpColors.selection'],
 		surfaces: ['KlpSurfaceTone.inset'],
 		borders: ['BorderRadius.circular(context.klp.shape.control)', 'context.klp.shape.control'],
@@ -2656,7 +2711,7 @@ const Map<String, CatalogStyleSemantics> catalogStyleSemantics = {
 		components: ['KlpGestureRegion', 'KlpIcon', 'KlpRow', 'KlpSurface', 'KlpText', 'KlpTokenOverride'],
 	),
 	'KlpVirtualGrid': CatalogStyleSemantics(
-		source: 'D:/Projects/Kallopis/lib/src/foundation/layout/klp_virtual_grid.dart',
+		source: 'lib/src/foundation/layout/klp_virtual_grid.dart',
 		colors: [],
 		surfaces: [],
 		borders: [],
@@ -2667,7 +2722,7 @@ const Map<String, CatalogStyleSemantics> catalogStyleSemantics = {
 		components: [],
 	),
 	'KlpVirtualList': CatalogStyleSemantics(
-		source: 'D:/Projects/Kallopis/lib/src/foundation/layout/klp_virtual_list.dart',
+		source: 'lib/src/foundation/layout/klp_virtual_list.dart',
 		colors: [],
 		surfaces: [],
 		borders: [],
@@ -2678,7 +2733,7 @@ const Map<String, CatalogStyleSemantics> catalogStyleSemantics = {
 		components: [],
 	),
 	'KlpWindowAppIcon': CatalogStyleSemantics(
-		source: 'D:/Projects/Kallopis/lib/src/features/workspace/shell/window/klp_window_app_icon.dart',
+		source: 'lib/src/features/workspace/shell/window/klp_window_app_icon.dart',
 		colors: [],
 		surfaces: [],
 		borders: [],
@@ -2689,7 +2744,7 @@ const Map<String, CatalogStyleSemantics> catalogStyleSemantics = {
 		components: ['KlpBox', 'KlpCenter', 'KlpFit'],
 	),
 	'KlpWindowControls': CatalogStyleSemantics(
-		source: 'D:/Projects/Kallopis/lib/src/features/workspace/shell/window/klp_window_controls.dart',
+		source: 'lib/src/features/workspace/shell/window/klp_window_controls.dart',
 		colors: [],
 		surfaces: [],
 		borders: [],
@@ -2700,7 +2755,7 @@ const Map<String, CatalogStyleSemantics> catalogStyleSemantics = {
 		components: ['KlpAdaptive', 'KlpRow'],
 	),
 	'KlpWindowHeader': CatalogStyleSemantics(
-		source: 'D:/Projects/Kallopis/lib/src/features/workspace/shell/window/klp_window_header.dart',
+		source: 'lib/src/features/workspace/shell/window/klp_window_header.dart',
 		colors: ['KlpTextTone.primary'],
 		surfaces: ['KlpSurfaceTone.app'],
 		borders: [],
@@ -2711,7 +2766,7 @@ const Map<String, CatalogStyleSemantics> catalogStyleSemantics = {
 		components: ['KlpAdaptive', 'KlpBox', 'KlpGestureRegion', 'KlpSurface', 'KlpText'],
 	),
 	'KlpWindowHeaderMacLayout': CatalogStyleSemantics(
-		source: 'D:/Projects/Kallopis/lib/src/features/workspace/shell/window/klp_window_header_mac_layout.dart',
+		source: 'lib/src/features/workspace/shell/window/klp_window_header_mac_layout.dart',
 		colors: [],
 		surfaces: [],
 		borders: [],
@@ -2722,7 +2777,7 @@ const Map<String, CatalogStyleSemantics> catalogStyleSemantics = {
 		components: ['KlpAlign', 'KlpExpanded', 'KlpGestureRegion', 'KlpRow', 'KlpStack'],
 	),
 	'KlpWindowHeaderWindowsLayout': CatalogStyleSemantics(
-		source: 'D:/Projects/Kallopis/lib/src/features/workspace/shell/window/klp_window_header_windows_layout.dart',
+		source: 'lib/src/features/workspace/shell/window/klp_window_header_windows_layout.dart',
 		colors: [],
 		surfaces: [],
 		borders: [],
@@ -2733,7 +2788,7 @@ const Map<String, CatalogStyleSemantics> catalogStyleSemantics = {
 		components: ['KlpAlign', 'KlpBox', 'KlpExpanded', 'KlpFlexible', 'KlpGestureRegion', 'KlpRow'],
 	),
 	'KlpWorkflowProgress': CatalogStyleSemantics(
-		source: 'D:/Projects/Kallopis/lib/src/features/feedback/workflow/klp_workflow_progress.dart',
+		source: 'lib/src/features/feedback/workflow/klp_workflow_progress.dart',
 		colors: ['KlpFeedbackTone.info', 'KlpFeedbackTone.neutral', 'KlpFeedbackTone.success'],
 		surfaces: [],
 		borders: [],
@@ -2744,7 +2799,7 @@ const Map<String, CatalogStyleSemantics> catalogStyleSemantics = {
 		components: ['KlpBadge', 'KlpColumn', 'KlpExpanded', 'KlpLiveRegion', 'KlpRow', 'KlpText'],
 	),
 	'KlpWorkflowStateSurface': CatalogStyleSemantics(
-		source: 'D:/Projects/Kallopis/lib/src/features/feedback/workflow/klp_workflow_state_surface.dart',
+		source: 'lib/src/features/feedback/workflow/klp_workflow_state_surface.dart',
 		colors: ['KlpFeedbackTone.danger', 'KlpFeedbackTone.info', 'KlpFeedbackTone.success', 'KlpFeedbackTone.warning'],
 		surfaces: ['KlpSurfaceTone.component'],
 		borders: [],
@@ -2755,7 +2810,7 @@ const Map<String, CatalogStyleSemantics> catalogStyleSemantics = {
 		components: ['KlpAlign', 'KlpBadge', 'KlpBox', 'KlpButton', 'KlpColumn', 'KlpExpanded', 'KlpGeometricSpinner', 'KlpLiveRegion', 'KlpRow', 'KlpSurface', 'KlpText'],
 	),
 	'KlpWrap': CatalogStyleSemantics(
-		source: 'D:/Projects/Kallopis/lib/src/foundation/layout/klp_wrap.dart',
+		source: 'lib/src/foundation/layout/klp_wrap.dart',
 		colors: [],
 		surfaces: [],
 		borders: [],
