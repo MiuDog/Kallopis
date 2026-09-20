@@ -23,6 +23,7 @@ Pane、Frame、Spacer 與 divider gutter 行為。它只負責一般 Workbench �
 - `LayoutSpacer`：正 flex 的空白內容節點。
 - `KlpLayoutPane`：無材質內容 pane；trailing 使用 secondary pane width。
 - `KlpAppFrame`：有語意角色與 flat／raised surface 的第一層 frame。
+- `KlpFrameGroups`／`KlpFrameGroup`：Frame 內的受控內容分群、divider 與固定 footer。
 
 Consumer 直接注入 Widget 內容；不使用 id、node adapter、bound model 或 renderer。
 
@@ -33,6 +34,9 @@ Consumer 直接注入 Widget 內容；不使用 id、node adapter、bound model 
 - `LayoutResizeHandle` 自己占據一份 8px，前後不再加入普通 gap。
 - Root inset、linear gap 與 handle extent 使用同一個現行 8px semantic spacing。
 - Frame 不加入內容 padding；bare role 不繪製 surface 或 relief。
+- Frame group 的 horizontal inset、standard content gap、transparent gap 與 section gap
+  均解析為 8px；divider stroke 與 color 使用現行 shape／color token。
+- Footer 存在時只捲動主 groups，footer 固定在底部中央。
 - Dock module 不依賴或包裝本 module，兩套公開狀態模型保持獨立。
 
 ## 依賴方向
@@ -67,4 +71,29 @@ Milestones：
 估計：cold-start，參照歷史 `KlpAppLayout` 與現行 `KlpPanelFrame`；預期 12k–22k tokens、
 60–120 分鐘。超過 30k tokens 或 180 分鐘時停止檢查 direct Widget 與歷史 API 邊界。
 
-PLAN READY：DLB-01～DLB-08 均映射至本 slice 或既有 Dock owner，下一步可 BUILD ALR-S1。
+ALR-S1 已完成：直接 Flutter Layout 系列由 foundation 匯出，公開入口 analyze 與既有
+layout primitives tests 通過。
+
+## ALR-S2：Frame Groups 還原
+
+可觀察結果：`KlpFrameGroups`／`KlpFrameGroup` 以直接 Flutter API 提供一個以上主群組、
+可選固定 footer、8px inset／內容節奏，以及 invisible／dashed／solid／transparent／section
+divider。
+
+允許寫入：
+
+- `lib/src/features/workspace/layout/**`
+- `lib/kallopis_foundation.dart`
+
+驗收：公開入口 analyze；既有 layout 局部測試；source scan 不含 declarative runtime。
+必要新 deterministic tests 仍由獨立 Test Author 擁有。
+
+Milestones：
+
+1. Group API 與 divider：直接 Widget 內容、8px 語意與五種 divider 完成。
+2. Groups container：主區捲動、固定 footer 與 foundation export 完成。
+
+估計：cold-start，參照歷史 `KlpFrameGroups` adapter／renderer；預期 10k–18k tokens、
+45–100 分鐘。超過 26k tokens 或 150 分鐘時停止檢查 scroll／footer constraints。
+
+PLAN READY：DLB-10～DLB-11 已映射至 ALR-S2，下一步可 BUILD ALR-S2。

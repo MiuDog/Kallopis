@@ -36,6 +36,8 @@ compiler 或私有 renderer。
 | DLB-07 | v1 | P1 | 一般 Layout 還原歷史 divider 行為：占據 semantic gutter，但不提供拖曳 resize。 | Layout 不公開 resize callback；需要互動調整與持久狀態時使用 `KlpDockLayout`。 | accepted |
 | DLB-08 | v1 | P1 | 兩套 Layout 都維持 KLP-0022 的直接 Flutter 邊界。 | 公開入口從現有 Flutter barrels 可達；不存在 declarative runtime 或第二套 renderer。 | accepted |
 | DLB-09 | v1 | P2 | `KlpSplitLayout` 的重疊能力在一般 Workbench layout 完成後重新判斷。 | 若新版完整涵蓋固定二／三欄 split，才另行合併或刪除；本階段不先移除。 | deferred |
+| DLB-10 | v1 | P1 | 恢復直接 Flutter `KlpFrameGroups`／`KlpFrameGroup`，讓 Frame 內容可使用受控群組、divider 與固定 footer。 | Consumer 不需自行組裝 Padding／Divider／Scroll footer；所有布局 gap 解析為同一個 8px semantic spacing。 | accepted |
+| DLB-11 | v1 | P1 | Frame group 只接受 Widget 內容，不恢復 node slot、adapter 或 renderer。 | API 從 foundation barrel 可達，且 source 不依賴舊 declarative runtime。 | accepted |
 
 ## 責任邊界
 
@@ -57,11 +59,20 @@ compiler 或私有 renderer。
 共用 resolver 只處理單一主軸：先扣除 divider 總尺寸，再在非負內容空間內解析固定尺寸、
 min／max 與 flex。它不輸出 Widget、不修改狀態，也不知道呼叫者是 Workbench 或 Dock。
 
+### Frame 內容群組
+
+- `KlpFrameGroups` 管理一個以上的主群組，以及可選的固定 footer group。
+- `KlpFrameGroup` 管理水平 inset、群組內容節奏與前置 divider。
+- horizontal inset、standard content gap、transparent gap 與 section gap 全部解析為 8px；
+  divider 線寬與顏色仍使用 shape／color semantic token。
+- Footer 存在時，主群組位於可捲動區，footer 固定於底部中央。
+
 ## 範圍
 
 範圍內：
 
 - 恢復歷史 Row／Column 組合與 divider 空間計算的產品價值。
+- 恢復 FrameGroups 的直接 Flutter compound component。
 - 保留現行 Dock 的適應性互動與公開模型。
 - 為兩者建立清楚文件、Catalog specimen 與正式 API reference。
 
