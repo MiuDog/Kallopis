@@ -3,19 +3,25 @@ import 'package:flutter/material.dart';
 import 'package:kallopis/src/styling/legacy_theme/klp_theme.dart';
 import 'package:kallopis/src/styling/presets/klp_frame_relief_recipe.dart';
 import 'package:kallopis/src/styling/primitives/klp_style_value.dart';
+import 'package:kallopis/src/foundation/surface/klp_surface.dart';
 
 /// App background 上第一層的通用 Workbench 布局根。
 final class KlpAppLayout extends StatelessWidget {
-	const KlpAppLayout({super.key, required this.child});
+	const KlpAppLayout({super.key, required this.child, this.floatingAction});
 
 	final KlpLayoutNode child;
+	final Widget? floatingAction;
 
 	@override
 	Widget build(BuildContext context) {
-		return Padding(
+		final body = Padding(
 			padding: EdgeInsets.all(context.klp.space.space2),
 			child: child,
 		);
+		final action = floatingAction;
+		if (action == null) return body;
+
+		return _KlpFloatingWorkspace(action: action, child: body);
 	}
 }
 
@@ -238,4 +244,102 @@ List<BoxShadow> _frameRelief(Color surface, Color shadowSource, double scale) {
 			offset: Offset(KlpFrameReliefRecipe.highlightOffset * factor, KlpFrameReliefRecipe.highlightOffset * factor),
 		),
 	];
+}
+
+/// 浮動位置只屬呈現期；拖曳由外層取得，child tap 仍由 action 自己處理。
+final class _KlpFloatingWorkspace extends StatefulWidget {
+	const _KlpFloatingWorkspace({required this.action, required this.child});
+
+	final Widget action;
+	final Widget child;
+
+	@override
+	State<_KlpFloatingWorkspace> createState() => _KlpFloatingWorkspaceState();
+}
+
+final class _KlpFloatingWorkspaceState extends State<_KlpFloatingWorkspace> {
+	final GlobalKey _actionKey = GlobalKey();
+	final GlobalKey _areaKey = GlobalKey();
+	Offset? _position;
+
+	void _startDrag(DragStartDetails details) {
+		final area = _areaKey.currentContext!.findRenderObject()! as RenderBox;
+		final action = _actionKey.currentContext!.findRenderObject()! as RenderBox;
+		_position = action.localToGlobal(Offset.zero, ancestor: area);
+	}
+
+	void _updateDrag(DragUpdateDetails details) {
+		setState(() => _position = _position! + details.delta);
+	}
+
+	@override
+	Widget build(BuildContext context) {
+		final klp = context.klp;
+		final inset = klp.space.space2;
+		return Stack(
+			key: _areaKey,
+			fit: StackFit.expand,
+			children: [
+				widget.child,
+				CustomSingleChildLayout(
+					delegate: _KlpFloatingPosition(
+						position: _position,
+						inset: inset,
+						headerExtent: klp.space.chromeHeader,
+					),
+					child: GestureDetector(
+						key: _actionKey,
+						behavior: HitTestBehavior.translucent,
+						onPanStart: _startDrag,
+						onPanUpdate: _updateDrag,
+						child: IntrinsicWidth(
+							child: KlpSurface(
+								tone: KlpSurfaceTone.raised,
+								radius: klp.shape.panel,
+								padding: EdgeInsets.all(inset),
+								shadows: [
+									BoxShadow(
+										color: klp.surface.overlayShadowColor,
+										offset: Offset(0, klp.surface.overlayOffsetY),
+										blurRadius: klp.surface.overlayBlur,
+									),
+								],
+								child: widget.action,
+							),
+						),
+					),
+				),
+			],
+		);
+	}
+}
+
+final class _KlpFloatingPosition extends SingleChildLayoutDelegate {
+	const _KlpFloatingPosition({required this.position, required this.inset, required this.headerExtent});
+
+	final Offset? position;
+	final double inset;
+	final double headerExtent;
+
+	@override
+	BoxConstraints getConstraintsForChild(BoxConstraints constraints) {
+		return constraints.loosen().deflate(EdgeInsets.all(inset));
+	}
+
+	@override
+	Offset getPositionForChild(Size size, Size childSize) {
+		final right = (size.width - childSize.width - inset).clamp(0.0, size.width);
+		final bottom = (size.height - childSize.height - inset).clamp(0.0, size.height);
+		final left = inset.clamp(0.0, right);
+		final top = (headerExtent + inset).clamp(0.0, bottom);
+		return Offset(
+			(position?.dx ?? right).clamp(left, right),
+			(position?.dy ?? bottom).clamp(top, bottom),
+		);
+	}
+
+	@override
+	bool shouldRelayout(covariant _KlpFloatingPosition oldDelegate) {
+		return oldDelegate.position != position || oldDelegate.inset != inset || oldDelegate.headerExtent != headerExtent;
+	}
 }
