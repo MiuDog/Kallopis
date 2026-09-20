@@ -116,6 +116,7 @@ export 'src/features/navigation/widgets/rail/klp_rail_menu_entry.dart';
 export 'src/features/navigation/widgets/rail/klp_navigation_rail.dart';
 export 'src/features/workspace/shell/composition/klp_navigation_rail_frame.dart';
 export 'src/features/workspace/shell/composition/app_screen/klp_app_screen.dart';
+export 'src/features/workspace/layout/klp_app_layout.dart';
 export 'src/features/workspace/shell/sidebar/klp_primary_sidebar_frame.dart';
 export 'src/features/workspace/shell/sidebar/klp_primary_sidebar_header_inset.dart';
 export 'src/features/workspace/shell/sidebar/klp_sidebar_frame.dart';
