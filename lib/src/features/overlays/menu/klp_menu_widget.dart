@@ -13,12 +13,12 @@ class KlpMenu extends StatefulWidget {
 		this.onEscape,
 		this.scrollable = false,
 		this.searchable = false,
-		this.searchPlaceholder = '搜尋',
+		this.searchPlaceholder,
 	});
 
 	final bool scrollable;
 	final bool searchable;
-	final String searchPlaceholder;
+	final String? searchPlaceholder;
 	final String label;
 	final List<KlpMenuItemData> items;
 

@@ -1,2 +1,24 @@
-// 相容來源轉送同一個 L1 自適應模式型別；不建立第二份模式權威。
-export 'package:kallopis/src/capabilities/environment/klp_adaptive_mode.dart' show KlpAdaptiveMode;
+import 'klp_device_class.dart';
+import 'klp_orientation.dart';
+
+/// 自適應渲染模式定義。
+abstract final class KlpAdaptiveMode {
+	static const String tabletLandscape = 'tablet_landscape';
+	static const String tabletPortrait = 'tablet_portrait';
+	static const String desktop = 'desktop';
+	static const String phone = 'phone';
+	static const String fallback = 'fallback';
+
+	static String resolveDefault({
+		required KlpDeviceClass deviceClass,
+		required KlpOrientation orientation,
+	}) {
+		return switch (deviceClass) {
+			KlpDeviceClass.tablet => orientation == KlpOrientation.landscape
+				? tabletLandscape
+				: tabletPortrait,
+			KlpDeviceClass.phone => phone,
+			KlpDeviceClass.desktop => desktop,
+		};
+	}
+}

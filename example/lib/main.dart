@@ -13,161 +13,89 @@ void main() => runApp(const KallopisCatalogApp());
 /// 「換整套風格」的驗收由 `test/style_switch_golden_test.dart` 以離屏算圖負責，
 /// 不佔用目錄的畫面。
 ///
-/// 接入方式本身就是 [KlpApp] 的自我驗證：目錄用起來不順，消費者也不會順。
+/// 接入方式本身就是唯一 Flutter 架構的自我驗證：目錄用起來不順，消費者也不會順。
 class KallopisCatalogApp extends StatefulWidget {
-  const KallopisCatalogApp({super.key});
+	const KallopisCatalogApp({super.key});
 
-  @override
-  State<KallopisCatalogApp> createState() => _KallopisCatalogAppState();
+	@override
+	State<KallopisCatalogApp> createState() => _KallopisCatalogAppState();
 }
 
 class _KallopisCatalogAppState extends State<KallopisCatalogApp>
-    with WidgetsBindingObserver {
-  int _selected = catalogPages.indexWhere(
-    (page) => page.label == 'Note blocks',
-  );
-  KlpThemeVariant _variant = KlpThemeVariant.light;
-  KlpOklchColor? _themeColor;
-  bool _isMaximized = false;
+		with WidgetsBindingObserver {
+	int _selected = catalogPages.indexWhere(
+		(page) => page.label == 'Note blocks',
+	);
+	final KlpThemeVariant _variant = KlpThemeVariant.light;
+	KlpOklchColor? _themeColor;
+	bool _isMaximized = false;
 
-  @override
-  void initState() {
-    super.initState();
-    WidgetsBinding.instance.addObserver(this);
-    _queryMaximized();
-  }
+	@override
+	void initState() {
+		super.initState();
+		WidgetsBinding.instance.addObserver(this);
+		_queryMaximized();
+	}
 
-  @override
-  void dispose() {
-    WidgetsBinding.instance.removeObserver(this);
-    super.dispose();
-  }
+	@override
+	void dispose() {
+		WidgetsBinding.instance.removeObserver(this);
+		super.dispose();
+	}
 
-  @override
-  void didChangeMetrics() {
-    _queryMaximized();
-  }
+	@override
+	void didChangeMetrics() {
+		_queryMaximized();
+	}
 
-  Future<void> _queryMaximized() async {
-    final isMax = await KlpWindowAction.checkIsMaximized();
-    if (mounted && isMax != _isMaximized) {
-      setState(() => _isMaximized = isMax);
-    }
-  }
+	Future<void> _queryMaximized() async {
+		final isMax = await KlpWindowAction.checkIsMaximized();
+		if (mounted && isMax != _isMaximized) {
+			setState(() => _isMaximized = isMax);
+		}
+	}
 
-  void _cycleTheme() {
-    setState(() {
-      _variant = switch (_variant) {
-        KlpThemeVariant.light => KlpThemeVariant.dark,
-        KlpThemeVariant.dark => KlpThemeVariant.ultraDark,
-        KlpThemeVariant.ultraDark => KlpThemeVariant.light,
-        KlpThemeVariant.transparent => KlpThemeVariant.light,
-      };
-    });
-  }
+	void _setThemeColor(KlpOklchColor value) =>
+			setState(() => _themeColor = value);
 
-  void _setThemeColor(KlpOklchColor value) =>
-      setState(() => _themeColor = value);
+	@override
+	Widget build(BuildContext context) {
+		final baseColors = switch (_variant) {
+			KlpThemeVariant.light => KlpThemeData.light,
+			KlpThemeVariant.dark => KlpThemeData.dark,
+			KlpThemeVariant.ultraDark => KlpThemeData.ultraDark,
+			KlpThemeVariant.transparent => KlpThemeData.dark,
+		};
+		final themeColor = _themeColor ?? KlpOklchColor.fromColor(baseColors.brand);
+		final style = KlpVisualStyle.defaultStyle.copyWith(
+			colors: baseColors.copyWith(brand: themeColor.toColor()),
+			dataVisualization: switch (_variant) {
+				KlpThemeVariant.light => KlpDataVisualizationTheme.light,
+				KlpThemeVariant.dark => KlpDataVisualizationTheme.dark,
+				KlpThemeVariant.ultraDark => KlpDataVisualizationTheme.ultraDark,
+				KlpThemeVariant.transparent => KlpDataVisualizationTheme.dark,
+			},
+		);
+		final themeData = buildKlpThemeVariant(_variant, style: style);
 
-  @override
-  Widget build(BuildContext context) {
-    final baseColors = switch (_variant) {
-      KlpThemeVariant.light => KlpThemeData.light,
-      KlpThemeVariant.dark => KlpThemeData.dark,
-      KlpThemeVariant.ultraDark => KlpThemeData.ultraDark,
-      KlpThemeVariant.transparent => KlpThemeData.dark,
-    };
-    final themeColor = _themeColor ?? KlpOklchColor.fromColor(baseColors.brand);
-    final style = KlpVisualStyle.defaultStyle.copyWith(
-      colors: baseColors.copyWith(brand: themeColor.toColor()),
-      dataVisualization: switch (_variant) {
-        KlpThemeVariant.light => KlpDataVisualizationTheme.light,
-        KlpThemeVariant.dark => KlpDataVisualizationTheme.dark,
-        KlpThemeVariant.ultraDark => KlpDataVisualizationTheme.ultraDark,
-        KlpThemeVariant.transparent => KlpDataVisualizationTheme.dark,
-      },
-    );
-    final themeData = buildKlpThemeVariant(_variant, style: style);
-
-    return CatalogShell(
-      groups: catalogGroups,
-      pages: catalogPages,
-      selected: _selected.clamp(0, catalogPages.length - 1),
-      onSelected: (index) => setState(() => _selected = index),
-      appBuilder: (panelLayout) {
-        return KlpApp(
-          debugShowCheckedModeBanner: false,
-          title: 'Kallopis',
-          minWidth: 800,
-          minHeight: 500,
-          builder: (context, child) => CatalogThemeScope(
-            value: themeColor,
-            onChanged: _setThemeColor,
-            child: Theme(
-              data: themeData,
-              child: child ?? const SizedBox.shrink(),
-            ),
-          ),
-          home: panelLayout,
-        );
-      },
-    );
-  }
-}
-
-class _CatalogThemeButton extends StatelessWidget {
-  const _CatalogThemeButton({required this.variant, required this.onPressed});
-
-  final KlpThemeVariant variant;
-  final VoidCallback onPressed;
-
-  @override
-  Widget build(BuildContext context) {
-    final klp = context.klp;
-
-    return Center(
-      child: KlpTooltip(
-        message:
-            '切換主題（目前：${switch (variant) {
-              KlpThemeVariant.light => '淺色',
-              KlpThemeVariant.dark => '深色',
-              KlpThemeVariant.ultraDark => '超深色',
-              KlpThemeVariant.transparent => '透明',
-            }}）',
-        child: GestureDetector(
-          onTap: onPressed,
-          child: Container(
-            height: 22.0,
-            padding: EdgeInsets.symmetric(horizontal: klp.space.controlInset),
-            decoration: BoxDecoration(
-              color: klp.color.component,
-              borderRadius: BorderRadius.circular(klp.shape.control),
-            ),
-            child: Row(
-              mainAxisSize: MainAxisSize.min,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                KlpIcon(
-                  KlpIcons.sparkles,
-                  size: 12.0,
-                  color: klp.color.textMuted,
-                ),
-                SizedBox(width: klp.space.tight),
-                KlpText(
-                  switch (variant) {
-                    KlpThemeVariant.light => 'Light',
-                    KlpThemeVariant.dark => 'Dark',
-                    KlpThemeVariant.ultraDark => 'Ultra Dark',
-                    KlpThemeVariant.transparent => 'Acrylic',
-                  },
-                  role: KlpTextRole.micro,
-                  tone: KlpTextTone.muted,
-                ),
-              ],
-            ),
-          ),
-        ),
-      ),
-    );
-  }
+		return CatalogShell(
+			groups: catalogGroups,
+			pages: catalogPages,
+			selected: _selected.clamp(0, catalogPages.length - 1),
+			onSelected: (index) => setState(() => _selected = index),
+			appBuilder: (panelLayout) {
+				return MaterialApp(
+					debugShowCheckedModeBanner: false,
+					title: 'Kallopis',
+					theme: themeData,
+					builder: (context, child) => CatalogThemeScope(
+						value: themeColor,
+						onChanged: _setThemeColor,
+						child: child ?? const SizedBox.shrink(),
+					),
+					home: panelLayout,
+				);
+			},
+		);
+	}
 }

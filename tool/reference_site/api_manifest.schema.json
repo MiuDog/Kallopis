@@ -1,0 +1,27 @@
+{
+	"$schema": "https://json-schema.org/draft/2020-12/schema",
+	"$id": "https://miudog.github.io/Kallopis/schema/reference-api-v1.json",
+	"title": "Kallopis Thin Design System API manifest",
+	"type": "object",
+	"additionalProperties": false,
+	"required": ["schemaVersion", "surfaces", "modules"],
+	"properties": {
+		"schemaVersion": { "const": 1 },
+		"surfaces": {
+			"type": "array",
+			"minItems": 3,
+			"maxItems": 3,
+			"items": {
+				"type": "object",
+				"additionalProperties": false,
+				"required": ["name", "entrypoint", "stability"],
+				"properties": {
+					"name": { "enum": ["theme", "foundation", "experimental"] },
+					"entrypoint": { "type": "string" },
+					"stability": { "enum": ["stable", "experimental"] }
+				}
+			}
+		},
+		"modules": { "type": "array" }
+	}
+}

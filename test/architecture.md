@@ -1,5 +1,9 @@
 # Tests
 
+## CAT-TAX-01 分類資料契約
+
+獨立 Test Author 擁有 `test/catalog_classification_contract_test.dart`；只讀已接受的 taxonomy spec 與固定 legacy baseline，驗證分類資料的 254 項集合、封閉欄位、合法 category／role、intent、secondary 與禁止 owner/module/disposition。它不判斷分類語意品質、不修改 baseline，也不替人類接受分類。
+
 ## EXP-V1-r3 箭頭與後代收合
 
 獨立 Test Author 擁有 test/klp_explorer_expansion_revision_test.dart；驗證公開集合提案、空分類、原子狀態及真實 renderer 的指標／鍵盤箭頭。既有測試唯讀，無 golden。

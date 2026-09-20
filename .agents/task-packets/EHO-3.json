@@ -1,0 +1,66 @@
+{
+	"schema_version": 1,
+	"task_id": "EHO-3",
+	"goal": "在 Planist caller 完成切換後，移除 Kallopis 的 Note／Canva host ownership 並重建正式 Reference。",
+	"module_root": "lib public surface + tool/reference_site",
+	"architecture_path": "docs/architecture/editor-host-migration/architecture.md",
+	"architecture_revision": "KLP-0023/EHO-v1-2026-09-20",
+	"base_revision": "EHO-2-green",
+	"allowed_write": [
+		"lib/kallopis_experimental.dart",
+		"lib/src/features/editing/widgets/klp_editors.dart",
+		"pubspec.yaml",
+		"assets/blocknote_editor/**",
+		"assets/canva_editor/**",
+		"tool/blocknote_editor/**",
+		"tool/canva_editor/**",
+		"tool/verify_blocknote_*.cjs",
+		"tool/verify_canva_*.cjs",
+		"tool/reference_site/**",
+		"docs/ai/product-usage.md",
+		"docs/session-handoff.md",
+		"docs/architecture/editor-host-migration/architecture.md",
+		"docs/architecture/thin-design-system/**",
+		"spec/decisions/KLP-0020-blocknote-editor-adoption.md",
+		"spec/decisions/KLP-0022-thin-design-system-boundary.md",
+		"spec/decisions/KLP-0023-product-editor-host-ownership.md",
+		"spec/decisions/README.md"
+	],
+	"forbidden": [
+		"test/**",
+		"example/**",
+		"lib/kallopis_theme.dart",
+		"lib/kallopis_foundation.dart",
+		"D:/Projects/Planist/**",
+		"D:/Projects/Krepis/**"
+	],
+	"acceptance": [
+		"Planist 已形成獨立 widgets／screens modules，features 不再擁有 UI。",
+		"Kallopis 不公開或實作 KlpBlockNoteEditor、KlpCanvaEditor、KlpResolvedAsset。",
+		"Kallopis 不依賴 Krepis editor bindings、flutter_inappwebview 或 editor-only Windows override。",
+		"Kallopis 不封裝 Note／Canva assets 或保留 editor build tooling。",
+		"Reference manifest 與網站不含三個舊 API，且 generator／verifier 通過。",
+		"KLP-0022／0023 只在 Planist 與 Kallopis 驗證皆 Green 後標記 Implemented。"
+	],
+	"test_state": {
+		"red": [
+			"Kallopis experimental barrel、source、dependencies、assets 與 Reference manifest 仍包含產品 editor host。"
+		],
+		"yellow": [
+			"Planist EHO-2 必須先證明沒有 Kallopis editor caller。"
+		],
+		"green": []
+	},
+	"estimate": {
+		"basis": "historical-adjusted",
+		"reference_task_ids": ["TDS-REF-02", "EHO-2"],
+		"expected_total_tokens": { "low": 16000, "high": 28000 },
+		"expected_duration_ms": { "low": 4200000, "high": 8400000 }
+	},
+	"milestones": [
+		{ "id": "M1", "outcome": "Kallopis editor owner 完整移除", "evidence": "public barrel analyze 與 dependency／symbol scan" },
+		{ "id": "M2", "outcome": "current docs 與 Reference 反映真實 public API", "evidence": "extract、generate、verify 與 forbidden symbol scan" },
+		{ "id": "M3", "outcome": "跨 repository 發布閘門關閉", "evidence": "Planist／Kallopis 局部驗證與 human-pending 清單" }
+	],
+	"experiment": null
+}

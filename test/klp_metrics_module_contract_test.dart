@@ -5,11 +5,9 @@ import 'package:analyzer/dart/analysis/utilities.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:kallopis/kallopis_foundation.dart' as stable;
-import 'package:kallopis/src/foundation/klp_metrics.dart' as compatibility;
 import 'package:kallopis/src/styling/legacy_metrics/klp_metrics.dart' as owner;
 
 const _owner = 'lib/src/styling/legacy_metrics/klp_metrics.dart';
-const _compatibility = 'lib/src/foundation/klp_metrics.dart';
 
 // 凍結於遷移前 e44813e627eff9d62f851bd0432b5a3731a72eae；執行時不從產品推導期望值。
 const _parts = <String, String>{
@@ -246,31 +244,18 @@ void main() {
 	});
 
 	test('13 public types have one identity across all entrances', () {
-		expect(identical(stable.KlpCodeMetrics, compatibility.KlpCodeMetrics), isTrue, reason: 'KlpCodeMetrics Stable 與舊相容入口必須同身分。');
 		expect(identical(stable.KlpCodeMetrics, owner.KlpCodeMetrics), isTrue, reason: 'KlpCodeMetrics Stable 與 styling 唯一來源必須同身分。');
-		expect(identical(stable.KlpControlMetrics, compatibility.KlpControlMetrics), isTrue, reason: 'KlpControlMetrics Stable 與舊相容入口必須同身分。');
 		expect(identical(stable.KlpControlMetrics, owner.KlpControlMetrics), isTrue, reason: 'KlpControlMetrics Stable 與 styling 唯一來源必須同身分。');
-		expect(identical(stable.KlpElevation, compatibility.KlpElevation), isTrue, reason: 'KlpElevation Stable 與舊相容入口必須同身分。');
 		expect(identical(stable.KlpElevation, owner.KlpElevation), isTrue, reason: 'KlpElevation Stable 與 styling 唯一來源必須同身分。');
-		expect(identical(stable.KlpFormMetrics, compatibility.KlpFormMetrics), isTrue, reason: 'KlpFormMetrics Stable 與舊相容入口必須同身分。');
 		expect(identical(stable.KlpFormMetrics, owner.KlpFormMetrics), isTrue, reason: 'KlpFormMetrics Stable 與 styling 唯一來源必須同身分。');
-		expect(identical(stable.KlpLayoutGap, compatibility.KlpLayoutGap), isTrue, reason: 'KlpLayoutGap Stable 與舊相容入口必須同身分。');
 		expect(identical(stable.KlpLayoutGap, owner.KlpLayoutGap), isTrue, reason: 'KlpLayoutGap Stable 與 styling 唯一來源必須同身分。');
-		expect(identical(stable.KlpLine, compatibility.KlpLine), isTrue, reason: 'KlpLine Stable 與舊相容入口必須同身分。');
 		expect(identical(stable.KlpLine, owner.KlpLine), isTrue, reason: 'KlpLine Stable 與 styling 唯一來源必須同身分。');
-		expect(identical(stable.KlpMotion, compatibility.KlpMotion), isTrue, reason: 'KlpMotion Stable 與舊相容入口必須同身分。');
 		expect(identical(stable.KlpMotion, owner.KlpMotion), isTrue, reason: 'KlpMotion Stable 與 styling 唯一來源必須同身分。');
-		expect(identical(stable.KlpPlaceholderMetrics, compatibility.KlpPlaceholderMetrics), isTrue, reason: 'KlpPlaceholderMetrics Stable 與舊相容入口必須同身分。');
 		expect(identical(stable.KlpPlaceholderMetrics, owner.KlpPlaceholderMetrics), isTrue, reason: 'KlpPlaceholderMetrics Stable 與 styling 唯一來源必須同身分。');
-		expect(identical(stable.KlpRadius, compatibility.KlpRadius), isTrue, reason: 'KlpRadius Stable 與舊相容入口必須同身分。');
 		expect(identical(stable.KlpRadius, owner.KlpRadius), isTrue, reason: 'KlpRadius Stable 與 styling 唯一來源必須同身分。');
-		expect(identical(stable.KlpSize, compatibility.KlpSize), isTrue, reason: 'KlpSize Stable 與舊相容入口必須同身分。');
 		expect(identical(stable.KlpSize, owner.KlpSize), isTrue, reason: 'KlpSize Stable 與 styling 唯一來源必須同身分。');
-		expect(identical(stable.KlpSpace, compatibility.KlpSpace), isTrue, reason: 'KlpSpace Stable 與舊相容入口必須同身分。');
 		expect(identical(stable.KlpSpace, owner.KlpSpace), isTrue, reason: 'KlpSpace Stable 與 styling 唯一來源必須同身分。');
-		expect(identical(stable.KlpTransparency, compatibility.KlpTransparency), isTrue, reason: 'KlpTransparency Stable 與舊相容入口必須同身分。');
 		expect(identical(stable.KlpTransparency, owner.KlpTransparency), isTrue, reason: 'KlpTransparency Stable 與 styling 唯一來源必須同身分。');
-		expect(identical(stable.KlpTypography, compatibility.KlpTypography), isTrue, reason: 'KlpTypography Stable 與舊相容入口必須同身分。');
 		expect(identical(stable.KlpTypography, owner.KlpTypography), isTrue, reason: 'KlpTypography Stable 與 styling 唯一來源必須同身分。');
 	});
 
@@ -335,23 +320,13 @@ void main() {
 		expect(_legacyLocations(duplicateInsidePart)['KlpRadius'], hasLength(2), reason: '同一 part 內兩個宣告也必須拒絕。');
 	});
 
-	test('metrics use one complete reciprocal library and compatibility export', () {
+	test('metrics use one complete reciprocal library and public export', () {
 		final sources = _sources();
 		expect(sources.containsKey(_owner), isTrue, reason: 'styling 必須擁有唯一 metrics library。');
 		if (!sources.containsKey(_owner)) return;
 
 		final stableExports = _unit(sources['lib/kallopis_foundation.dart']!).directives.whereType<ExportDirective>().map((directive) => directive.uri.stringValue);
-		expect(stableExports, contains('src/foundation/klp_metrics.dart'), reason: 'Stable 必須保留原有相容 export。');
-		final compatibilityUnit = _unit(sources[_compatibility]!);
-		expect(compatibilityUnit.declarations, isEmpty);
-		expect(compatibilityUnit.directives, hasLength(1), reason: '舊根只能保留單一相容 export。');
-		final bridge = compatibilityUnit.directives.single;
-		expect(bridge, isA<ExportDirective>());
-		if (bridge is! ExportDirective) return;
-
-		expect(_resolve(_compatibility, bridge.uri.stringValue!), _owner);
-		expect(bridge.configurations, isEmpty);
-		expect(bridge.combinators, isEmpty, reason: '相容入口不得縮減或重命名公開集合。');
+		expect(stableExports, contains('src/styling/legacy_metrics/klp_metrics.dart'), reason: 'Stable 必須直接匯出唯一 metrics owner。');
 		final rootUnit = _unit(sources[_owner]!);
 		final rootParts = rootUnit.directives.whereType<PartDirective>().map((part) => _resolve(_owner, part.uri.stringValue!)).toList();
 		final expectedPaths = _parts.keys.map((name) => 'lib/src/styling/legacy_metrics/$name').toSet();

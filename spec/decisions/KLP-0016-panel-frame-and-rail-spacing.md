@@ -12,7 +12,7 @@ Accepted（2026-09-07）
 - `content`、`header`、`footer` 與資料型 container 必須自行設計其內距。
 - `KlpNavigationRail` 第一層固定回傳 `KlpPanelFrame`。
 - Rail 以較小的上下 inset、較大的 item gap 建立垂直節奏，避免頂部／底部留白過多。
-- `KlpNavigationRailFrame` 保留為具名相容配方，但不得重新引入 Frame 內距。
+- `KlpNavigationRailFrame` 是 Navigation Rail 的唯一具名 frame 配方，不得重新引入 Frame 內距。
 
 ## 理由
 
@@ -22,6 +22,6 @@ Panel Tree 仍由 Kallopis 擁有，但每個具資料語意的 container 可以
 
 ## 驗收
 
-- `KlpPanelFrame` 不讀取 `padding`；舊欄位僅可保留為 deprecated compatibility API。
+- `KlpPanelFrame` constructor 不提供或讀取 `padding`。
 - `KlpNavigationRail.build` 的第一層為 `KlpPanelFrame`。
 - Rail item 間距大於原本預設值，上下 inset 小於原本 `navigationRailInset`。

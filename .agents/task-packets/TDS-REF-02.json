@@ -1,0 +1,43 @@
+{
+	"schema_version": 1,
+	"task_id": "TDS-REF-02",
+	"goal": "建立只含 theme、foundation、experimental 的正式 GitHub.io Reference，保留 module 分類與每個 canonical declaration 一頁。",
+	"module_root": "tool/reference_site",
+	"architecture_path": "tool/reference_site/architecture.md",
+	"architecture_revision": "KLP-0022/TDS-REF-r2-2026-09-20",
+	"base_revision": "439a9765",
+	"allowed_write": [
+		"tool/reference_site/**",
+		".github/workflows/pages.yml",
+		".github/workflows/ci.yml"
+	],
+	"forbidden": [
+		"lib/**",
+		"example/**",
+		"spec/**",
+		"docs/**"
+	],
+	"acceptance": [
+		"Manifest 恰含 theme、foundation、experimental，沒有 declarative。",
+		"跨 surface canonical declaration 只產生一頁，同名不同來源各自有頁面。",
+		"網站列出全部 module 與全部公開 declarations，每個 class-like declaration 一頁。",
+		"Pages workflow 從本機真實 barrels 產生且提交的 manifest 重建，並只上傳 verifier Green artifact。"
+	],
+	"test_state": {
+		"red": ["reference_site 已移除，現有 Pages workflow 無法執行。"],
+		"yellow": ["三個 public barrels 可在本機分析。"],
+		"green": []
+	},
+	"estimate": {
+		"basis": "historical-adjusted",
+		"reference_task_ids": ["AR-V1"],
+		"expected_total_tokens": { "low": 14000, "high": 28000 },
+		"expected_duration_ms": { "low": 4500000, "high": 10800000 }
+	},
+	"milestones": [
+		{ "id": "M1", "outcome": "schema 與網站 contract Red", "evidence": "Node tests 因實作缺失失敗" },
+		{ "id": "M2", "outcome": "真實三 surface 網站 Green", "evidence": "extract、tests、generate、verify 通過" },
+		{ "id": "M3", "outcome": "Pages pipeline 可重建", "evidence": "已提交 manifest 的 workflow 等價命令完成" }
+	],
+	"experiment": null
+}

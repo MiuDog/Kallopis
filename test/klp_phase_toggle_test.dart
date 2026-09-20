@@ -3,65 +3,66 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:kallopis/kallopis.dart';
 
 void main() {
-  testWidgets('KlpPhaseToggle 支援圖示選項與選取切換', (tester) async {
-    String? current = 'check';
+	testWidgets('KlpPhaseToggle 支援圖示選項與選取切換', (tester) async {
+		String? current = 'check';
 
-    await tester.pumpWidget(
-      MaterialApp(
-        theme: buildKlpTheme(Brightness.light),
-        home: Scaffold(
-          body: StatefulBuilder(
-            builder: (context, setState) => KlpPhaseToggle<String>(
-              options: const [
-                KlpPhaseOption(value: 'x', label: '取消', icon: KlpIcons.x),
-                KlpPhaseOption(
-                  value: 'check',
-                  label: '確認',
-                  icon: KlpIcons.check,
-                  activeTone: KlpFeedbackTone.success,
-                ),
-              ],
-              selected: current,
-              onSelected: (v) => setState(() => current = v),
-            ),
-          ),
-        ),
-      ),
-    );
+		await tester.pumpWidget(
+			MaterialApp(
+				theme: buildKlpTheme(Brightness.light),
+				home: Scaffold(
+					body: StatefulBuilder(
+						builder: (context, setState) => KlpPhaseToggle<String>(
+							options: const [
+								KlpPhaseOption(value: 'x', label: '取消', icon: KlpIcons.x),
+								KlpPhaseOption(
+									value: 'check',
+									label: '確認',
+									icon: KlpIcons.check,
+									activeTone: KlpFeedbackTone.success,
+								),
+							],
+							selected: current,
+							onSelected: (v) => setState(() => current = v),
+						),
+					),
+				),
+			),
+		);
 
-    expect(find.byType(KlpIcon), findsNWidgets(2));
-    expect(find.bySemanticsLabel('取消'), findsOneWidget);
-    expect(find.bySemanticsLabel('確認'), findsOneWidget);
-    expect(current, 'check');
+		expect(find.byType(KlpIcon), findsNWidgets(2));
+		expect(find.bySemanticsLabel('取消'), findsOneWidget);
+		expect(find.bySemanticsLabel('確認'), findsOneWidget);
+		expect(current, 'check');
 
-    // 點擊第一個選項 'x'
-    await tester.tap(find.byType(KlpIcon).first);
-    await tester.pumpAndSettle();
+		// 點擊第一個選項 'x'
+		await tester.tap(find.byType(KlpIcon).first);
+		await tester.pumpAndSettle();
 
-    expect(current, 'x');
-  });
+		expect(current, 'x');
+	});
 
-  testWidgets('KlpPhaseToggle 在深色模式下選取紅色 danger 選項呈現白色 icon', (tester) async {
-    await tester.pumpWidget(
-      MaterialApp(
-        theme: buildKlpTheme(Brightness.dark),
-        home: const Scaffold(
-          body: KlpPhaseToggle<String>(
-            options: [
-              KlpPhaseOption(
-                value: 'x',
-                icon: KlpIcons.x,
-                activeTone: KlpFeedbackTone.danger,
-              ),
-              KlpPhaseOption(value: 'slash', label: '/'),
-            ],
-            selected: 'x',
-          ),
-        ),
-      ),
-    );
+	testWidgets('KlpPhaseToggle 在深色模式下選取 danger 選項使用語意前景色', (tester) async {
+		await tester.pumpWidget(
+			MaterialApp(
+				theme: buildKlpTheme(Brightness.dark),
+				home: const Scaffold(
+					body: KlpPhaseToggle<String>(
+						options: [
+							KlpPhaseOption(
+								value: 'x',
+								icon: KlpIcons.x,
+								activeTone: KlpFeedbackTone.danger,
+							),
+							KlpPhaseOption(value: 'slash', label: '/'),
+						],
+						selected: 'x',
+					),
+				),
+			),
+		);
 
-    final icon = tester.widget<KlpIcon>(find.byType(KlpIcon).first);
-    expect(icon.color, KlpPalette.ink50);
-  });
+		final icon = tester.widget<KlpIcon>(find.byType(KlpIcon).first);
+		final context = tester.element(find.byType(KlpPhaseToggle<String>));
+		expect(icon.color, context.klp.color.text);
+	});
 }

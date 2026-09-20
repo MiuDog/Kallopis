@@ -13,7 +13,7 @@ flowchart TD
 	form --> structured["structured：重複、鍵值、程式碼與檔案欄位"]
 	form --> picker["picker：跨資料來源參照選擇"]
 	form --> internal["internal：跨元件共享但不公開的實作"]
-	form --> barrels["頂層 barrel：相容既有 import"]
+	form --> public["唯一公開入口：kallopis_foundation.dart"]
 ```
 
 - `core/`：`KlpForm`、`KlpField`、section、label、description、error 與 actions。
@@ -31,10 +31,9 @@ package:kallopis/kallopis_foundation.dart
 		-> lib/src/features/forms/<類型>/klp_<component>.dart
 ```
 
-頂層既有檔案保留為 compatibility barrel。消費端應優先匯入
-`package:kallopis/kallopis_foundation.dart`；既有的相容總入口可繼續運作，但不應依賴
-`internal/`。新增公開 Form Widget 時，必須建立獨立檔案、加入對應 barrel，並由
-`lib/kallopis_foundation.dart` 的 Form barrel 鏈路對外公開。
+消費端一律匯入 `package:kallopis/kallopis_foundation.dart`，不得依賴 `lib/src` 或建立
+另一個公開入口。新增公開 Form Widget 時，必須建立獨立檔案、加入對應分類，並由
+`lib/kallopis_foundation.dart` 直接對外公開。
 
 ## 繼承與注入不變量
 

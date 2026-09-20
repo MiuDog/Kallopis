@@ -1,0 +1,140 @@
+{
+	"schemaVersion": 1,
+	"surfaces": [
+		{
+			"name": "theme",
+			"entrypoint": "package:kallopis/kallopis_theme.dart",
+			"stability": "stable"
+		},
+		{
+			"name": "foundation",
+			"entrypoint": "package:kallopis/kallopis_foundation.dart",
+			"stability": "stable"
+		},
+		{
+			"name": "experimental",
+			"entrypoint": "package:kallopis/kallopis_experimental.dart",
+			"stability": "experimental"
+		}
+	],
+	"modules": [
+		{
+			"name": "application",
+			"declarations": []
+		},
+		{
+			"name": "capabilities",
+			"declarations": []
+		},
+		{
+			"name": "composition",
+			"declarations": []
+		},
+		{
+			"name": "features",
+			"declarations": [
+				{
+					"id": "package:kallopis/src/features/fixture_experimental.dart#KlpFixtureExperimental",
+					"name": "KlpFixtureExperimental",
+					"slug": "klp-fixture-experimental",
+					"kind": "class",
+					"module": "features",
+					"sourceUri": "package:kallopis/src/features/fixture_experimental.dart",
+					"primarySurface": "experimental",
+					"surfaces": ["experimental"],
+					"signature": "class KlpFixtureExperimental",
+					"documentation": "測試用 experimental 宣告。",
+					"typeRelationships": {
+						"extends": "Object",
+						"mixins": [],
+						"implements": []
+					},
+					"members": []
+				}
+			]
+		},
+		{
+			"name": "foundation",
+			"declarations": [
+				{
+					"id": "package:kallopis/src/foundation/fixture_theme_duplicate.dart#KlpFixtureDuplicate",
+					"name": "KlpFixtureDuplicate",
+					"slug": "klp-fixture-duplicate--theme",
+					"kind": "class",
+					"module": "foundation",
+					"sourceUri": "package:kallopis/src/foundation/fixture_theme_duplicate.dart",
+					"primarySurface": "theme",
+					"surfaces": ["theme"],
+					"signature": "class KlpFixtureDuplicate",
+					"documentation": "測試用同名 theme 宣告。",
+					"typeRelationships": {
+						"extends": "Object",
+						"mixins": [],
+						"implements": []
+					},
+					"members": []
+				},
+				{
+					"id": "package:kallopis/src/foundation/fixture_foundation_duplicate.dart#KlpFixtureDuplicate",
+					"name": "KlpFixtureDuplicate",
+					"slug": "klp-fixture-duplicate--foundation",
+					"kind": "class",
+					"module": "foundation",
+					"sourceUri": "package:kallopis/src/foundation/fixture_foundation_duplicate.dart",
+					"primarySurface": "foundation",
+					"surfaces": ["foundation"],
+					"signature": "class KlpFixtureDuplicate",
+					"documentation": "測試用同名 foundation 宣告。",
+					"typeRelationships": {
+						"extends": "Object",
+						"mixins": [],
+						"implements": []
+					},
+					"members": []
+				}
+			]
+		},
+		{
+			"name": "kernel",
+			"declarations": []
+		},
+		{
+			"name": "rendering",
+			"declarations": []
+		},
+		{
+			"name": "runtime",
+			"declarations": []
+		},
+		{
+			"name": "styling",
+			"declarations": [
+				{
+					"id": "package:kallopis/src/styling/fixture_theme.dart#KlpFixtureTheme",
+					"name": "KlpFixtureTheme",
+					"slug": "klp-fixture-theme",
+					"kind": "class",
+					"module": "styling",
+					"sourceUri": "package:kallopis/src/styling/fixture_theme.dart",
+					"primarySurface": "theme",
+					"surfaces": ["theme", "foundation"],
+					"signature": "class KlpFixtureTheme",
+					"documentation": "測試用跨 surface 共用宣告。",
+					"typeRelationships": {
+						"extends": "Object",
+						"mixins": [],
+						"implements": []
+					},
+					"members": [
+						{
+							"name": "KlpFixtureTheme",
+							"kind": "constructor",
+							"signature": "const KlpFixtureTheme()",
+							"documentation": ""
+						}
+					]
+				}
+			]
+		}
+	]
+}

@@ -1,27 +1,73 @@
 import fs from 'node:fs';
 import path from 'node:path';
-import { shell, homePage } from './layout.mjs';
-import { escapeHtml, createMarkdownRenderer } from './markdown.mjs';
 
 const root = path.resolve(import.meta.dirname, '..', '..');
 const output = path.join(root, 'build', 'reference-site');
-const architectureRoot = 'docs/architecture/src';
-const examples = JSON.parse(readText('tool/reference_site/assembly_examples.json'));
+const api = JSON.parse(fs.readFileSync(path.join(root, 'build', 'reference-api.json'), 'utf8'));
+const surfaceContracts = [
+	['theme', 'package:kallopis/kallopis_theme.dart', 'Stable Theme'],
+	['foundation', 'package:kallopis/kallopis_foundation.dart', 'Stable Components'],
+	['experimental', 'package:kallopis/kallopis_experimental.dart', 'Experimental'],
+];
+const labels = Object.fromEntries(surfaceContracts.map(([name, , label]) => [name, label]));
+const currentDocuments = [
+	['README.md', 'Project overview'],
+	['docs/ai/product-usage.md', 'Product usage'],
+	['docs/architecture/README.md', 'Architecture'],
+	['docs/architecture/frontend-boundaries.md', 'Frontend boundaries'],
+	['docs/architecture/thin-design-system/architecture.md', 'Single Architecture'],
+	['docs/architecture/thin-design-system/verification.md', 'Verification'],
+	['spec/decisions/KLP-0022-thin-design-system-boundary.md', 'KLP-0022'],
+	['spec/style-v1.md', 'Style specification'],
+];
 
-function readText(relativePath) {
-	return fs.readFileSync(path.join(root, relativePath), 'utf8');
-}
-
-function files(relativePath, predicate) {
-	return fs.readdirSync(path.join(root, relativePath), { withFileTypes: true }).flatMap((entry) => {
-		const nested = path.posix.join(relativePath, entry.name);
-		if (entry.isDirectory()) return files(nested, predicate);
-		return predicate(nested) ? [nested] : [];
-	}).sort();
+function escapeHtml(value) {
+	return String(value)
+		.replaceAll('&', '&amp;')
+		.replaceAll('<', '&lt;')
+		.replaceAll('>', '&gt;')
+		.replaceAll('"', '&quot;');
 }
 
 function slug(value) {
 	return value.replace(/([a-z0-9])([A-Z])/g, '$1-$2').replaceAll('_', '-').toLowerCase();
+}
+
+function moduleRoute(name) {
+	return `docs/api/${name.replaceAll('.', '/')}`;
+}
+
+function declarationRoute(declaration) {
+	return `${moduleRoute(declaration.module)}/${declaration.slug}.html`;
+}
+
+function relative(from, to) {
+	return path.posix.relative(path.posix.dirname(from), to) || path.posix.basename(to);
+}
+
+function validateManifest() {
+	if (api.schemaVersion !== 1 || !Array.isArray(api.surfaces) || !Array.isArray(api.modules)) throw new Error('Unsupported API manifest');
+	if (api.surfaces.length !== surfaceContracts.length) throw new Error('Manifest must contain exactly three current surfaces and no declarative surface');
+	for (const [index, [name, entrypoint]] of surfaceContracts.entries()) {
+		const surface = api.surfaces[index];
+		if (surface?.name !== name || surface?.entrypoint !== entrypoint) throw new Error(`Invalid or declarative surface: ${surface?.name || '<missing>'}`);
+	}
+	const ids = new Set();
+	const routes = new Set();
+	for (const module of api.modules) {
+		if (!module.name || !Array.isArray(module.declarations)) throw new Error('Invalid module');
+		for (const declaration of module.declarations) {
+			if (!declaration.id || ids.has(declaration.id)) throw new Error(`Duplicate declaration id: ${declaration.id}`);
+			if (declaration.module !== module.name || !declaration.slug || !declaration.sourceUri || !declaration.signature) throw new Error(`Incomplete declaration: ${declaration.id}`);
+			if (!Array.isArray(declaration.surfaces) || !declaration.surfaces.length) throw new Error(`Declaration has no surface: ${declaration.id}`);
+			if (declaration.primarySurface !== declaration.surfaces[0]) throw new Error(`Invalid primary surface: ${declaration.id}`);
+			if (declaration.surfaces.some((surface) => !labels[surface])) throw new Error(`Invalid or declarative declaration surface: ${declaration.id}`);
+			ids.add(declaration.id);
+			const route = declarationRoute(declaration);
+			if (routes.has(route)) throw new Error(`Duplicate declaration route: ${route}`);
+			routes.add(route);
+		}
+	}
 }
 
 function write(relativePath, content) {
@@ -30,110 +76,141 @@ function write(relativePath, content) {
 	fs.writeFileSync(target, content);
 }
 
-function inventoryComponents() {
-	const lines = readText('spec/component-inventory.md').split(/\r?\n/);
-	let active = false;
-	let domain = 'foundation';
-	const components = [];
-	for (const line of lines) {
-		if (line === '## 各領域的元件樹') active = true;
-		if (line === '## 葉節點') break;
-		if (!active) continue;
-		const heading = line.match(/^### ([a-z_]+) —/);
-		if (heading) domain = heading[1];
-		const row = line.match(/^\| `(?<name>Klp[A-Za-z0-9_]+)` \| (?<lines>\d+) \| (?<composition>.*) \|$/);
-		if (!row) continue;
-		components.push({
-			name: row.groups.name,
-			domain,
-			composition: row.groups.composition,
-			container: row.groups.composition !== '（葉節點）',
-		});
-	}
-	for (const name of ['KlpApplication', 'KlpScreen', 'KlpAdaptive', 'KlpAppLayout']) {
-		if (!components.some((item) => item.name === name)) {
-			components.push({ name, domain: 'declarative', composition: '受控子節點', container: true });
-		}
-	}
-	return components.sort((left, right) => left.name.localeCompare(right.name));
+function shell(relativePath, title, content) {
+	const css = relative(relativePath, 'assets/site.css');
+	const script = relative(relativePath, 'assets/site.js');
+	const home = relative(relativePath, 'index.html');
+	const docs = relative(relativePath, 'docs/index.html');
+	const apiIndex = relative(relativePath, 'docs/api/index.html');
+	return `<!doctype html><html lang="zh-Hant"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>${escapeHtml(title)} · Kallopis</title><link rel="stylesheet" href="${escapeHtml(css)}"></head><body><header class="topbar"><a class="brand" href="${escapeHtml(home)}">Kallopis</a><nav><a href="${escapeHtml(docs)}">文件</a><a href="${escapeHtml(apiIndex)}">API</a><a href="https://github.com/MiuDog/Kallopis">GitHub</a></nav></header><main>${content}</main><footer>Kallopis · opinionated Flutter design system</footer><script src="${escapeHtml(script)}" defer></script></body></html>`;
 }
 
+function page(relativePath, title, content) {
+	write(relativePath, shell(relativePath, title, content));
+}
+
+function markdown(source) {
+	const lines = source.replaceAll('\r\n', '\n').split('\n');
+	const result = [];
+	let code = false;
+	let list = false;
+	for (const line of lines) {
+		if (line.startsWith('```')) {
+			if (list) {
+				result.push('</ul>');
+				list = false;
+			}
+			result.push(code ? '</code></pre>' : '<pre><code>');
+			code = !code;
+			continue;
+		}
+		if (code) {
+			result.push(`${escapeHtml(line)}\n`);
+			continue;
+		}
+		const heading = line.match(/^(#{1,4})\s+(.+)$/);
+		if (heading) {
+			if (list) {
+				result.push('</ul>');
+				list = false;
+			}
+			const level = heading[1].length;
+			result.push(`<h${level} id="${escapeHtml(slug(heading[2].replaceAll('`', '')))}">${inline(heading[2])}</h${level}>`);
+			continue;
+		}
+		if (line.startsWith('- ')) {
+			if (!list) {
+				result.push('<ul>');
+				list = true;
+			}
+			result.push(`<li>${inline(line.slice(2))}</li>`);
+			continue;
+		}
+		if (list) {
+			result.push('</ul>');
+			list = false;
+		}
+		if (line.trim()) result.push(`<p>${inline(line)}</p>`);
+	}
+	if (list) result.push('</ul>');
+	if (code) result.push('</code></pre>');
+	return result.join('\n');
+}
+
+function inline(value) {
+	return escapeHtml(value)
+		.replace(/`([^`]+)`/g, '<code>$1</code>')
+		.replace(/\[([^\]]+)\]\(([^)]+)\)/g, '$1');
+}
 
 function main() {
-	// 先建立完整路由，使跨文件連結不依賴產生順序。
-	const components = inventoryComponents();
-	const apiDocuments = files(architectureRoot, (item) => item.endsWith('.md'));
-	const guides = files('docs', (item) => item.endsWith('.md') && !item.startsWith(`${architectureRoot}/`));
-	const specs = files('spec', (item) => item.endsWith('.md'));
-	const projectDocuments = ['README.md', 'CHANGELOG.md'];
-	const routeMap = {};
-	for (const item of apiDocuments) routeMap[item] = `docs/api/${item.slice(architectureRoot.length + 1).replace(/\.md$/, '.html')}`;
-	for (const item of guides) routeMap[item] = `docs/guides/${item.slice(5).replace(/\.md$/, '.html')}`;
-	for (const item of specs) routeMap[item] = `docs/spec/${item.slice(5).replace(/\.md$/, '.html')}`;
-	for (const item of projectDocuments) routeMap[item] = `docs/project/${item.replace(/\.md$/, '.html')}`;
-	const sourceLinks = [];
-	const redirects = {};
-	const render = createMarkdownRenderer({ root, output, routeMap, sourceLinks });
-	const search = [];
+	validateManifest();
 
-	// 輸出目錄固定在本專案 build 之下，不刪除任何文件來源。
-	if (output !== path.join(root, 'build', 'reference-site')) throw new Error('Unsafe output directory');
+	// 步驟 1：清理並建立可重建的網站輸出與靜態資產。
+	if (output !== path.join(root, 'build', 'reference-site')) throw new Error('Unsafe output path');
 	fs.rmSync(output, { recursive: true, force: true });
 	fs.mkdirSync(path.join(output, 'assets'), { recursive: true });
-	for (const asset of files('tool/reference_site/static', () => true)) {
-		const target = path.join(output, 'assets', path.basename(asset));
-		fs.copyFileSync(asset, target);
-	}
-	function page(relative, title, content, sourcePath = '') {
-		write(relative, shell({ title, content, active: path.posix.dirname(relative), sourcePath }));
-	}
-	function redirect(from, to) {
-		const relative = path.posix.relative(path.posix.dirname(from), to);
-		redirects[from] = to;
-		write(from, `<!doctype html><html lang="zh-Hant"><meta charset="utf-8"><title>文件已搬移 · Kallopis</title><meta http-equiv="refresh" content="0;url=${escapeHtml(relative)}"><link rel="canonical" href="${escapeHtml(relative)}"><p>文件已搬移至 <a href="${escapeHtml(relative)}">新版文件</a>。</p><script>location.replace(${JSON.stringify(relative)} + location.search + location.hash);</script></html>`);
-	}
-	for (const [source, relative] of Object.entries(routeMap)) {
-		const markdown = readText(source);
-		const title = markdown.match(/^#\s+(.+)$/m)?.[1] ?? path.basename(source, '.md');
-		page(relative, title, render(markdown, source, relative), source);
-		let category = 'Guide';
-		if (apiDocuments.includes(source)) category = 'API';
-		if (specs.includes(source)) category = 'Spec';
-		const entry = { title, category, href: relative, sourcePath: source };
-		if (category === 'API') entry.apiArea = source.slice(architectureRoot.length + 1).split('/')[0];
-		if (category === 'Guide') entry.guideArea = source.split('/')[1] || 'project';
-		search.push(entry);
-		if (relative.startsWith('docs/api/') || relative.startsWith('docs/guides/')) redirect(relative.slice(5), relative);
-	}
-	for (const component of components) {
-		const relative = `docs/components/${slug(component.name)}.html`;
-		const example = examples[component.name];
-		const exampleHtml = example ? `<h2>組裝範例</h2><pre><code class="language-dart">${escapeHtml(`import '${example.import}';\n\n${example.code}`)}</code></pre>` : '<h2>組裝範例</h2><p>此頁尚未收錄組裝範例，請參閱 API 與來源契約。</p>';
-		page(relative, component.name, `<p class="eyebrow">${escapeHtml(component.domain)}</p><h1>${escapeHtml(component.name)}</h1>${render(component.composition, 'spec/component-inventory.md', relative)}${exampleHtml}<p><a href="../api/index.html">查看完整 API reference</a></p>`, 'spec/component-inventory.md');
-		search.push({ title: component.name, category: component.domain, href: relative });
-		redirect(relative.slice(5), relative);
-	}
-	function index(relative, title, entries, introduction) {
-		const groups = new Map();
-		for (const entry of entries) {
-			const group = entry.apiArea || entry.guideArea || entry.category;
-			if (!groups.has(group)) groups.set(group, []);
-			groups.get(group).push(entry);
+	for (const asset of ['site.css', 'site.js']) fs.copyFileSync(path.join(root, 'tool', 'reference_site', 'static', asset), path.join(output, 'assets', asset));
+
+	const search = [];
+	const apiModules = api.modules.map((module) => ({
+		name: module.name,
+		href: `${moduleRoute(module.name)}/index.html`,
+		declarationCount: module.declarations.length,
+	}));
+	const apiDeclarations = [];
+	const surfaceByName = new Map(api.surfaces.map((surface) => [surface.name, surface]));
+
+	// 步驟 2：依 module 產生 canonical declaration 與索引頁。
+	for (const module of api.modules) {
+		for (const declaration of module.declarations) {
+			const href = declarationRoute(declaration);
+			const surfaceList = declaration.surfaces.map((name) => {
+				const surface = surfaceByName.get(name);
+				return `<li><strong>${escapeHtml(labels[name])}</strong><br><code>${escapeHtml(surface.entrypoint)}</code></li>`;
+			}).join('');
+			const relationships = [
+				declaration.typeRelationships?.extends ? `<li><strong>extends</strong> <code>${escapeHtml(declaration.typeRelationships.extends)}</code></li>` : '',
+				...(declaration.typeRelationships?.mixins || []).map((item) => `<li><strong>with / on</strong> <code>${escapeHtml(item)}</code></li>`),
+				...(declaration.typeRelationships?.implements || []).map((item) => `<li><strong>implements</strong> <code>${escapeHtml(item)}</code></li>`),
+			].filter(Boolean).join('');
+			const members = declaration.members.length
+				? declaration.members.map((member) => `<section class="member"><h3 id="${escapeHtml(slug(`${member.kind}-${member.name}`))}">${escapeHtml(member.name || member.kind)}</h3><span class="badge">${escapeHtml(member.kind)}</span><pre><code>${escapeHtml(member.signature)}</code></pre>${member.documentation ? `<p>${escapeHtml(member.documentation)}</p>` : ''}</section>`).join('')
+				: '<p>此宣告沒有自行定義的 public member。</p>';
+			page(href, declaration.name, `<div class="eyebrow">${escapeHtml(module.name)} · ${escapeHtml(declaration.kind)} · ${escapeHtml(labels[declaration.primarySurface])}</div><h1>${escapeHtml(declaration.name)}</h1>${declaration.documentation ? `<p class="lead">${escapeHtml(declaration.documentation)}</p>` : ''}<h2 id="surfaces">公開入口</h2><ul>${surfaceList}</ul><h2 id="signature">公開簽名</h2><pre><code>${escapeHtml(declaration.signature)}</code></pre><h2 id="source">來源</h2><p><code>${escapeHtml(declaration.sourceUri)}</code></p>${relationships ? `<h2 id="relationships">型別關係</h2><ul>${relationships}</ul>` : ''}<h2 id="members">Public members</h2>${members}`);
+			apiDeclarations.push({ id: declaration.id, name: declaration.name, module: declaration.module, kind: declaration.kind, href, surfaces: declaration.surfaces });
+			search.push({ title: declaration.name, category: 'API', apiId: declaration.id, href, module: declaration.module, surfaces: declaration.surfaces });
 		}
-		const content = [...groups.entries()].map(([group, items]) => `<section><h2>${escapeHtml(group)}</h2><ul>${items.map((item) => `<li><a href="${escapeHtml(path.posix.relative(path.posix.dirname(relative), item.href))}">${escapeHtml(item.title)}</a></li>`).join('')}</ul></section>`).join('');
-		page(relative, title, `<h1>${title}</h1><p>${introduction}</p>${content}`);
 	}
-	index('docs/components/index.html', '元件目錄', search.filter((item) => item.href.startsWith('docs/components/')), `${components.length} 個元件，依領域瀏覽。`);
-	index('docs/api/index.html', 'API Reference', search.filter((item) => item.category === 'API'), '從架構圖集產生的實作參照，保留每一份來源文件。');
-	index('docs/guides/index.html', '使用指南', search.filter((item) => item.category === 'Guide'), '教學、架構、工作流程與專案文件。');
-	index('docs/spec/index.html', '設計契約', search.filter((item) => item.category === 'Spec'), '目前契約與歷史決策保留原始狀態，請先閱讀文件標示。');
-	page('docs/index.html', '文件', '<p class="eyebrow">Kallopis documentation</p><h1>從意圖到介面</h1><p>從宣告式組裝入門，查閱元件、API 與設計契約。文件直接由儲存庫 Markdown 產生。</p><div class="doc-entry-grid"><a class="card" href="get-started.html">開始使用</a><a class="card" href="components/index.html">元件目錄</a><a class="card" href="api/index.html">API Reference</a><a class="card" href="guides/index.html">使用指南</a><a class="card" href="spec/index.html">設計契約</a><a class="card" href="project/CHANGELOG.html">更新紀錄</a></div>');
-	page('docs/get-started.html', '開始使用', render(readText('docs/ai/README.md'), 'docs/ai/README.md', 'docs/get-started.html'), 'docs/ai/README.md');
-	for (const legacy of ['get-started.html', 'components/index.html', 'api/index.html', 'guides/index.html']) redirect(legacy, `docs/${legacy}`);
-	write('index.html', homePage({ components, apiDocuments, guides }));
-	write('search-index.json', JSON.stringify(search));
-	write('site-manifest.json', JSON.stringify({ components: components.map((item) => item.name), apiDocuments, guides, specs, projectDocuments, routeMap, redirects, sourceLinks }, null, '\t'));
-	console.log(`Generated ${components.length} components, ${apiDocuments.length} API pages, ${guides.length} guides, ${specs.length} specifications, ${projectDocuments.length} project documents.`);
+	for (const module of api.modules) {
+		const href = `${moduleRoute(module.name)}/index.html`;
+		const items = module.declarations.length
+			? module.declarations.map((declaration) => `<li><a href="${escapeHtml(declaration.slug)}.html"><code>${escapeHtml(declaration.name)}</code></a><span>${escapeHtml(declaration.kind)} · ${declaration.surfaces.map((surface) => escapeHtml(surface)).join(' · ')}</span></li>`).join('')
+			: '<li><span>目前三個 public surfaces 沒有直接匯出。</span></li>';
+		page(href, module.name, `<div class="eyebrow">MODULE</div><h1><code>${escapeHtml(module.name)}</code></h1><p class="lead">${module.declarations.length} 個 canonical 公開宣告。</p><ul class="api-list">${items}</ul>`);
+	}
+
+	// 步驟 3：產生 API 首頁、產品文件、搜尋與部署 manifest。
+	const surfaceCards = api.surfaces.map((surface) => `<article class="card"><span class="badge">${escapeHtml(labels[surface.name])}</span><h2>${escapeHtml(surface.name)}</h2><code>${escapeHtml(surface.entrypoint)}</code></article>`).join('');
+	const moduleCards = api.modules.map((module) => `<a class="card link-card" href="${escapeHtml(`${module.name.replaceAll('.', '/')}/index.html`)}"><span class="badge">${module.declarations.length} APIs</span><h2>${escapeHtml(module.name)}</h2></a>`).join('');
+	page('docs/api/index.html', 'API Reference', `<div class="eyebrow">PUBLIC API</div><h1>Thin Design System Reference</h1><p class="lead">新產品從 foundation 與 theme 開始；experimental 明確分區。以下內容完全來自三個公開 Dart barrels，不包含 declarative 或 private runtime。</p><div class="grid">${surfaceCards}</div><h2 id="modules">Modules</h2><div class="grid">${moduleCards}</div>`);
+
+	const guideLinks = [];
+	for (const [source, title] of currentDocuments) {
+		const sourcePath = path.join(root, source);
+		if (!fs.existsSync(sourcePath)) continue;
+		const href = `docs/guides/${source.replaceAll('/', '-').replace(/\.md$/, '')}.html`;
+		page(href, title, markdown(fs.readFileSync(sourcePath, 'utf8')));
+		guideLinks.push(`<li><a href="${escapeHtml(relative('docs/index.html', href))}">${escapeHtml(title)}</a></li>`);
+		search.push({ title, category: 'Guide', href, source });
+	}
+	const componentDeclarations = api.modules.flatMap((module) => module.declarations).filter((item) => ['class', 'abstractClass', 'baseClass', 'finalClass', 'interfaceClass', 'sealedClass', 'mixinClass'].includes(item.kind));
+	page('docs/components/index.html', 'Components', `<div class="eyebrow">COMPONENTS</div><h1>公開型別</h1><p class="lead">依實際 public surface 產生；詳細 constructor 與 member 請進入 API 頁。</p><ul class="api-list">${componentDeclarations.map((item) => `<li><a href="${escapeHtml(relative('docs/components/index.html', declarationRoute(item)))}"><code>${escapeHtml(item.name)}</code></a><span>${escapeHtml(item.module)} · ${item.surfaces.map((surface) => escapeHtml(surface)).join(' · ')}</span></li>`).join('')}</ul>`);
+	page('docs/index.html', 'Documentation', `<div class="eyebrow">DOCUMENTATION</div><h1>產品組合權，設計系統品質</h1><p class="lead">Kallopis 提供 semantic theme 與可重用 Flutter 元件；產品擁有 Widget tree、導航與流程。</p><div class="actions"><a class="button" href="${escapeHtml(relative('docs/index.html', 'docs/api/index.html'))}">瀏覽 API</a><a class="button secondary" href="${escapeHtml(relative('docs/index.html', 'docs/components/index.html'))}">公開型別</a></div><h2>Current guides</h2><ul>${guideLinks.join('')}</ul>`);
+	page('index.html', 'Kallopis', '<section class="hero"><div class="eyebrow">FLUTTER DESIGN SYSTEM</div><h1>一致的視覺，產品擁有組合權。</h1><p class="lead">Semantic theme、共用元件、鍵盤與無障礙品質；沒有第二套 application runtime。</p><div class="actions"><a class="button" href="docs/index.html">閱讀文件</a><a class="button secondary" href="docs/api/index.html">API Reference</a></div></section>');
+	write('search-index.json', `${JSON.stringify(search, null, '\t')}\n`);
+	write('site-manifest.json', `${JSON.stringify({ surfaces: api.surfaces, apiModules, apiDeclarations, guides: currentDocuments.map(([source]) => source).filter((source) => fs.existsSync(path.join(root, source))) }, null, '\t')}\n`);
+	console.log(`Generated ${apiDeclarations.length} canonical API pages across ${api.modules.length} modules.`);
 }
 
 main();
