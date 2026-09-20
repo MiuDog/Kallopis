@@ -1,6 +1,6 @@
 # Workspace Layout Architecture
 
-狀態：PLAN READY
+狀態：IMPLEMENTED
 
 目前階段：App Layout Restore v1
 
@@ -122,4 +122,5 @@ Milestones：
 估計：cold-start，參照歷史 floating renderer；預期 8k–14k tokens、40–80 分鐘。
 超過 20k tokens 或 120 分鐘時停止檢查 gesture ownership。
 
-PLAN READY：DLB-12 已映射至 ALR-S3，沒有未決 P1 架構選擇。
+ALR-S3 已完成：`KlpAppLayout.floatingAction` 提供右下預設、拖曳位置保留、8px 邊界、
+header 避讓與 viewport clamp；公開入口 analyze、既有 layout tests 與 scope check 通過。

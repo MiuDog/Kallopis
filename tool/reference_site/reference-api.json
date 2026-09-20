@@ -10194,6 +10194,126 @@
 					]
 				},
 				{
+					"id": "package:kallopis/src/features/navigation/widgets/tabs/klp_document_tabs.dart#KlpDocumentTab",
+					"name": "KlpDocumentTab",
+					"slug": "klp-document-tab",
+					"kind": "finalClass",
+					"module": "features.navigation",
+					"sourceUri": "package:kallopis/src/features/navigation/widgets/tabs/klp_document_tabs.dart",
+					"primarySurface": "foundation",
+					"surfaces": [
+						"foundation"
+					],
+					"signature": "final class KlpDocumentTab",
+					"documentation": "一份文件分頁的不可變顯示資料；文件生命週期仍由 consumer 擁有。",
+					"typeRelationships": {
+						"extends": "Object",
+						"mixins": [],
+						"implements": []
+					},
+					"members": [
+						{
+							"name": "KlpDocumentTab",
+							"kind": "constructor",
+							"signature": "KlpDocumentTab({\n  required String id,\n  required String label,\n  bool dirty = false,\n  bool closable = true,\n  bool pinned = false,\n})",
+							"documentation": ""
+						},
+						{
+							"name": "closable",
+							"kind": "field",
+							"signature": "bool closable",
+							"documentation": ""
+						},
+						{
+							"name": "dirty",
+							"kind": "field",
+							"signature": "bool dirty",
+							"documentation": ""
+						},
+						{
+							"name": "id",
+							"kind": "field",
+							"signature": "String id",
+							"documentation": ""
+						},
+						{
+							"name": "label",
+							"kind": "field",
+							"signature": "String label",
+							"documentation": ""
+						},
+						{
+							"name": "pinned",
+							"kind": "field",
+							"signature": "bool pinned",
+							"documentation": ""
+						}
+					]
+				},
+				{
+					"id": "package:kallopis/src/features/navigation/widgets/tabs/klp_document_tabs.dart#KlpDocumentTabs",
+					"name": "KlpDocumentTabs",
+					"slug": "klp-document-tabs",
+					"kind": "finalClass",
+					"module": "features.navigation",
+					"sourceUri": "package:kallopis/src/features/navigation/widgets/tabs/klp_document_tabs.dart",
+					"primarySurface": "foundation",
+					"surfaces": [
+						"foundation"
+					],
+					"signature": "final class KlpDocumentTabs extends StatelessWidget",
+					"documentation": "具修改狀態、釘選與關閉動作的受控文件分頁列。\n\n本元件只回報操作意圖；選取、關閉與釘選結果必須由 consumer 更新 [tabs] 或\n[selectedId] 後再傳回。",
+					"typeRelationships": {
+						"extends": "StatelessWidget",
+						"mixins": [],
+						"implements": []
+					},
+					"members": [
+						{
+							"name": "KlpDocumentTabs",
+							"kind": "constructor",
+							"signature": "KlpDocumentTabs({\n  Key? key,\n  required List<KlpDocumentTab> tabs,\n  String? selectedId,\n  ValueChanged<String>? onSelected,\n  ValueChanged<String>? onClose,\n  void Function(String, bool)? onPinnedChanged,\n})",
+							"documentation": ""
+						},
+						{
+							"name": "build",
+							"kind": "method",
+							"signature": "Widget build(BuildContext context)",
+							"documentation": ""
+						},
+						{
+							"name": "onClose",
+							"kind": "field",
+							"signature": "ValueChanged<String>? onClose",
+							"documentation": ""
+						},
+						{
+							"name": "onPinnedChanged",
+							"kind": "field",
+							"signature": "void Function(String, bool)? onPinnedChanged",
+							"documentation": ""
+						},
+						{
+							"name": "onSelected",
+							"kind": "field",
+							"signature": "ValueChanged<String>? onSelected",
+							"documentation": ""
+						},
+						{
+							"name": "selectedId",
+							"kind": "field",
+							"signature": "String? selectedId",
+							"documentation": ""
+						},
+						{
+							"name": "tabs",
+							"kind": "field",
+							"signature": "List<KlpDocumentTab> tabs",
+							"documentation": ""
+						}
+					]
+				},
+				{
 					"id": "package:kallopis/src/features/navigation/widgets/explorer/klp_file_explorer.dart#KlpFileExplorer",
 					"name": "KlpFileExplorer",
 					"slug": "klp-file-explorer",
@@ -13187,6 +13307,488 @@
 					]
 				},
 				{
+					"id": "package:kallopis/src/features/workspace/anchored_popup/klp_anchored_popup.dart#KlpAnchoredPopup",
+					"name": "KlpAnchoredPopup",
+					"slug": "klp-anchored-popup",
+					"kind": "finalClass",
+					"module": "features.workspace",
+					"sourceUri": "package:kallopis/src/features/workspace/anchored_popup/klp_anchored_popup.dart",
+					"primarySurface": "foundation",
+					"surfaces": [
+						"foundation"
+					],
+					"signature": "final class KlpAnchoredPopup extends StatefulWidget",
+					"documentation": "由 trigger 實際 bounds 錨定的受控 popup。",
+					"typeRelationships": {
+						"extends": "StatefulWidget",
+						"mixins": [],
+						"implements": []
+					},
+					"members": [
+						{
+							"name": "KlpAnchoredPopup",
+							"kind": "constructor",
+							"signature": "KlpAnchoredPopup({\n  Key? key,\n  required KlpAnchoredPopupTriggerBuilder triggerBuilder,\n  required bool open,\n  required String accessibilityLabel,\n  String? title,\n  List<KlpAnchoredPopupItem>? items,\n  List<KlpWorkspaceCommand>? actions,\n  KlpAnchoredPopupState state = KlpAnchoredPopupState.ready,\n  String? message,\n  required void Function(bool, KlpAnchoredPopupChangeReason) onOpenChanged,\n})",
+							"documentation": ""
+						},
+						{
+							"name": "accessibilityLabel",
+							"kind": "field",
+							"signature": "String accessibilityLabel",
+							"documentation": ""
+						},
+						{
+							"name": "actions",
+							"kind": "field",
+							"signature": "List<KlpWorkspaceCommand>? actions",
+							"documentation": ""
+						},
+						{
+							"name": "createState",
+							"kind": "method",
+							"signature": "State<KlpAnchoredPopup> createState()",
+							"documentation": ""
+						},
+						{
+							"name": "items",
+							"kind": "field",
+							"signature": "List<KlpAnchoredPopupItem>? items",
+							"documentation": ""
+						},
+						{
+							"name": "message",
+							"kind": "field",
+							"signature": "String? message",
+							"documentation": ""
+						},
+						{
+							"name": "onOpenChanged",
+							"kind": "field",
+							"signature": "void Function(bool, KlpAnchoredPopupChangeReason) onOpenChanged",
+							"documentation": ""
+						},
+						{
+							"name": "open",
+							"kind": "field",
+							"signature": "bool open",
+							"documentation": ""
+						},
+						{
+							"name": "state",
+							"kind": "field",
+							"signature": "KlpAnchoredPopupState state",
+							"documentation": ""
+						},
+						{
+							"name": "title",
+							"kind": "field",
+							"signature": "String? title",
+							"documentation": ""
+						},
+						{
+							"name": "triggerBuilder",
+							"kind": "field",
+							"signature": "KlpAnchoredPopupTriggerBuilder triggerBuilder",
+							"documentation": ""
+						}
+					]
+				},
+				{
+					"id": "package:kallopis/src/features/workspace/anchored_popup/klp_anchored_popup.dart#KlpAnchoredPopupChangeReason",
+					"name": "KlpAnchoredPopupChangeReason",
+					"slug": "klp-anchored-popup-change-reason",
+					"kind": "enum",
+					"module": "features.workspace",
+					"sourceUri": "package:kallopis/src/features/workspace/anchored_popup/klp_anchored_popup.dart",
+					"primarySurface": "foundation",
+					"surfaces": [
+						"foundation"
+					],
+					"signature": "enum KlpAnchoredPopupChangeReason",
+					"documentation": "受控 popup 的開關原因；只描述呈現層請求，不代表 consumer 已接受。",
+					"typeRelationships": {
+						"extends": "Enum",
+						"mixins": [],
+						"implements": []
+					},
+					"members": [
+						{
+							"name": "KlpAnchoredPopupChangeReason",
+							"kind": "constructor",
+							"signature": "KlpAnchoredPopupChangeReason()",
+							"documentation": ""
+						},
+						{
+							"name": "anchorUnavailable",
+							"kind": "enumValue",
+							"signature": "KlpAnchoredPopupChangeReason anchorUnavailable",
+							"documentation": ""
+						},
+						{
+							"name": "escape",
+							"kind": "enumValue",
+							"signature": "KlpAnchoredPopupChangeReason escape",
+							"documentation": ""
+						},
+						{
+							"name": "outside",
+							"kind": "enumValue",
+							"signature": "KlpAnchoredPopupChangeReason outside",
+							"documentation": ""
+						},
+						{
+							"name": "trigger",
+							"kind": "enumValue",
+							"signature": "KlpAnchoredPopupChangeReason trigger",
+							"documentation": ""
+						}
+					]
+				},
+				{
+					"id": "package:kallopis/src/features/workspace/anchored_popup/klp_anchored_popup.dart#KlpAnchoredPopupItem",
+					"name": "KlpAnchoredPopupItem",
+					"slug": "klp-anchored-popup-item",
+					"kind": "finalClass",
+					"module": "features.workspace",
+					"sourceUri": "package:kallopis/src/features/workspace/anchored_popup/klp_anchored_popup.dart",
+					"primarySurface": "foundation",
+					"surfaces": [
+						"foundation"
+					],
+					"signature": "final class KlpAnchoredPopupItem",
+					"documentation": "Popup 內的平面資料列；穩定身分與可重複顯示名稱彼此分離。",
+					"typeRelationships": {
+						"extends": "Object",
+						"mixins": [],
+						"implements": []
+					},
+					"members": [
+						{
+							"name": "KlpAnchoredPopupItem",
+							"kind": "constructor",
+							"signature": "KlpAnchoredPopupItem({\n  required String id,\n  required String label,\n  String? subtitle,\n  KlpIconData? icon,\n  bool current = false,\n  bool enabled = true,\n  FutureOr<void> Function()? onPressed,\n  List<KlpWorkspaceCommand> commands = const [],\n})",
+							"documentation": ""
+						},
+						{
+							"name": "commands",
+							"kind": "field",
+							"signature": "List<KlpWorkspaceCommand> commands",
+							"documentation": ""
+						},
+						{
+							"name": "current",
+							"kind": "field",
+							"signature": "bool current",
+							"documentation": ""
+						},
+						{
+							"name": "enabled",
+							"kind": "field",
+							"signature": "bool enabled",
+							"documentation": ""
+						},
+						{
+							"name": "icon",
+							"kind": "field",
+							"signature": "KlpIconData? icon",
+							"documentation": ""
+						},
+						{
+							"name": "id",
+							"kind": "field",
+							"signature": "String id",
+							"documentation": ""
+						},
+						{
+							"name": "label",
+							"kind": "field",
+							"signature": "String label",
+							"documentation": ""
+						},
+						{
+							"name": "onPressed",
+							"kind": "field",
+							"signature": "FutureOr<void> Function()? onPressed",
+							"documentation": ""
+						},
+						{
+							"name": "subtitle",
+							"kind": "field",
+							"signature": "String? subtitle",
+							"documentation": ""
+						}
+					]
+				},
+				{
+					"id": "package:kallopis/src/features/workspace/anchored_popup/klp_anchored_popup.dart#KlpAnchoredPopupState",
+					"name": "KlpAnchoredPopupState",
+					"slug": "klp-anchored-popup-state",
+					"kind": "enum",
+					"module": "features.workspace",
+					"sourceUri": "package:kallopis/src/features/workspace/anchored_popup/klp_anchored_popup.dart",
+					"primarySurface": "foundation",
+					"surfaces": [
+						"foundation"
+					],
+					"signature": "enum KlpAnchoredPopupState",
+					"documentation": "Popup 內容的非同步回饋狀態。",
+					"typeRelationships": {
+						"extends": "Enum",
+						"mixins": [],
+						"implements": []
+					},
+					"members": [
+						{
+							"name": "KlpAnchoredPopupState",
+							"kind": "constructor",
+							"signature": "KlpAnchoredPopupState()",
+							"documentation": ""
+						},
+						{
+							"name": "error",
+							"kind": "enumValue",
+							"signature": "KlpAnchoredPopupState error",
+							"documentation": ""
+						},
+						{
+							"name": "loading",
+							"kind": "enumValue",
+							"signature": "KlpAnchoredPopupState loading",
+							"documentation": ""
+						},
+						{
+							"name": "ready",
+							"kind": "enumValue",
+							"signature": "KlpAnchoredPopupState ready",
+							"documentation": ""
+						},
+						{
+							"name": "result",
+							"kind": "enumValue",
+							"signature": "KlpAnchoredPopupState result",
+							"documentation": ""
+						}
+					]
+				},
+				{
+					"id": "package:kallopis/src/features/workspace/anchored_popup/klp_anchored_popup.dart#KlpAnchoredPopupTriggerBuilder",
+					"name": "KlpAnchoredPopupTriggerBuilder",
+					"slug": "klp-anchored-popup-trigger-builder",
+					"kind": "typedef",
+					"module": "features.workspace",
+					"sourceUri": "package:kallopis/src/features/workspace/anchored_popup/klp_anchored_popup.dart",
+					"primarySurface": "foundation",
+					"surfaces": [
+						"foundation"
+					],
+					"signature": "typedef KlpAnchoredPopupTriggerBuilder = Widget Function(BuildContext, VoidCallback, bool)",
+					"documentation": "Consumer 用既有 Widget 建立 trigger；Kallopis 注入 toggle 與 expanded 狀態。",
+					"typeRelationships": {
+						"extends": null,
+						"mixins": [],
+						"implements": []
+					},
+					"members": []
+				},
+				{
+					"id": "package:kallopis/src/features/workspace/layout/klp_app_layout.dart#KlpAppFrame",
+					"name": "KlpAppFrame",
+					"slug": "klp-app-frame",
+					"kind": "finalClass",
+					"module": "features.workspace",
+					"sourceUri": "package:kallopis/src/features/workspace/layout/klp_app_layout.dart",
+					"primarySurface": "foundation",
+					"surfaces": [
+						"foundation"
+					],
+					"signature": "final class KlpAppFrame extends KlpLayoutNode",
+					"documentation": "App background 第一層具名 frame；內容內距由 child 自己決定。",
+					"typeRelationships": {
+						"extends": "KlpLayoutNode",
+						"mixins": [],
+						"implements": []
+					},
+					"members": [
+						{
+							"name": "KlpAppFrame",
+							"kind": "constructor",
+							"signature": "KlpAppFrame({\n  Key? key,\n  required Widget child,\n  int flex = 1,\n  KlpAppFrameRole role = KlpAppFrameRole.content,\n  KlpAppFrameSurface surface = KlpAppFrameSurface.flat,\n})",
+							"documentation": ""
+						},
+						{
+							"name": "build",
+							"kind": "method",
+							"signature": "Widget build(BuildContext context)",
+							"documentation": ""
+						},
+						{
+							"name": "child",
+							"kind": "field",
+							"signature": "Widget child",
+							"documentation": ""
+						},
+						{
+							"name": "flex",
+							"kind": "field",
+							"signature": "int flex",
+							"documentation": ""
+						},
+						{
+							"name": "role",
+							"kind": "field",
+							"signature": "KlpAppFrameRole role",
+							"documentation": ""
+						},
+						{
+							"name": "surface",
+							"kind": "field",
+							"signature": "KlpAppFrameSurface surface",
+							"documentation": ""
+						}
+					]
+				},
+				{
+					"id": "package:kallopis/src/features/workspace/layout/klp_app_layout.dart#KlpAppFrameRole",
+					"name": "KlpAppFrameRole",
+					"slug": "klp-app-frame-role",
+					"kind": "enum",
+					"module": "features.workspace",
+					"sourceUri": "package:kallopis/src/features/workspace/layout/klp_app_layout.dart",
+					"primarySurface": "foundation",
+					"surfaces": [
+						"foundation"
+					],
+					"signature": "enum KlpAppFrameRole",
+					"documentation": "Frame 的內容主次角色，不綁定左右位置。",
+					"typeRelationships": {
+						"extends": "Enum",
+						"mixins": [],
+						"implements": []
+					},
+					"members": [
+						{
+							"name": "KlpAppFrameRole",
+							"kind": "constructor",
+							"signature": "KlpAppFrameRole()",
+							"documentation": ""
+						},
+						{
+							"name": "auxiliary",
+							"kind": "enumValue",
+							"signature": "KlpAppFrameRole auxiliary",
+							"documentation": ""
+						},
+						{
+							"name": "content",
+							"kind": "enumValue",
+							"signature": "KlpAppFrameRole content",
+							"documentation": ""
+						},
+						{
+							"name": "rightSidebar",
+							"kind": "enumValue",
+							"signature": "KlpAppFrameRole rightSidebar",
+							"documentation": ""
+						},
+						{
+							"name": "sidebar",
+							"kind": "enumValue",
+							"signature": "KlpAppFrameRole sidebar",
+							"documentation": ""
+						},
+						{
+							"name": "toolbarControls",
+							"kind": "enumValue",
+							"signature": "KlpAppFrameRole toolbarControls",
+							"documentation": ""
+						}
+					]
+				},
+				{
+					"id": "package:kallopis/src/features/workspace/layout/klp_app_layout.dart#KlpAppFrameSurface",
+					"name": "KlpAppFrameSurface",
+					"slug": "klp-app-frame-surface",
+					"kind": "enum",
+					"module": "features.workspace",
+					"sourceUri": "package:kallopis/src/features/workspace/layout/klp_app_layout.dart",
+					"primarySurface": "foundation",
+					"surfaces": [
+						"foundation"
+					],
+					"signature": "enum KlpAppFrameSurface",
+					"documentation": "Frame 表面選項。",
+					"typeRelationships": {
+						"extends": "Enum",
+						"mixins": [],
+						"implements": []
+					},
+					"members": [
+						{
+							"name": "KlpAppFrameSurface",
+							"kind": "constructor",
+							"signature": "KlpAppFrameSurface()",
+							"documentation": ""
+						},
+						{
+							"name": "flat",
+							"kind": "enumValue",
+							"signature": "KlpAppFrameSurface flat",
+							"documentation": ""
+						},
+						{
+							"name": "raised",
+							"kind": "enumValue",
+							"signature": "KlpAppFrameSurface raised",
+							"documentation": ""
+						}
+					]
+				},
+				{
+					"id": "package:kallopis/src/features/workspace/layout/klp_app_layout.dart#KlpAppLayout",
+					"name": "KlpAppLayout",
+					"slug": "klp-app-layout",
+					"kind": "finalClass",
+					"module": "features.workspace",
+					"sourceUri": "package:kallopis/src/features/workspace/layout/klp_app_layout.dart",
+					"primarySurface": "foundation",
+					"surfaces": [
+						"foundation"
+					],
+					"signature": "final class KlpAppLayout extends StatelessWidget",
+					"documentation": "App background 上第一層的通用 Workbench 布局根。",
+					"typeRelationships": {
+						"extends": "StatelessWidget",
+						"mixins": [],
+						"implements": []
+					},
+					"members": [
+						{
+							"name": "KlpAppLayout",
+							"kind": "constructor",
+							"signature": "KlpAppLayout({\n  Key? key,\n  required KlpLayoutNode child,\n  Widget? floatingAction,\n})",
+							"documentation": ""
+						},
+						{
+							"name": "build",
+							"kind": "method",
+							"signature": "Widget build(BuildContext context)",
+							"documentation": ""
+						},
+						{
+							"name": "child",
+							"kind": "field",
+							"signature": "KlpLayoutNode child",
+							"documentation": ""
+						},
+						{
+							"name": "floatingAction",
+							"kind": "field",
+							"signature": "Widget? floatingAction",
+							"documentation": ""
+						}
+					]
+				},
+				{
 					"id": "package:kallopis/src/features/workspace/shell/composition/app_screen/klp_app_screen.dart#KlpAppScreen",
 					"name": "KlpAppScreen",
 					"slug": "klp-app-screen",
@@ -14463,6 +15065,507 @@
 					]
 				},
 				{
+					"id": "package:kallopis/src/features/workspace/layout/klp_frame_groups.dart#KlpFrameGroup",
+					"name": "KlpFrameGroup",
+					"slug": "klp-frame-group",
+					"kind": "finalClass",
+					"module": "features.workspace",
+					"sourceUri": "package:kallopis/src/features/workspace/layout/klp_frame_groups.dart",
+					"primarySurface": "foundation",
+					"surfaces": [
+						"foundation"
+					],
+					"signature": "final class KlpFrameGroup extends StatelessWidget",
+					"documentation": "Frame 中一段內容；水平內距、內容節奏與前置分隔由 [style] 決定。",
+					"typeRelationships": {
+						"extends": "StatelessWidget",
+						"mixins": [],
+						"implements": []
+					},
+					"members": [
+						{
+							"name": "KlpFrameGroup",
+							"kind": "constructor",
+							"signature": "KlpFrameGroup({\n  Key? key,\n  required List<Widget> content,\n  KlpFrameGroupStyle style = KlpFrameGroupStyle.defaultHorizontal,\n})",
+							"documentation": ""
+						},
+						{
+							"name": "build",
+							"kind": "method",
+							"signature": "Widget build(BuildContext context)",
+							"documentation": ""
+						},
+						{
+							"name": "content",
+							"kind": "field",
+							"signature": "List<Widget> content",
+							"documentation": ""
+						},
+						{
+							"name": "style",
+							"kind": "field",
+							"signature": "KlpFrameGroupStyle style",
+							"documentation": ""
+						}
+					]
+				},
+				{
+					"id": "package:kallopis/src/features/workspace/layout/klp_frame_groups.dart#KlpFrameGroupContentSpacing",
+					"name": "KlpFrameGroupContentSpacing",
+					"slug": "klp-frame-group-content-spacing",
+					"kind": "enum",
+					"module": "features.workspace",
+					"sourceUri": "package:kallopis/src/features/workspace/layout/klp_frame_groups.dart",
+					"primarySurface": "foundation",
+					"surfaces": [
+						"foundation"
+					],
+					"signature": "enum KlpFrameGroupContentSpacing",
+					"documentation": "群組內容之間的標準或無間距選項。",
+					"typeRelationships": {
+						"extends": "Enum",
+						"mixins": [],
+						"implements": []
+					},
+					"members": [
+						{
+							"name": "KlpFrameGroupContentSpacing",
+							"kind": "constructor",
+							"signature": "KlpFrameGroupContentSpacing()",
+							"documentation": ""
+						},
+						{
+							"name": "none",
+							"kind": "enumValue",
+							"signature": "KlpFrameGroupContentSpacing none",
+							"documentation": ""
+						},
+						{
+							"name": "standard",
+							"kind": "enumValue",
+							"signature": "KlpFrameGroupContentSpacing standard",
+							"documentation": ""
+						}
+					]
+				},
+				{
+					"id": "package:kallopis/src/features/workspace/layout/klp_frame_groups.dart#KlpFrameGroupDivider",
+					"name": "KlpFrameGroupDivider",
+					"slug": "klp-frame-group-divider",
+					"kind": "enum",
+					"module": "features.workspace",
+					"sourceUri": "package:kallopis/src/features/workspace/layout/klp_frame_groups.dart",
+					"primarySurface": "foundation",
+					"surfaces": [
+						"foundation"
+					],
+					"signature": "enum KlpFrameGroupDivider",
+					"documentation": "群組前的分隔方式。",
+					"typeRelationships": {
+						"extends": "Enum",
+						"mixins": [],
+						"implements": []
+					},
+					"members": [
+						{
+							"name": "KlpFrameGroupDivider",
+							"kind": "constructor",
+							"signature": "KlpFrameGroupDivider()",
+							"documentation": ""
+						},
+						{
+							"name": "dashed",
+							"kind": "enumValue",
+							"signature": "KlpFrameGroupDivider dashed",
+							"documentation": ""
+						},
+						{
+							"name": "invisible",
+							"kind": "enumValue",
+							"signature": "KlpFrameGroupDivider invisible",
+							"documentation": ""
+						},
+						{
+							"name": "sectionGap",
+							"kind": "enumValue",
+							"signature": "KlpFrameGroupDivider sectionGap",
+							"documentation": ""
+						},
+						{
+							"name": "solid",
+							"kind": "enumValue",
+							"signature": "KlpFrameGroupDivider solid",
+							"documentation": ""
+						},
+						{
+							"name": "transparentGap",
+							"kind": "enumValue",
+							"signature": "KlpFrameGroupDivider transparentGap",
+							"documentation": ""
+						}
+					]
+				},
+				{
+					"id": "package:kallopis/src/features/workspace/layout/klp_frame_groups.dart#KlpFrameGroupPadding",
+					"name": "KlpFrameGroupPadding",
+					"slug": "klp-frame-group-padding",
+					"kind": "enum",
+					"module": "features.workspace",
+					"sourceUri": "package:kallopis/src/features/workspace/layout/klp_frame_groups.dart",
+					"primarySurface": "foundation",
+					"surfaces": [
+						"foundation"
+					],
+					"signature": "enum KlpFrameGroupPadding",
+					"documentation": "群組內容可使用的水平內距。",
+					"typeRelationships": {
+						"extends": "Enum",
+						"mixins": [],
+						"implements": []
+					},
+					"members": [
+						{
+							"name": "KlpFrameGroupPadding",
+							"kind": "constructor",
+							"signature": "KlpFrameGroupPadding()",
+							"documentation": ""
+						},
+						{
+							"name": "none",
+							"kind": "enumValue",
+							"signature": "KlpFrameGroupPadding none",
+							"documentation": ""
+						},
+						{
+							"name": "standard",
+							"kind": "enumValue",
+							"signature": "KlpFrameGroupPadding standard",
+							"documentation": ""
+						}
+					]
+				},
+				{
+					"id": "package:kallopis/src/features/workspace/layout/klp_frame_groups.dart#KlpFrameGroupStyle",
+					"name": "KlpFrameGroupStyle",
+					"slug": "klp-frame-group-style",
+					"kind": "finalClass",
+					"module": "features.workspace",
+					"sourceUri": "package:kallopis/src/features/workspace/layout/klp_frame_groups.dart",
+					"primarySurface": "foundation",
+					"surfaces": [
+						"foundation"
+					],
+					"signature": "final class KlpFrameGroupStyle",
+					"documentation": "Frame 內容群組的封閉樣式；不接受原始色彩、距離或 Flutter padding。",
+					"typeRelationships": {
+						"extends": "Object",
+						"mixins": [],
+						"implements": []
+					},
+					"members": [
+						{
+							"name": "KlpFrameGroupStyle",
+							"kind": "constructor",
+							"signature": "KlpFrameGroupStyle({\n  KlpFrameGroupPadding padding = KlpFrameGroupPadding.standard,\n  KlpFrameGroupDivider divider = KlpFrameGroupDivider.invisible,\n  KlpFrameGroupContentSpacing contentSpacing = KlpFrameGroupContentSpacing.none,\n})",
+							"documentation": ""
+						},
+						{
+							"name": "contentSpacing",
+							"kind": "field",
+							"signature": "KlpFrameGroupContentSpacing contentSpacing",
+							"documentation": ""
+						},
+						{
+							"name": "copyWith",
+							"kind": "method",
+							"signature": "KlpFrameGroupStyle copyWith({\n  KlpFrameGroupPadding? padding,\n  KlpFrameGroupDivider? divider,\n  KlpFrameGroupContentSpacing? contentSpacing,\n})",
+							"documentation": ""
+						},
+						{
+							"name": "defaultHorizontal",
+							"kind": "field",
+							"signature": "KlpFrameGroupStyle defaultHorizontal",
+							"documentation": ""
+						},
+						{
+							"name": "divider",
+							"kind": "field",
+							"signature": "KlpFrameGroupDivider divider",
+							"documentation": ""
+						},
+						{
+							"name": "noHorizontalPadding",
+							"kind": "field",
+							"signature": "KlpFrameGroupStyle noHorizontalPadding",
+							"documentation": ""
+						},
+						{
+							"name": "padding",
+							"kind": "field",
+							"signature": "KlpFrameGroupPadding padding",
+							"documentation": ""
+						}
+					]
+				},
+				{
+					"id": "package:kallopis/src/features/workspace/layout/klp_frame_groups.dart#KlpFrameGroups",
+					"name": "KlpFrameGroups",
+					"slug": "klp-frame-groups",
+					"kind": "finalClass",
+					"module": "features.workspace",
+					"sourceUri": "package:kallopis/src/features/workspace/layout/klp_frame_groups.dart",
+					"primarySurface": "foundation",
+					"surfaces": [
+						"foundation"
+					],
+					"signature": "final class KlpFrameGroups extends StatelessWidget",
+					"documentation": "在 Frame 內排列一個以上內容群組，並可固定一個底部操作群組。",
+					"typeRelationships": {
+						"extends": "StatelessWidget",
+						"mixins": [],
+						"implements": []
+					},
+					"members": [
+						{
+							"name": "KlpFrameGroups",
+							"kind": "constructor",
+							"signature": "KlpFrameGroups({\n  Key? key,\n  required List<KlpFrameGroup> groups,\n  KlpFrameGroup? footer,\n  ScrollController? scrollController,\n})",
+							"documentation": ""
+						},
+						{
+							"name": "build",
+							"kind": "method",
+							"signature": "Widget build(BuildContext context)",
+							"documentation": ""
+						},
+						{
+							"name": "footer",
+							"kind": "field",
+							"signature": "KlpFrameGroup? footer",
+							"documentation": ""
+						},
+						{
+							"name": "groups",
+							"kind": "field",
+							"signature": "List<KlpFrameGroup> groups",
+							"documentation": ""
+						},
+						{
+							"name": "scrollController",
+							"kind": "field",
+							"signature": "ScrollController? scrollController",
+							"documentation": ""
+						}
+					]
+				},
+				{
+					"id": "package:kallopis/src/features/workspace/layout/klp_app_layout.dart#KlpLayoutMainAlignment",
+					"name": "KlpLayoutMainAlignment",
+					"slug": "klp-layout-main-alignment",
+					"kind": "enum",
+					"module": "features.workspace",
+					"sourceUri": "package:kallopis/src/features/workspace/layout/klp_app_layout.dart",
+					"primarySurface": "foundation",
+					"surfaces": [
+						"foundation"
+					],
+					"signature": "enum KlpLayoutMainAlignment",
+					"documentation": "水平布局的主軸對齊選項。",
+					"typeRelationships": {
+						"extends": "Enum",
+						"mixins": [],
+						"implements": []
+					},
+					"members": [
+						{
+							"name": "KlpLayoutMainAlignment",
+							"kind": "constructor",
+							"signature": "KlpLayoutMainAlignment()",
+							"documentation": ""
+						},
+						{
+							"name": "end",
+							"kind": "enumValue",
+							"signature": "KlpLayoutMainAlignment end",
+							"documentation": ""
+						},
+						{
+							"name": "start",
+							"kind": "enumValue",
+							"signature": "KlpLayoutMainAlignment start",
+							"documentation": ""
+						}
+					]
+				},
+				{
+					"id": "package:kallopis/src/features/workspace/layout/klp_app_layout.dart#KlpLayoutNode",
+					"name": "KlpLayoutNode",
+					"slug": "klp-layout-node",
+					"kind": "abstractClass",
+					"module": "features.workspace",
+					"sourceUri": "package:kallopis/src/features/workspace/layout/klp_app_layout.dart",
+					"primarySurface": "foundation",
+					"surfaces": [
+						"foundation"
+					],
+					"signature": "abstract class KlpLayoutNode extends StatelessWidget",
+					"documentation": "可置於 [KlpAppLayout]、[LayoutRow] 或 [LayoutColumn] 的封閉布局節點。",
+					"typeRelationships": {
+						"extends": "StatelessWidget",
+						"mixins": [],
+						"implements": []
+					},
+					"members": [
+						{
+							"name": "KlpLayoutNode",
+							"kind": "constructor",
+							"signature": "KlpLayoutNode({Key? key})",
+							"documentation": ""
+						},
+						{
+							"name": "flex",
+							"kind": "getter",
+							"signature": "int get flex",
+							"documentation": ""
+						}
+					]
+				},
+				{
+					"id": "package:kallopis/src/features/workspace/layout/klp_app_layout.dart#KlpLayoutPane",
+					"name": "KlpLayoutPane",
+					"slug": "klp-layout-pane",
+					"kind": "finalClass",
+					"module": "features.workspace",
+					"sourceUri": "package:kallopis/src/features/workspace/layout/klp_app_layout.dart",
+					"primarySurface": "foundation",
+					"surfaces": [
+						"foundation"
+					],
+					"signature": "final class KlpLayoutPane extends KlpLayoutNode",
+					"documentation": "不帶材質的受控布局 pane。",
+					"typeRelationships": {
+						"extends": "KlpLayoutNode",
+						"mixins": [],
+						"implements": []
+					},
+					"members": [
+						{
+							"name": "KlpLayoutPane",
+							"kind": "constructor",
+							"signature": "KlpLayoutPane({\n  Key? key,\n  required Widget child,\n  KlpLayoutPaneSize size = KlpLayoutPaneSize.trailing,\n  int? flex,\n})",
+							"documentation": ""
+						},
+						{
+							"name": "build",
+							"kind": "method",
+							"signature": "Widget build(BuildContext context)",
+							"documentation": ""
+						},
+						{
+							"name": "child",
+							"kind": "field",
+							"signature": "Widget child",
+							"documentation": ""
+						},
+						{
+							"name": "flex",
+							"kind": "field",
+							"signature": "int flex",
+							"documentation": ""
+						},
+						{
+							"name": "size",
+							"kind": "field",
+							"signature": "KlpLayoutPaneSize size",
+							"documentation": ""
+						}
+					]
+				},
+				{
+					"id": "package:kallopis/src/features/workspace/layout/klp_app_layout.dart#KlpLayoutPaneSize",
+					"name": "KlpLayoutPaneSize",
+					"slug": "klp-layout-pane-size",
+					"kind": "enum",
+					"module": "features.workspace",
+					"sourceUri": "package:kallopis/src/features/workspace/layout/klp_app_layout.dart",
+					"primarySurface": "foundation",
+					"surfaces": [
+						"foundation"
+					],
+					"signature": "enum KlpLayoutPaneSize",
+					"documentation": "布局 pane 的尺寸角色。",
+					"typeRelationships": {
+						"extends": "Enum",
+						"mixins": [],
+						"implements": []
+					},
+					"members": [
+						{
+							"name": "KlpLayoutPaneSize",
+							"kind": "constructor",
+							"signature": "KlpLayoutPaneSize()",
+							"documentation": ""
+						},
+						{
+							"name": "content",
+							"kind": "enumValue",
+							"signature": "KlpLayoutPaneSize content",
+							"documentation": ""
+						},
+						{
+							"name": "expand",
+							"kind": "enumValue",
+							"signature": "KlpLayoutPaneSize expand",
+							"documentation": ""
+						},
+						{
+							"name": "trailing",
+							"kind": "enumValue",
+							"signature": "KlpLayoutPaneSize trailing",
+							"documentation": ""
+						}
+					]
+				},
+				{
+					"id": "package:kallopis/src/features/workspace/layout/klp_app_layout.dart#KlpLayoutSpacing",
+					"name": "KlpLayoutSpacing",
+					"slug": "klp-layout-spacing",
+					"kind": "enum",
+					"module": "features.workspace",
+					"sourceUri": "package:kallopis/src/features/workspace/layout/klp_app_layout.dart",
+					"primarySurface": "foundation",
+					"surfaces": [
+						"foundation"
+					],
+					"signature": "enum KlpLayoutSpacing",
+					"documentation": "線性布局的標準或無間距選項。",
+					"typeRelationships": {
+						"extends": "Enum",
+						"mixins": [],
+						"implements": []
+					},
+					"members": [
+						{
+							"name": "KlpLayoutSpacing",
+							"kind": "constructor",
+							"signature": "KlpLayoutSpacing()",
+							"documentation": ""
+						},
+						{
+							"name": "none",
+							"kind": "enumValue",
+							"signature": "KlpLayoutSpacing none",
+							"documentation": ""
+						},
+						{
+							"name": "standard",
+							"kind": "enumValue",
+							"signature": "KlpLayoutSpacing standard",
+							"documentation": ""
+						}
+					]
+				},
+				{
 					"id": "package:kallopis/src/features/workspace/message_composer/klp_message_composer.dart#KlpMessageComposer",
 					"name": "KlpMessageComposer",
 					"slug": "klp-message-composer",
@@ -14644,6 +15747,86 @@
 							"documentation": ""
 						}
 					]
+				},
+				{
+					"id": "package:kallopis/src/features/workspace/layout/klp_frame_groups.dart#KlpPadding",
+					"name": "KlpPadding",
+					"slug": "klp-padding",
+					"kind": "typedef",
+					"module": "features.workspace",
+					"sourceUri": "package:kallopis/src/features/workspace/layout/klp_frame_groups.dart",
+					"primarySurface": "foundation",
+					"surfaces": [
+						"foundation"
+					],
+					"signature": "typedef KlpPadding = KlpFrameGroup",
+					"documentation": "Frame 中用來建立功能分群與水平內距的公開元件。",
+					"typeRelationships": {
+						"extends": null,
+						"mixins": [],
+						"implements": []
+					},
+					"members": []
+				},
+				{
+					"id": "package:kallopis/src/features/workspace/layout/klp_frame_groups.dart#KlpPaddingDivider",
+					"name": "KlpPaddingDivider",
+					"slug": "klp-padding-divider",
+					"kind": "typedef",
+					"module": "features.workspace",
+					"sourceUri": "package:kallopis/src/features/workspace/layout/klp_frame_groups.dart",
+					"primarySurface": "foundation",
+					"surfaces": [
+						"foundation"
+					],
+					"signature": "typedef KlpPaddingDivider = KlpFrameGroupDivider",
+					"documentation": "[KlpPadding] 在群組前可選用的分隔線樣式。",
+					"typeRelationships": {
+						"extends": null,
+						"mixins": [],
+						"implements": []
+					},
+					"members": []
+				},
+				{
+					"id": "package:kallopis/src/features/workspace/layout/klp_frame_groups.dart#KlpPaddingHorizontal",
+					"name": "KlpPaddingHorizontal",
+					"slug": "klp-padding-horizontal",
+					"kind": "typedef",
+					"module": "features.workspace",
+					"sourceUri": "package:kallopis/src/features/workspace/layout/klp_frame_groups.dart",
+					"primarySurface": "foundation",
+					"surfaces": [
+						"foundation"
+					],
+					"signature": "typedef KlpPaddingHorizontal = KlpFrameGroupPadding",
+					"documentation": "[KlpPadding] 可選用的水平內距樣式。",
+					"typeRelationships": {
+						"extends": null,
+						"mixins": [],
+						"implements": []
+					},
+					"members": []
+				},
+				{
+					"id": "package:kallopis/src/features/workspace/layout/klp_frame_groups.dart#KlpPaddingStyle",
+					"name": "KlpPaddingStyle",
+					"slug": "klp-padding-style",
+					"kind": "typedef",
+					"module": "features.workspace",
+					"sourceUri": "package:kallopis/src/features/workspace/layout/klp_frame_groups.dart",
+					"primarySurface": "foundation",
+					"surfaces": [
+						"foundation"
+					],
+					"signature": "typedef KlpPaddingStyle = KlpFrameGroupStyle",
+					"documentation": "[KlpPadding] 的封閉樣式；不開放原始 padding 或分隔線色彩。",
+					"typeRelationships": {
+						"extends": null,
+						"mixins": [],
+						"implements": []
+					},
+					"members": []
 				},
 				{
 					"id": "package:kallopis/src/features/workspace/page_chrome/klp_page_chrome.dart#KlpPageChrome",
@@ -17934,6 +19117,426 @@
 					]
 				},
 				{
+					"id": "package:kallopis/src/features/workspace/anchored_popup/klp_anchored_popup.dart#KlpWorkspaceCommand",
+					"name": "KlpWorkspaceCommand",
+					"slug": "klp-workspace-command",
+					"kind": "finalClass",
+					"module": "features.workspace",
+					"sourceUri": "package:kallopis/src/features/workspace/anchored_popup/klp_anchored_popup.dart",
+					"primarySurface": "foundation",
+					"surfaces": [
+						"foundation"
+					],
+					"signature": "final class KlpWorkspaceCommand",
+					"documentation": "工作區命令資料；互動流程由 Kallopis 呈現，產品變更由 [onInvoke] 執行。",
+					"typeRelationships": {
+						"extends": "Object",
+						"mixins": [],
+						"implements": []
+					},
+					"members": [
+						{
+							"name": "KlpWorkspaceCommand",
+							"kind": "constructor",
+							"signature": "KlpWorkspaceCommand({\n  required String label,\n  bool enabled = true,\n  bool destructive = false,\n  String? inputLabel,\n  String? initialValue,\n  String? confirmation,\n  String submitLabel = 'OK',\n  String cancelLabel = 'Cancel',\n  KlpWorkspaceCommandShortcut? shortcut,\n  required FutureOr<void> Function(String?) onInvoke,\n  ValueChanged<KlpWorkspaceCommandResult>? onResult,\n})",
+							"documentation": ""
+						},
+						{
+							"name": "cancelLabel",
+							"kind": "field",
+							"signature": "String cancelLabel",
+							"documentation": ""
+						},
+						{
+							"name": "confirmation",
+							"kind": "field",
+							"signature": "String? confirmation",
+							"documentation": ""
+						},
+						{
+							"name": "destructive",
+							"kind": "field",
+							"signature": "bool destructive",
+							"documentation": ""
+						},
+						{
+							"name": "enabled",
+							"kind": "field",
+							"signature": "bool enabled",
+							"documentation": ""
+						},
+						{
+							"name": "initialValue",
+							"kind": "field",
+							"signature": "String? initialValue",
+							"documentation": ""
+						},
+						{
+							"name": "inputLabel",
+							"kind": "field",
+							"signature": "String? inputLabel",
+							"documentation": ""
+						},
+						{
+							"name": "label",
+							"kind": "field",
+							"signature": "String label",
+							"documentation": ""
+						},
+						{
+							"name": "onInvoke",
+							"kind": "field",
+							"signature": "FutureOr<void> Function(String?) onInvoke",
+							"documentation": ""
+						},
+						{
+							"name": "onResult",
+							"kind": "field",
+							"signature": "ValueChanged<KlpWorkspaceCommandResult>? onResult",
+							"documentation": ""
+						},
+						{
+							"name": "shortcut",
+							"kind": "field",
+							"signature": "KlpWorkspaceCommandShortcut? shortcut",
+							"documentation": ""
+						},
+						{
+							"name": "submitLabel",
+							"kind": "field",
+							"signature": "String submitLabel",
+							"documentation": ""
+						}
+					]
+				},
+				{
+					"id": "package:kallopis/src/features/workspace/anchored_popup/klp_anchored_popup.dart#KlpWorkspaceCommandResult",
+					"name": "KlpWorkspaceCommandResult",
+					"slug": "klp-workspace-command-result",
+					"kind": "finalClass",
+					"module": "features.workspace",
+					"sourceUri": "package:kallopis/src/features/workspace/anchored_popup/klp_anchored_popup.dart",
+					"primarySurface": "foundation",
+					"surfaces": [
+						"foundation"
+					],
+					"signature": "final class KlpWorkspaceCommandResult",
+					"documentation": "呈現流程的結果；不宣稱產品資料已提交或持久化。",
+					"typeRelationships": {
+						"extends": "Object",
+						"mixins": [],
+						"implements": []
+					},
+					"members": [
+						{
+							"name": "KlpWorkspaceCommandResult.canceled",
+							"kind": "constructor",
+							"signature": "KlpWorkspaceCommandResult.canceled()",
+							"documentation": ""
+						},
+						{
+							"name": "KlpWorkspaceCommandResult.completed",
+							"kind": "constructor",
+							"signature": "KlpWorkspaceCommandResult.completed()",
+							"documentation": ""
+						},
+						{
+							"name": "KlpWorkspaceCommandResult.failed",
+							"kind": "constructor",
+							"signature": "KlpWorkspaceCommandResult.failed(Object? error, StackTrace? stackTrace)",
+							"documentation": ""
+						},
+						{
+							"name": "error",
+							"kind": "field",
+							"signature": "Object? error",
+							"documentation": ""
+						},
+						{
+							"name": "stackTrace",
+							"kind": "field",
+							"signature": "StackTrace? stackTrace",
+							"documentation": ""
+						},
+						{
+							"name": "status",
+							"kind": "field",
+							"signature": "KlpWorkspaceCommandStatus status",
+							"documentation": ""
+						}
+					]
+				},
+				{
+					"id": "package:kallopis/src/features/workspace/anchored_popup/klp_anchored_popup.dart#KlpWorkspaceCommandShortcut",
+					"name": "KlpWorkspaceCommandShortcut",
+					"slug": "klp-workspace-command-shortcut",
+					"kind": "enum",
+					"module": "features.workspace",
+					"sourceUri": "package:kallopis/src/features/workspace/anchored_popup/klp_anchored_popup.dart",
+					"primarySurface": "foundation",
+					"surfaces": [
+						"foundation"
+					],
+					"signature": "enum KlpWorkspaceCommandShortcut",
+					"documentation": "可選快捷鍵語意；元件不從顯示文字推測命令用途。",
+					"typeRelationships": {
+						"extends": "Enum",
+						"mixins": [],
+						"implements": []
+					},
+					"members": [
+						{
+							"name": "KlpWorkspaceCommandShortcut",
+							"kind": "constructor",
+							"signature": "KlpWorkspaceCommandShortcut()",
+							"documentation": ""
+						},
+						{
+							"name": "delete",
+							"kind": "enumValue",
+							"signature": "KlpWorkspaceCommandShortcut delete",
+							"documentation": ""
+						},
+						{
+							"name": "rename",
+							"kind": "enumValue",
+							"signature": "KlpWorkspaceCommandShortcut rename",
+							"documentation": ""
+						}
+					]
+				},
+				{
+					"id": "package:kallopis/src/features/workspace/anchored_popup/klp_anchored_popup.dart#KlpWorkspaceCommandStatus",
+					"name": "KlpWorkspaceCommandStatus",
+					"slug": "klp-workspace-command-status",
+					"kind": "enum",
+					"module": "features.workspace",
+					"sourceUri": "package:kallopis/src/features/workspace/anchored_popup/klp_anchored_popup.dart",
+					"primarySurface": "foundation",
+					"surfaces": [
+						"foundation"
+					],
+					"signature": "enum KlpWorkspaceCommandStatus",
+					"documentation": "",
+					"typeRelationships": {
+						"extends": "Enum",
+						"mixins": [],
+						"implements": []
+					},
+					"members": [
+						{
+							"name": "KlpWorkspaceCommandStatus",
+							"kind": "constructor",
+							"signature": "KlpWorkspaceCommandStatus()",
+							"documentation": ""
+						},
+						{
+							"name": "canceled",
+							"kind": "enumValue",
+							"signature": "KlpWorkspaceCommandStatus canceled",
+							"documentation": ""
+						},
+						{
+							"name": "completed",
+							"kind": "enumValue",
+							"signature": "KlpWorkspaceCommandStatus completed",
+							"documentation": ""
+						},
+						{
+							"name": "failed",
+							"kind": "enumValue",
+							"signature": "KlpWorkspaceCommandStatus failed",
+							"documentation": ""
+						}
+					]
+				},
+				{
+					"id": "package:kallopis/src/features/workspace/layout/klp_app_layout.dart#LayoutColumn",
+					"name": "LayoutColumn",
+					"slug": "layout-column",
+					"kind": "finalClass",
+					"module": "features.workspace",
+					"sourceUri": "package:kallopis/src/features/workspace/layout/klp_app_layout.dart",
+					"primarySurface": "foundation",
+					"surfaces": [
+						"foundation"
+					],
+					"signature": "final class LayoutColumn extends KlpLayoutNode",
+					"documentation": "在主軸上垂直排列受控布局節點。",
+					"typeRelationships": {
+						"extends": "KlpLayoutNode",
+						"mixins": [],
+						"implements": []
+					},
+					"members": [
+						{
+							"name": "LayoutColumn",
+							"kind": "constructor",
+							"signature": "LayoutColumn({\n  Key? key,\n  required List<KlpLayoutNode> children,\n  int flex = 1,\n  KlpLayoutSpacing spacing = KlpLayoutSpacing.standard,\n})",
+							"documentation": ""
+						},
+						{
+							"name": "build",
+							"kind": "method",
+							"signature": "Widget build(BuildContext context)",
+							"documentation": ""
+						},
+						{
+							"name": "children",
+							"kind": "field",
+							"signature": "List<KlpLayoutNode> children",
+							"documentation": ""
+						},
+						{
+							"name": "flex",
+							"kind": "field",
+							"signature": "int flex",
+							"documentation": ""
+						},
+						{
+							"name": "spacing",
+							"kind": "field",
+							"signature": "KlpLayoutSpacing spacing",
+							"documentation": ""
+						}
+					]
+				},
+				{
+					"id": "package:kallopis/src/features/workspace/layout/klp_app_layout.dart#LayoutResizeHandle",
+					"name": "LayoutResizeHandle",
+					"slug": "layout-resize-handle",
+					"kind": "finalClass",
+					"module": "features.workspace",
+					"sourceUri": "package:kallopis/src/features/workspace/layout/klp_app_layout.dart",
+					"primarySurface": "foundation",
+					"surfaces": [
+						"foundation"
+					],
+					"signature": "final class LayoutResizeHandle extends KlpLayoutNode",
+					"documentation": "取代相鄰 node 自動 gutter 的固定尺寸槽；不提供 resize 手勢。",
+					"typeRelationships": {
+						"extends": "KlpLayoutNode",
+						"mixins": [],
+						"implements": []
+					},
+					"members": [
+						{
+							"name": "LayoutResizeHandle",
+							"kind": "constructor",
+							"signature": "LayoutResizeHandle({Key? key})",
+							"documentation": ""
+						},
+						{
+							"name": "build",
+							"kind": "method",
+							"signature": "Widget build(BuildContext context)",
+							"documentation": ""
+						},
+						{
+							"name": "flex",
+							"kind": "getter",
+							"signature": "int get flex",
+							"documentation": ""
+						}
+					]
+				},
+				{
+					"id": "package:kallopis/src/features/workspace/layout/klp_app_layout.dart#LayoutRow",
+					"name": "LayoutRow",
+					"slug": "layout-row",
+					"kind": "finalClass",
+					"module": "features.workspace",
+					"sourceUri": "package:kallopis/src/features/workspace/layout/klp_app_layout.dart",
+					"primarySurface": "foundation",
+					"surfaces": [
+						"foundation"
+					],
+					"signature": "final class LayoutRow extends KlpLayoutNode",
+					"documentation": "在主軸上水平排列受控布局節點。",
+					"typeRelationships": {
+						"extends": "KlpLayoutNode",
+						"mixins": [],
+						"implements": []
+					},
+					"members": [
+						{
+							"name": "LayoutRow",
+							"kind": "constructor",
+							"signature": "LayoutRow({\n  Key? key,\n  required List<KlpLayoutNode> children,\n  int flex = 1,\n  KlpLayoutMainAlignment alignment = KlpLayoutMainAlignment.start,\n  KlpLayoutSpacing spacing = KlpLayoutSpacing.standard,\n})",
+							"documentation": ""
+						},
+						{
+							"name": "alignment",
+							"kind": "field",
+							"signature": "KlpLayoutMainAlignment alignment",
+							"documentation": ""
+						},
+						{
+							"name": "build",
+							"kind": "method",
+							"signature": "Widget build(BuildContext context)",
+							"documentation": ""
+						},
+						{
+							"name": "children",
+							"kind": "field",
+							"signature": "List<KlpLayoutNode> children",
+							"documentation": ""
+						},
+						{
+							"name": "flex",
+							"kind": "field",
+							"signature": "int flex",
+							"documentation": ""
+						},
+						{
+							"name": "spacing",
+							"kind": "field",
+							"signature": "KlpLayoutSpacing spacing",
+							"documentation": ""
+						}
+					]
+				},
+				{
+					"id": "package:kallopis/src/features/workspace/layout/klp_app_layout.dart#LayoutSpacer",
+					"name": "LayoutSpacer",
+					"slug": "layout-spacer",
+					"kind": "finalClass",
+					"module": "features.workspace",
+					"sourceUri": "package:kallopis/src/features/workspace/layout/klp_app_layout.dart",
+					"primarySurface": "foundation",
+					"surfaces": [
+						"foundation"
+					],
+					"signature": "final class LayoutSpacer extends KlpLayoutNode",
+					"documentation": "線性布局中不承載內容的彈性空間。",
+					"typeRelationships": {
+						"extends": "KlpLayoutNode",
+						"mixins": [],
+						"implements": []
+					},
+					"members": [
+						{
+							"name": "LayoutSpacer",
+							"kind": "constructor",
+							"signature": "LayoutSpacer({Key? key, int flex = 1})",
+							"documentation": ""
+						},
+						{
+							"name": "build",
+							"kind": "method",
+							"signature": "Widget build(BuildContext context)",
+							"documentation": ""
+						},
+						{
+							"name": "flex",
+							"kind": "field",
+							"signature": "int flex",
+							"documentation": ""
+						}
+					]
+				},
+				{
 					"id": "package:kallopis/src/features/workspace/shell/window/klp_window_header_height.dart#klpWindowHeaderHeight",
 					"name": "klpWindowHeaderHeight",
 					"slug": "klp-window-header-height",
@@ -17946,6 +19549,26 @@
 					],
 					"signature": "double klpWindowHeaderHeight(KlpGeometryTheme geometry, {double? windowHeaderMargin})",
 					"documentation": "解析 Header 的版面占位高度。",
+					"typeRelationships": {
+						"extends": null,
+						"mixins": [],
+						"implements": []
+					},
+					"members": []
+				},
+				{
+					"id": "package:kallopis/src/features/workspace/anchored_popup/klp_anchored_popup.dart#showKlpWorkspaceCommand",
+					"name": "showKlpWorkspaceCommand",
+					"slug": "show-klp-workspace-command",
+					"kind": "function",
+					"module": "features.workspace",
+					"sourceUri": "package:kallopis/src/features/workspace/anchored_popup/klp_anchored_popup.dart",
+					"primarySurface": "foundation",
+					"surfaces": [
+						"foundation"
+					],
+					"signature": "Future<KlpWorkspaceCommandResult> showKlpWorkspaceCommand(BuildContext context, KlpWorkspaceCommand command)",
+					"documentation": "以 Kallopis 對話框完成命令的輸入、確認與結果流程。",
 					"typeRelationships": {
 						"extends": null,
 						"mixins": [],
