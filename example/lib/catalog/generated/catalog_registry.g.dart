@@ -23,15 +23,17 @@ final List<CatalogGroup> catalogGroups = [
 	CatalogGroup(
 		id: 'primitive',
 		label: 'Primitives',
-		description:
-				'Internal raw scales and source values. Consumers do not use these directly.',
-		pages: [neutralsPage, scalePage, radiiPage],
+		description: 'Internal raw scales and source values. Consumers do not use these directly.',
+		pages: [
+			neutralsPage,
+			scalePage,
+			radiiPage,
+		],
 	),
 	CatalogGroup(
 		id: 'foundation',
 		label: 'Foundation semantics',
-		description:
-				'Shared roles that describe identity, surfaces, type, status, motion and elevation.',
+		description: 'Shared roles that describe identity, surfaces, type, status, motion and elevation.',
 		pages: [
 			brandPage,
 			colorModesPage,
@@ -47,8 +49,7 @@ final List<CatalogGroup> catalogGroups = [
 	CatalogGroup(
 		id: 'component',
 		label: 'Component recipes',
-		description:
-				'Resolved controls and content components built from foundation semantics.',
+		description: 'Resolved controls and content components built from foundation semantics.',
 		pages: [
 			actionsNavigationPage,
 			buttonSystemPage,
@@ -64,8 +65,7 @@ final List<CatalogGroup> catalogGroups = [
 	CatalogGroup(
 		id: 'pattern',
 		label: 'Patterns',
-		description:
-				'Reusable compositions and workspace-level interaction arrangements.',
+		description: 'Reusable compositions and workspace-level interaction arrangements.',
 		pages: [
 			blockLayoutPage,
 			prosePage,

@@ -6,7 +6,8 @@
 #
 # golden 測試對字型渲染敏感：同一份 .png 在不同作業系統上會因字型光柵化差異而
 # 假失敗。repo 裡的 golden 全部產生於 Windows，因此**跑測試的 job 必須是 windows**。
-# 格式、分析與清單新鮮度不碰渲染，放在較快的 ubuntu 上。
+# 分析與清單新鮮度不碰渲染，放在較快的 ubuntu 上。
+# 專案程式碼以 tab 縮排；Dart formatter 固定改寫成空格，因此不可作為格式閘門。
 name: CI
 
 on:
@@ -46,9 +47,6 @@ jobs:
 
       - name: 取得相依套件
         run: flutter pub get
-
-      - name: 格式檢查（dart format）
-        run: dart format --output=none --set-exit-if-changed .
 
       - name: 靜態分析（flutter analyze）
         run: flutter analyze --fatal-infos
@@ -120,9 +118,6 @@ jobs:
 
       - name: 取得相依套件
         run: flutter pub get
-
-      - name: 格式檢查（dart format）
-        run: dart format --output=none --set-exit-if-changed .
 
       - name: 靜態分析（flutter analyze）
         run: flutter analyze --fatal-infos

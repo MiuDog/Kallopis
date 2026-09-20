@@ -260,10 +260,6 @@ final actionsNavigationPage = CatalogPageData(
 				onClose: () {},
 			),
 		),
-		Specimen(
-			name: 'KlpRouterOutlet',
-			note: '渲染 router 目前的目的地。需要 KlpRouterScope 才能運作，因此不在此展示。',
-		),
 	],
 );
 
@@ -1895,7 +1891,6 @@ final foundationBuildingBlocksPage = CatalogPageData(
 		'KlpWrap',
 	],
 	specimens: const [],
-	tokenView: (context) => KlpText(
-		'這些元件可由產品直接以 Flutter 組裝；風格一律由 Kallopis theme 取得。',
-	),
+	tokenView: (context) =>
+			KlpText('這些元件可由產品直接以 Flutter 組裝；風格一律由 Kallopis theme 取得。'),
 );
