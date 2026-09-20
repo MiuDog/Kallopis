@@ -6,7 +6,7 @@
 
 ## 總覽
 
-- 公開型別 **385** 個，其中 widget **160** 個
+- 公開型別 **409** 個，其中 widget **160** 個
 - 分為 **20** 個領域
 
 ### 領域之間的依賴方向
@@ -18,8 +18,9 @@
 ```mermaid
 graph TD
   foundation["foundation — 圖示、色盤、度量"]
-  features -->|303| foundation
+  features -->|306| foundation
   styling -->|16| kernel
+  features -->|2| styling
   foundation -->|1| styling
 ```
 
@@ -223,12 +224,12 @@ graph LR
 
 | 型別 | 被幾個型別使用 |
 |---|---|
-| `KlpText` | 49 |
+| `KlpText` | 50 |
 | `KlpColumn` | 36 |
 | `KlpRow` | 36 |
 | `KlpBox` | 35 |
 | `KlpExpanded` | 31 |
-| `KlpSurface` | 24 |
+| `KlpSurface` | 25 |
 | `KlpContractError` | 16 |
 | `KlpWrap` | 12 |
 | `KlpGestureRegion` | 11 |
