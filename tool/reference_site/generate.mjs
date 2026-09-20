@@ -1,5 +1,6 @@
 import fs from 'node:fs';
 import path from 'node:path';
+import { homePage, shell } from './layout.mjs';
 
 const root = path.resolve(import.meta.dirname, '..', '..');
 const output = path.join(root, 'build', 'reference-site');
@@ -76,17 +77,13 @@ function write(relativePath, content) {
 	fs.writeFileSync(target, content);
 }
 
-function shell(relativePath, title, content) {
-	const css = relative(relativePath, 'assets/site.css');
-	const script = relative(relativePath, 'assets/site.js');
-	const home = relative(relativePath, 'index.html');
-	const docs = relative(relativePath, 'docs/index.html');
-	const apiIndex = relative(relativePath, 'docs/api/index.html');
-	return `<!doctype html><html lang="zh-Hant"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>${escapeHtml(title)} · Kallopis</title><link rel="stylesheet" href="${escapeHtml(css)}"></head><body><header class="topbar"><a class="brand" href="${escapeHtml(home)}">Kallopis</a><nav><a href="${escapeHtml(docs)}">文件</a><a href="${escapeHtml(apiIndex)}">API</a><a href="https://github.com/MiuDog/Kallopis">GitHub</a></nav></header><main>${content}</main><footer>Kallopis · opinionated Flutter design system</footer><script src="${escapeHtml(script)}" defer></script></body></html>`;
-}
-
-function page(relativePath, title, content) {
-	write(relativePath, shell(relativePath, title, content));
+function page(relativePath, title, content, sourcePath = '') {
+	write(relativePath, shell({
+		title,
+		content,
+		active: path.posix.dirname(relativePath),
+		sourcePath,
+	}));
 }
 
 function markdown(source) {
@@ -200,14 +197,17 @@ function main() {
 		const sourcePath = path.join(root, source);
 		if (!fs.existsSync(sourcePath)) continue;
 		const href = `docs/guides/${source.replaceAll('/', '-').replace(/\.md$/, '')}.html`;
-		page(href, title, markdown(fs.readFileSync(sourcePath, 'utf8')));
+		page(href, title, markdown(fs.readFileSync(sourcePath, 'utf8')), source);
 		guideLinks.push(`<li><a href="${escapeHtml(relative('docs/index.html', href))}">${escapeHtml(title)}</a></li>`);
 		search.push({ title, category: 'Guide', href, source });
 	}
 	const componentDeclarations = api.modules.flatMap((module) => module.declarations).filter((item) => ['class', 'abstractClass', 'baseClass', 'finalClass', 'interfaceClass', 'sealedClass', 'mixinClass'].includes(item.kind));
 	page('docs/components/index.html', 'Components', `<div class="eyebrow">COMPONENTS</div><h1>公開型別</h1><p class="lead">依實際 public surface 產生；詳細 constructor 與 member 請進入 API 頁。</p><ul class="api-list">${componentDeclarations.map((item) => `<li><a href="${escapeHtml(relative('docs/components/index.html', declarationRoute(item)))}"><code>${escapeHtml(item.name)}</code></a><span>${escapeHtml(item.module)} · ${item.surfaces.map((surface) => escapeHtml(surface)).join(' · ')}</span></li>`).join('')}</ul>`);
-	page('docs/index.html', 'Documentation', `<div class="eyebrow">DOCUMENTATION</div><h1>產品組合權，設計系統品質</h1><p class="lead">Kallopis 提供 semantic theme 與可重用 Flutter 元件；產品擁有 Widget tree、導航與流程。</p><div class="actions"><a class="button" href="${escapeHtml(relative('docs/index.html', 'docs/api/index.html'))}">瀏覽 API</a><a class="button secondary" href="${escapeHtml(relative('docs/index.html', 'docs/components/index.html'))}">公開型別</a></div><h2>Current guides</h2><ul>${guideLinks.join('')}</ul>`);
-	page('index.html', 'Kallopis', '<section class="hero"><div class="eyebrow">FLUTTER DESIGN SYSTEM</div><h1>一致的視覺，產品擁有組合權。</h1><p class="lead">Semantic theme、共用元件、鍵盤與無障礙品質；沒有第二套 application runtime。</p><div class="actions"><a class="button" href="docs/index.html">閱讀文件</a><a class="button secondary" href="docs/api/index.html">API Reference</a></div></section>');
+	page('docs/index.html', 'Documentation', `<div class="eyebrow">DOCUMENTATION</div><h1>產品組合權，設計系統品質</h1><p class="lead">Kallopis 提供 semantic theme 與可重用 Flutter 元件；產品擁有 Widget tree、導航與流程。</p><div class="actions"><a class="button primary" href="${escapeHtml(relative('docs/index.html', 'docs/api/index.html'))}">瀏覽 API</a><a class="button secondary" href="${escapeHtml(relative('docs/index.html', 'docs/components/index.html'))}">公開型別</a></div><h2>Current guides</h2><ul>${guideLinks.join('')}</ul>`);
+	write('index.html', homePage({
+		apiCount: apiDeclarations.length,
+		moduleCount: api.modules.length,
+	}));
 	write('search-index.json', `${JSON.stringify(search, null, '\t')}\n`);
 	write('site-manifest.json', `${JSON.stringify({ surfaces: api.surfaces, apiModules, apiDeclarations, guides: currentDocuments.map(([source]) => source).filter((source) => fs.existsSync(path.join(root, source))) }, null, '\t')}\n`);
 	console.log(`Generated ${apiDeclarations.length} canonical API pages across ${api.modules.length} modules.`);
