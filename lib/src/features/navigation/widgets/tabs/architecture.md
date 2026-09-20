@@ -1,6 +1,6 @@
 # Tabs Architecture
 
-狀態：PLAN READY
+狀態：IMPLEMENTED
 
 目前階段：Document Tabs Restore v1
 

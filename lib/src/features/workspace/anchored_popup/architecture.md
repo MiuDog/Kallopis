@@ -1,6 +1,6 @@
 # Anchored Popup Architecture
 
-狀態：PLAN READY
+狀態：IMPLEMENTED
 
 目前階段：Direct Anchored Popup v1
 
