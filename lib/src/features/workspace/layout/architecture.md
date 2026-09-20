@@ -96,4 +96,5 @@ Milestones：
 估計：cold-start，參照歷史 `KlpFrameGroups` adapter／renderer；預期 10k–18k tokens、
 45–100 分鐘。超過 26k tokens 或 150 分鐘時停止檢查 scroll／footer constraints。
 
-PLAN READY：DLB-10～DLB-11 已映射至 ALR-S2，下一步可 BUILD ALR-S2。
+ALR-S2 已完成：直接 Flutter Frame Groups、五種 divider、8px 語意與固定 footer
+已由 foundation 匯出；公開入口 analyze、既有 layout primitives tests 與 scope check 通過。
