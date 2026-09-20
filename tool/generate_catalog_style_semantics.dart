@@ -160,7 +160,7 @@ Map<String, _ComponentSource> _readComponents(
       final name = match.group(1)!;
       result[name] = _ComponentSource(
         name: name,
-        path: file.path.replaceAll(r'\', '/'),
+		path: _portableSourcePath(file),
         body: _withStyleDependencies(
           file,
           _withPrivateDependencies(file, source.substring(match.start, end)),
@@ -170,6 +170,13 @@ Map<String, _ComponentSource> _readComponents(
   }
 
   return result;
+}
+
+String _portableSourcePath(File file) {
+	final root = Directory.current.absolute.path.replaceAll(r'\', '/');
+	final absolute = file.absolute.path.replaceAll(r'\', '/');
+	final prefix = '$root/';
+	return absolute.startsWith(prefix) ? absolute.substring(prefix.length) : absolute;
 }
 
 String _withPrivateDependencies(File owner, String body) {
