@@ -16,7 +16,7 @@ Category 與 Element 沿用目前 Catalog 的高度、縮排、字體、圖示�
 Component 不由 Navigator 強制高度。展開、選取與事件透過 Navigator 私有
 InheritedWidget 傳給內部節點。
 
-既有 `KlpExplorer` 保留 API 相容性，但其資料會轉成 Navigator 模型後再呈現，避免
+`KlpExplorer` 維持既有公開契約，但其資料會轉成 Navigator 模型後再呈現，避免
 Catalog 與產品 Sidebar 形成兩套視覺實作。
 
 ## 邊界

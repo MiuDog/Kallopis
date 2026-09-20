@@ -27,8 +27,8 @@ part 'klp_localizations_delegate.dart';
 /// )
 /// ```
 ///
-/// 走 [KlpApp] 的消費者不需要手動註冊——[KlpApp] 已經自動掛上內建預設值，
-/// 傳入的 [KlpApp.localizationsDelegates] 會與它合併而不是覆蓋。
+/// 產品直接在 [MaterialApp.localizationsDelegates] 註冊 delegate；未註冊時元件會
+/// 使用本類別的內建預設值。
 @immutable
 class KlpLocalizations {
 	const KlpLocalizations({
@@ -117,7 +117,10 @@ class KlpLocalizations {
 		this.editorInterruptedTitle = '編輯器已中斷',
 		this.editorInterruptedMessage = '編輯器已中斷。請保留此視窗並嘗試儲存；尚未儲存內容不會自動重載。',
 		this.editorEnvironmentFailedTitle = '無法啟動正文編輯器',
-		this.editorEnvironmentFailedMessage = '系統無法建立本機 WebView2 環境。請確認 WebView2 Runtime 已安裝後重新開啟。',
+		this.editorEnvironmentFailedMessage =
+				'系統無法建立本機 WebView2 環境。請確認 WebView2 Runtime 已安裝後重新開啟。',
+		this.menuSearchPlaceholder = '搜尋',
+		this.menuEmptyLabel = '沒有符合的元件',
 	});
 
 	/// [KlpToast] 時間戳徽章上的文字。
@@ -303,7 +306,8 @@ class KlpLocalizations {
 	final String editorInterruptedMessage;
 	final String editorEnvironmentFailedTitle;
 	final String editorEnvironmentFailedMessage;
-
+	final String menuSearchPlaceholder;
+	final String menuEmptyLabel;
 
 	/// 取得目前子樹適用的字串集合。
 	///
@@ -370,40 +374,43 @@ class KlpLocalizations {
 					formPasswordHideLabel == other.formPasswordHideLabel &&
 					formQuantityDecreaseLabel == other.formQuantityDecreaseLabel &&
 					formQuantityIncreaseLabel == other.formQuantityIncreaseLabel &&
-				formDateRangeCalendarLabel == other.formDateRangeCalendarLabel &&
-				editorUndoLabel == other.editorUndoLabel &&
-				editorRedoLabel == other.editorRedoLabel &&
-				editorMoreLabel == other.editorMoreLabel &&
-				editorSaveLabel == other.editorSaveLabel &&
-				editorUnsavedLabel == other.editorUnsavedLabel &&
-				editorSavingLabel == other.editorSavingLabel &&
-				editorSavedLabel == other.editorSavedLabel &&
-				editorSaveFailedLabel == other.editorSaveFailedLabel &&
-				editorSaveUnknownLabel == other.editorSaveUnknownLabel &&
-				editorBlockActionsLabel == other.editorBlockActionsLabel &&
-				editorBlockMoveHint == other.editorBlockMoveHint &&
-				editorMovePreviousLabel == other.editorMovePreviousLabel &&
-				editorMoveNextLabel == other.editorMoveNextLabel &&
-				editorParagraphLabel == other.editorParagraphLabel &&
-				editorHeading1Label == other.editorHeading1Label &&
-				editorHeading2Label == other.editorHeading2Label &&
-				editorHeading3Label == other.editorHeading3Label &&
-				editorOutdentLabel == other.editorOutdentLabel &&
-				editorIndentLabel == other.editorIndentLabel &&
-				editorOrderedListLabel == other.editorOrderedListLabel &&
-				editorUnorderedListLabel == other.editorUnorderedListLabel &&
-				editorBlockTypeLabel == other.editorBlockTypeLabel &&
-				editorTaskCompleteLabel == other.editorTaskCompleteLabel &&
-				editorTaskReopenLabel == other.editorTaskReopenLabel &&
-				editorToggleCollapseLabel == other.editorToggleCollapseLabel &&
-				editorToggleExpandLabel == other.editorToggleExpandLabel &&
-				editorLoadFailedTitle == other.editorLoadFailedTitle &&
-				editorLoadFailedMessage == other.editorLoadFailedMessage &&
-				editorRetryLabel == other.editorRetryLabel &&
-				editorInterruptedTitle == other.editorInterruptedTitle &&
-				editorInterruptedMessage == other.editorInterruptedMessage &&
-				editorEnvironmentFailedTitle == other.editorEnvironmentFailedTitle &&
-				editorEnvironmentFailedMessage == other.editorEnvironmentFailedMessage;
+					formDateRangeCalendarLabel == other.formDateRangeCalendarLabel &&
+					editorUndoLabel == other.editorUndoLabel &&
+					editorRedoLabel == other.editorRedoLabel &&
+					editorMoreLabel == other.editorMoreLabel &&
+					editorSaveLabel == other.editorSaveLabel &&
+					editorUnsavedLabel == other.editorUnsavedLabel &&
+					editorSavingLabel == other.editorSavingLabel &&
+					editorSavedLabel == other.editorSavedLabel &&
+					editorSaveFailedLabel == other.editorSaveFailedLabel &&
+					editorSaveUnknownLabel == other.editorSaveUnknownLabel &&
+					editorBlockActionsLabel == other.editorBlockActionsLabel &&
+					editorBlockMoveHint == other.editorBlockMoveHint &&
+					editorMovePreviousLabel == other.editorMovePreviousLabel &&
+					editorMoveNextLabel == other.editorMoveNextLabel &&
+					editorParagraphLabel == other.editorParagraphLabel &&
+					editorHeading1Label == other.editorHeading1Label &&
+					editorHeading2Label == other.editorHeading2Label &&
+					editorHeading3Label == other.editorHeading3Label &&
+					editorOutdentLabel == other.editorOutdentLabel &&
+					editorIndentLabel == other.editorIndentLabel &&
+					editorOrderedListLabel == other.editorOrderedListLabel &&
+					editorUnorderedListLabel == other.editorUnorderedListLabel &&
+					editorBlockTypeLabel == other.editorBlockTypeLabel &&
+					editorTaskCompleteLabel == other.editorTaskCompleteLabel &&
+					editorTaskReopenLabel == other.editorTaskReopenLabel &&
+					editorToggleCollapseLabel == other.editorToggleCollapseLabel &&
+					editorToggleExpandLabel == other.editorToggleExpandLabel &&
+					editorLoadFailedTitle == other.editorLoadFailedTitle &&
+					editorLoadFailedMessage == other.editorLoadFailedMessage &&
+					editorRetryLabel == other.editorRetryLabel &&
+					editorInterruptedTitle == other.editorInterruptedTitle &&
+					editorInterruptedMessage == other.editorInterruptedMessage &&
+					editorEnvironmentFailedTitle == other.editorEnvironmentFailedTitle &&
+					editorEnvironmentFailedMessage ==
+							other.editorEnvironmentFailedMessage &&
+					menuSearchPlaceholder == other.menuSearchPlaceholder &&
+					menuEmptyLabel == other.menuEmptyLabel;
 
 	@override
 	int get hashCode => Object.hashAll([
@@ -492,5 +499,7 @@ class KlpLocalizations {
 		editorInterruptedMessage,
 		editorEnvironmentFailedTitle,
 		editorEnvironmentFailedMessage,
+		menuSearchPlaceholder,
+		menuEmptyLabel,
 	]);
 }

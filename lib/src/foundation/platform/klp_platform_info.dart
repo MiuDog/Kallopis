@@ -1,7 +1,7 @@
 import 'dart:ui' show Size;
 import 'package:flutter/foundation.dart';
 
-import 'package:kallopis/src/capabilities/environment/klp_environment_snapshot.dart';
+import 'klp_environment_snapshot.dart';
 import 'klp_app_platform.dart';
 import 'klp_device_class.dart';
 import 'klp_display_mode.dart';

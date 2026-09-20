@@ -5,16 +5,29 @@ class _KlpMenuState extends State<KlpMenu> {
 	final _scrollController = ScrollController();
 	final _itemKeys = <int, GlobalKey>{};
 	String _query = '';
-	late final _searchFocus = FocusNode(onKeyEvent: (node, event) {
-		// 搜尋輸入保留文字的 Home／End／空白，只攔截清單導覽按鍵。
-		if (event.logicalKey == LogicalKeyboardKey.home || event.logicalKey == LogicalKeyboardKey.end || event.logicalKey == LogicalKeyboardKey.space) return KeyEventResult.ignored;
-		return _handleKey(node, event);
-	});
+	late final _searchFocus = FocusNode(
+		onKeyEvent: (node, event) {
+			// 搜尋輸入保留文字的 Home／End／空白，只攔截清單導覽按鍵。
+			if (event.logicalKey == LogicalKeyboardKey.home ||
+					event.logicalKey == LogicalKeyboardKey.end ||
+					event.logicalKey == LogicalKeyboardKey.space) {
+				return KeyEventResult.ignored;
+			}
+			return _handleKey(node, event);
+		},
+	);
 
 	List<KlpMenuItemData> get _visibleItems {
 		final query = _query.trim().toLowerCase();
 		if (query.isEmpty) return widget.items;
-		return widget.items.where((item) => '${item.label} ${item.description ?? ''} ${item.group ?? ''}'.toLowerCase().contains(query)).toList();
+		return widget.items
+				.where(
+					(item) =>
+							'${item.label} ${item.description ?? ''} ${item.group ?? ''}'
+									.toLowerCase()
+									.contains(query),
+				)
+				.toList();
 	}
 
 	void _search(String value) {
@@ -35,8 +48,17 @@ class _KlpMenuState extends State<KlpMenu> {
 	Widget _section(BuildContext context, String label) => SizedBox(
 		height: _KlpMenuMetrics.headerHeight(context) + context.klp.space.tight,
 		child: Padding(
-			padding: EdgeInsets.symmetric(horizontal: _KlpMenuMetrics.horizontalPadding(context)),
-			child: Align(alignment: Alignment.centerLeft, child: KlpText(label, role: KlpMenuStyle.textRole, tone: KlpTextTone.muted)),
+			padding: EdgeInsets.symmetric(
+				horizontal: _KlpMenuMetrics.horizontalPadding(context),
+			),
+			child: Align(
+				alignment: Alignment.centerLeft,
+				child: KlpText(
+					label,
+					role: KlpMenuStyle.textRole,
+					tone: KlpTextTone.muted,
+				),
+			),
 		),
 	);
 
@@ -44,12 +66,21 @@ class _KlpMenuState extends State<KlpMenu> {
 		final thickness = context.klp.geometry.control.scrollbarThickness;
 		final gutter = thickness + context.klp.space.tight;
 		// 桌面平台只保留此處的捲動條；內容與捲動軌道各自占用空間。
-		return ScrollConfiguration(behavior: ScrollConfiguration.of(context).copyWith(scrollbars: false), child: Scrollbar(
-			controller: _scrollController,
-			thumbVisibility: true,
-			thickness: thickness,
-			child: SingleChildScrollView(controller: _scrollController, child: Padding(padding: EdgeInsets.only(right: gutter), child: content)),
-		));
+		return ScrollConfiguration(
+			behavior: ScrollConfiguration.of(context).copyWith(scrollbars: false),
+			child: Scrollbar(
+				controller: _scrollController,
+				thumbVisibility: true,
+				thickness: thickness,
+				child: SingleChildScrollView(
+					controller: _scrollController,
+					child: Padding(
+						padding: EdgeInsets.only(right: gutter),
+						child: content,
+					),
+				),
+			),
+		);
 	}
 
 	bool _isEnabled(int index) => _visibleItems[index].enabled;
@@ -60,7 +91,12 @@ class _KlpMenuState extends State<KlpMenu> {
 			widget.onEscape?.call();
 			return KeyEventResult.handled;
 		}
-		if (_searchFocus.hasFocus && (event.logicalKey == LogicalKeyboardKey.home || event.logicalKey == LogicalKeyboardKey.end || event.logicalKey == LogicalKeyboardKey.space)) return KeyEventResult.ignored;
+		if (_searchFocus.hasFocus &&
+				(event.logicalKey == LogicalKeyboardKey.home ||
+						event.logicalKey == LogicalKeyboardKey.end ||
+						event.logicalKey == LogicalKeyboardKey.space)) {
+			return KeyEventResult.ignored;
+		}
 		final count = _visibleItems.length;
 		if (count == 0) return KeyEventResult.ignored;
 
@@ -134,18 +170,27 @@ class _KlpMenuState extends State<KlpMenu> {
 			crossAxisAlignment: CrossAxisAlignment.stretch,
 			children: [
 				if (!grouped && !widget.searchable) _section(context, widget.label),
-				if (items.isEmpty) _section(context, '沒有符合的元件'),
+				if (items.isEmpty)
+					_section(context, KlpLocalizations.of(context).menuEmptyLabel),
 				for (var index = 0; index < items.length; index++) ...[
-					if (items[index].group != null && (index == 0 || items[index - 1].group != items[index].group))
+					if (items[index].group != null &&
+							(index == 0 || items[index - 1].group != items[index].group))
 						_section(context, items[index].group!),
-					if (items[index].separatedBefore || items[index].dashedSeparatorBefore)
+					if (items[index].separatedBefore ||
+							items[index].dashedSeparatorBefore)
 						Padding(
 							padding: EdgeInsets.symmetric(vertical: context.klp.space.tight),
-							child: items[index].dashedSeparatorBefore ? const KlpDashedDivider() : const KlpDivider(),
+							child: items[index].dashedSeparatorBefore
+									? const KlpDashedDivider()
+									: const KlpDivider(),
 						),
 					KeyedSubtree(
 						key: _itemKeys.putIfAbsent(index, GlobalKey.new),
-						child: KlpMenuItem(key: items[index].key, data: items[index], keyboardHighlighted: index == _highlightedIndex),
+						child: KlpMenuItem(
+							key: items[index].key,
+							data: items[index],
+							keyboardHighlighted: index == _highlightedIndex,
+						),
 					),
 				],
 			],
@@ -169,14 +214,32 @@ class _KlpMenuState extends State<KlpMenu> {
 					),
 				],
 				child: KlpBox(
-					width: KlpMenuLayout.widthForItems(context, widget.items, scrollable: widget.scrollable),
+					width: KlpMenuLayout.widthForItems(
+						context,
+						widget.items,
+						scrollable: widget.scrollable,
+					),
 					child: Padding(
 						padding: EdgeInsets.all(context.klp.space.tight),
-						child: widget.searchable ? Column(children: [
-							KlpTextField(placeholder: widget.searchPlaceholder, leadingIcon: KlpIcons.search, autofocus: widget.autofocus, focusNode: _searchFocus, onChanged: _search),
-							SizedBox(height: context.klp.space.tight),
-							Expanded(child: _scrollableContent(context, content)),
-						]) : widget.scrollable ? _scrollableContent(context, content) : content,
+						child: widget.searchable
+								? Column(
+										children: [
+											KlpTextField(
+												placeholder:
+														widget.searchPlaceholder ??
+														KlpLocalizations.of(context).menuSearchPlaceholder,
+												leadingIcon: KlpIcons.search,
+												autofocus: widget.autofocus,
+												focusNode: _searchFocus,
+												onChanged: _search,
+											),
+											SizedBox(height: context.klp.space.tight),
+											Expanded(child: _scrollableContent(context, content)),
+										],
+									)
+								: widget.scrollable
+								? _scrollableContent(context, content)
+								: content,
 					),
 				),
 			),

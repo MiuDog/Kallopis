@@ -20,18 +20,24 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - name: 取出程式碼
+        uses: actions/checkout@v4
+
       - uses: actions/setup-node@v4
         with:
           node-version: 24
+
       - uses: actions/configure-pages@v5
         if: github.event_name != 'pull_request'
         with:
           enablement: true
+
       - run: npm ci --prefix tool/reference_site
       - run: npm test --prefix tool/reference_site
+      - run: mkdir -p build && cp tool/reference_site/reference-api.json build/reference-api.json
       - run: node tool/reference_site/generate.mjs
       - run: node tool/reference_site/verify.mjs
+
       - uses: actions/upload-pages-artifact@v3
         with:
           path: build/reference-site

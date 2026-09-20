@@ -16,7 +16,7 @@
 `context.klp.space.halfCompact` padding；Kallopis 預設風格解析為 4px。
 這一層由產品組合擁有，不由 `KlpDockLayout`、Stage 或 Sidebar 各自補入。
 
-`KlpDockLayout.margin` 未指定時解析為零，只保留給局部嵌套或相容情境明確覆寫。
+`KlpDockLayout.margin` 未指定時解析為零，只供局部嵌套明確覆寫。
 Catalog 由 `CatalogShell` 套用產品根 padding，並以零 margin 組合 Dock，作為產品
 Sidebar＋Stage 架構的參考實作。
 

@@ -96,9 +96,9 @@
           "symbol": "elevationPage"
         },
         {
-          "id": "foundation.compatibility.building-blocks",
+          "id": "foundation.building-blocks",
           "source": "foundation_pages.dart",
-          "symbol": "compatibilityBuildingBlocksPage"
+          "symbol": "foundationBuildingBlocksPage"
         }
       ]
     },

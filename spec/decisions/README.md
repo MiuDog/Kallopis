@@ -2,11 +2,11 @@
 
 ## 索引
 
-正文採用：[KLP-0020](KLP-0020-blocknote-editor-adoption.md)，Implementing；使用者已選 BlockNote，正式接入與轉換待完成。
+正文採用：[KLP-0020](KLP-0020-blocknote-editor-adoption.md)，Implementing；資料權威不變，產品宿主依 KLP-0023 移交 Planist，原生 IME、讀屏與完整資料轉換仍待驗收。
 
-Kallopis 遷移：[KLP-0019](KLP-0019-declarative-framework-migration.md)，Implementing。此狀態表示方向已獲使用者核准、程式尚未全部符合；不能當成 Accepted。新功能與 primitive 權限依該文件，原決策保留舊 API 的歷史與過渡範圍。
+Kallopis 唯一架構：[KLP-0022](KLP-0022-thin-design-system-boundary.md)，Implementing。所有 consumer 只使用 Flutter、theme 與 foundation 元件組合產品；不保留 declarative runtime 或相容入口。Note／Canva host 移交完成後才關閉最終發布閘門。
 
-生產力 App 元件生態：[KLP-0021](KLP-0021-productivity-component-ecosystem.md)，Implementing／DEFINE READY。維持禁止 consumer Widget 與呈現自訂，改以完整的產品無關生產力能力、統一 semantic feature 消費契約與意圖導向 Consumer Reference 為主要責任；`PE-B1`～`PE-B4` 已完成確定性驗證，可理解性待人類接受，其餘能力缺口與固定 Catalog 遷移仍進行中。
+舊 declarative framework 與 Catalog 遷移決策已由 KLP-0022 取代並從現行 tree 移除；歷史只由 Git 保存。
 
 | 編號 | 題目 | 狀態 |
 |---|---|---|
@@ -23,13 +23,12 @@ Kallopis 遷移：[KLP-0019](KLP-0019-declarative-framework-migration.md)，Impl
 | [KLP-0011](KLP-0011-window-header-full-drag-surface.md) | App Header 全表面拖動視窗 | Accepted |
 | [KLP-0012](KLP-0012-half-compact-boundary-pairs.md) | App、Header 與 Dock 的 halfCompact 邊界配對 | Accepted |
 | [KLP-0013](KLP-0013-panel-scrollbar-padding-slot.md) | Panel Scrollbar 使用尾側 padding 槽 | Accepted |
-| [KLP-0014](KLP-0014-panel-tree-composition.md) | App 主內容採封閉 Panel Tree | Accepted |
 | [KLP-0015](KLP-0015-scoped-spacing-semantics.md) | 間距依使用 scope 定義語意 | Accepted |
 | [KLP-0016](KLP-0016-panel-frame-and-rail-spacing.md) | PanelFrame 無內距，Rail 自行管理節奏並使用 PanelFrame | Accepted |
 | [KLP-0018](KLP-0018-dock-drag-feedback-and-insertion-line.md) | Dock header 拖曳 feedback、放置線與滑鼠錨點 | Accepted |
-| [KLP-0019](KLP-0019-declarative-framework-migration.md) | 宣告式功能框架遷移 | Implementing |
 | [KLP-0020](KLP-0020-blocknote-editor-adoption.md) | 採用 BlockNote 正文編輯器 | Implementing |
-| [KLP-0021](KLP-0021-productivity-component-ecosystem.md) | 生產力 App 元件生態與 Consumer Reference | Implementing／DEFINE READY |
+| [KLP-0022](KLP-0022-thin-design-system-boundary.md) | 唯一 Flutter Design System 架構 | Implementing |
+| [KLP-0023](KLP-0023-product-editor-host-ownership.md) | 產品編輯器宿主由 Planist 擁有 | Implementing |
 
 ## 每份決策的必要內容
 

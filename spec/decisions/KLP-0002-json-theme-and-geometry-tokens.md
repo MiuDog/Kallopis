@@ -22,7 +22,7 @@
 - `KlpVisualStyle` 綁定 color、typography、spacing、shape、motion、surface、geometry、
   data visualization 與稀疏 component token；切換 style 仍是一個原子動作。
 - 不屬於密度尺度的精確幾何放進 `KlpGeometryTheme`，依 control、data、layout、optical 分組。
-- 舊 `Klp*Metrics` 保留為公開相容 API 與預設值來源，但庫內元件不可直接讀取。
+- `Klp*Metrics` 由 styling metrics library 單一擁有，`kallopis_foundation.dart` 直接匯出；庫內元件不可直接讀取 static metrics。
 - JSON 色彩使用 `#AARRGGBB`（輸入另接受 `#RRGGBB`）、duration 使用整數毫秒、
   font weight 使用 100–900 整數。Curve 只序列化可無損描述的 Flutter `Cubic`；其他
   `Curve` 在 encode 邊界明確失敗，不做近似。
@@ -38,7 +38,7 @@
 
 - `test/klp_visual_style_json_test.dart`：round-trip、overlay、unknown field、range、schema 與
   非無損值拒絕。
-- `test/geometry_theme_compatibility_test.dart`：新增 optional token 不破壞既有 constructor。
+- `test/geometry_theme_contract_test.dart`：theme constructor 與衍生語意值維持完整契約。
 - `test/token_discipline_test.dart`：元件不得讀 primitive／舊 static metrics。
 - `test/color_discipline_test.dart`：元件不得直接讀 `KlpPalette` 或 `Colors.*`。
 - golden 不因本決策更新；任何新增差異都是視覺回歸。

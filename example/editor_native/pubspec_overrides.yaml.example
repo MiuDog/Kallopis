@@ -1,3 +1,0 @@
-dependency_overrides:
-  krepis_kallopis:
-    path: ../../../Krepis/bindings/kallopis

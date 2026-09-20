@@ -12,6 +12,7 @@ import 'package:kallopis/src/foundation/interaction/klp_action_region_tone.dart'
 import 'package:kallopis/src/foundation/interaction/klp_focus_region.dart';
 import 'package:kallopis/src/foundation/interaction/klp_roving_index.dart';
 import 'package:kallopis/src/foundation/layout/klp_layout.dart';
+import 'package:kallopis/src/foundation/localization/klp_localizations.dart';
 import 'package:kallopis/src/foundation/surface/klp_dashed_border.dart';
 import 'package:kallopis/src/foundation/surface/klp_divider.dart';
 import 'package:kallopis/src/foundation/surface/klp_surface.dart';

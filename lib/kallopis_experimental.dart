@@ -8,7 +8,6 @@ export 'src/features/workspace/page_chrome/klp_page_chrome.dart';
 export 'src/features/workspace/message_composer/klp_message_composer.dart';
 export 'src/features/workspace/artifact/klp_artifact_workspace.dart';
 export 'src/features/infinite_canvas/klp_canvas_workspace.dart';
-export 'src/features/navigation/legacy_router/klp_router.dart';
 export 'src/features/workspace/settings/klp_settings_content.dart';
 export 'src/features/workspace/settings/klp_settings_layout.dart';
 export 'src/features/workspace/settings/klp_settings_navigation.dart';

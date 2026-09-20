@@ -61,14 +61,13 @@ jobs:
         run: |
           npm ci --prefix tool/reference_site
           npm test --prefix tool/reference_site
+          mkdir -p build
+          cp tool/reference_site/reference-api.json build/reference-api.json
           node tool/reference_site/generate.mjs
           node tool/reference_site/verify.mjs
 
       - name: 元件清單新鮮度（inventory --check）
         run: dart run tool/inventory.dart --check
-
-      - name: 宣告式消費端匯入邊界
-        run: dart run tool/verify_declarative_consumer.dart example/lib/klp_runtime_demo.dart
 
   test:
     name: tests (golden 基準平台)

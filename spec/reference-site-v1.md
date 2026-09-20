@@ -1,10 +1,12 @@
 # Kallopis 官網與文件子站
 
-2026-09-12，使用者要求蒸餾 Planist 官網至本專案、套用本專案風格，並將文件遷移至網站子頁。沿用既有 GitHub Pages 產生器；網站工作不改 Flutter 元件。
+2026-09-20 依 KLP-0022 更新：網站只呈現現行 Flutter design system，不保留 declarative／compatibility API。GitHub Pages 必須從 theme、foundation、experimental 三個 public barrels 產生 module 分類及每個公開 class 一頁的正式 Reference；網站工作不改 Flutter 元件。
 
 ## 需求與權限
 
-- 首頁介紹 Kallopis 實際提供的宣告式組裝、風格解析與文件能力；不搬用 Planist 的 agent、執行績效、定價或下載宣稱。
+- 首頁介紹 Kallopis 實際提供的 semantic theme、Flutter 共用元件與產品組合邊界；不搬用 Planist 的 agent、執行績效、定價或下載宣稱。
+- 正式 API 來源只包含 `kallopis_theme.dart`、`kallopis_foundation.dart`、`kallopis_experimental.dart`；不得產生 declarative、runtime、adapter、bound 或 private renderer 頁面。
+- 同一來源宣告被多個 public barrels 匯出時只產生一頁並列出全部入口；同名不同來源保留各自頁面。
 - 參考 https://miudog.github.io/Planist/ 的精簡導覽、中央主標題、工作區視覺、編號分段與進入產品的行動入口。
 - 所有頁面依 [style-v1](style-v1.md) 使用暖灰、平整 Frame、12px 圓角、子內容 padding、內容紙色與微浮陰影；表單／選單以底色分層、區域分隔使用虛線。
 - 預設淺色；可切換深色、暖灰／中性灰與內容微浮偏好，跨子頁保存。深色主內容比側欄亮。

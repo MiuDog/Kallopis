@@ -1,20 +1,19 @@
 # Kallopis — Agent 入口
 
-Kallopis 是 `-ist` 產品家族共用的 Flutter 宣告式視覺與互動層；公開 library 在 `lib/`，實作在 `lib/src/`，範例在 `example/`。
+Kallopis 是 `-ist` 產品家族共用的 Flutter design system 與元件庫；公開 library 在 `lib/`，實作在 `lib/src/`，範例在 `example/`。
 
 ## Current truth
 
-- 舊 Catalog 全面遷移與刪除以 [固定清冊及進度](docs/architecture/catalog-migration/README.md) 為準。固定254項分母不能因刪頁縮小；逐項具備新版公開宣告、資料／事件與可操作 Catalog 證據後，才完成整體遷移並刪除舊元件。已接受新版風格保持；目前尚未全部完成。
-
-- 宣告式框架遷移以 [KLP-0019](spec/decisions/KLP-0019-declarative-framework-migration.md) 為準。
+- 目前架構以 [KLP-0022](spec/decisions/KLP-0022-thin-design-system-boundary.md) 為準：所有 consumer 只使用 Flutter、`kallopis_theme.dart` 與 `kallopis_foundation.dart` 組合產品畫面；舊 declarative runtime 與相容入口已移除，不得重建。
+- 固定 254 項舊 Catalog 清冊與遷移閘門已刪除；元件依實際 caller、跨產品重用與產品驗證決定保留、合併或移除。
 - 筆記正文新路徑以 [KLP-0020](spec/decisions/KLP-0020-blocknote-editor-adoption.md) 為準；接續筆記功能時再讀 [當前交接](docs/session-handoff.md)。
-- Consumer API 與範本從 [AI 文件索引](docs/ai/README.md) 進入；查實作從 [架構圖集](docs/architecture/README.md) 搜特定節點，不預載整套計畫。
+- Consumer API 從 [唯一產品使用指南](docs/ai/product-usage.md) 進入；架構責任從 [架構入口](docs/architecture/README.md) 查詢。
 - 已接受 module 的責任、公開介面與目前 slices 以該 module root 的 `architecture.md` 為準；沒有該檔時先進入 PLAN，不由 BUILD worker 自行發明。
 - 歷史與被取代決策不得混入現行規格；需要歷史時才查版本紀錄。
-- 視覺元件由本庫統一維護；其他 agent 不得擅自新增元件或視覺變體。遷移以 [視覺元件統一維護](spec/visual-component-governance.md) 為準：保留新版已接受的 icon、按鈕列、Explorer、Frame 等風格及 hover／selected 同色；其餘舊元件全面遷移後再細調，不還原已接受的新外觀。能力缺口先提出資料／事件／組裝需求，新外觀候選由 Catalog 供人類檢查。
-- Consumer 只可使用本庫契約明列的組裝方式；插槽型別相符不代表任意組合合法。父子、角色、數量、次序、巢狀及上下文限制均由本庫規定，未列出的組合不得自行推定或以自訂節點、布局參數繞過。
+- 本庫統一維護公開共用元件的內部視覺與互動；保留已接受的 icon、按鈕列、Explorer、Frame 等風格及 hover／selected 同色。產品可用 Flutter 組合畫面並建立產品專用 Widget；只有證明跨產品重用的能力才提升為 Kallopis 元件。
+- Kallopis compound component 仍可限制自己的 child、role、數量與次序，但不驗證 consumer 的完整 Widget tree。Consumer 不得引用 `lib/src` 或在公開共用元件內繞過 semantic style。
 - Kallopis 只定義產品無關的通用元件組及合法組裝規則；consumer 在此範圍內自由組合，產品功能選用與組合邏輯由使用者設計並由產品專案擁有。不得在本庫新增 Planist 專用模板、固定業務功能順序或商業邏輯元件層。
-- `Workspace.Explorer / EXP-V1-r2` 已完成直接替換，見 [公開宣告與組裝](docs/ai/explorer-model.md) 及 [模組配對](docs/architecture/explorer-v1-plan/README.md)。Consumer 可 implements item interface 或 method 包裝有限能力；這不開放 renderer。舊 API／專用實作已移除，不得重建相容入口。新外觀仍須 Catalog 接受。
+- Explorer 只保留 `KlpFileExplorer` 直接 Flutter 元件；產品投影 section／item 資料並接回 selection／toggle callback，不得重建 node、adapter 或 renderer。
 
 ## Intent routing
 
@@ -39,12 +38,12 @@ Kallopis 是 `-ist` 產品家族共用的 Flutter 宣告式視覺與互動層；
 
 ## Kallopis invariants
 
-- 品牌保留 Kallopis；宣告式 API 使用 Klp，consumer 從 `kallopis_declarative.dart` 組裝。資料夾及 GitHub 不改名。
-- KLP-0019 要求唯一結構樹、受限插槽與固定 primitive schema 整套替換。Consumer 不注入原生 Widget、`build`/`context`、局部 style 或 painter。
-- KLP-0020 要求 Planist 使用 Krepis 統一介面，Krepis 轉接 BlockNote；上游掌管正文模型、排版、選取與 undo，不維持雙正文權威。自研正文核心及專用路徑為暫時棄用，只保留舊資料相容與回退。
+- 品牌保留 Kallopis；公開型別使用 Klp。Consumer 從 `kallopis_foundation.dart`／`kallopis_theme.dart` 使用元件與風格；不存在 declarative 或 compatibility 入口。資料夾及 GitHub 不改名。
+- Consumer 可使用原生 Widget、`build`／`context` 與 Flutter 布局組合產品畫面；產品專用視覺仍應讀 Kallopis semantic theme，不建立第二份共用 theme 或複製公開元件內部樣式。
+- KLP-0020 要求 Planist 使用 Krepis 統一介面，Krepis 轉接 BlockNote；上游掌管正文模型、排版、選取與 undo，不維持雙正文權威。舊格式只能一次性轉換匯入，不得恢復自研正文執行路徑。
 - Kallopis 掌管語意風格、呈現與 WebView 宿主；不得建立第二份 theme、environment 或 l10n 來源。
 - `kallopis_theme.dart` 與 `kallopis_foundation.dart` 是 Stable；experimental 不得反向匯出。`lib/src` 對外 private；新舊 API 依公開 library 可達性區分。
-- 樣式必須由本庫 semantic resolver 取得；舊路徑使用 `context.klp`。Consumer 與 renderer 不得寫死風格或新增另一份預設值。
+- 樣式必須由本庫 semantic resolver 與 `context.klp` 取得；Consumer 不得寫死共用風格或新增另一份預設值。
 - 修改 UI 時按需讀 [風格規格](spec/style-v1.md)、對應的 `design/` 已確認頁面與直接相關契約；不重問已授權事項，不把探索稿當定型。
 - 修改架構邊界才讀 [前端邊界](docs/architecture/frontend-boundaries.md) 的相關段落；架構測試只在該風險涉及時執行，不加例外規避。
 
