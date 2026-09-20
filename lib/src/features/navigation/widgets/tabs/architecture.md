@@ -65,4 +65,5 @@ Milestones：
 估計：cold-start，參照既有 `KlpTabs` 與歷史 Document Tabs；預期 10k–18k tokens、
 45–100 分鐘。超過 26k tokens 或 150 分鐘時停止檢查焦點與 action ownership。
 
-PLAN READY：所有目前 P1 已映射至 DTR-S1，沒有未決的公開邊界。
+DTR-S1 已完成：直接 Flutter rich tabs、受控事件、鍵盤選取、dirty／pin／close semantics
+已由 foundation 匯出；公開入口 analyze、既有 tabs／a11y tests 與 scope check 通過。
