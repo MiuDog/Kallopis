@@ -85,3 +85,6 @@ SA-01～SA-11 均已實作；editor host ownership 證據見 [Editor Host Owners
 
 舊 `KlpWorkspaceBlock` 的逐 kind 能力去向與不恢復理由見
 [Workspace Block 能力審核](workspace-block-audit.md)。
+
+薄型架構切換前後所有直接 workspace public family 的逐項去向見
+[Direct Workspace 能力差異審核](direct-workspace-capability-audit.md)。

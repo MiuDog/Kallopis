@@ -25,6 +25,7 @@
 - Inventory、dartdoc reference、token discipline、l10n discipline 與 GitHub.io Reference 已重新執行；Reference 產生並驗證 17 個 module、515 個 canonical API 頁。
 - Catalog 已加入 `KlpAppLayout`／floating action、`KlpFrameGroups`、`KlpDocumentTabs`、`KlpAnchoredPopup`／`KlpWorkspaceCommand` 的可操作範例；公開元件覆蓋、明暗模式與逐 specimen 渲染檢查通過。
 - 還原能力的直接公開契約測試 4/4 通過：文件分頁受控事件、Frame Groups 固定 footer、Popup open ownership，以及 App Layout 8px gap／floating-action drag clamp。
+- 薄型架構切換前的直接 workspace public families 已逐項對照；每一項均有現行 owner、明確替代或 KLP-0022 拒絕理由，沒有未分類 family。
 - Kallopis 與 Planist production source 掃描：沒有舊 declarative public import 或 application host symbol。
 
 ## 人類驗收
