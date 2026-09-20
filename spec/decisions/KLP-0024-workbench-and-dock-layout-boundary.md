@@ -38,6 +38,7 @@ compiler 或私有 renderer。
 | DLB-09 | v1 | P2 | `KlpSplitLayout` 的重疊能力在一般 Workbench layout 完成後重新判斷。 | 若新版完整涵蓋固定二／三欄 split，才另行合併或刪除；本階段不先移除。 | deferred |
 | DLB-10 | v1 | P1 | 恢復直接 Flutter `KlpFrameGroups`／`KlpFrameGroup`，讓 Frame 內容可使用受控群組、divider 與固定 footer。 | Consumer 不需自行組裝 Padding／Divider／Scroll footer；所有布局 gap 解析為同一個 8px semantic spacing。 | accepted |
 | DLB-11 | v1 | P1 | Frame group 只接受 Widget 內容，不恢復 node slot、adapter 或 renderer。 | API 從 foundation barrel 可達，且 source 不依賴舊 declarative runtime。 | accepted |
+| DLB-12 | v1 | P1 | `KlpAppLayout` 恢復可選的 draggable floating action；內容是 consumer 提供的 Widget，位置只屬呈現期。 | 預設右下、拖曳不觸發 child tap、Widget 更新保留位置、viewport 縮放後自動 clamp，且不恢復舊 runtime。 | accepted |
 
 ## 責任邊界
 
@@ -67,12 +68,21 @@ min／max 與 flex。它不輸出 Widget、不修改狀態，也不知道呼叫�
   divider 線寬與顏色仍使用 shape／color semantic token。
 - Footer 存在時，主群組位於可捲動區，footer 固定於底部中央。
 
+### Floating action
+
+- `KlpAppLayout.floatingAction` 接受可選 Widget；產品 action／狀態仍由 consumer 擁有。
+- Kallopis 擁有右下預設位置、拖曳手勢、呈現期位置、surface 與 viewport clamp。
+- 可拖曳範圍保留 8px root inset，頂部另避開現行 semantic header extent。
+- 拖曳與點擊由 gesture arena 分離；拖曳不得誤觸 child action。
+- 位置不寫入 storage；移除並重新建立 layout 時回到預設位置。
+
 ## 範圍
 
 範圍內：
 
 - 恢復歷史 Row／Column 組合與 divider 空間計算的產品價值。
 - 恢復 FrameGroups 的直接 Flutter compound component。
+- 恢復 AppLayout 的呈現期 draggable floating action。
 - 保留現行 Dock 的適應性互動與公開模型。
 - 為兩者建立清楚文件、Catalog specimen 與正式 API reference。
 

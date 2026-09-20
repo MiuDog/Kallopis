@@ -66,4 +66,6 @@ Milestones：
 24k–40k tokens、120–240 分鐘。超過 55k tokens 或 360 分鐘時停止檢查 overlay／focus
 ownership 是否應拆成後續 slice。
 
-PLAN READY：AP-01～AP-09 均映射至 APR-S1，沒有未決 P1 架構選擇。
+APR-S1 已完成：direct popup、controlled open、anchored placement、focus、items／actions／
+feedback 及 reusable command flow 已由 foundation 匯出；局部 analyze、既有 menu／context
+menu tests 與 scope check 通過。

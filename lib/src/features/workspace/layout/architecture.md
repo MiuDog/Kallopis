@@ -17,6 +17,7 @@ Pane、Frame、Spacer 與 divider gutter 行為。它只負責一般 Workbench �
 ## 公開介面
 
 - `KlpAppLayout`：第一層 layout root，套用一次 8px semantic inset。
+- `KlpAppLayout.floatingAction`：可選的 draggable Widget，位置由本元件於呈現期保存。
 - `KlpLayoutNode`：封閉的 layout child 資格與 flex 契約。
 - `LayoutRow`／`LayoutColumn`：遞迴線性布局。
 - `LayoutResizeHandle`：占據一份 8px gutter，不提供手勢。
@@ -37,6 +38,8 @@ Consumer 直接注入 Widget 內容；不使用 id、node adapter、bound model 
 - Frame group 的 horizontal inset、standard content gap、transparent gap 與 section gap
   均解析為 8px；divider stroke 與 color 使用現行 shape／color token。
 - Footer 存在時只捲動主 groups，footer 固定在底部中央。
+- Floating action 預設右下；拖曳不觸發 child tap，位置會在 rebuild 保留並在 resize 後
+  clamp 至 8px inset 及 semantic header 下方。
 - Dock module 不依賴或包裝本 module，兩套公開狀態模型保持獨立。
 
 ## 依賴方向
@@ -98,3 +101,25 @@ Milestones：
 
 ALR-S2 已完成：直接 Flutter Frame Groups、五種 divider、8px 語意與固定 footer
 已由 foundation 匯出；公開入口 analyze、既有 layout primitives tests 與 scope check 通過。
+
+## ALR-S3：Floating Action 還原
+
+可觀察結果：`KlpAppLayout` 可選擇顯示 consumer Widget 作為浮動操作；預設右下、可拖曳，
+拖曳不執行 child action，rebuild 保留位置，viewport 改變後仍位於合法範圍。
+
+允許寫入：
+
+- `lib/src/features/workspace/layout/klp_app_layout.dart`
+
+驗收：公開入口局部 analyze；既有 layout tests；source scan 不含 declarative runtime。
+必要新 deterministic tests 由獨立 Test Author 擁有，本 BUILD 不修改 tests。
+
+Milestones：
+
+1. Root API 與呈現 surface：可選 Widget、semantic inset／header boundary 完成。
+2. Drag lifecycle：drag／tap 分離、rebuild retention 與 resize clamp 完成。
+
+估計：cold-start，參照歷史 floating renderer；預期 8k–14k tokens、40–80 分鐘。
+超過 20k tokens 或 120 分鐘時停止檢查 gesture ownership。
+
+PLAN READY：DLB-12 已映射至 ALR-S3，沒有未決 P1 架構選擇。
