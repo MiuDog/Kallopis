@@ -7,6 +7,29 @@ import '../../../foundation/klp_icon.dart';
 import '../../../styling/legacy_theme/klp_theme.dart';
 import '../command_registry/klp_command_registry.dart';
 
+// 有效幾何只屬於本次呈現，不寫回產品或風格權威。
+double _length(double value) => value.isFinite && value > 0 ? value : 0;
+
+double _limit(double value, double available) {
+	final natural = _length(value);
+	if (!available.isFinite) return natural;
+	return natural.clamp(0, _length(available)).toDouble();
+}
+
+EdgeInsets _rowInsets(EdgeInsets raw, double width) {
+	final left = _length(raw.left);
+	final right = _length(raw.right);
+	final total = left + right;
+	var scale = 1.0;
+	if (width.isFinite && total > _length(width)) scale = _length(width) / total;
+	return EdgeInsets.fromLTRB(
+		left * scale,
+		_length(raw.top),
+		right * scale,
+		_length(raw.bottom),
+	);
+}
+
 enum KlpCommandKind { action, toggle }
 
 @immutable
@@ -306,24 +329,27 @@ class _CommandEntryHostState<C> extends State<_CommandEntryHost<C>> {
 			}
 		}
 		_syncNodes();
+		return Semantics(container: true, explicitChildNodes: true, label: widget.label, child: Focus(focusNode: _root, skipTraversal: true, onKeyEvent: _key, child: LayoutBuilder(builder: _content)));
+	}
+
+	Widget _content(BuildContext context, BoxConstraints constraints) {
 		final klp = context.klp;
-		Widget content;
 		if (widget.menu) {
-			content = SizedBox(
-				width: klp.geometry.layout.commandMenuWidth,
+			final width = constraints.constrainWidth(_limit(klp.geometry.layout.commandMenuWidth, constraints.maxWidth));
+			final horizontal = _limit(klp.space.tight, width / 2);
+			final vertical = _limit(klp.space.tight, constraints.maxHeight / 2);
+			return SizedBox(
+				width: width,
 				child: DecoratedBox(
 					decoration: BoxDecoration(color: klp.color.overlay, borderRadius: BorderRadius.circular(klp.menuRadius), boxShadow: klp.overlayShadow),
-					child: SingleChildScrollView(
-						padding: EdgeInsets.all(klp.space.tight),
+					child: ClipRect(child: SingleChildScrollView(
+						padding: EdgeInsets.symmetric(horizontal: horizontal, vertical: vertical),
 						child: Column(mainAxisSize: MainAxisSize.min, crossAxisAlignment: CrossAxisAlignment.stretch, children: [for (final row in _rows) _row(row), if (_rows.isEmpty) KlpText(widget.emptyLabel!, role: KlpTextRole.caption, tone: KlpTextTone.muted)]),
-					),
+					)),
 				),
 			);
 		}
-		else {
-			content = SingleChildScrollView(child: Wrap(spacing: klp.space.actionGap, runSpacing: klp.space.actionGap, children: _rows.map(_row).toList()));
-		}
-		return Semantics(container: true, explicitChildNodes: true, label: widget.label, child: Focus(focusNode: _root, skipTraversal: true, onKeyEvent: _key, child: content));
+		return ClipRect(child: SingleChildScrollView(child: Wrap(spacing: _length(klp.space.actionGap), runSpacing: _length(klp.space.actionGap), children: _rows.map(_row).toList())));
 	}
 }
 
@@ -346,23 +372,29 @@ class _RegisteredCommandRowState extends State<_RegisteredCommandRow> {
 	bool _hovered = false;
 
 	@override
-	Widget build(BuildContext context) {
+	Widget build(BuildContext context) => LayoutBuilder(builder: _content);
+
+	Widget _content(BuildContext context, BoxConstraints constraints) {
 		final klp = context.klp;
 		final state = widget.row.state;
 		final toggle = widget.row.reference.kind == KlpCommandKind.toggle;
 		final highlighted = (toggle && state.checked) || widget.focused || (_hovered && widget.row.enabled);
 		final radius = widget.menu ? klp.shape.control : klp.buttonRadius;
-		final insets = widget.menu ? EdgeInsets.symmetric(horizontal: klp.menuPadding) : klp.buttonInsets;
-		final gap = widget.menu ? klp.space.overlayItemGap : klp.space.controlContentGap;
+		final rawInsets = widget.menu ? EdgeInsets.symmetric(horizontal: klp.menuPadding) : klp.buttonInsets;
+		final insets = _rowInsets(rawInsets, constraints.maxWidth);
+		final remaining = constraints.maxWidth - insets.horizontal;
+		final icon = _limit(klp.space.iconSmall, remaining / 2);
+		final rawGap = widget.menu ? klp.space.overlayItemGap : klp.space.controlContentGap;
+		final gap = _limit(rawGap, remaining - icon);
 		final tone = widget.row.enabled ? KlpTextTone.automatic : KlpTextTone.faint;
 		final content = Container(
-			constraints: BoxConstraints(minHeight: widget.menu ? klp.menuItemHeight : klp.buttonHeight),
+			constraints: BoxConstraints(minHeight: _length(widget.menu ? klp.menuItemHeight : klp.buttonHeight)),
 			padding: insets,
 			decoration: BoxDecoration(color: highlighted ? klp.selectionWash : klp.color.clear, borderRadius: BorderRadius.circular(radius)),
 			child: Row(
 				mainAxisSize: MainAxisSize.min,
 				children: [
-					if (state.icon != null) ...[KlpIcon(state.icon!, size: klp.space.iconSmall), SizedBox(width: gap)],
+					if (state.icon != null) ...[KlpIcon(state.icon!, size: icon), SizedBox(width: gap)],
 					Flexible(
 						child: Column(
 							mainAxisSize: MainAxisSize.min,
@@ -394,7 +426,7 @@ class _RegisteredCommandRowState extends State<_RegisteredCommandRow> {
 						onHover: (hovered) => setState(() => _hovered = hovered),
 						hoverHighlight: false,
 						borderRadius: BorderRadius.circular(radius),
-						child: content,
+						child: ClipRect(child: content),
 					),
 				),
 			),
