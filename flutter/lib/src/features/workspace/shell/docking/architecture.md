@@ -1,8 +1,31 @@
 # Flutter Dock
 
-修訂 `FLUTTER-DOCK-STATE-r1`；PLAN READY。擁有此 docking 目錄；公開入口由 foundation 匯出。保留直接 KlpDockLayout／Panel／Area／Group；不引入通用 node tree、renderer 或產品 storage。
+修訂 `FLUTTER-DOCK-OPS-r1`；PLAN READY。擁有此 docking 目錄；公開入口由 foundation 匯出。保留直接 KlpDockLayout／Panel／Area／Group；不引入通用 node tree、renderer 或產品 storage。
 
-## 當前 slice FLUTTER-DOCK-STATE-1（完成）
+## 當前 slice FLUTTER-DOCK-OPS-1（READY）
+
+依共通 WB-DOCK-OPS-r1，公開 applyKlpDockAction({required KlpDockLayoutData layout, required List<KlpDockPanelPolicy> panels, required KlpDockAction action}) → KlpDockActionResult（layout／changed），由 foundation 匯出。保留全部原 const model／Widget API，純操作不認識產品內容、theme 或 storage。
+
+公開 enum KlpDockArea 為 left／right／bottom。const KlpDockDestination.tab({required area, required String groupId, required int index})、.group（同欄位加 required double extent）擁有 readonly area／groupId／index／nullable extent／createsGroup。const KlpDockAction 的 named constructors：select({required panelId})、move／open({required panelId, required destination})、merge({required sourceGroupId, required targetGroupId, required int index})、close({required panelId, required bool approved})、visibility({required area, required bool isVisible})、resizeArea({required area, required double extent})、resizeGroup({required groupId, required double extent})。所有identity為String、area為KlpDockArea、destination為KlpDockDestination；Action私有tag／payload由typed constructors維持合法形狀，不提供JSON action parser或通用Widget schema。index為int，extent在apply驗證finite／range；constructor不以assert阻止負數，以便在operation邊界用FormatException明確拒絕。new group id依操作前全域groups檢查，index依移除source後列表長度驗證。
+
+來源 klp_dock_layout_operations.dart 擁有 typed action／destination及單步操作；使用現有 codec.encode／restore 驗證目前與結果，不複製保存parser。working collections必為自己的lists；最後用codec產生深層immutable快照。非法目前layout、缺清冊、capability、unknownpanel/group、identity、index或extent全部FormatException；close false合法no-op；pure action不執行關閉callback，UI必先交產品批准。resize只是偏好尺寸，不替代UI finite constraints。
+
+BUILD僅write flutter/lib/src/features/workspace/shell/docking/klp_dock_layout_operations.dart、flutter/lib/kallopis_foundation.dart新增export；architecture、所有tests、codec／model／Widget／theme／style／example／config及其他module唯讀。TestAuthor唯一可寫flutter/test/dock_layout_operations_test.dart，採React operations test同一初始layout及成功／拒絕情境；typed Dart不能表示錯誤primitive類型，不用compile failures冒充behaviorRed。
+
+M1 tabs／groups／close／visibility及atomic rejection，M2 resizepreferences／immutable／publicanalyze／scope。cold-start5k–9k tokens／40–70分鐘，參照REACT-DOCK-OPS-1；12k tokens／90分鐘或需要改現有codec／Widget回PLAN。根module擁有publicexport，細節責任在此module；GUI與Dock尺寸保護接續同一Workbench stage。
+
+```mermaid
+flowchart TD
+	UI[產品或UI提交] --> Action[KlpDockAction / Destination]
+	Action --> Apply[applyKlpDockAction]
+	Apply --> Codec[既有encode / restore]
+	Apply --> Working[owned working lists / action]
+	Working --> Codec
+	Codec --> Result[immutable layout / changed]
+	Result --> UI
+```
+
+## 已完成 slice FLUTTER-DOCK-STATE-1
 
 依 [WB-DOCK-STATE-r1](../../../../../../../docs/architecture/workbench-dock-contract.md) 完成 JSON 保存／載入／registry reconciliation。BUILD 僅可寫 `flutter/lib/src/features/workspace/shell/docking/klp_dock_layout_codec.dart` 與 `flutter/lib/kallopis_foundation.dart` 的新增 export。既有模型、Widget、私有拖放算法、theme、style、example、config、architecture、tests 唯讀。Test Author 唯一可寫 `flutter/test/dock_layout_codec_test.dart`。
 
