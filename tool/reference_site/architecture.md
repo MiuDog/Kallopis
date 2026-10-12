@@ -298,7 +298,7 @@ validateReactSpecimens持有schema/identity/欄位/實際factory/雙向清單inv
 
 目前保護擴為獨立4e1fdc16 CLI新增兩項，原4 assertions保持；同檔6/6 Green零skip，hash72270A60E390CF8629B9774B14D9E1946CA8D00D2107CE2A6710AA6BE81CBD49。任意小清單驗證生成每頁iframe/query/bundle exact資產、verifier拒絕query破壞；缺registry檔／missing/ghost/illegal factory/schema同權威輸入使verify失敗、generate失敗且前產物完整hash保留。TestAuthor只調整自身fixture交易邊界：verify本來會写報告，因此在generate前capture hash；未弱化原斷言、未取得有效產品Red。Pages原同檔命令現在強制6checks；source無新增改動。
 
-## DOCS-REACT-SCENARIOS-1（READY）
+## DOCS-REACT-SCENARIOS-1（IMPLEMENTED；實際窄 browser pending）
 
 修訂DOCS-REACT-SCENARIOS-r1，依IDOC-04/05/08及React example公開scenario-registry。只接已實作React三場景到網站正式入口；Flutter場景與全量元件仍原goal，不改既有23元件覆蓋。exact generate.mjs、verify.mjs、新react-scenarios.mjs。CLI新增--react-scenes，只允許與--react共同使用；無此旗標保持舊Node15與React6 fixture／環境依賴，後續CI owner另slice強制--react --react-scenes。缺明確scene資料不能靜默退總覽。
 
@@ -325,3 +325,7 @@ flowchart LR
 	Validate --> Verify[verify / source對照]
 	Pages --> Status[既有load狀態 / 同scene h1]
 ```
+
+BUILD ea8c9561 exact3，獨立15be2093只測試單檔7/7 Green零skip，SHA256 F7607F189E3BBC68453A959DDA821DE761ADC448F7CA81F07A79844EB025ED96；未取得有效Red。原Node15及React6全部Green未改，真實--react --react-scenes生成561＋23元件＋3場景並verify成功，scope3/diff通過。原Node15會生成不含React的本地產物，測後重新正式generate/verify再做native，沒有用舊fixture產物宣稱GUI存在。
+
+Native5203 /Kallopis/由docs中心實際link進索引，索引三link逐頁，各自iframe h1/title與loaded均確認；VS Code iframe草稿、保存命令1、dark保留輸入，独立相同query link及direct refresh再loaded。error/warn空。main build/react-docs-gui-vscode.png；感官human-pending。viewport override在docs頁籤未真正套用，觀察706×668及另一1280×720，不能稱360已驗收；已reset，保留pending。CLI protected7含任意4scene、合法source title篡改／query／extra頁拒絕、六種非法source／缺bundle生成失敗保留既有完整網站及旗標相依。Pages完整scene flags/protected7由CI-REACT-SCENES-1接必跑，remote Ubuntu待最终push。

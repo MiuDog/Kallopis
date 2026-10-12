@@ -48,3 +48,17 @@ flowchart TD
 BUILD exact1 pages.yml。local npm ci初次EPERM為先前本工作樹Vite5182與5180程序鎖rolldown binary；逐一核對CommandLine確為本隔離react/node_modules/vite後關閉12956／11228，再同npm ci成功，lock/source未改。public build／example build／fresh23 extract／protected4／generate --react／verify --react均Green，scope1/diff；602.78KB既有bundle提示保留，未放寬門檻。原Node15已在本輪網站slice全Green；Pages現Node-only mandatory React，實際Ubuntu runner仍pending最終push，不冒稱remote完成。
 
 獨立TestAuthor擴充同react_specimens.test.mjs至6項（原4＋CLI2），Pages既有同檔命令自動執行全部6；local6Green零skip，無需更改workflow或弱化閘門。
+
+## CI-REACT-SCENES-1（READY）
+
+修訂CI-REACT-SCENES-r1，exact pages.yml。在既有React6測試之後加入node --test tool/reference_site/test/react_scenarios.test.mjs（獨立7），generate／verify各加--react-scenes，保留--react。既有Node24／純Node15／React build/example/fresh清單與assets／artifact/deploy／permissions／triggers保持。scene metadata與bundle由React example擁有，Pages不能漏正式scene頁；舊Node-only測試fixture仍無額外環境需求。YAML使用語法必要空格。
+
+單M1 local同protected7與正式generate/verify、inspect順序、scope1/diff；原15/6本輪已Green，不重裝不變套件。估1k～2k/5～15分鐘，參考CI-REACT-DOCS-1；3k20或外module回PLAN。architecture/test/config除此exact workflow皆唯讀；Ubuntu實際執行pending最終push，本機不冒稱remote。
+
+```mermaid
+flowchart LR
+	React[原build / example / fresh清單] --> Component[原React6]
+	Component --> Scene[獨立scene7]
+	Scene --> Gate[generate / verify --react --react-scenes]
+	Gate --> Artifact[原Pages artifact / deploy]
+```
