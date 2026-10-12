@@ -167,3 +167,30 @@ visibility 保存收合／展開；resizeArea／resizeGroup 只更新有限偏�
 `resolveKlpDockGeometry` 接受目前容器的有限 `width`／`height`、保存 `layout`、左右 `minExtent`／可選 `maxExtent`、可選 Bottom 限制，以及語意投影的 `handleExtent`／可選 `headerExtent`。回傳不可變的 Stage、各區、header、handle 矩形與 `maximumLeft`／`maximumRight`／`maximumBottom`；呈現及 pointer 使用相同座標。
 
 空間不足會同比例壓縮 minimum；保存偏好保持原值。正 Infinity maximum 表示無邏輯上限，其他尺寸須有限非負；縮放提交需再把實際 maximum 與產品邏輯 min/max 求交集，不足 minimum 時不回寫縮放。省略 header 與零高 header 槽不同；省略 Bottom 限制只允許 Bottom 隱藏且無群組。非法輸入以 TypeError 拒絕，caller 不修改。這是純尺寸入口，React 可拖放 Dock 元件仍在接續實作。
+
+## React Dock 元件
+
+`KlpDockLayout` 由公開套件入口提供，必須位於 `KlpThemeProvider` 內。產品持有唯一 `layout`，在 `onLayoutChanged` 中決定採用新值；元件不自行保存副本。`panels` 是完整清冊，每項提供 `id`、非空 `label`、React `content`，可選 `icon`、能力限制、`isPinned`／`isDirty`、`onCloseRequested` 與 `closeLabel`。Stage／頂列是產品內容，原生宿主 `style` 供外部寬高，有限配額及內部style由本庫負責。
+
+```tsx
+import { KlpDockLayout } from '@kallopis/react';
+
+<KlpDockLayout
+	layout={layout}
+	panels={panels}
+	stage={productStage}
+	leftConstraints={{ minExtent: 80 }}
+	rightConstraints={{ minExtent: 80 }}
+	bottomConstraints={{ minExtent: 32 }}
+	onLayoutChanged={setLayout}
+	onCloseError={(error, panelId) => showCloseError(error, panelId)}
+	areaLabels={{ left: '工具', right: '屬性', bottom: '輸出' }}
+	style={{ width: '100%', height: 400 }}
+/>
+```
+
+分頁 click、左右方向键、Home／End 會循環選取並聚焦；目前 active 的重複選取不通知。邊緣入口切換收合，非active／收合正文保留DOM，因此同位置的原生輸入不因尺寸、風格或重新呈現而丟值。`ref` 指向布局宿主；SSR先輸出零尺寸槽，client量測後配置。
+
+`onCloseRequested` 回傳同步 boolean 或 Promise<boolean>；false保留布局，true才從最新布局移出，不刪清冊或產品正文。pending只停用該close；面板曾移除再開、批准callback替換或元件卸載後，舊批准無效。callback需保持identity；錯誤或非boolean回傳交`onCloseError`，未提供則宿主reportError／console.error。產品以`closeLabel`本地化關閉名稱；metadata不改關閉權限或保存格式。
+
+目前完成呈現、選取、收合及批准關閉；拖放、分割、pointer縮放與preview接線仍在同Workbench stage接續。驗證包含公開SSR/hydration與受控DOM checks，nativebrowser示範尚待接線。

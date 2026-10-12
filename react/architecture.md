@@ -282,7 +282,7 @@ flowchart TD
 
 公開KlpDockPanel extends KlpDockPanelPolicy：label:string非空供分頁及可及名稱；content:ReactNode由產品擁有；icon?:ReactNode；draggable?:boolean預設true；isPinned?/isDirty?:boolean預設false只呈現；onCloseRequested?:()=>boolean|Promise<boolean>；closeLabel?:string非空、缺省Close加label。政策欄位沿原allowSide/allowBottom。props KlpDockLayoutProps extends Omit<HTMLAttributes<HTMLDivElement>,'children'>：layout:KlpDockLayoutData、panels:readonly KlpDockPanel[]、stage:ReactNode、contentHeader?:ReactNode、leftConstraints/rightConstraints必填、bottomConstraints可選、onLayoutChanged:(layout)=>void必填；onCloseError?:(error:unknown,panelId:string)=>void供產品錯誤呈現；label?:string缺省Workbench；areaLabels?:Partial<Record<KlpDockArea,string>>缺省Left/Right/Bottom。原生style只能組裝宿主外部尺寸，不覆蓋內部配額。提供有限enclosing容器，root填滿，ref連接宿主。
 
-### REACT-DOCK-NATIVE-1（READY）
+### REACT-DOCK-NATIVE-1（完成）
 
 本slice完成可使用的受控呈現/選取/收合與批准關閉。每次render先以既有codec/registry驗證完整layout；missing/capability/duplicate與非法props TypeError整份拒絕。root宿主量測後使用resolveKlpDockGeometry；SSR首次零尺寸DOM、hydration後量測，不碰storage/window於render。ResizeObserver與現有observeLayout生命週期可重用；box以未transform的CSS尺寸為準，fallback DOMrect，border/padding須在宿主擁有且不改保存。resize/style只重新分配，不通知onLayoutChanged。
 
@@ -309,3 +309,18 @@ flowchart TD
 	Actions --> Caller[一次 onLayoutChanged]
 	Lifecycle --> Errors[onCloseError / host reportError]
 ```
+
+實作7690b23b：9獨立DOM/SSR checks、librarybuild、typedpublicconsumer及4paths scope通過；protectedhash A85874E8854C56A775AA7E049EF40E8BF9BA8C157E8488EB8C752B9B4F9A296B。基線缺publicexport/declarations為compileYellow；同checks全部Green，測試未改。部分asyncclose案例有React act harness警告，沒有console空的證據；尺寸為jsdom synthetic，nativebrowser與感官仍待example。不把native1宣稱完整停靠操作；scope只於7690b23b閉合。
+
+| 當前定義 | 來源 | 責任 |
+| --- | --- | --- |
+| KlpDockPanel／KlpDockLayoutProps | [workbench-dock.tsx](src/workbench-dock.tsx) | 產品內容/metadata/批准、受控狀態/限制/可及名稱/ref公開邊界 |
+| label／numeric／validate | 同上 | 非空名稱、semantic有限值、純codec及registry前置；不freeze產品ReactNode |
+| position／KlpDockLayout | 同上 | 有限slot styles、宿主與穩定stage/header/areas/內容DOM |
+| KlpDockLayout.commit／keyboard／renderArea | 同上 | purechanged一次通知、循環選取與focus、linear groups/有限margin/chrome/metadata |
+| CloseRequest／placed | [workbench-dock-lifecycle.ts](src/workbench-dock-lifecycle.ts) | 請求callback/panel身分；查目前仍placed，沒有保存鏡像 |
+| useDockSize／dimension | 同上 | CSS內容軸/DOM fallback及observer cleanup，equal尺寸避免循環更新 |
+| useDockClose／update／current／report／requestClose | 同上 | instance pending/刷新、stale檢查、產品或宿主錯誤、從最新layout批准提交 |
+| useDockClose effect／approval async callback | 同上 | StrictMode setup/dispose、caller替換時失效、boolean結果及finally清理 |
+
+下一slice在同stage接pointer reorder/move/split/resize/preview及公開example；其READY packet另固定輸入生命周期及exactwritepaths。
