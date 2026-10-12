@@ -100,10 +100,12 @@ class _KlpCommandEntry<C> {
 }
 
 class _KlpCommandObserver {
-	_KlpCommandObserver(this.listener) : relay = (() => listener());
+	_KlpCommandObserver(this.listener, this.isNative) : relay = (() => listener());
 	/* listener 是 caller callback；relay 的唯一 identity 可精確移除同 callback 的個別 owner。 */
 	final VoidCallback listener;
 	final VoidCallback relay;
+	/* isNative 限制 removeListener 只解除原生 owner，subscribe 的 token 不受同 callback 影響。 */
+	final bool isNative;
 }
 
 /// 集中命令狀態與執行入口，不擁有產品 context、持久化或業務副作用。
@@ -183,19 +185,19 @@ class KlpCommandRegistry<C> extends ChangeNotifier {
 	}
 
 	VoidCallback subscribe(VoidCallback listener) {
-		final observer = _addObserver(listener);
+		final observer = _addObserver(listener, false);
 		return () => _removeObserver(observer);
 	}
 
 	@override
 	void addListener(VoidCallback listener) {
-		_addObserver(listener);
+		_addObserver(listener, true);
 	}
 
 	@override
 	void removeListener(VoidCallback listener) {
 		for (final observer in _observers) {
-			if (identical(observer.listener, listener)) {
+			if (observer.isNative && identical(observer.listener, listener)) {
 				_removeObserver(observer);
 				return;
 			}
@@ -314,9 +316,9 @@ class KlpCommandRegistry<C> extends ChangeNotifier {
 	KlpCommandExecutionResult _outcome(String id, KlpCommandExecutionStatus status) => KlpCommandExecutionResult._(commandId: id, status: status);
 	KlpCommandExecutionResult _failure(String id, Object error, KlpCommandErrorPhase phase) => KlpCommandExecutionResult._(commandId: id, status: KlpCommandExecutionStatus.error, error: error, phase: phase);
 
-	_KlpCommandObserver _addObserver(VoidCallback listener) {
+	_KlpCommandObserver _addObserver(VoidCallback listener, bool isNative) {
 		_requireOpen();
-		final observer = _KlpCommandObserver(listener);
+		final observer = _KlpCommandObserver(listener, isNative);
 		_observers.add(observer);
 		super.addListener(observer.relay);
 		return observer;
