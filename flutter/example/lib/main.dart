@@ -4,8 +4,16 @@ import 'package:kallopis/kallopis.dart';
 import 'catalog/registry.dart';
 import 'catalog_theme_scope.dart';
 import 'catalog_shell.dart';
+import 'component_specimens.dart';
 
-void main() => runApp(const KallopisCatalogApp());
+void main() {
+	final query = Uri.base.queryParameters;
+	if (query.containsKey('specimen')) {
+		runApp(ComponentSpecimenApp(name: query['specimen'] ?? ''));
+		return;
+	}
+	runApp(const KallopisCatalogApp());
+}
 
 /// Kallopis 的元件目錄。
 ///
