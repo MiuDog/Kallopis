@@ -18,3 +18,4 @@ export 'src/styling/legacy_theme/klp_theme_scope.dart';
 export 'src/styling/legacy_theme/klp_typography_theme.dart';
 export 'src/styling/legacy_theme/klp_visual_style.dart';
 export 'src/styling/legacy_theme/klp_visual_style_json.dart';
+export 'src/styling/style_pack/klp_style_pack.dart';
