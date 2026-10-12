@@ -519,3 +519,32 @@ Native5203 prefix四頁自己的props/control文字2操作。Terminal copy1/clea
 FilePreview原group onPressed1、Open externally2、Download3，都只記公開回呼、不開實檔；ready/loading/error/unsupported四state實際呈現，preview child動作1與root3分開，textContent資料另控制呈現。Code child草稿四mode/spacious/local320保持與root7/child1/input2；reset回初始props/0且環境保持。console error/warn空；main build/flutter-viewer-collection-specimens.png、flutter-viewer-collection-native.json保存證據。actual360 browser與感官human-pending，local320不替代。Flutterfixture117／273，剩156及全量网站/style audit等仍原goal，未提前push；actual單task usage無量測null。
 
 State _controls/_target/_usage只自己的props，_limit公開typed三態，_code/_child只consumer示意內容；_languageChange/_wrap/_lineNumbers/_toggleView/_expand/_copy/_review/_clear/_open/_external/_download記原public callbacks及consumer投影，_childAction/_input分開、_edit只control，dispose清三controller，build有限280scroll舞台。庫演算法、正文或終端執行核心沒有複製。
+
+
+## FLUTTER-NAVIGATION-SELECTION-SPECIMENS-1（READY）
+
+修訂FLUTTER-NAVIGATION-SELECTION-SPECIMENS-r1；IDOC-01/02/03/06/08。exact lib/component_specimens.dart、新 lib/navigation_selection_specimens.dart。十三target：KlpActionGroup、KlpBreadcrumb、KlpDocumentTabs、KlpPagination、KlpPreviewTree、KlpRailItem、KlpSidebarButtonGroup、KlpSidebarIdentityHeader、KlpSidebarNavigationButton、KlpSidebarNavigationGroup、KlpSidebarSectionLabel、KlpTabs、KlpViewSwitcher。NavigationRail/Navigator/PublicationProgressOverlay另slice，仍全273目標。
+
+NavigationSelectionComponentSpecimen(name)只public foundation與Flutter widgets；State擁有label/detail/draft controllers、consumer selected/page/closed/pinned、資料數量與callback結果。每頁真實constructor/publicDTO/owncontrols/usage；DocumentTabs原selected/close/pin回呼回寫tabs，close後selected移到可用first或null，restore由consumer明示；Tabs原鍵盤/選取回寫索引，數量改變保持合法selected；ViewSwitcher ID資料投影；Breadcrumb/PreviewTree只回呼紀錄，不虛構內部狀態。Pagination用既有public caller慣例page2/count9作參考，示例page1/count5與前後publiccallback回寫，數量合法保持。Sidebar/ButtonGroup/NavigationGroup child原callbacks明示與root分開；IdentityHeader trailing提供single child input/action，avatarLabel/semanticLabel不依外部image；RailItem只自己的publiccallback不引入reorder算法。
+
+control文字只記control；State環境保留、epoch reset、dispose清controller。有限280scroll舞台，橫向文件/tab/breadcrumb必要時原生水平scroll+consumer760寬host，不能當library narrow算法已驗收。無新core/persist/crosslanguage邊界，不新增鏡像tests，library/tests/config/style/site/docs禁止寫。
+
+驗收十三registry/formalrenderable、publicanalyze、同sourceprefixrelease、native13 ownprops/文字/selection/close/pin/keyboard/child/page、四mode/spacious/local320保持draft/結果与reset、scope2/diff。actual窄browser與感官human-pending。估7k～14k/50～100分鐘，參考DATA/CONTENT；M1 source13/analyze/build（8k55），M2 native/state/scope（14k100）；21k150或public不足回PLAN，actual單taskusage無量測null。
+
+| Source / class / function | 責任 |
+| --- | --- |
+| navigationSelectionSpecimenNames / NavigationSelectionComponentSpecimen | 自己的公開route |
+| State controls/target/usage/build | 公開props與DTO、合法host |
+| State select/close/pin/page/child/input/edit/dispose | 原root與明示child分開、consumer資料與controller生命週期 |
+| component fixture | 保留environment與epoch |
+
+```mermaid
+flowchart TD
+	Host[ComponentSpecimenApp] --> Fixture[NavigationSelectionComponentSpecimen]
+	Fixture --> Props[自己的props / DTO controls]
+	Props --> Target[真實導覽元件]
+	Target --> Callback[原selection / close / pin / page / child]
+	Callback --> Data[consumer資料與結果]
+	Data --> Target
+	Host --> Reset[epoch重建]
+```
