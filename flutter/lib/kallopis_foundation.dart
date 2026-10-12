@@ -213,3 +213,4 @@ export 'src/foundation/surface/page_background/klp_page_background_recipe.dart';
 export 'src/foundation/content/klp_rich_text.dart';
 export 'src/foundation/content/klp_text.dart';
 export 'src/foundation/klp_palette.dart';
+export 'src/features/actions/command_keymap/klp_command_keymap.dart';
