@@ -41,7 +41,8 @@ class KlpFormSection extends StatelessWidget {
 								label: title,
 								onPressed: onToggle,
 								expanded: !collapsed,
-								builder: (context, style) => KlpText(title, role: KlpTextRole.section),
+								// 標題名稱由互動原語提供，避免裝飾文字重複報讀。
+								builder: (context, style) => ExcludeSemantics(child: KlpText(title, role: KlpTextRole.section)),
 							),
 						if (description != null) ...[
 							const KlpGap.heightSize(KlpSpaceSize.tight),
