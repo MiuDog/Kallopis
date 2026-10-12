@@ -562,3 +562,9 @@ BUILD9999e289只新增[commands-demo.tsx](example/commands-demo.tsx)及main兩�
 | createCommands／save／wait／toggleGrid／fail／disposeCommands | 每setup新owner、async範例業務及cleanup |
 | refreshContext／onResult／onDismiss | 清冊失效通知、產品原值結果及受控關閉 |
 | openPalette／toggleSave／toggleFailure | 明確產品控制，範例不提供全域快捷鍵 |
+
+## REACT-COMMAND-PALETTE-VIEWPORT-1（READY）
+
+REACT-COMMAND-PALETTE-VIEWPORT-r1：native大參數匯入成功後window.innerWidth1280、document clientWidth1265（捲軸），panel1264/left0.4小於inset8；320viewport亦left0.4。原geometry對inner尺寸有限但與fixed containing block可用寬不同。bounded修復只`react/src/command-palette.tsx` observeViewport及private有效viewport讀取；首選ownerDocument.documentElement實際clientWidth/Height，無layout DOM client0合理fallback原window有限尺寸；若native client viewport變動，windowresize或可用原生ResizeObserver刷新同state。theme/query/session/commands/CSS及公開型別保持契約，不改其他module。
+
+fresh隔離TestAuthor只new react/test/command-palette-viewport.test.mjs，保護client1265×705 vsinner1280×720的有效width<=1249/height<=689、同session視窗改變與finite fallback；既有11 palette checks hash不變。M1窄regression Red→Green（1k/10分鐘）、M2同11 public checks/build/native大參數/320邊距及exact1pathscope（3k/20分鐘）；cold2k～4k/15～25分鐘參照palette原BUILD；6k/35分鐘或CSS/其他來源要變回PLAN。

@@ -34,6 +34,8 @@ React dialog role/aria-modal/名稱，input combobox role、aria-controls唯一l
 
 React portal投到owner document.body，從同useKlp tokens投影scoped styleVariables與mode，不能在portal外重建default ThemeProvider導致自訂pack丟失。SSR open/closed都不輸出modal，client mount後呈現，不產生hydration差異。Flutter原生overlay保留當前theme/locale，無第二份權威。感官/browser證據待專屬example，不用synthetic checks取代。
 
+React有效viewport為document固定定位可用client尺寸（排除原生捲軸保留寬高）；不得用含捲軸inner尺寸使極大panel侵入四邊inset。同open viewport改變刷新幾何並保留query/selection；無layout DOM harness可fallback有限inner尺寸，不當成native邊距證據。
+
 參考：[VS Code command palette](https://code.visualstudio.com/docs/editing/getting-started/userinterface)、[W3C combobox](https://www.w3.org/WAI/ARIA/apg/patterns/combobox/)、[W3C modal dialog](https://www.w3.org/WAI/ARIA/apg/patterns/dialog-modal/)。明確範圍是command action候選，不宣稱完整assistive-tech認證。
 
 ## 必要證據
