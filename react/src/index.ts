@@ -13,3 +13,4 @@ export * from './command-entries.js';
 export * from './command-palette.js';
 export * from './command-popup.js';
 export * from './command-keymap.js';
+export * from './command-shortcut-host.js';
