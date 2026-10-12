@@ -7,6 +7,7 @@ export const documents = [
 	['spec/interactive-docs-v1.md', 'docs/guides/interactive-docs-v1.html', '互動文件與 GUI 範例', 'Guide'],
 	['docs/research/workbench-reference-survey.md', 'docs/guides/workbench-reference-survey.html', 'Workbench 官方參考', 'Guide'],
 	['docs/architecture/workbench-stage-v1.md', 'docs/guides/workbench-stage-v1.html', 'Workbench 本階段計畫', 'Guide'],
+	['docs/architecture/workbench-linear-contract.md', 'docs/guides/workbench-linear-contract.html', 'Workbench 線性尺寸規則', 'Guide'],
 	['docs/ai/product-usage.md', 'docs/guides/docs-ai-product-usage.html', 'Flutter 產品使用', 'Guide'],
 	['docs/architecture/multi-framework-verification.md', 'docs/guides/multi-framework-verification.html', '跨框架整合驗證', 'Guide'],
 	['docs/architecture/README.md', 'docs/guides/docs-architecture-README.html', 'Architecture', 'Guide'],
