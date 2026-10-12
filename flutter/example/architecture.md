@@ -444,7 +444,7 @@ Timeline公開label和child草稿在四mode/spacious/local320與回呼保持；r
 State _controls/_target/_usage操作自己的公開參數與constructor，_stepper給水平原生scroll host，_timelineContent只first item持有草稿controller，其餘普通內容，避免多input共用controller；_task/_cancel只root、_input/_childAction只child、_edit只control；_countChange維護consumer合法索引/Set，_checkAll給DTO checked資料，dispose清三controller，build280有限舞台。
 
 
-## FLUTTER-DATA-COLLECTION-SPECIMENS-1（READY）
+## FLUTTER-DATA-COLLECTION-SPECIMENS-1（IMPLEMENTED；actual窄browser pending）
 
 修訂FLUTTER-DATA-COLLECTION-SPECIMENS-r1，IDOC-01/02/03/06/08。exact lib/component_specimens.dart、新 lib/data_collection_specimens.dart；八target Accordion/DataTable/DateGrid/JsonTree/KeyValueList/KeyValueTable/Tree/TreeItem（Klp前綴），其餘全273目標不變。
 
@@ -471,3 +471,12 @@ flowchart TD
 	State --> Target
 	Host --> Reset[epoch重建]
 ```
+
+
+BUILD exact2；八名稱全部對正式public renderable與registry。初analyze只有未改動tone欄位的prefer_final_fields；改用公開KlpFeedbackTone.info固定demo資料，未抑制診斷。最終同sourcepublic analyze No issues、prefixrelease53.4秒、scope2/diff通過。沒有library/tests/config/style/sitesource更動、無core/persist/crosslanguage新風險，不新增鏡像tests。
+
+Native5203 prefix八route自己的props、empty/恢復與label文字2均操作。DataTable公開sort回呼1將資料2/1/0，第一checkbox選row-2回呼2，原row-1點擊回呼3且選取ID保持；Date index2回呼1。TreeItem原選取item回呼1；Tree child-a選取1、parent折疊2展開3，受控Set []→[parent]、selection維持。KeyValueList detail原copy回呼1/child動作1分開；Json葉title原copy回呼1路徑$.title、nested/items原native展開到葉節點，展開不虛構copy callback。公開複製handler只記錄，未宣稱clipboard寫入；KeyValueTable無callback只自身DTO/title/width/empty。
+
+Accordion原expand item-0回呼1、child輸入2/動作1；四mode/spacious/local320保持draft与原展開，single改開item-1原callback2只[item-1]；明示multiple重建後原操作兩項得到[item-0,item-1] callback4。reset回初始props/closed/0，環境spacious/local320保持。當次console error/warn空；main build/flutter-data-collection-specimens.png、flutter-data-collection-native.json記錄。actual360 browser與感官human-pending、consumer水平host不代替庫內narrow算法驗收。Flutterfixture113／273，剩160及全量網站/style audit等仍原goal，未提前push；actual單task usage未量測null。
+
+State _controls/_target/_usage只自己的公開props；_table使用公開column/row/sort與consumer reversed資料投影，_node使用現有generic public KlpTreeNode不觸FileExplorer；_wide提供有限水平host，_child單一controller內容，_accordion/_selection/_row/_sort/_date/_treeSelect/_treeExpand/_copy記原root投影，_childAction/_input分開、_edit只control，dispose清三controller。TreeItem callback回寫自己selected，Tree children selected依實際id不以deleted旗標冒充。
