@@ -4,12 +4,14 @@
 
 ## 下一個可執行步驟
 
-1. 雙框架command core與registered toolbar/menu已完成；React palette、viewport修正及公開CommandsDemo完成。Flutter palette BUILD2a069faf亦完成；Flutter consumer BUILD04cc372f已交付且analyze／scope2／releaseweb成功；modal修正35614d5b亦完成且nativebrowser同座標outside通過；anchor／context menu採用同registered menu；前置共同ENTRY-GEOMETRY-r1與兩框架local PLAN READY，下一個fresh TestAuthor＋有限入口BUILD，保留既有CommandMenu／WorkspaceCommand caller與core。anchor/context menu尚待接續。
+1. 雙框架command core、registered toolbar/menu、palette及公開CommandsDemo完成。Flutter modal修正35614d5b完成且nativebrowser同座標outside通過；有限入口Flutter BUILD1bdd6321／React BUILDaff1eaf4亦完成，共29／23checks Green。下一步anchor／context menu PLAN並採用同registered menu，保留既有CommandMenu／WorkspaceCommand caller與core；不得複製第二份rows或handler。
 2. 雙框架快捷鍵/chord/scope/conflict/remap/recording契約與接入。不可用core冒充整個命令stage完成。
 3. 網站每個公開可呈現元件專屬互動specimen、registry/bundle/coverage；3GUI×2框架；typedrecipes／完整風格中立與參數／default權威切換。
 4. 補browser hoverpreview/cancel矩陣、Flutter continuousresize與React endcommit差異契約審核；保留所有既有CI/發布閘門，精確commit/push。感官接受human-pending。
 
 ## 當前新完成：雙框架registered command入口
+
+有限入口：Flutter author03d499f2（新geometrytest SHA256 8A88C0D5E29600D4FC20A7C03E12F3B10E2D1804F0BA0E41CA21A55873B2F3EB）2Green／4Red→6＋原23Green；BUILD1bdd6321單source，analyze／scope1／releaseweb47.6s／正常browser通過。React authordb3d4eef（SHA256 4A0A1367AF446966EAAB2237705DB0CE014AEA6DB5F5A4E92AAAE87816E3957A）新11含父項3pass／8fail→11＋原12Green；BUILDaff1eaf4兩source，build／consumer typecheck／scope2／正常＋百萬參數import browser通過；nativeparentclient861下rowpadding430.5，還原draft／checked保持。原protected hashes未改。Flutter極端native、Reactfiniteheight／精確窄viewport仍pending；此次tab10 viewport override未套用，actual1280×720，不冒充320×180證據。截圖flutter-command-entry-geometry.png／react-command-entry-geometry.png在main build/evidence。完整style audit與popup仍後續。
 
 React viewport regression freshauthor a00fe4a2（SHA256 EECF13F973E41D40825EB784DFFF62A8E284336089BE7798583E7CF62C885925）：原inner1280/client1265→panel1264、原inset8只剩left0.4，native大style參數可重現；4checks有3behaviorRed/1Green。bounded單source修正使用實際client viewport/ResizeObserver，同4＋既有11checks/build/typedexample/scope1全部通過。nativeclient1265→panel1249、窄client305→panel289，兩側約8；query跨原生resize保留。style輸入先缺新增primitiveDescription被原子拒絕，補齊後正式import成功，未修改parser配合測試。還原default/dark/errorwarn空；截圖react-command-example.png已更新。
 

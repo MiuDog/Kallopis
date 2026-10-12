@@ -572,8 +572,27 @@ fresh隔離TestAuthor只new react/test/command-palette-viewport.test.mjs，保�
 author a00fe4a2四項中3 behavior Red/1 fallback Green，SHA256 EECF13F973E41D40825EB784DFFF62A8E284336089BE7798583E7CF62C885925。修正observeViewport讀client（無layout合理fallback）、同window resize／native ResizeObserver；同尺寸保留state及cleanup listening guard。4新＋11既有全部Green、library/consumer prod build、1pathscope及兩tests hash不變；569.46KB chunk提示保留。native極大style import實際client1265→panel1249/左右約8，320inner/client305→panel289/左右約8；同open query sv 文件跨resize保留，還原style與dark操作後error/warn空。浮點位置7.9為native量測，不宣稱精確pixel；全部style參數與IME矩陣仍pending。新增private stopObserving只擁有observer cleanup，無CSS/其他module變更。
 
 
-## REACT-COMMAND-ENTRY-GEOMETRY-1（READY）
+## REACT-COMMAND-ENTRY-GEOMETRY-1（COMPLETE）
 
 修訂REACT-COMMAND-ENTRY-GEOMETRY-r1，依[共同有限入口](../docs/architecture/workbench-command-entry-geometry-contract.md)。publicconstructor與same command registry維持；既有command-entries.tsx的共享host／row沿現有nativeclient量測與局部有效CSS變數限制menu actualwidth／outerpadding及row padding／icon／gap，styles.css只入口區段接收effective變數；不能改其他component或stylepackauthority。有限父槽優先而非window寬，native可用ResizeObserver監測及samevalue防loop／cleanup；無layout DOM自然fallback，零尺寸native仍零。height由原scrollport保持自然內容，不以CSS巨大padding撐出有限邊界。
 
 既有ID／order／condition／checked／async／focus節點及callback規則不改；style／size不重建core或產品state。只command-entries.tsx與styles.css入口區段兩writepaths；theme／core／palette／index／tests／config／example／arch唯讀。fresh TestAuthor只new react/test/command-entry-geometry.test.mjs；原12入口protectedtests保持。M1新finite公開checks與原12（3k／20分鐘），M2library／consumer TypeScript／scope2及nativebrowser正常／極端量測（6k／40分鐘）；cold-start3k～7k tokens／20～45分鐘，參照REACT-COMMAND-PALETTE-VIEWPORT-1及REACT-COMMAND-ENTRY-1；10k／60分鐘或需其他source回PLAN。無新公開geometrymodel／第二theme；感官仍human-pending。
+
+BUILDaff1eaf4只上述兩path。fresh authordb3d4eef新11 Node tests基線3pass／8fail（含兩父項），SHA256 4A0A1367AF446966EAAB2237705DB0CE014AEA6DB5F5A4E92AAAE87816E3957A；修正後新11＋原12共23Green，原hash未改。librarybuild／tsconfig.example.json consumer型別／scope2／diffcheck通過。首次TS closure nullability失敗已以guard後const修正；錯誤的example/tsconfig.json檢查入口已更正，未改config。既有原tests的act警告仍保留記錄。
+
+native tab10正常menu300px／outer4px、toolbarpadding16px；共用格線結果1同步。正式JSON匯入百萬pixel tight／padding／icon／gap／menuWidth後，parent client861下toolbarrow861／padding430.5，menu有效padding限制且row0；還原default後草稿與checked保持、error／warn空。native有限高度／精確窄viewport矩陣pending：此次viewport override並未套用tab10，actual仍1280×720，不宣稱320×180通過。
+
+| 私有責任 | 呼叫與邊界 |
+| --- | --- |
+| `finiteLength` | 非有限／負值退化0，不改原pack |
+| `useEntryGeometry`／`observe`／`measure` | parent內容client槽優先，入口client扣除捲軸；原生observer及resize listener cleanup、同值不重建 |
+| 局部CSS變數 | 同semantic padding／border／icon／gap與有效menu外距；只作用入口區段 |
+
+```mermaid
+flowchart TD
+	Provider[同 useKlp semantic] --> Geometry[useEntryGeometry]
+	Native[parent / entry client + ResizeObserver] --> Geometry
+	Geometry --> CSS[入口局部有效 CSS variables]
+	Registry[同 registry / state / ID] --> Row[原 CommandRow / focus / activation]
+	CSS --> Row
+```

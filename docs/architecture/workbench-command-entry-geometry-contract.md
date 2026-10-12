@@ -20,6 +20,12 @@ fresh獨立TestAuthor各有新檔：Flutter test/registered_command_entry_geomet
 
 原Flutter23與React12 protected入口checks唯讀，改同入口的Yellow需重驗。Flutter BUILD只既有command_entries source；React BUILD只command-entries.tsx與其styles.css區段，index／theme／core／其他CSS區段／palette／tests／config／example／architecture唯讀。各framework architecture READY後發exact packet、cleanbase、estimate／milestones及hash。nativebrowser正常與極端style矩陣另記，全部GUI／逐元件docs與快捷鍵仍未完成。
 
+## 已觀察實作證據
+
+Flutter BUILD1bdd6321：新6＋原23共29checks Green，publicanalyze／scope1／releaseweb通過，正常native入口可操作並保留草稿。React BUILDaff1eaf4：新11 Node tests（含父項）＋原12共23Green，librarybuild／consumer typecheck／scope2通過；native正常及百萬pixel參數完整JSON import、default還原均保留草稿／checked。Test Author檔案與原tests hashes保持，細節見各framework architecture。
+
+零／窄有限槽與極端參數已有deterministic保護；Flutter極端native及Reactfiniteheight／精確窄viewport矩陣仍pending。此次Reacttab10 override未實際套用，不宣稱其320×180通過。感官接受human-pending；不以此宣稱完整參數audit、全部網站互動或GUI完成。
+
 ```mermaid
 flowchart TD
 	Host[有限原生宿主 / 自然方向] --> Geometry[同semantic style的局部有效幾何]

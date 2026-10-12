@@ -68,10 +68,29 @@ classDiagram
 ```
 
 
-## FLUTTER-COMMAND-ENTRY-GEOMETRY-1（READY）
+## FLUTTER-COMMAND-ENTRY-GEOMETRY-1（COMPLETE）
 
-修訂FLUTTER-COMMAND-ENTRY-GEOMETRY-r1，依[共同有限入口](../../../../../../docs/architecture/workbench-command-entry-geometry-contract.md)。public Widget／reference／coreAPI保持。當前source的menu外tight padding、row raw insets／iconSmall／gap尚未依有限槽縮配，需在重用menu的popup之前補保護；不以外層clip忽略內部RenderFlex overflow。
+修訂FLUTTER-COMMAND-ENTRY-GEOMETRY-r1，依[共同有限入口](../../../../../../docs/architecture/workbench-command-entry-geometry-contract.md)。BUILD 1bdd6321只既有source，public Widget／reference／coreAPI保持。menu外tight padding與row insets／iconSmall／gap已依有限槽縮配，內部RenderFlex不再溢位；scrollport裁切自然高度內容。
 
 共享host build／row build持原責任，原生LayoutBuilder只供有限presentation budget；新的private有限值／比例padding解析可在同source，無新公開model／theme。menu actualwidth=min偏好及有限槽，outerpadding受短邊限制；row水平insets比例縮配、icon及gap按剩餘分配，labelFlexible／ellipsis保持。自然方向仍自然，height content仍scroll；subscription／generation／ID FocusNode／activation／pending及語意角色不改。
 
 BUILD只klp_command_entries.dart。fresh TestAuthor只flutter/test/registered_command_entry_geometry_test.dart，原registered_command_entries_test.dart及其他tests／theme／core／palette／config／consumer／arch唯讀。M1新公開finite检查＋原23同hash（4k／25分鐘），M2publicanalyze／scope1及nativebrowser正常入口（7k／45分鐘）；cold-start4k～8k tokens／25～50分鐘，參照FLUTTER-PANEL-GEOMETRY-1／FLUTTER-COMMAND-ENTRY-1；12k／70分鐘或需要其他source回PLAN。browser極端style與全部參數audit另pending；感官human-pending。
+
+fresh author03d499f2新6 checks基線2Green／4Red；SHA256 8A88C0D5E29600D4FC20A7C03E12F3B10E2D1804F0BA0E41CA21A55873B2F3EB。BUILD後新6＋原23共29Green；原hash保持，analyze No issues／exact1 scope／diffcheck／releaseweb47.6s通過。native Commands頁工具列切換同步選單及結果1，草稿保留，error／warn空；極端native style矩陣未宣稱完成。
+
+| 私有責任 | 呼叫與邊界 |
+| --- | --- |
+| `_length`／`_limit` | 消除非法幾何，再依有限可用槽限制；自然方向不強制0 |
+| `_rowInsets` | 水平padding按原比例縮配；只回傳本次有效值 |
+| host `_content` | LayoutBuilder提供menu偏好寬及有限外距、toolbar wrap與scroll |
+| row `_content` | 剩餘槽分配icon／gap／文字；原Focus／Semantics／callback保持 |
+
+```mermaid
+flowchart TD
+	HostBuild[host build / same registry] --> HostLayout[host _content / constraints]
+	HostLayout --> RowLayout[row _content / constraints]
+	RowLayout --> Insets[_rowInsets]
+	HostLayout --> Limit[_limit / _length]
+	RowLayout --> Limit
+	RowLayout --> Native[原生 Focus / Semantics / activation]
+```
