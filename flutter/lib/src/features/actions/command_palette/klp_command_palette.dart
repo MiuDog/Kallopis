@@ -166,7 +166,8 @@ class _CommandPaletteState<C> extends State<KlpRegisteredCommandPalette<C>> {
 	Widget _projectOverlay(BuildContext overlayContext) {
 		if (!mounted || !widget.open || _themes == null) return const SizedBox.shrink();
 		final child = Directionality(textDirection: Directionality.of(context), child: Builder(builder: _overlayChild));
-		return _themes!.wrap(Localizations.override(context: context, child: child));
+		// locale 投影會建立語意容器；背景阻擋必須在其外層才涵蓋同 Overlay。
+		return BlockSemantics(child: _themes!.wrap(Localizations.override(context: context, child: child)));
 	}
 
 	bool _ownsFocus(FocusNode? focus) => focus == null || focus == FocusManager.instance.rootScope || focus == _scope || focus == _inputFocus || _scope.descendants.contains(focus);
@@ -246,10 +247,17 @@ class _CommandPaletteState<C> extends State<KlpRegisteredCommandPalette<C>> {
 		_candidates = widget.registry.isDisposed ? [] : _search(widget.registry.list(widget.getContext()), _query.text);
 		final available = _candidates.where((candidate) => candidate.enabled).toList();
 		if (!available.any((candidate) => candidate.state.id == _activeId)) _activeId = available.isEmpty ? null : available.first.state.id;
-		return BlockSemantics(child: Stack(children: [
-			Positioned.fill(child: ModalBarrier(color: context.klp.color.modalScrim.withValues(alpha: context.klp.surface.scrimOpacity), onDismiss: _outside)),
+		return Stack(children: [
+			Positioned.fill(child: _barrier(context)),
 			Positioned.fill(child: LayoutBuilder(builder: _panel)),
-		]));
+		]);
+	}
+
+	Widget _barrier(BuildContext context) {
+		// Windows 的 ModalBarrier 不提供 dismiss 語意；原生名稱仍讀同 caller locale。
+		final label = Localizations.of<MaterialLocalizations>(context, MaterialLocalizations)?.modalBarrierDismissLabel ?? widget.label;
+		final barrier = ModalBarrier(color: context.klp.color.modalScrim.withValues(alpha: context.klp.surface.scrimOpacity), onDismiss: _outside);
+		return Semantics(container: true, label: label, button: true, onTap: _outside, onDismiss: _outside, child: ExcludeSemantics(child: barrier));
 	}
 
 	void _outside() { if (widget.open) widget.onDismiss(KlpCommandDismissReason.outside); }
