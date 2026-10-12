@@ -1,6 +1,6 @@
 # Flutter 公開 consumer 範例
 
-目前目標：IDOC-COMPONENT-REGISTRY-r1 的公開元件專屬路由。庫擁有樣式及互動，example擁有展示資料、控制、回呼觀察與重設。不得引用package:kallopis/src；舊Catalog的coveredComponents／空build不算互動coverage。目前有90個真實fixture；全量273個可渲染元件仍需逐項補足，不宣稱全部完成。
+目前目標：IDOC-COMPONENT-REGISTRY-r1 的公開元件專屬路由。庫擁有樣式及互動，example擁有展示資料、控制、回呼觀察與重設。不得引用package:kallopis/src；舊Catalog的coveredComponents／空build不算互動coverage。目前有138個真實fixture；全量273個可渲染元件仍需逐項補足，不宣稱全部完成。
 
 ## FLUTTER-COMPONENT-SPECIMENS-1（COMPLETE）
 
@@ -632,3 +632,36 @@ flowchart TD
 ```
 
 驗證：五個自己的 public target 新增後累計 138／273。public analyze No issues；同 source prefix release 51.8 秒；scope exact2 pass、diffcheck通過。native Menu Home→Down→Down→Enter 選 entry3、跳過停用 entry2，Escape root1，caption／shortcut 與 framed 控制生效；Bulk entry1／label文字2／danger／callback=null；Editor entry2／danger／selected consumer控制；Selection entry1 與 clear root1/count0 分開，restore count3、dashed false、clearLabel=null 隱藏 clear。Search queryinput2、Previous/Next root4，四 mode／寬鬆／local320保留 query，total0合法0/0、Close root5移除、restore及明示initial重建無額外callback，epoch reset原props/root0而環境保持。入口host明確顯示四 experimental／一 foundation。native JSON／PNG 位於主工作樹 build/flutter-action-utility-*；當前頁 console error/warn 無。完整窄 browser 與感官仍 human-pending，單task tokens未量測 null；全頁映射及總release尚未完成，不宣告全量覆蓋或push。
+
+## FLUTTER-FOUNDATION-DETAIL-SPECIMENS-1（READY）
+
+修訂 FLUTTER-FOUNDATION-DETAIL-SPECIMENS-r1，IDOC-01/02/03/06/08；exact lib/component_specimens.dart 及新 lib/foundation_detail_specimens.dart。十個真實 target：KlpIcon、KlpInlineCode、KlpRichText、KlpShortcutHint、KlpDashedBorder、KlpDashedDivider、KlpGeometricSpinner、KlpPresenceIndicator、KlpSegmentedProgress、KlpStrokeFrame，公開 foundation 入口及正式 manifest constructors/DTO 為契約。
+
+Fixture State 擁有 text/draft controllers、icon weight/選擇、semanticLabel、nullable style override、rich spans/nodes/selectable/unsafe/missing/callback、presence active、progress value/segments、stroke role/state 與原生 root/child/input/control計數。style override 數值從 context.klp semantic theme 推導，null 恢復庫權威；不複製 theme。Spinner duration 變更明示 key 重建，其他環境不換key；finite280舞台，divider 方向使用 finite160host避免無界，自動換行/scroll由consumer宿主提供。rich nodes 與 spans 選擇展示公開優先規則；links/mention callback只記結果，不開外部網站；shortcut文字不宣稱註冊。static targets 沒有root callback，不增加fake互動。
+
+M1 source10/publicanalyze/prefixrelease；M2 native10 ownprops、Rich原callback、container child input/action跨四mode/寬鬆/local320/reset、scope exact2/diff。沒有core/persist/crosslanguage新增，不新增鏡像test；library/tests/config/style/site/docs禁止寫。actual窄browser與感官human-pending。估7k～13k/45～90分鐘（參考DATA/FEEDBACK），M1累計7k45、M2累計13k90；20k130或public不足回PLAN，單taskusage未量測null。
+
+| Source / class / function | 責任 |
+| --- | --- |
+| foundationDetailSpecimenNames / FoundationDetailComponentSpecimen | 精確公開target路由與name |
+| _FoundationDetailComponentSpecimenState controllers/dispose | text/draft生命週期及style切換保留 |
+| controls/target/usage/build | 當次公開props、合法finitehost及可觀察結果 |
+| edit/input/childAction/openLink/openMention | 真正控制、原input/child/root回呼分離 |
+| component fixture dispatch | environment及epoch保持 |
+
+```mermaid
+classDiagram
+	FoundationDetailComponentSpecimen --> _FoundationDetailComponentSpecimenState : createState
+	_FoundationDetailComponentSpecimenState --> KlpRichText : 公開 DTO 與回呼
+	_FoundationDetailComponentSpecimenState --> KlpStrokeFrame : role/state及child
+```
+```mermaid
+flowchart TD
+	Host[ComponentSpecimenApp] --> Fixture[FoundationDetailComponentSpecimen]
+	Fixture --> Controls[controls及semantic參數]
+	Controls --> Target[自己的public target]
+	Target --> Callbacks[原root及child回呼]
+	Callbacks --> State[consumer狀態結果]
+	State --> Target
+	Host --> Reset[epoch明示重建]
+```
