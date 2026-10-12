@@ -261,3 +261,26 @@ flowchart TD
 ```
 
 驗證：獨立 test commit316aaa67，兩個公開widget檢查在實作前皆ArgumentError Red；protected SHA256 051E261E93503E9E12E2A46CDD5D8E2FAAE94DA4510BAFC98CAF873FBCC04829。source b3cff636只改空集合early return並將既有縮排轉tab，非空算法保持；同兩checks Green、public source analyze No issues、scope exact1及diff通過，測試檔hash仍051E261E93503E9E12E2A46CDD5D8E2FAAE94DA4510BAFC98CAF873FBCC04829。prefix release45.7秒；fresh native tab14實際12→60→0→12，空集合無item／selected−1，恢復後item0可操作child2/root0。fresh error/warn空，原錯誤歷史保留於layout utility JSON，修正證據另存masonryFixed與PNG；感官human-pending，單taskusage null。
+
+## FLUTTER-FORM-SECTION-KEYBOARD-1（READY）
+
+修訂 FLUTTER-FORM-SECTION-KEYBOARD-r1；IDOC-08接受可操作控制的鍵盤入口。公開KlpFormSection在onToggle非null時，標題必須可以Tab取得焦點，以Enter或Space一次觸發原onToggle；consumer仍擁有collapsed，收合/展開children及草稿權威不變。onToggle=null保持安全靜態標題，不觸發回呼。constructor與公開barrel不變；標題section字體沿semantic style；互動hover/focus/expanded沿現有KlpActionRegion，不新增鍵盤算法、樣式或controller。
+
+BUILD唯一可寫 lib/src/features/forms/core/klp_form_section.dart，以直接import既有interaction原語，不擴大internal dependencies barrel。修改檔轉tab2、中文欄位理由；tests/config/example/其他library唯讀。獨立Test Author唯一可寫 test/form_section_keyboard_test.dart，只讀公開契約/入口及klp_form_core_test.dart慣例；黑箱Tab/Enter/Space與consumer collapsed轉移、null安全，不能讀private實作或改條件。M1 same public checks實作前behavior Red、記hash；M2最小source修正、same checks Green/publicanalyze/scope1；M3 prefix release及native同展示標題Enter/Space與草稿保持。不重跑無关Green。估2k～6k/20～45分鐘；M1累計2k15、M2累計4k30、M3累計6k45；9k70或跨檔改動回PLAN。感官human-pending，單taskusage null。
+
+| Source/class/function | 責任 |
+| --- | --- |
+| KlpFormSection fields/constructor/build | consumer區段資料、靜態/互動標題組裝與children呈現 |
+| existing KlpActionRegion | 已有focus/鍵盤/語意/hover，不新增第二算法 |
+| independent public keyboard tests | 真實Tab及activation、consumer轉移與null安全 |
+
+```mermaid
+flowchart TD
+	Consumer[公開collapsed及onToggle] --> Section[KlpFormSection]
+	Section --> Mode{onToggle存在}
+	Mode -->|是| Action[既有KlpActionRegion / expanded]
+	Mode -->|否| Static[原semantic section文字]
+	Keyboard[Tab / Enter / Space] --> Action
+	Action --> Callback[原onToggle]
+	Callback --> Consumer
+```
