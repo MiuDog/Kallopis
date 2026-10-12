@@ -5,15 +5,19 @@
 ## 下一個可執行步驟
 
 1. 雙框架command core／registered toolbar／menu／palette／popup及公開CommandsDemo完成。popup Flutter d17be03f protected16＋原23、analyze／scope2；React75c24b4e protected12＋原12、typedconsumer／build／scope3。consumer Flutter173cc9e9／Reactcb1c392d各exact1source：button bounds／右鍵point／Escape／outside無click-through／一次執行／focus／draft nativebrowser觀察。Flutter初次兩失敗是背景fixture收縮，由獨立TestAuthor修正並加入實際Overlay尺寸校验，原assertions保留。網站公開popup extract549；完整窄native／style矩陣與感官pending。快捷鍵共通契約WB-SHORTCUT-CORE-r1及兩端purecore已完成；Flutter11／React9 protected checks、analyze／build／scope2通過，不複製第二份rows或handler。
-2. 雙框架快捷鍵purecore已完成，WB-SHORTCUT-HOST-r1兩端library已完成；REACT-/FLUTTER-COMMAND-SHORTCUT-EXAMPLE-r1 READY，下一步exact1各接Commands consumer／nativebrowser及錄製重綁展示。不可用core冒充整個命令stage完成。
+2. 雙框架快捷鍵purecore已完成，WB-SHORTCUT-HOST-r1兩端library已完成；React consumer e56976aa已完成exact1/typecheck/scope及nativebrowser錄製／重綁／設定；FLUTTER-COMMAND-SHORTCUT-EXAMPLE-r1 READY，下一步exact1 Flutter consumer／nativebrowser。不可用core冒充整個命令stage完成。
 3. 網站每個公開可呈現元件專屬互動specimen、registry/bundle/coverage；3GUI×2框架；typedrecipes／完整風格中立與參數／default權威切換。
 4. 補browser hoverpreview/cancel矩陣、Flutter continuousresize與React endcommit差異契約審核；保留所有既有CI/發布閘門，精確commit/push。感官接受human-pending。
 
-## 最新完成：原生快捷鍵宿主
+## 最新完成：React 快捷鍵公開展示
+
+React e56976aa只commands-demo.tsx：public TypeScript／scope1／diff Green；同registry default scopedkeys、chord、conflicts、record no-dispatch/max4/apply/cancel/restore、valid-invalid JSON與dark原draft nativebrowser觀察。closure與screenshot位於main ignored build。完整IME／style／窄viewport與感官pending。下一個Flutter packet需改成目前clean HEAD；不得沿用2883舊base。
+
+## 已完成：原生快捷鍵宿主
 
 React64d9883f protected6 SHA256F73747DFCA15446033AED1DA46886EC01FC80B2E45E1913E3A0F6D7FCF0A57FB／librarybuild／scope2；Flutter4a3b1088 protected10 SHA256C4333601BD67F8087824B4A193AAAC52933F6F5240AB4F5827A5CDE047C92566／publicanalyze No issues／scope2，同hash保持。原生bubble／child-first、editable/composition OR、owned singleTimer、ignoredmodifier不延長期限、nativefocus取消、borrowedowner清理與same-session latest原async結果皆publiccodechecks通過。React author229cab86修zero-delay JSDOM selectionchange計數fixture；Flutterauthorcc2d4ef9→9ffc0dd7修原Focus dispatch及ignored方向鍵觸發Material巡覽後refocus，原assertions保持、補keydown/repeat確實到達數量。沒有repeat產品Red成立。暫時diagnostic已移除；沒有nativebrowser完成聲稱。公共Guide及使用指南更新，561API／34Markdown／generate/verify/15checks Green。
 
-下一BUILD入口兩端root architecture的SHORTCUT-EXAMPLE-r1 READY；需要建立cleanbase exact1packet，不讀私有庫或改tests/config/CSS。default save primary+s/chord primary+k→s；page grid primary+g＋duplicate conflict；draft component grid override；region failure alt+shift+f；publichost同registry，stablefocus identity、record/application/cancel/restore、strict JSON import/export／原draft／結果一次nativebrowser。產品scope/composition投影由caller擁有，不新增第二handler或style。
+下一BUILD入口Flutter root architecture的SHORTCUT-EXAMPLE-r1 READY；需要更新cleanbase exact1packet，不讀私有庫或改tests/config/CSS。default save primary+s/chord primary+k→s；page grid primary+g＋duplicate conflict；draft component grid override；region failure alt+shift+f；publichost同registry，stablefocus identity、record/application/cancel/restore、strict JSON import/export／原draft／結果一次nativebrowser。產品scope/composition投影由caller擁有，不新增第二handler或style。
 ## 最新完成：雙框架快捷鍵純核心
 
 共同WB-SHORTCUT-CORE-r1，authors1c0c0542；ReactBUILD0b996490 protected9 SHA256127E0B72A6B61B190A5B6DD15F39436BF2953C3C07995913452F7F09584B4D6E，FlutterBUILD188273b8 protected11 SHA2562040C69AAECCF92DCFE542FC8DCB06038A82B4D617437E88B225FADDECF5EE1C，同hash保留。Reactbuild／Flutter publicanalyze／各scope2／diffcheck通過。React初次8Green／1Red是匯出null-prototype不同於普通DTO，以Object.fromEntries修正並安全保存__proto__ ID，同9Green；沒有改測試或Green fallback。Flutter首次11Green。原registry借用；legacy keybinding無改動、沒有native eventloop／timer／focus權威。現在website extract561／34Markdown，generate／verify／15websitechecks通過。實際functions與Mermaid已由owner更新兩端module架構；完整native快捷鍵與GUI尚未接入。

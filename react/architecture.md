@@ -707,7 +707,7 @@ flowchart TD
 	Clear --> Cancel[public core cancellation]
 	Failure[projection or callbacks] --> Report[report / native diagnostic]
 ```
-## REACT-COMMAND-SHORTCUT-EXAMPLE-1（READY）
+## REACT-COMMAND-SHORTCUT-EXAMPLE-1（COMPLETE）
 
 REACT-COMMAND-SHORTCUT-EXAMPLE-r1只example/commands-demo.tsx exact1，公開KlpCommandKeymap／KlpCommandShortcutHost與同既有registry組合。產品effect擁有keymap及dispose，StrictMode每setup建freshowner；原命令handler／draft／toolbar／menu／palette／popup保持單一份，沒有另一handler。platform從產品瀏覽器環境投影mac/other，UI明示目前平台，OS保留鍵不保證可收到。
 
@@ -716,3 +716,34 @@ REACT-COMMAND-SHORTCUT-EXAMPLE-r1只example/commands-demo.tsx exact1，公開Klp
 所有UI用public庫Button／Card／Text／TextField，neutral nativeWrap/Focus區域只作產品布局及事件，不另寫共用視覺。新增可聚焦的KlpSurface等效Card/Text錄製區（public Card／Text），產品按鈕先原生focus再beginRecording該focusID；explicit錄製最多4stroke，不dispatch，finish非空才setOverride(document.save.primary)，cancel／restore可操作。以publicTextField呈現JSON overrides，save/export、load/JSON.parse/import及invalid message；錯誤保留原keymap設定，不在產品重實作validation。產品outer blur重繪讀core現在狀態，不建第二錄製權威。local settings不持久化業務資料，單一產品輸入draft跨操作/theme保持。最後unmount產品disposekeymap，再dispose同registry；library／tests／config／main／CSS／Flutter唯讀。
 
 此reversibleconsumer由既有protectedcore/host tests保護，不新增鏡像tests。cold3k～7k／20～40分鐘，參照REACT-COMMAND-POPUP-EXAMPLE-1；M1 typedconsumer／scope1（3k／20），M2 nativebrowser focusedbutton與draft save/grid/chord／ignoredtext／scope/conflict／record不執行／apply/cancel/restore／valid-invalidimport／draft／一次result（7k／40）；10k／55或跨path需求回PLAN。nativeIME全套及保留OSkeys、感官human-pending，未觀察項明示。websitebundle/全部component specimen另stage。
+
+實作e56976aa exact1source，公開consumer TypeScript、scope gate與diff check通過。native browser已觀察草稿Ctrl+S、Ctrl+K→S各沿原save結果，draft Ctrl+G勝出view.grid.editor、錄製區Ctrl+G勝出view.grid.primary並顯示same-page exact衝突；停用save時ignored，region Alt+Shift+F沿原錯誤出口。explicit錄製Ctrl+Shift+Y不增加執行次數，套用後實際儲存；a→b→c→d後第五鍵ignored，Escape與取消按鈕清錄製；restore匯出空bindings並恢復Ctrl+S。有效JSON改Ctrl+Shift+U可儲存，unknown binding／JSON語法錯誤有原錯誤回饋且保留舊覆寫；深色切換保留草稿「快捷鍵仍保留的草稿」。結果從0到8對應save×5（primary初次、錄製、匯入、chord、restore primary）、grid×2、failure×1；錄製操作不增加命令執行次數。完整IME／四模式／極端風格／窄viewport矩陣及感官仍pending。
+
+### CommandsDemo 快捷鍵增量職責
+
+| 定義 | 實際責任 |
+| --- | --- |
+| getFocus | WeakMap原生Element穩定ID；產品page／region／draft與設定欄位editable投影 |
+| createCommands／disposeCommands | 同effect新registry與keymap，六個預設binding；keymap先dispose |
+| refreshShortcuts／onHandling | 觸發重新讀core及保存原handling顯示；不維持第二錄製權威 |
+| beginRecording | 聚焦recorder實際節點再開始錄製 |
+| applyRecording／cancelRecording／restoreShortcut | finish非空套save.primary；取消／恢復預設 |
+| exportSettings／importSettings | 公開DTO序列化及核心原子匯入；捕捉原錯誤 |
+| describeStroke | 顯示平台primary及原始修飾鍵，沒有鍵盤轉換演算法 |
+| CommandsDemo state／refs／derived JSX | keymap同owner生命週期；handling為最後事件；revision僅重繪；settings／settingsMessage屬產品暫存；recorder／focusIds／focusCounter為原生目標識別；focus／conflicts讀當次核心；shortcutContent／content以public元件組裝 |
+
+```mermaid
+flowchart TD
+	Setup[createCommands] --> Registry[既有 registry 與 handler]
+	Setup --> Keymap[產品 keymap / 六個 binding]
+	Native[實際原生鍵盤] --> Host[KlpCommandShortcutHost]
+	Host --> Focus[getFocus / getContext]
+	Host --> Handle[onHandling / refreshShortcuts]
+	Host --> Result[既有 onResult]
+	Record[beginRecording / 原生 focus] --> Keymap
+	Apply[applyRecording / cancelRecording / restoreShortcut] --> Keymap
+	Settings[exportSettings / importSettings] --> Keymap
+	Keymap --> View[describeStroke / conflicts / public 元件]
+	Cleanup[disposeCommands] --> MapDispose[keymap.dispose]
+	MapDispose --> RegistryDispose[registry.dispose]
+```
