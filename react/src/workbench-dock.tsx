@@ -1,11 +1,11 @@
-import { useId, useImperativeHandle, useRef, type CSSProperties, type HTMLAttributes, type KeyboardEvent, type ReactNode, type Ref } from 'react';
+import { Fragment, useId, useImperativeHandle, useRef, type CSSProperties, type HTMLAttributes, type KeyboardEvent, type ReactNode, type Ref } from 'react';
 import { KlpIconButton, KlpSurface, KlpText } from './components.js';
-import { useKlp, type KlpTheme } from './theme.js';
+import { useKlp } from './theme.js';
 import { encodeKlpDockLayout, restoreKlpDockLayout, type KlpDockLayoutData, type KlpDockPanelPolicy } from './dock-layout-state.js';
 import { applyKlpDockAction, type KlpDockAction, type KlpDockArea } from './dock-layout-operations.js';
-import { resolveKlpDockGeometry, type KlpDockAreaConstraints, type KlpDockRect } from './dock-geometry.js';
-import { resolveKlpLinearLayout } from './linear-layout.js';
+import type { KlpDockAreaConstraints, KlpDockRect } from './dock-geometry.js';
 import { useDockClose, useDockSize } from './workbench-dock-lifecycle.js';
+import { useDockInput } from './workbench-dock-input.js';
 
 export interface KlpDockPanel extends KlpDockPanelPolicy {
 	/** label／icon：分頁名稱與產品圖示；content：產品原生內容，不寫入保存資料。 */
@@ -30,6 +30,8 @@ export interface KlpDockLayoutProps extends Omit<HTMLAttributes<HTMLDivElement>,
 	leftConstraints: KlpDockAreaConstraints;
 	rightConstraints: KlpDockAreaConstraints;
 	bottomConstraints?: KlpDockAreaConstraints;
+	/** collapseThresholds 是產品拖移收合門檻，缺省0；不回寫低於門檻的小尺寸。 */
+	collapseThresholds?: Partial<Record<KlpDockArea, number>>;
 	/** changed 才通知一次；onCloseError 讓產品呈現批准錯誤，未提供則交宿主。 */
 	onLayoutChanged: (layout: KlpDockLayoutData) => void;
 	onCloseError?: (error: unknown, panelId: string) => void;
@@ -44,17 +46,16 @@ const defaultLabels = { left: 'Left', right: 'Right', bottom: 'Bottom' };
 function label(value: unknown, field: string): void {
 	if (typeof value !== 'string' || !value.trim()) throw new TypeError('Dock: invalid ' + field);
 }
-function numeric(theme: KlpTheme, id: string): number {
-	const value = Number(theme.semantic(id));
-	if (!Number.isFinite(value) || value < 0) throw new TypeError('Dock: invalid semantic ' + id);
-	return value;
-}
 function validate(props: KlpDockLayoutProps): readonly KlpDockPanelPolicy[] {
 	if (!Array.isArray(props.panels)) throw new TypeError('Dock: panels must be an array');
 	if (typeof props.onLayoutChanged !== 'function') throw new TypeError('Dock: onLayoutChanged required');
 	if (props.onCloseError !== undefined && typeof props.onCloseError !== 'function') throw new TypeError('Dock: invalid onCloseError');
 	label(props.label ?? 'Workbench', 'label');
-	for (const area of areas) label(props.areaLabels?.[area] ?? defaultLabels[area], 'areaLabels.' + area);
+	for (const area of areas) {
+		label(props.areaLabels?.[area] ?? defaultLabels[area], 'areaLabels.' + area);
+		const threshold = props.collapseThresholds?.[area];
+		if (threshold !== undefined && (typeof threshold !== 'number' || !Number.isFinite(threshold) || threshold < 0)) throw new TypeError('Dock: invalid collapseThresholds.' + area);
+	}
 	const policies = props.panels.map(panel => {
 		if (!panel || typeof panel !== 'object') throw new TypeError('Dock: invalid panel');
 		label(panel.label, 'panel.label');
@@ -82,21 +83,9 @@ export function KlpDockLayout(props: KlpDockLayoutProps) {
 	useImperativeHandle(props.ref, () => host.current!, []);
 	const size = useDockSize(host);
 	const close = useDockClose(props, policies);
-	const handle = numeric(theme, 'theme.geometry.layout.resizeHandleExtent');
-	const chrome = numeric(theme, 'theme.spacing.chromeTab');
-	const margin = numeric(theme, 'theme.spacing.dockMargin');
-	const radius = Math.max(0, numeric(theme, 'theme.shape.card') - numeric(theme, 'theme.shape.stroke'));
-	const icon = numeric(theme, 'theme.spacing.iconButton');
-	const headerPresent = props.contentHeader !== undefined && props.contentHeader !== null;
-	const geometry = resolveKlpDockGeometry({
-		...size,
-		layout: props.layout,
-		leftConstraints: props.leftConstraints,
-		rightConstraints: props.rightConstraints,
-		bottomConstraints: props.bottomConstraints,
-		handleExtent: handle,
-		headerExtent: headerPresent ? numeric(theme, 'theme.spacing.chromeHeader') : undefined,
-	});
+	const input = useDockInput({ props, policies, size, theme, prefix, host });
+	const { view } = input;
+	const { geometry, icon } = view;
 	const panelById = new Map(props.panels.map(panel => [panel.id, panel]));
 	function commit(action: KlpDockAction): void {
 		const result = applyKlpDockAction(props.layout, policies, action);
@@ -117,35 +106,23 @@ export function KlpDockLayout(props: KlpDockLayoutProps) {
 		tab?.focus();
 	}
 	function renderArea(area: KlpDockArea): ReactNode {
-		const data = props.layout[area];
+		const data = view.layout[area];
 		const rect = geometry[area] ?? { left: 0, top: 0, width: 0, height: 0 };
 		const vertical = data.axis === 'vertical';
-		const minimum = vertical ? 32 : 120;
-		const allocation = resolveKlpLinearLayout({
-			extent: vertical ? rect.height : rect.width,
-			gutter: handle,
-			gutterCount: Math.max(0, data.groups.length - 1),
-			items: data.groups.map((group, index) => ({ minimum, preferred: index === data.groups.length - 1 ? minimum : group.mainAxisExtent, flex: index === data.groups.length - 1 ? 1 : 0 })),
-		});
-		let offset = 0;
-		const groups = data.groups.map((group, index) => {
-			const extent = allocation.extents[index];
-			const slot = { left: vertical ? 0 : offset, top: vertical ? offset : 0, width: vertical ? rect.width : extent, height: vertical ? extent : rect.height };
-			offset += extent + allocation.gutter;
-			const xMargin = Math.min(margin, slot.width / 2);
-			const yMargin = Math.min(margin, slot.height / 2);
-			const width = Math.max(0, slot.width - 2 * xMargin);
-			const height = Math.max(0, slot.height - 2 * yMargin);
-			const headerHeight = Math.min(chrome, height);
-			const clipRadius = Math.min(radius, width / 2, height / 2);
-			return <div key={group.id} style={position(slot)}>
-				<KlpSurface className="klp-dock-panel" style={{ ...position({ left: xMargin, top: yMargin, width, height }), borderRadius: clipRadius }}>
+		const entries = view.groups.filter(group => group.area === area);
+		const groups = entries.map((entry, index) => {
+			const group = entry.data;
+			const slot = { ...entry.outer, left: entry.outer.left - rect.left, top: entry.outer.top - rect.top };
+			const { width, height } = entry.inner;
+			const { headerHeight, clipRadius } = entry;
+			return <Fragment key={group.id}><div style={position(slot)}>
+				<KlpSurface className="klp-dock-panel" style={{ ...position({ left: entry.inner.left - entry.outer.left, top: entry.inner.top - entry.outer.top, width, height }), borderRadius: clipRadius }}>
 					<div role="tablist" aria-label={(props.areaLabels?.[area] ?? defaultLabels[area]) + ' ' + group.id} className="klp-dock-tabs" style={{ height: headerHeight }}>
 						{group.panelIds.map(id => {
 							const panel = panelById.get(id)!;
 							const selected = group.activePanelId === id;
 							return <div key={id} className="klp-dock-tab-entry">
-								<button type="button" role="tab" id={prefix + ':tab:' + encodeURIComponent(id)} data-panel-id={id} aria-controls={prefix + ':content:' + encodeURIComponent(id)} aria-selected={selected} tabIndex={selected ? 0 : -1} className="klp-dock-tab" onClick={() => commit({ type: 'select', panelId: id })} onKeyDown={event => keyboard(event, group.panelIds)}>
+								<button type="button" role="tab" id={prefix + ':tab:' + encodeURIComponent(id)} data-panel-id={id} data-dragging={input.dragPanel === id || undefined} draggable={panel.draggable !== false} onDragStart={event => input.startDrag(event, id)} aria-controls={prefix + ':content:' + encodeURIComponent(id)} aria-selected={selected} tabIndex={selected ? 0 : -1} className="klp-dock-tab" onClick={() => commit({ type: 'select', panelId: id })} onKeyDown={event => keyboard(event, group.panelIds)}>
 									{panel.icon && <span aria-hidden="true">{panel.icon}</span>}
 									<KlpText role="label">{panel.label}</KlpText>
 									{panel.isPinned && <span title="Pinned" aria-label="Pinned">▰</span>}
@@ -157,15 +134,16 @@ export function KlpDockLayout(props: KlpDockLayoutProps) {
 					</div>
 					{group.panelIds.map(id => <div key={id} id={prefix + ':content:' + encodeURIComponent(id)} role="tabpanel" aria-labelledby={prefix + ':tab:' + encodeURIComponent(id)} hidden={group.activePanelId !== id} className="klp-dock-content" style={position({ left: 0, top: headerHeight, width, height: height - headerHeight })}>{panelById.get(id)!.content}</div>)}
 				</KlpSurface>
-			</div>;
+			</div>{entry.gutterAfter && <div role="separator" aria-orientation={vertical ? 'horizontal' : 'vertical'} aria-label={(props.areaLabels?.[area] ?? defaultLabels[area]) + ' ' + group.id + ' / ' + entries[index + 1].data.id} className="klp-dock-separator" onPointerDown={event => input.startResize(event, undefined, group.id)} style={{ ...position({ ...entry.gutterAfter, left: entry.gutterAfter.left - rect.left, top: entry.gutterAfter.top - rect.top }), cursor: vertical ? 'row-resize' : 'col-resize' }} />}</Fragment>;
 		});
 		return <section key={area} aria-label={props.areaLabels?.[area] ?? defaultLabels[area]} hidden={!data.isVisible || !data.groups.length} style={position(rect)}>{groups}</section>;
 	}
-	const { layout, panels, stage, contentHeader, leftConstraints, rightConstraints, bottomConstraints, onLayoutChanged, onCloseError, label = 'Workbench', areaLabels, ref, className = '', style, ...native } = props;
-	return <div {...native} ref={host} role={native.role ?? 'region'} aria-label={label} className={'klp-dock ' + className} style={{ width: '100%', height: '100%', ...style, position: 'relative', minWidth: 0, minHeight: 0, overflow: 'hidden', padding: 0, border: 0, boxSizing: 'border-box' }}>
+	const { layout, panels, stage, contentHeader, leftConstraints, rightConstraints, bottomConstraints, collapseThresholds, onLayoutChanged, onCloseError, label = 'Workbench', areaLabels, ref, className = '', style, onDragOver, onDrop, onDragLeave, ...native } = props;
+	return <div {...native} ref={host} role={native.role ?? 'region'} aria-label={label} onDragOver={event => { input.onDragOver(event); onDragOver?.(event); }} onDrop={event => { input.onDrop(event); onDrop?.(event); }} onDragLeave={event => { input.onDragLeave(event); onDragLeave?.(event); }} className={'klp-dock ' + className} style={{ width: '100%', height: '100%', ...style, position: 'relative', minWidth: 0, minHeight: 0, overflow: 'hidden', padding: 0, border: 0, boxSizing: 'border-box' }}>
 		<KlpSurface tone="stage" style={position(geometry.stage)}>{stage}</KlpSurface>
 		{geometry.header && <div style={position(geometry.header)}>{contentHeader}</div>}
 		{areas.map(renderArea)}
-		{areas.map(area => layout[area].groups.length > 0 && <button key={area} type="button" className="klp-dock-edge" aria-label={areaLabels?.[area] ?? defaultLabels[area]} aria-expanded={layout[area].isVisible} onClick={() => commit({ type: 'visibility', area, isVisible: !layout[area].isVisible })} style={position(geometry[(area + 'Handle') as 'leftHandle' | 'rightHandle' | 'bottomHandle'])} />)}
+		{areas.map(area => layout[area].groups.length > 0 && <button key={area} type="button" className="klp-dock-edge" aria-label={areaLabels?.[area] ?? defaultLabels[area]} aria-expanded={layout[area].isVisible} onPointerDown={event => input.startResize(event, area)} onClick={event => { if (!input.ignoreClick(area, event.detail)) commit({ type: 'visibility', area, isVisible: !layout[area].isVisible }); }} style={{ ...position(geometry[(area + 'Handle') as 'leftHandle' | 'rightHandle' | 'bottomHandle']), cursor: area === 'bottom' ? 'row-resize' : 'col-resize' }} />)}
+		{input.hint && <div aria-hidden="true" className="klp-dock-feedback" style={{ ...position(input.hint), pointerEvents: 'none', borderWidth: Math.min(view.stroke, input.hint.width / 2, input.hint.height / 2) }} />}
 	</div>;
 }

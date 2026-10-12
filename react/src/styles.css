@@ -193,3 +193,8 @@
 .klp-dock-content[hidden], .klp-dock section[hidden] { display: none; }
 .klp-dock-edge { padding: 0; border: 0; background: transparent; cursor: pointer; }
 .klp-dock-edge:hover { background: var(--klp-colors-interactionSoft); }
+.klp-dock-edge, .klp-dock-separator { touch-action: none; }
+.klp-dock-separator { background: transparent; }
+.klp-dock-separator:hover { background: var(--klp-colors-interactionSoft); }
+.klp-dock-tab[data-dragging='true'] { opacity: var(--klp-surface-dragSourceOpacity); }
+.klp-dock-feedback { border-style: solid; border-color: var(--klp-colors-interaction); background: var(--klp-colors-interactionSoft); opacity: var(--klp-surface-dragOpacity); }
