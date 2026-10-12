@@ -48,22 +48,16 @@ GitHub push 已授權，無需重問；仍需先確認範圍及實際檢查。�
 
 ## 下一個可執行步驟
 
-FLUTTER-STYLE-1 已完成公開 pack／Theme 接入，19 項跨語言／native／scope checks 通過，350 欄位全映射，41 項既有 theme／accent checks 通過；局部 analyze、generator freshness、scope gate 及 test hash 通過。recipe 展開、元件全部視覺對齊與布局保護尚未完成。
+2026-10-13，完整goal ACTIVE；當前細節與唯一執行入口見[Workbench交接](../workbench-handoff.md)。以下只保留當前stage，不將已取代的下一步混入規格。
 
-FLUTTER-LINEAR-1／REACT-LINEAR-1 已完成 [有限幾何算法](workbench-linear-contract.md)：各 21 項獨立 tests、native analyze／library build、scope gate 通過；公開 min／max／preferred／flex、間距退化與 unused。DOCS-LINEAR-1 已接入正式網頁，15 項既有 checks、524 API generate／verify 通過。
+| 能力 | 已交付 | 當前接續 |
+| --- | --- | --- |
+| style pack | common parser／catalog、350 semantics×4、Flutter／React theme接入 | typed recipes／全部參數與元件audit／default值權威切換 |
+| finite linear | 雙框架pure算法與原生Row／Column／Pane、公開consumer | 網站逐元件specimen整合 |
+| Dock | 雙框架codec／atomic operations／有限geometry／原生UI／公開example | browser hoverpreview／cancel矩陣、resize callback平台差異audit |
+| 命令 | 雙框架generic registry／registered toolbar／menu／palette；公開consumer | Flutter modal背景語意穿透已重現Red，先完成單source修正及nativebrowser同座標回歸；再anchor／context menu |
+| 快捷鍵 | 已接受完整scope | chord／scope／conflict／remap／recording共通契約及兩框架接入 |
+| 網站 | 30Markdown／547 canonical API／17modules／三surfaces；extract／generate／verify及15checks | 每個公開可呈現元件專屬互動、bundle／registry／coverage；3GUI×2框架 |
+| GitHub | 隔離精確commits，guarded同步main並保留index | 全部目標完成、保留發布閘門後精確push；尚未push |
 
-雙框架 Row／Column／Pane 已接入有限算法。Flutter 保留現有公開 API；React 提供直接元件及自然尺寸模式。Dock 保持獨立 Stage／Left／Right／Bottom 模型。一般布局完成不代表全部 UI 或風格保護已完成。
-
-FLUTTER-LAYOUT-2 已完成：18 Widget checks／4 既有 checks、analyze／scope 及 Catalog 渲染證據。REACT-LAYOUT-2／EXAMPLE-1 已完成：9 checks含hydration、library／consumer TypeScript／example build／scope；native browser 確認尺寸守恆、minimum 壓縮、end 留白、極大 gap／root inset、自然量測、輸入保留及375px無水平溢出。下一步 PLAN Dock 契約與雙框架直接接入，沿用既有保存／受控狀態責任。
-
-FLUTTER-DOCK-STATE-1完成69771496：依 [WB-DOCK-STATE-r1](workbench-dock-contract.md)新增公開版本化codec／policy／restore診斷；7獨立checks、analyze／scope通過。先完整驗證再對清冊，失敗不改state；深層不可變結果。下一步React同一wire接入，再完成兩框架Dock UI／有限style尺寸保護。此保存slice不代表WB-04～08全部完成。
-
-REACT-DOCK-STATE-1完成c6af55f6：native readonly資料／encode／restore與Flutter使用同一保存wire，7 protectedchecks、librarybuild／publicconsumer／scope通過。雙端保存邊界完成不代表Dock UI完成；接續公開操作契約及兩框架分頁／拖放／resize／style幾何。
-
-REACT-DOCK-OPS-1完成e5d8b0a6：WB-DOCK-OPS-r1受控單步操作，10獨立checks、build／publicconsumer／scope通過；select／move／open／merge／close approval／visibility／resizeprefs、atomic rejection及immutable完整。下一步Flutter對等操作與雙框架Dock UI、有效resize handle／viewport geometry；hover／取消不可提交。
-
-FLUTTER-DOCK-OPS-1完成243d9f98：typed constaction／destination／area／result及pureapply，10protectedchecks（React同fixture／情境）、publicanalyze No issues及scope通過。雙框架保存及pure操作均完成，接續Dock UI：area／group有限geometry與effectivehandle、closecallback、pinned／dirty、拖放／resizefeedback及cancel不提交。
-
-FLUTTER-PANEL-GEOMETRY-1完成5e18ccd6：Dock縮配前置的PanelFrame chrome/margin/radius、Header/Footer inset與原內容State保留已完成；9protectedchecks、publicanalyze及scope通過。接續Dock root/group有效gutter與handle/overlay共同配額；Panel尺寸保護不代替Dock範圍。
-
-FLUTTER-DOCK-GEOMETRY-1完成296e7cab：13 protectedWidgetchecks、publicanalyze/scope；有限viewport/effectivegutter/root/groups/resizebudgets/headerzeroslot/State完成。下一步受控Dock UI接入pureoperations、hover/cancel/close批准/pinned/dirty，以及React native Dock UI；這些尚未完成。
+公開清冊或單一總覽iframe不能當作全部互動展示完成；protected deterministic code、nativebrowser觀察與人類感官接受分別記錄。現在先FLUTTER-COMMAND-PALETTE-MODAL-1，不重做已完成style／linear／Dock／command foundations。
