@@ -262,7 +262,7 @@ flowchart TD
 
 驗證：獨立 test commit316aaa67，兩個公開widget檢查在實作前皆ArgumentError Red；protected SHA256 051E261E93503E9E12E2A46CDD5D8E2FAAE94DA4510BAFC98CAF873FBCC04829。source b3cff636只改空集合early return並將既有縮排轉tab，非空算法保持；同兩checks Green、public source analyze No issues、scope exact1及diff通過，測試檔hash仍051E261E93503E9E12E2A46CDD5D8E2FAAE94DA4510BAFC98CAF873FBCC04829。prefix release45.7秒；fresh native tab14實際12→60→0→12，空集合無item／selected−1，恢復後item0可操作child2/root0。fresh error/warn空，原錯誤歷史保留於layout utility JSON，修正證據另存masonryFixed與PNG；感官human-pending，單taskusage null。
 
-## FLUTTER-FORM-SECTION-KEYBOARD-1（READY）
+## FLUTTER-FORM-SECTION-KEYBOARD-1（COMPLETE）
 
 修訂 FLUTTER-FORM-SECTION-KEYBOARD-r1；IDOC-08接受可操作控制的鍵盤入口。公開KlpFormSection在onToggle非null時，標題必須可以Tab取得焦點，以Enter或Space一次觸發原onToggle；consumer仍擁有collapsed，收合/展開children及草稿權威不變。onToggle=null保持安全靜態標題，不觸發回呼。constructor與公開barrel不變；標題section字體沿semantic style；互動hover/focus/expanded沿現有KlpActionRegion，不新增鍵盤算法、樣式或controller。
 
@@ -284,3 +284,5 @@ flowchart TD
 	Action --> Callback[原onToggle]
 	Callback --> Consumer
 ```
+
+驗證：獨立test aff4bf5e／SHA256 723DC6A384DEDF305D236232A0369D87AB4F6490B7019C0E8209E79BA3B56E20，實作前Enter及Space各expected1/actual0 Red，受控轉移與null安全兩checks Green。source8d8bf6b2改用原ActionRegion，新增expanded，null保留靜態文字；scope exact1、same四checks/public analyze Green，prefix45.1秒。native Tab取得標題、Enter collapsed true/root1、Space false/root2與草稿保持，發現label重複報讀後dcc3dbed只排除装飾標題文字的重複語意，原label權威不變；same四checks／analyze／scope1 rerun Green、protected hash未改，finalprefix49.0秒。最終native單一「表單資料」button／tabindex0／aria-expanded true，實際Tab/Enter/Space root0→1→2、input2草稿保持；callback=null靜態文字、root2保持。error/warn空，build/flutter-form-section-keyboard-native.json及PNG。要求viewport320×740後既有及fresh tab皆實際1280×720，已reset override並關probe，記not-applied而非窄畫面成功；actual窄viewport另整合驗證。感官human-pending，單taskusage null；總goal仍未完成。

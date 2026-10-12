@@ -23,6 +23,8 @@ Sidebar v2 Explorer 的保護範圍由 `SIDEBAR-V2-EXPLORER-r1` 定義：可選�
 
 FLUTTER-MASONRY-EMPTY-1驗證：test316aaa67的SHA256為051E261E93503E9E12E2A46CDD5D8E2FAAE94DA4510BAFC98CAF873FBCC04829；實作前兩個behavior Red，source b3cff636後原command兩checks Green，protected檔未修改。
 
-## FLUTTER-FORM-SECTION-KEYBOARD-TEST-1（READY）
+## FLUTTER-FORM-SECTION-KEYBOARD-TEST-1（已保護）
 
 FLUTTER-FORM-SECTION-KEYBOARD-r1；獨立作者exact test/form_section_keyboard_test.dart，公開Tab/Enter/Space一次回呼與consumer collapsed轉移，null安全；不讀private實作。behavior Red先於BUILD、記SHA256，worker不可修改。
+
+獨立test aff4bf5e，SHA256 723DC6A384DEDF305D236232A0369D87AB4F6490B7019C0E8209E79BA3B56E20；Tab+Enter／Tab+Space behavior Red2、原controlled/null Green2，8d8bf6b2及dcc3dbed後same四checks全Green，檔未修改。
