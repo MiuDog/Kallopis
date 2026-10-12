@@ -1,6 +1,6 @@
 # Flutter 命令 registry
 
-FLUTTER-COMMAND-CORE-r1 READY。依[WB-COMMAND-r1](../../../../../../../docs/architecture/workbench-command-contract.md)固定產品無關的metadata、條件與執行生命週期；不持有context、產品storage、UI/theme或預設命令。既有CommandMenu／WorkspaceCommand／KeyBindingController本slice唯讀，後續入口統一引用ID。
+FLUTTER-COMMAND-CORE-r1 READY。依[WB-COMMAND-r1](../../../../../../docs/architecture/workbench-command-contract.md)固定產品無關的metadata、條件與執行生命週期；不持有context、產品storage、UI/theme或預設命令。既有CommandMenu／WorkspaceCommand／KeyBindingController本slice唯讀，後續入口統一引用ID。
 
 ## 公開契約
 
@@ -52,4 +52,4 @@ flowchart TD
 
 FLUTTER-COMMAND-CORE-1 BUILD只`flutter/lib/src/features/actions/command_registry/klp_command_registry.dart`及`flutter/lib/kallopis_foundation.dart`。architecture/tests/config/theme/UI/其他module唯讀。fresh獨立TestAuthor只寫`flutter/test/command_registry_test.dart`，publicfoundation及共同契約，不讀React實作；typed publictest本身驗證generic API，必要analyze/publicbuild。風險是跨語言結果、非同步stale與notification中dispose，不能由BUILD作者改斷言。
 
-M1metadata/conditions/sorted immutable snapshots，M2pending/stale/subscription/原生listener-dispose与公開consumer。cold-start6k–12k tokens／35–70分鐘，參照REACT-COMMAND-CORE-1及FLUTTER-DOCK-OPS-1；18k/100分鐘或需共同契約変更回PLAN。接受證據為保護hash不變、獨立局部checks Green、public analyze及2path scope，無感官或全stage完成宣稱。
+M1metadata/conditions/sorted immutable snapshots，M2pending/stale/subscription/原生listener-dispose與公開consumer。cold-start6k–12k tokens／35–70分鐘，參照REACT-COMMAND-CORE-1及FLUTTER-DOCK-OPS-1；18k/100分鐘或需共同契約變更回PLAN。接受證據為保護hash不變、獨立局部checks Green、public analyze及2path scope，無感官或全stage完成宣稱。
