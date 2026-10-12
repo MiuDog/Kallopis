@@ -1,4 +1,8 @@
+import 'dart:math' as math;
+
 import 'package:flutter/material.dart';
+
+import 'package:kallopis/src/features/workspace/layout/klp_app_layout.dart';
 
 import 'package:kallopis/src/foundation/layout/klp_panel_layout.dart';
 import 'package:kallopis/src/styling/legacy_theme/klp_theme.dart';
