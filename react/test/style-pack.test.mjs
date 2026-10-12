@@ -7,12 +7,19 @@ import { spawnSync } from 'node:child_process';
 import React, { act } from 'react';
 import { JSDOM } from 'jsdom';
 import * as klp from '../dist/index.js';
-import { expectedPrimitives, expectedRecipes, expectedTheme, modes, repository, semanticExpressions } from './source-contract.mjs';
+import { documents, expectedPrimitives, expectedRecipes, expectedTheme, modes, repository, semanticExpressions } from './source-contract.mjs';
 
 const h = React.createElement;
 const colorId = 'theme.colors.app';
 const spacingId = 'theme.spacing.contentInlineGap';
 const copy = value => structuredClone(value);
+
+// 交換 pack 保存曲線原文字面值；browser primitive 才解析成陣列。
+const expectedPackPrimitives = { ...expectedPrimitives };
+for (const row of documents.primitives.split(/\r?\n/).filter(line => /^\|\s*`/.test(line))) {
+	const [id, value] = row.split('|').slice(1, 3).map(cell => cell.trim().replace(/^`|`$/g, ''));
+	if (Array.isArray(expectedPrimitives[id])) expectedPackPrimitives[id] = value;
+}
 
 function frozen(value, path = 'pack') {
 	if (!value || typeof value !== 'object') return;
@@ -37,7 +44,7 @@ test('公開 style pack 入口、JSON 匯入、canonical 資料及深度隔離',
 	for (const name of ['createKlpStylePack', 'applyKlpStyleOverrides']) assert.equal(typeof klp[name], 'function', `${name} 必須公開`);
 	const pack = klp.createKlpStylePack();
 	assert.equal(pack.schemaVersion, 1);
-	assert.deepEqual(pack.primitives, expectedPrimitives);
+	assert.deepEqual(pack.primitives, expectedPackPrimitives);
 	assert.deepEqual(pack.recipes, expectedRecipes);
 	assert.deepEqual(Object.keys(pack.semantics).sort(), Object.keys(semanticExpressions).sort());
 	for (const [id, expressions] of Object.entries(semanticExpressions)) assert.deepEqual(pack.semantics[id], Object.fromEntries(modes.map((mode, index) => [mode, expressions[index]])), id);
