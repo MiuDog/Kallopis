@@ -3,6 +3,7 @@ import { createRoot } from 'react-dom/client';
 import { KlpThemeProvider, KlpWorkspace, KlpFrame, KlpText, KlpButton, KlpIconButton, KlpCard, KlpBadge, KlpTextField, KlpSurface, KlpFileExplorer, useKlp, klpRecipes, createKlpStylePack, applyKlpStyleOverrides, klpStyleParameters, type KlpMode } from '@kallopis/react';
 import '@kallopis/react/styles.css';
 import './style.css';
+import { LayoutDemo } from './layout-demo.js';
 
 const modes: KlpMode[] = ['light', 'dark', 'ultraDark', 'transparent'];
 const labels = { light: '淺色', dark: '深色', ultraDark: '極深色', transparent: '透明' };
@@ -57,6 +58,7 @@ function App() {
 					<div className="demo-stack"><KlpText as="h2" role="h2">用語意組合畫面</KlpText><KlpText as="p" tone="muted">共用庫提供視覺、角色與控制元件。產品決定畫面、資料和業務流程。</KlpText></div>
 					{mode === 'transparent' && <KlpText as="p" role="caption">透明模式呈現宿主底色；原生視窗透明效果由宿主提供。</KlpText>}
 					<SemanticSample />
+					<LayoutDemo mode={mode} stylePack={stylePack} />
 					<KlpCard header={<KlpText role="body-strong">可替換風格檔</KlpText>}>
 						<div className="demo-stack">
 							<KlpText role="caption">{stylePack.id} · {stylePack.version} · {Object.keys(klpStyleParameters).length} 項語意參數</KlpText>
