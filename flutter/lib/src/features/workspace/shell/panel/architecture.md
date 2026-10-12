@@ -34,3 +34,5 @@ Dock 模組只依公開 PanelFrame；後續 finite Dock viewport slice 以此為
 獨立 TestAuthor2b0180b6：9 checks，baseline4pass/5behavioralRed；implementation9Green、publicPanelanalyze No issues、scope5paths通過，protected SHA256 90B1B2CAE6705E5D13B8930EFE8FFB1A1FFD3AA8FED338442BDBC13786FB0BE7 未變。作者校正footer caller probe的default inset，不是worker修改tests。實作首次新import replace沒命中material導致compileYellow，及chromeToolbar不存在getter，已依diagnostic用正確import與原公開KlpGap修正；同一checks通過，無Green fallback。
 
 本slice只有確定性geometry證據，無感官接受。scope於5e18ccd6閉合；後續owner docs修改不回算worker。Dock root/group/effectivehandle、DockHeader overflow及drag/cancel/close接入仍未完成。
+
+Panel title對齊校正8d4fc334：原viewport wrapper改為AlignmentDirectional.centerStart，保留原方向起點而非把短文字置中；同一9checks與Headeranalyze通過，scope只1個Header來源，testhash不變。獨立packet base8da3c63b，scope於8d4fc334閉合，mainignored flutter-panel-geometry-align*.json。

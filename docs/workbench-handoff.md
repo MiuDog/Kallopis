@@ -49,3 +49,5 @@ FLUTTER-PANEL-GEOMETRY-1：PLAN cf09051d，獨立TestAuthor2b0180b6，BUILD5e18c
 Panel module新architecture已固定finite chrome/inset/radius及內容State契約；FrameView依公開LayoutColumn/Pane/Bounds，Header依LayoutRow/Pane，所有stage wrappers在尺寸/theme變化穩定。未改Dock、theme、style、config、tests。根goal本輪工具量差127419tokens/517seconds含承接上下文與TestAuthor，不是純BUILD估算。
 
 下一步仍PLAN Flutter Dock finite geometry：使用既有linear resolver，root保持contentHeader跨center/right且left全高；side/center widths、header/bottom heights、group extents及有效gutter需共同守恆，handle/offset/overlay/resize/drop math均使用實際有效厚度。PanelFrame前置已完成不重做。DockHeader獨立高度32與overflow menu仍需finite tiny-width/hugeicon尺寸保護；contract/packet若需改其internalstate與resizehandle必明列。stage indicator thickness也需限制槽。hover/cancel/產品close callback另按共通pure operations語意接入。全部GUI/specimens/docs registry/recipe/authorityswitch/push未完成，goal ACTIVE。
+
+Panel title對齊校正8d4fc334：原viewport wrapper改為AlignmentDirectional.centerStart，保留原方向起點而非把短文字置中；同一9checks與Headeranalyze通過，scope只1個Header來源，testhash不變。獨立packet base8da3c63b，scope於8d4fc334閉合，mainignored flutter-panel-geometry-align*.json。
