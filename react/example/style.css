@@ -14,3 +14,14 @@ body { background: Canvas; }
 .demo-swatch { display: block; width: var(--klp-spacing-space8); height: var(--klp-spacing-space8); border-radius: var(--klp-shape-control); border: var(--klp-shape-hairline) solid var(--klp-colors-border); }
 /* 展示頁擁有其版面；窄畫面先呈現 Explorer，再呈現內容 Frame。 */
 .demo-workspace > .klp-frame-content { flex-basis: var(--klp-geometry-layout-primaryPaneContentBreakpoint); }
+.demo-style-json {
+	width: 100%;
+	min-height: 12em;
+	padding: var(--klp-spacing-contentInset);
+	border: var(--klp-shape-hairline) solid var(--klp-colors-border);
+	border-radius: var(--klp-shape-panel);
+	background: var(--klp-colors-surfaceInset);
+	color: var(--klp-colors-text);
+	font-family: var(--klp-typography-codeFamily), var(--klp-typography-monoFallback);
+	resize: vertical;
+}

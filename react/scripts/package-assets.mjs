@@ -8,3 +8,5 @@ cpSync(fileURLToPath(new URL('../../flutter/assets/fonts/', import.meta.url)), `
 writeFileSync(`${library}dist/styles.css`, readFileSync(`${library}src/tokens.css`, 'utf8') + readFileSync(`${library}src/styles.css`, 'utf8'));
 cpSync(`${library}src/source-manifest.json`, `${library}dist/source-manifest.json`);
 cpSync(`${library}src/styles.d.ts`, `${library}dist/styles.d.ts`);
+cpSync(`${library}src/style-runtime`, `${library}dist/style-runtime`, { recursive: true });
+cpSync(`${library}src/style-pack-manifest.json`, `${library}dist/style-pack-manifest.json`);

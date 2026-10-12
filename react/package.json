@@ -23,8 +23,8 @@
 		"**/*.css"
 	],
 	"scripts": {
-		"generate": "node scripts/generate-tokens.mjs",
-		"check:tokens": "node scripts/generate-tokens.mjs --check",
+		"generate": "node scripts/generate-tokens.mjs && node scripts/generate-style-pack.mjs",
+		"check:tokens": "node scripts/generate-tokens.mjs --check && node scripts/generate-style-pack.mjs --check",
 		"build": "npm run generate && tsc && node scripts/package-assets.mjs",
 		"test": "node --test test/*.test.mjs",
 		"dev": "vite --host 127.0.0.1",

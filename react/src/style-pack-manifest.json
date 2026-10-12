@@ -1,0 +1,8 @@
+{
+	"styles/kallopis-v1.json": "59b3e11cda7070ea8873a436219d0f437c15f50fdaedcfd8d223532c871e6460",
+	"styles/catalog.json": "71884961f3d6d987f62ddbb011c48593277b405c91d6341163da4776dd01e8a8",
+	"styles/src/index.mjs": "e689c03fb585b69db075f2153bb9bf8c78eb13db02a470d4b749aa99da388b13",
+	"styles/src/pack.mjs": "b3435adc7eb6908036b29daf5a39e14c9fd1d8155ca27ed7ccd8d05d81dc39a2",
+	"styles/src/runtime.mjs": "be0cedda9b3446ec416c5411e4018657eb3e05577a9ba353a9c7873f169c1824",
+	"styles/src/index.d.mts": "9de0c404054139e7df1a62402628201cf5fc187076d2f7bd3a994214cd05237d"
+}

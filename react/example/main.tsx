@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { createRoot } from 'react-dom/client';
-import { KlpThemeProvider, KlpWorkspace, KlpFrame, KlpText, KlpButton, KlpIconButton, KlpCard, KlpBadge, KlpTextField, KlpSurface, KlpFileExplorer, useKlp, klpRecipes, type KlpMode } from '@kallopis/react';
+import { KlpThemeProvider, KlpWorkspace, KlpFrame, KlpText, KlpButton, KlpIconButton, KlpCard, KlpBadge, KlpTextField, KlpSurface, KlpFileExplorer, useKlp, klpRecipes, createKlpStylePack, applyKlpStyleOverrides, klpStyleParameters, type KlpMode } from '@kallopis/react';
 import '@kallopis/react/styles.css';
 import './style.css';
 
@@ -26,12 +26,24 @@ function SemanticSample() {
 
 function App() {
 	const [mode, setMode] = useState<KlpMode>('light');
+	const [stylePack, setStylePack] = useState(() => createKlpStylePack());
+	const [styleSource, setStyleSource] = useState('');
+	const [styleError, setStyleError] = useState('');
+	function importStyle(source: string) {
+		try {
+			const next = createKlpStylePack(source);
+			setStylePack(next);
+			setStyleError('');
+		} catch (error) {
+			setStyleError(error instanceof Error ? error.message : String(error));
+		}
+	}
 	const [expandedIds, setExpandedIds] = useState(['foundation', 'guides']);
 	const [selectedId, setSelectedId] = useState('overview');
 	const [name, setName] = useState('Kallopis');
 	const [count, setCount] = useState(0);
 	const [selected, setSelected] = useState(false);
-	return <KlpThemeProvider mode={mode} className="demo-app">
+	return <KlpThemeProvider mode={mode} stylePack={stylePack} className="demo-app">
 		<header className="demo-header">
 			<div className="demo-stack"><KlpText as="h1" role="h3">Kallopis</KlpText><KlpText role="caption" tone="muted">React 核心元件 · 通用視覺規範</KlpText></div>
 			<div className="demo-row" aria-label="主題">{modes.map(value => <KlpButton key={value} size="sm" selected={mode === value} onClick={() => setMode(value)}>{labels[value]}</KlpButton>)}</div>
@@ -45,6 +57,21 @@ function App() {
 					<div className="demo-stack"><KlpText as="h2" role="h2">用語意組合畫面</KlpText><KlpText as="p" tone="muted">共用庫提供視覺、角色與控制元件。產品決定畫面、資料和業務流程。</KlpText></div>
 					{mode === 'transparent' && <KlpText as="p" role="caption">透明模式呈現宿主底色；原生視窗透明效果由宿主提供。</KlpText>}
 					<SemanticSample />
+					<KlpCard header={<KlpText role="body-strong">可替換風格檔</KlpText>}>
+						<div className="demo-stack">
+							<KlpText role="caption">{stylePack.id} · {stylePack.version} · {Object.keys(klpStyleParameters).length} 項語意參數</KlpText>
+							<div className="demo-row">
+								<KlpButton onClick={() => setStylePack(applyKlpStyleOverrides(stylePack, { semantics: { 'theme.spacing.contentInlineGap': { light: 'p(space300)', dark: 'p(space300)', ultraDark: 'p(space300)', transparent: 'p(space300)' } } }))}>套用 12px 內容間距</KlpButton>
+								<KlpButton onClick={() => { setStylePack(createKlpStylePack()); setStyleError(''); }}>還原預設風格</KlpButton>
+								<label><KlpText role="caption">匯入風格檔</KlpText><input type="file" accept=".json,application/json" onChange={async event => { const file = event.target.files?.[0]; if (file) { try { const source = await file.text(); setStyleSource(source); importStyle(source); } catch (error) { setStyleError(String(error)); } } }} /></label>
+							</div>
+							<details><summary>貼上完整 JSON 風格</summary><div className="demo-stack">
+								<textarea aria-label="風格 JSON" className="demo-style-json" value={styleSource} onChange={event => setStyleSource(event.target.value)} />
+								<div className="demo-row"><KlpButton onClick={() => setStyleSource(JSON.stringify(stylePack, null, '\t'))}>載入目前風格 JSON</KlpButton><KlpButton tone="primary" onClick={() => importStyle(styleSource)}>套用 JSON</KlpButton></div>
+							</div></details>
+							{styleError && <KlpText role="caption" as="p" aria-live="polite">匯入失敗，保留目前風格：{styleError}</KlpText>}
+						</div>
+					</KlpCard>
 					<KlpCard header={<KlpText role="body-strong">按鈕與回呼</KlpText>}>
 						<div className="demo-stack"><div className="demo-row">
 							<KlpButton tone="primary" onClick={() => setCount(value => value + 1)}>主要動作</KlpButton>
