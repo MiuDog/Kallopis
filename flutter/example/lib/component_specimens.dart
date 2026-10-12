@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:kallopis/kallopis_foundation.dart';
 import 'linear_specimens.dart';
+import 'explorer_specimens.dart';
 
 /* 只有真實target fixture可以進此清單；不是全量覆蓋宣告。 */
-const flutterSpecimenNames = <String>['KlpBadge', 'KlpButton', 'KlpIconButton', 'KlpSurface', 'KlpText', 'KlpTextField', ...linearSpecimenNames];
+const flutterSpecimenNames = <String>['KlpBadge', 'KlpButton', 'KlpIconButton', 'KlpSurface', 'KlpText', 'KlpTextField', ...linearSpecimenNames, ...explorerSpecimenNames];
 
 class ComponentSpecimenApp extends StatefulWidget {
 	const ComponentSpecimenApp({super.key, required this.name});
@@ -58,10 +59,17 @@ class _ComponentSpecimenAppState extends State<ComponentSpecimenApp> {
 				SizedBox(height: space.contentStackGap),
 				LayoutBuilder(builder: (context, constraints) => SizedBox(
 					width: (_narrow ? 320.0 : 760.0).clamp(0.0, constraints.maxWidth),
-					child: linearSpecimenNames.contains(widget.name) ? LinearComponentSpecimen(key: ValueKey(_epoch), name: widget.name) : _ComponentFixture(key: ValueKey(_epoch), name: widget.name),
+					child: _fixture(),
 				)),
 			]),
 		)));
+	}
+
+	Widget _fixture() {
+		final key = ValueKey(_epoch);
+		if (explorerSpecimenNames.contains(widget.name)) return ExplorerComponentSpecimen(key: key, name: widget.name);
+		if (linearSpecimenNames.contains(widget.name)) return LinearComponentSpecimen(key: key, name: widget.name);
+		return _ComponentFixture(key: key, name: widget.name);
 	}
 }
 
