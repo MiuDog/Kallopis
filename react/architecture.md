@@ -383,7 +383,7 @@ Native2實作681c0f6c，量測修正583818e8，提示線/capture清理6ee63c5e�
 
 下一步公開React Dock example接布局保存/還原/reset、open/merge、批准close與nativebrowser，然後GUI及各component specimen網站整合。此完成不涵蓋commands/keybindings或所有視覺recipe參數。
 
-## REACT-DOCK-EXAMPLE-1（consumer完成；分頁拖放browser驗證待確認）
+## REACT-DOCK-EXAMPLE-1（完成；hover preview browser證據待接續）
 
 修訂REACT-DOCK-EXAMPLE-r1。example/dock-demo.tsx是公開API consumer，main.tsx嵌入既有Provider；style.css只擁有宿主尺寸、產品內容及控制區排版。DockDemo擁有layout、保存JSON、操作計數、還原診斷、產品輸入與close批准方式。庫仍擁有全部停靠樣式與事件演算法；不得引用src、複製tab/handle樣式或新增保存格式。
 
@@ -403,7 +403,7 @@ flowchart TD
 	Update --> Demo
 ```
 
-實作9597e484：threepath scope通過，TypeScript與production build通過；550.99KB chunk提示保留。初次browser Red為將完整panel metadata傳給strict保存清冊，example已投影id/allowSide/allowBottom，reload可正常操作，未改codec。原生瀏覽器觀察：select/收合2次、展開1次；拒絕close0次、批准/重開/merge各1次；invalidJSON0次並保留，還原/reset成功；left resize180→210只1次，right第一group200→225只1次；delay close pending停用且完成1次；320×180 root scroll同尺寸且無NaN/Infinity，Stage與Search輸入在theme/size更新保留。native拖Search至Inspector分頁及正文均未變更，尚不能區分工具輸入與產品事件問題；不宣稱拖放/preview nativebrowser完成。證據mainignored build/evidence/react-dock-example.png；感官human-pending。
+實作9597e484：threepath scope通過，TypeScript與production build通過；550.99KB chunk提示保留。初次browser Red為將完整panel metadata傳給strict保存清冊，example已投影id/allowSide/allowBottom，reload可正常操作，未改codec。原生瀏覽器觀察：select/收合2次、展開1次；拒絕close0次、批准/重開/merge各1次；invalidJSON0次並保留，還原/reset成功；left resize180→210只1次，right第一group200→225只1次；delay close pending停用且完成1次；320×180 root scroll同尺寸且無NaN/Infinity，Stage與Search輸入在theme/size更新保留。native短距離重排、跨區域merge與正文split各1通知，split原200扣gutter8後兩组96。暫時event診斷確認最初長拖只在header送dragover/沒有目的drop；拓寬目的區後實際dragover接受/drop成功，無library修正。診斷已完整移除，原始consumerGit內容不變；移除後再重排及resize各1次。證據mainignored build/evidence/react-dock-example.png呈現最終2次/left210；hover preview尚未nativebrowser觀察，感官human-pending。
 
 | 當前定義 | 來源 | 責任 |
 | --- | --- | --- |

@@ -201,4 +201,4 @@ import { KlpDockLayout } from '@kallopis/react';
 
 18項公開input與DOM/SSR checks通過。[公開Dock互動範例](../../react/example/dock-demo.tsx)已接入React展示頁，可操作保存、還原、重設、重開、合併與批准方式。保存及pureoperations的清冊只包含id/allowSide/allowBottom，不能直接傳入有content/callback的完整panel物件；範例示範明確投影。
 
-nativebrowser已確認選取、收合、區域及群組resize、close拒絕/批准/延遲、JSON錯誤保留及尺寸/主題更新輸入保留。分頁的native drag操作尚未觀察到變更，拖放/preview的browser證據仍待確認；synthetic checks不代替browser或感官接受。全部元件互動頁面及三種雙框架GUI仍待网站展示stage整合。
+nativebrowser已確認選取、收合、區域及群組resize、close拒絕/批准/延遲、JSON錯誤保留、分頁重排/跨區域合併/正文分割，以及尺寸/主題更新輸入保留。hover preview的browser證據仍待確認；synthetic checks不代替browser或感官接受。全部元件互動頁面及三種雙框架GUI仍待网站展示stage整合。
