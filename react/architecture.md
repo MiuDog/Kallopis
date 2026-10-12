@@ -847,3 +847,39 @@ flowchart LR
 ```
 
 BUILD exact3source，Node讀公開ESM清單與fresh extractor23完全雙向一致，type/prod example build成功（602.78KB既有bundle超500KB提示保留），scope3/diff通過。native原Pane preferred90→150、unknown明確拒絕且不退總覽。fixture/state/公開庫/config未改，感官human-pending。初次預設artifact不存在，執行既有extractor生成後比較成功，不從不存在產物推測coverage。ESM registry Object.freeze固定name與種類，d.mts限制readonly聯集；specimens由Object.entries＋既有五factory建立Record，names由同資料Object.keys排序，沒有第二名稱表。
+
+## REACT-GUI-SCENARIOS-1（READY）
+
+修訂REACT-GUI-SCENARIOS-r1，依IDOC-04/05/06/07/08與正式研究workbench-reference-survey。exact example/scenarios.tsx、example/scenario-registry.mjs、example/scenario-registry.d.mts、example/main.tsx、example/style.css。三個產品example scenario query vscode／blockbench／blender；同例資料registry擁有id/title/officialReference，網站可直接import，不能在庫新增固定業務模板。既有specimen query優先與App overview保持；unknown scenario明確拒絕。
+
+VS Code復刻Explorer／Search左側、Outline右側、Output與Problems底部、中心文件分頁与正文示意；Blockbench復刻Outliner左側、Properties／Textures右側、Animations底部、中心建模viewport示意；Blender復刻工具區、Outliner／Properties、Timeline與中心viewport，加任務workspace切換。每場景有限Dock初始資料與panel registry由example擁有；使用KlpDockLayout處理原生拖放／分頁／調尺寸／close，公開encode/restore/apply操作處理布局，consumer只回寫state及顯示callbackcount。中心使用公開Frame/Surface/Text/TextField與產品SVG／文字示意，不引入3D/editor/terminal執行核心；清楚標示示意。
+
+每場景同registry註冊save layout／restore layout／reset layout／場景主要動作與toggle panel，供RegisteredCommandToolbar/Menu/Palette及CommandShortcutHost；只一份handler，最新產品context透過ref，owner effect setup/dispose遵守既有consumer生命週期。Primary+S保存、Primary+K→S保存chord及開palette按鈕；palette正常result/dismiss。保存JSON只為example記憶體draft，restore用既有公開atomic codec，错误保留布局；不建立新持久權威。Explorer真實selected/expanded callback、中心draft、workspace/object selection與場景示意operation結果可觀察；主題／另一pack切換不更換同scene State，明確reset元件才重建資料。
+
+四模式／另一語意spacing pack由ScenarioApp持有，semantic color/spacing/fonts只讀public theme；style.css只產品有限容器與scroll/展示幾何，SVG僅產品示意元素。三scene導航link與official引用、公開組裝说明、狀態/布局JSON可查。未知route不得退Catalog。網站嵌入另site owner stage，兩框架完整goal保持。
+
+驗收type/prod example、3route各自distinct public GUI/Explorer/command/dock/body、原生拖放/resize/tabs/save/restore/error/command/chord/theme/draft/reset、scope5/diff。沿用已保護pure codec/command tests，不寫consumer鏡像測試；新風險不足公開契約時返回PLAN。library/config/tests/website與architecture唯讀，感官human-pending。cold估7k～14k/50～100分鐘，參照Dock/Commands consumer與React specimens；M1 source/build（7k50），M2 native3/README evidence closure（14k100）；20k150或需要庫變更返回PLAN。
+
+| source／class／function | 責任 |
+| --- | --- |
+| scenario-registry.mjs／d.mts | 三個正式scene identity/title/reference唯一資料及對外型別 |
+| ScenarioApp | 選scene、四模式／pack／reset環境，未知route拒絕 |
+| ScenarioWorkbench | 產品布局／panels／draft／Explorer／操作狀態；原生命令registry/keymap生命周期 |
+| scene data／layout／panel／stage helpers | 三種實際GUI配置，資料/示意由example擁有，algorithm交公開庫 |
+| main query route | specimen維持優先，scenario選中自身，absent overview保持 |
+| style.css scenario geometry | 有限viewport/scroll/產品示意尺寸，不建立共用theme |
+
+```mermaid
+flowchart TD
+	Query[main scenario query] --> App[ScenarioApp / environment]
+	Registry[scenario metadata] --> App
+	App --> Owner[ScenarioWorkbench / product state]
+	Owner --> Dock[KlpDockLayout / pure codec]
+	Owner --> Explorer[KlpFileExplorer / controlled data]
+	Owner --> Command[registry / keymap / toolbar menu palette host]
+	Owner --> Stage[public Frame Surface / product illustration]
+	Dock --> State[callbacks / draft / result]
+	Explorer --> State
+	Command --> State
+	State --> Owner
+```
