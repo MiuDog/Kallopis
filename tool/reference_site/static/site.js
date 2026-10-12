@@ -120,3 +120,31 @@ if (diagrams.length) {
 		})
 		.catch(() => { for (const diagram of diagrams) diagram.setAttribute('aria-label', 'Mermaid 圖表原始定義（離線備援）'); });
 }
+
+// 展示載入狀態以同源app實際標題為準，HTTP錯頁不能冒充成功。
+for (const frame of document.querySelectorAll('iframe[data-component-specimen]')) {
+	const status = frame.parentElement.querySelector('[data-specimen-state]');
+	const name = frame.title.replace(/ React 互動展示$/, '');
+	let finished = false;
+	function finish(state, message) {
+		if (finished) return;
+		finished = true;
+		clearInterval(poll);
+		clearTimeout(timeout);
+		status.dataset.specimenState = state;
+		status.textContent = message;
+	}
+	function inspect() {
+		try {
+			const heading = frame.contentDocument?.querySelector('h1');
+			if (!heading) return;
+			if (heading.textContent.trim() === name) finish('loaded', '展示已載入，可直接操作或獨立開啟。');
+			else finish('error', '展示載入失敗，請使用獨立開啟入口重新嘗試。');
+		} catch { finish('error', '無法讀取展示，請使用獨立開啟入口。'); }
+	}
+	const poll = setInterval(inspect, 150);
+	const timeout = setTimeout(() => finish('error', '展示尚未載入，請使用獨立開啟入口重新嘗試。'), 15000);
+	frame.addEventListener('load', inspect);
+	frame.addEventListener('error', () => finish('error', '展示載入失敗，請使用獨立開啟入口。'));
+	inspect();
+}

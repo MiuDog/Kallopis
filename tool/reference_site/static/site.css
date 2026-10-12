@@ -205,3 +205,14 @@ code { font-family: Consolas, monospace; font-size: .9em; }
 	.prose h1 { font-size: 26px; }
 	.feature-copy h2, .documentation-section h2 { font-size: 30px; }
 }
+
+/* 文件容器只提供展示viewport，元件風格仍由example的semantic theme擁有。 */
+.component-specimen iframe {
+	width: 100%;
+	height: 720px;
+	border: 0;
+	display: block;
+}
+.component-specimen [data-specimen-state="error"] {
+	font-weight: 600;
+}

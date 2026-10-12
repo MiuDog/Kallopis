@@ -1,3 +1,4 @@
+import { validateReactSpecimens } from './react-specimens.mjs';
 import fs from 'node:fs';
 import path from 'node:path';
 import { documents, documentRoutes } from './documents.mjs';
@@ -120,6 +121,34 @@ for (const href of actualHtml) {
 }
 for (const entry of search) {
 	if (entry.href?.startsWith('docs/design-system/') && !expectedDocumentRoutes.has(entry.href)) failures.push(`Unexpected design search page: ${entry.href}`);
+}
+
+// React清單重新對正式輸入驗證；不能相信生成manifest聲稱的完整性。
+const args = process.argv.slice(2);
+if (args.length && (args.length !== 1 || args[0] !== '--react')) failures.push('Usage: verify.mjs [--react]');
+if (args.includes('--react') && !site.reactComponents) failures.push('Missing React component manifest');
+if (site.reactComponents) {
+	try {
+		const { reactSpecimenRegistry } = await import('../../react/example/specimen-registry.mjs');
+		const expected = validateReactSpecimens(JSON.parse(fs.readFileSync(path.join(root, 'react/build/reference-components.json'), 'utf8')), reactSpecimenRegistry);
+		if (JSON.stringify(site.reactComponents) !== JSON.stringify(expected)) failures.push('React component manifest mismatch');
+		const entries = search.filter(entry => entry.category === 'React Component');
+		if (entries.length !== expected.length) failures.push('React component search count mismatch');
+		const routes = new Set(['docs/react/components/index.html']);
+		for (const component of expected) {
+			routes.add(component.href);
+			const html = fs.readFileSync(path.join(output, component.href), 'utf8');
+			const bundleUrl = `${path.posix.relative(path.posix.dirname(component.href), 'examples/react/index.html')}?specimen=${encodeURIComponent(component.name)}`;
+			if (!html.includes(`src="${bundleUrl}"`) || !html.includes(`title="${component.name} React 互動展示"`) || !html.includes(`href="${bundleUrl}"`) || !html.includes('data-specimen-state="loading"')) failures.push(`Invalid React specimen embed: ${component.name}`);
+			if (entries.filter(entry => entry.apiId === component.id && entry.href === component.href).length !== 1) failures.push(`React search identity mismatch: ${component.name}`);
+		}
+		for (const href of actualHtml) if (href.startsWith('docs/react/') && !routes.has(href)) failures.push(`Unexpected React page: ${href}`);
+		const bundle = path.join(output, 'examples/react/index.html');
+		const html = fs.readFileSync(bundle, 'utf8');
+		const assets = [...html.matchAll(/(?:src|href)="(\.\/assets\/[^"?#]+)"/g)];
+		if (!assets.length) failures.push('React bundle has no assets');
+		for (const [, asset] of assets) if (!fs.existsSync(path.resolve(path.dirname(bundle), asset))) failures.push(`Missing React bundle asset: ${asset}`);
+	} catch (error) { failures.push(`React verification failed: ${error.message}`); }
 }
 
 // 步驟 4：固定網站入口與產物報告。

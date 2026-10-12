@@ -3,6 +3,7 @@ import path from 'node:path';
 import { homePage, shell } from './layout.mjs';
 import { documents, documentRoutes } from './documents.mjs';
 import { renderMarkdown } from './markdown.mjs';
+import { validateReactSpecimens, renderReactSpecimen } from './react-specimens.mjs';
 
 const root = path.resolve(import.meta.dirname, '..', '..');
 const output = path.join(root, 'build', 'reference-site');
@@ -77,8 +78,18 @@ function page(relativePath, title, content, sourcePath = '') {
 	}));
 }
 
-function main() {
+async function main() {
+	const args = process.argv.slice(2);
+	if (args.length && (args.length !== 1 || args[0] !== '--react')) throw new Error('Usage: generate.mjs [--react]');
 	validateManifest();
+	// 全部正式輸入與bundle成功才可清理既有輸出，錯誤保留上一份網站。
+	let reactComponents = null;
+	if (args.length) {
+		const { reactSpecimenRegistry } = await import('../../react/example/specimen-registry.mjs');
+		reactComponents = validateReactSpecimens(JSON.parse(fs.readFileSync(path.join(root, 'react/build/reference-components.json'), 'utf8')), reactSpecimenRegistry);
+	}
+	const reactBundle = path.join(root, 'react/example/dist');
+	if (reactComponents && !fs.existsSync(path.join(reactBundle, 'index.html'))) throw new Error('Missing React example bundle');
 
 	// 在清理舊產物前確認所有必要來源與文章可解析，避免發布不完整網站。
 	const renderedDocuments = documents.map((document) => {
@@ -93,6 +104,8 @@ function main() {
 	fs.rmSync(output, { recursive: true, force: true });
 	fs.mkdirSync(path.join(output, 'assets'), { recursive: true });
 	for (const asset of ['site.css', 'site.js']) fs.copyFileSync(path.join(root, 'tool', 'reference_site', 'static', asset), path.join(output, 'assets', asset));
+
+	if (reactComponents) fs.cpSync(reactBundle, path.join(output, 'examples/react'), { recursive: true });
 
 	const search = [];
 	const apiModules = api.modules.map((module) => ({
@@ -137,6 +150,15 @@ function main() {
 	const moduleCards = api.modules.map((module) => `<a class="card link-card" href="${escapeHtml(`${module.name.replaceAll('.', '/')}/index.html`)}"><span class="badge">${module.declarations.length} APIs</span><h2>${escapeHtml(module.name)}</h2></a>`).join('');
 	page('docs/api/index.html', 'API Reference', `<div class="eyebrow">PUBLIC API</div><h1>Thin Design System Reference</h1><p class="lead">新產品從 foundation 與 theme 開始；experimental 明確分區。以下內容完全來自三個公開 Dart barrels，不包含 declarative 或 private runtime。</p><div class="grid">${surfaceCards}</div><h2 id="modules">Modules</h2><div class="grid">${moduleCards}</div>`);
 
+	if (reactComponents) {
+		for (const component of reactComponents) {
+			const bundleUrl = `${relative(component.href, 'examples/react/index.html')}?specimen=${encodeURIComponent(component.name)}`;
+			page(component.href, component.name, `<div class="eyebrow">REACT COMPONENT</div><h1>${escapeHtml(component.name)}</h1>${renderReactSpecimen(component, bundleUrl)}`);
+			search.push({ title: component.name, category: 'React Component', apiId: component.id, href: component.href });
+		}
+		page('docs/react/components/index.html', 'React 元件', `<div class="eyebrow">REACT</div><h1>React 互動元件</h1><p>每頁直接使用公開package元件，可切換風格、參數並查看回呼。</p><ul class="api-list">${reactComponents.map(component => `<li><a href="${escapeHtml(relative('docs/react/components/index.html', component.href))}"><code>${escapeHtml(component.name)}</code></a></li>`).join('')}</ul>`);
+	}
+
 	const guideLinks = [];
 	for (const document of renderedDocuments) {
 		const {source, href, title, category, html, body} = document;
@@ -146,14 +168,14 @@ function main() {
 	}
 	const componentDeclarations = api.modules.flatMap((module) => module.declarations).filter((item) => ['class', 'abstractClass', 'baseClass', 'finalClass', 'interfaceClass', 'sealedClass', 'mixinClass'].includes(item.kind));
 	page('docs/components/index.html', 'Components', `<div class="eyebrow">COMPONENTS</div><h1>公開型別</h1><p class="lead">依實際 public surface 產生；詳細 constructor 與 member 請進入 API 頁。</p><ul class="api-list">${componentDeclarations.map((item) => `<li><a href="${escapeHtml(relative('docs/components/index.html', declarationRoute(item)))}"><code>${escapeHtml(item.name)}</code></a><span>${escapeHtml(item.module)} · ${item.surfaces.map((surface) => escapeHtml(surface)).join(' · ')}</span></li>`).join('')}</ul>`);
-	page('docs/index.html', 'Documentation', `<div class="eyebrow">DOCUMENTATION</div><h1>產品組合權，設計系統品質</h1><p class="lead">Kallopis 以通用視覺語意與 token 維持一致；各框架庫依規範實作，產品擁有畫面、導航與流程。</p><div class="actions"><a class="button primary" href="design-system/index.html">通用視覺規範</a><a class="button secondary" href="${escapeHtml(relative('docs/index.html', 'docs/api/index.html'))}">Flutter API</a><a class="button secondary" href="${escapeHtml(relative('docs/index.html', 'docs/components/index.html'))}">公開型別</a></div><h2>Current guides</h2><ul>${guideLinks.join('')}</ul>`);
+	page('docs/index.html', 'Documentation', `<div class="eyebrow">DOCUMENTATION</div><h1>產品組合權，設計系統品質</h1><p class="lead">Kallopis 以通用視覺語意與 token 維持一致；各框架庫依規範實作，產品擁有畫面、導航與流程。</p><div class="actions"><a class="button primary" href="design-system/index.html">通用視覺規範</a><a class="button secondary" href="${escapeHtml(relative('docs/index.html', 'docs/api/index.html'))}">Flutter API</a><a class="button secondary" href="${escapeHtml(relative('docs/index.html', 'docs/components/index.html'))}">公開型別</a></div>${reactComponents ? '<p><a class="button secondary" href="react/components/index.html">React 互動元件</a></p>' : ''}<h2>Current guides</h2><ul>${guideLinks.join('')}</ul>`);
 	write('index.html', homePage({
 		apiCount: apiDeclarations.length,
 		moduleCount: api.modules.length,
 	}));
 	write('search-index.json', `${JSON.stringify(search, null, '\t')}\n`);
-	write('site-manifest.json', `${JSON.stringify({ surfaces: api.surfaces, apiModules, apiDeclarations, guides: documents.map(({source}) => source), documents }, null, '\t')}\n`);
+	write('site-manifest.json', `${JSON.stringify({ surfaces: api.surfaces, apiModules, apiDeclarations, ...(reactComponents ? { reactComponents } : {}), guides: documents.map(({source}) => source), documents }, null, '\t')}\n`);
 	console.log(`Generated ${apiDeclarations.length} canonical API pages across ${api.modules.length} modules.`);
 }
 
-main();
+await main();
