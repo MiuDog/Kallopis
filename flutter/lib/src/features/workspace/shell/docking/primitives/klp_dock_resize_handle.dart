@@ -1,63 +1,65 @@
 part of '../klp_dock_layout.dart';
 
+/// 實際把手槽內的 pointer 與提示；尺寸由外層 geometry 擁有。
 class _KlpDockResizeHandle extends StatelessWidget {
-  final Axis axis;
-  final ValueChanged<Offset> onPosition;
-  final bool showIndicator;
+	/// 回報全域游標位置，呈現層再轉為目前槽的局部預算。
+	final Axis axis;
+	final ValueChanged<Offset> onPosition;
+	final bool showIndicator;
 
-  const _KlpDockResizeHandle({
-    super.key,
-    required this.axis,
-    required this.onPosition,
-    this.showIndicator = true,
-  });
+	const _KlpDockResizeHandle({
+		super.key,
+		required this.axis,
+		required this.onPosition,
+		this.showIndicator = true,
+	});
 
-  @override
-  Widget build(BuildContext context) {
-    final isHorizontal = axis == Axis.horizontal;
-    final lineLength = context.klp.space.loose - context.klp.space.tight;
+	@override
+	Widget build(BuildContext context) {
+		final isHorizontal = axis == Axis.horizontal;
+		final lineLength = math.max(0.0, context.klp.space.loose - context.klp.space.tight);
 
-    return MouseRegion(
-      cursor: isHorizontal
-          ? SystemMouseCursors.resizeColumn
-          : SystemMouseCursors.resizeRow,
-      child: GestureDetector(
-        behavior: HitTestBehavior.opaque,
-        onHorizontalDragUpdate: isHorizontal
-            ? (details) => onPosition(details.globalPosition)
-            : null,
-        onVerticalDragUpdate: isHorizontal
-            ? null
-            : (details) => onPosition(details.globalPosition),
-        child: SizedBox(
-          width: isHorizontal
-              ? context.klp.geometry.layout.resizeHandleExtent
-              : null,
-          height: isHorizontal
-              ? null
-              : context.klp.geometry.layout.resizeHandleExtent,
-          child: showIndicator
-              ? Center(
-                  child: DecoratedBox(
-                    decoration: BoxDecoration(
-                      color: context.klpColors.border,
-                      borderRadius: BorderRadius.circular(
-                        context.klp.shape.stroke,
-                      ),
-                    ),
-                    child: SizedBox(
-                      width: isHorizontal
-                          ? context.klp.space.hairline
-                          : lineLength,
-                      height: isHorizontal
-                          ? lineLength
-                          : context.klp.space.hairline,
-                    ),
-                  ),
-                )
-              : null,
-        ),
-      ),
-    );
-  }
+		return ClipRect(child: MouseRegion(
+			cursor: isHorizontal
+					? SystemMouseCursors.resizeColumn
+					: SystemMouseCursors.resizeRow,
+			child: GestureDetector(
+				behavior: HitTestBehavior.opaque,
+				onHorizontalDragUpdate: isHorizontal
+						? (details) => onPosition(details.globalPosition)
+						: null,
+				onVerticalDragUpdate: isHorizontal
+						? null
+						: (details) => onPosition(details.globalPosition),
+				child: SizedBox(
+					width: isHorizontal
+							? context.klp.geometry.layout.resizeHandleExtent
+							: null,
+					height: isHorizontal
+							? null
+							: context.klp.geometry.layout.resizeHandleExtent,
+					child: showIndicator
+							? Center(
+									child: DecoratedBox(
+										decoration: BoxDecoration(
+											color: context.klpColors.border,
+											borderRadius: BorderRadius.circular(
+												context.klp.shape.stroke,
+											),
+										),
+										child: SizedBox(
+											width: isHorizontal
+													? context.klp.space.hairline
+													: lineLength,
+											height: isHorizontal
+													? lineLength
+													: context.klp.space.hairline,
+										),
+									),
+								)
+							: null,
+				),
+			),
+		));
+	}
 }

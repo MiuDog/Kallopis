@@ -1,3 +1,5 @@
+import 'dart:math' as math;
+
 import 'package:flutter/material.dart';
 
 import 'package:kallopis/src/foundation/interaction/klp_drag_drop.dart';
@@ -6,10 +8,12 @@ import 'package:kallopis/src/foundation/surface/klp_surface.dart';
 import 'package:kallopis/src/styling/legacy_theme/klp_theme.dart';
 import 'package:kallopis/src/foundation/content/klp_text.dart';
 import 'package:kallopis/src/features/workspace/shell/panel/klp_panel_frame.dart';
+import 'package:kallopis/src/features/workspace/layout/klp_linear_layout.dart';
 import 'klp_dock_header.dart';
 import 'klp_dock_layout_models.dart';
 import 'klp_dock_panel.dart';
 
+part 'internal/klp_dock_geometry.dart';
 part 'internal/klp_dock_layout_data.dart';
 part 'internal/klp_dock_layout_widget.dart';
 part 'internal/klp_dock_area_slot.dart';
@@ -22,6 +26,7 @@ part 'primitives/klp_dock_panel_draggable.dart';
 part 'primitives/klp_dock_resize_handle.dart';
 part 'primitives/klp_dock_tab_surface.dart';
 
+/// 直接組合原生 Dock 槽及 gesture；render 只讀保存偏好。
 class _KlpDockLayoutState extends State<KlpDockLayout> {
 	static const double _minHorizontalGroupExtent = 120;
 
@@ -50,116 +55,67 @@ class _KlpDockLayoutState extends State<KlpDockLayout> {
 			'bottomConstraints 只有在 Bottom 不可用時才能省略。',
 		);
 		final layout = widget.layout;
-		final showLeft = layout.left.isVisible && layout.left.groups.isNotEmpty;
-		final showRight = layout.right.isVisible && layout.right.groups.isNotEmpty;
-		final showBottom =
-				layout.bottom.isVisible && layout.bottom.groups.isNotEmpty;
-
 		return KlpSurface(
 			tone: KlpSurfaceTone.app,
-			child: KlpLayoutBuilder(
-				builder: (dockContext, dockConstraints) {
-					final handleExtent = context.klp.geometry.layout.resizeHandleExtent;
-					final headerExtent = widget.contentHeader?.preferredSize.height ?? 0.0;
-					final centerLeft = showLeft ? layout.left.extent + handleExtent : 0.0;
-					final centerRight = showRight
-							? layout.right.extent + handleExtent
-							: 0.0;
-
-					return KlpStack(
-						children: [
-							KlpPositioned.fill(
-								child: KlpRow(
-									crossAxisAlignment: CrossAxisAlignment.stretch,
-									children: [
-										if (showLeft) ...[
-											KlpBox(
-												width: layout.left.extent,
-												child: _buildArea(_KlpDockAreaSlot.left, layout.left),
-											),
-											KlpBox(width: handleExtent),
-										],
-										KlpExpanded(child: KlpColumn(
-											crossAxisAlignment: CrossAxisAlignment.stretch,
-											children: [
-												if (widget.contentHeader != null) SizedBox(height: headerExtent, child: widget.contentHeader),
-												KlpExpanded(child: KlpRow(
-													crossAxisAlignment: CrossAxisAlignment.stretch,
-													children: [
-														KlpExpanded(
-															child: KlpColumn(
-																crossAxisAlignment: CrossAxisAlignment.stretch,
-																children: [
-																	KlpExpanded(child: _buildStage()),
-																	if (showBottom) ...[
-																		KlpBox(height: handleExtent),
-																		KlpBox(
-																			height: layout.bottom.extent,
-																			child: _buildArea(
-																				_KlpDockAreaSlot.bottom,
-																				layout.bottom,
-																			),
-																		),
-													],
-												],
-											),
-										),
-										if (showRight) ...[
-											KlpBox(width: handleExtent),
-											KlpBox(
-												width: layout.right.extent,
-												child: _buildArea(_KlpDockAreaSlot.right, layout.right),
-											),
-										],
-													],
-												)),
-											],
-										)),
-									],
-								),
-							),
-							if (_activeDropTarget?.startsWith('stage:') ?? false)
-								_buildStageDropIndicator(_activeDropTarget!),
-							if (widget.bottomConstraints case final bottomConstraints?)
-								_buildAreaResizeOverlay(
-									dockContext,
-									_KlpDockAreaSlot.bottom,
-									layout.bottom,
-									bottomConstraints,
-									showIndicator: showBottom,
-									left: centerLeft,
-									right: centerRight,
-									bottom: showBottom ? layout.bottom.extent : 0,
-									height: handleExtent,
-								),
-							_buildAreaResizeOverlay(
-								dockContext,
-								_KlpDockAreaSlot.left,
-								layout.left,
-								widget.leftConstraints,
-								showIndicator: showLeft,
-								left: showLeft ? layout.left.extent : 0,
-								top: 0,
-								bottom: 0,
-								width: handleExtent,
-							),
-							_buildAreaResizeOverlay(
-								dockContext,
-								_KlpDockAreaSlot.right,
-								layout.right,
-								widget.rightConstraints,
-								showIndicator: showRight,
-								right: showRight ? layout.right.extent : 0,
-								top: headerExtent,
-								bottom: 0,
-								width: handleExtent,
-							),
-						],
-					);
-				},
-			),
+			child: KlpLayoutBuilder(builder: (dockContext, constraints) {
+				final geometry = _resolveDockGeometry(
+					size: Size(constraints.maxWidth, constraints.maxHeight),
+					layout: layout,
+					leftConstraints: widget.leftConstraints,
+					rightConstraints: widget.rightConstraints,
+					bottomConstraints: widget.bottomConstraints,
+					handleExtent: context.klp.geometry.layout.resizeHandleExtent,
+					headerExtent: widget.contentHeader?.preferredSize.height,
+				);
+				return KlpStack(clipBehavior: Clip.hardEdge, children: [
+					if (geometry.left case final rect?) _dockSlot('dock-left-slot', rect, _buildArea(_KlpDockAreaSlot.left, layout.left)),
+					if (geometry.header case final rect?) _dockSlot('dock-header-slot', rect, widget.contentHeader!),
+					_dockSlot('dock-stage-slot', geometry.stage, _buildStage()),
+					if (geometry.bottom case final rect?) _dockSlot('dock-bottom-slot', rect, _buildArea(_KlpDockAreaSlot.bottom, layout.bottom)),
+					if (geometry.right case final rect?) _dockSlot('dock-right-slot', rect, _buildArea(_KlpDockAreaSlot.right, layout.right)),
+					if (_activeDropTarget?.startsWith('stage:') ?? false)
+						_buildStageDropIndicator(_activeDropTarget!, geometry.stage),
+					if (widget.bottomConstraints case final limits?) _buildAreaResizeOverlay(
+						dockContext,
+						_KlpDockAreaSlot.bottom,
+						layout.bottom,
+						limits,
+						rect: geometry.bottomHandle,
+						maximumExtent: geometry.maximumBottom,
+						showIndicator: geometry.bottom != null,
+					),
+					_buildAreaResizeOverlay(
+						dockContext,
+						_KlpDockAreaSlot.left,
+						layout.left,
+						widget.leftConstraints,
+						rect: geometry.leftHandle,
+						maximumExtent: geometry.maximumLeft,
+						showIndicator: geometry.left != null,
+					),
+					_buildAreaResizeOverlay(
+						dockContext,
+						_KlpDockAreaSlot.right,
+						layout.right,
+						widget.rightConstraints,
+						rect: geometry.rightHandle,
+						maximumExtent: geometry.maximumRight,
+						showIndicator: geometry.right != null,
+					),
+				]);
+			}),
 		);
 	}
+
+	/// 每個具名槽維持自己的 Element，尺寸改變不搬移產品內容。
+	Widget _dockSlot(String id, Rect rect, Widget child) => KlpPositioned(
+		key: ValueKey(id),
+		left: rect.left,
+		top: rect.top,
+		width: rect.width,
+		height: rect.height,
+		child: ClipRect(child: child),
+	);
 
 	Widget _buildStage() {
 		return _KlpDockDropTarget(
@@ -190,38 +146,26 @@ class _KlpDockLayoutState extends State<KlpDockLayout> {
 		_KlpDockAreaSlot slot,
 		KlpDockAreaData area,
 		KlpDockAreaConstraints constraints, {
+		required Rect rect,
+		required double maximumExtent,
 		required bool showIndicator,
-		double? left,
-		double? top,
-		double? right,
-		double? bottom,
-		double? width,
-		double? height,
 	}) {
-		final axis = slot == _KlpDockAreaSlot.bottom
-				? Axis.vertical
-				: Axis.horizontal;
-
-		return KlpPositioned(
-			left: left,
-			top: top,
-			right: right,
-			bottom: bottom,
-			width: width,
-			height: height,
-			child: _KlpDockResizeHandle(
-				key: ValueKey('dock-area-${slot.name}-resize-handle'),
-				axis: axis,
-				showIndicator: showIndicator,
-				onPosition: (globalPosition) => _handleAreaResizeAt(
-					dockContext,
-					slot,
-					area,
-					constraints,
-					globalPosition,
-				),
+		final axis = slot == _KlpDockAreaSlot.bottom ? Axis.vertical : Axis.horizontal;
+		final handleExtent = axis == Axis.vertical ? rect.height : rect.width;
+		return _dockSlot('dock-${slot.name}-handle-slot', rect, _KlpDockResizeHandle(
+			key: ValueKey('dock-area-${slot.name}-resize-handle'),
+			axis: axis,
+			showIndicator: showIndicator,
+			onPosition: (position) => _handleAreaResizeAt(
+				dockContext,
+				slot,
+				area,
+				constraints,
+				position,
+				handleExtent: handleExtent,
+				maximumExtent: maximumExtent,
 			),
-		);
+		));
 	}
 
 	Widget _buildArea(_KlpDockAreaSlot slot, KlpDockAreaData area) {
@@ -243,12 +187,13 @@ class _KlpDockLayoutState extends State<KlpDockLayout> {
 		final availableExtent = isVertical
 				? constraints.maxHeight
 				: constraints.maxWidth;
-		final handleExtent = context.klp.geometry.layout.resizeHandleExtent;
-		final groupExtents = _resolveGroupExtents(
+		final resolved = _resolveGroupExtents(
 			area,
 			availableExtent,
-			handleExtent,
+			context.klp.geometry.layout.resizeHandleExtent,
 		);
+		final groupExtents = resolved.extents;
+		final handleExtent = resolved.gutter;
 		final children = <Widget>[];
 		var offset = 0.0;
 
@@ -266,14 +211,14 @@ class _KlpDockLayoutState extends State<KlpDockLayout> {
 					bottom: isVertical ? null : 0,
 					width: isVertical ? null : groupExtent,
 					height: isVertical ? groupExtent : null,
-					child: _buildGroupDropTarget(
+					child: ClipRect(child: _buildGroupDropTarget(
 						context,
 						slot,
 						area,
 						group,
 						groupExtent,
 						handleExtent,
-					),
+					)),
 				),
 			);
 
@@ -310,47 +255,22 @@ class _KlpDockLayoutState extends State<KlpDockLayout> {
 		return KlpStack(clipBehavior: Clip.hardEdge, children: children);
 	}
 
-	List<double> _resolveGroupExtents(
+	KlpLinearLayoutResult _resolveGroupExtents(
 		KlpDockAreaData area,
 		double availableExtent,
 		double handleExtent,
 	) {
-		assert(availableExtent.isFinite);
-
-		final groupCount = area.groups.length;
-		final handlesExtent = handleExtent * (groupCount - 1);
-		final rawContentExtent = availableExtent - handlesExtent;
-		final contentExtent = rawContentExtent > 0 ? rawContentExtent : 0.0;
-
-		if (groupCount == 1) return [contentExtent];
-
-		final minExtent = _resolveGroupMinExtent(area);
-		if (contentExtent < minExtent * groupCount) {
-			return List<double>.filled(groupCount, contentExtent / groupCount);
-		}
-
-		final extents = <double>[];
-		var usedExtent = 0.0;
-
-		for (var index = 0; index < groupCount; index++) {
-			final isLast = index == groupCount - 1;
-			if (isLast) {
-				extents.add(contentExtent - usedExtent);
-				continue;
-			}
-
-			final remainingGroups = groupCount - index - 1;
-			final maxExtent =
-					contentExtent - usedExtent - minExtent * remainingGroups;
-			final extent = area.groups[index].mainAxisExtent
-					.clamp(minExtent, maxExtent)
-					.toDouble();
-
-			extents.add(extent);
-			usedExtent += extent;
-		}
-
-		return extents;
+		final minimum = _resolveGroupMinExtent(area);
+		return resolveKlpLinearLayout(
+			extent: availableExtent,
+			gutter: handleExtent,
+			gutterCount: area.groups.length - 1,
+			items: [for (var index = 0; index < area.groups.length; index++) KlpLinearItem(
+				minimum: minimum,
+				preferred: index == area.groups.length - 1 ? minimum : area.groups[index].mainAxisExtent,
+				flex: index == area.groups.length - 1 ? 1 : 0,
+			)],
+		);
 	}
 
 	double _resolveGroupMinExtent(KlpDockAreaData area) {
@@ -706,8 +626,9 @@ class _KlpDockLayoutState extends State<KlpDockLayout> {
 
 		final localOffset = renderObject.globalToLocal(globalOffset);
 		if (area.axis == Axis.horizontal) {
-			final inHeader =
-					_groupHasHeader(group) && localOffset.dy < KlpDockHeader.extent;
+			final margin = math.min(context.klp.space.dockMargin, renderObject.size.height / 2);
+			final headerHeight = math.min(context.klp.space.chromeTab, math.max(0.0, renderObject.size.height - margin * 2));
+			final inHeader = _groupHasHeader(group) && localOffset.dy < margin + headerHeight;
 			if (inHeader) return _KlpDockDropPlacement.merge;
 			if (localOffset.dx >= renderObject.size.width / 2) {
 				return _KlpDockDropPlacement.splitAfter;
@@ -840,40 +761,17 @@ class _KlpDockLayoutState extends State<KlpDockLayout> {
 		}
 	}
 
-	Widget _buildStageDropIndicator(String targetId) {
+	Widget _buildStageDropIndicator(String targetId, Rect stage) {
 		final slotName = targetId.substring('stage:'.length);
-		final slot = _KlpDockAreaSlot.values.firstWhere(
-			(candidate) => candidate.name == slotName,
-		);
-		final thickness = context.klp.shape.stroke;
-		const indicator = _KlpDockIndicatorFrame();
-
-		switch (slot) {
-			case _KlpDockAreaSlot.left:
-				return KlpPositioned(
-					left: 0,
-					top: 0,
-					bottom: 0,
-					width: thickness,
-					child: indicator,
-				);
-			case _KlpDockAreaSlot.right:
-				return KlpPositioned(
-					right: 0,
-					top: 0,
-					bottom: 0,
-					width: thickness,
-					child: indicator,
-				);
-			case _KlpDockAreaSlot.bottom:
-				return KlpPositioned(
-					left: 0,
-					right: 0,
-					bottom: 0,
-					height: thickness,
-					child: indicator,
-				);
-		}
+		final slot = _KlpDockAreaSlot.values.firstWhere((candidate) => candidate.name == slotName);
+		final horizontalThickness = math.min(context.klp.shape.stroke, stage.width);
+		final verticalThickness = math.min(context.klp.shape.stroke, stage.height);
+		final rect = switch (slot) {
+			_KlpDockAreaSlot.left => stage.topLeft & Size(horizontalThickness, stage.height),
+			_KlpDockAreaSlot.right => Offset(stage.right - horizontalThickness, stage.top) & Size(horizontalThickness, stage.height),
+			_KlpDockAreaSlot.bottom => Offset(stage.left, stage.bottom - verticalThickness) & Size(stage.width, verticalThickness),
+		};
+		return _dockSlot('dock-stage-drop-indicator', rect, const _KlpDockIndicatorFrame());
 	}
 
 	void _activateDropTarget(String targetId, _KlpDockDropPlacement placement) {
@@ -908,13 +806,14 @@ class _KlpDockLayoutState extends State<KlpDockLayout> {
 		_KlpDockAreaSlot slot,
 		KlpDockAreaData area,
 		KlpDockAreaConstraints constraints,
-		Offset globalPosition,
-	) {
+		Offset globalPosition, {
+		required double handleExtent,
+		required double maximumExtent,
+	}) {
 		final renderObject = dockContext.findRenderObject();
 		if (renderObject is! RenderBox) return;
 
 		final localPosition = renderObject.globalToLocal(globalPosition);
-		final handleExtent = context.klp.geometry.layout.resizeHandleExtent;
 		final requestedExtent = switch (slot) {
 			_KlpDockAreaSlot.left => localPosition.dx - handleExtent / 2,
 			_KlpDockAreaSlot.right =>
@@ -930,8 +829,10 @@ class _KlpDockLayoutState extends State<KlpDockLayout> {
 			return;
 		}
 
+		final maximum = math.min(constraints.maxExtent, maximumExtent);
+		if (maximum < constraints.minExtent || !requestedExtent.isFinite) return;
 		final nextExtent = requestedExtent
-				.clamp(constraints.minExtent, constraints.maxExtent)
+				.clamp(constraints.minExtent, maximum)
 				.toDouble();
 		if (area.isVisible && area.extent == nextExtent) return;
 
