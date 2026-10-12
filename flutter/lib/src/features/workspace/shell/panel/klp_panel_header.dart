@@ -36,7 +36,7 @@ class KlpPanelHeader extends StatelessWidget {
 
 	@override
 	Widget build(BuildContext context) {
-		final titleContent = content ?? Center(child: SingleChildScrollView(
+		final titleContent = content ?? Align(alignment: AlignmentDirectional.centerStart, child: SingleChildScrollView(
 			child: Column(
 				mainAxisSize: MainAxisSize.min,
 				crossAxisAlignment: CrossAxisAlignment.start,
