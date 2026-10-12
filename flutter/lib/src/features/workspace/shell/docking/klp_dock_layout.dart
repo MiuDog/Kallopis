@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:math' as math;
 
 import 'package:flutter/material.dart';
@@ -12,8 +13,15 @@ import 'package:kallopis/src/features/workspace/layout/klp_linear_layout.dart';
 import 'klp_dock_header.dart';
 import 'klp_dock_layout_models.dart';
 import 'klp_dock_panel.dart';
+import 'klp_dock_layout_codec.dart';
+import 'klp_dock_layout_operations.dart';
+import 'package:kallopis/src/foundation/klp_icons.dart';
+import 'package:kallopis/src/foundation/klp_icon.dart';
+import 'package:kallopis/src/foundation/localization/klp_localizations.dart';
+import 'package:kallopis/src/features/actions/button/klp_icon_button.dart';
 
 part 'internal/klp_dock_geometry.dart';
+part 'internal/klp_dock_close.dart';
 part 'internal/klp_dock_layout_data.dart';
 part 'internal/klp_dock_layout_widget.dart';
 part 'internal/klp_dock_area_slot.dart';
@@ -32,6 +40,8 @@ class _KlpDockLayoutState extends State<KlpDockLayout> {
 
 	/// 只記錄此次拖曳的暫時展開；產品 layout 是唯一保存權威。
 	final Set<_KlpDockAreaSlot> _previewAreaSlots = {};
+	/// 關閉請求只保存暫態 token，不能持有舊產品 layout。
+	final Map<String, _KlpDockCloseRequest> _pendingCloseRequests = {};
 	String? _activeDropTarget;
 	_KlpDockDropPlacement? _activeDropPlacement;
 	int _groupSequence = 0;
@@ -39,6 +49,7 @@ class _KlpDockLayoutState extends State<KlpDockLayout> {
 	@override
 	void didUpdateWidget(KlpDockLayout oldWidget) {
 		super.didUpdateWidget(oldWidget);
+		_reconcileCloseRequests();
 
 		if (!identical(oldWidget.layout, widget.layout)) {
 			_previewAreaSlots.clear();
@@ -414,11 +425,20 @@ class _KlpDockLayoutState extends State<KlpDockLayout> {
 				!hasTabs &&
 						panel.header == null &&
 						panel.actions.isEmpty &&
-						!showTabInsertion
+						!showTabInsertion &&
+						!panel.isPinned && !panel.isDirty && panel.onCloseRequested == null
 				? null
 				: KlpDockHeader(
 						leading: leading,
-						actions: panel.actions,
+						actions: [
+							...panel.actions,
+							if (!hasTabs && panel.onCloseRequested != null) KlpDockHeaderAction(
+								icon: KlpIcons.close,
+								label: _closeLabel(panel),
+								enabled: !_pendingCloseRequests.containsKey(panel.id),
+								onPressed: () => _requestClose(panel),
+							),
+						],
 						dragRegionBuilder: panel.isDraggable
 								? (child) => _buildPanelDraggable(data, panel, child)
 								: null,
@@ -438,7 +458,9 @@ class _KlpDockLayoutState extends State<KlpDockLayout> {
 	}) {
 		return KlpRow(
 			children: [
-				if (panel.header != null) _buildHeaderContent(panel.header!),
+				if (panel.header != null) _buildHeaderContent(_panelLabel(panel, panel.header!)),
+				if (panel.header == null && (panel.isPinned || panel.isDirty))
+					_buildHeaderContent(_panelLabel(panel, const KlpBox.shrink())),
 				if (showTabInsertion) _buildHeaderDropIndicator(),
 			],
 		);
@@ -480,8 +502,7 @@ class _KlpDockLayoutState extends State<KlpDockLayout> {
 
 		return _KlpDockDropTarget(
 			onWillAcceptWithDetails: (targetContext, details) {
-				return details.data.panelId != panelId &&
-						_canDropPanelInSlot(details.data.panelId, slot);
+				return _canDropPanelInSlot(details.data.panelId, slot);
 			},
 			onAcceptWithDetails: (targetContext, details) {
 				_finishPanelDrop(
@@ -492,18 +513,25 @@ class _KlpDockLayoutState extends State<KlpDockLayout> {
 					_KlpDockDropPlacement.merge,
 					group.mainAxisExtent,
 					0,
-					insertionIndex: index,
+					insertionIndex: index + (_tabDropAfter(targetContext, details.offset) ? 1 : 0),
 				);
 				_clearDropTarget();
 			},
+			onMove: (targetContext, details) => _activateDropTarget(
+				'tab:$panelId:${_tabDropAfter(targetContext, details.offset) ? 'after' : 'before'}',
+				_KlpDockDropPlacement.merge,
+			),
+			onLeave: (targetContext, data) => _clearDropTarget(),
 			builder: (context, candidateData, rejectedData) {
+				final after = _activeDropTarget == 'tab:$panelId:after';
 				final target = candidateData.isEmpty
 						? tab
 						: KlpStack(
 								children: [
 									tab,
 									KlpPositioned(
-										left: 0,
+										left: after ? null : 0,
+										right: after ? 0 : null,
 										top: 0,
 										bottom: 0,
 										child: _buildHeaderDropIndicator(),
@@ -522,6 +550,13 @@ class _KlpDockLayoutState extends State<KlpDockLayout> {
 		);
 	}
 
+	/// 同一 tab 的前後半部決定原始插入點，提交再轉成 removal 後 index。
+	bool _tabDropAfter(BuildContext targetContext, Offset globalOffset) {
+		final box = targetContext.findRenderObject();
+		if (box is! RenderBox) return false;
+		return box.globalToLocal(globalOffset).dx >= box.size.width / 2;
+	}
+
 	Widget _buildDockTabSurface(
 		KlpDockPanel? panel,
 		String panelId,
@@ -530,13 +565,15 @@ class _KlpDockLayoutState extends State<KlpDockLayout> {
 	) {
 		final header =
 				panel?.header ?? KlpText(panelId, overflow: TextOverflow.ellipsis);
-		final child = _buildHeaderContent(header);
+		final child = _buildHeaderContent(panel == null ? header : _panelLabel(panel, header));
 
-		return _KlpDockTabSurface(
+		final tab = _KlpDockTabSurface(
 			selected: selected,
 			onPressed: onPressed,
 			child: child,
 		);
+		if (panel?.onCloseRequested == null) return tab;
+		return KlpRow(children: [tab, _closeButton(panel!)]);
 	}
 
 	Widget _buildHeaderContent(Widget child) {
@@ -585,14 +622,7 @@ class _KlpDockLayoutState extends State<KlpDockLayout> {
 		String groupId,
 		String panelId,
 	) {
-		final groupIndex = area.groups.indexWhere((group) => group.id == groupId);
-		if (groupIndex < 0) return;
-
-		final nextGroups = List<KlpDockGroupData>.of(area.groups);
-		nextGroups[groupIndex] = nextGroups[groupIndex].copyWith(
-			activePanelId: panelId,
-		);
-		_emitAreaChange(slot, area.copyWith(groups: nextGroups));
+		_commitActions([KlpDockAction.select(panelId: panelId)]);
 	}
 
 	void _updateGroupDropTarget(
@@ -909,7 +939,17 @@ class _KlpDockLayoutState extends State<KlpDockLayout> {
 	}
 
 	void _emitAreaChange(_KlpDockAreaSlot slot, KlpDockAreaData area) {
-		widget.onLayoutChanged(_replaceArea(widget.layout, slot, area));
+		final current = _areaForSlot(widget.layout, slot);
+		final actions = <KlpDockAction>[
+			if (current.isVisible != area.isVisible)
+				KlpDockAction.visibility(area: _publicArea(slot), isVisible: area.isVisible),
+			if (current.extent != area.extent)
+				KlpDockAction.resizeArea(area: _publicArea(slot), extent: area.extent),
+			for (var index = 0; index < area.groups.length; index++)
+				if (current.groups[index].mainAxisExtent != area.groups[index].mainAxisExtent)
+					KlpDockAction.resizeGroup(groupId: area.groups[index].id, extent: area.groups[index].mainAxisExtent),
+		];
+		_commitActions(actions);
 	}
 
 	KlpDockLayoutData _replaceArea(
