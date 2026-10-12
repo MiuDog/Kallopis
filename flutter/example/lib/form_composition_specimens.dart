@@ -66,7 +66,7 @@ class _FormCompositionComponentSpecimenState extends State<FormCompositionCompon
 		}
 	}
 	Widget _child() => KlpSurface(child: Column(mainAxisSize: MainAxisSize.min, crossAxisAlignment: CrossAxisAlignment.start, children: [KlpText('child：${_label.text}'), KlpTextField(controller: _draft, onChanged: _input), KlpButton(label: 'child 動作', onPressed: _childAction)]));
-	Widget _actions() => KlpFormActions(submitLabel: '提交資料', onSubmit: _enabled ? () => _root('onSubmit') : null, cancelLabel: _extra ? '取消資料' : null, onCancel: _enabled ? () => _root('onCancel') : null, resetLabel: _extra ? '重置資料' : null, onReset: _enabled ? () { _draft.text = '組合欄位草稿'; _root('onReset'); } : null, submitting: _submitting);
+	Widget _actions() => KlpFormActions(submitLabel: '提交${_label.text}', onSubmit: _enabled ? () => _root('onSubmit') : null, cancelLabel: _extra ? '取消資料' : null, onCancel: _enabled ? () => _root('onCancel') : null, resetLabel: _extra ? '重置資料' : null, onReset: _enabled ? () { _draft.text = '組合欄位草稿'; _root('onReset'); } : null, submitting: _submitting);
 	Widget _summary() => KlpFormErrorSummary(title: _label.text, errors: _errors, onSelected: _enabled ? (id) => _root('onSelected：$id') : null);
 	Widget _target() {
 		switch (widget.name) {
