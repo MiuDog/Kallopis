@@ -50,7 +50,7 @@ function requireText(value: unknown, name: string): asserts value is string {
 }
 
 interface EntrySlot {
-	/* parent 是有限容器的內容槽；client 保留本入口扣除捲軸後的原生寬度。 */
+	/* width／height 是父容器內容槽的邏輯像素；client 保留入口扣除捲軸後的原生寬度。 */
 	width: number;
 	height: number;
 	client: number;
@@ -111,10 +111,12 @@ function useEntryGeometry(root: React.RefObject<HTMLDivElement | null>, menu: bo
 	const icon = Math.min(token('theme.spacing.iconSmall'), remaining / 2);
 	const gap = Math.min(token(menu ? 'theme.spacing.overlayItemGap' : 'theme.spacing.controlContentGap'), remaining - icon);
 	return {
+		/* width 限制面板偏好；outer-x／outer-y 限制外距；row-width 扣外距後限制項目。 */
 		'--klp-entry-width': `${width}px`,
 		'--klp-entry-outer-x': `${outerX}px`,
 		'--klp-entry-outer-y': `${outerY}px`,
 		'--klp-entry-row-width': `${rowWidth}px`,
+		/* row-padding／border 先扣結構空間；icon／gap 只消耗剩餘文字槽，不改原pack。 */
 		'--klp-entry-row-padding': `${padding}px`,
 		'--klp-entry-border': `${border}px`,
 		'--klp-entry-icon': `${icon}px`,
