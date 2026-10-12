@@ -126,7 +126,7 @@ for (const entry of search) {
 
 // React清單重新對正式輸入驗證；不能相信生成manifest聲稱的完整性。
 const args = process.argv.slice(2);
-if (new Set(args).size !== args.length || args.some(arg => !['--react', '--react-scenes'].includes(arg)) || (args.includes('--react-scenes') && !args.includes('--react'))) failures.push('Usage: verify.mjs [--react [--react-scenes]]');
+if (new Set(args).size !== args.length || args.some(arg => !['--react', '--react-scenes', '--flutter-scenes'].includes(arg)) || (args.includes('--react-scenes') && !args.includes('--react'))) failures.push('Usage: verify.mjs [--react [--react-scenes]] [--flutter-scenes]');
 if (args.includes('--react') && !site.reactComponents) failures.push('Missing React component manifest');
 if (site.reactComponents) {
 	try {
@@ -179,6 +179,42 @@ if (site.reactScenarios) {
 }
 for (const href of actualHtml) if (href.startsWith('docs/react/scenarios/') && !scenarioRoutes.has(href)) failures.push(`Unexpected React scenario page: ${href}`);
 if (!site.reactScenarios && search.some(entry => entry.category === 'React Scenario')) failures.push('Unexpected React scenario search entries');
+
+// Flutter以正式JSON及完整source bundle驗證，不信任生成清單自述。
+if (args.includes('--flutter-scenes') && !site.flutterScenarios) failures.push('Missing Flutter scenario manifest');
+const flutterRoutes = new Set();
+if (site.flutterScenarios) {
+	try {
+		const { validateFlutterScenarios, renderFlutterScenario, validateFlutterBundle } = await import('./flutter-scenarios.mjs');
+		const registry = JSON.parse(fs.readFileSync(path.join(root, 'flutter/example/assets/gui-scenarios.json'), 'utf8'));
+		const expected = validateFlutterScenarios(registry);
+		if (JSON.stringify(site.flutterScenarios) !== JSON.stringify(expected)) failures.push('Flutter scenario manifest mismatch');
+		const entries = search.filter(entry => entry.category === 'Flutter Scenario');
+		if (entries.length !== expected.length) failures.push('Flutter scenario search count mismatch');
+		const index = fs.readFileSync(path.join(output, 'docs/flutter/scenarios/index.html'), 'utf8');
+		const docsIndex = fs.readFileSync(path.join(output, 'docs/index.html'), 'utf8');
+		if (!docsIndex.includes('href="flutter/scenarios/index.html"')) failures.push('Missing Flutter scenario documentation entry');
+		flutterRoutes.add('docs/flutter/scenarios/index.html');
+		for (const scene of expected) {
+			flutterRoutes.add(scene.href);
+			const html = fs.readFileSync(path.join(output, scene.href), 'utf8');
+			const bundleUrl = `${path.posix.relative(path.posix.dirname(scene.href), 'examples/flutter/index.html')}?scenario=${encodeURIComponent(scene.id)}`;
+			if (!html.includes(renderFlutterScenario(scene, bundleUrl))) failures.push(`Invalid Flutter scenario embed: ${scene.id}`);
+			if (!index.includes(`href="${scene.id}.html"`)) failures.push(`Missing Flutter scenario index link: ${scene.id}`);
+			if (entries.filter(entry => entry.apiId === scene.id && entry.href === scene.href && entry.title === scene.title).length !== 1) failures.push(`Flutter scenario search mismatch: ${scene.id}`);
+		}
+		const sourceBundle = path.join(root, 'flutter/example/build/web');
+		const copiedBundle = path.join(output, 'examples/flutter');
+		validateFlutterBundle(sourceBundle, registry);
+		validateFlutterBundle(copiedBundle, registry);
+		for (const source of files(sourceBundle)) {
+			const target = path.join(copiedBundle, path.relative(sourceBundle, source));
+			if (!fs.existsSync(target) || !fs.readFileSync(source).equals(fs.readFileSync(target))) failures.push(`Flutter bundle asset mismatch: ${path.relative(sourceBundle, source)}`);
+		}
+	} catch (error) { failures.push(`Flutter scenario verification failed: ${error.message}`); }
+}
+for (const href of actualHtml) if (href.startsWith('docs/flutter/scenarios/') && !flutterRoutes.has(href)) failures.push(`Unexpected Flutter scenario page: ${href}`);
+if (!site.flutterScenarios && search.some(entry => entry.category === 'Flutter Scenario')) failures.push('Unexpected Flutter scenario search entries');
 
 // 步驟 4：固定網站入口與產物報告。
 for (const required of ['index.html', 'docs/index.html', 'docs/api/index.html', 'docs/components/index.html']) {

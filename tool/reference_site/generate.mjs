@@ -81,7 +81,7 @@ function page(relativePath, title, content, sourcePath = '') {
 
 async function main() {
 	const args = process.argv.slice(2);
-	if (new Set(args).size !== args.length || args.some(arg => !['--react', '--react-scenes'].includes(arg)) || (args.includes('--react-scenes') && !args.includes('--react'))) throw new Error('Usage: generate.mjs [--react [--react-scenes]]');
+	if (new Set(args).size !== args.length || args.some(arg => !['--react', '--react-scenes', '--flutter-scenes'].includes(arg)) || (args.includes('--react-scenes') && !args.includes('--react'))) throw new Error('Usage: generate.mjs [--react [--react-scenes]] [--flutter-scenes]');
 	validateManifest();
 	// 全部正式輸入與bundle成功才可清理既有輸出，錯誤保留上一份網站。
 	let reactComponents = null;
@@ -96,6 +96,16 @@ async function main() {
 	}
 	const reactBundle = path.join(root, 'react/example/dist');
 	if (reactComponents && !fs.existsSync(path.join(reactBundle, 'index.html'))) throw new Error('Missing React example bundle');
+	let flutterScenarios = null;
+	let renderFlutterScenario;
+	const flutterBundle = path.join(root, 'flutter/example/build/web');
+	if (args.includes('--flutter-scenes')) {
+		const helpers = await import('./flutter-scenarios.mjs');
+		const registry = JSON.parse(fs.readFileSync(path.join(root, 'flutter/example/assets/gui-scenarios.json'), 'utf8'));
+		flutterScenarios = helpers.validateFlutterScenarios(registry);
+		helpers.validateFlutterBundle(flutterBundle, registry);
+		renderFlutterScenario = helpers.renderFlutterScenario;
+	}
 
 	// 在清理舊產物前確認所有必要來源與文章可解析，避免發布不完整網站。
 	const renderedDocuments = documents.map((document) => {
@@ -112,6 +122,7 @@ async function main() {
 	for (const asset of ['site.css', 'site.js']) fs.copyFileSync(path.join(root, 'tool', 'reference_site', 'static', asset), path.join(output, 'assets', asset));
 
 	if (reactComponents) fs.cpSync(reactBundle, path.join(output, 'examples/react'), { recursive: true });
+	if (flutterScenarios) fs.cpSync(flutterBundle, path.join(output, 'examples/flutter'), { recursive: true });
 
 	const search = [];
 	const apiModules = api.modules.map((module) => ({
@@ -174,6 +185,15 @@ async function main() {
 		page('docs/react/scenarios/index.html', 'React GUI 場景', `<div class="eyebrow">REACT</div><h1>React GUI 場景</h1><p>以本庫公開元件組合使用場景，可操作布局、命令及風格。</p><ul class="api-list">${reactScenarios.map(scene => `<li><a href="${escapeHtml(relative('docs/react/scenarios/index.html', scene.href))}">${escapeHtml(scene.title)}</a></li>`).join('')}</ul>`);
 	}
 
+	if (flutterScenarios) {
+		for (const scene of flutterScenarios) {
+			const bundleUrl = `${relative(scene.href, 'examples/flutter/index.html')}?scenario=${encodeURIComponent(scene.id)}`;
+			page(scene.href, scene.title, `<div class="eyebrow">FLUTTER SCENARIO</div><h1>${escapeHtml(scene.title)}</h1>${renderFlutterScenario(scene, bundleUrl)}`);
+			search.push({ title: scene.title, category: 'Flutter Scenario', apiId: scene.id, href: scene.href });
+		}
+		page('docs/flutter/scenarios/index.html', 'Flutter GUI 場景', `<div class="eyebrow">FLUTTER</div><h1>Flutter GUI 場景</h1><p>以本庫公開元件組合使用場景，可操作布局、命令及風格。</p><ul class="api-list">${flutterScenarios.map(scene => `<li><a href="${escapeHtml(relative('docs/flutter/scenarios/index.html', scene.href))}">${escapeHtml(scene.title)}</a></li>`).join('')}</ul>`);
+	}
+
 	const guideLinks = [];
 	for (const document of renderedDocuments) {
 		const {source, href, title, category, html, body} = document;
@@ -183,13 +203,13 @@ async function main() {
 	}
 	const componentDeclarations = api.modules.flatMap((module) => module.declarations).filter((item) => ['class', 'abstractClass', 'baseClass', 'finalClass', 'interfaceClass', 'sealedClass', 'mixinClass'].includes(item.kind));
 	page('docs/components/index.html', 'Components', `<div class="eyebrow">COMPONENTS</div><h1>公開型別</h1><p class="lead">依實際 public surface 產生；詳細 constructor 與 member 請進入 API 頁。</p><ul class="api-list">${componentDeclarations.map((item) => `<li><a href="${escapeHtml(relative('docs/components/index.html', declarationRoute(item)))}"><code>${escapeHtml(item.name)}</code></a><span>${escapeHtml(item.module)} · ${item.surfaces.map((surface) => escapeHtml(surface)).join(' · ')}</span></li>`).join('')}</ul>`);
-	page('docs/index.html', 'Documentation', `<div class="eyebrow">DOCUMENTATION</div><h1>產品組合權，設計系統品質</h1><p class="lead">Kallopis 以通用視覺語意與 token 維持一致；各框架庫依規範實作，產品擁有畫面、導航與流程。</p><div class="actions"><a class="button primary" href="design-system/index.html">通用視覺規範</a><a class="button secondary" href="${escapeHtml(relative('docs/index.html', 'docs/api/index.html'))}">Flutter API</a><a class="button secondary" href="${escapeHtml(relative('docs/index.html', 'docs/components/index.html'))}">公開型別</a></div>${reactComponents ? '<p><a class="button secondary" href="react/components/index.html">React 互動元件</a></p>' : ''}${reactScenarios ? '<p><a class="button secondary" href="react/scenarios/index.html">React GUI 場景</a></p>' : ''}<h2>Current guides</h2><ul>${guideLinks.join('')}</ul>`);
+	page('docs/index.html', 'Documentation', `<div class="eyebrow">DOCUMENTATION</div><h1>產品組合權，設計系統品質</h1><p class="lead">Kallopis 以通用視覺語意與 token 維持一致；各框架庫依規範實作，產品擁有畫面、導航與流程。</p><div class="actions"><a class="button primary" href="design-system/index.html">通用視覺規範</a><a class="button secondary" href="${escapeHtml(relative('docs/index.html', 'docs/api/index.html'))}">Flutter API</a><a class="button secondary" href="${escapeHtml(relative('docs/index.html', 'docs/components/index.html'))}">公開型別</a></div>${reactComponents ? '<p><a class="button secondary" href="react/components/index.html">React 互動元件</a></p>' : ''}${reactScenarios ? '<p><a class="button secondary" href="react/scenarios/index.html">React GUI 場景</a></p>' : ''}${flutterScenarios ? '<p><a class="button secondary" href="flutter/scenarios/index.html">Flutter GUI 場景</a></p>' : ''}<h2>Current guides</h2><ul>${guideLinks.join('')}</ul>`);
 	write('index.html', homePage({
 		apiCount: apiDeclarations.length,
 		moduleCount: api.modules.length,
 	}));
 	write('search-index.json', `${JSON.stringify(search, null, '\t')}\n`);
-	write('site-manifest.json', `${JSON.stringify({ surfaces: api.surfaces, apiModules, apiDeclarations, ...(reactComponents ? { reactComponents } : {}), ...(reactScenarios ? { reactScenarios } : {}), guides: documents.map(({source}) => source), documents }, null, '\t')}\n`);
+	write('site-manifest.json', `${JSON.stringify({ surfaces: api.surfaces, apiModules, apiDeclarations, ...(reactComponents ? { reactComponents } : {}), ...(reactScenarios ? { reactScenarios } : {}), ...(flutterScenarios ? { flutterScenarios } : {}), guides: documents.map(({source}) => source), documents }, null, '\t')}\n`);
 	console.log(`Generated ${apiDeclarations.length} canonical API pages across ${api.modules.length} modules.`);
 }
 

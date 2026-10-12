@@ -124,6 +124,7 @@ if (diagrams.length) {
 // 展示載入狀態以同源app實際標題為準，HTTP錯頁不能冒充成功。
 for (const frame of document.querySelectorAll('iframe[data-component-specimen]')) {
 	const status = frame.parentElement.querySelector('[data-specimen-state]');
+	const isFlutter = frame.dataset.specimenFramework === 'flutter';
 	const name = frame.title.replace(/ React 互動展示$/, '');
 	let finished = false;
 	function finish(state, message) {
@@ -136,6 +137,13 @@ for (const frame of document.querySelectorAll('iframe[data-component-specimen]')
 	}
 	function inspect() {
 		try {
+			if (isFlutter) {
+				const title = frame.contentDocument?.title;
+				if (!title?.endsWith(' Flutter 互動展示')) return;
+				if (title === frame.title) finish('loaded', '展示已載入，可直接操作或獨立開啟。');
+				else finish('error', '展示載入失敗，請使用獨立開啟入口重新嘗試。');
+				return;
+			}
 			const heading = frame.contentDocument?.querySelector('h1');
 			if (!heading) return;
 			if (heading.textContent.trim() === name) finish('loaded', '展示已載入，可直接操作或獨立開啟。');
