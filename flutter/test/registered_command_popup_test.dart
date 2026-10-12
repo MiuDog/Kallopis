@@ -134,7 +134,8 @@ class _BackgroundState extends State<_Background> {
 			Positioned(left: 10, top: 450, width: 300, child: TextField(controller: widget.host.controller, focusNode: widget.host.originalFocus, decoration: const InputDecoration(labelText: 'Background input'))),
 			Focus(focusNode: widget.host.externalFocus, child: const Text('External owner')),
 		];
-		return Semantics(container: true, child: Stack(children: children));
+		// 非 Positioned 焦點文字不得讓背景 Stack 收縮而漏掉產品按鈕的原生 hit region。
+		return SizedBox.expand(child: Semantics(container: true, child: Stack(children: children)));
 	}
 }
 
@@ -177,6 +178,9 @@ List<SemanticsNode> _nodes(WidgetTester tester) {
 }
 
 void _finite(WidgetTester tester, Size viewport) {
+	// 校驗實際原生 Overlay 尺寸；不能只以 setSurfaceSize 的請求值當作有效 viewport。
+	final overlay = Overlay.of(tester.element(_menu()));
+	expect(tester.getSize(find.byWidget(overlay.widget)), viewport);
 	final bounds = _bounds(tester);
 	for (final value in [bounds.left, bounds.top, bounds.right, bounds.bottom, bounds.width, bounds.height]) {
 		expect(value.isFinite, isTrue, reason: '公開 menu 原生 bounds 必須有限。');
