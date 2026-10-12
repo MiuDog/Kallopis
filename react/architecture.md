@@ -246,3 +246,5 @@ e5d8b0a6：KlpDockArea／Destination／Action／ActionResult公開typed contract
 WB-DOCK-GEOMETRY-r1已READY；native React Dock UI需使用既有linear resolver及相同Stage/Left/Right/Bottom、有效gutter、header/resize配額。当前React只有保存及pureoperation，不在Flutter geometry slice修改React。React UI packet接續同一已接受Workbench stage，不能把现有codec/operations宣称UI完成。
 
 WB-DOCK-PREVIEW-r1 READY：hover僅instance presentation，cancel/end清除，success保留保存extent；Flutter當前PREVIEW-1不改publicAPI、geometry或pureoperations，React native Dock接入時遵循同一生命週期，不在此slice修改React。
+
+WB-DOCK-UI-r1 READY：nativeReact Dock使用同一pureOPS提交/一次通知、presentation metadata與同步或Promise批准close/pending stale lifecycle。React native API與errorcallback由後續自己的PLAN固定；Flutter當前UI slice不修改React實作。

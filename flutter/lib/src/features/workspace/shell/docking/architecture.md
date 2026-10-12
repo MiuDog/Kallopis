@@ -1,6 +1,6 @@
 # Flutter Dock
 
-修訂 `FLUTTER-DOCK-PREVIEW-r1`；PLAN READY。擁有此 docking 目錄；公開入口由 foundation 匯出。保留直接 KlpDockLayout／Panel／Area／Group；不引入通用 node tree、renderer 或產品 storage。
+修訂 `FLUTTER-DOCK-UI-r1`；PLAN READY。擁有此 docking 目錄；公開入口由 foundation 匯出。保留直接 KlpDockLayout／Panel／Area／Group；不引入通用 node tree、renderer 或產品 storage。
 
 ## 當前 slice FLUTTER-DOCK-OPS-1（完成）
 
@@ -121,3 +121,31 @@ flowchart TD
 ```
 
 PREVIEW-1 實作3064c359：_previewAreaSlots只擁有此次gesture；_presentationLayout以caller投影minimum/visible，_finishDrag清所有暫態；didUpdateWidget只在layout identity改變時清除。_finishPanelDrop取caller原area再設visible=true，避免minimum污染保存extent；未改publicAPI或pureoperations，原data part只另改tab縮排。TestAuthor f717c311，7checks baseline2pass/5behavioralRed→全部Green；連同受影響13geometry共20Green，publicDockanalyze No issues、2paths scopepass。protected SHA25661335C6016B221D213DED7971F2654B38FB5932B3A86BA83A8E06F2635985CB2不變；scope於3064c359閉合。nativebrowser前次release僅geometry證據，本次preview由公開Widget gesture驗證，不宣稱新browser或感官接受。下一步所有UI提交接入pureoperations及產品close批准/pinned/dirty。
+
+## 當前 slice FLUTTER-DOCK-UI-1（READY）
+
+依WB-DOCK-UI-r1接入全部UI提交及optionalmetadata。公開KlpDockPanel新增const optional bool isPinned=false/isDirty=false、FutureOr<bool> Function()? onCloseRequested、String? closeLabel；dart:async僅用於型別。舊constructor不改必填欄／預設draggable規則。metadata只有產品投影，不寫codec或純policy。callback不接內容與dirty自動清除；closeLabel缺省用既有documentTabCloseLabel及panel id。
+
+State擁有pending tokens與目前registry投影；_commitActions在local immutable snapshot依existingapplyKlpDockAction組合，只在最終保存值不同時通知一次。select、Stagecreate、tabmove/reorder/split、resize/visibility皆走該函式，pointer前置及preview保留。不增加新的pure utility或保存state。data part保留UI index轉換／groupid生成及batch action協調，刪除被pureOPS取代的source removal/reorder權威。group pair resize兩個actions一次commit。原target Area的保存extent保留；split只改兩個group偏好。
+
+close lifecycle可用new private part internal/klp_dock_close.dart，理由是異步pending與結果有效性和pointer geometry不同。每次request建立token，pending拒重入；以同token/同callback/placed/registered/mounted判斷結果。didUpdateWidget在panel不再placed/registered或callback替換時invalidatetoken；dispose不提交。approved讀最新layout純close，denied/error不commit；error標準FlutterError.reportError。pending僅禁用該closebutton，解除後可重試。pinned不自動改closable，dirty不改approval。
+
+single header與每個tab以現有semantic Text/Icon及inline IconButton組合metadata/close，保留原title/selected/hover風格及DockHeader viewport/overflow。decorative pinned使用KlpIcons.bookmark、dirty沿documenttabs的bullet與既有modified l10n；產品header保持Widget不強制轉字串。沒有metadata/callback的caller保留原結構。關閉button獨立gesture，不把click變成select/drag；即使header=null亦在single frame呈現close。shape/gap/icon尺寸讀theme，不新增硬編值。
+
+BUILD allowed_write：klp_dock_layout.dart、internal/klp_dock_layout_data.dart、新internal/klp_dock_close.dart、klp_dock_panel.dart（僅importdartasync）、models/klp_dock_panel_data.dart。publicWidget constructor／codec／operations／geometry／其他primitive／Panel／theme／style／example／foundationexport／config／architecture／所有tests唯讀。公開檢查author只可寫flutter/test/dock_ui_test.dart；既有preview/geometry tests可讀及執行不得改。
+
+M1全部UI pureactions及pointer/drop/index/immutable/no-op證據，M2close metadata／批准與pending stale lifecycle／publicanalyze/scope。cold-start10k–16k tokens／60–100分鐘，參照FLUTTER-DOCK-OPS-1及PREVIEW-1；24k／120分鐘或要改純OPS/codec/geometry/Panel回PLAN。跨模組公共新欄已由共同契約及Flutterroot/Reactcontracts先固定，不讓BUILD自行選擇。
+
+```mermaid
+flowchart TD
+	Pointer[既有pointer/geometry] --> Intent[typed actions / finalindex]
+	Intent --> Batch[local immutable batch]
+	Batch --> Pure[既有applyKlpDockAction]
+	Pure --> Callback[changed才一次通知]
+	Product[Panel metadata / approval] --> Header[現有semantic header/tab]
+	Header --> Close[pendingtoken / FutureOr approval]
+	Close --> Current[latest caller / token有效]
+	Current --> Batch
+	Caller[controlled layout/registry] --> Current
+	Caller --> Intent
+```

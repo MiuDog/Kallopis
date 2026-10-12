@@ -70,3 +70,15 @@ READY；對應 WB-04／06／16。隱藏但非空的合法 area 在拖曳進入�
 成功 drop 到預覽 group 才一次提交：目標 visible=true，原 area extent、axis及其他 group 偏好保持；source移除／active fallback、merge或split依OPS-r1語意。正常 tab move／split不得因取用 minimum 的呈現快照而把該值寫成保存 extent。split仍依當前 actual group／gutter限制；不足兩個minimum不提交並於拖曳完成收回preview。不改 codec、model、public constructor、style或close/pinned/dirty語意。此slice保留既有UI data提交路徑；全UI接入pureoperation由下一slice完成，不能因此聲稱完整Dock已完成。
 
 獨立公開Widget checks保護：hidden非空hover展開且callback0、取消／miss恢復保存visibility/extent且callback0、移入預覽group成功一次提交且保存extent不變、capability拒絕、caller替換／theme或尺寸重建的生命週期、空area成功create及已完成geometry不退化。只使用公開consumer、native gesture及caller probes，不檢查private State或新增golden；感官仍human-pending。
+
+## 原生 UI 提交 WB-DOCK-UI-r1
+
+READY；對應WB-04／05／06／16。所有成功的select、tab重排／move／create／split、visibility與resize提交必依既有OPS-r1，UI只把pointer位置／原tab插入位置轉成typed action，沒有第二套source removal／active fallback規則。UI可在自己的immutable local snapshot連續apply多個actions，全部成功且保存值改變才一次onLayoutChanged；不能逐action通知或修改caller。no-op不通知。完整policy每次由當前panel registry投影，既有geometry與preview責任保留。產品可直接用pure open／merge／visibility；不新增native Widget命令樹或storage。
+
+tab drop的原始插入位置轉成移除source後最終index；同group移入panel依OPS-r1設active。split只在actual target group扣effective gutter後容納兩個logical minima時生效，新group接在剩下的target後；若target就是只有一tab的source group則不split。成功split用兩個相同偏好extent且只一次提交，其他偏好不改。空Stage create保留原area extent在constraints內的clamp，new group extent至少該axis logicalminimum，確保零area偏好仍能產生正group偏好。area/group resize沿GEOMETRY-r1先算有限配額，再轉typed resize；collapse只改visibility、不把小於min的pointer值寫回extent。
+
+pinned／dirty僅為產品metadata：預設false，顯示bookmark／modified提示，不改排序、拖曳能力、關閉批准或保存JSON。可關閉面板由產品提供可選的同步或非同步boolean批准callback；未提供時保留舊外觀且無關閉入口。每個可關閉tab均可請求（含非active），single panel同樣可請求；不依標頭是否有文字才能關閉。pending只禁用同面板關閉入口，重複請求不重入，其他面板與操作仍可用。false不提交，true才依pure close移出布局；不移除registry、不刪正文／dirty資料，仍能pure open。
+
+關閉完成從最新caller layout套用；若panel曾離開布局／registry、callback已被替換或Dock已dispose，舊結果忽略，不能重建舊layout或關掉後來重開的panel。跨group移動但仍placed且同callback可從最新位置關閉；當前callback取得結果前的產品業務由产品自己管理。callback丟錯時保持layout，解除pending，Flutter透過標準FlutterError.reportError，React native error callback／宿主錯誤處理由其module固定；不吞錯假裝批准。labels讀既有l10n或產品可選closeLabel，外觀讀既有semantic與public IconButton/Icon/Text，不產生第二份style來源。
+
+驗收：UI成功移動及split結果等於pure action、finalindex／active／source fallback、no-op callback0、一次提交及caller immutable、零area create、pointer resize配額；可選metadata呈現／同舊caller、inactive/single close、denied／asyncapproved／error／pending不重入／最新layout／移除再開或registry callback替換／dispose安全。使用公開Widget／DOM與callbacks，不驗私有call次序或golden。保留PREVIEW-r1／GEOMETRY-r1的protectedchecks。
