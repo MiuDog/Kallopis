@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:ui' as ui;
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -142,12 +143,28 @@ void main() {
 		expect(host.bubbled, beforeHandled, reason: 'handled 事件不得繼續傳到產品父節點。');
 		await tester.sendKeyUpEvent(LogicalKeyboardKey.controlLeft);
 		final count = host.handling.length;
-		// 故意使用不同 physical key，保護 canonical logical key 的公開契約。
-		HardwareKeyboard.instance.handleKeyEvent(const KeyDownEvent(physicalKey: PhysicalKeyboardKey.keyA, logicalKey: LogicalKeyboardKey.arrowDown, timeStamp: Duration.zero, synthesized: true));
-		HardwareKeyboard.instance.handleKeyEvent(const KeyUpEvent(physicalKey: PhysicalKeyboardKey.keyA, logicalKey: LogicalKeyboardKey.arrowDown, timeStamp: Duration.zero, synthesized: true));
+		// 由原生平台入口送 synthesized 資料；HardwareKeyboard 單獨處理不會派送 Focus 的 KeyMessage。
+		final dispatchNative = tester.binding.platformDispatcher.onKeyData!;
+		dispatchNative(ui.KeyData(
+			type: ui.KeyEventType.down,
+			physical: PhysicalKeyboardKey.keyA.usbHidUsage,
+			logical: LogicalKeyboardKey.arrowDown.keyId,
+			timeStamp: Duration.zero,
+			character: null,
+			synthesized: true,
+		));
+		dispatchNative(ui.KeyData(
+			type: ui.KeyEventType.up,
+			physical: PhysicalKeyboardKey.keyA.usbHidUsage,
+			logical: LogicalKeyboardKey.arrowDown.keyId,
+			timeStamp: Duration.zero,
+			character: null,
+			synthesized: true,
+		));
 		expect(host.handling.length, count);
-		HardwareKeyboard.instance.handleKeyEvent(const KeyDownEvent(physicalKey: PhysicalKeyboardKey.keyA, logicalKey: LogicalKeyboardKey.arrowDown, timeStamp: Duration.zero));
-		HardwareKeyboard.instance.handleKeyEvent(const KeyUpEvent(physicalKey: PhysicalKeyboardKey.keyA, logicalKey: LogicalKeyboardKey.arrowDown, timeStamp: Duration.zero));
+		// 測試框架同時送 KeyData 與 raw message，讓 logical／physical 差異進入真正 Focus 管線。
+		await tester.sendKeyDownEvent(LogicalKeyboardKey.arrowDown, physicalKey: PhysicalKeyboardKey.keyA);
+		await tester.sendKeyUpEvent(LogicalKeyboardKey.arrowDown, physicalKey: PhysicalKeyboardKey.keyA);
 		await tester.pump();
 		expect(host.handling.length, count + 1, reason: 'keyup 不得再次處理。');
 		expect(host.results.last.commandId, 'arrow');
