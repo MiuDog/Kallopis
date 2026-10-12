@@ -327,3 +327,33 @@ Slider原生drag9回呼到7.1315789；初始snapshot曾標disabled，補查aria-
 TextArea多行「表單草稿保持／第二行」在四mode、spacious/local320/outlined後同回呼2與原字串保持；reset回props初始與target0、環境spacious/local320保持。現場error/warn空。main build/flutter-form-control-specimens.png及flutter-form-control-native.json保存；actual360 browser未取得，感官human-pending。Flutterfixture75／273，剩餘198及全量docs gate仍原goal，未提前放行全部元件。
 
 _State._controls/_target/_usage投影公開參數與正確constructor；_options/_phases/_selectionOptions僅consumer資料；onText/bool/index/choice/number/quantity/multi/triState及tag callbacks回寫State並_record；_onLabel只控制文字，toggle/cycle只自己的props，_toggleRange/_toggleTagLimit維持demo合法資料不冒充target事件。build擁有有限scroll舞台、參數編輯與兩類回呼狀態，dispose清controller；跨mode State由外host保留，epoch才重建。新增class責任與依賴仍上述module圖。
+
+## FLUTTER-FEEDBACK-SPECIMENS-1（READY）
+
+修訂FLUTTER-FEEDBACK-SPECIMENS-r1，exact lib/component_specimens.dart、新lib/feedback_specimens.dart，前者只import/registry/fixture分流，既有75及host環境不改。feedbackSpecimenNames包含features.feedback全部15個renderable：KlpEmptyState、KlpErrorState、KlpFocusBoundary、KlpInlineNotice、KlpLiveRegion、KlpLoadingState、KlpPermissionState、KlpProgressOverlay、KlpRegionPlaceholder、KlpSkeletonLine、KlpStatusIndicator、KlpToast、KlpToastStack、KlpWorkflowProgress、KlpWorkflowStateSurface。公開FeedbackComponentSpecimen(name)，Flutter/public foundation only；不讀private或新增theme。
+
+State持有title/message/draft controllers與自身bool/enum/data/回呼紀錄，theme/width不重建，epoch才reset；dispose清controller。EmptyState icon/title/message/action；ErrorState title/message/icon/retryLabel/null callback；PermissionState title/message/icon/action；InlineNotice title/message/tone/action；LoadingState label；Placeholder label/kindLabel/detail/hatched/tone/constraints/actionLabel/null callback；StatusIndicator data label/kind/active/showsIndicator及expanded；Toast title/message/tone/actionLabel/nullcallback/closeLabel/nullcallback且close由consumer移除、restore/reset可恢復；ToastStack實際children數量及各Toast child action/close回寫，不虛構stack callback。
+
+WorkflowProgress stages/label，consumer控制active/complete/數量；WorkflowStateSurface八state/title/message/statusLabel/actionLabel/onAction/child；ProgressOverlay visible/label/child，bounded200高合法Stack，visible時觀察覆蓋、hide可操作child。FocusBoundary autofocus及自己的合法child原生input/keyboard，不虛構focus callback；autofocus變更以target key顯式重建，只重建target而draft owner保持。LiveRegion message/null與fromDescendants兩合法constructor，child動作更新呈現message；播報感受human-pending，只驗DOM/semantics及自己的呈現。SkeletonLine無可改公開props，只允許明示宿主寬度120/240與同theme，不能造fake height/tone參數。
+
+所有target在finite280舞台且自身scroll容納內容，progress overlay另明確boundedchild，不用自製modal/演算法。自己的props controls可及，編輯title/message是控制回呼，onRetry/onAction/onClose是公開回呼；action/child Widget自己的callback獨立標明，不能冒充root不存在callback。usage正確公開constructor及當次主要參數，所有style讀semantic環境。sample純資料，非產品商業flow。
+
+驗收15registry/renderable一致、public analyze、prefixrelease --no-tree-shake-icons --base-href /Kallopis/examples/flutter/、native15自己的controls/文字、實際retry/action/close/stack/workflow回呼、overlay及focus/live child的原生操作、四mode/spacious/local320保留draft與reset、scope2/diff。無新persist或算法不新增鏡像tests；library/tests/config/styles/generated/site/docs禁止寫。actual窄browser和感官human-pending；273網站全量閘門仍後stage。
+
+估6k～12k/45～90分鐘，參考FORM-CONTROL/SPATIAL；M1 source15/registry/analyze/build（7k50），M2 native/state/scope（12k90）；18k120或publicboundary不足回PLAN，actual usage無單task測量null。
+
+| Source／class／functions | 責任 |
+| --- | --- |
+| feedbackSpecimenNames／FeedbackComponentSpecimen | 真實公開target集合與consumer輸入 |
+| _FeedbackComponentSpecimenState | controls/target/usage/build；controllers與callback/state；狀態及toast資料由consumer擁有，nested callbacks只自身setter/原native input回寫 |
+| component host fixture分流 | 保留environment/epoch，只加入精確feedback route |
+
+```mermaid
+flowchart TD
+	Host[ComponentSpecimenApp] --> Feedback[FeedbackComponentSpecimen / State]
+	Feedback --> Props[當次props / title / message / stages]
+	Props --> Target[公開feedback target / bounded合法host]
+	Target --> Callback[原action / retry / close / child input]
+	Callback --> Result[consumer callback紀錄 / toast清單]
+	Host --> Reset[epoch才重建]
+```
