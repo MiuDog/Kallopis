@@ -382,3 +382,23 @@ Native2實作681c0f6c，量測修正583818e8，提示線/capture清理6ee63c5e�
 | useDockInput effects／move／up／cancel／end／key | 同上 | 最新caller替換、document listeners/capture/dispose、feedback/完成/取消/Escape |
 
 下一步公開React Dock example接布局保存/還原/reset、open/merge、批准close與nativebrowser，然後GUI及各component specimen網站整合。此完成不涵蓋commands/keybindings或所有視覺recipe參數。
+
+## REACT-DOCK-EXAMPLE-1（READY）
+
+修訂REACT-DOCK-EXAMPLE-r1。example/dock-demo.tsx是公開API consumer，main.tsx嵌入既有Provider；style.css只擁有宿主尺寸、產品內容及控制區排版。DockDemo擁有layout、保存JSON、操作計數、還原診斷、產品輸入與close批准方式。庫仍擁有全部停靠樣式與事件演算法；不得引用src、複製tab/handle樣式或新增保存格式。
+
+初始Left explorer/search、Right inspector/history兩群組、Bottom output，Stage與header使用公開Surface/Text/Button/TextField。產品panel registry用useMemo，批准callback用useCallback，產品可選批准/拒絕/延遲批准；dirty/pinned僅metadata。保存用encode、還原用restore且錯誤保留目前layout；顯示missing/available，重開缺席panel用pureopen，合併用puremerge。每次changed一次累加callback計數；preview、取消與resize的差異可由計數觀察。320/760/1040宿主寬度、180/460高度與外部主題/風格更新不改保存偏好。JSON文字框使用原生textarea，內容樣式讀semantic。
+
+BUILD allowed_write僅react/example/dock-demo.tsx、react/example/main.tsx、react/example/style.css；library/tests/config/architecture及其他module唯讀。M1可操作consumer與typed/prod build；M2nativebrowser選取、輸入、收合/還原、save/load/reset/open/merge、resize/drop工具可用時驗證，以及scope。無新的高風險library行為，不新增鏡像測試；既有18項保護不變。browser工具不可操作的事件明示pending，不以evaluate合成事件冒充人工操作。感官human-pending。
+
+參照REACT-LAYOUT-EXAMPLE-1，cold-start4k–8k tokens/20–45分鐘，12k/60分鐘或需library修改回PLAN。GUI復刻及docs所有specimens仍另行接續，此例不宣稱三個完整使用場景已交付。
+
+```mermaid
+flowchart TD
+	App[example App / existing Provider] --> Demo[DockDemo product state]
+	Demo --> Dock[public KlpDockLayout]
+	Demo --> Codec[public encode / restore]
+	Demo --> Ops[public open / merge]
+	Dock --> Update[changed callback / count]
+	Update --> Demo
+```
