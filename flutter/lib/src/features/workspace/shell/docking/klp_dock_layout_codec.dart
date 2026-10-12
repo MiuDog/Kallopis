@@ -160,7 +160,12 @@ abstract final class KlpDockLayoutCodec {
 					mainAxisExtent: _extent(group['mainAxisExtent'], '$groupPath.mainAxisExtent', positive: true),
 				));
 			}
-			return KlpDockAreaData(axis: axis, groups: List.unmodifiable(groups), extent: extent, isVisible: visible);
+			return KlpDockAreaData(
+				axis: axis,
+				groups: List.unmodifiable(groups),
+				extent: extent,
+				isVisible: visible,
+			);
 		}
 		return KlpDockLayoutData(left: area('left'), right: area('right'), bottom: area('bottom'));
 	}
