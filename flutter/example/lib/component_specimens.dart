@@ -3,10 +3,11 @@ import 'package:kallopis/kallopis_foundation.dart';
 import 'linear_specimens.dart';
 import 'explorer_specimens.dart';
 import 'frame_specimens.dart';
+import 'spatial_specimens.dart';
 import 'catalog/registered_commands_page.dart';
 
 /* 只有真實target fixture可以進此清單；不是全量覆蓋宣告。 */
-const flutterSpecimenNames = <String>['KlpBadge', 'KlpButton', 'KlpIconButton', 'KlpSurface', 'KlpText', 'KlpTextField', ...linearSpecimenNames, ...explorerSpecimenNames, ...frameSpecimenNames, ...commandSpecimenNames];
+const flutterSpecimenNames = <String>['KlpBadge', 'KlpButton', 'KlpIconButton', 'KlpSurface', 'KlpText', 'KlpTextField', ...linearSpecimenNames, ...explorerSpecimenNames, ...frameSpecimenNames, ...commandSpecimenNames, ...spatialSpecimenNames];
 
 class ComponentSpecimenApp extends StatefulWidget {
 	const ComponentSpecimenApp({super.key, required this.name});
@@ -69,6 +70,7 @@ class _ComponentSpecimenAppState extends State<ComponentSpecimenApp> {
 
 	Widget _fixture() {
 		final key = ValueKey(_epoch);
+		if (spatialSpecimenNames.contains(widget.name)) return SpatialComponentSpecimen(key: key, name: widget.name);
 		if (commandSpecimenNames.contains(widget.name)) return RegisteredCommandsDemo(key: key, specimen: widget.name);
 		if (frameSpecimenNames.contains(widget.name)) return FrameComponentSpecimen(key: key, name: widget.name);
 		if (explorerSpecimenNames.contains(widget.name)) return ExplorerComponentSpecimen(key: key, name: widget.name);
