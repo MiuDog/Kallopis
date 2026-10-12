@@ -41,3 +41,11 @@ Flutteroperations protected test flutter/test/dock_layout_operations_test.dart h
 其後命令／快捷鍵註冊、chord／scope／衝突／重綁、所有specimen、VSCode/Blockbench/Blender各双框架GUI、typedrecipe／全部元件風格對齊、網站展示registry/bundle/coverage、權威切換／CI／精確提交push仍未完成。完整goal保持ACTIVE。
 
 已直接觀察Flutter klp_dock_layout.dart _resolveGroupExtents 313～355：不足空間會分配content，但handle仍用raw semantic extent；root舊Row按保存left/right寬度直接配置，缺viewport clamp。接入purelinear resolver時必須同時使用有效gutter配置handle／overlay，不能只縮content並宣稱極大style安全。
+
+## 最新 Panel 前置完成
+
+FLUTTER-PANEL-GEOMETRY-1：PLAN cf09051d，獨立TestAuthor2b0180b6，BUILD5e18ccd6。新test flutter/test/panel_geometry_test.dart protectedhash90B1B2CAE6705E5D13B8930EFE8FFB1A1FFD3AA8FED338442BDBC13786FB0BE7。baseline4pass/5behavioralRed，最終9Green、publicPanelanalyze No issues、5allowedpaths scopepass。packet及closure在mainignored build/task-packets/flutter-panel-geometry-1*.json；scope只於5e18ccd6閉合。
+
+Panel module新architecture已固定finite chrome/inset/radius及內容State契約；FrameView依公開LayoutColumn/Pane/Bounds，Header依LayoutRow/Pane，所有stage wrappers在尺寸/theme變化穩定。未改Dock、theme、style、config、tests。根goal本輪工具量差127419tokens/517seconds含承接上下文與TestAuthor，不是純BUILD估算。
+
+下一步仍PLAN Flutter Dock finite geometry：使用既有linear resolver，root保持contentHeader跨center/right且left全高；side/center widths、header/bottom heights、group extents及有效gutter需共同守恆，handle/offset/overlay/resize/drop math均使用實際有效厚度。PanelFrame前置已完成不重做。DockHeader獨立高度32與overflow menu仍需finite tiny-width/hugeicon尺寸保護；contract/packet若需改其internalstate與resizehandle必明列。stage indicator thickness也需限制槽。hover/cancel/產品close callback另按共通pure operations語意接入。全部GUI/specimens/docs registry/recipe/authorityswitch/push未完成，goal ACTIVE。

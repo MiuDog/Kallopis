@@ -16599,7 +16599,7 @@
 						"foundation"
 					],
 					"signature": "class KlpPanelFooter extends StatelessWidget",
-					"documentation": "Panel 底部區域的共用配方。\n\n不繪製背景、邊框或圓角，完全繼承父 [KlpPanelFrame] 的 surface 與裁切；\n只統一 footer 內容的水平 inset。",
+					"documentation": "Panel 底列的語意內距；背景與裁切由父 PanelFrame 擁有。",
 					"typeRelationships": {
 						"extends": "StatelessWidget",
 						"mixins": [],
@@ -16622,7 +16622,7 @@
 							"name": "child",
 							"kind": "field",
 							"signature": "Widget child",
-							"documentation": ""
+							"documentation": "產品底列內容及可選內距；directional 值依宿主方向解析。"
 						},
 						{
 							"name": "padding",
@@ -16727,7 +16727,7 @@
 						"foundation"
 					],
 					"signature": "class KlpPanelHeader extends StatelessWidget",
-					"documentation": "面板標題列，集中排列標題、拖曳區、leading 與 actions。",
+					"documentation": "面板標題列；內容抓取區與右側操作各自擁有尺寸槽。",
 					"typeRelationships": {
 						"extends": "StatelessWidget",
 						"mixins": [],
@@ -16756,13 +16756,13 @@
 							"name": "content",
 							"kind": "field",
 							"signature": "Widget? content",
-							"documentation": "Dock tabs 或其他非文字標題的共通內容入口。"
+							"documentation": ""
 						},
 						{
 							"name": "dragRegionBuilder",
 							"kind": "field",
 							"signature": "KlpPanelHeaderDragRegionBuilder? dragRegionBuilder",
-							"documentation": "只包住標題／內容抓取區，不會包住右側 actions。"
+							"documentation": "只包住標題／內容，不包含右側操作。"
 						},
 						{
 							"name": "label",
@@ -16774,13 +16774,13 @@
 							"name": "leading",
 							"kind": "field",
 							"signature": "Widget? leading",
-							"documentation": ""
+							"documentation": "前置與操作內容由 caller 提供，庫只分配自己的槽。"
 						},
 						{
 							"name": "title",
 							"kind": "field",
 							"signature": "String? title",
-							"documentation": "標準文字標題；與 [content] 擇一提供。"
+							"documentation": "標準文字標題與自訂內容擇一；標籤保留原語意與次序。"
 						},
 						{
 							"name": "titleRole",

@@ -180,3 +180,7 @@ if (result.changed) setState(() => layout = result.layout);
 index 是移除來源後的最終位置，不 clamp；new groupId 不可與操作前任何群組重複。來源空群組刪除，active 移走取剩餘第一個；目標區域展開，select 只更新 active。close 的 approved 必由產品關閉 callback 決定；false 保留全部資料，true 只移除布局，不刪 registry，面板仍可 open。dirty／pinned 不寫入布局資料。
 
 resize 只更新有限偏好尺寸，由 UI 依 constraints／viewport 解算後提交；hover／取消拖曳不提交操作。非法目前布局、缺清冊、能力衝突、identity／index／extent 都以 FormatException 整份拒絕，原 caller 不改。既有 KlpDockLayout API 保持；Widget 互動接入與極端風格幾何保護仍在後續 Workbench stage。
+
+### Panel 有限尺寸
+
+KlpPanelFrame 仍由產品提供有限高度；header/footer 高度讀 semantic theme，正常空間保留原尺寸，不足時依通用 linear 演算法比例縮配，正文可為零且保持原 State。外距与內距限制至可用空間；PanelFooter 保留 custom/directional padding。產品內容負責自己的內部排版。這不代表 Dock 的保存偏好尺寸、drag/resize 已全部接入有限幾何。
