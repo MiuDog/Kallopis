@@ -102,4 +102,6 @@ Flutter PLAN1bffc472／BUILD39d263e0（owner744c9533），2examplepaths scope、
 
 React example的23項registry已拆為公開example/specimen-registry.mjs（name→既有fixture種類），由example與後續Node網站共用；不是另抄元件表。fresh公開extractor雙向一致23，type/prod build及原生Pane/unknown路由通過。完整網站iframe/bundle接線仍未交付，下一owner從此ESM契約接入。
 
-React網站接線已實作：generate.mjs --react與verify.mjs --react讀fresh公開清單及example ESM registry，完整23項雙向gate、生成docs/react/components索引及每頁iframe／獨立入口／使用簽名、copy bundle至examples/react；search/manifest同canonical identity。原15＋獨立4 checks及native23 iframe load/自己的h1通過；Button頁input/callback/Enter/style/reset、前綴刷新及字型觀察。載入錯頁原生error提示可辨識；artifact已還原。actual360 viewport覆寫無效（仍706），窄browser仍pending，不把local320當證據。CLI目前optin，Pages mandatory React build/gate仍下一slice，Flutter244項／全量網站、GUI與風格audit維持原goal；未push。
+React網站接線已實作：generate.mjs --react與verify.mjs --react讀fresh公開清單及example ESM registry，完整23項雙向gate、生成docs/react/components索引及每頁iframe／獨立入口／使用簽名、copy bundle至examples/react；search/manifest同canonical identity。原15＋獨立4 checks及native23 iframe load/自己的h1通過；Button頁input/callback/Enter/style/reset、前綴刷新及字型觀察。載入錯頁原生error提示可辨識；artifact已還原。actual360 viewport覆寫無效（仍706），窄browser仍pending，不把local320當證據。CLI保留原純Node預設用途；Pages現在mandatory React build/extract/4checks與--react gate，Flutter244項／全量網站、GUI與風格audit維持原goal；未push。
+
+Pages CI已接mandatory React完整產物：鎖檔npm ci、公開package build、example build、fresh23 extractor、獨立4檢查、generate/verify --react。同流程本機Green，原Node15保持；Ubuntu實際run pending最終push。舊本工作樹Vite5180/5182已核對owner後關閉以解除Windows binary鎖，靜態網站5203持續可用。

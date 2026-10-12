@@ -30,7 +30,7 @@ flowchart TD
 	SiteOnly --> Artifact[正式manifest產物 / 原驗證 / Pages artifact]
 ```
 
-## CI-REACT-DOCS-1（READY）
+## CI-REACT-DOCS-1（COMPLETE；Ubuntu執行pending）
 
 修訂CI-REACT-DOCS-r1。BUILD exact pages.yml，既有Node24、權限、triggers/deploy/uploads保留。Pages build在純Node15 checks後加入React npm ci／public build／example build／fresh reference-components extractor、獨立4 public registry checks；generate/verify改--react mandatory，產物必有全部React公開元件頁及同prefixbundle，不上傳缺項或幽靈清單。保留Node-only環境，不引入Flutter SDK/Krepis，Flutter全量展示另一stage未完成，不能以此宣稱全goal發布完成。React package與鎖檔唯讀，沿用現有腳本，不重做package或放寬tests。
 
@@ -44,3 +44,5 @@ flowchart TD
 	Inventory --> Gate[generate --react / verify --react]
 	Gate --> Artifact[含全部React元件頁 / bundle的Pages artifact]
 ```
+
+BUILD exact1 pages.yml。local npm ci初次EPERM為先前本工作樹Vite5182與5180程序鎖rolldown binary；逐一核對CommandLine確為本隔離react/node_modules/vite後關閉12956／11228，再同npm ci成功，lock/source未改。public build／example build／fresh23 extract／protected4／generate --react／verify --react均Green，scope1/diff；602.78KB既有bundle提示保留，未放寬門檻。原Node15已在本輪網站slice全Green；Pages現Node-only mandatory React，實際Ubuntu runner仍pending最終push，不冒稱remote完成。

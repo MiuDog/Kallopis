@@ -290,7 +290,7 @@ flowchart LR
 	Gate --> Verify[verify --react / 完整對照]
 ```
 
-BUILD exact5source。獨立ea6b2489 TestAuthor4checks hashDEB449DB12544C4D8D5D8DCAAED719D07B807B3D6EA7B7DFB972853767BB9716，4Green零skip（作者未取得有效Red）；原15最初9Red因generator靜態import外module導致隔離Nodefixture無React資料，改僅--react動態import後同15全Green，沒有改fixtures/assertions/config。fresh React23 gate、--react generate/verify561＋23頁、scope5/diff通過。原CI命令仍不帶React旗標，mandatory建置另CI owner slice，不宣稱已發布。
+BUILD exact5source。獨立ea6b2489 TestAuthor4checks hashDEB449DB12544C4D8D5D8DCAAED719D07B807B3D6EA7B7DFB972853767BB9716，4Green零skip（作者未取得有效Red）；原15最初9Red因generator靜態import外module導致隔離Nodefixture無React資料，改僅--react動態import後同15全Green，沒有改fixtures/assertions/config。fresh React23 gate、--react generate/verify561＋23頁、scope5/diff通過。Pages由CI-REACT-DOCS-1另owner slice接mandatory React建置／extract／4checks／--react gate，實際remote執行pending，不宣稱已發布。
 
 Native5203 /Kallopis/：索引取得實際23links逐頁前往，各iframe自己h1及loaded全通過；Button頁input／click／Enter callback1、dark/spacious保留draft，reset0並保留環境，直接refresh/獨立入口正常；NotoSansTC與IBMPlexMono regular package fonts在prefix下已觀察。暫存建置artifact把iframequery改unknown，實際error提示及獨立正確link仍可用；source未改，artifact還原後verify Green。error/warn在5203 URL空。viewport.set360無效，實際706×668／iframe627.2，不能宣稱窄browser已驗收，仍pending且reset override。main build/react-docs-interactive.png與react-docs-load-error.png；感官human-pending。
 
