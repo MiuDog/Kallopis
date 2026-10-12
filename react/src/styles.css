@@ -308,3 +308,32 @@
 .klp-palette-icon { flex: none; inline-size: var(--klp-palette-icon); block-size: var(--klp-palette-icon); overflow: hidden; }
 .klp-palette-copy { display: grid; min-inline-size: 0; text-align: start; }
 .klp-palette-copy .klp-text { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+
+/* popup 只擁有原生 modal 幾何；面板與 rows 仍由同 Provider 的 registered menu 決定風格。 */
+.klp-command-popup {
+	position: fixed;
+	inset: 0;
+	inline-size: 100%;
+	block-size: 100%;
+	max-inline-size: none;
+	max-block-size: none;
+	margin: 0;
+	padding: 0;
+	border: 0;
+	background: transparent;
+	color: inherit;
+	font: inherit;
+	overflow: hidden;
+}
+.klp-command-popup::backdrop { background: transparent; }
+.klp-command-popup-dismiss {
+	position: absolute;
+	inset: 0;
+	inline-size: 100%;
+	block-size: 100%;
+	margin: 0;
+	padding: 0;
+	border: 0;
+	background: transparent;
+}
+.klp-command-popup-panel { min-inline-size: 0; min-block-size: 0; overflow: hidden; }
