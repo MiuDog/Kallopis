@@ -412,7 +412,7 @@ flowchart TD
 | commit／action／restore／open／merge | 同上 | 採用public結果、一次計數、JSON失敗保留、重開與合併 |
 | main App／demo-dock CSS | [main.tsx](example/main.tsx)／[style.css](example/style.css) | 既有Provider接入、外部有限宿主和semantic產品內容；不改庫内部 |
 
-## REACT-COMMAND-CORE-1（READY）
+## REACT-COMMAND-CORE-1（COMPLETE）
 
 修訂REACT-COMMAND-CORE-r1，依[WB-COMMAND-r1](../docs/architecture/workbench-command-contract.md)。新src/command-registry.ts擁有原生generic context的definition/state/result與registry；index.ts公開匯出。無DOM、storage、產品context鏡像或defaultcommands；icon僅ReactNode型別依賴，不執行render。private entry/token擁有隔離metadata、running與stale identity；observer token擁有自己subscription，錯誤交nativehost/error callback，不混入handler結果。
 
@@ -431,4 +431,34 @@ flowchart TD
 	Token --> Handler[product business handler]
 	Handler --> Result[typed result / original error]
 	Registry --> Observer[version / independent subscription]
+```
+
+實作53c6ac39，獨立TestAuthor3feb78b9（前版e568ac7c）；11項public checks、library build、typedconsumer與2path scope皆通過。protected test SHA256 `FA7DD79C2A0F187212CC1283570627AE82DD09A5BD36F6709949960167E44010`不變。基線missingexports是compile Yellow；首次實作phase被推導為string的compile Red，修正literal後相同建置及檢查Green，沒有修改tests。沒有DOM、快捷鍵或完整stage完成宣稱。
+
+| 定義 | 來源 | 責任 |
+| --- | --- | --- |
+| KlpCommandDefinition / KlpCommandState / KlpCommandConditionError / KlpCommandExecutionResult | [command-registry.ts](src/command-registry.ts) | 產品metadata、原生條件、唯讀診斷及typed結果 |
+| CommandEntry / Observer | 同上 | 註冊token與獨立subscription identity |
+| requireText / copyDefinition | 同上 | 原子驗證含非空白字串；隔離metadata，不改caller與原值 |
+| evaluate / snapshot | 同上 | 最新context、boolean條件、throw undefined診斷及唯讀snapshot |
+| reportToHost | 同上 | observer nativeerror通道隔離 |
+| KlpCommandRegistry | 同上 | constructor與version/isDisposed；register/getState/list/execute/subscribe/refresh/dispose；private requireOpen/isCurrent/emit 保護owner及通知 |
+| 公開匯出 | [index.ts](src/index.ts) | 只新增registry入口，既有元件與theme未改 |
+
+```mermaid
+classDiagram
+	class KlpCommandRegistry {
+		+register(definition)
+		+getState(id, context)
+		+list(context)
+		+execute(id, context)
+		+subscribe(listener)
+		+refresh()
+		+dispose()
+	}
+	KlpCommandRegistry "1" *-- "0..*" CommandEntry : 自有註冊生命週期
+	KlpCommandRegistry "1" *-- "0..*" Observer : 獨立訂閱owner
+	CommandEntry --> KlpCommandDefinition : 複製metadata／保留callback
+	KlpCommandRegistry ..> KlpCommandState : 重新評估與快照
+	KlpCommandRegistry ..> KlpCommandExecutionResult : 原產品結果
 ```

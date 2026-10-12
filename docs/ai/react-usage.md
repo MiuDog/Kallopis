@@ -202,3 +202,30 @@ import { KlpDockLayout } from '@kallopis/react';
 18項公開input與DOM/SSR checks通過。[公開Dock互動範例](../../react/example/dock-demo.tsx)已接入React展示頁，可操作保存、還原、重設、重開、合併與批准方式。保存及pureoperations的清冊只包含id/allowSide/allowBottom，不能直接傳入有content/callback的完整panel物件；範例示範明確投影。
 
 nativebrowser已確認選取、收合、區域及群組resize、close拒絕/批准/延遲、JSON錯誤保留、分頁重排/跨區域合併/正文分割，以及尺寸/主題更新輸入保留。hover preview的browser證據仍待確認；synthetic checks不代替browser或感官接受。全部元件互動頁面及三種雙框架GUI仍待网站展示stage整合。
+
+## React 命令核心
+
+`KlpCommandRegistry<C>` 從公開套件匯入；產品擁有registry生命週期及context，每次query/execute傳最新context。`register`回傳只解除該註冊者的函式；ID重用不受舊disposer影響。metadata字串須含非空白內容，原值保留；沒有全域registry或預設業務命令。
+
+```ts
+import { KlpCommandRegistry, type KlpCommandDefinition } from '@kallopis/react';
+
+type Context = { canSave: boolean };
+const commands = new KlpCommandRegistry<Context>();
+const definition: KlpCommandDefinition<Context> = {
+	id: 'document.save',
+	label: '儲存',
+	isEnabled: (context) => context.canSave,
+	handler: () => productSave(),
+};
+const unregister = commands.register(definition);
+const result = await commands.execute('document.save', latestContext);
+if (result.status === 'error') showProductError(result.error);
+// 產品卸載時解除註冊，並銷毀自己擁有的 registry。
+unregister();
+commands.dispose();
+```
+
+`getState`及`list`提供visible/enabled/checked/running與conditionError；呈現入口檢查visible與enabled為true、running為false，執行仍經registry重新驗證。相同註冊者pending時回busy，不同命令可並行；產品Promise開始後不會被解除註冊取消，舊結果不能清新owner的running。`subscribe`／`version`供宿主更新；外部closure變動用`refresh()`通知，不儲存第二份context。
+
+11項公共生命週期檢查、使用端型別及建置通過。命令工具列、選單、palette與快捷鍵宿主尚待接入；完整條件與結果見[共同契約](../architecture/workbench-command-contract.md)。
