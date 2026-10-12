@@ -4,7 +4,7 @@
 
 ## 下一個可執行步驟
 
-1. 雙框架command core與registered toolbar/menu已完成；React palette、viewport修正及公開CommandsDemo完成。Flutter palette BUILD2a069faf亦完成；下一個PLAN／BUILD公開Flutter CommandsDemo並取得原生browser證據，保留既有CommandMenu／WorkspaceCommand caller與core。anchor/context menu尚待接續。
+1. 雙框架command core與registered toolbar/menu已完成；React palette、viewport修正及公開CommandsDemo完成。Flutter palette BUILD2a069faf亦完成；Flutter consumer BUILD04cc372f已交付且analyze／scope2／releaseweb成功；下一個FLUTTER-COMMAND-PALETTE-MODAL-1修正browser scrim背景語意穿透，保留既有CommandMenu／WorkspaceCommand caller與core。anchor/context menu尚待接續。
 2. 雙框架快捷鍵/chord/scope/conflict/remap/recording契約與接入。不可用core冒充整個命令stage完成。
 3. 網站每個公開可呈現元件專屬互動specimen、registry/bundle/coverage；3GUI×2框架；typedrecipes／完整風格中立與參數／default權威切換。
 4. 補browser hoverpreview/cancel矩陣、Flutter continuousresize與React endcommit差異契約審核；保留所有既有CI/發布閘門，精確commit/push。感官接受human-pending。
@@ -13,7 +13,7 @@
 
 React viewport regression freshauthor a00fe4a2（SHA256 EECF13F973E41D40825EB784DFFF62A8E284336089BE7798583E7CF62C885925）：原inner1280/client1265→panel1264、原inset8只剩left0.4，native大style參數可重現；4checks有3behaviorRed/1Green。bounded單source修正使用實際client viewport/ResizeObserver，同4＋既有11checks/build/typedexample/scope1全部通過。nativeclient1265→panel1249、窄client305→panel289，兩側約8；query跨原生resize保留。style輸入先缺新增primitiveDescription被原子拒絕，補齊後正式import成功，未修改parser配合測試。還原default/dark/errorwarn空；截圖react-command-example.png已更新。
 
-Flutter palette BUILD2a069faf：新來源／foundation兩path，21項protected公開Widget checks、public analyze No issues、scope2及diff check通過。fresh author e5de466f保留排序／Unicode分詞預期，修正native View root與LF輸入harness；SHA256 DB279A061B5016806C1F4EFC3C43AC78D4C5B808BA97BF3543E6C0278F97EBE9。原Portal modal traversal排序Red，owner b08b95e7 ACR改每owner build刷新同Theme／locale的獨立OverlayEntry；Tab唯一輸入焦點、Material透明宿主及Actions Escape fallback由新source修正。nativebrowser／感官及完整極端style矩陣待consumer展示，不重做已Green核心。
+Flutter palette BUILD2a069faf：新來源／foundation兩path，21項protected公開Widget checks、public analyze No issues、scope2及diff check通過。fresh author e5de466f保留排序／Unicode分詞預期，修正native View root與LF輸入harness；SHA256 DB279A061B5016806C1F4EFC3C43AC78D4C5B808BA97BF3543E6C0278F97EBE9。原Portal modal traversal排序Red，owner b08b95e7 ACR改每owner build刷新同Theme／locale的獨立OverlayEntry；Tab唯一輸入焦點、Material透明宿主及Actions Escape fallback由新source修正。consumer browser已確認搜尋／pending／error／Tab／Escape／executed；scrim背景語意穿透是已重現Red，必須FLUTTER-COMMAND-PALETTE-MODAL-1修正。感官／style矩陣仍pending，不重做已Green核心。
 
 React palette BUILD160f2c18：new command-palette/index/styles三path，11項protected UI/SSR/hydration/type、library build/scope通過；SHA256 2753CE7F881BF0C0B56B8FE22EB0637EF4401F8023E64E057D55621A0FF7E6E5。原CSSStyleDeclaration非iterable Red以length/item標準讀法修正，同tests Green。public controlled modal、field search/multiwords/UTF16 score、samecore gates/session/latestcallback、native showModal/returnfocus/同Provider portal CSS及finite geometry；Flutter亦已實作，consumer browser待接續。
 
@@ -22,6 +22,14 @@ React CommandsDemo BUILD9999e289只新example與main兩行，public consumer Typ
 共同WB-COMMAND-ENTRY-r1 READY；React BUILDd05dca0e只新command-entries/indexexport/stylesappend，12項SSR/DOM/lifecycle/type checks及librarybuild/3pathscope通過，protectedhash72BB8ACAD50A754D376EE3CB38D80A0B1A2BE02317F2131F1079233C03449561未改。ownerf7f93520接入使用指南與共同契約網站Guide，當前29份Markdown、541API、15websitechecks/generate/verify通過；React act時機警告與browser/sensory待驗證。Flutter FLUTTER-COMMAND-ENTRY-r1亦已完成，證據如下。不以入口冒充popup/palette/shortcut全完成。
 
 Flutter BUILDae01ca96只新command_entries來源及foundation匯出；23項protected Widget/lifecycle checks、analyze No issues、兩path scope通過。author3a3f2004→a4951f51→120bd313保留原斷言，修正SemanticsHandle try/finally與Future完成後第二frame flush，補兩callback原error/再執行保護；最終SHA256 4DC377CC7612B91719BDEEC6472B30D47722C225702788C923F48B2545F80189。不改舊controls/core/theme/config；nativebrowser與極端style參數audit待後續。owner重新extract後545 canonical API／17modules／三surfaces，29Markdown；generate/verify及15網站checks通過。
+
+## Flutter 命令consumer與當前modal Red
+
+BUILD04cc372f只registered_commands_page.dart／registry.dart，保留原generated清冊並透過手寫入口投影pages／coverage；單一產品State使用stablefoundation的registry／toolbar／menu／palette。publicconsumer analyze No issues／scope2／diffcheck／releaseweb --no-tree-shake-icons成功50.5s，未改library／tests／config／generated。
+
+native tab9 port5192：Enable accessibility原生Space啟用；Commands1；草稿保留。sv 文件搜尋儲存，Enter後800ms pending三入口同時disabled，結果1／executed／焦點還原開啟按鈕；save關、failure開立即投影，error Enter原Bad state錯誤結果2／面板保持，Tab焦點不變；不存在實際空回饋截圖可見；Escape回原focus；canvas／ArrowDown／Enter一次格線result3且兩入口checked同步。當前viewport工具呼叫沒有改變tab9實際1280×720，不宣稱320×180 native證據；已reset工具。
+
+scrim Red：open AX仍有背景可操作導航；native座標(200,350)擊中背景Workspace components，原本期待outside卻切換頁面卸載demo。error／warn空不代表modal正確。重現截圖main build/evidence/flutter-command-modal-red.png；owner FLUTTER-COMMAND-PALETTE-MODAL-r1 READY，一source修正＋fresh test-owned registered_command_palette_modal_test.dart，原21protected唯讀；後續必重驗同座標。browser極端style／IME／同theme更新仍pending，感官human-pending。
 
 ## React command core
 
