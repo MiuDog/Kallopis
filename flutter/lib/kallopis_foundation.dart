@@ -174,6 +174,7 @@ export 'src/features/workspace/shell/panel/klp_panel_header.dart';
 export 'src/features/workspace/shell/docking/klp_dock_layout.dart';
 export 'src/features/workspace/shell/docking/klp_dock_layout_models.dart';
 export 'src/features/workspace/shell/docking/klp_dock_layout_codec.dart';
+export 'src/features/workspace/shell/docking/klp_dock_layout_operations.dart';
 export 'src/features/workspace/shell/docking/klp_dock_header.dart';
 export 'src/features/workspace/shell/docking/klp_dock_panel.dart';
 export 'src/features/workspace/shell/stage/klp_stage_frame.dart';
