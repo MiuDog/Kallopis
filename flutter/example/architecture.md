@@ -738,3 +738,28 @@ flowchart TD
 ```
 
 驗證：fixture6afe629e exact2，原packet scope2/diff及public analyze No issues；r2 Device源prefix release46.1秒。十個正式renderable自己target累計167／273。native平台explicit勝scope；Device公開DTO desktop／factory900 tablet／440 phone，scope factory1400實際tablet。Masonry minnull cell181／min240 cell245.3；空集合發現public clamp(1,0)例外後停止原驗收，由独立FLUTTER-MASONRY-EMPTY-1修正b3cff636及受保護兩tests；同source prefix45.7秒，fresh tab14實測12→60→0→12／selected−1→0／child1→2，error/warn空，保留之前Red歷史。Grid原生scroll60 items實際20–23/選取20，List原controller跳尾53–59/選取59；兩集合空0後恢復12。Resizable width160→240真實約束；Handle真正horizontal拖曳extent120→180、delta8/start1/end1，vertical→140/delta16/start2/end2，disabled同pointer拖曳計數與extent不變。Drawer stage幾何0/.5/1實際x8/68/128，閉合stage及開啟drawer child原動作；Split finite760 leading350/center84/trailing300及公開props，不冒稱窄算法。Device childinput2/action1跨四mode/寬鬆/local320保持，epoch歸零而environment保持。build/flutter-layout-utility-native.json與兩PNG為主工作樹證據；actual窄browser、感官、全量頁映射、整體release/push仍待，單taskusage null。
+
+## FLUTTER-FORM-COMPOSITION-SPECIMENS-1（READY）
+
+修訂 FLUTTER-FORM-COMPOSITION-SPECIMENS-r1；IDOC-01/02/03/06/08，唯一BUILD可寫 lib/component_specimens.dart、新 lib/form_composition_specimens.dart。九個自己的foundation公開target：KlpForm、KlpFormActions、KlpFormErrorSummary、KlpFormSection、KlpFieldGroup、KlpCompoundField、KlpConditionalFieldRegion、KlpRepeaterField、KlpKeyValueEditor。使用public KlpChoiceOption/KlpRepeaterItem/KlpKeyValueEntry，不讀private library或新增validator/schema。consumer擁有控制文字與唯一draft controller、collapse/visible/optional/error/enabled/submitting/readOnly、choice selection、repeater IDs及key-value資料；環境切換不換key，明示epoch才reset。dispose兩controller；section toggle及action submit/cancel/reset由原callback計數，child操作及control/input獨立。Conditional展示存在/缺席，不自行假設內部child State保留；draft authority在consumer。Form自己的sections、optional summary/actions；Summary明示空/非空及null callback；Repeater自己add/remove與空還原；KeyValue用自己的entries及公開onChanged，不複製庫編輯算法。
+
+M1 source9/analyze/prefix web/scope2；M2 native九route ownprops、actions enabled/submitting、summary click、section collapse、conditional顯隱、compound option/input/readOnly、repeater add/remove/empty、key-value edit/add/remove與null callback，child草稿四mode/寬鬆/local320/reset。有限host使用semantic spacing，不建立第二theme。庫/tests/config/style/site/readiness禁止寫；無新核心算法/持久化，不新增鏡像tests。估6k～12k/35～75分鐘，參照FORM-CONTROL及LAYOUT-UTILITY；M1累計6k35、M2累計12k75，18k110或public不足回PLAN。actual窄browser與感官human-pending，單taskusage null。
+
+| Source/class/function | 責任 |
+| --- | --- |
+| formCompositionSpecimenNames / FormCompositionComponentSpecimen | 精確target registry |
+| State fields/dispose | consumer props/controller與集合資料 |
+| controls/target/child/build | 真實public組裝及自己的操作 |
+| root/input/childAction/add/remove/change | 原回呼與consumer投影 |
+| host dispatch | environment保留及epoch |
+
+```mermaid
+flowchart TD
+	Host[ComponentSpecimenApp] --> Fixture[FormCompositionComponentSpecimen]
+	Fixture --> Props[consumer資料及控制]
+	Props --> Target[自己的public form target]
+	Target --> Callback[原callback]
+	Callback --> State[consumer結果]
+	State --> Props
+	Host --> Reset[明示epoch重建]
+```
