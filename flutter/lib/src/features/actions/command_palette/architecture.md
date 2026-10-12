@@ -6,21 +6,21 @@ FLUTTER-COMMAND-PALETTE-r1 READY，依[共同WB-COMMAND-PALETTE-r1](../../../../
 
 單一新`klp_command_palette.dart`擁有enum `KlpCommandDismissReason { escape, outside, executed }`及const generic `KlpRegisteredCommandPalette<C>`；required registry、getContext、open、label、searchLabel、emptyLabel、onResult及`ValueChanged<KlpCommandDismissReason> onDismiss`，key可選。foundation匯出兩宣告。build前ArgumentError驗證三個label非空白，不依assert。無新registry/context權威、model/adapter/runtime、theme預設或產品命令。
 
-privateState擁有OverlayPortalController、搜尋TextEditingController、input FocusNode、closed-loop FocusScopeNode、registry disposer、session generation、originalFocus與activeId。OverlayPortal沿呼叫點InheritedWidgets／theme／locale更新，避免OverlayEntry捕捉過期theme；closed輸出零尺寸宿主但沒有overlay/query/context/focus。init/update安排原生frame同步show/hide，open才清空query並記錄originalFocus，已open registry替換保留query及return-focus owner但提升generation。close/unmount/reopen/replacement使舊Future UI結果失效，registry disposed不訂閱/query。
+privateState擁有OverlayEntry、每次owner build刷新CapturedThemes／Directionality／Localizations投影、搜尋TextEditingController、input FocusNode、closed-loop FocusScopeNode、registry disposer、session generation、originalFocus與activeId。原生OverlayEntry在目前Overlay獨立附著modal語意；owner每次props/query/dependency build重新捕捉既有Theme，entry以最新同caller locale/direction投影並postframe markNeedsBuild，不沿用凍結snapshot；closed輸出零尺寸宿主但沒有overlay/query/context/focus。init/update安排原生frame同步insert/remove，open才清空query並記錄originalFocus，已open registry替換保留query及return-focus owner但提升generation。close/unmount/reopen/replacement使舊Future UI結果失效，registry disposed不訂閱/query。
 
 每次呈現讀最新getContext/list，一次候選投影包含state與score；UTF-16完整field exact/prefix/substring/subsequence及Unicode空白分詞依共同契約。Dart不得僅用ASCII空白或使用runes排序；共同ECMAScript WhiteSpace/LineTerminator集合支援U+0009～000D、0020、00A0、1680、2000～200A、2028/2029、202F、205F、3000、FEFF，U+0085保留字元不分詞，與React相同。每詞最佳score求和，原ID code units tie；不串field。disabled/running仍候選，activeId只可用；query/refresh保留可用ID，否則首可用。clear/dispose與清冊更新不改產品業務。
 
 input持原生Focus；Focus/onKeyEvent只处理非composing的上下、Enter與Escape，KeyDown一次、KeyRepeat不執行。composing判斷controller.value.composing有效非collapsed；Home/End/左右保持原生文字游標。Tab由closedLoop scope保留在modal；候選pointer與Semantics activation都經最新context/execute，候選不可取得獨立鍵盤焦點。activation完成只同session/onResult當前callback交原core結果；executed且callback返回後same session才onDismiss executed；error或callback自身throw保留面板，callbackthrow交FlutterError。不同命令可並行。
 
-show後原生frame聚焦input；close/unmount只有目前焦點仍在本scope或原生空root/background才還原有效原FocusNode（context != null/canRequestFocus）；產品callback已轉外部focus不能搶回。原背景controller/selection不可改。恢復與已排程frame都帶generation/mounted檢查；overlay先hide，資源按原生生命週期dispose，不讓舊frame讀disposed controller/node。
+show後原生frame聚焦input；close/unmount只有目前焦點仍在本scope或原生空root/background才還原有效原FocusNode（context != null/canRequestFocus）；產品callback已轉外部focus不能搶回。原背景controller/selection不可改。恢復與已排程frame都帶generation/mounted檢查；overlay先remove，資源按原生生命週期dispose，不讓舊frame讀disposed controller/node。
 
 ## 呈現與有限幾何
 
-OverlayPortal原生全覆蓋child：BlockSemantics、ModalBarrier只backdrop提出outside、panel Semantics scopesRoute/namesRoute/label、closed-loop FocusScope、LayoutBuilder finite viewport與top-center定位。pointer panel與candidate不冒泡到barrier；背景阻止pointer與遍歷，產品明確外部focus仍受共同保護。只有新row內部視覺持hover，active/hover同context.klp.selectionWash；metadata讀state，decorative KlpIcon排除重複Semantics，toggle checked不混active selected。原生可觀察候選Semantics label/enabled/selected/onTap，不假造ARIA DOM。
+OverlayEntry原生全覆蓋child：BlockSemantics、ModalBarrier只backdrop提出outside、panel Semantics scopesRoute/namesRoute/label、closed-loop FocusScope、LayoutBuilder finite viewport與top-center定位。pointer panel與candidate不冒泡到barrier；背景阻止pointer與遍歷，產品明確外部focus仍受共同保護。只有新row內部視覺持hover，active/hover同context.klp.selectionWash；metadata讀state，decorative KlpIcon排除重複Semantics，toggle checked不混active selected。原生可觀察候選Semantics label/enabled/selected/onTap，不假造ARIA DOM。
 
 panel重用KlpTextField/KlpText/KlpIcon/KlpPressable；同semantic overlay色/menuRadius/overlayShadow、dialogMaximumWidth/overlayViewportInset與tight/menuItemHeight/menuPadding/overlayItemGap/iconSmall。viewport先finite非負、inset<=短邊/2、panel寬高<=available；padding<=panel短邊/2；row padding/icon/gap依remaining寬分配。零/極窄/極高參數用ClipRect/scroll退化，不NaN/Infinity或RenderFlex overflow。field採有限width及垂直scroll宿主；rows nowrap裁切，沒有硬寫第二份風格值。theme/size只更新呈現且保留query/ID順序與權限。
 
-原生選擇依[OverlayPortal與OverlayEntry差異](https://api.flutter.dev/flutter/widgets/OverlayEntry-class.html)、[FocusScope](https://api.flutter.dev/flutter/widgets/FocusScope-class.html)、[ModalBarrier](https://api.flutter.dev/flutter/widgets/ModalBarrier-class.html)。不以Navigator route維護第二份open；OverlayPortal theme同呼叫點動態，不用冻结InheritedTheme snapshot。
+原生選擇依[OverlayPortal與OverlayEntry差異](https://api.flutter.dev/flutter/widgets/OverlayEntry-class.html)、[FocusScope](https://api.flutter.dev/flutter/widgets/FocusScope-class.html)、[ModalBarrier](https://api.flutter.dev/flutter/widgets/ModalBarrier-class.html)。不以Navigator route維護第二份open；每次owner build刷新同Theme/locale投影，不重建default theme；不沿用冻结InheritedTheme snapshot。
 
 ## 唯一當前slice
 
@@ -33,7 +33,7 @@ cold-start8k～14k tokens／40～70分鐘，參照REACT-COMMAND-PALETTE-1及FLUT
 ```mermaid
 flowchart TD
 	Product[open / context / results] --> Palette[KlpRegisteredCommandPalette]
-	Palette --> Host[OverlayPortal / same inherited theme]
+	Palette --> Host[OverlayEntry / refreshed calling theme]
 	Host --> Scope[ModalBarrier / BlockSemantics / FocusScope]
 	Scope --> Input[KlpTextField / controller / native editing]
 	Input --> Search[private UTF16 field scoring / available active ID]
@@ -41,3 +41,5 @@ flowchart TD
 	Core --> Session[generation / current callback / controlled dismiss]
 	Session --> Product
 ```
+
+原生語意ACR已接受：author e5de466f確認View traversal root排除Portal候選（individual nodes仍attached），19Green/2排序Red。Portal加1px carrier探針仍同Red；由於BlockSemantics會剔除Portal語意graft的caller parent，改獨立OverlayEntry而維持現有公開介面/兩path。主題捕捉每個owner build刷新，當前open/query/session/Focus與其他module不改；closed仍零尺寸。依[OverlayPortal原生語意限制](https://api.flutter.dev/flutter/widgets/OverlayPortal-class.html)。TestAuthor修正LF單行native formatter及View root觀察，保留完整分詞/排序期待，SHA256 DB279A061B5016806C1F4EFC3C43AC78D4C5B808BA97BF3543E6C0278F97EBE9。

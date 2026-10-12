@@ -118,6 +118,6 @@ FLUTTER-COMMAND-ENTRY-r1 COMPLETE見[registered入口](lib/src/features/actions/
 
 ## Flutter registered command palette邊界（READY）
 
-FLUTTER-COMMAND-PALETTE-r1 local PLAN READY見[原生palette](lib/src/features/actions/command_palette/architecture.md)：新module單一source及foundation export兩path，OverlayPortal保留同inherited theme、native Focus/IME、共同UTF16 search、async session隔離與finite geometry；必要跨語言/lifecycle證據由fresh隔離TestAuthor先擁有，BUILD不修改tests/既有core/controls/theme/config。
+FLUTTER-COMMAND-PALETTE-r1 local PLAN READY見[原生palette](lib/src/features/actions/command_palette/architecture.md)：新module單一source及foundation export兩path，OverlayEntry每owner build刷新同Theme/locale投影並獨立附著modal語意、native Focus/IME、共同UTF16 search、async session隔離與finite geometry；必要跨語言/lifecycle證據由fresh隔離TestAuthor先擁有，BUILD不修改tests/既有core/controls/theme/config。
 
 依[WB-COMMAND-PALETTE-r1](../docs/architecture/workbench-command-palette-contract.md)，後續公開KlpRegisteredCommandPalette<C>與KlpCommandDismissReason enum；registry/getContext/open/label/searchLabel/emptyLabel/onResult/onDismiss共同。全registry可見清冊、多詞field/subsequence固定排序、native TextField/IME/Focus、受控open與原native焦點還原、async session隔離均依共同契約。保留現有CommandMenu及registered入口API。不在React本slice修改Flutter產品碼；Flutter實作前由owner固定localarchitecture及freshTestAuthor。
