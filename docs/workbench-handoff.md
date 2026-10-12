@@ -4,12 +4,16 @@
 
 ## 下一個可執行步驟
 
-1. 雙框架command core與registered toolbar/menu已完成；React palette及公開CommandsDemo完成。共同WB-COMMAND-PALETTE-r1 READY；接續Flutter local PLAN／fresh TestAuthor／BUILD，保留既有CommandMenu／WorkspaceCommand caller與core。anchor/context menu尚待接續。
+1. 雙框架command core與registered toolbar/menu已完成；React palette、viewport修正及公開CommandsDemo完成。共同WB-COMMAND-PALETTE-r1與Flutter local PLAN READY；Flutter fresh TestAuthor已完成，下一個只執行FLUTTER-COMMAND-PALETTE-1 BUILD兩path，保留既有CommandMenu／WorkspaceCommand caller與core。anchor/context menu尚待接續。
 2. 雙框架快捷鍵/chord/scope/conflict/remap/recording契約與接入。不可用core冒充整個命令stage完成。
 3. 網站每個公開可呈現元件專屬互動specimen、registry/bundle/coverage；3GUI×2框架；typedrecipes／完整風格中立與參數／default權威切換。
 4. 補browser hoverpreview/cancel矩陣、Flutter continuousresize與React endcommit差異契約審核；保留所有既有CI/發布閘門，精確commit/push。感官接受human-pending。
 
 ## 當前新完成：雙框架registered command入口
+
+React viewport regression freshauthor a00fe4a2（SHA256 EECF13F973E41D40825EB784DFFF62A8E284336089BE7798583E7CF62C885925）：原inner1280/client1265→panel1264、原inset8只剩left0.4，native大style參數可重現；4checks有3behaviorRed/1Green。bounded單source修正使用實際client viewport/ResizeObserver，同4＋既有11checks/build/typedexample/scope1全部通過。nativeclient1265→panel1249、窄client305→panel289，兩側約8；query跨原生resize保留。style輸入先缺新增primitiveDescription被原子拒絕，補齊後正式import成功，未修改parser配合測試。還原default/dark/errorwarn空；截圖react-command-example.png已更新。
+
+Flutter palette localarchitecture READY；freshauthor d95ad02a→2d1a683e只test-owned registered_command_palette_test.dart，21checks目前missingpublicAPI compile Yellow，SHA256 5525F86C27AB3F1A92617A3F6F1E89841C4AE4457BF2C55558565E10B71C8421。author將label驗證從constructor修正為native pump邊界，符合const Widget/build前ArgumentError契約，未弱化nonblank預期。新palette enum/Widget 尚未實作；接續同hash測試+publicanalyze+exact2pathscope。
 
 React palette BUILD160f2c18：new command-palette/index/styles三path，11項protected UI/SSR/hydration/type、library build/scope通過；SHA256 2753CE7F881BF0C0B56B8FE22EB0637EF4401F8023E64E057D55621A0FF7E6E5。原CSSStyleDeclaration非iterable Red以length/item標準讀法修正，同tests Green。public controlled modal、field search/multiwords/UTF16 score、samecore gates/session/latestcallback、native showModal/returnfocus/同Provider portal CSS及finite geometry；Flutter尚未實作。
 

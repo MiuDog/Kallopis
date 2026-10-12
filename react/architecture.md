@@ -563,8 +563,10 @@ BUILD9999e289只新增[commands-demo.tsx](example/commands-demo.tsx)及main兩�
 | refreshContext／onResult／onDismiss | 清冊失效通知、產品原值結果及受控關閉 |
 | openPalette／toggleSave／toggleFailure | 明確產品控制，範例不提供全域快捷鍵 |
 
-## REACT-COMMAND-PALETTE-VIEWPORT-1（READY）
+## REACT-COMMAND-PALETTE-VIEWPORT-1（COMPLETE）
 
 REACT-COMMAND-PALETTE-VIEWPORT-r1：native大參數匯入成功後window.innerWidth1280、document clientWidth1265（捲軸），panel1264/left0.4小於inset8；320viewport亦left0.4。原geometry對inner尺寸有限但與fixed containing block可用寬不同。bounded修復只`react/src/command-palette.tsx` observeViewport及private有效viewport讀取；首選ownerDocument.documentElement實際clientWidth/Height，無layout DOM client0合理fallback原window有限尺寸；若native client viewport變動，windowresize或可用原生ResizeObserver刷新同state。theme/query/session/commands/CSS及公開型別保持契約，不改其他module。
 
 fresh隔離TestAuthor只new react/test/command-palette-viewport.test.mjs，保護client1265×705 vsinner1280×720的有效width<=1249/height<=689、同session視窗改變與finite fallback；既有11 palette checks hash不變。M1窄regression Red→Green（1k/10分鐘）、M2同11 public checks/build/native大參數/320邊距及exact1pathscope（3k/20分鐘）；cold2k～4k/15～25分鐘參照palette原BUILD；6k/35分鐘或CSS/其他來源要變回PLAN。
+
+author a00fe4a2四項中3 behavior Red/1 fallback Green，SHA256 EECF13F973E41D40825EB784DFFF62A8E284336089BE7798583E7CF62C885925。修正observeViewport讀client（無layout合理fallback）、同window resize／native ResizeObserver；同尺寸保留state及cleanup listening guard。4新＋11既有全部Green、library/consumer prod build、1pathscope及兩tests hash不變；569.46KB chunk提示保留。native極大style import實際client1265→panel1249/左右約8，320inner/client305→panel289/左右約8；同open query sv 文件跨resize保留，還原style與dark操作後error/warn空。浮點位置7.9為native量測，不宣稱精確pixel；全部style參數與IME矩陣仍pending。新增private stopObserving只擁有observer cleanup，無CSS/其他module變更。
