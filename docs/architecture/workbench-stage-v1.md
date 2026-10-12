@@ -57,7 +57,7 @@ GitHub push 已授權，無需重問；仍需先確認範圍及實際檢查。�
 | Dock | 雙框架codec／atomic operations／有限geometry／原生UI／公開example | browser hoverpreview／cancel矩陣、resize callback平台差異audit |
 | 命令 | 雙框架registry／toolbar／menu／palette／popup及公開consumer；popup Flutter16＋原23、React12＋原12 checks；button／右鍵native證據 | 網站專屬互動接入；極端style／窄native完整矩陣另pending |
 | 快捷鍵 | 純core Flutter11／React9 protected checks、analyze／build／exact2scope；chord／scope／conflict／atomic remap／recording | native host Flutter10／React6公開checks已完成；consumer React e56976aa／Flutter f9118c25及native重綁已完成；完整IME／style矩陣pending |
-| 網站 | 34Markdown／561 canonical API／17modules／三surfaces；Flutter真實Widget分類273項，React23個專屬routes、Flutter17個專屬routes已有參數／回呼／風格／reset觀察；generate／verify與15checks通過 | Flutter其餘256項；元件頁iframe、bundle／registry／全量coverage；3GUI×2框架 |
+| 網站 | 34Markdown／561 canonical API／17modules／三surfaces；Flutter真實Widget分類273項，React23個專屬routes、Flutter24個專屬routes已有參數／回呼／風格／reset觀察；generate／verify與15checks通過 | Flutter其餘249項；元件頁iframe、bundle／registry／全量coverage；3GUI×2框架 |
 | GitHub | 隔離精確commits，guarded同步main並保留index | 全部目標完成、保留發布閘門後精確push；尚未push |
 
 公開清冊或單一總覽iframe不能當作全部互動展示完成；protected deterministic code、nativebrowser觀察與人類感官接受分別記錄。anchor／context menu library與公開consumer已完成，接續網站逐元件專屬互動registry／bundles；不重做已完成style／linear／Dock／command foundations。
@@ -65,3 +65,5 @@ GitHub push 已授權，無需重問；仍需先確認範圍及實際檢查。�
 Flutter專屬route使用`?specimen=<公開名稱>`；目前basic六項為KlpText／KlpSurface／KlpBadge／KlpButton／KlpIconButton／KlpTextField，linear六項為KlpAppLayout／KlpLayoutPane／KlpLayoutDivider／LayoutRow／LayoutColumn／LayoutSpacer。原生Row／Column對齊位置、Pane自動flex與finite壓縮、Divider合法方向、AppLayout inset與浮動動作已觀察；尺寸由實際槽約束讀取，算法仍由庫擁有。四模式與另一份pack保留草稿，reset明確還原元件資料。320目前是局部展示container寬度，不當作browser viewport證據。完整網站嵌入尚未交付，詳[consumer架構](../../flutter/example/architecture.md)。
 
 Explorer增加KlpFileExplorer／KlpFileExplorerSection／KlpFileExplorerSectionView／KlpFileExplorerFolderView／KlpFileExplorerItemView五個專屬subject，均以公開root合法組合呈現自身資料與控制；沒有重建node/adapter。可改標籤、spacing、展開、選取、層級與空集合替代資料，原生回呼分列觀察；風格切換保留狀態，reset明確還原。這仍是example專屬routes的進度，元件文件iframe接線尚待交付。
+
+Frame增加KlpPanelFrame／KlpPanelHeader／KlpPanelFooter／KlpFrameGroup／KlpFrameGroups／KlpAppFrame／KlpPaneCollapseControl七個subject，各自在合法compound內調整自己的內容、尺寸或style參數；使用庫的theme、有限布局與回呼。Header必須保留title或custom content，label為附加內容；AppFrame展示自然width時明示flex0／preferred null，再與bounds／flex分配情境比較。Collapse鍵盤、群組及header/footer動作、風格及finite尺寸草稿保留已有原生證據，完整網站嵌入仍pending。
