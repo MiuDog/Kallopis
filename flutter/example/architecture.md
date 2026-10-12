@@ -368,7 +368,7 @@ FocusBoundary child原生文字2、Tab到child動作、Enter動作1；四mode/sp
 _State._controls/_target/_usage持有自己的props與公開constructor；_toast/_stages只組裝consumer資料，_child/_actionWidget提供真正公開child；_action/_close/_restore管理原回呼和consumer toast清單；_onEdit只control文字、_onInput只child文字；cycle/toggles為自身參數。build finite舞台、controls/edit/status，dispose清三controller；host theme/epoch依原owner，不另建立theme、adapter或業務runtime。
 
 
-## FLUTTER-CONTENT-COLLECTION-SPECIMENS-1（READY）
+## FLUTTER-CONTENT-COLLECTION-SPECIMENS-1（IMPLEMENTED；actual窄browser pending）
 
 修訂 FLUTTER-CONTENT-COLLECTION-SPECIMENS-r1；IDOC-01/02/03/06/08。exact lib/component_specimens.dart、新 lib/content_collection_specimens.dart。十個公開 target：KlpAvatar、KlpAvatarGroup、KlpCard、KlpListTile、KlpMessageBubble、KlpMessageThread、KlpMetricCard、KlpPreviewCard、KlpSortControl、KlpTag；其餘 collections 仍待後續交付，不縮小全量273目標。
 
@@ -395,3 +395,12 @@ flowchart TD
 	State --> Target
 	Host --> Reset[epoch才重建]
 ```
+
+
+BUILD exact2；十個名称全部對正式public renderable，不以placeholder計數。初次analyze兩處sort_child_properties_last，僅移child至constructor最後，同scope rerun No issues；prefixrelease45.6秒、scope2/diff通過。無library/tests/config/style/site source改動；無新core/persist/crosslanguage邊界，不新增鏡像測試。
+
+Native5203 prefix十route全部自己的props controls与label修改，控制文字回呼2與target分開。AvatarGroup3→5、maximum2→4真實四avatar及+1；Card自己的selected/tone/label/leading/trailing/footer；Bubble emphasis/dense/background false可選用與trailing；Preview metadata及size；Metric null/value/child/tone；均呈現target。Card/Bubble/Metric/Preview child動作各1，無虛構root callback；MessageThread真實loadOlder1由3→4message、指定訊息child動作1分開；ListTile root1；Sort root1改ascending false；Tag公開× root1使consumer移除，再restore回target。
+
+Card child輸入2/動作1；四mode、spacious、local320保持同草稿及回呼；reset回初始props與0，環境spacious/local320維持。當次console error/warn空。main build/flutter-content-collection-specimens.png、flutter-content-collection-native.json保存證據；actual360 browser與感官human-pending，local320不替代。Flutter真實展示100／273，剩173與全量網站gate／style audit仍原goal，不提前push。
+
+State _controls/_target/_usage對應自己的公開props，_child只提供明示consumer input/action；_sort/_loadOlder/_remove/_rootAction記root結果，_childAction/_input記child結果，_edit只control，dispose清controller，build有限scroll舞台。集合資料投影不重建library算法或theme。实际usage單task未量測null。
