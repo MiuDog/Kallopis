@@ -69,7 +69,7 @@ FLUTTER-DOCK-UI-r1 READY：optional Panel isPinned/isDirty/onCloseRequested Futu
 
 FLUTTER-DOCK-UI-1完成4ff1c999：全部pointer提交pureOPS／single finalcallback；optional Panel isPinned/isDirty/onCloseRequested/closeLabel、async pending stale/error lifecycle。33 protectedWidgetchecks/publicDockPanelanalyze/scope5paths通過；新metadata尚未nativebrowser example證據，ReactDock/commands/keybindings/GUI/docsregistry/style權威切換未完成。
 
-## FLUTTER-DOCK-EXAMPLE-1（READY）
+## FLUTTER-DOCK-EXAMPLE-1（完成）
 
 修訂FLUTTER-DOCK-EXAMPLE-r1。既有example/lib/catalog/docking_layout_page.dart擁有此產品展示資料、Stage輸入、控制器、保存JSON與操作計數；使用穩定foundation入口，不引用src。panels清冊保留原能力、穩定callback，增加pinned/dirty/approve/deny/delay；metadata不進wire。LayoutCodec保存/還原，pureOPS visibility/open/merge，非法JSON保持layout並顯示diagnostics，Stage輸入由產品controller持有並dispose。宿主寬320/760/1040與高180/480由產品選擇，實際宽clamp到Catalog可用寬度；內部Dock配額樣式不複製。
 
@@ -77,7 +77,7 @@ KlpDockHeader specimen文案改為semantic chromeTab與finite viewport，不寫�
 
 責任清冊：dockingLayoutPage提供兩個公開Widget specimens；_DockLayoutDemo/createState連接產品state；_DockLayoutDemoState擁有_initialLayout/_panels/_policies/JSON與Stagecontrollers/closemode/count/message/width/height；_panel建立內容metadata與stableapprovecallback；dispose释放controllers；_approveClose只讀產品closemode，delay1200ms；_commit比較保存值/計數；_action委派pureOPS；_toggleArea/_clearBottom/_resetLayout/_saveLayout/_restoreLayout/_openPanel/_mergeGroups為產品意圖；build/_controls/_dock/_json組裝有限外部宿主與公開元件。_DockHeaderDemo/State只擁有action回饋；main KallopisCatalogApp與其State保持原生命週期，build只新增Material ancestor。
 
-M1public consumer/analyze/type/3pathscope，M2releaseweb --no-tree-shake-icons與nativebrowser select/save/load/close/resize/有限尺寸；拖放可用時確認，未觀察明示pending，感官human-pending。新測試無必要，既有33Widgetchecks不變，不以snapshot評分。參照React Dock example，cold-start5k–9k tokens/25–50分鐘；12k/70分鐘或需要library改動回PLAN。後续三個GUI×雙框架與全component網頁specimens仍保留完整goal。
+M1public consumer/analyze/type/2pathscope，M2releaseweb --no-tree-shake-icons與nativebrowser select/save/load/close/resize/有限尺寸；拖放可用時確認，未觀察明示pending，感官human-pending。新測試無必要，既有33Widgetchecks不變，不以snapshot評分。參照React Dock example，cold-start5k–9k tokens/25–50分鐘；12k/70分鐘或需要library改動回PLAN。後续三個GUI×雙框架與全component網頁specimens仍保留完整goal。
 
 ```mermaid
 flowchart TD
@@ -90,3 +90,16 @@ flowchart TD
 	Product[stable approval callback] --> Dock
 	App[Catalog main Material host] --> Catalog
 ```
+
+實作39d263e0；2pathscope與兩個example來源analyze No issues。releaseweb保留全部圖示建置成功60.6s，標頭外部loose限制修正後再建置成功52.1s（session3558 exit0）；未改庫/tests/assets/config。nativebrowser tab9/port5192：History選取+Bottom收合2次、deny0次、approve/open/merge各1次；invalidJSON保留，合法還原成功；Stagecontroller在320×180及760×180/1040×480後保留。delayed批准完成1次，pending停用的當下browser狀態未取得，不宣稱該項感官證據。Inspector跨area合併與正文後半split各1次，split保存106+106=(220−8)/2；area220→250沿既有continuous pan產生8次callback，不宣稱整個resize gesture一次提交。新release120寬header呈現更多選單，選設定顯示已執行設定。error/warn空；Material祖先後實際截圖無原黄色雙底線。header hoverpreview/cancel的完整nativebrowser矩陣仍待接續。
+
+| 型別／定義 | 來源 | 責任 |
+| --- | --- | --- |
+| dockingLayoutPage | [docking_layout_page.dart](example/lib/catalog/docking_layout_page.dart) | 公開Dock/LayoutHeader specimens接入Catalog |
+| _DockHeaderDemo／_DockHeaderDemoState | 同上 | createState/build、_width外部120/220限制、_action與overflow回饋 |
+| _DockLayoutDemo／_DockLayoutDemoState | 同上 | createState/产品layout、初始groups/policies/controllers与stableclosecallback |
+| _approveClose／_panel／dispose | 同上 | 产品批准模式与metadata、有限panel內容、controller释放 |
+| _commit／_action／_area／_toggleArea／_clearBottom／_resetLayout | 同上 | publicpure結果採用/計數、area意圖與明確清空展示布局 |
+| _saveLayout／_restoreLayout／_openPanel／_mergeGroups | 同上 | schema1資料邊界、错误保留、capability重開、同區合併 |
+| _controls／_dock／_json／build | 同上 | 公開元件controls、外部有限宿主与Stage、JSON產品輸入 |
+| KallopisCatalogApp／_KallopisCatalogAppState.build | [main.dart](example/lib/main.dart) | 原App/Theme生命週期；本slice只加Material透明祖先 |

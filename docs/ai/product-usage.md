@@ -179,7 +179,7 @@ if (result.changed) setState(() => layout = result.layout);
 
 index 是移除來源後的最終位置，不 clamp；new groupId 不可與操作前任何群組重複。來源空群組刪除，active 移走取剩餘第一個；目標區域展開，select 只更新 active。close 的 approved 必由產品關閉 callback 決定；false 保留全部資料，true 只移除布局，不刪 registry，面板仍可 open。dirty／pinned 不寫入布局資料。
 
-resize 只更新有限偏好尺寸，由 UI 依 constraints／viewport 解算後提交；hover／取消拖曳不提交操作。非法目前布局、缺清冊、能力衝突、identity／index／extent 都以 FormatException 整份拒絕，原 caller 不改。既有 KlpDockLayout API 保持；Widget 互動接入與極端風格幾何保護仍在後續 Workbench stage。
+resize 只更新有限偏好尺寸，由 UI 依 constraints／viewport 解算後提交；hover／取消拖曳不提交操作。非法目前布局、缺清冊、能力衝突、identity／index／extent 都以 FormatException 整份拒絕，原 caller 不改。既有 KlpDockLayout API 保持，Widget 已接入pure操作及有限配額；完整風格配方參數化仍在接續 Workbench stage。
 
 ### Panel 有限尺寸
 
@@ -212,4 +212,12 @@ KlpDockPanel(
 
 callback 可直接回傳 bool 或 Future<bool>；false 不提交，true 才移出布局並一次發出 `onLayoutChanged`。庫不移除 registry、不刪資料；產品可用 `KlpDockAction.open` 再開啟。等待時只禁用該面板關閉入口；完成從最新布局關閉，若面板曾被移除／重開、callback 替換或 Dock dispose，舊結果忽略。錯誤透過標準 FlutterError 通道，保存資料保持且 pending 解除。消費端保持穩定 callback instance，避免每次 rebuild 產生新的閉包而使等待中的批准過期。
 
-分頁、拖放、分割與尺寸操作由已公開 pure actions 統一規則；no-op 不通知。成功批次只一次通知，產品採用回傳的 immutable layout。tab 前後半部分別插入前後；新 split 的把手配額也計入總尺寸。原生展示例的 close／dirty／pinned 接線與完整 GUI 將在範例階段補齊，目前新流程已由公開 Widget gesture checks 驗證。
+分頁、拖放、分割與尺寸操作由已公開 pure actions 統一規則；no-op 不通知。成功批次只一次通知，產品採用回傳的 immutable layout。tab 前後半部分別插入前後；新 split 的把手配額也計入總尺寸。Flutter原生resize沿既有continuous pan逐次通知，每次area/group批次仍只有一個結果；不能把它描述為整個gesture只提交一次。
+
+### 公開 Dock 互動範例
+
+[Catalog Docking 頁](../../flutter/example/lib/catalog/docking_layout_page.dart)使用穩定foundation入口，示範保存／還原schema1 JSON、能力清冊投影、產品批准／拒絕／延遲關閉、pinned／dirty、重開與同區合併。Stage輸入與JSON controller由產品持有並釋放；320／760／1040寬及180／480高只控制宿主，實際寬度不超出Catalog可用空間。無效JSON保留目前布局；清空Bottom是展示產品明確的布局移除動作，正文registry仍保留。
+
+KlpDockHeader另有120／220寬度控制，有限宿主用Align提供loose限制，避免Column的stretch覆蓋指定寬度。更多選單中的動作顯示產品回饋。Catalog的Material透明祖先提供正常DefaultTextStyle，不建立第二份theme。
+
+新版releaseweb已在瀏覽器確認選取、收合、保存還原／錯誤保留、拒絕／批准／延遲完成、重開／合併、跨區拖放／分割及area resize；窄header更多選單可執行設定。Hover preview/cancel完整browser矩陣、三種雙框架GUI與全部元件網頁展示仍待接續，感官品質由人類接受。

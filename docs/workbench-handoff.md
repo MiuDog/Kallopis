@@ -87,3 +87,13 @@ PLAN8a2267b4，consumer實作9597e484，3allowedpaths scope/typecheck/prod build
 tab8 http://127.0.0.1:5182/（devsession89615）：select/收合/展開、save/restore/reset、invalidJSON原子保留、deny/approve/pendingdelay、open/merge均可操作；nativearea180→210與group200→225各1callback；320×180root scrollWidth320/scrollHeight180且style無NaN/Infinity，Stage及Search輸入跨theme/size保留。證據mainignored build/evidence/react-dock-example.png為診斷移除後重排及resize，呈現2次變更/left210/light。
 
 native HTMLdrag已確認：短距離Search→Explorer重排1次；right拓寬360後Search跨區域header合併1次；Search拖正文split1次，兩group各96=(200−8)/2。最初未提交的兩次長拖，暫時eventprobe證明目的未收到有效dragover/drop，不是缺dragstart；拓寬目的即成功。診斷已移除且consumerGit不變，移除後重排/arearesize再成功。hover preview nativebrowser仍待接續，不宣稱已通過；無需改library或tests。下一步Flutter新UIexample與hover preview browser，再commands/keybindings及website展示stage。完整3GUI×2框架、全部互動頁面/網站registry、typedrecipes/風格中立與權威切換/CI/精確push仍未完成。goal ACTIVE，main dirty/index保留。
+
+## 最新 Flutter 公開 Dock example
+
+PLAN1bffc472、BUILD39d263e0，packet mainignored build/task-packets/flutter-dock-example-1.json；scope2examplefiles於39d263e0閉合。publicfoundation consumer、stableclosecallback/metadata/policy投影/controllerdispose/codec與pureOPS controls；main只加Material透明祖先。分析兩example來源No issues，兩次releaseweb --no-tree-shake-icons成功60.6s/52.1s（最後session3558 exit0），庫/測試/config/assets未改。
+
+port5192既有HTTP仍listenPID42840，tab9新版release：History/Bottom2次；deny0、approve/open/merge各1；invalidJSON保留counter/合法還原成功；Stage輸入在窄小及恢復後保留；delay完成1次（pending當下未取得browser停用證據）。Inspector跨area合併及正文下半split各1次，wire兩group106=(220−8)/2。area220→250的原生continuous pan共8callbacks，須保留這項事實，不能說整個resizegesture只提交一次。120寬Header只顯示search+更多，選更多→設定回饋成功，最後error/warn空。黄色雙底線已由Material宿主移除。
+
+截圖mainignored build/evidence/flutter-dock-example.png（最後reload後760×180、History/Bottom2次/Stage文字）及flutter-dock-header-example.png（120寬、已執行設定）。UI頁文字編輯重建後已reload再觀察新header，不能使用舊release證明新功能。FlutterHTML編輯器fill第二次可能追加，已用原生Ctrl+A/clipboard/Ctrl+V完成合法JSON替換，未改controller或parser配合工具。
+
+下一步命令/快捷鍵共同與雙框架契約（既有accepted scope），然後allGUI/specimens網站整合；hoverpreview/cancel browser矩陣保留驗證待辦，Flutter resize lifecycle跨框架差異在最終契約審核確認。typedrecipes/全部風格參數、正式權威切換/CI/exactpush仍未完成。完整goal ACTIVE，主工作樹dirty/index必須保留。
