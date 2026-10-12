@@ -100,13 +100,23 @@ function clockFixture(f, t) {
 	let serial = 0;
 	const jobs = new Map();
 	const previous = [];
+	const nativeSchedule = globalThis.setTimeout;
+	const nativeCancel = globalThis.clearTimeout;
 	function schedule(callback, delay) {
+
+		// JSDOM focus 另排零延遲 selectionchange；保留原生排程，避免誤算 chord timer。公開 chordTimeoutMs 必須正整數，所有非零期限仍受控。
+		if (Number(delay) === 0) return nativeSchedule(callback, delay);
 
 		const id = ++serial;
 		jobs.set(id, { /* callback：原生 timeout 工作；due：單次期限毫秒。 */ callback, due: now + Number(delay) });
 		return id;
 	}
-	function cancel(id) { jobs.delete(id); }
+	function cancel(id) {
+
+		if (jobs.delete(id)) return;
+
+		nativeCancel(id);
+	}
 	for (const target of [globalThis, f.win]) {
 		previous.push([target, target.setTimeout, target.clearTimeout]);
 		target.setTimeout = schedule;
