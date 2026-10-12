@@ -1,5 +1,5 @@
-import { useEffect, useRef, useState } from 'react';
-import { KlpButton, KlpCard, KlpCommandRegistry, KlpRegisteredCommandMenu, KlpRegisteredCommandPalette, KlpRegisteredCommandToolbar, KlpText, KlpTextField, type KlpCommandDismissReason, type KlpCommandExecutionResult, type KlpCommandReference } from '@kallopis/react';
+import { useEffect, useRef, useState, type MouseEvent } from 'react';
+import { KlpButton, KlpCard, KlpCommandRegistry, KlpRegisteredCommandMenu, KlpRegisteredCommandPalette, KlpRegisteredCommandPopup, KlpRegisteredCommandToolbar, KlpText, KlpTextField, type KlpCommandDismissReason, type KlpCommandExecutionResult, type KlpCommandReference, type KlpCommandPopupAnchor, type KlpCommandPopupDismissReason } from '@kallopis/react';
 
 interface DemoContext {
 	/* 產品條件由展示頁擁有，入口每次透過 getContext 讀取。 */
@@ -23,6 +23,10 @@ export function CommandsDemo() {
 	const [message, setMessage] = useState('尚未執行命令');
 	const [resultCount, setResultCount] = useState(0);
 	const [dismissReason, setDismissReason] = useState<KlpCommandDismissReason | null>(null);
+	/* popupOpen 為產品受控開關；popupAnchor 保存同 viewport 原生bounds或point；popupReason 為產品回饋。 */
+	const [popupOpen, setPopupOpen] = useState(false);
+	const [popupAnchor, setPopupAnchor] = useState<KlpCommandPopupAnchor>({ x: 0, y: 0, width: 0, height: 0 });
+	const [popupReason, setPopupReason] = useState<KlpCommandPopupDismissReason | null>(null);
 	/* ref 提供最新 context，註冊 handler 不捕捉過期 render 的條件。 */
 	const contextRef = useRef<DemoContext>({ canSave, grid, showFailure });
 	contextRef.current = { canSave, grid, showFailure };
@@ -67,6 +71,25 @@ export function CommandsDemo() {
 	function openPalette() { setOpen(true); }
 	function toggleSave() { setCanSave(value => !value); }
 	function toggleFailure() { setShowFailure(value => !value); }
+	function showPopup(anchor: KlpCommandPopupAnchor) {
+		setOpen(false);
+		setPopupAnchor(anchor);
+		setPopupOpen(true);
+	}
+	function openButtonPopup(event: MouseEvent<HTMLButtonElement>) {
+
+		// 產品提供觸發按鈕的實際 viewport bounds，library 不掃描產品 DOM。
+		const rect = event.currentTarget.getBoundingClientRect();
+		showPopup({ x: rect.x, y: rect.y, width: rect.width, height: rect.height });
+	}
+	function openPointPopup(event: MouseEvent<HTMLElement>) {
+		event.preventDefault();
+		showPopup({ x: event.clientX, y: event.clientY, width: 0, height: 0 });
+	}
+	function dismissPopup(reason: KlpCommandPopupDismissReason) {
+		setPopupReason(reason);
+		setPopupOpen(false);
+	}
 
 	return <KlpCard header={<KlpText role="body-strong">命令與入口</KlpText>}>
 		<div className="demo-stack">
@@ -76,13 +99,16 @@ export function CommandsDemo() {
 				<KlpButton selected={canSave} onClick={toggleSave}>允許儲存：{canSave ? '開' : '關'}</KlpButton>
 				<KlpButton selected={showFailure} onClick={toggleFailure}>顯示失敗命令：{showFailure ? '開' : '關'}</KlpButton>
 				<KlpButton tone="primary" disabled={!registry} onClick={openPalette}>開啟命令面板</KlpButton>
+				<KlpButton disabled={!registry} onClick={openButtonPopup}>開啟錨定選單</KlpButton>
 			</div>
+			<KlpCard onContextMenu={openPointPopup}><KlpText>在此按右鍵開啟命令選單</KlpText></KlpCard>
 			{registry && <>
 				<KlpRegisteredCommandToolbar registry={registry} getContext={getContext} items={toolbarItems} label="展示命令工具列" onResult={onResult} />
 				<KlpRegisteredCommandMenu registry={registry} getContext={getContext} items={menuItems} label="展示命令選單" emptyLabel="目前沒有命令" onResult={onResult} />
 				<KlpRegisteredCommandPalette registry={registry} getContext={getContext} open={open} label="命令面板" searchLabel="搜尋命令" emptyLabel="沒有符合的命令" onResult={onResult} onDismiss={onDismiss} />
+				<KlpRegisteredCommandPopup registry={registry} getContext={getContext} items={menuItems} open={popupOpen} anchor={popupAnchor} label="快顯命令選單" emptyLabel="目前沒有命令" onResult={onResult} onDismiss={dismissPopup} />
 			</>}
-			<KlpText role="caption" aria-live="polite">結果 {resultCount} 次：{message} · 格線：{grid ? '開' : '關'} · 最近關閉：{dismissReason ?? '尚未關閉'}</KlpText>
+			<KlpText role="caption" aria-live="polite">結果 {resultCount} 次：{message} · 格線：{grid ? '開' : '關'} · 最近關閉：{dismissReason ?? '尚未關閉'} · 快顯關閉：{popupReason ?? '尚未關閉'}</KlpText>
 		</div>
 	</KlpCard>;
 }
