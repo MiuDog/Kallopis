@@ -93,7 +93,7 @@ class _KallopisCatalogAppState extends State<KallopisCatalogApp>
 						onChanged: _setThemeColor,
 						child: child ?? const SizedBox.shrink(),
 					),
-					home: panelLayout,
+					home: Material(type: MaterialType.transparency, child: panelLayout),
 				);
 			},
 		);
