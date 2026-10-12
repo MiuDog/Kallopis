@@ -121,3 +121,29 @@ FLUTTER-COMMAND-ENTRY-r1 COMPLETE見[registered入口](lib/src/features/actions/
 FLUTTER-COMMAND-PALETTE-r1 COMPLETE見[原生palette](lib/src/features/actions/command_palette/architecture.md)：BUILD 2a069faf新module單一source及foundation export兩path，OverlayEntry每owner build刷新同Theme/locale投影並獨立附著modal語意、native Focus/IME、共同UTF16 search、async session隔離與finite geometry。21項protected公開checks、public analyze No issues及exact2path scope通過；未修改tests／既有core／controls／theme／config。consumer browser及感官另接續。
 
 依[WB-COMMAND-PALETTE-r1](../docs/architecture/workbench-command-palette-contract.md)，已公開KlpRegisteredCommandPalette<C>與KlpCommandDismissReason enum；registry/getContext/open/label/searchLabel/emptyLabel/onResult/onDismiss共同。全registry可見清冊、多詞field/subsequence固定排序、native TextField/IME/Focus、受控open與原native焦點還原、async session隔離均依共同契約。保留現有CommandMenu及registered入口API。
+
+## FLUTTER-COMMAND-EXAMPLE-1（READY）
+
+修訂FLUTTER-COMMAND-EXAMPLE-r1。依已完成公共registry／registered toolbar／menu／palette，新增example/lib/catalog/registered_commands_page.dart：單一產品展示State擁有registry、最新DemoContext、草稿controller、canSave／grid／showFailure／open／resultCount／message／dismissReason。initState註冊save（800ms Future）、grid toggle及顯式開關failure；registry每次查詢讀最新context；產品條件更新refresh；dispose釋放產品registry／controller。handler不複製到入口，error由原typed result呈現；onDismiss記錄reason並關閉受控open。same State保持controller與registry，主題／viewport更新不重建權威。
+
+展示使用stablefoundation公開KlpText／TextField／Button／RegisteredCommandToolbar／Menu／Palette；三個specimen引用同一個可操作展示，對應publicWidget exactname。欄位與metadata以中文註解理由；文字、spacing與內部呈現沿semantic theme，外部Column／Wrap只組裝產品展示。沒有copy樣式／src引用／新增預設theme／產品業務命令。
+
+Catalog registry.dart為手寫整合入口：import原generated清冊並維持順序，附加一個產品展示group；hide generated catalogGroups／catalogPages／catalogedComponents，再從同投影計算pages／coverage。保留其他generated公開constants。避免改semantic manifest或generated artifact來加入獨立consumer展示；generated來源與全部existingpages唯讀。選用wrapper而不手改generated避免後續生成覆蓋展示；不另建導航或第二套catalogmodel。
+
+BUILD exact2paths：新registered_commands_page.dart及registry.dart。architecture／tests／main／generated／theme／lib／config／網站／其他module唯讀。M1publicconsumer analyze No issues與scope2；M2 release web --no-tree-shake-icons、nativebrowser搜尋／gates／pending／error留面板／controlleddismiss／原focus／草稿保留與同theme更新，未觀察項明示pending。此可逆產品demo無必要新增鏡像測試，既有protected palette21checks保持。感官human-pending；全部網站互動與3GUI×2仍未完成。
+
+cold-start4k～8k tokens／20～45分鐘，參照REACT-COMMAND-EXAMPLE-1／FLUTTER-DOCK-EXAMPLE-1，假設既有Flutter3.44.2與本機browser可用。M1累計3k／15分鐘、M2累計8k／45分鐘；12k／70分鐘或需改library／test／config回PLAN。
+
+```mermaid
+flowchart TD
+	Generated[唯讀原Catalog清冊] --> Registry[手寫registry投影]
+	Page[registeredCommandsPage] --> Registry
+	Registry --> Catalog[既有CatalogShell]
+	Catalog --> Demo[同產品DemoState / 最新context]
+	Demo --> Core[public KlpCommandRegistry]
+	Core --> Toolbar[public registered toolbar]
+	Core --> Menu[public registered menu]
+	Core --> Palette[public controlled palette]
+	Palette --> Result[產品結果 / dismiss]
+	Result --> Demo
+```
