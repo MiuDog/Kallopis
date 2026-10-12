@@ -134,21 +134,26 @@ void main() {
 	});
 
 	testWidgets('既有 flex-only subclass 與 ResizeHandle callback 保持來源相容', (tester) async {
-		var callbacks = 0;
+		final positions = <Offset>[];
 		const legacy = _LegacyLayoutNode(key: ValueKey('legacy'));
 		expect(legacy.bounds.minimum, 0);
 		expect(legacy.bounds.maximum, isNull);
 		expect(legacy.bounds.preferred, isNull);
 		await _pump(tester, LayoutRow(children: [
 			legacy,
-			LayoutResizeHandle(key: const ValueKey('old-handle'), onResize: (_) => callbacks++),
+			LayoutResizeHandle(key: const ValueKey('old-handle'), onResize: positions.add),
 			_pane('right'),
 		]));
 		_expectRect(tester, 'legacy', const Rect.fromLTWH(0, 0, 196, 300));
 		_expectRect(tester, 'right', const Rect.fromLTWH(204, 0, 196, 300));
+		final target = tester.getCenter(find.byKey(const ValueKey('old-handle'))) + const Offset(40, 0);
 		await tester.drag(find.byKey(const ValueKey('old-handle')), const Offset(40, 0), warnIfMissed: false);
 		await tester.pump();
-		expect(callbacks, 0, reason: '既有純 gutter handle 不新增拖曳或持久狀態');
+		expect(positions, isNotEmpty, reason: '既有非空 onResize 必須繼續回報水平拖曳');
+		expect(positions.last.dx, closeTo(target.dx, 1e-6), reason: '回報全域游標位置，不能改成位移量');
+		expect(positions.last.dy, closeTo(target.dy, 1e-6));
+		_expectRect(tester, 'legacy', const Rect.fromLTWH(0, 0, 196, 300));
+		_expectRect(tester, 'right', const Rect.fromLTWH(204, 0, 196, 300));
 		expect(tester.takeException(), isNull);
 	});
 
