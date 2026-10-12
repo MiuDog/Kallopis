@@ -59,3 +59,9 @@ PLAN1e8203e6/Infinity補充4fe6c76c；TestAuthord76784d7；BUILD296e7cab。13che
 新增privatepart internal/klp_dock_geometry.dart擁有rootRects/handles/resize預算，依既有publiclinear。UI root用stablekeyedPositioned/ClipRect，PanelFrame前置共用；保存prefs不變。groups最後填餘/其餘prefs依min與比例縮配，actualgutter供所有offset/resize/drop。arearesize扣另一side與把手/header，min不足no-op；horizontalheaderdrop讀actualmargin/chrome；Stageindicator只畫Stage邊界。Header zero icon slot多選單保留可點擊槽與enabledcallbacks；loose-tight lineclamp0。
 
 已重現releaseweb default build因原dynamicIconData不能tree-shake字型失败；按Flutterdiagnostic改用 --no-tree-shake-icons 保留完整字型，不改資產/consumer/config/tests。release建置成功（49.8s）；http://127.0.0.1:5192/ nativebrowser tab7已確認HISTORY切換呈現Change history、Bottom收合隱藏TERMINAL/PROBLEMS、再開恢復且HISTORY保留，error/warn皆空。證據mainignored build/evidence/flutter-dock-geometry.png，release靜態server session3043。觀察既有Catalog文字黃色雙底線及Header說明仍寫固定32px，待example/style/docs階段修正；沒有宣稱感官接受，human-pending。下一步Flutter hover/cancel/close/metadata/pureOPS受控接入，以及React nativeDock；logicalgroup min32/120完整recipe參數化、commands/keybindings、allGUI/specimens/docsregistry/authorityswitch/push尚未完成，goal ACTIVE。
+
+## 最新 Dock preview 完成
+
+PLAN5abc383a、TestAuthorf717c311、BUILD3064c359；7preview checks baseline2pass5behavioralRed→7Green，合併原13geometry共20Green/publicDockanalyze/scope2paths pass。protectedfile flutter/test/dock_preview_test.dart SHA25661335C6016B221D213DED7971F2654B38FB5932B3A86BA83A8E06F2635985CB2。packet/closure在mainignored build/task-packets/flutter-dock-preview-1*.json，basef717c311/scope閉合3064c359；只Widgetnativegesture證據，尚未browser重新驗證preview。
+
+下一步PLAN FLUTTER-DOCK-UI：所有select/move/reorder/split/visibility/resize提交接入完成pureoperations，並以可選且相容public metadata及產品close批准接線pinned/dirty；不重做preview/geometry/codec/OPS。React native Dock、commands/keybindings、全部specimens/GUI、style recipes/權威切換/網站registry/CI/精確push均未完成，goal ACTIVE。舊文字「hover目前提交」只描述已修正問題，以本段及module contract為準。

@@ -62,3 +62,5 @@ FLUTTER-PANEL-GEOMETRY-1完成5e18ccd6：finite chrome/margin/inset與slot clip�
 FLUTTER-DOCK-GEOMETRY-1完成296e7cab：root/group有限配額、effectivehandle/resizebudgets/Stage提示、Headerzeroslot/menu与Statecontinuity；13protectedchecks、publicanalyze No issues、4paths scopepass，testhash未變。原保存偏好不回寫。React Dock UI/Flutter受控操作接入仍未完成。
 
 WB-DOCK-PREVIEW-r1 READY：hover僅instance presentation，cancel/end清除，success保留保存extent；Flutter當前PREVIEW-1不改publicAPI、geometry或pureoperations，React native Dock接入時遵循同一生命週期，不在此slice修改React。
+
+FLUTTER-DOCK-PREVIEW-1完成3064c359：hover為局部presentation、cancel/miss不保存、success保留原extent，7preview+13geometry checks/publicanalyze/2paths scope通過。公開constructor未變，pureoperations接入與close metadata仍待接續。

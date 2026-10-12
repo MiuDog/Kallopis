@@ -190,3 +190,5 @@ KlpPanelFrame 仍由產品提供有限高度；header/footer 高度讀 semantic 
 KlpDockLayout 的父容器需提供有限寬高；保存 extent 是偏好，實際side與Bottom尺寸受area constraints及viewport控制。空間不足按通用演算法縮配minima，不回寫保存資料；群組與把手用同一有效gutter。contentHeader保留跨中央/右區而左區全高，Bottom只在Stage下方。resize callback提交值也扣除其餘區與把手；無法容納logical minimum時不提交尺寸，仍可collapse。內容State在合法theme與viewport更新保持。zero/巨大style不代表產品內容自身排版或操作感官已接受。
 
 現有example使用動態IconData，release web需 `flutter build web --release --no-tree-shake-icons` 保留完整套件圖示字型；默认tree-shake-icons會因非const圖示失败，不能靜默換圖示或字型資產。
+
+Dock 拖曳滑過隱藏非空區時只暫時展開，不發 `onLayoutChanged`；取消／未命中放下會收回。成功放入該區才一次通知且保留原保存寬高。拖曳中提供不同 layout instance 會清預覽，以新產品布局為準；同 layout 的主題／尺寸重建保留預覽。

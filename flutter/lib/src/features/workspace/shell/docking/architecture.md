@@ -99,7 +99,7 @@ logicalgroupmin32/120仍是舊操作限制，完整style recipe參數化尚未�
 
 Release Catalog 另以 `flutter build web --release --no-tree-shake-icons` 成功建置；既有動態 IconData 要求保留完整字型。native browser 已確認 HISTORY 分頁切換、Bottom 收合與還原保留分頁，error/warn 空。截圖在 main ignored `build/evidence/flutter-dock-geometry.png`；Catalog 黃色雙底線與 Header 固定32px舊說明仍待 example/style 階段，不屬本 BUILD，感官接受仍 human-pending。
 
-## 當前 slice FLUTTER-DOCK-PREVIEW-1（READY）
+## FLUTTER-DOCK-PREVIEW-1（完成）
 
 只實作WB-DOCK-PREVIEW-r1，保存／geometry已完成。State擁有此次drag的preview slots與drop提示；build由widget.layout投影臨時visible/minimum area，送既有geometry及group composition。caller layout是唯一保存權威。_finishDrag清preview及提示；target leave僅清提示，避免Stage→preview group跳轉時隱藏目標。didUpdateWidget僅在layout identity變更時清preview，不把theme/size rebuild當產品保存更新。success使用caller的原area尺寸與visible=true提交，不把presentation minimum帶回保存。
 
@@ -119,3 +119,5 @@ flowchart TD
 	Commit --> Callback[一次onLayoutChanged]
 	Callback --> Caller
 ```
+
+PREVIEW-1 實作3064c359：_previewAreaSlots只擁有此次gesture；_presentationLayout以caller投影minimum/visible，_finishDrag清所有暫態；didUpdateWidget只在layout identity改變時清除。_finishPanelDrop取caller原area再設visible=true，避免minimum污染保存extent；未改publicAPI或pureoperations，原data part只另改tab縮排。TestAuthor f717c311，7checks baseline2pass/5behavioralRed→全部Green；連同受影響13geometry共20Green，publicDockanalyze No issues、2paths scopepass。protected SHA25661335C6016B221D213DED7971F2654B38FB5932B3A86BA83A8E06F2635985CB2不變；scope於3064c359閉合。nativebrowser前次release僅geometry證據，本次preview由公開Widget gesture驗證，不宣稱新browser或感官接受。下一步所有UI提交接入pureoperations及產品close批准/pinned/dirty。
