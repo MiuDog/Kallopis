@@ -20,3 +20,9 @@ Readiness：READY，2026-10-12 使用者已授權所有元件頁面互動、多�
 官方參考：[VS Code UI](https://code.visualstudio.com/docs/editing/getting-started/userinterface)、[Blockbench Panel](https://web.blockbench.net/docs/classes/generated_interface_panels.Panel.html)、[Blender 4.5 Workspaces](https://docs.blender.org/manual/en/4.5/interface/window_system/workspaces.html)。Blender 官方正文已透過本機 HTTP 取得（2026-10-12，200）：workspace 是針對任務的 area／editor 組合；Topbar 分頁支援切換、更名、新增及 context menu 的複製／刪除／重排。此證據解除先前搜尋工具無法讀取正文的限制；場景渲染與互動仍需實際驗證。
 
 展示 registry 是可驗證的路由契約，不承諾每個型別都是 UI。非 Web 平台限定元件需提供其可在 Web 操作的呈現／host callback 部分並標示限制，不能宣稱 browser 可控制原生視窗。
+
+## Flutter Web 展示載入邊界（IDOC-FLUTTER-READINESS-r1）
+
+Flutter example在實際scene metadata成功且內容選中後，以公開Title widget設定document title為「<實際scene title> Flutter 互動展示」；unknown及asset error設定自身可辨識錯誤標題，loading保持初始title。這是example在Web的公開呈現資訊，不增加library API或另一state權威。reference site同源iframe使用title及data-specimen-framework="flutter"，等待內容document.title具有上述suffix後精確比對；初始shell title不算成功，錯scene/error及timeout顯示error，獨立入口保留。React既有h1辨識保持。
+
+Flutter bundle以 /Kallopis/examples/flutter/ 為base-href建置，網站copy同完整bundle與package-owned assets/fonts；部署前綴與頁query由網站驗證。GUI metadata只讀example assets/gui-scenarios.json，不在網站複製scene清單。此邊界不等於Flutter所有元件coverage，完整manifest映射閘門仍需完成。

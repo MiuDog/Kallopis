@@ -230,3 +230,17 @@ Native5204已觀察：VS Code選theme.ts／正文草稿，save／Problems／rest
 Flutter Web首次由瀏覽器可及性啟用按鈕Enter取得真實semantics樹，再用原生輸入/drag操作；click啟用未生效，未以JS寫widget State。main build/flutter-gui-vscode.png、flutter-gui-blockbench.png、flutter-gui-blender.png；5204 URL error/warn空。資料資產由rootBundle讀package asset，載入中／錯誤可辨識；JSON只metadata，產品config／正文state由GuiWorkbench擁有。原生3場景觀察不等於已嵌docs：Flutter標題／載入辨識及prefix assets另site整合stage，actual窄browser與人類感官仍pending；原goal全部元件／typed風格／最終push保持。
 
 _GuiScenarioAppState._load/_content擁有asset讀取與環境，State key id＋epoch；_GuiWorkbenchState._initial/_policies僅投影產品資料，_commit/_action/_save/_restore/_openPanel/_switchWorkspace只呼叫公開codec/action；_register/_getContext/_getFocus/_getIsComposing與refresh/dispose管理同registry/keymap/原生Focus/controller。_panel/_stage/_explorer/_stack組合法public compound，_select/_onResult記錄callback；畫布旋轉及ascii方塊是示意，不另建3D模型。_SceneContext只借用當前State，metadata不固定元件清單或three-count驗證。
+
+## FLUTTER-GUI-READINESS-1（READY）
+
+修訂FLUTTER-GUI-READINESS-r1，依IDOC-FLUTTER-READINESS-r1。exact lib/gui_scenarios.dart，GuiScenarioApp用公開Title widget在選中真實scene內容後設定「scene.title Flutter 互動展示」，unknown與asset錯誤用自身error標題，loading不聲稱ready。_announce(context,title,child)只有包裝呈現，不改原State/controller或library；Title色值從同Kallopis建立的Material Theme primary讀取，無第二theme。unknown包含metadata存在但無產品scene config的情況，不以null assertion崩潰。
+
+驗收public analyze、既有protected39、releaseweb --no-tree-shake-icons --base-href /Kallopis/examples/flutter/、nativeprefix實際document title與可見內容／error、scope1/diff；web產物完整copy只ignored output，網站source另一owner階段。無新演算法，不新增鏡像測試。估1k～3k/10～25分鐘，參考GUI consumer；M1 actualtitle/publicbuild（3k25）；5k40或private API需要回PLAN。感官human-pending。
+
+```mermaid
+flowchart LR
+	Metadata[實際metadata / selected scene] --> Content[GuiScenarioApp._content]
+	Content --> Title[公開Title / _announce]
+	Error[unknown / asset error] --> Title
+	Title --> Website[同源document.title精確辨識]
+```
