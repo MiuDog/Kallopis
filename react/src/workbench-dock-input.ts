@@ -30,6 +30,8 @@ interface ResizeSession {
 	area?: KlpDockArea;
 	groupId?: string;
 	moved: boolean;
+	/** capture 是此次 pointer 的原生宿主；end/cancel/dispose 要解除，避免把手外移遺留手勢。 */
+	capture?: HTMLElement;
 }
 function contains(rect: KlpDockRect, point: Point): boolean {
 	return rect.width > 0 && rect.height > 0 && point.x >= rect.left && point.y >= rect.top && point.x <= rect.left + rect.width && point.y <= rect.top + rect.height;
@@ -57,8 +59,10 @@ export function useDockInput(args: InputArgs) {
 	const counter = useRef(0);
 	const mounted = useRef(false);
 	function clear(): void {
+		const session = resizing.current;
 		drag.current = null;
 		resizing.current = null;
+		if (session?.capture?.hasPointerCapture?.(session.pointerId)) session.capture.releasePointerCapture(session.pointerId);
 		if (mounted.current) { setPreview(new Set()); setHint(null); setDragPanel(null); }
 	}
 	function point(event: { clientX: number; clientY: number }): Point | null {
@@ -88,6 +92,10 @@ export function useDockInput(args: InputArgs) {
 		const index = originalIndex - Number(source.data.id === group.data.id && originalSourceIndex < originalIndex);
 		return { actions: [{ type: 'move', panelId: drag.current!, destination: { kind: 'tab', area: group.area, groupId: group.data.id, index } }], rect };
 	}
+	function tabLine(group: DockGroupView, x: number): KlpDockRect {
+		const width = Math.min(latest.current.view.stroke, group.inner.width);
+		return { left: Math.max(group.inner.left, Math.min(x - width / 2, group.inner.left + group.inner.width - width)), top: group.inner.top, width, height: group.headerHeight };
+	}
 	function target(event: DragEvent<HTMLDivElement>): Target | null {
 		const data = latest.current;
 		const p = point(event);
@@ -100,12 +108,14 @@ export function useDockInput(args: InputArgs) {
 			if (!group || !data.view.layout[group.area].isVisible || !allowed(data.props, drag.current!, group.area)) return null;
 			const r = tab.getBoundingClientRect();
 			const after = event.clientX >= r.left + r.width / 2;
-			return tabTarget(group, group.data.panelIds.indexOf(tab.dataset.panelId!) + Number(after), group.inner);
+			const boundary = point({ clientX: after ? r.right : r.left, clientY: r.top });
+			if (!boundary) return null;
+			return tabTarget(group, group.data.panelIds.indexOf(tab.dataset.panelId!) + Number(after), tabLine(group, boundary.x));
 		}
 		const group = data.view.groups.find(group => data.view.layout[group.area].isVisible && contains(group.outer, p));
 		if (group) {
 			if (!allowed(data.props, drag.current!, group.area)) return null;
-			if (p.y <= group.inner.top + group.headerHeight) return tabTarget(group, group.data.panelIds.length, group.inner);
+			if (p.y <= group.inner.top + group.headerHeight) return tabTarget(group, group.data.panelIds.length, tabLine(group, group.inner.left + group.inner.width));
 			if (source.data.id === group.data.id && source.data.panelIds.length === 1) return null;
 			const vertical = data.view.layout[group.area].axis === 'vertical';
 			const minimum = dockMinimum(data.view.layout[group.area].axis);
@@ -216,14 +226,16 @@ export function useDockInput(args: InputArgs) {
 		document.addEventListener('pointermove', move, { passive: false });
 		document.addEventListener('pointerup', up);
 		document.addEventListener('pointercancel', cancel);
+		document.addEventListener('lostpointercapture', cancel);
 		document.addEventListener('dragend', end);
 		document.addEventListener('keydown', key);
 		return () => {
 			mounted.current = false;
-			drag.current = null; resizing.current = null;
+			clear();
 			document.removeEventListener('pointermove', move);
 			document.removeEventListener('pointerup', up);
 			document.removeEventListener('pointercancel', cancel);
+			document.removeEventListener('lostpointercapture', cancel);
 			document.removeEventListener('dragend', end);
 			document.removeEventListener('keydown', key);
 		};
@@ -260,7 +272,8 @@ export function useDockInput(args: InputArgs) {
 		if (!p || !rect || area && !data.props.layout[area].isVisible) return;
 		clear();
 		const vertical = area === 'bottom' || !!group && data.props.layout[group.area].axis === 'vertical';
-		resizing.current = { pointerId: event.pointerId, start: p, initial: vertical ? rect.height : rect.width, area, groupId, moved: false };
+		resizing.current = { pointerId: event.pointerId, start: p, initial: vertical ? rect.height : rect.width, area, groupId, moved: false, capture: event.currentTarget };
+		event.currentTarget.setPointerCapture?.(event.pointerId);
 	}
 	function ignoreClick(area: KlpDockArea, detail: number): boolean {
 		if (suppressEdge.current === area && detail > 0) { suppressEdge.current = null; return true; }
