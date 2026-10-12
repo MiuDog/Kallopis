@@ -13630,7 +13630,13 @@
 						{
 							"name": "KlpAppFrame",
 							"kind": "constructor",
-							"signature": "KlpAppFrame({\n  Key? key,\n  required Widget child,\n  int flex = 1,\n  KlpAppFrameRole role = KlpAppFrameRole.content,\n  KlpAppFrameSurface surface = KlpAppFrameSurface.flat,\n  double? width,\n})",
+							"signature": "KlpAppFrame({\n  Key? key,\n  required Widget child,\n  int flex = 1,\n  KlpLayoutBounds bounds = const KlpLayoutBounds(),\n  KlpAppFrameRole role = KlpAppFrameRole.content,\n  KlpAppFrameSurface surface = KlpAppFrameSurface.flat,\n  double? width,\n})",
+							"documentation": ""
+						},
+						{
+							"name": "bounds",
+							"kind": "field",
+							"signature": "KlpLayoutBounds bounds",
 							"documentation": ""
 						},
 						{
@@ -15434,6 +15440,90 @@
 					]
 				},
 				{
+					"id": "package:kallopis/src/features/workspace/layout/klp_app_layout.dart#KlpLayoutBounds",
+					"name": "KlpLayoutBounds",
+					"slug": "klp-layout-bounds",
+					"kind": "finalClass",
+					"module": "features.workspace",
+					"sourceUri": "package:kallopis/src/features/workspace/layout/klp_app_layout.dart",
+					"primarySurface": "foundation",
+					"surfaces": [
+						"foundation"
+					],
+					"signature": "final class KlpLayoutBounds",
+					"documentation": "一般布局節點的主軸尺寸限制；空間不足由共通演算法退化。",
+					"typeRelationships": {
+						"extends": "Object",
+						"mixins": [],
+						"implements": []
+					},
+					"members": [
+						{
+							"name": "KlpLayoutBounds",
+							"kind": "constructor",
+							"signature": "KlpLayoutBounds({\n  double minimum = 0,\n  double? maximum,\n  double? preferred,\n})",
+							"documentation": ""
+						},
+						{
+							"name": "maximum",
+							"kind": "field",
+							"signature": "double? maximum",
+							"documentation": ""
+						},
+						{
+							"name": "minimum",
+							"kind": "field",
+							"signature": "double minimum",
+							"documentation": "正常空間下的最小值與可選上限。"
+						},
+						{
+							"name": "preferred",
+							"kind": "field",
+							"signature": "double? preferred",
+							"documentation": "未指定時保留正 flex 擴展、零 flex 自然量測語意。"
+						}
+					]
+				},
+				{
+					"id": "package:kallopis/src/features/workspace/layout/klp_app_layout.dart#KlpLayoutDivider",
+					"name": "KlpLayoutDivider",
+					"slug": "klp-layout-divider",
+					"kind": "finalClass",
+					"module": "features.workspace",
+					"sourceUri": "package:kallopis/src/features/workspace/layout/klp_app_layout.dart",
+					"primarySurface": "foundation",
+					"surfaces": [
+						"foundation"
+					],
+					"signature": "final class KlpLayoutDivider extends KlpLayoutNode",
+					"documentation": "不含拖曳手勢的顯式間距槽。",
+					"typeRelationships": {
+						"extends": "KlpLayoutNode",
+						"mixins": [],
+						"implements": []
+					},
+					"members": [
+						{
+							"name": "KlpLayoutDivider",
+							"kind": "constructor",
+							"signature": "KlpLayoutDivider({Key? key})",
+							"documentation": ""
+						},
+						{
+							"name": "build",
+							"kind": "method",
+							"signature": "Widget build(BuildContext context)",
+							"documentation": ""
+						},
+						{
+							"name": "flex",
+							"kind": "getter",
+							"signature": "int get flex",
+							"documentation": ""
+						}
+					]
+				},
+				{
 					"id": "package:kallopis/src/features/workspace/layout/klp_app_layout.dart#KlpLayoutMainAlignment",
 					"name": "KlpLayoutMainAlignment",
 					"slug": "klp-layout-main-alignment",
@@ -15498,6 +15588,12 @@
 							"documentation": ""
 						},
 						{
+							"name": "bounds",
+							"kind": "getter",
+							"signature": "KlpLayoutBounds get bounds",
+							"documentation": ""
+						},
+						{
 							"name": "flex",
 							"kind": "getter",
 							"signature": "int get flex",
@@ -15527,7 +15623,13 @@
 						{
 							"name": "KlpLayoutPane",
 							"kind": "constructor",
-							"signature": "KlpLayoutPane({\n  Key? key,\n  required Widget child,\n  KlpLayoutPaneSize size = KlpLayoutPaneSize.trailing,\n  int? flex,\n})",
+							"signature": "KlpLayoutPane({\n  Key? key,\n  required Widget child,\n  KlpLayoutBounds bounds = const KlpLayoutBounds(),\n  KlpLayoutPaneSize size = KlpLayoutPaneSize.trailing,\n  int? flex,\n})",
+							"documentation": ""
+						},
+						{
+							"name": "bounds",
+							"kind": "field",
+							"signature": "KlpLayoutBounds bounds",
 							"documentation": ""
 						},
 						{
@@ -19594,7 +19696,19 @@
 						{
 							"name": "LayoutColumn",
 							"kind": "constructor",
-							"signature": "LayoutColumn({\n  Key? key,\n  required List<KlpLayoutNode> children,\n  int flex = 1,\n  KlpLayoutSpacing spacing = KlpLayoutSpacing.standard,\n})",
+							"signature": "LayoutColumn({\n  Key? key,\n  required List<KlpLayoutNode> children,\n  int flex = 1,\n  KlpLayoutBounds bounds = const KlpLayoutBounds(),\n  KlpLayoutMainAlignment alignment = KlpLayoutMainAlignment.start,\n  KlpLayoutSpacing spacing = KlpLayoutSpacing.standard,\n})",
+							"documentation": ""
+						},
+						{
+							"name": "alignment",
+							"kind": "field",
+							"signature": "KlpLayoutMainAlignment alignment",
+							"documentation": ""
+						},
+						{
+							"name": "bounds",
+							"kind": "field",
+							"signature": "KlpLayoutBounds bounds",
 							"documentation": ""
 						},
 						{
@@ -19635,7 +19749,7 @@
 						"foundation"
 					],
 					"signature": "final class LayoutResizeHandle extends KlpLayoutNode",
-					"documentation": "取代相鄰 node 自動 gutter 的調寬槽；回報游標的全域位置供 consumer 對齊布局座標。",
+					"documentation": "取代相鄰 node 自動 gutter，回報全域位置供 consumer 調整布局。",
 					"typeRelationships": {
 						"extends": "KlpLayoutNode",
 						"mixins": [],
@@ -19690,13 +19804,19 @@
 						{
 							"name": "LayoutRow",
 							"kind": "constructor",
-							"signature": "LayoutRow({\n  Key? key,\n  required List<KlpLayoutNode> children,\n  int flex = 1,\n  KlpLayoutMainAlignment alignment = KlpLayoutMainAlignment.start,\n  KlpLayoutSpacing spacing = KlpLayoutSpacing.standard,\n})",
+							"signature": "LayoutRow({\n  Key? key,\n  required List<KlpLayoutNode> children,\n  int flex = 1,\n  KlpLayoutBounds bounds = const KlpLayoutBounds(),\n  KlpLayoutMainAlignment alignment = KlpLayoutMainAlignment.start,\n  KlpLayoutSpacing spacing = KlpLayoutSpacing.standard,\n})",
 							"documentation": ""
 						},
 						{
 							"name": "alignment",
 							"kind": "field",
 							"signature": "KlpLayoutMainAlignment alignment",
+							"documentation": ""
+						},
+						{
+							"name": "bounds",
+							"kind": "field",
+							"signature": "KlpLayoutBounds bounds",
 							"documentation": ""
 						},
 						{
@@ -19747,7 +19867,13 @@
 						{
 							"name": "LayoutSpacer",
 							"kind": "constructor",
-							"signature": "LayoutSpacer({Key? key, int flex = 1})",
+							"signature": "LayoutSpacer({\n  Key? key,\n  int flex = 1,\n  KlpLayoutBounds bounds = const KlpLayoutBounds(),\n})",
+							"documentation": ""
+						},
+						{
+							"name": "bounds",
+							"kind": "field",
+							"signature": "KlpLayoutBounds bounds",
 							"documentation": ""
 						},
 						{
