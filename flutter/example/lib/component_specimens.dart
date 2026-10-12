@@ -11,10 +11,11 @@ import 'progress_collection_specimens.dart';
 import 'data_collection_specimens.dart';
 import 'viewer_collection_specimens.dart';
 import 'navigation_selection_specimens.dart';
+import 'navigation_compound_specimens.dart';
 import 'catalog/registered_commands_page.dart';
 
 /* 只有真實target fixture可以進此清單；不是全量覆蓋宣告。 */
-const flutterSpecimenNames = <String>['KlpBadge', 'KlpButton', 'KlpIconButton', 'KlpSurface', 'KlpText', 'KlpTextField', ...linearSpecimenNames, ...explorerSpecimenNames, ...frameSpecimenNames, ...commandSpecimenNames, ...spatialSpecimenNames, ...formControlSpecimenNames, ...feedbackSpecimenNames, ...contentCollectionSpecimenNames, ...progressCollectionSpecimenNames, ...dataCollectionSpecimenNames, ...viewerCollectionSpecimenNames, ...navigationSelectionSpecimenNames];
+const flutterSpecimenNames = <String>['KlpBadge', 'KlpButton', 'KlpIconButton', 'KlpSurface', 'KlpText', 'KlpTextField', ...linearSpecimenNames, ...explorerSpecimenNames, ...frameSpecimenNames, ...commandSpecimenNames, ...spatialSpecimenNames, ...formControlSpecimenNames, ...feedbackSpecimenNames, ...contentCollectionSpecimenNames, ...progressCollectionSpecimenNames, ...dataCollectionSpecimenNames, ...viewerCollectionSpecimenNames, ...navigationSelectionSpecimenNames, ...navigationCompoundSpecimenNames];
 
 class ComponentSpecimenApp extends StatefulWidget {
 	const ComponentSpecimenApp({super.key, required this.name});
@@ -77,6 +78,7 @@ class _ComponentSpecimenAppState extends State<ComponentSpecimenApp> {
 
 	Widget _fixture() {
 		final key = ValueKey(_epoch);
+		if (navigationCompoundSpecimenNames.contains(widget.name)) return NavigationCompoundComponentSpecimen(key: key, name: widget.name);
 		if (navigationSelectionSpecimenNames.contains(widget.name)) return NavigationSelectionComponentSpecimen(key: key, name: widget.name);
 		if (viewerCollectionSpecimenNames.contains(widget.name)) return ViewerCollectionComponentSpecimen(key: key, name: widget.name);
 		if (dataCollectionSpecimenNames.contains(widget.name)) return DataCollectionComponentSpecimen(key: key, name: widget.name);
