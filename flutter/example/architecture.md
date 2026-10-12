@@ -667,3 +667,36 @@ flowchart TD
 ```
 
 驗證：新增十個自己的真實 target，累計148／273；formal manifest十個皆renderable。初次analyze指出不存在surfaceElevated，依公開ThemeData使用surfaceRaised修正，原scope rerun No issues；same-source prefix release51.7秒，scope exact2及diffcheck pass。native十route及各公開控制，七個有文字參數route可改自己文字（Rich/框線內容亦包括）；Icon thin/folder及semantic label、Inline font/radius/color、Hint Ctrl+K Ctrl+S、Presence active、Dashed vertical/geometry/color/opacity、Spinner size/color/明示duration2400重建、Progress0.25→0.5與4→8、Stroke structure→latent/rest→hovered。Rich nodes優先spans、selectable與unsafe/missing/callback狀態，真正click link root1/https://example.com、mention root2/展示成員；只記callback不打開外部。Stroke childinput2/action1跨四mode/寬鬆/local320保持，epoch reset counters0與role/state/override恢復而environment保持；Dashed childinput2/action1 root0。Hint第一次輔助功能未ready，重新確認成功後獨立操作，未把初始shell算完成。當前console error/warn空；主工作樹build/flutter-foundation-detail-native.json及PNG為證據。actual窄browser、感官、全量元件頁映射及最終push仍未完成，單tasktokens未量測null。
+
+## FLUTTER-INTERACTION-PRIMITIVE-SPECIMENS-1（READY）
+
+修訂 FLUTTER-INTERACTION-PRIMITIVE-SPECIMENS-r1；IDOC-01/02/03/06/08，exact lib/component_specimens.dart 與新 lib/interaction_primitive_specimens.dart。九個自己的 target：KlpSemanticRegion、KlpExcludeSemantics、KlpFocusRegion、KlpGestureRegion、KlpPointerBlocker、KlpPressable、KlpStateHighlight、KlpVeil、KlpActionRegion；foundation 公開 constructors/DTO 與 Flutter widgets/services。
+
+State 擁有label/value/draft controllers、可dispose FocusNode、callback enable、自己的 bool/nullable/enum props、pointer位移與tap/double/secondary/pan事件、focus F2原KeyDown回呼與press/hover/focus/long結果。ActionRegion builder使用其公開foreground與KlpText，不另寫surface theme。Focus autofocus變更明示重建但consumer FocusNode保持；其餘環境不換key。Gesture有限200高命中舞台，Tap/Double/Pan/Secondary各回呼分開；Pointer blocker consumer初始false方便實測，再true驗證阻擋，不能把callback=null當阻擋證據。Exclude只裝飾文字／icon，不放被隱藏的互動控件；Veil以自身child示意，無fake root callback。semantic enabled是語意參數，不冒充pointer blocker。nullable props顯示null/true/false；控制文字、root、child、draft input、hover/focus各計數分離。
+
+M1 source9/public analyze/prefix release；M2 native9 ownprops、Action/Press/Focus F2/Gesture tap-double-secondary-pan、Pointer實際命中阻擋、Exclude語意缺席仍繪製、child草稿四mode/寬鬆/local320/reset、scope2/diff。原library/tests/style/config/site/docs禁止寫；無新核心算法/persist，不新增鏡像tests。longPress可依原生持續按壓證據驗證，不以一般click冒稱；actual窄browser與感官human-pending。估7k～14k/45～90分鐘參考DETAIL/FEEDBACK；M1累計7k45，M2累計14k90；20k130或public不足回PLAN；單taskusage未量測null。
+
+| Source / class / function | 責任 |
+| --- | --- |
+| interactionPrimitiveSpecimenNames / InteractionPrimitiveComponentSpecimen | 精確public route/name |
+| _InteractionPrimitiveComponentSpecimenState fields/dispose | controller/focus生命週期與自己的props |
+| controls/target/child/usage/build | public組裝、有限命中舞台與結果 |
+| root/key/gesture/hover/focus/childAction/input/edit | 原始事件、控制與子內容分離 |
+| host fixture dispatch | environment保留與epoch重設 |
+
+```mermaid
+classDiagram
+	InteractionPrimitiveComponentSpecimen --> _InteractionPrimitiveComponentSpecimenState : createState
+	_InteractionPrimitiveComponentSpecimenState --> KlpActionRegion : public style builder
+	_InteractionPrimitiveComponentSpecimenState *-- FocusNode : dispose
+```
+```mermaid
+flowchart TD
+	Host[ComponentSpecimenApp] --> Fixture[InteractionPrimitiveComponentSpecimen]
+	Fixture --> Props[自己的公開props與child]
+	Props --> Target[實際互動原語]
+	Target --> Events[原生pointer／key／semantics]
+	Events --> State[consumer結果]
+	State --> Props
+	Host --> Reset[epoch重建]
+```
