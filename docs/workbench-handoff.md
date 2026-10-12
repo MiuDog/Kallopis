@@ -4,7 +4,7 @@
 
 ## 下一個可執行步驟
 
-1. 雙框架command core與registered toolbar/menu已完成；React palette、viewport修正及公開CommandsDemo完成。Flutter palette BUILD2a069faf亦完成；Flutter consumer BUILD04cc372f已交付且analyze／scope2／releaseweb成功；modal修正35614d5b亦完成且nativebrowser同座標outside通過；下一個PLAN anchor／context menu，保留既有CommandMenu／WorkspaceCommand caller與core。anchor/context menu尚待接續。
+1. 雙框架command core與registered toolbar/menu已完成；React palette、viewport修正及公開CommandsDemo完成。Flutter palette BUILD2a069faf亦完成；Flutter consumer BUILD04cc372f已交付且analyze／scope2／releaseweb成功；modal修正35614d5b亦完成且nativebrowser同座標outside通過；anchor／context menu採用同registered menu；前置共同ENTRY-GEOMETRY-r1與兩框架local PLAN READY，下一個fresh TestAuthor＋有限入口BUILD，保留既有CommandMenu／WorkspaceCommand caller與core。anchor/context menu尚待接續。
 2. 雙框架快捷鍵/chord/scope/conflict/remap/recording契約與接入。不可用core冒充整個命令stage完成。
 3. 網站每個公開可呈現元件專屬互動specimen、registry/bundle/coverage；3GUI×2框架；typedrecipes／完整風格中立與參數／default權威切換。
 4. 補browser hoverpreview/cancel矩陣、Flutter continuousresize與React endcommit差異契約審核；保留所有既有CI/發布閘門，精確commit/push。感官接受human-pending。

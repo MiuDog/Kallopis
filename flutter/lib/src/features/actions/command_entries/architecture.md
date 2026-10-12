@@ -1,6 +1,6 @@
 # Registered command入口
 
-FLUTTER-COMMAND-ENTRY-r1 COMPLETE，依[共同WB-COMMAND-ENTRY-r1](../../../../../../docs/architecture/workbench-command-entry-contract.md)。當前只交付直接原生toolbar/平面menu；popup/palette/shortcut仍待接續，既有CommandMenu/WorkspaceCommand caller不變。
+FLUTTER-COMMAND-ENTRY-r1 COMPLETE，依[共同WB-COMMAND-ENTRY-r1](../../../../../../docs/architecture/workbench-command-entry-contract.md)。當前只交付直接原生toolbar/平面menu；popup／shortcut仍待接續，palette已完成，既有CommandMenu/WorkspaceCommand caller不變。
 
 ## 責任及公開契約
 
@@ -66,3 +66,12 @@ classDiagram
 	_CommandEntryHostState --> _RegisteredCommandRow : 薄視覺組合
 	_RegisteredCommandRow --> _RegisteredCommandRowState : createState
 ```
+
+
+## FLUTTER-COMMAND-ENTRY-GEOMETRY-1（READY）
+
+修訂FLUTTER-COMMAND-ENTRY-GEOMETRY-r1，依[共同有限入口](../../../../../../docs/architecture/workbench-command-entry-geometry-contract.md)。public Widget／reference／coreAPI保持。當前source的menu外tight padding、row raw insets／iconSmall／gap尚未依有限槽縮配，需在重用menu的popup之前補保護；不以外層clip忽略內部RenderFlex overflow。
+
+共享host build／row build持原責任，原生LayoutBuilder只供有限presentation budget；新的private有限值／比例padding解析可在同source，無新公開model／theme。menu actualwidth=min偏好及有限槽，outerpadding受短邊限制；row水平insets比例縮配、icon及gap按剩餘分配，labelFlexible／ellipsis保持。自然方向仍自然，height content仍scroll；subscription／generation／ID FocusNode／activation／pending及語意角色不改。
+
+BUILD只klp_command_entries.dart。fresh TestAuthor只flutter/test/registered_command_entry_geometry_test.dart，原registered_command_entry_test.dart及其他tests／theme／core／palette／config／consumer／arch唯讀。M1新公開finite检查＋原23同hash（4k／25分鐘），M2publicanalyze／scope1及nativebrowser正常入口（7k／45分鐘）；cold-start4k～8k tokens／25～50分鐘，參照FLUTTER-PANEL-GEOMETRY-1／FLUTTER-COMMAND-ENTRY-1；12k／70分鐘或需要其他source回PLAN。browser極端style與全部參數audit另pending；感官human-pending。

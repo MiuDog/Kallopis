@@ -570,3 +570,10 @@ REACT-COMMAND-PALETTE-VIEWPORT-r1：native大參數匯入成功後window.innerWi
 fresh隔離TestAuthor只new react/test/command-palette-viewport.test.mjs，保護client1265×705 vsinner1280×720的有效width<=1249/height<=689、同session視窗改變與finite fallback；既有11 palette checks hash不變。M1窄regression Red→Green（1k/10分鐘）、M2同11 public checks/build/native大參數/320邊距及exact1pathscope（3k/20分鐘）；cold2k～4k/15～25分鐘參照palette原BUILD；6k/35分鐘或CSS/其他來源要變回PLAN。
 
 author a00fe4a2四項中3 behavior Red/1 fallback Green，SHA256 EECF13F973E41D40825EB784DFFF62A8E284336089BE7798583E7CF62C885925。修正observeViewport讀client（無layout合理fallback）、同window resize／native ResizeObserver；同尺寸保留state及cleanup listening guard。4新＋11既有全部Green、library/consumer prod build、1pathscope及兩tests hash不變；569.46KB chunk提示保留。native極大style import實際client1265→panel1249/左右約8，320inner/client305→panel289/左右約8；同open query sv 文件跨resize保留，還原style與dark操作後error/warn空。浮點位置7.9為native量測，不宣稱精確pixel；全部style參數與IME矩陣仍pending。新增private stopObserving只擁有observer cleanup，無CSS/其他module變更。
+
+
+## REACT-COMMAND-ENTRY-GEOMETRY-1（READY）
+
+修訂REACT-COMMAND-ENTRY-GEOMETRY-r1，依[共同有限入口](../docs/architecture/workbench-command-entry-geometry-contract.md)。publicconstructor與same command registry維持；既有command-entries.tsx的共享host／row沿現有nativeclient量測與局部有效CSS變數限制menu actualwidth／outerpadding及row padding／icon／gap，styles.css只入口區段接收effective變數；不能改其他component或stylepackauthority。有限父槽優先而非window寬，native可用ResizeObserver監測及samevalue防loop／cleanup；無layout DOM自然fallback，零尺寸native仍零。height由原scrollport保持自然內容，不以CSS巨大padding撐出有限邊界。
+
+既有ID／order／condition／checked／async／focus節點及callback規則不改；style／size不重建core或產品state。只command-entries.tsx與styles.css入口區段兩writepaths；theme／core／palette／index／tests／config／example／arch唯讀。fresh TestAuthor只new react/test/command-entry-geometry.test.mjs；原12入口protectedtests保持。M1新finite公開checks與原12（3k／20分鐘），M2library／consumer TypeScript／scope2及nativebrowser正常／極端量測（6k／40分鐘）；cold-start3k～7k tokens／20～45分鐘，參照REACT-COMMAND-PALETTE-VIEWPORT-1及REACT-COMMAND-ENTRY-1；10k／60分鐘或需其他source回PLAN。無新公開geometrymodel／第二theme；感官仍human-pending。
