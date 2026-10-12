@@ -156,6 +156,7 @@ test('catalog 宣告的 ordered 與 fits 同時保護全部既有跨 token 關�
 			const ids = constraint.kind === 'ordered' ? constraint.ids : [constraint.child, constraint.inset, ...constraint.containers];
 			const violatedId = constraint.kind === 'ordered' ? constraint.ids[0] : constraint.child;
 			pack.primitives['runtime-constraint-value'] = 1000000;
+			pack.primitiveDescriptions['runtime-constraint-value'] = '跨 token 約束的非法尺寸測試原料';
 			pack.semantics[violatedId].light = 'p(runtime-constraint-value)';
 			rejects(() => resolveStylePack(pack, 'light', defaultCatalog), ids);
 		});
