@@ -42,22 +42,24 @@ class _GuiScenarioAppState extends State<GuiScenarioApp> {
 		home: Material(child: FutureBuilder<List<GuiScenarioMetadata>>(
 			future: _metadata,
 			builder: (context, snapshot) {
-				if (snapshot.hasError) { return Center(child: KlpText('場景資料載入失敗：${snapshot.error}')); }
+				if (snapshot.hasError) { return _announce(context, '場景資料載入失敗', Center(child: KlpText('場景資料載入失敗：${snapshot.error}'))); }
 				if (!snapshot.hasData) { return const Center(child: KlpText('場景資料載入中…')); }
 				final entries = snapshot.data!;
 				final found = entries.where((entry) => entry.id == _id).toList();
-				if (found.isEmpty) { return Center(child: Column(mainAxisSize: MainAxisSize.min, children: [
+				if (found.isEmpty || !_scenes.containsKey(_id)) { return _announce(context, '找不到 GUI 場景', Center(child: Column(mainAxisSize: MainAxisSize.min, children: [
 					KlpText('找不到 GUI 場景：$_id'),
 					KlpButton(label: '返回場景入口', onPressed: () => setState(() => _id = entries.first.id)),
-				])); }
+				]))); }
 				return _content(context, entries, found.single);
 			},
 		)),
 	);
 
+	Widget _announce(BuildContext context, String title, Widget child) => Title(title: '$title Flutter 互動展示', color: Theme.of(context).colorScheme.primary, child: child);
+
 	Widget _content(BuildContext context, List<GuiScenarioMetadata> entries, GuiScenarioMetadata scene) {
 		final space = context.klp.space;
-		return SafeArea(child: SingleChildScrollView(child: Padding(
+		final content = SafeArea(child: SingleChildScrollView(child: Padding(
 			padding: EdgeInsets.all(space.contentInset),
 			child: Column(crossAxisAlignment: CrossAxisAlignment.stretch, children: [
 				Semantics(header: true, child: KlpText(scene.title, role: KlpTextRole.section)),
@@ -78,6 +80,7 @@ class _GuiScenarioAppState extends State<GuiScenarioApp> {
 				const KlpText('公開組裝：ShortcutHost → RegisteredToolbar／Menu／Palette ＋ DockLayout → FileExplorer／PanelFrame／Surface／TextField', role: KlpTextRole.code),
 			]),
 		)));
+		return _announce(context, scene.title, content);
 	}
 }
 
