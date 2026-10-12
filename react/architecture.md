@@ -784,10 +784,45 @@ flowchart TD
 | callbacks | diagnostic message映射、signature declaration解析／尋找、DTO id去重；runtime modifiers與source handles、return union檢查皆無額外權威 |
 | DTO／config fields | schemaVersion／framework／entrypoint／components維護輸出識別；id/name公開alias、sourcepackage-relative、signature原宣告、propsType首參數；compilerOptions/files僅本次檢查，fs投影限定單config |
 
-## REACT-COMPONENT-SPECIMENS-1（READY）
+## REACT-COMPONENT-SPECIMENS-1（COMPLETE）
 
 修訂REACT-COMPONENT-SPECIMENS-r1，依IDOC-COMPONENT-REGISTRY-r1與真實23公開清單，只write example/specimens.tsx、example/main.tsx（入口讀specimen query的最小分支），example/commands-demo.tsx（可選public target以集中compound入口；不要求必須改）。public imports @kallopis/react／styles.css；舊App總覽仍獨立。registry以真實public names逐一fn/component，23項全部要有實際target，不以counter或空placeholder補項；函式資料型別不放進清單。unknown／empty specimen query顯示明確錯誤及返回展示入口，不退總覽。
 
 SpecimenApp由publicProvider承載四模式、baseline及另一pack（applyKlpStyleOverrides調語意間距，不複製預設style）、320/760可用寬度；style切換保持產品state，重設以key重新建立當前fixture與輸入。每頁h1/public import/use example與自己的params及callback state可看，width容器只定義產品測量空間，不寫共用style。Text／Surface／Badge／Card以自己的text/tone/header等props變化；Button／IconButton size/tone/selected/disabled與clickcount；TextField實際value/error/disabled；Frame／Workspace以header/footer/sidebar與產品輸入；ThemeProvider mode/pack及semantic讀值示範。layout compound各target傳自己的flex/bounds/alignment/inset與publicPane/Spacer/Divider組装；target顯示名稱，每個route選中的實際變數可操作，不能用一個無關Layout總覽冒充六項。DockLayout沿既有DockDemo（同公開dock及原生操作控制）。registered toolbar/menu/palette/popup/shortcut host共享產品registry，但route須呈現對應target與相應open/items/gate/result／nativefocus或recordcontrols；public入口共用原registryhandler，不造fakecommand，不複製library內部視覺。共享fixture以props target選actual element，沒有反向library依賴。
 
 reversibleconsumer不新增鏡像tests，必要check為publicTS、registry names與真實extract inventory雙向核對、scope exactpaths、nativebrowser全部route可達及主要props/callback/reset/style/draft/鍵盤。cold8k～14k/45～75分鐘參照CommandsDemo/layout/dockconsumer；M1全部23publicfixtures typed／manifest對照（7k40）；M2native route及control/reset/draft/style/unknown error（14k75）；18k95或library/CSS/config write返回PLAN。網站iframe/generator/build-prefix與Flutterconsumer歸後續module，不以此consumer宣稱全部網站已完成；感官human-pending。
+
+### 專屬展示實作證據與函式職責
+
+BUILD bdd22417 exact3來源；公開TypeScript與production example build通過，scope3與diff check Green。真實extract inventory與展示導覽皆23個公開identity，各route在原生browser載入實際target；16個basic/layout route的專屬參數可操作。Button click一次、reset只重建fixture並保留展示環境；Explorer selection／collapse回呼2次。Provider寬鬆pack contentStackGap解析24、ultraDark與transparent切換後原草稿保留；Button深色／寬鬆／320可用寬度保留state。命令palette搜尋格線Enter與popup/menu格線各一次原結果；shortcut草稿Ctrl+G勝出view.grid.editor；Dock切Search提交1次、保存JSON及深色／寬鬆保留場景輸入。unknown route明確報錯。這是專屬route增量觀察，原dock完整drag／resize與快捷鍵完整矩陣沿先前證據，不重複宣稱本次全部執行。320是展示測量容器，不冒充瀏覽器viewport。感官及網站iframe/bundle仍pending；production bundle602.51KB警告保留。
+
+原生載入曾因展示自訂pack引用不存在space500造成空頁；原因是consumer寫錯正式primitive ID，改用已存在space600後原載入回歸成功，未改validator／tests／default權威。
+
+| 來源／定義 | 實際責任 |
+| --- | --- |
+| specimens.tsx／SpecimenProps、specimens、reactSpecimenNames、modes | name為當次公開route identity；own key映射真實fixture；排序導覽及四模式環境，資料型別不冒充元件 |
+| SpecimenApp、reset、togglePack、toggleWidth | Provider擁有mode／alternate／width，base與spacious均由同正式pack生成；epoch只explicit reset；own-property registry查找拒絕unknown／prototype名字 |
+| BasicSpecimen、click、toggle、toggleDisabled、select、expand | text／changed／disabled供自己的target props；count觀察原回呼，selection／expanded為Explorer caller資料；switch呈現10種實際publictarget；input與event callbacks保存caller state |
+| LayoutSpecimen、toggle | changed僅影響當次target的inset、preferred、flex、hidden或alignment／spacing；text保存compound內草稿；finite測量容器與合法公開Row／Column／Pane／Spacer／Divider，不改其他target參數 |
+| ThemeSpecimen | useKlp顯示Provider真正mode／semantic解析值；uncontrolled原生欄位證明Provider切換不重建consumer |
+| CommandSpecimen | 選定public入口與其必填props使用片段，呼叫同CommandsDemo，無第二命令handler |
+| DockSpecimen | 同公開DockDemo與真正required constraints/onLayoutChanged使用片段；panel close由既有callerpanel callback負責 |
+| CommandsDemo新增specimen／showPalette／showPopupEntry／JSX條件 | 可選公開target，專頁只呈現當次入口及其controls；無query時保留原overview各入口，仍同keymap／registry／結果出口 |
+| main.tsx query／入口 | query存在才SpecimenApp，空值交明確error；無query維持原App，不引用private庫 |
+| nested callbacks | modes.map設定環境；names.map導覽；各state updater／輸入onChange只保存當次caller state，無共享style或layout演算法 |
+
+```mermaid
+flowchart TD
+	Query[main query specimen] --> Lookup[SpecimenApp own public registry]
+	Lookup --> Error[unknown / empty 明確錯誤]
+	Lookup --> Theme[同公開 Provider / mode / pack]
+	Theme --> Basic[BasicSpecimen / props / callbacks]
+	Theme --> Layout[LayoutSpecimen / own target / finite compound]
+	Theme --> Provider[ThemeSpecimen / useKlp]
+	Theme --> Commands[CommandSpecimen / selected CommandsDemo]
+	Commands --> Core[既有 registry / keymap / 原結果]
+	Theme --> Dock[DockSpecimen / 同 DockDemo]
+	Reset[explicit reset / epoch] --> Lookup
+	Pack[theme 或 pack 切換] --> Theme
+	Pack --> Preserve[fixture identity / 原草稿保留]
+```

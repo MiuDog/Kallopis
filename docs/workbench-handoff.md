@@ -6,10 +6,14 @@
 
 1. 雙框架command core／registered toolbar／menu／palette／popup及公開CommandsDemo完成。popup Flutter d17be03f protected16＋原23、analyze／scope2；React75c24b4e protected12＋原12、typedconsumer／build／scope3。consumer Flutter173cc9e9／Reactcb1c392d各exact1source：button bounds／右鍵point／Escape／outside無click-through／一次執行／focus／draft nativebrowser觀察。Flutter初次兩失敗是背景fixture收縮，由獨立TestAuthor修正並加入實際Overlay尺寸校验，原assertions保留。網站公開popup extract549；完整窄native／style矩陣與感官pending。快捷鍵共通契約WB-SHORTCUT-CORE-r1及兩端purecore已完成；Flutter11／React9 protected checks、analyze／build／scope2通過，不複製第二份rows或handler。
 2. 雙框架快捷鍵purecore已完成，WB-SHORTCUT-HOST-r1兩端library已完成；React consumer e56976aa已完成exact1/typecheck/scope及nativebrowser錄製／重綁／設定；Flutter consumer f9118c25亦完成exact1/analyze/scope/web及nativebrowser，下一步網站專屬互動specimen／registry與bundle。不可用core冒充整個命令stage完成。
-3. 網站每個公開可呈現元件專屬互動specimen、registry/bundle/coverage；3GUI×2框架；typedrecipes／完整風格中立與參數／default權威切換。
+3. React公開元件extractor 1ae31d6f與23個專屬互動route bdd22417已完成；下一步以analyzer確認Flutter全部concrete Widget subtype（含所有class modifiers、排除abstract／資料），再完成Flutter專屬route與網站registry/bundle/coverage。3GUI×2框架與typedrecipes／完整風格中立與參數／default權威切換仍需交付。
 4. 補browser hoverpreview/cancel矩陣、Flutter continuousresize與React endcommit差異契約審核；保留所有既有CI/發布閘門，精確commit/push。感官接受human-pending。
 
-## 最新完成：雙框架快捷鍵公開展示
+## 最新完成：React公開清單與23個獨立互動展示
+
+共同IDOC-COMPONENT-REGISTRY-r1，React extractor 1ae31d6f由真實public d.ts與TypeScript symbols取得23個renderable exports；fresh獨立6checks、CLI failure保留舊JSON、scope1 Green。consumer bdd22417 exact3source，publicTS／productionbuild／scope3／原生23routes載入通過；basic/layout專屬參數、Button callback/reset、Explorer兩回呼、Provider語意解析及四模式、寬鬆pack／320測量寬度保留草稿、palette/popup/menu原命令結果、shortcut component作用域、Dock切tab／保存及style草稿觀察。錯誤space500引用改正式space600，validator維持。網頁iframe/bundle與Flutter清單／route仍pending，這不是全站完成；截圖main build/react-component-specimens.png，感官human-pending。
+
+## 已完成：雙框架快捷鍵公開展示
 
 React e56976aa只commands-demo.tsx：public TypeScript／scope1／diff Green；同registry default scopedkeys、chord、conflicts、record no-dispatch/max4/apply/cancel/restore、valid-invalid JSON與dark原draft nativebrowser觀察。closure與screenshot位於main ignored build。完整IME／style／窄viewport與感官pending。Flutter f9118c25 exact1source：analyze／scope1／release web46.4秒及nativekeyboard完整同React操作矩陣通過（Flutter風格切換仍pending）。下一packet為網站元件專屬互動registry／bundle，先依目前truth PLAN，不重做已完成command consumer。
 

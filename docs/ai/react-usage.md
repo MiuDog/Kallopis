@@ -327,3 +327,8 @@ keymap.dispose();
 `KlpCommandShortcutHost<C>`必填keymap、getContext、getFocus(target)、onHandling、onResult及children。以中立display:contents包原生children；子元件defaultPrevented的按鍵不接管。getFocus投影非空focusId及scope鏈，宿主額外保護input／textarea／有效contenteditable與composition。結果handled才preventDefault／stopPropagation；onHandling可呈現錄製與prefix，onResult接同registry原結果。
 
 每個keymap同時使用一個宿主；內部移焦清prefix、離開清錄製、replacement／unmount清單一timer並隔離舊async结果，借用keymap／registry不dispose。同identity callback更新保留deadline並交最新回呼。6項公開SSR/DOM/lifetime checks、build／scope2通過；[CommandsDemo](../../react/example/commands-demo.tsx)已觀察實際browser的save／chord／draft與page作用域、衝突、錄製上限／不執行／套用／取消／還原、有效與無效JSON設定、原始錯誤及深色草稿保留；完整IME／風格矩陣仍pending，詳[共同host契約](../architecture/workbench-shortcut-host-contract.md)。
+## React 專屬元件展示
+
+[SpecimenApp](../../react/example/specimens.tsx)提供目前23個公開可呈現元件的專屬`?specimen=<公開名稱>`入口。各页包含公開import、使用片段、當次參數／回呼狀態、重設、四模式、預設與寬鬆風格及320／760可用寬度；無query仍為原總覽，無效名稱有明確錯誤。
+
+以`?specimen=KlpButton`操作click／selected／disabled、`KlpFileExplorer`操作selection／expand、`KlpLayoutPane`調主軸preferred，或`KlpRegisteredCommandPalette`實際搜尋命令。Provider頁可讀真正semantic值，切換風格保留consumer草稿。元件從`@kallopis/react`使用；展示只提供產品測量空間，不複製元件視覺。原生23routes、主要控制／回呼／重設及風格草稿保留已觀察；docs iframe與完整雙框架整合尚待交付。
