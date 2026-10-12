@@ -5,6 +5,7 @@ import '@kallopis/react/styles.css';
 import './style.css';
 import { LayoutDemo } from './layout-demo.js';
 import { DockDemo } from './dock-demo.js';
+import { CommandsDemo } from './commands-demo.js';
 
 const modes: KlpMode[] = ['light', 'dark', 'ultraDark', 'transparent'];
 const labels = { light: '淺色', dark: '深色', ultraDark: '極深色', transparent: '透明' };
@@ -61,6 +62,7 @@ function App() {
 					<SemanticSample />
 					<LayoutDemo mode={mode} stylePack={stylePack} />
 					<DockDemo />
+					<CommandsDemo />
 					<KlpCard header={<KlpText role="body-strong">可替換風格檔</KlpText>}>
 						<div className="demo-stack">
 							<KlpText role="caption">{stylePack.id} · {stylePack.version} · {Object.keys(klpStyleParameters).length} 項語意參數</KlpText>
