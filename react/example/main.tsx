@@ -6,6 +6,7 @@ import './style.css';
 import { LayoutDemo } from './layout-demo.js';
 import { DockDemo } from './dock-demo.js';
 import { CommandsDemo } from './commands-demo.js';
+import { SpecimenApp } from './specimens.js';
 
 const modes: KlpMode[] = ['light', 'dark', 'ultraDark', 'transparent'];
 const labels = { light: '淺色', dark: '深色', ultraDark: '極深色', transparent: '透明' };
@@ -104,4 +105,6 @@ function App() {
 		</KlpWorkspace>
 	</KlpThemeProvider>;
 }
-createRoot(document.getElementById('root')!).render(<App />);
+// 專屬路由保留空值與未知名稱錯誤，不讓缺少specimen的頁面退回無關總覽。
+const query = new URLSearchParams(window.location.search);
+createRoot(document.getElementById('root')!).render(query.has('specimen') ? <SpecimenApp name={query.get('specimen') ?? ''} /> : <App />);

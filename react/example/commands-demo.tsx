@@ -11,7 +11,7 @@ interface DemoContext {
 const toolbarItems: readonly KlpCommandReference[] = [{ commandId: 'document.save' }, { commandId: 'view.grid', kind: 'toggle' }];
 const menuItems: readonly KlpCommandReference[] = [...toolbarItems, { commandId: 'document.fail' }];
 
-export function CommandsDemo() {
+export function CommandsDemo({ specimen }: { /* specimen可選公開呈現名稱；有值時只顯示當次compound入口與控制。 */ specimen?: string } = {}) {
 	/* registry 每次 effect setup 建立；StrictMode cleanup 後不能再用 disposed owner。 */
 	const [registry, setRegistry] = useState<KlpCommandRegistry<DemoContext> | null>(null);
 	/* keymap 隨同一份 registry 建立與釋放；錄製與覆寫權威留在公開核心。 */
@@ -212,25 +212,27 @@ export function CommandsDemo() {
 		<KlpText role="caption" aria-live="polite">{settingsMessage}</KlpText>
 	</div>;
 
-	const content = <KlpCard header={<KlpText role="body-strong">命令與入口</KlpText>}>
+	const showPalette = !specimen || specimen === 'KlpRegisteredCommandPalette';
+	const showPopupEntry = !specimen || specimen === 'KlpRegisteredCommandPopup';
+	const content = <KlpCard header={<KlpText role="body-strong">{specimen ?? '命令與入口'}</KlpText>}>
 		<div className="demo-stack">
-			<KlpText as="p" tone="muted">同一份命令註冊同時供工具列、選單與命令面板使用；產品持有可用條件、結果及開關。</KlpText>
+			<KlpText as="p" tone="muted">公開命令入口共用命令註冊；產品持有可用條件、結果及開關。</KlpText>
 			<div data-command-draft><KlpTextField label="命令展示草稿" value={draft} onChange={event => setDraft(event.target.value)} hint="開關面板及切換風格後保留輸入內容" /></div>
 			<div className="demo-row">
 				<KlpButton selected={canSave} onClick={toggleSave}>允許儲存：{canSave ? '開' : '關'}</KlpButton>
 				<KlpButton selected={showFailure} onClick={toggleFailure}>顯示失敗命令：{showFailure ? '開' : '關'}</KlpButton>
-				<KlpButton tone="primary" disabled={!registry} onClick={openPalette}>開啟命令面板</KlpButton>
-				<KlpButton disabled={!registry} onClick={openButtonPopup}>開啟錨定選單</KlpButton>
+				{showPalette && <KlpButton tone="primary" disabled={!registry} onClick={openPalette}>開啟命令面板</KlpButton>}
+				{showPopupEntry && <KlpButton disabled={!registry} onClick={openButtonPopup}>開啟錨定選單</KlpButton>}
 			</div>
-			<KlpCard onContextMenu={openPointPopup}><KlpText>在此按右鍵開啟命令選單</KlpText></KlpCard>
+			{showPopupEntry && <KlpCard onContextMenu={openPointPopup}><KlpText>在此按右鍵開啟命令選單</KlpText></KlpCard>}
 			{registry && <>
-				<KlpRegisteredCommandToolbar registry={registry} getContext={getContext} items={toolbarItems} label="展示命令工具列" onResult={onResult} />
-				<KlpRegisteredCommandMenu registry={registry} getContext={getContext} items={menuItems} label="展示命令選單" emptyLabel="目前沒有命令" onResult={onResult} />
-				<KlpRegisteredCommandPalette registry={registry} getContext={getContext} open={open} label="命令面板" searchLabel="搜尋命令" emptyLabel="沒有符合的命令" onResult={onResult} onDismiss={onDismiss} />
-				<KlpRegisteredCommandPopup registry={registry} getContext={getContext} items={menuItems} open={popupOpen} anchor={popupAnchor} label="快顯命令選單" emptyLabel="目前沒有命令" onResult={onResult} onDismiss={dismissPopup} />
+				{(!specimen || specimen === 'KlpRegisteredCommandToolbar') && <KlpRegisteredCommandToolbar registry={registry} getContext={getContext} items={toolbarItems} label="展示命令工具列" onResult={onResult} />}
+				{(!specimen || specimen === 'KlpRegisteredCommandMenu') && <KlpRegisteredCommandMenu registry={registry} getContext={getContext} items={menuItems} label="展示命令選單" emptyLabel="目前沒有命令" onResult={onResult} />}
+				{showPalette && <KlpRegisteredCommandPalette registry={registry} getContext={getContext} open={open} label="命令面板" searchLabel="搜尋命令" emptyLabel="沒有符合的命令" onResult={onResult} onDismiss={onDismiss} />}
+				{showPopupEntry && <KlpRegisteredCommandPopup registry={registry} getContext={getContext} items={menuItems} open={popupOpen} anchor={popupAnchor} label="快顯命令選單" emptyLabel="目前沒有命令" onResult={onResult} onDismiss={dismissPopup} />}
 			</>}
 			<KlpText role="caption" aria-live="polite">結果 {resultCount} 次：{message} · 格線：{grid ? '開' : '關'} · 最近關閉：{dismissReason ?? '尚未關閉'} · 快顯關閉：{popupReason ?? '尚未關閉'}</KlpText>
-			{shortcutContent}
+			{(!specimen || specimen === 'KlpCommandShortcutHost') && shortcutContent}
 		</div>
 	</KlpCard>;
 	if (!keymap) return content;
