@@ -1,13 +1,15 @@
 # Kallopis — Agent 入口
 
-Kallopis 是 `-ist` 產品家族共用的 Flutter design system 與元件庫；公開 library 在 `lib/`，實作在 `lib/src/`，範例在 `example/`。
+Kallopis 是 `-ist` 產品家族共用的跨框架 design system；通用視覺語意、token 與元件組合由共通規範擁有，框架庫位於第一層 `flutter/`、`react/`。Flutter 公開 library 在 `flutter/lib/`，實作在 `flutter/lib/src/`，範例在 `flutter/example/`。
 
 ## Current truth
 
-- 目前架構以 [KLP-0022](spec/decisions/KLP-0022-thin-design-system-boundary.md) 為準：所有 consumer 只使用 Flutter、`kallopis_theme.dart` 與 `kallopis_foundation.dart` 組合產品畫面；舊 declarative runtime 與相容入口已移除，不得重建。
+- 核心目標以 [跨框架核心目標](spec/multi-framework-design-system.md) 為準：一份框架無關規範擁有視覺語意、token、通用元件組合與合法限制；產品仍擁有畫面與業務流程。根整合架構見 [architecture.md](architecture.md)；Flutter 已移入 `flutter/`，React 核心庫位於 `react/`；驗證與既有失敗見 [整合紀錄](docs/architecture/multi-framework-verification.md)。
+- 通用視覺規範直接採用 [既有統整](docs/design-tokens/KALLOPIS-DESIGN-MAP.md)，依 [維護規則](docs/design-tokens/maintenance.md) 分章維護；不重新抽取同一份設計。JSON／CSS／ZIP 是舊匯出快照；網站直接讀正式章節。React 生成資料也必須讀正式規範。
+- 目前已實作的 Flutter 架構以 [KLP-0022](spec/decisions/KLP-0022-thin-design-system-boundary.md) 為準：Flutter consumer 使用 `kallopis_theme.dart` 與 `kallopis_foundation.dart` 組合產品畫面；此框架入口不套用到 React 等其他庫。舊 declarative runtime 與相容入口已移除，不得重建。
 - 固定 254 項舊 Catalog 清冊與遷移閘門已刪除；元件依實際 caller、跨產品重用與產品驗證決定保留、合併或移除。
 - 筆記正文新路徑以 [KLP-0020](spec/decisions/KLP-0020-blocknote-editor-adoption.md) 為準；接續筆記功能時再讀 [當前交接](docs/session-handoff.md)。
-- Consumer API 從 [唯一產品使用指南](docs/ai/product-usage.md) 進入；架構責任從 [架構入口](docs/architecture/README.md) 查詢。
+- Consumer API 從 [Flutter 產品使用指南](docs/ai/product-usage.md) 或 [React 產品使用指南](docs/ai/react-usage.md) 進入；架構責任從 [架構入口](docs/architecture/README.md) 查詢。
 - 已接受 module 的責任、公開介面與目前 slices 以該 module root 的 `architecture.md` 為準；沒有該檔時先進入 PLAN，不由 BUILD worker 自行發明。
 - 歷史與被取代決策不得混入現行規格；需要歷史時才查版本紀錄。
 - 本庫統一維護公開共用元件的內部視覺與互動；保留已接受的 icon、按鈕列、Explorer、Frame 等風格及 hover／selected 同色。產品可用 Flutter 組合畫面並建立產品專用 Widget；只有證明跨產品重用的能力才提升為 Kallopis 元件。
@@ -49,7 +51,7 @@ Kallopis 是 `-ist` 產品家族共用的 Flutter design system 與元件庫；�
 
 ## Environment facts
 
-- Flutter 指令入口為 `C:/development/flutter/bin`，目前不在 PATH；實際版本與相依以本機及 `pubspec.yaml` 為準。
+- 本機已觀察 Flutter 指令入口為 `D:/flutter/bin`（3.44.2／Dart 3.12.2）；CI 仍釘選其既有版本。實際 SDK 與相依以本機及 `flutter/pubspec.yaml` 為準。
 - 字型及套件資產必須保留 package ownership，避免靜默 fallback。
 - 筆記核心唯一可寫工作樹為 `D:/Projects/Krepis-m0-checked-save`；不得修改 `D:/Projects/Krepis` 或 Designist 副本。
 - 規則衝突時：使用者當下指示 > 本檔 > 相關現行契約 > 舊文件。

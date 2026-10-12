@@ -1,6 +1,6 @@
-# Kallopis 唯一產品使用指南
+# Kallopis Flutter 產品使用指南
 
-Kallopis 是 Flutter design system，不是 application framework。產品擁有 app root、導航、畫面結構、狀態與業務流程；Kallopis 擁有 semantic theme、公開共用元件，以及元件內部的視覺、互動、無障礙與平台適應。
+Kallopis 的 Flutter 庫是 Flutter design system，不是 application framework。產品擁有 app root、導航、畫面結構、狀態與業務流程；Kallopis 擁有 semantic theme、公開共用元件，以及元件內部的視覺、互動、無障礙與平台適應。
 
 ## 1. 建立產品根節點
 
@@ -65,6 +65,10 @@ class ProductWorkspace extends StatelessWidget {
 
 ## 3. 投影狀態與回傳事件
 
+### Panel 的可選微立體
+
+`KlpPanelFrame(elevation: KlpPanelElevation.raised, content: content)` 啟用原微立體效果；預設 `KlpPanelElevation.flat`。右下陰影與左上亮邊由共用配方及目前 semantic theme 決定，深色沿用低對比亮邊，不改變布局或內容裁切。此選項只適用 `KlpPanelFrame`，其他 frame 不會自動改變。Catalog 提供 flat／raised 展示；`example/lib/panel_relief_main.dart` 提供淺深色並排比較。
+
 產品 controller 是唯一資料權威。Widget 接收目前值，使用 callback 把使用者操作送回 controller：
 
 ```dart
@@ -92,3 +96,6 @@ Kallopis 元件可以持有 hover、focus、pressed 等內部暫態，但不接�
 Kallopis 沒有某個產品畫面時，產品直接建立 Flutter Widget，並沿用 Kallopis semantic theme。只有同一能力已證明跨產品重用，才提升為 Kallopis 公開元件。
 
 禁止建立 declarative node、application host、adapter／bound model、私有 renderer、相容 shim、feature flag 或第二條產品接入路徑。
+# Flutter 套件位置
+
+Kallopis repository 根目錄維護共通規範；Flutter package 位於 `flutter/`。Consumer 的 path dependency 需由 `Kallopis` 改指向 `Kallopis/flutter`；package 名稱、公開 imports 與字型 package ownership 不變。以下指南仍適用於公開 Flutter API，Flutter 指令請從 `flutter/` 執行。

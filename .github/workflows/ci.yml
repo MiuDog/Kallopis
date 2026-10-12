@@ -30,9 +30,32 @@ env:
   FLUTTER_CHANNEL: 'stable'
 
 jobs:
-  root:
-    name: root package
+  react:
+    name: React package and consumer
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: react
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+          cache-dependency-path: react/package-lock.json
+      - run: npm ci
+      - run: npm run check:tokens
+      - run: npm run build
+      - run: npm test
+      - run: npm run build:example
+      - run: npm pack --dry-run
+
+  root:
+    name: Flutter package
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: flutter
     steps:
       - name: 取出程式碼
         uses: actions/checkout@v4
@@ -56,6 +79,7 @@ jobs:
           node-version: 24
 
       - name: 參考網站產生與驗證
+        working-directory: .
         run: |
           npm ci --prefix tool/reference_site
           npm test --prefix tool/reference_site
@@ -72,6 +96,9 @@ jobs:
     # 不能改成 ubuntu：golden 產生於 Windows，換平台會整批假失敗。
     # 真要移到 ubuntu，必須在同一次提交裡於 Linux 重新產生全部 golden。
     runs-on: windows-latest
+    defaults:
+      run:
+        working-directory: flutter
     steps:
       - name: 取出程式碼
         uses: actions/checkout@v4
@@ -91,11 +118,11 @@ jobs:
         run: flutter test
 
       - name: 取得相依套件（example）
-        working-directory: example
+        working-directory: flutter/example
         run: flutter pub get
 
       - name: 執行測試（example，含 style_switch_golden_test）
-        working-directory: example
+        working-directory: flutter/example
         run: flutter test
 
   example:
@@ -103,7 +130,7 @@ jobs:
     runs-on: ubuntu-latest
     defaults:
       run:
-        working-directory: example
+        working-directory: flutter/example
     steps:
       - name: 取出程式碼
         uses: actions/checkout@v4
@@ -139,7 +166,7 @@ jobs:
       - name: 核對發布版本
         shell: bash
         run: |
-          version="$(sed -n 's/^version: //p' pubspec.yaml)"
+          version="$(sed -n 's/^version: //p' flutter/pubspec.yaml)"
           test "${GITHUB_REF_NAME}" = "v${version}"
           grep -Fq "## ${version} —" CHANGELOG.md
 

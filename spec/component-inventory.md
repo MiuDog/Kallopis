@@ -6,7 +6,7 @@
 
 ## 總覽
 
-- 公開型別 **409** 個，其中 widget **160** 個
+- 公開型別 **413** 個，其中 widget **162** 個
 - 分為 **20** 個領域
 
 ### 領域之間的依賴方向
@@ -32,7 +32,7 @@ graph TD
 
 ### foundation — 圖示、色盤、度量
 
-型別 111 個，widget 56 個。
+型別 113 個，widget 58 個。
 
 | 型別 | 行數 | 組成 |
 |---|---|---|
@@ -55,6 +55,7 @@ graph TD
 | `KlpDashedBorder` | 51 | `KlpStrokeFrame` |
 | `KlpDashedDivider` | 111 | （葉節點） |
 | `KlpDecorativePalette` | 18 | （葉節點） |
+| `KlpDeviceAdaptive` | 31 | （葉節點） |
 | `KlpDeviceClass` | 1 | （葉節點） |
 | `KlpDirectionalPosition` | 39 | （葉節點） |
 | `KlpDirectionalPositioned` | 23 | （葉節點） |
@@ -123,6 +124,7 @@ graph TD
 | `KlpSegmentedProgress` | 34 | （葉節點） |
 | `KlpSelectionAction` | 13 | （葉節點） |
 | `KlpSemanticRegion` | 33 | （葉節點） |
+| `KlpSlidingDrawerLayout` | 56 | `KlpStack` |
 | `KlpSpaceSize` | 70 | （葉節點） |
 | `KlpSpacer` | 10 | （葉節點） |
 | `KlpSplitLayout` | 45 | `KlpExpanded`、`KlpRow` |
@@ -174,7 +176,9 @@ graph LR
   KlpRichText["KlpRichText"]
   KlpRow["KlpRow"]
   KlpSection["KlpSection"]
+  KlpSlidingDrawerLayout["KlpSlidingDrawerLayout"]
   KlpSplitLayout["KlpSplitLayout"]
+  KlpStack["KlpStack"]
   KlpStrokeFrame["KlpStrokeFrame"]
   KlpSurface["KlpSurface"]
   KlpText["KlpText"]
@@ -202,6 +206,7 @@ graph LR
   KlpSection --> KlpRow
   KlpSection --> KlpText
   KlpSection --> KlpWrap
+  KlpSlidingDrawerLayout --> KlpStack
   KlpSplitLayout --> KlpExpanded
   KlpSplitLayout --> KlpRow
   KlpSurface --> KlpTokenOverride
@@ -216,7 +221,7 @@ graph LR
 不組合任何其他 Kallopis 型別的 widget。它們是這套視覺語言的**詞根**——
 每一個都直接對應一個不可再分的視覺概念。
 
-`KlpAdaptive`、`KlpAlign`、`KlpCenter`、`KlpColorRoleField`、`KlpColumn`、`KlpConditionalFieldRegion`、`KlpConstrainedBox`、`KlpContextMenu`、`KlpDashedDivider`、`KlpDateField`、`KlpDirectionalPositioned`、`KlpDivider`、`KlpDropIndicator`、`KlpErrorState`、`KlpExcludeSemantics`、`KlpExpanded`、`KlpFileExplorerSection`、`KlpFit`、`KlpFlexible`、`KlpFocusBoundary`、`KlpFocusRegion`、`KlpGap`、`KlpGeometricSpinner`、`KlpGestureRegion`、`KlpIcon`、`KlpInlineCode`、`KlpKeyBindingHost`、`KlpKeyBindingRegion`、`KlpLayoutBuilder`、`KlpLiveRegion`、`KlpMasonryGrid`、`KlpMenu`、`KlpModalFrame`、`KlpNumberField`、`KlpOverlayHost`、`KlpPageBackgroundEditor`、`KlpPageBackgroundPainter`、`KlpPanelFooter`、`KlpPanelFrame`、`KlpPermissionState`、`KlpPointerBlocker`、`KlpPositioned`、`KlpPressable`、`KlpResizablePane`、`KlpResizeHandle`、`KlpRotate`、`KlpRow`、`KlpScrollViewport`、`KlpSegmentedProgress`、`KlpSemanticRegion`、`KlpSettingsSearchField`、`KlpSidebarNavigationButton`、`KlpSidebarNavigationGroup`、`KlpSpacer`、`KlpStack`、`KlpStateHighlight`、`KlpStepper`、`KlpStrokeFrame`、`KlpText`、`KlpTextArea`、`KlpTokenOverride`、`KlpTooltip`、`KlpTranslate`、`KlpVeil`、`KlpVirtualGrid`、`KlpVirtualList`、`KlpWrap`
+`KlpAdaptive`、`KlpAlign`、`KlpCenter`、`KlpColorRoleField`、`KlpColumn`、`KlpConditionalFieldRegion`、`KlpConstrainedBox`、`KlpContextMenu`、`KlpDashedDivider`、`KlpDateField`、`KlpDeviceAdaptive`、`KlpDirectionalPositioned`、`KlpDivider`、`KlpDropIndicator`、`KlpErrorState`、`KlpExcludeSemantics`、`KlpExpanded`、`KlpFileExplorerSection`、`KlpFit`、`KlpFlexible`、`KlpFocusBoundary`、`KlpFocusRegion`、`KlpGap`、`KlpGeometricSpinner`、`KlpGestureRegion`、`KlpIcon`、`KlpInlineCode`、`KlpKeyBindingHost`、`KlpKeyBindingRegion`、`KlpLayoutBuilder`、`KlpLiveRegion`、`KlpMasonryGrid`、`KlpMenu`、`KlpModalFrame`、`KlpNumberField`、`KlpOverlayHost`、`KlpPageBackgroundEditor`、`KlpPageBackgroundPainter`、`KlpPanelFooter`、`KlpPanelFrame`、`KlpPermissionState`、`KlpPointerBlocker`、`KlpPositioned`、`KlpPressable`、`KlpResizablePane`、`KlpResizeHandle`、`KlpRotate`、`KlpRow`、`KlpScrollViewport`、`KlpSegmentedProgress`、`KlpSemanticRegion`、`KlpSettingsSearchField`、`KlpSidebarNavigationButton`、`KlpSidebarNavigationGroup`、`KlpSpacer`、`KlpStack`、`KlpStateHighlight`、`KlpStepper`、`KlpStrokeFrame`、`KlpText`、`KlpTextArea`、`KlpTokenOverride`、`KlpTooltip`、`KlpTranslate`、`KlpVeil`、`KlpVirtualGrid`、`KlpVirtualList`、`KlpWrap`
 
 ## 被最多型別使用的
 
@@ -234,9 +239,9 @@ graph LR
 | `KlpWrap` | 12 |
 | `KlpGestureRegion` | 11 |
 | `KlpCenter` | 9 |
+| `KlpStack` | 8 |
 | `KlpFlexible` | 7 |
 | `KlpIcon` | 7 |
-| `KlpStack` | 7 |
 | `KlpLayoutBuilder` | 6 |
 | `KlpAlign` | 5 |
 

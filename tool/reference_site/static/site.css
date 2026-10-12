@@ -138,6 +138,9 @@ code { font-family: Consolas, monospace; font-size: .9em; }
 .prose table { display: block; max-width: 100%; overflow: auto; border-collapse: collapse; font-size: 14px; }
 .prose th, .prose td { padding: 10px 12px; border-bottom: 1px dashed var(--line); text-align: left; }
 .prose th { background: var(--panel); }
+.prose .table-wrap table { display: table; min-width: 720px; max-width: none; }
+.prose .table-wrap th, .prose .table-wrap td { min-width: 140px; }
+.prose .table-wrap td:last-child { min-width: 260px; }
 .prose hr { border: 0; border-top: 1px dashed var(--line); margin: 28px 0; }
 .mermaid { overflow: auto; }
 .mermaid svg { max-width: 100%; height: auto; }

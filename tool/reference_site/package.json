@@ -4,7 +4,7 @@
 	"type": "module",
 	"scripts": {
 		"test": "node --test",
-		"extract": "cd ../.. && dart run tool/reference_site/extract_api.dart --output build/reference-api.json",
+		"extract": "cd ../.. && dart --packages=flutter/.dart_tool/package_config.json tool/reference_site/extract_api.dart --output build/reference-api.json",
 		"build": "node generate.mjs",
 		"verify": "node verify.mjs"
 	},

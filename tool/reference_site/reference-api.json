@@ -10503,7 +10503,7 @@
 						{
 							"name": "KlpFileExplorerItem",
 							"kind": "constructor",
-							"signature": "KlpFileExplorerItem({\n  required String id,\n  required String label,\n  KlpIconData? icon,\n  List<KlpFileExplorerItem> children = const [],\n  bool folder = false,\n  bool expanded = false,\n  bool selected = false,\n  String? badge,\n  KlpFeedbackTone? tone,\n  Widget? trailing,\n  Object? data,\n})",
+							"signature": "KlpFileExplorerItem({\n  required String id,\n  required String label,\n  KlpIconData? icon,\n  List<KlpFileExplorerItem> children = const [],\n  bool folder = false,\n  bool expanded = false,\n  bool selected = false,\n  String? badge,\n  KlpFeedbackTone? tone,\n  Widget? trailing,\n  Object? data,\n  Widget Function(BuildContext, Widget)? rowWrapper,\n})",
 							"documentation": ""
 						},
 						{
@@ -10559,6 +10559,12 @@
 							"kind": "field",
 							"signature": "String label",
 							"documentation": ""
+						},
+						{
+							"name": "rowWrapper",
+							"kind": "field",
+							"signature": "Widget Function(BuildContext, Widget)? rowWrapper",
+							"documentation": "產品可在既有 row 外接選單與拖放，不替換 row 風格。"
 						},
 						{
 							"name": "selected",
@@ -10665,7 +10671,7 @@
 						{
 							"name": "KlpFileExplorerSection",
 							"kind": "constructor",
-							"signature": "KlpFileExplorerSection({\n  Key? key,\n  required String id,\n  required String title,\n  List<KlpFileExplorerItem> items = const [],\n  bool expanded = true,\n  bool collapsible = true,\n  Widget? trailing,\n})",
+							"signature": "KlpFileExplorerSection({\n  Key? key,\n  required String id,\n  required String title,\n  List<KlpFileExplorerItem> items = const [],\n  bool expanded = true,\n  bool collapsible = true,\n  Widget? trailing,\n  Widget Function(BuildContext, Widget)? headerWrapper,\n})",
 							"documentation": ""
 						},
 						{
@@ -10685,6 +10691,12 @@
 							"kind": "field",
 							"signature": "bool expanded",
 							"documentation": ""
+						},
+						{
+							"name": "headerWrapper",
+							"kind": "field",
+							"signature": "Widget Function(BuildContext, Widget)? headerWrapper",
+							"documentation": "允許產品為分類標題接上拖放與選單。"
 						},
 						{
 							"name": "id",
@@ -12459,7 +12471,7 @@
 						{
 							"name": "KlpDrawer",
 							"kind": "constructor",
-							"signature": "KlpDrawer({\n  Key? key,\n  required bool open,\n  required Widget child,\n  KlpDrawerEdge edge = KlpDrawerEdge.right,\n  double? size,\n  VoidCallback? onScrimTap,\n  bool barrierDismissible = true,\n})",
+							"signature": "KlpDrawer({\n  Key? key,\n  required bool open,\n  required Widget child,\n  KlpDrawerEdge edge = KlpDrawerEdge.right,\n  double? size,\n  double? progress,\n  VoidCallback? onScrimTap,\n  bool barrierDismissible = true,\n})",
 							"documentation": ""
 						},
 						{
@@ -12497,6 +12509,12 @@
 							"kind": "field",
 							"signature": "bool open",
 							"documentation": "是否展開。"
+						},
+						{
+							"name": "progress",
+							"kind": "field",
+							"signature": "double? progress",
+							"documentation": "受呼叫端控制的開啟進度；`0` 為完全收合，`1` 為完全展開。\n\n未提供時依 [open] 使用既有的開關動畫；提供時可讓抽屜跟隨拖動位置。"
 						},
 						{
 							"name": "size",
@@ -13612,7 +13630,7 @@
 						{
 							"name": "KlpAppFrame",
 							"kind": "constructor",
-							"signature": "KlpAppFrame({\n  Key? key,\n  required Widget child,\n  int flex = 1,\n  KlpAppFrameRole role = KlpAppFrameRole.content,\n  KlpAppFrameSurface surface = KlpAppFrameSurface.flat,\n})",
+							"signature": "KlpAppFrame({\n  Key? key,\n  required Widget child,\n  int flex = 1,\n  KlpAppFrameRole role = KlpAppFrameRole.content,\n  KlpAppFrameSurface surface = KlpAppFrameSurface.flat,\n  double? width,\n})",
 							"documentation": ""
 						},
 						{
@@ -13643,6 +13661,12 @@
 							"name": "surface",
 							"kind": "field",
 							"signature": "KlpAppFrameSurface surface",
+							"documentation": ""
+						},
+						{
+							"name": "width",
+							"kind": "field",
+							"signature": "double? width",
 							"documentation": ""
 						}
 					]
@@ -13755,7 +13779,7 @@
 						"foundation"
 					],
 					"signature": "final class KlpAppLayout extends StatelessWidget",
-					"documentation": "App background 上第一層的通用 Workbench 布局根。",
+					"documentation": "",
 					"typeRelationships": {
 						"extends": "StatelessWidget",
 						"mixins": [],
@@ -13765,7 +13789,7 @@
 						{
 							"name": "KlpAppLayout",
 							"kind": "constructor",
-							"signature": "KlpAppLayout({\n  Key? key,\n  required KlpLayoutNode child,\n  Widget? floatingAction,\n})",
+							"signature": "KlpAppLayout({\n  Key? key,\n  required KlpLayoutNode child,\n  Widget? floatingAction,\n  KlpAppLayoutInset inset = KlpAppLayoutInset.standard,\n})",
 							"documentation": ""
 						},
 						{
@@ -13785,6 +13809,51 @@
 							"kind": "field",
 							"signature": "Widget? floatingAction",
 							"documentation": ""
+						},
+						{
+							"name": "inset",
+							"kind": "field",
+							"signature": "KlpAppLayoutInset inset",
+							"documentation": ""
+						}
+					]
+				},
+				{
+					"id": "package:kallopis/src/features/workspace/layout/klp_app_layout.dart#KlpAppLayoutInset",
+					"name": "KlpAppLayoutInset",
+					"slug": "klp-app-layout-inset",
+					"kind": "enum",
+					"module": "features.workspace",
+					"sourceUri": "package:kallopis/src/features/workspace/layout/klp_app_layout.dart",
+					"primarySurface": "foundation",
+					"surfaces": [
+						"foundation"
+					],
+					"signature": "enum KlpAppLayoutInset",
+					"documentation": "App background 上第一層的通用 Workbench 布局根。",
+					"typeRelationships": {
+						"extends": "Enum",
+						"mixins": [],
+						"implements": []
+					},
+					"members": [
+						{
+							"name": "KlpAppLayoutInset",
+							"kind": "constructor",
+							"signature": "KlpAppLayoutInset()",
+							"documentation": ""
+						},
+						{
+							"name": "none",
+							"kind": "enumValue",
+							"signature": "KlpAppLayoutInset none",
+							"documentation": "讓單一端點的內容貼齊可用範圍。"
+						},
+						{
+							"name": "standard",
+							"kind": "enumValue",
+							"signature": "KlpAppLayoutInset standard",
+							"documentation": "套用 App frame 之間的標準外距。"
 						}
 					]
 				},
@@ -14450,7 +14519,7 @@
 						{
 							"name": "KlpDockLayout",
 							"kind": "constructor",
-							"signature": "KlpDockLayout({\n  Key? key,\n  required KlpPanelFrame stage,\n  required List<KlpDockPanel> panels,\n  required KlpDockLayoutData layout,\n  required ValueChanged<KlpDockLayoutData> onLayoutChanged,\n  required KlpDockAreaConstraints leftConstraints,\n  required KlpDockAreaConstraints rightConstraints,\n  KlpDockAreaConstraints? bottomConstraints,\n})",
+							"signature": "KlpDockLayout({\n  Key? key,\n  required KlpPanelFrame stage,\n  required List<KlpDockPanel> panels,\n  required KlpDockLayoutData layout,\n  required ValueChanged<KlpDockLayoutData> onLayoutChanged,\n  required KlpDockAreaConstraints leftConstraints,\n  required KlpDockAreaConstraints rightConstraints,\n  KlpDockAreaConstraints? bottomConstraints,\n  PreferredSizeWidget? contentHeader,\n})",
 							"documentation": ""
 						},
 						{
@@ -14464,6 +14533,12 @@
 							"kind": "method",
 							"signature": "Widget buildPanelLayout(BuildContext context)",
 							"documentation": ""
+						},
+						{
+							"name": "contentHeader",
+							"kind": "field",
+							"signature": "PreferredSizeWidget? contentHeader",
+							"documentation": "橫跨固定 Stage 與右側 Area 的頂列，左側 Area 保持全高。"
 						},
 						{
 							"name": "createState",
@@ -15943,6 +16018,45 @@
 					]
 				},
 				{
+					"id": "package:kallopis/src/features/workspace/shell/panel/klp_panel_frame.dart#KlpPanelElevation",
+					"name": "KlpPanelElevation",
+					"slug": "klp-panel-elevation",
+					"kind": "enum",
+					"module": "features.workspace",
+					"sourceUri": "package:kallopis/src/features/workspace/shell/panel/klp_panel_frame.dart",
+					"primarySurface": "foundation",
+					"surfaces": [
+						"foundation"
+					],
+					"signature": "enum KlpPanelElevation",
+					"documentation": "面板表面層次；raised 使用既有微立體陰影與亮邊。",
+					"typeRelationships": {
+						"extends": "Enum",
+						"mixins": [],
+						"implements": []
+					},
+					"members": [
+						{
+							"name": "KlpPanelElevation",
+							"kind": "constructor",
+							"signature": "KlpPanelElevation()",
+							"documentation": ""
+						},
+						{
+							"name": "flat",
+							"kind": "enumValue",
+							"signature": "KlpPanelElevation flat",
+							"documentation": ""
+						},
+						{
+							"name": "raised",
+							"kind": "enumValue",
+							"signature": "KlpPanelElevation raised",
+							"documentation": ""
+						}
+					]
+				},
+				{
 					"id": "package:kallopis/src/features/workspace/shell/panel/klp_panel_footer.dart#KlpPanelFooter",
 					"name": "KlpPanelFooter",
 					"slug": "klp-panel-footer",
@@ -16011,7 +16125,7 @@
 						{
 							"name": "KlpPanelFrame",
 							"kind": "constructor",
-							"signature": "KlpPanelFrame({\n  Key? key,\n  Widget? header,\n  required Widget content,\n  Widget? footer,\n  KlpPanelHeaderSize headerSize = KlpPanelHeaderSize.standard,\n  KlpPanelTone tone = KlpPanelTone.surface,\n  ScrollController? contentScrollController,\n})",
+							"signature": "KlpPanelFrame({\n  Key? key,\n  Widget? header,\n  required Widget content,\n  Widget? footer,\n  KlpPanelHeaderSize headerSize = KlpPanelHeaderSize.standard,\n  KlpPanelTone tone = KlpPanelTone.surface,\n  KlpPanelElevation elevation = KlpPanelElevation.flat,\n  ScrollController? contentScrollController,\n})",
 							"documentation": ""
 						},
 						{
@@ -16037,6 +16151,12 @@
 							"kind": "field",
 							"signature": "ScrollController? contentScrollController",
 							"documentation": "內容區的捲動控制器。提供時，Frame 只負責繪製 Scrollbar；內容的\n內距由 [content] 自己決定。"
+						},
+						{
+							"name": "elevation",
+							"kind": "field",
+							"signature": "KlpPanelElevation elevation",
+							"documentation": "僅改變表面層次，不改布局與內容裁切。"
 						},
 						{
 							"name": "footer",
@@ -18661,7 +18781,7 @@
 						{
 							"name": "KlpWindowHeader",
 							"kind": "constructor",
-							"signature": "KlpWindowHeader({\n  Key? key,\n  Widget? title,\n  String? titleText,\n  KlpTextRole titleRole = KlpTextRole.appTitle,\n  Widget? titleTrailing,\n  Widget? appIcon,\n  Widget? appIconButton,\n  List<Widget>? actions,\n  Widget? leading,\n  Widget? trailing,\n  KlpAppPlatform? platform,\n  double? height,\n  VoidCallback? onMinimize,\n  VoidCallback? onToggleMaximize,\n  VoidCallback? onClose,\n  bool isMaximized = false,\n  bool showWindowControls = true,\n})",
+							"signature": "KlpWindowHeader({\n  Key? key,\n  Widget? title,\n  String? titleText,\n  KlpTextRole titleRole = KlpTextRole.appTitle,\n  Widget? titleTrailing,\n  Widget? appIcon,\n  Widget? appIconButton,\n  List<Widget>? actions,\n  Widget? leading,\n  Widget? trailing,\n  KlpAppPlatform? platform,\n  double? height,\n  VoidCallback? onMinimize,\n  VoidCallback? onDrag,\n  VoidCallback? onToggleMaximize,\n  VoidCallback? onClose,\n  bool isMaximized = false,\n  bool showWindowControls = true,\n})",
 							"documentation": ""
 						},
 						{
@@ -18711,6 +18831,12 @@
 							"kind": "field",
 							"signature": "VoidCallback? onClose",
 							"documentation": "關閉視窗回呼。"
+						},
+						{
+							"name": "onDrag",
+							"kind": "field",
+							"signature": "VoidCallback? onDrag",
+							"documentation": "由產品宿主接手原生視窗拖動。"
 						},
 						{
 							"name": "onMinimize",
@@ -18910,7 +19036,7 @@
 						{
 							"name": "KlpWindowHeaderStrategy",
 							"kind": "constructor",
-							"signature": "KlpWindowHeaderStrategy({\n  required Widget title,\n  required double controlExtent,\n  required double appIconExtent,\n  required Key appIconSlotKey,\n  required VoidCallback onMinimize,\n  required VoidCallback onToggleMaximize,\n  required VoidCallback onClose,\n  Widget? appIcon,\n  Widget? appIconButton,\n  List<Widget>? actions,\n  Widget? leading,\n  Widget? trailing,\n  Widget? titleTrailing,\n  bool isMaximized = false,\n  bool showWindowControls = true,\n})",
+							"signature": "KlpWindowHeaderStrategy({\n  required Widget? title,\n  required double controlExtent,\n  required double appIconExtent,\n  required Key appIconSlotKey,\n  required VoidCallback onMinimize,\n  required VoidCallback onToggleMaximize,\n  required VoidCallback onClose,\n  Widget? appIcon,\n  Widget? appIconButton,\n  List<Widget>? actions,\n  Widget? leading,\n  Widget? trailing,\n  Widget? titleTrailing,\n  bool isMaximized = false,\n  bool showWindowControls = true,\n})",
 							"documentation": ""
 						},
 						{
@@ -19012,7 +19138,7 @@
 						{
 							"name": "title",
 							"kind": "field",
-							"signature": "Widget title",
+							"signature": "Widget? title",
 							"documentation": ""
 						},
 						{
@@ -19413,7 +19539,7 @@
 						"foundation"
 					],
 					"signature": "final class LayoutResizeHandle extends KlpLayoutNode",
-					"documentation": "取代相鄰 node 自動 gutter 的固定尺寸槽；不提供 resize 手勢。",
+					"documentation": "取代相鄰 node 自動 gutter 的調寬槽；回報游標的全域位置供 consumer 對齊布局座標。",
 					"typeRelationships": {
 						"extends": "KlpLayoutNode",
 						"mixins": [],
@@ -19423,7 +19549,7 @@
 						{
 							"name": "LayoutResizeHandle",
 							"kind": "constructor",
-							"signature": "LayoutResizeHandle({Key? key})",
+							"signature": "LayoutResizeHandle({Key? key, ValueChanged<Offset>? onResize})",
 							"documentation": ""
 						},
 						{
@@ -19436,6 +19562,12 @@
 							"name": "flex",
 							"kind": "getter",
 							"signature": "int get flex",
+							"documentation": ""
+						},
+						{
+							"name": "onResize",
+							"kind": "field",
+							"signature": "ValueChanged<Offset>? onResize",
 							"documentation": ""
 						}
 					]
@@ -20791,6 +20923,65 @@
 							"kind": "field",
 							"signature": "List<Color> windowTrafficLights",
 							"documentation": "視窗控制鈕的紅、黃、綠。這是對桌面平台既有慣例的複述，不是本設計系統的色彩選擇。"
+						}
+					]
+				},
+				{
+					"id": "package:kallopis/src/foundation/layout/klp_device_adaptive.dart#KlpDeviceAdaptive",
+					"name": "KlpDeviceAdaptive",
+					"slug": "klp-device-adaptive",
+					"kind": "class",
+					"module": "foundation",
+					"sourceUri": "package:kallopis/src/foundation/layout/klp_device_adaptive.dart",
+					"primarySurface": "foundation",
+					"surfaces": [
+						"foundation"
+					],
+					"signature": "class KlpDeviceAdaptive extends StatelessWidget implements KlpPanelLayout",
+					"documentation": "依 Kallopis 裝置分類選擇 desktop、tablet 或 phone 呈現策略。",
+					"typeRelationships": {
+						"extends": "StatelessWidget",
+						"mixins": [],
+						"implements": [
+							"KlpPanelLayout"
+						]
+					},
+					"members": [
+						{
+							"name": "KlpDeviceAdaptive",
+							"kind": "constructor",
+							"signature": "KlpDeviceAdaptive({\n  Key? key,\n  required KlpAdaptiveBuilder desktop,\n  required KlpAdaptiveBuilder tablet,\n  required KlpAdaptiveBuilder phone,\n})",
+							"documentation": ""
+						},
+						{
+							"name": "build",
+							"kind": "method",
+							"signature": "Widget build(BuildContext context)",
+							"documentation": ""
+						},
+						{
+							"name": "buildPanelLayout",
+							"kind": "method",
+							"signature": "Widget buildPanelLayout(BuildContext context)",
+							"documentation": ""
+						},
+						{
+							"name": "desktop",
+							"kind": "field",
+							"signature": "KlpAdaptiveBuilder desktop",
+							"documentation": ""
+						},
+						{
+							"name": "phone",
+							"kind": "field",
+							"signature": "KlpAdaptiveBuilder phone",
+							"documentation": ""
+						},
+						{
+							"name": "tablet",
+							"kind": "field",
+							"signature": "KlpAdaptiveBuilder tablet",
+							"documentation": ""
 						}
 					]
 				},
@@ -26335,6 +26526,69 @@
 							"name": "label",
 							"kind": "field",
 							"signature": "String label",
+							"documentation": ""
+						}
+					]
+				},
+				{
+					"id": "package:kallopis/src/foundation/layout/klp_sliding_drawer_layout.dart#KlpSlidingDrawerLayout",
+					"name": "KlpSlidingDrawerLayout",
+					"slug": "klp-sliding-drawer-layout",
+					"kind": "class",
+					"module": "foundation",
+					"sourceUri": "package:kallopis/src/foundation/layout/klp_sliding_drawer_layout.dart",
+					"primarySurface": "foundation",
+					"surfaces": [
+						"foundation"
+					],
+					"signature": "class KlpSlidingDrawerLayout extends StatelessWidget",
+					"documentation": "讓側欄與舞台維持同層，並由受控進度推動舞台的抽屜布局。",
+					"typeRelationships": {
+						"extends": "StatelessWidget",
+						"mixins": [],
+						"implements": []
+					},
+					"members": [
+						{
+							"name": "KlpSlidingDrawerLayout",
+							"kind": "constructor",
+							"signature": "KlpSlidingDrawerLayout({\n  Key? key,\n  required ValueListenable<double> progress,\n  required bool tracking,\n  required double drawerExtent,\n  required Widget stage,\n  required Widget drawer,\n})",
+							"documentation": ""
+						},
+						{
+							"name": "build",
+							"kind": "method",
+							"signature": "Widget build(BuildContext context)",
+							"documentation": ""
+						},
+						{
+							"name": "drawer",
+							"kind": "field",
+							"signature": "Widget drawer",
+							"documentation": ""
+						},
+						{
+							"name": "drawerExtent",
+							"kind": "field",
+							"signature": "double drawerExtent",
+							"documentation": ""
+						},
+						{
+							"name": "progress",
+							"kind": "field",
+							"signature": "ValueListenable<double> progress",
+							"documentation": ""
+						},
+						{
+							"name": "stage",
+							"kind": "field",
+							"signature": "Widget stage",
+							"documentation": ""
+						},
+						{
+							"name": "tracking",
+							"kind": "field",
+							"signature": "bool tracking",
 							"documentation": ""
 						}
 					]

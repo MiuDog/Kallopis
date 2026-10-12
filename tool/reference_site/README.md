@@ -1,12 +1,16 @@
-# Thin Design System Reference Site
+# Kallopis Reference Site
 
-本工具從 `kallopis_theme.dart`、`kallopis_foundation.dart`、`kallopis_experimental.dart` 的 analyzer export closure 產生 GitHub Pages。網站不收錄 declarative、compatibility 或 private `lib/src` API。
+本工具從正式共通視覺 Markdown 與 `kallopis_theme.dart`、`kallopis_foundation.dart`、`kallopis_experimental.dart` 的 analyzer export closure 產生 GitHub Pages。通用視覺入口為 `docs/design-system/index.html`；目前框架 API 為 Flutter。網站不收錄 declarative、compatibility 或 private `lib/src` API。
+
+`documents.mjs` 是唯一來源／路由清單，正文只在 Markdown 維護；必要來源缺失會在清理舊輸出之前失敗。`markdown.mjs` 保留表格、code、公式、相對文件連結及中文 anchor，正文同時進入搜尋索引。`verify.mjs` 檢查文件來源、實際內容、搜尋及本地 link／anchor，與既有 API 閘門一起執行。
 
 ## 本機驗證
 
 ```sh
+cd flutter
 flutter pub get
-dart run tool/reference_site/extract_api.dart --output build/reference-api.json
+cd ..
+dart --packages=flutter/.dart_tool/package_config.json tool/reference_site/extract_api.dart --output build/reference-api.json
 npm ci --prefix tool/reference_site
 npm test --prefix tool/reference_site
 node tool/reference_site/generate.mjs

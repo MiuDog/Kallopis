@@ -1,6 +1,20 @@
 # Kallopis 官網與文件子站
 
-2026-09-20 依 KLP-0022 更新：網站只呈現現行 Flutter design system，不保留 declarative／compatibility API。GitHub Pages 必須從 theme、foundation、experimental 三個 public barrels 產生 module 分類及每個公開 class 一頁的正式 Reference；網站工作不改 Flutter 元件。
+目前 stage：通用視覺規範整合 v1（2026-10-11），Iteration；擁有 module：`tool/reference_site`。需求 READY：使用者已指定採用既有視覺統整、整合 docs 網頁，並指示推進下一步。此 stage 不重新設計視覺、不搬移框架庫、不發布網站。
+
+專案定位以 [跨框架核心目標](multi-framework-design-system.md) 為準；正式視覺內容以 [規範索引](../docs/design-tokens/KALLOPIS-DESIGN-MAP.md) 及其章節為準。網站落實 [維護規則的整合契約](../docs/design-tokens/maintenance.md)，不擁有另一份視覺內容。
+
+| ID | 目標版本 | 優先級 | 需求 | 可觀察驗收 | 狀態 |
+| --- | --- | --- | --- | --- | --- |
+| VDOC-01 | 整合 v1 | P1 | 在 docs 中提供正式通用視覺入口，與 Flutter API 區分 | docs 首頁與文件導覽可進入規範索引；網站不宣稱 React 元件已交付；既有 Flutter API 路由保留 | accepted |
+| VDOC-02 | 整合 v1 | P1 | 由單一 Markdown 來源產生分章頁面與可用連結 | 索引、維護規則與六章皆可讀取；索引中的匯出快照另有明示快照頁；相對連結與 anchor 在專案前綴下正確 | accepted |
+| VDOC-03 | 整合 v1 | P1 | 完整呈現 token／配方表格及記號 | 真正表格、程式記號、色碼、運算與繼承說明不遺失；窄畫面可操作並讀取完整表格 | accepted |
+| VDOC-04 | 整合 v1 | P1 | 以內容搜尋規範 | 查詢 `parchment50` 或 `button-size-md` 可找到包含它的規範章節；既有 API 搜尋及無結果／載入失敗行為保留 | accepted |
+| VDOC-05 | 整合 v1 | P1 | 對來源、頁面、路由與搜尋進行完整性檢查 | 必要來源缺失、漏頁、多頁、無效本地連結／anchor 或遺失規範搜尋內容時，產生或驗證失敗；既有 API 驗證不弱化 | accepted |
+
+目前能力地平線包含跨框架規範與各框架文件；本 stage 只接入已採用的規範和現有 Flutter reference，不規劃 React API 或套件搬移。
+
+以下既有網站要求仍適用於目前 Flutter Reference：GitHub Pages 從 theme、foundation、experimental 三個 public barrels 產生 module 分類及每個公開 class 一頁的正式 Reference；不保留 declarative／compatibility API，網站工作不改 Flutter 元件。
 
 ## 需求與權限
 

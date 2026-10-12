@@ -19,9 +19,9 @@ const _rootModules = <String>[
 ];
 
 const _publicSurfaces = <_SurfaceDefinition>[
-	_SurfaceDefinition('theme', 'package:kallopis/kallopis_theme.dart', 'lib/kallopis_theme.dart', 'stable'),
-	_SurfaceDefinition('foundation', 'package:kallopis/kallopis_foundation.dart', 'lib/kallopis_foundation.dart', 'stable'),
-	_SurfaceDefinition('experimental', 'package:kallopis/kallopis_experimental.dart', 'lib/kallopis_experimental.dart', 'experimental'),
+	_SurfaceDefinition('theme', 'package:kallopis/kallopis_theme.dart', 'flutter/lib/kallopis_theme.dart', 'stable'),
+	_SurfaceDefinition('foundation', 'package:kallopis/kallopis_foundation.dart', 'flutter/lib/kallopis_foundation.dart', 'stable'),
+	_SurfaceDefinition('experimental', 'package:kallopis/kallopis_experimental.dart', 'flutter/lib/kallopis_experimental.dart', 'experimental'),
 ];
 
 Future<void> main(List<String> arguments) async {

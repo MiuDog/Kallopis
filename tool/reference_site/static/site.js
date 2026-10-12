@@ -62,16 +62,16 @@ if (navigation) {
 				const query = search.value.trim().toLowerCase();
 				navigation.replaceChildren();
 				if (query) {
-					const matches = entries.filter(entry => `${entry.title} ${entry.category} ${entry.href}`.toLowerCase().includes(query));
+					const matches = entries.filter(entry => `${entry.title} ${entry.category} ${entry.href} ${entry.body || ''}`.toLowerCase().includes(query));
 					status.textContent = `${matches.length} 筆結果${matches.length > 100 ? '，先顯示 100 筆，請增加關鍵字縮小範圍' : ''}`;
 					for (const entry of matches.slice(0, 100)) appendLink(navigation, `${root}${entry.href}`, `${entry.title} · ${entry.category}`);
 					return;
 				}
 				status.textContent = '搜尋全部指南、元件、規格與 API';
-				for (const [href, label] of [['docs/index.html', '文件中心'], ['docs/guides/docs-ai-product-usage.html', '產品使用'], ['docs/guides/spec-style-v1.html', '風格 v1.0.0'], ['docs/components/index.html', '公開型別'], ['docs/api/index.html', 'API Reference']]) appendLink(navigation, `${root}${href}`, label);
+				for (const [href, label] of [['docs/index.html', '文件中心'], ['docs/design-system/index.html', '通用視覺規範'], ['docs/guides/docs-ai-product-usage.html', 'Flutter 產品使用'], ['docs/components/index.html', 'Flutter 公開型別'], ['docs/api/index.html', 'Flutter API Reference']]) appendLink(navigation, `${root}${href}`, label);
 				const groups = new Map();
 				for (const entry of entries) {
-					const category = entry.category === 'API' ? 'API' : entry.category === 'Guide' ? '指南' : entry.category === 'Spec' ? '規格與決策' : entry.category === 'Project' ? '專案' : '元件';
+					const category = ({ API: 'Flutter API', Design: '通用視覺規範', Snapshot: '匯出快照', Guide: '指南', Spec: '規格與決策', Project: '專案' })[entry.category] || '元件';
 					if (!groups.has(category)) groups.set(category, []);
 					groups.get(category).push(entry);
 				}

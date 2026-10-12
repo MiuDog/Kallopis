@@ -10,7 +10,7 @@
 				"-ExecutionPolicy",
 				"Bypass",
 				"-File",
-				"${workspaceFolder}/tool/verify.ps1"
+				"${workspaceFolder}/flutter/tool/verify.ps1"
 			],
 			"problemMatcher": [],
 			"group": {

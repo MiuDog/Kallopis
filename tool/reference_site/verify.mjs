@@ -1,5 +1,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
+import { documents, documentRoutes } from './documents.mjs';
+import { renderMarkdown } from './markdown.mjs';
 
 const root = path.resolve(import.meta.dirname, '..', '..');
 const output = path.join(root, 'build', 'reference-site');
@@ -76,11 +78,55 @@ for (const [id, href] of expectedDeclarations) {
 }
 if (searchById.size !== expectedDeclarations.size || apiSearch.length !== expectedDeclarations.size) failures.push('Search has duplicate, extra or missing declarations');
 
-// 步驟 3：固定網站入口與產物報告。
+// 步驟 3：規範來源、章節頁、全文搜尋與本地連結雙向對照。
+const expectedDocumentRoutes = new Set(documents.map(({href}) => href));
+const siteDocuments = site.documents || [];
+if (siteDocuments.length !== documents.length) failures.push('Document manifest count mismatch');
+for (const document of documents) {
+	const {source, href} = document;
+	if (siteDocuments.filter((item) => item.source === source && item.href === href).length !== 1) failures.push(`Document manifest mismatch: ${source}`);
+	const sourcePath = path.join(root, source);
+	if (!fs.existsSync(sourcePath)) {
+		failures.push(`Missing required document source: ${source}`);
+		continue;
+	}
+	if (!actualHtml.has(href)) {
+		failures.push(`Missing document page: ${href}`);
+		continue;
+	}
+	const expected = renderMarkdown(fs.readFileSync(sourcePath, 'utf8'), { ...document, routes: documentRoutes });
+	const html = fs.readFileSync(path.join(output, href), 'utf8');
+	if (!html.includes(expected.html)) failures.push(`Document content mismatch: ${source}`);
+	const entries = search.filter((item) => item.href === href);
+	if (entries.length !== 1 || entries[0].body !== expected.body || entries[0].category !== document.category) failures.push(`Document search mismatch: ${source}`);
+	for (const match of html.matchAll(/href="([^"]+)"/g)) {
+		const link = match[1].replaceAll('&amp;', '&');
+		if (/^(?:[a-z][a-z\d+.-]*:|\/\/)/i.test(link)) continue;
+		const [relativeTarget, fragment] = link.split('#');
+		const target = path.posix.normalize(path.posix.join(path.posix.dirname(href), decodeURIComponent(relativeTarget || path.posix.basename(href))));
+		if (target.startsWith('../') || !fs.existsSync(path.join(output, target))) {
+			failures.push(`Broken local document link: ${href} -> ${link}`);
+			continue;
+		}
+		if (fragment) {
+			const targetHtml = fs.readFileSync(path.join(output, target), 'utf8');
+			const ids = [...targetHtml.matchAll(/id="([^"]+)"/g)].map(([, id]) => id.replaceAll('&amp;', '&').replaceAll('&quot;', '"').replaceAll('&#39;', "'"));
+			if (!ids.includes(decodeURIComponent(fragment))) failures.push(`Broken document anchor: ${href} -> ${link}`);
+		}
+	}
+}
+for (const href of actualHtml) {
+	if (href.startsWith('docs/design-system/') && !expectedDocumentRoutes.has(href)) failures.push(`Unexpected design document page: ${href}`);
+}
+for (const entry of search) {
+	if (entry.href?.startsWith('docs/design-system/') && !expectedDocumentRoutes.has(entry.href)) failures.push(`Unexpected design search page: ${entry.href}`);
+}
+
+// 步驟 4：固定網站入口與產物報告。
 for (const required of ['index.html', 'docs/index.html', 'docs/api/index.html', 'docs/components/index.html']) {
 	if (!actualHtml.has(required)) failures.push(`Missing site entry: ${required}`);
 }
-const report = { surfaces: surfaceNames, modules: api.modules.length, declarations: declarations.length, generatedPages: actualHtml.size, failures };
+const report = { surfaces: surfaceNames, modules: api.modules.length, declarations: declarations.length, documents: documents.length, generatedPages: actualHtml.size, failures };
 fs.writeFileSync(path.join(output, 'verification.json'), `${JSON.stringify(report, null, '\t')}\n`);
 if (failures.length) {
 	console.error(failures.join('\n'));
