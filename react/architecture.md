@@ -639,3 +639,20 @@ REACT-COMMAND-POPUP-EXAMPLE-r1：只example/commands-demo.tsx增加同registry�
 M1公開consumer型別與exact1scope（1k／10分鐘）；M2 nativebutton／右鍵／outside／Escape／一次執行／focus／draft與同theme觀察（3k／20分鐘）；cold1k～4k／10～25分鐘，參照REACT-COMMAND-EXAMPLE-1；6k／35分鐘或其他路徑返回PLAN。reversibleconsumer不新增鏡像tests，未觀察native項與感官明示pending。
 
 BUILDcb1c392d只該consumer source，TypeScript／scope1通過；showPopup／openButtonPopup／openPointPopup／dismissPopup擁有產品觸發及關閉。native tab10原生`:modal` true，client1265×720／panel300×85有限；button及右鍵point、Escape／outside無click-through／一次grid結果1、returnfocus開啟按鈕、draft「React 快顯保留草稿」與同Provider dark overlay #35322DFF觀察通過，error／warn空。main build/evidence/react-command-popup.png；窄尺寸／完整style矩陣pending，未用JSDOM充當native layout。
+
+## REACT-COMMAND-KEYMAP-1（READY）
+
+REACT-COMMAND-KEYMAP-r1依[共同快捷鍵core](../docs/architecture/workbench-shortcut-core-contract.md)，目前純core新增src/command-keymap.ts與index export exact2。KlpCommandKeymap<C>只擁有binding owner token／default及override／chord clock／explicit recorder；公開immutable types與constructor options沿同契約。validation、actual modifier投影、scope／priority／UTF-16 ID順位、chord與atomic import helper同source。execution只用既有registry，沒有另一handler、DOM／timer／focus／theme／l10n／storage權威，也不改menu或palette。
+
+fresh TestAuthor只test/command-keymap.test.mjs；public exports/dist declarations、共同contract、既有purecore測試慣例與assigned file可讀，newcore私有實作不可讀。protectedpaths包括所有tests／registry／theme／components／config／example／architecture／Flutter。crosslanguage、atomic設定與chord風險必要新checks；基線缺API為Yellow，不宣稱behavior Red。cold5k～10k／25～50分鐘，參照REACT-COMMAND-CORE-1與POPUP-1；M1同public protectedchecks（5k／25），M2library build與scope2（10k／50）；13k／65或其他source回PLAN。native keyboard／editable／composition／focus adapter与GUI另packet；fixed順位、defaults還原及serialization只由common contract擁有。
+
+```mermaid
+flowchart TD
+	Public[planned KlpCommandKeymap] --> Validate[definitions / overrides / canonical input]
+	Public --> Resolve[focus gates / fixed rank / current chord]
+	Resolve --> Registry[existing public command registry]
+	Public --> Record[explicit recording state]
+	Public --> Clock[injected monotonic milliseconds]
+```
+
+以上是READY責任，BUILD後owner補實際function／class索引；不能預寫聲稱已存在的helpers。
