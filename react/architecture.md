@@ -411,3 +411,24 @@ flowchart TD
 | DockDemo／panels／policies／approveClose | 同上 | consumer state、stable metadata與closecallback、strict資料清冊投影 |
 | commit／action／restore／open／merge | 同上 | 採用public結果、一次計數、JSON失敗保留、重開與合併 |
 | main App／demo-dock CSS | [main.tsx](example/main.tsx)／[style.css](example/style.css) | 既有Provider接入、外部有限宿主和semantic產品內容；不改庫内部 |
+
+## REACT-COMMAND-CORE-1（READY）
+
+修訂REACT-COMMAND-CORE-r1，依[WB-COMMAND-r1](../docs/architecture/workbench-command-contract.md)。新src/command-registry.ts擁有原生generic context的definition/state/result與registry；index.ts公開匯出。無DOM、storage、產品context鏡像或defaultcommands；icon僅ReactNode型別依賴，不執行render。private entry/token擁有隔離metadata、running與stale identity；observer token擁有自己subscription，錯誤交nativehost/error callback，不混入handler結果。
+
+責任：KlpCommandDefinition/C、KlpCommandState/ConditionError、KlpCommandExecutionResult固定共同metadata/predicate/result；KlpCommandRegistry constructor/register/getState/list/execute/subscribe/refresh/dispose/version/isDisposed擁有公開規則；private validate/metadata/snapshot/emit/report/current只處理同owner邊界。採Map token registry，因所有入口需一致查詢且disposer不能刪新owner；拒絕每個入口自己的handlers或將產品context存成第二權威。
+
+BUILD write_paths只react/src/command-registry.ts及react/src/index.ts；原theme/components/Dock/linear/style/examples/config/architecture/tests及其他module唯讀。獨立TestAuthor只寫react/test/command-registry.test.mjs，publicdist API及typedconsumer；必要風險為async stale/owner lifecycle/disabled不可繞過/跨語言結果，不由BUILD作者撰寫測試。
+
+M1metadata/registration/conditions/snapshot與同步結果；M2pending/stale/dispose/observer/publicconsumer/build/scope。cold-start6k–12k tokens/35–70分鐘，參照REACT-DOCK-OPS-1及NATIVE-1；18k/100分鐘或需修改共同契約回PLAN。後續雙框架core/命令入口與keyboard接同一已接受stage，不把core當全部WB09～14完成。
+
+```mermaid
+flowchart TD
+	Product[product context / handlers] --> Registry[KlpCommandRegistry]
+	Entrypoint[toolbar / menu / palette / binding ID] --> Registry
+	Registry --> State[predicates / immutable snapshot]
+	Registry --> Token[current registration / pending]
+	Token --> Handler[product business handler]
+	Handler --> Result[typed result / original error]
+	Registry --> Observer[version / independent subscription]
+```

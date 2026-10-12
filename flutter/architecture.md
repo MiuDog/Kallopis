@@ -103,3 +103,9 @@ flowchart TD
 | _saveLayout／_restoreLayout／_openPanel／_mergeGroups | 同上 | schema1資料邊界、错误保留、capability重開、同區合併 |
 | _controls／_dock／_json／build | 同上 | 公開元件controls、外部有限宿主与Stage、JSON產品輸入 |
 | KallopisCatalogApp／_KallopisCatalogAppState.build | [main.dart](example/lib/main.dart) | 原App/Theme生命週期；本slice只加Material透明祖先 |
+
+## Flutter 命令 core契約（READY）
+
+依[WB-COMMAND-r1](../docs/architecture/workbench-command-contract.md)，generic KlpCommandDefinition/C與immutable state/result、status/errorphase enums及ChangeNotifier registry由新增lib/src/features/actions/command_registry擁有，stablefoundation公開匯出。pureconditions/nativecontext/ownerdisposer/同tokenpending/typederrors/版本通知與React一致；icon型別沿既有KlpIconData，observer沿FlutterError。既有CommandMenu/WorkspaceCommand/KeyBindingController及產品handlers保持原API，不在core slice改寫。
+
+具體Flutter BUILD前由此module的architecture固定來源與fresh TestAuthor packet，不自行發明共通規則。當前Reactcore slice不寫Flutter產品碼；這是跨框架邊界已接受的規則，不宣稱Fluttercore已交付。
