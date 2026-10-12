@@ -521,7 +521,7 @@ FilePreview原group onPressed1、Open externally2、Download3，都只記公開�
 State _controls/_target/_usage只自己的props，_limit公開typed三態，_code/_child只consumer示意內容；_languageChange/_wrap/_lineNumbers/_toggleView/_expand/_copy/_review/_clear/_open/_external/_download記原public callbacks及consumer投影，_childAction/_input分開、_edit只control，dispose清三controller，build有限280scroll舞台。庫演算法、正文或終端執行核心沒有複製。
 
 
-## FLUTTER-NAVIGATION-SELECTION-SPECIMENS-1（READY）
+## FLUTTER-NAVIGATION-SELECTION-SPECIMENS-1（IMPLEMENTED；actual窄browser pending）
 
 修訂FLUTTER-NAVIGATION-SELECTION-SPECIMENS-r1；IDOC-01/02/03/06/08。exact lib/component_specimens.dart、新 lib/navigation_selection_specimens.dart。十三target：KlpActionGroup、KlpBreadcrumb、KlpDocumentTabs、KlpPagination、KlpPreviewTree、KlpRailItem、KlpSidebarButtonGroup、KlpSidebarIdentityHeader、KlpSidebarNavigationButton、KlpSidebarNavigationGroup、KlpSidebarSectionLabel、KlpTabs、KlpViewSwitcher。NavigationRail/Navigator/PublicationProgressOverlay另slice，仍全273目標。
 
@@ -548,3 +548,14 @@ flowchart TD
 	Data --> Target
 	Host --> Reset[epoch重建]
 ```
+
+
+BUILD exact2；十三名稱對正式public renderable，無DTO或placeholder補數。public analyze No issues、同sourceprefixrelease44.6秒、scope2/diff通過；無library/tests/config/style/site source更動、無core/persist/crosslanguage新風險，不新增鏡像tests。
+
+Native5203 prefix十三自己的props/文字controls（控制文字2與target分開）實際操作。ActionGroup/SidebarButtonGroup/SidebarNavigationGroup各指定child1回呼1，root0；Breadcrumb index1/root1、RailItem與SidebarNavigationButton原root1；Tabs選1/root1，另鍵盤ArrowLeft0→2/root1，縮count3→1後合法index0；ViewSwitcher view-1/root1；PreviewTree原semantic label導覽說明1實際click得到preview-1/root1，不以generic標記推斷不可互動。SectionLabel只公開文字，不虛構callback。
+
+Document原選doc-1/root1、pin2、close doc-0回呼3且selected仍doc-1、unpin4、close selected5後doc-2、最後close6後empty及null；restore3筆與selected doc-0，回呼仍6，consumer restore不冒充native事件。Pagination前進到5/root4，下一頁實際generic非可操作button；previous到4/root5，縮count1當前page1合法、兩端generic，保留最後page4回呼結果而不把control投影算成回呼。
+
+IdentityHeader avatarLabel提供時原元件採avatar內容且trailing不呈現（觀察已記，未改library或假設兩者同時顯示）；avatar=false真實trailing child輸入2/動作1，root0。四mode/spacious/local320保留草稿與結果；avatar切換回來仍草稿保持；reset回初始props/0與環境spacious/local320保留，再啟用trailing實際初始側欄child草稿。console error/warn空；main build/flutter-navigation-selection-specimens.png、flutter-navigation-selection-native.json保存證據。actual360 browser與感官human-pending，consumer水平host不代替library narrow算法。Flutterfixture130／273，剩143与全量网站/style audit等仍原goal，未提前push；actual任務usage未量測null。
+
+State _controls/_target/_usage只自己的公開constructor；_labels/_available/_reconcileDocument/_toggleCount/_pinAll/_restoreDocuments為consumer資料投影，_selectIndex/_selectId/_rootAction/_documentSelect/_documentClose/_documentPin/_pageChanged記原root結果，_childAction/_input分開、_edit只control，_identityChild給單一controller內容、_wide提供水平host，dispose清三controller，build有限280scroll舞台；沒有導覽runtime或第二theme。
