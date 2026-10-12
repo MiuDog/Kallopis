@@ -406,7 +406,7 @@ Card child輸入2/動作1；四mode、spacious、local320保持同草稿及回�
 State _controls/_target/_usage對應自己的公開props，_child只提供明示consumer input/action；_sort/_loadOlder/_remove/_rootAction記root結果，_childAction/_input記child結果，_edit只control，dispose清controller，build有限scroll舞台。集合資料投影不重建library算法或theme。实际usage單task未量測null。
 
 
-## FLUTTER-PROGRESS-COLLECTION-SPECIMENS-1（READY）
+## FLUTTER-PROGRESS-COLLECTION-SPECIMENS-1（IMPLEMENTED；actual窄browser pending）
 
 修訂 FLUTTER-PROGRESS-COLLECTION-SPECIMENS-r1，IDOC-01/02/03/06/08；exact lib/component_specimens.dart、新 lib/progress_collection_specimens.dart。KlpProgress、KlpStepper、KlpTaskList、KlpScheduleList、KlpTimeline 五個正式target；其餘元件仍維持全273目標。
 
@@ -433,3 +433,12 @@ flowchart TD
 	Data --> Target
 	Host --> Reset[epoch重建]
 ```
+
+
+BUILD exact2；五正式public renderable與registry一致。初analyze發現deprecated segments（不影響呈現），owner修訂契約移除無效control，未抑制診斷；最終同sourceanalyze No issues、prefixrelease51.2秒（前版57.3秒不當最終）、scope2/diff通過。task全選control改直接回寫checked Set，原callback可取消其中一筆，改數量同步全選旗標；consumer資料投影沒有改library算法。無library/tests/config/style/site source更動，未新增鏡像tests。
+
+Native5203 prefix五頁自己的controls及label修改均完成，控制文字2與target回呼分開。Progress value0.25→0.5/null、trailing/detail、四state active/paused/success/failure全部呈現，active公開cancel回呼1；其他state沒有cancel按鈕，不假設取消可用。Task原checkbox勾選0回呼1、全選後取消0回呼2得到[1,2]，縮1/恢復3清掉不存在資料且全選旗標false。Stepper原current0→1→2，縮至一筆後合法0，direction/description控制呈現；Schedule公開DTO tag/tone/數量呈現；Timeline自己的time/marker/content/highlighted呈現，指定first child input2及動作1，root0。
+
+Timeline公開label和child草稿在四mode/spacious/local320與回呼保持；reset回初始三筆/defaultprops/0，環境保留。console error/warn空；main build/flutter-progress-collection-specimens.png、flutter-progress-collection-native.json保存證據。actual360 browser與感官human-pending，local320不替代。Flutterfixture105／273，剩168與全量网站/style audit等仍原goal，未提前push。actual task usage無單任務量測null。
+
+State _controls/_target/_usage操作自己的公開參數與constructor，_stepper給水平原生scroll host，_timelineContent只first item持有草稿controller，其餘普通內容，避免多input共用controller；_task/_cancel只root、_input/_childAction只child、_edit只control；_countChange維護consumer合法索引/Set，_checkAll給DTO checked資料，dispose清三controller，build280有限舞台。
