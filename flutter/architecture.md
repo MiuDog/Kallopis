@@ -147,3 +147,5 @@ flowchart TD
 	Palette --> Result[產品結果 / dismiss]
 	Result --> Demo
 ```
+
+FLUTTER-COMMAND-PALETTE-MODAL-r1 READY：公開CommandsDemo browser的scrim點擊竟啟動背景導航，modal回歸見[palette local](lib/src/features/actions/command_palette/architecture.md)。freshauthor只new modal test，BUILD只palette source；保持公開API／產品內容與原21protected檢查，不改consumer或全域theme。consumer實作04cc372f已可建置與操作，browser完整modal接受待此修正。

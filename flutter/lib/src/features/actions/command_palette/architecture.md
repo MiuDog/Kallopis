@@ -60,3 +60,15 @@ flowchart TD
 ```
 
 原生語意ACR已接受：author e5de466f確認View traversal root排除Portal候選（individual nodes仍attached），19Green/2排序Red。Portal加1px carrier探針仍同Red；由於BlockSemantics會剔除Portal語意graft的caller parent，改獨立OverlayEntry而維持現有公開介面/兩path。主題捕捉每個owner build刷新，當前open/query/session/Focus與其他module不改；closed仍零尺寸。依[OverlayPortal原生語意限制](https://api.flutter.dev/flutter/widgets/OverlayPortal-class.html)。TestAuthor修正LF單行native formatter及View root觀察，保留完整分詞/排序期待，SHA256 DB279A061B5016806C1F4EFC3C43AC78D4C5B808BA97BF3543E6C0278F97EBE9。
+
+## FLUTTER-COMMAND-PALETTE-MODAL-1（READY）
+
+修訂FLUTTER-COMMAND-PALETTE-MODAL-r1；公開constructor、controlled open／dismiss與全部搜尋／Focus／session契約保持。原生browser CommandsDemo在Windows web可重現：open後AX仍呈現背景Commands導航與產品按鈕；點scrim座標(200,350)原本期望outside，卻執行背景Workspace components導航且卸載demo。面板search／Tab／Enter／error與pending均已觀察正確；不能用21Green掩蓋此modal Red。
+
+本修正只擁有palette來源中的原生semantics／backdrop呈現：開啟時背景不能經原生可存取樹被操作；panel與候選保持可見與可啟動；scrim pointer或native semantics dismiss只提出outside且不執行背景；关闭／unmount還原原生背景可存取操作。背景產品內容／State／controller不因modal暫時排除而卸載或改值。不得新增第二open／Navigator route／theme／l10n權威、改其他元件或手寫browser DOM補丁。dismiss名稱沿既有caller提供label或原生本地化，不硬寫另一套文案。
+
+fresh獨立TestAuthor只寫flutter/test/registered_command_palette_modal_test.dart，透過publicfoundation／theme及Flutter nativeSemantics、events、平台情境驗證以上可觀察契約；必要最小層級由author判斷，nativebrowser仍是原Red重現必驗，不靠私有樹結構或sourcepattern代替。原21protected檔唯讀。BUILD單一klp_command_palette.dart；root／local architecture、test-owned、core／controls／theme／config／example／React唯讀。
+
+M1最小native語意回歸與原21checks，M2publicanalyze／scope1／releaseweb及相同scrim座標browser重驗。cold-start3k～7k tokens／20～45分鐘，參照FLUTTER-COMMAND-PALETTE-1；M1累計3k／20分鐘、M2累計7k／45分鐘；10k／60分鐘或需要公開契約／其他source回PLAN。人類感官仍pending。
+
+官方邊界：[BlockSemantics](https://api.flutter.dev/flutter/widgets/BlockSemantics-class.html)僅阻擋同semantic container先繪製節點；[ModalBarrier](https://api.flutter.dev/flutter/widgets/ModalBarrier-class.html)提供nativepointer阻擋，平台semantic dismissal需另依實際原生語意驗證。先以public native regression建立可反駁的證據，不能把平台差異當允許背景操作的理由。
