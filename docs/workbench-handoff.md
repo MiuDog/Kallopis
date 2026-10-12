@@ -11,13 +11,15 @@
 - FLUTTER-LAYOUT-2完成273a0b4f：bounds／divider／Column alignment／root有效inset／內容槽裁切／naturalfallback與舊resizecallback相容；18獨立Widget checks＋4既有workspacechecks、analyze／scope、Catalog實際渲染通過。測試作者依原callback契約獨立修正自己的斷言，沒有弱化產品要求。
 - REACT-LAYOUT-2完成6a2ca282：六個直接layout元件、元素量測／觀察器與有限px槽，9checks含獨立SSR→hydrateRoot（07a25d94）保留原input節點／編輯值，publicconsumerTypeScript／librarybuild／scope通過。
 - REACT-LAYOUT-EXAMPLE-1完成920f0022：公開consumer有width/height/end/inset/gap控制；nativebrowser確認480×300 default120/8/336、160寬minimum各68、end留白、gap12、極大9999時零內容／可還原、native輸入保留、自然量測108=70+8+30；dark／375px无水平溢出、fontsloaded、error/warn空。視覺感官human-pending。Vite517KBchunk提示保留，網站bundle按需分割，不調高閾值。
-- Docs現有27份來源及Flutter529canonical API／17modules／三surface generate／verify通過，15網站checks此前通過；React使用指南已包含新layout。尚無全部component-specific互動bundle，不能以總覽iframe宣稱完成。
+- Docs現有27份來源及Flutter534canonical API／17modules／三surface generate／verify通過，15網站checks此前通過；React使用指南已包含新layout。尚無全部component-specific互動bundle，不能以總覽iframe宣稱完成。
 
 - FLUTTER-DOCK-STATE-1完成69771496：WB-DOCK-STATE-r1公開schemaVersion1 codec／policy／restore diagnostics，7獨立checks、analyze／scope／protectedhash通過。未知version／欄位／identity／active／finite／capability整份拒絕；先驗證後reconcile，missing／available有序、result深層不可變，不動既有Dock model／Widget／storage。docs生成／verify及15網站checks通過，新增3公開API頁及保存契約。
 
 - REACT-DOCK-STATE-1完成c6af55f6：native readonly資料、encodeKlpDockLayout／restoreKlpDockLayout使用同一手寫wire；7checks、build／typedconsumer／scope通過。全部結果deepfreeze、caller不動，registry optionalbool／unknown拒絕，malformedJSON轉TypeError，無DOM或storage。
 
 - REACT-DOCK-OPS-1完成e5d8b0a6：公開applyKlpDockAction與typed action/destination/result，10checks、build／typedconsumer／scope通過。strictrequest、finalindex、capability、missing清冊先拒絕、empty／active fallback、close approved／denied／reopen、immutable／caller隔離。純utility不宣稱UI完成。
+
+- FLUTTER-DOCK-OPS-1完成243d9f98（實作b08d80e6）：typed constaction／destination／area／result及applyKlpDockAction，10獨立checks與React同fixture／情境、publicanalyze No issues／scope通過。只改operations與foundationexport；原codec／model／Widget／style不動。建構子清理中的callsite compilefailure已按diagnostic修正，相同checks再通過，沒有改tests。
 
 ## Git 與工作環境
 
@@ -34,7 +36,8 @@ Flutterwidget893CB1ABE6FE24C2F6CA54EA72769CC23EE91CD0C68B0909117DDAE5D63BBB75（
 Fluttercodec受保護tests flutter/test/dock_layout_codec_test.dart：129D62D2C11882215D2FB652A3DA99CCF64FBCBD547845270D7CACD0FDE9781C；author基線35332e86，BUILD scope在69771496閉合。手寫跨語言wire在該test首段；React下一個TestAuthor應採同樣wire成功／拒絕樣本，不用各端encode自我roundtrip代替格式驗證。
 Reactcodec protected test react/test/dock-layout-state.test.mjs hash9D654F0FAA78FF9B02A97B4C7E337585179F25D3254F53F3C4ACB45E4DC77900，author基線c0c7fa76，BUILD scope於c6af55f6閉合。
 Reactoperations protected test react/test/dock-layout-operations.test.mjs hash8856C5DC1A404D4B0797BEE8FFD3F5BE0D6295755A7FD48E734F65C5CCDDD14F，author基線6641d67e，BUILD scope在e5d8b0a6閉合。
-下一步PLAN Flutter對等公開操作，沿用共通WB-DOCK-OPS-r1與React同一成功／拒絕fixture，不重做已完成Reactoperations。再接雙框架Dock UI：沿用WB04～08／16，保留固定Stage／Left／Right／Bottom及既有Fluttercaller。完成select／reorder／move／split／merge／collapse／reopen／close／pinned／dirty的受控state與回呼、有限style尺寸／viewport保護、drag取消不改state，然後必要獨立tests及BUILD。保存codec兩端已完成不重做；一般layout也不重做。
+Flutteroperations protected test flutter/test/dock_layout_operations_test.dart hash3D9FEBC3F5B44A602CE755482FE66D3DD849225632BA1120CE42B293BBD4E3DF，TestAuthor基線ca9a4efd，BUILD scope在243d9f98閉合。
+下一步PLAN雙框架Dock UI與geometry：兩端保存codec／pure操作都已完成，不重做。沿用WB04～08／16，保留Stage／Left／Right／Bottom及既有Fluttercaller；固定有限viewport／effectivegutter、header／content槽裁切、group尺寸及drag/resize/cancel/closecallback契約。Flutterhover開area目前呼叫onLayoutChanged，需要改成presentationpreview，取消不提交；用新的pureoperation提交成功drop／close。close callback需由產品批准且dirty不丟資料、pinned／dirty由產品metadata呈現。必要獨立Widget／DOMchecks先固定，再BUILD及公開example／nativebrowser證據。
 其後命令／快捷鍵註冊、chord／scope／衝突／重綁、所有specimen、VSCode/Blockbench/Blender各双框架GUI、typedrecipe／全部元件風格對齊、網站展示registry/bundle/coverage、權威切換／CI／精確提交push仍未完成。完整goal保持ACTIVE。
 
 已直接觀察Flutter klp_dock_layout.dart _resolveGroupExtents 313～355：不足空間會分配content，但handle仍用raw semantic extent；root舊Row按保存left/right寬度直接配置，缺viewport clamp。接入purelinear resolver時必須同時使用有效gutter配置handle／overlay，不能只縮content並宣稱極大style安全。

@@ -61,3 +61,5 @@ FLUTTER-DOCK-STATE-1完成69771496：依 [WB-DOCK-STATE-r1](workbench-dock-contr
 REACT-DOCK-STATE-1完成c6af55f6：native readonly資料／encode／restore與Flutter使用同一保存wire，7 protectedchecks、librarybuild／publicconsumer／scope通過。雙端保存邊界完成不代表Dock UI完成；接續公開操作契約及兩框架分頁／拖放／resize／style幾何。
 
 REACT-DOCK-OPS-1完成e5d8b0a6：WB-DOCK-OPS-r1受控單步操作，10獨立checks、build／publicconsumer／scope通過；select／move／open／merge／close approval／visibility／resizeprefs、atomic rejection及immutable完整。下一步Flutter對等操作與雙框架Dock UI、有效resize handle／viewport geometry；hover／取消不可提交。
+
+FLUTTER-DOCK-OPS-1完成243d9f98：typed constaction／destination／area／result及pureapply，10protectedchecks（React同fixture／情境）、publicanalyze No issues及scope通過。雙框架保存及pure操作均完成，接續Dock UI：area／group有限geometry與effectivehandle、closecallback、pinned／dirty、拖放／resizefeedback及cancel不提交。

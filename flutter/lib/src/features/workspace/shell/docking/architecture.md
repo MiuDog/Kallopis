@@ -2,7 +2,7 @@
 
 修訂 `FLUTTER-DOCK-OPS-r1`；PLAN READY。擁有此 docking 目錄；公開入口由 foundation 匯出。保留直接 KlpDockLayout／Panel／Area／Group；不引入通用 node tree、renderer 或產品 storage。
 
-## 當前 slice FLUTTER-DOCK-OPS-1（READY）
+## 當前 slice FLUTTER-DOCK-OPS-1（完成）
 
 依共通 WB-DOCK-OPS-r1，公開 applyKlpDockAction({required KlpDockLayoutData layout, required List<KlpDockPanelPolicy> panels, required KlpDockAction action}) → KlpDockActionResult（layout／changed），由 foundation 匯出。保留全部原 const model／Widget API，純操作不認識產品內容、theme 或 storage。
 
@@ -52,3 +52,9 @@ M1 完整 schema／encode／restore：手寫 JSON 與拒絕證據；M2 reconcili
 69771496：KlpDockPanelPolicy 的 id／allowSide／allowBottom 投影能力；KlpDockRestoreResult 的 layout／missingPanelIds／availablePanelIds 不可變。KlpDockLayoutCodec.encode 使用 _wire → _snapshot 驗證後 jsonEncode；restore 使用 jsonDecode → _snapshot → reconcile，保持原模型 API。_object 檢查 exact fields、_id 檢查非空、_extent 檢查有限數值、_invalid 擁有 FormatException。wire／snapshot／reconcile 分別擁有邊界轉換、全域 identity 與清冊診斷，沒有新增 renderer。
 
 7 項獨立 checks、公開 foundation／codec analyze、scope gate 通過；測試 SHA256 129D62D2C11882215D2FB652A3DA99CCF64FBCBD547845270D7CACD0FDE9781C 未變。Test Author 基線35332e86僅有缺新符號的 compile Yellow；實作後全部 Green，沒有宣稱未存在的 behavior Red。BUILD 僅改兩個允許路徑，無感官結果。React codec 與 Dock UI 仍待接續；後續 owner 修改本 architecture 不回算為 BUILD worker scope。
+
+## Operations 清冊及完成證據
+
+b08d80e6／243d9f98：KlpDockArea、Destination、Action及ActionResult公開typed const API，applyKlpDockAction依codec驗證before／after；_DockWorking只持有owned replacements，原snapshot保持不可變。_findPanel／_placedPanel／_group定位，_setGroup／_deleteGroup／_removePanel統一copyWith及active fallback；_permitted驗證destination能力，_identity／_insertion／_extent／_invalid擁有FormatException。named constructors用私有tag/payload維持shape，不提供JSONaction或Widgettree。
+
+10獨立checks（React同fixture／情境）、publicfoundation analyze No issues、scope通過；SHA256 3D9FEBC3F5B44A602CE755482FE66D3DD849225632BA1120CE42B293BBD4E3DF未變。TestAuthor基線ca9a4efd缺symbol為compileYellow。建構子清理中發現private initializing formal的callsite名稱編譯錯誤，已按diagnostic修正並重跑相同checks，無測試／contract改動及無Greenfallback。BUILD僅兩個allowedpaths，scope於243d9f98閉合；後續owner修改architecture與docs不回算worker。兩框架pure操作已完成，UI、有效handle／viewport geometry與pinned／dirty呈現待接入。

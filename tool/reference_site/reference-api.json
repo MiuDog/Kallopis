@@ -14215,6 +14215,153 @@
 					]
 				},
 				{
+					"id": "package:kallopis/src/features/workspace/shell/docking/klp_dock_layout_operations.dart#KlpDockAction",
+					"name": "KlpDockAction",
+					"slug": "klp-dock-action",
+					"kind": "class",
+					"module": "features.workspace",
+					"sourceUri": "package:kallopis/src/features/workspace/shell/docking/klp_dock_layout_operations.dart",
+					"primarySurface": "foundation",
+					"surfaces": [
+						"foundation"
+					],
+					"signature": "class KlpDockAction",
+					"documentation": "Typed named constructors 固定合法操作形狀，數值在提交邊界驗證。",
+					"typeRelationships": {
+						"extends": "Object",
+						"mixins": [],
+						"implements": []
+					},
+					"members": [
+						{
+							"name": "KlpDockAction.close",
+							"kind": "constructor",
+							"signature": "KlpDockAction.close({required String panelId, required bool approved})",
+							"documentation": ""
+						},
+						{
+							"name": "KlpDockAction.merge",
+							"kind": "constructor",
+							"signature": "KlpDockAction.merge({\n  required String sourceGroupId,\n  required String targetGroupId,\n  required int index,\n})",
+							"documentation": ""
+						},
+						{
+							"name": "KlpDockAction.move",
+							"kind": "constructor",
+							"signature": "KlpDockAction.move({required String panelId, required KlpDockDestination destination})",
+							"documentation": ""
+						},
+						{
+							"name": "KlpDockAction.open",
+							"kind": "constructor",
+							"signature": "KlpDockAction.open({required String panelId, required KlpDockDestination destination})",
+							"documentation": ""
+						},
+						{
+							"name": "KlpDockAction.resizeArea",
+							"kind": "constructor",
+							"signature": "KlpDockAction.resizeArea({required KlpDockArea area, required double extent})",
+							"documentation": ""
+						},
+						{
+							"name": "KlpDockAction.resizeGroup",
+							"kind": "constructor",
+							"signature": "KlpDockAction.resizeGroup({required String groupId, required double extent})",
+							"documentation": ""
+						},
+						{
+							"name": "KlpDockAction.select",
+							"kind": "constructor",
+							"signature": "KlpDockAction.select({required String panelId})",
+							"documentation": ""
+						},
+						{
+							"name": "KlpDockAction.visibility",
+							"kind": "constructor",
+							"signature": "KlpDockAction.visibility({required KlpDockArea area, required bool isVisible})",
+							"documentation": ""
+						}
+					]
+				},
+				{
+					"id": "package:kallopis/src/features/workspace/shell/docking/klp_dock_layout_operations.dart#KlpDockActionResult",
+					"name": "KlpDockActionResult",
+					"slug": "klp-dock-action-result",
+					"kind": "class",
+					"module": "features.workspace",
+					"sourceUri": "package:kallopis/src/features/workspace/shell/docking/klp_dock_layout_operations.dart",
+					"primarySurface": "foundation",
+					"surfaces": [
+						"foundation"
+					],
+					"signature": "class KlpDockActionResult",
+					"documentation": "操作結果由產品採用，no-op 也提供隔離快照。",
+					"typeRelationships": {
+						"extends": "Object",
+						"mixins": [],
+						"implements": []
+					},
+					"members": [
+						{
+							"name": "changed",
+							"kind": "field",
+							"signature": "bool changed",
+							"documentation": "完整保存值是否改變。"
+						},
+						{
+							"name": "layout",
+							"kind": "field",
+							"signature": "KlpDockLayoutData layout",
+							"documentation": "深層不可變布局，不持有 caller 的可變列表。"
+						}
+					]
+				},
+				{
+					"id": "package:kallopis/src/features/workspace/shell/docking/klp_dock_layout_operations.dart#KlpDockArea",
+					"name": "KlpDockArea",
+					"slug": "klp-dock-area",
+					"kind": "enum",
+					"module": "features.workspace",
+					"sourceUri": "package:kallopis/src/features/workspace/shell/docking/klp_dock_layout_operations.dart",
+					"primarySurface": "foundation",
+					"surfaces": [
+						"foundation"
+					],
+					"signature": "enum KlpDockArea",
+					"documentation": "固定 Stage 周圍的三個停靠區，不改寫既有 Widget 模型。",
+					"typeRelationships": {
+						"extends": "Enum",
+						"mixins": [],
+						"implements": []
+					},
+					"members": [
+						{
+							"name": "KlpDockArea",
+							"kind": "constructor",
+							"signature": "KlpDockArea()",
+							"documentation": ""
+						},
+						{
+							"name": "bottom",
+							"kind": "enumValue",
+							"signature": "KlpDockArea bottom",
+							"documentation": ""
+						},
+						{
+							"name": "left",
+							"kind": "enumValue",
+							"signature": "KlpDockArea left",
+							"documentation": ""
+						},
+						{
+							"name": "right",
+							"kind": "enumValue",
+							"signature": "KlpDockArea right",
+							"documentation": ""
+						}
+					]
+				},
+				{
 					"id": "package:kallopis/src/features/workspace/shell/docking/klp_dock_layout_models.dart#KlpDockAreaConstraints",
 					"name": "KlpDockAreaConstraints",
 					"slug": "klp-dock-area-constraints",
@@ -14313,6 +14460,69 @@
 							"kind": "field",
 							"signature": "bool isVisible",
 							"documentation": ""
+						}
+					]
+				},
+				{
+					"id": "package:kallopis/src/features/workspace/shell/docking/klp_dock_layout_operations.dart#KlpDockDestination",
+					"name": "KlpDockDestination",
+					"slug": "klp-dock-destination",
+					"kind": "class",
+					"module": "features.workspace",
+					"sourceUri": "package:kallopis/src/features/workspace/shell/docking/klp_dock_layout_operations.dart",
+					"primarySurface": "foundation",
+					"surfaces": [
+						"foundation"
+					],
+					"signature": "class KlpDockDestination",
+					"documentation": "分頁插入或新群組；index 是移除來源之後的最終位置。",
+					"typeRelationships": {
+						"extends": "Object",
+						"mixins": [],
+						"implements": []
+					},
+					"members": [
+						{
+							"name": "KlpDockDestination.group",
+							"kind": "constructor",
+							"signature": "KlpDockDestination.group({\n  required KlpDockArea area,\n  required String groupId,\n  required int index,\n  required double extent,\n})",
+							"documentation": ""
+						},
+						{
+							"name": "KlpDockDestination.tab",
+							"kind": "constructor",
+							"signature": "KlpDockDestination.tab({\n  required KlpDockArea area,\n  required String groupId,\n  required int index,\n})",
+							"documentation": ""
+						},
+						{
+							"name": "area",
+							"kind": "field",
+							"signature": "KlpDockArea area",
+							"documentation": "目標區域，能力由產品清冊決定。"
+						},
+						{
+							"name": "createsGroup",
+							"kind": "field",
+							"signature": "bool createsGroup",
+							"documentation": "區分原群組插入與建立群組，不承載內容。"
+						},
+						{
+							"name": "extent",
+							"kind": "field",
+							"signature": "double? extent",
+							"documentation": "新群組的有限正數偏好尺寸；tab 沒有額外尺寸。"
+						},
+						{
+							"name": "groupId",
+							"kind": "field",
+							"signature": "String groupId",
+							"documentation": "原群組或新的全域唯一 identity。"
+						},
+						{
+							"name": "index",
+							"kind": "field",
+							"signature": "int index",
+							"documentation": "最終分頁或群組插入位置，不 clamp。"
 						}
 					]
 				},
@@ -20012,6 +20222,26 @@
 							"documentation": ""
 						}
 					]
+				},
+				{
+					"id": "package:kallopis/src/features/workspace/shell/docking/klp_dock_layout_operations.dart#applyKlpDockAction",
+					"name": "applyKlpDockAction",
+					"slug": "apply-klp-dock-action",
+					"kind": "function",
+					"module": "features.workspace",
+					"sourceUri": "package:kallopis/src/features/workspace/shell/docking/klp_dock_layout_operations.dart",
+					"primarySurface": "foundation",
+					"surfaces": [
+						"foundation"
+					],
+					"signature": "KlpDockActionResult applyKlpDockAction({\n  required KlpDockLayoutData layout,\n  required List<KlpDockPanelPolicy> panels,\n  required KlpDockAction action,\n})",
+					"documentation": "驗證後只修改 owned working lists；hover 或取消不提交此操作。",
+					"typeRelationships": {
+						"extends": null,
+						"mixins": [],
+						"implements": []
+					},
+					"members": []
 				},
 				{
 					"id": "package:kallopis/src/features/workspace/shell/window/klp_window_header_height.dart#klpWindowHeaderHeight",

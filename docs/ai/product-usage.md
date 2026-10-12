@@ -155,3 +155,28 @@ try {
 ```
 
 缺少面板按保存順序移除並回報；空群組刪除，選取項目消失則選剩下的第一個；未放置面板依清冊順序回報，庫不自動新增布局。版本、未知欄位、重複 id、非法 active／數值及停靠能力衝突會整份拒絕。完整 wire 與還原規則見 [Dock 保存契約](../architecture/workbench-dock-contract.md)。reset 由產品提供預設 layout。現有受控 KlpDockLayout API 保留；本 codec 不代表 Dock 其餘 UI 補齊已完成。
+
+## Dock 受控操作
+
+foundation 公開 applyKlpDockAction，接收 layout／panels／action，回傳 KlpDockActionResult 的不可變 layout／changed。KlpDockAction 的 select、move、open、merge、close、visibility、resizeArea、resizeGroup 與 React 使用同一[操作契約](../architecture/workbench-dock-contract.md#受控操作-wb-dock-ops-r1)。KlpDockDestination.tab 重排或移入既有群組；.group 建立新群組，可用於分割或重新開啟。
+
+```dart
+final result = applyKlpDockAction(
+	layout: layout,
+	panels: policies,
+	action: const KlpDockAction.move(
+		panelId: 'inspector',
+		destination: KlpDockDestination.group(
+			area: KlpDockArea.right,
+			groupId: 'inspector-group',
+			index: 0,
+			extent: 240,
+		),
+	),
+);
+if (result.changed) setState(() => layout = result.layout);
+```
+
+index 是移除來源後的最終位置，不 clamp；new groupId 不可與操作前任何群組重複。來源空群組刪除，active 移走取剩餘第一個；目標區域展開，select 只更新 active。close 的 approved 必由產品關閉 callback 決定；false 保留全部資料，true 只移除布局，不刪 registry，面板仍可 open。dirty／pinned 不寫入布局資料。
+
+resize 只更新有限偏好尺寸，由 UI 依 constraints／viewport 解算後提交；hover／取消拖曳不提交操作。非法目前布局、缺清冊、能力衝突、identity／index／extent 都以 FormatException 整份拒絕，原 caller 不改。既有 KlpDockLayout API 保持；Widget 互動接入與極端風格幾何保護仍在後續 Workbench stage。
