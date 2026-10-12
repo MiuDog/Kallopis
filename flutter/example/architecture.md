@@ -600,3 +600,33 @@ Native5203 prefix三頁自己的props/label control2操作。Rail原top-b entry1
 Navigator原child-b選取1，element折疊2/展開3、category折疊4/展開5，受控selection child-b保持；公開component child輸入2/動作1分開，entry0。四mode/spacious/local320保留草稿及root5/child1/input2；reset回initialsets、child-a/defaultprops/0，環境保持。Publication bounded300 child input2/action1 root0；visibletrue原child action變generic而progress呈現，hide後button及同草稿恢復；只記已觀察狀態，不宣稱完整modal或pointer阻擋已驗收。當次console error/warn空；main build/flutter-navigation-compound-specimens.png、flutter-navigation-compound-native.json保存證據。actual360 browser與感官human-pending。Flutterfixture133／273，剩140及全量网站/style audit等仍原goal，未提前push，actual單task usage未量測null。
 
 State _controls/_target/_usage/_rail/_navigator持有自己的公開DTO/props，_entry/_leaf/_child提供合法資料與單一controller內容；_reorder/_topReorder/_centerReorder直接回寫原publiccallback normalizedindex，_divider控制資料包含divider故不錯置drag索引；_railSelect/_railMenu只entry，_category/_element/_select只root，_childAction/_input分開、_edit只control，dispose清三controller，build各boundedhost。不建立FileExplorer adapter、產品runtime或第二theme。
+
+
+## FLUTTER-ACTION-UTILITY-SPECIMENS-1（READY）
+
+修訂FLUTTER-ACTION-UTILITY-SPECIMENS-r1；IDOC-01/02/03/06/08，exact lib/component_specimens.dart、新 lib/action_utility_specimens.dart。五target KlpBulkActionBar、KlpCommandMenu、KlpEditorToolbar、KlpSearchNavigator、KlpSelectionToolbar；已完成registered五與basic button保持，全273目標不變。
+
+ActionUtilityComponentSpecimen(name)只public foundation/Flutter widgets；State擁有label/detail controllers、公開DTO props、action selected/disabled/danger、menu framed/autofocus、query/current/total與closed/selectioncount，以及entry/root/control結果。Bulk/Editor/Selection公開DTO動作只記entry callback，Selection clear是root並回寫count0；CommandMenu原item回呼與Escape分開，shortcut僅標示不假裝註冊，menu keyboard原有規則由native驗收不複製算法。autofocus變更明示重建target，環境不換key。Search initialQuery control明示套用並重建target，ordinary control編輯不偷偷重設原input；原query回呼更新query結果，previous/next只consumer示意位置投影合法1..total或0..0，close由consumer移除並可restore，不建立search引擎。
+
+自己的constructor/controls/usage與真實callback；環境保留state/controllers，epoch reset、dispose清controller，280finite scroll舞台。無core/persist/crosslanguage新邊界，不新增鏡像tests，library/tests/config/style/site/docs禁止寫。驗收五registry/formalrenderable、publicanalyze、同sourceprefixrelease、native ownprops/文字/actions/clear/searchinput/previous/next/close/menu keyboard跳過disabled/Enter/Escape、四mode/spacious/local320保留query與callback/reset、scope2/diff。actual窄browser與感官human-pending。
+
+估5k～10k/35～80分鐘，參考NAVIGATION/DATA；M1 source5/analyze/build（6k40），M2 native/state/scope（10k80）；15k120或public不足回PLAN；actual單taskusage未量測null。
+
+| Source / class / function | 責任 |
+| --- | --- |
+| actionUtilitySpecimenNames / ActionUtilityComponentSpecimen | 精確自己的publicroute |
+| State controls/target/usage/build | 公開props與DTO、finitehost |
+| State action/clear/search/menu handlers | 原entry/root分開與consumer投影 |
+| State controllers/dispose | label/detail及query生命週期 |
+| component fixture | environment與epoch保留 |
+
+```mermaid
+flowchart TD
+	Host[ComponentSpecimenApp] --> Fixture[ActionUtilityComponentSpecimen]
+	Fixture --> Props[自己的publicprops / DTO controls]
+	Props --> Target[真實toolbar / menu / search]
+	Target --> Callback[原entry / clear / query / Escape]
+	Callback --> State[consumer資料與結果]
+	State --> Target
+	Host --> Reset[epoch重建]
+```
