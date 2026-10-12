@@ -23,4 +23,6 @@ FLUTTER-STYLE-1 實作 `17119f2b`；Test Author SHA256 `15B43CF1A61888D208B32785
 
 下一步 PLAN 雙框架通用 layout：先核對既有 Flutter Row／Column／Pane 算法與 constraints，再制定 React 對應公開契約及跨框架幾何保護；Dock、commands、specimens 隨後接續。GUI 選用 VS Code、Blockbench、Blender；Blender 官方 4.5 workspace 正文已取得 HTTP 200。範例使用公開本庫元件及自己的 state，不引入編輯器／3D／終端核心。
 
-Flutter adapter 完成後重新 extraction：521 canonical API／17 modules／三個公開入口；已更新已驗證網站 manifest，generate／verify 通過。下一個同步 main 的基線為 31cea818。
+Flutter adapter 完成後重新 extraction：521 canonical API／17 modules／三個公開入口；已更新已驗證網站 manifest，generate／verify 通過。已同步 main：相對 31cea818 的 15 個受檢查路徑；全部先確認 main 等於基線或新內容，再複製，index 未修改。Main 的 19 項 style pack checks、generator freshness 與 521 API generate／verify 也通過。下一次同步以 af93140c 為基線。
+
+一般布局現況（下一輪 bounded retrieval 起點）：Flutter module 為 flutter/lib/src/features/workspace/layout/architecture.md；實作只有 klp_app_layout.dart、klp_frame_groups.dart。現有線性配置使用原生 Row／Column／Expanded，加固定 semantic gutter；尚無一般 min／max 分配 resolver，極大 gap／固定 pane 可能溢出。LayoutResizeHandle 公開 onResize 且私有 _linearChildren 會建立手勢，和 KLP-0024 的一般 divider 不拖曳有差異；repo example／tests 未找到 callback caller。PLAN 必須保留公開相容性，明示處理，不能 BUILD 偷刪 API。React 尚無對應 layout module。
