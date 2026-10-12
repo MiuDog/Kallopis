@@ -221,3 +221,29 @@ callback 可直接回傳 bool 或 Future<bool>；false 不提交，true 才移�
 KlpDockHeader另有120／220寬度控制，有限宿主用Align提供loose限制，避免Column的stretch覆蓋指定寬度。更多選單中的動作顯示產品回饋。Catalog的Material透明祖先提供正常DefaultTextStyle，不建立第二份theme。
 
 新版releaseweb已在瀏覽器確認選取、收合、保存還原／錯誤保留、拒絕／批准／延遲完成、重開／合併、跨區拖放／分割及area resize；窄header更多選單可執行設定。Hover preview/cancel完整browser矩陣、三種雙框架GUI與全部元件網頁展示仍待接續，感官品質由人類接受。
+
+### Flutter 命令核心
+
+`KlpCommandRegistry<C>`、definition/state/result/status/error phase從stable foundation使用。產品持有registry與最新context；註冊時複製metadata及keywords，不複製產品值、icon或context。字串須有非空白內容，但不改原值。所有呈現入口使用同一registry查詢，業務執行以ID呼叫。
+
+```dart
+final commands = KlpCommandRegistry<ProductContext>();
+final definition = KlpCommandDefinition<ProductContext>(
+	id: 'document.save',
+	label: '儲存',
+	isEnabled: (context) => context.canSave,
+	handler: (context) => productSave(),
+);
+final unregister = commands.register(definition);
+final result = await commands.execute('document.save', latestContext);
+if (result.status == KlpCommandExecutionStatus.error) showProductError(result.error);
+// 產品卸載時解除註冊，並銷毀自己擁有的 registry。
+unregister();
+commands.dispose();
+```
+
+`getState`／`list`提供visible/enabled/checked/running及conditionError；執行需visible與enabled為true、running為false。registry重新檢查條件，同命令pending回busy，不同命令可並行。解除或同ID重新註冊不取消已啟動的產品Future；舊結果不清新owner狀態。
+
+`subscribe`回自己的disposer，也可沿原生Listenable的addListener/removeListener；即使callback相同，原生removeListener不解除subscribe。外部closure條件改變用refresh通知，version反映每次註冊/解除/開始/完成/refresh/dispose。通知中dispose合法，立即關閉並最後一次通知；disposed查詢仍合法，mutation拋StateError。observer錯誤沿FlutterError，handler及condition原錯誤只由typed結果交產品。
+
+24項公共命令檢查及局部靜態分析通過，包含原生通知中銷毀與混合訂閱順序。完整規則見[共同命令契約](../architecture/workbench-command-contract.md)；選單、命令面板與快捷鍵仍待統一接入。

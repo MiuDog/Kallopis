@@ -1,6 +1,6 @@
 # Flutter 命令 registry
 
-FLUTTER-COMMAND-CORE-r1 READY。依[WB-COMMAND-r1](../../../../../../docs/architecture/workbench-command-contract.md)固定產品無關的metadata、條件與執行生命週期；不持有context、產品storage、UI/theme或預設命令。既有CommandMenu／WorkspaceCommand／KeyBindingController本slice唯讀，後續入口統一引用ID。
+FLUTTER-COMMAND-CORE-r1 COMPLETE。依[WB-COMMAND-r1](../../../../../../docs/architecture/workbench-command-contract.md)固定產品無關的metadata、條件與執行生命週期；不持有context、產品storage、UI/theme或預設命令。既有CommandMenu／WorkspaceCommand／KeyBindingController本slice唯讀，後續入口統一引用ID。
 
 ## 公開契約
 
@@ -54,4 +54,17 @@ FLUTTER-COMMAND-CORE-1 BUILD只`flutter/lib/src/features/actions/command_registr
 
 M1metadata/conditions/sorted immutable snapshots，M2pending/stale/subscription/原生listener-dispose與公開consumer。cold-start6k–12k tokens／35–70分鐘，參照REACT-COMMAND-CORE-1及FLUTTER-DOCK-OPS-1；18k/100分鐘或需共同契約變更回PLAN。接受證據為保護hash不變、獨立局部checks Green、public analyze及2path scope，無感官或全stage完成宣稱。
 
-首版b2cdee54生命週期基線21checks/analyze/scope通過；observer混合owner的解除順序需補明確保護，當前slice尚未閉合。FLUTTER-COMMAND-OBSERVER-1只可改本來源，不改foundation或其他public型別；fresh-context既有TestAuthor只補自己test，public情境為subscribe先註冊、再addListener同callback、removeListener只少原生owner，重複remove不觸碰subscribe。保護後重新發行cleanbase Task Packet。估算1k–3k tokens／5–15分鐘，參照本core；M1獨立行為Red、M2同hash Green/analyze/1pathscope，超過5k/30分鐘回PLAN。
+首版b2cdee54生命週期基線21checks/analyze/2pathscope通過；native/subscription解除邊界由owner b319af8c澄清，獨立TestAuthor7b660382追加3個反序/單獨subscription情境，基線21Green/3behaviorRed（原生removeListener誤移除subscribe）。BUILD9cffc7e8增加owner來源限制，24checks全部Green／2publicsource analyze No issues／1pathscope／protectedhash不變。必要回歸沒有弱化原assertions。
+
+protected `flutter/test/command_registry_test.dart` SHA256 `09C8FFA8D207B6A10D83AC0FE7AAA74528408FD57934099758F978611F45AE1C`；Task Packets及closure在main ignored build/task-packets/flutter-command-core-1*.json與flutter-command-observer-1*.json。core scope只在b2cdee54、observer scope只在9cffc7e8閉合；checker初次拒絕packet架構路徑，owner修正為package root flutter/architecture.md後同2path evidence通過，沒有擴大allowed_write。
+
+| 當前定義 | 來源 | 責任 |
+| --- | --- | --- |
+| KlpCommandDefinition／ConditionError／State／ExecutionResult／ExecutionStatus／ErrorPhase | [klp_command_registry.dart](klp_command_registry.dart) | definition公開const資料；其餘nativeimmutable snapshots、typed值/錯誤位置 |
+| _KlpCommandEntry／_KlpCommandObserver | 同上 | constructors、註冊token/running與listener/唯一relay/isNative ownership |
+| KlpCommandRegistry 公開介面 | 同上 | version/isDisposed、register/getState/list/execute/subscribe/refresh、native addListener/removeListener/notifyListeners/dispose |
+| _requireOpen／_requireText／_copyDefinition | 同上 | closed/非空白驗證、metadata/list隔離與callback保留 |
+| _snapshot／_isCurrent／_outcome／_failure | 同上 | latest context純條件、同token判斷及原產品結果 |
+| _addObserver／_removeObserver／_emit | 同上 | relay精確解除、原生owner限制、版本失效通知；notifyListeners/dispose deferred native cleanup |
+
+這是pure command core完成；產品還需使用同registry接入toolbar/menu/palette/keybinding，沒有DOM/Widget command入口、chord或全部stage完成宣稱。

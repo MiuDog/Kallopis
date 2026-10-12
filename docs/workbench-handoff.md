@@ -4,8 +4,8 @@
 
 ## 下一個可執行步驟
 
-1. Flutter command core PLAN：WB-COMMAND-r1已READY，flutter/architecture.md有共同邊界；先固定actions command_registry子module精確介面與writepaths，再交fresh獨立Test Author。不可讀React內部照抄，使用共同契約；保持既有CommandMenu／WorkspaceCommand／KeyBindingController caller相容。
-2. Flutter core完成後，雙框架集中命令入口、palette及快捷鍵/chord/scope/conflict/remap/recording契約與接入。不可用core冒充整個命令stage完成。
+1. 雙框架command core已完成。下一個PLAN固定toolbar/menu/context menu/palette等入口如何以ID引用同registry，保持既有Flutter CommandMenu／WorkspaceCommand caller相容；不重做registry。
+2. 雙框架快捷鍵/chord/scope/conflict/remap/recording契約與接入。不可用core冒充整個命令stage完成。
 3. 網站每個公開可呈現元件專屬互動specimen、registry/bundle/coverage；3GUI×2框架；typedrecipes／完整風格中立與參數／default權威切換。
 4. 補browser hoverpreview/cancel矩陣、Flutter continuousresize與React endcommit差異契約審核；保留所有既有CI/發布閘門，精確commit/push。感官接受human-pending。
 
@@ -14,6 +14,12 @@
 共同docs/architecture/workbench-command-contract.md WB-COMMAND-r1 READY，PLAN6e42acd0／metadata及stale dispatch澄清58f366c4。React修訂REACT-COMMAND-CORE-r1 COMPLETE，BUILD53c6ac39只新增react/src/command-registry.ts及index匯出。generic caller context／metadata隔離／三條件／typed原值結果／per-entry pending／stale owner／獨立subscription／version-refresh-dispose；無DOM、產品state/storage、defaultcommands。
 
 fresh獨立TestAuthor e568ac7c／補強3feb78b9，只寫react/test/command-registry.test.mjs；SHA256 FA7DD79C2A0F187212CC1283570627AE82DD09A5BD36F6709949960167E44010。11項checks全部Green、library build、ignored typedconsumer及2path scope通過，protectedhash不變。基線missingexport Yellow，不是behaviorRed；首次phase推導string的compile Red以literal修正，相同檢查通過，沒有改tests。packet/closure在main build/task-packets/react-command-core-1*.json；scope只在53c6ac39閉合。
+
+## 新完成：Flutter command core
+
+PLAN2be47a25／引用修正04a94326；fresh TestAuthor7607bc39只寫flutter/test/command_registry_test.dart，初始public API缺少為compile Yellow；BUILD b2cdee54新增原生命令來源及foundationexport，21checks/public analyze No issues/2path scope通過。scope packet首次architecture_path與module_root不符，修正為Flutter package root後同2path evidence通過，allowed_write未擴大。
+
+owner b319af8c澄清removeListener只解除native addListener owner；獨立author7b660382保留原斷言並補3case，基線21Green/3behaviorRed。BUILD9cffc7e8只在observer新增isNative並限制removeListener，24checks/public analyze/1path scope通過。protected hash 09C8FFA8D207B6A10D83AC0FE7AAA74528408FD57934099758F978611F45AE1C。通知中dispose立即closed/clear/finalnotify，super ChangeNotifier cleanup安全延後；native Listenable保留。module詳見flutter/lib/src/features/actions/command_registry/architecture.md，packets/closures main build/task-packets/flutter-command-core-1*.json與flutter-command-observer-1*.json。沒有命令UI/keyboard完成宣稱。
 
 ## 已完成基礎及直接證據入口
 
@@ -27,7 +33,7 @@ fresh獨立TestAuthor e568ac7c／補強3feb78b9，只寫react/test/command-regis
 | Dock codec／operations | Flutter69771496／243d9f98；Reactc6af55f6／e5d8b0a6；各7codec、10operationschecks | 已完成；consumer只投影id/capabilities清冊，不傳content/callback |
 | Flutter Panel／Dock | Panel5e18ccd6／8d4fc334九checks；geometry296e7cab十三；preview3064c359七；UI4ff1c999十三，Dock合計33checks | browser preview/cancel全矩陣 |
 | React Dock | geometry08ea39fc九；native1 7690b23b九；native2 681c0f6c／583818e8／6ee63c5e九，合計18nativechecks | native1部分act harness warnings保留，browser矩陣同上 |
-| 參考網站 | Flutter534canonical API／17modules／三surface generate/verify；此前15網站checks | 534 API清冊不等於534互動頁；全部展示未完成 |
+| 參考網站 | Flutter541canonical API／17modules／三surface extract/generate/verify；28文件、15網站checks | 541 API清冊不等於541互動頁；全部展示未完成 |
 
 共同Dock契約docs/architecture/workbench-dock-contract.md與linear契約workbench-linear-contract.md均READY。KLP0024要求一般Row/Column/Pane與Dock分開，保留direct native元件；不得重建node/adapter/declarative runtime。公開Flutter theme/foundation為stable，consumer不得引用src。
 

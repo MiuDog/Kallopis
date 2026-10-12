@@ -227,6 +227,279 @@
 					]
 				},
 				{
+					"id": "package:kallopis/src/features/actions/command_registry/klp_command_registry.dart#KlpCommandConditionError",
+					"name": "KlpCommandConditionError",
+					"slug": "klp-command-condition-error",
+					"kind": "class",
+					"module": "features.actions",
+					"sourceUri": "package:kallopis/src/features/actions/command_registry/klp_command_registry.dart",
+					"primarySurface": "foundation",
+					"surfaces": [
+						"foundation"
+					],
+					"signature": "class KlpCommandConditionError",
+					"documentation": "",
+					"typeRelationships": {
+						"extends": "Object",
+						"mixins": [],
+						"implements": []
+					},
+					"members": [
+						{
+							"name": "error",
+							"kind": "field",
+							"signature": "Object error",
+							"documentation": ""
+						}
+					]
+				},
+				{
+					"id": "package:kallopis/src/features/actions/command_registry/klp_command_registry.dart#KlpCommandDefinition",
+					"name": "KlpCommandDefinition",
+					"slug": "klp-command-definition",
+					"kind": "class",
+					"module": "features.actions",
+					"sourceUri": "package:kallopis/src/features/actions/command_registry/klp_command_registry.dart",
+					"primarySurface": "foundation",
+					"surfaces": [
+						"foundation"
+					],
+					"signature": "class KlpCommandDefinition<C>",
+					"documentation": "產品擁有的命令定義；註冊時隔離 metadata，context 與業務仍由產品擁有。",
+					"typeRelationships": {
+						"extends": "Object",
+						"mixins": [],
+						"implements": []
+					},
+					"members": [
+						{
+							"name": "KlpCommandDefinition",
+							"kind": "constructor",
+							"signature": "KlpCommandDefinition<C>({\n  required String id,\n  required String label,\n  required FutureOr<Object?> Function(C) handler,\n  String? description,\n  String? category,\n  List<String> keywords = const [],\n  KlpIconData? icon,\n  bool Function(C)? isVisible,\n  bool Function(C)? isEnabled,\n  bool Function(C)? isChecked,\n})",
+							"documentation": ""
+						},
+						{
+							"name": "category",
+							"kind": "field",
+							"signature": "String? category",
+							"documentation": ""
+						},
+						{
+							"name": "description",
+							"kind": "field",
+							"signature": "String? description",
+							"documentation": ""
+						},
+						{
+							"name": "handler",
+							"kind": "field",
+							"signature": "FutureOr<Object?> Function(C) handler",
+							"documentation": ""
+						},
+						{
+							"name": "icon",
+							"kind": "field",
+							"signature": "KlpIconData? icon",
+							"documentation": ""
+						},
+						{
+							"name": "id",
+							"kind": "field",
+							"signature": "String id",
+							"documentation": ""
+						},
+						{
+							"name": "isChecked",
+							"kind": "field",
+							"signature": "bool Function(C)? isChecked",
+							"documentation": ""
+						},
+						{
+							"name": "isEnabled",
+							"kind": "field",
+							"signature": "bool Function(C)? isEnabled",
+							"documentation": ""
+						},
+						{
+							"name": "isVisible",
+							"kind": "field",
+							"signature": "bool Function(C)? isVisible",
+							"documentation": ""
+						},
+						{
+							"name": "keywords",
+							"kind": "field",
+							"signature": "List<String> keywords",
+							"documentation": ""
+						},
+						{
+							"name": "label",
+							"kind": "field",
+							"signature": "String label",
+							"documentation": ""
+						}
+					]
+				},
+				{
+					"id": "package:kallopis/src/features/actions/command_registry/klp_command_registry.dart#KlpCommandErrorPhase",
+					"name": "KlpCommandErrorPhase",
+					"slug": "klp-command-error-phase",
+					"kind": "enum",
+					"module": "features.actions",
+					"sourceUri": "package:kallopis/src/features/actions/command_registry/klp_command_registry.dart",
+					"primarySurface": "foundation",
+					"surfaces": [
+						"foundation"
+					],
+					"signature": "enum KlpCommandErrorPhase",
+					"documentation": "",
+					"typeRelationships": {
+						"extends": "Enum",
+						"mixins": [],
+						"implements": []
+					},
+					"members": [
+						{
+							"name": "KlpCommandErrorPhase",
+							"kind": "constructor",
+							"signature": "KlpCommandErrorPhase()",
+							"documentation": ""
+						},
+						{
+							"name": "condition",
+							"kind": "enumValue",
+							"signature": "KlpCommandErrorPhase condition",
+							"documentation": ""
+						},
+						{
+							"name": "handler",
+							"kind": "enumValue",
+							"signature": "KlpCommandErrorPhase handler",
+							"documentation": ""
+						}
+					]
+				},
+				{
+					"id": "package:kallopis/src/features/actions/command_registry/klp_command_registry.dart#KlpCommandExecutionResult",
+					"name": "KlpCommandExecutionResult",
+					"slug": "klp-command-execution-result",
+					"kind": "class",
+					"module": "features.actions",
+					"sourceUri": "package:kallopis/src/features/actions/command_registry/klp_command_registry.dart",
+					"primarySurface": "foundation",
+					"surfaces": [
+						"foundation"
+					],
+					"signature": "class KlpCommandExecutionResult",
+					"documentation": "",
+					"typeRelationships": {
+						"extends": "Object",
+						"mixins": [],
+						"implements": []
+					},
+					"members": [
+						{
+							"name": "commandId",
+							"kind": "field",
+							"signature": "String commandId",
+							"documentation": ""
+						},
+						{
+							"name": "error",
+							"kind": "field",
+							"signature": "Object? error",
+							"documentation": ""
+						},
+						{
+							"name": "phase",
+							"kind": "field",
+							"signature": "KlpCommandErrorPhase? phase",
+							"documentation": ""
+						},
+						{
+							"name": "status",
+							"kind": "field",
+							"signature": "KlpCommandExecutionStatus status",
+							"documentation": ""
+						},
+						{
+							"name": "value",
+							"kind": "field",
+							"signature": "Object? value",
+							"documentation": ""
+						}
+					]
+				},
+				{
+					"id": "package:kallopis/src/features/actions/command_registry/klp_command_registry.dart#KlpCommandExecutionStatus",
+					"name": "KlpCommandExecutionStatus",
+					"slug": "klp-command-execution-status",
+					"kind": "enum",
+					"module": "features.actions",
+					"sourceUri": "package:kallopis/src/features/actions/command_registry/klp_command_registry.dart",
+					"primarySurface": "foundation",
+					"surfaces": [
+						"foundation"
+					],
+					"signature": "enum KlpCommandExecutionStatus",
+					"documentation": "",
+					"typeRelationships": {
+						"extends": "Enum",
+						"mixins": [],
+						"implements": []
+					},
+					"members": [
+						{
+							"name": "KlpCommandExecutionStatus",
+							"kind": "constructor",
+							"signature": "KlpCommandExecutionStatus()",
+							"documentation": ""
+						},
+						{
+							"name": "busy",
+							"kind": "enumValue",
+							"signature": "KlpCommandExecutionStatus busy",
+							"documentation": ""
+						},
+						{
+							"name": "disabled",
+							"kind": "enumValue",
+							"signature": "KlpCommandExecutionStatus disabled",
+							"documentation": ""
+						},
+						{
+							"name": "disposed",
+							"kind": "enumValue",
+							"signature": "KlpCommandExecutionStatus disposed",
+							"documentation": ""
+						},
+						{
+							"name": "error",
+							"kind": "enumValue",
+							"signature": "KlpCommandExecutionStatus error",
+							"documentation": ""
+						},
+						{
+							"name": "executed",
+							"kind": "enumValue",
+							"signature": "KlpCommandExecutionStatus executed",
+							"documentation": ""
+						},
+						{
+							"name": "hidden",
+							"kind": "enumValue",
+							"signature": "KlpCommandExecutionStatus hidden",
+							"documentation": ""
+						},
+						{
+							"name": "missing",
+							"kind": "enumValue",
+							"signature": "KlpCommandExecutionStatus missing",
+							"documentation": ""
+						}
+					]
+				},
+				{
 					"id": "package:kallopis/src/features/actions/command_menu/klp_command_menu.dart#KlpCommandItemData",
 					"name": "KlpCommandItemData",
 					"slug": "klp-command-item-data",
@@ -347,6 +620,105 @@
 					]
 				},
 				{
+					"id": "package:kallopis/src/features/actions/command_registry/klp_command_registry.dart#KlpCommandRegistry",
+					"name": "KlpCommandRegistry",
+					"slug": "klp-command-registry",
+					"kind": "class",
+					"module": "features.actions",
+					"sourceUri": "package:kallopis/src/features/actions/command_registry/klp_command_registry.dart",
+					"primarySurface": "foundation",
+					"surfaces": [
+						"foundation"
+					],
+					"signature": "class KlpCommandRegistry<C> extends ChangeNotifier",
+					"documentation": "集中命令狀態與執行入口，不擁有產品 context、持久化或業務副作用。",
+					"typeRelationships": {
+						"extends": "ChangeNotifier",
+						"mixins": [],
+						"implements": []
+					},
+					"members": [
+						{
+							"name": "KlpCommandRegistry",
+							"kind": "constructor",
+							"signature": "KlpCommandRegistry<C>()",
+							"documentation": ""
+						},
+						{
+							"name": "addListener",
+							"kind": "method",
+							"signature": "void addListener(VoidCallback listener)",
+							"documentation": ""
+						},
+						{
+							"name": "dispose",
+							"kind": "method",
+							"signature": "void dispose()",
+							"documentation": ""
+						},
+						{
+							"name": "execute",
+							"kind": "method",
+							"signature": "Future<KlpCommandExecutionResult> execute(String id, C context)",
+							"documentation": ""
+						},
+						{
+							"name": "getState",
+							"kind": "method",
+							"signature": "KlpCommandState? getState(String id, C context)",
+							"documentation": ""
+						},
+						{
+							"name": "isDisposed",
+							"kind": "getter",
+							"signature": "bool get isDisposed",
+							"documentation": ""
+						},
+						{
+							"name": "list",
+							"kind": "method",
+							"signature": "List<KlpCommandState> list(C context)",
+							"documentation": ""
+						},
+						{
+							"name": "notifyListeners",
+							"kind": "method",
+							"signature": "void notifyListeners()",
+							"documentation": ""
+						},
+						{
+							"name": "refresh",
+							"kind": "method",
+							"signature": "void refresh()",
+							"documentation": ""
+						},
+						{
+							"name": "register",
+							"kind": "method",
+							"signature": "VoidCallback register(KlpCommandDefinition<C> definition)",
+							"documentation": ""
+						},
+						{
+							"name": "removeListener",
+							"kind": "method",
+							"signature": "void removeListener(VoidCallback listener)",
+							"documentation": ""
+						},
+						{
+							"name": "subscribe",
+							"kind": "method",
+							"signature": "VoidCallback subscribe(VoidCallback listener)",
+							"documentation": ""
+						},
+						{
+							"name": "version",
+							"kind": "getter",
+							"signature": "int get version",
+							"documentation": ""
+						}
+					]
+				},
+				{
 					"id": "package:kallopis/src/features/actions/command_menu/klp_command_menu.dart#KlpCommandSectionData",
 					"name": "KlpCommandSectionData",
 					"slug": "klp-command-section-data",
@@ -381,6 +753,93 @@
 							"name": "label",
 							"kind": "field",
 							"signature": "String label",
+							"documentation": ""
+						}
+					]
+				},
+				{
+					"id": "package:kallopis/src/features/actions/command_registry/klp_command_registry.dart#KlpCommandState",
+					"name": "KlpCommandState",
+					"slug": "klp-command-state",
+					"kind": "class",
+					"module": "features.actions",
+					"sourceUri": "package:kallopis/src/features/actions/command_registry/klp_command_registry.dart",
+					"primarySurface": "foundation",
+					"surfaces": [
+						"foundation"
+					],
+					"signature": "class KlpCommandState",
+					"documentation": "",
+					"typeRelationships": {
+						"extends": "Object",
+						"mixins": [],
+						"implements": []
+					},
+					"members": [
+						{
+							"name": "category",
+							"kind": "field",
+							"signature": "String? category",
+							"documentation": ""
+						},
+						{
+							"name": "checked",
+							"kind": "field",
+							"signature": "bool checked",
+							"documentation": ""
+						},
+						{
+							"name": "conditionError",
+							"kind": "field",
+							"signature": "KlpCommandConditionError? conditionError",
+							"documentation": ""
+						},
+						{
+							"name": "description",
+							"kind": "field",
+							"signature": "String? description",
+							"documentation": ""
+						},
+						{
+							"name": "enabled",
+							"kind": "field",
+							"signature": "bool enabled",
+							"documentation": ""
+						},
+						{
+							"name": "icon",
+							"kind": "field",
+							"signature": "KlpIconData? icon",
+							"documentation": ""
+						},
+						{
+							"name": "id",
+							"kind": "field",
+							"signature": "String id",
+							"documentation": ""
+						},
+						{
+							"name": "keywords",
+							"kind": "field",
+							"signature": "List<String> keywords",
+							"documentation": ""
+						},
+						{
+							"name": "label",
+							"kind": "field",
+							"signature": "String label",
+							"documentation": ""
+						},
+						{
+							"name": "running",
+							"kind": "field",
+							"signature": "bool running",
+							"documentation": ""
+						},
+						{
+							"name": "visible",
+							"kind": "field",
+							"signature": "bool visible",
 							"documentation": ""
 						}
 					]

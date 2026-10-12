@@ -104,8 +104,8 @@ flowchart TD
 | _controls／_dock／_json／build | 同上 | 公開元件controls、外部有限宿主与Stage、JSON產品輸入 |
 | KallopisCatalogApp／_KallopisCatalogAppState.build | [main.dart](example/lib/main.dart) | 原App/Theme生命週期；本slice只加Material透明祖先 |
 
-## Flutter 命令 core契約（READY）
+## Flutter 命令 core契約（COMPLETE）
 
 依[WB-COMMAND-r1](../docs/architecture/workbench-command-contract.md)，generic KlpCommandDefinition/C與immutable state/result、status/errorphase enums及ChangeNotifier registry由新增lib/src/features/actions/command_registry擁有，stablefoundation公開匯出。pureconditions/nativecontext/ownerdisposer/同tokenpending/typederrors/版本通知與React一致；icon型別沿既有KlpIconData，observer沿FlutterError。既有CommandMenu/WorkspaceCommand/KeyBindingController及產品handlers保持原API，不在core slice改寫。
 
-具體責任及FLUTTER-COMMAND-CORE-r1見[command registry](lib/src/features/actions/command_registry/architecture.md)（READY）。單一原生來源與stablefoundation匯出；notification中dispose立即語意關閉，原生ChangeNotifier資源收尾延後到最外層通知返回。fresh獨立TestAuthor先保護publiccore，BUILD只寫該來源與foundation，不自行發明共通規則；尚未交付Fluttercore。
+具體責任及FLUTTER-COMMAND-CORE-r1見[command registry](lib/src/features/actions/command_registry/architecture.md)（COMPLETE）。單一原生來源與stablefoundation匯出；notification中dispose立即語意關閉，原生ChangeNotifier資源收尾延後到最外層通知返回。fresh獨立TestAuthor先保護publiccore，BUILD只寫該來源與foundation，不自行發明共通規則；已交付b2cdee54＋9cffc7e8，24項獨立checks、public analyze與2path/1path scope通過；observer原生解除與subscribe owner已隔離。命令入口及shortcut接入仍待後續stage。
