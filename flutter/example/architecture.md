@@ -1,6 +1,6 @@
 # Flutter 公開 consumer 範例
 
-目前目標：IDOC-COMPONENT-REGISTRY-r1 的公開元件專屬路由。庫擁有樣式及互動，example擁有展示資料、控制、回呼觀察與重設。不得引用package:kallopis/src；舊Catalog的coveredComponents／空build不算互動coverage。目前有24個真實fixture；全量273個可渲染元件仍需逐項補足，不宣稱全部完成。
+目前目標：IDOC-COMPONENT-REGISTRY-r1 的公開元件專屬路由。庫擁有樣式及互動，example擁有展示資料、控制、回呼觀察與重設。不得引用package:kallopis/src；舊Catalog的coveredComponents／空build不算互動coverage。目前有29個真實fixture；全量273個可渲染元件仍需逐項補足，不宣稱全部完成。
 
 ## FLUTTER-COMPONENT-SPECIMENS-1（COMPLETE）
 
@@ -246,3 +246,31 @@ flowchart LR
 ```
 
 BUILD54dd1105 exact1，公開analyze No issues、同protected39全Green零skip、prefix release46.6秒、scope1/diff通過。Native5203 /Kallopis/examples/flutter/index.html?scenario=vscode 的實際title為「VS Code · 文件工作區 Flutter 互動展示」；unknown的實際title為「找不到 GUI 場景 Flutter 互動展示」，畫面顯示unknown與返回入口。初始shell title尚未ready，實際內容完成後才改Title；網站接入由DOCS-FLUTTER-SCENARIOS-1負責，感官與actual窄browser保持pending。
+
+## FLUTTER-SPATIAL-SPECIMENS-1（READY）
+
+修訂FLUTTER-SPATIAL-SPECIMENS-r1，依IDOC-01/02/03/06/08。exact lib/component_specimens.dart、新lib/spatial_specimens.dart；前者只import/registry/fixture分流，既有29與環境不改。spatialSpecimenNames只包含22個正式renderable：KlpAlign、KlpBox、KlpCenter、KlpColumn、KlpConstrainedBox、KlpDirectionalPositioned、KlpDivider、KlpExpanded、KlpFit、KlpFlexible、KlpGap、KlpLayoutBuilder、KlpPositioned、KlpRegion、KlpRotate、KlpRow、KlpScrollViewport、KlpSection、KlpSpacer、KlpStack、KlpTranslate、KlpWrap。公開consumer SpatialComponentSpecimen(name)，只Flutter/public foundation imports，無private元件或新共用theme。
+
+fixture擁有同controller草稿、自己的props indices/bools/enum與callback計數，title/body資料變更、有限180/280宿主與測量output；外host既有四mode/spacious/local320/epoch保持。各route只提供target自己的實際props：Align alignment/shrinkWidth；Box width/height/paddingSize/marginSize/tone/radius；Center widthFactor/heightFactor；Row/Column main/cross alignment/mainAxisSize/gap/children數；ConstrainedBox constraints min/max與child；DirectionalPositioned position及合法RTL宿主；Positioned left/top/width/height；Divider vertical合法host方向；Expanded/Spacer flex，Flexible flex/fit；Fit mode；Gap axis constructor/extent/semanticSize；LayoutBuilder自己的builder輸出/內容及真實傳入constraints，host尺寸只能明示展示控制；Rotate quarterTurn；Translate horizontal/vertical；Stack alignment/fit/clip/children；Wrap direction/alignment/spacingSize/runSpacingSize/children；ScrollViewport公開controller/padding、實際捲動位置（controller listener）與原生捲動／按鈕移至末尾；Region header/footer/tone/padding/content；Section title/label/trailing/child。不需要窮舉每个constructor或不合法enum组合；使用例與當次實際參數一致。
+
+Flex targets只能在真正Row/Flex父層，Positioned只能Stack、方向以Directionality；沒有額外wrapped proxy破壞ParentData。finite內容含scroll/裁切避免自然過長致外層overflow，不能自寫分配算法。量測以target內LayoutBuilder讀真實約束，不能計算假幾何；controller listener只在mounted後更新，dispose清除，環境change不重建owner、reset才重建。三或更少args同一physical line、繁中註解/tab；共同style讀context.klp。無persist/算法/跨語言新邊界，不新增鏡像tests；公開analyze與releaseprefixbuild是Yellow。
+
+驗收22registry正式renderable一致、public analyze、prefixrelease --no-tree-shake-icons --base-href /Kallopis/examples/flutter/、原生22route實際target及各自props可操作（批次清單可驗證可及性）、代表Flex/position/scroll量測與draft/callback/四mode/style/local320/reset、scope2/diff。actual窄browser與感官未證明仍human-pending；網站全量273coverage另stage，不能提前允許缺项。library/tests/config/generated/style/docs/site皆不可寫。
+
+估8k～16k/60～120分鐘，參考FLUTTER-FRAME-SPECIMENS-1/LINEAR；M1 22source/registry/public analyze/build（9k65），M2 native22/props/state/scope（16k120）；24k160或公開boundary不足回PLAN，無單任務量測actual usage null。
+
+| Source／class／function | 責任 |
+| --- | --- |
+| spatial_specimens.dart spatialSpecimenNames／SpatialComponentSpecimen | 真實target registry與公開consumer輸入 |
+| _SpatialComponentSpecimenState | props/controller與生命週期；controls/target/usage/measure/build分工；nested callbacks依自身setter與原生input/scroll投影 |
+| component_specimens.dart fixture分流 | 既有環境與epoch，名稱精確交給spatial fixture |
+
+```mermaid
+flowchart TD
+	Host[ComponentSpecimenApp / registry] --> Fixture[SpatialComponentSpecimen / State]
+	Fixture --> Props[當次target controls / controller]
+	Props --> Target[真正公開target / 合法Flex或Stack]
+	Target --> Measure[LayoutBuilder原生constraints / scroll position]
+	Fixture --> Draft[同controller草稿 / callbacks]
+	Host --> Reset[epoch才重建fixture]
+```
