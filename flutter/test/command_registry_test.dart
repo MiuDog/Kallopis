@@ -394,6 +394,30 @@ void main() {
 		expect(calls, 6);
 	});
 
+	for (final order in ['subscribe-first', 'native-first', 'subscribe-only']) {
+		test('removeListener cannot remove subscription owner: $order', () {
+			final registry = KlpCommandRegistry<_Context>();
+			addTearDown(registry.dispose);
+			var calls = 0;
+			void listener() => calls++;
+			if (order == 'native-first') registry.addListener(listener);
+			final unsubscribe = registry.subscribe(listener);
+			if (order == 'subscribe-first') registry.addListener(listener);
+			registry.refresh();
+			final initial = order == 'subscribe-only' ? 1 : 2;
+			expect(calls, initial);
+			registry.removeListener(listener);
+			registry.removeListener(listener);
+			registry.refresh();
+			expect(calls, initial + 1);
+			expect(registry.hasListeners, isTrue);
+			unsubscribe();
+			expect(registry.hasListeners, isFalse);
+			registry.refresh();
+			expect(calls, initial + 1);
+		});
+	}
+
 	test('version and notifications reflect each lifecycle transition once', () async {
 		final registry = KlpCommandRegistry<_Context>();
 		final context = _Context();
