@@ -14,10 +14,11 @@ import 'navigation_selection_specimens.dart';
 import 'navigation_compound_specimens.dart';
 import 'action_utility_specimens.dart';
 import 'foundation_detail_specimens.dart';
+import 'interaction_primitive_specimens.dart';
 import 'catalog/registered_commands_page.dart';
 
 /* 只有真實target fixture可以進此清單；不是全量覆蓋宣告。 */
-const flutterSpecimenNames = <String>['KlpBadge', 'KlpButton', 'KlpIconButton', 'KlpSurface', 'KlpText', 'KlpTextField', ...linearSpecimenNames, ...explorerSpecimenNames, ...frameSpecimenNames, ...commandSpecimenNames, ...spatialSpecimenNames, ...formControlSpecimenNames, ...feedbackSpecimenNames, ...contentCollectionSpecimenNames, ...progressCollectionSpecimenNames, ...dataCollectionSpecimenNames, ...viewerCollectionSpecimenNames, ...navigationSelectionSpecimenNames, ...navigationCompoundSpecimenNames, ...actionUtilitySpecimenNames, ...foundationDetailSpecimenNames];
+const flutterSpecimenNames = <String>['KlpBadge', 'KlpButton', 'KlpIconButton', 'KlpSurface', 'KlpText', 'KlpTextField', ...linearSpecimenNames, ...explorerSpecimenNames, ...frameSpecimenNames, ...commandSpecimenNames, ...spatialSpecimenNames, ...formControlSpecimenNames, ...feedbackSpecimenNames, ...contentCollectionSpecimenNames, ...progressCollectionSpecimenNames, ...dataCollectionSpecimenNames, ...viewerCollectionSpecimenNames, ...navigationSelectionSpecimenNames, ...navigationCompoundSpecimenNames, ...actionUtilitySpecimenNames, ...foundationDetailSpecimenNames, ...interactionPrimitiveSpecimenNames];
 
 class ComponentSpecimenApp extends StatefulWidget {
 	const ComponentSpecimenApp({super.key, required this.name});
@@ -80,6 +81,7 @@ class _ComponentSpecimenAppState extends State<ComponentSpecimenApp> {
 
 	Widget _fixture() {
 		final key = ValueKey(_epoch);
+		if (interactionPrimitiveSpecimenNames.contains(widget.name)) return InteractionPrimitiveComponentSpecimen(key: key, name: widget.name);
 		if (foundationDetailSpecimenNames.contains(widget.name)) return FoundationDetailComponentSpecimen(key: key, name: widget.name);
 		if (actionUtilitySpecimenNames.contains(widget.name)) return ActionUtilityComponentSpecimen(key: key, name: widget.name);
 		if (navigationCompoundSpecimenNames.contains(widget.name)) return NavigationCompoundComponentSpecimen(key: key, name: widget.name);
