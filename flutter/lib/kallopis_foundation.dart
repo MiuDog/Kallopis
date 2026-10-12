@@ -1,5 +1,6 @@
 /// Kallopis 穩定的通用視覺、布局與互動元件入口。
 library;
+export 'src/features/actions/command_popup/klp_command_popup.dart';
 export 'src/features/actions/command_palette/klp_command_palette.dart';
 export 'src/features/workspace/layout/klp_linear_layout.dart';
 export 'src/features/actions/command_registry/klp_command_registry.dart';
