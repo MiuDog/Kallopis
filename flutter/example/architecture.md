@@ -366,3 +366,32 @@ Native5203 prefix逐一15route的props與文字修改均操作。ErrorState retr
 FocusBoundary child原生文字2、Tab到child動作、Enter動作1；四mode/spacious/local320保持字串及回呼，reset回初始/0並保留環境。LiveRegion公開message route的child動作1更新實際aria-live polite內容，fromDescendants／null props另操作；播報感受human-pending。ProgressOverlay bounded200 child動作1/input2，visible後標題覆蓋可辨識，hide仍草稿及結果保持；未宣稱完整modal／pointer阻擋驗收。現場error/warn空。main build/flutter-feedback-specimens.png、flutter-feedback-native.json；actual360 browser未取得，local320不替代，人類感官pending。Flutterfixture90／273，剩餘183及網站全量gate仍原goal，未提前宣稱全交付。
 
 _State._controls/_target/_usage持有自己的props與公開constructor；_toast/_stages只組裝consumer資料，_child/_actionWidget提供真正公開child；_action/_close/_restore管理原回呼和consumer toast清單；_onEdit只control文字、_onInput只child文字；cycle/toggles為自身參數。build finite舞台、controls/edit/status，dispose清三controller；host theme/epoch依原owner，不另建立theme、adapter或業務runtime。
+
+
+## FLUTTER-CONTENT-COLLECTION-SPECIMENS-1（READY）
+
+修訂 FLUTTER-CONTENT-COLLECTION-SPECIMENS-r1；IDOC-01/02/03/06/08。exact lib/component_specimens.dart、新 lib/content_collection_specimens.dart。十個公開 target：KlpAvatar、KlpAvatarGroup、KlpCard、KlpListTile、KlpMessageBubble、KlpMessageThread、KlpMetricCard、KlpPreviewCard、KlpSortControl、KlpTag；其餘 collections 仍待後續交付，不縮小全量273目標。
+
+ContentCollectionComponentSpecimen(name) 只依 public foundation 與 Flutter widgets 組装。State 擁有 label/content/draft controllers、props、消息數量、tag removal 及 callback log；environment 保留 state、epoch 才 reset，dispose 清 controller。controls 修改自己的公開參數，target 使用真實 constructor，usage 顯示實際參數；child callback 與 root callback 分開記錄。AvatarGroup 用公開 KlpAvatarData，無外部 image 依賴；MessageThread loadOlder 增添 consumer messages；Tag onRemove 刪除 consumer item 並可恢復；SortControl 切 ascending 並記原 callback；ListTile 原 onPressed；Card 等無 root callback 只記明示 child action/input。
+
+不新增 core algorithm、persist、theme、adapter 或私有 API。finite280舞台 scroll 讓長內容可達；card/message/preview child 使用公開 TextField/Button/Surface，樣式從現有 theme。公開 enum 直接 values controls，不複製 default。驗收十名稱與正式 renderable 一致、public analyze、同source prefixrelease、十route native自身 props 與 root/child callback、四mode/style/local320保留草稿及reset、scope2/diff。無新增需獨立測試的邊界，不撰寫鏡像tests。library/tests/config/styles/site/docs禁止寫；actual窄browser與感官human-pending。
+
+估5k～10k/35～75分鐘，參考FEEDBACK/FORMS；M1 source10/analyze/build（6k40），M2 native10/state/scope（10k75）；15k100或public契約不足回PLAN，實際usage未量測null。
+
+| Source / class / function | 責任 |
+| --- | --- |
+| contentCollectionSpecimenNames / ContentCollectionComponentSpecimen | 精確公開名稱與consumer輸入 |
+| State controls/target/usage/build | 公開props投影、合法child、資料與callback生命週期 |
+| State action/loadOlder/remove/restore/input/edit | 原生callback結果與consumer資料，不冒充library算法 |
+| component_specimens fixture | 精確分流，原environment與epoch不改 |
+
+```mermaid
+flowchart TD
+	Host[ComponentSpecimenApp] --> Fixture[ContentCollectionComponentSpecimen]
+	Fixture --> Props[自身controls與public DTO]
+	Props --> Target[真實public target]
+	Target --> Callback[root或明示child callback]
+	Callback --> State[consumer資料與結果]
+	State --> Target
+	Host --> Reset[epoch才重建]
+```
