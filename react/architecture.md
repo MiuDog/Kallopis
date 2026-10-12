@@ -687,6 +687,32 @@ flowchart TD
 	Import[importOverrides] --> Shape[object / fields / copySequence]
 	Shape --> Commit[atomic replace / cancelChord]
 ```
-## REACT-COMMAND-SHORTCUT-HOST-1（READY）
+## REACT-COMMAND-SHORTCUT-HOST-1（COMPLETE）
 
 REACT-COMMAND-SHORTCUT-HOST-r1依[共同native宿主](../docs/architecture/workbench-shortcut-host-contract.md)，新src/command-shortcut-host.tsx＋index export exact2。readonly public Props與neutral display:contents wrapper，同keymap借用/getContext/getFocus/onHandling/onResult/children；native keydown bubble／defaultPrevented保護、原生editable／composition／229、single timer、blur cleanup與same-session/latestcallback，不註冊document listener。不加共用style，不改core／registry／所有tests／config／example／Flutter。cold4k～9k／20～45分鐘，參照REACT-COMMAND-POPUP-1與KEYMAP-1；M1protected公開SSR/DOM/lifetime checks4k／20，M2build／scope2 9k／45，12k／60或其他write回PLAN。fresh TestAuthor只test/command-shortcut-host.test.mjs；基線missingAPI Yellow，nativebrowser／GUI另stage，act warnings不當作code結果。
+
+BUILD64d9883f exact2source，protected6 publicSSR/DOM/lifetime checks SHA256 F73747DFCA15446033AED1DA46886EC01FC80B2E45E1913E3A0F6D7FCF0A57FB、build／scope2／diffcheck通過。最初5Green／1fixturefailure為JSDOM focus的zero-delay selectionchange錯算hosttimer，fresh作者僅將zero工作委派native scheduler、追蹤所有非零timeout，原期限/清理斷言保持。consumer／nativebrowser另stage。
+
+實際[src/command-shortcut-host.tsx](src/command-shortcut-host.tsx)無class；readonly KlpCommandShortcutHostProps定義借用keymap、context/focus與兩結果回呼及children；private HostSession擁有mounted identity、single timer及composition。KlpCommandShortcutHost函式使用latest／owner refs及useLayoutEffect；nested attach/cleanup支援StrictMode、current核對alive/identity，keydown轉logical/native modifiers/原生文字組字與產品focus，先prevent/stop決定再onHandling，nested deliver保留原Promise並交同session latestcallback；blur清prefix、外離錄製，compositionStart取消prefix/timer、compositionEnd清nativeflag。回傳neutral display:contents div。top-level editable沿Element/Text父鏈保護input/textarea及最近有效contenteditable，false子區終止；cancelTimer解除owned timeout；clearSession清prefix及外離錄製/組字；updateTimer只新prefix重排期限、ignored保留；scheduleTimer/expire closure只publicexpiry，report交原生reportError或console诊斷且不破壞清理。此為所有helpers／callbacks，無global keyboard listener、無第二default theme。
+
+```mermaid
+flowchart TD
+	Host[KlpCommandShortcutHost / attach] --> Owner[HostSession / latest refs]
+	Key[keydown] --> Input[editable / logical modifiers / composing]
+	Input --> Core[same keymap.handle]
+	Core --> Timer[updateTimer / scheduleTimer / expire]
+	Core --> Result[deliver / current / latest onResult]
+	Core --> Handled[preventDefault / stopPropagation / onHandling]
+	Blur[blur / compositionStart / cleanup] --> Clear[clearSession / cancelTimer]
+	Clear --> Cancel[public core cancellation]
+	Failure[projection or callbacks] --> Report[report / native diagnostic]
+```
+## REACT-COMMAND-SHORTCUT-EXAMPLE-1（READY）
+
+REACT-COMMAND-SHORTCUT-EXAMPLE-r1只example/commands-demo.tsx exact1，公開KlpCommandKeymap／KlpCommandShortcutHost與同既有registry組合。產品effect擁有keymap及dispose，StrictMode每setup建freshowner；原命令handler／draft／toolbar／menu／palette／popup保持單一份，沒有另一handler。platform從產品瀏覽器環境投影mac/other，UI明示目前平台，OS保留鍵不保證可收到。
+
+預設綁定：app document.save.primary為primary+s並allowInEditable，app document.save.chord為primary+k→s並allowInEditable；page commands的view.grid.primary與低priority duplicate同primary+g產生same-scope exact診斷；component draft的view.grid.editor同primary+g、allowInEditable，示範精確scope勝過page；region commands的document.fail.region為alt+shift+f，沿既有showFailure gate。getFocus(target)由產品WeakMap給原生Element穩定非空ID；有效鏈page/region commands，草稿component draft，其餘component可缺省。純core用同context/ref，onHandling顯示原state／binding／prefix／record與最新有效conflicts，onResult沿原產品result出口。
+
+所有UI用public庫Button／Card／Text／TextField，neutral nativeWrap/Focus區域只作產品布局及事件，不另寫共用視覺。新增可聚焦的KlpSurface等效Card/Text錄製區（public Card／Text），產品按鈕先原生focus再beginRecording該focusID；explicit錄製最多4stroke，不dispatch，finish非空才setOverride(document.save.primary)，cancel／restore可操作。以publicTextField呈現JSON overrides，save/export、load/JSON.parse/import及invalid message；錯誤保留原keymap設定，不在產品重實作validation。產品outer blur重繪讀core現在狀態，不建第二錄製權威。local settings不持久化業務資料，單一產品輸入draft跨操作/theme保持。最後unmount產品disposekeymap，再dispose同registry；library／tests／config／main／CSS／Flutter唯讀。
+
+此reversibleconsumer由既有protectedcore/host tests保護，不新增鏡像tests。cold3k～7k／20～40分鐘，參照REACT-COMMAND-POPUP-EXAMPLE-1；M1 typedconsumer／scope1（3k／20），M2 nativebrowser focusedbutton與draft save/grid/chord／ignoredtext／scope/conflict／record不執行／apply/cancel/restore／valid-invalidimport／draft／一次result（7k／40）；10k／55或跨path需求回PLAN。nativeIME全套及保留OSkeys、感官human-pending，未觀察項明示。websitebundle/全部component specimen另stage。

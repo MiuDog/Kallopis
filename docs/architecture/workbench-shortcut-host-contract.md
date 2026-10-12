@@ -32,6 +32,8 @@ keymap替換、unmount取消旧timer／chord／recording，移除該owner原生f
 
 ## Current stage 與必要驗證
 
+兩端library已交付：React64d9883f，6公開SSR／DOM／lifetime checks及build／scope2；Flutter4a3b1088，10公開nativeWidget checks、publicanalyze／scope2；同作者final hashes保持。React第一timer failure是JSDOM button.focus的zero-delay selectionchange混入fixture，由獨立作者將zero工作委派native scheduler，所有非零deadline仍tracking、原assertions保持。Flutterfixture曾绕過Focus dispatch，後續ignored方向鍵引起Material巡覽使repeat離開host；作者改原生管線並flush/refocus、補真正事件到達數量；没有repeat產品Red成立。暫時診斷已移除。公開consumer／nativebrowser／重綁GUI與感官仍下一packet，不能用JSDOM或Widgetchecks冒充完成。
+
 Flutter新flutter/lib/src/features/actions/command_shortcut_host/klp_command_shortcut_host.dart＋foundationexport exact2；React新react/src/command-shortcut-host.tsx＋indexexport exact2，neutral display:contents是布局常數，不加CSS檔。purecore／registry／legacykeybinding／entry／palette／popup／style／config／example／其他module唯讀。fresh獨立TestAuthor各只新增公開宿主測試：Flutter test/command_shortcut_host_test.dart；React test/command-shortcut-host.test.mjs。必要native事件、IME、focus與async lifetime風險需獨立checks，不能用私有helper鏡像或pixel assertion。基線缺公開API為compile Yellow；真正native browser、GUI與感官後續分別標示。
 
 P1 maps：event轉換→原生bubble handler；text/IME→native editable/composing＋core gates；chord期限→single owned timer＋publicexpire；焦點→native listener＋core chain；結果→same registry Future及session/latestcallback；cleanup→owned timer/listener；purecore mutation與儲存→現有publiccore。全部有責任、介面與對應publiccheck，PLAN READY。

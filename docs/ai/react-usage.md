@@ -320,4 +320,10 @@ unregister();
 keymap.dispose();
 ```
 
-只在outcome.handled為true才由native宿主攔截事件。editable預設不接管、composing不執行、repeat需明示allowRepeat；chord每步逾時或焦點鏈改變取消。beginRecording／finishRecording取得最多四鍵而不dispatch，由產品決定套給哪個binding；importOverrides完整驗證後原子替換，錯誤保留舊設定及prefix。9項公開purecore checks與build通過。上述是canonical資料示例；原生keyboard／composition／focus轉換與互動重綁UI尚待獨立交付，完整邊界見[共同契約](../architecture/workbench-shortcut-core-contract.md)。
+只在outcome.handled為true才由native宿主攔截事件。editable預設不接管、composing不執行、repeat需明示allowRepeat；chord每步逾時或焦點鏈改變取消。beginRecording／finishRecording取得最多四鍵而不dispatch，由產品決定套給哪個binding；importOverrides完整驗證後原子替換，錯誤保留舊設定及prefix。9項公開purecore checks與build通過。上述是canonical資料示例；原生keyboard／composition／focus轉換已由KlpCommandShortcutHost交付，公開consumer與互動重綁UI仍待接入，完整邊界見[共同契約](../architecture/workbench-shortcut-core-contract.md)。
+
+## 原生快捷鍵宿主
+
+`KlpCommandShortcutHost<C>`必填keymap、getContext、getFocus(target)、onHandling、onResult及children。以中立display:contents包原生children；子元件defaultPrevented的按鍵不接管。getFocus投影非空focusId及scope鏈，宿主額外保護input／textarea／有效contenteditable與composition。結果handled才preventDefault／stopPropagation；onHandling可呈現錄製與prefix，onResult接同registry原結果。
+
+每個keymap同時使用一個宿主；內部移焦清prefix、離開清錄製、replacement／unmount清單一timer並隔離舊async结果，借用keymap／registry不dispose。同identity callback更新保留deadline並交最新回呼。6項公開SSR/DOM/lifetime checks、build／scope2通過；實際browser／公開重綁示範尚未接入，詳[共同host契約](../architecture/workbench-shortcut-host-contract.md)。

@@ -179,6 +179,17 @@ BUILD173cc9e9只該source，analyze／scope1及releaseweb52.0s通過。_openPopu
 FLUTTER-COMMAND-KEYMAP-r1依[共同快捷鍵core](../docs/architecture/workbench-shortcut-core-contract.md)及[local](lib/src/features/actions/command_keymap/architecture.md)。目前純core新source＋stablefoundation exact2；同registry execute、scope／固定ranking／chord與clock／錄製／atomic override；不改legacy KeyBinding caller、不開timer／native eventloop。fresh TestAuthor只test/command_keymap_test.dart。cold6k～12k／30～60分鐘；M1公開protected checks（6k／30）、M2 analyze／scope2（12k／60），15k／75或其他source回PLAN。native IME／focus／既有鍵盤接入、GUI及網站另packet，不冒充WB-12～14完整完成。
 
 BUILD188273b8只兩source，fresh protected11 checks／public analyze No issues／scope2通過。實際型別、所有helper與call chain由上述local architecture擁有；沒有native事件接入或GUI完成宣稱。
-## FLUTTER-COMMAND-SHORTCUT-HOST-1（READY）
+## FLUTTER-COMMAND-SHORTCUT-HOST-1（COMPLETE）
 
 FLUTTER-COMMAND-SHORTCUT-HOST-r1依[共同native宿主](../docs/architecture/workbench-shortcut-host-contract.md)及[local責任](lib/src/features/actions/command_shortcut_host/architecture.md)。新source＋foundationexport exact2，借用keymap與產品context/focus/composition回呼；原生Focus bubble、EditableText protection、single timer、nativefocus清理及same-session/latestresult。cold5k～10k／25～50分鐘，M1protected事件checks5k／25，M2analyze／scope2 10k／50；13k／65或其他write回PLAN。fresh TestAuthor唯一新publicWidget test，其餘所有module/config/tests唯讀；GUI與網站consumer另packet。
+
+BUILD4a3b1088 pure native host exact2source，protected10 checks／publicanalyze No issues／scope2通過；actual allmethods／helpers／Mermaid由local擁有。consumer及nativebrowser尚未接入，不改legacy鍵盤API。
+## FLUTTER-COMMAND-SHORTCUT-EXAMPLE-1（READY）
+
+FLUTTER-COMMAND-SHORTCUT-EXAMPLE-r1只example/lib/catalog/registered_commands_page.dart exact1，在同State/registry之下產品建立並dispose公開keymap，以stable KlpCommandShortcutHost包原頁內容；coveredComponents包含host，但不以單一palette specimen冒充全部網站互動。平台用產品原生platform投影mac/other，UI明示目前primary。既有draft/controller、handlers、toolbar/menu/palette/popup不複製。
+
+bindings與React沿同stage：app document.save.primary primary+s／save.chord primary+k→s皆allowInEditable；page commands的grid.primary與低priority duplicate同primary+g診斷exact；component draft grid.editor同primary+g且allowInEditable，精確scope勝page；region commands fail.region alt+shift+f沿同showFailure gate。產品以FocusManager.primaryFocus identityHashCode形成穩定非空focusID、原草稿controller所屬EditableText投影component draft，其餘scopepage/region commands。getIsComposing讀產品draft composing與custom recorder投影，宿主亦保護原生EditableText；onHandling讀同coreprefix/record及conflicts，onResult沿既有一次result出口。
+
+UI publicButton／Surface／Text／TextField及產品原生Wrap/Focus組合；專用FocusNode包庫Surface/Text作錄製target，產品requestFocus完成後beginRecording該實際focusID（不用按鈕的旧ID），Focus變動重繪讀同core狀態。finish非空才setOverride(save.primary)、cancel／restore；JSON controller作export/import來源，JSONDecode後publicimport完整驗證、invalid保留原設定。scope/record/JSON狀態由產品caller擁有，所有共用內部風格沿context.klp；沒有產品Widgettree驗證或另defaultstyle。產品dispose錄製Focus/controller、keymap，再registry；library／所有tests/config/generated／React唯讀。
+
+reversibleconsumer無必要新鏡像tests。cold4k～8k／25～50分鐘，參照FLUTTER-COMMAND-POPUP-EXAMPLE-1；M1 publicanalyze／scope1（4k／25）；M2 releaseweb及nativebrowser同React矩陣（8k／50）；11k／65或其他path返回PLAN。精確browser事件用真實focused target，AX聚焦不等於Flutter focus；IME完整/native極端style及感官明示pending。websitebundle/全元件specimen另stage。

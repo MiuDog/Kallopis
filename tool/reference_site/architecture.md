@@ -186,8 +186,8 @@ Flutter registered toolbar/menu/ref/kind四個公開宣告extract後，當前545
 
 popup雙框架library與公開consumer已完成；公開popup與兩端usage由正式Markdown接入，canonical identity直接取extractor，全部元件互動、React專屬清冊與GUI bundle仍另stage。
 
-快捷鍵純核心WB-SHORTCUT-CORE-r1已完成並由documents.mjs接入Guide；原生宿主WB-SHORTCUT-HOST-r1 READY，不能將core或Guide當作native keyboard／互動展示完成。
+快捷鍵純核心WB-SHORTCUT-CORE-r1已完成並由documents.mjs接入Guide；原生宿主WB-SHORTCUT-HOST-r1已實作，不能將core或Guide當作native keyboard／互動展示完成。
 
 雙框架快捷鍵purecore完成後，Flutter重新Green extract560 canonical declarations／17modules／三surfaces，34Markdown；Guide及兩端usage明示native adapter pending。新清冊採extractor產物，未手改identity。
 
-共同WB-SHORTCUT-HOST-r1 READY原生宿主Guide加入documents唯一來源，現在34Markdown／560API；fresh作者正在公開native事件/lifecycle checks，尚未新增host API。
+共同原生宿主Guide直接讀正式來源；Flutter host完成後Green extract561 canonical API／17modules／三surfaces，34Markdown。protected Flutter10／React6 checks證據與nativebrowser pending分列；全部互動元件、React清冊與GUI仍後續。

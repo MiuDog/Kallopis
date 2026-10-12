@@ -1073,6 +1073,81 @@
 					]
 				},
 				{
+					"id": "package:kallopis/src/features/actions/command_shortcut_host/klp_command_shortcut_host.dart#KlpCommandShortcutHost",
+					"name": "KlpCommandShortcutHost",
+					"slug": "klp-command-shortcut-host",
+					"kind": "class",
+					"module": "features.actions",
+					"sourceUri": "package:kallopis/src/features/actions/command_shortcut_host/klp_command_shortcut_host.dart",
+					"primarySurface": "foundation",
+					"surfaces": [
+						"foundation"
+					],
+					"signature": "class KlpCommandShortcutHost<C> extends StatefulWidget",
+					"documentation": "將 focused descendant 未處理的原生按鍵交同 keymap，不接管產品文字或命令權威。",
+					"typeRelationships": {
+						"extends": "StatefulWidget",
+						"mixins": [],
+						"implements": []
+					},
+					"members": [
+						{
+							"name": "KlpCommandShortcutHost",
+							"kind": "constructor",
+							"signature": "KlpCommandShortcutHost<C>({\n  Key? key,\n  required KlpCommandKeymap<C> keymap,\n  required C Function() getContext,\n  required KlpShortcutFocus Function() getFocus,\n  required bool Function() getIsComposing,\n  required ValueChanged<KlpShortcutHandling> onHandling,\n  required ValueChanged<KlpCommandExecutionResult> onResult,\n  required Widget child,\n})",
+							"documentation": ""
+						},
+						{
+							"name": "child",
+							"kind": "field",
+							"signature": "Widget child",
+							"documentation": ""
+						},
+						{
+							"name": "createState",
+							"kind": "method",
+							"signature": "State<KlpCommandShortcutHost<C>> createState()",
+							"documentation": ""
+						},
+						{
+							"name": "getContext",
+							"kind": "field",
+							"signature": "C Function() getContext",
+							"documentation": ""
+						},
+						{
+							"name": "getFocus",
+							"kind": "field",
+							"signature": "KlpShortcutFocus Function() getFocus",
+							"documentation": ""
+						},
+						{
+							"name": "getIsComposing",
+							"kind": "field",
+							"signature": "bool Function() getIsComposing",
+							"documentation": ""
+						},
+						{
+							"name": "keymap",
+							"kind": "field",
+							"signature": "KlpCommandKeymap<C> keymap",
+							"documentation": ""
+						},
+						{
+							"name": "onHandling",
+							"kind": "field",
+							"signature": "ValueChanged<KlpShortcutHandling> onHandling",
+							"documentation": ""
+						},
+						{
+							"name": "onResult",
+							"kind": "field",
+							"signature": "ValueChanged<KlpCommandExecutionResult> onResult",
+							"documentation": ""
+						}
+					]
+				},
+				{
 					"id": "package:kallopis/src/features/actions/command_registry/klp_command_registry.dart#KlpCommandState",
 					"name": "KlpCommandState",
 					"slug": "klp-command-state",
