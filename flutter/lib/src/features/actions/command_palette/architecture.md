@@ -16,7 +16,7 @@ show後原生frame聚焦input；close/unmount只有目前焦點仍在本scope或
 
 ## 呈現與有限幾何
 
-OverlayEntry原生全覆蓋child：BlockSemantics、ModalBarrier只backdrop提出outside、panel Semantics scopesRoute/namesRoute/label、closed-loop FocusScope、LayoutBuilder finite viewport與top-center定位。pointer panel與candidate不冒泡到barrier；背景阻止pointer與遍歷，產品明確外部focus仍受共同保護。只有新row內部視覺持hover，active/hover同context.klp.selectionWash；metadata讀state，decorative KlpIcon排除重複Semantics，toggle checked不混active selected。原生可觀察候選Semantics label/enabled/selected/onTap，不假造ARIA DOM。
+OverlayEntry最外層BlockSemantics在locale投影之前阻擋背景；全覆蓋child中的ModalBarrier只backdrop提出outside、panel Semantics scopesRoute/namesRoute/label、closed-loop FocusScope、LayoutBuilder finite viewport與top-center定位。pointer panel與candidate不冒泡到barrier；背景阻止pointer與遍歷，產品明確外部focus仍受共同保護。只有新row內部視覺持hover，active/hover同context.klp.selectionWash；metadata讀state，decorative KlpIcon排除重複Semantics，toggle checked不混active selected。原生可觀察候選Semantics label/enabled/selected/onTap，不假造ARIA DOM。
 
 panel重用KlpTextField/KlpText/KlpIcon/KlpPressable；同semantic overlay色/menuRadius/overlayShadow、dialogMaximumWidth/overlayViewportInset與tight/menuItemHeight/menuPadding/overlayItemGap/iconSmall。viewport先finite非負、inset<=短邊/2、panel寬高<=available；padding<=panel短邊/2；row padding/icon/gap依remaining寬分配。零/極窄/極高參數用ClipRect/scroll退化，不NaN/Infinity或RenderFlex overflow。field採有限width及垂直scroll宿主；rows nowrap裁切，沒有硬寫第二份風格值。theme/size只更新呈現且保留query/ID順序與權限。
 
@@ -36,7 +36,7 @@ BUILD 2a069faf 僅新增來源及foundation匯出兩path；21項protected公開W
 | 原生浮層／主題 | `build`、`_scheduleOverlay`、local `synchronize`／`focusInput`、`_removeOverlay`、`_projectOverlay` | caller theme→OverlayEntry |
 | 原焦點保護 | `_ownsFocus`、`_closeSession`、local `restoreFocus` | 同session／有效原節點→nativeFocus |
 | 執行與鍵盤 | `_isCurrent`、`_report`、`_activate`、`_key`、`_nativeDismiss`、`_outside` | native事件→最新core→當前產品callback |
-| 語意與有限呈現 | `_overlayChild`、`_panel` | 可見清冊→barrier／scope／semantic theme |
+| 語意與有限呈現 | `_overlayChild`、`_barrier`、`_panel` | 可見清冊→barrier／scope／semantic theme |
 | 候選列 | `_PaletteRow.createState`、`_PaletteRowState._hover`／`build` | active／hover→同selectionWash；execute權限仍在core |
 
 全部實作見[來源](klp_command_palette.dart)。無第二份theme／命令權威；widget tree以原生Overlay、Focus、Actions維持責任。
@@ -61,7 +61,7 @@ flowchart TD
 
 原生語意ACR已接受：author e5de466f確認View traversal root排除Portal候選（individual nodes仍attached），19Green/2排序Red。Portal加1px carrier探針仍同Red；由於BlockSemantics會剔除Portal語意graft的caller parent，改獨立OverlayEntry而維持現有公開介面/兩path。主題捕捉每個owner build刷新，當前open/query/session/Focus與其他module不改；closed仍零尺寸。依[OverlayPortal原生語意限制](https://api.flutter.dev/flutter/widgets/OverlayPortal-class.html)。TestAuthor修正LF單行native formatter及View root觀察，保留完整分詞/排序期待，SHA256 DB279A061B5016806C1F4EFC3C43AC78D4C5B808BA97BF3543E6C0278F97EBE9。
 
-## FLUTTER-COMMAND-PALETTE-MODAL-1（READY）
+## FLUTTER-COMMAND-PALETTE-MODAL-1（COMPLETE）
 
 修訂FLUTTER-COMMAND-PALETTE-MODAL-r1；公開constructor、controlled open／dismiss與全部搜尋／Focus／session契約保持。原生browser CommandsDemo在Windows web可重現：open後AX仍呈現背景Commands導航與產品按鈕；點scrim座標(200,350)原本期望outside，卻執行背景Workspace components導航且卸載demo。面板search／Tab／Enter／error與pending均已觀察正確；不能用21Green掩蓋此modal Red。
 
@@ -72,3 +72,8 @@ fresh獨立TestAuthor只寫flutter/test/registered_command_palette_modal_test.da
 M1最小native語意回歸與原21checks，M2publicanalyze／scope1／releaseweb及相同scrim座標browser重驗。cold-start3k～7k tokens／20～45分鐘，參照FLUTTER-COMMAND-PALETTE-1；M1累計3k／20分鐘、M2累計7k／45分鐘；10k／60分鐘或需要公開契約／其他source回PLAN。人類感官仍pending。
 
 官方邊界：[BlockSemantics](https://api.flutter.dev/flutter/widgets/BlockSemantics-class.html)僅阻擋同semantic container先繪製節點；[ModalBarrier](https://api.flutter.dev/flutter/widgets/ModalBarrier-class.html)提供nativepointer阻擋，平台semantic dismissal需另依實際原生語意驗證。先以public native regression建立可反駁的證據，不能把平台差異當允許背景操作的理由。
+
+
+BUILD35614d5b單一palette source完成：BlockSemantics移至投影外層；_barrier擁有同locale名稱及tap／dismiss，保留ModalBarrier pointer。fresh author32ba2a01／格式a47e7b8d只新test，SHA256 2B973B68295A0493332366BF6337B59EE9C67F26AFB2F7F8474BC1D3ADD42220；基線3Green／2有效Red，修正後5＋原21全部Green，兩protectedhash不變、publicanalyze No issues、scope1及diffcheck通過。
+
+releaseweb成功45.0s，native tab11 port5192 open AX只剩panel／input／候選／Dismiss，背景navigation/input操作消失。原scrim座標(200,350)只outside，Commands頁／草稿仍在、焦點回開啟按鈕；原生Dismiss亦只outside，候選pointer一次grid／executed正常。實際inner320×180的panel rect x8／y8／w304／h119，query canvas保留；reset回正常尺寸。error／warn空；main build/evidence/flutter-command-example.png。IME／產品externalfocus／theme／極端style完整browser矩陣仍pending，sensory human-pending。

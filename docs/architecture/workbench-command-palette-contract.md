@@ -32,7 +32,7 @@ React dialog role/aria-modal/名稱，input combobox role、aria-controls唯一l
 
 重用KlpTextField/KlpText/Icon/Button或現有原生pressable。背景scrim讀surface.scrimOpacity及既有色；panel overlay色/menuRadius/overlayShadow，最大寬沿geometry.layout.dialogMaximumWidth，viewport四邊沿overlayViewportInset。有限viewport先把inset限制到短邊一半，panel可用寬高有限非負，內部padding/field/item/icon/gap讀現有semantic；不足空間以scroll/clip退化，不能NaN/Inf/RenderFlexoverflow。不存viewport/style到commands/產品布局，不改ID順序/gates。hover/active同selectionWash。
 
-React portal投到owner document.body，從同useKlp tokens投影scoped styleVariables與mode，不能在portal外重建default ThemeProvider導致自訂pack丟失。SSR open/closed都不輸出modal，client mount後呈現，不產生hydration差異。Flutter原生overlay保留當前theme/locale，無第二份權威。感官/browser證據待專屬example，不用synthetic checks取代。
+React portal投到owner document.body，從同useKlp tokens投影scoped styleVariables與mode，不能在portal外重建default ThemeProvider導致自訂pack丟失。SSR open/closed都不輸出modal，client mount後呈現，不產生hydration差異。Flutter原生overlay保留當前theme/locale，無第二份權威。雙框架專屬公開example已有nativebrowser搜尋／條件／執行／dismiss證據；未觀察矩陣與感官仍pending，不用synthetic checks取代。
 
 React有效viewport為document固定定位可用client尺寸（排除原生捲軸保留寬高）；不得用含捲軸inner尺寸使極大panel侵入四邊inset。同open viewport改變刷新幾何並保留query/selection；無layout DOM harness可fallback有限inner尺寸，不當成native邊距證據。
 

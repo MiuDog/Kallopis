@@ -55,9 +55,9 @@ GitHub push 已授權，無需重問；仍需先確認範圍及實際檢查。�
 | style pack | common parser／catalog、350 semantics×4、Flutter／React theme接入 | typed recipes／全部參數與元件audit／default值權威切換 |
 | finite linear | 雙框架pure算法與原生Row／Column／Pane、公開consumer | 網站逐元件specimen整合 |
 | Dock | 雙框架codec／atomic operations／有限geometry／原生UI／公開example | browser hoverpreview／cancel矩陣、resize callback平台差異audit |
-| 命令 | 雙框架generic registry／registered toolbar／menu／palette；公開consumer | Flutter modal背景語意穿透已重現Red，先完成單source修正及nativebrowser同座標回歸；再anchor／context menu |
+| 命令 | 雙框架generic registry／registered toolbar／menu／palette；公開consumer | Flutter modal背景語意穿透已由單source修正及nativebrowser同座標回歸通過；接續anchor／context menu |
 | 快捷鍵 | 已接受完整scope | chord／scope／conflict／remap／recording共通契約及兩框架接入 |
 | 網站 | 30Markdown／547 canonical API／17modules／三surfaces；extract／generate／verify及15checks | 每個公開可呈現元件專屬互動、bundle／registry／coverage；3GUI×2框架 |
 | GitHub | 隔離精確commits，guarded同步main並保留index | 全部目標完成、保留發布閘門後精確push；尚未push |
 
-公開清冊或單一總覽iframe不能當作全部互動展示完成；protected deterministic code、nativebrowser觀察與人類感官接受分別記錄。現在先FLUTTER-COMMAND-PALETTE-MODAL-1，不重做已完成style／linear／Dock／command foundations。
+公開清冊或單一總覽iframe不能當作全部互動展示完成；protected deterministic code、nativebrowser觀察與人類感官接受分別記錄。現在先PLAN anchor／context menu，不重做已完成style／linear／Dock／command foundations。

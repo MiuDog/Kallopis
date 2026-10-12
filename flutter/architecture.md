@@ -112,9 +112,9 @@ flowchart TD
 
 ## Flutter registered command入口邊界（COMPLETE）
 
-依[WB-COMMAND-ENTRY-r1](../docs/architecture/workbench-command-entry-contract.md)，KlpCommandReference、KlpRegisteredCommandToolbar/Menu將以現有controls／CommandMenu風格呈現同registry資料，產品只給ID/order/kind與getContext/onResult。原CommandMenu models/caller保持原API，沒有新handler或context權威。local architecture與fresh TestAuthor已完成，兩框架registered入口均交付。overlay/context menu/palette仍屬已接受stage接續能力，未完成。
+依[WB-COMMAND-ENTRY-r1](../docs/architecture/workbench-command-entry-contract.md)，KlpCommandReference、KlpRegisteredCommandToolbar/Menu將以現有controls／CommandMenu風格呈現同registry資料，產品只給ID/order/kind與getContext/onResult。原CommandMenu models/caller保持原API，沒有新handler或context權威。local architecture與fresh TestAuthor已完成，兩框架registered入口均交付。anchor/context menu仍屬已接受stage接續能力；palette已完成。
 
-FLUTTER-COMMAND-ENTRY-r1 COMPLETE見[registered入口](lib/src/features/actions/command_entries/architecture.md)：BUILD ae01ca96新來源+stablefoundation兩path，23項protected公開Widgetchecks、analyze No issues及scope通過；native Focus/語意與同registry生命周期。React ENTRY已完成d05dca0e，兩端都不改舊CommandMenu/core/theme。popup/palette及shortcut未完成，browser及全style參數audit待展示stage。
+FLUTTER-COMMAND-ENTRY-r1 COMPLETE見[registered入口](lib/src/features/actions/command_entries/architecture.md)：BUILD ae01ca96新來源+stablefoundation兩path，23項protected公開Widgetchecks、analyze No issues及scope通過；native Focus/語意與同registry生命周期。React ENTRY已完成d05dca0e，兩端都不改舊CommandMenu/core/theme。popup及shortcut未完成，browser及全style參數audit待展示stage。
 
 ## Flutter registered command palette邊界（COMPLETE）
 
@@ -122,7 +122,7 @@ FLUTTER-COMMAND-PALETTE-r1 COMPLETE見[原生palette](lib/src/features/actions/c
 
 依[WB-COMMAND-PALETTE-r1](../docs/architecture/workbench-command-palette-contract.md)，已公開KlpRegisteredCommandPalette<C>與KlpCommandDismissReason enum；registry/getContext/open/label/searchLabel/emptyLabel/onResult/onDismiss共同。全registry可見清冊、多詞field/subsequence固定排序、native TextField/IME/Focus、受控open與原native焦點還原、async session隔離均依共同契約。保留現有CommandMenu及registered入口API。
 
-## FLUTTER-COMMAND-EXAMPLE-1（READY）
+## FLUTTER-COMMAND-EXAMPLE-1（COMPLETE）
 
 修訂FLUTTER-COMMAND-EXAMPLE-r1。依已完成公共registry／registered toolbar／menu／palette，新增example/lib/catalog/registered_commands_page.dart：單一產品展示State擁有registry、最新DemoContext、草稿controller、canSave／grid／showFailure／open／resultCount／message／dismissReason。initState註冊save（800ms Future）、grid toggle及顯式開關failure；registry每次查詢讀最新context；產品條件更新refresh；dispose釋放產品registry／controller。handler不複製到入口，error由原typed result呈現；onDismiss記錄reason並關閉受控open。same State保持controller與registry，主題／viewport更新不重建權威。
 
@@ -148,4 +148,16 @@ flowchart TD
 	Result --> Demo
 ```
 
-FLUTTER-COMMAND-PALETTE-MODAL-r1 READY：公開CommandsDemo browser的scrim點擊竟啟動背景導航，modal回歸見[palette local](lib/src/features/actions/command_palette/architecture.md)。freshauthor只new modal test，BUILD只palette source；保持公開API／產品內容與原21protected檢查，不改consumer或全域theme。consumer實作04cc372f已可建置與操作，browser完整modal接受待此修正。
+FLUTTER-COMMAND-PALETTE-MODAL-r1 COMPLETE：公開CommandsDemo browser的scrim點擊竟啟動背景導航，modal回歸見[palette local](lib/src/features/actions/command_palette/architecture.md)。freshauthor只new modal test，BUILD只palette source；保持公開API／產品內容與原21protected檢查，不改consumer或全域theme。consumer實作04cc372f已可建置與操作；修正35614d5b後5＋21protectedchecks、analyze／scope1與nativebrowser同座標outside通過。
+
+
+FLUTTER-COMMAND-EXAMPLE-1公開consumer04cc372f：analyze No issues／scope2／releaseweb成功；native搜尋sv 文件／canvas、pending三入口同步、原error留面板／Tab／Escape／executed、草稿保留。library35614d5b後補outside／原生Dismiss／背景排除／candidate pointer與實際320×180有限panel觀察。sense／browser theme與完整style矩陣仍human-pending；三GUI×2及全部元件網站互動未完成。
+
+| 展示責任 | 函式／來源 |
+| --- | --- |
+| Catalog頁投影 | [registered_commands_page.dart](example/lib/catalog/registered_commands_page.dart)的registeredCommandsPage／_buildCommands；單一palette specimen包含toolbar／menu，coveredComponents記錄組合 |
+| 最新context／owner | _DemoContext；_CommandsDemo.createState；_CommandsDemoState.initState／_getContext／dispose |
+| 產品handler | _save（800ms）、_toggleGrid／_fail；同清冊執行且refresh最新條件 |
+| 結果／意圖 | _onResult／_onDismiss／_openPalette／_toggleSave／_toggleFailure |
+| 公開元件組裝 | _controls／build，草稿controller不由入口代管 |
+| 原導覽保留 | [registry.dart](example/lib/catalog/registry.dart)只資料投影catalogGroups／catalogPages／catalogedComponents，原generatedconstants仍公開，無新函式或生成來源修改 |
