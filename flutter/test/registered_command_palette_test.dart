@@ -41,7 +41,8 @@ class _Host {
 		theme: buildKlpTheme(Brightness.light),
 		home: Scaffold(body: Theme(
 			data: theme,
-			child: Stack(children: [
+			// 宿主佔滿 viewport，避免宿主本身的零尺寸影響 overlay 原生語意。
+			child: SizedBox.expand(child: Stack(children: [
 				Positioned(
 					top: 0, left: 0,
 					width: 300, height: 60,
@@ -65,7 +66,7 @@ class _Host {
 					onResult: (result) => (callback ?? results.add)(result),
 					onDismiss: dismissals.add,
 				),
-			]),
+			])),
 		)),
 	);
 }
@@ -94,6 +95,17 @@ Future<void> _query(WidgetTester tester, String value) async {
 	await _frames(tester);
 }
 
+Future<void> _queryValue(WidgetTester tester, String value) async {
+	// 單行 EditableText 會過濾 LF；完整分詞契約從公開 controller／onChanged 邊界注入。
+	final input = _editing(tester);
+	input.controller.value = TextEditingValue(
+		text: value,
+		selection: TextSelection.collapsed(offset: value.length),
+	);
+	input.onChanged?.call(value);
+	await _frames(tester);
+}
+
 Future<void> _tap(WidgetTester tester, String label) async {
 	await tester.tap(_row(label));
 	await _frames(tester);
@@ -110,7 +122,9 @@ List<String> _order(WidgetTester tester, Set<String> labels) {
 			visit(child);
 		}
 	}
-	visit(tester.binding.pipelineOwner.semanticsOwner!.rootSemanticsNode!);
+	// 原生多 View 的語意 root 屬於該 RenderView owner，舊 pipelineOwner 可是空樹。
+	final view = tester.binding.renderViews.singleWhere((view) => view.flutterView == tester.view);
+	visit(view.owner!.semanticsOwner!.rootSemanticsNode!);
 	return found;
 }
 
@@ -236,7 +250,7 @@ void main() {
 		];
 		for (final code in separators) {
 			final separator = String.fromCharCode(code);
-			await _query(tester, '${separator}one$separator${separator}two$separator');
+			await _queryValue(tester, '${separator}one$separator${separator}two$separator');
 			expect(_row('Target'), findsOneWidget, reason: 'U+${code.toRadixString(16)}');
 		}
 		await _query(tester, 'one\u0085two');
