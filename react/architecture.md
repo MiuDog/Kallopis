@@ -324,3 +324,39 @@ flowchart TD
 | useDockClose effect／approval async callback | 同上 | StrictMode setup/dispose、caller替換時失效、boolean結果及finally清理 |
 
 下一slice在同stage接pointer reorder/move/split/resize/preview及公開example；其READY packet另固定輸入生命周期及exactwritepaths。
+
+### REACT-DOCK-NATIVE-2（READY）
+
+修訂REACT-DOCK-INPUT-r1，沿已接受WB-GEOMETRY/PREVIEW/UI-r1。單一宿主的原生HTML drag事件負責tab重排/move/split/create；Pointer Events負責area/group resize。HTML drag的瀏覽器觸控支援由宿主決定，文件明示；不宣稱跨視窗/跨instance drag或自建touch polyfill。保留NATIVE-1 publicAPI及close生命周期；新增optional collapseThresholds:Partial<Record<KlpDockArea,number>>，缺省0，值有限非負，屬產品收合邏輯，非品牌尺寸。
+
+workbench-dock-view.ts（private）集中當前root/group/inner/header/gutter矩形投影，依resolveKlpDockGeometry及resolveKlpLinearLayout；render與hit/resize共用該投影，禁止第二套CSScalc。非末preferred/末flex、32/120logicalminimum、finite margin/chrome/stroke沿native1。preview只淺投影被展開area的visibility/minExtent，保存layout/prefs不動。source registry/bottom capability仍以當前props查詢。
+
+workbench-dock-input.ts（private）擁有此次instance drag source、preview areas、hint、pointer session及document listeners。事件client座標以宿主DOMrect與目前有限CSS內容軸轉成root座標（transform scale還原，零軸不除零）；只有本instance tab dragstart建立的source能命中，不接受外部DataTransfer任意panel ID。nonprimary/multibutton resize及draggable=false不開始；產品close/input等action不可因正文事件開始drag。
+
+dragstart在tab原生draggable=true，DataTransfer只供瀏覽器feedback，不是資料權威；dragover合法target才preventDefault/effect=move，無target清hint。tab按實際DOMrect的左右半部轉before/after，原index轉移除source後finalindex；tablist/header空白append tab。group正文drop為split：扣新增pair的effectivegutter後容納2logical minima才合法；source等於只有一tab的target則拒絕。new groupID由instance prefix/counter產生並避開完整caller IDs；group插於source移除後仍存在的target之後，兩個相同偏好，各用puremove與resizeGroup local batch，changed一次通知。
+
+Stage僅在實際stage邊界帶接受empty area create，帶寬讀theme.geometry.layout.railDropTargetExtent並clamp各軸；left/right/bottom候選以距離最小選擇（同距left/right/bottom穩定順序），area必空及能力合法，Bottom必有constraints。group extent至少其axis logicalmin，area extent以保存pref在logicalmin/max內clamp，不取hoverminimum。Stage中央不接受drop，產品正文不被攔截。提示只在actual Stage/target rect內裁切，stroke/opacity/color讀semantic。
+
+hidden非空area的outer root edge帶使用相同railDropTargetExtent（右/底在header下及中央范围），合法dragover只令presentation以minExtent展開。preview維持到dragend/drop/cancel，dragleave Dock只清hint，仍可移入preview group；不同layout instance立即清preview/hint並取消本次input，同layout的style/size更新保留preview且重算配額。成功drop从原caller puremove/split才令目标visible，保留原extent；end/miss/cancel/unmount/registry source失效清所有presentation，callback0。root/document dragend與Escape在本次source有效時清理，不改其他instance。drop時重新依最新view解析target，不能使用過期hover目的。
+
+area edge沿native1 label/aria-expanded，visible非空時pointerdown可resize；click仍收合/展開，實際拖移後的同一pointer click須抑制，keyboard click不抑制。document pointermove只畫有限resize hint、不提交；pointerup才提交一次pure action；pointercancel/Escape/unmount/不同caller layout取消0通知。左requested=起始actualWidth+dx，右/底為起始actualExtent−dx/dy；requested低於產品collapseThreshold則purevisibility false且不寫小尺寸；否則在logicalmin/max及最新geometry.maximum內clamp，max<min no-op。零threshold不因render/viewport變窄自動收合。非有限座標不產生操作。
+
+group gutter role=separator、aria-orientation/label與相鄰group IDs可辨識。pointer resize使用actual相鄰extents總和（不含gutter），first=起始actualfirst+axisdelta，clamp minimum..pair−minimum；pair不足2minimum no-op，正常pure resizeGroup兩次local batch只一次最終通知。保存extent仍>0；其餘group偏好保持。drag/resize feedback只是presentation，不能把其copy存為第二保存權威。
+
+BUILD write_paths：react/src/workbench-dock.tsx、react/src/workbench-dock-view.ts、react/src/workbench-dock-input.ts、react/src/styles.css。NATIVE-1 lifecycle、publicpurehelpers/theme/components/index/config/examples/architecture/tests及其他module readonly。Private view/input不由index匯出；責任拆分是有限配額與原生輸入生命周期的獨立變動來源。拒絕在JSX各hit handler重算group或用nativeDataTransfer生成保存模型。
+
+獨立TestAuthor僅寫react/test/workbench-dock-input.test.mjs，public native events/DOM roles/caller probes：tab reorder before/after/self no-op/crossarea+capability/source cleanup；split2min/futuregutter/一次通知；Stageempty zero-prefcreate；hiddenpreview/cancel/miss/success pref保持/identity vs same-theme；area/group resize有限budget/shortage/cancel+click抑制；外部drag/非draggable/unmount/source replacement；原NATIVE-1 protectedchecks rerun而不得修改。jsdom synthetic坐標不冒充browser手感。M1拖放/preview/finiteview，M2resize/lifecycle/regression/build/scope；參照FLUTTER-DOCK-UI-1/PREVIEW-1及REACT-LAYOUT-2，估12k–20k tokens、60–120分鐘，超25k/150分鐘或需變更共同geometry/codec回PLAN。之後獨立example slice接存還原/close與nativebrowser，再整合GUI/docs。
+
+```mermaid
+flowchart TD
+	Native[KlpDockLayout] --> View[private finite Dock view]
+	View --> Root[resolveKlpDockGeometry]
+	View --> Groups[resolveKlpLinearLayout]
+	Native --> Input[instance drag / pointer]
+	Input --> View
+	Input --> Preview[local preview / hint]
+	Preview --> View
+	Input --> Batch[pureOPS local batch]
+	Batch --> Caller[changed 一次 callback]
+	Input --> Cleanup[document end / cancel / unmount]
+```
