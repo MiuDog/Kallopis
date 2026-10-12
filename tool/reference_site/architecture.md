@@ -1,5 +1,11 @@
 # Kallopis Reference Site
 
+## 本階段規範導覽切片
+
+修訂 `DOCS-STAGE-r1`，PLAN READY。`DOCS-STAGE-1` 只將已接受的 Workbench、Style Pack、互動 docs、研究與整合計畫 Markdown 加入現有 documents registry；write_paths 僅 `tool/reference_site/documents.mjs`。資料仍從 Markdown 生成，公開 API identity／現有頁面／測試／style 不改。驗收為既有網站 tests、正式 generate／verify；本切片不宣稱已嵌入互動展示。
+
+冷啟動估算 1k–3k tokens／5–15 分鐘，參考 TDS-VISUAL-1 的 registry 接入，Node24 builtin，無新相依。唯一里程碑 M1：五份來源的頁面、搜尋及本地引用可驗證；超過 4k tokens 或 20 分鐘先查來源／路由契約，不扩寫 UI。BUILD 的 architecture、tests、fixture、API manifest 及其他 module 都唯讀。
+
 目前架構修訂：`TDS-VISUAL-r1`，IMPLEMENTED（2026-10-11）。通用視覺網頁整合已通過 11 項新契約檢查及 4 項既有 API 檢查，正式 515 API 頁／18 文件生成及 verifier 通過；桌面索引、配方搜尋與窄畫面表格已觀察。感官品質等待人類接受。
 
 ## 目的與非目標

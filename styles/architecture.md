@@ -1,6 +1,6 @@
 # Style Pack
 
-修訂：`STYLE-PACK-r1`。目前 stage：v1；PLAN READY，尚未 BUILD。契約：[Style Pack v1](../spec/style-pack-v1.md)。
+修訂：`STYLE-PACK-r1`。目前 stage：v1；STYLE-PACK-1 已完成，STYLE-PACK-2 待簽發。契約：[Style Pack v1](../spec/style-pack-v1.md)。
 
 ## 責任與公開格式
 
@@ -32,7 +32,7 @@ Validation 必須拒絕 unknown version、非 object／array dictionary、空 ID
 
 | Slice | write_paths | 責任／證據 | 狀態 |
 | --- | --- | --- | --- |
-| STYLE-PACK-1 | `styles/schema-v1.json`、`styles/kallopis-v1.json`、`styles/catalog.json`、`styles/src/**`、`styles/scripts/**`、`styles/package.json`、`styles/README.md` | SP-01／02：純 JSON 遷移、內容逐項對照、驗證與既有表格 round trip，不切換框架權威 | 可發 packet |
+| STYLE-PACK-1 | `styles/schema-v1.json`、`styles/kallopis-v1.json`、`styles/src/**`、`styles/scripts/**`、`styles/package.json`、`styles/README.md` | SP-01／02：純 JSON 遷移、內容逐項對照、驗證與既有表格 round trip，不切換框架權威 | 完成 |
 | STYLE-PACK-2 | `styles/src/**`、`styles/scripts/**`、`styles/catalog.json` | SP-04／05／06／07：typed 參數、範圍、資產與解析輸出，供兩框架 adapter 同 fixture 驗證 | 依賴 slice 1 |
 
 Test Author 唯一可寫 `styles/test/**`；implementation 不可改測試、spec、architecture、docs、框架或 CI。檔案不存在前不建立空執行層。BUILD packet 必須基於乾淨隔離 worktree 真實 revision；測試 author 的新保護需先提交到基線。
@@ -40,3 +40,37 @@ Test Author 唯一可寫 `styles/test/**`；implementation 不可改測試、spe
 STYLE-PACK-1 冷啟動估算 5k–10k tokens／30–70 分鐘；參考 REACT-FOUNDATION-1 的同來源解析（無可靠歷史成本），假設 Node 24、零新增執行相依。M1 提取與 round trip；M2 拒絕非法輸入及公開驗證；兩者均完成才可聲稱本 slice 完成。超過 12k tokens 或 90 分鐘需重新評估，不降低驗收。
 
 P1 對應：SP-01／02 本 module；SP-03／05／06／07 框架 adapter，SP-04 本 module 與 adapter coverage，SP-08 reference site。所有後續框架權威切換須由整合 owner 更新維護規則、生成器契約及兩框架架構，不能由本 worker 私自改跨 module 檔案。
+
+## 已實作責任與呼叫鏈
+
+| 函式／檔案 | 責任 |
+| --- | --- |
+| [importStyleTables](src/index.mjs) | 以 tableRows 讀三份正式文件，建立身份、值、四模式、配方及描述後整體驗證 |
+| validateStylePack | 驗證 dictionary、身份、primitive scalar／array、模式、配方字段及描述；不修改輸入 |
+| exportStyleTables | 驗證後輸出三張 Markdown 資料表；不重建章節排版 |
+| tableRows／primitiveValue／unquote | 抽取 ID 列、拒絕重複及格式錯誤；數字轉 finite number，其他來源記號保留原文 |
+| validateSemantics／visit | 各 mode 的 p／s／array／add 語法、引用與 DFS 循環驗證；尚非 typed runtime resolver |
+| validateRecipes／visit | 繼承 DFS、p／s 引用驗證；自然語言配方保留原文，不使用 eval |
+| dictionary／identifier／text／fail | 拒絕非法物件、危險 ID、非法文字，錯誤帶路徑與原因 |
+| markdownTable／code | 純資料表與 inline code 輸出，交給 docs renderer 做 HTML escape |
+| [migrate CLI](scripts/migrate.mjs) | 讀正式三表；產生 default JSON 或以 --check 比較全部內容；失敗回非零 exit |
+| [schema](schema-v1.json)／[package](package.json) | schema 定義交換型別；package 提供 ESM 公開入口及 Node24 指令，不發布 npm |
+
+```mermaid
+flowchart LR
+	CLI[migrate] --> Import[importStyleTables]
+	Import --> Rows[tableRows / primitiveValue / unquote]
+	Rows --> Validate[validateStylePack]
+	Validate --> Scalars[dictionary / identifier / text]
+	Validate --> Semantics[validateSemantics / visit]
+	Validate --> Recipes[validateRecipes / visit]
+	Validate --> Error[fail: path + reason]
+	Validate --> Pack[JSON pack]
+	Export[exportStyleTables] --> Validate
+	Export --> Render[markdownTable / code]
+	Render --> Tables[三張表]
+```
+
+JSON 字段：schemaVersion 是交換版本；id／version 是風格身份；primitives 是 scalar／array 原料值；semantics 是 ID → 四 mode 表達式；recipes 的 aliases／inherit／parameters 保存查詢名、繼承及參數原文；primitiveDescriptions／semanticDescriptions 保存文件說明。曲線的陣列記號保留字串以逐 cell 還原，下一 slice 的 typed resolver 解析其數值，不能將 lexical JSON 當程式執行。schema 的 defs/value／scalar／modes／recipe／descriptions 分別約束交換結構。package name／version／private 管理套件身份及發布限制，exports 是公開 ESM 入口，scripts／engines 擁有執行方式及 Node 下限。
+
+證據：269 primitive、350 semantic × 4、118 recipe 完整逐 cell round trip；11 個主測試／65 個含子測試檢查全通過，migration --check 及 packet scope check 通過。原本陣列轉換改變原文字面值的失敗已修正，測試 hash 未變。未執行框架 adapter、元件渲染或布局測試，本 slice 不宣稱其完成。
