@@ -1,6 +1,6 @@
 # Registered command入口
 
-FLUTTER-COMMAND-ENTRY-r1 READY，依[共同WB-COMMAND-ENTRY-r1](../../../../../../../docs/architecture/workbench-command-entry-contract.md)。當前只交付直接原生toolbar/平面menu；popup/palette/shortcut仍待接續，既有CommandMenu/WorkspaceCommand caller不變。
+FLUTTER-COMMAND-ENTRY-r1 READY，依[共同WB-COMMAND-ENTRY-r1](../../../../../../docs/architecture/workbench-command-entry-contract.md)。當前只交付直接原生toolbar/平面menu；popup/palette/shortcut仍待接續，既有CommandMenu/WorkspaceCommand caller不變。
 
 ## 責任及公開契約
 
