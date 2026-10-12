@@ -42,3 +42,7 @@ body { background: Canvas; }
 	padding-inline: var(--klp-spacing-contentInset);
 }
 .demo-layout-natural { height: 32px; overflow: hidden; }
+.demo-dock-preview { max-width: 100%; flex: none; min-width: 0; overflow: hidden; }
+.demo-dock-content { height: 100%; overflow: auto; display: flex; flex-direction: column; gap: var(--klp-spacing-contentInlineGap); padding: var(--klp-spacing-contentInset); }
+.demo-dock-stage { height: 100%; overflow: auto; display: flex; flex-direction: column; gap: var(--klp-spacing-contentInlineGap); padding: var(--klp-spacing-contentInset); }
+.demo-dock-header { height: 100%; display: flex; align-items: center; padding-inline: var(--klp-spacing-contentInset); overflow: hidden; }

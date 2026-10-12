@@ -4,6 +4,7 @@ import { KlpThemeProvider, KlpWorkspace, KlpFrame, KlpText, KlpButton, KlpIconBu
 import '@kallopis/react/styles.css';
 import './style.css';
 import { LayoutDemo } from './layout-demo.js';
+import { DockDemo } from './dock-demo.js';
 
 const modes: KlpMode[] = ['light', 'dark', 'ultraDark', 'transparent'];
 const labels = { light: '淺色', dark: '深色', ultraDark: '極深色', transparent: '透明' };
@@ -59,6 +60,7 @@ function App() {
 					{mode === 'transparent' && <KlpText as="p" role="caption">透明模式呈現宿主底色；原生視窗透明效果由宿主提供。</KlpText>}
 					<SemanticSample />
 					<LayoutDemo mode={mode} stylePack={stylePack} />
+					<DockDemo />
 					<KlpCard header={<KlpText role="body-strong">可替換風格檔</KlpText>}>
 						<div className="demo-stack">
 							<KlpText role="caption">{stylePack.id} · {stylePack.version} · {Object.keys(klpStyleParameters).length} 項語意參數</KlpText>
