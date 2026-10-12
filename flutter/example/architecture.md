@@ -404,3 +404,32 @@ Native5203 prefix十route全部自己的props controls与label修改，控制文
 Card child輸入2/動作1；四mode、spacious、local320保持同草稿及回呼；reset回初始props與0，環境spacious/local320維持。當次console error/warn空。main build/flutter-content-collection-specimens.png、flutter-content-collection-native.json保存證據；actual360 browser與感官human-pending，local320不替代。Flutter真實展示100／273，剩173與全量網站gate／style audit仍原goal，不提前push。
 
 State _controls/_target/_usage對應自己的公開props，_child只提供明示consumer input/action；_sort/_loadOlder/_remove/_rootAction記root結果，_childAction/_input記child結果，_edit只control，dispose清controller，build有限scroll舞台。集合資料投影不重建library算法或theme。实际usage單task未量測null。
+
+
+## FLUTTER-PROGRESS-COLLECTION-SPECIMENS-1（READY）
+
+修訂 FLUTTER-PROGRESS-COLLECTION-SPECIMENS-r1，IDOC-01/02/03/06/08；exact lib/component_specimens.dart、新 lib/progress_collection_specimens.dart。KlpProgress、KlpStepper、KlpTaskList、KlpScheduleList、KlpTimeline 五個正式target；其餘元件仍維持全273目標。
+
+ProgressCollectionComponentSpecimen(name) 只讀公開foundation與Flutter widgets；State擁有title/detail/draft controllers、進度值/state/segments、step current/direction、consumer task checked Set、資料數量及 callback log。controls使用公開DTO及enum；每個target真實constructor與自身使用碼；Progress cancel只記consumer動作，TaskList原onChanged依index回寫checked Set；Timeline content明示child input/action，不能當root callback；Stepper/Schedule無callback不虛構。改數量保持stepIndex合法並移除無對應task id；環境不清state，epoch reset，dispose清controller。使用有限280舞台scroll，水平step寬度不足由consumer提供可水平捲動host，不改library算法。
+
+驗收五registry與正式renderable、公開analyze、同sourceprefixrelease、native五頁自身controls/文字/Progress cancel與Task toggle/Timeline child、四mode/spacious/local320保留草稿及reset、scope2/diff。無core/persist/crosslanguage新風險，不新增鏡像tests；library/tests/config/style/site/docs禁止寫。actual窄browser及感官human-pending。
+
+估3k～7k/25～55分鐘，參考CONTENT-COLLECTION；M1 source5/analyze/build（4k30），M2 native/state/scope（7k55）；12k90或public contract不足回PLAN；actual任務usage無量測null。
+
+| Source / class / function | 責任 |
+| --- | --- |
+| progressCollectionSpecimenNames / ProgressCollectionComponentSpecimen | 公開名稱及自身route |
+| State controls/target/usage/build | 原props與公開DTO、合法finite host |
+| State cancel/task/child/input/edit/count | 原callback投影、consumer資料及controller生命週期 |
+| component fixture | 精確分流，環境與epoch維持原owner |
+
+```mermaid
+flowchart TD
+	Host[ComponentSpecimenApp] --> Fixture[ProgressCollectionComponentSpecimen]
+	Fixture --> Props[公開props / DTO controls]
+	Props --> Target[真實公開target]
+	Target --> Callback[原cancel / task / 明示child]
+	Callback --> Data[consumer資料與結果]
+	Data --> Target
+	Host --> Reset[epoch重建]
+```
