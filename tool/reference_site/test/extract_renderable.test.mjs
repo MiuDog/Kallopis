@@ -16,6 +16,7 @@ const runtimeConfig = path.join(root, 'flutter/.dart_tool/package_config.json');
 const extractor = path.join(root, 'tool/reference_site/extract_api.dart');
 const dart = 'D:/flutter/bin/dart.bat';
 const sharedSource = `import 'package:flutter/widgets.dart';
+import 'package:flutter/foundation.dart' show DiagnosticLevel;
 
 class FixtureDirect extends Widget {
 	const FixtureDirect({super.key});
@@ -27,6 +28,8 @@ final class FixtureFinal extends FixtureDirect {}
 base class FixtureBase extends FixtureDirect {}
 interface class FixtureInterface extends FixtureDirect {}
 mixin class FixtureMixinClass implements Widget {
+	@override
+	String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) => 'FixtureMixinClass';
 	@override
 	dynamic noSuchMethod(Invocation invocation) => throw UnimplementedError();
 }
