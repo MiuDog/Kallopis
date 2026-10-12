@@ -17,6 +17,8 @@
 
 - REACT-DOCK-STATE-1完成c6af55f6：native readonly資料、encodeKlpDockLayout／restoreKlpDockLayout使用同一手寫wire；7checks、build／typedconsumer／scope通過。全部結果deepfreeze、caller不動，registry optionalbool／unknown拒絕，malformedJSON轉TypeError，無DOM或storage。
 
+- REACT-DOCK-OPS-1完成e5d8b0a6：公開applyKlpDockAction與typed action/destination/result，10checks、build／typedconsumer／scope通過。strictrequest、finalindex、capability、missing清冊先拒絕、empty／active fallback、close approved／denied／reopen、immutable／caller隔離。純utility不宣稱UI完成。
+
 ## Git 與工作環境
 
 唯一BUILD隔離checkout：C:/Users/ASUS_TUF/.codex/worktrees/workbench-v1/Kallopis，managed attached、detached commits。Main D:/Projects/Kallopis branch codex/productivity-reference-ecosystem 有先前搬移及未提交變更，index保留。保存基線3b5dda7be00d1be4760c6cc8c4ad38a3e7ed31de不是reviewed release。origin https://github.com/MiuDog/Kallopis.git，push尚未執行。
@@ -31,5 +33,8 @@ Flutterlinear26F406F0C231B0362C2C73760740117771B097C25043DCB8FE484A7D647A653F；
 Flutterwidget893CB1ABE6FE24C2F6CA54EA72769CC23EE91CD0C68B0909117DDAE5D63BBB75（flutter/test/workbench_layout_test.dart）；ReactwidgetD3547FAC11B6638E1F74C09E2E981ACFBEF610343136498D6656602BF8AC7495（react/test/workbench-layout.test.mjs）。獨立TestAuthor擁有上述檔，BUILD不得改測試。
 Fluttercodec受保護tests flutter/test/dock_layout_codec_test.dart：129D62D2C11882215D2FB652A3DA99CCF64FBCBD547845270D7CACD0FDE9781C；author基線35332e86，BUILD scope在69771496閉合。手寫跨語言wire在該test首段；React下一個TestAuthor應採同樣wire成功／拒絕樣本，不用各端encode自我roundtrip代替格式驗證。
 Reactcodec protected test react/test/dock-layout-state.test.mjs hash9D654F0FAA78FF9B02A97B4C7E337585179F25D3254F53F3C4ACB45E4DC77900，author基線c0c7fa76，BUILD scope於c6af55f6閉合。
-下一步PLAN雙框架Dock公開操作與UI：沿用WB04～08／16，保留固定Stage／Left／Right／Bottom及既有Fluttercaller。完成select／reorder／move／split／merge／collapse／reopen／close／pinned／dirty的受控state與回呼、有限style尺寸／viewport保護、drag取消不改state，然後必要獨立tests及BUILD。保存codec兩端已完成不重做；一般layout也不重做。
+Reactoperations protected test react/test/dock-layout-operations.test.mjs hash8856C5DC1A404D4B0797BEE8FFD3F5BE0D6295755A7FD48E734F65C5CCDDD14F，author基線6641d67e，BUILD scope在e5d8b0a6閉合。
+下一步PLAN Flutter對等公開操作，沿用共通WB-DOCK-OPS-r1與React同一成功／拒絕fixture，不重做已完成Reactoperations。再接雙框架Dock UI：沿用WB04～08／16，保留固定Stage／Left／Right／Bottom及既有Fluttercaller。完成select／reorder／move／split／merge／collapse／reopen／close／pinned／dirty的受控state與回呼、有限style尺寸／viewport保護、drag取消不改state，然後必要獨立tests及BUILD。保存codec兩端已完成不重做；一般layout也不重做。
 其後命令／快捷鍵註冊、chord／scope／衝突／重綁、所有specimen、VSCode/Blockbench/Blender各双框架GUI、typedrecipe／全部元件風格對齊、網站展示registry/bundle/coverage、權威切換／CI／精確提交push仍未完成。完整goal保持ACTIVE。
+
+已直接觀察Flutter klp_dock_layout.dart _resolveGroupExtents 313～355：不足空間會分配content，但handle仍用raw semantic extent；root舊Row按保存left/right寬度直接配置，缺viewport clamp。接入purelinear resolver時必須同時使用有效gutter配置handle／overlay，不能只縮content並宣稱極大style安全。

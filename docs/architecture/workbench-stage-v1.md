@@ -59,3 +59,5 @@ FLUTTER-LAYOUT-2 已完成：18 Widget checks／4 既有 checks、analyze／scop
 FLUTTER-DOCK-STATE-1完成69771496：依 [WB-DOCK-STATE-r1](workbench-dock-contract.md)新增公開版本化codec／policy／restore診斷；7獨立checks、analyze／scope通過。先完整驗證再對清冊，失敗不改state；深層不可變結果。下一步React同一wire接入，再完成兩框架Dock UI／有限style尺寸保護。此保存slice不代表WB-04～08全部完成。
 
 REACT-DOCK-STATE-1完成c6af55f6：native readonly資料／encode／restore與Flutter使用同一保存wire，7 protectedchecks、librarybuild／publicconsumer／scope通過。雙端保存邊界完成不代表Dock UI完成；接續公開操作契約及兩框架分頁／拖放／resize／style幾何。
+
+REACT-DOCK-OPS-1完成e5d8b0a6：WB-DOCK-OPS-r1受控單步操作，10獨立checks、build／publicconsumer／scope通過；select／move／open／merge／close approval／visibility／resizeprefs、atomic rejection及immutable完整。下一步Flutter對等操作與雙框架Dock UI、有效resize handle／viewport geometry；hover／取消不可提交。

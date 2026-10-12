@@ -1,6 +1,6 @@
 # React Foundation
 
-## REACT-DOCK-OPS-1（READY）
+## REACT-DOCK-OPS-1（完成）
 
 修訂 `REACT-DOCK-OPS-r1`；沿用 WB-DOCK-OPS-r1。公開 applyKlpDockAction(layout, panels, action) → KlpDockActionResult（readonly layout／changed）。KlpDockArea 是 left／right／bottom；KlpDockDestination 是 kind tab（area／groupId／index）或 group（同欄位加extent）；KlpDockAction discriminated type 為 select(panelId)、move／open(panelId／destination)、merge(sourceGroupId／targetGroupId／index)、close(panelId／approved)、visibility(area／isVisible)、resizeArea(area／extent)、resizeGroup(groupId／extent)。type及上述欄位全數 required、無未知欄；destination同樣strict。indexes是最終非負整數，不能clamp。
 
@@ -234,3 +234,9 @@ EXAMPLE-1 實作920f0022，LayoutDemo／previewPack useMemo／控制 state 由 e
 c6af55f6：dock-layout-state.ts 公開五個 readonly interfaces 與 encodeKlpDockLayout／restoreKlpDockLayout。snapshot 使用 object／identity／extent／list 驗證 exact fields、全域 identity、active及finite；invalid 擁有 TypeError。snapshot及reconcile只建立自己的 frozen 結果；policies是每次呼叫的Map投影，不freeze caller。list拒絕native sparse arrays避免encode產生null群組。encode為snapshot→JSON.stringify；restore為string／JSON→document→snapshot→policy→reconcile→result，無DOM或全域狀態。
 
 7項獨立checks（Flutter同一手寫wire／拒絕樣本）、librarybuild／generators freshness、typedpublicconsumer、scope通過。Test Author SHA256 9D654F0FAA78FF9B02A97B4C7E337585179F25D3254F53F3C4ACB45E4DC77900未變；author基線c0c7fa76缺export為compile Yellow，無behaviorRed。BUILD只改兩個允許路徑；其後owner文件不回算worker scope。一般UI／Dock UI／風格未改，不宣稱感官或完整Workbench已完成。
+
+## Dock operations 清冊及證據
+
+e5d8b0a6：KlpDockArea／Destination／Action／ActionResult公開typed contract。applyKlpDockAction透過encode／restore先驗證完整layout與registry，再只改JSON working copy，最後再次驗證與freeze。record／exact／identity／areaName／index／extent擁有strict request；panelAt／placedPanel／groupAt找local location，removePanel擁有empty cleanup／active fallback，permitted檢查目的能力，invalid擁有TypeError。merge用陣列拼接避免合法大量tabs觸發函式參數上限。
+
+10獨立checks、librarybuild／generatorfreshness、typedpublicconsumer／scope通過。Protectedhash8856C5DC1A404D4B0797BEE8FFD3F5BE0D6295755A7FD48E734F65C5CCDDD14F未變；TestAuthor基線6641d67e只有exportcompileYellow。BUILD僅改兩個允許檔；既有codec、UI、style、Flutter及tests皆未改。人類感官與完整Dock UI仍未驗證。
