@@ -687,3 +687,6 @@ flowchart TD
 	Import[importOverrides] --> Shape[object / fields / copySequence]
 	Shape --> Commit[atomic replace / cancelChord]
 ```
+## REACT-COMMAND-SHORTCUT-HOST-1（READY）
+
+REACT-COMMAND-SHORTCUT-HOST-r1依[共同native宿主](../docs/architecture/workbench-shortcut-host-contract.md)，新src/command-shortcut-host.tsx＋index export exact2。readonly public Props與neutral display:contents wrapper，同keymap借用/getContext/getFocus/onHandling/onResult/children；native keydown bubble／defaultPrevented保護、原生editable／composition／229、single timer、blur cleanup與same-session/latestcallback，不註冊document listener。不加共用style，不改core／registry／所有tests／config／example／Flutter。cold4k～9k／20～45分鐘，參照REACT-COMMAND-POPUP-1與KEYMAP-1；M1protected公開SSR/DOM/lifetime checks4k／20，M2build／scope2 9k／45，12k／60或其他write回PLAN。fresh TestAuthor只test/command-shortcut-host.test.mjs；基線missingAPI Yellow，nativebrowser／GUI另stage，act warnings不當作code結果。

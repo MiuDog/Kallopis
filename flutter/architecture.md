@@ -179,3 +179,6 @@ BUILD173cc9e9只該source，analyze／scope1及releaseweb52.0s通過。_openPopu
 FLUTTER-COMMAND-KEYMAP-r1依[共同快捷鍵core](../docs/architecture/workbench-shortcut-core-contract.md)及[local](lib/src/features/actions/command_keymap/architecture.md)。目前純core新source＋stablefoundation exact2；同registry execute、scope／固定ranking／chord與clock／錄製／atomic override；不改legacy KeyBinding caller、不開timer／native eventloop。fresh TestAuthor只test/command_keymap_test.dart。cold6k～12k／30～60分鐘；M1公開protected checks（6k／30）、M2 analyze／scope2（12k／60），15k／75或其他source回PLAN。native IME／focus／既有鍵盤接入、GUI及網站另packet，不冒充WB-12～14完整完成。
 
 BUILD188273b8只兩source，fresh protected11 checks／public analyze No issues／scope2通過。實際型別、所有helper與call chain由上述local architecture擁有；沒有native事件接入或GUI完成宣稱。
+## FLUTTER-COMMAND-SHORTCUT-HOST-1（READY）
+
+FLUTTER-COMMAND-SHORTCUT-HOST-r1依[共同native宿主](../docs/architecture/workbench-shortcut-host-contract.md)及[local責任](lib/src/features/actions/command_shortcut_host/architecture.md)。新source＋foundationexport exact2，借用keymap與產品context/focus/composition回呼；原生Focus bubble、EditableText protection、single timer、nativefocus清理及same-session/latestresult。cold5k～10k／25～50分鐘，M1protected事件checks5k／25，M2analyze／scope2 10k／50；13k／65或其他write回PLAN。fresh TestAuthor唯一新publicWidget test，其餘所有module/config/tests唯讀；GUI與網站consumer另packet。
