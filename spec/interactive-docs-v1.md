@@ -17,6 +17,6 @@ Readiness：READY，2026-10-12 使用者已授權所有元件頁面互動、多�
 
 復刻指資訊區塊、布局關係及通用工作台互動；視覺仍採用選定 style pack。場景／編輯器／時間軸的產品核心以明確標示的示意內容承載，不宣稱執行 Blender、Blockbench 或 VS Code。展示控制不模擬已不存在的 runtime。
 
-官方參考：[VS Code UI](https://code.visualstudio.com/docs/editing/getting-started/userinterface)、[Blockbench Panel](https://web.blockbench.net/docs/classes/generated_interface_panels.Panel.html)、[Blender Workspaces](https://docs.blender.org/manual/en/latest/interface/window_system/workspaces.html)。Blender 搜尋索引已取得，正文目前無法讀取；實作其場景前須取得官方頁面或官方 GUI 可觀察證據，不以印象代替。
+官方參考：[VS Code UI](https://code.visualstudio.com/docs/editing/getting-started/userinterface)、[Blockbench Panel](https://web.blockbench.net/docs/classes/generated_interface_panels.Panel.html)、[Blender 4.5 Workspaces](https://docs.blender.org/manual/en/4.5/interface/window_system/workspaces.html)。Blender 官方正文已透過本機 HTTP 取得（2026-10-12，200）：workspace 是針對任務的 area／editor 組合；Topbar 分頁支援切換、更名、新增及 context menu 的複製／刪除／重排。此證據解除先前搜尋工具無法讀取正文的限制；場景渲染與互動仍需實際驗證。
 
 展示 registry 是可驗證的路由契約，不承諾每個型別都是 UI。非 Web 平台限定元件需提供其可在 Web 操作的呈現／host callback 部分並標示限制，不能宣稱 browser 可控制原生視窗。
