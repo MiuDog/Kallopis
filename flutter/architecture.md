@@ -68,3 +68,25 @@ FLUTTER-DOCK-PREVIEW-1完成3064c359：hover為局部presentation、cancel/miss�
 FLUTTER-DOCK-UI-r1 READY：optional Panel isPinned/isDirty/onCloseRequested FutureOr<bool>/closeLabel及全部UI pureOPS commit；欄位由Panel擁有，公開foundation原export已可達無需變更。geometry/preview/codec不可重做。
 
 FLUTTER-DOCK-UI-1完成4ff1c999：全部pointer提交pureOPS／single finalcallback；optional Panel isPinned/isDirty/onCloseRequested/closeLabel、async pending stale/error lifecycle。33 protectedWidgetchecks/publicDockPanelanalyze/scope5paths通過；新metadata尚未nativebrowser example證據，ReactDock/commands/keybindings/GUI/docsregistry/style權威切換未完成。
+
+## FLUTTER-DOCK-EXAMPLE-1（READY）
+
+修訂FLUTTER-DOCK-EXAMPLE-r1。既有example/lib/catalog/docking_layout_page.dart擁有此產品展示資料、Stage輸入、控制器、保存JSON與操作計數；使用穩定foundation入口，不引用src。panels清冊保留原能力、穩定callback，增加pinned/dirty/approve/deny/delay；metadata不進wire。LayoutCodec保存/還原，pureOPS visibility/open/merge，非法JSON保持layout並顯示diagnostics，Stage輸入由產品controller持有並dispose。宿主寬320/760/1040與高180/480由產品選擇，實際宽clamp到Catalog可用寬度；內部Dock配額樣式不複製。
+
+KlpDockHeader specimen文案改為semantic chromeTab與finite viewport，不寫固定32；actions需顯示實際操作結果，不保留空callback。main.dart只允許替Catalog home加Material透明宿主，解決已有browser黃色雙底線的DefaultTextStyle祖先；不得改主題權威或Catalog導航。BUILD write_paths僅此兩example來源；庫/tests/config/generated/architecture及其他module唯讀。
+
+責任清冊：dockingLayoutPage提供兩個公開Widget specimens；_DockLayoutDemo/createState連接產品state；_DockLayoutDemoState擁有_initialLayout/_panels/_policies/JSON與Stagecontrollers/closemode/count/message/width/height；_panel建立內容metadata與stableapprovecallback；dispose释放controllers；_approveClose只讀產品closemode，delay1200ms；_commit比較保存值/計數；_action委派pureOPS；_toggleArea/_clearBottom/_resetLayout/_saveLayout/_restoreLayout/_openPanel/_mergeGroups為產品意圖；build/_controls/_dock/_json組裝有限外部宿主與公開元件。_DockHeaderDemo/State只擁有action回饋；main KallopisCatalogApp與其State保持原生命週期，build只新增Material ancestor。
+
+M1public consumer/analyze/type/3pathscope，M2releaseweb --no-tree-shake-icons與nativebrowser select/save/load/close/resize/有限尺寸；拖放可用時確認，未觀察明示pending，感官human-pending。新測試無必要，既有33Widgetchecks不變，不以snapshot評分。參照React Dock example，cold-start5k–9k tokens/25–50分鐘；12k/70分鐘或需要library改動回PLAN。後续三個GUI×雙框架與全component網頁specimens仍保留完整goal。
+
+```mermaid
+flowchart TD
+	Catalog[dockingLayoutPage] --> Demo[_DockLayoutDemoState]
+	Demo --> Dock[public KlpDockLayout / Panel]
+	Demo --> Codec[public LayoutCodec]
+	Demo --> OPS[public applyKlpDockAction]
+	Dock --> Commit[_commit / product state]
+	Commit --> Demo
+	Product[stable approval callback] --> Dock
+	App[Catalog main Material host] --> Catalog
+```
