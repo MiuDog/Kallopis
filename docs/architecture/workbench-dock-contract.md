@@ -60,3 +60,13 @@ DockHeader 保留公開constructor及extent32相容常數；native preferred高�
 本slice不改保存格式／pure action／close metadata、hover/cancel提交策略或產品content內部；這些仍依OPS-r1後續接入。驗收含正常root/header/groups配額、左右及上下shortage、巨大/零handle、zero容器、hidden/empty、style inverted indicator、Header actions zero icon slot、area/group pointer resize與非回寫、內容State保留。獨立Widget checks只觀察caller probes與公開gesture，不讀私有RenderBox型別，不做golden。
 
 WB-DOCK-GEOMETRY-r1 的area maxExtent保留既有constructor可用的正Infinity，native adapter視為沒有邏輯上限，傳linear maximum=null；minimum及保存preferred仍需有限。實際resize最大值永遠以finite viewport限定。
+
+## 拖曳預覽 WB-DOCK-PREVIEW-r1
+
+READY；對應 WB-04／06／16。隱藏但非空的合法 area 在拖曳進入既有邊緣觸發帶時，以產品 constraints.minimum 暫時展開；僅為本 Dock instance 的 presentation，不能呼叫 onLayoutChanged、pure action 或修改 caller 的保存 layout。預覽仍使用 GEOMETRY-r1 的同一有限配額，不另做尺寸算法。空 area 沿用 Stage create-area 提示與成功提交。
+
+展開維持到此次拖曳完成／取消，離開 Stage 進入預覽 group 不立即收起；離開 target 只清提示。離開 Dock 後取消／未命中放下、pointer cancel及成功完成都清除 presentation。若產品在拖曳中提供不同 layout instance，立即清 preview 及目前 drop 提示，以新 caller 為準；相同 layout 的 theme／尺寸重建保留 preview，仍不提交。跨區不合法的 panel 不展開 area，也不能 drop。非 draggable panel 不開始 preview。
+
+成功 drop 到預覽 group 才一次提交：目標 visible=true，原 area extent、axis及其他 group 偏好保持；source移除／active fallback、merge或split依OPS-r1語意。正常 tab move／split不得因取用 minimum 的呈現快照而把該值寫成保存 extent。split仍依當前 actual group／gutter限制；不足兩個minimum不提交並於拖曳完成收回preview。不改 codec、model、public constructor、style或close/pinned/dirty語意。此slice保留既有UI data提交路徑；全UI接入pureoperation由下一slice完成，不能因此聲稱完整Dock已完成。
+
+獨立公開Widget checks保護：hidden非空hover展開且callback0、取消／miss恢復保存visibility/extent且callback0、移入預覽group成功一次提交且保存extent不變、capability拒絕、caller替換／theme或尺寸重建的生命週期、空area成功create及已完成geometry不退化。只使用公開consumer、native gesture及caller probes，不檢查private State或新增golden；感官仍human-pending。

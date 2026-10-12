@@ -1,6 +1,6 @@
 # Flutter Dock
 
-修訂 `FLUTTER-DOCK-OPS-r1`；PLAN READY。擁有此 docking 目錄；公開入口由 foundation 匯出。保留直接 KlpDockLayout／Panel／Area／Group；不引入通用 node tree、renderer 或產品 storage。
+修訂 `FLUTTER-DOCK-PREVIEW-r1`；PLAN READY。擁有此 docking 目錄；公開入口由 foundation 匯出。保留直接 KlpDockLayout／Panel／Area／Group；不引入通用 node tree、renderer 或產品 storage。
 
 ## 當前 slice FLUTTER-DOCK-OPS-1（完成）
 
@@ -98,3 +98,24 @@ DockHeader總slots先clamp至所需actions+1再floor，zero icon不除零；more
 logicalgroupmin32/120仍是舊操作限制，完整style recipe參數化尚未完成。hover/cancel不提交、close批准、pinned/dirty與pureoperation UI接入仍待同一Workbenchstage；有限geometry完成不代表整個Dock交付完成。
 
 Release Catalog 另以 `flutter build web --release --no-tree-shake-icons` 成功建置；既有動態 IconData 要求保留完整字型。native browser 已確認 HISTORY 分頁切換、Bottom 收合與還原保留分頁，error/warn 空。截圖在 main ignored `build/evidence/flutter-dock-geometry.png`；Catalog 黃色雙底線與 Header 固定32px舊說明仍待 example/style 階段，不屬本 BUILD，感官接受仍 human-pending。
+
+## 當前 slice FLUTTER-DOCK-PREVIEW-1（READY）
+
+只實作WB-DOCK-PREVIEW-r1，保存／geometry已完成。State擁有此次drag的preview slots與drop提示；build由widget.layout投影臨時visible/minimum area，送既有geometry及group composition。caller layout是唯一保存權威。_finishDrag清preview及提示；target leave僅清提示，避免Stage→preview group跳轉時隱藏目標。didUpdateWidget僅在layout identity變更時清preview，不把theme/size rebuild當產品保存更新。success使用caller的原area尺寸與visible=true提交，不把presentation minimum帶回保存。
+
+BUILD only klp_dock_layout.dart、internal/klp_dock_layout_data.dart。原publicmodel／codec／operations／geometry part／primitive Draggable／Panel／theme／style／example／config／architecture／tests唯讀。現有onDragFinished callback可接新的private lifecycle，不改primitive介面。TestAuthor只寫flutter/test/dock_preview_test.dart，readonly既有geometry test可作公開harness參考。下一slice才接入pureoperation與close metadata；本slice不發明新publicAPI或產品保存層。
+
+M1 hover/cancel/capability/caller lifecycle，M2 success一次提交與保存extent／原geometry保護、publicanalyze/scope。cold-start6k–10k tokens／40–70分鐘，參照FLUTTER-DOCK-GEOMETRY-1與STATE-1；15k／90分鐘或需要改readonly API/geometry回PLAN。選擇局部presentation投影，替代hover提交後rollback會先污染產品保存、且與外部更新競爭，因此不採用。
+
+```mermaid
+flowchart TD
+	Caller[唯一保存layout] --> Preview[State本次drag slots]
+	Preview --> Effective[臨時visible/minimum投影]
+	Effective --> Geometry[既有finite geometry]
+	Geometry --> Native[既有Group/Stage]
+	Gesture[公開drag] --> Preview
+	Gesture --> Finish[cancel/end清preview]
+	Gesture --> Commit[success讀caller原extent]
+	Commit --> Callback[一次onLayoutChanged]
+	Callback --> Caller
+```
