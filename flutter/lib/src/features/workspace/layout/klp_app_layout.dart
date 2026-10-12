@@ -1,17 +1,24 @@
+import 'dart:math' as math;
+
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
+
+import 'klp_linear_layout.dart';
 
 import 'package:kallopis/src/styling/legacy_theme/klp_theme.dart';
 import 'package:kallopis/src/styling/presets/klp_frame_relief_recipe.dart';
 import 'package:kallopis/src/styling/primitives/klp_style_value.dart';
 import 'package:kallopis/src/foundation/surface/klp_surface.dart';
 
+part 'internal/klp_linear_render.dart';
+
 /// App background 上第一層的通用 Workbench 布局根。
 enum KlpAppLayoutInset {
-  /// 套用 App frame 之間的標準外距。
-  standard,
+	/// 套用 App frame 之間的標準外距。
+	standard,
 
-  /// 讓單一端點的內容貼齊可用範圍。
-  none,
+	/// 讓單一端點的內容貼齊可用範圍。
+	none,
 }
 
 final class KlpAppLayout extends StatelessWidget {
@@ -28,13 +35,15 @@ final class KlpAppLayout extends StatelessWidget {
 
 	@override
 	Widget build(BuildContext context) {
-		final body = switch (inset) {
-			KlpAppLayoutInset.standard => Padding(
-				padding: EdgeInsets.all(context.klp.space.space2),
+		final gap = context.klp.space.space2;
+		final body = LayoutBuilder(builder: (context, constraints) {
+			final horizontal = constraints.hasBoundedWidth ? math.min(gap, constraints.maxWidth / 2) : gap;
+			final vertical = constraints.hasBoundedHeight ? math.min(gap, constraints.maxHeight / 2) : gap;
+			return ClipRect(child: Padding(
+				padding: inset == KlpAppLayoutInset.none ? EdgeInsets.zero : EdgeInsets.symmetric(horizontal: horizontal, vertical: vertical),
 				child: child,
-			),
-			KlpAppLayoutInset.none => child,
-		};
+			));
+		});
 		final action = floatingAction;
 		if (action == null) return body;
 
@@ -42,11 +51,23 @@ final class KlpAppLayout extends StatelessWidget {
 	}
 }
 
+/// 一般布局節點的主軸尺寸限制；空間不足由共通演算法退化。
+final class KlpLayoutBounds {
+	const KlpLayoutBounds({this.minimum = 0, this.maximum, this.preferred});
+
+	/// 正常空間下的最小值與可選上限。
+	final double minimum;
+	final double? maximum;
+	/// 未指定時保留正 flex 擴展、零 flex 自然量測語意。
+	final double? preferred;
+}
+
 /// 可置於 [KlpAppLayout]、[LayoutRow] 或 [LayoutColumn] 的封閉布局節點。
 abstract class KlpLayoutNode extends StatelessWidget {
 	const KlpLayoutNode({super.key});
 
 	int get flex;
+	KlpLayoutBounds get bounds => const KlpLayoutBounds();
 }
 
 /// 水平布局的主軸對齊選項。
@@ -61,6 +82,7 @@ final class LayoutRow extends KlpLayoutNode {
 		super.key,
 		required List<KlpLayoutNode> children,
 		this.flex = 1,
+		this.bounds = const KlpLayoutBounds(),
 		this.alignment = KlpLayoutMainAlignment.start,
 		this.spacing = KlpLayoutSpacing.standard,
 	}) : children = List.unmodifiable(children) {
@@ -72,18 +94,19 @@ final class LayoutRow extends KlpLayoutNode {
 
 	@override
 	final int flex;
+	@override
+	final KlpLayoutBounds bounds;
 	final KlpLayoutMainAlignment alignment;
 	final KlpLayoutSpacing spacing;
 
 	@override
-	Widget build(BuildContext context) {
-		final row = Row(
-			mainAxisAlignment: alignment == KlpLayoutMainAlignment.end ? MainAxisAlignment.end : MainAxisAlignment.start,
-			crossAxisAlignment: CrossAxisAlignment.stretch,
-			children: _linearChildren(context, Axis.horizontal, children, spacing),
-		);
-		return flex == 0 ? IntrinsicHeight(child: row) : row;
-	}
+	Widget build(BuildContext context) => _linearLayout(
+		context,
+		Axis.horizontal,
+		children,
+		spacing,
+		alignment,
+	);
 }
 
 /// 在主軸上垂直排列受控布局節點。
@@ -92,6 +115,8 @@ final class LayoutColumn extends KlpLayoutNode {
 		super.key,
 		required List<KlpLayoutNode> children,
 		this.flex = 1,
+		this.bounds = const KlpLayoutBounds(),
+		this.alignment = KlpLayoutMainAlignment.start,
 		this.spacing = KlpLayoutSpacing.standard,
 	}) : children = List.unmodifiable(children) {
 		if (children.isEmpty) throw ArgumentError.value(children, 'children', 'LayoutColumn requires at least one child.');
@@ -102,18 +127,31 @@ final class LayoutColumn extends KlpLayoutNode {
 
 	@override
 	final int flex;
+	@override
+	final KlpLayoutBounds bounds;
+	final KlpLayoutMainAlignment alignment;
 	final KlpLayoutSpacing spacing;
 
 	@override
-	Widget build(BuildContext context) {
-		return Column(
-			crossAxisAlignment: CrossAxisAlignment.stretch,
-			children: _linearChildren(context, Axis.vertical, children, spacing),
-		);
-	}
+	Widget build(BuildContext context) => _linearLayout(
+		context,
+		Axis.vertical,
+		children,
+		spacing,
+		alignment,
+	);
 }
 
-/// 取代相鄰 node 自動 gutter 的調寬槽；回報游標的全域位置供 consumer 對齊布局座標。
+/// 不含拖曳手勢的顯式間距槽。
+final class KlpLayoutDivider extends KlpLayoutNode {
+	const KlpLayoutDivider({super.key});
+	@override
+	int get flex => 0;
+	@override
+	Widget build(BuildContext context) => const SizedBox.shrink();
+}
+
+/// 取代相鄰 node 自動 gutter，回報全域位置供 consumer 調整布局。
 final class LayoutResizeHandle extends KlpLayoutNode {
 	const LayoutResizeHandle({super.key, this.onResize});
 
@@ -128,10 +166,12 @@ final class LayoutResizeHandle extends KlpLayoutNode {
 
 /// 線性布局中不承載內容的彈性空間。
 final class LayoutSpacer extends KlpLayoutNode {
-	const LayoutSpacer({super.key, this.flex = 1}) : assert(flex > 0);
+	const LayoutSpacer({super.key, this.flex = 1, this.bounds = const KlpLayoutBounds()}) : assert(flex > 0);
 
 	@override
 	final int flex;
+	@override
+	final KlpLayoutBounds bounds;
 
 	@override
 	Widget build(BuildContext context) => const SizedBox.shrink();
@@ -145,6 +185,7 @@ final class KlpLayoutPane extends KlpLayoutNode {
 	KlpLayoutPane({
 		super.key,
 		required this.child,
+		this.bounds = const KlpLayoutBounds(),
 		this.size = KlpLayoutPaneSize.trailing,
 		int? flex,
 	}) : flex = flex ?? (size == KlpLayoutPaneSize.expand ? 1 : 0) {
@@ -156,6 +197,8 @@ final class KlpLayoutPane extends KlpLayoutNode {
 
 	@override
 	final int flex;
+	@override
+	final KlpLayoutBounds bounds;
 
 	@override
 	Widget build(BuildContext context) {
@@ -176,6 +219,7 @@ final class KlpAppFrame extends KlpLayoutNode {
 		super.key,
 		required this.child,
 		this.flex = 1,
+		this.bounds = const KlpLayoutBounds(),
 		this.role = KlpAppFrameRole.content,
 		this.surface = KlpAppFrameSurface.flat,
 		this.width,
@@ -188,6 +232,8 @@ final class KlpAppFrame extends KlpLayoutNode {
 
 	@override
 	final int flex;
+	@override
+	final KlpLayoutBounds bounds;
 	final KlpAppFrameRole role;
 	final KlpAppFrameSurface surface;
 	final double? width;
@@ -220,43 +266,6 @@ final class KlpAppFrame extends KlpLayoutNode {
 		};
 		return width == null ? frame : SizedBox(width: width, child: frame);
 	}
-}
-
-List<Widget> _linearChildren(BuildContext context, Axis axis, List<KlpLayoutNode> nodes, KlpLayoutSpacing spacing) {
-	final gap = context.klp.space.space2;
-	final children = <Widget>[];
-	var previousWasHandle = false;
-
-	// 顯式 handle 自己占據 gutter，前後都不再加入普通間距。
-	for (final node in nodes) {
-		final isHandle = node is LayoutResizeHandle;
-		if (spacing == KlpLayoutSpacing.standard && children.isNotEmpty && !previousWasHandle && !isHandle) {
-			children.add(axis == Axis.horizontal ? SizedBox(width: gap) : SizedBox(height: gap));
-		}
-
-		if (isHandle) {
-			final handle = node;
-			final interactive = MouseRegion(
-				cursor: handle.onResize == null ? MouseCursor.defer : axis == Axis.horizontal ? SystemMouseCursors.resizeLeftRight : SystemMouseCursors.resizeUpDown,
-				child: GestureDetector(
-					behavior: HitTestBehavior.opaque,
-					onHorizontalDragUpdate: axis == Axis.horizontal && handle.onResize != null ? (details) => handle.onResize!(details.globalPosition) : null,
-					onVerticalDragUpdate: axis == Axis.vertical && handle.onResize != null ? (details) => handle.onResize!(details.globalPosition) : null,
-					child: node,
-				),
-			);
-			children.add(axis == Axis.horizontal ? SizedBox(width: gap, child: interactive) : SizedBox(height: gap, child: interactive));
-		}
-		else if (node.flex > 0) {
-			children.add(Expanded(flex: node.flex, child: node));
-		}
-		else {
-			children.add(node);
-		}
-		previousWasHandle = isHandle;
-	}
-
-	return children;
 }
 
 List<BoxShadow> _frameRelief(Color surface, Color shadowSource, double scale) {
