@@ -152,10 +152,26 @@ export function KlpRegisteredCommandPalette<C = unknown>(props: KlpRegisteredCom
 	function observeViewport() {
 		if (!mounted || !open || !ownerDocument?.defaultView) return;
 		const win = ownerDocument.defaultView;
-		function resize() { setViewport({ width: finite(win.innerWidth), height: finite(win.innerHeight) }); }
+		const root = ownerDocument.documentElement;
+		let listening = true;
+		function resize() {
+			if (!listening) return;
+			// fixed 可用尺寸排除捲軸；無 layout 的 DOM harness 才沿有限 inner 值退化。
+			const hasLayout = root.getClientRects().length > 0;
+			const width = finite(root.clientWidth > 0 || hasLayout ? root.clientWidth : win.innerWidth);
+			const height = finite(root.clientHeight > 0 || hasLayout ? root.clientHeight : win.innerHeight);
+			setViewport(previous => previous.width === width && previous.height === height ? previous : { width, height });
+		}
 		resize();
 		win.addEventListener('resize', resize);
-		return () => win.removeEventListener('resize', resize);
+		const observer = typeof win.ResizeObserver === 'function' ? new win.ResizeObserver(resize) : null;
+		observer?.observe(root);
+		function stopObserving() {
+			listening = false;
+			observer?.disconnect();
+			win.removeEventListener('resize', resize);
+		}
+		return stopObserving;
 	}
 	useLayoutEffect(observeViewport, [mounted, open, ownerDocument]);
 	function focusSession() {
