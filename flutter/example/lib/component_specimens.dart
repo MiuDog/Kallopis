@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:kallopis/kallopis_foundation.dart';
+import 'linear_specimens.dart';
 
 /* 只有真實target fixture可以進此清單；不是全量覆蓋宣告。 */
-const flutterSpecimenNames = <String>['KlpBadge', 'KlpButton', 'KlpIconButton', 'KlpSurface', 'KlpText', 'KlpTextField'];
+const flutterSpecimenNames = <String>['KlpBadge', 'KlpButton', 'KlpIconButton', 'KlpSurface', 'KlpText', 'KlpTextField', ...linearSpecimenNames];
 
 class ComponentSpecimenApp extends StatefulWidget {
 	const ComponentSpecimenApp({super.key, required this.name});
@@ -57,7 +58,7 @@ class _ComponentSpecimenAppState extends State<ComponentSpecimenApp> {
 				SizedBox(height: space.contentStackGap),
 				LayoutBuilder(builder: (context, constraints) => SizedBox(
 					width: (_narrow ? 320.0 : 760.0).clamp(0.0, constraints.maxWidth),
-					child: _ComponentFixture(key: ValueKey(_epoch), name: widget.name),
+					child: linearSpecimenNames.contains(widget.name) ? LinearComponentSpecimen(key: ValueKey(_epoch), name: widget.name) : _ComponentFixture(key: ValueKey(_epoch), name: widget.name),
 				)),
 			]),
 		)));
