@@ -35,4 +35,10 @@ flowchart LR
 	Extensions --> Components[公開 Flutter 元件]
 ```
 
-維護：parser 驗證交換圖與 canonical完整性；resolver 擁有同一catalog型別範圍／constraints；adapter 擁有顏色／曲線／時長／字重 native conversion；generated source 與manifest只由 generator更新。詳細函式 map 在完成 slice 後依真實程式補充。
+維護：`_validate` 驗證交換圖與 canonical 完整性；`_resolve`／`_typed` 執行 catalog 型別範圍及 constraints；`_copy`／`_freeze` 隔離 caller 與 snapshot；`native_codec.dart` 的 `_nativeStyle` 擁有完整 path 映射及原生曲線／時長／字重轉換。generated source 與 manifest 只由 generator 更新。
+
+## FLUTTER-STYLE-1 完成證據
+
+實作 commit `17119f2be35f7e8cc62db9a3e8b678dc1985c23c`。19 項獨立公開測試全通過，四模式 1400 resolved 值與 Node 公開 resolver 一致，350 native 欄位逐项 encode 對照；包含 immutable、atomic、非法圖／型別／constraints、精確微秒、字重與 Theme scope。Test Author SHA256 `15B43CF1A61888D208B32785716163BEFD4B101D8ED02FB3ABF7D985C4527129` 未變。
+
+局部 analyze 無問題；generator --check 與 scope gate 通過。既有 ThemeExtension／VisualStyle 36 checks 及 accent／四模式 builders 5 checks 通過。未執行全庫 release suite；既有失敗仍見根整合紀錄。沒有宣稱 recipe 展開、布局保護、所有元件已完成視覺對齊或 GUI 人工接受。

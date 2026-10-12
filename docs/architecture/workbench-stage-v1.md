@@ -14,7 +14,7 @@
 | 6 | docs API／元件页嵌入及場景頁 | `tool/reference_site/` | 公開元件 → specimen → bundle → route 全鏈 coverage；前綴及資產檢查 |
 | 7 | 權威切換、CI、文件與提交 push | repository 整合 owner | SP-01～08、IDOC-01～08、WB-01～21 evidence；繼承失敗另列、精確提交與 push 記錄 |
 
-已觀察進度：STYLE-PACK-1／2 完成（269 原料、350 語意 × 4、118 原文配方；114 checks、CLI check 及 scope check 通過）。REACT-STYLE-1 完成：公開 JSON 風格匯入、原子覆寫、全量 scoped Provider、獨立套件 runtime，21 項 React checks 通過；瀏覽器觀察替換／拒絕／還原與窄畫面。docs 五份來源已接線，15 項網站檢查及 519 canonical API 頁／25 文件生成與 verifier 通過。Flutter 接入、recipe 全部視覺參數、Workbench 布局及網站互動 bundle 尚未完成。
+已觀察進度：STYLE-PACK-1／2 完成（269 原料、350 語意 × 4、118 原文配方；114 checks、CLI check 及 scope check 通過）。REACT-STYLE-1 完成：公開 JSON 風格匯入、原子覆寫、全量 scoped Provider、獨立套件 runtime，21 項 React checks 通過；瀏覽器觀察替換／拒絕／還原與窄畫面。docs 五份來源已接線，15 項網站檢查及 519 canonical API 頁／25 文件生成與 verifier 通過。FLUTTER-STYLE-1 的完整 pack 接入已完成；recipe 全部視覺參數、Workbench 布局及網站互動 bundle 尚未完成。
 
 ## 合作邊界
 
@@ -48,4 +48,6 @@ GitHub push 已授權，無需重問；仍需先確認範圍及實際檢查。�
 
 ## 下一個可執行步驟
 
-FLUTTER-STYLE-1：先固定現有 semantic theme 的風格接入契約，使用同一 pack／catalog 建立跨語言保護，再簽發 packet；後續 recipe 參數與布局保護分別由相應 slice 接續。
+FLUTTER-STYLE-1 已完成公開 pack／Theme 接入，19 項跨語言／native／scope checks 通過，350 欄位全映射，41 項既有 theme／accent checks 通過；局部 analyze、generator freshness、scope gate 及 test hash 通過。recipe 展開、元件全部視覺對齊與布局保護尚未完成。
+
+下一步一般 layout PLAN：核對 Flutter 既有尺寸解析，固定兩框架 Row／Column／Pane 的幾何契約（含極端 gutter、不足 min 及 max 留白），再派独立 Test Author 及 BUILD packet。Dock 保持獨立 Stage／Left／Right／Bottom 模型。

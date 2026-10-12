@@ -2,6 +2,22 @@
 
 Kallopis 的 Flutter 庫是 Flutter design system，不是 application framework。產品擁有 app root、導航、畫面結構、狀態與業務流程；Kallopis 擁有 semantic theme、公開共用元件，以及元件內部的視覺、互動、無障礙與平台適應。
 
+## 匯入共通風格檔
+
+`kallopis_theme.dart` 公開 `KlpStylePack` 及 `klpStyleParameters`。風格檔內容由產品讀取；`parse` 接受 JSON 字串或 object，檢查所有 canonical ID、四模式、引用、350 項型別及 catalog 尺寸限制。非法值會拒絕整包，不改目前 Theme。
+
+```dart
+final pack = KlpStylePack.parse(styleFileContent);
+final theme = buildKlpThemeVariant(
+	KlpThemeVariant.light,
+	stylePack: pack,
+);
+```
+
+把 `theme` 提供給 MaterialApp 或局部 `Theme`，公開元件仍讀 `context.klp`。不同 Theme 子樹可用不同 pack；`KlpStylePack.defaults()` 還原預設，`applyOverrides` 對既有 primitive／semantic ID 原子覆寫並回新 pack；`data`／`resolve`／參數 metadata 深度不可變。
+
+`stylePack` 與既有 `style` 不可同時提供，顯式 `accent` 仍可覆寫。pack 擁有透明模式完整色彩，不再套用舊 `transparencyEnabled` 色彩轉換；產品擁有視窗透明設定。字型保持套件前綴，不自動下载外部資產；原生 duration 必須能無損轉微秒，否則以 semantic ID 診斷。350 項 native 欄位已映射；配方展開、全部元件視覺對齊及更完整布局保護仍在後續階段，並未因風格 parser 完成而宣稱完成。
+
 ## 1. 建立產品根節點
 
 產品直接使用 `MaterialApp`，並安裝 Kallopis theme 與語系 delegate：

@@ -32762,6 +32762,64 @@
 					]
 				},
 				{
+					"id": "package:kallopis/src/styling/style_pack/klp_style_pack.dart#KlpStylePack",
+					"name": "KlpStylePack",
+					"slug": "klp-style-pack",
+					"kind": "class",
+					"module": "styling",
+					"sourceUri": "package:kallopis/src/styling/style_pack/klp_style_pack.dart",
+					"primarySurface": "theme",
+					"surfaces": [
+						"theme",
+						"foundation"
+					],
+					"signature": "class KlpStylePack",
+					"documentation": "不可變的共通風格交換資料；不持有產品 tree、handler 或布局狀態。",
+					"typeRelationships": {
+						"extends": "Object",
+						"mixins": [],
+						"implements": []
+					},
+					"members": [
+						{
+							"name": "KlpStylePack.defaults",
+							"kind": "constructor",
+							"signature": "KlpStylePack.defaults()",
+							"documentation": ""
+						},
+						{
+							"name": "KlpStylePack.parse",
+							"kind": "constructor",
+							"signature": "KlpStylePack.parse(Object? input)",
+							"documentation": ""
+						},
+						{
+							"name": "applyOverrides",
+							"kind": "method",
+							"signature": "KlpStylePack applyOverrides(Map<String, Object?> overrides)",
+							"documentation": ""
+						},
+						{
+							"name": "data",
+							"kind": "field",
+							"signature": "Map<String, Object?> data",
+							"documentation": "data：與 caller 隔離的完整交換資料及配方原文。"
+						},
+						{
+							"name": "resolve",
+							"kind": "method",
+							"signature": "Map<String, Object?> resolve(KlpThemeVariant variant)",
+							"documentation": ""
+						},
+						{
+							"name": "toVisualStyle",
+							"kind": "method",
+							"signature": "KlpVisualStyle toVisualStyle(KlpThemeVariant variant)",
+							"documentation": ""
+						}
+					]
+				},
+				{
 					"id": "package:kallopis/src/styling/legacy_theme/klp_surface_theme.dart#KlpSurfaceSeparation",
 					"name": "KlpSurfaceSeparation",
 					"slug": "klp-surface-separation",
@@ -34710,8 +34768,29 @@
 						"theme",
 						"foundation"
 					],
-					"signature": "ThemeData buildKlpThemeVariant(\n  KlpThemeVariant variant, {\n  KlpAccent? accent,\n  bool transparencyEnabled = false,\n  KlpVisualStyle? style,\n})",
+					"signature": "ThemeData buildKlpThemeVariant(\n  KlpThemeVariant variant, {\n  KlpAccent? accent,\n  bool transparencyEnabled = false,\n  KlpVisualStyle? style,\n  KlpStylePack? stylePack,\n})",
 					"documentation": "",
+					"typeRelationships": {
+						"extends": null,
+						"mixins": [],
+						"implements": []
+					},
+					"members": []
+				},
+				{
+					"id": "package:kallopis/src/styling/style_pack/klp_style_pack.dart#klpStyleParameters",
+					"name": "klpStyleParameters",
+					"slug": "klp-style-parameters",
+					"kind": "variable",
+					"module": "styling",
+					"sourceUri": "package:kallopis/src/styling/style_pack/klp_style_pack.dart",
+					"primarySurface": "theme",
+					"surfaces": [
+						"theme",
+						"foundation"
+					],
+					"signature": "Map<String, Object?> klpStyleParameters",
+					"documentation": "共通型別與限制由 catalog 擁有，不隨 consumer 風格變更。",
 					"typeRelationships": {
 						"extends": null,
 						"mixins": [],
