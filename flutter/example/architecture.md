@@ -480,3 +480,33 @@ Native5203 prefix八route自己的props、empty/恢復與label文字2均操作�
 Accordion原expand item-0回呼1、child輸入2/動作1；四mode/spacious/local320保持draft与原展開，single改開item-1原callback2只[item-1]；明示multiple重建後原操作兩項得到[item-0,item-1] callback4。reset回初始props/closed/0，環境spacious/local320保持。當次console error/warn空；main build/flutter-data-collection-specimens.png、flutter-data-collection-native.json記錄。actual360 browser與感官human-pending、consumer水平host不代替庫內narrow算法驗收。Flutterfixture113／273，剩160及全量網站/style audit等仍原goal，未提前push；actual單task usage未量測null。
 
 State _controls/_target/_usage只自己的公開props；_table使用公開column/row/sort與consumer reversed資料投影，_node使用現有generic public KlpTreeNode不觸FileExplorer；_wide提供有限水平host，_child單一controller內容，_accordion/_selection/_row/_sort/_date/_treeSelect/_treeExpand/_copy記原root投影，_childAction/_input分開、_edit只control，dispose清三controller。TreeItem callback回寫自己selected，Tree children selected依實際id不以deleted旗標冒充。
+
+
+## FLUTTER-VIEWER-COLLECTION-SPECIMENS-1（READY）
+
+修訂FLUTTER-VIEWER-COLLECTION-SPECIMENS-r1；IDOC-01/02/03/06/08，exact lib/component_specimens.dart、新 lib/viewer_collection_specimens.dart。四target KlpCodeViewer/KlpDiffViewer/KlpFilePreview/KlpTerminal，補齊collections所有28實際renderable，仍維持全273goal。
+
+ViewerCollectionComponentSpecimen(name)只public foundation/Flutter widgets；State管理title/content/draft controllers、公開props、語言/換行/行號/preview/expand、公開diff資料與consumer審查結果、terminal lines/clear及callback紀錄。CodeViewer公開labels、languageOptions、startLine、loading、content、viewportLimit與真實menu各回呼，preview明示consumer child，不提供第二正文/編輯核心。Diff公開KlpDiffLineType與approve/reject回呼，consumer移除已審查示意line并可restore，onCopy只callback。Terminal lines只示意日誌，clear回寫空list并可restore，不執行shell。FilePreview state/icon/metadata/textContent/preview與press/open/download皆記公開回呼，不下載/開真實外部檔。
+
+公開viewportLimit三態null/fixed120/unbounded在有限280scroll舞台；empty/長資料屬consumer投影；onlyfirst child持controller，root與明示child回呼分開，環境保留state，epoch reset，dispose清controller。不新增core算法/persist/跨語言邊界，不新增鏡像tests；library/tests/config/style/site/docs禁止寫。
+
+驗收四registry/formalrenderable、public analyze、同sourceprefixrelease、native四route ownprops/文字/menu/語言/wrap/line/view/expand/copy/diff review/file/terminal clear、四mode/spacious/local320保留child/reset、scope2/diff。actual窄browser与感官human-pending。估5k～10k/35～75分鐘，參考DATA/CONTENT；M1 source4/analyze/build（6k40），M2 native/state/scope（10k75）；15k100或public不足回PLAN；actual任務usage無量測null。
+
+| Source / class / function | 責任 |
+| --- | --- |
+| viewerCollectionSpecimenNames / ViewerCollectionComponentSpecimen | 精確公開route |
+| State controls/target/usage/build | 公開props與DTO、有限host |
+| State code/diff/file/terminal handlers | 原公開回呼、consumer清單與結果，不提供產品核心 |
+| State child/input/edit/dispose | child與control紀錄分開、controller生命週期 |
+| component fixture | 既有environment/epoch分流 |
+
+```mermaid
+flowchart TD
+	Host[ComponentSpecimenApp] --> Fixture[ViewerCollectionComponentSpecimen]
+	Fixture --> Props[自己的公開props / DTO controls]
+	Props --> Target[真實公開viewer]
+	Target --> Callback[原menu / review / file / clear / copy]
+	Callback --> Data[consumer示意資料與回呼]
+	Data --> Target
+	Host --> Reset[epoch重建]
+```
