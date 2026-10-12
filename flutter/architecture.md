@@ -113,3 +113,5 @@ flowchart TD
 ## Flutter registered command入口邊界（READY）
 
 依[WB-COMMAND-ENTRY-r1](../docs/architecture/workbench-command-entry-contract.md)，KlpCommandReference、KlpRegisteredCommandToolbar/Menu將以現有controls／CommandMenu風格呈現同registry資料，產品只給ID/order/kind與getContext/onResult。原CommandMenu models/caller保持原API，沒有新handler或context權威。實作前固定actions command_entries的local architecture與fresh TestAuthor；目前ReactENTRY slice不寫Flutter產品碼。overlay/context menu/palette仍屬已接受stage接續能力，未完成。
+
+FLUTTER-COMMAND-ENTRY-r1 local PLAN READY見[registered入口](lib/src/features/actions/command_entries/architecture.md)：新來源+stablefoundation兩path，native Focus/語意與同registry生命周期；fresh TestAuthor保護公開Widget。React ENTRY已完成d05dca0e，Flutter本slice不改舊CommandMenu/core/theme。
