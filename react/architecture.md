@@ -498,7 +498,7 @@ flowchart TD
 | CommandRow | KlpButton/Text、metadata及toggle角色投影 |
 | KlpRegisteredCommandToolbar／KlpRegisteredCommandMenu／autofocus | 公開水平／垂直原生入口、可選初始聚焦及空清冊回饋 |
 
-## REACT-COMMAND-PALETTE-1（READY）
+## REACT-COMMAND-PALETTE-1（COMPLETE）
 
 REACT-COMMAND-PALETTE-r1依[WB-COMMAND-PALETTE-r1](../docs/architecture/workbench-command-palette-contract.md)。新`src/command-palette.tsx`擁有KlpCommandDismissReason stringunion、KlpRegisteredCommandPaletteProps<C=unknown>及publicpalette/private search helpers/row/nativeportal lifecycle。required registry/getContext/open/label/searchLabel/emptyLabel/onResult/onDismiss(reason)，可選className/id。無items鏡像或自訂handler；全registry可見命令為資料源。
 
@@ -524,3 +524,31 @@ flowchart TD
 實作邊界澄清：portal使用原生HTMLDialogElement.showModal top layer/inert（無此宿主API時顯式open供DOM harness），role=dialog對應panel，外部portalhost對應backdrop。native backdrop pointer需依panel rect判斷外部，panel本身click不dismiss；無手寫全域z-index/theme。physical scope以aria-hidden hidden span取得ownerDocument及目前Provider CSS投影（含derived variables），portal從同tokens/同scope複製，不建立第二份defaultresolver；此marker不是overlay/元件展示，SSR不輸出modal。modal close/unmount依既定焦點契約，native close自動restore若遇產品externalfocus，保護最終externalfocus。
 
 原生依[HTML dialog標準](https://html.spec.whatwg.org/multipage/interactive-elements.html#the-dialog-element)、[React createPortal](https://react.dev/reference/react-dom/createPortal)、[CSS backdrop繼承](https://drafts.csswg.org/css-position-4/#backdrop)。不修改ThemeProvider public型別；全部新邏輯仍限3paths。finite geometry private helper由viewport及同semantic數值先clamp inset/width/height/padding；resize只更新UI，不改命令清冊。
+
+BUILD160f2c18，11項public native/SSR/hydration/type檢查、library build及3pathscope通過，CSS僅追加palette規則；protected SHA256 2753CE7F881BF0C0B56B8FE22EB0637EF4401F8023E64E057D55621A0FF7E6E5未改。初跑CSSStyleDeclaration不可迭代的runtime Red，改標準length/item讀法後同checks Green；不改tests/core/舊Theme。原生browser接續下列exampleslice，sensory未接受。
+
+| 定義／來源 | 責任 |
+| --- | --- |
+| command-palette.tsx：KlpCommandDismissReason／PaletteProps／Viewport | 公開dismiss/controlled輸入與private有限視窗尺寸 |
+| requireText／fieldScore／search／compare | 名稱驗證、UTF-16 field scoring、多詞最小score與ID排序 |
+| reportToHost／finite／geometry | 原生error通道、數值有限化、同token派生幾何 |
+| KlpRegisteredCommandPalette／subscribe／getVersion／mountClient／attachLifetime | 公開元件、外部清冊版本、SSR mount與host generation |
+| copyScope／observeViewport／resize／focusSession／revealActive | actualscope CSS、native viewport、原生modal焦點與scroll |
+| isCurrent／dismiss／activate／changeQuery／keyDown／outside／renderCandidate | session結果隔離/原值callback、controlled close/input/IME/nativekeys/backdrop/metadata row與portal |
+
+## REACT-COMMAND-EXAMPLE-1（READY）
+
+REACT-COMMAND-EXAMPLE-r1：新example/commands-demo.tsx以publicindex消費registry/registeredtoolbar/menu/palette，main.tsx只import及嵌入。只有兩path可寫，library/tests/config/architecture/style/其他example唯讀；使用既有demo-stack/row/card外部宿主，無新共用theme/command權威。產品state擁有canSave/grid/showFailure、open/results/dismiss與registry初始化/cleanup；effect每次setup建立新registry，StrictMode cleanup不重用disposed owner；getContext读最新ref，外部state改變refresh。
+
+示範save async、checked grid、hidden/error、onResult原錯誤與onDismiss受控open。M1公開consumer+TypeScript/prod build（2k/10分鐘），M2nativebrowser開啟/搜尋/方向Enter/escape/outside/focus/theme及failure/disabled（5k/25分鐘）。cold-start3k–6k tokens／15–35分鐘，參照REACT-DOCK-EXAMPLE-1；8k/45分鐘或需library修改回PLAN。無新風險library行為，不新增鏡像tests；browser未覆蓋的IME/矩陣明示pending，不以evaluate合成input/events冒充native操作。此例不等於全部specimens或三GUI×兩框架。
+
+```mermaid
+flowchart TD
+	App[existing example Provider] --> Demo[CommandsDemo product state]
+	Demo --> Registry[public command registration / refresh]
+	Demo --> Toolbar[registered toolbar]
+	Demo --> Menu[registered menu]
+	Demo --> Palette[registered palette]
+	Palette --> Result[product message / controlled close]
+	Result --> Demo
+```
