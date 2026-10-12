@@ -6,10 +6,11 @@ import 'frame_specimens.dart';
 import 'spatial_specimens.dart';
 import 'form_control_specimens.dart';
 import 'feedback_specimens.dart';
+import 'content_collection_specimens.dart';
 import 'catalog/registered_commands_page.dart';
 
 /* 只有真實target fixture可以進此清單；不是全量覆蓋宣告。 */
-const flutterSpecimenNames = <String>['KlpBadge', 'KlpButton', 'KlpIconButton', 'KlpSurface', 'KlpText', 'KlpTextField', ...linearSpecimenNames, ...explorerSpecimenNames, ...frameSpecimenNames, ...commandSpecimenNames, ...spatialSpecimenNames, ...formControlSpecimenNames, ...feedbackSpecimenNames];
+const flutterSpecimenNames = <String>['KlpBadge', 'KlpButton', 'KlpIconButton', 'KlpSurface', 'KlpText', 'KlpTextField', ...linearSpecimenNames, ...explorerSpecimenNames, ...frameSpecimenNames, ...commandSpecimenNames, ...spatialSpecimenNames, ...formControlSpecimenNames, ...feedbackSpecimenNames, ...contentCollectionSpecimenNames];
 
 class ComponentSpecimenApp extends StatefulWidget {
 	const ComponentSpecimenApp({super.key, required this.name});
@@ -72,6 +73,7 @@ class _ComponentSpecimenAppState extends State<ComponentSpecimenApp> {
 
 	Widget _fixture() {
 		final key = ValueKey(_epoch);
+		if (contentCollectionSpecimenNames.contains(widget.name)) return ContentCollectionComponentSpecimen(key: key, name: widget.name);
 		if (feedbackSpecimenNames.contains(widget.name)) return FeedbackComponentSpecimen(key: key, name: widget.name);
 		if (formControlSpecimenNames.contains(widget.name)) return FormControlComponentSpecimen(key: key, name: widget.name);
 		if (spatialSpecimenNames.contains(widget.name)) return SpatialComponentSpecimen(key: key, name: widget.name);
