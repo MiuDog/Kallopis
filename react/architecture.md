@@ -360,3 +360,11 @@ flowchart TD
 	Batch --> Caller[changed 一次 callback]
 	Input --> Cleanup[document end / cancel / unmount]
 ```
+
+Native2主體已於follower checkpoint完成8/9checks、build及4paths scope；M2仍有scale2尺寸Red，不宣稱全部完成。useDockSize在computedCSS不是px時取transformed DOMrect，令600px宿主視為1200而pointer delta50成100。這是既有量測依賴的可重現失敗，不能在input另建不同viewport掩蓋。
+
+#### REACT-DOCK-MEASURE-1（READY）
+
+修訂REACT-DOCK-MEASURE-r1；只有react/src/workbench-dock-lifecycle.ts可寫，其餘產品/tests/architecture/config唯讀。useDockSize以resolvedCSS px維持原行為；非px時使用未transform的clientWidth/clientHeight扣padding（client不包含border），無可用client尺寸才保留DOMrect fallback。公開API/同一view及pointer座標責任不改，不對root額外除scale；零尺寸及SSR保持合法，observer及close生命周期不改。
+
+原Red為workbench-dock-input.test.mjs area scale2期望210、實際260；修正後同9checks再Green。直接受影響NATIVE-1九個DOM/SSR checks及librarybuild/consumer/單檔scope必驗；兩個protectedhash不得改。預估1k–3k tokens、10–20分鐘；若client fallback仍不能說明失敗回診斷，不修改fixture/expected或把scale從tests拿掉。此小slice完成後以兩個閉合scope共同證明NATIVE-2，owner文件不混入worker範圍。
