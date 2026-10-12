@@ -237,7 +237,7 @@ flowchart TD
 
 BUILD c84bd254 exact2，pubget只變analyzer10.1→13.0與_fe_analyzer_shared95→100，meta保持1.18.0；scope2/diff Green。根extractor原API無須另改，新runtime同protected4checks與全量561／273renderable成功；公開元件及SDK／CI不變。
 
-## FLUTTER-MASONRY-EMPTY-1（READY）
+## FLUTTER-MASONRY-EMPTY-1（COMPLETE）
 
 修訂 FLUTTER-MASONRY-EMPTY-r1；公開 KlpMasonryGrid.children 接受空集合，空集合必須呈現空布局、不得拋例外；nonempty→empty→nonempty 必須恢復原child且不改資料次序、語意間距或既有minimumColumnWidth解析。此為已接受公開consumer資料狀態，不改constructor或其他布局策略。native元件展示的空集合暴露當前clamp(1,0)例外。
 
@@ -259,3 +259,5 @@ flowchart TD
 	Empty -->|否| Layout[既有LayoutBuilder及語意spacing]
 	Layout --> Columns[非空child分配]
 ```
+
+驗證：獨立 test commit316aaa67，兩個公開widget檢查在實作前皆ArgumentError Red；protected SHA256 051E261E93503E9E12E2A46CDD5D8E2FAAE94DA4510BAFC98CAF873FBCC04829。source b3cff636只改空集合early return並將既有縮排轉tab，非空算法保持；同兩checks Green、public source analyze No issues、scope exact1及diff通過，測試檔hash仍051E261E93503E9E12E2A46CDD5D8E2FAAE94DA4510BAFC98CAF873FBCC04829。prefix release45.7秒；fresh native tab14實際12→60→0→12，空集合無item／selected−1，恢復後item0可操作child2/root0。fresh error/warn空，原錯誤歷史保留於layout utility JSON，修正證據另存masonryFixed與PNG；感官human-pending，單taskusage null。
