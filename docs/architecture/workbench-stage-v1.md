@@ -52,6 +52,6 @@ FLUTTER-STYLE-1 已完成公開 pack／Theme 接入，19 項跨語言／native�
 
 FLUTTER-LINEAR-1／REACT-LINEAR-1 已完成 [有限幾何算法](workbench-linear-contract.md)：各 21 項獨立 tests、native analyze／library build、scope gate 通過；公開 min／max／preferred／flex、間距退化與 unused。DOCS-LINEAR-1 已接入正式網頁，15 項既有 checks、524 API generate／verify 通過。
 
-下一步 PLAN Row／Column／Pane 元件接入：有限 axis 與 intrinsic fallback、semantic gutter／root inset 的有效壓縮、內容裁切及 constraints 公開投影。Flutter 保留現有公開 API；React 新增直接元件。Dock 保持獨立 Stage／Left／Right／Bottom 模型。算法通過不代表全部 UI 或風格保護已完成。
+雙框架 Row／Column／Pane 已接入有限算法。Flutter 保留現有公開 API；React 提供直接元件及自然尺寸模式。Dock 保持獨立 Stage／Left／Right／Bottom 模型。一般布局完成不代表全部 UI 或風格保護已完成。
 
-FLUTTER-LAYOUT-2 已完成：18 Widget checks／4 既有 checks、analyze／scope 及 Catalog 渲染證據。下一步 PLAN React 直接 Row／Column／Pane 元件，保護 style scope／viewport 更新與 semantic gutter。
+FLUTTER-LAYOUT-2 已完成：18 Widget checks／4 既有 checks、analyze／scope 及 Catalog 渲染證據。REACT-LAYOUT-2／EXAMPLE-1 已完成：9 checks含hydration、library／consumer TypeScript／example build／scope；native browser 確認尺寸守恆、minimum 壓縮、end 留白、極大 gap／root inset、自然量測、輸入保留及375px無水平溢出。下一步 PLAN Dock 契約與雙框架直接接入，沿用既有保存／受控狀態責任。

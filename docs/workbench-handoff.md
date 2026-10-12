@@ -8,7 +8,7 @@
 - DOCS-STAGE-1 完成：五份研究／規範／計畫已接入網站；15 checks、519 manifest 的 generate／verify 通過。尚未接互動 bundle。
 - REACT-STYLE-1 完成：JSON 匯入、原子覆寫、350 項 catalog 公開、全量 scoped CSS／hook、owned runtime；21 React checks、generate freshness、build/example、scope gate 通過。獨立 tarball consumer 通過；瀏覽器確認 8→12px 間距、背景替換、壞 JSON 保留現況、還原、深色、窄畫面及字型載入。typed recipe 展開與布局算法仍待後續。
 - FLUTTER-STYLE-1 完成：公開 JSON／object parser、四模式 typed resolver、原子覆寫、350 native 欄位及 ThemeExtensions 接入；19 項独立 checks、41 項既有 theme／accent checks、局部 analyze、generator freshness、scope gate 通過。未改受保護 tests 或 legacy JSON schema。
-- FLUTTER-LINEAR-1／REACT-LINEAR-1 完成：有限主軸公開算法各21項独立 checks，包含min／max／preferred／flex、間距守恆、比例退化、巨大有限值及immutable；Flutter analyze、React build、各scope gate通過。Flutter Widget 接入已完成，React DOM 接入尚未完成。
+- FLUTTER-LINEAR-1／REACT-LINEAR-1 完成：有限主軸公開算法各21項独立 checks，包含min／max／preferred／flex、間距守恆、比例退化、巨大有限值及immutable；Flutter analyze、React build、各scope gate通過。Flutter Widget 與 React DOM 一般布局接入已完成。
 - 未完成：recipe 全部視覺參數與元件對齊、風格下的布局保護及資料權威切換、Workbench 能力、全部 specimen、三種 GUI 各框架範例、網站互動 bundle、最終 CI／push。
 - 正式 Markdown 暫仍是值權威，風格 JSON 是逐項驗證的遷移資料。
 
@@ -22,7 +22,7 @@ REACT-STYLE-1 commit `2243c4a7`；Test Author SHA256 `15EA38EC657834F2169FBC5792
 
 FLUTTER-STYLE-1 實作 `17119f2b`；Test Author SHA256 `15B43CF1A61888D208B32785716163BEFD4B101D8ED02FB3ABF7D985C4527129` 未變。公開 `KlpStylePack`、`klpStyleParameters` 由 kallopis_theme.dart 匯出；buildKlpThemeVariant 的 stylePack 與 style 互斥，pack 不套舊透明度。
 
-下一步 PLAN React Row／Column／Pane 元件接入；Flutter 已完成對应 native 接入。Dock、commands、specimens 隨後接續。GUI 選用 VS Code、Blockbench、Blender；Blender 官方 4.5 workspace 正文已取得 HTTP 200。範例使用公開本庫元件及自己的 state，不引入編輯器／3D／終端核心。
+下一步 PLAN Dock 契約／雙框架直接元件；一般布局已完成。Dock、commands、specimens 隨後接續。GUI 選用 VS Code、Blockbench、Blender；Blender 官方 4.5 workspace 正文已取得 HTTP 200。範例使用公開本庫元件及自己的 state，不引入編輯器／3D／終端核心。
 
 Flutter adapter 完成後重新 extraction：521 canonical API／17 modules／三個公開入口；已更新已驗證網站 manifest，generate／verify 通過。已同步 main：相對 31cea818 的 15 個受檢查路徑；全部先確認 main 等於基線或新內容，再複製，index 未修改。Main 的 19 項 style pack checks、generator freshness 與 521 API generate／verify 也通過。每次同步的精確 sourceRevision 記錄於 main ignored build/workbench-last-sync.json；後續先讀該基線再做 guarded sync。
 
@@ -32,3 +32,5 @@ Flutter adapter 完成後重新 extraction：521 canonical API／17 modules／�
 FLUTTER-LAYOUT-2 完成（273a0b4f）：18 獨立 Widget checks、4 既有 workspace checks、analyze／scope 通過；可用 bounds／divider／Column alignment、bounded inset、裁切、自然尺寸回退與舊 callback 相容。受保護 hash 893CB1ABE6FE24C2F6CA54EA72769CC23EE91CD0C68B0909117DDAE5D63BBB75。Packet main ignored build/task-packets/flutter-layout-2.json 已閉合。瀏覽器 tab5/iab2 http://127.0.0.1:5191/，Flutter tty session82480；Workspace components 已定位。截圖 main build/evidence/flutter-linear-layout.jpg。下一個 PLAN 是 React 實際一般布局，DOM 自然量測／有限容器／scope 更新契約需先固定。React DOM、Dock、command、完整 specimen／GUI 及 push 仍未完成。
 
 本輪重新 extraction 為 526 canonical API／17 modules／26 docs；manifest 更新後 generate／verify、15 網站 checks 通過。main 同步精確基線仍以 ignored build/workbench-last-sync.json 為準，不從歷史段落推定。
+
+REACT-LAYOUT-2 完成6a2ca282；獨立9 checks（新增SSR hydration07a25d94）、publicconsumerTypeScript/build/scope通過。TestSHA256 D3547FAC11B6638E1F74C09E2E981ACFBEF610343136498D6656602BF8AC7495。EXAMPLE-1完成920f0022，browser真實root/slot/nested/end/min不足/極大gap/自然70+8+30/輸入保留/dark/375px無水平溢出證據與截圖 main build/evidence/react-linear-layout.jpg。devserver5182 session89615、browser tab6/iab2標記handoff。Vite517KB提示仍在，不弱化閾值。下一步Dock module PLAN：對照accepted WB-04～08與現有Flutter docking公開契約，保留Stage/Left/Right/Bottom與受控產品保存責任，建立React對等直接元件。各module packets需cleanbase；先讀main ignored build/workbench-last-sync.json。全部specimens／VSCode/Blockbench/Blender各雙框架GUI／命令快捷鍵／recipe風格完整曝光與docsbundle/CI/push仍未完成。
