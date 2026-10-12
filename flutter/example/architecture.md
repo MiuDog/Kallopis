@@ -122,3 +122,29 @@ flowchart TD
 	Callback --> State[consumer State更新 / 各回呼計數]
 	State --> Data
 ```
+
+## FLUTTER-FRAME-SPECIMENS-1（READY）
+
+修訂FLUTTER-FRAME-SPECIMENS-r1，exact lib/component_specimens.dart及新lib/frame_specimens.dart。七個真實query：KlpPanelFrame／KlpPanelHeader／KlpPanelFooter／KlpFrameGroup／KlpFrameGroups／KlpAppFrame／KlpPaneCollapseControl，stable公開組裝與當次own controls；FrameGroup合法位於FrameGroups，AppFrame合法在KlpAppLayout／LayoutRow，Panel header/footer合法在PanelFrame，不退到整個無關Catalog。
+
+FrameComponentSpecimen State擁有title與draft controllers、callbacks及finite120/280 host。PanelFrame controls tone/elevation/headerSize與header/footer有無；Header title/titleRole/label/leading/actions/content；Footer child內容與null／semantic/directional padding；FrameGroup content數量及style.padding/divider/contentSpacing；FrameGroups groups數量/footer；AppFrame role/surface/bounds/flex/optional width；Collapse collapsed/onToggle enabled/icon/label。可調數值是產品展示選擇，共用gap/color/padding讀context.klp；不寫第二theme。原state跨四模式/pack/width保留，epoch重設；native actions與input callbacks分別記錄，不把controls計入。finite正文自有scroll支持壓縮，槽分配仍庫擁有。
+
+驗收public analyze/releaseweb、7名稱與正式renderable一致、native每target自己的props與callback、finite/style/draft/reset及scope2/diff；原17與unknown gate保持。library/tests/config/generated/styles/generator不可寫，無新算法/persist不加鏡像tests，感官human-pending。冷估4k～9k/30～70分鐘；M1 source/type/build（5k40），M2 native7/scope（9k70）；14k100或compound契約不足回PLAN。
+
+| class／function | 責任 |
+| --- | --- |
+| frameSpecimenNames／FrameComponentSpecimen | 真實公開target registry及name輸入 |
+| _FrameComponentSpecimenState | controller生命週期、own props、finitehost與callback結果；只組裝public compound |
+| host _fixture | frame／explorer／linear／basic分流，同epoch owner |
+
+```mermaid
+flowchart TD
+	Host[ComponentSpecimenApp._fixture] --> Fixture[FrameComponentSpecimen / name]
+	Fixture --> Controls[own props / controller / finite height]
+	Controls --> Panel[PanelFrame / header / footer / collapse]
+	Controls --> Groups[FrameGroups / FrameGroup]
+	Controls --> App[KlpAppLayout / AppFrame]
+	Panel --> Result[原生callback / draft State]
+	Groups --> Result
+	App --> Result
+```
