@@ -463,7 +463,7 @@ classDiagram
 	KlpCommandRegistry ..> KlpCommandExecutionResult : 原產品結果
 ```
 
-## REACT-COMMAND-ENTRY-1（READY）
+## REACT-COMMAND-ENTRY-1（COMPLETE）
 
 REACT-COMMAND-ENTRY-r1依[WB-COMMAND-ENTRY-r1](../docs/architecture/workbench-command-entry-contract.md)。新`src/command-entries.tsx`擁有KlpCommandReference／兩個props／兩個直接native元件與private hook/row。只讀publicregistry、existingtheme/components；index匯出，styles.css只追加本slice semantic類別，不改existing選擇器。無defaultcommands/context鏡像/DOM全域快捷鍵/overlay或palette。
 
@@ -485,3 +485,15 @@ flowchart TD
 	Activate --> Registry
 	Registry --> Result[product result / current host callback]
 ```
+
+實作d05dca0e；3path scope通過，CSS只追加入口選擇器。12項public SSR/DOM/lifecycle/typedconsumer檢查與library build通過；protected SHA256 72BB8ACAD50A754D376EE3CB38D80A0B1A2BE02317F2131F1079233C03449561未改。最初activeId推導string的compile Red以明確string|null修正；未改registry/tests/config。測試存在React act時機警告；browser與感官接受待展示slice，不以DOM checks代替。
+
+| 來源／定義 | 責任 |
+| --- | --- |
+| command-entries.tsx：KlpCommandReference／ToolbarProps／MenuProps／CommandRowData／CommandRowProps | 公開ID引用及宿主契約、內部readonly投影與row callback |
+| requireText／copyReferences／copy | 字串／kind／重複ID驗證、複製caller排列 |
+| reportToHost | callback/context例外交原生宿主通道，不改業務結果 |
+| useCommandEntries／subscribe／getVersion／attachLifetime | registry外部store訂閱、最新props與宿主generation，不保存context/pending鏡像 |
+| focus／activate／keyDown | 本地原生焦點、最新context ID dispatch、過期宿主結果隔離、方向與單次鍵盤啟動 |
+| CommandRow | KlpButton/Text、metadata及toggle角色投影 |
+| KlpRegisteredCommandToolbar／KlpRegisteredCommandMenu／autofocus | 公開水平／垂直原生入口、可選初始聚焦及空清冊回饋 |

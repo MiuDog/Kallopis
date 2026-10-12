@@ -175,3 +175,5 @@ VDOC-01～05 均已完成 deterministic module gate；資料由唯讀規範流�
 整合owner更新：Flutter extractor 從 `flutter/lib/` 解析公開入口；命令core公開七個宣告後重新extraction，當前541 canonical API／17modules／三surfaces。documents.mjs新增共同命令契約的唯一Guide路由 docs/guides/workbench-command-contract.html，並讀更新的雙框架使用指南；當前28份Markdown來源。generate／verify與15項既有registry/內容/link checks通過；manifest只從Green extraction同步，沒有手改API identity。網站仍缺全部元件互動specimens與GUI bundles，不能用541頁清冊宣稱互動展示完成。
 
 DOCS-LINEAR-1 實作 3cfe2eea：15 項既有 checks、524 canonical API／17 modules／26 文件 generate／verify、scope gate 通過。公開 manifest 重新 extraction 後由整合 owner 更新，不由 BUILD 手改。
+
+React registered command入口契約加入唯一Guide路由 docs/guides/workbench-command-entry-contract.html；當前29份Markdown，541 API清冊不變。generate/verify及15 checks通過。React入口12項DOM/lifecycle/type checks不代表browser展示完成。

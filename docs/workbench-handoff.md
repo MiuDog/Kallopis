@@ -4,7 +4,7 @@
 
 ## 下一個可執行步驟
 
-1. 雙框架command core已完成。下一個PLAN固定toolbar/menu/context menu/palette等入口如何以ID引用同registry，保持既有Flutter CommandMenu／WorkspaceCommand caller相容；不重做registry。
+1. 雙框架command core已完成，共同WB-COMMAND-ENTRY-r1及React registered toolbar/menu已完成。下一個PLAN固定Flutter actions/command_entries local architecture與fresh TestAuthor，保持既有CommandMenu／WorkspaceCommand caller相容；不重做registry。overlay/context menu/palette仍待接續。
 2. 雙框架快捷鍵/chord/scope/conflict/remap/recording契約與接入。不可用core冒充整個命令stage完成。
 3. 網站每個公開可呈現元件專屬互動specimen、registry/bundle/coverage；3GUI×2框架；typedrecipes／完整風格中立與參數／default權威切換。
 4. 補browser hoverpreview/cancel矩陣、Flutter continuousresize與React endcommit差異契約審核；保留所有既有CI/發布閘門，精確commit/push。感官接受human-pending。

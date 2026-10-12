@@ -228,4 +228,33 @@ commands.dispose();
 
 `getState`及`list`提供visible/enabled/checked/running與conditionError；呈現入口檢查visible與enabled為true、running為false，執行仍經registry重新驗證。相同註冊者pending時回busy，不同命令可並行；產品Promise開始後不會被解除註冊取消，舊結果不能清新owner的running。`subscribe`／`version`供宿主更新；外部closure變動用`refresh()`通知，不儲存第二份context。
 
-11項公共生命週期檢查、使用端型別及建置通過。命令工具列、選單、palette與快捷鍵宿主尚待接入；完整條件與結果見[共同契約](../architecture/workbench-command-contract.md)。
+11項公共生命週期檢查、使用端型別及建置通過；完整條件與結果見[共同契約](../architecture/workbench-command-contract.md)。
+
+## React 命令工具列與選單
+
+`KlpRegisteredCommandToolbar<C>`與`KlpRegisteredCommandMenu<C>`直接讀同一個registry；產品提供items的commandId/kind與排列，不複製label、handler或enabled。條件closure變動呼叫registry.refresh()；每次查詢及啟動都讀getContext最新資料。
+
+```tsx
+<KlpRegisteredCommandToolbar
+	registry={commands}
+	getContext={() => latestContext}
+	items={[{ commandId: 'document.save' }, { commandId: 'view.grid', kind: 'toggle' }]}
+	label="文件工具"
+	onResult={handleProductResult}
+/>
+<KlpRegisteredCommandMenu
+	registry={commands}
+	getContext={() => latestContext}
+	items={[{ commandId: 'document.save' }]}
+	label="文件命令"
+	emptyLabel="沒有可用命令"
+	onResult={handleProductResult}
+	onDismiss={closeProductPopup}
+/>
+```
+
+toolbar左右、menu上下循環移動可用項；Home/End跳首尾、Enter/Space啟動一次。Menu Escape呼叫onDismiss；autoFocus預設false，明確true才取得首個可用項或空menu宿主焦點。缺失/隱藏/條件錯誤項不呈現；停用/執行中項仍呈現但不進可用索引。toggle映射checked，普通action沒有toggle語意。
+
+非同步執行完成交最新onResult；入口卸載或更換registry後不再把舊結果交新宿主，同registry的原結果仍保留。onResult自身例外交原生error通道。style/className/id供外部有限宿主，內部呈現讀semantic；menu本身是原生平面入口，popup定位、context menu與palette另待接入。
+
+12項public SSR/DOM/lifecycle/typedconsumer checks與build通過，測試存在React act時機警告；browser與感官證據待展示stage。[入口共同契約](../architecture/workbench-command-entry-contract.md)定義雙框架一致邊界。
