@@ -285,3 +285,34 @@ Align初始natural子內容修正為120×80，最終實際文字位置(8,152)→
 main build/flutter-spatial-specimens.png及flutter-spatial-native.json保存觀察；actual360 browser未取得，local320不代替，感官human-pending。Flutter真實fixture51／273，剩餘222與網站全量嵌入仍原goal；本stage不是所有元件交付。
 
 _State._controls/_target/_usage持有當次公開props投影、合法host與正確constructor；_tiles/_flexTiles提供產品child，_sample/_fixedSample/_sampleBody/_measure/_builderBody只呈現真實約束；_scrollToEnd/_onScroll使用同公開controller，initState/dispose移除listener並清controller；_onChange及cycle/toggle只consumerState。build owns finite viewport/controls/status/draft，環境由外host維持；沒有第二theme、private API或widget tree驗證。
+
+## FLUTTER-FORM-CONTROL-SPECIMENS-1（READY）
+
+修訂FLUTTER-FORM-CONTROL-SPECIMENS-r1，依IDOC-01/02/03/06/08；exact lib/component_specimens.dart、新lib/form_control_specimens.dart，前者僅import/registry/fixture分流，不改原51與外host環境。24個正式renderable：KlpAffixedTextField、KlpCheckbox、KlpCompactSwitch、KlpField、KlpFieldDescription、KlpFieldError、KlpFieldLabel、KlpMultiSelectField、KlpNumberField、KlpPasswordField、KlpPhaseToggle、KlpQuantityField、KlpRadioGroup、KlpSegmentedControl、KlpSelect、KlpSelectField、KlpSlider、KlpSlidingSelection、KlpTagChip、KlpTagInputField、KlpTextArea、KlpToggle、KlpToggleIndicator、KlpTriStateToggle。formControlSpecimenNames只實際fixture；公開FormControlComponentSpecimen(name)，只Flutter與public foundation imports，不改library／private API或共用theme。
+
+_State owner管理label/draft controllers、bool／number／index／triState／選取Set／tags與回呼log；資料和結果跨theme/width保留，epoch才reset，dispose清controller。各route控制自己的公開參數：Checkbox/Toggle value/showLabel/null callback；CompactSwitch value/null callback；ToggleIndicator value/enabled（無虛構callback）；TriStateToggle value/null callback；RadioGroup items/value/vertical/descriptions；SegmentedControl items/selected/expanded/dense/icons；PhaseToggle options/selected/enabled/icon；SlidingSelection label/options/selectedIndex/null callback。Select value/enabled/onPressed真實callback，SelectField valueLabel/options/enabled/readOnly/error與popup選取、MultiSelectField同公開選項及Set；選項使用KlpChoiceOption，沒有自製menu代替。
+
+NumberField value/minimum0/maximum10或100/unit/error/null callback；QuantityField value/step1或5/範圍/enabled/readOnly/error／合法增減回呼；Slider value/min0/max10或100/divisions/displayValue/marks/null callback；改範圍保持合法current value，僅consumer參數fixture不重寫核心clamp算法。AffixedTextField label/controller/placeholder/prefix/action/enabled/readOnly/error；TextArea value/placeholder/error/enabled/lines/unboundedLines/outlined；PasswordField value/placeholder/error/enabled/readOnly/required/requirements（純展示字串，無真實credential）；controller和值變更同步handler，不能以text變更冒充未觸發的core回呼。
+
+TagChip label/onRemove，remove使consumer顯示已移除結果，可restore/reset；TagInputField tags/onAdd/onRemove/onClearAll/maxCount，清單回寫且可觀察；不在sharedlibrary增加業務state。Field label/description/error/errorCode/requirement/required/status/counter及實際child；FieldLabel/Description/Error只修改各自文字。標籤及內容control使用同KlpTextField，control自身回呼與target回呼分開記錄，禁止拿control callback當target互動成功。_usage以真實constructor與handler/state為準，無fake元件名稱。finite舞台使用自身scroll容納長內容，不能擋公開popup；外host既有mode/spacious/local320/epoch保持。
+
+驗收24registry/renderable一致、public analyze、prefixrelease --no-tree-shake-icons --base-href /Kallopis/examples/flutter/、原生24routes自己的controls與至少bool/input/number/choice/popup/multi/tag/slider真實callback、四mode/style/local320保留資料、reset，scope2/diff。無新persist／algorithm／crosslanguage，不新增鏡像tests；library/tests/style/網站/config/generated/docs禁止寫。actual窄browser與感官明示pending，所有273 docs另stage不得提前全量放行。
+
+估8k～16k/60～120分鐘，參考FLUTTER-SPATIAL-SPECIMENS-1；M1 source24/registry/analyze/build（9k65），M2 nativecontrols/callback/state/scope（16k120）；24k160或public contract不足回PLAN。actual usage無任務量測null。
+
+| Source／class／functions | 責任 |
+| --- | --- |
+| form_control_specimens.dart formControlSpecimenNames／FormControlComponentSpecimen | 真實target名稱及公開consumer輸入 |
+| _FormControlComponentSpecimenState | controls/target/usage/build、controllers生命週期、callback投影／message與consumer清單；所有nested callbacks只屬自身setter或原input回寫 |
+| component_specimens.dart fixture分流 | 保留環境／epoch，指定route只到自己的form fixture |
+
+```mermaid
+flowchart TD
+	Host[ComponentSpecimenApp / registry] --> Form[FormControlComponentSpecimen / State]
+	Form --> Props[自己的props與資料controls]
+	Props --> Target[真實公開表單target]
+	Target --> Callback[原native callback / popup / input]
+	Callback --> State[consumer value / Set / tags / callback log]
+	State --> Target
+	Host --> Reset[epoch / reset才重建]
+```
