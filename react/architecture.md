@@ -747,3 +747,21 @@ flowchart TD
 	Cleanup[disposeCommands] --> MapDispose[keymap.dispose]
 	MapDispose --> RegistryDispose[registry.dispose]
 ```
+
+## REACT-REFERENCE-COMPONENTS-1（READY）
+
+修訂 REACT-REFERENCE-COMPONENTS-r1，依共同 IDOC-COMPONENT-REGISTRY-r1，只建立scripts/reference-components.mjs。BUILD不改公開庫／example／網站／package／tests／architecture。公開boundary為export function extractReactComponents(entrypoint, packageRoot)，必要參數為絕對d.ts entry檔及package root；不改原build scripts。CLI node scripts/reference-components.mjs --output <path>讀目前package dist/index.d.ts，預設輸出ignored build/reference-components.json；先完成診斷及JSON資料再write，失敗保留舊檔。
+
+TypeScript compiler解析真實public export symbols，alias解析到實際declaration；只接受function或callable variable的明確React return annotation（JSX.Element、ReactElement、ReactNode，qualified/import type及nullable union），排除同名其他模組的Element／非React物件、type-only export、一般函式、data class與private unexported。namespace JSX僅來源為react／react JSX namespace才可；return annotation alias解析到React定義，不能用字串包含比對。由export名形成id/name，source為package-relative POSIX且不能越root，signature為原callable declaration文字，propsType為首參數型別文字或空字串。stable UTF-16排序，每個export一筆，alias與original可各有自己的publicID；不存在／invalidpath／compiler errors拒絕。
+
+真實cross-module runtime registry需要正確辨認barrel／alias與排除data，其邊界不能用人工清單或固定數目證明。fresh TestAuthor只react/test/reference-components.test.mjs，用暫存d.ts fixture及既有public exports保護，implementation不可改tests。cold3k～6k/20～35分鐘，參照website canonical manifest；M1 protected公開extract success/exclusion/alias/failure Green（3k20）；M2真實dist全量JSON、source/scope1/diff（6k35）；8k45或需private/config write回PLAN。兩端registry／React route與website renderer後續各module BUILD，不以清單宣稱展示完成。
+
+```mermaid
+flowchart TD
+	Public[dist/index.d.ts exports] --> Compiler[TypeScript program / diagnostics]
+	Compiler --> Alias[resolve public alias]
+	Alias --> Return[React return annotation identity]
+	Return --> DTO[extractReactComponents / stable components]
+	CLI[CLI output argument] --> DTO
+	DTO --> Write[成功後寫ignored JSON]
+```
