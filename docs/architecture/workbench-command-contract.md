@@ -6,7 +6,7 @@ WB-COMMAND-r1：READY。依已接受[WB-09～14／16](../../spec/workbench-v1.md
 
 ## 公開資料
 
-`KlpCommandDefinition<C>`：id、label必填非空字串（不trim改identity）；handler(context:C)必填，可同步或PromiseLike／FutureOr回傳產品值。description／category可選非空字串，keywords可選非空字串列表；icon可選原生ReactNode／FlutterKlpIconData，只提供呈現metadata。isVisible(context)／isEnabled(context)／isChecked(context)可選原生pure boolean predicates，缺省true／true／false。React執行時拒絕非boolean結果。產品不在predicate中註冊、解除或執行命令。
+`KlpCommandDefinition<C>`：id、label必填含非空白內容的字串（trim只驗證，不修改原值或identity）；handler(context:C)必填，可同步或PromiseLike／FutureOr回傳產品值。description／category可選含非空白內容的字串，keywords可選列表且每項字串須含非空白內容；icon可選原生ReactNode／FlutterKlpIconData，只提供呈現metadata。isVisible(context)／isEnabled(context)／isChecked(context)可選原生pure boolean predicates，缺省true／true／false。React執行時拒絕非boolean結果。產品不在predicate中註冊、解除或執行命令。
 
 註冊時複製自己的metadata及keywords，不freeze或改caller；icon、handler、predicate及context保持產品引用，不深複製正文。caller事後修改原metadata/keywords不改已註冊命令。不存在預設command、產品順序、路由或全域registry。
 
@@ -29,11 +29,11 @@ React `KlpCommandRegistry<C>(onObserverError?)`；Flutter `KlpCommandRegistry<C>
 | version / isDisposed | version初始0，註冊、解除、開始/結束pending、refresh、dispose各一次遞增並通知。重複disposer/dispose及無效執行不通知。 |
 | dispose() | 一次關閉，清註冊者，以disposed狀態通知最後一次後清訂閱；register/subscribe/refresh之後明確StateError/Error。查詢仍合法。 |
 
-id參數必須非空字串；非法定義、duplicate及metadata以React TypeError／Flutter ArgumentError拒絕。disposed mutation用Error／StateError。條件與handler回傳錯誤都可以查詢與處理，不因一個命令錯誤阻塞其他命令。
+id參數必須含非空白內容；非法定義、duplicate及metadata以React TypeError／Flutter ArgumentError拒絕。disposed mutation用Error／StateError。條件與handler回傳錯誤都可以查詢與處理，不因一個命令錯誤阻塞其他命令。
 
 ## 執行生命週期
 
-pending以註冊token擁有，單一命令不重入；不同命令可並行。開始handler之前先設running並通知。condition查詢或observer通知導致解除／disposed時須再檢查token，不能執行過期handler。handler已開始後解除/重註冊/dispose不取消產品Promise或業務副作用；其結果仍正常完成，但不能清掉新註冊者的running或通知已卸載owner。只有目前同token的finally才解除running與通知。
+pending以註冊token擁有，單一命令不重入；不同命令可並行。開始handler之前先設running並通知。condition查詢或observer通知導致解除／disposed時須再檢查token，不能執行過期handler；此時disposed回disposed，解除或被替換的token回missing。handler已開始後解除/重註冊/dispose不取消產品Promise或業務副作用；其結果仍正常完成，但不能清掉新註冊者的running或通知已卸載owner。只有目前同token的finally才解除running與通知。
 
 產品為context權威，registry不保存或clonecontext。UI與keyboard宿主每次傳最新context；closure條件變動使用refresh或產品原生rebuild。所有呈現將對同一registry訂閱，避免toolbar/menu/palette出現不同disabled邏輯。沒有命令取消/transaction/undo權威，業務操作需要這些時由handler／產品擁有。
 
