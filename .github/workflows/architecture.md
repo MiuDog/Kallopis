@@ -65,7 +65,7 @@ flowchart LR
 
 BUILD exact1 pages.yml，既有component6之後新增獨立scene7；generate／verify明示--react --react-scenes。local同protected7已Green零skip，正式完整生成／驗證Green，scope1/diff；diff確認其他runner/權限/triggers/上傳/deploy未改。Ubuntu實際執行仍待原goal最終push後觀察。
 
-## CI-FLUTTER-SCENES-1（READY）
+## CI-FLUTTER-SCENES-1（COMPLETE；Ubuntu執行pending）
 
 修訂CI-FLUTTER-SCENES-r1，exact pages.yml。既有Pages先純Node15／React builds/fresh清單/6＋7保持，再加入subosito/flutter-action@v2固定3.44.4 stable（與既有rootCI facts相同），flutter/example工作目錄pub get、analyze lib/gui_scenarios.dart lib/gui_scenario_metadata.dart、同protected39、release web --no-tree-shake-icons --base-href /Kallopis/examples/flutter/；Node獨立Flutter docs9，generate/verify保留React雙flag並加--flutter-scenes。此example套件本機pubspec只有Flutter本庫/svg/file_selector，沒有Krepis路徑依賴，不增加替身package。package/config/locks/SDKrootjob唯讀；不改permissions/triggers/部署條件/upload或放寬tests。YAML依語法空格。
 
@@ -79,3 +79,5 @@ flowchart LR
 	Docs --> Gate[三flag generate / verify]
 	Gate --> Artifact[完整Flutter package資產 / 原Pages上傳]
 ```
+
+BUILD83b824be exact1 pages.yml，Flutter固定3.44.4 stable、example pubget/public analyze/同metadata39/prefixrelease與獨立docs9在原React6/7後、mandatory三flag generate/verify在upload前。既有Node24/原15/Reactbuild與清單、permissions/triggers/deploy條件原樣保留。local同source9/39/public analyze/prefixbuild已有Green；本slice正式三flag generate/verify再Green，scope1/diff通過。YAML保留必要空格；Ubuntu actual尚未執行，原goal最終push後觀察，不宣稱已部署。
