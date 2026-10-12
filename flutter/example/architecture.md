@@ -769,3 +769,30 @@ flowchart TD
 Native九route及自己的props：Actions submit/cancel/reset root3，submitting及callback=null分開各停用、optional拿掉cancel/reset；Summary errors空/非空，選draft root1與null callback；Form optional summary/actions/第二section與child原動作。Section指標收合/展開root2，child動作1/input2，草稿實際畫面跨四mode/寬鬆/local320保持，epoch歸零且environment保持。Section語意標題Enter selector press超時而無callback；不宣稱鍵盤成功，後續public focus audit待處理。Conditional隱藏child語意後恢復consumer controller草稿，root0。FieldGroup error及optional child移除，child1/root0。Compound input2/option b root3，disabled option語意generic、readOnly option disabled、enabled=false文字及選單disabled，原選項及草稿保持。Repeater add/remove root2、stable row-new-1、empty/restore及null callback停用。KeyValue edit key/value原onChanged4、null callback後consumer entries及root保持，empty/restore只為consumer操作；公開constructor及實際元件沒有add/remove介面，原PLAN誤列KeyValue add/remove驗收更正為自己的edit/null callback與consumer空還原，不新增假庫回呼或鏡像算法。全九各可操作自己的props；Actions末輪label已真正接線。當前error/warn空。證據build/flutter-form-composition-native.json及PNG；all273映射、Section keyboard、actual窄browser/感官及總release/push仍待，單taskusage null。
 
 FORM-COMPOSITION的Section keyboard待項已由FLUTTER-FORM-SECTION-KEYBOARD-1 source8d8bf6b2/dcc3dbed及獨立四checks處理：新版展示實際Tab/Enter/Space、單一header label/expanded及consumer草稿保持。fixture source不變，累計仍176／273。窄viewport工具set未實際生效（既有/fresh皆1280×720）已reset，不計為actual窄成功；全量coverage與風格極端布局/總release仍待。
+
+## FLUTTER-ADVANCED-FORM-SPECIMENS-1（READY）
+
+修訂FLUTTER-ADVANCED-FORM-SPECIMENS-r1；IDOC-01/02/03/06/08，BUILD exact lib/component_specimens.dart與新lib/advanced_form_specimens.dart。十四個自己的foundation target：KlpApprovalStepsField、KlpCalendar、KlpCodeEditorField、KlpCodeField、KlpColorRoleField、KlpCombobox、KlpDateField、KlpDateRangeField、KlpFileDropzoneField、KlpFileField、KlpOklchColorEditor、KlpOklchColorPicker、KlpReferencePicker、KlpStatusRoleSwatches。只使用formal manifest已公開constructors/DTO與原生consumer控制，不import private，不改library/config/tests/style/site。
+
+consumer State擁有label/source/start/end controllers並dispose；query/code/date/month/selected date/range、choice/status/OKLCH、steps/files穩定ID及optional/enabled/readOnly/error/warning/loading/freeText/chromaRange/limit/progress props。每target只有自己的constructor，root原callback與child/footer動作、控制文字分計數；環境不更換key，只有host epoch重設。Calendar投影公開selectedDate/range及月份，產品處理點選資料，weekday7/firstWeekday合法、dayContentBuilder可選；disabled日期由consumer predicate示意。DateField optional calendar DTO與輸入回呼，DateRange controller與calendarPressed hook真實回呼、不冒稱庫已有range popup。Approval自己的onAdd/Move/Remove与maxSteps，consumer bounds防無效提案，不寫庫演算法。Combobox/Reference consumer query過濾DTO，freeText/disabled result/loading/null callback各按public contract。File choose只接宿主回呼新增標示fixture資料，remove/progress與空還原；無OS檔案讀寫/上傳，也不冒稱drop callback不存在的能力。CodeEditor只有code/actions文字及footer props，沒有fake root editor callback；CodeField按實際onChanged/readOnly。ColorRole/Status投影選取；OKLCH value/chromaRange由庫處理，consumer只保存原結果，不複製色彩運算。
+
+M1十四source/public analyze/prefix release/scope2；M2 native十四各ownprops/label、日期及月份與optional calendar、steps增刪移動/限量、查詢選取/freeText、file choose/remove/空、code真實edit/static prop、OKLCH實際slider/輸入與nullablecallback，四mode/寬鬆/local320與epoch資料保持。更大完整viewport驗證另整合，當前IAB override未生效不能冒稱窄browser；感官human-pending。reversibleconsumer無新核心/persist，不新增鏡像tests；若公開元件實際failure，停BUILD交核心owner。估10k～20k/60～120分鐘參照FORM-CONTROL與FORM-COMPOSITION；M1累計10k60、M2累計20k120；28k170或跨module回PLAN。單taskusage null。
+
+| Source/class/function | 責任 |
+| --- | --- |
+| advancedFormSpecimenNames / AdvancedFormComponentSpecimen | 精確自己的公開target路由 |
+| State fields/dispose | consumer controller、日期、資料與props生命週期 |
+| controls/target/usage/build | public DTO、真實參數與原回呼呈現 |
+| date/month/query/select/code/color/step/file handlers | product投影資料、root與control/child計數分離 |
+| host fixture dispatch | environment保留及明示epoch |
+
+```mermaid
+flowchart TD
+	Host[ComponentSpecimenApp] --> Fixture[AdvancedFormComponentSpecimen]
+	Fixture --> Props[consumer資料與公開DTO]
+	Props --> Target[自己的public target]
+	Target --> Callbacks[原事件及提案]
+	Callbacks --> State[consumer狀態]
+	State --> Props
+	Host --> Reset[明示epoch重設]
+```
