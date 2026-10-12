@@ -23,7 +23,7 @@ function diagnostic(child, field) {
 }
 
 // 此 seam 只補 jsdom 缺少的 CSS 尺寸；預期數值由共通契約手算，不呼叫 solver。
-async function fixture(t, { width = 600, height = 300, observer = true } = {}) {
+async function fixture(t, { width = 600, height = 300, observer = true, serverHtml = null } = {}) {
 	const dom = new JSDOM('<!doctype html><div id="mount"></div>', { url: 'http://localhost' });
 	const win = dom.window;
 	const previous = new Map();
@@ -35,6 +35,7 @@ async function fixture(t, { width = 600, height = 300, observer = true } = {}) {
 		disconnect() { this.targets.clear(); }
 	}
 	const mount = win.document.querySelector('#mount');
+	if (serverHtml !== null) mount.innerHTML = serverHtml;
 	const box = { width, height };
 	mount.style.width = `${width}px`;
 	mount.style.height = `${height}px`;
@@ -77,11 +78,12 @@ async function fixture(t, { width = 600, height = 300, observer = true } = {}) {
 	for (const [name, axis] of [['clientWidth', 'width'], ['clientHeight', 'height'], ['offsetWidth', 'width'], ['offsetHeight', 'height'], ['scrollWidth', 'width'], ['scrollHeight', 'height']]) {
 		Object.defineProperty(win.HTMLElement.prototype, name, { configurable: true, get() { return name.startsWith('scroll') ? natural(this, axis) : size(this, axis); } });
 	}
-	const { createRoot } = await import('react-dom/client');
-	const root = createRoot(mount);
+	const { createRoot, hydrateRoot } = await import('react-dom/client');
+	let root = serverHtml === null ? createRoot(mount) : null;
+	const hydrationErrors = [];
 	let unmounted = false;
 	async function unmount() {
-		if (!unmounted) { await act(() => root.unmount()); unmounted = true; }
+		if (!unmounted) { if (root) await act(() => root.unmount()); unmounted = true; }
 	}
 	t.after(async () => {
 		await unmount();
@@ -92,8 +94,9 @@ async function fixture(t, { width = 600, height = 300, observer = true } = {}) {
 		}
 	});
 	return {
-		win, mount, observers, unmount,
+		win, mount, observers, unmount, hydrationErrors,
 		render: child => act(() => root.render(child)),
+		hydrate: child => act(() => { root = hydrateRoot(mount, child, { onRecoverableError: error => hydrationErrors.push(error) }); }),
 		async resize(width, height) {
 			box.width = width; box.height = height;
 			mount.style.width = `${width}px`; mount.style.height = `${height}px`;
@@ -126,6 +129,23 @@ test('六個公開元件、SSR DOM、原生內容及 Fragment/null 直接組合'
 	assert.equal(dom.window.document.querySelector('input').value, '產品正文');
 	assert.doesNotMatch(html, /NaN|Infinity/);
 	dom.window.close();
+});
+
+test('SSR hydration 保留原生 input 身分與已編輯值，client 完成有限 slot 配置', async t => {
+	const view = provider(h(klp.KlpAppLayout, { inset: 'none', 'aria-label': 'SSR 工作區' }, row(null,
+		pane('hydrated-pane', {}, h('input', { id: 'hydrated-input', defaultValue: '伺服器正文', 'aria-label': '正文' })))));
+	const f = await fixture(t, { serverHtml: renderToString(view) });
+	const input = f.mount.querySelector('#hydrated-input');
+	assert.ok(input, 'SSR 必須輸出原生 input');
+	// 模擬 hydration 前使用者已輸入內容；量測不能重建節點或覆寫值。
+	input.value = '掛載前已編輯';
+	await f.hydrate(view);
+	assert.deepEqual(f.hydrationErrors, [], '相同公開 tree hydration 不得有 recoverable error');
+	assert.equal(f.mount.querySelector('#hydrated-input'), input, 'hydration 保留 SSR input 節點');
+	assert.equal(input.value, '掛載前已編輯');
+	assert.equal(input.getAttribute('aria-label'), '正文');
+	close(f.extent('hydrated-pane'), 600, 'hydration 後寬度配置');
+	close(f.extent('hydrated-pane', 'height'), 300, 'hydration 後高度配置');
 });
 
 test('非法 bounds/flex 與直接 child 同步拒絕；caller 不變', () => {
