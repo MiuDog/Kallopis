@@ -520,3 +520,7 @@ flowchart TD
 	Execute --> Registry
 	Palette --> Focus[opening input / conditional original focus restore]
 ```
+
+實作邊界澄清：portal使用原生HTMLDialogElement.showModal top layer/inert（無此宿主API時顯式open供DOM harness），role=dialog對應panel，外部portalhost對應backdrop。native backdrop pointer需依panel rect判斷外部，panel本身click不dismiss；無手寫全域z-index/theme。physical scope以aria-hidden hidden span取得ownerDocument及目前Provider CSS投影（含derived variables），portal從同tokens/同scope複製，不建立第二份defaultresolver；此marker不是overlay/元件展示，SSR不輸出modal。modal close/unmount依既定焦點契約，native close自動restore若遇產品externalfocus，保護最終externalfocus。
+
+原生依[HTML dialog標準](https://html.spec.whatwg.org/multipage/interactive-elements.html#the-dialog-element)、[React createPortal](https://react.dev/reference/react-dom/createPortal)、[CSS backdrop繼承](https://drafts.csswg.org/css-position-4/#backdrop)。不修改ThemeProvider public型別；全部新邏輯仍限3paths。finite geometry private helper由viewport及同semantic數值先clamp inset/width/height/padding；resize只更新UI，不改命令清冊。
