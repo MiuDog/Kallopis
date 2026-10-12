@@ -248,3 +248,26 @@ WB-DOCK-GEOMETRY-r1已READY；native React Dock UI需使用既有linear resolver
 WB-DOCK-PREVIEW-r1 READY：hover僅instance presentation，cancel/end清除，success保留保存extent；Flutter當前PREVIEW-1不改publicAPI、geometry或pureoperations，React native Dock接入時遵循同一生命週期，不在此slice修改React。
 
 WB-DOCK-UI-r1 READY：nativeReact Dock使用同一pureOPS提交/一次通知、presentation metadata與同步或Promise批准close/pending stale lifecycle。React native API與errorcallback由後續自己的PLAN固定；Flutter當前UI slice不修改React實作。
+
+## 當前 slice REACT-DOCK-GEOMETRY-1（READY）
+
+修訂REACT-DOCK-GEOMETRY-r1；依WB-DOCK-GEOMETRY-r1先固定native React Dock的root有限配額，非整個UI完成。公開resolveKlpDockGeometry(args: KlpDockGeometryArgs): KlpDockGeometry；new src/dock-geometry.ts只依既有purelinear與codec，無React/DOM/theme/state/storage。index新增export。之後nativeDock只用同一配額組合DOM及pointer，不另建尺寸權威。
+
+KlpDockAreaConstraints readonly minExtent:number、maxExtent?:number；min有限非負，max省略或正Infinity表示無邏輯上限，其餘有限且>=min。KlpDockGeometryArgs readonly width/height有限非負、layout為既有KlpDockLayoutData、leftConstraints/rightConstraints必填、bottomConstraints可選、handleExtent有限非負、headerExtent可選有限非負（省略沒有header，0仍有零高header槽）。Bottomconstraints省略只在bottom hidden且groups空合法。非法nativeargs/layout/constraints TypeError；以既有encode验证layout，不重做parser，不改caller或freeze caller。
+
+KlpDockRect readonly left/top/width/height。KlpDockGeometry readonly stage:rect、left/right/bottom/header:rect|null、leftHandle/rightHandle/bottomHandle:rect、maximumLeft/maximumRight/maximumBottom:number。所有結果deepfreeze；Rect與budgets遵共同位置/gutter/resize前提，包括left fullheight、header跨中央+right、bottom只中央、hiddenhandles clamp尺寸、root shortage比例退化及pref不回寫。最大budget扣另一實際side/有效handles或header且至少0。沒有header時right/body起點0；headerH clamp rootH。hidden/empty side不保留正文/gutter，邊緣handle仍存在；bottomConstraints省略時bottomHandle為底邊零高rect，maximumBottom仍為body可用配額但不能據此宣稱Bottom啟用。
+
+root水平side items min/max/pref/flex0，center min0/pref0/flex1；verticalStage flex1與visibleBottom min/max/pref/flex0，gutterCount按實際visible且非空areas。使用既有resolveKlpLinearLayout，正Infinity轉nullable maximum，不複製水位算法。新helper只處理root，groups由既有linear規則及後續nativeUI投影；本slice沒有UI/metadata/close/dnd/resizecallbacks，也不接入examples。JS數字型別與constraints前置由helper-owned validation，layout validation委派codec。
+
+BUILD allowed_write react/src/dock-geometry.ts、react/src/index.ts；other src/linear/codec/operations/theme/components/CSS/examples/config/architecture/tests及Flutter唯讀。TestAuthor只寫react/test/dock-geometry.test.mjs，使用dist/index.js publicAPI；採common與Flutter publicgeometrycheck已明確fixture的root48/96、header/bottom/zero/hugehandle、maxresize292/immutable/positiveInfinity及非法args，同一actualbudget不依privateFlutter实现。
+
+M1根Rects/有效handles/不足及zero/extreme/Infinity，M2budgets/invalidargs/immutable/publicconsumer/librarybuild/scope。cold-start6k–10k tokens／40–70分鐘，參照FLUTTER-DOCK-GEOMETRY-1及REACT-LAYOUT-2；15k／90分鐘或需要改purelinear/codec/共同geometry回PLAN。選擇純root轉換函式讓nativeCSS與resize依同一值，拒絕分別用CSScalc及pointer各寫一套尺寸。
+
+```mermaid
+flowchart TD
+	Caller[controlled layout/constraints/semantic數值] --> Geometry[resolveKlpDockGeometry]
+	Geometry --> Codec[既有encode驗證layout]
+	Geometry --> Linear[既有linear有限配額]
+	Linear --> Rects[immutable root/handle rects]
+	Rects --> Native[後續native DOM/pointer共用]
+```
