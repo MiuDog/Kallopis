@@ -596,3 +596,28 @@ flowchart TD
 	Registry[同 registry / state / ID] --> Row[原 CommandRow / focus / activation]
 	CSS --> Row
 ```
+
+## REACT-COMMAND-POPUP-1（READY）
+
+REACT-COMMAND-POPUP-r1，依[共同popup](../docs/architecture/workbench-command-popup-contract.md)。新`command-popup.tsx`擁有KlpRegisteredCommandPopup<C>／props、readonly KlpCommandPopupAnchor（x／y／width／height邏輯viewport像素）及KlpCommandPopupDismissReason union。props沿既有menu的registry／getContext／items／label／emptyLabel／onResult，另required open／anchor／onDismiss，可選className／id；不繼承geometry可覆蓋的style。index單向匯出。
+
+同Provider DOM內native dialog showModal擁有top layer／inert；透明全viewport宿主可捕捉outside並提供非Tabstop的命名dismiss。有限positioned容器直接收KlpRegisteredCommandMenu autoFocus=true，不改rows／core。native client viewport優先，ResizeObserver與window resize更新client viewport／menu scrollHeight，cleanup與samevalue guard；自然無layout fixture可有有限window fallback。placement privatehelper與session/ref/focus lifecycle在同source。direction讀同scope原生direction；pack沿useKlp，不copy預設值／另Provider／portal全theme投影。
+
+sameopen session的onResult先交最新產品callback、success且仍current再executed；error保持，callback拋錯沿hosterror。關閉／重開／卸載／registry replacement隔離stale；只在焦點仍屬此dialog時返回原仍可用owner，native dialog自帶returnfocus需要保留產品外部移焦選擇。closed不query／getContext／subscribe、不showModal。menu key handlers不重寫；Tab在menu可用元素閉合，無可用項root。anchor非法TypeError，point合法，style／viewport更新不重建registry或產品State。
+
+BUILDwrite_paths：新`react/src/command-popup.tsx`、`react/src/index.ts`只新增exports、`react/src/styles.css`只追加popup scope；rootarch／theme／palette／core／entries／config／example／alltests唯讀。fresh TestAuthor只`react/test/command-popup.test.mjs`，公開DOM／SSR／typedconsumer與原生fixture保護共同anchor／finite／modal／state／session契約，不讀private實作。既有menu23及palette15checks保持。
+
+cold-start5k～10k tokens／25～50分鐘，參照REACT-COMMAND-PALETTE-1／VIEWPORT-1；既有React19.3／TS7與DOM工具。M1controlled menu popup／finite geometry（5k／25分鐘）；M2fresh checks／librarybuild／scope3（10k／50分鐘）；13k／65分鐘或其他source需求回PLAN。consumer keyboard／右鍵browser與網站另packet；感官human-pending。
+
+```mermaid
+flowchart TD
+	Props[open / anchor / caller callbacks] --> Popup[planned controlled popup owner]
+	Provider[same Provider CSS / semantic] --> Popup
+	Viewport[client viewport / ResizeObserver] --> Placement[private finite placement]
+	Placement --> Popup
+	Popup --> Dialog[native modal / named outside / conditional focus]
+	Popup --> Menu[public registered menu]
+	Menu --> Registry[existing command core]
+```
+
+以上planned責任由BUILD完成後owner替換為實際function／class索引。

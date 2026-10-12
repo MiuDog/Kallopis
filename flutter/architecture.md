@@ -163,3 +163,5 @@ FLUTTER-COMMAND-EXAMPLE-1公開consumer04cc372f：analyze No issues／scope2／r
 | 原導覽保留 | [registry.dart](example/lib/catalog/registry.dart)只資料投影catalogGroups／catalogPages／catalogedComponents，原generatedconstants仍公開，無新函式或生成來源修改 |
 
 FLUTTER-COMMAND-ENTRY-GEOMETRY-r1 COMPLETE：BUILD1bdd6321單一source完成有限width／padding／icon／gap；新6＋原23共29Green、analyze／scope1／releaseweb及正常native consumer通過；極端native矩陣仍pending。見[local入口](lib/src/features/actions/command_entries/architecture.md)與[共同契約](../docs/architecture/workbench-command-entry-geometry-contract.md)。publicAPI／protectedtests／palette與theme保持；anchor／context popup接續PLAN。
+
+FLUTTER-COMMAND-POPUP-r1 READY：[local popup](lib/src/features/actions/command_popup/architecture.md)擁有受控open／anchor Rect／dismiss意圖、有限位置及native modal；直接組合stable registered menu。library slice只新來源與foundation匯出，fresh author new popup test；menu／palette／core／theme與既有tests保持。consumer及網站另packet。
