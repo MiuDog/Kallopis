@@ -228,3 +228,9 @@ flowchart TD
 	Refresh --> View[_shortcutControls / _describeStroke / conflicts]
 	Dispose[dispose] --> Cleanup[remove listener / map / focus / controller / registry]
 ```
+
+## FLUTTER-ANALYZER-RUNTIME-1（READY）
+
+修訂FLUTTER-ANALYZER-RUNTIME-r1，integration owner依IDOC-FLUTTER-RENDERABLE-r1處理工具/SDK相容性。現dev analyzer10.1把Dart3.12合法私有具名參數報experimental，阻擋新的全量reference extract；不可改source語法或忽略診斷。只write pubspec.yaml中analyzer exact13.0.0及pubspec.lock由pubget解析；runtime .dart_tool為ignored工具產物。13.0支援已用語法且meta^1.18.0相容SDK固定1.18.0；14.4要求meta^1.18.3不合，保持SDK／CI版本／dependencies／public庫不變。官方版本來源 https://pub.dev/packages/analyzer/versions/13.0.0 ，本機已cached。
+
+本slice只交付可解析dev tool版本；新analyzer的公開API適配由根reference_site的DOCS-ANALYZER-API-1後續exact1source擁有，不在Flutterworker修改工具。acceptance為pubget及lock delta、實際analyzer13/meta1.18.0/_fe_analyzer_shared版本、scope2/diff。沒有新產品行為或鏡像tests，後續沿同protected4CLI tests保護namespace/diagnostics/full extraction。cold1k～3k/10～20分鐘，參照dependency接入；單M1 resolvedruntime/scope2（3k20），4k30或新增非必要runtime dependency回PLAN。

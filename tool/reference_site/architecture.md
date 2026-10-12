@@ -201,3 +201,55 @@ popup雙框架library與公開consumer已完成；公開popup與兩端usage由�
 CLI只在成功完成全manifest後寫既有ignoredoutput，錯誤保留原檔。此slice不改公開Widget／tests／fixtures／registry／example／generator／verify／config／committedmanifest。必要獨立Test Author只write test/extract_renderable.test.mjs，透過CLI暫存三個public barrels及既有Flutter package_config，保護all-modifiers/inherited/fake/abstract/type-data/public show-hide/exclusion/跨surface去重與失敗保留原檔；不讀實作、不固定真实數量、不snapshot目錄。既有15websitechecks沿用，不新增視覺tests。
 
 cold3k～6k/20～40分鐘，參照REACT-REFERENCE-COMPONENTS-1；M1獨立CLIfixtures可執行且记录有效Red（3k20）；M2同protectedchecks Green/publicanalyze/真實extract/scope1（6k40）；8k55或跨source改動回PLAN。TypeScript extractor屬React獨立module完成；此旗標還不是Flutter全部專屬route完成。感官human-pending。
+
+### Renderability 實作checkpoint（M1 COMPLETE／M2 environment pending）
+
+BUILD c7a841aa exact1source，protected4checks Green（fresh author69b52e95，SHA256 A51481D0B5E16B4AFD2D699DB92AD8CFB78046125F2292FD9B02FC867B910C7A），scope1/diff Green。Source等同副本置於Flutter package context分析No issues；直接root analyze沒有package config而失敗屬環境，沒有改config或放寬檢查。原生CLI fixture採真實Flutter Widget及間接／各class modifier、abstract／同名fake／data、show/hide／跨surface及失敗保留原檔。初次fixture mixin implements Widget的Object.toString不符Diagnosticable簽名，作者只補官方DiagnosticLevel與相容override三行，原斷言保留。
+
+真實專案全量extract目前拒絕輸出：dev analyzer10.1不認Dart3.12私有具名參數，診斷docking來源的合法語法為experimental，並連帶報publicnamed參數不存在。現行Flutter SDK3.44.2／Dart3.12.2與CI3.44.4／Dart3.12.2；這是analyzer版本不匹配，不能忽略diagnostics／改Flutter來源配合舊工具。正式manifest仍保留舊561筆，尚無正式renderable數量。Architecture Change Request移交integration owner：先FLUTTER-ANALYZER-RUNTIME-1精確更新dev dependency analyzer13.0.0及lock（符合SDK固定meta1.18.0；14.4需求meta1.18.3不合），再DOCS-ANALYZER-API-1接新版公開namespace API並回歸同protected4checks/full extraction。此M2未完成，不以fixture Green宣稱全量清单已完成。
+
+| extract_api.dart 類別 | 全部責任及方法 |
+| --- | --- |
+| _SurfaceDefinition | name／entrypoint／path／stability正式入口資料，constructor／toJson映射surface，path只供CLI |
+| _ApiManifest | surfaces／modules唯一整體，constructor、declarationCount fold數實際declarations、toJson輸出schema1 |
+| _Module | name分類與declarations清單，constructor／toJson投影 |
+| _DeclarationDraft | id／name／baseSlug／kind／module／sourceUri／signature／documentation／typeRelationships／members來源草稿；renderable analyzer旗標；surfaces跨入口合併。constructor、primarySurface、addSurface按正式次序合併、finish建立完成DTO |
+| _Declaration | canonical id／name、碰撞後slug、kind／module／sourceUri、primarySurface／唯讀surfaces、原signature／documentation／typeRelationships／members及renderable；constructor／toJson不建立第二分類權威 |
+| _Member | name／kind／signature／documentation公開成員，constructor／toJson |
+
+| extract_api.dart 函式／callback | 實際責任 |
+| --- | --- |
+| main | 驗證入口、同collection解析roots、validate公開匯出來源、extract後temporary/rename輸出；catch原診斷非零，finally dispose |
+| _outputPath／_absolute | 嚴格CLI output參數與平台絕對路徑 |
+| _validatePublicLibraries | 以來源path去重、解析每個本庫public export library、全units error拒絕；只追本庫exports，不掃外部Widget source |
+| _exportedNames | root exportNamespace現成closure，保留show/hide，不追回子library隱藏名字 |
+| _renderable | ClassElement非abstract且allSupertypes真正Flutter Widget source identity；fake／data／其他false |
+| _extractManifest | 各surface公開名稱、normalize、canonical去重、draft、module/slug碰撞檢查及排序 |
+| _normalize／_draft | synthetic getter回原variable；原symbol生成完整草稿／analyzer renderable |
+| _kind／_relationships | 所有class modifiers等原分類與extends／mixins／implements投影；不以kind決定renderable |
+| _members／_member | 公開constructor／field／method／accessor成員與原signature/docs，依名稱及kind排序 |
+| _moduleFor／_compareModules／_surfaceOrder | 限本庫package URI／根module／features子類，正式module及surface次序 |
+| _slug／_documentation | 穩定slug與原doc comment標記清理 |
+| nested callbacks | diagnostics flatten/filter；runtime symbols排序；surface/module/member映射及碰撞計数；supertypes identity、exports篩選；JSON toJson map/fold；正則slug替換與doc逐行處理，均屬上述caller資料投影 |
+
+```mermaid
+flowchart TD
+	CLI[main / outputPath / absolute] --> Roots[三個正式barrel / analyzer collection]
+	Roots --> Validate[validatePublicLibraries / source path去重]
+	Validate --> Error[error / catch / 舊manifest保留]
+	Validate --> Exports[exportedNames / root namespace]
+	Exports --> Extract[extractManifest / normalize / draft]
+	Extract --> Type[kind / relationships / members / member]
+	Extract --> Render[renderable / 非abstract真Widget]
+	Extract --> Identity[moduleFor / slug / collisions / surfaceOrder]
+	Identity --> Draft[_DeclarationDraft.addSurface / finish]
+	Draft --> DTO[_Declaration / _Module / _ApiManifest.toJson]
+	DTO --> Write[temporary / rename成功才覆蓋]
+	Roots --> Dispose[finally collection.dispose]
+```
+
+## DOCS-ANALYZER-API-1（READY after runtime）
+
+修訂DOCS-ANALYZER-API-r1，依integration相容性契約，等FLUTTER-ANALYZER-RUNTIME-1 exact2 pubget完成後才生成真實base packet。BUILD只write extract_api.dart以新版analyzer13的公開element/namespace API等價讀取原邏輯，不導入privateAPI、改JSONschema、改publicexports或忽略diagnostics。保護renderable/show-hide/all-modifiers/canonical/failure同4checks hashA51481...維持；必要same-source分析與真實完整extract新manifest，與舊561 identity比較visibility改正；scope1/diff。成功後由owner同步正式清單與generate/verify/網站既有15checks；Flutterconsumer／generator coverage仍後stage。
+
+cold1k～4k/15～30分鐘；M1 compile/同4Green（2k20），M2 actualextract/identity/scope1（4k30），6k45或新的API契約返回PLAN。不以最初fixtureGreen替代新的全量成功，舊manifest維持直到成功。
