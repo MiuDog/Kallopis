@@ -827,7 +827,7 @@ flowchart TD
 	Pack --> Preserve[fixture identity / 原草稿保留]
 ```
 
-## REACT-SPECIMEN-REGISTRY-1（READY）
+## REACT-SPECIMEN-REGISTRY-1（COMPLETE）
 
 修訂REACT-SPECIMEN-REGISTRY-r1，依IDOC-COMPONENT-REGISTRY-r1。exact example/specimen-registry.mjs、example/specimen-registry.d.mts、example/specimens.tsx。將既有23個真實name→fixture種類資料移到example持有的純ESM registry，Node網站可直接import，不解析TSX或另複製名稱表。mjs export reactSpecimenRegistry（name→basic/layout/command/dock/theme），d.mts只公開既有fixture種類的聯集與唯讀record；specimens.tsx用五個既有實際factory解引用，reactSpecimenNames仍由同registry derivation取得。既有所有fixture props/state與unknown query保持，null overview/main入口不改。
 
@@ -845,3 +845,5 @@ flowchart LR
 	Registry --> Website[網站 consumer / 後續slice]
 	Example --> Existing[既有23 own fixture]
 ```
+
+BUILD exact3source，Node讀公開ESM清單與fresh extractor23完全雙向一致，type/prod example build成功（602.78KB既有bundle超500KB提示保留），scope3/diff通過。native原Pane preferred90→150、unknown明確拒絕且不退總覽。fixture/state/公開庫/config未改，感官human-pending。初次預設artifact不存在，執行既有extractor生成後比較成功，不從不存在產物推測coverage。ESM registry Object.freeze固定name與種類，d.mts限制readonly聯集；specimens由Object.entries＋既有五factory建立Record，names由同資料Object.keys排序，沒有第二名稱表。

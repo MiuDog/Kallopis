@@ -99,3 +99,5 @@ Flutter PLAN1bffc472／BUILD39d263e0（owner744c9533），2examplepaths scope、
 本機Flutter D:/flutter/bin 3.44.2／Dart3.12.2；Node24。Browser後續使用前revalidatehandle；compaction後先cua.rewriteDocumentation。原生瀏覽器/syntheticcode事實與感官human-pending分開；不將截圖當完整互動或跨框架parity證據。goal保持ACTIVE直至全部交付及push完成。
 
 命令新增KlpRegisteredCommandToolbar／KlpRegisteredCommandMenu／KlpRegisteredCommandPalette／KlpRegisteredCommandPopup／KlpCommandShortcutHost五個專屬query，沿用既有清冊與consumer owner。各頁只呈現對應入口，觀察結果／停用／錯誤／搜尋／關閉理由，host另可操作快捷鍵與設定；原生Ctrl+S、chord與草稿作用域已有證據。風格／局部320切換保留草稿與結果，明確reset才歸零。BUILD e754f791、public analyze／releaseweb／exact2 scope通過；Flutter目前29/273，React23/23 example routes。全量元件網頁嵌入、其他244項、場景GUI與風格audit仍接續，尚未push。
+
+React example的23項registry已拆為公開example/specimen-registry.mjs（name→既有fixture種類），由example與後續Node網站共用；不是另抄元件表。fresh公開extractor雙向一致23，type/prod build及原生Pane/unknown路由通過。完整網站iframe/bundle接線仍未交付，下一owner從此ESM契約接入。
