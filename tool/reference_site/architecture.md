@@ -193,3 +193,11 @@ popup雙框架library與公開consumer已完成；公開popup與兩端usage由�
 共同原生宿主Guide直接讀正式來源；Flutter host完成後Green extract561 canonical API／17modules／三surfaces，34Markdown。protected Flutter10／React6 checks證據與nativebrowser pending分列；全部互動元件、React清冊與GUI仍後續。
 
 當前consumer增量：React e56976aa／Flutter f9118c25已完成原生快捷鍵、作用域與衝突、錄製重綁／設定及原草稿；不以各總覽Commands demo替代元件頁specimen。兩端usage由正式來源生成；561API／34Markdown generate/verify Green。下一owner工作為各renderable public component對應唯一互動registry、React manifest與兩端靜態bundle，覆蓋閘門與路由依interactive-docs-v1。
+
+## FLUTTER-REFERENCE-RENDERABLE-1（READY）
+
+修訂FLUTTER-REFERENCE-RENDERABLE-r1，依共同IDOC-FLUTTER-RENDERABLE-r1，BUILD唯一write extract_api.dart。保留所有canonical identity／kind／slug／signature／members，schema1 declaration新增必填renderable bool，由真實ClassElement的isAbstract與Widget來源identity/allSupertypes判定。只依各root exportNamespace取得publicclosure，不繞過show/hide追回被隱藏symbol。abstract final/base與sealed不要求實例；具體modifier均可。未知資料／enum／extension／mixin或fakeWidget false。
+
+CLI只在成功完成全manifest後寫既有ignoredoutput，錯誤保留原檔。此slice不改公開Widget／tests／fixtures／registry／example／generator／verify／config／committedmanifest。必要獨立Test Author只write test/extract_renderable.test.mjs，透過CLI暫存三個public barrels及既有Flutter package_config，保護all-modifiers/inherited/fake/abstract/type-data/public show-hide/exclusion/跨surface去重與失敗保留原檔；不讀實作、不固定真实數量、不snapshot目錄。既有15websitechecks沿用，不新增視覺tests。
+
+cold3k～6k/20～40分鐘，參照REACT-REFERENCE-COMPONENTS-1；M1獨立CLIfixtures可執行且记录有效Red（3k20）；M2同protectedchecks Green/publicanalyze/真實extract/scope1（6k40）；8k55或跨source改動回PLAN。TypeScript extractor屬React獨立module完成；此旗標還不是Flutter全部專屬route完成。感官human-pending。

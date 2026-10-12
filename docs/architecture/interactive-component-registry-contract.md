@@ -26,3 +26,9 @@ flowchart LR
 ```
 
 跨 module 規則由本契約擁有；各 module root architecture 指定當前 BUILD write boundary。新測試只保護跨框架／發布清單邊界、alias與排除錯誤，不建立固定數量快照；感官品質 human-pending。
+
+## Flutter analyzer renderability（IDOC-FLUTTER-RENDERABLE-r1 READY）
+
+現有schemaVersion 1每個canonical declaration新增必填boolean `renderable`；舊identity、signature、kind、typeRelationships、members、module路由及surface DTO保留。此欄位由analyzer ClassElement判定：非abstract（sealed隱含abstract亦排除），且自身或allSupertypes具真正Flutter Widget元素identity（name Widget、來源package:flutter/src/widgets/framework.dart）；不依名稱字串extends、不只看直接supertype、不因final／base／interface／mixin class而漏掉具體Widget，也不將同名假Widget或enum／mixin／data當作呈現元件。
+
+公開名稱嚴格依各root library `exportNamespace` closure；export show/hide或未re-export私有符號不可由遍歷library追回。跨barrel同canonical ID去重，跨surface仍併入同宣告。輸入或analyzer錯誤保持非零失敗及舊manifest不被覆蓋。此增量不修改Flutter library／example、既有kind名、固定254清冊或值權威；網站consumer取得旗標後另stage使用，舊manifest需重新extract才可宣稱新的renderable清單。
