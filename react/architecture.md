@@ -275,3 +275,37 @@ flowchart TD
 實作08ea39fc：finite／limits擁有native尺寸与限制驗證；item將正Infinity轉為linear的省略maximum；visible排除hidden或空area；rect建立自己的frozen矩形；resolveKlpDockGeometry先委派codec驗證，再各一次水平及垂直linear配額，回傳root／header／handle與resize預算。caller保存偏好及物件未修改，也未freeze caller。
 
 9項獨立checks、librarybuild、typedpublicconsumer及2paths scope通過；protectedhash B617A4EC6DD751B430CB6C697FB7C753D0018C0C3B558FE82296BB5992FAC8C8。獨立TestAuthor65909cb9將292預算的fixture handle明定4（400−100−2×4=292），保留全部assertions；handle8時相同公式應284，未修改算法配合錯誤算術。基線缺export是compileYellow；nativeDOM／pointer及感官尚未驗證。scope於08ea39fc閉合，owner文件不混入BUILD範圍。
+
+## 當前 stage：React native Dock
+
+修訂REACT-DOCK-NATIVE-r1；WB-04/05/06/16既已accepted，採直接受控React元件。native呈現/生命週期與pointer轉換各有不同責任，使用已完成codec/OPS/geometry/linear，不建立node/adapter/runtime或第二份保存狀態。公開KlpDockLayout與KlpDockPanel；沒有新的default layout、產品內容、storage或業務批准邏輯。
+
+公開KlpDockPanel extends KlpDockPanelPolicy：label:string非空供分頁及可及名稱；content:ReactNode由產品擁有；icon?:ReactNode；draggable?:boolean預設true；isPinned?/isDirty?:boolean預設false只呈現；onCloseRequested?:()=>boolean|Promise<boolean>；closeLabel?:string非空、缺省Close加label。政策欄位沿原allowSide/allowBottom。props KlpDockLayoutProps extends Omit<HTMLAttributes<HTMLDivElement>,'children'>：layout:KlpDockLayoutData、panels:readonly KlpDockPanel[]、stage:ReactNode、contentHeader?:ReactNode、leftConstraints/rightConstraints必填、bottomConstraints可選、onLayoutChanged:(layout)=>void必填；onCloseError?:(error:unknown,panelId:string)=>void供產品錯誤呈現；label?:string缺省Workbench；areaLabels?:Partial<Record<KlpDockArea,string>>缺省Left/Right/Bottom。原生style只能組裝宿主外部尺寸，不覆蓋內部配額。提供有限enclosing容器，root填滿，ref連接宿主。
+
+### REACT-DOCK-NATIVE-1（READY）
+
+本slice完成可使用的受控呈現/選取/收合與批准關閉。每次render先以既有codec/registry驗證完整layout；missing/capability/duplicate與非法props TypeError整份拒絕。root宿主量測後使用resolveKlpDockGeometry；SSR首次零尺寸DOM、hydration後量測，不碰storage/window於render。ResizeObserver與現有observeLayout生命週期可重用；box以未transform的CSS尺寸為準，fallback DOMrect，border/padding須在宿主擁有且不改保存。resize/style只重新分配，不通知onLayoutChanged。
+
+各area groups沿WB-GEOMETRY-r1：vertical logicalmin32/horizontal120，非末pref/flex0、末minpref/flex1、gutterCount n−1，同linear resolver；本slice只呈現gutter，不接受pointer resize。Panel margin讀dockMargin，分別clamp到槽半軸；radius讀shape.card、stroke扣clipradius且clamp非負；tab列讀chromeTab並clamp高度，正文占餘並裁切。全部面板內容DOM以panel ID key建立，未active/收合用hidden保留同位置的原生input/state；相同layout重建、style/size更新不remount。Stage/optionalheader各有固定slot；跨group move的mount連續性不在此slice宣稱。
+
+group role=tablist，label採area label與group ID；每個label button role=tab/aria-selected/aria-controls，對應role=tabpanel；close為同列獨立publicKlpIconButton，不巢狀button，包含inactive/singlepanel。分頁click及ArrowLeft/Right/Home/End選取（循環）並聚焦，active tab tabIndex0/其餘−1；選取pureOPS select，no-op0通知。area edge button以areaLabel作aria-label且aria-expanded反映caller visibility，click用purevisibility；空area沒有無效reopen入口。所有成功操作以latest caller snapshot apply，changed一次通知，caller不動。CSS的tab hover/selected讀相同semantic wash、focus/disabled讀正式semantic，圖示metadata可及title不依顏色表示。
+
+pending為instance Map<panelId,requestToken>，只停用該close、不重入。approve false不提交；true從最新layout pureclose（只有changed才通知）。產品提供不同layout仍placed且同callback可從新位置關閉；若曾離開layout/registry、callback替換或unmount則token無效，即使之後再open也不能關掉新面板。同步與Promise丟錯或非boolean回傳保持layout、解除pending並呼叫onCloseError；未提供時用宿主reportError，無該API則console.error，不能假裝批准或吞錯。產品callback需保持identity。metadata不進wire、pinned不擅自禁止drag/close。StrictMode效果setup/cleanup後仍可再次close。
+
+責任：workbench-dock.tsx擁有公開Props/KlpDockLayout、registry投影、group呈現及事件→pureaction；workbench-dock-lifecycle.ts擁有量測和close pending/stale hook（僅private exports）；styles.css僅新增Dock selectors；index.ts公開export。既有geometry/linear/codec/OPS/核心元件/theme不可改；使用公開KlpText/Surface/IconButton與同scope semantic。geometry操作不必每次clone內容資料或freeze產品ReactNode。
+
+BUILD allowed_write react/src/workbench-dock.tsx、react/src/workbench-dock-lifecycle.ts、react/src/styles.css、react/src/index.ts。TestAuthor只寫react/test/workbench-dock.test.mjs；必要風險是async stale批准與受控交易、nativeDOM/input/SSR生命周期，既有puregeometry不能保護。驗收：publicconsumer/SSR/hydration；normal+short+zero+巨大margin/chrome尺寸無非有限槽且不改保存；select/keyboard/no-op/一次通知/immutable；inactive/singleclose、deny/approve/error/pending、latest/moved/removed-reopened/registrycallback/dispose；size/theme/input identity保留。感官human-pending，不以jsdom synthetic尺寸冒充nativebrowser。
+
+M1呈現/配額/受控select/visibility，M2close生命周期/publicbuild/consumer/scope；歷史相似REACT-LAYOUT-2/FLUTTER-DOCK-UI-1，預估8k–15k tokens、45–90分鐘。超20k/120分鐘或需修改共通契約回PLAN。REACT-DOCK-NATIVE-2後續在同stage接pointer move/tabreorder/split/resize/preview與browser example；保留當前公開props/pure依賴，不預建空pointer層。所有GUI/specimens/命令能力仍依完整goal接續。
+
+```mermaid
+flowchart TD
+	Native[KlpDockLayout] --> Validate[codec / registry]
+	Native --> Lifecycle[measure / close pending]
+	Lifecycle --> Geometry[resolveKlpDockGeometry]
+	Native --> Groups[linear groups / finite chrome]
+	Native --> Controls[KlpText / Surface / IconButton]
+	Controls --> Actions[pure select / visibility / approved close]
+	Actions --> Caller[一次 onLayoutChanged]
+	Lifecycle --> Errors[onCloseError / host reportError]
+```
