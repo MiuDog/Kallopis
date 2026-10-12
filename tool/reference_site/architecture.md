@@ -262,7 +262,7 @@ cold1k～2k/5～15分鐘，單M1：npm test為原15Green；同新portable SDK ch
 
 BUILD37bad812 exact package.json；新入口 npm test 原15/15 Green、npm run test:extract 原4/4 Green（93.5秒，Windows），兩者零skip。獨立launcher1c322b4d hash AA12D3B695D46B6E048CC0DBC78ECD5A4BF4AB03B6470DA7EFC1B4F4DA90675C，Linux PATH入口尚待remote Ubuntu CI；不以本機結果代替Linux證據。scope1及diff Green，extract/build/verify保留。
 
-## DOCS-REACT-SPECIMENS-1（READY）
+## DOCS-REACT-SPECIMENS-1（IMPLEMENTED；窄browser驗收pending）
 
 修訂DOCS-REACT-SPECIMENS-r1，依IDOC-COMPONENT-REGISTRY-r1與example公開reactSpecimenRegistry。當前stage只接完整React公開元件到網站；Flutter全量與GUI、風格audit仍原goal後續，不能把React完成稱全部網站交付。BUILD exact generate.mjs、verify.mjs、新react-specimens.mjs、static/site.js、static/site.css。CLI generate/verify新增可選--react；不帶旗標保留原Node15網站用途；帶旗標必須讀fresh react/build/reference-components.json、example公開ESM registry及example/dist/index.html bundle，在清理輸出前完整validate，缺項／幽靈／非法canonical／schema／重複name/id／無實際factory種類皆拒絕。後续CI owner在bundle pipeline完整後接mandatory旗標，不能藉optin聲稱最終gate完成。
 
@@ -289,3 +289,9 @@ flowchart LR
 	Pages --> Status[實際load狀態 / 獨立入口]
 	Gate --> Verify[verify --react / 完整對照]
 ```
+
+BUILD exact5source。獨立ea6b2489 TestAuthor4checks hashDEB449DB12544C4D8D5D8DCAAED719D07B807B3D6EA7B7DFB972853767BB9716，4Green零skip（作者未取得有效Red）；原15最初9Red因generator靜態import外module導致隔離Nodefixture無React資料，改僅--react動態import後同15全Green，沒有改fixtures/assertions/config。fresh React23 gate、--react generate/verify561＋23頁、scope5/diff通過。原CI命令仍不帶React旗標，mandatory建置另CI owner slice，不宣稱已發布。
+
+Native5203 /Kallopis/：索引取得實際23links逐頁前往，各iframe自己h1及loaded全通過；Button頁input／click／Enter callback1、dark/spacious保留draft，reset0並保留環境，直接refresh/獨立入口正常；NotoSansTC與IBMPlexMono regular package fonts在prefix下已觀察。暫存建置artifact把iframequery改unknown，實際error提示及獨立正確link仍可用；source未改，artifact還原後verify Green。error/warn在5203 URL空。viewport.set360無效，實際706×668／iframe627.2，不能宣稱窄browser已驗收，仍pending且reset override。main build/react-docs-interactive.png與react-docs-load-error.png；感官human-pending。
+
+validateReactSpecimens持有schema/identity/欄位/實際factory/雙向清單invariants，sort保留公開DTO加href；renderReactSpecimen與escapeHtml只做安全文字和相對入口；generate async main動態讀registry、前置validate再copy/render React索引/頁/search/manifest。verify由正式输入重新validate及完整頁面/入口/asset檢查，不信任生成清單。site.js finish/inspect、poll/timeout/load/error處理同源實際標題，poll生命週期在terminal state清理；CSS只文件iframeviewport。所有新增closures屬上述caller，不建立另一theme或產品state。

@@ -71,3 +71,5 @@ Frame增加KlpPanelFrame／KlpPanelHeader／KlpPanelFooter／KlpFrameGroup／Klp
 命令新增KlpRegisteredCommandToolbar／KlpRegisteredCommandMenu／KlpRegisteredCommandPalette／KlpRegisteredCommandPopup／KlpCommandShortcutHost五個專屬query，沿用既有清冊與consumer owner。各頁只呈現對應入口，觀察結果／停用／錯誤／搜尋／關閉理由，host另可操作快捷鍵與設定；原生Ctrl+S、chord與草稿作用域已有證據。風格／局部320切換保留草稿與結果，明確reset才歸零。BUILD e754f791、public analyze／releaseweb／exact2 scope通過；Flutter目前29/273，React23/23 example routes。全量元件網頁嵌入、其他244項、場景GUI與風格audit仍接續，尚未push。
 
 React example的23項registry已拆為公開example/specimen-registry.mjs（name→既有fixture種類），由example與後續Node網站共用；不是另抄元件表。fresh公開extractor雙向一致23，type/prod build及原生Pane/unknown路由通過。完整網站iframe/bundle接線仍未交付，下一owner從此ESM契約接入。
+
+React網站接線已實作：generate.mjs --react與verify.mjs --react讀fresh公開清單及example ESM registry，完整23項雙向gate、生成docs/react/components索引及每頁iframe／獨立入口／使用簽名、copy bundle至examples/react；search/manifest同canonical identity。原15＋獨立4 checks及native23 iframe load/自己的h1通過；Button頁input/callback/Enter/style/reset、前綴刷新及字型觀察。載入錯頁原生error提示可辨識；artifact已還原。actual360 viewport覆寫無效（仍706），窄browser仍pending，不把local320當證據。CLI目前optin，Pages mandatory React build/gate仍下一slice，Flutter244項／全量網站、GUI與風格audit維持原goal；未push。
