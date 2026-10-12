@@ -127,3 +127,31 @@ Kallopis repository 根目錄維護共通規範；Flutter package 位於 `flutte
 LayoutRow／LayoutColumn／LayoutSpacer／KlpLayoutPane／KlpAppFrame 接受 KlpLayoutBounds(minimum、maximum、preferred)，Column 可選 start／end alignment。正 flex 未指定 preferred 時保留 Expanded 語意；零 flex 量測自然尺寸。主軸無上限時依有限自然尺寸回退，內容需可量測出有限值。
 
 KlpLayoutDivider 是沒有手勢的顯式 semantic gutter，前後不另加自動 gap；LayoutResizeHandle 仍保留既有 onResize 全域位置回呼。產品自行決定尺寸變更與保存。Root inset 每軸最多可用尺寸的一半；間距不足由 solver 限縮，內容每槽裁切，布局不改 caller 順序或內容身分。
+
+## Dock 布局保存與載入
+
+從 foundation 使用 KlpDockLayoutCodec.encode(layout) 取得版本化 JSON。產品擁有保存位置及何時採用布局，codec 不寫檔案、storage 或產品內容。載入成功的 layout／groups／panelIds 及診斷列表均不可變。
+
+```dart
+final saved = KlpDockLayoutCodec.encode(layout);
+try {
+	final restored = KlpDockLayoutCodec.restore(
+		saved,
+		panels: [
+			for (final panel in panels)
+				KlpDockPanelPolicy(
+					id: panel.id,
+					allowSide: panel.allowSide,
+					allowBottom: panel.allowBottom,
+				),
+		],
+	);
+	// 產品自行顯示 missingPanelIds／availablePanelIds 後決定採用。
+	setState(() => layout = restored.layout);
+} on FormatException catch (error) {
+	// 產品呈現 error；原本 layout 保持不變。
+	showLoadError(error.message);
+}
+```
+
+缺少面板按保存順序移除並回報；空群組刪除，選取項目消失則選剩下的第一個；未放置面板依清冊順序回報，庫不自動新增布局。版本、未知欄位、重複 id、非法 active／數值及停靠能力衝突會整份拒絕。完整 wire 與還原規則見 [Dock 保存契約](../architecture/workbench-dock-contract.md)。reset 由產品提供預設 layout。現有受控 KlpDockLayout API 保留；本 codec 不代表 Dock 其餘 UI 補齊已完成。

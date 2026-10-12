@@ -14591,6 +14591,45 @@
 					]
 				},
 				{
+					"id": "package:kallopis/src/features/workspace/shell/docking/klp_dock_layout_codec.dart#KlpDockLayoutCodec",
+					"name": "KlpDockLayoutCodec",
+					"slug": "klp-dock-layout-codec",
+					"kind": "finalClass",
+					"module": "features.workspace",
+					"sourceUri": "package:kallopis/src/features/workspace/shell/docking/klp_dock_layout_codec.dart",
+					"primarySurface": "foundation",
+					"surfaces": [
+						"foundation"
+					],
+					"signature": "abstract final class KlpDockLayoutCodec",
+					"documentation": "版本化資料邊界，不執行 storage 或替換受控布局。",
+					"typeRelationships": {
+						"extends": "Object",
+						"mixins": [],
+						"implements": []
+					},
+					"members": [
+						{
+							"name": "KlpDockLayoutCodec",
+							"kind": "constructor",
+							"signature": "KlpDockLayoutCodec()",
+							"documentation": ""
+						},
+						{
+							"name": "encode",
+							"kind": "method",
+							"signature": "String encode(KlpDockLayoutData layout)",
+							"documentation": "驗證完整布局後輸出 schemaVersion 1，不依清冊刪除資料。"
+						},
+						{
+							"name": "restore",
+							"kind": "method",
+							"signature": "KlpDockRestoreResult restore(String source, {required List<KlpDockPanelPolicy> panels})",
+							"documentation": "先完整驗證再比對清冊；任何非法資料以 FormatException 拒絕。"
+						}
+					]
+				},
+				{
 					"id": "package:kallopis/src/features/workspace/shell/docking/klp_dock_layout_models.dart#KlpDockLayoutData",
 					"name": "KlpDockLayoutData",
 					"slug": "klp-dock-layout-data",
@@ -14713,6 +14752,90 @@
 							"kind": "field",
 							"signature": "bool isDraggable",
 							"documentation": ""
+						}
+					]
+				},
+				{
+					"id": "package:kallopis/src/features/workspace/shell/docking/klp_dock_layout_codec.dart#KlpDockPanelPolicy",
+					"name": "KlpDockPanelPolicy",
+					"slug": "klp-dock-panel-policy",
+					"kind": "class",
+					"module": "features.workspace",
+					"sourceUri": "package:kallopis/src/features/workspace/shell/docking/klp_dock_layout_codec.dart",
+					"primarySurface": "foundation",
+					"surfaces": [
+						"foundation"
+					],
+					"signature": "class KlpDockPanelPolicy",
+					"documentation": "產品面板清冊的停靠能力投影，不保存內容與呈現狀態。",
+					"typeRelationships": {
+						"extends": "Object",
+						"mixins": [],
+						"implements": []
+					},
+					"members": [
+						{
+							"name": "KlpDockPanelPolicy",
+							"kind": "constructor",
+							"signature": "KlpDockPanelPolicy({\n  required String id,\n  bool allowSide = true,\n  bool allowBottom = true,\n})",
+							"documentation": ""
+						},
+						{
+							"name": "allowBottom",
+							"kind": "field",
+							"signature": "bool allowBottom",
+							"documentation": "下方區域的產品能力。"
+						},
+						{
+							"name": "allowSide",
+							"kind": "field",
+							"signature": "bool allowSide",
+							"documentation": "左右區域共用的產品能力。"
+						},
+						{
+							"name": "id",
+							"kind": "field",
+							"signature": "String id",
+							"documentation": "原始 identity 不 trim，避免改寫產品保存資料。"
+						}
+					]
+				},
+				{
+					"id": "package:kallopis/src/features/workspace/shell/docking/klp_dock_layout_codec.dart#KlpDockRestoreResult",
+					"name": "KlpDockRestoreResult",
+					"slug": "klp-dock-restore-result",
+					"kind": "class",
+					"module": "features.workspace",
+					"sourceUri": "package:kallopis/src/features/workspace/shell/docking/klp_dock_layout_codec.dart",
+					"primarySurface": "foundation",
+					"surfaces": [
+						"foundation"
+					],
+					"signature": "class KlpDockRestoreResult",
+					"documentation": "載入成功後的布局與清冊差異，由產品決定是否採用。",
+					"typeRelationships": {
+						"extends": "Object",
+						"mixins": [],
+						"implements": []
+					},
+					"members": [
+						{
+							"name": "availablePanelIds",
+							"kind": "field",
+							"signature": "List<String> availablePanelIds",
+							"documentation": "按清冊順序列出可由產品開啟的未放置面板。"
+						},
+						{
+							"name": "layout",
+							"kind": "field",
+							"signature": "KlpDockLayoutData layout",
+							"documentation": "深層不可變快照，不持有產品原始列表。"
+						},
+						{
+							"name": "missingPanelIds",
+							"kind": "field",
+							"signature": "List<String> missingPanelIds",
+							"documentation": "按保存區域、群組與分頁順序列出不存在的面板。"
 						}
 					]
 				},

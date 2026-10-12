@@ -55,3 +55,5 @@ FLUTTER-LINEAR-1／REACT-LINEAR-1 已完成 [有限幾何算法](workbench-linea
 雙框架 Row／Column／Pane 已接入有限算法。Flutter 保留現有公開 API；React 提供直接元件及自然尺寸模式。Dock 保持獨立 Stage／Left／Right／Bottom 模型。一般布局完成不代表全部 UI 或風格保護已完成。
 
 FLUTTER-LAYOUT-2 已完成：18 Widget checks／4 既有 checks、analyze／scope 及 Catalog 渲染證據。REACT-LAYOUT-2／EXAMPLE-1 已完成：9 checks含hydration、library／consumer TypeScript／example build／scope；native browser 確認尺寸守恆、minimum 壓縮、end 留白、極大 gap／root inset、自然量測、輸入保留及375px無水平溢出。下一步 PLAN Dock 契約與雙框架直接接入，沿用既有保存／受控狀態責任。
+
+FLUTTER-DOCK-STATE-1完成69771496：依 [WB-DOCK-STATE-r1](workbench-dock-contract.md)新增公開版本化codec／policy／restore診斷；7獨立checks、analyze／scope通過。先完整驗證再對清冊，失敗不改state；深層不可變結果。下一步React同一wire接入，再完成兩框架Dock UI／有限style尺寸保護。此保存slice不代表WB-04～08全部完成。
