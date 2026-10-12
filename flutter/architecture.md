@@ -236,3 +236,26 @@ flowchart TD
 本slice只交付可解析dev tool版本；新analyzer的公開API適配由根reference_site的DOCS-ANALYZER-API-1後續exact1source擁有，不在Flutterworker修改工具。acceptance為pubget及lock delta、實際analyzer13/meta1.18.0/_fe_analyzer_shared版本、scope2/diff。沒有新產品行為或鏡像tests，後續沿同protected4CLI tests保護namespace/diagnostics/full extraction。cold1k～3k/10～20分鐘，參照dependency接入；單M1 resolvedruntime/scope2（3k20），4k30或新增非必要runtime dependency回PLAN。
 
 BUILD c84bd254 exact2，pubget只變analyzer10.1→13.0與_fe_analyzer_shared95→100，meta保持1.18.0；scope2/diff Green。根extractor原API無須另改，新runtime同protected4checks與全量561／273renderable成功；公開元件及SDK／CI不變。
+
+## FLUTTER-MASONRY-EMPTY-1（READY）
+
+修訂 FLUTTER-MASONRY-EMPTY-r1；公開 KlpMasonryGrid.children 接受空集合，空集合必須呈現空布局、不得拋例外；nonempty→empty→nonempty 必須恢復原child且不改資料次序、語意間距或既有minimumColumnWidth解析。此為已接受公開consumer資料狀態，不改constructor或其他布局策略。native元件展示的空集合暴露當前clamp(1,0)例外。
+
+BUILD唯一可寫 lib/src/foundation/layout/klp_masonry_grid.dart；公開barrel/其他library/theme/example/config/tests禁止寫。只修空集合邊界，保留非空欄分配算法；既有space縮排檔修改時轉為tab2，保持有效Dart與中文欄位理由。獨立Test Author唯一可寫 test/masonry_empty_test.dart，只讀本契約、公開foundation/theme入口及最接近layout tests，保護公開空集合與非空轉移，不讀實作原因或改產品來源。測試先Red、記hash，實作worker不得修改斷言。
+
+M1 public regression Red；M2 最小修正、同check Green/publicanalyze/scope1；M3 prefix web與nativeMasonry空/恢复，回原example驗收。估2k～5k/15～35分鐘，M1累計2k15、M2累計4k25、M3累計5k35；8k60或需要改其他layout回PLAN。感官human-pending，單taskusage未量測null。
+
+| Source / class / function | 責任 |
+| --- | --- |
+| KlpMasonryGrid fields/constructor/build | child集合、nullable最小欄寬及空集合布局边界 |
+| LayoutBuilder builder | 非空集合的現有欄數解析與child分配，不建立第二算法 |
+| masonry_empty_test public widget checks | 獨立保護空集合與恢復 |
+
+```mermaid
+flowchart TD
+	Consumer[公開children資料] --> Grid[KlpMasonryGrid.build]
+	Grid --> Empty{children為空}
+	Empty -->|是| EmptyLayout[合法空布局]
+	Empty -->|否| Layout[既有LayoutBuilder及語意spacing]
+	Layout --> Columns[非空child分配]
+```
