@@ -4,7 +4,7 @@
 
 ## 下一個可執行步驟
 
-1. 雙框架command core、registered toolbar/menu、palette及公開CommandsDemo完成。Flutter modal修正35614d5b完成且nativebrowser同座標outside通過；有限入口Flutter BUILD1bdd6321／React BUILDaff1eaf4亦完成，共29／23checks Green。下一步anchor／context menu PLAN並採用同registered menu，保留既有CommandMenu／WorkspaceCommand caller與core；不得複製第二份rows或handler。
+1. 雙框架command core、registered toolbar/menu、palette及公開CommandsDemo完成。Flutter modal修正35614d5b完成且nativebrowser同座標outside通過；有限入口Flutter BUILD1bdd6321／React BUILDaff1eaf4亦完成，共29／23checks Green。WB-COMMAND-POPUP-r1與兩框架PLAN da945403 READY，fresh flutter_command_popup_test_author／react_command_popup_test_author正在寫唯一新公開popuptests；不stage/commit，父層整合後發cleanbase BUILD packets。popup採用同registered menu，保留既有CommandMenu／WorkspaceCommand caller與core；不得複製第二份rows或handler。
 2. 雙框架快捷鍵/chord/scope/conflict/remap/recording契約與接入。不可用core冒充整個命令stage完成。
 3. 網站每個公開可呈現元件專屬互動specimen、registry/bundle/coverage；3GUI×2框架；typedrecipes／完整風格中立與參數／default權威切換。
 4. 補browser hoverpreview/cancel矩陣、Flutter continuousresize與React endcommit差異契約審核；保留所有既有CI/發布閘門，精確commit/push。感官接受human-pending。
@@ -59,7 +59,7 @@ owner b319af8c澄清removeListener只解除native addListener owner；獨立auth
 | Dock codec／operations | Flutter69771496／243d9f98；Reactc6af55f6／e5d8b0a6；各7codec、10operationschecks | 已完成；consumer只投影id/capabilities清冊，不傳content/callback |
 | Flutter Panel／Dock | Panel5e18ccd6／8d4fc334九checks；geometry296e7cab十三；preview3064c359七；UI4ff1c999十三，Dock合計33checks | browser preview/cancel全矩陣 |
 | React Dock | geometry08ea39fc九；native1 7690b23b九；native2 681c0f6c／583818e8／6ee63c5e九，合計18nativechecks | native1部分act harness warnings保留，browser矩陣同上 |
-| 參考網站 | Flutter547canonical API／17modules／三surface extract/generate/verify；30文件、15網站checks | API清冊不等於互動頁；全部展示未完成 |
+| 參考網站 | Flutter547canonical API／17modules／三surface extract/generate/verify；32文件、15網站checks | API清冊不等於互動頁；全部展示未完成 |
 
 共同Dock契約docs/architecture/workbench-dock-contract.md與linear契約workbench-linear-contract.md均READY。KLP0024要求一般Row/Column/Pane與Dock分開，保留direct native元件；不得重建node/adapter/declarative runtime。公開Flutter theme/foundation為stable，consumer不得引用src。
 

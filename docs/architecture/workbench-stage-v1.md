@@ -14,7 +14,7 @@
 | 6 | docs API／元件页嵌入及場景頁 | `tool/reference_site/` | 公開元件 → specimen → bundle → route 全鏈 coverage；前綴及資產檢查 |
 | 7 | 權威切換、CI、文件與提交 push | repository 整合 owner | SP-01～08、IDOC-01～08、WB-01～21 evidence；繼承失敗另列、精確提交與 push 記錄 |
 
-已完成stylepack parser／catalog（269原料、350語意×4、118原文recipe）及雙框架注入；finite linear／Dock／命令核心與入口／palette和公開consumer亦交付。recipe全參數audit／default權威切換、popup／shortcut、逐元件網站互動及3GUI×2仍未完成。當前reference547API／31Markdown；詳細可觀察證據與下一步只讀[交接](../workbench-handoff.md)。
+已完成stylepack parser／catalog（269原料、350語意×4、118原文recipe）及雙框架注入；finite linear／Dock／命令核心與入口／palette和公開consumer亦交付。recipe全參數audit／default權威切換、popup／shortcut、逐元件網站互動及3GUI×2仍未完成。當前reference547API／32Markdown；詳細可觀察證據與下一步只讀[交接](../workbench-handoff.md)。
 
 ## 合作邊界
 
@@ -55,9 +55,9 @@ GitHub push 已授權，無需重問；仍需先確認範圍及實際檢查。�
 | style pack | common parser／catalog、350 semantics×4、Flutter／React theme接入 | typed recipes／全部參數與元件audit／default值權威切換 |
 | finite linear | 雙框架pure算法與原生Row／Column／Pane、公開consumer | 網站逐元件specimen整合 |
 | Dock | 雙框架codec／atomic operations／有限geometry／原生UI／公開example | browser hoverpreview／cancel矩陣、resize callback平台差異audit |
-| 命令 | 雙框架generic registry／registered toolbar／menu／palette；公開consumer；有限入口Flutter29／React23checks Green | anchor／context menu共通及兩框架PLAN；有限入口的極端native完整矩陣另pending |
+| 命令 | 雙框架generic registry／registered toolbar／menu／palette；公開consumer；有限入口Flutter29／React23checks Green | WB-COMMAND-POPUP-r1及兩框架PLAN READY、fresh公開tests；有限入口的極端native完整矩陣另pending |
 | 快捷鍵 | 已接受完整scope | chord／scope／conflict／remap／recording共通契約及兩框架接入 |
-| 網站 | 31Markdown／547 canonical API／17modules／三surfaces；extract／generate／verify及15checks | 每個公開可呈現元件專屬互動、bundle／registry／coverage；3GUI×2框架 |
+| 網站 | 32Markdown／547 canonical API／17modules／三surfaces；extract／generate／verify及15checks | 每個公開可呈現元件專屬互動、bundle／registry／coverage；3GUI×2框架 |
 | GitHub | 隔離精確commits，guarded同步main並保留index | 全部目標完成、保留發布閘門後精確push；尚未push |
 
-公開清冊或單一總覽iframe不能當作全部互動展示完成；protected deterministic code、nativebrowser觀察與人類感官接受分別記錄。ENTRY-GEOMETRY前置已完成，現在PLAN anchor／context menu；不重做已完成style／linear／Dock／command foundations。
+公開清冊或單一總覽iframe不能當作全部互動展示完成；protected deterministic code、nativebrowser觀察與人類感官接受分別記錄。ENTRY-GEOMETRY前置已完成，anchor／context menu PLAN READY，接續fresh tests後library BUILD；不重做已完成style／linear／Dock／command foundations。
