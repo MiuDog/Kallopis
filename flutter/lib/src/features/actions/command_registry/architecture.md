@@ -12,7 +12,7 @@ FLUTTER-COMMAND-CORE-r1 READY。依[WB-COMMAND-r1](../../../../../../docs/archit
 - `KlpCommandExecutionStatus` enum names：executed/missing/hidden/disabled/busy/disposed/error。`KlpCommandErrorPhase` enum names：condition/handler。`KlpCommandExecutionResult`唯讀String commandId/status/Object? value/Object? error/KlpCommandErrorPhase? phase；executed才有value，error才有error及phase，不作JSON。
 - `KlpCommandRegistry<C>() extends ChangeNotifier`：`VoidCallback register(KlpCommandDefinition<C> definition)`、`KlpCommandState? getState(String id, C context)`、`List<KlpCommandState> list(C context)`（unmodifiable、UTF16 ID排序）、`Future<KlpCommandExecutionResult> execute(String id, C context)`、`VoidCallback subscribe(VoidCallback listener)`、`void refresh()`、`int version`初始0、`bool isDisposed`及`void dispose()`。
 - 沿共同契約gates／開始及完成各一次通知／tokenbusy／已開始Promise不取消／stale結果不通知新owner。開始通知中remove/replace回missing、dispose回disposed，原handler不能啟動。observer沿原生FlutterError，不轉成business result。
-- 原生addListener/removeListener／hasListeners仍可用；subscribe每個owner獨立，即使callback相同。dispose立即closed、清commands、最後一次通知，再清listeners，重複dispose無效果。通知中dispose同樣合法。dispose後register/subscribe/addListener/refresh明確StateError，removeListener/disposer無效果，query null/list空/execute disposed。
+- 原生addListener/removeListener／hasListeners仍可用；subscribe每個owner獨立，即使callback相同。removeListener只解除addListener的原生owner，不解除subscribe owner；subscribe只能由自己的disposer或registry dispose解除，兩種註冊順序皆同。dispose立即closed、清commands、最後一次通知，再清listeners，重複dispose無效果。通知中dispose同樣合法。dispose後register/subscribe/addListener/refresh明確StateError，removeListener/disposer無效果，query null/list空/execute disposed。
 
 ## 責任與生命週期
 
@@ -53,3 +53,5 @@ flowchart TD
 FLUTTER-COMMAND-CORE-1 BUILD只`flutter/lib/src/features/actions/command_registry/klp_command_registry.dart`及`flutter/lib/kallopis_foundation.dart`。architecture/tests/config/theme/UI/其他module唯讀。fresh獨立TestAuthor只寫`flutter/test/command_registry_test.dart`，publicfoundation及共同契約，不讀React實作；typed publictest本身驗證generic API，必要analyze/publicbuild。風險是跨語言結果、非同步stale與notification中dispose，不能由BUILD作者改斷言。
 
 M1metadata/conditions/sorted immutable snapshots，M2pending/stale/subscription/原生listener-dispose與公開consumer。cold-start6k–12k tokens／35–70分鐘，參照REACT-COMMAND-CORE-1及FLUTTER-DOCK-OPS-1；18k/100分鐘或需共同契約變更回PLAN。接受證據為保護hash不變、獨立局部checks Green、public analyze及2path scope，無感官或全stage完成宣稱。
+
+首版b2cdee54生命週期基線21checks/analyze/scope通過；observer混合owner的解除順序需補明確保護，當前slice尚未閉合。FLUTTER-COMMAND-OBSERVER-1只可改本來源，不改foundation或其他public型別；fresh-context既有TestAuthor只補自己test，public情境為subscribe先註冊、再addListener同callback、removeListener只少原生owner，重複remove不觸碰subscribe。保護後重新發行cleanbase Task Packet。估算1k–3k tokens／5–15分鐘，參照本core；M1獨立行為Red、M2同hash Green/analyze/1pathscope，超過5k/30分鐘回PLAN。
