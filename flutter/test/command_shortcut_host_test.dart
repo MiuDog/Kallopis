@@ -162,15 +162,24 @@ void main() {
 			synthesized: true,
 		));
 		expect(host.handling.length, count);
+		// ignored arrow 仍可觸發 MaterialApp 的原生方向巡覽；先完成巡覽再聚焦本次事件的產品 child。
+		await tester.pump();
+		await _focus(tester, host.first);
+		expect(host.first.hasPrimaryFocus, isTrue);
 		// 測試框架同時送 KeyData 與 raw message，讓 logical／physical 差異進入真正 Focus 管線。
 		await tester.sendKeyDownEvent(LogicalKeyboardKey.arrowDown, physicalKey: PhysicalKeyboardKey.keyA);
 		await tester.sendKeyUpEvent(LogicalKeyboardKey.arrowDown, physicalKey: PhysicalKeyboardKey.keyA);
 		await tester.pump();
 		expect(host.handling.length, count + 1, reason: 'keyup 不得再次處理。');
 		expect(host.results.last.commandId, 'arrow');
+		await _focus(tester, host.first);
+		expect(host.first.hasPrimaryFocus, isTrue);
+		final beforeRepeat = host.handling.length;
 		await tester.sendKeyDownEvent(LogicalKeyboardKey.keyB);
 		await tester.pump();
+		expect(host.handling.length, beforeRepeat + 1, reason: 'normal keydown 必須實際到達宿主。');
 		await tester.sendKeyRepeatEvent(LogicalKeyboardKey.keyB);
+		expect(host.handling.length, beforeRepeat + 2, reason: 'repeat 必須實際到達宿主，不得以先前事件判斷。');
 		expect(host.handling.last.handled, isFalse);
 		expect(host.results.where((value) => value.commandId == 'single').length, 1);
 		await tester.sendKeyUpEvent(LogicalKeyboardKey.keyB);
