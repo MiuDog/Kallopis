@@ -34,3 +34,5 @@ flowchart TD
 	Execute --> Registry
 	Registry --> Result[current same host callback]
 ```
+
+原生焦點/scroll依[Flutter Focus](https://docs.flutter.dev/ui/interactivity/focus)及[SingleChildScrollView](https://api.flutter.dev/flutter/widgets/SingleChildScrollView-class.html)。row的hover/focus/checked背景由同context.klp.selectionWash解析；Pressable只提供pointer，hoverHighlight=false/selected=false，避免既有selectedWash混入不同色。這是新row內部呈現責任，舊Pressable不改。
