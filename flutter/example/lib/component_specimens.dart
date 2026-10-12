@@ -9,10 +9,11 @@ import 'feedback_specimens.dart';
 import 'content_collection_specimens.dart';
 import 'progress_collection_specimens.dart';
 import 'data_collection_specimens.dart';
+import 'viewer_collection_specimens.dart';
 import 'catalog/registered_commands_page.dart';
 
 /* 只有真實target fixture可以進此清單；不是全量覆蓋宣告。 */
-const flutterSpecimenNames = <String>['KlpBadge', 'KlpButton', 'KlpIconButton', 'KlpSurface', 'KlpText', 'KlpTextField', ...linearSpecimenNames, ...explorerSpecimenNames, ...frameSpecimenNames, ...commandSpecimenNames, ...spatialSpecimenNames, ...formControlSpecimenNames, ...feedbackSpecimenNames, ...contentCollectionSpecimenNames, ...progressCollectionSpecimenNames, ...dataCollectionSpecimenNames];
+const flutterSpecimenNames = <String>['KlpBadge', 'KlpButton', 'KlpIconButton', 'KlpSurface', 'KlpText', 'KlpTextField', ...linearSpecimenNames, ...explorerSpecimenNames, ...frameSpecimenNames, ...commandSpecimenNames, ...spatialSpecimenNames, ...formControlSpecimenNames, ...feedbackSpecimenNames, ...contentCollectionSpecimenNames, ...progressCollectionSpecimenNames, ...dataCollectionSpecimenNames, ...viewerCollectionSpecimenNames];
 
 class ComponentSpecimenApp extends StatefulWidget {
 	const ComponentSpecimenApp({super.key, required this.name});
@@ -75,6 +76,7 @@ class _ComponentSpecimenAppState extends State<ComponentSpecimenApp> {
 
 	Widget _fixture() {
 		final key = ValueKey(_epoch);
+		if (viewerCollectionSpecimenNames.contains(widget.name)) return ViewerCollectionComponentSpecimen(key: key, name: widget.name);
 		if (dataCollectionSpecimenNames.contains(widget.name)) return DataCollectionComponentSpecimen(key: key, name: widget.name);
 		if (progressCollectionSpecimenNames.contains(widget.name)) return ProgressCollectionComponentSpecimen(key: key, name: widget.name);
 		if (contentCollectionSpecimenNames.contains(widget.name)) return ContentCollectionComponentSpecimen(key: key, name: widget.name);
