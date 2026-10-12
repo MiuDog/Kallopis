@@ -4,7 +4,7 @@
 
 ## 幾何與錯誤
 
-输入 extent、gutter 為有限非負 logical length，gutterCount 為非負整數。每個 item 有 minimum（預設 0）、maximum（可省略）、preferred（預設 0）、flex（預設 1）；各值有限非負，maximum 若提供不得小於 minimum。flex 可以是非整數；maximum 省略表示沒有額外上限，不接受 Infinity 作為輸入。非法資料直接拒絕，不修改 caller。
+輸入 extent、gutter 為有限非負 logical length，gutterCount 為非負整數。每個 item 有 minimum（預設 0）、maximum（可省略）、preferred（預設 0）、flex（預設 1）；各值有限非負，maximum 若提供不得小於 minimum。flex 可以是非整數；maximum 省略表示沒有額外上限，不接受 Infinity 作為輸入。非法資料直接拒絕，不修改 caller。
 
 回傳 extents（與 items 次序一致）、實際 gutter、unused 與 compressed。所有輸出有限且非負；extents 加 gutter × gutterCount 加 unused 等於 extent（浮點誤差容許 1e-6 × max(1, extent)）。空 items 合法，仍保留指定 gutter 空間與 unused。輸入及輸出互相隔離，輸出不可變。
 
@@ -38,3 +38,5 @@ flowchart LR
 	Flex --> Result[immutable extents / gutter / unused]
 	Result --> Widgets[future Widget / DOM adapters]
 ```
+
+完成證據：React dcc15e4f、Flutter a8124a62；各 21 項受保護公開 checks 通過，library build／native analyze、scope gate 通過。實際 Widget／DOM 接入、完整風格下布局保護及互動展示仍待後續。

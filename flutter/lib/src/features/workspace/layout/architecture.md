@@ -2,7 +2,7 @@
 
 狀態：IMPLEMENTED
 
-## FLUTTER-LINEAR-1（READY）
+## FLUTTER-LINEAR-1（完成）
 
 當前增量階段為 [WB-LINEAR-r1](../../../../../../docs/architecture/workbench-linear-contract.md) 的純尺寸算法接入前置，保留全部既有 Widget／手勢／public API。`klp_linear_layout.dart` 擁有 `KlpLinearItem`、`KlpLinearLayoutResult` 及 `resolveKlpLinearLayout`，foundation 匯出；不依賴 UI、Dock 或 style pack。完整數值、immutable 與退化契約由共通文件擁有。
 
@@ -130,3 +130,5 @@ Milestones：
 
 ALR-S3 已完成：`KlpAppLayout.floatingAction` 提供右下預設、拖曳位置保留、8px 邊界、
 header 避讓與 viewport clamp；公開入口 analyze、既有 layout tests 與 scope check 通過。
+
+FLUTTER-LINEAR-1 實作 a8124a62：21 項公開 checks、analyze、scope gate 通過。resolveKlpLinearLayout 驗證、分配並回不可變 result；_proportional 擁有巨大數值正規化，_sum 彙總尺寸。沒有接入 Widget，不能宣稱一般布局全部完成。

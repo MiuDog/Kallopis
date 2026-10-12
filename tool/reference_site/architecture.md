@@ -1,5 +1,9 @@
 # Kallopis Reference Site
 
+## DOCS-LINEAR-1（READY）
+
+修訂 `DOCS-LINEAR-r1`。將已實作雙框架尺寸算法的共通來源 `docs/architecture/workbench-linear-contract.md` 接入 `docs/guides/workbench-linear-contract.html`，Guide 分類。BUILD write_paths 只有 `tool/reference_site/documents.mjs`；既有 renderer、API identity、manifest、architecture、tests 與來源正文唯讀。沿用現有 15 項 registry／內容／link checks 及 generate／verify，不新增測試；本次 docs 路由不改展示功能。M1：來源、頁面、搜尋及引用可驗證。cold-start 1k–2k tokens／5–10 分鐘，參照 DOCS-STAGE-1；超過 3k tokens 或需要修改 renderer 回 PLAN。
+
 ## 本階段規範導覽切片
 
 修訂 `DOCS-STAGE-r1`，DOCS-STAGE-1 完成。只將已接受的 Workbench、Style Pack、互動 docs、研究與整合計畫 Markdown 加入現有 documents registry；write_paths 僅 `tool/reference_site/documents.mjs`。資料仍從 Markdown 生成，公開 API identity／現有頁面／測試／style 不改。15 項既有網站 tests、519 canonical API 頁／25 文件 generate／verify 通過；本切片不宣稱已嵌入互動展示。
