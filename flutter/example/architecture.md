@@ -1,6 +1,6 @@
 # Flutter 公開 consumer 範例
 
-目前目標：IDOC-COMPONENT-REGISTRY-r1 的公開元件專屬路由。庫擁有樣式及互動，example擁有展示資料、控制、回呼觀察與重設。不得引用package:kallopis/src；舊Catalog的coveredComponents／空build不算互動coverage。目前有75個真實fixture；全量273個可渲染元件仍需逐項補足，不宣稱全部完成。
+目前目標：IDOC-COMPONENT-REGISTRY-r1 的公開元件專屬路由。庫擁有樣式及互動，example擁有展示資料、控制、回呼觀察與重設。不得引用package:kallopis/src；舊Catalog的coveredComponents／空build不算互動coverage。目前有90個真實fixture；全量273個可渲染元件仍需逐項補足，不宣稱全部完成。
 
 ## FLUTTER-COMPONENT-SPECIMENS-1（COMPLETE）
 
@@ -328,7 +328,7 @@ TextArea多行「表單草稿保持／第二行」在四mode、spacious/local320
 
 _State._controls/_target/_usage投影公開參數與正確constructor；_options/_phases/_selectionOptions僅consumer資料；onText/bool/index/choice/number/quantity/multi/triState及tag callbacks回寫State並_record；_onLabel只控制文字，toggle/cycle只自己的props，_toggleRange/_toggleTagLimit維持demo合法資料不冒充target事件。build擁有有限scroll舞台、參數編輯與兩類回呼狀態，dispose清controller；跨mode State由外host保留，epoch才重建。新增class責任與依賴仍上述module圖。
 
-## FLUTTER-FEEDBACK-SPECIMENS-1（READY）
+## FLUTTER-FEEDBACK-SPECIMENS-1（IMPLEMENTED；actual窄 browser pending）
 
 修訂FLUTTER-FEEDBACK-SPECIMENS-r1，exact lib/component_specimens.dart、新lib/feedback_specimens.dart，前者只import/registry/fixture分流，既有75及host環境不改。feedbackSpecimenNames包含features.feedback全部15個renderable：KlpEmptyState、KlpErrorState、KlpFocusBoundary、KlpInlineNotice、KlpLiveRegion、KlpLoadingState、KlpPermissionState、KlpProgressOverlay、KlpRegionPlaceholder、KlpSkeletonLine、KlpStatusIndicator、KlpToast、KlpToastStack、KlpWorkflowProgress、KlpWorkflowStateSurface。公開FeedbackComponentSpecimen(name)，Flutter/public foundation only；不讀private或新增theme。
 
@@ -357,3 +357,12 @@ flowchart TD
 	Callback --> Result[consumer callback紀錄 / toast清單]
 	Host --> Reset[epoch才重建]
 ```
+
+
+BUILD exact2source；registry精確對features.feedback全部15 renderable，沒有duplicate或placeholder target。public analyze最終No issues，同sourceprefixrelease44.1秒、scope2/diff通過。沒有改library／tests／config／theme／網站；新能力是consumer呈現／回呼投影，未新增鏡像tests。LiveRegion只提供自己的message控制；FocusBoundary的內容編輯明示child placeholder，避免無效root title參數。Skeleton只明示宿主width。
+
+Native5203 prefix逐一15route的props與文字修改均操作。ErrorState retry1；Empty/Permission/Inline提供的action Widget各1；Placeholder公開action1；Toast公開action＋close2且consumer移除/恢復；ToastStack三child，child action＋close2後清單移除指定1；WorkflowStateSurface action1，八state empty/collecting/reviewing/ready/stale/applying/applied/failed都呈現；WorkflowProgress data active/complete/數量/label控制有效。沒有把child回呼冒充root不存在的callback。
+
+FocusBoundary child原生文字2、Tab到child動作、Enter動作1；四mode/spacious/local320保持字串及回呼，reset回初始/0並保留環境。LiveRegion公開message route的child動作1更新實際aria-live polite內容，fromDescendants／null props另操作；播報感受human-pending。ProgressOverlay bounded200 child動作1/input2，visible後標題覆蓋可辨識，hide仍草稿及結果保持；未宣稱完整modal／pointer阻擋驗收。現場error/warn空。main build/flutter-feedback-specimens.png、flutter-feedback-native.json；actual360 browser未取得，local320不替代，人類感官pending。Flutterfixture90／273，剩餘183及網站全量gate仍原goal，未提前宣稱全交付。
+
+_State._controls/_target/_usage持有自己的props與公開constructor；_toast/_stages只組裝consumer資料，_child/_actionWidget提供真正公開child；_action/_close/_restore管理原回呼和consumer toast清單；_onEdit只control文字、_onInput只child文字；cycle/toggles為自身參數。build finite舞台、controls/edit/status，dispose清三controller；host theme/epoch依原owner，不另建立theme、adapter或業務runtime。
