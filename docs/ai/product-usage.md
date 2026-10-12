@@ -192,3 +192,24 @@ KlpDockLayout 的父容器需提供有限寬高；保存 extent 是偏好，實�
 現有example使用動態IconData，release web需 `flutter build web --release --no-tree-shake-icons` 保留完整套件圖示字型；默认tree-shake-icons會因非const圖示失败，不能靜默換圖示或字型資產。
 
 Dock 拖曳滑過隱藏非空區時只暫時展開，不發 `onLayoutChanged`；取消／未命中放下會收回。成功放入該區才一次通知且保留原保存寬高。拖曳中提供不同 layout instance 會清預覽，以新產品布局為準；同 layout 的主題／尺寸重建保留預覽。
+
+### 停靠面板狀態與關閉批准
+
+`KlpDockPanel` 可選 `isPinned`、`isDirty`（皆預設 false）、`onCloseRequested` 與 `closeLabel`。釘選與修改提示由產品投影，只影響呈現；不改分頁排序、停靠能力、保存 JSON 或正文資料。未提供批准 callback 就維持既有外觀，不顯示關閉入口。
+
+```dart
+KlpDockPanel(
+	id: 'inspector',
+	header: const KlpText('Inspector'),
+	content: inspectorContent,
+	isDirty: documentHasChanges,
+	isPinned: inspectorPinned,
+	onCloseRequested: () async {
+		return await productApproveClose();
+	},
+)
+```
+
+callback 可直接回傳 bool 或 Future<bool>；false 不提交，true 才移出布局並一次發出 `onLayoutChanged`。庫不移除 registry、不刪資料；產品可用 `KlpDockAction.open` 再開啟。等待時只禁用該面板關閉入口；完成從最新布局關閉，若面板曾被移除／重開、callback 替換或 Dock dispose，舊結果忽略。錯誤透過標準 FlutterError 通道，保存資料保持且 pending 解除。消費端保持穩定 callback instance，避免每次 rebuild 產生新的閉包而使等待中的批准過期。
+
+分頁、拖放、分割與尺寸操作由已公開 pure actions 統一規則；no-op 不通知。成功批次只一次通知，產品採用回傳的 immutable layout。tab 前後半部分別插入前後；新 split 的把手配額也計入總尺寸。原生展示例的 close／dirty／pinned 接線與完整 GUI 將在範例階段補齊，目前新流程已由公開 Widget gesture checks 驗證。

@@ -82,3 +82,5 @@ pinned／dirty僅為產品metadata：預設false，顯示bookmark／modified提�
 關閉完成從最新caller layout套用；若panel曾離開布局／registry、callback已被替換或Dock已dispose，舊結果忽略，不能重建舊layout或關掉後來重開的panel。跨group移動但仍placed且同callback可從最新位置關閉；當前callback取得結果前的產品業務由产品自己管理。callback丟錯時保持layout，解除pending，Flutter透過標準FlutterError.reportError，React native error callback／宿主錯誤處理由其module固定；不吞錯假裝批准。labels讀既有l10n或產品可選closeLabel，外觀讀既有semantic與public IconButton/Icon/Text，不產生第二份style來源。
 
 驗收：UI成功移動及split結果等於pure action、finalindex／active／source fallback、no-op callback0、一次提交及caller immutable、零area create、pointer resize配額；可選metadata呈現／同舊caller、inactive/single close、denied／asyncapproved／error／pending不重入／最新layout／移除再開或registry callback替換／dispose安全。使用公開Widget／DOM與callbacks，不驗私有call次序或golden。保留PREVIEW-r1／GEOMETRY-r1的protectedchecks。
+
+UI-r1的tab命中以該tab前半部插入before、後半部插入after，對應提示線，接受同一active tab原位置為no-op。split有效gutter解析「新增兩槽」的配額，不取原單group的零gutter；沿既有linear resolver且不改geometry權威。Flutter UI-1已以公開nativegesture驗證上述規則。

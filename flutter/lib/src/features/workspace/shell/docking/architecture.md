@@ -122,7 +122,7 @@ flowchart TD
 
 PREVIEW-1 實作3064c359：_previewAreaSlots只擁有此次gesture；_presentationLayout以caller投影minimum/visible，_finishDrag清所有暫態；didUpdateWidget只在layout identity改變時清除。_finishPanelDrop取caller原area再設visible=true，避免minimum污染保存extent；未改publicAPI或pureoperations，原data part只另改tab縮排。TestAuthor f717c311，7checks baseline2pass/5behavioralRed→全部Green；連同受影響13geometry共20Green，publicDockanalyze No issues、2paths scopepass。protected SHA25661335C6016B221D213DED7971F2654B38FB5932B3A86BA83A8E06F2635985CB2不變；scope於3064c359閉合。nativebrowser前次release僅geometry證據，本次preview由公開Widget gesture驗證，不宣稱新browser或感官接受。下一步所有UI提交接入pureoperations及產品close批准/pinned/dirty。
 
-## 當前 slice FLUTTER-DOCK-UI-1（READY）
+## FLUTTER-DOCK-UI-1（完成）
 
 依WB-DOCK-UI-r1接入全部UI提交及optionalmetadata。公開KlpDockPanel新增const optional bool isPinned=false/isDirty=false、FutureOr<bool> Function()? onCloseRequested、String? closeLabel；dart:async僅用於型別。舊constructor不改必填欄／預設draggable規則。metadata只有產品投影，不寫codec或純policy。callback不接內容與dirty自動清除；closeLabel缺省用既有documentTabCloseLabel及panel id。
 
@@ -149,3 +149,9 @@ flowchart TD
 	Caller[controlled layout/registry] --> Current
 	Caller --> Intent
 ```
+
+UI-1 實作4ff1c999：_commitActions由當前registry投影policy／local immutable批次，最終保存值改變才通知一次；_finishStageAreaDrop/_finishPanelDrop只轉typeddestination/index，source removal/active fallback由pureOPS處理。_tabDropAfter以原生tab前後半區轉原始插入點，提示線與接受位置一致，自己active tab同位置為no-op；_emitAreaChange只把resize/visibility偏好差异轉actions。split新增gutter使用既有linear solver解析未來兩槽，而不是原單group的零gutter，確保400-8=392、兩偏好各196。
+
+_KlpDockCloseRequest擁有callback及實例token；_isPanelPlaced/_reconcileCloseRequests/_closeRequestIsCurrent擁有過期判斷，_requestClose擁有批准/error/finally生命週期；_panelLabel/_closeLabel/_closeButton只組合既有semantic及l10n。Paneloptional四欄const API保持caller相容，metadata不進wire/registrypolicy，不更動釘選排序或dirty正文。nonactive tab可close，single無header亦可close。
+
+獨立TestAuthor23fd02ad，13checks初始缺新欄為compileYellow（未取得behaviorRed）；首次實作編譯接線修正後12Green/1splitRed，根因使用當前單group零gutter，改用既有solver解析新pair有效gutter後同13Green。連同原preview7/geometry13共33Green（session86014 exit0）、publicDock/Panelanalyze No issues、5paths scopepass。protectedSHA2568A8E346FCAE1B59533B3A5C4D5733BAC61C37B4023E7C75F88CA29D1AEDE8991未變，無Greenfallback/測試弱化，scope於4ff1c999閉合。新UI尚未nativebrowser展示驗證，感官human-pending；後續example/React nativeDock接續完整goal。

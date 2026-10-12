@@ -14912,7 +14912,7 @@
 						{
 							"name": "KlpDockPanel",
 							"kind": "constructor",
-							"signature": "KlpDockPanel({\n  required String id,\n  Widget? header,\n  required Widget content,\n  ScrollController? contentScrollController,\n  bool isDraggable = true,\n  bool allowBottom = true,\n  bool allowSide = true,\n  List<KlpDockHeaderAction> actions = const [],\n})",
+							"signature": "KlpDockPanel({\n  required String id,\n  Widget? header,\n  required Widget content,\n  ScrollController? contentScrollController,\n  bool isDraggable = true,\n  bool allowBottom = true,\n  bool allowSide = true,\n  List<KlpDockHeaderAction> actions = const [],\n  bool isPinned = false,\n  bool isDirty = false,\n  FutureOr<bool> Function()? onCloseRequested,\n  String? closeLabel,\n})",
 							"documentation": ""
 						},
 						{
@@ -14932,6 +14932,12 @@
 							"kind": "field",
 							"signature": "bool allowSide",
 							"documentation": "是否允許放入 Stage 左右兩側的 Area。"
+						},
+						{
+							"name": "closeLabel",
+							"kind": "field",
+							"signature": "String? closeLabel",
+							"documentation": "可選的產品關閉文案，省略時使用本庫既有在地化。"
 						},
 						{
 							"name": "content",
@@ -14958,10 +14964,28 @@
 							"documentation": ""
 						},
 						{
+							"name": "isDirty",
+							"kind": "field",
+							"signature": "bool isDirty",
+							"documentation": ""
+						},
+						{
 							"name": "isDraggable",
 							"kind": "field",
 							"signature": "bool isDraggable",
 							"documentation": ""
+						},
+						{
+							"name": "isPinned",
+							"kind": "field",
+							"signature": "bool isPinned",
+							"documentation": "產品投影的釘選與修改狀態，不改布局順序或保存格式。"
+						},
+						{
+							"name": "onCloseRequested",
+							"kind": "field",
+							"signature": "FutureOr<bool> Function()? onCloseRequested",
+							"documentation": "產品批准後才從布局移出；正文與 registry 始終由產品保留。"
 						}
 					]
 				},

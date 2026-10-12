@@ -66,3 +66,5 @@ WB-DOCK-PREVIEW-r1 READY：hover僅instance presentation，cancel/end清除，su
 FLUTTER-DOCK-PREVIEW-1完成3064c359：hover為局部presentation、cancel/miss不保存、success保留原extent，7preview+13geometry checks/publicanalyze/2paths scope通過。公開constructor未變，pureoperations接入與close metadata仍待接續。
 
 FLUTTER-DOCK-UI-r1 READY：optional Panel isPinned/isDirty/onCloseRequested FutureOr<bool>/closeLabel及全部UI pureOPS commit；欄位由Panel擁有，公開foundation原export已可達無需變更。geometry/preview/codec不可重做。
+
+FLUTTER-DOCK-UI-1完成4ff1c999：全部pointer提交pureOPS／single finalcallback；optional Panel isPinned/isDirty/onCloseRequested/closeLabel、async pending stale/error lifecycle。33 protectedWidgetchecks/publicDockPanelanalyze/scope5paths通過；新metadata尚未nativebrowser example證據，ReactDock/commands/keybindings/GUI/docsregistry/style權威切換未完成。

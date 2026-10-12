@@ -65,3 +65,9 @@ PLAN1e8203e6/Infinity補充4fe6c76c；TestAuthord76784d7；BUILD296e7cab。13che
 PLAN5abc383a、TestAuthorf717c311、BUILD3064c359；7preview checks baseline2pass5behavioralRed→7Green，合併原13geometry共20Green/publicDockanalyze/scope2paths pass。protectedfile flutter/test/dock_preview_test.dart SHA25661335C6016B221D213DED7971F2654B38FB5932B3A86BA83A8E06F2635985CB2。packet/closure在mainignored build/task-packets/flutter-dock-preview-1*.json，basef717c311/scope閉合3064c359；只Widgetnativegesture證據，尚未browser重新驗證preview。
 
 下一步PLAN FLUTTER-DOCK-UI：所有select/move/reorder/split/visibility/resize提交接入完成pureoperations，並以可選且相容public metadata及產品close批准接線pinned/dirty；不重做preview/geometry/codec/OPS。React native Dock、commands/keybindings、全部specimens/GUI、style recipes/權威切換/網站registry/CI/精確push均未完成，goal ACTIVE。舊文字「hover目前提交」只描述已修正問題，以本段及module contract為準。
+
+## 最新 Flutter native Dock UI 完成
+
+PLAN11e8c2b9、TestAuthor23fd02ad、BUILD4ff1c999。protectedfile flutter/test/dock_ui_test.dart SHA2568A8E346FCAE1B59533B3A5C4D5733BAC61C37B4023E7C75F88CA29D1AEDE8991；13UI+7preview+13geometry=33Green exit0session86014/publicDockPanelanalyze/scope5paths pass。初始compileYellow是新API缺符號，未取得baselinebehaviorRed；實作12Green1splitRed，新增pairgutter改用既有solver後同checks全Green。packet/closure mainignored build/task-packets/flutter-dock-ui-1*.json base23fd02ad/scope閉合4ff1c999。
+
+State沒有第二份保存權威；所有UI提交pureOPS batch最終changed才一次通知。Panel增加optional isPinned/isDirty/onCloseRequested FutureOr<bool>/closeLabel；callback identity需穩定，metadata只呈現。pending stale/removed-reopened/latestlocation/dispose/error/deny及inactive/single無headerclose都由nativeWidget checks保護。新UI尚未nativebrowser example接線驗證；舊Catalogrelease只geometry證據。下一步React nativeDock PLAN或公開FlutterDockexample接線，完整命令/快捷鍵、全部specimens及VSCode/Blockbench/Blender雙框架GUI、typedrecipes及權威切換/CI/精確push仍未完成。
