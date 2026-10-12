@@ -29,6 +29,11 @@ export function useDockSize(host: React.RefObject<HTMLDivElement | null>): { wid
 				const specified = css[axis];
 				let value = rect[axis] - padding - border;
 				if (/^[\d.e+-]+px$/i.test(specified)) value = Number.parseFloat(specified) - (css.boxSizing === 'border-box' ? padding + border : 0);
+				else {
+					// client 軸不含 transform/border；CSS 未解成 px 時仍使用同一布局座標。
+					const client = axis === 'width' ? element.clientWidth : element.clientHeight;
+					if (client > 0 || rect[axis] === 0) value = client - padding;
+				}
 				return Number.isFinite(value) ? Math.max(0, value) : 0;
 			};
 			const width = dimension('width');
