@@ -161,3 +161,9 @@ if (result.changed) setLayout(result.layout);
 新 groupId 必須不與操作前的任何群組重複。移動／合併保留分頁順序並驗證 area 能力；來源空群組刪除，原 active 移走則取第一個剩餘項目。目標 area 展開，但 select 只改 active。close 的 approved boolean 必由產品關閉 callback 決定；false 是不改資料的合法 no-op，true 只移除布局，不刪 registry，仍可 open。dirty／pinned metadata 不放入保存資料。
 
 visibility 保存收合／展開；resizeArea／resizeGroup 只更新有限偏好尺寸，實際 viewport 與 handle 配額由 Dock UI 解算後提交。取消拖曳不提交操作，hover 不改布局。非法目前布局、缺清冊、停靠能力或 action 以 TypeError 整份拒絕，原 state 不改；詳見 [操作契約](../architecture/workbench-dock-contract.md#受控操作-wb-dock-ops-r1)。純資料入口不代表 Dock UI 已完成。
+
+## Dock 有限尺寸
+
+`resolveKlpDockGeometry` 接受目前容器的有限 `width`／`height`、保存 `layout`、左右 `minExtent`／可選 `maxExtent`、可選 Bottom 限制，以及語意投影的 `handleExtent`／可選 `headerExtent`。回傳不可變的 Stage、各區、header、handle 矩形與 `maximumLeft`／`maximumRight`／`maximumBottom`；呈現及 pointer 使用相同座標。
+
+空間不足會同比例壓縮 minimum；保存偏好保持原值。正 Infinity maximum 表示無邏輯上限，其他尺寸須有限非負；縮放提交需再把實際 maximum 與產品邏輯 min/max 求交集，不足 minimum 時不回寫縮放。省略 header 與零高 header 槽不同；省略 Bottom 限制只允許 Bottom 隱藏且無群組。非法輸入以 TypeError 拒絕，caller 不修改。這是純尺寸入口，React 可拖放 Dock 元件仍在接續實作。

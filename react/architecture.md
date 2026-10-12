@@ -249,7 +249,7 @@ WB-DOCK-PREVIEW-r1 READY：hover僅instance presentation，cancel/end清除，su
 
 WB-DOCK-UI-r1 READY：nativeReact Dock使用同一pureOPS提交/一次通知、presentation metadata與同步或Promise批准close/pending stale lifecycle。React native API與errorcallback由後續自己的PLAN固定；Flutter當前UI slice不修改React實作。
 
-## 當前 slice REACT-DOCK-GEOMETRY-1（READY）
+## REACT-DOCK-GEOMETRY-1（完成）
 
 修訂REACT-DOCK-GEOMETRY-r1；依WB-DOCK-GEOMETRY-r1先固定native React Dock的root有限配額，非整個UI完成。公開resolveKlpDockGeometry(args: KlpDockGeometryArgs): KlpDockGeometry；new src/dock-geometry.ts只依既有purelinear與codec，無React/DOM/theme/state/storage。index新增export。之後nativeDock只用同一配額組合DOM及pointer，不另建尺寸權威。
 
@@ -271,3 +271,7 @@ flowchart TD
 	Linear --> Rects[immutable root/handle rects]
 	Rects --> Native[後續native DOM/pointer共用]
 ```
+
+實作08ea39fc：finite／limits擁有native尺寸与限制驗證；item將正Infinity轉為linear的省略maximum；visible排除hidden或空area；rect建立自己的frozen矩形；resolveKlpDockGeometry先委派codec驗證，再各一次水平及垂直linear配額，回傳root／header／handle與resize預算。caller保存偏好及物件未修改，也未freeze caller。
+
+9項獨立checks、librarybuild、typedpublicconsumer及2paths scope通過；protectedhash B617A4EC6DD751B430CB6C697FB7C753D0018C0C3B558FE82296BB5992FAC8C8。獨立TestAuthor65909cb9將292預算的fixture handle明定4（400−100−2×4=292），保留全部assertions；handle8時相同公式應284，未修改算法配合錯誤算術。基線缺export是compileYellow；nativeDOM／pointer及感官尚未驗證。scope於08ea39fc閉合，owner文件不混入BUILD範圍。
