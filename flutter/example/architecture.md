@@ -154,3 +154,26 @@ flowchart TD
 	Groups --> Result
 	App --> Result
 ```
+
+## FLUTTER-COMMAND-SPECIMENS-1（READY）
+
+修訂FLUTTER-COMMAND-SPECIMENS-r1。exact lib/component_specimens.dart、lib/catalog/registered_commands_page.dart；將既有命令consumer暴露RegisteredCommandsDemo(specimen可選)，預設保留完整Catalog。五個獨立query為RegisteredCommandToolbar、RegisteredCommandMenu、RegisteredCommandPalette、RegisteredCommandPopup、CommandShortcutHost（均Klp前綴）。沿用同registry/keymap/controller/results，不複製handler或建立第二命令核心。
+
+當次route只插入自己的entry；toolbar/menu投影允許儲存與失敗可見性，palette提供open/search/dismiss/error，popup提供button anchor與右鍵area/open/dismiss/error；host提供原生草稿快捷鍵、chord、scope/conflicts、record/import/export。共用result/draft顯示；host wrapper可作其他entry的必要依賴，但不因此計入host coverage。其他兩個命令renderable不在此slice。使用例標示公開constructor及同owner資料。既有overview不變，前24query及unknown gate保持。controller/theme/width保留State，epoch只在明確reset更換。
+
+驗收public analyze/releaseweb；五route own target/control/native callback；disabled/error/dismiss與host原生save/chord；theme/width保留draft/results/reset；exact2 scope/diff。protected library/tests/其他modules不可寫。不新增演算法或持久權威，無新鏡像測試。感官human-pending。依Frame/Explorer已完成consumer估4k～9k/30～70分鐘，M1 public source/type/build（5k40），M2 native5/closure（9k70），14k100或公開契約不足回PLAN。
+
+| class／function | 責任 |
+| --- | --- |
+| commandSpecimenNames | 僅五個實際route |
+| RegisteredCommandsDemo／State | 原命令owner，specimen選擇自己的controls與entry；null保持overview |
+| ComponentSpecimenApp._fixture | 以同epoch把命令route接到公開consumer |
+
+```mermaid
+flowchart TD
+	Host[ComponentSpecimenApp] --> Demo[RegisteredCommandsDemo / specimen]
+	Demo --> Owner[原registry / keymap / controllers]
+	Owner --> Entry[當次toolbar / menu / palette / popup / shortcut host]
+	Entry --> Result[原生result / dismiss / handling]
+	Result --> Owner
+```
