@@ -8,3 +8,4 @@ export { resolveKlpLinearLayout, type KlpLinearItem, type KlpLinearLayoutResult 
 export { createKlpStylePack, applyKlpStyleOverrides, klpStyleParameters, type KlpStylePack, type KlpStyleOverrides } from './style-pack.js';
 export * from './dock-geometry.js';
 export * from './workbench-dock.js';
+export * from './command-registry.js';
