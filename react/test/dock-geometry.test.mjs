@@ -143,7 +143,8 @@ test('巨大 handle 先吃滿有限軸，零 handle 與零 viewport 仍守恆', 
 });
 
 test('resize budget 扣另一 actual side 與有效 handles，正 Infinity 無邏輯上限', () => {
-	const input = args({ width: 400, leftConstraints: { minExtent: 80, maxExtent: Infinity }, rightConstraints: { minExtent: 80, maxExtent: Infinity }, bottomConstraints: { minExtent: 40, maxExtent: Infinity } });
+	// 此跨框架例子明定把手為 4：400 - 另一側 100 - 兩個把手 4 = 292。
+	const input = args({ width: 400, handleExtent: 4, leftConstraints: { minExtent: 80, maxExtent: Infinity }, rightConstraints: { minExtent: 80, maxExtent: Infinity }, bottomConstraints: { minExtent: 40, maxExtent: Infinity } });
 	input.layout.right.extent = 100;
 	const result = check(input);
 	close(result.maximumLeft, 292, 'maximumLeft');
