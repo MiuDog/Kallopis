@@ -61,6 +61,8 @@ owner b319af8c澄清removeListener只解除native addListener owner；獨立auth
 | React Dock | geometry08ea39fc九；native1 7690b23b九；native2 681c0f6c／583818e8／6ee63c5e九，合計18nativechecks | native1部分act harness warnings保留，browser矩陣同上 |
 | 參考網站 | Flutter547canonical API／17modules／三surface extract/generate/verify；32文件、15網站checks | API清冊不等於互動頁；全部展示未完成 |
 
+本機main網站重建曾讀ignored build/reference-api.json舊534清冊；generator/verifier明確使用該建置輸入。已以同隔離已驗證547artifact更新main ignored輸入，原重建與verify回547，無source／test改動。tab3 reload已見32文件現行stage與新popup Guide；截圖main build/evidence/workbench-command-popup-guide.png。日後新公開API完成需先extract再generate，不把ignored stale產物當正式清冊。
+
 共同Dock契約docs/architecture/workbench-dock-contract.md與linear契約workbench-linear-contract.md均READY。KLP0024要求一般Row/Column/Pane與Dock分開，保留direct native元件；不得重建node/adapter/declarative runtime。公開Flutter theme/foundation為stable，consumer不得引用src。
 
 ## 最新公開example與browser事實
