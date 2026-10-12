@@ -1,6 +1,6 @@
 # Flutter 公開 consumer 範例
 
-目前目標：IDOC-COMPONENT-REGISTRY-r1 的公開元件專屬路由。庫擁有樣式及互動，example擁有展示資料、控制、回呼觀察與重設。不得引用package:kallopis/src；舊Catalog的coveredComponents／空build不算互動coverage。目前有29個真實fixture；全量273個可渲染元件仍需逐項補足，不宣稱全部完成。
+目前目標：IDOC-COMPONENT-REGISTRY-r1 的公開元件專屬路由。庫擁有樣式及互動，example擁有展示資料、控制、回呼觀察與重設。不得引用package:kallopis/src；舊Catalog的coveredComponents／空build不算互動coverage。目前有51個真實fixture；全量273個可渲染元件仍需逐項補足，不宣稱全部完成。
 
 ## FLUTTER-COMPONENT-SPECIMENS-1（COMPLETE）
 
@@ -247,7 +247,7 @@ flowchart LR
 
 BUILD54dd1105 exact1，公開analyze No issues、同protected39全Green零skip、prefix release46.6秒、scope1/diff通過。Native5203 /Kallopis/examples/flutter/index.html?scenario=vscode 的實際title為「VS Code · 文件工作區 Flutter 互動展示」；unknown的實際title為「找不到 GUI 場景 Flutter 互動展示」，畫面顯示unknown與返回入口。初始shell title尚未ready，實際內容完成後才改Title；網站接入由DOCS-FLUTTER-SCENARIOS-1負責，感官與actual窄browser保持pending。
 
-## FLUTTER-SPATIAL-SPECIMENS-1（READY）
+## FLUTTER-SPATIAL-SPECIMENS-1（IMPLEMENTED；actual窄 browser pending）
 
 修訂FLUTTER-SPATIAL-SPECIMENS-r1，依IDOC-01/02/03/06/08。exact lib/component_specimens.dart、新lib/spatial_specimens.dart；前者只import/registry/fixture分流，既有29與環境不改。spatialSpecimenNames只包含22個正式renderable：KlpAlign、KlpBox、KlpCenter、KlpColumn、KlpConstrainedBox、KlpDirectionalPositioned、KlpDivider、KlpExpanded、KlpFit、KlpFlexible、KlpGap、KlpLayoutBuilder、KlpPositioned、KlpRegion、KlpRotate、KlpRow、KlpScrollViewport、KlpSection、KlpSpacer、KlpStack、KlpTranslate、KlpWrap。公開consumer SpatialComponentSpecimen(name)，只Flutter/public foundation imports，無private元件或新共用theme。
 
@@ -274,3 +274,14 @@ flowchart TD
 	Fixture --> Draft[同controller草稿 / callbacks]
 	Host --> Reset[epoch才重建fixture]
 ```
+
+
+BUILD exact2source；22名稱全部對正式renderable、registry無duplicate且各有controls/target/usage。public analyze最終No issues；最終同source prefixrelease47.0秒、scope2/diff通過。沒有新增算法或persist／跨語言邊界，未新增鏡像tests；庫／設定／tests／style／網站source皆未改。
+
+Native5203 prefix真實22route及自身controls均操作，公開title與fixture內容精確對應；Flutter可及性需要先click取得焦點，觀察仍Enable accessibility時Enter／Space才取得完整樹，不以placeholder當成功。ScrollViewport末尾操作14回呼offset792；原生wheel另記1回呼offset576。Expanded flex1→3真實約束380→570；local320／180高／dark/spacious為240×180，草稿與input回呼2跨四mode保持；明確reset回flex1、草稿初始、回呼0／高度280，保留mode/spacious/local320。Row三child/gap48/local320／180/spacious皆呈現，error/warn空；consumer Flexible children接受可用空間，不複製library算法。
+
+Align初始natural子內容修正為120×80，最終實際文字位置(8,152)→center(328,252)，shrinkWidth後(8,252)；Center width/heightFactor1→2為(8,152)→(68,192)，效果不是滿寬子內容掩蓋。Positioned left/top12→48實際文字位置(20,164)→(56,200)。ConstrainedBox max120×80→240×120、Divider vertical改為379×280、Region關閉header/footer与semantic padding後744×264均讀真實LayoutBuilder。geometry source只用原生constraints/DOM rect，不自行計算配額。
+
+main build/flutter-spatial-specimens.png及flutter-spatial-native.json保存觀察；actual360 browser未取得，local320不代替，感官human-pending。Flutter真實fixture51／273，剩餘222與網站全量嵌入仍原goal；本stage不是所有元件交付。
+
+_State._controls/_target/_usage持有當次公開props投影、合法host與正確constructor；_tiles/_flexTiles提供產品child，_sample/_fixedSample/_sampleBody/_measure/_builderBody只呈現真實約束；_scrollToEnd/_onScroll使用同公開controller，initState/dispose移除listener並清controller；_onChange及cycle/toggle只consumerState。build owns finite viewport/controls/status/draft，環境由外host維持；沒有第二theme、private API或widget tree驗證。
