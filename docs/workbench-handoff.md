@@ -79,3 +79,11 @@ REACT-DOCK-NATIVE-1已完成7690b23b（PLAN8926bc20/TestAuthor9e3e7da3）：受�
 最新REACT-DOCK-NATIVE-2完成681c0f6c+measure583818e8+hint/capture6ee63c5e，PLANc3d98971/TestAuthor70ab0435。protectedfile react/test/workbench-dock-input.test.mjs SHA256335DCA352EF2FAAA608AF9294CDA45D00B5A213FB8CAAA2E40A32FEFCAA17403；baseline2Green7behaviorRed→8Green1scaleRed→9Green，合併native1共18Green/session77278 exit0，build/publicconsumer及4path/measure1path/resumeinput1path scope閉合通過。根因為non-px CSS fallback取transformed DOMrect，600視為1200；owner修訂REACT-DOCK-MEASURE-r1允許唯一lifecycle量測檔，改用untransformed client，不改tests或另做pointer尺寸權威。packets/closures mainignored build/task-packets/react-dock-native-2*.json/react-dock-measure-1*.json；歷史scope不可在owner文件後重跑。
 
 新增collapseThresholds optional產品邏輯/HTMLtabdrag/PointerEventsresize、purebatch1通知/finiteview/previewpref保留/cancelcleanup。native2 synthetic事件通過，beforeafterline/capture已接線但nativebrowser尚未觀察，感官human-pending；native1舊actwarnings仍在。下一步PLAN React公開Dockexample（save/load/reset/open/merge/approvedclose）並browser，Flutter新Dock UI example也待接線；完整命令/shortcut、雙框架3GUI、全部specimens/websitebundles、typedrecipes/權威切換/CI/exactpush仍未完成，goal ACTIVE。
+
+## 最新公開React Dock example
+
+PLAN8a2267b4，consumer實作9597e484，3allowedpaths scope/typecheck/prod build通過，既有550.99KBchunk提示未調高門檻。example只publicimports，strictcodec/OPS清冊投影id與capabilities，stableclosecallback由ref讀產品批准模式，layout只有產品state。初次browser metadata清冊Red已在example修正，未改庫或測試。
+
+tab8 http://127.0.0.1:5182/（devsession89615）：select/收合/展開、save/restore/reset、invalidJSON原子保留、deny/approve/pendingdelay、open/merge均可操作；nativearea180→210與group200→225各1callback；320×180root scrollWidth320/scrollHeight180且style無NaN/Infinity，Stage及Search輸入跨theme/size保留。證據mainignored build/evidence/react-dock-example.png。source文字編輯造成dev重新載入，證據圖是重新載入的初始light狀態，不宣称圖中包含前次计数。
+
+native drag Search→Inspector分頁與正文均未造成變更，draggable=true，沒有新的consoleerror；仍需診斷工具是否送出HTMLdrag或產品事件，不能宣稱browser拖放/preview已通過，也不假裝已證明產品缺陷。下一步優先確認此native事件，再接Flutter新UIexample；完整commands/keybindings、3GUI×2框架、全部互動頁面/網站registry、typedrecipes/風格中立與權威切換/CI/精確push仍未完成。goal ACTIVE，main dirty/index保留。

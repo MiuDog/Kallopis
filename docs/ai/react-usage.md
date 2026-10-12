@@ -199,4 +199,6 @@ import { KlpDockLayout } from '@kallopis/react';
 
 分頁拖放採瀏覽器[原生HTML drag事件](https://developer.mozilla.org/en-US/docs/Web/API/HTML_Drag_and_Drop_API)，縮放採[Pointer Events](https://developer.mozilla.org/en-US/docs/Web/API/Pointer_events)及capture/cancel生命周期；分頁的觸控拖放能力依宿主瀏覽器，沒有新增touch polyfill或跨instance/跨視窗移動。CSS transform不改保存及pointer的布局座標。
 
-18項公開input與DOM/SSR checks通過；nativebrowser示範尚待接線，不能用synthetic尺寸代替瀏覽器或感官接受。全部元件互動頁面及Workbench GUI會在网站展示stage整合。
+18項公開input與DOM/SSR checks通過。[公開Dock互動範例](../../react/example/dock-demo.tsx)已接入React展示頁，可操作保存、還原、重設、重開、合併與批准方式。保存及pureoperations的清冊只包含id/allowSide/allowBottom，不能直接傳入有content/callback的完整panel物件；範例示範明確投影。
+
+nativebrowser已確認選取、收合、區域及群組resize、close拒絕/批准/延遲、JSON錯誤保留及尺寸/主題更新輸入保留。分頁的native drag操作尚未觀察到變更，拖放/preview的browser證據仍待確認；synthetic checks不代替browser或感官接受。全部元件互動頁面及三種雙框架GUI仍待网站展示stage整合。
