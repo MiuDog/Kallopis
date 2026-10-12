@@ -10,3 +10,4 @@ export * from './dock-geometry.js';
 export * from './workbench-dock.js';
 export * from './command-registry.js';
 export * from './command-entries.js';
+export * from './command-palette.js';

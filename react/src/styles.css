@@ -253,3 +253,53 @@
 .klp-command-row-toolbar:hover, .klp-command-row-toolbar:focus-visible, .klp-command-row-toolbar[aria-pressed='true'], .klp-command-row-menu:hover, .klp-command-row-menu:focus-visible, .klp-command-row-menu[aria-checked='true'] {
 	background: color-mix(in srgb, var(--klp-colors-text) calc(var(--klp-surface-selectionWashOpacity) * 100%), var(--klp-rest));
 }
+
+/* Modal 的有效尺寸從 viewport 與同語意 clamp 派生；原生 top layer 擁有堆疊。 */
+.klp-palette-host {
+	position: fixed;
+	inset: 0;
+	background: color-mix(in srgb, var(--klp-surface-overlayShadowColor) calc(var(--klp-surface-scrimOpacity) * 100%), transparent);
+}
+.klp-palette-host:has(dialog:modal) { background: transparent; }
+.klp-palette-dialog {
+	position: fixed;
+	inset-block-start: var(--klp-palette-inset);
+	inset-inline: 0;
+	margin: 0 auto;
+	box-sizing: border-box;
+	inline-size: var(--klp-palette-width);
+	max-inline-size: var(--klp-palette-width);
+	max-block-size: var(--klp-palette-height);
+	min-inline-size: 0;
+	min-block-size: 0;
+	padding: var(--klp-palette-padding);
+	border: 0;
+	border-radius: var(--klp-components-menuRadius);
+	background: var(--klp-colors-overlay);
+	color: var(--klp-colors-text);
+	overflow: hidden;
+}
+.klp-palette-dialog[open] { display: flex; flex-direction: column; gap: var(--klp-palette-padding); }
+.klp-palette-dialog::backdrop { background: color-mix(in srgb, var(--klp-surface-overlayShadowColor) calc(var(--klp-surface-scrimOpacity) * 100%), transparent); }
+.klp-palette-dialog[data-klp-separation='shadow'] { box-shadow: 0 var(--klp-surface-contactOffsetY) var(--klp-surface-contactBlur) color-mix(in srgb, var(--klp-surface-overlayShadowColor) calc(var(--klp-surface-contactShadowOpacity) * 100%), transparent), 0 var(--klp-surface-overlayOffsetY) var(--klp-surface-overlayBlur) var(--klp-surface-overlaySpread) color-mix(in srgb, var(--klp-surface-overlayShadowColor) calc(var(--klp-surface-overlayShadowOpacity) * 100%), transparent); }
+.klp-palette-dialog .klp-field { flex: none; min-inline-size: 0; max-block-size: var(--klp-palette-height); overflow: auto; }
+.klp-palette-dialog .klp-field input { box-sizing: border-box; min-inline-size: 0; inline-size: 100%; }
+.klp-palette-list { min-inline-size: 0; min-block-size: 0; overflow: auto; }
+.klp-palette-option {
+	display: flex;
+	inline-size: 100%;
+	min-inline-size: 0;
+	max-inline-size: 100%;
+	height: auto;
+	min-block-size: var(--klp-components-menuItemHeight);
+	padding: 0 var(--klp-palette-row-padding);
+	gap: var(--klp-palette-gap);
+	justify-content: flex-start;
+	border: 0;
+	border-radius: var(--klp-shape-control);
+	overflow: hidden;
+}
+.klp-palette-option:hover, .klp-palette-option[aria-selected='true'] { background: color-mix(in srgb, var(--klp-colors-text) calc(var(--klp-surface-selectionWashOpacity) * 100%), var(--klp-rest)); }
+.klp-palette-icon { flex: none; inline-size: var(--klp-palette-icon); block-size: var(--klp-palette-icon); overflow: hidden; }
+.klp-palette-copy { display: grid; min-inline-size: 0; text-align: start; }
+.klp-palette-copy .klp-text { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
