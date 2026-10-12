@@ -33,13 +33,27 @@ Validation 必須拒絕 unknown version、非 object／array dictionary、空 ID
 | Slice | write_paths | 責任／證據 | 狀態 |
 | --- | --- | --- | --- |
 | STYLE-PACK-1 | `styles/schema-v1.json`、`styles/kallopis-v1.json`、`styles/src/**`、`styles/scripts/**`、`styles/package.json`、`styles/README.md` | SP-01／02：純 JSON 遷移、內容逐項對照、驗證與既有表格 round trip，不切換框架權威 | 完成 |
-| STYLE-PACK-2 | `styles/src/**`、`styles/scripts/**`、`styles/catalog.json` | SP-04／05／06／07：typed 參數、範圍、資產與解析輸出，供兩框架 adapter 同 fixture 驗證 | 依賴 slice 1 |
+| STYLE-PACK-2 | `styles/src/**`、`styles/scripts/**`、`styles/README.md` | SP-02／04／05／07：typed semantic 參數、範圍、資產標記與解析輸出，供兩框架 adapter 同 fixture 驗證；catalog 是 PLAN-owned 唯讀契約 | PLAN READY |
 
 Test Author 唯一可寫 `styles/test/**`；implementation 不可改測試、spec、architecture、docs、框架或 CI。檔案不存在前不建立空執行層。BUILD packet 必須基於乾淨隔離 worktree 真實 revision；測試 author 的新保護需先提交到基線。
 
 STYLE-PACK-1 冷啟動估算 5k–10k tokens／30–70 分鐘；參考 REACT-FOUNDATION-1 的同來源解析（無可靠歷史成本），假設 Node 24、零新增執行相依。M1 提取與 round trip；M2 拒絕非法輸入及公開驗證；兩者均完成才可聲稱本 slice 完成。超過 12k tokens 或 90 分鐘需重新評估，不降低驗收。
 
 P1 對應：SP-01／02 本 module；SP-03／05／06／07 框架 adapter，SP-04 本 module 與 adapter coverage，SP-08 reference site。所有後續框架權威切換須由整合 owner 更新維護規則、生成器契約及兩框架架構，不能由本 worker 私自改跨 module 檔案。
+
+## STYLE-PACK-2 公開契約
+
+`catalog.json`（schemaVersion 1）逐一列出全部 350 semantic 的 type／unit／min／max／integer／purpose／affectedRecipes／assetKind；不存在的值用省略表示，不虛構上限。catalog 的型別及 constraints 不隨 style pack 替換，禁止用 consumer pack 降低安全限制。type 為 color、color-array、font-family、font-family-array、length、ratio、opacity、duration、weight、count、curve、symbol。目錄從現有用途與 notation 明確分類後保存為 ID 對照，不在 runtime 猜英文 ID。
+
+公開 `resolveStylePack(pack, mode, catalog)`：先結構驗證，解析 p／s／primitive list／numeric add，轉曲線字串為四點 array；成功回傳深度 frozen 的 `{id,version,mode,tokens,recipes}` snapshot，tokens 保留 #AARRGGBB 與 package 字型身份，不能在 common 層改 CSS 格式。recipe 本階段只完整保存原文，typed recipe 展開屬 adapter 前另行 slice。每個 semantic 必須有 catalog，缺項或 type 不合拒絕並定位參數；不修改輸入。
+
+公開 `applyStyleOverrides(pack, overrides, catalog)`：overrides 可含 primitives（已存在 ID → 值）及 semantics（已存在 ID → 部分 mode 表達式）；不接受其他 root key、不新增 ID、不覆寫 catalog／行為。在 clone 上整體套用，再解析所有四 mode，成功回傳新 pack；失敗保留原始 pack。consumer 更換完整 pack 仍使用同一 catalog 驗證。
+
+curve 長度4，x1／x2 ∈ [0,1]，y 有限但可 overshoot；color 為 #RGB 不接受，僅 #RRGGBB 或 #AARRGGBB；opacity ∈ [0,1]，duration／length 一般非負，字重整數1～1000，count 正整數，ratio > 0。tracking、optical offset、陰影 offset／spread 及 Explorer 高度 adjustment 明確允許負值，其他長度不默認放行。font-family 保留字串及 package ownership，不自動載入 URL。
+
+Catalog constraints 的 kind 為 ordered（依序非遞減）或 fits（child + 2×inset ≤ min(containers)）。v1 只宣告已有可驗證關係：field minLines ≤ maxLines；settings navigation minimum ≤ width ≤ maximum；toggle thumb 加 inset 可置於寬／高；segmented dense item 加 inset 可置於 track。沒有宣告的字型／control 容納由框架 layout algorithm 決定，不能由此假稱所有布局已驗收。
+
+Test Author 新路徑 `styles/test/style-runtime.test.mjs`，不得改 slice1 tests；以 default catalog 及明確 fixture 驗證四 mode、add、字型與曲線、非法值、原子覆寫、隔離／freeze、缺 metadata 及 cross-token constraints。冷啟動估算 5k–10k tokens／30–75 分鐘，參考 STYLE-PACK-1（只以已完成功能作參考，不假稱已量測精確成本）。M1 typed resolve／catalog；M2 atomic override／constraint evidence。implementation 所有 catalog／architecture／tests 唯讀；slice 前需把新保護提交為 clean base。
 
 ## 已實作責任與呼叫鏈
 
