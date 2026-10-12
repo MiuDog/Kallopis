@@ -194,7 +194,7 @@ popup雙框架library與公開consumer已完成；公開popup與兩端usage由�
 
 當前consumer增量：React e56976aa／Flutter f9118c25已完成原生快捷鍵、作用域與衝突、錄製重綁／設定及原草稿；不以各總覽Commands demo替代元件頁specimen。兩端usage由正式來源生成；561API／34Markdown generate/verify Green。下一owner工作為各renderable public component對應唯一互動registry、React manifest與兩端靜態bundle，覆蓋閘門與路由依interactive-docs-v1。
 
-## FLUTTER-REFERENCE-RENDERABLE-1（READY）
+## FLUTTER-REFERENCE-RENDERABLE-1（COMPLETE）
 
 修訂FLUTTER-REFERENCE-RENDERABLE-r1，依共同IDOC-FLUTTER-RENDERABLE-r1，BUILD唯一write extract_api.dart。保留所有canonical identity／kind／slug／signature／members，schema1 declaration新增必填renderable bool，由真實ClassElement的isAbstract與Widget來源identity/allSupertypes判定。只依各root exportNamespace取得publicclosure，不繞過show/hide追回被隱藏symbol。abstract final/base與sealed不要求實例；具體modifier均可。未知資料／enum／extension／mixin或fakeWidget false。
 
@@ -202,11 +202,11 @@ CLI只在成功完成全manifest後寫既有ignoredoutput，錯誤保留原檔�
 
 cold3k～6k/20～40分鐘，參照REACT-REFERENCE-COMPONENTS-1；M1獨立CLIfixtures可執行且记录有效Red（3k20）；M2同protectedchecks Green/publicanalyze/真實extract/scope1（6k40）；8k55或跨source改動回PLAN。TypeScript extractor屬React獨立module完成；此旗標還不是Flutter全部專屬route完成。感官human-pending。
 
-### Renderability 實作checkpoint（M1 COMPLETE／M2 environment pending）
+### Renderability 實作證據（COMPLETE）
 
 BUILD c7a841aa exact1source，protected4checks Green（fresh author69b52e95，SHA256 A51481D0B5E16B4AFD2D699DB92AD8CFB78046125F2292FD9B02FC867B910C7A），scope1/diff Green。Source等同副本置於Flutter package context分析No issues；直接root analyze沒有package config而失敗屬環境，沒有改config或放寬檢查。原生CLI fixture採真實Flutter Widget及間接／各class modifier、abstract／同名fake／data、show/hide／跨surface及失敗保留原檔。初次fixture mixin implements Widget的Object.toString不符Diagnosticable簽名，作者只補官方DiagnosticLevel與相容override三行，原斷言保留。
 
-真實專案全量extract目前拒絕輸出：dev analyzer10.1不認Dart3.12私有具名參數，診斷docking來源的合法語法為experimental，並連帶報publicnamed參數不存在。現行Flutter SDK3.44.2／Dart3.12.2與CI3.44.4／Dart3.12.2；這是analyzer版本不匹配，不能忽略diagnostics／改Flutter來源配合舊工具。正式manifest仍保留舊561筆，尚無正式renderable數量。Architecture Change Request移交integration owner：先FLUTTER-ANALYZER-RUNTIME-1精確更新dev dependency analyzer13.0.0及lock（符合SDK固定meta1.18.0；14.4需求meta1.18.3不合），再DOCS-ANALYZER-API-1接新版公開namespace API並回歸同protected4checks/full extraction。此M2未完成，不以fixture Green宣稱全量清单已完成。
+原全量extract被dev analyzer10.1不支援Dart3.12私有具名參數阻擋，已由FLUTTER-ANALYZER-RUNTIME-1 c84bd254精確更新analyzer13.0.0/_fe_analyzer_shared100.0.0；SDK／CI／meta1.18.0及公開元件不變。13.0既有公開API可直接使用，不需為計畫新增adapter或修改source。新runtime下同protected4checks全部Green（93.1秒），等同source分析No issues，真實extract561 canonical declarations／17modules／三surfaces／273 renderable（259 class＋14 finalClass），identity增刪0、所有561都有boolean。正式manifest只採成功extract，沒有固定數量快照或跳過diagnostics。元件query routes、registry/bundle及coverage仍另stage。
 
 | extract_api.dart 類別 | 全部責任及方法 |
 | --- | --- |
@@ -248,8 +248,14 @@ flowchart TD
 	Roots --> Dispose[finally collection.dispose]
 ```
 
-## DOCS-ANALYZER-API-1（READY after runtime）
+## DOCS-ANALYZER-API-1（COMPLETE：相容性驗證）
 
-修訂DOCS-ANALYZER-API-r1，依integration相容性契約，等FLUTTER-ANALYZER-RUNTIME-1 exact2 pubget完成後才生成真實base packet。BUILD只write extract_api.dart以新版analyzer13的公開element/namespace API等價讀取原邏輯，不導入privateAPI、改JSONschema、改publicexports或忽略diagnostics。保護renderable/show-hide/all-modifiers/canonical/failure同4checks hashA51481...維持；必要same-source分析與真實完整extract新manifest，與舊561 identity比較visibility改正；scope1/diff。成功後由owner同步正式清單與generate/verify/網站既有15checks；Flutterconsumer／generator coverage仍後stage。
+修訂DOCS-ANALYZER-API-r1，依integration相容性契約，FLUTTER-ANALYZER-RUNTIME-1已完成；既有extract_api.dart直接相容analyzer13公開element/namespace API，沒有必要的source變更，完成同protectedchecks與全量擷取驗證，不導入privateAPI、改JSONschema、改publicexports或忽略diagnostics。保護renderable/show-hide/all-modifiers/canonical/failure同4checks hashA51481...維持；必要same-source分析與真實完整extract新manifest，與舊561 identity比較visibility改正；scope1/diff。成功後由owner同步正式清單與generate/verify/網站既有15checks；Flutterconsumer／generator coverage仍後stage。
 
 cold1k～4k/15～30分鐘；M1 compile/同4Green（2k20），M2 actualextract/identity/scope1（4k30），6k45或新的API契約返回PLAN。不以最初fixtureGreen替代新的全量成功，舊manifest維持直到成功。
+
+## DOCS-TEST-RUNNERS-1（READY）
+
+修訂DOCS-TEST-RUNNERS-r1，保留15項純Node網站checks，獨立4項analyzer CLI checks需要Flutter SDK與package_config。Pages現有runner只有Node，不能隱性要求整個Flutter/Krepis環境；BUILD只write package.json scripts：test明列原兩個website test檔，test:extract明列extract_renderable.test.mjs，extract/build/verify及其餘設定保持。不得skip或刪斷言；SDK checks由已安裝Flutter及pubget的CI root job強制执行（另一CI module slice）。fresh TestAuthor只改launcher portability，Linux PATH dart／Windows既有bat或KALLOPIS_DART明示入口，不跳過缺失SDK。此分開環境責任不是放寬測試。
+
+cold1k～2k/5～15分鐘，單M1：npm test為原15Green；同新portable SDK check4Green；scope1/diff。3k20或要修改tests／workflow回PLAN。
