@@ -561,7 +561,7 @@ IdentityHeader avatarLabel提供時原元件採avatar內容且trailing不呈現�
 State _controls/_target/_usage只自己的公開constructor；_labels/_available/_reconcileDocument/_toggleCount/_pinAll/_restoreDocuments為consumer資料投影，_selectIndex/_selectId/_rootAction/_documentSelect/_documentClose/_documentPin/_pageChanged記原root結果，_childAction/_input分開、_edit只control，_identityChild給單一controller內容、_wide提供水平host，dispose清三controller，build有限280scroll舞台；沒有導覽runtime或第二theme。
 
 
-## FLUTTER-NAVIGATION-COMPOUND-SPECIMENS-1（READY）
+## FLUTTER-NAVIGATION-COMPOUND-SPECIMENS-1（IMPLEMENTED；actual窄browser pending）
 
 修訂FLUTTER-NAVIGATION-COMPOUND-SPECIMENS-r1，IDOC-01/02/03/06/08；exact lib/component_specimens.dart、新 lib/navigation_compound_specimens.dart。KlpNavigationRail、KlpNavigator、KlpPublicationProgressOverlay；補齊正式features.navigation，不替代全273goal。
 
@@ -591,3 +591,12 @@ flowchart TD
 	State --> Target
 	Host --> Reset[epoch重建]
 ```
+
+
+BUILD exact2；三名称對正式public renderable，compound3＋selection13＋Explorer5精確等於features.navigation正式21，不以DTO/placeholder補數。初analyze未使用helper移除，menu標籤字串插值修正於build前；最終public analyze No issues、同sourceprefixrelease55.0秒、scope2/diff通過。未改library/tests/config/style/site source，無新core/persist/crosslanguage風險，不新增鏡像tests。
+
+Native5203 prefix三頁自己的props/label control2操作。Rail原top-b entry1、原menu child action entry2與group0分開；真實pointerdrag top index0→2 group1／top-b,top-c,top-a，center index0→1 group2／center-b,center-a；加入同資料清單divider後再拖top0→3 group3得到divider,top-c,top-a,top-b，center順序保持。沒有用control callback模擬drag或複製索引正規化。座標取fresh screenshot；只讀DOMrect曾與畫布位置差84，實際drag依screenshot位置，未寫DOM。
+
+Navigator原child-b選取1，element折疊2/展開3、category折疊4/展開5，受控selection child-b保持；公開component child輸入2/動作1分開，entry0。四mode/spacious/local320保留草稿及root5/child1/input2；reset回initialsets、child-a/defaultprops/0，環境保持。Publication bounded300 child input2/action1 root0；visibletrue原child action變generic而progress呈現，hide後button及同草稿恢復；只記已觀察狀態，不宣稱完整modal或pointer阻擋已驗收。當次console error/warn空；main build/flutter-navigation-compound-specimens.png、flutter-navigation-compound-native.json保存證據。actual360 browser與感官human-pending。Flutterfixture133／273，剩140及全量网站/style audit等仍原goal，未提前push，actual單task usage未量測null。
+
+State _controls/_target/_usage/_rail/_navigator持有自己的公開DTO/props，_entry/_leaf/_child提供合法資料與單一controller內容；_reorder/_topReorder/_centerReorder直接回寫原publiccallback normalizedindex，_divider控制資料包含divider故不錯置drag索引；_railSelect/_railMenu只entry，_category/_element/_select只root，_childAction/_input分開、_edit只control，dispose清三controller，build各boundedhost。不建立FileExplorer adapter、產品runtime或第二theme。
