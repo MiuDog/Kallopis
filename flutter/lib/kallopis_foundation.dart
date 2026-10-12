@@ -214,3 +214,4 @@ export 'src/foundation/content/klp_rich_text.dart';
 export 'src/foundation/content/klp_text.dart';
 export 'src/foundation/klp_palette.dart';
 export 'src/features/actions/command_keymap/klp_command_keymap.dart';
+export 'src/features/actions/command_shortcut_host/klp_command_shortcut_host.dart';
