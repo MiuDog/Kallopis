@@ -410,7 +410,7 @@ State _controls/_target/_usage對應自己的公開props，_child只提供明示
 
 修訂 FLUTTER-PROGRESS-COLLECTION-SPECIMENS-r1，IDOC-01/02/03/06/08；exact lib/component_specimens.dart、新 lib/progress_collection_specimens.dart。KlpProgress、KlpStepper、KlpTaskList、KlpScheduleList、KlpTimeline 五個正式target；其餘元件仍維持全273目標。
 
-ProgressCollectionComponentSpecimen(name) 只讀公開foundation與Flutter widgets；State擁有title/detail/draft controllers、進度值/state/segments、step current/direction、consumer task checked Set、資料數量及 callback log。controls使用公開DTO及enum；每個target真實constructor與自身使用碼；Progress cancel只記consumer動作，TaskList原onChanged依index回寫checked Set；Timeline content明示child input/action，不能當root callback；Stepper/Schedule無callback不虛構。改數量保持stepIndex合法並移除無對應task id；環境不清state，epoch reset，dispose清controller。使用有限280舞台scroll，水平step寬度不足由consumer提供可水平捲動host，不改library算法。
+ProgressCollectionComponentSpecimen(name) 只讀公開foundation與Flutter widgets；State擁有title/detail/draft controllers、進度值/state、step current/direction、consumer task checked Set、資料數量及 callback log。controls使用公開DTO及enum；Progress segments依analyze deprecated契約無呈現效果，不納入controls或constructor；每個target真實constructor與自身使用碼；Progress cancel只記consumer動作，TaskList原onChanged依index回寫checked Set；Timeline content明示child input/action，不能當root callback；Stepper/Schedule無callback不虛構。改數量保持stepIndex合法並移除無對應task id；環境不清state，epoch reset，dispose清controller。使用有限280舞台scroll，水平step寬度不足由consumer提供可水平捲動host，不改library算法。
 
 驗收五registry與正式renderable、公開analyze、同sourceprefixrelease、native五頁自身controls/文字/Progress cancel與Task toggle/Timeline child、四mode/spacious/local320保留草稿及reset、scope2/diff。無core/persist/crosslanguage新風險，不新增鏡像tests；library/tests/config/style/site/docs禁止寫。actual窄browser及感官human-pending。
 
