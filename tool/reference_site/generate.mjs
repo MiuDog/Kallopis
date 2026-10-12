@@ -4,6 +4,7 @@ import { homePage, shell } from './layout.mjs';
 import { documents, documentRoutes } from './documents.mjs';
 import { renderMarkdown } from './markdown.mjs';
 import { validateReactSpecimens, renderReactSpecimen } from './react-specimens.mjs';
+import { validateReactScenarios, renderReactScenario } from './react-scenarios.mjs';
 
 const root = path.resolve(import.meta.dirname, '..', '..');
 const output = path.join(root, 'build', 'reference-site');
@@ -80,13 +81,18 @@ function page(relativePath, title, content, sourcePath = '') {
 
 async function main() {
 	const args = process.argv.slice(2);
-	if (args.length && (args.length !== 1 || args[0] !== '--react')) throw new Error('Usage: generate.mjs [--react]');
+	if (new Set(args).size !== args.length || args.some(arg => !['--react', '--react-scenes'].includes(arg)) || (args.includes('--react-scenes') && !args.includes('--react'))) throw new Error('Usage: generate.mjs [--react [--react-scenes]]');
 	validateManifest();
 	// 全部正式輸入與bundle成功才可清理既有輸出，錯誤保留上一份網站。
 	let reactComponents = null;
-	if (args.length) {
+	if (args.includes('--react')) {
 		const { reactSpecimenRegistry } = await import('../../react/example/specimen-registry.mjs');
 		reactComponents = validateReactSpecimens(JSON.parse(fs.readFileSync(path.join(root, 'react/build/reference-components.json'), 'utf8')), reactSpecimenRegistry);
+	}
+	let reactScenarios = null;
+	if (args.includes('--react-scenes')) {
+		const { reactScenarioRegistry } = await import('../../react/example/scenario-registry.mjs');
+		reactScenarios = validateReactScenarios(reactScenarioRegistry);
 	}
 	const reactBundle = path.join(root, 'react/example/dist');
 	if (reactComponents && !fs.existsSync(path.join(reactBundle, 'index.html'))) throw new Error('Missing React example bundle');
@@ -159,6 +165,15 @@ async function main() {
 		page('docs/react/components/index.html', 'React 元件', `<div class="eyebrow">REACT</div><h1>React 互動元件</h1><p>每頁直接使用公開package元件，可切換風格、參數並查看回呼。</p><ul class="api-list">${reactComponents.map(component => `<li><a href="${escapeHtml(relative('docs/react/components/index.html', component.href))}"><code>${escapeHtml(component.name)}</code></a></li>`).join('')}</ul>`);
 	}
 
+	if (reactScenarios) {
+		for (const scene of reactScenarios) {
+			const bundleUrl = `${relative(scene.href, 'examples/react/index.html')}?scenario=${encodeURIComponent(scene.id)}`;
+			page(scene.href, scene.title, `<div class="eyebrow">REACT SCENARIO</div><h1>${escapeHtml(scene.title)}</h1>${renderReactScenario(scene, bundleUrl)}`);
+			search.push({ title: scene.title, category: 'React Scenario', apiId: scene.id, href: scene.href });
+		}
+		page('docs/react/scenarios/index.html', 'React GUI 場景', `<div class="eyebrow">REACT</div><h1>React GUI 場景</h1><p>以本庫公開元件組合使用場景，可操作布局、命令及風格。</p><ul class="api-list">${reactScenarios.map(scene => `<li><a href="${escapeHtml(relative('docs/react/scenarios/index.html', scene.href))}">${escapeHtml(scene.title)}</a></li>`).join('')}</ul>`);
+	}
+
 	const guideLinks = [];
 	for (const document of renderedDocuments) {
 		const {source, href, title, category, html, body} = document;
@@ -168,13 +183,13 @@ async function main() {
 	}
 	const componentDeclarations = api.modules.flatMap((module) => module.declarations).filter((item) => ['class', 'abstractClass', 'baseClass', 'finalClass', 'interfaceClass', 'sealedClass', 'mixinClass'].includes(item.kind));
 	page('docs/components/index.html', 'Components', `<div class="eyebrow">COMPONENTS</div><h1>公開型別</h1><p class="lead">依實際 public surface 產生；詳細 constructor 與 member 請進入 API 頁。</p><ul class="api-list">${componentDeclarations.map((item) => `<li><a href="${escapeHtml(relative('docs/components/index.html', declarationRoute(item)))}"><code>${escapeHtml(item.name)}</code></a><span>${escapeHtml(item.module)} · ${item.surfaces.map((surface) => escapeHtml(surface)).join(' · ')}</span></li>`).join('')}</ul>`);
-	page('docs/index.html', 'Documentation', `<div class="eyebrow">DOCUMENTATION</div><h1>產品組合權，設計系統品質</h1><p class="lead">Kallopis 以通用視覺語意與 token 維持一致；各框架庫依規範實作，產品擁有畫面、導航與流程。</p><div class="actions"><a class="button primary" href="design-system/index.html">通用視覺規範</a><a class="button secondary" href="${escapeHtml(relative('docs/index.html', 'docs/api/index.html'))}">Flutter API</a><a class="button secondary" href="${escapeHtml(relative('docs/index.html', 'docs/components/index.html'))}">公開型別</a></div>${reactComponents ? '<p><a class="button secondary" href="react/components/index.html">React 互動元件</a></p>' : ''}<h2>Current guides</h2><ul>${guideLinks.join('')}</ul>`);
+	page('docs/index.html', 'Documentation', `<div class="eyebrow">DOCUMENTATION</div><h1>產品組合權，設計系統品質</h1><p class="lead">Kallopis 以通用視覺語意與 token 維持一致；各框架庫依規範實作，產品擁有畫面、導航與流程。</p><div class="actions"><a class="button primary" href="design-system/index.html">通用視覺規範</a><a class="button secondary" href="${escapeHtml(relative('docs/index.html', 'docs/api/index.html'))}">Flutter API</a><a class="button secondary" href="${escapeHtml(relative('docs/index.html', 'docs/components/index.html'))}">公開型別</a></div>${reactComponents ? '<p><a class="button secondary" href="react/components/index.html">React 互動元件</a></p>' : ''}${reactScenarios ? '<p><a class="button secondary" href="react/scenarios/index.html">React GUI 場景</a></p>' : ''}<h2>Current guides</h2><ul>${guideLinks.join('')}</ul>`);
 	write('index.html', homePage({
 		apiCount: apiDeclarations.length,
 		moduleCount: api.modules.length,
 	}));
 	write('search-index.json', `${JSON.stringify(search, null, '\t')}\n`);
-	write('site-manifest.json', `${JSON.stringify({ surfaces: api.surfaces, apiModules, apiDeclarations, ...(reactComponents ? { reactComponents } : {}), guides: documents.map(({source}) => source), documents }, null, '\t')}\n`);
+	write('site-manifest.json', `${JSON.stringify({ surfaces: api.surfaces, apiModules, apiDeclarations, ...(reactComponents ? { reactComponents } : {}), ...(reactScenarios ? { reactScenarios } : {}), guides: documents.map(({source}) => source), documents }, null, '\t')}\n`);
 	console.log(`Generated ${apiDeclarations.length} canonical API pages across ${api.modules.length} modules.`);
 }
 

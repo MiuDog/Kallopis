@@ -1,3 +1,4 @@
+import { validateReactScenarios, renderReactScenario } from './react-scenarios.mjs';
 import { validateReactSpecimens } from './react-specimens.mjs';
 import fs from 'node:fs';
 import path from 'node:path';
@@ -125,7 +126,7 @@ for (const entry of search) {
 
 // React清單重新對正式輸入驗證；不能相信生成manifest聲稱的完整性。
 const args = process.argv.slice(2);
-if (args.length && (args.length !== 1 || args[0] !== '--react')) failures.push('Usage: verify.mjs [--react]');
+if (new Set(args).size !== args.length || args.some(arg => !['--react', '--react-scenes'].includes(arg)) || (args.includes('--react-scenes') && !args.includes('--react'))) failures.push('Usage: verify.mjs [--react [--react-scenes]]');
 if (args.includes('--react') && !site.reactComponents) failures.push('Missing React component manifest');
 if (site.reactComponents) {
 	try {
@@ -142,7 +143,7 @@ if (site.reactComponents) {
 			if (!html.includes(`src="${bundleUrl}"`) || !html.includes(`title="${component.name} React 互動展示"`) || !html.includes(`href="${bundleUrl}"`) || !html.includes('data-specimen-state="loading"')) failures.push(`Invalid React specimen embed: ${component.name}`);
 			if (entries.filter(entry => entry.apiId === component.id && entry.href === component.href).length !== 1) failures.push(`React search identity mismatch: ${component.name}`);
 		}
-		for (const href of actualHtml) if (href.startsWith('docs/react/') && !routes.has(href)) failures.push(`Unexpected React page: ${href}`);
+		for (const href of actualHtml) if (href.startsWith('docs/react/components/') && !routes.has(href)) failures.push(`Unexpected React page: ${href}`);
 		const bundle = path.join(output, 'examples/react/index.html');
 		const html = fs.readFileSync(bundle, 'utf8');
 		const assets = [...html.matchAll(/(?:src|href)="(\.\/assets\/[^"?#]+)"/g)];
@@ -150,6 +151,34 @@ if (site.reactComponents) {
 		for (const [, asset] of assets) if (!fs.existsSync(path.resolve(path.dirname(bundle), asset))) failures.push(`Missing React bundle asset: ${asset}`);
 	} catch (error) { failures.push(`React verification failed: ${error.message}`); }
 }
+
+// 場景重新讀取 example 權威，不相信產物自述或重複名稱表。
+if (args.includes('--react-scenes') && !site.reactScenarios) failures.push('Missing React scenario manifest');
+const scenarioRoutes = new Set();
+if (site.reactScenarios) {
+	try {
+		const { reactScenarioRegistry } = await import('../../react/example/scenario-registry.mjs');
+		const expected = validateReactScenarios(reactScenarioRegistry);
+		if (JSON.stringify(site.reactScenarios) !== JSON.stringify(expected)) failures.push('React scenario manifest mismatch');
+		if (!site.reactComponents) failures.push('React scenarios require component bundle gate');
+		const entries = search.filter(entry => entry.category === 'React Scenario');
+		if (entries.length !== expected.length) failures.push('React scenario search count mismatch');
+		const index = fs.readFileSync(path.join(output, 'docs/react/scenarios/index.html'), 'utf8');
+		const docsIndex = fs.readFileSync(path.join(output, 'docs/index.html'), 'utf8');
+		if (!docsIndex.includes('href="react/scenarios/index.html"')) failures.push('Missing React scenario documentation entry');
+		scenarioRoutes.add('docs/react/scenarios/index.html');
+		for (const scene of expected) {
+			scenarioRoutes.add(scene.href);
+			const html = fs.readFileSync(path.join(output, scene.href), 'utf8');
+			const bundleUrl = `${path.posix.relative(path.posix.dirname(scene.href), 'examples/react/index.html')}?scenario=${encodeURIComponent(scene.id)}`;
+			if (!html.includes(renderReactScenario(scene, bundleUrl))) failures.push(`Invalid React scenario embed: ${scene.id}`);
+			if (!index.includes(`href="${scene.id}.html"`)) failures.push(`Missing React scenario index link: ${scene.id}`);
+			if (entries.filter(entry => entry.apiId === scene.id && entry.href === scene.href && entry.title === scene.title).length !== 1) failures.push(`React scenario search mismatch: ${scene.id}`);
+		}
+	} catch (error) { failures.push(`React scenario verification failed: ${error.message}`); }
+}
+for (const href of actualHtml) if (href.startsWith('docs/react/scenarios/') && !scenarioRoutes.has(href)) failures.push(`Unexpected React scenario page: ${href}`);
+if (!site.reactScenarios && search.some(entry => entry.category === 'React Scenario')) failures.push('Unexpected React scenario search entries');
 
 // 步驟 4：固定網站入口與產物報告。
 for (const required of ['index.html', 'docs/index.html', 'docs/api/index.html', 'docs/components/index.html']) {
