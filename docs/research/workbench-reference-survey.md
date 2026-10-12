@@ -12,6 +12,7 @@
 | [Blockbench Panel](https://web.blockbench.net/docs/classes/generated_interface_panels.Panel.html) | 公開 API 包含附加 panel、選擇 tab、調整大小、折疊、位置自訂與重設；也提供浮動 panel 能力。 | 沿用 panel registry、受控位置、tabs、收合與重設；不照搬其應用程式資料模型。 |
 | [Blockbench Action](https://web.blockbench.net/docs/classes/generated_interface_actions.Action.html)、[Keybind](https://web.blockbench.net/docs/classes/generated_interface_keyboard.Keybind.html) | Action 帶有條件、分類、選單／工具列及 keybind；Keybind 提供錄製、設定、保存及 conflict 狀態。 | 命令 metadata 接入多個入口，提供快捷鍵錄製與診斷；保存透過 consumer callback。 |
 | [Visual Studio 視窗布局](https://learn.microsoft.com/en-us/visualstudio/ide/customizing-window-layouts-in-visual-studio?view=visualstudio) | 工具視窗可停靠、浮動，支援自訂布局的保存與套用。 | 提供布局匯出、還原及重設；命名方案與跨裝置同步由產品決定。 |
+| [Blender 4.5 Workspaces](https://docs.blender.org/manual/en/4.5/interface/window_system/workspaces.html) | workspace 是針對任務的 area／editor 組合；Topbar 分頁支援切換、更名、新增及複製／刪除／重排。 | 作為第三個 GUI 場景的任務工作區與分區參考；不移植 scene 或 editor 核心。 |
 | [Qt QMainWindow](https://doc.qt.io/qt-6/qmainwindow.html) | 提供 resizeDocks、tabifiedDockWidgets、saveState、restoreState。 | 作為停靠尺寸與布局保存的框架參考；本庫自行定義版本化契約，不相容其二進位格式。 |
 
 表中的「採用方向」是本專案推論與決策，不代表上游 API 或布局算法已移植。研究以官方文件可觀察行為為依據；未將各軟體原始碼或內部算法視為已完成審核。
