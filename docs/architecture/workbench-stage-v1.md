@@ -1,6 +1,6 @@
 # Workbench v1 本階段計畫
 
-修訂：`WORKBENCH-STAGE-r1`；2026-10-12。使用者已接受執行並建立持續 goal；本表是整合順序，不代表已完成。
+修訂：`WORKBENCH-STAGE-r1`；2026-10-13。使用者已接受執行並建立持續 goal；本表是整合順序，不代表已完成。
 
 本階段包含 [Workbench](../../spec/workbench-v1.md)、[可替換風格](../../spec/style-pack-v1.md) 與 [互動 docs／GUI 範例](../../spec/interactive-docs-v1.md)。各 module 的 packet 必須先完成公開契約與架構，再開始其 BUILD；依賴尚未完成時不建立偽造 revision。
 
@@ -14,7 +14,7 @@
 | 6 | docs API／元件页嵌入及場景頁 | `tool/reference_site/` | 公開元件 → specimen → bundle → route 全鏈 coverage；前綴及資產檢查 |
 | 7 | 權威切換、CI、文件與提交 push | repository 整合 owner | SP-01～08、IDOC-01～08、WB-01～21 evidence；繼承失敗另列、精確提交與 push 記錄 |
 
-已觀察進度：STYLE-PACK-1／2 完成（269 原料、350 語意 × 4、118 原文配方；114 checks、CLI check 及 scope check 通過）。REACT-STYLE-1 完成：公開 JSON 風格匯入、原子覆寫、全量 scoped Provider、獨立套件 runtime，21 項 React checks 通過；瀏覽器觀察替換／拒絕／還原與窄畫面。docs 五份來源已接線，15 項網站檢查及 519 canonical API 頁／25 文件生成與 verifier 通過。FLUTTER-STYLE-1 的完整 pack 接入已完成；recipe 全部視覺參數、Workbench 布局及網站互動 bundle 尚未完成。
+已完成stylepack parser／catalog（269原料、350語意×4、118原文recipe）及雙框架注入；finite linear／Dock／命令核心與入口／palette和公開consumer亦交付。recipe全參數audit／default權威切換、popup／shortcut、逐元件網站互動及3GUI×2仍未完成。當前reference547API／31Markdown；詳細可觀察證據與下一步只讀[交接](../workbench-handoff.md)。
 
 ## 合作邊界
 
@@ -55,9 +55,9 @@ GitHub push 已授權，無需重問；仍需先確認範圍及實際檢查。�
 | style pack | common parser／catalog、350 semantics×4、Flutter／React theme接入 | typed recipes／全部參數與元件audit／default值權威切換 |
 | finite linear | 雙框架pure算法與原生Row／Column／Pane、公開consumer | 網站逐元件specimen整合 |
 | Dock | 雙框架codec／atomic operations／有限geometry／原生UI／公開example | browser hoverpreview／cancel矩陣、resize callback平台差異audit |
-| 命令 | 雙框架generic registry／registered toolbar／menu／palette；公開consumer | Flutter modal背景語意穿透已由單source修正及nativebrowser同座標回歸通過；接續anchor／context menu |
+| 命令 | 雙框架generic registry／registered toolbar／menu／palette；公開consumer | Flutter modal背景語意穿透已由單source修正及nativebrowser同座標回歸通過；先完成ENTRY-GEOMETRY前置，再接anchor／context menu |
 | 快捷鍵 | 已接受完整scope | chord／scope／conflict／remap／recording共通契約及兩框架接入 |
-| 網站 | 30Markdown／547 canonical API／17modules／三surfaces；extract／generate／verify及15checks | 每個公開可呈現元件專屬互動、bundle／registry／coverage；3GUI×2框架 |
+| 網站 | 31Markdown／547 canonical API／17modules／三surfaces；extract／generate／verify及15checks | 每個公開可呈現元件專屬互動、bundle／registry／coverage；3GUI×2框架 |
 | GitHub | 隔離精確commits，guarded同步main並保留index | 全部目標完成、保留發布閘門後精確push；尚未push |
 
-公開清冊或單一總覽iframe不能當作全部互動展示完成；protected deterministic code、nativebrowser觀察與人類感官接受分別記錄。現在先PLAN anchor／context menu，不重做已完成style／linear／Dock／command foundations。
+公開清冊或單一總覽iframe不能當作全部互動展示完成；protected deterministic code、nativebrowser觀察與人類感官接受分別記錄。現在先ENTRY-GEOMETRY前置的fresh保護檢查與bounded BUILD，再PLAN anchor／context menu，不重做已完成style／linear／Dock／command foundations。

@@ -2,6 +2,7 @@
 export const documents = [
 	['docs/architecture/workbench-command-palette-contract.md', 'docs/guides/workbench-command-palette-contract.html', '命令面板契約', 'Guide'],
 	['docs/architecture/workbench-command-entry-contract.md', 'docs/guides/workbench-command-entry-contract.html', '命令工具列與選單契約', 'Guide'],
+	['docs/architecture/workbench-command-entry-geometry-contract.md', 'docs/guides/workbench-command-entry-geometry-contract.html', 'Registered 命令入口有限幾何', 'Guide'],
 	['README.md', 'docs/guides/README.html', 'Project overview', 'Guide'],
 	['docs/ai/react-usage.md', 'docs/guides/react-usage.html', 'React 產品使用', 'Guide'],
 	['spec/workbench-v1.md', 'docs/guides/workbench-v1.html', 'Workbench v1 規範', 'Guide'],
