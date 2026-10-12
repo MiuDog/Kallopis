@@ -40,3 +40,17 @@ flowchart LR
 ```
 
 完成證據：React dcc15e4f、Flutter a8124a62；各 21 項受保護公開 checks 通過，library build／native analyze、scope gate 通過。實際 Widget／DOM 接入、完整風格下布局保護及互動展示仍待後續。
+
+## 直接元件接入：WB-LINEAR-UI-r1
+
+本階段把已驗證算法接到一般布局，不改 Dock 或產品內容模型。有限主軸先扣實際 gutter，再投影每個 child 的 minimum／maximum／preferred／flex；所有內容槽限制在所得尺寸內並裁切，最大尺寸留下的 unused 按 start／end 對齊。巢狀每層只扣自己的 gutter，不重複 root inset。
+
+相鄰普通 child 在 standard spacing 時有一份 scope 的 theme.spacing.space2；none 沒有自動間距。顯式 divider 占一份相同 gutter，其前後不再加普通間距；連續 divider 各占一份。Root standard inset 只套一次，有限軸每側 min(semantic inset, axis extent／2)，不產生負內容尺寸。最小值不足或極大 gutter 的行為沿用上文；不增加拖曳 callback 或持久狀態。
+
+Flutter 公開新增 const `KlpLayoutBounds({double minimum=0,double? maximum,double? preferred})`；`KlpLayoutNode.bounds` 預設空 bounds，自訂 subclass 仍可沿用既有 flex getter。LayoutRow／LayoutColumn／LayoutSpacer／KlpLayoutPane／KlpAppFrame 增加 optional bounds；LayoutColumn 增加 alignment（預設 start），不改既有參數。新增無手勢 `KlpLayoutDivider`；既有 LayoutResizeHandle／onResize 保留來源及行為相容，但只作既有 caller 遷移用，新通用展示使用無手勢 divider。
+
+有 preferred 時先用明確值；沒有 preferred 且 flex>0 時從 minimum 開始，保持既有 Expanded 語意；flex=0 時從 child 的自然尺寸開始（包括既有 trailing pane／frame role 寬度）。主軸無上限時使用自然尺寸總和、gutter 與 bounds 的 preferred，flex 不嘗試填滿無限空間；每個 content 仍須能給出有限自然尺寸，否則以明確例外拒絕，不能產生無限 geometry。交叉軸有上限時填滿，沒有上限時取 children 的自然最大值；不能無條件 stretch Infinity。Consumer 內容是否支援 intrinsic／自然 measurement 仍屬其 Widget 契約；庫不驗證完整 Widget tree。
+
+Flutter render 私有部分可量測及配置直接 Widgets，但不得變成外部 node／adapter／renderer runtime。既有 theme／Frame 表面、內容群組與 floatingAction 保持；本 slice 不重新設計視覺。React 對應直接元件在其下一個 module packet 定義，由 DOM 尺寸觀察轉同一 geometry，不要求產品建立 Flutter 模型。
+
+本次 FLUTTER-LAYOUT-2 的驗收為公開 bounds、巢狀 row／column、gutter 不重複、min／max／preferred、有限不足空間、極大 scope gutter／root inset、自然尺寸 fallback、resize／theme 更新、divider 無手勢、舊公開 API 相容。獨立 Test Author 保護可觀察 Widget 尺寸及非感官互動；渲染檢視使用既有公開 Catalog consumer，感官品質仍由人類接受。

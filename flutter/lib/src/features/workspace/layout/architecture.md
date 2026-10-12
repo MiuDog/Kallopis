@@ -1,5 +1,28 @@
 # Workspace Layout Architecture
 
+## FLUTTER-LAYOUT-2（READY）
+
+修訂 `FLUTTER-LAYOUT-r2`，接入共通 [WB-LINEAR-UI-r1](../../../../../../docs/architecture/workbench-linear-contract.md)。公開 KlpLayoutBounds／KlpLayoutDivider 與各 node 的 bounds、Column alignment 為可逆增量；舊 LayoutResizeHandle.onResize 相容保留，新展示使用無手勢 divider。
+
+`klp_app_layout.dart` 擁有直接 Widgets／公開 bounds、semantic 投影與現有 floating／Frame；`internal/klp_linear_render.dart` 為同 library 的私有 part，擁有 `_KlpLinearSpec`、`_KlpLinearHost`、`_RenderKlpLinearHost`，只量測／配置同 compound 的 RenderBox children，使用既有 resolveKlpLinearLayout。它不對外暴露 state、序列化 UI 或 panel 模型。
+
+有限軸只用 solver 結果，內容每槽 clip；沒有 preferred 的 flex child 不預先索取自然主軸尺寸，保持 Expanded 行為。零 flex 量測自然值；unbounded main 時量測全部內容並以自然值建有限预算，flex 不增長。交叉軸有上限則填滿，否則量測 natural 最大值。無法得到有限自然值明確拒絕，不回傳 Infinity／NaN。Root inset、gap 與顯式 divider 只讀 scope space2，有限極端值按共通規則壓縮。
+
+BUILD 只寫主檔及 private render part；其餘唯讀。Test Author 只寫 `flutter/test/workbench_layout_test.dart`；highest local subject 是公開 Widget tree 幾何與重新布局，不寫 visual golden。沿用既有 restored workspace checks 保護 floating／8px 預設。M1 native 有限幾何與新的 bounds／divider，M2 unbounded fallback／更新／公開 analyze／既有 Catalog render。cold-start 8k–16k tokens／60–120分鐘，超過24k tokens或180分鐘回PLAN。
+
+```mermaid
+classDiagram
+	KlpLayoutNode <|-- LayoutRow
+	KlpLayoutNode <|-- LayoutColumn
+	KlpLayoutNode <|-- KlpLayoutPane
+	KlpLayoutNode <|-- KlpAppFrame
+	KlpLayoutNode --> KlpLayoutBounds
+	LayoutRow --> _KlpLinearHost
+	LayoutColumn --> _KlpLinearHost
+	_KlpLinearHost --> _RenderKlpLinearHost
+	_RenderKlpLinearHost --> KlpLinearLayoutResult : 公開純算法
+```
+
 狀態：IMPLEMENTED
 
 ## FLUTTER-LINEAR-1（完成）
