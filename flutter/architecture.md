@@ -164,4 +164,10 @@ FLUTTER-COMMAND-EXAMPLE-1公開consumer04cc372f：analyze No issues／scope2／r
 
 FLUTTER-COMMAND-ENTRY-GEOMETRY-r1 COMPLETE：BUILD1bdd6321單一source完成有限width／padding／icon／gap；新6＋原23共29Green、analyze／scope1／releaseweb及正常native consumer通過；極端native矩陣仍pending。見[local入口](lib/src/features/actions/command_entries/architecture.md)與[共同契約](../docs/architecture/workbench-command-entry-geometry-contract.md)。publicAPI／protectedtests／palette與theme保持；anchor／context popup接續PLAN。
 
-FLUTTER-COMMAND-POPUP-r1 READY：[local popup](lib/src/features/actions/command_popup/architecture.md)擁有受控open／anchor Rect／dismiss意圖、有限位置及native modal；直接組合stable registered menu。library slice只新來源與foundation匯出，fresh author new popup test；menu／palette／core／theme與既有tests保持。consumer及網站另packet。
+FLUTTER-COMMAND-POPUP-r1 COMPLETE：[local popup](lib/src/features/actions/command_popup/architecture.md)擁有受控open／anchor Rect／dismiss意圖、有限位置及native modal；直接組合stable registered menu。BUILD d17be03f只新來源與foundation匯出，fresh公開16＋原23checks、analyze與scope2通過。consumer及網站另packet。
+
+## FLUTTER-COMMAND-POPUP-EXAMPLE-1（READY）
+
+FLUTTER-COMMAND-POPUP-EXAMPLE-r1：只修改example/lib/catalog/registered_commands_page.dart，增加同registry的受控popup、GlobalKey按鈕原生bounds與右鍵pointer point；產品維護popupOpen／anchor／dismissReason，右鍵區域用同庫Surface／Text，不加業務功能或共享內部樣式。Native GestureDetector onSecondaryTapDown交globalPosition；BrowserContextMenu僅在example mounted owner停用原生選單並於dispose還原。既有palette／草稿／handler維持，catalog coveredComponents投影新增公開popup。library/tests/config/generated/其他module唯讀。
+
+此reversible consumer無必要新測試。M1 publicanalyze及exact1scope（2k／15分鐘）；M2 releaseweb與native button／右鍵／outside／Escape／一次執行／focus／draft觀察（4k／30分鐘）；cold2k～5k／15～35分鐘，參照FLUTTER-COMMAND-EXAMPLE-1；7k／45分鐘或其他路徑返回PLAN。未觀察項明示pending，感官human-pending。

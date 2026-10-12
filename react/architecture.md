@@ -597,7 +597,7 @@ flowchart TD
 	CSS --> Row
 ```
 
-## REACT-COMMAND-POPUP-1（READY）
+## REACT-COMMAND-POPUP-1（COMPLETE）
 
 REACT-COMMAND-POPUP-r1，依[共同popup](../docs/architecture/workbench-command-popup-contract.md)。新`command-popup.tsx`擁有KlpRegisteredCommandPopup<C>／props、readonly KlpCommandPopupAnchor（x／y／width／height邏輯viewport像素）及KlpCommandPopupDismissReason union。props沿既有menu的registry／getContext／items／label／emptyLabel／onResult，另required open／anchor／onDismiss，可選className／id；不繼承geometry可覆蓋的style。index單向匯出。
 
@@ -620,4 +620,20 @@ flowchart TD
 	Menu --> Registry[existing command core]
 ```
 
-以上planned責任由BUILD完成後owner替換為實際function／class索引。
+BUILD75c24b4e exact3通過；fresh TestAuthor SHA256 BBAA33EB6E318F8278871A295DB87E68A61CB468B411AACA2D331C2CFFAC898D，12checks含typedconsumer全部Green；原12 entry checks及hash保持，既有act警告保留。librarybuild／consumer TypeScript與diffcheck通過。RTL fixture缺computed direction時沿最近原生dir屬性，沒有第二方向權威。原生layout／inert／click-through與感官另browser-pending。
+
+| 實際函式／介面 | 來源与責任 |
+| --- | --- |
+| KlpCommandPopupAnchor／KlpRegisteredCommandPopupProps／dismiss union | command-popup.tsx；readonly viewport anchor、同menu公開資料、受控開關與意圖，無style覆寫入口 |
+| length／trailingEdge／placement | 同source；有限長度、先夾邊避免加總溢位、方向與上下較大側scrollport |
+| KlpRegisteredCommandPopup | 驗證即使closed、registry replacement隔離key、closed不mountmenu |
+| PopupSession／dismiss／result | 同Provider DOM與同公開menu；latest callback、controlled去重與active owner |
+| attachModal／detach | native showModal／close、條件回焦及externalfocus保護 |
+| observe／measure／update | native client／menu scrollHeight／direction，observer＋resize cleanup、同值guard |
+| key／outside／escape／cancel／namedOutside | Tab閉合、只原生outside／Escape意圖，named nonTabstop dismiss |
+
+## REACT-COMMAND-POPUP-EXAMPLE-1（READY）
+
+REACT-COMMAND-POPUP-EXAMPLE-r1：只example/commands-demo.tsx增加同registry公開popup；產品以button.currentTarget.getBoundingClientRect提供anchor、contextmenu clientX/Y提供point並preventDefault。既有palette／handler／draft保持，popupOpen／anchor／dismissReason由產品state擁有；觸發及context區域用庫Button／Card／Text，不新增共用風格。library/tests/main/CSS/config/其他module唯讀。
+
+M1公開consumer型別與exact1scope（1k／10分鐘）；M2 nativebutton／右鍵／outside／Escape／一次執行／focus／draft與同theme觀察（3k／20分鐘）；cold1k～4k／10～25分鐘，參照REACT-COMMAND-EXAMPLE-1；6k／35分鐘或其他路徑返回PLAN。reversibleconsumer不新增鏡像tests，未觀察native項與感官明示pending。

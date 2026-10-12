@@ -4,7 +4,7 @@
 
 ## 下一個可執行步驟
 
-1. 雙框架command core、registered toolbar/menu、palette及公開CommandsDemo完成。Flutter modal修正35614d5b完成且nativebrowser同座標outside通過；有限入口Flutter BUILD1bdd6321／React BUILDaff1eaf4亦完成，共29／23checks Green。WB-COMMAND-POPUP-r1與兩框架PLAN da945403 READY，fresh flutter_command_popup_test_author／react_command_popup_test_author正在寫唯一新公開popuptests；不stage/commit，父層整合後發cleanbase BUILD packets。popup採用同registered menu，保留既有CommandMenu／WorkspaceCommand caller與core；不得複製第二份rows或handler。
+1. 雙框架command core、registered toolbar/menu、palette及公開CommandsDemo完成。有限入口Flutter BUILD1bdd6321／React BUILDaff1eaf4共29／23checks Green。popup library亦完成：Flutter d17be03f protected16＋原23、analyze／scope2；React75c24b4e protected12＋原12、typedconsumer／build／scope3。Flutter初次兩失敗是背景fixture收縮，由獨立TestAuthor修正並加入實際Overlay尺寸校验，原assertions保留。接續兩框架root architecture的COMMAND-POPUP-EXAMPLE-r1 READY，僅各既有CommandsDemo source接button及右鍵point觸發，再nativebrowser與網站API更新。不得複製第二份rows或handler。
 2. 雙框架快捷鍵/chord/scope/conflict/remap/recording契約與接入。不可用core冒充整個命令stage完成。
 3. 網站每個公開可呈現元件專屬互動specimen、registry/bundle/coverage；3GUI×2框架；typedrecipes／完整風格中立與參數／default權威切換。
 4. 補browser hoverpreview/cancel矩陣、Flutter continuousresize與React endcommit差異契約審核；保留所有既有CI/發布閘門，精確commit/push。感官接受human-pending。
