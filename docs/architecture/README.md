@@ -1,6 +1,6 @@
 # Kallopis 架構入口
 
-新核心目標以 [跨框架核心目標](../../spec/multi-framework-design-system.md) 為準：共通視覺語意、token 與組合規範先行，各框架庫依規範實作並位於第一層子目錄。共通視覺已採用 [正式規範](../design-tokens/KALLOPIS-DESIGN-MAP.md)；[docs 網站整合架構](../../tool/reference_site/architecture.md) 為 PLAN READY、尚未實作。各框架庫重組另行規劃。
+新核心目標以 [跨框架核心目標](../../spec/multi-framework-design-system.md) 為準：共通視覺語意、token 與組合規範先行，各框架庫依規範實作並位於第一層子目錄。共通視覺已採用 [正式規範](../design-tokens/KALLOPIS-DESIGN-MAP.md)；[docs 網站整合架構](../../tool/reference_site/architecture.md) 已整合正式章節；互動展示與 GUI 範例仍在 Workbench 階段執行。Flutter／React 已位於第一層子目錄。
 
 目前已實作的 Flutter 依賴方向：產品 Flutter Widget tree → Kallopis 公開 Flutter 元件 → Kallopis semantic theme → Flutter。下列文件描述此實作與既有責任邊界。
 

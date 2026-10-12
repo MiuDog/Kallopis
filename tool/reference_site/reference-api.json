@@ -15641,6 +15641,102 @@
 					]
 				},
 				{
+					"id": "package:kallopis/src/features/workspace/layout/klp_linear_layout.dart#KlpLinearItem",
+					"name": "KlpLinearItem",
+					"slug": "klp-linear-item",
+					"kind": "finalClass",
+					"module": "features.workspace",
+					"sourceUri": "package:kallopis/src/features/workspace/layout/klp_linear_layout.dart",
+					"primarySurface": "foundation",
+					"surfaces": [
+						"foundation"
+					],
+					"signature": "final class KlpLinearItem",
+					"documentation": "單一主軸尺寸，不持有內容、panel 或產品狀態。",
+					"typeRelationships": {
+						"extends": "Object",
+						"mixins": [],
+						"implements": []
+					},
+					"members": [
+						{
+							"name": "KlpLinearItem",
+							"kind": "constructor",
+							"signature": "KlpLinearItem({\n  double minimum = 0,\n  double? maximum,\n  double preferred = 0,\n  double flex = 1,\n})",
+							"documentation": ""
+						},
+						{
+							"name": "flex",
+							"kind": "field",
+							"signature": "double flex",
+							"documentation": "flex：剩餘空間的比例權重；零表示不增長。"
+						},
+						{
+							"name": "maximum",
+							"kind": "field",
+							"signature": "double? maximum",
+							"documentation": ""
+						},
+						{
+							"name": "minimum",
+							"kind": "field",
+							"signature": "double minimum",
+							"documentation": "minimum／maximum：正常空間下的尺寸限制。"
+						},
+						{
+							"name": "preferred",
+							"kind": "field",
+							"signature": "double preferred",
+							"documentation": "preferred：分配 flex 前要求的尺寸，會先限制在合法範圍。"
+						}
+					]
+				},
+				{
+					"id": "package:kallopis/src/features/workspace/layout/klp_linear_layout.dart#KlpLinearLayoutResult",
+					"name": "KlpLinearLayoutResult",
+					"slug": "klp-linear-layout-result",
+					"kind": "finalClass",
+					"module": "features.workspace",
+					"sourceUri": "package:kallopis/src/features/workspace/layout/klp_linear_layout.dart",
+					"primarySurface": "foundation",
+					"surfaces": [
+						"foundation"
+					],
+					"signature": "final class KlpLinearLayoutResult",
+					"documentation": "尺寸與 caller 隔離；留白由呈現層決定對齊位置。",
+					"typeRelationships": {
+						"extends": "Object",
+						"mixins": [],
+						"implements": []
+					},
+					"members": [
+						{
+							"name": "compressed",
+							"kind": "field",
+							"signature": "bool compressed",
+							"documentation": "compressed：間距被縮小或 minimum 無法全部滿足。"
+						},
+						{
+							"name": "extents",
+							"kind": "field",
+							"signature": "List<double> extents",
+							"documentation": ""
+						},
+						{
+							"name": "gutter",
+							"kind": "field",
+							"signature": "double gutter",
+							"documentation": ""
+						},
+						{
+							"name": "unused",
+							"kind": "field",
+							"signature": "double unused",
+							"documentation": ""
+						}
+					]
+				},
+				{
 					"id": "package:kallopis/src/features/workspace/message_composer/klp_message_composer.dart#KlpMessageComposer",
 					"name": "KlpMessageComposer",
 					"slug": "klp-message-composer",
@@ -19681,6 +19777,26 @@
 					],
 					"signature": "double klpWindowHeaderHeight(KlpGeometryTheme geometry, {double? windowHeaderMargin})",
 					"documentation": "解析 Header 的版面占位高度。",
+					"typeRelationships": {
+						"extends": null,
+						"mixins": [],
+						"implements": []
+					},
+					"members": []
+				},
+				{
+					"id": "package:kallopis/src/features/workspace/layout/klp_linear_layout.dart#resolveKlpLinearLayout",
+					"name": "resolveKlpLinearLayout",
+					"slug": "resolve-klp-linear-layout",
+					"kind": "function",
+					"module": "features.workspace",
+					"sourceUri": "package:kallopis/src/features/workspace/layout/klp_linear_layout.dart",
+					"primarySurface": "foundation",
+					"surfaces": [
+						"foundation"
+					],
+					"signature": "KlpLinearLayoutResult resolveKlpLinearLayout({\n  required double extent,\n  required double gutter,\n  required int gutterCount,\n  required List<KlpLinearItem> items,\n})",
+					"documentation": "先保留 gutter，再解析 minimum、preferred 與受限 flex。",
 					"typeRelationships": {
 						"extends": null,
 						"mixins": [],

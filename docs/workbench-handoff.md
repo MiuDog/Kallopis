@@ -8,6 +8,7 @@
 - DOCS-STAGE-1 完成：五份研究／規範／計畫已接入網站；15 checks、519 manifest 的 generate／verify 通過。尚未接互動 bundle。
 - REACT-STYLE-1 完成：JSON 匯入、原子覆寫、350 項 catalog 公開、全量 scoped CSS／hook、owned runtime；21 React checks、generate freshness、build/example、scope gate 通過。獨立 tarball consumer 通過；瀏覽器確認 8→12px 間距、背景替換、壞 JSON 保留現況、還原、深色、窄畫面及字型載入。typed recipe 展開與布局算法仍待後續。
 - FLUTTER-STYLE-1 完成：公開 JSON／object parser、四模式 typed resolver、原子覆寫、350 native 欄位及 ThemeExtensions 接入；19 項独立 checks、41 項既有 theme／accent checks、局部 analyze、generator freshness、scope gate 通過。未改受保護 tests 或 legacy JSON schema。
+- FLUTTER-LINEAR-1／REACT-LINEAR-1 完成：有限主軸公開算法各21項独立 checks，包含min／max／preferred／flex、間距守恆、比例退化、巨大有限值及immutable；Flutter analyze、React build、各scope gate通過。實際 Widget／DOM 接入尚未完成。
 - 未完成：recipe 全部視覺參數與元件對齊、風格下的布局保護及資料權威切換、Workbench 能力、全部 specimen、三種 GUI 各框架範例、網站互動 bundle、最終 CI／push。
 - 正式 Markdown 暫仍是值權威，風格 JSON 是逐項驗證的遷移資料。
 
@@ -21,8 +22,10 @@ REACT-STYLE-1 commit `2243c4a7`；Test Author SHA256 `15EA38EC657834F2169FBC5792
 
 FLUTTER-STYLE-1 實作 `17119f2b`；Test Author SHA256 `15B43CF1A61888D208B32785716163BEFD4B101D8ED02FB3ABF7D985C4527129` 未變。公開 `KlpStylePack`、`klpStyleParameters` 由 kallopis_theme.dart 匯出；buildKlpThemeVariant 的 stylePack 與 style 互斥，pack 不套舊透明度。
 
-下一步 PLAN 雙框架通用 layout：先核對既有 Flutter Row／Column／Pane 算法與 constraints，再制定 React 對應公開契約及跨框架幾何保護；Dock、commands、specimens 隨後接續。GUI 選用 VS Code、Blockbench、Blender；Blender 官方 4.5 workspace 正文已取得 HTTP 200。範例使用公開本庫元件及自己的 state，不引入編輯器／3D／終端核心。
+下一步 PLAN Row／Column／Pane 元件接入：使用已完成的公開幾何算法，固定 bounded axis／intrinsic fallback、root inset／gutter 壓縮、clip、min／max 投影，保留既有 Flutter API；React 建立直接元件。Dock、commands、specimens 隨後接續。GUI 選用 VS Code、Blockbench、Blender；Blender 官方 4.5 workspace 正文已取得 HTTP 200。範例使用公開本庫元件及自己的 state，不引入編輯器／3D／終端核心。
 
-Flutter adapter 完成後重新 extraction：521 canonical API／17 modules／三個公開入口；已更新已驗證網站 manifest，generate／verify 通過。已同步 main：相對 31cea818 的 15 個受檢查路徑；全部先確認 main 等於基線或新內容，再複製，index 未修改。Main 的 19 項 style pack checks、generator freshness 與 521 API generate／verify 也通過。下一次同步以 af93140c 為基線。
+Flutter adapter 完成後重新 extraction：521 canonical API／17 modules／三個公開入口；已更新已驗證網站 manifest，generate／verify 通過。已同步 main：相對 31cea818 的 15 個受檢查路徑；全部先確認 main 等於基線或新內容，再複製，index 未修改。Main 的 19 項 style pack checks、generator freshness 與 521 API generate／verify 也通過。每次同步的精確 sourceRevision 記錄於 main ignored build/workbench-last-sync.json；後續先讀該基線再做 guarded sync。
 
 一般布局現況（下一輪 bounded retrieval 起點）：Flutter module 為 flutter/lib/src/features/workspace/layout/architecture.md；實作只有 klp_app_layout.dart、klp_frame_groups.dart。現有線性配置使用原生 Row／Column／Expanded，加固定 semantic gutter；尚無一般 min／max 分配 resolver，極大 gap／固定 pane 可能溢出。LayoutResizeHandle 公開 onResize 且私有 _linearChildren 會建立手勢，和 KLP-0024 的一般 divider 不拖曳有差異；repo example／tests 未找到 callback caller。PLAN 必須保留公開相容性，明示處理，不能 BUILD 偷刪 API。React 尚無對應 layout module。
+
+本輪 LINEAR：Test Author commit 4c57c994，Flutter test SHA256 26F406F0C231B0362C2C73760740117771B097C25043DCB8FE484A7D647A653F、React test SHA256 AAE3EEF26F5530F4D5002BEA3698FF9F42B13722C547746021C58C9138145803 均未變。React implementation dcc15e4f、Flutter a8124a62；packets 位於main ignored build/task-packets/{react,flutter}-linear-1.json，BUILD均已閉合。DOCS-LINEAR-1實作3cfe2eea，15既有checks與scope gate通過；新共通來源網頁 docs/guides/workbench-linear-contract.html。重新 extraction 524 API／17 modules／26 docs，已更新已驗證manifest，generate／verify通過。

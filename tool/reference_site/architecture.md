@@ -1,6 +1,6 @@
 # Kallopis Reference Site
 
-## DOCS-LINEAR-1（READY）
+## DOCS-LINEAR-1（完成）
 
 修訂 `DOCS-LINEAR-r1`。將已實作雙框架尺寸算法的共通來源 `docs/architecture/workbench-linear-contract.md` 接入 `docs/guides/workbench-linear-contract.html`，Guide 分類。BUILD write_paths 只有 `tool/reference_site/documents.mjs`；既有 renderer、API identity、manifest、architecture、tests 與來源正文唯讀。沿用現有 15 項 registry／內容／link checks 及 generate／verify，不新增測試；本次 docs 路由不改展示功能。M1：來源、頁面、搜尋及引用可驗證。cold-start 1k–2k tokens／5–10 分鐘，參照 DOCS-STAGE-1；超過 3k tokens 或需要修改 renderer 回 PLAN。
 
@@ -173,3 +173,5 @@ VDOC-01～05 均已完成 deterministic module gate；資料由唯讀規範流�
 `documents.mjs` 僅有資料投影與 route Map，無類別。資料物件的 source／href／title／category 含義見上方契約；renderer 的 html／body／anchors 與 search body 是同一份文件的不同輸出投影，不能單獨手寫。
 
 整合更新：Flutter extractor 從 `flutter/lib/` 解析公開入口；文件清單新增 React 產品指南，網站仍直接讀取單一 Markdown 來源。當前來源 manifest 為519個公開宣告及20份文件。
+
+DOCS-LINEAR-1 實作 3cfe2eea：15 項既有 checks、524 canonical API／17 modules／26 文件 generate／verify、scope gate 通過。公開 manifest 重新 extraction 後由整合 owner 更新，不由 BUILD 手改。

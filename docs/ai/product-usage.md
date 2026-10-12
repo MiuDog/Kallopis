@@ -115,3 +115,9 @@ Kallopis 沒有某個產品畫面時，產品直接建立 Flutter Widget，並�
 # Flutter 套件位置
 
 Kallopis repository 根目錄維護共通規範；Flutter package 位於 `flutter/`。Consumer 的 path dependency 需由 `Kallopis` 改指向 `Kallopis/flutter`；package 名稱、公開 imports 與字型 package ownership 不變。以下指南仍適用於公開 Flutter API，Flutter 指令請從 `flutter/` 執行。
+
+## 通用有限尺寸計算
+
+從 foundation 使用 KlpLinearItem／resolveKlpLinearLayout，給有限主軸尺寸、scope 的 semantic gutter、間距數量及 minimum／maximum／preferred／flex，結果提供不可變 extents、實際 gutter、unused 與 compressed。庫不儲存產品內容或布局。
+
+先扣間距；空間不足時按 minimum 比例退化，極大間距最多占滿主軸；有空間時按 flex 分配並遵守 maximum，無可增長項目時保留 unused。完整規則見 [共通尺寸契約](../architecture/workbench-linear-contract.md)。目前 utility 已可使用，既有 Row／Column 的全面接入與風格下布局保護仍待下一階段。

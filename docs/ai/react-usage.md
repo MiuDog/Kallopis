@@ -1,5 +1,9 @@
 # Kallopis React
 
+通用尺寸算法從套件公開入口使用 `resolveKlpLinearLayout({extent,gutter,gutterCount,items})`。Item 的 minimum／maximum／preferred／flex 決定有限主軸上的尺寸分配，結果是 frozen 的 extents／gutter／unused／compressed；gutter 由目前 scope 的語意取得，產品提供可用尺寸與內容限制。
+
+先扣間距、再保 minimum 與 preferred、最後按 flex 分配；空間不足時比例退化，maximum 限制後保留留白。兩框架共用 [尺寸契約](../architecture/workbench-linear-contract.md)。此公開 utility 已可使用，Row／Column／Pane 的 DOM 接入仍待下一 slice，不能視為完整布局 UI 已交付。
+
 `@kallopis/react` v0.1 提供通用視覺語意與可使用的 React 19 核心元件。正式來源為 [通用規範](../design-tokens/KALLOPIS-DESIGN-MAP.md)；React 只維護平台接入及公開 API。
 
 ## 本機執行
