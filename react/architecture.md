@@ -1,5 +1,24 @@
 # React Foundation
 
+## REACT-DOCK-OPS-1（READY）
+
+修訂 `REACT-DOCK-OPS-r1`；沿用 WB-DOCK-OPS-r1。公開 applyKlpDockAction(layout, panels, action) → KlpDockActionResult（readonly layout／changed）。KlpDockArea 是 left／right／bottom；KlpDockDestination 是 kind tab（area／groupId／index）或 group（同欄位加extent）；KlpDockAction discriminated type 為 select(panelId)、move／open(panelId／destination)、merge(sourceGroupId／targetGroupId／index)、close(panelId／approved)、visibility(area／isVisible)、resizeArea(area／extent)、resizeGroup(groupId／extent)。type及上述欄位全數 required、無未知欄；destination同樣strict。indexes是最終非負整數，不能clamp。
+
+src/dock-layout-operations.ts 擁有受控單步資料操作、destination validation、group查找／移除／active fallback；透過已完成 encode／restore 驗證當前與結果snapshot，不複製第二套保存parser。只在提交操作時使用JSON純資料clone，不持有UI或全域registry。既有codec無改動，UI需在有效尺寸及close callback同意後才提交。pinned／dirty只屬產品metadata及後續呈現，不改保存schema。
+
+BUILD唯一write_paths：react/src/dock-layout-operations.ts、react/src/index.ts。Test Author唯一write react/test/dock-layout-operations.test.mjs；architecture、既有codec／tests、style、example、配置、其他module唯讀。M1 tab／group／visibility／close操作及非法atomic rejection；M2 resize preferences／immutable／publicbuild／typedconsumer／scope。cold-start 5k–9k tokens／40–70分鐘，參照 REACT-DOCK-STATE-1；12k／90分鐘或需改codec／UI回PLAN。整體Dock UI與style幾何仍待接入，不以pureutility宣稱互動完成。
+
+```mermaid
+flowchart TD
+	Consumer[UI提交或產品命令] --> Apply[applyKlpDockAction]
+	Apply --> Codec[已完成 encode / restore]
+	Apply --> Find[查找 panel / group]
+	Find --> Mutate[單一操作 / fallback]
+	Mutate --> Codec
+	Codec --> Result[immutable layout / changed]
+	Result --> Consumer
+```
+
 ## REACT-DOCK-STATE-1（完成）
 
 修訂 `REACT-DOCK-STATE-r1`；沿用 [WB-DOCK-STATE-r1](../docs/architecture/workbench-dock-contract.md) 的完整 wire／拒絕／reconciliation 契約。src/dock-layout-state.ts 是純資料邊界，不依賴 React、DOM、theme 或 storage；公開函式 encodeKlpDockLayout(layout) → string、restoreKlpDockLayout(source, panels) → KlpDockRestoreResult，由 index 匯出。TypeError 擁有非法 JSON／資料／清冊／capability 錯誤，失敗不修改產品原 layout。

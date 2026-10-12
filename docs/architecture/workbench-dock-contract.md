@@ -21,3 +21,16 @@ React 對應相同 JSON wire contract，native 型別不引用 Flutter；其 BUI
 ## 驗收
 
 保存順序、active、axis、visibility、extents roundtrip；手寫 schema；未知版本／欄位／重複 identity／非法 active／NaN／Infinity／負數／零 group extent 拒絕；registry reconciliation／capability／缺少 active fallback；來源與結果隔離、不可變。無感官驗收，也不宣稱目前 Dock UI 已完整完成。
+
+## 受控操作 WB-DOCK-OPS-r1
+
+READY；對應 WB-04／05／06／16。操作 utility 接收目前 layout、完整純 policy registry 及單一 action，返回深層不可變 layout／changed。先依 STATE-r1 驗證當前布局及清冊；若有 missing panel 或 capability 衝突拒絕，不能藉操作默默修復原資料。所有 request 欄位嚴格驗證；非法請求整份拒絕，原始資料及 registry 不修改。changed 以完整保存值是否改變為準，no-op 仍回傳與 caller 隔離的不可變快照。Flutter FormatException／React TypeError；純 operation 無 UI、theme、storage 或非同步 callback。
+
+- select：指定已放置 panel；更新該 group active，不改 area visibility。
+- move／open：指定 panel 及 destination。move 要求已放置；open 要求 registry 存在且未放置。destination 為 tab（既有 area／groupId／index）或 group（area／新的 groupId／index／extent）。index 是移除來源後的最終插入位置，必為整數且在0～目標列表長度，不 clamp。tab 插入分頁，group 插入一個新群組，extent 有限正數；new groupId 不能與操作前任何 group 重複。移動到原群組就是重排，即使只有一個 tab 也保持 group；成功目標 area 設可見，active 為移入 panel。來源變空刪除 group，來源 active 被移走取剩下第一個；來源 area 其他欄位照原值保留。group extent 是偏好尺寸；viewport／divider 的實際配額由 UI geometry 處理，不在此假裝完成 resize constraint。
+- merge：指定不同的 sourceGroupId／targetGroupId／index，按來源原 tab 順序插入目標，目標 active 取來源 active，刪除來源 group；index 對原目標 tabs 計算，target area 設可見。所有移入 panel 必須有 target area 能力。
+- close：指定已放置 panel 及 approved boolean。false 是不改資料的合法 no-op；true 移除 panel，空 group 刪除，active fallback 同上。approved 必由產品／UI 的關閉 callback 決定；dirty／pinned 由產品面板 metadata 提供及呈現，不寫入 layout，也不在純 utility 自行決定業務關閉。純 close 不刪除 registry，所以 panel 仍可 open。
+- visibility：指定 area 與 isVisible boolean，保留全部資料及偏好尺寸，供 collapse／reopen。
+- resizeArea／resizeGroup：指定 area／groupId 與 extent。area extent 有限非負，group extent 有限正數；只更新偏好尺寸，UI 依當前 constraints／viewport 限制後提交。未知 group／panel／area 拒絕。
+
+驗收：同群重排、跨區 tab move、新 group split、merge順序／active、empty fallback、collapse／reopen、close denied／approved／再open、capability／缺清冊拒絕、全量不修改 caller／不可變及非法 index／identity／geometry。每端 native API 由各自 module contract 定義；後續 Widget／React component 使用同一操作語意。取消拖曳不呼叫 utility／onLayoutChanged；hover 不提交布局。
