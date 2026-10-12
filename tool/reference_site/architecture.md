@@ -261,3 +261,31 @@ cold1k～4k/15～30分鐘；M1 compile/同4Green（2k20），M2 actualextract/id
 cold1k～2k/5～15分鐘，單M1：npm test為原15Green；同新portable SDK check4Green；scope1/diff。3k20或要修改tests／workflow回PLAN。
 
 BUILD37bad812 exact package.json；新入口 npm test 原15/15 Green、npm run test:extract 原4/4 Green（93.5秒，Windows），兩者零skip。獨立launcher1c322b4d hash AA12D3B695D46B6E048CC0DBC78ECD5A4BF4AB03B6470DA7EFC1B4F4DA90675C，Linux PATH入口尚待remote Ubuntu CI；不以本機結果代替Linux證據。scope1及diff Green，extract/build/verify保留。
+
+## DOCS-REACT-SPECIMENS-1（READY）
+
+修訂DOCS-REACT-SPECIMENS-r1，依IDOC-COMPONENT-REGISTRY-r1與example公開reactSpecimenRegistry。當前stage只接完整React公開元件到網站；Flutter全量與GUI、風格audit仍原goal後續，不能把React完成稱全部網站交付。BUILD exact generate.mjs、verify.mjs、新react-specimens.mjs、static/site.js、static/site.css。CLI generate/verify新增可選--react；不帶旗標保留原Node15網站用途；帶旗標必須讀fresh react/build/reference-components.json、example公開ESM registry及example/dist/index.html bundle，在清理輸出前完整validate，缺項／幽靈／非法canonical／schema／重複name/id／無實際factory種類皆拒絕。後续CI owner在bundle pipeline完整後接mandatory旗標，不能藉optin聲稱最終gate完成。
+
+公開pure validateReactSpecimens(inventory, registry)回傳name排序的component DTO加href（docs/react/components/<encodedName>.html）；id為@kallopis/react#name，schema1/framework react/entrypoint @kallopis/react/components陣列，source/signature/propsType字串；registry五種basic/layout/command/dock/theme與清單雙向相等。renderReactSpecimen(component, bundleUrl)回傳公開signature／入口及帶title iframe、獨立開啟link與data-specimen-state狀態；輸入文字escape，URL由generator相對路由提供。生成React索引及每component canonical頁，search category React Component/id，site manifest reactComponents；copy bundle至examples/react，保留assets/package fonts。docs中心加入React索引連結。現有FlutterAPI identity／documents保持。
+
+verify --react從同輸入重新validate，要求site清單/頁/search/iframe title及對應query、local bundle入口和assets存在；拒絕額外React頁。browser status實際iframe load同源檢查doc/body/error route，明確loading/loaded/error及timeout，獨立link可恢復；不用sandbox阻擋clipboard/keyboard/drag，iframe width100% height720有自身scroll。新增CSS只配置docs frame，不改庫風格。
+
+Test Author獨立write test/react_specimens.test.mjs，保護pure跨module清單與escaping/rendered query/title/link，不snapshot固定數量/私有實作、不改舊tests。BUILD不可改tests/config/workflow/example/library/architecture。必要新checks、原15、--react generate/verify、native頁內props/result/style/reset及prefix/direct-refresh/fonts、scope5/diff。感官human-pending；實際窄browser另驗證，local320不能替代。估6k～12k/45～90分鐘，參照前registry及網站15checks；M1 contract/build/generate（6k45），M2 protected/native/prefix/scope（12k90）；18k120或外module需求返回PLAN。
+
+| source／function | 責任 |
+| --- | --- |
+| react-specimens.mjs validateReactSpecimens／renderReactSpecimen | 公開清單與example registry契約、可安全嵌入的公開HTML |
+| generate main --react | 前置驗證、相對頁路由、bundle copy、索引/search/manifest |
+| verify --react | 對正式輸入重新完整校驗頁面與bundles，不信任產物自述 |
+| site.js iframe status handlers／site.css frame | 同源載入狀態及文件展示容器，產品狀態由example擁有 |
+
+```mermaid
+flowchart LR
+	Inventory[React公開manifest] --> Gate[validateReactSpecimens]
+	Registry[example ESM registry] --> Gate
+	Gate --> Generate[generate --react]
+	Bundle[example dist] --> Generate
+	Generate --> Pages[React元件頁 / titled iframe]
+	Pages --> Status[實際load狀態 / 獨立入口]
+	Gate --> Verify[verify --react / 完整對照]
+```
