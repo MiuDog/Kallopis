@@ -1,6 +1,6 @@
 # Flutter 公開 consumer 範例
 
-目前目標：IDOC-COMPONENT-REGISTRY-r1 的公開元件專屬路由。庫擁有樣式及互動，example擁有展示資料、控制、回呼觀察與重設。不得引用package:kallopis/src；舊Catalog的coveredComponents／空build不算互動coverage。目前有148個真實fixture；全量273個可渲染元件仍需逐項補足，不宣稱全部完成。
+目前目標：IDOC-COMPONENT-REGISTRY-r1 的公開元件專屬路由。庫擁有樣式及互動，example擁有展示資料、控制、回呼觀察與重設。不得引用package:kallopis/src；舊Catalog的coveredComponents／空build不算互動coverage。目前有157個真實fixture；全量273個可渲染元件仍需逐項補足，不宣稱全部完成。
 
 ## FLUTTER-COMPONENT-SPECIMENS-1（COMPLETE）
 
@@ -668,7 +668,7 @@ flowchart TD
 
 驗證：新增十個自己的真實 target，累計148／273；formal manifest十個皆renderable。初次analyze指出不存在surfaceElevated，依公開ThemeData使用surfaceRaised修正，原scope rerun No issues；same-source prefix release51.7秒，scope exact2及diffcheck pass。native十route及各公開控制，七個有文字參數route可改自己文字（Rich/框線內容亦包括）；Icon thin/folder及semantic label、Inline font/radius/color、Hint Ctrl+K Ctrl+S、Presence active、Dashed vertical/geometry/color/opacity、Spinner size/color/明示duration2400重建、Progress0.25→0.5與4→8、Stroke structure→latent/rest→hovered。Rich nodes優先spans、selectable與unsafe/missing/callback狀態，真正click link root1/https://example.com、mention root2/展示成員；只記callback不打開外部。Stroke childinput2/action1跨四mode/寬鬆/local320保持，epoch reset counters0與role/state/override恢復而environment保持；Dashed childinput2/action1 root0。Hint第一次輔助功能未ready，重新確認成功後獨立操作，未把初始shell算完成。當前console error/warn空；主工作樹build/flutter-foundation-detail-native.json及PNG為證據。actual窄browser、感官、全量元件頁映射及最終push仍未完成，單tasktokens未量測null。
 
-## FLUTTER-INTERACTION-PRIMITIVE-SPECIMENS-1（READY）
+## FLUTTER-INTERACTION-PRIMITIVE-SPECIMENS-1（已驗證）
 
 修訂 FLUTTER-INTERACTION-PRIMITIVE-SPECIMENS-r1；IDOC-01/02/03/06/08，exact lib/component_specimens.dart 與新 lib/interaction_primitive_specimens.dart。九個自己的 target：KlpSemanticRegion、KlpExcludeSemantics、KlpFocusRegion、KlpGestureRegion、KlpPointerBlocker、KlpPressable、KlpStateHighlight、KlpVeil、KlpActionRegion；foundation 公開 constructors/DTO 與 Flutter widgets/services。
 
@@ -700,3 +700,5 @@ flowchart TD
 	State --> Props
 	Host --> Reset[epoch重建]
 ```
+
+驗證：新增九target後累計157／273；formal manifest九個renderable，public analyze No issues，same-source prefix release46.4秒，scope exact2/diffcheck pass。native九route、自己props及label文字2；Semantic enabled/focusable/explicit/container/value，ActionRegion destructive/control/selected/active/toggled/expanded與callback=null呈disabled switch，重新enable後pointer+Enter原onPressed2。Focus child F2 root1／input2／child動作1，四mode/寬鬆/local320草稿及事件保持，epoch reset counters0且environment保持。Gesture一般tap1、次要按鍵兩個原回呼、真實pointer drag pan131.0/44.0且onPanEnd；一般工具dblclick在此會形成tap，未算double成功。依Flutter公開[雙擊最短40ms](https://api.flutter.dev/flutter/gestures/kDoubleTapMinTime-constant.html)／[最大300ms](https://api.flutter.dev/flutter/gestures/kDoubleTapTimeout-constant.html)，reload後未啟用AX overlay的實際canvas相同位置兩次click間隔80ms，真正onDoubleTap1；沒有修改library算法。Pressable真正pointer持續900ms→onLongPress1、pointer+Enter→root3/onPressed、hovertrue1/focustrue1。Pointer blocker child可操作1，blocking=true後同畫面實際命中child仍1/語意generic，解除後child2，未以nullcallback冒稱阻擋。Exclude screenshot仍有裝飾文字，語意樹不含該target文字；不放隱藏的互動子控件。Highlight none→hover→selected childaction1/root0；Veil自己的child文字/icon展示。主工作樹build/flutter-interaction-primitive-native.json／PNG為證據，當前error/warn無。actual窄browser、感官、全量頁映射、總release與push仍未完成，單tasktokens未量測null。
