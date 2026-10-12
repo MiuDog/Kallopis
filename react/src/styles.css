@@ -170,3 +170,26 @@
 .klp-explorer-folder[aria-expanded='true']::before { transform: rotate(90deg); }
 .klp-explorer-item { padding-inline-start: calc(var(--klp-spacing-tight) + var(--klp-spacing-iconSmall) + var(--klp-geometry-layout-treeLeadingGap)); }
 @media (prefers-reduced-motion: reduce) { .klp-button { transition: none; } }
+
+/* Dock 內部幾何由有限 resolver 決定；CSS 僅使用目前 scope 的語意外觀。 */
+.klp-dock-panel { background: var(--klp-colors-surface); color: var(--klp-colors-text); }
+.klp-dock-tabs { display: flex; min-width: 0; min-height: 0; overflow: auto hidden; }
+.klp-dock-tab-entry { display: flex; align-items: center; flex-shrink: 0; min-width: 0; min-height: 0; }
+.klp-dock-tab {
+	display: flex;
+	align-items: center;
+	gap: var(--klp-spacing-tight);
+	height: 100%;
+	min-height: 0;
+	min-width: 0;
+	padding: 0 var(--klp-spacing-tight);
+	border: 0;
+	background: transparent;
+	color: var(--klp-colors-text);
+	cursor: pointer;
+}
+.klp-dock-tab:hover, .klp-dock-tab[aria-selected='true'] { background: color-mix(in srgb, var(--klp-colors-text) calc(var(--klp-surface-selectionWashOpacity) * 100%), transparent); }
+.klp-dock-tab:focus-visible, .klp-dock-edge:focus-visible { outline: var(--klp-shape-stroke) solid var(--klp-colors-interaction); outline-offset: calc(-1 * var(--klp-shape-stroke)); }
+.klp-dock-content[hidden], .klp-dock section[hidden] { display: none; }
+.klp-dock-edge { padding: 0; border: 0; background: transparent; cursor: pointer; }
+.klp-dock-edge:hover { background: var(--klp-colors-interactionSoft); }

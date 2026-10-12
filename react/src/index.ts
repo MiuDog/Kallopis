@@ -7,3 +7,4 @@ export * from './dock-layout-operations.js';
 export { resolveKlpLinearLayout, type KlpLinearItem, type KlpLinearLayoutResult } from './linear-layout.js';
 export { createKlpStylePack, applyKlpStyleOverrides, klpStyleParameters, type KlpStylePack, type KlpStyleOverrides } from './style-pack.js';
 export * from './dock-geometry.js';
+export * from './workbench-dock.js';
