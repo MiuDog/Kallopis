@@ -1,36 +1,29 @@
 # Workbench 當前交接
 
-2026-10-12。持續 goal ACTIVE；完整需求：[本階段計畫](architecture/workbench-stage-v1.md)。已授權雙框架 Workbench、所有元件頁面互動、三種 GUI 範例、可替換風格、docs 與最終 GitHub push，不重問。
+2026-10-12，持續 goal ACTIVE。完整需求以 docs/architecture/workbench-stage-v1.md 及 spec/workbench-v1.md、spec/style-pack-v1.md、spec/interactive-docs-v1.md 為準。Flutter／React 同步交付、所有公開元件頁面互動、VS Code／Blockbench／Blender 各框架 GUI、可替換風格、docs與最終GitHub push均已授權，不重問。
 
-## 完成證據與限制
+## 現況與已驗證範圍
 
-- STYLE-PACK-1／2 完成：269 原料、350 四模式語意、118 原文配方；typed catalog／四模式解析／原子覆寫；114 checks 全過、零跳過；migration --check、公開 TypeScript 宣告、scope gate 通過。React 現有 public tokens 經 codec 與 common 四模式 1400 值一致。
-- DOCS-STAGE-1 完成：五份研究／規範／計畫已接入網站；15 checks、519 manifest 的 generate／verify 通過。尚未接互動 bundle。
-- REACT-STYLE-1 完成：JSON 匯入、原子覆寫、350 項 catalog 公開、全量 scoped CSS／hook、owned runtime；21 React checks、generate freshness、build/example、scope gate 通過。獨立 tarball consumer 通過；瀏覽器確認 8→12px 間距、背景替換、壞 JSON 保留現況、還原、深色、窄畫面及字型載入。typed recipe 展開與布局算法仍待後續。
-- FLUTTER-STYLE-1 完成：公開 JSON／object parser、四模式 typed resolver、原子覆寫、350 native 欄位及 ThemeExtensions 接入；19 項独立 checks、41 項既有 theme／accent checks、局部 analyze、generator freshness、scope gate 通過。未改受保護 tests 或 legacy JSON schema。
-- FLUTTER-LINEAR-1／REACT-LINEAR-1 完成：有限主軸公開算法各21項独立 checks，包含min／max／preferred／flex、間距守恆、比例退化、巨大有限值及immutable；Flutter analyze、React build、各scope gate通過。Flutter Widget 與 React DOM 一般布局接入已完成。
-- 未完成：recipe 全部視覺參數與元件對齊、風格下的布局保護及資料權威切換、Workbench 能力、全部 specimen、三種 GUI 各框架範例、網站互動 bundle、最終 CI／push。
-- 正式 Markdown 暫仍是值權威，風格 JSON 是逐項驗證的遷移資料。
+- Common STYLE-PACK-1／2完成：269原料、350四模式語意、118原文配方；catalog／四模式解析／原子覆寫，114checks、migration--check及scope通過。正式Markdown暫仍為值權威，JSON是逐項驗證遷移資料，尚未切換權威。
+- REACT-STYLE-1完成2243c4a7：public pack／350catalog／scopedCSS與hook／ownedruntime；21checks、freshness、build、tarballconsumer通過；browser替換／拒絕／還原／dark／375px／fonts驗證。
+- FLUTTER-STYLE-1完成17119f2b：public parser／四模式 resolver／原子覆寫／350native欄位及現有ThemeExtensions；19獨立checks＋41既有theme/accent checks、analyze／freshness／scope通過。stylePack與style互斥，pack不套舊透明度處理。
+- LINEAR-GEOMETRY完成：React dcc15e4f、Flutter a8124a62；各21checks含極大有限數值、不足minimum、preferred／max／flex守恆，nativeanalyze／librarybuild／scope通過。共通契約docs/architecture/workbench-linear-contract.md。
+- FLUTTER-LAYOUT-2完成273a0b4f：bounds／divider／Column alignment／root有效inset／內容槽裁切／naturalfallback與舊resizecallback相容；18獨立Widget checks＋4既有workspacechecks、analyze／scope、Catalog實際渲染通過。測試作者依原callback契約獨立修正自己的斷言，沒有弱化產品要求。
+- REACT-LAYOUT-2完成6a2ca282：六個直接layout元件、元素量測／觀察器與有限px槽，9checks含獨立SSR→hydrateRoot（07a25d94）保留原input節點／編輯值，publicconsumerTypeScript／librarybuild／scope通過。
+- REACT-LAYOUT-EXAMPLE-1完成920f0022：公開consumer有width/height/end/inset/gap控制；nativebrowser確認480×300 default120/8/336、160寬minimum各68、end留白、gap12、極大9999時零內容／可還原、native輸入保留、自然量測108=70+8+30；dark／375px无水平溢出、fontsloaded、error/warn空。視覺感官human-pending。Vite517KBchunk提示保留，網站bundle按需分割，不調高閾值。
+- Docs現有26份來源及Flutter526canonical API／17modules／三surface generate／verify通過，15網站checks此前通過；React使用指南已包含新layout。尚無全部component-specific互動bundle，不能以總覽iframe宣稱完成。
 
-## Git 與下一步
+## Git 與工作環境
 
-隔離 checkout：`C:/Users/ASUS_TUF/.codex/worktrees/workbench-v1/Kallopis`。Main `D:/Projects/Kallopis` 含先前搬移與未提交變更，index 不操作。保存基線 `3b5dda7be00d1be4760c6cc8c4ad38a3e7ed31de` 不等同 release。
+唯一BUILD隔離checkout：C:/Users/ASUS_TUF/.codex/worktrees/workbench-v1/Kallopis，managed attached、detached commits。Main D:/Projects/Kallopis branch codex/productivity-reference-ecosystem 有先前搬移及未提交變更，index保留。保存基線3b5dda7be00d1be4760c6cc8c4ad38a3e7ed31de不是reviewed release。origin https://github.com/MiuDog/Kallopis.git，push尚未執行。
+同步必須先讀main ignored build/workbench-last-sync.json的sourceRevision，逐路徑比較main=baseline或new後才複製，CRLF正規化；reference-api.json比較JSON值，Git maxBuffer100MB。同步前後cached diff byte/hash一致，禁止blindstage／reset。每個BUILD packet在main ignored build/task-packets/，必須newcleanbase；歷史scope證據於各自BUILD閉合commit，不拿後續owner/testauthor修改當worker違規。
+本機Flutter D:/flutter/bin，3.44.2/Dart3.12.2；Node24、TS7（consumer直接檔案compile需--ignoreConfig）。
+瀏覽器iab2：Reactlayout tab6 http://127.0.0.1:5182/ devsession89615；FlutterCatalog tab5 http://127.0.0.1:5191/ ttysession82480；舊Reactstyle tab4/5180/session51939可能仍在。使用前revalidatehandle，compaction後先cua.rewriteDocumentation。截圖main build/evidence/react-linear-layout.jpg及flutter-linear-layout.jpg，temporarytab標記handoff。
 
-SP2 實作 commit `9a002003cde0302faa9bff2610bc3b746f77556a`；runtime test SHA256 `CF5E9848E92BBE5A1A1057BE8B1D00CCA8E8A35A172287C766BEB46D725ECCA4`。每個 BUILD packet 必須取新 clean HEAD，packet 位於 main ignored build/task-packets/。
+## 受保護測試與下一個動作
 
-REACT-STYLE-1 commit `2243c4a7`；Test Author SHA256 `15EA38EC657834F2169FBC5792C9A05009AC949D6263D95BE38DD2BA8A3CA6A3` 未變。示範 dev server `http://127.0.0.1:5180/`，session 51939；browser tab 4（iab 2）已標記 handoff。截圖 main ignored `build/evidence/react-style-provider.png`。Vite 範例 505KB chunk 提示仍存在；非執行錯誤，後續網站 bundle 應分割載入，不弱化警告閾值。
-
-FLUTTER-STYLE-1 實作 `17119f2b`；Test Author SHA256 `15B43CF1A61888D208B32785716163BEFD4B101D8ED02FB3ABF7D985C4527129` 未變。公開 `KlpStylePack`、`klpStyleParameters` 由 kallopis_theme.dart 匯出；buildKlpThemeVariant 的 stylePack 與 style 互斥，pack 不套舊透明度。
-
-下一步 PLAN Dock 契約／雙框架直接元件；一般布局已完成。Dock、commands、specimens 隨後接續。GUI 選用 VS Code、Blockbench、Blender；Blender 官方 4.5 workspace 正文已取得 HTTP 200。範例使用公開本庫元件及自己的 state，不引入編輯器／3D／終端核心。
-
-Flutter adapter 完成後重新 extraction：521 canonical API／17 modules／三個公開入口；已更新已驗證網站 manifest，generate／verify 通過。已同步 main：相對 31cea818 的 15 個受檢查路徑；全部先確認 main 等於基線或新內容，再複製，index 未修改。Main 的 19 項 style pack checks、generator freshness 與 521 API generate／verify 也通過。每次同步的精確 sourceRevision 記錄於 main ignored build/workbench-last-sync.json；後續先讀該基線再做 guarded sync。
-
-
-本輪 LINEAR：Test Author commit 4c57c994，Flutter test SHA256 26F406F0C231B0362C2C73760740117771B097C25043DCB8FE484A7D647A653F、React test SHA256 AAE3EEF26F5530F4D5002BEA3698FF9F42B13722C547746021C58C9138145803 均未變。React implementation dcc15e4f、Flutter a8124a62；packets 位於main ignored build/task-packets/{react,flutter}-linear-1.json，BUILD均已閉合。DOCS-LINEAR-1實作3cfe2eea，15既有checks與scope gate通過；新共通來源網頁 docs/guides/workbench-linear-contract.html。重新 extraction 524 API／17 modules／26 docs，已更新已驗證manifest，generate／verify通過。
-
-FLUTTER-LAYOUT-2 完成（273a0b4f）：18 獨立 Widget checks、4 既有 workspace checks、analyze／scope 通過；可用 bounds／divider／Column alignment、bounded inset、裁切、自然尺寸回退與舊 callback 相容。受保護 hash 893CB1ABE6FE24C2F6CA54EA72769CC23EE91CD0C68B0909117DDAE5D63BBB75。Packet main ignored build/task-packets/flutter-layout-2.json 已閉合。瀏覽器 tab5/iab2 http://127.0.0.1:5191/，Flutter tty session82480；Workspace components 已定位。截圖 main build/evidence/flutter-linear-layout.jpg。下一個 PLAN 是 React 實際一般布局，DOM 自然量測／有限容器／scope 更新契約需先固定。React DOM、Dock、command、完整 specimen／GUI 及 push 仍未完成。
-
-本輪重新 extraction 為 526 canonical API／17 modules／26 docs；manifest 更新後 generate／verify、15 網站 checks 通過。main 同步精確基線仍以 ignored build/workbench-last-sync.json 為準，不從歷史段落推定。
-
-REACT-LAYOUT-2 完成6a2ca282；獨立9 checks（新增SSR hydration07a25d94）、publicconsumerTypeScript/build/scope通過。TestSHA256 D3547FAC11B6638E1F74C09E2E981ACFBEF610343136498D6656602BF8AC7495。EXAMPLE-1完成920f0022，browser真實root/slot/nested/end/min不足/極大gap/自然70+8+30/輸入保留/dark/375px無水平溢出證據與截圖 main build/evidence/react-linear-layout.jpg。devserver5182 session89615、browser tab6/iab2標記handoff。Vite517KB提示仍在，不弱化閾值。下一步Dock module PLAN：對照accepted WB-04～08與現有Flutter docking公開契約，保留Stage/Left/Right/Bottom與受控產品保存責任，建立React對等直接元件。各module packets需cleanbase；先讀main ignored build/workbench-last-sync.json。全部specimens／VSCode/Blockbench/Blender各雙框架GUI／命令快捷鍵／recipe風格完整曝光與docsbundle/CI/push仍未完成。
+Common runtimehash CF5E9848E92BBE5A1A1057BE8B1D00CCA8E8A35A172287C766BEB46D725ECCA4；Reactstyle15EA38EC657834F2169FBC5792C9A05009AC949D6263D95BE38DD2BA8A3CA6A3；Flutterstyle15B43CF1A61888D208B32785716163BEFD4B101D8ED02FB3ABF7D985C4527129。
+Flutterlinear26F406F0C231B0362C2C73760740117771B097C25043DCB8FE484A7D647A653F；ReactlinearAAE3EEF26F5530F4D5002BEA3698FF9F42B13722C547746021C58C9138145803。
+Flutterwidget893CB1ABE6FE24C2F6CA54EA72769CC23EE91CD0C68B0909117DDAE5D63BBB75（flutter/test/workbench_layout_test.dart）；ReactwidgetD3547FAC11B6638E1F74C09E2E981ACFBEF610343136498D6656602BF8AC7495（react/test/workbench-layout.test.mjs）。獨立TestAuthor擁有上述檔，BUILD不得改測試。
+下一步PLAN Dock：對照accepted WB-04～08與現有Flutter docking公開契約，保持Stage／Left／Right／Bottom及產品受控保存責任，固定雙框架公開API／有限style幾何／拖放分割縮放分頁／保存還原失敗保留狀態，再派必要独立tests與BUILD。一般layout已完成，不重做其算法。
+其後命令／快捷鍵註冊、chord／scope／衝突／重綁、所有specimen、VSCode/Blockbench/Blender各双框架GUI、typedrecipe／全部元件風格對齊、網站展示registry/bundle/coverage、權威切換／CI／精確提交push仍未完成。完整goal保持ACTIVE。
