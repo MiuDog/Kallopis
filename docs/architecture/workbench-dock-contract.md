@@ -58,3 +58,5 @@ area resize 使用當前 effective handle、root可用預算，扣另一可見si
 DockHeader 保留公開constructor及extent32相容常數；native preferred高度讀既有chromeTab，最終由PanelFrame槽限制。overflow slots 的计算必避免iconButton=0或巨大有限尺寸的除零/Infinity floor；全部actions仍可由既有more menu到達，保持原enabled/label/callback語意。resize indicator 的loose-tight可能負值，須clamp0，並在有效handle槽裁切。水平group的merge header判定讀實際PanelFrame margin/header配額，不能固定假設32。Stage drop提示只畫實際Stage邊界，stroke限制至該槽，不能畫整個Dock根邊界。
 
 本slice不改保存格式／pure action／close metadata、hover/cancel提交策略或產品content內部；這些仍依OPS-r1後續接入。驗收含正常root/header/groups配額、左右及上下shortage、巨大/零handle、zero容器、hidden/empty、style inverted indicator、Header actions zero icon slot、area/group pointer resize與非回寫、內容State保留。獨立Widget checks只觀察caller probes與公開gesture，不讀私有RenderBox型別，不做golden。
+
+WB-DOCK-GEOMETRY-r1 的area maxExtent保留既有constructor可用的正Infinity，native adapter視為沒有邏輯上限，傳linear maximum=null；minimum及保存preferred仍需有限。實際resize最大值永遠以finite viewport限定。
