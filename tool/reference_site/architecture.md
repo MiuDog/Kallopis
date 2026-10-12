@@ -254,8 +254,10 @@ flowchart TD
 
 cold1k～4k/15～30分鐘；M1 compile/同4Green（2k20），M2 actualextract/identity/scope1（4k30），6k45或新的API契約返回PLAN。不以最初fixtureGreen替代新的全量成功，舊manifest維持直到成功。
 
-## DOCS-TEST-RUNNERS-1（READY）
+## DOCS-TEST-RUNNERS-1（COMPLETE）
 
 修訂DOCS-TEST-RUNNERS-r1，保留15項純Node網站checks，獨立4項analyzer CLI checks需要Flutter SDK與package_config。Pages現有runner只有Node，不能隱性要求整個Flutter/Krepis環境；BUILD只write package.json scripts：test明列原兩個website test檔，test:extract明列extract_renderable.test.mjs，extract/build/verify及其餘設定保持。不得skip或刪斷言；SDK checks由已安裝Flutter及pubget的CI root job強制执行（另一CI module slice）。fresh TestAuthor只改launcher portability，Linux PATH dart／Windows既有bat或KALLOPIS_DART明示入口，不跳過缺失SDK。此分開環境責任不是放寬測試。
 
 cold1k～2k/5～15分鐘，單M1：npm test為原15Green；同新portable SDK check4Green；scope1/diff。3k20或要修改tests／workflow回PLAN。
+
+BUILD37bad812 exact package.json；新入口 npm test 原15/15 Green、npm run test:extract 原4/4 Green（93.5秒，Windows），兩者零skip。獨立launcher1c322b4d hash AA12D3B695D46B6E048CC0DBC78ECD5A4BF4AB03B6470DA7EFC1B4F4DA90675C，Linux PATH入口尚待remote Ubuntu CI；不以本機結果代替Linux證據。scope1及diff Green，extract/build/verify保留。

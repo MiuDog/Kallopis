@@ -6,10 +6,12 @@
 
 1. 雙框架command core／registered toolbar／menu／palette／popup及公開CommandsDemo完成。popup Flutter d17be03f protected16＋原23、analyze／scope2；React75c24b4e protected12＋原12、typedconsumer／build／scope3。consumer Flutter173cc9e9／Reactcb1c392d各exact1source：button bounds／右鍵point／Escape／outside無click-through／一次執行／focus／draft nativebrowser觀察。Flutter初次兩失敗是背景fixture收縮，由獨立TestAuthor修正並加入實際Overlay尺寸校验，原assertions保留。網站公開popup extract549；完整窄native／style矩陣與感官pending。快捷鍵共通契約WB-SHORTCUT-CORE-r1及兩端purecore已完成；Flutter11／React9 protected checks、analyze／build／scope2通過，不複製第二份rows或handler。
 2. 雙框架快捷鍵purecore已完成，WB-SHORTCUT-HOST-r1兩端library已完成；React consumer e56976aa已完成exact1/typecheck/scope及nativebrowser錄製／重綁／設定；Flutter consumer f9118c25亦完成exact1/analyze/scope/web及nativebrowser，下一步網站專屬互動specimen／registry與bundle。不可用core冒充整個命令stage完成。
-3. React公開元件extractor 1ae31d6f與23個專屬互動route bdd22417已完成；下一步以analyzer確認Flutter全部concrete Widget subtype（含所有class modifiers、排除abstract／資料），再完成Flutter專屬route與網站registry/bundle/coverage。3GUI×2框架與typedrecipes／完整風格中立與參數／default權威切換仍需交付。
+3. React公開元件extractor 1ae31d6f與23個專屬互動route bdd22417已完成；Flutter c7a841aa擷取與c84bd254 analyzer13 runtime已完成，561公開宣告全量成功，273可渲染元件（259 class＋14 final class），canonical identity零差異。下一步Flutter專屬route與網站registry/bundle/coverage。3GUI×2框架與typedrecipes／完整風格中立與參數／default權威切換仍需交付。
 4. 補browser hoverpreview/cancel矩陣、Flutter continuousresize與React endcommit差異契約審核；保留所有既有CI/發布閘門，精確commit/push。感官接受human-pending。
 
 ## 最新完成：React公開清單與23個獨立互動展示
+
+Flutter正式manifest8bff562a新增全量renderable boolean；原4獨立checks保護真Widget identity、所有modifiers、show/hide、跨surface去重與失敗保留，沒有固定254清冊。analyzer13與meta1.18.0支援當前Dart3.12.2；既有extractor無需API adapter。同byte放Flutter套件context分析No issues；根工具直接分析缺package config的錯誤不算source Red。實際全量extract561/273成功，generate/verify561成功。純Node網站15與SDK4入口分開（37bad812）；Flutter CI強制SDK4（26cc05f4）；portable launcher1c322b4d Windows4/4 Green、93.5秒，Linux待遠端執行。完整goal與GitHub push尚未完成。
 
 共同IDOC-COMPONENT-REGISTRY-r1，React extractor 1ae31d6f由真實public d.ts與TypeScript symbols取得23個renderable exports；fresh獨立6checks、CLI failure保留舊JSON、scope1 Green。consumer bdd22417 exact3source，publicTS／productionbuild／scope3／原生23routes載入通過；basic/layout專屬參數、Button callback/reset、Explorer兩回呼、Provider語意解析及四模式、寬鬆pack／320測量寬度保留草稿、palette/popup/menu原命令結果、shortcut component作用域、Dock切tab／保存及style草稿觀察。錯誤space500引用改正式space600，validator維持。網頁iframe/bundle與Flutter清單／route仍pending，這不是全站完成；截圖main build/react-component-specimens.png，感官human-pending。
 
