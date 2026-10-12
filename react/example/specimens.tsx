@@ -2,39 +2,17 @@ import { useState, type ComponentType } from 'react';
 import { KlpAppLayout, KlpBadge, KlpButton, KlpCard, KlpFileExplorer, KlpFrame, KlpIconButton, KlpLayoutColumn, KlpLayoutDivider, KlpLayoutPane, KlpLayoutRow, KlpLayoutSpacer, KlpSurface, KlpText, KlpTextField, KlpThemeProvider, KlpWorkspace, applyKlpStyleOverrides, createKlpStylePack, useKlp, type KlpMode } from '@kallopis/react';
 import { CommandsDemo } from './commands-demo.js';
 import { DockDemo } from './dock-demo.js';
+import { reactSpecimenRegistry } from './specimen-registry.mjs';
 
 interface SpecimenProps {
 	/* name是公開路由identity，compound fixture據此選當次實際target與參數。 */
 	name: string;
 }
 
-/* 每個key對應公開元件名稱；value是實際公開target fixture，不包含資料型別或空展示。 */
-const specimens: Readonly<Record<string, ComponentType<SpecimenProps>>> = {
-	KlpAppLayout: LayoutSpecimen,
-	KlpBadge: BasicSpecimen,
-	KlpButton: BasicSpecimen,
-	KlpCard: BasicSpecimen,
-	KlpCommandShortcutHost: CommandSpecimen,
-	KlpDockLayout: DockSpecimen,
-	KlpFileExplorer: BasicSpecimen,
-	KlpFrame: BasicSpecimen,
-	KlpIconButton: BasicSpecimen,
-	KlpLayoutColumn: LayoutSpecimen,
-	KlpLayoutDivider: LayoutSpecimen,
-	KlpLayoutPane: LayoutSpecimen,
-	KlpLayoutRow: LayoutSpecimen,
-	KlpLayoutSpacer: LayoutSpecimen,
-	KlpRegisteredCommandMenu: CommandSpecimen,
-	KlpRegisteredCommandPalette: CommandSpecimen,
-	KlpRegisteredCommandPopup: CommandSpecimen,
-	KlpRegisteredCommandToolbar: CommandSpecimen,
-	KlpSurface: BasicSpecimen,
-	KlpText: BasicSpecimen,
-	KlpTextField: BasicSpecimen,
-	KlpThemeProvider: ThemeSpecimen,
-	KlpWorkspace: BasicSpecimen
-};
-export const reactSpecimenNames = Object.freeze(Object.keys(specimens).sort());
+/* registry資料與實際factory分離；同一份name清單供網站直接讀取。 */
+const factories = { basic: BasicSpecimen, layout: LayoutSpecimen, command: CommandSpecimen, dock: DockSpecimen, theme: ThemeSpecimen };
+const specimens: Readonly<Record<string, ComponentType<SpecimenProps>>> = Object.fromEntries(Object.entries(reactSpecimenRegistry).map(([name, kind]) => [name, factories[kind]]));
+export const reactSpecimenNames = Object.freeze(Object.keys(reactSpecimenRegistry).sort());
 const modes: readonly KlpMode[] = ['light', 'dark', 'ultraDark', 'transparent'];
 
 export function SpecimenApp({ name }: SpecimenProps) {
