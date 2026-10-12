@@ -30,7 +30,8 @@ part 'primitives/klp_dock_tab_surface.dart';
 class _KlpDockLayoutState extends State<KlpDockLayout> {
 	static const double _minHorizontalGroupExtent = 120;
 
-	final Set<_KlpDockAreaSlot> _openingAreaSlots = {};
+	/// 只記錄此次拖曳的暫時展開；產品 layout 是唯一保存權威。
+	final Set<_KlpDockAreaSlot> _previewAreaSlots = {};
 	String? _activeDropTarget;
 	_KlpDockDropPlacement? _activeDropPlacement;
 	int _groupSequence = 0;
@@ -39,10 +40,10 @@ class _KlpDockLayoutState extends State<KlpDockLayout> {
 	void didUpdateWidget(KlpDockLayout oldWidget) {
 		super.didUpdateWidget(oldWidget);
 
-		for (final slot in _KlpDockAreaSlot.values) {
-			if (_areaForSlot(widget.layout, slot).isVisible) {
-				_openingAreaSlots.remove(slot);
-			}
+		if (!identical(oldWidget.layout, widget.layout)) {
+			_previewAreaSlots.clear();
+			_activeDropTarget = null;
+			_activeDropPlacement = null;
 		}
 	}
 
@@ -54,7 +55,7 @@ class _KlpDockLayoutState extends State<KlpDockLayout> {
 							widget.layout.bottom.groups.isEmpty),
 			'bottomConstraints 只有在 Bottom 不可用時才能省略。',
 		);
-		final layout = widget.layout;
+		final layout = _presentationLayout();
 		return KlpSurface(
 			tone: KlpSurfaceTone.app,
 			child: KlpLayoutBuilder(builder: (dockContext, constraints) {
@@ -552,7 +553,7 @@ class _KlpDockLayoutState extends State<KlpDockLayout> {
 		return _KlpDockPanelDraggable(
 			data: data,
 			feedback: _buildHeaderContent(panel.header ?? KlpText(panel.id)),
-			onDragFinished: _clearDropTarget,
+			onDragFinished: _finishDrag,
 			child: child,
 		);
 	}
@@ -693,7 +694,7 @@ class _KlpDockLayoutState extends State<KlpDockLayout> {
 			if (bottom.groups.isEmpty) return _KlpDockAreaSlot.bottom;
 			if (localOffset.dy >= size.height - bottomConstraints.closeThreshold) {
 				if (expandHiddenArea) {
-					_openAreaForDrop(_KlpDockAreaSlot.bottom, bottom, bottomConstraints);
+					_openAreaForDrop(_KlpDockAreaSlot.bottom, bottom);
 				}
 			}
 			return null;
@@ -713,7 +714,7 @@ class _KlpDockLayoutState extends State<KlpDockLayout> {
 				? localOffset.dx <= constraints.closeThreshold
 				: localOffset.dx >= size.width - constraints.closeThreshold;
 		if (inEdgeBand && expandHiddenArea) {
-			_openAreaForDrop(slot, area, constraints);
+			_openAreaForDrop(slot, area);
 		}
 
 		return null;
@@ -738,16 +739,34 @@ class _KlpDockLayoutState extends State<KlpDockLayout> {
 	void _openAreaForDrop(
 		_KlpDockAreaSlot slot,
 		KlpDockAreaData area,
-		KlpDockAreaConstraints constraints,
 	) {
-		if (area.isVisible || area.groups.isEmpty || !_openingAreaSlots.add(slot)) {
-			return;
-		}
+		if (area.isVisible || area.groups.isEmpty || _previewAreaSlots.contains(slot)) return;
+		setState(() => _previewAreaSlots.add(slot));
+	}
 
-		_emitAreaChange(
-			slot,
-			area.copyWith(isVisible: true, extent: constraints.minExtent),
-		);
+	/// 臨時尺寸送到既有有限 geometry，不回寫產品保存偏好。
+	KlpDockLayoutData _presentationLayout() {
+		var layout = widget.layout;
+		for (final slot in _previewAreaSlots) {
+			final area = _areaForSlot(layout, slot);
+			if (area.isVisible || area.groups.isEmpty) continue;
+			layout = _replaceArea(
+				layout,
+				slot,
+				area.copyWith(isVisible: true, extent: _constraintsForSlot(slot).minExtent),
+			);
+		}
+		return layout;
+	}
+
+	/// Target leave 只清提示；drag 結束才收回所有展開，讓 Stage 可進入預覽 group。
+	void _finishDrag() {
+		if (!mounted || (_previewAreaSlots.isEmpty && _activeDropTarget == null && _activeDropPlacement == null)) return;
+		setState(() {
+			_previewAreaSlots.clear();
+			_activeDropTarget = null;
+			_activeDropPlacement = null;
+		});
 	}
 
 	KlpDockAreaConstraints _constraintsForSlot(_KlpDockAreaSlot slot) {
