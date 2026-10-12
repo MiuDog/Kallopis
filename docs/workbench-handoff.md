@@ -97,3 +97,5 @@ Flutter PLAN1bffc472／BUILD39d263e0（owner744c9533），2examplepaths scope、
 同步只用main ignored build/guarded-workbench-sync.mjs，先驗證main各path等checkpoint baseline或new，CRLF正規化/reference-api JSON值比較，然後copy；cached binarydiff前後一致，不blindstage/reset。checkpoint build/workbench-last-sync.json。每個BUILD packet在main build/task-packets/，cleanisolated base、exactallowedwrite；architecture/tests/config預設readonly，跨module先PLAN。必要新風險tests只fresh隔離Test Author；BUILD可讀執行不可弱化。所有code縮排tabs顯示2、繁中註解。歷史scope只在該BUILD closingcommit，不在owner後重跑。
 
 本機Flutter D:/flutter/bin 3.44.2／Dart3.12.2；Node24。Browser後續使用前revalidatehandle；compaction後先cua.rewriteDocumentation。原生瀏覽器/syntheticcode事實與感官human-pending分開；不將截圖當完整互動或跨框架parity證據。goal保持ACTIVE直至全部交付及push完成。
+
+命令新增KlpRegisteredCommandToolbar／KlpRegisteredCommandMenu／KlpRegisteredCommandPalette／KlpRegisteredCommandPopup／KlpCommandShortcutHost五個專屬query，沿用既有清冊與consumer owner。各頁只呈現對應入口，觀察結果／停用／錯誤／搜尋／關閉理由，host另可操作快捷鍵與設定；原生Ctrl+S、chord與草稿作用域已有證據。風格／局部320切換保留草稿與結果，明確reset才歸零。BUILD e754f791、public analyze／releaseweb／exact2 scope通過；Flutter目前29/273，React23/23 example routes。全量元件網頁嵌入、其他244項、場景GUI與風格audit仍接續，尚未push。

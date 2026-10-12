@@ -155,7 +155,7 @@ flowchart TD
 	App --> Result
 ```
 
-## FLUTTER-COMMAND-SPECIMENS-1（READY）
+## FLUTTER-COMMAND-SPECIMENS-1（COMPLETE）
 
 修訂FLUTTER-COMMAND-SPECIMENS-r1。exact lib/component_specimens.dart、lib/catalog/registered_commands_page.dart；將既有命令consumer暴露RegisteredCommandsDemo(specimen可選)，預設保留完整Catalog。五個獨立query為RegisteredCommandToolbar、RegisteredCommandMenu、RegisteredCommandPalette、RegisteredCommandPopup、CommandShortcutHost（均Klp前綴）。沿用同registry/keymap/controller/results，不複製handler或建立第二命令核心。
 
@@ -177,3 +177,7 @@ flowchart TD
 	Entry --> Result[原生result / dismiss / handling]
 	Result --> Owner
 ```
+
+BUILDe754f791 exact2source，public analyze No issues／releaseweb46.2秒／scope2及diff通過。原生五route各自entry：Toolbar toggle後save結果2、執行中disabled及條件disabled；Menu開failure可見性、原始Bad state回饋1；Palette搜尋grid只剩格線，執行結果1且dismiss executed；Popup錨定按鈕及原生右鍵開啟、toggle結果1／dismiss executed，再Escape關閉reason escape。Host草稿Ctrl+S、Ctrl+K→S、Ctrl+G均原生執行，editor作用域勝出、離開後page衝突原樣呈現；一次跨工具呼叫逾時的chord被ignored且s成正常輸入，改同批原生連續按鍵觀察executed，未改核心timeout或測試。dark/spacious/local320保留草稿與結果3，明確reset歸零且環境保留；5202 URL error/warn空。錄製/JSON原功能沿用，這次未重新操作全矩陣。main build/flutter-command-specimens.png為Host狀態保留證據，網站iframe未完成、感官human-pending。
+
+RegisteredCommandsDemo新增可選specimen與key，同State原owner；_shows對null維持overview、對name精確投影controls／entry；_usage只顯示當次stable公開constructor。_controls與build條件插入popup area／toolbar／menu／palette／popup／shortcutControls，不把依賴host包裝當額外coverage。host _fixture以commandNames優先分流，前24保持。初始化、dispose、registry/keymap/handler全沿用，沒有改命令庫演算法。
