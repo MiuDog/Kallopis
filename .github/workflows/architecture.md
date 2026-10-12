@@ -46,3 +46,5 @@ flowchart TD
 ```
 
 BUILD exact1 pages.yml。local npm ci初次EPERM為先前本工作樹Vite5182與5180程序鎖rolldown binary；逐一核對CommandLine確為本隔離react/node_modules/vite後關閉12956／11228，再同npm ci成功，lock/source未改。public build／example build／fresh23 extract／protected4／generate --react／verify --react均Green，scope1/diff；602.78KB既有bundle提示保留，未放寬門檻。原Node15已在本輪網站slice全Green；Pages現Node-only mandatory React，實際Ubuntu runner仍pending最終push，不冒稱remote完成。
+
+獨立TestAuthor擴充同react_specimens.test.mjs至6項（原4＋CLI2），Pages既有同檔命令自動執行全部6；local6Green零skip，無需更改workflow或弱化閘門。

@@ -75,3 +75,5 @@ React example的23項registry已拆為公開example/specimen-registry.mjs（name
 React網站接線已實作：generate.mjs --react與verify.mjs --react讀fresh公開清單及example ESM registry，完整23項雙向gate、生成docs/react/components索引及每頁iframe／獨立入口／使用簽名、copy bundle至examples/react；search/manifest同canonical identity。原15＋獨立4 checks及native23 iframe load/自己的h1通過；Button頁input/callback/Enter/style/reset、前綴刷新及字型觀察。載入錯頁原生error提示可辨識；artifact已還原。actual360 viewport覆寫無效（仍706），窄browser仍pending，不把local320當證據。CLI保留原純Node預設用途；Pages現在mandatory React build/extract/4checks與--react gate，Flutter244項／全量網站、GUI與風格audit維持原goal；未push。
 
 Pages CI已接mandatory React完整產物：鎖檔npm ci、公開package build、example build、fresh23 extractor、獨立4檢查、generate/verify --react。同流程本機Green，原Node15保持；Ubuntu實際run pending最終push。舊本工作樹Vite5180/5182已核對owner後關閉以解除Windows binary鎖，靜態網站5203持續可用。
+
+React網站最新保護為獨立6checks（原pure4＋CLI2），原15網站checks保持。新增CLI驗證無效權威清單拒絕生成且保留舊產物、verifier拒絕iframe query破壞；same Pages test命令自動跑全部6。GUI下一契約REACT-GUI-SCENARIOS-r1 READY在react/architecture.md，尚未BUILD；不可把規劃當3場景已交付。當前native可用網站為5203 /Kallopis/，未push，goal維持ACTIVE。
