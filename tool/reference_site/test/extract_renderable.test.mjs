@@ -14,7 +14,8 @@ const root = path.resolve(
 );
 const runtimeConfig = path.join(root, 'flutter/.dart_tool/package_config.json');
 const extractor = path.join(root, 'tool/reference_site/extract_api.dart');
-const dart = 'D:/flutter/bin/dart.bat';
+// CI 使用 PATH 上的 dart；本機可用 KALLOPIS_DART 明確指定 SDK 入口。
+const dart = process.env.KALLOPIS_DART || (process.platform === 'win32' ? 'D:/flutter/bin/dart.bat' : 'dart');
 const sharedSource = `import 'package:flutter/widgets.dart';
 import 'package:flutter/foundation.dart' show DiagnosticLevel;
 
@@ -74,17 +75,29 @@ function workspace() {
 }
 
 function run(fixture) {
-	const command = `"${dart}" "--packages=${runtimeConfig}" "${extractor}" --output "${fixture.output}"`;
-	const arguments_ = [
+	const options = {
+		cwd: fixture.directory,
+		encoding: 'utf8',
+		timeout: 120_000,
+	};
+	const dartArguments = [
+		`--packages=${runtimeConfig}`,
+		extractor,
+		'--output',
+		fixture.output,
+	];
+	if (process.platform !== 'win32' || !/\.(bat|cmd)$/i.test(dart)) {
+		return spawnSync(dart, dartArguments, options);
+	}
+	const command = [dart, ...dartArguments].map((argument) => `"${argument}"`).join(' ');
+	const shellArguments = [
 		'/d',
 		'/s',
 		'/c',
 		`"${command}"`,
 	];
-	return spawnSync(process.env.ComSpec || 'cmd.exe', arguments_, {
-		cwd: fixture.directory,
-		encoding: 'utf8',
-		timeout: 120_000,
+	return spawnSync(process.env.ComSpec || 'cmd.exe', shellArguments, {
+		...options,
 		windowsVerbatimArguments: true,
 	});
 }
