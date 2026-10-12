@@ -702,3 +702,37 @@ flowchart TD
 ```
 
 驗證：新增九target後累計157／273；formal manifest九個renderable，public analyze No issues，same-source prefix release46.4秒，scope exact2/diffcheck pass。native九route、自己props及label文字2；Semantic enabled/focusable/explicit/container/value，ActionRegion destructive/control/selected/active/toggled/expanded與callback=null呈disabled switch，重新enable後pointer+Enter原onPressed2。Focus child F2 root1／input2／child動作1，四mode/寬鬆/local320草稿及事件保持，epoch reset counters0且environment保持。Gesture一般tap1、次要按鍵兩個原回呼、真實pointer drag pan131.0/44.0且onPanEnd；一般工具dblclick在此會形成tap，未算double成功。依Flutter公開[雙擊最短40ms](https://api.flutter.dev/flutter/gestures/kDoubleTapMinTime-constant.html)／[最大300ms](https://api.flutter.dev/flutter/gestures/kDoubleTapTimeout-constant.html)，reload後未啟用AX overlay的實際canvas相同位置兩次click間隔80ms，真正onDoubleTap1；沒有修改library算法。Pressable真正pointer持續900ms→onLongPress1、pointer+Enter→root3/onPressed、hovertrue1/focustrue1。Pointer blocker child可操作1，blocking=true後同畫面實際命中child仍1/語意generic，解除後child2，未以nullcallback冒稱阻擋。Exclude screenshot仍有裝飾文字，語意樹不含該target文字；不放隱藏的互動子控件。Highlight none→hover→selected childaction1/root0；Veil自己的child文字/icon展示。主工作樹build/flutter-interaction-primitive-native.json／PNG為證據，當前error/warn無。actual窄browser、感官、全量頁映射、總release與push仍未完成，單tasktokens未量測null。
+
+## FLUTTER-LAYOUT-UTILITY-SPECIMENS-1（READY）
+
+修訂 FLUTTER-LAYOUT-UTILITY-SPECIMENS-r1；IDOC-01/02/03/06/08，exact lib/component_specimens.dart 與新 lib/layout_utility_specimens.dart。十target：KlpAdaptive、KlpDeviceAdaptive、KlpEnvironmentScope、KlpMasonryGrid、KlpVirtualGrid、KlpVirtualList、KlpResizablePane、KlpResizeHandle、KlpSlidingDrawerLayout、KlpSplitLayout；foundation 公開 constructors/DTO/factory 是契約。DeviceClass/Orientation/DisplayMode enum未由現行barrel公開，consumer只使用KlpPlatformInfo.current(viewportSize)及DTO已可讀欄位，不import src或擴大barrel。
+
+State擁有label/draft controllers、ScrollController、ValueNotifier progress並dispose；platform explicit/null、scope platform、optional builders、公開factory viewportSize採樣/環境來源、集合count/empty、grid columns/width/spacing/aspect、masonry minimumColumnWidth、pane width、handle axis/enabled/size/callback、drawer progress/tracking/extent、split size/gap/divider/center。實際LayoutBuilder呈現branch/子約束，itemBuilder只投影consumer項目並記child動作；不寫虛擬化算法或平台判別。VirtualList有限280viewport與原controller，跳尾由公開controller操作並明示consumer控制；Masonry有限舞台自己的scroll。ResizeHandle直接原onDelta/start/end與consumer bounded extent，不能以按鈕模擬drag；ResizablePane只有width沒有root resize回呼。SlidingDrawer用公開ValueNotifier 0/.5/1，與stage/drawer原child，environment不換key。Split有限760展示畫布提供horizontal scroll、child垂直scroll，不用固定舞台冒稱庫窄尺寸算法已驗收。
+
+M1 source10/public analyze/prefix release；M2 native10 ownprops/實際branch/集合empty-restore/virtual原生scroll/handle雙axis拖曳及disabled/抽屜progress幾何/child四mode-寬鬆-local320-reset/scope2-diff。庫/tests/config/style/site/docs禁止寫；無新核心/persist算法，不新增鏡像test。scope採樣寬度與local320是consumer示意，不宣稱實際browser窄。感官與完整窄browser human-pending。估8k～16k/45～100分鐘，參考LINEAR/DETAIL；M1累計8k45，M2累計16k100；24k140或公開契約不足回PLAN，單taskusage未量測null。
+
+| Source / class / function | 責任 |
+| --- | --- |
+| layoutUtilitySpecimenNames / LayoutUtilityComponentSpecimen | 精確自己的公開target路由 |
+| _LayoutUtilityComponentSpecimenState fields/dispose | controller/notifier生命週期及props |
+| controls/target/branch/item/pane/resize/usage/build | 公開組裝、finitehost、實際measurement |
+| input/edit/childAction/delta/dragStart/dragEnd/jumpEnd | consumer事件／原回呼分離及合法投影 |
+| component fixture dispatch | style環境與epoch |
+
+```mermaid
+classDiagram
+	LayoutUtilityComponentSpecimen --> _LayoutUtilityComponentSpecimenState : createState
+	_LayoutUtilityComponentSpecimenState *-- ScrollController : dispose
+	_LayoutUtilityComponentSpecimenState *-- ValueNotifier : dispose
+	_LayoutUtilityComponentSpecimenState --> KlpPlatformInfo : public factory
+```
+```mermaid
+flowchart TD
+	Host[ComponentSpecimenApp] --> Fixture[LayoutUtilityComponentSpecimen]
+	Fixture --> Props[公開props/DTO/controller]
+	Props --> Target[自己的public布局target]
+	Target --> Layout[實際branch及constraints]
+	Target --> Event[原drag／child input動作]
+	Event --> State[consumer資料與回呼结果]
+	State --> Props
+```
