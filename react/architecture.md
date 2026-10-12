@@ -497,3 +497,26 @@ flowchart TD
 | focus／activate／keyDown | 本地原生焦點、最新context ID dispatch、過期宿主結果隔離、方向與單次鍵盤啟動 |
 | CommandRow | KlpButton/Text、metadata及toggle角色投影 |
 | KlpRegisteredCommandToolbar／KlpRegisteredCommandMenu／autofocus | 公開水平／垂直原生入口、可選初始聚焦及空清冊回饋 |
+
+## REACT-COMMAND-PALETTE-1（READY）
+
+REACT-COMMAND-PALETTE-r1依[WB-COMMAND-PALETTE-r1](../docs/architecture/workbench-command-palette-contract.md)。新`src/command-palette.tsx`擁有KlpCommandDismissReason stringunion、KlpRegisteredCommandPaletteProps<C=unknown>及publicpalette/private search helpers/row/nativeportal lifecycle。required registry/getContext/open/label/searchLabel/emptyLabel/onResult/onDismiss(reason)，可選className/id。無items鏡像或自訂handler；全registry可見命令為資料源。
+
+責任：private search(token/field score) deterministic UTF-16排序；registryuseSyncExternalStore版本、query/active UI狀態；open session generation/registry identity/latestprops保護async；原生document portal與scoped styleVariables(theme.tokens)保留stylepack；mounted gate確保SSR零輸出/hydration一致。輸入DOM持focus並透過aria-activedescendant投影candidate，native input/mouse/IME及backdrop；舊focus獨立於registry保存、close/unmount條件還原，不偷產品externalfocus。渲染重用KlpTextField/Button/Text，不改舊元件；input ref可由宿主root.querySelector取得，無core新增API。
+
+BUILD exactwrite `react/src/command-palette.tsx`、`react/src/index.ts`、`react/src/styles.css`（只追加palette選擇器）。architecture/core/command-entries/components/theme/stylepack/config/example/test/default資料唯讀。fresh TestAuthor只`react/test/command-palette.test.mjs`，publicdist ReactDOM/JSdom SSR/hydration/nativeevents與typedconsumer，可ignored react/build/consumers；不依private helper/State或pixel。protectedchecks/build/publictypes/3pathscope必要；browser/極端風格及全goal另記。
+
+cold-start8k–15k tokens／40–75分鐘，參照REACT-COMMAND-ENTRY-1／REACT-DOCK-NATIVE-2；Node24/TS7/React19.3/librarybuild假設。M1完整search/query/conditions/nativekeyboard/portalstyle（6k/30分鐘），M2open/focus/IME/async/stale/publicbuild/scope（12k/60分鐘）；18k/90分鐘或需core/舊controls public變更回PLAN。
+
+```mermaid
+flowchart TD
+	Product[open / context / result / dismiss] --> Palette[KlpRegisteredCommandPalette]
+	Palette --> Registry[public registry list / execute / subscribe]
+	Registry --> Search[private field score / query words / stable ID]
+	Search --> Candidates[option metadata / active ID]
+	Palette --> Portal[owner document / same theme tokens]
+	Portal --> Input[KlpTextField / native composition / active descendant]
+	Input --> Execute[ID / latest context / session generation]
+	Execute --> Registry
+	Palette --> Focus[opening input / conditional original focus restore]
+```

@@ -115,3 +115,7 @@ flowchart TD
 依[WB-COMMAND-ENTRY-r1](../docs/architecture/workbench-command-entry-contract.md)，KlpCommandReference、KlpRegisteredCommandToolbar/Menu將以現有controls／CommandMenu風格呈現同registry資料，產品只給ID/order/kind與getContext/onResult。原CommandMenu models/caller保持原API，沒有新handler或context權威。local architecture與fresh TestAuthor已完成，兩框架registered入口均交付。overlay/context menu/palette仍屬已接受stage接續能力，未完成。
 
 FLUTTER-COMMAND-ENTRY-r1 COMPLETE見[registered入口](lib/src/features/actions/command_entries/architecture.md)：BUILD ae01ca96新來源+stablefoundation兩path，23項protected公開Widgetchecks、analyze No issues及scope通過；native Focus/語意與同registry生命周期。React ENTRY已完成d05dca0e，兩端都不改舊CommandMenu/core/theme。popup/palette及shortcut未完成，browser及全style參數audit待展示stage。
+
+## Flutter registered command palette邊界（READY）
+
+依[WB-COMMAND-PALETTE-r1](../docs/architecture/workbench-command-palette-contract.md)，後續公開KlpRegisteredCommandPalette<C>與KlpCommandDismissReason enum；registry/getContext/open/label/searchLabel/emptyLabel/onResult/onDismiss共同。全registry可見清冊、多詞field/subsequence固定排序、native TextField/IME/Focus、受控open與原native焦點還原、async session隔離均依共同契約。保留現有CommandMenu及registered入口API。不在React本slice修改Flutter產品碼；Flutter實作前由owner固定localarchitecture及freshTestAuthor。
