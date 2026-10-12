@@ -826,3 +826,22 @@ flowchart TD
 	Pack[theme 或 pack 切換] --> Theme
 	Pack --> Preserve[fixture identity / 原草稿保留]
 ```
+
+## REACT-SPECIMEN-REGISTRY-1（READY）
+
+修訂REACT-SPECIMEN-REGISTRY-r1，依IDOC-COMPONENT-REGISTRY-r1。exact example/specimen-registry.mjs、example/specimen-registry.d.mts、example/specimens.tsx。將既有23個真實name→fixture種類資料移到example持有的純ESM registry，Node網站可直接import，不解析TSX或另複製名稱表。mjs export reactSpecimenRegistry（name→basic/layout/command/dock/theme），d.mts只公開既有fixture種類的聯集與唯讀record；specimens.tsx用五個既有實際factory解引用，reactSpecimenNames仍由同registry derivation取得。既有所有fixture props/state與unknown query保持，null overview/main入口不改。
+
+此步不建立網站iframe或coverage完成宣告，後續website module以公開registry與reference-components清單完整對照。僅移資料權威，沒有新增持久格式/演算法；沿用example type/prod build、Node registry對正式清單雙向比較23，native一個原route與unknown；scope exact3/diff。library/tests/config/website皆readonly。感官human-pending。歷史React23 specimen與Flutterconsumer估2k～4k/15～30分鐘；M1 ESM public boundary/type/build（3k20），M2 inventory/native/scope（4k30）；6k45或需config變更回PLAN。
+
+| source／function | 責任 |
+| --- | --- |
+| example/specimen-registry.mjs | 同example與網站共用的name→實際fixture種類唯一資料 |
+| example/specimen-registry.d.mts | ESM公開readonly record與fixture種類型別 |
+| example/specimens.tsx specimens／reactSpecimenNames | 五種實際factory與registry組裝，不建立第二名稱權威 |
+
+```mermaid
+flowchart LR
+	Registry[example ESM registry] --> Example[specimens / factory mapping]
+	Registry --> Website[網站 consumer / 後續slice]
+	Example --> Existing[既有23 own fixture]
+```
