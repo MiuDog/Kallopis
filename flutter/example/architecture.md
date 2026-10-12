@@ -231,7 +231,7 @@ Flutter Web首次由瀏覽器可及性啟用按鈕Enter取得真實semantics樹�
 
 _GuiScenarioAppState._load/_content擁有asset讀取與環境，State key id＋epoch；_GuiWorkbenchState._initial/_policies僅投影產品資料，_commit/_action/_save/_restore/_openPanel/_switchWorkspace只呼叫公開codec/action；_register/_getContext/_getFocus/_getIsComposing與refresh/dispose管理同registry/keymap/原生Focus/controller。_panel/_stage/_explorer/_stack組合法public compound，_select/_onResult記錄callback；畫布旋轉及ascii方塊是示意，不另建3D模型。_SceneContext只借用當前State，metadata不固定元件清單或three-count驗證。
 
-## FLUTTER-GUI-READINESS-1（READY）
+## FLUTTER-GUI-READINESS-1（COMPLETE）
 
 修訂FLUTTER-GUI-READINESS-r1，依IDOC-FLUTTER-READINESS-r1。exact lib/gui_scenarios.dart，GuiScenarioApp用公開Title widget在選中真實scene內容後設定「scene.title Flutter 互動展示」，unknown與asset錯誤用自身error標題，loading不聲稱ready。_announce(context,title,child)只有包裝呈現，不改原State/controller或library；Title色值從同Kallopis建立的Material Theme primary讀取，無第二theme。unknown包含metadata存在但無產品scene config的情況，不以null assertion崩潰。
 
@@ -244,3 +244,5 @@ flowchart LR
 	Error[unknown / asset error] --> Title
 	Title --> Website[同源document.title精確辨識]
 ```
+
+BUILD54dd1105 exact1，公開analyze No issues、同protected39全Green零skip、prefix release46.6秒、scope1/diff通過。Native5203 /Kallopis/examples/flutter/index.html?scenario=vscode 的實際title為「VS Code · 文件工作區 Flutter 互動展示」；unknown的實際title為「找不到 GUI 場景 Flutter 互動展示」，畫面顯示unknown與返回入口。初始shell title尚未ready，實際內容完成後才改Title；網站接入由DOCS-FLUTTER-SCENARIOS-1負責，感官與actual窄browser保持pending。

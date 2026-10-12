@@ -329,3 +329,29 @@ flowchart LR
 BUILD ea8c9561 exact3，獨立15be2093只測試單檔7/7 Green零skip，SHA256 F7607F189E3BBC68453A959DDA821DE761ADC448F7CA81F07A79844EB025ED96；未取得有效Red。原Node15及React6全部Green未改，真實--react --react-scenes生成561＋23元件＋3場景並verify成功，scope3/diff通過。原Node15會生成不含React的本地產物，測後重新正式generate/verify再做native，沒有用舊fixture產物宣稱GUI存在。
 
 Native5203 /Kallopis/由docs中心實際link進索引，索引三link逐頁，各自iframe h1/title與loaded均確認；VS Code iframe草稿、保存命令1、dark保留輸入，独立相同query link及direct refresh再loaded。error/warn空。main build/react-docs-gui-vscode.png；感官human-pending。viewport override在docs頁籤未真正套用，觀察706×668及另一1280×720，不能稱360已驗收；已reset，保留pending。CLI protected7含任意4scene、合法source title篡改／query／extra頁拒絕、六種非法source／缺bundle生成失敗保留既有完整網站及旗標相依。Pages完整scene flags/protected7由CI-REACT-SCENES-1接必跑，remote Ubuntu待最终push。
+
+## DOCS-FLUTTER-SCENARIOS-1（READY）
+
+修訂DOCS-FLUTTER-SCENARIOS-r1，依IDOC-FLUTTER-READINESS-r1與IDOC-04/05/08。只接Flutter example既有GUI場景，全部273元件另stage。BUILD exact generate.mjs、verify.mjs、新flutter-scenarios.mjs、static/site.js。CLI新增獨立--flutter-scenes，可單用或與既有React flags合用；React-scenes仍要求--react，拒絕unknown/重複flags；無Flutter旗標不讀Flutter來源以保持Node15與React6/7環境契約。
+
+公開validateFlutterScenarios(registry)同metadata語意：非空own record，安全小寫route、非空title、HTTPS authority且host、拒絕duplicate title，回排序DTO id/title/reference/href（docs/flutter/scenarios/<id>.html），唯一來源flutter/example/assets/gui-scenarios.json。renderFlutterScenario(scene,bundleUrl)安全HTML、iframe title「scene.title Flutter 互動展示」、data-component-specimen及data-specimen-framework="flutter"、loading status、同query獨立入口與noopener官方reference。helper不建立產品資料或theme。
+
+generator在清理前驗證metadata與完整Flutter bundle：index base href必須/Kallopis/examples/flutter/，flutter_bootstrap.js/main.dart.js、assets/FontManifest.json、assets/assets/gui-scenarios.json及manifest每font asset存在且路徑限bundle內，bundle metadata等於正式JSON；完整copy包含package fonts至examples/flutter。公開validateFlutterBundle(directory,registry)持有上述產物邊界；不固定字型名、GUI數或scene id。生成索引、docs中心、搜尋Flutter Scenario/id與manifest flutterScenarios。verify從正式JSON重新校驗DTO／頁／query／title／status／reference／索引／docs/search，拒絕extra頁或unexpected search；同bundle檢查與所有source bundle檔案bytes對照，缺失或篡改asset失敗，不能只信產物manifest。禁止library/example/CI/tests/styles/architecture寫入。
+
+site.js既有React h1保留；Flutter只等同源document.title以「 Flutter 互動展示」結尾後與iframe.title精確比對，初始shell/loading忽略；wrongscene/error/15秒timeout拒絕。terminal poll/timeout清理保持，iframe現有720/CSS不改。全量bytes驗證選擇避免只驗bootstrap卻漏package資產；public bundle validator由generate/verify共用，防止兩邊規則漂移。
+
+必要fresh Test Author獨立只test/flutter_scenarios.test.mjs：任意metadata成功/非法與HTMLescaping；CLI完整入口/search/manifest/bundle；缺metadata/fonts/base/bundle時generate保留前網站；query/source title/extra頁及asset tamper時verify拒絕，flags合法與非法。不改既有tests。验收新protected、原15/React6/7、真實完整generate/verify、native三頁各自實際title loaded及一次互動、直接refresh/獨立入口/prefix、scope4/diff。actual360另browser驗證未取得則明示pending；感官human-pending。Pages由下一CI owner slice強制Flutter build与flags，不能永久optin。
+
+估5k～10k/40～80分鐘，參考DOCS-REACT-SCENARIOS-1；Node24/Flutter已prefix build。M1 metadata/bundle/生成（5k40），M2 protected/native/scope（10k80）；15k110或跨module寫入回PLAN，實際usage無獨立量測則null。
+
+```mermaid
+flowchart LR
+	Metadata[example正式JSON] --> Gate[validateFlutterScenarios]
+	Bundle[Flutter prefix bundle] --> Assets[validateFlutterBundle]
+	Gate --> Assets
+	Assets --> Generate[generate --flutter-scenes / full copy]
+	Generate --> Pages[索引 / scene iframe / 搜尋]
+	Pages --> Status[site.js實際document.title]
+	Gate --> Verify[verify / 正式來源及bytes對照]
+	Assets --> Verify
+```
