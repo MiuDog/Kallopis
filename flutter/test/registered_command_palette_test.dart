@@ -161,9 +161,11 @@ void main() {
 		expect(_row('Available'), findsNothing);
 		expect(find.byType(KlpTextField), findsNothing);
 		for (final invalid in ['label', 'searchLabel', 'emptyLabel']) {
+			await tester.pumpWidget(const SizedBox());
 			Object? error;
 			try {
-				KlpRegisteredCommandPalette<_Context>(
+				// const 公開建構子允許建立 widget；驗證在原生掛載邊界觀察。
+				await tester.pumpWidget(MaterialApp(home: KlpRegisteredCommandPalette<_Context>(
 					registry: host.registry,
 					getContext: () => host.context,
 					open: false,
@@ -172,7 +174,8 @@ void main() {
 					emptyLabel: invalid == 'emptyLabel' ? ' \t\n' : 'Empty',
 					onResult: (_) {},
 					onDismiss: (_) {},
-				);
+				)));
+				error = tester.takeException();
 			} catch (caught) { error = caught; }
 			expect(error, isArgumentError, reason: invalid);
 		}
