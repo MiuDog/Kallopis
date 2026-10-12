@@ -2,9 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:kallopis/kallopis_foundation.dart';
 import 'linear_specimens.dart';
 import 'explorer_specimens.dart';
+import 'frame_specimens.dart';
 
 /* 只有真實target fixture可以進此清單；不是全量覆蓋宣告。 */
-const flutterSpecimenNames = <String>['KlpBadge', 'KlpButton', 'KlpIconButton', 'KlpSurface', 'KlpText', 'KlpTextField', ...linearSpecimenNames, ...explorerSpecimenNames];
+const flutterSpecimenNames = <String>['KlpBadge', 'KlpButton', 'KlpIconButton', 'KlpSurface', 'KlpText', 'KlpTextField', ...linearSpecimenNames, ...explorerSpecimenNames, ...frameSpecimenNames];
 
 class ComponentSpecimenApp extends StatefulWidget {
 	const ComponentSpecimenApp({super.key, required this.name});
@@ -67,6 +68,7 @@ class _ComponentSpecimenAppState extends State<ComponentSpecimenApp> {
 
 	Widget _fixture() {
 		final key = ValueKey(_epoch);
+		if (frameSpecimenNames.contains(widget.name)) return FrameComponentSpecimen(key: key, name: widget.name);
 		if (explorerSpecimenNames.contains(widget.name)) return ExplorerComponentSpecimen(key: key, name: widget.name);
 		if (linearSpecimenNames.contains(widget.name)) return LinearComponentSpecimen(key: key, name: widget.name);
 		return _ComponentFixture(key: key, name: widget.name);
