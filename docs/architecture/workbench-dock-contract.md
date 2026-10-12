@@ -34,3 +34,13 @@ READY；對應 WB-04／05／06／16。操作 utility 接收目前 layout、完�
 - resizeArea／resizeGroup：指定 area／groupId 與 extent。area extent 有限非負，group extent 有限正數；只更新偏好尺寸，UI 依當前 constraints／viewport 限制後提交。未知 group／panel／area 拒絕。
 
 驗收：同群重排、跨區 tab move、新 group split、merge順序／active、empty fallback、collapse／reopen、close denied／approved／再open、capability／缺清冊拒絕、全量不修改 caller／不可變及非法 index／identity／geometry。每端 native API 由各自 module contract 定義；後續 Widget／React component 使用同一操作語意。取消拖曳不呼叫 utility／onLayoutChanged；hover 不提交布局。
+
+## 有限面板前置契約 WB-PANEL-GEOMETRY-r1
+
+READY；對應 SP-05／WB-03／04 的庫內 chrome 尺寸責任。Flutter PanelFrame 原本 Expanded 正文要求有限高度，此 slice 保持這個宿主前提及全部公開 constructor，不新增通用 tree 或產品內容權威。PanelFrame 在有限寬高下：外距每軸最多該軸一半；內框所有槽非負有限、總高度不超過內框。header／footer 為語意偏好高度且 minimum=0、flex=0；content minimum=0、preferred=0、flex=1；gutter=0，直接使用既有公開 linear resolver 語意。正常空間下保留標頭及底列高度，其餘正文；不足時 chrome preferred 按共通比例收縮，內容可為零。保存布局、theme 及產品狀態不因 render 修改。
+
+PanelFrame 與各槽必裁切；庫自己的 PanelHeader 不以普通 Row／Column 固定尺寸造成 overflow。文字 title／label 保留，垂直不足時同一內容節點可捲動，文字水平仍 single-line ellipsis；leading、content、actions 次序與 dragRegionBuilder 包覆範圍不改，actions 可在不足時縮配及裁切，不用 remount 或任意移除取代合法 geometry。PanelHeaderFrame 的 horizontal／vertical semantic inset、PanelFooter 的 resolved inset 在有限軸上按比例限制至可用軸，保留既有 custom padding 及 RTL 解譯。card inner radius 至少0，合法 style 的 stroke 超過 card 不產生負半徑。
+
+內容節點在 resize 與合法 theme 改變後保持 Element／State 身分；ScrollController 與 Scrollbar 契約不改。任意產品內容需自行處理其內部排版；本庫不驗證產品整棵 Widget tree。不承諾可見可用性或視覺感官接受。Dock root／group geometry、DockHeader overflow menu 與拖放 callback 不在此前置 slice 宣稱完成；後續 Dock slice 依這個公開 PanelFrame 前提分配有效槽。
+
+驗收：default header/content/footer height、正常無 chrome、短及零尺寸守恆、巨大合法 margin/chrome/inset、stroke>radius、庫 PanelHeader title/label/actions 在窄低約束無 Flutter layout exception、RTL/custom footer padding、content state 保留。必要獨立 Widget checks 只觀察公開元件與 constraints，不檢查私有 tree 或 screenshot。

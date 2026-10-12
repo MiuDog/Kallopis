@@ -1,0 +1,28 @@
+# Flutter Panel
+
+修訂 FLUTTER-PANEL-GEOMETRY-r1；PLAN READY。擁有此 panel 目錄。公開 PanelFrame／Header／Footer constructor 及 foundation export 不改；元件讀既有 context.klp，不匯入品牌 pack。
+
+## 當前 slice FLUTTER-PANEL-GEOMETRY-1
+
+依共通 WB-PANEL-GEOMETRY-r1。PanelFrameView 擁有 bounded chrome 分配、有限外距、槽裁切、非負內半徑及 scrollbar 組合；使用 workspace/layout 公開 LayoutColumn／KlpLayoutPane／KlpLayoutBounds（既有 linear resolver 的直接 native 元件），spacing none、header/footer flex0 且 preferred/max=semantic height、content flex1。不得另造尺寸 solver。PanelHeader 擁有 leading/content/actions 原次序與 title/label 同一 vertical scroll viewport；使用公開 LayoutRow／Pane 配置自然 leading/actions、flex content 與明確 semantic gap，spacing none，槽自帶裁切。PanelHeaderFrame／Footer 擁有 native resolved inset clamp：每軸若 padding 合計超出有限空間，以共同比例縮小；其餘照原值。全部 wrapper shape 在 resize／theme 改變時穩定，不能以移除或 remount 内容通過測試。
+
+公開使用前提：PanelFrame 需要 bounded height（舊 Expanded 亦如此）；有界各軸 geometry 非負有限。沒有新增 unbounded natural PanelFrame 規格。庫控制自己的 chrome，consumer content 負責自身内部，不攔截完整 tree。保留 theme color override、surface、elevation、headerSize、scrollbar ownership；shape.card-shape.stroke 可小於0，native inner radius clamp0。純 linear/public native layout module 唯讀。
+
+BUILD write_paths 只有 panel/klp_panel_frame.dart（新增 layout import）、panel/primitives/klp_panel_frame_view.dart、panel/klp_panel_header.dart、panel/primitives/klp_panel_header_frame.dart、panel/klp_panel_footer.dart。architecture、tests、Dock、theme、style、example、foundation/config 與其他module唯讀。TestAuthor唯一可寫 flutter/test/panel_geometry_test.dart；測試使用公開 constructor/theme，不能讀 product internals。具體風險為 finite geometry、zero-size、theme resize 不丟 State；已存在 general layout checks 不涵蓋 PanelFrame fixed chrome。
+
+M1 finite PanelFrame chrome/margin/radius 與 normal geometry；M2 header/footer inset、窄低原生 layout、State continuity、protected checks/public analyze/scope。cold-start 5k–10k tokens／40–80分鐘，參照 FLUTTER-LAYOUT-2；超過15k tokens／100分鐘或需要改 layout／Dock／style 回 PLAN。直接公開 layout 元件取代手寫 Row/Column 更小且共用已接受不足空間規則；自製 render object 沒有新的必要責任，因此不採用。
+
+```mermaid
+flowchart TD
+	Theme[既有 semantic theme] --> FrameView[PanelFrameView]
+	FrameView --> Column[公開 LayoutColumn / Pane]
+	Column --> Geometry[既有 linear solver]
+	FrameView --> Slots[header / content / footer Clip]
+	Header[PanelHeader] --> Row[公開 LayoutRow / Pane]
+	Row --> Geometry
+	Header --> Text[原 title / label 垂直 viewport]
+	Inset[HeaderFrame / Footer resolved inset] --> Slots
+	Slots --> Consumer[同一 consumer State]
+```
+
+Dock 模組只依公開 PanelFrame；後續 finite Dock viewport slice 以此為前置，不在本 slice 改 Dock drag、hover、resize 或 metadata。

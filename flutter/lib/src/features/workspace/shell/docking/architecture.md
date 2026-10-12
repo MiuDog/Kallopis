@@ -58,3 +58,7 @@ M1 完整 schema／encode／restore：手寫 JSON 與拒絕證據；M2 reconcili
 b08d80e6／243d9f98：KlpDockArea、Destination、Action及ActionResult公開typed const API，applyKlpDockAction依codec驗證before／after；_DockWorking只持有owned replacements，原snapshot保持不可變。_findPanel／_placedPanel／_group定位，_setGroup／_deleteGroup／_removePanel統一copyWith及active fallback；_permitted驗證destination能力，_identity／_insertion／_extent／_invalid擁有FormatException。named constructors用私有tag/payload維持shape，不提供JSONaction或Widgettree。
 
 10獨立checks（React同fixture／情境）、publicfoundation analyze No issues、scope通過；SHA256 3D9FEBC3F5B44A602CE755482FE66D3DD849225632BA1120CE42B293BBD4E3DF未變。TestAuthor基線ca9a4efd缺symbol為compileYellow。建構子清理中發現private initializing formal的callsite名稱編譯錯誤，已按diagnostic修正並重跑相同checks，無測試／contract改動及無Greenfallback。BUILD僅兩個allowedpaths，scope於243d9f98閉合；後續owner修改architecture與docs不回算worker。兩框架pure操作已完成，UI、有效handle／viewport geometry與pinned／dirty呈現待接入。
+
+## 有限 geometry 前置
+
+共通 WB-PANEL-GEOMETRY-r1 已 READY；Panel 模組先處理 finite chrome／inset／State continuity，Dock 只使用公開 PanelFrame。Dock root/group/gutter/overlay 的 packet 尚未發出；目前保存 extents 仍直接排版，不宣稱有限 viewport 保護完成。Panel slice 不改本目錄，後續 Dock slice 不複製 Panel chrome 算法。
