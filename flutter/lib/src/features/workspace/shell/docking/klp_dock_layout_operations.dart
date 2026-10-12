@@ -31,9 +31,8 @@ class KlpDockDestination {
 		required this.area,
 		required this.groupId,
 		required this.index,
-		required double extent,
-	}) : extent = extent,
-			createsGroup = true;
+		required double this.extent,
+	}) : createsGroup = true;
 }
 
 enum _DockActionKind { select, move, open, merge, close, visibility, resizeArea, resizeGroup }
@@ -56,26 +55,17 @@ class KlpDockAction {
 
 	const KlpDockAction._(
 		this._kind, {
-		String? panelId,
-		KlpDockDestination? destination,
-		String? sourceGroupId,
-		String? targetGroupId,
-		int? index,
-		bool? approved,
-		KlpDockArea? area,
-		bool? isVisible,
-		double? extent,
-		String? groupId,
-	}) : _panelId = panelId,
-			_destination = destination,
-			_sourceGroupId = sourceGroupId,
-			_targetGroupId = targetGroupId,
-			_index = index,
-			_approved = approved,
-			_area = area,
-			_isVisible = isVisible,
-			_extent = extent,
-			_groupId = groupId;
+		this._panelId,
+		this._destination,
+		this._sourceGroupId,
+		this._targetGroupId,
+		this._index,
+		this._approved,
+		this._area,
+		this._isVisible,
+		this._extent,
+		this._groupId,
+	});
 
 	const KlpDockAction.select({required String panelId}) : this._(_DockActionKind.select, panelId: panelId);
 	const KlpDockAction.move({required String panelId, required KlpDockDestination destination}) : this._(_DockActionKind.move, panelId: panelId, destination: destination);
