@@ -748,7 +748,7 @@ flowchart TD
 	MapDispose --> RegistryDispose[registry.dispose]
 ```
 
-## REACT-REFERENCE-COMPONENTS-1（READY）
+## REACT-REFERENCE-COMPONENTS-1（COMPLETE）
 
 修訂 REACT-REFERENCE-COMPONENTS-r1，依共同 IDOC-COMPONENT-REGISTRY-r1，只建立scripts/reference-components.mjs。BUILD不改公開庫／example／網站／package／tests／architecture。公開boundary為export function extractReactComponents(entrypoint, packageRoot)，必要參數為絕對d.ts entry檔及package root；不改原build scripts。CLI node scripts/reference-components.mjs --output <path>讀目前package dist/index.d.ts，預設輸出ignored build/reference-components.json；先完成診斷及JSON資料再write，失敗保留舊檔。
 
@@ -765,3 +765,29 @@ flowchart TD
 	CLI[CLI output argument] --> DTO
 	DTO --> Write[成功後寫ignored JSON]
 ```
+
+### REACT-REFERENCE-COMPONENTS-1 實作證據與職責
+
+1ae31d6f exact1source；fresh TestAuthor fa952106 protected6 checks全部Green，SHA256C0192DC517D076B39AB52D550ECE8F17C6EF79C4F932DD14FE409ACC4A3612ED保持。真實dist產生23個public components／108個exports，含generic nativehost與nullablepopup；資料class／interface／utility排除。NodeCLI成功、失敗保留原JSON、宣告越root拒絕、type-only named／star與alias真正Reactidentity有獨立證據；scope1/diff Green。TS7.0.2公開unstable/sync API使用native process，API/snapshot在finally清理；虛擬config強制skipLibCheck=false且不改repo config。不宣稱23個展示已完成。
+
+| 定義 | 實際責任 |
+| --- | --- |
+| extractReactComponents | 根與entry驗證、虛擬config、全diagnostics、runtime graph／return identity、排序DTO；finally清nativeAPI |
+| nested isConfig／fileExists／readFile | 虛擬config限定投影，不寫設定檔 |
+| inside | realpath後package ownership與POSIX source轉換 |
+| compareComponents | UTF-16名稱排序 |
+| unalias | TypeScript公開symbol alias解析 |
+| typeOnly | 檢查宣告及祖先type-only旗標 |
+| runtimeNames | own value與named/star re-export graph、剔除type-only、循環分支停止 |
+| reactReturn | qualified/import/nullable/alias annotation回到@types/react權威，排除fake與Promise |
+| main／entryguard | script所屬package、嚴格CLI args、成功後寫JSON、stderr原錯誤非零exit |
+| callbacks | diagnostic message映射、signature declaration解析／尋找、DTO id去重；runtime modifiers與source handles、return union檢查皆無額外權威 |
+| DTO／config fields | schemaVersion／framework／entrypoint／components維護輸出識別；id/name公開alias、sourcepackage-relative、signature原宣告、propsType首參數；compilerOptions/files僅本次檢查，fs投影限定單config |
+
+## REACT-COMPONENT-SPECIMENS-1（READY）
+
+修訂REACT-COMPONENT-SPECIMENS-r1，依IDOC-COMPONENT-REGISTRY-r1與真實23公開清單，只write example/specimens.tsx、example/main.tsx（入口讀specimen query的最小分支），example/commands-demo.tsx（可選public target以集中compound入口；不要求必須改）。public imports @kallopis/react／styles.css；舊App總覽仍獨立。registry以真實public names逐一fn/component，23項全部要有實際target，不以counter或空placeholder補項；函式資料型別不放進清單。unknown／empty specimen query顯示明確錯誤及返回展示入口，不退總覽。
+
+SpecimenApp由publicProvider承載四模式、baseline及另一pack（applyKlpStyleOverrides調語意間距，不複製預設style）、320/760可用寬度；style切換保持產品state，重設以key重新建立當前fixture與輸入。每頁h1/public import/use example與自己的params及callback state可看，width容器只定義產品測量空間，不寫共用style。Text／Surface／Badge／Card以自己的text/tone/header等props變化；Button／IconButton size/tone/selected/disabled與clickcount；TextField實際value/error/disabled；Frame／Workspace以header/footer/sidebar與產品輸入；ThemeProvider mode/pack及semantic讀值示範。layout compound各target傳自己的flex/bounds/alignment/inset與publicPane/Spacer/Divider組装；target顯示名稱，每個route選中的實際變數可操作，不能用一個無關Layout總覽冒充六項。DockLayout沿既有DockDemo（同公開dock及原生操作控制）。registered toolbar/menu/palette/popup/shortcut host共享產品registry，但route須呈現對應target與相應open/items/gate/result／nativefocus或recordcontrols；public入口共用原registryhandler，不造fakecommand，不複製library內部視覺。共享fixture以props target選actual element，沒有反向library依賴。
+
+reversibleconsumer不新增鏡像tests，必要check為publicTS、registry names與真實extract inventory雙向核對、scope exactpaths、nativebrowser全部route可達及主要props/callback/reset/style/draft/鍵盤。cold8k～14k/45～75分鐘參照CommandsDemo/layout/dockconsumer；M1全部23publicfixtures typed／manifest對照（7k40）；M2native route及control/reset/draft/style/unknown error（14k75）；18k95或library/CSS/config write返回PLAN。網站iframe/generator/build-prefix與Flutterconsumer歸後續module，不以此consumer宣稱全部網站已完成；感官human-pending。
