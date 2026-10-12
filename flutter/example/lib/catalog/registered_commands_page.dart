@@ -16,7 +16,9 @@ final registeredCommandsPage = CatalogPageData(
 	specimens: [Specimen(name: 'KlpRegisteredCommandPalette', note: '搜尋、停用、執行中與錯誤保留均可操作；關閉只由產品採用意圖。', build: _buildCommands)],
 );
 
-Widget _buildCommands(BuildContext context) => const _CommandsDemo();
+const commandSpecimenNames = <String>['KlpRegisteredCommandToolbar', 'KlpRegisteredCommandMenu', 'KlpRegisteredCommandPalette', 'KlpRegisteredCommandPopup', 'KlpCommandShortcutHost'];
+
+Widget _buildCommands(BuildContext context) => const RegisteredCommandsDemo();
 
 class _DemoContext {
 	const _DemoContext(this.canSave, this.grid, this.showFailure);
@@ -26,13 +28,15 @@ class _DemoContext {
 	final bool showFailure;
 }
 
-class _CommandsDemo extends StatefulWidget {
-	const _CommandsDemo();
+class RegisteredCommandsDemo extends StatefulWidget {
+	const RegisteredCommandsDemo({super.key, this.specimen});
+	/* null保留完整Catalog；專屬route只投影自己的命令入口。 */
+	final String? specimen;
 	@override
-	State<_CommandsDemo> createState() => _CommandsDemoState();
+	State<RegisteredCommandsDemo> createState() => _CommandsDemoState();
 }
 
-class _CommandsDemoState extends State<_CommandsDemo> {
+class _CommandsDemoState extends State<RegisteredCommandsDemo> {
 	/* 清冊與草稿屬於這個產品展示，主題／尺寸更新保持同一份 owner。 */
 	final _registry = KlpCommandRegistry<_DemoContext>();
 	final _draft = TextEditingController(text: '保留這份草稿與游標');
@@ -245,12 +249,14 @@ class _CommandsDemoState extends State<_CommandsDemo> {
 		super.dispose();
 	}
 
+	bool _shows(String name) => widget.specimen == null || widget.specimen == name;
+
 	Widget _controls(BuildContext context) {
 		final children = [
 			KlpButton(label: '允許儲存：${_canSave ? '開' : '關'}', onPressed: _toggleSave),
 			KlpButton(label: '顯示失敗命令：${_showFailure ? '開' : '關'}', onPressed: _toggleFailure),
-			KlpButton(label: '開啟命令面板', onPressed: _openPalette),
-			KlpButton(key: _popupButton, label: '開啟錨定選單', onPressed: _openButtonPopup),
+			if (_shows('KlpRegisteredCommandPalette')) KlpButton(label: '開啟命令面板', onPressed: _openPalette),
+			if (_shows('KlpRegisteredCommandPopup')) KlpButton(key: _popupButton, label: '開啟錨定選單', onPressed: _openButtonPopup),
 		];
 		return Wrap(spacing: context.klp.space.actionGap, runSpacing: context.klp.space.actionGap, children: children);
 	}
@@ -284,13 +290,14 @@ class _CommandsDemoState extends State<_CommandsDemo> {
 		final children = <Widget>[
 			KlpTextField(label: '命令展示草稿', controller: _draft),
 			_controls(context),
-			GestureDetector(behavior: HitTestBehavior.opaque, onSecondaryTapDown: _openPointPopup, child: contextArea),
-			toolbar,
-			menu,
-			palette,
-			popup,
+			if (_shows('KlpRegisteredCommandPopup')) GestureDetector(behavior: HitTestBehavior.opaque, onSecondaryTapDown: _openPointPopup, child: contextArea),
+			if (_shows('KlpRegisteredCommandToolbar')) toolbar,
+			if (_shows('KlpRegisteredCommandMenu')) menu,
+			if (_shows('KlpRegisteredCommandPalette')) palette,
+			if (_shows('KlpRegisteredCommandPopup')) popup,
 			KlpText('結果 $_resultCount 次：$_message · 格線：${_grid ? '開' : '關'} · 最近關閉：${_dismissReason?.name ?? '尚未關閉'} · 快顯關閉：${_popupReason?.name ?? '尚未關閉'}', role: KlpTextRole.caption),
-			..._shortcutControls(context),
+			if (_shows('KlpCommandShortcutHost')) ..._shortcutControls(context),
+			if (widget.specimen != null) KlpText(_usage(), role: KlpTextRole.code),
 		];
 		final spaced = <Widget>[];
 		for (final child in children) {
@@ -306,6 +313,15 @@ class _CommandsDemoState extends State<_CommandsDemo> {
 			onResult: _onResult,
 			child: Column(crossAxisAlignment: CrossAxisAlignment.stretch, children: spaced),
 		);
+	}
+
+	String _usage() {
+		final name = widget.specimen!;
+		const import = "import 'package:kallopis/kallopis_foundation.dart';";
+		if (name == 'KlpCommandShortcutHost') return '$import\n$name<Context>(keymap: keymap, getContext: getContext, getFocus: getFocus, getIsComposing: getIsComposing, onHandling: onHandling, onResult: onResult, child: child)';
+		if (name == 'KlpRegisteredCommandPalette') return '$import\n$name<Context>(registry: registry, getContext: getContext, open: open, label: label, searchLabel: searchLabel, emptyLabel: emptyLabel, onResult: onResult, onDismiss: onDismiss)';
+		if (name == 'KlpRegisteredCommandPopup') return '$import\n$name<Context>(registry: registry, getContext: getContext, items: items, open: open, anchor: anchor, label: label, emptyLabel: emptyLabel, onResult: onResult, onDismiss: onDismiss)';
+		return '$import\n$name<Context>(registry: registry, getContext: getContext, items: items, label: label, onResult: onResult)';
 	}
 
 	List<Widget> _shortcutControls(BuildContext context) {
