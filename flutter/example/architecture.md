@@ -442,3 +442,32 @@ Native5203 prefix五頁自己的controls及label修改均完成，控制文字2�
 Timeline公開label和child草稿在四mode/spacious/local320與回呼保持；reset回初始三筆/defaultprops/0，環境保留。console error/warn空；main build/flutter-progress-collection-specimens.png、flutter-progress-collection-native.json保存證據。actual360 browser與感官human-pending，local320不替代。Flutterfixture105／273，剩168與全量网站/style audit等仍原goal，未提前push。actual task usage無單任務量測null。
 
 State _controls/_target/_usage操作自己的公開參數與constructor，_stepper給水平原生scroll host，_timelineContent只first item持有草稿controller，其餘普通內容，避免多input共用controller；_task/_cancel只root、_input/_childAction只child、_edit只control；_countChange維護consumer合法索引/Set，_checkAll給DTO checked資料，dispose清三controller，build280有限舞台。
+
+
+## FLUTTER-DATA-COLLECTION-SPECIMENS-1（READY）
+
+修訂FLUTTER-DATA-COLLECTION-SPECIMENS-r1，IDOC-01/02/03/06/08。exact lib/component_specimens.dart、新 lib/data_collection_specimens.dart；八target Accordion/DataTable/DateGrid/JsonTree/KeyValueList/KeyValueTable/Tree/TreeItem（Klp前綴），其餘全273目標不變。
+
+DataCollectionComponentSpecimen(name)只讀public foundation與Flutter widgets；State管理title/detail/draft controllers、公開DTO、props、selected/expanded Set與callback紀錄。DataTable onSort回寫公開sort及consumer rows順序，不實作庫排序算法；onSelected/onRowPressed分別記結果。DateGrid index回寫selected資料。Tree只現有generic public KlpTreeNode，不觸FileExplorer node/adapter；受控selected/expanded callback回寫Set，TreeItem只自己的onSelected。Accordion initialExpandedIds與multiple改變明示重建target，普通label/theme/width不改key；JsonTree defaultDepth/expandedPaths以明示initial重建控制，原native展開由target自身管理，不虛構onExpanded。KeyValueList copy與JsonTree copyPath只記原公開回呼，不宣称clipboard寫入；無callbacktarget只props，明示child action/input另記。
+
+單一first child持controller，其餘純文字；有限280scroll舞台，DataTable/DateGrid寬內容用原生水平scroll及consumer760寬host，布局能力驗證留library專屬stage不以host當證據。KeyValue DTO設定copyable/verbatim、emptyState；公開enum原values直接切換。空清單與數量control只是consumer資料投影，環境保留controller/state、epoch reset，dispose清controller。無core/persist/crosslanguage新風險，不新增鏡像tests。禁止library/tests/config/style/site/docs寫入。
+
+驗收八registry/publicrenderable、public analyze、同sourceprefixrelease、八native自身controls/文字/selection/sort/expand/copy callbacks、四mode/spacious/local320保留草稿與reset、scope2/diff；actual窄browser與感官human-pending。估6k～12k/40～90分鐘，參考CONTENT/PROGRESS；M1 source8/analyze/build（7k50），M2 native/state/scope（12k90）；18k120或public不足回PLAN；actual單task usage未量測null。
+
+| Source / class / function | 責任 |
+| --- | --- |
+| dataCollectionSpecimenNames / DataCollectionComponentSpecimen | 真實公開名稱與自身分流 |
+| State controls/target/usage/build | 公開參數／DTO投影、合法consumer host |
+| State callbacks/data/child/dispose | 原root與明示child回呼分開、資料與controller生命週期 |
+| component fixture | 外host環境與epoch維持 |
+
+```mermaid
+flowchart TD
+	Host[ComponentSpecimenApp] --> Fixture[DataCollectionComponentSpecimen]
+	Fixture --> Props[自身controls / 公開DTO]
+	Props --> Target[真實public target]
+	Target --> Callback[原public callback / 明示child]
+	Callback --> State[consumer資料與紀錄]
+	State --> Target
+	Host --> Reset[epoch重建]
+```
