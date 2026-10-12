@@ -184,3 +184,9 @@ resize 只更新有限偏好尺寸，由 UI 依 constraints／viewport 解算後
 ### Panel 有限尺寸
 
 KlpPanelFrame 仍由產品提供有限高度；header/footer 高度讀 semantic theme，正常空間保留原尺寸，不足時依通用 linear 演算法比例縮配，正文可為零且保持原 State。外距与內距限制至可用空間；PanelFooter 保留 custom/directional padding。產品內容負責自己的內部排版。這不代表 Dock 的保存偏好尺寸、drag/resize 已全部接入有限幾何。
+
+### Dock 有限尺寸
+
+KlpDockLayout 的父容器需提供有限寬高；保存 extent 是偏好，實際side與Bottom尺寸受area constraints及viewport控制。空間不足按通用演算法縮配minima，不回寫保存資料；群組與把手用同一有效gutter。contentHeader保留跨中央/右區而左區全高，Bottom只在Stage下方。resize callback提交值也扣除其餘區與把手；無法容納logical minimum時不提交尺寸，仍可collapse。內容State在合法theme與viewport更新保持。zero/巨大style不代表產品內容自身排版或操作感官已接受。
+
+現有example使用動態IconData，release web需 `flutter build web --release --no-tree-shake-icons` 保留完整套件圖示字型；默认tree-shake-icons會因非const圖示失败，不能靜默換圖示或字型資產。

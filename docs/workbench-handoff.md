@@ -37,10 +37,10 @@ Fluttercodec受保護tests flutter/test/dock_layout_codec_test.dart：129D62D2C1
 Reactcodec protected test react/test/dock-layout-state.test.mjs hash9D654F0FAA78FF9B02A97B4C7E337585179F25D3254F53F3C4ACB45E4DC77900，author基線c0c7fa76，BUILD scope於c6af55f6閉合。
 Reactoperations protected test react/test/dock-layout-operations.test.mjs hash8856C5DC1A404D4B0797BEE8FFD3F5BE0D6295755A7FD48E734F65C5CCDDD14F，author基線6641d67e，BUILD scope在e5d8b0a6閉合。
 Flutteroperations protected test flutter/test/dock_layout_operations_test.dart hash3D9FEBC3F5B44A602CE755482FE66D3DD849225632BA1120CE42B293BBD4E3DF，TestAuthor基線ca9a4efd，BUILD scope在243d9f98閉合。
-下一步PLAN雙框架Dock UI與geometry：兩端保存codec／pure操作都已完成，不重做。沿用WB04～08／16，保留Stage／Left／Right／Bottom及既有Fluttercaller；固定有限viewport／effectivegutter、header／content槽裁切、group尺寸及drag/resize/cancel/closecallback契約。Flutterhover開area目前呼叫onLayoutChanged，需要改成presentationpreview，取消不提交；用新的pureoperation提交成功drop／close。close callback需由產品批准且dirty不丟資料、pinned／dirty由產品metadata呈現。必要獨立Widget／DOMchecks先固定，再BUILD及公開example／nativebrowser證據。
+下一步PLAN雙框架Dock受控UI：兩端保存codec／pure操作及Flutter finitegeometry均已完成，不重做。沿用WB04～08／16，保留Stage／Left／Right／Bottom及既有Fluttercaller；固定drag/resize/cancel/closecallback契約。Flutterhover開area目前呼叫onLayoutChanged，需要改成presentationpreview，取消不提交；用新的pureoperation提交成功drop／close。close callback需由產品批准且dirty不丟資料、pinned／dirty由產品metadata呈現。必要獨立Widget／DOMchecks先固定，再BUILD及公開example／nativebrowser證據。
 其後命令／快捷鍵註冊、chord／scope／衝突／重綁、所有specimen、VSCode/Blockbench/Blender各双框架GUI、typedrecipe／全部元件風格對齊、網站展示registry/bundle/coverage、權威切換／CI／精確提交push仍未完成。完整goal保持ACTIVE。
 
-已直接觀察Flutter klp_dock_layout.dart _resolveGroupExtents 313～355：不足空間會分配content，但handle仍用raw semantic extent；root舊Row按保存left/right寬度直接配置，缺viewport clamp。接入purelinear resolver時必須同時使用有效gutter配置handle／overlay，不能只縮content並宣稱極大style安全。
+上述root/group/rawhandle問題已由296e7cab有限geometry修正；後續UI接入必須保留共同actualgutter／Rects／resize預算。
 
 ## 最新 Panel 前置完成
 
@@ -48,6 +48,14 @@ FLUTTER-PANEL-GEOMETRY-1：PLAN cf09051d，獨立TestAuthor2b0180b6，BUILD5e18c
 
 Panel module新architecture已固定finite chrome/inset/radius及內容State契約；FrameView依公開LayoutColumn/Pane/Bounds，Header依LayoutRow/Pane，所有stage wrappers在尺寸/theme變化穩定。未改Dock、theme、style、config、tests。根goal本輪工具量差127419tokens/517seconds含承接上下文與TestAuthor，不是純BUILD估算。
 
-下一步仍PLAN Flutter Dock finite geometry：使用既有linear resolver，root保持contentHeader跨center/right且left全高；side/center widths、header/bottom heights、group extents及有效gutter需共同守恆，handle/offset/overlay/resize/drop math均使用實際有效厚度。PanelFrame前置已完成不重做。DockHeader獨立高度32與overflow menu仍需finite tiny-width/hugeicon尺寸保護；contract/packet若需改其internalstate與resizehandle必明列。stage indicator thickness也需限制槽。hover/cancel/產品close callback另按共通pure operations語意接入。全部GUI/specimens/docs registry/recipe/authorityswitch/push未完成，goal ACTIVE。
+下一步PLAN Dock受控UI：Flutter finite geometry已完成，不重做；沿用pureoperations，hover只presentation preview/cancel不提交、close需產品批准且不丟dirty資料、pinned/dirty由產品metadata呈現。React native Dock UI仍缺。
 
 Panel title對齊校正8d4fc334：原viewport wrapper改為AlignmentDirectional.centerStart，保留原方向起點而非把短文字置中；同一9checks與Headeranalyze通過，scope只1個Header來源，testhash不變。獨立packet base8da3c63b，scope於8d4fc334閉合，mainignored flutter-panel-geometry-align*.json。
+
+## 最新 Dock finite geometry完成
+
+PLAN1e8203e6/Infinity補充4fe6c76c；TestAuthord76784d7；BUILD296e7cab。13checks baseline2pass/11behavioralRed→13Green，Dock/Headerpublicanalyze No issues，4paths scopepass。protectedfile flutter/test/dock_geometry_test.dart hash7F3D69E9C4B93BCC9EC8CA95D6197E361182784CA27326B2FEB878D81B2B4BE9。不重做geometry或修改tests；packet與scopeclosure在mainignored build/task-packets/flutter-dock-geometry-1*.json，base d76784d7/scope閉合296e7cab。
+
+新增privatepart internal/klp_dock_geometry.dart擁有rootRects/handles/resize預算，依既有publiclinear。UI root用stablekeyedPositioned/ClipRect，PanelFrame前置共用；保存prefs不變。groups最後填餘/其餘prefs依min與比例縮配，actualgutter供所有offset/resize/drop。arearesize扣另一side與把手/header，min不足no-op；horizontalheaderdrop讀actualmargin/chrome；Stageindicator只畫Stage邊界。Header zero icon slot多選單保留可點擊槽與enabledcallbacks；loose-tight lineclamp0。
+
+已重現releaseweb default build因原dynamicIconData不能tree-shake字型失败；按Flutterdiagnostic改用 --no-tree-shake-icons 保留完整字型，不改資產/consumer/config/tests。release建置成功（49.8s）；http://127.0.0.1:5192/ nativebrowser tab7已確認HISTORY切換呈現Change history、Bottom收合隱藏TERMINAL/PROBLEMS、再開恢復且HISTORY保留，error/warn皆空。證據mainignored build/evidence/flutter-dock-geometry.png，release靜態server session3043。觀察既有Catalog文字黃色雙底線及Header說明仍寫固定32px，待example/style/docs階段修正；沒有宣稱感官接受，human-pending。下一步Flutter hover/cancel/close/metadata/pureOPS受控接入，以及React nativeDock；logicalgroup min32/120完整recipe參數化、commands/keybindings、allGUI/specimens/docsregistry/authorityswitch/push尚未完成，goal ACTIVE。

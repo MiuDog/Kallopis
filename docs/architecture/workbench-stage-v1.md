@@ -65,3 +65,5 @@ REACT-DOCK-OPS-1完成e5d8b0a6：WB-DOCK-OPS-r1受控單步操作，10獨立chec
 FLUTTER-DOCK-OPS-1完成243d9f98：typed constaction／destination／area／result及pureapply，10protectedchecks（React同fixture／情境）、publicanalyze No issues及scope通過。雙框架保存及pure操作均完成，接續Dock UI：area／group有限geometry與effectivehandle、closecallback、pinned／dirty、拖放／resizefeedback及cancel不提交。
 
 FLUTTER-PANEL-GEOMETRY-1完成5e18ccd6：Dock縮配前置的PanelFrame chrome/margin/radius、Header/Footer inset與原內容State保留已完成；9protectedchecks、publicanalyze及scope通過。接續Dock root/group有效gutter與handle/overlay共同配額；Panel尺寸保護不代替Dock範圍。
+
+FLUTTER-DOCK-GEOMETRY-1完成296e7cab：13 protectedWidgetchecks、publicanalyze/scope；有限viewport/effectivegutter/root/groups/resizebudgets/headerzeroslot/State完成。下一步受控Dock UI接入pureoperations、hover/cancel/close批准/pinned/dirty，以及React native Dock UI；這些尚未完成。

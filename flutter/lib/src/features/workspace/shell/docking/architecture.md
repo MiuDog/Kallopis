@@ -61,9 +61,9 @@ b08d80e6／243d9f98：KlpDockArea、Destination、Action及ActionResult公開typ
 
 ## 有限 geometry 前置
 
-共通 WB-PANEL-GEOMETRY-r1 已 READY；Panel 模組先處理 finite chrome／inset／State continuity，Dock 只使用公開 PanelFrame。Dock root/group/gutter/overlay 的 packet 尚未發出；目前保存 extents 仍直接排版，不宣稱有限 viewport 保護完成。Panel slice 不改本目錄，後續 Dock slice 不複製 Panel chrome 算法。
+共通 WB-PANEL-GEOMETRY-r1 已 READY；Panel 模組先處理 finite chrome／inset／State continuity，Dock 只使用公開 PanelFrame。Dock root/group/gutter/overlay 已由 FLUTTER-DOCK-GEOMETRY-1 接入共同配額；原保存偏好不因render改變。Panel slice 不改本目錄，後續 Dock slice 不複製 Panel chrome 算法。
 
-## FLUTTER-DOCK-GEOMETRY-1（READY）
+## FLUTTER-DOCK-GEOMETRY-1（完成）
 
 修訂FLUTTER-DOCK-GEOMETRY-r1；依WB-DOCK-GEOMETRY-r1接入有限viewport。klp_dock_layout.dart 擁有native positioned composition／group resolver接入／actual handle傳入resize/drop；新 private part internal/klp_dock_geometry.dart 只擁有 root rect 與handle配額，依公開resolveKlpLinearLayout，不建立第二份演算法。布局root用stable keyed Positioned/ClipRect保留原Stage/area/header內容；root需finite axes，不持有保存state。
 
@@ -86,3 +86,15 @@ flowchart TD
 	Native --> Panel[公開PanelFrame尺寸契約]
 	Header[DockHeader slots] --> Panel
 ```
+
+## Geometry 清冊與證據
+
+296e7cab：_KlpDockGeometry 的 optional area/header rect、stage及三handle rect、maximum resize budgets只持有限當前呈現；_dockAreaItem把舊Infinity logicalmax轉nullable resolver上限。_resolveDockGeometry依共通root左右/上下規則调用既有solver。_dockSlot keyed native Positioned/ClipRect保持consumer State；_resolveGroupExtents回傳同一result.extents/gutter，offset/handle/drop/resize共享。_handleAreaResizeAt先檢查有限提交上限，min不容納時不寫尺寸；_handleGroupResizeAt只改相鄰pair。_buildStageDropIndicator只畫Stage rect；horizontalgroup header判定使用公開PanelFrame margin/chrome配額。
+
+DockHeader總slots先clamp至所需actions+1再floor，zero icon不除零；more 在zero icon尺寸時以當前標頭可用高/寬形成有限操作槽，保留menu enabled/callback。resize indicator lineLength=max0(loose-tight)，paint裁切於實際槽。沒有改model/codec/pureoperations/Panel/拖放state callback。
+
+獨立TestAuthor d76784d7，13checks baseline2pass/11behavioralRed；最終13Green、publicDock/Headeranalyze No issues、4allowedpaths scopepass。protected SHA256 7F3D69E9C4B93BCC9EC8CA95D6197E361182784CA27326B2FEB878D81B2B4BE9 不變。首次geometry實作12pass/1menuRed，zero icon留下零clickable面積；只在Header原有more slot依有限標頭配額修正，originalmenucheck及全部13checks再通過，未改測試也無Green fallback。BUILDscope於296e7cab閉合，owner文件更新不回算worker。
+
+logicalgroupmin32/120仍是舊操作限制，完整style recipe參數化尚未完成。hover/cancel不提交、close批准、pinned/dirty與pureoperation UI接入仍待同一Workbenchstage；有限geometry完成不代表整個Dock交付完成。
+
+Release Catalog 另以 `flutter build web --release --no-tree-shake-icons` 成功建置；既有動態 IconData 要求保留完整字型。native browser 已確認 HISTORY 分頁切換、Bottom 收合與還原保留分頁，error/warn 空。截圖在 main ignored `build/evidence/flutter-dock-geometry.png`；Catalog 黃色雙底線與 Header 固定32px舊說明仍待 example/style 階段，不屬本 BUILD，感官接受仍 human-pending。
