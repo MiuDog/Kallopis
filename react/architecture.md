@@ -315,7 +315,7 @@ flowchart TD
 | 當前定義 | 來源 | 責任 |
 | --- | --- | --- |
 | KlpDockPanel／KlpDockLayoutProps | [workbench-dock.tsx](src/workbench-dock.tsx) | 產品內容/metadata/批准、受控狀態/限制/可及名稱/ref公開邊界 |
-| label／numeric／validate | 同上 | 非空名稱、semantic有限值、純codec及registry前置；不freeze產品ReactNode |
+| label／validate | 同上 | 非空名稱、純codec及registry前置；不freeze產品ReactNode；semantic數值由private view擁有 |
 | position／KlpDockLayout | 同上 | 有限slot styles、宿主與穩定stage/header/areas/內容DOM |
 | KlpDockLayout.commit／keyboard／renderArea | 同上 | purechanged一次通知、循環選取與focus、linear groups/有限margin/chrome/metadata |
 | CloseRequest／placed | [workbench-dock-lifecycle.ts](src/workbench-dock-lifecycle.ts) | 請求callback/panel身分；查目前仍placed，沒有保存鏡像 |
@@ -325,7 +325,7 @@ flowchart TD
 
 下一slice在同stage接pointer reorder/move/split/resize/preview及公開example；其READY packet另固定輸入生命周期及exactwritepaths。
 
-### REACT-DOCK-NATIVE-2（READY）
+### REACT-DOCK-NATIVE-2（完成）
 
 修訂REACT-DOCK-INPUT-r1，沿已接受WB-GEOMETRY/PREVIEW/UI-r1。單一宿主的原生HTML drag事件負責tab重排/move/split/create；Pointer Events負責area/group resize。HTML drag的瀏覽器觸控支援由宿主決定，文件明示；不宣稱跨視窗/跨instance drag或自建touch polyfill。保留NATIVE-1 publicAPI及close生命周期；新增optional collapseThresholds:Partial<Record<KlpDockArea,number>>，缺省0，值有限非負，屬產品收合邏輯，非品牌尺寸。
 
@@ -361,10 +361,24 @@ flowchart TD
 	Input --> Cleanup[document end / cancel / unmount]
 ```
 
-Native2主體已於follower checkpoint完成8/9checks、build及4paths scope；M2仍有scale2尺寸Red，不宣稱全部完成。useDockSize在computedCSS不是px時取transformed DOMrect，令600px宿主視為1200而pointer delta50成100。這是既有量測依賴的可重現失敗，不能在input另建不同viewport掩蓋。
+Native2實作681c0f6c，量測修正583818e8，提示線/capture清理6ee63c5e。9項input checks baseline2Green/7behaviorRed；接線後8Green/1scaleRed，修正後9Green，合併原native1共18Green（session77278 exit0）。build/publicconsumer與各自4path/單量測檔/單input檔scope均通過；protectedhash 335DCA352EF2FAAA608AF9294CDA45D00B5A213FB8CAAA2E40A32FEFCAA17403與native1 hash未改。新input checks無act警告，native1原act harness警告仍保留，不宣稱console空。尺寸及事件是synthetic，nativebrowser與感官待公開example；before/after提示線及pointer capture已接線，尚未nativebrowser觀察。
 
-#### REACT-DOCK-MEASURE-1（READY）
+#### REACT-DOCK-MEASURE-1（完成）
 
 修訂REACT-DOCK-MEASURE-r1；只有react/src/workbench-dock-lifecycle.ts可寫，其餘產品/tests/architecture/config唯讀。useDockSize以resolvedCSS px維持原行為；非px時使用未transform的clientWidth/clientHeight扣padding（client不包含border），無可用client尺寸才保留DOMrect fallback。公開API/同一view及pointer座標責任不改，不對root額外除scale；零尺寸及SSR保持合法，observer及close生命周期不改。
 
 原Red為workbench-dock-input.test.mjs area scale2期望210、實際260；修正後同9checks再Green。直接受影響NATIVE-1九個DOM/SSR checks及librarybuild/consumer/單檔scope必驗；兩個protectedhash不得改。預估1k–3k tokens、10–20分鐘；若client fallback仍不能說明失敗回診斷，不修改fixture/expected或把scale從tests拿掉。此小slice完成後以兩個閉合scope共同證明NATIVE-2，owner文件不混入worker範圍。
+
+| 當前定義 | 來源 | 責任 |
+| --- | --- | --- |
+| DockGroupView／DockView | [workbench-dock-view.ts](src/workbench-dock-view.ts) | root座標的outer/inner/header/gutter、只讀preview投影與semantic度量 |
+| dockNumber／dockMinimum／resolveDockView | 同上 | scoped有限值、邏輯32/120、唯一root/group有限投影，render與命中共用 |
+| InputArgs／Point／Target／ResizeSession | [workbench-dock-input.ts](src/workbench-dock-input.ts) | 最新依賴、CSS座標、候選typedactions/提示、pointer/capture生命周期；非保存模型 |
+| contains／constraints／allowed／location | 同上 | 有效槽、area邏輯限制、registry能力、source群組查詢 |
+| useDockInput.clear／point／batch／newGroupId | 同上 | cleanup/capture、transform座標、immutable純交易一次通知、避開caller IDs |
+| tabTarget／tabLine／target／previewAt | 同上 | finalindex及實際插入線、tab/split/Stage合法目的、hover只呈現 |
+| resizeTarget／startResize／ignoreClick | 同上 | actualpair/viewport限制、有限pointer開始及拖後click抑制 |
+| startDrag／onDragOver／onDrop／onDragLeave | 同上 | instance HTMLdrag來源、合法接受、最新target成功提交、離開只清hint |
+| useDockInput effects／move／up／cancel／end／key | 同上 | 最新caller替換、document listeners/capture/dispose、feedback/完成/取消/Escape |
+
+下一步公開React Dock example接布局保存/還原/reset、open/merge、批准close與nativebrowser，然後GUI及各component specimen網站整合。此完成不涵蓋commands/keybindings或所有視覺recipe參數。
