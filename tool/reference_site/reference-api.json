@@ -563,6 +563,45 @@
 					]
 				},
 				{
+					"id": "package:kallopis/src/features/actions/command_entries/klp_command_entries.dart#KlpCommandKind",
+					"name": "KlpCommandKind",
+					"slug": "klp-command-kind",
+					"kind": "enum",
+					"module": "features.actions",
+					"sourceUri": "package:kallopis/src/features/actions/command_entries/klp_command_entries.dart",
+					"primarySurface": "foundation",
+					"surfaces": [
+						"foundation"
+					],
+					"signature": "enum KlpCommandKind",
+					"documentation": "",
+					"typeRelationships": {
+						"extends": "Enum",
+						"mixins": [],
+						"implements": []
+					},
+					"members": [
+						{
+							"name": "KlpCommandKind",
+							"kind": "constructor",
+							"signature": "KlpCommandKind()",
+							"documentation": ""
+						},
+						{
+							"name": "action",
+							"kind": "enumValue",
+							"signature": "KlpCommandKind action",
+							"documentation": ""
+						},
+						{
+							"name": "toggle",
+							"kind": "enumValue",
+							"signature": "KlpCommandKind toggle",
+							"documentation": ""
+						}
+					]
+				},
+				{
 					"id": "package:kallopis/src/features/actions/command_menu/klp_command_menu.dart#KlpCommandMenu",
 					"name": "KlpCommandMenu",
 					"slug": "klp-command-menu",
@@ -615,6 +654,45 @@
 							"name": "sections",
 							"kind": "field",
 							"signature": "List<KlpCommandSectionData> sections",
+							"documentation": ""
+						}
+					]
+				},
+				{
+					"id": "package:kallopis/src/features/actions/command_entries/klp_command_entries.dart#KlpCommandReference",
+					"name": "KlpCommandReference",
+					"slug": "klp-command-reference",
+					"kind": "class",
+					"module": "features.actions",
+					"sourceUri": "package:kallopis/src/features/actions/command_entries/klp_command_entries.dart",
+					"primarySurface": "foundation",
+					"surfaces": [
+						"foundation"
+					],
+					"signature": "class KlpCommandReference",
+					"documentation": "",
+					"typeRelationships": {
+						"extends": "Object",
+						"mixins": [],
+						"implements": []
+					},
+					"members": [
+						{
+							"name": "KlpCommandReference",
+							"kind": "constructor",
+							"signature": "KlpCommandReference({required String commandId, KlpCommandKind kind = KlpCommandKind.action})",
+							"documentation": ""
+						},
+						{
+							"name": "commandId",
+							"kind": "field",
+							"signature": "String commandId",
+							"documentation": ""
+						},
+						{
+							"name": "kind",
+							"kind": "field",
+							"signature": "KlpCommandKind kind",
 							"documentation": ""
 						}
 					]
@@ -1084,6 +1162,150 @@
 							"kind": "enumValue",
 							"signature": "KlpIconButtonTone standalone",
 							"documentation": "獨立控制項：靜置時就有底色，讓它在空白區域中可辨識。"
+						}
+					]
+				},
+				{
+					"id": "package:kallopis/src/features/actions/command_entries/klp_command_entries.dart#KlpRegisteredCommandMenu",
+					"name": "KlpRegisteredCommandMenu",
+					"slug": "klp-registered-command-menu",
+					"kind": "class",
+					"module": "features.actions",
+					"sourceUri": "package:kallopis/src/features/actions/command_entries/klp_command_entries.dart",
+					"primarySurface": "foundation",
+					"surfaces": [
+						"foundation"
+					],
+					"signature": "class KlpRegisteredCommandMenu<C> extends StatelessWidget",
+					"documentation": "",
+					"typeRelationships": {
+						"extends": "StatelessWidget",
+						"mixins": [],
+						"implements": []
+					},
+					"members": [
+						{
+							"name": "KlpRegisteredCommandMenu",
+							"kind": "constructor",
+							"signature": "KlpRegisteredCommandMenu<C>({\n  Key? key,\n  required KlpCommandRegistry<C> registry,\n  required C Function() getContext,\n  required List<KlpCommandReference> items,\n  required String label,\n  required String emptyLabel,\n  required ValueChanged<KlpCommandExecutionResult> onResult,\n  bool autoFocus = false,\n  VoidCallback? onDismiss,\n})",
+							"documentation": ""
+						},
+						{
+							"name": "autoFocus",
+							"kind": "field",
+							"signature": "bool autoFocus",
+							"documentation": ""
+						},
+						{
+							"name": "build",
+							"kind": "method",
+							"signature": "Widget build(BuildContext context)",
+							"documentation": ""
+						},
+						{
+							"name": "emptyLabel",
+							"kind": "field",
+							"signature": "String emptyLabel",
+							"documentation": ""
+						},
+						{
+							"name": "getContext",
+							"kind": "field",
+							"signature": "C Function() getContext",
+							"documentation": ""
+						},
+						{
+							"name": "items",
+							"kind": "field",
+							"signature": "List<KlpCommandReference> items",
+							"documentation": ""
+						},
+						{
+							"name": "label",
+							"kind": "field",
+							"signature": "String label",
+							"documentation": ""
+						},
+						{
+							"name": "onDismiss",
+							"kind": "field",
+							"signature": "VoidCallback? onDismiss",
+							"documentation": ""
+						},
+						{
+							"name": "onResult",
+							"kind": "field",
+							"signature": "ValueChanged<KlpCommandExecutionResult> onResult",
+							"documentation": ""
+						},
+						{
+							"name": "registry",
+							"kind": "field",
+							"signature": "KlpCommandRegistry<C> registry",
+							"documentation": ""
+						}
+					]
+				},
+				{
+					"id": "package:kallopis/src/features/actions/command_entries/klp_command_entries.dart#KlpRegisteredCommandToolbar",
+					"name": "KlpRegisteredCommandToolbar",
+					"slug": "klp-registered-command-toolbar",
+					"kind": "class",
+					"module": "features.actions",
+					"sourceUri": "package:kallopis/src/features/actions/command_entries/klp_command_entries.dart",
+					"primarySurface": "foundation",
+					"surfaces": [
+						"foundation"
+					],
+					"signature": "class KlpRegisteredCommandToolbar<C> extends StatelessWidget",
+					"documentation": "",
+					"typeRelationships": {
+						"extends": "StatelessWidget",
+						"mixins": [],
+						"implements": []
+					},
+					"members": [
+						{
+							"name": "KlpRegisteredCommandToolbar",
+							"kind": "constructor",
+							"signature": "KlpRegisteredCommandToolbar<C>({\n  Key? key,\n  required KlpCommandRegistry<C> registry,\n  required C Function() getContext,\n  required List<KlpCommandReference> items,\n  required String label,\n  required ValueChanged<KlpCommandExecutionResult> onResult,\n})",
+							"documentation": ""
+						},
+						{
+							"name": "build",
+							"kind": "method",
+							"signature": "Widget build(BuildContext context)",
+							"documentation": ""
+						},
+						{
+							"name": "getContext",
+							"kind": "field",
+							"signature": "C Function() getContext",
+							"documentation": ""
+						},
+						{
+							"name": "items",
+							"kind": "field",
+							"signature": "List<KlpCommandReference> items",
+							"documentation": ""
+						},
+						{
+							"name": "label",
+							"kind": "field",
+							"signature": "String label",
+							"documentation": ""
+						},
+						{
+							"name": "onResult",
+							"kind": "field",
+							"signature": "ValueChanged<KlpCommandExecutionResult> onResult",
+							"documentation": ""
+						},
+						{
+							"name": "registry",
+							"kind": "field",
+							"signature": "KlpCommandRegistry<C> registry",
+							"documentation": ""
 						}
 					]
 				},

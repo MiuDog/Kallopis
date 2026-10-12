@@ -1,6 +1,6 @@
 # Registered command入口
 
-FLUTTER-COMMAND-ENTRY-r1 READY，依[共同WB-COMMAND-ENTRY-r1](../../../../../../docs/architecture/workbench-command-entry-contract.md)。當前只交付直接原生toolbar/平面menu；popup/palette/shortcut仍待接續，既有CommandMenu/WorkspaceCommand caller不變。
+FLUTTER-COMMAND-ENTRY-r1 COMPLETE，依[共同WB-COMMAND-ENTRY-r1](../../../../../../docs/architecture/workbench-command-entry-contract.md)。當前只交付直接原生toolbar/平面menu；popup/palette/shortcut仍待接續，既有CommandMenu/WorkspaceCommand caller不變。
 
 ## 責任及公開契約
 
@@ -36,3 +36,33 @@ flowchart TD
 ```
 
 原生焦點/scroll依[Flutter Focus](https://docs.flutter.dev/ui/interactivity/focus)及[SingleChildScrollView](https://api.flutter.dev/flutter/widgets/SingleChildScrollView-class.html)。row的hover/focus/checked背景由同context.klp.selectionWash解析；Pressable只提供pointer，hoverHighlight=false/selected=false，避免既有selectedWash混入不同色。這是新row內部呈現責任，舊Pressable不改。
+
+## 完成證據及定義索引
+
+23項public Widget/lifecycle checks、public analyze No issues、兩path scope通過。fresh TestAuthor3a3f2004原API missing compile Yellow；初跑10pass/11fail主要SemanticsHandle清理時機，authora4951f51以body try/finally修正；120bd313補Future完成後第二原生frame flush及兩callback錯誤case，未弱化原assertions。最終SHA256 4DC377CC7612B91719BDEEC6472B30D47722C225702788C923F48B2545F80189，BUILD重跑23Green且hash不變。原5個analyzer flow-control lint已在新來源修正，未改config/core/controls/theme。browser/感官及全參數style audit仍待後續stage。
+
+所有下列定義位於[klp_command_entries.dart](klp_command_entries.dart)。
+
+| 定義 | 責任與方法 |
+| --- | --- |
+| KlpCommandKind／KlpCommandReference | action/toggle語意與const ID引用 |
+| KlpRegisteredCommandToolbar／KlpRegisteredCommandMenu | public原生參數、build委派同host |
+| _CommandRowData | reference/state本次投影，enabled派生pending gate |
+| _CommandEntryHost | 共用原生Widget輸入、createState |
+| _CommandEntryHostState | initState/didUpdateWidget/dispose生命週期；_subscribe/_refresh訂閱；_scheduleAutofocus/focusAfterBuild掛載焦點；_activeId/_focus可用索引；_syncNodes/releaseAfterBuild安全釋放 |
+| _CommandEntryHostState執行與呈現 | _activate/_isCurrent/_report原值/舊宿主/error通道；_key鍵盤；_validate/text字串與重複ID；_row/focusChanged原生Focus；build本次query及finite scroll/wrap |
+| _RegisteredCommandRow | 新row呈現輸入、createState |
+| _RegisteredCommandRowState | hovered視覺生命週期；build讀semantic與KlpText/Icon/Pressable及Semantics |
+
+```mermaid
+classDiagram
+	KlpRegisteredCommandToolbar --> _CommandEntryHost : 原生組合
+	KlpRegisteredCommandMenu --> _CommandEntryHost : 原生組合
+	_CommandEntryHost --> _CommandEntryHostState : createState
+	_CommandEntryHostState --> KlpCommandRegistry : 訂閱及ID執行
+	_CommandEntryHostState "1" *-- "0..*" FocusNode : 原生生命週期
+	_CommandEntryHostState --> _CommandRowData : 本次投影
+	_CommandRowData --> KlpCommandReference : caller引用
+	_CommandEntryHostState --> _RegisteredCommandRow : 薄視覺組合
+	_RegisteredCommandRow --> _RegisteredCommandRowState : createState
+```

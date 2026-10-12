@@ -177,3 +177,5 @@ VDOC-01～05 均已完成 deterministic module gate；資料由唯讀規範流�
 DOCS-LINEAR-1 實作 3cfe2eea：15 項既有 checks、524 canonical API／17 modules／26 文件 generate／verify、scope gate 通過。公開 manifest 重新 extraction 後由整合 owner 更新，不由 BUILD 手改。
 
 React registered command入口契約加入唯一Guide路由 docs/guides/workbench-command-entry-contract.html；當前29份Markdown，541 API清冊不變。generate/verify及15 checks通過。React入口12項DOM/lifecycle/type checks不代表browser展示完成。
+
+Flutter registered toolbar/menu/ref/kind四個公開宣告extract後，當前545 canonical API／17modules／三surfaces，29Markdown。公開manifest只同步Green extractor輸出；兩框架入口完成仍不等於specimen/GUI/palette/shortcut完成。

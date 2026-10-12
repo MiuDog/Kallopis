@@ -247,3 +247,35 @@ commands.dispose();
 `subscribe`回自己的disposer，也可沿原生Listenable的addListener/removeListener；即使callback相同，原生removeListener不解除subscribe。外部closure條件改變用refresh通知，version反映每次註冊/解除/開始/完成/refresh/dispose。通知中dispose合法，立即關閉並最後一次通知；disposed查詢仍合法，mutation拋StateError。observer錯誤沿FlutterError，handler及condition原錯誤只由typed結果交產品。
 
 24項公共命令檢查及局部靜態分析通過，包含原生通知中銷毀與混合訂閱順序。完整規則見[共同命令契約](../architecture/workbench-command-contract.md)；選單、命令面板與快捷鍵仍待統一接入。
+
+## Registered 命令工具列與選單
+
+`KlpRegisteredCommandToolbar<C>`／`KlpRegisteredCommandMenu<C>`從stablefoundation使用。產品提供同registry、最新getContext、ID/order/kind及onResult；label、description、icon、enabled、checked、running都從registry投影，不複製第二份handler/state。
+
+```dart
+KlpRegisteredCommandToolbar<ProductContext>(
+	registry: commands,
+	getContext: () => currentContext,
+	items: const [
+		KlpCommandReference(commandId: 'document.save'),
+		KlpCommandReference(commandId: 'view.grid', kind: KlpCommandKind.toggle),
+	],
+	label: '文件工具',
+	onResult: handleProductResult,
+)
+KlpRegisteredCommandMenu<ProductContext>(
+	registry: commands,
+	getContext: () => currentContext,
+	items: const [KlpCommandReference(commandId: 'document.save')],
+	label: '文件命令',
+	emptyLabel: '沒有可用命令',
+	onResult: handleProductResult,
+	onDismiss: closeProductPopup,
+)
+```
+
+外部closure變動呼叫commands.refresh()。缺失/隱藏/條件錯誤項不呈現；停用/執行中項保持呈現但不進可用索引。toolbar左右、menu上下循環，Home/End跳首尾，Enter/Space只KeyDown啟動一次，repeat不啟動；menu Escape呼叫onDismiss。autoFocus預設false，true才在掛載後取得首可用項或空root焦點。
+
+UI不取消已開始產品Future；samehost/sameregistry完成交最新onResult，卸載或更換registry後隔離舊結果，解除命令註冊仍保留原結果。onResult自身錯誤交FlutterError，不能偽裝成handler結果。風格讀context.klp，menu scroll/toolbar wrap保護有限宿主；popup定位/context menu/palette與shortcut待接續。
+
+23項公開Widget/lifecycle checks、public analyze及兩path scope通過；browser和感官品質尚待展示stage。[雙框架入口契約](../architecture/workbench-command-entry-contract.md)為共同邊界。

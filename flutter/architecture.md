@@ -110,8 +110,8 @@ flowchart TD
 
 具體責任及FLUTTER-COMMAND-CORE-r1見[command registry](lib/src/features/actions/command_registry/architecture.md)（COMPLETE）。單一原生來源與stablefoundation匯出；notification中dispose立即語意關閉，原生ChangeNotifier資源收尾延後到最外層通知返回。fresh獨立TestAuthor先保護publiccore，BUILD只寫該來源與foundation，不自行發明共通規則；已交付b2cdee54＋9cffc7e8，24項獨立checks、public analyze與2path/1path scope通過；observer原生解除與subscribe owner已隔離。命令入口及shortcut接入仍待後續stage。
 
-## Flutter registered command入口邊界（READY）
+## Flutter registered command入口邊界（COMPLETE）
 
-依[WB-COMMAND-ENTRY-r1](../docs/architecture/workbench-command-entry-contract.md)，KlpCommandReference、KlpRegisteredCommandToolbar/Menu將以現有controls／CommandMenu風格呈現同registry資料，產品只給ID/order/kind與getContext/onResult。原CommandMenu models/caller保持原API，沒有新handler或context權威。實作前固定actions command_entries的local architecture與fresh TestAuthor；目前ReactENTRY slice不寫Flutter產品碼。overlay/context menu/palette仍屬已接受stage接續能力，未完成。
+依[WB-COMMAND-ENTRY-r1](../docs/architecture/workbench-command-entry-contract.md)，KlpCommandReference、KlpRegisteredCommandToolbar/Menu將以現有controls／CommandMenu風格呈現同registry資料，產品只給ID/order/kind與getContext/onResult。原CommandMenu models/caller保持原API，沒有新handler或context權威。local architecture與fresh TestAuthor已完成，兩框架registered入口均交付。overlay/context menu/palette仍屬已接受stage接續能力，未完成。
 
-FLUTTER-COMMAND-ENTRY-r1 local PLAN READY見[registered入口](lib/src/features/actions/command_entries/architecture.md)：新來源+stablefoundation兩path，native Focus/語意與同registry生命周期；fresh TestAuthor保護公開Widget。React ENTRY已完成d05dca0e，Flutter本slice不改舊CommandMenu/core/theme。
+FLUTTER-COMMAND-ENTRY-r1 COMPLETE見[registered入口](lib/src/features/actions/command_entries/architecture.md)：BUILD ae01ca96新來源+stablefoundation兩path，23項protected公開Widgetchecks、analyze No issues及scope通過；native Focus/語意與同registry生命周期。React ENTRY已完成d05dca0e，兩端都不改舊CommandMenu/core/theme。popup/palette及shortcut未完成，browser及全style參數audit待展示stage。

@@ -4,14 +4,16 @@
 
 ## 下一個可執行步驟
 
-1. 雙框架command core已完成，共同WB-COMMAND-ENTRY-r1及React registered toolbar/menu已完成。下一個PLAN固定Flutter actions/command_entries local architecture與fresh TestAuthor，保持既有CommandMenu／WorkspaceCommand caller相容；不重做registry。overlay/context menu/palette仍待接續。
+1. 雙框架command core與registered toolbar/menu已完成。下一個PLAN固定overlay/context menu/palette的錨點、搜尋、焦點還原与同registry ID接入；保留既有CommandMenu／WorkspaceCommand caller，不重做core/registered入口。
 2. 雙框架快捷鍵/chord/scope/conflict/remap/recording契約與接入。不可用core冒充整個命令stage完成。
 3. 網站每個公開可呈現元件專屬互動specimen、registry/bundle/coverage；3GUI×2框架；typedrecipes／完整風格中立與參數／default權威切換。
 4. 補browser hoverpreview/cancel矩陣、Flutter continuousresize與React endcommit差異契約審核；保留所有既有CI/發布閘門，精確commit/push。感官接受human-pending。
 
-## 當前新完成：React registered command入口
+## 當前新完成：雙框架registered command入口
 
-共同WB-COMMAND-ENTRY-r1 READY；React BUILDd05dca0e只新command-entries/indexexport/stylesappend，12項SSR/DOM/lifecycle/type checks及librarybuild/3pathscope通過，protectedhash72BB8ACAD50A754D376EE3CB38D80A0B1A2BE02317F2131F1079233C03449561未改。ownerf7f93520接入使用指南與共同契約網站Guide，當前29份Markdown、541API、15websitechecks/generate/verify通過；React act時機警告與browser/sensory待驗證。Flutter local FLUTTER-COMMAND-ENTRY-r1 READY；fresh TestAuthor保護公開Widget，產品實作尚未開始。不以入口冒充popup/palette/shortcut全完成。
+共同WB-COMMAND-ENTRY-r1 READY；React BUILDd05dca0e只新command-entries/indexexport/stylesappend，12項SSR/DOM/lifecycle/type checks及librarybuild/3pathscope通過，protectedhash72BB8ACAD50A754D376EE3CB38D80A0B1A2BE02317F2131F1079233C03449561未改。ownerf7f93520接入使用指南與共同契約網站Guide，當前29份Markdown、541API、15websitechecks/generate/verify通過；React act時機警告與browser/sensory待驗證。Flutter FLUTTER-COMMAND-ENTRY-r1亦已完成，證據如下。不以入口冒充popup/palette/shortcut全完成。
+
+Flutter BUILDae01ca96只新command_entries來源及foundation匯出；23項protected Widget/lifecycle checks、analyze No issues、兩path scope通過。author3a3f2004→a4951f51→120bd313保留原斷言，修正SemanticsHandle try/finally與Future完成後第二frame flush，補兩callback原error/再執行保護；最終SHA256 4DC377CC7612B91719BDEEC6472B30D47722C225702788C923F48B2545F80189。不改舊controls/core/theme/config；nativebrowser與極端style參數audit待後續。owner重新extract後545 canonical API／17modules／三surfaces，29Markdown；generate/verify及15網站checks通過。
 
 ## React command core
 
@@ -37,7 +39,7 @@ owner b319af8c澄清removeListener只解除native addListener owner；獨立auth
 | Dock codec／operations | Flutter69771496／243d9f98；Reactc6af55f6／e5d8b0a6；各7codec、10operationschecks | 已完成；consumer只投影id/capabilities清冊，不傳content/callback |
 | Flutter Panel／Dock | Panel5e18ccd6／8d4fc334九checks；geometry296e7cab十三；preview3064c359七；UI4ff1c999十三，Dock合計33checks | browser preview/cancel全矩陣 |
 | React Dock | geometry08ea39fc九；native1 7690b23b九；native2 681c0f6c／583818e8／6ee63c5e九，合計18nativechecks | native1部分act harness warnings保留，browser矩陣同上 |
-| 參考網站 | Flutter541canonical API／17modules／三surface extract/generate/verify；29文件、15網站checks | 541 API清冊不等於541互動頁；全部展示未完成 |
+| 參考網站 | Flutter545canonical API／17modules／三surface extract/generate/verify；29文件、15網站checks | API清冊不等於互動頁；全部展示未完成 |
 
 共同Dock契約docs/architecture/workbench-dock-contract.md與linear契約workbench-linear-contract.md均READY。KLP0024要求一般Row/Column/Pane與Dock分開，保留direct native元件；不得重建node/adapter/declarative runtime。公開Flutter theme/foundation為stable，consumer不得引用src。
 
