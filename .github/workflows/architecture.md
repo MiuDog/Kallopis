@@ -29,3 +29,18 @@ flowchart TD
 	Pages[pages.yml Node job] --> SiteOnly[同純Node15 checks]
 	SiteOnly --> Artifact[正式manifest產物 / 原驗證 / Pages artifact]
 ```
+
+## CI-REACT-DOCS-1（READY）
+
+修訂CI-REACT-DOCS-r1。BUILD exact pages.yml，既有Node24、權限、triggers/deploy/uploads保留。Pages build在純Node15 checks後加入React npm ci／public build／example build／fresh reference-components extractor、獨立4 public registry checks；generate/verify改--react mandatory，產物必有全部React公開元件頁及同prefixbundle，不上傳缺項或幽靈清單。保留Node-only環境，不引入Flutter SDK/Krepis，Flutter全量展示另一stage未完成，不能以此宣稱全goal發布完成。React package與鎖檔唯讀，沿用現有腳本，不重做package或放寬tests。
+
+本機重跑相同npm ci/build/example/extract/checks/generate/verify、scope1/diff與workflow順序；Ubuntu actual執行仍pending最終push後觀察。不加鏡像config tests。歷史CI-reference slice估1k～3k/10～25分鐘；單M1 public pipeline完整（3k25）；5k40或SDK/lock變動返回PLAN。YAML按語法保留既有空格。Task Packet/module root .github/workflows。
+
+```mermaid
+flowchart TD
+	Pages[既有Node24] --> Tests[原Node15]
+	Tests --> React[React npm ci / build / example]
+	React --> Inventory[fresh公開清單 / protected4]
+	Inventory --> Gate[generate --react / verify --react]
+	Gate --> Artifact[含全部React元件頁 / bundle的Pages artifact]
+```
