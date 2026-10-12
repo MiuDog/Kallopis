@@ -191,3 +191,5 @@ popup雙框架library與公開consumer已完成；公開popup與兩端usage由�
 雙框架快捷鍵purecore完成後，Flutter重新Green extract560 canonical declarations／17modules／三surfaces，34Markdown；Guide及兩端usage明示native adapter pending。新清冊採extractor產物，未手改identity。
 
 共同原生宿主Guide直接讀正式來源；Flutter host完成後Green extract561 canonical API／17modules／三surfaces，34Markdown。protected Flutter10／React6 checks證據與nativebrowser pending分列；全部互動元件、React清冊與GUI仍後續。
+
+當前consumer增量：React e56976aa／Flutter f9118c25已完成原生快捷鍵、作用域與衝突、錄製重綁／設定及原草稿；不以各總覽Commands demo替代元件頁specimen。兩端usage由正式來源生成；561API／34Markdown generate/verify Green。下一owner工作為各renderable public component對應唯一互動registry、React manifest與兩端靜態bundle，覆蓋閘門與路由依interactive-docs-v1。
