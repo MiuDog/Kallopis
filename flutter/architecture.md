@@ -116,8 +116,8 @@ flowchart TD
 
 FLUTTER-COMMAND-ENTRY-r1 COMPLETE見[registered入口](lib/src/features/actions/command_entries/architecture.md)：BUILD ae01ca96新來源+stablefoundation兩path，23項protected公開Widgetchecks、analyze No issues及scope通過；native Focus/語意與同registry生命周期。React ENTRY已完成d05dca0e，兩端都不改舊CommandMenu/core/theme。popup/palette及shortcut未完成，browser及全style參數audit待展示stage。
 
-## Flutter registered command palette邊界（READY）
+## Flutter registered command palette邊界（COMPLETE）
 
-FLUTTER-COMMAND-PALETTE-r1 local PLAN READY見[原生palette](lib/src/features/actions/command_palette/architecture.md)：新module單一source及foundation export兩path，OverlayEntry每owner build刷新同Theme/locale投影並獨立附著modal語意、native Focus/IME、共同UTF16 search、async session隔離與finite geometry；必要跨語言/lifecycle證據由fresh隔離TestAuthor先擁有，BUILD不修改tests/既有core/controls/theme/config。
+FLUTTER-COMMAND-PALETTE-r1 COMPLETE見[原生palette](lib/src/features/actions/command_palette/architecture.md)：BUILD 2a069faf新module單一source及foundation export兩path，OverlayEntry每owner build刷新同Theme/locale投影並獨立附著modal語意、native Focus/IME、共同UTF16 search、async session隔離與finite geometry。21項protected公開checks、public analyze No issues及exact2path scope通過；未修改tests／既有core／controls／theme／config。consumer browser及感官另接續。
 
-依[WB-COMMAND-PALETTE-r1](../docs/architecture/workbench-command-palette-contract.md)，後續公開KlpRegisteredCommandPalette<C>與KlpCommandDismissReason enum；registry/getContext/open/label/searchLabel/emptyLabel/onResult/onDismiss共同。全registry可見清冊、多詞field/subsequence固定排序、native TextField/IME/Focus、受控open與原native焦點還原、async session隔離均依共同契約。保留現有CommandMenu及registered入口API。不在React本slice修改Flutter產品碼；Flutter實作前由owner固定localarchitecture及freshTestAuthor。
+依[WB-COMMAND-PALETTE-r1](../docs/architecture/workbench-command-palette-contract.md)，已公開KlpRegisteredCommandPalette<C>與KlpCommandDismissReason enum；registry/getContext/open/label/searchLabel/emptyLabel/onResult/onDismiss共同。全registry可見清冊、多詞field/subsequence固定排序、native TextField/IME/Focus、受控open與原native焦點還原、async session隔離均依共同契約。保留現有CommandMenu及registered入口API。

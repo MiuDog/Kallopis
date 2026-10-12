@@ -341,6 +341,51 @@
 					]
 				},
 				{
+					"id": "package:kallopis/src/features/actions/command_palette/klp_command_palette.dart#KlpCommandDismissReason",
+					"name": "KlpCommandDismissReason",
+					"slug": "klp-command-dismiss-reason",
+					"kind": "enum",
+					"module": "features.actions",
+					"sourceUri": "package:kallopis/src/features/actions/command_palette/klp_command_palette.dart",
+					"primarySurface": "foundation",
+					"surfaces": [
+						"foundation"
+					],
+					"signature": "enum KlpCommandDismissReason",
+					"documentation": "產品受控面板的關閉意圖；不代表產品已變更 open。",
+					"typeRelationships": {
+						"extends": "Enum",
+						"mixins": [],
+						"implements": []
+					},
+					"members": [
+						{
+							"name": "KlpCommandDismissReason",
+							"kind": "constructor",
+							"signature": "KlpCommandDismissReason()",
+							"documentation": ""
+						},
+						{
+							"name": "escape",
+							"kind": "enumValue",
+							"signature": "KlpCommandDismissReason escape",
+							"documentation": ""
+						},
+						{
+							"name": "executed",
+							"kind": "enumValue",
+							"signature": "KlpCommandDismissReason executed",
+							"documentation": ""
+						},
+						{
+							"name": "outside",
+							"kind": "enumValue",
+							"signature": "KlpCommandDismissReason outside",
+							"documentation": ""
+						}
+					]
+				},
+				{
 					"id": "package:kallopis/src/features/actions/command_registry/klp_command_registry.dart#KlpCommandErrorPhase",
 					"name": "KlpCommandErrorPhase",
 					"slug": "klp-command-error-phase",
@@ -1242,6 +1287,87 @@
 							"name": "registry",
 							"kind": "field",
 							"signature": "KlpCommandRegistry<C> registry",
+							"documentation": ""
+						}
+					]
+				},
+				{
+					"id": "package:kallopis/src/features/actions/command_palette/klp_command_palette.dart#KlpRegisteredCommandPalette",
+					"name": "KlpRegisteredCommandPalette",
+					"slug": "klp-registered-command-palette",
+					"kind": "class",
+					"module": "features.actions",
+					"sourceUri": "package:kallopis/src/features/actions/command_palette/klp_command_palette.dart",
+					"primarySurface": "foundation",
+					"surfaces": [
+						"foundation"
+					],
+					"signature": "class KlpRegisteredCommandPalette<C> extends StatefulWidget",
+					"documentation": "使用同命令清冊的原生搜尋面板；產品持有 context、open 與結果。",
+					"typeRelationships": {
+						"extends": "StatefulWidget",
+						"mixins": [],
+						"implements": []
+					},
+					"members": [
+						{
+							"name": "KlpRegisteredCommandPalette",
+							"kind": "constructor",
+							"signature": "KlpRegisteredCommandPalette<C>({\n  Key? key,\n  required KlpCommandRegistry<C> registry,\n  required C Function() getContext,\n  required bool open,\n  required String label,\n  required String searchLabel,\n  required String emptyLabel,\n  required ValueChanged<KlpCommandExecutionResult> onResult,\n  required ValueChanged<KlpCommandDismissReason> onDismiss,\n})",
+							"documentation": ""
+						},
+						{
+							"name": "createState",
+							"kind": "method",
+							"signature": "State<KlpRegisteredCommandPalette<C>> createState()",
+							"documentation": ""
+						},
+						{
+							"name": "emptyLabel",
+							"kind": "field",
+							"signature": "String emptyLabel",
+							"documentation": ""
+						},
+						{
+							"name": "getContext",
+							"kind": "field",
+							"signature": "C Function() getContext",
+							"documentation": ""
+						},
+						{
+							"name": "label",
+							"kind": "field",
+							"signature": "String label",
+							"documentation": ""
+						},
+						{
+							"name": "onDismiss",
+							"kind": "field",
+							"signature": "ValueChanged<KlpCommandDismissReason> onDismiss",
+							"documentation": ""
+						},
+						{
+							"name": "onResult",
+							"kind": "field",
+							"signature": "ValueChanged<KlpCommandExecutionResult> onResult",
+							"documentation": ""
+						},
+						{
+							"name": "open",
+							"kind": "field",
+							"signature": "bool open",
+							"documentation": ""
+						},
+						{
+							"name": "registry",
+							"kind": "field",
+							"signature": "KlpCommandRegistry<C> registry",
+							"documentation": ""
+						},
+						{
+							"name": "searchLabel",
+							"kind": "field",
+							"signature": "String searchLabel",
 							"documentation": ""
 						}
 					]

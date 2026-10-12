@@ -180,4 +180,4 @@ React registered command入口契約加入唯一Guide路由 docs/guides/workbenc
 
 Flutter registered toolbar/menu/ref/kind四個公開宣告extract後，當前545 canonical API／17modules／三surfaces，29Markdown。公開manifest只同步Green extractor輸出；兩框架入口完成仍不等於specimen/GUI/palette/shortcut完成。
 
-當前網站來源：新增共同palette Guide及React產品使用說明，30Markdown／545canonical API／17modules／三surfaces；generate、verify及15既有網站checks全部通過。React CommandsDemo提供公開consumer實際browser證據，尚未接成每個component專屬網站specimen；Flutter palette與三GUI×兩框架仍待交付。
+當前網站來源：新增共同palette Guide及React產品使用說明，30Markdown／547canonical API／17modules／三surfaces；generate、verify及15既有網站checks全部通過。React CommandsDemo提供公開consumer實際browser證據，尚未接成每個component專屬網站specimen；Flutter palette公開enum／Widget已由Green extractor接入；Flutter consumer展示與三GUI×兩框架仍待交付。

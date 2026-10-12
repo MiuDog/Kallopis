@@ -1,6 +1,6 @@
 # Registered command palette
 
-FLUTTER-COMMAND-PALETTE-r1 READY，依[共同WB-COMMAND-PALETTE-r1](../../../../../../docs/architecture/workbench-command-palette-contract.md)。當前只交付受控原生modal命令面板；錨定/context menu、shortcut與完整網站GUI另接續，既有命令核心、入口及舊CommandMenu保持API。
+FLUTTER-COMMAND-PALETTE-r1 COMPLETE，依[共同WB-COMMAND-PALETTE-r1](../../../../../../docs/architecture/workbench-command-palette-contract.md)。BUILD 2a069faf 已交付受控原生modal命令面板；錨定/context menu、shortcut與完整網站GUI另接續，既有命令核心、入口及舊CommandMenu保持API。
 
 ## 責任與公開介面
 
@@ -23,6 +23,23 @@ panel重用KlpTextField/KlpText/KlpIcon/KlpPressable；同semantic overlay色/me
 原生選擇依[OverlayPortal與OverlayEntry差異](https://api.flutter.dev/flutter/widgets/OverlayEntry-class.html)、[FocusScope](https://api.flutter.dev/flutter/widgets/FocusScope-class.html)、[ModalBarrier](https://api.flutter.dev/flutter/widgets/ModalBarrier-class.html)。不以Navigator route維護第二份open；每次owner build刷新同Theme/locale投影，不重建default theme；不沿用冻结InheritedTheme snapshot。
 
 ## 唯一當前slice
+
+BUILD 2a069faf 僅新增來源及foundation匯出兩path；21項protected公開Widget checks全部通過，public analyze No issues、exact2path scope及diff check通過。TestAuthor最終SHA256 DB279A061B5016806C1F4EFC3C43AC78D4C5B808BA97BF3543E6C0278F97EBE9保持。原生Tab固定唯一輸入焦點；Material透明祖先提供InkWell宿主，Actions處理EditableText原生Escape fallback，composition仍不關閉。browser／感官及完整style矩陣待consumer展示stage。
+
+## 函式與依賴入口
+
+| 責任 | 來源函式 | 呼叫方向 |
+| --- | --- | --- |
+| immutable公開輸入／State | `KlpRegisteredCommandPalette.createState` | 產品→State |
+| 純搜尋／有限值 | `_fieldScore`、`_search`、`_finite`、local `compare` | 本次registry state→score／ID排序 |
+| lifecycle／通知 | `initState`、`didUpdateWidget`、`_subscribe`、`_refresh`、`dispose` | 產品props／registry→刷新與generation |
+| 原生浮層／主題 | `build`、`_scheduleOverlay`、local `synchronize`／`focusInput`、`_removeOverlay`、`_projectOverlay` | caller theme→OverlayEntry |
+| 原焦點保護 | `_ownsFocus`、`_closeSession`、local `restoreFocus` | 同session／有效原節點→nativeFocus |
+| 執行與鍵盤 | `_isCurrent`、`_report`、`_activate`、`_key`、`_nativeDismiss`、`_outside` | native事件→最新core→當前產品callback |
+| 語意與有限呈現 | `_overlayChild`、`_panel` | 可見清冊→barrier／scope／semantic theme |
+| 候選列 | `_PaletteRow.createState`、`_PaletteRowState._hover`／`build` | active／hover→同selectionWash；execute權限仍在core |
+
+全部實作見[來源](klp_command_palette.dart)。無第二份theme／命令權威；widget tree以原生Overlay、Focus、Actions維持責任。
 
 FLUTTER-COMMAND-PALETTE-1只寫本module新來源及`flutter/lib/kallopis_foundation.dart`；本檔、rootarch、test-owned、core/entry/controls/theme/config/其他module唯讀。fresh獨立TestAuthor只`flutter/test/registered_command_palette_test.dart`，依public foundation/theme+Flutter nativeFocus/EditableText/Semantics/events檢查共同跨語言搜尋與生命周期，不讀新productsource。
 

@@ -276,6 +276,27 @@ KlpRegisteredCommandMenu<ProductContext>(
 
 外部closure變動呼叫commands.refresh()。缺失/隱藏/條件錯誤項不呈現；停用/執行中項保持呈現但不進可用索引。toolbar左右、menu上下循環，Home/End跳首尾，Enter/Space只KeyDown啟動一次，repeat不啟動；menu Escape呼叫onDismiss。autoFocus預設false，true才在掛載後取得首可用項或空root焦點。
 
-UI不取消已開始產品Future；samehost/sameregistry完成交最新onResult，卸載或更換registry後隔離舊結果，解除命令註冊仍保留原結果。onResult自身錯誤交FlutterError，不能偽裝成handler結果。風格讀context.klp，menu scroll/toolbar wrap保護有限宿主；popup定位/context menu/palette與shortcut待接續。
+UI不取消已開始產品Future；samehost/sameregistry完成交最新onResult，卸載或更換registry後隔離舊結果，解除命令註冊仍保留原結果。onResult自身錯誤交FlutterError，不能偽裝成handler結果。風格讀context.klp，menu scroll/toolbar wrap保護有限宿主；popup定位/context menu與shortcut待接續。
 
 23項公開Widget/lifecycle checks、public analyze及兩path scope通過；browser和感官品質尚待展示stage。[雙框架入口契約](../architecture/workbench-command-entry-contract.md)為共同邊界。
+
+## Registered 命令面板
+
+`KlpRegisteredCommandPalette<C>`從stable foundation使用，產品控制open；全部候選、條件與執行仍讀同registry。三個label由產品本地化且不得空白。mount於現有Overlay／semantic theme宿主下，浮層會隨caller重建刷新同主題、方向與locale。
+
+```dart
+KlpRegisteredCommandPalette<ProductContext>(
+	registry: commands,
+	getContext: () => currentContext,
+	open: commandPaletteOpen,
+	label: '全部命令',
+	searchLabel: '搜尋命令',
+	emptyLabel: '沒有符合的命令',
+	onResult: handleProductResult,
+	onDismiss: (reason) => setState(() => commandPaletteOpen = false),
+)
+```
+
+搜尋支援多詞與跨metadata field、完整／前綴／包含／子序列固定score，最後依UTF-16 ID排序。停用或執行中候選仍呈現但不可選。上下循環、Enter一次執行、Tab保留輸入、Escape／outside只提出關閉意圖；Home／End／左右及composition保留原生文字編輯。成功結果提出executed關閉，錯誤保留面板由產品呈現；關閉／重開／替換registry隔離舊Future UI結果。
+
+原焦點只在面板仍擁有焦點時還原，產品callback已轉移外部焦點不搶回。query不進registry，關閉後再開重設；同次open的主題／尺寸／registry更新保留query。有限overlay／row幾何限制可替換風格的padding／icon／gap，不改命令權限與排序。21項公開檢查及局部analyze通過；[共同面板契約](../architecture/workbench-command-palette-contract.md)與[Flutter實作責任](../../flutter/lib/src/features/actions/command_palette/architecture.md)提供完整邊界。browser与感官待展示stage。

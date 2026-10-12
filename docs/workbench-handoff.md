@@ -1,10 +1,10 @@
 # Workbench 當前交接
 
-2026-10-12，完整goal ACTIVE。已授權Flutter／React同步交付：通用Workbench、全部公開元件頁面互動、VS Code／Blockbench／Blender各框架GUI、可替換風格檔及參數、docs與最終GitHub push。規格入口：docs/architecture/workbench-stage-v1.md、spec/workbench-v1.md、spec/style-pack-v1.md、spec/interactive-docs-v1.md。以下只保留當前真實狀態，歷史診斷與證據讀Git／module architecture／ignored closure，不重做已完成slice。
+2026-10-13，完整goal ACTIVE。已授權Flutter／React同步交付：通用Workbench、全部公開元件頁面互動、VS Code／Blockbench／Blender各框架GUI、可替換風格檔及參數、docs與最終GitHub push。規格入口：docs/architecture/workbench-stage-v1.md、spec/workbench-v1.md、spec/style-pack-v1.md、spec/interactive-docs-v1.md。以下只保留當前真實狀態，歷史診斷與證據讀Git／module architecture／ignored closure，不重做已完成slice。
 
 ## 下一個可執行步驟
 
-1. 雙框架command core與registered toolbar/menu已完成；React palette、viewport修正及公開CommandsDemo完成。共同WB-COMMAND-PALETTE-r1與Flutter local PLAN READY；Flutter fresh TestAuthor已完成，下一個只執行FLUTTER-COMMAND-PALETTE-1 BUILD兩path，保留既有CommandMenu／WorkspaceCommand caller與core。anchor/context menu尚待接續。
+1. 雙框架command core與registered toolbar/menu已完成；React palette、viewport修正及公開CommandsDemo完成。Flutter palette BUILD2a069faf亦完成；下一個PLAN／BUILD公開Flutter CommandsDemo並取得原生browser證據，保留既有CommandMenu／WorkspaceCommand caller與core。anchor/context menu尚待接續。
 2. 雙框架快捷鍵/chord/scope/conflict/remap/recording契約與接入。不可用core冒充整個命令stage完成。
 3. 網站每個公開可呈現元件專屬互動specimen、registry/bundle/coverage；3GUI×2框架；typedrecipes／完整風格中立與參數／default權威切換。
 4. 補browser hoverpreview/cancel矩陣、Flutter continuousresize與React endcommit差異契約審核；保留所有既有CI/發布閘門，精確commit/push。感官接受human-pending。
@@ -13,11 +13,11 @@
 
 React viewport regression freshauthor a00fe4a2（SHA256 EECF13F973E41D40825EB784DFFF62A8E284336089BE7798583E7CF62C885925）：原inner1280/client1265→panel1264、原inset8只剩left0.4，native大style參數可重現；4checks有3behaviorRed/1Green。bounded單source修正使用實際client viewport/ResizeObserver，同4＋既有11checks/build/typedexample/scope1全部通過。nativeclient1265→panel1249、窄client305→panel289，兩側約8；query跨原生resize保留。style輸入先缺新增primitiveDescription被原子拒絕，補齊後正式import成功，未修改parser配合測試。還原default/dark/errorwarn空；截圖react-command-example.png已更新。
 
-Flutter palette localarchitecture READY；freshauthor d95ad02a→2d1a683e只test-owned registered_command_palette_test.dart，21checks目前missingpublicAPI compile Yellow，SHA256 5525F86C27AB3F1A92617A3F6F1E89841C4AE4457BF2C55558565E10B71C8421。author將label驗證從constructor修正為native pump邊界，符合const Widget/build前ArgumentError契約，未弱化nonblank預期。新palette enum/Widget 尚未實作；接續同hash測試+publicanalyze+exact2pathscope。
+Flutter palette BUILD2a069faf：新來源／foundation兩path，21項protected公開Widget checks、public analyze No issues、scope2及diff check通過。fresh author e5de466f保留排序／Unicode分詞預期，修正native View root與LF輸入harness；SHA256 DB279A061B5016806C1F4EFC3C43AC78D4C5B808BA97BF3543E6C0278F97EBE9。原Portal modal traversal排序Red，owner b08b95e7 ACR改每owner build刷新同Theme／locale的獨立OverlayEntry；Tab唯一輸入焦點、Material透明宿主及Actions Escape fallback由新source修正。nativebrowser／感官及完整極端style矩陣待consumer展示，不重做已Green核心。
 
-React palette BUILD160f2c18：new command-palette/index/styles三path，11項protected UI/SSR/hydration/type、library build/scope通過；SHA256 2753CE7F881BF0C0B56B8FE22EB0637EF4401F8023E64E057D55621A0FF7E6E5。原CSSStyleDeclaration非iterable Red以length/item標準讀法修正，同tests Green。public controlled modal、field search/multiwords/UTF16 score、samecore gates/session/latestcallback、native showModal/returnfocus/同Provider portal CSS及finite geometry；Flutter尚未實作。
+React palette BUILD160f2c18：new command-palette/index/styles三path，11項protected UI/SSR/hydration/type、library build/scope通過；SHA256 2753CE7F881BF0C0B56B8FE22EB0637EF4401F8023E64E057D55621A0FF7E6E5。原CSSStyleDeclaration非iterable Red以length/item標準讀法修正，同tests Green。public controlled modal、field search/multiwords/UTF16 score、samecore gates/session/latestcallback、native showModal/returnfocus/同Provider portal CSS及finite geometry；Flutter亦已實作，consumer browser待接續。
 
-React CommandsDemo BUILD9999e289只新example與main兩行，public consumer TypeScript/prod build/2pathscope通過（569.17KB chunk提示）。native browser tab10 http://127.0.0.1:5182/：sv 文件跨field/subsequence、中文/canvas/空結果、ArrowDown Enter一次、executed focus回開啟按鈕；disabled保留不可選、failure保持modal、Tab input、Escape/outside；800ms pending三入口save disabled、完成一次結果/close；dark及320×180 panel304×164有限，草稿保留，error/warn空。main build/evidence/react-command-example.png。IME/產品externalfocus/完整極端style/嵌套modal矩陣pending，感官human-pending。網站共同palette Guide與React usage更新，30Markdown／545API／17modules／三surfaces，generate/verify及15網站checks通過；清冊不等於全部互動元件頁。
+React CommandsDemo BUILD9999e289只新example與main兩行，public consumer TypeScript/prod build/2pathscope通過（569.17KB chunk提示）。native browser tab10 http://127.0.0.1:5182/：sv 文件跨field/subsequence、中文/canvas/空結果、ArrowDown Enter一次、executed focus回開啟按鈕；disabled保留不可選、failure保持modal、Tab input、Escape/outside；800ms pending三入口save disabled、完成一次結果/close；dark及320×180 panel304×164有限，草稿保留，error/warn空。main build/evidence/react-command-example.png。IME/產品externalfocus/完整極端style/嵌套modal矩陣pending，感官human-pending。網站共同palette Guide與React usage更新，30Markdown／547API／17modules／三surfaces，generate/verify及15網站checks通過；清冊不等於全部互動元件頁。
 
 共同WB-COMMAND-ENTRY-r1 READY；React BUILDd05dca0e只新command-entries/indexexport/stylesappend，12項SSR/DOM/lifecycle/type checks及librarybuild/3pathscope通過，protectedhash72BB8ACAD50A754D376EE3CB38D80A0B1A2BE02317F2131F1079233C03449561未改。ownerf7f93520接入使用指南與共同契約網站Guide，當前29份Markdown、541API、15websitechecks/generate/verify通過；React act時機警告與browser/sensory待驗證。Flutter FLUTTER-COMMAND-ENTRY-r1亦已完成，證據如下。不以入口冒充popup/palette/shortcut全完成。
 
@@ -47,7 +47,7 @@ owner b319af8c澄清removeListener只解除native addListener owner；獨立auth
 | Dock codec／operations | Flutter69771496／243d9f98；Reactc6af55f6／e5d8b0a6；各7codec、10operationschecks | 已完成；consumer只投影id/capabilities清冊，不傳content/callback |
 | Flutter Panel／Dock | Panel5e18ccd6／8d4fc334九checks；geometry296e7cab十三；preview3064c359七；UI4ff1c999十三，Dock合計33checks | browser preview/cancel全矩陣 |
 | React Dock | geometry08ea39fc九；native1 7690b23b九；native2 681c0f6c／583818e8／6ee63c5e九，合計18nativechecks | native1部分act harness warnings保留，browser矩陣同上 |
-| 參考網站 | Flutter545canonical API／17modules／三surface extract/generate/verify；29文件、15網站checks | API清冊不等於互動頁；全部展示未完成 |
+| 參考網站 | Flutter547canonical API／17modules／三surface extract/generate/verify；30文件、15網站checks | API清冊不等於互動頁；全部展示未完成 |
 
 共同Dock契約docs/architecture/workbench-dock-contract.md與linear契約workbench-linear-contract.md均READY。KLP0024要求一般Row/Column/Pane與Dock分開，保留direct native元件；不得重建node/adapter/declarative runtime。公開Flutter theme/foundation為stable，consumer不得引用src。
 
