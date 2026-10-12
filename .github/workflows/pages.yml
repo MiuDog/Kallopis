@@ -40,8 +40,9 @@ jobs:
       - run: npm run build:example --prefix react
       - run: node react/scripts/reference-components.mjs
       - run: node --test tool/reference_site/test/react_specimens.test.mjs
-      - run: node tool/reference_site/generate.mjs --react
-      - run: node tool/reference_site/verify.mjs --react
+      - run: node --test tool/reference_site/test/react_scenarios.test.mjs
+      - run: node tool/reference_site/generate.mjs --react --react-scenes
+      - run: node tool/reference_site/verify.mjs --react --react-scenes
 
       - uses: actions/upload-pages-artifact@v3
         with:
