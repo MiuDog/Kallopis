@@ -44,3 +44,17 @@ PanelFrame 與各槽必裁切；庫自己的 PanelHeader 不以普通 Row／Colu
 內容節點在 resize 與合法 theme 改變後保持 Element／State 身分；ScrollController 與 Scrollbar 契約不改。任意產品內容需自行處理其內部排版；本庫不驗證產品整棵 Widget tree。不承諾可見可用性或視覺感官接受。Dock root／group geometry、DockHeader overflow menu 與拖放 callback 不在此前置 slice 宣稱完成；後續 Dock slice 依這個公開 PanelFrame 前提分配有效槽。
 
 驗收：default header/content/footer height、正常無 chrome、短及零尺寸守恆、巨大合法 margin/chrome/inset、stroke>radius、庫 PanelHeader title/label/actions 在窄低約束無 Flutter layout exception、RTL/custom footer padding、content state 保留。必要獨立 Widget checks 只觀察公開元件與 constraints，不檢查私有 tree 或 screenshot。
+
+## 有限 Dock 幾何 WB-DOCK-GEOMETRY-r1
+
+READY；對應 WB-03／04／08、SP-05。Dock 宿主需有限非負寬高；render 不提交 onLayoutChanged，不修改保存的 area/group 偏好、順序、active 或 visibility。所有 actual rect 與 gutter 有限非負且位於宿主；內容槽與把手 paint 裁切。左區全高；contentHeader 跨中央及右區，最高宿主高度；右區在頂列下方；Bottom 只在中央的 Stage 下方。不存在 floating/cross-window 模型。
+
+root 水平使用既有 linear resolver：可見且非空 side item 的 minimum/max 為產品 area constraints、preferred 為保存 extent、flex0；中央 minimum0/preferred0/flex1；gutterCount 是實際可見 side 數，gutter 是 style resizeHandleExtent。視窗不足時共通 minimum 比例退化，無回寫偏好。header clamp0..height，其下中央垂直：Stage min0/preferred0/flex1；可見非空 Bottom min/max 為constraints、preferred保存extent/flex0；只保留一個有效gutter。hidden/empty area 不占正文配額，邊緣 reopen handle 不預留空間，但厚度不得超過各軸可用尺寸、不得產生負座標；右邊與底邊在 header 下方。
+
+每區 groups 使用同一 resolver，gutterCount=n-1；沿用既有 logical minimum：vertical32／horizontal120，這是目前操作限制，不是另造品牌 theme，完整recipe参数化仍待既定style stage。所有非末group preferred 為保存mainAxisExtent/flex0，最後group minimum/preferred為logical minimum/flex1，延續正常空間最後群組填剩餘的語意。preferred 總和不足預算時按共通規則縮配，不能以順序優先剝奪後組；不足minimum同比例退化。每個 group rect、把手、offset、resize pairStart及split drop檢查都使用同一actual extents/gutter。僅render可有零槽，保存group偏好仍正值。
+
+area resize 使用當前 effective handle、root可用預算，扣另一可見side與把手或header，requested有限時在logicalmin/max及實際可用上限內提交；上限小於min時不提交尺寸（低於closeThreshold仍可collapse），不以視窗變窄自行覆寫偏好。group pair不足兩個logical minima時保持no-op；正常pair操作只改相鄰兩組偏好且守恆，不改其他組。
+
+DockHeader 保留公開constructor及extent32相容常數；native preferred高度讀既有chromeTab，最終由PanelFrame槽限制。overflow slots 的计算必避免iconButton=0或巨大有限尺寸的除零/Infinity floor；全部actions仍可由既有more menu到達，保持原enabled/label/callback語意。resize indicator 的loose-tight可能負值，須clamp0，並在有效handle槽裁切。水平group的merge header判定讀實際PanelFrame margin/header配額，不能固定假設32。Stage drop提示只畫實際Stage邊界，stroke限制至該槽，不能畫整個Dock根邊界。
+
+本slice不改保存格式／pure action／close metadata、hover/cancel提交策略或產品content內部；這些仍依OPS-r1後續接入。驗收含正常root/header/groups配額、左右及上下shortage、巨大/零handle、zero容器、hidden/empty、style inverted indicator、Header actions zero icon slot、area/group pointer resize與非回寫、內容State保留。獨立Widget checks只觀察caller probes與公開gesture，不讀私有RenderBox型別，不做golden。

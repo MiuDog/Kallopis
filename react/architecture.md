@@ -240,3 +240,7 @@ c6af55f6：dock-layout-state.ts 公開五個 readonly interfaces 與 encodeKlpDo
 e5d8b0a6：KlpDockArea／Destination／Action／ActionResult公開typed contract。applyKlpDockAction透過encode／restore先驗證完整layout與registry，再只改JSON working copy，最後再次驗證與freeze。record／exact／identity／areaName／index／extent擁有strict request；panelAt／placedPanel／groupAt找local location，removePanel擁有empty cleanup／active fallback，permitted檢查目的能力，invalid擁有TypeError。merge用陣列拼接避免合法大量tabs觸發函式參數上限。
 
 10獨立checks、librarybuild／generatorfreshness、typedpublicconsumer／scope通過。Protectedhash8856C5DC1A404D4B0797BEE8FFD3F5BE0D6295755A7FD48E734F65C5CCDDD14F未變；TestAuthor基線6641d67e只有exportcompileYellow。BUILD僅改兩個允許檔；既有codec、UI、style、Flutter及tests皆未改。人類感官與完整Dock UI仍未驗證。
+
+## Dock finite geometry共同前提
+
+WB-DOCK-GEOMETRY-r1已READY；native React Dock UI需使用既有linear resolver及相同Stage/Left/Right/Bottom、有效gutter、header/resize配額。当前React只有保存及pureoperation，不在Flutter geometry slice修改React。React UI packet接續同一已接受Workbench stage，不能把现有codec/operations宣称UI完成。

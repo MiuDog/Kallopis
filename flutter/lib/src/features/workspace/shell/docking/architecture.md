@@ -62,3 +62,27 @@ b08d80e6／243d9f98：KlpDockArea、Destination、Action及ActionResult公開typ
 ## 有限 geometry 前置
 
 共通 WB-PANEL-GEOMETRY-r1 已 READY；Panel 模組先處理 finite chrome／inset／State continuity，Dock 只使用公開 PanelFrame。Dock root/group/gutter/overlay 的 packet 尚未發出；目前保存 extents 仍直接排版，不宣稱有限 viewport 保護完成。Panel slice 不改本目錄，後續 Dock slice 不複製 Panel chrome 算法。
+
+## FLUTTER-DOCK-GEOMETRY-1（READY）
+
+修訂FLUTTER-DOCK-GEOMETRY-r1；依WB-DOCK-GEOMETRY-r1接入有限viewport。klp_dock_layout.dart 擁有native positioned composition／group resolver接入／actual handle傳入resize/drop；新 private part internal/klp_dock_geometry.dart 只擁有 root rect 與handle配額，依公開resolveKlpLinearLayout，不建立第二份演算法。布局root用stable keyed Positioned/ClipRect保留原Stage/area/header內容；root需finite axes，不持有保存state。
+
+private geometry回傳left/right/bottom/stage/header rect、各area handle rect與可提交max budget；areas可見條件沿用visible且groups非空。commoncontract固定全部數值規則。groups改用既有resolver結果的extents/gutter，最後group填剩餘。arearesize callbacks用當前geometry，groupresize沿用pair逻辑但使用effectivegutter。horizontalgroup header判定讀PanelFrame公开chrome/margin契约，不看私有Panel实现。
+
+BUILD allowed_write：klp_dock_layout.dart、internal/klp_dock_geometry.dart、internal/klp_dock_header_state.dart、primitives/klp_dock_resize_handle.dart。models／codec／pureoperations／旧dataoperations／Panel／theme／style／example／config／architecture／tests全部唯讀。TestAuthor只寫flutter/test/dock_geometry_test.dart。不修改hover開area與cancel、更不在此聲稱close/pinned/dirty完成。Header state僅slots數值／高度安全，保留overflow菜单和callbacks。resizehandle僅safe lineLength/clip，不改手勢。
+
+M1 root/area/group有效gutter守恆、normal/zero/extreme style；M2 area/group resize同一配額、Header zero slots與State continuity、protectedchecks/publicanalyze/scope。cold-start8k–14k tokens/60–100min，參照FLUTTER-LAYOUT-2與PANEL-GEOMETRY-1；20k tokens/120min或需要改pureoperations/Panel/model回PLAN。直接同一geometry配額避免仅ClipRect隐藏溢出；独立puregeometry part有root placement/resize共同reason to change，不引入genericruntime。
+
+```mermaid
+flowchart TD
+	Layout[保存偏好 / controlled caller] --> Geometry[root rect / resize budget]
+	Theme[semantic handle / header] --> Geometry
+	Geometry --> Linear[既有public linear resolver]
+	Geometry --> Native[同一Positioned / ClipRect槽]
+	Group[既有group偏好] --> Linear
+	Linear --> Native
+	Geometry --> Resize[global pointer → local actual budget]
+	Resize --> Callback[原onLayoutChanged]
+	Native --> Panel[公開PanelFrame尺寸契約]
+	Header[DockHeader slots] --> Panel
+```
