@@ -330,7 +330,7 @@ BUILD ea8c9561 exact3，獨立15be2093只測試單檔7/7 Green零skip，SHA256 F
 
 Native5203 /Kallopis/由docs中心實際link進索引，索引三link逐頁，各自iframe h1/title與loaded均確認；VS Code iframe草稿、保存命令1、dark保留輸入，独立相同query link及direct refresh再loaded。error/warn空。main build/react-docs-gui-vscode.png；感官human-pending。viewport override在docs頁籤未真正套用，觀察706×668及另一1280×720，不能稱360已驗收；已reset，保留pending。CLI protected7含任意4scene、合法source title篡改／query／extra頁拒絕、六種非法source／缺bundle生成失敗保留既有完整網站及旗標相依。Pages完整scene flags/protected7由CI-REACT-SCENES-1接必跑，remote Ubuntu待最终push。
 
-## DOCS-FLUTTER-SCENARIOS-1（READY）
+## DOCS-FLUTTER-SCENARIOS-1（IMPLEMENTED；actual窄 browser pending）
 
 修訂DOCS-FLUTTER-SCENARIOS-r1，依IDOC-FLUTTER-READINESS-r1與IDOC-04/05/08。只接Flutter example既有GUI場景，全部273元件另stage。BUILD exact generate.mjs、verify.mjs、新flutter-scenarios.mjs、static/site.js。CLI新增獨立--flutter-scenes，可單用或與既有React flags合用；React-scenes仍要求--react，拒絕unknown/重複flags；無Flutter旗標不讀Flutter來源以保持Node15與React6/7環境契約。
 
@@ -355,3 +355,9 @@ flowchart LR
 	Gate --> Verify[verify / 正式來源及bytes對照]
 	Assets --> Verify
 ```
+
+BUILDc0a421ee exact4，獨立TestAuthor6cd70cc8只test/flutter_scenarios.test.mjs，SHA256 F7BD8684118E1EE529C47298D6925C1E99AE776DAE0D69036B7831C8B94EC003。作者取得有效Red：URL parser會把https:///alpha修補成有host，與literal HTTPS authority契約不合；validator加literal authority檢查，同保護9/9 Green零skip（26.6秒），未改tests或fixtures。原Node15與React6/7 Green，真實--react --react-scenes --flutter-scenes生成／verify561＋23元件＋兩框架各3GUI成功，scope4/diff通過。
+
+Native5203 /Kallopis/由docs中心link進Flutter索引，實際三links各自iframe heading與loaded確認；VS Code頁內草稿「docs 中的 Flutter 草稿」、保存command1、dark保持草稿，直接refresh重新loaded、獨立入口同scenario query。暫存artifact將iframe改unknown而保留正確獨立入口，實際error status拒絕錯場景；artifact還原後verify Green。main build/flutter-docs-gui-vscode.png與flutter-docs-load-error.png；感官human-pending、actual360未新增證據仍pending。完整bundle bytes與package fonts/data驗證已執行；Pages下一slice強制Flutter setup/build與9checks/flag，Ubuntu actual仍待final push。
+
+flutter-scenarios validator擁有own metadata/URL/DTO與bundle read範圍/manifest一致性；render及escape只呈現安全HTML。generate動態import限制新增依賴在明示flag，清理前所有metadata/bundle驗證；verify重讀JSON並逐檔bytes，不信copy自述。site.js inspect只讀Title，finish持有terminal清理，沒有iframe state注入或第二theme。

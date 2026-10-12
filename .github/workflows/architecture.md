@@ -64,3 +64,18 @@ flowchart LR
 ```
 
 BUILD exact1 pages.yml，既有component6之後新增獨立scene7；generate／verify明示--react --react-scenes。local同protected7已Green零skip，正式完整生成／驗證Green，scope1/diff；diff確認其他runner/權限/triggers/上傳/deploy未改。Ubuntu實際執行仍待原goal最終push後觀察。
+
+## CI-FLUTTER-SCENES-1（READY）
+
+修訂CI-FLUTTER-SCENES-r1，exact pages.yml。既有Pages先純Node15／React builds/fresh清單/6＋7保持，再加入subosito/flutter-action@v2固定3.44.4 stable（與既有rootCI facts相同），flutter/example工作目錄pub get、analyze lib/gui_scenarios.dart lib/gui_scenario_metadata.dart、同protected39、release web --no-tree-shake-icons --base-href /Kallopis/examples/flutter/；Node獨立Flutter docs9，generate/verify保留React雙flag並加--flutter-scenes。此example套件本機pubspec只有Flutter本庫/svg/file_selector，沒有Krepis路徑依賴，不增加替身package。package/config/locks/SDKrootjob唯讀；不改permissions/triggers/部署條件/upload或放寬tests。YAML依語法空格。
+
+驗收本機本slice同9、metadata39/analyze/prefixbuild已有同sourceGreen證據不重跑未改，正式三flag生成驗證、workflow順序/diff/scope1；Ubuntu actual待finalpush，不能以Windows宣稱Linux成功。估1k～3k/10～25分鐘，參考CI-REACT-SCENES-1；M1 required pipeline/scope（3k25）；5k40或相依/SDK契約改變回PLAN。無鏡像config新tests。
+
+```mermaid
+flowchart LR
+	React[原Node / React閘門] --> SDK[Flutter固定SDK / example pubget]
+	SDK --> Consumer[public analyze / metadata39 / prefixbuild]
+	Consumer --> Docs[獨立Flutter docs9]
+	Docs --> Gate[三flag generate / verify]
+	Gate --> Artifact[完整Flutter package資產 / 原Pages上傳]
+```
