@@ -120,4 +120,10 @@ Kallopis repository 根目錄維護共通規範；Flutter package 位於 `flutte
 
 從 foundation 使用 KlpLinearItem／resolveKlpLinearLayout，給有限主軸尺寸、scope 的 semantic gutter、間距數量及 minimum／maximum／preferred／flex，結果提供不可變 extents、實際 gutter、unused 與 compressed。庫不儲存產品內容或布局。
 
-先扣間距；空間不足時按 minimum 比例退化，極大間距最多占滿主軸；有空間時按 flex 分配並遵守 maximum，無可增長項目時保留 unused。完整規則見 [共通尺寸契約](../architecture/workbench-linear-contract.md)。目前 utility 已可使用，既有 Row／Column 的全面接入與風格下布局保護仍待下一階段。
+先扣間距；空間不足時按 minimum 比例退化，極大間距最多占滿主軸；有空間時按 flex 分配並遵守 maximum，無可增長項目時保留 unused。完整規則見 [共通尺寸契約](../architecture/workbench-linear-contract.md)。Flutter 一般 Row／Column 已使用此算法；Dock 與其他元件的完整風格保護仍依各自契約接入。
+
+## 一般布局 bounds 與 divider
+
+LayoutRow／LayoutColumn／LayoutSpacer／KlpLayoutPane／KlpAppFrame 接受 KlpLayoutBounds(minimum、maximum、preferred)，Column 可選 start／end alignment。正 flex 未指定 preferred 時保留 Expanded 語意；零 flex 量測自然尺寸。主軸無上限時依有限自然尺寸回退，內容需可量測出有限值。
+
+KlpLayoutDivider 是沒有手勢的顯式 semantic gutter，前後不另加自動 gap；LayoutResizeHandle 仍保留既有 onResize 全域位置回呼。產品自行決定尺寸變更與保存。Root inset 每軸最多可用尺寸的一半；間距不足由 solver 限縮，內容每槽裁切，布局不改 caller 順序或內容身分。

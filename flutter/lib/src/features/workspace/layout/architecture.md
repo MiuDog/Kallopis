@@ -1,6 +1,6 @@
 # Workspace Layout Architecture
 
-## FLUTTER-LAYOUT-2（READY）
+## FLUTTER-LAYOUT-2（完成）
 
 修訂 `FLUTTER-LAYOUT-r2`，接入共通 [WB-LINEAR-UI-r1](../../../../../../docs/architecture/workbench-linear-contract.md)。公開 KlpLayoutBounds／KlpLayoutDivider 與各 node 的 bounds、Column alignment 為可逆增量；舊 LayoutResizeHandle.onResize 相容保留，新展示使用無手勢 divider。
 
@@ -33,7 +33,7 @@ BUILD 允許 `flutter/lib/src/features/workspace/layout/klp_linear_layout.dart` 
 
 目前階段：App Layout Restore v1
 
-規格：[KLP-0024](../../../../../spec/decisions/KLP-0024-workbench-and-dock-layout-boundary.md)
+規格：[KLP-0024](../../../../../../spec/decisions/KLP-0024-workbench-and-dock-layout-boundary.md)
 
 ## 目的與邊界
 
@@ -49,7 +49,8 @@ Pane、Frame、Spacer 與 divider gutter 行為。它只負責一般 Workbench �
 - `KlpAppLayout.floatingAction`：可選的 draggable Widget，位置由本元件於呈現期保存。
 - `KlpLayoutNode`：封閉的 layout child 資格與 flex 契約。
 - `LayoutRow`／`LayoutColumn`：遞迴線性布局。
-- `LayoutResizeHandle`：占據一份 8px gutter，不提供手勢。
+- `KlpLayoutDivider`：占據一份 semantic gutter，不提供手勢。
+- `LayoutResizeHandle`：保留既有 onResize 全域游標 callback；不自行修改尺寸或保存。
 - `LayoutSpacer`：正 flex 的空白內容節點。
 - `KlpLayoutPane`：無材質內容 pane；trailing 使用 secondary pane width。
 - `KlpAppFrame`：有語意角色與 flat／raised surface 的第一層 frame。
@@ -79,8 +80,7 @@ KlpAppLayout／KlpLayoutNode widgets
 	→ Flutter layout／painting
 ```
 
-不得依賴 application、composition、runtime、bound presentation、private renderer 或 Dock
-models。
+不得依賴 application、composition、runtime、bound presentation 或 Dock models；私有 RenderBox 僅負責原生呈現。
 
 ## ALR-S1：直接 Flutter 系列還原
 
@@ -155,3 +155,44 @@ ALR-S3 已完成：`KlpAppLayout.floatingAction` 提供右下預設、拖曳位�
 header 避讓與 viewport clamp；公開入口 analyze、既有 layout tests 與 scope check 通過。
 
 FLUTTER-LINEAR-1 實作 a8124a62：21 項公開 checks、analyze、scope gate 通過。resolveKlpLinearLayout 驗證、分配並回不可變 result；_proportional 擁有巨大數值正規化，_sum 彙總尺寸。沒有接入 Widget，不能宣稱一般布局全部完成。
+
+## 當前類別／函式清冊與呼叫鏈
+
+| 類別／函式 | 責任與方法 |
+| --- | --- |
+| KlpAppLayout | build 以 LayoutBuilder 限縮 root inset、裁切；可選 floating action |
+| KlpLayoutBounds／KlpLayoutNode | const 尺寸值；flex getter、相容預設 bounds getter |
+| LayoutRow／LayoutColumn | constructor 固定 caller list；build 投影 axis／alignment／spacing |
+| KlpLayoutDivider／LayoutResizeHandle／LayoutSpacer | build 空內容；divider 無手勢、handle 舊 callback、spacer 正 flex |
+| KlpLayoutPane／KlpAppFrame | constructor 驗證 flex／width；build 投影角色尺寸／semantic 表面 |
+| _linearLayout／_KlpLinearSpec | 建立槽 metadata 與 keyed ClipRect；顯式間距排除相鄰自動 gap |
+| _KlpLinearHost | createRenderObject／updateRenderObject 傳遞當前 scope 設定 |
+| _RenderKlpLinearHost | update 標記重新布局；setupParentData 使用 Flutter FlexParentData；_main／_cross／_size／_constraints 軸轉換；performLayout 自然量測、solver、tight slot 配置；paint／hitTestChildren 委派原生容器 |
+| _frameRelief | 內部 channels／flutterColor 與 KlpFrameReliefRecipe 產生陰影 |
+| _KlpFloatingWorkspace／_KlpFloatingWorkspaceState | createState；_startDrag／_updateDrag 保存暫態位置；build 組裝 action |
+| _KlpFloatingPosition | getConstraintsForChild／getPositionForChild 限制浮動位置；shouldRelayout 判斷更新 |
+| KlpFrameGroups／KlpFrameGroup | constructor 固定 caller list；build 區分可捲主 groups／固定 footer；_contentWithSpacing／_divider 組裝節奏 |
+| KlpFrameGroupStyle | const preset 與 copyWith 純配置 |
+| _FrameGroupDivider／_DashedDividerPainter | build 解析分隔語意；paint／shouldRepaint 原生繪圖 |
+| KlpLinearItem／KlpLinearLayoutResult | 輸入純值與不可變尺寸結果 |
+| resolveKlpLinearLayout／_nonnegative／_sum／_proportional | 範圍驗證、穩定比例分配與守恆 |
+
+Enums：KlpAppLayoutInset、KlpLayoutMainAlignment、KlpLayoutSpacing、KlpLayoutPaneSize、KlpAppFrameRole、KlpAppFrameSurface、KlpFrameGroupPadding、KlpFrameGroupDivider、KlpFrameGroupContentSpacing。既有 typedef KlpPadding／KlpPaddingHorizontal／KlpPaddingStyle 保留。
+
+```mermaid
+flowchart TD
+	Root[KlpAppLayout.build] --> Native[Row / Column.build]
+	Native --> Project[_linearLayout / _KlpLinearSpec]
+	Project --> Host[_KlpLinearHost]
+	Host --> Render[_RenderKlpLinearHost.performLayout]
+	Render --> Measure[自然尺寸量測 / bounds 投影]
+	Measure --> Solver[resolveKlpLinearLayout]
+	Solver --> Slot[tight child layout / ClipRect]
+	Frame[KlpAppFrame.build] --> Relief[_frameRelief / KlpFrameReliefRecipe]
+	Root --> Floating[_KlpFloatingWorkspaceState]
+	Floating --> Position[_KlpFloatingPosition]
+	Groups[KlpFrameGroups.build] --> Group[KlpFrameGroup.build]
+	Group --> Divider[_FrameGroupDivider / _DashedDividerPainter]
+```
+
+FLUTTER-LAYOUT-2 實作 273a0b4f：18 項獨立 Widget checks、4 項既有 workspace checks、公開 analyze 與 scope gate 通過。Test Author 發現自己將既有 callback 誤判為無效，依相容契約獨立修正為全域位置／無自動尺寸變動保護（83a77b6d）；受保護 SHA256 893CB1ABE6FE24C2F6CA54EA72769CC23EE91CD0C68B0909117DDAE5D63BBB75。Catalog Workspace components 實際瀏覽器已顯示 Row／Frame／floating action；沒有 error log，僅 Flutter 既有 viewport meta 提示。感官品質仍由人類接受；沒有新 visual golden。
