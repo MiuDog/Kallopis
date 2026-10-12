@@ -184,7 +184,7 @@ BUILD188273b8只兩source，fresh protected11 checks／public analyze No issues�
 FLUTTER-COMMAND-SHORTCUT-HOST-r1依[共同native宿主](../docs/architecture/workbench-shortcut-host-contract.md)及[local責任](lib/src/features/actions/command_shortcut_host/architecture.md)。新source＋foundationexport exact2，借用keymap與產品context/focus/composition回呼；原生Focus bubble、EditableText protection、single timer、nativefocus清理及same-session/latestresult。cold5k～10k／25～50分鐘，M1protected事件checks5k／25，M2analyze／scope2 10k／50；13k／65或其他write回PLAN。fresh TestAuthor唯一新publicWidget test，其餘所有module/config/tests唯讀；GUI與網站consumer另packet。
 
 BUILD4a3b1088 pure native host exact2source，protected10 checks／publicanalyze No issues／scope2通過；actual allmethods／helpers／Mermaid由local擁有。consumer及nativebrowser尚未接入，不改legacy鍵盤API。
-## FLUTTER-COMMAND-SHORTCUT-EXAMPLE-1（READY）
+## FLUTTER-COMMAND-SHORTCUT-EXAMPLE-1（COMPLETE）
 
 FLUTTER-COMMAND-SHORTCUT-EXAMPLE-r1只example/lib/catalog/registered_commands_page.dart exact1，在同State/registry之下產品建立並dispose公開keymap，以stable KlpCommandShortcutHost包原頁內容；coveredComponents包含host，但不以單一palette specimen冒充全部網站互動。平台用產品原生platform投影mac/other，UI明示目前primary。既有draft/controller、handlers、toolbar/menu/palette/popup不複製。
 
@@ -193,3 +193,38 @@ bindings與React沿同stage：app document.save.primary primary+s／save.chord p
 UI publicButton／Surface／Text／TextField及產品原生Wrap/Focus組合；專用FocusNode包庫Surface/Text作錄製target，產品requestFocus完成後beginRecording該實際focusID（不用按鈕的旧ID），Focus變動重繪讀同core狀態。finish非空才setOverride(save.primary)、cancel／restore；JSON controller作export/import來源，JSONDecode後publicimport完整驗證、invalid保留原設定。scope/record/JSON狀態由產品caller擁有，所有共用內部風格沿context.klp；沒有產品Widgettree驗證或另defaultstyle。產品dispose錄製Focus/controller、keymap，再registry；library／所有tests/config/generated／React唯讀。
 
 reversibleconsumer無必要新鏡像tests。cold4k～8k／25～50分鐘，參照FLUTTER-COMMAND-POPUP-EXAMPLE-1；M1 publicanalyze／scope1（4k／25）；M2 releaseweb及nativebrowser同React矩陣（8k／50）；11k／65或其他path返回PLAN。精確browser事件用真實focused target，AX聚焦不等於Flutter focus；IME完整/native極端style及感官明示pending。websitebundle/全元件specimen另stage。
+
+實作f9118c25 exact1source，analyze No issues／scope1／diff及release web（no-tree-shake-icons，46.4秒）通過。初次編譯Red為新增dart:convert匯入被放到宣告後方，移到檔案頂部後原analyze Green，無Green fallback。native browser實際pointer進入草稿及開始錄製後FocusNode提交，再使用當前鍵盤目標；已觀察save primary／chord、draft grid.editor／page grid.primary與exact衝突、record Ctrl+Shift+Y不執行／套用儲存／四組上限／Escape及按鈕取消／restore。JSON有效Ctrl+Shift+U可儲存，unknown binding拒絕後export仍是Y覆寫，語法錯誤有原回饋；disabled save ignored、regionfailure原Bad state。結果0到8為save×5／grid×2／failure×1，草稿「保留這份草稿與游標Flutter 快捷鍵保留草稿」保持。完整IME／風格切換與極端參數／窄viewport／感官pending。
+
+### Flutter Commands 快捷鍵增量職責
+
+| 定義 | 實際責任 |
+| --- | --- |
+| initState／dispose | 同State建立registry與keymap及六binding；FocusManager重繪listener、recorderFocus／settings由產品清理，keymap先於registry |
+| _focusedEditor／_getFocus／_getIsComposing | 公開原生EditableText與controller投影草稿／設定editable、scope、focus identity及當前composing |
+| _refreshShortcuts／nested refresh | 合併一次post-frame焦點重繪；mounted guard，不建立第二chord timer |
+| _onHandling | 保存原handling顯示，core仍擁有錄製／prefix |
+| _beginRecording／nested begin | requestFocus後檢查mounted及實際primary recorder，再beginRecording |
+| _applyRecording／_cancelRecording／_restoreShortcut | 非空finish套save.primary／取消／還原 |
+| _exportSettings／_importSettings | 公開DTO JSON暫存及原子核心匯入，原錯誤產品回饋 |
+| _describeStroke | 平台primary與修飾鍵顯示，沒有鍵盤演算法 |
+| _shortcutControls／nested conflict mapper | public元件組裝、最新conflicts及core snapshots；空值回饋；原生Wrap僅布局 |
+| _CommandsDemoState 增量fields | _keymap借同registry；_settings產品JSON；_recorderFocus原生目標；_handling最後事件；_settingsMessage回饋；_refreshScheduled重繪合併，非錄製／計時權威 |
+| build | 同public host包既有children與新controls，原result handler共用 |
+
+```mermaid
+flowchart TD
+	Init[initState] --> Registry[原registry及handlers]
+	Init --> Map[同owner keymap / 六binding]
+	Key[原生focused keyboard] --> Host[KlpCommandShortcutHost]
+	Host --> Focus[_focusedEditor / _getFocus / _getIsComposing]
+	Host --> Handling[_onHandling]
+	Host --> Result[原_onResult]
+	Record[_beginRecording] --> Post[post-frame begin / actual primary]
+	Post --> Map
+	Settings[_exportSettings / _importSettings] --> Map
+	Apply[_applyRecording / _cancelRecording / _restoreShortcut] --> Map
+	NativeFocus[FocusManager change] --> Refresh[_refreshShortcuts / post-frame refresh]
+	Refresh --> View[_shortcutControls / _describeStroke / conflicts]
+	Dispose[dispose] --> Cleanup[remove listener / map / focus / controller / registry]
+```
