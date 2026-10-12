@@ -14,6 +14,8 @@ closed不render overlay/query/getContext，不取得焦點；首次open重設que
 
 每個field以UTF-16 code units匹配：全相等score0；prefix 1；substring 2；依序subsequence 3；不存在為不匹配。每詞取所有field最小score，全部詞score求和。空query沿core ID UTF-16順序，非空query先score再原ID UTF-16順序；不用註冊時間、Intl.Collator或框架locale。中文完整/子字串與原Unicode保留；不提供transliteration/locale語言搜尋權威。相同query/context/core快照兩框架順序一致。
 
+跨框架分詞精確集合沿ECMAScript WhiteSpace/LineTerminator：U+0009～000D、0020、00A0、1680、2000～200A、2028/2029、202F、205F、3000、FEFF；U+0085保留原字元不分詞。Flutter不可用不同runtime的廣義trim/空白集合改變候選；只有上述集合的邊界與連續字元分隔詞。
+
 selected ID是本地候選焦點，不等於命令checked。初始第一個enabled且非running項；query/清冊變動保留仍可用的同ID，否則fallback第一可用。空結果顯示emptyLabel；全部disabled仍顯示且selection空。取消未開始業務；已開始Promise/Future不因UI關閉被取消。
 
 ## 鍵盤、原值結果與焦點

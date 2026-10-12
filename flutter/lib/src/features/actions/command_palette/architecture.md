@@ -8,7 +8,7 @@ FLUTTER-COMMAND-PALETTE-r1 READY，依[共同WB-COMMAND-PALETTE-r1](../../../../
 
 privateState擁有OverlayPortalController、搜尋TextEditingController、input FocusNode、closed-loop FocusScopeNode、registry disposer、session generation、originalFocus與activeId。OverlayPortal沿呼叫點InheritedWidgets／theme／locale更新，避免OverlayEntry捕捉過期theme；closed輸出零尺寸宿主但沒有overlay/query/context/focus。init/update安排原生frame同步show/hide，open才清空query並記錄originalFocus，已open registry替換保留query及return-focus owner但提升generation。close/unmount/reopen/replacement使舊Future UI結果失效，registry disposed不訂閱/query。
 
-每次呈現讀最新getContext/list，一次候選投影包含state與score；UTF-16完整field exact/prefix/substring/subsequence及Unicode空白分詞依共同契約。Dart不得僅用ASCII `RegExp(r'\s+')`漏U+0085或使用runes排序；本地Unicode空白判定支援U+0009～000D、0020、0085、00A0、1680、2000～200A、2028/2029、202F、205F、3000、FEFF。每詞最佳score求和，原ID code units tie；不串field。disabled/running仍候選，activeId只可用；query/refresh保留可用ID，否則首可用。clear/dispose與清冊更新不改產品業務。
+每次呈現讀最新getContext/list，一次候選投影包含state與score；UTF-16完整field exact/prefix/substring/subsequence及Unicode空白分詞依共同契約。Dart不得僅用ASCII空白或使用runes排序；共同ECMAScript WhiteSpace/LineTerminator集合支援U+0009～000D、0020、00A0、1680、2000～200A、2028/2029、202F、205F、3000、FEFF，U+0085保留字元不分詞，與React相同。每詞最佳score求和，原ID code units tie；不串field。disabled/running仍候選，activeId只可用；query/refresh保留可用ID，否則首可用。clear/dispose與清冊更新不改產品業務。
 
 input持原生Focus；Focus/onKeyEvent只处理非composing的上下、Enter與Escape，KeyDown一次、KeyRepeat不執行。composing判斷controller.value.composing有效非collapsed；Home/End/左右保持原生文字游標。Tab由closedLoop scope保留在modal；候選pointer與Semantics activation都經最新context/execute，候選不可取得獨立鍵盤焦點。activation完成只同session/onResult當前callback交原core結果；executed且callback返回後same session才onDismiss executed；error或callback自身throw保留面板，callbackthrow交FlutterError。不同命令可並行。
 
