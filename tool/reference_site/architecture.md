@@ -2,7 +2,7 @@
 
 ## 本階段規範導覽切片
 
-修訂 `DOCS-STAGE-r1`，PLAN READY。`DOCS-STAGE-1` 只將已接受的 Workbench、Style Pack、互動 docs、研究與整合計畫 Markdown 加入現有 documents registry；write_paths 僅 `tool/reference_site/documents.mjs`。資料仍從 Markdown 生成，公開 API identity／現有頁面／測試／style 不改。驗收為既有網站 tests、正式 generate／verify；本切片不宣稱已嵌入互動展示。
+修訂 `DOCS-STAGE-r1`，DOCS-STAGE-1 完成。只將已接受的 Workbench、Style Pack、互動 docs、研究與整合計畫 Markdown 加入現有 documents registry；write_paths 僅 `tool/reference_site/documents.mjs`。資料仍從 Markdown 生成，公開 API identity／現有頁面／測試／style 不改。15 項既有網站 tests、519 canonical API 頁／25 文件 generate／verify 通過；本切片不宣稱已嵌入互動展示。
 
 冷啟動估算 1k–3k tokens／5–15 分鐘，參考 TDS-VISUAL-1 的 registry 接入，Node24 builtin，無新相依。唯一里程碑 M1：五份來源的頁面、搜尋及本地引用可驗證；超過 4k tokens 或 20 分鐘先查來源／路由契約，不扩寫 UI。BUILD 的 architecture、tests、fixture、API manifest 及其他 module 都唯讀。
 

@@ -14,6 +14,8 @@
 | 6 | docs API／元件页嵌入及場景頁 | `tool/reference_site/` | 公開元件 → specimen → bundle → route 全鏈 coverage；前綴及資產檢查 |
 | 7 | 權威切換、CI、文件與提交 push | repository 整合 owner | SP-01～08、IDOC-01～08、WB-01～21 evidence；繼承失敗另列、精確提交與 push 記錄 |
 
+已觀察進度：STYLE-PACK-1 完成（269 原料、350 語意 × 4、118 配方；逐 cell round trip、65 個含子測試檢查、CLI check 及 scope check 通過）；docs 的五份新增來源完成 registry 接線，15 項網站檢查及 519 canonical API 頁／25 文件生成與 verifier 通過。這些不代表框架可注入風格或互動展示已完成。
+
 ## 合作邊界
 
 通用 spec 擁有行為；style pack 擁有視覺資料；各框架擁有 native component 與平台轉換；example 擁有場景 state；網站只組裝公開 reference 與已建置展示。reference site 不手寫替代 Flutter／React 元件，不匯入 private src，也不建立全產品 UI schema。
@@ -46,4 +48,4 @@ GitHub push 已授權，無需重問；仍需先確認範圍及實際檢查。�
 
 ## 下一個可執行步驟
 
-STYLE-PACK-1：完整遷移現有正式三張表，產出可驗證的版本化 JSON；其餘項目依上表目錄接續，不在第一 slice 重寫所有框架元件。
+STYLE-PACK-2：定義 typed resolver、參數目錄／範圍與跨框架 fixture，完成獨立保護後簽發 packet；再分別規劃雙框架 adapter。其餘項目依上表目錄接續。
