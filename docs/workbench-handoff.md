@@ -4,7 +4,7 @@
 
 ## 下一個可執行步驟
 
-1. 雙框架command core、registered toolbar/menu、palette及公開CommandsDemo完成。有限入口Flutter BUILD1bdd6321／React BUILDaff1eaf4共29／23checks Green。popup library亦完成：Flutter d17be03f protected16＋原23、analyze／scope2；React75c24b4e protected12＋原12、typedconsumer／build／scope3。Flutter初次兩失敗是背景fixture收縮，由獨立TestAuthor修正並加入實際Overlay尺寸校验，原assertions保留。接續兩框架root architecture的COMMAND-POPUP-EXAMPLE-r1 READY，僅各既有CommandsDemo source接button及右鍵point觸發，再nativebrowser與網站API更新。不得複製第二份rows或handler。
+1. 雙框架command core／registered toolbar／menu／palette／popup及公開CommandsDemo完成。popup Flutter d17be03f protected16＋原23、analyze／scope2；React75c24b4e protected12＋原12、typedconsumer／build／scope3。consumer Flutter173cc9e9／Reactcb1c392d各exact1source：button bounds／右鍵point／Escape／outside無click-through／一次執行／focus／draft nativebrowser觀察。Flutter初次兩失敗是背景fixture收縮，由獨立TestAuthor修正並加入實際Overlay尺寸校验，原assertions保留。網站公開popup extract549；完整窄native／style矩陣與感官pending。下步快捷鍵共通契約，不複製第二份rows或handler。
 2. 雙框架快捷鍵/chord/scope/conflict/remap/recording契約與接入。不可用core冒充整個命令stage完成。
 3. 網站每個公開可呈現元件專屬互動specimen、registry/bundle/coverage；3GUI×2框架；typedrecipes／完整風格中立與參數／default權威切換。
 4. 補browser hoverpreview/cancel矩陣、Flutter continuousresize與React endcommit差異契約審核；保留所有既有CI/發布閘門，精確commit/push。感官接受human-pending。
@@ -59,7 +59,7 @@ owner b319af8c澄清removeListener只解除native addListener owner；獨立auth
 | Dock codec／operations | Flutter69771496／243d9f98；Reactc6af55f6／e5d8b0a6；各7codec、10operationschecks | 已完成；consumer只投影id/capabilities清冊，不傳content/callback |
 | Flutter Panel／Dock | Panel5e18ccd6／8d4fc334九checks；geometry296e7cab十三；preview3064c359七；UI4ff1c999十三，Dock合計33checks | browser preview/cancel全矩陣 |
 | React Dock | geometry08ea39fc九；native1 7690b23b九；native2 681c0f6c／583818e8／6ee63c5e九，合計18nativechecks | native1部分act harness warnings保留，browser矩陣同上 |
-| 參考網站 | Flutter547canonical API／17modules／三surface extract/generate/verify；32文件、15網站checks | API清冊不等於互動頁；全部展示未完成 |
+| 參考網站 | Flutter549canonical API／17modules／三surface popup extract／generate／verify／15checks；32文件 | API清冊不等於互動頁；全部展示未完成 |
 
 本機main網站重建曾讀ignored build/reference-api.json舊534清冊；generator/verifier明確使用該建置輸入。已以同隔離已驗證547artifact更新main ignored輸入，原重建與verify回547，無source／test改動。tab3 reload已見32文件現行stage與新popup Guide；截圖main build/evidence/workbench-command-popup-guide.png。日後新公開API完成需先extract再generate，不把ignored stale產物當正式清冊。
 

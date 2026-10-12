@@ -183,3 +183,5 @@ Flutter registered toolbar/menu/ref/kind四個公開宣告extract後，當前545
 當前網站來源：新增共同palette Guide及React產品使用說明，31Markdown／547canonical API／17modules／三surfaces；generate、verify及15既有網站checks全部通過。React CommandsDemo提供公開consumer實際browser證據，尚未接成每個component專屬網站specimen；Flutter palette公開enum／Widget已由Green extractor接入；Flutter consumer展示與三GUI×兩框架仍待交付。
 
 共同ENTRY-GEOMETRY-r1前置契約加入唯一Guide路由；当前31Markdown／547API。此READY只規範命令入口有限幾何，不宣稱實作或popup已完成。
+
+popup雙框架library與公開consumer完成後，Flutter重新Green extraction549 canonical API／17modules／三surfaces；32Markdown包含共同popup Guide與兩端使用指南。新API清冊只複製extractor輸出，不手寫identity；全部元件互動、React專屬清冊與GUI bundle仍另stage。

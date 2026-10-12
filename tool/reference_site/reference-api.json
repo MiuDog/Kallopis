@@ -704,6 +704,51 @@
 					]
 				},
 				{
+					"id": "package:kallopis/src/features/actions/command_popup/klp_command_popup.dart#KlpCommandPopupDismissReason",
+					"name": "KlpCommandPopupDismissReason",
+					"slug": "klp-command-popup-dismiss-reason",
+					"kind": "enum",
+					"module": "features.actions",
+					"sourceUri": "package:kallopis/src/features/actions/command_popup/klp_command_popup.dart",
+					"primarySurface": "foundation",
+					"surfaces": [
+						"foundation"
+					],
+					"signature": "enum KlpCommandPopupDismissReason",
+					"documentation": "",
+					"typeRelationships": {
+						"extends": "Enum",
+						"mixins": [],
+						"implements": []
+					},
+					"members": [
+						{
+							"name": "KlpCommandPopupDismissReason",
+							"kind": "constructor",
+							"signature": "KlpCommandPopupDismissReason()",
+							"documentation": ""
+						},
+						{
+							"name": "escape",
+							"kind": "enumValue",
+							"signature": "KlpCommandPopupDismissReason escape",
+							"documentation": ""
+						},
+						{
+							"name": "executed",
+							"kind": "enumValue",
+							"signature": "KlpCommandPopupDismissReason executed",
+							"documentation": ""
+						},
+						{
+							"name": "outside",
+							"kind": "enumValue",
+							"signature": "KlpCommandPopupDismissReason outside",
+							"documentation": ""
+						}
+					]
+				},
+				{
 					"id": "package:kallopis/src/features/actions/command_entries/klp_command_entries.dart#KlpCommandReference",
 					"name": "KlpCommandReference",
 					"slug": "klp-command-reference",
@@ -1368,6 +1413,93 @@
 							"name": "searchLabel",
 							"kind": "field",
 							"signature": "String searchLabel",
+							"documentation": ""
+						}
+					]
+				},
+				{
+					"id": "package:kallopis/src/features/actions/command_popup/klp_command_popup.dart#KlpRegisteredCommandPopup",
+					"name": "KlpRegisteredCommandPopup",
+					"slug": "klp-registered-command-popup",
+					"kind": "class",
+					"module": "features.actions",
+					"sourceUri": "package:kallopis/src/features/actions/command_popup/klp_command_popup.dart",
+					"primarySurface": "foundation",
+					"surfaces": [
+						"foundation"
+					],
+					"signature": "class KlpRegisteredCommandPopup<C> extends StatefulWidget",
+					"documentation": "",
+					"typeRelationships": {
+						"extends": "StatefulWidget",
+						"mixins": [],
+						"implements": []
+					},
+					"members": [
+						{
+							"name": "KlpRegisteredCommandPopup",
+							"kind": "constructor",
+							"signature": "KlpRegisteredCommandPopup<C>({\n  Key? key,\n  required KlpCommandRegistry<C> registry,\n  required C Function() getContext,\n  required List<KlpCommandReference> items,\n  required String label,\n  required String emptyLabel,\n  required bool open,\n  required Rect anchor,\n  required ValueChanged<KlpCommandExecutionResult> onResult,\n  required ValueChanged<KlpCommandPopupDismissReason> onDismiss,\n})",
+							"documentation": ""
+						},
+						{
+							"name": "anchor",
+							"kind": "field",
+							"signature": "Rect anchor",
+							"documentation": ""
+						},
+						{
+							"name": "createState",
+							"kind": "method",
+							"signature": "State<KlpRegisteredCommandPopup<C>> createState()",
+							"documentation": ""
+						},
+						{
+							"name": "emptyLabel",
+							"kind": "field",
+							"signature": "String emptyLabel",
+							"documentation": ""
+						},
+						{
+							"name": "getContext",
+							"kind": "field",
+							"signature": "C Function() getContext",
+							"documentation": ""
+						},
+						{
+							"name": "items",
+							"kind": "field",
+							"signature": "List<KlpCommandReference> items",
+							"documentation": ""
+						},
+						{
+							"name": "label",
+							"kind": "field",
+							"signature": "String label",
+							"documentation": ""
+						},
+						{
+							"name": "onDismiss",
+							"kind": "field",
+							"signature": "ValueChanged<KlpCommandPopupDismissReason> onDismiss",
+							"documentation": ""
+						},
+						{
+							"name": "onResult",
+							"kind": "field",
+							"signature": "ValueChanged<KlpCommandExecutionResult> onResult",
+							"documentation": ""
+						},
+						{
+							"name": "open",
+							"kind": "field",
+							"signature": "bool open",
+							"documentation": ""
+						},
+						{
+							"name": "registry",
+							"kind": "field",
+							"signature": "KlpCommandRegistry<C> registry",
 							"documentation": ""
 						}
 					]

@@ -255,7 +255,7 @@ commands.dispose();
 
 toolbar左右、menu上下循環移動可用項；Home/End跳首尾、Enter/Space啟動一次。Menu Escape呼叫onDismiss；autoFocus預設false，明確true才取得首個可用項或空menu宿主焦點。缺失/隱藏/條件錯誤項不呈現；停用/執行中項仍呈現但不進可用索引。toggle映射checked，普通action沒有toggle語意。
 
-非同步執行完成交最新onResult；入口卸載或更換registry後不再把舊結果交新宿主，同registry的原結果仍保留。onResult自身例外交原生error通道。style/className/id供外部有限宿主，內部呈現讀semantic；menu本身是原生平面入口，popup定位、context menu與palette另待接入。
+非同步執行完成交最新onResult；入口卸載或更換registry後不再把舊結果交新宿主，同registry的原結果仍保留。onResult自身例外交原生error通道。style/className/id供外部有限宿主，內部呈現讀semantic；menu本身是原生平面入口，錨定／context選單使用下方registered popup。
 
 12項public SSR/DOM/lifecycle/typedconsumer checks與build通過，測試存在React act時機警告；browser與感官證據待展示stage。[入口共同契約](../architecture/workbench-command-entry-contract.md)定義雙框架一致邊界。
 
@@ -279,3 +279,23 @@ toolbar左右、menu上下循環移動可用項；Home/End跳首尾、Enter/Spac
 上下選取、Enter執行、Escape與背景點擊提出關閉；成功執行後也提出關閉，錯誤保留面板供產品處理。搜尋input保留原生文字游標／composition；SSR待client mount才開啟modal。原生dialog由同Provider tokens及CSS投影取得風格，開關不改背景產品輸入。原生範例包含儲存pending、格線checked、可見及可用條件與失敗結果；[CommandsDemo](../../react/example/commands-demo.tsx)全部使用公開library入口。
 
 11項protected UI/SSR/hydration/type檢查與build通過；consumer型別/prod build及兩path scope通過。native browser已觀察搜尋、方向Enter、Tab、Escape/outside、成功返回開啟按鈕焦點、停用/失敗/pending、dark與320×180、草稿保留；IME及完整極端style矩陣仍待實際操作，感官human-pending。共同詳細契約見[命令面板](../architecture/workbench-command-palette-contract.md)。
+
+## React 錨定與右鍵命令選單
+
+`KlpRegisteredCommandPopup<C>`直接組合相同registry與公開menu。產品提供受控open、readonly anchor `{ x, y, width, height }`，其餘registry／getContext／items／label／emptyLabel／onResult沿menu；onDismiss接收escape／outside／executed並由產品更新open。沒有style覆寫定位入口。按鈕使用原生getBoundingClientRect，右鍵事件由產品preventDefault並提供clientX/Y的零尺寸point。
+
+```tsx
+<KlpRegisteredCommandPopup
+	registry={commands}
+	getContext={() => latestContext}
+	items={[{ commandId: 'document.save' }]}
+	open={popupOpen}
+	anchor={popupAnchor}
+	label="文件命令"
+	emptyLabel="沒有可用命令"
+	onResult={handleProductResult}
+	onDismiss={reason => setPopupOpen(false)}
+/>
+```
+
+同Provider DOM原生dialog取得modal，背景草稿不卸載；有限client viewport與目前風格決定邊距、寬度及下方／上方／較大側。相同session各關閉意圖最多一次；error保持，callback原錯誤沿宿主通道，close／reopen／replacement隔離舊結果。12項protected公開檢查含型別、原12入口checks、build與scope3通過；[CommandsDemo](../../react/example/commands-demo.tsx)已實際觀察button／右鍵、原生`:modal`、Escape／outside／格線一次／原focus／draft以及同Provider dark色。窄viewport完整browser矩陣與感官仍pending；[共同popup契約](../architecture/workbench-command-popup-contract.md)定義完整邊界。

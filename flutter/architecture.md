@@ -166,8 +166,10 @@ FLUTTER-COMMAND-ENTRY-GEOMETRY-r1 COMPLETE：BUILD1bdd6321單一source完成有�
 
 FLUTTER-COMMAND-POPUP-r1 COMPLETE：[local popup](lib/src/features/actions/command_popup/architecture.md)擁有受控open／anchor Rect／dismiss意圖、有限位置及native modal；直接組合stable registered menu。BUILD d17be03f只新來源與foundation匯出，fresh公開16＋原23checks、analyze與scope2通過。consumer及網站另packet。
 
-## FLUTTER-COMMAND-POPUP-EXAMPLE-1（READY）
+## FLUTTER-COMMAND-POPUP-EXAMPLE-1（COMPLETE）
 
 FLUTTER-COMMAND-POPUP-EXAMPLE-r1：只修改example/lib/catalog/registered_commands_page.dart，增加同registry的受控popup、GlobalKey按鈕原生bounds與右鍵pointer point；產品維護popupOpen／anchor／dismissReason，右鍵區域用同庫Surface／Text，不加業務功能或共享內部樣式。Native GestureDetector onSecondaryTapDown交globalPosition；BrowserContextMenu僅在example mounted owner停用原生選單並於dispose還原。既有palette／草稿／handler維持，catalog coveredComponents投影新增公開popup。library/tests/config/generated/其他module唯讀。
 
 此reversible consumer無必要新測試。M1 publicanalyze及exact1scope（2k／15分鐘）；M2 releaseweb與native button／右鍵／outside／Escape／一次執行／focus／draft觀察（4k／30分鐘）；cold2k～5k／15～35分鐘，參照FLUTTER-COMMAND-EXAMPLE-1；7k／45分鐘或其他路徑返回PLAN。未觀察項明示pending，感官human-pending。
+
+BUILD173cc9e9只該source，analyze／scope1及releaseweb52.0s通過。_openPopup／_openButtonPopup／_openPointPopup／_dismissPopup擁有產品觸發與關閉；_controls／build接庫Button／Surface／Text與同registered popup，initState／dispose只在demo暫停及还原原生context menu。native新tab12 http://127.0.0.1:5193/ 明確指向隔離新建置；舊5192還載入舊內容不算新證據。button錨定／右鍵point、AX背景操作消失、Escape原focus、outside(200,350)不啟動背景導航、儲存結果1及pointergrid結果2／兩入口checked同步、草稿「快顯保留草稿」保持，error／warn空。AX locator Space聚焦不等於Flutter roving選取，因此不拿該操作聲稱grid鍵盤證據。main build/evidence/flutter-command-popup.png；窄native／完整style矩陣與感官pending。

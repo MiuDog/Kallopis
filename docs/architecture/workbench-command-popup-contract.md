@@ -32,6 +32,12 @@ Flutter library slice只新command_popup來源與stablefoundation匯出；React�
 
 依據：[Flutter OverlayEntry](https://api.flutter.dev/flutter/widgets/OverlayEntry-class.html)的insert／remove／dispose生命週期、[原生dialog modal](https://developer.mozilla.org/en-US/docs/Web/API/HTMLDialogElement/showModal)的top layer及同document inert、[contextmenu事件](https://developer.mozilla.org/en-US/docs/Web/API/Element/contextmenu_event)作產品trigger。iframe外層頁面不由iframe內dialog鎖定；瀏覽器保留操作仍屬平台限制。
 
+## 已觀察交付
+
+Flutter library d17be03f／consumer173cc9e9：protected16＋原23checks、analyze／scope2及consumer scope1／releaseweb通過。React library75c24b4e／consumercb1c392d：protected12含typedconsumer＋原12checks、build／consumer TypeScript／scope3／consumer scope1通過。原protected入口tests未變；Flutter背景fixture初次收縮由TestAuthor修正，另加入實際Overlay尺寸assertion，未弱化要求。
+
+兩端公開demo nativebrowser已觀察button bounds／右鍵point、Escape／outside無背景click-through／成功只一次、原focus與草稿保留。Flutter AX背景操作暫停；React原生`:modal` true與同Provider dark overlay色一致。Flutter5193新origin明確讀隔離新建置，舊5192載入舊內容不當作新證據。native窄viewport／完整style矩陣與感官human-pending；全部website元件specimen／3GUI／快捷鍵仍未完成。
+
 ```mermaid
 flowchart TD
 	Product[open / anchor / trigger / result] --> Popup[controlled native popup host]

@@ -276,7 +276,7 @@ KlpRegisteredCommandMenu<ProductContext>(
 
 外部closure變動呼叫commands.refresh()。缺失/隱藏/條件錯誤項不呈現；停用/執行中項保持呈現但不進可用索引。toolbar左右、menu上下循環，Home/End跳首尾，Enter/Space只KeyDown啟動一次，repeat不啟動；menu Escape呼叫onDismiss。autoFocus預設false，true才在掛載後取得首可用項或空root焦點。
 
-UI不取消已開始產品Future；samehost/sameregistry完成交最新onResult，卸載或更換registry後隔離舊結果，解除命令註冊仍保留原結果。onResult自身錯誤交FlutterError，不能偽裝成handler結果。風格讀context.klp，menu scroll/toolbar wrap保護有限宿主；popup定位/context menu與shortcut待接續。
+UI不取消已開始產品Future；samehost/sameregistry完成交最新onResult，卸載或更換registry後隔離舊結果，解除命令註冊仍保留原結果。onResult自身錯誤交FlutterError，不能偽裝成handler結果。風格讀context.klp，menu scroll/toolbar wrap保護有限宿主；popup使用下方公開入口，shortcut待接續。
 
 23項公開Widget/lifecycle checks、public analyze及兩path scope通過；browser和感官品質尚待展示stage。[雙框架入口契約](../architecture/workbench-command-entry-contract.md)為共同邊界。
 
@@ -300,3 +300,23 @@ KlpRegisteredCommandPalette<ProductContext>(
 搜尋支援多詞與跨metadata field、完整／前綴／包含／子序列固定score，最後依UTF-16 ID排序。停用或執行中候選仍呈現但不可選。上下循環、Enter一次執行、Tab保留輸入、Escape／outside只提出關閉意圖；Home／End／左右及composition保留原生文字編輯。成功結果提出executed關閉，錯誤保留面板由產品呈現；關閉／重開／替換registry隔離舊Future UI結果。
 
 原焦點只在面板仍擁有焦點時還原，產品callback已轉移外部焦點不搶回。query不進registry，關閉後再開重設；同次open的主題／尺寸／registry更新保留query。有限overlay／row幾何限制可替換風格的padding／icon／gap，不改命令權限與排序。21項公開檢查及局部analyze通過；[共同面板契約](../architecture/workbench-command-palette-contract.md)與[Flutter實作責任](../../flutter/lib/src/features/actions/command_palette/architecture.md)提供完整邊界。公開[Catalog Commands頁](../../flutter/example/lib/catalog/registered_commands_page.dart)可實際操作同registry工具列／選單／palette：產品草稿、儲存條件、800ms pending、grid與顯式failure；source只用stablefoundation。nativebrowser已確認搜尋／pending／error／Tab／Escape／executed／outside／原生Dismiss與實際320×180有限尺寸，草稿保留。感官與完整style／IME／theme browser矩陣仍待接受。
+
+## Registered 錨定與右鍵命令選單
+
+stable foundation 的 `KlpRegisteredCommandPopup<C>`沿用同registry／getContext／items／label／emptyLabel／onResult，另必填受控open、原生Rect anchor及onDismiss。anchor為同視窗邏輯viewport座標；按鈕以原生RenderBox bounds，context pointer用globalPosition與Size.zero。有限位置依當前context.klp決定偏好下方、翻上方或較大側，保留同公開menu的scroll及鍵盤行為。
+
+```dart
+KlpRegisteredCommandPopup<ProductContext>(
+	registry: commands,
+	getContext: () => currentContext,
+	items: const [KlpCommandReference(commandId: 'document.save')],
+	open: popupOpen,
+	anchor: popupAnchor,
+	label: '文件命令',
+	emptyLabel: '没有可用命令',
+	onResult: handleProductResult,
+	onDismiss: (reason) => setState(() => popupOpen = false),
+)
+```
+
+onDismiss僅交escape／outside／executed意圖，由產品採用；同session各意圖最多一次，handler error保持，callback原錯誤不自動關閉。modal背景pointer／可操作語意暫停、產品State/controller不卸載，條件回焦。16項protected公開Widget checks、原23入口checks、analyze與scope2通過；Catalog Commands頁button／右鍵point／Escape／outside無click-through／儲存及格線一次／原focus／草稿保留已nativebrowser觀察。右鍵原生瀏覽器選單開關只由example宿主管理，library不接管全產品事件。完整style／窄native矩陣與感官另pending，詳見[共同popup契約](../architecture/workbench-command-popup-contract.md)。
