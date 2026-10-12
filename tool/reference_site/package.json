@@ -3,7 +3,8 @@
 	"private": true,
 	"type": "module",
 	"scripts": {
-		"test": "node --test",
+		"test": "node --test test/reference_site.test.mjs test/design_system_docs.test.mjs",
+		"test:extract": "node --test test/extract_renderable.test.mjs",
 		"extract": "cd ../.. && dart --packages=flutter/.dart_tool/package_config.json tool/reference_site/extract_api.dart --output build/reference-api.json",
 		"build": "node generate.mjs",
 		"verify": "node verify.mjs"
