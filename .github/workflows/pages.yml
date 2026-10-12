@@ -35,8 +35,13 @@ jobs:
       - run: npm ci --prefix tool/reference_site
       - run: npm test --prefix tool/reference_site
       - run: mkdir -p build && cp tool/reference_site/reference-api.json build/reference-api.json
-      - run: node tool/reference_site/generate.mjs
-      - run: node tool/reference_site/verify.mjs
+      - run: npm ci --prefix react
+      - run: npm run build --prefix react
+      - run: npm run build:example --prefix react
+      - run: node react/scripts/reference-components.mjs
+      - run: node --test tool/reference_site/test/react_specimens.test.mjs
+      - run: node tool/reference_site/generate.mjs --react
+      - run: node tool/reference_site/verify.mjs --react
 
       - uses: actions/upload-pages-artifact@v3
         with:
