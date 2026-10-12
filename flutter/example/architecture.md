@@ -602,7 +602,7 @@ Navigator原child-b選取1，element折疊2/展開3、category折疊4/展開5，
 State _controls/_target/_usage/_rail/_navigator持有自己的公開DTO/props，_entry/_leaf/_child提供合法資料與單一controller內容；_reorder/_topReorder/_centerReorder直接回寫原publiccallback normalizedindex，_divider控制資料包含divider故不錯置drag索引；_railSelect/_railMenu只entry，_category/_element/_select只root，_childAction/_input分開、_edit只control，dispose清三controller，build各boundedhost。不建立FileExplorer adapter、產品runtime或第二theme。
 
 
-## FLUTTER-ACTION-UTILITY-SPECIMENS-1（READY）
+## FLUTTER-ACTION-UTILITY-SPECIMENS-1（已驗證）
 
 修訂FLUTTER-ACTION-UTILITY-SPECIMENS-r2；IDOC-01/02/03/06/08，exact lib/component_specimens.dart、新 lib/action_utility_specimens.dart。五target KlpBulkActionBar、KlpCommandMenu、KlpEditorToolbar、KlpSearchNavigator、KlpSelectionToolbar；已完成registered五與basic button保持，全273目標不變。
 
@@ -630,3 +630,5 @@ flowchart TD
 	State --> Target
 	Host --> Reset[epoch重建]
 ```
+
+驗證：五個自己的 public target 新增後累計 138／273。public analyze No issues；同 source prefix release 51.8 秒；scope exact2 pass、diffcheck通過。native Menu Home→Down→Down→Enter 選 entry3、跳過停用 entry2，Escape root1，caption／shortcut 與 framed 控制生效；Bulk entry1／label文字2／danger／callback=null；Editor entry2／danger／selected consumer控制；Selection entry1 與 clear root1/count0 分開，restore count3、dashed false、clearLabel=null 隱藏 clear。Search queryinput2、Previous/Next root4，四 mode／寬鬆／local320保留 query，total0合法0/0、Close root5移除、restore及明示initial重建無額外callback，epoch reset原props/root0而環境保持。入口host明確顯示四 experimental／一 foundation。native JSON／PNG 位於主工作樹 build/flutter-action-utility-*；當前頁 console error/warn 無。完整窄 browser 與感官仍 human-pending，單task tokens未量測 null；全頁映射及總release尚未完成，不宣告全量覆蓋或push。
