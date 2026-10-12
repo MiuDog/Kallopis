@@ -174,6 +174,8 @@ FLUTTER-COMMAND-POPUP-EXAMPLE-r1：只修改example/lib/catalog/registered_comma
 
 BUILD173cc9e9只該source，analyze／scope1及releaseweb52.0s通過。_openPopup／_openButtonPopup／_openPointPopup／_dismissPopup擁有產品觸發與關閉；_controls／build接庫Button／Surface／Text與同registered popup，initState／dispose只在demo暫停及还原原生context menu。native新tab12 http://127.0.0.1:5193/ 明確指向隔離新建置；舊5192還載入舊內容不算新證據。button錨定／右鍵point、AX背景操作消失、Escape原focus、outside(200,350)不啟動背景導航、儲存結果1及pointergrid結果2／兩入口checked同步、草稿「快顯保留草稿」保持，error／warn空。AX locator Space聚焦不等於Flutter roving選取，因此不拿該操作聲稱grid鍵盤證據。main build/evidence/flutter-command-popup.png；窄native／完整style矩陣與感官pending。
 
-## FLUTTER-COMMAND-KEYMAP-1（READY）
+## FLUTTER-COMMAND-KEYMAP-1（COMPLETE）
 
 FLUTTER-COMMAND-KEYMAP-r1依[共同快捷鍵core](../docs/architecture/workbench-shortcut-core-contract.md)及[local](lib/src/features/actions/command_keymap/architecture.md)。目前純core新source＋stablefoundation exact2；同registry execute、scope／固定ranking／chord與clock／錄製／atomic override；不改legacy KeyBinding caller、不開timer／native eventloop。fresh TestAuthor只test/command_keymap_test.dart。cold6k～12k／30～60分鐘；M1公開protected checks（6k／30）、M2 analyze／scope2（12k／60），15k／75或其他source回PLAN。native IME／focus／既有鍵盤接入、GUI及網站另packet，不冒充WB-12～14完整完成。
+
+BUILD188273b8只兩source，fresh protected11 checks／public analyze No issues／scope2通過。實際型別、所有helper與call chain由上述local architecture擁有；沒有native事件接入或GUI完成宣稱。

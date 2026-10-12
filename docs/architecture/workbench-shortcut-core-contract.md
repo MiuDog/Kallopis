@@ -49,6 +49,8 @@ Flutter immutable資料constructor採上述同名欄位；Input extends Stroke�
 
 ## 現行stage與證據
 
+純core雙框架完成：React0b996490 protected9 checks、build／scope2；Flutter188273b8 protected11 checks、public analyze／scope2。兩份fresh author hashes保留。React首次8Green／1Red是exportOverrides的null-prototype物件與普通DTO公開邊界不符，以Object.fromEntries安全保留合法__proto__ ID並回普通frozen DTO，同9全Green；沒有改assertions或進入Green fallback。Flutter首次同11全Green。native keyboard／focus／composition轉換、timer、使用者重綁GUI與browser證據仍下一packet。
+
 核心每端新source＋公開export exact2；同registry／legacykeybinding／native UI／theme／tests／config唯讀。fresh隔離TestAuthor各新增唯一publiccore測試，保護modifier平台／scope與固定衝突／chord取消逾時及focus／text composition repeat／原command結果及gates／ownerdisposer／atomic import與mutation隔離／錄製不dispatch。無private鏡像或pixel判斷；缺public API是Yellow，不能稱behavior Red。實作後同hash檢查、publicanalyze／librarybuild及scope2。
 
 本契約採命令ID、scope/context與可錄製組合之通用能力，參考[VS Code快捷鍵](https://code.visualstudio.com/docs/configure/keybindings)的編輯／衝突／command dispatch概念；固定解析順位是Kallopis自己的契約，沒有複製其註冊時序。native stage依[KeyboardEvent.isComposing](https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent/isComposing)及[Flutter KeyEvent](https://api.flutter.dev/flutter/services/KeyEvent-class.html)轉換；庫不保證收到OS或瀏覽器已攔截事件。

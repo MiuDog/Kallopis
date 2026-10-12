@@ -640,7 +640,7 @@ M1公開consumer型別與exact1scope（1k／10分鐘）；M2 nativebutton／右�
 
 BUILDcb1c392d只該consumer source，TypeScript／scope1通過；showPopup／openButtonPopup／openPointPopup／dismissPopup擁有產品觸發及關閉。native tab10原生`:modal` true，client1265×720／panel300×85有限；button及右鍵point、Escape／outside無click-through／一次grid結果1、returnfocus開啟按鈕、draft「React 快顯保留草稿」與同Provider dark overlay #35322DFF觀察通過，error／warn空。main build/evidence/react-command-popup.png；窄尺寸／完整style矩陣pending，未用JSDOM充當native layout。
 
-## REACT-COMMAND-KEYMAP-1（READY）
+## REACT-COMMAND-KEYMAP-1（COMPLETE）
 
 REACT-COMMAND-KEYMAP-r1依[共同快捷鍵core](../docs/architecture/workbench-shortcut-core-contract.md)，目前純core新增src/command-keymap.ts與index export exact2。KlpCommandKeymap<C>只擁有binding owner token／default及override／chord clock／explicit recorder；公開immutable types與constructor options沿同契約。validation、actual modifier投影、scope／priority／UTF-16 ID順位、chord與atomic import helper同source。execution只用既有registry，沒有另一handler、DOM／timer／focus／theme／l10n／storage權威，也不改menu或palette。
 
@@ -656,3 +656,34 @@ flowchart TD
 ```
 
 以上是READY責任，BUILD後owner補實際function／class索引；不能預寫聲稱已存在的helpers。
+
+BUILD0b996490 exact2source，protected9 checks SHA256 127E0B72A6B61B190A5B6DD15F39436BF2953C3C07995913452F7F09584B4D6E保持、build／scope2／diffcheck通過。首次8Green／1Red為export DTO null-prototype不同於普通object，Object.fromEntries修正邊界後同9全Green，保留__proto__ ID安全；未改tests。native adapter另stage。
+
+實際型別全部在[src/command-keymap.ts](src/command-keymap.ts)：KlpCommandKeymap唯一class；KlpShortcutStroke／Input／Focus／Binding／Handling／Conflict／Overrides及KlpCommandKeymapOptions為readonly公開shape；Platform／Scope／HandlingState／ConflictKind為union；Candidate借用當次owner及effective sequence。constructor驗證options及原生performance clock，getters公開disposed／recording／pending／recorded。register及disposer控制唯一owner。handle依copyStroke／copyFocus／flag／readTime→expireAt／sameFocus／composition→canonical／project→record或active→select→registry.execute。cancelChord／expireChord控制一步期限；conflicts以active／matches／compareConflicts產生穩定ID pair；setOverride／restore經requireBinding；exportOverrides產生普通immutable DTO；importOverrides以object／fields／copySequence原子替換。beginRecording／finishRecording／cancelRecording只管理explicit session，dispose只清自己的binding／override／session。requireOpen／requireBinding保護mutation；readTime驗證單調clock；expireAt清期限；record最多四stroke；active查when／同registry gates後compareCandidates；select取第一個匹配prefix。
+
+所有top-level helpers：text驗證非空；flag驗證strict bool；object／fields保護wire object及unknownfields；canonical驗證logical scalar／named keys；copyStroke／copySequence／copyBinding／copyFocus隔離資料；project消解primary；sameStroke／matches精確modifier／prefix；sameFocus比整鏈；scopeActive檢查有效scope；lexical維持UTF-16 ID順序；compareCandidates比較scope／priority／ID，compareConflicts比較ID pairs；plainEscape辨識取消；handling製作非dispatch結果。constructor defaultclock、register disposer、select find及copy／matches／fields predicates是所屬函式的局部callback，無另一事件來源。
+
+```mermaid
+classDiagram
+	KlpShortcutStroke <|-- KlpShortcutInput
+	KlpCommandKeymap "1" *-- "0..*" KlpShortcutBinding : owner token
+	KlpCommandKeymap --> KlpCommandRegistry : borrowed gates and execution
+	KlpCommandKeymap --> KlpShortcutFocus : caller snapshot
+	KlpCommandKeymap --> KlpShortcutHandling : original Promise
+	KlpCommandKeymap --> KlpShortcutConflict : diagnostic pair
+	Candidate --> KlpShortcutBinding : effective sequence
+```
+
+```mermaid
+flowchart TD
+	Handle[handle] --> Validate[copyStroke / copyFocus / flag / readTime]
+	Validate --> Session[expireAt / sameFocus / composition]
+	Session --> Key[canonical / project]
+	Key --> Recording[record: explicit session]
+	Key --> Candidates[active: scope and same registry]
+	Candidates --> Select[select / matches / compareCandidates]
+	Select --> Prefix[pending and step time]
+	Select --> Execute[registry.execute: original Promise]
+	Import[importOverrides] --> Shape[object / fields / copySequence]
+	Shape --> Commit[atomic replace / cancelChord]
+```

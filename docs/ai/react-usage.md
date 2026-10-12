@@ -299,3 +299,25 @@ toolbar左右、menu上下循環移動可用項；Home/End跳首尾、Enter/Spac
 ```
 
 同Provider DOM原生dialog取得modal，背景草稿不卸載；有限client viewport與目前風格決定邊距、寬度及下方／上方／較大側。相同session各關閉意圖最多一次；error保持，callback原錯誤沿宿主通道，close／reopen／replacement隔離舊結果。12項protected公開檢查含型別、原12入口checks、build與scope3通過；[CommandsDemo](../../react/example/commands-demo.tsx)已實際觀察button／右鍵、原生`:modal`、Escape／outside／格線一次／原focus／draft以及同Provider dark色。窄viewport完整browser矩陣與感官仍pending；[共同popup契約](../architecture/workbench-command-popup-contract.md)定義完整邊界。
+## Registered 快捷鍵純核心
+
+`KlpCommandKeymap<C>`借用同`KlpCommandRegistry<C>`，產品註冊command ID及預設組合。primary在mac對應meta，其餘對應ctrl；作用域固定component／region／page／app，再比priority及UTF-16 ID。產品提供當次context與原生focus鏈；沒有把handler或焦點複製到keymap。
+
+```ts
+const keymap = new KlpCommandKeymap(commands, { platform: 'other' });
+const unregister = keymap.register({
+	id: 'save.primary',
+	commandId: 'document.save',
+	sequence: [{ key: 's', primary: true }],
+	scope: 'app',
+});
+const outcome = keymap.handle({ key: 's', ctrl: true }, { focusId: 'workspace' }, currentContext);
+if (outcome.execution) await outcome.execution;
+keymap.setOverride('save.primary', [{ key: 'k', primary: true }, { key: 's' }]);
+const saved = JSON.stringify(keymap.exportOverrides());
+keymap.importOverrides(JSON.parse(saved));
+unregister();
+keymap.dispose();
+```
+
+只在outcome.handled為true才由native宿主攔截事件。editable預設不接管、composing不執行、repeat需明示allowRepeat；chord每步逾時或焦點鏈改變取消。beginRecording／finishRecording取得最多四鍵而不dispatch，由產品決定套給哪個binding；importOverrides完整驗證後原子替換，錯誤保留舊設定及prefix。9項公開purecore checks與build通過。上述是canonical資料示例；原生keyboard／composition／focus轉換與互動重綁UI尚待獨立交付，完整邊界見[共同契約](../architecture/workbench-shortcut-core-contract.md)。

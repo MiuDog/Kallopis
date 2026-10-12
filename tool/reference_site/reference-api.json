@@ -608,6 +608,153 @@
 					]
 				},
 				{
+					"id": "package:kallopis/src/features/actions/command_keymap/klp_command_keymap.dart#KlpCommandKeymap",
+					"name": "KlpCommandKeymap",
+					"slug": "klp-command-keymap",
+					"kind": "class",
+					"module": "features.actions",
+					"sourceUri": "package:kallopis/src/features/actions/command_keymap/klp_command_keymap.dart",
+					"primarySurface": "foundation",
+					"surfaces": [
+						"foundation"
+					],
+					"signature": "class KlpCommandKeymap<C>",
+					"documentation": "解析已註冊快捷鍵；產品 registry 仍是條件、handler 與執行結果的唯一權威。",
+					"typeRelationships": {
+						"extends": "Object",
+						"mixins": [],
+						"implements": []
+					},
+					"members": [
+						{
+							"name": "KlpCommandKeymap",
+							"kind": "constructor",
+							"signature": "KlpCommandKeymap<C>({\n  required KlpCommandRegistry<C> registry,\n  KlpShortcutPlatform platform = KlpShortcutPlatform.other,\n  int chordTimeoutMs = 1000,\n  double Function()? now,\n})",
+							"documentation": ""
+						},
+						{
+							"name": "beginRecording",
+							"kind": "method",
+							"signature": "void beginRecording(String focusId)",
+							"documentation": ""
+						},
+						{
+							"name": "cancelChord",
+							"kind": "method",
+							"signature": "bool cancelChord()",
+							"documentation": ""
+						},
+						{
+							"name": "cancelRecording",
+							"kind": "method",
+							"signature": "void cancelRecording()",
+							"documentation": ""
+						},
+						{
+							"name": "chordTimeoutMs",
+							"kind": "field",
+							"signature": "int chordTimeoutMs",
+							"documentation": ""
+						},
+						{
+							"name": "conflicts",
+							"kind": "method",
+							"signature": "List<KlpShortcutConflict> conflicts(KlpShortcutFocus focus, C context)",
+							"documentation": ""
+						},
+						{
+							"name": "dispose",
+							"kind": "method",
+							"signature": "void dispose()",
+							"documentation": ""
+						},
+						{
+							"name": "expireChord",
+							"kind": "method",
+							"signature": "bool expireChord()",
+							"documentation": ""
+						},
+						{
+							"name": "exportOverrides",
+							"kind": "method",
+							"signature": "Map<String, Object?> exportOverrides()",
+							"documentation": ""
+						},
+						{
+							"name": "finishRecording",
+							"kind": "method",
+							"signature": "List<KlpShortcutStroke> finishRecording()",
+							"documentation": ""
+						},
+						{
+							"name": "handle",
+							"kind": "method",
+							"signature": "KlpShortcutHandling handle(\n  KlpShortcutInput input,\n  KlpShortcutFocus focus,\n  C context,\n)",
+							"documentation": ""
+						},
+						{
+							"name": "importOverrides",
+							"kind": "method",
+							"signature": "void importOverrides(Object? value)",
+							"documentation": ""
+						},
+						{
+							"name": "isDisposed",
+							"kind": "getter",
+							"signature": "bool get isDisposed",
+							"documentation": ""
+						},
+						{
+							"name": "isRecording",
+							"kind": "getter",
+							"signature": "bool get isRecording",
+							"documentation": ""
+						},
+						{
+							"name": "pendingSequence",
+							"kind": "getter",
+							"signature": "List<KlpShortcutStroke> get pendingSequence",
+							"documentation": ""
+						},
+						{
+							"name": "platform",
+							"kind": "field",
+							"signature": "KlpShortcutPlatform platform",
+							"documentation": ""
+						},
+						{
+							"name": "recordedSequence",
+							"kind": "getter",
+							"signature": "List<KlpShortcutStroke> get recordedSequence",
+							"documentation": ""
+						},
+						{
+							"name": "register",
+							"kind": "method",
+							"signature": "VoidCallback register(KlpShortcutBinding<C> binding)",
+							"documentation": ""
+						},
+						{
+							"name": "registry",
+							"kind": "field",
+							"signature": "KlpCommandRegistry<C> registry",
+							"documentation": ""
+						},
+						{
+							"name": "restore",
+							"kind": "method",
+							"signature": "void restore(String id)",
+							"documentation": ""
+						},
+						{
+							"name": "setOverride",
+							"kind": "method",
+							"signature": "void setOverride(String id, List<KlpShortcutStroke>? sequence)",
+							"documentation": ""
+						}
+					]
+				},
+				{
 					"id": "package:kallopis/src/features/actions/command_entries/klp_command_entries.dart#KlpCommandKind",
 					"name": "KlpCommandKind",
 					"slug": "klp-command-kind",
@@ -1707,6 +1854,522 @@
 							"name": "onClear",
 							"kind": "field",
 							"signature": "VoidCallback? onClear",
+							"documentation": ""
+						}
+					]
+				},
+				{
+					"id": "package:kallopis/src/features/actions/command_keymap/klp_command_keymap.dart#KlpShortcutBinding",
+					"name": "KlpShortcutBinding",
+					"slug": "klp-shortcut-binding",
+					"kind": "class",
+					"module": "features.actions",
+					"sourceUri": "package:kallopis/src/features/actions/command_keymap/klp_command_keymap.dart",
+					"primarySurface": "foundation",
+					"surfaces": [
+						"foundation"
+					],
+					"signature": "class KlpShortcutBinding<C>",
+					"documentation": "",
+					"typeRelationships": {
+						"extends": "Object",
+						"mixins": [],
+						"implements": []
+					},
+					"members": [
+						{
+							"name": "KlpShortcutBinding",
+							"kind": "constructor",
+							"signature": "KlpShortcutBinding<C>({\n  required String id,\n  required String commandId,\n  required List<KlpShortcutStroke> sequence,\n  required KlpShortcutScope scope,\n  String? scopeId,\n  int priority = 0,\n  bool allowRepeat = false,\n  bool allowInEditable = false,\n  bool Function(C)? when,\n})",
+							"documentation": ""
+						},
+						{
+							"name": "allowInEditable",
+							"kind": "field",
+							"signature": "bool allowInEditable",
+							"documentation": ""
+						},
+						{
+							"name": "allowRepeat",
+							"kind": "field",
+							"signature": "bool allowRepeat",
+							"documentation": ""
+						},
+						{
+							"name": "commandId",
+							"kind": "field",
+							"signature": "String commandId",
+							"documentation": ""
+						},
+						{
+							"name": "id",
+							"kind": "field",
+							"signature": "String id",
+							"documentation": ""
+						},
+						{
+							"name": "priority",
+							"kind": "field",
+							"signature": "int priority",
+							"documentation": ""
+						},
+						{
+							"name": "scope",
+							"kind": "field",
+							"signature": "KlpShortcutScope scope",
+							"documentation": ""
+						},
+						{
+							"name": "scopeId",
+							"kind": "field",
+							"signature": "String? scopeId",
+							"documentation": ""
+						},
+						{
+							"name": "sequence",
+							"kind": "field",
+							"signature": "List<KlpShortcutStroke> sequence",
+							"documentation": ""
+						},
+						{
+							"name": "when",
+							"kind": "field",
+							"signature": "bool Function(C)? when",
+							"documentation": ""
+						}
+					]
+				},
+				{
+					"id": "package:kallopis/src/features/actions/command_keymap/klp_command_keymap.dart#KlpShortcutConflict",
+					"name": "KlpShortcutConflict",
+					"slug": "klp-shortcut-conflict",
+					"kind": "class",
+					"module": "features.actions",
+					"sourceUri": "package:kallopis/src/features/actions/command_keymap/klp_command_keymap.dart",
+					"primarySurface": "foundation",
+					"surfaces": [
+						"foundation"
+					],
+					"signature": "class KlpShortcutConflict",
+					"documentation": "",
+					"typeRelationships": {
+						"extends": "Object",
+						"mixins": [],
+						"implements": []
+					},
+					"members": [
+						{
+							"name": "bindingIds",
+							"kind": "field",
+							"signature": "List<String> bindingIds",
+							"documentation": ""
+						},
+						{
+							"name": "kind",
+							"kind": "field",
+							"signature": "KlpShortcutConflictKind kind",
+							"documentation": ""
+						},
+						{
+							"name": "winnerId",
+							"kind": "field",
+							"signature": "String winnerId",
+							"documentation": ""
+						}
+					]
+				},
+				{
+					"id": "package:kallopis/src/features/actions/command_keymap/klp_command_keymap.dart#KlpShortcutConflictKind",
+					"name": "KlpShortcutConflictKind",
+					"slug": "klp-shortcut-conflict-kind",
+					"kind": "enum",
+					"module": "features.actions",
+					"sourceUri": "package:kallopis/src/features/actions/command_keymap/klp_command_keymap.dart",
+					"primarySurface": "foundation",
+					"surfaces": [
+						"foundation"
+					],
+					"signature": "enum KlpShortcutConflictKind",
+					"documentation": "",
+					"typeRelationships": {
+						"extends": "Enum",
+						"mixins": [],
+						"implements": []
+					},
+					"members": [
+						{
+							"name": "KlpShortcutConflictKind",
+							"kind": "constructor",
+							"signature": "KlpShortcutConflictKind()",
+							"documentation": ""
+						},
+						{
+							"name": "exact",
+							"kind": "enumValue",
+							"signature": "KlpShortcutConflictKind exact",
+							"documentation": ""
+						},
+						{
+							"name": "prefix",
+							"kind": "enumValue",
+							"signature": "KlpShortcutConflictKind prefix",
+							"documentation": ""
+						}
+					]
+				},
+				{
+					"id": "package:kallopis/src/features/actions/command_keymap/klp_command_keymap.dart#KlpShortcutFocus",
+					"name": "KlpShortcutFocus",
+					"slug": "klp-shortcut-focus",
+					"kind": "class",
+					"module": "features.actions",
+					"sourceUri": "package:kallopis/src/features/actions/command_keymap/klp_command_keymap.dart",
+					"primarySurface": "foundation",
+					"surfaces": [
+						"foundation"
+					],
+					"signature": "class KlpShortcutFocus",
+					"documentation": "",
+					"typeRelationships": {
+						"extends": "Object",
+						"mixins": [],
+						"implements": []
+					},
+					"members": [
+						{
+							"name": "KlpShortcutFocus",
+							"kind": "constructor",
+							"signature": "KlpShortcutFocus({\n  required String focusId,\n  String? pageId,\n  String? regionId,\n  String? componentId,\n  bool editable = false,\n})",
+							"documentation": ""
+						},
+						{
+							"name": "componentId",
+							"kind": "field",
+							"signature": "String? componentId",
+							"documentation": ""
+						},
+						{
+							"name": "editable",
+							"kind": "field",
+							"signature": "bool editable",
+							"documentation": ""
+						},
+						{
+							"name": "focusId",
+							"kind": "field",
+							"signature": "String focusId",
+							"documentation": ""
+						},
+						{
+							"name": "pageId",
+							"kind": "field",
+							"signature": "String? pageId",
+							"documentation": ""
+						},
+						{
+							"name": "regionId",
+							"kind": "field",
+							"signature": "String? regionId",
+							"documentation": ""
+						}
+					]
+				},
+				{
+					"id": "package:kallopis/src/features/actions/command_keymap/klp_command_keymap.dart#KlpShortcutHandling",
+					"name": "KlpShortcutHandling",
+					"slug": "klp-shortcut-handling",
+					"kind": "class",
+					"module": "features.actions",
+					"sourceUri": "package:kallopis/src/features/actions/command_keymap/klp_command_keymap.dart",
+					"primarySurface": "foundation",
+					"surfaces": [
+						"foundation"
+					],
+					"signature": "class KlpShortcutHandling",
+					"documentation": "",
+					"typeRelationships": {
+						"extends": "Object",
+						"mixins": [],
+						"implements": []
+					},
+					"members": [
+						{
+							"name": "bindingId",
+							"kind": "field",
+							"signature": "String? bindingId",
+							"documentation": ""
+						},
+						{
+							"name": "commandId",
+							"kind": "field",
+							"signature": "String? commandId",
+							"documentation": ""
+						},
+						{
+							"name": "execution",
+							"kind": "field",
+							"signature": "Future<KlpCommandExecutionResult>? execution",
+							"documentation": ""
+						},
+						{
+							"name": "handled",
+							"kind": "field",
+							"signature": "bool handled",
+							"documentation": ""
+						},
+						{
+							"name": "state",
+							"kind": "field",
+							"signature": "KlpShortcutHandlingState state",
+							"documentation": ""
+						}
+					]
+				},
+				{
+					"id": "package:kallopis/src/features/actions/command_keymap/klp_command_keymap.dart#KlpShortcutHandlingState",
+					"name": "KlpShortcutHandlingState",
+					"slug": "klp-shortcut-handling-state",
+					"kind": "enum",
+					"module": "features.actions",
+					"sourceUri": "package:kallopis/src/features/actions/command_keymap/klp_command_keymap.dart",
+					"primarySurface": "foundation",
+					"surfaces": [
+						"foundation"
+					],
+					"signature": "enum KlpShortcutHandlingState",
+					"documentation": "",
+					"typeRelationships": {
+						"extends": "Enum",
+						"mixins": [],
+						"implements": []
+					},
+					"members": [
+						{
+							"name": "KlpShortcutHandlingState",
+							"kind": "constructor",
+							"signature": "KlpShortcutHandlingState()",
+							"documentation": ""
+						},
+						{
+							"name": "cancelled",
+							"kind": "enumValue",
+							"signature": "KlpShortcutHandlingState cancelled",
+							"documentation": ""
+						},
+						{
+							"name": "executed",
+							"kind": "enumValue",
+							"signature": "KlpShortcutHandlingState executed",
+							"documentation": ""
+						},
+						{
+							"name": "ignored",
+							"kind": "enumValue",
+							"signature": "KlpShortcutHandlingState ignored",
+							"documentation": ""
+						},
+						{
+							"name": "prefix",
+							"kind": "enumValue",
+							"signature": "KlpShortcutHandlingState prefix",
+							"documentation": ""
+						},
+						{
+							"name": "recording",
+							"kind": "enumValue",
+							"signature": "KlpShortcutHandlingState recording",
+							"documentation": ""
+						}
+					]
+				},
+				{
+					"id": "package:kallopis/src/features/actions/command_keymap/klp_command_keymap.dart#KlpShortcutInput",
+					"name": "KlpShortcutInput",
+					"slug": "klp-shortcut-input",
+					"kind": "class",
+					"module": "features.actions",
+					"sourceUri": "package:kallopis/src/features/actions/command_keymap/klp_command_keymap.dart",
+					"primarySurface": "foundation",
+					"surfaces": [
+						"foundation"
+					],
+					"signature": "class KlpShortcutInput extends KlpShortcutStroke",
+					"documentation": "",
+					"typeRelationships": {
+						"extends": "KlpShortcutStroke",
+						"mixins": [],
+						"implements": []
+					},
+					"members": [
+						{
+							"name": "KlpShortcutInput",
+							"kind": "constructor",
+							"signature": "KlpShortcutInput({\n  required String key,\n  bool primary = false,\n  bool ctrl = false,\n  bool alt = false,\n  bool shift = false,\n  bool meta = false,\n  bool repeat = false,\n  bool composing = false,\n})",
+							"documentation": ""
+						},
+						{
+							"name": "composing",
+							"kind": "field",
+							"signature": "bool composing",
+							"documentation": ""
+						},
+						{
+							"name": "repeat",
+							"kind": "field",
+							"signature": "bool repeat",
+							"documentation": ""
+						}
+					]
+				},
+				{
+					"id": "package:kallopis/src/features/actions/command_keymap/klp_command_keymap.dart#KlpShortcutPlatform",
+					"name": "KlpShortcutPlatform",
+					"slug": "klp-shortcut-platform",
+					"kind": "enum",
+					"module": "features.actions",
+					"sourceUri": "package:kallopis/src/features/actions/command_keymap/klp_command_keymap.dart",
+					"primarySurface": "foundation",
+					"surfaces": [
+						"foundation"
+					],
+					"signature": "enum KlpShortcutPlatform",
+					"documentation": "",
+					"typeRelationships": {
+						"extends": "Enum",
+						"mixins": [],
+						"implements": []
+					},
+					"members": [
+						{
+							"name": "KlpShortcutPlatform",
+							"kind": "constructor",
+							"signature": "KlpShortcutPlatform()",
+							"documentation": ""
+						},
+						{
+							"name": "mac",
+							"kind": "enumValue",
+							"signature": "KlpShortcutPlatform mac",
+							"documentation": ""
+						},
+						{
+							"name": "other",
+							"kind": "enumValue",
+							"signature": "KlpShortcutPlatform other",
+							"documentation": ""
+						}
+					]
+				},
+				{
+					"id": "package:kallopis/src/features/actions/command_keymap/klp_command_keymap.dart#KlpShortcutScope",
+					"name": "KlpShortcutScope",
+					"slug": "klp-shortcut-scope",
+					"kind": "enum",
+					"module": "features.actions",
+					"sourceUri": "package:kallopis/src/features/actions/command_keymap/klp_command_keymap.dart",
+					"primarySurface": "foundation",
+					"surfaces": [
+						"foundation"
+					],
+					"signature": "enum KlpShortcutScope",
+					"documentation": "",
+					"typeRelationships": {
+						"extends": "Enum",
+						"mixins": [],
+						"implements": []
+					},
+					"members": [
+						{
+							"name": "KlpShortcutScope",
+							"kind": "constructor",
+							"signature": "KlpShortcutScope()",
+							"documentation": ""
+						},
+						{
+							"name": "app",
+							"kind": "enumValue",
+							"signature": "KlpShortcutScope app",
+							"documentation": ""
+						},
+						{
+							"name": "component",
+							"kind": "enumValue",
+							"signature": "KlpShortcutScope component",
+							"documentation": ""
+						},
+						{
+							"name": "page",
+							"kind": "enumValue",
+							"signature": "KlpShortcutScope page",
+							"documentation": ""
+						},
+						{
+							"name": "region",
+							"kind": "enumValue",
+							"signature": "KlpShortcutScope region",
+							"documentation": ""
+						}
+					]
+				},
+				{
+					"id": "package:kallopis/src/features/actions/command_keymap/klp_command_keymap.dart#KlpShortcutStroke",
+					"name": "KlpShortcutStroke",
+					"slug": "klp-shortcut-stroke",
+					"kind": "class",
+					"module": "features.actions",
+					"sourceUri": "package:kallopis/src/features/actions/command_keymap/klp_command_keymap.dart",
+					"primarySurface": "foundation",
+					"surfaces": [
+						"foundation"
+					],
+					"signature": "class KlpShortcutStroke",
+					"documentation": "",
+					"typeRelationships": {
+						"extends": "Object",
+						"mixins": [],
+						"implements": []
+					},
+					"members": [
+						{
+							"name": "KlpShortcutStroke",
+							"kind": "constructor",
+							"signature": "KlpShortcutStroke({\n  required String key,\n  bool primary = false,\n  bool ctrl = false,\n  bool alt = false,\n  bool shift = false,\n  bool meta = false,\n})",
+							"documentation": ""
+						},
+						{
+							"name": "alt",
+							"kind": "field",
+							"signature": "bool alt",
+							"documentation": ""
+						},
+						{
+							"name": "ctrl",
+							"kind": "field",
+							"signature": "bool ctrl",
+							"documentation": ""
+						},
+						{
+							"name": "key",
+							"kind": "field",
+							"signature": "String key",
+							"documentation": ""
+						},
+						{
+							"name": "meta",
+							"kind": "field",
+							"signature": "bool meta",
+							"documentation": ""
+						},
+						{
+							"name": "primary",
+							"kind": "field",
+							"signature": "bool primary",
+							"documentation": ""
+						},
+						{
+							"name": "shift",
+							"kind": "field",
+							"signature": "bool shift",
 							"documentation": ""
 						}
 					]

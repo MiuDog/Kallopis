@@ -320,3 +320,25 @@ KlpRegisteredCommandPopup<ProductContext>(
 ```
 
 onDismiss僅交escape／outside／executed意圖，由產品採用；同session各意圖最多一次，handler error保持，callback原錯誤不自動關閉。modal背景pointer／可操作語意暫停、產品State/controller不卸載，條件回焦。16項protected公開Widget checks、原23入口checks、analyze與scope2通過；Catalog Commands頁button／右鍵point／Escape／outside無click-through／儲存及格線一次／原focus／草稿保留已nativebrowser觀察。右鍵原生瀏覽器選單開關只由example宿主管理，library不接管全產品事件。完整style／窄native矩陣與感官另pending，詳見[共同popup契約](../architecture/workbench-command-popup-contract.md)。
+## Registered 快捷鍵純核心
+
+stable foundation的`KlpCommandKeymap<C>`借用同command registry，與既有KlpKeyBinding caller分開，不修改其事件權威。產品提供canonical keydown、有效focus鏈及當次context；primary平台投影與scope／priority／UTF-16 ID固定解析沿[共同契約](../architecture/workbench-shortcut-core-contract.md)。
+
+```dart
+final keymap = KlpCommandKeymap<ProductContext>(registry: commands);
+final unregister = keymap.register(KlpShortcutBinding<ProductContext>(
+	id: 'save.primary',
+	commandId: 'document.save',
+	sequence: const [KlpShortcutStroke(key: 's', primary: true)],
+	scope: KlpShortcutScope.app,
+));
+final outcome = keymap.handle(const KlpShortcutInput(key: 's', ctrl: true), const KlpShortcutFocus(focusId: 'workspace'), currentContext);
+if (outcome.execution != null) await outcome.execution!;
+keymap.setOverride('save.primary', const [KlpShortcutStroke(key: 'k', primary: true), KlpShortcutStroke(key: 's')]);
+final saved = keymap.exportOverrides();
+keymap.importOverrides(saved);
+unregister();
+keymap.dispose();
+```
+
+native宿主只在handled為true才攔截；editable預設不接管、composing不執行、repeat需allowRepeat。chord每步期限由monotonic clock控制，core不開timer；expireChord供後續宿主單一timer使用。beginRecording／finishRecording只取得immutable最多四鍵而不執行命令；override import完整驗證後才替換。11項公開purecore checks與局部analyze通過；原生keyboard／IME／focus轉換及互動重綁UI仍待獨立交付。
