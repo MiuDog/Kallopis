@@ -114,3 +114,30 @@ export function ProductLayout() {
 預設 `sizing="fill"` 使用 enclosing CSS 容器尺寸，產品需提供希望填滿軸的明確尺寸。`sizing="content"` 使用有限自然／preferred 主軸總和，flex 不延伸填滿；Web 沒有 Flutter 的 Infinity constraint 訊號。不要藉內部 grid／gap 樣式繞過尺寸算法，使用 bounds 或產品外部容器調整。
 
 元素 ResizeObserver、scope 更新與內容變更會重新量測；沒有 ResizeObserver 時保留首次量測與 resize fallback。SSR 先呈現可及 DOM，client 掛載後才完成量測。example 提供窄容器、end alignment、極大語意 gap、還原與原生輸入保留展示。
+
+## Dock 布局資料保存
+
+公開 encodeKlpDockLayout／restoreKlpDockLayout 使用與 Flutter 相同的 [schemaVersion1 JSON](../architecture/workbench-dock-contract.md)。KlpDockLayoutData 是 readonly left／right／bottom；每個 area 有 axis、isVisible、extent、groups，每個 group 有 id、panelIds、activePanelId、mainAxisExtent。Stage／產品內容、風格與業務狀態不包含在保存資料。
+
+```ts
+import { encodeKlpDockLayout, restoreKlpDockLayout, type KlpDockPanelPolicy } from '@kallopis/react';
+
+const saved = encodeKlpDockLayout(layout);
+const policies: readonly KlpDockPanelPolicy[] = panels.map(panel => ({
+	id: panel.id,
+	allowSide: panel.allowSide,
+	allowBottom: panel.allowBottom,
+}));
+try {
+	const result = restoreKlpDockLayout(saved, policies);
+	// 產品自行呈現 missingPanelIds／availablePanelIds 並決定採用。
+	setLayout(result.layout);
+} catch (error) {
+	if (error instanceof TypeError) setLoadError(error.message);
+	else throw error;
+}
+```
+
+載入先完整驗證，再對 registry；缺少面板按保存順序移除並回報、空 group 刪除，active 消失則取第一個。availablePanelIds 按 registry 順序列出新增及原本未放置面板，庫不自動填入布局。未提供 allowSide／allowBottom 表示允許；未知欄位、重複 identity、非法 active／數值及已存在面板 capability 衝突都以 TypeError 整份拒絕，原資料與 caller 清冊不改。
+
+結果所有物件及列表深層 frozen；encode 驗證並複製 caller，不凍結或修改原資料。庫不執行 storage；產品決定保存位置及以預設 layout reset。這組純資料 API 完成保存邊界，React Dock 呈現、分頁及拖放元件仍由 Workbench stage 接續。
