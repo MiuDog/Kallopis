@@ -181,3 +181,44 @@ flowchart TD
 BUILDe754f791 exact2source，public analyze No issues／releaseweb46.2秒／scope2及diff通過。原生五route各自entry：Toolbar toggle後save結果2、執行中disabled及條件disabled；Menu開failure可見性、原始Bad state回饋1；Palette搜尋grid只剩格線，執行結果1且dismiss executed；Popup錨定按鈕及原生右鍵開啟、toggle結果1／dismiss executed，再Escape關閉reason escape。Host草稿Ctrl+S、Ctrl+K→S、Ctrl+G均原生執行，editor作用域勝出、離開後page衝突原樣呈現；一次跨工具呼叫逾時的chord被ignored且s成正常輸入，改同批原生連續按鍵觀察executed，未改核心timeout或測試。dark/spacious/local320保留草稿與結果3，明確reset歸零且環境保留；5202 URL error/warn空。錄製/JSON原功能沿用，這次未重新操作全矩陣。main build/flutter-command-specimens.png為Host狀態保留證據，網站iframe未完成、感官human-pending。
 
 RegisteredCommandsDemo新增可選specimen與key，同State原owner；_shows對null維持overview、對name精確投影controls／entry；_usage只顯示當次stable公開constructor。_controls與build條件插入popup area／toolbar／menu／palette／popup／shortcutControls，不把依賴host包裝當額外coverage。host _fixture以commandNames優先分流，前24保持。初始化、dispose、registry/keymap/handler全沿用，沒有改命令庫演算法。
+
+## FLUTTER-GUI-SCENARIOS-1（READY）
+
+修訂FLUTTER-GUI-SCENARIOS-r1，依IDOC-04/05/06/07/08及已接受官方研究。exact lib/gui_scenarios.dart、lib/gui_scenario_metadata.dart、assets/gui-scenarios.json、lib/main.dart、pubspec.yaml（僅註冊新example asset，YAML語法空格）。三scene query vscode/blockbench/blender，既有specimen優先與absent Catalog維持，unknown scenario明確拒絕不退總覽。只example consumer，不在library建立產品模板。
+
+JSON metadata是此Flutter example的id/title/reference唯一權威，與React公開registry有相同三個accepted場景含義，不複製React內部實作。JSON只含非空own清单與安全小寫route／非空title／HTTPS reference，拒絕重複title與非法資料；公開GuiScenarioMetadata.fromJson及load資料轉換由gui_scenario_metadata.dart擁有，純解析可獨立測。asset loader由GuiScenarioApp lifecycle擁有，loading/error明確可見；Node網站後stage可以讀同JSON，不建立第二Flutter名稱表。產品三種布局資料／正文示意由gui_scenarios.dart擁有，metadata是route/引用而非庫型別清單。
+
+VS Code左Explorer/Search、右Outline、底Output/Problems、中心文件選取與草稿；Blockbench左Outliner/Tools、右Properties/Textures、底Animations及建模示意；Blender左Tools、右Outliner/Properties、底Timeline及Layout/Modeling/Animation workspace，Animation透過公開area resize改底部分配。有限height540與宿主寬度由example選擇，Dock為公開KlpDockLayout／Panel、布局唯一KlpDockLayoutData。只透過公開Codec.encode/restore/applyKlpDockAction操作與採用callback，無效JSON原error與布局保持；close批准callback穩定、availablePanels公開restore投影重開。左右/底constraints同React場景數值，不能consumer另算Dock幾何。
+
+KlpFileExplorer真實section/items及selected/expanded callbacks；PanelFrame/Surface/Text/TextField/Button及產品繪圖／文字構成正文。3D/editor/terminal核心明示示意，不添加上游依賴。草稿與JSON controllers由State持有並dispose；mode／pack切換不換owner，明確epoch reset才重建。四mode與另一semantic spacing pack使用KlpStylePack.defaults/applyOverrides及buildKlpThemeVariant，全部共用風格由context.klp取得；繪圖色值只讀semantic，不寫第二theme。
+
+同一KlpCommandRegistry註冊layout.save/restore/reset、scene.run、panel.bottom、command.search；最新context投影State操作，可用性refresh，供RegisteredToolbar/Menu/Palette及ShortcutHost。Primary+S保存、Primary+K→S chord保存、Primary+Shift+P開palette；FocusManager原生focus投影穩定identity／editable與controller composing，初始化listener與dispose遵守既有public consumer。命令result/handling/dismiss實際可觀察，不複製handler。每scene mode/pack/reset/導航與官方引用及公開組裝文字；reference可展示文字由docs後stage提供可點外鏈，library不新增launch API。
+
+必要独立TestAuthor只write test/gui_scenario_metadata_test.dart，保護公開JSON邊界與authority解析非破壞、非法route/title/HTTPS/duplicate，不能改accepted JSON及source。BUILD禁止test/architecture/library/網站/其他catalog寫入。其餘是既有受保護算法的consumer，沿用public analyze/release web（既有dynamicicons需--no-tree-shake-icons）與native三scene selection/draft/command/save/restore/error/chord/theme/reset、drag/resize，scope5/diff；本機actual窄與prefix後stage整合不冒稱完整。感官human-pending，tests不足契約回PLAN。
+
+估7k～14k/50～100分鐘，參考REACT-GUI-SCENARIOS-1與Flutter Dock/Commands consumer；M1 public解析／三scene/analyze/build（7k50），M2 protected/native3/scope（14k100）；20k150或library/config超出asset行返回PLAN。這不是完整Flutter273元件覆蓋或docs交付完成；原goal保持。
+
+| class／function | 責任 |
+| --- | --- |
+| GuiScenarioMetadata.fromJson | JSON authority轉typed唯讀metadata，公開錯誤邊界 |
+| GuiScenarioApp／State | asset載入、query gate、四模式／pack／epoch與場景導航 |
+| GuiWorkbench／State | 唯一產品布局／controllers／Explorer／registry/keymap生命周期及結果 |
+| scene layout／panel／stage helpers | 三種產品資料／示意，所有算法交公開庫 |
+| main query | specimen優先、scenario自身、absent原Catalog |
+| pubspec asset／JSON | package-owned metadata可部署資產，唯一route/title/reference |
+
+```mermaid
+flowchart TD
+	JSON[package asset JSON] --> Parse[GuiScenarioMetadata.fromJson]
+	Query[main scenario query] --> App[GuiScenarioApp / loading error environment]
+	Parse --> App
+	App --> Owner[GuiWorkbench / State]
+	Owner --> Dock[公開Dock / Codec / apply]
+	Owner --> Explorer[公開Explorer / projected data]
+	Owner --> Commands[同registry / keymap / entries]
+	Owner --> Body[公開PanelFrame Surface / 示意正文]
+	Dock --> Result[callback / result / controllers]
+	Explorer --> Result
+	Commands --> Result
+	Result --> Owner
+```
