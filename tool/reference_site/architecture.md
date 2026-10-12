@@ -297,3 +297,31 @@ Native5203 /Kallopis/：索引取得實際23links逐頁前往，各iframe自己h
 validateReactSpecimens持有schema/identity/欄位/實際factory/雙向清單invariants，sort保留公開DTO加href；renderReactSpecimen與escapeHtml只做安全文字和相對入口；generate async main動態讀registry、前置validate再copy/render React索引/頁/search/manifest。verify由正式输入重新validate及完整頁面/入口/asset檢查，不信任生成清單。site.js finish/inspect、poll/timeout/load/error處理同源實際標題，poll生命週期在terminal state清理；CSS只文件iframeviewport。所有新增closures屬上述caller，不建立另一theme或產品state。
 
 目前保護擴為獨立4e1fdc16 CLI新增兩項，原4 assertions保持；同檔6/6 Green零skip，hash72270A60E390CF8629B9774B14D9E1946CA8D00D2107CE2A6710AA6BE81CBD49。任意小清單驗證生成每頁iframe/query/bundle exact資產、verifier拒絕query破壞；缺registry檔／missing/ghost/illegal factory/schema同權威輸入使verify失敗、generate失敗且前產物完整hash保留。TestAuthor只調整自身fixture交易邊界：verify本來會写報告，因此在generate前capture hash；未弱化原斷言、未取得有效產品Red。Pages原同檔命令現在強制6checks；source無新增改動。
+
+## DOCS-REACT-SCENARIOS-1（READY）
+
+修訂DOCS-REACT-SCENARIOS-r1，依IDOC-04/05/08及React example公開scenario-registry。只接已實作React三場景到網站正式入口；Flutter場景與全量元件仍原goal，不改既有23元件覆蓋。exact generate.mjs、verify.mjs、新react-scenarios.mjs。CLI新增--react-scenes，只允許與--react共同使用；無此旗標保持舊Node15與React6 fixture／環境依賴，後續CI owner另slice強制--react --react-scenes。缺明確scene資料不能靜默退總覽。
+
+公開validateReactScenarios(registry)驗證非空own record、id為安全小寫route（a-z開頭，a-z0-9與連字號）、title為非空字串、reference為HTTPS URL，拒絕錯誤資料／重複title；由example registry擁有實際scene清單，不另建立vscode等固定權威。回傳排序DTO id/title/reference/href，href docs/react/scenarios/<id>.html。renderReactScenario(scene,bundleUrl)只escape文字、帶title iframe data-component-specimen（既有同源load/status檢查可直接讀場景h1），獨立開啟相同query、官方reference noopener；不存在庫內scene模板。正式JSON manifest reactScenarios、搜尋category React Scenario/id、索引docs/react/scenarios/index.html與docs中心入口由generator擁有。
+
+generate所有scene validation與bundle存在檢查在清理舊產物之前，--react-scenes动态讀公開registry，不改Node-only相依；同既有bundle只copy一次。verify帶此旗標必須manifest存在；產物如宣告reactScenarios即重讀正式registry完整比較DTO/index/pages/search/query/title/status/reference與local bundleassets，拒絕多餘scene頁，不信產物自述。舊React元件的load/error／prefix與fonts保持。HTML helper保持最多3參數與tab／繁中註解。
+
+必要獨立Test Author只write test/react_scenarios.test.mjs：任意小registry合法／非法／escape與query；CLI生成完整頁並verify，篡改query或正式registry被拒絕，generate失敗前產物保留。原15及React6零改動，BUILD只讀test。驗收新protected checks、原15/6、真實--react --react-scenes generate/verify、native三頁iframe各自h1 loaded與一個互動、direct refresh／獨立入口／prefix／actual360；scope3/diff。感官human-pending。保護CI/workflow、example/library、staticJS/CSS與architecture；需要更動返回PLAN。
+
+估4k～8k/30～60分鐘，參考DOCS-REACT-SPECIMENS-1，Node24與既有bundle假設；M1 gate/生成驗證（4k30），M2 protected/native/scope（8k60）；12k90或外module需求回PLAN。新flag讓舊fixture契約不受新增example檔案影響，CI最後接完整明示依賴；不永久把scene驗證留為發布opt-in。
+
+| source／function | 責任 |
+| --- | --- |
+| react-scenarios.mjs validate／render | 跨module公開metadata與安全HTML，不複製scene實作 |
+| generate main flags／scene頁與search | 前置驗證、同bundle與正式頁入口 |
+| verify scenes gate | 重讀正式registry、完整產物與query對照 |
+
+```mermaid
+flowchart LR
+	Registry[example scene registry] --> Validate[validateReactScenarios]
+	Validate --> Generate[generate / --react --react-scenes]
+	Bundle[既有example dist] --> Generate
+	Generate --> Pages[scene index / titled iframe]
+	Validate --> Verify[verify / source對照]
+	Pages --> Status[既有load狀態 / 同scene h1]
+```

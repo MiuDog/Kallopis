@@ -848,7 +848,7 @@ flowchart LR
 
 BUILD exact3source，Node讀公開ESM清單與fresh extractor23完全雙向一致，type/prod example build成功（602.78KB既有bundle超500KB提示保留），scope3/diff通過。native原Pane preferred90→150、unknown明確拒絕且不退總覽。fixture/state/公開庫/config未改，感官human-pending。初次預設artifact不存在，執行既有extractor生成後比較成功，不從不存在產物推測coverage。ESM registry Object.freeze固定name與種類，d.mts限制readonly聯集；specimens由Object.entries＋既有五factory建立Record，names由同資料Object.keys排序，沒有第二名稱表。
 
-## REACT-GUI-SCENARIOS-1（READY）
+## REACT-GUI-SCENARIOS-1（IMPLEMENTED；拖放／調尺寸驗收 pending）
 
 修訂REACT-GUI-SCENARIOS-r1，依IDOC-04/05/06/07/08與正式研究workbench-reference-survey。exact example/scenarios.tsx、example/scenario-registry.mjs、example/scenario-registry.d.mts、example/main.tsx、example/style.css。三個產品example scenario query vscode／blockbench／blender；同例資料registry擁有id/title/officialReference，網站可直接import，不能在庫新增固定業務模板。既有specimen query優先與App overview保持；unknown scenario明確拒絕。
 
@@ -883,3 +883,7 @@ flowchart TD
 	Command --> State
 	State --> Owner
 ```
+
+BUILD 96e22480 exact5。TypeScript／production example build 通過，48 modules，615.31KB bundle 的既有超500KB提示保留；--react generate/verify 成功，scope5/diff通過。VS Code原生Explorer選取與正文草稿、保存／分頁切換／還原、無效JSON錯誤保留原布局、palette搜尋並执行、Primary+K→S保存、close／重開、layout reset及明確scene reset已觀察。Blockbench選Head、操作1及影格24；ultraDark／另一pack保持草稿與選取。Blender Animation令底部extent變180，Camera選取；menu保存／toggle與toolbar還原同registry結果4，草稿／選取保持；未知scene明確拒絕。
+
+實際browser override 360×740成功，document scrollWidth345；Blender Dock寬328.8、scrollWidth329且場景草稿可見，有限布局容器仍540高。這不是全部窄版互動／感官接受。一次native拖Search至Bottom未產生資料變更，不能宣稱拖放驗收成功；原生拖放與分隔線調尺寸仍pending，必要時由diagnostic owner界定為宿主輸入或source failure。source未改庫算法／tests／config。main build/react-gui-vscode.png、react-gui-blockbench.png、react-gui-blender.png記錄已操作畫面；感官human-pending。網站GUI正式頁面與Flutter三場景仍後續原goal，直接bundle query不等於已整合網頁入口。
