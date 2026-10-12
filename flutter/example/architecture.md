@@ -482,7 +482,7 @@ Accordion原expand item-0回呼1、child輸入2/動作1；四mode/spacious/local
 State _controls/_target/_usage只自己的公開props；_table使用公開column/row/sort與consumer reversed資料投影，_node使用現有generic public KlpTreeNode不觸FileExplorer；_wide提供有限水平host，_child單一controller內容，_accordion/_selection/_row/_sort/_date/_treeSelect/_treeExpand/_copy記原root投影，_childAction/_input分開、_edit只control，dispose清三controller。TreeItem callback回寫自己selected，Tree children selected依實際id不以deleted旗標冒充。
 
 
-## FLUTTER-VIEWER-COLLECTION-SPECIMENS-1（READY）
+## FLUTTER-VIEWER-COLLECTION-SPECIMENS-1（IMPLEMENTED；actual窄browser pending）
 
 修訂FLUTTER-VIEWER-COLLECTION-SPECIMENS-r1；IDOC-01/02/03/06/08，exact lib/component_specimens.dart、新 lib/viewer_collection_specimens.dart。四target KlpCodeViewer/KlpDiffViewer/KlpFilePreview/KlpTerminal，補齊collections所有28實際renderable，仍維持全273goal。
 
@@ -510,3 +510,12 @@ flowchart TD
 	Data --> Target
 	Host --> Reset[epoch重建]
 ```
+
+
+BUILD exact2；四名稱精確對正式renderable；collections四集合fixture加既有Badge精確等於正式28 renderable，沒有DTO/placeholder補數。public analyze No issues、同sourceprefixrelease52.6秒、scope2/diff通過；未改library/tests/config/style/site source，无core/persist/crosslanguage新風險，不新增鏡像tests。
+
+Native5203 prefix四頁自己的props/control文字2操作。Terminal copy1/clear2真正移空lines，restore保持callback2；長20lines、viewport fixed120/unbounded/null可呈現。Diff copy1/approve line0 callback2/reject line1 callback3，consumer reviewed[0,1]移除兩行；三公開lineType與numbers呈現。Code原copy1、menu switch換行2/行號3、語言text4再markdown5、原view6、expand7；child input2/動作1分開，不冒充root。公開labels與自訂languageOptions均由原menu呈現；consumer preview不是正文模型。
+
+FilePreview原group onPressed1、Open externally2、Download3，都只記公開回呼、不開實檔；ready/loading/error/unsupported四state實際呈現，preview child動作1與root3分開，textContent資料另控制呈現。Code child草稿四mode/spacious/local320保持與root7/child1/input2；reset回初始props/0且環境保持。console error/warn空；main build/flutter-viewer-collection-specimens.png、flutter-viewer-collection-native.json保存證據。actual360 browser與感官human-pending，local320不替代。Flutterfixture117／273，剩156及全量网站/style audit等仍原goal，未提前push；actual單task usage無量測null。
+
+State _controls/_target/_usage只自己的props，_limit公開typed三態，_code/_child只consumer示意內容；_languageChange/_wrap/_lineNumbers/_toggleView/_expand/_copy/_review/_clear/_open/_external/_download記原public callbacks及consumer投影，_childAction/_input分開、_edit只control，dispose清三controller，build有限280scroll舞台。庫演算法、正文或終端執行核心沒有複製。
