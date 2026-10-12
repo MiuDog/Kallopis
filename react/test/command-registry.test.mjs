@@ -24,19 +24,25 @@ test('metadata／id 原子驗證，duplicate 不取代現有 owner', async () =>
 	const registry = new KlpCommandRegistry();
 	let notifications = 0;
 	registry.subscribe(() => notifications++);
-	const invalid = [null, {}, definition(''), definition(7), definition('x', { label: '' }), definition('x', { label: 4 }), definition('x', { handler: null }), definition('x', { description: '' }), definition('x', { category: 7 }), definition('x', { keywords: 'tag' }), definition('x', { keywords: [''] }), definition('x', { keywords: [false] }), definition('x', { isVisible: true }), definition('x', { isEnabled: 0 }), definition('x', { isChecked: 'yes' })];
+	const invalid = [null, {}, definition(''), definition(7), definition('x', { label: '' }), definition('x', { label: 4 }), definition('x', { handler: null }), definition('x', { description: '' }), definition('x', { category: 7 }), definition('x', { keywords: 'tag' }), definition('x', { keywords: [''] }), definition('x', { keywords: [false] }), definition('x', { isVisible: true }), definition('x', { isEnabled: 0 }), definition('x', { isChecked: 'yes' }), definition('   '), definition('x', { label: ' 	 ' }), definition('x', { description: '   ' }), definition('x', { category: '   ' }), definition('x', { keywords: ['   '] })];
 	for (const candidate of invalid) {
 		assert.throws(() => registry.register(candidate), TypeError);
 		assert.equal(registry.version, 0);
 		assert.equal(notifications, 0);
 		assert.deepEqual(registry.list({}), []);
 	}
-	registry.register(definition(' x ', { description: 'Desc', category: 'Category', keywords: ['tag'] }));
+	registry.register(definition(' x ', { label: ' Label ', description: ' Desc ', category: ' Category ', keywords: [' tag '] }));
 	assert.throws(() => registry.register(definition(' x ', { handler: () => 'replacement' })), TypeError);
 	assert.equal(registry.version, 1);
 	assert.equal(notifications, 1);
 	assert.equal((await registry.execute(' x ', {})).value, ' x ');
 	assert.equal(registry.getState('x', {}), null);
+	const padded = registry.getState(' x ', {});
+	assert.equal(padded.id, ' x ');
+	assert.equal(padded.label, ' Label ');
+	assert.equal(padded.description, ' Desc ');
+	assert.equal(padded.category, ' Category ');
+	assert.deepEqual(padded.keywords, [' tag ']);
 	for (const id of ['', null, 4]) {
 		assert.throws(() => registry.getState(id, {}), TypeError);
 		await assert.rejects(async () => registry.execute(id, {}), TypeError);
@@ -308,7 +314,7 @@ test('開始通知解除／替換／dispose token 時不得啟動過期 handler'
 			}
 		});
 		const result = await registry.execute('work', {});
-		assert.notEqual(result.status, 'executed');
+		outcome(result, change === 'dispose' ? 'disposed' : 'missing', 'work');
 		assert.equal(result.commandId, 'work');
 		assert.equal(oldCalls, 0);
 		assert.equal(newCalls, 0);
