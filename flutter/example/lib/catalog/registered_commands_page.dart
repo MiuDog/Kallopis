@@ -1,4 +1,6 @@
 import 'package:flutter/widgets.dart';
+import 'package:flutter/foundation.dart';
+import 'package:flutter/services.dart';
 import 'package:kallopis/kallopis_foundation.dart';
 
 import '../catalog_model.dart';
@@ -8,7 +10,7 @@ final registeredCommandsPage = CatalogPageData(
 	title: '命令與入口',
 	description: '同一份清冊供工具列、選單與搜尋面板使用；產品持有條件、結果及開關。',
 	icon: KlpIcons.search,
-	coveredComponents: const ['KlpRegisteredCommandToolbar', 'KlpRegisteredCommandMenu'],
+	coveredComponents: const ['KlpRegisteredCommandToolbar', 'KlpRegisteredCommandMenu', 'KlpRegisteredCommandPopup'],
 	specimens: [Specimen(name: 'KlpRegisteredCommandPalette', note: '搜尋、停用、執行中與錯誤保留均可操作；關閉只由產品採用意圖。', build: _buildCommands)],
 );
 
@@ -40,6 +42,13 @@ class _CommandsDemoState extends State<_CommandsDemo> {
 	int _resultCount = 0;
 	String _message = '尚未執行命令';
 	KlpCommandDismissReason? _dismissReason;
+	/* popupOpen／popupAnchor 為產品觸發資料；popupReason 為回饋；popupButton 量測按鈕原生bounds。
+	 * ownsBrowserMenu 僅在此 Web demo 原本啟用時暫停原生context選單，卸載還原。 */
+	bool _popupOpen = false;
+	Rect _popupAnchor = Rect.zero;
+	KlpCommandPopupDismissReason? _popupReason;
+	final _popupButton = GlobalKey();
+	bool _ownsBrowserMenu = false;
 	/* 參照只擁有排列與角色，沒有複製 handler 或 checked。 */
 	static const _toolbarItems = [KlpCommandReference(commandId: 'document.save'), KlpCommandReference(commandId: 'view.grid', kind: KlpCommandKind.toggle)];
 	static const _menuItems = [..._toolbarItems, KlpCommandReference(commandId: 'document.fail')];
@@ -49,6 +58,12 @@ class _CommandsDemoState extends State<_CommandsDemo> {
 	@override
 	void initState() {
 		super.initState();
+		if (kIsWeb && BrowserContextMenu.enabled) {
+			_ownsBrowserMenu = true;
+
+			// 自訂 context trigger 只在 demo 掛載期間暫停瀏覽器原生選單。
+			BrowserContextMenu.disableContextMenu();
+		}
 		_registry.register(KlpCommandDefinition<_DemoContext>(
 			id: 'document.save',
 			label: '儲存文件',
@@ -107,11 +122,23 @@ class _CommandsDemoState extends State<_CommandsDemo> {
 	}
 
 	void _openPalette() => setState(() => _open = true);
+	void _openPopup(Rect anchor) {
+		setState(() { _open = false; _popupAnchor = anchor; _popupOpen = true; });
+	}
+	void _openButtonPopup() {
+		final render = _popupButton.currentContext?.findRenderObject();
+		if (render is RenderBox) _openPopup(render.localToGlobal(Offset.zero) & render.size);
+	}
+	void _openPointPopup(TapDownDetails details) => _openPopup(details.globalPosition & Size.zero);
+	void _dismissPopup(KlpCommandPopupDismissReason reason) {
+		setState(() { _popupReason = reason; _popupOpen = false; });
+	}
 	void _toggleSave() { setState(() => _canSave = !_canSave); _registry.refresh(); }
 	void _toggleFailure() { setState(() => _showFailure = !_showFailure); _registry.refresh(); }
 
 	@override
 	void dispose() {
+		if (_ownsBrowserMenu) BrowserContextMenu.enableContextMenu();
 		_registry.dispose();
 		_draft.dispose();
 		super.dispose();
@@ -122,6 +149,7 @@ class _CommandsDemoState extends State<_CommandsDemo> {
 			KlpButton(label: '允許儲存：${_canSave ? '開' : '關'}', onPressed: _toggleSave),
 			KlpButton(label: '顯示失敗命令：${_showFailure ? '開' : '關'}', onPressed: _toggleFailure),
 			KlpButton(label: '開啟命令面板', onPressed: _openPalette),
+			KlpButton(key: _popupButton, label: '開啟錨定選單', onPressed: _openButtonPopup),
 		];
 		return Wrap(spacing: context.klp.space.actionGap, runSpacing: context.klp.space.actionGap, children: children);
 	}
@@ -140,13 +168,27 @@ class _CommandsDemoState extends State<_CommandsDemo> {
 			onResult: _onResult,
 			onDismiss: _onDismiss,
 		);
+		final popup = KlpRegisteredCommandPopup<_DemoContext>(
+			registry: _registry,
+			getContext: _getContext,
+			items: _menuItems,
+			label: '快顯命令選單',
+			emptyLabel: '目前沒有命令',
+			open: _popupOpen,
+			anchor: _popupAnchor,
+			onResult: _onResult,
+			onDismiss: _dismissPopup,
+		);
+		final contextArea = KlpSurface(child: Padding(padding: EdgeInsets.all(context.klp.space.contentStackGap), child: const KlpText('在此按右鍵開啟命令選單')));
 		final children = <Widget>[
 			KlpTextField(label: '命令展示草稿', controller: _draft),
 			_controls(context),
+			GestureDetector(behavior: HitTestBehavior.opaque, onSecondaryTapDown: _openPointPopup, child: contextArea),
 			toolbar,
 			menu,
 			palette,
-			KlpText('結果 $_resultCount 次：$_message · 格線：${_grid ? '開' : '關'} · 最近關閉：${_dismissReason?.name ?? '尚未關閉'}', role: KlpTextRole.caption),
+			popup,
+			KlpText('結果 $_resultCount 次：$_message · 格線：${_grid ? '開' : '關'} · 最近關閉：${_dismissReason?.name ?? '尚未關閉'} · 快顯關閉：${_popupReason?.name ?? '尚未關閉'}', role: KlpTextRole.caption),
 		];
 		final spaced = <Widget>[];
 		for (final child in children) {
