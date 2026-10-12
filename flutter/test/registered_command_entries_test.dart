@@ -217,6 +217,8 @@ void main() {
 				final value = <String>[];
 				pending.complete(value);
 				await tester.pump();
+				// Future 結束後推進下一個 frame，再讀取完成後的語意。
+				await tester.pump();
 				expect(first, isEmpty);
 				expect(latest.last.commandId, 'z');
 				expect(latest.last.status, KlpCommandExecutionStatus.executed);
@@ -226,6 +228,29 @@ void main() {
 				expect(_flag(tester, 'Slow', SemanticsFlag.isEnabled), isTrue);
 			} finally {
 				semantics.dispose();
+			}
+		});
+
+		testWidgets('$name reports original callback error and remains executable', (tester) async {
+			final registry = KlpCommandRegistry<_Context>();
+			addTearDown(registry.dispose);
+			final context = _Context();
+			final error = StateError('original callback error');
+			var executions = 0;
+			var callbacks = 0;
+			registry.register(KlpCommandDefinition<_Context>(id: 'a', label: 'Repeatable', handler: (value) => ++executions));
+			await tester.pumpWidget(_app(_entry(
+				menu: menu, registry: registry, getContext: () => context,
+				onResult: (result) { callbacks++; throw error; },
+			)));
+			for (var attempt = 1; attempt <= 2; attempt++) {
+				await tester.tap(find.text('Repeatable'));
+				await tester.pump();
+				expect(tester.takeException(), same(error));
+				await tester.pump();
+				expect(executions, attempt);
+				expect(callbacks, attempt);
+				expect(registry.getState('a', context)!.running, isFalse);
 			}
 		});
 
@@ -416,6 +441,3 @@ void main() {
 		}
 	}
 }
-
-
-
