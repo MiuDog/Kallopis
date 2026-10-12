@@ -2,6 +2,12 @@
 
 狀態：IMPLEMENTED
 
+## FLUTTER-LINEAR-1（READY）
+
+當前增量階段為 [WB-LINEAR-r1](../../../../../../../docs/architecture/workbench-linear-contract.md) 的純尺寸算法接入前置，保留全部既有 Widget／手勢／public API。`klp_linear_layout.dart` 擁有 `KlpLinearItem`、`KlpLinearLayoutResult` 及 `resolveKlpLinearLayout`，foundation 匯出；不依賴 UI、Dock 或 style pack。完整數值、immutable 與退化契約由共通文件擁有。
+
+BUILD 允許 `flutter/lib/src/features/workspace/layout/klp_linear_layout.dart` 與 `flutter/lib/kallopis_foundation.dart`；其餘唯讀。獨立測試為 `flutter/test/linear_layout_test.dart`。M1 實作確定性尺寸與公開邊界，M2 跨語言保護／analyze／scope；cold-start 3k–6k tokens／20–45 分鐘。此 slice 完成後才規劃 min／max Widget 投影、極端 inset／gutter 及裁切。一般 divider 和既有 onResize 相容性差異在 Widget slice 處理，不能在此刪除 API。
+
 目前階段：App Layout Restore v1
 
 規格：[KLP-0024](../../../../../spec/decisions/KLP-0024-workbench-and-dock-layout-boundary.md)
