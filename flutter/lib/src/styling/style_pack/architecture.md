@@ -1,6 +1,6 @@
 # Flutter style pack
 
-修訂 `FLUTTER-STYLE-r1`；FLUTTER-STYLE-1 READY。共通 [style pack](../../../../../../styles/architecture.md) 擁有格式與 metadata，本 module 只擁有 Dart 執行及 ThemeExtension codec。
+修訂 `FLUTTER-STYLE-r1`；FLUTTER-STYLE-1 READY。共通 [style pack](../../../../../styles/architecture.md) 擁有格式與 metadata，本 module 只擁有 Dart 執行及 ThemeExtension codec。
 
 ## 公開契約
 
