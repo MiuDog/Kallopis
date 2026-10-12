@@ -258,3 +258,24 @@ toolbar左右、menu上下循環移動可用項；Home/End跳首尾、Enter/Spac
 非同步執行完成交最新onResult；入口卸載或更換registry後不再把舊結果交新宿主，同registry的原結果仍保留。onResult自身例外交原生error通道。style/className/id供外部有限宿主，內部呈現讀semantic；menu本身是原生平面入口，popup定位、context menu與palette另待接入。
 
 12項public SSR/DOM/lifecycle/typedconsumer checks與build通過，測試存在React act時機警告；browser與感官證據待展示stage。[入口共同契約](../architecture/workbench-command-entry-contract.md)定義雙框架一致邊界。
+
+## React 命令面板
+
+`KlpRegisteredCommandPalette<C>`查詢同registry全部可見命令；產品持有open與getContext，onDismiss更新open。搜尋包含label/id/description/category/各keyword，支援空白分詞、子字串與依序字元；disabled/running保留顯示但不能啟動。
+
+```tsx
+<KlpRegisteredCommandPalette
+	registry={commands}
+	getContext={() => latestContext}
+	open={paletteOpen}
+	label="命令面板"
+	searchLabel="搜尋命令"
+	emptyLabel="沒有符合的命令"
+	onResult={handleProductResult}
+	onDismiss={reason => setPaletteOpen(false)}
+/>
+```
+
+上下選取、Enter執行、Escape與背景點擊提出關閉；成功執行後也提出關閉，錯誤保留面板供產品處理。搜尋input保留原生文字游標／composition；SSR待client mount才開啟modal。原生dialog由同Provider tokens及CSS投影取得風格，開關不改背景產品輸入。原生範例包含儲存pending、格線checked、可見及可用條件與失敗結果；[CommandsDemo](../../react/example/commands-demo.tsx)全部使用公開library入口。
+
+11項protected UI/SSR/hydration/type檢查與build通過；consumer型別/prod build及兩path scope通過。native browser已觀察搜尋、方向Enter、Tab、Escape/outside、成功返回開啟按鈕焦點、停用/失敗/pending、dark與320×180、草稿保留；IME及完整極端style矩陣仍待實際操作，感官human-pending。共同詳細契約見[命令面板](../architecture/workbench-command-palette-contract.md)。

@@ -1,5 +1,6 @@
 // source 為唯一 Markdown 來源，href 為產物路由，title／category 用於導覽與搜尋；不保存正文副本。
 export const documents = [
+	['docs/architecture/workbench-command-palette-contract.md', 'docs/guides/workbench-command-palette-contract.html', '命令面板契約', 'Guide'],
 	['docs/architecture/workbench-command-entry-contract.md', 'docs/guides/workbench-command-entry-contract.html', '命令工具列與選單契約', 'Guide'],
 	['README.md', 'docs/guides/README.html', 'Project overview', 'Guide'],
 	['docs/ai/react-usage.md', 'docs/guides/react-usage.html', 'React 產品使用', 'Guide'],

@@ -4,12 +4,16 @@
 
 ## 下一個可執行步驟
 
-1. 雙框架command core與registered toolbar/menu已完成。下一個PLAN固定overlay/context menu/palette的錨點、搜尋、焦點還原与同registry ID接入；保留既有CommandMenu／WorkspaceCommand caller，不重做core/registered入口。
+1. 雙框架command core與registered toolbar/menu已完成；React palette及公開CommandsDemo完成。共同WB-COMMAND-PALETTE-r1 READY；接續Flutter local PLAN／fresh TestAuthor／BUILD，保留既有CommandMenu／WorkspaceCommand caller與core。anchor/context menu尚待接續。
 2. 雙框架快捷鍵/chord/scope/conflict/remap/recording契約與接入。不可用core冒充整個命令stage完成。
 3. 網站每個公開可呈現元件專屬互動specimen、registry/bundle/coverage；3GUI×2框架；typedrecipes／完整風格中立與參數／default權威切換。
 4. 補browser hoverpreview/cancel矩陣、Flutter continuousresize與React endcommit差異契約審核；保留所有既有CI/發布閘門，精確commit/push。感官接受human-pending。
 
 ## 當前新完成：雙框架registered command入口
+
+React palette BUILD160f2c18：new command-palette/index/styles三path，11項protected UI/SSR/hydration/type、library build/scope通過；SHA256 2753CE7F881BF0C0B56B8FE22EB0637EF4401F8023E64E057D55621A0FF7E6E5。原CSSStyleDeclaration非iterable Red以length/item標準讀法修正，同tests Green。public controlled modal、field search/multiwords/UTF16 score、samecore gates/session/latestcallback、native showModal/returnfocus/同Provider portal CSS及finite geometry；Flutter尚未實作。
+
+React CommandsDemo BUILD9999e289只新example與main兩行，public consumer TypeScript/prod build/2pathscope通過（569.17KB chunk提示）。native browser tab10 http://127.0.0.1:5182/：sv 文件跨field/subsequence、中文/canvas/空結果、ArrowDown Enter一次、executed focus回開啟按鈕；disabled保留不可選、failure保持modal、Tab input、Escape/outside；800ms pending三入口save disabled、完成一次結果/close；dark及320×180 panel304×164有限，草稿保留，error/warn空。main build/evidence/react-command-example.png。IME/產品externalfocus/完整極端style/嵌套modal矩陣pending，感官human-pending。網站共同palette Guide與React usage更新，30Markdown／545API／17modules／三surfaces，generate/verify及15網站checks通過；清冊不等於全部互動元件頁。
 
 共同WB-COMMAND-ENTRY-r1 READY；React BUILDd05dca0e只新command-entries/indexexport/stylesappend，12項SSR/DOM/lifecycle/type checks及librarybuild/3pathscope通過，protectedhash72BB8ACAD50A754D376EE3CB38D80A0B1A2BE02317F2131F1079233C03449561未改。ownerf7f93520接入使用指南與共同契約網站Guide，當前29份Markdown、541API、15websitechecks/generate/verify通過；React act時機警告與browser/sensory待驗證。Flutter FLUTTER-COMMAND-ENTRY-r1亦已完成，證據如下。不以入口冒充popup/palette/shortcut全完成。
 

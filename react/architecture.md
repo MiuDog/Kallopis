@@ -536,7 +536,7 @@ BUILD160f2c18，11項public native/SSR/hydration/type檢查、library build及3p
 | copyScope／observeViewport／resize／focusSession／revealActive | actualscope CSS、native viewport、原生modal焦點與scroll |
 | isCurrent／dismiss／activate／changeQuery／keyDown／outside／renderCandidate | session結果隔離/原值callback、controlled close/input/IME/nativekeys/backdrop/metadata row與portal |
 
-## REACT-COMMAND-EXAMPLE-1（READY）
+## REACT-COMMAND-EXAMPLE-1（COMPLETE）
 
 REACT-COMMAND-EXAMPLE-r1：新example/commands-demo.tsx以publicindex消費registry/registeredtoolbar/menu/palette，main.tsx只import及嵌入。只有兩path可寫，library/tests/config/architecture/style/其他example唯讀；使用既有demo-stack/row/card外部宿主，無新共用theme/command權威。產品state擁有canSave/grid/showFailure、open/results/dismiss與registry初始化/cleanup；effect每次setup建立新registry，StrictMode cleanup不重用disposed owner；getContext读最新ref，外部state改變refresh。
 
@@ -552,3 +552,13 @@ flowchart TD
 	Palette --> Result[product message / controlled close]
 	Result --> Demo
 ```
+
+BUILD9999e289只新增[commands-demo.tsx](example/commands-demo.tsx)及main兩行整合；TypeScript/prod build及2path scope通過，569.17KB chunk提示保留。native browser：sv 文件跨field/subsequence、中文與canvas搜尋、空結果、ArrowDown/Enter一次、結果後return-focus開啟按鈕；disabled可見不可active、失敗保留面板、Tab留input、Escape/outside理由；800ms async pending時三入口儲存disabled，完成一次結果/關閉；dark與320×180有限面板、草稿跨開關/theme/viewport保留，最後error/warn空。main ignored build/evidence/react-command-example.png保存實際dark/search畫面。IME/外部焦點轉移/完整極端style與嵌套modal矩陣未於browser執行，感官human-pending。
+
+| example定義 | 責任 |
+| --- | --- |
+| DemoContext／toolbarItems／menuItems | 產品條件及入口ID排列 |
+| CommandsDemo／getContext | 產品state及最新ref讀取 |
+| createCommands／save／wait／toggleGrid／fail／disposeCommands | 每setup新owner、async範例業務及cleanup |
+| refreshContext／onResult／onDismiss | 清冊失效通知、產品原值結果及受控關閉 |
+| openPalette／toggleSave／toggleFailure | 明確產品控制，範例不提供全域快捷鍵 |
