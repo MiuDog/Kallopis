@@ -49,6 +49,79 @@ function requireText(value: unknown, name: string): asserts value is string {
 	if (typeof value !== 'string' || !value.trim()) throw new TypeError(`${name} must contain non-whitespace text`);
 }
 
+interface EntrySlot {
+	/* parent 是有限容器的內容槽；client 保留本入口扣除捲軸後的原生寬度。 */
+	width: number;
+	height: number;
+	client: number;
+}
+
+function finiteLength(value: unknown): number {
+	return typeof value === 'number' && Number.isFinite(value) && value > 0 ? value : 0;
+}
+
+function useEntryGeometry(root: React.RefObject<HTMLDivElement | null>, menu: boolean): CSSProperties {
+	const theme = useKlp();
+	const [slot, setSlot] = useState<EntrySlot | null>(null);
+	function observe() {
+		const node = root.current;
+		const parent = node?.parentElement;
+		if (!node || !parent) return;
+		const container = parent;
+		const entry = node;
+		const win = node.ownerDocument.defaultView;
+		function measure() {
+			// client 不受 paint transform 影響；無布局環境保留自然語意。
+			const measured = container.clientWidth > 0 || container.clientHeight > 0 || container.getClientRects().length > 0 || container.style.width !== '' || container.style.height !== '';
+			if (!measured) { setSlot(null); return; }
+			const css = win?.getComputedStyle(container);
+			const inset = finiteLength(Number.parseFloat(css?.paddingLeft ?? '0')) + finiteLength(Number.parseFloat(css?.paddingRight ?? '0'));
+			const width = Math.max(0, finiteLength(container.clientWidth) - inset);
+			const height = Math.max(0, finiteLength(container.clientHeight) - finiteLength(Number.parseFloat(css?.paddingTop ?? '0')) - finiteLength(Number.parseFloat(css?.paddingBottom ?? '0')));
+			const client = Math.min(width, finiteLength(entry.clientWidth));
+			function update(old: EntrySlot | null): EntrySlot {
+				if (old?.width === width && old.height === height && old.client === client) return old;
+				return { width, height, client };
+			}
+			setSlot(update);
+		}
+		measure();
+		const Observer = win?.ResizeObserver;
+		const observer = Observer ? new Observer(measure) : null;
+		observer?.observe(parent);
+		observer?.observe(node);
+		win?.addEventListener('resize', measure);
+		return () => { observer?.disconnect(); win?.removeEventListener('resize', measure); };
+	}
+	useEffect(observe, [root]);
+	if (slot === null) return {};
+	function token(id: string): number { return finiteLength(theme.semantic(id)); }
+	let width = slot.width;
+	let outerX = 0, outerY = 0;
+	if (menu) {
+		width = Math.min(width, token('theme.geometry.layout.commandMenuWidth'));
+		outerX = Math.min(token('theme.spacing.tight'), Math.min(width, slot.client) / 2);
+		outerY = Math.min(token('theme.spacing.tight'), slot.height / 2);
+	}
+	const rowWidth = Math.max(0, Math.min(width, slot.client) - 2 * outerX);
+	const border = menu ? 0 : Math.min(token('theme.components.buttonBorderWidth'), rowWidth / 2);
+	const content = Math.max(0, rowWidth - 2 * border);
+	const padding = Math.min(token(menu ? 'theme.components.menuPadding' : 'theme.components.buttonPaddingX'), content / 2);
+	const remaining = Math.max(0, content - 2 * padding);
+	const icon = Math.min(token('theme.spacing.iconSmall'), remaining / 2);
+	const gap = Math.min(token(menu ? 'theme.spacing.overlayItemGap' : 'theme.spacing.controlContentGap'), remaining - icon);
+	return {
+		'--klp-entry-width': `${width}px`,
+		'--klp-entry-outer-x': `${outerX}px`,
+		'--klp-entry-outer-y': `${outerY}px`,
+		'--klp-entry-row-width': `${rowWidth}px`,
+		'--klp-entry-row-padding': `${padding}px`,
+		'--klp-entry-border': `${border}px`,
+		'--klp-entry-icon': `${icon}px`,
+		'--klp-entry-gap': `${gap}px`,
+	} as CSSProperties;
+}
+
 function copyReferences(items: readonly KlpCommandReference[]): readonly KlpCommandReference[] {
 	if (!Array.isArray(items)) throw new TypeError('Command items must be an array');
 	const ids = new Set<string>();
@@ -182,7 +255,8 @@ export function KlpRegisteredCommandToolbar<C = unknown>(props: KlpRegisteredCom
 	useKlp();
 	requireText(props.label, 'label');
 	const host = useCommandEntries(props);
-	return <div ref={host.root} id={props.id} role="toolbar" aria-label={props.label} className={`klp-command-toolbar ${props.className ?? ''}`} style={props.style} onKeyDown={event => host.keyDown(event, 'toolbar')}>
+	const geometry = useEntryGeometry(host.root, false);
+	return <div ref={host.root} id={props.id} role="toolbar" aria-label={props.label} className={`klp-command-toolbar ${props.className ?? ''}`} style={{ ...props.style, ...geometry }} onKeyDown={event => host.keyDown(event, 'toolbar')}>
 		{host.rows.map(row => <CommandRow key={row.reference.commandId} row={row} mode="toolbar" active={host.activeId === row.reference.commandId} onActivate={host.activate} onFocus={host.setSelectedId} />)}
 	</div>;
 }
@@ -192,9 +266,10 @@ export function KlpRegisteredCommandMenu<C = unknown>(props: KlpRegisteredComman
 	requireText(props.label, 'label');
 	requireText(props.emptyLabel, 'emptyLabel');
 	const host = useCommandEntries(props);
+	const geometry = useEntryGeometry(host.root, true);
 	function autofocus() { if (props.autoFocus) host.focus(host.activeId); }
 	useEffect(autofocus, [props.autoFocus, props.registry]);
-	return <div ref={host.root} id={props.id} role="menu" tabIndex={-1} aria-label={props.label} data-klp-separation={String(theme.semantic('theme.surface.separation'))} className={`klp-command-menu ${props.className ?? ''}`} style={props.style} onKeyDown={event => host.keyDown(event, 'menu', props.onDismiss)}>
+	return <div ref={host.root} id={props.id} role="menu" tabIndex={-1} aria-label={props.label} data-klp-separation={String(theme.semantic('theme.surface.separation'))} className={`klp-command-menu ${props.className ?? ''}`} style={{ ...props.style, ...geometry }} onKeyDown={event => host.keyDown(event, 'menu', props.onDismiss)}>
 		{host.rows.map(row => <CommandRow key={row.reference.commandId} row={row} mode="menu" active={host.activeId === row.reference.commandId} onActivate={host.activate} onFocus={host.setSelectedId} />)}
 		{!host.rows.length && <KlpText role="caption" tone="muted">{props.emptyLabel}</KlpText>}
 	</div>;

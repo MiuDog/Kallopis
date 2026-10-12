@@ -206,14 +206,16 @@
 	gap: var(--klp-spacing-actionGap);
 	min-inline-size: 0;
 	max-inline-size: 100%;
+	max-block-size: 100%;
+	overflow: auto;
 }
 .klp-command-menu {
-	inline-size: min(100%, var(--klp-geometry-layout-commandMenuWidth));
+	inline-size: min(100%, var(--klp-entry-width, var(--klp-geometry-layout-commandMenuWidth)));
 	min-inline-size: 0;
 	max-inline-size: 100%;
 	max-block-size: 100%;
 	overflow: auto;
-	padding: var(--klp-spacing-tight);
+	padding: var(--klp-entry-outer-y, var(--klp-spacing-tight)) var(--klp-entry-outer-x, var(--klp-spacing-tight));
 	border-radius: var(--klp-components-menuRadius);
 	background: var(--klp-colors-overlay);
 	color: var(--klp-colors-text);
@@ -223,23 +225,26 @@
 }
 .klp-command-row {
 	min-inline-size: 0;
-	max-inline-size: 100%;
+	max-inline-size: min(100%, var(--klp-entry-row-width, 100%));
 	overflow: hidden;
+	padding: 0 var(--klp-entry-row-padding, var(--klp-components-buttonPaddingX));
+	border-width: var(--klp-entry-border, var(--klp-components-buttonBorderWidth));
+	gap: var(--klp-entry-gap, var(--klp-spacing-controlContentGap));
 }
 .klp-command-row-menu {
 	inline-size: 100%;
 	justify-content: flex-start;
 	height: auto;
 	min-block-size: var(--klp-components-menuItemHeight);
-	padding: 0 var(--klp-components-menuPadding);
-	gap: var(--klp-spacing-overlayItemGap);
+	padding: 0 var(--klp-entry-row-padding, var(--klp-components-menuPadding));
+	gap: var(--klp-entry-gap, var(--klp-spacing-overlayItemGap));
 	border: 0;
 	border-radius: var(--klp-shape-control);
 }
 .klp-command-icon {
 	flex: none;
-	inline-size: var(--klp-spacing-iconSmall);
-	block-size: var(--klp-spacing-iconSmall);
+	inline-size: var(--klp-entry-icon, var(--klp-spacing-iconSmall));
+	block-size: var(--klp-entry-icon, var(--klp-spacing-iconSmall));
 	overflow: hidden;
 }
 .klp-command-row-menu .klp-command-icon { transform: translateY(var(--klp-geometry-optical-menuIconOffsetY)); }
