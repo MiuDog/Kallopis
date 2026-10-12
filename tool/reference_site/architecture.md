@@ -189,3 +189,5 @@ popup雙框架library與公開consumer完成後，Flutter重新Green extraction5
 快捷鍵純核心WB-SHORTCUT-CORE-r1 READY直接由documents.mjs接入Guide，現行33Markdown／549API；此階段尚無新公開keymap實作，不冒充native keyboard／互動展示完成。
 
 雙框架快捷鍵purecore完成後，Flutter重新Green extract560 canonical declarations／17modules／三surfaces，33Markdown；Guide及兩端usage明示native adapter pending。新清冊採extractor產物，未手改identity。
+
+共同WB-SHORTCUT-HOST-r1 READY原生宿主Guide加入documents唯一來源，現在34Markdown／560API；fresh作者正在公開native事件/lifecycle checks，尚未新增host API。

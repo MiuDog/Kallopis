@@ -5,13 +5,13 @@
 ## 下一個可執行步驟
 
 1. 雙框架command core／registered toolbar／menu／palette／popup及公開CommandsDemo完成。popup Flutter d17be03f protected16＋原23、analyze／scope2；React75c24b4e protected12＋原12、typedconsumer／build／scope3。consumer Flutter173cc9e9／Reactcb1c392d各exact1source：button bounds／右鍵point／Escape／outside無click-through／一次執行／focus／draft nativebrowser觀察。Flutter初次兩失敗是背景fixture收縮，由獨立TestAuthor修正並加入實際Overlay尺寸校验，原assertions保留。網站公開popup extract549；完整窄native／style矩陣與感官pending。快捷鍵共通契約WB-SHORTCUT-CORE-r1及兩端purecore已完成；Flutter11／React9 protected checks、analyze／build／scope2通過，不複製第二份rows或handler。
-2. 雙框架快捷鍵purecore已完成，下一步native keyboard／focus／composition契約與fresh作者tests，之後接入Commands consumer及互動重綁展示。不可用core冒充整個命令stage完成。
+2. 雙框架快捷鍵purecore已完成，WB-SHORTCUT-HOST-r1及兩端PLAN READY，新fresh native host作者測試進行中，之後接入Commands consumer及互動重綁展示。不可用core冒充整個命令stage完成。
 3. 網站每個公開可呈現元件專屬互動specimen、registry/bundle/coverage；3GUI×2框架；typedrecipes／完整風格中立與參數／default權威切換。
 4. 補browser hoverpreview/cancel矩陣、Flutter continuousresize與React endcommit差異契約審核；保留所有既有CI/發布閘門，精確commit/push。感官接受human-pending。
 
 ## 最新完成：雙框架快捷鍵純核心
 
-共同WB-SHORTCUT-CORE-r1，authors1c0c0542；ReactBUILD0b996490 protected9 SHA256127E0B72A6B61B190A5B6DD15F39436BF2953C3C07995913452F7F09584B4D6E，FlutterBUILD188273b8 protected11 SHA2562040C69AAECCF92DCFE542FC8DCB06038A82B4D617437E88B225FADDECF5EE1C，同hash保留。Reactbuild／Flutter publicanalyze／各scope2／diffcheck通過。React初次8Green／1Red是匯出null-prototype不同於普通DTO，以Object.fromEntries修正並安全保存__proto__ ID，同9Green；沒有改測試或Green fallback。Flutter首次11Green。原registry借用；legacy keybinding無改動、沒有native eventloop／timer／focus權威。現在website extract560／33Markdown，generate／verify／15websitechecks通過。實際functions與Mermaid已由owner更新兩端module架構；完整native快捷鍵與GUI尚未接入。
+共同WB-SHORTCUT-CORE-r1，authors1c0c0542；ReactBUILD0b996490 protected9 SHA256127E0B72A6B61B190A5B6DD15F39436BF2953C3C07995913452F7F09584B4D6E，FlutterBUILD188273b8 protected11 SHA2562040C69AAECCF92DCFE542FC8DCB06038A82B4D617437E88B225FADDECF5EE1C，同hash保留。Reactbuild／Flutter publicanalyze／各scope2／diffcheck通過。React初次8Green／1Red是匯出null-prototype不同於普通DTO，以Object.fromEntries修正並安全保存__proto__ ID，同9Green；沒有改測試或Green fallback。Flutter首次11Green。原registry借用；legacy keybinding無改動、沒有native eventloop／timer／focus權威。現在website extract560／34Markdown，generate／verify／15websitechecks通過。實際functions與Mermaid已由owner更新兩端module架構；完整native快捷鍵與GUI尚未接入。
 
 ## 當前新完成：雙框架registered command入口
 
@@ -63,7 +63,7 @@ owner b319af8c澄清removeListener只解除native addListener owner；獨立auth
 | Dock codec／operations | Flutter69771496／243d9f98；Reactc6af55f6／e5d8b0a6；各7codec、10operationschecks | 已完成；consumer只投影id/capabilities清冊，不傳content/callback |
 | Flutter Panel／Dock | Panel5e18ccd6／8d4fc334九checks；geometry296e7cab十三；preview3064c359七；UI4ff1c999十三，Dock合計33checks | browser preview/cancel全矩陣 |
 | React Dock | geometry08ea39fc九；native1 7690b23b九；native2 681c0f6c／583818e8／6ee63c5e九，合計18nativechecks | native1部分act harness warnings保留，browser矩陣同上 |
-| 參考網站 | Flutter560canonical API／17modules／三surface popup extract／generate／verify／15checks；33文件 | API清冊不等於互動頁；全部展示未完成 |
+| 參考網站 | Flutter560canonical API／17modules／三surface popup extract／generate／verify／15checks；34文件 | API清冊不等於互動頁；全部展示未完成 |
 
 本機main網站重建曾讀ignored build/reference-api.json舊534清冊；generator/verifier明確使用該建置輸入。已以同隔離已驗證547artifact更新main ignored輸入，原重建與verify回547，無source／test改動。tab3 reload已見33文件現行stage與新popup Guide；截圖main build/evidence/workbench-command-popup-guide.png。日後新公開API完成需先extract再generate，不把ignored stale產物當正式清冊。
 
