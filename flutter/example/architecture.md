@@ -1,6 +1,6 @@
 # Flutter 公開 consumer 範例
 
-目前目標：IDOC-COMPONENT-REGISTRY-r1 的公開元件專屬路由。庫擁有樣式及互動，example擁有展示資料、控制、回呼觀察與重設。不得引用package:kallopis/src；舊Catalog的coveredComponents／空build不算互動coverage。目前有51個真實fixture；全量273個可渲染元件仍需逐項補足，不宣稱全部完成。
+目前目標：IDOC-COMPONENT-REGISTRY-r1 的公開元件專屬路由。庫擁有樣式及互動，example擁有展示資料、控制、回呼觀察與重設。不得引用package:kallopis/src；舊Catalog的coveredComponents／空build不算互動coverage。目前有75個真實fixture；全量273個可渲染元件仍需逐項補足，不宣稱全部完成。
 
 ## FLUTTER-COMPONENT-SPECIMENS-1（COMPLETE）
 
@@ -286,7 +286,7 @@ main build/flutter-spatial-specimens.png及flutter-spatial-native.json保存觀�
 
 _State._controls/_target/_usage持有當次公開props投影、合法host與正確constructor；_tiles/_flexTiles提供產品child，_sample/_fixedSample/_sampleBody/_measure/_builderBody只呈現真實約束；_scrollToEnd/_onScroll使用同公開controller，initState/dispose移除listener並清controller；_onChange及cycle/toggle只consumerState。build owns finite viewport/controls/status/draft，環境由外host維持；沒有第二theme、private API或widget tree驗證。
 
-## FLUTTER-FORM-CONTROL-SPECIMENS-1（READY）
+## FLUTTER-FORM-CONTROL-SPECIMENS-1（IMPLEMENTED；actual窄 browser pending）
 
 修訂FLUTTER-FORM-CONTROL-SPECIMENS-r1，依IDOC-01/02/03/06/08；exact lib/component_specimens.dart、新lib/form_control_specimens.dart，前者僅import/registry/fixture分流，不改原51與外host環境。24個正式renderable：KlpAffixedTextField、KlpCheckbox、KlpCompactSwitch、KlpField、KlpFieldDescription、KlpFieldError、KlpFieldLabel、KlpMultiSelectField、KlpNumberField、KlpPasswordField、KlpPhaseToggle、KlpQuantityField、KlpRadioGroup、KlpSegmentedControl、KlpSelect、KlpSelectField、KlpSlider、KlpSlidingSelection、KlpTagChip、KlpTagInputField、KlpTextArea、KlpToggle、KlpToggleIndicator、KlpTriStateToggle。formControlSpecimenNames只實際fixture；公開FormControlComponentSpecimen(name)，只Flutter與public foundation imports，不改library／private API或共用theme。
 
@@ -316,3 +316,14 @@ flowchart TD
 	State --> Target
 	Host --> Reset[epoch / reset才重建]
 ```
+
+
+BUILD exact2source。24名稱全部對正式renderable且各有自己target/controls/usage，public analyze No issues、同sourceprefixrelease47.0秒、scope2/diff通過。展示換range時把consumer數值投影至合法range；設定tagLimit時保留最多三筆合法demo資料，這是fixture控制，不計成target回呼或建立第二核心算法。未改library／tests／style／config／網站source，無新persist或algorithm風險，不新增鏡像tests。
+
+Native5203 prefix逐一24route操作公開參數；三個Field文字target修改內容、控制文字回呼2而target仍0；ToggleIndicator只props不虛構回呼。其餘20個具回呼target實際操作：Checkbox/Toggle/CompactSwitch value1、TriState on1、Radio/Segmented/Phase/Sliding/Select selected1、SelectField真實popup選B1、多選a+b再移除a為Set b2、Quantity增減與step5共3回呼value4、TagInput新增/移除/clear共3且空list、TagChip移除1且consumer顯示移除結果、NumberField原生7回呼1、Affixed輸入與附加動作3、Password純展示字串輸入2及顯示/requirements狀態、TextArea多行2、Field input1。所有結果與controls自己的回呼分開。
+
+Slider原生drag9回呼到7.1315789；初始snapshot曾標disabled，補查aria-disabled null，ArrowRight真實3→3.5回呼1；停用時slider role消失且維持值，恢復後ArrowRight到4回呼2。因此未取得庫內故障證據，不修改library或把初始snapshot當缺陷。鍵盤/DOM觀察只读，不寫widget state。預設caption依公開元件輸出raw percent，非預設range的consumer可用displayValue參數；未以example改寫core百分比邏輯。
+
+TextArea多行「表單草稿保持／第二行」在四mode、spacious/local320/outlined後同回呼2與原字串保持；reset回props初始與target0、環境spacious/local320保持。現場error/warn空。main build/flutter-form-control-specimens.png及flutter-form-control-native.json保存；actual360 browser未取得，感官human-pending。Flutterfixture75／273，剩餘198及全量docs gate仍原goal，未提前放行全部元件。
+
+_State._controls/_target/_usage投影公開參數與正確constructor；_options/_phases/_selectionOptions僅consumer資料；onText/bool/index/choice/number/quantity/multi/triState及tag callbacks回寫State並_record；_onLabel只控制文字，toggle/cycle只自己的props，_toggleRange/_toggleTagLimit維持demo合法資料不冒充target事件。build擁有有限scroll舞台、參數編輯與兩類回呼狀態，dispose清controller；跨mode State由外host保留，epoch才重建。新增class責任與依賴仍上述module圖。
