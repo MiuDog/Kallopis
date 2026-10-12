@@ -559,3 +559,35 @@ Document原選doc-1/root1、pin2、close doc-0回呼3且selected仍doc-1、unpin
 IdentityHeader avatarLabel提供時原元件採avatar內容且trailing不呈現（觀察已記，未改library或假設兩者同時顯示）；avatar=false真實trailing child輸入2/動作1，root0。四mode/spacious/local320保留草稿與結果；avatar切換回來仍草稿保持；reset回初始props/0與環境spacious/local320保留，再啟用trailing實際初始側欄child草稿。console error/warn空；main build/flutter-navigation-selection-specimens.png、flutter-navigation-selection-native.json保存證據。actual360 browser與感官human-pending，consumer水平host不代替library narrow算法。Flutterfixture130／273，剩143与全量网站/style audit等仍原goal，未提前push；actual任務usage未量測null。
 
 State _controls/_target/_usage只自己的公開constructor；_labels/_available/_reconcileDocument/_toggleCount/_pinAll/_restoreDocuments為consumer資料投影，_selectIndex/_selectId/_rootAction/_documentSelect/_documentClose/_documentPin/_pageChanged記原root結果，_childAction/_input分開、_edit只control，_identityChild給單一controller內容、_wide提供水平host，dispose清三controller，build有限280scroll舞台；沒有導覽runtime或第二theme。
+
+
+## FLUTTER-NAVIGATION-COMPOUND-SPECIMENS-1（READY）
+
+修訂FLUTTER-NAVIGATION-COMPOUND-SPECIMENS-r1，IDOC-01/02/03/06/08；exact lib/component_specimens.dart、新 lib/navigation_compound_specimens.dart。KlpNavigationRail、KlpNavigator、KlpPublicationProgressOverlay；補齊正式features.navigation，不替代全273goal。
+
+NavigationCompoundComponentSpecimen(name)只public foundation/Flutter widgets。Rail State管理top/center/bottom穩定ID順序與selected；public KlpRailItemGroup.onReorder依既有consumer caller直接removeAt/insert(newIndex)，不重寫庫索引算法；divider在同consumer清單中，menu用KlpRailMenuEntry及KlpMenuItemData。按鈕/menu entry回呼、group重排與child回呼分開；沒有模擬drag callback按鈕。原群組重排由native操作驗收，不以切props充作重排成功；不新增跨群移動。
+
+Navigator使用既有public KlpNavigatorCategory/Element/Component、受控category/element expanded Set及selectedId，原callback回寫資料；不改FileExplorer模型或建立adapter。公開surfaceTone、collapsible、icon/badge/trailing、component child由controls投影；單一controller child只一份。PublicationProgressOverlay公開visible/progress/stages與child，以有限300高host提供；progress數量/active/complete/label與文字控制，root無callback不虛構，child原input/action另記，不宣稱未觀察完整modal/pointer阻擋。
+
+環境保留state/controller、epoch reset，dispose清controller；Rail固定420合法bounded舞台且width讀theme.space.chromeRail，其他300高；原生scroll容納内容。無core/persist/crosslanguage新風險，不新增鏡像tests。禁止library/tests/config/style/site/docs寫入。驗收三registry/formalrenderable、publicanalyze、同sourceprefixrelease、native各ownprops/文字/Rail entry+menu+真drag重排/Navigator選取展開/overlaychild、四mode/spacious/local320保持draft/結果/reset、scope2/diff；actual窄browser與感官human-pending。
+
+估5k～10k/35～80分鐘，參考NAVIGATION-SELECTION/DATA；M1 source3/analyze/build（6k40），M2 native/state/scope（10k80）；15k120或public不足回PLAN；actual單task usage未量測null。
+
+| Source / class / function | 責任 |
+| --- | --- |
+| navigationCompoundSpecimenNames / NavigationCompoundComponentSpecimen | 精確自己的公開route |
+| State controls/target/usage/build | 公開DTO／props及合法bounded host |
+| State rail/navigator/child handlers | 原公開意圖回寫consumer資料，entry/root/child分開 |
+| State controllers/dispose | 草稿生命週期及環境保持 |
+| component fixture | 外host/epoch精確分流 |
+
+```mermaid
+flowchart TD
+	Host[ComponentSpecimenApp] --> Fixture[NavigationCompoundComponentSpecimen]
+	Fixture --> Props[自己的props / public DTO controls]
+	Props --> Target[真實Rail / Navigator / Overlay]
+	Target --> Callback[原reorder / select / expand / child]
+	Callback --> State[consumer穩定資料與結果]
+	State --> Target
+	Host --> Reset[epoch重建]
+```
