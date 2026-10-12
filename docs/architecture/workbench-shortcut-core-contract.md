@@ -4,7 +4,7 @@ WB-SHORTCUT-CORE-r1 READY，擁有[WB-09／12～14／16](../../spec/workbench-v1
 
 ## 公開資料
 
-兩端公開KlpCommandKeymap<C>；Flutter constructor required registry，named platform（KlpShortcutPlatform.mac／other，預設other）、chordTimeoutMs（預設1000，1～600000整數）、now（可選double Function()）；React constructor(registry, options?)的platform為'mac'／'other'、同timeout、now:()=>number。預設clock使用原生monotonic毫秒，測試注入finite非負monotonic clock；非法clock值拒絕且不部分更新狀態。keymap不dispose產品registry，也不新增handler、l10n或storage。
+兩端公開KlpCommandKeymap<C>；Flutter constructor採required named registry（呼叫registry: registry），其餘named platform（KlpShortcutPlatform.mac／other，預設other）、chordTimeoutMs（預設1000，1～600000整數）、now（可選double Function()）；React constructor(registry, options?)的platform為'mac'／'other'、同timeout、now:()=>number。預設clock使用原生monotonic毫秒，測試注入finite非負monotonic clock；非法clock值拒絕且不部分更新狀態。keymap不dispose產品registry，也不新增handler、l10n或storage。
 
 | 型別 | 必填／可選欄位與語意 |
 | --- | --- |

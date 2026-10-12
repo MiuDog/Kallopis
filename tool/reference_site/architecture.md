@@ -184,4 +184,6 @@ Flutter registered toolbar/menu/ref/kind四個公開宣告extract後，當前545
 
 共同ENTRY-GEOMETRY-r1前置契約加入唯一Guide路由；当前31Markdown／547API。此READY只規範命令入口有限幾何，不宣稱實作或popup已完成。
 
-popup雙框架library與公開consumer完成後，Flutter重新Green extraction549 canonical API／17modules／三surfaces；32Markdown包含共同popup Guide與兩端使用指南。新API清冊只複製extractor輸出，不手寫identity；全部元件互動、React專屬清冊與GUI bundle仍另stage。
+popup雙框架library與公開consumer完成後，Flutter重新Green extraction549 canonical API／17modules／三surfaces；33Markdown包含共同popup Guide與兩端使用指南。新API清冊只複製extractor輸出，不手寫identity；全部元件互動、React專屬清冊與GUI bundle仍另stage。
+
+快捷鍵純核心WB-SHORTCUT-CORE-r1 READY直接由documents.mjs接入Guide，現行33Markdown／549API；此階段尚無新公開keymap實作，不冒充native keyboard／互動展示完成。

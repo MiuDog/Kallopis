@@ -14,7 +14,7 @@
 | 6 | docs API／元件页嵌入及場景頁 | `tool/reference_site/` | 公開元件 → specimen → bundle → route 全鏈 coverage；前綴及資產檢查 |
 | 7 | 權威切換、CI、文件與提交 push | repository 整合 owner | SP-01～08、IDOC-01～08、WB-01～21 evidence；繼承失敗另列、精確提交與 push 記錄 |
 
-已完成stylepack parser／catalog（269原料、350語意×4、118原文recipe）及雙框架注入；finite linear／Dock／命令核心與入口／palette／popup和公開consumer亦交付。recipe全參數audit／default權威切換、shortcut、逐元件網站互動及3GUI×2仍未完成。當前reference549API／32Markdown；詳細可觀察證據與下一步只讀[交接](../workbench-handoff.md)。
+已完成stylepack parser／catalog（269原料、350語意×4、118原文recipe）及雙框架注入；finite linear／Dock／命令核心與入口／palette／popup和公開consumer亦交付。recipe全參數audit／default權威切換、shortcut、逐元件網站互動及3GUI×2仍未完成。當前reference549API／33Markdown；詳細可觀察證據與下一步只讀[交接](../workbench-handoff.md)。
 
 ## 合作邊界
 
@@ -56,8 +56,8 @@ GitHub push 已授權，無需重問；仍需先確認範圍及實際檢查。�
 | finite linear | 雙框架pure算法與原生Row／Column／Pane、公開consumer | 網站逐元件specimen整合 |
 | Dock | 雙框架codec／atomic operations／有限geometry／原生UI／公開example | browser hoverpreview／cancel矩陣、resize callback平台差異audit |
 | 命令 | 雙框架registry／toolbar／menu／palette／popup及公開consumer；popup Flutter16＋原23、React12＋原12 checks；button／右鍵native證據 | 快捷鍵接入；極端style／窄native完整矩陣另pending |
-| 快捷鍵 | 已接受完整scope | chord／scope／conflict／remap／recording共通契約及兩框架接入 |
-| 網站 | 32Markdown／549 canonical API／17modules／三surfaces；公開popup extract／generate／verify與15checks通過 | 每個公開可呈現元件專屬互動、bundle／registry／coverage；3GUI×2框架 |
+| 快捷鍵 | WB-SHORTCUT-CORE-r1與Flutter／React純核心PLAN READY，fresh作者測試進行中 | purecore BUILD；native keyboard／focus／composition與互動接入 |
+| 網站 | 33Markdown／549 canonical API／17modules／三surfaces；公開popup extract／generate／verify與15checks通過 | 每個公開可呈現元件專屬互動、bundle／registry／coverage；3GUI×2框架 |
 | GitHub | 隔離精確commits，guarded同步main並保留index | 全部目標完成、保留發布閘門後精確push；尚未push |
 
-公開清冊或單一總覽iframe不能當作全部互動展示完成；protected deterministic code、nativebrowser觀察與人類感官接受分別記錄。anchor／context menu library與公開consumer已完成，接續shortcut共通契約與fresh獨立tests；不重做已完成style／linear／Dock／command foundations。
+公開清冊或單一總覽iframe不能當作全部互動展示完成；protected deterministic code、nativebrowser觀察與人類感官接受分別記錄。anchor／context menu library與公開consumer已完成，接續已READY shortcut purecore契約的fresh獨立tests與BUILD；不重做已完成style／linear／Dock／command foundations。
