@@ -462,3 +462,26 @@ classDiagram
 	KlpCommandRegistry ..> KlpCommandState : 重新評估與快照
 	KlpCommandRegistry ..> KlpCommandExecutionResult : 原產品結果
 ```
+
+## REACT-COMMAND-ENTRY-1（READY）
+
+REACT-COMMAND-ENTRY-r1依[WB-COMMAND-ENTRY-r1](../docs/architecture/workbench-command-entry-contract.md)。新`src/command-entries.tsx`擁有KlpCommandReference／兩個props／兩個直接native元件與private hook/row。只讀publicregistry、existingtheme/components；index匯出，styles.css只追加本slice semantic類別，不改existing選擇器。無defaultcommands/context鏡像/DOM全域快捷鍵/overlay或palette。
+
+`KlpCommandReference { readonly commandId:string; readonly kind?:'action'|'toggle' }`。共同props `registry:KlpCommandRegistry<C>; getContext:()=>C; items:readonly KlpCommandReference[]; label:string; onResult:(result:KlpCommandExecutionResult)=>void; className?:string; id?:string; style?:CSSProperties`；Menu另`emptyLabel:string; autoFocus?:boolean; onDismiss?:()=>void`。required字串含非空白內容，items不能有重複ID/非法kind。Toolbar/Menu直接收props。無任意children替代command內容，外部原生style僅宿主。
+
+private hook依registry.version useSyncExternalStore訂閱；查詢與dispatch各讀最新getContext，不以memo保存context。hook只持host lifetime/registry identity/currentprops與roving selection；不持handler/pending第二權威。registry變更與unmount使舊onResult失效，相同registry完成用最新onResult。Row重用KlpButton/KlpText，icon僅裝飾；toolbartoggle selected與menutoggle aria-checked是registry snapshot投影。keyboard prevents native default避免Enter/Space雙激活；disabled項不進可用索引。
+
+BUILD write_paths只`react/src/command-entries.tsx`、`react/src/index.ts`、`react/src/styles.css`。architecture/core/tests/config/example/theme/Dock/stylepack/其他module唯讀。fresh TestAuthor只`react/test/command-entries.test.mjs`，publicindex+JSdom/React act；typedconsumer可ignoredbuild。M1共享條件/metadata/order/result，M2pending/stale/keyboard/empty/publicbuild/scope。cold-start5k–10k tokens／25–50分鐘，參照REACT-COMMAND-CORE-1／DOCK-NATIVE-1；15k/75分鐘或需core/public契約變更回PLAN。
+
+```mermaid
+flowchart TD
+	Product[items / getContext / onResult] --> Toolbar[KlpRegisteredCommandToolbar]
+	Product --> Menu[KlpRegisteredCommandMenu]
+	Toolbar --> Hook[private registry subscription / host lifetime]
+	Menu --> Hook
+	Hook --> Registry[public KlpCommandRegistry]
+	Hook --> Row[existing KlpButton / KlpText / semantic CSS]
+	Row --> Activate[ID dispatch / latest context]
+	Activate --> Registry
+	Registry --> Result[product result / current host callback]
+```
