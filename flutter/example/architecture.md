@@ -182,7 +182,7 @@ BUILDe754f791 exact2source，public analyze No issues／releaseweb46.2秒／scop
 
 RegisteredCommandsDemo新增可選specimen與key，同State原owner；_shows對null維持overview、對name精確投影controls／entry；_usage只顯示當次stable公開constructor。_controls與build條件插入popup area／toolbar／menu／palette／popup／shortcutControls，不把依賴host包裝當額外coverage。host _fixture以commandNames優先分流，前24保持。初始化、dispose、registry/keymap/handler全沿用，沒有改命令庫演算法。
 
-## FLUTTER-GUI-SCENARIOS-1（READY）
+## FLUTTER-GUI-SCENARIOS-1（IMPLEMENTED；docs／prefix／窄版整合pending）
 
 修訂FLUTTER-GUI-SCENARIOS-r1，依IDOC-04/05/06/07/08及已接受官方研究。exact lib/gui_scenarios.dart、lib/gui_scenario_metadata.dart、assets/gui-scenarios.json、lib/main.dart、pubspec.yaml（僅註冊新example asset，YAML語法空格）。三scene query vscode/blockbench/blender，既有specimen優先與absent Catalog維持，unknown scenario明確拒絕不退總覽。只example consumer，不在library建立產品模板。
 
@@ -222,3 +222,11 @@ flowchart TD
 	Commands --> Result
 	Result --> Owner
 ```
+
+BUILD315997de exact5。獨立TestAuthor d13854de只test/gui_scenario_metadata_test.dart，SHA256 B6C1415624B31CB6BDDC14950EF6C6A50DEF0F4972E232C186FEC70FE45AABA9，39/39 Green，零skip，未取得有效行為Red。公開fromJson(Object? value)把root map轉唯讀metadata清單並排序，不改輸入；fields final，非法root/id/title/HTTPS URI與duplicate拒絕。第一輪public analyze指出Dock stage需要KlpPanelFrame，最小改return型別與建模stage同公開PanelFrame；平台取defaultTargetPlatform避免initState讀Inherited Theme，curly lint補block。相同analyze最後No issues；最終releaseweb44.9秒（既有--no-tree-shake-icons），scope5/diff通過，未改库／測試斷言／鎖檔。
+
+Native5204已觀察：VS Code選theme.ts／正文草稿，save／Problems／restore布局2、command2，dark/spacious保持草稿與選取；Ctrl+K→S與palette搜尋執行至command4，真實分隔線drag產生8次callback到布局10，Search拖至Bottom後布局11且底部Search正文可见。無效JSONrestore command5原FormatException且布局11保持；layout reset／Outline close／重開都回寫；明確scene reset回0保持環境。Blockbench選Head、operation1／frame24及草稿模型保持、ultraDark/spacious；Blender Animation公開resize採用1、Camera選取、menu save/toggle與toolbar restore到布局3／command4。未知query明確拒絕並可返回，不退Catalog。
+
+Flutter Web首次由瀏覽器可及性啟用按鈕Enter取得真實semantics樹，再用原生輸入/drag操作；click啟用未生效，未以JS寫widget State。main build/flutter-gui-vscode.png、flutter-gui-blockbench.png、flutter-gui-blender.png；5204 URL error/warn空。資料資產由rootBundle讀package asset，載入中／錯誤可辨識；JSON只metadata，產品config／正文state由GuiWorkbench擁有。原生3場景觀察不等於已嵌docs：Flutter標題／載入辨識及prefix assets另site整合stage，actual窄browser與人類感官仍pending；原goal全部元件／typed風格／最終push保持。
+
+_GuiScenarioAppState._load/_content擁有asset讀取與環境，State key id＋epoch；_GuiWorkbenchState._initial/_policies僅投影產品資料，_commit/_action/_save/_restore/_openPanel/_switchWorkspace只呼叫公開codec/action；_register/_getContext/_getFocus/_getIsComposing與refresh/dispose管理同registry/keymap/原生Focus/controller。_panel/_stage/_explorer/_stack組合法public compound，_select/_onResult記錄callback；畫布旋轉及ascii方塊是示意，不另建3D模型。_SceneContext只借用當前State，metadata不固定元件清單或three-count驗證。
