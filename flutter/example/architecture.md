@@ -1,5 +1,9 @@
 # Flutter 公開 consumer 範例
 
+## MODERN-PRODUCTIVITY-OWNED-FONTS-1（READY）
+
+公開頁面的 resource inventory 重現 Roboto／NotoSymbols2 外部 fallback；修復限定新模板 consumer 的兩檔：lib/modern_productivity_starter.dart、lib/modern_productivity_preview.dart。用公開 KlpTextField／KlpText／KlpIcon(KlpIcons.chevronDown) 取代原生文字與 Unicode 箭頭；SelectableText 的 code style 由公開 KlpTextStyles／context.klp.type 解析，不新建 Theme 或複製字型名稱。core、fonts 資產、pubspec、tests、其他展示皆唯讀。驗收 scoped analyze、原 example checks、release build 與 fresh browser 的 font inventory／六控制／草稿／設定輸出；若剩餘 fallback 來自庫或 engine，回 PLAN 只報已觀察邊界，不修改 vendor。M1 代碼／build，M2 fresh browser；cold 2k–4k／15–30 分鐘，6k／45 分鐘回 PLAN。
+
 ## MODERN-PRODUCTIVITY-CATALOG-1（IMPLEMENTED）
 
 公開新增 widget 必須在既有 Catalog 歸類。BUILD exact lib/catalog/workspace_shell_page.dart、lib/catalog/generated/catalog_style_semantics.g.dart。新增真實 ModernProductivityStarter caller，有限 host 用正式尺寸；metadata 由既有 generator 生成，原 catalog_coverage_test 保留。此路由不冒稱全部專屬展示已完成。估 1k–3k／10–20 分鐘，M1 真實 caller／生成 metadata／原 coverage；4k／30 分鐘或 generator 行為需改回 PLAN。
