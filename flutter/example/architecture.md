@@ -796,3 +796,5 @@ flowchart TD
 	State --> Props
 	Host --> Reset[明示epoch重設]
 ```
+
+ADVANCED-FORM M1 checkpoint：十四個consumer target source已接入，public analyze No issues／scope exact2／prefix release55.2秒；M2 native尚未執行，不計入176／273已驗證數量。使用者最新按鈕對比／版面總gap8指示先由共通風格整合處理；此fixture State與任務保留，不視為取消。
