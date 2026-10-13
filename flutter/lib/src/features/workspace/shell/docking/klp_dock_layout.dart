@@ -46,6 +46,9 @@ class _KlpDockLayoutState extends State<KlpDockLayout> {
 	_KlpDockDropPlacement? _activeDropPlacement;
 	int _groupSequence = 0;
 
+	/// State 擁有重建入口，extension 不直接呼叫 protected setState。
+	void _updateCloseState(VoidCallback update) => setState(update);
+
 	@override
 	void didUpdateWidget(KlpDockLayout oldWidget) {
 		super.didUpdateWidget(oldWidget);

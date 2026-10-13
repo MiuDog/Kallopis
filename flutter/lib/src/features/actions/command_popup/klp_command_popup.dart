@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 
-import '../../../styling/legacy_theme/klp_theme.dart';
-import '../command_entries/klp_command_entries.dart';
-import '../command_registry/klp_command_registry.dart';
+import 'package:kallopis/src/styling/legacy_theme/klp_theme.dart';
+import 'package:kallopis/src/features/actions/command_entries/klp_command_entries.dart';
+import 'package:kallopis/src/features/actions/command_registry/klp_command_registry.dart';
 
+/// 同一 popup session 的關閉意圖，由產品採用或保留 open 狀態。
 enum KlpCommandPopupDismissReason { escape, outside, executed }
 
+/// 依 caller 錨點及主題呈現已註冊選單，不擁有產品開關或命令資料。
 class KlpRegisteredCommandPopup<C> extends StatefulWidget {
 
 	/* registry/getContext 保持產品權威；items 指定公開 menu 排列；label/emptyLabel 提供產品文案。
@@ -175,8 +177,8 @@ class _CommandPopupState<C> extends State<KlpRegisteredCommandPopup<C>> with Wid
 	@override
 	Widget build(BuildContext context) {
 		final anchor = widget.anchor;
-		if (!anchor.left.isFinite || !anchor.top.isFinite || !anchor.width.isFinite || !anchor.height.isFinite || anchor.width < 0 || anchor.height < 0) throw ArgumentError.value(anchor, 'anchor', '需要有限座標與非負尺寸');
-		if (widget.label.trim().isEmpty || widget.emptyLabel.trim().isEmpty) throw ArgumentError('label／emptyLabel 不得為空');
+		if (!anchor.left.isFinite || !anchor.top.isFinite || !anchor.width.isFinite || !anchor.height.isFinite || anchor.width < 0 || anchor.height < 0) throw ArgumentError.value(anchor, 'anchor', 'Expected finite coordinates and non-negative dimensions');
+		if (widget.label.trim().isEmpty || widget.emptyLabel.trim().isEmpty) throw ArgumentError('label and emptyLabel must not be empty');
 
 		_theme = Theme.of(context);
 		_locale = Localizations.localeOf(context);

@@ -2,10 +2,10 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 
-import '../legacy_theme/klp_motion_theme.dart';
-import '../legacy_theme/klp_theme.dart';
-import '../legacy_theme/klp_visual_style.dart';
-import '../legacy_theme/klp_visual_style_json.dart';
+import 'package:kallopis/src/styling/legacy_theme/klp_motion_theme.dart';
+import 'package:kallopis/src/styling/legacy_theme/klp_theme_variant.dart';
+import 'package:kallopis/src/styling/legacy_theme/klp_visual_style.dart';
+import 'package:kallopis/src/styling/legacy_theme/klp_visual_style_json.dart';
 import 'generated.dart';
 
 part 'native_codec.dart';
@@ -126,7 +126,8 @@ void _validate(Map<String, Object?> data) {
 		final value = _map(recipes[id], 'recipes.$id');
 		for (final field in ['aliases', 'inherit', 'parameters']) { _text(value[field], 'recipes.$id.$field', empty: true); }
 		final inherit = value['inherit'] as String;
-		if (inherit != '—' && !inherit.startsWith('繼承')) recipe(inherit.replaceAll('`', ''));
+		// 正式配方的繼承記號是 schema metadata，不是使用者介面文案。
+		if (inherit != '—' && !inherit.startsWith('\u7E7C\u627F')) recipe(inherit.replaceAll('`', ''));
 		for (final match in RegExp(r'([ps])\(([^()]+)\)').allMatches(value['parameters'] as String)) {
 			final target = match[2]!;
 			final source = match[1] == 'p' ? primitives : target.startsWith('theme.') ? semantics : recipes;

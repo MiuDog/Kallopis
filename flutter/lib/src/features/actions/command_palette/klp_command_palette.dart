@@ -3,12 +3,12 @@ import 'dart:math' as math;
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-import '../command_registry/klp_command_registry.dart';
-import '../../forms/input/klp_text_field.dart';
-import '../../../foundation/content/klp_text.dart';
-import '../../../foundation/interaction/klp_pressable.dart';
-import '../../../foundation/klp_icon.dart';
-import '../../../styling/legacy_theme/klp_theme.dart';
+import 'package:kallopis/src/features/actions/command_registry/klp_command_registry.dart';
+import 'package:kallopis/src/features/forms/input/klp_text_field.dart';
+import 'package:kallopis/src/foundation/content/klp_text.dart';
+import 'package:kallopis/src/foundation/interaction/klp_pressable.dart';
+import 'package:kallopis/src/foundation/klp_icon.dart';
+import 'package:kallopis/src/styling/legacy_theme/klp_theme.dart';
 
 /// 產品受控面板的關閉意圖；不代表產品已變更 open。
 enum KlpCommandDismissReason { escape, outside, executed }

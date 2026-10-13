@@ -3,8 +3,8 @@ import 'dart:async';
 import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
 
-import '../command_keymap/klp_command_keymap.dart';
-import '../command_registry/klp_command_registry.dart';
+import 'package:kallopis/src/features/actions/command_keymap/klp_command_keymap.dart';
+import 'package:kallopis/src/features/actions/command_registry/klp_command_registry.dart';
 
 /// 將 focused descendant 未處理的原生按鍵交同 keymap，不接管產品文字或命令權威。
 class KlpCommandShortcutHost<C> extends StatefulWidget {
@@ -171,7 +171,7 @@ class _ShortcutHostState<C> extends State<KlpCommandShortcutHost<C>> {
 				_report(error, stack);
 			}
 		}
-		_timer = Timer(Duration(milliseconds: keymap.chordTimeoutMs), expire);
+		_timer = Timer(Duration(microseconds: keymap.chordTimeoutMs * Duration.microsecondsPerMillisecond), expire);
 	}
 
 	bool _current(KlpCommandKeymap<C> keymap, int session) {

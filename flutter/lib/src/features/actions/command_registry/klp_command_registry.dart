@@ -2,7 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/foundation.dart';
 
-import '../../../foundation/klp_icon_data.dart';
+import 'package:kallopis/src/foundation/klp_icon_data.dart';
 
 /// 產品擁有的命令定義；註冊時隔離 metadata，context 與業務仍由產品擁有。
 class KlpCommandDefinition<C> {
@@ -33,6 +33,7 @@ class KlpCommandDefinition<C> {
 	final bool Function(C context)? isChecked;
 }
 
+/// 保留條件解析的原始錯誤，讓產品決定呈現與恢復方式。
 @immutable
 class KlpCommandConditionError {
 	const KlpCommandConditionError._(this.error);
@@ -40,6 +41,7 @@ class KlpCommandConditionError {
 	final Object error;
 }
 
+/// 一次 context 解析的不可變命令呈現快照，不複製產品業務狀態。
 @immutable
 class KlpCommandState {
 	const KlpCommandState._({
@@ -71,9 +73,12 @@ class KlpCommandState {
 	final KlpCommandConditionError? conditionError;
 }
 
+/// 命令執行或拒絕的結果種類，保留原 registry 判定。
 enum KlpCommandExecutionStatus { executed, missing, hidden, disabled, busy, disposed, error }
+/// 區分條件與 handler 失敗，供 caller 處理原始錯誤。
 enum KlpCommandErrorPhase { condition, handler }
 
+/// 命令 ID、執行結果與原值；錯誤及業務資料由 caller 處理。
 @immutable
 class KlpCommandExecutionResult {
 	const KlpCommandExecutionResult._({

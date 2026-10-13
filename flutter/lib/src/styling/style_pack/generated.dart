@@ -2378,890 +2378,890 @@ const klpDefaultStylePackJson = r'''{
 	},
 	"recipes": {
 		"app-background": {
-			"aliases": "app background／應用背景／頁面背景",
-			"inherit": "—",
-			"parameters": "background=s(theme.colors.app); foreground=s(theme.colors.text); padding=p(space0); border=none; radius=s(theme.shape.none); size=產品決定; shadow=none"
+			"aliases": "app background\uff0f\u61c9\u7528\u80cc\u666f\uff0f\u9801\u9762\u80cc\u666f",
+			"inherit": "\u2014",
+			"parameters": "background=s(theme.colors.app); foreground=s(theme.colors.text); padding=p(space0); border=none; radius=s(theme.shape.none); size=\u7522\u54c1\u6c7a\u5b9a; shadow=none"
 		},
 		"workspace-layout": {
-			"aliases": "工作區間距／workspace layout",
-			"inherit": "—",
-			"parameters": "background=繼承 app-background.background; frame-inset=s(theme.spacing.space2); frame-gap=s(theme.spacing.space2); size=產品決定; border=none"
+			"aliases": "\u5de5\u4f5c\u5340\u9593\u8ddd\uff0fworkspace layout",
+			"inherit": "\u2014",
+			"parameters": "background=\u7e7c\u627f app-background.background; frame-inset=s(theme.spacing.space2); frame-gap=s(theme.spacing.space2); size=\u7522\u54c1\u6c7a\u5b9a; border=none"
 		},
 		"surface-base": {
-			"aliases": "一般／輔助表面／surface base",
-			"inherit": "—",
-			"parameters": "background=s(theme.colors.surface); foreground=backgroundForeground(background); padding=p(space0); border=none; radius=s(theme.components.cardRadius); size=產品決定; shadow=none; gradient=none"
+			"aliases": "\u4e00\u822c\uff0f\u8f14\u52a9\u8868\u9762\uff0fsurface base",
+			"inherit": "\u2014",
+			"parameters": "background=s(theme.colors.surface); foreground=backgroundForeground(background); padding=p(space0); border=none; radius=s(theme.components.cardRadius); size=\u7522\u54c1\u6c7a\u5b9a; shadow=none; gradient=none"
 		},
 		"surface-inset": {
-			"aliases": "內嵌表面／surface inset",
-			"inherit": "—",
-			"parameters": "background=s(theme.colors.surfaceInset); foreground=backgroundForeground(background); padding=p(space0); border=none; radius=s(theme.components.cardRadius); size=產品決定; shadow=none; gradient=none"
+			"aliases": "\u5167\u5d4c\u8868\u9762\uff0fsurface inset",
+			"inherit": "\u2014",
+			"parameters": "background=s(theme.colors.surfaceInset); foreground=backgroundForeground(background); padding=p(space0); border=none; radius=s(theme.components.cardRadius); size=\u7522\u54c1\u6c7a\u5b9a; shadow=none; gradient=none"
 		},
 		"surface-muted": {
-			"aliases": "弱化表面／surface muted",
-			"inherit": "—",
-			"parameters": "background=s(theme.colors.surfaceMuted); foreground=backgroundForeground(background); padding=p(space0); border=none; radius=s(theme.components.cardRadius); size=產品決定; shadow=none; gradient=none"
+			"aliases": "\u5f31\u5316\u8868\u9762\uff0fsurface muted",
+			"inherit": "\u2014",
+			"parameters": "background=s(theme.colors.surfaceMuted); foreground=backgroundForeground(background); padding=p(space0); border=none; radius=s(theme.components.cardRadius); size=\u7522\u54c1\u6c7a\u5b9a; shadow=none; gradient=none"
 		},
 		"surface-component": {
-			"aliases": "控制表面／surface component",
-			"inherit": "—",
-			"parameters": "background=s(theme.colors.component); foreground=backgroundForeground(background); padding=p(space0); border=none; radius=s(theme.components.cardRadius); size=產品決定; shadow=none; gradient=none"
+			"aliases": "\u63a7\u5236\u8868\u9762\uff0fsurface component",
+			"inherit": "\u2014",
+			"parameters": "background=s(theme.colors.component); foreground=backgroundForeground(background); padding=p(space0); border=none; radius=s(theme.components.cardRadius); size=\u7522\u54c1\u6c7a\u5b9a; shadow=none; gradient=none"
 		},
 		"surface-overlay": {
-			"aliases": "浮層表面／surface overlay",
-			"inherit": "—",
-			"parameters": "background=s(theme.colors.overlay); foreground=backgroundForeground(background); padding=p(space0); border=none; radius=s(theme.components.cardRadius); size=產品決定; shadow=none; gradient=none"
+			"aliases": "\u6d6e\u5c64\u8868\u9762\uff0fsurface overlay",
+			"inherit": "\u2014",
+			"parameters": "background=s(theme.colors.overlay); foreground=backgroundForeground(background); padding=p(space0); border=none; radius=s(theme.components.cardRadius); size=\u7522\u54c1\u6c7a\u5b9a; shadow=none; gradient=none"
 		},
 		"surface-raised": {
-			"aliases": "較亮表面／surface raised",
-			"inherit": "—",
-			"parameters": "background=s(theme.colors.surfaceRaised); foreground=backgroundForeground(background); padding=p(space0); border=none; radius=s(theme.components.cardRadius); size=產品決定; shadow=none; gradient=none"
+			"aliases": "\u8f03\u4eae\u8868\u9762\uff0fsurface raised",
+			"inherit": "\u2014",
+			"parameters": "background=s(theme.colors.surfaceRaised); foreground=backgroundForeground(background); padding=p(space0); border=none; radius=s(theme.components.cardRadius); size=\u7522\u54c1\u6c7a\u5b9a; shadow=none; gradient=none"
 		},
 		"surface-stage": {
-			"aliases": "主內容表面／surface stage",
-			"inherit": "—",
-			"parameters": "background=s(theme.colors.stageSurface); foreground=backgroundForeground(background); padding=p(space0); border=none; radius=s(theme.components.cardRadius); size=產品決定; shadow=none; gradient=none"
+			"aliases": "\u4e3b\u5167\u5bb9\u8868\u9762\uff0fsurface stage",
+			"inherit": "\u2014",
+			"parameters": "background=s(theme.colors.stageSurface); foreground=backgroundForeground(background); padding=p(space0); border=none; radius=s(theme.components.cardRadius); size=\u7522\u54c1\u6c7a\u5b9a; shadow=none; gradient=none"
 		},
 		"surface-accent": {
-			"aliases": "強調表面／surface accent",
-			"inherit": "—",
-			"parameters": "background=s(theme.colors.accent); foreground=backgroundForeground(background); padding=p(space0); border=none; radius=s(theme.components.cardRadius); size=產品決定; shadow=none; gradient=none"
+			"aliases": "\u5f37\u8abf\u8868\u9762\uff0fsurface accent",
+			"inherit": "\u2014",
+			"parameters": "background=s(theme.colors.accent); foreground=backgroundForeground(background); padding=p(space0); border=none; radius=s(theme.components.cardRadius); size=\u7522\u54c1\u6c7a\u5b9a; shadow=none; gradient=none"
 		},
 		"surface-accent-soft": {
-			"aliases": "柔和強調表面／surface accent-soft",
-			"inherit": "—",
-			"parameters": "background=s(theme.colors.accentSoft); foreground=backgroundForeground(background); padding=p(space0); border=none; radius=s(theme.components.cardRadius); size=產品決定; shadow=none; gradient=none"
+			"aliases": "\u67d4\u548c\u5f37\u8abf\u8868\u9762\uff0fsurface accent-soft",
+			"inherit": "\u2014",
+			"parameters": "background=s(theme.colors.accentSoft); foreground=backgroundForeground(background); padding=p(space0); border=none; radius=s(theme.components.cardRadius); size=\u7522\u54c1\u6c7a\u5b9a; shadow=none; gradient=none"
 		},
 		"surface-transparent": {
-			"aliases": "透明表面／surface transparent",
-			"inherit": "—",
-			"parameters": "background=s(theme.colors.transparent); foreground=backgroundForeground(background); padding=p(space0); border=none; radius=s(theme.components.cardRadius); size=產品決定; shadow=none; gradient=none"
+			"aliases": "\u900f\u660e\u8868\u9762\uff0fsurface transparent",
+			"inherit": "\u2014",
+			"parameters": "background=s(theme.colors.transparent); foreground=backgroundForeground(background); padding=p(space0); border=none; radius=s(theme.components.cardRadius); size=\u7522\u54c1\u6c7a\u5b9a; shadow=none; gradient=none"
 		},
 		"surface-frosted": {
-			"aliases": "毛玻璃表面／frosted",
+			"aliases": "\u6bdb\u73bb\u7483\u8868\u9762\uff0ffrosted",
 			"inherit": "surface-base",
-			"parameters": "background=alpha(繼承.background,s(theme.surface.frostedOpacity)); blur-sigma=s(theme.surface.backdropBlurSigma); geometry=繼承"
+			"parameters": "background=alpha(\u7e7c\u627f.background,s(theme.surface.frostedOpacity)); blur-sigma=s(theme.surface.backdropBlurSigma); geometry=\u7e7c\u627f"
 		},
 		"text-tone-primary": {
-			"aliases": "主文字色／primary text／prominent",
-			"inherit": "—",
-			"parameters": "color=s(theme.colors.text); typography=繼承父層; padding/border=不適用; size=內容決定"
+			"aliases": "\u4e3b\u6587\u5b57\u8272\uff0fprimary text\uff0fprominent",
+			"inherit": "\u2014",
+			"parameters": "color=s(theme.colors.text); typography=\u7e7c\u627f\u7236\u5c64; padding/border=\u4e0d\u9069\u7528; size=\u5167\u5bb9\u6c7a\u5b9a"
 		},
 		"text-tone-muted": {
-			"aliases": "次要文字／說明文字／muted",
+			"aliases": "\u6b21\u8981\u6587\u5b57\uff0f\u8aaa\u660e\u6587\u5b57\uff0fmuted",
 			"inherit": "text-tone-primary",
 			"parameters": "color=s(theme.colors.textMuted)"
 		},
 		"text-tone-faint": {
-			"aliases": "弱化文字／提示文字色／faint",
+			"aliases": "\u5f31\u5316\u6587\u5b57\uff0f\u63d0\u793a\u6587\u5b57\u8272\uff0ffaint",
 			"inherit": "text-tone-primary",
 			"parameters": "color=s(theme.colors.textFaint)"
 		},
 		"text-display": {
-			"aliases": "展示大字／text display",
+			"aliases": "\u5c55\u793a\u5927\u5b57\uff0ftext display",
 			"inherit": "text-tone-primary",
 			"parameters": "font-size=s(theme.typography.display); line-height=s(theme.typography.displayLeading); font-weight=s(theme.typography.bold); letter-spacing=s(theme.typography.displayTracking); font-family=s(theme.typography.uiFamily); fallback=s(theme.typography.sansFallback); optical-y=s(theme.geometry.optical.uiBaselineOffsetY); color=s(theme.colors.text)"
 		},
 		"text-h1": {
-			"aliases": "一級標題／text h1",
+			"aliases": "\u4e00\u7d1a\u6a19\u984c\uff0ftext h1",
 			"inherit": "text-tone-primary",
 			"parameters": "font-size=s(theme.typography.h1); line-height=s(theme.typography.h1Leading); font-weight=s(theme.typography.bold); letter-spacing=p(space0); font-family=s(theme.typography.uiFamily); fallback=s(theme.typography.sansFallback); optical-y=s(theme.geometry.optical.uiBaselineOffsetY); color=s(theme.colors.text)"
 		},
 		"text-h2": {
-			"aliases": "二級標題／text h2",
+			"aliases": "\u4e8c\u7d1a\u6a19\u984c\uff0ftext h2",
 			"inherit": "text-tone-primary",
 			"parameters": "font-size=s(theme.typography.h2); line-height=s(theme.typography.h2Leading); font-weight=s(theme.typography.semiBold); letter-spacing=p(space0); font-family=s(theme.typography.uiFamily); fallback=s(theme.typography.sansFallback); optical-y=s(theme.geometry.optical.uiBaselineOffsetY); color=s(theme.colors.text)"
 		},
 		"text-h3": {
-			"aliases": "三級標題／text h3",
+			"aliases": "\u4e09\u7d1a\u6a19\u984c\uff0ftext h3",
 			"inherit": "text-tone-primary",
 			"parameters": "font-size=s(theme.typography.h3); line-height=s(theme.typography.h3Leading); font-weight=s(theme.typography.semiBold); letter-spacing=p(space0); font-family=s(theme.typography.uiFamily); fallback=s(theme.typography.sansFallback); optical-y=s(theme.geometry.optical.uiBaselineOffsetY); color=s(theme.colors.text)"
 		},
 		"text-h4": {
-			"aliases": "四級標題／text h4",
+			"aliases": "\u56db\u7d1a\u6a19\u984c\uff0ftext h4",
 			"inherit": "text-tone-primary",
 			"parameters": "font-size=s(theme.typography.h4); line-height=s(theme.typography.h4Leading); font-weight=s(theme.typography.semiBold); letter-spacing=p(space0); font-family=s(theme.typography.uiFamily); fallback=s(theme.typography.sansFallback); optical-y=s(theme.geometry.optical.uiBaselineOffsetY); color=s(theme.colors.text)"
 		},
 		"text-lead": {
-			"aliases": "導言／text lead",
+			"aliases": "\u5c0e\u8a00\uff0ftext lead",
 			"inherit": "text-tone-primary",
 			"parameters": "font-size=s(theme.typography.lead); line-height=s(theme.typography.leadLeading); font-weight=s(theme.typography.semiBold); letter-spacing=p(space0); font-family=s(theme.typography.uiFamily); fallback=s(theme.typography.sansFallback); optical-y=s(theme.geometry.optical.uiBaselineOffsetY); color=s(theme.colors.text)"
 		},
 		"text-body": {
-			"aliases": "正文／內文／text body",
+			"aliases": "\u6b63\u6587\uff0f\u5167\u6587\uff0ftext body",
 			"inherit": "text-tone-primary",
 			"parameters": "font-size=s(theme.typography.body); line-height=s(theme.typography.bodyLeading); font-weight=s(theme.typography.regular); letter-spacing=p(space0); font-family=s(theme.typography.uiFamily); fallback=s(theme.typography.sansFallback); optical-y=s(theme.geometry.optical.uiBaselineOffsetY); color=s(theme.colors.text)"
 		},
 		"text-sub": {
-			"aliases": "副正文／text sub",
+			"aliases": "\u526f\u6b63\u6587\uff0ftext sub",
 			"inherit": "text-tone-primary",
 			"parameters": "font-size=s(theme.typography.sub); line-height=s(theme.typography.subLeading); font-weight=s(theme.typography.regular); letter-spacing=p(space0); font-family=s(theme.typography.uiFamily); fallback=s(theme.typography.sansFallback); optical-y=s(theme.geometry.optical.uiBaselineOffsetY); color=s(theme.colors.text)"
 		},
 		"text-caption": {
-			"aliases": "註解小字／text caption",
+			"aliases": "\u8a3b\u89e3\u5c0f\u5b57\uff0ftext caption",
 			"inherit": "text-tone-primary",
 			"parameters": "font-size=s(theme.typography.caption); line-height=s(theme.typography.captionLeading); font-weight=s(theme.typography.regular); letter-spacing=p(space0); font-family=s(theme.typography.uiFamily); fallback=s(theme.typography.sansFallback); optical-y=s(theme.geometry.optical.uiBaselineOffsetY); color=s(theme.colors.text)"
 		},
 		"text-caption-strong": {
-			"aliases": "強調小字／text captionStrong",
+			"aliases": "\u5f37\u8abf\u5c0f\u5b57\uff0ftext captionStrong",
 			"inherit": "text-tone-primary",
 			"parameters": "font-size=s(theme.typography.caption); line-height=s(theme.typography.captionLeading); font-weight=s(theme.typography.semiBold); letter-spacing=p(space0); font-family=s(theme.typography.uiFamily); fallback=s(theme.typography.sansFallback); optical-y=s(theme.geometry.optical.uiBaselineOffsetY); color=s(theme.colors.text)"
 		},
 		"text-mono-caption-strong": {
-			"aliases": "等寬強調小字／text monoCaptionStrong",
+			"aliases": "\u7b49\u5bec\u5f37\u8abf\u5c0f\u5b57\uff0ftext monoCaptionStrong",
 			"inherit": "text-tone-primary",
 			"parameters": "font-size=s(theme.typography.caption); line-height=s(theme.typography.captionLeading); font-weight=s(theme.typography.bold); letter-spacing=p(space0); font-family=s(theme.typography.monoFamily); fallback=s(theme.typography.monoFallback); optical-y=s(theme.geometry.optical.monoBaselineOffsetY); color=s(theme.colors.text)"
 		},
 		"text-micro": {
-			"aliases": "極小字／text micro",
+			"aliases": "\u6975\u5c0f\u5b57\uff0ftext micro",
 			"inherit": "text-tone-primary",
 			"parameters": "font-size=s(theme.typography.micro); line-height=s(theme.typography.microLeading); font-weight=s(theme.typography.semiBold); letter-spacing=p(space0); font-family=s(theme.typography.uiFamily); fallback=s(theme.typography.sansFallback); optical-y=s(theme.geometry.optical.uiBaselineOffsetY); color=s(theme.colors.text)"
 		},
 		"text-title": {
-			"aliases": "頁面標題／text title",
+			"aliases": "\u9801\u9762\u6a19\u984c\uff0ftext title",
 			"inherit": "text-tone-primary",
 			"parameters": "font-size=s(theme.typography.title); line-height=s(theme.typography.h1Leading); font-weight=s(theme.typography.bold); letter-spacing=p(space0); font-family=s(theme.typography.uiFamily); fallback=s(theme.typography.sansFallback); optical-y=s(theme.geometry.optical.uiBaselineOffsetY); color=s(theme.colors.text)"
 		},
 		"text-section": {
-			"aliases": "區段標題／text section",
+			"aliases": "\u5340\u6bb5\u6a19\u984c\uff0ftext section",
 			"inherit": "text-tone-primary",
 			"parameters": "font-size=s(theme.typography.section); line-height=s(theme.typography.h3Leading); font-weight=s(theme.typography.semiBold); letter-spacing=p(space0); font-family=s(theme.typography.uiFamily); fallback=s(theme.typography.sansFallback); optical-y=s(theme.geometry.optical.uiBaselineOffsetY); color=s(theme.colors.text)"
 		},
 		"text-editor": {
-			"aliases": "編輯文字／text editor",
+			"aliases": "\u7de8\u8f2f\u6587\u5b57\uff0ftext editor",
 			"inherit": "text-tone-primary",
 			"parameters": "font-size=s(theme.typography.body); line-height=s(theme.typography.bodyLeading); font-weight=s(theme.typography.regular); letter-spacing=p(space0); font-family=s(theme.typography.bodyFamily); fallback=s(theme.typography.sansFallback); optical-y=s(theme.geometry.optical.uiBaselineOffsetY); color=s(theme.colors.text)"
 		},
 		"text-terminal": {
-			"aliases": "終端文字／text terminal",
+			"aliases": "\u7d42\u7aef\u6587\u5b57\uff0ftext terminal",
 			"inherit": "text-tone-primary",
 			"parameters": "font-size=s(theme.typography.body); line-height=s(theme.typography.bodyLeading); font-weight=s(theme.typography.regular); letter-spacing=s(theme.typography.labelTracking); font-family=s(theme.typography.monoFamily); fallback=s(theme.typography.monoFallback); optical-y=s(theme.geometry.optical.monoBaselineOffsetY); color=s(theme.colors.text)"
 		},
 		"text-body-strong": {
-			"aliases": "強調正文／text bodyStrong",
+			"aliases": "\u5f37\u8abf\u6b63\u6587\uff0ftext bodyStrong",
 			"inherit": "text-tone-primary",
 			"parameters": "font-size=s(theme.typography.body); line-height=s(theme.typography.bodyLeading); font-weight=s(theme.typography.semiBold); letter-spacing=p(space0); font-family=s(theme.typography.uiFamily); fallback=s(theme.typography.sansFallback); optical-y=s(theme.geometry.optical.uiBaselineOffsetY); color=s(theme.colors.text)"
 		},
 		"text-app-title": {
-			"aliases": "應用名稱／text appTitle",
+			"aliases": "\u61c9\u7528\u540d\u7a31\uff0ftext appTitle",
 			"inherit": "text-tone-primary",
 			"parameters": "font-size=s(theme.typography.sub); line-height=s(theme.typography.labelLeading); font-weight=p(weight500); letter-spacing=s(theme.typography.labelTracking); font-family=s(theme.typography.monoFamily); fallback=s(theme.typography.monoFallback); optical-y=s(theme.geometry.optical.monoBaselineOffsetY); color=s(theme.colors.text)"
 		},
 		"text-header": {
-			"aliases": "Header文字／text header",
+			"aliases": "Header\u6587\u5b57\uff0ftext header",
 			"inherit": "text-tone-primary",
 			"parameters": "font-size=s(theme.typography.body); line-height=s(theme.typography.bodyLeading); font-weight=s(theme.typography.semiBold); letter-spacing=p(space0); font-family=s(theme.typography.monoFamily); fallback=s(theme.typography.monoFallback); optical-y=s(theme.geometry.optical.monoBaselineOffsetY); color=s(theme.colors.text)"
 		},
 		"text-status": {
-			"aliases": "狀態列文字／text status",
+			"aliases": "\u72c0\u614b\u5217\u6587\u5b57\uff0ftext status",
 			"inherit": "text-tone-primary",
 			"parameters": "font-size=s(theme.typography.sub); line-height=s(theme.typography.codeLeading); font-weight=p(weight500); letter-spacing=s(theme.typography.labelTracking); font-family=s(theme.typography.monoFamily); fallback=s(theme.typography.monoFallback); optical-y=s(theme.geometry.optical.monoBaselineOffsetY); color=s(theme.colors.text)"
 		},
 		"text-label": {
-			"aliases": "控制標籤／text label",
+			"aliases": "\u63a7\u5236\u6a19\u7c64\uff0ftext label",
 			"inherit": "text-tone-primary",
 			"parameters": "font-size=s(theme.typography.sub); line-height=s(theme.typography.labelLeading); font-weight=s(theme.typography.regular); letter-spacing=s(theme.typography.labelTracking); font-family=s(theme.typography.monoFamily); fallback=s(theme.typography.monoFallback); optical-y=s(theme.geometry.optical.monoBaselineOffsetY); color=s(theme.colors.text)"
 		},
 		"text-code": {
-			"aliases": "程式碼／路徑文字／text code",
+			"aliases": "\u7a0b\u5f0f\u78bc\uff0f\u8def\u5f91\u6587\u5b57\uff0ftext code",
 			"inherit": "text-tone-primary",
 			"parameters": "font-size=s(theme.typography.sub); line-height=s(theme.typography.codeLeading); font-weight=s(theme.typography.regular); letter-spacing=s(theme.typography.labelTracking); font-family=s(theme.typography.monoFamily); fallback=s(theme.typography.monoFallback); optical-y=s(theme.geometry.optical.monoBaselineOffsetY); color=s(theme.colors.text)"
 		},
 		"button-base": {
-			"aliases": "按鈕共用幾何",
-			"inherit": "—",
-			"parameters": "background=s(theme.colors.component); foreground=s(theme.colors.text); padding-x=s(theme.components.buttonPaddingX); padding-y=p(space0); height=s(theme.components.buttonHeight); width=內容決定; radius=s(theme.components.buttonRadius); border-width=s(theme.components.buttonBorderWidth); border-color=s(theme.colors.border); border-style=solid（width=0 時none）; gap=s(theme.spacing.controlContentGap); typography=s(text-body); shadow=none; transition=s(theme.motion.stateTransition); curve=s(theme.motion.standard)"
+			"aliases": "\u6309\u9215\u5171\u7528\u5e7e\u4f55",
+			"inherit": "\u2014",
+			"parameters": "background=s(theme.colors.component); foreground=s(theme.colors.text); padding-x=s(theme.components.buttonPaddingX); padding-y=p(space0); height=s(theme.components.buttonHeight); width=\u5167\u5bb9\u6c7a\u5b9a; radius=s(theme.components.buttonRadius); border-width=s(theme.components.buttonBorderWidth); border-color=s(theme.colors.border); border-style=solid\uff08width=0 \u6642none\uff09; gap=s(theme.spacing.controlContentGap); typography=s(text-body); shadow=none; transition=s(theme.motion.stateTransition); curve=s(theme.motion.standard)"
 		},
 		"button-primary": {
-			"aliases": "主要按鈕／主操作／button primary",
+			"aliases": "\u4e3b\u8981\u6309\u9215\uff0f\u4e3b\u64cd\u4f5c\uff0fbutton primary",
 			"inherit": "button-base",
 			"parameters": "background=opaque(s(theme.colors.brand)); foreground=primaryForeground(background); typography=s(text-body-strong)"
 		},
 		"button-secondary": {
-			"aliases": "次要按鈕",
+			"aliases": "\u6b21\u8981\u6309\u9215",
 			"inherit": "button-base",
 			"parameters": "background=s(theme.colors.component); foreground=s(theme.colors.text); typography=s(text-body)"
 		},
 		"button-ghost": {
-			"aliases": "透明按鈕／幽靈按鈕",
+			"aliases": "\u900f\u660e\u6309\u9215\uff0f\u5e7d\u9748\u6309\u9215",
 			"inherit": "button-base",
 			"parameters": "background=s(theme.colors.transparent); foreground=s(theme.colors.text); typography=s(text-body)"
 		},
 		"button-danger": {
-			"aliases": "危險按鈕／刪除按鈕",
+			"aliases": "\u5371\u96aa\u6309\u9215\uff0f\u522a\u9664\u6309\u9215",
 			"inherit": "button-base",
 			"parameters": "background=alpha(s(theme.colors.danger),s(theme.surface.statusFillOpacity)); foreground=s(theme.colors.danger); typography=s(text-body)"
 		},
 		"button-dashed": {
-			"aliases": "裝飾虛線按鈕",
+			"aliases": "\u88dd\u98fe\u865b\u7dda\u6309\u9215",
 			"inherit": "button-base",
 			"parameters": "background=s(theme.colors.transparent); foreground=s(theme.colors.text); typography=s(text-body); decoration=dashed; dash-color=s(theme.colors.guide); dash-width=s(theme.shape.hairline); dash-length=s(theme.shape.dashedLength); dash-gap=s(theme.shape.dashedGap); dash-opacity=s(theme.shape.dashedOpacity)"
 		},
 		"button-size-xs": {
-			"aliases": "按鈕 xs",
+			"aliases": "\u6309\u9215 xs",
 			"inherit": "button-base",
-			"parameters": "height=s(theme.geometry.control.buttonHeightXSmall); padding-x=s(theme.spacing.controlInset); padding-y=p(space0); typography=s(text-caption); primary-label=xs/sm用text-caption-strong，md用text-body-strong，lg/xl用text-lead"
+			"parameters": "height=s(theme.geometry.control.buttonHeightXSmall); padding-x=s(theme.spacing.controlInset); padding-y=p(space0); typography=s(text-caption); primary-label=xs/sm\u7528text-caption-strong\uff0cmd\u7528text-body-strong\uff0clg/xl\u7528text-lead"
 		},
 		"button-size-sm": {
-			"aliases": "按鈕 sm",
+			"aliases": "\u6309\u9215 sm",
 			"inherit": "button-base",
-			"parameters": "height=s(theme.geometry.control.buttonHeightSmall); padding-x=s(theme.spacing.controlPaddingXSmall); padding-y=p(space0); typography=s(text-caption); primary-label=xs/sm用text-caption-strong，md用text-body-strong，lg/xl用text-lead"
+			"parameters": "height=s(theme.geometry.control.buttonHeightSmall); padding-x=s(theme.spacing.controlPaddingXSmall); padding-y=p(space0); typography=s(text-caption); primary-label=xs/sm\u7528text-caption-strong\uff0cmd\u7528text-body-strong\uff0clg/xl\u7528text-lead"
 		},
 		"button-size-md": {
-			"aliases": "按鈕 md",
+			"aliases": "\u6309\u9215 md",
 			"inherit": "button-base",
-			"parameters": "height=s(theme.components.buttonHeight); padding-x=s(theme.components.buttonPaddingX); padding-y=p(space0); typography=s(text-body); primary-label=xs/sm用text-caption-strong，md用text-body-strong，lg/xl用text-lead"
+			"parameters": "height=s(theme.components.buttonHeight); padding-x=s(theme.components.buttonPaddingX); padding-y=p(space0); typography=s(text-body); primary-label=xs/sm\u7528text-caption-strong\uff0cmd\u7528text-body-strong\uff0clg/xl\u7528text-lead"
 		},
 		"button-size-lg": {
-			"aliases": "按鈕 lg",
+			"aliases": "\u6309\u9215 lg",
 			"inherit": "button-base",
-			"parameters": "height=s(theme.geometry.control.buttonHeightLarge); padding-x=s(theme.spacing.controlPaddingXLarge); padding-y=p(space0); typography=s(text-lead); primary-label=xs/sm用text-caption-strong，md用text-body-strong，lg/xl用text-lead"
+			"parameters": "height=s(theme.geometry.control.buttonHeightLarge); padding-x=s(theme.spacing.controlPaddingXLarge); padding-y=p(space0); typography=s(text-lead); primary-label=xs/sm\u7528text-caption-strong\uff0cmd\u7528text-body-strong\uff0clg/xl\u7528text-lead"
 		},
 		"button-size-xl": {
-			"aliases": "按鈕 xl",
+			"aliases": "\u6309\u9215 xl",
 			"inherit": "button-base",
-			"parameters": "height=s(theme.geometry.control.buttonHeightXLarge); padding-x=s(theme.spacing.controlPaddingXXLarge); padding-y=p(space0); typography=s(text-lead); primary-label=xs/sm用text-caption-strong，md用text-body-strong，lg/xl用text-lead"
+			"parameters": "height=s(theme.geometry.control.buttonHeightXLarge); padding-x=s(theme.spacing.controlPaddingXXLarge); padding-y=p(space0); typography=s(text-lead); primary-label=xs/sm\u7528text-caption-strong\uff0cmd\u7528text-body-strong\uff0clg/xl\u7528text-lead"
 		},
 		"button-hover": {
-			"aliases": "按鈕 hover／focus",
-			"inherit": "繼承目前 button-*",
-			"parameters": "background=over(alpha(s(theme.colors.text),s(theme.surface.selectionWashOpacity)),繼承.background); primary特例=以primaryForeground(繼承.background)取代疊色text; foreground=primary時依新背景重新算，其他繼承; geometry=繼承"
+			"aliases": "\u6309\u9215 hover\uff0ffocus",
+			"inherit": "\u7e7c\u627f\u76ee\u524d button-*",
+			"parameters": "background=over(alpha(s(theme.colors.text),s(theme.surface.selectionWashOpacity)),\u7e7c\u627f.background); primary\u7279\u4f8b=\u4ee5primaryForeground(\u7e7c\u627f.background)\u53d6\u4ee3\u758a\u8272text; foreground=primary\u6642\u4f9d\u65b0\u80cc\u666f\u91cd\u65b0\u7b97\uff0c\u5176\u4ed6\u7e7c\u627f; geometry=\u7e7c\u627f"
 		},
 		"button-selected": {
-			"aliases": "按鈕 selected",
-			"inherit": "繼承目前 button-*",
-			"parameters": "background=over(alpha(s(theme.colors.interaction),s(theme.surface.focusWashOpacity)),繼承.background); primary特例=以primaryForeground(繼承.background)取代疊色interaction; foreground=primary時依新背景重新算，其他繼承; geometry=繼承"
+			"aliases": "\u6309\u9215 selected",
+			"inherit": "\u7e7c\u627f\u76ee\u524d button-*",
+			"parameters": "background=over(alpha(s(theme.colors.interaction),s(theme.surface.focusWashOpacity)),\u7e7c\u627f.background); primary\u7279\u4f8b=\u4ee5primaryForeground(\u7e7c\u627f.background)\u53d6\u4ee3\u758a\u8272interaction; foreground=primary\u6642\u4f9d\u65b0\u80cc\u666f\u91cd\u65b0\u7b97\uff0c\u5176\u4ed6\u7e7c\u627f; geometry=\u7e7c\u627f"
 		},
 		"button-disabled": {
-			"aliases": "停用按鈕",
-			"inherit": "繼承目前 button-*",
-			"parameters": "background=s(theme.colors.surfaceInset); foreground=s(theme.colors.textFaint); hover/selected=不套用; geometry=繼承"
+			"aliases": "\u505c\u7528\u6309\u9215",
+			"inherit": "\u7e7c\u627f\u76ee\u524d button-*",
+			"parameters": "background=s(theme.colors.surfaceInset); foreground=s(theme.colors.textFaint); hover/selected=\u4e0d\u5957\u7528; geometry=\u7e7c\u627f"
 		},
 		"icon-button": {
-			"aliases": "獨立圖示按鈕／icon button",
-			"inherit": "—",
-			"parameters": "background=s(theme.colors.component); foreground=s(theme.colors.text); width=s(theme.spacing.iconButton); height=s(theme.spacing.iconButton); radius=s(theme.shape.control); padding=無額外padding，圖示置中; icon-size=s(theme.spacing.iconBase); border=none; shadow=none"
+			"aliases": "\u7368\u7acb\u5716\u793a\u6309\u9215\uff0ficon button",
+			"inherit": "\u2014",
+			"parameters": "background=s(theme.colors.component); foreground=s(theme.colors.text); width=s(theme.spacing.iconButton); height=s(theme.spacing.iconButton); radius=s(theme.shape.control); padding=\u7121\u984d\u5916padding\uff0c\u5716\u793a\u7f6e\u4e2d; icon-size=s(theme.spacing.iconBase); border=none; shadow=none"
 		},
 		"icon-button-inline": {
-			"aliases": "行內圖示按鈕",
+			"aliases": "\u884c\u5167\u5716\u793a\u6309\u9215",
 			"inherit": "icon-button",
 			"parameters": "background=s(theme.colors.transparent)"
 		},
 		"icon-button-window": {
-			"aliases": "視窗控制圖示按鈕",
+			"aliases": "\u8996\u7a97\u63a7\u5236\u5716\u793a\u6309\u9215",
 			"inherit": "icon-button",
 			"parameters": "width=s(theme.geometry.layout.windowHeaderControlSize); height=s(theme.geometry.layout.windowHeaderControlSize)"
 		},
 		"icon-button-hover": {
-			"aliases": "圖示按鈕 hover／focus",
-			"inherit": "繼承目前 icon-button*",
-			"parameters": "background=over(alpha(s(theme.colors.text),byBrightness(s(theme.surface.focusWashOpacity),s(theme.surface.selectionWashOpacity))),s(theme.colors.component)); geometry/foreground=繼承"
+			"aliases": "\u5716\u793a\u6309\u9215 hover\uff0ffocus",
+			"inherit": "\u7e7c\u627f\u76ee\u524d icon-button*",
+			"parameters": "background=over(alpha(s(theme.colors.text),byBrightness(s(theme.surface.focusWashOpacity),s(theme.surface.selectionWashOpacity))),s(theme.colors.component)); geometry/foreground=\u7e7c\u627f"
 		},
 		"icon-button-selected": {
-			"aliases": "圖示按鈕 selected",
-			"inherit": "繼承目前 icon-button*",
-			"parameters": "background=s(theme.colors.interactionSoft); foreground=s(theme.colors.text); geometry=繼承"
+			"aliases": "\u5716\u793a\u6309\u9215 selected",
+			"inherit": "\u7e7c\u627f\u76ee\u524d icon-button*",
+			"parameters": "background=s(theme.colors.interactionSoft); foreground=s(theme.colors.text); geometry=\u7e7c\u627f"
 		},
 		"icon-button-disabled": {
-			"aliases": "停用圖示按鈕",
-			"inherit": "繼承目前 icon-button*",
-			"parameters": "foreground=s(theme.colors.textFaint); background=selected時s(theme.colors.interactionSoft)，否則繼承rest; hover=不套用; geometry=繼承"
+			"aliases": "\u505c\u7528\u5716\u793a\u6309\u9215",
+			"inherit": "\u7e7c\u627f\u76ee\u524d icon-button*",
+			"parameters": "foreground=s(theme.colors.textFaint); background=selected\u6642s(theme.colors.interactionSoft)\uff0c\u5426\u5247\u7e7c\u627frest; hover=\u4e0d\u5957\u7528; geometry=\u7e7c\u627f"
 		},
 		"field-base": {
-			"aliases": "輸入框／文字輸入欄位／text field",
-			"inherit": "—",
-			"parameters": "background=s(theme.colors.surfaceInset); foreground=s(theme.colors.text); placeholder=s(theme.colors.textFaint); icon-color=s(theme.colors.textMuted); cursor-color=s(theme.colors.interaction); height=s(theme.components.fieldHeight); width=產品決定; padding-x=s(theme.components.fieldPaddingX); padding-y=div(sub(height,mul(font-size,s(theme.geometry.control.textFieldLineHeightFactor))),p(ratio-2)); radius=s(theme.components.fieldRadius); border-width=s(theme.components.fieldBorderWidth); border-color=s(theme.colors.border); border-style=solid（width=0時none）; font-size=s(theme.typography.body); font-family=s(theme.typography.uiFamily); fallback=s(theme.typography.sansFallback); line-height=s(theme.typography.captionLeading); shadow=none"
+			"aliases": "\u8f38\u5165\u6846\uff0f\u6587\u5b57\u8f38\u5165\u6b04\u4f4d\uff0ftext field",
+			"inherit": "\u2014",
+			"parameters": "background=s(theme.colors.surfaceInset); foreground=s(theme.colors.text); placeholder=s(theme.colors.textFaint); icon-color=s(theme.colors.textMuted); cursor-color=s(theme.colors.interaction); height=s(theme.components.fieldHeight); width=\u7522\u54c1\u6c7a\u5b9a; padding-x=s(theme.components.fieldPaddingX); padding-y=div(sub(height,mul(font-size,s(theme.geometry.control.textFieldLineHeightFactor))),p(ratio-2)); radius=s(theme.components.fieldRadius); border-width=s(theme.components.fieldBorderWidth); border-color=s(theme.colors.border); border-style=solid\uff08width=0\u6642none\uff09; font-size=s(theme.typography.body); font-family=s(theme.typography.uiFamily); fallback=s(theme.typography.sansFallback); line-height=s(theme.typography.captionLeading); shadow=none"
 		},
 		"field-size-xs": {
-			"aliases": "輸入框 xs",
+			"aliases": "\u8f38\u5165\u6846 xs",
 			"inherit": "field-base",
-			"parameters": "height=s(theme.spacing.controlHeightXSmall); font-size=s(theme.typography.caption); padding-x=s(theme.spacing.tight); padding-y=繼承field-base公式，以此尺寸代入"
+			"parameters": "height=s(theme.spacing.controlHeightXSmall); font-size=s(theme.typography.caption); padding-x=s(theme.spacing.tight); padding-y=\u7e7c\u627ffield-base\u516c\u5f0f\uff0c\u4ee5\u6b64\u5c3a\u5bf8\u4ee3\u5165"
 		},
 		"field-size-sm": {
-			"aliases": "輸入框 sm",
+			"aliases": "\u8f38\u5165\u6846 sm",
 			"inherit": "field-base",
-			"parameters": "height=s(theme.spacing.controlHeightSmall); font-size=s(theme.typography.sub); padding-x=s(theme.spacing.tight); padding-y=繼承field-base公式，以此尺寸代入"
+			"parameters": "height=s(theme.spacing.controlHeightSmall); font-size=s(theme.typography.sub); padding-x=s(theme.spacing.tight); padding-y=\u7e7c\u627ffield-base\u516c\u5f0f\uff0c\u4ee5\u6b64\u5c3a\u5bf8\u4ee3\u5165"
 		},
 		"field-size-md": {
-			"aliases": "輸入框 md",
+			"aliases": "\u8f38\u5165\u6846 md",
 			"inherit": "field-base",
-			"parameters": "height=s(theme.components.fieldHeight); font-size=s(theme.typography.body); padding-x=s(theme.components.fieldPaddingX); padding-y=繼承field-base公式，以此尺寸代入"
+			"parameters": "height=s(theme.components.fieldHeight); font-size=s(theme.typography.body); padding-x=s(theme.components.fieldPaddingX); padding-y=\u7e7c\u627ffield-base\u516c\u5f0f\uff0c\u4ee5\u6b64\u5c3a\u5bf8\u4ee3\u5165"
 		},
 		"field-size-lg": {
-			"aliases": "輸入框 lg",
+			"aliases": "\u8f38\u5165\u6846 lg",
 			"inherit": "field-base",
-			"parameters": "height=s(theme.spacing.controlHeightLarge); font-size=s(theme.typography.lead); padding-x=s(theme.spacing.base); padding-y=繼承field-base公式，以此尺寸代入"
+			"parameters": "height=s(theme.spacing.controlHeightLarge); font-size=s(theme.typography.lead); padding-x=s(theme.spacing.base); padding-y=\u7e7c\u627ffield-base\u516c\u5f0f\uff0c\u4ee5\u6b64\u5c3a\u5bf8\u4ee3\u5165"
 		},
 		"field-size-xl": {
-			"aliases": "輸入框 xl",
+			"aliases": "\u8f38\u5165\u6846 xl",
 			"inherit": "field-base",
-			"parameters": "height=s(theme.spacing.controlHeightXLarge); font-size=s(theme.typography.lead); padding-x=s(theme.spacing.comfortable); padding-y=繼承field-base公式，以此尺寸代入"
+			"parameters": "height=s(theme.spacing.controlHeightXLarge); font-size=s(theme.typography.lead); padding-x=s(theme.spacing.comfortable); padding-y=\u7e7c\u627ffield-base\u516c\u5f0f\uff0c\u4ee5\u6b64\u5c3a\u5bf8\u4ee3\u5165"
 		},
 		"field-hover": {
-			"aliases": "懸停輸入框",
+			"aliases": "\u61f8\u505c\u8f38\u5165\u6846",
 			"inherit": "field-base",
-			"parameters": "background=over(alpha(s(theme.colors.text),s(theme.surface.selectionWashOpacity)),s(theme.colors.surfaceInset));  geometry=繼承"
+			"parameters": "background=over(alpha(s(theme.colors.text),s(theme.surface.selectionWashOpacity)),s(theme.colors.surfaceInset));  geometry=\u7e7c\u627f"
 		},
 		"field-focused": {
-			"aliases": "聚焦／選取輸入框",
+			"aliases": "\u805a\u7126\uff0f\u9078\u53d6\u8f38\u5165\u6846",
 			"inherit": "field-base",
-			"parameters": "background=over(alpha(s(theme.colors.interaction),s(theme.surface.focusWashOpacity)),s(theme.colors.surfaceInset));  geometry=繼承"
+			"parameters": "background=over(alpha(s(theme.colors.interaction),s(theme.surface.focusWashOpacity)),s(theme.colors.surfaceInset));  geometry=\u7e7c\u627f"
 		},
 		"field-error": {
-			"aliases": "錯誤輸入框",
+			"aliases": "\u932f\u8aa4\u8f38\u5165\u6846",
 			"inherit": "field-base",
-			"parameters": "background=alpha(s(theme.colors.danger),s(theme.surface.invalidFillOpacity));  geometry=繼承"
+			"parameters": "background=alpha(s(theme.colors.danger),s(theme.surface.invalidFillOpacity));  geometry=\u7e7c\u627f"
 		},
 		"field-disabled": {
-			"aliases": "停用輸入框",
+			"aliases": "\u505c\u7528\u8f38\u5165\u6846",
 			"inherit": "field-base",
-			"parameters": "background=s(theme.colors.surfaceMuted); foreground=s(theme.colors.textFaint); icon-color=s(theme.colors.textFaint); geometry=繼承"
+			"parameters": "background=s(theme.colors.surfaceMuted); foreground=s(theme.colors.textFaint); icon-color=s(theme.colors.textFaint); geometry=\u7e7c\u627f"
 		},
 		"field-outlined": {
-			"aliases": "有邊框輸入框",
+			"aliases": "\u6709\u908a\u6846\u8f38\u5165\u6846",
 			"inherit": "field-base",
-			"parameters": "border-width=max(繼承.border-width,s(theme.shape.stroke)); border-color=focused時s(theme.colors.interaction)，否則s(theme.colors.border); geometry=繼承"
+			"parameters": "border-width=max(\u7e7c\u627f.border-width,s(theme.shape.stroke)); border-color=focused\u6642s(theme.colors.interaction)\uff0c\u5426\u5247s(theme.colors.border); geometry=\u7e7c\u627f"
 		},
 		"field-multiline": {
-			"aliases": "多行輸入框／textarea",
+			"aliases": "\u591a\u884c\u8f38\u5165\u6846\uff0ftextarea",
 			"inherit": "field-base",
-			"parameters": "height=內容決定; padding-y=s(theme.spacing.controlPaddingY); min-lines=s(theme.geometry.control.textFieldMinLines); max-lines=s(theme.geometry.control.textFieldMaxLines); alignment=top-left"
+			"parameters": "height=\u5167\u5bb9\u6c7a\u5b9a; padding-y=s(theme.spacing.controlPaddingY); min-lines=s(theme.geometry.control.textFieldMinLines); max-lines=s(theme.geometry.control.textFieldMaxLines); alignment=top-left"
 		},
 		"card": {
-			"aliases": "卡片／內容卡片",
-			"inherit": "—",
-			"parameters": "background=s(theme.colors.component); foreground=繼承文字角色; radius=s(theme.components.cardRadius); header-padding=s(theme.components.cardPadding); content-padding=s(theme.components.cardPadding); footer-padding=s(theme.spacing.contentInset); title=s(text-body-strong); label=s(text-label); gap=s(theme.spacing.contentInlineGap); border=none; shadow=none; size=產品決定"
+			"aliases": "\u5361\u7247\uff0f\u5167\u5bb9\u5361\u7247",
+			"inherit": "\u2014",
+			"parameters": "background=s(theme.colors.component); foreground=\u7e7c\u627f\u6587\u5b57\u89d2\u8272; radius=s(theme.components.cardRadius); header-padding=s(theme.components.cardPadding); content-padding=s(theme.components.cardPadding); footer-padding=s(theme.spacing.contentInset); title=s(text-body-strong); label=s(text-label); gap=s(theme.spacing.contentInlineGap); border=none; shadow=none; size=\u7522\u54c1\u6c7a\u5b9a"
 		},
 		"card-surface": {
-			"aliases": "卡片 surface",
+			"aliases": "\u5361\u7247 surface",
 			"inherit": "card",
-			"parameters": "background=s(theme.colors.surface); shadow=none（raised只改底色）"
+			"parameters": "background=s(theme.colors.surface); shadow=none\uff08raised\u53ea\u6539\u5e95\u8272\uff09"
 		},
 		"card-muted": {
-			"aliases": "卡片 muted",
+			"aliases": "\u5361\u7247 muted",
 			"inherit": "card",
-			"parameters": "background=s(theme.colors.surfaceMuted); shadow=none（raised只改底色）"
+			"parameters": "background=s(theme.colors.surfaceMuted); shadow=none\uff08raised\u53ea\u6539\u5e95\u8272\uff09"
 		},
 		"card-raised": {
-			"aliases": "卡片 raised",
+			"aliases": "\u5361\u7247 raised",
 			"inherit": "card",
-			"parameters": "background=s(theme.colors.surfaceRaised); shadow=none（raised只改底色）"
+			"parameters": "background=s(theme.colors.surfaceRaised); shadow=none\uff08raised\u53ea\u6539\u5e95\u8272\uff09"
 		},
 		"card-selected": {
-			"aliases": "選取卡片",
-			"inherit": "繼承目前 card*",
-			"parameters": "background=over(alpha(s(theme.colors.text),s(theme.surface.selectionWashOpacity)),繼承.background); geometry=繼承"
+			"aliases": "\u9078\u53d6\u5361\u7247",
+			"inherit": "\u7e7c\u627f\u76ee\u524d card*",
+			"parameters": "background=over(alpha(s(theme.colors.text),s(theme.surface.selectionWashOpacity)),\u7e7c\u627f.background); geometry=\u7e7c\u627f"
 		},
 		"badge-base": {
-			"aliases": "狀態標記共用幾何／badge",
-			"inherit": "—",
-			"parameters": "padding-x=s(theme.components.badgePaddingX); padding-y=s(theme.spacing.space0_5); radius=s(theme.components.badgeRadius); typography=s(text-caption); size=內容決定; text-transform=uppercase; dot-size=s(theme.spacing.indicatorDot); dot-gap=s(theme.spacing.tight); shadow=none; tone-color=neutral時s(theme.colors.textMuted)，其他取status-*"
+			"aliases": "\u72c0\u614b\u6a19\u8a18\u5171\u7528\u5e7e\u4f55\uff0fbadge",
+			"inherit": "\u2014",
+			"parameters": "padding-x=s(theme.components.badgePaddingX); padding-y=s(theme.spacing.space0_5); radius=s(theme.components.badgeRadius); typography=s(text-caption); size=\u5167\u5bb9\u6c7a\u5b9a; text-transform=uppercase; dot-size=s(theme.spacing.indicatorDot); dot-gap=s(theme.spacing.tight); shadow=none; tone-color=neutral\u6642s(theme.colors.textMuted)\uff0c\u5176\u4ed6\u53d6status-*"
 		},
 		"badge-neutral": {
-			"aliases": "中性標記／filled neutral",
+			"aliases": "\u4e2d\u6027\u6a19\u8a18\uff0ffilled neutral",
 			"inherit": "badge-base",
 			"parameters": "background=s(theme.colors.component); foreground=s(theme.colors.text); border-width=s(theme.shape.hairline); border-color=s(theme.colors.divider); border-style=solid"
 		},
 		"badge-status": {
-			"aliases": "語意色標記／filled status",
+			"aliases": "\u8a9e\u610f\u8272\u6a19\u8a18\uff0ffilled status",
 			"inherit": "badge-base",
 			"parameters": "background=alpha(tone-color,s(theme.surface.statusFillOpacity)); foreground=s(theme.colors.text); border-width=s(theme.shape.hairline); border-color=tone-color; border-style=solid"
 		},
 		"badge-outline": {
-			"aliases": "描邊標記",
+			"aliases": "\u63cf\u908a\u6a19\u8a18",
 			"inherit": "badge-base",
 			"parameters": "background=none; foreground=tone-color; border-width=s(theme.shape.hairline); border-color=tone-color; border-style=solid"
 		},
 		"badge-solid": {
-			"aliases": "實底標記",
+			"aliases": "\u5be6\u5e95\u6a19\u8a18",
 			"inherit": "badge-base",
 			"parameters": "background=s(theme.colors.text); foreground=s(theme.colors.stageSurface); border=none"
 		},
 		"status-success": {
-			"aliases": "成功／完成",
-			"inherit": "—",
-			"parameters": "color=s(theme.colors.success); on-status=s(theme.colors.onStatus); fill-opacity=s(theme.surface.statusFillOpacity); padding/border/size=繼承使用它的元件"
+			"aliases": "\u6210\u529f\uff0f\u5b8c\u6210",
+			"inherit": "\u2014",
+			"parameters": "color=s(theme.colors.success); on-status=s(theme.colors.onStatus); fill-opacity=s(theme.surface.statusFillOpacity); padding/border/size=\u7e7c\u627f\u4f7f\u7528\u5b83\u7684\u5143\u4ef6"
 		},
 		"status-warning": {
-			"aliases": "警告",
-			"inherit": "—",
-			"parameters": "color=s(theme.colors.warning); on-status=s(theme.colors.onStatus); fill-opacity=s(theme.surface.statusFillOpacity); padding/border/size=繼承使用它的元件"
+			"aliases": "\u8b66\u544a",
+			"inherit": "\u2014",
+			"parameters": "color=s(theme.colors.warning); on-status=s(theme.colors.onStatus); fill-opacity=s(theme.surface.statusFillOpacity); padding/border/size=\u7e7c\u627f\u4f7f\u7528\u5b83\u7684\u5143\u4ef6"
 		},
 		"status-danger": {
-			"aliases": "危險／錯誤／破壞性操作",
-			"inherit": "—",
-			"parameters": "color=s(theme.colors.danger); on-status=s(theme.colors.onStatus); fill-opacity=s(theme.surface.statusFillOpacity); padding/border/size=繼承使用它的元件"
+			"aliases": "\u5371\u96aa\uff0f\u932f\u8aa4\uff0f\u7834\u58de\u6027\u64cd\u4f5c",
+			"inherit": "\u2014",
+			"parameters": "color=s(theme.colors.danger); on-status=s(theme.colors.onStatus); fill-opacity=s(theme.surface.statusFillOpacity); padding/border/size=\u7e7c\u627f\u4f7f\u7528\u5b83\u7684\u5143\u4ef6"
 		},
 		"status-info": {
-			"aliases": "資訊",
-			"inherit": "—",
-			"parameters": "color=s(theme.colors.info); on-status=s(theme.colors.onStatus); fill-opacity=s(theme.surface.statusFillOpacity); padding/border/size=繼承使用它的元件"
+			"aliases": "\u8cc7\u8a0a",
+			"inherit": "\u2014",
+			"parameters": "color=s(theme.colors.info); on-status=s(theme.colors.onStatus); fill-opacity=s(theme.surface.statusFillOpacity); padding/border/size=\u7e7c\u627f\u4f7f\u7528\u5b83\u7684\u5143\u4ef6"
 		},
 		"frame": {
-			"aliases": "內容Frame／app frame",
-			"inherit": "—",
-			"parameters": "background=s(theme.colors.surface); foreground=backgroundForeground(background); padding=p(space0); radius=s(theme.shape.panel); border=none; shadow=none; size=父布局分配; outer-gap=繼承workspace-layout.frame-gap"
+			"aliases": "\u5167\u5bb9Frame\uff0fapp frame",
+			"inherit": "\u2014",
+			"parameters": "background=s(theme.colors.surface); foreground=backgroundForeground(background); padding=p(space0); radius=s(theme.shape.panel); border=none; shadow=none; size=\u7236\u5e03\u5c40\u5206\u914d; outer-gap=\u7e7c\u627fworkspace-layout.frame-gap"
 		},
 		"frame-sidebar": {
-			"aliases": "側欄Frame",
+			"aliases": "\u5074\u6b04Frame",
 			"inherit": "frame",
 			"parameters": "background=s(theme.colors.surfaceInset); width=s(theme.geometry.layout.primaryPaneWidth)"
 		},
 		"frame-auxiliary": {
-			"aliases": "輔助Frame",
+			"aliases": "\u8f14\u52a9Frame",
 			"inherit": "frame",
 			"parameters": "background=s(theme.colors.surfaceInset)"
 		},
 		"frame-right-sidebar": {
-			"aliases": "右側欄Frame",
+			"aliases": "\u53f3\u5074\u6b04Frame",
 			"inherit": "frame",
-			"parameters": "background=繼承父層; radius=不適用; shadow=none; width=s(theme.geometry.layout.secondaryPaneWidth); decoration=none（bare）"
+			"parameters": "background=\u7e7c\u627f\u7236\u5c64; radius=\u4e0d\u9069\u7528; shadow=none; width=s(theme.geometry.layout.secondaryPaneWidth); decoration=none\uff08bare\uff09"
 		},
 		"frame-toolbar-controls": {
-			"aliases": "工具控制區Frame",
+			"aliases": "\u5de5\u5177\u63a7\u5236\u5340Frame",
 			"inherit": "frame",
-			"parameters": "background=繼承父層; radius=不適用; shadow=none; width=add(mul(s(theme.spacing.space8),p(ratio-3)),mul(s(theme.spacing.space1),p(ratio-6))); decoration=none（bare）"
+			"parameters": "background=\u7e7c\u627f\u7236\u5c64; radius=\u4e0d\u9069\u7528; shadow=none; width=add(mul(s(theme.spacing.space8),p(ratio-3)),mul(s(theme.spacing.space1),p(ratio-6))); decoration=none\uff08bare\uff09"
 		},
 		"frame-raised": {
-			"aliases": "微立體Frame",
-			"inherit": "繼承目前 frame*",
-			"parameters": "shadow=s(effect-frame-relief); bare角色=不套用; geometry=繼承"
+			"aliases": "\u5fae\u7acb\u9ad4Frame",
+			"inherit": "\u7e7c\u627f\u76ee\u524d frame*",
+			"parameters": "shadow=s(effect-frame-relief); bare\u89d2\u8272=\u4e0d\u5957\u7528; geometry=\u7e7c\u627f"
 		},
 		"panel-frame": {
-			"aliases": "面板框架／panel frame",
-			"inherit": "—",
-			"parameters": "background=s(theme.colors.surface); foreground=backgroundForeground(background); outer-margin=s(theme.spacing.dockMargin); padding=p(space0); radius=s(theme.shape.card); clip-radius=sub(s(theme.shape.card),s(theme.shape.stroke)); header-height=s(theme.spacing.chromeHeader); footer-height=s(theme.spacing.chromeStatusBar); border=none; shadow=none; size=父布局分配"
+			"aliases": "\u9762\u677f\u6846\u67b6\uff0fpanel frame",
+			"inherit": "\u2014",
+			"parameters": "background=s(theme.colors.surface); foreground=backgroundForeground(background); outer-margin=s(theme.spacing.dockMargin); padding=p(space0); radius=s(theme.shape.card); clip-radius=sub(s(theme.shape.card),s(theme.shape.stroke)); header-height=s(theme.spacing.chromeHeader); footer-height=s(theme.spacing.chromeStatusBar); border=none; shadow=none; size=\u7236\u5e03\u5c40\u5206\u914d"
 		},
 		"panel-frame-stage": {
-			"aliases": "主內容面板框架",
+			"aliases": "\u4e3b\u5167\u5bb9\u9762\u677f\u6846\u67b6",
 			"inherit": "panel-frame",
 			"parameters": "background=s(theme.colors.stageSurface)"
 		},
 		"panel-frame-dock": {
-			"aliases": "Dock面板標題尺度",
+			"aliases": "Dock\u9762\u677f\u6a19\u984c\u5c3a\u5ea6",
 			"inherit": "panel-frame",
 			"parameters": "header-height=s(theme.spacing.chromeTab)"
 		},
 		"panel-frame-raised": {
-			"aliases": "微立體面板",
-			"inherit": "繼承目前 panel-frame*",
+			"aliases": "\u5fae\u7acb\u9ad4\u9762\u677f",
+			"inherit": "\u7e7c\u627f\u76ee\u524d panel-frame*",
 			"parameters": "shadow=s(effect-frame-relief)"
 		},
 		"stage-frame": {
-			"aliases": "舞台容器／stage frame",
-			"inherit": "—",
-			"parameters": "background=s(theme.colors.stageSurface); foreground=backgroundForeground(background); padding=p(space0); border=none; radius=不適用; shadow=none; header-min-height=s(theme.spacing.chromeHeader); status-height=s(theme.spacing.chromeStatusBar); size=父布局分配"
+			"aliases": "\u821e\u53f0\u5bb9\u5668\uff0fstage frame",
+			"inherit": "\u2014",
+			"parameters": "background=s(theme.colors.stageSurface); foreground=backgroundForeground(background); padding=p(space0); border=none; radius=\u4e0d\u9069\u7528; shadow=none; header-min-height=s(theme.spacing.chromeHeader); status-height=s(theme.spacing.chromeStatusBar); size=\u7236\u5e03\u5c40\u5206\u914d"
 		},
 		"explorer-row": {
-			"aliases": "Explorer資料列／檔案列",
-			"inherit": "—",
-			"parameters": "background=繼承父層; foreground=s(theme.colors.text); height=add(s(theme.spacing.controlHeightXSmall),s(theme.geometry.control.fileExplorerRowHeightAdjustment)); row-padding-end=s(theme.spacing.tight); icon-size=s(theme.spacing.iconSmall); icon-color=s(theme.colors.textMuted); icon-gap=s(theme.spacing.contentInlineGap); typography=s(text-code); leading-width=add(s(theme.spacing.iconSmall),s(theme.geometry.layout.treeLeadingGap)); indent=mul(level,s(theme.spacing.tight)); outer-padding-x=s(theme.spacing.navigationItemInset); outer-padding-y=s(theme.spacing.hairline); border=none; shadow=none; width=父布局分配"
+			"aliases": "Explorer\u8cc7\u6599\u5217\uff0f\u6a94\u6848\u5217",
+			"inherit": "\u2014",
+			"parameters": "background=\u7e7c\u627f\u7236\u5c64; foreground=s(theme.colors.text); height=add(s(theme.spacing.controlHeightXSmall),s(theme.geometry.control.fileExplorerRowHeightAdjustment)); row-padding-end=s(theme.spacing.tight); icon-size=s(theme.spacing.iconSmall); icon-color=s(theme.colors.textMuted); icon-gap=s(theme.spacing.contentInlineGap); typography=s(text-code); leading-width=add(s(theme.spacing.iconSmall),s(theme.geometry.layout.treeLeadingGap)); indent=mul(level,s(theme.spacing.tight)); outer-padding-x=s(theme.spacing.navigationItemInset); outer-padding-y=s(theme.spacing.hairline); border=none; shadow=none; width=\u7236\u5e03\u5c40\u5206\u914d"
 		},
 		"explorer-folder-row": {
-			"aliases": "Explorer資料夾列",
+			"aliases": "Explorer\u8cc7\u6599\u593e\u5217",
 			"inherit": "explorer-row",
-			"parameters": "height=s(theme.spacing.controlHeightXSmall); disclosure=產品選用圖示"
+			"parameters": "height=s(theme.spacing.controlHeightXSmall); disclosure=\u7522\u54c1\u9078\u7528\u5716\u793a"
 		},
 		"explorer-row-hover": {
-			"aliases": "Explorer懸停資料列",
+			"aliases": "Explorer\u61f8\u505c\u8cc7\u6599\u5217",
 			"inherit": "explorer-row",
-			"parameters": "overlay=alpha(s(theme.colors.text),s(theme.surface.selectionWashOpacity)); overlay-radius=s(theme.shape.control); geometry=繼承"
+			"parameters": "overlay=alpha(s(theme.colors.text),s(theme.surface.selectionWashOpacity)); overlay-radius=s(theme.shape.control); geometry=\u7e7c\u627f"
 		},
 		"explorer-row-selected": {
-			"aliases": "Explorer選取資料列",
+			"aliases": "Explorer\u9078\u53d6\u8cc7\u6599\u5217",
 			"inherit": "explorer-row-hover",
-			"parameters": "icon-color=s(theme.colors.text); overlay=繼承（hover／selected同色）；不新增虛線框"
+			"parameters": "icon-color=s(theme.colors.text); overlay=\u7e7c\u627f\uff08hover\uff0fselected\u540c\u8272\uff09\uff1b\u4e0d\u65b0\u589e\u865b\u7dda\u6846"
 		},
 		"explorer-spacing-relaxed": {
-			"aliases": "較寬樹狀節奏",
+			"aliases": "\u8f03\u5bec\u6a39\u72c0\u7bc0\u594f",
 			"inherit": "explorer-row",
 			"parameters": "indent=mul(level,s(theme.spacing.base))"
 		},
 		"explorer-spacing-flush": {
-			"aliases": "貼齊Explorer／flush",
+			"aliases": "\u8cbc\u9f4aExplorer\uff0fflush",
 			"inherit": "explorer-row",
 			"parameters": "outer-padding-x=p(space0); outer-padding-y=p(space0); section-margin-x=s(theme.spacing.hairline)"
 		},
 		"action-region": {
-			"aliases": "可操作資料區域",
-			"inherit": "—",
-			"parameters": "background=s(theme.colors.transparent); foreground=s(theme.colors.textMuted); radius=s(theme.shape.card); padding/size=繼承所屬元件; border=none; shadow=none"
+			"aliases": "\u53ef\u64cd\u4f5c\u8cc7\u6599\u5340\u57df",
+			"inherit": "\u2014",
+			"parameters": "background=s(theme.colors.transparent); foreground=s(theme.colors.textMuted); radius=s(theme.shape.card); padding/size=\u7e7c\u627f\u6240\u5c6c\u5143\u4ef6; border=none; shadow=none"
 		},
 		"action-region-hover": {
-			"aliases": "可操作資料區域hover／focus",
+			"aliases": "\u53ef\u64cd\u4f5c\u8cc7\u6599\u5340\u57dfhover\uff0ffocus",
 			"inherit": "action-region",
 			"parameters": "background=alpha(s(theme.colors.text),s(theme.surface.selectionWashOpacity))"
 		},
 		"action-region-selected": {
-			"aliases": "可操作資料區域selected",
+			"aliases": "\u53ef\u64cd\u4f5c\u8cc7\u6599\u5340\u57dfselected",
 			"inherit": "action-region",
 			"parameters": "background=s(theme.colors.interactionSoft); foreground=s(theme.colors.text)"
 		},
 		"action-region-destructive": {
-			"aliases": "破壞性可操作區域",
+			"aliases": "\u7834\u58de\u6027\u53ef\u64cd\u4f5c\u5340\u57df",
 			"inherit": "action-region",
 			"parameters": "foreground=s(theme.colors.danger); active-background=s(theme.colors.danger); active-foreground=s(theme.colors.onStatus)"
 		},
 		"menu": {
-			"aliases": "彈出選單／menu panel",
-			"inherit": "—",
-			"parameters": "background=s(theme.colors.overlay); foreground=backgroundForeground(background); padding=s(theme.spacing.tight); radius=s(theme.components.menuRadius); width-base=s(theme.geometry.layout.menuWidth); width=依項目量測／scrollable選項，基準width-base; border=none; shadow=s(effect-menu-shadow)"
+			"aliases": "\u5f48\u51fa\u9078\u55ae\uff0fmenu panel",
+			"inherit": "\u2014",
+			"parameters": "background=s(theme.colors.overlay); foreground=backgroundForeground(background); padding=s(theme.spacing.tight); radius=s(theme.components.menuRadius); width-base=s(theme.geometry.layout.menuWidth); width=\u4f9d\u9805\u76ee\u91cf\u6e2c\uff0fscrollable\u9078\u9805\uff0c\u57fa\u6e96width-base; border=none; shadow=s(effect-menu-shadow)"
 		},
 		"menu-item": {
-			"aliases": "選單項目",
+			"aliases": "\u9078\u55ae\u9805\u76ee",
 			"inherit": "action-region",
 			"parameters": "radius=s(theme.shape.control); height=s(theme.components.menuItemHeight); padding-x=s(theme.components.menuPadding); padding-y=p(space0); typography=s(text-label); icon-size=s(theme.spacing.iconSmall); gap=s(theme.spacing.overlayItemGap); icon-optical-y=s(theme.geometry.optical.menuIconOffsetY)"
 		},
 		"menu-item-description": {
-			"aliases": "附說明選單項目",
+			"aliases": "\u9644\u8aaa\u660e\u9078\u55ae\u9805\u76ee",
 			"inherit": "menu-item",
 			"parameters": "height=mul(s(theme.components.menuItemHeight),p(ratio-2)); description=s(text-caption); description-color=s(theme.colors.textMuted)"
 		},
 		"menu-item-selected": {
-			"aliases": "選取選單項目",
+			"aliases": "\u9078\u53d6\u9078\u55ae\u9805\u76ee",
 			"inherit": "menu-item",
 			"parameters": "background=s(theme.colors.interactionSoft); foreground=s(theme.colors.text)"
 		},
 		"menu-item-hover": {
-			"aliases": "選單hover／keyboard focus",
+			"aliases": "\u9078\u55aehover\uff0fkeyboard focus",
 			"inherit": "menu-item",
 			"parameters": "background=alpha(s(theme.colors.text),s(theme.surface.selectionWashOpacity))"
 		},
 		"menu-item-danger": {
-			"aliases": "危險選單項目",
+			"aliases": "\u5371\u96aa\u9078\u55ae\u9805\u76ee",
 			"inherit": "menu-item",
 			"parameters": "foreground=s(theme.colors.danger); active-background=s(theme.colors.danger); active-foreground=s(theme.colors.onStatus)"
 		},
 		"dialog": {
-			"aliases": "對話框",
+			"aliases": "\u5c0d\u8a71\u6846",
 			"inherit": "surface-base",
-			"parameters": "radius=s(theme.shape.panel); max-width=s(theme.geometry.layout.dialogMaximumWidth); heading-padding=s(theme.spacing.comfortable); content-padding=s(theme.spacing.comfortable); actions-padding=s(theme.spacing.base); heading-gap=s(theme.spacing.overlayHeadingGap); action-gap=s(theme.spacing.actionGap); title=s(text-title); label=s(text-label); primary-action=s(button-primary); secondary-action=s(button-ghost); shadow=none; positioning/scrim=產品彈出宿主決定"
+			"parameters": "radius=s(theme.shape.panel); max-width=s(theme.geometry.layout.dialogMaximumWidth); heading-padding=s(theme.spacing.comfortable); content-padding=s(theme.spacing.comfortable); actions-padding=s(theme.spacing.base); heading-gap=s(theme.spacing.overlayHeadingGap); action-gap=s(theme.spacing.actionGap); title=s(text-title); label=s(text-label); primary-action=s(button-primary); secondary-action=s(button-ghost); shadow=none; positioning/scrim=\u7522\u54c1\u5f48\u51fa\u5bbf\u4e3b\u6c7a\u5b9a"
 		},
 		"scrollbar": {
-			"aliases": "捲軸",
-			"inherit": "—",
-			"parameters": "thumb-color=s(theme.colors.textFaint); track-color=s(theme.colors.transparent); track-border-color=s(theme.colors.transparent); thickness=s(theme.geometry.control.scrollbarThickness); radius=s(theme.shape.pill); track-visible=false; length/padding=宿主決定"
+			"aliases": "\u6372\u8ef8",
+			"inherit": "\u2014",
+			"parameters": "thumb-color=s(theme.colors.textFaint); track-color=s(theme.colors.transparent); track-border-color=s(theme.colors.transparent); thickness=s(theme.geometry.control.scrollbarThickness); radius=s(theme.shape.pill); track-visible=false; length/padding=\u5bbf\u4e3b\u6c7a\u5b9a"
 		},
 		"tooltip": {
-			"aliases": "工具提示",
-			"inherit": "—",
-			"parameters": "background=s(theme.colors.overlay); foreground=s(theme.colors.textMuted); radius=s(theme.shape.control); padding-x=s(theme.spacing.overlayContentInset); padding-y=s(theme.spacing.tight); font-family=s(theme.typography.uiFamily); font-size=s(theme.typography.caption); border=none; delay=s(theme.motion.tooltipDelay); dwell=s(theme.motion.tooltipDwell); prefer-below=false; size=內容決定"
+			"aliases": "\u5de5\u5177\u63d0\u793a",
+			"inherit": "\u2014",
+			"parameters": "background=s(theme.colors.overlay); foreground=s(theme.colors.textMuted); radius=s(theme.shape.control); padding-x=s(theme.spacing.overlayContentInset); padding-y=s(theme.spacing.tight); font-family=s(theme.typography.uiFamily); font-size=s(theme.typography.caption); border=none; delay=s(theme.motion.tooltipDelay); dwell=s(theme.motion.tooltipDwell); prefer-below=false; size=\u5167\u5bb9\u6c7a\u5b9a"
 		},
 		"effect-paper-shadow": {
-			"aliases": "紙片雙層陰影／overlayShadow",
-			"inherit": "—",
-			"parameters": "contact=color alpha(s(theme.surface.overlayShadowColor),s(theme.surface.contactShadowOpacity)), offset(p(space0),s(theme.surface.contactOffsetY)), blur=s(theme.surface.contactBlur), spread=p(space0); ambient=color alpha(s(theme.surface.overlayShadowColor),s(theme.surface.overlayShadowOpacity)), offset(p(space0),s(theme.surface.overlayOffsetY)), blur=s(theme.surface.overlayBlur), spread=s(theme.surface.overlaySpread); enabled=theme.surface.separation=shadow，其餘none"
+			"aliases": "\u7d19\u7247\u96d9\u5c64\u9670\u5f71\uff0foverlayShadow",
+			"inherit": "\u2014",
+			"parameters": "contact=color alpha(s(theme.surface.overlayShadowColor),s(theme.surface.contactShadowOpacity)), offset(p(space0),s(theme.surface.contactOffsetY)), blur=s(theme.surface.contactBlur), spread=p(space0); ambient=color alpha(s(theme.surface.overlayShadowColor),s(theme.surface.overlayShadowOpacity)), offset(p(space0),s(theme.surface.overlayOffsetY)), blur=s(theme.surface.overlayBlur), spread=s(theme.surface.overlaySpread); enabled=theme.surface.separation=shadow\uff0c\u5176\u9918none"
 		},
 		"effect-menu-shadow": {
-			"aliases": "選單專用單層陰影",
-			"inherit": "—",
-			"parameters": "color=alpha(s(theme.colors.modalScrim),s(theme.surface.overlayShadowOpacity)); offset=(p(space0),s(theme.surface.overlayOffsetY)); blur=s(theme.surface.overlayBlur); spread=s(theme.surface.overlaySpread); 不增加接觸層"
+			"aliases": "\u9078\u55ae\u5c08\u7528\u55ae\u5c64\u9670\u5f71",
+			"inherit": "\u2014",
+			"parameters": "color=alpha(s(theme.colors.modalScrim),s(theme.surface.overlayShadowOpacity)); offset=(p(space0),s(theme.surface.overlayOffsetY)); blur=s(theme.surface.overlayBlur); spread=s(theme.surface.overlaySpread); \u4e0d\u589e\u52a0\u63a5\u89f8\u5c64"
 		},
 		"effect-frame-relief": {
-			"aliases": "Frame微立體陰影與亮邊",
-			"inherit": "—",
-			"parameters": "scale=div(s(theme.spacing.space1),p(space100)); dark=surface.R/G/B全部小於100; shadow-rgb=s(theme.surface.overlayShadowColor); shadow-alpha=dark?p(opacity-0_47843137254901963):p(opacity-0_1803921568627451); shadow-offset=(mul(p(space50),scale),mul(p(length-3),scale)); blur=mul(p(length-5),scale); spread=mul(p(length-minus-1),scale); highlight-rgb=p(ink50); highlight-alpha=dark?p(opacity-0_07058823529411765):p(opacity-0_8509803921568627); highlight-offset=(mul(p(length-minus-1),scale),mul(p(length-minus-1),scale)); highlight-blur=p(space0); 陰影在裁切之外"
+			"aliases": "Frame\u5fae\u7acb\u9ad4\u9670\u5f71\u8207\u4eae\u908a",
+			"inherit": "\u2014",
+			"parameters": "scale=div(s(theme.spacing.space1),p(space100)); dark=surface.R/G/B\u5168\u90e8\u5c0f\u65bc100; shadow-rgb=s(theme.surface.overlayShadowColor); shadow-alpha=dark?p(opacity-0_47843137254901963):p(opacity-0_1803921568627451); shadow-offset=(mul(p(space50),scale),mul(p(length-3),scale)); blur=mul(p(length-5),scale); spread=mul(p(length-minus-1),scale); highlight-rgb=p(ink50); highlight-alpha=dark?p(opacity-0_07058823529411765):p(opacity-0_8509803921568627); highlight-offset=(mul(p(length-minus-1),scale),mul(p(length-minus-1),scale)); highlight-blur=p(space0); \u9670\u5f71\u5728\u88c1\u5207\u4e4b\u5916"
 		},
 		"motion-reduced": {
-			"aliases": "減少動態效果",
-			"inherit": "—",
-			"parameters": "state-transition=p(duration0); overlay-enter=p(duration0); overlay-exit=p(duration0); 其他=繼承theme.motion"
+			"aliases": "\u6e1b\u5c11\u52d5\u614b\u6548\u679c",
+			"inherit": "\u2014",
+			"parameters": "state-transition=p(duration0); overlay-enter=p(duration0); overlay-exit=p(duration0); \u5176\u4ed6=\u7e7c\u627ftheme.motion"
 		}
 	},
 	"primitiveDescriptions": {
-		"parchment50": "現有公開primitive",
-		"parchment75": "現有公開primitive",
-		"parchment100": "現有公開primitive",
-		"parchment150": "現有公開primitive",
-		"parchment200": "現有公開primitive",
-		"parchment250": "現有公開primitive",
-		"parchment350": "現有公開primitive",
-		"parchment550": "現有公開primitive",
-		"parchment700": "現有公開primitive",
-		"parchment750": "現有公開primitive",
-		"parchment800": "現有公開primitive",
-		"parchment825": "現有公開primitive",
-		"parchment900": "現有公開primitive",
-		"parchment925": "現有公開primitive",
-		"parchment950": "現有公開primitive",
-		"ink1000": "現有公開primitive",
-		"transparent": "現有公開primitive",
-		"ink50": "現有公開primitive",
-		"ink100": "現有公開primitive",
-		"ink150": "現有公開primitive",
-		"ink200": "現有公開primitive",
-		"ink250": "現有公開primitive",
-		"ink300": "現有公開primitive",
-		"ink350": "現有公開primitive",
-		"ink400": "現有公開primitive",
-		"ink450": "現有公開primitive",
-		"ink500": "現有公開primitive",
-		"ink550": "現有公開primitive",
-		"ink600": "現有公開primitive",
-		"ink650": "現有公開primitive",
-		"ink700": "現有公開primitive",
-		"ink750": "現有公開primitive",
-		"ink800": "現有公開primitive",
-		"ink850": "現有公開primitive",
-		"ink900": "現有公開primitive",
-		"ink950": "現有公開primitive",
-		"warmNeutral25": "現有公開primitive",
-		"warmNeutral50": "現有公開primitive",
-		"warmNeutral100": "現有公開primitive",
-		"warmNeutral200": "現有公開primitive",
-		"warmNeutral300": "現有公開primitive",
-		"warmNeutral400": "現有公開primitive",
-		"warmNeutral450": "現有公開primitive",
-		"warmNeutral500": "現有公開primitive",
-		"warmNeutral600": "現有公開primitive",
-		"warmNeutral700": "現有公開primitive",
-		"warmNeutral750": "現有公開primitive",
-		"warmNeutral800": "現有公開primitive",
-		"warmNeutral900": "現有公開primitive",
-		"sand50": "現有公開primitive",
-		"sand300": "現有公開primitive",
-		"sand500": "現有公開primitive",
-		"sand800": "現有公開primitive",
-		"sand900": "現有公開primitive",
-		"gold50": "現有公開primitive",
-		"gold300": "現有公開primitive",
-		"gold500": "現有公開primitive",
-		"gold800": "現有公開primitive",
-		"gold900": "現有公開primitive",
-		"ochre50": "現有公開primitive",
-		"ochre300": "現有公開primitive",
-		"ochre500": "現有公開primitive",
-		"ochre800": "現有公開primitive",
-		"ochre900": "現有公開primitive",
-		"terracotta50": "現有公開primitive",
-		"terracotta300": "現有公開primitive",
-		"terracotta500": "現有公開primitive",
-		"terracotta800": "現有公開primitive",
-		"terracotta900": "現有公開primitive",
-		"clay50": "現有公開primitive",
-		"clay300": "現有公開primitive",
-		"clay500": "現有公開primitive",
-		"clay800": "現有公開primitive",
-		"clay900": "現有公開primitive",
-		"umber50": "現有公開primitive",
-		"umber300": "現有公開primitive",
-		"umber500": "現有公開primitive",
-		"umber800": "現有公開primitive",
-		"umber900": "現有公開primitive",
-		"green100": "現有公開primitive",
-		"green400": "現有公開primitive",
-		"green500": "現有公開primitive",
-		"green600": "現有公開primitive",
-		"green800": "現有公開primitive",
-		"green900": "現有公開primitive",
-		"red100": "現有公開primitive",
-		"red300": "現有公開primitive",
-		"red400": "現有公開primitive",
-		"red600": "現有公開primitive",
-		"red800": "現有公開primitive",
-		"red900": "現有公開primitive",
-		"amber500": "現有公開primitive",
-		"blue500": "現有公開primitive",
-		"scrim": "現有公開primitive",
-		"line": "現有公開primitive",
-		"transparentSurface": "現有公開primitive",
-		"transparentSurfaceInset": "現有公開primitive",
-		"pureWhite": "現有公開primitive",
-		"pureBlack": "現有公開primitive",
-		"accent-ink-light": "現有accent配對原料",
-		"accent-ink-dark": "現有accent配對原料",
-		"accent-terracotta-light": "現有accent配對原料",
-		"accent-terracotta-dark": "現有accent配對原料",
-		"accent-ochre-light": "現有accent配對原料",
-		"accent-ochre-dark": "現有accent配對原料",
-		"accent-olive-light": "現有accent配對原料",
-		"accent-olive-dark": "現有accent配對原料",
-		"accent-slate-light": "現有accent配對原料",
-		"accent-slate-dark": "現有accent配對原料",
-		"accent-crimson-light": "現有accent配對原料",
-		"accent-crimson-dark": "現有accent配對原料",
-		"color-b8292724": "原實作值的文件名稱；未新增設計",
-		"color-b835322d": "原實作值的文件名稱；未新增設計",
-		"space0": "現有公開primitive",
-		"space50": "現有公開primitive",
-		"space100": "現有公開primitive",
-		"space200": "現有公開primitive",
-		"space250": "現有公開primitive",
-		"space300": "現有公開primitive",
-		"space400": "現有公開primitive",
-		"space600": "現有公開primitive",
-		"space800": "現有公開primitive",
-		"space1000": "現有公開primitive",
-		"space1200": "現有公開primitive",
-		"space1600": "現有公開primitive",
-		"space2400": "現有公開primitive",
-		"radius0": "現有公開primitive",
-		"radius50": "現有公開primitive",
-		"radius100": "現有公開primitive",
-		"radius150": "現有公開primitive",
-		"radius200": "現有公開primitive",
-		"radius250": "現有公開primitive",
-		"radius300": "現有公開primitive",
-		"radius400": "現有公開primitive",
-		"radiusFull": "現有公開primitive",
-		"stroke0": "現有公開primitive",
-		"stroke100": "現有公開primitive",
-		"stroke200": "現有公開primitive",
-		"font100": "現有公開primitive",
-		"font200": "現有公開primitive",
-		"font300": "現有公開primitive",
-		"font400": "現有公開primitive",
-		"font500": "現有公開primitive",
-		"font600": "現有公開primitive",
-		"font700": "現有公開primitive",
-		"font800": "現有公開primitive",
-		"font900": "現有公開primitive",
-		"font1000": "現有公開primitive",
-		"tracking0": "現有公開primitive",
-		"trackingTight": "現有公開primitive",
-		"trackingWide": "現有公開primitive",
-		"trackingWider": "現有公開primitive",
-		"length-30": "原實作值的文件名稱；未新增設計",
-		"length-56": "原實作值的文件名稱；未新增設計",
-		"length-20": "原實作值的文件名稱；未新增設計",
-		"length-60": "原實作值的文件名稱；未新增設計",
-		"length-74": "原實作值的文件名稱；未新增設計",
-		"length-170": "原實作值的文件名稱；未新增設計",
-		"length-11": "原實作值的文件名稱；未新增設計",
-		"length-3": "原實作值的文件名稱；未新增設計",
-		"length-5": "原實作值的文件名稱；未新增設計",
-		"length-7": "原實作值的文件名稱；未新增設計",
-		"length-3_5": "原實作值的文件名稱；未新增設計",
-		"length-41_4": "原實作值的文件名稱；未新增設計",
-		"length-168": "原實作值的文件名稱；未新增設計",
-		"length-26": "原實作值的文件名稱；未新增設計",
-		"length-520": "原實作值的文件名稱；未新增設計",
-		"length-320": "原實作值的文件名稱；未新增設計",
-		"length-120": "原實作值的文件名稱；未新增設計",
-		"length-9": "原實作值的文件名稱；未新增設計",
-		"length-220": "原實作值的文件名稱；未新增設計",
-		"length-192": "原實作值的文件名稱；未新增設計",
-		"length-128": "原實作值的文件名稱；未新增設計",
-		"length-112": "原實作值的文件名稱；未新增設計",
-		"length-10_5": "原實作值的文件名稱；未新增設計",
-		"length-336": "原實作值的文件名稱；未新增設計",
-		"length-300": "原實作值的文件名稱；未新增設計",
-		"length-350": "原實作值的文件名稱；未新增設計",
-		"length-400": "原實作值的文件名稱；未新增設計",
-		"length-800": "原實作值的文件名稱；未新增設計",
-		"length-960": "原實作值的文件名稱；未新增設計",
-		"length-1120": "原實作值的文件名稱；未新增設計",
-		"length-200": "原實作值的文件名稱；未新增設計",
-		"length-360": "原實作值的文件名稱；未新增設計",
-		"length-480": "原實作值的文件名稱；未新增設計",
-		"length-1380": "原實作值的文件名稱；未新增設計",
-		"length-880": "原實作值的文件名稱；未新增設計",
-		"length-260": "原實作值的文件名稱；未新增設計",
-		"length-820": "原實作值的文件名稱；未新增設計",
-		"length-minus-1": "原實作值的文件名稱；未新增設計",
-		"leading100": "現有公開primitive",
-		"leading116": "現有公開primitive",
-		"leading120": "現有公開primitive",
-		"leading122": "現有公開primitive",
-		"leading127": "現有公開primitive",
-		"leading128": "現有公開primitive",
-		"leading133": "現有公開primitive",
-		"leading142": "現有公開primitive",
-		"leading150": "現有公開primitive",
-		"leading155": "現有公開primitive",
-		"leading150Legacy": "現有公開primitive",
-		"leading200": "現有公開primitive",
-		"leading300": "現有公開primitive",
-		"leading350": "現有公開primitive",
-		"leading400": "現有公開primitive",
-		"leading450": "現有公開primitive",
-		"leading500": "現有公開primitive",
-		"leading550": "現有公開primitive",
-		"leading650": "現有公開primitive",
-		"ratio-0_4": "原實作值的文件名稱；未新增設計",
-		"ratio-0_35": "原實作值的文件名稱；未新增設計",
-		"ratio-0_32": "原實作值的文件名稱；未新增設計",
-		"ratio-0_22": "原實作值的文件名稱；未新增設計",
-		"ratio-0_06": "原實作值的文件名稱；未新增設計",
-		"ratio-8": "原實作值的文件名稱；未新增設計",
-		"ratio-2": "原實作值的文件名稱；未新增設計",
-		"ratio-3": "原實作值的文件名稱；未新增設計",
-		"ratio-6": "原實作值的文件名稱；未新增設計",
-		"weight400": "現有公開primitive",
-		"weight500": "現有公開primitive",
-		"weight600": "現有公開primitive",
-		"weight700": "現有公開primitive",
-		"weight800": "現有公開primitive",
-		"duration0": "現有公開primitive",
-		"duration100": "現有公開primitive",
-		"duration150": "現有公開primitive",
-		"duration400": "現有公開primitive",
-		"duration500": "現有公開primitive",
-		"duration-4000": "原實作值的文件名稱；未新增設計",
-		"duration-1000": "原實作值的文件名稱；未新增設計",
-		"easeStandard": "現有公開primitive",
-		"easeEmphasized": "現有公開primitive",
-		"opacity100": "現有公開primitive",
-		"opacity120": "現有公開primitive",
-		"opacity140": "現有公開primitive",
-		"opacity160": "現有公開primitive",
-		"opacity180": "現有公開primitive",
-		"opacity220": "現有公開primitive",
-		"opacity280": "現有公開primitive",
-		"opacity320": "現有公開primitive",
-		"opacity350": "現有公開primitive",
-		"opacity440": "現有公開primitive",
-		"opacity480": "現有公開primitive",
-		"opacity550": "現有公開primitive",
-		"opacity620": "現有公開primitive",
-		"opacity720": "現有公開primitive",
-		"opacity780": "現有公開primitive",
-		"opacity820": "現有公開primitive",
-		"opacity-0_13333333333333333": "原實作值的文件名稱；未新增設計",
-		"opacity-0_6": "原實作值的文件名稱；未新增設計",
-		"opacity-0_88": "原實作值的文件名稱；未新增設計",
-		"opacity-0_47843137254901963": "原實作值的文件名稱；未新增設計",
-		"opacity-0_1803921568627451": "原實作值的文件名稱；未新增設計",
-		"opacity-0_07058823529411765": "原實作值的文件名稱；未新增設計",
-		"opacity-0_8509803921568627": "原實作值的文件名稱；未新增設計",
-		"family-packages-kallopis-noto-sans-tc": "原實作值的文件名稱；未新增設計",
-		"family-noto-sans-tc": "原實作值的文件名稱；未新增設計",
-		"family-microsoft-jhenghei-ui": "原實作值的文件名稱；未新增設計",
-		"family-microsoft-jhenghei": "原實作值的文件名稱；未新增設計",
-		"family-pingfang-tc": "原實作值的文件名稱；未新增設計",
-		"family-sans-serif": "原實作值的文件名稱；未新增設計",
-		"family-packages-kallopis-ibm-plex-mono": "原實作值的文件名稱；未新增設計",
-		"family-ibm-plex-mono": "原實作值的文件名稱；未新增設計",
-		"family-consolas": "原實作值的文件名稱；未新增設計",
-		"family-courier-new": "原實作值的文件名稱；未新增設計",
-		"family-monospace": "原實作值的文件名稱；未新增設計",
-		"string-shadow": "原實作值的文件名稱；未新增設計",
-		"count-4": "原實作值的文件名稱；未新增設計",
-		"count-8": "原實作值的文件名稱；未新增設計"
+		"parchment50": "\u73fe\u6709\u516c\u958bprimitive",
+		"parchment75": "\u73fe\u6709\u516c\u958bprimitive",
+		"parchment100": "\u73fe\u6709\u516c\u958bprimitive",
+		"parchment150": "\u73fe\u6709\u516c\u958bprimitive",
+		"parchment200": "\u73fe\u6709\u516c\u958bprimitive",
+		"parchment250": "\u73fe\u6709\u516c\u958bprimitive",
+		"parchment350": "\u73fe\u6709\u516c\u958bprimitive",
+		"parchment550": "\u73fe\u6709\u516c\u958bprimitive",
+		"parchment700": "\u73fe\u6709\u516c\u958bprimitive",
+		"parchment750": "\u73fe\u6709\u516c\u958bprimitive",
+		"parchment800": "\u73fe\u6709\u516c\u958bprimitive",
+		"parchment825": "\u73fe\u6709\u516c\u958bprimitive",
+		"parchment900": "\u73fe\u6709\u516c\u958bprimitive",
+		"parchment925": "\u73fe\u6709\u516c\u958bprimitive",
+		"parchment950": "\u73fe\u6709\u516c\u958bprimitive",
+		"ink1000": "\u73fe\u6709\u516c\u958bprimitive",
+		"transparent": "\u73fe\u6709\u516c\u958bprimitive",
+		"ink50": "\u73fe\u6709\u516c\u958bprimitive",
+		"ink100": "\u73fe\u6709\u516c\u958bprimitive",
+		"ink150": "\u73fe\u6709\u516c\u958bprimitive",
+		"ink200": "\u73fe\u6709\u516c\u958bprimitive",
+		"ink250": "\u73fe\u6709\u516c\u958bprimitive",
+		"ink300": "\u73fe\u6709\u516c\u958bprimitive",
+		"ink350": "\u73fe\u6709\u516c\u958bprimitive",
+		"ink400": "\u73fe\u6709\u516c\u958bprimitive",
+		"ink450": "\u73fe\u6709\u516c\u958bprimitive",
+		"ink500": "\u73fe\u6709\u516c\u958bprimitive",
+		"ink550": "\u73fe\u6709\u516c\u958bprimitive",
+		"ink600": "\u73fe\u6709\u516c\u958bprimitive",
+		"ink650": "\u73fe\u6709\u516c\u958bprimitive",
+		"ink700": "\u73fe\u6709\u516c\u958bprimitive",
+		"ink750": "\u73fe\u6709\u516c\u958bprimitive",
+		"ink800": "\u73fe\u6709\u516c\u958bprimitive",
+		"ink850": "\u73fe\u6709\u516c\u958bprimitive",
+		"ink900": "\u73fe\u6709\u516c\u958bprimitive",
+		"ink950": "\u73fe\u6709\u516c\u958bprimitive",
+		"warmNeutral25": "\u73fe\u6709\u516c\u958bprimitive",
+		"warmNeutral50": "\u73fe\u6709\u516c\u958bprimitive",
+		"warmNeutral100": "\u73fe\u6709\u516c\u958bprimitive",
+		"warmNeutral200": "\u73fe\u6709\u516c\u958bprimitive",
+		"warmNeutral300": "\u73fe\u6709\u516c\u958bprimitive",
+		"warmNeutral400": "\u73fe\u6709\u516c\u958bprimitive",
+		"warmNeutral450": "\u73fe\u6709\u516c\u958bprimitive",
+		"warmNeutral500": "\u73fe\u6709\u516c\u958bprimitive",
+		"warmNeutral600": "\u73fe\u6709\u516c\u958bprimitive",
+		"warmNeutral700": "\u73fe\u6709\u516c\u958bprimitive",
+		"warmNeutral750": "\u73fe\u6709\u516c\u958bprimitive",
+		"warmNeutral800": "\u73fe\u6709\u516c\u958bprimitive",
+		"warmNeutral900": "\u73fe\u6709\u516c\u958bprimitive",
+		"sand50": "\u73fe\u6709\u516c\u958bprimitive",
+		"sand300": "\u73fe\u6709\u516c\u958bprimitive",
+		"sand500": "\u73fe\u6709\u516c\u958bprimitive",
+		"sand800": "\u73fe\u6709\u516c\u958bprimitive",
+		"sand900": "\u73fe\u6709\u516c\u958bprimitive",
+		"gold50": "\u73fe\u6709\u516c\u958bprimitive",
+		"gold300": "\u73fe\u6709\u516c\u958bprimitive",
+		"gold500": "\u73fe\u6709\u516c\u958bprimitive",
+		"gold800": "\u73fe\u6709\u516c\u958bprimitive",
+		"gold900": "\u73fe\u6709\u516c\u958bprimitive",
+		"ochre50": "\u73fe\u6709\u516c\u958bprimitive",
+		"ochre300": "\u73fe\u6709\u516c\u958bprimitive",
+		"ochre500": "\u73fe\u6709\u516c\u958bprimitive",
+		"ochre800": "\u73fe\u6709\u516c\u958bprimitive",
+		"ochre900": "\u73fe\u6709\u516c\u958bprimitive",
+		"terracotta50": "\u73fe\u6709\u516c\u958bprimitive",
+		"terracotta300": "\u73fe\u6709\u516c\u958bprimitive",
+		"terracotta500": "\u73fe\u6709\u516c\u958bprimitive",
+		"terracotta800": "\u73fe\u6709\u516c\u958bprimitive",
+		"terracotta900": "\u73fe\u6709\u516c\u958bprimitive",
+		"clay50": "\u73fe\u6709\u516c\u958bprimitive",
+		"clay300": "\u73fe\u6709\u516c\u958bprimitive",
+		"clay500": "\u73fe\u6709\u516c\u958bprimitive",
+		"clay800": "\u73fe\u6709\u516c\u958bprimitive",
+		"clay900": "\u73fe\u6709\u516c\u958bprimitive",
+		"umber50": "\u73fe\u6709\u516c\u958bprimitive",
+		"umber300": "\u73fe\u6709\u516c\u958bprimitive",
+		"umber500": "\u73fe\u6709\u516c\u958bprimitive",
+		"umber800": "\u73fe\u6709\u516c\u958bprimitive",
+		"umber900": "\u73fe\u6709\u516c\u958bprimitive",
+		"green100": "\u73fe\u6709\u516c\u958bprimitive",
+		"green400": "\u73fe\u6709\u516c\u958bprimitive",
+		"green500": "\u73fe\u6709\u516c\u958bprimitive",
+		"green600": "\u73fe\u6709\u516c\u958bprimitive",
+		"green800": "\u73fe\u6709\u516c\u958bprimitive",
+		"green900": "\u73fe\u6709\u516c\u958bprimitive",
+		"red100": "\u73fe\u6709\u516c\u958bprimitive",
+		"red300": "\u73fe\u6709\u516c\u958bprimitive",
+		"red400": "\u73fe\u6709\u516c\u958bprimitive",
+		"red600": "\u73fe\u6709\u516c\u958bprimitive",
+		"red800": "\u73fe\u6709\u516c\u958bprimitive",
+		"red900": "\u73fe\u6709\u516c\u958bprimitive",
+		"amber500": "\u73fe\u6709\u516c\u958bprimitive",
+		"blue500": "\u73fe\u6709\u516c\u958bprimitive",
+		"scrim": "\u73fe\u6709\u516c\u958bprimitive",
+		"line": "\u73fe\u6709\u516c\u958bprimitive",
+		"transparentSurface": "\u73fe\u6709\u516c\u958bprimitive",
+		"transparentSurfaceInset": "\u73fe\u6709\u516c\u958bprimitive",
+		"pureWhite": "\u73fe\u6709\u516c\u958bprimitive",
+		"pureBlack": "\u73fe\u6709\u516c\u958bprimitive",
+		"accent-ink-light": "\u73fe\u6709accent\u914d\u5c0d\u539f\u6599",
+		"accent-ink-dark": "\u73fe\u6709accent\u914d\u5c0d\u539f\u6599",
+		"accent-terracotta-light": "\u73fe\u6709accent\u914d\u5c0d\u539f\u6599",
+		"accent-terracotta-dark": "\u73fe\u6709accent\u914d\u5c0d\u539f\u6599",
+		"accent-ochre-light": "\u73fe\u6709accent\u914d\u5c0d\u539f\u6599",
+		"accent-ochre-dark": "\u73fe\u6709accent\u914d\u5c0d\u539f\u6599",
+		"accent-olive-light": "\u73fe\u6709accent\u914d\u5c0d\u539f\u6599",
+		"accent-olive-dark": "\u73fe\u6709accent\u914d\u5c0d\u539f\u6599",
+		"accent-slate-light": "\u73fe\u6709accent\u914d\u5c0d\u539f\u6599",
+		"accent-slate-dark": "\u73fe\u6709accent\u914d\u5c0d\u539f\u6599",
+		"accent-crimson-light": "\u73fe\u6709accent\u914d\u5c0d\u539f\u6599",
+		"accent-crimson-dark": "\u73fe\u6709accent\u914d\u5c0d\u539f\u6599",
+		"color-b8292724": "\u539f\u5be6\u4f5c\u503c\u7684\u6587\u4ef6\u540d\u7a31\uff1b\u672a\u65b0\u589e\u8a2d\u8a08",
+		"color-b835322d": "\u539f\u5be6\u4f5c\u503c\u7684\u6587\u4ef6\u540d\u7a31\uff1b\u672a\u65b0\u589e\u8a2d\u8a08",
+		"space0": "\u73fe\u6709\u516c\u958bprimitive",
+		"space50": "\u73fe\u6709\u516c\u958bprimitive",
+		"space100": "\u73fe\u6709\u516c\u958bprimitive",
+		"space200": "\u73fe\u6709\u516c\u958bprimitive",
+		"space250": "\u73fe\u6709\u516c\u958bprimitive",
+		"space300": "\u73fe\u6709\u516c\u958bprimitive",
+		"space400": "\u73fe\u6709\u516c\u958bprimitive",
+		"space600": "\u73fe\u6709\u516c\u958bprimitive",
+		"space800": "\u73fe\u6709\u516c\u958bprimitive",
+		"space1000": "\u73fe\u6709\u516c\u958bprimitive",
+		"space1200": "\u73fe\u6709\u516c\u958bprimitive",
+		"space1600": "\u73fe\u6709\u516c\u958bprimitive",
+		"space2400": "\u73fe\u6709\u516c\u958bprimitive",
+		"radius0": "\u73fe\u6709\u516c\u958bprimitive",
+		"radius50": "\u73fe\u6709\u516c\u958bprimitive",
+		"radius100": "\u73fe\u6709\u516c\u958bprimitive",
+		"radius150": "\u73fe\u6709\u516c\u958bprimitive",
+		"radius200": "\u73fe\u6709\u516c\u958bprimitive",
+		"radius250": "\u73fe\u6709\u516c\u958bprimitive",
+		"radius300": "\u73fe\u6709\u516c\u958bprimitive",
+		"radius400": "\u73fe\u6709\u516c\u958bprimitive",
+		"radiusFull": "\u73fe\u6709\u516c\u958bprimitive",
+		"stroke0": "\u73fe\u6709\u516c\u958bprimitive",
+		"stroke100": "\u73fe\u6709\u516c\u958bprimitive",
+		"stroke200": "\u73fe\u6709\u516c\u958bprimitive",
+		"font100": "\u73fe\u6709\u516c\u958bprimitive",
+		"font200": "\u73fe\u6709\u516c\u958bprimitive",
+		"font300": "\u73fe\u6709\u516c\u958bprimitive",
+		"font400": "\u73fe\u6709\u516c\u958bprimitive",
+		"font500": "\u73fe\u6709\u516c\u958bprimitive",
+		"font600": "\u73fe\u6709\u516c\u958bprimitive",
+		"font700": "\u73fe\u6709\u516c\u958bprimitive",
+		"font800": "\u73fe\u6709\u516c\u958bprimitive",
+		"font900": "\u73fe\u6709\u516c\u958bprimitive",
+		"font1000": "\u73fe\u6709\u516c\u958bprimitive",
+		"tracking0": "\u73fe\u6709\u516c\u958bprimitive",
+		"trackingTight": "\u73fe\u6709\u516c\u958bprimitive",
+		"trackingWide": "\u73fe\u6709\u516c\u958bprimitive",
+		"trackingWider": "\u73fe\u6709\u516c\u958bprimitive",
+		"length-30": "\u539f\u5be6\u4f5c\u503c\u7684\u6587\u4ef6\u540d\u7a31\uff1b\u672a\u65b0\u589e\u8a2d\u8a08",
+		"length-56": "\u539f\u5be6\u4f5c\u503c\u7684\u6587\u4ef6\u540d\u7a31\uff1b\u672a\u65b0\u589e\u8a2d\u8a08",
+		"length-20": "\u539f\u5be6\u4f5c\u503c\u7684\u6587\u4ef6\u540d\u7a31\uff1b\u672a\u65b0\u589e\u8a2d\u8a08",
+		"length-60": "\u539f\u5be6\u4f5c\u503c\u7684\u6587\u4ef6\u540d\u7a31\uff1b\u672a\u65b0\u589e\u8a2d\u8a08",
+		"length-74": "\u539f\u5be6\u4f5c\u503c\u7684\u6587\u4ef6\u540d\u7a31\uff1b\u672a\u65b0\u589e\u8a2d\u8a08",
+		"length-170": "\u539f\u5be6\u4f5c\u503c\u7684\u6587\u4ef6\u540d\u7a31\uff1b\u672a\u65b0\u589e\u8a2d\u8a08",
+		"length-11": "\u539f\u5be6\u4f5c\u503c\u7684\u6587\u4ef6\u540d\u7a31\uff1b\u672a\u65b0\u589e\u8a2d\u8a08",
+		"length-3": "\u539f\u5be6\u4f5c\u503c\u7684\u6587\u4ef6\u540d\u7a31\uff1b\u672a\u65b0\u589e\u8a2d\u8a08",
+		"length-5": "\u539f\u5be6\u4f5c\u503c\u7684\u6587\u4ef6\u540d\u7a31\uff1b\u672a\u65b0\u589e\u8a2d\u8a08",
+		"length-7": "\u539f\u5be6\u4f5c\u503c\u7684\u6587\u4ef6\u540d\u7a31\uff1b\u672a\u65b0\u589e\u8a2d\u8a08",
+		"length-3_5": "\u539f\u5be6\u4f5c\u503c\u7684\u6587\u4ef6\u540d\u7a31\uff1b\u672a\u65b0\u589e\u8a2d\u8a08",
+		"length-41_4": "\u539f\u5be6\u4f5c\u503c\u7684\u6587\u4ef6\u540d\u7a31\uff1b\u672a\u65b0\u589e\u8a2d\u8a08",
+		"length-168": "\u539f\u5be6\u4f5c\u503c\u7684\u6587\u4ef6\u540d\u7a31\uff1b\u672a\u65b0\u589e\u8a2d\u8a08",
+		"length-26": "\u539f\u5be6\u4f5c\u503c\u7684\u6587\u4ef6\u540d\u7a31\uff1b\u672a\u65b0\u589e\u8a2d\u8a08",
+		"length-520": "\u539f\u5be6\u4f5c\u503c\u7684\u6587\u4ef6\u540d\u7a31\uff1b\u672a\u65b0\u589e\u8a2d\u8a08",
+		"length-320": "\u539f\u5be6\u4f5c\u503c\u7684\u6587\u4ef6\u540d\u7a31\uff1b\u672a\u65b0\u589e\u8a2d\u8a08",
+		"length-120": "\u539f\u5be6\u4f5c\u503c\u7684\u6587\u4ef6\u540d\u7a31\uff1b\u672a\u65b0\u589e\u8a2d\u8a08",
+		"length-9": "\u539f\u5be6\u4f5c\u503c\u7684\u6587\u4ef6\u540d\u7a31\uff1b\u672a\u65b0\u589e\u8a2d\u8a08",
+		"length-220": "\u539f\u5be6\u4f5c\u503c\u7684\u6587\u4ef6\u540d\u7a31\uff1b\u672a\u65b0\u589e\u8a2d\u8a08",
+		"length-192": "\u539f\u5be6\u4f5c\u503c\u7684\u6587\u4ef6\u540d\u7a31\uff1b\u672a\u65b0\u589e\u8a2d\u8a08",
+		"length-128": "\u539f\u5be6\u4f5c\u503c\u7684\u6587\u4ef6\u540d\u7a31\uff1b\u672a\u65b0\u589e\u8a2d\u8a08",
+		"length-112": "\u539f\u5be6\u4f5c\u503c\u7684\u6587\u4ef6\u540d\u7a31\uff1b\u672a\u65b0\u589e\u8a2d\u8a08",
+		"length-10_5": "\u539f\u5be6\u4f5c\u503c\u7684\u6587\u4ef6\u540d\u7a31\uff1b\u672a\u65b0\u589e\u8a2d\u8a08",
+		"length-336": "\u539f\u5be6\u4f5c\u503c\u7684\u6587\u4ef6\u540d\u7a31\uff1b\u672a\u65b0\u589e\u8a2d\u8a08",
+		"length-300": "\u539f\u5be6\u4f5c\u503c\u7684\u6587\u4ef6\u540d\u7a31\uff1b\u672a\u65b0\u589e\u8a2d\u8a08",
+		"length-350": "\u539f\u5be6\u4f5c\u503c\u7684\u6587\u4ef6\u540d\u7a31\uff1b\u672a\u65b0\u589e\u8a2d\u8a08",
+		"length-400": "\u539f\u5be6\u4f5c\u503c\u7684\u6587\u4ef6\u540d\u7a31\uff1b\u672a\u65b0\u589e\u8a2d\u8a08",
+		"length-800": "\u539f\u5be6\u4f5c\u503c\u7684\u6587\u4ef6\u540d\u7a31\uff1b\u672a\u65b0\u589e\u8a2d\u8a08",
+		"length-960": "\u539f\u5be6\u4f5c\u503c\u7684\u6587\u4ef6\u540d\u7a31\uff1b\u672a\u65b0\u589e\u8a2d\u8a08",
+		"length-1120": "\u539f\u5be6\u4f5c\u503c\u7684\u6587\u4ef6\u540d\u7a31\uff1b\u672a\u65b0\u589e\u8a2d\u8a08",
+		"length-200": "\u539f\u5be6\u4f5c\u503c\u7684\u6587\u4ef6\u540d\u7a31\uff1b\u672a\u65b0\u589e\u8a2d\u8a08",
+		"length-360": "\u539f\u5be6\u4f5c\u503c\u7684\u6587\u4ef6\u540d\u7a31\uff1b\u672a\u65b0\u589e\u8a2d\u8a08",
+		"length-480": "\u539f\u5be6\u4f5c\u503c\u7684\u6587\u4ef6\u540d\u7a31\uff1b\u672a\u65b0\u589e\u8a2d\u8a08",
+		"length-1380": "\u539f\u5be6\u4f5c\u503c\u7684\u6587\u4ef6\u540d\u7a31\uff1b\u672a\u65b0\u589e\u8a2d\u8a08",
+		"length-880": "\u539f\u5be6\u4f5c\u503c\u7684\u6587\u4ef6\u540d\u7a31\uff1b\u672a\u65b0\u589e\u8a2d\u8a08",
+		"length-260": "\u539f\u5be6\u4f5c\u503c\u7684\u6587\u4ef6\u540d\u7a31\uff1b\u672a\u65b0\u589e\u8a2d\u8a08",
+		"length-820": "\u539f\u5be6\u4f5c\u503c\u7684\u6587\u4ef6\u540d\u7a31\uff1b\u672a\u65b0\u589e\u8a2d\u8a08",
+		"length-minus-1": "\u539f\u5be6\u4f5c\u503c\u7684\u6587\u4ef6\u540d\u7a31\uff1b\u672a\u65b0\u589e\u8a2d\u8a08",
+		"leading100": "\u73fe\u6709\u516c\u958bprimitive",
+		"leading116": "\u73fe\u6709\u516c\u958bprimitive",
+		"leading120": "\u73fe\u6709\u516c\u958bprimitive",
+		"leading122": "\u73fe\u6709\u516c\u958bprimitive",
+		"leading127": "\u73fe\u6709\u516c\u958bprimitive",
+		"leading128": "\u73fe\u6709\u516c\u958bprimitive",
+		"leading133": "\u73fe\u6709\u516c\u958bprimitive",
+		"leading142": "\u73fe\u6709\u516c\u958bprimitive",
+		"leading150": "\u73fe\u6709\u516c\u958bprimitive",
+		"leading155": "\u73fe\u6709\u516c\u958bprimitive",
+		"leading150Legacy": "\u73fe\u6709\u516c\u958bprimitive",
+		"leading200": "\u73fe\u6709\u516c\u958bprimitive",
+		"leading300": "\u73fe\u6709\u516c\u958bprimitive",
+		"leading350": "\u73fe\u6709\u516c\u958bprimitive",
+		"leading400": "\u73fe\u6709\u516c\u958bprimitive",
+		"leading450": "\u73fe\u6709\u516c\u958bprimitive",
+		"leading500": "\u73fe\u6709\u516c\u958bprimitive",
+		"leading550": "\u73fe\u6709\u516c\u958bprimitive",
+		"leading650": "\u73fe\u6709\u516c\u958bprimitive",
+		"ratio-0_4": "\u539f\u5be6\u4f5c\u503c\u7684\u6587\u4ef6\u540d\u7a31\uff1b\u672a\u65b0\u589e\u8a2d\u8a08",
+		"ratio-0_35": "\u539f\u5be6\u4f5c\u503c\u7684\u6587\u4ef6\u540d\u7a31\uff1b\u672a\u65b0\u589e\u8a2d\u8a08",
+		"ratio-0_32": "\u539f\u5be6\u4f5c\u503c\u7684\u6587\u4ef6\u540d\u7a31\uff1b\u672a\u65b0\u589e\u8a2d\u8a08",
+		"ratio-0_22": "\u539f\u5be6\u4f5c\u503c\u7684\u6587\u4ef6\u540d\u7a31\uff1b\u672a\u65b0\u589e\u8a2d\u8a08",
+		"ratio-0_06": "\u539f\u5be6\u4f5c\u503c\u7684\u6587\u4ef6\u540d\u7a31\uff1b\u672a\u65b0\u589e\u8a2d\u8a08",
+		"ratio-8": "\u539f\u5be6\u4f5c\u503c\u7684\u6587\u4ef6\u540d\u7a31\uff1b\u672a\u65b0\u589e\u8a2d\u8a08",
+		"ratio-2": "\u539f\u5be6\u4f5c\u503c\u7684\u6587\u4ef6\u540d\u7a31\uff1b\u672a\u65b0\u589e\u8a2d\u8a08",
+		"ratio-3": "\u539f\u5be6\u4f5c\u503c\u7684\u6587\u4ef6\u540d\u7a31\uff1b\u672a\u65b0\u589e\u8a2d\u8a08",
+		"ratio-6": "\u539f\u5be6\u4f5c\u503c\u7684\u6587\u4ef6\u540d\u7a31\uff1b\u672a\u65b0\u589e\u8a2d\u8a08",
+		"weight400": "\u73fe\u6709\u516c\u958bprimitive",
+		"weight500": "\u73fe\u6709\u516c\u958bprimitive",
+		"weight600": "\u73fe\u6709\u516c\u958bprimitive",
+		"weight700": "\u73fe\u6709\u516c\u958bprimitive",
+		"weight800": "\u73fe\u6709\u516c\u958bprimitive",
+		"duration0": "\u73fe\u6709\u516c\u958bprimitive",
+		"duration100": "\u73fe\u6709\u516c\u958bprimitive",
+		"duration150": "\u73fe\u6709\u516c\u958bprimitive",
+		"duration400": "\u73fe\u6709\u516c\u958bprimitive",
+		"duration500": "\u73fe\u6709\u516c\u958bprimitive",
+		"duration-4000": "\u539f\u5be6\u4f5c\u503c\u7684\u6587\u4ef6\u540d\u7a31\uff1b\u672a\u65b0\u589e\u8a2d\u8a08",
+		"duration-1000": "\u539f\u5be6\u4f5c\u503c\u7684\u6587\u4ef6\u540d\u7a31\uff1b\u672a\u65b0\u589e\u8a2d\u8a08",
+		"easeStandard": "\u73fe\u6709\u516c\u958bprimitive",
+		"easeEmphasized": "\u73fe\u6709\u516c\u958bprimitive",
+		"opacity100": "\u73fe\u6709\u516c\u958bprimitive",
+		"opacity120": "\u73fe\u6709\u516c\u958bprimitive",
+		"opacity140": "\u73fe\u6709\u516c\u958bprimitive",
+		"opacity160": "\u73fe\u6709\u516c\u958bprimitive",
+		"opacity180": "\u73fe\u6709\u516c\u958bprimitive",
+		"opacity220": "\u73fe\u6709\u516c\u958bprimitive",
+		"opacity280": "\u73fe\u6709\u516c\u958bprimitive",
+		"opacity320": "\u73fe\u6709\u516c\u958bprimitive",
+		"opacity350": "\u73fe\u6709\u516c\u958bprimitive",
+		"opacity440": "\u73fe\u6709\u516c\u958bprimitive",
+		"opacity480": "\u73fe\u6709\u516c\u958bprimitive",
+		"opacity550": "\u73fe\u6709\u516c\u958bprimitive",
+		"opacity620": "\u73fe\u6709\u516c\u958bprimitive",
+		"opacity720": "\u73fe\u6709\u516c\u958bprimitive",
+		"opacity780": "\u73fe\u6709\u516c\u958bprimitive",
+		"opacity820": "\u73fe\u6709\u516c\u958bprimitive",
+		"opacity-0_13333333333333333": "\u539f\u5be6\u4f5c\u503c\u7684\u6587\u4ef6\u540d\u7a31\uff1b\u672a\u65b0\u589e\u8a2d\u8a08",
+		"opacity-0_6": "\u539f\u5be6\u4f5c\u503c\u7684\u6587\u4ef6\u540d\u7a31\uff1b\u672a\u65b0\u589e\u8a2d\u8a08",
+		"opacity-0_88": "\u539f\u5be6\u4f5c\u503c\u7684\u6587\u4ef6\u540d\u7a31\uff1b\u672a\u65b0\u589e\u8a2d\u8a08",
+		"opacity-0_47843137254901963": "\u539f\u5be6\u4f5c\u503c\u7684\u6587\u4ef6\u540d\u7a31\uff1b\u672a\u65b0\u589e\u8a2d\u8a08",
+		"opacity-0_1803921568627451": "\u539f\u5be6\u4f5c\u503c\u7684\u6587\u4ef6\u540d\u7a31\uff1b\u672a\u65b0\u589e\u8a2d\u8a08",
+		"opacity-0_07058823529411765": "\u539f\u5be6\u4f5c\u503c\u7684\u6587\u4ef6\u540d\u7a31\uff1b\u672a\u65b0\u589e\u8a2d\u8a08",
+		"opacity-0_8509803921568627": "\u539f\u5be6\u4f5c\u503c\u7684\u6587\u4ef6\u540d\u7a31\uff1b\u672a\u65b0\u589e\u8a2d\u8a08",
+		"family-packages-kallopis-noto-sans-tc": "\u539f\u5be6\u4f5c\u503c\u7684\u6587\u4ef6\u540d\u7a31\uff1b\u672a\u65b0\u589e\u8a2d\u8a08",
+		"family-noto-sans-tc": "\u539f\u5be6\u4f5c\u503c\u7684\u6587\u4ef6\u540d\u7a31\uff1b\u672a\u65b0\u589e\u8a2d\u8a08",
+		"family-microsoft-jhenghei-ui": "\u539f\u5be6\u4f5c\u503c\u7684\u6587\u4ef6\u540d\u7a31\uff1b\u672a\u65b0\u589e\u8a2d\u8a08",
+		"family-microsoft-jhenghei": "\u539f\u5be6\u4f5c\u503c\u7684\u6587\u4ef6\u540d\u7a31\uff1b\u672a\u65b0\u589e\u8a2d\u8a08",
+		"family-pingfang-tc": "\u539f\u5be6\u4f5c\u503c\u7684\u6587\u4ef6\u540d\u7a31\uff1b\u672a\u65b0\u589e\u8a2d\u8a08",
+		"family-sans-serif": "\u539f\u5be6\u4f5c\u503c\u7684\u6587\u4ef6\u540d\u7a31\uff1b\u672a\u65b0\u589e\u8a2d\u8a08",
+		"family-packages-kallopis-ibm-plex-mono": "\u539f\u5be6\u4f5c\u503c\u7684\u6587\u4ef6\u540d\u7a31\uff1b\u672a\u65b0\u589e\u8a2d\u8a08",
+		"family-ibm-plex-mono": "\u539f\u5be6\u4f5c\u503c\u7684\u6587\u4ef6\u540d\u7a31\uff1b\u672a\u65b0\u589e\u8a2d\u8a08",
+		"family-consolas": "\u539f\u5be6\u4f5c\u503c\u7684\u6587\u4ef6\u540d\u7a31\uff1b\u672a\u65b0\u589e\u8a2d\u8a08",
+		"family-courier-new": "\u539f\u5be6\u4f5c\u503c\u7684\u6587\u4ef6\u540d\u7a31\uff1b\u672a\u65b0\u589e\u8a2d\u8a08",
+		"family-monospace": "\u539f\u5be6\u4f5c\u503c\u7684\u6587\u4ef6\u540d\u7a31\uff1b\u672a\u65b0\u589e\u8a2d\u8a08",
+		"string-shadow": "\u539f\u5be6\u4f5c\u503c\u7684\u6587\u4ef6\u540d\u7a31\uff1b\u672a\u65b0\u589e\u8a2d\u8a08",
+		"count-4": "\u539f\u5be6\u4f5c\u503c\u7684\u6587\u4ef6\u540d\u7a31\uff1b\u672a\u65b0\u589e\u8a2d\u8a08",
+		"count-8": "\u539f\u5be6\u4f5c\u503c\u7684\u6587\u4ef6\u540d\u7a31\uff1b\u672a\u65b0\u589e\u8a2d\u8a08"
 	},
 	"semanticDescriptions": {
-		"theme.colors.app": "<br>app background／應用背景色",
-		"theme.colors.surface": "<br>base surface／輔助表面色",
-		"theme.colors.surfaceInset": "<br>inset surface／內嵌表面色",
-		"theme.colors.surfaceMuted": "<br>muted surface／弱化表面色",
-		"theme.colors.component": "<br>control surface／控制表面色",
-		"theme.colors.stageSurface": "<br>stage background／主內容表面色",
-		"theme.colors.overlay": "<br>overlay background／浮層色",
-		"theme.colors.surfaceRaised": "<br>raised surface／較亮表面",
-		"theme.colors.modalScrim": "<br>遮罩色",
+		"theme.colors.app": "<br>app background\uff0f\u61c9\u7528\u80cc\u666f\u8272",
+		"theme.colors.surface": "<br>base surface\uff0f\u8f14\u52a9\u8868\u9762\u8272",
+		"theme.colors.surfaceInset": "<br>inset surface\uff0f\u5167\u5d4c\u8868\u9762\u8272",
+		"theme.colors.surfaceMuted": "<br>muted surface\uff0f\u5f31\u5316\u8868\u9762\u8272",
+		"theme.colors.component": "<br>control surface\uff0f\u63a7\u5236\u8868\u9762\u8272",
+		"theme.colors.stageSurface": "<br>stage background\uff0f\u4e3b\u5167\u5bb9\u8868\u9762\u8272",
+		"theme.colors.overlay": "<br>overlay background\uff0f\u6d6e\u5c64\u8272",
+		"theme.colors.surfaceRaised": "<br>raised surface\uff0f\u8f03\u4eae\u8868\u9762",
+		"theme.colors.modalScrim": "<br>\u906e\u7f69\u8272",
 		"theme.colors.guide": "<br>colors / guide",
-		"theme.colors.divider": "<br>分隔線色",
+		"theme.colors.divider": "<br>\u5206\u9694\u7dda\u8272",
 		"theme.colors.pagePattern": "<br>colors / page Pattern",
-		"theme.colors.text": "<br>primary text／主文字",
-		"theme.colors.textMuted": "<br>muted text／次要文字",
-		"theme.colors.textFaint": "<br>faint text／弱化文字",
-		"theme.colors.border": "<br>邊框色",
+		"theme.colors.text": "<br>primary text\uff0f\u4e3b\u6587\u5b57",
+		"theme.colors.textMuted": "<br>muted text\uff0f\u6b21\u8981\u6587\u5b57",
+		"theme.colors.textFaint": "<br>faint text\uff0f\u5f31\u5316\u6587\u5b57",
+		"theme.colors.border": "<br>\u908a\u6846\u8272",
 		"theme.colors.borderStrong": "<br>colors / border Strong",
-		"theme.colors.brand": "<br>brand／品牌色／主動作底色",
+		"theme.colors.brand": "<br>brand\uff0f\u54c1\u724c\u8272\uff0f\u4e3b\u52d5\u4f5c\u5e95\u8272",
 		"theme.colors.accent": "<br>colors / accent",
 		"theme.colors.accentSoft": "<br>colors / accent Soft",
-		"theme.colors.interaction": "<br>interaction／操作色",
-		"theme.colors.interactionSoft": "<br>selection background／柔和操作色",
+		"theme.colors.interaction": "<br>interaction\uff0f\u64cd\u4f5c\u8272",
+		"theme.colors.interactionSoft": "<br>selection background\uff0f\u67d4\u548c\u64cd\u4f5c\u8272",
 		"theme.colors.success": "<br>colors / success",
 		"theme.colors.warning": "<br>colors / warning",
 		"theme.colors.danger": "<br>colors / danger",
@@ -3272,7 +3272,7 @@ const klpDefaultStylePackJson = r'''{
 		"theme.colors.mutedOnLightBackground": "<br>colors / muted On Light Background",
 		"theme.colors.mutedOnDarkBackground": "<br>colors / muted On Dark Background",
 		"theme.colors.faintOnBackground": "<br>colors / faint On Background",
-		"theme.colors.transparent": "<br>透明",
+		"theme.colors.transparent": "<br>\u900f\u660e",
 		"theme.typography.sansFamily": "<br>typography / sans Family",
 		"theme.typography.sansFallback": "<br>typography / sans Fallback",
 		"theme.typography.monoFamily": "<br>typography / mono Family",
@@ -3598,7 +3598,7 @@ const klpStyleCatalogJson = r'''{
 		"theme.colors.app": {
 			"type": "color",
 			"unit": "sRGB",
-			"purpose": "app background／應用背景色",
+			"purpose": "app background\uff0f\u61c9\u7528\u80cc\u666f\u8272",
 			"affectedRecipes": [
 				"app-background"
 			]
@@ -3606,7 +3606,7 @@ const klpStyleCatalogJson = r'''{
 		"theme.colors.surface": {
 			"type": "color",
 			"unit": "sRGB",
-			"purpose": "base surface／輔助表面色",
+			"purpose": "base surface\uff0f\u8f14\u52a9\u8868\u9762\u8272",
 			"affectedRecipes": [
 				"surface-base",
 				"card-surface",
@@ -3617,7 +3617,7 @@ const klpStyleCatalogJson = r'''{
 		"theme.colors.surfaceInset": {
 			"type": "color",
 			"unit": "sRGB",
-			"purpose": "inset surface／內嵌表面色",
+			"purpose": "inset surface\uff0f\u5167\u5d4c\u8868\u9762\u8272",
 			"affectedRecipes": [
 				"surface-inset",
 				"button-disabled",
@@ -3631,7 +3631,7 @@ const klpStyleCatalogJson = r'''{
 		"theme.colors.surfaceMuted": {
 			"type": "color",
 			"unit": "sRGB",
-			"purpose": "muted surface／弱化表面色",
+			"purpose": "muted surface\uff0f\u5f31\u5316\u8868\u9762\u8272",
 			"affectedRecipes": [
 				"surface-muted",
 				"field-disabled",
@@ -3641,7 +3641,7 @@ const klpStyleCatalogJson = r'''{
 		"theme.colors.component": {
 			"type": "color",
 			"unit": "sRGB",
-			"purpose": "control surface／控制表面色",
+			"purpose": "control surface\uff0f\u63a7\u5236\u8868\u9762\u8272",
 			"affectedRecipes": [
 				"surface-component",
 				"button-base",
@@ -3655,7 +3655,7 @@ const klpStyleCatalogJson = r'''{
 		"theme.colors.stageSurface": {
 			"type": "color",
 			"unit": "sRGB",
-			"purpose": "stage background／主內容表面色",
+			"purpose": "stage background\uff0f\u4e3b\u5167\u5bb9\u8868\u9762\u8272",
 			"affectedRecipes": [
 				"surface-stage",
 				"badge-solid",
@@ -3666,7 +3666,7 @@ const klpStyleCatalogJson = r'''{
 		"theme.colors.overlay": {
 			"type": "color",
 			"unit": "sRGB",
-			"purpose": "overlay background／浮層色",
+			"purpose": "overlay background\uff0f\u6d6e\u5c64\u8272",
 			"affectedRecipes": [
 				"surface-overlay",
 				"menu",
@@ -3676,7 +3676,7 @@ const klpStyleCatalogJson = r'''{
 		"theme.colors.surfaceRaised": {
 			"type": "color",
 			"unit": "sRGB",
-			"purpose": "raised surface／較亮表面",
+			"purpose": "raised surface\uff0f\u8f03\u4eae\u8868\u9762",
 			"affectedRecipes": [
 				"surface-raised",
 				"card-raised"
@@ -3685,7 +3685,7 @@ const klpStyleCatalogJson = r'''{
 		"theme.colors.modalScrim": {
 			"type": "color",
 			"unit": "sRGB",
-			"purpose": "遮罩色",
+			"purpose": "\u906e\u7f69\u8272",
 			"affectedRecipes": [
 				"effect-menu-shadow"
 			]
@@ -3701,7 +3701,7 @@ const klpStyleCatalogJson = r'''{
 		"theme.colors.divider": {
 			"type": "color",
 			"unit": "sRGB",
-			"purpose": "分隔線色",
+			"purpose": "\u5206\u9694\u7dda\u8272",
 			"affectedRecipes": [
 				"badge-neutral"
 			]
@@ -3715,7 +3715,7 @@ const klpStyleCatalogJson = r'''{
 		"theme.colors.text": {
 			"type": "color",
 			"unit": "sRGB",
-			"purpose": "primary text／主文字",
+			"purpose": "primary text\uff0f\u4e3b\u6587\u5b57",
 			"affectedRecipes": [
 				"app-background",
 				"text-tone-primary",
@@ -3767,7 +3767,7 @@ const klpStyleCatalogJson = r'''{
 		"theme.colors.textMuted": {
 			"type": "color",
 			"unit": "sRGB",
-			"purpose": "muted text／次要文字",
+			"purpose": "muted text\uff0f\u6b21\u8981\u6587\u5b57",
 			"affectedRecipes": [
 				"text-tone-muted",
 				"field-base",
@@ -3781,7 +3781,7 @@ const klpStyleCatalogJson = r'''{
 		"theme.colors.textFaint": {
 			"type": "color",
 			"unit": "sRGB",
-			"purpose": "faint text／弱化文字",
+			"purpose": "faint text\uff0f\u5f31\u5316\u6587\u5b57",
 			"affectedRecipes": [
 				"text-tone-faint",
 				"button-disabled",
@@ -3794,7 +3794,7 @@ const klpStyleCatalogJson = r'''{
 		"theme.colors.border": {
 			"type": "color",
 			"unit": "sRGB",
-			"purpose": "邊框色",
+			"purpose": "\u908a\u6846\u8272",
 			"affectedRecipes": [
 				"button-base",
 				"field-base",
@@ -3810,7 +3810,7 @@ const klpStyleCatalogJson = r'''{
 		"theme.colors.brand": {
 			"type": "color",
 			"unit": "sRGB",
-			"purpose": "brand／品牌色／主動作底色",
+			"purpose": "brand\uff0f\u54c1\u724c\u8272\uff0f\u4e3b\u52d5\u4f5c\u5e95\u8272",
 			"affectedRecipes": [
 				"button-primary"
 			]
@@ -3834,7 +3834,7 @@ const klpStyleCatalogJson = r'''{
 		"theme.colors.interaction": {
 			"type": "color",
 			"unit": "sRGB",
-			"purpose": "interaction／操作色",
+			"purpose": "interaction\uff0f\u64cd\u4f5c\u8272",
 			"affectedRecipes": [
 				"button-selected",
 				"field-base",
@@ -3845,7 +3845,7 @@ const klpStyleCatalogJson = r'''{
 		"theme.colors.interactionSoft": {
 			"type": "color",
 			"unit": "sRGB",
-			"purpose": "selection background／柔和操作色",
+			"purpose": "selection background\uff0f\u67d4\u548c\u64cd\u4f5c\u8272",
 			"affectedRecipes": [
 				"icon-button-selected",
 				"icon-button-disabled",
@@ -3935,7 +3935,7 @@ const klpStyleCatalogJson = r'''{
 		"theme.colors.transparent": {
 			"type": "color",
 			"unit": "sRGB",
-			"purpose": "透明",
+			"purpose": "\u900f\u660e",
 			"affectedRecipes": [
 				"surface-transparent",
 				"button-ghost",

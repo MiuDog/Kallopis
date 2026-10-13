@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-import '../../../foundation/content/klp_text.dart';
-import '../../../foundation/interaction/klp_pressable.dart';
-import '../../../foundation/klp_icon.dart';
-import '../../../styling/legacy_theme/klp_theme.dart';
-import '../command_registry/klp_command_registry.dart';
+import 'package:kallopis/src/foundation/content/klp_text.dart';
+import 'package:kallopis/src/foundation/interaction/klp_pressable.dart';
+import 'package:kallopis/src/foundation/klp_icon.dart';
+import 'package:kallopis/src/styling/legacy_theme/klp_theme.dart';
+import 'package:kallopis/src/features/actions/command_registry/klp_command_registry.dart';
 
 // 有效幾何只屬於本次呈現，不寫回產品或風格權威。
 double _length(double value) => value.isFinite && value > 0 ? value : 0;
@@ -30,8 +30,10 @@ EdgeInsets _rowInsets(EdgeInsets raw, double width) {
 	);
 }
 
+/// 命令入口的呈現種類；實際 checked 狀態仍由 registry 解析。
 enum KlpCommandKind { action, toggle }
 
+/// 以命令 ID 與呈現種類組合入口，不保存產品命令狀態。
 @immutable
 class KlpCommandReference {
 
@@ -41,6 +43,7 @@ class KlpCommandReference {
 	final KlpCommandKind kind;
 }
 
+/// 依產品指定次序呈現已註冊命令，將原執行結果交回 caller。
 class KlpRegisteredCommandToolbar<C> extends StatelessWidget {
 
 	const KlpRegisteredCommandToolbar({
@@ -63,6 +66,7 @@ class KlpRegisteredCommandToolbar<C> extends StatelessWidget {
 	Widget build(BuildContext context) => _CommandEntryHost<C>(registry: registry, getContext: getContext, items: items, label: label, onResult: onResult, menu: false);
 }
 
+/// 呈現已註冊命令清單與空內容文案，不擁有產品命令或選取資料。
 class KlpRegisteredCommandMenu<C> extends StatelessWidget {
 
 	const KlpRegisteredCommandMenu({
@@ -285,13 +289,13 @@ class _CommandEntryHostState<C> extends State<_CommandEntryHost<C>> {
 	}
 
 	void _validate() {
-		void text(String value, String name) { if (value.trim().isEmpty) throw ArgumentError.value(value, name, '須含非空白文字'); }
+		void text(String value, String name) { if (value.trim().isEmpty) throw ArgumentError.value(value, name, 'Expected non-empty text'); }
 		text(widget.label, 'label');
 		if (widget.menu) text(widget.emptyLabel!, 'emptyLabel');
 		final ids = <String>{};
 		for (final item in widget.items) {
 			text(item.commandId, 'commandId');
-			if (!ids.add(item.commandId)) throw ArgumentError.value(item.commandId, 'items', '命令 ID 不可重複');
+			if (!ids.add(item.commandId)) throw ArgumentError.value(item.commandId, 'items', 'Duplicate command ID');
 		}
 	}
 

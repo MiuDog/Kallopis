@@ -1,12 +1,17 @@
 import 'package:flutter/foundation.dart';
 
-import '../command_registry/klp_command_registry.dart';
+import 'package:kallopis/src/features/actions/command_registry/klp_command_registry.dart';
 
+/// 解析 primary modifier 的宿主平台，不偵測或保存全域環境。
 enum KlpShortcutPlatform { mac, other }
+/// 產品投影的快捷鍵作用域，依焦點鏈決定有效候選。
 enum KlpShortcutScope { app, page, region, component }
+/// 一次按鍵解析的生命週期結果，不代表產品命令成功與否。
 enum KlpShortcutHandlingState { ignored, prefix, executed, cancelled, recording }
+/// 區分快捷鍵完整重疊與 chord 前綴重疊。
 enum KlpShortcutConflictKind { exact, prefix }
 
+/// 單一步驟的邏輯鍵與 modifier 值，不持有原生鍵盤事件。
 @immutable
 class KlpShortcutStroke {
 
@@ -28,6 +33,7 @@ class KlpShortcutStroke {
 	});
 }
 
+/// 單次輸入的邏輯鍵、repeat 與組字狀態，由宿主投影。
 @immutable
 class KlpShortcutInput extends KlpShortcutStroke {
 
@@ -47,6 +53,7 @@ class KlpShortcutInput extends KlpShortcutStroke {
 	});
 }
 
+/// 當次產品焦點與作用域鏈，不建立或接管產品焦點樹。
 @immutable
 class KlpShortcutFocus {
 
@@ -66,6 +73,7 @@ class KlpShortcutFocus {
 	});
 }
 
+/// 註冊 token、命令引用與不可變序列；業務 handler 由 registry 擁有。
 @immutable
 class KlpShortcutBinding<C> {
 
@@ -94,6 +102,7 @@ class KlpShortcutBinding<C> {
 	}) : sequence = List.unmodifiable(sequence);
 }
 
+/// 按鍵是否消費及解析結果，執行時保留原 registry Future。
 @immutable
 class KlpShortcutHandling {
 
@@ -113,6 +122,7 @@ class KlpShortcutHandling {
 	});
 }
 
+/// 穩定排序的衝突清單與勝出 binding，不修改產品註冊設定。
 @immutable
 class KlpShortcutConflict {
 

@@ -1,22 +1,20 @@
 import 'package:flutter/material.dart';
 
-import '../style_pack/klp_style_pack.dart';
+import 'package:kallopis/src/styling/style_pack/klp_style_pack.dart';
 import 'klp_data_visualization_theme.dart';
 import 'klp_shape_theme.dart';
 import 'klp_surface_theme.dart';
 import 'klp_visual_style.dart';
 import 'klp_theme_data.dart';
+import 'klp_theme_variant.dart';
 import 'package:kallopis/src/styling/legacy_tokens/primitive_token.dart';
 
 // 元件 import 色彩層時一併取得 token 存取面（`context.klp` 與 `context.klpColors`），
 // 否則每個元件都要 import 兩個 theme 檔才拿得到值——那種摩擦會讓人選擇寫死。
 export 'klp_theme_data.dart';
+export 'klp_theme_variant.dart';
 export 'klp_theme_scope.dart';
 
-/// 內建的 [KlpThemeData] 預設變體。[transparent] 目前解析為 [KlpThemeData.dark]
-/// 的色彩再疊加透明度，不是一份獨立的色票——它描述的是「視窗背景可透」這個
-/// 額外能力，而不是第四種配色。
-enum KlpThemeVariant { light, dark, ultraDark, transparent }
 
 /// 輸入欄位底色要跟隨的互動狀態。
 ///

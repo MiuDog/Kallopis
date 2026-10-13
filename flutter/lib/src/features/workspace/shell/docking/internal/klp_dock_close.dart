@@ -26,7 +26,7 @@ extension _KlpDockCloseOperations on _KlpDockLayoutState {
 		final approve = panel.onCloseRequested;
 		if (approve == null || _pendingCloseRequests.containsKey(panel.id) || !_isPanelPlaced(panel.id)) return;
 		final request = _KlpDockCloseRequest(approve);
-		setState(() => _pendingCloseRequests[panel.id] = request);
+		_updateCloseState(() => _pendingCloseRequests[panel.id] = request);
 		try {
 			final approved = await request.approve();
 			if (approved && _closeRequestIsCurrent(panel.id, request)) {
@@ -43,7 +43,7 @@ extension _KlpDockCloseOperations on _KlpDockLayoutState {
 			}
 		} finally {
 			if (mounted && identical(_pendingCloseRequests[panel.id], request)) {
-				setState(() => _pendingCloseRequests.remove(panel.id));
+				_updateCloseState(() => _pendingCloseRequests.remove(panel.id));
 			}
 		}
 	}
