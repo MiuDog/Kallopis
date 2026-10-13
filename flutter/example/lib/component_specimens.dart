@@ -17,10 +17,11 @@ import 'foundation_detail_specimens.dart';
 import 'interaction_primitive_specimens.dart';
 import 'layout_utility_specimens.dart';
 import 'form_composition_specimens.dart';
+import 'advanced_form_specimens.dart';
 import 'catalog/registered_commands_page.dart';
 
 /* 只有真實target fixture可以進此清單；不是全量覆蓋宣告。 */
-const flutterSpecimenNames = <String>['KlpBadge', 'KlpButton', 'KlpIconButton', 'KlpSurface', 'KlpText', 'KlpTextField', ...linearSpecimenNames, ...explorerSpecimenNames, ...frameSpecimenNames, ...commandSpecimenNames, ...spatialSpecimenNames, ...formControlSpecimenNames, ...feedbackSpecimenNames, ...contentCollectionSpecimenNames, ...progressCollectionSpecimenNames, ...dataCollectionSpecimenNames, ...viewerCollectionSpecimenNames, ...navigationSelectionSpecimenNames, ...navigationCompoundSpecimenNames, ...actionUtilitySpecimenNames, ...foundationDetailSpecimenNames, ...interactionPrimitiveSpecimenNames, ...layoutUtilitySpecimenNames, ...formCompositionSpecimenNames];
+const flutterSpecimenNames = <String>['KlpBadge', 'KlpButton', 'KlpIconButton', 'KlpSurface', 'KlpText', 'KlpTextField', ...linearSpecimenNames, ...explorerSpecimenNames, ...frameSpecimenNames, ...commandSpecimenNames, ...spatialSpecimenNames, ...formControlSpecimenNames, ...feedbackSpecimenNames, ...contentCollectionSpecimenNames, ...progressCollectionSpecimenNames, ...dataCollectionSpecimenNames, ...viewerCollectionSpecimenNames, ...navigationSelectionSpecimenNames, ...navigationCompoundSpecimenNames, ...actionUtilitySpecimenNames, ...foundationDetailSpecimenNames, ...interactionPrimitiveSpecimenNames, ...layoutUtilitySpecimenNames, ...formCompositionSpecimenNames, ...advancedFormSpecimenNames];
 
 class ComponentSpecimenApp extends StatefulWidget {
 	const ComponentSpecimenApp({super.key, required this.name});
@@ -83,6 +84,7 @@ class _ComponentSpecimenAppState extends State<ComponentSpecimenApp> {
 
 	Widget _fixture() {
 		final key = ValueKey(_epoch);
+		if (advancedFormSpecimenNames.contains(widget.name)) return AdvancedFormComponentSpecimen(key: key, name: widget.name);
 		if (formCompositionSpecimenNames.contains(widget.name)) return FormCompositionComponentSpecimen(key: key, name: widget.name);
 		if (layoutUtilitySpecimenNames.contains(widget.name)) return LayoutUtilityComponentSpecimen(key: key, name: widget.name);
 		if (interactionPrimitiveSpecimenNames.contains(widget.name)) return InteractionPrimitiveComponentSpecimen(key: key, name: widget.name);
