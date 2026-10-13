@@ -32,5 +32,5 @@ class _ModernProductivityStarterState extends State<ModernProductivityStarter> {
 			stage: Padding(padding: EdgeInsets.all(inset), child: const Align(alignment: Alignment.topLeft, child: KlpText('Stage：替換成你的作品內容。工具功能已整合在左側欄。'))),
 		);
 	}
-	Widget _panel(String label, TextEditingController controller) => SingleChildScrollView(child: Padding(padding: EdgeInsets.all(context.klp.space.contentInset), child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [KlpText(label), TextField(controller: controller, decoration: InputDecoration(labelText: label))])));
+	Widget _panel(String label, TextEditingController controller) => SingleChildScrollView(child: Padding(padding: EdgeInsets.all(context.klp.space.contentInset), child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [KlpTextField(controller: controller, label: label)])));
 }
