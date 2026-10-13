@@ -1,6 +1,6 @@
 # 公開佈局模板文件
 
-本 module 擁有 docs/templates/ 的消費端入口；本 stage 只有 modern-productivity-layout，依 ../../spec/modern-productivity-layout-v1.md 及 ../architecture/modern-productivity-layout-contract.md r2。PLAN READY。
+本 module 擁有 docs/templates/ 的消費端入口；本 stage 只有 modern-productivity-layout，依 ../../spec/modern-productivity-layout-v1.md 及 ../architecture/modern-productivity-layout-contract.md r2。IMPLEMENTED；整合／部署結果另以 Actions 證據確認。
 
 文件引用共通契約與可執行 starter 來源，提供用途、公開接入、調整參數／semantic 對照、預覽與版本限制。不另定 token、不手寫第二套可執行範例，不把未實作型別寫成現行可用 API。網站 module 只負責登錄與 render，此 module 擁有正文。
 

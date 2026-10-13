@@ -826,3 +826,24 @@ flowchart TD
 ```
 
 ADVANCED-FORM M1 checkpoint：十四個consumer target source已接入，public analyze No issues／scope exact2／prefix release55.2秒；M2 native尚未執行，不計入176／273已驗證數量。使用者最新按鈕對比／版面總gap8指示先由共通風格整合處理；此fixture State與任務保留，不視為取消。
+
+## 現代風生產力 consumer：實作對應
+
+ModernProductivityStarter／State 的 createState、dispose、build／_panel 擁有 consumer 選取及兩個草稿 controller，僅用公開 foundation。ModernProductivityPreview／State 的 initState／dispose 擁有 preview SemanticsHandle 及寬度 controller；_setWidth／_setSemantic 驗證局部設定，_reset 只還原設定，_snippet 輸出完整 bootstrap，_copy 提供 clipboard 回饋，build／_content 組合外部控制與真實 Starter。維度選項直接讀 canonical primitives，非法值不提交。
+
+```mermaid
+flowchart TD
+	Route[main template route] --> Preview[ModernProductivityPreview.createState]
+	Preview --> Life[initState／dispose 語意 handle]
+	Preview --> Control[_setWidth／_setSemantic／_reset]
+	Control --> Pack[KlpStylePack.applyOverrides]
+	Preview --> Snippet[_snippet／_copy]
+	Preview --> Render[build／_content]
+	Render --> Starter[ModernProductivityStarter.createState]
+	Starter --> Data[consumer 選取／controller]
+	Starter --> Panel[_panel]
+	Starter --> Public[KlpModernProductivityLayout]
+	Catalog[workspaceShellPage 真實 specimen] --> Starter
+```
+
+證據：public analyze、release Web build、原 Catalog10項及 core5項檢查通過；真實 browser 六控制、四 mode、A→B→A 草稿、還原、複製與作用面板 Tab 巡訪已觀察。此模板另行驗證，不將舊176／273交接清冊冒稱全量已完成。感官 human-pending。

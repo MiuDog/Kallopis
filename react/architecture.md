@@ -907,3 +907,27 @@ BUILD 96e22480 exact5。TypeScript／production example build 通過，48 module
 ## COMPACT-DEFAULT-STYLE-r1 整合契約
 
 依根architecture.md的已接受使用者preset修訂，正式semantic權威與既有生成流程保持，模組algorithm/config/既有tests唯讀。common主動作底色低對比、parent總gap8及dockMargin0；framework generated artifact僅由既有generator更新。example alternative pack改buttonPaddingX而不改block/action gap。此為值修訂，不切換正式值權威。獨立common測試由styles/test/compact-default-style.test.mjs擁有，其餘worker不得改tests。
+
+## 現代風生產力模板：實作對應
+
+src/modern-productivity-layout.tsx 的公開 Panel／Props 型別描述受控輸入；validate 擁有公開清單／選取／寬度拒絕；KlpModernProductivityLayout 投影 theme 及既有 Frame／Button／layout，useLayoutEffect 只釋放隱藏面板中的焦點，keyed panels 始終 mounted，hidden／inert 隔離 inactive。
+
+example 的 ModernProductivityStarter 擁有 selectedId／navigation／tools 草稿；ModernProductivityPreview 擁有 base／pack／mode／overrides／sidebarWidth／feedback，changeWidth 與 changeSemantic 原子驗證、reset 只清設定、copy 複製完整 public bootstrap。SpecimenApp 只對本元件路由重用 Preview，StandardSpecimenApp 保留其他 factories。
+
+```mermaid
+flowchart TD
+	Preview[ModernProductivityPreview] --> Width[changeWidth]
+	Preview --> Change[changeSemantic]
+	Change --> Pack[applyKlpStyleOverrides]
+	Preview --> Reset[reset 設定]
+	Preview --> Copy[copy 啟動片段]
+	Preview --> Starter[ModernProductivityStarter]
+	Starter --> Layout[KlpModernProductivityLayout]
+	Layout --> Validate[validate]
+	Layout --> Mount[keyed hidden／inert panel host]
+	Layout --> Focus[useLayoutEffect inactive blur]
+	Specimen[SpecimenApp] --> Preview
+	Specimen --> Standard[StandardSpecimenApp]
+```
+
+證據：獨立 core 4 項及全套181項 tests 通過，library／example build、public snippet typecheck 與各 exact scope gate；真實瀏覽器六控制、模式／草稿／複製／還原與鍵盤巡訪已觀察。感官 human-pending。

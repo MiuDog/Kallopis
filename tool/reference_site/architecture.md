@@ -365,3 +365,5 @@ BUILDc0a421ee exact4，獨立TestAuthor6cd70cc8只test/flutter_scenarios.test.mj
 Native5203 /Kallopis/由docs中心link進Flutter索引，實際三links各自iframe heading與loaded確認；VS Code頁內草稿「docs 中的 Flutter 草稿」、保存command1、dark保持草稿，直接refresh重新loaded、獨立入口同scenario query。暫存artifact將iframe改unknown而保留正確獨立入口，實際error status拒絕錯場景；artifact還原後verify Green。main build/flutter-docs-gui-vscode.png與flutter-docs-load-error.png；感官human-pending、actual360未新增證據仍pending。完整bundle bytes與package fonts/data驗證已執行；Pages下一slice強制Flutter setup/build與9checks/flag，Ubuntu actual仍待final push。
 
 flutter-scenarios validator擁有own metadata/URL/DTO與bundle read範圍/manifest一致性；render及escape只呈現安全HTML。generate動態import限制新增依賴在明示flag，清理前所有metadata/bundle驗證；verify重讀JSON並逐檔bytes，不信copy自述。site.js inspect只讀Title，finish持有terminal清理，沒有iframe state注入或第二theme。
+
+現代模板接入證據：documents registry 由來源 Markdown 生成 docs/guides/modern-productivity-layout.html，沿用兩框架既有 bundles；563 canonical API／24 React 元件的完整 generate／verify 通過。未增加第二份模板 renderer。

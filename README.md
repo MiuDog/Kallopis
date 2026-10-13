@@ -32,11 +32,17 @@ import 'package:kallopis/kallopis_foundation.dart';
 
 React consumer 從 `@kallopis/react` 匯入公開元件與 `KlpThemeProvider`，並載入 `@kallopis/react/styles.css`。產品擁有 React tree 與業務狀態，風格由同一份正式規範生成；完整安裝及使用方式見 [React 產品使用指南](docs/ai/react-usage.md)。
 
+## 現代風生產力佈局模板
+
+[現代風生產力佈局](docs/templates/modern-productivity-layout.md) 提供 Flutter／React 共用的全高左側欄＋右區 Header／Stage。原右側工具功能整合到左側按鈕列；consumer 擁有功能清單、選取與草稿。
+
+模板包含公開 `KlpModernProductivityLayout`、最小起始範例、六項細節調整、四模式即時預覽與可複製啟動設定。局部 style pack override 不建立第二份預設；[模板指南](https://miudog.github.io/Kallopis/docs/guides/modern-productivity-layout.html) 提供兩框架接入與預覽。pub.dev／npm 尚未上架，使用 repository 的框架套件或自行打包。
+
 ## Workbench 與互動展示
 
 兩框架提供 Dock 布局、分頁、分割與縮放、布局保存還原、命令註冊、工具列、選單、命令面板及快捷鍵核心與宿主。能力及合法組裝規則見 [Workbench 規範](spec/workbench-v1.md)，風格資料與 override 契約見 [可替換風格檔](spec/style-pack-v1.md)。
 
-- [React 互動元件](https://miudog.github.io/Kallopis/docs/react/components/index.html)：23 個公開可渲染元件的專屬展示。
+- [React 互動元件](https://miudog.github.io/Kallopis/docs/react/components/index.html)：24 個公開可渲染元件的專屬展示。
 - [React GUI 場景](https://miudog.github.io/Kallopis/docs/react/scenarios/index.html)與 [Flutter GUI 場景](https://miudog.github.io/Kallopis/docs/flutter/scenarios/index.html)：VS Code、Blockbench、Blender 使用場景，展示公開元件的組合方式。
 - [Flutter 公開型別](https://miudog.github.io/Kallopis/docs/components/index.html)：依公開 library 擷取；API 清單不等於已完成的互動展示數量。
 
