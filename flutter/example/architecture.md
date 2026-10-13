@@ -1,5 +1,13 @@
 # Flutter 公開 consumer 範例
 
+## MODERN-PRODUCTIVITY-CATALOG-1（IMPLEMENTED）
+
+公開新增 widget 必須在既有 Catalog 歸類。BUILD exact lib/catalog/workspace_shell_page.dart、lib/catalog/generated/catalog_style_semantics.g.dart。新增真實 ModernProductivityStarter caller，有限 host 用正式尺寸；metadata 由既有 generator 生成，原 catalog_coverage_test 保留。此路由不冒稱全部專屬展示已完成。估 1k–3k／10–20 分鐘，M1 真實 caller／生成 metadata／原 coverage；4k／30 分鐘或 generator 行為需改回 PLAN。
+
+## MODERN-PRODUCTIVITY-FLUTTER-TEMPLATE-1（IMPLEMENTED）
+
+本 stage 提供可複製 public consumer starter 與真實參數預覽，依根 docs/architecture/modern-productivity-layout-contract.md r2。BUILD exact lib/main.dart、lib/modern_productivity_starter.dart、lib/modern_productivity_preview.dart。Template route ?template=modern-productivity-layout，未知／歧義拒絕；保留現有 Catalog／specimen／scenario。Starter 擁有面板 controller／selectedId，Preview 擁有 mode／overrides／sidebarWidth 與片段輸出；Preview 匯入 Starter，不重畫庫內部。改設定／mode 不更換 starter key，dispose controller；片段用公開 style pack API。Core、theme、tests／fixtures、其他 example、網站、配置與 architecture 唯讀。M1 public starter／路由 build；M2 r2 browser 控制／草稿／重設／複製與重套用，估 4k–8k／30–60 分鐘，12k／90 分鐘或跨契約回 PLAN。尚未實作，不計入既有元件原生驗證數量。
+
 ## CATALOG-PUBLISH-REPAIR-1（COMPLETE）
 
 修訂 `CATALOG-PUBLISH-REPAIR-r1`。既有發布 example suite 重現三項 Catalog 失敗：DeviceAdaptive／SlidingDrawer 未歸類、PanelFrame raised 被當成不存在的型別，以及命令入口風格追蹤資料過期。write_paths 僅 `lib/catalog/workspace_shell_page.dart`、`lib/catalog/foundation_pages.dart`、`lib/catalog/generated/catalog_style_semantics.g.dart`。兩個已有公開元件新增實際展示；PanelFrame 的 flat／raised 併入同一 canonical specimen；語意追蹤只由既有 generator 從真實 source 生成，不補假 coverage。原 test、library、specimen registry 與其完成數唯讀。驗收為原 catalog_coverage_test、全部 example suite、analyze 及 web build。
@@ -818,3 +826,24 @@ flowchart TD
 ```
 
 ADVANCED-FORM M1 checkpoint：十四個consumer target source已接入，public analyze No issues／scope exact2／prefix release55.2秒；M2 native尚未執行，不計入176／273已驗證數量。使用者最新按鈕對比／版面總gap8指示先由共通風格整合處理；此fixture State與任務保留，不視為取消。
+
+## 現代風生產力 consumer：實作對應
+
+ModernProductivityStarter／State 的 createState、dispose、build／_panel 擁有 consumer 選取及兩個草稿 controller，僅用公開 foundation。ModernProductivityPreview／State 的 initState／dispose 擁有 preview SemanticsHandle 及寬度 controller；_setWidth／_setSemantic 驗證局部設定，_reset 只還原設定，_snippet 輸出完整 bootstrap，_copy 提供 clipboard 回饋，build／_content 組合外部控制與真實 Starter。維度選項直接讀 canonical primitives，非法值不提交。
+
+```mermaid
+flowchart TD
+	Route[main template route] --> Preview[ModernProductivityPreview.createState]
+	Preview --> Life[initState／dispose 語意 handle]
+	Preview --> Control[_setWidth／_setSemantic／_reset]
+	Control --> Pack[KlpStylePack.applyOverrides]
+	Preview --> Snippet[_snippet／_copy]
+	Preview --> Render[build／_content]
+	Render --> Starter[ModernProductivityStarter.createState]
+	Starter --> Data[consumer 選取／controller]
+	Starter --> Panel[_panel]
+	Starter --> Public[KlpModernProductivityLayout]
+	Catalog[workspaceShellPage 真實 specimen] --> Starter
+```
+
+證據：public analyze、release Web build、原 Catalog10項及 core5項檢查通過；真實 browser 六控制、四 mode、A→B→A 草稿、還原、複製與作用面板 Tab 巡訪已觀察。此模板另行驗證，不將舊176／273交接清冊冒稱全量已完成。感官 human-pending。

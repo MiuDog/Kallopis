@@ -6,9 +6,15 @@ import 'catalog_theme_scope.dart';
 import 'catalog_shell.dart';
 import 'component_specimens.dart';
 import 'gui_scenarios.dart';
+import 'modern_productivity_preview.dart';
 
 void main() {
 	final query = Uri.base.queryParameters;
+	if (query.containsKey('template')) {
+		final ambiguous = query.containsKey('specimen') || query.containsKey('scenario');
+		runApp(ModernProductivityPreview(id: ambiguous ? '' : query['template'] ?? ''));
+		return;
+	}
 	if (query.containsKey('specimen')) {
 		runApp(ComponentSpecimenApp(name: query['specimen'] ?? ''));
 		return;

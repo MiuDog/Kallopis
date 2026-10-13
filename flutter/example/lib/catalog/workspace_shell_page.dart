@@ -2,6 +2,7 @@ import 'package:flutter/widgets.dart';
 import 'package:kallopis/kallopis.dart';
 
 import '../catalog_model.dart';
+import '../modern_productivity_starter.dart';
 
 /// Catalog owner 借用公開裝置判定；三個 builder 都有真實內容。
 Widget _buildDeviceAdaptive(BuildContext context) {
@@ -46,6 +47,7 @@ final workspaceShellPage = CatalogPageData(
 	description: 'Identity、Navigator 三種注入模型與 footer 的 Kallopis 預設組合。',
 	icon: KlpIcons.panelLeft,
 	specimens: [
+		Specimen(name: 'KlpModernProductivityLayout', note: '全高左側欄整合工具；右區只保留 Header 與 Stage，功能由側欄按鈕列切換。', build: (context) => SizedBox(width: context.klp.geometry.layout.primaryPaneWidth * 3, height: context.klp.space.pageLarge * 3, child: const ModernProductivityStarter())),
 		Specimen(name: 'KlpDeviceAdaptive', note: '由公開裝置分類選擇 desktop、tablet 或 phone builder。', build: _buildDeviceAdaptive),
 		Specimen(name: 'KlpSlidingDrawerLayout', note: '展示 owner 控制抽屜進度，元件沿用 theme 的過場。', build: (context) => const _SlidingDrawerSpecimen()),
 		Specimen(

@@ -14,6 +14,7 @@ export const reactSpecimenRegistry = Object.freeze({
 	KlpLayoutPane: 'layout',
 	KlpLayoutRow: 'layout',
 	KlpLayoutSpacer: 'layout',
+	KlpModernProductivityLayout: 'layout',
 	KlpRegisteredCommandMenu: 'command',
 	KlpRegisteredCommandPalette: 'command',
 	KlpRegisteredCommandPopup: 'command',

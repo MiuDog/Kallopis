@@ -1,5 +1,17 @@
 # React Foundation
 
+## MODERN-PRODUCTIVITY-REFERENCE-1（IMPLEMENTED）
+
+新公開元件已由真實 d.ts extraction 觀察到，24 項；BUILD exact example/specimen-registry.mjs、example/specimens.tsx。Registry 增加 KlpModernProductivityLayout 的既有 layout kind，專屬 specimen route 直接重用已驗證的 ModernProductivityPreview，其他 factory／names 不變。不修改 extractor、website kinds 或 tests，驗收既有 react specimens checks／bundle build／公開頁 route。估 1k–3k／10–20 分鐘，M1 registry／caller／scope；4k／30 分鐘或需要弱化 coverage 回 PLAN。
+
+## MODERN-PRODUCTIVITY-REACT-TEMPLATE-1（IMPLEMENTED）
+
+依共同契約 r2，BUILD exact example/main.tsx、example/modern-productivity-starter.tsx、example/modern-productivity-preview.tsx。Starter 使用 dist 公開 import 並擁有 selectedId／面板草稿；Preview 匯入 Starter 並擁有 mode／overrides／sidebarWidth 與公開 API 片段，stable key 不因控制調整而重建。Template 路由未知／歧義拒絕；現有 scenario／specimen 保留。Core、theme、CSS、tests／fixtures、其他 example、配置與 architecture 唯讀。M1 typed consumer／路由 build；M2 r2 browser 調整／草稿／重設／複製與重套用，估 4k–8k／30–60 分鐘，12k／90 分鐘或需改 core／parser 回 PLAN。尚未實作。
+
+## MODERN-PRODUCTIVITY-REACT-1（IMPLEMENTED）
+
+本 stage 的公開 KlpModernProductivityLayout／KlpModernProductivityPanel 依 [共同契約](../docs/architecture/modern-productivity-layout-contract.md)。新 src/modern-productivity-layout.tsx 組合既有 layout／Frame／Button／theme，由 src/index.ts 匯出。BUILD exact 以上兩檔；components／CSS、theme、tokens、solver、其他 modules、tests、example、配置與 architecture 唯讀。獨立 Test Author 唯一可寫 test/modern-productivity-layout.test.mjs。產品清單與 selectedId 受控，stable id 面板保持 mounted 且 inactive hidden；不新增 store 或產品流程。里程碑／估算／回 PLAN 門檻由根整合架構本 stage 定義。
+
 ## REACT-PUBLISH-FRESHNESS-1（READY）
 
 修訂 `REACT-PUBLISH-FRESHNESS-r1`。整合發布時，以既有正式規範重新生成 `src/source-manifest.json`、`src/style-pack-manifest.json`；本庫 `.gitattributes` 固定 LF，雜湊應與 Linux checkout 一致。只刷新來源證據，不改 token 值、runtime 或 generator。BUILD 精確 write_paths 為以上兩個檔案；其餘來源、tests、規範唯讀。驗收為 `npm run check:tokens`、build、test、consumer build 及遠端相同 CI；不調整 freshness 門檻。
@@ -895,3 +907,27 @@ BUILD 96e22480 exact5。TypeScript／production example build 通過，48 module
 ## COMPACT-DEFAULT-STYLE-r1 整合契約
 
 依根architecture.md的已接受使用者preset修訂，正式semantic權威與既有生成流程保持，模組algorithm/config/既有tests唯讀。common主動作底色低對比、parent總gap8及dockMargin0；framework generated artifact僅由既有generator更新。example alternative pack改buttonPaddingX而不改block/action gap。此為值修訂，不切換正式值權威。獨立common測試由styles/test/compact-default-style.test.mjs擁有，其餘worker不得改tests。
+
+## 現代風生產力模板：實作對應
+
+src/modern-productivity-layout.tsx 的公開 Panel／Props 型別描述受控輸入；validate 擁有公開清單／選取／寬度拒絕；KlpModernProductivityLayout 投影 theme 及既有 Frame／Button／layout，useLayoutEffect 只釋放隱藏面板中的焦點，keyed panels 始終 mounted，hidden／inert 隔離 inactive。
+
+example 的 ModernProductivityStarter 擁有 selectedId／navigation／tools 草稿；ModernProductivityPreview 擁有 base／pack／mode／overrides／sidebarWidth／feedback，changeWidth 與 changeSemantic 原子驗證、reset 只清設定、copy 複製完整 public bootstrap。SpecimenApp 只對本元件路由重用 Preview，StandardSpecimenApp 保留其他 factories。
+
+```mermaid
+flowchart TD
+	Preview[ModernProductivityPreview] --> Width[changeWidth]
+	Preview --> Change[changeSemantic]
+	Change --> Pack[applyKlpStyleOverrides]
+	Preview --> Reset[reset 設定]
+	Preview --> Copy[copy 啟動片段]
+	Preview --> Starter[ModernProductivityStarter]
+	Starter --> Layout[KlpModernProductivityLayout]
+	Layout --> Validate[validate]
+	Layout --> Mount[keyed hidden／inert panel host]
+	Layout --> Focus[useLayoutEffect inactive blur]
+	Specimen[SpecimenApp] --> Preview
+	Specimen --> Standard[StandardSpecimenApp]
+```
+
+證據：獨立 core 4 項及全套181項 tests 通過，library／example build、public snippet typecheck 與各 exact scope gate；真實瀏覽器六控制、模式／草稿／複製／還原與鍵盤巡訪已觀察。感官 human-pending。

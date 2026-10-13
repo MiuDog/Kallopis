@@ -3,6 +3,7 @@ import { KlpAppLayout, KlpBadge, KlpButton, KlpCard, KlpFileExplorer, KlpFrame, 
 import { CommandsDemo } from './commands-demo.js';
 import { DockDemo } from './dock-demo.js';
 import { reactSpecimenRegistry } from './specimen-registry.mjs';
+import { ModernProductivityPreview } from './modern-productivity-preview.js';
 
 interface SpecimenProps {
 	/* name是公開路由identity，compound fixture據此選當次實際target與參數。 */
@@ -16,6 +17,11 @@ export const reactSpecimenNames = Object.freeze(Object.keys(reactSpecimenRegistr
 const modes: readonly KlpMode[] = ['light', 'dark', 'ultraDark', 'transparent'];
 
 export function SpecimenApp({ name }: SpecimenProps) {
+	if (name === 'KlpModernProductivityLayout') return <ModernProductivityPreview id="modern-productivity-layout" />;
+	return <StandardSpecimenApp name={name} />;
+}
+
+function StandardSpecimenApp({ name }: SpecimenProps) {
 
 	/* mode／alternate／width屬展示環境；epoch只在明確重設時重建fixture，不隨theme切換。 */
 	const [mode, setMode] = useState<KlpMode>('light');

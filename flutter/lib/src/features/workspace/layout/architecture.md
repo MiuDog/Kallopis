@@ -1,5 +1,11 @@
 # Workspace Layout Architecture
 
+## MODERN-PRODUCTIVITY-FLUTTER-1（IMPLEMENTED）
+
+本模組新增 klp_modern_productivity_layout.dart；公開入口 foundation，契約以根 docs/architecture/modern-productivity-layout-contract.md 為準。KlpModernProductivityPanel 擁有 immutable id／label／Widget content；KlpModernProductivityLayout 組合既有 layout、semantic frame／stage 與 KlpButton。按鈕列橫向而現有 SidebarButtonGroup 為垂直，不改既有群組。面板以 id key 與 IndexedStack／Offstage、ExcludeFocus／TickerMode 保留並隔離非作用內容；不持有產品 controller 或選取狀態。既有 solver、其他布局與 Dock 全部不變。
+
+BUILD write_paths 只為新主檔及 foundation 匯出；獨立 Test Author 為 flutter/test/modern_productivity_layout_test.dart。全部幾何／受控行為／生命週期與錯誤契約、保護邊界及驗收以共同契約為準。M1 公開元件與核心檢查；M2 stable id／inactive／極端尺寸／公開 consumer，估 5k–10k tokens／40–80 分鐘，15k／120 分鐘或跨契約回 PLAN。此 slice 尚未實作。
+
 ## FLUTTER-LAYOUT-2（完成）
 
 修訂 `FLUTTER-LAYOUT-r2`，接入共通 [WB-LINEAR-UI-r1](../../../../../../docs/architecture/workbench-linear-contract.md)。公開 KlpLayoutBounds／KlpLayoutDivider 與各 node 的 bounds、Column alignment 為可逆增量；舊 LayoutResizeHandle.onResize 相容保留，新展示使用無手勢 divider。
@@ -196,3 +202,24 @@ flowchart TD
 ```
 
 FLUTTER-LAYOUT-2 實作 273a0b4f：18 項獨立 Widget checks、4 項既有 workspace checks、公開 analyze 與 scope gate 通過。Test Author 發現自己將既有 callback 誤判為無效，依相容契約獨立修正為全域位置／無自動尺寸變動保護（83a77b6d）；受保護 SHA256 893CB1ABE6FE24C2F6CA54EA72769CC23EE91CD0C68B0909117DDAE5D63BBB75。Catalog Workspace components 實際瀏覽器已顯示 Row／Frame／floating action；沒有 error log，僅 Flutter 既有 viewport meta 提示。感官品質仍由人類接受；沒有新 visual golden。
+
+## 現代風生產力核心：實作對應
+
+KlpModernProductivityPanel 的 constructor 建立 immutable id／label／content。KlpModernProductivityLayout 的 constructor 驗證清單／選取／寬度並隔離 caller list；build 驗證有限宿主並組合 KlpAppLayout；_sidebar 組合中尺度 KlpButton 及 keyed Offstage／ExcludeFocus／TickerMode；_stage 使用 stageSurface、自然 Header 最小尺度及剩餘 Stage。
+
+Header 以 IntrinsicHeight 取得自然高度，僅作既有線性布局的內容量測；header 內容須可自然量測，依 Flutter intrinsic 支援範圍。沒有新增 solver。IndexedStack 的內部位置 wrapper 會影響重排身分，因此 keyed Offstage 直接置於 Stack，避免重排草稿重建。
+
+```mermaid
+flowchart TD
+	Ctor[KlpModernProductivityLayout constructor] --> Validate[輸入驗證／List.unmodifiable]
+	Build[build] --> Host[LayoutBuilder 有限宿主]
+	Host --> App[KlpAppLayout／LayoutRow]
+	App --> Sidebar[_sidebar]
+	Sidebar --> Buttons[KlpButton／onSelected]
+	Sidebar --> Panels[Stack／keyed Offstage／ExcludeFocus／TickerMode]
+	App --> Stage[_stage]
+	Stage --> Header[IntrinsicHeight／chromeHeader]
+	Stage --> Body[剩餘高度 Stage]
+```
+
+證據：獨立 5 項 public Widget checks 通過，scoped analyze 無問題，exact2 source gate；原 UI／solver／tests 未修改。感官 human-pending。

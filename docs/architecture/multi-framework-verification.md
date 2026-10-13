@@ -2,6 +2,12 @@
 
 此紀錄只報告實際觀察；視覺品質與操作手感仍由使用者接受。
 
+## 2026-10-13 現代風生產力模板
+
+兩框架新公開 Layout／Panel、consumer starter、局部參數預覽及模板指南已實作。獨立 core checks Flutter 5／React 4 通過；完整 React 181、Flutter example 54、網站15＋specimen6＋場景16項通過。Flutter root 全套643通過、1項 inventory stale；從真實 source 重新生成後原 inventory 2項檢查通過，不改測試要求。所有 Flutter source 與 consumer 的 scoped analyze 無問題；protected test 的 lint 僅由 Test Author 補迴圈 braces，原5項再次通過。遠端完整發布閘門另以本次 PR／Actions 記錄。
+
+真實瀏覽器兩框架六控制、四模式、A→B→A、還原設定與草稿保留、複製設定，以及作用面板 Tab 巡訪已觀察。設定來源以相同 semantic overrides 在公開 consumer 片段通過 Flutter analyze／React tsc。公開清冊為563 canonical／24 React元件；新增模板由真實 Catalog／specimen caller 接入，沒有弱化原閘門。感官 human-pending；舊176／273 Workbench清冊仍是原交接範圍，不代表全部已完成。
+
 ## 2026-10-13 發布整合驗證
 
 使用者已授權整合 `main`、修復發布 CI 並發布 README／參考網站。`main` 整合提交為 `72eb4f0f`，保留主目錄既有未提交內容；修復使用隔離 checkout。公開 Flutter theme／foundation API 與 React import 入口保持原契約。

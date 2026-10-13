@@ -1,5 +1,9 @@
 # Kallopis Reference Site
 
+## MODERN-PRODUCTIVITY-TEMPLATE-SITE-1（IMPLEMENTED）
+
+依現代風生產力佈局 r2 契約，BUILD 只寫 documents.mjs，新增 docs/templates/modern-productivity-layout.md 的 template guide 登錄。來源包含已驗證的 starter 來源與兩框架 template route；沿用既有 examples/react 與 examples/flutter bundle，不新增 renderer／iframe registry／設定 store。Docs 正文、元件、examples、tests、manifest、generator／verifier、workflow 與 architecture 唯讀。驗收原 Node tests、完整 generate／verify、搜尋／連結與公開 template route。M1 唯一里程碑，估 1k–3k／10–20 分鐘，4k／30 分鐘或缺既有路由能力回 PLAN。不得在 consumer preview 未完成時登錄成已交付。
+
 ## DOCS-LINEAR-1（完成）
 
 修訂 `DOCS-LINEAR-r1`。將已實作雙框架尺寸算法的共通來源 `docs/architecture/workbench-linear-contract.md` 接入 `docs/guides/workbench-linear-contract.html`，Guide 分類。BUILD write_paths 只有 `tool/reference_site/documents.mjs`；既有 renderer、API identity、manifest、architecture、tests 與來源正文唯讀。沿用現有 15 項 registry／內容／link checks 及 generate／verify，不新增測試；本次 docs 路由不改展示功能。M1：來源、頁面、搜尋及引用可驗證。cold-start 1k–2k tokens／5–10 分鐘，參照 DOCS-STAGE-1；超過 3k tokens 或需要修改 renderer 回 PLAN。
@@ -361,3 +365,5 @@ BUILDc0a421ee exact4，獨立TestAuthor6cd70cc8只test/flutter_scenarios.test.mj
 Native5203 /Kallopis/由docs中心link進Flutter索引，實際三links各自iframe heading與loaded確認；VS Code頁內草稿「docs 中的 Flutter 草稿」、保存command1、dark保持草稿，直接refresh重新loaded、獨立入口同scenario query。暫存artifact將iframe改unknown而保留正確獨立入口，實際error status拒絕錯場景；artifact還原後verify Green。main build/flutter-docs-gui-vscode.png與flutter-docs-load-error.png；感官human-pending、actual360未新增證據仍pending。完整bundle bytes與package fonts/data驗證已執行；Pages下一slice強制Flutter setup/build與9checks/flag，Ubuntu actual仍待final push。
 
 flutter-scenarios validator擁有own metadata/URL/DTO與bundle read範圍/manifest一致性；render及escape只呈現安全HTML。generate動態import限制新增依賴在明示flag，清理前所有metadata/bundle驗證；verify重讀JSON並逐檔bytes，不信copy自述。site.js inspect只讀Title，finish持有terminal清理，沒有iframe state注入或第二theme。
+
+現代模板接入證據：documents registry 由來源 Markdown 生成 docs/guides/modern-productivity-layout.html，沿用兩框架既有 bundles；563 canonical API／24 React 元件的完整 generate／verify 通過。未增加第二份模板 renderer。

@@ -8,6 +8,7 @@ import { DockDemo } from './dock-demo.js';
 import { CommandsDemo } from './commands-demo.js';
 import { SpecimenApp } from './specimens.js';
 import { ScenarioApp } from './scenarios.js';
+import { ModernProductivityPreview } from './modern-productivity-preview.js';
 
 const modes: KlpMode[] = ['light', 'dark', 'ultraDark', 'transparent'];
 const labels = { light: '淺色', dark: '深色', ultraDark: '極深色', transparent: '透明' };
@@ -111,4 +112,5 @@ const query = new URLSearchParams(window.location.search);
 let entry = <App />;
 if (query.has('scenario')) entry = <ScenarioApp id={query.get('scenario') ?? ''} />;
 if (query.has('specimen')) entry = <SpecimenApp name={query.get('specimen') ?? ''} />;
+if (query.has('template')) entry = <ModernProductivityPreview id={query.has('scenario') || query.has('specimen') ? '' : query.get('template') ?? ''} />;
 createRoot(document.getElementById('root')!).render(entry);

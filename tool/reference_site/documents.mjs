@@ -1,5 +1,6 @@
 // source 為唯一 Markdown 來源，href 為產物路由，title／category 用於導覽與搜尋；不保存正文副本。
 export const documents = [
+	['docs/templates/modern-productivity-layout.md', 'docs/guides/modern-productivity-layout.html', '現代風生產力佈局模板', 'Guide'],
 	['docs/architecture/workbench-shortcut-host-contract.md', 'docs/guides/workbench-shortcut-host-contract.html', 'Registered 快捷鍵原生宿主契約', 'Guide'],
 	['docs/architecture/workbench-shortcut-core-contract.md', 'docs/guides/workbench-shortcut-core-contract.html', 'Registered 快捷鍵核心契約', 'Guide'],
 	['docs/architecture/workbench-command-popup-contract.md', 'docs/guides/workbench-command-popup-contract.html', '錨定與右鍵命令選單契約', 'Guide'],
