@@ -1,5 +1,7 @@
 # Flutter Dock
 
+發布修復保持 State 擁有重建：`_KlpDockCloseOperations._requestClose` 透過 `_KlpDockLayoutState._updateCloseState` 更新 pending，後者才呼叫 protected `setState`。請求 token、stale approval 判斷、caller layout 與 callback 生命週期不變。
+
 修訂 `FLUTTER-DOCK-UI-r1`；PLAN READY。擁有此 docking 目錄；公開入口由 foundation 匯出。保留直接 KlpDockLayout／Panel／Area／Group；不引入通用 node tree、renderer 或產品 storage。
 
 ## 當前 slice FLUTTER-DOCK-OPS-1（完成）

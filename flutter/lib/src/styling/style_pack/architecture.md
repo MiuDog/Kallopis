@@ -39,6 +39,18 @@ flowchart LR
 
 維護：`_validate` 驗證交換圖與 canonical 完整性；`_resolve`／`_typed` 執行 catalog 型別範圍及 constraints；`_copy`／`_freeze` 隔離 caller 與 snapshot；`native_codec.dart` 的 `_nativeStyle` 擁有完整 path 映射及原生曲線／時長／字重轉換。generated source 與 manifest 只由 generator 更新。
 
+generator 的 `jsonMetadata(value)` 將交換 JSON 編為標準 Unicode escape；Dart `jsonDecode` 還原原文，metadata 不轉為使用者文案。`klp_theme_variant.dart` 只提供 mode leaf；builder 與 codec 共用該 enum，codec 不依賴 builder。
+
+```mermaid
+flowchart TD
+	Pack[正式 pack / catalog] --> Encode[jsonMetadata]
+	Encode --> Generated[generated.dart]
+	Generated --> Decode[jsonDecode / KlpStylePack]
+	Variant[KlpThemeVariant leaf] --> Decode
+	Variant --> Builder[buildKlpThemeVariant]
+	Decode --> Builder
+```
+
 ## FLUTTER-STYLE-1 完成證據
 
 實作 commit `17119f2be35f7e8cc62db9a3e8b678dc1985c23c`。19 項獨立公開測試全通過，四模式 1400 resolved 值與 Node 公開 resolver 一致，350 native 欄位逐项 encode 對照；包含 immutable、atomic、非法圖／型別／constraints、精確微秒、字重與 Theme scope。Test Author SHA256 `15B43CF1A61888D208B32785716163BEFD4B101D8ED02FB3ABF7D985C4527129` 未變。

@@ -6,7 +6,7 @@
 
 ## 總覽
 
-- 公開型別 **413** 個，其中 widget **162** 個
+- 公開型別 **452** 個，其中 widget **167** 個
 - 分為 **20** 個領域
 
 ### 領域之間的依賴方向
@@ -18,7 +18,7 @@
 ```mermaid
 graph TD
   foundation["foundation — 圖示、色盤、度量"]
-  features -->|306| foundation
+  features -->|309| foundation
   styling -->|16| kernel
   features -->|2| styling
   foundation -->|1| styling
@@ -95,7 +95,7 @@ graph TD
 | `KlpLayoutBuilder` | 10 | （葉節點） |
 | `KlpLocalizations` | 473 | （葉節點） |
 | `KlpLocalizationsDelegate` | 14 | `KlpLocalizations` |
-| `KlpMasonryGrid` | 56 | （葉節點） |
+| `KlpMasonryGrid` | 55 | （葉節點） |
 | `KlpOklchColor` | 144 | （葉節點） |
 | `KlpOrientation` | 1 | （葉節點） |
 | `KlpOverlayHost` | 16 | （葉節點） |
@@ -221,7 +221,7 @@ graph LR
 不組合任何其他 Kallopis 型別的 widget。它們是這套視覺語言的**詞根**——
 每一個都直接對應一個不可再分的視覺概念。
 
-`KlpAdaptive`、`KlpAlign`、`KlpCenter`、`KlpColorRoleField`、`KlpColumn`、`KlpConditionalFieldRegion`、`KlpConstrainedBox`、`KlpContextMenu`、`KlpDashedDivider`、`KlpDateField`、`KlpDeviceAdaptive`、`KlpDirectionalPositioned`、`KlpDivider`、`KlpDropIndicator`、`KlpErrorState`、`KlpExcludeSemantics`、`KlpExpanded`、`KlpFileExplorerSection`、`KlpFit`、`KlpFlexible`、`KlpFocusBoundary`、`KlpFocusRegion`、`KlpGap`、`KlpGeometricSpinner`、`KlpGestureRegion`、`KlpIcon`、`KlpInlineCode`、`KlpKeyBindingHost`、`KlpKeyBindingRegion`、`KlpLayoutBuilder`、`KlpLiveRegion`、`KlpMasonryGrid`、`KlpMenu`、`KlpModalFrame`、`KlpNumberField`、`KlpOverlayHost`、`KlpPageBackgroundEditor`、`KlpPageBackgroundPainter`、`KlpPanelFooter`、`KlpPanelFrame`、`KlpPermissionState`、`KlpPointerBlocker`、`KlpPositioned`、`KlpPressable`、`KlpResizablePane`、`KlpResizeHandle`、`KlpRotate`、`KlpRow`、`KlpScrollViewport`、`KlpSegmentedProgress`、`KlpSemanticRegion`、`KlpSettingsSearchField`、`KlpSidebarNavigationButton`、`KlpSidebarNavigationGroup`、`KlpSpacer`、`KlpStack`、`KlpStateHighlight`、`KlpStepper`、`KlpStrokeFrame`、`KlpText`、`KlpTextArea`、`KlpTokenOverride`、`KlpTooltip`、`KlpTranslate`、`KlpVeil`、`KlpVirtualGrid`、`KlpVirtualList`、`KlpWrap`
+`KlpAdaptive`、`KlpAlign`、`KlpCenter`、`KlpColorRoleField`、`KlpColumn`、`KlpConditionalFieldRegion`、`KlpConstrainedBox`、`KlpContextMenu`、`KlpDashedDivider`、`KlpDateField`、`KlpDeviceAdaptive`、`KlpDirectionalPositioned`、`KlpDivider`、`KlpDropIndicator`、`KlpErrorState`、`KlpExcludeSemantics`、`KlpExpanded`、`KlpFileExplorerSection`、`KlpFit`、`KlpFlexible`、`KlpFocusBoundary`、`KlpFocusRegion`、`KlpGap`、`KlpGeometricSpinner`、`KlpGestureRegion`、`KlpIcon`、`KlpInlineCode`、`KlpKeyBindingHost`、`KlpKeyBindingRegion`、`KlpLayoutBuilder`、`KlpLiveRegion`、`KlpMasonryGrid`、`KlpMenu`、`KlpModalFrame`、`KlpNumberField`、`KlpOverlayHost`、`KlpPageBackgroundEditor`、`KlpPageBackgroundPainter`、`KlpPanelFooter`、`KlpPanelFrame`、`KlpPermissionState`、`KlpPointerBlocker`、`KlpPositioned`、`KlpPressable`、`KlpRegisteredCommandPopup`、`KlpRegisteredCommandToolbar`、`KlpResizablePane`、`KlpResizeHandle`、`KlpRotate`、`KlpRow`、`KlpScrollViewport`、`KlpSegmentedProgress`、`KlpSemanticRegion`、`KlpSettingsSearchField`、`KlpSidebarNavigationButton`、`KlpSidebarNavigationGroup`、`KlpSpacer`、`KlpStack`、`KlpStateHighlight`、`KlpStepper`、`KlpStrokeFrame`、`KlpText`、`KlpTextArea`、`KlpTokenOverride`、`KlpTooltip`、`KlpTranslate`、`KlpVeil`、`KlpVirtualGrid`、`KlpVirtualList`、`KlpWrap`
 
 ## 被最多型別使用的
 
@@ -229,19 +229,19 @@ graph LR
 
 | 型別 | 被幾個型別使用 |
 |---|---|
-| `KlpText` | 50 |
-| `KlpColumn` | 36 |
-| `KlpRow` | 36 |
+| `KlpText` | 52 |
 | `KlpBox` | 35 |
-| `KlpExpanded` | 31 |
+| `KlpColumn` | 35 |
+| `KlpRow` | 35 |
+| `KlpExpanded` | 30 |
 | `KlpSurface` | 25 |
 | `KlpContractError` | 16 |
 | `KlpWrap` | 12 |
-| `KlpGestureRegion` | 11 |
+| `KlpGestureRegion` | 10 |
 | `KlpCenter` | 9 |
+| `KlpIcon` | 9 |
 | `KlpStack` | 8 |
 | `KlpFlexible` | 7 |
-| `KlpIcon` | 7 |
 | `KlpLayoutBuilder` | 6 |
 | `KlpAlign` | 5 |
 

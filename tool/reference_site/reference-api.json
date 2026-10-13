@@ -242,7 +242,7 @@
 						"foundation"
 					],
 					"signature": "class KlpCommandConditionError",
-					"documentation": "",
+					"documentation": "保留條件解析的原始錯誤，讓產品決定呈現與恢復方式。",
 					"typeRelationships": {
 						"extends": "Object",
 						"mixins": [],
@@ -404,7 +404,7 @@
 						"foundation"
 					],
 					"signature": "enum KlpCommandErrorPhase",
-					"documentation": "",
+					"documentation": "區分條件與 handler 失敗，供 caller 處理原始錯誤。",
 					"typeRelationships": {
 						"extends": "Enum",
 						"mixins": [],
@@ -444,7 +444,7 @@
 						"foundation"
 					],
 					"signature": "class KlpCommandExecutionResult",
-					"documentation": "",
+					"documentation": "命令 ID、執行結果與原值；錯誤及業務資料由 caller 處理。",
 					"typeRelationships": {
 						"extends": "Object",
 						"mixins": [],
@@ -496,7 +496,7 @@
 						"foundation"
 					],
 					"signature": "enum KlpCommandExecutionStatus",
-					"documentation": "",
+					"documentation": "命令執行或拒絕的結果種類，保留原 registry 判定。",
 					"typeRelationships": {
 						"extends": "Enum",
 						"mixins": [],
@@ -778,7 +778,7 @@
 						"foundation"
 					],
 					"signature": "enum KlpCommandKind",
-					"documentation": "",
+					"documentation": "命令入口的呈現種類；實際 checked 狀態仍由 registry 解析。",
 					"typeRelationships": {
 						"extends": "Enum",
 						"mixins": [],
@@ -876,7 +876,7 @@
 						"foundation"
 					],
 					"signature": "enum KlpCommandPopupDismissReason",
-					"documentation": "",
+					"documentation": "同一 popup session 的關閉意圖，由產品採用或保留 open 狀態。",
 					"typeRelationships": {
 						"extends": "Enum",
 						"mixins": [],
@@ -922,7 +922,7 @@
 						"foundation"
 					],
 					"signature": "class KlpCommandReference",
-					"documentation": "",
+					"documentation": "以命令 ID 與呈現種類組合入口，不保存產品命令狀態。",
 					"typeRelationships": {
 						"extends": "Object",
 						"mixins": [],
@@ -1178,7 +1178,7 @@
 						"foundation"
 					],
 					"signature": "class KlpCommandState",
-					"documentation": "",
+					"documentation": "一次 context 解析的不可變命令呈現快照，不複製產品業務狀態。",
 					"typeRelationships": {
 						"extends": "Object",
 						"mixins": [],
@@ -1514,7 +1514,7 @@
 						"foundation"
 					],
 					"signature": "class KlpRegisteredCommandMenu<C> extends StatelessWidget",
-					"documentation": "",
+					"documentation": "呈現已註冊命令清單與空內容文案，不擁有產品命令或選取資料。",
 					"typeRelationships": {
 						"extends": "StatelessWidget",
 						"mixins": [],
@@ -1678,7 +1678,7 @@
 						"foundation"
 					],
 					"signature": "class KlpRegisteredCommandPopup<C> extends StatefulWidget",
-					"documentation": "",
+					"documentation": "依 caller 錨點及主題呈現已註冊選單，不擁有產品開關或命令資料。",
 					"typeRelationships": {
 						"extends": "StatefulWidget",
 						"mixins": [],
@@ -1766,7 +1766,7 @@
 						"foundation"
 					],
 					"signature": "class KlpRegisteredCommandToolbar<C> extends StatelessWidget",
-					"documentation": "",
+					"documentation": "依產品指定次序呈現已註冊命令，將原執行結果交回 caller。",
 					"typeRelationships": {
 						"extends": "StatelessWidget",
 						"mixins": [],
@@ -1976,7 +1976,7 @@
 						"foundation"
 					],
 					"signature": "class KlpShortcutBinding<C>",
-					"documentation": "",
+					"documentation": "註冊 token、命令引用與不可變序列；業務 handler 由 registry 擁有。",
 					"typeRelationships": {
 						"extends": "Object",
 						"mixins": [],
@@ -2058,7 +2058,7 @@
 						"foundation"
 					],
 					"signature": "class KlpShortcutConflict",
-					"documentation": "",
+					"documentation": "穩定排序的衝突清單與勝出 binding，不修改產品註冊設定。",
 					"typeRelationships": {
 						"extends": "Object",
 						"mixins": [],
@@ -2098,7 +2098,7 @@
 						"foundation"
 					],
 					"signature": "enum KlpShortcutConflictKind",
-					"documentation": "",
+					"documentation": "區分快捷鍵完整重疊與 chord 前綴重疊。",
 					"typeRelationships": {
 						"extends": "Enum",
 						"mixins": [],
@@ -2138,7 +2138,7 @@
 						"foundation"
 					],
 					"signature": "class KlpShortcutFocus",
-					"documentation": "",
+					"documentation": "當次產品焦點與作用域鏈，不建立或接管產品焦點樹。",
 					"typeRelationships": {
 						"extends": "Object",
 						"mixins": [],
@@ -2196,7 +2196,7 @@
 						"foundation"
 					],
 					"signature": "class KlpShortcutHandling",
-					"documentation": "",
+					"documentation": "按鍵是否消費及解析結果，執行時保留原 registry Future。",
 					"typeRelationships": {
 						"extends": "Object",
 						"mixins": [],
@@ -2248,7 +2248,7 @@
 						"foundation"
 					],
 					"signature": "enum KlpShortcutHandlingState",
-					"documentation": "",
+					"documentation": "一次按鍵解析的生命週期結果，不代表產品命令成功與否。",
 					"typeRelationships": {
 						"extends": "Enum",
 						"mixins": [],
@@ -2306,7 +2306,7 @@
 						"foundation"
 					],
 					"signature": "class KlpShortcutInput extends KlpShortcutStroke",
-					"documentation": "",
+					"documentation": "單次輸入的邏輯鍵、repeat 與組字狀態，由宿主投影。",
 					"typeRelationships": {
 						"extends": "KlpShortcutStroke",
 						"mixins": [],
@@ -2346,7 +2346,7 @@
 						"foundation"
 					],
 					"signature": "enum KlpShortcutPlatform",
-					"documentation": "",
+					"documentation": "解析 primary modifier 的宿主平台，不偵測或保存全域環境。",
 					"typeRelationships": {
 						"extends": "Enum",
 						"mixins": [],
@@ -2386,7 +2386,7 @@
 						"foundation"
 					],
 					"signature": "enum KlpShortcutScope",
-					"documentation": "",
+					"documentation": "產品投影的快捷鍵作用域，依焦點鏈決定有效候選。",
 					"typeRelationships": {
 						"extends": "Enum",
 						"mixins": [],
@@ -2438,7 +2438,7 @@
 						"foundation"
 					],
 					"signature": "class KlpShortcutStroke",
-					"documentation": "",
+					"documentation": "單一步驟的邏輯鍵與 modifier 值，不持有原生鍵盤事件。",
 					"typeRelationships": {
 						"extends": "Object",
 						"mixins": [],
@@ -9207,7 +9207,7 @@
 						"foundation"
 					],
 					"signature": "class KlpFormSection extends StatelessWidget",
-					"documentation": "表單中的一個可摺疊分組，帶標題、選填說明與一組欄位。\n\n[collapsed] 與 [onToggle] 由呼叫端持有狀態——這個元件本身不記憶展開與否，\n純粹依 [collapsed] 決定要不要畫出 [children]。標題整列可點擊觸發\n[onToggle]，即使 [onToggle] 為 null 也一樣可安全點擊（等同無反應）。",
+					"documentation": "表單中的一個可摺疊分組，帶標題、選填說明與一組欄位。\n\n[collapsed] 與 [onToggle] 由呼叫端持有狀態——這個元件本身不記憶展開與否，\n純粹依 [collapsed] 決定要不要畫出 [children]。互動標題沿用本庫的\n焦點及鍵盤原語；[onToggle] 為 null 時保持靜態標題。",
 					"typeRelationships": {
 						"extends": "StatelessWidget",
 						"mixins": [],
@@ -36657,20 +36657,20 @@
 					]
 				},
 				{
-					"id": "package:kallopis/src/styling/legacy_theme/klp_theme.dart#KlpThemeVariant",
+					"id": "package:kallopis/src/styling/legacy_theme/klp_theme_variant.dart#KlpThemeVariant",
 					"name": "KlpThemeVariant",
 					"slug": "klp-theme-variant",
 					"kind": "enum",
 					"renderable": false,
 					"module": "styling",
-					"sourceUri": "package:kallopis/src/styling/legacy_theme/klp_theme.dart",
+					"sourceUri": "package:kallopis/src/styling/legacy_theme/klp_theme_variant.dart",
 					"primarySurface": "theme",
 					"surfaces": [
 						"theme",
 						"foundation"
 					],
 					"signature": "enum KlpThemeVariant",
-					"documentation": "內建的 [KlpThemeData] 預設變體。[transparent] 目前解析為 [KlpThemeData.dark]\n的色彩再疊加透明度，不是一份獨立的色票——它描述的是「視窗背景可透」這個\n額外能力，而不是第四種配色。",
+					"documentation": "內建主題變體的識別；透明度能力與宿主視窗仍由產品決定。",
 					"typeRelationships": {
 						"extends": "Enum",
 						"mixins": [],
