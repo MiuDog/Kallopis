@@ -3,12 +3,51 @@ import 'package:kallopis/kallopis.dart';
 
 import '../catalog_model.dart';
 
+/// Catalog owner 借用公開裝置判定；三個 builder 都有真實內容。
+Widget _buildDeviceAdaptive(BuildContext context) {
+	final adaptive = KlpDeviceAdaptive(desktop: (_) => const KlpPanelFrame(content: KlpText('Desktop')), tablet: (_) => const KlpPanelFrame(content: KlpText('Tablet')), phone: (_) => const KlpPanelFrame(content: KlpText('Phone')));
+	return SizedBox(width: context.klp.geometry.layout.primaryPaneWidth, height: context.klp.space.pageLarge, child: adaptive);
+}
+
+/// 展示持有 controller，公開布局只借用進度。
+class _SlidingDrawerSpecimen extends StatefulWidget {
+	const _SlidingDrawerSpecimen();
+	@override
+	State<_SlidingDrawerSpecimen> createState() => _SlidingDrawerSpecimenState();
+}
+
+class _SlidingDrawerSpecimenState extends State<_SlidingDrawerSpecimen> {
+	/* progress 是此 fixture 的唯一抽屜狀態；dispose 由 owner 負責。 */
+	final ValueNotifier<double> _progress = ValueNotifier(0);
+
+	@override
+	void dispose() {
+		_progress.dispose();
+		super.dispose();
+	}
+
+	@override
+	Widget build(BuildContext context) {
+		final layout = KlpSlidingDrawerLayout(
+			progress: _progress,
+			tracking: false,
+			drawerExtent: context.klp.geometry.layout.primaryPaneWidth,
+			stage: const KlpPanelFrame(content: KlpText('Stage')),
+			drawer: const KlpPanelFrame(content: KlpText('Drawer')),
+		);
+		final toggle = KlpButton(label: '開啟／關閉抽屜', onPressed: () => _progress.value = _progress.value == 0 ? 1 : 0);
+		return SizedBox(width: context.klp.geometry.layout.primaryPaneWidth * 2, height: context.klp.space.pageLarge * 3, child: Column(children: [toggle, Expanded(child: layout)]));
+	}
+}
+
 final workspaceShellPage = CatalogPageData(
 	label: 'Sidebar Shell',
 	title: 'Navigator Sidebar 組合',
 	description: 'Identity、Navigator 三種注入模型與 footer 的 Kallopis 預設組合。',
 	icon: KlpIcons.panelLeft,
 	specimens: [
+		Specimen(name: 'KlpDeviceAdaptive', note: '由公開裝置分類選擇 desktop、tablet 或 phone builder。', build: _buildDeviceAdaptive),
+		Specimen(name: 'KlpSlidingDrawerLayout', note: '展示 owner 控制抽屜進度，元件沿用 theme 的過場。', build: (context) => const _SlidingDrawerSpecimen()),
 		Specimen(
 			name: 'KlpAdaptive',
 			note: '依平台資訊選擇 Panel Tree，尺寸響應仍由各平台分支負責。',

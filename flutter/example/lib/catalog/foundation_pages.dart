@@ -1189,24 +1189,16 @@ final layoutInteractionPage = CatalogPageData(
 		),
 		Specimen(
 			name: 'KlpPanelFrame',
-			note: '通用面板：header 與 content，高度預設沿用 theme 的外殼密度。',
+			note: '同一面板展示 flat 與 raised；header 與 content 沿用 theme 外殼密度。',
 			build: (context) => _boxed(
 				context,
-				140,
-				const KlpPanelFrame(
-					header: KlpPanelHeader(title: '面板'),
-					content: KlpText('內容'),
-				),
+				300,
+				Column(children: [
+					const Expanded(child: KlpPanelFrame(header: KlpPanelHeader(title: '平面面板'), content: KlpText('內容'))),
+					SizedBox(height: context.klp.space.contentStackGap),
+					const Expanded(child: KlpPanelFrame(elevation: KlpPanelElevation.raised, header: KlpPanelHeader(title: '微立體面板'), content: KlpText('內容'))),
+				]),
 			),
-		),
-		Specimen(
-			name: 'KlpPanelFrame raised',
-			note: '可選微立體：右下陰影、左上亮邊；預設仍為 flat。',
-			build: (context) => _boxed(context, 140, const KlpPanelFrame(
-				elevation: KlpPanelElevation.raised,
-				header: KlpPanelHeader(title: '微立體面板'),
-				content: KlpText('內容'),
-			)),
 		),
 		Specimen(
 			name: 'KlpStageFrame',
