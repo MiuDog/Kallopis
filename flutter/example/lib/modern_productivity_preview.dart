@@ -84,19 +84,19 @@ class _ModernProductivityPreviewState extends State<ModernProductivityPreview> {
 			SizedBox(height: bounds.maxHeight * .35, child: SingleChildScrollView(child: Padding(padding: EdgeInsets.all(space.contentInset), child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
 				const KlpText('現代風生產力佈局 · 即時調整'),
 				Wrap(spacing: space.actionGap, runSpacing: space.actionGap, children: [for (final mode in KlpThemeVariant.values) KlpButton(label: mode.name, selected: mode == _mode, onPressed: () => setState(() => _mode = mode)), KlpButton(label: '還原設定', onPressed: _reset), KlpButton(label: '複製設定', onPressed: _copy)]),
-				SizedBox(width: 240, child: TextField(controller: _widthInput, keyboardType: TextInputType.number, onChanged: _setWidth, decoration: const InputDecoration(labelText: '側欄寬度（空白使用預設）'))),
+				SizedBox(width: 240, child: TextField(controller: _widthInput, onChanged: _setWidth, style: KlpTextStyles.definitionOf(KlpTextRole.body, context.klp.type).toTextStyle(context.klp.type), decoration: InputDecoration(labelText: '側欄寬度（空白使用預設）', labelStyle: KlpTextStyles.definitionOf(KlpTextRole.label, context.klp.type).toTextStyle(context.klp.type)))),
 				Wrap(spacing: space.actionGap, runSpacing: space.actionGap, children: [for (final entry in _fields.entries) SizedBox(width: 240, child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
 					KlpText(entry.value),
 					DropdownButton<String>(
 						isExpanded: true,
-						icon: const KlpText('▾'),
+						icon: const KlpIcon(KlpIcons.chevronDown),
 						value: (semantics[entry.key] as Map<String, Object?>?)?[_mode.name] as String? ?? '',
-						items: [const DropdownMenuItem(value: '', child: Text('預設')), for (final primitive in primitives) DropdownMenuItem(value: 'p(${primitive.key})', child: Text('${primitive.value} · ${primitive.key}'))],
+						items: [const DropdownMenuItem(value: '', child: KlpText('預設')), for (final primitive in primitives) DropdownMenuItem(value: 'p(${primitive.key})', child: KlpText('${primitive.value} · ${primitive.key}'))],
 						onChanged: (value) => _setSemantic(entry.key, value),
 					),
 				]))]),
 				KlpText(_feedback),
-				SelectableText(_snippet()),
+				SelectableText(_snippet(), style: KlpTextStyles.definitionOf(KlpTextRole.code, context.klp.type).toTextStyle(context.klp.type)),
 			])))),
 			Expanded(child: ModernProductivityStarter(sidebarWidth: _width)),
 		])));
