@@ -1,5 +1,13 @@
 # Flutter package
 
+## FLUTTER-PUBLISH-REPAIR-1（READY）
+
+修訂 `FLUTTER-PUBLISH-REPAIR-r1`。使用者已授權整合 main、修復既有 CI 後發布。只修復已重現的 import cycle／package-root directives、icon hover 回饋、Dock protected setState 用法、命令型別 dartdoc、開發者錯誤文字與動態 chord timer 的單位換算；不改公開呼叫契約、theme 預設權威或產品流程。原 assertions、baseline、golden、測試配置與 CI 門檻保留。
+
+`KlpThemeVariant` 移至同 theme module 的獨立 leaf 並由原檔匯出，style pack 只依賴 leaf，切斷 builder → pack → builder cycle。生成 JSON 的 recipe 原文是交換 metadata；generator 使用標準 JSON Unicode escape 保存等價字串，避免被 UI 文字 scanner 誤認；解碼資料與原文保持完全相同。動態 chord deadline 使用公開 Duration 單位常數換算，仍由 keymap timeout 擁有，不混用動畫 token。
+
+BUILD 精確路徑：actions 下 command_entries／command_keymap／command_palette／command_popup／command_registry／command_shortcut_host 六個主檔；`lib/src/styling/legacy_theme/klp_theme.dart`、新增 `klp_theme_variant.dart`；`lib/src/styling/style_pack/klp_style_pack.dart`、`generated.dart`、`source-manifest.json`；`lib/src/features/actions/button/internal/klp_icon_button_style.dart`；Dock 的 `klp_dock_layout.dart` 與 `internal/klp_dock_close.dart`；`tool/generate_style_pack.mjs`。tests 預設唯讀，由獨立 Test Author 僅在已分配的十四檔做 SDK 等價遷移。架構 owner 另負責生成 inventory 與 API 文件證據。驗收為原八個失敗檢查、style pack／Dock／命令局部檢查、fatal-infos 分析及完整既有發布 CI。
+
 ## FLUTTER-LAYOUT-2（完成）
 
 一般布局接入 [WB-LINEAR-UI-r1](../docs/architecture/workbench-linear-contract.md)，保留現有直接 Flutter API。責任與公開 bounds／divider 契約見 [layout](lib/src/features/workspace/layout/architecture.md)。BUILD write_paths 只含 `flutter/lib/src/features/workspace/layout/klp_app_layout.dart`、`flutter/lib/src/features/workspace/layout/internal/klp_linear_render.dart`；foundation 已匯出主檔，不須更動。architecture、純 geometry helper、tests、FrameGroups、example、Dock、風格檔及配置唯讀。獨立 Test Author 可寫 `flutter/test/workbench_layout_test.dart`。M1 finite geometry／bounds／root inset 接入，M2 natural fallback／protected checks／原公開入口與 Catalog 渲染證據；cold-start 8k–16k tokens／60–120分鐘，參照 FLUTTER-LINEAR-1。超過24k tokens或需要改 Dock／產品 state 回 PLAN。

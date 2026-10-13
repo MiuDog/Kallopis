@@ -1,5 +1,7 @@
 # Flutter style pack
 
+發布修復 `FLUTTER-PUBLISH-REPAIR-r1`：codec 僅從 theme leaf `klp_theme_variant.dart` 匯入 mode enum，避免依賴回 theme builder。generated JSON 用標準 Unicode escape 保留 recipe metadata；`jsonDecode` 的結果與正式原文相同，不新增使用者文案來源。
+
 修訂 `FLUTTER-STYLE-r1`；FLUTTER-STYLE-1 READY。共通 [style pack](../../../../../styles/architecture.md) 擁有格式與 metadata，本 module 只擁有 Dart 執行及 ThemeExtension codec。
 
 ## 公開契約

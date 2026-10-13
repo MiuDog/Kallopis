@@ -1,5 +1,9 @@
 # React Foundation
 
+## REACT-PUBLISH-FRESHNESS-1（READY）
+
+修訂 `REACT-PUBLISH-FRESHNESS-r1`。整合發布時，以既有正式規範重新生成 `src/source-manifest.json`、`src/style-pack-manifest.json`；本庫 `.gitattributes` 固定 LF，雜湊應與 Linux checkout 一致。只刷新來源證據，不改 token 值、runtime 或 generator。BUILD 精確 write_paths 為以上兩個檔案；其餘來源、tests、規範唯讀。驗收為 `npm run check:tokens`、build、test、consumer build 及遠端相同 CI；不調整 freshness 門檻。
+
 ## REACT-DOCK-OPS-1（完成）
 
 修訂 `REACT-DOCK-OPS-r1`；沿用 WB-DOCK-OPS-r1。公開 applyKlpDockAction(layout, panels, action) → KlpDockActionResult（readonly layout／changed）。KlpDockArea 是 left／right／bottom；KlpDockDestination 是 kind tab（area／groupId／index）或 group（同欄位加extent）；KlpDockAction discriminated type 為 select(panelId)、move／open(panelId／destination)、merge(sourceGroupId／targetGroupId／index)、close(panelId／approved)、visibility(area／isVisible)、resizeArea(area／extent)、resizeGroup(groupId／extent)。type及上述欄位全數 required、無未知欄；destination同樣strict。indexes是最終非負整數，不能clamp。
