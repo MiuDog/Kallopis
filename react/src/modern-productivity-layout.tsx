@@ -6,9 +6,9 @@ import { useKlp } from './theme.js';
 /** 單一側欄功能；產品擁有內容資料。 */
 export interface KlpModernProductivityPanel {
 	/* id：重排及切換的穩定身分；label：按鈕的文字與可存取名稱；content：原生產品內容。 */
-	id: string;
-	label: string;
-	content: ReactNode;
+	readonly id: string;
+	readonly label: string;
+	readonly content: ReactNode;
 }
 
 /** 現代風生產力模板的受控公開輸入。 */
