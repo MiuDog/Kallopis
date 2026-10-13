@@ -1390,6 +1390,17 @@ const Map<String, CatalogStyleSemantics> catalogStyleSemantics = {
 		motion: [],
 		components: [],
 	),
+	'KlpModernProductivityLayout': CatalogStyleSemantics(
+		source: 'lib/src/features/workspace/layout/klp_modern_productivity_layout.dart',
+		colors: ['context.klp.color.onBackground', 'context.klp.color.stageSurface', 'context.klp.geometry.layout.primaryPaneWidth'],
+		surfaces: [],
+		borders: [],
+		spacing: ['EdgeInsets.all(inset), child: SingleChildScrollView(scrollDirection: Axis.horizontal, child: Row(mainAxisSize: MainAxisSize.min, children: buttons)))', 'context.klp.space.actionGap', 'context.klp.space.chromeHeader', 'context.klp.space.chromePanelInset'],
+		typography: [],
+		geometry: [],
+		motion: [],
+		components: ['KlpAppLayout', 'KlpButton', 'KlpTokenOverride'],
+	),
 	'KlpMultiSelectField': CatalogStyleSemantics(
 		source: 'lib/src/features/forms/selection/klp_multi_select_field.dart',
 		colors: ['context.klp.color.interactionSoft', 'context.klp.color.onSelection', 'context.klp.color.selection', 'context.klp.color.surfaceInset', 'context.klp.color.text', 'context.klp.color.textFaint'],
