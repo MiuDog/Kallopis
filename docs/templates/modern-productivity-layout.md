@@ -6,8 +6,8 @@
 
 ## 開啟預覽
 
-- [React 即時調整](../../examples/react/index.html?template=modern-productivity-layout)
-- [Flutter 即時調整](../../examples/flutter/index.html?template=modern-productivity-layout)
+- [React 即時調整](https://miudog.github.io/Kallopis/examples/react/index.html?template=modern-productivity-layout)
+- [Flutter 即時調整](https://miudog.github.io/Kallopis/examples/flutter/index.html?template=modern-productivity-layout)
 
 預覽使用套件的真實公開元件。上方控制區用來調整設定，下方才是可套用的模板；控制區不屬於產品布局。可切換 light／dark／ultraDark／transparent，調整細節、檢查功能及草稿，再按「複製設定」取得完整啟動片段。還原設定只還原樣式，保持目前選取與兩份草稿。
 
