@@ -10,8 +10,11 @@ import 'package:kallopis/src/features/workspace/layout/klp_app_layout.dart';
 final class KlpModernProductivityPanel {
 	/* id：跨切換與重排的穩定身分；label：切換按鈕的文字及可存取名稱。
 	 * content：產品提供的原生內容，資料生命週期仍由產品擁有。 */
+	/// 跨切換與重排保持穩定的功能識別。
 	final String id;
+	/// 功能切換按鈕的文字與可存取名稱。
 	final String label;
+	/// 產品提供且保留掛載的功能內容。
 	final Widget content;
 
 	const KlpModernProductivityPanel({required this.id, required this.label, required this.content});
@@ -21,11 +24,17 @@ final class KlpModernProductivityPanel {
 final class KlpModernProductivityLayout extends StatelessWidget {
 	/* panels：有序功能；selectedId：產品的目前選取；onSelected：只提出切換事件。
 	 * header／stage：右區兩個角色；sidebarWidth：可選的期望側欄寬度。 */
+	/// 產品提供的非空有序功能清單。
 	final List<KlpModernProductivityPanel> panels;
+	/// 產品目前選取的功能識別。
 	final String selectedId;
+	/// 提出切換事件；缺省時切換按鈕停用。
 	final ValueChanged<String>? onSelected;
+	/// 右區頂部的內容，不跨越側欄。
 	final Widget header;
+	/// 右區 Header 下方的主工作內容。
 	final Widget stage;
+	/// 期望側欄寬度；缺省沿用正式語意。
 	final double? sidebarWidth;
 
 	KlpModernProductivityLayout({
