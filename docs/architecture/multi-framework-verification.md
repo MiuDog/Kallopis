@@ -1,6 +1,27 @@
 # 跨框架整合驗證
 
-日期：2026-10-12。此紀錄只報告實際觀察；視覺品質與操作手感仍由使用者接受。
+此紀錄只報告實際觀察；視覺品質與操作手感仍由使用者接受。
+
+## 2026-10-13 發布整合驗證
+
+使用者已授權整合 `main`、修復發布 CI 並發布 README／參考網站。`main` 整合提交為 `72eb4f0f`，保留主目錄既有未提交內容；修復使用隔離 checkout。公開 Flutter theme／foundation API 與 React import 入口保持原契約。
+
+| 檢查 | 本次觀察 |
+| --- | --- |
+| React freshness | 只刷新兩個來源 manifest；269 primitives、350 semantics × 4、118 recipes 的值未變，原 check:tokens 通過 |
+| React 套件／consumer | 177 項 tests 通過；公開 package 與 example production build 成功 |
+| Flutter SDK 測試遷移 | 獨立 Test Author 保留原 assertions、test names、fixture；157 項對應 tests 通過，fatal-infos 分析無問題 |
+| Flutter 套件 | 完整 639 項 tests 通過；fatal-infos analyze 無問題，inventory 由真實 source 生成並通過 --check |
+| 公開 API extraction | 561 canonical declarations、17 modules、3 surfaces；enum 改為同 theme module 的 leaf，原公開匯出保持 |
+| 純 Node 網站檢查 | 原 15 項通過；React specimen／雙框架場景的 22 項檢查通過，公開 React 清單為 23 個元件 |
+
+修復切斷 theme builder／pack 的 import cycle，恢復 icon hover 使用共用 selection wash，Dock 由 State 擁有 protected rebuild；開發者錯誤訊息、配方 metadata 與動態 chord deadline 不新增使用者文案或動畫預設值。所有原 CI 閘門、assertions、baseline 與 golden 保留。
+
+完整 Workbench 功能目標仍未關閉：Flutter 尚未完成全部 273 個專屬展示的原生驗證，柔和按鈕與 8px 總間距、完整窄瀏覽器及風格矩陣仍依交接接續。GUI 的正文、程式碼、3D 與終端為明示示意。公開發布結果以 [PR #19](https://github.com/MiuDog/Kallopis/pull/19) 與 GitHub Actions 實際狀態為準；本機通過不等於遠端部署成功。
+
+## 2026-10-12 搬移與初次接入紀錄
+
+以下是當時已觀察的歷史範圍與失敗，不代表本次發布整合的最新檢查結果。
 
 ## 已完成
 
