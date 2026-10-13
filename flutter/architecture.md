@@ -286,3 +286,7 @@ flowchart TD
 ```
 
 驗證：獨立test aff4bf5e／SHA256 723DC6A384DEDF305D236232A0369D87AB4F6490B7019C0E8209E79BA3B56E20，實作前Enter及Space各expected1/actual0 Red，受控轉移與null安全兩checks Green。source8d8bf6b2改用原ActionRegion，新增expanded，null保留靜態文字；scope exact1、same四checks/public analyze Green，prefix45.1秒。native Tab取得標題、Enter collapsed true/root1、Space false/root2與草稿保持，發現label重複報讀後dcc3dbed只排除装飾標題文字的重複語意，原label權威不變；same四checks／analyze／scope1 rerun Green、protected hash未改，finalprefix49.0秒。最終native單一「表單資料」button／tabindex0／aria-expanded true，實際Tab/Enter/Space root0→1→2、input2草稿保持；callback=null靜態文字、root2保持。error/warn空，build/flutter-form-section-keyboard-native.json及PNG。要求viewport320×740後既有及fresh tab皆實際1280×720，已reset override並關probe，記not-applied而非窄畫面成功；actual窄viewport另整合驗證。感官human-pending，單taskusage null；總goal仍未完成。
+
+## COMPACT-DEFAULT-STYLE-r1 整合契約
+
+依根architecture.md的已接受使用者preset修訂，正式semantic權威與既有生成流程保持，模組algorithm/config/既有tests唯讀。common主動作底色低對比、parent總gap8及dockMargin0；framework generated artifact僅由既有generator更新。example alternative pack改buttonPaddingX而不改block/action gap。此為值修訂，不切換正式值權威。獨立common測試由styles/test/compact-default-style.test.mjs擁有，其餘worker不得改tests。

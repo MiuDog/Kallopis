@@ -94,3 +94,7 @@ JSON 字段：schemaVersion 是交換版本；id／version 是風格身份；pri
 `src/index.mjs` 是 facade；交換／表格函式位於 `src/pack.mjs`，typed resolve／atomic override 位於 `src/runtime.mjs`，公開宣告為 `src/index.d.mts`。runtime 的 typedValue 依 catalog 驗證型別／範圍，validateConstraints 驗證 ordered／fits，freeze 遞迴保護 snapshot；四 mode 都通過才提交 clone。
 
 共 114 項檢查通過、零失敗／跳過；migration --check、TypeScript 宣告、packet scope 通過。以既有 React 公開資料比較四模式全部 1400 值，依明確 ARGB／字型 codec 後一致。這是資料轉換證據，尚非 provider 風格替換或布局驗收。實作 commit `9a002003cde0302faa9bff2610bc3b746f77556a`。
+
+## COMPACT-DEFAULT-STYLE-r1 整合契約
+
+依根architecture.md的已接受使用者preset修訂，正式semantic權威與既有生成流程保持，模組algorithm/config/既有tests唯讀。common主動作底色低對比、parent總gap8及dockMargin0；framework generated artifact僅由既有generator更新。example alternative pack改buttonPaddingX而不改block/action gap。此為值修訂，不切換正式值權威。獨立common測試由styles/test/compact-default-style.test.mjs擁有，其餘worker不得改tests。

@@ -39,3 +39,25 @@ PLAN owner 可寫本檔、相關共通規格與框架架構。搬移 worker writ
 BUILD 使用隔離工作樹及真實 base revision；主工作樹既有變更不重設、不無差別 stage。完成後只同步本目標的新變更，主工作樹若有新的同檔編輯則先比對，不覆寫。
 
 整合完成：Flutter source／資產與既有測試已機械搬移，工具、VS Code 與 CI 路徑接回新目錄；React 核心庫與語意生成器完成，CI 接入 build／test／check:tokens／example 型別及建置檢查。產品使用指南依框架分開，docs 網站統一提供來源頁及搜尋；未部署或發布。
+
+## COMPACT-DEFAULT-STYLE-1（READY）
+
+修訂 COMPACT-DEFAULT-STYLE-r1；2026-10-13使用者已授權降低按鈕對比與版面區塊總gap一律8px。正式值權威仍docs/design-tokens/semantics.md，不改舊匯出快照或品牌名稱；四mode主動作底色theme.colors.brand改為現有柔和中性primitive（light parchment250、dark/transparent parchment700、ultraDark ink700），文字由既有primaryForeground算法解析，不新增secondtheme。accent/interaction/status語意保持。layout parent owns total8：space2/contentStack/chrome及resizeHandle既有8保持，itemGap/groupGap/navigationSectionGap/base改space200；PanelFrame/dockMargin改space0，避免8gutter+兩側4變16。其他內距、字級與chrome高度不隨此要求全部變8，零尺寸時仍按既有solver縮配。可替換pack能力及consumer顯式prop保持，不硬編碼算法8。
+
+example另一份風格只改buttonPaddingX為24，不再把區塊gap改24或actionGap改12；雙框架GUI及component展示一起接回。ADVANCED-FORM十四source M1保留但native未驗證、不計入176已驗證數。
+
+BUILD跨module整合exact paths：docs/design-tokens/semantics.md；styles/kallopis-v1.json由既有migrate生成；Flutter生成data/manifest（flutter/lib/src/styling/style_pack/generated.dart、source-manifest.json）；React由既有生成器產生react/src/generated.ts、tokens.css、source-manifest.json、style-pack-data.ts、style-pack-manifest.json；example Flutter component_specimens.dart/gui_scenarios.dart及React example/specimens.tsx/scenarios.tsx只調替換pack參數。scripts/runtime/catalog/schema/庫algorithm/tests/config皆唯讀。正式表格增加規則文字而無新ID，仍350semantic與269primitive。
+
+獨立Test Author exact styles/test/compact-default-style.test.mjs，公開resolveStylePack與defaultpack/catalog保護四mode主動作底色與component底對比低於2.5（保留文字現有算法），layout gap IDs8與default dockMargin0；實作前behavior Red，SHA記錄；既有tests不能由worker改。M1 acceptedpreset資料與generated freshness/原114+新增checks；M2 Flutter protectedstyle19與必要Reactprovider、build、雙框架nativebutton及Dock實際gap8/同consumer資料；M3 docs及guard main sync。估5k～12k/30～75分鐘；M1累計5k30、M2累計10k60、M3累計12k75；18k110或新algorithm修改回PLAN。視覺感官human-pending；單taskusage null。
+
+```mermaid
+flowchart TD
+	Formal[正式semantic表 / 用户要求] --> Pack[既有migrate / default pack]
+	Pack --> Flutter[既有Flutter generator及adapter]
+	Formal --> ReactTokens[既有React token generator]
+	Pack --> ReactPack[既有React style pack generator]
+	Flutter --> Native[公共元件與GUI]
+	ReactTokens --> Web[公共元件與GUI]
+	ReactPack --> Web
+	Formal --> Docs[同來源docs]
+```

@@ -887,3 +887,7 @@ flowchart TD
 BUILD 96e22480 exact5。TypeScript／production example build 通過，48 modules，615.31KB bundle 的既有超500KB提示保留；--react generate/verify 成功，scope5/diff通過。VS Code原生Explorer選取與正文草稿、保存／分頁切換／還原、無效JSON錯誤保留原布局、palette搜尋並执行、Primary+K→S保存、close／重開、layout reset及明確scene reset已觀察。Blockbench選Head、操作1及影格24；ultraDark／另一pack保持草稿與選取。Blender Animation令底部extent變180，Camera選取；menu保存／toggle與toolbar還原同registry結果4，草稿／選取保持；未知scene明確拒絕。
 
 實際browser override 360×740成功，document scrollWidth345；Blender Dock寬328.8、scrollWidth329且場景草稿可見，有限布局容器仍540高。這不是全部窄版互動／感官接受。一次native拖Search至Bottom未產生資料變更，不能宣稱拖放驗收成功；原生拖放與分隔線調尺寸仍pending，必要時由diagnostic owner界定為宿主輸入或source failure。source未改庫算法／tests／config。main build/react-gui-vscode.png、react-gui-blockbench.png、react-gui-blender.png記錄已操作畫面；感官human-pending。網站GUI正式頁面與Flutter三場景仍後續原goal，直接bundle query不等於已整合網頁入口。
+
+## COMPACT-DEFAULT-STYLE-r1 整合契約
+
+依根architecture.md的已接受使用者preset修訂，正式semantic權威與既有生成流程保持，模組algorithm/config/既有tests唯讀。common主動作底色低對比、parent總gap8及dockMargin0；framework generated artifact僅由既有generator更新。example alternative pack改buttonPaddingX而不改block/action gap。此為值修訂，不切換正式值權威。獨立common測試由styles/test/compact-default-style.test.mjs擁有，其餘worker不得改tests。
