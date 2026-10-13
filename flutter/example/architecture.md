@@ -2,7 +2,7 @@
 
 ## MODERN-PRODUCTIVITY-OWNED-FONTS-1（READY）
 
-公開頁面的 resource inventory 重現 Roboto／NotoSymbols2 外部 fallback；修復限定新模板 consumer 的兩檔：lib/modern_productivity_starter.dart、lib/modern_productivity_preview.dart。用公開 KlpTextField／KlpText／KlpIcon(KlpIcons.chevronDown) 取代原生文字與 Unicode 箭頭；SelectableText 的 code style 由公開 KlpTextStyles／context.klp.type 解析，不新建 Theme 或複製字型名稱。core、fonts 資產、pubspec、tests、其他展示皆唯讀。驗收 scoped analyze、原 example checks、release build 與 fresh browser 的 font inventory／六控制／草稿／設定輸出；若剩餘 fallback 來自庫或 engine，回 PLAN 只報已觀察邊界，不修改 vendor。M1 代碼／build，M2 fresh browser；cold 2k–4k／15–30 分鐘，6k／45 分鐘回 PLAN。
+公開頁面的 resource inventory 重現 Roboto／NotoSymbols2 外部 fallback；修復限定新模板 consumer 的兩檔：lib/modern_productivity_starter.dart、lib/modern_productivity_preview.dart。用公開 KlpTextField／KlpText／KlpIcon(KlpIcons.chevronDown) 取代原生文字與 Unicode 箭頭；SelectableText 的 code style 由公開 KlpTextStyles／context.klp.type 解析，不新建 Theme 或複製字型名稱。core、fonts 資產、pubspec、既有 tests、其他展示皆唯讀。獨立 Test Author 可新增 test/modern_productivity_font_test.dart，以 consumer 的有效 RichText／EditableText 字型 metadata 保護 package ownership；不把 engine 的預載 font request 當成實際字元 fallback。驗收 scoped analyze、原 example checks、release build 與 fresh browser 的 font inventory／六控制／草稿／設定輸出；若剩餘 fallback 來自庫或 engine，回 PLAN 只報已觀察邊界，不修改 vendor。M1 代碼／build，M2 fresh browser；cold 2k–4k／15–30 分鐘，6k／45 分鐘回 PLAN。
 
 ## MODERN-PRODUCTIVITY-CATALOG-1（IMPLEMENTED）
 
