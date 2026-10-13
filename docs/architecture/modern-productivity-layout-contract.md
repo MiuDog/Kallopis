@@ -1,6 +1,6 @@
 # 現代風生產力佈局：框架共同契約
 
-修訂：`MODERN-PRODUCTIVITY-r2`。核心元件 PLAN READY；依 [已接受規範](../../spec/modern-productivity-layout-v1.md)。本檔的核心元件 slice 為 Flutter／React 可重用受控元件。完整交付目標已擴為可迭代公開模板；PSS-10～14 的公開細節調整、consumer 起始範例、互動預覽與文件接入已納入下方 r2 PLAN，不能以兩個核心元件 slice 關閉模板交付。現有核心 worker 邊界不因此自動擴張。感官品質 human-pending。
+修訂：`MODERN-PRODUCTIVITY-r2`。核心元件 IMPLEMENTED；依 [已接受規範](../../spec/modern-productivity-layout-v1.md)。本檔的核心元件 slice 為 Flutter／React 可重用受控元件。完整交付目標已擴為可迭代公開模板；PSS-10～14 的公開細節調整、consumer 起始範例、互動預覽與文件接入已納入下方 r2 PLAN，不能以兩個核心元件 slice 關閉模板交付。現有核心 worker 邊界不因此自動擴張。感官品質 human-pending。
 
 ## 公開邊界
 
@@ -71,7 +71,7 @@ PSS-01／PSS-05：兩框架公開 import 的 consumer 編譯。PSS-02／PSS-03�
 
 完整模板 PLAN 已由下列調整契約及根整合 slices 補齊。所有 slice 通過前，禁止宣稱公開模板已可快速套用。
 
-## r2：可調整模板與預覽契約（PLAN READY）
+## r2：可調整模板與預覽契約（IMPLEMENTED）
 
 模板只有同一公開元件與兩框架的最小 consumer starter，不新增 KlpModernProductivityTemplate 別名、第二份 layout renderer 或設定 store。Starter 是可複製的產品接線，預覽匯入並使用它；文件連到同一來源，不維護第二個過期範例。
 

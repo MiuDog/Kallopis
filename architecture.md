@@ -62,9 +62,9 @@ flowchart TD
 	Formal --> Docs[同來源docs]
 ```
 
-## MODERN-PRODUCTIVITY-v1（公開模板 PLAN READY）
+## MODERN-PRODUCTIVITY-v1（IMPLEMENTED）
 
-共通契約由 [現代風生產力佈局框架契約](docs/architecture/modern-productivity-layout-contract.md) 擁有，產品需求由 [規範](spec/modern-productivity-layout-v1.md) 擁有。使用者已擴大目標為可迭代公開模板，PSS-10～14 由 r2 契約與以下 consumer／docs slices 接入。核心切片保留，完整 stage 包含公開細節調整、最小 starter、真實預覽及文件站接入；尚未 dispatch BUILD。
+共通契約由 [現代風生產力佈局框架契約](docs/architecture/modern-productivity-layout-contract.md) 擁有，產品需求由 [規範](spec/modern-productivity-layout-v1.md) 擁有。使用者已擴大目標為可迭代公開模板，PSS-10～14 由 r2 契約與以下 consumer／docs slices 接入。核心切片保留，完整 stage 包含公開細節調整、最小 starter、真實預覽及文件站接入；六個主切片與公開清冊接入均已實作，局部 scope gates／consumer 與 browser 證據已完成；遠端 CI／部署另記實際結果。
 
 | 順序／slice | 模組與 BUILD write_paths | 對應需求與驗收 |
 | --- | --- | --- |

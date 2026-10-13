@@ -1,14 +1,14 @@
 # React Foundation
 
-## MODERN-PRODUCTIVITY-REFERENCE-1（READY）
+## MODERN-PRODUCTIVITY-REFERENCE-1（IMPLEMENTED）
 
 新公開元件已由真實 d.ts extraction 觀察到，24 項；BUILD exact example/specimen-registry.mjs、example/specimens.tsx。Registry 增加 KlpModernProductivityLayout 的既有 layout kind，專屬 specimen route 直接重用已驗證的 ModernProductivityPreview，其他 factory／names 不變。不修改 extractor、website kinds 或 tests，驗收既有 react specimens checks／bundle build／公開頁 route。估 1k–3k／10–20 分鐘，M1 registry／caller／scope；4k／30 分鐘或需要弱化 coverage 回 PLAN。
 
-## MODERN-PRODUCTIVITY-REACT-TEMPLATE-1（PLAN READY）
+## MODERN-PRODUCTIVITY-REACT-TEMPLATE-1（IMPLEMENTED）
 
 依共同契約 r2，BUILD exact example/main.tsx、example/modern-productivity-starter.tsx、example/modern-productivity-preview.tsx。Starter 使用 dist 公開 import 並擁有 selectedId／面板草稿；Preview 匯入 Starter 並擁有 mode／overrides／sidebarWidth 與公開 API 片段，stable key 不因控制調整而重建。Template 路由未知／歧義拒絕；現有 scenario／specimen 保留。Core、theme、CSS、tests／fixtures、其他 example、配置與 architecture 唯讀。M1 typed consumer／路由 build；M2 r2 browser 調整／草稿／重設／複製與重套用，估 4k–8k／30–60 分鐘，12k／90 分鐘或需改 core／parser 回 PLAN。尚未實作。
 
-## MODERN-PRODUCTIVITY-REACT-1（PLAN READY）
+## MODERN-PRODUCTIVITY-REACT-1（IMPLEMENTED）
 
 本 stage 的公開 KlpModernProductivityLayout／KlpModernProductivityPanel 依 [共同契約](../docs/architecture/modern-productivity-layout-contract.md)。新 src/modern-productivity-layout.tsx 組合既有 layout／Frame／Button／theme，由 src/index.ts 匯出。BUILD exact 以上兩檔；components／CSS、theme、tokens、solver、其他 modules、tests、example、配置與 architecture 唯讀。獨立 Test Author 唯一可寫 test/modern-productivity-layout.test.mjs。產品清單與 selectedId 受控，stable id 面板保持 mounted 且 inactive hidden；不新增 store 或產品流程。里程碑／估算／回 PLAN 門檻由根整合架構本 stage 定義。
 

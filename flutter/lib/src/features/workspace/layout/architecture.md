@@ -1,6 +1,6 @@
 # Workspace Layout Architecture
 
-## MODERN-PRODUCTIVITY-FLUTTER-1（PLAN READY）
+## MODERN-PRODUCTIVITY-FLUTTER-1（IMPLEMENTED）
 
 本模組新增 klp_modern_productivity_layout.dart；公開入口 foundation，契約以根 docs/architecture/modern-productivity-layout-contract.md 為準。KlpModernProductivityPanel 擁有 immutable id／label／Widget content；KlpModernProductivityLayout 組合既有 layout、semantic frame／stage 與 KlpButton。按鈕列橫向而現有 SidebarButtonGroup 為垂直，不改既有群組。面板以 id key 與 IndexedStack／Offstage、ExcludeFocus／TickerMode 保留並隔離非作用內容；不持有產品 controller 或選取狀態。既有 solver、其他布局與 Dock 全部不變。
 

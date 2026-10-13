@@ -1,6 +1,6 @@
 # Kallopis Reference Site
 
-## MODERN-PRODUCTIVITY-TEMPLATE-SITE-1（PLAN READY）
+## MODERN-PRODUCTIVITY-TEMPLATE-SITE-1（IMPLEMENTED）
 
 依現代風生產力佈局 r2 契約，BUILD 只寫 documents.mjs，新增 docs/templates/modern-productivity-layout.md 的 template guide 登錄。來源包含已驗證的 starter 來源與兩框架 template route；沿用既有 examples/react 與 examples/flutter bundle，不新增 renderer／iframe registry／設定 store。Docs 正文、元件、examples、tests、manifest、generator／verifier、workflow 與 architecture 唯讀。驗收原 Node tests、完整 generate／verify、搜尋／連結與公開 template route。M1 唯一里程碑，估 1k–3k／10–20 分鐘，4k／30 分鐘或缺既有路由能力回 PLAN。不得在 consumer preview 未完成時登錄成已交付。
 
