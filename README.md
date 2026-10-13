@@ -2,7 +2,9 @@
 
 Kallopis 是 `-ist` 產品家族共用的跨框架 design system。核心目標為先建立框架無關的視覺語意、token 與通用元件組合規範，再由 Flutter、React 等框架庫落實；各框架庫位於本專案第一層子目錄。產品擁有畫面結構、導航與業務流程。
 
-新目標與責任以 [跨框架核心目標](spec/multi-framework-design-system.md) 為準。共通視覺直接採用 [既有統整規範](docs/design-tokens/KALLOPIS-DESIGN-MAP.md)，按責任分章維護；docs 網頁已整合此來源，Flutter 套件位於第一層 `flutter/`，React 核心庫位於 `react/`。以下接入方式描述 Flutter 庫。
+目標與責任以 [跨框架核心目標](spec/multi-framework-design-system.md) 為準。共通視覺直接採用 [既有統整規範](docs/design-tokens/KALLOPIS-DESIGN-MAP.md)，按責任分章維護；文件網站直接讀正式章節。Flutter 套件位於第一層 `flutter/`，React 核心庫位於 `react/`，可替換風格檔位於 `styles/`。
+
+[文件網站](https://miudog.github.io/Kallopis/)提供通用視覺規範、產品使用指南、Flutter API、React 互動元件，以及雙框架 GUI 場景。
 
 本機 Flutter consumer 的 path dependency 請指向 `D:/Projects/Kallopis/flutter`，或對應的 repository 相對路徑；套件名稱仍是 `kallopis`。根目錄不再是 Flutter package。安裝、分析、測試與 example 操作從 `flutter/` 執行；網站工具仍從 repository 根執行。本次未修改其他產品 repository 的 caller。
 
@@ -26,6 +28,26 @@ import 'package:kallopis/kallopis_foundation.dart';
 
 產品直接建立 `MaterialApp` 與 Flutter Widget tree，使用 `buildKlpTheme` 安裝主題，並以 Kallopis 公開元件及 `context.klp` semantic token 維持共用視覺。尚未穩定的直接 Flutter 元件可額外匯入 `kallopis_experimental.dart`。
 
+## React 使用入口
+
+React consumer 從 `@kallopis/react` 匯入公開元件與 `KlpThemeProvider`，並載入 `@kallopis/react/styles.css`。產品擁有 React tree 與業務狀態，風格由同一份正式規範生成；完整安裝及使用方式見 [React 產品使用指南](docs/ai/react-usage.md)。
+
+## Workbench 與互動展示
+
+兩框架提供 Dock 布局、分頁、分割與縮放、布局保存還原、命令註冊、工具列、選單、命令面板及快捷鍵核心與宿主。能力及合法組裝規則見 [Workbench 規範](spec/workbench-v1.md)，風格資料與 override 契約見 [可替換風格檔](spec/style-pack-v1.md)。
+
+- [React 互動元件](https://miudog.github.io/Kallopis/docs/react/components/index.html)：23 個公開可渲染元件的專屬展示。
+- [React GUI 場景](https://miudog.github.io/Kallopis/docs/react/scenarios/index.html)與 [Flutter GUI 場景](https://miudog.github.io/Kallopis/docs/flutter/scenarios/index.html)：VS Code、Blockbench、Blender 使用場景，展示公開元件的組合方式。
+- [Flutter 公開型別](https://miudog.github.io/Kallopis/docs/components/index.html)：依公開 library 擷取；API 清單不等於已完成的互動展示數量。
+
+GUI 場景的正文、程式碼、3D 與終端內容是明示示意；實際執行核心由產品或上游擁有。
+
+截至 2026-10-13 交接，Flutter 已有原生瀏覽器驗證的專屬展示為 176／273；另 14 個 advanced form 展示完成來源、分析及 web build，尚待原生驗證。剩餘展示、完整風格與窄瀏覽器稽核、柔和按鈕與區塊總間距 8px 仍在接續中；完整 Workbench 目標尚未關閉。上述數字記錄展示驗證範圍，視覺品質與操作手感由人類接受。
+
+## 建置文件網站
+
+從 repository 根執行；Flutter、React 的建置及完整網站驗證命令見 [網站工具說明](tool/reference_site/README.md)。正式輸出為 `build/reference-site`，由 GitHub Pages workflow 驗證後發布。網站產物不提交 Git，README 正文會同步生成網站的 Project overview 頁面並進入搜尋。
+
 ## 責任邊界
 
 - Kallopis 擁有 semantic theme、公開共用元件及其內部視覺與互動。
@@ -36,7 +58,8 @@ import 'package:kallopis/kallopis_foundation.dart';
 
 ## 文件
 
-- [唯一產品使用指南](docs/ai/product-usage.md)
+- [Flutter 產品使用指南](docs/ai/product-usage.md)
+- [React 產品使用指南](docs/ai/react-usage.md)
 - [Single Architecture v1](docs/architecture/thin-design-system/architecture.md)
 - [前端責任邊界](docs/architecture/frontend-boundaries.md)
 - [風格規格](spec/style-v1.md)
