@@ -1,5 +1,5 @@
 import 'dart:async';
-import 'dart:ui' show SemanticsFlag;
+import 'dart:ui' show Tristate;
 
 import 'package:flutter/material.dart';
 import 'package:flutter/semantics.dart';
@@ -111,8 +111,14 @@ Future<void> _tap(WidgetTester tester, String label) async {
 	await _frames(tester);
 }
 
-bool _flag(WidgetTester tester, String label, SemanticsFlag flag) =>
-	tester.getSemantics(_row(label)).hasFlag(flag);
+bool _flag(WidgetTester tester, String label, SemanticsFlag flag) {
+	final flags = tester.getSemantics(_row(label)).flagsCollection;
+	return switch (flag) {
+		SemanticsFlag.isEnabled => flags.isEnabled == Tristate.isTrue,
+		SemanticsFlag.isSelected => flags.isSelected == Tristate.isTrue,
+		_ => throw ArgumentError.value(flag, 'flag', '未定義的測試旗標'),
+	};
+}
 
 List<String> _order(WidgetTester tester, Set<String> labels) {
 	final found = <String>[];

@@ -3,7 +3,6 @@ import 'dart:ui' show PointerDeviceKind;
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:kallopis/kallopis_foundation.dart';
-import 'package:kallopis/kallopis_theme.dart';
 
 // 正文 probes 是 caller 擁有的空槽；不驗證私有樹、產品排版或感官品質。
 void main() {

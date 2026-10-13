@@ -1,5 +1,5 @@
 import 'dart:async';
-import 'dart:ui' show SemanticsFlag;
+import 'dart:ui' show CheckedState, Tristate;
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -59,7 +59,16 @@ Widget _app(Widget child) => MaterialApp(theme: buildKlpTheme(Brightness.light),
 
 Finder _row(String label) => find.bySemanticsLabel(label);
 
-bool _flag(WidgetTester tester, String label, SemanticsFlag flag) => tester.getSemantics(_row(label)).hasFlag(flag);
+bool _flag(WidgetTester tester, String label, SemanticsFlag flag) {
+	final flags = tester.getSemantics(_row(label)).flagsCollection;
+	return switch (flag) {
+		SemanticsFlag.isEnabled => flags.isEnabled == Tristate.isTrue,
+		SemanticsFlag.isFocused => flags.isFocused == Tristate.isTrue,
+		SemanticsFlag.hasCheckedState => flags.isChecked != CheckedState.none,
+		SemanticsFlag.isChecked => flags.isChecked == CheckedState.isTrue,
+		_ => throw ArgumentError.value(flag, 'flag', '未定義的測試旗標'),
+	};
+}
 
 Future<void> _tap(WidgetTester tester, String label) async {
 	await tester.tap(_row(label));
@@ -78,7 +87,8 @@ List<String> _semanticOrder(WidgetTester tester, Set<String> labels) {
 			visit(child);
 		}
 	}
-	visit(tester.binding.pipelineOwner.semanticsOwner!.rootSemanticsNode!);
+	final view = tester.binding.renderViews.singleWhere((view) => view.flutterView == tester.view);
+	visit(view.owner!.semanticsOwner!.rootSemanticsNode!);
 	return found;
 }
 
@@ -103,7 +113,7 @@ void main() {
 			await tester.tap(inEntry(false, 'Shared'));
 			await tester.pump();
 			for (final menu in [false, true]) {
-				expect(tester.getSemantics(inEntry(menu, 'Shared')).hasFlag(SemanticsFlag.isEnabled), isFalse);
+				expect(tester.getSemantics(inEntry(menu, 'Shared')).flagsCollection.isEnabled == Tristate.isTrue, isFalse);
 			}
 			await tester.tap(inEntry(true, 'Shared'));
 			await tester.pump();
@@ -117,7 +127,7 @@ void main() {
 			await tester.pump();
 			expect(results.last.value, same(context));
 			for (final menu in [false, true]) {
-				expect(tester.getSemantics(inEntry(menu, 'Shared')).hasFlag(SemanticsFlag.isEnabled), isTrue);
+				expect(tester.getSemantics(inEntry(menu, 'Shared')).flagsCollection.isEnabled == Tristate.isTrue, isTrue);
 			}
 		} finally {
 			semantics.dispose();

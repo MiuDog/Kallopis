@@ -1,5 +1,5 @@
 import 'dart:async';
-import 'dart:ui' show SemanticsFlag;
+import 'dart:ui' show CheckedState, Tristate;
 
 import 'package:flutter/material.dart';
 import 'package:flutter/semantics.dart';
@@ -35,14 +35,16 @@ class _Host {
 	Object? getValue(_Context value) => value;
 
 	Widget entry() {
-		if (menu) return KlpRegisteredCommandMenu<_Context>(
-			registry: registry,
-			getContext: getContext,
-			items: items,
-			label: 'Commands',
-			emptyLabel: 'Empty',
-			onResult: results.add,
-		);
+		if (menu) {
+			return KlpRegisteredCommandMenu<_Context>(
+				registry: registry,
+				getContext: getContext,
+				items: items,
+				label: 'Commands',
+				emptyLabel: 'Empty',
+				onResult: results.add,
+			);
+		}
 		return KlpRegisteredCommandToolbar<_Context>(
 			registry: registry,
 			getContext: getContext,
@@ -224,9 +226,9 @@ Future<void> _updates(WidgetTester tester, _Host host) async {
 	expect(FocusManager.instance.primaryFocus, same(focus));
 	expect(_order(tester), ['Toggle', 'Plain', 'Disabled']);
 	expect(_row('Hidden'), findsNothing);
-	expect(tester.getSemantics(_row('Toggle')).hasFlag(SemanticsFlag.isChecked), isTrue);
-	expect(tester.getSemantics(_row('Toggle')).hasFlag(SemanticsFlag.isEnabled), isFalse);
-	expect(tester.getSemantics(_row('Disabled')).hasFlag(SemanticsFlag.isEnabled), isFalse);
+	expect(tester.getSemantics(_row('Toggle')).flagsCollection.isChecked == CheckedState.isTrue, isTrue);
+	expect(tester.getSemantics(_row('Toggle')).flagsCollection.isEnabled == Tristate.isTrue, isFalse);
+	expect(tester.getSemantics(_row('Disabled')).flagsCollection.isEnabled == Tristate.isTrue, isFalse);
 	await tester.sendKeyEvent(LogicalKeyboardKey.enter);
 	await tester.pump();
 	expect(host.results.single.commandId, 'plain');
@@ -236,7 +238,7 @@ Future<void> _updates(WidgetTester tester, _Host host) async {
 	await tester.pump();
 	expect(host.results.last.commandId, 'toggle');
 	expect(host.results.last.value, same(host.context));
-	expect(tester.getSemantics(_row('Toggle')).hasFlag(SemanticsFlag.isEnabled), isTrue);
+	expect(tester.getSemantics(_row('Toggle')).flagsCollection.isEnabled == Tristate.isTrue, isTrue);
 	expect(tester.takeException(), isNull);
 }
 

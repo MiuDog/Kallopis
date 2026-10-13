@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:kallopis/kallopis_foundation.dart';
-import 'package:kallopis/kallopis_theme.dart';
 
 // 僅保護公開 Widget 的確定性幾何，不讀取私有布局或評估視覺品質。
 void main() {

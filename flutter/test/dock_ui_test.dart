@@ -4,7 +4,6 @@ import 'dart:ui' show PointerDeviceKind;
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:kallopis/kallopis_foundation.dart';
-import 'package:kallopis/kallopis_theme.dart';
 
 // 僅觀察公開手勢與 caller 保存結果；不以私有提交次序代替操作契約。
 void main() {

@@ -3,7 +3,6 @@ import 'dart:math' as math;
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:kallopis/kallopis_foundation.dart';
-import 'package:kallopis/kallopis_theme.dart';
 
 // 僅觀察 caller 提供的槽與公開元件，不依賴私有 Widget 樹或視覺快照。
 void main() {

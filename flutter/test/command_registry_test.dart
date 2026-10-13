@@ -371,7 +371,7 @@ void main() {
 	});
 
 	test('native listeners and duplicate subscriptions have independent owners', () {
-		final registry = KlpCommandRegistry<_Context>();
+		final registry = _ListenerInspectableRegistry<_Context>();
 		addTearDown(registry.dispose);
 		var calls = 0;
 		void listener() => calls++;
@@ -379,7 +379,7 @@ void main() {
 		registry.addListener(listener);
 		final first = registry.subscribe(listener);
 		final second = registry.subscribe(listener);
-		expect(registry.hasListeners, isTrue);
+		expect(registry.hasRegisteredListeners, isTrue);
 		registry.refresh();
 		expect(calls, 4);
 		first();
@@ -389,14 +389,14 @@ void main() {
 		expect(calls, 6);
 		second();
 		registry.removeListener(listener);
-		expect(registry.hasListeners, isFalse);
+		expect(registry.hasRegisteredListeners, isFalse);
 		registry.refresh();
 		expect(calls, 6);
 	});
 
 	for (final order in ['subscribe-first', 'native-first', 'subscribe-only']) {
 		test('removeListener cannot remove subscription owner: $order', () {
-			final registry = KlpCommandRegistry<_Context>();
+			final registry = _ListenerInspectableRegistry<_Context>();
 			addTearDown(registry.dispose);
 			var calls = 0;
 			void listener() => calls++;
@@ -410,9 +410,9 @@ void main() {
 			registry.removeListener(listener);
 			registry.refresh();
 			expect(calls, initial + 1);
-			expect(registry.hasListeners, isTrue);
+			expect(registry.hasRegisteredListeners, isTrue);
 			unsubscribe();
-			expect(registry.hasListeners, isFalse);
+			expect(registry.hasRegisteredListeners, isFalse);
 			registry.refresh();
 			expect(calls, initial + 1);
 		});
@@ -442,7 +442,7 @@ void main() {
 	});
 
 	test('dispose final notification observes closed state and rejects later mutations', () async {
-		final registry = KlpCommandRegistry<_Context>();
+		final registry = _ListenerInspectableRegistry<_Context>();
 		final context = _Context();
 		final remove = registry.register(_command('work'));
 		var finals = 0;
@@ -454,7 +454,7 @@ void main() {
 		});
 		registry.dispose();
 		expect(finals, 1);
-		expect(registry.hasListeners, isFalse);
+		expect(registry.hasRegisteredListeners, isFalse);
 		expect(() => registry.register(_command('new')), throwsStateError);
 		expect(() => registry.subscribe(() {}), throwsStateError);
 		expect(() => registry.addListener(() {}), throwsStateError);
@@ -469,7 +469,7 @@ void main() {
 	});
 
 	test('dispose inside a native notification is legal and immediately closes registry', () {
-		final registry = KlpCommandRegistry<_Context>();
+		final registry = _ListenerInspectableRegistry<_Context>();
 		final context = _Context();
 		final previous = FlutterError.onError;
 		final reports = <FlutterErrorDetails>[];
@@ -486,9 +486,14 @@ void main() {
 		expect(sawFinal, isTrue);
 		expect(registry.isDisposed, isTrue);
 		expect(registry.list(context), isEmpty);
-		expect(registry.hasListeners, isFalse);
+		expect(registry.hasRegisteredListeners, isFalse);
 		expect(registry.version, 2);
 		expect(reports, isEmpty);
 		registry.dispose();
 	});
+}
+
+// 透過子類別合法觀察相同的 listener ownership，不改變通知或清理行為。
+class _ListenerInspectableRegistry<C> extends KlpCommandRegistry<C> {
+	bool get hasRegisteredListeners => super.hasListeners;
 }

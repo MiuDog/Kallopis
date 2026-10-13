@@ -3,7 +3,6 @@ import 'dart:ui' show PointerDeviceKind;
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:kallopis/kallopis_foundation.dart';
-import 'package:kallopis/kallopis_theme.dart';
 
 // 僅以 caller 正文槽與原生 pointer 保護保存及暫時呈現的邊界。
 void main() {

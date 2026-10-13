@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:kallopis/kallopis_foundation.dart';
-import 'package:kallopis/kallopis_theme.dart';
 
 // 有限宿主與正式語意主題讓測試只觀察公開空集合契約。
 Widget _host(List<Widget> children) {

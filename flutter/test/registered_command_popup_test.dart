@@ -1,5 +1,5 @@
 import 'dart:async';
-import 'dart:ui' show SemanticsAction, SemanticsFlag;
+import 'dart:ui' show CheckedState, Tristate;
 
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -351,8 +351,8 @@ void main() {
 		final labels = _nodes(tester).map((node) => node.label).where({'Toggle', 'Disabled', 'Available'}.contains).toList();
 		expect(labels, ['Toggle', 'Disabled', 'Available']);
 		expect(_row('Hidden'), findsNothing);
-		expect(tester.getSemantics(_row('Toggle')).hasFlag(SemanticsFlag.isChecked), isTrue);
-		expect(tester.getSemantics(_row('Disabled')).hasFlag(SemanticsFlag.isEnabled), isFalse);
+		expect(tester.getSemantics(_row('Toggle')).flagsCollection.isChecked == CheckedState.isTrue, isTrue);
+		expect(tester.getSemantics(_row('Disabled')).flagsCollection.isEnabled == Tristate.isTrue, isFalse);
 		await _tap(tester, 'Disabled');
 		expect(host.calls, 0);
 		await _tap(tester, 'Available');
@@ -419,7 +419,7 @@ void main() {
 			host.items = const [KlpCommandReference(commandId: 'slow'), KlpCommandReference(commandId: 'available')];
 			await _show(tester, host);
 			await _tap(tester, 'Slow');
-			expect(tester.getSemantics(_row('Slow')).hasFlag(SemanticsFlag.isEnabled), isFalse);
+			expect(tester.getSemantics(_row('Slow')).flagsCollection.isEnabled == Tristate.isTrue, isFalse);
 			await _tap(tester, 'Slow');
 			expect(slowCalls, 1);
 			if (transition == 'replacement') {
