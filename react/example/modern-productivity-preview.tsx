@@ -41,7 +41,7 @@ export function ModernProductivityPreview({ id }: { id: string }) {
 		catch (error) { setFeedback(`設定無效，保留上一份設定：${error instanceof Error ? error.message : String(error)}`); }
 	}
 	function reset() { setPack(base); setOverrides({}); setSidebarWidth(undefined); setWidthText(''); setFeedback('設定已還原；功能選取與草稿保持。'); }
-	const snippet = `// modern-productivity-layout v1 · @kallopis/react 0.1.0\nimport { KlpThemeProvider, createKlpStylePack, applyKlpStyleOverrides } from '@kallopis/react';\nimport '@kallopis/react/styles.css';\nconst pack = applyKlpStyleOverrides(createKlpStylePack(), ${JSON.stringify(overrides, null, '\t')});\n// 從公開起始範例匯入 ModernProductivityStarter：\n<KlpThemeProvider mode="${mode}" stylePack={pack}>\n\t<ModernProductivityStarter sidebarWidth={${sidebarWidth ?? 'undefined'}} />\n</KlpThemeProvider>;`;
+	const snippet = `// modern-productivity-layout v1 · @kallopis/react 0.1.0\nimport { KlpThemeProvider, createKlpStylePack, applyKlpStyleOverrides } from '@kallopis/react';\nimport { createRoot } from 'react-dom/client';\nimport { ModernProductivityStarter } from './modern-productivity-starter.js';\nimport '@kallopis/react/styles.css';\nconst pack = applyKlpStyleOverrides(createKlpStylePack(), ${JSON.stringify(overrides, null, '\t')});\ncreateRoot(document.getElementById('root')!).render(<KlpThemeProvider mode="${mode}" stylePack={pack}>\n\t<ModernProductivityStarter sidebarWidth={${sidebarWidth ?? 'undefined'}} />\n</KlpThemeProvider>);`;
 	async function copy() {
 		try { await navigator.clipboard.writeText(snippet); setFeedback('設定已複製。'); }
 		catch { setFeedback('無法自動複製，請手動選取下方文字。'); }
