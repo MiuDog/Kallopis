@@ -1,5 +1,11 @@
 # Workspace Layout Architecture
 
+## MODERN-PRODUCTIVITY-FLUTTER-1（PLAN READY）
+
+本模組新增 klp_modern_productivity_layout.dart；公開入口 foundation，契約以根 docs/architecture/modern-productivity-layout-contract.md 為準。KlpModernProductivityPanel 擁有 immutable id／label／Widget content；KlpModernProductivityLayout 組合既有 layout、semantic frame／stage 與 KlpButton。按鈕列橫向而現有 SidebarButtonGroup 為垂直，不改既有群組。面板以 id key 與 IndexedStack／Offstage、ExcludeFocus／TickerMode 保留並隔離非作用內容；不持有產品 controller 或選取狀態。既有 solver、其他布局與 Dock 全部不變。
+
+BUILD write_paths 只為新主檔及 foundation 匯出；獨立 Test Author 為 flutter/test/modern_productivity_layout_test.dart。全部幾何／受控行為／生命週期與錯誤契約、保護邊界及驗收以共同契約為準。M1 公開元件與核心檢查；M2 stable id／inactive／極端尺寸／公開 consumer，估 5k–10k tokens／40–80 分鐘，15k／120 分鐘或跨契約回 PLAN。此 slice 尚未實作。
+
 ## FLUTTER-LAYOUT-2（完成）
 
 修訂 `FLUTTER-LAYOUT-r2`，接入共通 [WB-LINEAR-UI-r1](../../../../../../docs/architecture/workbench-linear-contract.md)。公開 KlpLayoutBounds／KlpLayoutDivider 與各 node 的 bounds、Column alignment 為可逆增量；舊 LayoutResizeHandle.onResize 相容保留，新展示使用無手勢 divider。

@@ -1,5 +1,9 @@
 # Flutter package
 
+## MODERN-PRODUCTIVITY-FLUTTER-1（PLAN READY）
+
+本 stage 的公開 KlpModernProductivityLayout／KlpModernProductivityPanel 依 [共同契約](../docs/architecture/modern-productivity-layout-contract.md)。所屬實作模組為 workspace/layout，依其 architecture；foundation 匯出新主檔。BUILD exact lib/src/features/workspace/layout/klp_modern_productivity_layout.dart、lib/kallopis_foundation.dart；既有元件、style、solver、tests、example、配置與所有 architecture 唯讀。獨立 Test Author 唯一可寫 test/modern_productivity_layout_test.dart。里程碑／估算／回 PLAN 門檻由根整合架構本 stage 定義。
+
 ## FLUTTER-PUBLISH-REPAIR-1（READY）
 
 修訂 `FLUTTER-PUBLISH-REPAIR-r1`。使用者已授權整合 main、修復既有 CI 後發布。只修復已重現的 import cycle／package-root directives、icon hover 回饋、Dock protected setState 用法、命令型別 dartdoc、開發者錯誤文字與動態 chord timer 的單位換算；不改公開呼叫契約、theme 預設權威或產品流程。原 assertions、baseline、golden、測試配置與 CI 門檻保留。

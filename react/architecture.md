@@ -1,5 +1,13 @@
 # React Foundation
 
+## MODERN-PRODUCTIVITY-REACT-TEMPLATE-1（PLAN READY）
+
+依共同契約 r2，BUILD exact example/main.tsx、example/modern-productivity-starter.tsx、example/modern-productivity-preview.tsx。Starter 使用 dist 公開 import 並擁有 selectedId／面板草稿；Preview 匯入 Starter 並擁有 mode／overrides／sidebarWidth 與公開 API 片段，stable key 不因控制調整而重建。Template 路由未知／歧義拒絕；現有 scenario／specimen 保留。Core、theme、CSS、tests／fixtures、其他 example、配置與 architecture 唯讀。M1 typed consumer／路由 build；M2 r2 browser 調整／草稿／重設／複製與重套用，估 4k–8k／30–60 分鐘，12k／90 分鐘或需改 core／parser 回 PLAN。尚未實作。
+
+## MODERN-PRODUCTIVITY-REACT-1（PLAN READY）
+
+本 stage 的公開 KlpModernProductivityLayout／KlpModernProductivityPanel 依 [共同契約](../docs/architecture/modern-productivity-layout-contract.md)。新 src/modern-productivity-layout.tsx 組合既有 layout／Frame／Button／theme，由 src/index.ts 匯出。BUILD exact 以上兩檔；components／CSS、theme、tokens、solver、其他 modules、tests、example、配置與 architecture 唯讀。獨立 Test Author 唯一可寫 test/modern-productivity-layout.test.mjs。產品清單與 selectedId 受控，stable id 面板保持 mounted 且 inactive hidden；不新增 store 或產品流程。里程碑／估算／回 PLAN 門檻由根整合架構本 stage 定義。
+
 ## REACT-PUBLISH-FRESHNESS-1（READY）
 
 修訂 `REACT-PUBLISH-FRESHNESS-r1`。整合發布時，以既有正式規範重新生成 `src/source-manifest.json`、`src/style-pack-manifest.json`；本庫 `.gitattributes` 固定 LF，雜湊應與 Linux checkout 一致。只刷新來源證據，不改 token 值、runtime 或 generator。BUILD 精確 write_paths 為以上兩個檔案；其餘來源、tests、規範唯讀。驗收為 `npm run check:tokens`、build、test、consumer build 及遠端相同 CI；不調整 freshness 門檻。
