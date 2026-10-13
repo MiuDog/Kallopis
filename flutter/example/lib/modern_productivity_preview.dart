@@ -59,11 +59,10 @@ class _ModernProductivityPreviewState extends State<ModernProductivityPreview> {
 	String _snippet() {
 		final source = const JsonEncoder.withIndent('\t').convert(_overrides);
 		return '// modern-productivity-layout v1 · kallopis 0.8.0\n'
-			"import 'dart:convert';\nimport 'package:kallopis/kallopis_foundation.dart';\n"
+			"import 'dart:convert';\nimport 'package:flutter/material.dart';\nimport 'package:kallopis/kallopis_foundation.dart';\nimport 'modern_productivity_starter.dart';\n"
 			"final pack = KlpStylePack.defaults().applyOverrides(jsonDecode(r'''$source''') as Map<String, dynamic>);\n"
 			'final theme = buildKlpThemeVariant(KlpThemeVariant.${_mode.name}, stylePack: pack);\n'
-			'// 將 theme 提供給 MaterialApp；使用起始範例：\n'
-			'ModernProductivityStarter(sidebarWidth: ${_width ?? 'null'});';
+			'void main() => runApp(MaterialApp(theme: theme, home: Material(child: ModernProductivityStarter(sidebarWidth: ${_width ?? 'null'}))));';
 	}
 	Future<void> _copy() async {
 		try { await Clipboard.setData(ClipboardData(text: _snippet())); if (mounted) setState(() => _feedback = '設定已複製。'); }
