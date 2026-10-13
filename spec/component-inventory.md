@@ -6,7 +6,7 @@
 
 ## 總覽
 
-- 公開型別 **452** 個，其中 widget **167** 個
+- 公開型別 **454** 個，其中 widget **167** 個
 - 分為 **20** 個領域
 
 ### 領域之間的依賴方向
@@ -20,7 +20,7 @@ graph TD
   foundation["foundation — 圖示、色盤、度量"]
   features -->|309| foundation
   styling -->|16| kernel
-  features -->|2| styling
+  features -->|3| styling
   foundation -->|1| styling
 ```
 
@@ -242,6 +242,6 @@ graph LR
 | `KlpIcon` | 9 |
 | `KlpStack` | 8 |
 | `KlpFlexible` | 7 |
+| `KlpLayoutBounds` | 6 |
 | `KlpLayoutBuilder` | 6 |
-| `KlpAlign` | 5 |
 

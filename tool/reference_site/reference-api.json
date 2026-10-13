@@ -18341,6 +18341,122 @@
 					]
 				},
 				{
+					"id": "package:kallopis/src/features/workspace/layout/klp_modern_productivity_layout.dart#KlpModernProductivityLayout",
+					"name": "KlpModernProductivityLayout",
+					"slug": "klp-modern-productivity-layout",
+					"kind": "finalClass",
+					"renderable": true,
+					"module": "features.workspace",
+					"sourceUri": "package:kallopis/src/features/workspace/layout/klp_modern_productivity_layout.dart",
+					"primarySurface": "foundation",
+					"surfaces": [
+						"foundation"
+					],
+					"signature": "final class KlpModernProductivityLayout extends StatelessWidget",
+					"documentation": "單一全高左側欄與右側 Header／Stage 的公開可重用模板。",
+					"typeRelationships": {
+						"extends": "StatelessWidget",
+						"mixins": [],
+						"implements": []
+					},
+					"members": [
+						{
+							"name": "KlpModernProductivityLayout",
+							"kind": "constructor",
+							"signature": "KlpModernProductivityLayout({\n  Key? key,\n  required List<KlpModernProductivityPanel> panels,\n  required String selectedId,\n  required Widget header,\n  required Widget stage,\n  ValueChanged<String>? onSelected,\n  double? sidebarWidth,\n})",
+							"documentation": ""
+						},
+						{
+							"name": "build",
+							"kind": "method",
+							"signature": "Widget build(BuildContext context)",
+							"documentation": ""
+						},
+						{
+							"name": "header",
+							"kind": "field",
+							"signature": "Widget header",
+							"documentation": "右區頂部的內容，不跨越側欄。"
+						},
+						{
+							"name": "onSelected",
+							"kind": "field",
+							"signature": "ValueChanged<String>? onSelected",
+							"documentation": "提出切換事件；缺省時切換按鈕停用。"
+						},
+						{
+							"name": "panels",
+							"kind": "field",
+							"signature": "List<KlpModernProductivityPanel> panels",
+							"documentation": "產品提供的非空有序功能清單。"
+						},
+						{
+							"name": "selectedId",
+							"kind": "field",
+							"signature": "String selectedId",
+							"documentation": "產品目前選取的功能識別。"
+						},
+						{
+							"name": "sidebarWidth",
+							"kind": "field",
+							"signature": "double? sidebarWidth",
+							"documentation": "期望側欄寬度；缺省沿用正式語意。"
+						},
+						{
+							"name": "stage",
+							"kind": "field",
+							"signature": "Widget stage",
+							"documentation": "右區 Header 下方的主工作內容。"
+						}
+					]
+				},
+				{
+					"id": "package:kallopis/src/features/workspace/layout/klp_modern_productivity_layout.dart#KlpModernProductivityPanel",
+					"name": "KlpModernProductivityPanel",
+					"slug": "klp-modern-productivity-panel",
+					"kind": "finalClass",
+					"renderable": false,
+					"module": "features.workspace",
+					"sourceUri": "package:kallopis/src/features/workspace/layout/klp_modern_productivity_layout.dart",
+					"primarySurface": "foundation",
+					"surfaces": [
+						"foundation"
+					],
+					"signature": "final class KlpModernProductivityPanel",
+					"documentation": "現代風生產力模板的一項受控側欄內容。",
+					"typeRelationships": {
+						"extends": "Object",
+						"mixins": [],
+						"implements": []
+					},
+					"members": [
+						{
+							"name": "KlpModernProductivityPanel",
+							"kind": "constructor",
+							"signature": "KlpModernProductivityPanel({\n  required String id,\n  required String label,\n  required Widget content,\n})",
+							"documentation": ""
+						},
+						{
+							"name": "content",
+							"kind": "field",
+							"signature": "Widget content",
+							"documentation": "產品提供且保留掛載的功能內容。"
+						},
+						{
+							"name": "id",
+							"kind": "field",
+							"signature": "String id",
+							"documentation": "跨切換與重排保持穩定的功能識別。"
+						},
+						{
+							"name": "label",
+							"kind": "field",
+							"signature": "String label",
+							"documentation": "功能切換按鈕的文字與可存取名稱。"
+						}
+					]
+				},
+				{
 					"id": "package:kallopis/src/features/workspace/shell/composition/klp_navigation_rail_frame.dart#KlpNavigationRailFrame",
 					"name": "KlpNavigationRailFrame",
 					"slug": "klp-navigation-rail-frame",
