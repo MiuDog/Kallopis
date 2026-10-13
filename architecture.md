@@ -85,3 +85,7 @@ flowchart TD
 模板 slices 的 cold-start 估算：每框架 consumer／preview 4k–8k tokens／30–60 分鐘，參照既有 component-specimen 與雙框架 GUI 接線；文件與站接入各 1k–3k／10–20 分鐘，參照 DOCS-STAGE-1。模型沿用 session 設定，本機 SDK／Node 與 CUA browser。Preview M1 是 starter 與路由可執行（累計 3k–5k／20–35 分鐘，public analyze／build），M2 是真實調整、草稿保留與片段重套用（累計 4k–8k／30–60 分鐘，browser artifact）。12k／90 分鐘或需要改 core／pack schema 回 PLAN。Docs／site 各只有 M1（來源與頁面／搜尋／版本／連結）；4k／30 分鐘或 renderer／workflow 新能力回 PLAN。
 
 所有本 stage P1 已分配責任與證據；實作順序 core→對應 starter／preview→文件→站接入。每個 BUILD Task Packet 固定所在模組的 exact write_paths，consumer、文件與 core 不混派。GitHub 整合／部署沿用既有發布流程並另外觀察結果；不變更套件 private 標記、不宣稱 npm 已發布。
+
+## MODERN-PRODUCTIVITY：公開清冊接入
+
+既有 extraction 已觀察 Flutter 563 canonical 與 React 24 元件；新增公開 API 需接入 Catalog／specimen，依兩框架架構的 MODERN-PRODUCTIVITY-CATALOG-1／REFERENCE-1 exact boundaries。不修改既有清冊閘門或列入假 coverage。API manifest 與 inventory 由整合 owner 從真實 source 刷新；公開欄位 dartdoc 由 API-DOCS-1 精確主檔維護。

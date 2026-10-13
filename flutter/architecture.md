@@ -1,5 +1,9 @@
 # Flutter package
 
+## MODERN-PRODUCTIVITY-API-DOCS-1（READY）
+
+同一新公開主檔補齊欄位 dartdoc；BUILD 唯一 lib/src/features/workspace/layout/klp_modern_productivity_layout.dart，不改行為或 tests。所有公開欄位有繁體中文用途，原 analyze 及 5 個保護檢查；估 1k／5 分鐘，scope exact1。
+
 ## MODERN-PRODUCTIVITY-FLUTTER-1（PLAN READY）
 
 本 stage 的公開 KlpModernProductivityLayout／KlpModernProductivityPanel 依 [共同契約](../docs/architecture/modern-productivity-layout-contract.md)。所屬實作模組為 workspace/layout，依其 architecture；foundation 匯出新主檔。BUILD exact lib/src/features/workspace/layout/klp_modern_productivity_layout.dart、lib/kallopis_foundation.dart；既有元件、style、solver、tests、example、配置與所有 architecture 唯讀。獨立 Test Author 唯一可寫 test/modern_productivity_layout_test.dart。里程碑／估算／回 PLAN 門檻由根整合架構本 stage 定義。

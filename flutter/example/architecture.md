@@ -1,5 +1,9 @@
 # Flutter 公開 consumer 範例
 
+## MODERN-PRODUCTIVITY-CATALOG-1（READY）
+
+公開新增 widget 必須在既有 Catalog 歸類。BUILD exact lib/catalog/workspace_shell_page.dart、lib/catalog/generated/catalog_style_semantics.g.dart。新增真實 ModernProductivityStarter caller，有限 host 用正式尺寸；metadata 由既有 generator 生成，原 catalog_coverage_test 保留。此路由不冒稱全部專屬展示已完成。估 1k–3k／10–20 分鐘，M1 真實 caller／生成 metadata／原 coverage；4k／30 分鐘或 generator 行為需改回 PLAN。
+
 ## MODERN-PRODUCTIVITY-FLUTTER-TEMPLATE-1（PLAN READY）
 
 本 stage 提供可複製 public consumer starter 與真實參數預覽，依根 docs/architecture/modern-productivity-layout-contract.md r2。BUILD exact lib/main.dart、lib/modern_productivity_starter.dart、lib/modern_productivity_preview.dart。Template route ?template=modern-productivity-layout，未知／歧義拒絕；保留現有 Catalog／specimen／scenario。Starter 擁有面板 controller／selectedId，Preview 擁有 mode／overrides／sidebarWidth 與片段輸出；Preview 匯入 Starter，不重畫庫內部。改設定／mode 不更換 starter key，dispose controller；片段用公開 style pack API。Core、theme、tests／fixtures、其他 example、網站、配置與 architecture 唯讀。M1 public starter／路由 build；M2 r2 browser 控制／草稿／重設／複製與重套用，估 4k–8k／30–60 分鐘，12k／90 分鐘或跨契約回 PLAN。尚未實作，不計入既有元件原生驗證數量。
