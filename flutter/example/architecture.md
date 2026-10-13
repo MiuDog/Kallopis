@@ -1,10 +1,24 @@
 # Flutter 公開 consumer 範例
 
-## CATALOG-PUBLISH-REPAIR-1（READY）
+## CATALOG-PUBLISH-REPAIR-1（COMPLETE）
 
 修訂 `CATALOG-PUBLISH-REPAIR-r1`。既有發布 example suite 重現三項 Catalog 失敗：DeviceAdaptive／SlidingDrawer 未歸類、PanelFrame raised 被當成不存在的型別，以及命令入口風格追蹤資料過期。write_paths 僅 `lib/catalog/workspace_shell_page.dart`、`lib/catalog/foundation_pages.dart`、`lib/catalog/generated/catalog_style_semantics.g.dart`。兩個已有公開元件新增實際展示；PanelFrame 的 flat／raised 併入同一 canonical specimen；語意追蹤只由既有 generator 從真實 source 生成，不補假 coverage。原 test、library、specimen registry 與其完成數唯讀。驗收為原 catalog_coverage_test、全部 example suite、analyze 及 web build。
 
 `workspace_shell_page.dart` 的 `_SlidingDrawerSpecimen`／`_SlidingDrawerSpecimenState` 擁有展示 progress ValueNotifier、開關按鈕與 dispose；`KlpSlidingDrawerLayout` 只借用 progress 並呈現 drawer／stage。DeviceAdaptive 展示投影三個公開 builder，不建立產品裝置判定來源。
+
+`_buildDeviceAdaptive` 組合三個公開 builder；`_SlidingDrawerSpecimen.createState` 建立展示 State，State 的 `build` 讀取 progress，`dispose` 釋放 ValueNotifier。
+
+```mermaid
+flowchart TD
+	Catalog --> Adaptive[_buildDeviceAdaptive]
+	Catalog --> Specimen[_SlidingDrawerSpecimen.createState]
+	Specimen --> State[_SlidingDrawerSpecimenState]
+	State --> Build[build／toggle progress]
+	Build --> Layout[KlpSlidingDrawerLayout]
+	State --> Dispose[dispose ValueNotifier]
+```
+
+本機證據：原 Catalog 檢查及完整 example 54 項 tests 通過，fatal-infos analyze 無問題，release Web build 成功。
 
 目前目標：IDOC-COMPONENT-REGISTRY-r1 的公開元件專屬路由。庫擁有樣式及互動，example擁有展示資料、控制、回呼觀察與重設。不得引用package:kallopis/src；舊Catalog的coveredComponents／空build不算互動coverage。目前有157個真實fixture；全量273個可渲染元件仍需逐項補足，不宣稱全部完成。
 

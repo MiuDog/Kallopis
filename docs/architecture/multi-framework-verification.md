@@ -12,8 +12,9 @@
 | React 套件／consumer | 177 項 tests 通過；公開 package 與 example production build 成功 |
 | Flutter SDK 測試遷移 | 獨立 Test Author 保留原 assertions、test names、fixture；157 項對應 tests 通過，fatal-infos 分析無問題 |
 | Flutter 套件 | 完整 639 項 tests 通過；fatal-infos analyze 無問題，inventory 由真實 source 生成並通過 --check |
+| Flutter example | 完整 54 項 tests 通過；fatal-infos analyze 無問題，release Web build 成功；Catalog 修復不計入專屬原生驗證數量 |
 | 公開 API extraction | 561 canonical declarations、17 modules、3 surfaces；enum 改為同 theme module 的 leaf，原公開匯出保持 |
-| 純 Node 網站檢查 | 原 15 項通過；React specimen／雙框架場景的 22 項檢查通過，公開 React 清單為 23 個元件 |
+| 純 Node 網站檢查 | 原 15 項及 extractor 4 項通過；React specimen／雙框架場景的 22 項檢查通過，公開 React 清單為 23 個元件 |
 
 修復切斷 theme builder／pack 的 import cycle，恢復 icon hover 使用共用 selection wash，Dock 由 State 擁有 protected rebuild；開發者錯誤訊息、配方 metadata 與動態 chord deadline 不新增使用者文案或動畫預設值。所有原 CI 閘門、assertions、baseline 與 golden 保留。
 
