@@ -1,0 +1,14 @@
+{
+	"vscode": {
+		"title": "VS Code · 文件工作區",
+		"reference": "https://code.visualstudio.com/docs/configure/custom-layout"
+	},
+	"blockbench": {
+		"title": "Blockbench · 建模工作區",
+		"reference": "https://web.blockbench.net/docs/classes/generated_interface_panels.Panel.html"
+	},
+	"blender": {
+		"title": "Blender · 分區工作區",
+		"reference": "https://docs.blender.org/manual/en/4.5/interface/window_system/workspaces.html"
+	}
+}

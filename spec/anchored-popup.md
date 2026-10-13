@@ -1,42 +1,50 @@
-# 通用錨定 popup
+# 通用錨定 Popup
 
-Owning module：`features/workspace` 的 `Workspace.AnchoredPopup` 語意能力。Stage：0→1；公開契約：`POP-V1-r1`，主目錄整合：r1b。公開能力已實作；使用與驗證見 [consumer guide](../docs/ai/anchored-popup-model.md) 及 [交付紀錄](../docs/architecture/anchored-popup-delivery.md)。原生手感保留人工驗收。
+狀態：READY
 
-## 目標與接受依據
+擁有模組：`features/workspace/anchored_popup`
 
-由宣告式 trigger 開啟錨定內容，可在保持開啟時更新清單、命令及處理結果。Consumer 擁有資料、open 與業務操作；Kallopis 擁有呈現、焦點及受限組裝。
+架構基線：[KLP-0022](decisions/KLP-0022-thin-design-system-boundary.md)
 
-使用者已接受沿用既有元件預設外觀，並授權本任務指揮完成 [分派計畫](../docs/architecture/flow-agent-dispatch-plan.md)。依 AGENTS 的自動接受模式，以下以既有能力及最小可逆互動規則收斂實作所需契約；不擴張為新視覺變體。來源：[SID-K-POPUP-01](../../planist/docs/planning/first-release-component-gaps.md)、[E 收尾](../../planist/docs/planning/explorer-e-closeout.md)。
+## 目標
 
-## 需求
+提供直接 Flutter 的受控錨定 popup，以及可在 popup、Explorer 或其他工作區元件重用的
+輸入／確認命令流程。Consumer 擁有資料、open、產品操作及結果狀態；Kallopis 擁有
+overlay 定位、焦點、鍵盤、可及性與現行 semantic theme 呈現。
 
-| ID | 版本 | 優先級 | 需求 | 可觀察驗收 | 狀態 |
-| --- | --- | --- | --- | --- | --- |
-| POP-01 | v1 | P1 | 恰一個既有 action 類 trigger，由其實際 bounds 錨定；trigger 的啟用僅由 popup 開關契約處理，不同時附第二個業務 onPressed/action | pointer／鍵盤各只發一次開關事件；拒絕雙重處理、座標及原生 Widget 輸入 | accepted |
-| POP-02 | v1 | P1 | Consumer 的 open 是唯一權威；trigger 再按、外點、Escape 只發關閉請求，consumer 回填後關閉 | 同一宣告身分可受控顯示／關閉；未回填不偷偷改成另一個 open 狀態；事件帶明確原因 | accepted |
-| POP-03 | v1 | P1 | 恰一個 panel；受限語意次序為可選標題 → 可選清單 → 可選操作 → 可選回饋；至少有一個非標題區段。清單與操作為平面資料列，拒絕任意容器、child renderer 及 popup 巢狀 popup | role／數量／順序及巢狀正負例可驗證；不把產品功能順序寫入本庫 | accepted |
-| POP-04 | v1 | P1 | 清單列可有主要事件、current／disabled 投影及既有共用 commands；只容許一個活躍的子命令選單 | current 僅是資料投影，不連動 Explorer selection；停用列不執行；子選單使用既有命令規則 | accepted |
-| POP-05 | v1 | P1 | 支援 loading／ready／error／result 的狀態回饋；error/result 必須有非空訊息。保持 open 時可更新內容、disabled 與結果；內容 action 不自動關閉 | loading → error/result 原地更新、不丟目前清單；執行命令本身不關閉 popup | accepted |
-| POP-06 | v1 | P1 | 開啟時進入首個有效控制，無可用控制時焦點停在面板；Tab 在開啟的 popup 內循環，關閉後回到有效 trigger；失效時使用宿主既有有效焦點回退 | expanded 語意、焦點進入／循環／返回、錯誤與結果語意回饋可由程式核對 | accepted |
-| POP-07 | v1 | P1 | 開關不派送產品 navigation、Stage 或 Explorer selection；內容事件的業務效果由 consumer 擁有 | 純開關期間產品 selection／navigation callback 計數為零 | accepted |
-| POP-08 | v1 | P1 | 沿用現有 overlay／selection semantic 的表面、間距、陰影與互動；方向感知地錨定下方起始側，空間不足翻到上方並限制在 viewport | 無 consumer style／像素參數；換 primitive preset 仍經 semantic resolver；位置與邊界規則可檢查 | accepted |
-| POP-09 | v1 | P1 | trigger 移動時跟隨；trigger 消失時不留下可互動的孤立 overlay，發 anchorUnavailable 關閉請求，open 仍由 consumer 回填 | 移動重定位；失去有效錨點後不接受孤立內容事件，焦點安全回退 | accepted |
-| POP-F1 | 後續 | P3 | 更多 trigger 類型、hover 開啟、placement／尺寸／動畫選項、多層 popup | 不列入本版 API 或 BUILD | deferred |
+## Current v1 requirements
 
-## 邊界與介面
+| ID | 優先級 | 需求 | 可觀察驗收 |
+| --- | --- | --- | --- |
+| AP-01 | P1 | `KlpAnchoredPopup` 的 `open` 是唯一權威；trigger、外點、Escape 與失去錨點只回報帶原因的變更請求。 | 未收到 consumer 回填前不自行改寫 open；每次操作只回報一次。 |
+| AP-02 | P1 | Trigger 使用直接 Flutter builder，Kallopis 注入 toggle callback 與 expanded 狀態；不接受座標、style 或第二套 renderer。 | Consumer 可用既有 Kallopis action 元件建立 trigger，popup 由其實際 bounds 定位。 |
+| AP-03 | P1 | Panel 依序呈現可選 title、items、actions、feedback，且至少存在一種非 title 內容。 | 無任意 schema／node；更新輸入即可在保持 open 時更新內容。 |
+| AP-04 | P1 | Item 具有穩定 `String id`、label、可選 subtitle／icon、current／enabled、主要事件及 commands。 | 重複 ID、空 label／subtitle 被拒絕；disabled item 不執行。 |
+| AP-05 | P1 | `KlpWorkspaceCommand` 支援可選輸入、可選確認、async invoke 與 completed／canceled／failed 結果。 | 取消不 invoke；完整確認後只 invoke 一次；結果 callback 不宣稱產品已提交。 |
+| AP-06 | P1 | Popup 支援 loading／ready／error／result；error／result 必須有非空 message。 | feedback 是 live region；內容 action 不自動關閉 popup。 |
+| AP-07 | P1 | 開啟時焦點進入 panel，Tab 留在 panel；關閉後回 trigger；child route 隨 popup 關閉。 | pointer、Enter／Space、Escape、Tab 與 route teardown 可核對。 |
+| AP-08 | P1 | Panel 方向感知地錨定 trigger 下方起始側，空間不足翻到上方，並限制於 viewport。 | trigger 移動時重定位；無效錨點不留下可互動 overlay。 |
+| AP-09 | P1 | 所有尺寸、色彩、字型、icon、surface、shadow 與互動狀態取自 Kallopis 現行語意。 | API 不接受 style／像素；切換 theme 仍完整解析。 |
 
-- Kallopis 定義 trigger／panel／list／actions／feedback 的通用角色與合法組裝，不提供 Planist 專案模板、固定業務命令順序或 storage。
-- Consumer 提供 open、列資料、current／disabled、回饋及事件接收者；傳回下一份有效宣告才採用新資料。相同身分更新不得重建正文 session 或導航。
-- 內容只使用本庫列明的資料與語意角色，typed callback 不開放 renderer、Flutter Widget、HTML、style 或任意 child。PLAN 決定具體類別命名，不能擴張本表接受的角色。
-- 跨 module 僅交付公開／具名契約；不建立第二份 theme、environment 或 l10n。新文案若確有必要由既有 localization owner 配對。
-- 子命令選單的焦點／dismiss 必須與 popup 一起配對；點擊自己的子選單不視為外點。關閉子選單不自動關閉 popup。
-- 當前宣告的錨點暫時零尺寸或完全移出 viewport 時，不保留可互動面板；若 consumer 保持 open，錨點恢復後重新呈現。Consumer 明確移除整個宣告、使 lease 退役時，不呼叫退役回呼。父 popup 關閉時僅移除自己的子選單／輸入／確認 route。
-- 拒絕不合法宣告，保留前一有效畫面與既有資源；不靜默丟列或修正 consumer 的 selection。
+## 公開資料與事件
 
-## 驗收與交接
+- `KlpAnchoredPopupTriggerBuilder(BuildContext, VoidCallback, bool)`：consumer 只決定使用哪個
+  既有 Widget 呈現 trigger；第二、三參數分別是 toggle 與 expanded。
+- `KlpAnchoredPopupItem`：產品無關的平面列資料與事件。
+- `KlpAnchoredPopup`：直接 Flutter `StatefulWidget`；不擁有產品 open 或資料。
+- `KlpWorkspaceCommand`／`KlpWorkspaceCommandResult`：命令顯示資料、consumer callback 與
+  呈現流程結果。
+- `showKlpWorkspaceCommand`：需要在 popup 外重用同一命令流程時的公開入口。
 
-所有 P1 均有上表的 deterministic 驗收；PLAN 需要將同一受限宣告、語意／bound、renderer 與 consumer 公開入口配對後，才發各 module 的精確 Packet。新測試由獨立 Test Author 保護。
+## 邊界
 
-沿用外觀的實際 Catalog、原生指標／鍵盤／焦點手感供人類檢查；不新增 golden 或 AI 視覺评分。未觀察的原生平台不得宣稱已驗收。
+- 不建立 `KlpNode`、slot、adapter、bound model、compiler 或 private renderer。
+- 不擁有 navigation、Explorer selection、文件狀態、storage、undo 或產品 workflow。
+- Trigger builder 只取得 toggle／expanded；Kallopis 不推測 consumer Widget 的業務事件。
+- 命令 label、輸入 label、確認文案、提交及取消文案由 consumer 提供；Kallopis 不硬編產品語言。
+- 未來 hover open、任意 placement、動畫選項、多層 popup 不在 v1。
 
-沒有 open P1；後續能力只保留 POP-F1 的邊界，不在当前 stage 規劃。DEFINE READY 不等於已解除 SID-K-POPUP-01；需公開能力、必要證據與 E 接線後才結案。
+## Readiness
+
+所有 P1 行為由既有已接受能力與 KLP-0022 的直接 Flutter 邊界決定；沒有未決的資料權威、
+公開相容性或視覺自訂問題。DEFINE READY。

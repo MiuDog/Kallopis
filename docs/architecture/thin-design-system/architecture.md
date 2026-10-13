@@ -82,3 +82,9 @@ Flutter
 | M3 | 文件、Catalog、工具與測試收斂 | inventory、discipline tests、完整 Kallopis test suite、唯一使用指南 |
 
 SA-01～SA-11 均已實作；editor host ownership 證據見 [Editor Host Ownership v1](../editor-host-migration/architecture.md)，整體機械驗證見 [verification.md](verification.md)。
+
+舊 `KlpWorkspaceBlock` 的逐 kind 能力去向與不恢復理由見
+[Workspace Block 能力審核](workspace-block-audit.md)。
+
+薄型架構切換前後所有直接 workspace public family 的逐項去向見
+[Direct Workspace 能力差異審核](direct-workspace-capability-audit.md)。

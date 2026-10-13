@@ -1,6 +1,10 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { homePage, shell } from './layout.mjs';
+import { documents, documentRoutes } from './documents.mjs';
+import { renderMarkdown } from './markdown.mjs';
+import { validateReactSpecimens, renderReactSpecimen } from './react-specimens.mjs';
+import { validateReactScenarios, renderReactScenario } from './react-scenarios.mjs';
 
 const root = path.resolve(import.meta.dirname, '..', '..');
 const output = path.join(root, 'build', 'reference-site');
@@ -11,17 +15,6 @@ const surfaceContracts = [
 	['experimental', 'package:kallopis/kallopis_experimental.dart', 'Experimental'],
 ];
 const labels = Object.fromEntries(surfaceContracts.map(([name, , label]) => [name, label]));
-const currentDocuments = [
-	['README.md', 'Project overview'],
-	['docs/ai/product-usage.md', 'Product usage'],
-	['docs/architecture/README.md', 'Architecture'],
-	['docs/architecture/frontend-boundaries.md', 'Frontend boundaries'],
-	['docs/architecture/thin-design-system/architecture.md', 'Single Architecture'],
-	['docs/architecture/thin-design-system/verification.md', 'Verification'],
-	['spec/decisions/KLP-0022-thin-design-system-boundary.md', 'KLP-0022'],
-	['spec/style-v1.md', 'Style specification'],
-];
-
 function escapeHtml(value) {
 	return String(value)
 		.replaceAll('&', '&amp;')
@@ -86,68 +79,50 @@ function page(relativePath, title, content, sourcePath = '') {
 	}));
 }
 
-function markdown(source) {
-	const lines = source.replaceAll('\r\n', '\n').split('\n');
-	const result = [];
-	let code = false;
-	let list = false;
-	for (const line of lines) {
-		if (line.startsWith('```')) {
-			if (list) {
-				result.push('</ul>');
-				list = false;
-			}
-			result.push(code ? '</code></pre>' : '<pre><code>');
-			code = !code;
-			continue;
-		}
-		if (code) {
-			result.push(`${escapeHtml(line)}\n`);
-			continue;
-		}
-		const heading = line.match(/^(#{1,4})\s+(.+)$/);
-		if (heading) {
-			if (list) {
-				result.push('</ul>');
-				list = false;
-			}
-			const level = heading[1].length;
-			result.push(`<h${level} id="${escapeHtml(slug(heading[2].replaceAll('`', '')))}">${inline(heading[2])}</h${level}>`);
-			continue;
-		}
-		if (line.startsWith('- ')) {
-			if (!list) {
-				result.push('<ul>');
-				list = true;
-			}
-			result.push(`<li>${inline(line.slice(2))}</li>`);
-			continue;
-		}
-		if (list) {
-			result.push('</ul>');
-			list = false;
-		}
-		if (line.trim()) result.push(`<p>${inline(line)}</p>`);
-	}
-	if (list) result.push('</ul>');
-	if (code) result.push('</code></pre>');
-	return result.join('\n');
-}
-
-function inline(value) {
-	return escapeHtml(value)
-		.replace(/`([^`]+)`/g, '<code>$1</code>')
-		.replace(/\[([^\]]+)\]\(([^)]+)\)/g, '$1');
-}
-
-function main() {
+async function main() {
+	const args = process.argv.slice(2);
+	if (new Set(args).size !== args.length || args.some(arg => !['--react', '--react-scenes', '--flutter-scenes'].includes(arg)) || (args.includes('--react-scenes') && !args.includes('--react'))) throw new Error('Usage: generate.mjs [--react [--react-scenes]] [--flutter-scenes]');
 	validateManifest();
+	// 全部正式輸入與bundle成功才可清理既有輸出，錯誤保留上一份網站。
+	let reactComponents = null;
+	if (args.includes('--react')) {
+		const { reactSpecimenRegistry } = await import('../../react/example/specimen-registry.mjs');
+		reactComponents = validateReactSpecimens(JSON.parse(fs.readFileSync(path.join(root, 'react/build/reference-components.json'), 'utf8')), reactSpecimenRegistry);
+	}
+	let reactScenarios = null;
+	if (args.includes('--react-scenes')) {
+		const { reactScenarioRegistry } = await import('../../react/example/scenario-registry.mjs');
+		reactScenarios = validateReactScenarios(reactScenarioRegistry);
+	}
+	const reactBundle = path.join(root, 'react/example/dist');
+	if (reactComponents && !fs.existsSync(path.join(reactBundle, 'index.html'))) throw new Error('Missing React example bundle');
+	let flutterScenarios = null;
+	let renderFlutterScenario;
+	const flutterBundle = path.join(root, 'flutter/example/build/web');
+	if (args.includes('--flutter-scenes')) {
+		const helpers = await import('./flutter-scenarios.mjs');
+		const registry = JSON.parse(fs.readFileSync(path.join(root, 'flutter/example/assets/gui-scenarios.json'), 'utf8'));
+		flutterScenarios = helpers.validateFlutterScenarios(registry);
+		helpers.validateFlutterBundle(flutterBundle, registry);
+		renderFlutterScenario = helpers.renderFlutterScenario;
+	}
+
+	// 在清理舊產物前確認所有必要來源與文章可解析，避免發布不完整網站。
+	const renderedDocuments = documents.map((document) => {
+		const sourcePath = path.join(root, document.source);
+		if (!fs.existsSync(sourcePath)) throw new Error(`Missing required document: ${document.source}`);
+		const content = renderMarkdown(fs.readFileSync(sourcePath, 'utf8'), { ...document, routes: documentRoutes });
+		return { ...document, ...content };
+	});
 
 	// 步驟 1：清理並建立可重建的網站輸出與靜態資產。
 	if (output !== path.join(root, 'build', 'reference-site')) throw new Error('Unsafe output path');
 	fs.rmSync(output, { recursive: true, force: true });
 	fs.mkdirSync(path.join(output, 'assets'), { recursive: true });
 	for (const asset of ['site.css', 'site.js']) fs.copyFileSync(path.join(root, 'tool', 'reference_site', 'static', asset), path.join(output, 'assets', asset));
+
+	if (reactComponents) fs.cpSync(reactBundle, path.join(output, 'examples/react'), { recursive: true });
+	if (flutterScenarios) fs.cpSync(flutterBundle, path.join(output, 'examples/flutter'), { recursive: true });
 
 	const search = [];
 	const apiModules = api.modules.map((module) => ({
@@ -192,25 +167,50 @@ function main() {
 	const moduleCards = api.modules.map((module) => `<a class="card link-card" href="${escapeHtml(`${module.name.replaceAll('.', '/')}/index.html`)}"><span class="badge">${module.declarations.length} APIs</span><h2>${escapeHtml(module.name)}</h2></a>`).join('');
 	page('docs/api/index.html', 'API Reference', `<div class="eyebrow">PUBLIC API</div><h1>Thin Design System Reference</h1><p class="lead">新產品從 foundation 與 theme 開始；experimental 明確分區。以下內容完全來自三個公開 Dart barrels，不包含 declarative 或 private runtime。</p><div class="grid">${surfaceCards}</div><h2 id="modules">Modules</h2><div class="grid">${moduleCards}</div>`);
 
+	if (reactComponents) {
+		for (const component of reactComponents) {
+			const bundleUrl = `${relative(component.href, 'examples/react/index.html')}?specimen=${encodeURIComponent(component.name)}`;
+			page(component.href, component.name, `<div class="eyebrow">REACT COMPONENT</div><h1>${escapeHtml(component.name)}</h1>${renderReactSpecimen(component, bundleUrl)}`);
+			search.push({ title: component.name, category: 'React Component', apiId: component.id, href: component.href });
+		}
+		page('docs/react/components/index.html', 'React 元件', `<div class="eyebrow">REACT</div><h1>React 互動元件</h1><p>每頁直接使用公開package元件，可切換風格、參數並查看回呼。</p><ul class="api-list">${reactComponents.map(component => `<li><a href="${escapeHtml(relative('docs/react/components/index.html', component.href))}"><code>${escapeHtml(component.name)}</code></a></li>`).join('')}</ul>`);
+	}
+
+	if (reactScenarios) {
+		for (const scene of reactScenarios) {
+			const bundleUrl = `${relative(scene.href, 'examples/react/index.html')}?scenario=${encodeURIComponent(scene.id)}`;
+			page(scene.href, scene.title, `<div class="eyebrow">REACT SCENARIO</div><h1>${escapeHtml(scene.title)}</h1>${renderReactScenario(scene, bundleUrl)}`);
+			search.push({ title: scene.title, category: 'React Scenario', apiId: scene.id, href: scene.href });
+		}
+		page('docs/react/scenarios/index.html', 'React GUI 場景', `<div class="eyebrow">REACT</div><h1>React GUI 場景</h1><p>以本庫公開元件組合使用場景，可操作布局、命令及風格。</p><ul class="api-list">${reactScenarios.map(scene => `<li><a href="${escapeHtml(relative('docs/react/scenarios/index.html', scene.href))}">${escapeHtml(scene.title)}</a></li>`).join('')}</ul>`);
+	}
+
+	if (flutterScenarios) {
+		for (const scene of flutterScenarios) {
+			const bundleUrl = `${relative(scene.href, 'examples/flutter/index.html')}?scenario=${encodeURIComponent(scene.id)}`;
+			page(scene.href, scene.title, `<div class="eyebrow">FLUTTER SCENARIO</div><h1>${escapeHtml(scene.title)}</h1>${renderFlutterScenario(scene, bundleUrl)}`);
+			search.push({ title: scene.title, category: 'Flutter Scenario', apiId: scene.id, href: scene.href });
+		}
+		page('docs/flutter/scenarios/index.html', 'Flutter GUI 場景', `<div class="eyebrow">FLUTTER</div><h1>Flutter GUI 場景</h1><p>以本庫公開元件組合使用場景，可操作布局、命令及風格。</p><ul class="api-list">${flutterScenarios.map(scene => `<li><a href="${escapeHtml(relative('docs/flutter/scenarios/index.html', scene.href))}">${escapeHtml(scene.title)}</a></li>`).join('')}</ul>`);
+	}
+
 	const guideLinks = [];
-	for (const [source, title] of currentDocuments) {
-		const sourcePath = path.join(root, source);
-		if (!fs.existsSync(sourcePath)) continue;
-		const href = `docs/guides/${source.replaceAll('/', '-').replace(/\.md$/, '')}.html`;
-		page(href, title, markdown(fs.readFileSync(sourcePath, 'utf8')), source);
+	for (const document of renderedDocuments) {
+		const {source, href, title, category, html, body} = document;
+		page(href, title, html, source);
 		guideLinks.push(`<li><a href="${escapeHtml(relative('docs/index.html', href))}">${escapeHtml(title)}</a></li>`);
-		search.push({ title, category: 'Guide', href, source });
+		search.push({ /* source／href 為唯一文件對照；title／category 是導覽，body 用於內容搜尋。 */ title, category, href, source, body });
 	}
 	const componentDeclarations = api.modules.flatMap((module) => module.declarations).filter((item) => ['class', 'abstractClass', 'baseClass', 'finalClass', 'interfaceClass', 'sealedClass', 'mixinClass'].includes(item.kind));
 	page('docs/components/index.html', 'Components', `<div class="eyebrow">COMPONENTS</div><h1>公開型別</h1><p class="lead">依實際 public surface 產生；詳細 constructor 與 member 請進入 API 頁。</p><ul class="api-list">${componentDeclarations.map((item) => `<li><a href="${escapeHtml(relative('docs/components/index.html', declarationRoute(item)))}"><code>${escapeHtml(item.name)}</code></a><span>${escapeHtml(item.module)} · ${item.surfaces.map((surface) => escapeHtml(surface)).join(' · ')}</span></li>`).join('')}</ul>`);
-	page('docs/index.html', 'Documentation', `<div class="eyebrow">DOCUMENTATION</div><h1>產品組合權，設計系統品質</h1><p class="lead">Kallopis 提供 semantic theme 與可重用 Flutter 元件；產品擁有 Widget tree、導航與流程。</p><div class="actions"><a class="button primary" href="${escapeHtml(relative('docs/index.html', 'docs/api/index.html'))}">瀏覽 API</a><a class="button secondary" href="${escapeHtml(relative('docs/index.html', 'docs/components/index.html'))}">公開型別</a></div><h2>Current guides</h2><ul>${guideLinks.join('')}</ul>`);
+	page('docs/index.html', 'Documentation', `<div class="eyebrow">DOCUMENTATION</div><h1>產品組合權，設計系統品質</h1><p class="lead">Kallopis 以通用視覺語意與 token 維持一致；各框架庫依規範實作，產品擁有畫面、導航與流程。</p><div class="actions"><a class="button primary" href="design-system/index.html">通用視覺規範</a><a class="button secondary" href="${escapeHtml(relative('docs/index.html', 'docs/api/index.html'))}">Flutter API</a><a class="button secondary" href="${escapeHtml(relative('docs/index.html', 'docs/components/index.html'))}">公開型別</a></div>${reactComponents ? '<p><a class="button secondary" href="react/components/index.html">React 互動元件</a></p>' : ''}${reactScenarios ? '<p><a class="button secondary" href="react/scenarios/index.html">React GUI 場景</a></p>' : ''}${flutterScenarios ? '<p><a class="button secondary" href="flutter/scenarios/index.html">Flutter GUI 場景</a></p>' : ''}<h2>Current guides</h2><ul>${guideLinks.join('')}</ul>`);
 	write('index.html', homePage({
 		apiCount: apiDeclarations.length,
 		moduleCount: api.modules.length,
 	}));
 	write('search-index.json', `${JSON.stringify(search, null, '\t')}\n`);
-	write('site-manifest.json', `${JSON.stringify({ surfaces: api.surfaces, apiModules, apiDeclarations, guides: currentDocuments.map(([source]) => source).filter((source) => fs.existsSync(path.join(root, source))) }, null, '\t')}\n`);
+	write('site-manifest.json', `${JSON.stringify({ surfaces: api.surfaces, apiModules, apiDeclarations, ...(reactComponents ? { reactComponents } : {}), ...(reactScenarios ? { reactScenarios } : {}), ...(flutterScenarios ? { flutterScenarios } : {}), guides: documents.map(({source}) => source), documents }, null, '\t')}\n`);
 	console.log(`Generated ${apiDeclarations.length} canonical API pages across ${api.modules.length} modules.`);
 }
 
-main();
+await main();

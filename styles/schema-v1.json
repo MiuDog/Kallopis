@@ -1,0 +1,42 @@
+{
+	"$schema": "https://json-schema.org/draft/2020-12/schema",
+	"title": "Kallopis Style Pack v1",
+	"description": "風格交換結構；引用及循環另由公開 validator 檢查，參數範圍於下一 slice 接入。",
+	"type": "object",
+	"required": ["schemaVersion", "id", "version", "primitives", "semantics", "recipes", "primitiveDescriptions", "semanticDescriptions"],
+	"properties": {
+		"schemaVersion": { "const": 1, "description": "交換格式版本，不是品牌版本。" },
+		"id": { "type": "string", "minLength": 1, "description": "風格身份。" },
+		"version": { "type": "string", "minLength": 1, "description": "風格值版本。" },
+		"primitives": { "type": "object", "additionalProperties": { "$ref": "#/$defs/value" }, "description": "值原料，不擁有用途。" },
+		"semantics": { "type": "object", "additionalProperties": { "$ref": "#/$defs/modes" }, "description": "用途對應四主題表達式。" },
+		"recipes": { "type": "object", "additionalProperties": { "$ref": "#/$defs/recipe" }, "description": "元件視覺配方，不包含行為程式。" },
+		"primitiveDescriptions": { "$ref": "#/$defs/descriptions", "description": "原料來源說明。" },
+		"semanticDescriptions": { "$ref": "#/$defs/descriptions", "description": "語意雙語說明及文件記號。" }
+	},
+	"$defs": {
+		"scalar": { "type": ["string", "number"] },
+		"value": { "anyOf": [{ "$ref": "#/$defs/scalar" }, { "type": "array", "items": { "$ref": "#/$defs/scalar" } }] },
+		"descriptions": { "type": "object", "additionalProperties": { "type": "string" } },
+		"modes": {
+			"type": "object",
+			"required": ["light", "dark", "ultraDark", "transparent"],
+			"additionalProperties": false,
+			"properties": {
+				"light": { "type": "string", "minLength": 1 },
+				"dark": { "type": "string", "minLength": 1 },
+				"ultraDark": { "type": "string", "minLength": 1 },
+				"transparent": { "type": "string", "minLength": 1 }
+			}
+		},
+		"recipe": {
+			"type": "object",
+			"required": ["aliases", "inherit", "parameters"],
+			"properties": {
+				"aliases": { "type": "string" },
+				"inherit": { "type": "string" },
+				"parameters": { "type": "string" }
+			}
+		}
+	}
+}

@@ -62,16 +62,16 @@ if (navigation) {
 				const query = search.value.trim().toLowerCase();
 				navigation.replaceChildren();
 				if (query) {
-					const matches = entries.filter(entry => `${entry.title} ${entry.category} ${entry.href}`.toLowerCase().includes(query));
+					const matches = entries.filter(entry => `${entry.title} ${entry.category} ${entry.href} ${entry.body || ''}`.toLowerCase().includes(query));
 					status.textContent = `${matches.length} 筆結果${matches.length > 100 ? '，先顯示 100 筆，請增加關鍵字縮小範圍' : ''}`;
 					for (const entry of matches.slice(0, 100)) appendLink(navigation, `${root}${entry.href}`, `${entry.title} · ${entry.category}`);
 					return;
 				}
 				status.textContent = '搜尋全部指南、元件、規格與 API';
-				for (const [href, label] of [['docs/index.html', '文件中心'], ['docs/guides/docs-ai-product-usage.html', '產品使用'], ['docs/guides/spec-style-v1.html', '風格 v1.0.0'], ['docs/components/index.html', '公開型別'], ['docs/api/index.html', 'API Reference']]) appendLink(navigation, `${root}${href}`, label);
+				for (const [href, label] of [['docs/index.html', '文件中心'], ['docs/design-system/index.html', '通用視覺規範'], ['docs/guides/docs-ai-product-usage.html', 'Flutter 產品使用'], ['docs/components/index.html', 'Flutter 公開型別'], ['docs/api/index.html', 'Flutter API Reference']]) appendLink(navigation, `${root}${href}`, label);
 				const groups = new Map();
 				for (const entry of entries) {
-					const category = entry.category === 'API' ? 'API' : entry.category === 'Guide' ? '指南' : entry.category === 'Spec' ? '規格與決策' : entry.category === 'Project' ? '專案' : '元件';
+					const category = ({ API: 'Flutter API', Design: '通用視覺規範', Snapshot: '匯出快照', Guide: '指南', Spec: '規格與決策', Project: '專案' })[entry.category] || '元件';
 					if (!groups.has(category)) groups.set(category, []);
 					groups.get(category).push(entry);
 				}
@@ -119,4 +119,40 @@ if (diagrams.length) {
 			}
 		})
 		.catch(() => { for (const diagram of diagrams) diagram.setAttribute('aria-label', 'Mermaid 圖表原始定義（離線備援）'); });
+}
+
+// 展示載入狀態以同源app實際標題為準，HTTP錯頁不能冒充成功。
+for (const frame of document.querySelectorAll('iframe[data-component-specimen]')) {
+	const status = frame.parentElement.querySelector('[data-specimen-state]');
+	const isFlutter = frame.dataset.specimenFramework === 'flutter';
+	const name = frame.title.replace(/ React 互動展示$/, '');
+	let finished = false;
+	function finish(state, message) {
+		if (finished) return;
+		finished = true;
+		clearInterval(poll);
+		clearTimeout(timeout);
+		status.dataset.specimenState = state;
+		status.textContent = message;
+	}
+	function inspect() {
+		try {
+			if (isFlutter) {
+				const title = frame.contentDocument?.title;
+				if (!title?.endsWith(' Flutter 互動展示')) return;
+				if (title === frame.title) finish('loaded', '展示已載入，可直接操作或獨立開啟。');
+				else finish('error', '展示載入失敗，請使用獨立開啟入口重新嘗試。');
+				return;
+			}
+			const heading = frame.contentDocument?.querySelector('h1');
+			if (!heading) return;
+			if (heading.textContent.trim() === name) finish('loaded', '展示已載入，可直接操作或獨立開啟。');
+			else finish('error', '展示載入失敗，請使用獨立開啟入口重新嘗試。');
+		} catch { finish('error', '無法讀取展示，請使用獨立開啟入口。'); }
+	}
+	const poll = setInterval(inspect, 150);
+	const timeout = setTimeout(() => finish('error', '展示尚未載入，請使用獨立開啟入口重新嘗試。'), 15000);
+	frame.addEventListener('load', inspect);
+	frame.addEventListener('error', () => finish('error', '展示載入失敗，請使用獨立開啟入口。'));
+	inspect();
 }

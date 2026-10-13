@@ -19,9 +19,9 @@ const _rootModules = <String>[
 ];
 
 const _publicSurfaces = <_SurfaceDefinition>[
-	_SurfaceDefinition('theme', 'package:kallopis/kallopis_theme.dart', 'lib/kallopis_theme.dart', 'stable'),
-	_SurfaceDefinition('foundation', 'package:kallopis/kallopis_foundation.dart', 'lib/kallopis_foundation.dart', 'stable'),
-	_SurfaceDefinition('experimental', 'package:kallopis/kallopis_experimental.dart', 'lib/kallopis_experimental.dart', 'experimental'),
+	_SurfaceDefinition('theme', 'package:kallopis/kallopis_theme.dart', 'flutter/lib/kallopis_theme.dart', 'stable'),
+	_SurfaceDefinition('foundation', 'package:kallopis/kallopis_foundation.dart', 'flutter/lib/kallopis_foundation.dart', 'stable'),
+	_SurfaceDefinition('experimental', 'package:kallopis/kallopis_experimental.dart', 'flutter/lib/kallopis_experimental.dart', 'experimental'),
 ];
 
 Future<void> main(List<String> arguments) async {
@@ -58,6 +58,9 @@ Future<void> main(List<String> arguments) async {
 			if (errors.isNotEmpty) throw StateError('Analyzer errors in ${surface.name}:\n${errors.join('\n')}');
 			libraries[surface] = result.element;
 		}
+
+		// 公開barrel以外的匯出來源也須通過診斷，才能進入可發布的清單。
+		await _validatePublicLibraries(collection, libraries.values);
 
 		// 步驟 2：全部入口成功後才原子寫入 canonical manifest。
 		final manifest = _extractManifest(libraries);
@@ -142,23 +145,34 @@ _ApiManifest _extractManifest(Map<_SurfaceDefinition, LibraryElement> libraries)
 	return _ApiManifest(_publicSurfaces, modules);
 }
 
-Map<String, Element> _exportedNames(LibraryElement root) {
-	final names = <String, Element>{...root.exportNamespace.definedNames2};
-	final pending = <LibraryElement>[...root.exportedLibraries];
-	final visited = <String>{root.uri.toString()};
+Future<void> _validatePublicLibraries(AnalysisContextCollection collection, Iterable<LibraryElement> roots) async {
+	// 公開匯出樹的每個本庫來源都先診斷；barrel本身無錯不代表被匯出的宣告有效。
+	final pending = <LibraryElement>[...roots];
+	final visited = <String>{};
 	while (pending.isNotEmpty) {
 		final library = pending.removeLast();
-		if (!visited.add(library.uri.toString())) continue;
+		final sourcePath = library.firstFragment.source.fullName;
+		if (!visited.add(sourcePath)) continue;
 
-		for (final entry in library.exportNamespace.definedNames2.entries) {
-			final existing = names[entry.key];
-			if (existing == null || existing.library?.uri == entry.value.library?.uri) {
-				names[entry.key] = entry.value;
-			}
-		}
-		pending.addAll(library.exportedLibraries);
+		final session = collection.contextFor(sourcePath).currentSession;
+		final result = await session.getResolvedLibrary(sourcePath);
+		if (result is! ResolvedLibraryResult) throw StateError('Unable to resolve public library: $sourcePath');
+
+		final errors = result.units.expand((unit) => unit.diagnostics).where((diagnostic) => diagnostic.severity == Severity.error).toList();
+		if (errors.isNotEmpty) throw StateError('Analyzer errors in $sourcePath:\n${errors.join('\n')}');
+
+		pending.addAll(library.exportedLibraries.where((exported) => exported.uri.scheme == 'package' && exported.uri.path.startsWith('kallopis/')));
 	}
-	return names;
+}
+
+// root namespace已套用整條匯出鏈的show/hide；不得再從子library追回被隱藏名稱。
+Map<String, Element> _exportedNames(LibraryElement root) => {...root.exportNamespace.definedNames2};
+
+bool _renderable(Element element) {
+	if (element is! ClassElement || element.isAbstract) return false;
+
+	// 真正Flutter identity包含間接繼承及implements；同名的產品Widget資料類別不算。
+	return element.allSupertypes.any((type) => type.element.name == 'Widget' && type.element.library.uri.toString() == 'package:flutter/src/widgets/framework.dart');
 }
 
 Element _normalize(Element element) {
@@ -173,6 +187,7 @@ _DeclarationDraft _draft(String id, String name, Element element, String surface
 		name: name,
 		baseSlug: _slug(name),
 		kind: _kind(element),
+		renderable: _renderable(element),
 		module: _moduleFor(sourceUri),
 		sourceUri: sourceUri.toString(),
 		surfaces: [surface],
@@ -330,10 +345,15 @@ final class _Module {
 }
 
 final class _DeclarationDraft {
+
+	/* id／name是公開canonical識別及名稱；baseSlug等待碰撞處理；kind供reference分類；module／sourceUri保留本庫來源。
+	 * surfaces按正式surface次序合併；signature／documentation保存原宣告及說明；typeRelationships記錄extends／mixins／implements；members保存公開成員。
+	 * renderable由analyzer擁有，具體Widget才要求專屬展示，不依kind字串猜測。 */
 	final String id;
 	final String name;
 	final String baseSlug;
 	final String kind;
+	final bool renderable;
 	final String module;
 	final String sourceUri;
 	final List<String> surfaces;
@@ -347,6 +367,7 @@ final class _DeclarationDraft {
 		required this.name,
 		required this.baseSlug,
 		required this.kind,
+		required this.renderable,
 		required this.module,
 		required this.sourceUri,
 		required this.surfaces,
@@ -376,14 +397,20 @@ final class _DeclarationDraft {
 		documentation,
 		typeRelationships,
 		members,
+		renderable,
 	);
 }
 
 final class _Declaration {
+
+	/* id／name為canonical識別及公開名稱；slug是處理碰撞後的路由；kind供reference分類；module／sourceUri保留來源責任。
+	 * primarySurface是依正式次序選出的入口；surfaces是完成去重的唯讀集合；signature／documentation保留原宣告及說明。
+	 * typeRelationships包含extends／mixins／implements，members投影公開成員；renderable保留analyzer判定供網站coverage分流。 */
 	final String id;
 	final String name;
 	final String slug;
 	final String kind;
+	final bool renderable;
 	final String module;
 	final String sourceUri;
 	final String primarySurface;
@@ -406,6 +433,7 @@ final class _Declaration {
 		this.documentation,
 		this.typeRelationships,
 		this.members,
+		this.renderable,
 	);
 
 	Map<String, Object?> toJson() => {
@@ -413,6 +441,7 @@ final class _Declaration {
 		'name': name,
 		'slug': slug,
 		'kind': kind,
+		'renderable': renderable,
 		'module': module,
 		'sourceUri': sourceUri,
 		'primarySurface': primarySurface,

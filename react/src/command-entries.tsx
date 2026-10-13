@@ -1,0 +1,278 @@
+import { useCallback, useEffect, useRef, useState, useSyncExternalStore, type CSSProperties, type KeyboardEvent } from 'react';
+import { KlpButton, KlpText } from './components.js';
+import { useKlp } from './theme.js';
+import type { KlpCommandRegistry, KlpCommandExecutionResult, KlpCommandState } from './command-registry.js';
+
+export interface KlpCommandReference {
+	/* commandId 引用registry；kind 只決定原生呈現語意，不擁有handler或狀態。 */
+	readonly commandId: string;
+	readonly kind?: 'action' | 'toggle';
+}
+
+export interface KlpRegisteredCommandToolbarProps<C = unknown> {
+	/* registry 是唯一命令權威；getContext 每次讀產品；items/label 指定入口排列與可存取名稱。 */
+	registry: KlpCommandRegistry<C>;
+	getContext: () => C;
+	items: readonly KlpCommandReference[];
+	label: string;
+	/* onResult 交產品處理業務結果；className/id/style 供原生外部宿主。 */
+	onResult: (result: KlpCommandExecutionResult) => void;
+	className?: string;
+	id?: string;
+	style?: CSSProperties;
+}
+
+export interface KlpRegisteredCommandMenuProps<C = unknown> extends KlpRegisteredCommandToolbarProps<C> {
+	/* emptyLabel 為產品空清冊文案；autoFocus 可明確取得初始焦點；onDismiss 交彈出宿主管理關閉。 */
+	emptyLabel: string;
+	autoFocus?: boolean;
+	onDismiss?: () => void;
+}
+
+interface CommandRowData {
+	/* reference 保留產品排列/role；state 為本次registry唯讀查詢。 */
+	reference: KlpCommandReference;
+	state: KlpCommandState;
+}
+
+interface CommandRowProps {
+	/* row 是registry投影；mode 指定水平/垂直呈現；active 只控制可用tabstop。 */
+	row: CommandRowData;
+	mode: 'toolbar' | 'menu';
+	active: boolean;
+	/* onActivate dispatch ID；onFocus 更新此入口roving位置，不改業務狀態。 */
+	onActivate: (id: string) => Promise<void>;
+	onFocus: (id: string) => void;
+}
+
+function requireText(value: unknown, name: string): asserts value is string {
+	if (typeof value !== 'string' || !value.trim()) throw new TypeError(`${name} must contain non-whitespace text`);
+}
+
+interface EntrySlot {
+	/* width／height 是父容器內容槽的邏輯像素；client 保留入口扣除捲軸後的原生寬度。 */
+	width: number;
+	height: number;
+	client: number;
+}
+
+function finiteLength(value: unknown): number {
+	return typeof value === 'number' && Number.isFinite(value) && value > 0 ? value : 0;
+}
+
+function useEntryGeometry(root: React.RefObject<HTMLDivElement | null>, menu: boolean): CSSProperties {
+	const theme = useKlp();
+	const [slot, setSlot] = useState<EntrySlot | null>(null);
+	function observe() {
+		const node = root.current;
+		const parent = node?.parentElement;
+		if (!node || !parent) return;
+		const container = parent;
+		const entry = node;
+		const win = node.ownerDocument.defaultView;
+		function measure() {
+			// client 不受 paint transform 影響；無布局環境保留自然語意。
+			const measured = container.clientWidth > 0 || container.clientHeight > 0 || container.getClientRects().length > 0 || container.style.width !== '' || container.style.height !== '';
+			if (!measured) { setSlot(null); return; }
+			const css = win?.getComputedStyle(container);
+			const inset = finiteLength(Number.parseFloat(css?.paddingLeft ?? '0')) + finiteLength(Number.parseFloat(css?.paddingRight ?? '0'));
+			const width = Math.max(0, finiteLength(container.clientWidth) - inset);
+			const height = Math.max(0, finiteLength(container.clientHeight) - finiteLength(Number.parseFloat(css?.paddingTop ?? '0')) - finiteLength(Number.parseFloat(css?.paddingBottom ?? '0')));
+			const client = Math.min(width, finiteLength(entry.clientWidth));
+			function update(old: EntrySlot | null): EntrySlot {
+				if (old?.width === width && old.height === height && old.client === client) return old;
+				return { width, height, client };
+			}
+			setSlot(update);
+		}
+		measure();
+		const Observer = win?.ResizeObserver;
+		const observer = Observer ? new Observer(measure) : null;
+		observer?.observe(parent);
+		observer?.observe(node);
+		win?.addEventListener('resize', measure);
+		return () => { observer?.disconnect(); win?.removeEventListener('resize', measure); };
+	}
+	useEffect(observe, [root]);
+	if (slot === null) return {};
+	function token(id: string): number { return finiteLength(theme.semantic(id)); }
+	let width = slot.width;
+	let outerX = 0, outerY = 0;
+	if (menu) {
+		width = Math.min(width, token('theme.geometry.layout.commandMenuWidth'));
+		outerX = Math.min(token('theme.spacing.tight'), Math.min(width, slot.client) / 2);
+		outerY = Math.min(token('theme.spacing.tight'), slot.height / 2);
+	}
+	const rowWidth = Math.max(0, Math.min(width, slot.client) - 2 * outerX);
+	const border = menu ? 0 : Math.min(token('theme.components.buttonBorderWidth'), rowWidth / 2);
+	const content = Math.max(0, rowWidth - 2 * border);
+	const padding = Math.min(token(menu ? 'theme.components.menuPadding' : 'theme.components.buttonPaddingX'), content / 2);
+	const remaining = Math.max(0, content - 2 * padding);
+	const icon = Math.min(token('theme.spacing.iconSmall'), remaining / 2);
+	const gap = Math.min(token(menu ? 'theme.spacing.overlayItemGap' : 'theme.spacing.controlContentGap'), remaining - icon);
+	return {
+		/* width 限制面板偏好；outer-x／outer-y 限制外距；row-width 扣外距後限制項目。 */
+		'--klp-entry-width': `${width}px`,
+		'--klp-entry-outer-x': `${outerX}px`,
+		'--klp-entry-outer-y': `${outerY}px`,
+		'--klp-entry-row-width': `${rowWidth}px`,
+		/* row-padding／border 先扣結構空間；icon／gap 只消耗剩餘文字槽，不改原pack。 */
+		'--klp-entry-row-padding': `${padding}px`,
+		'--klp-entry-border': `${border}px`,
+		'--klp-entry-icon': `${icon}px`,
+		'--klp-entry-gap': `${gap}px`,
+	} as CSSProperties;
+}
+
+function copyReferences(items: readonly KlpCommandReference[]): readonly KlpCommandReference[] {
+	if (!Array.isArray(items)) throw new TypeError('Command items must be an array');
+	const ids = new Set<string>();
+	function copy(item: KlpCommandReference): KlpCommandReference {
+		if (!item || typeof item !== 'object') throw new TypeError('Command reference must be an object');
+		requireText(item.commandId, 'commandId');
+		if (item.kind !== undefined && item.kind !== 'action' && item.kind !== 'toggle') throw new TypeError('Invalid command reference kind');
+		if (ids.has(item.commandId)) throw new TypeError(`Duplicate command reference: ${item.commandId}`);
+		ids.add(item.commandId);
+		return { commandId: item.commandId, kind: item.kind };
+	}
+	return items.map(copy);
+}
+
+function reportToHost(error: unknown): void {
+	try {
+		if (typeof globalThis.reportError === 'function') globalThis.reportError(error);
+		else console.error(error);
+	}
+	catch {
+		// 宿主通道失敗不能蓋過registry的原產品結果。
+	}
+}
+
+function useCommandEntries<C>(props: KlpRegisteredCommandToolbarProps<C>) {
+	const { registry } = props;
+	const subscribe = useCallback((listener: () => void) => { if (registry.isDisposed) return () => {}; return registry.subscribe(listener); }, [registry]);
+	const getVersion = useCallback(() => registry.version, [registry]);
+	useSyncExternalStore(subscribe, getVersion, getVersion);
+	const currentProps = useRef(props);
+	currentProps.current = props;
+	const mounted = useRef(true);
+	const generation = useRef(0);
+	const root = useRef<HTMLDivElement>(null);
+	const [selectedId, setSelectedId] = useState<string | null>(null);
+	function attachLifetime() {
+		mounted.current = true;
+		generation.current++;
+		return () => { mounted.current = false; generation.current++; };
+	}
+	useEffect(attachLifetime, [registry]);
+	const references = copyReferences(props.items);
+	const rows: CommandRowData[] = [];
+	if (!registry.isDisposed) {
+		const context = props.getContext();
+		for (const reference of references) {
+			const state = registry.getState(reference.commandId, context);
+			if (state?.visible) rows.push({ reference, state });
+		}
+	}
+	const enabled = rows.filter(row => row.state.enabled && !row.state.running);
+	let activeId: string | null = enabled[0]?.reference.commandId ?? null;
+	if (enabled.some(row => row.reference.commandId === selectedId)) activeId = selectedId;
+
+	function focus(id: string | null): void {
+		if (id === null) { root.current?.focus(); return; }
+		setSelectedId(id);
+		const buttons = root.current?.querySelectorAll<HTMLButtonElement>('button[data-klp-command-id]');
+		const button = [...(buttons ?? [])].find(item => item.dataset.klpCommandId === id);
+		button?.focus();
+	}
+
+	async function activate(id: string): Promise<void> {
+		const source = currentProps.current;
+		const owner = generation.current;
+		let result: KlpCommandExecutionResult;
+		try {
+			result = await source.registry.execute(id, source.getContext());
+		}
+		catch (error) {
+			if (mounted.current && generation.current === owner && currentProps.current.registry === source.registry) reportToHost(error);
+			return;
+		}
+		if (!mounted.current || generation.current !== owner || currentProps.current.registry !== source.registry) return;
+		try { currentProps.current.onResult(result); }
+		catch (error) { reportToHost(error); }
+	}
+
+	function keyDown(event: KeyboardEvent<HTMLDivElement>, mode: 'toolbar' | 'menu', onDismiss?: () => void): void {
+		if (event.defaultPrevented) return;
+		if (event.key === 'Escape' && mode === 'menu') { event.preventDefault(); onDismiss?.(); return; }
+		const button = (event.target as HTMLElement).closest?.('button[data-klp-command-id]') as HTMLButtonElement | null;
+		if (button?.disabled || !enabled.length) return;
+		const current = button?.dataset.klpCommandId ?? activeId;
+		let index = enabled.findIndex(row => row.reference.commandId === current);
+		if (index < 0) index = 0;
+		if (event.key === 'Enter' || event.key === ' ') {
+			event.preventDefault();
+			if (!event.repeat) void activate(enabled[index].reference.commandId);
+			return;
+		}
+		const forward = mode === 'toolbar' ? 'ArrowRight' : 'ArrowDown';
+		const back = mode === 'toolbar' ? 'ArrowLeft' : 'ArrowUp';
+		if (event.key === forward) index = (index + 1) % enabled.length;
+		else if (event.key === back) index = (index + enabled.length - 1) % enabled.length;
+		else if (event.key === 'Home') index = 0;
+		else if (event.key === 'End') index = enabled.length - 1;
+		else return;
+		event.preventDefault();
+		focus(enabled[index].reference.commandId);
+	}
+	return { root, rows, activeId, focus, activate, keyDown, setSelectedId };
+}
+
+function CommandRow({ row, mode, active, onActivate, onFocus }: CommandRowProps) {
+	const { state, reference } = row;
+	const toggle = reference.kind === 'toggle';
+	const menu = mode === 'menu';
+	let role: 'menuitem' | 'menuitemcheckbox' | undefined;
+	if (menu) role = toggle ? 'menuitemcheckbox' : 'menuitem';
+	return <KlpButton
+		role={role}
+		tone="ghost"
+		selected={!menu && toggle ? state.checked : undefined}
+		aria-checked={menu && toggle ? state.checked : undefined}
+		aria-busy={state.running || undefined}
+		disabled={!state.enabled || state.running}
+		tabIndex={active ? 0 : -1}
+		data-klp-command-id={reference.commandId}
+		className={`klp-command-row klp-command-row-${mode}`}
+		title={menu ? undefined : state.description}
+		onFocus={() => onFocus(reference.commandId)}
+		onClick={() => void onActivate(reference.commandId)}
+	>
+		{state.icon != null && <span className="klp-command-icon" aria-hidden="true">{state.icon}</span>}
+		<span className="klp-command-copy"><KlpText role="label">{state.label}</KlpText>{menu && state.description && <KlpText role="caption" tone="muted">{state.description}</KlpText>}</span>
+	</KlpButton>;
+}
+
+export function KlpRegisteredCommandToolbar<C = unknown>(props: KlpRegisteredCommandToolbarProps<C>) {
+	useKlp();
+	requireText(props.label, 'label');
+	const host = useCommandEntries(props);
+	const geometry = useEntryGeometry(host.root, false);
+	return <div ref={host.root} id={props.id} role="toolbar" aria-label={props.label} className={`klp-command-toolbar ${props.className ?? ''}`} style={{ ...props.style, ...geometry }} onKeyDown={event => host.keyDown(event, 'toolbar')}>
+		{host.rows.map(row => <CommandRow key={row.reference.commandId} row={row} mode="toolbar" active={host.activeId === row.reference.commandId} onActivate={host.activate} onFocus={host.setSelectedId} />)}
+	</div>;
+}
+
+export function KlpRegisteredCommandMenu<C = unknown>(props: KlpRegisteredCommandMenuProps<C>) {
+	const theme = useKlp();
+	requireText(props.label, 'label');
+	requireText(props.emptyLabel, 'emptyLabel');
+	const host = useCommandEntries(props);
+	const geometry = useEntryGeometry(host.root, true);
+	function autofocus() { if (props.autoFocus) host.focus(host.activeId); }
+	useEffect(autofocus, [props.autoFocus, props.registry]);
+	return <div ref={host.root} id={props.id} role="menu" tabIndex={-1} aria-label={props.label} data-klp-separation={String(theme.semantic('theme.surface.separation'))} className={`klp-command-menu ${props.className ?? ''}`} style={{ ...props.style, ...geometry }} onKeyDown={event => host.keyDown(event, 'menu', props.onDismiss)}>
+		{host.rows.map(row => <CommandRow key={row.reference.commandId} row={row} mode="menu" active={host.activeId === row.reference.commandId} onActivate={host.activate} onFocus={host.setSelectedId} />)}
+		{!host.rows.length && <KlpText role="caption" tone="muted">{props.emptyLabel}</KlpText>}
+	</div>;
+}

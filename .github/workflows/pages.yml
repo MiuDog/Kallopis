@@ -35,8 +35,27 @@ jobs:
       - run: npm ci --prefix tool/reference_site
       - run: npm test --prefix tool/reference_site
       - run: mkdir -p build && cp tool/reference_site/reference-api.json build/reference-api.json
-      - run: node tool/reference_site/generate.mjs
-      - run: node tool/reference_site/verify.mjs
+      - run: npm ci --prefix react
+      - run: npm run build --prefix react
+      - run: npm run build:example --prefix react
+      - run: node react/scripts/reference-components.mjs
+      - run: node --test tool/reference_site/test/react_specimens.test.mjs
+      - run: node --test tool/reference_site/test/react_scenarios.test.mjs
+      - uses: subosito/flutter-action@v2
+        with:
+          channel: stable
+          flutter-version: 3.44.4
+      - run: flutter pub get
+        working-directory: flutter/example
+      - run: flutter analyze lib/gui_scenarios.dart lib/gui_scenario_metadata.dart
+        working-directory: flutter/example
+      - run: flutter test test/gui_scenario_metadata_test.dart
+        working-directory: flutter/example
+      - run: flutter build web --release --no-tree-shake-icons --base-href /Kallopis/examples/flutter/
+        working-directory: flutter/example
+      - run: node --test tool/reference_site/test/flutter_scenarios.test.mjs
+      - run: node tool/reference_site/generate.mjs --react --react-scenes --flutter-scenes
+      - run: node tool/reference_site/verify.mjs --react --react-scenes --flutter-scenes
 
       - uses: actions/upload-pages-artifact@v3
         with:
