@@ -18,7 +18,7 @@
 3. 在預覽調整需要的細節，複製啟動片段；它匯入起始範例並套用目前有效設定。
 4. 替換側欄功能清單、Header 與 Stage，將選取與資料回呼接回作品。
 
-[Flutter 起始範例](https://github.com/MiuDog/Kallopis/blob/main/flutter/example/lib/modern_productivity_starter.dart) 使用 `package:kallopis/kallopis_foundation.dart`；Flutter dependency 的 package root 為 repository 的 `flutter/`，可用本機 path 或指定 Git commit 的 subdirectory。主題交給 `MaterialApp`，宿主提供有限寬高。
+[Flutter 起始範例](https://github.com/MiuDog/Kallopis/blob/main/flutter/example/lib/modern_productivity_starter.dart) 使用 `package:kallopis/kallopis_foundation.dart`；Flutter dependency 的 package root 為 repository 的 `flutter/`，可用本機 path 或指定 Git commit 的 subdirectory。主題交給 `MaterialApp`，宿主提供有限寬高。Flutter Header 會量測自然高度；使用 LayoutBuilder／WebView 等不支援 intrinsic 的內容時，以 `SizedBox` 提供明確高度（可取公開 theme 的 chromeHeader），再放入 header。
 
 [React 起始範例](https://github.com/MiuDog/Kallopis/blob/main/react/example/modern-productivity-starter.tsx) 使用 `@kallopis/react`。從 repository 的 `react/` 執行 `npm ci`、`npm run build`、`npm pack`，在 consumer 安裝產生的 tarball；同時匯入 `@kallopis/react/styles.css`。主題由 `KlpThemeProvider` 提供，宿主須有確定的寬高。
 

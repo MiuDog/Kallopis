@@ -105,3 +105,5 @@ flowchart TD
 	Docs[模板文件] --> Source[同份 starter 來源]
 	Docs --> Preview[雙框架 template route]
 ```
+
+Flutter 平台限制：Header 以 intrinsic 取得自然高度；不支援 intrinsic 的原生內容需由 consumer 包覆明確高度，取現行 chromeHeader 或產品明確分配的高度。這項差異由 consumer 文件明示，不進行完整 Widget tree 驗證。React 沿 DOM 的自然尺寸量測。
