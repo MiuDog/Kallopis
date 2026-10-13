@@ -84,7 +84,7 @@ class _ModernProductivityPreviewState extends State<ModernProductivityPreview> {
 			SizedBox(height: bounds.maxHeight * .35, child: SingleChildScrollView(child: Padding(padding: EdgeInsets.all(space.contentInset), child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
 				const KlpText('現代風生產力佈局 · 即時調整'),
 				Wrap(spacing: space.actionGap, runSpacing: space.actionGap, children: [for (final mode in KlpThemeVariant.values) KlpButton(label: mode.name, selected: mode == _mode, onPressed: () => setState(() => _mode = mode)), KlpButton(label: '還原設定', onPressed: _reset), KlpButton(label: '複製設定', onPressed: _copy)]),
-				SizedBox(width: 240, child: KlpTextField(controller: _widthInput, onChanged: _setWidth, label: '側欄寬度（空白使用預設）')),
+				SizedBox(width: 240, child: MergeSemantics(child: KlpTextField(controller: _widthInput, onChanged: _setWidth, label: '側欄寬度（空白使用預設）'))),
 				Wrap(spacing: space.actionGap, runSpacing: space.actionGap, children: [for (final entry in _fields.entries) SizedBox(width: 240, child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
 					KlpText(entry.value),
 					DropdownButton<String>(
