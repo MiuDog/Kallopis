@@ -1,8 +1,8 @@
 # Flutter 公開 consumer 範例
 
-## MODERN-PRODUCTIVITY-OWNED-FONTS-1（READY）
+## MODERN-PRODUCTIVITY-OWNED-FONTS-1（IMPLEMENTED）
 
-公開頁面的 resource inventory 觀察到 Roboto／NotoSymbols2 請求及 Unicode 箭頭缺字警告；修復限定新模板 consumer 的兩檔：lib/modern_productivity_starter.dart、lib/modern_productivity_preview.dart。用公開 KlpTextField／KlpText／KlpIcon(KlpIcons.chevronDown) 取代原生文字與 Unicode 箭頭；SelectableText 的 code style 由公開 KlpTextStyles／context.klp.type 解析，不新建 Theme 或複製字型名稱。core、fonts 資產、pubspec、既有 tests、其他展示皆唯讀。獨立 Test Author 可新增 test/modern_productivity_font_test.dart、test/modern_productivity_draft_test.dart，以 consumer 的有效 RichText／EditableText 字型 metadata 保護 package ownership；不把 engine 的預載 font request 當成實際字元 fallback。驗收 scoped analyze、原 example checks、release build 與 fresh browser 的 font inventory／六控制／草稿／設定輸出；若剩餘 fallback 來自庫或 engine，回 PLAN 只報已觀察邊界，不修改 vendor。M1 代碼／build，M2 fresh browser；cold 2k–4k／15–30 分鐘，6k／45 分鐘回 PLAN。
+公開頁面的 resource inventory 觀察到 Roboto／NotoSymbols2 請求及 Unicode 箭頭缺字警告；修復限定新模板 consumer 的兩檔：lib/modern_productivity_starter.dart、lib/modern_productivity_preview.dart。用公開 KlpText／KlpIcon(KlpIcons.chevronDown) 取代下拉文字與 Unicode 箭頭，原生輸入明示公開 semantic typography；SelectableText 的 code style 由公開 KlpTextStyles／context.klp.type 解析，不新建 Theme 或複製字型名稱。core、fonts 資產、pubspec、既有 tests、其他展示皆唯讀。獨立 Test Author 可新增 test/modern_productivity_font_test.dart、test/modern_productivity_draft_test.dart，以 consumer 的有效 RichText／EditableText 字型 metadata 保護 package ownership；不把 engine 的預載 font request 當成實際字元 fallback。驗收 scoped analyze、原 example checks、release build 與 fresh browser 的 font inventory／六控制／草稿／設定輸出；若剩餘 fallback 來自庫或 engine，回 PLAN 只報已觀察邊界，不修改 vendor。M1 代碼／build，M2 fresh browser；cold 2k–4k／15–30 分鐘，6k／45 分鐘回 PLAN。
 
 ## MODERN-PRODUCTIVITY-CATALOG-1（IMPLEMENTED）
 
@@ -852,6 +852,8 @@ flowchart TD
 
 證據：public analyze、release Web build、原 Catalog10項及 core5項檢查通過；真實 browser 六控制、四 mode、A→B→A 草稿、還原、複製與作用面板 Tab 巡訪已觀察。此模板另行驗證，不將舊176／273交接清冊冒稱全量已完成。感官 human-pending。
 
-### 字型修正的輸入回退（READY）
+### 字型修正的輸入接線（IMPLEMENTED）
 
-合併語意的 KlpTextField 在 Web 原生輸入後切換面板，輸入值未保留。consumer 保留原生 TextField 的既有語意與接線，文字和 labelStyle 均由公開 KlpTextStyles.definitionOf(body／label, context.klp.type).toTextStyle(context.klp.type) 取得。修復仍限上述兩個 source；不改庫。獨立草稿測試保護兩個 controller 及 mode rebuild，實際 browser 鍵盤切換另驗證。
+Web 語意 input 的未聚焦 value 為空不足以判定草稿消失；重新聚焦後原生鍵入草稿仍在，獨立測試也保留 controller 身分。consumer 保留原生 TextField 的既有語意與接線，文字和 labelStyle 均由公開 KlpTextStyles.definitionOf(body／label, context.klp.type).toTextStyle(context.klp.type) 取得。修復仍限上述兩個 source；不改庫。獨立草稿測試保護兩個 controller 及 mode rebuild，實際 browser 鍵盤切換另驗證。
+
+完成證據：example 既有54項通過；獨立字型及草稿2項通過，四檔 fatal-infos analyze 無問題，release web49.3秒。fresh browser 輸入名稱、A→B→A 後重新聚焦草稿已觀察且 warning/error 空。有效字型為 packages/kallopis 的 Noto Sans TC、IBM Plex Mono、Flaticon；engine 仍觀察 Roboto 請求，不將請求本身當成渲染 fallback。
