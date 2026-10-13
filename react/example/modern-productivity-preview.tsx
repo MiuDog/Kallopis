@@ -21,7 +21,7 @@ export function ModernProductivityPreview({ id }: { id: string }) {
 	const [widthText, setWidthText] = useState('');
 	const [sidebarWidth, setSidebarWidth] = useState<number>();
 	const [feedback, setFeedback] = useState('');
-	const primitives = Object.entries(base.primitives).filter((entry): entry is [string, number] => typeof entry[1] === 'number' && Number.isFinite(entry[1]) && entry[1] >= 0).sort((a, b) => a[1] - b[1]);
+	const primitives = Object.entries(base.primitives).filter((entry): entry is [string, number] => /^(space|radius|length-|font)/.test(entry[0]) && typeof entry[1] === 'number' && Number.isFinite(entry[1]) && entry[1] >= 0).sort((a, b) => a[1] - b[1]);
 	function changeWidth(value: string) {
 		setWidthText(value);
 		const width = Number(value);
@@ -48,10 +48,10 @@ export function ModernProductivityPreview({ id }: { id: string }) {
 	}
 	if (id !== 'modern-productivity-layout') return <KlpThemeProvider><KlpText>未知或歧義的模板路由。</KlpText></KlpThemeProvider>;
 	return <KlpThemeProvider mode={mode} stylePack={pack} style={{ height: '100dvh', display: 'flex', flexDirection: 'column' }}>
-		<section aria-label="模板設定" style={{ flex: '0 0 35%', minHeight: 0, overflow: 'auto', padding: 'var(--klp-theme-spacing-content-inset)', boxSizing: 'border-box' }}>
+		<section aria-label="模板設定" style={{ flex: '0 0 35%', minHeight: 0, overflow: 'auto', padding: 'var(--klp-spacing-contentInset)', boxSizing: 'border-box' }}>
 			<KlpText as="h1" role="h3">現代風生產力佈局 · 即時調整</KlpText>
-			<div style={{ display: 'flex', flexWrap: 'wrap', gap: 'var(--klp-theme-spacing-action-gap)' }}>{modes.map(value => <KlpButton key={value} selected={mode === value} onClick={() => setMode(value)}>{value}</KlpButton>)}<KlpButton onClick={reset}>還原設定</KlpButton><KlpButton onClick={copy}>複製設定</KlpButton></div>
-			<div style={{ display: 'flex', flexWrap: 'wrap', gap: 'var(--klp-theme-spacing-action-gap)' }}>
+			<div style={{ display: 'flex', flexWrap: 'wrap', gap: 'var(--klp-spacing-actionGap)' }}>{modes.map(value => <KlpButton key={value} selected={mode === value} onClick={() => setMode(value)}>{value}</KlpButton>)}<KlpButton onClick={reset}>還原設定</KlpButton><KlpButton onClick={copy}>複製設定</KlpButton></div>
+			<div style={{ display: 'flex', flexWrap: 'wrap', gap: 'var(--klp-spacing-actionGap)' }}>
 				<KlpTextField label="側欄寬度（空白使用預設）" type="number" value={widthText} onChange={event => changeWidth(event.target.value)} />
 				{fields.map(([key, label]) => <label key={key}>{label}<select aria-label={label} value={String(overrides.semantics?.[key]?.[mode] ?? '')} onChange={event => changeSemantic(key, event.target.value)}><option value="">預設</option>{primitives.map(([name, value]) => <option key={name} value={`p(${name})`}>{value} · {name}</option>)}</select></label>)}
 			</div>
