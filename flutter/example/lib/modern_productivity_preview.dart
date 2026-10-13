@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter/semantics.dart';
 import 'package:kallopis/kallopis_foundation.dart';
 import 'modern_productivity_starter.dart';
 
@@ -23,6 +24,10 @@ class _ModernProductivityPreviewState extends State<ModernProductivityPreview> {
 	double? _width;
 	final _widthInput = TextEditingController();
 	String _feedback = '';
+	/* _semantics：預覽宿主明確提供可存取樹，持有期間啟用，離開即釋放。 */
+	SemanticsHandle? _semantics;
+	@override
+	void initState() { super.initState(); _semantics = SemanticsBinding.instance.ensureSemantics(); }
 	/* _fields：可調語意與介面名稱，數值仍從正式 pack 取得。 */
 	static const _fields = {
 		'theme.spacing.chromeHeader': 'Header 最小高度',
@@ -32,7 +37,7 @@ class _ModernProductivityPreviewState extends State<ModernProductivityPreview> {
 		'theme.geometry.control.buttonHeight': '切換按鈕高度',
 	};
 	@override
-	void dispose() { _widthInput.dispose(); super.dispose(); }
+	void dispose() { _semantics?.dispose(); _widthInput.dispose(); super.dispose(); }
 	void _setWidth(String value) {
 		final width = double.tryParse(value);
 		if (value.isNotEmpty && (width == null || !width.isFinite || width <= 0)) { setState(() => _feedback = '側欄寬度必須是有限正數；保留上一份設定。'); return; }
@@ -73,7 +78,7 @@ class _ModernProductivityPreviewState extends State<ModernProductivityPreview> {
 	);
 	Widget _content(BuildContext context) {
 		if (widget.id != 'modern-productivity-layout') return const Center(child: KlpText('未知或歧義的模板路由。'));
-		final primitives = (_base.data['primitives'] as Map).entries.where((entry) => entry.value is num && (entry.value as num).isFinite && (entry.value as num) >= 0).toList()..sort((a, b) => (a.value as num).compareTo(b.value as num));
+		final primitives = (_base.data['primitives'] as Map).entries.where((entry) => RegExp(r'^(space|radius|length-|font)').hasMatch(entry.key as String) && entry.value is num && (entry.value as num).isFinite && (entry.value as num) >= 0).toList()..sort((a, b) => (a.value as num).compareTo(b.value as num));
 		final semantics = (_overrides['semantics'] as Map<String, Object?>?) ?? {};
 		final space = context.klp.space;
 		return SafeArea(child: LayoutBuilder(builder: (context, bounds) => Column(children: [
@@ -85,6 +90,7 @@ class _ModernProductivityPreviewState extends State<ModernProductivityPreview> {
 					KlpText(entry.value),
 					DropdownButton<String>(
 						isExpanded: true,
+						icon: const KlpText('▾'),
 						value: (semantics[entry.key] as Map<String, Object?>?)?[_mode.name] as String? ?? '',
 						items: [const DropdownMenuItem(value: '', child: Text('預設')), for (final primitive in primitives) DropdownMenuItem(value: 'p(${primitive.key})', child: Text('${primitive.value} · ${primitive.key}'))],
 						onChanged: (value) => _setSemantic(entry.key, value),
