@@ -47,7 +47,9 @@ void main() {
 			await _pump(tester, _layout(), width: size.width, height: size.height);
 			for (final finder in [_sidebar(tester), find.byKey(const ValueKey('header')), find.byKey(const ValueKey('stage'))]) {
 				final rect = tester.getRect(finder);
-				for (final value in [rect.left, rect.top, rect.width, rect.height]) expect(value.isFinite, isTrue);
+				for (final value in [rect.left, rect.top, rect.width, rect.height]) {
+					expect(value.isFinite, isTrue);
+				}
 				expect(rect.width, greaterThanOrEqualTo(0));
 				expect(rect.height, greaterThanOrEqualTo(0));
 				expect(rect.right, lessThanOrEqualTo(size.width + 1e-6));
