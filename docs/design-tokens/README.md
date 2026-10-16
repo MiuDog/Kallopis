@@ -1,4 +1,4 @@
-> **正式通用視覺規範從 [KALLOPIS-DESIGN-MAP.md](KALLOPIS-DESIGN-MAP.md) 進入**。使用者於 2026-10-11 指定直接採用既有統整內容，現已按責任分檔，依 [維護規則](maintenance.md) 修訂。本頁的 theme 欄位表與 JSON／CSS／ZIP 保留為 2026-10-05 匯出快照，不作第二份可獨立修訂的正式規範；網頁整合尚待網站 module 落實。
+> **正式通用視覺規範從 [KALLOPIS-DESIGN-MAP.md](KALLOPIS-DESIGN-MAP.md) 進入**。使用者於 2026-10-11 指定直接採用既有統整內容，現已按責任分檔，依 [維護規則](maintenance.md) 修訂。本頁的 theme 欄位表記錄 2026-10-05 匯出快照，不作第二份可獨立修訂的正式規範。舊 JSON／CSS／ZIP 僅保留於本機並由 `.gitignore` 排除；repository 與文件網站直接採用正式 Markdown 章節。
 
 # Kallopis 設計語意與完整 Design Token 清單
 
@@ -6,7 +6,7 @@
 
 本清單記錄目前工作樹（含既有未提交修改）。公開來源為 `lib/kallopis_theme.dart` 與 `lib/kallopis_foundation.dart`；名稱含 legacy 的實作目錄仍承載現行公開 ThemeExtension，不能只憑目錄名判定為淘汰。現行薄 design system 邊界依 KLP-0022，不使用已移除的 declarative runtime。
 
-## 搬移檔案
+## 舊匯出檔案（僅本機）
 
 - `kallopis-light.json`：完整淺色預設主題。
 - `kallopis-dark.json`：完整深色預設主題。

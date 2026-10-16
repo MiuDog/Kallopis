@@ -1,6 +1,0 @@
-{
-	"editor.tabSize": 2,
-	"editor.insertSpaces": false,
-	"editor.detectIndentation": false,
-	"cmake.sourceDirectory": "${workspaceFolder}/flutter/example/windows"
-}

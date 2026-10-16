@@ -44,3 +44,22 @@ example/build/
 
 # 本機工作樹清理備份，不納入套件版本。
 /.clean-kallopis-workbench/
+
+# 本機 AI 工作流程與編輯器設定，保留本機副本。
+/.agents/
+/.claude/
+/.codex/
+/.gemini/
+/.vscode/
+/.agentic-workflow.lock.json
+/.mcp.json
+/AGENTS.md
+/CLAUDE.md
+/GEMINI.md
+
+# 人工驗證截圖與已被正式規範取代的匯出快照。
+/docs/verification/
+/docs/design-tokens/kallopis-*.json
+/docs/design-tokens/kallopis.css
+/docs/design-tokens/kallopis-design-tokens.zip
+/docs/context-cleanup.md
