@@ -28,7 +28,7 @@ jobs:
           node-version: 24
 
       - uses: actions/configure-pages@v5
-        if: github.event_name != 'pull_request'
+        if: github.event_name != 'pull_request' && vars.KALLOPIS_PAGES_DEPLOY == 'true'
         with:
           enablement: true
 
@@ -62,7 +62,7 @@ jobs:
           path: build/reference-site
 
   deploy:
-    if: github.event_name != 'pull_request'
+    if: github.event_name != 'pull_request' && vars.KALLOPIS_PAGES_DEPLOY == 'true'
     needs: build
     runs-on: ubuntu-latest
     environment:

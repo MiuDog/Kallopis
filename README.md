@@ -4,9 +4,11 @@
 
 Kallopis 定義團隊共用的視覺語意、design token、元件狀態與組合規則，讓不同產品與平台維持一致的設計語言。消費端先閱讀風格指南，再依產品需求選用對應平台的套件與實作；畫面結構、導航、業務流程與資料仍由產品專案擁有。
 
-**[閱讀 GitHub Pages 指南](https://technis-toolbox.github.io/Kallopis/)** · [正式風格規範](docs/design-tokens/KALLOPIS-DESIGN-MAP.md) · [Technis](https://github.com/technis-toolbox)
+**[閱讀 Markdown 風格指南](docs/design-tokens/KALLOPIS-DESIGN-MAP.md)** · [平台導入](#在產品中導入) · [Technis](https://github.com/technis-toolbox)
 
-網站內容將另行整理；目前仍包含既有框架 API 與展示頁面。網址已改為 Technis 組織位置。組織目前使用 GitHub Free，私有 repository 的 Pages 需要支援私有庫 Pages 的方案才能提供服務；網站尚未恢復上線時，請由下列 repository 文件閱讀指南。
+指南直接以 repository 內的 Markdown 維護，可在 GitHub 或本機 Markdown 預覽器閱讀。圖片與文件一同版本控制，使用相對路徑嵌入。
+
+現有網站、框架展示與產生工具繼續保留；[GitHub Pages 網址](https://technis-toolbox.github.io/Kallopis/) 保留供日後恢復發布，目前不作為閱讀入口。本機網站操作見 [網站工具](tool/reference_site/README.md)。
 
 ## 從指南開始
 
@@ -38,6 +40,8 @@ Flutter／React 消費端套件與現有實作繼續保留；本機依賴請指�
 ## 維護團隊共識
 
 [維護與修訂規則](docs/design-tokens/maintenance.md) 定義正式來源與修訂方式。風格正文以 `docs/design-tokens/` 的正式章節為準；JSON、CSS、ZIP 等舊匯出快照不構成另一份設計權威。
+
+新增示意圖時，將 PNG、WebP 或 SVG 放在所屬文件旁的 `images/` 目錄，在 Markdown 使用 `![圖片說明](images/檔名.png)`。圖片補充狀態與組合示例，語意、數值與限制仍以可搜尋的正文為準。圖片引用相對於所在 Markdown 檔案，方便 GitHub 與本機共用。
 
 共用規範只收納產品無關的視覺與互動契約；產品功能、業務順序與專用畫面由消費端維護。Krepis 等其他工具的正文與保存責任不因風格導入而轉移。
 

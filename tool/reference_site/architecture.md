@@ -1,5 +1,13 @@
 # Kallopis Reference Site
 
+## 網站與來源位置
+
+GitHub Pages 的正式網址為 `https://technis-toolbox.github.io/Kallopis/`，repository 為 `https://github.com/technis-toolbox/Kallopis`。`layout.mjs` 的 GitHub／Markdown 原文連結與 `markdown.mjs` 的來源連結使用此組織位置；schema `$id` 同步採用新 Pages 網址。repository 名稱未變，因此部署 base path 仍為 `/Kallopis/`。2026-10-16 只修正網址，保留既有網站正文、框架展示與消費端套件；README 改以指南閱讀與平台導入為主。
+
+指南目前以 Markdown 為主要閱讀與維護入口；圖片使用 repository 相對路徑，與正文一起版本控制。既有網站原始碼、展示與本機產生能力保留。
+
+組織目前為 Free 且 repository 為 private；線上 Pages 發布預設暫停。`pages.yml` 只有在非 pull request 且 repository Actions variable `KALLOPIS_PAGES_DEPLOY=true` 時才設定與部署 Pages，既有建置及驗證繼續執行。設定中的網址不代表網站已可存取；恢復發布前須確認託管資格，此維護不變更可見性或付費方案。
+
 ## MODERN-PRODUCTIVITY-TEMPLATE-SITE-1（IMPLEMENTED）
 
 依現代風生產力佈局 r2 契約，BUILD 只寫 documents.mjs，新增 docs/templates/modern-productivity-layout.md 的 template guide 登錄。來源包含已驗證的 starter 來源與兩框架 template route；沿用既有 examples/react 與 examples/flutter bundle，不新增 renderer／iframe registry／設定 store。Docs 正文、元件、examples、tests、manifest、generator／verifier、workflow 與 architecture 唯讀。驗收原 Node tests、完整 generate／verify、搜尋／連結與公開 template route。M1 唯一里程碑，估 1k–3k／10–20 分鐘，4k／30 分鐘或缺既有路由能力回 PLAN。不得在 consumer preview 未完成時登錄成已交付。

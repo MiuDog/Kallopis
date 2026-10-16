@@ -1,5 +1,9 @@
 # 發布與驗證工作流程
 
+## Markdown 優先與可選 Pages 發布
+
+指南以 Markdown 閱讀與維護；保留現有網站原始碼、建置與驗證。`pages.yml` 的 configure-pages 與 deploy 只在非 pull request 且 repository Actions variable `KALLOPIS_PAGES_DEPLOY` 為字串 `true` 時執行。未設定或其他值代表暫停線上發布，不跳過建置、測試、文件驗證或 artifact 上傳。日後恢復 Pages 時先確認託管資格，再設定該變數。
+
 工作流程由repository整合owner維護，SDK／套件CI、example checks、Docs Pages artifact與deploy各有既有job，不以新增docs展示放寬既有閘門。YAML依語法使用空格，不以tab破壞設定。
 
 ## CI-REFERENCE-EXTRACT-1（COMPLETE）
