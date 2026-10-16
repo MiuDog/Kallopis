@@ -92,7 +92,7 @@ Flutter PLAN1bffc472／BUILD39d263e0（owner744c9533），2examplepaths scope、
 
 ## Git／BUILD與檢查規則
 
-隔離checkout C:/Users/ASUS_TUF/.codex/worktrees/workbench-v1/Kallopis為managedattached detached。Main D:/Projects/Kallopis branch codex/productivity-reference-ecosystem有先前搬移及其他未提交變更，index必須保留。保存基線3b5dda7be00d1be4760c6cc8c4ad38a3e7ed31de不是reviewed release。origin https://github.com/MiuDog/Kallopis.git；尚未push。
+隔離checkout C:/Users/ASUS_TUF/.codex/worktrees/workbench-v1/Kallopis為managedattached detached。Main D:/Projects/Kallopis branch codex/productivity-reference-ecosystem有先前搬移及其他未提交變更，index必須保留。保存基線3b5dda7be00d1be4760c6cc8c4ad38a3e7ed31de不是reviewed release。origin https://github.com/technis-toolbox/Kallopis.git；尚未push。
 
 同步只用main ignored build/guarded-workbench-sync.mjs，先驗證main各path等checkpoint baseline或new，CRLF正規化/reference-api JSON值比較，然後copy；cached binarydiff前後一致，不blindstage/reset。checkpoint build/workbench-last-sync.json。每個BUILD packet在main build/task-packets/，cleanisolated base、exactallowedwrite；architecture/tests/config預設readonly，跨module先PLAN。必要新風險tests只fresh隔離Test Author；BUILD可讀執行不可弱化。所有code縮排tabs顯示2、繁中註解。歷史scope只在該BUILD closingcommit，不在owner後重跑。
 

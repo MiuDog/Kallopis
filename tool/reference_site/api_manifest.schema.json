@@ -1,6 +1,6 @@
 {
 	"$schema": "https://json-schema.org/draft/2020-12/schema",
-	"$id": "https://miudog.github.io/Kallopis/schema/reference-api-v1.json",
+	"$id": "https://technis-toolbox.github.io/Kallopis/schema/reference-api-v1.json",
 	"title": "Kallopis Thin Design System API manifest",
 	"type": "object",
 	"additionalProperties": false,

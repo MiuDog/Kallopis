@@ -13,7 +13,7 @@ function header(prefix, home) {
 }
 
 function footer(prefix) {
-	return `<footer class="footer"><a class="brand" href="${prefix}index.html">Kallopis</a><span>-ist family · design system</span><a href="https://github.com/MiuDog/Kallopis">GitHub ↗</a><span>Style 1.0.0</span></footer>`;
+	return `<footer class="footer"><a class="brand" href="${prefix}index.html">Kallopis</a><span>-ist family · design system</span><a href="https://github.com/technis-toolbox/Kallopis">GitHub ↗</a><span>Style 1.0.0</span></footer>`;
 }
 
 function scripts(prefix) {
@@ -23,7 +23,7 @@ function scripts(prefix) {
 export function shell({title, content, active = '', sourcePath = ''}) {
 	const prefix = '../'.repeat(active.split('/').filter(Boolean).length);
 	const source = sourcePath
-		? `<a class="source-link" href="https://github.com/MiuDog/Kallopis/blob/main/${escapeHtml(sourcePath)}">查看 Markdown 原文 ↗</a>`
+		? `<a class="source-link" href="https://github.com/technis-toolbox/Kallopis/blob/main/${escapeHtml(sourcePath)}">查看 Markdown 原文 ↗</a>`
 		: '';
 	return `${head(title, prefix)}<body data-root="${prefix}" data-page="docs">${header(prefix, false)}<div class="docs-workspace"><aside class="navigator"><details class="doc-navigation" open><summary>文件導覽</summary><div class="nav-content"><label class="search-label" for="search">搜尋文件</label><input id="search" type="search" placeholder="token、配方、元件、API…" autocomplete="off"><p id="search-status" role="status" aria-live="polite"></p><nav id="navigation" aria-label="文件目錄"><a href="${prefix}docs/index.html">文件中心</a><a href="${prefix}docs/design-system/index.html">通用視覺規範</a><a href="${prefix}docs/components/index.html">Flutter 公開型別</a><a href="${prefix}docs/api/index.html">API</a></nav></div></details></aside><main id="main-content" class="document-frame"><div class="document-bar"><a href="${prefix}docs/index.html">文件</a><span aria-hidden="true">/</span><span>${escapeHtml(title)}</span>${source}</div><article class="prose">${content}</article><div class="document-end"><span>由目前公開 API 與文件來源產生</span><a href="#main-content">回到頁首 ↑</a></div></main><aside class="toc"><span class="eyebrow">本頁內容</span><nav id="page-toc" aria-label="本頁段落"></nav></aside></div>${footer(prefix)}${scripts(prefix)}`;
 }

@@ -19,7 +19,7 @@ function linkTarget(target, context) {
 	if (source.startsWith('../') || source.startsWith('/')) return null;
 	const route = context.routes.get(source);
 	if (route) return `${path.posix.relative(path.posix.dirname(context.href), route)}${fragment}`;
-	return `https://github.com/MiuDog/Kallopis/blob/main/${source.split('/').map(encodeURIComponent).join('/')}${fragment}`;
+	return `https://github.com/technis-toolbox/Kallopis/blob/main/${source.split('/').map(encodeURIComponent).join('/')}${fragment}`;
 }
 
 function inline(value, context) {

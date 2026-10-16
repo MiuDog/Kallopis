@@ -6,8 +6,8 @@
 
 ## 開啟預覽
 
-- [React 即時調整](https://miudog.github.io/Kallopis/examples/react/index.html?template=modern-productivity-layout)
-- [Flutter 即時調整](https://miudog.github.io/Kallopis/examples/flutter/index.html?template=modern-productivity-layout)
+- [React 即時調整](https://technis-toolbox.github.io/Kallopis/examples/react/index.html?template=modern-productivity-layout)
+- [Flutter 即時調整](https://technis-toolbox.github.io/Kallopis/examples/flutter/index.html?template=modern-productivity-layout)
 
 預覽使用套件的真實公開元件。上方控制區用來調整設定，下方才是可套用的模板；控制區不屬於產品布局。可切換 light／dark／ultraDark／transparent，調整細節、檢查功能及草稿，再按「複製設定」取得完整啟動片段。還原設定只還原樣式，保持目前選取與兩份草稿。
 
@@ -18,9 +18,9 @@
 3. 在預覽調整需要的細節，複製啟動片段；它匯入起始範例並套用目前有效設定。
 4. 替換側欄功能清單、Header 與 Stage，將選取與資料回呼接回作品。
 
-[Flutter 起始範例](https://github.com/MiuDog/Kallopis/blob/main/flutter/example/lib/modern_productivity_starter.dart) 使用 `package:kallopis/kallopis_foundation.dart`；Flutter dependency 的 package root 為 repository 的 `flutter/`，可用本機 path 或指定 Git commit 的 subdirectory。主題交給 `MaterialApp`，宿主提供有限寬高。Flutter Header 會量測自然高度；使用 LayoutBuilder／WebView 等不支援 intrinsic 的內容時，以 `SizedBox` 提供明確高度（可取公開 theme 的 chromeHeader），再放入 header。
+[Flutter 起始範例](https://github.com/technis-toolbox/Kallopis/blob/main/flutter/example/lib/modern_productivity_starter.dart) 使用 `package:kallopis/kallopis_foundation.dart`；Flutter dependency 的 package root 為 repository 的 `flutter/`，可用本機 path 或指定 Git commit 的 subdirectory。主題交給 `MaterialApp`，宿主提供有限寬高。Flutter Header 會量測自然高度；使用 LayoutBuilder／WebView 等不支援 intrinsic 的內容時，以 `SizedBox` 提供明確高度（可取公開 theme 的 chromeHeader），再放入 header。
 
-[React 起始範例](https://github.com/MiuDog/Kallopis/blob/main/react/example/modern-productivity-starter.tsx) 使用 `@kallopis/react`。從 repository 的 `react/` 執行 `npm ci`、`npm run build`、`npm pack`，在 consumer 安裝產生的 tarball；同時匯入 `@kallopis/react/styles.css`。主題由 `KlpThemeProvider` 提供，宿主須有確定的寬高。
+[React 起始範例](https://github.com/technis-toolbox/Kallopis/blob/main/react/example/modern-productivity-starter.tsx) 使用 `@kallopis/react`。從 repository 的 `react/` 執行 `npm ci`、`npm run build`、`npm pack`，在 consumer 安裝產生的 tarball；同時匯入 `@kallopis/react/styles.css`。主題由 `KlpThemeProvider` 提供，宿主須有確定的寬高。
 
 公開元件皆名為 `KlpModernProductivityLayout`；面板為 Flutter 的 `KlpModernProductivityPanel`／React 的同名公開型別。必要輸入為 panels、selectedId、header、stage；onSelected 為切換提案，sidebarWidth 可選。沒有獨立右側欄插槽。
 
