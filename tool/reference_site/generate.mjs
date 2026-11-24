@@ -121,10 +121,12 @@ async function main() {
 	fs.mkdirSync(path.join(output, 'assets'), { recursive: true });
 	for (const asset of ['site.css', 'site.js']) fs.copyFileSync(path.join(root, 'tool', 'reference_site', 'static', asset), path.join(output, 'assets', asset));
 
-	fs.cpSync(path.join(root, 'styles/examples'), path.join(output, 'styles/examples'), { recursive: true });
-	fs.cpSync(path.join(root, 'styles/images'), path.join(output, 'styles/images'), { recursive: true });
-	fs.copyFileSync(path.join(root, 'styles/kallopis-v1.json'), path.join(output, 'styles/kallopis-v1.json'));
-	fs.copyFileSync(path.join(root, 'styles/component-bindings.json'), path.join(output, 'styles/component-bindings.json'));
+	if (reactComponents && reactScenarios && flutterScenarios) {
+		fs.cpSync(path.join(root, 'styles/examples'), path.join(output, 'styles/examples'), { recursive: true });
+		fs.cpSync(path.join(root, 'styles/images'), path.join(output, 'styles/images'), { recursive: true });
+		fs.copyFileSync(path.join(root, 'styles/kallopis-v1.json'), path.join(output, 'styles/kallopis-v1.json'));
+		fs.copyFileSync(path.join(root, 'styles/component-bindings.json'), path.join(output, 'styles/component-bindings.json'));
+	}
 	if (reactComponents) fs.cpSync(reactBundle, path.join(output, 'examples/react'), { recursive: true });
 	if (flutterScenarios) fs.cpSync(flutterBundle, path.join(output, 'examples/flutter'), { recursive: true });
 
