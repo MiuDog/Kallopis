@@ -39,7 +39,7 @@ export function ScenarioApp({ id }: { id: string }) {
 	if (!Object.hasOwn(reactScenarioRegistry, id)) return <main><h1>找不到 GUI 場景</h1><p>未註冊的場景：{id}</p><a href="?scenario=vscode">返回場景入口</a></main>;
 	const sceneId = id as SceneId;
 	return <KlpThemeProvider mode={mode} stylePack={alternate ? spacious : base}><main className="scenario-app demo-stack">
-		<KlpText as="h1" role="h1">{reactScenarioRegistry[sceneId].title}</KlpText>
+		<KlpText as="h1" role={window.parent === window ? "h1" : "h2"}>{reactScenarioRegistry[sceneId].title}</KlpText>
 		<nav className="demo-row" aria-label="GUI 場景">{Object.entries(reactScenarioRegistry).map(([name, scene]) => <a key={name} href={`?scenario=${name}`}>{scene.title}</a>)}</nav>
 		<div className="demo-row" aria-label="展示環境">{modes.map(value => <KlpButton key={value} selected={mode === value} onClick={() => setMode(value)}>{value}</KlpButton>)}<KlpButton selected={alternate} onClick={() => setAlternate(value => !value)}>風格：{alternate ? '寬鬆' : '預設'}</KlpButton><KlpButton onClick={() => setEpoch(value => value + 1)}>重設場景</KlpButton></div>
 		<ScenarioWorkbench key={`${id}-${epoch}`} id={sceneId} />
