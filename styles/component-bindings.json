@@ -1,0 +1,6032 @@
+{
+	"schemaVersion": 1,
+	"bindings": [
+		{
+			"id": "theme.colors.app",
+			"flutter": "colors.app",
+			"react": "theme.colors.app",
+			"css": "--klp-colors-app",
+			"references": [
+				{
+					"path": "react/src/styles.css",
+					"line": 21
+				}
+			]
+		},
+		{
+			"id": "theme.colors.surface",
+			"flutter": "colors.surface",
+			"react": "theme.colors.surface",
+			"css": "--klp-colors-surface",
+			"references": [
+				{
+					"path": "react/src/styles.css",
+					"line": 44
+				},
+				{
+					"path": "react/src/styles.css",
+					"line": 45
+				},
+				{
+					"path": "react/src/styles.css",
+					"line": 46
+				},
+				{
+					"path": "react/src/styles.css",
+					"line": 47
+				},
+				{
+					"path": "react/src/styles.css",
+					"line": 98
+				},
+				{
+					"path": "react/src/styles.css",
+					"line": 117
+				},
+				{
+					"path": "react/src/styles.css",
+					"line": 123
+				},
+				{
+					"path": "react/src/styles.css",
+					"line": 124
+				},
+				{
+					"path": "react/src/styles.css",
+					"line": 126
+				},
+				{
+					"path": "react/src/styles.css",
+					"line": 136
+				},
+				{
+					"path": "react/src/styles.css",
+					"line": 144
+				},
+				{
+					"path": "react/src/styles.css",
+					"line": 145
+				},
+				{
+					"path": "react/src/styles.css",
+					"line": 175
+				},
+				{
+					"path": "react/src/theme.tsx",
+					"line": 48
+				},
+				{
+					"path": "flutter/lib/src/features/collections/advanced/primitives/klp_advanced_style.dart",
+					"line": 44
+				},
+				{
+					"path": "flutter/lib/src/features/collections/advanced/primitives/klp_advanced_style.dart",
+					"line": 45
+				},
+				{
+					"path": "flutter/lib/src/features/collections/avatar/primitives/klp_avatar_frame.dart",
+					"line": 27
+				},
+				{
+					"path": "flutter/lib/src/features/collections/code/primitives/klp_code_style.dart",
+					"line": 45
+				},
+				{
+					"path": "flutter/lib/src/features/collections/progress/primitives/klp_progress_track.dart",
+					"line": 23
+				},
+				{
+					"path": "flutter/lib/src/features/forms/toggle/internal/klp_compact_switch_style.dart",
+					"line": 37
+				},
+				{
+					"path": "flutter/lib/src/features/forms/toggle/internal/klp_phase_toggle_style.dart",
+					"line": 73
+				},
+				{
+					"path": "flutter/lib/src/features/forms/toggle/internal/klp_phase_toggle_style.dart",
+					"line": 78
+				},
+				{
+					"path": "flutter/lib/src/features/forms/toggle/internal/klp_phase_toggle_style.dart",
+					"line": 90
+				},
+				{
+					"path": "flutter/lib/src/features/forms/toggle/internal/klp_toggle_indicator_style.dart",
+					"line": 36
+				},
+				{
+					"path": "flutter/lib/src/foundation/interaction/filter/primitives/klp_filter_chip_frame.dart",
+					"line": 31
+				}
+			]
+		},
+		{
+			"id": "theme.colors.surfaceInset",
+			"flutter": "colors.surfaceInset",
+			"react": "theme.colors.surfaceInset",
+			"css": "--klp-colors-surfaceInset",
+			"references": [
+				{
+					"path": "react/src/styles.css",
+					"line": 45
+				},
+				{
+					"path": "react/src/styles.css",
+					"line": 98
+				},
+				{
+					"path": "react/src/styles.css",
+					"line": 117
+				},
+				{
+					"path": "react/src/styles.css",
+					"line": 123
+				},
+				{
+					"path": "react/src/styles.css",
+					"line": 124
+				},
+				{
+					"path": "react/src/styles.css",
+					"line": 144
+				},
+				{
+					"path": "react/src/styles.css",
+					"line": 145
+				},
+				{
+					"path": "flutter/lib/src/features/collections/advanced/primitives/klp_advanced_style.dart",
+					"line": 44
+				},
+				{
+					"path": "flutter/lib/src/features/collections/code/primitives/klp_code_style.dart",
+					"line": 45
+				},
+				{
+					"path": "flutter/lib/src/features/forms/toggle/internal/klp_phase_toggle_style.dart",
+					"line": 90
+				},
+				{
+					"path": "flutter/lib/src/foundation/interaction/filter/primitives/klp_filter_chip_frame.dart",
+					"line": 31
+				}
+			]
+		},
+		{
+			"id": "theme.colors.surfaceMuted",
+			"flutter": "colors.surfaceMuted",
+			"react": "theme.colors.surfaceMuted",
+			"css": "--klp-colors-surfaceMuted",
+			"references": [
+				{
+					"path": "react/src/styles.css",
+					"line": 46
+				},
+				{
+					"path": "react/src/styles.css",
+					"line": 126
+				},
+				{
+					"path": "flutter/lib/src/features/collections/advanced/primitives/klp_advanced_style.dart",
+					"line": 45
+				},
+				{
+					"path": "flutter/lib/src/features/collections/avatar/primitives/klp_avatar_frame.dart",
+					"line": 27
+				},
+				{
+					"path": "flutter/lib/src/features/collections/progress/primitives/klp_progress_track.dart",
+					"line": 23
+				},
+				{
+					"path": "flutter/lib/src/features/forms/toggle/internal/klp_compact_switch_style.dart",
+					"line": 37
+				},
+				{
+					"path": "flutter/lib/src/features/forms/toggle/internal/klp_toggle_indicator_style.dart",
+					"line": 36
+				}
+			]
+		},
+		{
+			"id": "theme.colors.component",
+			"flutter": "colors.component",
+			"react": "theme.colors.component",
+			"css": "--klp-colors-component",
+			"references": [
+				{
+					"path": "react/src/styles.css",
+					"line": 48
+				},
+				{
+					"path": "react/src/styles.css",
+					"line": 59
+				},
+				{
+					"path": "react/src/styles.css",
+					"line": 68
+				},
+				{
+					"path": "react/src/styles.css",
+					"line": 102
+				},
+				{
+					"path": "flutter/lib/src/features/actions/button/internal/klp_icon_button_style.dart",
+					"line": 32
+				},
+				{
+					"path": "flutter/lib/src/features/actions/button/internal/klp_icon_button_style.dart",
+					"line": 39
+				},
+				{
+					"path": "flutter/lib/src/features/collections/advanced/primitives/klp_advanced_style.dart",
+					"line": 43
+				},
+				{
+					"path": "flutter/lib/src/features/collections/badge/primitives/klp_badge_frame.dart",
+					"line": 26
+				},
+				{
+					"path": "flutter/lib/src/features/forms/toggle/internal/klp_toggle_indicator_style.dart",
+					"line": 34
+				}
+			]
+		},
+		{
+			"id": "theme.colors.stageSurface",
+			"flutter": "colors.stageSurface",
+			"react": "theme.colors.stageSurface",
+			"css": "--klp-colors-stageSurface",
+			"references": [
+				{
+					"path": "react/src/styles.css",
+					"line": 49
+				},
+				{
+					"path": "flutter/lib/src/features/collections/badge/primitives/klp_badge_frame.dart",
+					"line": 24
+				},
+				{
+					"path": "flutter/lib/src/features/collections/code/primitives/klp_code_style.dart",
+					"line": 44
+				},
+				{
+					"path": "flutter/lib/src/features/forms/selection/internal/klp_checkbox_style.dart",
+					"line": 35
+				}
+			]
+		},
+		{
+			"id": "theme.colors.overlay",
+			"flutter": "colors.overlay",
+			"react": "theme.colors.overlay",
+			"css": "--klp-colors-overlay",
+			"references": [
+				{
+					"path": "react/src/styles.css",
+					"line": 220
+				},
+				{
+					"path": "react/src/styles.css",
+					"line": 283
+				}
+			]
+		},
+		{
+			"id": "theme.colors.surfaceRaised",
+			"flutter": "colors.surfaceRaised",
+			"react": "theme.colors.surfaceRaised",
+			"css": "--klp-colors-surfaceRaised",
+			"references": [
+				{
+					"path": "react/src/styles.css",
+					"line": 47
+				}
+			]
+		},
+		{
+			"id": "theme.colors.modalScrim",
+			"flutter": "colors.modalScrim",
+			"react": "theme.colors.modalScrim",
+			"css": "--klp-colors-modalScrim",
+			"references": []
+		},
+		{
+			"id": "theme.colors.guide",
+			"flutter": "colors.guide",
+			"react": "theme.colors.guide",
+			"css": "--klp-colors-guide",
+			"references": []
+		},
+		{
+			"id": "theme.colors.divider",
+			"flutter": "colors.divider",
+			"react": "theme.colors.divider",
+			"css": "--klp-colors-divider",
+			"references": [
+				{
+					"path": "react/src/styles.css",
+					"line": 58
+				},
+				{
+					"path": "flutter/lib/src/features/collections/advanced/primitives/klp_advanced_style.dart",
+					"line": 46
+				},
+				{
+					"path": "flutter/lib/src/features/collections/badge/primitives/klp_badge_frame.dart",
+					"line": 27
+				},
+				{
+					"path": "flutter/lib/src/features/collections/code/primitives/klp_code_style.dart",
+					"line": 46
+				},
+				{
+					"path": "flutter/lib/src/foundation/interaction/filter/primitives/klp_filter_chip_frame.dart",
+					"line": 34
+				}
+			]
+		},
+		{
+			"id": "theme.colors.pagePattern",
+			"flutter": "colors.pagePattern",
+			"react": "theme.colors.pagePattern",
+			"css": "--klp-colors-pagePattern",
+			"references": []
+		},
+		{
+			"id": "theme.colors.text",
+			"flutter": "colors.text",
+			"react": "theme.colors.text",
+			"css": "--klp-colors-text",
+			"references": [
+				{
+					"path": "react/src/styles.css",
+					"line": 20
+				},
+				{
+					"path": "react/src/styles.css",
+					"line": 41
+				},
+				{
+					"path": "react/src/styles.css",
+					"line": 42
+				},
+				{
+					"path": "react/src/styles.css",
+					"line": 43
+				},
+				{
+					"path": "react/src/styles.css",
+					"line": 80
+				},
+				{
+					"path": "react/src/styles.css",
+					"line": 93
+				},
+				{
+					"path": "react/src/styles.css",
+					"line": 98
+				},
+				{
+					"path": "react/src/styles.css",
+					"line": 102
+				},
+				{
+					"path": "react/src/styles.css",
+					"line": 118
+				},
+				{
+					"path": "react/src/styles.css",
+					"line": 122
+				},
+				{
+					"path": "react/src/styles.css",
+					"line": 123
+				},
+				{
+					"path": "react/src/styles.css",
+					"line": 126
+				},
+				{
+					"path": "react/src/styles.css",
+					"line": 163
+				},
+				{
+					"path": "react/src/styles.css",
+					"line": 167
+				},
+				{
+					"path": "react/src/styles.css",
+					"line": 169
+				},
+				{
+					"path": "react/src/styles.css",
+					"line": 175
+				},
+				{
+					"path": "react/src/styles.css",
+					"line": 188
+				},
+				{
+					"path": "react/src/styles.css",
+					"line": 191
+				},
+				{
+					"path": "react/src/styles.css",
+					"line": 221
+				},
+				{
+					"path": "react/src/styles.css",
+					"line": 259
+				},
+				{
+					"path": "react/src/styles.css",
+					"line": 284
+				},
+				{
+					"path": "react/src/styles.css",
+					"line": 307
+				},
+				{
+					"path": "flutter/lib/src/features/actions/button/internal/klp_icon_button_style.dart",
+					"line": 45
+				},
+				{
+					"path": "flutter/lib/src/features/collections/advanced/primitives/klp_advanced_style.dart",
+					"line": 47
+				},
+				{
+					"path": "flutter/lib/src/features/collections/advanced/primitives/klp_advanced_style.dart",
+					"line": 48
+				},
+				{
+					"path": "flutter/lib/src/features/collections/advanced/primitives/klp_advanced_style.dart",
+					"line": 49
+				},
+				{
+					"path": "flutter/lib/src/features/collections/avatar/primitives/klp_avatar_frame.dart",
+					"line": 28
+				},
+				{
+					"path": "flutter/lib/src/features/collections/badge/primitives/klp_badge_frame.dart",
+					"line": 19
+				},
+				{
+					"path": "flutter/lib/src/features/collections/badge/primitives/klp_badge_frame.dart",
+					"line": 24
+				},
+				{
+					"path": "flutter/lib/src/features/collections/badge/primitives/klp_badge_frame.dart",
+					"line": 28
+				},
+				{
+					"path": "flutter/lib/src/features/collections/badge/primitives/klp_badge_frame.dart",
+					"line": 33
+				},
+				{
+					"path": "flutter/lib/src/features/collections/code/primitives/klp_code_style.dart",
+					"line": 48
+				},
+				{
+					"path": "flutter/lib/src/features/collections/code/primitives/klp_code_style.dart",
+					"line": 49
+				},
+				{
+					"path": "flutter/lib/src/features/collections/list_tile/internal/klp_list_tile_widget.dart",
+					"line": 47
+				},
+				{
+					"path": "flutter/lib/src/features/collections/progress/primitives/klp_progress_track.dart",
+					"line": 13
+				},
+				{
+					"path": "flutter/lib/src/features/forms/selection/internal/klp_checkbox_style.dart",
+					"line": 33
+				},
+				{
+					"path": "flutter/lib/src/features/forms/selection/internal/klp_checkbox_style.dart",
+					"line": 34
+				},
+				{
+					"path": "flutter/lib/src/features/forms/toggle/internal/klp_compact_switch_style.dart",
+					"line": 38
+				},
+				{
+					"path": "flutter/lib/src/features/forms/toggle/internal/klp_phase_toggle_style.dart",
+					"line": 55
+				},
+				{
+					"path": "flutter/lib/src/features/forms/toggle/internal/klp_phase_toggle_style.dart",
+					"line": 57
+				},
+				{
+					"path": "flutter/lib/src/features/forms/toggle/internal/klp_phase_toggle_style.dart",
+					"line": 66
+				},
+				{
+					"path": "flutter/lib/src/features/forms/toggle/internal/klp_phase_toggle_style.dart",
+					"line": 74
+				},
+				{
+					"path": "flutter/lib/src/features/forms/toggle/internal/klp_phase_toggle_style.dart",
+					"line": 77
+				},
+				{
+					"path": "flutter/lib/src/features/forms/toggle/internal/klp_phase_toggle_style.dart",
+					"line": 80
+				},
+				{
+					"path": "flutter/lib/src/features/forms/toggle/internal/klp_phase_toggle_style.dart",
+					"line": 93
+				},
+				{
+					"path": "flutter/lib/src/features/forms/toggle/internal/klp_phase_toggle_style.dart",
+					"line": 94
+				},
+				{
+					"path": "flutter/lib/src/features/forms/toggle/internal/klp_phase_toggle_style.dart",
+					"line": 95
+				},
+				{
+					"path": "flutter/lib/src/features/forms/toggle/internal/klp_toggle_indicator_style.dart",
+					"line": 39
+				},
+				{
+					"path": "flutter/lib/src/features/forms/toggle/internal/klp_toggle_indicator_style.dart",
+					"line": 41
+				},
+				{
+					"path": "flutter/lib/src/features/workspace/shell/theme/klp_theme_preview_tile.dart",
+					"line": 65
+				},
+				{
+					"path": "flutter/lib/src/foundation/interaction/filter/primitives/klp_filter_chip_frame.dart",
+					"line": 42
+				},
+				{
+					"path": "flutter/lib/src/foundation/interaction/filter/primitives/klp_filter_chip_frame.dart",
+					"line": 43
+				},
+				{
+					"path": "flutter/lib/src/foundation/interaction/filter/primitives/klp_filter_chip_frame.dart",
+					"line": 44
+				},
+				{
+					"path": "flutter/lib/src/foundation/interaction/primitives/klp_action_region_widget.dart",
+					"line": 45
+				},
+				{
+					"path": "flutter/lib/src/foundation/interaction/primitives/klp_action_region_widget.dart",
+					"line": 48
+				},
+				{
+					"path": "flutter/lib/src/foundation/interaction/primitives/klp_action_region_widget.dart",
+					"line": 49
+				}
+			]
+		},
+		{
+			"id": "theme.colors.textMuted",
+			"flutter": "colors.textMuted",
+			"react": "theme.colors.textMuted",
+			"css": "--klp-colors-textMuted",
+			"references": [
+				{
+					"path": "react/src/styles.css",
+					"line": 42
+				},
+				{
+					"path": "react/src/styles.css",
+					"line": 169
+				},
+				{
+					"path": "flutter/lib/src/features/collections/advanced/primitives/klp_advanced_style.dart",
+					"line": 48
+				},
+				{
+					"path": "flutter/lib/src/features/collections/badge/primitives/klp_badge_frame.dart",
+					"line": 19
+				},
+				{
+					"path": "flutter/lib/src/features/collections/code/primitives/klp_code_style.dart",
+					"line": 49
+				},
+				{
+					"path": "flutter/lib/src/features/collections/list_tile/internal/klp_list_tile_widget.dart",
+					"line": 47
+				},
+				{
+					"path": "flutter/lib/src/features/forms/selection/internal/klp_checkbox_style.dart",
+					"line": 33
+				},
+				{
+					"path": "flutter/lib/src/features/forms/selection/internal/klp_checkbox_style.dart",
+					"line": 34
+				},
+				{
+					"path": "flutter/lib/src/features/forms/toggle/internal/klp_phase_toggle_style.dart",
+					"line": 94
+				},
+				{
+					"path": "flutter/lib/src/features/forms/toggle/internal/klp_toggle_indicator_style.dart",
+					"line": 41
+				},
+				{
+					"path": "flutter/lib/src/foundation/interaction/filter/primitives/klp_filter_chip_frame.dart",
+					"line": 42
+				},
+				{
+					"path": "flutter/lib/src/foundation/interaction/filter/primitives/klp_filter_chip_frame.dart",
+					"line": 44
+				},
+				{
+					"path": "flutter/lib/src/foundation/interaction/primitives/klp_action_region_widget.dart",
+					"line": 49
+				}
+			]
+		},
+		{
+			"id": "theme.colors.textFaint",
+			"flutter": "colors.textFaint",
+			"react": "theme.colors.textFaint",
+			"css": "--klp-colors-textFaint",
+			"references": [
+				{
+					"path": "react/src/styles.css",
+					"line": 43
+				},
+				{
+					"path": "react/src/styles.css",
+					"line": 98
+				},
+				{
+					"path": "react/src/styles.css",
+					"line": 122
+				},
+				{
+					"path": "react/src/styles.css",
+					"line": 126
+				},
+				{
+					"path": "flutter/lib/src/features/actions/button/internal/klp_icon_button_style.dart",
+					"line": 45
+				},
+				{
+					"path": "flutter/lib/src/features/collections/advanced/primitives/klp_advanced_style.dart",
+					"line": 49
+				},
+				{
+					"path": "flutter/lib/src/features/collections/code/primitives/klp_code_style.dart",
+					"line": 48
+				},
+				{
+					"path": "flutter/lib/src/features/forms/selection/internal/klp_checkbox_style.dart",
+					"line": 34
+				},
+				{
+					"path": "flutter/lib/src/features/forms/toggle/internal/klp_compact_switch_style.dart",
+					"line": 38
+				},
+				{
+					"path": "flutter/lib/src/features/forms/toggle/internal/klp_phase_toggle_style.dart",
+					"line": 95
+				},
+				{
+					"path": "flutter/lib/src/features/forms/toggle/internal/klp_toggle_indicator_style.dart",
+					"line": 39
+				},
+				{
+					"path": "flutter/lib/src/features/workspace/shell/theme/klp_theme_preview_tile.dart",
+					"line": 65
+				},
+				{
+					"path": "flutter/lib/src/foundation/interaction/primitives/klp_action_region_widget.dart",
+					"line": 45
+				}
+			]
+		},
+		{
+			"id": "theme.colors.border",
+			"flutter": "colors.border",
+			"react": "theme.colors.border",
+			"css": "--klp-colors-border",
+			"references": [
+				{
+					"path": "react/src/styles.css",
+					"line": 78
+				},
+				{
+					"path": "react/src/styles.css",
+					"line": 115
+				},
+				{
+					"path": "flutter/lib/src/features/forms/toggle/internal/klp_phase_toggle_style.dart",
+					"line": 91
+				}
+			]
+		},
+		{
+			"id": "theme.colors.borderStrong",
+			"flutter": "colors.borderStrong",
+			"react": "theme.colors.borderStrong",
+			"css": "--klp-colors-borderStrong",
+			"references": []
+		},
+		{
+			"id": "theme.colors.brand",
+			"flutter": "colors.brand",
+			"react": "theme.colors.brand",
+			"css": "--klp-colors-brand",
+			"references": [
+				{
+					"path": "react/src/styles.css",
+					"line": 86
+				},
+				{
+					"path": "react/src/theme.tsx",
+					"line": 43
+				}
+			]
+		},
+		{
+			"id": "theme.colors.accent",
+			"flutter": "colors.accent",
+			"react": "theme.colors.accent",
+			"css": "--klp-colors-accent",
+			"references": [
+				{
+					"path": "flutter/lib/src/features/collections/avatar/primitives/klp_avatar_frame.dart",
+					"line": 27
+				}
+			]
+		},
+		{
+			"id": "theme.colors.accentSoft",
+			"flutter": "colors.accentSoft",
+			"react": "theme.colors.accentSoft",
+			"css": "--klp-colors-accentSoft",
+			"references": []
+		},
+		{
+			"id": "theme.colors.interaction",
+			"flutter": "colors.interaction",
+			"react": "theme.colors.interaction",
+			"css": "--klp-colors-interaction",
+			"references": [
+				{
+					"path": "react/src/styles.css",
+					"line": 95
+				},
+				{
+					"path": "react/src/styles.css",
+					"line": 103
+				},
+				{
+					"path": "react/src/styles.css",
+					"line": 106
+				},
+				{
+					"path": "react/src/styles.css",
+					"line": 119
+				},
+				{
+					"path": "react/src/styles.css",
+					"line": 124
+				},
+				{
+					"path": "react/src/styles.css",
+					"line": 192
+				},
+				{
+					"path": "react/src/styles.css",
+					"line": 195
+				},
+				{
+					"path": "react/src/styles.css",
+					"line": 198
+				},
+				{
+					"path": "react/src/styles.css",
+					"line": 200
+				}
+			]
+		},
+		{
+			"id": "theme.colors.interactionSoft",
+			"flutter": "colors.interactionSoft",
+			"react": "theme.colors.interactionSoft",
+			"css": "--klp-colors-interactionSoft",
+			"references": [
+				{
+					"path": "react/src/styles.css",
+					"line": 103
+				},
+				{
+					"path": "react/src/styles.css",
+					"line": 195
+				},
+				{
+					"path": "react/src/styles.css",
+					"line": 198
+				},
+				{
+					"path": "react/src/styles.css",
+					"line": 200
+				}
+			]
+		},
+		{
+			"id": "theme.colors.success",
+			"flutter": "colors.success",
+			"react": "theme.colors.success",
+			"css": "--klp-colors-success",
+			"references": [
+				{
+					"path": "react/src/styles.css",
+					"line": 62
+				},
+				{
+					"path": "flutter/lib/src/features/collections/advanced/primitives/klp_advanced_style.dart",
+					"line": 53
+				},
+				{
+					"path": "flutter/lib/src/features/collections/code/primitives/klp_code_style.dart",
+					"line": 53
+				},
+				{
+					"path": "flutter/lib/src/features/collections/list_tile/primitives/klp_list_tile_frame_style.dart",
+					"line": 26
+				},
+				{
+					"path": "flutter/lib/src/features/collections/progress/primitives/klp_progress_track.dart",
+					"line": 15
+				},
+				{
+					"path": "flutter/lib/src/features/forms/toggle/internal/klp_phase_toggle_style.dart",
+					"line": 62
+				},
+				{
+					"path": "flutter/lib/src/features/forms/toggle/internal/klp_phase_toggle_style.dart",
+					"line": 97
+				}
+			]
+		},
+		{
+			"id": "theme.colors.warning",
+			"flutter": "colors.warning",
+			"react": "theme.colors.warning",
+			"css": "--klp-colors-warning",
+			"references": [
+				{
+					"path": "react/src/styles.css",
+					"line": 63
+				},
+				{
+					"path": "flutter/lib/src/features/collections/advanced/primitives/klp_advanced_style.dart",
+					"line": 51
+				},
+				{
+					"path": "flutter/lib/src/features/collections/list_tile/primitives/klp_list_tile_frame_style.dart",
+					"line": 24
+				},
+				{
+					"path": "flutter/lib/src/features/collections/progress/primitives/klp_progress_track.dart",
+					"line": 14
+				},
+				{
+					"path": "flutter/lib/src/features/forms/toggle/internal/klp_phase_toggle_style.dart",
+					"line": 63
+				},
+				{
+					"path": "flutter/lib/src/features/workspace/shell/theme/klp_theme_preview_tile.dart",
+					"line": 65
+				}
+			]
+		},
+		{
+			"id": "theme.colors.danger",
+			"flutter": "colors.danger",
+			"react": "theme.colors.danger",
+			"css": "--klp-colors-danger",
+			"references": [
+				{
+					"path": "react/src/styles.css",
+					"line": 64
+				},
+				{
+					"path": "react/src/styles.css",
+					"line": 125
+				},
+				{
+					"path": "flutter/lib/src/features/collections/advanced/primitives/klp_advanced_style.dart",
+					"line": 54
+				},
+				{
+					"path": "flutter/lib/src/features/collections/code/primitives/klp_code_style.dart",
+					"line": 54
+				},
+				{
+					"path": "flutter/lib/src/features/collections/list_tile/primitives/klp_list_tile_frame_style.dart",
+					"line": 27
+				},
+				{
+					"path": "flutter/lib/src/features/collections/progress/primitives/klp_progress_track.dart",
+					"line": 16
+				},
+				{
+					"path": "flutter/lib/src/features/forms/toggle/internal/klp_phase_toggle_style.dart",
+					"line": 64
+				},
+				{
+					"path": "flutter/lib/src/features/forms/toggle/internal/klp_phase_toggle_style.dart",
+					"line": 96
+				},
+				{
+					"path": "flutter/lib/src/foundation/interaction/primitives/klp_action_region_widget.dart",
+					"line": 47
+				},
+				{
+					"path": "flutter/lib/src/foundation/interaction/primitives/klp_action_region_widget.dart",
+					"line": 53
+				}
+			]
+		},
+		{
+			"id": "theme.colors.info",
+			"flutter": "colors.info",
+			"react": "theme.colors.info",
+			"css": "--klp-colors-info",
+			"references": [
+				{
+					"path": "react/src/styles.css",
+					"line": 65
+				},
+				{
+					"path": "flutter/lib/src/features/collections/advanced/primitives/klp_advanced_style.dart",
+					"line": 52
+				},
+				{
+					"path": "flutter/lib/src/features/collections/list_tile/primitives/klp_list_tile_frame_style.dart",
+					"line": 25
+				},
+				{
+					"path": "flutter/lib/src/features/forms/toggle/internal/klp_phase_toggle_style.dart",
+					"line": 65
+				}
+			]
+		},
+		{
+			"id": "theme.colors.onStatus",
+			"flutter": "colors.onStatus",
+			"react": "theme.colors.onStatus",
+			"css": "--klp-colors-onStatus",
+			"references": [
+				{
+					"path": "flutter/lib/src/features/collections/avatar/primitives/klp_avatar_frame.dart",
+					"line": 28
+				},
+				{
+					"path": "flutter/lib/src/features/collections/code/primitives/klp_code_style.dart",
+					"line": 55
+				},
+				{
+					"path": "flutter/lib/src/foundation/interaction/primitives/klp_action_region_widget.dart",
+					"line": 46
+				}
+			]
+		},
+		{
+			"id": "theme.colors.onLightBackground",
+			"flutter": "colors.onLightBackground",
+			"react": "theme.colors.onLightBackground",
+			"css": "--klp-colors-onLightBackground",
+			"references": [
+				{
+					"path": "react/src/theme.tsx",
+					"line": 47
+				}
+			]
+		},
+		{
+			"id": "theme.colors.onDarkBackground",
+			"flutter": "colors.onDarkBackground",
+			"react": "theme.colors.onDarkBackground",
+			"css": "--klp-colors-onDarkBackground",
+			"references": [
+				{
+					"path": "react/src/theme.tsx",
+					"line": 47
+				}
+			]
+		},
+		{
+			"id": "theme.colors.mutedOnLightBackground",
+			"flutter": "colors.mutedOnLightBackground",
+			"react": "theme.colors.mutedOnLightBackground",
+			"css": "--klp-colors-mutedOnLightBackground",
+			"references": []
+		},
+		{
+			"id": "theme.colors.mutedOnDarkBackground",
+			"flutter": "colors.mutedOnDarkBackground",
+			"react": "theme.colors.mutedOnDarkBackground",
+			"css": "--klp-colors-mutedOnDarkBackground",
+			"references": []
+		},
+		{
+			"id": "theme.colors.faintOnBackground",
+			"flutter": "colors.faintOnBackground",
+			"react": "theme.colors.faintOnBackground",
+			"css": "--klp-colors-faintOnBackground",
+			"references": []
+		},
+		{
+			"id": "theme.colors.transparent",
+			"flutter": "colors.transparent",
+			"react": "theme.colors.transparent",
+			"css": "--klp-colors-transparent",
+			"references": []
+		},
+		{
+			"id": "theme.typography.sansFamily",
+			"flutter": "typography.sansFamily",
+			"react": "theme.typography.sansFamily",
+			"css": "--klp-typography-sansFamily",
+			"references": []
+		},
+		{
+			"id": "theme.typography.sansFallback",
+			"flutter": "typography.sansFallback",
+			"react": "theme.typography.sansFallback",
+			"css": "--klp-typography-sansFallback",
+			"references": [
+				{
+					"path": "react/src/styles.css",
+					"line": 22
+				},
+				{
+					"path": "flutter/lib/src/styling/style_pack/native_codec.dart",
+					"line": 42
+				}
+			]
+		},
+		{
+			"id": "theme.typography.monoFamily",
+			"flutter": "typography.monoFamily",
+			"react": "theme.typography.monoFamily",
+			"css": "--klp-typography-monoFamily",
+			"references": [
+				{
+					"path": "react/src/styles.css",
+					"line": 32
+				}
+			]
+		},
+		{
+			"id": "theme.typography.monoFallback",
+			"flutter": "typography.monoFallback",
+			"react": "theme.typography.monoFallback",
+			"css": "--klp-typography-monoFallback",
+			"references": [
+				{
+					"path": "react/src/styles.css",
+					"line": 32
+				},
+				{
+					"path": "react/src/styles.css",
+					"line": 38
+				},
+				{
+					"path": "react/src/styles.css",
+					"line": 164
+				},
+				{
+					"path": "flutter/lib/src/styling/style_pack/native_codec.dart",
+					"line": 43
+				}
+			]
+		},
+		{
+			"id": "theme.typography.uiFamily",
+			"flutter": "typography.uiFamily",
+			"react": "theme.typography.uiFamily",
+			"css": "--klp-typography-uiFamily",
+			"references": [
+				{
+					"path": "react/src/styles.css",
+					"line": 22
+				},
+				{
+					"path": "flutter/lib/src/styling/legacy_theme/klp_theme.dart",
+					"line": 207
+				},
+				{
+					"path": "flutter/lib/src/styling/legacy_theme/klp_theme.dart",
+					"line": 208
+				},
+				{
+					"path": "flutter/lib/src/styling/legacy_theme/klp_theme.dart",
+					"line": 254
+				},
+				{
+					"path": "flutter/lib/src/styling/legacy_theme/klp_theme.dart",
+					"line": 255
+				},
+				{
+					"path": "flutter/lib/src/styling/legacy_theme/klp_theme.dart",
+					"line": 289
+				},
+				{
+					"path": "flutter/lib/src/styling/legacy_theme/klp_theme.dart",
+					"line": 291
+				}
+			]
+		},
+		{
+			"id": "theme.typography.bodyFamily",
+			"flutter": "typography.bodyFamily",
+			"react": "theme.typography.bodyFamily",
+			"css": "--klp-typography-bodyFamily",
+			"references": []
+		},
+		{
+			"id": "theme.typography.codeFamily",
+			"flutter": "typography.codeFamily",
+			"react": "theme.typography.codeFamily",
+			"css": "--klp-typography-codeFamily",
+			"references": [
+				{
+					"path": "react/src/styles.css",
+					"line": 38
+				},
+				{
+					"path": "react/src/styles.css",
+					"line": 164
+				}
+			]
+		},
+		{
+			"id": "theme.typography.micro",
+			"flutter": "typography.micro",
+			"react": "theme.typography.micro",
+			"css": "--klp-typography-micro",
+			"references": []
+		},
+		{
+			"id": "theme.typography.caption",
+			"flutter": "typography.caption",
+			"react": "theme.typography.caption",
+			"css": "--klp-typography-caption",
+			"references": [
+				{
+					"path": "react/src/styles.css",
+					"line": 31
+				},
+				{
+					"path": "react/src/styles.css",
+					"line": 88
+				},
+				{
+					"path": "react/src/styles.css",
+					"line": 89
+				},
+				{
+					"path": "react/src/styles.css",
+					"line": 120
+				},
+				{
+					"path": "flutter/lib/src/styling/legacy_theme/klp_theme.dart",
+					"line": 230
+				},
+				{
+					"path": "flutter/lib/src/styling/legacy_theme/klp_theme.dart",
+					"line": 238
+				},
+				{
+					"path": "flutter/lib/src/styling/legacy_theme/klp_theme.dart",
+					"line": 242
+				},
+				{
+					"path": "flutter/lib/src/styling/legacy_theme/klp_theme.dart",
+					"line": 288
+				}
+			]
+		},
+		{
+			"id": "theme.typography.sub",
+			"flutter": "typography.sub",
+			"react": "theme.typography.sub",
+			"css": "--klp-typography-sub",
+			"references": [
+				{
+					"path": "react/src/styles.css",
+					"line": 32
+				},
+				{
+					"path": "react/src/styles.css",
+					"line": 38
+				}
+			]
+		},
+		{
+			"id": "theme.typography.body",
+			"flutter": "typography.body",
+			"react": "theme.typography.body",
+			"css": "--klp-typography-body",
+			"references": [
+				{
+					"path": "react/src/styles.css",
+					"line": 23
+				},
+				{
+					"path": "react/src/styles.css",
+					"line": 24
+				},
+				{
+					"path": "react/src/styles.css",
+					"line": 29
+				},
+				{
+					"path": "react/src/styles.css",
+					"line": 71
+				},
+				{
+					"path": "flutter/lib/src/styling/legacy_theme/klp_theme.dart",
+					"line": 222
+				},
+				{
+					"path": "flutter/lib/src/styling/legacy_theme/klp_theme.dart",
+					"line": 226
+				},
+				{
+					"path": "flutter/lib/src/styling/legacy_theme/klp_theme.dart",
+					"line": 234
+				}
+			]
+		},
+		{
+			"id": "theme.typography.lead",
+			"flutter": "typography.lead",
+			"react": "theme.typography.lead",
+			"css": "--klp-typography-lead",
+			"references": [
+				{
+					"path": "react/src/styles.css",
+					"line": 33
+				},
+				{
+					"path": "react/src/styles.css",
+					"line": 90
+				},
+				{
+					"path": "react/src/styles.css",
+					"line": 91
+				}
+			]
+		},
+		{
+			"id": "theme.typography.h4",
+			"flutter": "typography.h4",
+			"react": "theme.typography.h4",
+			"css": "--klp-typography-h4",
+			"references": [
+				{
+					"path": "react/src/styles.css",
+					"line": 37
+				}
+			]
+		},
+		{
+			"id": "theme.typography.h3",
+			"flutter": "typography.h3",
+			"react": "theme.typography.h3",
+			"css": "--klp-typography-h3",
+			"references": [
+				{
+					"path": "react/src/styles.css",
+					"line": 36
+				}
+			]
+		},
+		{
+			"id": "theme.typography.h2",
+			"flutter": "typography.h2",
+			"react": "theme.typography.h2",
+			"css": "--klp-typography-h2",
+			"references": [
+				{
+					"path": "react/src/styles.css",
+					"line": 35
+				}
+			]
+		},
+		{
+			"id": "theme.typography.h1",
+			"flutter": "typography.h1",
+			"react": "theme.typography.h1",
+			"css": "--klp-typography-h1",
+			"references": [
+				{
+					"path": "react/src/styles.css",
+					"line": 34
+				}
+			]
+		},
+		{
+			"id": "theme.typography.display",
+			"flutter": "typography.display",
+			"react": "theme.typography.display",
+			"css": "--klp-typography-display",
+			"references": []
+		},
+		{
+			"id": "theme.typography.label",
+			"flutter": "typography.label",
+			"react": "theme.typography.label",
+			"css": "--klp-typography-label",
+			"references": [
+				{
+					"path": "react/src/styles.css",
+					"line": 32
+				}
+			]
+		},
+		{
+			"id": "theme.typography.section",
+			"flutter": "typography.section",
+			"react": "theme.typography.section",
+			"css": "--klp-typography-section",
+			"references": []
+		},
+		{
+			"id": "theme.typography.headingSmall",
+			"flutter": "typography.headingSmall",
+			"react": "theme.typography.headingSmall",
+			"css": "--klp-typography-headingSmall",
+			"references": []
+		},
+		{
+			"id": "theme.typography.heading",
+			"flutter": "typography.heading",
+			"react": "theme.typography.heading",
+			"css": "--klp-typography-heading",
+			"references": []
+		},
+		{
+			"id": "theme.typography.title",
+			"flutter": "typography.title",
+			"react": "theme.typography.title",
+			"css": "--klp-typography-title",
+			"references": []
+		},
+		{
+			"id": "theme.typography.microLeading",
+			"flutter": "typography.microLeading",
+			"react": "theme.typography.microLeading",
+			"css": "--klp-typography-microLeading",
+			"references": []
+		},
+		{
+			"id": "theme.typography.captionLeading",
+			"flutter": "typography.captionLeading",
+			"react": "theme.typography.captionLeading",
+			"css": "--klp-typography-captionLeading",
+			"references": [
+				{
+					"path": "react/src/styles.css",
+					"line": 31
+				},
+				{
+					"path": "react/src/styles.css",
+					"line": 120
+				}
+			]
+		},
+		{
+			"id": "theme.typography.subLeading",
+			"flutter": "typography.subLeading",
+			"react": "theme.typography.subLeading",
+			"css": "--klp-typography-subLeading",
+			"references": []
+		},
+		{
+			"id": "theme.typography.bodyLeading",
+			"flutter": "typography.bodyLeading",
+			"react": "theme.typography.bodyLeading",
+			"css": "--klp-typography-bodyLeading",
+			"references": [
+				{
+					"path": "react/src/styles.css",
+					"line": 24
+				},
+				{
+					"path": "react/src/styles.css",
+					"line": 29
+				}
+			]
+		},
+		{
+			"id": "theme.typography.leadLeading",
+			"flutter": "typography.leadLeading",
+			"react": "theme.typography.leadLeading",
+			"css": "--klp-typography-leadLeading",
+			"references": [
+				{
+					"path": "react/src/styles.css",
+					"line": 33
+				}
+			]
+		},
+		{
+			"id": "theme.typography.h4Leading",
+			"flutter": "typography.h4Leading",
+			"react": "theme.typography.h4Leading",
+			"css": "--klp-typography-h4Leading",
+			"references": [
+				{
+					"path": "react/src/styles.css",
+					"line": 37
+				}
+			]
+		},
+		{
+			"id": "theme.typography.h3Leading",
+			"flutter": "typography.h3Leading",
+			"react": "theme.typography.h3Leading",
+			"css": "--klp-typography-h3Leading",
+			"references": [
+				{
+					"path": "react/src/styles.css",
+					"line": 36
+				}
+			]
+		},
+		{
+			"id": "theme.typography.h2Leading",
+			"flutter": "typography.h2Leading",
+			"react": "theme.typography.h2Leading",
+			"css": "--klp-typography-h2Leading",
+			"references": [
+				{
+					"path": "react/src/styles.css",
+					"line": 35
+				}
+			]
+		},
+		{
+			"id": "theme.typography.h1Leading",
+			"flutter": "typography.h1Leading",
+			"react": "theme.typography.h1Leading",
+			"css": "--klp-typography-h1Leading",
+			"references": [
+				{
+					"path": "react/src/styles.css",
+					"line": 34
+				}
+			]
+		},
+		{
+			"id": "theme.typography.displayLeading",
+			"flutter": "typography.displayLeading",
+			"react": "theme.typography.displayLeading",
+			"css": "--klp-typography-displayLeading",
+			"references": []
+		},
+		{
+			"id": "theme.typography.headingLeading",
+			"flutter": "typography.headingLeading",
+			"react": "theme.typography.headingLeading",
+			"css": "--klp-typography-headingLeading",
+			"references": []
+		},
+		{
+			"id": "theme.typography.codeLeading",
+			"flutter": "typography.codeLeading",
+			"react": "theme.typography.codeLeading",
+			"css": "--klp-typography-codeLeading",
+			"references": [
+				{
+					"path": "react/src/styles.css",
+					"line": 38
+				}
+			]
+		},
+		{
+			"id": "theme.typography.readingLeading",
+			"flutter": "typography.readingLeading",
+			"react": "theme.typography.readingLeading",
+			"css": "--klp-typography-readingLeading",
+			"references": []
+		},
+		{
+			"id": "theme.typography.labelLeading",
+			"flutter": "typography.labelLeading",
+			"react": "theme.typography.labelLeading",
+			"css": "--klp-typography-labelLeading",
+			"references": [
+				{
+					"path": "react/src/styles.css",
+					"line": 32
+				}
+			]
+		},
+		{
+			"id": "theme.typography.labelTracking",
+			"flutter": "typography.labelTracking",
+			"react": "theme.typography.labelTracking",
+			"css": "--klp-typography-labelTracking",
+			"references": []
+		},
+		{
+			"id": "theme.typography.displayTracking",
+			"flutter": "typography.displayTracking",
+			"react": "theme.typography.displayTracking",
+			"css": "--klp-typography-displayTracking",
+			"references": []
+		},
+		{
+			"id": "theme.typography.regular",
+			"flutter": "typography.regular",
+			"react": "theme.typography.regular",
+			"css": "--klp-typography-regular",
+			"references": [
+				{
+					"path": "flutter/lib/src/styling/legacy_theme/klp_theme.dart",
+					"line": 243
+				}
+			]
+		},
+		{
+			"id": "theme.typography.medium",
+			"flutter": "typography.medium",
+			"react": "theme.typography.medium",
+			"css": "--klp-typography-medium",
+			"references": []
+		},
+		{
+			"id": "theme.typography.semiBold",
+			"flutter": "typography.semiBold",
+			"react": "theme.typography.semiBold",
+			"css": "--klp-typography-semiBold",
+			"references": [
+				{
+					"path": "react/src/styles.css",
+					"line": 30
+				},
+				{
+					"path": "react/src/styles.css",
+					"line": 39
+				},
+				{
+					"path": "react/src/styles.css",
+					"line": 86
+				}
+			]
+		},
+		{
+			"id": "theme.typography.bold",
+			"flutter": "typography.bold",
+			"react": "theme.typography.bold",
+			"css": "--klp-typography-bold",
+			"references": [
+				{
+					"path": "react/src/styles.css",
+					"line": 40
+				}
+			]
+		},
+		{
+			"id": "theme.typography.extraBold",
+			"flutter": "typography.extraBold",
+			"react": "theme.typography.extraBold",
+			"css": "--klp-typography-extraBold",
+			"references": []
+		},
+		{
+			"id": "theme.typography.strong",
+			"flutter": "typography.strong",
+			"react": "theme.typography.strong",
+			"css": "--klp-typography-strong",
+			"references": []
+		},
+		{
+			"id": "theme.spacing.space0_5",
+			"flutter": "spacing.space0_5",
+			"react": "theme.spacing.space0_5",
+			"css": "--klp-spacing-space0_5",
+			"references": [
+				{
+					"path": "react/src/styles.css",
+					"line": 56
+				},
+				{
+					"path": "react/src/styles.css",
+					"line": 107
+				}
+			]
+		},
+		{
+			"id": "theme.spacing.space1",
+			"flutter": "spacing.space1",
+			"react": "theme.spacing.space1",
+			"css": "--klp-spacing-space1",
+			"references": []
+		},
+		{
+			"id": "theme.spacing.space2",
+			"flutter": "spacing.space2",
+			"react": "theme.spacing.space2",
+			"css": "--klp-spacing-space2",
+			"references": [
+				{
+					"path": "react/src/styles.css",
+					"line": 130
+				},
+				{
+					"path": "react/src/styles.css",
+					"line": 131
+				},
+				{
+					"path": "react/src/workbench-layout.tsx",
+					"line": 48
+				},
+				{
+					"path": "react/src/workbench-layout.tsx",
+					"line": 109
+				}
+			]
+		},
+		{
+			"id": "theme.spacing.space3",
+			"flutter": "spacing.space3",
+			"react": "theme.spacing.space3",
+			"css": "--klp-spacing-space3",
+			"references": []
+		},
+		{
+			"id": "theme.spacing.space4",
+			"flutter": "spacing.space4",
+			"react": "theme.spacing.space4",
+			"css": "--klp-spacing-space4",
+			"references": []
+		},
+		{
+			"id": "theme.spacing.space6",
+			"flutter": "spacing.space6",
+			"react": "theme.spacing.space6",
+			"css": "--klp-spacing-space6",
+			"references": []
+		},
+		{
+			"id": "theme.spacing.space8",
+			"flutter": "spacing.space8",
+			"react": "theme.spacing.space8",
+			"css": "--klp-spacing-space8",
+			"references": []
+		},
+		{
+			"id": "theme.spacing.space12",
+			"flutter": "spacing.space12",
+			"react": "theme.spacing.space12",
+			"css": "--klp-spacing-space12",
+			"references": []
+		},
+		{
+			"id": "theme.spacing.space16",
+			"flutter": "spacing.space16",
+			"react": "theme.spacing.space16",
+			"css": "--klp-spacing-space16",
+			"references": []
+		},
+		{
+			"id": "theme.spacing.space24",
+			"flutter": "spacing.space24",
+			"react": "theme.spacing.space24",
+			"css": "--klp-spacing-space24",
+			"references": []
+		},
+		{
+			"id": "theme.spacing.hairline",
+			"flutter": "spacing.hairline",
+			"react": "theme.spacing.hairline",
+			"css": "--klp-spacing-hairline",
+			"references": [
+				{
+					"path": "flutter/lib/src/styling/legacy_theme/internal/klp_visual_style_json_migration.dart",
+					"line": 18
+				},
+				{
+					"path": "flutter/lib/src/styling/legacy_theme/internal/klp_visual_style_json_migration.dart",
+					"line": 23
+				}
+			]
+		},
+		{
+			"id": "theme.spacing.tight",
+			"flutter": "spacing.tight",
+			"react": "theme.spacing.tight",
+			"css": "--klp-spacing-tight",
+			"references": [
+				{
+					"path": "react/src/command-entries.tsx",
+					"line": 103
+				},
+				{
+					"path": "react/src/command-entries.tsx",
+					"line": 104
+				},
+				{
+					"path": "react/src/command-palette.tsx",
+					"line": 87
+				},
+				{
+					"path": "react/src/styles.css",
+					"line": 109
+				},
+				{
+					"path": "react/src/styles.css",
+					"line": 158
+				},
+				{
+					"path": "react/src/styles.css",
+					"line": 171
+				},
+				{
+					"path": "react/src/styles.css",
+					"line": 181
+				},
+				{
+					"path": "react/src/styles.css",
+					"line": 185
+				},
+				{
+					"path": "react/src/styles.css",
+					"line": 218
+				},
+				{
+					"path": "flutter/lib/src/styling/legacy_theme/klp_component_theme.dart",
+					"line": 99
+				},
+				{
+					"path": "flutter/lib/src/styling/legacy_theme/klp_theme.dart",
+					"line": 296
+				}
+			]
+		},
+		{
+			"id": "theme.spacing.contentInlineGap",
+			"flutter": "spacing.contentInlineGap",
+			"react": "theme.spacing.contentInlineGap",
+			"css": "--klp-spacing-contentInlineGap",
+			"references": [
+				{
+					"path": "react/src/styles.css",
+					"line": 154
+				}
+			]
+		},
+		{
+			"id": "theme.spacing.contentStackGap",
+			"flutter": "spacing.contentStackGap",
+			"react": "theme.spacing.contentStackGap",
+			"css": "--klp-spacing-contentStackGap",
+			"references": []
+		},
+		{
+			"id": "theme.spacing.contentInset",
+			"flutter": "spacing.contentInset",
+			"react": "theme.spacing.contentInset",
+			"css": "--klp-spacing-contentInset",
+			"references": [
+				{
+					"path": "react/src/styles.css",
+					"line": 52
+				},
+				{
+					"path": "react/src/styles.css",
+					"line": 146
+				}
+			]
+		},
+		{
+			"id": "theme.spacing.controlContentGap",
+			"flutter": "spacing.controlContentGap",
+			"react": "theme.spacing.controlContentGap",
+			"css": "--klp-spacing-controlContentGap",
+			"references": [
+				{
+					"path": "react/src/command-entries.tsx",
+					"line": 112
+				},
+				{
+					"path": "react/src/styles.css",
+					"line": 75
+				},
+				{
+					"path": "react/src/styles.css",
+					"line": 232
+				}
+			]
+		},
+		{
+			"id": "theme.spacing.controlInset",
+			"flutter": "spacing.controlInset",
+			"react": "theme.spacing.controlInset",
+			"css": "--klp-spacing-controlInset",
+			"references": [
+				{
+					"path": "react/src/styles.css",
+					"line": 88
+				}
+			]
+		},
+		{
+			"id": "theme.spacing.actionGap",
+			"flutter": "spacing.actionGap",
+			"react": "theme.spacing.actionGap",
+			"css": "--klp-spacing-actionGap",
+			"references": [
+				{
+					"path": "react/src/modern-productivity-layout.tsx",
+					"line": 46
+				},
+				{
+					"path": "react/src/styles.css",
+					"line": 206
+				}
+			]
+		},
+		{
+			"id": "theme.spacing.chromeGap",
+			"flutter": "spacing.chromeGap",
+			"react": "theme.spacing.chromeGap",
+			"css": "--klp-spacing-chromeGap",
+			"references": []
+		},
+		{
+			"id": "theme.spacing.chromePanelInset",
+			"flutter": "spacing.chromePanelInset",
+			"react": "theme.spacing.chromePanelInset",
+			"css": "--klp-spacing-chromePanelInset",
+			"references": [
+				{
+					"path": "react/src/modern-productivity-layout.tsx",
+					"line": 45
+				}
+			]
+		},
+		{
+			"id": "theme.spacing.chromeToolbarGap",
+			"flutter": "spacing.chromeToolbarGap",
+			"react": "theme.spacing.chromeToolbarGap",
+			"css": "--klp-spacing-chromeToolbarGap",
+			"references": []
+		},
+		{
+			"id": "theme.spacing.navigationItemInset",
+			"flutter": "spacing.navigationItemInset",
+			"react": "theme.spacing.navigationItemInset",
+			"css": "--klp-spacing-navigationItemInset",
+			"references": [
+				{
+					"path": "react/src/styles.css",
+					"line": 148
+				}
+			]
+		},
+		{
+			"id": "theme.spacing.navigationRailInset",
+			"flutter": "spacing.navigationRailInset",
+			"react": "theme.spacing.navigationRailInset",
+			"css": "--klp-spacing-navigationRailInset",
+			"references": []
+		},
+		{
+			"id": "theme.spacing.navigationRailItemGap",
+			"flutter": "spacing.navigationRailItemGap",
+			"react": "theme.spacing.navigationRailItemGap",
+			"css": "--klp-spacing-navigationRailItemGap",
+			"references": []
+		},
+		{
+			"id": "theme.spacing.overlayContentInset",
+			"flutter": "spacing.overlayContentInset",
+			"react": "theme.spacing.overlayContentInset",
+			"css": "--klp-spacing-overlayContentInset",
+			"references": [
+				{
+					"path": "flutter/lib/src/styling/legacy_theme/klp_theme.dart",
+					"line": 295
+				}
+			]
+		},
+		{
+			"id": "theme.spacing.overlayHeadingGap",
+			"flutter": "spacing.overlayHeadingGap",
+			"react": "theme.spacing.overlayHeadingGap",
+			"css": "--klp-spacing-overlayHeadingGap",
+			"references": []
+		},
+		{
+			"id": "theme.spacing.overlayItemGap",
+			"flutter": "spacing.overlayItemGap",
+			"react": "theme.spacing.overlayItemGap",
+			"css": "--klp-spacing-overlayItemGap",
+			"references": [
+				{
+					"path": "react/src/command-entries.tsx",
+					"line": 112
+				},
+				{
+					"path": "react/src/command-palette.tsx",
+					"line": 91
+				},
+				{
+					"path": "react/src/styles.css",
+					"line": 240
+				}
+			]
+		},
+		{
+			"id": "theme.spacing.navigationSectionGap",
+			"flutter": "spacing.navigationSectionGap",
+			"react": "theme.spacing.navigationSectionGap",
+			"css": "--klp-spacing-navigationSectionGap",
+			"references": [
+				{
+					"path": "flutter/lib/src/styling/legacy_theme/internal/klp_visual_style_json_migration.dart",
+					"line": 18
+				}
+			]
+		},
+		{
+			"id": "theme.spacing.appFrameInset",
+			"flutter": "spacing.appFrameInset",
+			"react": "theme.spacing.appFrameInset",
+			"css": "--klp-spacing-appFrameInset",
+			"references": []
+		},
+		{
+			"id": "theme.spacing.windowHeaderMargin",
+			"flutter": "spacing.windowHeaderMargin",
+			"react": "theme.spacing.windowHeaderMargin",
+			"css": "--klp-spacing-windowHeaderMargin",
+			"references": []
+		},
+		{
+			"id": "theme.spacing.dockMargin",
+			"flutter": "spacing.dockMargin",
+			"react": "theme.spacing.dockMargin",
+			"css": "--klp-spacing-dockMargin",
+			"references": [
+				{
+					"path": "react/src/workbench-dock-view.ts",
+					"line": 41
+				}
+			]
+		},
+		{
+			"id": "theme.spacing.base",
+			"flutter": "spacing.base",
+			"react": "theme.spacing.base",
+			"css": "--klp-spacing-base",
+			"references": []
+		},
+		{
+			"id": "theme.spacing.comfortable",
+			"flutter": "spacing.comfortable",
+			"react": "theme.spacing.comfortable",
+			"css": "--klp-spacing-comfortable",
+			"references": []
+		},
+		{
+			"id": "theme.spacing.loose",
+			"flutter": "spacing.loose",
+			"react": "theme.spacing.loose",
+			"css": "--klp-spacing-loose",
+			"references": []
+		},
+		{
+			"id": "theme.spacing.section",
+			"flutter": "spacing.section",
+			"react": "theme.spacing.section",
+			"css": "--klp-spacing-section",
+			"references": [
+				{
+					"path": "flutter/lib/src/features/navigation/widgets/explorer/internal/klp_file_explorer_section_view.dart",
+					"line": 37
+				},
+				{
+					"path": "flutter/lib/src/features/navigation/widgets/explorer/internal/klp_file_explorer_section_view.dart",
+					"line": 45
+				}
+			]
+		},
+		{
+			"id": "theme.spacing.sectionLarge",
+			"flutter": "spacing.sectionLarge",
+			"react": "theme.spacing.sectionLarge",
+			"css": "--klp-spacing-sectionLarge",
+			"references": []
+		},
+		{
+			"id": "theme.spacing.page",
+			"flutter": "spacing.page",
+			"react": "theme.spacing.page",
+			"css": "--klp-spacing-page",
+			"references": []
+		},
+		{
+			"id": "theme.spacing.pageLarge",
+			"flutter": "spacing.pageLarge",
+			"react": "theme.spacing.pageLarge",
+			"css": "--klp-spacing-pageLarge",
+			"references": []
+		},
+		{
+			"id": "theme.spacing.controlPaddingXSmall",
+			"flutter": "spacing.controlPaddingXSmall",
+			"react": "theme.spacing.controlPaddingXSmall",
+			"css": "--klp-spacing-controlPaddingXSmall",
+			"references": [
+				{
+					"path": "react/src/styles.css",
+					"line": 89
+				}
+			]
+		},
+		{
+			"id": "theme.spacing.controlPaddingX",
+			"flutter": "spacing.controlPaddingX",
+			"react": "theme.spacing.controlPaddingX",
+			"css": "--klp-spacing-controlPaddingX",
+			"references": [
+				{
+					"path": "react/src/styles.css",
+					"line": 89
+				},
+				{
+					"path": "react/src/styles.css",
+					"line": 90
+				},
+				{
+					"path": "react/src/styles.css",
+					"line": 91
+				}
+			]
+		},
+		{
+			"id": "theme.spacing.controlPaddingXLarge",
+			"flutter": "spacing.controlPaddingXLarge",
+			"react": "theme.spacing.controlPaddingXLarge",
+			"css": "--klp-spacing-controlPaddingXLarge",
+			"references": [
+				{
+					"path": "react/src/styles.css",
+					"line": 90
+				}
+			]
+		},
+		{
+			"id": "theme.spacing.controlPaddingXXLarge",
+			"flutter": "spacing.controlPaddingXXLarge",
+			"react": "theme.spacing.controlPaddingXXLarge",
+			"css": "--klp-spacing-controlPaddingXXLarge",
+			"references": [
+				{
+					"path": "react/src/styles.css",
+					"line": 91
+				}
+			]
+		},
+		{
+			"id": "theme.spacing.controlPaddingY",
+			"flutter": "spacing.controlPaddingY",
+			"react": "theme.spacing.controlPaddingY",
+			"css": "--klp-spacing-controlPaddingY",
+			"references": []
+		},
+		{
+			"id": "theme.spacing.containerPadding",
+			"flutter": "spacing.containerPadding",
+			"react": "theme.spacing.containerPadding",
+			"css": "--klp-spacing-containerPadding",
+			"references": []
+		},
+		{
+			"id": "theme.spacing.itemGap",
+			"flutter": "spacing.itemGap",
+			"react": "theme.spacing.itemGap",
+			"css": "--klp-spacing-itemGap",
+			"references": []
+		},
+		{
+			"id": "theme.spacing.groupGap",
+			"flutter": "spacing.groupGap",
+			"react": "theme.spacing.groupGap",
+			"css": "--klp-spacing-groupGap",
+			"references": []
+		},
+		{
+			"id": "theme.spacing.controlHeightXSmall",
+			"flutter": "spacing.controlHeightXSmall",
+			"react": "theme.spacing.controlHeightXSmall",
+			"css": "--klp-spacing-controlHeightXSmall",
+			"references": [
+				{
+					"path": "react/src/styles.css",
+					"line": 157
+				},
+				{
+					"path": "react/src/styles.css",
+					"line": 168
+				}
+			]
+		},
+		{
+			"id": "theme.spacing.controlHeightSmall",
+			"flutter": "spacing.controlHeightSmall",
+			"react": "theme.spacing.controlHeightSmall",
+			"css": "--klp-spacing-controlHeightSmall",
+			"references": []
+		},
+		{
+			"id": "theme.spacing.controlHeight",
+			"flutter": "spacing.controlHeight",
+			"react": "theme.spacing.controlHeight",
+			"css": "--klp-spacing-controlHeight",
+			"references": [
+				{
+					"path": "react/src/styles.css",
+					"line": 157
+				},
+				{
+					"path": "react/src/styles.css",
+					"line": 168
+				}
+			]
+		},
+		{
+			"id": "theme.spacing.controlHeightLarge",
+			"flutter": "spacing.controlHeightLarge",
+			"react": "theme.spacing.controlHeightLarge",
+			"css": "--klp-spacing-controlHeightLarge",
+			"references": []
+		},
+		{
+			"id": "theme.spacing.controlHeightXLarge",
+			"flutter": "spacing.controlHeightXLarge",
+			"react": "theme.spacing.controlHeightXLarge",
+			"css": "--klp-spacing-controlHeightXLarge",
+			"references": []
+		},
+		{
+			"id": "theme.spacing.iconSmall",
+			"flutter": "spacing.iconSmall",
+			"react": "theme.spacing.iconSmall",
+			"css": "--klp-spacing-iconSmall",
+			"references": [
+				{
+					"path": "react/src/command-entries.tsx",
+					"line": 111
+				},
+				{
+					"path": "react/src/command-palette.tsx",
+					"line": 90
+				},
+				{
+					"path": "react/src/styles.css",
+					"line": 171
+				},
+				{
+					"path": "react/src/styles.css",
+					"line": 246
+				},
+				{
+					"path": "react/src/styles.css",
+					"line": 247
+				}
+			]
+		},
+		{
+			"id": "theme.spacing.iconBase",
+			"flutter": "spacing.iconBase",
+			"react": "theme.spacing.iconBase",
+			"css": "--klp-spacing-iconBase",
+			"references": [
+				{
+					"path": "react/src/styles.css",
+					"line": 99
+				}
+			]
+		},
+		{
+			"id": "theme.spacing.iconGlyph",
+			"flutter": "spacing.iconGlyph",
+			"react": "theme.spacing.iconGlyph",
+			"css": "--klp-spacing-iconGlyph",
+			"references": []
+		},
+		{
+			"id": "theme.spacing.icon",
+			"flutter": "spacing.icon",
+			"react": "theme.spacing.icon",
+			"css": "--klp-spacing-icon",
+			"references": [
+				{
+					"path": "react/src/command-entries.tsx",
+					"line": 111
+				},
+				{
+					"path": "react/src/command-palette.tsx",
+					"line": 90
+				},
+				{
+					"path": "react/src/styles.css",
+					"line": 99
+				},
+				{
+					"path": "react/src/styles.css",
+					"line": 171
+				},
+				{
+					"path": "react/src/styles.css",
+					"line": 246
+				},
+				{
+					"path": "react/src/styles.css",
+					"line": 247
+				},
+				{
+					"path": "react/src/workbench-dock-view.ts",
+					"line": 77
+				}
+			]
+		},
+		{
+			"id": "theme.spacing.iconMedium",
+			"flutter": "spacing.iconMedium",
+			"react": "theme.spacing.iconMedium",
+			"css": "--klp-spacing-iconMedium",
+			"references": []
+		},
+		{
+			"id": "theme.spacing.iconLarge",
+			"flutter": "spacing.iconLarge",
+			"react": "theme.spacing.iconLarge",
+			"css": "--klp-spacing-iconLarge",
+			"references": []
+		},
+		{
+			"id": "theme.spacing.chromeHeader",
+			"flutter": "spacing.chromeHeader",
+			"react": "theme.spacing.chromeHeader",
+			"css": "--klp-spacing-chromeHeader",
+			"references": [
+				{
+					"path": "react/src/modern-productivity-layout.tsx",
+					"line": 47
+				},
+				{
+					"path": "react/src/workbench-dock-view.ts",
+					"line": 53
+				}
+			]
+		},
+		{
+			"id": "theme.spacing.chromeStatusBar",
+			"flutter": "spacing.chromeStatusBar",
+			"react": "theme.spacing.chromeStatusBar",
+			"css": "--klp-spacing-chromeStatusBar",
+			"references": []
+		},
+		{
+			"id": "theme.spacing.chromeRail",
+			"flutter": "spacing.chromeRail",
+			"react": "theme.spacing.chromeRail",
+			"css": "--klp-spacing-chromeRail",
+			"references": []
+		},
+		{
+			"id": "theme.spacing.chromeTab",
+			"flutter": "spacing.chromeTab",
+			"react": "theme.spacing.chromeTab",
+			"css": "--klp-spacing-chromeTab",
+			"references": [
+				{
+					"path": "react/src/workbench-dock-view.ts",
+					"line": 40
+				}
+			]
+		},
+		{
+			"id": "theme.spacing.iconButton",
+			"flutter": "spacing.iconButton",
+			"react": "theme.spacing.iconButton",
+			"css": "--klp-spacing-iconButton",
+			"references": [
+				{
+					"path": "react/src/styles.css",
+					"line": 99
+				},
+				{
+					"path": "react/src/workbench-dock-view.ts",
+					"line": 77
+				}
+			]
+		},
+		{
+			"id": "theme.spacing.iconTiny",
+			"flutter": "spacing.iconTiny",
+			"react": "theme.spacing.iconTiny",
+			"css": "--klp-spacing-iconTiny",
+			"references": []
+		},
+		{
+			"id": "theme.spacing.indicatorDot",
+			"flutter": "spacing.indicatorDot",
+			"react": "theme.spacing.indicatorDot",
+			"css": "--klp-spacing-indicatorDot",
+			"references": []
+		},
+		{
+			"id": "theme.spacing.indicatorDotLarge",
+			"flutter": "spacing.indicatorDotLarge",
+			"react": "theme.spacing.indicatorDotLarge",
+			"css": "--klp-spacing-indicatorDotLarge",
+			"references": []
+		},
+		{
+			"id": "theme.spacing.noticeIconSlot",
+			"flutter": "spacing.noticeIconSlot",
+			"react": "theme.spacing.noticeIconSlot",
+			"css": "--klp-spacing-noticeIconSlot",
+			"references": []
+		},
+		{
+			"id": "theme.spacing.toastIconSlot",
+			"flutter": "spacing.toastIconSlot",
+			"react": "theme.spacing.toastIconSlot",
+			"css": "--klp-spacing-toastIconSlot",
+			"references": []
+		},
+		{
+			"id": "theme.spacing.gutterNumber",
+			"flutter": "spacing.gutterNumber",
+			"react": "theme.spacing.gutterNumber",
+			"css": "--klp-spacing-gutterNumber",
+			"references": []
+		},
+		{
+			"id": "theme.spacing.gutterMarker",
+			"flutter": "spacing.gutterMarker",
+			"react": "theme.spacing.gutterMarker",
+			"css": "--klp-spacing-gutterMarker",
+			"references": []
+		},
+		{
+			"id": "theme.spacing.micro",
+			"flutter": "spacing.micro",
+			"react": "theme.spacing.micro",
+			"css": "--klp-spacing-micro",
+			"references": []
+		},
+		{
+			"id": "theme.spacing.calendarContentCell",
+			"flutter": "spacing.calendarContentCell",
+			"react": "theme.spacing.calendarContentCell",
+			"css": "--klp-spacing-calendarContentCell",
+			"references": []
+		},
+		{
+			"id": "theme.spacing.gridTileWidth",
+			"flutter": "spacing.gridTileWidth",
+			"react": "theme.spacing.gridTileWidth",
+			"css": "--klp-spacing-gridTileWidth",
+			"references": []
+		},
+		{
+			"id": "theme.spacing.iconMicro",
+			"flutter": "spacing.iconMicro",
+			"react": "theme.spacing.iconMicro",
+			"css": "--klp-spacing-iconMicro",
+			"references": []
+		},
+		{
+			"id": "theme.spacing.avatarSmall",
+			"flutter": "spacing.avatarSmall",
+			"react": "theme.spacing.avatarSmall",
+			"css": "--klp-spacing-avatarSmall",
+			"references": []
+		},
+		{
+			"id": "theme.spacing.progressTrack",
+			"flutter": "spacing.progressTrack",
+			"react": "theme.spacing.progressTrack",
+			"css": "--klp-spacing-progressTrack",
+			"references": []
+		},
+		{
+			"id": "theme.spacing.skeletonLine",
+			"flutter": "spacing.skeletonLine",
+			"react": "theme.spacing.skeletonLine",
+			"css": "--klp-spacing-skeletonLine",
+			"references": []
+		},
+		{
+			"id": "theme.spacing.railItem",
+			"flutter": "spacing.railItem",
+			"react": "theme.spacing.railItem",
+			"css": "--klp-spacing-railItem",
+			"references": []
+		},
+		{
+			"id": "theme.shape.none",
+			"flutter": "shape.none",
+			"react": "theme.shape.none",
+			"css": "--klp-shape-none",
+			"references": [
+				{
+					"path": "flutter/lib/src/features/actions/button/internal/klp_button_style.dart",
+					"line": 127
+				},
+				{
+					"path": "flutter/lib/src/features/collections/stepper/internal/klp_stepper_vertical_layout.dart",
+					"line": 22
+				},
+				{
+					"path": "flutter/lib/src/features/collections/stepper/internal/klp_stepper_vertical_layout.dart",
+					"line": 23
+				},
+				{
+					"path": "flutter/lib/src/features/forms/input/primitives/klp_text_field_frame.dart",
+					"line": 53
+				},
+				{
+					"path": "flutter/lib/src/features/workspace/settings/navigation/klp_settings_navigation_item.dart",
+					"line": 41
+				},
+				{
+					"path": "flutter/lib/src/styling/legacy_theme/klp_component_theme.dart",
+					"line": 74
+				},
+				{
+					"path": "flutter/lib/src/styling/legacy_theme/klp_component_theme.dart",
+					"line": 83
+				}
+			]
+		},
+		{
+			"id": "theme.shape.sm",
+			"flutter": "shape.sm",
+			"react": "theme.shape.sm",
+			"css": "--klp-shape-sm",
+			"references": [
+				{
+					"path": "flutter/lib/src/features/forms/selection/internal/klp_checkbox_style.dart",
+					"line": 40
+				},
+				{
+					"path": "flutter/lib/src/features/forms/toggle/internal/klp_toggle_indicator_style.dart",
+					"line": 49
+				}
+			]
+		},
+		{
+			"id": "theme.shape.control",
+			"flutter": "shape.control",
+			"react": "theme.shape.control",
+			"css": "--klp-shape-control",
+			"references": [
+				{
+					"path": "react/src/styles.css",
+					"line": 161
+				},
+				{
+					"path": "react/src/styles.css",
+					"line": 242
+				},
+				{
+					"path": "react/src/styles.css",
+					"line": 304
+				},
+				{
+					"path": "flutter/lib/src/features/actions/button/internal/klp_icon_button_style.dart",
+					"line": 43
+				},
+				{
+					"path": "flutter/lib/src/features/actions/command_entries/klp_command_entries.dart",
+					"line": 386
+				},
+				{
+					"path": "flutter/lib/src/features/actions/command_menu/primitives/klp_command_item_action_frame.dart",
+					"line": 26
+				},
+				{
+					"path": "flutter/lib/src/features/actions/command_menu/primitives/klp_command_item_action_frame.dart",
+					"line": 29
+				},
+				{
+					"path": "flutter/lib/src/features/actions/command_palette/klp_command_palette.dart",
+					"line": 349
+				},
+				{
+					"path": "flutter/lib/src/features/actions/editor/primitives/klp_editor_action_frame.dart",
+					"line": 21
+				},
+				{
+					"path": "flutter/lib/src/features/actions/editor/primitives/klp_editor_action_frame.dart",
+					"line": 24
+				},
+				{
+					"path": "flutter/lib/src/features/collections/accordion/primitives/klp_accordion_header_frame_state.dart",
+					"line": 14
+				},
+				{
+					"path": "flutter/lib/src/features/collections/accordion/primitives/klp_accordion_header_frame_state.dart",
+					"line": 20
+				},
+				{
+					"path": "flutter/lib/src/features/collections/advanced/primitives/klp_advanced_style.dart",
+					"line": 56
+				},
+				{
+					"path": "flutter/lib/src/features/collections/badge/primitives/klp_tag_frame.dart",
+					"line": 17
+				},
+				{
+					"path": "flutter/lib/src/features/collections/code/primitives/klp_code_style.dart",
+					"line": 57
+				},
+				{
+					"path": "flutter/lib/src/features/collections/list_tile/primitives/klp_list_tile_frame_style.dart",
+					"line": 42
+				},
+				{
+					"path": "flutter/lib/src/features/collections/preview_card/primitives/klp_preview_card_viewport.dart",
+					"line": 24
+				},
+				{
+					"path": "flutter/lib/src/features/feedback/empty_state/klp_skeleton_line.dart",
+					"line": 13
+				},
+				{
+					"path": "flutter/lib/src/features/feedback/klp_inline_notice.dart",
+					"line": 92
+				},
+				{
+					"path": "flutter/lib/src/features/feedback/region_placeholder/klp_placeholder_action.dart",
+					"line": 15
+				},
+				{
+					"path": "flutter/lib/src/features/forms/selection/internal/klp_checkbox_style.dart",
+					"line": 39
+				},
+				{
+					"path": "flutter/lib/src/features/forms/selection/internal/klp_radio_item_style.dart",
+					"line": 31
+				},
+				{
+					"path": "flutter/lib/src/features/forms/selection/internal/klp_segment_style.dart",
+					"line": 37
+				},
+				{
+					"path": "flutter/lib/src/features/forms/selection/internal/klp_select_style.dart",
+					"line": 22
+				},
+				{
+					"path": "flutter/lib/src/features/forms/selection/internal/klp_sliding_selection_style.dart",
+					"line": 63
+				},
+				{
+					"path": "flutter/lib/src/features/forms/selection/internal/klp_sliding_selection_style.dart",
+					"line": 64
+				},
+				{
+					"path": "flutter/lib/src/features/forms/selection/primitives/klp_calendar_day_frame.dart",
+					"line": 30
+				},
+				{
+					"path": "flutter/lib/src/features/forms/selection/primitives/klp_status_role_swatch_frame.dart",
+					"line": 24
+				},
+				{
+					"path": "flutter/lib/src/features/forms/selection/primitives/klp_tag_chip_frame.dart",
+					"line": 18
+				},
+				{
+					"path": "flutter/lib/src/features/forms/selection/primitives/klp_tag_input_action_frame.dart",
+					"line": 18
+				},
+				{
+					"path": "flutter/lib/src/features/forms/structured/primitives/internal/klp_structured_frame_style.dart",
+					"line": 23
+				},
+				{
+					"path": "flutter/lib/src/features/forms/structured/primitives/internal/klp_structured_frame_style.dart",
+					"line": 40
+				},
+				{
+					"path": "flutter/lib/src/features/forms/structured/primitives/internal/klp_structured_frame_style.dart",
+					"line": 67
+				},
+				{
+					"path": "flutter/lib/src/features/forms/structured/primitives/internal/klp_structured_frame_style.dart",
+					"line": 94
+				},
+				{
+					"path": "flutter/lib/src/features/forms/structured/primitives/internal/klp_structured_frame_style.dart",
+					"line": 111
+				},
+				{
+					"path": "flutter/lib/src/features/forms/structured/primitives/klp_file_progress_track.dart",
+					"line": 13
+				},
+				{
+					"path": "flutter/lib/src/features/forms/toggle/internal/klp_phase_toggle_style.dart",
+					"line": 88
+				},
+				{
+					"path": "flutter/lib/src/features/forms/toggle/internal/klp_phase_toggle_style.dart",
+					"line": 89
+				},
+				{
+					"path": "flutter/lib/src/features/navigation/widgets/controls/primitives/klp_view_choice_frame.dart",
+					"line": 33
+				},
+				{
+					"path": "flutter/lib/src/features/navigation/widgets/controls/primitives/klp_view_switcher_frame.dart",
+					"line": 12
+				},
+				{
+					"path": "flutter/lib/src/features/navigation/widgets/sidebar/primitives/klp_sidebar_identity_icon_frame.dart",
+					"line": 15
+				},
+				{
+					"path": "flutter/lib/src/features/navigation/widgets/sidebar/primitives/klp_sidebar_navigation_button_frame.dart",
+					"line": 38
+				},
+				{
+					"path": "flutter/lib/src/features/navigation/widgets/tabs/klp_document_tabs.dart",
+					"line": 123
+				},
+				{
+					"path": "flutter/lib/src/features/navigation/widgets/tabs/primitives/klp_tab_frame.dart",
+					"line": 17
+				},
+				{
+					"path": "flutter/lib/src/features/overlays/tooltip/klp_tooltip_surface.dart",
+					"line": 14
+				},
+				{
+					"path": "flutter/lib/src/features/workspace/entity_picker/primitives/klp_entity_result_frame.dart",
+					"line": 17
+				},
+				{
+					"path": "flutter/lib/src/features/workspace/settings/navigation/klp_settings_navigation_header.dart",
+					"line": 72
+				},
+				{
+					"path": "flutter/lib/src/features/workspace/settings/navigation/klp_settings_scope_switcher.dart",
+					"line": 23
+				},
+				{
+					"path": "flutter/lib/src/features/workspace/settings/navigation/klp_settings_scope_switcher.dart",
+					"line": 35
+				},
+				{
+					"path": "flutter/lib/src/features/workspace/settings/navigation/klp_settings_scope_switcher.dart",
+					"line": 41
+				},
+				{
+					"path": "flutter/lib/src/features/workspace/shell/docking/primitives/klp_dock_tab_surface.dart",
+					"line": 16
+				},
+				{
+					"path": "flutter/lib/src/foundation/content/klp_rich_text.dart",
+					"line": 113
+				},
+				{
+					"path": "flutter/lib/src/foundation/interaction/filter/primitives/klp_filter_chip_frame.dart",
+					"line": 32
+				},
+				{
+					"path": "flutter/lib/src/foundation/interaction/filter/primitives/klp_shortcut_hint_frame.dart",
+					"line": 12
+				},
+				{
+					"path": "flutter/lib/src/foundation/interaction/klp_state_highlight.dart",
+					"line": 48
+				},
+				{
+					"path": "flutter/lib/src/foundation/interaction/primitives/klp_action_region_widget.dart",
+					"line": 39
+				},
+				{
+					"path": "flutter/lib/src/foundation/klp_inline_code.dart",
+					"line": 28
+				},
+				{
+					"path": "flutter/lib/src/foundation/klp_inline_code.dart",
+					"line": 34
+				},
+				{
+					"path": "flutter/lib/src/foundation/klp_segmented_progress.dart",
+					"line": 29
+				},
+				{
+					"path": "flutter/lib/src/foundation/surface/klp_stroke.dart",
+					"line": 42
+				},
+				{
+					"path": "flutter/lib/src/foundation/surface/klp_surface.dart",
+					"line": 60
+				},
+				{
+					"path": "flutter/lib/src/styling/legacy_theme/klp_component_theme.dart",
+					"line": 66
+				},
+				{
+					"path": "flutter/lib/src/styling/legacy_theme/klp_component_theme.dart",
+					"line": 77
+				},
+				{
+					"path": "flutter/lib/src/styling/legacy_theme/klp_theme.dart",
+					"line": 32
+				},
+				{
+					"path": "flutter/lib/src/styling/legacy_theme/klp_theme.dart",
+					"line": 284
+				}
+			]
+		},
+		{
+			"id": "theme.shape.controlInner",
+			"flutter": "shape.controlInner",
+			"react": "theme.shape.controlInner",
+			"css": "--klp-shape-controlInner",
+			"references": [
+				{
+					"path": "flutter/lib/src/features/forms/selection/internal/klp_sliding_selection_style.dart",
+					"line": 64
+				},
+				{
+					"path": "flutter/lib/src/features/forms/toggle/internal/klp_phase_toggle_style.dart",
+					"line": 89
+				},
+				{
+					"path": "flutter/lib/src/features/workspace/settings/navigation/klp_settings_scope_switcher.dart",
+					"line": 35
+				},
+				{
+					"path": "flutter/lib/src/features/workspace/settings/navigation/klp_settings_scope_switcher.dart",
+					"line": 41
+				}
+			]
+		},
+		{
+			"id": "theme.shape.toggleTrack",
+			"flutter": "shape.toggleTrack",
+			"react": "theme.shape.toggleTrack",
+			"css": "--klp-shape-toggleTrack",
+			"references": [
+				{
+					"path": "flutter/lib/src/features/forms/toggle/internal/klp_toggle_frame_style.dart",
+					"line": 12
+				},
+				{
+					"path": "flutter/lib/src/features/forms/toggle/internal/klp_toggle_indicator_style.dart",
+					"line": 48
+				}
+			]
+		},
+		{
+			"id": "theme.shape.card",
+			"flutter": "shape.card",
+			"react": "theme.shape.card",
+			"css": "--klp-shape-card",
+			"references": [
+				{
+					"path": "react/src/workbench-dock-view.ts",
+					"line": 43
+				},
+				{
+					"path": "flutter/lib/src/features/actions/command_menu/primitives/klp_command_menu_surface_frame.dart",
+					"line": 13
+				},
+				{
+					"path": "flutter/lib/src/features/actions/selection_toolbar/primitives/klp_selection_toolbar_dashed_frame.dart",
+					"line": 10
+				},
+				{
+					"path": "flutter/lib/src/features/collections/advanced/primitives/klp_advanced_style.dart",
+					"line": 55
+				},
+				{
+					"path": "flutter/lib/src/features/collections/avatar/primitives/klp_avatar_frame.dart",
+					"line": 45
+				},
+				{
+					"path": "flutter/lib/src/features/collections/card/primitives/klp_metric_card_frame.dart",
+					"line": 18
+				},
+				{
+					"path": "flutter/lib/src/features/collections/card/primitives/klp_metric_card_frame.dart",
+					"line": 23
+				},
+				{
+					"path": "flutter/lib/src/features/collections/code/primitives/klp_code_style.dart",
+					"line": 56
+				},
+				{
+					"path": "flutter/lib/src/features/collections/key_value/primitives/klp_key_value_table_frame.dart",
+					"line": 13
+				},
+				{
+					"path": "flutter/lib/src/features/feedback/empty_state/klp_empty_state_widget.dart",
+					"line": 23
+				},
+				{
+					"path": "flutter/lib/src/features/feedback/region_placeholder/klp_region_placeholder_widget.dart",
+					"line": 41
+				},
+				{
+					"path": "flutter/lib/src/features/feedback/toast/klp_toast_widget.dart",
+					"line": 42
+				},
+				{
+					"path": "flutter/lib/src/features/feedback/view_states/klp_view_state.dart",
+					"line": 21
+				},
+				{
+					"path": "flutter/lib/src/features/forms/color/internal/klp_oklch_color_picker_style.dart",
+					"line": 28
+				},
+				{
+					"path": "flutter/lib/src/features/forms/color/internal/klp_oklch_plane_style.dart",
+					"line": 20
+				},
+				{
+					"path": "flutter/lib/src/features/forms/input/primitives/klp_compound_field_options_panel.dart",
+					"line": 16
+				},
+				{
+					"path": "flutter/lib/src/features/forms/selection/internal/klp_segmented_control_style.dart",
+					"line": 24
+				},
+				{
+					"path": "flutter/lib/src/features/forms/structured/primitives/internal/klp_structured_frame_style.dart",
+					"line": 55
+				},
+				{
+					"path": "flutter/lib/src/features/forms/structured/primitives/internal/klp_structured_frame_style.dart",
+					"line": 82
+				},
+				{
+					"path": "flutter/lib/src/features/workspace/shell/panel/primitives/klp_panel_frame_view.dart",
+					"line": 62
+				},
+				{
+					"path": "flutter/lib/src/features/workspace/shell/panel/primitives/klp_panel_frame_view.dart",
+					"line": 76
+				},
+				{
+					"path": "flutter/lib/src/foundation/interaction/primitives/klp_action_region_widget.dart",
+					"line": 38
+				},
+				{
+					"path": "flutter/lib/src/styling/legacy_theme/klp_component_theme.dart",
+					"line": 85
+				},
+				{
+					"path": "flutter/lib/src/styling/legacy_theme/klp_component_theme.dart",
+					"line": 93
+				}
+			]
+		},
+		{
+			"id": "theme.shape.panel",
+			"flutter": "shape.panel",
+			"react": "theme.shape.panel",
+			"css": "--klp-shape-panel",
+			"references": [
+				{
+					"path": "react/src/modern-productivity-layout.tsx",
+					"line": 56
+				},
+				{
+					"path": "react/src/styles.css",
+					"line": 137
+				},
+				{
+					"path": "flutter/lib/src/features/overlays/drawer/klp_drawer_widget.dart",
+					"line": 109
+				},
+				{
+					"path": "flutter/lib/src/features/overlays/klp_dialog.dart",
+					"line": 41
+				},
+				{
+					"path": "flutter/lib/src/features/overlays/popup/klp_popup_panel.dart",
+					"line": 27
+				},
+				{
+					"path": "flutter/lib/src/features/workspace/anchored_popup/internal/klp_anchored_popup_panel.dart",
+					"line": 24
+				},
+				{
+					"path": "flutter/lib/src/features/workspace/layout/klp_app_layout.dart",
+					"line": 250
+				},
+				{
+					"path": "flutter/lib/src/features/workspace/layout/klp_app_layout.dart",
+					"line": 339
+				},
+				{
+					"path": "flutter/lib/src/features/workspace/settings/layout/klp_settings_content_pane.dart",
+					"line": 28
+				},
+				{
+					"path": "flutter/lib/src/features/workspace/settings/layout/klp_settings_navigation_pane.dart",
+					"line": 26
+				},
+				{
+					"path": "flutter/lib/src/features/workspace/shell/stage/primitives/klp_stage_tab_frame.dart",
+					"line": 13
+				},
+				{
+					"path": "flutter/lib/src/features/workspace/shell/theme/primitives/klp_theme_preview_artwork.dart",
+					"line": 15
+				},
+				{
+					"path": "flutter/lib/src/features/workspace/shell/theme/primitives/klp_theme_preview_artwork.dart",
+					"line": 20
+				},
+				{
+					"path": "flutter/lib/src/features/workspace/shell/theme/primitives/klp_theme_preview_tile_frame.dart",
+					"line": 41
+				},
+				{
+					"path": "flutter/lib/src/foundation/layout/klp_region.dart",
+					"line": 32
+				}
+			]
+		},
+		{
+			"id": "theme.shape.pill",
+			"flutter": "shape.pill",
+			"react": "theme.shape.pill",
+			"css": "--klp-shape-pill",
+			"references": [
+				{
+					"path": "flutter/lib/src/features/collections/avatar/primitives/klp_avatar_frame.dart",
+					"line": 45
+				},
+				{
+					"path": "flutter/lib/src/features/collections/progress/primitives/klp_progress_track.dart",
+					"line": 24
+				},
+				{
+					"path": "flutter/lib/src/features/forms/selection/primitives/klp_multi_select_option_frame.dart",
+					"line": 23
+				},
+				{
+					"path": "flutter/lib/src/features/forms/toggle/internal/klp_compact_switch_style.dart",
+					"line": 36
+				},
+				{
+					"path": "flutter/lib/src/features/workspace/shell/docking/primitives/klp_dock_indicator_frame.dart",
+					"line": 21
+				},
+				{
+					"path": "flutter/lib/src/foundation/interaction/filter/primitives/klp_presence_marker.dart",
+					"line": 20
+				},
+				{
+					"path": "flutter/lib/src/foundation/interaction/klp_drag_drop.dart",
+					"line": 58
+				},
+				{
+					"path": "flutter/lib/src/styling/legacy_theme/klp_component_theme.dart",
+					"line": 97
+				},
+				{
+					"path": "flutter/lib/src/styling/legacy_theme/klp_theme.dart",
+					"line": 278
+				}
+			]
+		},
+		{
+			"id": "theme.shape.hairline",
+			"flutter": "shape.hairline",
+			"react": "theme.shape.hairline",
+			"css": "--klp-shape-hairline",
+			"references": [
+				{
+					"path": "react/src/styles.css",
+					"line": 58
+				},
+				{
+					"path": "flutter/lib/src/features/collections/advanced/primitives/klp_advanced_style.dart",
+					"line": 57
+				},
+				{
+					"path": "flutter/lib/src/features/collections/badge/primitives/klp_badge_frame.dart",
+					"line": 47
+				},
+				{
+					"path": "flutter/lib/src/features/collections/badge/primitives/klp_tag_frame.dart",
+					"line": 20
+				},
+				{
+					"path": "flutter/lib/src/features/collections/card/primitives/klp_metric_card_frame.dart",
+					"line": 24
+				},
+				{
+					"path": "flutter/lib/src/features/collections/code/primitives/klp_code_style.dart",
+					"line": 58
+				},
+				{
+					"path": "flutter/lib/src/features/collections/date_grid/primitives/klp_date_grid_cell_frame.dart",
+					"line": 22
+				},
+				{
+					"path": "flutter/lib/src/features/collections/key_value/primitives/klp_key_value_table_frame.dart",
+					"line": 16
+				},
+				{
+					"path": "flutter/lib/src/features/collections/stepper/primitives/klp_step_marker.dart",
+					"line": 34
+				},
+				{
+					"path": "flutter/lib/src/features/collections/timeline/primitives/klp_timeline_rail.dart",
+					"line": 36
+				},
+				{
+					"path": "flutter/lib/src/features/collections/timeline/primitives/klp_timeline_rail.dart",
+					"line": 54
+				},
+				{
+					"path": "flutter/lib/src/features/feedback/primitives/klp_placeholder_marker_glyph.dart",
+					"line": 26
+				},
+				{
+					"path": "flutter/lib/src/features/feedback/region_placeholder/klp_region_placeholder_widget.dart",
+					"line": 43
+				},
+				{
+					"path": "flutter/lib/src/features/forms/color/internal/klp_oklch_color_picker_style.dart",
+					"line": 30
+				},
+				{
+					"path": "flutter/lib/src/features/forms/color/internal/klp_oklch_plane_style.dart",
+					"line": 22
+				},
+				{
+					"path": "flutter/lib/src/features/forms/internal/primitives/klp_input_segment_divider.dart",
+					"line": 10
+				},
+				{
+					"path": "flutter/lib/src/features/forms/selection/internal/klp_sliding_selection_style.dart",
+					"line": 61
+				},
+				{
+					"path": "flutter/lib/src/features/forms/selection/primitives/klp_calendar_day_frame.dart",
+					"line": 32
+				},
+				{
+					"path": "flutter/lib/src/features/forms/selection/primitives/klp_tag_chip_frame.dart",
+					"line": 21
+				},
+				{
+					"path": "flutter/lib/src/features/forms/selection/primitives/klp_tag_input_action_frame.dart",
+					"line": 21
+				},
+				{
+					"path": "flutter/lib/src/features/forms/structured/primitives/internal/klp_structured_frame_style.dart",
+					"line": 31
+				},
+				{
+					"path": "flutter/lib/src/features/forms/structured/primitives/internal/klp_structured_frame_style.dart",
+					"line": 58
+				},
+				{
+					"path": "flutter/lib/src/features/forms/structured/primitives/internal/klp_structured_frame_style.dart",
+					"line": 85
+				},
+				{
+					"path": "flutter/lib/src/features/forms/structured/primitives/internal/klp_structured_frame_style.dart",
+					"line": 102
+				},
+				{
+					"path": "flutter/lib/src/features/forms/toggle/internal/klp_phase_toggle_style.dart",
+					"line": 54
+				},
+				{
+					"path": "flutter/lib/src/features/forms/toggle/internal/klp_phase_toggle_style.dart",
+					"line": 91
+				},
+				{
+					"path": "flutter/lib/src/features/infinite_canvas/primitives/klp_canvas_drop_intent_frame.dart",
+					"line": 20
+				},
+				{
+					"path": "flutter/lib/src/features/infinite_canvas/primitives/klp_canvas_selection_frame.dart",
+					"line": 26
+				},
+				{
+					"path": "flutter/lib/src/features/infinite_canvas/primitives/klp_canvas_selection_frame.dart",
+					"line": 48
+				},
+				{
+					"path": "flutter/lib/src/features/infinite_canvas/primitives/klp_flow_node_frame.dart",
+					"line": 27
+				},
+				{
+					"path": "flutter/lib/src/features/workspace/layout/klp_frame_groups.dart",
+					"line": 158
+				},
+				{
+					"path": "flutter/lib/src/features/workspace/settings/navigation/klp_settings_navigation_item.dart",
+					"line": 45
+				},
+				{
+					"path": "flutter/lib/src/foundation/interaction/filter/primitives/klp_filter_chip_frame.dart",
+					"line": 35
+				},
+				{
+					"path": "flutter/lib/src/foundation/surface/klp_dashed_border.dart",
+					"line": 92
+				},
+				{
+					"path": "flutter/lib/src/foundation/surface/klp_stroke.dart",
+					"line": 43
+				},
+				{
+					"path": "flutter/lib/src/foundation/surface/page_background/klp_page_background.dart",
+					"line": 49
+				},
+				{
+					"path": "flutter/lib/src/foundation/surface/page_background/klp_page_background_editor.dart",
+					"line": 76
+				}
+			]
+		},
+		{
+			"id": "theme.shape.stroke",
+			"flutter": "shape.stroke",
+			"react": "theme.shape.stroke",
+			"css": "--klp-shape-stroke",
+			"references": [
+				{
+					"path": "react/src/styles.css",
+					"line": 106
+				},
+				{
+					"path": "react/src/styles.css",
+					"line": 192
+				},
+				{
+					"path": "react/src/workbench-dock-view.ts",
+					"line": 42
+				},
+				{
+					"path": "flutter/lib/src/features/collections/stepper/primitives/klp_step_connector.dart",
+					"line": 18
+				},
+				{
+					"path": "flutter/lib/src/features/collections/stepper/primitives/klp_step_connector.dart",
+					"line": 22
+				},
+				{
+					"path": "flutter/lib/src/features/collections/stepper/primitives/klp_step_marker.dart",
+					"line": 24
+				},
+				{
+					"path": "flutter/lib/src/features/collections/stepper/primitives/klp_step_marker.dart",
+					"line": 29
+				},
+				{
+					"path": "flutter/lib/src/features/forms/color/internal/klp_oklch_plane_style.dart",
+					"line": 22
+				},
+				{
+					"path": "flutter/lib/src/features/forms/color/internal/klp_oklch_plane_style.dart",
+					"line": 24
+				},
+				{
+					"path": "flutter/lib/src/features/forms/input/internal/klp_text_field_style.dart",
+					"line": 81
+				},
+				{
+					"path": "flutter/lib/src/features/forms/selection/internal/klp_checkbox_style.dart",
+					"line": 41
+				},
+				{
+					"path": "flutter/lib/src/features/forms/selection/internal/klp_radio_item_style.dart",
+					"line": 34
+				},
+				{
+					"path": "flutter/lib/src/features/forms/structured/primitives/klp_file_progress_track.dart",
+					"line": 15
+				},
+				{
+					"path": "flutter/lib/src/features/overlays/menu/klp_menu_layout.dart",
+					"line": 48
+				},
+				{
+					"path": "flutter/lib/src/features/workspace/shell/docking/klp_dock_layout.dart",
+					"line": 367
+				},
+				{
+					"path": "flutter/lib/src/features/workspace/shell/docking/klp_dock_layout.dart",
+					"line": 383
+				},
+				{
+					"path": "flutter/lib/src/features/workspace/shell/docking/klp_dock_layout.dart",
+					"line": 819
+				},
+				{
+					"path": "flutter/lib/src/features/workspace/shell/docking/klp_dock_layout.dart",
+					"line": 820
+				},
+				{
+					"path": "flutter/lib/src/features/workspace/shell/docking/primitives/klp_dock_resize_handle.dart",
+					"line": 47
+				},
+				{
+					"path": "flutter/lib/src/features/workspace/shell/panel/primitives/klp_panel_frame_view.dart",
+					"line": 62
+				},
+				{
+					"path": "flutter/lib/src/foundation/interaction/klp_drag_drop.dart",
+					"line": 52
+				},
+				{
+					"path": "flutter/lib/src/foundation/layout/klp_resize_handle.dart",
+					"line": 71
+				},
+				{
+					"path": "flutter/lib/src/foundation/surface/klp_divider.dart",
+					"line": 13
+				},
+				{
+					"path": "flutter/lib/src/foundation/surface/klp_divider.dart",
+					"line": 14
+				},
+				{
+					"path": "flutter/lib/src/foundation/surface/page_background/klp_page_background.dart",
+					"line": 50
+				}
+			]
+		},
+		{
+			"id": "theme.shape.dashedLength",
+			"flutter": "shape.dashedLength",
+			"react": "theme.shape.dashedLength",
+			"css": "--klp-shape-dashedLength",
+			"references": [
+				{
+					"path": "flutter/lib/src/features/workspace/layout/klp_frame_groups.dart",
+					"line": 167
+				},
+				{
+					"path": "flutter/lib/src/foundation/surface/klp_dashed_border.dart",
+					"line": 107
+				},
+				{
+					"path": "flutter/lib/src/foundation/surface/klp_stroke.dart",
+					"line": 44
+				}
+			]
+		},
+		{
+			"id": "theme.shape.dashedGap",
+			"flutter": "shape.dashedGap",
+			"react": "theme.shape.dashedGap",
+			"css": "--klp-shape-dashedGap",
+			"references": [
+				{
+					"path": "flutter/lib/src/features/workspace/layout/klp_frame_groups.dart",
+					"line": 168
+				},
+				{
+					"path": "flutter/lib/src/foundation/surface/klp_dashed_border.dart",
+					"line": 108
+				},
+				{
+					"path": "flutter/lib/src/foundation/surface/klp_stroke.dart",
+					"line": 45
+				}
+			]
+		},
+		{
+			"id": "theme.shape.dashedOpacity",
+			"flutter": "shape.dashedOpacity",
+			"react": "theme.shape.dashedOpacity",
+			"css": "--klp-shape-dashedOpacity",
+			"references": [
+				{
+					"path": "flutter/lib/src/foundation/surface/klp_dashed_border.dart",
+					"line": 98
+				},
+				{
+					"path": "flutter/lib/src/foundation/surface/klp_stroke.dart",
+					"line": 51
+				}
+			]
+		},
+		{
+			"id": "theme.motion.themeTransition",
+			"flutter": "motion.themeTransition",
+			"react": "theme.motion.themeTransition",
+			"css": "--klp-motion-themeTransition",
+			"references": [
+				{
+					"path": "flutter/lib/src/styling/legacy_theme/internal/klp_visual_style_json_effects.dart",
+					"line": 116
+				}
+			]
+		},
+		{
+			"id": "theme.motion.styleTransition",
+			"flutter": "motion.styleTransition",
+			"react": "theme.motion.styleTransition",
+			"css": "--klp-motion-styleTransition",
+			"references": [
+				{
+					"path": "flutter/lib/src/features/forms/selection/internal/klp_checkbox_style.dart",
+					"line": 43
+				},
+				{
+					"path": "flutter/lib/src/features/forms/selection/internal/klp_radio_item_style.dart",
+					"line": 36
+				},
+				{
+					"path": "flutter/lib/src/features/forms/selection/internal/klp_sliding_selection_style.dart",
+					"line": 67
+				},
+				{
+					"path": "flutter/lib/src/features/forms/toggle/internal/klp_phase_toggle_style.dart",
+					"line": 100
+				},
+				{
+					"path": "flutter/lib/src/foundation/interaction/filter/primitives/klp_filter_chip_frame.dart",
+					"line": 24
+				},
+				{
+					"path": "flutter/lib/src/styling/legacy_theme/internal/klp_visual_style_json_effects.dart",
+					"line": 120
+				}
+			]
+		},
+		{
+			"id": "theme.motion.stateTransition",
+			"flutter": "motion.stateTransition",
+			"react": "theme.motion.stateTransition",
+			"css": "--klp-motion-stateTransition",
+			"references": [
+				{
+					"path": "react/src/styles.css",
+					"line": 84
+				},
+				{
+					"path": "flutter/lib/src/features/collections/accordion/primitives/klp_accordion_body.dart",
+					"line": 14
+				},
+				{
+					"path": "flutter/lib/src/features/collections/accordion/primitives/klp_accordion_chevron.dart",
+					"line": 14
+				},
+				{
+					"path": "flutter/lib/src/features/forms/core/primitives/klp_conditional_field_animation.dart",
+					"line": 16
+				},
+				{
+					"path": "flutter/lib/src/features/forms/selection/internal/klp_sliding_selection_style.dart",
+					"line": 66
+				},
+				{
+					"path": "flutter/lib/src/features/forms/toggle/internal/klp_compact_switch_style.dart",
+					"line": 40
+				},
+				{
+					"path": "flutter/lib/src/features/forms/toggle/internal/klp_phase_toggle_style.dart",
+					"line": 99
+				},
+				{
+					"path": "flutter/lib/src/features/navigation/widgets/explorer/primitives/klp_file_explorer_disclosure.dart",
+					"line": 19
+				},
+				{
+					"path": "flutter/lib/src/features/navigation/widgets/navigator/primitives/klp_navigator_disclosure.dart",
+					"line": 19
+				},
+				{
+					"path": "flutter/lib/src/features/navigation/widgets/rail/primitives/klp_rail_drop_slot.dart",
+					"line": 29
+				},
+				{
+					"path": "flutter/lib/src/foundation/klp_geometric_spinner_state.dart",
+					"line": 18
+				},
+				{
+					"path": "flutter/lib/src/foundation/klp_geometric_spinner_state.dart",
+					"line": 38
+				},
+				{
+					"path": "flutter/lib/src/styling/legacy_theme/internal/klp_visual_style_json_effects.dart",
+					"line": 124
+				}
+			]
+		},
+		{
+			"id": "theme.motion.overlayEnter",
+			"flutter": "motion.overlayEnter",
+			"react": "theme.motion.overlayEnter",
+			"css": "--klp-motion-overlayEnter",
+			"references": [
+				{
+					"path": "flutter/lib/src/features/collections/code/primitives/klp_code_menu_presenter.dart",
+					"line": 27
+				},
+				{
+					"path": "flutter/lib/src/features/overlays/drawer/klp_drawer_widget.dart",
+					"line": 75
+				},
+				{
+					"path": "flutter/lib/src/foundation/layout/klp_sliding_drawer_layout.dart",
+					"line": 28
+				},
+				{
+					"path": "flutter/lib/src/styling/legacy_theme/internal/klp_visual_style_json_effects.dart",
+					"line": 126
+				}
+			]
+		},
+		{
+			"id": "theme.motion.overlayExit",
+			"flutter": "motion.overlayExit",
+			"react": "theme.motion.overlayExit",
+			"css": "--klp-motion-overlayExit",
+			"references": [
+				{
+					"path": "flutter/lib/src/features/overlays/drawer/klp_drawer_widget.dart",
+					"line": 76
+				},
+				{
+					"path": "flutter/lib/src/styling/legacy_theme/internal/klp_visual_style_json_effects.dart",
+					"line": 127
+				}
+			]
+		},
+		{
+			"id": "theme.motion.toastDwell",
+			"flutter": "motion.toastDwell",
+			"react": "theme.motion.toastDwell",
+			"css": "--klp-motion-toastDwell",
+			"references": [
+				{
+					"path": "flutter/lib/src/features/feedback/toast/klp_toast_widget.dart",
+					"line": 3
+				},
+				{
+					"path": "flutter/lib/src/styling/legacy_theme/internal/klp_visual_style_json_effects.dart",
+					"line": 128
+				}
+			]
+		},
+		{
+			"id": "theme.motion.tooltipDelay",
+			"flutter": "motion.tooltipDelay",
+			"react": "theme.motion.tooltipDelay",
+			"css": "--klp-motion-tooltipDelay",
+			"references": [
+				{
+					"path": "flutter/lib/src/styling/legacy_theme/internal/klp_visual_style_json_effects.dart",
+					"line": 129
+				},
+				{
+					"path": "flutter/lib/src/styling/legacy_theme/klp_theme.dart",
+					"line": 298
+				}
+			]
+		},
+		{
+			"id": "theme.motion.tooltipDwell",
+			"flutter": "motion.tooltipDwell",
+			"react": "theme.motion.tooltipDwell",
+			"css": "--klp-motion-tooltipDwell",
+			"references": [
+				{
+					"path": "flutter/lib/src/styling/legacy_theme/internal/klp_visual_style_json_effects.dart",
+					"line": 130
+				},
+				{
+					"path": "flutter/lib/src/styling/legacy_theme/klp_theme.dart",
+					"line": 299
+				}
+			]
+		},
+		{
+			"id": "theme.motion.spinnerCycle",
+			"flutter": "motion.spinnerCycle",
+			"react": "theme.motion.spinnerCycle",
+			"css": "--klp-motion-spinnerCycle",
+			"references": [
+				{
+					"path": "flutter/lib/src/foundation/klp_geometric_spinner_state.dart",
+					"line": 17
+				},
+				{
+					"path": "flutter/lib/src/styling/legacy_theme/internal/klp_visual_style_json_effects.dart",
+					"line": 131
+				}
+			]
+		},
+		{
+			"id": "theme.motion.longPressThreshold",
+			"flutter": "motion.longPressThreshold",
+			"react": "theme.motion.longPressThreshold",
+			"css": "--klp-motion-longPressThreshold",
+			"references": [
+				{
+					"path": "flutter/lib/src/features/overlays/context_menu/klp_context_menu_state.dart",
+					"line": 113
+				},
+				{
+					"path": "flutter/lib/src/foundation/interaction/klp_interaction_settings.dart",
+					"line": 25
+				},
+				{
+					"path": "flutter/lib/src/styling/legacy_theme/internal/klp_visual_style_json_effects.dart",
+					"line": 134
+				}
+			]
+		},
+		{
+			"id": "theme.motion.standard",
+			"flutter": "motion.standard",
+			"react": "theme.motion.standard",
+			"css": "--klp-motion-standard",
+			"references": [
+				{
+					"path": "flutter/lib/src/features/collections/accordion/primitives/klp_accordion_body.dart",
+					"line": 15
+				},
+				{
+					"path": "flutter/lib/src/features/collections/accordion/primitives/klp_accordion_chevron.dart",
+					"line": 15
+				},
+				{
+					"path": "flutter/lib/src/features/forms/selection/internal/klp_sliding_selection_style.dart",
+					"line": 68
+				},
+				{
+					"path": "flutter/lib/src/features/navigation/widgets/rail/primitives/klp_rail_drop_slot.dart",
+					"line": 30
+				},
+				{
+					"path": "flutter/lib/src/features/overlays/drawer/klp_drawer_widget.dart",
+					"line": 85
+				},
+				{
+					"path": "flutter/lib/src/features/overlays/drawer/klp_drawer_widget.dart",
+					"line": 103
+				},
+				{
+					"path": "flutter/lib/src/foundation/layout/klp_sliding_drawer_layout.dart",
+					"line": 47
+				},
+				{
+					"path": "flutter/lib/src/foundation/layout/klp_sliding_drawer_layout.dart",
+					"line": 54
+				},
+				{
+					"path": "flutter/lib/src/styling/legacy_theme/internal/klp_visual_style_json_effects.dart",
+					"line": 136
+				}
+			]
+		},
+		{
+			"id": "theme.motion.emphasized",
+			"flutter": "motion.emphasized",
+			"react": "theme.motion.emphasized",
+			"css": "--klp-motion-emphasized",
+			"references": [
+				{
+					"path": "flutter/lib/src/features/overlays/drawer/klp_drawer_widget.dart",
+					"line": 103
+				},
+				{
+					"path": "flutter/lib/src/styling/legacy_theme/internal/klp_visual_style_json_effects.dart",
+					"line": 137
+				}
+			]
+		},
+		{
+			"id": "theme.surface.separation",
+			"flutter": "surface.separation",
+			"react": "theme.surface.separation",
+			"css": "--klp-surface-separation",
+			"references": [
+				{
+					"path": "react/src/command-entries.tsx",
+					"line": 274
+				},
+				{
+					"path": "react/src/command-palette.tsx",
+					"line": 271
+				}
+			]
+		},
+		{
+			"id": "theme.surface.overlayBlur",
+			"flutter": "surface.overlayBlur",
+			"react": "theme.surface.overlayBlur",
+			"css": "--klp-surface-overlayBlur",
+			"references": [
+				{
+					"path": "react/src/styles.css",
+					"line": 224
+				},
+				{
+					"path": "react/src/styles.css",
+					"line": 289
+				},
+				{
+					"path": "flutter/lib/src/features/overlays/menu/klp_menu_metrics.dart",
+					"line": 20
+				},
+				{
+					"path": "flutter/lib/src/features/workspace/anchored_popup/internal/klp_anchored_popup_panel.dart",
+					"line": 30
+				},
+				{
+					"path": "flutter/lib/src/features/workspace/layout/klp_app_layout.dart",
+					"line": 345
+				}
+			]
+		},
+		{
+			"id": "theme.surface.overlaySpread",
+			"flutter": "surface.overlaySpread",
+			"react": "theme.surface.overlaySpread",
+			"css": "--klp-surface-overlaySpread",
+			"references": [
+				{
+					"path": "react/src/styles.css",
+					"line": 224
+				},
+				{
+					"path": "react/src/styles.css",
+					"line": 289
+				},
+				{
+					"path": "flutter/lib/src/features/overlays/menu/klp_menu_state.dart",
+					"line": 212
+				},
+				{
+					"path": "flutter/lib/src/styling/style_pack/native_codec.dart",
+					"line": 53
+				}
+			]
+		},
+		{
+			"id": "theme.surface.overlayOffsetY",
+			"flutter": "surface.overlayOffsetY",
+			"react": "theme.surface.overlayOffsetY",
+			"css": "--klp-surface-overlayOffsetY",
+			"references": [
+				{
+					"path": "react/src/styles.css",
+					"line": 224
+				},
+				{
+					"path": "react/src/styles.css",
+					"line": 289
+				},
+				{
+					"path": "flutter/lib/src/features/overlays/menu/klp_menu_metrics.dart",
+					"line": 22
+				},
+				{
+					"path": "flutter/lib/src/features/workspace/anchored_popup/internal/klp_anchored_popup_panel.dart",
+					"line": 29
+				},
+				{
+					"path": "flutter/lib/src/features/workspace/layout/klp_app_layout.dart",
+					"line": 344
+				}
+			]
+		},
+		{
+			"id": "theme.surface.overlayShadowOpacity",
+			"flutter": "surface.overlayShadowOpacity",
+			"react": "theme.surface.overlayShadowOpacity",
+			"css": "--klp-surface-overlayShadowOpacity",
+			"references": [
+				{
+					"path": "react/src/styles.css",
+					"line": 224
+				},
+				{
+					"path": "react/src/styles.css",
+					"line": 289
+				},
+				{
+					"path": "flutter/lib/src/features/overlays/menu/klp_menu_state.dart",
+					"line": 209
+				}
+			]
+		},
+		{
+			"id": "theme.surface.scrimOpacity",
+			"flutter": "surface.scrimOpacity",
+			"react": "theme.surface.scrimOpacity",
+			"css": "--klp-surface-scrimOpacity",
+			"references": [
+				{
+					"path": "react/src/styles.css",
+					"line": 266
+				},
+				{
+					"path": "react/src/styles.css",
+					"line": 288
+				},
+				{
+					"path": "flutter/lib/src/features/actions/command_palette/klp_command_palette.dart",
+					"line": 259
+				},
+				{
+					"path": "flutter/lib/src/features/overlays/drawer/klp_drawer_widget.dart",
+					"line": 83
+				},
+				{
+					"path": "flutter/lib/src/features/overlays/popup/klp_popup_background.dart",
+					"line": 21
+				}
+			]
+		},
+		{
+			"id": "theme.surface.selectionWashOpacity",
+			"flutter": "surface.selectionWashOpacity",
+			"react": "theme.surface.selectionWashOpacity",
+			"css": "--klp-surface-selectionWashOpacity",
+			"references": [
+				{
+					"path": "react/src/styles.css",
+					"line": 93
+				},
+				{
+					"path": "react/src/styles.css",
+					"line": 96
+				},
+				{
+					"path": "react/src/styles.css",
+					"line": 123
+				},
+				{
+					"path": "react/src/styles.css",
+					"line": 167
+				},
+				{
+					"path": "react/src/styles.css",
+					"line": 191
+				},
+				{
+					"path": "react/src/styles.css",
+					"line": 259
+				},
+				{
+					"path": "react/src/styles.css",
+					"line": 307
+				},
+				{
+					"path": "react/src/theme.tsx",
+					"line": 50
+				},
+				{
+					"path": "flutter/lib/src/features/actions/button/internal/klp_button_style.dart",
+					"line": 70
+				},
+				{
+					"path": "flutter/lib/src/styling/legacy_theme/klp_theme.dart",
+					"line": 52
+				},
+				{
+					"path": "flutter/lib/src/styling/legacy_theme/klp_theme_scope.dart",
+					"line": 129
+				},
+				{
+					"path": "flutter/lib/src/styling/legacy_theme/klp_theme_scope.dart",
+					"line": 136
+				}
+			]
+		},
+		{
+			"id": "theme.surface.focusWashOpacity",
+			"flutter": "surface.focusWashOpacity",
+			"react": "theme.surface.focusWashOpacity",
+			"css": "--klp-surface-focusWashOpacity",
+			"references": [
+				{
+					"path": "react/src/styles.css",
+					"line": 95
+				},
+				{
+					"path": "react/src/styles.css",
+					"line": 97
+				},
+				{
+					"path": "react/src/styles.css",
+					"line": 124
+				},
+				{
+					"path": "react/src/theme.tsx",
+					"line": 50
+				},
+				{
+					"path": "flutter/lib/src/features/actions/button/internal/klp_button_style.dart",
+					"line": 65
+				},
+				{
+					"path": "flutter/lib/src/styling/legacy_theme/klp_theme.dart",
+					"line": 57
+				}
+			]
+		},
+		{
+			"id": "theme.surface.statusFillOpacity",
+			"flutter": "surface.statusFillOpacity",
+			"react": "theme.surface.statusFillOpacity",
+			"css": "--klp-surface-statusFillOpacity",
+			"references": [
+				{
+					"path": "react/src/styles.css",
+					"line": 66
+				},
+				{
+					"path": "flutter/lib/src/features/actions/button/internal/klp_button_style.dart",
+					"line": 54
+				},
+				{
+					"path": "flutter/lib/src/features/collections/badge/primitives/klp_badge_frame.dart",
+					"line": 31
+				},
+				{
+					"path": "flutter/lib/src/features/forms/selection/internal/klp_sliding_selection_style.dart",
+					"line": 65
+				},
+				{
+					"path": "flutter/lib/src/features/forms/toggle/internal/klp_phase_toggle_style.dart",
+					"line": 58
+				},
+				{
+					"path": "flutter/lib/src/foundation/content/klp_rich_text.dart",
+					"line": 110
+				}
+			]
+		},
+		{
+			"id": "theme.surface.pressProgressOpacity",
+			"flutter": "surface.pressProgressOpacity",
+			"react": "theme.surface.pressProgressOpacity",
+			"css": "--klp-surface-pressProgressOpacity",
+			"references": [
+				{
+					"path": "flutter/lib/src/features/actions/button/internal/klp_button_style.dart",
+					"line": 142
+				}
+			]
+		},
+		{
+			"id": "theme.surface.diffFillOpacity",
+			"flutter": "surface.diffFillOpacity",
+			"react": "theme.surface.diffFillOpacity",
+			"css": "--klp-surface-diffFillOpacity",
+			"references": [
+				{
+					"path": "flutter/lib/src/features/collections/code/primitives/klp_code_style.dart",
+					"line": 75
+				}
+			]
+		},
+		{
+			"id": "theme.surface.gridLineOpacity",
+			"flutter": "surface.gridLineOpacity",
+			"react": "theme.surface.gridLineOpacity",
+			"css": "--klp-surface-gridLineOpacity",
+			"references": []
+		},
+		{
+			"id": "theme.surface.veilOpacity",
+			"flutter": "surface.veilOpacity",
+			"react": "theme.surface.veilOpacity",
+			"css": "--klp-surface-veilOpacity",
+			"references": [
+				{
+					"path": "flutter/lib/src/foundation/surface/klp_veil.dart",
+					"line": 14
+				}
+			]
+		},
+		{
+			"id": "theme.surface.statusRowOpacity",
+			"flutter": "surface.statusRowOpacity",
+			"react": "theme.surface.statusRowOpacity",
+			"css": "--klp-surface-statusRowOpacity",
+			"references": [
+				{
+					"path": "flutter/lib/src/features/collections/advanced/primitives/klp_advanced_style.dart",
+					"line": 71
+				},
+				{
+					"path": "flutter/lib/src/features/collections/advanced/primitives/klp_advanced_style.dart",
+					"line": 72
+				}
+			]
+		},
+		{
+			"id": "theme.surface.statusRowSelectedOpacity",
+			"flutter": "surface.statusRowSelectedOpacity",
+			"react": "theme.surface.statusRowSelectedOpacity",
+			"css": "--klp-surface-statusRowSelectedOpacity",
+			"references": [
+				{
+					"path": "flutter/lib/src/features/collections/advanced/primitives/klp_advanced_style.dart",
+					"line": 74
+				},
+				{
+					"path": "flutter/lib/src/features/collections/advanced/primitives/klp_advanced_style.dart",
+					"line": 75
+				}
+			]
+		},
+		{
+			"id": "theme.surface.statusRowOpacityDark",
+			"flutter": "surface.statusRowOpacityDark",
+			"react": "theme.surface.statusRowOpacityDark",
+			"css": "--klp-surface-statusRowOpacityDark",
+			"references": [
+				{
+					"path": "flutter/lib/src/features/collections/advanced/primitives/klp_advanced_style.dart",
+					"line": 71
+				}
+			]
+		},
+		{
+			"id": "theme.surface.statusRowSelectedOpacityDark",
+			"flutter": "surface.statusRowSelectedOpacityDark",
+			"react": "theme.surface.statusRowSelectedOpacityDark",
+			"css": "--klp-surface-statusRowSelectedOpacityDark",
+			"references": [
+				{
+					"path": "flutter/lib/src/features/collections/advanced/primitives/klp_advanced_style.dart",
+					"line": 74
+				}
+			]
+		},
+		{
+			"id": "theme.surface.frostedOpacity",
+			"flutter": "surface.frostedOpacity",
+			"react": "theme.surface.frostedOpacity",
+			"css": "--klp-surface-frostedOpacity",
+			"references": [
+				{
+					"path": "flutter/lib/src/foundation/surface/klp_surface.dart",
+					"line": 74
+				}
+			]
+		},
+		{
+			"id": "theme.surface.frostedVeilOpacity",
+			"flutter": "surface.frostedVeilOpacity",
+			"react": "theme.surface.frostedVeilOpacity",
+			"css": "--klp-surface-frostedVeilOpacity",
+			"references": []
+		},
+		{
+			"id": "theme.surface.backdropBlurSigma",
+			"flutter": "surface.backdropBlurSigma",
+			"react": "theme.surface.backdropBlurSigma",
+			"css": "--klp-surface-backdropBlurSigma",
+			"references": [
+				{
+					"path": "flutter/lib/src/foundation/surface/klp_surface.dart",
+					"line": 92
+				},
+				{
+					"path": "flutter/lib/src/foundation/surface/klp_surface.dart",
+					"line": 93
+				}
+			]
+		},
+		{
+			"id": "theme.surface.dragOpacity",
+			"flutter": "surface.dragOpacity",
+			"react": "theme.surface.dragOpacity",
+			"css": "--klp-surface-dragOpacity",
+			"references": [
+				{
+					"path": "react/src/styles.css",
+					"line": 200
+				},
+				{
+					"path": "flutter/lib/src/foundation/interaction/klp_drag_drop.dart",
+					"line": 34
+				}
+			]
+		},
+		{
+			"id": "theme.surface.dragSourceOpacity",
+			"flutter": "surface.dragSourceOpacity",
+			"react": "theme.surface.dragSourceOpacity",
+			"css": "--klp-surface-dragSourceOpacity",
+			"references": [
+				{
+					"path": "react/src/styles.css",
+					"line": 199
+				},
+				{
+					"path": "flutter/lib/src/features/workspace/shell/docking/primitives/klp_dock_panel_draggable.dart",
+					"line": 35
+				}
+			]
+		},
+		{
+			"id": "theme.surface.themePreviewDisabledOpacity",
+			"flutter": "surface.themePreviewDisabledOpacity",
+			"react": "theme.surface.themePreviewDisabledOpacity",
+			"css": "--klp-surface-themePreviewDisabledOpacity",
+			"references": [
+				{
+					"path": "flutter/lib/src/features/workspace/shell/theme/primitives/klp_theme_preview_tile_frame.dart",
+					"line": 45
+				}
+			]
+		},
+		{
+			"id": "theme.surface.listStatusOpacity",
+			"flutter": "surface.listStatusOpacity",
+			"react": "theme.surface.listStatusOpacity",
+			"css": "--klp-surface-listStatusOpacity",
+			"references": [
+				{
+					"path": "flutter/lib/src/features/collections/list_tile/primitives/klp_list_tile_frame_style.dart",
+					"line": 34
+				}
+			]
+		},
+		{
+			"id": "theme.surface.listStatusSelectedOpacity",
+			"flutter": "surface.listStatusSelectedOpacity",
+			"react": "theme.surface.listStatusSelectedOpacity",
+			"css": "--klp-surface-listStatusSelectedOpacity",
+			"references": [
+				{
+					"path": "flutter/lib/src/features/collections/list_tile/primitives/klp_list_tile_frame_style.dart",
+					"line": 33
+				}
+			]
+		},
+		{
+			"id": "theme.surface.accentSoftOpacityLight",
+			"flutter": "surface.accentSoftOpacityLight",
+			"react": "theme.surface.accentSoftOpacityLight",
+			"css": "--klp-surface-accentSoftOpacityLight",
+			"references": [
+				{
+					"path": "flutter/lib/src/styling/legacy_theme/klp_theme.dart",
+					"line": 193
+				}
+			]
+		},
+		{
+			"id": "theme.surface.accentSoftOpacityDark",
+			"flutter": "surface.accentSoftOpacityDark",
+			"react": "theme.surface.accentSoftOpacityDark",
+			"css": "--klp-surface-accentSoftOpacityDark",
+			"references": [
+				{
+					"path": "flutter/lib/src/styling/legacy_theme/klp_theme.dart",
+					"line": 192
+				}
+			]
+		},
+		{
+			"id": "theme.surface.windowPaneOpacityLight",
+			"flutter": "surface.windowPaneOpacityLight",
+			"react": "theme.surface.windowPaneOpacityLight",
+			"css": "--klp-surface-windowPaneOpacityLight",
+			"references": []
+		},
+		{
+			"id": "theme.surface.windowPaneOpacityDark",
+			"flutter": "surface.windowPaneOpacityDark",
+			"react": "theme.surface.windowPaneOpacityDark",
+			"css": "--klp-surface-windowPaneOpacityDark",
+			"references": []
+		},
+		{
+			"id": "theme.surface.invalidFillOpacity",
+			"flutter": "surface.invalidFillOpacity",
+			"react": "theme.surface.invalidFillOpacity",
+			"css": "--klp-surface-invalidFillOpacity",
+			"references": [
+				{
+					"path": "react/src/styles.css",
+					"line": 125
+				},
+				{
+					"path": "flutter/lib/src/styling/legacy_theme/klp_theme.dart",
+					"line": 64
+				}
+			]
+		},
+		{
+			"id": "theme.surface.contactBlur",
+			"flutter": "surface.contactBlur",
+			"react": "theme.surface.contactBlur",
+			"css": "--klp-surface-contactBlur",
+			"references": [
+				{
+					"path": "react/src/styles.css",
+					"line": 224
+				},
+				{
+					"path": "react/src/styles.css",
+					"line": 289
+				}
+			]
+		},
+		{
+			"id": "theme.surface.contactOffsetY",
+			"flutter": "surface.contactOffsetY",
+			"react": "theme.surface.contactOffsetY",
+			"css": "--klp-surface-contactOffsetY",
+			"references": [
+				{
+					"path": "react/src/styles.css",
+					"line": 224
+				},
+				{
+					"path": "react/src/styles.css",
+					"line": 289
+				}
+			]
+		},
+		{
+			"id": "theme.surface.contactShadowOpacity",
+			"flutter": "surface.contactShadowOpacity",
+			"react": "theme.surface.contactShadowOpacity",
+			"css": "--klp-surface-contactShadowOpacity",
+			"references": [
+				{
+					"path": "react/src/styles.css",
+					"line": 224
+				},
+				{
+					"path": "react/src/styles.css",
+					"line": 289
+				}
+			]
+		},
+		{
+			"id": "theme.surface.overlayShadowColor",
+			"flutter": "surface.overlayShadowColor",
+			"react": "theme.surface.overlayShadowColor",
+			"css": "--klp-surface-overlayShadowColor",
+			"references": [
+				{
+					"path": "react/src/styles.css",
+					"line": 224
+				},
+				{
+					"path": "react/src/styles.css",
+					"line": 266
+				},
+				{
+					"path": "react/src/styles.css",
+					"line": 288
+				},
+				{
+					"path": "react/src/styles.css",
+					"line": 289
+				},
+				{
+					"path": "flutter/lib/src/features/workspace/anchored_popup/internal/klp_anchored_popup_panel.dart",
+					"line": 28
+				},
+				{
+					"path": "flutter/lib/src/features/workspace/layout/klp_app_layout.dart",
+					"line": 251
+				},
+				{
+					"path": "flutter/lib/src/features/workspace/layout/klp_app_layout.dart",
+					"line": 343
+				},
+				{
+					"path": "flutter/lib/src/features/workspace/shell/panel/primitives/klp_panel_frame_view.dart",
+					"line": 72
+				}
+			]
+		},
+		{
+			"id": "theme.components.buttonRadius",
+			"flutter": "components.buttonRadius",
+			"react": "theme.components.buttonRadius",
+			"css": "--klp-components-buttonRadius",
+			"references": [
+				{
+					"path": "react/src/styles.css",
+					"line": 79
+				}
+			]
+		},
+		{
+			"id": "theme.components.buttonPaddingX",
+			"flutter": "components.buttonPaddingX",
+			"react": "theme.components.buttonPaddingX",
+			"css": "--klp-components-buttonPaddingX",
+			"references": [
+				{
+					"path": "react/src/command-entries.tsx",
+					"line": 109
+				},
+				{
+					"path": "react/src/styles.css",
+					"line": 70
+				},
+				{
+					"path": "react/src/styles.css",
+					"line": 230
+				}
+			]
+		},
+		{
+			"id": "theme.components.buttonPaddingY",
+			"flutter": "components.buttonPaddingY",
+			"react": "theme.components.buttonPaddingY",
+			"css": "--klp-components-buttonPaddingY",
+			"references": []
+		},
+		{
+			"id": "theme.components.buttonHeight",
+			"flutter": "components.buttonHeight",
+			"react": "theme.components.buttonHeight",
+			"css": "--klp-components-buttonHeight",
+			"references": [
+				{
+					"path": "react/src/styles.css",
+					"line": 69
+				}
+			]
+		},
+		{
+			"id": "theme.components.buttonBorderWidth",
+			"flutter": "components.buttonBorderWidth",
+			"react": "theme.components.buttonBorderWidth",
+			"css": "--klp-components-buttonBorderWidth",
+			"references": [
+				{
+					"path": "react/src/command-entries.tsx",
+					"line": 107
+				},
+				{
+					"path": "react/src/styles.css",
+					"line": 78
+				},
+				{
+					"path": "react/src/styles.css",
+					"line": 231
+				}
+			]
+		},
+		{
+			"id": "theme.components.fieldRadius",
+			"flutter": "components.fieldRadius",
+			"react": "theme.components.fieldRadius",
+			"css": "--klp-components-fieldRadius",
+			"references": [
+				{
+					"path": "react/src/styles.css",
+					"line": 116
+				}
+			]
+		},
+		{
+			"id": "theme.components.fieldPaddingX",
+			"flutter": "components.fieldPaddingX",
+			"react": "theme.components.fieldPaddingX",
+			"css": "--klp-components-fieldPaddingX",
+			"references": [
+				{
+					"path": "react/src/styles.css",
+					"line": 114
+				}
+			]
+		},
+		{
+			"id": "theme.components.fieldHeight",
+			"flutter": "components.fieldHeight",
+			"react": "theme.components.fieldHeight",
+			"css": "--klp-components-fieldHeight",
+			"references": [
+				{
+					"path": "react/src/styles.css",
+					"line": 113
+				}
+			]
+		},
+		{
+			"id": "theme.components.fieldBorderWidth",
+			"flutter": "components.fieldBorderWidth",
+			"react": "theme.components.fieldBorderWidth",
+			"css": "--klp-components-fieldBorderWidth",
+			"references": [
+				{
+					"path": "react/src/styles.css",
+					"line": 115
+				}
+			]
+		},
+		{
+			"id": "theme.components.menuRadius",
+			"flutter": "components.menuRadius",
+			"react": "theme.components.menuRadius",
+			"css": "--klp-components-menuRadius",
+			"references": [
+				{
+					"path": "react/src/styles.css",
+					"line": 219
+				},
+				{
+					"path": "react/src/styles.css",
+					"line": 282
+				}
+			]
+		},
+		{
+			"id": "theme.components.menuPadding",
+			"flutter": "components.menuPadding",
+			"react": "theme.components.menuPadding",
+			"css": "--klp-components-menuPadding",
+			"references": [
+				{
+					"path": "react/src/command-entries.tsx",
+					"line": 109
+				},
+				{
+					"path": "react/src/command-palette.tsx",
+					"line": 89
+				},
+				{
+					"path": "react/src/styles.css",
+					"line": 239
+				}
+			]
+		},
+		{
+			"id": "theme.components.menuItemHeight",
+			"flutter": "components.menuItemHeight",
+			"react": "theme.components.menuItemHeight",
+			"css": "--klp-components-menuItemHeight",
+			"references": [
+				{
+					"path": "react/src/styles.css",
+					"line": 238
+				},
+				{
+					"path": "react/src/styles.css",
+					"line": 299
+				}
+			]
+		},
+		{
+			"id": "theme.components.cardRadius",
+			"flutter": "components.cardRadius",
+			"react": "theme.components.cardRadius",
+			"css": "--klp-components-cardRadius",
+			"references": [
+				{
+					"path": "react/src/styles.css",
+					"line": 50
+				}
+			]
+		},
+		{
+			"id": "theme.components.cardPadding",
+			"flutter": "components.cardPadding",
+			"react": "theme.components.cardPadding",
+			"css": "--klp-components-cardPadding",
+			"references": [
+				{
+					"path": "react/src/styles.css",
+					"line": 51
+				}
+			]
+		},
+		{
+			"id": "theme.components.badgeRadius",
+			"flutter": "components.badgeRadius",
+			"react": "theme.components.badgeRadius",
+			"css": "--klp-components-badgeRadius",
+			"references": [
+				{
+					"path": "react/src/styles.css",
+					"line": 57
+				}
+			]
+		},
+		{
+			"id": "theme.components.badgePaddingX",
+			"flutter": "components.badgePaddingX",
+			"react": "theme.components.badgePaddingX",
+			"css": "--klp-components-badgePaddingX",
+			"references": [
+				{
+					"path": "react/src/styles.css",
+					"line": 56
+				}
+			]
+		},
+		{
+			"id": "theme.geometry.control.switchTrackWidth",
+			"flutter": "geometry.control.switchTrackWidth",
+			"react": "theme.geometry.control.switchTrackWidth",
+			"css": "--klp-geometry-control-switchTrackWidth",
+			"references": [
+				{
+					"path": "flutter/lib/src/features/forms/toggle/internal/klp_compact_switch_style.dart",
+					"line": 32
+				}
+			]
+		},
+		{
+			"id": "theme.geometry.control.switchTrackHeight",
+			"flutter": "geometry.control.switchTrackHeight",
+			"react": "theme.geometry.control.switchTrackHeight",
+			"css": "--klp-geometry-control-switchTrackHeight",
+			"references": [
+				{
+					"path": "flutter/lib/src/features/forms/toggle/internal/klp_compact_switch_style.dart",
+					"line": 33
+				}
+			]
+		},
+		{
+			"id": "theme.geometry.control.switchThumb",
+			"flutter": "geometry.control.switchThumb",
+			"react": "theme.geometry.control.switchThumb",
+			"css": "--klp-geometry-control-switchThumb",
+			"references": [
+				{
+					"path": "flutter/lib/src/features/forms/toggle/internal/klp_compact_switch_style.dart",
+					"line": 34
+				}
+			]
+		},
+		{
+			"id": "theme.geometry.control.buttonHeightXSmall",
+			"flutter": "geometry.control.buttonHeightXSmall",
+			"react": "theme.geometry.control.buttonHeightXSmall",
+			"css": "--klp-geometry-control-buttonHeightXSmall",
+			"references": [
+				{
+					"path": "react/src/styles.css",
+					"line": 88
+				},
+				{
+					"path": "flutter/lib/src/styling/legacy_theme/klp_theme_scope.dart",
+					"line": 93
+				}
+			]
+		},
+		{
+			"id": "theme.geometry.control.buttonHeightSmall",
+			"flutter": "geometry.control.buttonHeightSmall",
+			"react": "theme.geometry.control.buttonHeightSmall",
+			"css": "--klp-geometry-control-buttonHeightSmall",
+			"references": [
+				{
+					"path": "react/src/styles.css",
+					"line": 89
+				},
+				{
+					"path": "flutter/lib/src/styling/legacy_theme/klp_theme_scope.dart",
+					"line": 94
+				}
+			]
+		},
+		{
+			"id": "theme.geometry.control.buttonHeight",
+			"flutter": "geometry.control.buttonHeight",
+			"react": "theme.geometry.control.buttonHeight",
+			"css": "--klp-geometry-control-buttonHeight",
+			"references": [
+				{
+					"path": "react/src/modern-productivity-layout.tsx",
+					"line": 58
+				},
+				{
+					"path": "react/src/styles.css",
+					"line": 88
+				},
+				{
+					"path": "react/src/styles.css",
+					"line": 89
+				},
+				{
+					"path": "react/src/styles.css",
+					"line": 90
+				},
+				{
+					"path": "react/src/styles.css",
+					"line": 91
+				},
+				{
+					"path": "flutter/lib/src/styling/legacy_theme/klp_theme_scope.dart",
+					"line": 93
+				},
+				{
+					"path": "flutter/lib/src/styling/legacy_theme/klp_theme_scope.dart",
+					"line": 94
+				},
+				{
+					"path": "flutter/lib/src/styling/legacy_theme/klp_theme_scope.dart",
+					"line": 96
+				},
+				{
+					"path": "flutter/lib/src/styling/legacy_theme/klp_theme_scope.dart",
+					"line": 97
+				}
+			]
+		},
+		{
+			"id": "theme.geometry.control.buttonHeightLarge",
+			"flutter": "geometry.control.buttonHeightLarge",
+			"react": "theme.geometry.control.buttonHeightLarge",
+			"css": "--klp-geometry-control-buttonHeightLarge",
+			"references": [
+				{
+					"path": "react/src/styles.css",
+					"line": 90
+				},
+				{
+					"path": "flutter/lib/src/styling/legacy_theme/klp_theme_scope.dart",
+					"line": 96
+				}
+			]
+		},
+		{
+			"id": "theme.geometry.control.buttonHeightXLarge",
+			"flutter": "geometry.control.buttonHeightXLarge",
+			"react": "theme.geometry.control.buttonHeightXLarge",
+			"css": "--klp-geometry-control-buttonHeightXLarge",
+			"references": [
+				{
+					"path": "react/src/styles.css",
+					"line": 91
+				},
+				{
+					"path": "flutter/lib/src/styling/legacy_theme/klp_theme_scope.dart",
+					"line": 97
+				}
+			]
+		},
+		{
+			"id": "theme.geometry.control.pageBackgroundHitRadius",
+			"flutter": "geometry.control.pageBackgroundHitRadius",
+			"react": "theme.geometry.control.pageBackgroundHitRadius",
+			"css": "--klp-geometry-control-pageBackgroundHitRadius",
+			"references": [
+				{
+					"path": "flutter/lib/src/foundation/surface/page_background/klp_page_background_editor.dart",
+					"line": 170
+				}
+			]
+		},
+		{
+			"id": "theme.geometry.control.presenceMarkerExtent",
+			"flutter": "geometry.control.presenceMarkerExtent",
+			"react": "theme.geometry.control.presenceMarkerExtent",
+			"css": "--klp-geometry-control-presenceMarkerExtent",
+			"references": [
+				{
+					"path": "flutter/lib/src/foundation/interaction/filter/primitives/klp_presence_marker.dart",
+					"line": 13
+				}
+			]
+		},
+		{
+			"id": "theme.geometry.control.colorPickerCursorRadius",
+			"flutter": "geometry.control.colorPickerCursorRadius",
+			"react": "theme.geometry.control.colorPickerCursorRadius",
+			"css": "--klp-geometry-control-colorPickerCursorRadius",
+			"references": [
+				{
+					"path": "flutter/lib/src/features/forms/color/internal/klp_oklch_plane_style.dart",
+					"line": 23
+				}
+			]
+		},
+		{
+			"id": "theme.geometry.control.swatchExtent",
+			"flutter": "geometry.control.swatchExtent",
+			"react": "theme.geometry.control.swatchExtent",
+			"css": "--klp-geometry-control-swatchExtent",
+			"references": [
+				{
+					"path": "flutter/lib/src/features/forms/selection/primitives/klp_status_role_swatch_frame.dart",
+					"line": 20
+				},
+				{
+					"path": "flutter/lib/src/features/forms/selection/primitives/klp_status_role_swatch_frame.dart",
+					"line": 21
+				}
+			]
+		},
+		{
+			"id": "theme.geometry.control.segmentedProgressHeight",
+			"flutter": "geometry.control.segmentedProgressHeight",
+			"react": "theme.geometry.control.segmentedProgressHeight",
+			"css": "--klp-geometry-control-segmentedProgressHeight",
+			"references": [
+				{
+					"path": "flutter/lib/src/foundation/klp_segmented_progress.dart",
+					"line": 24
+				}
+			]
+		},
+		{
+			"id": "theme.geometry.control.fieldHeight",
+			"flutter": "geometry.control.fieldHeight",
+			"react": "theme.geometry.control.fieldHeight",
+			"css": "--klp-geometry-control-fieldHeight",
+			"references": [
+				{
+					"path": "flutter/lib/src/features/forms/selection/internal/klp_select_style.dart",
+					"line": 23
+				}
+			]
+		},
+		{
+			"id": "theme.geometry.control.selectionControl",
+			"flutter": "geometry.control.selectionControl",
+			"react": "theme.geometry.control.selectionControl",
+			"css": "--klp-geometry-control-selectionControl",
+			"references": [
+				{
+					"path": "flutter/lib/src/features/forms/selection/internal/klp_checkbox_style.dart",
+					"line": 37
+				},
+				{
+					"path": "flutter/lib/src/features/forms/selection/internal/klp_radio_item_style.dart",
+					"line": 32
+				}
+			]
+		},
+		{
+			"id": "theme.geometry.control.selectionIndicatorInset",
+			"flutter": "geometry.control.selectionIndicatorInset",
+			"react": "theme.geometry.control.selectionIndicatorInset",
+			"css": "--klp-geometry-control-selectionIndicatorInset",
+			"references": [
+				{
+					"path": "flutter/lib/src/features/forms/selection/internal/klp_radio_item_style.dart",
+					"line": 33
+				}
+			]
+		},
+		{
+			"id": "theme.geometry.control.selectionIcon",
+			"flutter": "geometry.control.selectionIcon",
+			"react": "theme.geometry.control.selectionIcon",
+			"css": "--klp-geometry-control-selectionIcon",
+			"references": [
+				{
+					"path": "flutter/lib/src/features/forms/selection/internal/klp_checkbox_style.dart",
+					"line": 38
+				}
+			]
+		},
+		{
+			"id": "theme.geometry.control.toggleWidth",
+			"flutter": "geometry.control.toggleWidth",
+			"react": "theme.geometry.control.toggleWidth",
+			"css": "--klp-geometry-control-toggleWidth",
+			"references": [
+				{
+					"path": "flutter/lib/src/features/forms/toggle/internal/klp_toggle_indicator_style.dart",
+					"line": 44
+				}
+			]
+		},
+		{
+			"id": "theme.geometry.control.toggleHeight",
+			"flutter": "geometry.control.toggleHeight",
+			"react": "theme.geometry.control.toggleHeight",
+			"css": "--klp-geometry-control-toggleHeight",
+			"references": [
+				{
+					"path": "flutter/lib/src/features/forms/toggle/internal/klp_toggle_indicator_style.dart",
+					"line": 45
+				}
+			]
+		},
+		{
+			"id": "theme.geometry.control.toggleThumb",
+			"flutter": "geometry.control.toggleThumb",
+			"react": "theme.geometry.control.toggleThumb",
+			"css": "--klp-geometry-control-toggleThumb",
+			"references": [
+				{
+					"path": "flutter/lib/src/features/forms/toggle/internal/klp_toggle_indicator_style.dart",
+					"line": 47
+				}
+			]
+		},
+		{
+			"id": "theme.geometry.control.toggleInset",
+			"flutter": "geometry.control.toggleInset",
+			"react": "theme.geometry.control.toggleInset",
+			"css": "--klp-geometry-control-toggleInset",
+			"references": [
+				{
+					"path": "flutter/lib/src/features/forms/toggle/internal/klp_toggle_indicator_style.dart",
+					"line": 46
+				}
+			]
+		},
+		{
+			"id": "theme.geometry.control.segmentedDenseHeight",
+			"flutter": "geometry.control.segmentedDenseHeight",
+			"react": "theme.geometry.control.segmentedDenseHeight",
+			"css": "--klp-geometry-control-segmentedDenseHeight",
+			"references": [
+				{
+					"path": "flutter/lib/src/features/forms/selection/internal/klp_segmented_control_style.dart",
+					"line": 22
+				}
+			]
+		},
+		{
+			"id": "theme.geometry.control.segmentedDenseInset",
+			"flutter": "geometry.control.segmentedDenseInset",
+			"react": "theme.geometry.control.segmentedDenseInset",
+			"css": "--klp-geometry-control-segmentedDenseInset",
+			"references": [
+				{
+					"path": "flutter/lib/src/features/forms/selection/internal/klp_segmented_control_style.dart",
+					"line": 23
+				}
+			]
+		},
+		{
+			"id": "theme.geometry.control.segmentedDenseContentInset",
+			"flutter": "geometry.control.segmentedDenseContentInset",
+			"react": "theme.geometry.control.segmentedDenseContentInset",
+			"css": "--klp-geometry-control-segmentedDenseContentInset",
+			"references": [
+				{
+					"path": "flutter/lib/src/features/forms/selection/internal/klp_segment_style.dart",
+					"line": 41
+				}
+			]
+		},
+		{
+			"id": "theme.geometry.control.segmentedDenseItemHeight",
+			"flutter": "geometry.control.segmentedDenseItemHeight",
+			"react": "theme.geometry.control.segmentedDenseItemHeight",
+			"css": "--klp-geometry-control-segmentedDenseItemHeight",
+			"references": [
+				{
+					"path": "flutter/lib/src/features/forms/selection/internal/klp_segment_style.dart",
+					"line": 38
+				}
+			]
+		},
+		{
+			"id": "theme.geometry.control.slidingSelectionHeight",
+			"flutter": "geometry.control.slidingSelectionHeight",
+			"react": "theme.geometry.control.slidingSelectionHeight",
+			"css": "--klp-geometry-control-slidingSelectionHeight",
+			"references": [
+				{
+					"path": "flutter/lib/src/features/forms/selection/internal/klp_sliding_selection_style.dart",
+					"line": 58
+				}
+			]
+		},
+		{
+			"id": "theme.geometry.control.slidingSelectionSegmentWidth",
+			"flutter": "geometry.control.slidingSelectionSegmentWidth",
+			"react": "theme.geometry.control.slidingSelectionSegmentWidth",
+			"css": "--klp-geometry-control-slidingSelectionSegmentWidth",
+			"references": [
+				{
+					"path": "flutter/lib/src/features/forms/selection/internal/klp_sliding_selection_style.dart",
+					"line": 59
+				}
+			]
+		},
+		{
+			"id": "theme.geometry.control.slidingSelectionPadding",
+			"flutter": "geometry.control.slidingSelectionPadding",
+			"react": "theme.geometry.control.slidingSelectionPadding",
+			"css": "--klp-geometry-control-slidingSelectionPadding",
+			"references": [
+				{
+					"path": "flutter/lib/src/features/forms/selection/internal/klp_sliding_selection_style.dart",
+					"line": 60
+				}
+			]
+		},
+		{
+			"id": "theme.geometry.control.slidingSelectionIndicatorHeight",
+			"flutter": "geometry.control.slidingSelectionIndicatorHeight",
+			"react": "theme.geometry.control.slidingSelectionIndicatorHeight",
+			"css": "--klp-geometry-control-slidingSelectionIndicatorHeight",
+			"references": [
+				{
+					"path": "flutter/lib/src/features/forms/selection/internal/klp_sliding_selection_style.dart",
+					"line": 62
+				}
+			]
+		},
+		{
+			"id": "theme.geometry.control.scrollbarThickness",
+			"flutter": "geometry.control.scrollbarThickness",
+			"react": "theme.geometry.control.scrollbarThickness",
+			"css": "--klp-geometry-control-scrollbarThickness",
+			"references": [
+				{
+					"path": "flutter/lib/src/features/overlays/menu/klp_menu_layout.dart",
+					"line": 12
+				},
+				{
+					"path": "flutter/lib/src/features/overlays/menu/klp_menu_state.dart",
+					"line": 66
+				},
+				{
+					"path": "flutter/lib/src/styling/legacy_theme/klp_theme.dart",
+					"line": 276
+				}
+			]
+		},
+		{
+			"id": "theme.geometry.control.sliderTrackHeight",
+			"flutter": "geometry.control.sliderTrackHeight",
+			"react": "theme.geometry.control.sliderTrackHeight",
+			"css": "--klp-geometry-control-sliderTrackHeight",
+			"references": [
+				{
+					"path": "flutter/lib/src/features/forms/selection/internal/klp_slider_style.dart",
+					"line": 21
+				}
+			]
+		},
+		{
+			"id": "theme.geometry.control.colorPlaneExtent",
+			"flutter": "geometry.control.colorPlaneExtent",
+			"react": "theme.geometry.control.colorPlaneExtent",
+			"css": "--klp-geometry-control-colorPlaneExtent",
+			"references": [
+				{
+					"path": "flutter/lib/src/features/forms/color/internal/klp_oklch_color_editor_style.dart",
+					"line": 14
+				},
+				{
+					"path": "flutter/lib/src/features/forms/color/internal/klp_oklch_color_picker_style.dart",
+					"line": 24
+				}
+			]
+		},
+		{
+			"id": "theme.geometry.control.textFieldIndicatorHeightFactor",
+			"flutter": "geometry.control.textFieldIndicatorHeightFactor",
+			"react": "theme.geometry.control.textFieldIndicatorHeightFactor",
+			"css": "--klp-geometry-control-textFieldIndicatorHeightFactor",
+			"references": [
+				{
+					"path": "flutter/lib/src/features/forms/input/internal/klp_text_field_style.dart",
+					"line": 108
+				}
+			]
+		},
+		{
+			"id": "theme.geometry.control.textFieldLineHeightFactor",
+			"flutter": "geometry.control.textFieldLineHeightFactor",
+			"react": "theme.geometry.control.textFieldLineHeightFactor",
+			"css": "--klp-geometry-control-textFieldLineHeightFactor",
+			"references": [
+				{
+					"path": "flutter/lib/src/features/forms/input/internal/klp_text_field_style.dart",
+					"line": 104
+				}
+			]
+		},
+		{
+			"id": "theme.geometry.control.textFieldMinLines",
+			"flutter": "geometry.control.textFieldMinLines",
+			"react": "theme.geometry.control.textFieldMinLines",
+			"css": "--klp-geometry-control-textFieldMinLines",
+			"references": [
+				{
+					"path": "flutter/lib/src/features/forms/input/internal/klp_text_field_style.dart",
+					"line": 114
+				}
+			]
+		},
+		{
+			"id": "theme.geometry.control.textFieldMaxLines",
+			"flutter": "geometry.control.textFieldMaxLines",
+			"react": "theme.geometry.control.textFieldMaxLines",
+			"css": "--klp-geometry-control-textFieldMaxLines",
+			"references": [
+				{
+					"path": "flutter/lib/src/features/forms/input/internal/klp_text_field_style.dart",
+					"line": 115
+				}
+			]
+		},
+		{
+			"id": "theme.geometry.control.fileExplorerRowHeightAdjustment",
+			"flutter": "geometry.control.fileExplorerRowHeightAdjustment",
+			"react": "theme.geometry.control.fileExplorerRowHeightAdjustment",
+			"css": "--klp-geometry-control-fileExplorerRowHeightAdjustment",
+			"references": [
+				{
+					"path": "react/src/styles.css",
+					"line": 157
+				},
+				{
+					"path": "flutter/lib/src/features/navigation/widgets/explorer/internal/klp_file_explorer_item_view_state.dart",
+					"line": 13
+				},
+				{
+					"path": "flutter/lib/src/features/navigation/widgets/navigator/internal/klp_navigator_element_view_state.dart",
+					"line": 16
+				}
+			]
+		},
+		{
+			"id": "theme.geometry.data.codeActionButtonSize",
+			"flutter": "geometry.data.codeActionButtonSize",
+			"react": "theme.geometry.data.codeActionButtonSize",
+			"css": "--klp-geometry-data-codeActionButtonSize",
+			"references": [
+				{
+					"path": "flutter/lib/src/features/collections/code/primitives/klp_code_style.dart",
+					"line": 65
+				}
+			]
+		},
+		{
+			"id": "theme.geometry.data.codeHeaderHeight",
+			"flutter": "geometry.data.codeHeaderHeight",
+			"react": "theme.geometry.data.codeHeaderHeight",
+			"css": "--klp-geometry-data-codeHeaderHeight",
+			"references": [
+				{
+					"path": "flutter/lib/src/features/collections/code/primitives/klp_code_style.dart",
+					"line": 59
+				}
+			]
+		},
+		{
+			"id": "theme.geometry.data.codeTerminalDot",
+			"flutter": "geometry.data.codeTerminalDot",
+			"react": "theme.geometry.data.codeTerminalDot",
+			"css": "--klp-geometry-data-codeTerminalDot",
+			"references": [
+				{
+					"path": "flutter/lib/src/features/collections/code/primitives/klp_code_style.dart",
+					"line": 68
+				},
+				{
+					"path": "flutter/lib/src/features/collections/code/primitives/klp_code_style.dart",
+					"line": 69
+				}
+			]
+		},
+		{
+			"id": "theme.geometry.data.codeTerminalDotGap",
+			"flutter": "geometry.data.codeTerminalDotGap",
+			"react": "theme.geometry.data.codeTerminalDotGap",
+			"css": "--klp-geometry-data-codeTerminalDotGap",
+			"references": [
+				{
+					"path": "flutter/lib/src/features/collections/code/primitives/klp_code_style.dart",
+					"line": 69
+				}
+			]
+		},
+		{
+			"id": "theme.geometry.data.codeHeaderPaddingX",
+			"flutter": "geometry.data.codeHeaderPaddingX",
+			"react": "theme.geometry.data.codeHeaderPaddingX",
+			"css": "--klp-geometry-data-codeHeaderPaddingX",
+			"references": [
+				{
+					"path": "flutter/lib/src/features/collections/code/primitives/klp_code_style.dart",
+					"line": 60
+				}
+			]
+		},
+		{
+			"id": "theme.geometry.data.codeBodyPaddingX",
+			"flutter": "geometry.data.codeBodyPaddingX",
+			"react": "theme.geometry.data.codeBodyPaddingX",
+			"css": "--klp-geometry-data-codeBodyPaddingX",
+			"references": [
+				{
+					"path": "flutter/lib/src/features/collections/code/primitives/klp_code_style.dart",
+					"line": 61
+				}
+			]
+		},
+		{
+			"id": "theme.geometry.data.codeLineNumberWidth",
+			"flutter": "geometry.data.codeLineNumberWidth",
+			"react": "theme.geometry.data.codeLineNumberWidth",
+			"css": "--klp-geometry-data-codeLineNumberWidth",
+			"references": [
+				{
+					"path": "flutter/lib/src/features/collections/code/primitives/klp_code_style.dart",
+					"line": 70
+				}
+			]
+		},
+		{
+			"id": "theme.geometry.data.codeWrappedLineWidth",
+			"flutter": "geometry.data.codeWrappedLineWidth",
+			"react": "theme.geometry.data.codeWrappedLineWidth",
+			"css": "--klp-geometry-data-codeWrappedLineWidth",
+			"references": []
+		},
+		{
+			"id": "theme.geometry.data.codeMaximumHeight",
+			"flutter": "geometry.data.codeMaximumHeight",
+			"react": "theme.geometry.data.codeMaximumHeight",
+			"css": "--klp-geometry-data-codeMaximumHeight",
+			"references": [
+				{
+					"path": "flutter/lib/src/features/collections/code/primitives/klp_code_style.dart",
+					"line": 74
+				}
+			]
+		},
+		{
+			"id": "theme.geometry.data.codeCollapsedHeight",
+			"flutter": "geometry.data.codeCollapsedHeight",
+			"react": "theme.geometry.data.codeCollapsedHeight",
+			"css": "--klp-geometry-data-codeCollapsedHeight",
+			"references": [
+				{
+					"path": "flutter/lib/src/features/collections/code/primitives/klp_code_style.dart",
+					"line": 73
+				}
+			]
+		},
+		{
+			"id": "theme.geometry.data.codeDisclosureSize",
+			"flutter": "geometry.data.codeDisclosureSize",
+			"react": "theme.geometry.data.codeDisclosureSize",
+			"css": "--klp-geometry-data-codeDisclosureSize",
+			"references": [
+				{
+					"path": "flutter/lib/src/features/collections/code/primitives/klp_code_style.dart",
+					"line": 67
+				}
+			]
+		},
+		{
+			"id": "theme.geometry.data.filePreviewHeight",
+			"flutter": "geometry.data.filePreviewHeight",
+			"react": "theme.geometry.data.filePreviewHeight",
+			"css": "--klp-geometry-data-filePreviewHeight",
+			"references": [
+				{
+					"path": "flutter/lib/src/features/collections/advanced/primitives/klp_advanced_style.dart",
+					"line": 69
+				}
+			]
+		},
+		{
+			"id": "theme.geometry.data.previewCardCompactHeight",
+			"flutter": "geometry.data.previewCardCompactHeight",
+			"react": "theme.geometry.data.previewCardCompactHeight",
+			"css": "--klp-geometry-data-previewCardCompactHeight",
+			"references": []
+		},
+		{
+			"id": "theme.geometry.data.previewCardStandardHeight",
+			"flutter": "geometry.data.previewCardStandardHeight",
+			"react": "theme.geometry.data.previewCardStandardHeight",
+			"css": "--klp-geometry-data-previewCardStandardHeight",
+			"references": []
+		},
+		{
+			"id": "theme.geometry.data.previewCardLargeHeight",
+			"flutter": "geometry.data.previewCardLargeHeight",
+			"react": "theme.geometry.data.previewCardLargeHeight",
+			"css": "--klp-geometry-data-previewCardLargeHeight",
+			"references": []
+		},
+		{
+			"id": "theme.geometry.data.dateGridCellHeight",
+			"flutter": "geometry.data.dateGridCellHeight",
+			"react": "theme.geometry.data.dateGridCellHeight",
+			"css": "--klp-geometry-data-dateGridCellHeight",
+			"references": [
+				{
+					"path": "flutter/lib/src/features/collections/date_grid/primitives/klp_date_grid_viewport.dart",
+					"line": 20
+				}
+			]
+		},
+		{
+			"id": "theme.geometry.data.keyValueLabelWidthCompact",
+			"flutter": "geometry.data.keyValueLabelWidthCompact",
+			"react": "theme.geometry.data.keyValueLabelWidthCompact",
+			"css": "--klp-geometry-data-keyValueLabelWidthCompact",
+			"references": []
+		},
+		{
+			"id": "theme.geometry.data.keyValueLabelWidthStandard",
+			"flutter": "geometry.data.keyValueLabelWidthStandard",
+			"react": "theme.geometry.data.keyValueLabelWidthStandard",
+			"css": "--klp-geometry-data-keyValueLabelWidthStandard",
+			"references": []
+		},
+		{
+			"id": "theme.geometry.data.stepperMarkerSize",
+			"flutter": "geometry.data.stepperMarkerSize",
+			"react": "theme.geometry.data.stepperMarkerSize",
+			"css": "--klp-geometry-data-stepperMarkerSize",
+			"references": [
+				{
+					"path": "flutter/lib/src/features/collections/stepper/internal/klp_stepper_horizontal_layout.dart",
+					"line": 15
+				},
+				{
+					"path": "flutter/lib/src/features/collections/stepper/internal/klp_stepper_vertical_layout.dart",
+					"line": 15
+				},
+				{
+					"path": "flutter/lib/src/features/collections/stepper/primitives/klp_step_marker.dart",
+					"line": 13
+				}
+			]
+		},
+		{
+			"id": "theme.geometry.data.stepperLabelWidth",
+			"flutter": "geometry.data.stepperLabelWidth",
+			"react": "theme.geometry.data.stepperLabelWidth",
+			"css": "--klp-geometry-data-stepperLabelWidth",
+			"references": [
+				{
+					"path": "flutter/lib/src/features/collections/stepper/internal/klp_stepper_horizontal_layout.dart",
+					"line": 30
+				}
+			]
+		},
+		{
+			"id": "theme.geometry.data.progressIndeterminateFraction",
+			"flutter": "geometry.data.progressIndeterminateFraction",
+			"react": "theme.geometry.data.progressIndeterminateFraction",
+			"css": "--klp-geometry-data-progressIndeterminateFraction",
+			"references": [
+				{
+					"path": "flutter/lib/src/features/collections/progress/primitives/klp_progress_track.dart",
+					"line": 29
+				}
+			]
+		},
+		{
+			"id": "theme.geometry.data.placeholderMinimumHeight",
+			"flutter": "geometry.data.placeholderMinimumHeight",
+			"react": "theme.geometry.data.placeholderMinimumHeight",
+			"css": "--klp-geometry-data-placeholderMinimumHeight",
+			"references": []
+		},
+		{
+			"id": "theme.geometry.data.placeholderContentPaddingY",
+			"flutter": "geometry.data.placeholderContentPaddingY",
+			"react": "theme.geometry.data.placeholderContentPaddingY",
+			"css": "--klp-geometry-data-placeholderContentPaddingY",
+			"references": []
+		},
+		{
+			"id": "theme.geometry.data.placeholderActionPaddingY",
+			"flutter": "geometry.data.placeholderActionPaddingY",
+			"react": "theme.geometry.data.placeholderActionPaddingY",
+			"css": "--klp-geometry-data-placeholderActionPaddingY",
+			"references": []
+		},
+		{
+			"id": "theme.geometry.data.placeholderHatchBand",
+			"flutter": "geometry.data.placeholderHatchBand",
+			"react": "theme.geometry.data.placeholderHatchBand",
+			"css": "--klp-geometry-data-placeholderHatchBand",
+			"references": []
+		},
+		{
+			"id": "theme.geometry.data.placeholderHatchGap",
+			"flutter": "geometry.data.placeholderHatchGap",
+			"react": "theme.geometry.data.placeholderHatchGap",
+			"css": "--klp-geometry-data-placeholderHatchGap",
+			"references": []
+		},
+		{
+			"id": "theme.geometry.data.placeholderLabelTracking",
+			"flutter": "geometry.data.placeholderLabelTracking",
+			"react": "theme.geometry.data.placeholderLabelTracking",
+			"css": "--klp-geometry-data-placeholderLabelTracking",
+			"references": [
+				{
+					"path": "flutter/lib/src/foundation/content/klp_text_widget.dart",
+					"line": 60
+				}
+			]
+		},
+		{
+			"id": "theme.geometry.data.placeholderDetailMaximumWidth",
+			"flutter": "geometry.data.placeholderDetailMaximumWidth",
+			"react": "theme.geometry.data.placeholderDetailMaximumWidth",
+			"css": "--klp-geometry-data-placeholderDetailMaximumWidth",
+			"references": []
+		},
+		{
+			"id": "theme.geometry.data.spinnerSquareFactor",
+			"flutter": "geometry.data.spinnerSquareFactor",
+			"react": "theme.geometry.data.spinnerSquareFactor",
+			"css": "--klp-geometry-data-spinnerSquareFactor",
+			"references": [
+				{
+					"path": "flutter/lib/src/foundation/klp_geometric_spinner_state.dart",
+					"line": 50
+				},
+				{
+					"path": "flutter/lib/src/foundation/klp_geometric_spinner_state.dart",
+					"line": 71
+				}
+			]
+		},
+		{
+			"id": "theme.geometry.data.spinnerOrbitFactor",
+			"flutter": "geometry.data.spinnerOrbitFactor",
+			"react": "theme.geometry.data.spinnerOrbitFactor",
+			"css": "--klp-geometry-data-spinnerOrbitFactor",
+			"references": [
+				{
+					"path": "flutter/lib/src/foundation/klp_geometric_spinner_state.dart",
+					"line": 51
+				},
+				{
+					"path": "flutter/lib/src/foundation/klp_geometric_spinner_state.dart",
+					"line": 72
+				}
+			]
+		},
+		{
+			"id": "theme.geometry.data.spinnerCornerFactor",
+			"flutter": "geometry.data.spinnerCornerFactor",
+			"react": "theme.geometry.data.spinnerCornerFactor",
+			"css": "--klp-geometry-data-spinnerCornerFactor",
+			"references": [
+				{
+					"path": "flutter/lib/src/foundation/klp_geometric_spinner_state.dart",
+					"line": 52
+				},
+				{
+					"path": "flutter/lib/src/foundation/klp_geometric_spinner_state.dart",
+					"line": 73
+				}
+			]
+		},
+		{
+			"id": "theme.geometry.layout.drawerWidth",
+			"flutter": "geometry.layout.drawerWidth",
+			"react": "theme.geometry.layout.drawerWidth",
+			"css": "--klp-geometry-layout-drawerWidth",
+			"references": [
+				{
+					"path": "flutter/lib/src/features/overlays/drawer/klp_drawer_widget.dart",
+					"line": 58
+				}
+			]
+		},
+		{
+			"id": "theme.geometry.layout.drawerHeight",
+			"flutter": "geometry.layout.drawerHeight",
+			"react": "theme.geometry.layout.drawerHeight",
+			"css": "--klp-geometry-layout-drawerHeight",
+			"references": [
+				{
+					"path": "flutter/lib/src/features/overlays/drawer/klp_drawer_widget.dart",
+					"line": 59
+				}
+			]
+		},
+		{
+			"id": "theme.geometry.layout.resizeHandleExtent",
+			"flutter": "geometry.layout.resizeHandleExtent",
+			"react": "theme.geometry.layout.resizeHandleExtent",
+			"css": "--klp-geometry-layout-resizeHandleExtent",
+			"references": [
+				{
+					"path": "react/src/workbench-dock-view.ts",
+					"line": 39
+				},
+				{
+					"path": "flutter/lib/src/features/workspace/shell/docking/internal/klp_dock_layout_data.dart",
+					"line": 88
+				},
+				{
+					"path": "flutter/lib/src/features/workspace/shell/docking/klp_dock_layout.dart",
+					"line": 82
+				},
+				{
+					"path": "flutter/lib/src/features/workspace/shell/docking/klp_dock_layout.dart",
+					"line": 208
+				},
+				{
+					"path": "flutter/lib/src/features/workspace/shell/docking/primitives/klp_dock_resize_handle.dart",
+					"line": 36
+				},
+				{
+					"path": "flutter/lib/src/features/workspace/shell/docking/primitives/klp_dock_resize_handle.dart",
+					"line": 40
+				},
+				{
+					"path": "flutter/lib/src/foundation/layout/klp_resize_handle.dart",
+					"line": 62
+				},
+				{
+					"path": "flutter/lib/src/foundation/layout/klp_resize_handle.dart",
+					"line": 66
+				}
+			]
+		},
+		{
+			"id": "theme.geometry.layout.overlayViewportInset",
+			"flutter": "geometry.layout.overlayViewportInset",
+			"react": "theme.geometry.layout.overlayViewportInset",
+			"css": "--klp-geometry-layout-overlayViewportInset",
+			"references": [
+				{
+					"path": "react/src/command-palette.tsx",
+					"line": 84
+				},
+				{
+					"path": "react/src/command-popup.tsx",
+					"line": 90
+				},
+				{
+					"path": "flutter/lib/src/features/actions/command_palette/klp_command_palette.dart",
+					"line": 276
+				},
+				{
+					"path": "flutter/lib/src/features/actions/command_popup/klp_command_popup.dart",
+					"line": 158
+				},
+				{
+					"path": "flutter/lib/src/features/overlays/menu/klp_menu_layout.dart",
+					"line": 65
+				},
+				{
+					"path": "flutter/lib/src/features/overlays/menu/klp_menu_layout.dart",
+					"line": 68
+				},
+				{
+					"path": "flutter/lib/src/features/overlays/menu/klp_menu_layout.dart",
+					"line": 73
+				},
+				{
+					"path": "flutter/lib/src/features/overlays/menu/klp_menu_layout.dart",
+					"line": 76
+				},
+				{
+					"path": "flutter/lib/src/features/overlays/menu/klp_menu_layout.dart",
+					"line": 99
+				},
+				{
+					"path": "flutter/lib/src/features/overlays/menu/klp_menu_layout.dart",
+					"line": 105
+				},
+				{
+					"path": "flutter/lib/src/features/overlays/menu/klp_menu_layout.dart",
+					"line": 108
+				},
+				{
+					"path": "flutter/lib/src/features/overlays/menu/klp_menu_layout.dart",
+					"line": 115
+				}
+			]
+		},
+		{
+			"id": "theme.geometry.layout.railDropTargetExtent",
+			"flutter": "geometry.layout.railDropTargetExtent",
+			"react": "theme.geometry.layout.railDropTargetExtent",
+			"css": "--klp-geometry-layout-railDropTargetExtent",
+			"references": [
+				{
+					"path": "react/src/workbench-dock-view.ts",
+					"line": 77
+				},
+				{
+					"path": "flutter/lib/src/features/navigation/widgets/rail/primitives/klp_rail_drop_slot.dart",
+					"line": 25
+				}
+			]
+		},
+		{
+			"id": "theme.geometry.layout.disclosureIconSize",
+			"flutter": "geometry.layout.disclosureIconSize",
+			"react": "theme.geometry.layout.disclosureIconSize",
+			"css": "--klp-geometry-layout-disclosureIconSize",
+			"references": [
+				{
+					"path": "flutter/lib/src/features/navigation/widgets/explorer/primitives/klp_file_explorer_disclosure.dart",
+					"line": 25
+				},
+				{
+					"path": "flutter/lib/src/features/navigation/widgets/navigator/internal/klp_navigator_category_view.dart",
+					"line": 36
+				}
+			]
+		},
+		{
+			"id": "theme.geometry.layout.treeLeadingGap",
+			"flutter": "geometry.layout.treeLeadingGap",
+			"react": "theme.geometry.layout.treeLeadingGap",
+			"css": "--klp-geometry-layout-treeLeadingGap",
+			"references": [
+				{
+					"path": "react/src/styles.css",
+					"line": 171
+				},
+				{
+					"path": "flutter/lib/src/features/collections/advanced/primitives/klp_advanced_style.dart",
+					"line": 68
+				},
+				{
+					"path": "flutter/lib/src/features/navigation/widgets/explorer/internal/klp_file_explorer_row_areas.dart",
+					"line": 29
+				},
+				{
+					"path": "flutter/lib/src/features/navigation/widgets/navigator/internal/klp_navigator_element_row.dart",
+					"line": 29
+				}
+			]
+		},
+		{
+			"id": "theme.geometry.layout.tooltipOffsetX",
+			"flutter": "geometry.layout.tooltipOffsetX",
+			"react": "theme.geometry.layout.tooltipOffsetX",
+			"css": "--klp-geometry-layout-tooltipOffsetX",
+			"references": [
+				{
+					"path": "flutter/lib/src/features/navigation/widgets/rail/primitives/klp_rail_tooltip_anchor_state.dart",
+					"line": 24
+				}
+			]
+		},
+		{
+			"id": "theme.geometry.layout.primaryPaneWidth",
+			"flutter": "geometry.layout.primaryPaneWidth",
+			"react": "theme.geometry.layout.primaryPaneWidth",
+			"css": "--klp-geometry-layout-primaryPaneWidth",
+			"references": [
+				{
+					"path": "react/src/modern-productivity-layout.tsx",
+					"line": 44
+				},
+				{
+					"path": "react/src/styles.css",
+					"line": 144
+				},
+				{
+					"path": "flutter/lib/src/features/workspace/layout/klp_app_layout.dart",
+					"line": 262
+				},
+				{
+					"path": "flutter/lib/src/features/workspace/layout/klp_modern_productivity_layout.dart",
+					"line": 61
+				},
+				{
+					"path": "flutter/lib/src/foundation/layout/primitives/klp_split_pane_frame.dart",
+					"line": 13
+				}
+			]
+		},
+		{
+			"id": "theme.geometry.layout.secondaryPaneWidth",
+			"flutter": "geometry.layout.secondaryPaneWidth",
+			"react": "theme.geometry.layout.secondaryPaneWidth",
+			"css": "--klp-geometry-layout-secondaryPaneWidth",
+			"references": [
+				{
+					"path": "flutter/lib/src/features/workspace/layout/klp_app_layout.dart",
+					"line": 206
+				},
+				{
+					"path": "flutter/lib/src/features/workspace/layout/klp_app_layout.dart",
+					"line": 263
+				},
+				{
+					"path": "flutter/lib/src/foundation/layout/primitives/klp_split_pane_frame.dart",
+					"line": 15
+				}
+			]
+		},
+		{
+			"id": "theme.geometry.layout.primaryPaneBreakpoint",
+			"flutter": "geometry.layout.primaryPaneBreakpoint",
+			"react": "theme.geometry.layout.primaryPaneBreakpoint",
+			"css": "--klp-geometry-layout-primaryPaneBreakpoint",
+			"references": [
+				{
+					"path": "flutter/lib/src/features/workspace/shell/composition/pane/klp_responsive_pane_breakpoint.dart",
+					"line": 14
+				}
+			]
+		},
+		{
+			"id": "theme.geometry.layout.primaryPaneContentBreakpoint",
+			"flutter": "geometry.layout.primaryPaneContentBreakpoint",
+			"react": "theme.geometry.layout.primaryPaneContentBreakpoint",
+			"css": "--klp-geometry-layout-primaryPaneContentBreakpoint",
+			"references": [
+				{
+					"path": "flutter/lib/src/features/workspace/shell/composition/pane/klp_responsive_pane_breakpoint.dart",
+					"line": 16
+				}
+			]
+		},
+		{
+			"id": "theme.geometry.layout.responsivePaneBreakpoint",
+			"flutter": "geometry.layout.responsivePaneBreakpoint",
+			"react": "theme.geometry.layout.responsivePaneBreakpoint",
+			"css": "--klp-geometry-layout-responsivePaneBreakpoint",
+			"references": [
+				{
+					"path": "flutter/lib/src/features/workspace/shell/composition/pane/klp_responsive_pane_breakpoint.dart",
+					"line": 18
+				}
+			]
+		},
+		{
+			"id": "theme.geometry.layout.secondaryPaneBreakpoint",
+			"flutter": "geometry.layout.secondaryPaneBreakpoint",
+			"react": "theme.geometry.layout.secondaryPaneBreakpoint",
+			"css": "--klp-geometry-layout-secondaryPaneBreakpoint",
+			"references": [
+				{
+					"path": "flutter/lib/src/features/workspace/shell/composition/pane/klp_responsive_pane_breakpoint.dart",
+					"line": 20
+				}
+			]
+		},
+		{
+			"id": "theme.geometry.layout.menuWidth",
+			"flutter": "geometry.layout.menuWidth",
+			"react": "theme.geometry.layout.menuWidth",
+			"css": "--klp-geometry-layout-menuWidth",
+			"references": [
+				{
+					"path": "flutter/lib/src/features/overlays/menu/klp_menu_metrics.dart",
+					"line": 5
+				}
+			]
+		},
+		{
+			"id": "theme.geometry.layout.commandMenuWidth",
+			"flutter": "geometry.layout.commandMenuWidth",
+			"react": "theme.geometry.layout.commandMenuWidth",
+			"css": "--klp-geometry-layout-commandMenuWidth",
+			"references": [
+				{
+					"path": "react/src/command-entries.tsx",
+					"line": 102
+				},
+				{
+					"path": "react/src/command-popup.tsx",
+					"line": 89
+				},
+				{
+					"path": "react/src/styles.css",
+					"line": 213
+				},
+				{
+					"path": "flutter/lib/src/features/actions/command_entries/klp_command_entries.dart",
+					"line": 342
+				},
+				{
+					"path": "flutter/lib/src/features/actions/command_popup/klp_command_popup.dart",
+					"line": 157
+				},
+				{
+					"path": "flutter/lib/src/features/overlays/menu/klp_menu_layout.dart",
+					"line": 24
+				},
+				{
+					"path": "flutter/lib/src/foundation/layout/klp_gap.dart",
+					"line": 180
+				}
+			]
+		},
+		{
+			"id": "theme.geometry.layout.menuHeaderHeight",
+			"flutter": "geometry.layout.menuHeaderHeight",
+			"react": "theme.geometry.layout.menuHeaderHeight",
+			"css": "--klp-geometry-layout-menuHeaderHeight",
+			"references": [
+				{
+					"path": "flutter/lib/src/features/overlays/menu/klp_menu_metrics.dart",
+					"line": 7
+				}
+			]
+		},
+		{
+			"id": "theme.geometry.layout.menuItemHeight",
+			"flutter": "geometry.layout.menuItemHeight",
+			"react": "theme.geometry.layout.menuItemHeight",
+			"css": "--klp-geometry-layout-menuItemHeight",
+			"references": [
+				{
+					"path": "flutter/lib/src/styling/legacy_theme/klp_component_theme.dart",
+					"line": 91
+				}
+			]
+		},
+		{
+			"id": "theme.geometry.layout.dialogMaximumWidth",
+			"flutter": "geometry.layout.dialogMaximumWidth",
+			"react": "theme.geometry.layout.dialogMaximumWidth",
+			"css": "--klp-geometry-layout-dialogMaximumWidth",
+			"references": [
+				{
+					"path": "react/src/command-palette.tsx",
+					"line": 85
+				},
+				{
+					"path": "flutter/lib/src/features/actions/command_palette/klp_command_palette.dart",
+					"line": 277
+				},
+				{
+					"path": "flutter/lib/src/features/overlays/klp_dialog.dart",
+					"line": 37
+				}
+			]
+		},
+		{
+			"id": "theme.geometry.layout.toastMaximumWidth",
+			"flutter": "geometry.layout.toastMaximumWidth",
+			"react": "theme.geometry.layout.toastMaximumWidth",
+			"css": "--klp-geometry-layout-toastMaximumWidth",
+			"references": [
+				{
+					"path": "flutter/lib/src/features/feedback/toast/klp_toast_widget.dart",
+					"line": 38
+				}
+			]
+		},
+		{
+			"id": "theme.geometry.layout.inlineNoticeBreakpoint",
+			"flutter": "geometry.layout.inlineNoticeBreakpoint",
+			"react": "theme.geometry.layout.inlineNoticeBreakpoint",
+			"css": "--klp-geometry-layout-inlineNoticeBreakpoint",
+			"references": [
+				{
+					"path": "flutter/lib/src/features/feedback/klp_inline_notice.dart",
+					"line": 37
+				}
+			]
+		},
+		{
+			"id": "theme.geometry.layout.statusBarBreakpoint",
+			"flutter": "geometry.layout.statusBarBreakpoint",
+			"react": "theme.geometry.layout.statusBarBreakpoint",
+			"css": "--klp-geometry-layout-statusBarBreakpoint",
+			"references": [
+				{
+					"path": "flutter/lib/src/features/workspace/shell/status/klp_status_bar.dart",
+					"line": 22
+				}
+			]
+		},
+		{
+			"id": "theme.geometry.layout.settingsDialogMaximumWidth",
+			"flutter": "geometry.layout.settingsDialogMaximumWidth",
+			"react": "theme.geometry.layout.settingsDialogMaximumWidth",
+			"css": "--klp-geometry-layout-settingsDialogMaximumWidth",
+			"references": [
+				{
+					"path": "flutter/lib/src/features/workspace/settings/layout/klp_settings_dialog.dart",
+					"line": 15
+				}
+			]
+		},
+		{
+			"id": "theme.geometry.layout.settingsDialogMaximumHeight",
+			"flutter": "geometry.layout.settingsDialogMaximumHeight",
+			"react": "theme.geometry.layout.settingsDialogMaximumHeight",
+			"css": "--klp-geometry-layout-settingsDialogMaximumHeight",
+			"references": [
+				{
+					"path": "flutter/lib/src/features/workspace/settings/layout/klp_settings_dialog.dart",
+					"line": 19
+				}
+			]
+		},
+		{
+			"id": "theme.geometry.layout.settingsPaneGap",
+			"flutter": "geometry.layout.settingsPaneGap",
+			"react": "theme.geometry.layout.settingsPaneGap",
+			"css": "--klp-geometry-layout-settingsPaneGap",
+			"references": []
+		},
+		{
+			"id": "theme.geometry.layout.settingsNavigationWidth",
+			"flutter": "geometry.layout.settingsNavigationWidth",
+			"react": "theme.geometry.layout.settingsNavigationWidth",
+			"css": "--klp-geometry-layout-settingsNavigationWidth",
+			"references": []
+		},
+		{
+			"id": "theme.geometry.layout.settingsNavigationMinimumWidth",
+			"flutter": "geometry.layout.settingsNavigationMinimumWidth",
+			"react": "theme.geometry.layout.settingsNavigationMinimumWidth",
+			"css": "--klp-geometry-layout-settingsNavigationMinimumWidth",
+			"references": []
+		},
+		{
+			"id": "theme.geometry.layout.settingsNavigationMaximumWidth",
+			"flutter": "geometry.layout.settingsNavigationMaximumWidth",
+			"react": "theme.geometry.layout.settingsNavigationMaximumWidth",
+			"css": "--klp-geometry-layout-settingsNavigationMaximumWidth",
+			"references": []
+		},
+		{
+			"id": "theme.geometry.layout.settingsContentMaximumWidth",
+			"flutter": "geometry.layout.settingsContentMaximumWidth",
+			"react": "theme.geometry.layout.settingsContentMaximumWidth",
+			"css": "--klp-geometry-layout-settingsContentMaximumWidth",
+			"references": [
+				{
+					"path": "flutter/lib/src/features/workspace/settings/layout/klp_settings_content_pane.dart",
+					"line": 49
+				}
+			]
+		},
+		{
+			"id": "theme.geometry.layout.themePreviewTileWidth",
+			"flutter": "geometry.layout.themePreviewTileWidth",
+			"react": "theme.geometry.layout.themePreviewTileWidth",
+			"css": "--klp-geometry-layout-themePreviewTileWidth",
+			"references": [
+				{
+					"path": "flutter/lib/src/features/workspace/shell/theme/primitives/klp_theme_preview_tile_frame.dart",
+					"line": 26
+				},
+				{
+					"path": "flutter/lib/src/foundation/layout/klp_masonry_grid.dart",
+					"line": 20
+				}
+			]
+		},
+		{
+			"id": "theme.geometry.layout.windowHeaderHeight",
+			"flutter": "geometry.layout.windowHeaderHeight",
+			"react": "theme.geometry.layout.windowHeaderHeight",
+			"css": "--klp-geometry-layout-windowHeaderHeight",
+			"references": [
+				{
+					"path": "flutter/lib/src/features/workspace/shell/window/klp_window_header_height.dart",
+					"line": 7
+				}
+			]
+		},
+		{
+			"id": "theme.geometry.layout.windowHeaderControlSize",
+			"flutter": "geometry.layout.windowHeaderControlSize",
+			"react": "theme.geometry.layout.windowHeaderControlSize",
+			"css": "--klp-geometry-layout-windowHeaderControlSize",
+			"references": [
+				{
+					"path": "react/src/styles.css",
+					"line": 101
+				},
+				{
+					"path": "flutter/lib/src/features/actions/button/internal/klp_icon_button_style.dart",
+					"line": 29
+				},
+				{
+					"path": "flutter/lib/src/features/workspace/shell/window/klp_window_controls.dart",
+					"line": 61
+				}
+			]
+		},
+		{
+			"id": "theme.geometry.layout.windowAppIconSize",
+			"flutter": "geometry.layout.windowAppIconSize",
+			"react": "theme.geometry.layout.windowAppIconSize",
+			"css": "--klp-geometry-layout-windowAppIconSize",
+			"references": []
+		},
+		{
+			"id": "theme.geometry.layout.windowIdentityGap",
+			"flutter": "geometry.layout.windowIdentityGap",
+			"react": "theme.geometry.layout.windowIdentityGap",
+			"css": "--klp-geometry-layout-windowIdentityGap",
+			"references": [
+				{
+					"path": "flutter/lib/src/features/workspace/shell/window/klp_window_header_mac_layout.dart",
+					"line": 76
+				},
+				{
+					"path": "flutter/lib/src/features/workspace/shell/window/klp_window_header_strategy.dart",
+					"line": 99
+				},
+				{
+					"path": "flutter/lib/src/features/workspace/shell/window/klp_window_header_windows_layout.dart",
+					"line": 73
+				},
+				{
+					"path": "flutter/lib/src/features/workspace/shell/window/klp_window_header_windows_layout.dart",
+					"line": 92
+				}
+			]
+		},
+		{
+			"id": "theme.geometry.optical.menuIconOffsetY",
+			"flutter": "geometry.optical.menuIconOffsetY",
+			"react": "theme.geometry.optical.menuIconOffsetY",
+			"css": "--klp-geometry-optical-menuIconOffsetY",
+			"references": [
+				{
+					"path": "react/src/styles.css",
+					"line": 250
+				},
+				{
+					"path": "flutter/lib/src/features/overlays/menu/klp_menu_metrics.dart",
+					"line": 15
+				}
+			]
+		},
+		{
+			"id": "theme.geometry.optical.railBadgeInset",
+			"flutter": "geometry.optical.railBadgeInset",
+			"react": "theme.geometry.optical.railBadgeInset",
+			"css": "--klp-geometry-optical-railBadgeInset",
+			"references": [
+				{
+					"path": "flutter/lib/src/features/navigation/widgets/rail/primitives/klp_rail_badge_indicator.dart",
+					"line": 9
+				},
+				{
+					"path": "flutter/lib/src/features/navigation/widgets/rail/primitives/klp_rail_badge_indicator.dart",
+					"line": 10
+				}
+			]
+		},
+		{
+			"id": "theme.geometry.optical.statusIconOffsetY",
+			"flutter": "geometry.optical.statusIconOffsetY",
+			"react": "theme.geometry.optical.statusIconOffsetY",
+			"css": "--klp-geometry-optical-statusIconOffsetY",
+			"references": []
+		},
+		{
+			"id": "theme.geometry.optical.monoBaselineOffsetY",
+			"flutter": "geometry.optical.monoBaselineOffsetY",
+			"react": "theme.geometry.optical.monoBaselineOffsetY",
+			"css": "--klp-geometry-optical-monoBaselineOffsetY",
+			"references": []
+		},
+		{
+			"id": "theme.geometry.optical.uiBaselineOffsetY",
+			"flutter": "geometry.optical.uiBaselineOffsetY",
+			"react": "theme.geometry.optical.uiBaselineOffsetY",
+			"css": "--klp-geometry-optical-uiBaselineOffsetY",
+			"references": []
+		},
+		{
+			"id": "theme.dataVisualization.series",
+			"flutter": "dataVisualization.series",
+			"react": "theme.dataVisualization.series",
+			"css": "--klp-dataVisualization-series",
+			"references": [
+				{
+					"path": "flutter/lib/src/styling/style_pack/native_codec.dart",
+					"line": 55
+				},
+				{
+					"path": "flutter/lib/src/styling/style_pack/native_codec.dart",
+					"line": 56
+				}
+			]
+		},
+		{
+			"id": "theme.dataVisualization.seriesWash",
+			"flutter": "dataVisualization.seriesWash",
+			"react": "theme.dataVisualization.seriesWash",
+			"css": "--klp-dataVisualization-seriesWash",
+			"references": [
+				{
+					"path": "flutter/lib/src/styling/style_pack/native_codec.dart",
+					"line": 56
+				}
+			]
+		},
+		{
+			"id": "theme.dataVisualization.axis",
+			"flutter": "dataVisualization.axis",
+			"react": "theme.dataVisualization.axis",
+			"css": "--klp-dataVisualization-axis",
+			"references": []
+		},
+		{
+			"id": "theme.dataVisualization.grid",
+			"flutter": "dataVisualization.grid",
+			"react": "theme.dataVisualization.grid",
+			"css": "--klp-dataVisualization-grid",
+			"references": []
+		},
+		{
+			"id": "theme.dataVisualization.gridStrong",
+			"flutter": "dataVisualization.gridStrong",
+			"react": "theme.dataVisualization.gridStrong",
+			"css": "--klp-dataVisualization-gridStrong",
+			"references": []
+		},
+		{
+			"id": "theme.dataVisualization.label",
+			"flutter": "dataVisualization.label",
+			"react": "theme.dataVisualization.label",
+			"css": "--klp-dataVisualization-label",
+			"references": []
+		},
+		{
+			"id": "theme.dataVisualization.value",
+			"flutter": "dataVisualization.value",
+			"react": "theme.dataVisualization.value",
+			"css": "--klp-dataVisualization-value",
+			"references": []
+		},
+		{
+			"id": "theme.dataVisualization.plotBackground",
+			"flutter": "dataVisualization.plotBackground",
+			"react": "theme.dataVisualization.plotBackground",
+			"css": "--klp-dataVisualization-plotBackground",
+			"references": []
+		},
+		{
+			"id": "theme.dataVisualization.crosshair",
+			"flutter": "dataVisualization.crosshair",
+			"react": "theme.dataVisualization.crosshair",
+			"css": "--klp-dataVisualization-crosshair",
+			"references": []
+		},
+		{
+			"id": "theme.dataVisualization.marketUp",
+			"flutter": "dataVisualization.marketUp",
+			"react": "theme.dataVisualization.marketUp",
+			"css": "--klp-dataVisualization-marketUp",
+			"references": []
+		},
+		{
+			"id": "theme.dataVisualization.marketUpWash",
+			"flutter": "dataVisualization.marketUpWash",
+			"react": "theme.dataVisualization.marketUpWash",
+			"css": "--klp-dataVisualization-marketUpWash",
+			"references": []
+		},
+		{
+			"id": "theme.dataVisualization.marketDown",
+			"flutter": "dataVisualization.marketDown",
+			"react": "theme.dataVisualization.marketDown",
+			"css": "--klp-dataVisualization-marketDown",
+			"references": []
+		},
+		{
+			"id": "theme.dataVisualization.marketDownWash",
+			"flutter": "dataVisualization.marketDownWash",
+			"react": "theme.dataVisualization.marketDownWash",
+			"css": "--klp-dataVisualization-marketDownWash",
+			"references": []
+		},
+		{
+			"id": "theme.dataVisualization.marketFlat",
+			"flutter": "dataVisualization.marketFlat",
+			"react": "theme.dataVisualization.marketFlat",
+			"css": "--klp-dataVisualization-marketFlat",
+			"references": []
+		}
+	]
+}

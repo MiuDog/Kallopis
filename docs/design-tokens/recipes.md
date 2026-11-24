@@ -2,6 +2,45 @@
 
 不同元件有不同參數集合。「繼承」欄先提供完整基底，「設計參數」欄只覆寫變動；geometry=繼承表示所有size/padding/radius等幾何保留。狀態套用到目前size，不重新回到md。
 
+### 操作與參數組合規則（2026-10-13）
+
+#### 產品畫面的註記限制（2026-10-18 使用者已確認）
+
+- 所有 consumer 的正式畫面與驗證畫面，一律禁止常駐展示開發階段、技術實作、資料來源或能力限制的說明註記，例如「本機流程」、「模擬清單」、「前端工作流編輯器」、「保存在本機瀏覽器」、「模擬不執行模型或工具」。未來不得自動補回這類文字，也不以測試／預覽為理由加入。
+- 有操作意義的實際名稱、設定欄位、選取狀態、錯誤、檢查結果、保存回饋及執行紀錄保留；能力與儲存限制記入 consumer 文件。
+- Header 為操作空間，不放用來說明布局、工程狀態或驗證高度的佔位註記。無操作時保留空間即可。
+
+#### 側欄與 Stage Header（2026-10-17 使用者已確認）
+
+- 左側欄不顯示軟體名稱；保留 header 空區作為欄位收合按鈕或其他功能按鈕的配置位置，不以品牌標題占用。
+- 側欄收合後仍須保留可操作的展開入口；側欄 header 及其控制不另增一個全域版面。sidebar header 元件上／左右 padding 沿用 `theme.spacing.contentInset`，底部依下述等距算法為 contentInset / 2，不得以額外內層高度製造未定義留白；按鈕沿用既有公開元件與可存取名稱規則。
+- Stage 上方僅在需要時設置 header，採隱形 Panel：背景透明／繼承所在背景，視覺上不得與背景有顏色差異；不套用獨立色塊、邊框、陰影或微立體效果。此規則只約束 header，Stage 主內容 Panel 仍可使用已選配方。
+- header 指實際保留的布局空間。Stage header 位於主內容 Panel 上方，即使沒有控制也保留完整 header 語意空間：保留 24px 元件、上方 8px、底部 4px，再加獨立 8px 分割帶，共 44px；新增 padding／分割帶須增加 header 空間，禁止從已選元件尺寸扣除（此為 header 組裝尺寸，不修改其他元件使用的 chromeHeader token）；不得只將 Panel 內部標題背景改透明就宣稱已建立上方 header。sidebar 與 Stage 仍屬左右兩區，header 為各區內的空間。
+- Stage header 中的所有元件均使用微立體 Panel 配方（React 對應公開 KlpFrame surface="raised"）；header 容器本身仍為隱形 Panel。元件可見外框 top 必須對齊 sidebar 外框 top，不再沿用兩側元件 top／高度完全相同的舊規則。Stage header 元件上方不加 padding，底部保留 contentInset 與 Stage 主內容分隔。
+- sidebar header 內元件必須為正方形，保留既定 24px 尺寸。依最新使用者決策，元件上／左右 padding 為 contentInset（8px），底部 padding 改為 contentInset / 2（4px）；下方獨立虛線帶仍為上下各 4px。元件底部到虛線中心為 4px + 4px = 8px，與上方 8px 等距。header 總高為 8 + 24 + 4 + 4 + 4 = 44px，取代先前四周皆 8px、總高 48px 的規則；不得縮小元件來配置留白。
+- sidebar header 與 content 之間加入低對比細虛線；顏色採 theme.colors.divider，線寬採 theme.shape.hairline。虛線的垂直中心對齊 Stage header 元件底緣與 Stage Panel 頂緣之間 padding 的中心，兩側對應留白高度相同。sidebar 虛線置於 header 最下方獨立分割帶的中心；分割帶上下各 4px，與元件本身的底部 4px padding 分別計算，分割帶已計入 header 總高。
+- 此為產品無關的組裝限制，不固定產品導覽項目、業務內容或額外版面。框架可用既有 header 插槽及原生布局實現，不要求新增模板或第二份 theme。
+
+#### Panel 強調與現代生產力呈現（2026-11-01 使用者已確認）
+
+- 不使用「深色外框包住淺色內部」或「高亮有色邊框包住半透明內部」作為強調 Panel 的樣式；包含 Callout、資訊／成功／警告／錯誤等有色區塊，均使用不透明語意表面、無邊框及既有 `effect-frame-relief` 微立體陰影／亮邊。需要狀態底色時，將狀態色與 surface／stageSurface 混合為不透明顏色，不將狀態色外框或半透明 wash 當成 Panel 配方。這不取消鍵盤焦點、錯誤等必要操作提示；狀態以文字、圖示或不透明表面呈現，不以高亮外框包半透明填色辨識狀態。
+- 「現代生產力」consumer 的 Sidebar 與 Stage 主內容皆採微立體 Panel。Stage header 容器維持隱形，其內標籤／控制各自為獨立微立體 Panel，相鄰項目以既有 contentInlineGap 分離；不得以連續相接的頁籤外框或深色框座包覆整列。標籤選取仍由 consumer／宿主原生行為擁有。
+- 若宿主提供 Rail，視覺上整合到左側欄內，使用同一側欄表面與連續外輪廓；Rail 與功能內容以 `theme.shape.hairline`、`theme.colors.divider` 的低對比細虛線區隔，不新增一個獨立全域欄。沒有 Rail 時不補造；側欄收合仍保留原生可操作的展開入口。
+- Obsidian 以純主題投影上述樣式；Rail 與 Sidebar 的原生 DOM、功能面板身分、拖曳、命令與資料生命週期不由 CSS 接管。Obsidian頂部tab列外側不疊加橫向留白，內側使用contentInset；頂部控制與tab對齊。原生window tools由最右側作用區承接：右sidebar展開時在其頂部預留空間，收合時由主區承接，不覆蓋側欄分頁。正文行寬保留宿主原生選項，佈景主題不強制全寬；行寬切換不改變Stage的微立體及內容留白。原生dropdown在支援的桌面引擎以base-select投影相同平面選單配方：不透明表面、無陰影、低對比1px實線及框內左上／右下小斜線、灰階hover／selected；勾選圖形沿用Obsidian內建Lucide check（24px viewBox、2px stroke、M20 6 9 17l-5-5），不採字元勾號；舊引擎維持原生操作，不以JS替換宿主選項或事件。閱讀清單同層文字使用共同起點，圓點／編號與checkbox共用標記欄中心，巢狀導引線通過父層標記中心。未勾選checkbox採shape.stroke邊框，外部尺寸不因加粗改變；編輯器仍擁有原始碼及縮排資料。一般引用只畫4px圓端左線，背景透明，不附加整塊底色、外框或陰影；quote類型Callout仍依其獨立語意，不與一般引用混用。Obsidian有色Callout的深色狀態底色提高亮度（狀態色28%與stageSurface混合），亮色保留16%淺底與主文字；圖示混入主文字色以維持辨識對比，不因調亮恢復高亮外框或半透明內部。Obsidian即時預覽的已渲染內容須與閱讀模式共用行高、文字起點、標記中心及區塊間距；不允許checkbox／編號落至另一行。原生作用行語法展開及原始碼模式仍由宿主擁有，不以隱藏可編輯文字達成表面一致。Obsidian右鍵選單依使用者釐清保留完整1px實線divider及7px圓角外框；左上／右下各在邊框以內額外加入4px細斜線，不裁切外輪廓。斜線不攔截操作，內部分隔保留細虛線；dropdown維持既有平面配方。Obsidian一般按鈕與dropdown觸發器保留微立體；設定頁依使用者最後提供的參考圖採輕薄比例（0／1px底影、2px模糊、細微inset頂部亮邊），取代本輪先前的平面要求。其他區域沿用effect-frame-relief；展開選單配方不得連帶改動觸發按鈕。滑桿拖動點依2026-11-02使用者決策縮小為12×12px、3px圓角的方形，取代18px圓形；一般／hover／拖動狀態維持同一尺寸，拖動點中心與4px軌道中心對齊，保留原生拖動、鍵盤調值及焦點提示。切換鈕關閉時使用左側danger紅色拖動塊與叉號，開啟時使用右側success綠色拖動塊與勾號；軌道固定surfaceMuted，不隨開關狀態變色，增加1px實線語意邊框；暗色叉／勾採白色，亮色採深色對比筆畫。按壓不放大、不改變色塊尺寸及偏移，只以固定尺寸平移切換左右位置；保留原生焦點及disabled回饋。Obsidian文件頂部導覽Header高度依使用者修訂由60px微降至52px，按鈕保持垂直置中，不改文件tab列與側欄列尺寸。Obsidian表格不繪外框，保留內部格線並採7px圓角；新增列／欄操作呈現8px厚、6px圓角的半透明粗條（interaction18%，hover28%），保留透明命中區與宿主原生新增行為。Obsidian hover tooltip與Sidebar共用surfaceInset背景，外框採1px低對比divider虛線，箭頭同步底色。Obsidian inline code閱讀及即時預覽採3px上下／6px左右留白、1.5行高與既有6px圓角，避免唯讀表面過扁。Tag依使用者最新修訂採半透明使用者輔色16%（hover24%）、輔色文字、4px小圓角、無邊框與平面無陰影，不採微立體。此輪在 Kallopis 僅記錄已接受的呈現契約，不宣稱 Flutter／React 的既有模板已同步完成或通過視覺驗收。
+
+- Obsidian設定控制依2026-11-02使用者修訂：下拉觸發按鈕採32px、與相鄰一般按鈕同高，保留輕薄微立體；展開選單使用上述右鍵選單相同的平面實線／框內斜線配方與宿主check圖形。一般單行輸入框由40px降至36px，聚焦只以使用者輔色高亮外緣，內部維持surfaceInset，不加內部色塊高亮；hover亦不改變內部底色。Primary按鈕填色取宿主使用者輔色accent HSL，取代原本黑白對比色；hover／pressed沿用同一輔色的狀態混色，支援引擎以contrast-color選擇黑／白文字，舊引擎保留text-on-accent回退。此契約只記錄本輪Obsidian呈現，未宣稱Flutter／React已實作或驗收。
+- Obsidian內部／外部／未解析連結與Tag文字依使用者修訂改用宿主輔色accent HSL，hover亦沿用輔色。原生沒有獨立標記選色項時，標記底色採輔色16%透明混合，文字維持主文字；不新增外掛或額外設定，不改連結行為與文件排版。
+- Obsidian閱讀／即時預覽的程式碼區塊使用共同字級、行高、內距與普通識別字／標點配色。複製控制統一為24px命中區、16px原生Lucide copy圖形、距右上6px，保留宿主複製行為；編輯側語言名稱裝飾由複製圖示取代，不隱藏可編輯圍欄語法。兩個語法引擎的任意語言分類及圓角抗鋸齒差異仍須依實測範圍揭露，不以CSS替代解析器。
+- Obsidian編輯顯示依使用者最新修訂優先保留原始語法、行號及游標：空白來源列與程式碼圍欄使用完整自然行高，不壓成閱讀模式間距，不隱藏行號，這部分不要求與閱讀高度相同。作用中引用僅呈現可編輯>符號，不與裝飾左線重疊；非作用引用保留粗圓端線。編輯Tab指引線加粗為2px，一般Tab線位於實際Tab起點並與原生游標及點擊定位對齊；清單指引線仍對準其標記中心。不得以負文字縮排、裁切行號或隱藏來源文字偽造對齊。
+- Obsidian Tag的閱讀與編輯樣式使用完整inline-block行盒、1.5行高、上下各2px padding及middle垂直對齊，避免表格內標籤背景貼住上緣；水平留白、輔色半透明平面與小圓角保持既有配方，不以改寫表格資料或單側位移補償。
+- Obsidian切換鈕的拖動色塊必須正方形，寬高同取宿主thumb-height；軌道內框至色塊上下及所在端點均保留2px padding。以實際內容盒與padding計算平移範圍，取代負位置補償；左右狀態及按壓均不改變色塊尺寸，保留既有紅叉／綠勾、對比圖示、固定軌道及1px邊框。
+- Obsidian依使用者確認維持純CSS主題。Callout微立體不得被宿主paint containment裁切；來源引用prefix須容納完整Callout語法，不以固定窄欄強迫逐字折行。標題／正文須分段比較預覽及編輯截圖，包含捲動離開可視區後返回；行號不得擠壓正文欄寬。原生CodeMirror離屏高度估算與作用行語法差異須如實揭露，不宣稱任意Markdown皆能逐像素一致，也不因此加入外掛。
+
+- 鍵盤快捷鍵對應的命令操作，尤其工具列，不得呈現為文字按鈕。可只提供快捷鍵／命令選單；需要可見操作時，使用公開 icon button 組成橫向 icon 按鈕列，保留可存取名稱與快捷鍵提示。圖示未定義時先略過可見操作，不以文字按鈕占位。
+- 上述命令規則不將側欄功能切換、資料列表選取或參數值選項視為工具列命令；這些內容仍使用各自公開元件及受控選取契約。命令面板的文字結果為選單項目，不是工具列文字按鈕。
+- 參數設定元件採 row：同一參數的標籤與輸入控制水平排列；多個參數以逐列或同組 row 組合。禁止以 grid 排列參數控制，也禁止把標籤與輸入分成隱含 grid 槽位。間距仍引用既有 semantic，不另設預設值。
+- row 規則適用參數控制組合與欄位內部，不限制一般工作區／Stage／Dock 的有限布局解算採用平台 grid 技術。缺少公開能力時由 consumer 記錄缺件並略過，不複製共用元件實作。
+
 | Semantic ID | 自然語言／別名 | 繼承 | 設計參數 |
 |---|---|---|---|
 | `app-background` | app background／應用背景／頁面背景 | — | background=s(theme.colors.app); foreground=s(theme.colors.text); padding=p(space0); border=none; radius=s(theme.shape.none); size=產品決定; shadow=none |
@@ -69,7 +108,7 @@
 | `field-size-lg` | 輸入框 lg | field-base | height=s(theme.spacing.controlHeightLarge); font-size=s(theme.typography.lead); padding-x=s(theme.spacing.base); padding-y=繼承field-base公式，以此尺寸代入 |
 | `field-size-xl` | 輸入框 xl | field-base | height=s(theme.spacing.controlHeightXLarge); font-size=s(theme.typography.lead); padding-x=s(theme.spacing.comfortable); padding-y=繼承field-base公式，以此尺寸代入 |
 | `field-hover` | 懸停輸入框 | field-base | background=over(alpha(s(theme.colors.text),s(theme.surface.selectionWashOpacity)),s(theme.colors.surfaceInset));  geometry=繼承 |
-| `field-focused` | 聚焦／選取輸入框 | field-base | background=over(alpha(s(theme.colors.interaction),s(theme.surface.focusWashOpacity)),s(theme.colors.surfaceInset));  geometry=繼承 |
+| `field-focused` | 聚焦／選取輸入框 | field-base | background=over(alpha(s(theme.colors.interaction),s(theme.surface.focusWashOpacity)),s(theme.colors.surfaceInset));  focus-indicator=inset(s(theme.shape.stroke),s(theme.colors.interaction)); outer-outline=none; geometry=繼承（含焦點提示不增加外徑） |
 | `field-error` | 錯誤輸入框 | field-base | background=alpha(s(theme.colors.danger),s(theme.surface.invalidFillOpacity));  geometry=繼承 |
 | `field-disabled` | 停用輸入框 | field-base | background=s(theme.colors.surfaceMuted); foreground=s(theme.colors.textFaint); icon-color=s(theme.colors.textFaint); geometry=繼承 |
 | `field-outlined` | 有邊框輸入框 | field-base | border-width=max(繼承.border-width,s(theme.shape.stroke)); border-color=focused時s(theme.colors.interaction)，否則s(theme.colors.border); geometry=繼承 |
@@ -80,8 +119,8 @@
 | `card-raised` | 卡片 raised | card | background=s(theme.colors.surfaceRaised); shadow=none（raised只改底色） |
 | `card-selected` | 選取卡片 | 繼承目前 card* | background=over(alpha(s(theme.colors.text),s(theme.surface.selectionWashOpacity)),繼承.background); geometry=繼承 |
 | `badge-base` | 狀態標記共用幾何／badge | — | padding-x=s(theme.components.badgePaddingX); padding-y=s(theme.spacing.space0_5); radius=s(theme.components.badgeRadius); typography=s(text-caption); size=內容決定; text-transform=uppercase; dot-size=s(theme.spacing.indicatorDot); dot-gap=s(theme.spacing.tight); shadow=none; tone-color=neutral時s(theme.colors.textMuted)，其他取status-* |
-| `badge-neutral` | 中性標記／filled neutral | badge-base | background=s(theme.colors.component); foreground=s(theme.colors.text); border-width=s(theme.shape.hairline); border-color=s(theme.colors.divider); border-style=solid |
-| `badge-status` | 語意色標記／filled status | badge-base | background=alpha(tone-color,s(theme.surface.statusFillOpacity)); foreground=s(theme.colors.text); border-width=s(theme.shape.hairline); border-color=tone-color; border-style=solid |
+| `badge-neutral` | 中性標記／filled neutral | badge-base | background=s(theme.colors.component); foreground=s(theme.colors.text); border-width=p(space0); border-style=none |
+| `badge-status` | 語意色標記／filled status | badge-base | background=over(alpha(tone-color,s(theme.surface.statusFillOpacity)),opaque(s(theme.colors.component))); foreground=s(theme.colors.text); border=none; shadow=s(effect-frame-relief) |
 | `badge-outline` | 描邊標記 | badge-base | background=none; foreground=tone-color; border-width=s(theme.shape.hairline); border-color=tone-color; border-style=solid |
 | `badge-solid` | 實底標記 | badge-base | background=s(theme.colors.text); foreground=s(theme.colors.stageSurface); border=none |
 | `status-success` | 成功／完成 | — | color=s(theme.colors.success); on-status=s(theme.colors.onStatus); fill-opacity=s(theme.surface.statusFillOpacity); padding/border/size=繼承使用它的元件 |
@@ -109,13 +148,13 @@
 | `action-region-hover` | 可操作資料區域hover／focus | action-region | background=alpha(s(theme.colors.text),s(theme.surface.selectionWashOpacity)) |
 | `action-region-selected` | 可操作資料區域selected | action-region | background=s(theme.colors.interactionSoft); foreground=s(theme.colors.text) |
 | `action-region-destructive` | 破壞性可操作區域 | action-region | foreground=s(theme.colors.danger); active-background=s(theme.colors.danger); active-foreground=s(theme.colors.onStatus) |
-| `menu` | 彈出選單／menu panel | — | background=s(theme.colors.overlay); foreground=backgroundForeground(background); padding=s(theme.spacing.tight); radius=s(theme.components.menuRadius); width-base=s(theme.geometry.layout.menuWidth); width=依項目量測／scrollable選項，基準width-base; border=none; shadow=s(effect-menu-shadow) |
+| `menu` | 彈出選單／menu panel | — | background=s(theme.colors.overlay); foreground=backgroundForeground(background); padding=s(theme.spacing.tight); radius=s(theme.components.menuRadius); width-base=s(theme.geometry.layout.menuWidth); width=依項目量測／scrollable選項，基準width-base; border-width=s(theme.shape.hairline); border-style=dashed; border-color=s(theme.colors.divider); shadow=s(effect-menu-shadow) |
 | `menu-item` | 選單項目 | action-region | radius=s(theme.shape.control); height=s(theme.components.menuItemHeight); padding-x=s(theme.components.menuPadding); padding-y=p(space0); typography=s(text-label); icon-size=s(theme.spacing.iconSmall); gap=s(theme.spacing.overlayItemGap); icon-optical-y=s(theme.geometry.optical.menuIconOffsetY) |
 | `menu-item-description` | 附說明選單項目 | menu-item | height=mul(s(theme.components.menuItemHeight),p(ratio-2)); description=s(text-caption); description-color=s(theme.colors.textMuted) |
 | `menu-item-selected` | 選取選單項目 | menu-item | background=s(theme.colors.interactionSoft); foreground=s(theme.colors.text) |
 | `menu-item-hover` | 選單hover／keyboard focus | menu-item | background=alpha(s(theme.colors.text),s(theme.surface.selectionWashOpacity)) |
 | `menu-item-danger` | 危險選單項目 | menu-item | foreground=s(theme.colors.danger); active-background=s(theme.colors.danger); active-foreground=s(theme.colors.onStatus) |
-| `dialog` | 對話框 | surface-base | radius=s(theme.shape.panel); max-width=s(theme.geometry.layout.dialogMaximumWidth); heading-padding=s(theme.spacing.comfortable); content-padding=s(theme.spacing.comfortable); actions-padding=s(theme.spacing.base); heading-gap=s(theme.spacing.overlayHeadingGap); action-gap=s(theme.spacing.actionGap); title=s(text-title); label=s(text-label); primary-action=s(button-primary); secondary-action=s(button-ghost); shadow=none; positioning/scrim=產品彈出宿主決定 |
+| `dialog` | 對話框 | surface-base | radius=s(theme.shape.panel); max-width=s(theme.geometry.layout.dialogMaximumWidth); heading-padding=s(theme.spacing.loose); content-padding=s(theme.spacing.loose); actions-padding=s(theme.spacing.base); heading-gap=s(theme.spacing.overlayHeadingGap); action-gap=s(theme.spacing.actionGap); title=s(text-title); label=s(text-label); primary-action=s(button-primary); secondary-action=s(button-ghost); border-width=s(theme.shape.hairline); border-style=dashed; border-color=s(theme.colors.divider); shadow=微立體; positioning/scrim=產品彈出宿主決定 |
 | `scrollbar` | 捲軸 | — | thumb-color=s(theme.colors.textFaint); track-color=s(theme.colors.transparent); track-border-color=s(theme.colors.transparent); thickness=s(theme.geometry.control.scrollbarThickness); radius=s(theme.shape.pill); track-visible=false; length/padding=宿主決定 |
 | `tooltip` | 工具提示 | — | background=s(theme.colors.overlay); foreground=s(theme.colors.textMuted); radius=s(theme.shape.control); padding-x=s(theme.spacing.overlayContentInset); padding-y=s(theme.spacing.tight); font-family=s(theme.typography.uiFamily); font-size=s(theme.typography.caption); border=none; delay=s(theme.motion.tooltipDelay); dwell=s(theme.motion.tooltipDwell); prefer-below=false; size=內容決定 |
 | `effect-paper-shadow` | 紙片雙層陰影／overlayShadow | — | contact=color alpha(s(theme.surface.overlayShadowColor),s(theme.surface.contactShadowOpacity)), offset(p(space0),s(theme.surface.contactOffsetY)), blur=s(theme.surface.contactBlur), spread=p(space0); ambient=color alpha(s(theme.surface.overlayShadowColor),s(theme.surface.overlayShadowOpacity)), offset(p(space0),s(theme.surface.overlayOffsetY)), blur=s(theme.surface.overlayBlur), spread=s(theme.surface.overlaySpread); enabled=theme.surface.separation=shadow，其餘none |
@@ -123,3 +162,25 @@
 | `effect-frame-relief` | Frame微立體陰影與亮邊 | — | scale=div(s(theme.spacing.space1),p(space100)); dark=surface.R/G/B全部小於100; shadow-rgb=s(theme.surface.overlayShadowColor); shadow-alpha=dark?p(opacity-0_47843137254901963):p(opacity-0_1803921568627451); shadow-offset=(mul(p(space50),scale),mul(p(length-3),scale)); blur=mul(p(length-5),scale); spread=mul(p(length-minus-1),scale); highlight-rgb=p(ink50); highlight-alpha=dark?p(opacity-0_07058823529411765):p(opacity-0_8509803921568627); highlight-offset=(mul(p(length-minus-1),scale),mul(p(length-minus-1),scale)); highlight-blur=p(space0); 陰影在裁切之外 |
 | `motion-reduced` | 減少動態效果 | — | state-transition=p(duration0); overlay-enter=p(duration0); overlay-exit=p(duration0); 其他=繼承theme.motion |
 
+
+## 桌面選單與分隔補充
+
+選單／建議清單使用平面表面與方形圓角，各選項間保留 space1；hover／selected 使用相同 selection wash。一般表格與相鄰群組可使用 shape.hairline 的低對比 colors.divider 細虛線；禁止用高對比實線圍住區塊。輸入 focus 提示完全在 fieldHeight 內，不占外部尺寸。
+
+
+## 工作台風格與消費者邊界（2026-10-18 使用者已確認）
+
+來源：Unico01報告及使用者要求。此處擁有呈現與組裝決策，不擁有產品資料或商業邏輯。所有consumer視覺修改須先更新本風格的正式規範與可複製呈現架構，再於consumer引用；不得把API、路由規則、核准、資料保存、排序持久化移入Kallopis。沒有明確重用需求時，保留具名模板，不新增公開套件API。
+
+- 微立體／立體Panel上的子Panel採平面；強調或僅有立體配方的特定元件可依原配方例外，不以任意巢狀陰影區分群組。
+- Hover提示、右鍵選單、下拉選單採平面Panel；群組以低對比細虛線分割。選項hover／selected仍沿用相同selection wash。
+- Stage頁面不加重複title；內容標題只用於確有資料語意的內文章節。
+- 清單頭像採方形圓角平面Panel。清單可拖動排序的重排規則與持久化屬consumer；Kallopis [reorderable-list](../../templates/reorderable-list/README.md) 只呈現受控順序、低對比細虛線目標及拖曳／Alt方向鍵回呼。不增加工具列或拖曳把手。
+- 同一風格的表單欄位需沿用既有field/control配方，textarea／select／一般輸入不得自行長出另一份表面、focus或尺寸規則。
+- 待決變更提示由Stage底部出現，使用平面Panel、低對比細虛線、文字與右側操作列；僅有未決變更時顯示。使用者回到原值即收回。嘗試離開未決編輯時重播短促水平震動，prefers-reduced-motion時停用動畫。
+- 保存／捨棄及是否攔截切換由consumer決定並回傳必要操作回饋；提示元件不得查Store、呼叫API或持有產品草稿。失敗不可視為保存成功。
+
+呈現架構見 [pending-changes-banner](../../templates/pending-changes-banner/architecture.md)。桌面工作台組裝由sidebar-stage-workbench及desktop-workbench模板落實：側欄完全收合，Stage header最左保留展開鍵；底部banner左右插槽；無框宿主的右上視窗工具列；設定視窗22%導覽與其餘內容，比例依參考圖。一般Stage左右padding採既有contentInset×2；無限畫布維持0 padding。這些純呈現slot不代表所有設定項或原生生命週期已驗收。
+
+
+表單原生控制項投影由 [form-fields](../../templates/form-fields/architecture.md)維護；input／textarea／select使用同一field語意，checkbox／radio保留原行為。選項值、驗證與保存屬consumer。自訂資產選單採 [flat-select](../../templates/flat-select/README.md)：觸發欄位沿用 field token，popup 為平面 Panel，群組用低對比細虛線。關閉不卸載選項，保留 consumer 未決排序；定位及鍵盤僅為呈現，不能接管產品草稿或選擇是否成功。

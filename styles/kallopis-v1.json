@@ -271,7 +271,8 @@
 		"family-monospace": "monospace",
 		"string-shadow": "shadow",
 		"count-4": 4,
-		"count-8": 8
+		"count-8": 8,
+		"length-15": 15
 	},
 	"semantics": {
 		"theme.colors.app": {
@@ -1241,10 +1242,10 @@
 			"transparent": "p(space300)"
 		},
 		"theme.shape.pill": {
-			"light": "p(radiusFull)",
-			"dark": "p(radiusFull)",
-			"ultraDark": "p(radiusFull)",
-			"transparent": "p(radiusFull)"
+			"light": "s(theme.shape.control)",
+			"dark": "s(theme.shape.control)",
+			"ultraDark": "s(theme.shape.control)",
+			"transparent": "s(theme.shape.control)"
 		},
 		"theme.shape.hairline": {
 			"light": "p(stroke100)",
@@ -1595,10 +1596,10 @@
 			"transparent": "s(theme.spacing.controlInset)"
 		},
 		"theme.components.fieldHeight": {
-			"light": "s(theme.spacing.controlHeight)",
-			"dark": "s(theme.spacing.controlHeight)",
-			"ultraDark": "s(theme.spacing.controlHeight)",
-			"transparent": "s(theme.spacing.controlHeight)"
+			"light": "s(theme.geometry.control.fieldHeight)",
+			"dark": "s(theme.geometry.control.fieldHeight)",
+			"ultraDark": "s(theme.geometry.control.fieldHeight)",
+			"transparent": "s(theme.geometry.control.fieldHeight)"
 		},
 		"theme.components.fieldBorderWidth": {
 			"light": "s(theme.shape.none)",
@@ -1727,16 +1728,16 @@
 			"transparent": "p(space200)"
 		},
 		"theme.geometry.control.fieldHeight": {
-			"light": "p(length-30)",
-			"dark": "p(length-30)",
-			"ultraDark": "p(length-30)",
-			"transparent": "p(length-30)"
+			"light": "p(space600)",
+			"dark": "p(space600)",
+			"ultraDark": "p(space600)",
+			"transparent": "p(space600)"
 		},
 		"theme.geometry.control.selectionControl": {
-			"light": "p(font500)",
-			"dark": "p(font500)",
-			"ultraDark": "p(font500)",
-			"transparent": "p(font500)"
+			"light": "p(length-15)",
+			"dark": "p(length-15)",
+			"ultraDark": "p(length-15)",
+			"transparent": "p(length-15)"
 		},
 		"theme.geometry.control.selectionIndicatorInset": {
 			"light": "p(length-3_5)",
@@ -1751,10 +1752,10 @@
 			"transparent": "p(space300)"
 		},
 		"theme.geometry.control.toggleWidth": {
-			"light": "p(length-30)",
-			"dark": "p(length-30)",
-			"ultraDark": "p(length-30)",
-			"transparent": "p(length-30)"
+			"light": "add(s(theme.spacing.iconButton),s(theme.spacing.space0_5))",
+			"dark": "add(s(theme.spacing.iconButton),s(theme.spacing.space0_5))",
+			"ultraDark": "add(s(theme.spacing.iconButton),s(theme.spacing.space0_5))",
+			"transparent": "add(s(theme.spacing.iconButton),s(theme.spacing.space0_5))"
 		},
 		"theme.geometry.control.toggleHeight": {
 			"light": "p(space400)",
@@ -1763,16 +1764,16 @@
 			"transparent": "p(space400)"
 		},
 		"theme.geometry.control.toggleThumb": {
-			"light": "p(space300)",
-			"dark": "p(space300)",
-			"ultraDark": "p(space300)",
-			"transparent": "p(space300)"
+			"light": "p(font300)",
+			"dark": "p(font300)",
+			"ultraDark": "p(font300)",
+			"transparent": "p(font300)"
 		},
 		"theme.geometry.control.toggleInset": {
-			"light": "p(space50)",
-			"dark": "p(space50)",
-			"ultraDark": "p(space50)",
-			"transparent": "p(space50)"
+			"light": "p(stroke100)",
+			"dark": "p(stroke100)",
+			"ultraDark": "p(stroke100)",
+			"transparent": "p(stroke100)"
 		},
 		"theme.geometry.control.segmentedDenseHeight": {
 			"light": "p(length-30)",
@@ -2159,10 +2160,10 @@
 			"transparent": "p(font700)"
 		},
 		"theme.geometry.layout.menuItemHeight": {
-			"light": "p(font700)",
-			"dark": "p(font700)",
-			"ultraDark": "p(font700)",
-			"transparent": "p(font700)"
+			"light": "p(space1000)",
+			"dark": "p(space1000)",
+			"ultraDark": "p(space1000)",
+			"transparent": "p(space1000)"
 		},
 		"theme.geometry.layout.dialogMaximumWidth": {
 			"light": "p(length-520)",
@@ -2704,7 +2705,7 @@
 		"field-focused": {
 			"aliases": "聚焦／選取輸入框",
 			"inherit": "field-base",
-			"parameters": "background=over(alpha(s(theme.colors.interaction),s(theme.surface.focusWashOpacity)),s(theme.colors.surfaceInset));  geometry=繼承"
+			"parameters": "background=over(alpha(s(theme.colors.interaction),s(theme.surface.focusWashOpacity)),s(theme.colors.surfaceInset));  focus-indicator=inset(s(theme.shape.stroke),s(theme.colors.interaction)); outer-outline=none; geometry=繼承（含焦點提示不增加外徑）"
 		},
 		"field-error": {
 			"aliases": "錯誤輸入框",
@@ -2759,12 +2760,12 @@
 		"badge-neutral": {
 			"aliases": "中性標記／filled neutral",
 			"inherit": "badge-base",
-			"parameters": "background=s(theme.colors.component); foreground=s(theme.colors.text); border-width=s(theme.shape.hairline); border-color=s(theme.colors.divider); border-style=solid"
+			"parameters": "background=s(theme.colors.component); foreground=s(theme.colors.text); border-width=p(space0); border-style=none"
 		},
 		"badge-status": {
 			"aliases": "語意色標記／filled status",
 			"inherit": "badge-base",
-			"parameters": "background=alpha(tone-color,s(theme.surface.statusFillOpacity)); foreground=s(theme.colors.text); border-width=s(theme.shape.hairline); border-color=tone-color; border-style=solid"
+			"parameters": "background=over(alpha(tone-color,s(theme.surface.statusFillOpacity)),opaque(s(theme.colors.component))); foreground=s(theme.colors.text); border=none; shadow=s(effect-frame-relief)"
 		},
 		"badge-outline": {
 			"aliases": "描邊標記",
@@ -2904,7 +2905,7 @@
 		"menu": {
 			"aliases": "彈出選單／menu panel",
 			"inherit": "—",
-			"parameters": "background=s(theme.colors.overlay); foreground=backgroundForeground(background); padding=s(theme.spacing.tight); radius=s(theme.components.menuRadius); width-base=s(theme.geometry.layout.menuWidth); width=依項目量測／scrollable選項，基準width-base; border=none; shadow=s(effect-menu-shadow)"
+			"parameters": "background=s(theme.colors.overlay); foreground=backgroundForeground(background); padding=s(theme.spacing.tight); radius=s(theme.components.menuRadius); width-base=s(theme.geometry.layout.menuWidth); width=依項目量測／scrollable選項，基準width-base; border-width=s(theme.shape.hairline); border-style=dashed; border-color=s(theme.colors.divider); shadow=s(effect-menu-shadow)"
 		},
 		"menu-item": {
 			"aliases": "選單項目",
@@ -2934,7 +2935,7 @@
 		"dialog": {
 			"aliases": "對話框",
 			"inherit": "surface-base",
-			"parameters": "radius=s(theme.shape.panel); max-width=s(theme.geometry.layout.dialogMaximumWidth); heading-padding=s(theme.spacing.comfortable); content-padding=s(theme.spacing.comfortable); actions-padding=s(theme.spacing.base); heading-gap=s(theme.spacing.overlayHeadingGap); action-gap=s(theme.spacing.actionGap); title=s(text-title); label=s(text-label); primary-action=s(button-primary); secondary-action=s(button-ghost); shadow=none; positioning/scrim=產品彈出宿主決定"
+			"parameters": "radius=s(theme.shape.panel); max-width=s(theme.geometry.layout.dialogMaximumWidth); heading-padding=s(theme.spacing.loose); content-padding=s(theme.spacing.loose); actions-padding=s(theme.spacing.base); heading-gap=s(theme.spacing.overlayHeadingGap); action-gap=s(theme.spacing.actionGap); title=s(text-title); label=s(text-label); primary-action=s(button-primary); secondary-action=s(button-ghost); border-width=s(theme.shape.hairline); border-style=dashed; border-color=s(theme.colors.divider); shadow=微立體; positioning/scrim=產品彈出宿主決定"
 		},
 		"scrollbar": {
 			"aliases": "捲軸",
@@ -3236,7 +3237,8 @@
 		"family-monospace": "原實作值的文件名稱；未新增設計",
 		"string-shadow": "原實作值的文件名稱；未新增設計",
 		"count-4": "原實作值的文件名稱；未新增設計",
-		"count-8": "原實作值的文件名稱；未新增設計"
+		"count-8": "原實作值的文件名稱；未新增設計",
+		"length-15": "checkbox 13px 增加 2px 的明確尺寸"
 	},
 	"semanticDescriptions": {
 		"theme.colors.app": "<br>app background／應用背景色",

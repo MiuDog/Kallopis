@@ -8,7 +8,7 @@ Kallopis 定義團隊共用的視覺語意、design token、元件狀態與組�
 
 指南直接以 repository 內的 Markdown 維護，可在 GitHub 或本機 Markdown 預覽器閱讀。圖片與文件一同版本控制，使用相對路徑嵌入。
 
-現有網站、框架展示與產生工具繼續保留；[GitHub Pages 網址](https://technis-toolbox.github.io/Kallopis/) 保留供日後恢復發布，目前不作為閱讀入口。本機網站操作見 [網站工具](tool/reference_site/README.md)。
+[開啟互動元件展示](https://miudog.github.io/Kallopis/) · [共通風格與可複製範例](styles/README.md)
 
 ## 從指南開始
 

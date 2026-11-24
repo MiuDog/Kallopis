@@ -272,7 +272,8 @@ const klpDefaultStylePackJson = r'''{
 		"family-monospace": "monospace",
 		"string-shadow": "shadow",
 		"count-4": 4,
-		"count-8": 8
+		"count-8": 8,
+		"length-15": 15
 	},
 	"semantics": {
 		"theme.colors.app": {
@@ -1242,10 +1243,10 @@ const klpDefaultStylePackJson = r'''{
 			"transparent": "p(space300)"
 		},
 		"theme.shape.pill": {
-			"light": "p(radiusFull)",
-			"dark": "p(radiusFull)",
-			"ultraDark": "p(radiusFull)",
-			"transparent": "p(radiusFull)"
+			"light": "s(theme.shape.control)",
+			"dark": "s(theme.shape.control)",
+			"ultraDark": "s(theme.shape.control)",
+			"transparent": "s(theme.shape.control)"
 		},
 		"theme.shape.hairline": {
 			"light": "p(stroke100)",
@@ -1596,10 +1597,10 @@ const klpDefaultStylePackJson = r'''{
 			"transparent": "s(theme.spacing.controlInset)"
 		},
 		"theme.components.fieldHeight": {
-			"light": "s(theme.spacing.controlHeight)",
-			"dark": "s(theme.spacing.controlHeight)",
-			"ultraDark": "s(theme.spacing.controlHeight)",
-			"transparent": "s(theme.spacing.controlHeight)"
+			"light": "s(theme.geometry.control.fieldHeight)",
+			"dark": "s(theme.geometry.control.fieldHeight)",
+			"ultraDark": "s(theme.geometry.control.fieldHeight)",
+			"transparent": "s(theme.geometry.control.fieldHeight)"
 		},
 		"theme.components.fieldBorderWidth": {
 			"light": "s(theme.shape.none)",
@@ -1728,16 +1729,16 @@ const klpDefaultStylePackJson = r'''{
 			"transparent": "p(space200)"
 		},
 		"theme.geometry.control.fieldHeight": {
-			"light": "p(length-30)",
-			"dark": "p(length-30)",
-			"ultraDark": "p(length-30)",
-			"transparent": "p(length-30)"
+			"light": "p(space600)",
+			"dark": "p(space600)",
+			"ultraDark": "p(space600)",
+			"transparent": "p(space600)"
 		},
 		"theme.geometry.control.selectionControl": {
-			"light": "p(font500)",
-			"dark": "p(font500)",
-			"ultraDark": "p(font500)",
-			"transparent": "p(font500)"
+			"light": "p(length-15)",
+			"dark": "p(length-15)",
+			"ultraDark": "p(length-15)",
+			"transparent": "p(length-15)"
 		},
 		"theme.geometry.control.selectionIndicatorInset": {
 			"light": "p(length-3_5)",
@@ -1752,10 +1753,10 @@ const klpDefaultStylePackJson = r'''{
 			"transparent": "p(space300)"
 		},
 		"theme.geometry.control.toggleWidth": {
-			"light": "p(length-30)",
-			"dark": "p(length-30)",
-			"ultraDark": "p(length-30)",
-			"transparent": "p(length-30)"
+			"light": "add(s(theme.spacing.iconButton),s(theme.spacing.space0_5))",
+			"dark": "add(s(theme.spacing.iconButton),s(theme.spacing.space0_5))",
+			"ultraDark": "add(s(theme.spacing.iconButton),s(theme.spacing.space0_5))",
+			"transparent": "add(s(theme.spacing.iconButton),s(theme.spacing.space0_5))"
 		},
 		"theme.geometry.control.toggleHeight": {
 			"light": "p(space400)",
@@ -1764,16 +1765,16 @@ const klpDefaultStylePackJson = r'''{
 			"transparent": "p(space400)"
 		},
 		"theme.geometry.control.toggleThumb": {
-			"light": "p(space300)",
-			"dark": "p(space300)",
-			"ultraDark": "p(space300)",
-			"transparent": "p(space300)"
+			"light": "p(font300)",
+			"dark": "p(font300)",
+			"ultraDark": "p(font300)",
+			"transparent": "p(font300)"
 		},
 		"theme.geometry.control.toggleInset": {
-			"light": "p(space50)",
-			"dark": "p(space50)",
-			"ultraDark": "p(space50)",
-			"transparent": "p(space50)"
+			"light": "p(stroke100)",
+			"dark": "p(stroke100)",
+			"ultraDark": "p(stroke100)",
+			"transparent": "p(stroke100)"
 		},
 		"theme.geometry.control.segmentedDenseHeight": {
 			"light": "p(length-30)",
@@ -2160,10 +2161,10 @@ const klpDefaultStylePackJson = r'''{
 			"transparent": "p(font700)"
 		},
 		"theme.geometry.layout.menuItemHeight": {
-			"light": "p(font700)",
-			"dark": "p(font700)",
-			"ultraDark": "p(font700)",
-			"transparent": "p(font700)"
+			"light": "p(space1000)",
+			"dark": "p(space1000)",
+			"ultraDark": "p(space1000)",
+			"transparent": "p(space1000)"
 		},
 		"theme.geometry.layout.dialogMaximumWidth": {
 			"light": "p(length-520)",
@@ -2705,7 +2706,7 @@ const klpDefaultStylePackJson = r'''{
 		"field-focused": {
 			"aliases": "\u805a\u7126\uff0f\u9078\u53d6\u8f38\u5165\u6846",
 			"inherit": "field-base",
-			"parameters": "background=over(alpha(s(theme.colors.interaction),s(theme.surface.focusWashOpacity)),s(theme.colors.surfaceInset));  geometry=\u7e7c\u627f"
+			"parameters": "background=over(alpha(s(theme.colors.interaction),s(theme.surface.focusWashOpacity)),s(theme.colors.surfaceInset));  focus-indicator=inset(s(theme.shape.stroke),s(theme.colors.interaction)); outer-outline=none; geometry=\u7e7c\u627f\uff08\u542b\u7126\u9ede\u63d0\u793a\u4e0d\u589e\u52a0\u5916\u5f91\uff09"
 		},
 		"field-error": {
 			"aliases": "\u932f\u8aa4\u8f38\u5165\u6846",
@@ -2760,12 +2761,12 @@ const klpDefaultStylePackJson = r'''{
 		"badge-neutral": {
 			"aliases": "\u4e2d\u6027\u6a19\u8a18\uff0ffilled neutral",
 			"inherit": "badge-base",
-			"parameters": "background=s(theme.colors.component); foreground=s(theme.colors.text); border-width=s(theme.shape.hairline); border-color=s(theme.colors.divider); border-style=solid"
+			"parameters": "background=s(theme.colors.component); foreground=s(theme.colors.text); border-width=p(space0); border-style=none"
 		},
 		"badge-status": {
 			"aliases": "\u8a9e\u610f\u8272\u6a19\u8a18\uff0ffilled status",
 			"inherit": "badge-base",
-			"parameters": "background=alpha(tone-color,s(theme.surface.statusFillOpacity)); foreground=s(theme.colors.text); border-width=s(theme.shape.hairline); border-color=tone-color; border-style=solid"
+			"parameters": "background=over(alpha(tone-color,s(theme.surface.statusFillOpacity)),opaque(s(theme.colors.component))); foreground=s(theme.colors.text); border=none; shadow=s(effect-frame-relief)"
 		},
 		"badge-outline": {
 			"aliases": "\u63cf\u908a\u6a19\u8a18",
@@ -2905,7 +2906,7 @@ const klpDefaultStylePackJson = r'''{
 		"menu": {
 			"aliases": "\u5f48\u51fa\u9078\u55ae\uff0fmenu panel",
 			"inherit": "\u2014",
-			"parameters": "background=s(theme.colors.overlay); foreground=backgroundForeground(background); padding=s(theme.spacing.tight); radius=s(theme.components.menuRadius); width-base=s(theme.geometry.layout.menuWidth); width=\u4f9d\u9805\u76ee\u91cf\u6e2c\uff0fscrollable\u9078\u9805\uff0c\u57fa\u6e96width-base; border=none; shadow=s(effect-menu-shadow)"
+			"parameters": "background=s(theme.colors.overlay); foreground=backgroundForeground(background); padding=s(theme.spacing.tight); radius=s(theme.components.menuRadius); width-base=s(theme.geometry.layout.menuWidth); width=\u4f9d\u9805\u76ee\u91cf\u6e2c\uff0fscrollable\u9078\u9805\uff0c\u57fa\u6e96width-base; border-width=s(theme.shape.hairline); border-style=dashed; border-color=s(theme.colors.divider); shadow=s(effect-menu-shadow)"
 		},
 		"menu-item": {
 			"aliases": "\u9078\u55ae\u9805\u76ee",
@@ -2935,7 +2936,7 @@ const klpDefaultStylePackJson = r'''{
 		"dialog": {
 			"aliases": "\u5c0d\u8a71\u6846",
 			"inherit": "surface-base",
-			"parameters": "radius=s(theme.shape.panel); max-width=s(theme.geometry.layout.dialogMaximumWidth); heading-padding=s(theme.spacing.comfortable); content-padding=s(theme.spacing.comfortable); actions-padding=s(theme.spacing.base); heading-gap=s(theme.spacing.overlayHeadingGap); action-gap=s(theme.spacing.actionGap); title=s(text-title); label=s(text-label); primary-action=s(button-primary); secondary-action=s(button-ghost); shadow=none; positioning/scrim=\u7522\u54c1\u5f48\u51fa\u5bbf\u4e3b\u6c7a\u5b9a"
+			"parameters": "radius=s(theme.shape.panel); max-width=s(theme.geometry.layout.dialogMaximumWidth); heading-padding=s(theme.spacing.loose); content-padding=s(theme.spacing.loose); actions-padding=s(theme.spacing.base); heading-gap=s(theme.spacing.overlayHeadingGap); action-gap=s(theme.spacing.actionGap); title=s(text-title); label=s(text-label); primary-action=s(button-primary); secondary-action=s(button-ghost); border-width=s(theme.shape.hairline); border-style=dashed; border-color=s(theme.colors.divider); shadow=\u5fae\u7acb\u9ad4; positioning/scrim=\u7522\u54c1\u5f48\u51fa\u5bbf\u4e3b\u6c7a\u5b9a"
 		},
 		"scrollbar": {
 			"aliases": "\u6372\u8ef8",
@@ -3237,7 +3238,8 @@ const klpDefaultStylePackJson = r'''{
 		"family-monospace": "\u539f\u5be6\u4f5c\u503c\u7684\u6587\u4ef6\u540d\u7a31\uff1b\u672a\u65b0\u589e\u8a2d\u8a08",
 		"string-shadow": "\u539f\u5be6\u4f5c\u503c\u7684\u6587\u4ef6\u540d\u7a31\uff1b\u672a\u65b0\u589e\u8a2d\u8a08",
 		"count-4": "\u539f\u5be6\u4f5c\u503c\u7684\u6587\u4ef6\u540d\u7a31\uff1b\u672a\u65b0\u589e\u8a2d\u8a08",
-		"count-8": "\u539f\u5be6\u4f5c\u503c\u7684\u6587\u4ef6\u540d\u7a31\uff1b\u672a\u65b0\u589e\u8a2d\u8a08"
+		"count-8": "\u539f\u5be6\u4f5c\u503c\u7684\u6587\u4ef6\u540d\u7a31\uff1b\u672a\u65b0\u589e\u8a2d\u8a08",
+		"length-15": "checkbox 13px \u589e\u52a0 2px \u7684\u660e\u78ba\u5c3a\u5bf8"
 	},
 	"semanticDescriptions": {
 		"theme.colors.app": "<br>app background\uff0f\u61c9\u7528\u80cc\u666f\u8272",

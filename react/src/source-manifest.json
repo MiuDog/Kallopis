@@ -1,8 +1,9 @@
 {
 	"sources": {
-		"primitives": "8ab4e86ace6c735990bce9afb21ac93e70c00bc96bd66db9c74c9d37f10f6839",
-		"semantics": "92355a24007af560f0178602665a7a660214e9a6c49ec77bde2c56e24798d4b9",
-		"recipes": "40e110e3c72789f92c2259a5f4c1d5982a3db6bbcd900f81a9746356b5c87edd"
+		"styles/kallopis-v1.json": "b22e06525b30b42ebffe144ae38cf57bf248e65cd77796db0a528b08687504a7",
+		"primitives": "30067726d2023b1b2e8dfd48c177954f94a54449f9ae551acf4ca5c463606bd2",
+		"semantics": "78f679086169eb4fedfef254bbcf197165dcd2920ab1aad06d638b78c5dac12a",
+		"recipes": "2a0ed547a51cffbaa7ff3b9952671e7385c918418341904080eef0f13575ce92"
 	},
 	"primitives": [
 		"parchment50",
@@ -273,7 +274,8 @@
 		"family-monospace",
 		"string-shadow",
 		"count-4",
-		"count-8"
+		"count-8",
+		"length-15"
 	],
 	"semantics": [
 		"theme.colors.app",

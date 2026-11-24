@@ -2,6 +2,7 @@ import { readFileSync, writeFileSync, mkdirSync } from 'node:fs';
 import { resolve, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { createHash } from 'node:crypto';
+import { exportStyleTables } from '../../styles/src/index.mjs';
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '../..');
 const args = process.argv.slice(2);
@@ -11,10 +12,13 @@ const output = option('--output-dir', resolve(root, 'react/src'));
 const modes = ['light', 'dark', 'ultraDark', 'transparent'];
 const unquote = value => value.replace(/^`|`$/g, '');
 const documents = {};
+const packText = readFileSync(resolve(root, 'styles/kallopis-v1.json'), 'utf8');
+const packTables = exportStyleTables(JSON.parse(packText));
+if (!args.includes('--source-dir')) documents['styles/kallopis-v1.json'] = createHash('sha256').update(packText).digest('hex');
 
 // 僅接受正式表格中的識別碼；重複鍵不得被後列靜默覆蓋。
 function table(name) {
-	const text = readFileSync(resolve(source, `${name}.md`), 'utf8');
+	const text = args.includes('--source-dir') ? readFileSync(resolve(source, `${name}.md`), 'utf8') : packTables[name];
 	documents[name] = createHash('sha256').update(text).digest('hex');
 	const result = {};
 	for (const line of text.split(/\r?\n/).filter(line => /^\|\s*`/.test(line))) {

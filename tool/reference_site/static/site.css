@@ -1,4 +1,5 @@
 :root {
+	tab-size: 2;
 	color-scheme: light;
 	--canvas: #e7e4dd; --panel: #efede7; --content: #f8f6f1;
 	--text: #21201b; --muted: #6a655b; --line: #d3cfc4; --selected: #e1ddd2;
@@ -207,6 +208,35 @@ code { font-family: Consolas, monospace; font-size: .9em; }
 }
 
 /* 文件容器只提供展示viewport，元件風格仍由example的semantic theme擁有。 */
+.showcase-home { max-width: 1480px; margin: 0 auto; padding: 48px 40px 64px; }
+.showcase-intro { display: flex; align-items: flex-end; justify-content: space-between; gap: 32px; margin-bottom: 32px; }
+.showcase-kicker { margin: 0 0 12px; font-size: 12px; font-weight: 600; letter-spacing: .06em; color: var(--muted); }
+.showcase-intro h1 { margin: 0; font-size: clamp(28px, 3vw, 44px); line-height: 1.35; font-weight: 650; letter-spacing: -.04em; }
+.showcase-description { margin: 14px 0 0; font-size: 15px; color: var(--muted); }
+.showcase-actions { display: flex; flex-wrap: wrap; gap: 8px; flex-shrink: 0; }
+.showcase-actions .button { white-space: nowrap; }
+.showcase-panel { overflow: hidden; background: var(--content); border: 1px solid var(--line); border-radius: 10px; box-shadow: 0 8px 32px #00000008; }
+.showcase-panel-bar { min-height: 52px; padding: 12px 20px; display: flex; justify-content: space-between; align-items: center; gap: 16px; border-bottom: 1px solid var(--line); font-size: 13px; }
+.showcase-panel-bar > div { display: flex; align-items: center; gap: 10px; }
+.showcase-panel-bar a { color: var(--muted); text-decoration: none; }
+.showcase-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--accent); }
+.showcase-platform { color: var(--muted); border-left: 1px solid var(--line); padding-left: 10px; }
+.showcase-panel iframe { display: block; width: 100%; height: 760px; border: 0; background: var(--content); }
+.showcase-resources { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 24px; margin-top: 32px; }
+.showcase-resources a { display: flex; flex-direction: column; gap: 6px; padding: 16px 0; border-top: 1px solid var(--line); text-decoration: none; }
+.showcase-resources strong { font-size: 14px; font-weight: 600; }
+.showcase-resources span { font-size: 13px; color: var(--muted); }
+.showcase-resources a:hover strong, .showcase-panel-bar a:hover { color: var(--accent); }
+@media (max-width: 1000px) {
+	.showcase-intro { align-items: flex-start; flex-direction: column; gap: 20px; }
+	.showcase-resources { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 600px) {
+	.showcase-home { padding: 28px 16px 40px; }
+	.showcase-panel-bar { padding: 12px; }
+	.showcase-panel iframe { height: 680px; }
+	.showcase-resources { gap: 16px; }
+}
 .component-specimen iframe {
 	width: 100%;
 	height: 720px;

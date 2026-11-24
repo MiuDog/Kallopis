@@ -1,0 +1,179 @@
+<!doctype html>
+<html lang="zh-Hant" data-mode="light">
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Kallopis 側欄與工作區</title>
+<style>
+[data-mode="light"] {
+	--klp-colors-app: #E7E4DDFF;
+	--klp-colors-surface: #EFEDE7FF;
+	--klp-colors-surfaceInset: #EFEDE7FF;
+	--klp-colors-surfaceMuted: #E1DDD2FF;
+	--klp-colors-component: #F8F6F1FF;
+	--klp-colors-stageSurface: #F8F6F1FF;
+	--klp-colors-overlay: #F8F6F1FF;
+	--klp-colors-surfaceRaised: #F8F6F1FF;
+	--klp-colors-modalScrim: #01020299;
+	--klp-colors-guide: #D3CFC4FF;
+	--klp-colors-divider: #D3CFC4FF;
+	--klp-colors-pagePattern: #D3CFC4FF;
+	--klp-colors-text: #21201BFF;
+	--klp-colors-textMuted: #6A655BFF;
+	--klp-colors-textFaint: #6A655BFF;
+	--klp-colors-border: #D3CFC4FF;
+	--klp-colors-borderStrong: #D3CFC4FF;
+	--klp-colors-brand: #1D1D1DFF;
+	--klp-colors-accent: #1D1D1DFF;
+	--klp-colors-accentSoft: #E6E3DCFF;
+	--klp-colors-interaction: #1D1D1DFF;
+	--klp-colors-interactionSoft: #E6E3DCFF;
+	--klp-colors-success: #51B77BFF;
+	--klp-colors-warning: #F6B52EFF;
+	--klp-colors-danger: #FA6C73FF;
+	--klp-colors-info: #5499DFFF;
+	--klp-colors-onStatus: #FFFFFFFF;
+	--klp-colors-onLightBackground: #21201BFF;
+	--klp-colors-onDarkBackground: #F0EDE6FF;
+	--klp-colors-mutedOnLightBackground: #6A655BFF;
+	--klp-colors-mutedOnDarkBackground: #BAB5AAFF;
+	--klp-colors-faintOnBackground: #6A655BFF;
+	--klp-colors-transparent: #00000000;
+}
+[data-mode="dark"] {
+	--klp-colors-app: #201F1CFF;
+	--klp-colors-surface: #292724FF;
+	--klp-colors-surfaceInset: #292724FF;
+	--klp-colors-surfaceMuted: #484339FF;
+	--klp-colors-component: #35322DFF;
+	--klp-colors-stageSurface: #35322DFF;
+	--klp-colors-overlay: #35322DFF;
+	--klp-colors-surfaceRaised: #35322DFF;
+	--klp-colors-modalScrim: #01020299;
+	--klp-colors-guide: #514B40FF;
+	--klp-colors-divider: #514B40FF;
+	--klp-colors-pagePattern: #514B40FF;
+	--klp-colors-text: #F0EDE6FF;
+	--klp-colors-textMuted: #BAB5AAFF;
+	--klp-colors-textFaint: #BAB5AAFF;
+	--klp-colors-border: #514B40FF;
+	--klp-colors-borderStrong: #514B40FF;
+	--klp-colors-brand: #FFFFFFFF;
+	--klp-colors-accent: #FFFFFFFF;
+	--klp-colors-accentSoft: #303030FF;
+	--klp-colors-interaction: #FFFFFFFF;
+	--klp-colors-interactionSoft: #303030FF;
+	--klp-colors-success: #51B77BFF;
+	--klp-colors-warning: #F6B52EFF;
+	--klp-colors-danger: #FA6C73FF;
+	--klp-colors-info: #5499DFFF;
+	--klp-colors-onStatus: #FFFFFFFF;
+	--klp-colors-onLightBackground: #21201BFF;
+	--klp-colors-onDarkBackground: #F0EDE6FF;
+	--klp-colors-mutedOnLightBackground: #6A655BFF;
+	--klp-colors-mutedOnDarkBackground: #BAB5AAFF;
+	--klp-colors-faintOnBackground: #BAB5AAFF;
+	--klp-colors-transparent: #00000000;
+}
+[data-mode="ultraDark"] {
+	--klp-colors-app: #101010FF;
+	--klp-colors-surface: #232323FF;
+	--klp-colors-surfaceInset: #232323FF;
+	--klp-colors-surfaceMuted: #232323FF;
+	--klp-colors-component: #1D1D1DFF;
+	--klp-colors-stageSurface: #1D1D1DFF;
+	--klp-colors-overlay: #232323FF;
+	--klp-colors-surfaceRaised: #232323FF;
+	--klp-colors-modalScrim: #01020299;
+	--klp-colors-guide: #7F7A75FF;
+	--klp-colors-divider: #292929FF;
+	--klp-colors-pagePattern: #414344FF;
+	--klp-colors-text: #F2F0EBFF;
+	--klp-colors-textMuted: #9E998FFF;
+	--klp-colors-textFaint: #8E8982FF;
+	--klp-colors-border: #00000000;
+	--klp-colors-borderStrong: #00000000;
+	--klp-colors-brand: #F2F0EBFF;
+	--klp-colors-accent: #F2F0EBFF;
+	--klp-colors-accentSoft: #232323FF;
+	--klp-colors-interaction: #F2F0EBFF;
+	--klp-colors-interactionSoft: #232323FF;
+	--klp-colors-success: #51B77BFF;
+	--klp-colors-warning: #F6B52EFF;
+	--klp-colors-danger: #FA6C73FF;
+	--klp-colors-info: #5499DFFF;
+	--klp-colors-onStatus: #FFFFFFFF;
+	--klp-colors-onLightBackground: #1D1D1DFF;
+	--klp-colors-onDarkBackground: #FFFFFFFF;
+	--klp-colors-mutedOnLightBackground: #6B6459FF;
+	--klp-colors-mutedOnDarkBackground: #ADA89EFF;
+	--klp-colors-faintOnBackground: #8E8982FF;
+	--klp-colors-transparent: #00000000;
+}
+[data-mode="transparent"] {
+	--klp-colors-app: #00000000;
+	--klp-colors-surface: #292724B8;
+	--klp-colors-surfaceInset: #292724FF;
+	--klp-colors-surfaceMuted: #484339FF;
+	--klp-colors-component: #35322DFF;
+	--klp-colors-stageSurface: #35322DB8;
+	--klp-colors-overlay: #35322DFF;
+	--klp-colors-surfaceRaised: #35322DFF;
+	--klp-colors-modalScrim: #01020299;
+	--klp-colors-guide: #514B40FF;
+	--klp-colors-divider: #514B40FF;
+	--klp-colors-pagePattern: #514B40FF;
+	--klp-colors-text: #F0EDE6FF;
+	--klp-colors-textMuted: #BAB5AAFF;
+	--klp-colors-textFaint: #BAB5AAFF;
+	--klp-colors-border: #514B40FF;
+	--klp-colors-borderStrong: #514B40FF;
+	--klp-colors-brand: #FFFFFFFF;
+	--klp-colors-accent: #FFFFFFFF;
+	--klp-colors-accentSoft: #303030FF;
+	--klp-colors-interaction: #FFFFFFFF;
+	--klp-colors-interactionSoft: #303030FF;
+	--klp-colors-success: #51B77BFF;
+	--klp-colors-warning: #F6B52EFF;
+	--klp-colors-danger: #FA6C73FF;
+	--klp-colors-info: #5499DFFF;
+	--klp-colors-onStatus: #FFFFFFFF;
+	--klp-colors-onLightBackground: #21201BFF;
+	--klp-colors-onDarkBackground: #F0EDE6FF;
+	--klp-colors-mutedOnLightBackground: #6A655BFF;
+	--klp-colors-mutedOnDarkBackground: #BAB5AAFF;
+	--klp-colors-faintOnBackground: #BAB5AAFF;
+	--klp-colors-transparent: #00000000;
+}
+* { box-sizing: border-box; }
+body { margin: 0; font-family: system-ui, sans-serif; color: var(--klp-colors-text); background: var(--klp-colors-app); }
+main { display: grid; grid-template-columns: minmax(120px, 220px) minmax(0, 1fr); gap: 8px; padding: 8px; min-height: 100vh; }
+aside, section { padding: 16px; background: var(--klp-colors-surface); }
+nav { display: grid; gap: 8px; }
+button, select, textarea { font: inherit; color: inherit; border: 1px solid var(--klp-colors-border); background: var(--klp-colors-component); padding: 8px; }
+button { cursor: pointer; }
+button:hover, button[aria-current="page"] { background: var(--klp-colors-interactionSoft); }
+textarea { display: block; width: 100%; min-height: 240px; margin: 16px 0; }
+@media(max-width: 480px) { main { grid-template-columns: 1fr; } }
+</style>
+<main><aside><h1>工作區</h1><nav aria-label="文件"><button aria-current="page">筆記</button><button>草稿</button></nav></aside>
+<section><label>風格 <select id="mode"><option>light</option><option>dark</option><option>ultraDark</option><option>transparent</option></select></label><h2 id="title">筆記</h2><label for="draft">內容</label><textarea id="draft"></textarea><button id="save">儲存</button><p id="status" role="status"></p></section></main>
+<script>
+const drafts = { 筆記: '', 草稿: '' };
+let selected = '筆記';
+const editor = document.querySelector('#draft');
+document.querySelector('#mode').onchange = event => document.documentElement.dataset.mode = event.target.value;
+for (const button of document.querySelectorAll('nav button')) {
+	button.onclick = () => {
+		drafts[selected] = editor.value;
+		selected = button.textContent;
+		for (const item of document.querySelectorAll('nav button')) item.removeAttribute('aria-current');
+		button.setAttribute('aria-current', 'page');
+		document.querySelector('#title').textContent = selected;
+		editor.value = drafts[selected];
+	};
+}
+document.querySelector('#save').onclick = () => {
+	drafts[selected] = editor.value;
+	document.querySelector('#status').textContent = '本次頁面內容已儲存';
+};
+</script>
+</html>

@@ -1,6 +1,6 @@
 # Kallopis Style Pack
 
-目前完成交換、typed runtime 及原子覆寫：以正式三張表產生 `kallopis-v1.json`。這是遷移中產物；正式 Markdown 暫仍擁有值權威，框架尚未改為接受此 pack。
+`kallopis-v1.json` 集中維護 primitive、四模式 semantic 與配方資料。修改此檔後執行生成器，更新正式文件資料表及 Flutter／React 產物。`catalog.json` 維護型別、單位及合法範圍。
 
 在 repository 根執行：
 
@@ -21,3 +21,9 @@ node --test styles/test/style-pack.test.mjs
 JSON schema 描述交換結構，公開 validator 另檢查引用／循環。typed runtime 依 catalog 驗證型別／單位／範圍及四項既有跨參數關係。此 module 不保證具體元件的文字容納、contrast 或完整布局，不把配方原文當作程式執行；框架 algorithm 仍須另外驗收。
 
 後續目錄：配方運算 → Flutter／React adapter → provider 注入 → docs 風格 playground。當前目標與邊界見 [架構](architecture.md)。
+
+## 框架名稱與使用處
+
+`component-bindings.json` 由 `node styles/scripts/generate-bindings.mjs` 掃描框架手寫來源生成，列出 semantic ID、Flutter member、React ID、CSS 變數及直接引用的檔案與行號。空 references 代表沒有找到直接文字引用，動態 resolver 的適用範圍由框架契約定義。執行 `--check` 驗證新鮮度。
+
+[可複製組合](examples/README.md) 包含獨立 HTML 與實際圖片。

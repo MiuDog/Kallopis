@@ -196,7 +196,7 @@
 | `theme.shape.toggleTrack`<br>shape / toggle Track | `p(space100)` | `p(space100)` | `p(space100)` | `p(space100)` |
 | `theme.shape.card`<br>shape / card | `p(length-7)` | `p(length-7)` | `p(length-7)` | `p(length-7)` |
 | `theme.shape.panel`<br>shape / panel | `p(space300)` | `p(space300)` | `p(space300)` | `p(space300)` |
-| `theme.shape.pill`<br>shape / pill | `p(radiusFull)` | `p(radiusFull)` | `p(radiusFull)` | `p(radiusFull)` |
+| `theme.shape.pill`<br>shape / pill | `s(theme.shape.control)` | `s(theme.shape.control)` | `s(theme.shape.control)` | `s(theme.shape.control)` |
 | `theme.shape.hairline`<br>shape / hairline | `p(stroke100)` | `p(stroke100)` | `p(stroke100)` | `p(stroke100)` |
 | `theme.shape.stroke`<br>shape / stroke | `p(space50)` | `p(space50)` | `p(space50)` | `p(space50)` |
 | `theme.shape.dashedLength`<br>shape / dashed Length | `p(length-3)` | `p(length-3)` | `p(length-3)` | `p(length-3)` |
@@ -270,7 +270,7 @@
 | `theme.components.buttonBorderWidth`<br>components / button Border Width | `s(theme.shape.none)` | `s(theme.shape.none)` | `s(theme.shape.none)` | `s(theme.shape.none)` |
 | `theme.components.fieldRadius`<br>components / field Radius | `s(theme.shape.control)` | `s(theme.shape.control)` | `s(theme.shape.control)` | `s(theme.shape.control)` |
 | `theme.components.fieldPaddingX`<br>components / field Padding X | `s(theme.spacing.controlInset)` | `s(theme.spacing.controlInset)` | `s(theme.spacing.controlInset)` | `s(theme.spacing.controlInset)` |
-| `theme.components.fieldHeight`<br>components / field Height | `s(theme.spacing.controlHeight)` | `s(theme.spacing.controlHeight)` | `s(theme.spacing.controlHeight)` | `s(theme.spacing.controlHeight)` |
+| `theme.components.fieldHeight`<br>components / field Height | `s(theme.geometry.control.fieldHeight)` | `s(theme.geometry.control.fieldHeight)` | `s(theme.geometry.control.fieldHeight)` | `s(theme.geometry.control.fieldHeight)` |
 | `theme.components.fieldBorderWidth`<br>components / field Border Width | `s(theme.shape.none)` | `s(theme.shape.none)` | `s(theme.shape.none)` | `s(theme.shape.none)` |
 | `theme.components.menuRadius`<br>components / menu Radius | `s(theme.shape.card)` | `s(theme.shape.card)` | `s(theme.shape.card)` | `s(theme.shape.card)` |
 | `theme.components.menuPadding`<br>components / menu Padding | `s(theme.spacing.overlayContentInset)` | `s(theme.spacing.overlayContentInset)` | `s(theme.spacing.overlayContentInset)` | `s(theme.spacing.overlayContentInset)` |
@@ -297,14 +297,14 @@
 | `theme.geometry.control.colorPickerCursorRadius`<br>geometry / control / color Picker Cursor Radius | `p(space200)` | `p(space200)` | `p(space200)` | `p(space200)` |
 | `theme.geometry.control.swatchExtent`<br>geometry / control / swatch Extent | `p(space200)` | `p(space200)` | `p(space200)` | `p(space200)` |
 | `theme.geometry.control.segmentedProgressHeight`<br>geometry / control / segmented Progress Height | `p(space200)` | `p(space200)` | `p(space200)` | `p(space200)` |
-| `theme.geometry.control.fieldHeight`<br>geometry / control / field Height | `p(length-30)` | `p(length-30)` | `p(length-30)` | `p(length-30)` |
-| `theme.geometry.control.selectionControl`<br>geometry / control / selection Control | `p(font500)` | `p(font500)` | `p(font500)` | `p(font500)` |
+| `theme.geometry.control.fieldHeight`<br>geometry / control / field Height | `p(space600)` | `p(space600)` | `p(space600)` | `p(space600)` |
+| `theme.geometry.control.selectionControl`<br>geometry / control / selection Control | `p(length-15)` | `p(length-15)` | `p(length-15)` | `p(length-15)` |
 | `theme.geometry.control.selectionIndicatorInset`<br>geometry / control / selection Indicator Inset | `p(length-3_5)` | `p(length-3_5)` | `p(length-3_5)` | `p(length-3_5)` |
 | `theme.geometry.control.selectionIcon`<br>geometry / control / selection Icon | `p(space300)` | `p(space300)` | `p(space300)` | `p(space300)` |
-| `theme.geometry.control.toggleWidth`<br>geometry / control / toggle Width | `p(length-30)` | `p(length-30)` | `p(length-30)` | `p(length-30)` |
+| `theme.geometry.control.toggleWidth`<br>geometry / control / toggle Width | `add(s(theme.spacing.iconButton),s(theme.spacing.space0_5))` | `add(s(theme.spacing.iconButton),s(theme.spacing.space0_5))` | `add(s(theme.spacing.iconButton),s(theme.spacing.space0_5))` | `add(s(theme.spacing.iconButton),s(theme.spacing.space0_5))` |
 | `theme.geometry.control.toggleHeight`<br>geometry / control / toggle Height | `p(space400)` | `p(space400)` | `p(space400)` | `p(space400)` |
-| `theme.geometry.control.toggleThumb`<br>geometry / control / toggle Thumb | `p(space300)` | `p(space300)` | `p(space300)` | `p(space300)` |
-| `theme.geometry.control.toggleInset`<br>geometry / control / toggle Inset | `p(space50)` | `p(space50)` | `p(space50)` | `p(space50)` |
+| `theme.geometry.control.toggleThumb`<br>geometry / control / toggle Thumb | `p(font300)` | `p(font300)` | `p(font300)` | `p(font300)` |
+| `theme.geometry.control.toggleInset`<br>geometry / control / toggle Inset | `p(stroke100)` | `p(stroke100)` | `p(stroke100)` | `p(stroke100)` |
 | `theme.geometry.control.segmentedDenseHeight`<br>geometry / control / segmented Dense Height | `p(length-30)` | `p(length-30)` | `p(length-30)` | `p(length-30)` |
 | `theme.geometry.control.segmentedDenseInset`<br>geometry / control / segmented Dense Inset | `p(length-3)` | `p(length-3)` | `p(length-3)` | `p(length-3)` |
 | `theme.geometry.control.segmentedDenseContentInset`<br>geometry / control / segmented Dense Content Inset | `p(space0)` | `p(space0)` | `p(space0)` | `p(space0)` |
@@ -369,7 +369,7 @@
 | `theme.geometry.layout.menuWidth`<br>geometry / layout / menu Width | `p(length-200)` | `p(length-200)` | `p(length-200)` | `p(length-200)` |
 | `theme.geometry.layout.commandMenuWidth`<br>geometry / layout / command Menu Width | `p(length-300)` | `p(length-300)` | `p(length-300)` | `p(length-300)` |
 | `theme.geometry.layout.menuHeaderHeight`<br>geometry / layout / menu Header Height | `p(font700)` | `p(font700)` | `p(font700)` | `p(font700)` |
-| `theme.geometry.layout.menuItemHeight`<br>geometry / layout / menu Item Height | `p(font700)` | `p(font700)` | `p(font700)` | `p(font700)` |
+| `theme.geometry.layout.menuItemHeight`<br>geometry / layout / menu Item Height | `p(space1000)` | `p(space1000)` | `p(space1000)` | `p(space1000)` |
 | `theme.geometry.layout.dialogMaximumWidth`<br>geometry / layout / dialog Maximum Width | `p(length-520)` | `p(length-520)` | `p(length-520)` | `p(length-520)` |
 | `theme.geometry.layout.toastMaximumWidth`<br>geometry / layout / toast Maximum Width | `p(length-360)` | `p(length-360)` | `p(length-360)` | `p(length-360)` |
 | `theme.geometry.layout.inlineNoticeBreakpoint`<br>geometry / layout / inline Notice Breakpoint | `p(length-480)` | `p(length-480)` | `p(length-480)` | `p(length-480)` |
@@ -411,3 +411,7 @@
 | `theme.dataVisualization.marketDownWash`<br>data Visualization / market Down Wash | `p(red100)` | `p(red800)` | `p(red900)` | `p(red800)` |
 | `theme.dataVisualization.marketFlat`<br>data Visualization / market Flat | `p(warmNeutral450)` | `p(warmNeutral400)` | `p(warmNeutral500)` | `p(warmNeutral400)` |
 
+
+## 桌面形狀與控制尺寸
+
+依使用者 2026-10-16 回饋，元件及其內部控制不採圓形／膠囊形，一律方形或長方形加圓角；小部位圓角最多為短邊四分之一。保留 pill 語意 ID 以維持相容，但解析為 control 圓角。checkbox 基準由瀏覽器 13px 明確定為 15px；toggle 外框兩軸各加 2px。輸入框依最新回饋降為 24px，components.fieldHeight 與 geometry.control.fieldHeight 共用同一來源。

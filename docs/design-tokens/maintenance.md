@@ -4,20 +4,20 @@
 
 ## 單一權威
 
-[設計規範索引](KALLOPIS-DESIGN-MAP.md) 及其六份章節是正式視覺規範。採用來源是既有統整表；本次分檔不改設計。各章節各自擁有一類內容，禁止在 README、框架庫或網頁手寫第二份相同表格。
+根目錄 `styles/kallopis-v1.json` 擁有 primitive、四模式 semantic 與配方資料，`styles/catalog.json` 擁有型別及約束。執行 `node styles/scripts/migrate.mjs` 更新文件表格，`--check` 驗證同步。[設計規範索引](KALLOPIS-DESIGN-MAP.md) 及其六份章節維護用途、合法組合與說明。採用來源是既有統整表；本次分檔不改設計。各章節各自擁有一類內容，禁止在 README、框架庫或網頁手寫第二份相同表格。
 
 | 內容 | 唯一維護位置 | 修訂原則 |
 | --- | --- | --- |
 | 記號、單位、運算、繼承、預設解讀 | `notation.md` | 解析含義改變必須列出受影響的配方 |
-| 原料名稱與數值 | `primitives.md` | 相同值不等於相同用途；既有名稱不可任意合併 |
-| 全域用途與 theme 對應 | `semantics.md` | 保留語意 ID；不能因單一框架 API 改名而改通用用途 |
-| 元件角色、尺寸、variant 與狀態配方 | `recipes.md` | 保留繼承關係與既有狀態規則；未定義的組合先明示缺項 |
+| 原料名稱與數值 | `styles/kallopis-v1.json` 的 primitives | 相同值不等於相同用途；既有名稱不可任意合併 |
+| 全域用途與 theme 對應 | `styles/kallopis-v1.json` 的 semantics | 保留語意 ID；不能因單一框架 API 改名而改通用用途 |
+| 元件角色、尺寸、variant 與狀態配方 | `styles/kallopis-v1.json` 的 recipes；`recipes.md` 維護合法組合 | 保留繼承關係與既有狀態規則；未定義的組合先明示缺項 |
 | 使用例子 | `examples.md` | 引用既有 primitive／semantic／recipe，不自行新增預設 |
 | 已知差異與平台限制 | `platform-notes.md` | 明示差異、來源及適用框架；不把現存差異靜默正規化 |
 
 ## 修訂程序
 
-文件直接以 Markdown 維護，GitHub 與本機 Markdown 預覽器是主要閱讀方式。需要示意圖時，將 PNG、WebP 或 SVG 放在本目錄的 `images/` 下，以相對路徑嵌入並提供清楚的替代文字；圖片與來源文件一同提交。語意、數值與合法限制保留在正文，圖片只作輔助，不以截圖取代正式規則。既有網站仍從這些 Markdown 產生，不另行複製正文。
+資料值修改根風格包並生成表格；其餘說明直接以 Markdown 維護，GitHub 與本機 Markdown 預覽器是主要閱讀方式。需要示意圖時，將 PNG、WebP 或 SVG 放在本目錄的 `images/` 下，以相對路徑嵌入並提供清楚的替代文字；圖片與來源文件一同提交。語意、數值與合法限制保留在正文，圖片只作輔助，不以截圖取代正式規則。既有網站仍從這些 Markdown 產生，不另行複製正文。
 
 1. 依責任定位唯一章節；先查既有 ID、來源與平台差異。
 2. 格式、錯字與導覽修正可直接處理；改數值、用途、繼承或合法組合屬設計契約變更，須有已接受的需求。
