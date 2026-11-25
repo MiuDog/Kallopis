@@ -22,7 +22,7 @@ export default function EditorialSpotlightCard({
 
 	return (
 		<article className="klp-curated-editorial-card">
-			<div className="klp-curated-editorial-orb" style={{ background: `radial-gradient(circle at top right, ${activeOrb.color}55, transparent 68%)` }} aria-hidden="true" />
+			<div className={`klp-curated-editorial-orb klp-curated-orb-${activeOrb.id}`} aria-hidden="true" />
 			<div className="klp-curated-editorial-body">
 				<div className="klp-curated-editorial-head">
 					<KlpText role="label" tone="muted">EDITORIAL · CALM · EXPERT</KlpText>
@@ -33,13 +33,13 @@ export default function EditorialSpotlightCard({
 				<div className="klp-curated-editorial-footer">
 					<div className="klp-curated-orb-dots" role="group" aria-label="切換光暈色調">
 						{orbs.map(item => (
-							<button
+							<KlpButton
 								key={item.id}
-								type="button"
-								className="klp-curated-orb-btn"
+								size="xs"
+								tone="ghost"
+								className={`klp-curated-orb-btn klp-curated-dot-${item.id}`}
 								aria-label={`光暈 ${item.label}`}
-								aria-pressed={orbId === item.id}
-								style={{ background: item.color }}
+								selected={orbId === item.id}
 								onClick={() => setOrbId(item.id)}
 							/>
 						))}

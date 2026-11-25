@@ -56,13 +56,13 @@ export default function MicroElevatedPillTabs({ initialTabs = defaultTabs }: { i
 					const selected = tab.id === activeId;
 					return (
 						<div key={tab.id} className="klp-curated-tab-pill" data-active={selected}>
-							<button type="button" role="tab" aria-selected={selected} className="klp-curated-tab-trigger" onClick={() => setActiveId(tab.id)}>
+							<KlpButton size="xs" tone="ghost" selected={selected} className="klp-curated-tab-trigger" onClick={() => setActiveId(tab.id)}>
 								<span className="klp-curated-tab-dot" aria-hidden="true" />
 								<span>{tab.label}</span>
 								{typeof tab.count === 'number' && <KlpBadge>{tab.count}</KlpBadge>}
-							</button>
+							</KlpButton>
 							{tabs.length > 1 && (
-								<button type="button" className="klp-curated-tab-close" aria-label={`關閉 ${tab.label}`} onClick={() => closeTab(tab.id)}>×</button>
+								<KlpButton size="xs" tone="ghost" className="klp-curated-tab-close" aria-label={`關閉 ${tab.label}`} onClick={() => closeTab(tab.id)}>×</KlpButton>
 							)}
 						</div>
 					);

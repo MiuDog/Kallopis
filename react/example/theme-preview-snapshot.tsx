@@ -142,7 +142,7 @@ function PreviewCanvas({ theme, mode, compact }: { theme: ThemeMetadataEntry; mo
 								<div className="theme-snapshot-chips" aria-label="核心色票">
 									{colorChips.map(chip => (
 										<span key={chip.label} className="theme-snapshot-chip">
-											<span className="theme-snapshot-chip-dot" style={{ background: `var(${chip.varName})` }} />
+											<span className={`theme-snapshot-chip-dot theme-snapshot-dot-${chip.label.toLowerCase()}`} data-var={chip.varName} />
 											<KlpText role="caption">{chip.label}</KlpText>
 										</span>
 									))}

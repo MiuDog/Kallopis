@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { KlpThemeProvider, KlpButton, KlpText, KlpTextField, createKlpStylePack, applyKlpStyleOverrides, type KlpMode, type KlpStyleOverrides } from '@kallopis/react';
+import { KlpThemeProvider, KlpButton, KlpSelect, KlpText, KlpTextField, createKlpStylePack, applyKlpStyleOverrides, type KlpMode, type KlpStyleOverrides } from '@kallopis/react';
 import { ModernProductivityStarter } from './modern-productivity-starter.js';
 import { themeMetadata, themePacks } from './theme-presets.mjs';
 
@@ -58,17 +58,17 @@ export function ModernProductivityPreview({ id }: { id: string }) {
 		catch { setFeedback('無法自動複製，請手動選取下方文字。'); }
 	}
 	if (id !== 'modern-productivity-layout') return <KlpThemeProvider><KlpText>未知或歧義的模板路由。</KlpText></KlpThemeProvider>;
-	return <KlpThemeProvider mode={mode} stylePack={pack} style={{ height: '100dvh', display: 'flex', flexDirection: 'column' }}>
-		<section aria-label="模板設定" style={{ flex: '0 0 35%', minHeight: 0, overflow: 'auto', padding: 'var(--klp-spacing-contentInset)', boxSizing: 'border-box' }}>
+	return <KlpThemeProvider mode={mode} stylePack={pack} className="demo-mp-root">
+		<section aria-label="模板設定" className="demo-mp-controls">
 			<KlpText as="h1" role="h3">微立體工作台佈局 · 即時調整</KlpText>
-			<div style={{ display: 'flex', flexWrap: 'wrap', gap: 'var(--klp-spacing-actionGap)' }}>{themeMetadata.map(theme => <KlpButton key={theme.id} selected={themeId === theme.id} onClick={() => switchTheme(theme.id)}>{theme.name}</KlpButton>)}{modes.map(value => <KlpButton key={value} selected={mode === value} onClick={() => setMode(value)}>{value}</KlpButton>)}<KlpButton onClick={reset}>還原設定</KlpButton><KlpButton onClick={copy}>複製設定</KlpButton></div>
-			<div style={{ display: 'flex', flexWrap: 'wrap', gap: 'var(--klp-spacing-actionGap)' }}>
+			<div className="demo-row">{themeMetadata.map(theme => <KlpButton key={theme.id} selected={themeId === theme.id} onClick={() => switchTheme(theme.id)}>{theme.name}</KlpButton>)}{modes.map(value => <KlpButton key={value} selected={mode === value} onClick={() => setMode(value)}>{value}</KlpButton>)}<KlpButton onClick={reset}>還原設定</KlpButton><KlpButton onClick={copy}>複製設定</KlpButton></div>
+			<div className="demo-row">
 				<KlpTextField label="側欄寬度（空白使用預設）" type="number" value={widthText} onChange={event => changeWidth(event.target.value)} />
-				{fields.map(([key, label]) => <label key={key}>{label}<select aria-label={label} value={String(overrides.semantics?.[key]?.[mode] ?? '')} onChange={event => changeSemantic(key, event.target.value)}><option value="">預設</option>{primitives.map(([name, value]) => <option key={name} value={`p(${name})`}>{value} · {name}</option>)}</select></label>)}
+				{fields.map(([key, label]) => <KlpSelect key={key} label={label} value={String(overrides.semantics?.[key]?.[mode] ?? '')} options={[{ value: '', label: '預設' }, ...primitives.map(([name, value]) => ({ value: `p(${name})`, label: `${value} · ${name}` }))]} onChange={event => changeSemantic(key, event.target.value)} />)}
 			</div>
 			<p role="status">{feedback}</p>
-			<pre aria-label="接入設定" style={{ whiteSpace: 'pre-wrap' }}>{snippet}</pre>
+			<pre aria-label="接入設定" className="demo-mp-pre">{snippet}</pre>
 		</section>
-		<main style={{ flex: 1, minWidth: 0, minHeight: 0 }}><ModernProductivityStarter sidebarWidth={sidebarWidth} /></main>
+		<main className="demo-mp-main"><ModernProductivityStarter sidebarWidth={sidebarWidth} /></main>
 	</KlpThemeProvider>;
 }

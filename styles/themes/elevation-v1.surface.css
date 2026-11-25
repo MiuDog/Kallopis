@@ -1,0 +1,27 @@
+/* 立體 (elevation-v1 · Craft 靈感) 專屬強立體陰影、飽滿色塊與半透明磨砂玻璃規則。 */
+[data-klp-visual-style='elevation'] .ide-panel,
+[data-klp-visual-style='elevation'] .showcase-split-card {
+	box-shadow: 0 16px 40px rgba(0, 0, 0, 0.46), 0 4px 12px rgba(0, 0, 0, 0.28), inset 0 1px 0 rgba(255, 255, 255, 0.10);
+}
+[data-klp-visual-style='elevation'] .ide-topbar,
+[data-klp-visual-style='elevation'] .ide-activity-rail {
+	backdrop-filter: blur(18px) saturate(160%);
+	-webkit-backdrop-filter: blur(18px) saturate(160%);
+	box-shadow: 0 12px 28px rgba(0, 0, 0, 0.36), inset 0 1px 0 rgba(255, 255, 255, 0.12);
+}
+[data-klp-visual-style='elevation'][data-klp-visual-mode='light'] .ide-panel,
+[data-klp-visual-style='elevation'][data-klp-mode='light'] .showcase-split-card {
+	box-shadow: 0 14px 36px rgba(15, 23, 42, 0.10), 0 2px 8px rgba(15, 23, 42, 0.06), inset 0 1px 0 rgba(255, 255, 255, 0.92);
+}
+[data-klp-visual-style='elevation'][data-klp-visual-mode='light'] .ide-topbar,
+[data-klp-visual-style='elevation'][data-klp-visual-mode='light'] .ide-activity-rail {
+	background: rgba(255, 255, 255, 0.78);
+	backdrop-filter: blur(18px) saturate(165%);
+	-webkit-backdrop-filter: blur(18px) saturate(165%);
+	box-shadow: 0 10px 26px rgba(15, 23, 42, 0.09), inset 0 1px 0 rgba(255, 255, 255, 0.95);
+}
+[data-klp-visual-style='elevation'] .ide-doc-callout {
+	background: var(--klp-colors-accent-soft, rgba(37, 99, 235, 0.14));
+	border-left-width: 3px;
+	box-shadow: 0 8px 20px rgba(15, 23, 42, 0.08);
+}

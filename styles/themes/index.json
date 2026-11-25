@@ -19,8 +19,54 @@
 			"elevationStyle": "bevel-shadow",
 			"typography": "Noto Sans TC · IBM Plex Mono",
 			"palettePreview": {
-				"light": ["#E8E5DE", "#F2F0EA", "#FAF9F6", "#22201C", "#B5852A"],
-				"dark": ["#1A1A18", "#242320", "#2C2B28", "#EDEAE4", "#D4A853"]
+				"light": [
+					"#E8E5DE",
+					"#F2F0EA",
+					"#FAF9F6",
+					"#22201C",
+					"#B5852A"
+				],
+				"dark": [
+					"#1A1A18",
+					"#242320",
+					"#2C2B28",
+					"#EDEAE4",
+					"#D4A853"
+				]
+			}
+		},
+		{
+			"id": "elevation-v1",
+			"family": "elevation",
+			"version": "1.0.0",
+			"name": "立體",
+			"englishName": "Elevation",
+			"defaultMode": "light",
+			"description": "取自 Craft 的立體色塊與半透明磨砂玻璃語彙：放大圓角與多層浮起陰影比例，結合鮮明色塊容器、玻璃浮層與清晰對比，與微立體形成立體度光譜。",
+			"packPath": "styles/themes/elevation-v1.json",
+			"cssPath": "styles/themes/elevation-v1.css",
+			"jsPath": "styles/themes/elevation-v1.js",
+			"surfaceCssPath": "styles/themes/elevation-v1.surface.css",
+			"previewImage": "styles/images/previews/elevation-v1.png",
+			"sourceReference": "https://www.craft.do/zh-TW",
+			"surfaceStyle": "color-block-frosted-glass",
+			"elevationStyle": "dimensional-glass-shadow",
+			"typography": "Inter · Noto Sans TC · IBM Plex Mono",
+			"palettePreview": {
+				"light": [
+					"#F6F4EE",
+					"#C7DDF5",
+					"#D8D6F5",
+					"#CDE9DC",
+					"#2563EB"
+				],
+				"dark": [
+					"#121316",
+					"#1C1E24",
+					"#2B2F3A",
+					"#F5F7FA",
+					"#60A5FA"
+				]
 			}
 		},
 		{
@@ -40,10 +86,28 @@
 			"surfaceStyle": "editorial-hairline",
 			"elevationStyle": "flat-hairline",
 			"typography": "EB Garamond · Inter · Noto Sans TC",
-			"orbs": ["#A7E5D3", "#F4C5A8", "#C8B8E0", "#A8C8E8", "#E8B8C4"],
+			"orbs": [
+				"#A7E5D3",
+				"#F4C5A8",
+				"#C8B8E0",
+				"#A8C8E8",
+				"#E8B8C4"
+			],
 			"palettePreview": {
-				"light": ["#F5F5F5", "#F0EFED", "#FFFFFF", "#292524", "#E7E5E4"],
-				"dark": ["#0C0A09", "#141210", "#1C1917", "#FFFFFF", "#F4C5A8"]
+				"light": [
+					"#F5F5F5",
+					"#F0EFED",
+					"#FFFFFF",
+					"#292524",
+					"#E7E5E4"
+				],
+				"dark": [
+					"#0C0A09",
+					"#141210",
+					"#1C1917",
+					"#FFFFFF",
+					"#F4C5A8"
+				]
 			}
 		},
 		{
@@ -64,8 +128,326 @@
 			"elevationStyle": "subtle-relief",
 			"typography": "Noto Sans TC · IBM Plex Mono",
 			"palettePreview": {
-				"light": ["#E7E4DD", "#EFEDE7", "#F8F6F1", "#21201B", "#D3CFC4"],
-				"dark": ["#201F1C", "#292724", "#35322D", "#F0EDE6", "#514B40"]
+				"light": [
+					"#E7E4DD",
+					"#EFEDE7",
+					"#F8F6F1",
+					"#21201B",
+					"#D3CFC4"
+				],
+				"dark": [
+					"#201F1C",
+					"#292724",
+					"#35322D",
+					"#F0EDE6",
+					"#514B40"
+				]
+			}
+		},
+		{
+			"id": "dev-precision-v1",
+			"family": "dev-precision",
+			"version": "1.0.0",
+			"name": "開發精密",
+			"englishName": "Dev Precision",
+			"defaultMode": "dark",
+			"description": "專為程式開發與 IDE 工具打造：冷調深岩分層、銳利細線、電光靛藍強調色與鍵盤優先操作節奏。",
+			"packPath": "styles/themes/dev-precision-v1.json",
+			"cssPath": "styles/themes/dev-precision-v1.css",
+			"jsPath": "styles/themes/dev-precision-v1.js",
+			"surfaceCssPath": "styles/themes/dev-precision-v1.surface.css",
+			"previewImage": "styles/images/previews/dev-precision-v1.png",
+			"sourceReference": "https://linear.app",
+			"surfaceStyle": "precision-slate-layers",
+			"elevationStyle": "hairline-bevel",
+			"typography": "Inter · IBM Plex Mono",
+			"palettePreview": {
+				"light": [
+					"#F4F6FA",
+					"#FFFFFF",
+					"#FFFFFF",
+					"#0F172A",
+					"#4F46E5"
+				],
+				"dark": [
+					"#0B0D12",
+					"#12151E",
+					"#161B26",
+					"#F1F5F9",
+					"#818CF8"
+				]
+			}
+		},
+		{
+			"id": "quant-terminal-v1",
+			"family": "quant-terminal",
+			"version": "1.0.0",
+			"name": "金融終端",
+			"englishName": "Quant Terminal",
+			"defaultMode": "dark",
+			"description": "高資訊密度金融交易終端語彙：等寬對齊數值、零延遲狀態回饋與克制的紅綠漲跌訊號色。",
+			"packPath": "styles/themes/quant-terminal-v1.json",
+			"cssPath": "styles/themes/quant-terminal-v1.css",
+			"jsPath": "styles/themes/quant-terminal-v1.js",
+			"surfaceCssPath": "styles/themes/quant-terminal-v1.surface.css",
+			"previewImage": "styles/images/previews/quant-terminal-v1.png",
+			"sourceReference": "https://www.bloomberg.com/professional",
+			"surfaceStyle": "dense-terminal-grid",
+			"elevationStyle": "flat-rule",
+			"typography": "IBM Plex Mono · Inter",
+			"palettePreview": {
+				"light": [
+					"#EEF2F5",
+					"#F8FAFC",
+					"#FFFFFF",
+					"#0B1320",
+					"#0F766E"
+				],
+				"dark": [
+					"#090C10",
+					"#0F141B",
+					"#121821",
+					"#E6EDF3",
+					"#2DD4BF"
+				]
+			}
+		},
+		{
+			"id": "data-notebook-v1",
+			"family": "data-notebook",
+			"version": "1.0.0",
+			"name": "資料筆記",
+			"englishName": "Data Notebook",
+			"defaultMode": "light",
+			"description": "資料科學與分析筆記語彙：模組化程式碼儲存格、俐落實驗室白／深海藍底色與清晰圖表色階。",
+			"packPath": "styles/themes/data-notebook-v1.json",
+			"cssPath": "styles/themes/data-notebook-v1.css",
+			"jsPath": "styles/themes/data-notebook-v1.js",
+			"surfaceCssPath": "styles/themes/data-notebook-v1.surface.css",
+			"previewImage": "styles/images/previews/data-notebook-v1.png",
+			"sourceReference": "https://observablehq.com",
+			"surfaceStyle": "modular-lab-cells",
+			"elevationStyle": "soft-cell-border",
+			"typography": "Inter · IBM Plex Mono",
+			"palettePreview": {
+				"light": [
+					"#F3F7FA",
+					"#FFFFFF",
+					"#FFFFFF",
+					"#0F1F2E",
+					"#0284C7"
+				],
+				"dark": [
+					"#0B131E",
+					"#111D2C",
+					"#132132",
+					"#EBF4FB",
+					"#38BDF8"
+				]
+			}
+		},
+		{
+			"id": "studio-canvas-v1",
+			"family": "studio-canvas",
+			"version": "1.0.0",
+			"name": "設計畫布",
+			"englishName": "Studio Canvas",
+			"defaultMode": "dark",
+			"description": "專為設計與創作工具打造的零色偏中性灰畫布，搭配高密度屬性面板與鮮明選取框線。",
+			"packPath": "styles/themes/studio-canvas-v1.json",
+			"cssPath": "styles/themes/studio-canvas-v1.css",
+			"jsPath": "styles/themes/studio-canvas-v1.js",
+			"surfaceCssPath": "styles/themes/studio-canvas-v1.surface.css",
+			"previewImage": "styles/images/previews/studio-canvas-v1.png",
+			"sourceReference": "https://www.figma.com",
+			"surfaceStyle": "neutral-studio-canvas",
+			"elevationStyle": "crisp-panel",
+			"typography": "Inter · Noto Sans TC",
+			"palettePreview": {
+				"light": [
+					"#E5E5E5",
+					"#F5F5F5",
+					"#FFFFFF",
+					"#171717",
+					"#0D99FF"
+				],
+				"dark": [
+					"#1E1E1E",
+					"#2C2C2C",
+					"#2F2F2F",
+					"#F5F5F5",
+					"#38BDF8"
+				]
+			}
+		},
+		{
+			"id": "swiss-brutal-v1",
+			"family": "swiss-brutal",
+			"version": "1.0.0",
+			"name": "瑞士粗獷",
+			"englishName": "Swiss Brutal",
+			"defaultMode": "light",
+			"description": "0px 直角、1.5px 實線邊框、安全橘高對比訊號色與嚴謹瑞士網格結構。",
+			"packPath": "styles/themes/swiss-brutal-v1.json",
+			"cssPath": "styles/themes/swiss-brutal-v1.css",
+			"jsPath": "styles/themes/swiss-brutal-v1.js",
+			"surfaceCssPath": "styles/themes/swiss-brutal-v1.surface.css",
+			"previewImage": "styles/images/previews/swiss-brutal-v1.png",
+			"sourceReference": "https://www.swissted.com",
+			"surfaceStyle": "swiss-grid-rules",
+			"elevationStyle": "zero-radius-ink",
+			"typography": "Inter · IBM Plex Mono",
+			"palettePreview": {
+				"light": [
+					"#F4F3EE",
+					"#FFFFFF",
+					"#FFFFFF",
+					"#111111",
+					"#E64A19"
+				],
+				"dark": [
+					"#0E0E0E",
+					"#171717",
+					"#1B1B1B",
+					"#F7F7F5",
+					"#FF6B35"
+				]
+			}
+		},
+		{
+			"id": "enterprise-clarity-v1",
+			"family": "enterprise-clarity",
+			"version": "1.0.0",
+			"name": "企業清晰",
+			"englishName": "Enterprise Clarity",
+			"defaultMode": "light",
+			"description": "企業級 SaaS 信任藍語彙：清晰資訊層級與穩健表單秩序，適合管理後台與審批系統。",
+			"packPath": "styles/themes/enterprise-clarity-v1.json",
+			"cssPath": "styles/themes/enterprise-clarity-v1.css",
+			"jsPath": "styles/themes/enterprise-clarity-v1.js",
+			"surfaceCssPath": "styles/themes/enterprise-clarity-v1.surface.css",
+			"previewImage": "styles/images/previews/enterprise-clarity-v1.png",
+			"sourceReference": "https://stripe.com",
+			"surfaceStyle": "enterprise-structured-cards",
+			"elevationStyle": "crisp-elevation",
+			"typography": "Inter · Noto Sans TC",
+			"palettePreview": {
+				"light": [
+					"#F6F9FC",
+					"#FFFFFF",
+					"#FFFFFF",
+					"#0A2540",
+					"#1D4ED8"
+				],
+				"dark": [
+					"#0A1220",
+					"#101B2E",
+					"#132036",
+					"#F0F6FC",
+					"#60A5FA"
+				]
+			}
+		},
+		{
+			"id": "clinical-calm-v1",
+			"family": "clinical-calm",
+			"version": "1.0.0",
+			"name": "醫療潔淨",
+			"englishName": "Clinical Calm",
+			"defaultMode": "light",
+			"description": "醫療與生技領域專屬的高清晰度潔淨介面，採柔和青綠訊號與充裕留白降低判讀疲勞。",
+			"packPath": "styles/themes/clinical-calm-v1.json",
+			"cssPath": "styles/themes/clinical-calm-v1.css",
+			"jsPath": "styles/themes/clinical-calm-v1.js",
+			"surfaceCssPath": "styles/themes/clinical-calm-v1.surface.css",
+			"previewImage": "styles/images/previews/clinical-calm-v1.png",
+			"sourceReference": "https://www.w3.org/WAI/WCAG22/quickref",
+			"surfaceStyle": "clinical-high-clarity",
+			"elevationStyle": "soft-halo",
+			"typography": "Inter · Noto Sans TC",
+			"palettePreview": {
+				"light": [
+					"#F2F7F6",
+					"#FFFFFF",
+					"#FFFFFF",
+					"#0F2623",
+					"#0D9488"
+				],
+				"dark": [
+					"#0A1716",
+					"#102321",
+					"#122825",
+					"#ECFDF5",
+					"#2DD4BF"
+				]
+			}
+		},
+		{
+			"id": "cyber-neon-v1",
+			"family": "cyber-neon",
+			"version": "1.0.0",
+			"name": "霓虹電競",
+			"englishName": "Cyber Neon",
+			"defaultMode": "dark",
+			"description": "深紫黑曜底色搭配洋紅與電光青亮點，適合影音剪輯、串流控制與遊戲社群介面。",
+			"packPath": "styles/themes/cyber-neon-v1.json",
+			"cssPath": "styles/themes/cyber-neon-v1.css",
+			"jsPath": "styles/themes/cyber-neon-v1.js",
+			"surfaceCssPath": "styles/themes/cyber-neon-v1.surface.css",
+			"previewImage": "styles/images/previews/cyber-neon-v1.png",
+			"sourceReference": "https://discord.com",
+			"surfaceStyle": "obsidian-neon-glow",
+			"elevationStyle": "neon-rim",
+			"typography": "Inter · IBM Plex Mono",
+			"palettePreview": {
+				"light": [
+					"#F5F2FB",
+					"#FFFFFF",
+					"#FFFFFF",
+					"#1B1130",
+					"#A21CAF"
+				],
+				"dark": [
+					"#0D0A16",
+					"#151024",
+					"#181229",
+					"#F5F3FF",
+					"#E879F9"
+				]
+			}
+		},
+		{
+			"id": "spatial-glass-v1",
+			"family": "spatial-glass",
+			"version": "1.0.0",
+			"name": "液態玻璃",
+			"englishName": "Spatial Glass",
+			"defaultMode": "light",
+			"description": "空間運算液態玻璃語彙：高通透光學模糊、高光亮邊與懸浮式操控列。",
+			"packPath": "styles/themes/spatial-glass-v1.json",
+			"cssPath": "styles/themes/spatial-glass-v1.css",
+			"jsPath": "styles/themes/spatial-glass-v1.js",
+			"surfaceCssPath": "styles/themes/spatial-glass-v1.surface.css",
+			"previewImage": "styles/images/previews/spatial-glass-v1.png",
+			"sourceReference": "https://developer.apple.com/visionos",
+			"surfaceStyle": "optical-liquid-glass",
+			"elevationStyle": "specular-glass",
+			"typography": "Inter · Noto Sans TC",
+			"palettePreview": {
+				"light": [
+					"#EEF2FF",
+					"#F7F8FF",
+					"#FFFFFF",
+					"#161A33",
+					"#4F46E5"
+				],
+				"dark": [
+					"#0F1221",
+					"#171C33",
+					"#1A203B",
+					"#F2F4FF",
+					"#818CF8"
+				]
 			}
 		}
 	]

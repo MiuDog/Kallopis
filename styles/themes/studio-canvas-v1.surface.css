@@ -1,0 +1,12 @@
+/* 設計畫布 (studio-canvas-v1) — 以本庫 .klp-* 元件為基底擴充中性灰創作畫布風格 */
+[data-klp-visual-style='studio-canvas'] .klp-frame,
+[data-klp-visual-style='studio-canvas'] .klp-card,
+[data-klp-visual-style='studio-canvas'] .ide-panel {
+	border: 1px solid var(--klp-colors-border);
+	box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+}
+[data-klp-visual-style='studio-canvas'] .klp-explorer-row[aria-pressed='true'],
+[data-klp-visual-style='studio-canvas'] .klp-dock-tab[aria-selected='true'] {
+	outline: 1.5px solid var(--klp-colors-accent);
+	outline-offset: -1.5px;
+}

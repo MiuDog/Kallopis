@@ -56,3 +56,13 @@
 	outline: 2px solid var(--klp-colors-text);
 	outline-offset: 2px;
 }
+
+/* 光暈色調類別（取代 JSX 內嵌樣式） */
+.klp-curated-orb-mint { background: radial-gradient(circle at top right, #A7E5D355, transparent 68%); }
+.klp-curated-orb-peach { background: radial-gradient(circle at top right, #F4C5A855, transparent 68%); }
+.klp-curated-orb-lavender { background: radial-gradient(circle at top right, #C8B8E055, transparent 68%); }
+.klp-curated-orb-sky { background: radial-gradient(circle at top right, #A8C8E855, transparent 68%); }
+.klp-curated-dot-mint { background: #A7E5D3; }
+.klp-curated-dot-peach { background: #F4C5A8; }
+.klp-curated-dot-lavender { background: #C8B8E0; }
+.klp-curated-dot-sky { background: #A8C8E8; }

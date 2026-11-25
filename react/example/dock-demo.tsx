@@ -79,7 +79,7 @@ export function DockDemo() {
 				<KlpButton size="sm" selected={closeMode === 'delay'} onClick={() => setCloseMode('delay')}>延遲批准關閉</KlpButton>
 				{available.map(id => <KlpButton key={id} size="sm" onClick={() => open(id)}>重開 {panels.find(panel => panel.id === id)?.label}</KlpButton>)}
 			</div>
-			<div className="demo-dock-preview" style={{ width, height }}>
+			<div className={`demo-dock-preview demo-w-${width} demo-h-${height}`}>
 				<KlpDockLayout label="停靠布局預覽" layout={layout} panels={panels} leftConstraints={{ minExtent: 120, maxExtent: 360 }} rightConstraints={{ minExtent: 120, maxExtent: 360 }} bottomConstraints={{ minExtent: 80, maxExtent: 260 }} collapseThresholds={{ left: 48, right: 48, bottom: 32 }} onLayoutChanged={commit} onCloseError={(error, id) => setMessage(`${id} 關閉失敗：${String(error)}`)}
 					contentHeader={<KlpSurface tone="raised" className="demo-dock-header"><KlpText role="caption">SCENE · 產品擁有內容與流程</KlpText></KlpSurface>}
 					stage={<KlpSurface tone="inset" className="demo-dock-stage"><KlpText role="lead">Stage</KlpText><KlpTextField label="場景名稱" value={draft} onChange={event => setDraft(event.target.value)} /><KlpText role="caption">正文、3D 或終端由產品接入。</KlpText></KlpSurface>} />

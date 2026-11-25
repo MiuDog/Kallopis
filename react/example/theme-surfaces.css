@@ -14,6 +14,34 @@
 	box-shadow: 0 3px 12px rgba(0, 0, 0, 0.06), inset 0 1px 0 rgba(255, 255, 255, 0.85);
 }
 
+/* 立體 (elevation-v1 · Craft 靈感) 專屬強立體陰影、飽滿色塊與半透明磨砂玻璃規則。 */
+[data-klp-visual-style='elevation'] .ide-panel,
+[data-klp-visual-style='elevation'] .showcase-split-card {
+	box-shadow: 0 16px 40px rgba(0, 0, 0, 0.46), 0 4px 12px rgba(0, 0, 0, 0.28), inset 0 1px 0 rgba(255, 255, 255, 0.10);
+}
+[data-klp-visual-style='elevation'] .ide-topbar,
+[data-klp-visual-style='elevation'] .ide-activity-rail {
+	backdrop-filter: blur(18px) saturate(160%);
+	-webkit-backdrop-filter: blur(18px) saturate(160%);
+	box-shadow: 0 12px 28px rgba(0, 0, 0, 0.36), inset 0 1px 0 rgba(255, 255, 255, 0.12);
+}
+[data-klp-visual-style='elevation'][data-klp-visual-mode='light'] .ide-panel,
+[data-klp-visual-style='elevation'][data-klp-mode='light'] .showcase-split-card {
+	box-shadow: 0 14px 36px rgba(15, 23, 42, 0.10), 0 2px 8px rgba(15, 23, 42, 0.06), inset 0 1px 0 rgba(255, 255, 255, 0.92);
+}
+[data-klp-visual-style='elevation'][data-klp-visual-mode='light'] .ide-topbar,
+[data-klp-visual-style='elevation'][data-klp-visual-mode='light'] .ide-activity-rail {
+	background: rgba(255, 255, 255, 0.78);
+	backdrop-filter: blur(18px) saturate(165%);
+	-webkit-backdrop-filter: blur(18px) saturate(165%);
+	box-shadow: 0 10px 26px rgba(15, 23, 42, 0.09), inset 0 1px 0 rgba(255, 255, 255, 0.95);
+}
+[data-klp-visual-style='elevation'] .ide-doc-callout {
+	background: var(--klp-colors-accent-soft, rgba(37, 99, 235, 0.14));
+	border-left-width: 3px;
+	box-shadow: 0 8px 20px rgba(15, 23, 42, 0.08);
+}
+
 /* 現代簡約風 (modern-minimal-v1 · open-tag) 專屬平面細線與 Editorial 排版規則。 */
 [data-klp-visual-style='modern-minimal'] .ide-panel,
 [data-klp-visual-style='modern-minimal'] .ide-topbar,
@@ -36,4 +64,108 @@
 [data-klp-visual-style='kallopis'] .ide-panel,
 [data-klp-visual-style='kallopis'] .showcase-split-card {
 	box-shadow: var(--klp-relief-shadow);
+}
+
+/* 開發精密 (dev-precision-v1) — 以本庫 .klp-* 元件為基底擴充冷調深岩與銳利細線風格 */
+[data-klp-visual-style='dev-precision'] .klp-frame,
+[data-klp-visual-style='dev-precision'] .klp-card,
+[data-klp-visual-style='dev-precision'] .ide-panel {
+	border: 1px solid var(--klp-colors-border);
+	box-shadow: 0 2px 10px rgba(0, 0, 0, 0.10), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+}
+[data-klp-visual-style='dev-precision'] .klp-button {
+	font-weight: 550;
+	letter-spacing: -0.01em;
+}
+
+/* 金融終端 (quant-terminal-v1) — 以本庫 .klp-* 元件為基底擴充高密度交易終端風格 */
+[data-klp-visual-style='quant-terminal'] .klp-theme {
+	font-variant-numeric: tabular-nums;
+}
+[data-klp-visual-style='quant-terminal'] .klp-frame,
+[data-klp-visual-style='quant-terminal'] .klp-card,
+[data-klp-visual-style='quant-terminal'] .ide-panel {
+	border: 1px solid var(--klp-colors-border);
+	border-radius: 4px;
+	box-shadow: none;
+}
+[data-klp-visual-style='quant-terminal'] .klp-button,
+[data-klp-visual-style='quant-terminal'] .klp-badge {
+	border-radius: 3px;
+	font-family: var(--klp-typography-monoFallback, Consolas, monospace);
+}
+
+/* 資料筆記 (data-notebook-v1) — 以本庫 .klp-* 元件為基底擴充模組化儲存格風格 */
+[data-klp-visual-style='data-notebook'] .klp-card,
+[data-klp-visual-style='data-notebook'] .klp-frame,
+[data-klp-visual-style='data-notebook'] .ide-panel {
+	border: 1px solid var(--klp-colors-border);
+	box-shadow: 0 3px 12px rgba(15, 31, 46, 0.06);
+}
+[data-klp-visual-style='data-notebook'] .klp-card-content {
+	border-left: 3px solid var(--klp-colors-accentSoft);
+}
+
+/* 設計畫布 (studio-canvas-v1) — 以本庫 .klp-* 元件為基底擴充中性灰創作畫布風格 */
+[data-klp-visual-style='studio-canvas'] .klp-frame,
+[data-klp-visual-style='studio-canvas'] .klp-card,
+[data-klp-visual-style='studio-canvas'] .ide-panel {
+	border: 1px solid var(--klp-colors-border);
+	box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+}
+[data-klp-visual-style='studio-canvas'] .klp-explorer-row[aria-pressed='true'],
+[data-klp-visual-style='studio-canvas'] .klp-dock-tab[aria-selected='true'] {
+	outline: 1.5px solid var(--klp-colors-accent);
+	outline-offset: -1.5px;
+}
+
+/* 瑞士粗獷 (swiss-brutal-v1) — 以本庫 .klp-* 元件為基底擴充 0px 直角與粗實線風格 */
+[data-klp-visual-style='swiss-brutal'] .klp-frame,
+[data-klp-visual-style='swiss-brutal'] .klp-card,
+[data-klp-visual-style='swiss-brutal'] .klp-button,
+[data-klp-visual-style='swiss-brutal'] .klp-badge,
+[data-klp-visual-style='swiss-brutal'] .klp-field input,
+[data-klp-visual-style='swiss-brutal'] .ide-panel {
+	border-radius: 0px !important;
+	border: 1.5px solid var(--klp-colors-borderStrong);
+	box-shadow: none !important;
+}
+
+/* 企業清晰 (enterprise-clarity-v1) — 以本庫 .klp-* 元件為基底擴充企業級 SaaS 結構感 */
+[data-klp-visual-style='enterprise-clarity'] .klp-frame,
+[data-klp-visual-style='enterprise-clarity'] .klp-card,
+[data-klp-visual-style='enterprise-clarity'] .ide-panel {
+	border: 1px solid var(--klp-colors-border);
+	box-shadow: 0 6px 18px rgba(10, 37, 64, 0.06);
+}
+
+/* 醫療潔淨 (clinical-calm-v1) — 以本庫 .klp-* 元件為基底擴充柔和青綠潔淨層次 */
+[data-klp-visual-style='clinical-calm'] .klp-frame,
+[data-klp-visual-style='clinical-calm'] .klp-card,
+[data-klp-visual-style='clinical-calm'] .ide-panel {
+	border: 1px solid var(--klp-colors-border);
+	border-radius: 14px;
+	box-shadow: 0 4px 16px rgba(15, 38, 35, 0.05);
+}
+
+/* 霓虹電競 (cyber-neon-v1) — 以本庫 .klp-* 元件為基底擴充深紫與霓虹高光風格 */
+[data-klp-visual-style='cyber-neon'] .klp-frame,
+[data-klp-visual-style='cyber-neon'] .klp-card,
+[data-klp-visual-style='cyber-neon'] .ide-panel {
+	border: 1px solid var(--klp-colors-border);
+	box-shadow: 0 8px 28px rgba(162, 28, 175, 0.14);
+}
+[data-klp-visual-style='cyber-neon'] .klp-button-primary {
+	box-shadow: 0 0 18px var(--klp-colors-accentSoft);
+}
+
+/* 液態玻璃 (spatial-glass-v1) — 以本庫 .klp-* 元件為基底擴充光學磨砂與高光邊緣風格 */
+[data-klp-visual-style='spatial-glass'] .klp-frame,
+[data-klp-visual-style='spatial-glass'] .klp-card,
+[data-klp-visual-style='spatial-glass'] .ide-panel {
+	backdrop-filter: blur(22px) saturate(180%);
+	-webkit-backdrop-filter: blur(22px) saturate(180%);
+	border: 1px solid var(--klp-colors-border);
+	border-radius: 18px;
+	box-shadow: 0 18px 40px rgba(15, 23, 42, 0.14), inset 0 1px 0 rgba(255, 255, 255, 0.45);
 }

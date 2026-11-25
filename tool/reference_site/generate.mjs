@@ -129,7 +129,20 @@ async function main() {
 	if (output !== path.join(root, 'build', 'reference-site')) throw new Error('Unsafe output path');
 	fs.rmSync(output, { recursive: true, force: true });
 	fs.mkdirSync(path.join(output, 'assets'), { recursive: true });
-	for (const asset of ['site.css', 'site.js']) fs.copyFileSync(path.join(root, 'tool', 'reference_site', 'static', asset), path.join(output, 'assets', asset));
+	for (const asset of ['site.css', 'site.js', 'public-site.css', 'public-site.js']) {
+		fs.copyFileSync(path.join(root, 'tool', 'reference_site', 'static', asset), path.join(output, 'assets', asset));
+	}
+	if (fs.existsSync(path.join(root, 'react/dist/styles.css'))) {
+		fs.copyFileSync(path.join(root, 'react/dist/styles.css'), path.join(output, 'assets/klp-styles.css'));
+	}
+	if (fs.existsSync(path.join(root, 'react/dist/fonts'))) {
+		fs.cpSync(path.join(root, 'react/dist/fonts'), path.join(output, 'assets/fonts'), { recursive: true });
+	}
+	if (fs.existsSync(path.join(root, 'react/example/theme-surfaces.css'))) {
+		fs.copyFileSync(path.join(root, 'react/example/theme-surfaces.css'), path.join(output, 'assets/theme-surfaces.css'));
+	}
+	if (fs.existsSync(path.join(root, 'styles/images'))) fs.cpSync(path.join(root, 'styles/images'), path.join(output, 'styles/images'), { recursive: true });
+	if (fs.existsSync(path.join(root, 'styles/themes'))) fs.cpSync(path.join(root, 'styles/themes'), path.join(output, 'styles/themes'), { recursive: true });
 	let themes = [];
 	let curatedComponents = [];
 	let desktopCatalog = [];

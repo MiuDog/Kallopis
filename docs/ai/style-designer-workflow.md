@@ -34,6 +34,7 @@
 10. **風格與明暗模式完全獨立**：絕不把任何風格綁定「預設深色」，每次切換風格或明暗模式只改變該單一維度。
 11. **風格預覽圖一律由標準化範例自動截圖**：嚴禁直接使用使用者提供的參考圖或外部網站截圖作為 `previewImage`；每個風格每次僅需切換 `?showcase=theme-preview&theme=<id>` 並執行 `capture-theme-previews.mjs`，將標準範例畫面截圖存為 `styles/images/previews/<id>.png`。
 12. **網頁標題與副標題專注呈現產品特色**：所有公開網頁的標題、副標題、區塊主標與導語用於傳達產品與風格價值，禁止寫入專案規範、內部目錄路徑或操作教學文字。
+13. **僅能展示已註冊公開元件（Registered Components Gate）**：之後所有新風格與公開展示頁面一律以「已註冊」公開元件（`@kallopis/react` 與 `package:kallopis/kallopis_foundation.dart`）為基底擴充與及格標準，不得於公開展示使用原生控制項替代或內嵌樣式，並必須通過 `node --test react/test/showcase-contract.test.mjs` 與 `flutter test test/gui_showcase_contract_test.dart`。
 
 ---
 

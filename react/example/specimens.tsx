@@ -48,7 +48,7 @@ function StandardSpecimenApp({ name }: SpecimenProps) {
 					<KlpButton onClick={toggleWidth}>展示寬度：{width}</KlpButton>
 					<KlpButton onClick={reset}>重設展示</KlpButton>
 				</div>
-				<div style={{ /* width/maxWidth僅定義產品可用測量空間，視覺全部由公開元件負責。 */ width, maxWidth: '100%', minWidth: 0 }} data-specimen={name}><Fixture key={epoch} name={name} /></div>
+				<div className={`demo-specimen-box demo-specimen-w-${width}`} data-specimen={name}><Fixture key={epoch} name={name} /></div>
 				<KlpText as="p" role="caption">參數與回呼狀態由這份展示擁有；元件依共同語意呈現。透明模式顯示宿主底色。</KlpText>
 			</> : <KlpText as="p" role="body-strong" aria-live="polite">未註冊的公開名稱：{name || '空值'}。請從下方元件清單選擇。</KlpText>}
 			<details><summary>所有 React 元件展示</summary><ul>{reactSpecimenNames.map(value => <li key={value}><a href={`?specimen=${encodeURIComponent(value)}`}>{value}</a></li>)}</ul></details>
@@ -147,7 +147,7 @@ function LayoutSpecimen({ name }: SpecimenProps) {
 	}
 	return <div className="demo-stack">
 		<KlpButton selected={changed} onClick={toggle}>變更 {name} 參數：{changed ? '開' : '關'}</KlpButton>
-		<div style={{ /* 有限height是產品提供的布局測量空間，寬度沿當前展示宿主。 */ height: 280, width: '100%', minWidth: 0 }}><KlpAppLayout inset={changed && name === 'KlpAppLayout' ? 'none' : 'standard'}>{linear}</KlpAppLayout></div>
+		<div className="demo-layout-specimen-box"><KlpAppLayout inset={changed && name === 'KlpAppLayout' ? 'none' : 'standard'}>{linear}</KlpAppLayout></div>
 		<KlpText role="caption">當次參數：{parameter} · 草稿：{text}</KlpText>
 		<pre><code>{example}</code></pre>
 	</div>;

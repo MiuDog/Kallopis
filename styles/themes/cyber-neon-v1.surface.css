@@ -1,0 +1,10 @@
+/* 霓虹電競 (cyber-neon-v1) — 以本庫 .klp-* 元件為基底擴充深紫與霓虹高光風格 */
+[data-klp-visual-style='cyber-neon'] .klp-frame,
+[data-klp-visual-style='cyber-neon'] .klp-card,
+[data-klp-visual-style='cyber-neon'] .ide-panel {
+	border: 1px solid var(--klp-colors-border);
+	box-shadow: 0 8px 28px rgba(162, 28, 175, 0.14);
+}
+[data-klp-visual-style='cyber-neon'] .klp-button-primary {
+	box-shadow: 0 0 18px var(--klp-colors-accentSoft);
+}

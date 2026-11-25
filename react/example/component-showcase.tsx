@@ -106,7 +106,7 @@ function CuratedSplitCard({
 
 					<details className="showcase-details">
 						<summary>設計特徵（{entry.meta.inspiration.traits.length}）與使用 Tokens（{entry.meta.tokensUsed.length}）</summary>
-						<div className="demo-stack" style={{ marginTop: 8 }}>
+						<div className="demo-stack demo-mt-8">
 							<KlpText role="caption">設計特徵：{entry.meta.inspiration.traits.join(' · ')}</KlpText>
 							<div className="catalog-token-list">
 								{entry.meta.tokensUsed.map(tokenId => (
@@ -218,7 +218,7 @@ function ComponentSplitCard({
 
 					<details className="showcase-details">
 						<summary>Props 屬性（{meta.props.length}）與對應 Tokens（{meta.tokens.length}）</summary>
-						<div className="demo-stack" style={{ marginTop: 8 }}>
+						<div className="demo-stack demo-mt-8">
 							{meta.props.length ? (
 								<div className="catalog-table-wrap">
 									<table className="catalog-props-table">
@@ -321,7 +321,7 @@ export function ComponentShowcase() {
 									{value}
 								</KlpButton>
 							))}
-							<KlpText role="label" style={{ marginLeft: 8 }}>預設範例語言</KlpText>
+							<KlpText role="label" className="demo-ml-8">預設範例語言</KlpText>
 							{languages.map(lang => (
 								<KlpButton key={lang.id} size="sm" selected={globalLanguage === lang.id} onClick={() => setGlobalLanguage(lang.id)}>
 									{lang.label}

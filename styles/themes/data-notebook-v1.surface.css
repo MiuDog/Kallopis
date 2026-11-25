@@ -1,0 +1,10 @@
+/* 資料筆記 (data-notebook-v1) — 以本庫 .klp-* 元件為基底擴充模組化儲存格風格 */
+[data-klp-visual-style='data-notebook'] .klp-card,
+[data-klp-visual-style='data-notebook'] .klp-frame,
+[data-klp-visual-style='data-notebook'] .ide-panel {
+	border: 1px solid var(--klp-colors-border);
+	box-shadow: 0 3px 12px rgba(15, 31, 46, 0.06);
+}
+[data-klp-visual-style='data-notebook'] .klp-card-content {
+	border-left: 3px solid var(--klp-colors-accentSoft);
+}

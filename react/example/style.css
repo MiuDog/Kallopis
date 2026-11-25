@@ -498,3 +498,36 @@ body { background: Canvas; }
 	align-items: center;
 	justify-content: space-between;
 }
+
+/* 由展示元件外部樣式注入取代 JSX inline style */
+.demo-swatch-app { background: var(--klp-colors-app); }
+.demo-swatch-surface { background: var(--klp-colors-surface); }
+.demo-swatch-component { background: var(--klp-colors-component); }
+.demo-swatch-brand { background: var(--klp-colors-brand); }
+.demo-w-160 { width: 160px; }
+.demo-w-320 { width: 320px; }
+.demo-w-480 { width: 480px; }
+.demo-w-760 { width: 760px; }
+.demo-w-1040 { width: 1040px; }
+.demo-h-100 { height: 100px; }
+.demo-h-180 { height: 180px; }
+.demo-h-300 { height: 300px; }
+.demo-h-460 { height: 460px; }
+.demo-natural-70 { width: 70px; }
+.demo-specimen-box { max-width: 100%; min-width: 0; }
+.demo-specimen-w-320 { width: 320px; }
+.demo-specimen-w-640 { width: 640px; }
+.demo-specimen-w-960 { width: 960px; }
+.demo-layout-specimen-box { height: 280px; width: 100%; min-width: 0; }
+.demo-mp-root { height: 100dvh; display: flex; flex-direction: column; }
+.demo-mp-controls { flex: 0 0 35%; min-height: 0; overflow: auto; padding: var(--klp-spacing-contentInset); box-sizing: border-box; }
+.demo-mp-pre { white-space: pre-wrap; }
+.demo-mp-main { flex: 1; min-width: 0; min-height: 0; }
+.demo-inset-pad { padding: var(--klp-spacing-contentInset); }
+.demo-mt-8 { margin-top: 8px; }
+.demo-ml-8 { margin-left: 8px; }
+.theme-snapshot-dot-app { background: var(--klp-colors-app); }
+.theme-snapshot-dot-surface { background: var(--klp-colors-surface); }
+.theme-snapshot-dot-component { background: var(--klp-colors-component); }
+.theme-snapshot-dot-accent { background: var(--klp-colors-accent); }
+.theme-snapshot-dot-text { background: var(--klp-colors-text); }

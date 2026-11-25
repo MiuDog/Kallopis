@@ -28,7 +28,7 @@ function SemanticSample() {
 		<div className="demo-stack">
 			<KlpText as="p" tone="muted">{Object.keys(tokens).length} 項語意 · {Object.keys(klpRecipes).length} 項配方 · {labels[mode]}模式</KlpText>
 			<div className="demo-swatches">{['app', 'surface', 'component', 'brand'].map(role => <div key={role}>
-				<span className="demo-swatch" style={{ background: String(semantic(`theme.colors.${role}`)) }} />
+				<span className={`demo-swatch demo-swatch-${role}`} data-color-role={role} />
 				<KlpText role="caption">{role}</KlpText>
 			</div>)}</div>
 		</div>

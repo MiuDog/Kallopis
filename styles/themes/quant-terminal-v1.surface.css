@@ -1,0 +1,16 @@
+/* 金融終端 (quant-terminal-v1) — 以本庫 .klp-* 元件為基底擴充高密度交易終端風格 */
+[data-klp-visual-style='quant-terminal'] .klp-theme {
+	font-variant-numeric: tabular-nums;
+}
+[data-klp-visual-style='quant-terminal'] .klp-frame,
+[data-klp-visual-style='quant-terminal'] .klp-card,
+[data-klp-visual-style='quant-terminal'] .ide-panel {
+	border: 1px solid var(--klp-colors-border);
+	border-radius: 4px;
+	box-shadow: none;
+}
+[data-klp-visual-style='quant-terminal'] .klp-button,
+[data-klp-visual-style='quant-terminal'] .klp-badge {
+	border-radius: 3px;
+	font-family: var(--klp-typography-monoFallback, Consolas, monospace);
+}

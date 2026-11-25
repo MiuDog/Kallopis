@@ -277,11 +277,11 @@ export function IdeWorkbench() {
 						<div className="ide-tabbar" role="tablist" aria-label="開啟的文件">
 							{openTabs.map(tabId => (
 								<div key={tabId} className="ide-tab" data-active={activeId === tabId}>
-									<button type="button" role="tab" aria-selected={activeId === tabId} className="ide-tab-trigger" onClick={() => setActiveId(tabId)}>
+									<KlpButton size="xs" tone="ghost" selected={activeId === tabId} className="ide-tab-trigger" onClick={() => setActiveId(tabId)}>
 										{tabId}
-									</button>
+									</KlpButton>
 									{openTabs.length > 1 && (
-										<button type="button" className="ide-tab-close" aria-label={`關閉 ${tabId}`} onClick={() => closeTab(tabId)}>×</button>
+										<KlpButton size="xs" tone="ghost" className="ide-tab-close" aria-label={`關閉 ${tabId}`} onClick={() => closeTab(tabId)}>×</KlpButton>
 									)}
 								</div>
 							))}
@@ -346,9 +346,9 @@ export function IdeWorkbench() {
 							</div>
 							<div className="ide-outline-list">
 								{outlineHeadings.map((heading, index) => (
-									<button key={index} type="button" className="ide-outline-item" data-primary={index === 0} onClick={() => setStatus(`定位段落：${heading}`)}>
+									<KlpButton key={index} size="xs" tone="ghost" className="ide-outline-item" data-primary={index === 0} onClick={() => setStatus(`定位段落：${heading}`)}>
 										{heading}
-									</button>
+									</KlpButton>
 								))}
 							</div>
 						</aside>

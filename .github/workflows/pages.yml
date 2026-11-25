@@ -52,13 +52,14 @@ jobs:
         working-directory: flutter/example
       - run: flutter analyze lib/gui_scenarios.dart lib/gui_scenario_metadata.dart
         working-directory: flutter/example
-      - run: flutter test test/gui_scenario_metadata_test.dart
+      - run: flutter test test/gui_scenario_metadata_test.dart test/gui_showcase_contract_test.dart
         working-directory: flutter/example
       - run: flutter build web --release --no-tree-shake-icons --base-href /Kallopis/examples/flutter/
         working-directory: flutter/example
       - run: node --test tool/reference_site/test/flutter_scenarios.test.mjs
       - run: node tool/reference_site/generate.mjs --react --react-scenes --flutter-scenes
       - run: node tool/reference_site/verify.mjs --react --react-scenes --flutter-scenes
+      - run: node --test react/test/showcase-contract.test.mjs
 
       - uses: actions/upload-pages-artifact@v3
         with:

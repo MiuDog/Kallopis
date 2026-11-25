@@ -1,0 +1,11 @@
+/* 瑞士粗獷 (swiss-brutal-v1) — 以本庫 .klp-* 元件為基底擴充 0px 直角與粗實線風格 */
+[data-klp-visual-style='swiss-brutal'] .klp-frame,
+[data-klp-visual-style='swiss-brutal'] .klp-card,
+[data-klp-visual-style='swiss-brutal'] .klp-button,
+[data-klp-visual-style='swiss-brutal'] .klp-badge,
+[data-klp-visual-style='swiss-brutal'] .klp-field input,
+[data-klp-visual-style='swiss-brutal'] .ide-panel {
+	border-radius: 0px !important;
+	border: 1.5px solid var(--klp-colors-borderStrong);
+	box-shadow: none !important;
+}

@@ -1,0 +1,7 @@
+/* 企業清晰 (enterprise-clarity-v1) — 以本庫 .klp-* 元件為基底擴充企業級 SaaS 結構感 */
+[data-klp-visual-style='enterprise-clarity'] .klp-frame,
+[data-klp-visual-style='enterprise-clarity'] .klp-card,
+[data-klp-visual-style='enterprise-clarity'] .ide-panel {
+	border: 1px solid var(--klp-colors-border);
+	box-shadow: 0 6px 18px rgba(10, 37, 64, 0.06);
+}

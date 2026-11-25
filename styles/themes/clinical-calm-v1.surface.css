@@ -1,0 +1,8 @@
+/* 醫療潔淨 (clinical-calm-v1) — 以本庫 .klp-* 元件為基底擴充柔和青綠潔淨層次 */
+[data-klp-visual-style='clinical-calm'] .klp-frame,
+[data-klp-visual-style='clinical-calm'] .klp-card,
+[data-klp-visual-style='clinical-calm'] .ide-panel {
+	border: 1px solid var(--klp-colors-border);
+	border-radius: 14px;
+	box-shadow: 0 4px 16px rgba(15, 38, 35, 0.05);
+}

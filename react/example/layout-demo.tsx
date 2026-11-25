@@ -31,7 +31,7 @@ export function LayoutDemo({ mode, stylePack }: LayoutDemoProps) {
 				<KlpButton size="sm" selected={gap === 'large'} onClick={() => setGap('large')}>極大布局間距</KlpButton>
 				<KlpButton size="sm" onClick={() => setGap('current')}>還原布局間距</KlpButton>
 			</div>
-			<KlpThemeProvider mode={mode} stylePack={previewPack} className="demo-layout-preview" style={{ width, height }} aria-label="一般布局預覽">
+			<KlpThemeProvider mode={mode} stylePack={previewPack} className={`demo-layout-preview demo-w-${width} demo-h-${height}`} aria-label="一般布局預覽">
 				<KlpAppLayout inset={inset}>
 					<KlpLayoutRow>
 						<KlpLayoutPane id="layout-sidebar" flex={0} bounds={{ minimum: 80, maximum: 160, preferred: 120 }}>
@@ -57,7 +57,7 @@ export function LayoutDemo({ mode, stylePack }: LayoutDemoProps) {
 			<KlpText role="caption">自然主軸：量測 70 的內容與 preferred 30，flex 不延伸填滿。</KlpText>
 			<div className="demo-layout-natural">
 				<KlpLayoutRow sizing="content">
-					<KlpLayoutPane flex={0}><div style={{ width: 70 }}><KlpText role="caption">自然 70</KlpText></div></KlpLayoutPane>
+					<KlpLayoutPane flex={0}><div className="demo-natural-70"><KlpText role="caption">自然 70</KlpText></div></KlpLayoutPane>
 					<KlpLayoutPane bounds={{ preferred: 30 }}><KlpText role="caption">30</KlpText></KlpLayoutPane>
 				</KlpLayoutRow>
 			</div>

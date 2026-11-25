@@ -1,0 +1,1078 @@
+<!-- 1. 固定覆蓋式半透明無邊框磨砂玻璃 Header（展開覆蓋在所有元件之上，不推動下方內容） -->
+	<div class="nav-shell" data-klp-component="KlpSurface">
+		<header class="topbar" id="site-topbar" data-klp-component="KlpAppLayout">
+			<div class="topbar-row">
+				<button type="button" class="brand klp-pub-u1" id="brand-home-btn" data-klp-component="KlpLink" >
+					<span class="brand-mark" aria-hidden="true">
+						<svg viewBox="0 0 32 32" fill="currentColor">
+							<rect x="4" y="4" width="6.5" height="24" rx="1.5"/>
+							<path d="M12.5 13.5L22 4H28V6.2L19.2 15H12.5V13.5Z"/>
+							<path d="M12.5 17H19.2L28 25.8V28H22L12.5 18.5V17Z"/>
+						</svg>
+					</span>
+					Kallopis
+				</button>
+
+				<!-- 四組固定寬度導覽按鈕（hover / click 向下覆蓋展開） -->
+				<nav class="topbar-nav" aria-label="Primary Navigation" data-klp-component="KlpTabs">
+					<button type="button" data-menu="home" data-route="home" aria-current="page" aria-expanded="false"><span data-i18n="navHome">Home</span> <span class="nav-caret" aria-hidden="true">▾</span></button>
+					<button type="button" data-menu="design" data-route="style-preview" aria-expanded="false"><span data-i18n="navDesign">Design</span> <span class="nav-caret" aria-hidden="true">▾</span></button>
+					<button type="button" data-menu="usage" data-route="docs" aria-expanded="false"><span data-i18n="navUsage">Usage</span> <span class="nav-caret" aria-hidden="true">▾</span></button>
+					<button type="button" data-menu="community" aria-expanded="false"><span data-i18n="navCommunity">Community</span> <span class="nav-caret" aria-hidden="true">▾</span></button>
+				</nav>
+
+				<!-- Header 右上角三元件：1. 語言設定 2. 無文字日夜大 Toggle 3. 使用 Kallopis -->
+				<div class="topbar-actions">
+					<button
+						type="button"
+						id="lang-toggle-btn"
+						class="lang-toggle"
+						aria-label="Switch language between English and Traditional Chinese"
+						data-klp-component="KlpButton"
+					>
+						<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+						<span id="lang-toggle-label">EN</span>
+					</button>
+
+					<button
+						type="button"
+						id="global-mode-toggle"
+						class="daynight-toggle"
+						role="switch"
+						aria-checked="false"
+						aria-label="Toggle day and night mode"
+						data-klp-component="KlpSwitch"
+					>
+						<span class="daynight-scene" aria-hidden="true">
+							<span class="dn-clouds"></span>
+							<span class="dn-stars"><i></i><i></i><i></i></span>
+							<span class="dn-orb"></span>
+						</span>
+					</button>
+
+					<button type="button" class="klp-btn primary pill header-cta-fixed" id="header-preview-btn" data-klp-component="KlpButton" data-i18n="headerCta">Use Kallopis</button>
+				</div>
+			</div>
+
+			<!-- 覆蓋式半透明 Mega-Menu 面板（所有項目前附 Icon，增加卡片呼吸高度） -->
+			<div class="topbar-drawer" id="topbar-drawer">
+				<div class="topbar-drawer-inner">
+					<div class="mega-panel" data-panel="home" hidden>
+						<button type="button" class="mega-item" data-jump-home="#hero-top">
+							<strong>
+								<span class="mega-title-lead">
+									<svg class="mega-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M3 10.5L12 3l9 7.5"/><path d="M5 9.5V20h14V9.5"/></svg>
+									<span data-i18n="mHomeOverview">Overview</span>
+								</span>
+								<span>↗</span>
+							</strong>
+							<span data-i18n="mHomeOverviewDesc">Universal styling foundation and governed constraints</span>
+						</button>
+						<button type="button" class="mega-item" data-jump-home="#styles-grid">
+							<strong>
+								<span class="mega-title-lead">
+									<svg class="mega-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="3" y="3" width="7.5" height="7.5" rx="2"/><rect x="13.5" y="3" width="7.5" height="7.5" rx="2"/><rect x="3" y="13.5" width="7.5" height="7.5" rx="2"/><rect x="13.5" y="13.5" width="7.5" height="7.5" rx="2"/></svg>
+									<span data-i18n="mHomeStyles">Style Preview</span>
+								</span>
+								<span>↓</span>
+							</strong>
+							<span data-i18n="mHomeStylesDesc">Four versioned themes in a 4-column grid</span>
+						</button>
+						<button type="button" class="mega-item" data-open-preview="micro-elevation-v1">
+							<strong>
+								<span class="mega-title-lead">
+									<svg class="mega-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M12 3l8 4.5-8 4.5-8-4.5L12 3z"/><path d="M4 12.5l8 4.5 8-4.5"/><path d="M4 17l8 4.5 8-4.5"/></svg>
+									<span data-i18n="mDesignComp">Component Preview</span>
+								</span>
+								<span>↗</span>
+							</strong>
+							<span data-i18n="mDesignCompDesc">Interactive stage, 10 component categories, and full tokens</span>
+						</button>
+					</div>
+
+					<div class="mega-panel" data-panel="design" hidden>
+						<button type="button" class="mega-item" data-open-route="color-design">
+							<strong>
+								<span class="mega-title-lead">
+									<svg class="mega-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="12" cy="12" r="9"/><circle cx="9" cy="10" r="1.2" fill="currentColor"/><circle cx="13.5" cy="8.5" r="1.2" fill="currentColor"/><circle cx="15.5" cy="13" r="1.2" fill="currentColor"/></svg>
+									<span data-i18n="mDesignColor">Color Palette</span>
+								</span>
+								<span>↗</span>
+							</strong>
+							<span data-i18n="mDesignColorDesc">Color wheel, harmony algorithms, and design library presets</span>
+						</button>
+						<button type="button" class="mega-item" data-open-preview="elevation-v1">
+							<strong>
+								<span class="mega-title-lead">
+									<svg class="mega-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="3"/><path d="M9 4v16M9 10h12"/></svg>
+									<span data-i18n="mDesignComp">Component Preview</span>
+								</span>
+								<span>↗</span>
+							</strong>
+							<span data-i18n="mDesignCompDesc">Interactive screen preview, legal controls, and 10 categories</span>
+						</button>
+						<button type="button" class="mega-item" data-open-route="layout-design">
+							<strong>
+								<span class="mega-title-lead">
+									<svg class="mega-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M3 9h18M9 9v12"/></svg>
+									<span data-i18n="mDesignLayout">Layout Design</span>
+								</span>
+								<span>↗</span>
+							</strong>
+							<span data-i18n="mDesignLayoutDesc">Drag-and-drop container builder with live preview and schema export</span>
+						</button>
+					</div>
+
+					<div class="mega-panel" data-panel="usage" hidden>
+						<button type="button" class="mega-item" data-open-docs="install">
+							<strong>
+								<span class="mega-title-lead">
+									<svg class="mega-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M12 3l8 4.5v9L12 21l-8-4.5v-9L12 3z"/><path d="M12 12l8-4.5M12 12v9M12 12L4 7.5"/></svg>
+									<span data-i18n="mUsageLib">Use Library</span>
+								</span>
+								<span>↗</span>
+							</strong>
+							<span data-i18n="mUsageLibDesc">Install and compose Kallopis in React, Flutter, or HTML</span>
+						</button>
+						<button type="button" class="mega-item" data-open-docs="skills">
+							<strong>
+								<span class="mega-title-lead">
+									<svg class="mega-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M12 3l1.8 4.8L18.5 9.5l-4.7 1.7L12 16l-1.8-4.8L5.5 9.5l4.7-1.7L12 3z"/><path d="M19 16l.8 2.2L22 19l-2.2.8L19 22l-.8-2.2L16 19l2.2-.8L19 16z"/></svg>
+									<span data-i18n="mUsageSkills">AI Skills</span>
+								</span>
+								<span class="mega-pill-tag">Vibe Coder</span>
+							</strong>
+							<span data-i18n="mUsageSkillsDesc">Drop-in style constraint skills and versioned style packs</span>
+						</button>
+						<button type="button" class="mega-item" data-open-docs="references">
+							<strong>
+								<span class="mega-title-lead">
+									<svg class="mega-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M5 4h11a3 3 0 0 1 3 3v13H8a3 3 0 0 0-3 3V4z"/><path d="M8 8h7M8 12h7"/></svg>
+									<span data-i18n="mUsageRef">References</span>
+								</span>
+								<span>↗</span>
+							</strong>
+							<span data-i18n="mUsageRefDesc">Public API reference, token bindings, and contracts</span>
+						</button>
+					</div>
+
+					<div class="mega-panel" data-panel="community" hidden>
+						<a class="mega-item" href="https://github.com/MiuDog/Kallopis" target="_blank" rel="noopener">
+							<strong>
+								<span class="mega-title-lead">
+									<svg class="mega-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C6.48 2 2 6.58 2 12.26c0 4.54 2.87 8.39 6.84 9.75.5.09.68-.22.68-.49 0-.24-.01-.88-.01-1.73-2.78.62-3.37-1.37-3.37-1.37-.45-1.18-1.11-1.49-1.11-1.49-.91-.64.07-.63.07-.63 1 .07 1.53 1.05 1.53 1.05.9 1.57 2.36 1.12 2.94.86.09-.67.35-1.12.63-1.38-2.22-.26-4.56-1.14-4.56-5.07 0-1.12.39-2.03 1.03-2.75-.1-.26-.45-1.3.1-2.71 0 0 .84-.28 2.75 1.05A9.38 9.38 0 0 1 12 6.84c.85 0 1.71.12 2.51.35 1.91-1.33 2.75-1.05 2.75-1.05.55 1.41.2 2.45.1 2.71.64.72 1.03 1.63 1.03 2.75 0 3.94-2.34 4.81-4.57 5.06.36.32.68.94.68 1.9 0 1.37-.01 2.47-.01 2.81 0 .27.18.59.69.49A10.26 10.26 0 0 0 22 12.26C22 6.58 17.52 2 12 2z"/></svg>
+									<span data-i18n="mCommGithub">GitHub Repository</span>
+								</span>
+								<span>↗</span>
+							</strong>
+							<span data-i18n="mCommGithubDesc">Source code, versioned themes, and release history</span>
+						</a>
+						<a class="mega-item" href="#footer-community">
+							<strong>
+								<span class="mega-title-lead">
+									<svg class="mega-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M19.27 5.33A16.6 16.6 0 0 0 15.17 4c-.18.32-.38.75-.52 1.09a15.3 15.3 0 0 0-5.3 0C9.2 4.75 9 4.32 8.82 4a16.6 16.6 0 0 0-4.1 1.33C2.12 9.25 1.42 13.07 1.77 16.84a16.8 16.8 0 0 0 5.03 2.57c.4-.56.76-1.15 1.07-1.78-.59-.22-1.15-.5-1.69-.82.14-.1.28-.21.41-.32 3.26 1.52 6.8 1.52 10.02 0 .14.11.27.22.41.32-.54.32-1.1.6-1.69.82.31.63.67 1.22 1.07 1.78a16.8 16.8 0 0 0 5.04-2.57c.42-4.37-.72-8.16-3.17-11.51zM8.68 14.53c-.98 0-1.79-.91-1.79-2.03s.79-2.03 1.79-2.03c1.01 0 1.81.91 1.79 2.03 0 1.12-.79 2.03-1.79 2.03zm6.64 0c-.98 0-1.79-.91-1.79-2.03s.79-2.03 1.79-2.03c1.01 0 1.81.91 1.79 2.03 0 1.12-.78 2.03-1.79 2.03z"/></svg>
+									<span data-i18n="mCommDiscord">Discord Community</span>
+								</span>
+								<span class="mega-pill-tag" data-i18n="comingSoon">Coming Soon</span>
+							</strong>
+							<span data-i18n="mCommDiscordDesc">Live feedback, theme showcases, and Vibe Coder tips</span>
+						</a>
+						<a class="mega-item" href="https://github.com/MiuDog/Kallopis/discussions" target="_blank" rel="noopener">
+							<strong>
+								<span class="mega-title-lead">
+									<svg class="mega-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M21 12a8 8 0 0 1-8 8H6l-3 2 1-4a8 8 0 1 1 17-6z"/><path d="M8.5 11.5h7M8.5 15h4.5"/></svg>
+									<span data-i18n="mCommDiscuss">Discussions</span>
+								</span>
+								<span>↗</span>
+							</strong>
+							<span data-i18n="mCommDiscussDesc">Propose new styles and review component candidates</span>
+						</a>
+					</div>
+				</div>
+			</div>
+		</header>
+	</div>
+
+	<!-- ==================== 分頁一：主頁 ==================== -->
+	<main id="view-home" class="home-flow view-pane" data-klp-component="KlpThemeProvider">
+		<!-- 全螢幕級頂部炫彩圓角容器 -->
+		<section id="hero-top" class="hero-aurora-box" aria-label="Universal UI Styling Foundation">
+			<div class="ambient-lights" aria-hidden="true">
+				<span class="ambient-orb blue"></span>
+				<span class="ambient-orb pink"></span>
+				<span class="ambient-orb yellow"></span>
+				<span class="ambient-orb cursor-glow"></span>
+			</div>
+			<div class="hero-aurora-content">
+				<span class="eyebrow" data-klp-component="KlpBadge">KALLOPIS DESIGN SYSTEM</span>
+				<h1 data-klp-component="KlpText" data-i18n="heroTitle">Universal UI Styling Foundation</h1>
+				<p data-klp-component="KlpText" data-i18n="heroSubtitle">Simple, governed style constraints for any application—complete with cross-framework components, versioned style packs, and AI Skills built for Vibe Coders and product teams.</p>
+				<div class="hero-actions">
+					<button type="button" class="klp-btn primary pill hero-cta-fixed" id="hero-open-style-btn" data-klp-component="KlpButton" data-i18n="heroCta">Use Kallopis</button>
+				</div>
+			</div>
+
+			<!-- 圖一：Hero 底部範例代表畫面 -->
+			<div class="hero-showcase-window" aria-label="Kallopis Representative Interface">
+				<div class="hero-win-bar">
+					<div class="hero-win-dots" aria-hidden="true"><i></i><i></i><i></i></div>
+					<span data-i18n="heroWinTitle">Kallopis Workspace · Style Tokens</span>
+					<span>v1.0</span>
+				</div>
+				<div class="hero-win-body">
+					<aside class="hero-win-side">
+						<span class="eyebrow klp-pub-u2" >WORKSPACE</span>
+						<div class="hero-win-nav-item active"><span data-i18n="heroNavAll">All Themes</span><span>4</span></div>
+						<div class="hero-win-nav-item"><span data-i18n="heroNavTokens">Semantic Tokens</span><span>350</span></div>
+						<div class="hero-win-nav-item"><span data-i18n="heroNavComp">Components</span><span>58</span></div>
+						<div class="hero-win-nav-item"><span data-i18n="heroNavSkills">AI Skills</span><span>Ready</span></div>
+					</aside>
+					<div class="hero-win-cards">
+						<div class="hero-mini-doc">
+							<span class="hero-mini-chip">01</span>
+							<strong data-i18n="themeMicro">Micro Elevation</strong>
+							<span data-i18n="heroCard1">Warm charcoal bevels built for long-focus workbenches.</span>
+						</div>
+						<div class="hero-mini-doc">
+							<span class="hero-mini-chip">02</span>
+							<strong data-i18n="themeElev">Elevation</strong>
+							<span data-i18n="heroCard2">Color-block surfaces paired with translucent frosted glass.</span>
+						</div>
+						<div class="hero-mini-doc">
+							<span class="hero-mini-chip">03</span>
+							<strong data-i18n="themeMinimal">Modern Minimal</strong>
+							<span data-i18n="heroCard3">Quietly editorial 1px hairlines and refined spacing.</span>
+						</div>
+						<div class="hero-mini-doc">
+							<span class="hero-mini-chip">04</span>
+							<strong data-i18n="themeParchment">Parchment</strong>
+							<span data-i18n="heroCard4">Calm paper hierarchy with low-contrast controls.</span>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- 圖二：解釋 Kallopis 的意思 + 5 個簡潔 Icon -->
+		<section id="kallopis-meaning" class="meaning-section" aria-label="Meaning of Kallopis">
+			<h2>
+				<span data-i18n="meaningLine1">Kallopis comes from Kallopizo —</span><br>
+				<span data-i18n="meaningLine2">crafted to beautify every interface.</span>
+			</h2>
+			<div class="meaning-icons">
+				<div class="meaning-icon-item">
+					<svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="4" y="4" width="16" height="16" rx="4"/><path d="M9 9h6M9 13h6M9 17h4"/></svg>
+					<span data-i18n="icon1">Style Constraints</span>
+				</div>
+				<div class="meaning-icon-item">
+					<svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="8"/><path d="M12 4v16M4 12h16"/></svg>
+					<span data-i18n="icon2">Semantic Tokens</span>
+				</div>
+				<div class="meaning-icon-item">
+					<svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 3l8 4.5-8 4.5-8-4.5L12 3z"/><path d="M4 12.5l8 4.5 8-4.5"/><path d="M4 17l8 4.5 8-4.5"/></svg>
+					<span data-i18n="icon3">Cross-Framework</span>
+				</div>
+				<div class="meaning-icon-item">
+					<svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5"/></svg>
+					<span data-i18n="icon4">Style Packs</span>
+				</div>
+				<div class="meaning-icon-item">
+					<svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 3l1.8 4.8L18.5 9.5l-4.7 1.7L12 16l-1.8-4.8L5.5 9.5l4.7-1.7L12 3z"/><path d="M19 16l.8 2.2L22 19l-2.2.8L19 22l-.8-2.2L16 19l2.2-.8L19 16z"/></svg>
+					<span data-i18n="icon5">AI Skills</span>
+				</div>
+			</div>
+		</section>
+
+		<!-- 01 風格預覽（4 欄 × 2 列 = 8 套跨領域軟體風格，合併立體/微立體為可調立體程度的「立體浮層」系列） -->
+		<section id="styles-grid" class="section-container" aria-label="Style Preview" data-klp-component="KlpLayoutRow">
+			<div class="section-head">
+				<span class="eyebrow">01 / STYLE PREVIEW</span>
+				<h2 data-i18n="stylePreviewTitle">Style Preview</h2>
+			</div>
+
+			<div class="style-grid-4" id="style-grid-4">
+				<!-- 1. 立體浮層（合併微立體＋立體，內頁可調立體程度） -->
+				<button type="button" class="style-grid-card" data-theme-id="elevation-v1" data-klp-component="KlpCard">
+					<div class="rep-canvas" data-klp-theme="elevation-v1" data-klp-mode="light">
+						<div class="rep-elev klp-pub-u3" >
+							<div class="rep-elev-glassbar klp-pub-u4" >
+								<span data-i18n="repElevSpace">Spatial</span>
+								<span data-i18n="repElevGlass">Micro ↔ Glass</span>
+							</div>
+							<div class="rep-elev-card klp-pub-u5" >
+								<span class="rep-elev-badge klp-pub-u6"  data-i18n="repElevFocus">Elevation</span>
+								<div class="rep-elev-row klp-pub-u7" ><span data-i18n="repElevBlock">Color Block</span><span data-i18n="statusDone">Done</span></div>
+								<div class="rep-elev-row klp-pub-u7" ><span data-i18n="repElevNav">Glass Layer</span><span data-i18n="statusActive">Active</span></div>
+							</div>
+						</div>
+					</div>
+					<div class="revolve-card-footer">
+						<span class="revolve-card-name" data-i18n="themeElev">Elevation</span>
+						<span class="domain-pill" data-i18n="domProductivity">Productivity</span>
+					</div>
+				</button>
+
+				<!-- 2. 編輯簡約（設計與出版） -->
+				<button type="button" class="style-grid-card" data-theme-id="modern-minimal-v1" data-klp-component="KlpCard">
+					<div class="rep-canvas" data-klp-theme="modern-minimal-v1" data-klp-mode="light">
+						<div class="rep-editorial klp-pub-u8" >
+							<div class="rep-ed-page klp-pub-u9" >
+								<span class="eyebrow klp-pub-u6" >EDITORIAL</span>
+								<h3 class="rep-ed-title klp-pub-u10" >Quietly Editorial</h3>
+								<div class="rep-ed-rule"></div>
+								<div class="rep-ed-orbbar klp-pub-u11"  data-i18n="repEdCallout">1px hairline structure paired with soft gradient accents.</div>
+							</div>
+						</div>
+					</div>
+					<div class="revolve-card-footer">
+						<span class="revolve-card-name" data-i18n="themeMinimal">Editorial Minimal</span>
+						<span class="domain-pill" data-i18n="domEditorial">Editorial</span>
+					</div>
+				</button>
+
+				<!-- 3. 暖紙書房（閱讀與知識筆記） -->
+				<button type="button" class="style-grid-card" data-theme-id="kallopis-v1" data-klp-component="KlpCard">
+					<div class="rep-canvas" data-klp-theme="kallopis-v1" data-klp-mode="light">
+						<div class="rep-parchment klp-pub-u8" >
+							<div class="rep-parch-stage klp-pub-u12" >
+								<div class="rep-paper-card klp-pub-u13" >
+									<span class="eyebrow klp-pub-u6" >PARCHMENT</span>
+									<div class="klp-pub-u14"  data-i18n="repParchTitle">Order with breathing room.</div>
+								</div>
+								<div class="rep-memo-row klp-pub-u15" >
+									<div class="rep-memo klp-pub-u16" ><strong data-i18n="repParchMemo1">Ownership</strong></div>
+									<div class="rep-memo klp-pub-u16" ><strong data-i18n="repParchMemo2">Consistency</strong></div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="revolve-card-footer">
+						<span class="revolve-card-name" data-i18n="themeParchment">Parchment</span>
+						<span class="domain-pill" data-i18n="domNotes">Knowledge</span>
+					</div>
+				</button>
+
+				<!-- 4. 開發精密（程式開發 / IDE / Linear・Vercel） -->
+				<button type="button" class="style-grid-card" data-theme-id="dev-precision-v1" data-klp-component="KlpCard">
+					<div class="rep-canvas" data-klp-theme="dev-precision-v1" data-klp-mode="light">
+						<div class="rep-ide klp-pub-u17" >
+							<div class="rep-ide-side klp-pub-u18" >
+								<span class="eyebrow klp-pub-u6" >REPO</span>
+								<div class="rep-tree-item selected klp-pub-u19" >cmd.ts</div>
+								<div class="rep-tree-item klp-pub-u19" >diff.tsx</div>
+							</div>
+							<div class="rep-ide-main">
+								<div class="rep-ide-tabs klp-pub-u20" ><span class="rep-ide-tab active klp-pub-u21" >⌘K Palette</span></div>
+								<div class="rep-ide-body klp-pub-u22" >
+									<div class="rep-callout klp-pub-u23" ><strong>PR #42</strong> · Checks Passed</div>
+									<div class="rep-code-lines klp-pub-u16" ><span>deploy --prod ✓</span></div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="revolve-card-footer">
+						<span class="revolve-card-name" data-i18n="themeDev">Dev Precision</span>
+						<span class="domain-pill" data-i18n="domDev">DevTools</span>
+					</div>
+				</button>
+
+				<!-- 5. 金融終端（金融交易 / Bloomberg・Quant） -->
+				<button type="button" class="style-grid-card" data-theme-id="quant-terminal-v1" data-klp-component="KlpCard">
+					<div class="rep-canvas" data-klp-theme="quant-terminal-v1" data-klp-mode="light">
+						<div class="klp-pub-u24" >
+							<div class="klp-pub-u25" >
+								<strong>SPX 5,842.10</strong><span class="klp-pub-u26" >+1.42%</span>
+							</div>
+							<div class="klp-pub-u27" >
+								<div class="klp-pub-u28" ><span>BID 64,210.5</span><span class="klp-pub-u29" >1.420</span></div>
+								<div class="klp-pub-u28" ><span>ASK 64,211.0</span><span class="klp-pub-u30" >0.850</span></div>
+								<div class="klp-pub-u31" ><span>LATENCY</span><span>4ms</span></div>
+							</div>
+						</div>
+					</div>
+					<div class="revolve-card-footer">
+						<span class="revolve-card-name" data-i18n="themeQuant">Quant Terminal</span>
+						<span class="domain-pill" data-i18n="domFinance">Finance</span>
+					</div>
+				</button>
+
+				<!-- 6. 資料筆記（資料科學 / Observable・Jupyter） -->
+				<button type="button" class="style-grid-card" data-theme-id="data-notebook-v1" data-klp-component="KlpCard">
+					<div class="rep-canvas" data-klp-theme="data-notebook-v1" data-klp-mode="light">
+						<div class="klp-pub-u32" >
+							<div class="klp-pub-u33" >
+								<span class="klp-pub-u34" >In [1]:</span> df.groupby('cohort').mean()
+							</div>
+							<div class="klp-pub-u35" >
+								<span class="klp-pub-u36" ></span>
+								<span class="klp-pub-u37" ></span>
+								<span class="klp-pub-u38" ></span>
+								<span class="klp-pub-u39" ></span>
+							</div>
+						</div>
+					</div>
+					<div class="revolve-card-footer">
+						<span class="revolve-card-name" data-i18n="themeData">Data Notebook</span>
+						<span class="domain-pill" data-i18n="domData">Data Science</span>
+					</div>
+				</button>
+
+				<!-- 7. 設計畫布（設計軟體 / Figma・Blender） -->
+				<button type="button" class="style-grid-card" data-theme-id="studio-canvas-v1" data-klp-component="KlpCard">
+					<div class="rep-canvas" data-klp-theme="studio-canvas-v1" data-klp-mode="light">
+						<div class="klp-pub-u40" >
+							<div class="klp-pub-u41" >
+								<div class="klp-pub-u42" >320×200</div>
+							</div>
+							<div class="klp-pub-u43" >
+								<strong>Props</strong>
+								<span class="klp-pub-u34" >X 120 · Y 48</span>
+								<span class="klp-pub-u34" >R 12px</span>
+							</div>
+						</div>
+					</div>
+					<div class="revolve-card-footer">
+						<span class="revolve-card-name" data-i18n="themeStudio">Studio Canvas</span>
+						<span class="domain-pill" data-i18n="domDesign">Design</span>
+					</div>
+				</button>
+
+				<!-- 8. 瑞士粗獷（建築與工程儀表板 / Swiss Brutalism） -->
+				<button type="button" class="style-grid-card" data-theme-id="swiss-brutal-v1" data-klp-component="KlpCard">
+					<div class="rep-canvas" data-klp-theme="swiss-brutal-v1" data-klp-mode="light">
+						<div class="klp-pub-u44" >
+							<div class="klp-pub-u45" >
+								<span>GRID // 08</span>
+								<span class="klp-pub-u46" >LIVE</span>
+							</div>
+							<div class="klp-pub-u47" >SWISS<br>SYSTEMS</div>
+							<div class="klp-pub-u48" >0PX RADIUS · 1.5PX RULE</div>
+						</div>
+					</div>
+					<div class="revolve-card-footer">
+						<span class="revolve-card-name" data-i18n="themeBrutal">Swiss Brutal</span>
+						<span class="domain-pill" data-i18n="domSystems">Systems</span>
+					</div>
+				</button>
+
+				<!-- 9. 企業清晰（企業 SaaS / Stripe・Atlassian） -->
+				<button type="button" class="style-grid-card" data-theme-id="enterprise-clarity-v1" data-klp-component="KlpCard">
+					<div class="rep-canvas" data-klp-theme="enterprise-clarity-v1" data-klp-mode="light">
+						<div class="klp-pub-u32" >
+							<div class="klp-pub-u49" >
+								<strong>Q4 Pipeline</strong><span class="klp-pub-u50" >APPROVED</span>
+							</div>
+							<div class="klp-pub-u51" >
+								<div class="klp-pub-u28" ><span>SLA Uptime</span><strong>99.98%</strong></div>
+								<div class="klp-pub-u52" ><span class="klp-pub-u53" ></span></div>
+								<span class="klp-pub-u34" >Audit &amp; RBAC ready</span>
+							</div>
+						</div>
+					</div>
+					<div class="revolve-card-footer">
+						<span class="revolve-card-name" data-i18n="themeEnterprise">Enterprise Clarity</span>
+						<span class="domain-pill" data-i18n="domEnterprise">Enterprise</span>
+					</div>
+				</button>
+
+				<!-- 10. 醫療潔淨（醫療生技 / WCAG-AAA Clinical） -->
+				<button type="button" class="style-grid-card" data-theme-id="clinical-calm-v1" data-klp-component="KlpCard">
+					<div class="rep-canvas" data-klp-theme="clinical-calm-v1" data-klp-mode="light">
+						<div class="klp-pub-u54" >
+							<div class="klp-pub-u55" >
+								<strong>Vitals Monitor</strong><span class="klp-pub-u56" >● Stable</span>
+							</div>
+							<div class="klp-pub-u57" >
+								<div class="klp-pub-u58" ><span class="klp-pub-u59" >HR</span><strong class="klp-pub-u60" >72 bpm</strong></div>
+								<div class="klp-pub-u61" ><span class="klp-pub-u59" >SpO₂</span><strong class="klp-pub-u62" >99%</strong></div>
+							</div>
+						</div>
+					</div>
+					<div class="revolve-card-footer">
+						<span class="revolve-card-name" data-i18n="themeClinical">Clinical Calm</span>
+						<span class="domain-pill" data-i18n="domHealth">Healthcare</span>
+					</div>
+				</button>
+
+				<!-- 11. 霓虹電競（影音遊戲 / Discord・Synthwave） -->
+				<button type="button" class="style-grid-card" data-theme-id="cyber-neon-v1" data-klp-component="KlpCard">
+					<div class="rep-canvas" data-klp-theme="cyber-neon-v1" data-klp-mode="light">
+						<div class="klp-pub-u63" >
+							<div class="klp-pub-u64" >
+								<strong class="klp-pub-u65" >STREAM MIXER</strong>
+								<span class="klp-pub-u26" >120 FPS</span>
+							</div>
+							<div class="klp-pub-u66" >
+								<span class="klp-pub-u67" ></span>
+								<span class="klp-pub-u68" ></span>
+								<span class="klp-pub-u69" ></span>
+								<span class="klp-pub-u70" ></span>
+								<span class="klp-pub-u71" ></span>
+							</div>
+							<div class="klp-pub-u48" >CH 01 · SYNTHWAVE</div>
+						</div>
+					</div>
+					<div class="revolve-card-footer">
+						<span class="revolve-card-name" data-i18n="themeCyber">Cyber Neon</span>
+						<span class="domain-pill" data-i18n="domMedia">Media &amp; Game</span>
+					</div>
+				</button>
+
+				<!-- 12. 液態玻璃（空間運算 / visionOS・Liquid Glass） -->
+				<button type="button" class="style-grid-card" data-theme-id="spatial-glass-v1" data-klp-component="KlpCard">
+					<div class="rep-canvas klp-pub-u72" data-klp-theme="spatial-glass-v1" data-klp-mode="light" >
+						<div class="klp-pub-u73" >
+							<div class="klp-pub-u74" >
+								<strong>Spatial Window</strong>
+								<div class="klp-pub-u75" >Specular rim &amp; optical blur</div>
+							</div>
+							<div class="klp-pub-u76" >◉ Focus Dock</div>
+						</div>
+					</div>
+					<div class="revolve-card-footer">
+						<span class="revolve-card-name" data-i18n="themeSpatial">Spatial Glass</span>
+						<span class="domain-pill" data-i18n="domSpatial">Spatial OS</span>
+					</div>
+				</button>
+			</div>
+		</section>
+
+		<!-- 主頁最底部（Footer 前）：柔光背景包覆 Usage 三按鈕，自然銜接頁尾 -->
+		<section id="home-usage" class="section-container" aria-label="Usage">
+			<div class="usage-aurora-band">
+				<div class="ambient-lights" aria-hidden="true">
+					<span class="ambient-orb blue"></span>
+					<span class="ambient-orb pink"></span>
+					<span class="ambient-orb yellow"></span>
+				</div>
+				<div class="section-head">
+					<span class="eyebrow">02 / USAGE</span>
+					<h2 data-i18n="navUsage">Usage</h2>
+				</div>
+				<div class="usage-trio">
+					<button type="button" class="usage-card-btn" data-open-docs="install" data-klp-component="KlpCard">
+						<div class="usage-card-top">
+							<strong data-i18n="mUsageLib">Use Library</strong>
+							<span>↗</span>
+						</div>
+						<p data-i18n="mUsageLibDesc">Install and compose Kallopis in React, Flutter, or HTML</p>
+					</button>
+					<button type="button" class="usage-card-btn" data-open-docs="skills" data-klp-component="KlpCard">
+						<div class="usage-card-top">
+							<strong data-i18n="mUsageSkills">AI Skills</strong>
+							<span class="mega-pill-tag">Vibe Coder</span>
+						</div>
+						<p data-i18n="mUsageSkillsDesc">Drop-in style constraint skills and versioned style packs</p>
+					</button>
+					<button type="button" class="usage-card-btn" data-open-docs="references" data-klp-component="KlpCard">
+						<div class="usage-card-top">
+							<strong data-i18n="mUsageRef">References</strong>
+							<span>↗</span>
+						</div>
+						<p data-i18n="mUsageRefDesc">Public API reference, token bindings, and contracts</p>
+					</button>
+				</div>
+			</div>
+		</section>
+	</main>
+
+	<!-- ==================== 分頁二：元件預覽頁（1. 畫面預覽＋右側唯讀 Primitive 與合法控制 → 2. 元件類別 → 3. 嘗試其他風格） ==================== -->
+	<main id="view-style-preview" class="style-page-shell view-pane" hidden>
+		<!-- 頂部精簡返回與目前風格列 -->
+		<div class="style-page-topbar">
+			<div class="klp-pub-u77" >
+				<button type="button" class="klp-btn" id="preview-back-home" data-i18n="backHomeBtn">← Back to Home</button>
+				<div>
+					<span class="eyebrow" id="stage-theme-meta">ELEVATION · elevation-v1</span>
+					<h1 class="klp-pub-u78" id="stage-theme-title" >Elevation</h1>
+				</div>
+			</div>
+			<div class="klp-pub-u79" >
+				<div id="elevation-intensity-bar" class="elevation-intensity-bar" hidden>
+					<span class="eyebrow" data-i18n="elevIntensityLabel">ELEVATION DEPTH</span>
+					<div class="lang-tabs" id="elevation-level-tabs" role="tablist">
+						<button type="button" class="mini-tab" data-elev-level="flat" aria-selected="false" data-i18n="elevFlat">Flat</button>
+						<button type="button" class="mini-tab" data-elev-level="micro" aria-selected="false" data-i18n="elevMicro">Micro</button>
+						<button type="button" class="mini-tab" data-elev-level="elevated" aria-selected="true" data-i18n="elevFull">Elevated</button>
+					</div>
+				</div>
+				<button type="button" class="klp-btn" data-open-route="color-design" data-i18n="openColorStudioBtn">Color Studio ↗</button>
+				<button type="button" class="klp-btn" data-open-route="layout-design" data-i18n="openLayoutStudioBtn">Layout Builder ↗</button>
+			</div>
+		</div>
+
+		<!-- 區塊 1：畫面預覽（左側最豐富三欄互動組法 ＋ 右側唯讀 Primitive 基礎色階與合法表單修改） -->
+		<section id="preview-block-rep" class="style-block" aria-label="Screen Preview">
+			<div class="style-block-head">
+				<div>
+					<span class="eyebrow">01 / SCREEN PREVIEW</span>
+					<h2 data-i18n="block1Title">Screen Preview</h2>
+				</div>
+				<p class="klp-pub-u80" id="stage-theme-desc" ></p>
+			</div>
+
+			<div class="preview-with-palette-grid">
+				<div class="preview-left-stack">
+					<div id="interactive-rep-stage" class="interactive-rep-stage" data-klp-theme="elevation-v1" data-klp-mode="light" data-style-family="elevation">
+						<iframe class="official-bundle-frame" id="official-react-frame" title="Kallopis Official React Component Showcase" src="examples/react/index.html?showcase=ide-workbench&amp;theme=elevation-v1&amp;mode=light" loading="lazy"></iframe>
+					</div>
+
+					<!-- 畫面預覽下方：同步變色的即時互動元件預覽列 -->
+					<div id="preview-live-components-dock" class="live-comp-dock" data-klp-theme="elevation-v1" data-klp-mode="light" data-style-family="elevation" aria-label="Live Synced Components Preview"></div>
+				</div>
+
+				<!-- 右側：唯讀 Primitive 基礎色階（不負責 Semantic 語意色票）＋ 合法表單修改控制 -->
+				<aside id="preview-palette-sidebar" class="preview-palette-sidebar" aria-label="Primitive Palette Preview and Legal Controls">
+					<div class="klp-pub-u81" >
+						<strong class="klp-pub-u82"  data-i18n="primitiveTitle">Primitive Scales</strong>
+						<span class="readonly-badge" data-i18n="readonlyBadge">READ-ONLY</span>
+					</div>
+					<div class="klp-pub-u83" id="primitive-palette-wall" ></div>
+
+					<div class="klp-pub-u84" ></div>
+
+					<div class="klp-pub-u81" >
+						<strong class="klp-pub-u85"  data-i18n="designerPresetsTitle">Designer Presets</strong>
+						<button type="button" class="klp-btn klp-pub-u86" id="reset-palette-btn"  data-i18n="resetPalette">Reset</button>
+					</div>
+					<div class="preset-chip-grid" id="designer-preset-grid" role="group"></div>
+
+					<div class="algo-slider-row">
+						<label><span data-i18n="ctrlHue">Accent Hue</span><output id="out-hue">0°</output></label>
+						<input type="range" id="slider-hue" min="-180" max="180" value="0">
+					</div>
+					<div class="algo-slider-row">
+						<label><span data-i18n="ctrlWarmth">Neutral Warmth</span><output id="out-warmth">0</output></label>
+						<input type="range" id="slider-warmth" min="-100" max="100" value="0">
+					</div>
+					<div class="algo-slider-row">
+						<label><span data-i18n="ctrlContrast">Contrast Scale</span><output id="out-contrast">100%</output></label>
+						<input type="range" id="slider-contrast" min="80" max="125" value="100">
+					</div>
+					<div class="algo-slider-row">
+						<label><span data-i18n="ctrlSat">Saturation Scale</span><output id="out-sat">100%</output></label>
+						<input type="range" id="slider-sat" min="20" max="140" value="100">
+					</div>
+					<div class="klp-pub-u87" >
+						<button type="button" class="klp-btn primary klp-pub-u88"  data-open-route="color-design" data-i18n="editInColorStudio">Edit Primitives in Color Studio ↗</button>
+					</div>
+				</aside>
+			</div>
+		</section>
+
+		<!-- 區塊 2：元件類別（5×2 分類卡，點擊直接進入「參考文件」對應分類與獨立元件） -->
+		<section id="component-examples" class="style-block" aria-label="Component Categories">
+			<div class="style-block-head">
+				<div>
+					<span class="eyebrow">02 / COMPONENT CATEGORIES</span>
+					<h2 data-i18n="block3CompTitle">Component Categories</h2>
+				</div>
+			</div>
+
+			<div class="category-grid" id="component-category-grid">
+				<button type="button" class="category-card" data-category-id="form" data-klp-component="KlpCard">
+					<div class="category-visual" data-klp-theme="micro-elevation-v1" data-klp-mode="light" data-style-family="micro-elevation">
+						<div class="cat-mini-box" data-i18n="miniInput">Project Name…</div>
+						<div class="cat-mini-row"><span class="cat-mini-pill" data-i18n="miniSubmit">Save</span><span class="cat-mini-pill soft" data-i18n="miniValid">Valid</span></div>
+					</div>
+					<span class="category-label" data-i18n="catForm">Form Inputs</span>
+				</button>
+
+				<button type="button" class="category-card" data-category-id="buttons" data-klp-component="KlpCard">
+					<div class="category-visual" data-klp-theme="micro-elevation-v1" data-klp-mode="light" data-style-family="micro-elevation">
+						<div class="cat-mini-row klp-pub-u89" ><span class="cat-mini-pill" data-i18n="miniPrimary">Primary</span><span class="cat-mini-box klp-pub-u90"  data-i18n="miniGhost">Ghost</span></div>
+						<div class="cat-mini-row klp-pub-u89" ><span class="cat-mini-pill soft" data-i18n="miniMotion">Micro Motion</span></div>
+					</div>
+					<span class="category-label" data-i18n="catButtons">Action Buttons</span>
+				</button>
+
+				<button type="button" class="category-card" data-category-id="form" data-category-comp="KlpSwitch" data-klp-component="KlpCard">
+					<div class="category-visual" data-klp-theme="micro-elevation-v1" data-klp-mode="light" data-style-family="micro-elevation">
+						<div class="cat-mini-box cat-mini-row klp-pub-u91" ><span data-i18n="miniToggle">Toggle</span><span class="cat-mini-pill">ON</span></div>
+						<div class="cat-mini-line klp-pub-u92" ></div>
+					</div>
+					<span class="category-label" data-i18n="catSwitches">Switches &amp; Toggles</span>
+				</button>
+
+				<button type="button" class="category-card" data-category-id="navigation" data-klp-component="KlpCard">
+					<div class="category-visual" data-klp-theme="micro-elevation-v1" data-klp-mode="light" data-style-family="micro-elevation">
+						<div class="cat-mini-box cat-mini-row klp-pub-u91" ><span class="cat-mini-pill" data-i18n="miniTab1">Home</span><span data-i18n="miniTab2">Docs</span><span data-i18n="miniTab3">API</span></div>
+						<div class="cat-mini-line klp-pub-u93" ></div>
+					</div>
+					<span class="category-label" data-i18n="catNav">Navigation &amp; Tabs</span>
+				</button>
+
+				<button type="button" class="category-card" data-category-id="command" data-klp-component="KlpCard">
+					<div class="category-visual" data-klp-theme="micro-elevation-v1" data-klp-mode="light" data-style-family="micro-elevation">
+						<div class="cat-mini-box cat-mini-row klp-pub-u91" ><span data-i18n="miniCmd">Command…</span><span class="cat-mini-pill soft">⌘K</span></div>
+						<div class="cat-mini-line klp-pub-u94" ></div>
+					</div>
+					<span class="category-label" data-i18n="catCommand">Menus &amp; Command</span>
+				</button>
+
+				<button type="button" class="category-card" data-category-id="data" data-klp-component="KlpCard">
+					<div class="category-visual" data-klp-theme="micro-elevation-v1" data-klp-mode="light" data-style-family="micro-elevation">
+						<div class="cat-mini-box klp-pub-u95" ><div class="cat-mini-line klp-pub-u96" ></div><div class="cat-mini-line klp-pub-u97" ></div></div>
+						<div class="cat-mini-box klp-pub-u95" ><div class="cat-mini-line klp-pub-u98" ></div></div>
+					</div>
+					<span class="category-label" data-i18n="catData">Data &amp; Lists</span>
+				</button>
+
+				<button type="button" class="category-card" data-category-id="feedback" data-klp-component="KlpCard">
+					<div class="category-visual" data-klp-theme="micro-elevation-v1" data-klp-mode="light" data-style-family="micro-elevation">
+						<div class="cat-mini-pill klp-pub-u99"  data-i18n="miniTip">⌘C Copy Token</div>
+						<div class="cat-mini-box klp-pub-u95" ><div class="cat-mini-line klp-pub-u100" ></div></div>
+					</div>
+					<span class="category-label" data-i18n="catFeedback">Feedback &amp; Alerts</span>
+				</button>
+
+				<button type="button" class="category-card" data-category-id="loading" data-klp-component="KlpCard">
+					<div class="category-visual" data-klp-theme="micro-elevation-v1" data-klp-mode="light" data-style-family="micro-elevation">
+						<div class="cat-mini-box klp-pub-u101" ><div class="cat-mini-line klp-pub-u102" ></div><div class="cat-mini-line klp-pub-u103" ></div><div class="cat-mini-line klp-pub-u104" ></div></div>
+					</div>
+					<span class="category-label" data-i18n="catLoading">Loading &amp; Skeleton</span>
+				</button>
+
+				<button type="button" class="category-card" data-category-id="layout" data-klp-component="KlpCard">
+					<div class="category-visual" data-klp-theme="micro-elevation-v1" data-klp-mode="light" data-style-family="micro-elevation">
+						<div class="klp-pub-u105" >
+							<div class="cat-mini-box klp-pub-u106" ><div class="cat-mini-line klp-pub-u107" ></div><div class="cat-mini-line klp-pub-u108" ></div></div>
+							<div class="cat-mini-box klp-pub-u109" ><div class="cat-mini-line klp-pub-u110" ></div><div class="cat-mini-line klp-pub-u111" ></div></div>
+						</div>
+					</div>
+					<span class="category-label" data-i18n="catLayout">Layout &amp; Surfaces</span>
+				</button>
+
+				<button type="button" class="category-card" data-category-id="media" data-klp-component="KlpCard">
+					<div class="category-visual" data-klp-theme="micro-elevation-v1" data-klp-mode="light" data-style-family="micro-elevation">
+						<div class="cat-mini-box cat-mini-row"><span class="cat-mini-dot"></span><span class="cat-mini-pill soft">v1.0</span><span class="cat-mini-pill">Pro</span></div>
+					</div>
+					<span class="category-label" data-i18n="catMedia">Media &amp; Badges</span>
+				</button>
+			</div>
+		</section>
+
+		<!-- 區塊 3：嘗試其他風格（其他風格導覽） -->
+		<section id="preview-block-others" class="style-block" aria-label="Try Other Styles">
+			<div class="style-block-head">
+				<div>
+					<span class="eyebrow">03 / EXPLORE MORE</span>
+					<h2 data-i18n="block4OthersTitle">Try Other Styles</h2>
+				</div>
+			</div>
+			<div class="style-grid-4" id="other-styles-grid"></div>
+		</section>
+	</main>
+
+	<!-- ==================== 分頁三：獨立色票設計頁（自由設計 Primitive 色彩組合：色環＋和聲演算法＋沿用現有設計庫＋導出） ==================== -->
+	<main id="view-color-design" class="style-page-shell view-pane" hidden>
+		<div class="style-page-topbar">
+			<div class="klp-pub-u77" >
+				<button type="button" class="klp-btn" data-open-route="home" data-i18n="backHomeBtn">← Back to Home</button>
+				<div>
+					<span class="eyebrow">DESIGN / PRIMITIVE COLOR STUDIO</span>
+					<h1 class="klp-pub-u78"  data-i18n="colorStudioTitle">Primitive Color Design</h1>
+				</div>
+			</div>
+			<div class="klp-pub-u112" >
+				<button type="button" class="klp-btn primary" id="apply-color-to-preview-btn" data-i18n="applyToPreviewBtn">Apply to Component Preview ↗</button>
+			</div>
+		</div>
+
+		<!-- 沿用現有設計庫列 -->
+		<section class="palette-card" aria-label="Adopt Existing Design Library">
+			<div class="klp-pub-u113" >
+				<strong data-i18n="adoptLibraryTitle">Adopt from Existing Design Libraries</strong>
+				<span class="eyebrow" id="palette-copy-status">CLICK ANY SWATCH TO COPY HEX</span>
+			</div>
+			<div class="preset-chip-grid" id="color-library-presets" role="group"></div>
+		</section>
+
+		<!-- 左側 OKLCH 同亮轉換／色環切換＋演算法控制 / 右側即時 Primitive 色階盤＋多格式導出 -->
+		<section class="color-studio-grid" aria-label="OKLCH Equal-Lightness and Color Wheel Studio">
+			<div class="palette-card">
+				<div class="klp-pub-u114" >
+					<strong data-i18n="colorEngineTitle">Color Engine</strong>
+					<div class="lang-tabs" id="color-engine-tabs" role="tablist">
+						<button type="button" class="mini-tab" data-color-engine="oklch" aria-selected="true" data-i18n="engineOklch">OKLCH Equal-L</button>
+						<button type="button" class="mini-tab" data-color-engine="wheel" aria-selected="false" data-i18n="engineWheel">Color Wheel</button>
+					</div>
+				</div>
+
+				<!-- 模式一：OKLCH 感知等亮轉換（鎖定相同感知亮度 L，跨色相維持一致對比） -->
+				<div class="oklch-panel" id="oklch-engine-panel">
+					<div class="klp-pub-u115" >
+						<span data-i18n="oklchEqualLabel">Equal-Lightness Hue Band</span>
+						<code class="klp-pub-u116" id="oklch-readout" >oklch(0.60 0.16 250)</code>
+					</div>
+					<div class="oklch-hue-strip" id="oklch-hue-strip" role="slider" tabindex="0" aria-label="OKLCH Equal-Lightness Hue Selector" aria-valuemin="0" aria-valuemax="360" aria-valuenow="250">
+						<span class="oklch-hue-marker" id="oklch-hue-marker"></span>
+					</div>
+					<div class="oklch-equal-l-row" id="oklch-equal-l-row" aria-label="Perceptual Equal-Lightness Swatches"></div>
+					<div class="algo-slider-row">
+						<label><span data-i18n="oklchLLabel">Perceptual Lightness (L)</span><output id="cd-out-oklch-l">0.60</output></label>
+						<input type="range" id="cd-slider-oklch-l" min="35" max="82" value="60">
+					</div>
+					<div class="algo-slider-row">
+						<label><span data-i18n="oklchCLabel">OKLCH Chroma (C)</span><output id="cd-out-oklch-c">0.16</output></label>
+						<input type="range" id="cd-slider-oklch-c" min="2" max="28" value="16">
+					</div>
+				</div>
+
+				<!-- 模式二：互動色環選色器 -->
+				<div class="color-wheel-wrap" id="wheel-engine-panel" hidden>
+					<div class="color-wheel" id="color-wheel" role="slider" tabindex="0" aria-label="Primary Hue and Saturation Color Wheel" aria-valuemin="0" aria-valuemax="360" aria-valuenow="221">
+						<span class="wheel-handle" id="wheel-handle"></span>
+						<span class="wheel-harmony-dot" id="wheel-harmony-1"></span>
+						<span class="wheel-harmony-dot" id="wheel-harmony-2"></span>
+					</div>
+					<div class="klp-pub-u117" >
+						<span class="klp-pub-u118" id="wheel-primary-chip" ></span>
+						<span id="wheel-primary-readout">HSL(221°, 72%, 52%)</span>
+					</div>
+				</div>
+
+				<strong class="klp-pub-u119"  data-i18n="harmonyAlgoTitle">Harmony Algorithm</strong>
+				<div class="lang-tabs" id="harmony-algo-tabs" role="tablist">
+					<button type="button" class="mini-tab" data-harmony="mono" aria-selected="false" data-i18n="harmMono">Mono</button>
+					<button type="button" class="mini-tab" data-harmony="analogous" aria-selected="true" data-i18n="harmAnalogous">Analogous</button>
+					<button type="button" class="mini-tab" data-harmony="complementary" aria-selected="false" data-i18n="harmComp">Complementary</button>
+					<button type="button" class="mini-tab" data-harmony="triadic" aria-selected="false" data-i18n="harmTriadic">Triadic</button>
+				</div>
+
+				<div class="algo-slider-row">
+					<label><span data-i18n="wheelHueLabel">Primary Hue</span><output id="cd-out-hue">221°</output></label>
+					<input type="range" id="cd-slider-hue" min="0" max="360" value="221">
+				</div>
+				<div class="algo-slider-row">
+					<label><span data-i18n="wheelSatLabel">Primary Saturation</span><output id="cd-out-sat">72%</output></label>
+					<input type="range" id="cd-slider-sat" min="15" max="100" value="72">
+				</div>
+				<div class="algo-slider-row">
+					<label><span data-i18n="ctrlWarmth">Neutral Warmth</span><output id="cd-out-warmth">0</output></label>
+					<input type="range" id="cd-slider-warmth" min="-100" max="100" value="0">
+				</div>
+				<div class="algo-slider-row">
+					<label><span data-i18n="ctrlContrast">Contrast Scale</span><output id="cd-out-contrast">100%</output></label>
+					<input type="range" id="cd-slider-contrast" min="80" max="125" value="100">
+				</div>
+			</div>
+
+			<div class="klp-pub-u120" >
+				<div class="palette-card">
+					<div class="klp-pub-u121" >
+						<strong data-i18n="generatedPrimitivesTitle">Generated Primitive Scales</strong>
+						<span class="eyebrow">PRIMITIVE TOKENS</span>
+					</div>
+					<div class="klp-pub-u122" id="color-studio-strips" ></div>
+				</div>
+
+				<div class="token-file-card" id="preview-block-files">
+					<div class="pane-topbar">
+						<div class="lang-tabs" id="token-format-tabs" role="tablist" aria-label="Token Format">
+							<button type="button" class="mini-tab" data-token-fmt="css" aria-selected="true">CSS (.css)</button>
+							<button type="button" class="mini-tab" data-token-fmt="js" aria-selected="false">JavaScript (.js)</button>
+							<button type="button" class="mini-tab" data-token-fmt="json" aria-selected="false">JSON (.json)</button>
+							<button type="button" class="mini-tab" data-token-fmt="flutter" aria-selected="false">Flutter (Dart)</button>
+						</div>
+						<div class="stage-header-actions">
+							<span class="eyebrow klp-pub-u99" id="token-file-status" >LIVE</span>
+							<button type="button" class="klp-btn primary klp-pub-u123" id="copy-full-token-btn"  data-i18n="copyFullTokens">Copy Full Tokens</button>
+							<button type="button" class="klp-btn klp-pub-u123" id="download-live-token-btn"  data-i18n="downloadFile">Export ↓</button>
+						</div>
+					</div>
+					<pre class="token-file-pre"><code id="token-file-viewer"></code></pre>
+				</div>
+			</div>
+		</section>
+	</main>
+
+	<!-- ==================== 分頁四：獨立布局設計頁（線上容器拖放編輯＋即時布局預覽＋匯出 Schema） ==================== -->
+	<main id="view-layout-design" class="style-page-shell view-pane" hidden>
+		<div class="style-page-topbar">
+			<div class="klp-pub-u77" >
+				<button type="button" class="klp-btn" data-open-route="home" data-i18n="backHomeBtn">← Back to Home</button>
+				<div>
+					<span class="eyebrow">DESIGN / ONLINE LAYOUT BUILDER</span>
+					<h1 class="klp-pub-u78"  data-i18n="layoutStudioTitle">Layout Design Studio</h1>
+				</div>
+			</div>
+			<div class="klp-pub-u112" >
+				<button type="button" class="klp-btn" data-layout-preset="workbench" data-i18n="lpWorkbench">Sidebar + Stage</button>
+				<button type="button" class="klp-btn" data-layout-preset="ide" data-i18n="lpIde">3-Pane IDE</button>
+				<button type="button" class="klp-btn" data-layout-preset="dashboard" data-i18n="lpDashboard">Dashboard</button>
+				<button type="button" class="klp-btn" id="layout-clear-btn" data-i18n="lpClear">Clear</button>
+			</div>
+		</div>
+
+		<section class="layout-builder-grid" aria-label="Interactive Layout Builder">
+			<!-- 左側：可抓取／點擊加入的容器方塊（與右側畫布同高） -->
+			<aside class="palette-card" id="layout-block-palette" aria-label="Draggable Layout Containers">
+				<strong class="klp-pub-u82"  data-i18n="containersTitle">Containers</strong>
+				<p class="klp-pub-u124"  data-i18n="dragHint">Drag into any canvas slot or click + to insert.</p>
+				<div class="klp-pub-u125" id="layout-palette-list" ></div>
+			</aside>
+
+			<!-- 右側：拖放畫布與即時預覽模式切換（與左側容器欄同高） -->
+			<div class="layout-canvas-shell" id="layout-canvas-shell">
+				<div class="klp-pub-u126" >
+					<strong class="klp-pub-u82"  data-i18n="layoutCanvasTitle">Layout Canvas</strong>
+					<div class="lang-tabs" id="layout-mode-tabs" role="tablist">
+						<button type="button" class="mini-tab" data-layout-mode="edit" aria-selected="true" data-i18n="layoutModeEdit">Edit Wireframe</button>
+						<button type="button" class="mini-tab" data-layout-mode="preview" aria-selected="false" data-i18n="layoutModePreview">Live Preview</button>
+					</div>
+				</div>
+				<div class="layout-canvas-frame" id="layout-drop-canvas" data-klp-theme="elevation-v1" data-klp-mode="light">
+					<div class="layout-dropzone" data-slot="header">
+						<span class="layout-zone-label">HEADER SLOT</span>
+						<div class="layout-zone-items klp-pub-u127" ></div>
+					</div>
+					<div class="layout-canvas-middle">
+						<div class="layout-dropzone" data-slot="sidebar">
+							<span class="layout-zone-label">SIDEBAR SLOT</span>
+							<div class="layout-zone-items klp-pub-u127" ></div>
+						</div>
+						<div class="layout-dropzone" data-slot="stage">
+							<span class="layout-zone-label">MAIN STAGE SLOT</span>
+							<div class="layout-zone-items klp-pub-u128" ></div>
+						</div>
+						<div class="layout-dropzone" data-slot="inspector">
+							<span class="layout-zone-label">INSPECTOR SLOT</span>
+							<div class="layout-zone-items klp-pub-u127" ></div>
+						</div>
+					</div>
+					<div class="layout-dropzone" data-slot="footer">
+						<span class="layout-zone-label">FOOTER / STATUS SLOT</span>
+						<div class="layout-zone-items klp-pub-u127" ></div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- 底部全寬：選取容器屬性 + 即時 Layout Schema 匯出 -->
+		<section class="token-file-card" id="layout-schema-panel" aria-label="Layout Schema Export">
+			<div class="pane-topbar">
+				<div class="klp-pub-u77" >
+					<strong class="klp-pub-u82"  data-i18n="layoutSchemaTitle">Layout Schema</strong>
+					<span class="klp-pub-u129" id="layout-selected-props" ></span>
+				</div>
+				<div class="klp-pub-u79" >
+					<div class="lang-tabs" id="schema-fmt-tabs" role="tablist">
+						<button type="button" class="mini-tab" data-schema-fmt="json" aria-selected="true">JSON</button>
+						<button type="button" class="mini-tab" data-schema-fmt="react" aria-selected="false">React</button>
+					</div>
+					<button type="button" class="klp-btn primary klp-pub-u123" id="copy-schema-btn"  data-i18n="copySchemaBtn">Copy Schema</button>
+					<button type="button" class="klp-btn klp-pub-u123" id="export-schema-btn"  data-i18n="exportSchemaBtn">Export ↓</button>
+				</div>
+			</div>
+			<pre class="token-file-pre klp-pub-u130" ><code id="layout-schema-viewer"></code></pre>
+		</section>
+	</main>
+
+	<!-- ==================== 分頁三：參考文件（左側分類 Navigator 列出全部已註冊元件 + 右側上方元件互動 + 下方各程式碼） ==================== -->
+	<main id="view-docs" class="ref-workbench view-pane" hidden>
+		<aside class="ref-navigator" id="ref-navigator" aria-label="Registered Components Navigator">
+			<div class="klp-pub-u131" >
+				<strong class="klp-pub-u82"  data-i18n="mUsageRef">References</strong>
+				<span class="domain-pill" id="ref-total-count">58 Registered</span>
+			</div>
+			<input type="search" id="ref-search-input" class="nav-search" placeholder="Search registered components…" autocomplete="off">
+			<nav id="ref-cat-tree" class="ref-nav-tree"></nav>
+		</aside>
+
+		<section class="ref-stage" aria-label="Component Interactive Preview and Code">
+			<div class="ref-stage-header">
+				<div>
+					<span class="eyebrow" id="ref-comp-cat">FORM INPUTS · REGISTERED</span>
+					<h1 id="ref-comp-name">KlpTextField</h1>
+					<p id="ref-comp-desc">Text input control with semantic surfaces, focus ring, and live validation.</p>
+				</div>
+				<div class="klp-pub-u132" >
+					<button type="button" class="klp-btn" id="docs-go-preview" data-i18n="openPreviewBtn">Style Preview ↗</button>
+					<button type="button" class="klp-btn" id="docs-go-home" data-i18n="backHomeBtn">Back to Home</button>
+				</div>
+			</div>
+
+			<!-- 右側上方：獨立元件即時互動舞台 -->
+			<div class="ref-interactive-card">
+				<div class="pane-topbar">
+					<strong id="ref-stage-title">Interactive Preview</strong>
+					<span class="eyebrow" id="ref-stage-style-badge">elevation-v1 · light</span>
+				</div>
+				<div id="ref-demo-canvas" class="ref-demo-canvas klp-theme" data-klp-theme="elevation-v1" data-klp-visual-style="elevation" data-klp-mode="light" data-style-family="elevation"></div>
+			</div>
+
+			<!-- 右側下方：各語言程式碼區塊 -->
+			<div class="ref-code-card">
+				<div class="pane-topbar">
+					<div class="lang-tabs" id="code-lang-tabs" role="tablist">
+						<button type="button" class="mini-tab" data-lang="react" aria-selected="true">React (TSX)</button>
+						<button type="button" class="mini-tab" data-lang="flutter" aria-selected="false">Flutter (Dart)</button>
+						<button type="button" class="mini-tab" data-lang="html" aria-selected="false">HTML / CSS</button>
+					</div>
+					<button type="button" class="klp-btn klp-pub-u133" id="copy-code-btn"  data-i18n="copyCode">Copy Code</button>
+				</div>
+				<pre><code id="code-viewer-block"></code></pre>
+			</div>
+		</section>
+	</main>
+
+	<!-- 仿 Craft 深炭黑圓角內縮 Footer（完整雙語資訊目錄） -->
+	<div class="footer-wrap">
+		<footer id="footer-community" class="site-footer">
+			<div class="footer-grid">
+				<div>
+					<span class="brand klp-pub-u134" >
+						<span class="brand-mark klp-pub-u135"  aria-hidden="true">
+							<svg viewBox="0 0 32 32" fill="currentColor">
+								<rect x="4" y="4" width="6.5" height="24" rx="1.5"/>
+								<path d="M12.5 13.5L22 4H28V6.2L19.2 15H12.5V13.5Z"/>
+								<path d="M12.5 17H19.2L28 25.8V28H22L12.5 18.5V17Z"/>
+							</svg>
+						</span>
+						Kallopis
+					</span>
+					<p class="footer-brand-desc" data-i18n="footerDesc">Inspired by Kallopizo—a universal UI styling foundation with governed constraints, cross-framework components, style packs, and AI Skills.</p>
+				</div>
+
+				<div class="footer-col">
+					<h4 data-i18n="navHome">Home</h4>
+					<button type="button" data-jump-home="#hero-top" data-i18n="mHomeOverview">Overview</button>
+					<button type="button" data-jump-home="#styles-grid" data-i18n="mHomeStyles">Style Preview</button>
+				</div>
+
+				<div class="footer-col">
+					<h4 data-i18n="navDesign">Design</h4>
+					<button type="button" data-open-route="color-design" data-i18n="mDesignColor">Color Palette</button>
+					<button type="button" data-open-preview="elevation-v1" data-i18n="mDesignComp">Component Preview</button>
+					<button type="button" data-open-route="layout-design" data-i18n="mDesignLayout">Layout Design</button>
+					<button type="button" data-open-preview="modern-minimal-v1" data-i18n="themeMinimal">Editorial Minimal</button>
+					<button type="button" data-open-preview="kallopis-v1" data-i18n="themeParchment">Parchment</button>
+				</div>
+
+				<div class="footer-col">
+					<h4 data-i18n="navUsage">Usage</h4>
+					<button type="button" data-open-docs="install" data-i18n="mUsageLib">Use Library</button>
+					<button type="button" data-open-docs="skills" data-i18n="mUsageSkills">AI Skills</button>
+					<button type="button" data-open-docs="references" data-i18n="mUsageRef">References</button>
+					<a href="styles/themes/index.json" target="_blank" rel="noopener" data-i18n="footerIndexJson">Theme Index JSON ↗</a>
+				</div>
+
+				<div class="footer-col">
+					<h4 data-i18n="navCommunity">Community</h4>
+					<a href="https://github.com/MiuDog/Kallopis" target="_blank" rel="noopener" data-i18n="mCommGithub">GitHub Repository</a>
+					<a href="#footer-community" data-i18n="footerDiscord">Discord (Coming Soon)</a>
+					<a href="https://github.com/MiuDog/Kallopis/discussions" target="_blank" rel="noopener" data-i18n="mCommDiscuss">Discussions</a>
+					<a href="https://github.com/MiuDog/Kallopis/blob/main/CHANGELOG.md" target="_blank" rel="noopener" data-i18n="footerChangelog">Changelog ↗</a>
+				</div>
+			</div>
+
+			<div class="footer-bottom">
+				<span>© 2026 Kallopis · -ist family cross-framework design system</span>
+				<div class="footer-bottom-links">
+					<span>Style 1.0.0 · 4 Themes</span>
+					<a href="#hero-top" id="footer-back-top" data-i18n="backTop">Back to Top ↑</a>
+				</div>
+			</div>
+		</footer>
+	</div>
