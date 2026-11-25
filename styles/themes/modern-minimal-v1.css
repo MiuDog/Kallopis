@@ -1,5 +1,5 @@
 /* Kallopis Theme: 現代簡約風 (modern-minimal-v1 · v1.0.0) · 可直接複製至任何專案使用 */
-/* 來源權威：styles/themes/modern-minimal-v1.json */
+/* 來源權威：styles/themes/modern-minimal-v1.json 與 styles/themes/modern-minimal-v1.surface.css */
 :root,
 [data-klp-mode="light"] {
 	--klp-colors-app: #F5F5F5FF;
@@ -1760,4 +1760,22 @@
 	--klp-dataVisualization-marketDown: #D27B74FF;
 	--klp-dataVisualization-marketDownWash: #472925FF;
 	--klp-dataVisualization-marketFlat: #918A7BFF;
+}
+
+/* 現代簡約風 (modern-minimal-v1 · open-tag) 專屬平面細線與 Editorial 排版規則。 */
+[data-klp-visual-style='modern-minimal'] .ide-panel,
+[data-klp-visual-style='modern-minimal'] .ide-topbar,
+[data-klp-visual-style='modern-minimal'] .ide-activity-rail,
+[data-klp-visual-style='modern-minimal'] .showcase-split-card {
+	box-shadow: none;
+}
+[data-klp-visual-style='modern-minimal'] .ide-doc-h1 {
+	font-family: 'EB Garamond', Georgia, serif;
+	font-weight: 400;
+	font-size: 34px;
+	letter-spacing: -0.01em;
+}
+[data-klp-visual-style='modern-minimal'] .ide-doc-callout {
+	background: linear-gradient(120deg, rgba(167, 229, 211, 0.25), rgba(244, 197, 168, 0.22), rgba(200, 184, 224, 0.22));
+	border-left-width: 2px;
 }

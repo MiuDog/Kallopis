@@ -1,0 +1,28 @@
+{
+	"schemaVersion": 1,
+	"id": "editorial-spotlight-card",
+	"name": "編輯風光暈焦點卡",
+	"englishName": "Editorial Spotlight Card",
+	"status": "approved",
+	"recommendedTheme": "modern-minimal-v1",
+	"summary": "取材自 open-tag 的安靜編輯感焦點卡：1px 細線分隔、EB Garamond 襯線標題、柔和光暈點綴色切換與收藏狀態回饋。",
+	"inspiration": {
+		"site": "fancyboi999/open-tag",
+		"url": "https://github.com/fancyboi999/open-tag",
+		"traits": ["1px hairline 邊框無重陰影", "EB Garamond 編輯標題層次", "Mint / Peach / Lavender / Sky 柔和光暈"]
+	},
+	"tokensUsed": [
+		"theme.colors.component",
+		"theme.colors.surface",
+		"theme.colors.border",
+		"theme.colors.text",
+		"theme.colors.textMuted",
+		"theme.colors.brand",
+		"theme.shape.card",
+		"theme.shape.control"
+	],
+	"props": [
+		{ "name": "title", "type": "string", "required": false, "defaultValue": "\"Quietly Editorial\"", "description": "編輯風格標題" },
+		{ "name": "initialOrb", "type": "\"mint\" | \"peach\" | \"lavender\" | \"sky\"", "required": false, "defaultValue": "\"peach\"", "description": "預設光暈色調" }
+	]
+}

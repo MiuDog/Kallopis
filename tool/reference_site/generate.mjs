@@ -139,6 +139,10 @@ async function main() {
 			const themeIndex = path.join(root, 'styles/themes/index.json');
 			if (fs.existsSync(themeIndex)) themes = JSON.parse(fs.readFileSync(themeIndex, 'utf8')).themes ?? [];
 		}
+		if (fs.existsSync(path.join(root, 'styles/curated/index.json'))) {
+			fs.mkdirSync(path.join(output, 'styles/curated'), { recursive: true });
+			fs.copyFileSync(path.join(root, 'styles/curated/index.json'), path.join(output, 'styles/curated/index.json'));
+		}
 		if (fs.existsSync(path.join(root, 'styles/kallopis-v1.json'))) fs.copyFileSync(path.join(root, 'styles/kallopis-v1.json'), path.join(output, 'styles/kallopis-v1.json'));
 		if (fs.existsSync(path.join(root, 'styles/component-bindings.json'))) fs.copyFileSync(path.join(root, 'styles/component-bindings.json'), path.join(output, 'styles/component-bindings.json'));
 	}

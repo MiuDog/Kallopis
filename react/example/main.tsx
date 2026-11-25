@@ -3,6 +3,7 @@ import { createRoot } from 'react-dom/client';
 import { KlpThemeProvider, KlpWorkspace, KlpFrame, KlpText, KlpButton, KlpIconButton, KlpCard, KlpBadge, KlpTextField, KlpSurface, KlpFileExplorer, useKlp, klpRecipes, createKlpStylePack, applyKlpStyleOverrides, klpStyleParameters, type KlpMode } from '@kallopis/react';
 import '@kallopis/react/styles.css';
 import './style.css';
+import './theme-surfaces.css';
 import { LayoutDemo } from './layout-demo.js';
 import { DockDemo } from './dock-demo.js';
 import { CommandsDemo } from './commands-demo.js';

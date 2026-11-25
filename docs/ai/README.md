@@ -7,4 +7,4 @@
 
 人與 AI 使用同一份 Reference，不維護另一套 AI API 文件。產品擁有業務資料、畫面與流程；本庫擁有共用元件內部視覺及互動。只從各平台公開入口 import，不引用 private 實作，不建立第二份 theme。
 
-跨元件操作流程：[Flutter](product-usage.md)、[React](react-usage.md)。要修改本庫時，再讀對應 module 的 architecture；驗證及交接紀錄不等於目前 API 契約。
+跨元件操作流程：[Flutter](product-usage.md)、[React](react-usage.md)。擴充新風格與精選展示元件流程：[風格設計師 Agent 工作流程](style-designer-workflow.md)。要修改本庫時，再讀對應 module 的 architecture；驗證及交接紀錄不等於目前 API 契約。

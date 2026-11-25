@@ -1,0 +1,13 @@
+/* 微立體 (micro-elevation-v1) 專屬表面層次與微亮邊陰影規則。 */
+[data-klp-visual-style='micro-elevation'] .ide-panel,
+[data-klp-visual-style='micro-elevation'] .ide-topbar,
+[data-klp-visual-style='micro-elevation'] .ide-activity-rail,
+[data-klp-visual-style='micro-elevation'] .showcase-split-card {
+	box-shadow: 0 4px 16px rgba(0, 0, 0, 0.28), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+}
+[data-klp-visual-style='micro-elevation'][data-klp-visual-mode='light'] .ide-panel,
+[data-klp-visual-style='micro-elevation'][data-klp-visual-mode='light'] .ide-topbar,
+[data-klp-visual-style='micro-elevation'][data-klp-visual-mode='light'] .ide-activity-rail,
+[data-klp-visual-style='micro-elevation'][data-klp-mode='light'] .showcase-split-card {
+	box-shadow: 0 3px 12px rgba(0, 0, 0, 0.06), inset 0 1px 0 rgba(255, 255, 255, 0.85);
+}

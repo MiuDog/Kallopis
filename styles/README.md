@@ -11,10 +11,13 @@
 ```sh
 node styles/scripts/migrate.mjs
 node styles/scripts/generate-themes.mjs
+node styles/scripts/generate-curated.mjs
 node styles/scripts/generate-bindings.mjs
 node styles/scripts/generate-example.mjs
 npm test --prefix styles
 ```
+
+擴充新風格或精選元件請見 [風格設計師 Agent 工作流程](../docs/ai/style-designer-workflow.md)（提供 `scaffold-theme.mjs` 與 `scaffold-curated.mjs`）。
 
 公開 `styles/src/index.mjs`：
 

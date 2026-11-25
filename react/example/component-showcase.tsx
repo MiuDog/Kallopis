@@ -3,7 +3,6 @@ import {
 	KlpBadge,
 	KlpButton,
 	KlpCard,
-	KlpFrame,
 	KlpSurface,
 	KlpText,
 	KlpTextField,
@@ -15,6 +14,7 @@ import { catalogProps } from './catalog-props.mjs';
 import { CatalogSpecimen } from './specimens.js';
 import { ModernProductivityStarter } from './modern-productivity-starter.js';
 import { themeMetadata, themePacks } from './theme-presets.mjs';
+import { curatedComponents, type CuratedComponentEntry } from './curated-registry.js';
 
 const modes: readonly KlpMode[] = ['light', 'dark', 'ultraDark', 'transparent'];
 const allComponentNames = Object.keys(catalogProps).sort();
@@ -26,6 +26,102 @@ const languages = [
 type LanguageId = (typeof languages)[number]['id'];
 
 const deferredComponents = new Set(['KlpCommandShortcutHost', 'KlpRegisteredCommandPalette', 'KlpDockLayout']);
+
+function CuratedSplitCard({
+	entry,
+	themeId,
+	mode,
+	globalLanguage,
+	onApplyTheme,
+}: {
+	entry: CuratedComponentEntry;
+	themeId: string;
+	mode: KlpMode;
+	globalLanguage: LanguageId;
+	onApplyTheme: (recommendedTheme: string) => void;
+}) {
+	const [language, setLanguage] = useState<LanguageId>(globalLanguage);
+	const [copied, setCopied] = useState(false);
+
+	useEffect(() => {
+		setLanguage(globalLanguage);
+	}, [globalLanguage]);
+
+	const code = entry.snippets[language];
+	const PreviewComponent = entry.Component;
+
+	async function copyCode() {
+		try {
+			await navigator.clipboard.writeText(code);
+			setCopied(true);
+			setTimeout(() => setCopied(false), 1800);
+		} catch {
+			setCopied(false);
+		}
+	}
+
+	return (
+		<article className="showcase-split-card" id={`curated-${entry.id}`}>
+			<header className="showcase-split-head">
+				<div className="demo-row">
+					<KlpText as="h2" role="h3">{entry.meta.name}</KlpText>
+					<KlpBadge tone="info">精選設計元件</KlpBadge>
+					<KlpBadge>{entry.meta.recommendedTheme}</KlpBadge>
+				</div>
+				<div className="demo-row">
+					<a className="showcase-card-link" href={entry.meta.inspiration.url} target="_blank" rel="noopener">參考：{entry.meta.inspiration.site} ↗</a>
+					<KlpButton size="sm" onClick={() => onApplyTheme(entry.meta.recommendedTheme)}>套用推薦風格</KlpButton>
+				</div>
+			</header>
+
+			<div className="showcase-split-grid">
+				<div className="showcase-preview-col">
+					<KlpText role="label" tone="muted">精選互動預覽 · {themeId} ({mode})</KlpText>
+					<KlpText role="caption" tone="muted">{entry.meta.summary}</KlpText>
+					<KlpSurface tone="inset" className="showcase-preview-box">
+						<PreviewComponent />
+					</KlpSurface>
+				</div>
+
+				<div className="showcase-code-col">
+					<div className="showcase-code-bar">
+						<div className="showcase-lang-tabs" role="tablist" aria-label={`${entry.meta.name} 使用語言範例`}>
+							{languages.map(item => (
+								<KlpButton
+									key={item.id}
+									size="sm"
+									tone={language === item.id ? 'primary' : 'secondary'}
+									selected={language === item.id}
+									onClick={() => setLanguage(item.id)}
+								>
+									{item.label}
+								</KlpButton>
+							))}
+						</div>
+						<KlpButton size="sm" onClick={copyCode}>{copied ? '已複製 ✓' : '複製程式碼'}</KlpButton>
+					</div>
+
+					<pre className="showcase-code-block"><code>{code}</code></pre>
+
+					<details className="showcase-details">
+						<summary>設計特徵（{entry.meta.inspiration.traits.length}）與使用 Tokens（{entry.meta.tokensUsed.length}）</summary>
+						<div className="demo-stack" style={{ marginTop: 8 }}>
+							<KlpText role="caption">設計特徵：{entry.meta.inspiration.traits.join(' · ')}</KlpText>
+							<div className="catalog-token-list">
+								{entry.meta.tokensUsed.map(tokenId => (
+									<div key={tokenId} className="catalog-token-chip">
+										<code>--klp-{tokenId.replace(/^theme\./, '').replaceAll('.', '-')}</code>
+										<span>{tokenId}</span>
+									</div>
+								))}
+							</div>
+						</div>
+					</details>
+				</div>
+			</div>
+		</article>
+	);
+}
 
 function ComponentSplitCard({
 	name,
@@ -157,11 +253,11 @@ function ComponentSplitCard({
 	);
 }
 
-/** 風格示範專用的全元件互動總覽：可切換風格，並並列可選語言的程式碼範例。 */
+/** 風格示範專用的全元件互動總覽：支援核心公開元件與精選風格擴充元件，並列多語言使用範例。 */
 export function ComponentShowcase() {
 	const [themeId, setThemeId] = useState('micro-elevation-v1');
 	const [mode, setMode] = useState<KlpMode>('dark');
-	const [category, setCategory] = useState('commands');
+	const [category, setCategory] = useState('curated');
 	const [query, setQuery] = useState('');
 	const [globalLanguage, setGlobalLanguage] = useState<LanguageId>('react');
 	const [showAll, setShowAll] = useState(false);
@@ -185,6 +281,7 @@ export function ComponentShowcase() {
 	}
 
 	function selectTheme(id: string) {
+		if (!themePacks[id]) return;
 		const meta = themeMetadata.find(item => item.id === id);
 		const nextMode = meta ? meta.defaultMode : mode;
 		setThemeId(id);
@@ -198,13 +295,25 @@ export function ComponentShowcase() {
 	}
 
 	const activeTheme = themeMetadata.find(item => item.id === themeId) ?? themeMetadata[0];
-	const visibleNames = useMemo(() => {
-		const base = (showAll || category === 'all' || query.trim())
+	const filter = query.trim().toLowerCase();
+
+	const visibleCurated = useMemo(() => {
+		if (!showAll && category !== 'curated' && category !== 'all' && !filter) return [];
+		return curatedComponents.filter(item =>
+			!filter ||
+			item.id.toLowerCase().includes(filter) ||
+			item.meta.name.toLowerCase().includes(filter) ||
+			item.meta.englishName.toLowerCase().includes(filter),
+		);
+	}, [category, filter, showAll]);
+
+	const visibleCoreNames = useMemo(() => {
+		if (!showAll && category === 'curated' && !filter) return [];
+		const base = (showAll || category === 'all' || filter)
 			? allComponentNames
 			: (desktopCatalog.find(item => item.id === category)?.components ?? allComponentNames);
-		const filter = query.trim().toLowerCase();
 		return base.filter(item => Object.hasOwn(catalogProps, item) && (!filter || item.toLowerCase().includes(filter)));
-	}, [category, query, showAll]);
+	}, [category, filter, showAll]);
 
 	return (
 		<KlpThemeProvider
@@ -220,7 +329,7 @@ export function ComponentShowcase() {
 					header={
 						<div className="demo-row demo-between">
 							<div className="demo-stack">
-								<KlpText role="label" tone="muted">ALL INTERACTIVE COMPONENTS · {allComponentNames.length} 個公開元件</KlpText>
+								<KlpText role="label" tone="muted">ALL INTERACTIVE COMPONENTS · {allComponentNames.length} 核心元件 + {curatedComponents.length} 精選設計元件</KlpText>
 								<KlpText as="h1" role="h2">全部互動元件與多語言範例</KlpText>
 							</div>
 							<KlpBadge>{activeTheme.name} ({activeTheme.id}) · {mode}</KlpBadge>
@@ -251,8 +360,11 @@ export function ComponentShowcase() {
 							))}
 						</div>
 						<div className="showcase-chips" role="group" aria-label="元件分類篩選">
+							<KlpButton size="sm" tone={!showAll && category === 'curated' ? 'primary' : 'secondary'} selected={!showAll && category === 'curated'} onClick={() => { setCategory('curated'); setShowAll(false); }}>
+								精選設計元件 ({curatedComponents.length})
+							</KlpButton>
 							<KlpButton size="sm" selected={showAll || category === 'all'} onClick={() => { setCategory('all'); setShowAll(true); }}>
-								全部顯示 ({allComponentNames.length})
+								全部顯示 ({allComponentNames.length + curatedComponents.length})
 							</KlpButton>
 							{desktopCatalog.map(group => (
 								<KlpButton key={group.id} size="sm" selected={!showAll && category === group.id} onClick={() => { setCategory(group.id); setShowAll(false); }}>
@@ -260,12 +372,15 @@ export function ComponentShowcase() {
 								</KlpButton>
 							))}
 						</div>
-						<KlpTextField label="搜尋元件名稱" placeholder="例如 KlpButton、KlpTextField、KlpTabs…" value={query} onChange={event => setQuery(event.target.value)} />
+						<KlpTextField label="搜尋元件名稱" placeholder="例如 micro-elevated、editorial、KlpButton、KlpTabs…" value={query} onChange={event => setQuery(event.target.value)} />
 					</div>
 				</KlpCard>
 
 				<div className="showcase-list">
-					{visibleNames.map(name => (
+					{visibleCurated.map(entry => (
+						<CuratedSplitCard key={entry.id} entry={entry} themeId={themeId} mode={mode} globalLanguage={globalLanguage} onApplyTheme={selectTheme} />
+					))}
+					{visibleCoreNames.map(name => (
 						<ComponentSplitCard key={name} name={name} themeId={themeId} mode={mode} globalLanguage={globalLanguage} />
 					))}
 				</div>

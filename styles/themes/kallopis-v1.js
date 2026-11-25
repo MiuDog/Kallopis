@@ -3242,7 +3242,7 @@ export function applyKlpTheme(mode = themeMeta.defaultMode, target = typeof docu
 	if (!vars) throw new Error(`Unknown Kallopis mode: ${mode}`);
 	if (target?.style) {
 		for (const [name, value] of Object.entries(vars)) target.style.setProperty(name, value);
-		if (target.dataset) { target.dataset.klpTheme = themeMeta.id; target.dataset.klpMode = mode; }
+		if (target.dataset) { target.dataset.klpTheme = themeMeta.id; target.dataset.klpVisualStyle = themeMeta.family; target.dataset.klpMode = mode; }
 	}
 	return vars;
 }

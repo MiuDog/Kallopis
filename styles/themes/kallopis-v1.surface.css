@@ -1,0 +1,5 @@
+/* 暖紙預設 (kallopis-v1) 專屬表面基準規則。 */
+[data-klp-visual-style='kallopis'] .ide-panel,
+[data-klp-visual-style='kallopis'] .showcase-split-card {
+	box-shadow: var(--klp-relief-shadow);
+}

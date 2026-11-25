@@ -234,35 +234,6 @@ body { background: Canvas; }
 .ide-terminal-log { padding: 10px 14px; overflow: auto; }
 .ide-statusbar { border-radius: var(--klp-shape-control); }
 
-/* 微立體專屬層次：頂部 1px 微亮邊與分層微浮陰影。 */
-[data-klp-visual-style='micro-elevation'] .ide-panel,
-[data-klp-visual-style='micro-elevation'] .ide-topbar,
-[data-klp-visual-style='micro-elevation'] .ide-activity-rail {
-	box-shadow: 0 4px 16px rgba(0, 0, 0, 0.28), inset 0 1px 0 rgba(255, 255, 255, 0.05);
-}
-[data-klp-visual-style='micro-elevation'][data-klp-visual-mode='light'] .ide-panel,
-[data-klp-visual-style='micro-elevation'][data-klp-visual-mode='light'] .ide-topbar,
-[data-klp-visual-style='micro-elevation'][data-klp-visual-mode='light'] .ide-activity-rail {
-	box-shadow: 0 3px 12px rgba(0, 0, 0, 0.06), inset 0 1px 0 rgba(255, 255, 255, 0.85);
-}
-
-/* 現代簡約風 (open-tag)：純淨細線、Editorial 襯線大標題與柔和光暈點綴。 */
-[data-klp-visual-style='modern-minimal'] .ide-panel,
-[data-klp-visual-style='modern-minimal'] .ide-topbar,
-[data-klp-visual-style='modern-minimal'] .ide-activity-rail {
-	box-shadow: none;
-}
-[data-klp-visual-style='modern-minimal'] .ide-doc-h1 {
-	font-family: 'EB Garamond', Georgia, serif;
-	font-weight: 400;
-	font-size: 34px;
-	letter-spacing: -0.01em;
-}
-[data-klp-visual-style='modern-minimal'] .ide-doc-callout {
-	background: linear-gradient(120deg, rgba(167, 229, 211, 0.25), rgba(244, 197, 168, 0.22), rgba(200, 184, 224, 0.22));
-	border-left-width: 2px;
-}
-
 /* Catalog Props 與 Token 表格。 */
 .catalog-table-wrap { overflow: auto; border: 1px solid var(--klp-colors-border); border-radius: var(--klp-shape-card); }
 .catalog-props-table { width: 100%; border-collapse: collapse; font-size: 13px; background: var(--klp-colors-surfaceInset); }
@@ -298,10 +269,6 @@ body { background: Canvas; }
 	border-radius: var(--klp-shape-panel);
 	overflow: hidden;
 }
-[data-klp-visual-style='micro-elevation'] .showcase-split-card {
-	box-shadow: 0 4px 16px rgba(0, 0, 0, 0.24), inset 0 1px 0 rgba(255, 255, 255, 0.05);
-}
-[data-klp-visual-style='modern-minimal'] .showcase-split-card { box-shadow: none; }
 .showcase-split-head {
 	display: flex;
 	flex-wrap: wrap;

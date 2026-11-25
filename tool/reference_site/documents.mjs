@@ -35,6 +35,7 @@ export const documents = [
 	['docs/architecture/workbench-command-entry-geometry-contract.md', 'docs/guides/workbench-command-entry-geometry-contract.html', 'Registered 命令入口有限幾何', 'Guide'],
 	['README.md', 'docs/guides/README.html', 'Project overview', 'Guide'],
 	['docs/ai/react-usage.md', 'docs/guides/react-usage.html', 'React 產品使用', 'Guide'],
+	['docs/ai/style-designer-workflow.md', 'docs/guides/style-designer-workflow.html', '風格設計師 Agent 工作流程', 'Guide'],
 	['spec/workbench-v1.md', 'docs/guides/workbench-v1.html', 'Workbench v1 規範', 'Guide'],
 	['spec/style-pack-v1.md', 'docs/guides/style-pack-v1.html', '可替換風格檔', 'Design'],
 	['spec/interactive-docs-v1.md', 'docs/guides/interactive-docs-v1.html', '互動文件與 GUI 範例', 'Guide'],

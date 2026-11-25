@@ -1,0 +1,29 @@
+{
+	"schemaVersion": 1,
+	"id": "micro-elevated-pill-tabs",
+	"name": "微立體膠囊分頁列",
+	"englishName": "Micro-Elevated Pill Tabs",
+	"status": "approved",
+	"recommendedTheme": "micro-elevation-v1",
+	"summary": "多層抬升的桌面工作區分頁列，支援鍵盤左右方向鍵切換、新增與關閉分頁、計數徽章與琥珀強調點綴，完全由 --klp-* 語意驅動。",
+	"inspiration": {
+		"site": "Obsidian / Unico Workspace",
+		"url": "https://github.com/MiuDog/Kallopis",
+		"traits": ["分層浮起分頁膠囊", "鍵盤左右方向鍵焦點移動", "可關閉與動態新增分頁"]
+	},
+	"tokensUsed": [
+		"theme.colors.surface",
+		"theme.colors.component",
+		"theme.colors.stageSurface",
+		"theme.colors.border",
+		"theme.colors.borderStrong",
+		"theme.colors.text",
+		"theme.colors.textMuted",
+		"theme.colors.accent",
+		"theme.shape.control",
+		"theme.shape.panel"
+	],
+	"props": [
+		{ "name": "initialTabs", "type": "readonly { id: string; label: string; count?: number }[]", "required": false, "defaultValue": "3 tabs", "description": "初始分頁集合" }
+	]
+}

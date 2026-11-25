@@ -49,6 +49,7 @@ Flutter／React 消費端套件與現有實作繼續保留；本機依賴請指�
 
 - [核心目標與責任](spec/multi-framework-design-system.md)
 - [專案架構](architecture.md)
+- [風格設計師 Agent 工作流程](docs/ai/style-designer-workflow.md)
 - [網站工具與本機建置](tool/reference_site/README.md)
 
 既有舊版 GitHub Releases 與 Git tags 已清理；現行指南與實作以 repository 內容為準。

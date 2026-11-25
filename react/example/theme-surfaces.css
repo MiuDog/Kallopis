@@ -1,0 +1,39 @@
+/* 由 styles/scripts/generate-themes.mjs 自動聚合所有主題表面樣式，禁止手改。 */
+
+/* 微立體 (micro-elevation-v1) 專屬表面層次與微亮邊陰影規則。 */
+[data-klp-visual-style='micro-elevation'] .ide-panel,
+[data-klp-visual-style='micro-elevation'] .ide-topbar,
+[data-klp-visual-style='micro-elevation'] .ide-activity-rail,
+[data-klp-visual-style='micro-elevation'] .showcase-split-card {
+	box-shadow: 0 4px 16px rgba(0, 0, 0, 0.28), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+}
+[data-klp-visual-style='micro-elevation'][data-klp-visual-mode='light'] .ide-panel,
+[data-klp-visual-style='micro-elevation'][data-klp-visual-mode='light'] .ide-topbar,
+[data-klp-visual-style='micro-elevation'][data-klp-visual-mode='light'] .ide-activity-rail,
+[data-klp-visual-style='micro-elevation'][data-klp-mode='light'] .showcase-split-card {
+	box-shadow: 0 3px 12px rgba(0, 0, 0, 0.06), inset 0 1px 0 rgba(255, 255, 255, 0.85);
+}
+
+/* 現代簡約風 (modern-minimal-v1 · open-tag) 專屬平面細線與 Editorial 排版規則。 */
+[data-klp-visual-style='modern-minimal'] .ide-panel,
+[data-klp-visual-style='modern-minimal'] .ide-topbar,
+[data-klp-visual-style='modern-minimal'] .ide-activity-rail,
+[data-klp-visual-style='modern-minimal'] .showcase-split-card {
+	box-shadow: none;
+}
+[data-klp-visual-style='modern-minimal'] .ide-doc-h1 {
+	font-family: 'EB Garamond', Georgia, serif;
+	font-weight: 400;
+	font-size: 34px;
+	letter-spacing: -0.01em;
+}
+[data-klp-visual-style='modern-minimal'] .ide-doc-callout {
+	background: linear-gradient(120deg, rgba(167, 229, 211, 0.25), rgba(244, 197, 168, 0.22), rgba(200, 184, 224, 0.22));
+	border-left-width: 2px;
+}
+
+/* 暖紙預設 (kallopis-v1) 專屬表面基準規則。 */
+[data-klp-visual-style='kallopis'] .ide-panel,
+[data-klp-visual-style='kallopis'] .showcase-split-card {
+	box-shadow: var(--klp-relief-shadow);
+}

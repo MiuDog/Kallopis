@@ -1,5 +1,5 @@
 /* Kallopis Theme: 暖紙預設 (kallopis-v1 · v1.0.0) · 可直接複製至任何專案使用 */
-/* 來源權威：styles/kallopis-v1.json */
+/* 來源權威：styles/kallopis-v1.json 與 styles/themes/kallopis-v1.surface.css */
 :root,
 [data-klp-mode="light"] {
 	--klp-colors-app: #E7E4DDFF;
@@ -1760,4 +1760,10 @@
 	--klp-dataVisualization-marketDown: #D27B74FF;
 	--klp-dataVisualization-marketDownWash: #472925FF;
 	--klp-dataVisualization-marketFlat: #918A7BFF;
+}
+
+/* 暖紙預設 (kallopis-v1) 專屬表面基準規則。 */
+[data-klp-visual-style='kallopis'] .ide-panel,
+[data-klp-visual-style='kallopis'] .showcase-split-card {
+	box-shadow: var(--klp-relief-shadow);
 }

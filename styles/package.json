@@ -5,8 +5,10 @@
 	"type": "module",
 	"exports": "./src/index.mjs",
 	"scripts": {
-		"generate": "node scripts/migrate.mjs && node scripts/generate-themes.mjs && node scripts/generate-example.mjs",
-		"check": "node scripts/migrate.mjs --check && node scripts/generate-themes.mjs --check && node scripts/generate-example.mjs --check",
+		"generate": "node scripts/migrate.mjs && node scripts/generate-themes.mjs && node scripts/generate-curated.mjs && node scripts/generate-example.mjs",
+		"check": "node scripts/migrate.mjs --check && node scripts/generate-themes.mjs --check && node scripts/generate-curated.mjs --check && node scripts/generate-example.mjs --check",
+		"scaffold:theme": "node scripts/scaffold-theme.mjs",
+		"scaffold:curated": "node scripts/scaffold-curated.mjs",
 		"test": "node --test test/*.test.mjs"
 	},
 	"engines": {
