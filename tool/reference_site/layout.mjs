@@ -5,7 +5,7 @@ const escapeHtml = value => String(value)
 	.replaceAll('"', '&quot;');
 
 function head(title, prefix) {
-	return `<!doctype html><html lang="zh-Hant"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="description" content="Kallopis：-ist 產品家族共用的跨框架 design system。閱讀通用視覺規範與各框架文件。"><title>${escapeHtml(title)} · Kallopis</title><link rel="stylesheet" href="${prefix}assets/site.css?v=showcase-4"></head>`;
+	return `<!doctype html><html lang="zh-Hant"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="description" content="Kallopis 跨框架設計系統：一套語意風格驅動多種視覺氣質，兼顧長時閱讀舒適度與工作台互動秩序。"><title>${escapeHtml(title)} · Kallopis</title><link rel="stylesheet" href="${prefix}assets/site.css?v=showcase-4"></head>`;
 }
 
 function header(prefix, section = 'docs') {
@@ -60,12 +60,12 @@ function renderThemeCard(theme) {
 }
 
 export function homePage({apiCount = 0, moduleCount = 0, interactive = false, themes = [], reactCount = 0} = {}) {
-	if (interactive) return `${head('跨框架設計系統與互動展示', '')}<body data-root="" data-page="home">${header('', 'home')}<main id="main-content" class="showcase-home">
+	if (interactive) return `${head('跨框架設計系統', '')}<body data-root="" data-page="home">${header('', 'home')}<main id="main-content" class="showcase-home">
 		<section id="framework" class="showcase-intro">
 			<div>
-				<p class="showcase-kicker">KALLOPIS DESIGN SYSTEM · CENTRALIZED STYLES &amp; CROSS-FRAMEWORK COMPONENTS</p>
-				<h1>風格集中管理，跨框架即時示範。</h1>
-				<p class="showcase-description">根目錄 <code>styles/themes/</code> 統一維護版本化色彩、圓角、字型與可即時調整的 CSS／JS 檔案；Flutter 與 React 負責元件實作與自動對應。前往「風格示範」或「元件表」親自操作與實驗。</p>
+				<p class="showcase-kicker">KALLOPIS DESIGN SYSTEM</p>
+				<h1>一套設計語言，駕馭多種視覺氣質。</h1>
+				<p class="showcase-description">從溫潤微立體工作台到現代編輯簡約美學，Kallopis 以統一語意 token 跨 React 與 Flutter 呈現一致手感，讓介面既有鮮明個性，也保有長時間專注的視覺秩序。</p>
 			</div>
 			<div class="showcase-actions">
 				<a class="button primary" href="showcase.html">進入風格示範 ↗</a>
@@ -74,34 +74,34 @@ export function homePage({apiCount = 0, moduleCount = 0, interactive = false, th
 			</div>
 		</section>
 
-		<section class="showcase-section" aria-label="風格預覽總覽">
+		<section class="showcase-section" aria-label="精選視覺風格">
 			<div class="showcase-section-head">
-				<div><span class="eyebrow">01 / VERSIONED THEMES</span><h2>版本化風格主題（styles/themes/）</h2></div>
-				<a class="button secondary" href="showcase.html#swatches">查看全部色票與即時編輯 CSS →</a>
+				<div><span class="eyebrow">01 / SIGNATURE THEMES</span><h2>精選視覺風格</h2></div>
+				<a class="button secondary" href="showcase.html#swatches">探索完整色票與主題檔案 →</a>
 			</div>
-			<p id="theme-copy-status" class="showcase-status" role="status" aria-live="polite">不需匯入元件庫，即可直接複製或下載任一風格的 CSS / JS / JSON。</p>
+			<p id="theme-copy-status" class="showcase-status" role="status" aria-live="polite">每套風格皆支援四種色彩模式，開箱即用，無需綁定特定框架即可直接帶走。</p>
 			<div class="theme-gallery">${themes.map(renderThemeCard).join('')}</div>
 		</section>
 
-		<section class="showcase-section" aria-label="雙框架工作台示意">
+		<section class="showcase-section" aria-label="互動工作台體驗">
 			<div class="showcase-section-head">
-				<div><span class="eyebrow">02 / LIVE PREVIEW</span><h2>完整頁面組合搶先看</h2></div>
+				<div><span class="eyebrow">02 / WORKBENCH EXPERIENCE</span><h2>為長時間專注打造的互動工作台</h2></div>
 				<div class="showcase-actions">
 					<a class="button primary" href="showcase.html">前往風格示範 ↗</a>
 					<a class="button secondary" href="components.html">開啟元件表 ↗</a>
 				</div>
 			</div>
 			<div class="showcase-panel">
-				<div class="showcase-panel-bar"><div><span class="showcase-dot" aria-hidden="true"></span><strong>互動 IDE 工作台</strong><span class="showcase-platform">支援獨立切換風格與明暗模式</span></div><a href="showcase.html">前往風格示範頁 →</a></div>
+				<div class="showcase-panel-bar"><div><span class="showcase-dot" aria-hidden="true"></span><strong>互動 IDE 工作台</strong><span class="showcase-platform">多面板協作、分頁編輯與即時主題轉換</span></div><a href="showcase.html">前往風格示範頁 →</a></div>
 				<iframe title="Kallopis 首頁互動工作台預覽" src="examples/react/index.html?scenario=ide" loading="lazy"></iframe>
 			</div>
 		</section>
 
 		<nav class="showcase-resources" aria-label="常用入口">
-			<a href="showcase.html#composition"><strong>頁面組合範例 ↗</strong><span>完整工作台與可複製純 HTML</span></a>
-			<a href="components.html"><strong>獨立元件表 ↗</strong><span>側欄導覽檢視全部元件與三語言範例</span></a>
-			<a href="showcase.html#swatches"><strong>色票與即時 CSS 編輯 ↗</strong><span>群組色票、即時改寫 CSS 與下載 JS</span></a>
-			<a href="docs/index.html"><strong>文件參考 ↗</strong><span>${moduleCount} modules · ${apiCount} canonical APIs</span></a>
+			<a href="showcase.html#composition"><strong>風格工作台示範 ↗</strong><span>完整多面板互動體驗與純 HTML 輸出</span></a>
+			<a href="components.html"><strong>跨框架元件表 ↗</strong><span>${reactCount} 款元件與 React、Flutter、HTML 對應</span></a>
+			<a href="showcase.html#swatches"><strong>色票與即時調色 ↗</strong><span>完整色彩階調、即時 CSS 微調與一鍵匯出</span></a>
+			<a href="docs/index.html"><strong>文件參考 ↗</strong><span>${moduleCount} 模組 · ${apiCount} 公開 API</span></a>
 		</nav>
 	</main>${footer('')}${scripts('')}`;
 	return `${head('介面有秩序，產品有自由', '')}<body data-root="" data-page="home">${header('', 'home')}<main id="main-content" class="home-main">
@@ -116,27 +116,26 @@ export function homePage({apiCount = 0, moduleCount = 0, interactive = false, th
 
 export function showcasePage({interactive = false, themes = [], reactCount = 0} = {}) {
 	if (!interactive) {
-		return `${head('風格示範', '')}<body data-root="" data-page="showcase">${header('', 'showcase')}<main id="main-content" class="showcase-home"><section class="showcase-intro"><div><p class="showcase-kicker">STYLE SHOWCASE</p><h1>風格示範</h1><p class="showcase-description">完整互動展示需配合 <code>--react --react-scenes --flutter-scenes</code> 建置。</p></div><div class="showcase-actions"><a class="button primary" href="docs/index.html">前往文件參考 ↗</a></div></section></main>${footer('')}${scripts('')}`;
+		return `${head('風格示範', '')}<body data-root="" data-page="showcase">${header('', 'showcase')}<main id="main-content" class="showcase-home"><section class="showcase-intro"><div><p class="showcase-kicker">STYLE SHOWCASE</p><h1>風格示範</h1><p class="showcase-description">探索多套視覺風格、完整工作台表現與色彩系統。</p></div><div class="showcase-actions"><a class="button primary" href="docs/index.html">前往文件參考 ↗</a></div></section></main>${footer('')}${scripts('')}`;
 	}
 	const defaultTheme = themes[0] ?? { id: 'micro-elevation-v1', name: '微立體', cssPath: 'styles/themes/micro-elevation-v1.css', jsPath: 'styles/themes/micro-elevation-v1.js', packPath: 'styles/themes/micro-elevation-v1.json' };
 	const modes = ['light', 'dark', 'ultraDark', 'transparent'];
 	return `${head('風格示範', '')}<body data-root="" data-page="showcase">${header('', 'showcase')}<main id="main-content" class="showcase-home">
 		<section class="showcase-intro">
 			<div>
-				<p class="showcase-kicker">KALLOPIS STYLE SHOWCASE · COMPOSITION · LIVE CSS · SWATCHES</p>
+				<p class="showcase-kicker">KALLOPIS STYLE SHOWCASE</p>
 				<h1>風格示範</h1>
-				<p class="showcase-description">控制列與範例本體嚴格分離；風格與明暗模式為獨立狀態。下方提供完整頁面組合、風格元件預覽、群組相鄰色票，以及可即時修改並直接套用的 CSS 編輯器。</p>
+				<p class="showcase-description">在真實工作台與核心元件間自由切換風格與明暗氛圍，感受微立體層次、編輯細線與暖紙質感的細節差異，並直接微調專屬色彩與樣式。</p>
 			</div>
 			<div class="showcase-actions">
-				<a class="button secondary" href="#composition">頁面組合 ↓</a>
-				<a class="button secondary" href="#components-preview">風格元件預覽 ↓</a>
-				<a class="button secondary" href="#swatches">色票與即時編輯 CSS ↓</a>
+				<a class="button secondary" href="#composition">工作台實景 ↓</a>
+				<a class="button secondary" href="#components-preview">互動元件組 ↓</a>
+				<a class="button secondary" href="#swatches">色票與主題編輯 ↓</a>
 				<a class="button primary" href="components.html">開啟完整元件表（${reactCount}）↗</a>
 			</div>
 		</section>
 
-		<!-- 獨立於任何範例本體之外的全域設定控制列 -->
-		<section id="showcase-toolbar" class="showcase-toolbar" aria-label="全域風格與明暗設定（獨立狀態）">
+		<section id="showcase-toolbar" class="showcase-toolbar" aria-label="風格與色彩模式切換">
 			<div class="showcase-toolbar-group" role="group" aria-label="選擇風格">
 				<span class="eyebrow">風格 STYLE</span>
 				${themes.map((theme, index) => `<button type="button" class="button ${index === 0 ? 'primary' : 'secondary'}" data-showcase-theme="${escapeHtml(theme.id)}" aria-pressed="${index === 0}">${escapeHtml(theme.name)} (${escapeHtml(theme.id)})</button>`).join('')}
@@ -148,9 +147,9 @@ export function showcasePage({interactive = false, themes = [], reactCount = 0} 
 			<p id="showcase-sync-status" class="showcase-status" role="status" aria-live="polite">風格：${escapeHtml(defaultTheme.name)} (${escapeHtml(defaultTheme.id)}) · 模式：light</p>
 		</section>
 
-		<section id="composition" class="showcase-section" aria-label="完整頁面組合範例">
+		<section id="composition" class="showcase-section" aria-label="真實工作台畫面">
 			<div class="showcase-section-head">
-				<div><span class="eyebrow">01 / FULL PAGE COMPOSITION</span><h2>完整頁面組合範例</h2></div>
+				<div><span class="eyebrow">01 / WORKBENCH COMPOSITION</span><h2>真實工作台畫面</h2></div>
 				<div class="showcase-actions">
 					<a class="button secondary" href="examples/react/index.html?scenario=ide" target="_blank" rel="noopener">獨立開啟 IDE 組合 ↗</a>
 					<a class="button secondary" href="styles/examples/ide-workbench/index.html" target="_blank" rel="noopener">純 HTML 可複製版 ↗</a>
@@ -158,35 +157,35 @@ export function showcasePage({interactive = false, themes = [], reactCount = 0} 
 				</div>
 			</div>
 			<div class="showcase-panel">
-				<div class="showcase-panel-bar"><div><span class="showcase-dot" aria-hidden="true"></span><strong>互動 IDE 工作台組合</strong><span class="showcase-platform">即時響應風格、模式與下方 CSS 編輯</span></div><a href="examples/react/index.html?scenario=ide" target="_blank" rel="noopener">獨立開啟 ↗</a></div>
+				<div class="showcase-panel-bar"><div><span class="showcase-dot" aria-hidden="true"></span><strong>互動 IDE 工作台</strong><span class="showcase-platform">側欄、分頁編輯、大綱與命令面板一體成型</span></div><a href="examples/react/index.html?scenario=ide" target="_blank" rel="noopener">獨立開啟 ↗</a></div>
 				<iframe id="showcase-ide-frame" title="完整頁面組合範例" src="examples/react/index.html?scenario=ide&amp;embed=1" loading="lazy"></iframe>
 			</div>
 		</section>
 
-		<section id="components-preview" class="showcase-section" aria-label="元件群組即時預覽">
+		<section id="components-preview" class="showcase-section" aria-label="一致手感的互動元件組">
 			<div class="showcase-section-head">
-				<div><span class="eyebrow">02 / LIVE COMPONENT MATRIX</span><h2>互動元件風格群組預覽</h2></div>
+				<div><span class="eyebrow">02 / COMPONENT HARMONY</span><h2>一致手感的互動元件組</h2></div>
 				<div class="showcase-actions">
 					<a class="button primary" href="components.html">前往完整元件表與多語言程式碼 ↗</a>
 				</div>
 			</div>
 			<div class="showcase-panel showcase-panel-matrix">
-				<div class="showcase-panel-bar"><div><span class="showcase-dot" aria-hidden="true"></span><strong>元件群組預覽（按鈕、表單、導覽、精選設計元件）</strong><span class="showcase-platform">即時響應下方 CSS 修改</span></div><a href="components.html">完整元件表 →</a></div>
+				<div class="showcase-panel-bar"><div><span class="showcase-dot" aria-hidden="true"></span><strong>核心與精選元件一覽</strong><span class="showcase-platform">按鈕、表單、導覽與品牌特色元件</span></div><a href="components.html">完整元件表 →</a></div>
 				<iframe id="showcase-matrix-frame" title="互動元件風格群組預覽" src="examples/react/index.html?showcase=matrix" loading="lazy"></iframe>
 			</div>
 		</section>
 
-		<section id="swatches" class="showcase-section" aria-label="群組色票與即時 CSS 實驗區">
+		<section id="swatches" class="showcase-section" aria-label="色彩階調與即時樣式調整">
 			<div class="showcase-section-head">
-				<div><span class="eyebrow">03 / GROUPED COLOR SWATCHES</span><h2>群組色票（Hover 檢視屬性 · 點擊複製 HEX）</h2></div>
-				<p id="theme-copy-status" class="showcase-status" role="status" aria-live="polite">同類型色票相鄰成列；滑鼠移上或鍵盤聚焦色塊可查看屬性，點擊立即複製 HEX 色碼。</p>
+				<div><span class="eyebrow">03 / COLOR PALETTE</span><h2>色彩階調與語意色票</h2></div>
+				<p id="theme-copy-status" class="showcase-status" role="status" aria-live="polite">完整涵蓋表面層次、文字對比、邊框與狀態語意色系。</p>
 			</div>
 
 			<div id="swatch-wall" class="swatch-wall" aria-live="polite"></div>
 
 			<div class="showcase-section-head" style="margin-top: 32px;">
-				<div><span class="eyebrow">04 / LIVE CSS EDITOR &amp; EXPORT</span><h2>即時可編輯 CSS 與風格檔案下載（CSS / JS / JSON）</h2></div>
-				<span class="showcase-status">修改下方 CSS 內容會即時作用於上方組合與所有元件，可隨時重設、複製或下載。</span>
+				<div><span class="eyebrow">04 / THEME STUDIO &amp; EXPORT</span><h2>即時樣式調整與多格式匯出</h2></div>
+				<span class="showcase-status">支援 CSS、JS 與 JSON，零依賴融入任何前端專案。</span>
 			</div>
 
 			<div class="file-viewer">
@@ -214,7 +213,7 @@ export function showcasePage({interactive = false, themes = [], reactCount = 0} 
 
 export function componentsPage({interactive = false, themes = [], desktopCatalog = [], coreComponents = [], curatedComponents = []} = {}) {
 	if (!interactive) {
-		return `${head('元件表', '')}<body data-root="" data-page="components">${header('', 'components')}<main id="main-content" class="showcase-home"><section class="showcase-intro"><div><p class="showcase-kicker">COMPONENTS</p><h1>元件表</h1><p class="showcase-description">完整互動元件表需配合 <code>--react --react-scenes --flutter-scenes</code> 建置。</p></div><div class="showcase-actions"><a class="button primary" href="docs/components/index.html">前往公開型別 ↗</a></div></section></main>${footer('')}${scripts('')}`;
+		return `${head('元件表', '')}<body data-root="" data-page="components">${header('', 'components')}<main id="main-content" class="showcase-home"><section class="showcase-intro"><div><p class="showcase-kicker">COMPONENTS</p><h1>元件表</h1><p class="showcase-description">瀏覽跨框架公開元件、互動細節與多語言實作。</p></div><div class="showcase-actions"><a class="button primary" href="docs/components/index.html">前往公開型別 ↗</a></div></section></main>${footer('')}${scripts('')}`;
 	}
 	const modes = ['light', 'dark', 'ultraDark', 'transparent'];
 	const languages = [['react', 'React (TSX)'], ['flutter', 'Flutter (Dart)'], ['html', 'HTML / CSS']];
@@ -267,7 +266,7 @@ export function componentsPage({interactive = false, themes = [], desktopCatalog
 
 			<div class="showcase-panel showcase-panel-single">
 				<div class="showcase-panel-bar">
-					<div><span class="showcase-dot" aria-hidden="true"></span><strong id="active-component-label">${escapeHtml(initialId)}</strong><span class="showcase-platform">獨立元件預覽與並列程式碼</span></div>
+					<div><span class="showcase-dot" aria-hidden="true"></span><strong id="active-component-label">${escapeHtml(initialId)}</strong><span class="showcase-platform">互動元件實景與跨框架程式碼</span></div>
 					<a id="open-component-standalone" href="examples/react/index.html?showcase=single&amp;component=${encodeURIComponent(initialId)}" target="_blank" rel="noopener">獨立視窗開啟 ↗</a>
 				</div>
 				<iframe id="component-stage-frame" title="單一元件互動與程式碼展示" src="examples/react/index.html?showcase=single&amp;component=${encodeURIComponent(initialId)}" loading="lazy"></iframe>
