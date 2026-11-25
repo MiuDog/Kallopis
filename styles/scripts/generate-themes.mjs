@@ -32,6 +32,50 @@ function cssValue(id, value) {
 	return String(converted);
 }
 
+function semanticCategory(label) {
+	if (['app', 'surface', 'surfaceInset', 'surfaceMuted', 'component', 'stageSurface', 'overlay', 'surfaceRaised', 'modalScrim', 'transparent'].includes(label)) {
+		return 'surfaces';
+	}
+	if (['text', 'textMuted', 'textFaint', 'onStatus', 'onLightBackground', 'onDarkBackground', 'mutedOnLightBackground', 'mutedOnDarkBackground', 'faintOnBackground'].includes(label)) {
+		return 'text';
+	}
+	if (['guide', 'divider', 'pagePattern', 'border', 'borderStrong'].includes(label)) {
+		return 'borders';
+	}
+	if (['brand', 'accent', 'accentSoft', 'interaction', 'interactionSoft'].includes(label)) {
+		return 'brand';
+	}
+	return 'status';
+}
+
+const semanticGroupDefs = [
+	['surfaces', '表面與背景（Surfaces）'],
+	['text', '文字與反白（Text）'],
+	['borders', '邊框與分隔（Borders）'],
+	['brand', '品牌與互動（Brand & Interaction）'],
+	['status', '狀態語意（Status）'],
+];
+
+function primitiveCategory(id) {
+	if (id.startsWith('parchment')) return 'parchment';
+	if (id.startsWith('ink') || id === 'transparent' || id === 'scrim' || id === 'line') return 'ink';
+	if (id.startsWith('warmNeutral')) return 'warmNeutral';
+	if (/^(sand|gold|ochre|terracotta|clay|umber)/.test(id)) return 'warmEarth';
+	if (/^(green|red|amber|blue)/.test(id)) return 'status';
+	if (/^(meDark|meLight|meTrans|mmLight|mmDark|mmTrans|mmSuccess|mmWarning|mmDanger|mmInfo)/.test(id)) return 'themeCustom';
+	return 'other';
+}
+
+const primitiveGroupDefs = [
+	['parchment', '暖紙階調（Parchment）'],
+	['ink', '墨色與遮罩（Ink & Scrim）'],
+	['warmNeutral', '暖中性灰（Warm Neutral）'],
+	['warmEarth', '大地暖色系（Sand / Gold / Ochre / Clay）'],
+	['status', '標準狀態色（Status）'],
+	['themeCustom', '風格專用色票（Theme Custom）'],
+	['other', '其他色票（Other）'],
+];
+
 function writeOrCheck(relativePath, content) {
 	const target = resolve(root, relativePath);
 	if (checkOnly) {
@@ -70,18 +114,27 @@ for (const theme of registry.themes) {
 	const resolvedByMode = {};
 	const cssVarsByMode = {};
 	const semanticSwatchesByMode = {};
+	const semanticGroupsByMode = {};
 	const modeCss = modes.map(mode => {
 		const { tokens } = resolveStylePack(pack, mode, catalog);
 		resolvedByMode[mode] = Object.fromEntries(Object.entries(tokens).map(([id, value]) => [id, browserValue(value)]));
 		cssVarsByMode[mode] = Object.fromEntries(Object.entries(tokens).map(([id, value]) => [cssVariable(id), cssValue(id, value)]));
-		semanticSwatchesByMode[mode] = Object.entries(tokens)
+		const entries = Object.entries(tokens)
 			.filter(([id]) => id.startsWith('theme.colors.'))
 			.map(([id, value]) => ({
 				id,
 				label: id.slice('theme.colors.'.length),
 				cssVar: cssVariable(id),
 				hex: browserValue(value),
+				description: pack.semanticDescriptions?.[id]?.replace(/<br>/g, ' · ') ?? '',
 			}));
+		semanticSwatchesByMode[mode] = entries;
+		semanticGroupsByMode[mode] = semanticGroupDefs.map(([groupId, title]) => ({
+			id: groupId,
+			title,
+			items: entries.filter(item => semanticCategory(item.label) === groupId),
+		})).filter(group => group.items.length);
+
 		const lines = Object.entries(tokens).map(([id, value]) => `\t${cssVariable(id)}: ${cssValue(id, value)};`).join('\n');
 		return `[data-klp-theme="${theme.id}"][data-klp-mode="${mode}"] {\n${lines}\n}`;
 	}).join('\n');
@@ -93,24 +146,32 @@ for (const theme of registry.themes) {
 			hex: browserValue(value),
 			description: pack.primitiveDescriptions?.[id] ?? '',
 		}));
+	const primitiveGroups = primitiveGroupDefs.map(([groupId, title]) => ({
+		id: groupId,
+		title,
+		items: primitiveColors.filter(item => primitiveCategory(item.id) === groupId),
+	})).filter(group => group.items.length);
+
 	swatchesByTheme[theme.id] = {
 		id: theme.id,
 		family: theme.family,
 		version: theme.version,
 		name: theme.name,
-		defaultMode: theme.defaultMode,
 		semanticColors: semanticSwatchesByMode,
+		semanticGroups: semanticGroupsByMode,
 		primitiveColors,
+		primitiveGroups,
 	};
 
-	const defaultTokens = resolveStylePack(pack, theme.defaultMode, catalog).tokens;
-	const standaloneCss = `/* Kallopis Theme: ${theme.name} (${theme.id} · v${theme.version}) · 可直接複製至任何專案使用 */\n/* 來源權威：${theme.packPath} 與 ${theme.surfaceCssPath} */\n:root,\n[data-klp-mode="${theme.defaultMode}"] {\n${Object.entries(defaultTokens).map(([id, value]) => `\t${cssVariable(id)}: ${cssValue(id, value)};`).join('\n')}\n}\n${modes.map(mode => {
+	// 以 light 作為中性 :root 基準，不將任何風格綁死為預設深色。
+	const baseLightTokens = resolveStylePack(pack, 'light', catalog).tokens;
+	const standaloneCss = `/* Kallopis Theme: ${theme.name} (${theme.id} · v${theme.version}) · 可直接複製並即時調整 */\n/* 來源權威：${theme.packPath} 與 ${theme.surfaceCssPath} */\n:root,\n[data-klp-mode="light"] {\n${Object.entries(baseLightTokens).map(([id, value]) => `\t${cssVariable(id)}: ${cssValue(id, value)};`).join('\n')}\n}\n${modes.map(mode => {
 		const { tokens } = resolveStylePack(pack, mode, catalog);
 		return `[data-klp-mode="${mode}"] {\n${Object.entries(tokens).map(([id, value]) => `\t${cssVariable(id)}: ${cssValue(id, value)};`).join('\n')}\n}`;
 	}).join('\n')}\n\n${surfaceCss}\n`;
 	writeOrCheck(theme.cssPath, standaloneCss);
 
-	const standaloneJs = `// Kallopis Theme Module: ${theme.name} (${theme.id} · v${theme.version})\n// 來源權威：${theme.packPath} · 可直接匯入或複製至任何 JS/TS 專案使用。\nexport const themeMeta = Object.freeze(${JSON.stringify({ id: theme.id, family: theme.family, version: theme.version, name: theme.name, englishName: theme.englishName, defaultMode: theme.defaultMode })});\nexport const primitives = Object.freeze(${JSON.stringify(Object.fromEntries(Object.entries(pack.primitives).map(([k, v]) => [k, browserValue(v)])), null, '\t')});\nexport const tokens = Object.freeze(${JSON.stringify(resolvedByMode, null, '\t')});\nexport const cssVariables = Object.freeze(${JSON.stringify(cssVarsByMode, null, '\t')});\nexport function applyKlpTheme(mode = themeMeta.defaultMode, target = typeof document !== 'undefined' ? document.documentElement : null) {\n\tconst vars = cssVariables[mode];\n\tif (!vars) throw new Error(\`Unknown Kallopis mode: \${mode}\`);\n\tif (target?.style) {\n\t\tfor (const [name, value] of Object.entries(vars)) target.style.setProperty(name, value);\n\t\tif (target.dataset) { target.dataset.klpTheme = themeMeta.id; target.dataset.klpVisualStyle = themeMeta.family; target.dataset.klpMode = mode; }\n\t}\n\treturn vars;\n}\n`;
+	const standaloneJs = `// Kallopis Theme Module: ${theme.name} (${theme.id} · v${theme.version})\n// 來源權威：${theme.packPath} · 風格與明暗模式為獨立狀態。\nexport const themeMeta = Object.freeze(${JSON.stringify({ id: theme.id, family: theme.family, version: theme.version, name: theme.name, englishName: theme.englishName })});\nexport const primitives = Object.freeze(${JSON.stringify(Object.fromEntries(Object.entries(pack.primitives).map(([k, v]) => [k, browserValue(v)])), null, '\t')});\nexport const tokens = Object.freeze(${JSON.stringify(resolvedByMode, null, '\t')});\nexport const cssVariables = Object.freeze(${JSON.stringify(cssVarsByMode, null, '\t')});\nexport function applyKlpTheme(mode = 'light', target = typeof document !== 'undefined' ? document.documentElement : null) {\n\tconst vars = cssVariables[mode];\n\tif (!vars) throw new Error(\`Unknown Kallopis mode: \${mode}\`);\n\tif (target?.style) {\n\t\tfor (const [name, value] of Object.entries(vars)) target.style.setProperty(name, value);\n\t\tif (target.dataset) { target.dataset.klpTheme = themeMeta.id; target.dataset.klpVisualStyle = themeMeta.family; target.dataset.klpMode = mode; }\n\t}\n\treturn vars;\n}\n`;
 	writeOrCheck(theme.jsPath, standaloneJs);
 
 	themeCssBlocks.push(modeCss);
@@ -125,11 +186,10 @@ const presetsDeclaration = `import type { KlpMode, KlpStylePack } from '@kallopi
 writeOrCheck('react/example/theme-presets.mjs', presetsModule);
 writeOrCheck('react/example/theme-presets.d.mts', presetsDeclaration);
 
-// 生成無相依性的可複製互動 IDE 工作台範例，布局與風格分離並直接對接 --klp-* tokens。
+// 生成無相依性的可複製互動 IDE 工作台範例：控制設定列與範例本體明確分離，風格與模式為獨立狀態。
 const defaultThemeId = registry.themes[0].id;
-const defaultThemeMode = registry.themes[0].defaultMode;
 const ideHtml = `<!doctype html>
-<html lang="zh-Hant" data-klp-theme="${defaultThemeId}" data-klp-mode="${defaultThemeMode}">
+<html lang="zh-Hant" data-klp-theme="${defaultThemeId}" data-klp-mode="light">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -140,28 +200,25 @@ ${themeCssBlocks.join('\n')}
 body {
 	margin: 0;
 	min-height: 100vh;
+	padding: 12px;
+	display: grid;
+	grid-template-rows: auto 1fr;
+	gap: 12px;
 	background: var(--klp-colors-app);
 	color: var(--klp-colors-text);
 	font-family: var(--klp-typography-uiFamily), var(--klp-typography-sansFallback);
 	font-size: 14px;
 	line-height: 1.6;
 }
-.ide-shell {
-	display: grid;
-	grid-template-rows: auto 1fr auto;
-	height: 100vh;
-	gap: 8px;
-	padding: 8px;
-}
-.ide-toolbar {
+.ide-controls-bar {
 	display: flex;
 	flex-wrap: wrap;
 	align-items: center;
 	justify-content: space-between;
 	gap: 8px;
-	padding: 8px 12px;
-	background: var(--klp-colors-surface);
-	border: 1px solid var(--klp-colors-border);
+	padding: 10px 14px;
+	background: var(--klp-colors-surfaceRaised);
+	border: 1px dashed var(--klp-colors-borderStrong);
 	border-radius: var(--klp-shape-panel);
 }
 .ide-group { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; }
@@ -188,6 +245,12 @@ body {
 [data-klp-theme^="modern-minimal-v"][data-klp-mode="dark"] .ide-btn[aria-pressed="true"] {
 	color: var(--klp-colors-onLightBackground);
 }
+.ide-shell {
+	display: grid;
+	grid-template-rows: 1fr auto;
+	min-height: 0;
+	gap: 8px;
+}
 .ide-body {
 	display: grid;
 	grid-template-columns: 240px minmax(0, 1fr) 220px;
@@ -203,9 +266,7 @@ body {
 	overflow: hidden;
 	min-height: 0;
 }
-.ide-stage {
-	background: var(--klp-colors-stageSurface);
-}
+.ide-stage { background: var(--klp-colors-stageSurface); }
 [data-klp-theme^="micro-elevation-v"] .ide-panel {
 	box-shadow: 0 4px 14px rgba(0, 0, 0, 0.24), inset 0 1px 0 rgba(255, 255, 255, 0.05);
 }
@@ -246,16 +307,8 @@ body {
 	border-bottom: 1px solid var(--klp-colors-border);
 	background: var(--klp-colors-surface);
 }
-.ide-editor {
-	flex: 1;
-	padding: 20px 28px;
-	overflow: auto;
-}
-.ide-editor h1 {
-	margin: 0 0 16px;
-	font-size: 28px;
-	line-height: 1.3;
-}
+.ide-editor { flex: 1; padding: 20px 28px; overflow: auto; }
+.ide-editor h1 { margin: 0 0 16px; font-size: 28px; line-height: 1.3; }
 [data-klp-theme^="modern-minimal-v"] .ide-editor h1 {
 	font-family: "EB Garamond", Georgia, serif;
 	font-weight: 400;
@@ -288,21 +341,19 @@ body {
 	font-size: 12px;
 	color: var(--klp-colors-textMuted);
 }
-@media (max-width: 820px) {
-	.ide-body { grid-template-columns: 1fr; }
-}
+@media (max-width: 820px) { .ide-body { grid-template-columns: 1fr; } }
 </style>
 </head>
 <body>
+<section class="ide-controls-bar" aria-label="獨立展示設定（與範例本體分離）">
+	<div class="ide-group" role="group" aria-label="風格主題">
+		${registry.themes.map(theme => `<button class="ide-btn" data-set-theme="${theme.id}" aria-pressed="${theme.id === defaultThemeId}">${theme.name} (${theme.id})</button>`).join('')}
+	</div>
+	<div class="ide-group" role="group" aria-label="明暗模式">
+		${modes.map(mode => `<button class="ide-btn" data-set-mode="${mode}" aria-pressed="${mode === 'light'}">${mode}</button>`).join('')}
+	</div>
+</section>
 <div class="ide-shell">
-	<header class="ide-toolbar">
-		<div class="ide-group" role="group" aria-label="風格主題">
-			${registry.themes.map(theme => `<button class="ide-btn" data-set-theme="${theme.id}" aria-pressed="${theme.id === defaultThemeId}">${theme.name} (${theme.id})</button>`).join('')}
-		</div>
-		<div class="ide-group" role="group" aria-label="明暗模式">
-			${modes.map(mode => `<button class="ide-btn" data-set-mode="${mode}" aria-pressed="${mode === defaultThemeMode}">${mode}</button>`).join('')}
-		</div>
-	</header>
 	<div class="ide-body">
 		<aside class="ide-panel" aria-label="檔案總管">
 			<div class="ide-panel-head">當前目錄</div>
@@ -323,7 +374,7 @@ body {
 		</aside>
 	</div>
 	<footer class="ide-status">
-		<span id="status-left">主題：${defaultThemeId} · 模式：${defaultThemeMode}</span>
+		<span id="status-left">主題：${defaultThemeId} · 模式：light</span>
 		<span>Kallopis Portable IDE Sample</span>
 	</footer>
 </div>

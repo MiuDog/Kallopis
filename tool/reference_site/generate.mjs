@@ -1,6 +1,6 @@
 import fs from 'node:fs';
 import path from 'node:path';
-import { homePage, shell, showcasePage } from './layout.mjs';
+import { homePage, shell, showcasePage, componentsPage } from './layout.mjs';
 import { documents, documentRoutes } from './documents.mjs';
 import { renderMarkdown } from './markdown.mjs';
 import { validateReactSpecimens, renderReactSpecimen } from './react-specimens.mjs';
@@ -131,6 +131,8 @@ async function main() {
 	fs.mkdirSync(path.join(output, 'assets'), { recursive: true });
 	for (const asset of ['site.css', 'site.js']) fs.copyFileSync(path.join(root, 'tool', 'reference_site', 'static', asset), path.join(output, 'assets', asset));
 	let themes = [];
+	let curatedComponents = [];
+	let desktopCatalog = [];
 	if (reactComponents && reactScenarios && flutterScenarios && fs.existsSync(path.join(root, 'styles'))) {
 		if (fs.existsSync(path.join(root, 'styles/examples'))) fs.cpSync(path.join(root, 'styles/examples'), path.join(output, 'styles/examples'), { recursive: true });
 		if (fs.existsSync(path.join(root, 'styles/images'))) fs.cpSync(path.join(root, 'styles/images'), path.join(output, 'styles/images'), { recursive: true });
@@ -142,6 +144,11 @@ async function main() {
 		if (fs.existsSync(path.join(root, 'styles/curated/index.json'))) {
 			fs.mkdirSync(path.join(output, 'styles/curated'), { recursive: true });
 			fs.copyFileSync(path.join(root, 'styles/curated/index.json'), path.join(output, 'styles/curated/index.json'));
+			curatedComponents = JSON.parse(fs.readFileSync(path.join(root, 'styles/curated/index.json'), 'utf8')).components ?? [];
+		}
+		if (fs.existsSync(path.join(root, 'react/example/desktop-catalog-data.mjs'))) {
+			const catalogModule = await import('../../react/example/desktop-catalog-data.mjs');
+			desktopCatalog = catalogModule.desktopCatalog ?? [];
 		}
 		if (fs.existsSync(path.join(root, 'styles/kallopis-v1.json'))) fs.copyFileSync(path.join(root, 'styles/kallopis-v1.json'), path.join(output, 'styles/kallopis-v1.json'));
 		if (fs.existsSync(path.join(root, 'styles/component-bindings.json'))) fs.copyFileSync(path.join(root, 'styles/component-bindings.json'), path.join(output, 'styles/component-bindings.json'));
@@ -246,6 +253,13 @@ async function main() {
 		moduleCount: api.modules.length,
 		themes,
 		reactCount: reactComponents?.length ?? 0,
+	}));
+	write('components.html', componentsPage({
+		interactive: Boolean(reactComponents && reactScenarios && flutterScenarios),
+		themes,
+		desktopCatalog,
+		coreComponents: reactComponents ?? [],
+		curatedComponents,
 	}));
 	// 舊 API URL 導向唯一 Markdown 頁；原 signature 仍供既有相容檢查辨識。
 	for (const declaration of api.modules.flatMap(module => module.declarations)) {

@@ -18,7 +18,7 @@ export function ModernProductivityPreview({ id }: { id: string }) {
 	const [themeId, setThemeId] = useState('micro-elevation-v1');
 	const [base, setBase] = useState(() => themePacks['micro-elevation-v1'] ?? createKlpStylePack());
 	const [pack, setPack] = useState(base);
-	const [mode, setMode] = useState<KlpMode>('dark');
+	const [mode, setMode] = useState<KlpMode>('light');
 	const [overrides, setOverrides] = useState<KlpStyleOverrides>({});
 	const [widthText, setWidthText] = useState('');
 	const [sidebarWidth, setSidebarWidth] = useState<number>();
@@ -31,7 +31,6 @@ export function ModernProductivityPreview({ id }: { id: string }) {
 		setBase(nextBase);
 		setPack(nextBase);
 		setOverrides({});
-		if (meta) setMode(meta.defaultMode);
 		setFeedback(`已切換風格：${meta?.name ?? nextId}`);
 	}
 	function changeWidth(value: string) {

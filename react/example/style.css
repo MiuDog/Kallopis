@@ -60,26 +60,56 @@ body { background: Canvas; }
 	color: var(--klp-colors-text);
 }
 
-/* 互動 IDE 工作台樣本：結構與風格分離，所有顏色與圓角讀 --klp-* tokens。 */
+/* 互動 IDE 工作台樣本：設定列與範例本體明確分離，所有顏色與圓角讀 --klp-* tokens。 */
 .ide-theme-root { min-height: 100vh; }
-.ide-workbench-shell {
+.ide-outer-layout {
 	display: grid;
-	grid-template-rows: auto 1fr auto;
-	gap: 8px;
+	grid-template-rows: auto 1fr;
+	gap: 10px;
 	height: 100vh;
 	padding: 8px;
 	background: var(--klp-colors-app);
 }
-.ide-topbar {
+.example-controls-bar {
 	display: flex;
 	flex-wrap: wrap;
 	align-items: center;
 	justify-content: space-between;
 	gap: 8px;
-	padding: 8px 12px;
-	background: var(--klp-colors-surface);
-	border: 1px solid var(--klp-colors-border);
+	padding: 10px 14px;
+	background: var(--klp-colors-surfaceRaised);
+	border: 1px dashed var(--klp-colors-borderStrong);
 	border-radius: var(--klp-shape-panel);
+}
+.ide-workbench-frame {
+	display: grid;
+	grid-template-rows: 1fr auto;
+	gap: 8px;
+	min-height: 0;
+}
+.specimen-controls {
+	display: grid;
+	gap: 8px;
+	padding: 10px 12px;
+	background: var(--klp-colors-surface);
+	border: 1px dashed var(--klp-colors-borderStrong);
+	border-radius: var(--klp-shape-card);
+}
+.specimen-stage {
+	padding: 16px;
+	background: var(--klp-colors-surfaceInset);
+	border: 1px solid var(--klp-colors-border);
+	border-radius: var(--klp-shape-card);
+	min-height: 120px;
+	overflow: auto;
+}
+.matrix-grid {
+	display: grid;
+	grid-template-columns: repeat(2, minmax(0, 1fr));
+	gap: var(--klp-spacing-comfortable);
+}
+@media (max-width: 900px) {
+	.matrix-grid { grid-template-columns: 1fr; }
 }
 .ide-control-group { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; }
 .ide-grid {

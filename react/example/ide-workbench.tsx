@@ -19,6 +19,7 @@ import {
 	type KlpShortcutFocus,
 } from '@kallopis/react';
 import { themeMetadata, themePacks } from './theme-presets.mjs';
+import { useLiveStyleBridge } from './live-style-bridge.js';
 
 interface DocFile {
 	id: string;
@@ -39,7 +40,7 @@ const initialDocs: readonly DocFile[] = [
 		breadcrumb: '專案 / Unico個人Agent團隊工作介面 / README',
 		calloutTitle: '開發 Agent 交接入口',
 		calloutBody: '依開發交付定案實作與驗收。該文件已裁定技術版本、介面樣式、執行順序與整合範圍。',
-		body: '一句話定位：讓個人工作室負責人管理交付、制定開發流程並親自把關實作的 AI 團隊工作台。布局結構與視覺風格完全分離，可即時切換微立體、現代簡約風與暖紙預設。',
+		body: '一句話定位：讓個人工作室負責人管理交付、制定開發流程並親自把關實作的 AI 團隊工作台。布局結構、視覺風格與明暗模式各自獨立。',
 		code: `Unico個人Agent團隊工作介面/\n├── README.md                  # 本文件 (根目錄主索引)\n├── 01_核心規格/               # 產品單一真相來源 (SSOT)\n│   └── 主藍圖總綱.md          # 5層架構、7階段流程\n├── 02_系統設計/               # 核心機制與介面契約\n└── 03_外部工具與整合/         # 擴充介面與對接文件`,
 	},
 	{
@@ -50,7 +51,7 @@ const initialDocs: readonly DocFile[] = [
 		calloutTitle: '風格與布局分離契約',
 		calloutBody: '風格設定集中於根目錄 styles/themes/，Flutter 與 React 只維護元件與自動生成的語意對應。',
 		body: '其他專案不需匯入完整元件庫即可查詢並複製 tokens（--klp-*）、範例圖片與獨立 HTML/CSS 組合。切換風格時保留所有展開、分頁與編輯草稿。',
-		code: `/* 複製 styles/themes/modern-minimal.css 或 micro-elevation.css */\n:root {\n\t--klp-colors-app: #1A1A18;\n\t--klp-colors-stageSurface: #2C2B28;\n\t--klp-colors-accent: #D4A853;\n}`,
+		code: `/* 複製 styles/themes/modern-minimal-v1.css 或 micro-elevation-v1.css */\n:root {\n\t--klp-colors-app: var(--klp-colors-app);\n\t--klp-colors-stageSurface: var(--klp-colors-stageSurface);\n\t--klp-colors-accent: var(--klp-colors-accent);\n}`,
 	},
 	{
 		id: '02_系統設計',
@@ -70,7 +71,7 @@ const initialDocs: readonly DocFile[] = [
 		calloutTitle: '開箱即用的風格包',
 		calloutBody: '支援四種標準模式（light / dark / ultraDark / transparent），並可匯出純 CSS Variables 給任意前端技術棧。',
 		body: '現代簡約風取材自 open-tag 的 Quietly Editorial 設計語彙（#F5F5F5 畫布、#292524 暖墨黑與 1px 細線）；微立體採用炭灰多層抬升卡片與琥珀金點綴。',
-		code: `node styles/scripts/generate-themes.mjs\nnode styles/scripts/generate-bindings.mjs`,
+		code: `node styles/scripts/generate-themes.mjs\nnode styles/scripts/generate-curated.mjs`,
 	},
 	{
 		id: 'bootstrap',
@@ -80,7 +81,7 @@ const initialDocs: readonly DocFile[] = [
 		calloutTitle: '快捷鍵與命令面板',
 		calloutBody: '按 Ctrl+Shift+P（或點擊命令面板）可開啟全域命令面板，切換側欄與複製風格。',
 		body: '此檔案保留於分頁列，驗證在切換不同風格主題與深淺模式時，未儲存的草稿文字與樹狀展開狀態不會重置。',
-		code: `export const workspace = {\n\ttheme: 'micro-elevation',\n\tmode: 'dark',\n\tpanels: { left: true, right: true, bottom: false }\n};`,
+		code: `export const workspace = {\n\ttheme: 'micro-elevation-v1',\n\tmode: 'light',\n\tpanels: { left: true, right: true, bottom: false }\n};`,
 	},
 ];
 
@@ -109,16 +110,16 @@ function IdeCssCopier({ themeId, onStatus }: { themeId: string; onStatus: (text:
 			await navigator.clipboard.writeText(css);
 			onStatus(`已複製 ${themeId} (${mode}) CSS Tokens`);
 		} catch {
-			onStatus('無法存取剪貼簿，請從風格主題區下載 CSS 檔');
+			onStatus('無法存取剪貼簿，請從風格示範底部下載 CSS 檔');
 		}
 	}
 	return <KlpButton size="sm" onClick={copyCss}>複製 CSS Tokens</KlpButton>;
 }
 
-/** 可切換風格的互動 IDE 範例工作台；布局狀態與視覺風格分離。 */
+/** 可切換風格的互動 IDE 範例工作台；設定列與工作台本體嚴格分離，風格與模式獨立切換。 */
 export function IdeWorkbench() {
-	const [themeId, setThemeId] = useState('micro-elevation-v1');
-	const [mode, setMode] = useState<KlpMode>('dark');
+	const { themeId, mode, customVars, setThemeId, setMode } = useLiveStyleBridge('micro-elevation-v1', 'light');
+	const embedded = typeof window !== 'undefined' && new URLSearchParams(window.location.search).get('embed') === '1';
 	const [leftOpen, setLeftOpen] = useState(true);
 	const [rightOpen, setRightOpen] = useState(true);
 	const [bottomOpen, setBottomOpen] = useState(false);
@@ -129,7 +130,7 @@ export function IdeWorkbench() {
 	const [drafts, setDrafts] = useState<Record<string, string>>(() => Object.fromEntries(initialDocs.map(doc => [doc.id, `${doc.calloutTitle}\n${doc.calloutBody}\n\n${doc.body}`])));
 	const [searchQuery, setSearchQuery] = useState('');
 	const [paletteOpen, setPaletteOpen] = useState(false);
-	const [status, setStatus] = useState('就緒 · 可切換左側風格、面板與編輯內容');
+	const [status, setStatus] = useState('就緒 · 可獨立切換風格、模式與工作台區域');
 	const [owners, setOwners] = useState<{ registry: KlpCommandRegistry<IdeContext>; keymap: KlpCommandKeymap<IdeContext> } | null>(null);
 	const contextRef = useRef<IdeContext>(null!);
 	const focusIds = useRef(new WeakMap<EventTarget, string>());
@@ -146,24 +147,13 @@ export function IdeWorkbench() {
 		const filter = searchQuery.trim().toLowerCase();
 		const match = (doc: DocFile) => !filter || doc.id.toLowerCase().includes(filter) || doc.title.toLowerCase().includes(filter);
 		return [
-			{
-				id: 'paths',
-				label: '路徑',
-				items: initialDocs.filter(doc => doc.folder === 'paths' && match(doc)).map(doc => ({ id: doc.id, label: doc.id })),
-			},
-			{
-				id: 'current',
-				label: '當前目錄',
-				items: initialDocs.filter(doc => doc.folder === 'current' && match(doc)).map(doc => ({ id: doc.id, label: doc.id })),
-			},
+			{ id: 'paths', label: '路徑', items: initialDocs.filter(doc => doc.folder === 'paths' && match(doc)).map(doc => ({ id: doc.id, label: doc.id })) },
+			{ id: 'current', label: '當前目錄', items: initialDocs.filter(doc => doc.folder === 'current' && match(doc)).map(doc => ({ id: doc.id, label: doc.id })) },
 		];
 	}, [searchQuery]);
 
 	const outlineHeadings = useMemo(() => {
-		const custom = lines
-			.filter(line => line.trim().length > 0)
-			.slice(0, 5)
-			.map((line, index) => `${index + 1}. ${line.slice(0, 22)}${line.length > 22 ? '…' : ''}`);
+		const custom = lines.filter(line => line.trim().length > 0).slice(0, 5).map((line, index) => `${index + 1}. ${line.slice(0, 22)}${line.length > 22 ? '…' : ''}`);
 		return [activeDoc.title, ...custom];
 	}, [activeDoc.title, lines]);
 
@@ -176,7 +166,6 @@ export function IdeWorkbench() {
 			const next = order[(order.indexOf(themeId) + 1) % order.length];
 			const nextMeta = themeMetadata.find(item => item.id === next);
 			setThemeId(next);
-			if (nextMeta) setMode(nextMeta.defaultMode);
 			return `已切換風格：${nextMeta?.name ?? next}`;
 		},
 	};
@@ -193,31 +182,6 @@ export function IdeWorkbench() {
 		setOwners({ registry, keymap });
 		return () => { keymap.dispose(); registry.dispose(); };
 	}, []);
-
-	useEffect(() => {
-		function onMessage(event: MessageEvent) {
-			const data = event.data;
-			if (!data || data.type !== 'klp-style-change') return;
-			if (typeof data.themeId === 'string' && themePacks[data.themeId]) setThemeId(data.themeId);
-			if (typeof data.mode === 'string' && modes.includes(data.mode as KlpMode)) setMode(data.mode as KlpMode);
-		}
-		window.addEventListener('message', onMessage);
-		return () => window.removeEventListener('message', onMessage);
-	}, []);
-
-	function selectTheme(id: string) {
-		setThemeId(id);
-		const meta = themeMetadata.find(item => item.id === id);
-		const nextMode = meta ? meta.defaultMode : mode;
-		if (meta) setMode(nextMode);
-		if (window.parent !== window) window.parent.postMessage({ type: 'klp-style-change', themeId: id, mode: nextMode }, '*');
-		setStatus(`套用風格：${meta?.name ?? id}`);
-	}
-
-	function selectMode(nextMode: KlpMode) {
-		setMode(nextMode);
-		if (window.parent !== window) window.parent.postMessage({ type: 'klp-style-change', themeId, mode: nextMode }, '*');
-	}
 
 	function openFile(id: string) {
 		setActiveId(id);
@@ -245,158 +209,167 @@ export function IdeWorkbench() {
 
 	const stylePack = themePacks[themeId];
 	const shell = (
-		<div className="ide-workbench-shell" data-klp-visual-style={activeMeta.family} data-klp-theme-id={activeMeta.id} data-klp-theme-version={activeMeta.version} data-klp-visual-mode={mode}>
-			<header className="ide-topbar">
-				<div className="ide-control-group" role="group" aria-label="切換風格主題">
-					<KlpText role="label">風格</KlpText>
-					{themeMetadata.map(theme => (
-						<KlpButton key={theme.id} size="sm" tone={themeId === theme.id ? 'primary' : 'secondary'} selected={themeId === theme.id} onClick={() => selectTheme(theme.id)}>
-							{theme.name}
-						</KlpButton>
-					))}
-				</div>
-				<div className="ide-control-group" role="group" aria-label="切換模式">
-					{modes.map(value => (
-						<KlpButton key={value} size="sm" selected={mode === value} onClick={() => selectMode(value)}>
-							{value}
-						</KlpButton>
-					))}
-				</div>
-				<div className="ide-control-group">
+		<div className="ide-outer-layout" data-klp-visual-style={activeMeta.family} data-klp-theme-id={activeMeta.id} data-klp-theme-version={activeMeta.version} data-klp-visual-mode={mode}>
+			{/* 控制設定區與實際 IDE 工作台範例本體嚴格分離 */}
+			<section className="example-controls-bar" aria-label="範例設定">
+				{!embedded && (
+					<>
+						<div className="ide-control-group" role="group" aria-label="切換風格主題">
+							<KlpText role="label">風格</KlpText>
+							{themeMetadata.map(theme => (
+								<KlpButton key={theme.id} size="sm" tone={themeId === theme.id ? 'primary' : 'secondary'} selected={themeId === theme.id} onClick={() => setThemeId(theme.id)}>
+									{theme.name}
+								</KlpButton>
+							))}
+						</div>
+						<div className="ide-control-group" role="group" aria-label="切換模式">
+							<KlpText role="label">模式</KlpText>
+							{modes.map(value => (
+								<KlpButton key={value} size="sm" selected={mode === value} onClick={() => setMode(value)}>
+									{value}
+								</KlpButton>
+							))}
+						</div>
+					</>
+				)}
+				<div className="ide-control-group" role="group" aria-label="工作台面板控制">
+					<KlpText role="label">面板</KlpText>
 					<KlpButton size="sm" selected={leftOpen} onClick={() => setLeftOpen(value => !value)}>側欄</KlpButton>
 					<KlpButton size="sm" selected={rightOpen} onClick={() => setRightOpen(value => !value)}>大綱</KlpButton>
 					<KlpButton size="sm" selected={bottomOpen} onClick={() => setBottomOpen(value => !value)}>終端</KlpButton>
 					<KlpButton size="sm" onClick={() => setPaletteOpen(true)}>命令面板</KlpButton>
 					<IdeCssCopier themeId={themeId} onStatus={setStatus} />
 				</div>
-			</header>
+			</section>
 
-			<div className="ide-grid" data-left={leftOpen} data-right={rightOpen}>
-				<nav className="ide-activity-rail" aria-label="活動列">
-					<KlpIconButton label="切換檔案總管" selected={leftOpen} onClick={() => setLeftOpen(value => !value)}>☰</KlpIconButton>
-					<KlpIconButton label="切換編輯或預覽" selected={!previewMode} onClick={() => setPreviewMode(value => !value)}>✎</KlpIconButton>
-					<KlpIconButton label="切換大綱面板" selected={rightOpen} onClick={() => setRightOpen(value => !value)}>≡</KlpIconButton>
-					<KlpIconButton label="切換終端機" selected={bottomOpen} onClick={() => setBottomOpen(value => !value)}>›_</KlpIconButton>
-				</nav>
+			<div className="ide-workbench-frame">
+				<div className="ide-grid" data-left={leftOpen} data-right={rightOpen}>
+					<nav className="ide-activity-rail" aria-label="活動列">
+						<KlpIconButton label="切換檔案總管" selected={leftOpen} onClick={() => setLeftOpen(value => !value)}>☰</KlpIconButton>
+						<KlpIconButton label="切換編輯或預覽" selected={!previewMode} onClick={() => setPreviewMode(value => !value)}>✎</KlpIconButton>
+						<KlpIconButton label="切換大綱面板" selected={rightOpen} onClick={() => setRightOpen(value => !value)}>≡</KlpIconButton>
+						<KlpIconButton label="切換終端機" selected={bottomOpen} onClick={() => setBottomOpen(value => !value)}>›_</KlpIconButton>
+					</nav>
 
-				{leftOpen && (
-					<aside className="ide-panel ide-sidebar" aria-label="檔案總管">
-						<div className="ide-panel-header">
-							<KlpText role="label">EXPLORER</KlpText>
-							<KlpBadge>{activeMeta.name}</KlpBadge>
-						</div>
-						<div className="ide-sidebar-search">
-							<KlpTextField label="篩選檔案" placeholder="搜尋…" value={searchQuery} onChange={event => setSearchQuery(event.target.value)} />
-						</div>
-						<div className="ide-sidebar-tree">
-							<KlpFileExplorer
-								label="工作區檔案"
-								sections={sections}
-								expandedIds={expandedIds}
-								selectedId={activeId}
-								onSelect={openFile}
-								onToggle={id => setExpandedIds(items => items.includes(id) ? items.filter(item => item !== id) : [...items, id])}
-							/>
-						</div>
-					</aside>
-				)}
-
-				<section className="ide-panel ide-stage" aria-label="編輯舞台">
-					<div className="ide-tabbar" role="tablist" aria-label="開啟的文件">
-						{openTabs.map(tabId => (
-							<div key={tabId} className="ide-tab" data-active={activeId === tabId}>
-								<button type="button" role="tab" aria-selected={activeId === tabId} className="ide-tab-trigger" onClick={() => setActiveId(tabId)}>
-									{tabId}
-								</button>
-								{openTabs.length > 1 && (
-									<button type="button" className="ide-tab-close" aria-label={`關閉 ${tabId}`} onClick={() => closeTab(tabId)}>×</button>
-								)}
+					{leftOpen && (
+						<aside className="ide-panel ide-sidebar" aria-label="檔案總管">
+							<div className="ide-panel-header">
+								<KlpText role="label">EXPLORER</KlpText>
+								<KlpBadge>{activeMeta.name}</KlpBadge>
 							</div>
-						))}
-						<div className="ide-tabbar-end">
-							<KlpButton size="sm" selected={!previewMode} onClick={() => setPreviewMode(value => !value)}>
-								{previewMode ? '編輯原始內容' : '預覽排版'}
-							</KlpButton>
-						</div>
-					</div>
-
-					<div className="ide-breadcrumb">
-						<KlpText role="caption" tone="muted">{activeDoc.breadcrumb}</KlpText>
-						<KlpBadge tone="info">{activeMeta.surfaceStyle}</KlpBadge>
-					</div>
-
-					<div className="ide-editor-scroll">
-						{previewMode ? (
-							<div className="ide-document-view">
-								<h2 className="ide-doc-h1">{activeDoc.title}</h2>
-								<div className="ide-doc-callout">
-									<span className="ide-callout-accent">{activeDoc.calloutTitle}</span>
-									<span> {activeDoc.calloutBody}</span>
-								</div>
-								<div className="ide-numbered-lines">
-									{lines.map((line, index) => (
-										<div key={index} className="ide-line-row">
-											<span className="ide-line-no" aria-hidden="true">{index + 1}</span>
-											<span className="ide-line-text">{line || ' '}</span>
-										</div>
-									))}
-								</div>
-								<h3 className="ide-doc-h2">結構與設定摘要</h3>
-								<KlpSurface tone="inset" className="ide-code-card">
-									<div className="ide-code-head">
-										<KlpText role="caption" tone="muted">{activeDoc.id}</KlpText>
-										<KlpButton size="sm" onClick={async () => {
-											try { await navigator.clipboard.writeText(activeDoc.code); setStatus(`已複製 ${activeDoc.id} 程式片段`); }
-											catch { setStatus('請手動選取程式區塊複製'); }
-										}}>複製片段</KlpButton>
-									</div>
-									<pre className="ide-pre"><code>{activeDoc.code}</code></pre>
-								</KlpSurface>
+							<div className="ide-sidebar-search">
+								<KlpTextField label="篩選檔案" placeholder="搜尋…" value={searchQuery} onChange={event => setSearchQuery(event.target.value)} />
 							</div>
-						) : (
-							<div className="ide-raw-editor">
-								<label className="ide-raw-label" htmlFor="ide-raw-textarea">編輯 {activeDoc.id} 草稿（切換風格時自動保留）</label>
-								<textarea
-									id="ide-raw-textarea"
-									className="ide-textarea"
-									value={currentDraft}
-									onChange={event => setDrafts(prev => ({ ...prev, [activeDoc.id]: event.target.value }))}
+							<div className="ide-sidebar-tree">
+								<KlpFileExplorer
+									label="工作區檔案"
+									sections={sections}
+									expandedIds={expandedIds}
+									selectedId={activeId}
+									onSelect={openFile}
+									onToggle={id => setExpandedIds(items => items.includes(id) ? items.filter(item => item !== id) : [...items, id])}
 								/>
 							</div>
-						)}
-					</div>
-				</section>
+						</aside>
+					)}
 
-				{rightOpen && (
-					<aside className="ide-panel ide-outline" aria-label="文件大綱">
-						<div className="ide-panel-header">
-							<KlpText role="label">文件大綱</KlpText>
-						</div>
-						<div className="ide-outline-list">
-							{outlineHeadings.map((heading, index) => (
-								<button key={index} type="button" className="ide-outline-item" data-primary={index === 0} onClick={() => setStatus(`定位段落：${heading}`)}>
-									{heading}
-								</button>
+					<section className="ide-panel ide-stage" aria-label="編輯舞台">
+						<div className="ide-tabbar" role="tablist" aria-label="開啟的文件">
+							{openTabs.map(tabId => (
+								<div key={tabId} className="ide-tab" data-active={activeId === tabId}>
+									<button type="button" role="tab" aria-selected={activeId === tabId} className="ide-tab-trigger" onClick={() => setActiveId(tabId)}>
+										{tabId}
+									</button>
+									{openTabs.length > 1 && (
+										<button type="button" className="ide-tab-close" aria-label={`關閉 ${tabId}`} onClick={() => closeTab(tabId)}>×</button>
+									)}
+								</div>
 							))}
+							<div className="ide-tabbar-end">
+								<KlpButton size="sm" selected={!previewMode} onClick={() => setPreviewMode(value => !value)}>
+									{previewMode ? '編輯原始內容' : '預覽排版'}
+								</KlpButton>
+							</div>
 						</div>
-					</aside>
+
+						<div className="ide-breadcrumb">
+							<KlpText role="caption" tone="muted">{activeDoc.breadcrumb}</KlpText>
+							<KlpBadge tone="info">{activeMeta.surfaceStyle}</KlpBadge>
+						</div>
+
+						<div className="ide-editor-scroll">
+							{previewMode ? (
+								<div className="ide-document-view">
+									<h2 className="ide-doc-h1">{activeDoc.title}</h2>
+									<div className="ide-doc-callout">
+										<span className="ide-callout-accent">{activeDoc.calloutTitle}</span>
+										<span> {activeDoc.calloutBody}</span>
+									</div>
+									<div className="ide-numbered-lines">
+										{lines.map((line, index) => (
+											<div key={index} className="ide-line-row">
+												<span className="ide-line-no" aria-hidden="true">{index + 1}</span>
+												<span className="ide-line-text">{line || ' '}</span>
+											</div>
+										))}
+									</div>
+									<h3 className="ide-doc-h2">結構與設定摘要</h3>
+									<KlpSurface tone="inset" className="ide-code-card">
+										<div className="ide-code-head">
+											<KlpText role="caption" tone="muted">{activeDoc.id}</KlpText>
+											<KlpButton size="sm" onClick={async () => {
+												try { await navigator.clipboard.writeText(activeDoc.code); setStatus(`已複製 ${activeDoc.id} 程式片段`); }
+												catch { setStatus('請手動選取程式區塊複製'); }
+											}}>複製片段</KlpButton>
+										</div>
+										<pre className="ide-pre"><code>{activeDoc.code}</code></pre>
+									</KlpSurface>
+								</div>
+							) : (
+								<div className="ide-raw-editor">
+									<label className="ide-raw-label" htmlFor="ide-raw-textarea">編輯 {activeDoc.id} 草稿（切換風格時自動保留）</label>
+									<textarea
+										id="ide-raw-textarea"
+										className="ide-textarea"
+										value={currentDraft}
+										onChange={event => setDrafts(prev => ({ ...prev, [activeDoc.id]: event.target.value }))}
+									/>
+								</div>
+							)}
+						</div>
+					</section>
+
+					{rightOpen && (
+						<aside className="ide-panel ide-outline" aria-label="文件大綱">
+							<div className="ide-panel-header">
+								<KlpText role="label">文件大綱</KlpText>
+							</div>
+							<div className="ide-outline-list">
+								{outlineHeadings.map((heading, index) => (
+									<button key={index} type="button" className="ide-outline-item" data-primary={index === 0} onClick={() => setStatus(`定位段落：${heading}`)}>
+										{heading}
+									</button>
+								))}
+							</div>
+						</aside>
+					)}
+				</div>
+
+				{bottomOpen && (
+					<section className="ide-panel ide-bottom-panel" aria-label="終端與輸出">
+						<div className="ide-panel-header">
+							<KlpText role="label">OUTPUT · {activeMeta.name} ({mode})</KlpText>
+							<KlpText role="caption" tone="muted">{activeMeta.typography}</KlpText>
+						</div>
+						<pre className="ide-pre ide-terminal-log">{`[kallopis] theme=${themeId} mode=${mode} surface=${activeMeta.surfaceStyle}\n[kallopis] ${status}`}</pre>
+					</section>
 				)}
+
+				<KlpStatusBar className="ide-statusbar">
+					<span>{status}</span>
+					<span>{wordCount} 個詞 · {charCount} 個字元 · {activeMeta.name} ({activeMeta.id} · v{activeMeta.version}) · {mode}</span>
+				</KlpStatusBar>
 			</div>
-
-			{bottomOpen && (
-				<section className="ide-panel ide-bottom-panel" aria-label="終端與輸出">
-					<div className="ide-panel-header">
-						<KlpText role="label">OUTPUT · {activeMeta.name} ({mode})</KlpText>
-						<KlpText role="caption" tone="muted">{activeMeta.typography}</KlpText>
-					</div>
-					<pre className="ide-pre ide-terminal-log">{`[kallopis] theme=${themeId} mode=${mode} surface=${activeMeta.surfaceStyle}\n[kallopis] ${status}`}</pre>
-				</section>
-			)}
-
-			<KlpStatusBar className="ide-statusbar">
-				<span>{status}</span>
-				<span>{wordCount} 個詞 · {charCount} 個字元 · {activeMeta.name} ({activeMeta.id} · v{activeMeta.version}) · {mode}</span>
-			</KlpStatusBar>
 
 			{owners && (
 				<KlpRegisteredCommandPalette
@@ -414,7 +387,7 @@ export function IdeWorkbench() {
 	);
 
 	return (
-		<KlpThemeProvider mode={mode} stylePack={stylePack} className="ide-theme-root">
+		<KlpThemeProvider mode={mode} stylePack={stylePack} style={customVars} className="ide-theme-root">
 			{owners ? (
 				<KlpCommandShortcutHost
 					keymap={owners.keymap}

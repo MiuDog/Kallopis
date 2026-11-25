@@ -11,7 +11,7 @@ const allComponentNames = Object.keys(catalogProps).sort();
 /** 完整元件 Catalog：提供分類檢索、風格切換、互動預覽、Props 屬性表與對應 Token 查詢。 */
 export function DesktopCatalog() {
 	const [themeId, setThemeId] = useState('micro-elevation-v1');
-	const [mode, setMode] = useState<KlpMode>('dark');
+	const [mode, setMode] = useState<KlpMode>('light');
 	const [category, setCategory] = useState('all');
 	const [name, setName] = useState('KlpButton');
 	const [query, setQuery] = useState('');
@@ -34,8 +34,6 @@ export function DesktopCatalog() {
 
 	function selectTheme(id: string) {
 		setThemeId(id);
-		const found = themeMetadata.find(item => item.id === id);
-		if (found) setMode(found.defaultMode);
 	}
 
 	async function copyText(text: string, label: string) {

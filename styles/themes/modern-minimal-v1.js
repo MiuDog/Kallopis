@@ -1,6 +1,6 @@
 // Kallopis Theme Module: 現代簡約風 (modern-minimal-v1 · v1.0.0)
-// 來源權威：styles/themes/modern-minimal-v1.json · 可直接匯入或複製至任何 JS/TS 專案使用。
-export const themeMeta = Object.freeze({"id":"modern-minimal-v1","family":"modern-minimal","version":"1.0.0","name":"現代簡約風","englishName":"Modern Minimal (Editorial)","defaultMode":"light"});
+// 來源權威：styles/themes/modern-minimal-v1.json · 風格與明暗模式為獨立狀態。
+export const themeMeta = Object.freeze({"id":"modern-minimal-v1","family":"modern-minimal","version":"1.0.0","name":"現代簡約風","englishName":"Modern Minimal (Editorial)"});
 export const primitives = Object.freeze({
 	"parchment50": "#F8F6F1FF",
 	"parchment75": "#F0EDE6FF",
@@ -3268,7 +3268,7 @@ export const cssVariables = Object.freeze({
 		"--klp-dataVisualization-marketFlat": "#918A7BFF"
 	}
 });
-export function applyKlpTheme(mode = themeMeta.defaultMode, target = typeof document !== 'undefined' ? document.documentElement : null) {
+export function applyKlpTheme(mode = 'light', target = typeof document !== 'undefined' ? document.documentElement : null) {
 	const vars = cssVariables[mode];
 	if (!vars) throw new Error(`Unknown Kallopis mode: ${mode}`);
 	if (target?.style) {

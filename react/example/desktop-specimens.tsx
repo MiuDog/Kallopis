@@ -43,5 +43,13 @@ export function DesktopSpecimen({ name }: { name: string }) {
 		case 'KlpSkeleton': specimen = <><KlpButton onClick={() => setChecked(!checked)}>切換載入狀態</KlpButton>{checked ? <KlpText>內容已載入</KlpText> : <KlpSkeleton />}</>; break;
 		default: specimen = advancedComponentNames.includes(name) ? <AdvancedSpecimen name={name} /> : <KlpText>未登錄的桌面 specimen：{name}</KlpText>;
 	}
-	return <div className="demo-stack">{specimen}<KlpCheckbox label="停用控制（適用輸入／選取元件）" checked={disabled} onChange={event => setDisabled(event.target.checked)} /><KlpText role="caption" aria-live="polite">值：{text} · 選項：{value} · 開關：{checked ? '開' : '關'} · 頁碼：{page}</KlpText></div>;
+	return (
+		<div className="demo-stack">
+			<div className="specimen-stage">{specimen}</div>
+			<section className="specimen-controls" aria-label="元件控制設定">
+				<KlpCheckbox label="停用控制（適用輸入／選取元件）" checked={disabled} onChange={event => setDisabled(event.target.checked)} />
+				<KlpText role="caption" aria-live="polite">值：{text} · 選項：{value} · 開關：{checked ? '開' : '關'} · 頁碼：{page}</KlpText>
+			</section>
+		</div>
+	);
 }

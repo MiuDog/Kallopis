@@ -112,9 +112,13 @@ function OriginalBasicSpecimen({ name }: SpecimenProps) {
 		default: throw new Error(`Invalid basic specimen: ${name}`);
 	}
 	return <div className="demo-stack">
-		<KlpTextField label="內容參數" value={text} onChange={event => setText(event.target.value)} />
-		<div className="demo-row"><KlpButton selected={changed} onClick={toggle}>{parameter}：{changed ? '變更' : '預設'}</KlpButton>{['KlpButton', 'KlpIconButton', 'KlpTextField'].includes(name) && <KlpButton selected={disabled} onClick={toggleDisabled}>停用：{disabled ? '開' : '關'}</KlpButton>}</div>
-		<KlpCard header={<KlpText role="label">實際 {name}</KlpText>}>{preview}</KlpCard>
+		<section className="specimen-controls" aria-label="元件參數設定">
+			<KlpTextField label="內容參數" value={text} onChange={event => setText(event.target.value)} />
+			<div className="demo-row"><KlpButton selected={changed} onClick={toggle}>{parameter}：{changed ? '變更' : '預設'}</KlpButton>{['KlpButton', 'KlpIconButton', 'KlpTextField'].includes(name) && <KlpButton selected={disabled} onClick={toggleDisabled}>停用：{disabled ? '開' : '關'}</KlpButton>}</div>
+		</section>
+		<div className="specimen-stage">
+			<KlpCard header={<KlpText role="label">實際 {name}</KlpText>}>{preview}</KlpCard>
+		</div>
 		<KlpText role="caption" aria-live="polite">回呼 {count} 次 · 值：{text} · 選取：{selection} · 展開：{expanded.join(', ') || '無'}</KlpText>
 		<pre><code>{example}</code></pre>
 	</div>;

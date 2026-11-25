@@ -157,7 +157,7 @@ for (const frame of document.querySelectorAll('iframe[data-component-specimen]')
 	inspect();
 }
 
-// 複製按鈕：支援卡片與檔案預覽區的 CSS / JS / JSON 複製。
+// 複製按鈕：支援卡片與檔案區的 CSS / JS / JSON 複製。
 const themeStatus = document.querySelector('#theme-copy-status');
 async function copyPathToClipboard(path, label) {
 	try {
@@ -174,29 +174,41 @@ for (const button of document.querySelectorAll('[data-copy-file]')) {
 	button.addEventListener('click', () => copyPathToClipboard(button.dataset.copyFile, button.dataset.themeName || button.dataset.copyFile));
 }
 
-// 風格示範頁：同步上方組合與中段元件展示的風格／模式，並呈現全部色票與 CSS / JS / JSON 檔案。
+// 風格示範頁：獨立切換風格與模式、群組相鄰色票（Hover 屬性 / 點擊複製 HEX）、即時 CSS 編輯套用。
 const showcaseToolbar = document.querySelector('#showcase-toolbar');
 if (showcaseToolbar) {
 	let activeThemeId = 'micro-elevation-v1';
-	let activeMode = 'dark';
+	let activeMode = 'light';
 	let activeFormat = 'css';
 	let themesIndex = [];
 	let swatchesData = null;
+	let originalCssText = '';
+	let editedCssText = '';
 	let activeFileText = '';
+	let cssTimer = null;
 	const ideFrame = document.querySelector('#showcase-ide-frame');
-	const componentsFrame = document.querySelector('#showcase-components-frame');
+	const matrixFrame = document.querySelector('#showcase-matrix-frame');
 	const syncStatus = document.querySelector('#showcase-sync-status');
 	const swatchWall = document.querySelector('#swatch-wall');
-	const filePreview = document.querySelector('#theme-file-preview code');
+	const cssEditor = document.querySelector('#theme-css-editor');
+	const filePreview = document.querySelector('#theme-file-preview');
+	const filePreviewCode = document.querySelector('#theme-file-preview code');
 	const copyFileButton = document.querySelector('#copy-active-file');
+	const resetCssButton = document.querySelector('#reset-css-editor');
 	const downloadCss = document.querySelector('#download-css');
 	const downloadJs = document.querySelector('#download-js');
 	const downloadJson = document.querySelector('#download-json');
 
-	function postToFrames() {
+	function postStyleToFrames() {
 		const payload = { type: 'klp-style-change', themeId: activeThemeId, mode: activeMode };
 		ideFrame?.contentWindow?.postMessage(payload, '*');
-		componentsFrame?.contentWindow?.postMessage(payload, '*');
+		matrixFrame?.contentWindow?.postMessage(payload, '*');
+	}
+
+	function postCustomCssToFrames() {
+		const payload = { type: 'klp-custom-css', css: editedCssText };
+		ideFrame?.contentWindow?.postMessage(payload, '*');
+		matrixFrame?.contentWindow?.postMessage(payload, '*');
 	}
 
 	function updateButtons() {
@@ -219,7 +231,7 @@ if (showcaseToolbar) {
 			button.classList.toggle('secondary', !selected);
 		}
 		const meta = themesIndex.find(item => item.id === activeThemeId);
-		if (syncStatus) syncStatus.textContent = `目前風格：${meta?.name ?? activeThemeId} (${activeThemeId}) · 模式：${activeMode}`;
+		if (syncStatus) syncStatus.textContent = `風格：${meta?.name ?? activeThemeId} (${activeThemeId}) · 模式：${activeMode}`;
 		if (meta) {
 			if (downloadCss) downloadCss.href = `${root}${meta.cssPath}`;
 			if (downloadJs) downloadJs.href = `${root}${meta.jsPath}`;
@@ -231,83 +243,117 @@ if (showcaseToolbar) {
 		if (!swatchWall || !swatchesData) return;
 		const themeSwatches = swatchesData.themes?.[activeThemeId];
 		if (!themeSwatches) return;
-		const semanticList = themeSwatches.semanticColors?.[activeMode] ?? [];
-		const primitiveList = themeSwatches.primitiveColors ?? [];
+		const semanticGroups = themeSwatches.semanticGroups?.[activeMode] ?? [];
+		const primitiveGroups = themeSwatches.primitiveGroups ?? [];
 		swatchWall.replaceChildren();
 
-		function buildGroup(title, items, isSemantic) {
+		function appendCategorySection(headingText, groups, isSemantic) {
 			const section = document.createElement('section');
-			section.className = 'swatch-group';
+			section.className = 'swatch-section';
 			const heading = document.createElement('h3');
-			heading.textContent = `${title}（${items.length}）`;
-			const grid = document.createElement('div');
-			grid.className = 'swatch-grid';
-			for (const item of items) {
-				const button = document.createElement('button');
-				button.type = 'button';
-				button.className = 'swatch-tile';
-				const chip = document.createElement('span');
-				chip.className = 'swatch-chip';
-				chip.style.background = item.hex;
-				const info = document.createElement('span');
-				info.className = 'swatch-info';
-				const nameEl = document.createElement('strong');
-				nameEl.textContent = isSemantic ? item.label : item.id;
-				const codeEl = document.createElement('code');
-				codeEl.textContent = isSemantic ? `${item.hex} · ${item.cssVar}` : item.hex;
-				info.append(nameEl, codeEl);
-				button.append(chip, info);
-				button.addEventListener('click', async () => {
-					const copyValue = isSemantic ? `var(${item.cssVar})` : item.hex;
-					try {
-						await navigator.clipboard.writeText(copyValue);
-						if (themeStatus) themeStatus.textContent = `已複製色票：${copyValue}（${item.hex}）`;
-					} catch {
-						if (themeStatus) themeStatus.textContent = `色票值：${copyValue}（${item.hex}）`;
-					}
-				});
-				grid.append(button);
+			heading.textContent = headingText;
+			section.append(heading);
+
+			for (const group of groups) {
+				const groupBox = document.createElement('div');
+				groupBox.className = 'swatch-group-row';
+				const label = document.createElement('span');
+				label.className = 'swatch-group-label';
+				label.textContent = `${group.title} (${group.items.length})`;
+				const strip = document.createElement('div');
+				strip.className = 'swatch-strip';
+
+				for (const item of group.items) {
+					const tile = document.createElement('button');
+					tile.type = 'button';
+					tile.className = 'swatch-block';
+					tile.style.background = item.hex;
+					tile.setAttribute('aria-label', `${isSemantic ? item.label : item.id} ${item.hex}`);
+
+					const popover = document.createElement('span');
+					popover.className = 'swatch-popover';
+					const titleEl = document.createElement('strong');
+					titleEl.textContent = isSemantic ? item.label : item.id;
+					const hexEl = document.createElement('code');
+					hexEl.textContent = item.hex;
+					const metaEl = document.createElement('small');
+					metaEl.textContent = isSemantic ? `${item.cssVar}${item.description ? ` · ${item.description}` : ''}` : (item.description || item.id);
+					popover.append(titleEl, hexEl, metaEl);
+					tile.append(popover);
+
+					tile.addEventListener('click', async () => {
+						try {
+							await navigator.clipboard.writeText(item.hex);
+							if (themeStatus) themeStatus.textContent = `已複製 HEX 色碼：${item.hex}（${isSemantic ? item.cssVar : item.id}）`;
+						} catch {
+							if (themeStatus) themeStatus.textContent = `色票 HEX：${item.hex}（${isSemantic ? item.cssVar : item.id}）`;
+						}
+					});
+					strip.append(tile);
+				}
+				groupBox.append(label, strip);
+				section.append(groupBox);
 			}
-			section.append(heading, grid);
-			return section;
+			swatchWall.append(section);
 		}
 
-		swatchWall.append(
-			buildGroup(`語意色票 Semantic Colors · ${themeSwatches.name} (${activeMode})`, semanticList, true),
-			buildGroup('基礎色票 Primitive Colors', primitiveList, false),
-		);
+		appendCategorySection(`語意色票 · ${themeSwatches.name} (${activeMode})`, semanticGroups, true);
+		appendCategorySection('基礎色票（Primitive Colors）', primitiveGroups, false);
 	}
 
-	async function loadActiveFile() {
+	async function loadThemeCssForEditor() {
 		const meta = themesIndex.find(item => item.id === activeThemeId);
-		if (!meta || !filePreview) return;
-		const path = activeFormat === 'css' ? meta.cssPath : activeFormat === 'js' ? meta.jsPath : meta.packPath;
+		if (!meta) return;
+		try {
+			const response = await fetch(`${root}${meta.cssPath}`);
+			if (!response.ok) throw new Error('讀取失敗');
+			originalCssText = await response.text();
+			editedCssText = originalCssText;
+			if (cssEditor) cssEditor.value = editedCssText;
+			postCustomCssToFrames();
+		} catch {
+			if (cssEditor) cssEditor.value = `/* 無法讀取 ${meta.cssPath} */`;
+		}
+	}
+
+	async function renderActiveFilePane() {
+		const meta = themesIndex.find(item => item.id === activeThemeId);
+		if (!meta || !cssEditor || !filePreview || !filePreviewCode) return;
+		if (activeFormat === 'css') {
+			cssEditor.hidden = false;
+			filePreview.hidden = true;
+			return;
+		}
+		cssEditor.hidden = true;
+		filePreview.hidden = false;
+		const path = activeFormat === 'js' ? meta.jsPath : meta.packPath;
 		try {
 			const response = await fetch(`${root}${path}`);
 			if (!response.ok) throw new Error('讀取失敗');
 			activeFileText = await response.text();
 			const lines = activeFileText.split(/\r?\n/);
-			filePreview.textContent = lines.length > 180 ? `${lines.slice(0, 180).join('\n')}\n/* ... 共 ${lines.length} 行，複製或下載可取得完整檔案 */` : activeFileText;
+			filePreviewCode.textContent = lines.length > 200 ? `${lines.slice(0, 200).join('\n')}\n/* ... 共 ${lines.length} 行，複製或下載可取得完整檔案 */` : activeFileText;
 		} catch {
-			filePreview.textContent = `無法預覽 ${path}`;
+			filePreviewCode.textContent = `無法預覽 ${path}`;
 		}
 	}
 
+	// 風格與明暗模式嚴格維持獨立狀態，切換任一方不得自動改動另一方。
 	for (const button of document.querySelectorAll('[data-showcase-theme]')) {
 		button.addEventListener('click', () => {
 			activeThemeId = button.dataset.showcaseTheme;
-			if (button.dataset.defaultMode) activeMode = button.dataset.defaultMode;
 			updateButtons();
-			postToFrames();
+			postStyleToFrames();
 			renderSwatches();
-			loadActiveFile();
+			loadThemeCssForEditor();
+			renderActiveFilePane();
 		});
 	}
 	for (const button of document.querySelectorAll('[data-showcase-mode]')) {
 		button.addEventListener('click', () => {
 			activeMode = button.dataset.showcaseMode;
 			updateButtons();
-			postToFrames();
+			postStyleToFrames();
 			renderSwatches();
 		});
 	}
@@ -315,32 +361,54 @@ if (showcaseToolbar) {
 		button.addEventListener('click', () => {
 			activeFormat = button.dataset.fileFormat;
 			updateButtons();
-			loadActiveFile();
+			renderActiveFilePane();
+		});
+	}
+	if (cssEditor) {
+		cssEditor.addEventListener('input', () => {
+			editedCssText = cssEditor.value;
+			clearTimeout(cssTimer);
+			cssTimer = setTimeout(() => {
+				postCustomCssToFrames();
+				if (themeStatus) themeStatus.textContent = '已即時套用自訂 CSS 至上方組合與元件展示。';
+			}, 80);
+		});
+	}
+	if (resetCssButton) {
+		resetCssButton.addEventListener('click', () => {
+			editedCssText = originalCssText;
+			if (cssEditor) cssEditor.value = originalCssText;
+			postCustomCssToFrames();
+			if (themeStatus) themeStatus.textContent = '已重設為原始版本 CSS。';
 		});
 	}
 	if (copyFileButton) {
 		copyFileButton.addEventListener('click', async () => {
-			if (!activeFileText) return;
+			const payload = activeFormat === 'css' ? editedCssText : activeFileText;
+			if (!payload) return;
 			try {
-				await navigator.clipboard.writeText(activeFileText);
-				if (themeStatus) themeStatus.textContent = `已複製完整 ${activeThemeId}.${activeFormat} 檔案內容。`;
+				await navigator.clipboard.writeText(payload);
+				if (themeStatus) themeStatus.textContent = `已複製目前 ${activeThemeId}.${activeFormat} 檔案內容。`;
 			} catch {
 				if (themeStatus) themeStatus.textContent = '無法自動寫入剪貼簿，請直接點擊下載按鈕。';
 			}
 		});
 	}
 
-	ideFrame?.addEventListener('load', postToFrames);
-	componentsFrame?.addEventListener('load', postToFrames);
+	ideFrame?.addEventListener('load', () => { postStyleToFrames(); postCustomCssToFrames(); });
+	matrixFrame?.addEventListener('load', () => { postStyleToFrames(); postCustomCssToFrames(); });
 	window.addEventListener('message', event => {
 		const data = event.data;
 		if (!data || data.type !== 'klp-style-change') return;
-		if (typeof data.themeId === 'string') activeThemeId = data.themeId;
+		if (typeof data.themeId === 'string') {
+			activeThemeId = data.themeId;
+			loadThemeCssForEditor();
+		}
 		if (typeof data.mode === 'string') activeMode = data.mode;
 		updateButtons();
-		postToFrames();
+		postStyleToFrames();
 		renderSwatches();
-		loadActiveFile();
+		renderActiveFilePane();
 	});
 
 	Promise.all([
@@ -351,8 +419,124 @@ if (showcaseToolbar) {
 		swatchesData = swatches;
 		updateButtons();
 		renderSwatches();
-		loadActiveFile();
+		loadThemeCssForEditor();
+		renderActiveFilePane();
 	}).catch(() => {
-		if (themeStatus) themeStatus.textContent = '無法載入色票資料，請從下方連結直接下載風格檔。';
+		if (themeStatus) themeStatus.textContent = '無法載入色票資料，請從下載按鈕取得風格檔。';
 	});
+}
+
+// 獨立元件表頁（components.html）：左側分類 Navigator + 獨立控制列 + 單一元件舞台。
+const componentNav = document.querySelector('#component-nav');
+const componentStageFrame = document.querySelector('#component-stage-frame');
+if (componentNav && componentStageFrame) {
+	let compThemeId = 'micro-elevation-v1';
+	let compMode = 'light';
+	let compLang = 'react';
+	const searchInput = document.querySelector('#component-search');
+	const searchStatus = document.querySelector('#component-search-status');
+	const activeLabel = document.querySelector('#active-component-label');
+	const standaloneLink = document.querySelector('#open-component-standalone');
+	const navLinks = [...componentNav.querySelectorAll('[data-component-id]')];
+	const navGroups = [...componentNav.querySelectorAll('details')];
+	let activeComponentId = decodeURIComponent(location.hash.replace(/^#/, '')) || navLinks[0]?.dataset.componentId || 'KlpButton';
+
+	function syncComponentFrame() {
+		componentStageFrame.contentWindow?.postMessage({ type: 'klp-select-component', id: activeComponentId }, '*');
+		componentStageFrame.contentWindow?.postMessage({ type: 'klp-style-change', themeId: compThemeId, mode: compMode }, '*');
+		componentStageFrame.contentWindow?.postMessage({ type: 'klp-language-change', language: compLang }, '*');
+	}
+
+	function selectComponent(id, updateHash = true) {
+		if (!navLinks.some(link => link.dataset.componentId === id)) return;
+		activeComponentId = id;
+		if (updateHash) history.replaceState(null, '', `#${encodeURIComponent(id)}`);
+		for (const link of navLinks) {
+			const match = link.dataset.componentId === id;
+			if (match) {
+				link.setAttribute('aria-current', 'true');
+				const parentGroup = link.closest('details');
+				if (parentGroup) parentGroup.open = true;
+			} else {
+				link.removeAttribute('aria-current');
+			}
+		}
+		if (activeLabel) activeLabel.textContent = id;
+		if (standaloneLink) standaloneLink.href = `${root}examples/react/index.html?showcase=single&component=${encodeURIComponent(id)}`;
+		syncComponentFrame();
+	}
+
+	function updateComponentToolbar() {
+		for (const button of document.querySelectorAll('[data-comp-theme]')) {
+			const selected = button.dataset.compTheme === compThemeId;
+			button.setAttribute('aria-pressed', String(selected));
+			button.classList.toggle('primary', selected);
+			button.classList.toggle('secondary', !selected);
+		}
+		for (const button of document.querySelectorAll('[data-comp-mode]')) {
+			const selected = button.dataset.compMode === compMode;
+			button.setAttribute('aria-pressed', String(selected));
+			button.classList.toggle('primary', selected);
+			button.classList.toggle('secondary', !selected);
+		}
+		for (const button of document.querySelectorAll('[data-comp-lang]')) {
+			const selected = button.dataset.compLang === compLang;
+			button.setAttribute('aria-pressed', String(selected));
+			button.classList.toggle('primary', selected);
+			button.classList.toggle('secondary', !selected);
+		}
+	}
+
+	for (const link of navLinks) {
+		link.addEventListener('click', event => {
+			event.preventDefault();
+			selectComponent(link.dataset.componentId);
+		});
+	}
+	for (const button of document.querySelectorAll('[data-comp-theme]')) {
+		button.addEventListener('click', () => {
+			compThemeId = button.dataset.compTheme;
+			updateComponentToolbar();
+			syncComponentFrame();
+		});
+	}
+	for (const button of document.querySelectorAll('[data-comp-mode]')) {
+		button.addEventListener('click', () => {
+			compMode = button.dataset.compMode;
+			updateComponentToolbar();
+			syncComponentFrame();
+		});
+	}
+	for (const button of document.querySelectorAll('[data-comp-lang]')) {
+		button.addEventListener('click', () => {
+			compLang = button.dataset.compLang;
+			updateComponentToolbar();
+			syncComponentFrame();
+		});
+	}
+	if (searchInput) {
+		searchInput.addEventListener('input', () => {
+			const query = searchInput.value.trim().toLowerCase();
+			let matches = 0;
+			for (const group of navGroups) {
+				let groupMatches = 0;
+				for (const link of group.querySelectorAll('[data-component-id]')) {
+					const visible = !query || link.textContent.toLowerCase().includes(query) || link.dataset.componentId.toLowerCase().includes(query);
+					link.hidden = !visible;
+					if (visible) { groupMatches++; matches++; }
+				}
+				group.hidden = groupMatches === 0;
+				if (query && groupMatches > 0) group.open = true;
+			}
+			if (searchStatus) searchStatus.textContent = query ? `符合 ${matches} 個元件` : `共 ${navLinks.length} 個元件`;
+		});
+	}
+
+	window.addEventListener('hashchange', () => {
+		const target = decodeURIComponent(location.hash.replace(/^#/, ''));
+		if (target) selectComponent(target, false);
+	});
+	componentStageFrame.addEventListener('load', syncComponentFrame);
+	selectComponent(activeComponentId, false);
+	updateComponentToolbar();
 }

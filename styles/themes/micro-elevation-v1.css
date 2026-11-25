@@ -1,29 +1,29 @@
-/* Kallopis Theme: 微立體 (micro-elevation-v1 · v1.0.0) · 可直接複製至任何專案使用 */
+/* Kallopis Theme: 微立體 (micro-elevation-v1 · v1.0.0) · 可直接複製並即時調整 */
 /* 來源權威：styles/themes/micro-elevation-v1.json 與 styles/themes/micro-elevation-v1.surface.css */
 :root,
-[data-klp-mode="dark"] {
-	--klp-colors-app: #1A1A18FF;
-	--klp-colors-surface: #242320FF;
-	--klp-colors-surfaceInset: #1E1D1BFF;
-	--klp-colors-surfaceMuted: #2A2925FF;
-	--klp-colors-component: #353430FF;
-	--klp-colors-stageSurface: #2C2B28FF;
-	--klp-colors-overlay: #302F2BFF;
-	--klp-colors-surfaceRaised: #302F2BFF;
+[data-klp-mode="light"] {
+	--klp-colors-app: #E8E5DEFF;
+	--klp-colors-surface: #F2F0EAFF;
+	--klp-colors-surfaceInset: #E2DFD7FF;
+	--klp-colors-surfaceMuted: #E9E6DFFF;
+	--klp-colors-component: #FFFFFFFF;
+	--klp-colors-stageSurface: #FAF9F6FF;
+	--klp-colors-overlay: #FAF9F6FF;
+	--klp-colors-surfaceRaised: #FAF9F6FF;
 	--klp-colors-modalScrim: #01020299;
-	--klp-colors-guide: #3C3A36FF;
-	--klp-colors-divider: #3C3A36FF;
-	--klp-colors-pagePattern: #3C3A36FF;
-	--klp-colors-text: #EDEAE4FF;
-	--klp-colors-textMuted: #A8A49BFF;
-	--klp-colors-textFaint: #6F6B63FF;
-	--klp-colors-border: #3C3A36FF;
-	--klp-colors-borderStrong: #524F49FF;
-	--klp-colors-brand: #353430FF;
-	--klp-colors-accent: #D4A853FF;
-	--klp-colors-accentSoft: #3F3523FF;
-	--klp-colors-interaction: #D4A853FF;
-	--klp-colors-interactionSoft: #3E3C37FF;
+	--klp-colors-guide: #D8D4CAFF;
+	--klp-colors-divider: #D8D4CAFF;
+	--klp-colors-pagePattern: #D8D4CAFF;
+	--klp-colors-text: #22201CFF;
+	--klp-colors-textMuted: #6A655BFF;
+	--klp-colors-textFaint: #8D887DFF;
+	--klp-colors-border: #D8D4CAFF;
+	--klp-colors-borderStrong: #BDB8ACFF;
+	--klp-colors-brand: #E6E2D8FF;
+	--klp-colors-accent: #B5852AFF;
+	--klp-colors-accentSoft: #F3E7CDFF;
+	--klp-colors-interaction: #B5852AFF;
+	--klp-colors-interactionSoft: #E6E2D8FF;
 	--klp-colors-success: #51B77BFF;
 	--klp-colors-warning: #F6B52EFF;
 	--klp-colors-danger: #FA6C73FF;
@@ -33,7 +33,7 @@
 	--klp-colors-onDarkBackground: #EDEAE4FF;
 	--klp-colors-mutedOnLightBackground: #6A655BFF;
 	--klp-colors-mutedOnDarkBackground: #BAB5AAFF;
-	--klp-colors-faintOnBackground: #BAB5AAFF;
+	--klp-colors-faintOnBackground: #6A655BFF;
 	--klp-colors-transparent: #00000000;
 	--klp-typography-sansFamily: Noto Sans TC;
 	--klp-typography-sansFallback: "Noto Sans TC", "Microsoft JhengHei UI", "Microsoft JhengHei", "PingFang TC", sans-serif;
@@ -338,20 +338,20 @@
 	--klp-geometry-optical-statusIconOffsetY: 1px;
 	--klp-geometry-optical-monoBaselineOffsetY: -1;
 	--klp-geometry-optical-uiBaselineOffsetY: 0;
-	--klp-dataVisualization-series: "#F0D79AFF", "#E8BD70FF", "#DFA04EFF", "#C88745FF", "#A86D43FF", "#89573EFF";
-	--klp-dataVisualization-seriesWash: "#453D2BFF", "#443725FF", "#413222FF", "#3D2D22FF", "#382A23FF", "#332724FF";
-	--klp-dataVisualization-axis: #585249FF;
-	--klp-dataVisualization-grid: #433F3AFF;
-	--klp-dataVisualization-gridStrong: #6A6256FF;
-	--klp-dataVisualization-label: #B8B2A4FF;
-	--klp-dataVisualization-value: #F5F2ECFF;
+	--klp-dataVisualization-series: "#E0BE73FF", "#D3A152FF", "#C6823DFF", "#A96836FF", "#895137FF", "#683E33FF";
+	--klp-dataVisualization-seriesWash: "#F8F1E2FF", "#F6EBD7FF", "#F3E4CFFF", "#EEDDD0FF", "#E9D8D1FF", "#E4D5D1FF";
+	--klp-dataVisualization-axis: #D6D0C6FF;
+	--klp-dataVisualization-grid: #E4E1DAFF;
+	--klp-dataVisualization-gridStrong: #C8C0B4FF;
+	--klp-dataVisualization-label: #6B6459FF;
+	--klp-dataVisualization-value: #1D1D1DFF;
 	--klp-dataVisualization-plotBackground: #00000000;
-	--klp-dataVisualization-crosshair: #918A7BFF;
-	--klp-dataVisualization-marketUp: #67AE86FF;
-	--klp-dataVisualization-marketUpWash: #243B2DFF;
-	--klp-dataVisualization-marketDown: #D27B74FF;
-	--klp-dataVisualization-marketDownWash: #472925FF;
-	--klp-dataVisualization-marketFlat: #918A7BFF;
+	--klp-dataVisualization-crosshair: #8C8477FF;
+	--klp-dataVisualization-marketUp: #2D8057FF;
+	--klp-dataVisualization-marketUpWash: #DFF0E5FF;
+	--klp-dataVisualization-marketDown: #A7443FFF;
+	--klp-dataVisualization-marketDownWash: #FAE3E2FF;
+	--klp-dataVisualization-marketFlat: #8C8477FF;
 }
 [data-klp-mode="light"] {
 	--klp-colors-app: #E8E5DEFF;

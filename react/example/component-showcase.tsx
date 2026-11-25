@@ -15,6 +15,7 @@ import { CatalogSpecimen } from './specimens.js';
 import { ModernProductivityStarter } from './modern-productivity-starter.js';
 import { themeMetadata, themePacks } from './theme-presets.mjs';
 import { curatedComponents, type CuratedComponentEntry } from './curated-registry.js';
+import { useLiveStyleBridge } from './live-style-bridge.js';
 
 const modes: readonly KlpMode[] = ['light', 'dark', 'ultraDark', 'transparent'];
 const allComponentNames = Object.keys(catalogProps).sort();
@@ -255,44 +256,11 @@ function ComponentSplitCard({
 
 /** 風格示範專用的全元件互動總覽：支援核心公開元件與精選風格擴充元件，並列多語言使用範例。 */
 export function ComponentShowcase() {
-	const [themeId, setThemeId] = useState('micro-elevation-v1');
-	const [mode, setMode] = useState<KlpMode>('dark');
+	const { themeId, mode, customVars, setThemeId: selectTheme, setMode: selectMode } = useLiveStyleBridge('micro-elevation-v1', 'light');
 	const [category, setCategory] = useState('curated');
 	const [query, setQuery] = useState('');
 	const [globalLanguage, setGlobalLanguage] = useState<LanguageId>('react');
 	const [showAll, setShowAll] = useState(false);
-
-	// 接收外層「風格示範」頁同步過來的風格與模式切換訊息。
-	useEffect(() => {
-		function onMessage(event: MessageEvent) {
-			const data = event.data;
-			if (!data || data.type !== 'klp-style-change') return;
-			if (typeof data.themeId === 'string' && themePacks[data.themeId]) setThemeId(data.themeId);
-			if (typeof data.mode === 'string' && modes.includes(data.mode as KlpMode)) setMode(data.mode as KlpMode);
-		}
-		window.addEventListener('message', onMessage);
-		return () => window.removeEventListener('message', onMessage);
-	}, []);
-
-	function broadcast(nextThemeId: string, nextMode: KlpMode) {
-		if (window.parent !== window) {
-			window.parent.postMessage({ type: 'klp-style-change', themeId: nextThemeId, mode: nextMode }, '*');
-		}
-	}
-
-	function selectTheme(id: string) {
-		if (!themePacks[id]) return;
-		const meta = themeMetadata.find(item => item.id === id);
-		const nextMode = meta ? meta.defaultMode : mode;
-		setThemeId(id);
-		setMode(nextMode);
-		broadcast(id, nextMode);
-	}
-
-	function selectMode(nextMode: KlpMode) {
-		setMode(nextMode);
-		broadcast(themeId, nextMode);
-	}
 
 	const activeTheme = themeMetadata.find(item => item.id === themeId) ?? themeMetadata[0];
 	const filter = query.trim().toLowerCase();
@@ -319,6 +287,7 @@ export function ComponentShowcase() {
 		<KlpThemeProvider
 			mode={mode}
 			stylePack={themePacks[themeId]}
+			style={customVars}
 			className="demo-app showcase-root"
 			data-klp-visual-style={activeTheme.family}
 			data-klp-theme-id={activeTheme.id}
