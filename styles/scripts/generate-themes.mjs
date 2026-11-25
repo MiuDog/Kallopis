@@ -45,6 +45,7 @@ function writeOrCheck(relativePath, content) {
 
 const presetPacks = {};
 const themeCssBlocks = [];
+const swatchesByTheme = {};
 
 for (const theme of registry.themes) {
 	// 強制檢查每個 style 都採用版本化命名（<family>-v<N>），並與主檔及產物檔名一致。
@@ -53,29 +54,67 @@ for (const theme of registry.themes) {
 	if (typeof theme.version !== 'string' || !theme.version) throw new Error(`Theme missing version: ${theme.id}`);
 	if (basename(theme.packPath) !== `${theme.id}.json`) throw new Error(`Theme packPath must match versioned ID ${theme.id}: ${theme.packPath}`);
 	if (basename(theme.cssPath) !== `${theme.id}.css`) throw new Error(`Theme cssPath must match versioned ID ${theme.id}: ${theme.cssPath}`);
+	if (typeof theme.jsPath !== 'string' || basename(theme.jsPath) !== `${theme.id}.js`) throw new Error(`Theme jsPath must match versioned ID ${theme.id}: ${theme.jsPath}`);
 
 	const pack = JSON.parse(readFileSync(resolve(root, theme.packPath), 'utf8'));
 	if (pack.id !== theme.id) throw new Error(`Pack id mismatch for ${theme.packPath}: expected ${theme.id}, got ${pack.id}`);
 	if (pack.version !== theme.version) throw new Error(`Pack version mismatch for ${theme.packPath}: expected ${theme.version}, got ${pack.version}`);
 
 	presetPacks[theme.id] = pack;
+	const resolvedByMode = {};
+	const cssVarsByMode = {};
+	const semanticSwatchesByMode = {};
 	const modeCss = modes.map(mode => {
 		const { tokens } = resolveStylePack(pack, mode, catalog);
+		resolvedByMode[mode] = Object.fromEntries(Object.entries(tokens).map(([id, value]) => [id, browserValue(value)]));
+		cssVarsByMode[mode] = Object.fromEntries(Object.entries(tokens).map(([id, value]) => [cssVariable(id), cssValue(id, value)]));
+		semanticSwatchesByMode[mode] = Object.entries(tokens)
+			.filter(([id]) => id.startsWith('theme.colors.'))
+			.map(([id, value]) => ({
+				id,
+				label: id.slice('theme.colors.'.length),
+				cssVar: cssVariable(id),
+				hex: browserValue(value),
+			}));
 		const lines = Object.entries(tokens).map(([id, value]) => `\t${cssVariable(id)}: ${cssValue(id, value)};`).join('\n');
 		return `[data-klp-theme="${theme.id}"][data-klp-mode="${mode}"] {\n${lines}\n}`;
 	}).join('\n');
+
+	const primitiveColors = Object.entries(pack.primitives)
+		.filter(([, value]) => typeof value === 'string' && /^#[\dA-Fa-f]{6,8}$/.test(value))
+		.map(([id, value]) => ({
+			id,
+			hex: browserValue(value),
+			description: pack.primitiveDescriptions?.[id] ?? '',
+		}));
+	swatchesByTheme[theme.id] = {
+		id: theme.id,
+		family: theme.family,
+		version: theme.version,
+		name: theme.name,
+		defaultMode: theme.defaultMode,
+		semanticColors: semanticSwatchesByMode,
+		primitiveColors,
+	};
+
 	const defaultTokens = resolveStylePack(pack, theme.defaultMode, catalog).tokens;
 	const standaloneCss = `/* Kallopis Theme: ${theme.name} (${theme.id} · v${theme.version}) · 可直接複製至任何專案使用 */\n/* 來源權威：${theme.packPath} */\n:root,\n[data-klp-mode="${theme.defaultMode}"] {\n${Object.entries(defaultTokens).map(([id, value]) => `\t${cssVariable(id)}: ${cssValue(id, value)};`).join('\n')}\n}\n${modes.map(mode => {
 		const { tokens } = resolveStylePack(pack, mode, catalog);
 		return `[data-klp-mode="${mode}"] {\n${Object.entries(tokens).map(([id, value]) => `\t${cssVariable(id)}: ${cssValue(id, value)};`).join('\n')}\n}`;
 	}).join('\n')}\n`;
 	writeOrCheck(theme.cssPath, standaloneCss);
+
+	const standaloneJs = `// Kallopis Theme Module: ${theme.name} (${theme.id} · v${theme.version})\n// 來源權威：${theme.packPath} · 可直接匯入或複製至任何 JS/TS 專案使用。\nexport const themeMeta = Object.freeze(${JSON.stringify({ id: theme.id, family: theme.family, version: theme.version, name: theme.name, englishName: theme.englishName, defaultMode: theme.defaultMode })});\nexport const primitives = Object.freeze(${JSON.stringify(Object.fromEntries(Object.entries(pack.primitives).map(([k, v]) => [k, browserValue(v)])), null, '\t')});\nexport const tokens = Object.freeze(${JSON.stringify(resolvedByMode, null, '\t')});\nexport const cssVariables = Object.freeze(${JSON.stringify(cssVarsByMode, null, '\t')});\nexport function applyKlpTheme(mode = themeMeta.defaultMode, target = typeof document !== 'undefined' ? document.documentElement : null) {\n\tconst vars = cssVariables[mode];\n\tif (!vars) throw new Error(\`Unknown Kallopis mode: \${mode}\`);\n\tif (target?.style) {\n\t\tfor (const [name, value] of Object.entries(vars)) target.style.setProperty(name, value);\n\t\tif (target.dataset) { target.dataset.klpTheme = themeMeta.id; target.dataset.klpMode = mode; }\n\t}\n\treturn vars;\n}\n`;
+	writeOrCheck(theme.jsPath, standaloneJs);
+
 	themeCssBlocks.push(modeCss);
 }
 
+writeOrCheck('styles/themes/swatches.json', `${JSON.stringify({ schemaVersion: 1, themes: swatchesByTheme }, null, '\t')}\n`);
+
 // 生成 React 範例共用的風格套件資料，確保元件展示與風格檔同源。
 const presetsModule = `// 由 styles/scripts/generate-themes.mjs 自動產生，禁止手改。\nexport const themeMetadata = Object.freeze(${JSON.stringify(registry.themes, null, '\t')});\nexport const themePacks = Object.freeze(${JSON.stringify(presetPacks, null, '\t')});\n`;
-const presetsDeclaration = `import type { KlpMode, KlpStylePack } from '@kallopis/react';\nexport interface ThemeMetadataEntry {\n\treadonly id: string;\n\treadonly family: string;\n\treadonly version: string;\n\treadonly name: string;\n\treadonly englishName: string;\n\treadonly defaultMode: KlpMode;\n\treadonly description: string;\n\treadonly packPath: string;\n\treadonly cssPath: string;\n\treadonly previewImage: string;\n\treadonly sourceReference: string;\n\treadonly surfaceStyle: string;\n\treadonly elevationStyle: string;\n\treadonly typography: string;\n\treadonly orbs?: readonly string[];\n\treadonly palettePreview: Readonly<Record<'light' | 'dark', readonly string[]>>;\n}\nexport declare const themeMetadata: readonly ThemeMetadataEntry[];\nexport declare const themePacks: Readonly<Record<string, KlpStylePack>>;\n`;
+const presetsDeclaration = `import type { KlpMode, KlpStylePack } from '@kallopis/react';\nexport interface ThemeMetadataEntry {\n\treadonly id: string;\n\treadonly family: string;\n\treadonly version: string;\n\treadonly name: string;\n\treadonly englishName: string;\n\treadonly defaultMode: KlpMode;\n\treadonly description: string;\n\treadonly packPath: string;\n\treadonly cssPath: string;\n\treadonly jsPath: string;\n\treadonly previewImage: string;\n\treadonly sourceReference: string;\n\treadonly surfaceStyle: string;\n\treadonly elevationStyle: string;\n\treadonly typography: string;\n\treadonly orbs?: readonly string[];\n\treadonly palettePreview: Readonly<Record<'light' | 'dark', readonly string[]>>;\n}\nexport declare const themeMetadata: readonly ThemeMetadataEntry[];\nexport declare const themePacks: Readonly<Record<string, KlpStylePack>>;\n`;
 writeOrCheck('react/example/theme-presets.mjs', presetsModule);
 writeOrCheck('react/example/theme-presets.d.mts', presetsDeclaration);
 

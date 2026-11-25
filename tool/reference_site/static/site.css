@@ -270,3 +270,48 @@ code { font-family: Consolas, monospace; font-size: .9em; }
 @media (max-width: 1000px) {
 	.theme-gallery { grid-template-columns: 1fr; }
 }
+
+.showcase-toolbar {
+	position: sticky;
+	top: 76px;
+	z-index: 8;
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	justify-content: space-between;
+	gap: 12px;
+	padding: 12px 16px;
+	margin-bottom: 24px;
+	background: var(--panel);
+	border: 1px solid var(--line);
+	border-radius: var(--radius);
+	box-shadow: var(--shadow);
+}
+.showcase-toolbar-group { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
+.showcase-toolbar .button { cursor: pointer; border: 1px solid var(--line); padding: 7px 12px; font-size: 13px; }
+.showcase-toolbar .primary { border-color: var(--text); }
+.showcase-panel-tall iframe { height: 920px; }
+.swatch-wall { display: grid; gap: 24px; margin-bottom: 28px; }
+.swatch-group h3 { margin: 0 0 12px; font-size: 16px; }
+.swatch-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(210px, 1fr)); gap: 10px; }
+.swatch-tile {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+	padding: 8px 10px;
+	border: 1px solid var(--line);
+	border-radius: 8px;
+	background: var(--panel);
+	color: var(--text);
+	text-align: left;
+	cursor: pointer;
+}
+.swatch-tile:hover { background: var(--selected); }
+.swatch-chip { flex: none; width: 32px; height: 32px; border-radius: 6px; border: 1px solid var(--line); }
+.swatch-info { min-width: 0; display: grid; gap: 2px; }
+.swatch-info strong { font-size: 12.5px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.swatch-info code { font-size: 11px; color: var(--muted); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.file-viewer { border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; background: var(--content); }
+.file-viewer-bar { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px; padding: 12px 16px; background: var(--panel); border-bottom: 1px solid var(--line); }
+.file-viewer-bar .button { cursor: pointer; border: 1px solid var(--line); padding: 7px 12px; font-size: 13px; }
+.file-code-pre { margin: 0; padding: 16px; max-height: 360px; overflow: auto; font-size: 12.5px; line-height: 1.55; }

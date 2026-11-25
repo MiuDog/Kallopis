@@ -9,6 +9,7 @@ export interface ThemeMetadataEntry {
 	readonly description: string;
 	readonly packPath: string;
 	readonly cssPath: string;
+	readonly jsPath: string;
 	readonly previewImage: string;
 	readonly sourceReference: string;
 	readonly surfaceStyle: string;

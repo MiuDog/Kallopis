@@ -194,11 +194,29 @@ export function IdeWorkbench() {
 		return () => { keymap.dispose(); registry.dispose(); };
 	}, []);
 
+	useEffect(() => {
+		function onMessage(event: MessageEvent) {
+			const data = event.data;
+			if (!data || data.type !== 'klp-style-change') return;
+			if (typeof data.themeId === 'string' && themePacks[data.themeId]) setThemeId(data.themeId);
+			if (typeof data.mode === 'string' && modes.includes(data.mode as KlpMode)) setMode(data.mode as KlpMode);
+		}
+		window.addEventListener('message', onMessage);
+		return () => window.removeEventListener('message', onMessage);
+	}, []);
+
 	function selectTheme(id: string) {
 		setThemeId(id);
 		const meta = themeMetadata.find(item => item.id === id);
-		if (meta) setMode(meta.defaultMode);
+		const nextMode = meta ? meta.defaultMode : mode;
+		if (meta) setMode(nextMode);
+		if (window.parent !== window) window.parent.postMessage({ type: 'klp-style-change', themeId: id, mode: nextMode }, '*');
 		setStatus(`套用風格：${meta?.name ?? id}`);
+	}
+
+	function selectMode(nextMode: KlpMode) {
+		setMode(nextMode);
+		if (window.parent !== window) window.parent.postMessage({ type: 'klp-style-change', themeId, mode: nextMode }, '*');
 	}
 
 	function openFile(id: string) {
@@ -239,7 +257,7 @@ export function IdeWorkbench() {
 				</div>
 				<div className="ide-control-group" role="group" aria-label="切換模式">
 					{modes.map(value => (
-						<KlpButton key={value} size="sm" selected={mode === value} onClick={() => setMode(value)}>
+						<KlpButton key={value} size="sm" selected={mode === value} onClick={() => selectMode(value)}>
 							{value}
 						</KlpButton>
 					))}

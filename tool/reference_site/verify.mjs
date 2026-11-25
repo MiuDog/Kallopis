@@ -216,7 +216,7 @@ for (const href of actualHtml) if (href.startsWith('docs/flutter/scenarios/') &&
 if (!site.flutterScenarios && search.some(entry => entry.category === 'Flutter Scenario')) failures.push('Unexpected Flutter scenario search entries');
 
 // 步驟 4：固定網站入口與產物報告。
-for (const required of ['index.html', 'docs/index.html', 'docs/api/index.html', 'docs/components/index.html']) {
+for (const required of ['index.html', 'showcase.html', 'docs/index.html', 'docs/api/index.html', 'docs/components/index.html']) {
 	if (!actualHtml.has(required)) failures.push(`Missing site entry: ${required}`);
 }
 const report = { surfaces: surfaceNames, modules: api.modules.length, declarations: declarations.length, documents: documents.length, generatedPages: actualHtml.size, failures };

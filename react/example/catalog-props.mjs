@@ -70,7 +70,12 @@ export const catalogProps = Object.freeze({
 				"css": "--klp-shape-card",
 				"flutter": "shape.card"
 			}
-		]
+		],
+		"snippets": {
+			"react": "import { KlpThemeProvider, KlpAccordion } from '@kallopis/react';\nimport '@kallopis/react/styles.css';\n\nexport function Example() {\n\treturn (\n\t\t<KlpThemeProvider mode=\"dark\">\n\t\t\t<KlpAccordion title=\"系統標題\">範例內容</KlpAccordion>\n\t\t</KlpThemeProvider>\n\t);\n}",
+			"flutter": "import 'package:flutter/widgets.dart';\nimport 'package:kallopis/kallopis_foundation.dart';\nimport 'package:kallopis/kallopis_theme.dart';\n\n// 使用 Kallopis Flutter 公開元件 KlpAccordion\nclass Example extends StatelessWidget {\n\tconst Example({super.key});\n\n\t@override\n\tWidget build(BuildContext context) {\n\t\treturn KlpAccordion(\n\t\t\t// 樣式由 context.klp 自動解析\n\t\t);\n\t}\n}",
+			"html": "<!-- 直接引入 styles/themes/micro-elevation-v1.css（免匯入元件庫） -->\n<link rel=\"stylesheet\" href=\"./styles/themes/micro-elevation-v1.css\">\n\n<div class=\"my-klpaccordion\" style=\"\n\tbackground: var(--klp-colors-surface);\n\tcolor: var(--klp-colors-text);\n\tborder: 1px solid var(--klp-colors-border);\n\tborder-radius: var(--klp-shape-control);\n\tpadding: var(--klp-spacing-contentInset);\n\">\n\tKlpAccordion 範例內容\n</div>"
+		}
 	},
 	"KlpAlert": {
 		"name": "KlpAlert",
@@ -142,7 +147,12 @@ export const catalogProps = Object.freeze({
 				"css": "--klp-shape-card",
 				"flutter": "shape.card"
 			}
-		]
+		],
+		"snippets": {
+			"react": "import { KlpThemeProvider, KlpAlert } from '@kallopis/react';\nimport '@kallopis/react/styles.css';\n\nexport function Example() {\n\treturn (\n\t\t<KlpThemeProvider mode=\"dark\">\n\t\t\t<KlpAlert title=\"系統標題\" tone=\"primary\">範例內容</KlpAlert>\n\t\t</KlpThemeProvider>\n\t);\n}",
+			"flutter": "import 'package:flutter/widgets.dart';\nimport 'package:kallopis/kallopis_foundation.dart';\nimport 'package:kallopis/kallopis_theme.dart';\n\n// Flutter 端對應 KlpSurface（或以 KlpTheme.of(context) 組合）\nclass Example extends StatelessWidget {\n\tconst Example({super.key});\n\n\t@override\n\tWidget build(BuildContext context) {\n\t\treturn KlpSurface(\n\t\t\t// 樣式由 context.klp 自動解析\n\t\t);\n\t}\n}",
+			"html": "<!-- 直接引入 styles/themes/micro-elevation-v1.css（免匯入元件庫） -->\n<link rel=\"stylesheet\" href=\"./styles/themes/micro-elevation-v1.css\">\n\n<div class=\"my-klpalert\" style=\"\n\tbackground: var(--klp-colors-surface);\n\tcolor: var(--klp-colors-text);\n\tborder: 1px solid var(--klp-colors-border);\n\tborder-radius: var(--klp-shape-control);\n\tpadding: var(--klp-spacing-contentInset);\n\">\n\tKlpAlert 範例內容\n</div>"
+		}
 	},
 	"KlpAppLayout": {
 		"name": "KlpAppLayout",
@@ -172,7 +182,12 @@ export const catalogProps = Object.freeze({
 				"css": "--klp-spacing-space2",
 				"flutter": "spacing.space2"
 			}
-		]
+		],
+		"snippets": {
+			"react": "import { KlpThemeProvider, KlpAppLayout } from '@kallopis/react';\nimport '@kallopis/react/styles.css';\n\nexport function Example() {\n\treturn (\n\t\t<KlpThemeProvider mode=\"dark\">\n\t\t\t<KlpAppLayout />\n\t\t</KlpThemeProvider>\n\t);\n}",
+			"flutter": "import 'package:flutter/widgets.dart';\nimport 'package:kallopis/kallopis_foundation.dart';\nimport 'package:kallopis/kallopis_theme.dart';\n\n// 使用 Kallopis Flutter 公開元件 KlpAppLayout\nclass Example extends StatelessWidget {\n\tconst Example({super.key});\n\n\t@override\n\tWidget build(BuildContext context) {\n\t\treturn KlpAppLayout(\n\t\t\t// 樣式由 context.klp 自動解析\n\t\t);\n\t}\n}",
+			"html": "<!-- 直接引入 styles/themes/micro-elevation-v1.css（免匯入元件庫） -->\n<link rel=\"stylesheet\" href=\"./styles/themes/micro-elevation-v1.css\">\n\n<div class=\"my-klpapplayout\" style=\"\n\tbackground: var(--klp-colors-component);\n\tcolor: var(--klp-colors-text);\n\tborder: 1px solid var(--klp-colors-border);\n\tborder-radius: var(--klp-shape-control);\n\tpadding: var(--klp-spacing-contentInset);\n\">\n\tKlpAppLayout 範例內容\n</div>"
+		}
 	},
 	"KlpAvatar": {
 		"name": "KlpAvatar",
@@ -244,7 +259,12 @@ export const catalogProps = Object.freeze({
 				"css": "--klp-shape-card",
 				"flutter": "shape.card"
 			}
-		]
+		],
+		"snippets": {
+			"react": "import { KlpThemeProvider, KlpAvatar } from '@kallopis/react';\nimport '@kallopis/react/styles.css';\n\nexport function Example() {\n\treturn (\n\t\t<KlpThemeProvider mode=\"dark\">\n\t\t\t<KlpAvatar label=\"工作區項目\" />\n\t\t</KlpThemeProvider>\n\t);\n}",
+			"flutter": "import 'package:flutter/widgets.dart';\nimport 'package:kallopis/kallopis_foundation.dart';\nimport 'package:kallopis/kallopis_theme.dart';\n\n// 使用 Kallopis Flutter 公開元件 KlpAvatar\nclass Example extends StatelessWidget {\n\tconst Example({super.key});\n\n\t@override\n\tWidget build(BuildContext context) {\n\t\treturn KlpAvatar(\n\t\t\t// 樣式由 context.klp 自動解析\n\t\t);\n\t}\n}",
+			"html": "<!-- 直接引入 styles/themes/micro-elevation-v1.css（免匯入元件庫） -->\n<link rel=\"stylesheet\" href=\"./styles/themes/micro-elevation-v1.css\">\n\n<div class=\"my-klpavatar\" style=\"\n\tbackground: var(--klp-colors-surface);\n\tcolor: var(--klp-colors-text);\n\tborder: 1px solid var(--klp-colors-border);\n\tborder-radius: var(--klp-shape-control);\n\tpadding: var(--klp-spacing-contentInset);\n\">\n\tKlpAvatar 範例內容\n</div>"
+		}
 	},
 	"KlpBadge": {
 		"name": "KlpBadge",
@@ -279,7 +299,12 @@ export const catalogProps = Object.freeze({
 				"css": "--klp-colors-surfaceInset",
 				"flutter": "colors.surfaceInset"
 			}
-		]
+		],
+		"snippets": {
+			"react": "import { KlpThemeProvider, KlpBadge } from '@kallopis/react';\nimport '@kallopis/react/styles.css';\n\nexport function Example() {\n\treturn (\n\t\t<KlpThemeProvider mode=\"dark\">\n\t\t\t<KlpBadge tone=\"primary\">範例內容</KlpBadge>\n\t\t</KlpThemeProvider>\n\t);\n}",
+			"flutter": "import 'package:flutter/widgets.dart';\nimport 'package:kallopis/kallopis_foundation.dart';\nimport 'package:kallopis/kallopis_theme.dart';\n\n// 使用 Kallopis Flutter 公開元件 KlpBadge\nclass Example extends StatelessWidget {\n\tconst Example({super.key});\n\n\t@override\n\tWidget build(BuildContext context) {\n\t\treturn KlpBadge(\n\t\t\t// 樣式由 context.klp 自動解析\n\t\t);\n\t}\n}",
+			"html": "<!-- 直接引入 styles/themes/micro-elevation-v1.css（免匯入元件庫） -->\n<link rel=\"stylesheet\" href=\"./styles/themes/micro-elevation-v1.css\">\n\n<div class=\"my-klpbadge\" style=\"\n\tbackground: var(--klp-colors-surface);\n\tcolor: var(--klp-colors-text);\n\tborder: 1px solid var(--klp-colors-border);\n\tborder-radius: var(--klp-shape-control);\n\tpadding: var(--klp-spacing-contentInset);\n\">\n\tKlpBadge 範例內容\n</div>"
+		}
 	},
 	"KlpBreadcrumb": {
 		"name": "KlpBreadcrumb",
@@ -344,7 +369,12 @@ export const catalogProps = Object.freeze({
 				"css": "--klp-shape-card",
 				"flutter": "shape.card"
 			}
-		]
+		],
+		"snippets": {
+			"react": "import { KlpThemeProvider, KlpBreadcrumb } from '@kallopis/react';\nimport '@kallopis/react/styles.css';\n\nexport function Example() {\n\treturn (\n\t\t<KlpThemeProvider mode=\"dark\">\n\t\t\t<KlpBreadcrumb label=\"工作區項目\" items=\"範例\" />\n\t\t</KlpThemeProvider>\n\t);\n}",
+			"flutter": "import 'package:flutter/widgets.dart';\nimport 'package:kallopis/kallopis_foundation.dart';\nimport 'package:kallopis/kallopis_theme.dart';\n\n// 使用 Kallopis Flutter 公開元件 KlpBreadcrumb\nclass Example extends StatelessWidget {\n\tconst Example({super.key});\n\n\t@override\n\tWidget build(BuildContext context) {\n\t\treturn KlpBreadcrumb(\n\t\t\t// 樣式由 context.klp 自動解析\n\t\t);\n\t}\n}",
+			"html": "<!-- 直接引入 styles/themes/micro-elevation-v1.css（免匯入元件庫） -->\n<link rel=\"stylesheet\" href=\"./styles/themes/micro-elevation-v1.css\">\n\n<div class=\"my-klpbreadcrumb\" style=\"\n\tbackground: var(--klp-colors-surface);\n\tcolor: var(--klp-colors-text);\n\tborder: 1px solid var(--klp-colors-border);\n\tborder-radius: var(--klp-shape-control);\n\tpadding: var(--klp-spacing-contentInset);\n\">\n\tKlpBreadcrumb 範例內容\n</div>"
+		}
 	},
 	"KlpButton": {
 		"name": "KlpButton",
@@ -400,7 +430,12 @@ export const catalogProps = Object.freeze({
 				"css": "--klp-colors-surfaceInset",
 				"flutter": "colors.surfaceInset"
 			}
-		]
+		],
+		"snippets": {
+			"react": "import { KlpThemeProvider, KlpButton } from '@kallopis/react';\nimport '@kallopis/react/styles.css';\n\nexport function Example() {\n\treturn (\n\t\t<KlpThemeProvider mode=\"dark\">\n\t\t\t<KlpButton tone=\"primary\" size=\"md\" selected={selected}>範例內容</KlpButton>\n\t\t</KlpThemeProvider>\n\t);\n}",
+			"flutter": "import 'package:flutter/widgets.dart';\nimport 'package:kallopis/kallopis_foundation.dart';\nimport 'package:kallopis/kallopis_theme.dart';\n\n// 使用 Kallopis Flutter 公開元件 KlpButton\nclass Example extends StatelessWidget {\n\tconst Example({super.key});\n\n\t@override\n\tWidget build(BuildContext context) {\n\t\treturn KlpButton(\n\t\t\t// 樣式由 context.klp 自動解析\n\t\t);\n\t}\n}",
+			"html": "<!-- 直接引入 styles/themes/micro-elevation-v1.css（免匯入元件庫） -->\n<link rel=\"stylesheet\" href=\"./styles/themes/micro-elevation-v1.css\">\n\n<div class=\"my-klpbutton\" style=\"\n\tbackground: var(--klp-colors-surface);\n\tcolor: var(--klp-colors-text);\n\tborder: 1px solid var(--klp-colors-border);\n\tborder-radius: var(--klp-shape-control);\n\tpadding: var(--klp-spacing-contentInset);\n\">\n\tKlpButton 範例內容\n</div>"
+		}
 	},
 	"KlpCard": {
 		"name": "KlpCard",
@@ -449,7 +484,12 @@ export const catalogProps = Object.freeze({
 				"css": "--klp-colors-surfaceInset",
 				"flutter": "colors.surfaceInset"
 			}
-		]
+		],
+		"snippets": {
+			"react": "import { KlpThemeProvider, KlpCard } from '@kallopis/react';\nimport '@kallopis/react/styles.css';\n\nexport function Example() {\n\treturn (\n\t\t<KlpThemeProvider mode=\"dark\">\n\t\t\t<KlpCard tone=\"primary\">範例內容</KlpCard>\n\t\t</KlpThemeProvider>\n\t);\n}",
+			"flutter": "import 'package:flutter/widgets.dart';\nimport 'package:kallopis/kallopis_foundation.dart';\nimport 'package:kallopis/kallopis_theme.dart';\n\n// 使用 Kallopis Flutter 公開元件 KlpCard\nclass Example extends StatelessWidget {\n\tconst Example({super.key});\n\n\t@override\n\tWidget build(BuildContext context) {\n\t\treturn KlpCard(\n\t\t\t// 樣式由 context.klp 自動解析\n\t\t);\n\t}\n}",
+			"html": "<!-- 直接引入 styles/themes/micro-elevation-v1.css（免匯入元件庫） -->\n<link rel=\"stylesheet\" href=\"./styles/themes/micro-elevation-v1.css\">\n\n<div class=\"my-klpcard\" style=\"\n\tbackground: var(--klp-colors-surface);\n\tcolor: var(--klp-colors-text);\n\tborder: 1px solid var(--klp-colors-border);\n\tborder-radius: var(--klp-shape-control);\n\tpadding: var(--klp-spacing-contentInset);\n\">\n\tKlpCard 範例內容\n</div>"
+		}
 	},
 	"KlpCheckbox": {
 		"name": "KlpCheckbox",
@@ -514,7 +554,12 @@ export const catalogProps = Object.freeze({
 				"css": "--klp-shape-card",
 				"flutter": "shape.card"
 			}
-		]
+		],
+		"snippets": {
+			"react": "import { KlpThemeProvider, KlpCheckbox } from '@kallopis/react';\nimport '@kallopis/react/styles.css';\n\nexport function Example() {\n\treturn (\n\t\t<KlpThemeProvider mode=\"dark\">\n\t\t\t<KlpCheckbox label=\"工作區項目\" />\n\t\t</KlpThemeProvider>\n\t);\n}",
+			"flutter": "import 'package:flutter/widgets.dart';\nimport 'package:kallopis/kallopis_foundation.dart';\nimport 'package:kallopis/kallopis_theme.dart';\n\n// 使用 Kallopis Flutter 公開元件 KlpCheckbox\nclass Example extends StatelessWidget {\n\tconst Example({super.key});\n\n\t@override\n\tWidget build(BuildContext context) {\n\t\treturn KlpCheckbox(\n\t\t\t// 樣式由 context.klp 自動解析\n\t\t);\n\t}\n}",
+			"html": "<!-- 直接引入 styles/themes/micro-elevation-v1.css（免匯入元件庫） -->\n<link rel=\"stylesheet\" href=\"./styles/themes/micro-elevation-v1.css\">\n\n<div class=\"my-klpcheckbox\" style=\"\n\tbackground: var(--klp-colors-surface);\n\tcolor: var(--klp-colors-text);\n\tborder: 1px solid var(--klp-colors-border);\n\tborder-radius: var(--klp-shape-control);\n\tpadding: var(--klp-spacing-contentInset);\n\">\n\tKlpCheckbox 範例內容\n</div>"
+		}
 	},
 	"KlpComboBox": {
 		"name": "KlpComboBox",
@@ -586,7 +631,12 @@ export const catalogProps = Object.freeze({
 				"css": "--klp-shape-card",
 				"flutter": "shape.card"
 			}
-		]
+		],
+		"snippets": {
+			"react": "import { KlpThemeProvider, KlpComboBox } from '@kallopis/react';\nimport '@kallopis/react/styles.css';\n\nexport function Example() {\n\treturn (\n\t\t<KlpThemeProvider mode=\"dark\">\n\t\t\t<KlpComboBox label=\"工作區項目\" options=\"範例\" />\n\t\t</KlpThemeProvider>\n\t);\n}",
+			"flutter": "import 'package:flutter/widgets.dart';\nimport 'package:kallopis/kallopis_foundation.dart';\nimport 'package:kallopis/kallopis_theme.dart';\n\n// Flutter 端對應 KlpTextField（或以 KlpTheme.of(context) 組合）\nclass Example extends StatelessWidget {\n\tconst Example({super.key});\n\n\t@override\n\tWidget build(BuildContext context) {\n\t\treturn KlpTextField(\n\t\t\t// 樣式由 context.klp 自動解析\n\t\t);\n\t}\n}",
+			"html": "<!-- 直接引入 styles/themes/micro-elevation-v1.css（免匯入元件庫） -->\n<link rel=\"stylesheet\" href=\"./styles/themes/micro-elevation-v1.css\">\n\n<div class=\"my-klpcombobox\" style=\"\n\tbackground: var(--klp-colors-surface);\n\tcolor: var(--klp-colors-text);\n\tborder: 1px solid var(--klp-colors-border);\n\tborder-radius: var(--klp-shape-control);\n\tpadding: var(--klp-spacing-contentInset);\n\">\n\tKlpComboBox 範例內容\n</div>"
+		}
 	},
 	"KlpCommandShortcutHost": {
 		"name": "KlpCommandShortcutHost",
@@ -679,7 +729,12 @@ export const catalogProps = Object.freeze({
 				"css": "--klp-shape-card",
 				"flutter": "shape.card"
 			}
-		]
+		],
+		"snippets": {
+			"react": "import { KlpThemeProvider, KlpCommandShortcutHost } from '@kallopis/react';\nimport '@kallopis/react/styles.css';\n\nexport function Example() {\n\treturn (\n\t\t<KlpThemeProvider mode=\"dark\">\n\t\t\t<KlpCommandShortcutHost>範例內容</KlpCommandShortcutHost>\n\t\t</KlpThemeProvider>\n\t);\n}",
+			"flutter": "import 'package:flutter/widgets.dart';\nimport 'package:kallopis/kallopis_foundation.dart';\nimport 'package:kallopis/kallopis_theme.dart';\n\n// 使用 Kallopis Flutter 公開元件 KlpCommandShortcutHost\nclass Example extends StatelessWidget {\n\tconst Example({super.key});\n\n\t@override\n\tWidget build(BuildContext context) {\n\t\treturn KlpCommandShortcutHost(\n\t\t\t// 樣式由 context.klp 自動解析\n\t\t);\n\t}\n}",
+			"html": "<!-- 直接引入 styles/themes/micro-elevation-v1.css（免匯入元件庫） -->\n<link rel=\"stylesheet\" href=\"./styles/themes/micro-elevation-v1.css\">\n\n<div class=\"my-klpcommandshortcuthost\" style=\"\n\tbackground: var(--klp-colors-surface);\n\tcolor: var(--klp-colors-text);\n\tborder: 1px solid var(--klp-colors-border);\n\tborder-radius: var(--klp-shape-control);\n\tpadding: var(--klp-spacing-contentInset);\n\">\n\tKlpCommandShortcutHost 範例內容\n</div>"
+		}
 	},
 	"KlpContentHost": {
 		"name": "KlpContentHost",
@@ -728,7 +783,12 @@ export const catalogProps = Object.freeze({
 				"css": "--klp-spacing-comfortable",
 				"flutter": "spacing.comfortable"
 			}
-		]
+		],
+		"snippets": {
+			"react": "import { KlpThemeProvider, KlpContentHost } from '@kallopis/react';\nimport '@kallopis/react/styles.css';\n\nexport function Example() {\n\treturn (\n\t\t<KlpThemeProvider mode=\"dark\">\n\t\t\t<KlpContentHost label=\"工作區項目\">範例內容</KlpContentHost>\n\t\t</KlpThemeProvider>\n\t);\n}",
+			"flutter": "import 'package:flutter/widgets.dart';\nimport 'package:kallopis/kallopis_foundation.dart';\nimport 'package:kallopis/kallopis_theme.dart';\n\n// 透過 KlpTheme.of(context) 讀取共用 semantic tokens\nclass Example extends StatelessWidget {\n\tconst Example({super.key});\n\n\t@override\n\tWidget build(BuildContext context) {\n\t\treturn KlpContentHost(\n\t\t\t// 樣式由 context.klp 自動解析\n\t\t);\n\t}\n}",
+			"html": "<!-- 直接引入 styles/themes/micro-elevation-v1.css（免匯入元件庫） -->\n<link rel=\"stylesheet\" href=\"./styles/themes/micro-elevation-v1.css\">\n\n<div class=\"my-klpcontenthost\" style=\"\n\tbackground: var(--klp-colors-component);\n\tcolor: var(--klp-colors-text);\n\tborder: 1px solid var(--klp-colors-border);\n\tborder-radius: var(--klp-shape-control);\n\tpadding: var(--klp-spacing-contentInset);\n\">\n\tKlpContentHost 範例內容\n</div>"
+		}
 	},
 	"KlpDataGrid": {
 		"name": "KlpDataGrid",
@@ -791,7 +851,12 @@ export const catalogProps = Object.freeze({
 				"css": "--klp-spacing-comfortable",
 				"flutter": "spacing.comfortable"
 			}
-		]
+		],
+		"snippets": {
+			"react": "import { KlpThemeProvider, KlpDataGrid } from '@kallopis/react';\nimport '@kallopis/react/styles.css';\n\nexport function Example() {\n\treturn (\n\t\t<KlpThemeProvider mode=\"dark\">\n\t\t\t<KlpDataGrid label=\"工作區項目\" columns=\"範例\" rows=\"範例\" onCellChange=\"範例\" />\n\t\t</KlpThemeProvider>\n\t);\n}",
+			"flutter": "import 'package:flutter/widgets.dart';\nimport 'package:kallopis/kallopis_foundation.dart';\nimport 'package:kallopis/kallopis_theme.dart';\n\n// Flutter 端對應 KlpTree（或以 KlpTheme.of(context) 組合）\nclass Example extends StatelessWidget {\n\tconst Example({super.key});\n\n\t@override\n\tWidget build(BuildContext context) {\n\t\treturn KlpTree(\n\t\t\t// 樣式由 context.klp 自動解析\n\t\t);\n\t}\n}",
+			"html": "<!-- 直接引入 styles/themes/micro-elevation-v1.css（免匯入元件庫） -->\n<link rel=\"stylesheet\" href=\"./styles/themes/micro-elevation-v1.css\">\n\n<div class=\"my-klpdatagrid\" style=\"\n\tbackground: var(--klp-colors-component);\n\tcolor: var(--klp-colors-text);\n\tborder: 1px solid var(--klp-colors-border);\n\tborder-radius: var(--klp-shape-control);\n\tpadding: var(--klp-spacing-contentInset);\n\">\n\tKlpDataGrid 範例內容\n</div>"
+		}
 	},
 	"KlpDialog": {
 		"name": "KlpDialog",
@@ -884,7 +949,12 @@ export const catalogProps = Object.freeze({
 				"css": "--klp-shape-card",
 				"flutter": "shape.card"
 			}
-		]
+		],
+		"snippets": {
+			"react": "import { KlpThemeProvider, KlpDialog } from '@kallopis/react';\nimport '@kallopis/react/styles.css';\n\nexport function Example() {\n\treturn (\n\t\t<KlpThemeProvider mode=\"dark\">\n\t\t\t<KlpDialog open={open} title=\"系統標題\">範例內容</KlpDialog>\n\t\t</KlpThemeProvider>\n\t);\n}",
+			"flutter": "import 'package:flutter/widgets.dart';\nimport 'package:kallopis/kallopis_foundation.dart';\nimport 'package:kallopis/kallopis_theme.dart';\n\n// 使用 Kallopis Flutter 公開元件 KlpDialog\nclass Example extends StatelessWidget {\n\tconst Example({super.key});\n\n\t@override\n\tWidget build(BuildContext context) {\n\t\treturn KlpDialog(\n\t\t\t// 樣式由 context.klp 自動解析\n\t\t);\n\t}\n}",
+			"html": "<!-- 直接引入 styles/themes/micro-elevation-v1.css（免匯入元件庫） -->\n<link rel=\"stylesheet\" href=\"./styles/themes/micro-elevation-v1.css\">\n\n<div class=\"my-klpdialog\" style=\"\n\tbackground: var(--klp-colors-surface);\n\tcolor: var(--klp-colors-text);\n\tborder: 1px solid var(--klp-colors-border);\n\tborder-radius: var(--klp-shape-control);\n\tpadding: var(--klp-spacing-contentInset);\n\">\n\tKlpDialog 範例內容\n</div>"
+		}
 	},
 	"KlpDockLayout": {
 		"name": "KlpDockLayout",
@@ -1026,7 +1096,12 @@ export const catalogProps = Object.freeze({
 				"css": "--klp-shape-card",
 				"flutter": "shape.card"
 			}
-		]
+		],
+		"snippets": {
+			"react": "import { KlpThemeProvider, KlpDockLayout } from '@kallopis/react';\nimport '@kallopis/react/styles.css';\n\nexport function Example() {\n\treturn (\n\t\t<KlpThemeProvider mode=\"dark\">\n\t\t\t<KlpDockLayout />\n\t\t</KlpThemeProvider>\n\t);\n}",
+			"flutter": "import 'package:flutter/widgets.dart';\nimport 'package:kallopis/kallopis_foundation.dart';\nimport 'package:kallopis/kallopis_theme.dart';\n\n// 使用 Kallopis Flutter 公開元件 KlpDockLayout\nclass Example extends StatelessWidget {\n\tconst Example({super.key});\n\n\t@override\n\tWidget build(BuildContext context) {\n\t\treturn KlpDockLayout(\n\t\t\t// 樣式由 context.klp 自動解析\n\t\t);\n\t}\n}",
+			"html": "<!-- 直接引入 styles/themes/micro-elevation-v1.css（免匯入元件庫） -->\n<link rel=\"stylesheet\" href=\"./styles/themes/micro-elevation-v1.css\">\n\n<div class=\"my-klpdocklayout\" style=\"\n\tbackground: var(--klp-colors-surface);\n\tcolor: var(--klp-colors-text);\n\tborder: 1px solid var(--klp-colors-border);\n\tborder-radius: var(--klp-shape-control);\n\tpadding: var(--klp-spacing-contentInset);\n\">\n\tKlpDockLayout 範例內容\n</div>"
+		}
 	},
 	"KlpDrawer": {
 		"name": "KlpDrawer",
@@ -1075,7 +1150,12 @@ export const catalogProps = Object.freeze({
 				"css": "--klp-spacing-comfortable",
 				"flutter": "spacing.comfortable"
 			}
-		]
+		],
+		"snippets": {
+			"react": "import { KlpThemeProvider, KlpDrawer } from '@kallopis/react';\nimport '@kallopis/react/styles.css';\n\nexport function Example() {\n\treturn (\n\t\t<KlpThemeProvider mode=\"dark\">\n\t\t\t<KlpDrawer open={open} title=\"系統標題\">範例內容</KlpDrawer>\n\t\t</KlpThemeProvider>\n\t);\n}",
+			"flutter": "import 'package:flutter/widgets.dart';\nimport 'package:kallopis/kallopis_foundation.dart';\nimport 'package:kallopis/kallopis_theme.dart';\n\n// 使用 Kallopis Flutter 公開元件 KlpDrawer\nclass Example extends StatelessWidget {\n\tconst Example({super.key});\n\n\t@override\n\tWidget build(BuildContext context) {\n\t\treturn KlpDrawer(\n\t\t\t// 樣式由 context.klp 自動解析\n\t\t);\n\t}\n}",
+			"html": "<!-- 直接引入 styles/themes/micro-elevation-v1.css（免匯入元件庫） -->\n<link rel=\"stylesheet\" href=\"./styles/themes/micro-elevation-v1.css\">\n\n<div class=\"my-klpdrawer\" style=\"\n\tbackground: var(--klp-colors-component);\n\tcolor: var(--klp-colors-text);\n\tborder: 1px solid var(--klp-colors-border);\n\tborder-radius: var(--klp-shape-control);\n\tpadding: var(--klp-spacing-contentInset);\n\">\n\tKlpDrawer 範例內容\n</div>"
+		}
 	},
 	"KlpEmptyState": {
 		"name": "KlpEmptyState",
@@ -1147,7 +1227,12 @@ export const catalogProps = Object.freeze({
 				"css": "--klp-shape-card",
 				"flutter": "shape.card"
 			}
-		]
+		],
+		"snippets": {
+			"react": "import { KlpThemeProvider, KlpEmptyState } from '@kallopis/react';\nimport '@kallopis/react/styles.css';\n\nexport function Example() {\n\treturn (\n\t\t<KlpThemeProvider mode=\"dark\">\n\t\t\t<KlpEmptyState title=\"系統標題\" />\n\t\t</KlpThemeProvider>\n\t);\n}",
+			"flutter": "import 'package:flutter/widgets.dart';\nimport 'package:kallopis/kallopis_foundation.dart';\nimport 'package:kallopis/kallopis_theme.dart';\n\n// 使用 Kallopis Flutter 公開元件 KlpEmptyState\nclass Example extends StatelessWidget {\n\tconst Example({super.key});\n\n\t@override\n\tWidget build(BuildContext context) {\n\t\treturn KlpEmptyState(\n\t\t\t// 樣式由 context.klp 自動解析\n\t\t);\n\t}\n}",
+			"html": "<!-- 直接引入 styles/themes/micro-elevation-v1.css（免匯入元件庫） -->\n<link rel=\"stylesheet\" href=\"./styles/themes/micro-elevation-v1.css\">\n\n<div class=\"my-klpemptystate\" style=\"\n\tbackground: var(--klp-colors-surface);\n\tcolor: var(--klp-colors-text);\n\tborder: 1px solid var(--klp-colors-border);\n\tborder-radius: var(--klp-shape-control);\n\tpadding: var(--klp-spacing-contentInset);\n\">\n\tKlpEmptyState 範例內容\n</div>"
+		}
 	},
 	"KlpFileExplorer": {
 		"name": "KlpFileExplorer",
@@ -1217,7 +1302,12 @@ export const catalogProps = Object.freeze({
 				"css": "--klp-colors-surfaceInset",
 				"flutter": "colors.surfaceInset"
 			}
-		]
+		],
+		"snippets": {
+			"react": "import { KlpThemeProvider, KlpFileExplorer } from '@kallopis/react';\nimport '@kallopis/react/styles.css';\n\nexport function Example() {\n\treturn (\n\t\t<KlpThemeProvider mode=\"dark\">\n\t\t\t<KlpFileExplorer expandedIds=\"範例\" onToggle=\"範例\" />\n\t\t</KlpThemeProvider>\n\t);\n}",
+			"flutter": "import 'package:flutter/widgets.dart';\nimport 'package:kallopis/kallopis_foundation.dart';\nimport 'package:kallopis/kallopis_theme.dart';\n\n// 使用 Kallopis Flutter 公開元件 KlpFileExplorer\nclass Example extends StatelessWidget {\n\tconst Example({super.key});\n\n\t@override\n\tWidget build(BuildContext context) {\n\t\treturn KlpFileExplorer(\n\t\t\t// 樣式由 context.klp 自動解析\n\t\t);\n\t}\n}",
+			"html": "<!-- 直接引入 styles/themes/micro-elevation-v1.css（免匯入元件庫） -->\n<link rel=\"stylesheet\" href=\"./styles/themes/micro-elevation-v1.css\">\n\n<div class=\"my-klpfileexplorer\" style=\"\n\tbackground: var(--klp-colors-surface);\n\tcolor: var(--klp-colors-text);\n\tborder: 1px solid var(--klp-colors-border);\n\tborder-radius: var(--klp-shape-control);\n\tpadding: var(--klp-spacing-contentInset);\n\">\n\tKlpFileExplorer 範例內容\n</div>"
+		}
 	},
 	"KlpFrame": {
 		"name": "KlpFrame",
@@ -1273,7 +1363,12 @@ export const catalogProps = Object.freeze({
 				"css": "--klp-colors-surfaceInset",
 				"flutter": "colors.surfaceInset"
 			}
-		]
+		],
+		"snippets": {
+			"react": "import { KlpThemeProvider, KlpFrame } from '@kallopis/react';\nimport '@kallopis/react/styles.css';\n\nexport function Example() {\n\treturn (\n\t\t<KlpThemeProvider mode=\"dark\">\n\t\t\t<KlpFrame>範例內容</KlpFrame>\n\t\t</KlpThemeProvider>\n\t);\n}",
+			"flutter": "import 'package:flutter/widgets.dart';\nimport 'package:kallopis/kallopis_foundation.dart';\nimport 'package:kallopis/kallopis_theme.dart';\n\n// Flutter 端對應 KlpPanelFrame（或以 KlpTheme.of(context) 組合）\nclass Example extends StatelessWidget {\n\tconst Example({super.key});\n\n\t@override\n\tWidget build(BuildContext context) {\n\t\treturn KlpPanelFrame(\n\t\t\t// 樣式由 context.klp 自動解析\n\t\t);\n\t}\n}",
+			"html": "<!-- 直接引入 styles/themes/micro-elevation-v1.css（免匯入元件庫） -->\n<link rel=\"stylesheet\" href=\"./styles/themes/micro-elevation-v1.css\">\n\n<div class=\"my-klpframe\" style=\"\n\tbackground: var(--klp-colors-surface);\n\tcolor: var(--klp-colors-text);\n\tborder: 1px solid var(--klp-colors-border);\n\tborder-radius: var(--klp-shape-control);\n\tpadding: var(--klp-spacing-contentInset);\n\">\n\tKlpFrame 範例內容\n</div>"
+		}
 	},
 	"KlpIconButton": {
 		"name": "KlpIconButton",
@@ -1329,7 +1424,12 @@ export const catalogProps = Object.freeze({
 				"css": "--klp-colors-surfaceInset",
 				"flutter": "colors.surfaceInset"
 			}
-		]
+		],
+		"snippets": {
+			"react": "import { KlpThemeProvider, KlpIconButton } from '@kallopis/react';\nimport '@kallopis/react/styles.css';\n\nexport function Example() {\n\treturn (\n\t\t<KlpThemeProvider mode=\"dark\">\n\t\t\t<KlpIconButton label=\"工作區項目\" tone=\"primary\" size=\"md\" />\n\t\t</KlpThemeProvider>\n\t);\n}",
+			"flutter": "import 'package:flutter/widgets.dart';\nimport 'package:kallopis/kallopis_foundation.dart';\nimport 'package:kallopis/kallopis_theme.dart';\n\n// 使用 Kallopis Flutter 公開元件 KlpIconButton\nclass Example extends StatelessWidget {\n\tconst Example({super.key});\n\n\t@override\n\tWidget build(BuildContext context) {\n\t\treturn KlpIconButton(\n\t\t\t// 樣式由 context.klp 自動解析\n\t\t);\n\t}\n}",
+			"html": "<!-- 直接引入 styles/themes/micro-elevation-v1.css（免匯入元件庫） -->\n<link rel=\"stylesheet\" href=\"./styles/themes/micro-elevation-v1.css\">\n\n<div class=\"my-klpiconbutton\" style=\"\n\tbackground: var(--klp-colors-surface);\n\tcolor: var(--klp-colors-text);\n\tborder: 1px solid var(--klp-colors-border);\n\tborder-radius: var(--klp-shape-control);\n\tpadding: var(--klp-spacing-contentInset);\n\">\n\tKlpIconButton 範例內容\n</div>"
+		}
 	},
 	"KlpLayoutColumn": {
 		"name": "KlpLayoutColumn",
@@ -1387,7 +1487,12 @@ export const catalogProps = Object.freeze({
 				"css": "--klp-spacing-space2",
 				"flutter": "spacing.space2"
 			}
-		]
+		],
+		"snippets": {
+			"react": "import { KlpThemeProvider, KlpLayoutColumn } from '@kallopis/react';\nimport '@kallopis/react/styles.css';\n\nexport function Example() {\n\treturn (\n\t\t<KlpThemeProvider mode=\"dark\">\n\t\t\t<KlpLayoutColumn />\n\t\t</KlpThemeProvider>\n\t);\n}",
+			"flutter": "import 'package:flutter/widgets.dart';\nimport 'package:kallopis/kallopis_foundation.dart';\nimport 'package:kallopis/kallopis_theme.dart';\n\n// Flutter 端對應 Column（或以 KlpTheme.of(context) 組合）\nclass Example extends StatelessWidget {\n\tconst Example({super.key});\n\n\t@override\n\tWidget build(BuildContext context) {\n\t\treturn Column(\n\t\t\t// 樣式由 context.klp 自動解析\n\t\t);\n\t}\n}",
+			"html": "<!-- 直接引入 styles/themes/micro-elevation-v1.css（免匯入元件庫） -->\n<link rel=\"stylesheet\" href=\"./styles/themes/micro-elevation-v1.css\">\n\n<div class=\"my-klplayoutcolumn\" style=\"\n\tbackground: var(--klp-colors-component);\n\tcolor: var(--klp-colors-text);\n\tborder: 1px solid var(--klp-colors-border);\n\tborder-radius: var(--klp-shape-control);\n\tpadding: var(--klp-spacing-contentInset);\n\">\n\tKlpLayoutColumn 範例內容\n</div>"
+		}
 	},
 	"KlpLayoutDivider": {
 		"name": "KlpLayoutDivider",
@@ -1410,7 +1515,12 @@ export const catalogProps = Object.freeze({
 				"css": "--klp-spacing-space2",
 				"flutter": "spacing.space2"
 			}
-		]
+		],
+		"snippets": {
+			"react": "import { KlpThemeProvider, KlpLayoutDivider } from '@kallopis/react';\nimport '@kallopis/react/styles.css';\n\nexport function Example() {\n\treturn (\n\t\t<KlpThemeProvider mode=\"dark\">\n\t\t\t<KlpLayoutDivider />\n\t\t</KlpThemeProvider>\n\t);\n}",
+			"flutter": "import 'package:flutter/widgets.dart';\nimport 'package:kallopis/kallopis_foundation.dart';\nimport 'package:kallopis/kallopis_theme.dart';\n\n// 使用 Kallopis Flutter 公開元件 KlpLayoutDivider\nclass Example extends StatelessWidget {\n\tconst Example({super.key});\n\n\t@override\n\tWidget build(BuildContext context) {\n\t\treturn KlpLayoutDivider(\n\t\t\t// 樣式由 context.klp 自動解析\n\t\t);\n\t}\n}",
+			"html": "<!-- 直接引入 styles/themes/micro-elevation-v1.css（免匯入元件庫） -->\n<link rel=\"stylesheet\" href=\"./styles/themes/micro-elevation-v1.css\">\n\n<div class=\"my-klplayoutdivider\" style=\"\n\tbackground: var(--klp-colors-component);\n\tcolor: var(--klp-colors-text);\n\tborder: 1px solid var(--klp-colors-border);\n\tborder-radius: var(--klp-shape-control);\n\tpadding: var(--klp-spacing-contentInset);\n\">\n\tKlpLayoutDivider 範例內容\n</div>"
+		}
 	},
 	"KlpLayoutPane": {
 		"name": "KlpLayoutPane",
@@ -1447,7 +1557,12 @@ export const catalogProps = Object.freeze({
 				"css": "--klp-spacing-space2",
 				"flutter": "spacing.space2"
 			}
-		]
+		],
+		"snippets": {
+			"react": "import { KlpThemeProvider, KlpLayoutPane } from '@kallopis/react';\nimport '@kallopis/react/styles.css';\n\nexport function Example() {\n\treturn (\n\t\t<KlpThemeProvider mode=\"dark\">\n\t\t\t<KlpLayoutPane />\n\t\t</KlpThemeProvider>\n\t);\n}",
+			"flutter": "import 'package:flutter/widgets.dart';\nimport 'package:kallopis/kallopis_foundation.dart';\nimport 'package:kallopis/kallopis_theme.dart';\n\n// 使用 Kallopis Flutter 公開元件 KlpLayoutPane\nclass Example extends StatelessWidget {\n\tconst Example({super.key});\n\n\t@override\n\tWidget build(BuildContext context) {\n\t\treturn KlpLayoutPane(\n\t\t\t// 樣式由 context.klp 自動解析\n\t\t);\n\t}\n}",
+			"html": "<!-- 直接引入 styles/themes/micro-elevation-v1.css（免匯入元件庫） -->\n<link rel=\"stylesheet\" href=\"./styles/themes/micro-elevation-v1.css\">\n\n<div class=\"my-klplayoutpane\" style=\"\n\tbackground: var(--klp-colors-component);\n\tcolor: var(--klp-colors-text);\n\tborder: 1px solid var(--klp-colors-border);\n\tborder-radius: var(--klp-shape-control);\n\tpadding: var(--klp-spacing-contentInset);\n\">\n\tKlpLayoutPane 範例內容\n</div>"
+		}
 	},
 	"KlpLayoutRow": {
 		"name": "KlpLayoutRow",
@@ -1505,7 +1620,12 @@ export const catalogProps = Object.freeze({
 				"css": "--klp-spacing-space2",
 				"flutter": "spacing.space2"
 			}
-		]
+		],
+		"snippets": {
+			"react": "import { KlpThemeProvider, KlpLayoutRow } from '@kallopis/react';\nimport '@kallopis/react/styles.css';\n\nexport function Example() {\n\treturn (\n\t\t<KlpThemeProvider mode=\"dark\">\n\t\t\t<KlpLayoutRow />\n\t\t</KlpThemeProvider>\n\t);\n}",
+			"flutter": "import 'package:flutter/widgets.dart';\nimport 'package:kallopis/kallopis_foundation.dart';\nimport 'package:kallopis/kallopis_theme.dart';\n\n// Flutter 端對應 Row（或以 KlpTheme.of(context) 組合）\nclass Example extends StatelessWidget {\n\tconst Example({super.key});\n\n\t@override\n\tWidget build(BuildContext context) {\n\t\treturn Row(\n\t\t\t// 樣式由 context.klp 自動解析\n\t\t);\n\t}\n}",
+			"html": "<!-- 直接引入 styles/themes/micro-elevation-v1.css（免匯入元件庫） -->\n<link rel=\"stylesheet\" href=\"./styles/themes/micro-elevation-v1.css\">\n\n<div class=\"my-klplayoutrow\" style=\"\n\tbackground: var(--klp-colors-component);\n\tcolor: var(--klp-colors-text);\n\tborder: 1px solid var(--klp-colors-border);\n\tborder-radius: var(--klp-shape-control);\n\tpadding: var(--klp-spacing-contentInset);\n\">\n\tKlpLayoutRow 範例內容\n</div>"
+		}
 	},
 	"KlpLayoutSpacer": {
 		"name": "KlpLayoutSpacer",
@@ -1542,7 +1662,12 @@ export const catalogProps = Object.freeze({
 				"css": "--klp-spacing-space2",
 				"flutter": "spacing.space2"
 			}
-		]
+		],
+		"snippets": {
+			"react": "import { KlpThemeProvider, KlpLayoutSpacer } from '@kallopis/react';\nimport '@kallopis/react/styles.css';\n\nexport function Example() {\n\treturn (\n\t\t<KlpThemeProvider mode=\"dark\">\n\t\t\t<KlpLayoutSpacer />\n\t\t</KlpThemeProvider>\n\t);\n}",
+			"flutter": "import 'package:flutter/widgets.dart';\nimport 'package:kallopis/kallopis_foundation.dart';\nimport 'package:kallopis/kallopis_theme.dart';\n\n// Flutter 端對應 Spacer（或以 KlpTheme.of(context) 組合）\nclass Example extends StatelessWidget {\n\tconst Example({super.key});\n\n\t@override\n\tWidget build(BuildContext context) {\n\t\treturn Spacer(\n\t\t\t// 樣式由 context.klp 自動解析\n\t\t);\n\t}\n}",
+			"html": "<!-- 直接引入 styles/themes/micro-elevation-v1.css（免匯入元件庫） -->\n<link rel=\"stylesheet\" href=\"./styles/themes/micro-elevation-v1.css\">\n\n<div class=\"my-klplayoutspacer\" style=\"\n\tbackground: var(--klp-colors-component);\n\tcolor: var(--klp-colors-text);\n\tborder: 1px solid var(--klp-colors-border);\n\tborder-radius: var(--klp-shape-control);\n\tpadding: var(--klp-spacing-contentInset);\n\">\n\tKlpLayoutSpacer 範例內容\n</div>"
+		}
 	},
 	"KlpLink": {
 		"name": "KlpLink",
@@ -1600,7 +1725,12 @@ export const catalogProps = Object.freeze({
 				"css": "--klp-shape-card",
 				"flutter": "shape.card"
 			}
-		]
+		],
+		"snippets": {
+			"react": "import { KlpThemeProvider, KlpLink } from '@kallopis/react';\nimport '@kallopis/react/styles.css';\n\nexport function Example() {\n\treturn (\n\t\t<KlpThemeProvider mode=\"dark\">\n\t\t\t<KlpLink>範例內容</KlpLink>\n\t\t</KlpThemeProvider>\n\t);\n}",
+			"flutter": "import 'package:flutter/widgets.dart';\nimport 'package:kallopis/kallopis_foundation.dart';\nimport 'package:kallopis/kallopis_theme.dart';\n\n// Flutter 端對應 KlpButton（或以 KlpTheme.of(context) 組合）\nclass Example extends StatelessWidget {\n\tconst Example({super.key});\n\n\t@override\n\tWidget build(BuildContext context) {\n\t\treturn KlpButton(\n\t\t\t// 樣式由 context.klp 自動解析\n\t\t);\n\t}\n}",
+			"html": "<!-- 直接引入 styles/themes/micro-elevation-v1.css（免匯入元件庫） -->\n<link rel=\"stylesheet\" href=\"./styles/themes/micro-elevation-v1.css\">\n\n<div class=\"my-klplink\" style=\"\n\tbackground: var(--klp-colors-surface);\n\tcolor: var(--klp-colors-text);\n\tborder: 1px solid var(--klp-colors-border);\n\tborder-radius: var(--klp-shape-control);\n\tpadding: var(--klp-spacing-contentInset);\n\">\n\tKlpLink 範例內容\n</div>"
+		}
 	},
 	"KlpList": {
 		"name": "KlpList",
@@ -1686,7 +1816,12 @@ export const catalogProps = Object.freeze({
 				"css": "--klp-shape-card",
 				"flutter": "shape.card"
 			}
-		]
+		],
+		"snippets": {
+			"react": "import { KlpThemeProvider, KlpList } from '@kallopis/react';\nimport '@kallopis/react/styles.css';\n\nexport function Example() {\n\treturn (\n\t\t<KlpThemeProvider mode=\"dark\">\n\t\t\t<KlpList label=\"工作區項目\" onSelect=\"範例\" />\n\t\t</KlpThemeProvider>\n\t);\n}",
+			"flutter": "import 'package:flutter/widgets.dart';\nimport 'package:kallopis/kallopis_foundation.dart';\nimport 'package:kallopis/kallopis_theme.dart';\n\n// Flutter 端對應 KlpFileExplorer（或以 KlpTheme.of(context) 組合）\nclass Example extends StatelessWidget {\n\tconst Example({super.key});\n\n\t@override\n\tWidget build(BuildContext context) {\n\t\treturn KlpFileExplorer(\n\t\t\t// 樣式由 context.klp 自動解析\n\t\t);\n\t}\n}",
+			"html": "<!-- 直接引入 styles/themes/micro-elevation-v1.css（免匯入元件庫） -->\n<link rel=\"stylesheet\" href=\"./styles/themes/micro-elevation-v1.css\">\n\n<div class=\"my-klplist\" style=\"\n\tbackground: var(--klp-colors-surface);\n\tcolor: var(--klp-colors-text);\n\tborder: 1px solid var(--klp-colors-border);\n\tborder-radius: var(--klp-shape-control);\n\tpadding: var(--klp-spacing-contentInset);\n\">\n\tKlpList 範例內容\n</div>"
+		}
 	},
 	"KlpModernProductivityLayout": {
 		"name": "KlpModernProductivityLayout",
@@ -1769,7 +1904,12 @@ export const catalogProps = Object.freeze({
 				"css": "--klp-geometry-layout-primaryPaneWidth",
 				"flutter": "geometry.layout.primaryPaneWidth"
 			}
-		]
+		],
+		"snippets": {
+			"react": "import { KlpThemeProvider, KlpModernProductivityLayout } from '@kallopis/react';\nimport '@kallopis/react/styles.css';\n\nexport function Example() {\n\treturn (\n\t\t<KlpThemeProvider mode=\"dark\">\n\t\t\t<KlpModernProductivityLayout selectedId=\"範例\" />\n\t\t</KlpThemeProvider>\n\t);\n}",
+			"flutter": "import 'package:flutter/widgets.dart';\nimport 'package:kallopis/kallopis_foundation.dart';\nimport 'package:kallopis/kallopis_theme.dart';\n\n// 使用 Kallopis Flutter 公開元件 KlpModernProductivityLayout\nclass Example extends StatelessWidget {\n\tconst Example({super.key});\n\n\t@override\n\tWidget build(BuildContext context) {\n\t\treturn KlpModernProductivityLayout(\n\t\t\t// 樣式由 context.klp 自動解析\n\t\t);\n\t}\n}",
+			"html": "<!-- 直接引入 styles/themes/micro-elevation-v1.css（免匯入元件庫） -->\n<link rel=\"stylesheet\" href=\"./styles/themes/micro-elevation-v1.css\">\n\n<div class=\"my-klpmodernproductivitylayout\" style=\"\n\tbackground: var(--klp-colors-component);\n\tcolor: var(--klp-colors-text);\n\tborder: 1px solid var(--klp-colors-border);\n\tborder-radius: var(--klp-shape-panel);\n\tpadding: var(--klp-spacing-contentInset);\n\">\n\tKlpModernProductivityLayout 範例內容\n</div>"
+		}
 	},
 	"KlpMultiSelect": {
 		"name": "KlpMultiSelect",
@@ -1825,7 +1965,12 @@ export const catalogProps = Object.freeze({
 				"css": "--klp-spacing-comfortable",
 				"flutter": "spacing.comfortable"
 			}
-		]
+		],
+		"snippets": {
+			"react": "import { KlpThemeProvider, KlpMultiSelect } from '@kallopis/react';\nimport '@kallopis/react/styles.css';\n\nexport function Example() {\n\treturn (\n\t\t<KlpThemeProvider mode=\"dark\">\n\t\t\t<KlpMultiSelect label=\"工作區項目\" options=\"範例\" value={value} onValueChange=\"範例\" />\n\t\t</KlpThemeProvider>\n\t);\n}",
+			"flutter": "import 'package:flutter/widgets.dart';\nimport 'package:kallopis/kallopis_foundation.dart';\nimport 'package:kallopis/kallopis_theme.dart';\n\n// Flutter 端對應 KlpFilterChip（或以 KlpTheme.of(context) 組合）\nclass Example extends StatelessWidget {\n\tconst Example({super.key});\n\n\t@override\n\tWidget build(BuildContext context) {\n\t\treturn KlpFilterChip(\n\t\t\t// 樣式由 context.klp 自動解析\n\t\t);\n\t}\n}",
+			"html": "<!-- 直接引入 styles/themes/micro-elevation-v1.css（免匯入元件庫） -->\n<link rel=\"stylesheet\" href=\"./styles/themes/micro-elevation-v1.css\">\n\n<div class=\"my-klpmultiselect\" style=\"\n\tbackground: var(--klp-colors-component);\n\tcolor: var(--klp-colors-text);\n\tborder: 1px solid var(--klp-colors-border);\n\tborder-radius: var(--klp-shape-control);\n\tpadding: var(--klp-spacing-contentInset);\n\">\n\tKlpMultiSelect 範例內容\n</div>"
+		}
 	},
 	"KlpPagination": {
 		"name": "KlpPagination",
@@ -1904,7 +2049,12 @@ export const catalogProps = Object.freeze({
 				"css": "--klp-shape-card",
 				"flutter": "shape.card"
 			}
-		]
+		],
+		"snippets": {
+			"react": "import { KlpThemeProvider, KlpPagination } from '@kallopis/react';\nimport '@kallopis/react/styles.css';\n\nexport function Example() {\n\treturn (\n\t\t<KlpThemeProvider mode=\"dark\">\n\t\t\t<KlpPagination label=\"工作區項目\" />\n\t\t</KlpThemeProvider>\n\t);\n}",
+			"flutter": "import 'package:flutter/widgets.dart';\nimport 'package:kallopis/kallopis_foundation.dart';\nimport 'package:kallopis/kallopis_theme.dart';\n\n// 使用 Kallopis Flutter 公開元件 KlpPagination\nclass Example extends StatelessWidget {\n\tconst Example({super.key});\n\n\t@override\n\tWidget build(BuildContext context) {\n\t\treturn KlpPagination(\n\t\t\t// 樣式由 context.klp 自動解析\n\t\t);\n\t}\n}",
+			"html": "<!-- 直接引入 styles/themes/micro-elevation-v1.css（免匯入元件庫） -->\n<link rel=\"stylesheet\" href=\"./styles/themes/micro-elevation-v1.css\">\n\n<div class=\"my-klppagination\" style=\"\n\tbackground: var(--klp-colors-surface);\n\tcolor: var(--klp-colors-text);\n\tborder: 1px solid var(--klp-colors-border);\n\tborder-radius: var(--klp-shape-control);\n\tpadding: var(--klp-spacing-contentInset);\n\">\n\tKlpPagination 範例內容\n</div>"
+		}
 	},
 	"KlpPopover": {
 		"name": "KlpPopover",
@@ -1960,7 +2110,12 @@ export const catalogProps = Object.freeze({
 				"css": "--klp-spacing-comfortable",
 				"flutter": "spacing.comfortable"
 			}
-		]
+		],
+		"snippets": {
+			"react": "import { KlpThemeProvider, KlpPopover } from '@kallopis/react';\nimport '@kallopis/react/styles.css';\n\nexport function Example() {\n\treturn (\n\t\t<KlpThemeProvider mode=\"dark\">\n\t\t\t<KlpPopover label=\"工作區項目\" open={open}>範例內容</KlpPopover>\n\t\t</KlpThemeProvider>\n\t);\n}",
+			"flutter": "import 'package:flutter/widgets.dart';\nimport 'package:kallopis/kallopis_foundation.dart';\nimport 'package:kallopis/kallopis_theme.dart';\n\n// 使用 Kallopis Flutter 公開元件 KlpPopover\nclass Example extends StatelessWidget {\n\tconst Example({super.key});\n\n\t@override\n\tWidget build(BuildContext context) {\n\t\treturn KlpPopover(\n\t\t\t// 樣式由 context.klp 自動解析\n\t\t);\n\t}\n}",
+			"html": "<!-- 直接引入 styles/themes/micro-elevation-v1.css（免匯入元件庫） -->\n<link rel=\"stylesheet\" href=\"./styles/themes/micro-elevation-v1.css\">\n\n<div class=\"my-klppopover\" style=\"\n\tbackground: var(--klp-colors-component);\n\tcolor: var(--klp-colors-text);\n\tborder: 1px solid var(--klp-colors-border);\n\tborder-radius: var(--klp-shape-control);\n\tpadding: var(--klp-spacing-contentInset);\n\">\n\tKlpPopover 範例內容\n</div>"
+		}
 	},
 	"KlpProgress": {
 		"name": "KlpProgress",
@@ -2032,7 +2187,12 @@ export const catalogProps = Object.freeze({
 				"css": "--klp-shape-card",
 				"flutter": "shape.card"
 			}
-		]
+		],
+		"snippets": {
+			"react": "import { KlpThemeProvider, KlpProgress } from '@kallopis/react';\nimport '@kallopis/react/styles.css';\n\nexport function Example() {\n\treturn (\n\t\t<KlpThemeProvider mode=\"dark\">\n\t\t\t<KlpProgress label=\"工作區項目\" value={value} />\n\t\t</KlpThemeProvider>\n\t);\n}",
+			"flutter": "import 'package:flutter/widgets.dart';\nimport 'package:kallopis/kallopis_foundation.dart';\nimport 'package:kallopis/kallopis_theme.dart';\n\n// 使用 Kallopis Flutter 公開元件 KlpProgress\nclass Example extends StatelessWidget {\n\tconst Example({super.key});\n\n\t@override\n\tWidget build(BuildContext context) {\n\t\treturn KlpProgress(\n\t\t\t// 樣式由 context.klp 自動解析\n\t\t);\n\t}\n}",
+			"html": "<!-- 直接引入 styles/themes/micro-elevation-v1.css（免匯入元件庫） -->\n<link rel=\"stylesheet\" href=\"./styles/themes/micro-elevation-v1.css\">\n\n<div class=\"my-klpprogress\" style=\"\n\tbackground: var(--klp-colors-surface);\n\tcolor: var(--klp-colors-text);\n\tborder: 1px solid var(--klp-colors-border);\n\tborder-radius: var(--klp-shape-control);\n\tpadding: var(--klp-spacing-contentInset);\n\">\n\tKlpProgress 範例內容\n</div>"
+		}
 	},
 	"KlpRadioGroup": {
 		"name": "KlpRadioGroup",
@@ -2118,7 +2278,12 @@ export const catalogProps = Object.freeze({
 				"css": "--klp-shape-card",
 				"flutter": "shape.card"
 			}
-		]
+		],
+		"snippets": {
+			"react": "import { KlpThemeProvider, KlpRadioGroup } from '@kallopis/react';\nimport '@kallopis/react/styles.css';\n\nexport function Example() {\n\treturn (\n\t\t<KlpThemeProvider mode=\"dark\">\n\t\t\t<KlpRadioGroup label=\"工作區項目\" value={value} onValueChange=\"範例\" />\n\t\t</KlpThemeProvider>\n\t);\n}",
+			"flutter": "import 'package:flutter/widgets.dart';\nimport 'package:kallopis/kallopis_foundation.dart';\nimport 'package:kallopis/kallopis_theme.dart';\n\n// 使用 Kallopis Flutter 公開元件 KlpRadioGroup\nclass Example extends StatelessWidget {\n\tconst Example({super.key});\n\n\t@override\n\tWidget build(BuildContext context) {\n\t\treturn KlpRadioGroup(\n\t\t\t// 樣式由 context.klp 自動解析\n\t\t);\n\t}\n}",
+			"html": "<!-- 直接引入 styles/themes/micro-elevation-v1.css（免匯入元件庫） -->\n<link rel=\"stylesheet\" href=\"./styles/themes/micro-elevation-v1.css\">\n\n<div class=\"my-klpradiogroup\" style=\"\n\tbackground: var(--klp-colors-surface);\n\tcolor: var(--klp-colors-text);\n\tborder: 1px solid var(--klp-colors-border);\n\tborder-radius: var(--klp-shape-control);\n\tpadding: var(--klp-spacing-contentInset);\n\">\n\tKlpRadioGroup 範例內容\n</div>"
+		}
 	},
 	"KlpRegisteredCommandMenu": {
 		"name": "KlpRegisteredCommandMenu",
@@ -2256,7 +2421,12 @@ export const catalogProps = Object.freeze({
 				"css": "--klp-geometry-layout-commandMenuWidth",
 				"flutter": "geometry.layout.commandMenuWidth"
 			}
-		]
+		],
+		"snippets": {
+			"react": "import { KlpThemeProvider, KlpRegisteredCommandMenu } from '@kallopis/react';\nimport '@kallopis/react/styles.css';\n\nexport function Example() {\n\treturn (\n\t\t<KlpThemeProvider mode=\"dark\">\n\t\t\t<KlpRegisteredCommandMenu emptyLabel=\"範例\" />\n\t\t</KlpThemeProvider>\n\t);\n}",
+			"flutter": "import 'package:flutter/widgets.dart';\nimport 'package:kallopis/kallopis_foundation.dart';\nimport 'package:kallopis/kallopis_theme.dart';\n\n// 使用 Kallopis Flutter 公開元件 KlpRegisteredCommandMenu\nclass Example extends StatelessWidget {\n\tconst Example({super.key});\n\n\t@override\n\tWidget build(BuildContext context) {\n\t\treturn KlpRegisteredCommandMenu(\n\t\t\t// 樣式由 context.klp 自動解析\n\t\t);\n\t}\n}",
+			"html": "<!-- 直接引入 styles/themes/micro-elevation-v1.css（免匯入元件庫） -->\n<link rel=\"stylesheet\" href=\"./styles/themes/micro-elevation-v1.css\">\n\n<div class=\"my-klpregisteredcommandmenu\" style=\"\n\tbackground: var(--klp-surface-separation);\n\tcolor: var(--klp-colors-text);\n\tborder: 1px solid var(--klp-colors-border);\n\tborder-radius: var(--klp-shape-control);\n\tpadding: var(--klp-spacing-contentInset);\n\">\n\tKlpRegisteredCommandMenu 範例內容\n</div>"
+		}
 	},
 	"KlpRegisteredCommandPalette": {
 		"name": "KlpRegisteredCommandPalette",
@@ -2377,7 +2547,12 @@ export const catalogProps = Object.freeze({
 				"css": "--klp-geometry-layout-dialogMaximumWidth",
 				"flutter": "geometry.layout.dialogMaximumWidth"
 			}
-		]
+		],
+		"snippets": {
+			"react": "import { KlpThemeProvider, KlpRegisteredCommandPalette } from '@kallopis/react';\nimport '@kallopis/react/styles.css';\n\nexport function Example() {\n\treturn (\n\t\t<KlpThemeProvider mode=\"dark\">\n\t\t\t<KlpRegisteredCommandPalette open={open} label=\"工作區項目\" />\n\t\t</KlpThemeProvider>\n\t);\n}",
+			"flutter": "import 'package:flutter/widgets.dart';\nimport 'package:kallopis/kallopis_foundation.dart';\nimport 'package:kallopis/kallopis_theme.dart';\n\n// 使用 Kallopis Flutter 公開元件 KlpRegisteredCommandPalette\nclass Example extends StatelessWidget {\n\tconst Example({super.key});\n\n\t@override\n\tWidget build(BuildContext context) {\n\t\treturn KlpRegisteredCommandPalette(\n\t\t\t// 樣式由 context.klp 自動解析\n\t\t);\n\t}\n}",
+			"html": "<!-- 直接引入 styles/themes/micro-elevation-v1.css（免匯入元件庫） -->\n<link rel=\"stylesheet\" href=\"./styles/themes/micro-elevation-v1.css\">\n\n<div class=\"my-klpregisteredcommandpalette\" style=\"\n\tbackground: var(--klp-surface-separation);\n\tcolor: var(--klp-colors-text);\n\tborder: 1px solid var(--klp-colors-border);\n\tborder-radius: var(--klp-shape-control);\n\tpadding: var(--klp-spacing-contentInset);\n\">\n\tKlpRegisteredCommandPalette 範例內容\n</div>"
+		}
 	},
 	"KlpRegisteredCommandPopup": {
 		"name": "KlpRegisteredCommandPopup",
@@ -2475,7 +2650,12 @@ export const catalogProps = Object.freeze({
 				"css": "--klp-geometry-layout-commandMenuWidth",
 				"flutter": "geometry.layout.commandMenuWidth"
 			}
-		]
+		],
+		"snippets": {
+			"react": "import { KlpThemeProvider, KlpRegisteredCommandPopup } from '@kallopis/react';\nimport '@kallopis/react/styles.css';\n\nexport function Example() {\n\treturn (\n\t\t<KlpThemeProvider mode=\"dark\">\n\t\t\t<KlpRegisteredCommandPopup open={open} />\n\t\t</KlpThemeProvider>\n\t);\n}",
+			"flutter": "import 'package:flutter/widgets.dart';\nimport 'package:kallopis/kallopis_foundation.dart';\nimport 'package:kallopis/kallopis_theme.dart';\n\n// 使用 Kallopis Flutter 公開元件 KlpRegisteredCommandPopup\nclass Example extends StatelessWidget {\n\tconst Example({super.key});\n\n\t@override\n\tWidget build(BuildContext context) {\n\t\treturn KlpRegisteredCommandPopup(\n\t\t\t// 樣式由 context.klp 自動解析\n\t\t);\n\t}\n}",
+			"html": "<!-- 直接引入 styles/themes/micro-elevation-v1.css（免匯入元件庫） -->\n<link rel=\"stylesheet\" href=\"./styles/themes/micro-elevation-v1.css\">\n\n<div class=\"my-klpregisteredcommandpopup\" style=\"\n\tbackground: var(--klp-colors-component);\n\tcolor: var(--klp-colors-text);\n\tborder: 1px solid var(--klp-colors-border);\n\tborder-radius: var(--klp-shape-control);\n\tpadding: var(--klp-spacing-contentInset);\n\">\n\tKlpRegisteredCommandPopup 範例內容\n</div>"
+		}
 	},
 	"KlpRegisteredCommandToolbar": {
 		"name": "KlpRegisteredCommandToolbar",
@@ -2592,7 +2772,12 @@ export const catalogProps = Object.freeze({
 				"css": "--klp-geometry-layout-commandMenuWidth",
 				"flutter": "geometry.layout.commandMenuWidth"
 			}
-		]
+		],
+		"snippets": {
+			"react": "import { KlpThemeProvider, KlpRegisteredCommandToolbar } from '@kallopis/react';\nimport '@kallopis/react/styles.css';\n\nexport function Example() {\n\treturn (\n\t\t<KlpThemeProvider mode=\"dark\">\n\t\t\t<KlpRegisteredCommandToolbar label=\"工作區項目\" />\n\t\t</KlpThemeProvider>\n\t);\n}",
+			"flutter": "import 'package:flutter/widgets.dart';\nimport 'package:kallopis/kallopis_foundation.dart';\nimport 'package:kallopis/kallopis_theme.dart';\n\n// 使用 Kallopis Flutter 公開元件 KlpRegisteredCommandToolbar\nclass Example extends StatelessWidget {\n\tconst Example({super.key});\n\n\t@override\n\tWidget build(BuildContext context) {\n\t\treturn KlpRegisteredCommandToolbar(\n\t\t\t// 樣式由 context.klp 自動解析\n\t\t);\n\t}\n}",
+			"html": "<!-- 直接引入 styles/themes/micro-elevation-v1.css（免匯入元件庫） -->\n<link rel=\"stylesheet\" href=\"./styles/themes/micro-elevation-v1.css\">\n\n<div class=\"my-klpregisteredcommandtoolbar\" style=\"\n\tbackground: var(--klp-surface-separation);\n\tcolor: var(--klp-colors-text);\n\tborder: 1px solid var(--klp-colors-border);\n\tborder-radius: var(--klp-shape-control);\n\tpadding: var(--klp-spacing-contentInset);\n\">\n\tKlpRegisteredCommandToolbar 範例內容\n</div>"
+		}
 	},
 	"KlpRibbon": {
 		"name": "KlpRibbon",
@@ -2641,7 +2826,12 @@ export const catalogProps = Object.freeze({
 				"css": "--klp-spacing-comfortable",
 				"flutter": "spacing.comfortable"
 			}
-		]
+		],
+		"snippets": {
+			"react": "import { KlpThemeProvider, KlpRibbon } from '@kallopis/react';\nimport '@kallopis/react/styles.css';\n\nexport function Example() {\n\treturn (\n\t\t<KlpThemeProvider mode=\"dark\">\n\t\t\t<KlpRibbon label=\"工作區項目\" value={value} onValueChange=\"範例\" />\n\t\t</KlpThemeProvider>\n\t);\n}",
+			"flutter": "import 'package:flutter/widgets.dart';\nimport 'package:kallopis/kallopis_foundation.dart';\nimport 'package:kallopis/kallopis_theme.dart';\n\n// 透過 KlpTheme.of(context) 讀取共用 semantic tokens\nclass Example extends StatelessWidget {\n\tconst Example({super.key});\n\n\t@override\n\tWidget build(BuildContext context) {\n\t\treturn KlpRibbon(\n\t\t\t// 樣式由 context.klp 自動解析\n\t\t);\n\t}\n}",
+			"html": "<!-- 直接引入 styles/themes/micro-elevation-v1.css（免匯入元件庫） -->\n<link rel=\"stylesheet\" href=\"./styles/themes/micro-elevation-v1.css\">\n\n<div class=\"my-klpribbon\" style=\"\n\tbackground: var(--klp-colors-component);\n\tcolor: var(--klp-colors-text);\n\tborder: 1px solid var(--klp-colors-border);\n\tborder-radius: var(--klp-shape-control);\n\tpadding: var(--klp-spacing-contentInset);\n\">\n\tKlpRibbon 範例內容\n</div>"
+		}
 	},
 	"KlpSelect": {
 		"name": "KlpSelect",
@@ -2727,7 +2917,12 @@ export const catalogProps = Object.freeze({
 				"css": "--klp-shape-card",
 				"flutter": "shape.card"
 			}
-		]
+		],
+		"snippets": {
+			"react": "import { KlpThemeProvider, KlpSelect } from '@kallopis/react';\nimport '@kallopis/react/styles.css';\n\nexport function Example() {\n\treturn (\n\t\t<KlpThemeProvider mode=\"dark\">\n\t\t\t<KlpSelect label=\"工作區項目\" />\n\t\t</KlpThemeProvider>\n\t);\n}",
+			"flutter": "import 'package:flutter/widgets.dart';\nimport 'package:kallopis/kallopis_foundation.dart';\nimport 'package:kallopis/kallopis_theme.dart';\n\n// 使用 Kallopis Flutter 公開元件 KlpSelect\nclass Example extends StatelessWidget {\n\tconst Example({super.key});\n\n\t@override\n\tWidget build(BuildContext context) {\n\t\treturn KlpSelect(\n\t\t\t// 樣式由 context.klp 自動解析\n\t\t);\n\t}\n}",
+			"html": "<!-- 直接引入 styles/themes/micro-elevation-v1.css（免匯入元件庫） -->\n<link rel=\"stylesheet\" href=\"./styles/themes/micro-elevation-v1.css\">\n\n<div class=\"my-klpselect\" style=\"\n\tbackground: var(--klp-colors-surface);\n\tcolor: var(--klp-colors-text);\n\tborder: 1px solid var(--klp-colors-border);\n\tborder-radius: var(--klp-shape-control);\n\tpadding: var(--klp-spacing-contentInset);\n\">\n\tKlpSelect 範例內容\n</div>"
+		}
 	},
 	"KlpSeparator": {
 		"name": "KlpSeparator",
@@ -2777,7 +2972,12 @@ export const catalogProps = Object.freeze({
 				"css": "--klp-shape-card",
 				"flutter": "shape.card"
 			}
-		]
+		],
+		"snippets": {
+			"react": "import { KlpThemeProvider, KlpSeparator } from '@kallopis/react';\nimport '@kallopis/react/styles.css';\n\nexport function Example() {\n\treturn (\n\t\t<KlpThemeProvider mode=\"dark\">\n\t\t\t<KlpSeparator />\n\t\t</KlpThemeProvider>\n\t);\n}",
+			"flutter": "import 'package:flutter/widgets.dart';\nimport 'package:kallopis/kallopis_foundation.dart';\nimport 'package:kallopis/kallopis_theme.dart';\n\n// Flutter 端對應 KlpDivider（或以 KlpTheme.of(context) 組合）\nclass Example extends StatelessWidget {\n\tconst Example({super.key});\n\n\t@override\n\tWidget build(BuildContext context) {\n\t\treturn KlpDivider(\n\t\t\t// 樣式由 context.klp 自動解析\n\t\t);\n\t}\n}",
+			"html": "<!-- 直接引入 styles/themes/micro-elevation-v1.css（免匯入元件庫） -->\n<link rel=\"stylesheet\" href=\"./styles/themes/micro-elevation-v1.css\">\n\n<div class=\"my-klpseparator\" style=\"\n\tbackground: var(--klp-colors-surface);\n\tcolor: var(--klp-colors-text);\n\tborder: 1px solid var(--klp-colors-border);\n\tborder-radius: var(--klp-shape-control);\n\tpadding: var(--klp-spacing-contentInset);\n\">\n\tKlpSeparator 範例內容\n</div>"
+		}
 	},
 	"KlpSkeleton": {
 		"name": "KlpSkeleton",
@@ -2835,7 +3035,12 @@ export const catalogProps = Object.freeze({
 				"css": "--klp-shape-card",
 				"flutter": "shape.card"
 			}
-		]
+		],
+		"snippets": {
+			"react": "import { KlpThemeProvider, KlpSkeleton } from '@kallopis/react';\nimport '@kallopis/react/styles.css';\n\nexport function Example() {\n\treturn (\n\t\t<KlpThemeProvider mode=\"dark\">\n\t\t\t<KlpSkeleton label=\"工作區項目\" />\n\t\t</KlpThemeProvider>\n\t);\n}",
+			"flutter": "import 'package:flutter/widgets.dart';\nimport 'package:kallopis/kallopis_foundation.dart';\nimport 'package:kallopis/kallopis_theme.dart';\n\n// Flutter 端對應 KlpSurface（或以 KlpTheme.of(context) 組合）\nclass Example extends StatelessWidget {\n\tconst Example({super.key});\n\n\t@override\n\tWidget build(BuildContext context) {\n\t\treturn KlpSurface(\n\t\t\t// 樣式由 context.klp 自動解析\n\t\t);\n\t}\n}",
+			"html": "<!-- 直接引入 styles/themes/micro-elevation-v1.css（免匯入元件庫） -->\n<link rel=\"stylesheet\" href=\"./styles/themes/micro-elevation-v1.css\">\n\n<div class=\"my-klpskeleton\" style=\"\n\tbackground: var(--klp-colors-surface);\n\tcolor: var(--klp-colors-text);\n\tborder: 1px solid var(--klp-colors-border);\n\tborder-radius: var(--klp-shape-control);\n\tpadding: var(--klp-spacing-contentInset);\n\">\n\tKlpSkeleton 範例內容\n</div>"
+		}
 	},
 	"KlpSlider": {
 		"name": "KlpSlider",
@@ -2900,7 +3105,12 @@ export const catalogProps = Object.freeze({
 				"css": "--klp-shape-card",
 				"flutter": "shape.card"
 			}
-		]
+		],
+		"snippets": {
+			"react": "import { KlpThemeProvider, KlpSlider } from '@kallopis/react';\nimport '@kallopis/react/styles.css';\n\nexport function Example() {\n\treturn (\n\t\t<KlpThemeProvider mode=\"dark\">\n\t\t\t<KlpSlider label=\"工作區項目\" />\n\t\t</KlpThemeProvider>\n\t);\n}",
+			"flutter": "import 'package:flutter/widgets.dart';\nimport 'package:kallopis/kallopis_foundation.dart';\nimport 'package:kallopis/kallopis_theme.dart';\n\n// 使用 Kallopis Flutter 公開元件 KlpSlider\nclass Example extends StatelessWidget {\n\tconst Example({super.key});\n\n\t@override\n\tWidget build(BuildContext context) {\n\t\treturn KlpSlider(\n\t\t\t// 樣式由 context.klp 自動解析\n\t\t);\n\t}\n}",
+			"html": "<!-- 直接引入 styles/themes/micro-elevation-v1.css（免匯入元件庫） -->\n<link rel=\"stylesheet\" href=\"./styles/themes/micro-elevation-v1.css\">\n\n<div class=\"my-klpslider\" style=\"\n\tbackground: var(--klp-colors-surface);\n\tcolor: var(--klp-colors-text);\n\tborder: 1px solid var(--klp-colors-border);\n\tborder-radius: var(--klp-shape-control);\n\tpadding: var(--klp-spacing-contentInset);\n\">\n\tKlpSlider 範例內容\n</div>"
+		}
 	},
 	"KlpSpinner": {
 		"name": "KlpSpinner",
@@ -2928,7 +3138,12 @@ export const catalogProps = Object.freeze({
 				"css": "--klp-spacing-comfortable",
 				"flutter": "spacing.comfortable"
 			}
-		]
+		],
+		"snippets": {
+			"react": "import { KlpThemeProvider, KlpSpinner } from '@kallopis/react';\nimport '@kallopis/react/styles.css';\n\nexport function Example() {\n\treturn (\n\t\t<KlpThemeProvider mode=\"dark\">\n\t\t\t<KlpSpinner label=\"工作區項目\" />\n\t\t</KlpThemeProvider>\n\t);\n}",
+			"flutter": "import 'package:flutter/widgets.dart';\nimport 'package:kallopis/kallopis_foundation.dart';\nimport 'package:kallopis/kallopis_theme.dart';\n\n// Flutter 端對應 KlpProgressBar（或以 KlpTheme.of(context) 組合）\nclass Example extends StatelessWidget {\n\tconst Example({super.key});\n\n\t@override\n\tWidget build(BuildContext context) {\n\t\treturn KlpProgressBar(\n\t\t\t// 樣式由 context.klp 自動解析\n\t\t);\n\t}\n}",
+			"html": "<!-- 直接引入 styles/themes/micro-elevation-v1.css（免匯入元件庫） -->\n<link rel=\"stylesheet\" href=\"./styles/themes/micro-elevation-v1.css\">\n\n<div class=\"my-klpspinner\" style=\"\n\tbackground: var(--klp-colors-component);\n\tcolor: var(--klp-colors-text);\n\tborder: 1px solid var(--klp-colors-border);\n\tborder-radius: var(--klp-shape-control);\n\tpadding: var(--klp-spacing-contentInset);\n\">\n\tKlpSpinner 範例內容\n</div>"
+		}
 	},
 	"KlpSplitButton": {
 		"name": "KlpSplitButton",
@@ -2977,7 +3192,12 @@ export const catalogProps = Object.freeze({
 				"css": "--klp-spacing-comfortable",
 				"flutter": "spacing.comfortable"
 			}
-		]
+		],
+		"snippets": {
+			"react": "import { KlpThemeProvider, KlpSplitButton } from '@kallopis/react';\nimport '@kallopis/react/styles.css';\n\nexport function Example() {\n\treturn (\n\t\t<KlpThemeProvider mode=\"dark\">\n\t\t\t<KlpSplitButton label=\"工作區項目\" options=\"範例\" />\n\t\t</KlpThemeProvider>\n\t);\n}",
+			"flutter": "import 'package:flutter/widgets.dart';\nimport 'package:kallopis/kallopis_foundation.dart';\nimport 'package:kallopis/kallopis_theme.dart';\n\n// 透過 KlpTheme.of(context) 讀取共用 semantic tokens\nclass Example extends StatelessWidget {\n\tconst Example({super.key});\n\n\t@override\n\tWidget build(BuildContext context) {\n\t\treturn KlpSplitButton(\n\t\t\t// 樣式由 context.klp 自動解析\n\t\t);\n\t}\n}",
+			"html": "<!-- 直接引入 styles/themes/micro-elevation-v1.css（免匯入元件庫） -->\n<link rel=\"stylesheet\" href=\"./styles/themes/micro-elevation-v1.css\">\n\n<div class=\"my-klpsplitbutton\" style=\"\n\tbackground: var(--klp-colors-component);\n\tcolor: var(--klp-colors-text);\n\tborder: 1px solid var(--klp-colors-border);\n\tborder-radius: var(--klp-shape-control);\n\tpadding: var(--klp-spacing-contentInset);\n\">\n\tKlpSplitButton 範例內容\n</div>"
+		}
 	},
 	"KlpStatusBar": {
 		"name": "KlpStatusBar",
@@ -3035,7 +3255,12 @@ export const catalogProps = Object.freeze({
 				"css": "--klp-shape-card",
 				"flutter": "shape.card"
 			}
-		]
+		],
+		"snippets": {
+			"react": "import { KlpThemeProvider, KlpStatusBar } from '@kallopis/react';\nimport '@kallopis/react/styles.css';\n\nexport function Example() {\n\treturn (\n\t\t<KlpThemeProvider mode=\"dark\">\n\t\t\t<KlpStatusBar>範例內容</KlpStatusBar>\n\t\t</KlpThemeProvider>\n\t);\n}",
+			"flutter": "import 'package:flutter/widgets.dart';\nimport 'package:kallopis/kallopis_foundation.dart';\nimport 'package:kallopis/kallopis_theme.dart';\n\n// 使用 Kallopis Flutter 公開元件 KlpStatusBar\nclass Example extends StatelessWidget {\n\tconst Example({super.key});\n\n\t@override\n\tWidget build(BuildContext context) {\n\t\treturn KlpStatusBar(\n\t\t\t// 樣式由 context.klp 自動解析\n\t\t);\n\t}\n}",
+			"html": "<!-- 直接引入 styles/themes/micro-elevation-v1.css（免匯入元件庫） -->\n<link rel=\"stylesheet\" href=\"./styles/themes/micro-elevation-v1.css\">\n\n<div class=\"my-klpstatusbar\" style=\"\n\tbackground: var(--klp-colors-surface);\n\tcolor: var(--klp-colors-text);\n\tborder: 1px solid var(--klp-colors-border);\n\tborder-radius: var(--klp-shape-control);\n\tpadding: var(--klp-spacing-contentInset);\n\">\n\tKlpStatusBar 範例內容\n</div>"
+		}
 	},
 	"KlpSurface": {
 		"name": "KlpSurface",
@@ -3070,7 +3295,12 @@ export const catalogProps = Object.freeze({
 				"css": "--klp-colors-surfaceInset",
 				"flutter": "colors.surfaceInset"
 			}
-		]
+		],
+		"snippets": {
+			"react": "import { KlpThemeProvider, KlpSurface } from '@kallopis/react';\nimport '@kallopis/react/styles.css';\n\nexport function Example() {\n\treturn (\n\t\t<KlpThemeProvider mode=\"dark\">\n\t\t\t<KlpSurface tone=\"primary\">範例內容</KlpSurface>\n\t\t</KlpThemeProvider>\n\t);\n}",
+			"flutter": "import 'package:flutter/widgets.dart';\nimport 'package:kallopis/kallopis_foundation.dart';\nimport 'package:kallopis/kallopis_theme.dart';\n\n// 使用 Kallopis Flutter 公開元件 KlpSurface\nclass Example extends StatelessWidget {\n\tconst Example({super.key});\n\n\t@override\n\tWidget build(BuildContext context) {\n\t\treturn KlpSurface(\n\t\t\t// 樣式由 context.klp 自動解析\n\t\t);\n\t}\n}",
+			"html": "<!-- 直接引入 styles/themes/micro-elevation-v1.css（免匯入元件庫） -->\n<link rel=\"stylesheet\" href=\"./styles/themes/micro-elevation-v1.css\">\n\n<div class=\"my-klpsurface\" style=\"\n\tbackground: var(--klp-colors-surface);\n\tcolor: var(--klp-colors-text);\n\tborder: 1px solid var(--klp-colors-border);\n\tborder-radius: var(--klp-shape-control);\n\tpadding: var(--klp-spacing-contentInset);\n\">\n\tKlpSurface 範例內容\n</div>"
+		}
 	},
 	"KlpSwitch": {
 		"name": "KlpSwitch",
@@ -3135,7 +3365,12 @@ export const catalogProps = Object.freeze({
 				"css": "--klp-shape-card",
 				"flutter": "shape.card"
 			}
-		]
+		],
+		"snippets": {
+			"react": "import { KlpThemeProvider, KlpSwitch } from '@kallopis/react';\nimport '@kallopis/react/styles.css';\n\nexport function Example() {\n\treturn (\n\t\t<KlpThemeProvider mode=\"dark\">\n\t\t\t<KlpSwitch label=\"工作區項目\" />\n\t\t</KlpThemeProvider>\n\t);\n}",
+			"flutter": "import 'package:flutter/widgets.dart';\nimport 'package:kallopis/kallopis_foundation.dart';\nimport 'package:kallopis/kallopis_theme.dart';\n\n// Flutter 端對應 KlpCompactSwitch（或以 KlpTheme.of(context) 組合）\nclass Example extends StatelessWidget {\n\tconst Example({super.key});\n\n\t@override\n\tWidget build(BuildContext context) {\n\t\treturn KlpCompactSwitch(\n\t\t\t// 樣式由 context.klp 自動解析\n\t\t);\n\t}\n}",
+			"html": "<!-- 直接引入 styles/themes/micro-elevation-v1.css（免匯入元件庫） -->\n<link rel=\"stylesheet\" href=\"./styles/themes/micro-elevation-v1.css\">\n\n<div class=\"my-klpswitch\" style=\"\n\tbackground: var(--klp-colors-surface);\n\tcolor: var(--klp-colors-text);\n\tborder: 1px solid var(--klp-colors-border);\n\tborder-radius: var(--klp-shape-control);\n\tpadding: var(--klp-spacing-contentInset);\n\">\n\tKlpSwitch 範例內容\n</div>"
+		}
 	},
 	"KlpSystemAction": {
 		"name": "KlpSystemAction",
@@ -3184,7 +3419,12 @@ export const catalogProps = Object.freeze({
 				"css": "--klp-spacing-comfortable",
 				"flutter": "spacing.comfortable"
 			}
-		]
+		],
+		"snippets": {
+			"react": "import { KlpThemeProvider, KlpSystemAction } from '@kallopis/react';\nimport '@kallopis/react/styles.css';\n\nexport function Example() {\n\treturn (\n\t\t<KlpThemeProvider mode=\"dark\">\n\t\t\t<KlpSystemAction label=\"工作區項目\" />\n\t\t</KlpThemeProvider>\n\t);\n}",
+			"flutter": "import 'package:flutter/widgets.dart';\nimport 'package:kallopis/kallopis_foundation.dart';\nimport 'package:kallopis/kallopis_theme.dart';\n\n// 透過 KlpTheme.of(context) 讀取共用 semantic tokens\nclass Example extends StatelessWidget {\n\tconst Example({super.key});\n\n\t@override\n\tWidget build(BuildContext context) {\n\t\treturn KlpSystemAction(\n\t\t\t// 樣式由 context.klp 自動解析\n\t\t);\n\t}\n}",
+			"html": "<!-- 直接引入 styles/themes/micro-elevation-v1.css（免匯入元件庫） -->\n<link rel=\"stylesheet\" href=\"./styles/themes/micro-elevation-v1.css\">\n\n<div class=\"my-klpsystemaction\" style=\"\n\tbackground: var(--klp-colors-component);\n\tcolor: var(--klp-colors-text);\n\tborder: 1px solid var(--klp-colors-border);\n\tborder-radius: var(--klp-shape-control);\n\tpadding: var(--klp-spacing-contentInset);\n\">\n\tKlpSystemAction 範例內容\n</div>"
+		}
 	},
 	"KlpTable": {
 		"name": "KlpTable",
@@ -3256,7 +3496,12 @@ export const catalogProps = Object.freeze({
 				"css": "--klp-shape-card",
 				"flutter": "shape.card"
 			}
-		]
+		],
+		"snippets": {
+			"react": "import { KlpThemeProvider, KlpTable } from '@kallopis/react';\nimport '@kallopis/react/styles.css';\n\nexport function Example() {\n\treturn (\n\t\t<KlpThemeProvider mode=\"dark\">\n\t\t\t<KlpTable caption=\"範例\" columns=\"範例\" rows=\"範例\" />\n\t\t</KlpThemeProvider>\n\t);\n}",
+			"flutter": "import 'package:flutter/widgets.dart';\nimport 'package:kallopis/kallopis_foundation.dart';\nimport 'package:kallopis/kallopis_theme.dart';\n\n// Flutter 端對應 KlpTree（或以 KlpTheme.of(context) 組合）\nclass Example extends StatelessWidget {\n\tconst Example({super.key});\n\n\t@override\n\tWidget build(BuildContext context) {\n\t\treturn KlpTree(\n\t\t\t// 樣式由 context.klp 自動解析\n\t\t);\n\t}\n}",
+			"html": "<!-- 直接引入 styles/themes/micro-elevation-v1.css（免匯入元件庫） -->\n<link rel=\"stylesheet\" href=\"./styles/themes/micro-elevation-v1.css\">\n\n<div class=\"my-klptable\" style=\"\n\tbackground: var(--klp-colors-surface);\n\tcolor: var(--klp-colors-text);\n\tborder: 1px solid var(--klp-colors-border);\n\tborder-radius: var(--klp-shape-control);\n\tpadding: var(--klp-spacing-contentInset);\n\">\n\tKlpTable 範例內容\n</div>"
+		}
 	},
 	"KlpTabs": {
 		"name": "KlpTabs",
@@ -3335,7 +3580,12 @@ export const catalogProps = Object.freeze({
 				"css": "--klp-shape-card",
 				"flutter": "shape.card"
 			}
-		]
+		],
+		"snippets": {
+			"react": "import { KlpThemeProvider, KlpTabs } from '@kallopis/react';\nimport '@kallopis/react/styles.css';\n\nexport function Example() {\n\treturn (\n\t\t<KlpThemeProvider mode=\"dark\">\n\t\t\t<KlpTabs label=\"工作區項目\" value={value} onValueChange=\"範例\" />\n\t\t</KlpThemeProvider>\n\t);\n}",
+			"flutter": "import 'package:flutter/widgets.dart';\nimport 'package:kallopis/kallopis_foundation.dart';\nimport 'package:kallopis/kallopis_theme.dart';\n\n// 使用 Kallopis Flutter 公開元件 KlpTabs\nclass Example extends StatelessWidget {\n\tconst Example({super.key});\n\n\t@override\n\tWidget build(BuildContext context) {\n\t\treturn KlpTabs(\n\t\t\t// 樣式由 context.klp 自動解析\n\t\t);\n\t}\n}",
+			"html": "<!-- 直接引入 styles/themes/micro-elevation-v1.css（免匯入元件庫） -->\n<link rel=\"stylesheet\" href=\"./styles/themes/micro-elevation-v1.css\">\n\n<div class=\"my-klptabs\" style=\"\n\tbackground: var(--klp-colors-surface);\n\tcolor: var(--klp-colors-text);\n\tborder: 1px solid var(--klp-colors-border);\n\tborder-radius: var(--klp-shape-control);\n\tpadding: var(--klp-spacing-contentInset);\n\">\n\tKlpTabs 範例內容\n</div>"
+		}
 	},
 	"KlpText": {
 		"name": "KlpText",
@@ -3384,7 +3634,12 @@ export const catalogProps = Object.freeze({
 				"css": "--klp-colors-surfaceInset",
 				"flutter": "colors.surfaceInset"
 			}
-		]
+		],
+		"snippets": {
+			"react": "import { KlpThemeProvider, KlpText } from '@kallopis/react';\nimport '@kallopis/react/styles.css';\n\nexport function Example() {\n\treturn (\n\t\t<KlpThemeProvider mode=\"dark\">\n\t\t\t<KlpText tone=\"primary\">範例內容</KlpText>\n\t\t</KlpThemeProvider>\n\t);\n}",
+			"flutter": "import 'package:flutter/widgets.dart';\nimport 'package:kallopis/kallopis_foundation.dart';\nimport 'package:kallopis/kallopis_theme.dart';\n\n// 使用 Kallopis Flutter 公開元件 KlpText\nclass Example extends StatelessWidget {\n\tconst Example({super.key});\n\n\t@override\n\tWidget build(BuildContext context) {\n\t\treturn KlpText(\n\t\t\t// 樣式由 context.klp 自動解析\n\t\t);\n\t}\n}",
+			"html": "<!-- 直接引入 styles/themes/micro-elevation-v1.css（免匯入元件庫） -->\n<link rel=\"stylesheet\" href=\"./styles/themes/micro-elevation-v1.css\">\n\n<div class=\"my-klptext\" style=\"\n\tbackground: var(--klp-colors-surface);\n\tcolor: var(--klp-colors-text);\n\tborder: 1px solid var(--klp-colors-border);\n\tborder-radius: var(--klp-shape-control);\n\tpadding: var(--klp-spacing-contentInset);\n\">\n\tKlpText 範例內容\n</div>"
+		}
 	},
 	"KlpTextArea": {
 		"name": "KlpTextArea",
@@ -3463,7 +3718,12 @@ export const catalogProps = Object.freeze({
 				"css": "--klp-shape-card",
 				"flutter": "shape.card"
 			}
-		]
+		],
+		"snippets": {
+			"react": "import { KlpThemeProvider, KlpTextArea } from '@kallopis/react';\nimport '@kallopis/react/styles.css';\n\nexport function Example() {\n\treturn (\n\t\t<KlpThemeProvider mode=\"dark\">\n\t\t\t<KlpTextArea label=\"工作區項目\" />\n\t\t</KlpThemeProvider>\n\t);\n}",
+			"flutter": "import 'package:flutter/widgets.dart';\nimport 'package:kallopis/kallopis_foundation.dart';\nimport 'package:kallopis/kallopis_theme.dart';\n\n// 使用 Kallopis Flutter 公開元件 KlpTextArea\nclass Example extends StatelessWidget {\n\tconst Example({super.key});\n\n\t@override\n\tWidget build(BuildContext context) {\n\t\treturn KlpTextArea(\n\t\t\t// 樣式由 context.klp 自動解析\n\t\t);\n\t}\n}",
+			"html": "<!-- 直接引入 styles/themes/micro-elevation-v1.css（免匯入元件庫） -->\n<link rel=\"stylesheet\" href=\"./styles/themes/micro-elevation-v1.css\">\n\n<div class=\"my-klptextarea\" style=\"\n\tbackground: var(--klp-colors-surface);\n\tcolor: var(--klp-colors-text);\n\tborder: 1px solid var(--klp-colors-border);\n\tborder-radius: var(--klp-shape-control);\n\tpadding: var(--klp-spacing-contentInset);\n\">\n\tKlpTextArea 範例內容\n</div>"
+		}
 	},
 	"KlpTextField": {
 		"name": "KlpTextField",
@@ -3512,7 +3772,12 @@ export const catalogProps = Object.freeze({
 				"css": "--klp-colors-surfaceInset",
 				"flutter": "colors.surfaceInset"
 			}
-		]
+		],
+		"snippets": {
+			"react": "import { KlpThemeProvider, KlpTextField } from '@kallopis/react';\nimport '@kallopis/react/styles.css';\n\nexport function Example() {\n\treturn (\n\t\t<KlpThemeProvider mode=\"dark\">\n\t\t\t<KlpTextField label=\"工作區項目\" />\n\t\t</KlpThemeProvider>\n\t);\n}",
+			"flutter": "import 'package:flutter/widgets.dart';\nimport 'package:kallopis/kallopis_foundation.dart';\nimport 'package:kallopis/kallopis_theme.dart';\n\n// 使用 Kallopis Flutter 公開元件 KlpTextField\nclass Example extends StatelessWidget {\n\tconst Example({super.key});\n\n\t@override\n\tWidget build(BuildContext context) {\n\t\treturn KlpTextField(\n\t\t\t// 樣式由 context.klp 自動解析\n\t\t);\n\t}\n}",
+			"html": "<!-- 直接引入 styles/themes/micro-elevation-v1.css（免匯入元件庫） -->\n<link rel=\"stylesheet\" href=\"./styles/themes/micro-elevation-v1.css\">\n\n<div class=\"my-klptextfield\" style=\"\n\tbackground: var(--klp-colors-surface);\n\tcolor: var(--klp-colors-text);\n\tborder: 1px solid var(--klp-colors-border);\n\tborder-radius: var(--klp-shape-control);\n\tpadding: var(--klp-spacing-contentInset);\n\">\n\tKlpTextField 範例內容\n</div>"
+		}
 	},
 	"KlpThemeProvider": {
 		"name": "KlpThemeProvider",
@@ -3574,7 +3839,12 @@ export const catalogProps = Object.freeze({
 				"css": "--klp-surface-focusWashOpacity",
 				"flutter": "surface.focusWashOpacity"
 			}
-		]
+		],
+		"snippets": {
+			"react": "import { KlpThemeProvider, KlpThemeProvider } from '@kallopis/react';\nimport '@kallopis/react/styles.css';\n\nexport function Example() {\n\treturn (\n\t\t<KlpThemeProvider mode=\"dark\">\n\t\t\t<KlpThemeProvider>範例內容</KlpThemeProvider>\n\t\t</KlpThemeProvider>\n\t);\n}",
+			"flutter": "import 'package:flutter/widgets.dart';\nimport 'package:kallopis/kallopis_theme.dart';\n\n// Flutter 端對應 KlpTheme（或以 KlpTheme.of(context) 組合）\nKlpTheme(\n\tdata: KlpThemeData.dark(),\n\tchild: Builder(\n\t\tbuilder: (context) {\n\t\t\tfinal klp = context.klp;\n\t\t\treturn ColoredBox(color: klp.colors.app);\n\t\t},\n\t),\n)",
+			"html": "<!-- 直接引入 styles/themes/micro-elevation-v1.css（免匯入元件庫） -->\n<link rel=\"stylesheet\" href=\"./styles/themes/micro-elevation-v1.css\">\n\n<div class=\"my-klpthemeprovider\" style=\"\n\tbackground: var(--klp-colors-surface);\n\tcolor: var(--klp-colors-text);\n\tborder: 1px solid var(--klp-colors-border);\n\tborder-radius: var(--klp-shape-control);\n\tpadding: var(--klp-spacing-contentInset);\n\">\n\tKlpThemeProvider 範例內容\n</div>"
+		}
 	},
 	"KlpToastRegion": {
 		"name": "KlpToastRegion",
@@ -3616,7 +3886,12 @@ export const catalogProps = Object.freeze({
 				"css": "--klp-spacing-comfortable",
 				"flutter": "spacing.comfortable"
 			}
-		]
+		],
+		"snippets": {
+			"react": "import { KlpThemeProvider, KlpToastRegion } from '@kallopis/react';\nimport '@kallopis/react/styles.css';\n\nexport function Example() {\n\treturn (\n\t\t<KlpThemeProvider mode=\"dark\">\n\t\t\t<KlpToastRegion label=\"工作區項目\" items=\"範例\" onDismiss=\"範例\" />\n\t\t</KlpThemeProvider>\n\t);\n}",
+			"flutter": "import 'package:flutter/widgets.dart';\nimport 'package:kallopis/kallopis_foundation.dart';\nimport 'package:kallopis/kallopis_theme.dart';\n\n// Flutter 端對應 KlpSurface（或以 KlpTheme.of(context) 組合）\nclass Example extends StatelessWidget {\n\tconst Example({super.key});\n\n\t@override\n\tWidget build(BuildContext context) {\n\t\treturn KlpSurface(\n\t\t\t// 樣式由 context.klp 自動解析\n\t\t);\n\t}\n}",
+			"html": "<!-- 直接引入 styles/themes/micro-elevation-v1.css（免匯入元件庫） -->\n<link rel=\"stylesheet\" href=\"./styles/themes/micro-elevation-v1.css\">\n\n<div class=\"my-klptoastregion\" style=\"\n\tbackground: var(--klp-colors-component);\n\tcolor: var(--klp-colors-text);\n\tborder: 1px solid var(--klp-colors-border);\n\tborder-radius: var(--klp-shape-control);\n\tpadding: var(--klp-spacing-contentInset);\n\">\n\tKlpToastRegion 範例內容\n</div>"
+		}
 	},
 	"KlpTooltip": {
 		"name": "KlpTooltip",
@@ -3681,7 +3956,12 @@ export const catalogProps = Object.freeze({
 				"css": "--klp-shape-card",
 				"flutter": "shape.card"
 			}
-		]
+		],
+		"snippets": {
+			"react": "import { KlpThemeProvider, KlpTooltip } from '@kallopis/react';\nimport '@kallopis/react/styles.css';\n\nexport function Example() {\n\treturn (\n\t\t<KlpThemeProvider mode=\"dark\">\n\t\t\t<KlpTooltip text=\"範例\">範例內容</KlpTooltip>\n\t\t</KlpThemeProvider>\n\t);\n}",
+			"flutter": "import 'package:flutter/widgets.dart';\nimport 'package:kallopis/kallopis_foundation.dart';\nimport 'package:kallopis/kallopis_theme.dart';\n\n// 使用 Kallopis Flutter 公開元件 KlpTooltip\nclass Example extends StatelessWidget {\n\tconst Example({super.key});\n\n\t@override\n\tWidget build(BuildContext context) {\n\t\treturn KlpTooltip(\n\t\t\t// 樣式由 context.klp 自動解析\n\t\t);\n\t}\n}",
+			"html": "<!-- 直接引入 styles/themes/micro-elevation-v1.css（免匯入元件庫） -->\n<link rel=\"stylesheet\" href=\"./styles/themes/micro-elevation-v1.css\">\n\n<div class=\"my-klptooltip\" style=\"\n\tbackground: var(--klp-colors-surface);\n\tcolor: var(--klp-colors-text);\n\tborder: 1px solid var(--klp-colors-border);\n\tborder-radius: var(--klp-shape-control);\n\tpadding: var(--klp-spacing-contentInset);\n\">\n\tKlpTooltip 範例內容\n</div>"
+		}
 	},
 	"KlpTree": {
 		"name": "KlpTree",
@@ -3744,7 +4024,12 @@ export const catalogProps = Object.freeze({
 				"css": "--klp-spacing-comfortable",
 				"flutter": "spacing.comfortable"
 			}
-		]
+		],
+		"snippets": {
+			"react": "import { KlpThemeProvider, KlpTree } from '@kallopis/react';\nimport '@kallopis/react/styles.css';\n\nexport function Example() {\n\treturn (\n\t\t<KlpThemeProvider mode=\"dark\">\n\t\t\t<KlpTree label=\"工作區項目\" expandedIds=\"範例\" />\n\t\t</KlpThemeProvider>\n\t);\n}",
+			"flutter": "import 'package:flutter/widgets.dart';\nimport 'package:kallopis/kallopis_foundation.dart';\nimport 'package:kallopis/kallopis_theme.dart';\n\n// 使用 Kallopis Flutter 公開元件 KlpTree\nclass Example extends StatelessWidget {\n\tconst Example({super.key});\n\n\t@override\n\tWidget build(BuildContext context) {\n\t\treturn KlpTree(\n\t\t\t// 樣式由 context.klp 自動解析\n\t\t);\n\t}\n}",
+			"html": "<!-- 直接引入 styles/themes/micro-elevation-v1.css（免匯入元件庫） -->\n<link rel=\"stylesheet\" href=\"./styles/themes/micro-elevation-v1.css\">\n\n<div class=\"my-klptree\" style=\"\n\tbackground: var(--klp-colors-component);\n\tcolor: var(--klp-colors-text);\n\tborder: 1px solid var(--klp-colors-border);\n\tborder-radius: var(--klp-shape-control);\n\tpadding: var(--klp-spacing-contentInset);\n\">\n\tKlpTree 範例內容\n</div>"
+		}
 	},
 	"KlpTreeGrid": {
 		"name": "KlpTreeGrid",
@@ -3814,7 +4099,12 @@ export const catalogProps = Object.freeze({
 				"css": "--klp-spacing-comfortable",
 				"flutter": "spacing.comfortable"
 			}
-		]
+		],
+		"snippets": {
+			"react": "import { KlpThemeProvider, KlpTreeGrid } from '@kallopis/react';\nimport '@kallopis/react/styles.css';\n\nexport function Example() {\n\treturn (\n\t\t<KlpThemeProvider mode=\"dark\">\n\t\t\t<KlpTreeGrid label=\"工作區項目\" columns=\"範例\" expandedIds=\"範例\" />\n\t\t</KlpThemeProvider>\n\t);\n}",
+			"flutter": "import 'package:flutter/widgets.dart';\nimport 'package:kallopis/kallopis_foundation.dart';\nimport 'package:kallopis/kallopis_theme.dart';\n\n// 透過 KlpTheme.of(context) 讀取共用 semantic tokens\nclass Example extends StatelessWidget {\n\tconst Example({super.key});\n\n\t@override\n\tWidget build(BuildContext context) {\n\t\treturn KlpTreeGrid(\n\t\t\t// 樣式由 context.klp 自動解析\n\t\t);\n\t}\n}",
+			"html": "<!-- 直接引入 styles/themes/micro-elevation-v1.css（免匯入元件庫） -->\n<link rel=\"stylesheet\" href=\"./styles/themes/micro-elevation-v1.css\">\n\n<div class=\"my-klptreegrid\" style=\"\n\tbackground: var(--klp-colors-component);\n\tcolor: var(--klp-colors-text);\n\tborder: 1px solid var(--klp-colors-border);\n\tborder-radius: var(--klp-shape-control);\n\tpadding: var(--klp-spacing-contentInset);\n\">\n\tKlpTreeGrid 範例內容\n</div>"
+		}
 	},
 	"KlpVirtualList": {
 		"name": "KlpVirtualList",
@@ -3877,7 +4167,12 @@ export const catalogProps = Object.freeze({
 				"css": "--klp-spacing-comfortable",
 				"flutter": "spacing.comfortable"
 			}
-		]
+		],
+		"snippets": {
+			"react": "import { KlpThemeProvider, KlpVirtualList } from '@kallopis/react';\nimport '@kallopis/react/styles.css';\n\nexport function Example() {\n\treturn (\n\t\t<KlpThemeProvider mode=\"dark\">\n\t\t\t<KlpVirtualList label=\"工作區項目\" items=\"範例\" onSelect=\"範例\" />\n\t\t</KlpThemeProvider>\n\t);\n}",
+			"flutter": "import 'package:flutter/widgets.dart';\nimport 'package:kallopis/kallopis_foundation.dart';\nimport 'package:kallopis/kallopis_theme.dart';\n\n// 使用 Kallopis Flutter 公開元件 KlpVirtualList\nclass Example extends StatelessWidget {\n\tconst Example({super.key});\n\n\t@override\n\tWidget build(BuildContext context) {\n\t\treturn KlpVirtualList(\n\t\t\t// 樣式由 context.klp 自動解析\n\t\t);\n\t}\n}",
+			"html": "<!-- 直接引入 styles/themes/micro-elevation-v1.css（免匯入元件庫） -->\n<link rel=\"stylesheet\" href=\"./styles/themes/micro-elevation-v1.css\">\n\n<div class=\"my-klpvirtuallist\" style=\"\n\tbackground: var(--klp-colors-component);\n\tcolor: var(--klp-colors-text);\n\tborder: 1px solid var(--klp-colors-border);\n\tborder-radius: var(--klp-shape-control);\n\tpadding: var(--klp-spacing-contentInset);\n\">\n\tKlpVirtualList 範例內容\n</div>"
+		}
 	},
 	"KlpWorkspace": {
 		"name": "KlpWorkspace",
@@ -3912,6 +4207,11 @@ export const catalogProps = Object.freeze({
 				"css": "--klp-colors-surfaceInset",
 				"flutter": "colors.surfaceInset"
 			}
-		]
+		],
+		"snippets": {
+			"react": "import { KlpThemeProvider, KlpWorkspace } from '@kallopis/react';\nimport '@kallopis/react/styles.css';\n\nexport function Example() {\n\treturn (\n\t\t<KlpThemeProvider mode=\"dark\">\n\t\t\t<KlpWorkspace>範例內容</KlpWorkspace>\n\t\t</KlpThemeProvider>\n\t);\n}",
+			"flutter": "import 'package:flutter/widgets.dart';\nimport 'package:kallopis/kallopis_foundation.dart';\nimport 'package:kallopis/kallopis_theme.dart';\n\n// Flutter 端對應 KlpTwoPaneWorkspace（或以 KlpTheme.of(context) 組合）\nclass Example extends StatelessWidget {\n\tconst Example({super.key});\n\n\t@override\n\tWidget build(BuildContext context) {\n\t\treturn KlpTwoPaneWorkspace(\n\t\t\t// 樣式由 context.klp 自動解析\n\t\t);\n\t}\n}",
+			"html": "<!-- 直接引入 styles/themes/micro-elevation-v1.css（免匯入元件庫） -->\n<link rel=\"stylesheet\" href=\"./styles/themes/micro-elevation-v1.css\">\n\n<div class=\"my-klpworkspace\" style=\"\n\tbackground: var(--klp-colors-surface);\n\tcolor: var(--klp-colors-text);\n\tborder: 1px solid var(--klp-colors-border);\n\tborder-radius: var(--klp-shape-control);\n\tpadding: var(--klp-spacing-contentInset);\n\">\n\tKlpWorkspace 範例內容\n</div>"
+		}
 	}
 });

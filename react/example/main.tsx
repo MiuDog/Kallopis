@@ -10,6 +10,7 @@ import { SpecimenApp } from './specimens.js';
 import { ScenarioApp } from './scenarios.js';
 import { ModernProductivityPreview } from './modern-productivity-preview.js';
 import { DesktopCatalog } from './desktop-catalog.js';
+import { ComponentShowcase } from './component-showcase.js';
 
 const modes: KlpMode[] = ['light', 'dark', 'ultraDark', 'transparent'];
 const labels = { light: '淺色', dark: '深色', ultraDark: '極深色', transparent: '透明' };
@@ -112,6 +113,7 @@ function App() {
 const query = new URLSearchParams(window.location.search);
 let entry = <App />;
 if (query.get('catalog') === 'desktop') entry = <DesktopCatalog />;
+if (query.get('showcase') === 'components') entry = <ComponentShowcase />;
 if (query.has('scenario')) entry = <ScenarioApp id={query.get('scenario') ?? ''} />;
 if (query.has('specimen')) entry = <SpecimenApp name={query.get('specimen') ?? ''} />;
 if (query.has('template')) entry = <ModernProductivityPreview id={query.has('scenario') || query.has('specimen') ? '' : query.get('template') ?? ''} />;

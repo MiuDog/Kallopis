@@ -1,6 +1,6 @@
 import fs from 'node:fs';
 import path from 'node:path';
-import { homePage, shell } from './layout.mjs';
+import { homePage, shell, showcasePage } from './layout.mjs';
 import { documents, documentRoutes } from './documents.mjs';
 import { renderMarkdown } from './markdown.mjs';
 import { validateReactSpecimens, renderReactSpecimen } from './react-specimens.mjs';
@@ -230,6 +230,13 @@ async function main() {
 	page('docs/components/index.html', 'Components', `<div class="eyebrow">COMPONENTS</div><h1>公開型別</h1><p class="lead">依實際 public surface 產生；詳細 constructor 與 member 請進入 API 頁。</p><ul class="api-list">${componentDeclarations.map((item) => `<li><a href="${escapeHtml(relative('docs/components/index.html', declarationRoute(item)))}"><code>${escapeHtml(item.name)}</code></a><span>${escapeHtml(item.module)} · ${item.surfaces.map((surface) => escapeHtml(surface)).join(' · ')}</span></li>`).join('')}</ul>`);
 	page('docs/index.html', 'Documentation', `<div class="eyebrow">DOCUMENTATION</div><h1>Kallopis 開發文件</h1><div class="actions"><a class="button primary" href="reference/flutter/index.html">Flutter Reference</a><a class="button secondary" href="reference/react/index.html">React Reference</a><a class="button secondary" href="examples/index.html">畫面範例</a></div><p class="lead">Kallopis 以通用視覺語意與 token 維持一致；各框架庫依規範實作，產品擁有畫面、導航與流程。</p><div class="actions"><a class="button primary" href="design-system/index.html">通用視覺規範</a><a class="button secondary" href="${escapeHtml(relative('docs/index.html', 'docs/api/index.html'))}">Flutter API</a><a class="button secondary" href="${escapeHtml(relative('docs/index.html', 'docs/components/index.html'))}">公開型別</a></div>${reactComponents ? '<p><a class="button secondary" href="react/components/index.html">React 互動元件</a></p>' : ''}${reactScenarios ? '<p><a class="button secondary" href="react/scenarios/index.html">React GUI 場景</a></p>' : ''}${flutterScenarios ? '<p><a class="button secondary" href="flutter/scenarios/index.html">Flutter GUI 場景</a></p>' : ''}<h2>Current guides</h2><ul>${guideLinks.join('')}</ul>`);
 	write('index.html', homePage({
+		interactive: Boolean(reactComponents && reactScenarios && flutterScenarios),
+		apiCount: apiDeclarations.length,
+		moduleCount: api.modules.length,
+		themes,
+		reactCount: reactComponents?.length ?? 0,
+	}));
+	write('showcase.html', showcasePage({
 		interactive: Boolean(reactComponents && reactScenarios && flutterScenarios),
 		apiCount: apiDeclarations.length,
 		moduleCount: api.modules.length,

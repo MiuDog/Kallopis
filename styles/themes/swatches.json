@@ -1,0 +1,4438 @@
+{
+	"schemaVersion": 1,
+	"themes": {
+		"micro-elevation-v1": {
+			"id": "micro-elevation-v1",
+			"family": "micro-elevation",
+			"version": "1.0.0",
+			"name": "微立體",
+			"defaultMode": "dark",
+			"semanticColors": {
+				"light": [
+					{
+						"id": "theme.colors.app",
+						"label": "app",
+						"cssVar": "--klp-colors-app",
+						"hex": "#E8E5DEFF"
+					},
+					{
+						"id": "theme.colors.surface",
+						"label": "surface",
+						"cssVar": "--klp-colors-surface",
+						"hex": "#F2F0EAFF"
+					},
+					{
+						"id": "theme.colors.surfaceInset",
+						"label": "surfaceInset",
+						"cssVar": "--klp-colors-surfaceInset",
+						"hex": "#E2DFD7FF"
+					},
+					{
+						"id": "theme.colors.surfaceMuted",
+						"label": "surfaceMuted",
+						"cssVar": "--klp-colors-surfaceMuted",
+						"hex": "#E9E6DFFF"
+					},
+					{
+						"id": "theme.colors.component",
+						"label": "component",
+						"cssVar": "--klp-colors-component",
+						"hex": "#FFFFFFFF"
+					},
+					{
+						"id": "theme.colors.stageSurface",
+						"label": "stageSurface",
+						"cssVar": "--klp-colors-stageSurface",
+						"hex": "#FAF9F6FF"
+					},
+					{
+						"id": "theme.colors.overlay",
+						"label": "overlay",
+						"cssVar": "--klp-colors-overlay",
+						"hex": "#FAF9F6FF"
+					},
+					{
+						"id": "theme.colors.surfaceRaised",
+						"label": "surfaceRaised",
+						"cssVar": "--klp-colors-surfaceRaised",
+						"hex": "#FAF9F6FF"
+					},
+					{
+						"id": "theme.colors.modalScrim",
+						"label": "modalScrim",
+						"cssVar": "--klp-colors-modalScrim",
+						"hex": "#01020299"
+					},
+					{
+						"id": "theme.colors.guide",
+						"label": "guide",
+						"cssVar": "--klp-colors-guide",
+						"hex": "#D8D4CAFF"
+					},
+					{
+						"id": "theme.colors.divider",
+						"label": "divider",
+						"cssVar": "--klp-colors-divider",
+						"hex": "#D8D4CAFF"
+					},
+					{
+						"id": "theme.colors.pagePattern",
+						"label": "pagePattern",
+						"cssVar": "--klp-colors-pagePattern",
+						"hex": "#D8D4CAFF"
+					},
+					{
+						"id": "theme.colors.text",
+						"label": "text",
+						"cssVar": "--klp-colors-text",
+						"hex": "#22201CFF"
+					},
+					{
+						"id": "theme.colors.textMuted",
+						"label": "textMuted",
+						"cssVar": "--klp-colors-textMuted",
+						"hex": "#6A655BFF"
+					},
+					{
+						"id": "theme.colors.textFaint",
+						"label": "textFaint",
+						"cssVar": "--klp-colors-textFaint",
+						"hex": "#8D887DFF"
+					},
+					{
+						"id": "theme.colors.border",
+						"label": "border",
+						"cssVar": "--klp-colors-border",
+						"hex": "#D8D4CAFF"
+					},
+					{
+						"id": "theme.colors.borderStrong",
+						"label": "borderStrong",
+						"cssVar": "--klp-colors-borderStrong",
+						"hex": "#BDB8ACFF"
+					},
+					{
+						"id": "theme.colors.brand",
+						"label": "brand",
+						"cssVar": "--klp-colors-brand",
+						"hex": "#E6E2D8FF"
+					},
+					{
+						"id": "theme.colors.accent",
+						"label": "accent",
+						"cssVar": "--klp-colors-accent",
+						"hex": "#B5852AFF"
+					},
+					{
+						"id": "theme.colors.accentSoft",
+						"label": "accentSoft",
+						"cssVar": "--klp-colors-accentSoft",
+						"hex": "#F3E7CDFF"
+					},
+					{
+						"id": "theme.colors.interaction",
+						"label": "interaction",
+						"cssVar": "--klp-colors-interaction",
+						"hex": "#B5852AFF"
+					},
+					{
+						"id": "theme.colors.interactionSoft",
+						"label": "interactionSoft",
+						"cssVar": "--klp-colors-interactionSoft",
+						"hex": "#E6E2D8FF"
+					},
+					{
+						"id": "theme.colors.success",
+						"label": "success",
+						"cssVar": "--klp-colors-success",
+						"hex": "#51B77BFF"
+					},
+					{
+						"id": "theme.colors.warning",
+						"label": "warning",
+						"cssVar": "--klp-colors-warning",
+						"hex": "#F6B52EFF"
+					},
+					{
+						"id": "theme.colors.danger",
+						"label": "danger",
+						"cssVar": "--klp-colors-danger",
+						"hex": "#FA6C73FF"
+					},
+					{
+						"id": "theme.colors.info",
+						"label": "info",
+						"cssVar": "--klp-colors-info",
+						"hex": "#5499DFFF"
+					},
+					{
+						"id": "theme.colors.onStatus",
+						"label": "onStatus",
+						"cssVar": "--klp-colors-onStatus",
+						"hex": "#FFFFFFFF"
+					},
+					{
+						"id": "theme.colors.onLightBackground",
+						"label": "onLightBackground",
+						"cssVar": "--klp-colors-onLightBackground",
+						"hex": "#22201CFF"
+					},
+					{
+						"id": "theme.colors.onDarkBackground",
+						"label": "onDarkBackground",
+						"cssVar": "--klp-colors-onDarkBackground",
+						"hex": "#EDEAE4FF"
+					},
+					{
+						"id": "theme.colors.mutedOnLightBackground",
+						"label": "mutedOnLightBackground",
+						"cssVar": "--klp-colors-mutedOnLightBackground",
+						"hex": "#6A655BFF"
+					},
+					{
+						"id": "theme.colors.mutedOnDarkBackground",
+						"label": "mutedOnDarkBackground",
+						"cssVar": "--klp-colors-mutedOnDarkBackground",
+						"hex": "#BAB5AAFF"
+					},
+					{
+						"id": "theme.colors.faintOnBackground",
+						"label": "faintOnBackground",
+						"cssVar": "--klp-colors-faintOnBackground",
+						"hex": "#6A655BFF"
+					},
+					{
+						"id": "theme.colors.transparent",
+						"label": "transparent",
+						"cssVar": "--klp-colors-transparent",
+						"hex": "#00000000"
+					}
+				],
+				"dark": [
+					{
+						"id": "theme.colors.app",
+						"label": "app",
+						"cssVar": "--klp-colors-app",
+						"hex": "#1A1A18FF"
+					},
+					{
+						"id": "theme.colors.surface",
+						"label": "surface",
+						"cssVar": "--klp-colors-surface",
+						"hex": "#242320FF"
+					},
+					{
+						"id": "theme.colors.surfaceInset",
+						"label": "surfaceInset",
+						"cssVar": "--klp-colors-surfaceInset",
+						"hex": "#1E1D1BFF"
+					},
+					{
+						"id": "theme.colors.surfaceMuted",
+						"label": "surfaceMuted",
+						"cssVar": "--klp-colors-surfaceMuted",
+						"hex": "#2A2925FF"
+					},
+					{
+						"id": "theme.colors.component",
+						"label": "component",
+						"cssVar": "--klp-colors-component",
+						"hex": "#353430FF"
+					},
+					{
+						"id": "theme.colors.stageSurface",
+						"label": "stageSurface",
+						"cssVar": "--klp-colors-stageSurface",
+						"hex": "#2C2B28FF"
+					},
+					{
+						"id": "theme.colors.overlay",
+						"label": "overlay",
+						"cssVar": "--klp-colors-overlay",
+						"hex": "#302F2BFF"
+					},
+					{
+						"id": "theme.colors.surfaceRaised",
+						"label": "surfaceRaised",
+						"cssVar": "--klp-colors-surfaceRaised",
+						"hex": "#302F2BFF"
+					},
+					{
+						"id": "theme.colors.modalScrim",
+						"label": "modalScrim",
+						"cssVar": "--klp-colors-modalScrim",
+						"hex": "#01020299"
+					},
+					{
+						"id": "theme.colors.guide",
+						"label": "guide",
+						"cssVar": "--klp-colors-guide",
+						"hex": "#3C3A36FF"
+					},
+					{
+						"id": "theme.colors.divider",
+						"label": "divider",
+						"cssVar": "--klp-colors-divider",
+						"hex": "#3C3A36FF"
+					},
+					{
+						"id": "theme.colors.pagePattern",
+						"label": "pagePattern",
+						"cssVar": "--klp-colors-pagePattern",
+						"hex": "#3C3A36FF"
+					},
+					{
+						"id": "theme.colors.text",
+						"label": "text",
+						"cssVar": "--klp-colors-text",
+						"hex": "#EDEAE4FF"
+					},
+					{
+						"id": "theme.colors.textMuted",
+						"label": "textMuted",
+						"cssVar": "--klp-colors-textMuted",
+						"hex": "#A8A49BFF"
+					},
+					{
+						"id": "theme.colors.textFaint",
+						"label": "textFaint",
+						"cssVar": "--klp-colors-textFaint",
+						"hex": "#6F6B63FF"
+					},
+					{
+						"id": "theme.colors.border",
+						"label": "border",
+						"cssVar": "--klp-colors-border",
+						"hex": "#3C3A36FF"
+					},
+					{
+						"id": "theme.colors.borderStrong",
+						"label": "borderStrong",
+						"cssVar": "--klp-colors-borderStrong",
+						"hex": "#524F49FF"
+					},
+					{
+						"id": "theme.colors.brand",
+						"label": "brand",
+						"cssVar": "--klp-colors-brand",
+						"hex": "#353430FF"
+					},
+					{
+						"id": "theme.colors.accent",
+						"label": "accent",
+						"cssVar": "--klp-colors-accent",
+						"hex": "#D4A853FF"
+					},
+					{
+						"id": "theme.colors.accentSoft",
+						"label": "accentSoft",
+						"cssVar": "--klp-colors-accentSoft",
+						"hex": "#3F3523FF"
+					},
+					{
+						"id": "theme.colors.interaction",
+						"label": "interaction",
+						"cssVar": "--klp-colors-interaction",
+						"hex": "#D4A853FF"
+					},
+					{
+						"id": "theme.colors.interactionSoft",
+						"label": "interactionSoft",
+						"cssVar": "--klp-colors-interactionSoft",
+						"hex": "#3E3C37FF"
+					},
+					{
+						"id": "theme.colors.success",
+						"label": "success",
+						"cssVar": "--klp-colors-success",
+						"hex": "#51B77BFF"
+					},
+					{
+						"id": "theme.colors.warning",
+						"label": "warning",
+						"cssVar": "--klp-colors-warning",
+						"hex": "#F6B52EFF"
+					},
+					{
+						"id": "theme.colors.danger",
+						"label": "danger",
+						"cssVar": "--klp-colors-danger",
+						"hex": "#FA6C73FF"
+					},
+					{
+						"id": "theme.colors.info",
+						"label": "info",
+						"cssVar": "--klp-colors-info",
+						"hex": "#5499DFFF"
+					},
+					{
+						"id": "theme.colors.onStatus",
+						"label": "onStatus",
+						"cssVar": "--klp-colors-onStatus",
+						"hex": "#FFFFFFFF"
+					},
+					{
+						"id": "theme.colors.onLightBackground",
+						"label": "onLightBackground",
+						"cssVar": "--klp-colors-onLightBackground",
+						"hex": "#22201CFF"
+					},
+					{
+						"id": "theme.colors.onDarkBackground",
+						"label": "onDarkBackground",
+						"cssVar": "--klp-colors-onDarkBackground",
+						"hex": "#EDEAE4FF"
+					},
+					{
+						"id": "theme.colors.mutedOnLightBackground",
+						"label": "mutedOnLightBackground",
+						"cssVar": "--klp-colors-mutedOnLightBackground",
+						"hex": "#6A655BFF"
+					},
+					{
+						"id": "theme.colors.mutedOnDarkBackground",
+						"label": "mutedOnDarkBackground",
+						"cssVar": "--klp-colors-mutedOnDarkBackground",
+						"hex": "#BAB5AAFF"
+					},
+					{
+						"id": "theme.colors.faintOnBackground",
+						"label": "faintOnBackground",
+						"cssVar": "--klp-colors-faintOnBackground",
+						"hex": "#BAB5AAFF"
+					},
+					{
+						"id": "theme.colors.transparent",
+						"label": "transparent",
+						"cssVar": "--klp-colors-transparent",
+						"hex": "#00000000"
+					}
+				],
+				"ultraDark": [
+					{
+						"id": "theme.colors.app",
+						"label": "app",
+						"cssVar": "--klp-colors-app",
+						"hex": "#101010FF"
+					},
+					{
+						"id": "theme.colors.surface",
+						"label": "surface",
+						"cssVar": "--klp-colors-surface",
+						"hex": "#1A1A18FF"
+					},
+					{
+						"id": "theme.colors.surfaceInset",
+						"label": "surfaceInset",
+						"cssVar": "--klp-colors-surfaceInset",
+						"hex": "#101010FF"
+					},
+					{
+						"id": "theme.colors.surfaceMuted",
+						"label": "surfaceMuted",
+						"cssVar": "--klp-colors-surfaceMuted",
+						"hex": "#242320FF"
+					},
+					{
+						"id": "theme.colors.component",
+						"label": "component",
+						"cssVar": "--klp-colors-component",
+						"hex": "#242320FF"
+					},
+					{
+						"id": "theme.colors.stageSurface",
+						"label": "stageSurface",
+						"cssVar": "--klp-colors-stageSurface",
+						"hex": "#242320FF"
+					},
+					{
+						"id": "theme.colors.overlay",
+						"label": "overlay",
+						"cssVar": "--klp-colors-overlay",
+						"hex": "#242320FF"
+					},
+					{
+						"id": "theme.colors.surfaceRaised",
+						"label": "surfaceRaised",
+						"cssVar": "--klp-colors-surfaceRaised",
+						"hex": "#242320FF"
+					},
+					{
+						"id": "theme.colors.modalScrim",
+						"label": "modalScrim",
+						"cssVar": "--klp-colors-modalScrim",
+						"hex": "#01020299"
+					},
+					{
+						"id": "theme.colors.guide",
+						"label": "guide",
+						"cssVar": "--klp-colors-guide",
+						"hex": "#3C3A36FF"
+					},
+					{
+						"id": "theme.colors.divider",
+						"label": "divider",
+						"cssVar": "--klp-colors-divider",
+						"hex": "#3C3A36FF"
+					},
+					{
+						"id": "theme.colors.pagePattern",
+						"label": "pagePattern",
+						"cssVar": "--klp-colors-pagePattern",
+						"hex": "#3C3A36FF"
+					},
+					{
+						"id": "theme.colors.text",
+						"label": "text",
+						"cssVar": "--klp-colors-text",
+						"hex": "#EDEAE4FF"
+					},
+					{
+						"id": "theme.colors.textMuted",
+						"label": "textMuted",
+						"cssVar": "--klp-colors-textMuted",
+						"hex": "#A8A49BFF"
+					},
+					{
+						"id": "theme.colors.textFaint",
+						"label": "textFaint",
+						"cssVar": "--klp-colors-textFaint",
+						"hex": "#6F6B63FF"
+					},
+					{
+						"id": "theme.colors.border",
+						"label": "border",
+						"cssVar": "--klp-colors-border",
+						"hex": "#3C3A36FF"
+					},
+					{
+						"id": "theme.colors.borderStrong",
+						"label": "borderStrong",
+						"cssVar": "--klp-colors-borderStrong",
+						"hex": "#524F49FF"
+					},
+					{
+						"id": "theme.colors.brand",
+						"label": "brand",
+						"cssVar": "--klp-colors-brand",
+						"hex": "#302F2BFF"
+					},
+					{
+						"id": "theme.colors.accent",
+						"label": "accent",
+						"cssVar": "--klp-colors-accent",
+						"hex": "#D4A853FF"
+					},
+					{
+						"id": "theme.colors.accentSoft",
+						"label": "accentSoft",
+						"cssVar": "--klp-colors-accentSoft",
+						"hex": "#3F3523FF"
+					},
+					{
+						"id": "theme.colors.interaction",
+						"label": "interaction",
+						"cssVar": "--klp-colors-interaction",
+						"hex": "#D4A853FF"
+					},
+					{
+						"id": "theme.colors.interactionSoft",
+						"label": "interactionSoft",
+						"cssVar": "--klp-colors-interactionSoft",
+						"hex": "#3E3C37FF"
+					},
+					{
+						"id": "theme.colors.success",
+						"label": "success",
+						"cssVar": "--klp-colors-success",
+						"hex": "#51B77BFF"
+					},
+					{
+						"id": "theme.colors.warning",
+						"label": "warning",
+						"cssVar": "--klp-colors-warning",
+						"hex": "#F6B52EFF"
+					},
+					{
+						"id": "theme.colors.danger",
+						"label": "danger",
+						"cssVar": "--klp-colors-danger",
+						"hex": "#FA6C73FF"
+					},
+					{
+						"id": "theme.colors.info",
+						"label": "info",
+						"cssVar": "--klp-colors-info",
+						"hex": "#5499DFFF"
+					},
+					{
+						"id": "theme.colors.onStatus",
+						"label": "onStatus",
+						"cssVar": "--klp-colors-onStatus",
+						"hex": "#FFFFFFFF"
+					},
+					{
+						"id": "theme.colors.onLightBackground",
+						"label": "onLightBackground",
+						"cssVar": "--klp-colors-onLightBackground",
+						"hex": "#22201CFF"
+					},
+					{
+						"id": "theme.colors.onDarkBackground",
+						"label": "onDarkBackground",
+						"cssVar": "--klp-colors-onDarkBackground",
+						"hex": "#EDEAE4FF"
+					},
+					{
+						"id": "theme.colors.mutedOnLightBackground",
+						"label": "mutedOnLightBackground",
+						"cssVar": "--klp-colors-mutedOnLightBackground",
+						"hex": "#6B6459FF"
+					},
+					{
+						"id": "theme.colors.mutedOnDarkBackground",
+						"label": "mutedOnDarkBackground",
+						"cssVar": "--klp-colors-mutedOnDarkBackground",
+						"hex": "#ADA89EFF"
+					},
+					{
+						"id": "theme.colors.faintOnBackground",
+						"label": "faintOnBackground",
+						"cssVar": "--klp-colors-faintOnBackground",
+						"hex": "#8E8982FF"
+					},
+					{
+						"id": "theme.colors.transparent",
+						"label": "transparent",
+						"cssVar": "--klp-colors-transparent",
+						"hex": "#00000000"
+					}
+				],
+				"transparent": [
+					{
+						"id": "theme.colors.app",
+						"label": "app",
+						"cssVar": "--klp-colors-app",
+						"hex": "#00000000"
+					},
+					{
+						"id": "theme.colors.surface",
+						"label": "surface",
+						"cssVar": "--klp-colors-surface",
+						"hex": "#242320D9"
+					},
+					{
+						"id": "theme.colors.surfaceInset",
+						"label": "surfaceInset",
+						"cssVar": "--klp-colors-surfaceInset",
+						"hex": "#1E1D1BFF"
+					},
+					{
+						"id": "theme.colors.surfaceMuted",
+						"label": "surfaceMuted",
+						"cssVar": "--klp-colors-surfaceMuted",
+						"hex": "#2A2925FF"
+					},
+					{
+						"id": "theme.colors.component",
+						"label": "component",
+						"cssVar": "--klp-colors-component",
+						"hex": "#353430FF"
+					},
+					{
+						"id": "theme.colors.stageSurface",
+						"label": "stageSurface",
+						"cssVar": "--klp-colors-stageSurface",
+						"hex": "#2C2B28E6"
+					},
+					{
+						"id": "theme.colors.overlay",
+						"label": "overlay",
+						"cssVar": "--klp-colors-overlay",
+						"hex": "#302F2BFF"
+					},
+					{
+						"id": "theme.colors.surfaceRaised",
+						"label": "surfaceRaised",
+						"cssVar": "--klp-colors-surfaceRaised",
+						"hex": "#302F2BFF"
+					},
+					{
+						"id": "theme.colors.modalScrim",
+						"label": "modalScrim",
+						"cssVar": "--klp-colors-modalScrim",
+						"hex": "#01020299"
+					},
+					{
+						"id": "theme.colors.guide",
+						"label": "guide",
+						"cssVar": "--klp-colors-guide",
+						"hex": "#3C3A36FF"
+					},
+					{
+						"id": "theme.colors.divider",
+						"label": "divider",
+						"cssVar": "--klp-colors-divider",
+						"hex": "#3C3A36FF"
+					},
+					{
+						"id": "theme.colors.pagePattern",
+						"label": "pagePattern",
+						"cssVar": "--klp-colors-pagePattern",
+						"hex": "#3C3A36FF"
+					},
+					{
+						"id": "theme.colors.text",
+						"label": "text",
+						"cssVar": "--klp-colors-text",
+						"hex": "#EDEAE4FF"
+					},
+					{
+						"id": "theme.colors.textMuted",
+						"label": "textMuted",
+						"cssVar": "--klp-colors-textMuted",
+						"hex": "#A8A49BFF"
+					},
+					{
+						"id": "theme.colors.textFaint",
+						"label": "textFaint",
+						"cssVar": "--klp-colors-textFaint",
+						"hex": "#6F6B63FF"
+					},
+					{
+						"id": "theme.colors.border",
+						"label": "border",
+						"cssVar": "--klp-colors-border",
+						"hex": "#3C3A36FF"
+					},
+					{
+						"id": "theme.colors.borderStrong",
+						"label": "borderStrong",
+						"cssVar": "--klp-colors-borderStrong",
+						"hex": "#524F49FF"
+					},
+					{
+						"id": "theme.colors.brand",
+						"label": "brand",
+						"cssVar": "--klp-colors-brand",
+						"hex": "#353430FF"
+					},
+					{
+						"id": "theme.colors.accent",
+						"label": "accent",
+						"cssVar": "--klp-colors-accent",
+						"hex": "#D4A853FF"
+					},
+					{
+						"id": "theme.colors.accentSoft",
+						"label": "accentSoft",
+						"cssVar": "--klp-colors-accentSoft",
+						"hex": "#3F3523FF"
+					},
+					{
+						"id": "theme.colors.interaction",
+						"label": "interaction",
+						"cssVar": "--klp-colors-interaction",
+						"hex": "#D4A853FF"
+					},
+					{
+						"id": "theme.colors.interactionSoft",
+						"label": "interactionSoft",
+						"cssVar": "--klp-colors-interactionSoft",
+						"hex": "#3E3C37FF"
+					},
+					{
+						"id": "theme.colors.success",
+						"label": "success",
+						"cssVar": "--klp-colors-success",
+						"hex": "#51B77BFF"
+					},
+					{
+						"id": "theme.colors.warning",
+						"label": "warning",
+						"cssVar": "--klp-colors-warning",
+						"hex": "#F6B52EFF"
+					},
+					{
+						"id": "theme.colors.danger",
+						"label": "danger",
+						"cssVar": "--klp-colors-danger",
+						"hex": "#FA6C73FF"
+					},
+					{
+						"id": "theme.colors.info",
+						"label": "info",
+						"cssVar": "--klp-colors-info",
+						"hex": "#5499DFFF"
+					},
+					{
+						"id": "theme.colors.onStatus",
+						"label": "onStatus",
+						"cssVar": "--klp-colors-onStatus",
+						"hex": "#FFFFFFFF"
+					},
+					{
+						"id": "theme.colors.onLightBackground",
+						"label": "onLightBackground",
+						"cssVar": "--klp-colors-onLightBackground",
+						"hex": "#22201CFF"
+					},
+					{
+						"id": "theme.colors.onDarkBackground",
+						"label": "onDarkBackground",
+						"cssVar": "--klp-colors-onDarkBackground",
+						"hex": "#EDEAE4FF"
+					},
+					{
+						"id": "theme.colors.mutedOnLightBackground",
+						"label": "mutedOnLightBackground",
+						"cssVar": "--klp-colors-mutedOnLightBackground",
+						"hex": "#6A655BFF"
+					},
+					{
+						"id": "theme.colors.mutedOnDarkBackground",
+						"label": "mutedOnDarkBackground",
+						"cssVar": "--klp-colors-mutedOnDarkBackground",
+						"hex": "#BAB5AAFF"
+					},
+					{
+						"id": "theme.colors.faintOnBackground",
+						"label": "faintOnBackground",
+						"cssVar": "--klp-colors-faintOnBackground",
+						"hex": "#BAB5AAFF"
+					},
+					{
+						"id": "theme.colors.transparent",
+						"label": "transparent",
+						"cssVar": "--klp-colors-transparent",
+						"hex": "#00000000"
+					}
+				]
+			},
+			"primitiveColors": [
+				{
+					"id": "parchment50",
+					"hex": "#F8F6F1FF",
+					"description": "現有公開primitive"
+				},
+				{
+					"id": "parchment75",
+					"hex": "#F0EDE6FF",
+					"description": "現有公開primitive"
+				},
+				{
+					"id": "parchment100",
+					"hex": "#EFEDE7FF",
+					"description": "現有公開primitive"
+				},
+				{
+					"id": "parchment150",
+					"hex": "#E7E4DDFF",
+					"description": "現有公開primitive"
+				},
+				{
+					"id": "parchment200",
+					"hex": "#E1DDD2FF",
+					"description": "現有公開primitive"
+				},
+				{
+					"id": "parchment250",
+					"hex": "#D3CFC4FF",
+					"description": "現有公開primitive"
+				},
+				{
+					"id": "parchment350",
+					"hex": "#BAB5AAFF",
+					"description": "現有公開primitive"
+				},
+				{
+					"id": "parchment550",
+					"hex": "#6A655BFF",
+					"description": "現有公開primitive"
+				},
+				{
+					"id": "parchment700",
+					"hex": "#514B40FF",
+					"description": "現有公開primitive"
+				},
+				{
+					"id": "parchment750",
+					"hex": "#484339FF",
+					"description": "現有公開primitive"
+				},
+				{
+					"id": "parchment800",
+					"hex": "#35322DFF",
+					"description": "現有公開primitive"
+				},
+				{
+					"id": "parchment825",
+					"hex": "#33322CFF",
+					"description": "現有公開primitive"
+				},
+				{
+					"id": "parchment900",
+					"hex": "#292724FF",
+					"description": "現有公開primitive"
+				},
+				{
+					"id": "parchment925",
+					"hex": "#21201BFF",
+					"description": "現有公開primitive"
+				},
+				{
+					"id": "parchment950",
+					"hex": "#201F1CFF",
+					"description": "現有公開primitive"
+				},
+				{
+					"id": "ink1000",
+					"hex": "#000000FF",
+					"description": "現有公開primitive"
+				},
+				{
+					"id": "transparent",
+					"hex": "#00000000",
+					"description": "現有公開primitive"
+				},
+				{
+					"id": "ink50",
+					"hex": "#FFFFFFFF",
+					"description": "現有公開primitive"
+				},
+				{
+					"id": "ink100",
+					"hex": "#F2F0EBFF",
+					"description": "現有公開primitive"
+				},
+				{
+					"id": "ink150",
+					"hex": "#EAE7E1FF",
+					"description": "現有公開primitive"
+				},
+				{
+					"id": "ink200",
+					"hex": "#E6E3DCFF",
+					"description": "現有公開primitive"
+				},
+				{
+					"id": "ink250",
+					"hex": "#BCB8B0FF",
+					"description": "現有公開primitive"
+				},
+				{
+					"id": "ink300",
+					"hex": "#ADA89EFF",
+					"description": "現有公開primitive"
+				},
+				{
+					"id": "ink350",
+					"hex": "#9E998FFF",
+					"description": "現有公開primitive"
+				},
+				{
+					"id": "ink400",
+					"hex": "#8E8982FF",
+					"description": "現有公開primitive"
+				},
+				{
+					"id": "ink450",
+					"hex": "#7F7A75FF",
+					"description": "現有公開primitive"
+				},
+				{
+					"id": "ink500",
+					"hex": "#6F6C67FF",
+					"description": "現有公開primitive"
+				},
+				{
+					"id": "ink550",
+					"hex": "#6B6459FF",
+					"description": "現有公開primitive"
+				},
+				{
+					"id": "ink600",
+					"hex": "#4F5151FF",
+					"description": "現有公開primitive"
+				},
+				{
+					"id": "ink650",
+					"hex": "#414344FF",
+					"description": "現有公開primitive"
+				},
+				{
+					"id": "ink700",
+					"hex": "#343637FF",
+					"description": "現有公開primitive"
+				},
+				{
+					"id": "ink750",
+					"hex": "#303030FF",
+					"description": "現有公開primitive"
+				},
+				{
+					"id": "ink800",
+					"hex": "#292929FF",
+					"description": "現有公開primitive"
+				},
+				{
+					"id": "ink850",
+					"hex": "#232323FF",
+					"description": "現有公開primitive"
+				},
+				{
+					"id": "ink900",
+					"hex": "#1D1D1DFF",
+					"description": "現有公開primitive"
+				},
+				{
+					"id": "ink950",
+					"hex": "#101010FF",
+					"description": "現有公開primitive"
+				},
+				{
+					"id": "warmNeutral25",
+					"hex": "#F5F2ECFF",
+					"description": "現有公開primitive"
+				},
+				{
+					"id": "warmNeutral50",
+					"hex": "#E4E1DAFF",
+					"description": "現有公開primitive"
+				},
+				{
+					"id": "warmNeutral100",
+					"hex": "#D6D0C6FF",
+					"description": "現有公開primitive"
+				},
+				{
+					"id": "warmNeutral200",
+					"hex": "#C8C0B4FF",
+					"description": "現有公開primitive"
+				},
+				{
+					"id": "warmNeutral300",
+					"hex": "#B8B2A4FF",
+					"description": "現有公開primitive"
+				},
+				{
+					"id": "warmNeutral400",
+					"hex": "#918A7BFF",
+					"description": "現有公開primitive"
+				},
+				{
+					"id": "warmNeutral450",
+					"hex": "#8C8477FF",
+					"description": "現有公開primitive"
+				},
+				{
+					"id": "warmNeutral500",
+					"hex": "#7A7566FF",
+					"description": "現有公開primitive"
+				},
+				{
+					"id": "warmNeutral600",
+					"hex": "#6A6256FF",
+					"description": "現有公開primitive"
+				},
+				{
+					"id": "warmNeutral700",
+					"hex": "#585249FF",
+					"description": "現有公開primitive"
+				},
+				{
+					"id": "warmNeutral750",
+					"hex": "#45413AFF",
+					"description": "現有公開primitive"
+				},
+				{
+					"id": "warmNeutral800",
+					"hex": "#433F3AFF",
+					"description": "現有公開primitive"
+				},
+				{
+					"id": "warmNeutral900",
+					"hex": "#34302BFF",
+					"description": "現有公開primitive"
+				},
+				{
+					"id": "sand50",
+					"hex": "#F8F1E2FF",
+					"description": "現有公開primitive"
+				},
+				{
+					"id": "sand300",
+					"hex": "#F0D79AFF",
+					"description": "現有公開primitive"
+				},
+				{
+					"id": "sand500",
+					"hex": "#E0BE73FF",
+					"description": "現有公開primitive"
+				},
+				{
+					"id": "sand800",
+					"hex": "#453D2BFF",
+					"description": "現有公開primitive"
+				},
+				{
+					"id": "sand900",
+					"hex": "#302B20FF",
+					"description": "現有公開primitive"
+				},
+				{
+					"id": "gold50",
+					"hex": "#F6EBD7FF",
+					"description": "現有公開primitive"
+				},
+				{
+					"id": "gold300",
+					"hex": "#E8BD70FF",
+					"description": "現有公開primitive"
+				},
+				{
+					"id": "gold500",
+					"hex": "#D3A152FF",
+					"description": "現有公開primitive"
+				},
+				{
+					"id": "gold800",
+					"hex": "#443725FF",
+					"description": "現有公開primitive"
+				},
+				{
+					"id": "gold900",
+					"hex": "#30271BFF",
+					"description": "現有公開primitive"
+				},
+				{
+					"id": "ochre50",
+					"hex": "#F3E4CFFF",
+					"description": "現有公開primitive"
+				},
+				{
+					"id": "ochre300",
+					"hex": "#DFA04EFF",
+					"description": "現有公開primitive"
+				},
+				{
+					"id": "ochre500",
+					"hex": "#C6823DFF",
+					"description": "現有公開primitive"
+				},
+				{
+					"id": "ochre800",
+					"hex": "#413222FF",
+					"description": "現有公開primitive"
+				},
+				{
+					"id": "ochre900",
+					"hex": "#2E241AFF",
+					"description": "現有公開primitive"
+				},
+				{
+					"id": "terracotta50",
+					"hex": "#EEDDD0FF",
+					"description": "現有公開primitive"
+				},
+				{
+					"id": "terracotta300",
+					"hex": "#C88745FF",
+					"description": "現有公開primitive"
+				},
+				{
+					"id": "terracotta500",
+					"hex": "#A96836FF",
+					"description": "現有公開primitive"
+				},
+				{
+					"id": "terracotta800",
+					"hex": "#3D2D22FF",
+					"description": "現有公開primitive"
+				},
+				{
+					"id": "terracotta900",
+					"hex": "#2C211BFF",
+					"description": "現有公開primitive"
+				},
+				{
+					"id": "clay50",
+					"hex": "#E9D8D1FF",
+					"description": "現有公開primitive"
+				},
+				{
+					"id": "clay300",
+					"hex": "#A86D43FF",
+					"description": "現有公開primitive"
+				},
+				{
+					"id": "clay500",
+					"hex": "#895137FF",
+					"description": "現有公開primitive"
+				},
+				{
+					"id": "clay800",
+					"hex": "#382A23FF",
+					"description": "現有公開primitive"
+				},
+				{
+					"id": "clay900",
+					"hex": "#291F1CFF",
+					"description": "現有公開primitive"
+				},
+				{
+					"id": "umber50",
+					"hex": "#E4D5D1FF",
+					"description": "現有公開primitive"
+				},
+				{
+					"id": "umber300",
+					"hex": "#89573EFF",
+					"description": "現有公開primitive"
+				},
+				{
+					"id": "umber500",
+					"hex": "#683E33FF",
+					"description": "現有公開primitive"
+				},
+				{
+					"id": "umber800",
+					"hex": "#332724FF",
+					"description": "現有公開primitive"
+				},
+				{
+					"id": "umber900",
+					"hex": "#261D1CFF",
+					"description": "現有公開primitive"
+				},
+				{
+					"id": "green100",
+					"hex": "#DFF0E5FF",
+					"description": "現有公開primitive"
+				},
+				{
+					"id": "green400",
+					"hex": "#67AE86FF",
+					"description": "現有公開primitive"
+				},
+				{
+					"id": "green500",
+					"hex": "#51B77BFF",
+					"description": "現有公開primitive"
+				},
+				{
+					"id": "green600",
+					"hex": "#2D8057FF",
+					"description": "現有公開primitive"
+				},
+				{
+					"id": "green800",
+					"hex": "#243B2DFF",
+					"description": "現有公開primitive"
+				},
+				{
+					"id": "green900",
+					"hex": "#1D3025FF",
+					"description": "現有公開primitive"
+				},
+				{
+					"id": "red100",
+					"hex": "#FAE3E2FF",
+					"description": "現有公開primitive"
+				},
+				{
+					"id": "red300",
+					"hex": "#FA6C73FF",
+					"description": "現有公開primitive"
+				},
+				{
+					"id": "red400",
+					"hex": "#D27B74FF",
+					"description": "現有公開primitive"
+				},
+				{
+					"id": "red600",
+					"hex": "#A7443FFF",
+					"description": "現有公開primitive"
+				},
+				{
+					"id": "red800",
+					"hex": "#472925FF",
+					"description": "現有公開primitive"
+				},
+				{
+					"id": "red900",
+					"hex": "#3B2320FF",
+					"description": "現有公開primitive"
+				},
+				{
+					"id": "amber500",
+					"hex": "#F6B52EFF",
+					"description": "現有公開primitive"
+				},
+				{
+					"id": "blue500",
+					"hex": "#5499DFFF",
+					"description": "現有公開primitive"
+				},
+				{
+					"id": "scrim",
+					"hex": "#01020299",
+					"description": "現有公開primitive"
+				},
+				{
+					"id": "line",
+					"hex": "#00000000",
+					"description": "現有公開primitive"
+				},
+				{
+					"id": "transparentSurface",
+					"hex": "#26292D94",
+					"description": "現有公開primitive"
+				},
+				{
+					"id": "transparentSurfaceInset",
+					"hex": "#404449A8",
+					"description": "現有公開primitive"
+				},
+				{
+					"id": "pureWhite",
+					"hex": "#FFFFFFFF",
+					"description": "現有公開primitive"
+				},
+				{
+					"id": "pureBlack",
+					"hex": "#000000FF",
+					"description": "現有公開primitive"
+				},
+				{
+					"id": "accent-ink-light",
+					"hex": "#1D1D1DFF",
+					"description": "現有accent配對原料"
+				},
+				{
+					"id": "accent-ink-dark",
+					"hex": "#FFFFFFFF",
+					"description": "現有accent配對原料"
+				},
+				{
+					"id": "accent-terracotta-light",
+					"hex": "#92563CFF",
+					"description": "現有accent配對原料"
+				},
+				{
+					"id": "accent-terracotta-dark",
+					"hex": "#CB8E72FF",
+					"description": "現有accent配對原料"
+				},
+				{
+					"id": "accent-ochre-light",
+					"hex": "#7D612FFF",
+					"description": "現有accent配對原料"
+				},
+				{
+					"id": "accent-ochre-dark",
+					"hex": "#B99860FF",
+					"description": "現有accent配對原料"
+				},
+				{
+					"id": "accent-olive-light",
+					"hex": "#5E6A39FF",
+					"description": "現有accent配對原料"
+				},
+				{
+					"id": "accent-olive-dark",
+					"hex": "#94A366FF",
+					"description": "現有accent配對原料"
+				},
+				{
+					"id": "accent-slate-light",
+					"hex": "#4E678AFF",
+					"description": "現有accent配對原料"
+				},
+				{
+					"id": "accent-slate-dark",
+					"hex": "#879EBDFF",
+					"description": "現有accent配對原料"
+				},
+				{
+					"id": "accent-crimson-light",
+					"hex": "#9F4B59FF",
+					"description": "現有accent配對原料"
+				},
+				{
+					"id": "accent-crimson-dark",
+					"hex": "#CE8A95FF",
+					"description": "現有accent配對原料"
+				},
+				{
+					"id": "color-b8292724",
+					"hex": "#292724B8",
+					"description": "原實作值的文件名稱；未新增設計"
+				},
+				{
+					"id": "color-b835322d",
+					"hex": "#35322DB8",
+					"description": "原實作值的文件名稱；未新增設計"
+				},
+				{
+					"id": "meDarkApp",
+					"hex": "#1A1A18FF",
+					"description": "微立體深色最外層工作台底色"
+				},
+				{
+					"id": "meDarkSurface",
+					"hex": "#242320FF",
+					"description": "微立體深色側欄與浮動面板底色"
+				},
+				{
+					"id": "meDarkInset",
+					"hex": "#1E1D1BFF",
+					"description": "微立體深色凹陷程式碼與編輯區塊底色"
+				},
+				{
+					"id": "meDarkMuted",
+					"hex": "#2A2925FF",
+					"description": "微立體深色次要區域底色"
+				},
+				{
+					"id": "meDarkComponent",
+					"hex": "#353430FF",
+					"description": "微立體深色控制項與分頁膠囊底色"
+				},
+				{
+					"id": "meDarkStage",
+					"hex": "#2C2B28FF",
+					"description": "微立體深色主文件卡片底色"
+				},
+				{
+					"id": "meDarkRaised",
+					"hex": "#302F2BFF",
+					"description": "微立體深色浮起卡片底色"
+				},
+				{
+					"id": "meDarkBorder",
+					"hex": "#3C3A36FF",
+					"description": "微立體深色微立體邊框"
+				},
+				{
+					"id": "meDarkBorderStrong",
+					"hex": "#524F49FF",
+					"description": "微立體深色強調邊框"
+				},
+				{
+					"id": "meDarkText",
+					"hex": "#EDEAE4FF",
+					"description": "微立體深色主文字"
+				},
+				{
+					"id": "meDarkMutedText",
+					"hex": "#A8A49BFF",
+					"description": "微立體深色次要文字"
+				},
+				{
+					"id": "meDarkFaintText",
+					"hex": "#6F6B63FF",
+					"description": "微立體深色行號與弱化文字"
+				},
+				{
+					"id": "meDarkAmber",
+					"hex": "#D4A853FF",
+					"description": "微立體深色琥珀金強調色"
+				},
+				{
+					"id": "meDarkAmberSoft",
+					"hex": "#3F3523FF",
+					"description": "微立體深色琥珀金柔化底色"
+				},
+				{
+					"id": "meDarkHover",
+					"hex": "#3E3C37FF",
+					"description": "微立體深色互動懸停底色"
+				},
+				{
+					"id": "meLightApp",
+					"hex": "#E8E5DEFF",
+					"description": "微立體淺色最外層工作台底色"
+				},
+				{
+					"id": "meLightSurface",
+					"hex": "#F2F0EAFF",
+					"description": "微立體淺色側欄與浮動面板底色"
+				},
+				{
+					"id": "meLightInset",
+					"hex": "#E2DFD7FF",
+					"description": "微立體淺色凹陷區塊底色"
+				},
+				{
+					"id": "meLightMuted",
+					"hex": "#E9E6DFFF",
+					"description": "微立體淺色次要區域底色"
+				},
+				{
+					"id": "meLightComponent",
+					"hex": "#FFFFFFFF",
+					"description": "微立體淺色控制項與分頁膠囊底色"
+				},
+				{
+					"id": "meLightStage",
+					"hex": "#FAF9F6FF",
+					"description": "微立體淺色主文件卡片底色"
+				},
+				{
+					"id": "meLightRaised",
+					"hex": "#FAF9F6FF",
+					"description": "微立體淺色浮起卡片底色"
+				},
+				{
+					"id": "meLightBorder",
+					"hex": "#D8D4CAFF",
+					"description": "微立體淺色邊框"
+				},
+				{
+					"id": "meLightBorderStrong",
+					"hex": "#BDB8ACFF",
+					"description": "微立體淺色強調邊框"
+				},
+				{
+					"id": "meLightText",
+					"hex": "#22201CFF",
+					"description": "微立體淺色主文字"
+				},
+				{
+					"id": "meLightMutedText",
+					"hex": "#6A655BFF",
+					"description": "微立體淺色次要文字"
+				},
+				{
+					"id": "meLightFaintText",
+					"hex": "#8D887DFF",
+					"description": "微立體淺色行號與弱化文字"
+				},
+				{
+					"id": "meLightAmber",
+					"hex": "#B5852AFF",
+					"description": "微立體淺色琥珀金強調色"
+				},
+				{
+					"id": "meLightAmberSoft",
+					"hex": "#F3E7CDFF",
+					"description": "微立體淺色琥珀金柔化底色"
+				},
+				{
+					"id": "meLightHover",
+					"hex": "#E6E2D8FF",
+					"description": "微立體淺色互動懸停底色"
+				},
+				{
+					"id": "meTransSurface",
+					"hex": "#242320D9",
+					"description": "微立體透明模式側欄半透明底色"
+				},
+				{
+					"id": "meTransStage",
+					"hex": "#2C2B28E6",
+					"description": "微立體透明模式主舞台半透明底色"
+				}
+			]
+		},
+		"modern-minimal-v1": {
+			"id": "modern-minimal-v1",
+			"family": "modern-minimal",
+			"version": "1.0.0",
+			"name": "現代簡約風",
+			"defaultMode": "light",
+			"semanticColors": {
+				"light": [
+					{
+						"id": "theme.colors.app",
+						"label": "app",
+						"cssVar": "--klp-colors-app",
+						"hex": "#F5F5F5FF"
+					},
+					{
+						"id": "theme.colors.surface",
+						"label": "surface",
+						"cssVar": "--klp-colors-surface",
+						"hex": "#F0EFEDFF"
+					},
+					{
+						"id": "theme.colors.surfaceInset",
+						"label": "surfaceInset",
+						"cssVar": "--klp-colors-surfaceInset",
+						"hex": "#FAFAFAFF"
+					},
+					{
+						"id": "theme.colors.surfaceMuted",
+						"label": "surfaceMuted",
+						"cssVar": "--klp-colors-surfaceMuted",
+						"hex": "#F0EFEDFF"
+					},
+					{
+						"id": "theme.colors.component",
+						"label": "component",
+						"cssVar": "--klp-colors-component",
+						"hex": "#FFFFFFFF"
+					},
+					{
+						"id": "theme.colors.stageSurface",
+						"label": "stageSurface",
+						"cssVar": "--klp-colors-stageSurface",
+						"hex": "#FFFFFFFF"
+					},
+					{
+						"id": "theme.colors.overlay",
+						"label": "overlay",
+						"cssVar": "--klp-colors-overlay",
+						"hex": "#FFFFFFFF"
+					},
+					{
+						"id": "theme.colors.surfaceRaised",
+						"label": "surfaceRaised",
+						"cssVar": "--klp-colors-surfaceRaised",
+						"hex": "#FFFFFFFF"
+					},
+					{
+						"id": "theme.colors.modalScrim",
+						"label": "modalScrim",
+						"cssVar": "--klp-colors-modalScrim",
+						"hex": "#01020299"
+					},
+					{
+						"id": "theme.colors.guide",
+						"label": "guide",
+						"cssVar": "--klp-colors-guide",
+						"hex": "#E7E5E4FF"
+					},
+					{
+						"id": "theme.colors.divider",
+						"label": "divider",
+						"cssVar": "--klp-colors-divider",
+						"hex": "#E7E5E4FF"
+					},
+					{
+						"id": "theme.colors.pagePattern",
+						"label": "pagePattern",
+						"cssVar": "--klp-colors-pagePattern",
+						"hex": "#E7E5E4FF"
+					},
+					{
+						"id": "theme.colors.text",
+						"label": "text",
+						"cssVar": "--klp-colors-text",
+						"hex": "#0C0A09FF"
+					},
+					{
+						"id": "theme.colors.textMuted",
+						"label": "textMuted",
+						"cssVar": "--klp-colors-textMuted",
+						"hex": "#777169FF"
+					},
+					{
+						"id": "theme.colors.textFaint",
+						"label": "textFaint",
+						"cssVar": "--klp-colors-textFaint",
+						"hex": "#A8A29EFF"
+					},
+					{
+						"id": "theme.colors.border",
+						"label": "border",
+						"cssVar": "--klp-colors-border",
+						"hex": "#E7E5E4FF"
+					},
+					{
+						"id": "theme.colors.borderStrong",
+						"label": "borderStrong",
+						"cssVar": "--klp-colors-borderStrong",
+						"hex": "#D6D3D1FF"
+					},
+					{
+						"id": "theme.colors.brand",
+						"label": "brand",
+						"cssVar": "--klp-colors-brand",
+						"hex": "#292524FF"
+					},
+					{
+						"id": "theme.colors.accent",
+						"label": "accent",
+						"cssVar": "--klp-colors-accent",
+						"hex": "#292524FF"
+					},
+					{
+						"id": "theme.colors.accentSoft",
+						"label": "accentSoft",
+						"cssVar": "--klp-colors-accentSoft",
+						"hex": "#F0EFEDFF"
+					},
+					{
+						"id": "theme.colors.interaction",
+						"label": "interaction",
+						"cssVar": "--klp-colors-interaction",
+						"hex": "#0C0A09FF"
+					},
+					{
+						"id": "theme.colors.interactionSoft",
+						"label": "interactionSoft",
+						"cssVar": "--klp-colors-interactionSoft",
+						"hex": "#F0EFEDFF"
+					},
+					{
+						"id": "theme.colors.success",
+						"label": "success",
+						"cssVar": "--klp-colors-success",
+						"hex": "#16A34AFF"
+					},
+					{
+						"id": "theme.colors.warning",
+						"label": "warning",
+						"cssVar": "--klp-colors-warning",
+						"hex": "#B9770EFF"
+					},
+					{
+						"id": "theme.colors.danger",
+						"label": "danger",
+						"cssVar": "--klp-colors-danger",
+						"hex": "#DC2626FF"
+					},
+					{
+						"id": "theme.colors.info",
+						"label": "info",
+						"cssVar": "--klp-colors-info",
+						"hex": "#7097F1FF"
+					},
+					{
+						"id": "theme.colors.onStatus",
+						"label": "onStatus",
+						"cssVar": "--klp-colors-onStatus",
+						"hex": "#FFFFFFFF"
+					},
+					{
+						"id": "theme.colors.onLightBackground",
+						"label": "onLightBackground",
+						"cssVar": "--klp-colors-onLightBackground",
+						"hex": "#0C0A09FF"
+					},
+					{
+						"id": "theme.colors.onDarkBackground",
+						"label": "onDarkBackground",
+						"cssVar": "--klp-colors-onDarkBackground",
+						"hex": "#FFFFFFFF"
+					},
+					{
+						"id": "theme.colors.mutedOnLightBackground",
+						"label": "mutedOnLightBackground",
+						"cssVar": "--klp-colors-mutedOnLightBackground",
+						"hex": "#6A655BFF"
+					},
+					{
+						"id": "theme.colors.mutedOnDarkBackground",
+						"label": "mutedOnDarkBackground",
+						"cssVar": "--klp-colors-mutedOnDarkBackground",
+						"hex": "#BAB5AAFF"
+					},
+					{
+						"id": "theme.colors.faintOnBackground",
+						"label": "faintOnBackground",
+						"cssVar": "--klp-colors-faintOnBackground",
+						"hex": "#6A655BFF"
+					},
+					{
+						"id": "theme.colors.transparent",
+						"label": "transparent",
+						"cssVar": "--klp-colors-transparent",
+						"hex": "#00000000"
+					}
+				],
+				"dark": [
+					{
+						"id": "theme.colors.app",
+						"label": "app",
+						"cssVar": "--klp-colors-app",
+						"hex": "#0C0A09FF"
+					},
+					{
+						"id": "theme.colors.surface",
+						"label": "surface",
+						"cssVar": "--klp-colors-surface",
+						"hex": "#141210FF"
+					},
+					{
+						"id": "theme.colors.surfaceInset",
+						"label": "surfaceInset",
+						"cssVar": "--klp-colors-surfaceInset",
+						"hex": "#080706FF"
+					},
+					{
+						"id": "theme.colors.surfaceMuted",
+						"label": "surfaceMuted",
+						"cssVar": "--klp-colors-surfaceMuted",
+						"hex": "#1C1917FF"
+					},
+					{
+						"id": "theme.colors.component",
+						"label": "component",
+						"cssVar": "--klp-colors-component",
+						"hex": "#1C1917FF"
+					},
+					{
+						"id": "theme.colors.stageSurface",
+						"label": "stageSurface",
+						"cssVar": "--klp-colors-stageSurface",
+						"hex": "#1C1917FF"
+					},
+					{
+						"id": "theme.colors.overlay",
+						"label": "overlay",
+						"cssVar": "--klp-colors-overlay",
+						"hex": "#1C1917FF"
+					},
+					{
+						"id": "theme.colors.surfaceRaised",
+						"label": "surfaceRaised",
+						"cssVar": "--klp-colors-surfaceRaised",
+						"hex": "#1C1917FF"
+					},
+					{
+						"id": "theme.colors.modalScrim",
+						"label": "modalScrim",
+						"cssVar": "--klp-colors-modalScrim",
+						"hex": "#01020299"
+					},
+					{
+						"id": "theme.colors.guide",
+						"label": "guide",
+						"cssVar": "--klp-colors-guide",
+						"hex": "#292524FF"
+					},
+					{
+						"id": "theme.colors.divider",
+						"label": "divider",
+						"cssVar": "--klp-colors-divider",
+						"hex": "#292524FF"
+					},
+					{
+						"id": "theme.colors.pagePattern",
+						"label": "pagePattern",
+						"cssVar": "--klp-colors-pagePattern",
+						"hex": "#292524FF"
+					},
+					{
+						"id": "theme.colors.text",
+						"label": "text",
+						"cssVar": "--klp-colors-text",
+						"hex": "#FFFFFFFF"
+					},
+					{
+						"id": "theme.colors.textMuted",
+						"label": "textMuted",
+						"cssVar": "--klp-colors-textMuted",
+						"hex": "#A8A29EFF"
+					},
+					{
+						"id": "theme.colors.textFaint",
+						"label": "textFaint",
+						"cssVar": "--klp-colors-textFaint",
+						"hex": "#777169FF"
+					},
+					{
+						"id": "theme.colors.border",
+						"label": "border",
+						"cssVar": "--klp-colors-border",
+						"hex": "#292524FF"
+					},
+					{
+						"id": "theme.colors.borderStrong",
+						"label": "borderStrong",
+						"cssVar": "--klp-colors-borderStrong",
+						"hex": "#44403CFF"
+					},
+					{
+						"id": "theme.colors.brand",
+						"label": "brand",
+						"cssVar": "--klp-colors-brand",
+						"hex": "#E7E5E4FF"
+					},
+					{
+						"id": "theme.colors.accent",
+						"label": "accent",
+						"cssVar": "--klp-colors-accent",
+						"hex": "#F4C5A8FF"
+					},
+					{
+						"id": "theme.colors.accentSoft",
+						"label": "accentSoft",
+						"cssVar": "--klp-colors-accentSoft",
+						"hex": "#2B221DFF"
+					},
+					{
+						"id": "theme.colors.interaction",
+						"label": "interaction",
+						"cssVar": "--klp-colors-interaction",
+						"hex": "#F4C5A8FF"
+					},
+					{
+						"id": "theme.colors.interactionSoft",
+						"label": "interactionSoft",
+						"cssVar": "--klp-colors-interactionSoft",
+						"hex": "#1C1917FF"
+					},
+					{
+						"id": "theme.colors.success",
+						"label": "success",
+						"cssVar": "--klp-colors-success",
+						"hex": "#16A34AFF"
+					},
+					{
+						"id": "theme.colors.warning",
+						"label": "warning",
+						"cssVar": "--klp-colors-warning",
+						"hex": "#B9770EFF"
+					},
+					{
+						"id": "theme.colors.danger",
+						"label": "danger",
+						"cssVar": "--klp-colors-danger",
+						"hex": "#DC2626FF"
+					},
+					{
+						"id": "theme.colors.info",
+						"label": "info",
+						"cssVar": "--klp-colors-info",
+						"hex": "#7097F1FF"
+					},
+					{
+						"id": "theme.colors.onStatus",
+						"label": "onStatus",
+						"cssVar": "--klp-colors-onStatus",
+						"hex": "#FFFFFFFF"
+					},
+					{
+						"id": "theme.colors.onLightBackground",
+						"label": "onLightBackground",
+						"cssVar": "--klp-colors-onLightBackground",
+						"hex": "#0C0A09FF"
+					},
+					{
+						"id": "theme.colors.onDarkBackground",
+						"label": "onDarkBackground",
+						"cssVar": "--klp-colors-onDarkBackground",
+						"hex": "#FFFFFFFF"
+					},
+					{
+						"id": "theme.colors.mutedOnLightBackground",
+						"label": "mutedOnLightBackground",
+						"cssVar": "--klp-colors-mutedOnLightBackground",
+						"hex": "#6A655BFF"
+					},
+					{
+						"id": "theme.colors.mutedOnDarkBackground",
+						"label": "mutedOnDarkBackground",
+						"cssVar": "--klp-colors-mutedOnDarkBackground",
+						"hex": "#BAB5AAFF"
+					},
+					{
+						"id": "theme.colors.faintOnBackground",
+						"label": "faintOnBackground",
+						"cssVar": "--klp-colors-faintOnBackground",
+						"hex": "#BAB5AAFF"
+					},
+					{
+						"id": "theme.colors.transparent",
+						"label": "transparent",
+						"cssVar": "--klp-colors-transparent",
+						"hex": "#00000000"
+					}
+				],
+				"ultraDark": [
+					{
+						"id": "theme.colors.app",
+						"label": "app",
+						"cssVar": "--klp-colors-app",
+						"hex": "#080706FF"
+					},
+					{
+						"id": "theme.colors.surface",
+						"label": "surface",
+						"cssVar": "--klp-colors-surface",
+						"hex": "#0C0A09FF"
+					},
+					{
+						"id": "theme.colors.surfaceInset",
+						"label": "surfaceInset",
+						"cssVar": "--klp-colors-surfaceInset",
+						"hex": "#080706FF"
+					},
+					{
+						"id": "theme.colors.surfaceMuted",
+						"label": "surfaceMuted",
+						"cssVar": "--klp-colors-surfaceMuted",
+						"hex": "#141210FF"
+					},
+					{
+						"id": "theme.colors.component",
+						"label": "component",
+						"cssVar": "--klp-colors-component",
+						"hex": "#141210FF"
+					},
+					{
+						"id": "theme.colors.stageSurface",
+						"label": "stageSurface",
+						"cssVar": "--klp-colors-stageSurface",
+						"hex": "#141210FF"
+					},
+					{
+						"id": "theme.colors.overlay",
+						"label": "overlay",
+						"cssVar": "--klp-colors-overlay",
+						"hex": "#141210FF"
+					},
+					{
+						"id": "theme.colors.surfaceRaised",
+						"label": "surfaceRaised",
+						"cssVar": "--klp-colors-surfaceRaised",
+						"hex": "#141210FF"
+					},
+					{
+						"id": "theme.colors.modalScrim",
+						"label": "modalScrim",
+						"cssVar": "--klp-colors-modalScrim",
+						"hex": "#01020299"
+					},
+					{
+						"id": "theme.colors.guide",
+						"label": "guide",
+						"cssVar": "--klp-colors-guide",
+						"hex": "#292524FF"
+					},
+					{
+						"id": "theme.colors.divider",
+						"label": "divider",
+						"cssVar": "--klp-colors-divider",
+						"hex": "#292524FF"
+					},
+					{
+						"id": "theme.colors.pagePattern",
+						"label": "pagePattern",
+						"cssVar": "--klp-colors-pagePattern",
+						"hex": "#292524FF"
+					},
+					{
+						"id": "theme.colors.text",
+						"label": "text",
+						"cssVar": "--klp-colors-text",
+						"hex": "#FFFFFFFF"
+					},
+					{
+						"id": "theme.colors.textMuted",
+						"label": "textMuted",
+						"cssVar": "--klp-colors-textMuted",
+						"hex": "#A8A29EFF"
+					},
+					{
+						"id": "theme.colors.textFaint",
+						"label": "textFaint",
+						"cssVar": "--klp-colors-textFaint",
+						"hex": "#777169FF"
+					},
+					{
+						"id": "theme.colors.border",
+						"label": "border",
+						"cssVar": "--klp-colors-border",
+						"hex": "#292524FF"
+					},
+					{
+						"id": "theme.colors.borderStrong",
+						"label": "borderStrong",
+						"cssVar": "--klp-colors-borderStrong",
+						"hex": "#44403CFF"
+					},
+					{
+						"id": "theme.colors.brand",
+						"label": "brand",
+						"cssVar": "--klp-colors-brand",
+						"hex": "#E7E5E4FF"
+					},
+					{
+						"id": "theme.colors.accent",
+						"label": "accent",
+						"cssVar": "--klp-colors-accent",
+						"hex": "#F4C5A8FF"
+					},
+					{
+						"id": "theme.colors.accentSoft",
+						"label": "accentSoft",
+						"cssVar": "--klp-colors-accentSoft",
+						"hex": "#2B221DFF"
+					},
+					{
+						"id": "theme.colors.interaction",
+						"label": "interaction",
+						"cssVar": "--klp-colors-interaction",
+						"hex": "#F4C5A8FF"
+					},
+					{
+						"id": "theme.colors.interactionSoft",
+						"label": "interactionSoft",
+						"cssVar": "--klp-colors-interactionSoft",
+						"hex": "#1C1917FF"
+					},
+					{
+						"id": "theme.colors.success",
+						"label": "success",
+						"cssVar": "--klp-colors-success",
+						"hex": "#16A34AFF"
+					},
+					{
+						"id": "theme.colors.warning",
+						"label": "warning",
+						"cssVar": "--klp-colors-warning",
+						"hex": "#B9770EFF"
+					},
+					{
+						"id": "theme.colors.danger",
+						"label": "danger",
+						"cssVar": "--klp-colors-danger",
+						"hex": "#DC2626FF"
+					},
+					{
+						"id": "theme.colors.info",
+						"label": "info",
+						"cssVar": "--klp-colors-info",
+						"hex": "#7097F1FF"
+					},
+					{
+						"id": "theme.colors.onStatus",
+						"label": "onStatus",
+						"cssVar": "--klp-colors-onStatus",
+						"hex": "#FFFFFFFF"
+					},
+					{
+						"id": "theme.colors.onLightBackground",
+						"label": "onLightBackground",
+						"cssVar": "--klp-colors-onLightBackground",
+						"hex": "#0C0A09FF"
+					},
+					{
+						"id": "theme.colors.onDarkBackground",
+						"label": "onDarkBackground",
+						"cssVar": "--klp-colors-onDarkBackground",
+						"hex": "#FFFFFFFF"
+					},
+					{
+						"id": "theme.colors.mutedOnLightBackground",
+						"label": "mutedOnLightBackground",
+						"cssVar": "--klp-colors-mutedOnLightBackground",
+						"hex": "#6B6459FF"
+					},
+					{
+						"id": "theme.colors.mutedOnDarkBackground",
+						"label": "mutedOnDarkBackground",
+						"cssVar": "--klp-colors-mutedOnDarkBackground",
+						"hex": "#ADA89EFF"
+					},
+					{
+						"id": "theme.colors.faintOnBackground",
+						"label": "faintOnBackground",
+						"cssVar": "--klp-colors-faintOnBackground",
+						"hex": "#8E8982FF"
+					},
+					{
+						"id": "theme.colors.transparent",
+						"label": "transparent",
+						"cssVar": "--klp-colors-transparent",
+						"hex": "#00000000"
+					}
+				],
+				"transparent": [
+					{
+						"id": "theme.colors.app",
+						"label": "app",
+						"cssVar": "--klp-colors-app",
+						"hex": "#00000000"
+					},
+					{
+						"id": "theme.colors.surface",
+						"label": "surface",
+						"cssVar": "--klp-colors-surface",
+						"hex": "#F0EFEDE6"
+					},
+					{
+						"id": "theme.colors.surfaceInset",
+						"label": "surfaceInset",
+						"cssVar": "--klp-colors-surfaceInset",
+						"hex": "#FAFAFAFF"
+					},
+					{
+						"id": "theme.colors.surfaceMuted",
+						"label": "surfaceMuted",
+						"cssVar": "--klp-colors-surfaceMuted",
+						"hex": "#F0EFEDFF"
+					},
+					{
+						"id": "theme.colors.component",
+						"label": "component",
+						"cssVar": "--klp-colors-component",
+						"hex": "#FFFFFFF2"
+					},
+					{
+						"id": "theme.colors.stageSurface",
+						"label": "stageSurface",
+						"cssVar": "--klp-colors-stageSurface",
+						"hex": "#FFFFFFF2"
+					},
+					{
+						"id": "theme.colors.overlay",
+						"label": "overlay",
+						"cssVar": "--klp-colors-overlay",
+						"hex": "#FFFFFFFF"
+					},
+					{
+						"id": "theme.colors.surfaceRaised",
+						"label": "surfaceRaised",
+						"cssVar": "--klp-colors-surfaceRaised",
+						"hex": "#FFFFFFFF"
+					},
+					{
+						"id": "theme.colors.modalScrim",
+						"label": "modalScrim",
+						"cssVar": "--klp-colors-modalScrim",
+						"hex": "#01020299"
+					},
+					{
+						"id": "theme.colors.guide",
+						"label": "guide",
+						"cssVar": "--klp-colors-guide",
+						"hex": "#E7E5E4FF"
+					},
+					{
+						"id": "theme.colors.divider",
+						"label": "divider",
+						"cssVar": "--klp-colors-divider",
+						"hex": "#E7E5E4FF"
+					},
+					{
+						"id": "theme.colors.pagePattern",
+						"label": "pagePattern",
+						"cssVar": "--klp-colors-pagePattern",
+						"hex": "#E7E5E4FF"
+					},
+					{
+						"id": "theme.colors.text",
+						"label": "text",
+						"cssVar": "--klp-colors-text",
+						"hex": "#0C0A09FF"
+					},
+					{
+						"id": "theme.colors.textMuted",
+						"label": "textMuted",
+						"cssVar": "--klp-colors-textMuted",
+						"hex": "#777169FF"
+					},
+					{
+						"id": "theme.colors.textFaint",
+						"label": "textFaint",
+						"cssVar": "--klp-colors-textFaint",
+						"hex": "#A8A29EFF"
+					},
+					{
+						"id": "theme.colors.border",
+						"label": "border",
+						"cssVar": "--klp-colors-border",
+						"hex": "#E7E5E4FF"
+					},
+					{
+						"id": "theme.colors.borderStrong",
+						"label": "borderStrong",
+						"cssVar": "--klp-colors-borderStrong",
+						"hex": "#D6D3D1FF"
+					},
+					{
+						"id": "theme.colors.brand",
+						"label": "brand",
+						"cssVar": "--klp-colors-brand",
+						"hex": "#292524FF"
+					},
+					{
+						"id": "theme.colors.accent",
+						"label": "accent",
+						"cssVar": "--klp-colors-accent",
+						"hex": "#292524FF"
+					},
+					{
+						"id": "theme.colors.accentSoft",
+						"label": "accentSoft",
+						"cssVar": "--klp-colors-accentSoft",
+						"hex": "#F0EFEDFF"
+					},
+					{
+						"id": "theme.colors.interaction",
+						"label": "interaction",
+						"cssVar": "--klp-colors-interaction",
+						"hex": "#0C0A09FF"
+					},
+					{
+						"id": "theme.colors.interactionSoft",
+						"label": "interactionSoft",
+						"cssVar": "--klp-colors-interactionSoft",
+						"hex": "#F0EFEDFF"
+					},
+					{
+						"id": "theme.colors.success",
+						"label": "success",
+						"cssVar": "--klp-colors-success",
+						"hex": "#16A34AFF"
+					},
+					{
+						"id": "theme.colors.warning",
+						"label": "warning",
+						"cssVar": "--klp-colors-warning",
+						"hex": "#B9770EFF"
+					},
+					{
+						"id": "theme.colors.danger",
+						"label": "danger",
+						"cssVar": "--klp-colors-danger",
+						"hex": "#DC2626FF"
+					},
+					{
+						"id": "theme.colors.info",
+						"label": "info",
+						"cssVar": "--klp-colors-info",
+						"hex": "#7097F1FF"
+					},
+					{
+						"id": "theme.colors.onStatus",
+						"label": "onStatus",
+						"cssVar": "--klp-colors-onStatus",
+						"hex": "#FFFFFFFF"
+					},
+					{
+						"id": "theme.colors.onLightBackground",
+						"label": "onLightBackground",
+						"cssVar": "--klp-colors-onLightBackground",
+						"hex": "#0C0A09FF"
+					},
+					{
+						"id": "theme.colors.onDarkBackground",
+						"label": "onDarkBackground",
+						"cssVar": "--klp-colors-onDarkBackground",
+						"hex": "#FFFFFFFF"
+					},
+					{
+						"id": "theme.colors.mutedOnLightBackground",
+						"label": "mutedOnLightBackground",
+						"cssVar": "--klp-colors-mutedOnLightBackground",
+						"hex": "#6A655BFF"
+					},
+					{
+						"id": "theme.colors.mutedOnDarkBackground",
+						"label": "mutedOnDarkBackground",
+						"cssVar": "--klp-colors-mutedOnDarkBackground",
+						"hex": "#BAB5AAFF"
+					},
+					{
+						"id": "theme.colors.faintOnBackground",
+						"label": "faintOnBackground",
+						"cssVar": "--klp-colors-faintOnBackground",
+						"hex": "#BAB5AAFF"
+					},
+					{
+						"id": "theme.colors.transparent",
+						"label": "transparent",
+						"cssVar": "--klp-colors-transparent",
+						"hex": "#00000000"
+					}
+				]
+			},
+			"primitiveColors": [
+				{
+					"id": "parchment50",
+					"hex": "#F8F6F1FF",
+					"description": "現有公開primitive"
+				},
+				{
+					"id": "parchment75",
+					"hex": "#F0EDE6FF",
+					"description": "現有公開primitive"
+				},
+				{
+					"id": "parchment100",
+					"hex": "#EFEDE7FF",
+					"description": "現有公開primitive"
+				},
+				{
+					"id": "parchment150",
+					"hex": "#E7E4DDFF",
+					"description": "現有公開primitive"
+				},
+				{
+					"id": "parchment200",
+					"hex": "#E1DDD2FF",
+					"description": "現有公開primitive"
+				},
+				{
+					"id": "parchment250",
+					"hex": "#D3CFC4FF",
+					"description": "現有公開primitive"
+				},
+				{
+					"id": "parchment350",
+					"hex": "#BAB5AAFF",
+					"description": "現有公開primitive"
+				},
+				{
+					"id": "parchment550",
+					"hex": "#6A655BFF",
+					"description": "現有公開primitive"
+				},
+				{
+					"id": "parchment700",
+					"hex": "#514B40FF",
+					"description": "現有公開primitive"
+				},
+				{
+					"id": "parchment750",
+					"hex": "#484339FF",
+					"description": "現有公開primitive"
+				},
+				{
+					"id": "parchment800",
+					"hex": "#35322DFF",
+					"description": "現有公開primitive"
+				},
+				{
+					"id": "parchment825",
+					"hex": "#33322CFF",
+					"description": "現有公開primitive"
+				},
+				{
+					"id": "parchment900",
+					"hex": "#292724FF",
+					"description": "現有公開primitive"
+				},
+				{
+					"id": "parchment925",
+					"hex": "#21201BFF",
+					"description": "現有公開primitive"
+				},
+				{
+					"id": "parchment950",
+					"hex": "#201F1CFF",
+					"description": "現有公開primitive"
+				},
+				{
+					"id": "ink1000",
+					"hex": "#000000FF",
+					"description": "現有公開primitive"
+				},
+				{
+					"id": "transparent",
+					"hex": "#00000000",
+					"description": "現有公開primitive"
+				},
+				{
+					"id": "ink50",
+					"hex": "#FFFFFFFF",
+					"description": "現有公開primitive"
+				},
+				{
+					"id": "ink100",
+					"hex": "#F2F0EBFF",
+					"description": "現有公開primitive"
+				},
+				{
+					"id": "ink150",
+					"hex": "#EAE7E1FF",
+					"description": "現有公開primitive"
+				},
+				{
+					"id": "ink200",
+					"hex": "#E6E3DCFF",
+					"description": "現有公開primitive"
+				},
+				{
+					"id": "ink250",
+					"hex": "#BCB8B0FF",
+					"description": "現有公開primitive"
+				},
+				{
+					"id": "ink300",
+					"hex": "#ADA89EFF",
+					"description": "現有公開primitive"
+				},
+				{
+					"id": "ink350",
+					"hex": "#9E998FFF",
+					"description": "現有公開primitive"
+				},
+				{
+					"id": "ink400",
+					"hex": "#8E8982FF",
+					"description": "現有公開primitive"
+				},
+				{
+					"id": "ink450",
+					"hex": "#7F7A75FF",
+					"description": "現有公開primitive"
+				},
+				{
+					"id": "ink500",
+					"hex": "#6F6C67FF",
+					"description": "現有公開primitive"
+				},
+				{
+					"id": "ink550",
+					"hex": "#6B6459FF",
+					"description": "現有公開primitive"
+				},
+				{
+					"id": "ink600",
+					"hex": "#4F5151FF",
+					"description": "現有公開primitive"
+				},
+				{
+					"id": "ink650",
+					"hex": "#414344FF",
+					"description": "現有公開primitive"
+				},
+				{
+					"id": "ink700",
+					"hex": "#343637FF",
+					"description": "現有公開primitive"
+				},
+				{
+					"id": "ink750",
+					"hex": "#303030FF",
+					"description": "現有公開primitive"
+				},
+				{
+					"id": "ink800",
+					"hex": "#292929FF",
+					"description": "現有公開primitive"
+				},
+				{
+					"id": "ink850",
+					"hex": "#232323FF",
+					"description": "現有公開primitive"
+				},
+				{
+					"id": "ink900",
+					"hex": "#1D1D1DFF",
+					"description": "現有公開primitive"
+				},
+				{
+					"id": "ink950",
+					"hex": "#101010FF",
+					"description": "現有公開primitive"
+				},
+				{
+					"id": "warmNeutral25",
+					"hex": "#F5F2ECFF",
+					"description": "現有公開primitive"
+				},
+				{
+					"id": "warmNeutral50",
+					"hex": "#E4E1DAFF",
+					"description": "現有公開primitive"
+				},
+				{
+					"id": "warmNeutral100",
+					"hex": "#D6D0C6FF",
+					"description": "現有公開primitive"
+				},
+				{
+					"id": "warmNeutral200",
+					"hex": "#C8C0B4FF",
+					"description": "現有公開primitive"
+				},
+				{
+					"id": "warmNeutral300",
+					"hex": "#B8B2A4FF",
+					"description": "現有公開primitive"
+				},
+				{
+					"id": "warmNeutral400",
+					"hex": "#918A7BFF",
+					"description": "現有公開primitive"
+				},
+				{
+					"id": "warmNeutral450",
+					"hex": "#8C8477FF",
+					"description": "現有公開primitive"
+				},
+				{
+					"id": "warmNeutral500",
+					"hex": "#7A7566FF",
+					"description": "現有公開primitive"
+				},
+				{
+					"id": "warmNeutral600",
+					"hex": "#6A6256FF",
+					"description": "現有公開primitive"
+				},
+				{
+					"id": "warmNeutral700",
+					"hex": "#585249FF",
+					"description": "現有公開primitive"
+				},
+				{
+					"id": "warmNeutral750",
+					"hex": "#45413AFF",
+					"description": "現有公開primitive"
+				},
+				{
+					"id": "warmNeutral800",
+					"hex": "#433F3AFF",
+					"description": "現有公開primitive"
+				},
+				{
+					"id": "warmNeutral900",
+					"hex": "#34302BFF",
+					"description": "現有公開primitive"
+				},
+				{
+					"id": "sand50",
+					"hex": "#F8F1E2FF",
+					"description": "現有公開primitive"
+				},
+				{
+					"id": "sand300",
+					"hex": "#F0D79AFF",
+					"description": "現有公開primitive"
+				},
+				{
+					"id": "sand500",
+					"hex": "#E0BE73FF",
+					"description": "現有公開primitive"
+				},
+				{
+					"id": "sand800",
+					"hex": "#453D2BFF",
+					"description": "現有公開primitive"
+				},
+				{
+					"id": "sand900",
+					"hex": "#302B20FF",
+					"description": "現有公開primitive"
+				},
+				{
+					"id": "gold50",
+					"hex": "#F6EBD7FF",
+					"description": "現有公開primitive"
+				},
+				{
+					"id": "gold300",
+					"hex": "#E8BD70FF",
+					"description": "現有公開primitive"
+				},
+				{
+					"id": "gold500",
+					"hex": "#D3A152FF",
+					"description": "現有公開primitive"
+				},
+				{
+					"id": "gold800",
+					"hex": "#443725FF",
+					"description": "現有公開primitive"
+				},
+				{
+					"id": "gold900",
+					"hex": "#30271BFF",
+					"description": "現有公開primitive"
+				},
+				{
+					"id": "ochre50",
+					"hex": "#F3E4CFFF",
+					"description": "現有公開primitive"
+				},
+				{
+					"id": "ochre300",
+					"hex": "#DFA04EFF",
+					"description": "現有公開primitive"
+				},
+				{
+					"id": "ochre500",
+					"hex": "#C6823DFF",
+					"description": "現有公開primitive"
+				},
+				{
+					"id": "ochre800",
+					"hex": "#413222FF",
+					"description": "現有公開primitive"
+				},
+				{
+					"id": "ochre900",
+					"hex": "#2E241AFF",
+					"description": "現有公開primitive"
+				},
+				{
+					"id": "terracotta50",
+					"hex": "#EEDDD0FF",
+					"description": "現有公開primitive"
+				},
+				{
+					"id": "terracotta300",
+					"hex": "#C88745FF",
+					"description": "現有公開primitive"
+				},
+				{
+					"id": "terracotta500",
+					"hex": "#A96836FF",
+					"description": "現有公開primitive"
+				},
+				{
+					"id": "terracotta800",
+					"hex": "#3D2D22FF",
+					"description": "現有公開primitive"
+				},
+				{
+					"id": "terracotta900",
+					"hex": "#2C211BFF",
+					"description": "現有公開primitive"
+				},
+				{
+					"id": "clay50",
+					"hex": "#E9D8D1FF",
+					"description": "現有公開primitive"
+				},
+				{
+					"id": "clay300",
+					"hex": "#A86D43FF",
+					"description": "現有公開primitive"
+				},
+				{
+					"id": "clay500",
+					"hex": "#895137FF",
+					"description": "現有公開primitive"
+				},
+				{
+					"id": "clay800",
+					"hex": "#382A23FF",
+					"description": "現有公開primitive"
+				},
+				{
+					"id": "clay900",
+					"hex": "#291F1CFF",
+					"description": "現有公開primitive"
+				},
+				{
+					"id": "umber50",
+					"hex": "#E4D5D1FF",
+					"description": "現有公開primitive"
+				},
+				{
+					"id": "umber300",
+					"hex": "#89573EFF",
+					"description": "現有公開primitive"
+				},
+				{
+					"id": "umber500",
+					"hex": "#683E33FF",
+					"description": "現有公開primitive"
+				},
+				{
+					"id": "umber800",
+					"hex": "#332724FF",
+					"description": "現有公開primitive"
+				},
+				{
+					"id": "umber900",
+					"hex": "#261D1CFF",
+					"description": "現有公開primitive"
+				},
+				{
+					"id": "green100",
+					"hex": "#DFF0E5FF",
+					"description": "現有公開primitive"
+				},
+				{
+					"id": "green400",
+					"hex": "#67AE86FF",
+					"description": "現有公開primitive"
+				},
+				{
+					"id": "green500",
+					"hex": "#51B77BFF",
+					"description": "現有公開primitive"
+				},
+				{
+					"id": "green600",
+					"hex": "#2D8057FF",
+					"description": "現有公開primitive"
+				},
+				{
+					"id": "green800",
+					"hex": "#243B2DFF",
+					"description": "現有公開primitive"
+				},
+				{
+					"id": "green900",
+					"hex": "#1D3025FF",
+					"description": "現有公開primitive"
+				},
+				{
+					"id": "red100",
+					"hex": "#FAE3E2FF",
+					"description": "現有公開primitive"
+				},
+				{
+					"id": "red300",
+					"hex": "#FA6C73FF",
+					"description": "現有公開primitive"
+				},
+				{
+					"id": "red400",
+					"hex": "#D27B74FF",
+					"description": "現有公開primitive"
+				},
+				{
+					"id": "red600",
+					"hex": "#A7443FFF",
+					"description": "現有公開primitive"
+				},
+				{
+					"id": "red800",
+					"hex": "#472925FF",
+					"description": "現有公開primitive"
+				},
+				{
+					"id": "red900",
+					"hex": "#3B2320FF",
+					"description": "現有公開primitive"
+				},
+				{
+					"id": "amber500",
+					"hex": "#F6B52EFF",
+					"description": "現有公開primitive"
+				},
+				{
+					"id": "blue500",
+					"hex": "#5499DFFF",
+					"description": "現有公開primitive"
+				},
+				{
+					"id": "scrim",
+					"hex": "#01020299",
+					"description": "現有公開primitive"
+				},
+				{
+					"id": "line",
+					"hex": "#00000000",
+					"description": "現有公開primitive"
+				},
+				{
+					"id": "transparentSurface",
+					"hex": "#26292D94",
+					"description": "現有公開primitive"
+				},
+				{
+					"id": "transparentSurfaceInset",
+					"hex": "#404449A8",
+					"description": "現有公開primitive"
+				},
+				{
+					"id": "pureWhite",
+					"hex": "#FFFFFFFF",
+					"description": "現有公開primitive"
+				},
+				{
+					"id": "pureBlack",
+					"hex": "#000000FF",
+					"description": "現有公開primitive"
+				},
+				{
+					"id": "accent-ink-light",
+					"hex": "#1D1D1DFF",
+					"description": "現有accent配對原料"
+				},
+				{
+					"id": "accent-ink-dark",
+					"hex": "#FFFFFFFF",
+					"description": "現有accent配對原料"
+				},
+				{
+					"id": "accent-terracotta-light",
+					"hex": "#92563CFF",
+					"description": "現有accent配對原料"
+				},
+				{
+					"id": "accent-terracotta-dark",
+					"hex": "#CB8E72FF",
+					"description": "現有accent配對原料"
+				},
+				{
+					"id": "accent-ochre-light",
+					"hex": "#7D612FFF",
+					"description": "現有accent配對原料"
+				},
+				{
+					"id": "accent-ochre-dark",
+					"hex": "#B99860FF",
+					"description": "現有accent配對原料"
+				},
+				{
+					"id": "accent-olive-light",
+					"hex": "#5E6A39FF",
+					"description": "現有accent配對原料"
+				},
+				{
+					"id": "accent-olive-dark",
+					"hex": "#94A366FF",
+					"description": "現有accent配對原料"
+				},
+				{
+					"id": "accent-slate-light",
+					"hex": "#4E678AFF",
+					"description": "現有accent配對原料"
+				},
+				{
+					"id": "accent-slate-dark",
+					"hex": "#879EBDFF",
+					"description": "現有accent配對原料"
+				},
+				{
+					"id": "accent-crimson-light",
+					"hex": "#9F4B59FF",
+					"description": "現有accent配對原料"
+				},
+				{
+					"id": "accent-crimson-dark",
+					"hex": "#CE8A95FF",
+					"description": "現有accent配對原料"
+				},
+				{
+					"id": "color-b8292724",
+					"hex": "#292724B8",
+					"description": "原實作值的文件名稱；未新增設計"
+				},
+				{
+					"id": "color-b835322d",
+					"hex": "#35322DB8",
+					"description": "原實作值的文件名稱；未新增設計"
+				},
+				{
+					"id": "mmLightCanvas",
+					"hex": "#F5F5F5FF",
+					"description": "open-tag off-white 畫布底色 (#F5F5F5)"
+				},
+				{
+					"id": "mmLightCanvasSoft",
+					"hex": "#FAFAFAFF",
+					"description": "open-tag 次柔白底色 (#FAFAFA)"
+				},
+				{
+					"id": "mmLightSurface",
+					"hex": "#F0EFEDFF",
+					"description": "open-tag 暖石表面 (#F0EFED)"
+				},
+				{
+					"id": "mmLightCard",
+					"hex": "#FFFFFFFF",
+					"description": "open-tag 純白卡片與控制底色 (#FFFFFF)"
+				},
+				{
+					"id": "mmLightInk",
+					"hex": "#0C0A09FF",
+					"description": "open-tag 暖墨黑主色 (#0C0A09)"
+				},
+				{
+					"id": "mmLightPrimary",
+					"hex": "#292524FF",
+					"description": "open-tag 主按鈕墨黑 (#292524)"
+				},
+				{
+					"id": "mmLightBody",
+					"hex": "#4E4E4EFF",
+					"description": "open-tag 正文深灰 (#4E4E4E)"
+				},
+				{
+					"id": "mmLightMuted",
+					"hex": "#777169FF",
+					"description": "open-tag 次要灰 (#777169)"
+				},
+				{
+					"id": "mmLightFaint",
+					"hex": "#A8A29EFF",
+					"description": "open-tag 弱化灰 (#A8A29E)"
+				},
+				{
+					"id": "mmLightHair",
+					"hex": "#E7E5E4FF",
+					"description": "open-tag 細線分隔 (#E7E5E4)"
+				},
+				{
+					"id": "mmLightHairStrong",
+					"hex": "#D6D3D1FF",
+					"description": "open-tag 強調細線 (#D6D3D1)"
+				},
+				{
+					"id": "mmDarkCanvas",
+					"hex": "#0C0A09FF",
+					"description": "open-tag dark-band 深邃底色 (#0C0A09)"
+				},
+				{
+					"id": "mmDarkSurface",
+					"hex": "#141210FF",
+					"description": "open-tag dark 側欄底色 (#141210)"
+				},
+				{
+					"id": "mmDarkElevated",
+					"hex": "#1C1917FF",
+					"description": "open-tag dark 卡片浮起底色 (#1C1917)"
+				},
+				{
+					"id": "mmDarkInset",
+					"hex": "#080706FF",
+					"description": "open-tag dark 內凹區塊底色 (#080706)"
+				},
+				{
+					"id": "mmDarkBorder",
+					"hex": "#292524FF",
+					"description": "open-tag dark 細線 (#292524)"
+				},
+				{
+					"id": "mmDarkBorderStrong",
+					"hex": "#44403CFF",
+					"description": "open-tag dark 強調細線 (#44403C)"
+				},
+				{
+					"id": "mmDarkText",
+					"hex": "#FFFFFFFF",
+					"description": "open-tag dark 主白文字 (#FFFFFF)"
+				},
+				{
+					"id": "mmDarkBody",
+					"hex": "#E7E5E4FF",
+					"description": "open-tag dark 次白文字 (#E7E5E4)"
+				},
+				{
+					"id": "mmDarkMuted",
+					"hex": "#A8A29EFF",
+					"description": "open-tag dark 弱化文字 (#A8A29E)"
+				},
+				{
+					"id": "mmDarkFaint",
+					"hex": "#777169FF",
+					"description": "open-tag dark 更弱文字 (#777169)"
+				},
+				{
+					"id": "mmDarkPeach",
+					"hex": "#F4C5A8FF",
+					"description": "open-tag dark trace 暖杏強調色 (#F4C5A8)"
+				},
+				{
+					"id": "mmDarkPeachSoft",
+					"hex": "#2B221DFF",
+					"description": "open-tag dark 暖杏柔化底色"
+				},
+				{
+					"id": "mmSuccess",
+					"hex": "#16A34AFF",
+					"description": "open-tag 成功語意色 (#16A34A)"
+				},
+				{
+					"id": "mmWarning",
+					"hex": "#B9770EFF",
+					"description": "open-tag 警告語意色 (#B9770E)"
+				},
+				{
+					"id": "mmDanger",
+					"hex": "#DC2626FF",
+					"description": "open-tag 錯誤語意色 (#DC2626)"
+				},
+				{
+					"id": "mmInfo",
+					"hex": "#7097F1FF",
+					"description": "open-tag 資訊連結藍 (#7097F1)"
+				},
+				{
+					"id": "mmTransSurface",
+					"hex": "#F0EFEDE6",
+					"description": "open-tag 透明模式表面底色"
+				},
+				{
+					"id": "mmTransCard",
+					"hex": "#FFFFFFF2",
+					"description": "open-tag 透明模式卡片底色"
+				}
+			]
+		},
+		"kallopis-v1": {
+			"id": "kallopis-v1",
+			"family": "kallopis",
+			"version": "1.0.0",
+			"name": "暖紙預設",
+			"defaultMode": "light",
+			"semanticColors": {
+				"light": [
+					{
+						"id": "theme.colors.app",
+						"label": "app",
+						"cssVar": "--klp-colors-app",
+						"hex": "#E7E4DDFF"
+					},
+					{
+						"id": "theme.colors.surface",
+						"label": "surface",
+						"cssVar": "--klp-colors-surface",
+						"hex": "#EFEDE7FF"
+					},
+					{
+						"id": "theme.colors.surfaceInset",
+						"label": "surfaceInset",
+						"cssVar": "--klp-colors-surfaceInset",
+						"hex": "#EFEDE7FF"
+					},
+					{
+						"id": "theme.colors.surfaceMuted",
+						"label": "surfaceMuted",
+						"cssVar": "--klp-colors-surfaceMuted",
+						"hex": "#E1DDD2FF"
+					},
+					{
+						"id": "theme.colors.component",
+						"label": "component",
+						"cssVar": "--klp-colors-component",
+						"hex": "#F8F6F1FF"
+					},
+					{
+						"id": "theme.colors.stageSurface",
+						"label": "stageSurface",
+						"cssVar": "--klp-colors-stageSurface",
+						"hex": "#F8F6F1FF"
+					},
+					{
+						"id": "theme.colors.overlay",
+						"label": "overlay",
+						"cssVar": "--klp-colors-overlay",
+						"hex": "#F8F6F1FF"
+					},
+					{
+						"id": "theme.colors.surfaceRaised",
+						"label": "surfaceRaised",
+						"cssVar": "--klp-colors-surfaceRaised",
+						"hex": "#F8F6F1FF"
+					},
+					{
+						"id": "theme.colors.modalScrim",
+						"label": "modalScrim",
+						"cssVar": "--klp-colors-modalScrim",
+						"hex": "#01020299"
+					},
+					{
+						"id": "theme.colors.guide",
+						"label": "guide",
+						"cssVar": "--klp-colors-guide",
+						"hex": "#D3CFC4FF"
+					},
+					{
+						"id": "theme.colors.divider",
+						"label": "divider",
+						"cssVar": "--klp-colors-divider",
+						"hex": "#D3CFC4FF"
+					},
+					{
+						"id": "theme.colors.pagePattern",
+						"label": "pagePattern",
+						"cssVar": "--klp-colors-pagePattern",
+						"hex": "#D3CFC4FF"
+					},
+					{
+						"id": "theme.colors.text",
+						"label": "text",
+						"cssVar": "--klp-colors-text",
+						"hex": "#21201BFF"
+					},
+					{
+						"id": "theme.colors.textMuted",
+						"label": "textMuted",
+						"cssVar": "--klp-colors-textMuted",
+						"hex": "#6A655BFF"
+					},
+					{
+						"id": "theme.colors.textFaint",
+						"label": "textFaint",
+						"cssVar": "--klp-colors-textFaint",
+						"hex": "#6A655BFF"
+					},
+					{
+						"id": "theme.colors.border",
+						"label": "border",
+						"cssVar": "--klp-colors-border",
+						"hex": "#D3CFC4FF"
+					},
+					{
+						"id": "theme.colors.borderStrong",
+						"label": "borderStrong",
+						"cssVar": "--klp-colors-borderStrong",
+						"hex": "#D3CFC4FF"
+					},
+					{
+						"id": "theme.colors.brand",
+						"label": "brand",
+						"cssVar": "--klp-colors-brand",
+						"hex": "#1D1D1DFF"
+					},
+					{
+						"id": "theme.colors.accent",
+						"label": "accent",
+						"cssVar": "--klp-colors-accent",
+						"hex": "#1D1D1DFF"
+					},
+					{
+						"id": "theme.colors.accentSoft",
+						"label": "accentSoft",
+						"cssVar": "--klp-colors-accentSoft",
+						"hex": "#E6E3DCFF"
+					},
+					{
+						"id": "theme.colors.interaction",
+						"label": "interaction",
+						"cssVar": "--klp-colors-interaction",
+						"hex": "#1D1D1DFF"
+					},
+					{
+						"id": "theme.colors.interactionSoft",
+						"label": "interactionSoft",
+						"cssVar": "--klp-colors-interactionSoft",
+						"hex": "#E6E3DCFF"
+					},
+					{
+						"id": "theme.colors.success",
+						"label": "success",
+						"cssVar": "--klp-colors-success",
+						"hex": "#51B77BFF"
+					},
+					{
+						"id": "theme.colors.warning",
+						"label": "warning",
+						"cssVar": "--klp-colors-warning",
+						"hex": "#F6B52EFF"
+					},
+					{
+						"id": "theme.colors.danger",
+						"label": "danger",
+						"cssVar": "--klp-colors-danger",
+						"hex": "#FA6C73FF"
+					},
+					{
+						"id": "theme.colors.info",
+						"label": "info",
+						"cssVar": "--klp-colors-info",
+						"hex": "#5499DFFF"
+					},
+					{
+						"id": "theme.colors.onStatus",
+						"label": "onStatus",
+						"cssVar": "--klp-colors-onStatus",
+						"hex": "#FFFFFFFF"
+					},
+					{
+						"id": "theme.colors.onLightBackground",
+						"label": "onLightBackground",
+						"cssVar": "--klp-colors-onLightBackground",
+						"hex": "#21201BFF"
+					},
+					{
+						"id": "theme.colors.onDarkBackground",
+						"label": "onDarkBackground",
+						"cssVar": "--klp-colors-onDarkBackground",
+						"hex": "#F0EDE6FF"
+					},
+					{
+						"id": "theme.colors.mutedOnLightBackground",
+						"label": "mutedOnLightBackground",
+						"cssVar": "--klp-colors-mutedOnLightBackground",
+						"hex": "#6A655BFF"
+					},
+					{
+						"id": "theme.colors.mutedOnDarkBackground",
+						"label": "mutedOnDarkBackground",
+						"cssVar": "--klp-colors-mutedOnDarkBackground",
+						"hex": "#BAB5AAFF"
+					},
+					{
+						"id": "theme.colors.faintOnBackground",
+						"label": "faintOnBackground",
+						"cssVar": "--klp-colors-faintOnBackground",
+						"hex": "#6A655BFF"
+					},
+					{
+						"id": "theme.colors.transparent",
+						"label": "transparent",
+						"cssVar": "--klp-colors-transparent",
+						"hex": "#00000000"
+					}
+				],
+				"dark": [
+					{
+						"id": "theme.colors.app",
+						"label": "app",
+						"cssVar": "--klp-colors-app",
+						"hex": "#201F1CFF"
+					},
+					{
+						"id": "theme.colors.surface",
+						"label": "surface",
+						"cssVar": "--klp-colors-surface",
+						"hex": "#292724FF"
+					},
+					{
+						"id": "theme.colors.surfaceInset",
+						"label": "surfaceInset",
+						"cssVar": "--klp-colors-surfaceInset",
+						"hex": "#292724FF"
+					},
+					{
+						"id": "theme.colors.surfaceMuted",
+						"label": "surfaceMuted",
+						"cssVar": "--klp-colors-surfaceMuted",
+						"hex": "#484339FF"
+					},
+					{
+						"id": "theme.colors.component",
+						"label": "component",
+						"cssVar": "--klp-colors-component",
+						"hex": "#35322DFF"
+					},
+					{
+						"id": "theme.colors.stageSurface",
+						"label": "stageSurface",
+						"cssVar": "--klp-colors-stageSurface",
+						"hex": "#35322DFF"
+					},
+					{
+						"id": "theme.colors.overlay",
+						"label": "overlay",
+						"cssVar": "--klp-colors-overlay",
+						"hex": "#35322DFF"
+					},
+					{
+						"id": "theme.colors.surfaceRaised",
+						"label": "surfaceRaised",
+						"cssVar": "--klp-colors-surfaceRaised",
+						"hex": "#35322DFF"
+					},
+					{
+						"id": "theme.colors.modalScrim",
+						"label": "modalScrim",
+						"cssVar": "--klp-colors-modalScrim",
+						"hex": "#01020299"
+					},
+					{
+						"id": "theme.colors.guide",
+						"label": "guide",
+						"cssVar": "--klp-colors-guide",
+						"hex": "#514B40FF"
+					},
+					{
+						"id": "theme.colors.divider",
+						"label": "divider",
+						"cssVar": "--klp-colors-divider",
+						"hex": "#514B40FF"
+					},
+					{
+						"id": "theme.colors.pagePattern",
+						"label": "pagePattern",
+						"cssVar": "--klp-colors-pagePattern",
+						"hex": "#514B40FF"
+					},
+					{
+						"id": "theme.colors.text",
+						"label": "text",
+						"cssVar": "--klp-colors-text",
+						"hex": "#F0EDE6FF"
+					},
+					{
+						"id": "theme.colors.textMuted",
+						"label": "textMuted",
+						"cssVar": "--klp-colors-textMuted",
+						"hex": "#BAB5AAFF"
+					},
+					{
+						"id": "theme.colors.textFaint",
+						"label": "textFaint",
+						"cssVar": "--klp-colors-textFaint",
+						"hex": "#BAB5AAFF"
+					},
+					{
+						"id": "theme.colors.border",
+						"label": "border",
+						"cssVar": "--klp-colors-border",
+						"hex": "#514B40FF"
+					},
+					{
+						"id": "theme.colors.borderStrong",
+						"label": "borderStrong",
+						"cssVar": "--klp-colors-borderStrong",
+						"hex": "#514B40FF"
+					},
+					{
+						"id": "theme.colors.brand",
+						"label": "brand",
+						"cssVar": "--klp-colors-brand",
+						"hex": "#FFFFFFFF"
+					},
+					{
+						"id": "theme.colors.accent",
+						"label": "accent",
+						"cssVar": "--klp-colors-accent",
+						"hex": "#FFFFFFFF"
+					},
+					{
+						"id": "theme.colors.accentSoft",
+						"label": "accentSoft",
+						"cssVar": "--klp-colors-accentSoft",
+						"hex": "#303030FF"
+					},
+					{
+						"id": "theme.colors.interaction",
+						"label": "interaction",
+						"cssVar": "--klp-colors-interaction",
+						"hex": "#FFFFFFFF"
+					},
+					{
+						"id": "theme.colors.interactionSoft",
+						"label": "interactionSoft",
+						"cssVar": "--klp-colors-interactionSoft",
+						"hex": "#303030FF"
+					},
+					{
+						"id": "theme.colors.success",
+						"label": "success",
+						"cssVar": "--klp-colors-success",
+						"hex": "#51B77BFF"
+					},
+					{
+						"id": "theme.colors.warning",
+						"label": "warning",
+						"cssVar": "--klp-colors-warning",
+						"hex": "#F6B52EFF"
+					},
+					{
+						"id": "theme.colors.danger",
+						"label": "danger",
+						"cssVar": "--klp-colors-danger",
+						"hex": "#FA6C73FF"
+					},
+					{
+						"id": "theme.colors.info",
+						"label": "info",
+						"cssVar": "--klp-colors-info",
+						"hex": "#5499DFFF"
+					},
+					{
+						"id": "theme.colors.onStatus",
+						"label": "onStatus",
+						"cssVar": "--klp-colors-onStatus",
+						"hex": "#FFFFFFFF"
+					},
+					{
+						"id": "theme.colors.onLightBackground",
+						"label": "onLightBackground",
+						"cssVar": "--klp-colors-onLightBackground",
+						"hex": "#21201BFF"
+					},
+					{
+						"id": "theme.colors.onDarkBackground",
+						"label": "onDarkBackground",
+						"cssVar": "--klp-colors-onDarkBackground",
+						"hex": "#F0EDE6FF"
+					},
+					{
+						"id": "theme.colors.mutedOnLightBackground",
+						"label": "mutedOnLightBackground",
+						"cssVar": "--klp-colors-mutedOnLightBackground",
+						"hex": "#6A655BFF"
+					},
+					{
+						"id": "theme.colors.mutedOnDarkBackground",
+						"label": "mutedOnDarkBackground",
+						"cssVar": "--klp-colors-mutedOnDarkBackground",
+						"hex": "#BAB5AAFF"
+					},
+					{
+						"id": "theme.colors.faintOnBackground",
+						"label": "faintOnBackground",
+						"cssVar": "--klp-colors-faintOnBackground",
+						"hex": "#BAB5AAFF"
+					},
+					{
+						"id": "theme.colors.transparent",
+						"label": "transparent",
+						"cssVar": "--klp-colors-transparent",
+						"hex": "#00000000"
+					}
+				],
+				"ultraDark": [
+					{
+						"id": "theme.colors.app",
+						"label": "app",
+						"cssVar": "--klp-colors-app",
+						"hex": "#101010FF"
+					},
+					{
+						"id": "theme.colors.surface",
+						"label": "surface",
+						"cssVar": "--klp-colors-surface",
+						"hex": "#232323FF"
+					},
+					{
+						"id": "theme.colors.surfaceInset",
+						"label": "surfaceInset",
+						"cssVar": "--klp-colors-surfaceInset",
+						"hex": "#232323FF"
+					},
+					{
+						"id": "theme.colors.surfaceMuted",
+						"label": "surfaceMuted",
+						"cssVar": "--klp-colors-surfaceMuted",
+						"hex": "#232323FF"
+					},
+					{
+						"id": "theme.colors.component",
+						"label": "component",
+						"cssVar": "--klp-colors-component",
+						"hex": "#1D1D1DFF"
+					},
+					{
+						"id": "theme.colors.stageSurface",
+						"label": "stageSurface",
+						"cssVar": "--klp-colors-stageSurface",
+						"hex": "#1D1D1DFF"
+					},
+					{
+						"id": "theme.colors.overlay",
+						"label": "overlay",
+						"cssVar": "--klp-colors-overlay",
+						"hex": "#232323FF"
+					},
+					{
+						"id": "theme.colors.surfaceRaised",
+						"label": "surfaceRaised",
+						"cssVar": "--klp-colors-surfaceRaised",
+						"hex": "#232323FF"
+					},
+					{
+						"id": "theme.colors.modalScrim",
+						"label": "modalScrim",
+						"cssVar": "--klp-colors-modalScrim",
+						"hex": "#01020299"
+					},
+					{
+						"id": "theme.colors.guide",
+						"label": "guide",
+						"cssVar": "--klp-colors-guide",
+						"hex": "#7F7A75FF"
+					},
+					{
+						"id": "theme.colors.divider",
+						"label": "divider",
+						"cssVar": "--klp-colors-divider",
+						"hex": "#292929FF"
+					},
+					{
+						"id": "theme.colors.pagePattern",
+						"label": "pagePattern",
+						"cssVar": "--klp-colors-pagePattern",
+						"hex": "#414344FF"
+					},
+					{
+						"id": "theme.colors.text",
+						"label": "text",
+						"cssVar": "--klp-colors-text",
+						"hex": "#F2F0EBFF"
+					},
+					{
+						"id": "theme.colors.textMuted",
+						"label": "textMuted",
+						"cssVar": "--klp-colors-textMuted",
+						"hex": "#9E998FFF"
+					},
+					{
+						"id": "theme.colors.textFaint",
+						"label": "textFaint",
+						"cssVar": "--klp-colors-textFaint",
+						"hex": "#8E8982FF"
+					},
+					{
+						"id": "theme.colors.border",
+						"label": "border",
+						"cssVar": "--klp-colors-border",
+						"hex": "#00000000"
+					},
+					{
+						"id": "theme.colors.borderStrong",
+						"label": "borderStrong",
+						"cssVar": "--klp-colors-borderStrong",
+						"hex": "#00000000"
+					},
+					{
+						"id": "theme.colors.brand",
+						"label": "brand",
+						"cssVar": "--klp-colors-brand",
+						"hex": "#F2F0EBFF"
+					},
+					{
+						"id": "theme.colors.accent",
+						"label": "accent",
+						"cssVar": "--klp-colors-accent",
+						"hex": "#F2F0EBFF"
+					},
+					{
+						"id": "theme.colors.accentSoft",
+						"label": "accentSoft",
+						"cssVar": "--klp-colors-accentSoft",
+						"hex": "#232323FF"
+					},
+					{
+						"id": "theme.colors.interaction",
+						"label": "interaction",
+						"cssVar": "--klp-colors-interaction",
+						"hex": "#F2F0EBFF"
+					},
+					{
+						"id": "theme.colors.interactionSoft",
+						"label": "interactionSoft",
+						"cssVar": "--klp-colors-interactionSoft",
+						"hex": "#232323FF"
+					},
+					{
+						"id": "theme.colors.success",
+						"label": "success",
+						"cssVar": "--klp-colors-success",
+						"hex": "#51B77BFF"
+					},
+					{
+						"id": "theme.colors.warning",
+						"label": "warning",
+						"cssVar": "--klp-colors-warning",
+						"hex": "#F6B52EFF"
+					},
+					{
+						"id": "theme.colors.danger",
+						"label": "danger",
+						"cssVar": "--klp-colors-danger",
+						"hex": "#FA6C73FF"
+					},
+					{
+						"id": "theme.colors.info",
+						"label": "info",
+						"cssVar": "--klp-colors-info",
+						"hex": "#5499DFFF"
+					},
+					{
+						"id": "theme.colors.onStatus",
+						"label": "onStatus",
+						"cssVar": "--klp-colors-onStatus",
+						"hex": "#FFFFFFFF"
+					},
+					{
+						"id": "theme.colors.onLightBackground",
+						"label": "onLightBackground",
+						"cssVar": "--klp-colors-onLightBackground",
+						"hex": "#1D1D1DFF"
+					},
+					{
+						"id": "theme.colors.onDarkBackground",
+						"label": "onDarkBackground",
+						"cssVar": "--klp-colors-onDarkBackground",
+						"hex": "#FFFFFFFF"
+					},
+					{
+						"id": "theme.colors.mutedOnLightBackground",
+						"label": "mutedOnLightBackground",
+						"cssVar": "--klp-colors-mutedOnLightBackground",
+						"hex": "#6B6459FF"
+					},
+					{
+						"id": "theme.colors.mutedOnDarkBackground",
+						"label": "mutedOnDarkBackground",
+						"cssVar": "--klp-colors-mutedOnDarkBackground",
+						"hex": "#ADA89EFF"
+					},
+					{
+						"id": "theme.colors.faintOnBackground",
+						"label": "faintOnBackground",
+						"cssVar": "--klp-colors-faintOnBackground",
+						"hex": "#8E8982FF"
+					},
+					{
+						"id": "theme.colors.transparent",
+						"label": "transparent",
+						"cssVar": "--klp-colors-transparent",
+						"hex": "#00000000"
+					}
+				],
+				"transparent": [
+					{
+						"id": "theme.colors.app",
+						"label": "app",
+						"cssVar": "--klp-colors-app",
+						"hex": "#00000000"
+					},
+					{
+						"id": "theme.colors.surface",
+						"label": "surface",
+						"cssVar": "--klp-colors-surface",
+						"hex": "#292724B8"
+					},
+					{
+						"id": "theme.colors.surfaceInset",
+						"label": "surfaceInset",
+						"cssVar": "--klp-colors-surfaceInset",
+						"hex": "#292724FF"
+					},
+					{
+						"id": "theme.colors.surfaceMuted",
+						"label": "surfaceMuted",
+						"cssVar": "--klp-colors-surfaceMuted",
+						"hex": "#484339FF"
+					},
+					{
+						"id": "theme.colors.component",
+						"label": "component",
+						"cssVar": "--klp-colors-component",
+						"hex": "#35322DFF"
+					},
+					{
+						"id": "theme.colors.stageSurface",
+						"label": "stageSurface",
+						"cssVar": "--klp-colors-stageSurface",
+						"hex": "#35322DB8"
+					},
+					{
+						"id": "theme.colors.overlay",
+						"label": "overlay",
+						"cssVar": "--klp-colors-overlay",
+						"hex": "#35322DFF"
+					},
+					{
+						"id": "theme.colors.surfaceRaised",
+						"label": "surfaceRaised",
+						"cssVar": "--klp-colors-surfaceRaised",
+						"hex": "#35322DFF"
+					},
+					{
+						"id": "theme.colors.modalScrim",
+						"label": "modalScrim",
+						"cssVar": "--klp-colors-modalScrim",
+						"hex": "#01020299"
+					},
+					{
+						"id": "theme.colors.guide",
+						"label": "guide",
+						"cssVar": "--klp-colors-guide",
+						"hex": "#514B40FF"
+					},
+					{
+						"id": "theme.colors.divider",
+						"label": "divider",
+						"cssVar": "--klp-colors-divider",
+						"hex": "#514B40FF"
+					},
+					{
+						"id": "theme.colors.pagePattern",
+						"label": "pagePattern",
+						"cssVar": "--klp-colors-pagePattern",
+						"hex": "#514B40FF"
+					},
+					{
+						"id": "theme.colors.text",
+						"label": "text",
+						"cssVar": "--klp-colors-text",
+						"hex": "#F0EDE6FF"
+					},
+					{
+						"id": "theme.colors.textMuted",
+						"label": "textMuted",
+						"cssVar": "--klp-colors-textMuted",
+						"hex": "#BAB5AAFF"
+					},
+					{
+						"id": "theme.colors.textFaint",
+						"label": "textFaint",
+						"cssVar": "--klp-colors-textFaint",
+						"hex": "#BAB5AAFF"
+					},
+					{
+						"id": "theme.colors.border",
+						"label": "border",
+						"cssVar": "--klp-colors-border",
+						"hex": "#514B40FF"
+					},
+					{
+						"id": "theme.colors.borderStrong",
+						"label": "borderStrong",
+						"cssVar": "--klp-colors-borderStrong",
+						"hex": "#514B40FF"
+					},
+					{
+						"id": "theme.colors.brand",
+						"label": "brand",
+						"cssVar": "--klp-colors-brand",
+						"hex": "#FFFFFFFF"
+					},
+					{
+						"id": "theme.colors.accent",
+						"label": "accent",
+						"cssVar": "--klp-colors-accent",
+						"hex": "#FFFFFFFF"
+					},
+					{
+						"id": "theme.colors.accentSoft",
+						"label": "accentSoft",
+						"cssVar": "--klp-colors-accentSoft",
+						"hex": "#303030FF"
+					},
+					{
+						"id": "theme.colors.interaction",
+						"label": "interaction",
+						"cssVar": "--klp-colors-interaction",
+						"hex": "#FFFFFFFF"
+					},
+					{
+						"id": "theme.colors.interactionSoft",
+						"label": "interactionSoft",
+						"cssVar": "--klp-colors-interactionSoft",
+						"hex": "#303030FF"
+					},
+					{
+						"id": "theme.colors.success",
+						"label": "success",
+						"cssVar": "--klp-colors-success",
+						"hex": "#51B77BFF"
+					},
+					{
+						"id": "theme.colors.warning",
+						"label": "warning",
+						"cssVar": "--klp-colors-warning",
+						"hex": "#F6B52EFF"
+					},
+					{
+						"id": "theme.colors.danger",
+						"label": "danger",
+						"cssVar": "--klp-colors-danger",
+						"hex": "#FA6C73FF"
+					},
+					{
+						"id": "theme.colors.info",
+						"label": "info",
+						"cssVar": "--klp-colors-info",
+						"hex": "#5499DFFF"
+					},
+					{
+						"id": "theme.colors.onStatus",
+						"label": "onStatus",
+						"cssVar": "--klp-colors-onStatus",
+						"hex": "#FFFFFFFF"
+					},
+					{
+						"id": "theme.colors.onLightBackground",
+						"label": "onLightBackground",
+						"cssVar": "--klp-colors-onLightBackground",
+						"hex": "#21201BFF"
+					},
+					{
+						"id": "theme.colors.onDarkBackground",
+						"label": "onDarkBackground",
+						"cssVar": "--klp-colors-onDarkBackground",
+						"hex": "#F0EDE6FF"
+					},
+					{
+						"id": "theme.colors.mutedOnLightBackground",
+						"label": "mutedOnLightBackground",
+						"cssVar": "--klp-colors-mutedOnLightBackground",
+						"hex": "#6A655BFF"
+					},
+					{
+						"id": "theme.colors.mutedOnDarkBackground",
+						"label": "mutedOnDarkBackground",
+						"cssVar": "--klp-colors-mutedOnDarkBackground",
+						"hex": "#BAB5AAFF"
+					},
+					{
+						"id": "theme.colors.faintOnBackground",
+						"label": "faintOnBackground",
+						"cssVar": "--klp-colors-faintOnBackground",
+						"hex": "#BAB5AAFF"
+					},
+					{
+						"id": "theme.colors.transparent",
+						"label": "transparent",
+						"cssVar": "--klp-colors-transparent",
+						"hex": "#00000000"
+					}
+				]
+			},
+			"primitiveColors": [
+				{
+					"id": "parchment50",
+					"hex": "#F8F6F1FF",
+					"description": "現有公開primitive"
+				},
+				{
+					"id": "parchment75",
+					"hex": "#F0EDE6FF",
+					"description": "現有公開primitive"
+				},
+				{
+					"id": "parchment100",
+					"hex": "#EFEDE7FF",
+					"description": "現有公開primitive"
+				},
+				{
+					"id": "parchment150",
+					"hex": "#E7E4DDFF",
+					"description": "現有公開primitive"
+				},
+				{
+					"id": "parchment200",
+					"hex": "#E1DDD2FF",
+					"description": "現有公開primitive"
+				},
+				{
+					"id": "parchment250",
+					"hex": "#D3CFC4FF",
+					"description": "現有公開primitive"
+				},
+				{
+					"id": "parchment350",
+					"hex": "#BAB5AAFF",
+					"description": "現有公開primitive"
+				},
+				{
+					"id": "parchment550",
+					"hex": "#6A655BFF",
+					"description": "現有公開primitive"
+				},
+				{
+					"id": "parchment700",
+					"hex": "#514B40FF",
+					"description": "現有公開primitive"
+				},
+				{
+					"id": "parchment750",
+					"hex": "#484339FF",
+					"description": "現有公開primitive"
+				},
+				{
+					"id": "parchment800",
+					"hex": "#35322DFF",
+					"description": "現有公開primitive"
+				},
+				{
+					"id": "parchment825",
+					"hex": "#33322CFF",
+					"description": "現有公開primitive"
+				},
+				{
+					"id": "parchment900",
+					"hex": "#292724FF",
+					"description": "現有公開primitive"
+				},
+				{
+					"id": "parchment925",
+					"hex": "#21201BFF",
+					"description": "現有公開primitive"
+				},
+				{
+					"id": "parchment950",
+					"hex": "#201F1CFF",
+					"description": "現有公開primitive"
+				},
+				{
+					"id": "ink1000",
+					"hex": "#000000FF",
+					"description": "現有公開primitive"
+				},
+				{
+					"id": "transparent",
+					"hex": "#00000000",
+					"description": "現有公開primitive"
+				},
+				{
+					"id": "ink50",
+					"hex": "#FFFFFFFF",
+					"description": "現有公開primitive"
+				},
+				{
+					"id": "ink100",
+					"hex": "#F2F0EBFF",
+					"description": "現有公開primitive"
+				},
+				{
+					"id": "ink150",
+					"hex": "#EAE7E1FF",
+					"description": "現有公開primitive"
+				},
+				{
+					"id": "ink200",
+					"hex": "#E6E3DCFF",
+					"description": "現有公開primitive"
+				},
+				{
+					"id": "ink250",
+					"hex": "#BCB8B0FF",
+					"description": "現有公開primitive"
+				},
+				{
+					"id": "ink300",
+					"hex": "#ADA89EFF",
+					"description": "現有公開primitive"
+				},
+				{
+					"id": "ink350",
+					"hex": "#9E998FFF",
+					"description": "現有公開primitive"
+				},
+				{
+					"id": "ink400",
+					"hex": "#8E8982FF",
+					"description": "現有公開primitive"
+				},
+				{
+					"id": "ink450",
+					"hex": "#7F7A75FF",
+					"description": "現有公開primitive"
+				},
+				{
+					"id": "ink500",
+					"hex": "#6F6C67FF",
+					"description": "現有公開primitive"
+				},
+				{
+					"id": "ink550",
+					"hex": "#6B6459FF",
+					"description": "現有公開primitive"
+				},
+				{
+					"id": "ink600",
+					"hex": "#4F5151FF",
+					"description": "現有公開primitive"
+				},
+				{
+					"id": "ink650",
+					"hex": "#414344FF",
+					"description": "現有公開primitive"
+				},
+				{
+					"id": "ink700",
+					"hex": "#343637FF",
+					"description": "現有公開primitive"
+				},
+				{
+					"id": "ink750",
+					"hex": "#303030FF",
+					"description": "現有公開primitive"
+				},
+				{
+					"id": "ink800",
+					"hex": "#292929FF",
+					"description": "現有公開primitive"
+				},
+				{
+					"id": "ink850",
+					"hex": "#232323FF",
+					"description": "現有公開primitive"
+				},
+				{
+					"id": "ink900",
+					"hex": "#1D1D1DFF",
+					"description": "現有公開primitive"
+				},
+				{
+					"id": "ink950",
+					"hex": "#101010FF",
+					"description": "現有公開primitive"
+				},
+				{
+					"id": "warmNeutral25",
+					"hex": "#F5F2ECFF",
+					"description": "現有公開primitive"
+				},
+				{
+					"id": "warmNeutral50",
+					"hex": "#E4E1DAFF",
+					"description": "現有公開primitive"
+				},
+				{
+					"id": "warmNeutral100",
+					"hex": "#D6D0C6FF",
+					"description": "現有公開primitive"
+				},
+				{
+					"id": "warmNeutral200",
+					"hex": "#C8C0B4FF",
+					"description": "現有公開primitive"
+				},
+				{
+					"id": "warmNeutral300",
+					"hex": "#B8B2A4FF",
+					"description": "現有公開primitive"
+				},
+				{
+					"id": "warmNeutral400",
+					"hex": "#918A7BFF",
+					"description": "現有公開primitive"
+				},
+				{
+					"id": "warmNeutral450",
+					"hex": "#8C8477FF",
+					"description": "現有公開primitive"
+				},
+				{
+					"id": "warmNeutral500",
+					"hex": "#7A7566FF",
+					"description": "現有公開primitive"
+				},
+				{
+					"id": "warmNeutral600",
+					"hex": "#6A6256FF",
+					"description": "現有公開primitive"
+				},
+				{
+					"id": "warmNeutral700",
+					"hex": "#585249FF",
+					"description": "現有公開primitive"
+				},
+				{
+					"id": "warmNeutral750",
+					"hex": "#45413AFF",
+					"description": "現有公開primitive"
+				},
+				{
+					"id": "warmNeutral800",
+					"hex": "#433F3AFF",
+					"description": "現有公開primitive"
+				},
+				{
+					"id": "warmNeutral900",
+					"hex": "#34302BFF",
+					"description": "現有公開primitive"
+				},
+				{
+					"id": "sand50",
+					"hex": "#F8F1E2FF",
+					"description": "現有公開primitive"
+				},
+				{
+					"id": "sand300",
+					"hex": "#F0D79AFF",
+					"description": "現有公開primitive"
+				},
+				{
+					"id": "sand500",
+					"hex": "#E0BE73FF",
+					"description": "現有公開primitive"
+				},
+				{
+					"id": "sand800",
+					"hex": "#453D2BFF",
+					"description": "現有公開primitive"
+				},
+				{
+					"id": "sand900",
+					"hex": "#302B20FF",
+					"description": "現有公開primitive"
+				},
+				{
+					"id": "gold50",
+					"hex": "#F6EBD7FF",
+					"description": "現有公開primitive"
+				},
+				{
+					"id": "gold300",
+					"hex": "#E8BD70FF",
+					"description": "現有公開primitive"
+				},
+				{
+					"id": "gold500",
+					"hex": "#D3A152FF",
+					"description": "現有公開primitive"
+				},
+				{
+					"id": "gold800",
+					"hex": "#443725FF",
+					"description": "現有公開primitive"
+				},
+				{
+					"id": "gold900",
+					"hex": "#30271BFF",
+					"description": "現有公開primitive"
+				},
+				{
+					"id": "ochre50",
+					"hex": "#F3E4CFFF",
+					"description": "現有公開primitive"
+				},
+				{
+					"id": "ochre300",
+					"hex": "#DFA04EFF",
+					"description": "現有公開primitive"
+				},
+				{
+					"id": "ochre500",
+					"hex": "#C6823DFF",
+					"description": "現有公開primitive"
+				},
+				{
+					"id": "ochre800",
+					"hex": "#413222FF",
+					"description": "現有公開primitive"
+				},
+				{
+					"id": "ochre900",
+					"hex": "#2E241AFF",
+					"description": "現有公開primitive"
+				},
+				{
+					"id": "terracotta50",
+					"hex": "#EEDDD0FF",
+					"description": "現有公開primitive"
+				},
+				{
+					"id": "terracotta300",
+					"hex": "#C88745FF",
+					"description": "現有公開primitive"
+				},
+				{
+					"id": "terracotta500",
+					"hex": "#A96836FF",
+					"description": "現有公開primitive"
+				},
+				{
+					"id": "terracotta800",
+					"hex": "#3D2D22FF",
+					"description": "現有公開primitive"
+				},
+				{
+					"id": "terracotta900",
+					"hex": "#2C211BFF",
+					"description": "現有公開primitive"
+				},
+				{
+					"id": "clay50",
+					"hex": "#E9D8D1FF",
+					"description": "現有公開primitive"
+				},
+				{
+					"id": "clay300",
+					"hex": "#A86D43FF",
+					"description": "現有公開primitive"
+				},
+				{
+					"id": "clay500",
+					"hex": "#895137FF",
+					"description": "現有公開primitive"
+				},
+				{
+					"id": "clay800",
+					"hex": "#382A23FF",
+					"description": "現有公開primitive"
+				},
+				{
+					"id": "clay900",
+					"hex": "#291F1CFF",
+					"description": "現有公開primitive"
+				},
+				{
+					"id": "umber50",
+					"hex": "#E4D5D1FF",
+					"description": "現有公開primitive"
+				},
+				{
+					"id": "umber300",
+					"hex": "#89573EFF",
+					"description": "現有公開primitive"
+				},
+				{
+					"id": "umber500",
+					"hex": "#683E33FF",
+					"description": "現有公開primitive"
+				},
+				{
+					"id": "umber800",
+					"hex": "#332724FF",
+					"description": "現有公開primitive"
+				},
+				{
+					"id": "umber900",
+					"hex": "#261D1CFF",
+					"description": "現有公開primitive"
+				},
+				{
+					"id": "green100",
+					"hex": "#DFF0E5FF",
+					"description": "現有公開primitive"
+				},
+				{
+					"id": "green400",
+					"hex": "#67AE86FF",
+					"description": "現有公開primitive"
+				},
+				{
+					"id": "green500",
+					"hex": "#51B77BFF",
+					"description": "現有公開primitive"
+				},
+				{
+					"id": "green600",
+					"hex": "#2D8057FF",
+					"description": "現有公開primitive"
+				},
+				{
+					"id": "green800",
+					"hex": "#243B2DFF",
+					"description": "現有公開primitive"
+				},
+				{
+					"id": "green900",
+					"hex": "#1D3025FF",
+					"description": "現有公開primitive"
+				},
+				{
+					"id": "red100",
+					"hex": "#FAE3E2FF",
+					"description": "現有公開primitive"
+				},
+				{
+					"id": "red300",
+					"hex": "#FA6C73FF",
+					"description": "現有公開primitive"
+				},
+				{
+					"id": "red400",
+					"hex": "#D27B74FF",
+					"description": "現有公開primitive"
+				},
+				{
+					"id": "red600",
+					"hex": "#A7443FFF",
+					"description": "現有公開primitive"
+				},
+				{
+					"id": "red800",
+					"hex": "#472925FF",
+					"description": "現有公開primitive"
+				},
+				{
+					"id": "red900",
+					"hex": "#3B2320FF",
+					"description": "現有公開primitive"
+				},
+				{
+					"id": "amber500",
+					"hex": "#F6B52EFF",
+					"description": "現有公開primitive"
+				},
+				{
+					"id": "blue500",
+					"hex": "#5499DFFF",
+					"description": "現有公開primitive"
+				},
+				{
+					"id": "scrim",
+					"hex": "#01020299",
+					"description": "現有公開primitive"
+				},
+				{
+					"id": "line",
+					"hex": "#00000000",
+					"description": "現有公開primitive"
+				},
+				{
+					"id": "transparentSurface",
+					"hex": "#26292D94",
+					"description": "現有公開primitive"
+				},
+				{
+					"id": "transparentSurfaceInset",
+					"hex": "#404449A8",
+					"description": "現有公開primitive"
+				},
+				{
+					"id": "pureWhite",
+					"hex": "#FFFFFFFF",
+					"description": "現有公開primitive"
+				},
+				{
+					"id": "pureBlack",
+					"hex": "#000000FF",
+					"description": "現有公開primitive"
+				},
+				{
+					"id": "accent-ink-light",
+					"hex": "#1D1D1DFF",
+					"description": "現有accent配對原料"
+				},
+				{
+					"id": "accent-ink-dark",
+					"hex": "#FFFFFFFF",
+					"description": "現有accent配對原料"
+				},
+				{
+					"id": "accent-terracotta-light",
+					"hex": "#92563CFF",
+					"description": "現有accent配對原料"
+				},
+				{
+					"id": "accent-terracotta-dark",
+					"hex": "#CB8E72FF",
+					"description": "現有accent配對原料"
+				},
+				{
+					"id": "accent-ochre-light",
+					"hex": "#7D612FFF",
+					"description": "現有accent配對原料"
+				},
+				{
+					"id": "accent-ochre-dark",
+					"hex": "#B99860FF",
+					"description": "現有accent配對原料"
+				},
+				{
+					"id": "accent-olive-light",
+					"hex": "#5E6A39FF",
+					"description": "現有accent配對原料"
+				},
+				{
+					"id": "accent-olive-dark",
+					"hex": "#94A366FF",
+					"description": "現有accent配對原料"
+				},
+				{
+					"id": "accent-slate-light",
+					"hex": "#4E678AFF",
+					"description": "現有accent配對原料"
+				},
+				{
+					"id": "accent-slate-dark",
+					"hex": "#879EBDFF",
+					"description": "現有accent配對原料"
+				},
+				{
+					"id": "accent-crimson-light",
+					"hex": "#9F4B59FF",
+					"description": "現有accent配對原料"
+				},
+				{
+					"id": "accent-crimson-dark",
+					"hex": "#CE8A95FF",
+					"description": "現有accent配對原料"
+				},
+				{
+					"id": "color-b8292724",
+					"hex": "#292724B8",
+					"description": "原實作值的文件名稱；未新增設計"
+				},
+				{
+					"id": "color-b835322d",
+					"hex": "#35322DB8",
+					"description": "原實作值的文件名稱；未新增設計"
+				}
+			]
+		}
+	}
+}

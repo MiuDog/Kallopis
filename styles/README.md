@@ -2,7 +2,7 @@
 
 `styles/` 是跨框架共用的風格權威中心，所有風格皆採版本化命名（`<family>-v<N>.json` / `<family>-v<N>.css`，重大調整升版為 `-v2` 並保留舊版）：
 - 主要色彩與語意資料：`kallopis-v1.json`（暖紙預設）、`themes/micro-elevation-v1.json`（微立體）、`themes/modern-minimal-v1.json`（現代簡約風，取自 `fancyboi999/open-tag`）。
-- 跨專案可複製 CSS tokens：`themes/*-v1.css`（以 `--klp-*` 命名並自動對應 `component-bindings.json`）。
+- 跨專案可複製 CSS / JS tokens：`themes/*-v1.css`、`themes/*-v1.js`（以 `--klp-*` 命名並自動對應 `component-bindings.json`）與色票清冊 `themes/swatches.json`。
 - 參考範例圖片與獨立可複製 HTML 組合：`images/`、`examples/ide-workbench/index.html`、`examples/sidebar-stage/index.html`。
 - 參數型別與約束目錄：`catalog.json`。
 
