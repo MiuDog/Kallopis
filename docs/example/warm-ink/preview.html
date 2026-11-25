@@ -1,0 +1,164 @@
+<style>
+	#warm-ink { --wi-bg:#080808; --wi-panel:#242428; --wi-text:#f6f5f2; --wi-muted:#b5b5bd; --wi-yellow:#f4dc70; --wi-tile:#e9c654; --wi-active:#dcae38; --wi-ink:#11110e; --wi-radius:12px; --wi-gap:12px; background:var(--wi-bg); color:var(--wi-text); font:14px/1.5 Arial,"Microsoft JhengHei",sans-serif; padding:24px 30px 30px; color-scheme:dark; }
+	#warm-ink * { box-sizing:border-box; }
+	#warm-ink button, #warm-ink input { font:inherit; }
+	#warm-ink button { border:0; }
+	#warm-ink .wi-top { display:flex; align-items:center; gap:28px; padding:0 100px 24px 0; flex-wrap:wrap; }
+	#warm-ink .wi-brand { font-size:20px; font-weight:800; letter-spacing:-.7px; }
+	#warm-ink .wi-brand span { color:var(--wi-yellow); }
+	#warm-ink .wi-meta { color:var(--wi-muted); font-size:12px; }
+	#warm-ink .wi-hero { background:var(--wi-yellow); color:var(--wi-ink); border-radius:var(--wi-radius); padding:34px; display:grid; grid-template-columns:1.1fr 1fr; gap:32px; }
+	#warm-ink .wi-eyebrow { font-size:11px; font-weight:700; letter-spacing:1.5px; margin:0 0 15px; }
+	#warm-ink h1 { font-size:36px; line-height:1.25; font-weight:800; letter-spacing:-1.5px; margin:0 0 14px; }
+	#warm-ink .wi-intro { margin:0 0 25px; font-size:14px; }
+	#warm-ink .wi-primary { background:#fffdf5; color:var(--wi-ink); border-radius:6px; padding:12px 22px; font-weight:700; min-height:44px; }
+	#warm-ink .wi-primary:hover { background:#f8edc0; }
+	#warm-ink .wi-tools { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:var(--wi-gap); align-content:center; }
+	#warm-ink .wi-tool { background:var(--wi-tile); color:var(--wi-ink); border-radius:7px; min-height:90px; padding:12px 6px; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:5px; position:relative; }
+	#warm-ink .wi-tool:hover, #warm-ink .wi-tool[aria-pressed="true"] { background:var(--wi-active); }
+	#warm-ink .wi-tool[aria-pressed="true"]::after { content:'•'; position:absolute; top:3px; right:9px; }
+	#warm-ink .wi-tool strong { font-size:28px; line-height:1.15; letter-spacing:-1px; }
+	#warm-ink .wi-tool span { font-size:11px; }
+	#warm-ink .wi-toolbar { display:flex; justify-content:space-between; align-items:center; gap:14px; flex-wrap:wrap; margin:26px 0 13px; }
+	#warm-ink h2 { font-size:18px; margin:0; font-weight:700; }
+	#warm-ink .wi-segments { display:flex; gap:4px; background:var(--wi-panel); padding:4px; border-radius:7px; }
+	#warm-ink .wi-segments button { color:var(--wi-muted); background:transparent; padding:7px 13px; border-radius:5px; }
+	#warm-ink .wi-segments button[aria-pressed="true"] { background:#f4f1e7; color:#161615; }
+	#warm-ink .wi-projects { background:var(--wi-panel); border-radius:var(--wi-radius); padding:0 22px; }
+	#warm-ink .wi-row { display:grid; grid-template-columns:40px minmax(0,1fr) auto; gap:15px; align-items:center; padding:18px 0; }
+	#warm-ink .wi-row + .wi-row { border-top:1px solid #39393e; }
+	#warm-ink .wi-monogram { background:#39393e; color:#eee9d7; width:40px; height:40px; border-radius:6px; display:grid; place-items:center; font-size:16px; font-weight:700; }
+	#warm-ink .wi-title { font-size:14px; font-weight:700; margin:0 0 3px; }
+	#warm-ink .wi-caption { color:var(--wi-muted); font-size:12px; }
+	#warm-ink .wi-open { background:#35353b; color:var(--wi-text); border-radius:6px; padding:8px 12px; }
+	#warm-ink .wi-open:hover { background:#48484e; }
+	#warm-ink .wi-foot { display:flex; justify-content:space-between; gap:12px; flex-wrap:wrap; color:var(--wi-muted); font-size:11px; margin-top:17px; }
+	#warm-ink .wi-detail { background:var(--wi-panel); border-radius:var(--wi-radius); padding:22px; margin-top:16px; }
+	#warm-ink .wi-detail p { margin:8px 0 0; color:var(--wi-muted); }
+	#warm-ink [hidden] { display:none !important; }
+	@media(max-width:650px) { #warm-ink { padding:20px 16px; } #warm-ink .wi-top { gap:10px; } #warm-ink .wi-hero { grid-template-columns:1fr; padding:25px; gap:24px; } #warm-ink h1 { font-size:31px; } }
+	@media(pointer:coarse) { #warm-ink button { min-height:44px; } }
+</style>
+<div id="warm-ink" aria-label="暖墨風格：設計團隊工作空間">
+	<header class="wi-top"><div class="wi-brand"><span>k.</span> Kallopis</div><span class="wi-meta">木禾設計 / 工作空間</span></header>
+	<section class="wi-hero" aria-label="工作入口">
+		<div>
+			<p class="wi-eyebrow">A LITTLE SPACE FOR BIG IDEAS</p>
+			<h1>把好點子，<br>變成今天的進展。</h1>
+			<p class="wi-intro" id="wi-description">專案、筆記與素材，都在手邊。<br>從一件想完成的事開始。</p>
+			<button type="button" class="wi-primary cursor-interaction" id="wi-continue">繼續品牌識別提案 →</button>
+		</div>
+		<div class="wi-tools" aria-label="選擇工作分類">
+			<button type="button" class="wi-tool cursor-interaction" data-kind="專案" aria-pressed="true"><strong>Pr</strong><span>專案 Projects</span></button>
+			<button type="button" class="wi-tool cursor-interaction" data-kind="筆記" aria-pressed="false"><strong>Nt</strong><span>筆記 Notes</span></button>
+			<button type="button" class="wi-tool cursor-interaction" data-kind="素材" aria-pressed="false"><strong>As</strong><span>素材 Assets</span></button>
+			<button type="button" class="wi-tool cursor-interaction" data-kind="任務" aria-pressed="false"><strong>Tk</strong><span>任務 Tasks</span></button>
+			<button type="button" class="wi-tool cursor-interaction" data-kind="靈感" aria-pressed="false"><strong>Id</strong><span>靈感 Ideas</span></button>
+			<button type="button" class="wi-tool cursor-interaction" data-kind="封存" aria-pressed="false"><strong>Ar</strong><span>封存 Archive</span></button>
+		</div>
+	</section>
+	<section aria-label="工作內容">
+		<div class="wi-toolbar"><h2 id="wi-heading">最近的專案</h2><div class="wi-segments" aria-label="篩選內容"><button type="button" class="cursor-interaction" data-filter="all" aria-pressed="true">全部</button><button type="button" class="cursor-interaction" data-filter="star" aria-pressed="false">已加星號</button></div></div>
+		<div class="wi-projects" id="wi-list"></div>
+		<div class="wi-detail" id="wi-detail" aria-live="polite" hidden></div>
+	</section>
+	<footer class="wi-foot"><span id="wi-count" aria-live="polite"></span><span>WARM INK · 風格提案 / 示例資料</span></footer>
+</div>
+<script>
+(() => {
+	const root = document.getElementById('warm-ink');
+	// 分類資料僅供視覺提案；依序保存縮寫、標題、說明與星號狀態。
+	const entries = new Map([
+		['專案', [['Br','山間咖啡 · 品牌識別','品牌設計 · 12 份內容 · 今天更新',true],['We','木禾工作室 · 網站改版','網站設計 · 8 份內容 · 昨天更新',false],['Pk','春日選物 · 包裝提案','包裝設計 · 6 份內容 · 週三更新',true]]],
+		['筆記', [['Nt','品牌訪談整理','山間咖啡 · 今天更新',true],['Nt','首頁內容架構','木禾工作室 · 昨天更新',false]]],
+		['素材', [['As','標誌草圖','山間咖啡 · 4 個檔案',true],['As','產品攝影','春日選物 · 18 張照片',false]]],
+		['任務', [['Tk','整理第二輪提案','山間咖啡 · 進行中',true],['Tk','確認首頁文案','木禾工作室 · 待開始',false]]],
+		['靈感', [['Id','自然紙材與印刷','材質參考 · 7 份收藏',true],['Id','街角的招牌字體','字體參考 · 5 份收藏',false]]],
+		['封存', [['Ar','夏日市集 · 活動視覺','已完成 · 14 份內容',false]]],
+	]);
+	let kind = '專案';
+	let filter = 'all';
+	const list = root.querySelector('#wi-list');
+	const detail = root.querySelector('#wi-detail');
+	function openDetail(title) {
+		detail.replaceChildren();
+		const heading = document.createElement('h2');
+		heading.textContent = title;
+		const description = document.createElement('p');
+		description.textContent = '內容預覽已開啟。這裡示範同一風格的資訊面板，工作資料仍由產品管理。';
+		const close = document.createElement('button');
+		close.type = 'button';
+		close.className = 'wi-open cursor-interaction';
+		close.textContent = '關閉預覽';
+		close.addEventListener('click', () => { detail.hidden = true; });
+		detail.append(heading, description, close);
+		detail.hidden = false;
+	}
+	function render() {
+		list.replaceChildren();
+		const rows = entries.get(kind).filter(item => filter === 'all' || item[3]);
+		root.querySelector('#wi-heading').textContent = '最近的' + kind;
+		root.querySelector('#wi-count').textContent = rows.length + ' 項' + kind + ' · 木禾設計';
+		for (const item of rows) {
+			const row = document.createElement('div');
+			row.className = 'wi-row';
+			const mark = document.createElement('span');
+			mark.className = 'wi-monogram';
+			mark.textContent = item[0];
+			const content = document.createElement('div');
+			const title = document.createElement('p');
+			title.className = 'wi-title';
+			title.textContent = item[1];
+			const caption = document.createElement('span');
+			caption.className = 'wi-caption';
+			caption.textContent = item[2] + (item[3] ? ' · ★' : '');
+			content.append(title, caption);
+			const action = document.createElement('button');
+			action.type = 'button';
+			action.className = 'wi-open cursor-interaction';
+			action.textContent = '開啟 ↗';
+			action.setAttribute('aria-label', '開啟' + item[1]);
+			action.addEventListener('click', () => openDetail(item[1]));
+			row.append(mark, content, action);
+			list.append(row);
+		}
+		if (!rows.length) {
+			const empty = document.createElement('p');
+			empty.className = 'wi-row';
+			empty.textContent = '尚無加星號的' + kind;
+			list.append(empty);
+		}
+	}
+	root.querySelectorAll('[data-kind]').forEach(button => {
+		button.addEventListener('click', () => {
+			kind = button.dataset.kind;
+			root.querySelectorAll('[data-kind]').forEach(item => item.setAttribute('aria-pressed', String(item === button)));
+			detail.hidden = true;
+			render();
+		});
+	});
+	root.querySelectorAll('[data-filter]').forEach(button => {
+		button.addEventListener('click', () => {
+			filter = button.dataset.filter;
+			root.querySelectorAll('[data-filter]').forEach(item => item.setAttribute('aria-pressed', String(item === button)));
+			render();
+		});
+	});
+	root.querySelector('#wi-continue').addEventListener('click', () => openDetail('山間咖啡 · 品牌識別'));
+	const design = {
+		// radius 控制大容器圓角；gap 控制方塊間距，以比較形狀與節奏。
+		radius:12,
+		gap:12,
+	};
+	function applyDesign() {
+		root.style.setProperty('--wi-radius', design.radius + 'px');
+		root.style.setProperty('--wi-gap', design.gap + 'px');
+	}
+	if (globalThis.Tweak) {
+		const tweak = new Tweak({ container:root, onChange:applyDesign });
+		tweak.addSlider(design, 'radius', { label:'容器圓角', min:0, max:24, unit:'px' });
+		tweak.addSlider(design, 'gap', { label:'方塊間距', min:6, max:20, unit:'px' });
+	}
+	render();
+})();
+</script>

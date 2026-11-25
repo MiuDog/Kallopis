@@ -1,0 +1,128 @@
+/* 桌面補充元件共用既有語意，不提供 consumer 的第二份預設風格。 */
+.klp-desktop-stack { display: flex; flex-direction: column; gap: var(--klp-spacing-contentInlineGap); min-width: 0; }
+.klp-desktop-row { display: flex; flex-wrap: wrap; align-items: center; gap: var(--klp-spacing-actionGap); }
+.klp-desktop-field textarea, .klp-desktop-field select { flex: 1 1 0; min-width: 0; font: inherit; color: var(--klp-colors-text); background: var(--klp-colors-surfaceInset); border: var(--klp-components-fieldBorderWidth) solid var(--klp-colors-border); border-radius: var(--klp-components-fieldRadius); padding: var(--klp-spacing-controlPaddingY) var(--klp-components-fieldPaddingX); }
+.klp-desktop-field select { height: var(--klp-components-fieldHeight); padding-block: 0; }
+.klp-desktop-field textarea { min-height: calc(var(--klp-components-fieldHeight) * 2); resize: vertical; }
+.klp-desktop-field [aria-invalid='true'] { background: color-mix(in srgb, var(--klp-colors-danger) calc(var(--klp-surface-invalidFillOpacity) * 100%), var(--klp-colors-surfaceInset)); }
+.klp-desktop-field :disabled { color: var(--klp-colors-textFaint); background: var(--klp-colors-surfaceMuted); }
+.klp-choice { display: inline-flex; align-items: center; gap: var(--klp-spacing-contentInlineGap); padding-block: var(--klp-spacing-space1); }
+.klp-choice input, .klp-range input { accent-color: var(--klp-colors-interaction); }
+.klp-choice:has(:disabled) { color: var(--klp-colors-textFaint); }
+.klp-option-group { margin: 0; padding: var(--klp-spacing-space1) 0; border: 0; min-width: 0; }
+.klp-option-group legend { padding: 0; }
+.klp-switch input { appearance: none; flex: 0 0 auto; box-sizing: border-box; margin: 0; width: var(--klp-geometry-control-toggleWidth); height: var(--klp-geometry-control-toggleHeight); padding: var(--klp-shape-hairline); border-radius: min(var(--klp-shape-control), calc(var(--klp-geometry-control-toggleHeight) / 4)); background: var(--klp-colors-component); border: 0; position: relative; }
+.klp-switch input::after { content: ''; display: block; width: calc(var(--klp-geometry-control-toggleHeight) - var(--klp-shape-stroke)); height: calc(var(--klp-geometry-control-toggleHeight) - var(--klp-shape-stroke)); border-radius: min(var(--klp-shape-control), calc((var(--klp-geometry-control-toggleHeight) - var(--klp-shape-stroke)) / 4)); background: var(--klp-colors-textMuted); }
+.klp-switch input:checked::after { margin-left: auto; background: var(--klp-colors-text); }
+.klp-range { display: flex; flex-wrap: wrap; align-items: center; gap: var(--klp-spacing-contentInlineGap); }
+.klp-range input { flex: 1; min-width: 0; }
+.klp-data-list { display: flex; flex-direction: column; gap: var(--klp-spacing-space2); margin: 0; padding: 0; list-style: none; }
+.klp-data-item { display: flex; flex-direction: column; gap: var(--klp-spacing-contentInlineGap); width: 100%; padding: var(--klp-spacing-contentInset); border: 0; border-radius: var(--klp-components-cardRadius); background: var(--klp-colors-component); color: var(--klp-colors-text); font: inherit; text-align: start; overflow-wrap: anywhere; cursor: pointer; }
+.klp-data-item:hover:not(:disabled), .klp-data-item[aria-pressed='true']:not(:disabled) { background: color-mix(in srgb, var(--klp-colors-text) calc(var(--klp-surface-selectionWashOpacity) * 100%), var(--klp-colors-component)); }
+.klp-data-item:disabled { color: var(--klp-colors-textFaint); cursor: default; }
+.klp-table-scroll { max-width: 100%; overflow-x: auto; }
+.klp-table { border-collapse: collapse; width: 100%; text-align: start; }
+.klp-table th, .klp-table td { padding: var(--klp-spacing-contentInset); border-bottom: var(--klp-shape-hairline) dashed var(--klp-colors-divider); text-align: start; }
+.klp-table caption { text-align: start; padding-block: var(--klp-spacing-space2); color: var(--klp-colors-textMuted); }
+.klp-accordion { padding-block: var(--klp-spacing-space1); }
+.klp-accordion summary { cursor: pointer; padding-block: var(--klp-spacing-space1); }
+.klp-accordion-content { padding: var(--klp-spacing-contentInset); }
+.klp-breadcrumb { display: flex; flex-wrap: wrap; gap: var(--klp-spacing-contentInlineGap); list-style: none; margin: 0; padding: 0; }
+.klp-breadcrumb li + li::before { content: '/'; margin-inline-end: var(--klp-spacing-contentInlineGap); color: var(--klp-colors-textFaint); }
+.klp-link { color: var(--klp-colors-text); text-underline-offset: var(--klp-spacing-space0_5); }
+.klp-progress { display: flex; flex-wrap: wrap; gap: var(--klp-spacing-contentInlineGap); align-items: center; }
+.klp-progress progress { flex: 1; min-width: 0; accent-color: var(--klp-colors-interaction); }
+.klp-alert { display: flex; flex-direction: column; gap: var(--klp-spacing-contentInlineGap); padding: var(--klp-spacing-contentInset); border-radius: var(--klp-components-cardRadius); border: 0; background: color-mix(in srgb, var(--klp-alert-tone) calc(var(--klp-surface-statusFillOpacity) * 100%), var(--klp-colors-surface)); }
+.klp-alert-info { --klp-alert-tone: var(--klp-colors-info); }
+.klp-alert-success { --klp-alert-tone: var(--klp-colors-success); }
+.klp-alert-warning { --klp-alert-tone: var(--klp-colors-warning); }
+.klp-alert-danger { --klp-alert-tone: var(--klp-colors-danger); }
+.klp-empty { display: flex; flex-direction: column; align-items: flex-start; gap: var(--klp-spacing-contentInlineGap); padding: var(--klp-spacing-comfortable); }
+.klp-dialog { max-width: min(36rem, calc(100vw - var(--klp-spacing-comfortable))); max-height: calc(100dvh - var(--klp-spacing-comfortable)); overflow: auto; padding: var(--klp-spacing-comfortable); color: var(--klp-colors-text); background: var(--klp-colors-overlay); border: 0; border-radius: var(--klp-shape-panel); }
+.klp-dialog::backdrop { background: color-mix(in srgb, var(--klp-surface-overlayShadowColor) calc(var(--klp-surface-overlayShadowOpacity) * 100%), transparent); }
+.klp-tooltip-host { display: inline-block; position: relative; }
+.klp-tooltip { position: absolute; inset-block-start: 100%; inset-inline-start: 0; z-index: 1; min-width: max-content; max-width: 24rem; padding: var(--klp-spacing-space2); background: var(--klp-colors-overlay); color: var(--klp-colors-text); border: 0; border-radius: var(--klp-shape-control); }
+.klp-status-bar { display: flex; flex-wrap: wrap; gap: var(--klp-spacing-contentInlineGap); padding: var(--klp-spacing-space2); color: var(--klp-colors-textMuted); background: var(--klp-colors-surfaceInset); }
+.klp-separator { border: 0; border-top: var(--klp-shape-hairline) dashed var(--klp-colors-divider); margin-block: var(--klp-spacing-space2); }
+.klp-avatar { display: inline-flex; align-items: center; justify-content: center; width: var(--klp-spacing-avatarSmall); height: var(--klp-spacing-avatarSmall); background: var(--klp-colors-component); border-radius: var(--klp-shape-control); overflow: hidden; }
+.klp-avatar img { width: 100%; height: 100%; object-fit: cover; }
+.klp-skeleton { min-height: var(--klp-components-fieldHeight); background: var(--klp-colors-surfaceMuted); border-radius: var(--klp-shape-control); padding: var(--klp-spacing-space2); }
+
+/* 強調與浮層沿共用微立體；不使用裝飾細框。 */
+.klp-tree { display: flex; flex-direction: column; gap: var(--klp-spacing-space1); }
+.klp-tree-item { display: flex; align-items: center; gap: var(--klp-spacing-contentInlineGap); padding: var(--klp-spacing-space2); border-radius: var(--klp-shape-control); cursor: pointer; }
+.klp-tree-item:hover:not([aria-disabled='true']), .klp-tree-item[aria-selected='true'] { background: color-mix(in srgb, var(--klp-colors-text) calc(var(--klp-surface-selectionWashOpacity) * 100%), var(--klp-colors-component)); }
+.klp-tree-item[aria-disabled='true'] { color: var(--klp-colors-textFaint); cursor: default; }
+.klp-tree-toggle { border: 0; color: inherit; background: transparent; font: inherit; cursor: pointer; padding: 0; width: var(--klp-spacing-iconSmall); }
+.klp-tree-leaf { display: inline-block; width: var(--klp-spacing-iconSmall); }
+.klp-virtual-list { overflow: auto; position: relative; }
+.klp-virtual-item { box-sizing: border-box; display: flex; align-items: center; padding-inline: var(--klp-spacing-contentInset); border-block: var(--klp-spacing-space0_5) solid transparent; background-clip: padding-box; background-color: var(--klp-colors-component); border-radius: var(--klp-shape-control); cursor: pointer; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
+.klp-virtual-item:hover:not([aria-disabled='true']), .klp-virtual-item[aria-selected='true'] { background-color: color-mix(in srgb, var(--klp-colors-text) calc(var(--klp-surface-selectionWashOpacity) * 100%), var(--klp-colors-component)); }
+.klp-virtual-item[aria-disabled='true'] { color: var(--klp-colors-textFaint); }
+.klp-virtual-list:focus-visible .klp-virtual-item[data-focused='true'] { outline: var(--klp-shape-stroke) solid var(--klp-colors-interaction); outline-offset: calc(-1 * var(--klp-shape-stroke)); }
+.klp-popover { position: fixed; margin: 0; inset: auto; max-width: calc(100vw - var(--klp-spacing-comfortable)); max-height: calc(100dvh - var(--klp-spacing-comfortable)); overflow: auto; border: 0; padding: var(--klp-spacing-contentInset); color: var(--klp-colors-text); background: var(--klp-colors-overlay); border-radius: var(--klp-shape-panel); }
+.klp-popover:not(:popover-open) { display: none; }
+.klp-dialog-end { margin: 0 0 0 auto; inset-block: 0; height: 100dvh; max-height: 100dvh; width: min(28rem, 90vw); box-sizing: border-box; border-radius: var(--klp-shape-panel) 0 0 var(--klp-shape-panel); }
+.klp-toast-region { display: flex; flex-direction: column; gap: var(--klp-spacing-contentStackGap); }
+.klp-ribbon { padding: var(--klp-spacing-contentInset); background: var(--klp-colors-surface); border-radius: var(--klp-shape-panel); }
+.klp-content-host { min-width: 0; display: flex; flex-direction: column; gap: var(--klp-spacing-contentStackGap); }
+.klp-spinner { display: inline-flex; gap: var(--klp-spacing-space1); }
+.klp-spinner i { width: var(--klp-spacing-space1); height: var(--klp-spacing-space1); border-radius: var(--klp-shape-hairline); background: currentColor; animation: klp-loading 1s ease-in-out infinite alternate; }
+.klp-spinner i:nth-child(2) { animation-delay: .2s; }
+.klp-spinner i:nth-child(3) { animation-delay: .4s; }
+@keyframes klp-loading { to { opacity: .3; transform: translateY(-50%); } }
+@media (prefers-reduced-motion: reduce) { .klp-spinner i { animation: none; } }
+
+.klp-tree-grid tr[aria-selected='true'], .klp-tree-grid tbody tr:hover:not([aria-disabled='true']) { background: color-mix(in srgb, var(--klp-colors-text) calc(var(--klp-surface-selectionWashOpacity) * 100%), var(--klp-colors-component)); }
+.klp-tree-grid tr[aria-disabled='true'] { color: var(--klp-colors-textFaint); }
+
+/* 保留原生勾選與單選語意，僅接管幾何，避免 OS 圓形外觀。 */
+.klp-choice:not(.klp-switch) input { appearance: none; box-sizing: border-box; flex: 0 0 auto; margin: 0; width: var(--klp-geometry-control-selectionControl); height: var(--klp-geometry-control-selectionControl); border: 0; border-radius: min(var(--klp-shape-control), calc(var(--klp-geometry-control-selectionControl) / 4)); background: var(--klp-colors-component); display: inline-grid; place-content: center; cursor: pointer; }
+.klp-choice:not(.klp-switch) input::after { content: ''; display: block; width: calc(var(--klp-geometry-control-selectionControl) - var(--klp-spacing-space1)); height: calc(var(--klp-geometry-control-selectionControl) - var(--klp-spacing-space1)); background: var(--klp-colors-text); transform: scale(0); }
+.klp-choice:not(.klp-switch) input[type='checkbox']::after { clip-path: polygon(9% 46%, 0 60%, 38% 92%, 100% 18%, 85% 7%, 36% 65%); }
+.klp-choice input[type='radio']::after { width: calc(var(--klp-geometry-control-selectionControl) - var(--klp-spacing-space2)); height: calc(var(--klp-geometry-control-selectionControl) - var(--klp-spacing-space2)); border-radius: var(--klp-shape-hairline); }
+.klp-choice:not(.klp-switch) input:checked::after { transform: scale(1); }
+.klp-choice input:disabled { opacity: .5; cursor: default; }
+.klp-choice input:focus-visible, .klp-range input:focus-visible { outline: var(--klp-shape-stroke) solid var(--klp-colors-interaction); outline-offset: calc(-1 * var(--klp-shape-stroke)); }
+/* Range 的軌道與把手在兩種瀏覽器引擎都使用圓角矩形。 */
+.klp-range input { appearance: none; background: transparent; height: var(--klp-components-fieldHeight); }
+.klp-range input::-webkit-slider-runnable-track { height: var(--klp-spacing-space1); background: var(--klp-colors-surfaceInset); border-radius: var(--klp-shape-hairline); }
+.klp-range input::-webkit-slider-thumb { appearance: none; width: var(--klp-geometry-control-selectionControl); height: var(--klp-geometry-control-selectionControl); margin-top: calc((var(--klp-spacing-space1) - var(--klp-geometry-control-selectionControl)) / 2); background: var(--klp-colors-textMuted); border: 0; border-radius: min(var(--klp-shape-control), calc(var(--klp-geometry-control-selectionControl) / 4)); }
+.klp-range input::-moz-range-track { height: var(--klp-spacing-space1); background: var(--klp-colors-surfaceInset); border-radius: var(--klp-shape-hairline); }
+.klp-range input::-moz-range-thumb { width: var(--klp-geometry-control-selectionControl); height: var(--klp-geometry-control-selectionControl); background: var(--klp-colors-textMuted); border: 0; border-radius: min(var(--klp-shape-control), calc(var(--klp-geometry-control-selectionControl) / 4)); }
+.klp-range input:disabled { opacity: .5; }
+.klp-progress progress { appearance: none; border: 0; height: var(--klp-spacing-space2); border-radius: var(--klp-spacing-space0_5); background: var(--klp-colors-surfaceInset); overflow: hidden; }
+.klp-progress progress::-webkit-progress-bar { background: var(--klp-colors-surfaceInset); border-radius: var(--klp-spacing-space0_5); }
+.klp-progress progress::-webkit-progress-value { background: var(--klp-colors-textMuted); border-radius: var(--klp-spacing-space0_5); }
+.klp-progress progress::-moz-progress-bar { background: var(--klp-colors-textMuted); border-radius: var(--klp-spacing-space0_5); }
+.klp-progress progress:indeterminate { background: repeating-linear-gradient(90deg, var(--klp-colors-textMuted) 0 25%, var(--klp-colors-surfaceInset) 25% 50%); }
+.klp-progress progress:indeterminate::-webkit-progress-bar { background: transparent; }
+
+/* 焦點線完全畫在既有 box 內，不增加欄位 24px 的可見外徑。 */
+.klp-field input:focus, .klp-desktop-field textarea:focus, .klp-desktop-field select:focus, .klp-desktop-field select:focus-within { outline: none; box-shadow: inset 0 0 0 var(--klp-shape-stroke) var(--klp-colors-interaction); }
+.klp-field input::file-selector-button { height: 100%; padding: 0 var(--klp-spacing-space2); margin: 0 var(--klp-spacing-space2) 0 0; font: inherit; color: inherit; background: var(--klp-colors-component); border: 0; border-radius: var(--klp-shape-control); }
+/* 可自訂 select 保留原生表單及鍵盤契約，popup 改用本庫配方。 */
+.klp-desktop-field select, .klp-desktop-field select::picker(select) { appearance: base-select; }
+.klp-desktop-field select { display: flex; align-items: center; gap: var(--klp-spacing-contentInlineGap); }
+.klp-desktop-field select::picker(select) { padding: var(--klp-spacing-space2); margin-block: var(--klp-spacing-space1); border: 0; border-radius: var(--klp-shape-panel); background: var(--klp-colors-overlay); color: var(--klp-colors-text); box-shadow: var(--klp-relief-shadow); font: inherit; max-height: min(20rem, 60dvh); overflow: auto; }
+.klp-desktop-field select option { min-height: var(--klp-components-fieldHeight); padding: var(--klp-spacing-space1) var(--klp-spacing-space2); border: 0; border-radius: var(--klp-shape-control); background: transparent; color: var(--klp-colors-text); }
+.klp-desktop-field select option + option { margin-top: var(--klp-spacing-space1); }
+.klp-desktop-field select option:hover:not(:disabled), .klp-desktop-field select option:checked:not(:disabled), .klp-desktop-field select option:focus:not(:disabled) { background: color-mix(in srgb, var(--klp-colors-text) calc(var(--klp-surface-selectionWashOpacity) * 100%), var(--klp-colors-overlay)); outline: none; }
+.klp-desktop-field select option:disabled { color: var(--klp-colors-textFaint); background: transparent; }
+.klp-desktop-field select option::checkmark { color: var(--klp-colors-textMuted); }
+.klp-desktop-field select::picker-icon { color: var(--klp-colors-textMuted); }
+.klp-desktop-field select[multiple], .klp-desktop-field select[size]:not([size='1']) { height: auto; min-height: var(--klp-components-fieldHeight); }
+.klp-combo-popup { position: fixed; inset: auto; margin: 0; display: flex; flex-direction: column; gap: var(--klp-spacing-space1); padding: var(--klp-spacing-space2); border: 0; border-radius: var(--klp-shape-panel); background: var(--klp-colors-overlay); color: var(--klp-colors-text); box-shadow: var(--klp-relief-shadow); max-height: min(20rem, 60dvh); overflow: auto; z-index: 10; }
+.klp-combo-option { padding: var(--klp-spacing-space1) var(--klp-spacing-space2); border-radius: var(--klp-shape-control); cursor: pointer; }
+.klp-combo-option:hover, .klp-combo-option[data-active='true'], .klp-combo-option[aria-selected='true'] { background: color-mix(in srgb, var(--klp-colors-text) calc(var(--klp-surface-selectionWashOpacity) * 100%), var(--klp-colors-overlay)); }
+.klp-combo-empty { padding: var(--klp-spacing-space1) var(--klp-spacing-space2); color: var(--klp-colors-textMuted); }
+.klp-option-group + .klp-option-group, .klp-accordion + .klp-accordion { border-top: var(--klp-shape-hairline) dashed var(--klp-colors-divider); }
+
+.klp-field input[type="color"]::-webkit-color-swatch { border: 0; border-radius: var(--klp-shape-control); }
+.klp-field input[type="color"]::-moz-color-swatch { border: 0; border-radius: var(--klp-shape-control); }
+
+/* 浮層增加垂直空間，低對比虛線只界定外緣，不改變欄位高度。 */
+.klp-dialog { padding-block: var(--klp-spacing-loose); border: var(--klp-shape-hairline) dashed var(--klp-colors-divider); }
+.klp-dialog > .klp-desktop-stack { gap: var(--klp-spacing-comfortable); }
+.klp-desktop-field select::picker(select), .klp-combo-popup { padding-block: var(--klp-spacing-space3); border: var(--klp-shape-hairline) dashed var(--klp-colors-divider); }
+.klp-desktop-field select option, .klp-combo-option { box-sizing: border-box; min-height: var(--klp-components-menuItemHeight); padding-block: var(--klp-spacing-space2); }

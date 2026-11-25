@@ -1,5 +1,7 @@
+import { desktopComponentNames } from './desktop-catalog-data.mjs';
 /* 真實name與既有fixture種類的唯一清單，example與文件網站共用。 */
 export const reactSpecimenRegistry = Object.freeze({
+	...Object.fromEntries(desktopComponentNames.map(name => [name, 'basic'])),
 	KlpAppLayout: 'layout',
 	KlpBadge: 'basic',
 	KlpButton: 'basic',

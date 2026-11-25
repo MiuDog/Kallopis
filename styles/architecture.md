@@ -1,5 +1,22 @@
 # Style Pack
 
+## DESIGN-LIBRARY-STYLE-1
+
+依[共通風格與互動展示 v1](../spec/design-library-v1.md)，共通風格來源切片為 PLAN READY。沿用 `kallopis-v1.json` 作為主要色彩檔，保留 pack 版本、現有 ID、四種模式與既有格式。`catalog.json` 繼續維護型別與約束；`styles/examples/` 維護具名組合程式碼、資產及貼用說明。正式 Markdown 仍保有現在的連結、章節說明與合法組合規則，其中原料、語意及配方的資料表由 pack 生成。
+
+以現行正式 Markdown 三表為一次性切換基準。已觀察到工作樹的 `migrate.mjs --check` 回報 pack 過期，逐項比較發現 `recipes.badge-status` 一筆有差異，primitive、四模式 semantic 及描述資料一致。切換時依現行正式配方匯入並保留差異紀錄。使用既有 `importStyleTables`、`exportStyleTables` 與 `resolveStylePack`，避免新增資料格式與第二個 resolver。React 現有 `--source-dir` 仍可餵入測試 fixture，正式生成的預設來源改讀 pack。
+
+| 里程碑 | 證據 |
+| --- | --- |
+| M1 共通資料可生成文件 | 比對所有原料、語意、配方及描述；只更新三份文件的表格資料區。四模式解析有效。驗證輸出過期、缺 ID 或引用非法會失敗。累計估 4k–8k tokens、25–45 分鐘。 |
+| M2 兩框架由同一來源生成 | React 主題及 CSS、Flutter pack 與 manifests 可重現。既有公開 API 測試、相容 smoke check、現有 style pack tests 與生成新鮮度檢查通過。舊有 fallback 預設須核對一致，涉及元件或 API 行為改動時回 PLAN。累計估 8k–15k tokens、50–100 分鐘。 |
+
+M1 寫入路徑限 `styles/kallopis-v1.json`、`styles/scripts/migrate.mjs`、`styles/package.json`、`styles/README.md`、`docs/design-tokens/{primitives,semantics,recipes,maintenance}.md`。M2 由整合責任人協調框架交接，寫入路徑見各框架架構。由獨立測試角色保護逆向生成及預設來源切換，實作不改既有斷言或 fixture。驗收以 Node 24、既有 Flutter SDK 與既有 CLI 為前提，估算參照 STYLE-PACK-1／2 與既有 React token generator，屬冷啟動估算。累計超過 18k tokens 或 120 分鐘時回 PLAN 檢討權限範圍或未辨識的資料差異。
+
+切換以 M1 與 M2 同時通過為完成條件，使用 Git 可回復此次切換。單一樣式權威在切換前仍為正式 Markdown，切換後為 `styles/kallopis-v1.json`。既有組合範例的位置與可攜內容在網站交接時由對應切片處理。
+
+## 既有風格包實作
+
 修訂：`STYLE-PACK-r2`。目前 stage：v1；STYLE-PACK-1／2 已完成，框架 adapter 待接入。契約：[Style Pack v1](../spec/style-pack-v1.md)。
 
 ## 責任與公開格式
@@ -98,3 +115,19 @@ JSON 字段：schemaVersion 是交換版本；id／version 是風格身份；pri
 ## COMPACT-DEFAULT-STYLE-r1 整合契約
 
 依根architecture.md的已接受使用者preset修訂，正式semantic權威與既有生成流程保持，模組algorithm/config/既有tests唯讀。common主動作底色低對比、parent總gap8及dockMargin0；framework generated artifact僅由既有generator更新。example alternative pack改buttonPaddingX而不改block/action gap。此為值修訂，不切換正式值權威。獨立common測試由styles/test/compact-default-style.test.mjs擁有，其餘worker不得改tests。
+
+2026-10-16 桌面幾何更新：正式語意定義方形圓角、field 24px、checkbox 15px 與 toggle 34×16px；kallopis-v1.json 仍由正式章節生成，既有 toggleThumb fit constraint 保留。
+
+## 共通來源工具責任
+
+`migrate.mjs` 驗證主檔並逐 ID 生成文件資料列，保留周圍說明。`generate-example.mjs` 以 `resolveStylePack` 產生四模式色彩與獨立 HTML。`generate-bindings.mjs` 掃描兩框架手寫來源，輸出 token 名稱與直接引用位置。三者的 `--check` 均比對完整產物。圖片位於 `styles/images/`。
+
+```mermaid
+flowchart LR
+	Pack[kallopis-v1.json] --> Tables[migrate / exportStyleTables]
+	Pack --> Example[generate-example / resolveStylePack]
+	Pack --> Bindings[generate-bindings]
+	Sources[Flutter / React 手寫來源] --> Bindings
+	Example --> HTML[examples/sidebar-stage/index.html]
+	Bindings --> Index[component-bindings.json]
+```

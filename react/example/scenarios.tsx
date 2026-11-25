@@ -2,6 +2,8 @@ import { useEffect, useRef, useState } from 'react';
 import { KlpButton, KlpCommandKeymap, KlpCommandRegistry, KlpCommandShortcutHost, KlpDockLayout, KlpFileExplorer, KlpFrame, KlpRegisteredCommandMenu, KlpRegisteredCommandPalette, KlpRegisteredCommandToolbar, KlpSurface, KlpText, KlpTextField, KlpThemeProvider, applyKlpDockAction, applyKlpStyleOverrides, createKlpStylePack, encodeKlpDockLayout, restoreKlpDockLayout, type KlpCommandExecutionResult, type KlpCommandReference, type KlpDockLayoutData, type KlpDockPanel, type KlpMode, type KlpShortcutFocus } from '@kallopis/react';
 import { reactScenarioRegistry } from './scenario-registry.mjs';
 
+import { IdeWorkbench } from './ide-workbench.js';
+
 type SceneId = keyof typeof reactScenarioRegistry;
 interface SceneData {
 	/* 標籤／檔案與分區是產品示意資料，不能升格為庫模板。 */
@@ -12,7 +14,7 @@ interface SceneData {
 	action: string;
 	draft: string;
 }
-const scenes: Record<SceneId, SceneData> = {
+const scenes: Record<Exclude<SceneId, 'ide'>, SceneData> = {
 	vscode: { left: ['Explorer', 'Search'], right: ['Outline'], bottom: ['Output', 'Problems'], files: ['main.ts', 'theme.ts', 'README.md'], action: '執行檢查', draft: 'export const greeting = "Kallopis";\n// 正文編輯器核心由產品接入。' },
 	blockbench: { left: ['Outliner', 'Tools'], right: ['Properties', 'Textures'], bottom: ['Animations'], files: ['Cube', 'Head', 'Body'], action: '新增方塊', draft: 'untitled_model.bbmodel' },
 	blender: { left: ['Tools'], right: ['Outliner', 'Properties'], bottom: ['Timeline'], files: ['Cube', 'Camera', 'Light'], action: '移動物件', draft: 'workspace.blend' },
@@ -20,7 +22,7 @@ const scenes: Record<SceneId, SceneData> = {
 const modes: readonly KlpMode[] = ['light', 'dark', 'ultraDark', 'transparent'];
 const commandItems: readonly KlpCommandReference[] = [{ commandId: 'layout.save' }, { commandId: 'layout.restore' }, { commandId: 'layout.reset' }, { commandId: 'scene.run' }, { commandId: 'panel.bottom', kind: 'toggle' }];
 
-function initialLayout(id: SceneId): KlpDockLayoutData {
+function initialLayout(id: Exclude<SceneId, 'ide'>): KlpDockLayoutData {
 	const scene = scenes[id];
 	return {
 		left: { axis: 'vertical', isVisible: true, extent: 180, groups: [{ id: 'navigation', panelIds: [...scene.left], activePanelId: scene.left[0], mainAxisExtent: 320 }] },
@@ -30,6 +32,7 @@ function initialLayout(id: SceneId): KlpDockLayoutData {
 }
 
 export function ScenarioApp({ id }: { id: string }) {
+	if (id === 'ide') return <IdeWorkbench />;
 	/* 環境改變保持同產品owner；epoch只代表明確重設。 */
 	const [mode, setMode] = useState<KlpMode>('light');
 	const [alternate, setAlternate] = useState(false);
@@ -37,7 +40,7 @@ export function ScenarioApp({ id }: { id: string }) {
 	const [base] = useState(createKlpStylePack);
 	const [spacious] = useState(() => applyKlpStyleOverrides(base, { semantics: { 'theme.spacing.contentStackGap': { light: 'p(space600)', dark: 'p(space600)', ultraDark: 'p(space600)', transparent: 'p(space600)' }, 'theme.spacing.actionGap': { light: 'p(space300)', dark: 'p(space300)', ultraDark: 'p(space300)', transparent: 'p(space300)' } } }));
 	if (!Object.hasOwn(reactScenarioRegistry, id)) return <main><h1>找不到 GUI 場景</h1><p>未註冊的場景：{id}</p><a href="?scenario=vscode">返回場景入口</a></main>;
-	const sceneId = id as SceneId;
+	const sceneId = id as Exclude<SceneId, 'ide'>;
 	return <KlpThemeProvider mode={mode} stylePack={alternate ? spacious : base}><main className="scenario-app demo-stack">
 		<KlpText as="h1" role={window.parent === window ? "h1" : "h2"}>{reactScenarioRegistry[sceneId].title}</KlpText>
 		<nav className="demo-row" aria-label="GUI 場景">{Object.entries(reactScenarioRegistry).map(([name, scene]) => <a key={name} href={`?scenario=${name}`}>{scene.title}</a>)}</nav>
@@ -63,7 +66,7 @@ interface SceneContext {
 
 function approveClose() { return true; }
 
-function ScenarioWorkbench({ id }: { id: SceneId }) {
+function ScenarioWorkbench({ id }: { id: Exclude<SceneId, 'ide'> }) {
 	const scene = scenes[id];
 	const [layout, setLayout] = useState(() => initialLayout(id));
 	const [draft, setDraft] = useState(scene.draft);

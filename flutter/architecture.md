@@ -1,5 +1,11 @@
 # Flutter package
 
+## 共通風格來源切換
+
+依[根整合契約](../architecture.md#共通風格與互動展示-v1)，`kallopis_theme.dart`、`kallopis_foundation.dart`、`kallopis_experimental.dart` 與 `kallopis.dart` 維持現有公開契約。`tool/generate_style_pack.mjs` 從根 pack／catalog 產生內嵌資料和來源清冊，發行套件自帶資料與資產。切換時驗證既有預設及元件實際讀取的色彩名稱可追溯至共通 ID；套件專屬名稱只在平台接入處轉換。
+
+DESIGN-LIBRARY-STYLE-1 M2 在 Flutter 的寫入範圍為 `tool/generate_style_pack.mjs` 與生成的 `lib/src/styling/style_pack/{generated.dart,source-manifest.json}`。驗收四模式解析、生成檔新鮮度、既有 style pack 及公開入口驗證。需要改公開入口、fallback 語意或額外實作檔案時回 PLAN。
+
 ## MODERN-PRODUCTIVITY-API-DOCS-1（IMPLEMENTED）
 
 同一新公開主檔補齊欄位 dartdoc；BUILD 唯一 lib/src/features/workspace/layout/klp_modern_productivity_layout.dart，不改行為或 tests。所有公開欄位有繁體中文用途，原 analyze 及 5 個保護檢查；估 1k／5 分鐘，scope exact1。

@@ -1,5 +1,6 @@
 import { useId, type HTMLAttributes, type ButtonHTMLAttributes, type InputHTMLAttributes, type ReactNode } from 'react';
 import { useKlp } from './theme.js';
+import { resolveRelief } from './relief.js';
 
 export type KlpTextRole = 'body' | 'body-strong' | 'caption' | 'label' | 'lead' | 'h1' | 'h2' | 'h3' | 'h4' | 'code';
 export interface KlpTextProps extends HTMLAttributes<HTMLElement> {
@@ -70,13 +71,16 @@ export function KlpTextField({ label, error = false, hint, id, className = '', .
 	</div>;
 }
 export interface KlpFrameProps extends HTMLAttributes<HTMLDivElement> {
+	/** surface：明確選用正式微立體配方，既有 caller 預設維持平面。 */
+	surface?: 'flat' | 'raised';
 	role?: 'content' | 'sidebar' | 'auxiliary';
 	header?: ReactNode;
 	footer?: ReactNode;
 }
-export function KlpFrame({ role = 'content', header, footer, children, className = '', ...props }: KlpFrameProps) {
-	useKlp();
-	return <div {...props} className={`klp-frame klp-frame-${role} ${className}`}>
+export function KlpFrame({ role = 'content', surface = 'flat', header, footer, children, className = '', ...props }: KlpFrameProps) {
+	const theme = useKlp();
+	const relief = resolveRelief(theme, role === 'content' ? 'theme.colors.surface' : 'theme.colors.surfaceInset');
+	return <div {...props} style={{ ...props.style, ...(surface === 'raised' ? { boxShadow: relief } : {}) }} data-klp-surface={surface} className={`klp-frame klp-frame-${role} ${className}`}>
 		{header != null && <div className="klp-frame-header">{header}</div>}
 		<div className="klp-frame-body">{children}</div>
 		{footer != null && <div className="klp-frame-footer">{footer}</div>}

@@ -1,0 +1,14 @@
+.klp-activity-feed, .klp-activity-content {
+	display: flex;
+	flex-direction: column;
+	gap: var(--klp-spacing-contentInset);
+}
+.klp-activity-toolbar, .klp-activity-actions {
+	display: flex;
+	flex-wrap: wrap;
+	gap: var(--klp-spacing-contentInset);
+}
+.klp-activity-item {
+	flex: none;
+	padding: var(--klp-spacing-contentInset);
+}

@@ -1,5 +1,32 @@
 # React Foundation
 
+## 共通風格來源切換
+
+依[根整合契約](../architecture.md#共通風格與互動展示-v1)，保留 `@kallopis/react`、`@kallopis/react/styles.css` 與既有 CSS custom property 名稱。正式生成直接採用根 pack，並保留 `--source-dir` 的表格 fixture 路徑。瀏覽器色碼與字型轉換由 React adapter 擁有，資料及 CSS 隨套件產物發行。既有元件的 token 引用可追溯至共通 ID。
+
+DESIGN-LIBRARY-STYLE-1 M2 在 React 的寫入範圍為 `scripts/{generate-tokens,generate-style-pack}.mjs` 與生成的 `src/{generated.ts,tokens.css,source-manifest.json,style-pack-data.ts,style-pack-manifest.json}`。驗收四模式、完整公開 token／CSS 名稱與來源雜湊，並執行既有 build、`check:tokens` 及公開套件測試。
+
+Explorer 清單相鄰 li 之間採 space1（4px）頂部 padding，保留選項背景間隔；由 `src/styles.css` 擁有，不在 consumer 覆寫內部樣式。首項無額外頂距，選取與 hover 配方維持。
+
+## 研究 Example 的 Frame 微立體接入
+
+`src/components.tsx` 的 `KlpFrameProps.surface` 新增可選 `flat | raised`；缺省維持 flat。KlpFrame 直接讀 useKlp 的角色表面、space1 與 overlayShadowColor，依 [既有契約](../spec/frame-relief-8px.md) 解析雙陰影。實際表面 RGB 全低於 100 才套用深色 alpha；不以 mode 名稱推定。陰影在外層 box-shadow，子內容仍由既有 overflow 裁切。無新全域 theme 或 consumer 私有樣式。
+
+本輪範圍為此公開選項與 [研究 example](example/research/architecture.md) 的間距／高度修訂。其他 caller 與預設外觀保留；第三種立體配方尚未定位，不新增猜測的 variant。
+
+```mermaid
+flowchart LR
+	ResearchLibrary -->|surface raised| KlpFrame
+	KlpFrame --> useKlp
+	useKlp --> Semantic[角色表面 / space1 / shadow]
+	Semantic --> Relief[正式雙陰影公式]
+	Relief --> Frame[外層 Frame / 既有子內容裁切]
+```
+
+## 2026-10-13 參數 row 風格修訂
+
+使用者明示要求參數控制不用 grid，依 [正式配方](../docs/design-tokens/recipes.md#操作與參數組合規則2026-10-13)。本次只修改 `src/styles.css` 的既有 `.klp-field` 排列：label 與 input 同 row，以 flex 保留輸入可縮配與窄宿主換行；hint 仍由既有元件負責。`KlpTextField` 公開 API、label/id 關聯、value/onChange 與 Provider 未更動，不新增通用元件。一般布局解算仍可使用 grid。
+
 ## MODERN-PRODUCTIVITY-REFERENCE-1（IMPLEMENTED）
 
 新公開元件已由真實 d.ts extraction 觀察到，24 項；BUILD exact example/specimen-registry.mjs、example/specimens.tsx。Registry 增加 KlpModernProductivityLayout 的既有 layout kind，專屬 specimen route 直接重用已驗證的 ModernProductivityPreview，其他 factory／names 不變。不修改 extractor、website kinds 或 tests，驗收既有 react specimens checks／bundle build／公開頁 route。估 1k–3k／10–20 分鐘，M1 registry／caller／scope；4k／30 分鐘或需要弱化 coverage 回 PLAN。
@@ -931,3 +958,15 @@ flowchart TD
 ```
 
 證據：獨立 core 4 項及全套181項 tests 通過，library／example build、public snippet typecheck 與各 exact scope gate；真實瀏覽器六控制、模式／草稿／複製／還原與鍵盤巡訪已觀察。感官 human-pending。
+
+## 桌面元件與 Catalog
+
+公開桌面控制責任見 [desktop/architecture.md](src/desktop/architecture.md)。example/desktop-catalog-data.mjs 擁有用途分類，desktop-catalog.tsx 提供 /?catalog=desktop，desktop-specimens.tsx 提供實際受控展示，接入既有 specimen registry。樣式由 package-assets 合併到公開 styles.css。
+
+relief.ts 的 resolveRelief 擁有正式微立體解析；Frame、Alert 與浮層共用此函式。桌面完整化入口與內部生命週期見 src/desktop/architecture.md。
+
+桌面幾何採正式 semantics 的方形圓角與縮短 fieldHeight，generated.ts、tokens.css 與 style pack 由正式章節重建；不以 example CSS 形成第二份預設值。
+
+Provider 將 resolveRelief 結果提供為 --klp-relief-shadow，供原生可自訂 select picker 與共用命令選單引用，保持單一配方。所有欄位焦點提示計入既定高度；ComboBox 生命週期見 desktop 模組契約。
+
+選單與命令對話框外框採 hairline／divider 細虛線；共用 menuItemHeight 增為 40px，仍保留 viewport 幾何限制。

@@ -15,3 +15,8 @@ export * from './command-popup.js';
 export * from './command-keymap.js';
 export * from './command-shortcut-host.js';
 export * from './modern-productivity-layout.js';
+export * from './desktop/controls.js';
+export * from './desktop/views.js';
+export * from './desktop/feedback.js';
+
+export * from './desktop/advanced.js';

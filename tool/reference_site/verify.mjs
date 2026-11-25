@@ -3,7 +3,7 @@ import { validateReactSpecimens } from './react-specimens.mjs';
 import fs from 'node:fs';
 import path from 'node:path';
 import { documents, documentRoutes } from './documents.mjs';
-import { renderMarkdown } from './markdown.mjs';
+import { renderMarkdown, localDocumentTarget } from './markdown.mjs';
 
 const root = path.resolve(import.meta.dirname, '..', '..');
 const output = path.join(root, 'build', 'reference-site');
@@ -104,8 +104,7 @@ for (const document of documents) {
 	for (const match of html.matchAll(/href="([^"]+)"/g)) {
 		const link = match[1].replaceAll('&amp;', '&');
 		if (/^(?:[a-z][a-z\d+.-]*:|\/\/)/i.test(link)) continue;
-		const [relativeTarget, fragment] = link.split('#');
-		const target = path.posix.normalize(path.posix.join(path.posix.dirname(href), decodeURIComponent(relativeTarget || path.posix.basename(href))));
+		const {target, fragment} = localDocumentTarget(href, link);
 		if (target.startsWith('../') || !fs.existsSync(path.join(output, target))) {
 			failures.push(`Broken local document link: ${href} -> ${link}`);
 			continue;

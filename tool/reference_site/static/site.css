@@ -246,3 +246,27 @@ code { font-family: Consolas, monospace; font-size: .9em; }
 .component-specimen [data-specimen-state="error"] {
 	font-weight: 600;
 }
+
+.showcase-section { margin-top: 48px; }
+.showcase-section-head { display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 16px; margin-bottom: 18px; }
+.showcase-section-head h2 { margin: 6px 0 0; font-size: 24px; line-height: 1.35; letter-spacing: -.03em; }
+.showcase-status { margin: 0; font-size: 13px; color: var(--muted); }
+.theme-gallery { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; }
+.theme-card { display: flex; flex-direction: column; overflow: hidden; background: var(--panel); border: 1px solid var(--line); border-radius: var(--radius); }
+.theme-preview-wrap { aspect-ratio: 16 / 9; overflow: hidden; background: var(--canvas); border-bottom: 1px solid var(--line); }
+.theme-preview-img { display: block; width: 100%; height: 100%; object-fit: cover; }
+.theme-card-body { display: flex; flex-direction: column; gap: 12px; padding: 20px; flex: 1; }
+.theme-card-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; }
+.theme-card-head h3 { margin: 4px 0 0; font-size: 20px; font-weight: 600; }
+.theme-card-desc { margin: 0; font-size: 14px; color: var(--muted); line-height: 1.65; }
+.theme-meta { font: 12px/1.6 Consolas, monospace; color: var(--muted); }
+.theme-swatches { display: flex; flex-wrap: wrap; gap: 16px; padding: 10px 12px; background: var(--content); border-radius: 8px; }
+.theme-swatches small { display: block; margin-bottom: 4px; font-size: 11px; color: var(--muted); }
+.theme-dot-row { display: flex; gap: 6px; }
+.theme-swatch-dot { width: 18px; height: 18px; border-radius: 50%; border: 1px solid var(--line); }
+.theme-card-actions { display: flex; flex-wrap: wrap; gap: 8px; margin-top: auto; padding-top: 6px; }
+.theme-card-actions .button { cursor: pointer; border: 1px solid var(--line); font-size: 13px; padding: 8px 12px; }
+.theme-card-actions .primary { border-color: var(--text); }
+@media (max-width: 1000px) {
+	.theme-gallery { grid-template-columns: 1fr; }
+}

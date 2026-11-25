@@ -156,3 +156,22 @@ for (const frame of document.querySelectorAll('iframe[data-component-specimen]')
 	frame.addEventListener('error', () => finish('error', '展示載入失敗，請使用獨立開啟入口。'));
 	inspect();
 }
+
+
+// 風格主題庫：直接從 styles/themes/*.css 複製 --klp-* 變數至剪貼簿。
+const themeStatus = document.querySelector('#theme-copy-status');
+for (const button of document.querySelectorAll('[data-copy-css]')) {
+	button.addEventListener('click', async () => {
+		const path = button.dataset.copyCss;
+		const name = button.dataset.themeName || path;
+		try {
+			const response = await fetch(`${root}${path}`);
+			if (!response.ok) throw new Error('無法讀取風格檔');
+			const css = await response.text();
+			await navigator.clipboard.writeText(css);
+			if (themeStatus) themeStatus.textContent = `已複製「${name}」完整 CSS Tokens（${path}），可直接貼入專案。`;
+		} catch {
+			if (themeStatus) themeStatus.textContent = `無法自動寫入剪貼簿，請點擊「檢視 CSS ↗」手動複製 ${path}。`;
+		}
+	});
+}

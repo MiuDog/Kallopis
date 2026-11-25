@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { KlpThemeProvider, KlpButton, KlpText, KlpTextField, createKlpStylePack, applyKlpStyleOverrides, type KlpMode, type KlpStyleOverrides } from '@kallopis/react';
 import { ModernProductivityStarter } from './modern-productivity-starter.js';
+import { themeMetadata, themePacks } from './theme-presets.mjs';
 
 /* fields：調整入口的名稱與 canonical ID；預設數值由正式 pack 擁有。 */
 const fields = [
@@ -14,14 +15,25 @@ const modes: KlpMode[] = ['light', 'dark', 'ultraDark', 'transparent'];
 
 /** 真實模板預覽；局部設定與 consumer 草稿分離。 */
 export function ModernProductivityPreview({ id }: { id: string }) {
-	const [base] = useState(() => createKlpStylePack());
+	const [themeId, setThemeId] = useState('micro-elevation-v1');
+	const [base, setBase] = useState(() => themePacks['micro-elevation-v1'] ?? createKlpStylePack());
 	const [pack, setPack] = useState(base);
-	const [mode, setMode] = useState<KlpMode>('light');
+	const [mode, setMode] = useState<KlpMode>('dark');
 	const [overrides, setOverrides] = useState<KlpStyleOverrides>({});
 	const [widthText, setWidthText] = useState('');
 	const [sidebarWidth, setSidebarWidth] = useState<number>();
 	const [feedback, setFeedback] = useState('');
 	const primitives = Object.entries(base.primitives).filter((entry): entry is [string, number] => /^(space|radius|length-|font)/.test(entry[0]) && typeof entry[1] === 'number' && Number.isFinite(entry[1]) && entry[1] >= 0).sort((a, b) => a[1] - b[1]);
+	function switchTheme(nextId: string) {
+		const nextBase = themePacks[nextId] ?? createKlpStylePack();
+		const meta = themeMetadata.find(item => item.id === nextId);
+		setThemeId(nextId);
+		setBase(nextBase);
+		setPack(nextBase);
+		setOverrides({});
+		if (meta) setMode(meta.defaultMode);
+		setFeedback(`已切換風格：${meta?.name ?? nextId}`);
+	}
 	function changeWidth(value: string) {
 		setWidthText(value);
 		const width = Number(value);
@@ -49,8 +61,8 @@ export function ModernProductivityPreview({ id }: { id: string }) {
 	if (id !== 'modern-productivity-layout') return <KlpThemeProvider><KlpText>未知或歧義的模板路由。</KlpText></KlpThemeProvider>;
 	return <KlpThemeProvider mode={mode} stylePack={pack} style={{ height: '100dvh', display: 'flex', flexDirection: 'column' }}>
 		<section aria-label="模板設定" style={{ flex: '0 0 35%', minHeight: 0, overflow: 'auto', padding: 'var(--klp-spacing-contentInset)', boxSizing: 'border-box' }}>
-			<KlpText as="h1" role="h3">現代風生產力佈局 · 即時調整</KlpText>
-			<div style={{ display: 'flex', flexWrap: 'wrap', gap: 'var(--klp-spacing-actionGap)' }}>{modes.map(value => <KlpButton key={value} selected={mode === value} onClick={() => setMode(value)}>{value}</KlpButton>)}<KlpButton onClick={reset}>還原設定</KlpButton><KlpButton onClick={copy}>複製設定</KlpButton></div>
+			<KlpText as="h1" role="h3">微立體工作台佈局 · 即時調整</KlpText>
+			<div style={{ display: 'flex', flexWrap: 'wrap', gap: 'var(--klp-spacing-actionGap)' }}>{themeMetadata.map(theme => <KlpButton key={theme.id} selected={themeId === theme.id} onClick={() => switchTheme(theme.id)}>{theme.name}</KlpButton>)}{modes.map(value => <KlpButton key={value} selected={mode === value} onClick={() => setMode(value)}>{value}</KlpButton>)}<KlpButton onClick={reset}>還原設定</KlpButton><KlpButton onClick={copy}>複製設定</KlpButton></div>
 			<div style={{ display: 'flex', flexWrap: 'wrap', gap: 'var(--klp-spacing-actionGap)' }}>
 				<KlpTextField label="側欄寬度（空白使用預設）" type="number" value={widthText} onChange={event => changeWidth(event.target.value)} />
 				{fields.map(([key, label]) => <label key={key}>{label}<select aria-label={label} value={String(overrides.semantics?.[key]?.[mode] ?? '')} onChange={event => changeSemantic(key, event.target.value)}><option value="">預設</option>{primitives.map(([name, value]) => <option key={name} value={`p(${name})`}>{value} · {name}</option>)}</select></label>)}

@@ -18,3 +18,10 @@
 | 來源 | primitive_token／klp_palette／default_*／各ThemeExtension與klp_geometry_theme；button_style、text_field_style/frame、KlpSurface、Card/BadgeFrame、MenuMetrics/MenuState、AppFrame/PanelFrame/StageFrame、ExplorerRow、klp_text。 |
 | 驗證 | 已檢查全部primitive/semantic引用、配方繼承無循環、350個theme欄位覆蓋；本次僅整理文件，未改元件或進行Flutter編譯／視覺驗收。 |
 
+## Obsidian MicroStereo 行動投影（2026-11-02）
+
+使用者確認以桌面端為視覺基準。MicroStereo 的 iPad／iPhone／Android 投影共用桌面語意色、字型、圓角層級與 effect-frame-relief，不另建平面行動風格；Stage、平板分頁與原生抽屜／固定側欄都保留微立體。宿主新增的玻璃效果與膠囊輪廓須回到同一套實色表面及圓角。設定控制沿用桌面的薄陰影。
+
+差異限於原生行動導航、鍵盤／安全區及觸控命中尺寸：控制保留 44px，複製圖形仍為 16px。純 CSS 不替換系統下拉選取器，不接管原生側欄事件。實作由 MicroStereo consumer 擁有，不表示 Flutter／React 庫已新增行動元件。Obsidian Chromium 行動模擬器已有橫直向、明暗、閱讀／編輯及控制項證據，尚未完成實體 iPadOS WebKit／Android 裝置驗收。
+
+MicroStereo 0.1.30 控制投影補充：行動側欄下拉實際內層表面使用 6px 圓角；toggle 軌道／正方形色塊分別 4px／2px；slider 拖動點 12×12px、3px 圓角、4px 軌道，按壓不放大。WebKit 原生 top 與 margin 不重複偏移，拖動點需對齊軌道中心。

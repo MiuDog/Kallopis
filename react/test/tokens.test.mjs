@@ -9,7 +9,7 @@ import * as publicApi from '../dist/index.js';
 import { documents, expectedPrimitives, expectedRecipes, expectedTheme, modes, repository, semanticExpressions } from './source-contract.mjs';
 
 test('全部正式 primitive、配方與四主題完整保留且平台轉換正確', () => {
-	assert.equal(Object.keys(expectedPrimitives).length, 269);
+	assert.equal(Object.keys(expectedPrimitives).length, 270);
 	assert.equal(Object.keys(expectedRecipes).length, 118);
 	assert.equal(Object.keys(semanticExpressions).length, 350);
 	assert.deepEqual(publicApi.klpPrimitives, expectedPrimitives);
@@ -71,4 +71,27 @@ for (const [name, transform] of invalidSources) test(`產生器拒絕${name}`, t
 	const result = generator(source, join(source, 'output'));
 	assert.notEqual(result.status, 0, `${name} 不得靜默略過`);
 	assert.match(result.stderr + result.stdout, /missing|unknown|duplicate|cycle|circular|reference|缺失|循環|重複|不存在|未定義|無法/i);
+});
+
+// 四模式均採正式桌面控制尺寸；保留既有語意 ID 的相容性。
+test('四主題維持方形圓角與已接受的桌面控制尺寸', () => {
+	assert.equal(publicApi.klpPrimitives['length-15'], 15);
+	const dimensions = {
+		'theme.shape.control': 6,
+		'theme.shape.pill': 6,
+		'theme.components.badgeRadius': 6,
+		'theme.components.fieldHeight': 24,
+		'theme.geometry.control.fieldHeight': 24,
+		'theme.geometry.control.selectionControl': 15,
+		'theme.geometry.control.toggleWidth': 34,
+		'theme.geometry.control.toggleHeight': 16,
+		'theme.geometry.control.toggleThumb': 14,
+		'theme.geometry.control.toggleInset': 1,
+	};
+	for (const mode of modes) {
+		const theme = publicApi.createKlpTheme(mode);
+		for (const [semantic, expected] of Object.entries(dimensions)) {
+			assert.equal(theme[semantic], expected, `${mode} 的 ${semantic} 必須符合正式桌面尺寸`);
+		}
+	}
 });

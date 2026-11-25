@@ -195,6 +195,7 @@ _DeclarationDraft _draft(String id, String name, Element element, String surface
 		documentation: _documentation(element.documentationComment),
 		typeRelationships: _relationships(element),
 		members: _members(element),
+		parameters: _parameters(element),
 	);
 }
 
@@ -269,9 +270,35 @@ List<_Member> _members(Element element) {
 _Member _member(String kind, Element element) => _Member(
 	name: element.displayName,
 	kind: kind,
-	signature: element.displayString(multiline: true, preferTypeAlias: true),
+	signature: _memberSignature(element),
 	documentation: _documentation(element.documentationComment),
+	parameters: _parameters(element),
 );
+
+String _memberSignature(Element element) {
+	final signature = element.displayString(multiline: true, preferTypeAlias: true);
+	if (element is ConstructorElement && element.isConst) return 'const $signature';
+	if (element is FieldElement) {
+		final storage = element.isStatic ? 'static ' : '';
+		final mutability = element.isConst ? 'const ' : element.isFinal ? 'final ' : '';
+		return '$storage$mutability$signature';
+	}
+	if ((element is MethodElement && element.isStatic) || (element is GetterElement && element.isStatic) || (element is SetterElement && element.isStatic)) return 'static $signature';
+	return signature;
+}
+
+// 由 analyzer 保留 required nullable、位置參數及預設值，避免從顯示簽名猜測。
+List<Map<String, Object?>> _parameters(Element element) {
+	if (element is! ExecutableElement) return const [];
+	return element.formalParameters.map((parameter) => <String, Object?>{
+		'name': parameter.name,
+		'type': parameter.type.getDisplayString(),
+		'required': parameter.isRequired,
+		'named': parameter.isNamed,
+		'defaultValue': parameter.defaultValueCode,
+		'documentation': _documentation(parameter.documentationComment),
+	}).toList();
+}
 
 String _moduleFor(Uri uri) {
 	final segments = uri.pathSegments;
@@ -361,6 +388,8 @@ final class _DeclarationDraft {
 	final String documentation;
 	final Map<String, Object?> typeRelationships;
 	final List<_Member> members;
+	// parameters：完整保留公開函式參數的結構資訊。
+	final List<Map<String, Object?>> parameters;
 
 	_DeclarationDraft({
 		required this.id,
@@ -375,6 +404,7 @@ final class _DeclarationDraft {
 		required this.documentation,
 		required this.typeRelationships,
 		required this.members,
+		required this.parameters,
 	});
 
 	String get primarySurface => surfaces.first;
@@ -398,6 +428,7 @@ final class _DeclarationDraft {
 		typeRelationships,
 		members,
 		renderable,
+		parameters,
 	);
 }
 
@@ -419,6 +450,8 @@ final class _Declaration {
 	final String documentation;
 	final Map<String, Object?> typeRelationships;
 	final List<_Member> members;
+	// parameters：完整保留公開函式參數的結構資訊。
+	final List<Map<String, Object?>> parameters;
 
 	const _Declaration(
 		this.id,
@@ -434,6 +467,7 @@ final class _Declaration {
 		this.typeRelationships,
 		this.members,
 		this.renderable,
+		this.parameters,
 	);
 
 	Map<String, Object?> toJson() => {
@@ -450,16 +484,19 @@ final class _Declaration {
 		'documentation': documentation,
 		'typeRelationships': typeRelationships,
 		'members': members.map((member) => member.toJson()).toList(),
+		'parameters': parameters,
 	};
 }
 
 final class _Member {
+	// parameters：成員呼叫介面，不包含任何 private state。
+	final List<Map<String, Object?>> parameters;
 	final String name;
 	final String kind;
 	final String signature;
 	final String documentation;
 
-	const _Member({required this.name, required this.kind, required this.signature, required this.documentation});
+	const _Member({required this.name, required this.kind, required this.signature, required this.documentation, required this.parameters});
 
-	Map<String, Object?> toJson() => {'name': name, 'kind': kind, 'signature': signature, 'documentation': documentation};
+	Map<String, Object?> toJson() => {'name': name, 'kind': kind, 'signature': signature, 'documentation': documentation, 'parameters': parameters};
 }

@@ -1,5 +1,27 @@
 # Kallopis Reference Site
 
+## 更新開發者 Reference
+
+消費端文件入口為 [docs](../../docs/README.md)。每個公開宣告一頁，Flutter／React 分開；Markdown 同時供 GitHub、本機、AI 與網站閱讀。
+
+```sh
+dart --packages=flutter/.dart_tool/package_config.json tool/reference_site/extract_api.dart --output build/reference-api.json
+node tool/reference_site/build-reference-docs.mjs
+node tool/reference_site/build-reference-docs.mjs --check
+node --test tool/reference_site/test/reference_docs.test.mjs
+node tool/reference_site/verify-reference-examples.mjs
+node tool/reference_site/generate.mjs
+node tool/reference_site/verify.mjs
+```
+
+以上從 repository 根執行；先完成 Flutter pub get 與 React npm ci。React 擷取直接解析目前 src 公開入口，不依賴過期 dist。Flutter 擷取失敗時不回退快照；原頁保留。
+
+只更新 `reference-api:start/end` 內的機械 API 區塊；主要職責、速成使用與限制由 Markdown 維護，不覆蓋。新增 API 的初始接入片段需由維護者補齊產品情境；刪除或改名會被 orphan check 擋下，先確認遷移再處理。不要手改 API 標記區來消除檢查差異。
+
+`docs/reference/manifest.json` 只存 id、平台、名稱、分類與 source／href，不複製正文。舊 Flutter API 及 React 元件 URL 導向新頁；帶 `--react` 建置時，新 React 頁保留實際互動展示。已驗證的新 Flutter 清冊可同步為 `reference-api.json`，供既有 CI 快照流程使用。
+
+`verify-reference-examples.mjs` 直接抽取每頁速成片段及兩份 quickstart，在忽略目錄建立獨立 consumer，執行原 TypeScript 設定與 Dart analyzer。診斷保存在 `build/reference-{flutter,react}-examples.log`；不新增例外、不調降 lint、不修改 library。文件中的 Widget tree 片段只包成回傳函式。
+
 主要指南直接維護在 repository 的 Markdown，可在 GitHub 或本機 Markdown 預覽器閱讀並使用相對路徑嵌入圖片。現有網站與展示保留，本工具繼續提供本機產生與驗證。
 
 線上 Pages 發布預設暫停。日後確認託管方案後，將 repository Actions variable `KALLOPIS_PAGES_DEPLOY` 設為字串 `true`，才會執行 Pages 設定及部署；既有建置、驗證與 artifact 步驟繼續保留。保留網址為 `https://technis-toolbox.github.io/Kallopis/`。

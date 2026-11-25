@@ -1,5 +1,31 @@
+import fs from 'node:fs';
+import path from 'node:path';
+
+const root = path.resolve(import.meta.dirname, '../..');
+
+// 依來源目錄登錄新 Reference／範例／流程，維持 Markdown 單一正文。
+function discoverDocuments(directory, category) {
+	const absolute = path.join(root, directory);
+	if (!fs.existsSync(absolute)) return [];
+	return fs.readdirSync(absolute, { withFileTypes: true }).sort((left, right) => left.name.localeCompare(right.name, 'en')).flatMap(entry => {
+		const source = `${directory}/${entry.name}`;
+		if (entry.isDirectory()) return discoverDocuments(source, category);
+		if (!entry.name.endsWith('.md') || entry.name === 'architecture.md') return [];
+
+		const title = fs.readFileSync(path.join(root, source), 'utf8').match(/^# (.+)/m)?.[1] ?? entry.name;
+		const href = source.replace(/README\.md$/, 'index.html').replace(/\.md$/, '.html');
+		return [[source, href, title, entry.name === 'README.md' || entry.name === 'quickstart.md' ? 'Index' : category]];
+	});
+}
+
 // source 為唯一 Markdown 來源，href 為產物路由，title／category 用於導覽與搜尋；不保存正文副本。
 export const documents = [
+	['docs/README.md', 'docs/overview.html', '文件閱讀入口', 'Index'],
+	['docs/ai/README.md', 'docs/ai/index.html', 'AI 閱讀路徑', 'Index'],
+	...discoverDocuments('docs/reference', 'Reference'),
+	...discoverDocuments('docs/examples', 'Example'),
+	...discoverDocuments('docs/guides/flutter', 'Guide'),
+	...discoverDocuments('docs/guides/react', 'Guide'),
 	['docs/templates/modern-productivity-layout.md', 'docs/guides/modern-productivity-layout.html', '現代風生產力佈局模板', 'Guide'],
 	['docs/architecture/workbench-shortcut-host-contract.md', 'docs/guides/workbench-shortcut-host-contract.html', 'Registered 快捷鍵原生宿主契約', 'Guide'],
 	['docs/architecture/workbench-shortcut-core-contract.md', 'docs/guides/workbench-shortcut-core-contract.html', 'Registered 快捷鍵核心契約', 'Guide'],
@@ -36,3 +62,4 @@ export const documents = [
 }));
 
 export const documentRoutes = new Map(documents.map(({source, href}) => [source, href]));
+documentRoutes.set('docs/reference/manifest.json', 'docs/reference/manifest.json');

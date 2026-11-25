@@ -1,0 +1,32 @@
+/* 視覺模板不判斷平台、來源、dirty或資料，宿主提供slot與安全操作。 */
+.klp-window-header {
+	-webkit-app-region: drag;
+	app-region: drag;
+	user-select: none;
+}
+.klp-window-header :is(button, input, select, textarea), .klp-window-toolbar {
+	-webkit-app-region: no-drag;
+	app-region: no-drag;
+}
+.klp-frame.klp-window-toolbar { flex: none; margin-inline-start: auto; height: 100%; }
+.klp-window-toolbar > .klp-frame-body, .klp-window-toolbar [role="toolbar"] { display: flex; align-items: stretch; height: 100%; padding: 0; }
+.klp-sidebar-banner > .klp-frame-body {
+	display: flex;
+	align-items: center;
+	gap: var(--klp-spacing-contentInset);
+	padding: var(--klp-spacing-contentInset);
+	border-top: var(--klp-shape-hairline) dashed var(--klp-colors-divider);
+}
+.klp-sidebar-banner-leading { flex: 1; min-width: 0; }
+.klp-sidebar-banner-leading select { width: 100%; min-width: 0; }
+.klp-sidebar-banner-actions { display: flex; margin-inline-start: auto; }
+.klp-settings-layout { display: flex; flex-direction: column; height: 100%; padding: var(--klp-spacing-contentInset); box-sizing: border-box; }
+.klp-settings-header { display: flex; justify-content: flex-end; height: 36px; flex: none; margin-bottom: var(--klp-spacing-contentInset); }
+.klp-settings-body { display: grid; grid-template-columns: minmax(190px,22%) minmax(0,1fr); flex: 1; min-height: 0; gap: var(--klp-spacing-contentInset); }
+.klp-settings-navigation { min-height: 0; overflow: auto; }
+.klp-settings-navigation > .klp-frame-body { display: flex; flex-direction: column; padding: var(--klp-spacing-contentInset); }
+.klp-settings-navigation nav { display: flex; flex-direction: column; gap: var(--klp-spacing-space1); }
+.klp-settings-navigation button { justify-content: flex-start; width: 100%; }
+.klp-settings-content { position: relative; min-width: 0; min-height: 0; }
+.klp-settings-content > .klp-frame-body { height: 100%; overflow: auto; box-sizing: border-box; }
+.klp-settings-content main { padding: calc(var(--klp-spacing-contentInset) * 2); padding-bottom: calc(var(--klp-spacing-contentInset) * 10); }

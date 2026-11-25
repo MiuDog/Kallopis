@@ -1,9 +1,12 @@
+import { NativeFieldSpecimen } from './advanced-specimens.js';
 import { useState, type ComponentType } from 'react';
 import { KlpAppLayout, KlpBadge, KlpButton, KlpCard, KlpFileExplorer, KlpFrame, KlpIconButton, KlpLayoutColumn, KlpLayoutDivider, KlpLayoutPane, KlpLayoutRow, KlpLayoutSpacer, KlpSurface, KlpText, KlpTextField, KlpThemeProvider, KlpWorkspace, applyKlpStyleOverrides, createKlpStylePack, useKlp, type KlpMode } from '@kallopis/react';
 import { CommandsDemo } from './commands-demo.js';
 import { DockDemo } from './dock-demo.js';
 import { reactSpecimenRegistry } from './specimen-registry.mjs';
 import { ModernProductivityPreview } from './modern-productivity-preview.js';
+import { DesktopSpecimen } from './desktop-specimens.js';
+import { desktopComponentNames } from './desktop-catalog-data.mjs';
 
 interface SpecimenProps {
 	/* name是公開路由identity，compound fixture據此選當次實際target與參數。 */
@@ -54,6 +57,10 @@ function StandardSpecimenApp({ name }: SpecimenProps) {
 }
 
 function BasicSpecimen({ name }: SpecimenProps) {
+	return desktopComponentNames.includes(name) ? <DesktopSpecimen name={name} /> : <OriginalBasicSpecimen name={name} />;
+}
+
+function OriginalBasicSpecimen({ name }: SpecimenProps) {
 
 	/* text／changed／disabled是當次元件props；count是原callback觀察；selection／expanded屬Explorer資料。 */
 	const [text, setText] = useState('展示內容');
@@ -92,7 +99,7 @@ function BasicSpecimen({ name }: SpecimenProps) {
 			preview = <KlpIconButton label={text} size={changed ? 'lg' : 'sm'} tone={changed ? 'inline' : 'standalone'} selected={changed} disabled={disabled} onClick={click}>+</KlpIconButton>; break;
 		case 'KlpTextField':
 			parameter = '錯誤與提示'; example = '<KlpTextField label="名稱" value={value} onChange={handle} error={error} />';
-			preview = <KlpTextField label="元件輸入" value={text} disabled={disabled} error={changed} hint={changed ? '產品提供錯誤說明' : '輸入回呼由產品保存'} onChange={event => { setText(event.target.value); click(); }} />; break;
+			preview = <><NativeFieldSpecimen /><KlpTextField label="元件輸入" value={text} disabled={disabled} error={changed} hint={changed ? '產品提供錯誤說明' : '輸入回呼由產品保存'} onChange={event => { setText(event.target.value); click(); }} /></>; break;
 		case 'KlpFileExplorer':
 			parameter = '資料標籤'; example = '<KlpFileExplorer sections={sections} expandedIds={expanded} selectedId={selected} onToggle={toggle} onSelect={select} />';
 			preview = <KlpFileExplorer label="元件檔案清單" sections={[{ /* id是section stablekey，label是可改的產品資料，items為可選取產品項目。 */ id: 'files', label: changed ? text : '檔案', items: [{ id: 'first', label: 'scene.json' }, { id: 'second', label: 'materials' }] }]} expandedIds={expanded} selectedId={selection} onToggle={expand} onSelect={select} />; break;
@@ -158,3 +165,9 @@ function CommandSpecimen({ name }: SpecimenProps) {
 	return <div className="demo-stack"><CommandsDemo specimen={name} /><KlpText role="caption">公開入口以同一份 registry、產品 context 與結果回呼組裝；此 route 只顯示當次入口。快捷鍵：Primary+S 儲存。</KlpText><pre><code>{example}</code></pre></div>;
 }
 function DockSpecimen() { return <div className="demo-stack"><DockDemo /><pre><code>{'<KlpDockLayout layout={layout} panels={panels} stage={stage} leftConstraints={left} rightConstraints={right} onLayoutChanged={setLayout} />'}</code></pre></div>; }
+
+/** Catalog 直接呈現既有真實 fixture，不複製元件實作。 */
+export function CatalogSpecimen({ name }: SpecimenProps) {
+	const Fixture = specimens[name];
+	return Fixture ? <Fixture name={name} /> : <KlpText>未登錄元件：{name}</KlpText>;
+}

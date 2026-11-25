@@ -1,0 +1,17 @@
+.klp-reorderable-list {
+	display: flex;
+	flex-direction: column;
+	gap: inherit;
+	min-width: 0;
+	width: 100%;
+}
+.klp-reorderable-item {
+	display: flex;
+	min-width: 0;
+}
+.klp-reorderable-item > * { flex: 1; min-width: 0; }
+.klp-reorderable-item[draggable="true"] { cursor: grab; }
+.klp-reorderable-item[data-drop-target] {
+	outline: var(--klp-shape-hairline) dashed var(--klp-colors-divider);
+	outline-offset: calc(-1 * var(--klp-shape-hairline));
+}

@@ -1,3 +1,4 @@
+import { resolveRelief } from './relief.js';
 import { createContext, useContext, useMemo, type CSSProperties, type HTMLAttributes } from 'react';
 import { klpThemes, klpRecipes } from './generated.js';
 import { resolveBrowserStyle, styleVariables, type KlpStylePack } from './style-pack.js';
@@ -47,6 +48,6 @@ export function KlpThemeProvider({ mode = 'light', stylePack, children, classNam
 	const foreground = theme.semantic(luma < 160 ? 'theme.colors.onDarkBackground' : 'theme.colors.onLightBackground');
 	const surface = String(theme.semantic('theme.colors.surface'));
 	const luminance = [1, 3, 5].map(index => parseInt(surface.slice(index, index + 2), 16) / 255).map(value => value <= 0.04045 ? value / 12.92 : ((value + 0.055) / 1.055) ** 2.4).reduce((sum, value, index) => sum + value * [0.2126, 0.7152, 0.0722][index], 0);
-	const style = { ...styleVariables(theme.tokens), '--klp-primary-foreground': foreground, '--klp-icon-wash': theme.semantic(luminance < 0.5 ? 'theme.surface.selectionWashOpacity' : 'theme.surface.focusWashOpacity'), ...props.style } as CSSProperties;
+	const style = { ...styleVariables(theme.tokens), '--klp-relief-shadow': resolveRelief(theme), '--klp-primary-foreground': foreground, '--klp-icon-wash': theme.semantic(luminance < 0.5 ? 'theme.surface.selectionWashOpacity' : 'theme.surface.focusWashOpacity'), ...props.style } as CSSProperties;
 	return <ThemeContext.Provider value={theme}><div {...props} style={style} className={`klp-theme ${className}`} data-klp-mode={mode}>{children}</div></ThemeContext.Provider>;
 }

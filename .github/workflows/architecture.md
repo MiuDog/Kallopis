@@ -1,5 +1,9 @@
 # 發布與驗證工作流程
 
+## 共通風格與互動展示 v1 發布契約
+
+發布目標由 GitHub Pages API 確認為 `MiuDog/Kallopis` 的 `https://miudog.github.io/Kallopis/`，以現有 Pages workflow 產生並驗證 React／Flutter 展示後部署。保留現有發布變數與驗證閘門；當待發布 revision 已含兩框架產物及驗收改動時，才啟用變數並發布。記錄部署 revision、workflow 結果及線上操作證據。這項發布使用既有 repository 與網域設定，現行部署設定尚未變更。
+
 ## Markdown 優先與可選 Pages 發布
 
 指南以 Markdown 閱讀與維護；保留現有網站原始碼、建置與驗證。`pages.yml` 的 configure-pages 與 deploy 只在非 pull request 且 repository Actions variable `KALLOPIS_PAGES_DEPLOY` 為字串 `true` 時執行。未設定或其他值代表暫停線上發布，不跳過建置、測試、文件驗證或 artifact 上傳。日後恢復 Pages 時先確認託管資格，再設定該變數。

@@ -1,0 +1,38 @@
+/* 原生表單投影既有Kallopis field配方，不另建theme或預設數值。 */
+.klp-form-fields :is(input:not([type="checkbox"]):not([type="radio"]):not([type="hidden"]), select, textarea) {
+	box-sizing: border-box;
+	width: 100%;
+	min-width: 0;
+	font: inherit;
+	color: var(--klp-colors-text);
+	caret-color: var(--klp-colors-interaction);
+	background: var(--klp-colors-surfaceInset);
+	border: var(--klp-components-fieldBorderWidth) solid var(--klp-colors-border);
+	border-radius: var(--klp-components-fieldRadius);
+	padding: 0 var(--klp-components-fieldPaddingX);
+	box-shadow: none;
+}
+.klp-form-fields :is(input:not([type="checkbox"]):not([type="radio"]), select) {
+	height: var(--klp-components-fieldHeight);
+}
+.klp-form-fields textarea {
+	min-height: calc(var(--klp-components-fieldHeight) * 3);
+	padding-block: var(--klp-spacing-contentInset);
+	resize: vertical;
+}
+.klp-form-fields :is(input, select, textarea):focus-visible {
+	outline: var(--klp-shape-stroke) solid var(--klp-colors-interaction);
+	outline-offset: calc(-1 * var(--klp-shape-stroke));
+}
+.klp-form-fields :is(input, select, textarea):disabled {
+	cursor: not-allowed;
+}
+.klp-form-fields .klp-field, .klp-form-fields label:has(> select), .klp-form-fields label:has(> textarea) {
+	display: flex;
+	flex-direction: column;
+	align-items: stretch;
+	gap: var(--klp-spacing-tight);
+}
+.klp-form-fields .klp-field > input { flex: none; }
+
+.klp-form-fields .klp-field > label { flex: none; }

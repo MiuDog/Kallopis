@@ -1,8 +1,12 @@
 # 現代風生產力佈局
 
+畫面範例入口已整理至 [Modern productivity](../examples/modern-productivity/README.md)。本頁保留設定接入與版本契約；本輪截圖狀態為 draft，待使用者確認。
+
 模板識別：`modern-productivity-layout`。契約版本：v1。
 
 單一全高左側欄，右區為 Header＋Stage。導航與原右側工具功能都由左欄內的按鈕列切換。產品提供功能清單、內容與受控選取；模板維持面板身分、狀態與共用視覺。
+
+目前呈現契約另依 [Panel 強調與現代生產力呈現](../design-tokens/recipes.md#panel-強調與現代生產力呈現（2026-11-01-使用者已確認）)：Sidebar 與 Stage 採微立體、Stage header 內標籤為彼此分離的微立體 Panel、有 Rail 時整合左欄並以細虛線區隔，不使用深色邊框包淺色內部的強調 Panel。本次只更新規範記錄；下列 v1 核心與預覽尚未據此重新驗收，不將其舊截圖視為這次修訂的完成證據。
 
 ## 開啟預覽
 

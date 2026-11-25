@@ -1,5 +1,32 @@
 # Kallopis Repository Integration
 
+## 共通風格與互動展示 v1
+
+[已確認規格](spec/design-library-v1.md)保留 Flutter／React 的公開 API，並加入查詢後複製的使用路徑。以下是 v1 整合契約。現行環境在風格權威切換通過驗證前，仍採用 `docs/design-tokens/` 的正式表格。
+
+```mermaid
+flowchart LR
+	Pack[styles/kallopis-v1.json] --> Flutter[Flutter 生成資料與既有公開入口]
+	Pack --> React[React 生成資料與既有公開入口]
+	Pack --> Tables[正式文件表格與可查詢 token]
+	Examples[styles 範例與圖片] --> Pages[GitHub Pages]
+	Tables --> Pages
+	Flutter --> Pages
+	React --> Pages
+	Pages --> Consumer[查詢並複製至其他專案]
+```
+
+| 介面 | 擁有者與契約 |
+| --- | --- |
+| 共通風格資料 | [styles](styles/architecture.md) 維護版本化 pack 與 catalog。主檔保留既有 primitive、四模式 semantic 與配方，文件表格由主檔生成，沿用原文件 URL。 |
+| 框架對應 | [Flutter](flutter/architecture.md) 與 [React](react/architecture.md) 以同一 pack 生成資料，保留匯入、型別、語意及 CSS 名稱。每個使用中 token 可追溯至來源 ID 與元件引用處。 |
+| 查詢、複製與展示 | [網站工具](tool/reference_site/architecture.md) 讀取 pack、框架對應與 `styles/` 範例，使用框架已建置的實際元件，原 API 深層連結保留。貼用範例可在無 Kallopis 套件的乾淨專案驗證。 |
+| 發布 | [工作流程](.github/workflows/architecture.md) 維持驗證後部署，以 GitHub Pages API 回報的網址為準。以線上互動、直接開啟深層連結、刷新及資產載入作為發布證據。 |
+
+目前可開工切片為 [風格來源切換](styles/architecture.md#design-library-style-1)。框架發行包繼續隨包提供生成資料及資產，執行時無需讀取 repository 的根目錄。後續網站切片以來源切換與框架對應驗證為輸入；部署在網站產物通過真實操作驗收後進行。
+
+## 既有跨框架整合
+
 修訂：`MULTI-FRAMEWORK-r1`；已實作；驗證及既有失敗見 [整合紀錄](docs/architecture/multi-framework-verification.md)。
 
 根目錄擁有共通視覺規範、docs 網站及框架整合；各框架庫為第一層子目錄。契約見 [目標](spec/multi-framework-design-system.md)、[框架目錄](spec/framework-directory-v1.md)、[React v1](spec/react-foundation-v1.md)。
@@ -89,3 +116,19 @@ flowchart TD
 ## MODERN-PRODUCTIVITY：公開清冊接入
 
 既有 extraction 已觀察 Flutter 563 canonical 與 React 24 元件；新增公開 API 需接入 Catalog／specimen，依兩框架架構的 MODERN-PRODUCTIVITY-CATALOG-1／REFERENCE-1 exact boundaries。不修改既有清冊閘門或列入假 coverage。API manifest 與 inventory 由整合 owner 從真實 source 刷新；公開欄位 dartdoc 由 API-DOCS-1 精確主檔維護。
+
+
+具名呈現組裝：[待決變更提示](templates/pending-changes-banner/architecture.md)只接收props及回呼；[雙區工作台](templates/sidebar-stage-workbench/architecture.md)含清單平面頭像CSS。兩者不匯入consumer的路由、API、資料保存或商業邏輯。
+# 桌面工作台補充
+
+[desktop-workbench](templates/desktop-workbench/architecture.md) 提供視窗工具列、側欄底部與設定視窗純呈現插槽；[使用入口](templates/desktop-workbench/README.md)。雙區工作台沿用此配方；產品資料與視窗生命週期不在 Kallopis。
+# 可排序清單補充
+
+[reorderable-list](templates/reorderable-list/architecture.md) 提供穩定 id 受控清單與手勢回呼。consumer 擁有排序演算法、持久化與衝突，模板只擁有拖曳目標、鍵盤投影及項目插槽。
+# 平面下拉補充
+
+[flat-select](templates/flat-select/architecture.md) 為資產選擇器提供 trigger、平面popup、群組／選項與鍵盤焦點投影。consumer 決定選項、排序、dirty gate 與API；模板保持子樹掛載，不存產品值。實際browser行為待驗。
+
+# 活動清單補充
+
+[activity-feed](templates/activity-feed/architecture.md)回存直向清單、操作列與flat panel項目的純呈現插槽；資料、已讀、篩選、日期、順序與保存留consumer。來源為Unico的通知中心呈現，非通知業務模組、非新增公開套件API。編譯／scope／逐字同步為程式證據，實際畫面仍human-pending。

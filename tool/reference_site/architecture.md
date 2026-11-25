@@ -1,12 +1,53 @@
 # Kallopis Reference Site
 
+## 互動展示交接契約
+
+依[共通風格與互動展示 v1](../../spec/design-library-v1.md)，首頁以元件與組合展示為主要入口。沿用 React example bundle 與 Flutter Web 產物、元件 registry 及 `/Kallopis/`。API、指南、搜尋與既有可直接開啟的路由仍可進入。網站從共通 pack 與框架的引用索引提供 token 查詢；圖片、貼用說明及範例程式碼從 `styles/` 讀取。複製內容使用自身可用的框架原生介面，提供必要 token、程式碼和資產，並以乾淨 consumer 建置驗證。展示本身使用 Kallopis 公開元件，適用[現有互動展示契約](../../spec/interactive-docs-v1.md)。
+
+驗收涵蓋兩框架的實際互動、深層連結與刷新、載入失敗回饋、複製內容及既有文件路由。網站實作切片待風格權威切換後規劃；目前網站產物仍遵循下方的現行生成契約。
+
+## 目前文件重整（REFERENCE-DOCS-r1）
+
+使用者於 2026-10-16 接受各平台單宣告 Markdown Reference。現行消費端入口為 docs/README.md、docs/reference 與 docs/examples；原 docs/ai 使用指南保留導覽和既有 section anchor，正文拆到 docs/guides/{flutter,react}。本段取代下方舊 stage 對「只有 Flutter API／只寫 documents.mjs」的範圍限制，不改框架公開 API。
+
+| 來源／函式 | 責任 |
+| --- | --- |
+| [extract_api.dart](extract_api.dart) `_parameters`、`_members`、`_draft` | Dart analyzer 的公開 export closure、成員、必要性及預設值 |
+| [extract-react-api.mjs](extract-react-api.mjs) `extractReactApi` | TypeScript export graph；properties／member／memberKind 取得公開成員與 props；reactElement 以框架宣告身份辨認可呈現元件 |
+| [reference-docs.mjs](reference-docs.mjs) `buildReferenceDocuments` | category 分類、responsibility／imports／sample 初始正文、parametersTable／apiSection 契約區；slug／cell／code／link 處理輸出 |
+| [reference-docs.mjs](reference-docs.mjs) `updateReferenceDocuments`、`referenceIndexes` | 只更新 API marker 內文，產生平台索引；check 模式禁止寫入 |
+| [build-reference-docs.mjs](build-reference-docs.mjs) 主流程、`checkOrphans` | 先解析兩平台，再更新或比對頁面／機器索引；拒絕遺留 API 頁，不自動刪除人工文件 |
+| [verify-reference-examples.mjs](verify-reference-examples.mjs) `snippet`、`prepare`、`dartExecutable`、`run` | 抽取速成片段到獨立 consumer，以平台 compiler 檢查，診斷寫入 build |
+| [documents.mjs](documents.mjs) `discoverDocuments` | 新 Markdown 目錄到 route 的唯一登錄；舊路由保持 |
+| [generate.mjs](generate.mjs) `main` | 同一 Markdown 產生頁面與全文搜尋；舊 API URL canonical／refresh 到新頁；已建置 React 展示接回新頁 |
+| [verify.mjs](verify.mjs) | 既有清冊、正文、搜尋、相對連結及展示閘門 |
+| [markdown.mjs](markdown.mjs) `localDocumentTarget` | 分離 pathname／query／fragment；query 不當檔名，缺檔、越界與 anchor 檢查仍由 verifier 負責 |
+
+extract-react-api 的 parameter／signature／documentation／isPrivate／local 是 compiler 投影 helper；不重新實作型別解析。Dart `_memberSignature` 保留 static／final／const；reference-docs 的 sampleImports 根據實際型別補公開入口與 SDK import。所有來源完成解析才進入 Markdown 更新。現存頁 marker 外的人工內容逐字保留；缺 marker 時拒絕，不能用自動產生器覆蓋它。檔案寫入例外交工具呼叫者，不發布網站。
+
+```mermaid
+flowchart TD
+	Dart[extract_api / analyzer] --> Manifest[Flutter manifest]
+	React[extractReactApi / TypeScript] --> Build[buildReferenceDocuments]
+	Manifest --> Build
+	Build --> Update[updateReferenceDocuments]
+	Build --> Index[referenceIndexes]
+	Update --> MD[Markdown 單一正文]
+	Index --> Registry[discoverDocuments]
+	MD --> Registry
+	Registry --> Site[generate.main / renderMarkdown]
+	Site --> Verify[verify]
+```
+
+文件 owner 的寫入界線及目前切片見 [Reference 契約](../../docs/reference/architecture.md)。本次以既有未提交現況整合；不重設、不切換、不 stage。獨立 Test Author 擁有 reference_docs.test.mjs，實作 owner 不修改其斷言。範例畫面仍 human-pending。
+
 ## 網站與來源位置
 
-GitHub Pages 的正式網址為 `https://technis-toolbox.github.io/Kallopis/`，repository 為 `https://github.com/technis-toolbox/Kallopis`。`layout.mjs` 的 GitHub／Markdown 原文連結與 `markdown.mjs` 的來源連結使用此組織位置；schema `$id` 同步採用新 Pages 網址。repository 名稱未變，因此部署 base path 仍為 `/Kallopis/`。2026-10-16 只修正網址，保留既有網站正文、框架展示與消費端套件；README 改以指南閱讀與平台導入為主。
+現行 checkout 的 `layout.mjs`、`markdown.mjs` 與 schema `$id` 仍記載 `technis-toolbox`。GitHub repository 與 Pages API 回報的發布位置為 `MiuDog/Kallopis` 與 `https://miudog.github.io/Kallopis/`。發布切片須核對網站原文連結及站點資料；部署 base path 仍為 `/Kallopis/`。
 
 指南目前以 Markdown 為主要閱讀與維護入口；圖片使用 repository 相對路徑，與正文一起版本控制。既有網站原始碼、展示與本機產生能力保留。
 
-組織目前為 Free 且 repository 為 private；線上 Pages 發布預設暫停。`pages.yml` 只有在非 pull request 且 repository Actions variable `KALLOPIS_PAGES_DEPLOY=true` 時才設定與部署 Pages，既有建置及驗證繼續執行。設定中的網址不代表網站已可存取；恢復發布前須確認託管資格，此維護不變更可見性或付費方案。
+現有 repository 為 public，Pages 來源設定為 GitHub Actions。`pages.yml` 只有在非 pull request 且 repository Actions variable `KALLOPIS_PAGES_DEPLOY=true` 時才設定與部署 Pages，既有建置及驗證繼續執行。發布以新 artifact 上線後的實際驗證為準。
 
 ## MODERN-PRODUCTIVITY-TEMPLATE-SITE-1（IMPLEMENTED）
 

@@ -55,7 +55,7 @@
 	align-items: center;
 	padding: var(--klp-spacing-space0_5) var(--klp-components-badgePaddingX);
 	border-radius: var(--klp-components-badgeRadius);
-	border: var(--klp-shape-hairline) solid var(--klp-colors-divider);
+	border: 0;
 	background: var(--klp-colors-component);
 	text-transform: uppercase;
 }
@@ -104,9 +104,11 @@
 .klp-icon-button:disabled:not([aria-pressed='true']) { background: var(--klp-rest); }
 .klp-button:focus-visible, .klp-explorer-row:focus-visible, .klp-field input:focus-visible {
 	outline: var(--klp-shape-stroke) solid var(--klp-colors-interaction);
-	outline-offset: var(--klp-spacing-space0_5);
+	outline-offset: calc(-1 * var(--klp-shape-stroke));
 }
-.klp-field { display: grid; gap: var(--klp-spacing-tight); }
+.klp-field { display: flex; flex-direction: row; align-items: center; flex-wrap: wrap; min-width: 0; gap: var(--klp-spacing-tight); }
+.klp-field > label { flex: 0 1 auto; }
+.klp-field > input { flex: 1 1 0; }
 .klp-field input {
 	width: 100%;
 	min-width: 0;
@@ -148,6 +150,7 @@
 .klp-explorer { padding: var(--klp-spacing-navigationItemInset); }
 .klp-explorer ul { list-style: none; padding: 0; margin: 0; }
 .klp-explorer ul[hidden] { display: none; }
+.klp-explorer li + li { padding-top: var(--klp-spacing-space1); }
 .klp-explorer-row {
 	display: flex;
 	align-items: center;
@@ -210,6 +213,9 @@
 	overflow: auto;
 }
 .klp-command-menu {
+	display: flex;
+	flex-direction: column;
+	gap: var(--klp-spacing-space1);
 	inline-size: min(100%, var(--klp-entry-width, var(--klp-geometry-layout-commandMenuWidth)));
 	min-inline-size: 0;
 	max-inline-size: 100%;
@@ -221,7 +227,7 @@
 	color: var(--klp-colors-text);
 }
 .klp-command-menu[data-klp-separation='shadow'] {
-	box-shadow: 0 var(--klp-surface-contactOffsetY) var(--klp-surface-contactBlur) color-mix(in srgb, var(--klp-surface-overlayShadowColor) calc(var(--klp-surface-contactShadowOpacity) * 100%), transparent), 0 var(--klp-surface-overlayOffsetY) var(--klp-surface-overlayBlur) var(--klp-surface-overlaySpread) color-mix(in srgb, var(--klp-surface-overlayShadowColor) calc(var(--klp-surface-overlayShadowOpacity) * 100%), transparent);
+	box-shadow: var(--klp-relief-shadow);
 }
 .klp-command-row {
 	min-inline-size: 0;
@@ -286,10 +292,10 @@
 }
 .klp-palette-dialog[open] { display: flex; flex-direction: column; gap: var(--klp-palette-padding); }
 .klp-palette-dialog::backdrop { background: color-mix(in srgb, var(--klp-surface-overlayShadowColor) calc(var(--klp-surface-scrimOpacity) * 100%), transparent); }
-.klp-palette-dialog[data-klp-separation='shadow'] { box-shadow: 0 var(--klp-surface-contactOffsetY) var(--klp-surface-contactBlur) color-mix(in srgb, var(--klp-surface-overlayShadowColor) calc(var(--klp-surface-contactShadowOpacity) * 100%), transparent), 0 var(--klp-surface-overlayOffsetY) var(--klp-surface-overlayBlur) var(--klp-surface-overlaySpread) color-mix(in srgb, var(--klp-surface-overlayShadowColor) calc(var(--klp-surface-overlayShadowOpacity) * 100%), transparent); }
+.klp-palette-dialog[data-klp-separation='shadow'] { box-shadow: var(--klp-relief-shadow); }
 .klp-palette-dialog .klp-field { flex: none; min-inline-size: 0; max-block-size: var(--klp-palette-height); overflow: auto; }
 .klp-palette-dialog .klp-field input { box-sizing: border-box; min-inline-size: 0; inline-size: 100%; }
-.klp-palette-list { min-inline-size: 0; min-block-size: 0; overflow: auto; }
+.klp-palette-list { display: flex; flex-direction: column; gap: var(--klp-spacing-space1); min-inline-size: 0; min-block-size: 0; overflow: auto; }
 .klp-palette-option {
 	display: flex;
 	inline-size: 100%;
@@ -337,3 +343,9 @@
 	background: transparent;
 }
 .klp-command-popup-panel { min-inline-size: 0; min-block-size: 0; overflow: hidden; }
+
+/* 所有可聚焦控制的提示皆內縮；欄位另採 inset shadow。 */
+.klp-theme :is(button, a, input, textarea, select, [tabindex]):focus-visible { outline-offset: calc(-1 * var(--klp-shape-stroke)); }
+
+/* 選單與命令對話框共用低對比虛線外緣；列高由正式語意提供。 */
+.klp-command-menu, .klp-palette-dialog { border: var(--klp-shape-hairline) dashed var(--klp-colors-divider); }

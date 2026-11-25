@@ -14,6 +14,9 @@ const surfaceContracts = [
 	['foundation', 'package:kallopis/kallopis_foundation.dart', 'Stable Components'],
 	['experimental', 'package:kallopis/kallopis_experimental.dart', 'Experimental'],
 ];
+// 公開識別到 Markdown 的映射只存路由，不維護另一份正文。
+const referenceEntries = JSON.parse(fs.readFileSync(path.join(root, 'docs/reference/manifest.json'), 'utf8'));
+const referenceById = new Map(referenceEntries.map(entry => [entry.id, entry]));
 const labels = Object.fromEntries(surfaceContracts.map(([name, , label]) => [name, label]));
 function escapeHtml(value) {
 	return String(value)
@@ -108,6 +111,13 @@ async function main() {
 	}
 
 	// 在清理舊產物前確認所有必要來源與文章可解析，避免發布不完整網站。
+	const referenceSources = new Set();
+	for (const entry of referenceEntries) {
+		if (referenceSources.has(entry.source) || documentRoutes.get(entry.source) !== entry.href) throw new Error(`Invalid reference source/route: ${entry.id}`);
+		referenceSources.add(entry.source);
+		if (!fs.existsSync(path.join(root, entry.source))) throw new Error(`Missing public reference: ${entry.id}`);
+	}
+	if (referenceById.size !== referenceEntries.length) throw new Error('Duplicate public reference id');
 	const renderedDocuments = documents.map((document) => {
 		const sourcePath = path.join(root, document.source);
 		if (!fs.existsSync(sourcePath)) throw new Error(`Missing required document: ${document.source}`);
@@ -120,13 +130,19 @@ async function main() {
 	fs.rmSync(output, { recursive: true, force: true });
 	fs.mkdirSync(path.join(output, 'assets'), { recursive: true });
 	for (const asset of ['site.css', 'site.js']) fs.copyFileSync(path.join(root, 'tool', 'reference_site', 'static', asset), path.join(output, 'assets', asset));
-
-	if (reactComponents && reactScenarios && flutterScenarios) {
-		fs.cpSync(path.join(root, 'styles/examples'), path.join(output, 'styles/examples'), { recursive: true });
-		fs.cpSync(path.join(root, 'styles/images'), path.join(output, 'styles/images'), { recursive: true });
-		fs.copyFileSync(path.join(root, 'styles/kallopis-v1.json'), path.join(output, 'styles/kallopis-v1.json'));
-		fs.copyFileSync(path.join(root, 'styles/component-bindings.json'), path.join(output, 'styles/component-bindings.json'));
+	let themes = [];
+	if (reactComponents && reactScenarios && flutterScenarios && fs.existsSync(path.join(root, 'styles'))) {
+		if (fs.existsSync(path.join(root, 'styles/examples'))) fs.cpSync(path.join(root, 'styles/examples'), path.join(output, 'styles/examples'), { recursive: true });
+		if (fs.existsSync(path.join(root, 'styles/images'))) fs.cpSync(path.join(root, 'styles/images'), path.join(output, 'styles/images'), { recursive: true });
+		if (fs.existsSync(path.join(root, 'styles/themes'))) {
+			fs.cpSync(path.join(root, 'styles/themes'), path.join(output, 'styles/themes'), { recursive: true });
+			const themeIndex = path.join(root, 'styles/themes/index.json');
+			if (fs.existsSync(themeIndex)) themes = JSON.parse(fs.readFileSync(themeIndex, 'utf8')).themes ?? [];
+		}
+		if (fs.existsSync(path.join(root, 'styles/kallopis-v1.json'))) fs.copyFileSync(path.join(root, 'styles/kallopis-v1.json'), path.join(output, 'styles/kallopis-v1.json'));
+		if (fs.existsSync(path.join(root, 'styles/component-bindings.json'))) fs.copyFileSync(path.join(root, 'styles/component-bindings.json'), path.join(output, 'styles/component-bindings.json'));
 	}
+
 	if (reactComponents) fs.cpSync(reactBundle, path.join(output, 'examples/react'), { recursive: true });
 	if (flutterScenarios) fs.cpSync(flutterBundle, path.join(output, 'examples/flutter'), { recursive: true });
 
@@ -203,18 +219,42 @@ async function main() {
 	const guideLinks = [];
 	for (const document of renderedDocuments) {
 		const {source, href, title, category, html, body} = document;
-		page(href, title, html, source);
-		guideLinks.push(`<li><a href="${escapeHtml(relative('docs/index.html', href))}">${escapeHtml(title)}</a></li>`);
+		const reference = referenceEntries.find(entry => entry.source === source);
+		const specimen = reactComponents?.find(component => component.id === reference?.id);
+		const preview = specimen ? renderReactSpecimen(specimen, `${relative(href, 'examples/react/index.html')}?specimen=${encodeURIComponent(specimen.name)}`) : '';
+		page(href, title, html + preview, source);
+		if (category !== 'Reference') guideLinks.push(`<li><a href="${escapeHtml(relative('docs/index.html', href))}">${escapeHtml(title)}</a></li>`);
 		search.push({ /* source／href 為唯一文件對照；title／category 是導覽，body 用於內容搜尋。 */ title, category, href, source, body });
 	}
 	const componentDeclarations = api.modules.flatMap((module) => module.declarations).filter((item) => ['class', 'abstractClass', 'baseClass', 'finalClass', 'interfaceClass', 'sealedClass', 'mixinClass'].includes(item.kind));
 	page('docs/components/index.html', 'Components', `<div class="eyebrow">COMPONENTS</div><h1>公開型別</h1><p class="lead">依實際 public surface 產生；詳細 constructor 與 member 請進入 API 頁。</p><ul class="api-list">${componentDeclarations.map((item) => `<li><a href="${escapeHtml(relative('docs/components/index.html', declarationRoute(item)))}"><code>${escapeHtml(item.name)}</code></a><span>${escapeHtml(item.module)} · ${item.surfaces.map((surface) => escapeHtml(surface)).join(' · ')}</span></li>`).join('')}</ul>`);
-	page('docs/index.html', 'Documentation', `<div class="eyebrow">DOCUMENTATION</div><h1>產品組合權，設計系統品質</h1><p class="lead">Kallopis 以通用視覺語意與 token 維持一致；各框架庫依規範實作，產品擁有畫面、導航與流程。</p><div class="actions"><a class="button primary" href="design-system/index.html">通用視覺規範</a><a class="button secondary" href="${escapeHtml(relative('docs/index.html', 'docs/api/index.html'))}">Flutter API</a><a class="button secondary" href="${escapeHtml(relative('docs/index.html', 'docs/components/index.html'))}">公開型別</a></div>${reactComponents ? '<p><a class="button secondary" href="react/components/index.html">React 互動元件</a></p>' : ''}${reactScenarios ? '<p><a class="button secondary" href="react/scenarios/index.html">React GUI 場景</a></p>' : ''}${flutterScenarios ? '<p><a class="button secondary" href="flutter/scenarios/index.html">Flutter GUI 場景</a></p>' : ''}<h2>Current guides</h2><ul>${guideLinks.join('')}</ul>`);
+	page('docs/index.html', 'Documentation', `<div class="eyebrow">DOCUMENTATION</div><h1>Kallopis 開發文件</h1><div class="actions"><a class="button primary" href="reference/flutter/index.html">Flutter Reference</a><a class="button secondary" href="reference/react/index.html">React Reference</a><a class="button secondary" href="examples/index.html">畫面範例</a></div><p class="lead">Kallopis 以通用視覺語意與 token 維持一致；各框架庫依規範實作，產品擁有畫面、導航與流程。</p><div class="actions"><a class="button primary" href="design-system/index.html">通用視覺規範</a><a class="button secondary" href="${escapeHtml(relative('docs/index.html', 'docs/api/index.html'))}">Flutter API</a><a class="button secondary" href="${escapeHtml(relative('docs/index.html', 'docs/components/index.html'))}">公開型別</a></div>${reactComponents ? '<p><a class="button secondary" href="react/components/index.html">React 互動元件</a></p>' : ''}${reactScenarios ? '<p><a class="button secondary" href="react/scenarios/index.html">React GUI 場景</a></p>' : ''}${flutterScenarios ? '<p><a class="button secondary" href="flutter/scenarios/index.html">Flutter GUI 場景</a></p>' : ''}<h2>Current guides</h2><ul>${guideLinks.join('')}</ul>`);
 	write('index.html', homePage({
 		interactive: Boolean(reactComponents && reactScenarios && flutterScenarios),
 		apiCount: apiDeclarations.length,
 		moduleCount: api.modules.length,
+		themes,
+		reactCount: reactComponents?.length ?? 0,
 	}));
+	// 舊 API URL 導向唯一 Markdown 頁；原 signature 仍供既有相容檢查辨識。
+	for (const declaration of api.modules.flatMap(module => module.declarations)) {
+		const entry = referenceById.get(declaration.id);
+		if (!entry) continue;
+		const legacy = declarationRoute(declaration);
+		const target = relative(legacy, entry.href);
+		const file = path.join(output, legacy);
+		const html = fs.readFileSync(file, 'utf8');
+		fs.writeFileSync(file, html.replace('</head>', `<link rel="canonical" href="${escapeHtml(target)}"><meta http-equiv="refresh" content="0;url=${escapeHtml(target)}"></head>`));
+	}
+	for (const component of reactComponents ?? []) {
+		const entry = referenceById.get(component.id);
+		if (!entry) continue;
+		const target = relative(component.href, entry.href);
+		const file = path.join(output, component.href);
+		const html = fs.readFileSync(file, 'utf8');
+		fs.writeFileSync(file, html.replace('</head>', `<link rel="canonical" href="${escapeHtml(target)}"><meta http-equiv="refresh" content="0;url=${escapeHtml(target)}"></head>`));
+	}
+	write('docs/reference/manifest.json', `${JSON.stringify(referenceEntries, null, '\t')}\n`);
 	write('search-index.json', `${JSON.stringify(search, null, '\t')}\n`);
 	write('site-manifest.json', `${JSON.stringify({ surfaces: api.surfaces, apiModules, apiDeclarations, ...(reactComponents ? { reactComponents } : {}), ...(reactScenarios ? { reactScenarios } : {}), ...(flutterScenarios ? { flutterScenarios } : {}), guides: documents.map(({source}) => source), documents }, null, '\t')}\n`);
 	console.log(`Generated ${apiDeclarations.length} canonical API pages across ${api.modules.length} modules.`);

@@ -1,0 +1,15 @@
+/* 方形圓角人物圖示沿用 Kallopis Panel，與真人影像無關。 */
+.klp-frame.klp-list-avatar {
+	flex: 0 0 calc(var(--klp-spacing-contentInset) * 5);
+	width: calc(var(--klp-spacing-contentInset) * 5);
+	height: calc(var(--klp-spacing-contentInset) * 5);
+	border-radius: var(--klp-shape-panel);
+}
+
+.klp-list-avatar > .klp-frame-body {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-size: calc(var(--klp-spacing-contentInset) * 3);
+}
+

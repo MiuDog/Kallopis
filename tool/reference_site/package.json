@@ -3,7 +3,10 @@
 	"private": true,
 	"type": "module",
 	"scripts": {
-		"test": "node --test test/reference_site.test.mjs test/design_system_docs.test.mjs",
+		"test": "node --test test/reference_site.test.mjs test/design_system_docs.test.mjs test/reference_docs.test.mjs",
+		"docs:update": "node build-reference-docs.mjs",
+		"docs:check": "node build-reference-docs.mjs --check",
+		"docs:examples": "node verify-reference-examples.mjs",
 		"test:extract": "node --test test/extract_renderable.test.mjs",
 		"extract": "cd ../.. && dart --packages=flutter/.dart_tool/package_config.json tool/reference_site/extract_api.dart --output build/reference-api.json",
 		"build": "node generate.mjs",

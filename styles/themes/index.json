@@ -1,0 +1,66 @@
+{
+	"schemaVersion": 1,
+	"themes": [
+		{
+			"id": "micro-elevation-v1",
+			"family": "micro-elevation",
+			"version": "1.0.0",
+			"name": "微立體",
+			"englishName": "Micro Elevation",
+			"defaultMode": "dark",
+			"description": "溫潤深炭灰分層表面，結合微浮陰影與頂部微亮邊、琥珀金強調色與低對比膠囊選取態，適合長時間專注知識工作台。",
+			"packPath": "styles/themes/micro-elevation-v1.json",
+			"cssPath": "styles/themes/micro-elevation-v1.css",
+			"previewImage": "styles/images/theme-micro-elevation.jpg",
+			"sourceReference": "Kallopis Micro Elevation Workbench",
+			"surfaceStyle": "layered-charcoal-cards",
+			"elevationStyle": "bevel-shadow",
+			"typography": "Noto Sans TC · IBM Plex Mono",
+			"palettePreview": {
+				"light": ["#E8E5DE", "#F2F0EA", "#FAF9F6", "#22201C", "#B5852A"],
+				"dark": ["#1A1A18", "#242320", "#2C2B28", "#EDEAE4", "#D4A853"]
+			}
+		},
+		{
+			"id": "modern-minimal-v1",
+			"family": "modern-minimal",
+			"version": "1.0.0",
+			"name": "現代簡約風",
+			"englishName": "Modern Minimal (Editorial)",
+			"defaultMode": "light",
+			"description": "取自 open-tag 的 Quietly Editorial 設計語彙：米白畫布 #F5F5F5、暖炭墨黑 #292524、1px 細線分隔、EB Garamond 編輯襯線與柔和漸層光暈點綴。",
+			"packPath": "styles/themes/modern-minimal-v1.json",
+			"cssPath": "styles/themes/modern-minimal-v1.css",
+			"previewImage": "styles/images/showcase-home.png",
+			"sourceReference": "https://github.com/fancyboi999/open-tag",
+			"surfaceStyle": "editorial-hairline",
+			"elevationStyle": "flat-hairline",
+			"typography": "EB Garamond · Inter · Noto Sans TC",
+			"orbs": ["#A7E5D3", "#F4C5A8", "#C8B8E0", "#A8C8E8", "#E8B8C4"],
+			"palettePreview": {
+				"light": ["#F5F5F5", "#F0EFED", "#FFFFFF", "#292524", "#E7E5E4"],
+				"dark": ["#0C0A09", "#141210", "#1C1917", "#FFFFFF", "#F4C5A8"]
+			}
+		},
+		{
+			"id": "kallopis-v1",
+			"family": "kallopis",
+			"version": "1.0.0",
+			"name": "暖紙預設",
+			"englishName": "Kallopis Parchment",
+			"defaultMode": "light",
+			"description": "Kallopis 原始暖紙視覺基準：parchment 層次與低對比中性控制項，支援四種標準模式。",
+			"packPath": "styles/kallopis-v1.json",
+			"cssPath": "styles/themes/kallopis-v1.css",
+			"previewImage": "styles/images/sidebar-stage-dark.png",
+			"sourceReference": "docs/design-tokens/KALLOPIS-DESIGN-MAP.md",
+			"surfaceStyle": "parchment-paper",
+			"elevationStyle": "subtle-relief",
+			"typography": "Noto Sans TC · IBM Plex Mono",
+			"palettePreview": {
+				"light": ["#E7E4DD", "#EFEDE7", "#F8F6F1", "#21201B", "#D3CFC4"],
+				"dark": ["#201F1C", "#292724", "#35322D", "#F0EDE6", "#514B40"]
+			}
+		}
+	]
+}

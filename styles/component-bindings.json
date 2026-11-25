@@ -20,6 +20,62 @@
 			"css": "--klp-colors-surface",
 			"references": [
 				{
+					"path": "react/src/components.tsx",
+					"line": 82
+				},
+				{
+					"path": "react/src/desktop/styles.css",
+					"line": 4
+				},
+				{
+					"path": "react/src/desktop/styles.css",
+					"line": 7
+				},
+				{
+					"path": "react/src/desktop/styles.css",
+					"line": 8
+				},
+				{
+					"path": "react/src/desktop/styles.css",
+					"line": 35
+				},
+				{
+					"path": "react/src/desktop/styles.css",
+					"line": 45
+				},
+				{
+					"path": "react/src/desktop/styles.css",
+					"line": 49
+				},
+				{
+					"path": "react/src/desktop/styles.css",
+					"line": 67
+				},
+				{
+					"path": "react/src/desktop/styles.css",
+					"line": 89
+				},
+				{
+					"path": "react/src/desktop/styles.css",
+					"line": 91
+				},
+				{
+					"path": "react/src/desktop/styles.css",
+					"line": 94
+				},
+				{
+					"path": "react/src/desktop/styles.css",
+					"line": 95
+				},
+				{
+					"path": "react/src/desktop/styles.css",
+					"line": 98
+				},
+				{
+					"path": "react/src/relief.ts",
+					"line": 4
+				},
+				{
 					"path": "react/src/styles.css",
 					"line": 44
 				},
@@ -41,15 +97,11 @@
 				},
 				{
 					"path": "react/src/styles.css",
-					"line": 117
+					"line": 119
 				},
 				{
 					"path": "react/src/styles.css",
-					"line": 123
-				},
-				{
-					"path": "react/src/styles.css",
-					"line": 124
+					"line": 125
 				},
 				{
 					"path": "react/src/styles.css",
@@ -57,23 +109,27 @@
 				},
 				{
 					"path": "react/src/styles.css",
-					"line": 136
+					"line": 128
 				},
 				{
 					"path": "react/src/styles.css",
-					"line": 144
+					"line": 138
 				},
 				{
 					"path": "react/src/styles.css",
-					"line": 145
+					"line": 146
 				},
 				{
 					"path": "react/src/styles.css",
-					"line": 175
+					"line": 147
+				},
+				{
+					"path": "react/src/styles.css",
+					"line": 178
 				},
 				{
 					"path": "react/src/theme.tsx",
-					"line": 48
+					"line": 49
 				},
 				{
 					"path": "flutter/lib/src/features/collections/advanced/primitives/klp_advanced_style.dart",
@@ -128,6 +184,42 @@
 			"css": "--klp-colors-surfaceInset",
 			"references": [
 				{
+					"path": "react/src/components.tsx",
+					"line": 82
+				},
+				{
+					"path": "react/src/desktop/styles.css",
+					"line": 4
+				},
+				{
+					"path": "react/src/desktop/styles.css",
+					"line": 7
+				},
+				{
+					"path": "react/src/desktop/styles.css",
+					"line": 45
+				},
+				{
+					"path": "react/src/desktop/styles.css",
+					"line": 89
+				},
+				{
+					"path": "react/src/desktop/styles.css",
+					"line": 91
+				},
+				{
+					"path": "react/src/desktop/styles.css",
+					"line": 94
+				},
+				{
+					"path": "react/src/desktop/styles.css",
+					"line": 95
+				},
+				{
+					"path": "react/src/desktop/styles.css",
+					"line": 98
+				},
+				{
 					"path": "react/src/styles.css",
 					"line": 45
 				},
@@ -137,23 +229,23 @@
 				},
 				{
 					"path": "react/src/styles.css",
-					"line": 117
+					"line": 119
 				},
 				{
 					"path": "react/src/styles.css",
-					"line": 123
+					"line": 125
 				},
 				{
 					"path": "react/src/styles.css",
-					"line": 124
+					"line": 126
 				},
 				{
 					"path": "react/src/styles.css",
-					"line": 144
+					"line": 146
 				},
 				{
 					"path": "react/src/styles.css",
-					"line": 145
+					"line": 147
 				},
 				{
 					"path": "flutter/lib/src/features/collections/advanced/primitives/klp_advanced_style.dart",
@@ -180,12 +272,20 @@
 			"css": "--klp-colors-surfaceMuted",
 			"references": [
 				{
+					"path": "react/src/desktop/styles.css",
+					"line": 8
+				},
+				{
+					"path": "react/src/desktop/styles.css",
+					"line": 49
+				},
+				{
 					"path": "react/src/styles.css",
 					"line": 46
 				},
 				{
 					"path": "react/src/styles.css",
-					"line": 126
+					"line": 128
 				},
 				{
 					"path": "flutter/lib/src/features/collections/advanced/primitives/klp_advanced_style.dart",
@@ -215,6 +315,46 @@
 			"react": "theme.colors.component",
 			"css": "--klp-colors-component",
 			"references": [
+				{
+					"path": "react/src/desktop/styles.css",
+					"line": 14
+				},
+				{
+					"path": "react/src/desktop/styles.css",
+					"line": 20
+				},
+				{
+					"path": "react/src/desktop/styles.css",
+					"line": 21
+				},
+				{
+					"path": "react/src/desktop/styles.css",
+					"line": 47
+				},
+				{
+					"path": "react/src/desktop/styles.css",
+					"line": 54
+				},
+				{
+					"path": "react/src/desktop/styles.css",
+					"line": 59
+				},
+				{
+					"path": "react/src/desktop/styles.css",
+					"line": 60
+				},
+				{
+					"path": "react/src/desktop/styles.css",
+					"line": 76
+				},
+				{
+					"path": "react/src/desktop/styles.css",
+					"line": 80
+				},
+				{
+					"path": "react/src/desktop/styles.css",
+					"line": 103
+				},
 				{
 					"path": "react/src/styles.css",
 					"line": 48
@@ -284,12 +424,40 @@
 			"css": "--klp-colors-overlay",
 			"references": [
 				{
-					"path": "react/src/styles.css",
-					"line": 220
+					"path": "react/src/desktop/styles.css",
+					"line": 41
+				},
+				{
+					"path": "react/src/desktop/styles.css",
+					"line": 44
+				},
+				{
+					"path": "react/src/desktop/styles.css",
+					"line": 63
+				},
+				{
+					"path": "react/src/desktop/styles.css",
+					"line": 107
+				},
+				{
+					"path": "react/src/desktop/styles.css",
+					"line": 110
+				},
+				{
+					"path": "react/src/desktop/styles.css",
+					"line": 115
+				},
+				{
+					"path": "react/src/desktop/styles.css",
+					"line": 117
 				},
 				{
 					"path": "react/src/styles.css",
-					"line": 283
+					"line": 226
+				},
+				{
+					"path": "react/src/styles.css",
+					"line": 289
 				}
 			]
 		},
@@ -326,8 +494,28 @@
 			"css": "--klp-colors-divider",
 			"references": [
 				{
+					"path": "react/src/desktop/styles.css",
+					"line": 25
+				},
+				{
+					"path": "react/src/desktop/styles.css",
+					"line": 46
+				},
+				{
+					"path": "react/src/desktop/styles.css",
+					"line": 119
+				},
+				{
+					"path": "react/src/desktop/styles.css",
+					"line": 125
+				},
+				{
+					"path": "react/src/desktop/styles.css",
+					"line": 127
+				},
+				{
 					"path": "react/src/styles.css",
-					"line": 58
+					"line": 351
 				},
 				{
 					"path": "flutter/lib/src/features/collections/advanced/primitives/klp_advanced_style.dart",
@@ -360,6 +548,150 @@
 			"react": "theme.colors.text",
 			"css": "--klp-colors-text",
 			"references": [
+				{
+					"path": "react/src/desktop/styles.css",
+					"line": 4
+				},
+				{
+					"path": "react/src/desktop/styles.css",
+					"line": 8
+				},
+				{
+					"path": "react/src/desktop/styles.css",
+					"line": 11
+				},
+				{
+					"path": "react/src/desktop/styles.css",
+					"line": 15
+				},
+				{
+					"path": "react/src/desktop/styles.css",
+					"line": 16
+				},
+				{
+					"path": "react/src/desktop/styles.css",
+					"line": 20
+				},
+				{
+					"path": "react/src/desktop/styles.css",
+					"line": 21
+				},
+				{
+					"path": "react/src/desktop/styles.css",
+					"line": 22
+				},
+				{
+					"path": "react/src/desktop/styles.css",
+					"line": 26
+				},
+				{
+					"path": "react/src/desktop/styles.css",
+					"line": 31
+				},
+				{
+					"path": "react/src/desktop/styles.css",
+					"line": 32
+				},
+				{
+					"path": "react/src/desktop/styles.css",
+					"line": 41
+				},
+				{
+					"path": "react/src/desktop/styles.css",
+					"line": 44
+				},
+				{
+					"path": "react/src/desktop/styles.css",
+					"line": 45
+				},
+				{
+					"path": "react/src/desktop/styles.css",
+					"line": 54
+				},
+				{
+					"path": "react/src/desktop/styles.css",
+					"line": 55
+				},
+				{
+					"path": "react/src/desktop/styles.css",
+					"line": 60
+				},
+				{
+					"path": "react/src/desktop/styles.css",
+					"line": 61
+				},
+				{
+					"path": "react/src/desktop/styles.css",
+					"line": 63
+				},
+				{
+					"path": "react/src/desktop/styles.css",
+					"line": 76
+				},
+				{
+					"path": "react/src/desktop/styles.css",
+					"line": 77
+				},
+				{
+					"path": "react/src/desktop/styles.css",
+					"line": 81
+				},
+				{
+					"path": "react/src/desktop/styles.css",
+					"line": 90
+				},
+				{
+					"path": "react/src/desktop/styles.css",
+					"line": 92
+				},
+				{
+					"path": "react/src/desktop/styles.css",
+					"line": 96
+				},
+				{
+					"path": "react/src/desktop/styles.css",
+					"line": 97
+				},
+				{
+					"path": "react/src/desktop/styles.css",
+					"line": 98
+				},
+				{
+					"path": "react/src/desktop/styles.css",
+					"line": 107
+				},
+				{
+					"path": "react/src/desktop/styles.css",
+					"line": 108
+				},
+				{
+					"path": "react/src/desktop/styles.css",
+					"line": 110
+				},
+				{
+					"path": "react/src/desktop/styles.css",
+					"line": 111
+				},
+				{
+					"path": "react/src/desktop/styles.css",
+					"line": 112
+				},
+				{
+					"path": "react/src/desktop/styles.css",
+					"line": 113
+				},
+				{
+					"path": "react/src/desktop/styles.css",
+					"line": 115
+				},
+				{
+					"path": "react/src/desktop/styles.css",
+					"line": 117
+				},
+				{
+					"path": "react/src/desktop/styles.css",
+					"line": 118
+				},
 				{
 					"path": "react/src/styles.css",
 					"line": 20
@@ -394,39 +726,35 @@
 				},
 				{
 					"path": "react/src/styles.css",
-					"line": 118
+					"line": 120
 				},
 				{
 					"path": "react/src/styles.css",
-					"line": 122
+					"line": 124
 				},
 				{
 					"path": "react/src/styles.css",
-					"line": 123
+					"line": 125
 				},
 				{
 					"path": "react/src/styles.css",
-					"line": 126
+					"line": 128
 				},
 				{
 					"path": "react/src/styles.css",
-					"line": 163
+					"line": 166
 				},
 				{
 					"path": "react/src/styles.css",
-					"line": 167
+					"line": 170
 				},
 				{
 					"path": "react/src/styles.css",
-					"line": 169
+					"line": 172
 				},
 				{
 					"path": "react/src/styles.css",
-					"line": 175
-				},
-				{
-					"path": "react/src/styles.css",
-					"line": 188
+					"line": 178
 				},
 				{
 					"path": "react/src/styles.css",
@@ -434,19 +762,23 @@
 				},
 				{
 					"path": "react/src/styles.css",
-					"line": 221
+					"line": 194
 				},
 				{
 					"path": "react/src/styles.css",
-					"line": 259
+					"line": 227
 				},
 				{
 					"path": "react/src/styles.css",
-					"line": 284
+					"line": 265
 				},
 				{
 					"path": "react/src/styles.css",
-					"line": 307
+					"line": 290
+				},
+				{
+					"path": "react/src/styles.css",
+					"line": 313
 				},
 				{
 					"path": "flutter/lib/src/features/actions/button/internal/klp_icon_button_style.dart",
@@ -593,12 +925,56 @@
 			"css": "--klp-colors-textMuted",
 			"references": [
 				{
+					"path": "react/src/desktop/styles.css",
+					"line": 15
+				},
+				{
+					"path": "react/src/desktop/styles.css",
+					"line": 26
+				},
+				{
+					"path": "react/src/desktop/styles.css",
+					"line": 45
+				},
+				{
+					"path": "react/src/desktop/styles.css",
+					"line": 90
+				},
+				{
+					"path": "react/src/desktop/styles.css",
+					"line": 92
+				},
+				{
+					"path": "react/src/desktop/styles.css",
+					"line": 96
+				},
+				{
+					"path": "react/src/desktop/styles.css",
+					"line": 97
+				},
+				{
+					"path": "react/src/desktop/styles.css",
+					"line": 98
+				},
+				{
+					"path": "react/src/desktop/styles.css",
+					"line": 112
+				},
+				{
+					"path": "react/src/desktop/styles.css",
+					"line": 113
+				},
+				{
+					"path": "react/src/desktop/styles.css",
+					"line": 118
+				},
+				{
 					"path": "react/src/styles.css",
 					"line": 42
 				},
 				{
 					"path": "react/src/styles.css",
-					"line": 169
+					"line": 172
 				},
 				{
 					"path": "flutter/lib/src/features/collections/advanced/primitives/klp_advanced_style.dart",
@@ -653,6 +1029,38 @@
 			"css": "--klp-colors-textFaint",
 			"references": [
 				{
+					"path": "react/src/desktop/styles.css",
+					"line": 8
+				},
+				{
+					"path": "react/src/desktop/styles.css",
+					"line": 11
+				},
+				{
+					"path": "react/src/desktop/styles.css",
+					"line": 22
+				},
+				{
+					"path": "react/src/desktop/styles.css",
+					"line": 31
+				},
+				{
+					"path": "react/src/desktop/styles.css",
+					"line": 55
+				},
+				{
+					"path": "react/src/desktop/styles.css",
+					"line": 61
+				},
+				{
+					"path": "react/src/desktop/styles.css",
+					"line": 77
+				},
+				{
+					"path": "react/src/desktop/styles.css",
+					"line": 111
+				},
+				{
 					"path": "react/src/styles.css",
 					"line": 43
 				},
@@ -662,11 +1070,11 @@
 				},
 				{
 					"path": "react/src/styles.css",
-					"line": 122
+					"line": 124
 				},
 				{
 					"path": "react/src/styles.css",
-					"line": 126
+					"line": 128
 				},
 				{
 					"path": "flutter/lib/src/features/actions/button/internal/klp_icon_button_style.dart",
@@ -713,12 +1121,16 @@
 			"css": "--klp-colors-border",
 			"references": [
 				{
+					"path": "react/src/desktop/styles.css",
+					"line": 4
+				},
+				{
 					"path": "react/src/styles.css",
 					"line": 78
 				},
 				{
 					"path": "react/src/styles.css",
-					"line": 115
+					"line": 117
 				},
 				{
 					"path": "flutter/lib/src/features/forms/toggle/internal/klp_phase_toggle_style.dart",
@@ -745,7 +1157,7 @@
 				},
 				{
 					"path": "react/src/theme.tsx",
-					"line": 43
+					"line": 44
 				}
 			]
 		},
@@ -775,6 +1187,26 @@
 			"css": "--klp-colors-interaction",
 			"references": [
 				{
+					"path": "react/src/desktop/styles.css",
+					"line": 10
+				},
+				{
+					"path": "react/src/desktop/styles.css",
+					"line": 34
+				},
+				{
+					"path": "react/src/desktop/styles.css",
+					"line": 62
+				},
+				{
+					"path": "react/src/desktop/styles.css",
+					"line": 86
+				},
+				{
+					"path": "react/src/desktop/styles.css",
+					"line": 102
+				},
+				{
 					"path": "react/src/styles.css",
 					"line": 95
 				},
@@ -788,15 +1220,11 @@
 				},
 				{
 					"path": "react/src/styles.css",
-					"line": 119
+					"line": 121
 				},
 				{
 					"path": "react/src/styles.css",
-					"line": 124
-				},
-				{
-					"path": "react/src/styles.css",
-					"line": 192
+					"line": 126
 				},
 				{
 					"path": "react/src/styles.css",
@@ -808,7 +1236,11 @@
 				},
 				{
 					"path": "react/src/styles.css",
-					"line": 200
+					"line": 201
+				},
+				{
+					"path": "react/src/styles.css",
+					"line": 203
 				}
 			]
 		},
@@ -824,15 +1256,15 @@
 				},
 				{
 					"path": "react/src/styles.css",
-					"line": 195
-				},
-				{
-					"path": "react/src/styles.css",
 					"line": 198
 				},
 				{
 					"path": "react/src/styles.css",
-					"line": 200
+					"line": 201
+				},
+				{
+					"path": "react/src/styles.css",
+					"line": 203
 				}
 			]
 		},
@@ -842,6 +1274,10 @@
 			"react": "theme.colors.success",
 			"css": "--klp-colors-success",
 			"references": [
+				{
+					"path": "react/src/desktop/styles.css",
+					"line": 37
+				},
 				{
 					"path": "react/src/styles.css",
 					"line": 62
@@ -879,6 +1315,10 @@
 			"css": "--klp-colors-warning",
 			"references": [
 				{
+					"path": "react/src/desktop/styles.css",
+					"line": 38
+				},
+				{
 					"path": "react/src/styles.css",
 					"line": 63
 				},
@@ -911,12 +1351,20 @@
 			"css": "--klp-colors-danger",
 			"references": [
 				{
+					"path": "react/src/desktop/styles.css",
+					"line": 7
+				},
+				{
+					"path": "react/src/desktop/styles.css",
+					"line": 39
+				},
+				{
 					"path": "react/src/styles.css",
 					"line": 64
 				},
 				{
 					"path": "react/src/styles.css",
-					"line": 125
+					"line": 127
 				},
 				{
 					"path": "flutter/lib/src/features/collections/advanced/primitives/klp_advanced_style.dart",
@@ -958,6 +1406,10 @@
 			"react": "theme.colors.info",
 			"css": "--klp-colors-info",
 			"references": [
+				{
+					"path": "react/src/desktop/styles.css",
+					"line": 36
+				},
 				{
 					"path": "react/src/styles.css",
 					"line": 65
@@ -1004,7 +1456,7 @@
 			"references": [
 				{
 					"path": "react/src/theme.tsx",
-					"line": 47
+					"line": 48
 				}
 			]
 		},
@@ -1016,7 +1468,7 @@
 			"references": [
 				{
 					"path": "react/src/theme.tsx",
-					"line": 47
+					"line": 48
 				}
 			]
 		},
@@ -1099,7 +1551,7 @@
 				},
 				{
 					"path": "react/src/styles.css",
-					"line": 164
+					"line": 167
 				},
 				{
 					"path": "flutter/lib/src/styling/style_pack/native_codec.dart",
@@ -1162,7 +1614,7 @@
 				},
 				{
 					"path": "react/src/styles.css",
-					"line": 164
+					"line": 167
 				}
 			]
 		},
@@ -1193,7 +1645,7 @@
 				},
 				{
 					"path": "react/src/styles.css",
-					"line": 120
+					"line": 122
 				},
 				{
 					"path": "flutter/lib/src/styling/legacy_theme/klp_theme.dart",
@@ -1399,7 +1851,7 @@
 				},
 				{
 					"path": "react/src/styles.css",
-					"line": 120
+					"line": 122
 				}
 			]
 		},
@@ -1617,12 +2069,32 @@
 			"css": "--klp-spacing-space0_5",
 			"references": [
 				{
-					"path": "react/src/styles.css",
-					"line": 56
+					"path": "react/src/desktop/styles.css",
+					"line": 32
+				},
+				{
+					"path": "react/src/desktop/styles.css",
+					"line": 59
+				},
+				{
+					"path": "react/src/desktop/styles.css",
+					"line": 94
+				},
+				{
+					"path": "react/src/desktop/styles.css",
+					"line": 95
+				},
+				{
+					"path": "react/src/desktop/styles.css",
+					"line": 96
+				},
+				{
+					"path": "react/src/desktop/styles.css",
+					"line": 97
 				},
 				{
 					"path": "react/src/styles.css",
-					"line": 107
+					"line": 56
 				}
 			]
 		},
@@ -1631,7 +2103,92 @@
 			"flutter": "spacing.space1",
 			"react": "theme.spacing.space1",
 			"css": "--klp-spacing-space1",
-			"references": []
+			"references": [
+				{
+					"path": "react/src/desktop/styles.css",
+					"line": 9
+				},
+				{
+					"path": "react/src/desktop/styles.css",
+					"line": 12
+				},
+				{
+					"path": "react/src/desktop/styles.css",
+					"line": 27
+				},
+				{
+					"path": "react/src/desktop/styles.css",
+					"line": 28
+				},
+				{
+					"path": "react/src/desktop/styles.css",
+					"line": 52
+				},
+				{
+					"path": "react/src/desktop/styles.css",
+					"line": 69
+				},
+				{
+					"path": "react/src/desktop/styles.css",
+					"line": 70
+				},
+				{
+					"path": "react/src/desktop/styles.css",
+					"line": 81
+				},
+				{
+					"path": "react/src/desktop/styles.css",
+					"line": 89
+				},
+				{
+					"path": "react/src/desktop/styles.css",
+					"line": 90
+				},
+				{
+					"path": "react/src/desktop/styles.css",
+					"line": 91
+				},
+				{
+					"path": "react/src/desktop/styles.css",
+					"line": 107
+				},
+				{
+					"path": "react/src/desktop/styles.css",
+					"line": 108
+				},
+				{
+					"path": "react/src/desktop/styles.css",
+					"line": 109
+				},
+				{
+					"path": "react/src/desktop/styles.css",
+					"line": 115
+				},
+				{
+					"path": "react/src/desktop/styles.css",
+					"line": 116
+				},
+				{
+					"path": "react/src/desktop/styles.css",
+					"line": 118
+				},
+				{
+					"path": "react/src/relief.ts",
+					"line": 7
+				},
+				{
+					"path": "react/src/styles.css",
+					"line": 153
+				},
+				{
+					"path": "react/src/styles.css",
+					"line": 218
+				},
+				{
+					"path": "react/src/styles.css",
+					"line": 298
+				}
+			]
 		},
 		{
 			"id": "theme.spacing.space2",
@@ -1640,12 +2197,76 @@
 			"css": "--klp-spacing-space2",
 			"references": [
 				{
-					"path": "react/src/styles.css",
-					"line": 130
+					"path": "react/src/desktop/styles.css",
+					"line": 19
+				},
+				{
+					"path": "react/src/desktop/styles.css",
+					"line": 26
+				},
+				{
+					"path": "react/src/desktop/styles.css",
+					"line": 44
+				},
+				{
+					"path": "react/src/desktop/styles.css",
+					"line": 45
+				},
+				{
+					"path": "react/src/desktop/styles.css",
+					"line": 46
+				},
+				{
+					"path": "react/src/desktop/styles.css",
+					"line": 49
+				},
+				{
+					"path": "react/src/desktop/styles.css",
+					"line": 53
+				},
+				{
+					"path": "react/src/desktop/styles.css",
+					"line": 83
+				},
+				{
+					"path": "react/src/desktop/styles.css",
+					"line": 94
+				},
+				{
+					"path": "react/src/desktop/styles.css",
+					"line": 103
+				},
+				{
+					"path": "react/src/desktop/styles.css",
+					"line": 107
+				},
+				{
+					"path": "react/src/desktop/styles.css",
+					"line": 108
+				},
+				{
+					"path": "react/src/desktop/styles.css",
+					"line": 115
+				},
+				{
+					"path": "react/src/desktop/styles.css",
+					"line": 116
+				},
+				{
+					"path": "react/src/desktop/styles.css",
+					"line": 118
+				},
+				{
+					"path": "react/src/desktop/styles.css",
+					"line": 128
 				},
 				{
 					"path": "react/src/styles.css",
-					"line": 131
+					"line": 132
+				},
+				{
+					"path": "react/src/styles.css",
+					"line": 133
 				},
 				{
 					"path": "react/src/workbench-layout.tsx",
@@ -1662,7 +2283,12 @@
 			"flutter": "spacing.space3",
 			"react": "theme.spacing.space3",
 			"css": "--klp-spacing-space3",
-			"references": []
+			"references": [
+				{
+					"path": "react/src/desktop/styles.css",
+					"line": 127
+				}
+			]
 		},
 		{
 			"id": "theme.spacing.space4",
@@ -1746,23 +2372,23 @@
 				},
 				{
 					"path": "react/src/styles.css",
-					"line": 158
+					"line": 161
 				},
 				{
 					"path": "react/src/styles.css",
-					"line": 171
+					"line": 174
 				},
 				{
 					"path": "react/src/styles.css",
-					"line": 181
+					"line": 184
 				},
 				{
 					"path": "react/src/styles.css",
-					"line": 185
+					"line": 188
 				},
 				{
 					"path": "react/src/styles.css",
-					"line": 218
+					"line": 224
 				},
 				{
 					"path": "flutter/lib/src/styling/legacy_theme/klp_component_theme.dart",
@@ -1781,8 +2407,56 @@
 			"css": "--klp-spacing-contentInlineGap",
 			"references": [
 				{
+					"path": "react/src/desktop/styles.css",
+					"line": 2
+				},
+				{
+					"path": "react/src/desktop/styles.css",
+					"line": 9
+				},
+				{
+					"path": "react/src/desktop/styles.css",
+					"line": 17
+				},
+				{
+					"path": "react/src/desktop/styles.css",
+					"line": 20
+				},
+				{
+					"path": "react/src/desktop/styles.css",
+					"line": 30
+				},
+				{
+					"path": "react/src/desktop/styles.css",
+					"line": 31
+				},
+				{
+					"path": "react/src/desktop/styles.css",
+					"line": 33
+				},
+				{
+					"path": "react/src/desktop/styles.css",
+					"line": 35
+				},
+				{
+					"path": "react/src/desktop/styles.css",
+					"line": 40
+				},
+				{
+					"path": "react/src/desktop/styles.css",
+					"line": 45
+				},
+				{
+					"path": "react/src/desktop/styles.css",
+					"line": 53
+				},
+				{
+					"path": "react/src/desktop/styles.css",
+					"line": 106
+				},
+				{
 					"path": "react/src/styles.css",
-					"line": 154
+					"line": 157
 				}
 			]
 		},
@@ -1791,7 +2465,16 @@
 			"flutter": "spacing.contentStackGap",
 			"react": "theme.spacing.contentStackGap",
 			"css": "--klp-spacing-contentStackGap",
-			"references": []
+			"references": [
+				{
+					"path": "react/src/desktop/styles.css",
+					"line": 66
+				},
+				{
+					"path": "react/src/desktop/styles.css",
+					"line": 68
+				}
+			]
 		},
 		{
 			"id": "theme.spacing.contentInset",
@@ -1800,12 +2483,48 @@
 			"css": "--klp-spacing-contentInset",
 			"references": [
 				{
+					"path": "react/src/desktop/advanced.tsx",
+					"line": 46
+				},
+				{
+					"path": "react/src/desktop/advanced.tsx",
+					"line": 311
+				},
+				{
+					"path": "react/src/desktop/styles.css",
+					"line": 20
+				},
+				{
+					"path": "react/src/desktop/styles.css",
+					"line": 25
+				},
+				{
+					"path": "react/src/desktop/styles.css",
+					"line": 29
+				},
+				{
+					"path": "react/src/desktop/styles.css",
+					"line": 35
+				},
+				{
+					"path": "react/src/desktop/styles.css",
+					"line": 59
+				},
+				{
+					"path": "react/src/desktop/styles.css",
+					"line": 63
+				},
+				{
+					"path": "react/src/desktop/styles.css",
+					"line": 67
+				},
+				{
 					"path": "react/src/styles.css",
 					"line": 52
 				},
 				{
 					"path": "react/src/styles.css",
-					"line": 146
+					"line": 148
 				}
 			]
 		},
@@ -1825,7 +2544,7 @@
 				},
 				{
 					"path": "react/src/styles.css",
-					"line": 232
+					"line": 238
 				}
 			]
 		},
@@ -1848,12 +2567,16 @@
 			"css": "--klp-spacing-actionGap",
 			"references": [
 				{
+					"path": "react/src/desktop/styles.css",
+					"line": 3
+				},
+				{
 					"path": "react/src/modern-productivity-layout.tsx",
 					"line": 46
 				},
 				{
 					"path": "react/src/styles.css",
-					"line": 206
+					"line": 209
 				}
 			]
 		},
@@ -1891,7 +2614,7 @@
 			"references": [
 				{
 					"path": "react/src/styles.css",
-					"line": 148
+					"line": 150
 				}
 			]
 		},
@@ -1944,7 +2667,7 @@
 				},
 				{
 					"path": "react/src/styles.css",
-					"line": 240
+					"line": 246
 				}
 			]
 		},
@@ -1998,14 +2721,44 @@
 			"flutter": "spacing.comfortable",
 			"react": "theme.spacing.comfortable",
 			"css": "--klp-spacing-comfortable",
-			"references": []
+			"references": [
+				{
+					"path": "react/src/desktop/advanced.tsx",
+					"line": 46
+				},
+				{
+					"path": "react/src/desktop/advanced.tsx",
+					"line": 311
+				},
+				{
+					"path": "react/src/desktop/styles.css",
+					"line": 40
+				},
+				{
+					"path": "react/src/desktop/styles.css",
+					"line": 41
+				},
+				{
+					"path": "react/src/desktop/styles.css",
+					"line": 63
+				},
+				{
+					"path": "react/src/desktop/styles.css",
+					"line": 126
+				}
+			]
 		},
 		{
 			"id": "theme.spacing.loose",
 			"flutter": "spacing.loose",
 			"react": "theme.spacing.loose",
 			"css": "--klp-spacing-loose",
-			"references": []
+			"references": [
+				{
+					"path": "react/src/desktop/styles.css",
+					"line": 125
+				}
+			]
 		},
 		{
 			"id": "theme.spacing.section",
@@ -2105,7 +2858,12 @@
 			"flutter": "spacing.controlPaddingY",
 			"react": "theme.spacing.controlPaddingY",
 			"css": "--klp-spacing-controlPaddingY",
-			"references": []
+			"references": [
+				{
+					"path": "react/src/desktop/styles.css",
+					"line": 4
+				}
+			]
 		},
 		{
 			"id": "theme.spacing.containerPadding",
@@ -2136,11 +2894,11 @@
 			"references": [
 				{
 					"path": "react/src/styles.css",
-					"line": 157
+					"line": 160
 				},
 				{
 					"path": "react/src/styles.css",
-					"line": 168
+					"line": 171
 				}
 			]
 		},
@@ -2159,11 +2917,11 @@
 			"references": [
 				{
 					"path": "react/src/styles.css",
-					"line": 157
+					"line": 160
 				},
 				{
 					"path": "react/src/styles.css",
-					"line": 168
+					"line": 171
 				}
 			]
 		},
@@ -2196,16 +2954,24 @@
 					"line": 90
 				},
 				{
-					"path": "react/src/styles.css",
-					"line": 171
+					"path": "react/src/desktop/styles.css",
+					"line": 56
+				},
+				{
+					"path": "react/src/desktop/styles.css",
+					"line": 57
 				},
 				{
 					"path": "react/src/styles.css",
-					"line": 246
+					"line": 174
 				},
 				{
 					"path": "react/src/styles.css",
-					"line": 247
+					"line": 252
+				},
+				{
+					"path": "react/src/styles.css",
+					"line": 253
 				}
 			]
 		},
@@ -2243,20 +3009,28 @@
 					"line": 90
 				},
 				{
+					"path": "react/src/desktop/styles.css",
+					"line": 56
+				},
+				{
+					"path": "react/src/desktop/styles.css",
+					"line": 57
+				},
+				{
 					"path": "react/src/styles.css",
 					"line": 99
 				},
 				{
 					"path": "react/src/styles.css",
-					"line": 171
+					"line": 174
 				},
 				{
 					"path": "react/src/styles.css",
-					"line": 246
+					"line": 252
 				},
 				{
 					"path": "react/src/styles.css",
-					"line": 247
+					"line": 253
 				},
 				{
 					"path": "react/src/workbench-dock-view.ts",
@@ -2418,7 +3192,12 @@
 			"flutter": "spacing.avatarSmall",
 			"react": "theme.spacing.avatarSmall",
 			"css": "--klp-spacing-avatarSmall",
-			"references": []
+			"references": [
+				{
+					"path": "react/src/desktop/styles.css",
+					"line": 47
+				}
+			]
 		},
 		{
 			"id": "theme.spacing.progressTrack",
@@ -2500,16 +3279,76 @@
 			"css": "--klp-shape-control",
 			"references": [
 				{
-					"path": "react/src/styles.css",
-					"line": 161
+					"path": "react/src/desktop/styles.css",
+					"line": 14
+				},
+				{
+					"path": "react/src/desktop/styles.css",
+					"line": 15
+				},
+				{
+					"path": "react/src/desktop/styles.css",
+					"line": 44
+				},
+				{
+					"path": "react/src/desktop/styles.css",
+					"line": 47
+				},
+				{
+					"path": "react/src/desktop/styles.css",
+					"line": 49
+				},
+				{
+					"path": "react/src/desktop/styles.css",
+					"line": 53
+				},
+				{
+					"path": "react/src/desktop/styles.css",
+					"line": 59
+				},
+				{
+					"path": "react/src/desktop/styles.css",
+					"line": 80
+				},
+				{
+					"path": "react/src/desktop/styles.css",
+					"line": 90
+				},
+				{
+					"path": "react/src/desktop/styles.css",
+					"line": 92
+				},
+				{
+					"path": "react/src/desktop/styles.css",
+					"line": 103
+				},
+				{
+					"path": "react/src/desktop/styles.css",
+					"line": 108
+				},
+				{
+					"path": "react/src/desktop/styles.css",
+					"line": 116
+				},
+				{
+					"path": "react/src/desktop/styles.css",
+					"line": 121
+				},
+				{
+					"path": "react/src/desktop/styles.css",
+					"line": 122
 				},
 				{
 					"path": "react/src/styles.css",
-					"line": 242
+					"line": 164
 				},
 				{
 					"path": "react/src/styles.css",
-					"line": 304
+					"line": 248
+				},
+				{
+					"path": "react/src/styles.css",
+					"line": 310
 				},
 				{
 					"path": "flutter/lib/src/features/actions/button/internal/klp_icon_button_style.dart",
@@ -2912,12 +3751,36 @@
 			"css": "--klp-shape-panel",
 			"references": [
 				{
+					"path": "react/src/desktop/styles.css",
+					"line": 41
+				},
+				{
+					"path": "react/src/desktop/styles.css",
+					"line": 63
+				},
+				{
+					"path": "react/src/desktop/styles.css",
+					"line": 65
+				},
+				{
+					"path": "react/src/desktop/styles.css",
+					"line": 67
+				},
+				{
+					"path": "react/src/desktop/styles.css",
+					"line": 107
+				},
+				{
+					"path": "react/src/desktop/styles.css",
+					"line": 115
+				},
+				{
 					"path": "react/src/modern-productivity-layout.tsx",
 					"line": 56
 				},
 				{
 					"path": "react/src/styles.css",
-					"line": 137
+					"line": 139
 				},
 				{
 					"path": "flutter/lib/src/features/overlays/drawer/klp_drawer_widget.dart",
@@ -3024,8 +3887,48 @@
 			"css": "--klp-shape-hairline",
 			"references": [
 				{
+					"path": "react/src/desktop/styles.css",
+					"line": 14
+				},
+				{
+					"path": "react/src/desktop/styles.css",
+					"line": 25
+				},
+				{
+					"path": "react/src/desktop/styles.css",
+					"line": 46
+				},
+				{
+					"path": "react/src/desktop/styles.css",
+					"line": 70
+				},
+				{
+					"path": "react/src/desktop/styles.css",
+					"line": 83
+				},
+				{
+					"path": "react/src/desktop/styles.css",
+					"line": 89
+				},
+				{
+					"path": "react/src/desktop/styles.css",
+					"line": 91
+				},
+				{
+					"path": "react/src/desktop/styles.css",
+					"line": 119
+				},
+				{
+					"path": "react/src/desktop/styles.css",
+					"line": 125
+				},
+				{
+					"path": "react/src/desktop/styles.css",
+					"line": 127
+				},
+				{
 					"path": "react/src/styles.css",
-					"line": 58
+					"line": 351
 				},
 				{
 					"path": "flutter/lib/src/features/collections/advanced/primitives/klp_advanced_style.dart",
@@ -3180,12 +4083,36 @@
 			"css": "--klp-shape-stroke",
 			"references": [
 				{
+					"path": "react/src/desktop/styles.css",
+					"line": 15
+				},
+				{
+					"path": "react/src/desktop/styles.css",
+					"line": 62
+				},
+				{
+					"path": "react/src/desktop/styles.css",
+					"line": 86
+				},
+				{
+					"path": "react/src/desktop/styles.css",
+					"line": 102
+				},
+				{
 					"path": "react/src/styles.css",
 					"line": 106
 				},
 				{
 					"path": "react/src/styles.css",
-					"line": 192
+					"line": 107
+				},
+				{
+					"path": "react/src/styles.css",
+					"line": 195
+				},
+				{
+					"path": "react/src/styles.css",
+					"line": 348
 				},
 				{
 					"path": "react/src/workbench-dock-view.ts",
@@ -3648,14 +4575,6 @@
 			"css": "--klp-surface-overlayBlur",
 			"references": [
 				{
-					"path": "react/src/styles.css",
-					"line": 224
-				},
-				{
-					"path": "react/src/styles.css",
-					"line": 289
-				},
-				{
 					"path": "flutter/lib/src/features/overlays/menu/klp_menu_metrics.dart",
 					"line": 20
 				},
@@ -3676,14 +4595,6 @@
 			"css": "--klp-surface-overlaySpread",
 			"references": [
 				{
-					"path": "react/src/styles.css",
-					"line": 224
-				},
-				{
-					"path": "react/src/styles.css",
-					"line": 289
-				},
-				{
 					"path": "flutter/lib/src/features/overlays/menu/klp_menu_state.dart",
 					"line": 212
 				},
@@ -3699,14 +4610,6 @@
 			"react": "theme.surface.overlayOffsetY",
 			"css": "--klp-surface-overlayOffsetY",
 			"references": [
-				{
-					"path": "react/src/styles.css",
-					"line": 224
-				},
-				{
-					"path": "react/src/styles.css",
-					"line": 289
-				},
 				{
 					"path": "flutter/lib/src/features/overlays/menu/klp_menu_metrics.dart",
 					"line": 22
@@ -3728,12 +4631,8 @@
 			"css": "--klp-surface-overlayShadowOpacity",
 			"references": [
 				{
-					"path": "react/src/styles.css",
-					"line": 224
-				},
-				{
-					"path": "react/src/styles.css",
-					"line": 289
+					"path": "react/src/desktop/styles.css",
+					"line": 42
 				},
 				{
 					"path": "flutter/lib/src/features/overlays/menu/klp_menu_state.dart",
@@ -3749,11 +4648,11 @@
 			"references": [
 				{
 					"path": "react/src/styles.css",
-					"line": 266
+					"line": 272
 				},
 				{
 					"path": "react/src/styles.css",
-					"line": 288
+					"line": 294
 				},
 				{
 					"path": "flutter/lib/src/features/actions/command_palette/klp_command_palette.dart",
@@ -3776,6 +4675,30 @@
 			"css": "--klp-surface-selectionWashOpacity",
 			"references": [
 				{
+					"path": "react/src/desktop/styles.css",
+					"line": 21
+				},
+				{
+					"path": "react/src/desktop/styles.css",
+					"line": 54
+				},
+				{
+					"path": "react/src/desktop/styles.css",
+					"line": 60
+				},
+				{
+					"path": "react/src/desktop/styles.css",
+					"line": 76
+				},
+				{
+					"path": "react/src/desktop/styles.css",
+					"line": 110
+				},
+				{
+					"path": "react/src/desktop/styles.css",
+					"line": 117
+				},
+				{
 					"path": "react/src/styles.css",
 					"line": 93
 				},
@@ -3785,27 +4708,27 @@
 				},
 				{
 					"path": "react/src/styles.css",
-					"line": 123
+					"line": 125
 				},
 				{
 					"path": "react/src/styles.css",
-					"line": 167
+					"line": 170
 				},
 				{
 					"path": "react/src/styles.css",
-					"line": 191
+					"line": 194
 				},
 				{
 					"path": "react/src/styles.css",
-					"line": 259
+					"line": 265
 				},
 				{
 					"path": "react/src/styles.css",
-					"line": 307
+					"line": 313
 				},
 				{
 					"path": "react/src/theme.tsx",
-					"line": 50
+					"line": 51
 				},
 				{
 					"path": "flutter/lib/src/features/actions/button/internal/klp_button_style.dart",
@@ -3841,11 +4764,11 @@
 				},
 				{
 					"path": "react/src/styles.css",
-					"line": 124
+					"line": 126
 				},
 				{
 					"path": "react/src/theme.tsx",
-					"line": 50
+					"line": 51
 				},
 				{
 					"path": "flutter/lib/src/features/actions/button/internal/klp_button_style.dart",
@@ -3863,6 +4786,10 @@
 			"react": "theme.surface.statusFillOpacity",
 			"css": "--klp-surface-statusFillOpacity",
 			"references": [
+				{
+					"path": "react/src/desktop/styles.css",
+					"line": 35
+				},
 				{
 					"path": "react/src/styles.css",
 					"line": 66
@@ -4031,7 +4958,7 @@
 			"references": [
 				{
 					"path": "react/src/styles.css",
-					"line": 200
+					"line": 203
 				},
 				{
 					"path": "flutter/lib/src/foundation/interaction/klp_drag_drop.dart",
@@ -4047,7 +4974,7 @@
 			"references": [
 				{
 					"path": "react/src/styles.css",
-					"line": 199
+					"line": 202
 				},
 				{
 					"path": "flutter/lib/src/features/workspace/shell/docking/primitives/klp_dock_panel_draggable.dart",
@@ -4136,8 +5063,12 @@
 			"css": "--klp-surface-invalidFillOpacity",
 			"references": [
 				{
+					"path": "react/src/desktop/styles.css",
+					"line": 7
+				},
+				{
 					"path": "react/src/styles.css",
-					"line": 125
+					"line": 127
 				},
 				{
 					"path": "flutter/lib/src/styling/legacy_theme/klp_theme.dart",
@@ -4150,48 +5081,21 @@
 			"flutter": "surface.contactBlur",
 			"react": "theme.surface.contactBlur",
 			"css": "--klp-surface-contactBlur",
-			"references": [
-				{
-					"path": "react/src/styles.css",
-					"line": 224
-				},
-				{
-					"path": "react/src/styles.css",
-					"line": 289
-				}
-			]
+			"references": []
 		},
 		{
 			"id": "theme.surface.contactOffsetY",
 			"flutter": "surface.contactOffsetY",
 			"react": "theme.surface.contactOffsetY",
 			"css": "--klp-surface-contactOffsetY",
-			"references": [
-				{
-					"path": "react/src/styles.css",
-					"line": 224
-				},
-				{
-					"path": "react/src/styles.css",
-					"line": 289
-				}
-			]
+			"references": []
 		},
 		{
 			"id": "theme.surface.contactShadowOpacity",
 			"flutter": "surface.contactShadowOpacity",
 			"react": "theme.surface.contactShadowOpacity",
 			"css": "--klp-surface-contactShadowOpacity",
-			"references": [
-				{
-					"path": "react/src/styles.css",
-					"line": 224
-				},
-				{
-					"path": "react/src/styles.css",
-					"line": 289
-				}
-			]
+			"references": []
 		},
 		{
 			"id": "theme.surface.overlayShadowColor",
@@ -4200,20 +5104,20 @@
 			"css": "--klp-surface-overlayShadowColor",
 			"references": [
 				{
-					"path": "react/src/styles.css",
-					"line": 224
+					"path": "react/src/desktop/styles.css",
+					"line": 42
+				},
+				{
+					"path": "react/src/relief.ts",
+					"line": 8
 				},
 				{
 					"path": "react/src/styles.css",
-					"line": 266
+					"line": 272
 				},
 				{
 					"path": "react/src/styles.css",
-					"line": 288
-				},
-				{
-					"path": "react/src/styles.css",
-					"line": 289
+					"line": 294
 				},
 				{
 					"path": "flutter/lib/src/features/workspace/anchored_popup/internal/klp_anchored_popup_panel.dart",
@@ -4261,7 +5165,7 @@
 				},
 				{
 					"path": "react/src/styles.css",
-					"line": 230
+					"line": 236
 				}
 			]
 		},
@@ -4300,7 +5204,7 @@
 				},
 				{
 					"path": "react/src/styles.css",
-					"line": 231
+					"line": 237
 				}
 			]
 		},
@@ -4311,8 +5215,12 @@
 			"css": "--klp-components-fieldRadius",
 			"references": [
 				{
+					"path": "react/src/desktop/styles.css",
+					"line": 4
+				},
+				{
 					"path": "react/src/styles.css",
-					"line": 116
+					"line": 118
 				}
 			]
 		},
@@ -4323,8 +5231,12 @@
 			"css": "--klp-components-fieldPaddingX",
 			"references": [
 				{
+					"path": "react/src/desktop/styles.css",
+					"line": 4
+				},
+				{
 					"path": "react/src/styles.css",
-					"line": 114
+					"line": 116
 				}
 			]
 		},
@@ -4335,8 +5247,32 @@
 			"css": "--klp-components-fieldHeight",
 			"references": [
 				{
+					"path": "react/src/desktop/styles.css",
+					"line": 5
+				},
+				{
+					"path": "react/src/desktop/styles.css",
+					"line": 6
+				},
+				{
+					"path": "react/src/desktop/styles.css",
+					"line": 49
+				},
+				{
+					"path": "react/src/desktop/styles.css",
+					"line": 88
+				},
+				{
+					"path": "react/src/desktop/styles.css",
+					"line": 108
+				},
+				{
+					"path": "react/src/desktop/styles.css",
+					"line": 114
+				},
+				{
 					"path": "react/src/styles.css",
-					"line": 113
+					"line": 115
 				}
 			]
 		},
@@ -4347,8 +5283,12 @@
 			"css": "--klp-components-fieldBorderWidth",
 			"references": [
 				{
+					"path": "react/src/desktop/styles.css",
+					"line": 4
+				},
+				{
 					"path": "react/src/styles.css",
-					"line": 115
+					"line": 117
 				}
 			]
 		},
@@ -4360,11 +5300,11 @@
 			"references": [
 				{
 					"path": "react/src/styles.css",
-					"line": 219
+					"line": 225
 				},
 				{
 					"path": "react/src/styles.css",
-					"line": 282
+					"line": 288
 				}
 			]
 		},
@@ -4384,7 +5324,7 @@
 				},
 				{
 					"path": "react/src/styles.css",
-					"line": 239
+					"line": 245
 				}
 			]
 		},
@@ -4395,12 +5335,16 @@
 			"css": "--klp-components-menuItemHeight",
 			"references": [
 				{
-					"path": "react/src/styles.css",
-					"line": 238
+					"path": "react/src/desktop/styles.css",
+					"line": 128
 				},
 				{
 					"path": "react/src/styles.css",
-					"line": 299
+					"line": 244
+				},
+				{
+					"path": "react/src/styles.css",
+					"line": 305
 				}
 			]
 		},
@@ -4410,6 +5354,14 @@
 			"react": "theme.components.cardRadius",
 			"css": "--klp-components-cardRadius",
 			"references": [
+				{
+					"path": "react/src/desktop/styles.css",
+					"line": 20
+				},
+				{
+					"path": "react/src/desktop/styles.css",
+					"line": 35
+				},
 				{
 					"path": "react/src/styles.css",
 					"line": 50
@@ -4679,6 +5631,26 @@
 			"css": "--klp-geometry-control-selectionControl",
 			"references": [
 				{
+					"path": "react/src/desktop/styles.css",
+					"line": 80
+				},
+				{
+					"path": "react/src/desktop/styles.css",
+					"line": 81
+				},
+				{
+					"path": "react/src/desktop/styles.css",
+					"line": 83
+				},
+				{
+					"path": "react/src/desktop/styles.css",
+					"line": 90
+				},
+				{
+					"path": "react/src/desktop/styles.css",
+					"line": 92
+				},
+				{
 					"path": "flutter/lib/src/features/forms/selection/internal/klp_checkbox_style.dart",
 					"line": 37
 				},
@@ -4719,6 +5691,10 @@
 			"css": "--klp-geometry-control-toggleWidth",
 			"references": [
 				{
+					"path": "react/src/desktop/styles.css",
+					"line": 14
+				},
+				{
 					"path": "flutter/lib/src/features/forms/toggle/internal/klp_toggle_indicator_style.dart",
 					"line": 44
 				}
@@ -4730,6 +5706,14 @@
 			"react": "theme.geometry.control.toggleHeight",
 			"css": "--klp-geometry-control-toggleHeight",
 			"references": [
+				{
+					"path": "react/src/desktop/styles.css",
+					"line": 14
+				},
+				{
+					"path": "react/src/desktop/styles.css",
+					"line": 15
+				},
 				{
 					"path": "flutter/lib/src/features/forms/toggle/internal/klp_toggle_indicator_style.dart",
 					"line": 45
@@ -4960,7 +5944,7 @@
 			"references": [
 				{
 					"path": "react/src/styles.css",
-					"line": 157
+					"line": 160
 				},
 				{
 					"path": "flutter/lib/src/features/navigation/widgets/explorer/internal/klp_file_explorer_item_view_state.dart",
@@ -5468,7 +6452,7 @@
 			"references": [
 				{
 					"path": "react/src/styles.css",
-					"line": 171
+					"line": 174
 				},
 				{
 					"path": "flutter/lib/src/features/collections/advanced/primitives/klp_advanced_style.dart",
@@ -5508,7 +6492,7 @@
 				},
 				{
 					"path": "react/src/styles.css",
-					"line": 144
+					"line": 146
 				},
 				{
 					"path": "flutter/lib/src/features/workspace/layout/klp_app_layout.dart",
@@ -5620,7 +6604,7 @@
 				},
 				{
 					"path": "react/src/styles.css",
-					"line": 213
+					"line": 219
 				},
 				{
 					"path": "flutter/lib/src/features/actions/command_entries/klp_command_entries.dart",
@@ -5871,7 +6855,7 @@
 			"references": [
 				{
 					"path": "react/src/styles.css",
-					"line": 250
+					"line": 256
 				},
 				{
 					"path": "flutter/lib/src/features/overlays/menu/klp_menu_metrics.dart",

@@ -16,7 +16,7 @@ export function ModernProductivityStarter({ sidebarWidth }: { sidebarWidth?: num
 			{ id: 'navigation', label: '導航', content: <div style={{ padding: inset }}><KlpTextField label="導航草稿" value={navigation} onChange={event => setNavigation(event.target.value)} /></div> },
 			{ id: 'tools', label: '工具', content: <div style={{ padding: inset }}><KlpTextField label="工具草稿" value={tools} onChange={event => setTools(event.target.value)} /></div> },
 		]}
-		header={<div style={{ padding: inset }}><KlpText role="body-strong">現代風生產力佈局</KlpText></div>}
+		header={<div style={{ padding: inset }}><KlpText role="body-strong">微立體工作台佈局</KlpText></div>}
 		stage={<div style={{ padding: inset }}><KlpText>Stage：替換成你的作品內容。工具功能已整合在左側欄。</KlpText></div>}
 	/>;
 }

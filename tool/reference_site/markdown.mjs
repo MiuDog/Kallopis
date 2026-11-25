@@ -1,5 +1,15 @@
 import path from 'node:path';
 
+/** 本地 href 的 query 不屬於檔名；保留 fragment 及越界路徑讓 verifier 檢查。 */
+export function localDocumentTarget(href, link) {
+	const hash = link.indexOf('#');
+	const fragment = hash < 0 ? '' : link.slice(hash + 1);
+	const location = hash < 0 ? link : link.slice(0, hash);
+	const pathname = location.split('?')[0];
+	const target = pathname ? path.posix.normalize(path.posix.join(path.posix.dirname(href), decodeURIComponent(pathname))) : href;
+	return { /* target：需驗證存在的檔案；fragment：需驗證的頁內 anchor。 */ target, fragment };
+}
+
 export function escapeHtml(value) {
 	return String(value).replaceAll('&', '&amp;').replaceAll('<', '&lt;').replaceAll('>', '&gt;').replaceAll('"', '&quot;').replaceAll("'", '&#39;');
 }
@@ -81,6 +91,7 @@ export function renderMarkdown(source, context) {
 	};
 	for (let index = 0; index < lines.length; index++) {
 		const line = lines[index];
+		if (/^<!-- reference-api:(start|end) -->$/.test(line.trim())) continue;
 		if (!line.trim()) {
 			closeList();
 			continue;

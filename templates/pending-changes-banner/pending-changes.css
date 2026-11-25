@@ -1,0 +1,37 @@
+.klp-pending-host {
+	position: absolute;
+	inset-inline: var(--klp-spacing-contentInset);
+	bottom: var(--klp-spacing-contentInset);
+	z-index: 30;
+	pointer-events: none;
+}
+.klp-pending-banner {
+	pointer-events: auto;
+	background: var(--klp-colors-surface);
+	border: 1px dashed var(--klp-colors-divider);
+	border-radius: var(--klp-shape-panel);
+}
+.klp-pending-banner > .klp-frame-body {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	flex-wrap: wrap;
+	gap: var(--klp-spacing-contentInset);
+	padding: var(--klp-spacing-contentInset);
+}
+.klp-pending-actions {
+	display: flex;
+	gap: var(--klp-spacing-contentInset);
+	margin-inline-start: auto;
+}
+.klp-pending-attention {
+	animation: klp-pending-shake 180ms ease-in-out 2;
+}
+@keyframes klp-pending-shake {
+	0%, 100% { transform: translateX(0); }
+	25% { transform: translateX(-4px); }
+	75% { transform: translateX(4px); }
+}
+@media (prefers-reduced-motion: reduce) {
+	.klp-pending-attention { animation: none; }
+}
