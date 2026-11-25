@@ -12,10 +12,13 @@
 | `styles/themes/<family>-v<N>.json` | 350 semantic + 270 primitive 色票與數值權威 | 調整色彩、字型、圓角與對比（須通過四模式驗證） |
 | `styles/themes/<family>-v<N>.surface.css` | 該風格專屬表面陰影、邊框微亮邊與排版規則 | 僅寫 `[data-klp-visual-style='<family>']` 規則 |
 | `styles/curated/<id>/` | 外部案例拆解實作的**精選互動元件外掛目錄** | 用 `scaffold-curated.mjs` 建立並實作元件與三語言範例 |
+| `react/example/theme-preview-snapshot.tsx` | 固定構圖的風格預覽截圖範例（`?showcase=theme-preview`） | 正常擴充不需改動；由截圖腳本自動切換 `--theme` |
 | `styles/scripts/generate-themes.mjs` | 驗證主題並自動生成 `.css`、`.js`、`swatches.json` 與 React 預設包 | 自動執行（勿手改產物） |
+| `styles/scripts/capture-theme-previews.mjs` | 無頭瀏覽器自動切換 `?showcase=theme-preview&theme=<id>` 並截取預覽圖 | 新增／微調風格後必跑 |
+| `styles/images/previews/<id>.png` | 由標準化預覽範例自動截圖產出的官方預覽圖 | 由腳本產出並以視覺檢查確認 |
 | `styles/scripts/generate-curated.mjs` | 掃描 `styles/curated/*/`，僅發布 `status: "approved"` 的元件至展示站 | 自動執行（勿手改 `react/example/curated*`） |
 | `react/src/`、`flutter/lib/` | 穩定公開元件核心庫 | 僅在元件確認跨產品重用並升級時才修改 |
-| `tool/reference_site/` | 靜態網站生成器與驗證器（`主頁` / `風格示範` / `文件參考`） | 正常擴充不需改動網站程式碼 |
+| `tool/reference_site/` | 靜態網站生成器與驗證器（`主頁` / `風格示範` / `元件表` / `文件參考`） | 正常擴充不需改動網站程式碼 |
 
 ## 2. 不可違反的鐵則（Invariants）
 
@@ -29,6 +32,7 @@
 8. **元件表獨立頁面與側欄導覽**：所有元件維護與明細統一置於獨立「元件表」頁（`components.html`）搭配左側 Navigator，不在「風格示範」首頁塞入全量元件清單。
 9. **群組相鄰色票與即時 CSS 實驗**：相同類型色票必須相鄰成列、hover 顯示屬性、點擊複製 HEX；「風格示範」支援即時修改 CSS 並套用到全頁範例。
 10. **風格與明暗模式完全獨立**：絕不把任何風格綁定「預設深色」，每次切換風格或明暗模式只改變該單一維度。
+11. **風格預覽圖一律由標準化範例自動截圖**：嚴禁直接使用使用者提供的參考圖或外部網站截圖作為 `previewImage`；每個風格每次僅需切換 `?showcase=theme-preview&theme=<id>` 並執行 `capture-theme-previews.mjs`，將標準範例畫面截圖存為 `styles/images/previews/<id>.png`。
 
 ---
 
@@ -54,18 +58,25 @@
 
 ### 階段三：擴充新風格主題（如需要新色票或表面質感）
 
-1. **建立主題鷹架**：
+1. **建立主題鷹架**（會自動把 `previewImage` 指到 `styles/images/previews/<slug>-v1.png`）：
    ```sh
-   node styles/scripts/scaffold-theme.mjs --family <slug> --version 1 --name "<中文名稱>" --english "<English Name>" --mode dark --source "<https://...>" --description "<簡短描述>"
+   node styles/scripts/scaffold-theme.mjs --family <slug> --version 1 --name "<中文名稱>" --english "<English Name>" --mode light --source "<https://...>" --description "<簡短描述>"
    ```
 2. **調整語意色票與參數**：
    - 編輯 `styles/themes/<slug>-v1.json` 中的 `primitives`、`primitiveDescriptions` 與 `semantics`（四種模式：`light`、`dark`、`ultraDark`、`transparent` 皆須合法，不可刪除任何既有 semantic key，色碼須為 `#AARRGGBB` 或 `#RRGGBB`）。
-   - 同時更新 `styles/themes/index.json` 中的 `palettePreview`、`typography` 與 `previewImage`（截圖存於 `styles/images/`）。
+   - 同步更新 `styles/themes/index.json` 中的 `palettePreview` 與 `typography`（勿改寫 `previewImage` 規範路徑，亦勿放外部截圖或使用者圖檔）。
 3. **撰寫專屬表面樣式**：
    - 編輯 `styles/themes/<slug>-v1.surface.css`，以 `[data-klp-visual-style='<slug>']` 定義該主題特有的陰影、亮邊、漸層或襯線標題規則。
-4. **生成並驗證**：
+4. **同步主題資料、建置預覽範例並自動截圖**：
+   - 本階段只需調整風格定義，不需另外手刻預覽頁面；直接切換標準範例 `?showcase=theme-preview&theme=<slug>-v1` 並截圖：
    ```sh
    node styles/scripts/generate-themes.mjs
+   npm run build:example --prefix react
+   node styles/scripts/capture-theme-previews.mjs --theme <slug>-v1
+   ```
+5. **檢查截圖並驗證通過**：
+   - 以影像閱讀工具開啟 `styles/images/previews/<slug>-v1.png`，確認無文字截斷、無重疊且 Light／Dark 對比清晰後，執行驗證：
+   ```sh
    node styles/scripts/generate-themes.mjs --check
    npm test --prefix styles
    ```
@@ -111,16 +122,18 @@ node tool/reference_site/verify.mjs --react --react-scenes --flutter-scenes
 
 ### 階段六：推送 `main` 並驗證公開 GitHub Pages
 
-1. 檢查 `git status`，確認不包含暫存檔與被 `.gitignore` 排除的本機設定。
+1. 檢查 `git status`，確認不包含暫存檔與被 `.gitignore` 排除的本機設定，且確認已提交對應 `styles/images/previews/<id>.png`。
 2. 提交並推送至 `origin main`（會自動觸發 `.github/workflows/pages.yml`）。
 3. 監看 GitHub Actions Workflow 直到 `build` 與 `deploy` 全綠：
    ```sh
    gh run list --workflow pages.yml -L 3
    gh run watch <run-id> --exit-status
    ```
-4. 確認公開網址回傳 HTTP 200 並實測「風格示範」頁面：
+4. 確認公開網址回傳 HTTP 200 並實測頁面與預覽圖：
    - 主頁：`https://miudog.github.io/Kallopis/`
    - 風格示範：`https://miudog.github.io/Kallopis/showcase.html`
+   - 元件表：`https://miudog.github.io/Kallopis/components.html`
+   - 風格預覽圖：`https://miudog.github.io/Kallopis/styles/images/previews/<id>.png`
    - 精選清單 JSON：`https://miudog.github.io/Kallopis/styles/curated/index.json`
 
 ---
@@ -137,6 +150,8 @@ node tool/reference_site/verify.mjs --react --react-scenes --flutter-scenes
 | 錯誤訊息 | 原因 | 解法 |
 | --- | --- | --- |
 | `Theme ID must be versioned` | 主題 ID 未採 `<family>-v<N>` | 修正 `styles/themes/index.json` 與檔名為 `-v1` |
+| `Theme previewImage must use canonical preview path` | `previewImage` 指到外部或使用者上傳圖片 | 改為 `styles/images/previews/<id>.png` 並執行截圖腳本 |
+| `Missing theme preview screenshot` | 尚未產出標準預覽截圖檔 | 先 `npm run build:example --prefix react`，再跑 `node styles/scripts/capture-theme-previews.mjs --theme <id>` |
 | `value below / above / does not fit` | 觸犯 `styles/catalog.json` 數值範圍或跨 token 幾何約束 | 調整 `styles/themes/<id>.json` 中對應的數值後重跑 `generate-themes.mjs` |
 | `Generated curated output stale` | 修改了 `styles/curated/` 卻未重新同步 | 執行 `node styles/scripts/generate-curated.mjs` |
 | `tsc -p tsconfig.example.json` 找不到模組 | 元件直接相對匯入 `styles/` 越過 `react/tsconfig.example.json` 邊界 | 一律透過 `generate-curated.mjs` 自動同步到 `react/example/curated/` |

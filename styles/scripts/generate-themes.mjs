@@ -102,6 +102,9 @@ for (const theme of registry.themes) {
 	if (typeof theme.jsPath !== 'string' || basename(theme.jsPath) !== `${theme.id}.js`) throw new Error(`Theme jsPath must match versioned ID ${theme.id}: ${theme.jsPath}`);
 	if (typeof theme.surfaceCssPath !== 'string' || basename(theme.surfaceCssPath) !== `${theme.id}.surface.css`) throw new Error(`Theme surfaceCssPath must match versioned ID ${theme.id}: ${theme.surfaceCssPath}`);
 	if (!existsSync(resolve(root, theme.surfaceCssPath))) throw new Error(`Missing surface CSS file: ${theme.surfaceCssPath}`);
+	const expectedPreview = `styles/images/previews/${theme.id}.png`;
+	if (theme.previewImage !== expectedPreview) throw new Error(`Theme previewImage must use canonical preview path ${expectedPreview}: ${theme.previewImage}`);
+	if (checkOnly && !existsSync(resolve(root, theme.previewImage))) throw new Error(`Missing theme preview screenshot: ${theme.previewImage}. Run: node styles/scripts/capture-theme-previews.mjs --theme ${theme.id}`);
 
 	const pack = JSON.parse(readFileSync(resolve(root, theme.packPath), 'utf8'));
 	if (pack.id !== theme.id) throw new Error(`Pack id mismatch for ${theme.packPath}: expected ${theme.id}, got ${pack.id}`);

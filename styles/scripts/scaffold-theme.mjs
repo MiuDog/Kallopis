@@ -75,7 +75,7 @@ index.themes.push({
 	cssPath,
 	jsPath,
 	surfaceCssPath,
-	previewImage: 'styles/images/showcase-home.png',
+	previewImage: `styles/images/previews/${id}.png`,
 	sourceReference,
 	surfaceStyle: `${family}-surface`,
 	elevationStyle: 'custom',
@@ -87,4 +87,4 @@ index.themes.push({
 });
 writeFileSync(indexPath, `${JSON.stringify(index, null, '\t')}\n`);
 
-console.log(`Scaffolded theme ${id} (v${version}):\n- ${packPath}\n- ${surfaceCssPath}\nNext: edit colors/primitives/surface CSS, then run: node styles/scripts/generate-themes.mjs`);
+console.log(`Scaffolded theme ${id} (v${version}):\n- ${packPath}\n- ${surfaceCssPath}\nNext:\n1. Edit colors/primitives/surface CSS\n2. node styles/scripts/generate-themes.mjs\n3. npm run build:example --prefix react\n4. node styles/scripts/capture-theme-previews.mjs --theme ${id}\n5. node styles/scripts/generate-themes.mjs --check`);

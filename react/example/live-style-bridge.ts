@@ -28,8 +28,16 @@ function parseLiveCssVariables(cssText: string, mode: KlpMode): CSSProperties {
 
 /** 同步外層風格示範／元件表的獨立風格、模式與即時 CSS 覆寫，絕不互相綁定狀態。 */
 export function useLiveStyleBridge(initialThemeId = 'micro-elevation-v1', initialMode: KlpMode = 'light') {
-	const [themeId, setThemeIdState] = useState(initialThemeId);
-	const [mode, setModeState] = useState<KlpMode>(initialMode);
+	const [themeId, setThemeIdState] = useState(() => {
+		if (typeof window === 'undefined') return initialThemeId;
+		const requested = new URLSearchParams(window.location.search).get('theme');
+		return requested && themePacks[requested] ? requested : initialThemeId;
+	});
+	const [mode, setModeState] = useState<KlpMode>(() => {
+		if (typeof window === 'undefined') return initialMode;
+		const requested = new URLSearchParams(window.location.search).get('mode');
+		return requested && modes.includes(requested as KlpMode) ? (requested as KlpMode) : initialMode;
+	});
 	const [customCss, setCustomCss] = useState('');
 
 	useEffect(() => {
